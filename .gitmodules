@@ -1,0 +1,18 @@
+[submodule "zxing"]
+	path = zxing
+	url = https://github.com/Twinlife/zxing.git
+[submodule "image-cropper"]
+	path = image-cropper
+	url = https://github.com/Twinlife/image-cropper.git
+[submodule "webrtc-framework"]
+	path = webrtc-framework
+	url = https://github.com/Twinlife/webrtc-java
+[submodule "twinlife-framework"]
+	path = twinlife-framework
+	url = https://github.com/Twinlife/twinlife-framework-java
+[submodule "twinme-framework"]
+	path = twinme-framework
+	url = https://github.com/Twinlife/twinme-framework-java
+[submodule "twinme-android-common"]
+	path = twinme-android-common
+	url = https://github.com/Twinlife/twinme-android-common
