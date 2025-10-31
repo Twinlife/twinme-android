@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/call_activity_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <View
+        android:id="@+id/call_activity_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/call_activity_participants_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <org.twinlife.twinme.ui.callActivity.ParticipantImageView
+            android:id="@+id/call_activity_participants_avatar_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/call_activity_participants_overlay_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <org.twinlife.twinme.utils.PercentFrameLayout
+        android:id="@+id/call_activity_local_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/call_activity_local_video_view"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/call_activity_local_audio_mute_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/remote_audio_mute"
+            android:visibility="gone" />
+
+    </org.twinlife.twinme.utils.PercentFrameLayout>
+
+    <ProgressBar
+        android:id="@+id/call_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_back_clickable_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:contentDescription="@string/application_back">
+
+            <ImageView
+                android:id="@+id/call_activity_back_image_view"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/start_chevron"
+                app:tint="#FFFFFF"
+                app:layout_aspectRatio="54.55%"
+                app:layout_heightPercent="30%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/call_activity_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/call_activity_back_clickable_view"
+            android:layout_toEndOf="@+id/call_activity_back_clickable_view"
+            android:ellipsize="end"
+            android:lines="1"/>
+
+        <ImageView
+            android:id="@+id/call_activity_certified_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/call_activity_name_view"
+            android:layout_toEndOf="@+id/call_activity_name_view"
+            android:src="@drawable/authentified_relation_icon"
+            android:visibility="gone"
+            app:layout_aspectRatio="100%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_unread_message_view"
+            android:layout_height="match_parent"
+            app:layout_aspectRatio="100%"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_control_camera_view"
+            android:layout_toStartOf="@+id/call_activity_control_camera_view"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/call_activity_unread_message_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/call_new_message_icon"
+                app:layout_heightPercent="44%"
+                app:layout_aspectRatio="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_control_camera_view"
+            android:layout_height="match_parent"
+            app:layout_aspectRatio="100%"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_add_participant_view"
+            android:layout_toStartOf="@+id/call_activity_add_participant_view"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/call_activity_control_camera_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/remote_control_icon"
+                app:layout_heightPercent="48%"
+                app:layout_aspectRatio="75%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_add_participant_view"
+            android:layout_height="match_parent"
+            app:layout_aspectRatio="100%"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_chronometer_view"
+            android:layout_toStartOf="@+id/call_activity_chronometer_view"
+            android:contentDescription="@string/add_call_participant_activity_title">
+
+            <ImageView
+                android:id="@+id/call_activity_add_participant_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/add_to_call"
+                app:tint="#FFFFFF"
+                app:layout_heightPercent="44%"
+                app:layout_aspectRatio="118%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <Chronometer
+            android:id="@+id/call_activity_chronometer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/call_activity_terminated_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"
+            android:layout_centerVertical="true" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/call_activity_message_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/call_activity_name_view"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/audio_call_activity_calling"
+            android:visibility="gone"
+            app:layout_marginTopPercent="1.8%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/call_activity_transfer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/call_activity_transfert_call_message"
+        android:visibility="gone" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_answer_call_view"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:layout_marginBottomPercent="4.20%"
+        app:layout_widthPercent="76.53%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_accept_view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="43.20%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/call_activity_accept_button_view"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:layout_heightPercent="68.75%"
+                app:layout_widthPercent="100%">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/accept_call"
+                    app:layout_aspectRatio="238%"
+                    app:layout_heightPercent="35.29%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_decline_view"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="43.20%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/call_activity_decline_button_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_heightPercent="68.75%">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/decline_call"
+                    app:layout_aspectRatio="238%"
+                    app:layout_heightPercent="35.29%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <org.twinlife.twinme.ui.callActivity.CallMenuView
+        android:id="@+id/call_activity_menu_view"
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
+    <org.twinlife.twinme.ui.callActivity.CallStreamingAudioView
+        android:id="@+id/call_activity_streaming_audio_view"
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
+    <org.twinlife.twinme.ui.callActivity.CallHoldView
+        android:id="@+id/call_activity_call_hold_view"
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
+    <org.twinlife.twinme.ui.callActivity.CallQualityView
+        android:id="@+id/call_activity_call_quality_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <org.twinlife.twinme.utils.coachmark.CoachMarkView
+        android:id="@+id/call_activity_coach_mark_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <org.twinlife.twinme.ui.callActivity.CallConversationView
+        android:id="@+id/call_activity_call_conversation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/call_activity_header_view"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

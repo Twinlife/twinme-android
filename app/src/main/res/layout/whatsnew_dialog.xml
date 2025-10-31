@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/whats_new_dialog_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/whats_new_dialog_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/whats_new_dialog_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <RelativeLayout
+            android:id="@+id/whats_new_dialog_progress_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/whats_new_dialog_slide_mark_view" />
+
+        <ImageView
+            android:id="@+id/whats_new_dialog_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/whats_new_dialog_slide_mark_view"
+            android:gravity="center"
+            android:text="@string/deleted_account_activity_warning"/>
+
+        <TextView
+            android:id="@+id/whats_new_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/whats_new_dialog_image"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/whats_new_dialog_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/whats_new_dialog_title"
+            android:gravity="center" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/whats_new_dialog_negative_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/whats_new_dialog_message">
+
+            <TextView
+                android:id="@+id/whats_new_dialog_negative_button_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/application_ok" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/whats_new_dialog_cancel_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/whats_new_dialog_negative_button">
+
+            <TextView
+                android:id="@+id/whats_new_dialog_cancel_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/application_later" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

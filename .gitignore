@@ -1,0 +1,17 @@
+.idea/*
+!.idea/codeStyleSettings.xml
+.gradle
+/local.properties
+/build
+/app/build
+/app/skred*
+/app/twinme*
+/app/app.iml
+/twinme.iml
+/captures
+.externalNativeBuild
+*~
+*.log
+*.swp
+*.iml
+/scripts/release/env

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/tab_bar_profile_icon"
+        android:title=""
+        android:contentDescription="@string/application_profile" />
+
+    <item
+        android:id="@+id/navigation_calls"
+        android:icon="@drawable/tab_bar_calls_icon"
+        android:title=""
+        android:contentDescription="@string/calls_fragment_title" />
+
+    <item
+        android:id="@+id/navigation_contacts"
+        android:icon="@drawable/tab_bar_contacts_icon"
+        android:title=""
+        android:contentDescription="@string/contacts_fragment_title" />
+
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/tab_bar_chat_icon"
+        android:title=""
+        android:contentDescription="@string/conversations_fragment_title" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/tab_bar_notifications_icon"
+        android:title=""
+        android:contentDescription="@string/notifications_fragment_title" />
+
+</menu>

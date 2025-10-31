@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_voice_recorder_trash_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:orientation="horizontal"
+        app:layout_aspectRatio="100%"
+        android:contentDescription="@string/application_delete">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/conversation_activity_voice_recorder_trash_rounded_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/conversation_activity_voice_recorder_trash_icon_view"
+            android:layout_width="0dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/toolbar_trash_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="33.33%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_voice_recorder_record_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/conversation_activity_voice_recorder_trash_view"
+        android:layout_toEndOf="@+id/conversation_activity_voice_recorder_trash_view"
+        android:clickable="true"
+        android:orientation="horizontal"
+        app:layout_aspectRatio="100%">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/conversation_activity_voice_recorder_record_rounded_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/conversation_activity_voice_recorder_record_icon_view"
+            android:layout_width="0dp"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="33.33%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_voice_recorder_pause_record_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/conversation_activity_voice_recorder_trash_view"
+        android:layout_toEndOf="@+id/conversation_activity_voice_recorder_trash_view"
+        android:clickable="true"
+        android:orientation="horizontal"
+        app:layout_aspectRatio="100%">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/conversation_activity_voice_recorder_pause_record_rounded_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/conversation_activity_voice_recorder_pause_record_icon_view"
+            android:layout_width="0dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/audio_item_player_pause"
+            app:layout_aspectRatio="66.67%"
+            app:layout_heightPercent="33.33%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_voice_recorder_audio_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/conversation_activity_voice_recorder_record_view"
+        android:layout_toRightOf="@+id/conversation_activity_voice_recorder_record_view"
+        android:orientation="horizontal">
+
+        <ScrollView
+            android:id="@+id/conversation_activity_voice_recorder_scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            app:layout_widthPercent="79.70%"
+            app:layout_marginStartPercent="1.85%"
+            app:layout_marginLeftPercent="1.85%">
+
+            <LinearLayout
+                android:id="@+id/conversation_activity_voice_recorder_scroll_content_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <org.twinlife.twinme.ui.conversationActivity.RecordTrackView
+                    android:id="@+id/conversation_activity_voice_recorder_audio_track_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+        </ScrollView>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_activity_voice_recorder_play_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            app:layout_heightPercent="100%"
+            app:layout_aspectRatio="100%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/conversation_activity_voice_recorder_play_rounded_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/conversation_activity_voice_recorder_play_icon_view"
+                android:layout_width="0dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/audio_item_player_play"
+                app:layout_aspectRatio="79.31%"
+                app:layout_heightPercent="33.33%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_activity_voice_recorder_pause_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            app:layout_heightPercent="100%"
+            app:layout_aspectRatio="100%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/conversation_activity_voice_recorder_pause_rounded_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/conversation_activity_voice_recorder_pause_icon_view"
+                android:layout_width="0dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/audio_item_player_pause"
+                app:layout_aspectRatio="66.67%"
+                app:layout_heightPercent="33.33%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/conversation_activity_voice_recorder_timer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            app:layout_marginEndPercent="3.70%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_voice_recorder_send_clickable_view"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:layout_widthPercent="16.53%"
+        android:contentDescription="@string/feedback_activity_send">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_activity_voice_recorder_send_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:clipChildren="false">
+
+            <View
+                android:id="@+id/conversation_activity_voice_recorder_send_rounded_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_aspectRatio="100%" />
+
+            <ImageView
+                android:id="@+id/conversation_activity_voice_recorder_send_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/send_icon"
+                android:layout_centerInParent="true"
+                app:layout_aspectRatio="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

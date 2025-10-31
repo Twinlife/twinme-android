@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/welcome_help_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/welcome_help_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="visible" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/welcome_help_activity_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:id="@+id/welcome_help_activity_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="12%" />
+
+        <ImageView
+            android:id="@+id/welcome_help_activity_logo"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="156.25%"
+            android:src="@drawable/splash_screen_logo"
+            android:layout_below="@+id/welcome_help_activity_slide_mark_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/welcome_help_activity_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_help_activity_logo" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/welcome_help_activity_dots_view"
+            android:layout_below="@+id/welcome_help_activity_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

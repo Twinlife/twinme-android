@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="textAppearance" parent="@android:style/TextAppearance" />
+
+    <style name="textAppearanceSmall" parent="@android:style/TextAppearance.Small" />
+
+    <style name="textAppearanceMedium" parent="@android:style/TextAppearance.Medium" />
+
+    <style name="textAppearanceLarge" parent="@android:style/TextAppearance.Large" />
+
+</resources>

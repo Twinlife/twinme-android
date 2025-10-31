@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fullscreen_media_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <org.twinlife.twinme.ui.conversationFilesActivity.FullScreenMediaRecyclerView
+        android:id="@+id/fullscreen_media_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/fullscreen_media_activity_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/fullscreen_media_activity_header_close_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_widthPercent="16%">
+
+            <ImageView
+                android:id="@+id/fullscreen_media_activity_header_close_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/action_close"
+                app:layout_heightPercent="26.67%"
+                app:layout_aspectRatio="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/fullscreen_media_activity_footer_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/fullscreen_media_activity_footer_share_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/fullscreen_media_activity_footer_share_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/share_item"
+                app:layout_aspectRatio="80.72%"
+                app:layout_heightPercent="28.12%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/fullscreen_media_activity_footer_save_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/fullscreen_media_activity_footer_share_view"
+            android:layout_toEndOf="@+id/fullscreen_media_activity_footer_share_view">
+
+            <ImageView
+                android:id="@+id/fullscreen_media_activity_footer_save_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/save_item"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="28.12%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/fullscreen_media_activity_footer_delete_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/fullscreen_media_activity_footer_delete_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/toolbar_trash_grey"
+                app:layout_aspectRatio="77.78%"
+                app:layout_heightPercent="28.12%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

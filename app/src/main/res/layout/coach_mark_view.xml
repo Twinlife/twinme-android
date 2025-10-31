@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <org.twinlife.twinme.utils.coachmark.CoachMarkOverlayView
+        android:id="@+id/coach_mark_view_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/coach_mark_view_message_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/coach_mark_view_feature_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

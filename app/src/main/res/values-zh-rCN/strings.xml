@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">接受</string>
+    <string name="application_account_deleted">您的帐户已被删除，您现在必须卸载该应用程序。</string>
+    <string name="application_add_contact_no_profile">在邀请联系人之前，您必须完成代表您的个人资料。 继续？</string>
+    <string name="application_all">所有</string>
+    <string name="application_appearance">出现</string>
+    <string name="application_are_you_sure">你确定吗？</string>
+    <string name="application_authorization_camera">允许应用在系统设置中访问相机。</string>
+    <string name="application_authorization_go_settings">转到系统设置</string>
+    <string name="application_authorization_microphone">允许应用在系统设置中访问麦克风。</string>
+    <string name="application_authorization_microphone_camera">允许应用在系统设置中访问麦克风和相机。</string>
+    <string name="application_authorization_title">缺少访问权限</string>
+    <string name="application_back">返回</string>
+    <string name="application_camera">摄像头</string>
+    <string name="application_cancel">取消</string>
+    <string name="application_canceled_operation">已取消操作</string>
+    <string name="application_checking_connection">检查连接</string>
+    <string name="application_color">颜色</string>
+    <string name="application_configuration">组态</string>
+    <string name="application_confirm">确认</string>
+    <string name="application_confirm_deletion">确认删除</string>
+    <string name="application_connected">安全连接已启用。</string>
+    <string name="application_connection_status_no_network">无法访问互联网。</string>
+    <string name="application_connection_status_no_network_message">请检查您的网络连接。</string>
+    <string name="application_connection_status_no_services">无法访问服务。</string>
+    <string name="application_connection_status_no_services_message">请尝试使用 VPN。</string>
+    <string name="application_contact_not_found">此联系人已删除与您的此关系，并且无法再联系。</string>
+    <string name="application_continue_without_premium_services">继续而不使用高级服务。</string>
+    <string name="application_create_group_no_profile">您必须完成在该组中代表您的个人资料。 继续？</string>
+    <string name="application_database_error">数据库错误</string>
+    <string name="application_decline">拒绝</string>
+    <string name="application_default">默认</string>
+    <string name="application_delete">删除</string>
+    <string name="application_delete_message">你确定要删除吗？</string>
+    <string name="application_denied_permissions">所需的权限未授予</string>
+    <string name="application_description">描述</string>
+    <string name="application_display_all">全部显示</string>
+    <string name="application_do_not_display">不再显示</string>
+    <string name="application_edit">编辑</string>
+    <string name="application_error_file_not_found">未找到该文件。</string>
+    <string name="application_error_media_not_supported">应用程序不支持此图像/视频格式。</string>
+    <string name="application_error_no_storage_space">储存空间不足</string>
+    <string name="application_group_limit_reached">超出组成员的最大数量（%1$d)</string>
+    <string name="application_group_not_found">您已从群组中删除</string>
+    <string name="application_items_selected">已选择 %1$d 个项目</string>
+    <string name="application_later">后来</string>
+    <string name="application_low_usage_message">警告，如果您不经常使用该应用程序，操作系统可能不会唤醒它来交换消息！</string>
+    <string name="application_one_item_selected">已选择 1 项</string>
+    <string name="application_migration_no_storage_space">您的设备上没有足够的空间来完成迁移。 关闭应用程序，释放一些空间，然后重新启动应用程序以完成更新。</string>
+    <string name="application_migration_no_storage_space_message">两台设备中，有一台的存储空间不足。请释放该设备的空间，然后再重新开始迁移。</string>
+    <string name="application_name_hint">名称</string>
+    <string name="application_network_connecting">连接到twinme服务</string>
+    <string name="application_network_connectivity">网络连接存在</string>
+    <string name="application_network_status_airplane_message">飞行模式被激活</string>
+    <string name="application_network_status_airplane_resolution">请关闭飞行模式并连接到Wi-Fi或移动网络。</string>
+    <string name="application_network_status_connected_no_internet">没有网络接入到twinme服务。</string>
+    <string name="application_network_status_connected_resolution">尝试连接到另外一个网络。</string>
+    <string name="application_network_status_connection_timeout">无法建立网络连接。</string>
+    <string name="application_network_status_no_internet">无网络连接。</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi已被禁用。</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi已被禁用，没有移动网络连接。</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">请打开无线网络连接。</string>
+    <string name="application_network_status_wifi_disabled_resolution">请打开Wi-Fi或激活移动互联网连接。</string>
+    <string name="application_new_feature">新！</string>
+    <string name="application_no">否</string>
+    <string name="application_no_network_connectivity">没有网络连接</string>
+    <string name="application_no_service">没有服务</string>
+    <string name="application_not_authorized_operation">未授权操作</string>
+    <string name="application_not_authorized_operation_by_your_contact">未经您的联系人授权操作。</string>
+    <string name="application_not_connected">正在进行安全连接......</string>
+    <string name="application_not_signed_in">没有连接到twinme服务</string>
+    <string name="application_now">现在</string>
+    <string name="application_ok">确定</string>
+    <string name="application_operation_failure">操作失败</string>
+    <string name="application_operation_irreversible">此操作不可逆</string>
+    <string name="application_permission_camera">需要使用相机的权限才能拍摄新照片或视频。</string>
+    <string name="application_permission_scan_code">要扫描QR码，必须具有访问相机的权限。</string>
+    <string name="application_photo_gallery">相册</string>
+    <string name="application_profile">个人资料</string>
+    <string name="application_profile_avatar_not_defined">您需要在个人资料中输入一个对于您邀请的联系人来说代表您的图像</string>
+    <string name="application_profile_name_not_defined">您需要在个人资料中定义一个对于您邀请的联系人来说代表您的名称。</string>
+    <string name="application_remove">去掉</string>
+    <string name="application_save">保存</string>
+    <string name="application_search_hint">搜索</string>
+    <string name="application_select">选择</string>
+    <string name="application_select_application">选择应用程序</string>
+    <string name="application_select_more">选择更多...</string>
+    <string name="application_server_timeout">服务器超时</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">主题</string>
+    <string name="application_timeout">到期延迟</string>
+    <string name="application_timeout_day">1天</string>
+    <string name="application_timeout_hour">1小时</string>
+    <string name="application_timeout_hours">%1$d 小时</string>
+    <string name="application_timeout_minute">1分钟</string>
+    <string name="application_timeout_minutes">%1$d 分钟</string>
+    <string name="application_timeout_month">1个月</string>
+    <string name="application_timeout_seconds">%1$d 秒</string>
+    <string name="application_timeout_week">1周</string>
+    <string name="application_unknown_name">未知</string>
+    <string name="application_upgrade">升级twinme</string>
+    <string name="application_webrtc_failure">ebRTC失败</string>
+    <string name="application_wrong_configuration">配置不正确</string>
+    <string name="application_yes">是</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">应用程序代码</string>
+    <string name="about_activity_information">信息</string>
+    <string name="about_activity_legal">法律声明</string>
+    <string name="about_activity_libraries">库</string>
+    <string name="about_activity_message">twinme 是一个安全的聊天及语音/视频呼叫服务系统，不会获取个人信息。\n\ntwinme 是基于WebRTC-一种网络上安全（端对端）点对点（无延迟服务器）实时多媒体通讯的新标准而打造的。</string>
+    <string name="about_activity_open_source_information">该应用程序的源代码已在 GitHub 上开源，遵循 AGPL-3.0 许可证。</string>
+    <string name="about_activity_open_sources_licences">开源许可证</string>
+    <string name="about_activity_premium_services">优质服务</string>
+    <string name="about_activity_privacy_policy">隐私政策</string>
+    <string name="about_activity_quality_of_service">服务质量</string>
+    <string name="about_activity_terms_of_use">服务条款</string>
+    <string name="about_activity_version">版本</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">此邀请已删除</string>
+    <string name="accept_group_invitation_activity_in_progress">会员资格正在进行</string>
+    <string name="accept_group_invitation_activity_message">%1$s 邀请您加入该群组</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">邀请正在转移。</string>
+    <string name="accept_invitation_activity_check_connection">检查您的互联网连接。</string>
+    <string name="accept_invitation_activity_existing_contact_message">您已经与此联系人建立了关系。 您想创建一个新的吗？</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">联系人信息不正确</string>
+    <string name="accept_invitation_activity_local_twincode">您不能在同一个帐户中与自己建立关系。</string>
+    <string name="accept_invitation_activity_message">%1$s想与您建立联系</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">对话内容</string>
+    <string name="account_activity_delete_account">您的帐户以及所有相关数据将被永久删除。 确认？</string>
+    <string name="account_activity_delete_account_confirmation">您真的确定要删除自己的帐户吗？</string>
+    <string name="account_activity_export_content">导出到外部媒体</string>
+    <string name="account_activity_message_first_part">首次安装应用程序、重新安装应用程序、重置设备或删除当前帐户后，都会创建一个新帐户。</string>
+    <string name="account_activity_message_second_part">以前的帐户和数据不会留下任何痕迹，因此您必须重新邀请您的联系人。</string>
+    <string name="account_activity_migration_message">帐户迁移服务可用于将您的帐户以及所有相关数据（联系人、消息、群组等）从一台 Android 设备实时转移到另一台。 因此，您可以在旧设备和新设备之间切换帐户。</string>
+    <string name="account_activity_migration_start_from_another_device">从另一台设备</string>
+    <string name="account_activity_migration_start_from_current_device">从我的设备</string>
+    <string name="account_activity_migration_title">帐户迁移</string>
+    <string name="account_activity_title">帐户</string>
+    <string name="account_activity_transfer_between_devices">设备间传输</string>
+    <string name="account_activity_transfer_from_another_device">从另一设备传输</string>
+    <string name="account_activity_transfer_from_device">从此设备传输</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">关闭应用程序，然后重新启动它以访问您的数据。</string>
+    <string name="account_migration_activity_close_message">关闭应用程序，然后重新启动它以访问新数据。</string>
+    <string name="account_migration_activity_confirm_cancel_message">您确定要取消迁移吗？</string>
+    <string name="account_migration_activity_network_message">检查您的网络连接</string>
+    <string name="account_migration_activity_not_enough_space_for_files">文件空间不足</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">空间不足，无法接收数据库</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">空间不足，无法转移数据库</string>
+    <string name="account_migration_activity_state_canceled">迁移已取消</string>
+    <string name="account_migration_activity_state_negotiate">等候</string>
+    <string name="account_migration_activity_state_list_files">文件清单</string>
+    <string name="account_migration_activity_state_send_account">正在发送帐户</string>
+    <string name="account_migration_activity_state_send_database">正在发送数据库</string>
+    <string name="account_migration_activity_state_send_files">发送文件</string>
+    <string name="account_migration_activity_state_send_settings">发送应用程序设置</string>
+    <string name="account_migration_activity_state_terminate">迁移几乎完成。</string>
+    <string name="account_migration_activity_state_wait_account">等待其他帐户</string>
+    <string name="account_migration_activity_state_wait_connect">等待重新连接</string>
+    <string name="account_migration_activity_state_wait_files">等待接收文件和数据库。</string>
+    <string name="account_migration_activity_start">开始迁移</string>
+    <string name="account_migration_activity_stop">停止迁移</string>
+    <string name="account_migration_activity_success_message">迁移成功完成</string>
+    <string name="account_migration_activity_transfer_in_progress">正在进行数据传输</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">在每台设备上显示此屏幕，一个扫描另一台的QR码。</string>
+    <string name="account_migration_scanner_activity_message_older_version">该设备使用旧的不兼容的操作系统版本，这将导致目标设备上的所有关系在传输过程中丢失。 您还想继续进行转移吗？</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">目标设备使用旧的不兼容的操作系统版本，这将导致您的所有关系在传输过程中丢失。 您还想继续进行转移吗？</string>
+    <string name="account_migration_scanner_activity_scan_title">扫描</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">要启动迁移，请从另一台设备扫描此二维码</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">扫描另一设备侧面菜单“帐户/从另一设备传输”部分中显示的二维码。</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">停止扫描</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">向此通话添加参与者</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">从图库导入</string>
+    <string name="add_contact_activity_in_person_subtitle">邀请您附近的人</string>
+    <string name="add_contact_activity_in_person_title">现场</string>
+    <string name="add_contact_activity_invitation_code_title">迷你代码</string>
+    <string name="add_contact_activity_invite">邀请</string>
+    <string name="add_contact_activity_invite_message">在您的移动设备上使用twinme打开网址 %1$s 即可与“%2$s”私密联系</string>
+    <string name="add_contact_activity_invite_subject">Twinme邀请</string>
+    <string name="add_contact_activity_message">让您附近的朋友使用 twinme 扫描您的邀请二维码，或点击“扫描”按钮扫描您朋友的二维码。</string>
+    <string name="add_contact_activity_onboarding_message">twinme 不认识你的朋友，也无法发现他们。 你必须亲自邀请他们，当他们在你附近时用 twinme 邀请他们，或者通过其他方式向他们发送邀请。</string>
+    <string name="add_contact_activity_scan_code">扫描邀请二维码</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">此链接已损坏。</string>
+    <string name="add_contact_activity_scan_error_incorect_link">此链接不正确。</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">此链接不由应用程序管理。</string>
+    <string name="add_contact_activity_scan_error_revoked_link">此关系已删除。</string>
+    <string name="add_contact_activity_scan_message_call_link">此链接对应于“点击呼叫”</string>
+    <string name="add_contact_activity_scan_message_invitation_link">此链接对应于联系人邀请</string>
+    <string name="add_contact_activity_scan_message_migration_link">此链接对应于帐户迁移</string>
+    <string name="add_contact_activity_scan_message_transfer_link">此链接对应于呼叫转移</string>
+    <string name="add_contact_activity_scan_title">扫描</string>
+    <string name="add_contact_activity_social_subtitle">消息，邮件，社交网络</string>
+    <string name="add_contact_activity_social_title">通过应用程序发送代码</string>
+    <string name="add_contact_activity_title">邀请</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">加</string>
+    <string name="add_group_member_activity_title">添加成员</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">欢迎留言</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">正在呼叫&#8230;&#8230;</string>
+    <string name="audio_call_activity_cannot_call">无法拨打语音电话</string>
+    <string name="audio_call_activity_connecting">连接&#8230;&#8230;</string>
+    <string name="audio_call_activity_hangup">挂断</string>
+    <string name="audio_call_activity_hangup_confirmation">您要挂断电话吗？</string>
+    <string name="audio_call_activity_terminate">呼叫已被终止</string>
+    <string name="audio_call_activity_terminate_busy">呼叫被终止：&lt;b&gt;%1$s&lt;/b&gt;正忙</string>
+    <string name="audio_call_activity_terminate_cancel">呼叫被&lt;b&gt;%1$s&lt;/b&gt;取消</string>
+    <string name="audio_call_activity_terminate_connectivity_error">呼叫被终止：网络错误</string>
+    <string name="audio_call_activity_terminate_decline">呼叫被&lt;b&gt;%1$s&lt;/b&gt;拒绝</string>
+    <string name="audio_call_activity_terminate_gone">呼叫被终止：&lt;b&gt;%1$s&lt;/b&gt;不在线</string>
+    <string name="audio_call_activity_terminate_not_authorized">您的联系人未授予通话所需的权限（例如，麦克风、摄像头）。</string>
+    <string name="audio_call_activity_terminate_revoked">通话结束：&lt;b&gt;%1$s&lt;/b&gt; 已删除与您的此关系。</string>
+    <string name="audio_call_activity_terminate_success">呼叫被&lt;b&gt;%1$s&lt;/b&gt;终止</string>
+    <string name="audio_call_activity_terminate_timeout">呼叫被终止：&lt;b&gt;%1$s&lt;/b&gt;未应答</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">您与 %1$s 的关系现已认证。</string>
+    <string name="authentified_relation_activity_certify_by_scan">通过扫描二维码进行认证</string>
+    <string name="authentified_relation_activity_certify_by_video_call">通过视频通话进行确认</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s 必须允许视频通话才能通过视频通话证明关系。</string>
+    <string name="authentified_relation_activity_level_2">要认证此关系，您必须扫描 %1$s 设备上显示的二维码。</string>
+    <string name="authentified_relation_activity_level_3">要认证此关系，%1$s 的设备必须扫描此二维码。</string>
+    <string name="authentified_relation_activity_level_4">您与 %1$s 的关系已认证。</string>
+    <string name="authentified_relation_activity_onboarding_message">“认证”关系可确保您始终与正确的人沟通，即使服务已被第三方破坏。</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">确保您始终与正确的人沟通！</string>
+    <string name="authentified_relation_activity_relation_print_message">此指纹在两个设备上必须相同。</string>
+    <string name="authentified_relation_activity_relation_print_title">关系指纹</string>
+    <string name="authentified_relation_activity_start">开始认证</string>
+    <string name="authentified_relation_activity_title">认证关系</string>
+    <string name="authentified_relation_activity_to_be_certified_title">验证关系</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">所有</string>
+    <string name="calls_fragment_call_again_message">您要回拨%1$s吗？</string>
+    <string name="calls_fragment_call_again_title">打回来</string>
+    <string name="calls_fragment_create_link">创建“点击通话”链接</string>
+    <string name="calls_fragment_incoming_call">来电</string>
+    <string name="calls_fragment_missed_call">未接来电</string>
+    <string name="calls_fragment_missed_call_segmented_control">错过了</string>
+    <string name="calls_fragment_no_call_message">此处列出未接来电。</string>
+    <string name="calls_fragment_no_call_title">您还没有拨打任何电话。</string>
+    <string name="calls_fragment_outgoing_call">拨出电话</string>
+    <string name="calls_fragment_reset">您确定要重置所有呼叫通知吗？</string>
+    <string name="calls_fragment_reset_title">重置通话通知</string>
+    <string name="calls_fragment_title">来电</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">蓝牙音频</string>
+    <string name="call_activity_audio_source_device">设备耳机</string>
+    <string name="call_activity_audio_source_earphones">耳机</string>
+    <string name="call_activity_audio_source_headset">音频耳机</string>
+    <string name="call_activity_audio_source_loudspeaker">扬声器</string>
+    <string name="call_activity_battery_restriction_message">注意力！当应用程序在后台运行时，您必须允许使用电池，否则在通话过程中可能会切割麦克风。</string>
+    <string name="call_activity_camera_control">摄像头控制</string>
+    <string name="call_activity_camera_control_ask_message">请求 %1$s 允许您在视频通话期间控制他们的摄像头。</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s 想在通话期间控制您的摄像头。您可以随时重新获得控制权。</string>
+    <string name="call_activity_camera_control_denied">%1$s 不允许您控制他/她的摄像头。</string>
+    <string name="call_activity_camera_control_message">控制 %1$s 的摄像头</string>
+    <string name="call_activity_camera_control_needs_help">需要帮助吗？</string>
+    <string name="call_activity_camera_control_onboarding">如果您的联系人允许，您可以在视频通话期间控制其摄像头并自行放大。此功能对于控制视频监控摄像头尤其有用。</string>
+    <string name="call_activity_camera_control_onboarding_part_2">在获得亲人许可的情况下，您可以在通话期间控制他们的摄像头，以便远程、轻松、安全地为他们提供帮助。</string>
+    <string name="call_activity_camera_control_remotely">%1$s 远程控制您的摄像头。</string>
+    <string name="call_activity_camera_control_stop">停止</string>
+    <string name="call_activity_certify_error_message">%1$s 没有验证该词。关系认证失败，您需要重试。</string>
+    <string name="call_activity_certify_onboarding_message">视频通话允许相互识别和交换与经过认证的关系及其交换相关的安全密钥。</string>
+    <string name="call_activity_certify_onboarding_start_message">依次拼出屏幕上显示的单词，对方可以验证。一旦所有单词都通过验证，您与 %1$s 的关系将得到认证。</string>
+    <string name="call_activity_certify_onboarding_title">证明你们的关系</string>
+    <string name="call_activity_certify_video_message">通话必须通过视频进行才能证明关系。</string>
+    <string name="call_activity_coach_mark">点按此处可将参与者添加到此通话</string>
+    <string name="call_activity_confirm_word">%1$s 所说的单词是否相同？</string>
+    <string name="call_activity_confirm_word_title">验证单词</string>
+    <string name="call_activity_error_call_interrupted">通话中断，错误：%1$d。</string>
+    <string name="call_activity_error_call_not_go_thru">通话无法接通，错误：%1$d。</string>
+    <string name="call_activity_max_participant_message">已达到群组通话参与者的最大数量 (%1$d)。</string>
+    <string name="call_activity_not_supported_group_call_message">%1$s 的应用版本与群组通话不兼容，需要更新。</string>
+    <string name="call_activity_quality_message">您如何评价它？</string>
+    <string name="call_activity_quality_title">通话质量</string>
+    <string name="call_activity_repeat_word">%1$s 将能与他/她屏幕上的单词进行比较。</string>
+    <string name="call_activity_repeat_word_title">拼出单词</string>
+    <string name="call_activity_tag_add_to_call">邀请联系人加入正在进行的通话</string>
+    <string name="call_activity_tag_camera">摄像头</string>
+    <string name="call_activity_tag_camera_activate">激活摄像头</string>
+    <string name="call_activity_tag_camera_cut">关闭摄像头</string>
+    <string name="call_activity_tag_camera_flip">翻转摄像头</string>
+    <string name="call_activity_tag_microphone">麦克风</string>
+    <string name="call_activity_tag_microphone_activate">激活麦克风</string>
+    <string name="call_activity_tag_microphone_mute">静音麦克风</string>
+    <string name="call_activity_tag_pause">暂停</string>
+    <string name="call_activity_tag_send_message">发送消息</string>
+    <string name="call_activity_tag_speaker">扩音器</string>
+    <string name="call_activity_tag_speaker_activate">激活扬声器</string>
+    <string name="call_activity_tag_speaker_mute">静音扬声器</string>
+    <string name="call_activity_transfert_call_message">正在进行的通话已转接。</string>
+    <string name="call_activity_try_to_call_back">尝试回拨。</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">相机已在使用</string>
+    <string name="capture_activity_incorrect_qrcode">twincode码不正确</string>
+    <string name="capture_activity_message">将QR码放在此矩形中进行扫描。</string>
+    <string name="capture_activity_no_camera">需要相机来扫描twincode码</string>
+    <string name="capture_activity_qrcode_saved">邀请代码保存在照片中。</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">清除全部</string>
+    <string name="cleanup_activity_both_clean">全局清理（本地和远程）</string>
+    <string name="cleanup_activity_both_clean_title">全局清理</string>
+    <string name="cleanup_activity_clean">删除</string>
+    <string name="cleanup_activity_conversation">与 %s 的谈话</string>
+    <string name="cleanup_activity_delete_confirmation_message">删除是不可逆的。 在继续之前导出重要内容。 继续？</string>
+    <string name="cleanup_activity_error">操作过程中发生错误。</string>
+    <string name="cleanup_activity_expiration">到期期限</string>
+    <string name="cleanup_activity_free">可用的</string>
+    <string name="cleanup_activity_info">从此对话中删除消息、媒体和文件并不会从您联系人的设备中删除它们，您以后将无法这样做。</string>
+    <string name="cleanup_activity_info_both">从此对话中删除消息、媒体和文件也会将它们从您联系人的设备中删除。</string>
+    <string name="cleanup_activity_local_cleanup">仅本地清理</string>
+    <string name="cleanup_activity_local_cleanup_title">局部清理</string>
+    <string name="cleanup_activity_medias_and_files">仅限媒体和文件</string>
+    <string name="cleanup_activity_medias_and_files_info">媒体缩略图不会从对话中删除； 只有原始文件。</string>
+    <string name="cleanup_activity_medias_and_files_info_both">在此对话中交换的文件、照片、视频和语音笔记将从您的设备和联系人的设备中删除。</string>
+    <string name="cleanup_activity_messages">所有讯息及其他内容</string>
+    <string name="cleanup_activity_messages_info">对话中任何类型的消息（文本、照片、视频、语音、文件等）都将从应用程序中删除。</string>
+    <string name="cleanup_activity_month">%1$d 个月</string>
+    <string name="cleanup_activity_older_than">年长于</string>
+    <string name="cleanup_activity_one_year">1 年</string>
+    <string name="cleanup_activity_prior_to">先于</string>
+    <string name="cleanup_activity_reset_conversation_message">重置此对话将删除所有消息，包括您联系人设备上的消息。</string>
+    <string name="cleanup_activity_select_content">选择您想要删除的内容。</string>
+    <string name="cleanup_activity_storage_title">磁盘空间</string>
+    <string name="cleanup_activity_success">操作成功完成。</string>
+    <string name="cleanup_activity_title">聊天清洁</string>
+    <string name="cleanup_activity_total">全部的</string>
+    <string name="cleanup_activity_used">用过的</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">工具提示</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">允许此联系人给您打电话</string>
+    <string name="contact_capabilities_activity_automatic_answering">自动接听来电</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">注意：此设置会激活自动应答来自该联系人的呼叫，打开设备麦克风和摄像头（用于视频呼叫）。</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">某些设备可能会限制此功能。</string>
+    <string name="contact_capabilities_activity_call_settings">通话设置</string>
+    <string name="contact_capabilities_activity_camera_control_allow">始终</string>
+    <string name="contact_capabilities_activity_camera_control_ask">每次通话时询问</string>
+    <string name="contact_capabilities_activity_camera_control_information">允许此联系人在视频通话期间自动控制您的摄像头。</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">您可以要求拥有高级版应用访问权限的联系人在视频通话期间控制您的摄像头。</string>
+    <string name="contact_capabilities_activity_camera_control_never">永不</string>
+    <string name="contact_capabilities_activity_discreet_relation">谨慎的关系</string>
+    <string name="contact_capabilities_activity_information_audio_call">允许联系人以语音方式呼叫您。</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">不在通知中显示联系人姓名，也不在通话记录中保存通话。</string>
+    <string name="contact_capabilities_activity_information_limited_call">设置您不想接到电话的日期/时间。</string>
+    <string name="contact_capabilities_activity_information_programmed_call">安排您想要接到电话的日期/时间。</string>
+    <string name="contact_capabilities_activity_information_video_call">允许联系人与您视频通话。</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">邀请某人扫描您的邀请代码，否则请扫描他们的邀请。</string>
+    <string name="contacts_fragment_invite_contact_title">邀请联系人</string>
+    <string name="contacts_fragment_scan_contact_title">扫描或输入邀请码</string>
+    <string name="contacts_fragment_title">联络人</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">语音通话</string>
+    <string name="conversation_activity_audio_message">语音留言</string>
+    <string name="conversation_activity_call_missed">错过了</string>
+    <string name="conversation_activity_cannot_send">无法立即发送消息：</string>
+    <string name="conversation_activity_cleanup_conversation">您删除了一些旧消息。</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s 清理了一些旧消息。</string>
+    <string name="conversation_activity_delete_message">您的邮件实际上已被删除。</string>
+    <string name="conversation_activity_empty_message">说些聪明的东西或有趣吧！</string>
+    <string name="conversation_activity_edit_message">只有当您的联系人的应用已更新到最新版本时，您才能在其设备上编辑该消息。</string>
+    <string name="conversation_activity_ephemeral_coach_mark">长按发送箭头可在一定时间后从对话中删除此消息。</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">您联系人的twinme版本功能不完整。&lt;br /&gt;
+        请让他/她进行twinme更新。</string>
+    <string name="conversation_activity_group_member_information">%1$d 成员</string>
+    <string name="conversation_activity_group_not_allowed_post_message">不允许发送消息</string>
+    <string name="conversation_activity_group_one_member">1名成员</string>
+    <string name="conversation_activity_invitation_accepted">邀请被接受</string>
+    <string name="conversation_activity_invitation_failed">请您的联系人更新twinme</string>
+    <string name="conversation_activity_invitation_joined">该小组成员</string>
+    <string name="conversation_activity_invitation_pending">邀请正在进行中</string>
+    <string name="conversation_activity_invitation_refused">邀请被拒绝</string>
+    <string name="conversation_activity_invitation_title">我邀请你加入这个小组</string>
+    <string name="conversation_activity_local_cleanup">主要内容已在本地删除。</string>
+    <string name="conversation_activity_manage_conversation">管理对话</string>
+    <string name="conversation_activity_menu_item_view_copy_message">复制到剪贴板！</string>
+    <string name="conversation_activity_menu_item_view_copy_title">复制</string>
+    <string name="conversation_activity_menu_item_view_delete_title">删除</string>
+    <string name="conversation_activity_menu_item_view_forward_title">转发</string>
+    <string name="conversation_activity_menu_item_view_info_title">信息</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">未经发件人授权的操作</string>
+    <string name="conversation_activity_menu_item_view_reply_title">回复</string>
+    <string name="conversation_activity_menu_item_view_save_message">保存了！</string>
+    <string name="conversation_activity_menu_item_view_save_title">保存</string>
+    <string name="conversation_activity_menu_item_view_share_title">分享</string>
+    <string name="conversation_activity_message">输入消息</string>
+    <string name="conversation_activity_photo_camera">照片摄像头</string>
+    <string name="conversation_activity_record_confirm_send_record">再按一下进行发送</string>
+    <string name="conversation_activity_record_start_record">按住进行录音</string>
+    <string name="conversation_activity_record_title">记录</string>
+    <string name="conversation_activity_reduce_menu_lower">标准</string>
+    <string name="conversation_activity_reduce_menu_minimal">最小值</string>
+    <string name="conversation_activity_reduce_menu_original">原始</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">没有调整大小</string>
+    <string name="conversation_activity_reject_stream">拒绝</string>
+    <string name="conversation_activity_reply_to">回复%1$s</string>
+    <string name="conversation_activity_reset_conversation">您已重置对话</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s 已重置对话</string>
+    <string name="conversation_activity_send_file_warning">警告：无法阻止接收者复制/保存/共享文档（pdf、word、ppt、excel、zip 等），这些文档只能在应用程序外部打开。 您还想发送吗？</string>
+    <string name="conversation_activity_send_large_file_message">此文件很大 (%1$d MB)。 你想继续吗 ？</string>
+    <string name="conversation_activity_send_menu_allow_copy">允许收件人复制/保存/共享此内容</string>
+    <string name="conversation_activity_stream_dialog">您要接受吗？</string>
+    <string name="conversation_activity_unsupported_media">不支持的媒体格式</string>
+    <string name="conversation_activity_video_call">视频电话</string>
+    <string name="conversation_activity_video_camera">摄像机</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">文档</string>
+    <string name="conversation_files_activity_links">链接</string>
+    <string name="conversation_files_activity_month">这个月</string>
+    <string name="conversation_files_activity_no_files">您与 %1$s 的对话不包含任何这些元素。</string>
+    <string name="conversation_files_activity_title">媒体、网络链接和文件</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">背景和颜色</string>
+    <string name="conversation_settings_activity_emoji_size">表情符号大小</string>
+    <string name="conversation_settings_activity_link_preview">可视化</string>
+    <string name="conversation_settings_activity_link_preview_message">显示网站的预览。</string>
+    <string name="conversation_settings_activity_link_title">网页链接</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">端到端加密的消息直接在终端之间进行点对点交换，而无需中间分发服务器=云中没有任何痕迹。</string>
+    <string name="conversations_fragment_no_result_found">未找到“%1$s”的结果。</string>
+    <string name="conversations_fragment_start">开始对话</string>
+    <string name="conversations_fragment_title">对话内容</string>
+    <string name="conversations_fragment_you">你</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">此个人资料将显示给将通过此“click-to-call”链接呼叫您的客人。</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">“点击通话”允许客人通过浏览器给您打电话，而无需安装应用程序。</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">每个实例都有一个名称、一个图像和一个描述，代表调用的主题，例如：</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">您的客户服务</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">你要卖的车</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">专业团体通话</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">供送货员使用的可视门铃。</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">“点击通话”具有指定其是否为的属性：</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">音频和/或视频通话</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">个人或群组通话</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">始终开放或仅限于特定日期和时间。</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">通过允许联系相关人员的渠道分享“点击通话”链接或二维码，例如：</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">您网站上的“号召性用语”</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">分类广告平台上的插入内容</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">向受邀参加群组通话的人员发送一封电子邮件</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">前门上有一个供送货人员使用的标志。</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">收件人扫描二维码并在其移动设备或 PC 上的浏览器中打开链接。 然后他们可以：</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">更改在通话中代表他们的默认名称（访客）</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">按网页上的“呼叫”按钮给您打电话。</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">通话结束后，他们可能会保持网页打开以便给您回电。</string>
+    <string name="create_external_call_activity_placeholder">主题（帮助、公告、会议、门铃......）</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">邀请成员</string>
+    <string name="create_group_activity_create">创建</string>
+    <string name="create_group_activity_member_allow_invitation_message">允许群组成员邀请其联系人</string>
+    <string name="create_group_activity_member_allow_invitation_title">会员邀请</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">允许成员邀请其他成员作为个人联系人</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">建立个人联系</string>
+    <string name="create_group_activity_member_allow_post_message">允许组成员发布消息</string>
+    <string name="create_group_activity_member_allow_post_title">发表讯息</string>
+    <string name="create_group_activity_member_list">会员名单（%1$d）</string>
+    <string name="create_group_activity_name_hint">组名</string>
+    <string name="create_group_activity_title">组名未定义</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">姓名和形象对于您的联系人识别您并将您与其他人区分开来都是必不可少的。</string>
+    <string name="create_profile_activity_message">此个人资料信息用于邀请联系人。</string>
+    <string name="create_profile_activity_onboarding_message">定义个人资料（昵称和图片）以便为您的联系人标识自己。</string>
+    <string name="create_profile_activity_onboarding_message_part_1">个人资料允许您邀请联系人在应用程序上与您建立关系。 您可以拥有任意数量的个人资料（角色），每个个人资料都与特定的“空间”相关联。</string>
+    <string name="create_profile_activity_onboarding_message_part_2">每个“个人资料”都有一个“名称”和一个“图像”（必需），您邀请的联系人可以看到它们，并用作与该“空间”新创建的关系相关联的初始个人资料。</string>
+    <string name="create_profile_activity_onboarding_message_part_3">创建后，每个关系都有自己的一对“个人资料”，代表您和您的联系人。</string>
+    <string name="create_profile_activity_onboarding_message_part_4">然后，您可以在每个关系中独立修改您希望每个联系人了解的方式。</string>
+    <string name="create_profile_activity_save_message">此名称和图片用于邀请您的联系人并初始化您的关系。您可以针对每个关系修改和自定义它们。</string>
+    <string name="create_profile_activity_welcome1">输入您的个人资料图片</string>
+    <string name="create_profile_activity_welcome2">欢迎%1$s！</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">“空间”是本地的，对联系人不可见。</string>
+    <string name="create_space_activity_onboarding_message_part_1">“空间”可帮助您根据联系人所属的社交圈来组织您的联系人，例如。 家庭、朋友、商务、娱乐等。</string>
+    <string name="create_space_activity_onboarding_message_part_2">每个“空间”都与一个“个人资料”相关联，代表您在与该空间社交圈中的联系人交互时想要使用的角色，例如爸爸、约翰、约翰·多伊博士、蝙蝠侠等。</string>
+    <string name="create_space_activity_onboarding_message_part_3">“空间”是您设备上的应用程序的本地空间。 它们仅对您可见，您的联系人或服务服务器都看不到它们。</string>
+    <string name="create_space_activity_onboarding_message_part_4">“空间”具有：</string>
+    <string name="create_space_activity_onboarding_message_part_5">- “名称”，代表您与之互动的特定社交圈</string>
+    <string name="create_space_activity_onboarding_message_part_6">- 一个“图像”，让您可以在“空间”列表中快速识别它</string>
+    <string name="create_space_activity_onboarding_message_part_7">- 颜色“主题”，个性化其外观和感觉</string>
+    <string name="create_space_activity_onboarding_message_part_8">- “设置”可以特定于每个特定的“空间”，从而覆盖应用程序设置定义的默认值。</string>
+    <string name="create_space_activity_title">创建Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">此配置文件名称与用于将正在进行的呼叫转移到浏览器的代码相关联。</string>
+    <string name="create_transfert_call_activity_name_placeholder">我的呼叫转移</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">在下面输入字母“OK”以确认删除帐户。</string>
+    <string name="deleted_account_activity_delete">删除帐户</string>
+    <string name="deleted_account_activity_warning">注意力！</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">您的帐户已被删除，所有相关数据已被销毁。&lt;br /&gt;
+        您必须关闭该应用程序。</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">您确定要删除此关系吗？</string>
+    <string name="edit_contact_activity_message">此联系人将无法再联系到您。</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">删除此配置文件将使其关联的邀请代码失效。 确认删除？</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">您确定要删除此“Click-to-Call”代码吗？</string>
+    <string name="edit_external_call_activity_delete_message">此“Click-to-Call”链接将不再可用。</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">编辑个人资料</string>
+    <string name="edit_profile_activity_propagating_all_contacts">致此“空间”中的所有联系人</string>
+    <string name="edit_profile_activity_propagating_ask_message">传播您刚刚修改的图像、名称或描述：</string>
+    <string name="edit_profile_activity_propagating_except_contacts">所有人，除非它们是个性化的</string>
+    <string name="edit_profile_activity_propagating_message">您可以将邀请个人资料更改传播给现有联系人，也可以不传播。</string>
+    <string name="edit_profile_activity_propagating_no_contact">对任何人都没有</string>
+    <string name="edit_profile_activity_propagating_profile">传播个人资料更改</string>
+    <string name="edit_profile_activity_remove_active_profile">您不能删除使用中的个人资料</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">建立联系后，强烈建议您验证该 PIN 码以增强其安全性。</string>
+    <string name="enter_invitation_code_activity_enter_code">输入迷你代码</string>
+    <string name="enter_invitation_code_activity_error_message">此代码无效。它可能已被使用或已过期。</string>
+    <string name="enter_invitation_code_activity_invitation_message">建立联系后，请务必验证该 PIN 码以增强其安全性。</string>
+    <string name="enter_invitation_code_activity_message">请输入联系人提供的迷你代码以创建关系。</string>
+    <string name="enter_invitation_code_activity_onboarding_message">一位联系人向您提供了 6 位迷你代码，用于创建关系。此迷你代码仅限一次性使用，创建后 24 小时失效。</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">对话内容将导出为 ZIP 文件。</string>
+    <string name="export_activity_content_title">内容</string>
+    <string name="export_activity_content_to_export">导出内容</string>
+    <string name="export_activity_do_not_leave_screen">导出操作期间不要离开屏幕。</string>
+    <string name="export_activity_export">出口</string>
+    <string name="export_activity_file">文件</string>
+    <string name="export_activity_files">文件</string>
+    <string name="export_activity_get_all_content">正在检索与 %1$s 的对话内容。</string>
+    <string name="export_activity_get_one_chat">正在检索对话内容。</string>
+    <string name="export_activity_images">照片</string>
+    <string name="export_activity_no_content_to_export">没有内容可导出</string>
+    <string name="export_activity_one_conversation_zip_file">对话内容将导出为 ZIP 文件。</string>
+    <string name="export_activity_save_location">地点</string>
+    <string name="export_activity_save_location_message">选择导出位置。</string>
+    <string name="export_activity_select_content">选择要导出的内容。\n只能导出经授权复制/保存/共享的非临时内容。</string>
+    <string name="export_activity_success">导出成功完成。</string>
+    <string name="export_activity_title">对话导出</string>
+    <string name="export_activity_videos">影片</string>
+    <string name="export_activity_voice_messages">语音留言</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">致命错误，代码 %1$d。\n请重新启动应用程序，并通过反馈消息报告问题,如果可以的话。 抱歉给你带来不便。</string>
+    <string name="fatal_error_activity_error_message">致命错误：%1$s&lt;br /&gt;
+        您必须关闭该应用程序。</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">联系人</string>
+    <string name="feedback_activity_gdpr_notice">使用此表单请求访问您的帐户数据。</string>
+    <string name="feedback_activity_help">我们感谢您帮助我们识别问题并与我们合作解决问题。</string>
+    <string name="feedback_activity_info_logs">调试日志仅包含有关应用程序活动和行为的低级技术数据，不会泄露您的任何个人信息。</string>
+    <string name="feedback_activity_logs">调试日志</string>
+    <string name="feedback_activity_message">消息</string>
+    <string name="feedback_activity_send">发送</string>
+    <string name="feedback_activity_send_logs">发送调试日志</string>
+    <string name="feedback_activity_send_message">反馈已提交。谢谢。</string>
+    <string name="feedback_activity_subject">主题</string>
+    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">此操作会使与此个人资料关联的当前邀请代码无效。 您确定要生成新代码吗？</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">产生新的邀请码</string>
+    <string name="fullscreen_qrcode_activity_save_message">使用 twinme 导入或扫描此邀请二维码以添加此联系人。</string>
+    <string name="fullscreen_qrcode_activity_save_title">保存到照片库</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">授权语音通话</string>
+    <string name="group_capabilities_activity_information_programmed_call">定义电话的日期/时间</string>
+    <string name="group_capabilities_activity_information_video_call">授权视频通话</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">群组管理员未授权此操作。</string>
+    <string name="group_member_activity_invitation_message">邀请 %1$s 作为个人联系人</string>
+    <string name="group_member_activity_invitation_title">请帖</string>
+    <string name="group_member_activity_invite_personnal_relation">邀请 作为个人联系人</string>
+    <string name="group_member_activity_remove_message">您确定要从该组中删除成员吗？</string>
+    <string name="group_member_activity_section_administrator">管理员</string>
+    <string name="group_member_activity_section_invitation">邀请</string>
+    <string name="group_member_activity_section_member">会员</string>
+    <string name="group_member_activity_title">小组成员</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s很忙</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">通话已被%1$s取消</string>
+    <string name="info_item_activity_call_terminated_reason_decline">通话被%1$s拒绝</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s离线</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">不允许打电话</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s删除了此关系</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s没有回答</string>
+    <string name="info_item_activity_deleted">由接收者删除：</string>
+    <string name="info_item_activity_may_be_copied">可以复制/保存/共享......</string>
+    <string name="info_item_activity_may_not_be_copied">不得复制/保存/共享......</string>
+    <string name="info_item_activity_reactions">反应</string>
+    <string name="info_item_activity_received">收稿日期：</string>
+    <string name="info_item_activity_seen">看：</string>
+    <string name="info_item_activity_sent">发送：</string>
+    <string name="info_item_activity_updated">已修订</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">此操作使与此“点击通话”链接关联的当前邀请代码无效。 确认？</string>
+    <string name="invitation_call_activity_generate_code_title">为此链接生成新代码</string>
+    <string name="invitation_call_activity_invite_message">打开网址%1$s 或扫描二维码，呼叫“%2$s”。</string>
+    <string name="invitation_call_activity_message">与可以通过网络或移动应用程序呼叫您的人分享此“点击呼叫”代码。</string>
+    <string name="invitation_call_activity_save_message">扫描此 QR 码以呼叫“%1$s”。</string>
+    <string name="invitation_call_activity_share">公布</string>
+    <string name="invitation_call_activity_title">外部调用</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">创建一个小代码</string>
+    <string name="invitation_code_activity_create_code_subtitle">以便在您无法访问应用程序时邀请联系人。</string>
+    <string name="invitation_code_activity_expiration">有效期：</string>
+    <string name="invitation_code_activity_history">我的迷你代码</string>
+    <string name="invitation_code_activity_limit_message">已达到允许的有效迷你代码数量上限。您必须等待 24 小时才能生成新的。</string>
+    <string name="invitation_code_activity_onboarding_message">迷你代码仅供一次性使用，且仅在 24 小时内有效。当您无法访问应用程序（例如，没有手机）时，您可以将迷你代码提供给您的联系人，以创建关系。</string>
+    <string name="invitation_code_activity_success_message">强烈建议对使用迷你代码建立的关系进行认证，以增强其安全性。</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">请附近的朋友使用 twinme 扫描“房间”的二维码，或点击邀请码将其复制到剪贴板。</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">通话</string>
+    <string name="last_calls_activity_video">视频</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">您在此设备上的twinme帐户将转移到twinme+。</string>
+    <string name="local_account_migration_activity_message_older_version">请确保在开始转移之前将两台设备都更新到应用程序的最新版本，以避免丢失所有关系。</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">添加联系人</string>
+    <string name="main_activity_add_group">创建一个组</string>
+    <string name="main_activity_reset_conversation">重置</string>
+    <string name="main_activity_reset_conversation_message">重置此对话将删除所有消息，包括您联系人设备上的消息。 确认？</string>
+    <string name="main_activity_reset_conversation_title">重置对话</string>
+    <string name="main_activity_reset_group_conversation_admin_message">重置此对话将从每个群组成员的设备中删除所有消息。 确认？</string>
+    <string name="main_activity_reset_group_conversation_message">重置此对话将从您的设备中删除所有消息。 确认？</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">您需要升级到 twinme+ 才能使用此功能。 您将能够迁移所有帐户数据。</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">您将能够迁移所有帐户数据。</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme 作为具有更多功能的高级版本提供。</string>
+    <string name="migration_twinme_plus_activity_premium_title">升级到 twinme+</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">关于</string>
+    <string name="navigation_activity_application_settings">应用程序设置</string>
+    <string name="navigation_activity_feedback">发送反馈</string>
+    <string name="navigation_activity_getting_started">开始</string>
+    <string name="navigation_activity_help">帮助</string>
+    <string name="navigation_activity_profile">个人资料</string>
+    <string name="navigation_activity_settings">设定值</string>
+    <string name="navigation_activity_sign_out">退出</string>
+    <string name="navigation_activity_sounds">声音</string>
+    <string name="navigation_activity_support">支持</string>
+    <string name="navigation_activity_title">菜单</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">与%1$s的语音通话</string>
+    <string name="notification_center_audio_message">向您发送了语音消息</string>
+    <string name="notification_center_audio_message_received">新的音频消息</string>
+    <string name="notification_center_cancel">解除</string>
+    <string name="notification_center_cleanup_conversation">一些旧消息已被删除。</string>
+    <string name="notification_center_deleted_contact">联系人已删除</string>
+    <string name="notification_center_file_message">发给你一个文件</string>
+    <string name="notification_center_file_message_received">新文件</string>
+    <string name="notification_center_group_invitation">向您发送了邀请</string>
+    <string name="notification_center_group_invitation_received">新邀请</string>
+    <string name="notification_center_join_group">您是该组的成员</string>
+    <string name="notification_center_message_received">新消息</string>
+    <string name="notification_center_missed_audio_call_to">未接%1$s的语音通话</string>
+    <string name="notification_center_missed_video_call_to">未接%1$s的视频通话</string>
+    <string name="notification_center_mute">静音</string>
+    <string name="notification_center_new_contact">新联系人</string>
+    <string name="notification_center_photo_message">向您发送了照片</string>
+    <string name="notification_center_photo_message_received">新照片</string>
+    <string name="notification_center_reaction">回复了 %1$s</string>
+    <string name="notification_center_reaction_message">对一条消息做出了反应。</string>
+    <string name="notification_center_reaction_message_received">对一条消息的反应。</string>
+    <string name="notification_center_reset_message">对话已清除</string>
+    <string name="notification_center_stop">停止</string>
+    <string name="notification_center_transfering_data">正在传输的消息......</string>
+    <string name="notification_center_unmute">取消静音</string>
+    <string name="notification_center_updated_contact_avatar">图片已更新</string>
+    <string name="notification_center_updated_contact_name">名称已更新</string>
+    <string name="notification_center_video_call_to">与%1$s的视频通话</string>
+    <string name="notification_center_video_message">给你发了一个视频</string>
+    <string name="notification_center_video_message_received">新视频</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">音频通话</string>
+    <string name="notification_channel_contact_title">联系人</string>
+    <string name="notification_channel_group_title">组</string>
+    <string name="notification_channel_message_title">消息</string>
+    <string name="notification_channel_missed_title">未接来电</string>
+    <string name="notification_channel_system_title">其他</string>
+    <string name="notification_channel_video_title">视频通话</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">试图与您通话</string>
+    <string name="notifications_fragment_item_audio_message">向您发送了语音消息</string>
+    <string name="notifications_fragment_item_cleanup_message">清理了一些旧消息。</string>
+    <string name="notifications_fragment_item_deleted_contact">联系人已删除</string>
+    <string name="notifications_fragment_item_file_message">发给你一个文件</string>
+    <string name="notifications_fragment_item_group_invitation">向您发送了邀请</string>
+    <string name="notifications_fragment_item_image_message">向您发送了照片</string>
+    <string name="notifications_fragment_item_join_group">您是该组的成员</string>
+    <string name="notifications_fragment_item_new_contact">新联系人</string>
+    <string name="notifications_fragment_item_reset_conversation">已重置对话</string>
+    <string name="notifications_fragment_item_shortest_day">%1$d天</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$d小时</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$d分钟</string>
+    <string name="notifications_fragment_item_shortest_second">%1$d秒</string>
+    <string name="notifications_fragment_item_text_message">向您发送了消息</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">图片已更新</string>
+    <string name="notifications_fragment_item_updated_contact_name">名称已更新</string>
+    <string name="notifications_fragment_item_video_call">试图与您视频通话</string>
+    <string name="notifications_fragment_item_video_message">给你发了一个视频</string>
+    <string name="notifications_fragment_no_notification_message">此处列出与联系人、对话、电话等相关的通知。</string>
+    <string name="notifications_fragment_no_notification_title">您没有任何通知。</string>
+    <string name="notifications_fragment_reset">您确定要重置所有通知吗？</string>
+    <string name="notifications_fragment_reset_title">重置通知</string>
+    <string name="notifications_fragment_title">通知</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">字符字体</string>
+    <string name="personalization_activity_font_extra_large">很大</string>
+    <string name="personalization_activity_font_large">大</string>
+    <string name="personalization_activity_font_small">小</string>
+    <string name="personalization_activity_haptic_feedback">触觉反馈</string>
+    <string name="personalization_activity_haptic_feedback_message">触摸时有触觉感觉。</string>
+    <string name="personalization_activity_menu_choose_color">默认颜色</string>
+    <string name="personalization_activity_menu_enter_color">色标</string>
+    <string name="personalization_activity_mode">模式</string>
+    <string name="personalization_activity_mode_dark">黑暗</string>
+    <string name="personalization_activity_mode_light">光</string>
+    <string name="personalization_activity_start_tab_information">选择要在其上启动应用程序的选项卡。</string>
+    <string name="personalization_activity_start_tab_title">默认标签页</string>
+    <string name="personalization_activity_system">系统</string>
+    <string name="personalization_activity_title">个性化</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">更改前置/后置摄像头</string>
+    <string name="premium_services_activity_camera_control_description_2">放大/缩小</string>
+    <string name="premium_services_activity_camera_control_description_3">远程协助亲人或客户</string>
+    <string name="premium_services_activity_camera_control_description_4">管理监控摄像头</string>
+    <string name="premium_services_activity_camera_control_subtitle">在通话过程中，在获得联系人许可的情况下控制其摄像头</string>
+    <string name="premium_services_activity_camera_control_title">远程摄像头控制</string>
+    <string name="premium_services_activity_click_to_call_description_1">创建“点击呼叫我”代码</string>
+    <string name="premium_services_activity_click_to_call_description_2">以任何方式发布或分发</string>
+    <string name="premium_services_activity_click_to_call_description_3">收件人扫码打给你</string>
+    <string name="premium_services_activity_click_to_call_description_4">云中无踪迹匿名</string>
+    <string name="premium_services_activity_click_to_call_subtitle">允许访客通过网络呼叫您</string>
+    <string name="premium_services_activity_click_to_call_title">点击通话</string>
+    <string name="premium_services_activity_conversation_description_1">媒体、文件、语音笔记、消息</string>
+    <string name="premium_services_activity_conversation_description_2">早于特定时期/日期</string>
+    <string name="premium_services_activity_conversation_description_3">对于一次谈话或所有</string>
+    <string name="premium_services_activity_conversation_description_4">仅限本地，对另一端无影响</string>
+    <string name="premium_services_activity_conversation_subtitle">导出内容和释放空间</string>
+    <string name="premium_services_activity_conversation_title">对话管理</string>
+    <string name="premium_services_activity_description_part1_subtitle">设备间直接连接</string>
+    <string name="premium_services_activity_description_part1_title">高清音频/视频质量</string>
+    <string name="premium_services_activity_description_part2_subtitle">云中无踪</string>
+    <string name="premium_services_activity_description_part2_title">隐私——保密</string>
+    <string name="premium_services_activity_description_part3_subtitle">能源效率</string>
+    <string name="premium_services_activity_description_part3_title">对生态负责</string>
+    <string name="premium_services_activity_group_call_description_1">高清音频/视频</string>
+    <string name="premium_services_activity_group_call_description_2">设备间直接连接</string>
+    <string name="premium_services_activity_group_call_description_3">安全和私密</string>
+    <string name="premium_services_activity_group_call_description_4">云中无踪</string>
+    <string name="premium_services_activity_group_call_subtitle">邀请联系人加入语音/视频群组通话</string>
+    <string name="premium_services_activity_group_call_title">群组通话</string>
+    <string name="premium_services_activity_privacy_description_1">使用生物识别或其他身份验证锁定应用程序</string>
+    <string name="premium_services_activity_privacy_description_2">在应用程序切换器中隐藏最后一个屏幕</string>
+    <string name="premium_services_activity_privacy_description_3">特定时间后消失的临时消息</string>
+    <string name="premium_services_activity_privacy_description_4">阻止联系人给您打电话</string>
+    <string name="premium_services_activity_privacy_subtitle">控制应用程序、联系人和信息</string>
+    <string name="premium_services_activity_privacy_title">更多隐私</string>
+    <string name="premium_services_activity_space_description_1">具有关联关系、对话、历史记录的多个配置文件</string>
+    <string name="premium_services_activity_space_description_2">个性化外观、通知和设置</string>
+    <string name="premium_services_activity_space_description_3">对于家人、朋友、同事、企业、运动等。</string>
+    <string name="premium_services_activity_space_description_4">未列出的秘密空间，按名称访问</string>
+    <string name="premium_services_activity_space_subtitle">对于您与之互动的每个社会群体</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">实时分享您的音乐</string>
+    <string name="premium_services_activity_streaming_description_2">每个参与者都可以控制媒体播放器</string>
+    <string name="premium_services_activity_streaming_description_3">同时通话互动</string>
+    <string name="premium_services_activity_streaming_description_4">与现实生活中一样的隐私</string>
+    <string name="premium_services_activity_streaming_subtitle">在通话期间流式传输您的媒体</string>
+    <string name="premium_services_activity_streaming_title">媒体分享</string>
+    <string name="premium_services_activity_transfert_description_1">创建呼叫转接代码和配置文件</string>
+    <string name="premium_services_activity_transfert_description_2">上传其网址或在电脑上扫码</string>
+    <string name="premium_services_activity_transfert_description_3">在浏览器上为页面添加书签</string>
+    <string name="premium_services_activity_transfert_description_4">移动通话期间从页面“呼叫”</string>
+    <string name="premium_services_activity_transfert_subtitle">将正在进行的移动呼叫转移到浏览器</string>
+    <string name="premium_services_activity_transfert_title">通话转接</string>
+    <string name="premium_services_activity_title">邀请联系人加入正在进行的语音/视频通话。</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">使用生物识别服务或 PIN 码锁定应用程序。</string>
+    <string name="privacy_activity_hide_last_screen_message">防止预览出现在应用程序切换器中</string>
+    <string name="privacy_activity_hide_last_screen_title">隐藏上一个屏幕</string>
+    <string name="privacy_activity_lock_screen_message">使用设备生物识别或密码验证服务解锁对应用程序的访问。 在访问该应用程序时，您仍然可以接听来电并接收通知。</string>
+    <string name="privacy_activity_lock_screen_not_available">此选项需要Android > 5.0的版本</string>
+    <string name="privacy_activity_lock_screen_timeout">访问锁定超时</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">即刻</string>
+    <string name="privacy_activity_lock_screen_title">访问锁</string>
+    <string name="privacy_activity_title">隐私</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">新增个人资料</string>
+    <string name="profile_fragment_create_profile">创建个人资料</string>
+    <string name="profile_fragment_default_action">启用</string>
+    <string name="profile_fragment_default_profile_title">活动资料</string>
+    <string name="profile_fragment_identity_title">个人资料</string>
+    <string name="profile_fragment_message">此配置文件允许您邀请您的联系人在您的控制下与您建立私人关系。</string>
+    <string name="profile_fragment_twincode_title">邀请码</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">添加代理</string>
+    <string name="proxy_activity_add_placeholder">粘贴或输入代理的 URL</string>
+    <string name="proxy_activity_already_use">此代理已在您的应用中配置。</string>
+    <string name="proxy_activity_enable">使用代理</string>
+    <string name="proxy_activity_format">有效的代理 URL 格式：</string>
+    <string name="proxy_activity_invalid_format">URL 格式无效</string>
+    <string name="proxy_activity_limit">您已达到允许的代理数量上限 (%1$d)。要添加新的代理，您必须先移除一个。</string>
+    <string name="proxy_activity_list">我的代理</string>
+    <string name="proxy_activity_list_information">仅当应用程序无法在没有代理的情况下连接到服务时，才使用以下列表中的代理。</string>
+    <string name="proxy_activity_onboarding">当您所在的国家/地区阻止访问应用的信令服务器时，代理可以在许多情况下绕过这些阻止，并允许您进行私密通信。除了应用内代理之外，您还可以创建自己的代理或使用其他人创建的代理。在任何情况下，代理都无法访问正在交换的内容。</string>
+    <string name="proxy_activity_information">仅当您无法通过标准 Wi-Fi 或蜂窝网络连接到服务时才使用代理。</string>
+    <string name="proxy_activity_share">在您的设备上使用 twinme 打开 %1$s 链接即可自动配置此代理。</string>
+    <string name="proxy_activity_title">代理</string>
+    <string name="proxy_activity_url">是否要使用此代理的 URL？</string>
+    <string name="proxy_activity_warning">警告！此代理的 URL 不允许您连接到应用的服务。</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">更改权限</string>
+    <string name="quality_of_service_activity_enable_notifications">启用通知</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">如果没有这些权限，消息可能需要很长时间才能到达目的地。</string>
+    <string name="quality_of_service_activity_notification_description">允许应用在后台运行</string>
+    <string name="quality_of_service_activity_notification_title">消息交换太慢？</string>
+    <string name="quality_of_service_activity_settings">在系统设置中更改应用程序权限。</string>
+    <string name="quality_of_service_activity_step1_message">加密消息直接在设备之间实时交换，使用“点对点”方法，无需内容分发服务器。 这确保了云中没有痕迹，并提供了独特的隐私保护。</string>
+    <string name="quality_of_service_activity_step2_message">为确保优质的服务，请将您的设备配置为允许应用程序在后台接收通知并将其排除在电池优化之外。</string>
+    <string name="quality_of_service_activity_step3_message">经常使用该应用程序，以便操作系统对其进行优先排序，并且不会意外终止它。 \n\n别忘了将此事告知您的联系人！</string>
+    <string name="quality_of_service_activity_warning_background_data">允许应用在后台使用移动数据。</string>
+    <string name="quality_of_service_activity_warning_receive_notification">允许应用程序接收推送通知。</string>
+    <string name="quality_of_service_activity_warning_run_background">允许应用程序在后台运行。</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">定义为管理员</string>
+    <string name="room_members_activity_delete_message">确认删除该成员</string>
+    <string name="room_members_activity_moderators_title">主持人</string>
+    <string name="room_members_activity_only_admin_message">无法删除唯一管理员。</string>
+    <string name="room_members_activity_owner_title">所有者</string>
+    <string name="room_members_activity_participants_title">参加者</string>
+    <string name="room_members_activity_remove_admin_title">以管理员身份删除</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">输入或粘贴邀请链接</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">检查您与服务的连接状态</string>
+    <string name="settings_advanced_activity_status_connection_title">连接状态</string>
+    <string name="settings_advanced_activity_title">高级设置</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">允许收件人复制/保存/共享您的内容</string>
+    <string name="settings_activity_allow_copy_file_title">任何类型的文件</string>
+    <string name="settings_activity_allow_copy_text_title">短信</string>
+    <string name="settings_activity_application_notifications">申请通知</string>
+    <string name="settings_activity_audio_call_category_title">音频通话</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">铃声名称</string>
+    <string name="settings_activity_audio_call_notification_title">铃声</string>
+    <string name="settings_activity_audio_call_vibration_title">颤动</string>
+    <string name="settings_activity_authorization_title">权限</string>
+    <string name="settings_activity_call_item_menu_all">所有通话</string>
+    <string name="settings_activity_chat_category_title">消息</string>
+    <string name="settings_activity_chat_ringtone_title">声音名称</string>
+    <string name="settings_activity_chat_title">声音</string>
+    <string name="settings_activity_chat_vibration_title">颤动</string>
+    <string name="settings_activity_content_information">对话中发送的媒体内容的定义：高清晰度需要更多的数据，因此需要更多的传输时间。</string>
+    <string name="settings_activity_content_title">媒体</string>
+    <string name="settings_activity_default_directory_title">用于保存文件的默认目录</string>
+    <string name="settings_activity_default_sound">默认</string>
+    <string name="settings_activity_default_value_message">这些参数在应用程序级别用作默认值。</string>
+    <string name="settings_activity_display_call_menu_missed">仅未接来电</string>
+    <string name="settings_activity_display_call_menu_none">没有来电</string>
+    <string name="settings_activity_display_call_none">没有任何</string>
+    <string name="settings_activity_display_call_title">在对话中显示来电通知</string>
+    <string name="settings_activity_display_notification_content_title">显示消息内容</string>
+    <string name="settings_activity_display_notification_like_title">对消息的反应</string>
+    <string name="settings_activity_display_notification_sender_title">显示邮件发件人</string>
+    <string name="settings_activity_ephemeral_message">自动删除已发送的消息</string>
+    <string name="settings_activity_ephemeral_section_title">终生时间</string>
+    <string name="settings_activity_ephemeral_title">自我毁灭的讯息</string>
+    <string name="settings_activity_image_title">照片</string>
+    <string name="settings_activity_message_properties_title">消息属性</string>
+    <string name="settings_activity_reset_default_value">恢复默认设置</string>
+    <string name="settings_activity_reset_preferences_button_title">重置为默认值。</string>
+    <string name="settings_activity_reset_preferences_message">将通知设置重置为应用程序默认值。</string>
+    <string name="settings_activity_reset_preferences_title">重置首选项</string>
+    <string name="settings_activity_permissions_title">权限</string>
+    <string name="settings_activity_silent_sound">无声</string>
+    <string name="settings_activity_sound_enabled_title">声音通知</string>
+    <string name="settings_activity_system_notifications_title">系统通知</string>
+    <string name="settings_activity_system_settings_title">系统设置</string>
+    <string name="settings_activity_video_call_category_title">视频通话</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">铃声名称</string>
+    <string name="settings_activity_video_call_notification_title">铃声</string>
+    <string name="settings_activity_video_call_vibration_title">颤动</string>
+    <string name="settings_activity_welcome_screen_category_title">欢迎</string>
+    <string name="settings_activity_welcome_screen_summary">显示欢迎页面</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">允许参与者邀请其他参与者作为个人联系人</string>
+    <string name="settings_room_activity_allow_invite_contact">允许参与者邀请他们的联系人</string>
+    <string name="settings_room_activity_conference_notifications_inform">第一次进入/最后一次退出</string>
+    <string name="settings_room_activity_conference_notifications_noisy">所有入口/出口</string>
+    <string name="settings_room_activity_conference_notifications_quiet">沉默的</string>
+    <string name="settings_room_activity_display_members">查看会员</string>
+    <string name="settings_room_activity_room_type_channel">通道 - 仅一种方式</string>
+    <string name="settings_room_activity_room_type_channel_information">只有管理员/版主可以发帖</string>
+    <string name="settings_room_activity_room_type_feedback">渠道 - 有反馈</string>
+    <string name="settings_room_activity_room_type_feedback_information">参与者的反馈只有管理员/版主才能看到</string>
+    <string name="settings_room_activity_room_type_forum">论坛</string>
+    <string name="settings_room_activity_room_type_forum_information">参与者可以发布所有人都看到的消息</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">联系人</string>
+    <string name="share_activity_group_list">组</string>
+    <string name="share_activity_title">分享</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">“点击通话”代码</string>
+    <string name="show_call_activity_information_code">分享此代码以接听外部电话。</string>
+    <string name="show_call_activity_schedule_call">预定的通话</string>
+    <string name="show_call_activity_schedule_from">从%1$s开始</string>
+    <string name="show_call_activity_schedule_from_to">%1$s 从 %2$s 到 %3$s</string>
+    <string name="show_call_activity_schedule_message">通话安排在其他地方定义的日期和时间。</string>
+    <string name="show_call_activity_schedule_to">至 %1$s</string>
+    <string name="show_call_activity_settings_call">通话类型</string>
+    <string name="show_call_activity_settings_group_calls">群组通话</string>
+    <string name="show_call_activity_settings_limited">计划</string>
+    <string name="show_call_activity_settings_start">开始</string>
+    <string name="show_call_activity_settings_end">结尾</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">通话</string>
+    <string name="show_contact_activity_chat">聊天</string>
+    <string name="show_contact_activity_export_contents">导出内容</string>
+    <string name="show_contact_activity_history_title">历史</string>
+    <string name="show_contact_activity_identity_title">知道我</string>
+    <string name="show_contact_activity_last_calls">最后通话</string>
+    <string name="show_contact_activity_cleanup">保洁</string>
+    <string name="show_contact_activity_pending">待办的</string>
+    <string name="show_contact_activity_pending_message">这种关系正在建立。 请稍等。</string>
+    <string name="show_contact_activity_revoked">已删除</string>
+    <string name="show_contact_activity_settings_coach_mark">定义您的联系人在与您的关系中可以做什么。</string>
+    <string name="show_contact_activity_video">视频</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">添加会员</string>
+    <string name="show_group_activity_invitation_list">待定邀请：%1$d</string>
+    <string name="show_group_activity_leave">离开小组</string>
+    <string name="show_group_activity_leave_confirm_message">您确定要离开此群组吗？</string>
+    <string name="show_group_activity_leave_message">您将离开此群组，并且无法再访问其对话。</string>
+    <string name="show_group_activity_member_list">会员名单（%1$d）</string>
+    <string name="show_group_activity_remove_confirm_message">您确定要删除此群组吗？</string>
+    <string name="show_group_activity_remove_message">此群组的所有成员将被删除，其对话也将被清除。</string>
+    <string name="show_group_activity_title">组</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">管理界面</string>
+    <string name="show_room_activity_invite_participants">邀请参与者</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">图片</string>
+    <string name="space_appearance_activity_background_message">使用颜色或图像自定义对话背景。</string>
+    <string name="space_appearance_activity_background_text_title">文本</string>
+    <string name="space_appearance_activity_background_title">背景</string>
+    <string name="space_appearance_activity_container_background_message">发送消息的背景</string>
+    <string name="space_appearance_activity_container_background_peer_message">收到消息的背景</string>
+    <string name="space_appearance_activity_container_border_message">发送邮件的边框</string>
+    <string name="space_appearance_activity_container_border_peer_message">收到消息的边框</string>
+    <string name="space_appearance_activity_container_text_message">发送信息的文字</string>
+    <string name="space_appearance_activity_container_text_peer_message">收到的短信内容</string>
+    <string name="space_appearance_activity_container_title">泡泡</string>
+    <string name="space_appearance_activity_default_value">默认值</string>
+    <string name="space_appearance_activity_general_title">一般</string>
+    <string name="space_appearance_activity_menu_choose_color">默认颜色</string>
+    <string name="space_appearance_activity_menu_enter_color">色标</string>
+    <string name="space_appearance_activity_opacity">不透明度</string>
+    <string name="space_appearance_activity_preview_message">我忘了我的芭蕾舞鞋......你能带上它吗？</string>
+    <string name="space_appearance_activity_preview_peer_message">嗨，甜心！</string>
+    <string name="space_appearance_activity_preview_title">总览</string>
+    <string name="space_appearance_activity_theme">主题</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">“空间”是您的不同个性与多个社交圈（包括最秘密的社交圈）相遇的地方。</string>
+    <string name="spaces_activity_sample_business">商业</string>
+    <string name="spaces_activity_sample_business_name">约翰·多伊博士</string>
+    <string name="spaces_activity_sample_family">家庭</string>
+    <string name="spaces_activity_sample_family_name">爸爸</string>
+    <string name="spaces_activity_sample_friends">朋友们</string>
+    <string name="spaces_activity_sample_friends_name">约翰尼</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">发生了错误。 请再试一次。</string>
+    <string name="streaming_audio_activity_no_music_message">媒体分享</string>
+    <string name="streaming_audio_activity_no_music_title">找不到音乐🙁</string>
+    <string name="streaming_audio_activity_title">媒体分享</string>
+    <string name="streaming_audio_activity_unsupported_message">%1$s 的设备不支持此音频格式。</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">分类广告</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">公告</string>
+    <string name="template_click_to_call_activity_template_help">帮帮我</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">帮帮我</string>
+    <string name="template_click_to_call_activity_template_meeting">会议</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">会议</string>
+    <string name="template_click_to_call_activity_template_video_bell">可视门铃</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">门铃</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">姓名（约翰·多伊博士、史密斯女士……）</string>
+    <string name="template_space_activity_template_business_profile">萨曼莎·史密斯女士</string>
+    <string name="template_space_activity_template_family_placeholder">姓名（爸爸、妈妈……）</string>
+    <string name="template_space_activity_template_family_profile">妈妈</string>
+    <string name="template_space_activity_template_friends_placeholder">姓名（约翰尼、山姆……）</string>
+    <string name="template_space_activity_template_friends_profile">山姆</string>
+    <string name="template_space_activity_template_other">其他</string>
+    <string name="template_space_activity_template_other_placeholder">姓名（爸爸、妈妈、约翰尼、约翰·多伊博士……）</string>
+    <string name="template_space_activity_template_title">模板</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">请您附近的朋友使用 twinme 扫描您的邀请二维码，或点击您的邀请码将其复制到剪贴板。</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">您确定要删除此「呼叫转移」代码吗？</string>
+    <string name="transfert_call_activity_delete_message">此呼叫转接链接将被删除。 确认？</string>
+    <string name="transfert_call_activity_gallery_message">扫描此二维码即可转接您的移动电话。</string>
+    <string name="transfert_call_activity_message">转发此代码并在您要将移动呼叫转移到的浏览器上为其 URL 添加书签。</string>
+    <string name="transfert_call_activity_reset_message">此操作会使当前的呼叫转接代码失效并创建一个新的代码。 确认？</string>
+    <string name="transfert_call_activity_saved_message">通话转接代码保存在照片库中。</string>
+    <string name="transfert_call_activity_share">转移</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">可用更新</string>
+    <string name="update_app_activity_update_message">最新的应用程序更新包括以下内容：</string>
+    <string name="update_app_activity_update_title">现在更新</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">正在视频呼叫......</string>
+    <string name="video_call_activity_cannot_call">无法进行视频通话</string>
+    <string name="video_call_activity_connecting">连接&#8230;&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">您要挂断电话吗？</string>
+    <string name="video_call_activity_terminate">呼叫已被终止</string>
+    <string name="video_call_activity_terminate_busy">呼叫被终止：&lt;b&gt;%1$s&lt;/b&gt;正忙</string>
+    <string name="video_call_activity_terminate_cancel">呼叫被&lt;b&gt;%1$s&lt;/b&gt;取消</string>
+    <string name="video_call_activity_terminate_connectivity_error">由于连接问题，通话已断开。请检查您的网络连接。</string>
+    <string name="video_call_activity_terminate_decline">呼叫被&lt;b&gt;%1$s&lt;/b&gt;拒绝</string>
+    <string name="video_call_activity_terminate_disconnected">由于网络错误，通话已断开。请重试。</string>
+    <string name="video_call_activity_terminate_gone">呼叫被终止：&lt;b&gt;%1$s&lt;/b&gt;不在线</string>
+    <string name="video_call_activity_terminate_revoked">通话结束：&lt;b&gt;%1$s&lt;/b&gt; 已删除与您的此关系。</string>
+    <string name="video_call_activity_terminate_success">呼叫被&lt;b&gt;%1$s&lt;/b&gt;终止</string>
+    <string name="video_call_activity_terminate_timeout">呼叫被终止：&lt;b&gt;%1$s&lt;/b&gt;未应答</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">通过按%1$s，我确认我已阅读并接受：</string>
+    <string name="welcome_activity_next">下一个</string>
+    <string name="welcome_activity_pass">跳跃</string>
+    <string name="welcome_activity_privacy_policy">隐私政策</string>
+    <string name="welcome_activity_start">开始</string>
+    <string name="welcome_activity_step1_message">消息和高清语音/视频通话，通过设计保护隐私。</string>
+    <string name="welcome_activity_step2_message">安全的“点对点”通信：云中无踪迹。</string>
+    <string name="welcome_activity_step3_message">没有电话号码、没有地址簿、没有用户 ID：您可以根据与谁通信来选择您希望被识别的方式。</string>
+    <string name="welcome_activity_terms_of_use">使用条款</string>
+
+</resources>

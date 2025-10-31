@@ -1,0 +1,1 @@
+include ':app', ':webrtc-framework', ':twinlife-framework', ':twinme-framework', ':twinme-android-common', ':zxing', ':image-cropper'

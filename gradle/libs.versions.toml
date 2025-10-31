@@ -1,0 +1,77 @@
+[versions]
+androidJunit5 = "1.13.4.0"
+androidTestCore = "1.8.0"
+annotation = "1.9.1"
+billing = "6.1.0"
+collection = "1.5.0"
+testCore = "1.7.0"
+core = "1.16.0"
+coreSplashscreen = "1.1.0-rc01"
+exifinterface = "1.4.1"
+firebaseMessaging = "23.2.1"
+gradle = "8.13.0"
+installreferrer = "2.2"
+junit = "1.3.0"
+junitJupiter = "5.13.4"
+leakcanaryAndroid = "2.14"
+media = "1.7.1"
+constraintlayout = "2.2.1"
+material = "1.13.0"
+appcompat = "1.7.1"
+media3 = "1.8.0"
+percentlayout = "1.0.0"
+playServicesMaps = "19.2.0"
+playServicesLocation = "21.3.0"
+recyclerview = "1.4.0"
+sharetarget = "1.2.0"
+zip4j = "2.11.5"
+lottie = "6.6.9"
+browser = "1.8.0"
+glide = "5.0.5"
+
+[libraries]
+android-test-core = { module = "de.mannodermaus.junit5:android-test-core", version.ref = "androidTestCore" }
+android-test-runner = { module = "de.mannodermaus.junit5:android-test-runner", version.ref = "androidTestCore" }
+androidx-core = { module = "androidx.core:core", version.ref = "core" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "testCore" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "testCore" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-exifinterface = { module = "androidx.exifinterface:exifinterface", version.ref = "exifinterface" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+androidx-media = { module = "androidx.media:media", version.ref = "media" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-media3-common = { module = "androidx.media3:media3-common", version.ref = "media3" }
+androidx-media3-datasource = { module = "androidx.media3:media3-datasource", version.ref = "media3" }
+androidx-media3-decoder = { module = "androidx.media3:media3-decoder", version.ref = "media3" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
+androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "media3" }
+androidx-media3-muxer = { module = "androidx.media3:media3-muxer", version.ref = "media3" }
+androidx-media3-transformer = { module = "androidx.media3:media3-transformer", version.ref = "media3" }
+androidx-percentlayout = { module = "androidx.percentlayout:percentlayout", version.ref = "percentlayout" }
+androidx-sharetarget = { module = "androidx.sharetarget:sharetarget", version.ref = "sharetarget" }
+billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-recyclerview = { module = "com.github.bumptech.glide:recyclerview-integration", version.ref = "glide" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junitJupiter" }
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+installreferrer = { module = "com.android.installreferrer:installreferrer", version.ref = "installreferrer" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
+play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
+
+zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j" }
+
+[plugins]
+android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.2.20" }

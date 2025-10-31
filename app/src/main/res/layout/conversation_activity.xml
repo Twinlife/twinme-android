@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/conversation_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/conversation_activity_fallback_view"
+        style="@style/textAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/twinme_application_content_marginLeft"
+        android:layout_marginLeft="@dimen/twinme_application_content_marginLeft"
+        android:layout_marginEnd="@dimen/twinme_application_content_marginRight"
+        android:layout_marginRight="@dimen/twinme_application_content_marginRight"
+        android:text="@string/application_contact_not_found"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/conversation_activity_top_tool_bar"
+        layout="@layout/conversation_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/conversation_activity_item_list_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_above="@+id/conversation_activity_footer"
+        android:layout_below="@+id/conversation_activity_top_tool_bar">
+
+        <org.twinlife.twinme.ui.conversationActivity.ItemRecyclerView
+            android:id="@+id/conversation_activity_item_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@android:color/transparent"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbars="vertical"
+            android:transcriptMode="normal" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/conversation_activity_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="@string/conversation_activity_empty_message"
+        android:layout_below="@id/conversation_activity_top_tool_bar"
+        android:visibility="gone"
+        app:layout_widthPercent="84%"
+        app:layout_marginTopPercent="7.50%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_activity_edit_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/conversation_activity_toolbar_right_view"
+            android:layout_toStartOf="@+id/conversation_activity_toolbar_right_view"
+            android:layout_toRightOf="@+id/conversation_activity_toolbar_menu_view"
+            android:layout_toEndOf="@+id/conversation_activity_toolbar_menu_view"
+            android:clickable="true">
+
+            <View
+                android:id="@+id/conversation_activity_edit_text_constraint_view"
+                android:layout_width="1dp"
+                android:layout_height="90dp"
+                android:visibility="invisible" />
+
+            <org.twinlife.twinme.utils.ConversationEditText
+                android:id="@+id/conversation_activity_edit_text"
+                style="@style/textAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="@string/conversation_activity_message"
+                android:inputType="textMultiLine|textAutoCorrect|textAutoComplete|textCapSentences"
+                android:scrollbars="vertical" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_edit_message_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/conversation_activity_edit_text"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/conversation_activity_toolbar_edit_message_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit_message_icon"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/conversation_activity_toolbar_edit_message_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/conversation_activity_toolbar_edit_message_image_view"
+                    android:layout_toEndOf="@+id/conversation_activity_toolbar_edit_message_image_view"
+                    android:text="@string/application_edit" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_camera_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:layout_alignBottom="@+id/conversation_activity_edit_text"
+                android:layout_toLeftOf="@+id/conversation_activity_toolbar_audio_record_view"
+                android:layout_toStartOf="@+id/conversation_activity_toolbar_audio_record_view"
+                android:contentDescription="@string/application_camera"
+                app:layout_aspectRatio="100%">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false">
+
+                    <View
+                        android:id="@+id/conversation_activity_toolbar_camera_rounded_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_aspectRatio="100%" />
+
+                    <ImageView
+                        android:id="@+id/conversation_activity_toolbar_camera_image_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/toolbar_camera_grey"
+                        android:layout_centerInParent="true"
+                        app:layout_aspectRatio="126.67%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_audio_record_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:layout_alignBottom="@+id/conversation_activity_edit_text"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/conversation_activity_record_title"
+                app:layout_aspectRatio="100%">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false">
+
+                    <View
+                        android:id="@+id/conversation_activity_toolbar_audio_record_rounded_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_aspectRatio="100%" />
+
+                    <ImageView
+                        android:id="@+id/conversation_activity_toolbar_audio_record_image_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/toolbar_microphone_grey"
+                        android:layout_centerInParent="true"
+                        app:layout_aspectRatio="66.67%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_activity_toolbar_menu_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/conversation_activity_edit_toolbar">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_menu_clickable_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:clipChildren="false">
+
+                <View
+                    android:id="@+id/conversation_activity_toolbar_menu_rounded_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%" />
+
+                <ImageView
+                    android:id="@+id/conversation_activity_toolbar_menu_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/plus_icon"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_cancel_edit_clickable_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:clipChildren="false"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/conversation_activity_toolbar_cancel_edit_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/close_edit_icon"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_activity_toolbar_right_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/conversation_activity_edit_toolbar">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_send_clickable_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:contentDescription="@string/feedback_activity_send">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:clipChildren="false">
+
+                    <View
+                        android:id="@+id/conversation_activity_toolbar_send_rounded_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_aspectRatio="100%" />
+
+                    <ImageView
+                        android:id="@+id/conversation_activity_toolbar_send_image_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/send_icon"
+                        android:layout_centerInParent="true"
+                        app:layout_aspectRatio="100%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/conversation_activity_toolbar_confirm_edit_clickable_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:contentDescription="@string/application_edit"
+                android:visibility="gone">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:clipChildren="false">
+
+                    <View
+                        android:id="@+id/conversation_activity_toolbar_confirm_edit_rounded_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_aspectRatio="100%" />
+
+                    <ImageView
+                        android:id="@+id/conversation_activity_toolbar_confirm_edit_image_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/check_icon"
+                        android:layout_centerInParent="true"
+                        app:layout_aspectRatio="100%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_scroll_indicator_view"
+        android:layout_above="@+id/conversation_activity_reply_view">
+
+        <TextView
+            android:id="@+id/conversation_activity_scroll_indicator_count_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/conversation_activity_scroll_indicator_image_view"
+            android:layout_toStartOf="@+id/conversation_activity_scroll_indicator_image_view"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/conversation_activity_scroll_indicator_image_view"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/scroll_down_icon"
+            app:layout_aspectRatio="100%" />
+
+        <View
+            android:id="@+id/conversation_activity_scroll_indicator_overlay_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/conversation_activity_header_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:layout_alignTop="@+id/conversation_activity_top_tool_bar"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/conversation_activity_footer_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/conversation_activity_footer"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/conversation_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/conversation_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <org.twinlife.twinme.ui.conversationActivity.ReplyView
+        android:id="@+id/conversation_activity_reply_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_above="@+id/conversation_activity_footer" />
+
+    <org.twinlife.twinme.ui.conversationActivity.VoiceRecorderMessageView
+        android:id="@+id/conversation_activity_voice_recorder_message_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/conversation_activity_footer" />
+
+    <org.twinlife.twinme.ui.conversationActivity.MenuItemView
+        android:id="@+id/conversation_activity_menu_item_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <org.twinlife.twinme.ui.conversationActivity.MenuReactionView
+        android:id="@+id/conversation_activity_menu_reaction_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <org.twinlife.twinme.ui.conversationActivity.MenuSendOptionView
+        android:id="@+id/conversation_activity_menu_send_option_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <org.twinlife.twinme.ui.conversationActivity.AnnotationsView
+        android:id="@+id/conversation_activity_annotations_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+    <org.twinlife.twinme.utils.coachmark.CoachMarkView
+        android:id="@+id/conversation_activity_coach_mark_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <org.twinlife.twinme.ui.conversationFilesActivity.ItemSelectedActionView
+        android:id="@+id/conversation_activity_item_selected_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_top_blur_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversation_activity_top_tool_bar">
+
+        <View
+            android:id="@+id/conversation_activity_top_blur_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_activity_zoom_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/conversation_activity_footer"
+        app:layout_aspectRatio="100%">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/conversation_activity_zoom_rounded_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/conversation_activity_zoom_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

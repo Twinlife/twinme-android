@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="252dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_files_activity_link_item_container_view"
+        android:layout_centerVertical="true"
+        app:layout_aspectRatio="75.45%"
+        app:layout_heightPercent="87.30%"
+        app:layout_marginStartPercent="4.53%">
+
+        <ImageView
+            android:id="@+id/conversation_files_activity_link_item_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/shape_music_cover"
+            app:layout_heightPercent="100%"/>
+
+        <ImageView
+            android:id="@+id/conversation_files_activity_link_item_placeholder_view"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:src="@drawable/link_placeholder"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="27.27%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/conversation_files_activity_link_item_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/conversation_files_activity_link_item_container_view"
+        android:layout_toRightOf="@id/conversation_files_activity_link_item_container_view"
+        android:ellipsize="end"
+        android:maxLines="5"
+        app:layout_marginStartPercent="4.27%"
+        app:layout_marginEndPercent="20.26%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_files_activity_link_item_selected_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/checkbox_background"
+        android:layout_centerVertical="true"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="17.46%"
+        app:layout_marginEndPercent="4.26%">
+
+        <!-- Image heightPercent is not 100% because we need the circle_grey when it is visible.
+             circle_grey has an oval shape and a white background which is required by Android API 16.  -->
+        <ImageView
+            android:id="@+id/conversation_files_activity_link_item_selected_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:background="@drawable/circle_grey"
+            android:src="@drawable/check_mark_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

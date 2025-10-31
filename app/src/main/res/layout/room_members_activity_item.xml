@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <org.twinlife.twinme.utils.CircularImageView
+        android:id="@+id/room_member_activity_item_avatar_view"
+        android:scaleType="fitCenter"
+        android:layout_centerVertical="true"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="81.25%"
+        app:layout_marginStartPercent="4.8%" />
+
+    <TextView
+        android:id="@+id/room_member_activity_item_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/room_member_activity_item_avatar_view"
+        android:layout_toRightOf="@id/room_member_activity_item_avatar_view"
+        app:layout_marginStartPercent="4.26%"
+        app:layout_marginEndPercent="4.26%" />
+
+    <View
+        android:id="@+id/room_member_activity_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignStart="@+id/room_member_activity_item_name_view"
+        android:layout_alignLeft="@+id/room_member_activity_item_name_view"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

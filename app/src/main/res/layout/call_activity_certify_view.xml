@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/call_activity_certify_view_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/call_activity_certify_view_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/call_activity_certify_view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/call_activity_certify_view_message"
+        android:gravity="center"
+        android:lines="1"
+        app:layout_marginStartPercent="5.53%"
+        app:layout_marginEndPercent="5.53%" />
+
+    <TextView
+        android:id="@+id/call_activity_certify_view_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/call_activity_certify_view_word"
+        android:gravity="center"
+        app:layout_marginStartPercent="5.53%"
+        app:layout_marginEndPercent="5.53%" />
+
+    <TextSwitcher
+        android:id="@+id/call_activity_certify_view_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/call_activity_certify_view_bullets_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:foregroundGravity="center"
+        app:layout_widthPercent="90.94%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_certify_view_bullets_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/call_activity_certify_view_action">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_activity_certify_view_bullet_one_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_certify_view_bullet_two_view"
+            android:layout_toStartOf="@+id/call_activity_certify_view_bullet_two_view"
+            app:layout_aspectRatio="100%" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_activity_certify_view_bullet_two_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_certify_view_bullet_three_view"
+            android:layout_toStartOf="@+id/call_activity_certify_view_bullet_three_view"
+            app:layout_aspectRatio="100%" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_activity_certify_view_bullet_three_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="100%" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_activity_certify_view_bullet_four_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/call_activity_certify_view_bullet_three_view"
+            android:layout_toEndOf="@+id/call_activity_certify_view_bullet_three_view"
+            app:layout_aspectRatio="100%" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_activity_certify_view_bullet_five_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/call_activity_certify_view_bullet_four_view"
+            android:layout_toEndOf="@+id/call_activity_certify_view_bullet_four_view"
+            app:layout_aspectRatio="100%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/call_activity_certify_view_animation_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        app:lottie_rawRes="@raw/certification_animation_success"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false"
+        app:lottie_clipToCompositionBounds="false"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_certify_view_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_certify_view_decline_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_aspectRatio="100%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/call_activity_certify_decline_background_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+
+            <ImageView
+                android:id="@+id/call_activity_certify_decline_image_view"
+                android:layout_centerInParent="true"
+                android:src="@drawable/decline_word_icon"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="48%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_certify_confirm_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/call_activity_certify_view_decline_view"
+            android:layout_toEndOf="@+id/call_activity_certify_view_decline_view"
+            app:layout_aspectRatio="100%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/call_activity_certify_confirm_background_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+
+            <ImageView
+                android:id="@+id/call_activity_certify_confirm_image_view"
+                android:layout_centerInParent="true"
+                android:src="@drawable/accept_word_icon"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="48%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/call_activity_certify_view_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/call_activity_certify_view_action"
+        android:gravity="bottom"
+        app:layout_marginEndPercent="4.53%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_certify_view_success_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/call_activity_certify_view_avatar_view"
+            android:layout_centerHorizontal="true"
+            app:layout_aspectRatio="100%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_certify_view_certified_info_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_activity_certify_view_avatar_view">
+
+            <TextView
+                android:id="@+id/call_activity_certify_view_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/call_activity_certify_view_certified_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/call_activity_certify_view_name_view"
+                android:layout_toEndOf="@+id/call_activity_certify_view_name_view"
+                android:src="@drawable/authentified_relation_icon"
+                app:layout_aspectRatio="100%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/call_activity_certify_view_certified_message_view"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_activity_certify_view_certified_info_view"
+            android:gravity="center"
+            app:layout_widthPercent="90.37%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

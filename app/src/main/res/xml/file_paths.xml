@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+
+    <!-- Give access to temporary files to the external Camera -->
+    <files-path
+        name="tmp"
+        path="tmp" />
+
+    <files-path
+        name="images"
+        path="images" />
+
+    <files-path
+        name="videos"
+        path="videos" />
+
+    <files-path
+        name="conversations"
+        path="conversations" />
+
+    <external-files-path
+        name="ext_images"
+        path="images" />
+
+    <external-files-path
+        name="ext_videos"
+        path="videos" />
+
+    <external-files-path
+        name="ext_conversations"
+        path="conversations" />
+
+</paths>

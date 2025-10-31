@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/restriction_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_widthPercent="88.8%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/restriction_content_restriction_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/restriction_header_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/restriction_content_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/restriction_notification"
+                    app:layout_aspectRatio="83.56%"
+                    app:layout_marginStartPercent="4.75%" />
+
+                <TextView
+                    android:id="@+id/restriction_content_title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/quality_of_service_activity_notification_title"
+                    android:layout_toEndOf="@+id/restriction_content_image_view"
+                    android:layout_toRightOf="@+id/restriction_content_image_view"
+                    app:layout_marginStartPercent="3.27%"
+                    app:layout_marginEndPercent="4.75%" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/restriction_footer_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/restriction_content_message_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/quality_of_service_activity_notification_description"
+                    app:layout_marginStartPercent="4.75%"
+                    app:layout_marginEndPercent="14.58%" />
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/restriction_accessory_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_aspectRatio="113.80%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_marginEndPercent="2.38%" >
+
+                    <ImageView
+                        android:id="@+id/restriction_accessory_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/call_again"
+                        app:layout_aspectRatio="100%" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/restriction_low_usage_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/application_low_usage_message"
+            app:layout_marginStartPercent="4.75%"
+            app:layout_marginEndPercent="4.75%"  />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="application_name" translatable="false">twinme debug</string>
+
+    <string name="account_activity_debug_title_view" translatable="false">Debug</string>
+    <string name="account_activity_tests_title_view" translatable="false">Tests</string>
+    <string name="log_activity_title" translatable="false">Internal logs</string>
+    <string name="debug_activity_title" translatable="false">Debug tools</string>
+    <string name="debug_reconnect_title" translatable="false">Reconnect</string>
+    <string name="debug_config_activity_title" translatable="false">Configuration</string>
+    <string name="debug_disconnect_title" translatable="false">Disconnect</string>
+    <string name="debug_broadcast_title" translatable="false">Broadcast</string>
+    <string name="account_activity_logs_title_view" translatable="false">Logs</string>
+    <string name="account_activity_config_title_view" translatable="false">Config</string>
+    <string name="debug_connection_status" translatable="false">Connection status: </string>
+    <string name="debug_locale_status" translatable="false">Locale status: </string>
+    <string name="test_activity_title" translatable="false">Tests operations</string>
+    <string name="test_broadcast_title" translatable="false">Send</string>
+    <string name="debug_config_enable_hardware_aec_title" translatable="false">Use hardware Audio Echo Cancellation</string>
+    <string name="debug_config_enable_hardware_openses_es_title" translatable="false">Use Audio OpenSL ES</string>
+    <string name="debug_config_enable_noise_suppressor_title" translatable="false">Use hardware Audio noise suppressor</string>
+    <string name="test_message_label" translatable="false">Broadcast message</string>
+    <string name="test_create_contact_title" translatable="false">Test create contacts</string>
+    <string name="test_delete_contact_title" translatable="false">Test delete contacts (empty conversation)</string>
+    <string name="test_create_group_title" translatable="false">Create group</string>
+    <string name="test_delete_account_title" translatable="false">Delete account</string>
+    <string name="debug_delete_conversations_title" translatable="false">Delete all conversations</string>
+    <string name="debug_send_messages_title" translatable="false">Send 100 messages to every conversation</string>
+    <string name="debug_backup_title" translatable="false">Backup database</string>
+    <string name="debug_restore_title" translatable="false">Restore database</string>
+    <string name="debug_restore_database_confirmation" translatable="false">Please confirm the database restore</string>
+
+</resources>

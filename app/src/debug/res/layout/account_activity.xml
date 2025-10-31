@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/account_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/account_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/account_activity_debug_content"
+        app:layout_heightPercent="5%"
+        android:layout_below="@id/account_activity_tool_bar"
+        android:layout_width="match_parent"
+        app:layout_marginTopPercent="5%">
+
+        <TextView
+            android:id="@+id/account_activity_debug_title_view"
+            app:layout_widthPercent="25%"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/account_activity_debug_title_view" />
+
+        <TextView
+            android:id="@+id/account_activity_logs_title_view"
+            app:layout_widthPercent="25%"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/account_activity_debug_title_view"
+            android:layout_toRightOf="@+id/account_activity_debug_title_view"
+            android:gravity="center"
+            android:text="@string/account_activity_logs_title_view" />
+
+        <TextView
+            android:id="@+id/account_activity_config_title_view"
+            app:layout_widthPercent="25%"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/account_activity_logs_title_view"
+            android:layout_toRightOf="@+id/account_activity_logs_title_view"
+            android:gravity="center"
+            android:text="@string/account_activity_config_title_view" />
+
+        <TextView
+            android:id="@+id/account_activity_tests_title_view"
+            app:layout_widthPercent="25%"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/account_activity_config_title_view"
+            android:layout_toRightOf="@+id/account_activity_config_title_view"
+            android:gravity="center"
+            android:text="@string/account_activity_tests_title_view"
+            android:visibility="gone" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/account_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/account_activity_tool_bar"/>
+
+    <ProgressBar
+        android:id="@+id/account_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

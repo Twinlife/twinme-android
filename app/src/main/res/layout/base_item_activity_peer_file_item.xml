@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_peer_file_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_file_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_peer_file_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_peer_file_item_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            app:layout_aspectRatio="100%"
+            app:layout_marginStartPercent="3.47%" />
+
+        <View
+            android:id="@+id/base_item_activity_peer_file_item_reply_view"
+            android:layout_alignTop="@+id/base_item_activity_peer_file_item_reply_text"
+            android:layout_alignBottom="@+id/base_item_activity_peer_file_item_view"
+            android:layout_alignEnd="@+id/base_item_activity_peer_file_item_reply_text"
+            android:layout_alignRight="@+id/base_item_activity_peer_file_item_reply_text"
+            android:layout_alignLeft="@+id/base_item_activity_peer_file_item_view"
+            android:layout_alignStart="@+id/base_item_activity_peer_file_item_view" />
+
+        <TextView
+            android:id="@+id/base_item_activity_peer_file_item_reply_text"
+            style="@style/textAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/base_item_activity_peer_file_item_view"
+            android:layout_alignLeft="@+id/base_item_activity_peer_file_item_view"
+            android:textColor="@android:color/white"
+            app:layout_marginEndPercent="15.73%" />
+
+        <View
+            android:id="@+id/base_item_activity_peer_file_item_reply_image_content_view"
+            android:layout_alignTop="@+id/base_item_activity_peer_file_item_reply_container_image_view"
+            android:layout_alignBottom="@+id/base_item_activity_peer_file_item_view"
+            android:layout_alignEnd="@+id/base_item_activity_peer_file_item_reply_container_image_view"
+            android:layout_alignRight="@+id/base_item_activity_peer_file_item_reply_container_image_view"
+            android:layout_alignLeft="@+id/base_item_activity_peer_file_item_view"
+            android:layout_alignStart="@+id/base_item_activity_peer_file_item_view" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_file_item_reply_container_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/base_item_activity_peer_file_item_view"
+            android:layout_alignLeft="@+id/base_item_activity_peer_file_item_view">
+
+            <org.twinlife.twinme.utils.RoundedImageView
+                android:id="@+id/base_item_activity_peer_file_item_reply_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_file_item_view"
+            android:layout_height="wrap_content"
+            app:layout_marginStartPercent="12.8%"
+            app:layout_widthPercent="63.47%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_file_item_image_background"
+                android:layout_centerVertical="true"
+                android:background="@drawable/grey_rounded_corner"
+                app:layout_aspectRatio="77.89%"
+                app:layout_widthPercent="24.79%">
+
+                <ImageView
+                    android:id="@+id/base_item_activity_peer_file_item_image_view"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_widthPercent="81.36%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/base_item_activity_peer_file_information_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/base_item_activity_peer_file_item_image_background"
+                android:layout_toRightOf="@id/base_item_activity_peer_file_item_image_background"
+                app:layout_marginStartPercent="8.8%"
+                app:layout_marginEndPercent="4.2%">
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_file_name_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2" />
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_file_size_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_file__item_ephemeral_content_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:layout_marginEndPercent="4.2%">
+
+                <org.twinlife.twinme.utils.EphemeralView
+                    android:id="@+id/base_item_activity_peer_file_item_ephemeral_view"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_file_progress_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/base_item_activity_peer_file_item_image_background"
+                android:layout_toRightOf="@id/base_item_activity_peer_file_item_image_background"
+                android:layout_alignRight="@+id/base_item_activity_peer_file_information_view"
+                android:layout_alignEnd="@+id/base_item_activity_peer_file_information_view"
+                app:layout_marginStartPercent="5.04%">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true">
+
+                    <ProgressBar
+                        android:id="@+id/base_item_activity_peer_file_item_progress_bar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:progressDrawable="@drawable/stream_audio_progress_bar_shape"
+                        android:max="100"
+                        app:layout_heightPercent="8.33%"
+                        app:layout_widthPercent="68.02%" />
+
+                    <TextView
+                        android:id="@+id/base_item_activity_peer_file_item_progress_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@android:color/white" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/base_item_activity_peer_file_item_annotation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/base_item_activity_peer_file_item_container"
+        android:choiceMode="singleChoice"
+        app:layout_marginStartPercent="12.8%" />
+
+    <View
+        android:id="@+id/base_item_activity_peer_file_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

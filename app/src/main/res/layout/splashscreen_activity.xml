@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splashscreen_activity_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/splashscreen_activity_logo_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_widthPercent="48.27%"
+        app:layout_heightPercent="13.50%">
+
+        <ImageView
+            android:id="@+id/splashscreen_activity_logo_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/splash_screen_logo"
+            app:layout_widthPercent="32.59%"
+            app:layout_heightPercent="46.11%" />
+
+        <ImageView
+            android:id="@+id/splashscreen_activity_twinme_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/splash_screen_twinme"
+            app:tint="@color/splashscreen_logo_color"
+            app:layout_heightPercent="44.44%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/splashscreen_activity_twinme_upgrading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/application_upgrade"
+        app:layout_marginBottomPercent="7.50%"
+        app:layout_widthPercent="85.33%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_peer_call_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_call_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_peer_call_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_peer_call_item_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            app:layout_aspectRatio="100%"
+            app:layout_marginStartPercent="3.47%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_call_item_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            app:layout_marginStartPercent="12.8%"
+            app:layout_widthPercent="77.33%"
+            app:layout_aspectRatio="362.50%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_call_item_top_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_marginStartPercent="2.07%"
+                app:layout_marginEndPercent="2.07%">
+
+                <org.twinlife.twinme.utils.AvatarView
+                    android:id="@+id/base_item_activity_peer_call_item_avatar_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerVertical="true"
+                    app:layout_aspectRatio="100%" />
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_call_item_type_call_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/base_item_activity_peer_call_item_avatar_image_view"
+                    android:layout_toRightOf="@+id/base_item_activity_peer_call_item_avatar_image_view" />
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_call_item_call_duration_view"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    app:layout_widthPercent="37.93%" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_call_item_bottom_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:layout_marginStartPercent="2.07%"
+                app:layout_marginEndPercent="2.07%">
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_call_item_call_again_title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/calls_fragment_call_again_title"
+                    app:layout_marginEndPercent="3.75%" />
+
+                <ImageView
+                    android:id="@+id/base_item_activity_peer_call_item_call_again_view"
+                    android:layout_toEndOf="@+id/base_item_activity_peer_call_item_call_again_title_view"
+                    android:layout_toRightOf="@+id/base_item_activity_peer_call_item_call_again_title_view"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/call_again"
+                    app:tint="?attr/font_default_color"
+                    app:layout_aspectRatio="100%" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/base_item_activity_peer_call_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

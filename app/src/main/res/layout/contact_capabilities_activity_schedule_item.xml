@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/contact_capabilities_activity_schedule_item_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/show_call_activity_settings_start"
+        app:layout_marginEndPercent="10.27%"
+        app:layout_marginStartPercent="4%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/contact_capabilities_activity_schedule_item_date_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        app:layout_heightPercent="66.67%"
+        android:layout_toLeftOf="@+id/contact_capabilities_activity_schedule_item_time_view"
+        android:layout_toStartOf="@+id/contact_capabilities_activity_schedule_item_time_view">
+
+        <TextView
+            android:id="@+id/contact_capabilities_activity_schedule_item_date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:lines="1"
+            android:gravity="center" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/contact_capabilities_activity_schedule_item_time_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:layout_heightPercent="66.67%"
+        app:layout_marginEndPercent="5.47%">
+
+        <TextView
+            android:id="@+id/contact_capabilities_activity_schedule_item_time_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lines="1"
+            android:text="" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

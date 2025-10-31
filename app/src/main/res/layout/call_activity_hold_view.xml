@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_activity_hold_container_view"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_hold_avatar_container_view"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/call_activity_hold_avatar_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@drawable/shape_music_cover"
+                app:layout_heightPercent="100%"/>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/call_activity_hold_name_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/call_activity_hold_avatar_container_view"
+            android:layout_toRightOf="@id/call_activity_hold_avatar_container_view"
+            android:ellipsize="end"
+            android:maxLines="3" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_hold_swap_view"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_hold_add_to_call_view"
+            android:layout_toStartOf="@+id/call_activity_hold_add_to_call_view"
+            app:layout_aspectRatio="100%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/call_activity_hold_swap_background_view"
+                android:scaleType="fitCenter"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+
+            <ImageView
+                android:id="@+id/ccall_activity_hold_swap_image_view"
+                android:layout_centerInParent="true"
+                android:src="@drawable/call_swap_icon"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="50%"
+                app:tint="#000000" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_hold_add_to_call_view"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/call_activity_hold_hangup_view"
+            android:layout_toStartOf="@+id/call_activity_hold_hangup_view"
+            app:layout_aspectRatio="100%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/call_activity_hold_add_to_call_background_view"
+                android:scaleType="fitCenter"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+
+            <ImageView
+                android:id="@+id/ccall_activity_hold_add_to_call_image_view"
+                android:layout_centerInParent="true"
+                android:src="@drawable/add_to_call"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="50%"
+                app:tint="#000000" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_activity_hold_hangup_view"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:layout_aspectRatio="100%"
+            android:contentDescription="@string/audio_call_activity_hangup">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/call_activity_hold_hangup_rounded_view"
+                android:scaleType="fitCenter"
+                app:layout_heightPercent="100%"
+                app:layout_widthPercent="100%" />
+
+            <ImageView
+                android:id="@+id/call_activity_hold_hangup_image_view"
+                android:layout_centerInParent="true"
+                android:src="@drawable/decline_call"
+                app:layout_aspectRatio="230.77%"
+                app:layout_heightPercent="30%"
+                app:tint="#FFFFFF" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

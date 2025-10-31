@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/share_activity_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/share_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/share_activity_search_view"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/share_activity_tool_bar">
+
+        <View
+            android:id="@+id/share_activity_search_content_view"
+            android:layout_centerInParent="true"
+            app:layout_heightPercent="54.54%"
+            app:layout_widthPercent="91.46%"
+            android:background="@drawable/grey_search_rounded" />
+
+        <ImageView
+            android:id="@+id/share_activity_search_image_view"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search_icon"
+            app:tint="@color/grey"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="21.21%"
+            app:layout_marginStartPercent="6.4%"
+            app:layout_marginEndPercent="1.87%" />
+
+        <EditText
+            android:id="@+id/share_activity_search_edit_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/share_activity_search_image_view"
+            android:layout_toRightOf="@+id/share_activity_search_image_view"
+            android:background="@android:color/transparent"
+            android:hint="@string/application_search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text|textNoSuggestions|textCapSentences"
+            app:layout_marginEndPercent="13.27%" />
+
+        <ImageView
+            android:id="@+id/share_activity_clear_image_view"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close"
+            android:contentDescription="@string/application_cancel"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_widthPercent="5%"
+            app:layout_marginEndPercent="6.4%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/share_activity_preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/share_activity_search_view" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/share_activity_comment_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/share_activity_preview_view">
+
+        <org.twinlife.twinme.utils.ConversationEditText
+            android:id="@+id/share_activity_comment_edit_text"
+            style="@style/textAppearance"
+            android:background="@null"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:hint="@string/conversation_activity_message"
+            android:inputType="textMultiLine|textAutoCorrect|textAutoComplete|textCapSentences"
+            android:scrollbars="vertical"
+            app:layout_widthPercent="91.73%"
+            app:layout_heightPercent="51.43%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/share_activity_layout_selected_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/share_activity_comment_view"
+        android:visibility="gone">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/share_activity_selected_list_view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:layout_marginStartPercent="4%"
+            app:layout_marginEndPercent="4%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/share_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/share_activity_layout_selected_view" />
+
+    <ProgressBar
+        android:id="@+id/share_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

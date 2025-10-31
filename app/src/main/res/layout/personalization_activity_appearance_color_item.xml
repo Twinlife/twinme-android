@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="?attr/white_color">
+
+    <TextView
+        android:id="@+id/personalization_activity_appearance_color_item_color_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        app:layout_marginStartPercent="4.26%"
+        app:layout_marginEndPercent="4.26%" />
+
+    <org.twinlife.twinme.utils.RoundedView
+        android:id="@+id/personalization_activity_appearance_color_item_color_view"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="33.33%"
+        app:layout_marginEndPercent="5.87%" />
+
+    <ImageView
+        android:id="@+id/personalization_activity_appearance_color_item_no_color_content_view"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/no_style_space"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="33.33%"
+        app:layout_marginEndPercent="5.87%" />
+
+    <View
+        android:id="@+id/personalization_activity_appearance_color_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

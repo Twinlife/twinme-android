@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="128dp">
+
+    <View
+        android:id="@+id/search_section_footer_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

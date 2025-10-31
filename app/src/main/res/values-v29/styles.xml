@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TwinmeThemeDark" parent="TwinmeThemeWithNoActionBar">
+        <!-- color -->
+        <item name="white_color">#000000</item>
+        <item name="black_color">#ffffff</item>
+        <item name="popup_background_color">#484848</item>
+        <item name="separator_color">#80C7C7FF</item>
+        <item name="grey_light">#484848</item>
+        <item name="background_light_grey_color">#000000</item>
+        <item name="background_grey_color">#000000</item>
+        <item name="action_image_call_color">#788a9f</item>
+        <item name="font_default_color">#ffffff</item>
+        <item name="background_menu_color">#484848</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+
+    <style name="TwinmeThemeLight" parent="TwinmeThemeWithNoActionBar">
+        <!-- color -->
+        <item name="white_color">#ffffff</item>
+        <item name="black_color">#000000</item>
+        <item name="popup_background_color">#ffffff</item>
+        <item name="separator_color">#80c7c7cc</item>
+        <item name="grey_light">#efefef</item>
+        <item name="background_light_grey_color">#f9f9f9</item>
+        <item name="background_grey_color">#efefef</item>
+        <item name="action_image_call_color">#000000</item>
+        <item name="font_default_color">#2c2c2c</item>
+        <item name="background_menu_color">#f9f9f9</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+
+    <style name="TwinmeThemeWithNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/white_color</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="android:editTextColor">#ffffff</item>
+        <item name="android:textColorHint">#ffffff</item>
+
+        <!-- color -->
+        <item name="white_color">@color/white_color</item>
+        <item name="black_color">@color/black_color</item>
+        <item name="popup_background_color">@color/popup_background_color</item>
+        <item name="separator_color">@color/separator_color</item>
+        <item name="grey_light">@color/grey_light</item>
+        <item name="background_light_grey_color">@color/background_light_grey_color</item>
+        <item name="background_grey_color">@color/background_grey_color</item>
+        <item name="action_image_call_color">@color/action_image_call_color</item>
+        <item name="font_default_color">@color/font_default_color</item>
+        <item name="background_menu_color">@color/background_menu_color</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="?attr/white_color"
+    android:orientation="vertical">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/side_menu_header_add_contact_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:layout_aspectRatio="100%"
+        android:layout_alignTop="@+id/side_menu_header_avatar_view"
+        app:layout_heightPercent="32.31%"
+        app:layout_marginEndPercent="4.54%"
+        android:contentDescription="@string/add_contact_activity_title">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/side_menu_header_add_contact_rounded_view"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%" />
+
+        <ImageView
+            android:scaleType="fitCenter"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            android:src="@drawable/add_contact" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <org.twinlife.twinme.utils.CircularImageView
+        android:id="@+id/side_menu_header_avatar_view"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="53.84%"
+        app:layout_marginStartPercent="4.54%"
+        android:contentDescription="@string/application_profile" />
+
+    <TextView
+        android:id="@+id/side_menu_header_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/side_menu_header_avatar_view"
+        app:layout_widthPercent="89.33%"
+        app:layout_marginTopPercent="7.69%"
+        app:layout_marginStartPercent="4.54%" />
+</androidx.percentlayout.widget.PercentRelativeLayout>

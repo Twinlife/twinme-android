@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Hyväksyä</string>
+    <string name="application_account_deleted">Tilisi on poistettu, sinun on nyt poistettava sovellus.</string>
+    <string name="application_add_contact_no_profile">Sinun on täytettävä sinua edustava profiili ennen yhteyshenkilön kutsumista. Edetä?</string>
+    <string name="application_all">Kaikki</string>
+    <string name="application_appearance">Ulkomuoto</string>
+    <string name="application_are_you_sure">Oletko varma?</string>
+    <string name="application_authorization_camera">Salli sovelluksen käyttää Kameraa järjestelmän asetuksissa.</string>
+    <string name="application_authorization_go_settings">Siirry järjestelmän asetuksiin</string>
+    <string name="application_authorization_microphone">Salli sovelluksen käyttää Valokuvia järjestelmän asetuksissa.</string>
+    <string name="application_authorization_microphone_camera">Salli sovelluksen käyttää Valokuvia ja Kameraa järjestelmän asetuksissa.</string>
+    <string name="application_authorization_title">Puuttuva käyttöoikeus</string>
+    <string name="application_back">Takaisin</string>
+    <string name="application_camera">Kamera</string>
+    <string name="application_cancel">Peruuta</string>
+    <string name="application_canceled_operation">Peruutettu toiminta</string>
+    <string name="application_checking_connection">Tarkistaa yhteyttä</string>
+    <string name="application_color">Väri</string>
+    <string name="application_configuration">Kokoonpano</string>
+    <string name="application_confirm">Vahvistaa</string>
+    <string name="application_confirm_deletion">Vahvista poisto</string>
+    <string name="application_connected">Suojattu yhteys käytössä.</string>
+    <string name="application_connection_status_no_network">Ei Internet-yhteyttä.</string>
+    <string name="application_connection_status_no_network_message">Tarkista verkkoyhteytesi.</string>
+    <string name="application_connection_status_no_services">Palveluun ei ole pääsyä.</string>
+    <string name="application_connection_status_no_services_message">Kokeile käyttää VPN:ää.</string>
+    <string name="application_contact_not_found">Tämä yhteyshenkilö on poistanut tämän suhteen sinuun, eikä häneen enää saada yhteyttä.</string>
+    <string name="application_continue_without_premium_services">Jatka ilman premium-palveluita</string>
+    <string name="application_create_group_no_profile">Sfinun on täytettävä profiili, joka edustaa sinua tässä ryhmässä. Edetä?</string>
+    <string name="application_database_error">Tietokannan virhe</string>
+    <string name="application_decline">Kieltäydy</string>
+    <string name="application_default">oletusarvo</string>
+    <string name="application_delete">Poista</string>
+    <string name="application_delete_message">Haluatko varmasti poistaa sen?</string>
+    <string name="application_denied_permissions">Tarvittavia oikeuksia ei myönnetä</string>
+    <string name="application_description">Kuvaus</string>
+    <string name="application_display_all">Näytä kaikki</string>
+    <string name="application_do_not_display">Älä näytä enää</string>
+    <string name="application_edit">Muokata</string>
+    <string name="application_error_file_not_found">Tiedostoa ei löytynyt.</string>
+    <string name="application_error_media_not_supported">Sovellus ei tue tätä kuva-/videomuotoa.</string>
+    <string name="application_error_no_storage_space">Riittämätön tallennustila</string>
+    <string name="application_group_limit_reached">Ryhmän jäsenten enimmäismäärä (%1$d) ylittyi.</string>
+    <string name="application_group_not_found">Olet poistettu ryhmästä</string>
+    <string name="application_items_selected">%1$d kohdetta valittu</string>
+    <string name="application_later">Myöhemmin</string>
+    <string name="application_low_usage_message">Varoitus, jos et käytä sovellusta tarpeeksi usein, käyttöjärjestelmä ei ehkä herätä sitä viestien vaihtamiseen!</string>
+    <string name="application_one_item_selected">1 kohde valittu</string>
+    <string name="application_migration_no_storage_space">Laitteessa ei ole tarpeeksi tilaa siirron suorittamiseen. Sulje sovellus, vapauta tilaa ja käynnistä sovellus uudelleen päivityksen viimeistelemiseksi.</string>
+    <string name="application_migration_no_storage_space_message">Toisella laitteista ei ole tarpeeksi tallennustilaa. Vapauta tilaa kyseisellä laitteella ennen siirron uudelleenkäynnistystä.</string>
+    <string name="application_name_hint">Nimi</string>
+    <string name="application_network_connecting">Yhdistetään twinme-palveluun</string>
+    <string name="application_network_connectivity">Verkkoyhteys olemassa</string>
+    <string name="application_network_status_airplane_message">Lentokonetila on aktivoitu.</string>
+    <string name="application_network_status_airplane_resolution">Ota lentokonetila pois käytöstä ja yhdistä Wi-Fi- tai mobiiliverkkoon.</string>
+    <string name="application_network_status_connected_no_internet">Ei verkkopääsyä twinme-palveluun.</string>
+    <string name="application_network_status_connected_resolution">Yritä yhdistää toiseen verkkoon.</string>
+    <string name="application_network_status_connection_timeout">Internet-yhteyttä ei voi muodostaa.</string>
+    <string name="application_network_status_no_internet">Ei internet-yhteyttä.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi ei ole käytössä.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi ei ole käytössä eikä mobiili-internet-yhteyttä ole.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Ota Wi-Fi käyttöön.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Ota Wi-Fi käyttöön tai aktivoi mobiili-internet-yhteys.</string>
+    <string name="application_new_feature">Uusi!</string>
+    <string name="application_no">Ei</string>
+    <string name="application_no_network_connectivity">Ei verkkoyhteyttä</string>
+    <string name="application_no_service">Ei palvelua</string>
+    <string name="application_not_authorized_operation">Ei luvallinen toiminta</string>
+    <string name="application_not_authorized_operation_by_your_contact">Yhteyshenkilösi ei ole valtuuttanut toimintaa.</string>
+    <string name="application_not_connected">Suojattu yhteys käynnissä…</string>
+    <string name="application_not_signed_in">Ei yhteydessä twinme-palveluun</string>
+    <string name="application_now">Nyt</string>
+    <string name="application_ok">OK</string>
+    <string name="application_operation_failure">Toimintahäiriö</string>
+    <string name="application_operation_irreversible">Tämä toimenpide on peruuttamaton</string>
+    <string name="application_permission_camera">Uuden valokuvan tai videon ottaminen edellyttää lupaa käyttää kameraa.</string>
+    <string name="application_permission_scan_code">QR-koodin skannaamiseen tarvitaan lupa käyttää kameraa.</string>
+    <string name="application_photo_gallery">Kuva-albumit</string>
+    <string name="application_profile">Profiili</string>
+    <string name="application_profile_avatar_not_defined">Profiilikuvaa ei ole määritelty</string>
+    <string name="application_profile_name_not_defined">Profiilinimeäsi ei ole määritetty</string>
+    <string name="application_remove">Poistaa</string>
+    <string name="application_save">Tallenna</string>
+    <string name="application_search_hint">Hae</string>
+    <string name="application_select">Valitse</string>
+    <string name="application_select_application">Valitse sovellus</string>
+    <string name="application_select_more">Valitse lisää…</string>
+    <string name="application_server_timeout">Palvelimen aikakatkaisu</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Teema</string>
+    <string name="application_timeout">Vanhenemisviive</string>
+    <string name="application_timeout_day">1 päivä</string>
+    <string name="application_timeout_hour">1 tunti</string>
+    <string name="application_timeout_hours">%1$d tuntia</string>
+    <string name="application_timeout_minute">1 minuutti</string>
+    <string name="application_timeout_minutes">%1$d minuuttia</string>
+    <string name="application_timeout_month">1 kuukausi</string>
+    <string name="application_timeout_seconds">%1$d sekuntia</string>
+    <string name="application_timeout_week">1 viikko</string>
+    <string name="application_unknown_name">Tuntematon</string>
+    <string name="application_upgrade">twinme päivittäminen</string>
+    <string name="application_webrtc_failure">WebRTC-vika</string>
+    <string name="application_wrong_configuration">Virheellinen kokoonpano</string>
+    <string name="application_yes">Kyllä</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Sovelluskoodi</string>
+    <string name="about_activity_information">Tiedot</string>
+    <string name="about_activity_legal">Lailliset huomautukset</string>
+    <string name="about_activity_libraries">Kirjastot</string>
+    <string name="about_activity_message">twinme on turvallinen chat- ja ääni-/videopuhelupalvelu, joka ei pääse henkilökohtaisiin tietoihin.\n\ntwinme perustuu WebRTC:ään, joka on turvallisen (alusta loppuun salattu), käyttäjältä toiselle tapahtuvan (ei välityspalvelinta) reaaliaikaisen multimediaviestinnän uusi standardi Internetissä.</string>
+    <string name="about_activity_open_source_information">Sovelluksen lähdekoodi on saatavilla avoimen Open Source versiona GitHubissa AGPL-3.0-lisenssillä.</string>
+    <string name="about_activity_open_sources_licences">Avoimen lähdekoodin käyttöluvat</string>
+    <string name="about_activity_premium_services">Premium-palvelut</string>
+    <string name="about_activity_privacy_policy">Yksityisyyden suoja</string>
+    <string name="about_activity_quality_of_service">Palvelun laatu</string>
+    <string name="about_activity_terms_of_use">Käyttöehdot</string>
+    <string name="about_activity_version">Versio</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">Kutsu poistettiin</string>
+    <string name="accept_group_invitation_activity_in_progress">Jäsenyys käynnissä</string>
+    <string name="accept_group_invitation_activity_message">%1$s kutsuu sinut liittymään ryhmään</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">Kutsua siirretään.</string>
+    <string name="accept_invitation_activity_check_connection">Tarkista Internet-yhteytesi.</string>
+    <string name="accept_invitation_activity_existing_contact_message">Sinulla on jo suhde tähän kontaktiin. Haluatko luoda uuden?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Virheelliset yhteystiedot</string>
+    <string name="accept_invitation_activity_local_twincode">Et voi luoda suhdetta itseesi samalla tilillä.</string>
+    <string name="accept_invitation_activity_message">%1$s haluaa olla yhteydessä sinuun</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">Keskustelujen sisältö</string>
+    <string name="account_activity_delete_account">Tilisi ja kaikki siihen liittyvät tiedot poistetaan pysyvästi. Vahvistaa?</string>
+    <string name="account_activity_delete_account_confirmation">Oletko todella varma, että haluat poistaa tilisi?</string>
+    <string name="account_activity_export_content">Vie ulkoiselle medialle</string>
+    <string name="account_activity_message_first_part">Uusi tili luodaan, kun sovellus asennetaan ensimmäisen kerran, sovelluksen uudelleenasennuksen, laitteen nollauksen tai nykyisen tilin poistamisen jälkeen.</string>
+    <string name="account_activity_message_second_part">Aiemmasta tilistä ja tiedoista ei jää jälkiä, joten sinun on kutsuttava yhteystietosi uudelleen.</string>
+    <string name="account_activity_migration_message">Tilinsiirtopalvelu on käytettävissä tilisi ja siihen liittyvien tietojen (yhteystiedot, viestit, ryhmät jne.) Siirtämiseksi yhdestä Android-laitteesta reaaliajassa. Voit siis vaihtaa tiliä vanhan laitteen ja uuden välillä.</string>
+    <string name="account_activity_migration_start_from_another_device">Toisesta laitteesta</string>
+    <string name="account_activity_migration_start_from_current_device">Laitteeltani</string>
+    <string name="account_activity_migration_title">Tilin siirto</string>
+    <string name="account_activity_title">Tili</string>
+    <string name="account_activity_transfer_between_devices">Siirto laitteiden välillä</string>
+    <string name="account_activity_transfer_from_another_device">Siirto toisesta laitteesta</string>
+    <string name="account_activity_transfer_from_device">Siirto tästä laitteesta</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Sulje sovellus ja käynnistä se uudelleen päästäksesi tietoihisi.</string>
+    <string name="account_migration_activity_close_message">Sulje sovellus ja käynnistä se uudelleen päästäksesi uusiin tietoihin.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Haluatko varmasti peruuttaa siirron?</string>
+    <string name="account_migration_activity_network_message">Tarkista verkkoyhteys</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Tiedostoille ei ole riittävästi tilaa</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Tilaa ei ole riittävästi tietokannan vastaanottamiseen</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Tilaa ei ole riittävästi tietokannan siirtämiseen</string>
+    <string name="account_migration_activity_state_canceled">Siirto peruutettu</string>
+    <string name="account_migration_activity_state_negotiate">Odottaa</string>
+    <string name="account_migration_activity_state_list_files">Luettelo tiedostoista</string>
+    <string name="account_migration_activity_state_send_account">Lähetetään tiliä</string>
+    <string name="account_migration_activity_state_send_database">Tietokannan lähettäminen</string>
+    <string name="account_migration_activity_state_send_files">Lähetetään tiedostoja</string>
+    <string name="account_migration_activity_state_send_settings">Lähetetään sovellusasetuksia</string>
+    <string name="account_migration_activity_state_terminate">Siirtyminen melkein valmis.</string>
+    <string name="account_migration_activity_state_wait_account">Odotetaan toista tiliä</string>
+    <string name="account_migration_activity_state_wait_connect">Odottaa yhteyden muodostamista</string>
+    <string name="account_migration_activity_state_wait_files">Odotetaan tiedostojen ja tietokannan vastaanottamista.</string>
+    <string name="account_migration_activity_start">Aloita siirto</string>
+    <string name="account_migration_activity_stop">Pysäytä siirto</string>
+    <string name="account_migration_activity_success_message">Siirtäminen onnistui</string>
+    <string name="account_migration_activity_transfer_in_progress">Tiedonsiirto käynnissä</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Näytä tämä näyttö jokaisessa laitteessa ja toinen skannaa toisen QR-koodin.</string>
+    <string name="account_migration_scanner_activity_message_older_version">Tämä laite käyttää vanhaa yhteensopimatonta käyttöjärjestelmäversiota, minkä vuoksi kaikki kohdelaitteen suhteet menetetään siirron aikana. Haluatko silti jatkaa siirtoa?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">Kohdelaite käyttää vanhaa yhteensopimatonta käyttöjärjestelmäversiota, minkä vuoksi kaikki suhteesi menetetään siirron aikana. Haluatko silti jatkaa siirtoa?</string>
+    <string name="account_migration_scanner_activity_scan_title">Skannaus</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Aloita siirto skannaamalla tämä QR-koodi toisesta laitteesta</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Skannaa QR-koodi, joka näkyy toisen laitteen sivuvalikon \"Tili / siirto toisesta laitteesta\" -osiossa.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Lopeta skannaus</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">Lisää osallistuja tähän puheluun</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">Tuo galleriasta</string>
+    <string name="add_contact_activity_in_person_subtitle">Kutsu henkilö lähelläsi</string>
+    <string name="add_contact_activity_in_person_title">Henkilökohtainen</string>
+    <string name="add_contact_activity_invitation_code_title">Mini-koodi</string>
+    <string name="add_contact_activity_invite">Kutsu</string>
+    <string name="add_contact_activity_invite_message">Avaa verkko-osoite %1$s twinmellä mobiililaitteessa pitääksesi yhteyttä yksityisesti “%2$s” kanssa</string>
+    <string name="add_contact_activity_invite_subject">Twinme-kutsu</string>
+    <string name="add_contact_activity_message">Pyydä vieressäsi olevaa ystävääsi skannaamaan kutsun QR-koodi twinme llä tai napauttamalla "Skannata"-painiketta skannataksesi ystäväsi koodi.</string>
+    <string name="add_contact_activity_onboarding_message">twinme ei tunne ystäviäsi eikä voi löytää heitä. Sinun tulee kutsua heidät henkilökohtaisesti, twinmen kanssa, kun he ovat lähelläsi, tai lähettämällä heille kutsu muulla tavalla.</string>
+    <string name="add_contact_activity_scan_code">Skannaa kutsun QR-koodi</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Tämä linkki on vioittunut.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Tämä linkki on virheellinen.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Sovellus ei hallinnoi tätä linkkiä.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Tämä suhde on poistettu.</string>
+    <string name="add_contact_activity_scan_message_call_link">Tämä linkki vastaa \"soita napsauttamalla\"</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Tämä linkki vastaa yhteydenottokutsua</string>
+    <string name="add_contact_activity_scan_message_migration_link">Tämä linkki vastaa tilin siirtoa</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Tämä linkki vastaa puhelun siirtoa</string>
+    <string name="add_contact_activity_scan_title">Skannata</string>
+    <string name="add_contact_activity_social_subtitle">viesti, posti, sosiaalinen verkosto</string>
+    <string name="add_contact_activity_social_title">Lähetä koodi sovelluksen kautta</string>
+    <string name="add_contact_activity_title">Kutsu</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Lisätä</string>
+    <string name="add_group_member_activity_title">Lisää jäseniä</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Tervetuloviesti</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Soitetaan&#8230;</string>
+    <string name="audio_call_activity_cannot_call">Puhelua ei voi soittaa</string>
+    <string name="audio_call_activity_connecting">Yhdistetään&#8230;</string>
+    <string name="audio_call_activity_hangup">Lopeta</string>
+    <string name="audio_call_activity_hangup_confirmation">Haluatko lopettaa puhelun?</string>
+    <string name="audio_call_activity_terminate">Puhelu on lopetettu</string>
+    <string name="audio_call_activity_terminate_busy">Puhelu päättyi: &lt;b&gt;%1$s&lt;/b&gt; on varattu</string>
+    <string name="audio_call_activity_terminate_cancel">&lt;b&gt;%1$s&lt;/b&gt; perui puhelun</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Puhelu päättynyt: verkkovirhe</string>
+    <string name="audio_call_activity_terminate_decline">&lt;b&gt;%1$s&lt;/b&gt; kieltäytyi puhelusta</string>
+    <string name="audio_call_activity_terminate_gone">Puhelu päättyi: &lt;b&gt;%1$s&lt;/b&gt; ei ole verkossa.</string>
+    <string name="audio_call_activity_terminate_not_authorized">Yhteyshenkilösi ei ole myöntänyt puheluun tarvittavia oikeuksia (esim. mikrofoni, kamera).</string>
+    <string name="audio_call_activity_terminate_revoked">Puhelu päättynyt: &lt;b&gt;%1$s&lt;/b&gt; on poistanut tämän suhteen sinuun.</string>
+    <string name="audio_call_activity_terminate_success">&lt;b&gt;%1$s&lt;/b&gt; lopetti puhelun</string>
+    <string name="audio_call_activity_terminate_timeout">Puhelu katkeaa: &lt;b&gt;%1$s&lt;/b&gt; ei vastaa</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">Suhteesi %1$s:n kanssa on nyt varmennettu.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Todista skannaamalla QR-koodi</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Varmenna videopuhelulla</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s on sallittava videopuhelut, jotta ne voivat varmentaa suhteen videopuhelun kautta.</string>
+    <string name="authentified_relation_activity_level_2">Tämän suhteen varmentamiseksi sinun on skannattava %1$s:n laitteessa näkyvä QR-koodi.</string>
+    <string name="authentified_relation_activity_level_3">Tämän suhteen varmentamiseksi %1$s laitteen on skannattava tämä QR-koodi.</string>
+    <string name="authentified_relation_activity_level_4">Suhteesi %1$s :n kanssa on varmennettu.</string>
+    <string name="authentified_relation_activity_onboarding_message">Sertifioitu suhde varmistaa, että kommunikoit aina oikean henkilön kanssa, vaikka palvelu olisi vaarantunut kolmannen osapuolen toimesta.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Varmista, että kommunikoit aina oikean henkilön kanssa!</string>
+    <string name="authentified_relation_activity_relation_print_message">Tämän sormenjäljen on oltava sama molemmissa laitteissa.</string>
+    <string name="authentified_relation_activity_relation_print_title">Suhteen sormenjälki</string>
+    <string name="authentified_relation_activity_start">Aloita sertifiointi</string>
+    <string name="authentified_relation_activity_title">Sertifioitu suhde</string>
+    <string name="authentified_relation_activity_to_be_certified_title">Varmentaa suhde</string>
+    
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">Kaikki</string>
+    <string name="calls_fragment_call_again_message">Haluatko soittaa takaisin %1$s?</string>
+    <string name="calls_fragment_call_again_title">Soita takaisin</string>
+    <string name="calls_fragment_create_link">Luo \"click-to-call\" -linkki</string>
+    <string name="calls_fragment_incoming_call">Saapuva puhelu</string>
+    <string name="calls_fragment_missed_call">Vastaamaton puhelu</string>
+    <string name="calls_fragment_missed_call_segmented_control">Missed</string>
+    <string name="calls_fragment_no_call_message">Vastaamattomat puhelut on lueteltu tässä.</string>
+    <string name="calls_fragment_no_call_title">Et ole vielä soittanut yhtään puhelua.</string>
+    <string name="calls_fragment_outgoing_call">Lähtevä puhelu</string>
+    <string name="calls_fragment_reset">Haluatko varmasti nollata kaikki puheluilmoitukset?</string>
+    <string name="calls_fragment_reset_title">Nollaa puheluilmoitukset</string>
+    <string name="calls_fragment_title">Puhelut</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Bluetooth-ääni</string>
+    <string name="call_activity_audio_source_device">Laitteen kuulokkeet</string>
+    <string name="call_activity_audio_source_earphones">Kuulokkeet</string>
+    <string name="call_activity_audio_source_headset">Audio kuulokkeet</string>
+    <string name="call_activity_audio_source_loudspeaker">Kaiutin</string>
+    <string name="call_activity_battery_restriction_message">Huomio! Sinun on sallittava akun käyttö, kun sovellus toimii taustalla, muuten mikrofoni voidaan leikata puhelun aikana.</string>
+    <string name="call_activity_camera_control">Kameran hallinta</string>
+    <string name="call_activity_camera_control_ask_message">Pyydä %1$s:ia antamaan sinulle lupa hallita heidän kameraansa videopuhelun aikana.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s haluaa hallita kameraasi puhelun aikana. Voit ottaa hallinnan takaisin milloin tahansa.</string>
+    <string name="call_activity_camera_control_denied">%1$s ei anna sinun hallita kameraansa.</string>
+    <string name="call_activity_camera_control_message">%1$s:n kameran hallinta</string>
+    <string name="call_activity_camera_control_needs_help">Tarvitsetko apua?</string>
+    <string name="call_activity_camera_control_onboarding">Jos yhteyshenkilösi sallii sen, voit ottaa hänen kameransa hallinnan videopuhelun aikana ja esimerkiksi zoomata itse. Tämä on erityisen hyödyllistä videovalvontakameran ohjaamisessa.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">Läheisesi luvalla voit hallita hänen kameraansa puhelun aikana ja auttaa häntä etänä helposti ja turvallisesti.</string>
+    <string name="call_activity_camera_control_remotely">%1$s ohjaa kameraasi etänä.</string>
+    <string name="call_activity_camera_control_stop">Lopeta</string>
+    <string name="call_activity_certify_error_message">%1$s ei vahvistanut sanaa. Suhteen sertifiointi epäonnistui, ja sinun on yritettävä uudelleen.</string>
+    <string name="call_activity_certify_onboarding_message">Videopuhelun avulla voit tunnistaa toisensa ja vaihtaa sertifioituun suhteeseen ja sen vaihtoihin liittyviä suojausavaimia.</string>
+    <string name="call_activity_certify_onboarding_start_message">Jokainen vuorotellen sanoa näytölle näytetty sana, jonka toinen voi tarkistaa. Kun kaikki sanat on varmennettu, suhteesi %1$s on sertifioitu.</string>
+    <string name="call_activity_certify_onboarding_title">Varmista suhde</string>
+    <string name="call_activity_certify_video_message">Puhelun on oltava videona, jotta parisuhde voidaan vahvistaa.</string>
+    <string name="call_activity_coach_mark">Napauta tätä lisätäksesi osallistujan tähän puheluun</string>
+    <string name="call_activity_confirm_word">Onko %1$s sanoma sana sama?</string>
+    <string name="call_activity_confirm_word_title">Vahvista sana</string>
+    <string name="call_activity_error_call_interrupted">Puhelu keskeytettiin, virhe: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">Puhelu ei mennyt läpi, virhe: %1$d.</string>
+    <string name="call_activity_max_participant_message">Ryhmäpuhelun osallistujien enimmäismäärä on saavutettu (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">Käyttäjän %1$s sovellusversio ei ole yhteensopiva ryhmäpuheluiden kanssa ja vaatii päivityksen.</string>
+    <string name="call_activity_quality_message">Miten arvioit sen?</string>
+    <string name="call_activity_quality_title">Puhelun laatu</string>
+    <string name="call_activity_repeat_word">%1$s voi verrata sitä ruudullaan näkyvään sanaan.</string>
+    <string name="call_activity_repeat_word_title">Sanoa sana</string>
+    <string name="call_activity_tag_add_to_call">Kutsu yhteyshenkilö liittymään meneillään olevaan puheluun</string>
+    <string name="call_activity_tag_camera">Kamera</string>
+    <string name="call_activity_tag_camera_activate">Aktivoi kamera</string>
+    <string name="call_activity_tag_camera_cut">Leikkaa kamera</string>
+    <string name="call_activity_tag_camera_flip">Käännä kameraa</string>
+    <string name="call_activity_tag_microphone">Mikrofoni</string>
+    <string name="call_activity_tag_microphone_activate">Aktivoi mikrofoni</string>
+    <string name="call_activity_tag_microphone_mute">Mykistä mikrofoni</string>
+    <string name="call_activity_tag_pause">Keskeytä</string>
+    <string name="call_activity_tag_send_message">Lähetä viesti</string>
+    <string name="call_activity_tag_speaker">Kaiutin</string>
+    <string name="call_activity_tag_speaker_activate">Aktivoi kaiutin</string>
+    <string name="call_activity_tag_speaker_mute">Mykistä kaiutin</string>
+    <string name="call_activity_transfert_call_message">Käynnissä oleva puhelu on siirretty.</string>
+    <string name="call_activity_try_to_call_back">Yritä soittaa takaisin.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">Kamera jo käytössä</string>
+    <string name="capture_activity_incorrect_qrcode">Virheellinen twincode</string>
+    <string name="capture_activity_message">Skannaa QR-koodi tähän suorakulmioon.</string>
+    <string name="capture_activity_no_camera">Twincoden skannaamiseen tarvitaan kamera</string>
+    <string name="capture_activity_qrcode_saved">Kutsukoodi tallennetaan valokuvissa.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">Tyhjennä kaikki</string>
+    <string name="cleanup_activity_both_clean">Maailmanlaajuinen siivous (paikallinen ja etä)</string>
+    <string name="cleanup_activity_both_clean_title">Maailmanlaajuinen siivous</string>
+    <string name="cleanup_activity_clean">Poistaa</string>
+    <string name="cleanup_activity_conversation">Keskustelu henkilön %s kanssa</string>
+    <string name="cleanup_activity_delete_confirmation_message">Poistaminen on peruuttamaton. Vie tärkeä sisältö ennen kuin jatkat. Jatkaa?</string>
+    <string name="cleanup_activity_error">Toiminnan aikana tapahtui virhe.</string>
+    <string name="cleanup_activity_expiration">Vanhenemisehdot</string>
+    <string name="cleanup_activity_free">Saatavana</string>
+    <string name="cleanup_activity_info">Viestien, median ja tiedostojen poistaminen tästä keskustelusta ei poista niitä yhteystietosi laitteesta, etkä voi tehdä niin myöhemmin.</string>
+    <string name="cleanup_activity_info_both">Viestien, median ja tämän keskustelun tiedostojen poistaminen poistaa ne myös yhteystietosi laitteesta.</string>
+    <string name="cleanup_activity_local_cleanup">Vain paikallinen puhdistus</string>
+    <string name="cleanup_activity_local_cleanup_title">Paikallinen siivous</string>
+    <string name="cleanup_activity_medias_and_files">Vain media ja tiedostot</string>
+    <string name="cleanup_activity_medias_and_files_info">Median pikkukuvia ei poisteta keskustelusta. vain alkuperäiset tiedostot ovat.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Tässä keskustelussa vaihdetut tiedostot, valokuvat, videot ja äänimuistiinpanot poistetaan sekä laitteeltasi että yhteystietosi laitteelta.</string>
+    <string name="cleanup_activity_messages">Kaikki viestit ja muu sisältö</string>
+    <string name="cleanup_activity_messages_info">Kaiken tyyppiset keskustelun viestit (teksti, valokuva, video, ääni, tiedostot jne.) poistetaan sovelluksesta.</string>
+    <string name="cleanup_activity_month">%1$d kuukautta</string>
+    <string name="cleanup_activity_older_than">Vanhempia kuin</string>
+    <string name="cleanup_activity_one_year">1 vuosi</string>
+    <string name="cleanup_activity_prior_to">Ennen kuin</string>
+    <string name="cleanup_activity_reset_conversation_message">Tämän keskustelun nollaaminen poistaa kaikki viestit, myös yhteystietosi laitteelta.</string>
+    <string name="cleanup_activity_select_content">Valitse, mitä haluat poistaa.</string>
+    <string name="cleanup_activity_storage_title">Levytila</string>
+    <string name="cleanup_activity_success">Operaatio valmistui onnistuneesti.</string>
+    <string name="cleanup_activity_title">Keskustelun siivous</string>
+    <string name="cleanup_activity_total">Kaikki yhteensä</string>
+    <string name="cleanup_activity_used">Käytetty</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Vihjeitä</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Salli tämän yhteyshenkilön soittaa sinulle</string>
+    <string name="contact_capabilities_activity_automatic_answering">Vastaa saapuviin puheluihin automaattisesti</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Varoitus: tämä asetus aktivoi automaattisen vastaamisen tämän yhteystiedon puheluihin avaamalla laitteen mikrofonin ja kameran (videopuheluita varten).</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Jotkut laitteet voivat rajoittaa tätä ominaisuutta.</string>
+    <string name="contact_capabilities_activity_call_settings">Puheluasetukset</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Aina</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Kysy joka puhelussa</string>
+    <string name="contact_capabilities_activity_camera_control_information">Anna tämän yhteyshenkilön ottaa automaattisesti kamerasi hallinta videopuhelun aikana.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Voit pyytää yhteyshenkilöäsi, jolla on pääsy sovelluksen premium-versioon, hallitsemaan kameraasi videopuheluidesi aikana.</string>
+    <string name="contact_capabilities_activity_camera_control_never">Älä koskaan</string>
+    <string name="contact_capabilities_activity_discreet_relation">Diskreetti suhde</string>
+    <string name="contact_capabilities_activity_information_audio_call">Salli yhteyshenkilön soittaa sinulle äänellä.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">Ei näytä yhteyshenkilön nimeä ilmoituksissa eikä tallenna puheluita puheluhistoriaan.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Aseta päivämäärät/ajat, jolloin et halua, että sinulle soitetaan.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Ajoita päivämäärät/ajat, joille haluat soittaa.</string>
+    <string name="contact_capabilities_activity_information_video_call">Salli kontaktin soittaa sinulle videopuhelu.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Kutsu joku skannaamaan kutsukoodisi, tai muuten skannaa hänen...</string>
+    <string name="contacts_fragment_invite_contact_title">Kutsu yhteyshenkilö</string>
+    <string name="contacts_fragment_scan_contact_title">Skannaa tai syötä kutsukoodi</string>
+    <string name="contacts_fragment_title">Yhteydet</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">Äänipuhelu</string>
+    <string name="conversation_activity_audio_message">Ääniviesti</string>
+    <string name="conversation_activity_call_missed">missed</string>
+    <string name="conversation_activity_cannot_send">Viestejä ei voi lähettää välittömästi:</string>
+    <string name="conversation_activity_cleanup_conversation">Poistit vanhoja viestejä.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s siivosi joitain vanhoja viestejä.</string>
+    <string name="conversation_activity_delete_message">Viestisi on todellakin poistettu.</string>
+    <string name="conversation_activity_empty_message">Sano jotain älykästä… tai hauskaa!</string>
+    <string name="conversation_activity_edit_message">Viestiä voi muokata yhteyshenkilösi laitteella vain, jos hänen sovelluksensa on ajan tasalla.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Paina pitkään lähetysnuolta poistaaksesi tämän viestin keskustelusta tietyn ajan kuluttua.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Yhteystietosi twinme-versio ei ole täysin toimiva.&lt;br /&gt;
+        Pyydä häntä päivittämään twinme.</string>
+    <string name="conversation_activity_group_member_information">%1$d jäsentä</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Viestien lähettäminen ei ole sallittua</string>
+    <string name="conversation_activity_group_one_member">1 jäsen</string>
+    <string name="conversation_activity_invitation_accepted">Kutsu hyväksytty</string>
+    <string name="conversation_activity_invitation_failed">Pyydä yhteystietojasi päivittämään twinme</string>
+    <string name="conversation_activity_invitation_joined">Ryhmän jäsen</string>
+    <string name="conversation_activity_invitation_pending">Kutsu käynnissä</string>
+    <string name="conversation_activity_invitation_refused">Kutsu hylättiin</string>
+    <string name="conversation_activity_invitation_title">Kehotan sinua liittymään ryhmään</string>
+    <string name="conversation_activity_local_cleanup">Pääsisältö on poistettu paikallisesti.</string>
+    <string name="conversation_activity_manage_conversation">Hallita keskustelua</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Kopioitu leikepöydälle!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Kopio</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Poistaa</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Siirto</string>
+    <string name="conversation_activity_menu_item_view_info_title">Tiedot</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">Toiminto ei ole valtuutettu lähettäjän toimesta</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Vastaa</string>
+    <string name="conversation_activity_menu_item_view_save_message">Tallennettu!</string>
+    <string name="conversation_activity_menu_item_view_save_title">Tallentaa</string>
+    <string name="conversation_activity_menu_item_view_share_title">Osake</string>
+    <string name="conversation_activity_message">Kirjoita viesti</string>
+    <string name="conversation_activity_photo_camera">Photokamera</string>
+    <string name="conversation_activity_record_confirm_send_record">Paina uudelleen lähettääksesi</string>
+    <string name="conversation_activity_record_start_record">Paina ja pidä tallentaaksesi</string>
+    <string name="conversation_activity_record_title">Ennätys</string>
+    <string name="conversation_activity_reduce_menu_lower">Vakio</string>
+    <string name="conversation_activity_reduce_menu_minimal">Minimi</string>
+    <string name="conversation_activity_reduce_menu_original">Alkuperäinen</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Ei koon muutosta</string>
+    <string name="conversation_activity_reject_stream">Hylkää</string>
+    <string name="conversation_activity_reply_to">Vastaa %1$s</string>
+    <string name="conversation_activity_reset_conversation">Olet nollannut keskustelun</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s on nollannut keskustelun</string>
+    <string name="conversation_activity_send_file_warning">Varoitus: Vastaanottajaa ei voi estää kopioimasta/tallentamasta/jakamasta dokumenttia (pdf, word, ppt, excel, zip jne.), joka voidaan avata vain sovelluksen ulkopuolella. Haluatko silti lähettää sen?</string>
+    <string name="conversation_activity_send_large_file_message">Tämä tiedosto on suuri (%1$d Mt). Haluatko jatkaa?</string>
+    <string name="conversation_activity_send_menu_allow_copy">Salli vastaanottajan kopioida/tallentaa/jakaa tätä sisältöä</string>
+    <string name="conversation_activity_stream_dialog">Haluatko hyväksyä sen?</string>
+    <string name="conversation_activity_unsupported_media">Mediamuotoa ei tueta.</string>
+    <string name="conversation_activity_video_call">Videopuhelu</string>
+    <string name="conversation_activity_video_camera">Videokamera</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">Dok.</string>
+    <string name="conversation_files_activity_links">Linkit</string>
+    <string name="conversation_files_activity_month">Tämä kuukausi</string>
+    <string name="conversation_files_activity_no_files">Keskustelusi kanssa %1$s ei sisällä mitään näistä elementeistä.</string>
+    <string name="conversation_files_activity_title">Media, web-linkit ja dokumentit</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Taustat &amp; värit</string>
+    <string name="conversation_settings_activity_emoji_size">Emoji koko</string>
+    <string name="conversation_settings_activity_link_preview">Visualisointi</string>
+    <string name="conversation_settings_activity_link_preview_message">Näytä web-sivuston esikatselu.</string>
+    <string name="conversation_settings_activity_link_title">Web-linkit</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">Päästä päähän salatut viestit vaihdetaan vertaisverkkoina, suoraan laitteesta toiseen, ilman välijakelupalvelinta = ei jälkiä pilvessä.</string>
+    <string name="conversations_fragment_no_result_found">Ei tuloksia haulle \'%1$s\'.</string>
+    <string name="conversations_fragment_start">Aloita keskustelu</string>
+    <string name="conversations_fragment_title">Keskustelut</string>
+    <string name="conversations_fragment_you">Sinä</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Tämä profiili näytetään vieraille, jotka soittavat sinulle tällä \"click-to-call\" -linkillä.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call -toiminnon avulla vieraat voivat soittaa sinulle selaimesta asentamatta sovellusta.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Jokaisella esiintymällä on nimi, kuva ja kuvaus, jotka edustavat puhelun aihetta, kuten:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">asiakaspalveluasi</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">myymäsi auto</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">ammatillinen ryhmäpuhelu</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">video-ovikello jakeluhenkilöille.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">Click-to-call sisältää määritteitä, jotka määrittävät, onko se:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">ääni- ja/tai videopuhelu</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">yksilö- tai ryhmäpuhelu</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">aina auki tai rajoitettu tiettyyn päivämäärään ja aikaan.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">Jaa \"click-to-call\"-linkki tai QR-koodi kanavien kautta, jotta voit tavoittaa asiaankuuluvat ihmiset, esim</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">toimintakehotus verkkosivustollasi</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">lisäosa luokiteltujen mainosten alustalla</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">sähköposti ryhmäpuheluun kutsutuille ihmisille</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">kyltti ulko-ovellesi jakeluhenkilöille.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Vastaanottaja skannaa QR-koodin ja avaa linkin mobiililaitteen tai PC:n selaimessa. He voivat sitten:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Vaihda oletusnimi (Vieras), joka edustaa heitä puhelussa</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Soita sinulle painamalla \"Soita\" -painiketta verkkosivulla.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">Puhelun jälkeen he voivat pitää verkkosivun auki soittaakseen sinulle takaisin.</string>
+    <string name="create_external_call_activity_placeholder">Aihe (Auta, Ilmoita, Tapaaminen, Ovikello,…)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Kutsu jäseniä</string>
+    <string name="create_group_activity_create">Luoda</string>
+    <string name="create_group_activity_member_allow_invitation_message">Salli ryhmän jäsenet kutsua yhteyshenkilöt</string>
+    <string name="create_group_activity_member_allow_invitation_title">Jäsenten kutsu</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Salli jäsenten kutsua muita jäseniä henkilökohtaisiksi kontakteiksi</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Muodosta henkilökohtaiset kontaktit</string>
+    <string name="create_group_activity_member_allow_post_message">Salli ryhmän jäsenet lähettää viestejä</string>
+    <string name="create_group_activity_member_allow_post_title">Viestien lähettäminen</string>
+    <string name="create_group_activity_member_list">Jäsenluettelo (%1$d)</string>
+    <string name="create_group_activity_name_hint">Ryhmän nimi</string>
+    <string name="create_group_activity_title">Ryhmä</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">Sekä nimi että kuva ovat tärkeitä, jotta yhteyshenkilösi tunnistavat ja erottavat sinut muista.</string>
+    <string name="create_profile_activity_message">Näitä profiilitietoja käytetään kontaktien kutsumiseen.</string>
+    <string name="create_profile_activity_onboarding_message">Kirjoita profiili (nimi ja kuva), joka edustaa sinua yhteyshenkilöillesi.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Profiilien avulla voit kutsua yhteyshenkilöitä luomaan suhteita kanssasi sovelluksessa. Sinulla voi olla niin monta profiilia (persona) kuin haluat, jokainen liitettynä tiettyyn "Space".</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Jokaisella "profiililla" on "nimi" ja "kuva" (pakollinen), jotka kutsumasi yhteyshenkilöt näkevät ja joita käytetään alkuperäisenä profiilina, joka liittyy kyseisen "Space" äskettäin luotuihin suhteisiin.</string>
+    <string name="create_profile_activity_onboarding_message_part_3">Kun suhteet on luotu, niillä on oma "profiili"-parinsa, jotka edustavat sinua ja yhteystietojasi toisilleen.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">Tämän jälkeen voit muokata sitä, miten haluat jokaisen yhteyshenkilösi tuntevan jokaisen suhteen yhteydessä itsenäisesti.</string>
+    <string name="create_profile_activity_save_message">Tätä nimeä ja kuvaa käytetään yhteyshenkilösi kutsumiseen ja suhteiden alustamiseen. Voit muokata ja mukauttaa niitä jokaiselle suhteelle.</string>
+    <string name="create_profile_activity_welcome1">Anna profiilikuva</string>
+    <string name="create_profile_activity_welcome2">Tervetuloa %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">"Spaces" ovat paikallisia eivätkä näy kontakteille.</string>
+    <string name="create_space_activity_onboarding_message_part_1">"Spaces" auttaa sinua järjestämään yhteystietosi sen mukaan, mihin sosiaalisiin piireihin he kuuluvat, esim. Perhe, ystävät, bisnes, hauskanpito jne.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Jokainen "Space" liittyy "profiiliin", joka edustaa persoonaa, jota haluat käyttää ollessasi vuorovaikutuksessa kyseisen tilan sosiaalisen piirin kontaktien kanssa, esim. isä, Johny, tohtori John Doe, Batman jne.</string>
+    <string name="create_space_activity_onboarding_message_part_3">"Spaces" ovat paikallisia laitteesi sovelluksellesi. Ne näkyvät vain sinulle, eivät yhteystietojesi tai palvelupalvelimille.</string>
+    <string name="create_space_activity_onboarding_message_part_4">"Space" on:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- Nimi, joka edustaa tiettyä sosiaalista piiriä, jonka kanssa olet vuorovaikutuksessa</string>
+    <string name="create_space_activity_onboarding_message_part_6">- Kuva, jonka avulla voit tunnistaa sen nopeasti "Spaces"-luettelossasi</string>
+    <string name="create_space_activity_onboarding_message_part_7">- väri "Theme" mukauttaa sen ulkoasua ja tuntumaa</string>
+    <string name="create_space_activity_onboarding_message_part_8">- Asetukset, jotka voivat olla erityisiä kullekin "Space", mikä ohittaa sovelluksen asetusten määrittämät oletusarvot.</string>
+    <string name="create_space_activity_title">Luo Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">Tämä profiilinimi liittyy koodiin, jota käytetään meneillään olevan puhelun siirtämiseen selaimeen.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Minun siirrot</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Vahvista tilin poistaminen kirjoittamalla alla olevat kirjaimet \"OK\".</string>
+    <string name="deleted_account_activity_delete">Poista tili</string>
+    <string name="deleted_account_activity_warning">Huomio‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">Tilisi on poistettu ja kaikki siihen liittyvät tiedot on tuhottu.&lt;br /&gt;
+        You sulkee sovelluksen.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Haluatko varmasti poistaa tämän suhteen?</string>
+    <string name="edit_contact_activity_message">Tämä yhteyshenkilö ei voi enää tavoittaa sinua.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Tämän profiilin poistaminen mitätöi siihen liittyvän kutsukoodin. Vahvista poisto?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">Haluatko varmasti poistaa tämän \"Click-to-Call\" -koodin?</string>
+    <string name="edit_external_call_activity_delete_message">Tämä \"Click-to-Call\" -linkki ei ole enää käytettävissä.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">Muokkaa profiilia</string>
+    <string name="edit_profile_activity_propagating_all_contacts">kaikille tämän Spacen kontakteille</string>
+    <string name="edit_profile_activity_propagating_ask_message">Levitä juuri muokkaamaasi kuvaa, nimeä tai kuvausta:</string>
+    <string name="edit_profile_activity_propagating_except_contacts">kaikille, elleivät ne ole yksilöityjä</string>
+    <string name="edit_profile_activity_propagating_message">Voit siirtää kutsuprofiilisi muutokset olemassa oleville kontakteillesi tai et.</string>
+    <string name="edit_profile_activity_propagating_no_contact">ei kenellekään</string>
+    <string name="edit_profile_activity_propagating_profile">Levitä profiilin muutoksia</string>
+    <string name="edit_profile_activity_remove_active_profile">Et voi poistaa käytössä olevaa profiilia</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">Kun suhde on luotu, on erittäin suositeltavaa sertifioida se turvallisuuden vahvistamiseksi.</string>
+    <string name="enter_invitation_code_activity_enter_code">Syötä Mini-koodi</string>
+    <string name="enter_invitation_code_activity_error_message">Tämä koodi on virheellinen. Se voi olla jo käytetty tai vanhentunut.</string>
+    <string name="enter_invitation_code_activity_invitation_message">Kun suhde on luotu, älä unohda sertifioida sitä sen turvallisuuden vahvistamiseksi.</string>
+    <string name="enter_invitation_code_activity_message">Syötä yhteyshenkilösi antama Mini-koodi suhteen luomiseksi.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">Yhteyshenkilö antoi sinulle 6-merkkisen Mini-koodin suhteen luomiseksi. Tämä kertakäyttöinen Mini-koodi vanhenee 24 tuntia sen luomisen jälkeen.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">Keskustelujen sisältö viedään ZIP-tiedostoon.</string>
+    <string name="export_activity_content_title">Sisällys</string>
+    <string name="export_activity_content_to_export">Vietävä sisältö</string>
+    <string name="export_activity_do_not_leave_screen">Älä poistu näytöltä viennin aikana.</string>
+    <string name="export_activity_export">Vienti</string>
+    <string name="export_activity_file">tiedosto</string>
+    <string name="export_activity_files">tiedostot</string>
+    <string name="export_activity_get_all_content">Keskustelun sisältöä haetaan henkilön %1$s kanssa käynnissä.</string>
+    <string name="export_activity_get_one_chat">Keskustelujen sisällön haku on meneillään.</string>
+    <string name="export_activity_images">Kuvia</string>
+    <string name="export_activity_no_content_to_export">Ei vietävää sisältöä</string>
+    <string name="export_activity_one_conversation_zip_file">Keskustelun sisältö viedään ZIP-tiedostoon.</string>
+    <string name="export_activity_save_location">Sijainti</string>
+    <string name="export_activity_save_location_message">Valitse vientipaikka.</string>
+    <string name="export_activity_select_content">Valitse sisältö, jonka haluat viedä.\nVain ei-lyhytaikainen sisältö, jonka kopiointi/tallennukset/jakaminen on sallittua, voidaan viedä.</string>
+    <string name="export_activity_success">Vienti suoritettu onnistuneesti.</string>
+    <string name="export_activity_title">Keskustelut viedään</string>
+    <string name="export_activity_videos">Videoita</string>
+    <string name="export_activity_voice_messages">Ääniviestit</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Vakava virhe, koodi %1$d.\nKäynnistä sovellus uudelleen ja ilmoita ongelmasta palauteviestillä, jos voit. Anteeksi häiriö.</string>
+    <string name="fatal_error_activity_error_message">Kuolemaan johtanut virhe: %1$s&lt;br /&gt;
+        You sulkee sovelluksen.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Yhteystieto</string>
+    <string name="feedback_activity_gdpr_notice">Käytä tätä lomaketta pyytämään pääsyä tilitietoihisi.</string>
+    <string name="feedback_activity_help">Arvostamme apuasi ongelmien tunnistamisessa ja kanssamme niiden ratkaisemisessa.</string>
+    <string name="feedback_activity_info_logs">Virheenkorjausloki sisältää vain alhaisen tason teknisiä tietoja sovellustoiminta ja käyttäytymisestä, eikä se paljasta MITÄÄN henkilökohtaisia</string>
+    <string name="feedback_activity_logs">Virheenkorjausloki</string>
+    <string name="feedback_activity_message">Viesti</string>
+    <string name="feedback_activity_send">Lähetä</string>
+    <string name="feedback_activity_send_logs">Lähetä Virheenkorjausloki</string>
+    <string name="feedback_activity_send_message">Palaute lähetetty. Kiitos.</string>
+    <string name="feedback_activity_subject">Aihe</string>
+    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Tämä toimenpide mitätöi tämän profiilin nykyisen kutsukoodin. Haluatko varmasti luoda uuden koodin?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Luo uusi kutsukoodi</string>
+    <string name="fullscreen_qrcode_activity_save_message">Tuo tai skannaa tämän kutsun QR-koodi twinme lisätäksesi tämän yhteystiedon.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Tallenna kuvagalleriaan</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Valtuuta äänipuhelut</string>
+    <string name="group_capabilities_activity_information_programmed_call">Määritä puhelujen päivämäärä/aika</string>
+    <string name="group_capabilities_activity_information_video_call">Valtuuta videopuhelut</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">Ryhmän järjestelmänvalvoja ei valtuuttanut tätä toimintaa.</string>
+    <string name="group_member_activity_invitation_message">Kutsu %1$s henkilökohtaiseksi yhteystiedoksi</string>
+    <string name="group_member_activity_invitation_title">Kutsu</string>
+    <string name="group_member_activity_invite_personnal_relation">Kutsu henkilökohtaiseksi yhteystiedoksi</string>
+    <string name="group_member_activity_remove_message">Haluatko varmasti poistaa jäseniä tästä ryhmästä?</string>
+    <string name="group_member_activity_section_administrator">Hallintomies</string>
+    <string name="group_member_activity_section_invitation">Kutsut</string>
+    <string name="group_member_activity_section_member">Jäsenet</string>
+    <string name="group_member_activity_title">Ryhmän jäsenet</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s on varattu</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Puhelu peruutettiin %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Puhelu hylättiin %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s on offline-tilassa</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Ei lupaa soittaa</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s poisti tämän suhteen</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s ei vastaa</string>
+    <string name="info_item_activity_deleted">Vastaanottaja on poistanut:</string>
+    <string name="info_item_activity_may_be_copied">Voidaan kopioida/tallentaa/jakaa…</string>
+    <string name="info_item_activity_may_not_be_copied">Ei saa kopioida/tallentaa/jakaa…</string>
+    <string name="info_item_activity_reactions">Reaktiot</string>
+    <string name="info_item_activity_received">Otettu vastaan:</string>
+    <string name="info_item_activity_seen">Katsottu:</string>
+    <string name="info_item_activity_sent">Lähetetyt:</string>
+    <string name="info_item_activity_updated">Muutettu</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Tämä toiminto mitätöi nykyisen kutsukoodin, joka liittyy tähän \"click-to-call\" -linkkiin. Vahvistaa?</string>
+    <string name="invitation_call_activity_generate_code_title">Luo uusi koodi tälle linkille</string>
+    <string name="invitation_call_activity_invite_message">Avaa verkko-osoite %1$s tai skannaa QR-koodi soittaaksesi \"%2$s\".</string>
+    <string name="invitation_call_activity_message">Jaa tämä \"click-to-call\" -koodi jonkun kanssa, joka voi sitten soittaa sinulle verkosta tai mobiilisovelluksesta.</string>
+    <string name="invitation_call_activity_save_message">Skannaa tämä QR-koodi soittaaksesi \"%1$s\".</string>
+    <string name="invitation_call_activity_share">Julkaista</string>
+    <string name="invitation_call_activity_title">Ulkopuhelu</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Luo Mini-koodi</string>
+    <string name="invitation_code_activity_create_code_subtitle">kutsuaksesi yhteyshenkilön, kun et pääse käyttämään sovellusta.</string>
+    <string name="invitation_code_activity_expiration">Vanheneminen:</string>
+    <string name="invitation_code_activity_history">Omat Mini-koodini</string>
+    <string name="invitation_code_activity_limit_message">Aktiivisten minikoodien sallittu enimmäismäärä on saavutettu. Sinun on odotettava 24 tuntia uusien luomiseksi.</string>
+    <string name="invitation_code_activity_onboarding_message">Mini-koodit ovat kertakäyttöisiä ja voimassa vain 24 tuntia. Voit antaa niitä yhteyshenkilöillesi suhteen luomiseksi, kun sinulla ei ole pääsyä sovellukseen (esim. ilman puhelinta).</string>
+    <string name="invitation_code_activity_success_message">On erittäin suositeltavaa sertifioida Mini-koodilla luodut suhteet niiden turvallisuuden vahvistamiseksi.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Pyydä lähelläsi olevaa ystävääsi skannaamaan \"room\" QR-koodi twinmellä tai napauttamalla kutsukoodia kopioidaksesi se leikepöydälle.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Audio</string>
+    <string name="last_calls_activity_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">Tämän laitteen twinme-tilisi siirretään twinme+ -palveluun.</string>
+    <string name="local_account_migration_activity_message_older_version">Varmista, että päivität molemmat laitteet sovelluksen uusimpaan versioon ennen siirron aloittamista, jotta et menetä kaikkia suhteitasi.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">Lisää yhteystieto</string>
+    <string name="main_activity_add_group">Luo ryhmä</string>
+    <string name="main_activity_reset_conversation">Nollaa</string>
+    <string name="main_activity_reset_conversation_message">Tämän keskustelun nollaaminen poistaa kaikki viestit, myös yhteystietosi laitteelta. Vahvistaa?</string>
+    <string name="main_activity_reset_conversation_title">Poista keskustelu</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Tämän keskustelun nollaaminen poistaa kaikki viestit jokaisen ryhmän jäsenen laitteelta. Vahvistaa?</string>
+    <string name="main_activity_reset_group_conversation_message">Tämän keskustelun nollaaminen poistaa kaikki viestit laitteeltasi. Vahvistaa?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">Sinun on päivitettävä twinme+ -versioon, jotta voit käyttää tätä ominaisuutta. Voit siirtää kaikki tilitietosi.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">Voit siirtää kaikki tilitietosi.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme on saatavana premium-versiona, jossa on vielä enemmän ominaisuuksia.</string>
+    <string name="migration_twinme_plus_activity_premium_title">Päivitä twinme+: ksi</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">Noin</string>
+    <string name="navigation_activity_application_settings">Sovellusasetukset</string>
+    <string name="navigation_activity_feedback">Lähetä palautetta</string>
+    <string name="navigation_activity_getting_started">Aloita näin</string>
+    <string name="navigation_activity_help">Apua</string>
+    <string name="navigation_activity_profile">Profiilit</string>
+    <string name="navigation_activity_settings">Asetukset</string>
+    <string name="navigation_activity_sign_out">Kirjaudu ulos</string>
+    <string name="navigation_activity_sounds">Äänet</string>
+    <string name="navigation_activity_support">Tuki</string>
+    <string name="navigation_activity_title">Valikko</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Äänipuhelu henkilölle %1$s</string>
+    <string name="notification_center_audio_message">Lähetti sinulle ääniviestin</string>
+    <string name="notification_center_audio_message_received">Uusi ääniviesti</string>
+    <string name="notification_center_cancel">Hylkää</string>
+    <string name="notification_center_cleanup_conversation">Joitakin vanhoja viestejä on poistettu.</string>
+    <string name="notification_center_deleted_contact">Yhteyshenkilö poistettu</string>
+    <string name="notification_center_file_message">Lähetti sinulle tiedoston</string>
+    <string name="notification_center_file_message_received">Uusi tiedosto</string>
+    <string name="notification_center_group_invitation">Lähetti sinulle kutsun</string>
+    <string name="notification_center_group_invitation_received">Uusi kutsu</string>
+    <string name="notification_center_join_group">Olet ryhmän jäsen</string>
+    <string name="notification_center_message_received">Uusi viesti</string>
+    <string name="notification_center_missed_audio_call_to">Vastaamaton äänipuhelu henkilölle %1$s</string>
+    <string name="notification_center_missed_video_call_to">Vastaamaton videopuhelu henkilölle %1$s</string>
+    <string name="notification_center_mute">Mute</string>
+    <string name="notification_center_new_contact">Uusi kontakti</string>
+    <string name="notification_center_photo_message">Lähetti sinulle valokuvan</string>
+    <string name="notification_center_photo_message_received">Uusi valokuva</string>
+    <string name="notification_center_reaction">reagoi %1$s</string>
+    <string name="notification_center_reaction_message">On reagoinut viestiin</string>
+    <string name="notification_center_reaction_message_received">Reaktio viestiin</string>
+    <string name="notification_center_reset_message">Keskustelu tyhjennetty</string>
+    <string name="notification_center_stop">Lopettaa</string>
+    <string name="notification_center_transfering_data">Viestien siirtäminen…</string>
+    <string name="notification_center_unmute">Unmute</string>
+    <string name="notification_center_updated_contact_avatar">Kuva päivitetty</string>
+    <string name="notification_center_updated_contact_name">Nimi päivitetty</string>
+    <string name="notification_center_video_call_to">Videopuhelu henkilölle %1$s</string>
+    <string name="notification_center_video_message">Lähetti sinulle videon</string>
+    <string name="notification_center_video_message_received">Uusi video</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Äänipuhelut</string>
+    <string name="notification_channel_contact_title">Yhteystiedot</string>
+    <string name="notification_channel_group_title">Ryhmät</string>
+    <string name="notification_channel_message_title">Viestien</string>
+    <string name="notification_channel_missed_title">Vastaamattomat puhelut</string>
+    <string name="notification_channel_system_title">Toiset</string>
+    <string name="notification_channel_video_title">Videopuhelut</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">Yritti soittaa</string>
+    <string name="notifications_fragment_item_audio_message">Lähetti sinulle ääniviestin</string>
+    <string name="notifications_fragment_item_cleanup_message">siivosi joitain vanhoja viestejä.</string>
+    <string name="notifications_fragment_item_deleted_contact">Yhteyshenkilö poistettu</string>
+    <string name="notifications_fragment_item_file_message">Lähetti sinulle tiedoston</string>
+    <string name="notifications_fragment_item_group_invitation">Lähetti sinulle kutsun</string>
+    <string name="notifications_fragment_item_image_message">Lähetti sinulle valokuvan</string>
+    <string name="notifications_fragment_item_join_group">Olet ryhmän jäsen</string>
+    <string name="notifications_fragment_item_new_contact">Uusi kontakti</string>
+    <string name="notifications_fragment_item_reset_conversation">On nollannut keskustelun</string>
+    <string name="notifications_fragment_item_shortest_day">%1$dpv</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$dt</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$dmin</string>
+    <string name="notifications_fragment_item_shortest_second">%1$ds</string>
+    <string name="notifications_fragment_item_text_message">Lähetti sinulle viestin</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Kuva päivitetty</string>
+    <string name="notifications_fragment_item_updated_contact_name">Nimi päivitetty</string>
+    <string name="notifications_fragment_item_video_call">Yritti soittaa sinulle videopuhelun</string>
+    <string name="notifications_fragment_item_video_message">Lähetti sinulle videon</string>
+    <string name="notifications_fragment_no_notification_message">Tässä on lueteltu yhteystietoihin, keskusteluihin, puheluihin jne. liittyvät ilmoitukset.</string>
+    <string name="notifications_fragment_no_notification_title">Sinulla ei ole ilmoitusta.</string>
+    <string name="notifications_fragment_reset">Haluatko varmasti palauttaa kaikki ilmoitukset?</string>
+    <string name="notifications_fragment_reset_title">Nollaa ilmoitukset</string>
+    <string name="notifications_fragment_title">Ilmoitukset</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">Kirjasinleikkaukset</string>
+    <string name="personalization_activity_font_extra_large">Hyvin suuri</string>
+    <string name="personalization_activity_font_large">Suuri</string>
+    <string name="personalization_activity_font_small">Pieni</string>
+    <string name="personalization_activity_haptic_feedback">Haptinen palaute</string>
+    <string name="personalization_activity_haptic_feedback_message">Kosketustunto kosketettaessa.</string>
+    <string name="personalization_activity_menu_choose_color">Oletusvärit</string>
+    <string name="personalization_activity_menu_enter_color">Värikoodi</string>
+    <string name="personalization_activity_mode">Tila</string>
+    <string name="personalization_activity_mode_dark">Tumma</string>
+    <string name="personalization_activity_mode_light">Valo</string>
+    <string name="personalization_activity_start_tab_information">Valitse välilehti, josta haluat käynnistää sovelluksen.</string>
+    <string name="personalization_activity_start_tab_title">Oletusvälilehti</string>
+    <string name="personalization_activity_system">Järjestelmä</string>
+    <string name="personalization_activity_title">Personointi</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Vaihda etu-/takakameraa</string>
+    <string name="premium_services_activity_camera_control_description_2">Zoomaa sisään/ulos</string>
+    <string name="premium_services_activity_camera_control_description_3">Auta läheistäsi tai asiakasta etänä</string>
+    <string name="premium_services_activity_camera_control_description_4">Hallitse valvontakameraa</string>
+    <string name="premium_services_activity_camera_control_subtitle">Ohjaa yhteyshenkilösi kameraa puhelun aikana hänen luvallaan</string>
+    <string name="premium_services_activity_camera_control_title">Kameran etäohjaus</string>
+    <string name="premium_services_activity_click_to_call_description_1">Luo \"soita minulle napsauttamalla\" -koodi</string>
+    <string name="premium_services_activity_click_to_call_description_2">Julkaise tai levitä millä tahansa tavalla</string>
+    <string name="premium_services_activity_click_to_call_description_3">Vastaanottajat skannaavat koodin ja soittavat sinulle</string>
+    <string name="premium_services_activity_click_to_call_description_4">Anonyymi ilman jälkeä pilvessä</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Salli vieraiden soittaa sinulle verkosta</string>
+    <string name="premium_services_activity_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_activity_conversation_description_1">Media, tiedostot, äänimuistiinpanot, viestit</string>
+    <string name="premium_services_activity_conversation_description_2">Vanhempi kuin tietty ajanjakso/päivämäärä</string>
+    <string name="premium_services_activity_conversation_description_3">Yhdelle keskustelulle tai kaikille</string>
+    <string name="premium_services_activity_conversation_description_4">Vain paikallisesti, ei vaikutusta toiseen päähän</string>
+    <string name="premium_services_activity_conversation_subtitle">Vie sisältöä ja vapauta tilaa</string>
+    <string name="premium_services_activity_conversation_title">Keskustelujen hallinta</string>
+    <string name="premium_services_activity_description_part1_subtitle">Suora yhteys laitteiden välillä</string>
+    <string name="premium_services_activity_description_part1_title">HD-äänen/videon laatu</string>
+    <string name="premium_services_activity_description_part2_subtitle">Ei jälkeä pilvessä</string>
+    <string name="premium_services_activity_description_part2_title">Yksityisyys – Luottamuksellisuus</string>
+    <string name="premium_services_activity_description_part3_subtitle">Energiatehokkuus</string>
+    <string name="premium_services_activity_description_part3_title">Ekovastuullinen</string>
+    <string name="premium_services_activity_group_call_description_1">Teräväpiirto audio/video</string>
+    <string name="premium_services_activity_group_call_description_2">Suora yhteys laitteiden välillä</string>
+    <string name="premium_services_activity_group_call_description_3">Turvallinen ja yksityinen</string>
+    <string name="premium_services_activity_group_call_description_4">Ei jälkeä pilvessä</string>
+    <string name="premium_services_activity_group_call_subtitle">Kutsu kontakteja liittymään ääni-/videoryhmäpuheluun</string>
+    <string name="premium_services_activity_group_call_title">Ryhmäpuhelut</string>
+    <string name="premium_services_activity_privacy_description_1">Lukitse sovellus biometrisellä tai muulla todennuksella</string>
+    <string name="premium_services_activity_privacy_description_2">Piilota viimeinen näyttö sovelluksen vaihtajassa</string>
+    <string name="premium_services_activity_privacy_description_3">Efemeriset viestit, jotka katoavat tietyn ajan kuluttua</string>
+    <string name="premium_services_activity_privacy_description_4">Estä kontaktia soittamasta sinulle</string>
+    <string name="premium_services_activity_privacy_subtitle">Hallitse sovellusta, yhteystietoja ja viestejä</string>
+    <string name="premium_services_activity_privacy_title">Lisää yksityisyyttä</string>
+    <string name="premium_services_activity_space_description_1">Useita profiileja ja niihin liittyviä suhteita, keskusteluja, historiaa</string>
+    <string name="premium_services_activity_space_description_2">Mukautettu ulkoasu, ilmoitukset ja asetukset</string>
+    <string name="premium_services_activity_space_description_3">Perheelle, ystäville, työtovereille, yrityksille, urheilulle jne.</string>
+    <string name="premium_services_activity_space_description_4">Salaisia Spaces ei ole luettelossa, käytetään nimellä</string>
+    <string name="premium_services_activity_space_subtitle">Jokaiselle sosiaaliselle ryhmälle, jonka kanssa olet vuorovaikutuksessa</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">Jaa musiikkisi livenä</string>
+    <string name="premium_services_activity_streaming_description_2">Jokainen osallistuja voi hallita mediasoitinta</string>
+    <string name="premium_services_activity_streaming_description_3">Ole vuorovaikutuksessa puhelun aikana samanaikaisesti</string>
+    <string name="premium_services_activity_streaming_description_4">Sama yksityisyys kuin oikeassa elämässä</string>
+    <string name="premium_services_activity_streaming_subtitle">Suoratoista mediaasi puhelun aikana</string>
+    <string name="premium_services_activity_streaming_title">Median jakaminen</string>
+    <string name="premium_services_activity_transfert_description_1">Luo puhelunsiirtokoodi ja profiili</string>
+    <string name="premium_services_activity_transfert_description_2">Lataa sen URL-osoite tai skannaa koodi tietokoneella</string>
+    <string name="premium_services_activity_transfert_description_3">Lisää sivu kirjanmerkkeihin selaimessa</string>
+    <string name="premium_services_activity_transfert_description_4">Soita sivulta matkapuhelun aikana</string>
+    <string name="premium_services_activity_transfert_subtitle">Siirrä meneillään oleva matkapuhelu selaimeen</string>
+    <string name="premium_services_activity_transfert_title">Puhelun siirto</string>
+    <string name="premium_services_activity_title">Kutsu kontakteja liittymään meneillään olevaan ääni-/videopuheluun.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Lukitse sovellus biometrisilla palveluilla tai PIN-koodilla.</string>
+    <string name="privacy_activity_hide_last_screen_message">Estä esikatselujen näkyminen sovelluskytkimessä</string>
+    <string name="privacy_activity_hide_last_screen_title">Piilota viimeinen näyttö</string>
+    <string name="privacy_activity_lock_screen_message">Avaa sovelluksen käyttö laitteesi biometristen tai pääsykooditodennuspalveluiden avulla. Voit silti vastata saapuviin puheluihin ja vastaanottaa ilmoituksia, kun pääsy sovellukseen on lukittu.</string>
+    <string name="privacy_activity_lock_screen_not_available">Tämä vaihtoehto vaatii version Android > 5.0</string>
+    <string name="privacy_activity_lock_screen_timeout">Pääsee lukituksen aikakatkaisuun</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Välitön</string>
+    <string name="privacy_activity_lock_screen_title">Pääsylukko</string>
+    <string name="privacy_activity_title">Yksityisyys</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Lisää profiili</string>
+    <string name="profile_fragment_create_profile">Luo profiili</string>
+    <string name="profile_fragment_default_action">Aktivoida</string>
+    <string name="profile_fragment_default_profile_title">Aktiivinen profiili</string>
+    <string name="profile_fragment_identity_title">Profiilit</string>
+    <string name="profile_fragment_message">Tämän profiilin avulla voit kutsua yhteyshenkilösi luomaan kanssasi yksityisen suhteen hallinnassasi.</string>
+    <string name="profile_fragment_twincode_title">Kutsukoodi</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Lisää välityspalvelin</string>
+    <string name="proxy_activity_add_placeholder">Liitä tai kirjoita välityspalvelimen URL-osoite</string>
+    <string name="proxy_activity_already_use">Tämä välityspalvelin on jo määritetty sovelluksessasi.</string>
+    <string name="proxy_activity_enable">Käytä välityspalvelinta</string>
+    <string name="proxy_activity_format">Kelvolliset välityspalvelimen URL-muotoilut:</string>
+    <string name="proxy_activity_invalid_format">Virheellinen URL-osoitteen muoto</string>
+    <string name="proxy_activity_limit">Olet saavuttanut sallittujen välityspalvelinten määrän rajan (%1$d). Jos haluat lisätä uuden, sinun on ensin poistettava yksi.</string>
+    <string name="proxy_activity_list">Omat välityspalvelimet</string>
+    <string name="proxy_activity_list_information">Käytä alla olevasta luettelosta välityspalvelinta vain, jos sovellus ei voi muodostaa yhteyttä palveluun ilman välityspalvelinta.</string>
+    <string name="proxy_activity_onboarding">Kun pääsy sovelluksen signalointipalvelimiin on estetty maassasi, välityspalvelimet voivat ohittaa nämä esteet monissa olosuhteissa ja sallia sinun kommunikoida yksityisesti. Sovelluksen sisäisten välityspalvelinten lisäksi voit luoda omia tai käyttää jonkun muun luomaa välityspalvelinta. Välityspalvelimet eivät voi käyttää vaihdettavaa sisältöä missään olosuhteissa.</string>
+    <string name="proxy_activity_information">Käytä välityspalvelinta vain, jos et voi muodostaa yhteyttä palveluun tavallisista Wi-Fi- tai matkapuhelinverkoista.</string>
+    <string name="proxy_activity_share">Avaa %1$s-linkki Twinme-sovelluksella laitteellasi määrittääksesi tämän välityspalvelimen automaattisesti.</string>
+    <string name="proxy_activity_title">Välityspalvelin</string>
+    <string name="proxy_activity_url">Haluatko käyttää tämän välityspalvelimen URL-osoitetta?</string>
+    <string name="proxy_activity_warning">Varoitus! Tämän välityspalvelimen URL-osoite ei salli yhteyden muodostamista sovelluksen palveluun.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">Muuta käyttöoikeuksia</string>
+    <string name="quality_of_service_activity_enable_notifications">Ota käyttöön ilmoitukset</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Ilman näitä oikeuksia viestien saapuminen perille voi kestää hyvin kauan.</string>
+    <string name="quality_of_service_activity_notification_description">Anna sovelluksen toimia taustalla</string>
+    <string name="quality_of_service_activity_notification_title">Onko viestien vaihto liian hidasta?</string>
+    <string name="quality_of_service_activity_settings">Muuta sovellusten käyttöoikeuksia järjestelmäasetuksissa.</string>
+    <string name="quality_of_service_activity_step1_message">Salattuja viestejä vaihdetaan suoraan laitteiden välillä reaaliajassa käyttämällä "peer-to-peer" -lähestymistapaa ilman sisällönjakelupalvelimia. Tämä varmistaa, että pilvessä ei ole jälkiä ja tarjoaa ainutlaatuisen yksityisyyden suojan.</string>
+    <string name="quality_of_service_activity_step2_message">Varmistaaksesi hyvän palvelun laadun, määritä laitteesi sallimaan sovelluksen vastaanottaa ilmoituksia taustalla ja sulkemaan se pois akun optimoinnista.</string>
+    <string name="quality_of_service_activity_step3_message">Käytä sovellusta usein, jotta käyttöjärjestelmä priorisoi sen eikä lopeta sitä odottamatta. \n\nJa muista ilmoittaa tästä yhteyshenkilöllesi!</string>
+    <string name="quality_of_service_activity_warning_background_data">Salli sovelluksen käyttää mobiilidataa taustalla.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Salli sovelluksen vastaanottaa push-ilmoituksia.</string>
+    <string name="quality_of_service_activity_warning_run_background">Anna sovelluksen toimia taustalla.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">Aseta järjestelmänvalvojaksi</string>
+    <string name="room_members_activity_delete_message">Vahvista tämän jäsenen poisto</string>
+    <string name="room_members_activity_moderators_title">Moderaattori</string>
+    <string name="room_members_activity_only_admin_message">Ainoaa järjestelmänvalvojaa ei voida poistaa.</string>
+    <string name="room_members_activity_owner_title">Omistaja</string>
+    <string name="room_members_activity_participants_title">Osallistujat</string>
+    <string name="room_members_activity_remove_admin_title">Poista järjestelmänvalvojana</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">Syötä tai liitä kutsulinkki</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">Tarkista yhteytesi tila palveluun</string>
+    <string name="settings_advanced_activity_status_connection_title">Yhteyden tila</string>
+    <string name="settings_advanced_activity_title">Lisäasetukset</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Salli vastaanottajien kopioida / tallentaa / jakaa sisältösi</string>
+    <string name="settings_activity_allow_copy_file_title">Kaikki tiedostotyypit</string>
+    <string name="settings_activity_allow_copy_text_title">Tekstiviestit</string>
+    <string name="settings_activity_application_notifications">Sovellus ilmoitukset</string>
+    <string name="settings_activity_audio_call_category_title">Äänipuhelut</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Soittoäänen nimi</string>
+    <string name="settings_activity_audio_call_notification_title">Soittoääni</string>
+    <string name="settings_activity_audio_call_vibration_title">Viber</string>
+    <string name="settings_activity_authorization_title">Käyttöoikeudet</string>
+    <string name="settings_activity_call_item_menu_all">Kaikki puhelut</string>
+    <string name="settings_activity_chat_category_title">Viestien</string>
+    <string name="settings_activity_chat_ringtone_title">Äänen nimi</string>
+    <string name="settings_activity_chat_title">Ääni</string>
+    <string name="settings_activity_chat_vibration_title">Viber</string>
+    <string name="settings_activity_content_information">Keskustelussa lähetettyjen mediasisältöjen resoluutio: teräväpiirto vaatii enemmän dataa ja siten enemmän lähetysaikaa.</string>
+    <string name="settings_activity_content_title">Media</string>
+    <string name="settings_activity_default_directory_title">Oletuskansio tiedostojen tallentamiseksi</string>
+    <string name="settings_activity_default_sound">Oletusarvo</string>
+    <string name="settings_activity_default_value_message">Näitä parametreja käytetään oletusarvoina sovellustasolla.</string>
+    <string name="settings_activity_display_call_menu_missed">Vain vastaamattomat puhelut</string>
+    <string name="settings_activity_display_call_menu_none">Ei puheluita</string>
+    <string name="settings_activity_display_call_none">Ei mitään</string>
+    <string name="settings_activity_display_call_title">Näytä puheluilmoitukset keskusteluissa</string>
+    <string name="settings_activity_display_notification_content_title">Näytä viestin sisältö</string>
+    <string name="settings_activity_display_notification_like_title">Reaktiot viesteihin</string>
+    <string name="settings_activity_display_notification_sender_title">Näytä viestin lähettäjä</string>
+    <string name="settings_activity_ephemeral_message">Poista lähetetyt viestit automaattisesti</string>
+    <string name="settings_activity_ephemeral_section_title">ELINIKÄ</string>
+    <string name="settings_activity_ephemeral_title">Katoava viesti</string>
+    <string name="settings_activity_image_title">Kuva</string>
+    <string name="settings_activity_message_properties_title">Viestin ominaisuudet</string>
+    <string name="settings_activity_reset_default_value">Palauta oletusasetukset</string>
+    <string name="settings_activity_reset_preferences_button_title">Palauta oletusarvot</string>
+    <string name="settings_activity_reset_preferences_message">Palauta ilmoitusasetukset sovelluksen oletusarvoihin.</string>
+    <string name="settings_activity_reset_preferences_title">Nollaa asetukset</string>
+    <string name="settings_activity_permissions_title">LUVAT</string>
+    <string name="settings_activity_silent_sound">Hiljainen</string>
+    <string name="settings_activity_sound_enabled_title">ÄÄNEN ILMOITUKSET</string>
+    <string name="settings_activity_system_notifications_title">Järjestelmän ilmoitukset</string>
+    <string name="settings_activity_system_settings_title">Järjestelmäasetukset</string>
+    <string name="settings_activity_video_call_category_title">Videopuhelut</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Soittoäänen nimi</string>
+    <string name="settings_activity_video_call_notification_title">Soittoääni</string>
+    <string name="settings_activity_video_call_vibration_title">Viber</string>
+    <string name="settings_activity_welcome_screen_category_title">TERVETULOA</string>
+    <string name="settings_activity_welcome_screen_summary">Näytä tervetuloanäytöt</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">Salli osallistujien kutsua muita osallistujia henkilökohtaisina kontakteina</string>
+    <string name="settings_room_activity_allow_invite_contact">Salli osallistujien kutsua yhteystietonsa</string>
+    <string name="settings_room_activity_conference_notifications_inform">Ensimmäinen sisäänpääsy/viimeinen poistuminen</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Kaikki merkinnät/poistumiset</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Hiljainen</string>
+    <string name="settings_room_activity_display_members">Näytä jäsenet</string>
+    <string name="settings_room_activity_room_type_channel">Kanava - vain yhteen suuntaan</string>
+    <string name="settings_room_activity_room_type_channel_information">Vain järjestelmänvalvojat/valvojat voivat lähettää viestejä</string>
+    <string name="settings_room_activity_room_type_feedback">Kanava - palautteella</string>
+    <string name="settings_room_activity_room_type_feedback_information">Osallistujien palautetta näkevät vain järjestelmänvalvojat/valvojat</string>
+    <string name="settings_room_activity_room_type_forum">Forum</string>
+    <string name="settings_room_activity_room_type_forum_information">Osallistujat voivat lähettää kaikkien näkemiä viestejä</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Yhteystiedot</string>
+    <string name="share_activity_group_list">Ryhmät</string>
+    <string name="share_activity_title">Osake</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Click-to-call -koodi</string>
+    <string name="show_call_activity_information_code">Jaa tämä koodi vastaanottaaksesi ulkopuheluja.</string>
+    <string name="show_call_activity_schedule_call">Aikataulutettu puhelu</string>
+    <string name="show_call_activity_schedule_from">%1$s alkaen</string>
+    <string name="show_call_activity_schedule_from_to">%1$s %2$s - %3$s</string>
+    <string name="show_call_activity_schedule_message">Puhelu on sovittu muualle määritettyyn päivämäärään ja kellonaikaan.</string>
+    <string name="show_call_activity_schedule_to">%1$s asti</string>
+    <string name="show_call_activity_settings_call">Puhelutyyppi</string>
+    <string name="show_call_activity_settings_group_calls">Ryhmäpuhelu</string>
+    <string name="show_call_activity_settings_limited">Suunniteltu</string>
+    <string name="show_call_activity_settings_start">Käynnistä</string>
+    <string name="show_call_activity_settings_end">Loppu</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Ääni</string>
+    <string name="show_contact_activity_chat">Chat</string>
+    <string name="show_contact_activity_export_contents">Vie sisältöjä</string>
+    <string name="show_contact_activity_history_title">Historiallinen</string>
+    <string name="show_contact_activity_identity_title">Tuntee minut</string>
+    <string name="show_contact_activity_last_calls">Viimeiset puhelut</string>
+    <string name="show_contact_activity_cleanup">Siivoaminen</string>
+    <string name="show_contact_activity_pending">Odottaa</string>
+    <string name="show_contact_activity_pending_message">Tätä suhdetta ollaan luomassa. Ole hyvä ja odota.</string>
+    <string name="show_contact_activity_revoked">Poistettu</string>
+    <string name="show_contact_activity_settings_coach_mark">Määritä, mitä kontaktisi saa tehdä tässä suhteessa kanssasi.</string>
+    <string name="show_contact_activity_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Lisää jäsen</string>
+    <string name="show_group_activity_invitation_list">Odottavat kutsut:%1$d</string>
+    <string name="show_group_activity_leave">Poistu ryhmästä</string>
+    <string name="show_group_activity_leave_confirm_message">Haluatko varmasti poistua tästä ryhmästä?</string>
+    <string name="show_group_activity_leave_message">Poistut tästä ryhmästä etkä voi enää käyttää sen keskusteluja.</string>
+    <string name="show_group_activity_member_list">Jäsenluettelo (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">Haluatko varmasti poistaa tämän ryhmän?</string>
+    <string name="show_group_activity_remove_message">Tämä ryhmä poistetaan kaikilta sen jäseniltä ja sen keskustelut poistetaan.</string>
+    <string name="show_group_activity_title">Ryhmä</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Hallintaliitäntä</string>
+    <string name="show_room_activity_invite_participants">Kutsu osallistujia</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Kuva</string>
+    <string name="space_appearance_activity_background_message">Mukauta keskustelujen taustaa värillä tai kuvalla.</string>
+    <string name="space_appearance_activity_background_text_title">Teksti</string>
+    <string name="space_appearance_activity_background_title">Tausta</string>
+    <string name="space_appearance_activity_container_background_message">Lähetetty viestin tausta</string>
+    <string name="space_appearance_activity_container_background_peer_message">Vastaanotetun viestin tausta</string>
+    <string name="space_appearance_activity_container_border_message">Lähetetyn viestin raja</string>
+    <string name="space_appearance_activity_container_border_peer_message">Vastaanotetun viestin raja</string>
+    <string name="space_appearance_activity_container_text_message">Lähetetyn viestin teksti</string>
+    <string name="space_appearance_activity_container_text_peer_message">Vastaanotetun viestin teksti</string>
+    <string name="space_appearance_activity_container_title">Kuplia</string>
+    <string name="space_appearance_activity_default_value">Oletusarvo</string>
+    <string name="space_appearance_activity_general_title">Kenraali</string>
+    <string name="space_appearance_activity_menu_choose_color">Oletusvärit</string>
+    <string name="space_appearance_activity_menu_enter_color">Värikoodi</string>
+    <string name="space_appearance_activity_opacity">Opasiteetti</string>
+    <string name="space_appearance_activity_preview_message">Unohdin balettikenkäni … Voitko tuoda ne mukaasi? 😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Hei kultaseni!</string>
+    <string name="space_appearance_activity_preview_title">Esikatselu</string>
+    <string name="space_appearance_activity_theme">Teema</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Space on paikka, jossa erilaiset persoonallisuutesi kohtaavat useita sosiaalisia piirejä, mukaan lukien salaisimmat.</string>
+    <string name="spaces_activity_sample_business">Business</string>
+    <string name="spaces_activity_sample_business_name">Tohtori John Doe</string>
+    <string name="spaces_activity_sample_family">Perhe</string>
+    <string name="spaces_activity_sample_family_name">Isä</string>
+    <string name="spaces_activity_sample_friends">Ystävät</string>
+    <string name="spaces_activity_sample_friends_name">Johny</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Tapahtui virhe. Ole hyvä ja yritä uudelleen.</string>
+    <string name="streaming_audio_activity_no_music_message">Median jakaminen</string>
+    <string name="streaming_audio_activity_no_music_title">Musiikkia ei löytynyt 🙁</string>
+    <string name="streaming_audio_activity_title">Median jakaminen</string>
+    <string name="streaming_audio_activity_unsupported_message">%1$s:n laite ei tue tätä äänimuotoa.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Pikkuilmoitus</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Ilmoita</string>
+    <string name="template_click_to_call_activity_template_help">Auta</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Auta</string>
+    <string name="template_click_to_call_activity_template_meeting">Tapaaminen</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Tapaaminen</string>
+    <string name="template_click_to_call_activity_template_video_bell">Video ovikello</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Ovikello</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">Nimi (Dr John Doe, rouva Smith,…)</string>
+    <string name="template_space_activity_template_business_profile">rouva Samantha Smith</string>
+    <string name="template_space_activity_template_family_placeholder">Nimi (isä, äiti,…)</string>
+    <string name="template_space_activity_template_family_profile">Äiti</string>
+    <string name="template_space_activity_template_friends_placeholder">Nimi (Johny, Sam,…)</string>
+    <string name="template_space_activity_template_friends_profile">Sam</string>
+    <string name="template_space_activity_template_other">Muut</string>
+    <string name="template_space_activity_template_other_placeholder">Nimi (isä, äiti, Johny, tohtori John Doe,…)</string>
+    <string name="template_space_activity_template_title">Mallit</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">Pyydä lähellä olevaa ystävääsi skannaamaan kutsusi QR-koodi twinmellä tai napauttamalla kutsukoodiasi kopioidaksesi se leikepöydälle.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Haluatko varmasti poistaa tämän \"Soitonsiirto\" -koodin?</string>
+    <string name="transfert_call_activity_delete_message">Tämä puhelunsiirtolinkki poistetaan. Vahvistaa?</string>
+    <string name="transfert_call_activity_gallery_message">Skannaa tämä QR-koodi siirtääksesi matkapuhelusi.</string>
+    <string name="transfert_call_activity_message">Lähetä tämä koodi edelleen ja lisää sen URL-osoite kirjanmerkkeihin selaimessa, johon haluat siirtää matkapuhelusi.</string>
+    <string name="transfert_call_activity_reset_message">Tämä toiminto kumoaa nykyisen puhelunsiirtokoodin ja luo uuden. Vahvistaa?</string>
+    <string name="transfert_call_activity_saved_message">Puhelunsiirtokoodi tallennettu kuvagalleriaan.</string>
+    <string name="transfert_call_activity_share">Siirtää</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Päivitys saatavilla</string>
+    <string name="update_app_activity_update_message">Uusin sovelluspäivitys sisälsi seuraavat:</string>
+    <string name="update_app_activity_update_title">Päivitä nyt</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Soitetaan videopuhelua&#8230;</string>
+    <string name="video_call_activity_cannot_call">Videopuhelua ei voi soittaa</string>
+    <string name="video_call_activity_connecting">Yhdistetään&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">Haluatko lopettaa puhelun?</string>
+    <string name="video_call_activity_terminate">Puhelu on lopetettu</string>
+    <string name="video_call_activity_terminate_busy">Puhelu päättyi: &lt;b&gt;%1$s&lt;/b&gt; on varattu</string>
+    <string name="video_call_activity_terminate_cancel">&lt;b&gt;%1$s&lt;/b&gt; perui puhelun</string>
+    <string name="video_call_activity_terminate_connectivity_error">Puhelu katkesi yhteysongelman vuoksi. Tarkista internetyhteytesi.</string>
+    <string name="video_call_activity_terminate_decline">&lt;b&gt;%1$s&lt;/b&gt; kieltäytyi puhelusta</string>
+    <string name="video_call_activity_terminate_disconnected">Puhelu katkesi verkkovirheen vuoksi. Yritä uudelleen.</string>
+    <string name="video_call_activity_terminate_gone">Puhelu päättyi: &lt;b&gt;%1$s&lt;/b&gt; on off-line</string>
+    <string name="video_call_activity_terminate_revoked">Puhelu päättynyt: &lt;b&gt;%1$s&lt;/b&gt; on poistanut tämän suhteen sinuun.</string>
+    <string name="video_call_activity_terminate_success">&lt;b&gt;%1$s&lt;/b&gt; lopetti puhelun</string>
+    <string name="video_call_activity_terminate_timeout">Puhelu päättyy: &lt;b&gt;%1$s&lt;/b&gt; ei vastaa</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">Painamalla %1$s vahvistan, että olen lukenut ja hyväksyn:</string>
+    <string name="welcome_activity_next">Seuraava</string>
+    <string name="welcome_activity_pass">Ohita</string>
+    <string name="welcome_activity_privacy_policy">Tietosuojakäytäntö</string>
+    <string name="welcome_activity_start">Alkaa</string>
+    <string name="welcome_activity_step1_message">Viestit ja teräväpiirtoääni-/videopuhelut, jotka suojaavat yksityisyyttä.</string>
+    <string name="welcome_activity_step2_message">Suojattu "peer-to-peer"-viestintä: ei jälkiä pilvessä.</string>
+    <string name="welcome_activity_step3_message">Ei puhelinnumeroa, osoitekirjaa, ei käyttäjätunnusta: voit valita, miten haluat tulla tunnistetuksi sen perusteella, kenen kanssa olet yhteydessä.</string>
+    <string name="welcome_activity_terms_of_use">Käyttöehdot</string>
+
+</resources>

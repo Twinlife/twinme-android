@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">동의</string>
+    <string name="application_account_deleted">계정이 삭제되었습니다. 이제 애플리케이션을 제거해야 합니다.</string>
+    <string name="application_add_contact_no_profile">연락처를 초대하기 전에 귀하를 나타내는 프로필을 작성해야 합니다. 계속하시겠습니까?</string>
+    <string name="application_all">모두</string>
+    <string name="application_appearance">외관</string>
+    <string name="application_are_you_sure">정말입니까?</string>
+    <string name="application_authorization_camera">앱이 시스템 설정에서 카메라에 액세스하도록 허용합니다.</string>
+    <string name="application_authorization_go_settings">시스템 설정으로 이동</string>
+    <string name="application_authorization_microphone">앱이 시스템 설정에서 마이크에 액세스하도록 허용합니다.</string>
+    <string name="application_authorization_microphone_camera">앱이 시스템 설정에서 마이크와 카메라에 액세스하도록 허용합니다.</string>
+    <string name="application_authorization_title">누락 된 액세스 권한</string>
+    <string name="application_back">뒤로</string>
+    <string name="application_camera">카메라</string>
+    <string name="application_cancel">취소</string>
+    <string name="application_canceled_operation">취소된 작업</string>
+    <string name="application_checking_connection">연결 확인 중</string>
+    <string name="application_color">색깔</string>
+    <string name="application_configuration">구성</string>
+    <string name="application_confirm">확인</string>
+    <string name="application_confirm_deletion">삭제 확인</string>
+    <string name="application_connected">보안 연결이 활성화되었습니다.</string>
+    <string name="application_connection_status_no_network">인터넷 접속 불가.</string>
+    <string name="application_connection_status_no_network_message">네트워크 연결을 확인하세요.</string>
+    <string name="application_connection_status_no_services">서비스에 대한 액세스가 없습니다.</string>
+    <string name="application_connection_status_no_services_message">VPN을 사용해 보세요.</string>
+    <string name="application_contact_not_found">이 연락처가 귀하와의 관계를 삭제했으며 더 이상 연락할 수 없습니다.</string>
+    <string name="application_continue_without_premium_services">프리미엄 서비스 없이 계속하세요</string>
+    <string name="application_create_group_no_profile">이 그룹에서 귀하를 나타내는 프로필을 작성해야 합니다. 계속하시겠습니까?</string>
+    <string name="application_database_error">데이터베이스 오류</string>
+    <string name="application_decline">거절</string>
+    <string name="application_default">기본</string>
+    <string name="application_delete">없애다</string>
+    <string name="application_delete_message">삭제 하시겠습니까?</string>
+    <string name="application_denied_permissions">필수 권한을 허용하지 않았습니다.</string>
+    <string name="application_description">기술</string>
+    <string name="application_display_all">모두 표시</string>
+    <string name="application_do_not_display">더 이상 표시하지 않음</string>
+    <string name="application_edit">편집</string>
+    <string name="application_error_file_not_found">파일을 찾을 수 없습니다.</string>
+    <string name="application_error_media_not_supported">이 이미지/비디오 형식은 애플리케이션에서 지원되지 않습니다.</string>
+    <string name="application_error_no_storage_space">저장 공간 부족</string>
+    <string name="application_group_limit_reached">그룹 구성원의 최대 수 (%1$d)를 초과했습니다.</string>
+    <string name="application_group_not_found">그룹에서 삭제되었습니다.</string>
+    <string name="application_items_selected">%1$d개 항목 선택됨</string>
+    <string name="application_later">나중</string>
+    <string name="application_low_usage_message">경고, 응용 프로그램을 충분히 자주 사용하지 않으면 OS가 메시지를 교환하기 위해 절전 모드를 해제하지 못할 수 있습니다!</string>
+    <string name="application_one_item_selected">1개 항목 선택됨</string>
+    <string name="application_migration_no_storage_space">기기에 마이그레이션을 완료할 공간이 부족합니다. 애플리케이션을 닫고 공간을 확보한 후 앱을 다시 실행하여 업데이트를 완료하세요.</string>
+    <string name="application_migration_no_storage_space_message">두 기기 중 하나에 저장 공간이 부족합니다. 마이그레이션을 다시 시작하기 전에 해당 기기의 저장 공간을 확보하세요.</string>
+    <string name="application_name_hint">이름</string>
+    <string name="application_network_connecting">twinme 서비스 연결 중</string>
+    <string name="application_network_connectivity">네트워크 연결이 존재합니다</string>
+    <string name="application_network_status_airplane_message">비행기 모드가 활성화되었습니다.</string>
+    <string name="application_network_status_airplane_resolution">비행기 모드를 끄고 와이파이 또는 모바일 네트워크를 연결해 주세요.</string>
+    <string name="application_network_status_connected_no_internet">twinme 서비스에 네트워크 액세스를 할 수 없습니다.</string>
+    <string name="application_network_status_connected_resolution">다른 네트워크에 연결하세요.</string>
+    <string name="application_network_status_connection_timeout">인터넷에 연결할 수 없습니다.</string>
+    <string name="application_network_status_no_internet">인터넷에 연결되지 않았습니다.</string>
+    <string name="application_network_status_wifi_disabled">와이파이를 사용할 수 없습니다.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">와이파이를 사용할 수 없으며 모바일 인터넷 연결이 없습니다.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">와이파이를 켜주세요.</string>
+    <string name="application_network_status_wifi_disabled_resolution">와이파이를 켜거나 모바일 인터넷 연결을 활성화해 주세요.</string>
+    <string name="application_new_feature">새로운!</string>
+    <string name="application_no">아니요</string>
+    <string name="application_no_network_connectivity">네트워크 연결 없음</string>
+    <string name="application_no_service">서비스 없음</string>
+    <string name="application_not_authorized_operation">승인되지 않은 작업</string>
+    <string name="application_not_authorized_operation_by_your_contact">귀하의 담당자가 승인하지 않은 작업입니다.</string>
+    <string name="application_not_connected">보안 연결 진행 중…</string>
+    <string name="application_not_signed_in">twinme 서비스에 연결되지 않았습니다</string>
+    <string name="application_now">지금</string>
+    <string name="application_ok">확인</string>
+    <string name="application_operation_failure">작업 실패</string>
+    <string name="application_operation_irreversible">이 작업은 되돌릴 수 없습니다.</string>
+    <string name="application_permission_camera">새로운 사진이나 동영상을 찍으려면 카메라 접근 권한이 필요합니다.</string>
+    <string name="application_permission_scan_code">QR 코드를 스캔하려면 카메라 액세스 권한이 필요합니다.</string>
+    <string name="application_photo_gallery">사진 앨범</string>
+    <string name="application_profile">프로필</string>
+    <string name="application_profile_avatar_not_defined">이 프로필로 초대할 상대에게 표시할 이미지를 입력해야 합니다.</string>
+    <string name="application_profile_name_not_defined">이 프로필로 초대할 상대에게 표시할 이름을 정해야 합니다.</string>
+    <string name="application_remove">없애다</string>
+    <string name="application_save">저장</string>
+    <string name="application_search_hint">검색</string>
+    <string name="application_select">선택</string>
+    <string name="application_select_application">애플리케이션 선택</string>
+    <string name="application_select_more">더 선택…</string>
+    <string name="application_server_timeout">서버 시간 초과</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">테마</string>
+    <string name="application_timeout">만료 지연</string>
+    <string name="application_timeout_day">1 일</string>
+    <string name="application_timeout_hour">1 시간</string>
+    <string name="application_timeout_hours">%1$d 시간</string>
+    <string name="application_timeout_minute">1 분</string>
+    <string name="application_timeout_minutes">%1$d 분</string>
+    <string name="application_timeout_month">1 개월</string>
+    <string name="application_timeout_seconds">%1$d 초</string>
+    <string name="application_timeout_week">1 일주</string>
+    <string name="application_unknown_name">알 수 없음</string>
+    <string name="application_upgrade">twinme 업그레이드</string>
+    <string name="application_webrtc_failure">WebRTC 오류</string>
+    <string name="application_wrong_configuration">잘못된 구성</string>
+    <string name="application_yes">예</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">애플리케이션 코드</string>
+    <string name="about_activity_information">정보</string>
+    <string name="about_activity_legal">법적 고지</string>
+    <string name="about_activity_libraries">라이브러리</string>
+    <string name="about_activity_message">twinme 는 안전한 채팅 및 음성/화상 전화 서비스로, 개인 정보에 접근하지 않고도 사용하실 수 있습니다.\n\ntwinme 는 웹상의 안전한(양 끝 기기 간 암호화), 기기간(릴레이 서버 없음) 실시간 멀티미디어 커뮤니케이션의 새로운 기준인 WebRTC를 기반으로 합니다.</string>
+    <string name="about_activity_open_source_information">이 애플리케이션의 소스 코드는 AGPL-3.0 라이선스에 따라 GitHub에서 오픈 소스로 제공됩니다.</string>
+    <string name="about_activity_open_sources_licences">오픈소스 라이선스</string>
+    <string name="about_activity_premium_services">프리미엄 서비스</string>
+    <string name="about_activity_privacy_policy">개인정보 처리방침</string>
+    <string name="about_activity_quality_of_service">서비스 품질</string>
+    <string name="about_activity_terms_of_use">이용 약관</string>
+    <string name="about_activity_version">버전</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">이 초대장이 삭제되었습니다</string>
+    <string name="accept_group_invitation_activity_in_progress">회원 가입 보류 중</string>
+    <string name="accept_group_invitation_activity_message">%1$s 님이 그룹에 가입하도록 초대합니다</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">초대장을 전송 중입니다.</string>
+    <string name="accept_invitation_activity_check_connection">인터넷 연결을 확인하세요.</string>
+    <string name="accept_invitation_activity_existing_contact_message">이 연락처와 이미 관계가 있습니다. 새로 만드시겠습니까?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">정확하지 않은 연락처 정보</string>
+    <string name="accept_invitation_activity_local_twincode">동일한 계정 내에서 자신과 관계를 설정할 수 없습니다.</string>
+    <string name="accept_invitation_activity_message">%1$s 님이 나와 연결하려고합니다</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">대화 콘텐츠</string>
+    <string name="account_activity_delete_account">귀하의 계정은 모든 관련 데이터와 함께 영구적으로 삭제됩니다. 확인하시겠습니까?</string>
+    <string name="account_activity_delete_account_confirmation">정말로 계정을 삭제 하시겠습니까?</string>
+    <string name="account_activity_export_content">외부 미디어로 내보내기</string>
+    <string name="account_activity_message_first_part">최초 앱 설치 시, 앱 재설치 시, 단말기 초기화 시, 기존 계정 삭제 시 새로운 계정이 생성됩니다.</string>
+    <string name="account_activity_message_second_part">이전 계정 및 데이터의 흔적이 남지 않으므로 연락처를 다시 초대해야 합니다.</string>
+    <string name="account_activity_migration_message">계정 이전 서비스를 사용하여 모든 관련 데이터 (연락처, 메시지, 그룹 등)가있는 계정을 한 Android 기기에서 다른 기기로 실시간으로 전송할 수 있습니다. 따라서 이전 장치와 새 장치간에 계정을 전환 할 수 있습니다.</string>
+    <string name="account_activity_migration_start_from_another_device">다른 장치에서</string>
+    <string name="account_activity_migration_start_from_current_device">내 장치에서</string>
+    <string name="account_activity_migration_title">계정 마이그레이션</string>
+    <string name="account_activity_title">계정</string>
+    <string name="account_activity_transfer_between_devices">기기 간 전송</string>
+    <string name="account_activity_transfer_from_another_device">다른 기기에서 전송</string>
+    <string name="account_activity_transfer_from_device">이 기기에서 전송</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">응용 프로그램을 닫고 다시 시작하여 데이터에 액세스하십시오.</string>
+    <string name="account_migration_activity_close_message">응용 프로그램을 닫고 다시 시작하여 새 데이터에 액세스합니다.</string>
+    <string name="account_migration_activity_confirm_cancel_message">마이그레이션을 취소 하시겠습니까?</string>
+    <string name="account_migration_activity_network_message">네트워크 연결 확인</string>
+    <string name="account_migration_activity_not_enough_space_for_files">파일을위한 공간이 충분하지 않습니다.</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">데이터베이스를 다운로드 할 공간이 충분하지 않습니다.</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">데이터베이스를 업로드 할 공간이 충분하지 않습니다.</string>
+    <string name="account_migration_activity_state_canceled">마이그레이션이 취소되었습니다.</string>
+    <string name="account_migration_activity_state_negotiate">기다리는</string>
+    <string name="account_migration_activity_state_list_files">파일 나열</string>
+    <string name="account_migration_activity_state_send_account">보내는 계정</string>
+    <string name="account_migration_activity_state_send_database">데이터베이스를 보내는 중</string>
+    <string name="account_migration_activity_state_send_files">파일 보내기</string>
+    <string name="account_migration_activity_state_send_settings">애플리케이션 설정 보내기</string>
+    <string name="account_migration_activity_state_terminate">마이그레이션이 거의 완료되었습니다.</string>
+    <string name="account_migration_activity_state_wait_account">다른 계정을 기다리는 중</string>
+    <string name="account_migration_activity_state_wait_connect">재 연결을 기다리는 중</string>
+    <string name="account_migration_activity_state_wait_files">파일 및 데이터베이스 수신을 기다리고 있습니다.</string>
+    <string name="account_migration_activity_start">마이그레이션 시작</string>
+    <string name="account_migration_activity_stop">마이그레이션 중지</string>
+    <string name="account_migration_activity_success_message">마이그레이션이 성공적으로 완료되었습니다.</string>
+    <string name="account_migration_activity_transfer_in_progress">데이터 전송 중</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">이 화면을 각 장치에 표시하고 하나는 다른 장치의 QR 코드를 스캔합니다.</string>
+    <string name="account_migration_scanner_activity_message_older_version">이 장치는 호환되지 않는 이전 OS 버전을 사용하고 있어 전송 중에 대상 장치의 모든 관계가 손실됩니다. 그래도 이전을 진행하시겠습니까?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">대상 장치가 호환되지 않는 오래된 OS 버전을 사용하고 있어 전송 중에 모든 관계가 손실됩니다. 그래도 이전을 진행하시겠습니까?</string>
+    <string name="account_migration_scanner_activity_scan_title">스캐닝</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">이전을 시작하려면 다른 기기에서 이 QR 코드를 스캔하세요.</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">다른 기기의 사이드 메뉴에 있는 \"계정/다른 기기에서 전송\" 섹션에 표시된 QR 코드를 스캔합니다.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">스캔 중지</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">이 통화에 참가자 추가</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">갤러리에서 가져오기</string>
+    <string name="add_contact_activity_in_person_subtitle">근처 사람을 초대합니다</string>
+    <string name="add_contact_activity_in_person_title">만난 사람</string>
+    <string name="add_contact_activity_invitation_code_title">미니 코드</string>
+    <string name="add_contact_activity_invite">초대</string>
+    <string name="add_contact_activity_invite_message">“%2$s”에게 개인적으로 연결하려면 모바일 기기에서 twinme로 웹 주소 %1$s 를 여세요.</string>
+    <string name="add_contact_activity_invite_subject">twinme 초대</string>
+    <string name="add_contact_activity_message">옆에 있는 친구에게 Twinme로 QR 코드를 스캔하도록 요청하거나 "스캔" 버튼을 눌러 친구의 코드를 스캔하세요.</string>
+    <string name="add_contact_activity_onboarding_message">twinme는 당신의 친구를 알지 못하며 그들을 발견할 수 없습니다. 개인적으로 초대해야 하며, 근처에 있을 때 twinme로 초대하거나 다른 방법으로 초대장을 보내야 합니다.</string>
+    <string name="add_contact_activity_scan_code">초대 QR 코드 스캔</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">이 링크는 손상되었습니다.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">이 링크는 올바르지 않습니다.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">이 링크는 애플리케이션에서 관리되지 않습니다.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">이 관계가 삭제되었습니다.</string>
+    <string name="add_contact_activity_scan_message_call_link">이 링크는 \"Click-to-call\"에 해당합니다.</string>
+    <string name="add_contact_activity_scan_message_invitation_link">이 링크는 연락처 초대에 해당합니다.</string>
+    <string name="add_contact_activity_scan_message_migration_link">이 링크는 계정 이전에 해당합니다.</string>
+    <string name="add_contact_activity_scan_message_transfer_link">이 링크는 통화 전달에 해당합니다.</string>
+    <string name="add_contact_activity_scan_title">스캔</string>
+    <string name="add_contact_activity_social_subtitle">메시지, 메일, 소셜 네트워크</string>
+    <string name="add_contact_activity_social_title">응용 프로그램을 통해 코드를 보내십시오</string>
+    <string name="add_contact_activity_title">초대</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">더하다</string>
+    <string name="add_group_member_activity_title">회원 추가</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">환영 메시지</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">전화 중&#8230;</string>
+    <string name="audio_call_activity_cannot_call">음성 전화를 할 수 없습니다</string>
+    <string name="audio_call_activity_connecting">연결 중&#8230;</string>
+    <string name="audio_call_activity_hangup">끊기</string>
+    <string name="audio_call_activity_hangup_confirmation">전화를 끄시겠습니까?</string>
+    <string name="audio_call_activity_terminate">전화가 종료되었습니다</string>
+    <string name="audio_call_activity_terminate_busy">전화 종료됨: &lt;b&gt;%1$s&lt;/b&gt; 씨는 바쁩니다</string>
+    <string name="audio_call_activity_terminate_cancel">&lt;b&gt;%1$s&lt;/b&gt; 씨에 의해 전화 취소됨</string>
+    <string name="audio_call_activity_terminate_connectivity_error">전화 종료됨: 네트워크 오류</string>
+    <string name="audio_call_activity_terminate_decline">&lt;b&gt;%1$s&lt;/b&gt; 씨에 의해 전화 거절됨</string>
+    <string name="audio_call_activity_terminate_gone">전화 종료됨: &lt;b&gt;%1$s&lt;/b&gt; 씨가 오프라인입니다</string>
+    <string name="audio_call_activity_terminate_not_authorized">연락처가 통화에 필요한 권한(예: 마이크, 카메라)을 부여하지 않았습니다.</string>
+    <string name="audio_call_activity_terminate_revoked">통화 종료: &lt;b&gt;%1$s&lt;/b&gt;님이 귀하와의 관계를 삭제했습니다.</string>
+    <string name="audio_call_activity_terminate_success">&lt;b&gt;%1$s&lt;/b&gt; 씨에 의해 전화 종료됨</string>
+    <string name="audio_call_activity_terminate_timeout">전화 종료됨: &lt;b&gt;%1$s&lt;/b&gt; 씨가 응답하지 않습니다</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">%1$s와의 관계가 이제 인증되었습니다.</string>
+    <string name="authentified_relation_activity_certify_by_scan">QR 코드를 스캔하여 인증</string>
+    <string name="authentified_relation_activity_certify_by_video_call">화상 통화로 인증</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s는 비디오 통화를 통해 관계를 인증할 수 있도록 비디오 통화를 허용해야 합니다.</string>
+    <string name="authentified_relation_activity_level_2">이 관계를 인증하려면 %1$s의 기기에 표시된 QR 코드를 스캔해야 합니다.</string>
+    <string name="authentified_relation_activity_level_3">이 관계를 인증하려면 %1$s의 장치가 이 QR 코드를 스캔해야 합니다.</string>
+    <string name="authentified_relation_activity_level_4">%1$s와의 관계가 인증되었습니다.</string>
+    <string name="authentified_relation_activity_onboarding_message">인증된 관계는 제3자가 서비스를 손상시켰더라도 항상 올바른 사람과 소통하고 있음을 보장합니다.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">항상 올바른 사람과 소통하세요!</string>
+    <string name="authentified_relation_activity_relation_print_message">이 지문은 두 기기에서 동일해야 합니다.</string>
+    <string name="authentified_relation_activity_relation_print_title">관계 지문</string>
+    <string name="authentified_relation_activity_start">인증 시작</string>
+    <string name="authentified_relation_activity_title">인증된 관계</string>
+    <string name="authentified_relation_activity_to_be_certified_title">관계를 인증하세요</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">모두</string>
+    <string name="calls_fragment_call_again_message">%1$s을 (를) 다시 전화 하시겠습니까?</string>
+    <string name="calls_fragment_call_again_title">다시 전화</string>
+    <string name="calls_fragment_create_link">Click-to-Call 링크 만들기</string>
+    <string name="calls_fragment_incoming_call">수신 전화</string>
+    <string name="calls_fragment_missed_call">부재중 전화</string>
+    <string name="calls_fragment_missed_call_segmented_control">놓친</string>
+    <string name="calls_fragment_no_call_message">부재중 전화가 여기에 나열됩니다.</string>
+    <string name="calls_fragment_no_call_title">당신은 아직 어떤 전화도 하지 않았다</string>
+    <string name="calls_fragment_outgoing_call">발신 전화</string>
+    <string name="calls_fragment_reset">모든 통화 알림을 재설정 하시겠습니까?</string>
+    <string name="calls_fragment_reset_title">통화 알림 재설정</string>
+    <string name="calls_fragment_title">전화</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">블루투스 오디오</string>
+    <string name="call_activity_audio_source_device">디바이스 이어폰</string>
+    <string name="call_activity_audio_source_earphones">이어폰</string>
+    <string name="call_activity_audio_source_headset">오디오 헤드셋</string>
+    <string name="call_activity_audio_source_loudspeaker">라우드스피커</string>
+    <string name="call_activity_battery_restriction_message">주목! 앱이 백그라운드에서 실행될 때는 통화 중에 마이크 컷을 피하기 위해 배터리 사용을 허용해야합니다.</string>
+    <string name="call_activity_camera_control">카메라 제어</string>
+    <string name="call_activity_camera_control_ask_message">화상 통화 중 %1$s에게 카메라 제어 권한을 요청하세요.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s님이 통화 중에 카메라를 제어하려고 합니다. 언제든지 다시 제어할 수 있습니다.</string>
+    <string name="call_activity_camera_control_denied">%1$s에서 카메라를 제어할 수 없습니다.</string>
+    <string name="call_activity_camera_control_message">%1$s님의 카메라 제어</string>
+    <string name="call_activity_camera_control_needs_help">도움이 필요하신가요?</string>
+    <string name="call_activity_camera_control_onboarding">연락처가 허용하는 경우, 화상 통화 중에 카메라를 제어하고 직접 확대/축소할 수 있습니다. 특히 CCTV 감시 카메라를 제어할 때 유용합니다.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">사랑하는 분의 허락 하에 통화 중에 카메라를 제어하여 원격으로 쉽고 안전하게 도움을 드릴 수 있습니다.</string>
+    <string name="call_activity_camera_control_remotely">%1$s님이 원격으로 카메라를 제어합니다.</string>
+    <string name="call_activity_camera_control_stop">중지</string>
+    <string name="call_activity_certify_error_message">%1$s가 단어를 검증하지 못했습니다. 관계 인증에 실패했으며 다시 시도해야 합니다.</string>
+    <string name="call_activity_certify_onboarding_message">영상 통화를 통해 상호 식별이 가능하며, 인증 관계 및 교환과 관련된 보안 키를 교환할 수 있습니다.</string>
+    <string name="call_activity_certify_onboarding_start_message">다른 사람이 확인할 수 있도록 화면에 표시된 단어의 철자를 번갈아 가며 입력하세요. 모든 단어가 확인되면 %1$s와의 관계가 인증됩니다.</string>
+    <string name="call_activity_certify_onboarding_title">관계를 인증하세요</string>
+    <string name="call_activity_certify_video_message">통화는 비디오로 진행되어야 관계를 인증할 수 있습니다.</string>
+    <string name="call_activity_coach_mark">이 통화에 참가자를 추가하려면 여기를 탭하세요.</string>
+    <string name="call_activity_confirm_word">%1$s이(가) 말한 단어가 같은가요?</string>
+    <string name="call_activity_confirm_word_title">단어를 확인하세요</string>
+    <string name="call_activity_error_call_interrupted">통화가 중단되었습니다. 오류: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">통화가 연결되지 않았습니다. 오류: %1$d.</string>
+    <string name="call_activity_max_participant_message">그룹 통화의 최대 참가자 수(%1$d)에 도달했습니다.</string>
+    <string name="call_activity_not_supported_group_call_message">%1$s님의 앱 버전은 그룹 통화와 호환되지 않으며 업데이트가 필요합니다.</string>
+    <string name="call_activity_quality_message">어떻게 평가하시겠습니까?</string>
+    <string name="call_activity_quality_title">통화 품질</string>
+    <string name="call_activity_repeat_word">%1$s 상대방은 자신의 화면에 표시된 단어와 비교할 수 있습니다.</string>
+    <string name="call_activity_repeat_word_title">단어 철자를 입력하세요</string>
+    <string name="call_activity_tag_add_to_call">진행 중인 통화에 참여하도록 연락처를 초대하세요.</string>
+    <string name="call_activity_tag_camera">카메라</string>
+    <string name="call_activity_tag_camera_activate">카메라 활성화</string>
+    <string name="call_activity_tag_camera_cut">카메라를 자르세요</string>
+    <string name="call_activity_tag_camera_flip">카메라 뒤집기</string>
+    <string name="call_activity_tag_microphone">마이크로폰</string>
+    <string name="call_activity_tag_microphone_activate">마이크 활성화</string>
+    <string name="call_activity_tag_microphone_mute">마이크 음소거</string>
+    <string name="call_activity_tag_pause">정지시키다</string>
+    <string name="call_activity_tag_send_message">메세지를 보내다</string>
+    <string name="call_activity_tag_speaker">확성기</string>
+    <string name="call_activity_tag_speaker_activate">스피커 활성화</string>
+    <string name="call_activity_tag_speaker_mute">스피커 음소거</string>
+    <string name="call_activity_transfert_call_message">진행 중인 통화가 전환되었습니다.</string>
+    <string name="call_activity_try_to_call_back">다시 전화를 걸어보세요.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">카메라 이미 사용 중</string>
+    <string name="capture_activity_incorrect_qrcode">정확하지 않은 twincode</string>
+    <string name="capture_activity_message">이 직사각형에 QR 코드를 넣어 스캔하세요.</string>
+    <string name="capture_activity_no_camera">twincode 스캔하려면 카메라를 사용해야 합니다</string>
+    <string name="capture_activity_qrcode_saved">사진에 저장된 초대장 코드입니다.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">모두 지우기</string>
+    <string name="cleanup_activity_both_clean">전역 정리(로컬 및 원격)</string>
+    <string name="cleanup_activity_both_clean_title">전역 정리</string>
+    <string name="cleanup_activity_clean">삭제</string>
+    <string name="cleanup_activity_conversation">%s과의 대화</string>
+    <string name="cleanup_activity_delete_confirmation_message">삭제는 되돌릴 수 없습니다. 진행하기 전에 중요한 내용을 내보내십시오. 계속하시겠습니까?</string>
+    <string name="cleanup_activity_error">작업 중에 오류가 발생했습니다.</string>
+    <string name="cleanup_activity_expiration">만료 조건</string>
+    <string name="cleanup_activity_free">사용 가능</string>
+    <string name="cleanup_activity_info">이 대화에서 메시지, 미디어 및 파일을 삭제하면 연락처에서 장치에서 삭제되지 않으며 나중에 수행 할 수 없습니다.</string>
+    <string name="cleanup_activity_info_both">이 대화에서 메시지, 미디어 및 파일을 삭제하면 연락처에서 장치에서 삭제됩니다.</string>
+    <string name="cleanup_activity_local_cleanup">로컬 전용 정리</string>
+    <string name="cleanup_activity_local_cleanup_title">지역 정화</string>
+    <string name="cleanup_activity_medias_and_files">미디어 및 파일만</string>
+    <string name="cleanup_activity_medias_and_files_info">미디어 섬네일은 대화에서 제거되지 않습니다. 원본 파일만 삭제됩니다.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">이 대화에서 교환된 파일, 사진, 비디오 및 음성 메모는 귀하의 장치와 연락처의 장치 모두에서 삭제됩니다.</string>
+    <string name="cleanup_activity_messages">모든 메시지 및 기타 콘텐츠</string>
+    <string name="cleanup_activity_messages_info">대화에 포함된 모든 유형의 메시지(텍스트, 사진, 동영상, 음성, 파일 등)는 애플리케이션에서 삭제됩니다.</string>
+    <string name="cleanup_activity_month">%1$d개월</string>
+    <string name="cleanup_activity_older_than">다음보다 오래됨</string>
+    <string name="cleanup_activity_one_year">1년</string>
+    <string name="cleanup_activity_prior_to">이전에</string>
+    <string name="cleanup_activity_reset_conversation_message">이 대화를 재설정하면 연락처의 기기에 있는 메시지를 포함하여 모든 메시지가 삭제됩니다.</string>
+    <string name="cleanup_activity_select_content">삭제할 항목을 선택합니다.</string>
+    <string name="cleanup_activity_storage_title">디스크 공간</string>
+    <string name="cleanup_activity_success">작업이 성공적으로 완료되었습니다.</string>
+    <string name="cleanup_activity_title">대화 청소</string>
+    <string name="cleanup_activity_total">계</string>
+    <string name="cleanup_activity_used">사용된</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">힌트</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">이 연락처가 귀하에게 전화하도록 허용</string>
+    <string name="contact_capabilities_activity_automatic_answering">걸려오는 전화에 자동으로 응답</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">주의: 이 설정은 이 연락처의 전화에 대한 자동 응답을 활성화하여 장치 마이크와 카메라(화상 통화용)를 엽니다.</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">일부 장치에서는 이 기능이 제한될 수 있습니다.</string>
+    <string name="contact_capabilities_activity_call_settings">통화 설정</string>
+    <string name="contact_capabilities_activity_camera_control_allow">항상</string>
+    <string name="contact_capabilities_activity_camera_control_ask">모든 통화에 질문</string>
+    <string name="contact_capabilities_activity_camera_control_information">이 연락처가 화상 통화 중에 자동으로 카메라를 제어하도록 허용합니다.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">프리미엄 버전 앱을 사용하는 연락처에게 화상 통화 중 카메라 제어를 요청할 수 있습니다.</string>
+    <string name="contact_capabilities_activity_camera_control_never">절대 안 함</string>
+    <string name="contact_capabilities_activity_discreet_relation">비밀스러운 관계</string>
+    <string name="contact_capabilities_activity_information_audio_call">상대방이 음성으로 전화할 수 있도록 허용합니다.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">알림에 연락처 이름을 표시하지 않으며 통화 기록에 통화를 저장하지 않습니다.</string>
+    <string name="contact_capabilities_activity_information_limited_call">전화를 받고 싶지 않은 날짜/시간을 설정하세요.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">전화를 받고 싶은 날짜/시간을 예약하세요.</string>
+    <string name="contact_capabilities_activity_information_video_call">해당 연락처가 귀하에게 영상 통화를 걸 수 있도록 허용합니다.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">누군가에게 초대 코드를 스캔하도록 요청하거나, 아니면 그들의 초대 코드를 스캔하세요...</string>
+    <string name="contacts_fragment_invite_contact_title">연락처 초대</string>
+    <string name="contacts_fragment_scan_contact_title">초대 코드 스캔 또는 입력</string>
+    <string name="contacts_fragment_title">콘택트</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">음성 통화</string>
+    <string name="conversation_activity_audio_message">음성 메시지</string>
+    <string name="conversation_activity_call_missed">놓친</string>
+    <string name="conversation_activity_cannot_send">메시지를 즉시 전송할 수 없음:</string>
+    <string name="conversation_activity_cleanup_conversation">이전 메시지를 삭제하셨습니다.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s님이 오래된 메시지를 삭제했습니다.</string>
+    <string name="conversation_activity_delete_message">메시지가 실제로 삭제되었습니다.</string>
+    <string name="conversation_activity_empty_message">똑똑한 말을하거나… 재미있는 것을 말하십시오!</string>
+    <string name="conversation_activity_edit_message">연락처의 기기가 최신 상태인 경우에만 해당 기기에서 메시지를 편집할 수 있습니다.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">일정 시간 후에 대화에서 이 메시지를 삭제하려면 보내기 화살표를 길게 누릅니다.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">상대방의 twinme 버전이 완전하지 않습니다.&lt;br /&gt;
+        상대방에게 twinme 업데이트를 요청하세요.</string>
+    <string name="conversation_activity_group_member_information">구성원 %1$d 명</string>
+    <string name="conversation_activity_group_not_allowed_post_message">보내는 메시지가 허용되지 않습니다.</string>
+    <string name="conversation_activity_group_one_member">1 명</string>
+    <string name="conversation_activity_invitation_accepted">초대장이 수락되었습니다</string>
+    <string name="conversation_activity_invitation_failed">연락처에 twinme 업데이트를 요청하십시오</string>
+    <string name="conversation_activity_invitation_joined">그룹 회원</string>
+    <string name="conversation_activity_invitation_pending">초대장이 진행 중입니다</string>
+    <string name="conversation_activity_invitation_refused">초대장이 거부되었습니다</string>
+    <string name="conversation_activity_invitation_title">그룹에 가입하도록 초대합니다</string>
+    <string name="conversation_activity_local_cleanup">주요 콘텐츠는 로컬에서 삭제되었습니다.</string>
+    <string name="conversation_activity_manage_conversation">대화를 관리하십시오</string>
+    <string name="conversation_activity_menu_item_view_copy_message">클립 보드에 복사되었습니다!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">사본</string>
+    <string name="conversation_activity_menu_item_view_delete_title">지우다</string>
+    <string name="conversation_activity_menu_item_view_forward_title">앞으로</string>
+    <string name="conversation_activity_menu_item_view_info_title">정보</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">발신자가 허용하지 않는 작업입니다.</string>
+    <string name="conversation_activity_menu_item_view_reply_title">댓글</string>
+    <string name="conversation_activity_menu_item_view_save_message">저장되었습니다!</string>
+    <string name="conversation_activity_menu_item_view_save_title">저장</string>
+    <string name="conversation_activity_menu_item_view_share_title">몫</string>
+    <string name="conversation_activity_message">메시지를 입력하세요</string>
+    <string name="conversation_activity_photo_camera">사진 카메라</string>
+    <string name="conversation_activity_record_confirm_send_record">전송하려면 다시 누르세요</string>
+    <string name="conversation_activity_record_start_record">녹화하려면 오래 누르세요</string>
+    <string name="conversation_activity_record_title">기록</string>
+    <string name="conversation_activity_reduce_menu_lower">표준</string>
+    <string name="conversation_activity_reduce_menu_minimal">최소</string>
+    <string name="conversation_activity_reduce_menu_original">원본</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">크기 조정 없음</string>
+    <string name="conversation_activity_reject_stream">거부</string>
+    <string name="conversation_activity_reply_to">%1$s 에 답장</string>
+    <string name="conversation_activity_reset_conversation">대화를 재설정했습니다.</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s이(가) 대화를 재설정했습니다.</string>
+    <string name="conversation_activity_send_file_warning">경고: 애플리케이션 외부에서만 열 수 있는 문서(pdf, word, ppt, excel, zip 등)를 받는 사람이 복사/저장/공유하는 것을 막을 수 없습니다. 그래도 보내시겠습니까?</string>
+    <string name="conversation_activity_send_large_file_message">이 파일은 큽니다(%1$dMB). 계속하시겠습니까?</string>
+    <string name="conversation_activity_send_menu_allow_copy">수신자가이 콘텐츠를 복사/저장/공유하도록 허용</string>
+    <string name="conversation_activity_stream_dialog">수락하시겠습니까?</string>
+    <string name="conversation_activity_unsupported_media">지원되지 않는 미디어 형식</string>
+    <string name="conversation_activity_video_call">영상 통화</string>
+    <string name="conversation_activity_video_camera">비디오 카메라</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">문서</string>
+    <string name="conversation_files_activity_links">링크</string>
+    <string name="conversation_files_activity_month">이달</string>
+    <string name="conversation_files_activity_no_files">%1$s님과의 대화에는 이러한 요소가 포함되어 있지 않습니다.</string>
+    <string name="conversation_files_activity_title">미디어, 웹 링크 및 문서</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">배경 및 색상</string>
+    <string name="conversation_settings_activity_emoji_size">이모티콘 크기</string>
+    <string name="conversation_settings_activity_link_preview">심상</string>
+    <string name="conversation_settings_activity_link_preview_message">웹사이트의 미리보기를 표시합니다.</string>
+    <string name="conversation_settings_activity_link_title">웹 링크</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">엔드-투-엔드 암호화 된 메시지는 중간 분배 서버없이 클라우드에서 추적없이 피어 투 피어로 장치 간 직접 교환됩니다.</string>
+    <string name="conversations_fragment_no_result_found">\'%1$s\'에 대한 검색 결과가 없습니다.</string>
+    <string name="conversations_fragment_start">대화 시작</string>
+    <string name="conversations_fragment_title">대화</string>
+    <string name="conversations_fragment_you">당신</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">이 프로필은 \"click-to-call\" 링크를 통해 귀하에게 전화할 손님에게 표시됩니다.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call을 사용하면 손님이 애플리케이션을 설치하지 않고도 브라우저에서 전화를 걸 수 있습니다.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">각 인스턴스에는 다음과 같이 호출 제목을 나타내는 이름, 이미지 및 설명이 있습니다.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">귀하의 고객 서비스</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">당신이 판매하는 자동차</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">전문적인 그룹 통화</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">배달원을 위한 비디오 초인종.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">Click-to-call에는 다음과 같은지 여부를 지정하는 속성이 있습니다.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">음성 및/또는 영상 통화</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">개인 또는 그룹 통화</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">항상 열려 있거나 특정 날짜와 시간으로 제한됩니다.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">관련 사람들에게 연락할 수 있는 채널을 통해 \"click-to-call\" 링크나 QR 코드를 공유하세요. 예:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">웹사이트의 \"클릭 유도 문구\"</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">분류된 광고 플랫폼에 삽입</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">그룹 통화에 초대된 사람들에게 보내는 이메일</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">배달원을 위한 현관문 표지판.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">수신자는 QR 코드를 스캔하고 모바일 장치 또는 PC의 브라우저에서 링크를 엽니다. 그런 다음 다음을 수행할 수 있습니다.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">통화 시 상대방을 나타내는 기본 이름(Guest)을 변경합니다.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">홈페이지의 \"통화\" 버튼을 눌러 전화주세요.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">통화 후에는 다시 전화하기 위해 웹페이지를 열어 둘 수도 있습니다.</string>
+    <string name="create_external_call_activity_placeholder">제목(도움말, 공지, 회의, 초인종, …)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">회원 초대</string>
+    <string name="create_group_activity_create">생성</string>
+    <string name="create_group_activity_member_allow_invitation_message">그룹 회원이 자신의 대화 상대를 초대 할 수 있도록 허용</string>
+    <string name="create_group_activity_member_allow_invitation_title">회원 초대</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">회원이 다른 회원을 개인 연락처로 초대하도록 허용</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">개인 연락처 설정</string>
+    <string name="create_group_activity_member_allow_post_message">그룹 회원이 메시지를 게시 할 수 있도록 허용</string>
+    <string name="create_group_activity_member_allow_post_title">메시지 게시</string>
+    <string name="create_group_activity_member_list">회원 목록 (%1$d)</string>
+    <string name="create_group_activity_name_hint">그룹 이름</string>
+    <string name="create_group_activity_title">그룹</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">이름과 이미지는 모두 귀하의 연락처가 귀하를 인식하고 다른 사람과 구별하는 데 필수적입니다.</string>
+    <string name="create_profile_activity_message">이 프로필 정보는 연락처를 초대하는 데 사용됩니다.</string>
+    <string name="create_profile_activity_onboarding_message">연락처를 나타내는 프로필 (이름 및 이미지)을 입력하십시오.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">프로필을 사용하면 연락처를 초대하여 애플리케이션에서 귀하와 관계를 만들 수 있습니다. 원하는 만큼 많은 프로필(페르소나)을 가질 수 있으며, 각 프로필은 특정 "스페이스"과 연결되어 있습니다.</string>
+    <string name="create_profile_activity_onboarding_message_part_2">각 "프로필"에는 "이름"과 "이미지"(필수)가 있으며, 이는 귀하가 초대한 연락처에서 볼 수 있으며 해당 "스페이스"의 새로 생성된 관계와 연결된 초기 프로필로 사용됩니다.</string>
+    <string name="create_profile_activity_onboarding_message_part_3">일단 생성되면 각 관계에는 귀하와 귀하의 연락처를 서로 나타내는 고유한 "프로필" 쌍이 있습니다.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">그런 다음 각 관계에 대해 각 연락처에 독립적으로 알려지는 방법을 수정할 수 있습니다.</string>
+    <string name="create_profile_activity_save_message">이 이름과 이미지는 연락처를 초대하고 관계를 초기화하는 데 사용됩니다. 각 관계에 대해 이를 수정하고 사용자 정의할 수 있습니다.</string>
+    <string name="create_profile_activity_welcome1">프로필 사진을 입력하세요</string>
+    <string name="create_profile_activity_welcome2">%1$s 님, 환영합니다!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">스페이스는 로컬이므로 연락처에 표시되지 않습니다.</string>
+    <string name="create_space_activity_onboarding_message_part_1">스페이스는 연락처가 속한 소셜 서클에 따라 연락처를 정리하는 데 도움이 됩니다. 가족, 친구, 비즈니스, 오락 등</string>
+    <string name="create_space_activity_onboarding_message_part_2">각 "스페이스"는 해당 "스페이스"의 소셜 서클(예: Dad, Johny, Dr. John Doe, Batman 등)과 상호 작용할 때 사용하려는 페르소나를 나타내는 "스페이스"과 연결됩니다.</string>
+    <string name="create_space_activity_onboarding_message_part_3">스페이스은 장치의 응용 프로그램에 대해 로컬입니다. 이는 귀하에게만 표시되며 귀하의 연락처나 서비스 서버에는 표시되지 않습니다.</string>
+    <string name="create_space_activity_onboarding_message_part_4">스페이스에는 다음이 포함됩니다.</string>
+    <string name="create_space_activity_onboarding_message_part_5">- 귀하가 상호 작용하는 특정 소셜 서클을 나타내는 "이름"</string>
+    <string name="create_space_activity_onboarding_message_part_6">- 귀하의 "스페이스" 목록에서 이를 빠르게 식별할 수 있는 "이미지"</string>
+    <string name="create_space_activity_onboarding_message_part_7">- 모양과 느낌을 개인화하기 위한 색상 "테마"</string>
+    <string name="create_space_activity_onboarding_message_part_8">- 각 특정 "스페이스"에 특정할 수 있는 "설정"으로, 애플리케이션 설정에 의해 정의된 기본값을 재정의합니다.</string>
+    <string name="create_space_activity_title">Space만들기</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">이 프로필 이름은 진행 중인 통화를 브라우저로 전환하는 데 사용되는 코드와 연결되어 있습니다.</string>
+    <string name="create_transfert_call_activity_name_placeholder">내 이체</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">아래의 \"OK\" 문자를 입력하여 계정 삭제를 확인합니다.</string>
+    <string name="deleted_account_activity_delete">계정 삭제</string>
+    <string name="deleted_account_activity_warning">주목‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">귀하의 계정이 삭제되었으며 관련 데이터가 모두 삭제되었습니다.&lt;br /&gt;
+        응용 프로그램을 닫아야합니다.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">이 관계를 삭제하시겠습니까?</string>
+    <string name="edit_contact_activity_message">이 연락처는 더 이상 귀하에게 연락할 수 없습니다.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">이 프로필을 삭제하면 연결된 초대 코드가 무효화됩니다. 삭제를 확인하시겠습니까?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">이 \"Click-to-Call\" 코드를 삭제하시겠습니까?</string>
+    <string name="edit_external_call_activity_delete_message">이 \"Click-to-Call\" 링크는 더 이상 사용할 수 없습니다.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">프로필 수정</string>
+    <string name="edit_profile_activity_propagating_all_contacts">이 "Space"의 모든 연락처에</string>
+    <string name="edit_profile_activity_propagating_ask_message">방금 수정한 이미지, 이름, 설명을 전파하세요.</string>
+    <string name="edit_profile_activity_propagating_except_contacts">개인화되지 않은 이상 모두에게</string>
+    <string name="edit_profile_activity_propagating_message">초대 프로필 변경 사항을 기존 연락처에 전파할 수도 있고 전파하지 않을 수도 있습니다.</string>
+    <string name="edit_profile_activity_propagating_no_contact">연락 없음</string>
+    <string name="edit_profile_activity_propagating_profile">프로필 변경 사항 전파</string>
+    <string name="edit_profile_activity_remove_active_profile">활성화된 프로필을 삭제할 수 없습니다</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">관계가 생성되면 보안 강화를 위해 인증하는 것이 좋습니다.</string>
+    <string name="enter_invitation_code_activity_enter_code">미니 코드 입력</string>
+    <string name="enter_invitation_code_activity_error_message">이 코드는 유효하지 않습니다. 이미 사용되었거나 만료되었을 수 있습니다.</string>
+    <string name="enter_invitation_code_activity_invitation_message">관계가 생성되면 보안 강화를 위해 인증하는 것을 잊지 마세요.</string>
+    <string name="enter_invitation_code_activity_message">연락처에서 제공한 미니 코드를 입력하여 관계를 생성하세요.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">연락처에서 관계를 생성하기 위해 6자리 미니 코드를 제공했습니다. 이 일회용 미니 코드는 생성 후 24시간 후에 만료됩니다.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">대화 내용은 ZIP 파일로 내보내집니다.</string>
+    <string name="export_activity_content_title">내용물</string>
+    <string name="export_activity_content_to_export">내보낼 내용</string>
+    <string name="export_activity_do_not_leave_screen">내보내기 작업 중에 화면을 떠나지 마십시오.</string>
+    <string name="export_activity_export">수출</string>
+    <string name="export_activity_file">파일</string>
+    <string name="export_activity_files">파일</string>
+    <string name="export_activity_get_all_content">%1$s과의 대화 내용을 검색하는 중입니다.</string>
+    <string name="export_activity_get_one_chat">대화 내용 검색이 진행 중입니다.</string>
+    <string name="export_activity_images">이미지</string>
+    <string name="export_activity_no_content_to_export">내보낼 콘텐츠가 없습니다.</string>
+    <string name="export_activity_one_conversation_zip_file">대화 내용은 ZIP 파일로 내보내집니다.</string>
+    <string name="export_activity_save_location">장소</string>
+    <string name="export_activity_save_location_message">내보낼 위치를 선택합니다.</string>
+    <string name="export_activity_select_content">내보낼 콘텐츠를 선택합니다.\nコピー/保存/共有が許可されている一時的でないコンテンツのみをエクスポートできます。</string>
+    <string name="export_activity_success">내보내기가 성공적으로 완료되었습니다.</string>
+    <string name="export_activity_title">대화 내보내기</string>
+    <string name="export_activity_videos">비디오</string>
+    <string name="export_activity_voice_messages">음성 메시지</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">치명적인 오류, 코드 %1$d.\n애플리케이션을 다시 시작하고 피드백 메시지를 통해 문제를 보고해 주세요가능하다면. 불편을 드려 죄송합니다.</string>
+    <string name="fatal_error_activity_error_message">치명적인 오류 : %1$s&lt;br /&gt;
+        응용 프로그램을 닫아야합니다.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">연락처</string>
+    <string name="feedback_activity_gdpr_notice">이 양식을 사용하여 계정 데이터에 대한 액세스를 요청하십시오.</string>
+    <string name="feedback_activity_help">문제를 식별하고 해결하기 위해 저희와 협력해 주셔서 감사합니다.</string>
+    <string name="feedback_activity_info_logs">디버그 로그에는 애플리케이션 활동 및 동작에 대한 저수준의 기술 데이터만 포함되며, 개인 정보는 공개되지 않습니다.</string>
+    <string name="feedback_activity_logs">디버그 로그</string>
+    <string name="feedback_activity_message">메시지</string>
+    <string name="feedback_activity_send">전송</string>
+    <string name="feedback_activity_send_logs">디버그 로그 보내기</string>
+    <string name="feedback_activity_send_message">피드백을 제출했습니다. 감사합니다.</string>
+    <string name="feedback_activity_subject">제목</string>
+    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">이 조치는이 프로파일과 연관된 현재 초대 코드를 무효화합니다. 새 코드를 생성 하시겠습니까?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">새로운 초대 코드 생성</string>
+    <string name="fullscreen_qrcode_activity_save_message">이 연락처를 추가하려면 이 초대 QR-Code를 twinme로 가져오거나 스캔하세요.</string>
+    <string name="fullscreen_qrcode_activity_save_title">사진 갤러리에 저장</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">음성 통화를 허용하십시오</string>
+    <string name="group_capabilities_activity_information_programmed_call">전화 날짜/시간을 정의하십시오</string>
+    <string name="group_capabilities_activity_information_video_call">화상 통화를 허용하십시오</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">그룹 관리자는이 조치를 승인하지 않았습니다.</string>
+    <string name="group_member_activity_invitation_message">개인 연락처로 %1$s 님을 초대하십시오.</string>
+    <string name="group_member_activity_invitation_title">초대</string>
+    <string name="group_member_activity_invite_personnal_relation">개인 연락처로 님을 초대하십시오.</string>
+    <string name="group_member_activity_remove_message">이 그룹에서 회원을 삭제 하시겠습니까?</string>
+    <string name="group_member_activity_section_administrator">관리자</string>
+    <string name="group_member_activity_section_invitation">초대장</string>
+    <string name="group_member_activity_section_member">회원</string>
+    <string name="group_member_activity_title">그룹 회원</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s 바쁘다</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">%1$s에 의해 전화가 취소되었습니다.</string>
+    <string name="info_item_activity_call_terminated_reason_decline">%1$s 전화 거절</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s 님은 오프라인 상태입니다</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">전화 할 권한이 없습니다</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s 님이이 관계를 삭제했습니다</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s가 답변하지 않습니다</string>
+    <string name="info_item_activity_deleted">수신자가 삭제 :</string>
+    <string name="info_item_activity_may_be_copied">복사 / 저장 / 공유 가능…</string>
+    <string name="info_item_activity_may_not_be_copied">복사 / 저장 / 공유 할 수 없습니다…</string>
+    <string name="info_item_activity_reactions">반응</string>
+    <string name="info_item_activity_received">받은 :</string>
+    <string name="info_item_activity_seen">조회 :</string>
+    <string name="info_item_activity_sent">전송 :</string>
+    <string name="info_item_activity_updated">수정됨</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">이 작업은 이 \"click-to-call\" 링크와 연결된 현재 초대 코드를 무효화합니다. 확인하시겠습니까?</string>
+    <string name="invitation_call_activity_generate_code_title">이 링크에 대한 새 코드 생성</string>
+    <string name="invitation_call_activity_invite_message">웹 주소 %1$s를 열거나 QR 코드를 스캔하여 \"%2$s\"에 전화하십시오.</string>
+    <string name="invitation_call_activity_message">웹 또는 모바일 앱에서 전화를 걸 수 있는 사람과 이 \"Click-to-Call\" 코드를 공유하십시오.</string>
+    <string name="invitation_call_activity_save_message">%1$s에 전화하려면 이 QR 코드를 스캔하세요.</string>
+    <string name="invitation_call_activity_share">출판하다</string>
+    <string name="invitation_call_activity_title">외부 호출</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">미니 코드 생성</string>
+    <string name="invitation_code_activity_create_code_subtitle">애플리케이션에 액세스할 수 없을 때 연락처를 초대할 수 있습니다.</string>
+    <string name="invitation_code_activity_expiration">만료일:</string>
+    <string name="invitation_code_activity_history">내 미니 코드</string>
+    <string name="invitation_code_activity_limit_message">허용된 활성 미니 코드의 최대 개수에 도달했습니다. 새로운 것을 생성하려면 24시간을 기다려야 합니다.</string>
+    <string name="invitation_code_activity_onboarding_message">미니 코드는 일회용이며 24시간 동안만 유효합니다. 애플리케이션에 액세스할 수 없는 경우(예: 휴대폰이 없는 경우)에도 연락처에 미니 코드를 제공하여 관계를 생성할 수 있습니다.</string>
+    <string name="invitation_code_activity_success_message">미니 코드로 설정된 관계의 보안을 강화하기 위해 인증을 강력히 권장합니다.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">近くの友達にツインミーで「部屋」のQRコードをスキャンするように依頼するか、招待コードをタップしてクリップボードにコピーします。</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">목소리</string>
+    <string name="last_calls_activity_video">비디오</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">이 장치의 twinme 계정이 twinme+로 전송됩니다.</string>
+    <string name="local_account_migration_activity_message_older_version">모든 관계를 잃지 않으려면 전송을 시작하기 전에 두 장치를 모두 최신 버전의 앱으로 업데이트하십시오.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">주소록에 추가</string>
+    <string name="main_activity_add_group">그룹 만들기</string>
+    <string name="main_activity_reset_conversation">초기화</string>
+    <string name="main_activity_reset_conversation_message">이 대화를 재설정하면 연락처의 기기에 있는 메시지를 포함하여 모든 메시지가 삭제됩니다. 확인하시겠습니까?</string>
+    <string name="main_activity_reset_conversation_title">대화 초기화</string>
+    <string name="main_activity_reset_group_conversation_admin_message">이 대화를 재설정하면 각 그룹 구성원의 기기에서 모든 메시지가 삭제됩니다. 확인하시겠습니까?</string>
+    <string name="main_activity_reset_group_conversation_message">이 대화를 재설정하면 기기에서 모든 메시지가 삭제됩니다. 확인하시겠습니까?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">이 기능을 사용하려면 twinme+로 업그레이드해야합니다. 모든 계정 데이터를 마이그레이션 할 수 있습니다.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">모든 계정 데이터를 마이그레이션 할 수 있습니다.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme은 더 많은 기능을 갖춘 프리미엄 버전으로 제공됩니다.</string>
+    <string name="migration_twinme_plus_activity_premium_title">twinme+로 업그레이드</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">약</string>
+    <string name="navigation_activity_application_settings">앱 설정</string>
+    <string name="navigation_activity_feedback">피드백 보내기</string>
+    <string name="navigation_activity_getting_started">시작하기</string>
+    <string name="navigation_activity_help">도움말</string>
+    <string name="navigation_activity_profile">프로필</string>
+    <string name="navigation_activity_settings">설정</string>
+    <string name="navigation_activity_sign_out">로그 아웃</string>
+    <string name="navigation_activity_sounds">소리</string>
+    <string name="navigation_activity_support">지원하다</string>
+    <string name="navigation_activity_title">메뉴</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">%1$s 에게 음성 전화</string>
+    <string name="notification_center_audio_message">나에게 음성 메시지를 전송함</string>
+    <string name="notification_center_audio_message_received">새 오디오 메시지</string>
+    <string name="notification_center_cancel">거부</string>
+    <string name="notification_center_cleanup_conversation">이전 메시지가 삭제되었습니다.</string>
+    <string name="notification_center_deleted_contact">연락처 삭제됨</string>
+    <string name="notification_center_file_message">당신에게 파일을 보냈습니다</string>
+    <string name="notification_center_file_message_received">새로운 파일</string>
+    <string name="notification_center_group_invitation">너에게 초대장을 보냈어</string>
+    <string name="notification_center_group_invitation_received">새로운 파일</string>
+    <string name="notification_center_join_group">당신은 그룹의 구성원입니다</string>
+    <string name="notification_center_message_received">새로운 메시지</string>
+    <string name="notification_center_missed_audio_call_to">%1$s 에게 거부된 음성 전화</string>
+    <string name="notification_center_missed_video_call_to">%1$s 에게 거부된 화상 전화</string>
+    <string name="notification_center_mute">마이크 음소거</string>
+    <string name="notification_center_new_contact">새 연락처</string>
+    <string name="notification_center_photo_message">나에게 사진을 전송함</string>
+    <string name="notification_center_photo_message_received">새로운 사진</string>
+    <string name="notification_center_reaction">%1$s에 반응했습니다.</string>
+    <string name="notification_center_reaction_message">는 메시지에 반응했습니다</string>
+    <string name="notification_center_reaction_message_received">메시지에 대한 반응</string>
+    <string name="notification_center_reset_message">대화가 지워졌습니다</string>
+    <string name="notification_center_stop">중지</string>
+    <string name="notification_center_transfering_data">메시지 전송 중…</string>
+    <string name="notification_center_unmute">마이크 활성화</string>
+    <string name="notification_center_updated_contact_avatar">이미지가 업데이트되었습니다</string>
+    <string name="notification_center_updated_contact_name">이름이 업데이트되었습니다</string>
+    <string name="notification_center_video_call_to">%1$s 에게 화상 전화</string>
+    <string name="notification_center_video_message">나에게 화상을 전송함</string>
+    <string name="notification_center_video_message_received">새 동영상</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">음성 전화</string>
+    <string name="notification_channel_contact_title">연락처</string>
+    <string name="notification_channel_group_title">여러 떼</string>
+    <string name="notification_channel_message_title">메시지</string>
+    <string name="notification_channel_missed_title">부재중 전화</string>
+    <string name="notification_channel_system_title">그룹</string>
+    <string name="notification_channel_video_title">화상 전화</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">나에게 전화하려 시도함</string>
+    <string name="notifications_fragment_item_audio_message">나에게 음성 메시지를 전송함</string>
+    <string name="notifications_fragment_item_cleanup_message">님이 오래된 메시지를 삭제했습니다.</string>
+    <string name="notifications_fragment_item_deleted_contact">연락처 삭제됨</string>
+    <string name="notifications_fragment_item_file_message">당신에게 파일을 보냈습니다</string>
+    <string name="notifications_fragment_item_group_invitation">너에게 초대장을 보냈어</string>
+    <string name="notifications_fragment_item_image_message">나에게 사진을 전송함</string>
+    <string name="notifications_fragment_item_join_group">당신은 그룹의 구성원입니다</string>
+    <string name="notifications_fragment_item_new_contact">새 연락처</string>
+    <string name="notifications_fragment_item_reset_conversation">이(가) 대화를 재설정했습니다.</string>
+    <string name="notifications_fragment_item_shortest_day">%1$d일</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$d시간</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$d분</string>
+    <string name="notifications_fragment_item_shortest_second">%1$d초</string>
+    <string name="notifications_fragment_item_text_message">나에게 메시지를 전송함</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">이미지가 업데이트되었습니다</string>
+    <string name="notifications_fragment_item_updated_contact_name">이름이 업데이트되었습니다</string>
+    <string name="notifications_fragment_item_video_call">나에게 화상 전화하려 시도함</string>
+    <string name="notifications_fragment_item_video_message">나에게 화상을 전송함</string>
+    <string name="notifications_fragment_no_notification_message">연락처, 대화, 통화 등과 관련된 알림이 여기에 나열됩니다.</string>
+    <string name="notifications_fragment_no_notification_title">알림이 없습니다.</string>
+    <string name="notifications_fragment_reset">すべての通知をリセットしてもよろしいですか？</string>
+    <string name="notifications_fragment_reset_title">알림 재설정</string>
+    <string name="notifications_fragment_title">알림</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">문자 글꼴</string>
+    <string name="personalization_activity_font_extra_large">매우 큰</string>
+    <string name="personalization_activity_font_large">큰</string>
+    <string name="personalization_activity_font_small">작은</string>
+    <string name="personalization_activity_haptic_feedback">햅틱 피드백</string>
+    <string name="personalization_activity_haptic_feedback_message">만졌을 때의 촉감.</string>
+    <string name="personalization_activity_menu_choose_color">기본 색상</string>
+    <string name="personalization_activity_menu_enter_color">색상 코드</string>
+    <string name="personalization_activity_mode">패션</string>
+    <string name="personalization_activity_mode_dark">어두운</string>
+    <string name="personalization_activity_mode_light">빛</string>
+    <string name="personalization_activity_start_tab_information">애플리케이션을 실행하려는 탭을 선택합니다.</string>
+    <string name="personalization_activity_start_tab_title">기본 탭</string>
+    <string name="personalization_activity_system">체계</string>
+    <string name="personalization_activity_title">개인화</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">전면/후면 카메라 변경</string>
+    <string name="premium_services_activity_camera_control_description_2">확대/축소</string>
+    <string name="premium_services_activity_camera_control_description_3">원격으로 사랑하는 사람이나 고객을 지원할 수 있습니다.</string>
+    <string name="premium_services_activity_camera_control_description_4">감시 카메라를 관리할 수 있습니다.</string>
+    <string name="premium_services_activity_camera_control_subtitle">통화 중 연락처의 허가를 받아 카메라를 제어할 수 있습니다.</string>
+    <string name="premium_services_activity_camera_control_title">원격 카메라 제어</string>
+    <string name="premium_services_activity_click_to_call_description_1">클릭 투 콜 코드 생성</string>
+    <string name="premium_services_activity_click_to_call_description_2">어떤 방법으로든 게시 또는 배포</string>
+    <string name="premium_services_activity_click_to_call_description_3">수신자가 코드를 스캔하고 전화</string>
+    <string name="premium_services_activity_click_to_call_description_4">클라우드에 흔적이 없는 익명</string>
+    <string name="premium_services_activity_click_to_call_subtitle">손님이 웹에서 전화 걸도록 허용</string>
+    <string name="premium_services_activity_click_to_call_title">클릭 투 콜</string>
+    <string name="premium_services_activity_conversation_description_1">미디어, 파일, 음성 메모, 메시지</string>
+    <string name="premium_services_activity_conversation_description_2">특정 기간/날짜 이전</string>
+    <string name="premium_services_activity_conversation_description_3">하나의 대화 또는 모든 대화</string>
+    <string name="premium_services_activity_conversation_description_4">로컬 전용, 상대방에게 영향 없음</string>
+    <string name="premium_services_activity_conversation_subtitle">콘텐츠 내보내기 및 여유 공간 확보</string>
+    <string name="premium_services_activity_conversation_title">대화 관리</string>
+    <string name="premium_services_activity_description_part1_subtitle">장치 간 직접 연결</string>
+    <string name="premium_services_activity_description_part1_title">HD 오디오/비디오 품질</string>
+    <string name="premium_services_activity_description_part2_subtitle">구름에 흔적이 없다</string>
+    <string name="premium_services_activity_description_part2_title">개인 정보 보호 – 기밀 유지</string>
+    <string name="premium_services_activity_description_part3_subtitle">에너지 효율</string>
+    <string name="premium_services_activity_description_part3_title">친환경</string>
+    <string name="premium_services_activity_group_call_description_1">고화질 오디오/비디오</string>
+    <string name="premium_services_activity_group_call_description_2">장치 간 직접 연결</string>
+    <string name="premium_services_activity_group_call_description_3">보안 및 비공개</string>
+    <string name="premium_services_activity_group_call_description_4">클라우드에 흔적 없음</string>
+    <string name="premium_services_activity_group_call_subtitle">음성/영상 그룹 통화에 참여하도록 연락처 초대</string>
+    <string name="premium_services_activity_group_call_title">그룹 통화</string>
+    <string name="premium_services_activity_privacy_description_1">생체 인식 또는 기타 인증으로 앱 잠금</string>
+    <string name="premium_services_activity_privacy_description_2">앱 전환기에서 마지막 화면 숨기기</string>
+    <string name="premium_services_activity_privacy_description_3">일정 시간이 지나면 사라지는 임시 메시지</string>
+    <string name="premium_services_activity_privacy_description_4">상대방이 전화하지 못하도록 방지</string>
+    <string name="premium_services_activity_privacy_subtitle">앱, 연락처 및 메시지 제어</string>
+    <string name="premium_services_activity_privacy_title">더 많은 프라이버시</string>
+    <string name="premium_services_activity_space_description_1">관련 관계, 대화, 기록이 있는 여러 프로필</string>
+    <string name="premium_services_activity_space_description_2">개인화 된 모양, 알림 및 설정</string>
+    <string name="premium_services_activity_space_description_3">가족, 친구, 동료, 비즈니스, 스포츠 등을 위해</string>
+    <string name="premium_services_activity_space_description_4">비밀 Spaces 가 나열되지 않고 이름으로 액세스됨</string>
+    <string name="premium_services_activity_space_subtitle">상호 작용하는 각 소셜 그룹에 대해</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">라이브로 음악 공유</string>
+    <string name="premium_services_activity_streaming_description_2">각 참가자는 미디어 플레이어를 제어할 수 있습니다.</string>
+    <string name="premium_services_activity_streaming_description_3">통화 중 동시에 상호 작용</string>
+    <string name="premium_services_activity_streaming_description_4">실생활과 동일한 프라이버시</string>
+    <string name="premium_services_activity_streaming_subtitle">통화 중 미디어 스트리밍</string>
+    <string name="premium_services_activity_streaming_title">미디어 공유</string>
+    <string name="premium_services_activity_transfert_description_1">통화 연결 코드 및 프로필 만들기</string>
+    <string name="premium_services_activity_transfert_description_2">URL을 업로드하거나 컴퓨터에서 코드를 스캔하세요.</string>
+    <string name="premium_services_activity_transfert_description_3">브라우저에서 페이지를 북마크에 추가하세요.</string>
+    <string name="premium_services_activity_transfert_description_4">모바일 통화 중 페이지에서 \'전화\'</string>
+    <string name="premium_services_activity_transfert_subtitle">진행 중인 모바일 통화를 브라우저로 전환</string>
+    <string name="premium_services_activity_transfert_title">통화 전달</string>
+    <string name="premium_services_activity_title">진행 중인 음성/영상 통화에 참여하도록 연락처를 초대합니다.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">생체 인식 서비스 또는 PIN 코드로 애플리케이션을 잠급니다.</string>
+    <string name="privacy_activity_hide_last_screen_message">응용 프로그램 전환기에 미리보기가 나타나지 않도록 방지</string>
+    <string name="privacy_activity_hide_last_screen_title">마지막 화면 숨기기</string>
+    <string name="privacy_activity_lock_screen_message">장치 생체 인식 또는 암호 인증 서비스를 사용하여 애플리케이션에 대한 액세스를 잠금 해제합니다. 앱에 대한 액세스가 잠겨있는 동안에도 수신 전화를 받고 알림을받을 수 있습니다.</string>
+    <string name="privacy_activity_lock_screen_not_available">이 옵션을 사용하려면 Android > 5.0 버전이 필요합니다.</string>
+    <string name="privacy_activity_lock_screen_timeout">액세스 잠금 시간 초과</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">즉시</string>
+    <string name="privacy_activity_lock_screen_title">액세스 잠금</string>
+    <string name="privacy_activity_title">기밀성</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">프로필 추가</string>
+    <string name="profile_fragment_create_profile">프로필 만들기</string>
+    <string name="profile_fragment_default_action">활성화</string>
+    <string name="profile_fragment_default_profile_title">활성 프로필</string>
+    <string name="profile_fragment_identity_title">프로필</string>
+    <string name="profile_fragment_message">이 프로필을 사용하면 연락처를 초대하여 제어할 수 있는 비공개 관계를 설정할 수 있습니다.</string>
+    <string name="profile_fragment_twincode_title">초대 코드</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">프록시 추가</string>
+    <string name="proxy_activity_add_placeholder">프록시 URL 붙여넣기 또는 입력</string>
+    <string name="proxy_activity_already_use">이 프록시는 앱에 이미 구성되어 있습니다.</string>
+    <string name="proxy_activity_enable">프록시 사용</string>
+    <string name="proxy_activity_format">유효한 프록시 URL 형식:</string>
+    <string name="proxy_activity_invalid_format">잘못된 URL 형식입니다</string>
+    <string name="proxy_activity_limit">허용된 프록시 수 제한(%1$d)에 도달했습니다. 새 프록시를 추가하려면 먼저 기존 프록시를 제거해야 합니다.</string>
+    <string name="proxy_activity_list">내 프록시</string>
+    <string name="proxy_activity_list_information">애플리케이션이 프록시 없이 서비스에 연결할 수 없는 경우에만 아래 목록에서 프록시를 사용하세요.</string>
+    <string name="proxy_activity_onboarding">해당 국가에서 앱의 신호 서버 접근이 차단된 경우, 프록시는 여러 상황에서 이러한 차단을 우회하여 비공개로 통신할 수 있도록 합니다. 앱 내 프록시 외에도 직접 프록시를 만들거나 다른 사람이 만든 프록시를 사용할 수 있습니다. 프록시는 어떠한 경우에도 교환되는 콘텐츠에 액세스할 수 없습니다.</string>
+    <string name="proxy_activity_information">표준 Wi-Fi 또는 셀룰러 네트워크에서 서비스에 연결할 수 없는 경우에만 프록시를 사용하세요.</string>
+    <string name="proxy_activity_share">기기에서 twinme로 %1$s 링크를 열어 이 프록시를 자동으로 구성하세요.</string>
+    <string name="proxy_activity_title">프록시</string>
+    <string name="proxy_activity_url">이 프록시의 URL을 사용하시겠습니까?</string>
+    <string name="proxy_activity_warning">경고! 이 프록시의 URL을 사용하여 앱 서비스에 연결할 수 없습니다.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">권한 변경</string>
+    <string name="quality_of_service_activity_enable_notifications">알림 활성화</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">이러한 권한이 없으면 메시지가 대상에 도달하는 데 매우 오랜 시간이 걸릴 수 있습니다.</string>
+    <string name="quality_of_service_activity_notification_description">앱이 백그라운드에서 실행되도록 허용</string>
+    <string name="quality_of_service_activity_notification_title">메시지 교환이 너무 느립니까?</string>
+    <string name="quality_of_service_activity_settings">시스템 설정에서 앱 권한을 변경하세요.</string>
+    <string name="quality_of_service_activity_step1_message">암호화된 메시지는 콘텐츠 배포 서버 없이 "peer-to-peer" 접근 방식을 사용하여 장치 간에 실시간으로 직접 교환됩니다. 이렇게 하면 클라우드에 흔적이 남지 않으며 고유한 개인 정보 보호 기능을 제공합니다.</string>
+    <string name="quality_of_service_activity_step2_message">우수한 서비스 품질을 보장하려면 애플리케이션이 백그라운드에서 알림을 수신하고 배터리 최적화에서 제외하도록 장치를 구성하십시오.</string>
+    <string name="quality_of_service_activity_step3_message">OS가 우선 순위를 지정하고 예기치 않게 종료되지 않도록 앱을 자주 사용하세요. \n\n연락처에 이 사실을 알리는 것을 잊지 마세요!</string>
+    <string name="quality_of_service_activity_warning_background_data">앱이 백그라운드에서 모바일 데이터를 사용할 수 있도록 허용합니다.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">앱이 푸시 알림을 받도록 허용합니다.</string>
+    <string name="quality_of_service_activity_warning_run_background">앱이 백그라운드에서 실행되도록 허용합니다.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">관리자로 정의</string>
+    <string name="room_members_activity_delete_message">이 구성원 제거 확인</string>
+    <string name="room_members_activity_moderators_title">중재자</string>
+    <string name="room_members_activity_only_admin_message">단일 관리자는 삭제할 수 없습니다.</string>
+    <string name="room_members_activity_owner_title">소유자</string>
+    <string name="room_members_activity_participants_title">참가자</string>
+    <string name="room_members_activity_remove_admin_title">관리자로 제거</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">초대 링크를 입력하거나 붙여넣으세요</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">서비스 연결 상태를 확인하세요.</string>
+    <string name="settings_advanced_activity_status_connection_title">연결 상태</string>
+    <string name="settings_advanced_activity_title">고급 설정</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">수신자가 내 콘텐츠를 복사 / 저장 / 공유하도록 허용</string>
+    <string name="settings_activity_allow_copy_file_title">모든 유형의 파일</string>
+    <string name="settings_activity_allow_copy_text_title">문자 메시지</string>
+    <string name="settings_activity_application_notifications">신청 알림</string>
+    <string name="settings_activity_audio_call_category_title">음성 전화</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">벨소리 이름</string>
+    <string name="settings_activity_audio_call_notification_title">벨소리</string>
+    <string name="settings_activity_audio_call_vibration_title">바이버</string>
+    <string name="settings_activity_authorization_title">사용 권한</string>
+    <string name="settings_activity_call_item_menu_all">모든 호출</string>
+    <string name="settings_activity_chat_category_title">메시지</string>
+    <string name="settings_activity_chat_ringtone_title">소리 이름</string>
+    <string name="settings_activity_chat_title">소리</string>
+    <string name="settings_activity_chat_vibration_title">바이버</string>
+    <string name="settings_activity_content_information">대화에서 전송되는 미디어 콘텐츠의 해상도: 고화질에는 더 많은 데이터가 필요하므로 전송 시간이 더 걸립니다.</string>
+    <string name="settings_activity_content_title">미디어</string>
+    <string name="settings_activity_default_directory_title">파일 백업을위한 기본 디렉토리</string>
+    <string name="settings_activity_default_sound">기본값</string>
+    <string name="settings_activity_default_value_message">이러한 매개변수는 애플리케이션 수준에서 기본값으로 사용됩니다.</string>
+    <string name="settings_activity_display_call_menu_missed">부재중 전화만</string>
+    <string name="settings_activity_display_call_menu_none">통화 불가</string>
+    <string name="settings_activity_display_call_none">없음</string>
+    <string name="settings_activity_display_call_title">대화에서 통화 알림 표시</string>
+    <string name="settings_activity_display_notification_content_title">메시지 내용 표시</string>
+    <string name="settings_activity_display_notification_like_title">메시지에 대한 반응</string>
+    <string name="settings_activity_display_notification_sender_title">메시지 발신자 표시</string>
+    <string name="settings_activity_ephemeral_message">보낸 메시지 자동 삭제</string>
+    <string name="settings_activity_ephemeral_section_title">수명</string>
+    <string name="settings_activity_ephemeral_title">사라지는 메시지</string>
+    <string name="settings_activity_image_title">사진</string>
+    <string name="settings_activity_message_properties_title">메시지 속성</string>
+    <string name="settings_activity_reset_default_value">기본 설정으로 초기화</string>
+    <string name="settings_activity_reset_preferences_button_title">기본값으로 재설정하십시오</string>
+    <string name="settings_activity_reset_preferences_message">알림 설정을 응용 프로그램 기본값으로 재설정하십시오.</string>
+    <string name="settings_activity_reset_preferences_title">환경 설정 다시 설정</string>
+    <string name="settings_activity_permissions_title">퍼미션</string>
+    <string name="settings_activity_silent_sound">무음</string>
+    <string name="settings_activity_sound_enabled_title">알림음</string>
+    <string name="settings_activity_system_notifications_title">시스템 설정</string>
+    <string name="settings_activity_system_settings_title">시스템 알림</string>
+    <string name="settings_activity_video_call_category_title">화상 전화</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">벨소리 이름</string>
+    <string name="settings_activity_video_call_notification_title">벨소리</string>
+    <string name="settings_activity_video_call_vibration_title">환영합니다</string>
+    <string name="settings_activity_welcome_screen_category_title">환영합니다</string>
+    <string name="settings_activity_welcome_screen_summary">환영 화면 표시</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">참가자가 다른 참가자를 개인 연락처로 초대하도록 허용</string>
+    <string name="settings_room_activity_allow_invite_contact">참가자가 연락처를 초대하도록 허용</string>
+    <string name="settings_room_activity_conference_notifications_inform">첫 번째 입장/마지막 출구</string>
+    <string name="settings_room_activity_conference_notifications_noisy">모든 입장/퇴장</string>
+    <string name="settings_room_activity_conference_notifications_quiet">조용한</string>
+    <string name="settings_room_activity_display_members">회원보기</string>
+    <string name="settings_room_activity_room_type_channel">채널 - 단방향</string>
+    <string name="settings_room_activity_room_type_channel_information">관리자/조정자만 메시지를 게시할 수 있습니다.</string>
+    <string name="settings_room_activity_room_type_feedback">채널 - 피드백 포함</string>
+    <string name="settings_room_activity_room_type_feedback_information">참가자 피드백은 관리자/조정자만 볼 수 있습니다.</string>
+    <string name="settings_room_activity_room_type_forum">법정</string>
+    <string name="settings_room_activity_room_type_forum_information">참가자는 모든 사람이 본 메시지를 게시할 수 있습니다.</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">연락처</string>
+    <string name="share_activity_group_list">여러 떼</string>
+    <string name="share_activity_title">몫</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Click-to-Call 코드</string>
+    <string name="show_call_activity_information_code">외부 전화를 받으려면 이 코드를 공유하세요.</string>
+    <string name="show_call_activity_schedule_call">예정된 통화</string>
+    <string name="show_call_activity_schedule_from">%1$s부터</string>
+    <string name="show_call_activity_schedule_from_to">%1$s부터 %2$s부터 %3$s까지</string>
+    <string name="show_call_activity_schedule_message">다른 곳에서 정의된 날짜와 시간에 통화가 예약되었습니다.</string>
+    <string name="show_call_activity_schedule_to">%1$s까지</string>
+    <string name="show_call_activity_settings_call">통화 유형</string>
+    <string name="show_call_activity_settings_group_calls">그룹 통화</string>
+    <string name="show_call_activity_settings_limited">예정됨</string>
+    <string name="show_call_activity_settings_start">시작</string>
+    <string name="show_call_activity_settings_end">끝</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">음성</string>
+    <string name="show_contact_activity_chat">채팅</string>
+    <string name="show_contact_activity_export_contents">내용 내보내기</string>
+    <string name="show_contact_activity_history_title">역사</string>
+    <string name="show_contact_activity_identity_title">나를 알고</string>
+    <string name="show_contact_activity_last_calls">마지막 통화</string>
+    <string name="show_contact_activity_cleanup">청소</string>
+    <string name="show_contact_activity_pending">보류 중</string>
+    <string name="show_contact_activity_pending_message">이 관계가 설정되고 있습니다. 기다려 주십시오.</string>
+    <string name="show_contact_activity_revoked">삭제됨</string>
+    <string name="show_contact_activity_settings_coach_mark">귀하의 연락처가 귀하와 관련하여 수행할 수 있는 작업을 정의합니다.</string>
+    <string name="show_contact_activity_video">동영상</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">회원 추가</string>
+    <string name="show_group_activity_invitation_list">보류중인 초대장 : %1$d</string>
+    <string name="show_group_activity_leave">그룹을 떠나</string>
+    <string name="show_group_activity_leave_confirm_message">이 그룹을 떠나겠습니까?</string>
+    <string name="show_group_activity_leave_message">이 그룹을 떠나고 더 이상 대화에 액세스할 수 없습니다.</string>
+    <string name="show_group_activity_member_list">회원 목록 (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">이 그룹을 삭제하시겠습니까?</string>
+    <string name="show_group_activity_remove_message">이 그룹은 모든 멤버에 대해 삭제되고 대화는 지워집니다.</string>
+    <string name="show_group_activity_title">그룹</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">관리 인터페이스</string>
+    <string name="show_room_activity_invite_participants">참가자 초대</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">그림</string>
+    <string name="space_appearance_activity_background_message">색상이나 이미지로 대화 배경을 맞춤설정하세요.</string>
+    <string name="space_appearance_activity_background_text_title">본문</string>
+    <string name="space_appearance_activity_background_title">배경</string>
+    <string name="space_appearance_activity_container_background_message">보낸 메시지 배경</string>
+    <string name="space_appearance_activity_container_background_peer_message">받은 메시지 배경</string>
+    <string name="space_appearance_activity_container_border_message">보낸 메시지 테두리</string>
+    <string name="space_appearance_activity_container_border_peer_message">받은 메시지 테두리</string>
+    <string name="space_appearance_activity_container_text_message">보낸 메시지 텍스트</string>
+    <string name="space_appearance_activity_container_text_peer_message">받은 메시지 텍스트</string>
+    <string name="space_appearance_activity_container_title">거품</string>
+    <string name="space_appearance_activity_default_value">기본값</string>
+    <string name="space_appearance_activity_general_title">일반</string>
+    <string name="space_appearance_activity_menu_choose_color">기본 색상</string>
+    <string name="space_appearance_activity_menu_enter_color">색상 코드</string>
+    <string name="space_appearance_activity_opacity">불투명</string>
+    <string name="space_appearance_activity_preview_message">발레 슈즈를 잊었습니다… 제발 가져가실 수 있나요? 😘</string>
+    <string name="space_appearance_activity_preview_peer_message">안녕 예쁜이!</string>
+    <string name="space_appearance_activity_preview_title">시사</string>
+    <string name="space_appearance_activity_theme">테마</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">공간은 당신의 다양한 성격이 가장 비밀스러운 사람들을 포함하여 여러 소셜 서클을 만나는 곳입니다.</string>
+    <string name="spaces_activity_sample_business">사업</string>
+    <string name="spaces_activity_sample_business_name">존 도 박사</string>
+    <string name="spaces_activity_sample_family">가족</string>
+    <string name="spaces_activity_sample_family_name">아빠</string>
+    <string name="spaces_activity_sample_friends">친구</string>
+    <string name="spaces_activity_sample_friends_name">조니</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">오류가 발생했습니다. 다시 시도해 주세요.</string>
+    <string name="streaming_audio_activity_no_music_message">미디어 공유</string>
+    <string name="streaming_audio_activity_no_music_title">음악을 찾을 수 없습니다 🙁</string>
+    <string name="streaming_audio_activity_title">미디어 공유</string>
+    <string name="streaming_audio_activity_unsupported_message">이 오디오 형식은 %1$s의 장치에서 지원하지 않습니다.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">분류된 광고</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">공지</string>
+    <string name="template_click_to_call_activity_template_help">돕다</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">돕다</string>
+    <string name="template_click_to_call_activity_template_meeting">회의</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">회의</string>
+    <string name="template_click_to_call_activity_template_video_bell">비디오 초인종</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">초인종</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">이름(Dr John Doe, Ms Smith,…)</string>
+    <string name="template_space_activity_template_business_profile">사만다 스미스 씨</string>
+    <string name="template_space_activity_template_family_placeholder">이름(아빠, 엄마,…)</string>
+    <string name="template_space_activity_template_family_profile">엄마</string>
+    <string name="template_space_activity_template_friends_placeholder">이름(조니, 샘,…)</string>
+    <string name="template_space_activity_template_friends_profile">Sam</string>
+    <string name="template_space_activity_template_other">또 다른</string>
+    <string name="template_space_activity_template_other_placeholder">이름(아빠, 엄마, Johny, Dr John Doe,…)</string>
+    <string name="template_space_activity_template_title">템플릿</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">近くの友達にtwinmeで招待QRコードをスキャンするように依頼するか、招待コードをタップしてクリップボードにコピーします。</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">이 \"통화 전송\" 코드를 삭제하시겠습니까?</string>
+    <string name="transfert_call_activity_delete_message">이 착신전환 링크는 삭제됩니다. 확인하시겠습니까?</string>
+    <string name="transfert_call_activity_gallery_message">모바일 통화를 전달하려면 이 QR 코드를 스캔하세요.</string>
+    <string name="transfert_call_activity_message">이 코드를 전달하고 모바일 통화를 전환하려는 브라우저에서 해당 URL을 북마크에 추가하세요.</string>
+    <string name="transfert_call_activity_reset_message">이 작업을 수행하면 현재 착신 전환 코드가 무효화되고 새 코드가 생성됩니다. 확인하시겠습니까?</string>
+    <string name="transfert_call_activity_saved_message">사진 갤러리에 저장된 착신전환 코드.</string>
+    <string name="transfert_call_activity_share">이송</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">사용 가능한 업데이트</string>
+    <string name="update_app_activity_update_message">최신 애플리케이션 업데이트에는 다음이 포함되었습니다.</string>
+    <string name="update_app_activity_update_title">지금 업데이트</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">화상 전화 중&#8230;</string>
+    <string name="video_call_activity_cannot_call">화상 전화를 할 수 없습니다</string>
+    <string name="video_call_activity_connecting">연결 중&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">전화를 끄시겠습니까?</string>
+    <string name="video_call_activity_terminate">전화가 종료되었습니다</string>
+    <string name="video_call_activity_terminate_busy">전화 종료됨: &lt;b&gt;%1$s&lt;/b&gt; 씨는 바쁩니다</string>
+    <string name="video_call_activity_terminate_cancel">&lt;b&gt;%1$s&lt;/b&gt; 씨에 의해 전화 취소됨</string>
+    <string name="video_call_activity_terminate_connectivity_error">연결 문제로 인해 통화가 끊어졌습니다. 인터넷 연결을 확인해 주세요.</string>
+    <string name="video_call_activity_terminate_decline">&lt;b&gt;%1$s&lt;/b&gt; 씨에 의해 전화 거절됨</string>
+    <string name="video_call_activity_terminate_disconnected">네트워크 오류로 인해 통화가 끊어졌습니다. 다시 시도해 주세요.</string>
+    <string name="video_call_activity_terminate_gone">전화 종료됨: &lt;b&gt;%1$s&lt;/b&gt; 씨가 오프라인입니다</string>
+    <string name="video_call_activity_terminate_revoked">통화 종료: &lt;b&gt;%1$s&lt;/b&gt;님이 귀하와의 관계를 삭제했습니다.</string>
+    <string name="video_call_activity_terminate_success">&lt;b&gt;%1$s&lt;/b&gt; 씨에 의해 전화 종료됨</string>
+    <string name="video_call_activity_terminate_timeout">전화 종료됨: &lt;b&gt;%1$s&lt;/b&gt; 씨가 응답하지 않습니다</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">%1$s를 눌러 다음을 읽고 동의 함을 확인합니다.</string>
+    <string name="welcome_activity_next">다음</string>
+    <string name="welcome_activity_pass">건너 뛰기</string>
+    <string name="welcome_activity_privacy_policy">개인 정보 정책</string>
+    <string name="welcome_activity_start">스타트</string>
+    <string name="welcome_activity_step1_message">메시지 및 고화질 음성/화상 통화, 개인 정보 보호 설계.</string>
+    <string name="welcome_activity_step2_message">보안 "피어 투 피어" 통신: 클라우드에 추적이 없습니다.</string>
+    <string name="welcome_activity_step3_message">전화번호, 주소록, 사용자 ID 없음: 누구와 통신하는지에 따라 식별 방법을 선택합니다.</string>
+    <string name="welcome_activity_terms_of_use">이용 약관</string>
+
+</resources>

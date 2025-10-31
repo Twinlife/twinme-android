@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">接受</string>
+    <string name="application_account_deleted">您的帳戶已被刪除，您現在必須卸載該應用程序。</string>
+    <string name="application_add_contact_no_profile">在邀請聯繫人之前，您必須完成代表您的個人資料。 繼續？</string>
+    <string name="application_all">所有</string>
+    <string name="application_appearance">出现</string>
+    <string name="application_are_you_sure">你確定嗎？</string>
+    <string name="application_authorization_camera">允許應用在系統設置中訪問相機。</string>
+    <string name="application_authorization_go_settings">轉到系統設置</string>
+    <string name="application_authorization_microphone">允許應用在系統設置中訪問麥克風。</string>
+    <string name="application_authorization_microphone_camera">允許應用在系統設置中訪問麥克風和相機。</string>
+    <string name="application_authorization_title">缺少訪問權限</string>
+    <string name="application_back">返回</string>
+    <string name="application_camera">相機</string>
+    <string name="application_cancel">取消</string>
+    <string name="application_canceled_operation">已取消動作</string>
+    <string name="application_checking_connection">檢查連接</string>
+    <string name="application_color">顏色</string>
+    <string name="application_configuration">组态</string>
+    <string name="application_confirm">確認</string>
+    <string name="application_confirm_deletion">確認刪除</string>
+    <string name="application_connected">安全連接已啟用。</string>
+    <string name="application_connection_status_no_network">不能存取網路。</string>
+    <string name="application_connection_status_no_network_message">檢查您的網路連線。</string>
+    <string name="application_connection_status_no_services">無法存取該服務。</string>
+    <string name="application_connection_status_no_services_message">嘗試使用 VPN。</string>
+    <string name="application_contact_not_found">此聯絡人已刪除與您的此關係，並且無法再聯絡。</string>
+    <string name="application_continue_without_premium_services">繼續而不使用高級服務。</string>
+    <string name="application_create_group_no_profile">您必須完成在該組中代表您的個人資料。 繼續？</string>
+    <string name="application_database_error">數據庫錯誤</string>
+    <string name="application_decline">拒絕</string>
+    <string name="application_default">默認</string>
+    <string name="application_delete">删除</string>
+    <string name="application_delete_message">你確定要刪除嗎？</string>
+    <string name="application_denied_permissions">所需的權限未授予</string>
+    <string name="application_description">描述</string>
+    <string name="application_display_all">全部顯示</string>
+    <string name="application_do_not_display">不再顯示</string>
+    <string name="application_edit">編輯</string>
+    <string name="application_error_file_not_found">未找到該文件。</string>
+    <string name="application_error_media_not_supported">該應用程式不支援此圖像/視訊格式。</string>
+    <string name="application_error_no_storage_space">儲存空間不足</string>
+    <string name="application_group_limit_reached">超出組成員的最大數量（%1$d）。</string>
+    <string name="application_group_not_found">您已從群組中刪除</string>
+    <string name="application_items_selected">已選擇 %1$d 個項目</string>
+    <string name="application_later">後來</string>
+    <string name="application_low_usage_message">警告，如果您不經常使用該應用程序，操作系統可能不會喚醒它來交換消息！</string>
+    <string name="application_one_item_selected">已選擇 1 項</string>
+    <string name="application_migration_no_storage_space">您的裝置上沒有足夠的空間來完成遷移。 關閉應用程序，釋放一些空間，然後重新啟動應用程式以完成更新。</string>
+    <string name="application_migration_no_storage_space_message">兩台設備中，有一台的儲存空間不足。請釋放該裝置的空間，然後再重新開始遷移。</string>
+    <string name="application_name_hint">名稱</string>
+    <string name="application_network_connecting">連接到twinme服務</string>
+    <string name="application_network_connectivity">網路連線存在</string>
+    <string name="application_network_status_airplane_message">飛行模式被激活</string>
+    <string name="application_network_status_airplane_resolution">請禁用飛行模式并連接到Wi-Fi或手機網絡。</string>
+    <string name="application_network_status_connected_no_internet">沒有網絡連接到winme服務。</string>
+    <string name="application_network_status_connected_resolution">嘗試連接到另一個網絡。</string>
+    <string name="application_network_status_connection_timeout">無法建立網絡連接。</string>
+    <string name="application_network_status_no_internet">無網絡連接。</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi 已被禁用。</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi已被禁用，沒有移動互聯網連接。</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">請打開無線網路連接。</string>
+    <string name="application_network_status_wifi_disabled_resolution">請打開無線網路連接或激活移動網絡連接。</string>
+    <string name="application_new_feature">新！</string>
+    <string name="application_no">否</string>
+    <string name="application_no_network_connectivity">沒有網路連線</string>
+    <string name="application_no_service">沒有服務</string>
+    <string name="application_not_authorized_operation">未授權動作</string>
+    <string name="application_not_authorized_operation_by_your_contact">未經您的聯繫人授權操作。</string>
+    <string name="application_not_connected">正在進行安全連接......</string>
+    <string name="application_not_signed_in">沒有連線到twinme服務</string>
+    <string name="application_now">現在</string>
+    <string name="application_ok">確定</string>
+    <string name="application_operation_failure">動作失敗</string>
+    <string name="application_operation_irreversible">此操作不可逆</string>
+    <string name="application_permission_camera">需要使用相機的權限才能拍攝新照片或視頻。</string>
+    <string name="application_permission_scan_code">掃描QR碼需要訪問相機的權限。</string>
+    <string name="application_photo_gallery">相冊</string>
+    <string name="application_profile">個人資料</string>
+    <string name="application_profile_avatar_not_defined">您的個人資料圖片未定義</string>
+    <string name="application_profile_name_not_defined">您的個人資料名字未定義</string>
+    <string name="application_remove">去掉</string>
+    <string name="application_save">儲存</string>
+    <string name="application_search_hint">搜索</string>
+    <string name="application_select">選擇</string>
+    <string name="application_select_application">選擇應用程式</string>
+    <string name="application_select_more">选择更多...</string>
+    <string name="application_server_timeout">伺服器超時</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">主題</string>
+    <string name="application_timeout">到期延遲</string>
+    <string name="application_timeout_day">1天</string>
+    <string name="application_timeout_hour">1小時</string>
+    <string name="application_timeout_hours">%1$d 小時</string>
+    <string name="application_timeout_minute">1分鐘</string>
+    <string name="application_timeout_minutes">%1$d 分鐘</string>
+    <string name="application_timeout_month">1個月</string>
+    <string name="application_timeout_seconds">%1$d 秒</string>
+    <string name="application_timeout_week">1週</string>
+    <string name="application_unknown_name">未知</string>
+    <string name="application_upgrade">升級twinme</string>
+    <string name="application_webrtc_failure">WebRTC失敗</string>
+    <string name="application_wrong_configuration">設定不正確</string>
+    <string name="application_yes">是</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">應用程式程式碼</string>
+    <string name="about_activity_information">信息</string>
+    <string name="about_activity_legal">法律声明</string>
+    <string name="about_activity_libraries">庫</string>
+    <string name="about_activity_message">twinme 是一個安全的聊天及語音/視頻呼叫服務系統，不會獲取個人信息。\n\ntwinme 是基於網絡的安全（端對端加密）點對點（無延遲服務器）實時多媒體通訊標準而打造的。</string>
+    <string name="about_activity_open_source_information">該應用程式的原始程式碼已在 GitHub 上開源，遵循 AGPL-3.0 授權。</string>
+    <string name="about_activity_open_sources_licences">開源許可證</string>
+    <string name="about_activity_premium_services">優質服務</string>
+    <string name="about_activity_privacy_policy">隱私政策</string>
+    <string name="about_activity_quality_of_service">服務質量</string>
+    <string name="about_activity_terms_of_use">服務條款</string>
+    <string name="about_activity_version">版本</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">邀請已被刪除</string>
+    <string name="accept_group_invitation_activity_in_progress">會員資格正在進行</string>
+    <string name="accept_group_invitation_activity_message">%1$s 邀請您加入該群組</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">邀請正在轉移。</string>
+    <string name="accept_invitation_activity_check_connection">檢查您的網路連線。</string>
+    <string name="accept_invitation_activity_existing_contact_message">您已经与此联系人建立了关系。 您想创建一个新的吗？</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">連絡人資訊不正確</string>
+    <string name="accept_invitation_activity_local_twincode">您不能在同一個帳戶中與自己建立關係。</string>
+    <string name="accept_invitation_activity_message">%1$s想與您建立聯繫</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">對話內容</string>
+    <string name="account_activity_delete_account">您的帳戶以及所有相關數據將被永久刪除。 確認？</string>
+    <string name="account_activity_delete_account_confirmation">您真的確定要刪除自己的帳戶嗎？</string>
+    <string name="account_activity_export_content">匯出到外部媒體</string>
+    <string name="account_activity_message_first_part">首次安裝應用程序、重新安裝應用程序、重置設備或刪除當前帳戶後，都會創建一個新帳戶。</string>
+    <string name="account_activity_message_second_part">以前的帳戶和數據不會留下任何痕跡，因此您必須重新邀請您的聯繫人。</string>
+    <string name="account_activity_migration_message">帳戶遷移服務可用於將您的帳戶以及所有相關數據（聯繫人、消息、群組等）從一台 Android 設備實時轉移到另一台。 因此，您可以在舊設備和新設備之間切換帳戶。</string>
+    <string name="account_activity_migration_start_from_another_device">從另一台設備</string>
+    <string name="account_activity_migration_start_from_current_device">從我的設備</string>
+    <string name="account_activity_migration_title">帳戶遷移</string>
+    <string name="account_activity_title">帳戶</string>
+    <string name="account_activity_transfer_between_devices">裝置間傳輸</string>
+    <string name="account_activity_transfer_from_another_device">從另一個裝置傳輸</string>
+    <string name="account_activity_transfer_from_device">從此裝置傳輸</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">關閉應用程序，然後重新啟動它以訪問您的數據。</string>
+    <string name="account_migration_activity_close_message">關閉應用程序，然後重新啟動它以訪問新數據。</string>
+    <string name="account_migration_activity_confirm_cancel_message">您確定要取消遷移嗎？</string>
+    <string name="account_migration_activity_network_message">檢查您的網絡連接</string>
+    <string name="account_migration_activity_not_enough_space_for_files">文件空間不足</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">空間不足，無法接收數據庫</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">空間不足，無法轉移數據庫</string>
+    <string name="account_migration_activity_state_canceled">遷移已取消</string>
+    <string name="account_migration_activity_state_negotiate">等候</string>
+    <string name="account_migration_activity_state_list_files">文件清單</string>
+    <string name="account_migration_activity_state_send_account">正在發送帳戶</string>
+    <string name="account_migration_activity_state_send_database">正在發送數據庫</string>
+    <string name="account_migration_activity_state_send_files">發送文件</string>
+    <string name="account_migration_activity_state_send_settings">發送應用程序設置</string>
+    <string name="account_migration_activity_state_terminate">遷移幾乎完成。</string>
+    <string name="account_migration_activity_state_wait_account">等待其他帳戶</string>
+    <string name="account_migration_activity_state_wait_connect">等待重新連接</string>
+    <string name="account_migration_activity_state_wait_files">等待接收文件和數據庫。</string>
+    <string name="account_migration_activity_start">開始遷移</string>
+    <string name="account_migration_activity_stop">停止遷移</string>
+    <string name="account_migration_activity_success_message">遷移成功完成</string>
+    <string name="account_migration_activity_transfer_in_progress">正在進行數據傳輸</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">在每台設備上顯示此屏幕，一個掃描另一台的QR碼。</string>
+    <string name="account_migration_scanner_activity_message_older_version">該設備使用舊的不相容的作業系統版本，這將導致目標設備上的所有關係在傳輸過程中遺失。 您還想繼續進行轉移嗎？</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">目標裝置使用舊的不相容的作業系統版本，這將導致您的所有關係在傳輸過程中遺失。 您還想繼續進行轉移嗎？</string>
+    <string name="account_migration_scanner_activity_scan_title">掃描</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">若要啟動遷移，請從其他裝置掃描此二維碼</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">掃描另一個裝置側面選單「帳戶/從另一個裝置傳輸」一節中顯示的二維碼。</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">停止掃描</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">向此通話添加參與者</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">從圖庫導入</string>
+    <string name="add_contact_activity_in_person_subtitle">邀請您附近的人</string>
+    <string name="add_contact_activity_in_person_title">現場</string>
+    <string name="add_contact_activity_invitation_code_title">迷你程式碼</string>
+    <string name="add_contact_activity_invite">邀請</string>
+    <string name="add_contact_activity_invite_message">在您的移動裝置上使用twinme打開網址 %1$s 即可與「%2$s」私密連絡</string>
+    <string name="add_contact_activity_invite_subject">Twinme邀請</string>
+    <string name="add_contact_activity_message">讓您附近的朋友使用 twinme 掃描您的邀請二維碼，或點擊“掃描”按鈕掃描您朋友的二維碼。</string>
+    <string name="add_contact_activity_onboarding_message">twinme 不認識你的朋友，也無法發現他們。你必須親自邀請他們，當他們在你附近時用 twinme 邀請他們，或者通過其他方式向他們發送邀請。</string>
+    <string name="add_contact_activity_scan_code">掃描邀請二維碼</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">該連結已損壞。</string>
+    <string name="add_contact_activity_scan_error_incorect_link">此連結不正確。</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">此連結不受應用程式管理。</string>
+    <string name="add_contact_activity_scan_error_revoked_link">此關係已刪除。</string>
+    <string name="add_contact_activity_scan_message_call_link">此連結對應於“點擊通話”</string>
+    <string name="add_contact_activity_scan_message_invitation_link">此連結對應於聯繫邀請</string>
+    <string name="add_contact_activity_scan_message_migration_link">此連結對應帳戶遷移</string>
+    <string name="add_contact_activity_scan_message_transfer_link">此連結對應呼叫轉接</string>
+    <string name="add_contact_activity_scan_title">掃描</string>
+    <string name="add_contact_activity_social_subtitle">消息，郵件，社交網絡</string>
+    <string name="add_contact_activity_social_title">通過應用程序發送代碼</string>
+    <string name="add_contact_activity_title">邀請</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">加</string>
+    <string name="add_group_member_activity_title">添加成員</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">歡迎留言</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">正在呼叫&#8230;&#8230;</string>
+    <string name="audio_call_activity_cannot_call">無法撥打語音電話</string>
+    <string name="audio_call_activity_connecting">連接&#8230;&#8230;</string>
+    <string name="audio_call_activity_hangup">掛斷</string>
+    <string name="audio_call_activity_hangup_confirmation">您要掛斷電話嗎？</string>
+    <string name="audio_call_activity_terminate">呼叫已被終止</string>
+    <string name="audio_call_activity_terminate_busy">呼叫被終止：&lt;b&gt;%1$s&lt;/b&gt;正忙</string>
+    <string name="audio_call_activity_terminate_cancel">呼叫被&lt;b&gt;%1$s&lt;/b&gt;取消</string>
+    <string name="audio_call_activity_terminate_connectivity_error">呼叫被終止：網路錯誤</string>
+    <string name="audio_call_activity_terminate_decline">呼叫被&lt;b&gt;%1$s&lt;/b&gt;拒絕</string>
+    <string name="audio_call_activity_terminate_gone">呼叫被終止：&lt;b&gt;%1$s&lt;/b&gt;不在線上</string>
+    <string name="audio_call_activity_terminate_not_authorized">您的聯絡人未授予通話所需的權限（例如，麥克風、攝影機）。</string>
+    <string name="audio_call_activity_terminate_revoked">通話結束：&lt;b&gt;%1$s&lt;/b&gt; 已刪除與您的此關係。</string>
+    <string name="audio_call_activity_terminate_success">呼叫被&lt;b&gt;%1$s&lt;/b&gt;終止</string>
+    <string name="audio_call_activity_terminate_timeout">呼叫被終止：&lt;b&gt;%1$s&lt;/b&gt;未應答</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">您與 %1$s 的關係現已認證。</string>
+    <string name="authentified_relation_activity_certify_by_scan">透過掃描二維碼進行認證</string>
+    <string name="authentified_relation_activity_certify_by_video_call">透過視訊通話確認</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s 必須允許視訊通話才能透過視訊通話證明關係。</string>
+    <string name="authentified_relation_activity_level_2">若要認證此關係，您必須掃描 %1$s 裝置上顯示的二維碼。</string>
+    <string name="authentified_relation_activity_level_3">要認證此關係，%1$s 的裝置必須掃描此二維碼。</string>
+    <string name="authentified_relation_activity_level_4">您與 %1$s 的關係已認證。</string>
+    <string name="authentified_relation_activity_onboarding_message">「認證」關係可確保您始終與正確的人溝通，即使服務已被第三方破壞。</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">確保您始終與正確的人溝通！</string>
+    <string name="authentified_relation_activity_relation_print_message">此指紋在兩個裝置上必須相同。</string>
+    <string name="authentified_relation_activity_relation_print_title">關係指紋</string>
+    <string name="authentified_relation_activity_start">開始認證</string>
+    <string name="authentified_relation_activity_title">認證關係</string>
+    <string name="authentified_relation_activity_to_be_certified_title">驗證關係</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">所有</string>
+    <string name="calls_fragment_call_again_message">您要回撥%1$s嗎？</string>
+    <string name="calls_fragment_call_again_title">打回來</string>
+    <string name="calls_fragment_create_link">創建“點擊通話”鏈接</string>
+    <string name="calls_fragment_incoming_call">來電</string>
+    <string name="calls_fragment_missed_call">未接來電</string>
+    <string name="calls_fragment_missed_call_segmented_control">錯過了</string>
+    <string name="calls_fragment_no_call_message">此處列出未接來電。</string>
+    <string name="calls_fragment_no_call_title">您還沒有撥打任何電話。</string>
+    <string name="calls_fragment_outgoing_call">撥出電話</string>
+    <string name="calls_fragment_reset">您確定要重置所有呼叫通知嗎？</string>
+    <string name="calls_fragment_reset_title">重置通話通知</string>
+    <string name="calls_fragment_title">來電</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">藍牙音頻</string>
+    <string name="call_activity_audio_source_device">設備耳機</string>
+    <string name="call_activity_audio_source_earphones">耳機</string>
+    <string name="call_activity_audio_source_headset">音頻耳機</string>
+    <string name="call_activity_audio_source_loudspeaker">揚聲器</string>
+    <string name="call_activity_battery_restriction_message">注意力！當應用程序在後台運行時，您必須允許使用電池，否則在通話過程中可能會切割麥克風。</string>
+    <string name="call_activity_camera_control">網路攝影機控制</string>
+    <string name="call_activity_camera_control_ask_message">請求 %1$s 允許您在視訊通話期間控制他們的攝影機。</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s 想在通話期間控制您的相機。您可以隨時重新取得控制權。</string>
+    <string name="call_activity_camera_control_denied">%1$s 不允許您控制他/她的攝影機。</string>
+    <string name="call_activity_camera_control_message">控制 %1$s 的攝影機</string>
+    <string name="call_activity_camera_control_needs_help">需要幫助嗎？</string>
+    <string name="call_activity_camera_control_onboarding">如果您的聯絡人允許，您可以在視訊通話期間控制其攝影機並自行放大。此功能對於控制視訊監控攝影機尤其有用。</string>
+    <string name="call_activity_camera_control_onboarding_part_2">在獲得親人許可的情況下，您可以在通話期間控制他們的攝像頭，以便遠端、輕鬆、安全地為他們提供幫助。</string>
+    <string name="call_activity_camera_control_remotely">%1$s 遠端控制您的攝影機。</string>
+    <string name="call_activity_camera_control_stop">停止</string>
+    <string name="call_activity_certify_error_message">%1$s 沒有驗證該字。關係認證失敗，您需要重試。</string>
+    <string name="call_activity_certify_onboarding_message">視訊通話允許相互識別和交換與經過認證的關係及其交換相關的安全密鑰。</string>
+    <string name="call_activity_certify_onboarding_start_message">依序拼出螢幕上顯示的單字，對方可以驗證。一旦所有單字都通過驗證，您與 %1$s 的關係將得到認證。</string>
+    <string name="call_activity_certify_onboarding_title">證明你們的關係</string>
+    <string name="call_activity_certify_video_message">通話必須透過視訊進行才能證明關係。</string>
+    <string name="call_activity_coach_mark">點按此處可將參與者添加到此通話</string>
+    <string name="call_activity_confirm_word">%1$s 所說的單字是否相同？</string>
+    <string name="call_activity_confirm_word_title">驗證單字</string>
+    <string name="call_activity_error_call_interrupted">通話中斷，錯誤：%1$d。</string>
+    <string name="call_activity_error_call_not_go_thru">通話無法接通，錯誤：%1$d。</string>
+    <string name="call_activity_max_participant_message">已達到群組通話參與者的最大數量 (%1$d)。</string>
+    <string name="call_activity_not_supported_group_call_message">%1$s 的應用版本與群組通話不兼容，需要更新。</string>
+    <string name="call_activity_quality_message">您如何評價它？</string>
+    <string name="call_activity_quality_title">通話質量</string>
+    <string name="call_activity_repeat_word">%1$s 將能與他/她螢幕上的單字進行比較。</string>
+    <string name="call_activity_repeat_word_title">拼出單字</string>
+    <string name="call_activity_tag_add_to_call">邀請聯絡人加入正在進行的通話</string>
+    <string name="call_activity_tag_camera">網路攝影機</string>
+    <string name="call_activity_tag_camera_activate">啟動攝影機</string>
+    <string name="call_activity_tag_camera_cut">關閉攝影機</string>
+    <string name="call_activity_tag_camera_flip">翻轉攝影機</string>
+    <string name="call_activity_tag_microphone">麥克風</string>
+    <string name="call_activity_tag_microphone_activate">啟動麥克風</string>
+    <string name="call_activity_tag_microphone_mute">靜音麥克風</string>
+    <string name="call_activity_tag_pause">暫停</string>
+    <string name="call_activity_tag_send_message">發送訊息</string>
+    <string name="call_activity_tag_speaker">擴音器</string>
+    <string name="call_activity_tag_speaker_activate">啟動揚聲器</string>
+    <string name="call_activity_tag_speaker_mute">靜音揚聲器</string>
+    <string name="call_activity_transfert_call_message">正在進行的通話已轉接。</string>
+    <string name="call_activity_try_to_call_back">嘗試回撥。</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">相機已在使用</string>
+    <string name="capture_activity_incorrect_qrcode">twincode碼不正確</string>
+    <string name="capture_activity_message">將QR碼放在此矩形中進行掃描。</string>
+    <string name="capture_activity_no_camera">需要相機來掃描twincode碼</string>
+    <string name="capture_activity_qrcode_saved">邀請代碼保存在照片中。</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">清除全部</string>
+    <string name="cleanup_activity_both_clean">全局清理（本地和遠程）</string>
+    <string name="cleanup_activity_both_clean_title">全局清理</string>
+    <string name="cleanup_activity_clean">刪除</string>
+    <string name="cleanup_activity_conversation">與 %s 的談話</string>
+    <string name="cleanup_activity_delete_confirmation_message">刪除是不可逆的。 在繼續之前導出重要內容。 繼續？</string>
+    <string name="cleanup_activity_error">操作過程中發生錯誤。</string>
+    <string name="cleanup_activity_expiration">到期期限</string>
+    <string name="cleanup_activity_free">可用的</string>
+    <string name="cleanup_activity_info">從此對話中刪除消息、媒體和文件並不會從您聯繫人的設備中刪除它們，您以後將無法這樣做。</string>
+    <string name="cleanup_activity_info_both">從此對話中刪除消息、媒體和文件也會將它們從您聯繫人的設備中刪除。</string>
+    <string name="cleanup_activity_local_cleanup">僅本地清理</string>
+    <string name="cleanup_activity_local_cleanup_title">局部清理</string>
+    <string name="cleanup_activity_medias_and_files">僅限媒體和文件</string>
+    <string name="cleanup_activity_medias_and_files_info">媒體縮略圖不會從對話中刪除； 只有原始文件。</string>
+    <string name="cleanup_activity_medias_and_files_info_both">在此對話中交換的文件、照片、視頻和語音筆記將從您的設備和聯繫人的設備中刪除。</string>
+    <string name="cleanup_activity_messages">所有訊息及其他內容</string>
+    <string name="cleanup_activity_messages_info">對話中任何類型的消息（文本、照片、視頻、語音、文件等）都將從應用程序中刪除。</string>
+    <string name="cleanup_activity_month">%1$d 個月</string>
+    <string name="cleanup_activity_older_than">年長於</string>
+    <string name="cleanup_activity_one_year">1 年</string>
+    <string name="cleanup_activity_prior_to">先於</string>
+    <string name="cleanup_activity_reset_conversation_message">重置此對話將刪除所有消息，包括您聯繫人設備上的消息。</string>
+    <string name="cleanup_activity_select_content">選擇您想要刪除的內容。</string>
+    <string name="cleanup_activity_storage_title">磁盤空間</string>
+    <string name="cleanup_activity_success">操作成功完成。</string>
+    <string name="cleanup_activity_title">聊天清潔</string>
+    <string name="cleanup_activity_total">全部的</string>
+    <string name="cleanup_activity_used">用過的</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">工具提示</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">允許此聯繫人給您打電話</string>
+    <string name="contact_capabilities_activity_automatic_answering">自動接聽來電</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">注意：此設定會啟動自動應答來自該聯絡人的呼叫，開啟裝置麥克風和攝影機（用於視訊呼叫）。</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">某些設備可能會限制此功能。</string>
+    <string name="contact_capabilities_activity_call_settings">通話設定</string>
+    <string name="contact_capabilities_activity_camera_control_allow">始終</string>
+    <string name="contact_capabilities_activity_camera_control_ask">每次通話時詢問</string>
+    <string name="contact_capabilities_activity_camera_control_information">允許此聯絡人在視訊通話期間自動控制您的攝影機。</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">您可以要求擁有高級版應用程式存取權限的聯絡人在視訊通話期間控制您的攝影機。</string>
+    <string name="contact_capabilities_activity_camera_control_never">永不</string>
+    <string name="contact_capabilities_activity_discreet_relation">謹慎的關係</string>
+    <string name="contact_capabilities_activity_information_audio_call">允許聯絡人以語音方式呼叫您。</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">不在通知中顯示聯絡人姓名，也不在通話記錄中儲存通話。</string>
+    <string name="contact_capabilities_activity_information_limited_call">設定您不想接到電話的日期/時間。</string>
+    <string name="contact_capabilities_activity_information_programmed_call">安排您想要接到電話的日期/時間。</string>
+    <string name="contact_capabilities_activity_information_video_call">允許聯絡人與您視訊通話。</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">邀請某人掃描您的邀請代碼，否則請掃描他們的邀請。</string>
+    <string name="contacts_fragment_invite_contact_title">邀請聯繫人</string>
+    <string name="contacts_fragment_scan_contact_title">掃描或輸入邀請碼</string>
+    <string name="contacts_fragment_title">聯絡人</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">語音通話</string>
+    <string name="conversation_activity_audio_message">語音留言</string>
+    <string name="conversation_activity_call_missed">錯過了</string>
+    <string name="conversation_activity_cannot_send">無法立即發送消息：</string>
+    <string name="conversation_activity_cleanup_conversation">您刪除了一些舊訊息。</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s 清理了一些舊消息。</string>
+    <string name="conversation_activity_delete_message">您的郵件實際上已被刪除。</string>
+    <string name="conversation_activity_empty_message">說些聰明的東西或有趣吧！</string>
+    <string name="conversation_activity_edit_message">只有當您的聯絡人的應用程式已更新至最新版本時，您才能在其裝置上編輯該訊息。</string>
+    <string name="conversation_activity_ephemeral_coach_mark">長按發送箭頭可在一定時間後從對話中刪除此消息。</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">您連絡人的twinme版本功能不完整。&lt;br /&gt;
+        請讓他/她進行twinme更新。</string>
+    <string name="conversation_activity_group_member_information">%1$d 成員</string>
+    <string name="conversation_activity_group_not_allowed_post_message">不允許發送消息</string>
+    <string name="conversation_activity_group_one_member">1名成員</string>
+    <string name="conversation_activity_invitation_accepted">邀請被接受</string>
+    <string name="conversation_activity_invitation_failed">請您的聯繫人更新twinme</string>
+    <string name="conversation_activity_invitation_joined">該小組成員</string>
+    <string name="conversation_activity_invitation_pending">邀請正在進行中</string>
+    <string name="conversation_activity_invitation_refused">邀請被拒絕</string>
+    <string name="conversation_activity_invitation_title">我邀請你加入這個小組</string>
+    <string name="conversation_activity_local_cleanup">主要內容已在本地刪除。</string>
+    <string name="conversation_activity_manage_conversation">管理對話</string>
+    <string name="conversation_activity_menu_item_view_copy_message">複製到剪貼板！</string>
+    <string name="conversation_activity_menu_item_view_copy_title">複製</string>
+    <string name="conversation_activity_menu_item_view_delete_title">刪除</string>
+    <string name="conversation_activity_menu_item_view_forward_title">转发</string>
+    <string name="conversation_activity_menu_item_view_info_title">信息</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">未經發件人授權的操作</string>
+    <string name="conversation_activity_menu_item_view_reply_title">回复</string>
+    <string name="conversation_activity_menu_item_view_save_message">保存了！</string>
+    <string name="conversation_activity_menu_item_view_save_title">保存</string>
+    <string name="conversation_activity_menu_item_view_share_title">分享</string>
+    <string name="conversation_activity_message">輸入訊息</string>
+    <string name="conversation_activity_photo_camera">照片攝像頭</string>
+    <string name="conversation_activity_record_confirm_send_record">再按一下進行傳送</string>
+    <string name="conversation_activity_record_start_record">按住進行錄音</string>
+    <string name="conversation_activity_record_title">記錄</string>
+    <string name="conversation_activity_reduce_menu_lower">標準</string>
+    <string name="conversation_activity_reduce_menu_minimal">最小值</string>
+    <string name="conversation_activity_reduce_menu_original">原始</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">沒有調整大小</string>
+    <string name="conversation_activity_reject_stream">拒絕</string>
+    <string name="conversation_activity_reply_to">回复%1$s</string>
+    <string name="conversation_activity_reset_conversation">您已重置對話</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s 已重置對話</string>
+    <string name="conversation_activity_send_file_warning">警告：無法阻止接收者復制/保存/共享文檔（pdf、word、ppt、excel、zip 等），這些文檔只能在應用程序外部打開。您還想發送嗎？</string>
+    <string name="conversation_activity_send_large_file_message">此文件很大 (%1$d MB)。你想繼續嗎 ？</string>
+    <string name="conversation_activity_send_menu_allow_copy">允許收件人復制/保存/共享此內容</string>
+    <string name="conversation_activity_stream_dialog">您要接受嗎？</string>
+    <string name="conversation_activity_unsupported_media">不支援的媒體格式</string>
+    <string name="conversation_activity_video_call">視頻電話</string>
+    <string name="conversation_activity_video_camera">攝像機</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">文檔</string>
+    <string name="conversation_files_activity_links">鏈接</string>
+    <string name="conversation_files_activity_month">這個月</string>
+    <string name="conversation_files_activity_no_files">您與 %1$s 的對話不包含任何這些元素。</string>
+    <string name="conversation_files_activity_title">媒體、網絡鏈接和文件</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">背景和顏色</string>
+    <string name="conversation_settings_activity_emoji_size">表情符號大小</string>
+    <string name="conversation_settings_activity_link_preview">可視化</string>
+    <string name="conversation_settings_activity_link_preview_message">顯示網站的預覽。</string>
+    <string name="conversation_settings_activity_link_title">網頁鏈接</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">端到端加密的消息直接在終端之間進行點對點交換，而無需中間分發服務器=雲中沒有任何痕跡。</string>
+    <string name="conversations_fragment_no_result_found">未找到“%1$s”的結果。</string>
+    <string name="conversations_fragment_start">開始對話</string>
+    <string name="conversations_fragment_title">對話內容</string>
+    <string name="conversations_fragment_you">你</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">此個人資料將顯示給將通過此“click-to-call”鏈接呼叫您的客人。</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">「點擊通話」允許客人透過瀏覽器給您打電話，而無需安裝應用程式。</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">每個實例都有一個名稱、一個圖像和一個描述，代表調用的主題，例如：</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">您的客戶服務</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">你要賣的車</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">專業團體通話</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">供送貨員使用的可視門鈴。</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">「點選通話」具有指定其是否為的屬性：</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">音訊和/或視訊通話</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">個人或群組通話</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">始終開放或僅限於特定日期和時間。</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">透過允許聯絡相關人員的管道分享「點擊通話」連結或二維碼，例如：</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">您網站上的“號召性用語”</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">分類廣告平台上的插入內容</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">向受邀參加群組通話的人員發送一封電子郵件</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">前門上有一個供送貨人員使用的標誌。</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">收件者掃描二維碼並在其行動裝置或 PC 上的瀏覽器中開啟連結。 然後他們可以：</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">更改在通話中代表他們的預設名稱（訪客）</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">按網頁上的「呼叫」按鈕打給您。</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">通話結束後，他們可能會保持網頁開啟以便回電給您。</string>
+    <string name="create_external_call_activity_placeholder">主題（幫助、公告、會議、門鈴......）</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">邀請成員</string>
+    <string name="create_group_activity_create">創建</string>
+    <string name="create_group_activity_member_allow_invitation_message">允許群組成員邀請其聯繫人</string>
+    <string name="create_group_activity_member_allow_invitation_title">會員邀請</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">允許成員邀請其他成員作為個人聯繫人</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">建立個人聯繫</string>
+    <string name="create_group_activity_member_allow_post_message">允許組成員發布消息</string>
+    <string name="create_group_activity_member_allow_post_title">發表訊息</string>
+    <string name="create_group_activity_member_list">會員名單（%1$d）</string>
+    <string name="create_group_activity_name_hint">組名</string>
+    <string name="create_group_activity_title">組</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">姓名和形像對於您的聯繫人識別您並將您與其他人區分開來都是必不可少的。</string>
+    <string name="create_profile_activity_message">此個人資料資訊用於邀請聯絡人。</string>
+    <string name="create_profile_activity_onboarding_message">定義個人資料（暱稱和圖片）以便為您的聯繫人標識自己。</string>
+    <string name="create_profile_activity_onboarding_message_part_1">個人資料可讓您邀請聯絡人在應用程式上與您建立關係。 您可以擁有任意數量的個人資料（角色），每個個人資料都與特定的「空間」相關聯。</string>
+    <string name="create_profile_activity_onboarding_message_part_2">每個「個人資料」都有一個「名稱」和一個「圖像」（必需），您邀請的聯絡人可以看到它們，並用作與該「空間」新建立的關係相關聯的初始個人資料。</string>
+    <string name="create_profile_activity_onboarding_message_part_3">創建後，每個關係都有自己的一對“個人資料”，代表您和您的聯絡人。</string>
+    <string name="create_profile_activity_onboarding_message_part_4">然後，您可以在每個關係中獨立修改您希望每個聯絡人了解的方式。</string>
+    <string name="create_profile_activity_save_message">此名稱和圖像用於邀請您的聯絡人並初始化您的關係。您將能夠針對每個關係進行修改和自訂它們。</string>
+    <string name="create_profile_activity_welcome1">輸入您的個人資料圖片</string>
+    <string name="create_profile_activity_welcome2">歡迎%1$s！</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">「空間」是本地的，對聯絡人不可見。</string>
+    <string name="create_space_activity_onboarding_message_part_1">「空間」可協助您根據聯絡人所屬的社交圈來組織您的聯絡人，例如。 家庭、朋友、商務、娛樂等。</string>
+    <string name="create_space_activity_onboarding_message_part_2">每個「空間」都與一個「個人資料」相關聯，代表您在與該空間社交圈中的聯絡人互動時想要使用的角色，例如爸爸、約翰、約翰·多伊博士、蝙蝠俠等。</string>
+    <string name="create_space_activity_onboarding_message_part_3">「空間」是您裝置上的應用程式的本機空間。 它們僅對您可見，您的聯絡人或服務伺服器都看不到它們。</string>
+    <string name="create_space_activity_onboarding_message_part_4">「空間」具有：</string>
+    <string name="create_space_activity_onboarding_message_part_5">- “名稱”，代表您與之互動的特定社交圈</string>
+    <string name="create_space_activity_onboarding_message_part_6">- 一個“圖像”，讓您可以在“空間”列表中快速識別它</string>
+    <string name="create_space_activity_onboarding_message_part_7">- 顏色“主題”，個性化其外觀和感覺</string>
+    <string name="create_space_activity_onboarding_message_part_8">- “設定”可以特定於每個特定的“空間”，從而覆蓋應用程式設定定義的預設值。</string>
+    <string name="create_space_activity_title">創建Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">此配置文件名稱與用於將正在進行的呼叫轉移到瀏覽器的代碼相關聯。</string>
+    <string name="create_transfert_call_activity_name_placeholder">我的呼叫轉移</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">在下面輸入字母“OK”以確認刪除帳戶。</string>
+    <string name="deleted_account_activity_delete">刪除帳戶</string>
+    <string name="deleted_account_activity_warning">注意力！</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">您的帳戶已被刪除，所有相關數據已被銷毀。&lt;br /&gt;
+        您必須關閉該應用程序。</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">您確定要刪除此關係嗎？</string>
+    <string name="edit_contact_activity_message">此聯絡人將無法再聯絡您。</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">刪除此配置文件將使其關聯的邀請代碼失效。 確認刪除？</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">您確定要刪除此“Click-to-Call”程式碼嗎？</string>
+    <string name="edit_external_call_activity_delete_message">此“Click-to-Call”連結將不再可用。</string>
+    
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">編輯個人資料</string>
+    <string name="edit_profile_activity_propagating_all_contacts">致此「空間」中的所有聯絡人</string>
+    <string name="edit_profile_activity_propagating_ask_message">傳播您剛剛修改的圖像、名稱或描述：</string>
+    <string name="edit_profile_activity_propagating_except_contacts">所有人，除非它們是個人化的</string>
+    <string name="edit_profile_activity_propagating_message">您可以將邀請個人資料變更傳播給現有聯絡人，也可以不傳播。</string>
+    <string name="edit_profile_activity_propagating_no_contact">對任何人都沒有</string>
+    <string name="edit_profile_activity_propagating_profile">傳播個人資料更改</string>
+    <string name="edit_profile_activity_remove_active_profile">您不能刪除使用中的個人資料</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">建立聯繫後，強烈建議您驗證該 PIN 碼以增強其安全性。</string>
+    <string name="enter_invitation_code_activity_enter_code">輸入迷你代碼</string>
+    <string name="enter_invitation_code_activity_error_message">此代碼無效。它可能已被使用或已過期。</string>
+    <string name="enter_invitation_code_activity_invitation_message">建立聯繫後，請務必驗證 PIN 碼以增強其安全性。</string>
+    <string name="enter_invitation_code_activity_message">請輸入聯絡人提供的迷你代碼以建立關係。</string>
+    <string name="enter_invitation_code_activity_onboarding_message">一位聯絡人向您提供了 6 位元迷你程式碼，用於建立關係。此迷你代碼僅限一次性使用，創建後 24 小時失效。</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">對話內容將導出為 ZIP 文件。</string>
+    <string name="export_activity_content_title">內容</string>
+    <string name="export_activity_content_to_export">導出內容</string>
+    <string name="export_activity_do_not_leave_screen">導出操作期間不要離開屏幕。</string>
+    <string name="export_activity_export">出口</string>
+    <string name="export_activity_file">文件</string>
+    <string name="export_activity_files">文件</string>
+    <string name="export_activity_get_all_content">正在檢索與 %1$s 的對話內容。</string>
+    <string name="export_activity_get_one_chat">正在檢索對話內容。</string>
+    <string name="export_activity_images">照片</string>
+    <string name="export_activity_no_content_to_export">沒有內容可導出</string>
+    <string name="export_activity_one_conversation_zip_file">對話內容將導出為 ZIP 文件。</string>
+    <string name="export_activity_save_location">地點</string>
+    <string name="export_activity_save_location_message">選擇導出位置。</string>
+    <string name="export_activity_select_content">選擇要導出的內容。\n只能導出經授權複製/保存/共享的非臨時內容。</string>
+    <string name="export_activity_success">導出成功完成。</string>
+    <string name="export_activity_title">對話導出</string>
+    <string name="export_activity_videos">影片</string>
+    <string name="export_activity_voice_messages">語音留言</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">致命錯誤，代碼 %1$d。\n請重新啟動應用程序，並透過回饋訊息報告問題,如果可以的話。 抱歉給你帶來不便。</string>
+    <string name="fatal_error_activity_error_message">致命錯誤：%1$s&lt;br /&gt;
+        您必須關閉該應用程序。</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">連絡人</string>
+    <string name="feedback_activity_gdpr_notice">使用此表單請求訪問您的帳戶數據。</string>
+    <string name="feedback_activity_help">我們感謝您幫助我們識別問題並與我們合作解決問題。</string>
+    <string name="feedback_activity_info_logs">偵錯日誌僅包含有關應用程式活動和行為的低階技術數據，不會洩露您的任何個人資訊。</string>
+    <string name="feedback_activity_logs">偵錯日誌</string>
+    <string name="feedback_activity_message">訊息</string>
+    <string name="feedback_activity_send">傳送</string>
+    <string name="feedback_activity_send_logs">發送調試日誌</string>
+    <string name="feedback_activity_send_message">反饋已提交。謝謝。</string>
+    <string name="feedback_activity_subject">主旨</string>
+    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">此操作會使與此個人資料關聯的當前邀請代碼無效。 您確定要生成新代碼嗎？</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">產生新的邀請碼</string>
+    <string name="fullscreen_qrcode_activity_save_message">使用 twinme 導入或掃描此邀請二維碼以添加此聯繫人。</string>
+    <string name="fullscreen_qrcode_activity_save_title">保存到照片庫</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">授權語音通話</string>
+    <string name="group_capabilities_activity_information_programmed_call">定義電話的日期/時間</string>
+    <string name="group_capabilities_activity_information_video_call">授權視頻通話</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">群組管理員未授權此操作。</string>
+    <string name="group_member_activity_invitation_message">邀請 %1$s 作為個人聯繫人</string>
+    <string name="group_member_activity_invitation_title">請帖</string>
+    <string name="group_member_activity_invite_personnal_relation">邀請 作為個人聯繫人</string>
+    <string name="group_member_activity_remove_message">您確定要從該組中刪除成員嗎？</string>
+    <string name="group_member_activity_section_administrator">管理員</string>
+    <string name="group_member_activity_section_invitation">邀請</string>
+    <string name="group_member_activity_section_member">會員</string>
+    <string name="group_member_activity_title">小組成員</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s很忙</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">通話已被%1$s取消</string>
+    <string name="info_item_activity_call_terminated_reason_decline">通話被%1$s拒絕</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s離線</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">不允許打電話</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s刪除了此關係</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s沒有回答</string>
+    <string name="info_item_activity_deleted">由接收者刪除：</string>
+    <string name="info_item_activity_may_be_copied">可以復制/保存/共享......</string>
+    <string name="info_item_activity_may_not_be_copied">不得複制/保存/共享......</string>
+    <string name="info_item_activity_reactions">反應</string>
+    <string name="info_item_activity_received">收稿日期：</string>
+    <string name="info_item_activity_seen">看：</string>
+    <string name="info_item_activity_sent">發送：</string>
+    <string name="info_item_activity_updated">已修訂</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">此操作使与此“点击通话”链接关联的当前邀请代码无效。 确认？</string>
+    <string name="invitation_call_activity_generate_code_title">为此链接生成新代码</string>
+    <string name="invitation_call_activity_invite_message">打开网址%1$s 或扫描二维码，呼叫“%2$s”。</string>
+    <string name="invitation_call_activity_message">与可以通过网络或移动应用程序呼叫您的人分享此“点击呼叫”代码。</string>
+    <string name="invitation_call_activity_save_message">掃描此 QR 碼以呼叫“%1$s”。</string>
+    <string name="invitation_call_activity_share">公佈</string>
+    <string name="invitation_call_activity_title">外部呼叫</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">創建一個小程式碼</string>
+    <string name="invitation_code_activity_create_code_subtitle">以便在您無法存取應用程式時邀請聯絡人。</string>
+    <string name="invitation_code_activity_expiration">有效期限：</string>
+    <string name="invitation_code_activity_history">我的迷你程式碼</string>
+    <string name="invitation_code_activity_limit_message">已達到允許的有效迷你代碼數量上限。您必須等待 24 小時才能產生新的。</string>
+    <string name="invitation_code_activity_onboarding_message">迷你代碼僅供一次性使用，且僅在 24 小時內有效。當您無法存取應用程式（例如，沒有手機）時，您可以將迷你代碼提供給您的聯絡人，以建立關係。</string>
+    <string name="invitation_code_activity_success_message">強烈建議使用迷你程式碼建立的關係進行認證，以增強其安全性。</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">請附近的朋友使用 twinme 掃描“房間”的二維碼，或點擊邀請碼將其複製到剪貼板。</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">語音</string>
+    <string name="last_calls_activity_video">視頻</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">您在此設備上的twinme帳戶將被轉移到twinme+。</string>
+    <string name="local_account_migration_activity_message_older_version">請確保在開始轉移之前將兩台裝置都更新到應用程式的最新版本，以避免遺失所有關係。</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">添加聯繫人</string>
+    <string name="main_activity_add_group">創建一個組</string>
+    <string name="main_activity_reset_conversation">重設</string>
+    <string name="main_activity_reset_conversation_message">重置此對話將刪除所有消息，包括您聯繫人設備上的消息。 確認？</string>
+    <string name="main_activity_reset_conversation_title">重設對話</string>
+    <string name="main_activity_reset_group_conversation_admin_message">重置此對話將從每個群組成員的設備中刪除所有消息。 確認？</string>
+    <string name="main_activity_reset_group_conversation_message">重置此對話將從您的設備中刪除所有消息。 確認？</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">您需要升級到 twinme+ 才能使用此功能。 您將能夠遷移所有帳戶數據。</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">您將能夠遷移所有帳戶數據。</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme 作為具有更多功能的高級版本提供。</string>
+    <string name="migration_twinme_plus_activity_premium_title">升級到 twinme+</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">關於</string>
+    <string name="navigation_activity_application_settings">應用程序設置</string>
+    <string name="navigation_activity_feedback">傳送意見反應</string>
+    <string name="navigation_activity_getting_started">開始</string>
+    <string name="navigation_activity_help">說明</string>
+    <string name="navigation_activity_profile">個人資料</string>
+    <string name="navigation_activity_settings">設定值</string>
+    <string name="navigation_activity_sign_out">登出</string>
+    <string name="navigation_activity_sounds">聲音</string>
+    <string name="navigation_activity_support">支持</string>
+    <string name="navigation_activity_title">功能表</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">與%1$s的語音通話</string>
+    <string name="notification_center_audio_message">向您傳送了語音訊息</string>
+    <string name="notification_center_audio_message_received">新的音頻消息</string>
+    <string name="notification_center_cancel">解除</string>
+    <string name="notification_center_cleanup_conversation">一些舊消息已被刪除。</string>
+    <string name="notification_center_deleted_contact">聯絡人已刪除</string>
+    <string name="notification_center_file_message">發給你一個文件</string>
+    <string name="notification_center_file_message_received">新文件</string>
+    <string name="notification_center_group_invitation">向您發送了邀請</string>
+    <string name="notification_center_group_invitation_received">新邀請</string>
+    <string name="notification_center_join_group">您是該組的成員</string>
+    <string name="notification_center_message_received">新消息</string>
+    <string name="notification_center_missed_audio_call_to">未接%1$s的語音通話</string>
+    <string name="notification_center_missed_video_call_to">未接%1$s的視訊通話</string>
+    <string name="notification_center_mute">靜音</string>
+    <string name="notification_center_new_contact">新聯繫人</string>
+    <string name="notification_center_photo_message">向您傳送了相片</string>
+    <string name="notification_center_photo_message_received">新照片</string>
+    <string name="notification_center_reaction">回復了 %1$s</string>
+    <string name="notification_center_reaction_message">對一條消息做出了反應。</string>
+    <string name="notification_center_reaction_message_received">對一條消息的反應。</string>
+    <string name="notification_center_reset_message">對話已清除</string>
+    <string name="notification_center_stop">停止</string>
+    <string name="notification_center_transfering_data">正在傳輸的消息......</string>
+    <string name="notification_center_unmute">取消靜音</string>
+    <string name="notification_center_updated_contact_avatar">圖片已更新</string>
+    <string name="notification_center_updated_contact_name">名稱已更新</string>
+    <string name="notification_center_video_call_to">與%1$s的視訊通話</string>
+    <string name="notification_center_video_message">給你發了一個視頻</string>
+    <string name="notification_center_video_message_received">新視頻</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">音頻通話</string>
+    <string name="notification_channel_contact_title">連絡人</string>
+    <string name="notification_channel_group_title">組</string>
+    <string name="notification_channel_message_title">消息</string>
+    <string name="notification_channel_missed_title">未接來電</string>
+    <string name="notification_channel_system_title">其他</string>
+    <string name="notification_channel_video_title">視頻通話</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">試圖與您通話</string>
+    <string name="notifications_fragment_item_audio_message">向您傳送了語音訊息</string>
+    <string name="notifications_fragment_item_cleanup_message">清理了一些舊消息。</string>
+    <string name="notifications_fragment_item_deleted_contact">聯絡人已刪除</string>
+    <string name="notifications_fragment_item_file_message">發給你一個文件</string>
+    <string name="notifications_fragment_item_group_invitation">向您發送了邀請"</string>
+    <string name="notifications_fragment_item_image_message">向您傳送了相片</string>
+    <string name="notifications_fragment_item_join_group">您是該組的成員"</string>
+    <string name="notifications_fragment_item_new_contact">新聯繫人</string>
+    <string name="notifications_fragment_item_reset_conversation">已重置對話</string>
+    <string name="notifications_fragment_item_shortest_day">%1$d天</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$d小時</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$d分鐘</string>
+    <string name="notifications_fragment_item_shortest_second">%1$d秒</string>
+    <string name="notifications_fragment_item_text_message">向您傳送了訊息</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">圖片已更新</string>
+    <string name="notifications_fragment_item_updated_contact_name">名稱已更新</string>
+    <string name="notifications_fragment_item_video_call">試圖與您視訊通話</string>
+    <string name="notifications_fragment_item_video_message">給你發了一個視頻</string>
+    <string name="notifications_fragment_no_notification_message">此處列出與聯繫人、對話、電話等相關的通知。</string>
+    <string name="notifications_fragment_no_notification_title">您沒有任何通知。</string>
+    <string name="notifications_fragment_reset">您確定要重置所有通知嗎？</string>
+    <string name="notifications_fragment_reset_title">重置通知</string>
+    <string name="notifications_fragment_title">通知</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">字符字體</string>
+    <string name="personalization_activity_font_extra_large">很大</string>
+    <string name="personalization_activity_font_large">大</string>
+    <string name="personalization_activity_font_small">小</string>
+    <string name="personalization_activity_haptic_feedback">觸覺反饋</string>
+    <string name="personalization_activity_haptic_feedback_message">觸摸時有觸覺感覺。</string>
+    <string name="personalization_activity_menu_choose_color">默認顏色</string>
+    <string name="personalization_activity_menu_enter_color">色標</string>
+    <string name="personalization_activity_mode">模式</string>
+    <string name="personalization_activity_mode_dark">黑暗</string>
+    <string name="personalization_activity_mode_light">光</string>
+    <string name="personalization_activity_start_tab_information">選擇要在其上啟動應用程序的選項卡。</string>
+    <string name="personalization_activity_start_tab_title">默認標籤頁</string>
+    <string name="personalization_activity_system">系統</string>
+    <string name="personalization_activity_title">個性化</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">更改前置/後置鏡頭</string>
+    <string name="premium_services_activity_camera_control_description_2">放大/縮小</string>
+    <string name="premium_services_activity_camera_control_description_3">遠距協助親人或客戶</string>
+    <string name="premium_services_activity_camera_control_description_4">管理監視器</string>
+    <string name="premium_services_activity_camera_control_subtitle">在通話過程中，在獲得聯絡人許可的情況下控制其攝影機</string>
+    <string name="premium_services_activity_camera_control_title">遠端攝影機控制</string>
+    <string name="premium_services_activity_click_to_call_description_1">創建“點擊呼叫我”代碼</string>
+    <string name="premium_services_activity_click_to_call_description_2">以任何方式發布或分發</string>
+    <string name="premium_services_activity_click_to_call_description_3">收件人掃碼打給你</string>
+    <string name="premium_services_activity_click_to_call_description_4">雲中無踪跡匿名</string>
+    <string name="premium_services_activity_click_to_call_subtitle">允許訪客通過網絡呼叫您</string>
+    <string name="premium_services_activity_click_to_call_title">點擊通話</string>
+    <string name="premium_services_activity_conversation_description_1">媒體、文件、語音筆記、消息</string>
+    <string name="premium_services_activity_conversation_description_2">早於特定時期/日期</string>
+    <string name="premium_services_activity_conversation_description_3">對於一次談話或所有</string>
+    <string name="premium_services_activity_conversation_description_4">僅限本地，對另一端無影響</string>
+    <string name="premium_services_activity_conversation_subtitle">導出內容和釋放空間</string>
+    <string name="premium_services_activity_conversation_title">對話管理</string>
+    <string name="premium_services_activity_description_part1_subtitle">設備間直接連接</string>
+    <string name="premium_services_activity_description_part1_title">高清音頻/視頻質量</string>
+    <string name="premium_services_activity_description_part2_subtitle">雲中無踪</string>
+    <string name="premium_services_activity_description_part2_title">隱私——保密</string>
+    <string name="premium_services_activity_description_part3_subtitle">能源效率</string>
+    <string name="premium_services_activity_description_part3_title">對生態負責</string>
+    <string name="premium_services_activity_group_call_description_1">高清音頻/視頻</string>
+    <string name="premium_services_activity_group_call_description_2">設備間直接連接</string>
+    <string name="premium_services_activity_group_call_description_3">安全和私密</string>
+    <string name="premium_services_activity_group_call_description_4">雲中無踪</string>
+    <string name="premium_services_activity_group_call_subtitle">邀請聯繫人加入語音/視頻群組通話</string>
+    <string name="premium_services_activity_group_call_title">群組通話</string>
+    <string name="premium_services_activity_privacy_description_1">使用生物識別或其他身份驗證鎖定應用程序</string>
+    <string name="premium_services_activity_privacy_description_2">在應用程序切換器中隱藏最後一個屏幕</string>
+    <string name="premium_services_activity_privacy_description_3">特定時間後消失的臨時消息</string>
+    <string name="premium_services_activity_privacy_description_4">阻止聯繫人給您打電話</string>
+    <string name="premium_services_activity_privacy_subtitle">控制應用程序、聯繫人和信息</string>
+    <string name="premium_services_activity_privacy_title">更多隱私</string>
+    <string name="premium_services_activity_space_description_1">具有關聯關係、對話、歷史記錄的多個配置文件</string>
+    <string name="premium_services_activity_space_description_2">個性化外觀、通知和設置</string>
+    <string name="premium_services_activity_space_description_3">對於家人、朋友、同事、企業、運動等。</string>
+    <string name="premium_services_activity_space_description_4">未列出的秘密空間，按名稱訪問</string>
+    <string name="premium_services_activity_space_subtitle">對於您與之互動的每個社會群體</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">實時分享您的音樂</string>
+    <string name="premium_services_activity_streaming_description_2">每個參與者都可以控制媒體播放器</string>
+    <string name="premium_services_activity_streaming_description_3">同時通話互動</string>
+    <string name="premium_services_activity_streaming_description_4">與現實生活中一樣的隱私</string>
+    <string name="premium_services_activity_streaming_subtitle">在通話期間流式傳輸您的媒體</string>
+    <string name="premium_services_activity_streaming_title">媒體分享</string>
+    <string name="premium_services_activity_transfert_description_1">創建呼叫轉接代碼和配置文件</string>
+    <string name="premium_services_activity_transfert_description_2">上傳其網址或在電腦掃碼</string>
+    <string name="premium_services_activity_transfert_description_3">在瀏覽器上為頁面添加書籤</string>
+    <string name="premium_services_activity_transfert_description_4">行動通話期間從頁面“呼叫”</string>
+    <string name="premium_services_activity_transfert_subtitle">將正在進行的移動呼叫轉移到瀏覽器</string>
+    <string name="premium_services_activity_transfert_title">通話轉接</string>
+    <string name="premium_services_activity_title">邀請聯繫人加入正在進行的語音/視頻通話。</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">使用生物識別服務或 PIN 碼鎖定應用程序。</string>
+    <string name="privacy_activity_hide_last_screen_message">防止預覽出現在應用程序切換器中</string>
+    <string name="privacy_activity_hide_last_screen_title">隱藏上一個屏幕</string>
+    <string name="privacy_activity_lock_screen_message">使用設備生物識別或密碼驗證服務解鎖對應用程序的訪問。在訪問該應用程序時，您仍然可以接聽來電並接收通知。</string>
+    <string name="privacy_activity_lock_screen_not_available">此選項需要Android > 5.0的版本</string>
+    <string name="privacy_activity_lock_screen_timeout">訪問鎖定超時</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">即刻</string>
+    <string name="privacy_activity_lock_screen_title">訪問鎖</string>
+    <string name="privacy_activity_title">隱私</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">新增個人資料</string>
+    <string name="profile_fragment_create_profile">创建个人资料</string>
+    <string name="profile_fragment_default_action">啟用</string>
+    <string name="profile_fragment_default_profile_title">活動資料</string>
+    <string name="profile_fragment_identity_title">個人資料</string>
+    <string name="profile_fragment_message">此配置文件允許您邀請您的聯繫人在您的控制下與您建立私人關係。</string>
+    <string name="profile_fragment_twincode_title">邀請碼</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">新增代理</string>
+    <string name="proxy_activity_add_placeholder">貼上或輸入代理的 URL</string>
+    <string name="proxy_activity_already_use">此代理程式已在您的應用程式中配置。</string>
+    <string name="proxy_activity_enable">使用代理</string>
+    <string name="proxy_activity_format">有效的代理 URL 格式：</string>
+    <string name="proxy_activity_invalid_format">URL 格式無效</string>
+    <string name="proxy_activity_limit">您已達到允許的代理數量上限 (%1$d)。要新增的代理，您必須先移除一個。</string>
+    <string name="proxy_activity_list">我的代理</string>
+    <string name="proxy_activity_list_information">只有當應用程式無法在沒有代理程式的情況下連接到服務時，才使用以下清單中的代理程式。</string>
+    <string name="proxy_activity_onboarding">當您所在的國家/地區阻止存取應用程式的信令伺服器時，代理程式可以在許多情況下繞過這些阻止，並允許您進行私密通訊。除了應用程式內代理程式之外，您還可以建立自己的代理程式或使用其他人建立的代理程式。在任何情況下，代理程式都無法存取正在交換的內容。</string>
+    <string name="proxy_activity_information">僅當您無法透過標準 Wi-Fi 或蜂窩網路連接到服務時才使用代理程式。</string>
+    <string name="proxy_activity_share">在您的裝置上使用 twinme 開啟 %1$s 連結即可自動配置此代理程式。</string>
+    <string name="proxy_activity_title">代理商</string>
+    <string name="proxy_activity_url">是否要使用此代理程式的 URL？</string>
+    <string name="proxy_activity_warning">警告！此代理程式的 URL 不允許您連接到應用程式的服務。</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">更改權限</string>
+    <string name="quality_of_service_activity_enable_notifications">啟用通知</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">如果沒有這些權限，訊息可能需要很長時間才能到達目的地。</string>
+    <string name="quality_of_service_activity_notification_description">允許應用在後台運行</string>
+    <string name="quality_of_service_activity_notification_title">消息交換太慢？</string>
+    <string name="quality_of_service_activity_settings">在系統設定中更改應用程式權限。</string>
+    <string name="quality_of_service_activity_step1_message">加密消息直接在設備之間實時交換，使用“點對點”方法，無需內容分發服務器。這確保了雲中沒有痕跡，並提供了獨特的隱私保護。</string>
+    <string name="quality_of_service_activity_step2_message">為確保優質的服務，請將您的設備配置為允許應用程序在後台接收通知並將其排除在電池優化之外。</string>
+    <string name="quality_of_service_activity_step3_message">經常使用該應用程序，以便操作系統對其進行優先排序，並且不會意外終止它。 \n\n別忘了將此事告知您的聯繫人！</string>
+    <string name="quality_of_service_activity_warning_background_data">允許應用程式在背景使用行動數據。</string>
+    <string name="quality_of_service_activity_warning_receive_notification">允許應用程式接收推播通知。</string>
+    <string name="quality_of_service_activity_warning_run_background">允許應用程式在背景運行。</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">定義為管理員</string>
+    <string name="room_members_activity_delete_message">確認刪除該成員</string>
+    <string name="room_members_activity_moderators_title">主持人</string>
+    <string name="room_members_activity_only_admin_message">無法刪除唯一管理員。</string>
+    <string name="room_members_activity_owner_title">所有者</string>
+    <string name="room_members_activity_participants_title">參加者</string>
+    <string name="room_members_activity_remove_admin_title">以管理員身份刪除</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">輸入或貼上邀請鏈接</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">檢查您與服務的連線狀態</string>
+    <string name="settings_advanced_activity_status_connection_title">連線狀態</string>
+    <string name="settings_advanced_activity_title">進階設定</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">允許收件人復制/保存/共享您的內容</string>
+    <string name="settings_activity_allow_copy_file_title">任何類型的文件</string>
+    <string name="settings_activity_allow_copy_text_title">短信</string>
+    <string name="settings_activity_application_notifications">申請通知</string>
+    <string name="settings_activity_audio_call_category_title">音頻通話</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">鈴聲名稱</string>
+    <string name="settings_activity_audio_call_notification_title">鈴聲</string>
+    <string name="settings_activity_audio_call_vibration_title">颤动</string>
+    <string name="settings_activity_authorization_title">權限</string>
+    <string name="settings_activity_call_item_menu_all">所有通話</string>
+    <string name="settings_activity_chat_category_title">消息</string>
+    <string name="settings_activity_chat_ringtone_title">聲音名稱</string>
+    <string name="settings_activity_chat_title">聲音</string>
+    <string name="settings_activity_chat_vibration_title">颤动</string>
+    <string name="settings_activity_content_information">對話中發送的媒體內容的定義：高清晰度需要更多的數據，因此需要更多的傳輸時間。</string>
+    <string name="settings_activity_content_title">媒體</string>
+    <string name="settings_activity_default_directory_title">用於保存文件的默認目錄</string>
+    <string name="settings_activity_default_sound">默認</string>
+    <string name="settings_activity_default_value_message">這些參數在應用程序級別用作默認值。</string>
+    <string name="settings_activity_display_call_menu_missed">僅未接來電</string>
+    <string name="settings_activity_display_call_menu_none">沒有來電</string>
+    <string name="settings_activity_display_call_none">沒有任何</string>
+    <string name="settings_activity_display_call_title">在對話中顯示來電通知</string>
+    <string name="settings_activity_display_notification_content_title">顯示消息內容</string>
+    <string name="settings_activity_display_notification_like_title">對消息的反應</string>
+    <string name="settings_activity_display_notification_sender_title">顯示郵件發件人</string>
+    <string name="settings_activity_ephemeral_message">自動刪除已發送的消息</string>
+    <string name="settings_activity_ephemeral_section_title">终生时间</string>
+    <string name="settings_activity_ephemeral_title">自我毀滅的訊息</string>
+    <string name="settings_activity_image_title">照片</string>
+    <string name="settings_activity_message_properties_title">消息屬性</string>
+    <string name="settings_activity_reset_default_value">恢復默認設置</string>
+    <string name="settings_activity_reset_preferences_button_title">重置為默認值。</string>
+    <string name="settings_activity_reset_preferences_message">將通知設置重置為應用程序默認值。</string>
+    <string name="settings_activity_reset_preferences_title">重置首選項</string>
+    <string name="settings_activity_permissions_title">權限</string>
+    <string name="settings_activity_silent_sound">無聲</string>
+    <string name="settings_activity_sound_enabled_title">聲音通知</string>
+    <string name="settings_activity_system_notifications_title">系統通知</string>
+    <string name="settings_activity_system_settings_title">系統設置</string>
+    <string name="settings_activity_video_call_category_title">視頻通話</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">鈴聲名稱</string>
+    <string name="settings_activity_video_call_notification_title">鈴聲</string>
+    <string name="settings_activity_video_call_vibration_title">颤动</string>
+    <string name="settings_activity_welcome_screen_category_title">歡迎</string>
+    <string name="settings_activity_welcome_screen_summary">顯示歡迎頁面</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">允許參與者邀請其他參與者作為個人聯繫人</string>
+    <string name="settings_room_activity_allow_invite_contact">允許參與者邀請他們的聯繫人</string>
+    <string name="settings_room_activity_conference_notifications_inform">第一次進入/最後一次退出</string>
+    <string name="settings_room_activity_conference_notifications_noisy">所有入口/出口</string>
+    <string name="settings_room_activity_conference_notifications_quiet">沉默的</string>
+    <string name="settings_room_activity_display_members">查看會員</string>
+    <string name="settings_room_activity_room_type_channel">通道 - 僅一種方式</string>
+    <string name="settings_room_activity_room_type_channel_information">只有管理員/版主可以發帖</string>
+    <string name="settings_room_activity_room_type_feedback">渠道 - 有反饋</string>
+    <string name="settings_room_activity_room_type_feedback_information">參與者的反饋只有管理員/版主才能看到</string>
+    <string name="settings_room_activity_room_type_forum">論壇</string>
+    <string name="settings_room_activity_room_type_forum_information">參與者可以發布所有人都看到的消息</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">連絡人</string>
+    <string name="share_activity_group_list">組</string>
+    <string name="share_activity_title">分享</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">“點擊通話”代碼</string>
+    <string name="show_call_activity_information_code">分享此代碼以接聽外部電話。</string>
+    <string name="show_call_activity_schedule_call">預定的通話</string>
+    <string name="show_call_activity_schedule_from">從%1$s開始</string>
+    <string name="show_call_activity_schedule_from_to">%1$s 從 %2$s 到 %3$s</string>
+    <string name="show_call_activity_schedule_message">通話安排在其他地方定義的日期和時間。</string>
+    <string name="show_call_activity_schedule_to">至 %1$s</string>
+    <string name="show_call_activity_settings_call">通話類型</string>
+    <string name="show_call_activity_settings_group_calls">群組通話</string>
+    <string name="show_call_activity_settings_limited">計劃</string>
+    <string name="show_call_activity_settings_start">開始</string>
+    <string name="show_call_activity_settings_end">結尾</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">語音</string>
+    <string name="show_contact_activity_chat">聊天</string>
+    <string name="show_contact_activity_export_contents">導出內容</string>
+    <string name="show_contact_activity_history_title">歷史</string>
+    <string name="show_contact_activity_identity_title">知道我</string>
+    <string name="show_contact_activity_last_calls">最後通話</string>
+    <string name="show_contact_activity_cleanup">保洁</string>
+    <string name="show_contact_activity_pending">待办的</string>
+    <string name="show_contact_activity_pending_message">这种关系正在建立。 请稍等。</string>
+    <string name="show_contact_activity_revoked">已刪除</string>
+    <string name="show_contact_activity_settings_coach_mark">定義您的聯繫人在與您的關係中可以做什麼。</string>
+    <string name="show_contact_activity_video">視訊</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">添加會員</string>
+    <string name="show_group_activity_invitation_list">待定邀請：%1$d</string>
+    <string name="show_group_activity_leave">離開小組</string>
+    <string name="show_group_activity_leave_confirm_message">您確定要離開此群組嗎？</string>
+    <string name="show_group_activity_leave_message">您將離開此群組，並且無法再存取其對話。</string>
+    <string name="show_group_activity_member_list">會員名單（%1$d）</string>
+    <string name="show_group_activity_remove_confirm_message">您確定要刪除此群組嗎？</string>
+    <string name="show_group_activity_remove_message">此群組的所有成員將被刪除，其對話也將被清除。</string>
+    <string name="show_group_activity_title">儲存</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">管理界面</string>
+    <string name="show_room_activity_invite_participants">邀請參與者</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">圖片</string>
+    <string name="space_appearance_activity_background_message">使用顏色或圖像自訂對話背景。</string>
+    <string name="space_appearance_activity_background_text_title">文本</string>
+    <string name="space_appearance_activity_background_title">背景</string>
+    <string name="space_appearance_activity_container_background_message">發送消息的背景</string>
+    <string name="space_appearance_activity_container_background_peer_message">收到消息的背景</string>
+    <string name="space_appearance_activity_container_border_message">發送郵件的邊框</string>
+    <string name="space_appearance_activity_container_border_peer_message">收到消息的邊框</string>
+    <string name="space_appearance_activity_container_text_message">發送信息的文字</string>
+    <string name="space_appearance_activity_container_text_peer_message">收到的短信內容</string>
+    <string name="space_appearance_activity_container_title">泡泡</string>
+    <string name="space_appearance_activity_default_value">默認值</string>
+    <string name="space_appearance_activity_general_title">一般</string>
+    <string name="space_appearance_activity_menu_choose_color">默認顏色</string>
+    <string name="space_appearance_activity_menu_enter_color">色標</string>
+    <string name="space_appearance_activity_opacity">不透明度</string>
+    <string name="space_appearance_activity_preview_message">我忘了我的芭蕾舞鞋......你能帶上它嗎？</string>
+    <string name="space_appearance_activity_preview_peer_message">嗨，甜心！</string>
+    <string name="space_appearance_activity_preview_title">總覽</string>
+    <string name="space_appearance_activity_theme">主題</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">「空間」是您的不同個性與多個社交圈（包括最秘密的社交圈）相遇的地方。</string>
+    <string name="spaces_activity_sample_business">商業</string>
+    <string name="spaces_activity_sample_business_name">約翰·多伊博士</string>
+    <string name="spaces_activity_sample_family">家庭</string>
+    <string name="spaces_activity_sample_family_name">爸爸</string>
+    <string name="spaces_activity_sample_friends">朋友們</string>
+    <string name="spaces_activity_sample_friends_name">強尼</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">發生了錯誤。請再試一次。</string>
+    <string name="streaming_audio_activity_no_music_message">媒體分享</string>
+    <string name="streaming_audio_activity_no_music_title">找不到音樂🙁</string>
+    <string name="streaming_audio_activity_title">媒體分享</string>
+    <string name="streaming_audio_activity_unsupported_message">%1$s 的設備不支持此音頻格式。</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">分類廣告</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">公告</string>
+    <string name="template_click_to_call_activity_template_help">幫幫我</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">幫幫我</string>
+    <string name="template_click_to_call_activity_template_meeting">會議</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">會議</string>
+    <string name="template_click_to_call_activity_template_video_bell">可視門鈴</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">門鈴</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">姓名（約翰·多伊博士、史密斯女士…）</string>
+    <string name="template_space_activity_template_business_profile">莎曼珊史密斯女士</string>
+    <string name="template_space_activity_template_family_placeholder">姓名（爸爸、媽媽…）</string>
+    <string name="template_space_activity_template_family_profile">媽媽</string>
+    <string name="template_space_activity_template_friends_placeholder">姓名（強尼、山姆…）</string>
+    <string name="template_space_activity_template_friends_profile">山姆</string>
+    <string name="template_space_activity_template_other">其他</string>
+    <string name="template_space_activity_template_other_placeholder">姓名（爸爸、媽媽、強尼、約翰·多伊博士…）</string>
+    <string name="template_space_activity_template_title">範本</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">請您附近的朋友使用 twinme 掃描您的邀請二維碼，或點擊您的邀請碼將其複製到剪貼板。</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">您確定要刪除此「呼叫轉移」代碼嗎？</string>
+    <string name="transfert_call_activity_delete_message">此呼叫轉接鏈接將被刪除。確認？</string>
+    <string name="transfert_call_activity_gallery_message">掃描此二維碼即可轉接您的移動電話。</string>
+    <string name="transfert_call_activity_message">轉發此程式碼並在您要將行動呼叫轉移到的瀏覽器上為其 URL 新增書籤。</string>
+    <string name="transfert_call_activity_reset_message">此操作會使當前的呼叫轉接代碼失效並創建一個新的代碼。確認？</string>
+    <string name="transfert_call_activity_saved_message">通話轉接代碼保存在照片庫中。</string>
+    <string name="transfert_call_activity_share">轉移</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">可用更新</string>
+    <string name="update_app_activity_update_message">最新的應用程序更新包括以下內容：</string>
+    <string name="update_app_activity_update_title">現在更新</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">正在視訊呼叫......</string>
+    <string name="video_call_activity_cannot_call">無法進行視頻通話</string>
+    <string name="video_call_activity_connecting">連接&#8230;&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">您要掛斷電話嗎？</string>
+    <string name="video_call_activity_terminate">呼叫已被終止</string>
+    <string name="video_call_activity_terminate_busy">呼叫被終止：&lt;b&gt;%1$s&lt;/b&gt;正忙</string>
+    <string name="video_call_activity_terminate_cancel">呼叫被&lt;b&gt;%1$s&lt;/b&gt;取消</string>
+    <string name="video_call_activity_terminate_connectivity_error">由於連線問題，通話已中斷。請檢查您的網路連線。</string>
+    <string name="video_call_activity_terminate_decline">呼叫被&lt;b&gt;%1$s&lt;/b&gt;拒絕</string>
+    <string name="video_call_activity_terminate_disconnected">由於網路錯誤，通話已中斷。請重試。</string>
+    <string name="video_call_activity_terminate_gone">呼叫被終止：&lt;b&gt;%1$s&lt;/b&gt;不在線上</string>
+    <string name="video_call_activity_terminate_revoked">通話結束：&lt;b&gt;%1$s&lt;/b&gt; 已刪除與您的此關係。</string>
+    <string name="video_call_activity_terminate_success">呼叫被&lt;b&gt;%1$s&lt;/b&gt;終止</string>
+    <string name="video_call_activity_terminate_timeout">呼叫被終止：&lt;b&gt;%1$s&lt;/b&gt;未應答</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">通過按%1$s，我確認我已閱讀並接受：</string>
+    <string name="welcome_activity_next">下一個</string>
+    <string name="welcome_activity_pass">跳躍</string>
+    <string name="welcome_activity_privacy_policy">隱私政策</string>
+    <string name="welcome_activity_start">開始</string>
+    <string name="welcome_activity_step1_message">消息和高清語音/視頻通話，通過設計保護隱私。</string>
+    <string name="welcome_activity_step2_message">安全的“點對點”通信：雲中無踪跡。</string>
+    <string name="welcome_activity_step3_message">沒有電話號碼、沒有地址簿、沒有用戶 ID：您可以根據與誰通信來選擇您希望被識別的方式。</string>
+    <string name="welcome_activity_terms_of_use">使用條款</string>
+
+</resources>

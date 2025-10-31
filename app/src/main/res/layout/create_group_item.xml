@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="128dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/create_group_item_image_layout__view"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="67.2%"
+        android:layout_centerVertical="true"
+        app:layout_marginStartPercent="4.8%">
+
+        <ImageView
+            android:id="@+id/create_group_item_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:layout_centerInParent="true"
+            android:src="@drawable/notification_join_group"
+            app:layout_aspectRatio="118%"
+            app:layout_heightPercent="35.71%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/create_group_item_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/create_group_item_image_layout__view"
+        android:layout_toRightOf="@id/create_group_item_image_layout__view"
+        android:text="@string/main_activity_add_group"
+        app:layout_marginStartPercent="4.26%"
+        app:layout_marginEndPercent="4.26%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

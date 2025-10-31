@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/menu_select_color_view_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="visible" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/menu_select_color_view_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:id="@+id/menu_select_color_view_view_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="12%" />
+
+        <TextView
+            android:id="@+id/menu_select_color_view_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@+id/menu_select_color_view_view_slide_mark_view"
+            app:layout_widthPercent="94%" />
+
+        <TextView
+            android:id="@+id/menu_select_color_view_default_color_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_select_color_view_title_view"
+            android:layout_alignLeft="@+id/menu_select_color_view_default_color_content_view"
+            android:layout_alignStart="@+id/menu_select_color_view_default_color_content_view"
+            android:textAllCaps="true"
+            android:text="@string/personalization_activity_menu_choose_color"/>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_view_default_color_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/menu_select_color_view_default_color_text_view">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menu_select_color_view_color_list_view"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_centerVertical="true" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/menu_select_color_view_enter_color_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_select_color_view_default_color_content_view"
+            android:layout_alignLeft="@+id/menu_select_color_view_enter_color_view"
+            android:layout_alignStart="@+id/menu_select_color_view_enter_color_view"
+            android:textAllCaps="true"
+            android:text="@string/personalization_activity_menu_enter_color"/>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_view_enter_color_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/menu_select_color_view_enter_color_text_view">
+
+            <TextView
+                android:id="@+id/menu_select_color_view_enter_color_prefix_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="#"/>
+
+            <EditText
+                android:id="@+id/menu_select_color_view_enter_color_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent"
+                android:imeOptions="actionDone"
+                android:inputType="text|textNoSuggestions|textCapSentences"
+                android:layout_toRightOf="@+id/menu_select_color_view_enter_color_prefix_view"
+                android:layout_toEndOf="@+id/menu_select_color_view_enter_color_prefix_view" />
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/menu_select_color_view_enter_color_preview_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_view_confirm_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/menu_select_color_view_enter_color_view">
+
+            <TextView
+                android:id="@+id/menu_select_color_view_confirm_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/application_save" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_view_cancel_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/menu_select_color_view_confirm_view">
+
+            <TextView
+                android:id="@+id/menu_select_color_view_cancel_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/application_cancel" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

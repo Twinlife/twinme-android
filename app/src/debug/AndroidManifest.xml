@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name="org.twinlife.twinme.ui.TwinmeDebugApplicationImpl"
+        tools:replace="android:name"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/application_name"
+        android:logo="@drawable/launcher"
+        android:supportsRtl="true"
+        android:theme="@style/TwinmeTheme"
+        tools:targetApi="34" >
+
+        <activity
+            android:name="org.twinlife.twinme.ui.DebugAccountActivity"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.WebViewActivity"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.DebugActivity"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.LogActivity"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:screenOrientation="sensor" />
+
+        <activity
+            android:name="org.twinlife.twinme.ui.TestActivity"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+
+        <activity
+            android:name="org.twinlife.twinme.ui.DebugConfigActivity"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+    </application>
+
+</manifest>

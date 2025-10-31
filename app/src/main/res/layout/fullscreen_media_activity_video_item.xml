@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical">
+
+    <SurfaceView
+        android:id="@+id/fullscreen_media_activity_video_item_surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/fullscreen_media_activity_video_item_control_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:clipChildren="false">
+
+        <SeekBar
+            android:id="@+id/fullscreen_media_activity_video_item_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/fullscreen_media_activity_video_item_control_counter_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fullscreen_media_activity_video_item_seek_bar" />
+
+        <TextView
+            android:id="@+id/fullscreen_media_activity_video_item_control_duration_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fullscreen_media_activity_video_item_seek_bar" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/fullscreen_media_activity_video_item_control_play_pause_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/fullscreen_media_activity_video_item_seek_bar"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/fullscreen_media_activity_video_item_control_play_pause_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/audio_item_player_pause"
+                app:layout_aspectRatio="85.71%"
+                app:layout_heightPercent="45%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

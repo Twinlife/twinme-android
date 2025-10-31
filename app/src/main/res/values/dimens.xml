@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TwinmeApplication - Content margins -->
+    <dimen name="twinme_application_content_marginLeft">16dp</dimen>
+    <dimen name="twinme_application_content_marginRight">16dp</dimen>
+    <dimen name="twinme_application_content_marginBottom">56dp</dimen>
+
+    <!-- ScrollView margins - Dialog Activities -->
+    <dimen name="twinme_border_line_width">2dp</dimen>
+
+</resources>

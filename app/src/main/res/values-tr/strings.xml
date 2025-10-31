@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Kabul etmek</string>
+    <string name="application_account_deleted">Hesabınız silindi, şimdi uygulamayı kaldırmalısınız.</string>
+    <string name="application_add_contact_no_profile">Bir kişiyi davet etmeden önce, sizi temsil eden bir profili tamamlamanız gerekir. Devam mı?</string>
+    <string name="application_all">Tümü</string>
+    <string name="application_appearance">Görünüm</string>
+    <string name="application_are_you_sure">Emin misiniz?</string>
+    <string name="application_authorization_camera">Uygulamanın sistem ayarlarında Kameraya erişmesine izin ver.</string>
+    <string name="application_authorization_go_settings">Sistem ayarlarına git</string>
+    <string name="application_authorization_microphone">Uygulamanın sistem ayarlarında Mikrofona erişmesine izin ver.</string>
+    <string name="application_authorization_microphone_camera">Uygulamanın sistem ayarlarında Mikrofon ve Kameraya erişmesine izin ver.</string>
+    <string name="application_authorization_title">Eksik erişim yetkisi</string>
+    <string name="application_back">Geri</string>
+    <string name="application_camera">Kamera</string>
+    <string name="application_cancel">İptal et</string>
+    <string name="application_canceled_operation">İşlem iptal edildi</string>
+    <string name="application_checking_connection">Bağlantı kontrol ediliyor</string>
+    <string name="application_color">Renk</string>
+    <string name="application_configuration">Yapılandırma</string>
+    <string name="application_confirm">Onaylamak</string>
+    <string name="application_confirm_deletion">Silmeyi onaylayın</string>
+    <string name="application_connected">Güvenli bağlantı etkinleştirildi.</string>
+    <string name="application_connection_status_no_network">İnternet erişimi yok.</string>
+    <string name="application_connection_status_no_network_message">Ağ bağlantınızı kontrol edin.</string>
+    <string name="application_connection_status_no_services">Servise erişim yok</string>
+    <string name="application_connection_status_no_services_message">VPN kullanmayı deneyin.</string>
+    <string name="application_contact_not_found">Bu kişi sizinle bu ilişkiyi sildi ve artık ulaşılamıyor.</string>
+    <string name="application_continue_without_premium_services">Premium hizmetler olmadan devam edin</string>
+    <string name="application_create_group_no_profile">Bu grupta sizi temsil eden bir profil oluşturmalısınız. Devam mı?</string>
+    <string name="application_database_error">Veri tabanı hatası</string>
+    <string name="application_decline">Reddet</string>
+    <string name="application_default">Varsayılan</string>
+    <string name="application_delete">Kaldır</string>
+    <string name="application_delete_message">Kaldırmak istediğinizden emin misiniz?</string>
+    <string name="application_denied_permissions">Gerekli izinler verilmedi</string>
+    <string name="application_description">Açıklama</string>
+    <string name="application_display_all">Tümünü göster</string>
+    <string name="application_do_not_display">Artık gösterme</string>
+    <string name="application_edit">Düzenle</string>
+    <string name="application_error_file_not_found">Dosya bulunamadı.</string>
+    <string name="application_error_media_not_supported">Bu resim/video biçimi uygulama tarafından desteklenmiyor.</string>
+    <string name="application_error_no_storage_space">Yetersiz depolama alanı</string>
+    <string name="application_group_limit_reached">Grup üyelerinin maksimum sayısı (%1$d) aşıldı.</string>
+    <string name="application_group_not_found">Gruptan kaldırıldınız</string>
+    <string name="application_items_selected">%1$d öğe seçildi</string>
+    <string name="application_later">Sonra</string>
+    <string name="application_low_usage_message">Uyarı, uygulamayı yeterince sık kullanmazsanız, işletim sistemi mesaj alışverişi yapmak için onu uyandırmayabilir!</string>
+    <string name="application_one_item_selected">1 öğe seçildi</string>
+    <string name="application_migration_no_storage_space">Cihazınızda taşıma işlemini tamamlamak için yeterli alan yok. Uygulamayı kapatın, biraz yer açın ve güncellemeyi tamamlamak için uygulamayı yeniden başlatın.</string>
+    <string name="application_migration_no_storage_space_message">İki cihazdan birinde yeterli depolama alanı yok. Göçü yeniden başlatmadan önce o cihazda yer açın.</string>
+    <string name="application_name_hint">Ad</string>
+    <string name="application_network_connecting">twinme servisine bağlanılıyor</string>
+    <string name="application_network_connectivity">Ağ bağlantısı mevcut</string>
+    <string name="application_network_status_airplane_message">Uçak modu etkinleştirildi.</string>
+    <string name="application_network_status_airplane_resolution">Lütfen Uçak modunu devre dışı bırakın ve bir Wi-Fi veya mobil ağa bağlanın.</string>
+    <string name="application_network_status_connected_no_internet">twinme servisine ağ erişimi yok.</string>
+    <string name="application_network_status_connected_resolution">Başka bir ağa bağlanmayı deneyin.</string>
+    <string name="application_network_status_connection_timeout">İnternet bağlantısı kurulamıyor.</string>
+    <string name="application_network_status_no_internet">İnternet bağlantısı yok.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi devre dışı bırakılır.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi devre dışı ve mobil İnternet bağlantısı yok.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Lütfen Wi-Fi açın.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Lütfen Wi-Fi açın veya mobil İnternet bağlantısını etkinleştirin.</string>
+    <string name="application_new_feature">Yeni!</string>
+    <string name="application_no">Hayır</string>
+    <string name="application_no_network_connectivity">Ağ bağlantısı yok</string>
+    <string name="application_no_service">Servis yok</string>
+    <string name="application_not_authorized_operation">Yetkisiz işlem</string>
+    <string name="application_not_authorized_operation_by_your_contact">İşlem, kişiniz tarafından yetkilendirilmemiş.</string>
+    <string name="application_not_connected">Güvenli bağlantı devam ediyor…</string>
+    <string name="application_not_signed_in">twinme servisine bağlı değil.</string>
+    <string name="application_now">Şimdi</string>
+    <string name="application_ok">Tamam</string>
+    <string name="application_operation_failure">İşlem hatası</string>
+    <string name="application_operation_irreversible">Bu işlem geri alınamaz</string>
+    <string name="application_permission_camera">Yeni bir fotoğraf veya video çekmek için kameraya erişim izni gerekir.</string>
+    <string name="application_permission_scan_code">QR kodunu taramak için kameraya erişim izni gereklidir.</string>
+    <string name="application_photo_gallery">Fotoğraf albümleri</string>
+    <string name="application_profile">Profil</string>
+    <string name="application_profile_avatar_not_defined">Bu profille davet ettiğiniz kişilere sizi temsil eden görüntüyü göndermelisiniz.</string>
+    <string name="application_profile_name_not_defined">Bu profille davet ettiğiniz kişilere sizi temsil eden adı tanımlamalısınız.</string>
+    <string name="application_remove">Kaldır</string>
+    <string name="application_save">Kaydet</string>
+    <string name="application_search_hint">Arama</string>
+    <string name="application_select">Seç</string>
+    <string name="application_select_application">Uygulamayı seç</string>
+    <string name="application_select_more">Daha fazla seç…</string>
+    <string name="application_server_timeout">Sunucu zaman aşımı</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Tema</string>
+    <string name="application_timeout">Son kullanma gecikmesi</string>
+    <string name="application_timeout_day">1 gün</string>
+    <string name="application_timeout_hour">1 saat</string>
+    <string name="application_timeout_hours">%1$d saat</string>
+    <string name="application_timeout_minute">1 dakika</string>
+    <string name="application_timeout_minutes">%1$d dakika</string>
+    <string name="application_timeout_month">1 ay</string>
+    <string name="application_timeout_seconds">%1$d saniye</string>
+    <string name="application_timeout_week">1 hafta</string>
+    <string name="application_unknown_name">Bilinmeyen</string>
+    <string name="application_upgrade">Yükseltme twinme</string>
+    <string name="application_webrtc_failure">WebRTC arızası</string>
+    <string name="application_wrong_configuration">Hatalı yapılandırma</string>
+    <string name="application_yes">Evet</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Uygulama Kodu</string>
+    <string name="about_activity_information">Information</string>
+    <string name="about_activity_legal">Yasal uyarılar</string>
+    <string name="about_activity_libraries">Kütüphaneler</string>
+    <string name="about_activity_message">twinme kişisel bilgilere erişimi olmayan güvenli bir sohbet ve sesli/görüntülü arama servisidir.\n\ntwinme WebRTC’ye dayanır, güvenli (uçtan uca şifrelenmiş) eşler arası (aktarma sunucusu yok) gerçek zamanlı multimedya iletişimi için yeni standart.</string>
+    <string name="about_activity_open_source_information">Uygulamanın kaynak kodu, AGPL-3.0 lisansı altında GitHub\'da Open Source olarak mevcuttur.</string>
+    <string name="about_activity_open_sources_licences">Açık Kaynak Lisansları</string>
+    <string name="about_activity_premium_services">Premiumtjänster</string>
+    <string name="about_activity_privacy_policy">Gizlilik Politikası</string>
+    <string name="about_activity_quality_of_service">Service kvalitet</string>
+    <string name="about_activity_terms_of_use">Hizmet şartları</string>
+    <string name="about_activity_version">Sürüm</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">Bu davetiye silindi</string>
+    <string name="accept_group_invitation_activity_in_progress">Üyelik devam ediyor</string>
+    <string name="accept_group_invitation_activity_message">%1$s sizi gruba katılmaya davet ediyor</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">Davetiye aktarılıyor.</string>
+    <string name="accept_invitation_activity_check_connection">İnternet bağlantınızı kontrol edin.</string>
+    <string name="accept_invitation_activity_existing_contact_message">Bu kişiyle zaten bir ilişkiniz var. Yeni bir tane mi oluşturmak istiyorsunuz?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Yanlış kişi bilgisi</string>
+    <string name="accept_invitation_activity_local_twincode">Kendinizle aynı hesap içinde ilişki kuramazsınız.</string>
+    <string name="accept_invitation_activity_message">%1$s seninle bağlanmak istiyor</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">Konuşma içeriği</string>
+    <string name="account_activity_delete_account">Hesabınız, ilişkili tüm verilerle birlikte kalıcı olarak silinecektir. Onaylıyor musunuz?</string>
+    <string name="account_activity_delete_account_confirmation">Hesabınızı silmek istediğinizden gerçekten emin misiniz?</string>
+    <string name="account_activity_export_content">Harici ortama aktar</string>
+    <string name="account_activity_message_first_part">Uygulamayı ilk kez yüklerken, uygulamayı yeniden yükledikten veya cihazı sıfırladıktan veya mevcut hesabı sildikten sonra yeni bir hesap oluşturulur.</string>
+    <string name="account_activity_message_second_part">Önceki hesap ve verilerden hiçbir iz kalmaz, bu nedenle kişilerinizi yeniden davet etmeniz gerekir.</string>
+    <string name="account_activity_migration_message">Hesabınızı tüm ilişkili verilerle (kişiler, mesajlar, gruplar vb.) bir Android cihazdan diğerine gerçek zamanlı olarak aktarmak için bir hesap taşıma hizmeti mevcuttur. Böylece eski bir cihaz ile yeni bir cihaz arasında hesaplar arasında geçiş yapabilirsiniz.</string>
+    <string name="account_activity_migration_start_from_another_device">Başka bir cihazdan</string>
+    <string name="account_activity_migration_start_from_current_device">Cihazımdan</string>
+    <string name="account_activity_migration_title">Hesap taşıma</string>
+    <string name="account_activity_title">Hesap</string>
+    <string name="account_activity_transfer_between_devices">Cihazlar arasında transfer</string>
+    <string name="account_activity_transfer_from_another_device">Başka bir cihazdan transfer</string>
+    <string name="account_activity_transfer_from_device">Bu cihazdan transfer</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Verilerinize erişmek için uygulamayı kapatın ve yeniden başlatın.</string>
+    <string name="account_migration_activity_close_message">Yeni verilere erişmek için uygulamayı kapatın ve yeniden başlatın.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Taşımayı iptal etmek istediğinizden emin misiniz?</string>
+    <string name="account_migration_activity_network_message">Ağ bağlantınızı kontrol edin</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Dosyalar için yeterli alan yok</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Veritabanını indirmek için yeterli alan yok</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Veritabanını yüklemek için yeterli alan yok</string>
+    <string name="account_migration_activity_state_canceled">Taşıma iptal edildi</string>
+    <string name="account_migration_activity_state_negotiate">Bekliyorum</string>
+    <string name="account_migration_activity_state_list_files">Dosyaları listeleme</string>
+    <string name="account_migration_activity_state_send_account">Hesabı gönderme</string>
+    <string name="account_migration_activity_state_send_database">Veritabanı gönderiliyor</string>
+    <string name="account_migration_activity_state_send_files">Dosyaları gönderme</string>
+    <string name="account_migration_activity_state_send_settings">Uygulama ayarlarını gönderme</string>
+    <string name="account_migration_activity_state_terminate">Geçiş neredeyse tamamlandı.</string>
+    <string name="account_migration_activity_state_wait_account">Diğer hesabı bekliyorum</string>
+    <string name="account_migration_activity_state_wait_connect">Yeniden bağlantı bekleniyor</string>
+    <string name="account_migration_activity_state_wait_files">Dosyaların ve veritabanının alınması bekleniyor.</string>
+    <string name="account_migration_activity_start">Taşımayı başlat</string>
+    <string name="account_migration_activity_stop">Taşımayı durdur</string>
+    <string name="account_migration_activity_success_message">Taşıma başarıyla tamamlandı</string>
+    <string name="account_migration_activity_transfer_in_progress">Veri aktarımı devam ediyor</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Bu ekranı her cihazda görüntüleyin ve biri diğerinin QR Kodunu tarar.</string>
+    <string name="account_migration_scanner_activity_message_older_version">Bu cihaz eski, uyumsuz bir işletim sistemi sürümünü kullanıyor ve bu da aktarım sırasında hedef cihazdaki tüm ilişkilerin kaybolmasına neden olacak. Hala aktarıma devam etmek istiyor musunuz?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">Hedef cihaz eski, uyumsuz bir işletim sistemi sürümü kullanıyor ve bu da aktarım sırasında tüm ilişkilerinizin kaybolmasına neden olacak. Hala aktarıma devam etmek istiyor musunuz?</string>
+    <string name="account_migration_scanner_activity_scan_title">Tarama</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Geçişi başlatmak için bu QR kodunu diğer cihazdan tarayın</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Diğer cihazın yan menüsünün \"Hesap / Başka bir cihazdan transfer\" bölümünde görüntülenen QR kodunu tarayın.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Taramayı durdur</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">Bu görüşmeye bir katılımcı ekle</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">Galeriden içe aktar</string>
+    <string name="add_contact_activity_in_person_subtitle">Yakınınızdaki bir kişiyi davet edin</string>
+    <string name="add_contact_activity_in_person_title">Şahsen</string>
+    <string name="add_contact_activity_invitation_code_title">Mini Kod</string>
+    <string name="add_contact_activity_invite">Davet etmek</string>
+    <string name="add_contact_activity_invite_message">“%2$s” ile özel olarak bağlantı kurmak için mobil cihazınız ile twinme üzerinden %1$s web adresini açın</string>
+    <string name="add_contact_activity_invite_subject">Twinme Daveti</string>
+    <string name="add_contact_activity_message">Yanınızdaki arkadaşınızdan QR kodunuzu twinme ile taramasını isteyin veya arkadaşınızın kodunu taramak için "Tarama" düğmesine dokunun.</string>
+    <string name="add_contact_activity_onboarding_message">twinme, arkadaşlarınızı tanımaz ve onları keşfedemez. Onları kişisel olarak, yakınınızdayken twinme ile veya başka bir yolla davet göndererek davet etmelisiniz.</string>
+    <string name="add_contact_activity_scan_code">Davet QR kodunu tarayın</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Bu bağlantı bozuk.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Bu bağlantı yanlıştır.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Bu bağlantı uygulama tarafından yönetilmiyor.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Bu ilişki silindi.</string>
+    <string name="add_contact_activity_scan_message_call_link">Bu bağlantı \"Click-to-call\"ya karşılık gelir</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Bu bağlantı bir iletişim davetine karşılık gelir</string>
+    <string name="add_contact_activity_scan_message_migration_link">Bu bağlantı bir hesap taşıma işlemine karşılık gelir</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Bu bağlantı bir çağrı aktarımına karşılık gelir</string>
+    <string name="add_contact_activity_scan_title">Tarama</string>
+    <string name="add_contact_activity_social_subtitle">mesaj, posta, sosyal ağ</string>
+    <string name="add_contact_activity_social_title">Kodu bir uygulama yoluyla gönderme</string>
+    <string name="add_contact_activity_title">Davet</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Eklemek</string>
+    <string name="add_group_member_activity_title">Üye ekle</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Karşılama mesajı</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Aranıyor&#8230;</string>
+    <string name="audio_call_activity_cannot_call">Sesli arama yapılamıyor</string>
+    <string name="audio_call_activity_connecting">Bağlanıyor&#8230;</string>
+    <string name="audio_call_activity_hangup">Kapat</string>
+    <string name="audio_call_activity_hangup_confirmation">Aramayı sonlandırmak istiyor musunuz?</string>
+    <string name="audio_call_activity_terminate">Arama sonlandırıldı</string>
+    <string name="audio_call_activity_terminate_busy">Arama sonlandırıldı: &lt;b&gt;%1$s&lt;/b&gt; meşgul</string>
+    <string name="audio_call_activity_terminate_cancel">Arama &lt;b&gt;%1$s&lt;/b&gt; tarafından iptal edildi</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Arama sonlandırıldı: ağ hatası</string>
+    <string name="audio_call_activity_terminate_decline">Arama &lt;b&gt;%1$s&lt;/b&gt; tarafından reddedildi</string>
+    <string name="audio_call_activity_terminate_gone">Arama sonlandırıldı: &lt;b&gt;%1$s&lt;/b&gt; çevrimdışı</string>
+    <string name="audio_call_activity_terminate_not_authorized">Kişi, bir arama için gereken izinleri (örneğin mikrofon, kamera) vermedi.</string>
+    <string name="audio_call_activity_terminate_revoked">Arama sona erdi: &lt;b&gt;%1$s&lt;/b&gt; sizinle bu ilişkiyi sildi.</string>
+    <string name="audio_call_activity_terminate_success">Aramayı sonlandıran: &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_timeout">Arama sonlandırıldı: &lt;b&gt;%1$s&lt;/b&gt; cevap vermedi</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">%1$s ile olan ilişkiniz artık onaylandı.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Bir QR kodunu tarayarak onaylayın</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Bir görüntülü görüşmeyle onaylayın</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s, bir ilişkiyi görüntülü görüşme yoluyla onaylayabilmek için görüntülü görüşmelere izin vermelidir.</string>
+    <string name="authentified_relation_activity_level_2">Bu ilişkiyi onaylamak için, %1$s’nin cihazında görüntülenen QR Kodunu taramalısınız.</string>
+    <string name="authentified_relation_activity_level_3">Bu ilişkiyi onaylamak için, %1$s’nin cihazı bu QR Kodunu taramalıdır.</string>
+    <string name="authentified_relation_activity_level_4">%1$s ile olan ilişkiniz onaylandı.</string>
+    <string name="authentified_relation_activity_onboarding_message">Onaylı bir ilişki, hizmet üçüncü bir tarafça tehlikeye atılmış olsa bile her zaman doğru kişiyle iletişim kurduğunuzdan emin olmanızı sağlar.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Her zaman doğru kişiyle iletişim kurduğunuzdan emin olun!</string>
+    <string name="authentified_relation_activity_relation_print_message">Bu parmak izi her iki cihazda da aynı olmalıdır.</string>
+    <string name="authentified_relation_activity_relation_print_title">İlişki parmak izi</string>
+    <string name="authentified_relation_activity_start">Onaylamayı başlat</string>
+    <string name="authentified_relation_activity_title">Onaylı ilişki</string>
+    <string name="authentified_relation_activity_to_be_certified_title">İlişkiyi onayla</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">Tümü</string>
+    <string name="calls_fragment_call_again_message">%1$s’yi geri aramak ister misiniz?</string>
+    <string name="calls_fragment_call_again_title">Geri aramak</string>
+    <string name="calls_fragment_create_link">Bir \"click-to-call\" bağlantısı oluşturun</string>
+    <string name="calls_fragment_incoming_call">Gelen çağrı</string>
+    <string name="calls_fragment_missed_call">Cevapsız çağrı</string>
+    <string name="calls_fragment_missed_call_segmented_control">Cevapsız</string>
+    <string name="calls_fragment_no_call_message">Cevapsız aramalar burada listelenir.</string>
+    <string name="calls_fragment_no_call_title">Henüz herhangi bir çağrı yapmadınız.</string>
+    <string name="calls_fragment_outgoing_call">Giden çağrı</string>
+    <string name="calls_fragment_reset">Tüm çağrı bildirimlerini sıfırlamak istediğinizden emin misiniz?</string>
+    <string name="calls_fragment_reset_title">Çağrı bildirimlerini sıfırla</string>
+    <string name="calls_fragment_title">Aramalar</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Bluetooth ses</string>
+    <string name="call_activity_audio_source_device">Cihaz kulaklıkları</string>
+    <string name="call_activity_audio_source_earphones">Kulaklıklar</string>
+    <string name="call_activity_audio_source_headset">Ses kulaklığı</string>
+    <string name="call_activity_audio_source_loudspeaker">Hoparlör</string>
+    <string name="call_activity_battery_restriction_message">Dikkat! Uygulama arka planda çalışırken pil kullanımına izin vermelisiniz, aksi takdirde bir arama sırasında mikrofonunuz kesilebilir.</string>
+    <string name="call_activity_camera_control">Kamera kontrolü</string>
+    <string name="call_activity_camera_control_ask_message">Görüntülü görüşme sırasında kamerasını kontrol etmenize izin vermesi için %1$s ile iletişime geçin.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s, arama sırasında kameranızı kontrol etmek istiyor. Kontrolü istediğiniz zaman geri alabilirsiniz.</string>
+    <string name="call_activity_camera_control_denied">%1$s kamerasını kontrol etmenize izin vermiyor.</string>
+    <string name="call_activity_camera_control_message">%1$s\'nin kamerasının kontrolü</string>
+    <string name="call_activity_camera_control_needs_help">Yardıma mı ihtiyacınız var?</string>
+    <string name="call_activity_camera_control_onboarding">Kişiniz izin verirse, görüntülü arama sırasında kameranın kontrolünü ele geçirebilir ve örneğin kendiniz yakınlaştırabilirsiniz. Bu, özellikle bir video gözetim kamerasını kontrol etmek için kullanışlıdır.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">Sevdiğiniz kişinin izniyle, görüşme sırasında kamerasını kontrol ederek ona uzaktan, kolay ve güvenli bir şekilde yardımcı olabilirsiniz.</string>
+    <string name="call_activity_camera_control_remotely">%1$s, kameranızı uzaktan kontrol ediyor.</string>
+    <string name="call_activity_camera_control_stop">Dur</string>
+    <string name="call_activity_certify_error_message">%1$s sözcüğü doğrulamadı. İlişkinin onaylanması başarısız oldu ve tekrar denemeniz gerekecek.</string>
+    <string name="call_activity_certify_onboarding_message">Görüntülü görüşme, birbirinizi tanımlamanıza ve onaylı bir ilişki ve onun değişimleriyle ilişkili güvenlik anahtarlarını değiştirmenize olanak tanır.</string>
+    <string name="call_activity_certify_onboarding_start_message">Her biri sırayla, ekranınızda görüntülenen ve diğerinin doğrulayabileceği kelimeyi heceleyin. Tüm kelimeler doğrulandığında, %1$s ile olan ilişkiniz onaylanacaktır.</string>
+    <string name="call_activity_certify_onboarding_title">İlişkinizi onaylayın</string>
+    <string name="call_activity_certify_video_message">İlişkiyi onaylayabilmek için görüşmenin videoda olması gerekir.</string>
+    <string name="call_activity_coach_mark">Bu aramaya bir katılımcı eklemek için buraya dokunun</string>
+    <string name="call_activity_confirm_word">%1$s tarafından söylenen kelime aynı mı?</string>
+    <string name="call_activity_confirm_word_title">Kelimeyi doğrulayın</string>
+    <string name="call_activity_error_call_interrupted">Çağrı kesintiye uğradı, hata: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">Çağrı gerçekleştirilemedi, hata: %1$d.</string>
+    <string name="call_activity_max_participant_message">Bir grup görüşmesinde maksimum katılımcı sayısına ulaşıldı (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">%1$s’nin uygulama sürümü grup aramalarıyla uyumlu değil ve güncellenmesi gerekiyor.</string>
+    <string name="call_activity_quality_message">Nasıl buldun?</string>
+    <string name="call_activity_quality_title">Çağrı kalitesi</string>
+    <string name="call_activity_repeat_word">%1$s kendi ekranındaki ile karşılaştırabilecektir.</string>
+    <string name="call_activity_repeat_word_title">Kelimeyi heceleyin</string>
+    <string name="call_activity_tag_add_to_call">Bir kişiyi devam eden aramaya katılmaya davet edin</string>
+    <string name="call_activity_tag_camera">Kamera</string>
+    <string name="call_activity_tag_camera_activate">Kamerayı etkinleştir</string>
+    <string name="call_activity_tag_camera_cut">Kamerayı kesin</string>
+    <string name="call_activity_tag_camera_flip">Kamerayı çevir</string>
+    <string name="call_activity_tag_microphone">Mikrofon</string>
+    <string name="call_activity_tag_microphone_activate">Mikrofonu etkinleştir</string>
+    <string name="call_activity_tag_microphone_mute">Mikrofonun sesini kapat</string>
+    <string name="call_activity_tag_pause">Duraklat</string>
+    <string name="call_activity_tag_send_message">Bir mesaj göndermek</string>
+    <string name="call_activity_tag_speaker">Hoparlör</string>
+    <string name="call_activity_tag_speaker_activate">Hoparlörü etkinleştir</string>
+    <string name="call_activity_tag_speaker_mute">Hoparlörün sesini kapat</string>
+    <string name="call_activity_transfert_call_message">Devam eden çağrı aktarıldı.</string>
+    <string name="call_activity_try_to_call_back">Geri aramayı deneyin.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">Kamera zaten kullanılıyor</string>
+    <string name="capture_activity_incorrect_qrcode">Hatalı twincode</string>
+    <string name="capture_activity_message">Taramak için QR kodunu bu dikdörtgene yerleştirin.</string>
+    <string name="capture_activity_no_camera">Bir twincode taramak için kamera gereklidir</string>
+    <string name="capture_activity_qrcode_saved">Davetiye fotoğrafları kaydedildi.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">Tümünü temizle</string>
+    <string name="cleanup_activity_both_clean">Küresel temizlik (yerel ve uzak)</string>
+    <string name="cleanup_activity_both_clean_title">Küresel temizlik</string>
+    <string name="cleanup_activity_clean">Silmek</string>
+    <string name="cleanup_activity_conversation">%s ile görüşme</string>
+    <string name="cleanup_activity_delete_confirmation_message">Silme işlemi geri alınamaz. Devam etmeden önce önemli içerikleri dışa aktarın. Devam mı?</string>
+    <string name="cleanup_activity_error">İşlem sırasında bir hata oluştu.</string>
+    <string name="cleanup_activity_expiration">Son kullanma koşulları</string>
+    <string name="cleanup_activity_free">Mevcut</string>
+    <string name="cleanup_activity_info">Mesajları, medyayı ve dosyaları bu konuşmadan silmek bunları kişinizin cihazından kaldırmaz ve bunu daha sonra yapamazsınız.</string>
+    <string name="cleanup_activity_info_both">Mesajları, medyayı ve dosyaları bu konuşmadan silmek de bunları kişinizin cihazından kaldırır.</string>
+    <string name="cleanup_activity_local_cleanup">Yalnızca yerel temizlik</string>
+    <string name="cleanup_activity_local_cleanup_title">Yerel temizlik</string>
+    <string name="cleanup_activity_medias_and_files">Yalnızca medya ve dosyalar</string>
+    <string name="cleanup_activity_medias_and_files_info">Medya küçük resimleri görüşmeden kaldırılmaz; yalnızca orijinal dosyalar silinir.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Bu konuşmada değiş tokuş edilen dosyalar, fotoğraflar, videolar ve sesli notlar hem sizin cihazınızdan hem de kişinizin cihazından silinecek.</string>
+    <string name="cleanup_activity_messages">Tüm mesajlar ve diğer içerikler</string>
+    <string name="cleanup_activity_messages_info">Görüşmedeki her türlü mesaj (metin, fotoğraf, video, ses, dosya vb.) uygulamadan silinecektir.</string>
+    <string name="cleanup_activity_month">%1$d ay</string>
+    <string name="cleanup_activity_older_than">Şundan daha yaşlı</string>
+    <string name="cleanup_activity_one_year">1 yıl</string>
+    <string name="cleanup_activity_prior_to">Önce</string>
+    <string name="cleanup_activity_reset_conversation_message">Bu görüşmenin sıfırlanması, kişinizin cihazındakiler de dahil olmak üzere tüm mesajları siler.</string>
+    <string name="cleanup_activity_select_content">Neyi silmek istediğinizi seçin.</string>
+    <string name="cleanup_activity_storage_title">Disk alanı</string>
+    <string name="cleanup_activity_success">Operasyon başarıyla tamamlandı.</string>
+    <string name="cleanup_activity_title">Sohbet temizliği</string>
+    <string name="cleanup_activity_total">Toplam</string>
+    <string name="cleanup_activity_used">Kullanılmış</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">İpuçları</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Bu kişinin sizi aramasına izin verin</string>
+    <string name="contact_capabilities_activity_automatic_answering">Gelen çağrıları otomatik olarak yanıtla</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Dikkat: bu ayar, cihazın mikrofonunu ve kamerasını açarak (görüntülü aramalar için) bu kişiden gelen aramaların otomatik olarak yanıtlanmasını etkinleştirir.</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Bazı cihazlar bu özelliği kısıtlayabilir.</string>
+    <string name="contact_capabilities_activity_call_settings">Çağrı ayarları</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Her zaman</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Her aramada sor</string>
+    <string name="contact_capabilities_activity_camera_control_information">Bu kişinin görüntülü arama sırasında kameranızın kontrolünü otomatik olarak ele geçirmesine izin verin.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Uygulamanın premium sürümüne erişimi olan kişinizden görüntülü görüşmeleriniz sırasında kameranızı kontrol etmesini isteyebilirsiniz.</string>
+    <string name="contact_capabilities_activity_camera_control_never">Asla</string>
+    <string name="contact_capabilities_activity_discreet_relation">Gizli ilişki</string>
+    <string name="contact_capabilities_activity_information_audio_call">Kişinin sizinle sesli arama yapmasına izin verin.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">Kişi adını bildirimlerde göstermez ve aramaları arama geçmişine kaydetmez.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Aranmak istemediğiniz tarihleri/saatleri ayarlayın.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Aranmak istediğiniz tarihleri/saatleri planlayın.</string>
+    <string name="contact_capabilities_activity_information_video_call">Kişinin sizinle görüntülü arama yapmasına izin verin.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Birisini davet kodunuzu taramaya davet edin, aksi takdirde onlarınkini tarayın...</string>
+    <string name="contacts_fragment_invite_contact_title">Kişileri davet et</string>
+    <string name="contacts_fragment_scan_contact_title">Bir davet kodunu tarayın veya girin</string>
+    <string name="contacts_fragment_title">İletişim</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">Sesli arama</string>
+    <string name="conversation_activity_audio_message">Sesli mesaj</string>
+    <string name="conversation_activity_call_missed">eksik</string>
+    <string name="conversation_activity_cannot_send">Hemen mesaj gönderemezsiniz:</string>
+    <string name="conversation_activity_cleanup_conversation">Bazı eski mesajları sildiniz.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s bazı eski mesajları temizledi.</string>
+    <string name="conversation_activity_delete_message">Mesajınız gerçekten silindi</string>
+    <string name="conversation_activity_empty_message">Akıllıca bir şey söyle… ya da eğlenceli!</string>
+    <string name="conversation_activity_edit_message">Mesaj, yalnızca kişinin uygulaması güncelse kişinin cihazında düzenlenebilir.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Bu mesajı belirli bir süre sonra konuşmadan silmek için gönder okuna uzun basın.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Rehber kişinizin twinme sürümü tamamen işlevsel değil.&lt;br /&gt;
+        Lütfen twinme güncellemesi gerçekleştirmesini isteyin.</string>
+    <string name="conversation_activity_group_member_information">%1$d üye</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Yetkisiz mesaj gönder</string>
+    <string name="conversation_activity_group_one_member">1 üye</string>
+    <string name="conversation_activity_invitation_accepted">Davetiye kabul edildi</string>
+    <string name="conversation_activity_invitation_failed">twinme güncellemesi için kişinize danışın</string>
+    <string name="conversation_activity_invitation_joined">Grubun üyesi</string>
+    <string name="conversation_activity_invitation_pending">Davetiye devam ediyor</string>
+    <string name="conversation_activity_invitation_refused">Davet reddedildi</string>
+    <string name="conversation_activity_invitation_title">Sizi gruba katılmaya davet ediyorum</string>
+    <string name="conversation_activity_local_cleanup">Ana içerikler yerel olarak silindi.</string>
+    <string name="conversation_activity_manage_conversation">Sohbeti Yönetin</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Panoya kopyalandı!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Kopya</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Kaldır</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Aktarma</string>
+    <string name="conversation_activity_menu_item_view_info_title">Bilgi</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">İşlem gönderen tarafından yetkilendirilmedi</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Cevapla</string>
+    <string name="conversation_activity_menu_item_view_save_message">Kaydedilen!</string>
+    <string name="conversation_activity_menu_item_view_save_title">Kaydet</string>
+    <string name="conversation_activity_menu_item_view_share_title">İle paylaş</string>
+    <string name="conversation_activity_message">Bir mesaj yazın</string>
+    <string name="conversation_activity_photo_camera">Fotoğraf kamera</string>
+    <string name="conversation_activity_record_confirm_send_record">Göndermek için tekrar basın</string>
+    <string name="conversation_activity_record_start_record">Kaydetmek için basılı tutun</string>
+    <string name="conversation_activity_record_title">Kayıt</string>
+    <string name="conversation_activity_reduce_menu_lower">Standard</string>
+    <string name="conversation_activity_reduce_menu_minimal">Minimum</string>
+    <string name="conversation_activity_reduce_menu_original">Orijinal</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Ingen storleksändring</string>
+    <string name="conversation_activity_reject_stream">Reddet</string>
+    <string name="conversation_activity_reply_to">%1$s için yanıtla</string>
+    <string name="conversation_activity_reset_conversation">konuşmayı sıfırladınız</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s konuşmayı sıfırladı</string>
+    <string name="conversation_activity_send_file_warning">Uyarı: Yalnızca uygulama dışında açılabilen bir belgenin (pdf, word, ppt, excel, zip vb.) alıcı tarafından kopyalanması/kaydedilmesi/paylaşması engellenemez. Hala göndermek istiyor musun?</string>
+    <string name="conversation_activity_send_large_file_message">Bu dosya büyük (%1$d MB). Devam etmek ister misin ?</string>
+    <string name="conversation_activity_send_menu_allow_copy">Alıcının bu içeriği kopyalamasına/kaydetmesine/paylaşmasına izin ver</string>
+    <string name="conversation_activity_stream_dialog">Kabul etmek istiyor musunuz?</string>
+    <string name="conversation_activity_unsupported_media">Desteklenmeyen medya biçimi</string>
+    <string name="conversation_activity_video_call">Görüntülü arama</string>
+    <string name="conversation_activity_video_camera">Video kamera</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">Belge</string>
+    <string name="conversation_files_activity_links">Bağlantılar</string>
+    <string name="conversation_files_activity_month">Bu ay</string>
+    <string name="conversation_files_activity_no_files">%1$s ile görüşmeniz bu öğelerin hiçbirini içermiyor.</string>
+    <string name="conversation_files_activity_title">Medya, web bağlantıları ve belgeler</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Bakgrunder &amp; färger</string>
+    <string name="conversation_settings_activity_emoji_size">Emoji storlek</string>
+    <string name="conversation_settings_activity_link_preview">Visualisering</string>
+    <string name="conversation_settings_activity_link_preview_message">Web sitesinin önizlemesini görüntüleyin.</string>
+    <string name="conversation_settings_activity_link_title">Webb-länkar</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">Uçtan uca şifrelenmiş iletiler, ara dağıtım sunucusu olmadan doğrudan aygıttan aygıta eşler arası olarak değiştirilir = bulutta iz yok.</string>
+    <string name="conversations_fragment_no_result_found">\'%1$s\' için sonuç bulunamadı.</string>
+    <string name="conversations_fragment_start">Bir konuşma başlatın</string>
+    <string name="conversations_fragment_title">Konuşmalar</string>
+    <string name="conversations_fragment_you">Sen</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Bu profil, sizi bu \"click-to-call\" bağlantısıyla arayacak olan konuklara görüntülenir.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\", konukların uygulamayı yüklemeden sizi bir tarayıcıdan aramasına olanak tanır.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Her örneğin, çağrının konusunu temsil eden bir adı, resmi ve açıklaması vardır; örneğin:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">müşteri hizmetleriniz</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">sattığın araba</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">profesyonel bir grup görüşmesi</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">Teslimat görevlileri için görüntülü kapı zili.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">Bir \"click-to-call\" özelliğinin şu olup olmadığını belirten nitelikleri vardır:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">sesli ve/veya görüntülü arama</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">bireysel veya grup araması</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">her zaman açık veya belirli bir tarih ve saatle sınırlıdır.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">İlgili kişilere ulaşmayı sağlayan kanallar aracılığıyla \"click-to-call\" bağlantısını veya QR kodunu paylaşın, örneğin:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">web sitenizde bir \"harekete geçirici mesaj\"</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">seri ilanlar platformunda bir ek</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">grup görüşmesine davet edilen kişilere bir e-posta</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">Teslimat görevlileri için ön kapınızda bir işaret.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Alıcılar QR kodunu tarar ve bağlantıyı mobil cihazlarındaki veya bilgisayarlarındaki bir tarayıcıda açar. Daha sonra şunları yapabilirler:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Aramada onları temsil eden varsayılan adı (Misafir) değiştirin</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Web sayfasındaki \"Ara\" butonuna basarak sizi arayın.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">Aramadan sonra sizi geri aramak için web sayfasını açık tutabilirler.</string>
+    <string name="create_external_call_activity_placeholder">Konu (Yardım, Duyuru, Toplantı, Kapı Zili,…)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Üyeleri davet et</string>
+    <string name="create_group_activity_create">Yaratmak</string>
+    <string name="create_group_activity_member_allow_invitation_message">Grup üyelerinin kişilerini davet etmesine izin ver</string>
+    <string name="create_group_activity_member_allow_invitation_title">Üye davetiyesi</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Üyelerin diğer üyeleri kişisel rehber olarak davet etmesine izin ver</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Kişisel iletişim kurun</string>
+    <string name="create_group_activity_member_allow_post_message">Grup üyelerinin mesaj göndermesine izin ver</string>
+    <string name="create_group_activity_member_allow_post_title">Mesaj gönderin</string>
+    <string name="create_group_activity_member_list">Üye listesi (%1$d)</string>
+    <string name="create_group_activity_name_hint">Grup ismi</string>
+    <string name="create_group_activity_title">Grup</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">Kişilerinizin sizi tanıması ve diğerlerinden ayırt etmesi için hem ad hem de görüntü önemlidir.</string>
+    <string name="create_profile_activity_message">Bu Profil bilgileri kişileri davet etmek için kullanılır.</string>
+    <string name="create_profile_activity_onboarding_message">Sizi kişilerinize temsil eden bir profil (ad ve resim) girin.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Profiller, kişileri uygulamada sizinle ilişki kurmaya davet etmenize olanak tanır. Her biri belirli bir "Space" ile ilişkilendirilmiş, istediğiniz kadar Profiliniz (kişilik) olabilir.</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Her "Profil", davet ettiğiniz kişiler tarafından görülen ve o "Space"ın yeni oluşturulan ilişkileriyle ilişkili ilk Profiliniz olarak kullanılan bir "Ad" ve bir "Resim"e (gerekli) sahiptir.</string>
+    <string name="create_profile_activity_onboarding_message_part_3">Bir kez oluşturulduktan sonra, her ilişkinin sizi ve kişilerinizi birbirinizle temsil eden kendi "Profilleri" çifti olur.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">Daha sonra, her bir ilişkide, kişilerinizin her biri tarafından nasıl tanınmak istediğinizi bağımsız olarak değiştirebilirsiniz.</string>
+    <string name="create_profile_activity_save_message">Bu isim ve resim, kişilerinizi davet etmek ve ilişkilerinizi başlatmak için kullanılır. Her ilişki için bunları değiştirebilir ve özelleştirebilirsiniz.</string>
+    <string name="create_profile_activity_welcome1">Profil resminizi girin</string>
+    <string name="create_profile_activity_welcome2">Hoş geldiniz %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">Spaces yereldir ve kişiler tarafından görülemez.</string>
+    <string name="create_space_activity_onboarding_message_part_1">Space, kişilerinizi ait oldukları sosyal çevrelere göre düzenlemenize yardımcı olur; ör. Aile, Arkadaşlar, İş, Eğlence vb.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Her "Space", o "Space"ın sosyal çevresinden kişilerle (ör. Baba, Johny, Dr. John Doe, Batman vb.) etkileşimde bulunurken kullanmak istediğiniz kişiyi temsil eden bir "Profil" ile ilişkilendirilir.</string>
+    <string name="create_space_activity_onboarding_message_part_3">Spaces cihazınızdaki uygulamanızda yereldir. Bunlar yalnızca sizin tarafınızdan görülebilir; kişileriniz veya hizmet sunucuları tarafından görülemez.</string>
+    <string name="create_space_activity_onboarding_message_part_4">Bir "Space" şunları içerir:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- etkileşimde bulunduğunuz belirli bir sosyal çevreyi temsil eden bir “Ad”;</string>
+    <string name="create_space_activity_onboarding_message_part_6">- Spaces listenizde onu hızlı bir şekilde tanımlamanıza olanak tanıyan bir "Resim"</string>
+    <string name="create_space_activity_onboarding_message_part_7">- görünümünü ve hissini kişiselleştirmek için renkli bir “Tema”</string>
+    <string name="create_space_activity_onboarding_message_part_8">- Her bir "Space"a özel olabilen "Ayarlar", böylece uygulama Ayarları tarafından tanımlanan varsayılan değerleri geçersiz kılar.</string>
+    <string name="create_space_activity_title">Space yarat</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">Bu profil adı, devam eden bir aramayı tarayıcıya aktarmak için kullanılan kodla ilişkilidir.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Transferlerim</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Hesabın silinmesini onaylamak için aşağıdaki \"Tamam\" harflerini yazın.</string>
+    <string name="deleted_account_activity_delete">Hesabı sil</string>
+    <string name="deleted_account_activity_warning">Dikkat‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">Hesabınız silindi ve ilişkili tüm veriler yok edildi.&lt;br /&gt;
+        Uygulamayı kapatmanız gerekiyor.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Bu ilişkiyi silmek istediğinizden emin misiniz?</string>
+    <string name="edit_contact_activity_message">Bu kişi artık size ulaşamayacak.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Bu profili silmek, ilişkili davet kodunu geçersiz kılacaktır. Silmeyi onayla?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">Bu \"Click-to-Call\" kodunu silmek istediğinizden emin misiniz?</string>
+    <string name="edit_external_call_activity_delete_message">Bu \"Click-to-Call\" bağlantısı artık kullanılamayacak.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">Profili Düzenle</string>
+    <string name="edit_profile_activity_propagating_all_contacts">bu Space daki tüm kişilere</string>
+    <string name="edit_profile_activity_propagating_ask_message">Az önce değiştirdiğiniz resmi, adı veya açıklamayı yayın:</string>
+    <string name="edit_profile_activity_propagating_except_contacts">kişiselleştirilmediği olmadığı sürece herkese</string>
+    <string name="edit_profile_activity_propagating_message">Davetiye profili değişikliklerinizi mevcut kişilerinize yayabilir veya yayamazsınız.</string>
+    <string name="edit_profile_activity_propagating_no_contact">hiç kimseye</string>
+    <string name="edit_profile_activity_propagating_profile">Profil değişikliklerini yay</string>
+    <string name="edit_profile_activity_remove_active_profile">Etkin profili kaldıramazsınız</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">İlişki oluşturulduktan sonra, güvenliğini güçlendirmek için bunu onaylamanız şiddetle önerilir.</string>
+    <string name="enter_invitation_code_activity_enter_code">Bir Mini Kod Girin</string>
+    <string name="enter_invitation_code_activity_error_message">Bu kod geçersiz. Daha önce kullanılmış veya süresi dolmuş olabilir.</string>
+    <string name="enter_invitation_code_activity_invitation_message">İlişki oluşturulduktan sonra, güvenliğini güçlendirmek için bunu onaylamayı unutmayın.</string>
+    <string name="enter_invitation_code_activity_message">İlişki kurmak için kişinizin sağladığı Mini Kodu girin.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">Bir kişi size ilişki kurmanız için 6 karakterlik bir Mini Kod verdi. Bu tek kullanımlık Mini Kod oluşturulduktan 24 saat sonra sona erer.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">Sohbet içeriği bir ZIP dosyası olarak dışa aktarılacaktır.</string>
+    <string name="export_activity_content_title">İçindekiler</string>
+    <string name="export_activity_content_to_export">Dışa aktarılacak içerikler</string>
+    <string name="export_activity_do_not_leave_screen">Dışa aktarma işlemi sırasında ekrandan ayrılmayın.</string>
+    <string name="export_activity_export">İhracat</string>
+    <string name="export_activity_file">dosya</string>
+    <string name="export_activity_files">dosyalar</string>
+    <string name="export_activity_get_all_content">%1$s ile sohbet içeriğini alma işlemi devam ediyor.</string>
+    <string name="export_activity_get_one_chat">Sohbet içeriği alma işlemi devam ediyor.</string>
+    <string name="export_activity_images">Görüntüler</string>
+    <string name="export_activity_no_content_to_export">Dışa aktarılacak içerik yok</string>
+    <string name="export_activity_one_conversation_zip_file">Sohbet içeriği bir ZIP dosyası olarak dışa aktarılacaktır.</string>
+    <string name="export_activity_save_location">Konum</string>
+    <string name="export_activity_save_location_message">Nereye dışa aktarılacağını seçin.</string>
+    <string name="export_activity_select_content">Dışa aktarmak istediğiniz içeriği seçin.\nYalnızca kopyalanmaya/kaydedilmeye/paylaşmaya izin verilen geçici olmayan içerikler dışa aktarılabilir.</string>
+    <string name="export_activity_success">Dışa aktarma başarıyla tamamlandı.</string>
+    <string name="export_activity_title">Konuşmaları dışa aktarma</string>
+    <string name="export_activity_videos">Videolar</string>
+    <string name="export_activity_voice_messages">Sesli mesajlar</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Önemli hata, kod %1$d.\nLütfen uygulamayı yeniden başlatın ve mümkünse sorunu bir geri bildirim mesajıyla bildirin. Rahatsızlıktan dolayı özür dileriz.</string>
+    <string name="fatal_error_activity_error_message">Önemli hata: %1$s&lt;br /&gt;
+        Uygulamayı kapatmanız gerekiyor.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Kişi</string>
+    <string name="feedback_activity_gdpr_notice">Hesap verilerinize erişmek için bu formu kullanın.</string>
+    <string name="feedback_activity_help">Sorunları belirleme ve bunları çözmek için bizimle çalışma konusunda yardımınız için teşekkür ederiz.</string>
+    <string name="feedback_activity_info_logs">Hata Ayıklama Günlüğü yalnızca uygulama etkinlikleri ve davranışları hakkında düşük düzeyde teknik veriler içerir ve kişisel bilgilerinizden hiçbirini ifşa ETMEZ.</string>
+    <string name="feedback_activity_logs">Hata Ayıklama Günlüğü</string>
+    <string name="feedback_activity_message">Mesaj</string>
+    <string name="feedback_activity_send">Gönder</string>
+    <string name="feedback_activity_send_logs">Hata Ayıklama Günlüğü Gönder</string>
+    <string name="feedback_activity_send_message">Geri bildirim gönderildi. Teşekkür ederiz.</string>
+    <string name="feedback_activity_subject">Konu</string>
+    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Bu işlem, bu profille ilişkili geçerli davet kodunu geçersiz kılar. Yeni bir kod oluşturmak istediğinizden emin misiniz?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Yeni bir davetiye kodu oluşturun</string>
+    <string name="fullscreen_qrcode_activity_save_message">Bu kişiyi eklemek için bu davetiye QR Kodunu twinme ile içe aktarın veya tarayın.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Fotoğraf galerisine kaydet</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Ses aramalarına izin ver</string>
+    <string name="group_capabilities_activity_information_programmed_call">Aramaların tarihini/saatini programlayın</string>
+    <string name="group_capabilities_activity_information_video_call">Video aramalarına izin ver</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">Grup yöneticisi bu eyleme yetki vermedi.</string>
+    <string name="group_member_activity_invitation_message">%1$s kişisini kişisel iletişim olarak davet et</string>
+    <string name="group_member_activity_invitation_title">Davetiye</string>
+    <string name="group_member_activity_invite_personnal_relation">kişisini kişisel iletişim olarak davet et</string>
+    <string name="group_member_activity_remove_message">Bu gruptaki üyeleri kaldırmak istediğinizden emin misiniz?</string>
+    <string name="group_member_activity_section_administrator">Yönetici</string>
+    <string name="group_member_activity_section_invitation">Davetiyeler</string>
+    <string name="group_member_activity_section_member">Üye</string>
+    <string name="group_member_activity_title">Grup üyeleri</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s meşgul</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Çağrı %1$s tarafından iptal edildi</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Çağrı %1$s azaldı</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s çevrimdışı</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Arama yetkisi yok</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s bu ilişkiyi kaldırdı</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s cevap vermiyor</string>
+    <string name="info_item_activity_deleted">Alıcı tarafından silindi:</string>
+    <string name="info_item_activity_may_be_copied">Kopyalanabilir/kaydedilebilir/paylaşılabilir…</string>
+    <string name="info_item_activity_may_not_be_copied">Kopyalanamaz/kaydedilemez/paylaşılamaz…</string>
+    <string name="info_item_activity_reactions">Tepkiler</string>
+    <string name="info_item_activity_received">Alınan:</string>
+    <string name="info_item_activity_seen">Görülme:</string>
+    <string name="info_item_activity_sent">Gönderilen:</string>
+    <string name="info_item_activity_updated">Düzeltildi</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Bu eylem, bu \"click-to-call\" bağlantısıyla ilişkili mevcut davet kodunu geçersiz kılar. Onaylamak?</string>
+    <string name="invitation_call_activity_generate_code_title">Bu bağlantı için yeni bir kod oluşturun</string>
+    <string name="invitation_call_activity_invite_message">“%2$s”yi aramak için %1$s web adresini açın veya QR Kodunu tarayın.</string>
+    <string name="invitation_call_activity_message">Bu \"click-to-call\" kodunu, web veya mobil uygulamadan sizi arayabilecek biriyle paylaşın.</string>
+    <string name="invitation_call_activity_save_message">“%1$s”yi aramak için bu QR Kodunu tarayın.</string>
+    <string name="invitation_call_activity_share">Yayınla</string>
+    <string name="invitation_call_activity_title">Harici arama</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Bir Mini Kod Oluşturun</string>
+    <string name="invitation_code_activity_create_code_subtitle">Uygulamaya erişiminiz olmadığında bir kişiyi davet etmek için.</string>
+    <string name="invitation_code_activity_expiration">Son Kullanma Tarihi:</string>
+    <string name="invitation_code_activity_history">Benim Mini Kodlarım</string>
+    <string name="invitation_code_activity_limit_message">İzin verilen maksimum etkin Mini Kod sayısına ulaşıldı. Yenilerini oluşturmak için 24 saat beklemelisiniz.</string>
+    <string name="invitation_code_activity_onboarding_message">Mini Kodlar tek kullanımlıktır ve yalnızca 24 saat geçerlidir. Uygulamaya erişiminiz olmadığında (örneğin telefonunuz olmadığında) ilişki kurmaları için kişilerinize verebilirsiniz.</string>
+    <string name="invitation_code_activity_success_message">Güvenliklerini güçlendirmek için kurulan ilişkileri bir Mini Kod ile onaylamanız şiddetle önerilir.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Yakınınızdaki arkadaşınızdan twinme ile \"room\" nın QR kodunu taramasını isteyin veya panoya kopyalamak için davet koduna dokunun.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Ses</string>
+    <string name="last_calls_activity_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">Bu cihazdaki twinme hesabınız, twinme+ ’ya aktarılacaktır.</string>
+    <string name="local_account_migration_activity_message_older_version">Tüm ilişkilerinizi kaybetmemek için, aktarıma başlamadan önce her iki cihazı da uygulamanın en son sürümüne güncellediğinizden emin olun.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">Kişi ekle</string>
+    <string name="main_activity_add_group">Grup oluştur</string>
+    <string name="main_activity_reset_conversation">Sıfırla</string>
+    <string name="main_activity_reset_conversation_message">Bu görüşmenin sıfırlanması, kişinizin cihazındakiler de dahil olmak üzere tüm mesajları siler. Onaylıyor musunuz?</string>
+    <string name="main_activity_reset_conversation_title">Sohbeti Sıfırla</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Bu görüşmenin sıfırlanması, her grup üyesinin cihazındaki tüm mesajların silinmesine neden olur. Onaylıyor musunuz?</string>
+    <string name="main_activity_reset_group_conversation_message">Bu görüşmenin sıfırlanması, cihazınızdaki tüm mesajları kaldıracaktır. Onaylıyor musunuz?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">Bu özelliği kullanmak için twinme+’a yükseltmeniz gerekir. Tüm hesap verilerinizi taşıyabileceksiniz.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">Tüm hesap verilerinizi taşıyabileceksiniz.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme, daha da fazla özelliğe sahip premium bir sürüm olarak mevcuttur.</string>
+    <string name="migration_twinme_plus_activity_premium_title">twinme+’a yükseltin</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">Hakkında</string>
+    <string name="navigation_activity_application_settings">Uygulama ayarları</string>
+    <string name="navigation_activity_feedback">Geri bildirim gönder</string>
+    <string name="navigation_activity_getting_started">Başlarken</string>
+    <string name="navigation_activity_help">Yardım</string>
+    <string name="navigation_activity_profile">Profiller</string>
+    <string name="navigation_activity_settings">Ayarlar</string>
+    <string name="navigation_activity_sign_out">Oturumu Kapat</string>
+    <string name="navigation_activity_sounds">Sesler</string>
+    <string name="navigation_activity_support">Destek</string>
+    <string name="navigation_activity_title">Menü</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">%1$s kişisine sesli arama</string>
+    <string name="notification_center_audio_message">Size sesli mesaj gönderdi</string>
+    <string name="notification_center_audio_message_received">Yeni sesli mesaj</string>
+    <string name="notification_center_cancel">Reddet</string>
+    <string name="notification_center_cleanup_conversation">Bazı eski mesajlar silindi.</string>
+    <string name="notification_center_deleted_contact">Kişi Silindi</string>
+    <string name="notification_center_file_message">sana bir dosya yolladı</string>
+    <string name="notification_center_file_message_received">Yeni dosya</string>
+    <string name="notification_center_group_invitation">Sana bir davetiye gönderdi</string>
+    <string name="notification_center_group_invitation_received">Yeni davetiye</string>
+    <string name="notification_center_join_group">Grubun üyesisin</string>
+    <string name="notification_center_message_received">Yeni Mesaj</string>
+    <string name="notification_center_missed_audio_call_to">%1$s kişisine yapılan sesli arama kaçırıldı</string>
+    <string name="notification_center_missed_video_call_to">%1$s kişisine yapılan görüntülü arama kaçırıldı</string>
+    <string name="notification_center_mute">Mikrofonun sesini kapatma</string>
+    <string name="notification_center_new_contact">Yeni bağlantı</string>
+    <string name="notification_center_photo_message">Size bir fotoğraf gönderdi</string>
+    <string name="notification_center_photo_message_received">Yeni fotoğraf</string>
+    <string name="notification_center_reaction">"tepki verdi %1$s "</string>
+    <string name="notification_center_reaction_message">Bir mesaja tepki gösterdi</string>
+    <string name="notification_center_reaction_message_received">Bir mesaja tepki</string>
+    <string name="notification_center_reset_message">Görüşmeyi sıfırla</string>
+    <string name="notification_center_stop">Dur</string>
+    <string name="notification_center_transfering_data">Mesaj aktarımı devam ediyor…</string>
+    <string name="notification_center_unmute">Mikrofonu etkinleştir</string>
+    <string name="notification_center_updated_contact_avatar">Resim güncellendi</string>
+    <string name="notification_center_updated_contact_name">İsim güncellendi</string>
+    <string name="notification_center_video_call_to">%1$s kişisine görüntülü arama</string>
+    <string name="notification_center_video_message">Size bir video gönderdi</string>
+    <string name="notification_center_video_message_received">Yeni video</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Sesli aramalar</string>
+    <string name="notification_channel_contact_title">Kişiler</string>
+    <string name="notification_channel_group_title">Gruplar</string>
+    <string name="notification_channel_message_title">Mesajlar</string>
+    <string name="notification_channel_missed_title">Cevapsız aramalar</string>
+    <string name="notification_channel_system_title">Diğerleri</string>
+    <string name="notification_channel_video_title">Görüntülü aramalar</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">Sizi aramaya çalıştı</string>
+    <string name="notifications_fragment_item_audio_message">Size sesli mesaj gönderdi</string>
+    <string name="notifications_fragment_item_cleanup_message">bazı eski mesajları temizledi.</string>
+    <string name="notifications_fragment_item_deleted_contact">Kişi Silindi</string>
+    <string name="notifications_fragment_item_file_message">Sana bir dosya yolladı</string>
+    <string name="notifications_fragment_item_group_invitation">Sana bir davetiye gönderdi</string>
+    <string name="notifications_fragment_item_image_message">Size bir fotoğraf gönderdi</string>
+    <string name="notifications_fragment_item_join_group">Grubun üyesisin</string>
+    <string name="notifications_fragment_item_new_contact">Yeni bağlantı</string>
+    <string name="notifications_fragment_item_reset_conversation">Konuşmayı sıfırladı</string>
+    <string name="notifications_fragment_item_shortest_day">%1$dg</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$dsa</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$dd</string>
+    <string name="notifications_fragment_item_shortest_second">%1$dsn</string>
+    <string name="notifications_fragment_item_text_message">Size bir mesaj gönderdi</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Resim güncellendi</string>
+    <string name="notifications_fragment_item_updated_contact_name">İsim güncellendi</string>
+    <string name="notifications_fragment_item_video_call">Sizi görüntülü olarak aramaya çalıştı</string>
+    <string name="notifications_fragment_item_video_message">Size bir video gönderdi</string>
+    <string name="notifications_fragment_no_notification_message">Kişiler, konuşmalar, aramalar vb. ile ilgili bildirimler burada listelenir.</string>
+    <string name="notifications_fragment_no_notification_title">Bildiriminiz yok.</string>
+    <string name="notifications_fragment_reset">Tüm bildirimleri sıfırlamak istediğinizden emin misiniz?</string>
+    <string name="notifications_fragment_reset_title">Bildirimleri sıfırla</string>
+    <string name="notifications_fragment_title">Bildirimler</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">Karakter yazı tipleri</string>
+    <string name="personalization_activity_font_extra_large">Çok büyük</string>
+    <string name="personalization_activity_font_large">Büyük</string>
+    <string name="personalization_activity_font_small">Küçük</string>
+    <string name="personalization_activity_haptic_feedback">Dokunsal geribildirim</string>
+    <string name="personalization_activity_haptic_feedback_message">Dokunduğunuzda dokunma hissi.</string>
+    <string name="personalization_activity_menu_choose_color">Varsayılan renkler</string>
+    <string name="personalization_activity_menu_enter_color">Renk kodu</string>
+    <string name="personalization_activity_mode">Kip</string>
+    <string name="personalization_activity_mode_dark">Karanlık</string>
+    <string name="personalization_activity_mode_light">ışık</string>
+    <string name="personalization_activity_start_tab_information">Uygulamayı başlatmak istediğiniz sekmeyi seçin.</string>
+    <string name="personalization_activity_start_tab_title">Varsayılan sekme</string>
+    <string name="personalization_activity_system">Sistem</string>
+    <string name="personalization_activity_title">Kişiselleştirme</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Ön/arka kamerayı değiştirin</string>
+    <string name="premium_services_activity_camera_control_description_2">Yakınlaştırın/uzaklaştırın</string>
+    <string name="premium_services_activity_camera_control_description_3">Sevdiğiniz birine veya müşterinize uzaktan yardımcı olun</string>
+    <string name="premium_services_activity_camera_control_description_4">Bir güvenlik kamerasını yönetin</string>
+    <string name="premium_services_activity_camera_control_subtitle">Görüşme sırasında kişinizin kamerasını izniyle kontrol edin</string>
+    <string name="premium_services_activity_camera_control_title">Uzaktan Kamera Kontrolü</string>
+    <string name="premium_services_activity_click_to_call_description_1">Beni aramak için tıklayın kodu oluşturun</string>
+    <string name="premium_services_activity_click_to_call_description_2">Herhangi bir yolla yayınlayın veya dağıtın</string>
+    <string name="premium_services_activity_click_to_call_description_3">Alıcılar kodu tarar ve sizi arar</string>
+    <string name="premium_services_activity_click_to_call_description_4">Bulutta iz bırakmadan anonim</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Konukların sizi web tarayıcısından aramasına izin verin</string>
+    <string name="premium_services_activity_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_activity_conversation_description_1">Medya, dosyalar, sesli notlar, mesajlar</string>
+    <string name="premium_services_activity_conversation_description_2">Belirli bir dönemden/tarihten daha eski</string>
+    <string name="premium_services_activity_conversation_description_3">Bir görüşme veya tümü için</string>
+    <string name="premium_services_activity_conversation_description_4">Yalnızca yerel, diğer ucu etkilemez</string>
+    <string name="premium_services_activity_conversation_subtitle">İçeriği dışa aktarın ve yer açın</string>
+    <string name="premium_services_activity_conversation_title">konuşma yönetimi</string>
+    <string name="premium_services_activity_description_part1_subtitle">Direkt anslutning mellan enheter</string>
+    <string name="premium_services_activity_description_part1_title">HD ljud/video kvalitet</string>
+    <string name="premium_services_activity_description_part2_subtitle">Inga spår i molnet</string>
+    <string name="premium_services_activity_description_part2_title">Sekretess – Sekretess</string>
+    <string name="premium_services_activity_description_part3_subtitle">Energieffektivitet</string>
+    <string name="premium_services_activity_description_part3_title">miljöansvarig</string>
+    <string name="premium_services_activity_group_call_description_1">Yüksek Çözünürlüklü ses/video</string>
+    <string name="premium_services_activity_group_call_description_2">Cihazlar arasında doğrudan bağlantı</string>
+    <string name="premium_services_activity_group_call_description_3">Güvenli ve özel</string>
+    <string name="premium_services_activity_group_call_description_4">Bulutta iz yok</string>
+    <string name="premium_services_activity_group_call_subtitle">Kişileri sesli/görüntülü grup görüşmesine katılmaya davet edin</string>
+    <string name="premium_services_activity_group_call_title">Grup çağrıları</string>
+    <string name="premium_services_activity_privacy_description_1">Uygulamayı biyometrik veya diğer kimlik doğrulama ile kilitleyin</string>
+    <string name="premium_services_activity_privacy_description_2">Uygulama değiştiricideki son ekranı gizle</string>
+    <string name="premium_services_activity_privacy_description_3">Belirli bir süre sonra kaybolan geçici mesajlar</string>
+    <string name="premium_services_activity_privacy_description_4">Bir kişinin sizi aramasını engelleme</string>
+    <string name="premium_services_activity_privacy_subtitle">Kontrol uygulaması, kişiler ve mesajlar</string>
+    <string name="premium_services_activity_privacy_title">Daha fazla gizlilik</string>
+    <string name="premium_services_activity_space_description_1">İlişkili ilişkiler, konuşmalar, geçmiş ile çoklu profiller</string>
+    <string name="premium_services_activity_space_description_2">Kişiselleştirilmiş görünüm, bildirimler ve ayarlar</string>
+    <string name="premium_services_activity_space_description_3">Aile, arkadaşlar, meslektaşlar, iş, spor vb. için.</string>
+    <string name="premium_services_activity_space_description_4">Gizli Spaces listelenmemiş, adla erişilmiştir</string>
+    <string name="premium_services_activity_space_subtitle">Etkileşimde bulunduğunuz her sosyal grup için</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">Müziğinizi canlı paylaşın</string>
+    <string name="premium_services_activity_streaming_description_2">Her katılımcı medya oynatıcıyı kontrol edebilir</string>
+    <string name="premium_services_activity_streaming_description_3">Görüşmede aynı anda etkileşimde bulunun</string>
+    <string name="premium_services_activity_streaming_description_4">Gerçek hayatta olduğu gibi aynı gizlilik</string>
+    <string name="premium_services_activity_streaming_subtitle">Bir görüşme sırasında medya akışınızı gerçekleştirin</string>
+    <string name="premium_services_activity_streaming_title">Medya paylaşımı</string>
+    <string name="premium_services_activity_transfert_description_1">Çağrı aktarma kodunu ve profilini oluşturun</string>
+    <string name="premium_services_activity_transfert_description_2">URL’sini yükleyin veya kodu bir bilgisayarda tarayın</string>
+    <string name="premium_services_activity_transfert_description_3">Sayfayı tarayıcıda yer imlerine ekleyin</string>
+    <string name="premium_services_activity_transfert_description_4">Mobil görüşme sırasında sayfadan \"Arama\"</string>
+    <string name="premium_services_activity_transfert_subtitle">Devam eden bir mobil aramayı tarayıcıya aktarma</string>
+    <string name="premium_services_activity_transfert_title">Çağrı aktarma</string>
+    <string name="premium_services_activity_title">Kişileri devam eden bir sesli/görüntülü aramaya katılmaya davet edin.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Uygulamayı biyometrik servislerle veya bir PIN koduyla kilitleyin.</string>
+    <string name="privacy_activity_hide_last_screen_message">Uygulama değiştiricide önizlemelerin görünmesini engelleyin</string>
+    <string name="privacy_activity_hide_last_screen_title">Son ekranı gizle</string>
+    <string name="privacy_activity_lock_screen_message">Cihazınızın biyometrik veya şifre doğrulama hizmetlerini kullanarak uygulamaya erişimin kilidini açın. Uygulamaya erişim kilitliyken de gelen aramaları cevaplayabilir ve bildirimler alabilirsiniz.</string>
+    <string name="privacy_activity_lock_screen_not_available">Bu seçenek için Android > 5.0 sürümü gerekir</string>
+    <string name="privacy_activity_lock_screen_timeout">Erişim kilidi zaman aşımı</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Anında</string>
+    <string name="privacy_activity_lock_screen_title">Erişim kilidi</string>
+    <string name="privacy_activity_title">Gizlilik</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Profil Ekle</string>
+    <string name="profile_fragment_create_profile">Profil oluştur</string>
+    <string name="profile_fragment_default_action">Etkinleştirme</string>
+    <string name="profile_fragment_default_profile_title">Aktif profil</string>
+    <string name="profile_fragment_identity_title">Profiller</string>
+    <string name="profile_fragment_message">Bu profil, kişilerinizi kontrolünüz altında sizinle özel bir ilişki kurmaya davet etmenize olanak tanır.</string>
+    <string name="profile_fragment_twincode_title">Davet kodu</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Proxy Ekle</string>
+    <string name="proxy_activity_add_placeholder">Bir proxy URL’sini yapıştırın veya yazın</string>
+    <string name="proxy_activity_already_use">Bu proxy, uygulamanızda zaten yapılandırılmış durumda.</string>
+    <string name="proxy_activity_enable">Proxy Kullan</string>
+    <string name="proxy_activity_format">Geçerli proxy URL biçimleri:</string>
+    <string name="proxy_activity_invalid_format">Geçersiz URL biçimi</string>
+    <string name="proxy_activity_limit">İzin verilen proxy sayısı sınırına (%1$d) ulaştınız. Yeni bir proxy eklemek için önce birini kaldırmanız gerekir.</string>
+    <string name="proxy_activity_list">Proxy’lerim</string>
+    <string name="proxy_activity_list_information">Aşağıdaki listeden bir proxy kullanın, ancak uygulama proxy olmadan servise bağlanamıyorsa.</string>
+    <string name="proxy_activity_onboarding">Ülkenizde uygulamanın sinyal sunucularına erişim engellendiğinde, proxy’ler birçok durumda bu engellemeleri aşabilir ve özel olarak iletişim kurmanıza olanak tanır. Uygulama içi proxy’lere ek olarak, kendi proxy’nizi oluşturabilir veya başkası tarafından oluşturulan bir proxy’yi kullanabilirsiniz. Proxy’ler hiçbir koşulda paylaşılan içeriğe erişemez.</string>
+    <string name="proxy_activity_information">Yalnızca standart Wi-Fi veya hücresel ağlardan hizmete bağlanamıyorsanız proxy kullanın.</string>
+    <string name="proxy_activity_share">Bu proxy\'yi otomatik olarak yapılandırmak için cihazınızda twinme ile %1$s bağlantısını açın.</string>
+    <string name="proxy_activity_title">Proxy</string>
+    <string name="proxy_activity_url">Bu proxy’nin URL’sini kullanmak istiyor musunuz?</string>
+    <string name="proxy_activity_warning">Uyarı! Bu proxy’nin URL’si, uygulamanın hizmetine bağlanmanıza izin vermiyor.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">Ändra behörigheter</string>
+    <string name="quality_of_service_activity_enable_notifications">Bildirimleri etkinleştir</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Bu izinler olmadan mesajların hedeflerine ulaşması çok uzun zaman alabilir.</string>
+    <string name="quality_of_service_activity_notification_description">Tillåt appen att köras i bakgrunden</string>
+    <string name="quality_of_service_activity_notification_title">Är meddelandeutbytet för långsamt?</string>
+    <string name="quality_of_service_activity_settings">Sistem ayarlarında uygulama izinlerini değiştirin.</string>
+    <string name="quality_of_service_activity_step1_message">Şifreli mesajlar, içerik dağıtım sunucuları olmadan, "peer-to-peer" yaklaşımı kullanılarak gerçek zamanlı olarak doğrudan cihazlar arasında değiş tokuş edilir. Bu, bulutta iz olmamasını sağlar ve benzersiz gizlilik koruması sağlar.</string>
+    <string name="quality_of_service_activity_step2_message">İyi bir hizmet kalitesi sağlamak için cihazınızı, uygulamanın arka planda bildirim almasına izin verecek ve pil optimizasyonlarından hariç tutacak şekilde yapılandırın.</string>
+    <string name="quality_of_service_activity_step3_message">İşletim sisteminin öncelik vermesi ve beklenmedik bir şekilde sonlandırmaması için uygulamayı sık sık kullanın. \n\nKişilerinizi de bu konuda bilgilendirmeyi unutmayın!</string>
+    <string name="quality_of_service_activity_warning_background_data">Uygulamanın arka planda mobil verileri kullanmasına izin verin.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Uygulamanın anlık bildirimler almasına izin verin.</string>
+    <string name="quality_of_service_activity_warning_run_background">Uygulamanın arka planda çalışmasına izin verin.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">Yönetici olarak tanımla</string>
+    <string name="room_members_activity_delete_message">Bu üyeyi kaldırmayı onaylayın</string>
+    <string name="room_members_activity_moderators_title">Moderatör</string>
+    <string name="room_members_activity_only_admin_message">Benzersiz yönetici kaldırılamaz.</string>
+    <string name="room_members_activity_owner_title">Sahip</string>
+    <string name="room_members_activity_participants_title">Katılımcılar</string>
+    <string name="room_members_activity_remove_admin_title">Yönetici olarak kaldır</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">Bir davet bağlantısı girin veya yapıştırın</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">Hizmet bağlantınızın durumunu kontrol edin</string>
+    <string name="settings_advanced_activity_status_connection_title">Bağlantı Durumu</string>
+    <string name="settings_advanced_activity_title">Gelişmiş Ayarlar</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Alıcıların içeriğinizi kopyalamasına / kaydetmesine / paylaşmasına izin verin</string>
+    <string name="settings_activity_allow_copy_file_title">Herhangi bir dosya türü</string>
+    <string name="settings_activity_allow_copy_text_title">Metin mesajları</string>
+    <string name="settings_activity_application_notifications">Uygulama bildirimleri</string>
+    <string name="settings_activity_audio_call_category_title">Sesli aramalar</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Zil sesi adı</string>
+    <string name="settings_activity_audio_call_notification_title">Zil sesi</string>
+    <string name="settings_activity_audio_call_vibration_title">Viber</string>
+    <string name="settings_activity_authorization_title">izinler</string>
+    <string name="settings_activity_call_item_menu_all">Tüm çağrılar</string>
+    <string name="settings_activity_chat_category_title">Mesajlar</string>
+    <string name="settings_activity_chat_ringtone_title">Ses adı</string>
+    <string name="settings_activity_chat_title">Ses</string>
+    <string name="settings_activity_chat_vibration_title">Viber</string>
+    <string name="settings_activity_content_information">Upplösning av medieinnehåll som skickas i en konversation: hög upplösning kräver mer data och därför längre sändningstid.</string>
+    <string name="settings_activity_content_title">Media</string>
+    <string name="settings_activity_default_directory_title">Dosyaları kaydetmek için varsayılan dizin</string>
+    <string name="settings_activity_default_sound">Varsayılan</string>
+    <string name="settings_activity_default_value_message">Bu parametreler, uygulama düzeyinde varsayılanlar olarak kullanılır.</string>
+    <string name="settings_activity_display_call_menu_missed">Yalnızca cevapsız çağrılar</string>
+    <string name="settings_activity_display_call_menu_none">Çağrı yok</string>
+    <string name="settings_activity_display_call_none">Hiçbiri</string>
+    <string name="settings_activity_display_call_title">Konuşmalarda çağrı bildirimlerini göster</string>
+    <string name="settings_activity_display_notification_content_title">Mesaj içeriğini göster</string>
+    <string name="settings_activity_display_notification_like_title">Mesajlara tepkiler</string>
+    <string name="settings_activity_display_notification_sender_title">Mesaj göndereni görüntüle</string>
+    <string name="settings_activity_ephemeral_message">Gönderilen mesajları otomatik olarak sil</string>
+    <string name="settings_activity_ephemeral_section_title">ÖMÜR</string>
+    <string name="settings_activity_ephemeral_title">Kaybolan mesaj</string>
+    <string name="settings_activity_image_title">Fotoğraf</string>
+    <string name="settings_activity_message_properties_title">Mesaj özellikleri</string>
+    <string name="settings_activity_reset_default_value">Varsayılan ayarlara sıfırla</string>
+    <string name="settings_activity_reset_preferences_button_title">Varsayılanlara sıfırla</string>
+    <string name="settings_activity_reset_preferences_message">Bildirim ayarlarını uygulama varsayılanlarına sıfırla.</string>
+    <string name="settings_activity_reset_preferences_title">Tercihleri sıfırla</string>
+    <string name="settings_activity_permissions_title">İZİNLER</string>
+    <string name="settings_activity_silent_sound">Sessiz</string>
+    <string name="settings_activity_sound_enabled_title">SES BİLDİRİMLERİ</string>
+    <string name="settings_activity_system_notifications_title">Sistem bildirimleri</string>
+    <string name="settings_activity_system_settings_title">Sistem ayarları</string>
+    <string name="settings_activity_video_call_category_title">Görüntülü aramalar</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Zil sesi adı</string>
+    <string name="settings_activity_video_call_notification_title">Zil sesi</string>
+    <string name="settings_activity_video_call_vibration_title">Viber</string>
+    <string name="settings_activity_welcome_screen_category_title">HOŞ GELDİNİZ</string>
+    <string name="settings_activity_welcome_screen_summary">Hoş geldin ekranlarını göster</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">Katılımcıların diğer katılımcıları kişisel kişiler olarak davet etmesine izin ver</string>
+    <string name="settings_room_activity_allow_invite_contact">Katılımcıların kişilerini davet etmesine izin ver</string>
+    <string name="settings_room_activity_conference_notifications_inform">İlk giriş/son çıkış</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Tüm girişler/çıkışlar</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Sessiz</string>
+    <string name="settings_room_activity_display_members">Üyeleri göster</string>
+    <string name="settings_room_activity_room_type_channel">Kanal - sadece tek yön</string>
+    <string name="settings_room_activity_room_type_channel_information">Yalnızca yöneticiler/moderatörler mesaj gönderebilir</string>
+    <string name="settings_room_activity_room_type_feedback">Kanal - geri bildirim ile</string>
+    <string name="settings_room_activity_room_type_feedback_information">Katılımcıların geri bildirimi yalnızca yöneticiler/moderatörler tarafından görülür</string>
+    <string name="settings_room_activity_room_type_forum">Forum</string>
+    <string name="settings_room_activity_room_type_forum_information">Katılımcılar, herkesin gördüğü mesajları gönderebilir</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Kişiler</string>
+    <string name="share_activity_group_list">Gruplar</string>
+    <string name="share_activity_title">Hisse</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Click-to-call kodu</string>
+    <string name="show_call_activity_information_code">Harici aramaları almak için bu kodu paylaşın.</string>
+    <string name="show_call_activity_schedule_call">Zamanlanmış çağrı</string>
+    <string name="show_call_activity_schedule_from">%1$s tarihinden itibaren</string>
+    <string name="show_call_activity_schedule_from_to">%1$s - %2$s - %3$s arası</string>
+    <string name="show_call_activity_schedule_message">Başka bir yerde tanımlanan tarih ve saat için planlanmış çağrı.</string>
+    <string name="show_call_activity_schedule_to">%1$s’a kadar</string>
+    <string name="show_call_activity_settings_call">Çağrı tipi</string>
+    <string name="show_call_activity_settings_group_calls">Grup görüşmesi</string>
+    <string name="show_call_activity_settings_limited">Planlanan</string>
+    <string name="show_call_activity_settings_start">Başlangıç</string>
+    <string name="show_call_activity_settings_end">Son</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Ses</string>
+    <string name="show_contact_activity_chat">Sohbet</string>
+    <string name="show_contact_activity_export_contents">İçeriği dışa aktar</string>
+    <string name="show_contact_activity_history_title">Tarih</string>
+    <string name="show_contact_activity_identity_title">Beni şöyle biliyor</string>
+    <string name="show_contact_activity_last_calls">Son çağrılar</string>
+    <string name="show_contact_activity_cleanup">Temizlik</string>
+    <string name="show_contact_activity_pending">Devam etmekte</string>
+    <string name="show_contact_activity_pending_message">Bu ilişki kurulma aşamasındadır. Lütfen bekleyin.</string>
+    <string name="show_contact_activity_revoked">Silindi</string>
+    <string name="show_contact_activity_settings_coach_mark">Sizinle bu ilişkide irtibat kişinizin ne yapmasına izin verildiğini tanımlayın.</string>
+    <string name="show_contact_activity_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Üye ekle</string>
+    <string name="show_group_activity_invitation_list">Bekleyen davetiyeler: %1$d</string>
+    <string name="show_group_activity_leave">Gruptan ayrıl</string>
+    <string name="show_group_activity_leave_confirm_message">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
+    <string name="show_group_activity_leave_message">Bu gruptan ayrılacaksınız ve artık konuşmalarına erişemeyeceksiniz.</string>
+    <string name="show_group_activity_member_list">Üye listesi (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">Bu grubu silmek istediğinizden emin misiniz?</string>
+    <string name="show_group_activity_remove_message">Bu grup tüm üyelerinden silinecek ve konuşmaları silinecek.</string>
+    <string name="show_group_activity_title">Grup</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Yönetim arayüzü</string>
+    <string name="show_room_activity_invite_participants">Katılımcıları davet edin</string>
+    <string name="show_room_activity_room_title">Room</string>
+    
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Resim</string>
+    <string name="space_appearance_activity_background_message">Konuşmaların arka planını bir renk veya resimle özelleştirin.</string>
+    <string name="space_appearance_activity_background_text_title">Metin</string>
+    <string name="space_appearance_activity_background_title">Arka fon</string>
+    <string name="space_appearance_activity_container_background_message">Gönderilmiş bir mesajın arka planı</string>
+    <string name="space_appearance_activity_container_background_peer_message">Alınan bir mesajın arka planı</string>
+    <string name="space_appearance_activity_container_border_message">Gönderilmiş bir mesajın kenarlığı</string>
+    <string name="space_appearance_activity_container_border_peer_message">Alınan bir mesajın kenarlığı</string>
+    <string name="space_appearance_activity_container_text_message">Gönderilmiş bir mesajın metni</string>
+    <string name="space_appearance_activity_container_text_peer_message">Alınan bir mesajın metni</string>
+    <string name="space_appearance_activity_container_title">Kabarcıklar</string>
+    <string name="space_appearance_activity_default_value">Varsayılan değer</string>
+    <string name="space_appearance_activity_general_title">Genel</string>
+    <string name="space_appearance_activity_menu_choose_color">Varsayılan renkler</string>
+    <string name="space_appearance_activity_menu_enter_color">Renk kodu</string>
+    <string name="space_appearance_activity_opacity">Opaklık</string>
+    <string name="space_appearance_activity_preview_message">Bale ayakkabılarımı unuttum… Yanınızda getirir misiniz lütfen?😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Selam tatlım!</string>
+    <string name="space_appearance_activity_preview_title">Ön izleme</string>
+    <string name="space_appearance_activity_theme">Tema</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Bir Space, farklı kişiliklerinizin, en gizli olanlar da dahil olmak üzere birden fazla sosyal çevrenizle buluştuğu yerdir.</string>
+    <string name="spaces_activity_sample_business">İşletme</string>
+    <string name="spaces_activity_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_activity_sample_family">Aile</string>
+    <string name="spaces_activity_sample_family_name">Baba</string>
+    <string name="spaces_activity_sample_friends">Arkadaşlar</string>
+    <string name="spaces_activity_sample_friends_name">Johnny</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Bir hata meydana geldi. Lütfen tekrar deneyin.</string>
+    <string name="streaming_audio_activity_no_music_message">Medya paylaşımı</string>
+    <string name="streaming_audio_activity_no_music_title">Müzik bulunamadı 🙁</string>
+    <string name="streaming_audio_activity_title">Medya paylaşımı</string>
+    <string name="streaming_audio_activity_unsupported_message">Bu ses formatı %1$s adlı kişinin cihazı tarafından desteklenmiyor.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Gizli reklam</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Duyuru</string>
+    <string name="template_click_to_call_activity_template_help">Yardım</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Yardım</string>
+    <string name="template_click_to_call_activity_template_meeting">Toplantı</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Toplantı</string>
+    <string name="template_click_to_call_activity_template_video_bell">Görüntülü kapı zili</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Kapı Zili</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">İsim (Dr John Doe, Bayan Smith,…)</string>
+    <string name="template_space_activity_template_business_profile">Bayan Samantha Smith</string>
+    <string name="template_space_activity_template_family_placeholder">İsim (Baba, Anne,…)</string>
+    <string name="template_space_activity_template_family_profile">Anne</string>
+    <string name="template_space_activity_template_friends_placeholder">İsim (Johny, Sam,…)</string>
+    <string name="template_space_activity_template_friends_profile">Sam</string>
+    <string name="template_space_activity_template_other">Diğer</string>
+    <string name="template_space_activity_template_other_placeholder">İsim (Baba, Anne, Johny, Dr John Doe,…)</string>
+    <string name="template_space_activity_template_title">Şablonlar</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">Yakınınızdaki arkadaşınızdan twinme ile davetiyenizin QR kodunu taramasını isteyin veya panoya kopyalamak için davet kodunuza dokunun.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Bu \"Çağrı Aktarımı\" kodunu silmek istediğinizden emin misiniz?</string>
+    <string name="transfert_call_activity_delete_message">Bu çağrı aktarma bağlantısı silinecek. Teyit etmek?</string>
+    <string name="transfert_call_activity_gallery_message">Mobil aramalarınızı aktarmak için bu QR Kodunu tarayın.</string>
+    <string name="transfert_call_activity_message">Bu kodu aktarın ve URL’sini cep telefonu aramalarınızı aktarmak istediğiniz tarayıcının favorilerine ekleyin.</string>
+    <string name="transfert_call_activity_reset_message">Bu eylem mevcut çağrı aktarma kodunu geçersiz kılar ve yeni bir tane oluşturur. Teyit etmek?</string>
+    <string name="transfert_call_activity_saved_message">Fotoğraf galerisine kaydedilen arama aktarma kodu.</string>
+    <string name="transfert_call_activity_share">Transfer</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Güncelleme uygun</string>
+    <string name="update_app_activity_update_message">En son uygulama güncellemesi şunları içeriyordu:</string>
+    <string name="update_app_activity_update_title">Şimdi güncelle</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Görüntülü aranıyor&#8230;</string>
+    <string name="video_call_activity_cannot_call">Görüntülü arama yapılamıyor</string>
+    <string name="video_call_activity_connecting">Bağlanıyor&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">Aramayı bitirmek istiyor musunuz?</string>
+    <string name="video_call_activity_terminate">Arama sonlandırıldı</string>
+    <string name="video_call_activity_terminate_busy">Arama sonlandırıldı: &lt;b&gt;%1$s&lt;/b&gt; meşgul</string>
+    <string name="video_call_activity_terminate_cancel">Arama &lt;b&gt;%1$s&lt;/b&gt; tarafından iptal edildi</string>
+    <string name="video_call_activity_terminate_connectivity_error">Bağlantı sorunu nedeniyle arama kesildi. Lütfen internet bağlantınızı kontrol edin.</string>
+    <string name="video_call_activity_terminate_decline">Arama &lt;b&gt;%1$s&lt;/b&gt; tarafından reddedildi</string>
+    <string name="video_call_activity_terminate_disconnected">Ağ hatası nedeniyle arama kesildi. Lütfen tekrar deneyin.</string>
+    <string name="video_call_activity_terminate_gone">Arama sonlandırıldı: &lt;b&gt;%1$s&lt;/b&gt; çevrimdışı</string>
+    <string name="video_call_activity_terminate_revoked">Arama sona erdi: &lt;b&gt;%1$s&lt;/b&gt; sizinle bu ilişkiyi sildi.</string>
+    <string name="video_call_activity_terminate_success">Aramayı sonlandıran: &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_timeout">Arama sonlandırıldı: &lt;b&gt;%1$s&lt;/b&gt; cevap vermedi</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">%1$s tuşuna basarak, okuduğumu ve kabul ettiğimi onaylıyorum:</string>
+    <string name="welcome_activity_next">Sonraki</string>
+    <string name="welcome_activity_pass">Atla</string>
+    <string name="welcome_activity_privacy_policy">Gizlilik Politikası</string>
+    <string name="welcome_activity_start">Başlat</string>
+    <string name="welcome_activity_step1_message">Mesajlaşma ve yüksek tanımlı sesli/görüntülü aramalar, tasarımı gereği gizliliği korur.</string>
+    <string name="welcome_activity_step2_message">Güvenli "peer-to-peer" iletişim: bulutta iz yok.</string>
+    <string name="welcome_activity_step3_message">Telefon numarası yok, adres defteri yok, kullanıcı kimliği yok: kiminle iletişim kurduğunuza bağlı olarak nasıl tanımlanmak istediğinizi siz seçersiniz.</string>
+    <string name="welcome_activity_terms_of_use">Kullanım Şartları</string>
+
+</resources>

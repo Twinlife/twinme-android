@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:id="@+id/call_participant_layout">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <org.twinlife.twinme.utils.PercentFrameLayout
+        android:id="@+id/call_participant_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/call_participant_avatar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_no_avatar_container_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        app:layout_aspectRatio="100%">
+
+        <View
+            android:id="@+id/call_participant_no_avatar_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            app:layout_aspectRatio="100%" />
+
+        <TextView
+            android:id="@+id/call_participant_no_avatar_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/call_participant_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/call_participant_info_layout"
+        android:layout_width="0dp"
+        android:src="@drawable/info_item"
+        app:layout_aspectRatio="100%"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/call_participant_audio_mute_layout"
+        android:layout_width="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/remote_audio_mute"
+        app:layout_aspectRatio="100%"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/call_participant_pause_layout"
+        android:layout_width="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/remote_pause"
+        app:layout_aspectRatio="100%"
+        android:visibility="gone" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_switch_camera_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        app:layout_aspectRatio="100%"
+        android:visibility="gone">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_participant_switch_camera_background_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="100%" />
+
+        <ImageView
+            android:id="@+id/call_participant_switch_camera_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/turn_action_call"
+            app:layout_aspectRatio="100%"
+            app:tint="#000000" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_cancel_view"
+        android:layout_width="0dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/call_participant_cancel_rounded_view"
+            android:scaleType="fitCenter"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="100%" />
+
+        <ImageView
+            android:id="@+id/call_participant_cancel_image_view"
+            android:layout_centerInParent="true"
+            android:src="@drawable/decline_call"
+            app:layout_aspectRatio="230.77%"
+            app:layout_heightPercent="30%"
+            app:tint="#FFFFFF" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/call_participant_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:lines="1"
+            android:ellipsize="end" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_zoom_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:layout_aspectRatio="100%">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_participant_zoom_rounded_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/call_participant_zoom_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_fullscreen_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:elevation="5dp">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_participant_fullscreen_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/call_participant_map_fullscreen_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fullscreen_icon" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

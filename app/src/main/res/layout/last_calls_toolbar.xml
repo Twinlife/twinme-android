@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:minHeight="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/last_calls_tool_bar_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:clipChildren="true">
+
+        <RadioButton
+            android:id="@+id/last_calls_tool_bar_audio_radio"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segmented_control_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/last_calls_activity_audio" />
+
+        <RadioButton
+            android:id="@+id/last_calls_tool_bar_video_radio"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segmented_control_right"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/last_calls_activity_video" />
+
+    </RadioGroup>
+</androidx.appcompat.widget.Toolbar>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_peer_audio_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_audio_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_peer_audio_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_peer_audio_item_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            app:layout_aspectRatio="100%"
+            app:layout_marginStartPercent="3.47%" />
+
+        <View
+            android:id="@+id/base_item_activity_peer_audio_item_reply_view"
+            android:layout_alignTop="@+id/base_item_activity_peer_audio_item_reply_text"
+            android:layout_alignBottom="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignEnd="@+id/base_item_activity_peer_audio_item_reply_text"
+            android:layout_alignRight="@+id/base_item_activity_peer_audio_item_reply_text"
+            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view" />
+
+        <TextView
+            android:id="@+id/base_item_activity_peer_audio_item_reply_text"
+            style="@style/textAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view"
+            android:textColor="@android:color/white"
+            app:layout_marginEndPercent="15.73%" />
+
+        <View
+            android:id="@+id/base_item_activity_peer_audio_item_reply_image_content_view"
+            android:layout_alignTop="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
+            android:layout_alignBottom="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignEnd="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
+            android:layout_alignRight="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
+            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view">
+
+            <org.twinlife.twinme.utils.RoundedImageView
+                android:id="@+id/base_item_activity_peer_audio_item_reply_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_audio_item_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layoutDirection="ltr"
+            app:layout_aspectRatio="483.33%"
+            app:layout_marginStartPercent="12.8%"
+            app:layout_widthPercent="77.33%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_audio_control"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                app:layout_aspectRatio="100%"
+                app:layout_marginStartPercent="6.20%"
+                app:layout_widthPercent="12.41%">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/base_item_activity_peer_audio_control_rounded_view"
+                    android:layout_height="match_parent"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="100%" />
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/base_item_activity_peer_audio_item_play"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/base_item_activity_peer_audio_item_play_image_view"
+                        android:layout_height="0dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/audio_item_player_play"
+                        android:visibility="visible"
+                        android:scaleType="fitCenter"
+                        app:layout_heightPercent="33.33%"
+                        app:layout_aspectRatio="85.71%"
+                        app:layout_marginStartPercent="36.11%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/base_item_activity_peer_audio_item_stop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/base_item_activity_peer_audio_item_stop_image_view"
+                        android:layout_height="0dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/audio_item_player_pause"
+                        android:visibility="visible"
+                        android:scaleType="fitCenter"
+                        app:layout_aspectRatio="60%"
+                        app:layout_heightPercent="33.33%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <org.twinlife.twinme.utils.AudioTrackView
+                android:id="@+id/base_item_activity_peer_audio_item_track_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/base_item_activity_peer_audio_control"
+                android:layout_toRightOf="@id/base_item_activity_peer_audio_control"
+                app:layout_widthPercent="71.72%"
+                app:layout_heightPercent="50%"
+                app:layout_marginStartPercent="3.59%"
+                app:layout_marginTopPercent="8.33%" />
+
+            <TextView
+                android:id="@+id/base_item_activity_peer_audio_item_counter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/base_item_activity_peer_audio_control"
+                android:layout_toRightOf="@id/base_item_activity_peer_audio_control"
+                android:lines="1"
+                android:textColor="#000000"
+                app:layout_marginStartPercent="3.59%"
+                app:layout_marginBottomPercent="16.67%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_peer_audio_item_ephemeral_content_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/base_item_activity_peer_audio_item_counter"
+                app:layout_marginEndPercent="4.83%">
+
+                <org.twinlife.twinme.utils.EphemeralView
+                    android:id="@+id/base_item_activity_peer_audio_item_ephemeral_view"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/base_item_activity_peer_audio_item_annotation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/base_item_activity_peer_audio_item_layout_container"
+        android:choiceMode="singleChoice"
+        app:layout_marginStartPercent="12.8%" />
+
+    <View
+        android:id="@+id/base_item_activity_peer_audio_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

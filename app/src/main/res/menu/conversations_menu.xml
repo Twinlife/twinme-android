@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/search_action"
+        android:title=""
+        android:icon="@drawable/action_bar_search_icon"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:contentDescription="@string/application_search_hint"/>
+
+    <item
+        android:id="@+id/new_chat_action"
+        android:title=""
+        app:actionLayout="@layout/toolbar_imageview_item"
+        app:showAsAction="always"
+        android:contentDescription="@string/conversations_fragment_title"/>
+</menu>

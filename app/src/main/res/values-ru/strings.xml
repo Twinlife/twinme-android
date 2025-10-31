@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">принимать</string>
+    <string name="application_account_deleted">Ваша учетная запись была удалена, теперь вы должны удалить приложение.</string>
+    <string name="application_add_contact_no_profile">Вы должны заполнить профиль, который представляет вас, прежде чем приглашать контакт. Продолжить?</string>
+    <string name="application_all">Все</string>
+    <string name="application_appearance">Вид</string>
+    <string name="application_are_you_sure">Вы уверены?</string>
+    <string name="application_authorization_camera">Разрешить приложению доступ к камере в настройках системы.</string>
+    <string name="application_authorization_go_settings">Перейти в настройки системы</string>
+    <string name="application_authorization_microphone">Разрешить приложению доступ к микрофону в настройках системы.</string>
+    <string name="application_authorization_microphone_camera">Разрешить приложению доступ к микрофону и камере в настройках системы.</string>
+    <string name="application_authorization_title">Отсутствует авторизация доступа</string>
+    <string name="application_back">Назад</string>
+    <string name="application_camera">Камера</string>
+    <string name="application_cancel">Отмена</string>
+    <string name="application_canceled_operation">Операция отменена</string>
+    <string name="application_checking_connection">Проверка соединения</string>
+    <string name="application_color">Цвет</string>
+    <string name="application_configuration">Конфигурация</string>
+    <string name="application_confirm">Подтверждать</string>
+    <string name="application_confirm_deletion">Подтвердите удаление</string>
+    <string name="application_connected">Безопасное соединение включено.</string>
+    <string name="application_connection_status_no_network">Нет доступа в Интернет.</string>
+    <string name="application_connection_status_no_network_message">Проверьте сетевое соединение.</string>
+    <string name="application_connection_status_no_services">Нет доступа к сервису.</string>
+    <string name="application_connection_status_no_services_message">Попробуйте использовать VPN.</string>
+    <string name="application_contact_not_found">Этот контакт удалил эту связь с вами и больше недоступен.</string>
+    <string name="application_continue_without_premium_services">Продолжить без премиальных услуг</string>
+    <string name="application_create_group_no_profile">Вы должны заполнить профиль, который представляет вас в этой группе. Продолжить?</string>
+    <string name="application_database_error">Ошибка в базе данных</string>
+    <string name="application_decline">Отклонить</string>
+    <string name="application_default">По умолчанию</string>
+    <string name="application_delete">удалить</string>
+    <string name="application_delete_message">Вы уверены, что хотите его удалить?</string>
+    <string name="application_denied_permissions">Требуемые разрешения не предоставлены</string>
+    <string name="application_description">Описание</string>
+    <string name="application_display_all">Показать все</string>
+    <string name="application_do_not_display">Больше не отображать</string>
+    <string name="application_edit">Правка</string>
+    <string name="application_error_file_not_found">Файл не найден.</string>
+    <string name="application_error_media_not_supported">Этот формат изображения/видео не поддерживается приложением.</string>
+    <string name="application_error_no_storage_space">Недостаточно места для хранения</string>
+    <string name="application_group_limit_reached">Максимальное количество (%1$d) членов группы превышено.</string>
+    <string name="application_group_not_found">Вы удалены из группы</string>
+    <string name="application_items_selected">Выбрано %1$d элементов</string>
+    <string name="application_later">Потом</string>
+    <string name="application_low_usage_message">Внимание, если вы используете приложение недостаточно часто, ОС может не разбудить его для обмена сообщениями!</string>
+    <string name="application_one_item_selected">1 элемент выбран</string>
+    <string name="application_migration_no_storage_space">На вашем устройстве недостаточно места для завершения миграции. Закройте приложение, освободите место и перезапустите приложение, чтобы завершить обновление.</string>
+    <string name="application_migration_no_storage_space_message">На одном из двух устройств недостаточно места на диске. Освободите место на этом устройстве перед повторным запуском миграции.</string>
+    <string name="application_name_hint">Название</string>
+    <string name="application_network_connecting">Подключение к сервису twinme</string>
+    <string name="application_network_connectivity">Есть подключение к сети</string>
+    <string name="application_network_status_airplane_message">Режим полета включен.</string>
+    <string name="application_network_status_airplane_resolution">Пожалуйста, отключите режим полета и подключитесь к Wi-Fi или мобильной сети.</string>
+    <string name="application_network_status_connected_no_internet">Нет доступа к сервису twinme.</string>
+    <string name="application_network_status_connected_resolution">Попробуйте подключиться к другой сети.</string>
+    <string name="application_network_status_connection_timeout">Не удается установить подключение к интернету.</string>
+    <string name="application_network_status_no_internet">Отсутствует подключение к сети.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi выключен.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi отключен, и отсутствует подключение к мобильному интернету.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Пожалуйста, включите Wi-Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Пожалуйста, включите Wi-Fi или активируйте мобильный доступ в интернет.</string>
+    <string name="application_new_feature">Новинка!</string>
+    <string name="application_no">Нет</string>
+    <string name="application_no_network_connectivity">Нет подключения к сети</string>
+    <string name="application_no_service">Нет сервиса</string>
+    <string name="application_not_authorized_operation">Недопустимая операция</string>
+    <string name="application_not_authorized_operation_by_your_contact">Операция не разрешена вашим контактным лицом.</string>
+    <string name="application_not_connected">Выполняется безопасное соединение…</string>
+    <string name="application_not_signed_in">Нет подключения к сервису twinme</string>
+    <string name="application_now">Сейчас</string>
+    <string name="application_ok">OK</string>
+    <string name="application_operation_failure">Не удалось выполнить операцию</string>
+    <string name="application_operation_irreversible">Эта операция необратима</string>
+    <string name="application_permission_camera">Разрешение на доступ к камере требуется, чтобы сделать новое фото или видео.</string>
+    <string name="application_permission_scan_code">Разрешение на доступ к камере необходимо для сканирования QR-кода.</string>
+    <string name="application_photo_gallery">Фотоальбомы</string>
+    <string name="application_profile">Профиль</string>
+    <string name="application_profile_avatar_not_defined">Вам нужно выбрать изображение, которое представляет вас контактам, которых вы приглашаете через этот профиль.</string>
+    <string name="application_profile_name_not_defined">Вам необходимо указать имя, которое представляет вас контактам, которых вы приглашаете из этого профиля.</string>
+    <string name="application_remove">удалять</string>
+    <string name="application_save">Сохранить</string>
+    <string name="application_search_hint">Поиск</string>
+    <string name="application_select">Выбирать</string>
+    <string name="application_select_application">Выберите приложение</string>
+    <string name="application_select_more">Выберите больше…</string>
+    <string name="application_server_timeout">Время ожидания ответа от сервера истекло</string>
+    <string name="application_size_unit">МБ</string>
+    <string name="application_theme">Тема</string>
+    <string name="application_timeout">Задержка истечения срока</string>
+    <string name="application_timeout_day">1 день</string>
+    <string name="application_timeout_hour">1 час</string>
+    <string name="application_timeout_hours">%1$d часов</string>
+    <string name="application_timeout_minute">1 минута</string>
+    <string name="application_timeout_minutes">%1$d минут</string>
+    <string name="application_timeout_month">1 месяц</string>
+    <string name="application_timeout_seconds">%1$d секунд</string>
+    <string name="application_timeout_week">1 неделя</string>
+    <string name="application_unknown_name">Неизвестно</string>
+    <string name="application_upgrade">Обновление twinme</string>
+    <string name="application_webrtc_failure">Ошибка WebRTC</string>
+    <string name="application_wrong_configuration">Некорректная конфигурация</string>
+    <string name="application_yes">Да</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Код приложения</string>
+    <string name="about_activity_information">Информация</string>
+    <string name="about_activity_legal">Юридические Уведомления</string>
+    <string name="about_activity_libraries">Библиотеки</string>
+    <string name="about_activity_message">twinme представляет собой защищенный сервис чата и голосовых/видеозвонков, не использующий доступ к личной информации.\n\ntwinme основан на WebRTC, новом стандарте защищенного (end-to-end шифрованием) мультимедиа-общения в сети.</string>
+    <string name="about_activity_open_source_information">Исходный код приложения доступен как Open Source на GitHub по лицензии AGPL-3.0.</string>
+    <string name="about_activity_open_sources_licences">Лицензии Open Source</string>
+    <string name="about_activity_premium_services">Услуги премиум-класса</string>
+    <string name="about_activity_privacy_policy">Политика конфиденциальности</string>
+    <string name="about_activity_quality_of_service">Качество обслуживания</string>
+    <string name="about_activity_terms_of_use">Условия обслуживания</string>
+    <string name="about_activity_version">Версия</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">Это приглашение было удалено</string>
+    <string name="accept_group_invitation_activity_in_progress">Ожидание членства</string>
+    <string name="accept_group_invitation_activity_message">%1$s приглашает вас присоединиться к группе</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">Приглашение передается.</string>
+    <string name="accept_invitation_activity_check_connection">Проверьте подключение к Интернету.</string>
+    <string name="accept_invitation_activity_existing_contact_message">У вас уже есть отношения с этим контактом. Вы хотите создать новый?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Неверные контактные данные</string>
+    <string name="accept_invitation_activity_local_twincode">Вы не можете установить отношения с самим собой в рамках одного аккаунта.</string>
+    <string name="accept_invitation_activity_message">%1$s хочет связаться с вами</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">Содержание разговоров</string>
+    <string name="account_activity_delete_account">Ваша учетная запись вместе со всеми связанными с ней данными будет безвозвратно удалена. Подтверждать?</string>
+    <string name="account_activity_delete_account_confirmation">Вы действительно уверены, что хотите удалить свой аккаунт?</string>
+    <string name="account_activity_export_content">Экспорт на внешний носитель</string>
+    <string name="account_activity_message_first_part">Новая учетная запись создается при первой установке приложения, после переустановки приложения, перезагрузки устройства или удаления текущей учетной записи.</string>
+    <string name="account_activity_message_second_part">Никаких следов предыдущей учетной записи и данных не остается, поэтому вам придется повторно пригласить свои контакты.</string>
+    <string name="account_activity_migration_message">Служба переноса учетной записи доступна для переноса вашей учетной записи со всеми связанными данными (контактами, сообщениями, группами и т. Д.) С одного устройства Android на другое в режиме реального времени. Таким образом, вы можете переключать учетные записи между старым устройством и новым.</string>
+    <string name="account_activity_migration_start_from_another_device">С другого устройства</string>
+    <string name="account_activity_migration_start_from_current_device">С моего устройства</string>
+    <string name="account_activity_migration_title">Перенос аккаунта</string>
+    <string name="account_activity_title">Учетная запись</string>
+    <string name="account_activity_transfer_between_devices">Передача между устройствами</string>
+    <string name="account_activity_transfer_from_another_device">Передача с другого устройства</string>
+    <string name="account_activity_transfer_from_device">Передача с этого устройства</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Закройте приложение и перезапустите его, чтобы получить доступ к вашим данным.</string>
+    <string name="account_migration_activity_close_message">Закройте приложение и перезапустите его, чтобы получить доступ к новым данным.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Вы уверены, что хотите отменить перенос?</string>
+    <string name="account_migration_activity_network_message">Проверьте ваше сетевое соединение</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Недостаточно места для файлов</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Недостаточно места для загрузки базы данных</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Недостаточно места для загрузки базы данных</string>
+    <string name="account_migration_activity_state_canceled">Перенос отменен</string>
+    <string name="account_migration_activity_state_negotiate">Ожидание</string>
+    <string name="account_migration_activity_state_list_files">Листинг файлов</string>
+    <string name="account_migration_activity_state_send_account">Отправка аккаунта</string>
+    <string name="account_migration_activity_state_send_database">Отправка базы данных</string>
+    <string name="account_migration_activity_state_send_files">Отправка файлов</string>
+    <string name="account_migration_activity_state_send_settings">Отправка настроек приложения</string>
+    <string name="account_migration_activity_state_terminate">Перенос почти завершен.</string>
+    <string name="account_migration_activity_state_wait_account">Ожидание другой учетной записи</string>
+    <string name="account_migration_activity_state_wait_connect">Ожидание переподключения</string>
+    <string name="account_migration_activity_state_wait_files">Ожидает получения файлов и базы данных.</string>
+    <string name="account_migration_activity_start">Начать миграцию</string>
+    <string name="account_migration_activity_stop">Остановить миграцию</string>
+    <string name="account_migration_activity_success_message">Перенос успешно завершен</string>
+    <string name="account_migration_activity_transfer_in_progress">Идет передача данных</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Отобразите этот экран на каждом устройстве, и одно будет сканировать QR-код другого.</string>
+    <string name="account_migration_scanner_activity_message_older_version">На этом устройстве используется старая несовместимая версия ОС, что приведет к потере всех связей на целевом устройстве во время передачи. Вы все еще хотите продолжить перенос?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">На целевом устройстве используется старая несовместимая версия ОС, что приведет к потере всех ваших связей во время передачи. Вы все еще хотите продолжить перенос?</string>
+    <string name="account_migration_scanner_activity_scan_title">Сканирование</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Чтобы запустить миграцию, отсканируйте этот QR-код с другого устройства.</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Сканируйте QR-код, отображаемый в разделе «Учетная запись / Передача с другого устройства» бокового меню другого устройства.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Остановить сканирование</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">Добавить участника к этому вызову</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">Импорт из галереи</string>
+    <string name="add_contact_activity_in_person_subtitle">Пригласить пользователя поблизости</string>
+    <string name="add_contact_activity_in_person_title">Лично</string>
+    <string name="add_contact_activity_invitation_code_title">Мини-код</string>
+    <string name="add_contact_activity_invite">Приглашать</string>
+    <string name="add_contact_activity_invite_message">Перейдите по этой ссылке %1$s в twinme на вашем мобильном устройстве, чтобы лично связаться с “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Приглашение twinme</string>
+    <string name="add_contact_activity_message">Попросите своего друга рядом с вами отсканировать ваш QR-код с помощью twinme или нажмите кнопку "Сканировать", чтобы отсканировать код вашего друга.</string>
+    <string name="add_contact_activity_onboarding_message">twinme не знает ваших друзей и не может их обнаружить. Вы должны пригласить их лично, с помощью twinme, когда они рядом с вами, или отправив им приглашение другим способом.</string>
+    <string name="add_contact_activity_scan_code">Сканировать пригласительный QR-код</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Эта ссылка повреждена.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Эта ссылка неверна.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Эта ссылка не управляется приложением.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Эта связь удалена.</string>
+    <string name="add_contact_activity_scan_message_call_link">Эта ссылка соответствует кнопке «Click-to-call».</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Эта ссылка соответствует контактному приглашению</string>
+    <string name="add_contact_activity_scan_message_migration_link">Эта ссылка соответствует миграции учетной записи</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Эта ссылка соответствует переводу вызова</string>
+    <string name="add_contact_activity_scan_title">Сканировать</string>
+    <string name="add_contact_activity_social_subtitle">сообщение, почта, социальная сеть</string>
+    <string name="add_contact_activity_social_title">Отправить код через приложение</string>
+    <string name="add_contact_activity_title">Приглашение</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Добавить</string>
+    <string name="add_group_member_activity_title">Добавить участников</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Приветствие</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Вызов&#8230;</string>
+    <string name="audio_call_activity_cannot_call">Невозможно выполнить голосовое соединение</string>
+    <string name="audio_call_activity_connecting">Подключение&#8230;</string>
+    <string name="audio_call_activity_hangup">Прервать</string>
+    <string name="audio_call_activity_hangup_confirmation">Вы хотите прервать вызов?</string>
+    <string name="audio_call_activity_terminate">Вызов завершен</string>
+    <string name="audio_call_activity_terminate_busy">Вызов завершен: &lt;b&gt;%1$s&lt;/b&gt; занят</string>
+    <string name="audio_call_activity_terminate_cancel">Вызов прерван &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Вызов завершен: ошибка сети</string>
+    <string name="audio_call_activity_terminate_decline">Вызов отклонен &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_gone">Вызов завершен: &lt;b&gt;%1$s&lt;/b&gt; не в сети</string>
+    <string name="audio_call_activity_terminate_not_authorized">Ваш контакт не предоставил разрешения, необходимые для вызова (например, микрофон, камера).</string>
+    <string name="audio_call_activity_terminate_revoked">Вызов завершён: &lt;b&gt;%1$s&lt;/b&gt; удалил эту связь с вами.</string>
+    <string name="audio_call_activity_terminate_success">Вызов завершен &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_timeout">Вызов завершен: &lt;b&gt;%1$s&lt;/b&gt; не отвечает</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">Ваше отношение с %1$s теперь сертифицировано.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Подтвердите, отсканировав QR-код</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Подтвердите с помощью видеозвонка</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s должен разрешить видеовызовы, чтобы иметь возможность подтвердить связь с помощью видеовызова.</string>
+    <string name="authentified_relation_activity_level_2">Чтобы сертифицировать это отношение, вы должны отсканировать QR-код, отображаемый на устройстве %1$s.</string>
+    <string name="authentified_relation_activity_level_3">Чтобы сертифицировать это отношение, устройство %1$s должно отсканировать этот QR-код.</string>
+    <string name="authentified_relation_activity_level_4">Ваше отношение с %1$s сертифицировано.</string>
+    <string name="authentified_relation_activity_onboarding_message">«Сертифицированное» отношение гарантирует, что вы всегда общаетесь с нужным человеком, даже если сервис был скомпрометирован третьей стороной.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Убедитесь, что вы всегда общаетесь с нужным человеком!</string>
+    <string name="authentified_relation_activity_relation_print_message">Этот отпечаток пальца должен быть идентичным на обоих устройствах.</string>
+    <string name="authentified_relation_activity_relation_print_title">Отпечаток пальца отношения</string>
+    <string name="authentified_relation_activity_start">Начать сертификацию</string>
+    <string name="authentified_relation_activity_title">Сертифицированное отношение</string>
+    <string name="authentified_relation_activity_to_be_certified_title">Удостоверить отношение</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">Все</string>
+    <string name="calls_fragment_call_again_message">Хотите перезвонить %1$s?</string>
+    <string name="calls_fragment_call_again_title">Перезвони</string>
+    <string name="calls_fragment_create_link">Создайте ссылку «click-to-call»</string>
+    <string name="calls_fragment_incoming_call">Входящий звонок</string>
+    <string name="calls_fragment_missed_call">Пропущенный звонок</string>
+    <string name="calls_fragment_missed_call_segmented_control">Пропущенный</string>
+    <string name="calls_fragment_no_call_message">Здесь перечислены пропущенные вызовы.</string>
+    <string name="calls_fragment_no_call_title">Вы еще не сделали ни одного звонка.</string>
+    <string name="calls_fragment_outgoing_call">Исходящий вызов</string>
+    <string name="calls_fragment_reset">Вы уверены, что хотите сбросить все уведомления о вызовах?</string>
+    <string name="calls_fragment_reset_title">Сброс уведомлений о вызовах</string>
+    <string name="calls_fragment_title">Вызовы</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Bluetooth аудио</string>
+    <string name="call_activity_audio_source_device">Устройство Наушники</string>
+    <string name="call_activity_audio_source_earphones">Наушники</string>
+    <string name="call_activity_audio_source_headset">Аудиогарнитура</string>
+    <string name="call_activity_audio_source_loudspeaker">Громкоговоритель</string>
+    <string name="call_activity_battery_restriction_message">Внимание! Вы должны разрешить использование батареи, когда приложение работает в фоновом режиме, в противном случае ваш микрофон может быть вырезан во время вызова.</string>
+    <string name="call_activity_camera_control">Управление камерой</string>
+    <string name="call_activity_camera_control_ask_message">Попросите %1$s разрешить вам управлять его камерой во время видеозвонка.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s хочет управлять вашей камерой во время разговора. Вы можете восстановить управление в любое время.</string>
+    <string name="call_activity_camera_control_denied">%1$s не позволяет вам управлять его/её камерой.</string>
+    <string name="call_activity_camera_control_message">Управление камерой %1$s</string>
+    <string name="call_activity_camera_control_needs_help">Нужна помощь?</string>
+    <string name="call_activity_camera_control_onboarding">Если ваш контакт разрешит это, вы можете управлять его камерой во время видеозвонка и, например, самостоятельно увеличивать масштаб. Это особенно полезно для управления камерой видеонаблюдения.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">С разрешения близкого человека вы можете управлять его камерой во время разговора, чтобы помочь ему удалённо, легко и безопасно.</string>
+    <string name="call_activity_camera_control_remotely">%1$s управляет вашей камерой удалённо.</string>
+    <string name="call_activity_camera_control_stop">Стоп</string>
+    <string name="call_activity_certify_error_message">%1$s не подтвердил слово. Сертификация связи не удалась, и вам нужно будет повторить попытку.</string>
+    <string name="call_activity_certify_onboarding_message">Видеозвонок позволяет вам идентифицировать друг друга и обмениваться ключами безопасности, связанными с сертифицированным отношением и его обменами.</string>
+    <string name="call_activity_certify_onboarding_start_message">Каждый по очереди произносит слово, отображаемое на экране, которое может проверить другой. Как только все слова будут проверены, ваши отношения с %1$s будут подтверждены.</string>
+    <string name="call_activity_certify_onboarding_title">Подтвердите свои отношения</string>
+    <string name="call_activity_certify_video_message">Звонок должен быть на видео, чтобы можно было сертифицировать связь.</string>
+    <string name="call_activity_coach_mark">Нажмите здесь, чтобы добавить участника к этому вызову</string>
+    <string name="call_activity_confirm_word">Идентично ли слово, произнесенное %1$s?</string>
+    <string name="call_activity_confirm_word_title">Проверьте слово</string>
+    <string name="call_activity_error_call_interrupted">Звонок был прерван, ошибка: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">Звонок не прошел, ошибка: %1$d.</string>
+    <string name="call_activity_max_participant_message">Достигнуто максимальное количество участников группового звонка (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">Версия приложения %1$s несовместима с групповыми звонками и нуждается в обновлении.</string>
+    <string name="call_activity_quality_message">Как бы вы это оценили?</string>
+    <string name="call_activity_quality_title">Качество звонка</string>
+    <string name="call_activity_repeat_word">%1$s сможет сравнить его с тем, что отображается на его/ее экране.</string>
+    <string name="call_activity_repeat_word_title">Произнесите слово.</string>
+    <string name="call_activity_tag_add_to_call">Пригласить контакт присоединиться к текущему звонку</string>
+    <string name="call_activity_tag_camera">Камера</string>
+    <string name="call_activity_tag_camera_activate">Активировать камеру</string>
+    <string name="call_activity_tag_camera_cut">Вырезать камеру</string>
+    <string name="call_activity_tag_camera_flip">Переверните камеру</string>
+    <string name="call_activity_tag_microphone">Микрофон</string>
+    <string name="call_activity_tag_microphone_activate">Включить микрофон</string>
+    <string name="call_activity_tag_microphone_mute">Отключить микрофон</string>
+    <string name="call_activity_tag_pause">Пауза</string>
+    <string name="call_activity_tag_send_message">Отправить сообщение</string>
+    <string name="call_activity_tag_speaker">Громкий динамик</string>
+    <string name="call_activity_tag_speaker_activate">Включить динамик</string>
+    <string name="call_activity_tag_speaker_mute">Отключить динамик</string>
+    <string name="call_activity_transfert_call_message">Текущий вызов переведен.</string>
+    <string name="call_activity_try_to_call_back">Попробуйте перезвонить.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">Камера уже используется</string>
+    <string name="capture_activity_incorrect_qrcode">Неверный twincode</string>
+    <string name="capture_activity_message">Поместите QR-код в этот прямоугольник, чтобы отсканировать его.</string>
+    <string name="capture_activity_no_camera">Камере требуется считать twincode</string>
+    <string name="capture_activity_qrcode_saved">Код приглашения сохраняется на фотографиях.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">Очистить все</string>
+    <string name="cleanup_activity_both_clean">Глобальная очистка (локальная и удаленная)</string>
+    <string name="cleanup_activity_both_clean_title">Глобальная очистка</string>
+    <string name="cleanup_activity_clean">Удалить</string>
+    <string name="cleanup_activity_conversation">Разговор с %s</string>
+    <string name="cleanup_activity_delete_confirmation_message">Удаление необратимо. Экспортируйте важное содержимое, прежде чем продолжить. Продолжить?</string>
+    <string name="cleanup_activity_error">Во время операции произошла ошибка.</string>
+    <string name="cleanup_activity_expiration">Срок действия</string>
+    <string name="cleanup_activity_free">Доступно</string>
+    <string name="cleanup_activity_info">Удаление сообщений, носителей и файлов из этого разговора не удаляет их с устройства вашего контакта, и вы не сможете этого сделать позже.</string>
+    <string name="cleanup_activity_info_both">Удаление сообщений, носителей и файлов из этого разговора также удаляет их с устройства вашего контакта.</string>
+    <string name="cleanup_activity_local_cleanup">Только локальная уборка</string>
+    <string name="cleanup_activity_local_cleanup_title">Локальная уборка</string>
+    <string name="cleanup_activity_medias_and_files">Только медиа и файлы</string>
+    <string name="cleanup_activity_medias_and_files_info">Миниатюры мультимедиа не удаляются из беседы; удаляются только исходные файлы.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Файлы, фотографии, видео и голосовые заметки, которыми обменивались в этом разговоре, будут удалены как с вашего устройства, так и с устройства вашего контакта.</string>
+    <string name="cleanup_activity_messages">Все сообщения и другое содержимое</string>
+    <string name="cleanup_activity_messages_info">Сообщения любого типа в беседе (текст, фото, видео, голос, файлы и т. д.) будут удалены из приложения.</string>
+    <string name="cleanup_activity_month">%1$d месяцев</string>
+    <string name="cleanup_activity_older_than">Старше чем</string>
+    <string name="cleanup_activity_one_year">1 год</string>
+    <string name="cleanup_activity_prior_to">До</string>
+    <string name="cleanup_activity_reset_conversation_message">Сброс этого разговора приведет к удалению всех сообщений, в том числе на устройстве вашего контакта.</string>
+    <string name="cleanup_activity_select_content">Выберите, что вы хотите удалить.</string>
+    <string name="cleanup_activity_storage_title">Дисковое пространство</string>
+    <string name="cleanup_activity_success">Операция завершена успешно.</string>
+    <string name="cleanup_activity_title">Уборка разговора</string>
+    <string name="cleanup_activity_total">Всего</string>
+    <string name="cleanup_activity_used">Использовал</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Советы</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Разрешить этому контакту позвонить вам</string>
+    <string name="contact_capabilities_activity_automatic_answering">Автоматически отвечать на входящие звонки</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Внимание: эта настройка активирует автоматический ответ на звонки от этого контакта, открывая микрофон и камеру устройства (для видеозвонков).</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Некоторые устройства могут ограничивать эту функцию.</string>
+    <string name="contact_capabilities_activity_call_settings">Настройки звонка</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Всегда</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Спрашивать при каждом звонке</string>
+    <string name="contact_capabilities_activity_camera_control_information">Разрешите этому контакту автоматически управлять вашей камерой во время видеозвонка.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Вы можете попросить собеседника, имеющего доступ к премиум-версии приложения, управлять вашей камерой во время видеозвонков.</string>
+    <string name="contact_capabilities_activity_camera_control_never">Никогда</string>
+    <string name="contact_capabilities_activity_discreet_relation">Сдержанные отношения</string>
+    <string name="contact_capabilities_activity_information_audio_call">Разрешите контакту совершать голосовые вызовы.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">Не отображает имя контакта в уведомлениях и не сохраняет звонки в истории звонков.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Установите даты/время, когда вы не хотите, чтобы вам звонили.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Запланируйте дату/время, когда вам нужно позвонить.</string>
+    <string name="contact_capabilities_activity_information_video_call">Разрешите контакту позвонить вам по видеосвязи.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Предложите кому-нибудь отсканировать ваш код приглашения или отсканируйте его...</string>
+    <string name="contacts_fragment_invite_contact_title">Пригласить контакт</string>
+    <string name="contacts_fragment_scan_contact_title">Сканируйте или введите код приглашения</string>
+    <string name="contacts_fragment_title">Контакты</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">Голосовой звонок</string>
+    <string name="conversation_activity_audio_message">Голосовое сообщение</string>
+    <string name="conversation_activity_call_missed">Пропущенный</string>
+    <string name="conversation_activity_cannot_send">Не удается отправить сообщения сразу:</string>
+    <string name="conversation_activity_cleanup_conversation">Вы удалили несколько старых сообщений.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s очистил некоторые старые сообщения.</string>
+    <string name="conversation_activity_delete_message">Ваше сообщение действительно удалено</string>
+    <string name="conversation_activity_empty_message">Скажи что-нибудь умное … или весело!</string>
+    <string name="conversation_activity_edit_message">Сообщение можно редактировать на устройстве вашего контакта, только если его приложение обновлено.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Нажмите и удерживайте стрелку отправки, чтобы удалить это сообщение из беседы через определенное время.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Версия twinme вашего контакта не является полностью функциональной.&lt;br /&gt;
+        Пожалуйста, попросите его/ее обновить twinme.</string>
+    <string name="conversation_activity_group_member_information">%1$d членов</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Отправить несанкционированное сообщение</string>
+    <string name="conversation_activity_group_one_member">1 участник</string>
+    <string name="conversation_activity_invitation_accepted">Приглашение принято</string>
+    <string name="conversation_activity_invitation_failed">Попросите вашего клиента обновить twinme</string>
+    <string name="conversation_activity_invitation_joined">Член группы</string>
+    <string name="conversation_activity_invitation_pending">Приглашение в процессе</string>
+    <string name="conversation_activity_invitation_refused">Приглашение отклонено</string>
+    <string name="conversation_activity_invitation_title">Я приглашаю вас присоединиться к группе</string>
+    <string name="conversation_activity_local_cleanup">Основное содержимое удалено локально.</string>
+    <string name="conversation_activity_manage_conversation">Управлять разговором</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Скопировано в буфер обмена!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Kопия</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Удалить</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Вперед</string>
+    <string name="conversation_activity_menu_item_view_info_title">Данные</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">Операция не разрешена отправителем</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Отвечать</string>
+    <string name="conversation_activity_menu_item_view_save_message">Сохраненный!</string>
+    <string name="conversation_activity_menu_item_view_save_title">Сохранить</string>
+    <string name="conversation_activity_menu_item_view_share_title">Поделиться</string>
+    <string name="conversation_activity_message">Наберите сообщение</string>
+    <string name="conversation_activity_photo_camera">Фотокамера</string>
+    <string name="conversation_activity_record_confirm_send_record">Нажмите снова, чтобы отправить</string>
+    <string name="conversation_activity_record_start_record">Нажмите и удерживайте для записи</string>
+    <string name="conversation_activity_record_title">Эапись</string>
+    <string name="conversation_activity_reduce_menu_lower">Стандарт</string>
+    <string name="conversation_activity_reduce_menu_minimal">Минимум</string>
+    <string name="conversation_activity_reduce_menu_original">Оригинал</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Нет изменения размера</string>
+    <string name="conversation_activity_reject_stream">Отменить</string>
+    <string name="conversation_activity_reply_to">Ответить %1$s</string>
+    <string name="conversation_activity_reset_conversation">Вы сбросил цепочку сообщений</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s сбросил цепочку сообщений</string>
+    <string name="conversation_activity_send_file_warning">Предупреждение: невозможно запретить получателю копировать/сохранять/расшаривать документ (pdf, word, ppt, excel, zip и т. д.), который можно открыть только вне приложения. Вы все еще хотите отправить его?</string>
+    <string name="conversation_activity_send_large_file_message">Этот файл большой (%1$d МБ). Желаете ли вы продолжить ?</string>
+    <string name="conversation_activity_send_menu_allow_copy">Разрешить получателю копировать/сохранять/делиться этим контентом</string>
+    <string name="conversation_activity_stream_dialog">Вы хотите принять?</string>
+    <string name="conversation_activity_unsupported_media">Неподдерживаемый формат мультимедиа</string>
+    <string name="conversation_activity_video_call">Видеозвонок</string>
+    <string name="conversation_activity_video_camera">Видеокамера</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">Док.</string>
+    <string name="conversation_files_activity_links">Ссылки</string>
+    <string name="conversation_files_activity_month">Этот месяц</string>
+    <string name="conversation_files_activity_no_files">Ваш разговор с %1$s не содержит ни одного из этих элементов.</string>
+    <string name="conversation_files_activity_title">СМИ, веб-ссылки и документы</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Фоны и цвета</string>
+    <string name="conversation_settings_activity_emoji_size">Размер эмодзи</string>
+    <string name="conversation_settings_activity_link_preview">Визуализация</string>
+    <string name="conversation_settings_activity_link_preview_message">Отображение предварительного просмотра веб-сайта.</string>
+    <string name="conversation_settings_activity_link_title">Веб ссылки</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">Сквозные зашифрованные сообщения обмениваются в одноранговой сети напрямую с устройства на устройство без промежуточного сервера распространения = никаких трассировок в облаке.</string>
+    <string name="conversations_fragment_no_result_found">Результаты по запросу «%1$s» не найдены.</string>
+    <string name="conversations_fragment_start">Начать разговор</string>
+    <string name="conversations_fragment_title">Диалоги</string>
+    <string name="conversations_fragment_you">Ты</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Этот профиль отображается для гостей, которые позвонят вам по этой ссылке «click-to-call».</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">«Click-to-call» позволяет гостям звонить вам из браузера без установки приложения.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Каждый экземпляр имеет имя, изображение и описание, представляющие тему вызова, например:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">ваша служба поддержки клиентов</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">машина, которую ты продаешь</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">профессиональный групповой звонок</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">видеодомофон для курьеров.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">«Click-to-call» имеет атрибуты, позволяющие указать, является ли он:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">аудио и/или видеозвонок</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">индивидуальный или групповой звонок</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">всегда открыт или ограничен определенной датой и временем.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">Поделитесь ссылкой «click-to-call» или QR-кодом по каналам, позволяющим охватить нужных людей, например:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">«призыв к действию» на вашем сайте</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">вставка на платформе объявлений</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">электронное письмо людям, приглашенным на групповой звонок</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">табличка на входной двери для курьеров.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Получатели сканируют QR-код и открывают ссылку в браузере на своем мобильном устройстве или ПК. Затем они смогут:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Измените имя по умолчанию (Гость), представляющее его при вызове.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Позвоните Вам, нажав кнопку «Позвонить» на веб-странице.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">После звонка они могут оставить веб-страницу открытой, чтобы вам перезвонить.</string>
+    <string name="create_external_call_activity_placeholder">Тема (Помощь, Объявление, Встреча, Дверной звонок, …)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Пригласить участников</string>
+    <string name="create_group_activity_create">Создайте</string>
+    <string name="create_group_activity_member_allow_invitation_message">Разрешить членам группы приглашать своих контактов</string>
+    <string name="create_group_activity_member_allow_invitation_title">Приглашение участников</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Разрешить участникам приглашать других участников в качестве личных контактов</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Установить личные контакты</string>
+    <string name="create_group_activity_member_allow_post_message">Разрешить членам группы отправлять сообщения</string>
+    <string name="create_group_activity_member_allow_post_title">Отправка сообщений</string>
+    <string name="create_group_activity_member_list">Список участников (%1$d)</string>
+    <string name="create_group_activity_name_hint">Название группы</string>
+    <string name="create_group_activity_title">Группа</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">И имя, и изображение необходимы вашим контактам, чтобы узнавать вас и отличать вас от других.</string>
+    <string name="create_profile_activity_message">Информация из этого профиля используется для приглашения контактов.</string>
+    <string name="create_profile_activity_onboarding_message">Введите профиль (имя и изображение), который представляет вас для ваших контактов.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Профили позволяют вам приглашать контакты для создания отношений с вами в приложении. Вы можете иметь столько Профилей (персонажей), сколько захотите, каждый из которых связан с определенным «Пространством».</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Каждый «Профиль» имеет «Имя» и «Изображение» (обязательно), которые видят приглашенные вами контакты и которые используются в качестве исходного профиля, связанного с вновь созданными отношениями в этом «Пространстве».</string>
+    <string name="create_profile_activity_onboarding_message_part_3">После создания у каждого отношения есть своя пара «Профилей», представляющих вас и ваши контакты друг другу.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">Затем вы можете изменить то, как вы хотите, чтобы вас знали для каждого из ваших контактов, для каждого отношения, независимо.</string>
+    <string name="create_profile_activity_save_message">Это имя и изображение используются для приглашения ваших контактов и инициализации ваших отношений. Вы сможете изменять и настраивать их для каждого отношения.</string>
+    <string name="create_profile_activity_welcome1">Выберите изображение профиля</string>
+    <string name="create_profile_activity_welcome2">Добро пожаловать %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">«Пространства» локальны и не видны контактам.</string>
+    <string name="create_space_activity_onboarding_message_part_1">«Пространства» помогают вам организовать ваши контакты в соответствии с тем, к какому из ваших социальных кругов они принадлежат, например. Семья, друзья, бизнес, развлечения и т. д.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Каждое «Пространство» связано с «Профилем», представляющим личность, которую вы хотите использовать при взаимодействии с контактами из круга общения этого «Пространства», например, Папа, Джонни, Доктор Джон Доу, Бэтмен и т. д.</string>
+    <string name="create_space_activity_onboarding_message_part_3">«Пространства» являются локальными для вашего приложения на вашем устройстве. Они видны только вам, а не вашим контактам или серверам службы.</string>
+    <string name="create_space_activity_onboarding_message_part_4">В «Пространстве» есть:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- «Имя», обозначающее определенный круг общения, с которым вы взаимодействуете</string>
+    <string name="create_space_activity_onboarding_message_part_6">- «Изображение», позволяющее быстро идентифицировать его в списке «Пространств»</string>
+    <string name="create_space_activity_onboarding_message_part_7">- цвет «Тема», чтобы персонализировать его внешний вид</string>
+    <string name="create_space_activity_onboarding_message_part_8">- «Настройки», которые могут быть специфичными для каждого конкретного «Пространства», тем самым переопределяя значения по умолчанию, определенные в Настройках приложения.</string>
+    <string name="create_space_activity_title">Создать Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">Имя этого профиля связано с кодом, используемым для передачи текущего вызова в браузер.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Мои трансферы</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Введите буквы «OK» ниже, чтобы подтвердить удаление учетной записи.</string>
+    <string name="deleted_account_activity_delete">Удалить учетную запись</string>
+    <string name="deleted_account_activity_warning">Внимание‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">Ваша учетная запись была удалена, а все связанные данные были уничтожены.&lt;/b&gt;
+        Вы должны закрыть приложение.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Вы уверены, что хотите удалить эту связь?</string>
+    <string name="edit_contact_activity_message">Этот контакт больше не сможет с вами связаться.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Удаление этого профиля приведет к аннулированию связанного с ним кода приглашения. Подтвердить удаление?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">Вы уверены, что хотите удалить этот код «Click-to-Call»?</string>
+    <string name="edit_external_call_activity_delete_message">Эта ссылка «Click-to-Call» больше не будет доступна.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">Редактировать профиль</string>
+    <string name="edit_profile_activity_propagating_all_contacts">всем контактам в этом Space</string>
+    <string name="edit_profile_activity_propagating_ask_message">Распространите изображение, имя или описание, которое вы только что изменили:</string>
+    <string name="edit_profile_activity_propagating_except_contacts">всем, если они не персонализированы</string>
+    <string name="edit_profile_activity_propagating_message">Вы можете распространить изменения профиля приглашения на существующие контакты или нет.</string>
+    <string name="edit_profile_activity_propagating_no_contact">никому</string>
+    <string name="edit_profile_activity_propagating_profile">Распространить изменения профиля</string>
+    <string name="edit_profile_activity_remove_active_profile">Вы не можете удалить активный профиль</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">После создания связи настоятельно рекомендуется сертифицировать ее для усиления ее безопасности.</string>
+    <string name="enter_invitation_code_activity_enter_code">Введите Мини-код</string>
+    <string name="enter_invitation_code_activity_error_message">Этот код недействителен. Возможно, он уже был использован или срок его действия истек.</string>
+    <string name="enter_invitation_code_activity_invitation_message">После создания связи не забудьте сертифицировать ее для усиления ее безопасности.</string>
+    <string name="enter_invitation_code_activity_message">Введите мини-код, предоставленный вашим контактом, чтобы создать отношения.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">Контакт дал вам 6-значный мини-код для создания связи. Этот одноразовый мини-код истекает через 24 часа после его создания.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">Содержимое разговоров будет экспортировано в ZIP-файл.</string>
+    <string name="export_activity_content_title">Содержание</string>
+    <string name="export_activity_content_to_export">Содержимое для экспорта</string>
+    <string name="export_activity_do_not_leave_screen">Не отходите от экрана во время операции экспорта.</string>
+    <string name="export_activity_export">Экспорт</string>
+    <string name="export_activity_file">файл</string>
+    <string name="export_activity_files">файлы</string>
+    <string name="export_activity_get_all_content">Выполняется получение содержимого беседы с %1$s.</string>
+    <string name="export_activity_get_one_chat">Выполняется извлечение содержания бесед.</string>
+    <string name="export_activity_images">Картинки</string>
+    <string name="export_activity_no_content_to_export">Нет содержимого для экспорта</string>
+    <string name="export_activity_one_conversation_zip_file">Содержимое беседы будет экспортировано в ZIP-файл.</string>
+    <string name="export_activity_save_location">Место нахождения</string>
+    <string name="export_activity_save_location_message">Выберите, куда экспортировать.</string>
+    <string name="export_activity_select_content">Выберите содержимое, которое вы хотите экспортировать.\nМожно экспортировать только неэпемерное содержимое, разрешенное для копирования/сохранения/совместного использования.</string>
+    <string name="export_activity_success">Экспорт успешно завершен.</string>
+    <string name="export_activity_title">Экспорт диалогов</string>
+    <string name="export_activity_videos">Видео</string>
+    <string name="export_activity_voice_messages">Голосовые сообщения</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Неустранимая ошибка, код %1$d.\nПожалуйста, перезапустите приложение и сообщите о проблеме через сообщение обратной связи, если можете. Приносим извинения за неудобства.</string>
+    <string name="fatal_error_activity_error_message">Неустранимая ошибка: %1$s&lt;br /&gt;
+        Вы должны закрыть приложение.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Контакт</string>
+    <string name="feedback_activity_gdpr_notice">Используйте эту форму для запроса доступа к данным своей учетной записи.</string>
+    <string name="feedback_activity_help">Мы ценим вашу помощь в выявлении проблем и работе с нами для их решения.</string>
+    <string name="feedback_activity_info_logs">Журнал отладки содержит только низкоуровневые технические данные о действиях и поведении приложения и НЕ раскрывает никакую вашу личную информацию.</string>
+    <string name="feedback_activity_logs">Журнал отладки</string>
+    <string name="feedback_activity_message">Сообщение</string>
+    <string name="feedback_activity_send">Отправить</string>
+    <string name="feedback_activity_send_logs">Отправить Журнал отладки</string>
+    <string name="feedback_activity_send_message">Отзыв отправлен. Спасибо.</string>
+    <string name="feedback_activity_subject">Тема</string>
+    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Это действие делает недействительным текущий код приглашения, связанный с этим профилем. Вы уверены, что хотите создать новый код?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Создать новый код приглашения</string>
+    <string name="fullscreen_qrcode_activity_save_message">Импортируйте или отсканируйте QR-код этого приглашения с помощью twinme, чтобы добавить этот контакт.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Сохранить в фотогалерее</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Авторизировать голосовые звонки</string>
+    <string name="group_capabilities_activity_information_programmed_call">Программируйте дату/время звонков</string>
+    <string name="group_capabilities_activity_information_video_call">Авторизировать видео звонки</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">Администратор группы не авторизовал это действие.</string>
+    <string name="group_member_activity_invitation_message">Пригласить %1$s в качестве личного контакта</string>
+    <string name="group_member_activity_invitation_title">Приглашение</string>
+    <string name="group_member_activity_invite_personnal_relation">Пригласить в качестве личного контакта</string>
+    <string name="group_member_activity_remove_message">Вы уверены, что хотите удалить участников из этой группы?</string>
+    <string name="group_member_activity_section_administrator">Aдминистратор</string>
+    <string name="group_member_activity_section_invitation">Приглашения</string>
+    <string name="group_member_activity_section_member">Члены</string>
+    <string name="group_member_activity_title">Участники группы</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s занят</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Вызов отменен %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Вызов отклонен на %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s не в сети</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Не разрешено звонить</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s удалил это отношение</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s не отвечает</string>
+    <string name="info_item_activity_deleted">Удалено получателем:</string>
+    <string name="info_item_activity_may_be_copied">Может быть скопировано/сохранено/передано…</string>
+    <string name="info_item_activity_may_not_be_copied">Не может быть скопировано/сохранено/передано…</string>
+    <string name="info_item_activity_reactions">Реакции</string>
+    <string name="info_item_activity_received">Получено:</string>
+    <string name="info_item_activity_seen">Просмотров:</string>
+    <string name="info_item_activity_sent">Отправлено:</string>
+    <string name="info_item_activity_updated">Изменено</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Это действие делает недействительным текущий код приглашения, связанный с этой ссылкой «click-to-call». Подтверждать?</string>
+    <string name="invitation_call_activity_generate_code_title">Создайте новый код для этой ссылки</string>
+    <string name="invitation_call_activity_invite_message">Откройте веб-адрес %1$s или отсканируйте QR-код, чтобы позвонить «%2$s».</string>
+    <string name="invitation_call_activity_message">Поделитесь этим кодом «click-to-call» с тем, кто сможет позвонить вам через Интернет или мобильное приложение.</string>
+    <string name="invitation_call_activity_save_message">Отсканируйте этот QR-код, чтобы позвонить «%1$s».</string>
+    <string name="invitation_call_activity_share">Публиковать</string>
+    <string name="invitation_call_activity_title">Внешний вызов</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Создать мини-код</string>
+    <string name="invitation_code_activity_create_code_subtitle">чтобы пригласить контакт, когда у вас нет доступа к приложению.</string>
+    <string name="invitation_code_activity_expiration">Срок действия:</string>
+    <string name="invitation_code_activity_history">Мои мини-коды</string>
+    <string name="invitation_code_activity_limit_message">Достигнуто максимальное количество активных мини-кодов. Вам необходимо подождать 24 часа, чтобы создать новые.</string>
+    <string name="invitation_code_activity_onboarding_message">Мини-коды являются одноразовыми и действительны только в течение 24 часов. Вы можете дать их своим контактам для создания связи, когда у вас нет доступа к приложению (например, без телефона).</string>
+    <string name="invitation_code_activity_success_message">Настоятельно рекомендуется сертифицировать связи, установленные с помощью мини-кода, чтобы усилить их безопасность.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Попросите друга рядом с вами отсканировать QR-код «room» с помощью twinme или нажмите код приглашения, чтобы скопировать его в буфер обмена.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Голос</string>
+    <string name="last_calls_activity_video">Видео</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">Ваша учетная запись twinme на этом устройстве будет перенесена на twinme+.</string>
+    <string name="local_account_migration_activity_message_older_version">Прежде чем начинать передачу, обязательно обновите оба устройства до последней версии приложения, чтобы не потерять все ваши связи.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">Добавить контакт</string>
+    <string name="main_activity_add_group">Создать группу</string>
+    <string name="main_activity_reset_conversation">Сброс</string>
+    <string name="main_activity_reset_conversation_message">Сброс этого разговора приведет к удалению всех сообщений, в том числе на устройстве вашего контакта. Подтверждать?</string>
+    <string name="main_activity_reset_conversation_title">Сбросить диалог</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Сброс этого разговора приведет к удалению всех сообщений с устройства каждого члена группы. Подтверждать?</string>
+    <string name="main_activity_reset_group_conversation_message">Сброс этого разговора приведет к удалению всех сообщений с вашего устройства. Подтверждать?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">Вам необходимо перейти на twinme+, чтобы использовать эту функцию. Вы сможете перенести все данные своей учетной записи.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">Вы сможете перенести все данные своей учетной записи.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme доступен как премиум-версия с еще большим количеством функций.</string>
+    <string name="migration_twinme_plus_activity_premium_title">Перейти на twinme+</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">О программе</string>
+    <string name="navigation_activity_application_settings">Настройки приложения</string>
+    <string name="navigation_activity_feedback">Отправить отзыв</string>
+    <string name="navigation_activity_getting_started">Приступая к работе</string>
+    <string name="navigation_activity_help">Помощь</string>
+    <string name="navigation_activity_profile">Профили</string>
+    <string name="navigation_activity_settings">Настройки</string>
+    <string name="navigation_activity_sign_out">Выход</string>
+    <string name="navigation_activity_sounds">Звуки</string>
+    <string name="navigation_activity_support">Служба поддержки</string>
+    <string name="navigation_activity_title">Меню</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Аудиовызов %1$s</string>
+    <string name="notification_center_audio_message">Отправил(а) вам аудиосообщение</string>
+    <string name="notification_center_audio_message_received">Новое аудио сообщение</string>
+    <string name="notification_center_cancel">Отклонить</string>
+    <string name="notification_center_cleanup_conversation">Некоторые старые сообщения были удалены.</string>
+    <string name="notification_center_deleted_contact">Контакт удалён</string>
+    <string name="notification_center_file_message">отправил вам файл</string>
+    <string name="notification_center_file_message_received">Новый файл</string>
+    <string name="notification_center_group_invitation">Отправил вам приглашение</string>
+    <string name="notification_center_group_invitation_received">Новое приглашение</string>
+    <string name="notification_center_join_group">Вы являетесь участником группы</string>
+    <string name="notification_center_message_received">Новое сообщение</string>
+    <string name="notification_center_missed_audio_call_to">Пропущенный аудиовызов %1$s</string>
+    <string name="notification_center_missed_video_call_to">Пропущенный видеовызов %1$s</string>
+    <string name="notification_center_mute">Отключить микрофон</string>
+    <string name="notification_center_new_contact">Новый контакт</string>
+    <string name="notification_center_photo_message">Отправил(а) вам фото</string>
+    <string name="notification_center_photo_message_received">Новая фотография</string>
+    <string name="notification_center_reaction">отреагировал %1$s</string>
+    <string name="notification_center_reaction_message">отреагировал на сообщение</string>
+    <string name="notification_center_reaction_message_received">Реакция на сообщение</string>
+    <string name="notification_center_reset_message">Разговор очищен</string>
+    <string name="notification_center_stop">Стоп</string>
+    <string name="notification_center_transfering_data">Идет передача сообщений…</string>
+    <string name="notification_center_unmute">Активировать микрофон</string>
+    <string name="notification_center_updated_contact_avatar">Изображение обновлено</string>
+    <string name="notification_center_updated_contact_name">Имя обновлено</string>
+    <string name="notification_center_video_call_to">Видеовызов %1$s</string>
+    <string name="notification_center_video_message">Отправил(а) вам видео</string>
+    <string name="notification_center_video_message_received">Новое видео</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Голосовой вызов</string>
+    <string name="notification_channel_contact_title">Контакты</string>
+    <string name="notification_channel_group_title">Группы</string>
+    <string name="notification_channel_message_title">Сообщения</string>
+    <string name="notification_channel_missed_title">Пропущенные звонки</string>
+    <string name="notification_channel_system_title">Другой</string>
+    <string name="notification_channel_video_title">Видеозвонки</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">Попытался(лась) вам позвонить</string>
+    <string name="notifications_fragment_item_audio_message">Отправил(а) вам аудиосообщение</string>
+    <string name="notifications_fragment_item_cleanup_message">очистил некоторые старые сообщения.</string>
+    <string name="notifications_fragment_item_deleted_contact">Контакт удалён</string>
+    <string name="notifications_fragment_item_file_message">отправил вам файл</string>
+    <string name="notifications_fragment_item_group_invitation">Отправил вам приглашение</string>
+    <string name="notifications_fragment_item_image_message">Отправил(а) вам фото</string>
+    <string name="notifications_fragment_item_join_group">Вы являетесь участником группы</string>
+    <string name="notifications_fragment_item_new_contact">Новый контакт</string>
+    <string name="notifications_fragment_item_reset_conversation">сбросил цепочку сообщений</string>
+    <string name="notifications_fragment_item_shortest_day">%1$dдн.</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$dч.</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$dмин.</string>
+    <string name="notifications_fragment_item_shortest_second">%1$dс.</string>
+    <string name="notifications_fragment_item_text_message">Отправил(а) вам сообщение</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Изображение обновлено</string>
+    <string name="notifications_fragment_item_updated_contact_name">Имя обновлено</string>
+    <string name="notifications_fragment_item_video_call">Попытался(лась) сделать видеозвонок</string>
+    <string name="notifications_fragment_item_video_message">Отправил(а) вам видео</string>
+    <string name="notifications_fragment_no_notification_message">Здесь перечислены уведомления, связанные с контактами, разговорами, звонками и т. д.</string>
+    <string name="notifications_fragment_no_notification_title">У вас нет уведомления.</string>
+    <string name="notifications_fragment_reset">Вы действительно хотите сбросить все уведомления?</string>
+    <string name="notifications_fragment_reset_title">Сбросить уведомления</string>
+    <string name="notifications_fragment_title">Уведомления</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">Шрифты символов</string>
+    <string name="personalization_activity_font_extra_large">Очень большой</string>
+    <string name="personalization_activity_font_large">большой</string>
+    <string name="personalization_activity_font_small">Маленький</string>
+    <string name="personalization_activity_haptic_feedback">Тактильная обратная связь</string>
+    <string name="personalization_activity_haptic_feedback_message">Тактильные ощущения при прикосновении.</string>
+    <string name="personalization_activity_menu_choose_color">Цвета по умолчанию</string>
+    <string name="personalization_activity_menu_enter_color">Цветовой код</string>
+    <string name="personalization_activity_mode">Цветовая схема</string>
+    <string name="personalization_activity_mode_dark">Темная</string>
+    <string name="personalization_activity_mode_light">Светлая</string>
+    <string name="personalization_activity_start_tab_information">Выберите вкладку, на которой вы хотите запустить приложение.</string>
+    <string name="personalization_activity_start_tab_title">Вкладка по умолчанию</string>
+    <string name="personalization_activity_system">Системная</string>
+    <string name="personalization_activity_title">Воплощение</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Изменение фронтальной/задней камеры</string>
+    <string name="premium_services_activity_camera_control_description_2">Увеличение/уменьшение масштаба</string>
+    <string name="premium_services_activity_camera_control_description_3">Удалённая помощь близкому человеку или клиенту</string>
+    <string name="premium_services_activity_camera_control_description_4">Управление камерой видеонаблюдения</string>
+    <string name="premium_services_activity_camera_control_subtitle">Управляйте камерой собеседника во время разговора с его разрешения</string>
+    <string name="premium_services_activity_camera_control_title">Удалённое управление камерой</string>
+    <string name="premium_services_activity_click_to_call_description_1">Создайте код «Нажми и позвони мне»</string>
+    <string name="premium_services_activity_click_to_call_description_2">Публиковать или распространять любым способом</string>
+    <string name="premium_services_activity_click_to_call_description_3">Получатели сканируют код и звонят вам</string>
+    <string name="premium_services_activity_click_to_call_description_4">Аноним без следов в облаке</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Разрешить гостям звонить вам из Интернета</string>
+    <string name="premium_services_activity_click_to_call_title">Нажмите, чтобы позвонить</string>
+    <string name="premium_services_activity_conversation_description_1">Мультимедиа, файлы, голосовые заметки, сообщения</string>
+    <string name="premium_services_activity_conversation_description_2">старше определенного периода/даты</string>
+    <string name="premium_services_activity_conversation_description_3">На один разговор или на все</string>
+    <string name="premium_services_activity_conversation_description_4">Только локально, без влияния на другой конец</string>
+    <string name="premium_services_activity_conversation_subtitle">Экспорт содержимого и освобождение места</string>
+    <string name="premium_services_activity_conversation_title">Управление беседой</string>
+    <string name="premium_services_activity_description_part1_subtitle">Прямое соединение между устройствами</string>
+    <string name="premium_services_activity_description_part1_title">HD-качество аудио/видео</string>
+    <string name="premium_services_activity_description_part2_subtitle">Нет следов в облаке</string>
+    <string name="premium_services_activity_description_part2_title">Конфиденциальность – Конфиденциальность</string>
+    <string name="premium_services_activity_description_part3_subtitle">Энергоэффективность</string>
+    <string name="premium_services_activity_description_part3_title">Экологически ответственный</string>
+    <string name="premium_services_activity_group_call_description_1">Аудио/видео высокой четкости</string>
+    <string name="premium_services_activity_group_call_description_2">Прямое соединение между устройствами</string>
+    <string name="premium_services_activity_group_call_description_3">Безопасный и конфиденциальный</string>
+    <string name="premium_services_activity_group_call_description_4">Нет следов в облаке</string>
+    <string name="premium_services_activity_group_call_subtitle">Пригласите контакты присоединиться к групповому вызову</string>
+    <string name="premium_services_activity_group_call_title">Групповые звонки</string>
+    <string name="premium_services_activity_privacy_description_1">Заблокируйте приложение с биометрической аутентификацией</string>
+    <string name="premium_services_activity_privacy_description_2">Скрыть последний экран в переключателе приложений</string>
+    <string name="premium_services_activity_privacy_description_3">Эфемерные сообщения, исчезающие через определенное время.</string>
+    <string name="premium_services_activity_privacy_description_4">Запретить контакту звонить вам</string>
+    <string name="premium_services_activity_privacy_subtitle">Управление приложением, контактами и сообщениями</string>
+    <string name="premium_services_activity_privacy_title">Больше конфиденциальности</string>
+    <string name="premium_services_activity_space_description_1">Несколько профилей с их отношениями, разговорами, историей</string>
+    <string name="premium_services_activity_space_description_2">Персонализированный внешний вид, уведомления и настройки</string>
+    <string name="premium_services_activity_space_description_3">Для семьи, друзей, коллег, бизнеса, спорта и т.д.</string>
+    <string name="premium_services_activity_space_description_4">Секретные Spaces не указаны, доступ по имени</string>
+    <string name="premium_services_activity_space_subtitle">Для каждой социальной группы, с которой вы общаетесь</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">Поделитесь своей музыкой в прямом эфире</string>
+    <string name="premium_services_activity_streaming_description_2">Каждый участник может управлять медиаплеером</string>
+    <string name="premium_services_activity_streaming_description_3">Взаимодействовать по вызову одновременно</string>
+    <string name="premium_services_activity_streaming_description_4">Та же конфиденциальность, что и в реальной жизни</string>
+    <string name="premium_services_activity_streaming_subtitle">Потоковая передача мультимедиа во время разговора</string>
+    <string name="premium_services_activity_streaming_title">Обмен медиафайлами</string>
+    <string name="premium_services_activity_transfert_description_1">Создайте код перевода вызова и профиль.</string>
+    <string name="premium_services_activity_transfert_description_2">Загрузите его URL-адрес или отсканируйте код на компьютере.</string>
+    <string name="premium_services_activity_transfert_description_3">Добавить страницу в закладки в браузере</string>
+    <string name="premium_services_activity_transfert_description_4">«Позвонить» со страницы во время мобильного звонка</string>
+    <string name="premium_services_activity_transfert_subtitle">Передача текущего мобильного звонка в браузер</string>
+    <string name="premium_services_activity_transfert_title">Перевод вызова</string>
+    <string name="premium_services_activity_title">Пригласите контакты присоединиться к текущему голосовому/видеозвонку.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Заблокируйте приложение с помощью биометрических сервисов или PIN-кода.</string>
+    <string name="privacy_activity_hide_last_screen_message">Запретить предварительный просмотр в переключателе приложений</string>
+    <string name="privacy_activity_hide_last_screen_title">Скрыть последний экран</string>
+    <string name="privacy_activity_lock_screen_message">Разблокируйте доступ к приложению с помощью служб биометрической аутентификации или аутентификации по паролю. Вы по-прежнему можете отвечать на входящие звонки и получать уведомления, пока доступ к приложению заблокирован.</string>
+    <string name="privacy_activity_lock_screen_not_available">Для этого варианта требуется версия Android > 5.0.</string>
+    <string name="privacy_activity_lock_screen_timeout">Тайм-аут блокировки доступа</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Мгновенный</string>
+    <string name="privacy_activity_lock_screen_title">Блокировка доступа</string>
+    <string name="privacy_activity_title">Конфиденциальность</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Добавить профиль</string>
+    <string name="profile_fragment_create_profile">Создать профиль</string>
+    <string name="profile_fragment_default_action">Активировать</string>
+    <string name="profile_fragment_default_profile_title">Активный профиль</string>
+    <string name="profile_fragment_identity_title">Профили</string>
+    <string name="profile_fragment_message">Этот профиль позволяет вам пригласить свои контакты для установления личных отношений с вами под вашим контролем.</string>
+    <string name="profile_fragment_twincode_title">Код приглашения</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Добавить прокси</string>
+    <string name="proxy_activity_add_placeholder">Вставьте или введите URL-адрес прокси-сервера</string>
+    <string name="proxy_activity_already_use">Этот прокси-сервер уже настроен в вашем приложении.</string>
+    <string name="proxy_activity_enable">Использовать прокси</string>
+    <string name="proxy_activity_format">Допустимые форматы URL proxy:</string>
+    <string name="proxy_activity_invalid_format">Неверный формат URL</string>
+    <string name="proxy_activity_limit">Вы достигли лимита разрешенных прокси-серверов (%1$d). Чтобы добавить новый, необходимо сначала удалить один из них.</string>
+    <string name="proxy_activity_list">Мои прокси</string>
+    <string name="proxy_activity_list_information">Используйте прокси-сервер из списка ниже, только если приложение не может подключиться к сервису без прокси-сервера.</string>
+    <string name="proxy_activity_onboarding">Если доступ к сигнальным серверам приложения заблокирован в вашей стране, прокси-серверы могут обойти эти блокировки во многих случаях и позволить вам общаться конфиденциально. Помимо встроенных прокси-серверов в приложении, вы можете создать свой собственный или использовать прокси-сервер, созданный кем-то другим. Прокси-серверы не имеют доступа к передаваемому контенту ни при каких обстоятельствах.</string>
+    <string name="proxy_activity_information">Используйте прокси только если вы не можете подключиться к сервису через стандартные сети Wi-Fi или сотовую связь.</string>
+    <string name="proxy_activity_share">Откройте ссылку %1$s в twinme на вашем устройстве, чтобы автоматически настроить этот прокси-сервер.</string>
+    <string name="proxy_activity_title">Прокси</string>
+    <string name="proxy_activity_url">Хотите использовать URL-адрес этого прокси-сервера?</string>
+    <string name="proxy_activity_warning">Внимание! URL-адрес этого прокси-сервера не позволяет вам подключиться к сервису приложения.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">Изменить разрешения</string>
+    <string name="quality_of_service_activity_enable_notifications">Включить уведомления</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Без этих разрешений доставка сообщений до места назначения может занять очень много времени.</string>
+    <string name="quality_of_service_activity_notification_description">Разрешить приложению работать в фоновом режиме</string>
+    <string name="quality_of_service_activity_notification_title">Обмен сообщениями идет слишком медленно?</string>
+    <string name="quality_of_service_activity_settings">Измените разрешения приложения в настройках системы.</string>
+    <string name="quality_of_service_activity_step1_message">Обмен зашифрованными сообщениями между устройствами осуществляется напрямую в режиме реального времени с использованием подхода "peer-to-peer" без использования серверов распространения контента. Это гарантирует отсутствие следов в облаке и обеспечивает уникальную защиту конфиденциальности.</string>
+    <string name="quality_of_service_activity_step2_message">Чтобы обеспечить хорошее качество обслуживания, настройте свое устройство, чтобы разрешить приложению получать уведомления в фоновом режиме и исключить его из оптимизации батареи.</string>
+    <string name="quality_of_service_activity_step3_message">Используйте приложение часто, чтобы ОС отдавала ему приоритет и не прерывала его работу неожиданно. \n\nИ не забудьте сообщить об этом своим контактам!</string>
+    <string name="quality_of_service_activity_warning_background_data">Разрешите приложению использовать мобильные данные в фоновом режиме.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Разрешите приложению получать push-уведомления.</string>
+    <string name="quality_of_service_activity_warning_run_background">Разрешите приложению работать в фоновом режиме.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">Определить как администратора</string>
+    <string name="room_members_activity_delete_message">Подтвердите удаление этого участника</string>
+    <string name="room_members_activity_moderators_title">Модератор</string>
+    <string name="room_members_activity_only_admin_message">No se puede eliminar al único administrador.</string>
+    <string name="room_members_activity_owner_title">Владелец</string>
+    <string name="room_members_activity_participants_title">Участников</string>
+    <string name="room_members_activity_remove_admin_title">Удалить как администратора</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">Введите или вставьте ссылку-приглашение</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">Проверьте состояние вашего подключения к сервису</string>
+    <string name="settings_advanced_activity_status_connection_title">Состояние подключения</string>
+    <string name="settings_advanced_activity_title">Расширенные настройки</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Разрешить получателям копировать / сохранять / делиться вашим контентом</string>
+    <string name="settings_activity_allow_copy_file_title">Любой тип файла</string>
+    <string name="settings_activity_allow_copy_text_title">Текстовые сообщения</string>
+    <string name="settings_activity_application_notifications">Уведомления приложений</string>
+    <string name="settings_activity_audio_call_category_title">Голосовой вызов</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Название мелодии звонка</string>
+    <string name="settings_activity_audio_call_notification_title">Мелодия</string>
+    <string name="settings_activity_audio_call_vibration_title">Вибрация</string>
+    <string name="settings_activity_authorization_title">Разрешения</string>
+    <string name="settings_activity_call_item_menu_all">Все звонки</string>
+    <string name="settings_activity_chat_category_title">Сообщения</string>
+    <string name="settings_activity_chat_ringtone_title">Звук оповещения</string>
+    <string name="settings_activity_chat_title">звук</string>
+    <string name="settings_activity_chat_vibration_title">Вибрация</string>
+    <string name="settings_activity_content_information">Разрешение медиаконтента, отправляемого во время разговора: для высокой четкости требуется больше данных и, следовательно, больше времени на передачу.</string>
+    <string name="settings_activity_content_title">Медиаконтент</string>
+    <string name="settings_activity_default_directory_title">Каталог по умолчанию для сохранения файлов</string>
+    <string name="settings_activity_default_sound">По умолчанию</string>
+    <string name="settings_activity_default_value_message">Эти параметры используются по умолчанию на уровне приложения.</string>
+    <string name="settings_activity_display_call_menu_missed">Только пропущенные звонки</string>
+    <string name="settings_activity_display_call_menu_none">Нет вызова</string>
+    <string name="settings_activity_display_call_none">Нет</string>
+    <string name="settings_activity_display_call_title">Показывать уведомления о вызовах в разговорах</string>
+    <string name="settings_activity_display_notification_content_title">Показать содержимое сообщения</string>
+    <string name="settings_activity_display_notification_like_title">Реакции на сообщения</string>
+    <string name="settings_activity_display_notification_sender_title">Показать отправителя сообщения</string>
+    <string name="settings_activity_ephemeral_message">Автоматически удалять отправленные сообщения</string>
+    <string name="settings_activity_ephemeral_section_title">СРОК СЛУЖБЫ</string>
+    <string name="settings_activity_ephemeral_title">Саморазрушительное сообщение</string>
+    <string name="settings_activity_image_title">Фото</string>
+    <string name="settings_activity_message_properties_title">Свойства сообщения</string>
+    <string name="settings_activity_reset_default_value">Восстановить настройки по умолчанию</string>
+    <string name="settings_activity_reset_preferences_button_title">Сброс к значениям по умолчанию</string>
+    <string name="settings_activity_reset_preferences_message">Сбросьте настройки уведомлений по умолчанию для приложений.</string>
+    <string name="settings_activity_reset_preferences_title">Сбросить настройки</string>
+    <string name="settings_activity_permissions_title">РАЗРЕШЕНИЯ</string>
+    <string name="settings_activity_silent_sound">бесшумный</string>
+    <string name="settings_activity_sound_enabled_title">ЗВУКОВЫЕ УВЕДОМЛЕНИЯ</string>
+    <string name="settings_activity_system_notifications_title">Системные уведомления</string>
+    <string name="settings_activity_system_settings_title">Настройки системы</string>
+    <string name="settings_activity_video_call_category_title">Видеозвонки</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Название мелодии звонка</string>
+    <string name="settings_activity_video_call_notification_title">Мелодия</string>
+    <string name="settings_activity_video_call_vibration_title">Вибрация</string>
+    <string name="settings_activity_welcome_screen_category_title">ПРИВЕТСТВИЕ</string>
+    <string name="settings_activity_welcome_screen_summary">Отображать экраны приветствия</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">Разрешить участникам приглашать других участников в качестве личных контактов</string>
+    <string name="settings_room_activity_allow_invite_contact">Разрешить участникам приглашать свои контакты</string>
+    <string name="settings_room_activity_conference_notifications_inform">Первый вход/последний выход</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Все въезды/выезды</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Тихий</string>
+    <string name="settings_room_activity_display_members">Показать участников</string>
+    <string name="settings_room_activity_room_type_channel">Канал - только в одну сторону</string>
+    <string name="settings_room_activity_room_type_channel_information">Только администраторы/модераторы могут отправлять сообщения</string>
+    <string name="settings_room_activity_room_type_feedback">Канал - с обратной связью</string>
+    <string name="settings_room_activity_room_type_feedback_information">Отзывы участников видны только администраторам/модераторам</string>
+    <string name="settings_room_activity_room_type_forum">Форум</string>
+    <string name="settings_room_activity_room_type_forum_information">Участники могут публиковать сообщения, которые видит каждый</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Контакты</string>
+    <string name="share_activity_group_list">Группы</string>
+    <string name="share_activity_title">Поделиться</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Код «click-to-call»</string>
+    <string name="show_call_activity_information_code">Поделитесь этим кодом, чтобы принимать внешние звонки.</string>
+    <string name="show_call_activity_schedule_call">Запланированный звонок</string>
+    <string name="show_call_activity_schedule_from">начиная с %1$s</string>
+    <string name="show_call_activity_schedule_from_to">%1$s с %2$s по %3$s</string>
+    <string name="show_call_activity_schedule_message">Звонок запланирован на дату и время, определенные в другом месте.</string>
+    <string name="show_call_activity_schedule_to">до %1$s</string>
+    <string name="show_call_activity_settings_call">Тип звонка</string>
+    <string name="show_call_activity_settings_group_calls">Групповой звонок</string>
+    <string name="show_call_activity_settings_limited">Планируется</string>
+    <string name="show_call_activity_settings_start">Начало</string>
+    <string name="show_call_activity_settings_end">Конец</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Голос</string>
+    <string name="show_contact_activity_chat">Чат</string>
+    <string name="show_contact_activity_export_contents">Экспорт содержимого</string>
+    <string name="show_contact_activity_history_title">История</string>
+    <string name="show_contact_activity_identity_title">Знает меня как</string>
+    <string name="show_contact_activity_last_calls">Последние звонки</string>
+    <string name="show_contact_activity_cleanup">Уборка</string>
+    <string name="show_contact_activity_pending">В ходе выполнения</string>
+    <string name="show_contact_activity_pending_message">Эти отношения находятся в процессе установления. Пожалуйста, подождите.подождите.</string>
+    <string name="show_contact_activity_revoked">Удалён</string>
+    <string name="show_contact_activity_settings_coach_mark">Определите, что вашему контактному лицу разрешено делать в этих отношениях с вами.</string>
+    <string name="show_contact_activity_video">Видео</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Добавить участника</string>
+    <string name="show_group_activity_invitation_list">Ожидающие приглашения: %1$d</string>
+    <string name="show_group_activity_leave">Покинуть группу</string>
+    <string name="show_group_activity_leave_confirm_message">Вы уверены, что хотите покинуть эту группу?</string>
+    <string name="show_group_activity_leave_message">Вы покинете эту группу и больше не сможете получить доступ к ее разговорам.</string>
+    <string name="show_group_activity_member_list">Список участников (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">Вы уверены, что хотите удалить эту группу?</string>
+    <string name="show_group_activity_remove_message">Эта группа будет удалена для всех ее участников, а ее разговоры будут стерты.</string>
+    <string name="show_group_activity_title">Группа</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Интерфейс администрирования</string>
+    <string name="show_room_activity_invite_participants">Пригласить участников</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Картина</string>
+    <string name="space_appearance_activity_background_message">Настройте фон разговоров с помощью цвета или изображения.</string>
+    <string name="space_appearance_activity_background_text_title">Текст</string>
+    <string name="space_appearance_activity_background_title">Задний план</string>
+    <string name="space_appearance_activity_container_background_message">Фон отправленного сообщения</string>
+    <string name="space_appearance_activity_container_background_peer_message">Фон полученного сообщения</string>
+    <string name="space_appearance_activity_container_border_message">Граница отправленного сообщения</string>
+    <string name="space_appearance_activity_container_border_peer_message">Граница полученного сообщения</string>
+    <string name="space_appearance_activity_container_text_message">Текст отправленного сообщения</string>
+    <string name="space_appearance_activity_container_text_peer_message">Текст полученного сообщения</string>
+    <string name="space_appearance_activity_container_title">Пузыри</string>
+    <string name="space_appearance_activity_default_value">Значение по умолчанию</string>
+    <string name="space_appearance_activity_general_title">Генеральная</string>
+    <string name="space_appearance_activity_menu_choose_color">Цвета по умолчанию</string>
+    <string name="space_appearance_activity_menu_enter_color">Цветовой код</string>
+    <string name="space_appearance_activity_opacity">Непрозрачность</string>
+    <string name="space_appearance_activity_preview_message">Я забыл свои балетки … Можешь взять их с собой, пожалуйста? 😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Здравствуй милый!</string>
+    <string name="space_appearance_activity_preview_title">Предварительный просмотр</string>
+    <string name="space_appearance_activity_theme">Тема</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Пространство — это место, где ваши разные личности встречаются с вашими многочисленными кругами общения, включая самые секретные.</string>
+    <string name="spaces_activity_sample_business">Бизнес</string>
+    <string name="spaces_activity_sample_business_name">доктор Джон Доу</string>
+    <string name="spaces_activity_sample_family">Семья</string>
+    <string name="spaces_activity_sample_family_name">Папа</string>
+    <string name="spaces_activity_sample_friends">Друзья</string>
+    <string name="spaces_activity_sample_friends_name">Джонни</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Произошла ошибка. Пожалуйста, попробуйте еще раз.</string>
+    <string name="streaming_audio_activity_no_music_message">Обмен медиафайлами</string>
+    <string name="streaming_audio_activity_no_music_title">Музыку не нашёл 🙁</string>
+    <string name="streaming_audio_activity_title">Обмен медиафайлами</string>
+    <string name="streaming_audio_activity_unsupported_message">Этот аудиоформат не поддерживается устройством пользователя %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Рубричное объявление</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Объявление</string>
+    <string name="template_click_to_call_activity_template_help">Помощь</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Помощь</string>
+    <string name="template_click_to_call_activity_template_meeting">Встреча</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Встреча</string>
+    <string name="template_click_to_call_activity_template_video_bell">Видео дверной звонок</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Дверной звонок</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">Имя (д-р Джон Доу, г-жа Смит,…)</string>
+    <string name="template_space_activity_template_business_profile">г-жа Саманта Смит</string>
+    <string name="template_space_activity_template_family_placeholder">Имя (папа, мама,…)</string>
+    <string name="template_space_activity_template_family_profile">Мама</string>
+    <string name="template_space_activity_template_friends_placeholder">Имя (Джони, Сэм,…)</string>
+    <string name="template_space_activity_template_friends_profile">Сэм</string>
+    <string name="template_space_activity_template_other">Другие</string>
+    <string name="template_space_activity_template_other_placeholder">Имя (папа, мама, Джонни, доктор Джон Доу,…)</string>
+    <string name="template_space_activity_template_title">Шаблоны</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">Попросите друга, который находится рядом с вами, отсканировать QR-код вашего приглашения с помощью twinme или нажмите свой код приглашения, чтобы скопировать его в буфер обмена.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Вы уверены, что хотите удалить этот код «Перевод вызова»?</string>
+    <string name="transfert_call_activity_delete_message">Эта ссылка для перевода звонка будет удалена. Подтверждать?</string>
+    <string name="transfert_call_activity_gallery_message">Отсканируйте этот QR-код, чтобы перевести свои мобильные звонки.</string>
+    <string name="transfert_call_activity_message">Перешлите этот код и добавьте его URL-адрес в закладки в браузере, на который вы хотите перевести свои мобильные вызовы.</string>
+    <string name="transfert_call_activity_reset_message">Это действие аннулирует текущий код перевода вызова и создает новый. Подтверждать?</string>
+    <string name="transfert_call_activity_saved_message">Код перевода звонка сохранен в фотогалерее.</string>
+    <string name="transfert_call_activity_share">Перечислить</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Доступно обновление</string>
+    <string name="update_app_activity_update_message">Последнее обновление приложения включало следующее:</string>
+    <string name="update_app_activity_update_title">Обновить сейчас</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Видеовызов&#8230;</string>
+    <string name="video_call_activity_cannot_call">Невозможно выполнить видеовызов</string>
+    <string name="video_call_activity_connecting">Подключение&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">Вы хотите прервать вызов?</string>
+    <string name="video_call_activity_terminate">Вызов завершен</string>
+    <string name="video_call_activity_terminate_busy">Вызов завершен: &lt;b&gt;%1$s&lt;/b&gt; занят</string>
+    <string name="video_call_activity_terminate_cancel">Вызов отменен &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_connectivity_error">Звонок прерван из-за проблем с подключением. Проверьте подключение к интернету.</string>
+    <string name="video_call_activity_terminate_decline">Вызов отклонен &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_disconnected">Звонок прерван из-за ошибки сети. Попробуйте ещё раз.</string>
+    <string name="video_call_activity_terminate_gone">Вызов завершен: &lt;b&gt;%1$s&lt;/b&gt; не в сети</string>
+    <string name="video_call_activity_terminate_revoked">Вызов завершён: &lt;b&gt;%1$s&lt;/b&gt; удалил эту связь с вами.</string>
+    <string name="video_call_activity_terminate_success">Вызов завершен &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_timeout">Вызов завершен: &lt;b&gt;%1$s&lt;/b&gt; не отвечает</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">Нажимая %1$s, я подтверждаю, что прочитал и принимаю:</string>
+    <string name="welcome_activity_next">Следующий</string>
+    <string name="welcome_activity_pass">Пропускать</string>
+    <string name="welcome_activity_privacy_policy">Политика конфиденциальности</string>
+    <string name="welcome_activity_start">Начало</string>
+    <string name="welcome_activity_step1_message">Обмен сообщениями и голосовые/видеозвонки в высоком разрешении, защита конфиденциальности по замыслу.</string>
+    <string name="welcome_activity_step2_message">Безопасная "peer-to-peer" связь: никаких следов в облаке.</string>
+    <string name="welcome_activity_step3_message">Нет номера телефона, нет адресной книги, нет идентификатора пользователя: вы выбираете, как вы хотите, чтобы вас идентифицировали, в зависимости от того, с кем вы общаетесь.</string>
+    <string name="welcome_activity_terms_of_use">Условия использования</string>
+
+</resources>

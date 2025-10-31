@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/account_migration_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/account_migration_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/account_migration_activity_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/account_migration_activity_tool_bar">
+
+        <ImageView
+            android:id="@+id/account_migration_activity_image_view"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/onboarding_migration"
+            app:layout_aspectRatio="100%"/>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/account_migration_activity_progress_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/account_migration_activity_image_view"
+            app:layout_widthPercent="85.33%"
+            app:layout_heightPercent="17.84%">
+
+            <TextView
+                android:id="@+id/account_migration_activity_progress_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                app:layout_widthPercent="89.06%"
+                app:layout_marginTopPercent="11.94%" />
+
+            <ProgressBar
+                android:id="@+id/account_migration_activity_transfer_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_below="@+id/account_migration_activity_progress_text_view"
+                android:progressDrawable="@drawable/stream_audio_progress_bar_shape"
+                android:max="100"
+                android:layout_centerHorizontal="true"
+                app:layout_heightPercent="5.97%"
+                app:layout_widthPercent="75%"
+                app:layout_marginTopPercent="14.92%" />
+
+            <TextView
+                android:id="@+id/account_migration_activity_progress_message_view"
+                android:layout_below="@+id/account_migration_activity_transfer_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                app:layout_widthPercent="89.06%"
+                app:layout_marginTopPercent="18.65%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/account_migration_activity_information_view"
+            android:layout_below="@+id/account_migration_activity_progress_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/account_migration_activity_network_message"
+            app:layout_widthPercent="89.06%"/>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/account_migration_activity_accept_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/account_migration_activity_decline_view">
+
+            <TextView
+                android:id="@+id/account_migration_activity_accept_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/account_migration_activity_start" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/account_migration_activity_decline_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            app:layout_marginBottomPercent="2.25%">
+
+            <TextView
+                android:id="@+id/account_migration_activity_decline_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/application_decline" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/account_migration_activity_cancel_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            app:layout_marginBottomPercent="4.35%">
+
+            <TextView
+                android:id="@+id/account_migration_activity_cancel_title_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/account_migration_activity_stop"
+                app:layout_widthPercent="89.06%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/account_migration_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

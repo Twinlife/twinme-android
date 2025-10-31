@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background_color">#ffffff</color>
+    <color name="background_grey">#666666</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="grey">#bdb9b9</color>
+    <color name="footer_grey">#666666</color>
+    <color name="grey_light">#efefef</color>
+    <color name="line_border_grey">#c8c7cc</color>
+    <color name="azure">#00aeff</color>
+    <color name="green_normal">#52cc7a</color>
+    <color name="red_normal">#fd605d</color>
+    <color name="image_black_overlay">#88000000</color>
+    <color name="translucent">#00000000</color>
+    <color name="grey_60_percent_alpha">#60d8d8d8</color>
+    <color name="menu_separator_color">#3f3f3f</color>
+    <color name="edit_text_background_color">#4DD5D7E0</color>
+    <color name="switch_track_color">#778a9f</color>
+    <color name="switch_thumb_on">#4cd964</color>
+    <color name="switch_thumb_off">#ff4040</color>
+    <color name="separator_color">#80c7c7cc</color>
+    <color name="toolbar_color">#00aeff</color>
+    <color name="white_color">#ffffff</color>
+    <color name="black_color">#000000</color>
+    <color name="font_default_color">#2c2c2c</color>
+    <color name="background_light_grey_color">#f9f9f9</color>
+    <color name="background_grey_color">#efefef</color>
+    <color name="background_color_white_opacity_85">#d9ffffff</color>
+    <color name="background_color_white_opacity_36">#5cffffff</color>
+    <color name="background_color_white_opacity_11">#1cffffff</color>
+    <color name="action_call_color">#ffffff</color>
+    <color name="action_image_call_color">#000000</color>
+    <color name="bottom_navigation_item_color">#778b9f</color>
+    <color name="ic_launcher_background">#ffffff</color>
+    <color name="toolbar_icon_color">#d8d8d8</color>
+    <color name="edit_avatar_background_color">#f3f3f3</color>
+    <color name="edit_avatar_image_color">#c8c8c8</color>
+    <color name="conversation_background_color">#ffffff</color>
+    <color name="conversation_overlay_color">#e6ffffff</color>
+    <color name="conversation_overlay_color_android_31">#ccffffff</color>
+    <color name="menu_reaction_background_color">#000000</color>
+    <color name="edit_text_conversation_background_color">#f8f8f8</color>
+    <color name="item_border_color">#dadada</color>
+    <color name="avatar_default_color">#f2f3f5</color>
+    <color name="segmented_control_border_color">#ffffff</color>
+    <color name="edit_text_color">#2c2c2c</color>
+    <color name="splashscreen_logo_color">#303030</color>
+    <color name="popup_background_color">#ffffff</color>
+    <color name="migration_background_color">#f3f3f3</color>
+    <color name="grey_item_color">#f3f3f3</color>
+    <color name="time_color">#666e6e6e</color>
+    <color name="peer_audio_track_color">#333333</color>
+    <color name="accessory_color">#D1D1D6</color>
+    <color name="forward_comment_color">#FFFFFF</color>
+    <color name="background_menu_color">#f9f9f9</color>
+    <color name="close_color">#00ffffff</color>
+    <color name="custom_tab_background_color">#ffffff</color>
+    <color name="date_background_color">#efefef</color>
+    <color name="reply_background_color">#e7e7e7</color>
+    <color name="reply_font_color">#797979</color>
+    <color name="custom_tab_grey_color">#efefef</color>
+
+    <!-- ConversationActivity -->
+    <color name="conversation_activity_time_item">#6e6e6e</color>
+
+    <!-- Group border separator -->
+    <color name="line_border_light_grey">#f3f4f8</color>
+
+    <color name="qrcode_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="qrcode_result_points">#c099cc00</color>
+</resources>

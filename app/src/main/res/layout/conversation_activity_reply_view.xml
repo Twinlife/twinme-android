@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/conversation_activity_reply_view_title"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent="66.67%"
+        app:layout_marginStartPercent="3.2%" />
+
+    <TextView
+        android:id="@+id/conversation_activity_reply_view_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversation_activity_reply_view_title"
+        android:lines="2"
+        android:ellipsize="end"
+        app:layout_widthPercent="83.47%"
+        app:layout_marginStartPercent="3.2%" />
+
+    <ImageView
+        android:id="@+id/conversation_activity_reply_view_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/conversation_activity_reply_view_title"
+        android:scaleType="fitCenter"
+        app:layout_heightPercent="43.33%"
+        app:layout_aspectRatio="100%"
+        app:layout_marginStartPercent="3.2%" />
+
+    <ImageView
+        android:id="@+id/conversation_activity_reply_view_close"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/close"
+        app:layout_heightPercent="43.33%"
+        app:layout_aspectRatio="100%"
+        app:layout_marginEndPercent="3.2%"
+        app:layout_marginTopPercent="28.33%"
+        android:contentDescription="@string/application_cancel" />
+
+    <View
+        android:id="@+id/conversation_activity_reply_view_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

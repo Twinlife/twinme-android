@@ -1,0 +1,102 @@
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/welcome_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/welcome_activity_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="1.8%"
+        app:layout_heightPercent="7.49%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/welcome_activity_back_clickable_view"
+            android:layout_height="match_parent"
+            app:layout_widthPercent="16.8%">
+
+            <ImageView
+                android:id="@+id/welcome_activity_back_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/start_chevron"
+                app:tint="?attr/black_color"
+                app:layout_aspectRatio="54.55%"
+                app:layout_heightPercent="30%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <ImageView
+            android:id="@+id/welcome_activity_logo"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="156.25%"
+            app:layout_heightPercent="68%"
+            android:src="@drawable/splash_screen_logo" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/welcome_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        app:layout_heightPercent="63.71%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/welcome_activity_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome_activity_list_view"
+        app:layout_heightPercent="8.99%">
+
+        <TextView
+            android:id="@+id/welcome_activity_prev_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/application_back"
+            android:layout_centerVertical="true"
+            app:layout_marginStartPercent="5.46%" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/welcome_activity_dots_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/welcome_activity_next_clickable_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <TextView
+                android:id="@+id/welcome_activity_next_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/welcome_activity_next" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/welcome_activity_prev_clickable_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome_activity_list_view"
+        app:layout_widthPercent="33.33%"
+        app:layout_heightPercent="8.99%" />
+
+    <TextView
+        android:id="@+id/welcome_activity_message_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/welcome_activity_action_view"
+        android:gravity="center_horizontal"
+        android:textColorHighlight="#00FFFFFF"
+        app:layout_widthPercent="94.67%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

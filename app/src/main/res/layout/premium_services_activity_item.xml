@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/premium_services_activity_item_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/premium_services_activity_item_header_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_marginTopPercent="5.39%"
+            app:layout_heightPercent="6.6%">
+
+            <ImageView
+                android:id="@+id/premium_services_activity_item_logo"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                app:layout_aspectRatio="156.25%"
+                android:src="@drawable/twinme_plus_logo" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/premium_services_activity_item_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/premium_services_activity_item_header_view"
+            android:gravity="center_horizontal"
+            android:text="@string/premium_services_activity_title"
+            app:layout_widthPercent="94.67%"
+            app:layout_marginTopPercent="3%" />
+
+        <ImageView
+            android:id="@+id/premium_services_activity_item_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:layout_below="@+id/premium_services_activity_item_title_view"
+            app:layout_marginTopPercent="2.25%" />
+
+        <TextView
+            android:id="@+id/premium_services_activity_item_subtitle_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/premium_services_activity_item_image_view"
+            android:gravity="center_horizontal"
+            android:text="@string/premium_services_activity_title"
+            app:layout_widthPercent="94.67%"
+            app:layout_marginTopPercent="3%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/premium_services_activity_item_description_part_one_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_marginTopPercent="3.75%"
+            android:layout_below="@+id/premium_services_activity_item_subtitle_view">
+
+            <ImageView
+                android:id="@+id/premium_services_activity_item_description_part_one_image_view"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/premium_services_activity_item_description_part_one_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/premium_services_activity_item_description_part_one_image_view"
+                android:layout_toRightOf="@+id/premium_services_activity_item_description_part_one_image_view"
+                app:layout_widthPercent="80.15%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/premium_services_activity_item_description_part_two_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_marginTopPercent="2.25%"
+            android:layout_below="@+id/premium_services_activity_item_description_part_one_view">
+
+            <ImageView
+                android:id="@+id/premium_services_activity_item_description_part_two_image_view"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/premium_services_activity_item_description_part_two_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/premium_services_activity_item_description_part_two_image_view"
+                android:layout_toRightOf="@+id/premium_services_activity_item_description_part_two_image_view"
+                app:layout_widthPercent="80.15%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/premium_services_activity_item_description_part_three_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_marginTopPercent="2.25%"
+            android:layout_below="@+id/premium_services_activity_item_description_part_two_view">
+
+            <ImageView
+                android:id="@+id/premium_services_activity_item_description_part_three_image_view"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/premium_services_activity_item_description_part_three_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/premium_services_activity_item_description_part_three_image_view"
+                android:layout_toRightOf="@+id/premium_services_activity_item_description_part_three_image_view"
+                app:layout_widthPercent="80.15%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/premium_services_activity_item_description_part_four_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_marginTopPercent="2.25%"
+            android:layout_below="@+id/premium_services_activity_item_description_part_three_view">
+
+            <ImageView
+                android:id="@+id/premium_services_activity_item_description_part_four_image_view"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/premium_services_activity_item_description_part_four_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/premium_services_activity_item_description_part_four_image_view"
+                android:layout_toRightOf="@+id/premium_services_activity_item_description_part_four_image_view"
+                app:layout_widthPercent="80.15%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

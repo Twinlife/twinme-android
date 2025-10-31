@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/account_migration_scanner_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/account_migration_scanner_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/account_migration_scanner_activity_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/account_migration_scanner_activity_tool_bar">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/account_migration_scanner_activity_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="85.33%"
+            app:layout_heightPercent="50.97%"
+            app:layout_marginTopPercent="5.99%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/account_migration_scanner_activity_qrcode_container_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/account_migration_scanner_activity_qrcode_view"
+                    android:scaleType="fitCenter"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="67.65%" />
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/account_migration_scanner_activity_zoom_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%"
+                    android:layout_toRightOf="@+id/account_migration_scanner_activity_qrcode_view"
+                    android:layout_toEndOf="@+id/account_migration_scanner_activity_qrcode_view"
+                    android:layout_alignTop="@+id/account_migration_scanner_activity_qrcode_view"
+                    app:layout_heightPercent="9.59%">
+
+                    <org.twinlife.twinme.utils.RoundedView
+                        android:id="@+id/account_migration_scanner_activity_zoom_rounded_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_aspectRatio="100%" />
+
+                    <ImageView
+                        android:id="@+id/account_migration_scanner_activity_zoom_icon_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/zoom_code"
+                        android:layout_centerInParent="true"
+                        app:layout_aspectRatio="100%"
+                        app:layout_heightPercent="45.71%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/account_migration_scanner_activity_camera_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <TextureView
+                    android:id="@+id/account_migration_scanner_activity_texture_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp" />
+
+                <view
+                    android:id="@+id/account_migration_scanner_activity_view_finder_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    class="org.twinlife.twinme.ui.AbstractScannerActivity$ViewFinderView"
+                    android:background="@drawable/camera_foreground" />
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/account_migration_scanner_activity_scan_info_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/account_migration_scanner_activity_scan_icon_view"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/scan_code"
+                        app:layout_aspectRatio="100%" />
+
+                    <TextView
+                        android:id="@+id/account_migration_scanner_activity_scan_message_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:layout_toRightOf="@+id/account_migration_scanner_activity_scan_icon_view"
+                        android:layout_toEndOf="@+id/account_migration_scanner_activity_scan_icon_view"
+                        android:text="@string/add_contact_activity_scan_code"/>
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <TextView
+                    android:id="@+id/account_migration_scanner_activity_camera_message_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/capture_activity_message" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/account_migration_scanner_activity_message_view"
+            android:layout_below="@+id/account_migration_scanner_activity_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/account_migration_scanner_activity_message"
+            app:layout_widthPercent="89.06%"
+            app:layout_marginTopPercent="2.99%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+
+    <ProgressBar
+        android:id="@+id/account_migration_scanner_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

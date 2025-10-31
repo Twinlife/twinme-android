@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_default_tab_item_profiles_view"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        app:layout_widthPercent="20%"
+        android:contentDescription="@string/application_profile">
+
+        <ImageView
+            android:id="@+id/personalization_activity_default_tab_item_profiles_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tab_bar_profile_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="50%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_default_tab_item_calls_view"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_profiles_view"
+        android:layout_toEndOf="@+id/personalization_activity_default_tab_item_profiles_view"
+        app:layout_widthPercent="20%"
+        android:contentDescription="@string/calls_fragment_title">
+
+        <ImageView
+            android:id="@+id/personalization_activity_default_tab_item_calls_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tab_bar_call_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="50%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_default_tab_item_contacts_view"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_calls_view"
+        android:layout_toEndOf="@+id/personalization_activity_default_tab_item_calls_view"
+        app:layout_widthPercent="20%"
+        android:contentDescription="@string/contacts_fragment_title">
+
+        <ImageView
+            android:id="@+id/personalization_activity_default_tab_item_contacts_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tab_bar_contacts_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="50%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_default_tab_item_conversations_view"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_contacts_view"
+        android:layout_toEndOf="@+id/personalization_activity_default_tab_item_contacts_view"
+        android:layout_centerVertical="true"
+        app:layout_widthPercent="20%"
+        android:contentDescription="@string/conversations_fragment_title">
+
+        <ImageView
+            android:id="@+id/personalization_activity_default_tab_item_conversations_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tab_bar_chat_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="50%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_default_tab_item_notifications_view"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_conversations_view"
+        android:layout_toEndOf="@+id/personalization_activity_default_tab_item_conversations_view"
+        android:layout_centerVertical="true"
+        app:layout_widthPercent="20%"
+        android:contentDescription="@string/notifications_fragment_title">
+
+        <ImageView
+            android:id="@+id/personalization_activity_default_tab_item_notifications_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tab_bar_notification_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="50%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/personalization_activity_default_tab_item_selected_tab_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_heightPercent="3.33%"
+        app:layout_widthPercent="20%" />
+
+    <View
+        android:id="@+id/personalization_activity_default_tab_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

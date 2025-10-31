@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <ImageView
+        android:id="@+id/menu_send_option_item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter"
+        app:layout_aspectRatio="100%" />
+
+    <org.twinlife.twinme.utils.SwitchView
+        android:id="@+id/menu_send_option_item_checkbox"
+        style="@style/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:checked="true"
+        android:layout_toRightOf="@+id/menu_send_option_item_icon"
+        android:layout_toEndOf="@+id/menu_send_option_item_icon"
+        android:textOn=""
+        android:textOff=""
+        android:track="@drawable/switch_track"
+        android:thumb="@drawable/switch_thumb_on"
+        android:switchMinWidth="0dp" />
+
+    <View
+        android:id="@+id/menu_send_option_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+</androidx.percentlayout.widget.PercentRelativeLayout>

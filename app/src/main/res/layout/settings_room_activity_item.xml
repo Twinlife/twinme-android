@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <org.twinlife.twinme.utils.SwitchView
+        android:id="@+id/settings_room_activity_item_checkbox"
+        style="@style/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:checked="true"
+        app:layout_marginEndPercent="4.26%"
+        app:layout_marginStartPercent="4.53%"
+        app:layout_marginTopPercent="2%"
+        app:layout_marginBottomPercent="2%"
+        android:textOn=""
+        android:textOff=""
+        android:track="@drawable/switch_track"
+        android:thumb="@drawable/switch_thumb_on"
+        android:switchMinWidth="0dp" />
+
+    <View
+        android:id="@+id/settings_room_activity_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+</androidx.percentlayout.widget.PercentRelativeLayout>

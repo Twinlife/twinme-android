@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/preview_activity_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/preview_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/preview_activity_close_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/preview_activity_close_icon_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/action_close"
+            app:layout_heightPercent="26.67%"
+            app:layout_aspectRatio="100%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/preview_activity_header_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/preview_activity_avatar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/preview_activity_certified_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/authentified_relation_white_icon"
+            android:layout_alignBottom="@+id/preview_activity_avatar_view"
+            android:layout_alignRight="@+id/preview_activity_avatar_view"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/preview_activity_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:lines="1"
+            android:ellipsize="end"
+            android:layout_toEndOf="@+id/preview_activity_avatar_view"
+            android:layout_toRightOf="@+id/preview_activity_avatar_view" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/preview_activity_thumbnail_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/preview_activity_content_send_view" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/preview_activity_content_send_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="4.5%">
+
+        <org.twinlife.twinme.utils.ConversationEditText
+            android:id="@+id/preview_activity_edit_text"
+            style="@style/textAppearance"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/conversation_activity_message"
+            android:inputType="textMultiLine|textAutoCorrect|textAutoComplete|textCapSentences"
+            android:scrollbars="vertical"
+            app:layout_widthPercent="83.06%"
+            app:layout_marginStartPercent="1.6%"
+            android:visibility="gone" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/preview_activity_send_clickable_view"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/preview_activity_edit_text"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:layout_widthPercent="15.34%"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/preview_activity_send_rounded_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"
+                app:layout_aspectRatio="100%" />
+
+            <ImageView
+                android:id="@+id/preview_activity_send_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/send_icon"
+                android:layout_centerInParent="true"
+                app:layout_aspectRatio="100%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/preview_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <org.twinlife.twinme.ui.conversationActivity.MenuSendOptionView
+        android:id="@+id/preview_activity_menu_send_option_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/preview_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

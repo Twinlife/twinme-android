@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/personalization_activity_color_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        app:layout_marginStartPercent="2.67%"
+        app:layout_marginEndPercent="2.67%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

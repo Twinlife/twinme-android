@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/conversation_files_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/conversation_files_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView
+        android:id="@+id/conversation_files_activity_tab_view"
+        android:layout_below="@+id/conversation_files_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/conversation_files_activity_no_item_found_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/conversation_files_activity_tab_view"
+        android:scaleType="fitCenter"
+        android:src="@drawable/premium_feature_conversation"
+        android:visibility="gone"
+        app:layout_marginTopPercent="11.82%"
+        app:layout_heightPercent="17.28%" />
+
+    <TextView
+        android:id="@+id/conversation_files_activity_no_item_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversation_files_activity_no_item_found_image_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/conversation_files_activity_no_files"
+        android:visibility="gone"
+        app:layout_marginTopPercent="5.55%"
+        app:layout_widthPercent="85.33%" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversation_files_activity_list_view"
+        android:layout_below="@+id/conversation_files_activity_tab_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <org.twinlife.twinme.ui.conversationFilesActivity.ItemSelectedActionView
+        android:id="@+id/conversation_files_activity_item_selected_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

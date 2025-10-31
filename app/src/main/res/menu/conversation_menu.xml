@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/audio_call_action"
+        android:title=""
+        app:actionLayout="@layout/toolbar_imageview_item"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/video_call_action"
+        android:title=""
+        app:actionLayout="@layout/toolbar_imageview_item"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/cancel_action"
+        android:title="@string/application_cancel"
+        app:actionLayout="@layout/toolbar_textview_item"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <TextView
+        android:id="@+id/conversation_settings_activity_emoji_size_item_emoji_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:includeFontPadding="false"
+        app:layout_marginStartPercent="4.53%" />
+
+    <TextView
+        android:id="@+id/conversation_settings_activity_emoji_size_item_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/conversation_settings_activity_emoji_size_item_emoji_view"
+        android:layout_toRightOf="@id/conversation_settings_activity_emoji_size_item_emoji_view"
+        android:layout_centerVertical="true"
+        app:layout_marginStartPercent="2.67%"
+        app:layout_marginEndPercent="20.26%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversation_settings_activity_emoji_size_item_layout_image"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/circle_grey"
+        android:layout_centerVertical="true"
+        app:layout_aspectRatio="100%"
+        app:layout_marginEndPercent="4.26%">
+
+        <!-- Image heightPercent is not 100% because we need the circle_grey when it is visible.
+             circle_grey has an oval shape and a white background which is required by Android API 16.  -->
+        <ImageView
+            android:id="@+id/conversation_settings_activity_emoji_size_item_selected_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:background="@drawable/circle_grey"
+            android:src="@drawable/check_mark_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/personalization_activity_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

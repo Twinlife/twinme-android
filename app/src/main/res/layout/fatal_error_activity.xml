@@ -1,0 +1,43 @@
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="20.69%"
+        app:layout_widthPercent="48.27%"
+        app:layout_heightPercent="13.50%">
+
+        <ImageView
+            android:id="@+id/fatal_error_activity_logo_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/splash_screen_logo"
+            app:layout_widthPercent="32.59%"
+            app:layout_heightPercent="46.11%" />
+
+        <ImageView
+            android:id="@+id/fatal_error_activity_twinme_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/splash_screen_twinme"
+            app:layout_heightPercent="44.44%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/fatal_error_activity_internal_error_message_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        app:layout_marginTopPercent="65%"
+        app:layout_widthPercent="81.07%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

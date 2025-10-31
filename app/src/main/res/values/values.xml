@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="is_rtl">false</bool>
+
+    <attr name="white_color" format="reference|color" />
+    <attr name="black_color" format="reference|color" />
+    <attr name="popup_background_color" format="reference|color" />
+    <attr name="separator_color" format="reference|color" />
+    <attr name="grey_light" format="reference|color" />
+    <attr name="background_light_grey_color" format="reference|color" />
+    <attr name="background_grey_color" format="reference|color" />
+    <attr name="action_image_call_color" format="reference|color" />
+    <attr name="font_default_color" format="reference|color" />
+    <attr name="background_menu_color" format="reference|color" />
+</resources>

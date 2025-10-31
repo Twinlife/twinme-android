@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/last_calls_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/last_calls_activity_tool_bar"
+        layout="@layout/last_calls_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/last_calls_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/last_calls_activity_tool_bar" />
+
+    <ImageView
+        android:id="@+id/last_calls_activity_no_call_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/calls_placeholder"
+        android:visibility="gone"
+        android:layout_below="@+id/last_calls_activity_tool_bar"
+        app:layout_marginTopPercent="10.49%"
+        app:layout_heightPercent="32.98%" />
+
+    <TextView
+        android:id="@+id/last_calls_activity_no_call_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/last_calls_activity_no_call_image_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/calls_fragment_no_call_title"
+        android:visibility="gone"
+        app:layout_marginTopPercent="5.55%"
+        app:layout_widthPercent="85.33%" />
+
+    <TextView
+        android:id="@+id/last_calls_activity_no_call_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/last_calls_activity_no_call_title_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/calls_fragment_no_call_message"
+        android:visibility="gone"
+        app:layout_marginTopPercent="1.34%"
+        app:layout_widthPercent="85.33%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

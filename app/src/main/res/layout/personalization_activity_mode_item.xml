@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="660dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_mode_item_system_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/personalization_activity_mode_item_system_separator_view"
+        app:layout_heightPercent="18.18%">
+
+        <org.twinlife.twinme.utils.SwitchView
+            android:id="@+id/personalization_activity_mode_item_system_view"
+            style="@style/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:checked="true"
+            android:text="@string/personalization_activity_system"
+            app:layout_marginEndPercent="4.26%"
+            app:layout_marginStartPercent="4.53%"
+            app:layout_marginTopPercent="2%"
+            app:layout_marginBottomPercent="2%"
+            android:textOn=""
+            android:textOff=""
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb_on"
+            android:switchMinWidth="0dp" />
+
+        <View
+            android:id="@+id/personalization_activity_mode_item_system_separator_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/separator_color" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_mode_item_light_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/personalization_activity_mode_item_system_content_view"
+        app:layout_heightPercent="62.12%"
+        app:layout_widthPercent="50%"
+        app:layout_marginTopPercent="6.06%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/personalization_activity_mode_item_light_device_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            app:layout_heightPercent="58.54%"
+            app:layout_aspectRatio="50%">
+
+            <TextView
+                android:id="@+id/personalization_activity_mode_item_light_time_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_heightPercent="18.33%"
+                app:layout_marginTopPercent="6.77%" />
+
+            <View
+                android:id="@+id/personalization_activity_mode_item_light_peer_item_view"
+                android:layout_below="@+id/personalization_activity_mode_item_light_time_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_heightPercent="15%"
+                app:layout_widthPercent="86.67%"
+                app:layout_marginTopPercent="9.16%" />
+
+            <View
+                android:id="@+id/personalization_activity_mode_item_light_item_view"
+                android:layout_below="@+id/personalization_activity_mode_item_light_peer_item_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:layout_heightPercent="11.67%"
+                app:layout_widthPercent="53.33%"
+                app:layout_marginTopPercent="3.33%"
+                app:layout_marginEndPercent="6.67%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/personalization_activity_mode_item_light_title_view"
+            android:layout_below="@+id/personalization_activity_mode_item_light_device_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/personalization_activity_mode_light"
+            app:layout_marginTopPercent="6.34%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/personalization_activity_mode_item_light_check_view"
+            android:layout_below="@+id/personalization_activity_mode_item_light_title_view"
+            android:background="@drawable/circle_grey"
+            android:layout_centerHorizontal="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="10.73%"
+            app:layout_marginTopPercent="9.76%">
+
+            <ImageView
+                android:id="@+id/personalization_activity_mode_item_light_check_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/personalization_activity_mode_item_dark_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/personalization_activity_mode_item_system_content_view"
+        app:layout_heightPercent="62.12%"
+        app:layout_widthPercent="50%"
+        app:layout_marginTopPercent="6.06%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/personalization_activity_mode_item_dark_device_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            app:layout_heightPercent="58.54%"
+            app:layout_aspectRatio="50%">
+
+            <TextView
+                android:id="@+id/personalization_activity_mode_item_dark_time_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_heightPercent="18.33%"
+                app:layout_marginTopPercent="6.77%" />
+
+            <View
+                android:id="@+id/personalization_activity_mode_item_dark_peer_item_view"
+                android:layout_below="@+id/personalization_activity_mode_item_dark_time_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_heightPercent="15%"
+                app:layout_widthPercent="86.67%"
+                app:layout_marginTopPercent="9.16%" />
+
+            <View
+                android:id="@+id/personalization_activity_mode_item_dark_item_view"
+                android:layout_below="@+id/personalization_activity_mode_item_dark_peer_item_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:layout_heightPercent="11.67%"
+                app:layout_widthPercent="53.33%"
+                app:layout_marginTopPercent="3.33%"
+                app:layout_marginEndPercent="6.67%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/personalization_activity_mode_item_dark_title_view"
+            android:layout_below="@+id/personalization_activity_mode_item_dark_device_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/personalization_activity_mode_dark"
+            app:layout_marginTopPercent="6.34%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/personalization_activity_mode_item_dark_check_view"
+            android:layout_below="@+id/personalization_activity_mode_item_dark_title_view"
+            android:background="@drawable/circle_grey"
+            android:layout_centerHorizontal="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="10.73%"
+            app:layout_marginTopPercent="9.76%">
+
+            <ImageView
+                android:id="@+id/personalization_activity_mode_item_dark_check_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/personalization_activity_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

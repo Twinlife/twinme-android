@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.twinlife.twinme.ui.DebugActivity">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%">
+
+        <ImageView
+            android:id="@+id/debug_config_activity_back_image_view"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/start_chevron"
+            app:layout_aspectRatio="54.55%"
+            app:layout_heightPercent="28.50%"
+            app:layout_marginStartPercent="3.47%" />
+
+        <TextView
+            android:id="@+id/debug_config_activity_back_label_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/debug_config_activity_back_image_view"
+            android:layout_toRightOf="@id/debug_config_activity_back_image_view"
+            android:text="@string/application_back"
+            app:layout_marginStartPercent="2.13%" />
+
+        <TextView
+            android:id="@+id/debug_config_activity_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/debug_config_activity_title"
+            tools:layout_editor_absoluteX="162dp" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/debug_config_activity_back_clickable_view"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="25%" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        app:layout_marginEndPercent="4%"
+        app:layout_marginStartPercent="4%"
+        app:layout_marginTopPercent="10%"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/debug_config_enable_hardware_aec"
+            style="@style/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:checked="true"
+            android:text="@string/debug_config_enable_hardware_aec_title"
+            android:textOn=""
+            android:textOff=""
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:switchMinWidth="0dp" />
+
+        <Switch
+            android:id="@+id/debug_config_enable_opensl_es"
+            style="@style/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:checked="true"
+            android:text="@string/debug_config_enable_hardware_openses_es_title"
+            android:textOn=""
+            android:textOff=""
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:switchMinWidth="0dp" />
+
+        <Switch
+            android:id="@+id/debug_config_enable_noise_suppressor"
+            style="@style/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:checked="true"
+            android:text="@string/debug_config_enable_noise_suppressor_title"
+            android:textOn=""
+            android:textOff=""
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:switchMinWidth="0dp" />
+
+    </LinearLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

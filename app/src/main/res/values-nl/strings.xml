@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Aanvaarden</string>
+    <string name="application_account_deleted">Uw account is verwijderd, u moet de applicatie nu verwijderen.</string>
+    <string name="application_add_contact_no_profile">U moet een profiel invullen dat u vertegenwoordigt, voordat u een contactpersoon uitnodigt. Doorgaan?</string>
+    <string name="application_all">Allemaal</string>
+    <string name="application_appearance">Uiterlijk</string>
+    <string name="application_are_you_sure">Weet u het zeker?</string>
+    <string name="application_authorization_camera">Toestaan dat de app toegang heeft tot Camera in systeeminstellingen.</string>
+    <string name="application_authorization_go_settings">Ga naar systeeminstellingen</string>
+    <string name="application_authorization_microphone">Toestaan dat app toegang heeft tot Microfoon in systeeminstellingen.</string>
+    <string name="application_authorization_microphone_camera">Toestaan dat app toegang heeft tot Microfoon en Camera in systeeminstellingen.</string>
+    <string name="application_authorization_title">Ontbrekende toegangsautorisatie</string>
+    <string name="application_back">Terug</string>
+    <string name="application_camera">Camera</string>
+    <string name="application_cancel">Annuleren</string>
+    <string name="application_canceled_operation">Geannuleerde werking</string>
+    <string name="application_checking_connection">Verbinding controleren</string>
+    <string name="application_color">Kleur</string>
+    <string name="application_configuration">Configuratie</string>
+    <string name="application_confirm">Bevestigen</string>
+    <string name="application_confirm_deletion">Bevestig het verwijderen</string>
+    <string name="application_connected">Beveiligde verbinding ingeschakeld.</string>
+    <string name="application_connection_status_no_network">Geen toegang tot het internet.</string>
+    <string name="application_connection_status_no_network_message">Controleer uw netwerkverbinding.</string>
+    <string name="application_connection_status_no_services">Geen toegang tot de dienst.</string>
+    <string name="application_connection_status_no_services_message">Probeer een VPN te gebruiken.</string>
+    <string name="application_contact_not_found">Deze contactpersoon heeft deze relatie met jou verwijderd en is niet langer bereikbaar.</string>
+    <string name="application_continue_without_premium_services">Ga verder zonder premium services</string>
+    <string name="application_create_group_no_profile">U moet een profiel invullen dat u vertegenwoordigt in deze groep. Doorgaan?</string>
+    <string name="application_database_error">Fout in de database</string>
+    <string name="application_decline">Wijs af</string>
+    <string name="application_default">Standaard</string>
+    <string name="application_delete">Verwijderen</string>
+    <string name="application_delete_message">Weet u zeker dat u het wilt verwijderen?</string>
+    <string name="application_denied_permissions">Vereiste toestemmingen worden niet verleend</string>
+    <string name="application_description">Omschrijving</string>
+    <string name="application_display_all">Alles weergeven</string>
+    <string name="application_do_not_display">Niet meer weergeven</string>
+    <string name="application_edit">Bewerk</string>
+    <string name="application_error_file_not_found">Het bestand is niet gevonden.</string>
+    <string name="application_error_media_not_supported">Deze afbeelding/video-indeling wordt niet ondersteund door de applicatie.</string>
+    <string name="application_error_no_storage_space">Onvoldoende opslagruimte</string>
+    <string name="application_group_limit_reached">Maximum aantal (%1$d) van groepsleden overschreden.</string>
+    <string name="application_group_not_found">Je bent verwijderd uit de groep</string>
+    <string name="application_items_selected">%1$d items geselecteerd</string>
+    <string name="application_later">Later</string>
+    <string name="application_low_usage_message">Waarschuwing, als je de applicatie niet vaak genoeg gebruikt, kan het zijn dat het besturingssysteem hem niet wakker maakt om berichten uit te wisselen!</string>
+    <string name="application_one_item_selected">1 item geselecteerd</string>
+    <string name="application_migration_no_storage_space">Er is onvoldoende ruimte op uw apparaat om de migratie te voltooien. Sluit de applicatie, maak wat ruimte vrij en start de app opnieuw om de update te voltooien.</string>
+    <string name="application_migration_no_storage_space_message">Een van de twee apparaten heeft onvoldoende opslagruimte. Maak ruimte vrij op dat apparaat voordat je de migratie opnieuw start.</string>
+    <string name="application_name_hint">Naam</string>
+    <string name="application_network_connecting">Verbinding maken met de Twinme service</string>
+    <string name="application_network_connectivity">Netwerkverbinding aanwezig</string>
+    <string name="application_network_status_airplane_message">Vliegtuigmodus ingeschakeld</string>
+    <string name="application_network_status_airplane_resolution">Schakel de vliegtuimodus uit en maak verbinding met een Wi-Fi of mobiel netwerk.</string>
+    <string name="application_network_status_connected_no_internet">Geen netwerktoegang tot de Twinme service.</string>
+    <string name="application_network_status_connected_resolution">Probeer het met een ander netwerk.</string>
+    <string name="application_network_status_connection_timeout">Het is niet mogelijk een internetverbinding tot stand te brengen.</string>
+    <string name="application_network_status_no_internet">Geen internetverbinding.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi is uitgeschakeld.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi is uitgeschakeld en er is geen mobiele netwerkverbinding.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Schakel Wi-Fi in.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Schakel Wi-Fi in of activeer de mobiele internetverbinding.</string>
+    <string name="application_new_feature">Nieuw!</string>
+    <string name="application_no">Nee</string>
+    <string name="application_no_network_connectivity">Geen netwerkverbinding</string>
+    <string name="application_no_service">Geen service</string>
+    <string name="application_not_authorized_operation">Werking is niet toegestaan</string>
+    <string name="application_not_authorized_operation_by_your_contact">Bediening niet geautoriseerd door uw contactpersoon.</string>
+    <string name="application_not_connected">Beveiligde verbinding bezig…</string>
+    <string name="application_not_signed_in">Geen verbinding met de twinme dienst</string>
+    <string name="application_now">Nu</string>
+    <string name="application_ok">OK</string>
+    <string name="application_operation_failure">Werking mislukt</string>
+    <string name="application_operation_irreversible">Deze bewerking is onomkeerbaar</string>
+    <string name="application_permission_camera">Toestemming voor toegang tot de camera is vereist om een nieuwe foto of video te maken.</string>
+    <string name="application_permission_scan_code">Toestemming voor toegang tot de camera is vereist om een QR-code te scannen.</string>
+    <string name="application_photo_gallery">Fotoalbums</string>
+    <string name="application_profile">Profiel</string>
+    <string name="application_profile_avatar_not_defined">U heeft geen profielfoto</string>
+    <string name="application_profile_name_not_defined">U heeft geen profielfoto</string>
+    <string name="application_remove">Verwijderen</string>
+    <string name="application_save">Sla op</string>
+    <string name="application_search_hint">Zoeken</string>
+    <string name="application_select">Selecteer</string>
+    <string name="application_select_application">Kies app</string>
+    <string name="application_select_more">Selecteer meer...</string>
+    <string name="application_server_timeout">Server time-out</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Thema</string>
+    <string name="application_timeout">Vervalvertraging</string>
+    <string name="application_timeout_day">1 dag</string>
+    <string name="application_timeout_hour">1 uur</string>
+    <string name="application_timeout_hours">%1$d uur</string>
+    <string name="application_timeout_minute">1 minuut</string>
+    <string name="application_timeout_minutes">%1$d minuten</string>
+    <string name="application_timeout_month">1 maand</string>
+    <string name="application_timeout_seconds">%1$d seconden</string>
+    <string name="application_timeout_week">1 week</string>
+    <string name="application_unknown_name">Onbekend</string>
+    <string name="application_upgrade">twinme upgraden</string>
+    <string name="application_webrtc_failure">WebRTC is mislukt</string>
+    <string name="application_wrong_configuration">Configuratie is onjuist</string>
+    <string name="application_yes">Ja</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Applicatiecode</string>
+    <string name="about_activity_information">Informatie</string>
+    <string name="about_activity_legal">Juridische kennisgevingen</string>
+    <string name="about_activity_libraries">Bibliotheken</string>
+    <string name="about_activity_message">twinme is een service voor het veilig chatten en het voeren van telefoon- en videogesprekken zonder toegang tot persoonlijke informatie.\n\ntwinme is gebaseerd op WebRTC, de nieuwe standaard voor veilige (end-to-end gecodeerde) peer-to-peer (geen relaisserver) communicatie op het web.</string>
+    <string name="about_activity_open_source_information">De broncode van de applicatie is beschikbaar als Open Source op GitHub, onder de AGPL-3.0-licentie.</string>
+    <string name="about_activity_open_sources_licences">Opensource licenties</string>
+    <string name="about_activity_premium_services">Premium-services</string>
+    <string name="about_activity_privacy_policy">Privacybeleid</string>
+    <string name="about_activity_quality_of_service">Kwaliteit van de dienstverlening</string>
+    <string name="about_activity_terms_of_use">Algemene voorwaarden</string>
+    <string name="about_activity_version">Versie</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">Deze uitnodiging is verwijderd</string>
+    <string name="accept_group_invitation_activity_in_progress">Lidmaatschap in vooruitgang</string>
+    <string name="accept_group_invitation_activity_message">%1$s nodigt u uit om lid te worden van de groep</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">De uitnodiging wordt overgedragen.</string>
+    <string name="accept_invitation_activity_check_connection">Controleer uw internetverbinding.</string>
+    <string name="accept_invitation_activity_existing_contact_message">U heeft al een relatie met deze contactpersoon. Wil je een nieuwe aanmaken?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Onjuiste contactgegevens</string>
+    <string name="accept_invitation_activity_local_twincode">U kunt binnen hetzelfde account geen relatie met uzelf aangaan.</string>
+    <string name="accept_invitation_activity_message">%1$s wil verbinding met je maken</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">Gespreksinhoud</string>
+    <string name="account_activity_delete_account">Uw account, samen met alle bijbehorende gegevens, wordt permanent verwijderd. Bevestigen?</string>
+    <string name="account_activity_delete_account_confirmation">Weet u echt zeker dat u uw account wilt verwijderen?</string>
+    <string name="account_activity_export_content">Exporteren naar externe media</string>
+    <string name="account_activity_message_first_part">Er wordt een nieuw account aangemaakt bij de eerste installatie van de app, na het opnieuw installeren van de app, het resetten van het apparaat of het verwijderen van het huidige account.</string>
+    <string name="account_activity_message_second_part">Er blijft geen spoor van vorig account en gegevens over, dus u moet uw contacten opnieuw uitnodigen.</string>
+    <string name="account_activity_migration_message">Er is een accountmigratieservice beschikbaar om uw account met alle bijbehorende gegevens (contacten, berichten, groepen, enz.) in realtime van het ene Android-apparaat naar het andere over te zetten. U kunt dus van account wisselen tussen een oud apparaat en een nieuw apparaat.</string>
+    <string name="account_activity_migration_start_from_another_device">Vanaf een ander apparaat</string>
+    <string name="account_activity_migration_start_from_current_device">Vanaf mijn apparaat</string>
+    <string name="account_activity_migration_title">Accountmigratie</string>
+    <string name="account_activity_title">Account</string>
+    <string name="account_activity_transfer_between_devices">Overdracht tussen apparaten</string>
+    <string name="account_activity_transfer_from_another_device">Overdracht vanaf een ander apparaat</string>
+    <string name="account_activity_transfer_from_device">Overdracht vanaf dit apparaat</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Sluit de applicatie en start deze opnieuw om toegang te krijgen tot uw gegevens.</string>
+    <string name="account_migration_activity_close_message">Sluit de applicatie en start deze opnieuw om toegang te krijgen tot de nieuwe gegevens.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Weet u zeker dat u de migratie wilt annuleren?</string>
+    <string name="account_migration_activity_network_message">Controleer uw netwerkverbinding</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Onvoldoende ruimte voor bestanden</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Onvoldoende ruimte om de database te ontvangen</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Onvoldoende ruimte om de database over te dragen</string>
+    <string name="account_migration_activity_state_canceled">Migratie geannuleerd</string>
+    <string name="account_migration_activity_state_negotiate">Aan het wachten</string>
+    <string name="account_migration_activity_state_list_files">Lijst met bestanden</string>
+    <string name="account_migration_activity_state_send_account">Het account verzenden</string>
+    <string name="account_migration_activity_state_send_database">Verzenden van de database</string>
+    <string name="account_migration_activity_state_send_files">Bestanden verzenden</string>
+    <string name="account_migration_activity_state_send_settings">Applicatie-instellingen verzenden</string>
+    <string name="account_migration_activity_state_terminate">Migratie bijna voltooid.</string>
+    <string name="account_migration_activity_state_wait_account">Wachten op het andere account</string>
+    <string name="account_migration_activity_state_wait_connect">Wachten op opnieuw verbinding</string>
+    <string name="account_migration_activity_state_wait_files">In afwachting van ontvangst van bestanden en database.</string>
+    <string name="account_migration_activity_start">Start de migratie</string>
+    <string name="account_migration_activity_stop">Stop de migratie</string>
+    <string name="account_migration_activity_success_message">De migratie is succesvol voltooid</string>
+    <string name="account_migration_activity_transfer_in_progress">Gegevensoverdracht bezig</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Geef dit scherm weer op elk apparaat en de een scant de QR-code van de ander.</string>
+    <string name="account_migration_scanner_activity_message_older_version">Dit apparaat gebruikt een oude, incompatibele besturingssysteemversie, waardoor alle relaties op het doelapparaat verloren gaan tijdens de overdracht. Wilt u toch doorgaan met de overdracht?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">Het doelapparaat gebruikt een oude, incompatibele versie van het besturingssysteem, waardoor al uw relaties tijdens de overdracht verloren gaan. Wilt u toch doorgaan met de overdracht?</string>
+    <string name="account_migration_scanner_activity_scan_title">Scannen</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Om de migratie te starten, scant u deze QR-code vanaf het andere apparaat</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Scan de QR-code die wordt weergegeven in het gedeelte \'Account / Overdracht vanaf een ander apparaat\' van het zijmenu van het andere apparaat.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Stop scan</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">Een deelnemer toevoegen aan dit gesprek</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">Importeren uit galerij</string>
+    <string name="add_contact_activity_in_person_subtitle">Nodig een persoon in de buurt uit</string>
+    <string name="add_contact_activity_in_person_title">Persoonlijk</string>
+    <string name="add_contact_activity_invitation_code_title">Minicode</string>
+    <string name="add_contact_activity_invite">Uitnodiging</string>
+    <string name="add_contact_activity_invite_message">Open het webadres %1$s met twinme op uw mobiele apparaat om prive  met “%2$s”. te verbinden.</string>
+    <string name="add_contact_activity_invite_subject">Twinme Uitnodiging</string>
+    <string name="add_contact_activity_message">Vraag je vriend naast je om de QR-code van je uitnodiging te scannen met twinme, of tik op de "Scannen"-knop om de code van je vriend te scannen.</string>
+    <string name="add_contact_activity_onboarding_message">twinme kent je vrienden niet en kan ze niet ontdekken. Je moet ze persoonlijk uitnodigen, met twinme als ze in de buurt zijn, of door ze op een andere manier een uitnodiging te sturen.</string>
+    <string name="add_contact_activity_scan_code">Scan uitnodiging QR-code</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Deze link is beschadigd.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Deze link is onjuist.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Deze link wordt niet beheerd door de applicatie.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Deze relatie is verwijderd.</string>
+    <string name="add_contact_activity_scan_message_call_link">Deze link komt overeen met een \"Click to call\"</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Deze link komt overeen met een contactuitnodiging</string>
+    <string name="add_contact_activity_scan_message_migration_link">Deze link komt overeen met een accountmigratie</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Deze link komt overeen met een oproepdoorschakeling</string>
+    <string name="add_contact_activity_scan_title">Scannen</string>
+    <string name="add_contact_activity_social_subtitle">bericht, mail, sociaal netwerk</string>
+    <string name="add_contact_activity_social_title">Stuur de code via een applicatie</string>
+    <string name="add_contact_activity_title">Uitnodiging</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Toevoegen</string>
+    <string name="add_group_member_activity_title">Voeg leden toe</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Welkoms bericht</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Aan het bellen&#8230;</string>
+    <string name="audio_call_activity_cannot_call">Kan geen spraakoproep maken</string>
+    <string name="audio_call_activity_connecting">Verbinding maken&#8230;</string>
+    <string name="audio_call_activity_hangup">Beëindig</string>
+    <string name="audio_call_activity_hangup_confirmation">Wilt u de oproep beëindigen?</string>
+    <string name="audio_call_activity_terminate">Oproep is beëindigd</string>
+    <string name="audio_call_activity_terminate_busy">Oproep beëindigd: &lt;b&gt;%1$s&lt;/b&gt; is bezet</string>
+    <string name="audio_call_activity_terminate_cancel">Oproep geannuleerd door &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Oproep beëindigd: netwerkfout</string>
+    <string name="audio_call_activity_terminate_decline">Oproep afgewezen door &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_gone">Oproep beëindigd: &lt;b&gt;%1$s&lt;/b&gt; is offline</string>
+    <string name="audio_call_activity_terminate_not_authorized">Je contactpersoon heeft niet de vereiste rechten voor een gesprek verleend (bijv. microfoon, camera).</string>
+    <string name="audio_call_activity_terminate_revoked">Gesprek beëindigd: &lt;b&gt;%1$s&lt;/b&gt; heeft deze relatie met jou verwijderd.</string>
+    <string name="audio_call_activity_terminate_success">Oproep beëindigd door &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_timeout">oproep eindigt: &lt;b&gt;%1$s&lt;/b&gt; geeft geen antwoord</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">Uw relatie met %1$s is nu gecertificeerd.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Certificeren door een QR-code te scannen</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Certificeren met een videogesprek</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s moet videogesprekken toestaan</string>
+    <string name="authentified_relation_activity_level_2">Om deze relatie te certificeren, moet u de QR-code scannen die wordt weergegeven op het apparaat van %1$s.</string>
+    <string name="authentified_relation_activity_level_3">Om deze relatie te certificeren, moet het apparaat van %1$s deze QR-code scannen.</string>
+    <string name="authentified_relation_activity_level_4">Uw relatie met %1$s is gecertificeerd.</string>
+    <string name="authentified_relation_activity_onboarding_message">Een \"gecertificeerde\" relatie zorgt ervoor dat u altijd met de juiste persoon communiceert, zelfs als de service is gecompromitteerd door een derde partij.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Zorg dat u altijd met de juiste persoon communiceert!</string>
+    <string name="authentified_relation_activity_relation_print_message">Deze vingerafdruk moet op beide apparaten identiek zijn.</string>
+    <string name="authentified_relation_activity_relation_print_title">Relatievingerafdruk</string>
+    <string name="authentified_relation_activity_start">Start certificering</string>
+    <string name="authentified_relation_activity_title">Gecertificeerde relatie</string>
+    <string name="authentified_relation_activity_to_be_certified_title">Certificeer de relatie</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">Allemaal</string>
+    <string name="calls_fragment_call_again_message">Wil je %1$s terugbellen?</string>
+    <string name="calls_fragment_call_again_title">Terugbellen</string>
+    <string name="calls_fragment_create_link">Maak een \"click-to-call\"-link</string>
+    <string name="calls_fragment_incoming_call">Binnenkomend oproep</string>
+    <string name="calls_fragment_missed_call">Gemiste oproep</string>
+    <string name="calls_fragment_missed_call_segmented_control">Gemiste</string>
+    <string name="calls_fragment_no_call_message">Gemiste oproepen worden hier weergegeven.</string>
+    <string name="calls_fragment_no_call_title">U heeft nog geen oproepen gedaan.</string>
+    <string name="calls_fragment_outgoing_call">Uitgaande oproep</string>
+    <string name="calls_fragment_reset">Weet u zeker dat u alle oproepmeldingen wilt resetten?</string>
+    <string name="calls_fragment_reset_title">Oproepmeldingen resetten</string>
+    <string name="calls_fragment_title">Oproepen</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Bluetooth-audio</string>
+    <string name="call_activity_audio_source_device">Oortelefoons van het apparaat</string>
+    <string name="call_activity_audio_source_earphones">Oortelefoons</string>
+    <string name="call_activity_audio_source_headset">Audio-headset</string>
+    <string name="call_activity_audio_source_loudspeaker">Luidspreker</string>
+    <string name="call_activity_battery_restriction_message">Aandacht! U moet het gebruik van het batterij toestaan</string>
+    <string name="call_activity_camera_control">Camerabediening</string>
+    <string name="call_activity_camera_control_ask_message">Vraag %1$s of je hun camera mag bedienen tijdens het videogesprek.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s wil je camera tijdens het gesprek bedienen. Je kunt de controle op elk moment terugkrijgen.</string>
+    <string name="call_activity_camera_control_denied">%1$s staat niet toe dat je zijn/haar camera bedient.</string>
+    <string name="call_activity_camera_control_message">Bediening van de camera van %1$s</string>
+    <string name="call_activity_camera_control_needs_help">Hulp nodig?</string>
+    <string name="call_activity_camera_control_onboarding">Als je contact dit toestaat, kun je bijvoorbeeld de controle over zijn of haar camera overnemen tijdens een videogesprek en zelf inzoomen. Dit is met name handig voor het bedienen van een bewakingscamera.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">Met toestemming van uw dierbare kunt u zijn of haar camera tijdens een gesprek bedienen om hem of haar op afstand, eenvoudig en veilig te helpen.</string>
+    <string name="call_activity_camera_control_remotely">%1$s bedient je camera op afstand.</string>
+    <string name="call_activity_camera_control_stop">Stop</string>
+    <string name="call_activity_certify_error_message">%1$s heeft het woord niet gevalideerd. De certificering van de relatie is mislukt en u moet het opnieuw proberen.</string>
+    <string name="call_activity_certify_onboarding_message">Met het videogesprek kunt u elkaar identificeren en de beveiligingssleutels uitwisselen die zijn gekoppeld aan een gecertificeerde relatie en de uitwisselingen daarvan.</string>
+    <string name="call_activity_certify_onboarding_start_message">Spel om de beurt het woord dat op je scherm wordt weergegeven en dat de ander kan verifiëren. Als alle woorden zijn geverifieerd, is je relatie met %1$s gecertificeerd.</string>
+    <string name="call_activity_certify_onboarding_title">Bevestig jullie relatie</string>
+    <string name="call_activity_certify_video_message">Het gesprek moet op video zijn om de relatie te kunnen certificeren.</string>
+    <string name="call_activity_coach_mark">Tik hier om een ​​deelnemer aan dit gesprek toe te voegen</string>
+    <string name="call_activity_confirm_word">Is het woord van %1$s identiek?</string>
+    <string name="call_activity_confirm_word_title">Valideer het woord</string>
+    <string name="call_activity_error_call_interrupted">Het gesprek werd onderbroken, fout: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">Het gesprek kon niet doorgaan, fout: %1$d.</string>
+    <string name="call_activity_max_participant_message">Het maximale aantal deelnemers aan een groepsgesprek is bereikt (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">De app-versie van %1$s is niet compatibel met groepsoproepen en heeft een update nodig.</string>
+    <string name="call_activity_quality_message">Hoe zou u het beoordelen?</string>
+    <string name="call_activity_quality_title">Oproep kwaliteit</string>
+    <string name="call_activity_repeat_word">%1$s kan het vergelijken met het woord op zijn/haar scherm.</string>
+    <string name="call_activity_repeat_word_title">Spel het woord</string>
+    <string name="call_activity_tag_add_to_call">Nodig een contact uit om deel te nemen aan het huidige gesprek</string>
+    <string name="call_activity_tag_camera">Camera</string>
+    <string name="call_activity_tag_camera_activate">Activeer de camera</string>
+    <string name="call_activity_tag_camera_cut">Knip de camera uit</string>
+    <string name="call_activity_tag_camera_flip">Draai de camera om</string>
+    <string name="call_activity_tag_microphone">Microfoon</string>
+    <string name="call_activity_tag_microphone_activate">Activeer microfoon</string>
+    <string name="call_activity_tag_microphone_mute">Microfoon dempen</string>
+    <string name="call_activity_tag_pause">Pauze</string>
+    <string name="call_activity_tag_send_message">Stuur een bericht</string>
+    <string name="call_activity_tag_speaker">Luide spreker</string>
+    <string name="call_activity_tag_speaker_activate">Activeer luidspreker</string>
+    <string name="call_activity_tag_speaker_mute">Demp de luidspreker</string>
+    <string name="call_activity_transfert_call_message">Het lopende gesprek is doorverbonden.</string>
+    <string name="call_activity_try_to_call_back">Probeer terug te bellen.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">Camera is al in gebruik</string>
+    <string name="capture_activity_incorrect_qrcode">Onjuiste twincode</string>
+    <string name="capture_activity_message">Plaats de QR-code in deze rechthoek om deze te scannen.</string>
+    <string name="capture_activity_no_camera">Camera is vereist om een twincode te scannen</string>
+    <string name="capture_activity_qrcode_saved">Uitnodigingscode opgeslagen in de foto’s.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">Alles wissen</string>
+    <string name="cleanup_activity_both_clean">Wereldwijde schoonmaak (lokaal en op afstand)</string>
+    <string name="cleanup_activity_both_clean_title">Wereldwijde schoonmaak</string>
+    <string name="cleanup_activity_clean">Verwijderen</string>
+    <string name="cleanup_activity_conversation">Gesprek met %s</string>
+    <string name="cleanup_activity_delete_confirmation_message">Verwijdering is onomkeerbaar. Exporteer belangrijke inhoud voordat u verder gaat. Doorgaan?</string>
+    <string name="cleanup_activity_error">Er is een fout opgetreden tijdens de bewerking.</string>
+    <string name="cleanup_activity_expiration">Vervaltermijnen</string>
+    <string name="cleanup_activity_free">Beschikbaar</string>
+    <string name="cleanup_activity_info">Het verwijderen van berichten, media en bestanden uit dit gesprek verwijdert ze niet uit het apparaat uit uw contact en u kunt dit niet later doen.</string>
+    <string name="cleanup_activity_info_both">Het verwijderen van berichten, media en bestanden uit dit gesprek verwijdert ze ook uit het apparaat uit uw contact.</string>
+    <string name="cleanup_activity_local_cleanup">Alleen lokale schoonmaak</string>
+    <string name="cleanup_activity_local_cleanup_title">Lokale schoonmaak</string>
+    <string name="cleanup_activity_medias_and_files">Alleen media en bestanden</string>
+    <string name="cleanup_activity_medias_and_files_info">Mediaminiaturen worden niet uit het gesprek verwijderd; alleen originele bestanden zijn.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Bestanden, foto’s, video’s en gesproken notities die in dit gesprek worden uitgewisseld, worden zowel van uw apparaat als van het apparaat van uw contact verwijderd.</string>
+    <string name="cleanup_activity_messages">Alle berichten en andere inhoud</string>
+    <string name="cleanup_activity_messages_info">Berichten van elk type in het gesprek (tekst, foto, video, spraak, bestanden, etc.) worden uit de applicatie verwijderd.</string>
+    <string name="cleanup_activity_month">%1$d maanden</string>
+    <string name="cleanup_activity_older_than">Ouder dan</string>
+    <string name="cleanup_activity_one_year">1 jaar</string>
+    <string name="cleanup_activity_prior_to">Voorafgaand aan</string>
+    <string name="cleanup_activity_reset_conversation_message">Als je dit gesprek reset, worden alle berichten verwijderd, ook die op het apparaat van je contact.</string>
+    <string name="cleanup_activity_select_content">Selecteer wat u wilt verwijderen.</string>
+    <string name="cleanup_activity_storage_title">Schijfruimte</string>
+    <string name="cleanup_activity_success">De operatie is succesvol afgerond.</string>
+    <string name="cleanup_activity_title">Gesprek opschonen</string>
+    <string name="cleanup_activity_total">Totaal</string>
+    <string name="cleanup_activity_used">Gebruikt</string>
+
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Tips</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Laat dit contact je bellen</string>
+    <string name="contact_capabilities_activity_automatic_answering">Beantwoord automatisch inkomende oproepen</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Let op: deze instelling activeert het automatisch beantwoorden van oproepen van dit contact, waarbij de microfoon en camera van het apparaat worden geopend (voor video-oproepen).</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Sommige apparaten kunnen deze functie beperken.</string>
+    <string name="contact_capabilities_activity_call_settings">Bel instellingen</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Altijd</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Vraag bij elk gesprek</string>
+    <string name="contact_capabilities_activity_camera_control_information">Sta toe dat dit contact automatisch de controle over je camera overneemt tijdens een videogesprek.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Je kunt je contactpersoon die de premiumversie van de app heeft, vragen je camera te bedienen tijdens je videogesprekken.</string>
+    <string name="contact_capabilities_activity_camera_control_never">Nooit</string>
+    <string name="contact_capabilities_activity_discreet_relation">Discrete relatie</string>
+    <string name="contact_capabilities_activity_information_audio_call">Geef de contactpersoon toestemming om u te audiobellen.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">Geeft de naam van de contactpersoon niet weer in meldingen en slaat geen oproepen op in de oproepgeschiedenis.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Stel data/tijden in waarop u niet gebeld wilt worden.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Plan de data/tijden waarop u gebeld wilt worden.</string>
+    <string name="contact_capabilities_activity_information_video_call">Geef de contactpersoon toestemming om u te videobellen.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Nodig iemand uit om jouw uitnodigingscode te scannen, of scan die van hem/haar...</string>
+    <string name="contacts_fragment_invite_contact_title">Nodig contacten uit</string>
+    <string name="contacts_fragment_scan_contact_title">Scan of voer een uitnodigingscode in</string>
+    <string name="contacts_fragment_title">Contacten</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">Audio-oproep</string>
+    <string name="conversation_activity_audio_message">Vocaal bericht</string>
+    <string name="conversation_activity_call_missed">gemiste</string>
+    <string name="conversation_activity_cannot_send">Kan geen berichten direct verzenden:</string>
+    <string name="conversation_activity_cleanup_conversation">Je hebt een aantal oude berichten verwijderd.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s heeft een aantal oude berichten opgeruimd.</string>
+    <string name="conversation_activity_delete_message">Uw bericht is inderdaad verwijderd.</string>
+    <string name="conversation_activity_empty_message">Zeg iets slim … och leuk!</string>
+    <string name="conversation_activity_edit_message">Het bericht kan alleen worden bewerkt op het apparaat van je contactpersoon als de app up-to-date is.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Druk lang op de verzendpijl om dit bericht na een bepaalde tijd uit het gesprek te verwijderen.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">De twinme versie van uw contact is niet helemaal functioneel.&lt;br/&gt;
+        Vraag hem/haar om een twinme update uit te voeren.</string>
+    <string name="conversation_activity_group_member_information">%1$d leden</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Het verzenden van berichten is niet toegestaan</string>
+    <string name="conversation_activity_group_one_member">1 lid</string>
+    <string name="conversation_activity_invitation_accepted">Uitnodiging geaccepteerd</string>
+    <string name="conversation_activity_invitation_failed">Vraag uw contactpersoon om twinme bij te werken</string>
+    <string name="conversation_activity_invitation_joined">Lid van de groep</string>
+    <string name="conversation_activity_invitation_pending">Uitnodiging in vooruitgang</string>
+    <string name="conversation_activity_invitation_refused">Uitnodiging geweigerd</string>
+    <string name="conversation_activity_invitation_title">Ik nodig je uit om lid te worden van de groep</string>
+    <string name="conversation_activity_local_cleanup">De hoofdinhoud is lokaal verwijderd.</string>
+    <string name="conversation_activity_manage_conversation">Beheer het gesprek</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Gekopieerd naar het klembord!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Kopiëren</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Verwijder</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Vooruit</string>
+    <string name="conversation_activity_menu_item_view_info_title">Info</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">Werking niet toegestaan door de afzender</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Antwoord</string>
+    <string name="conversation_activity_menu_item_view_save_message">Gered!</string>
+    <string name="conversation_activity_menu_item_view_save_title">Opslaan</string>
+    <string name="conversation_activity_menu_item_view_share_title">Delen</string>
+    <string name="conversation_activity_message">Schrijf een bericht</string>
+    <string name="conversation_activity_photo_camera">Fotocamera</string>
+    <string name="conversation_activity_record_confirm_send_record">Druk nogmaals op te sturen</string>
+    <string name="conversation_activity_record_start_record">Houd ingedrukt om op te nemen</string>
+    <string name="conversation_activity_record_title">Opnemen</string>
+    <string name="conversation_activity_reduce_menu_lower">Standaard</string>
+    <string name="conversation_activity_reduce_menu_minimal">Minimaal</string>
+    <string name="conversation_activity_reduce_menu_original">Origineel</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Geen formaat wijzigen</string>
+    <string name="conversation_activity_reject_stream">Wijs af</string>
+    <string name="conversation_activity_reply_to">Reageer op %1$s</string>
+    <string name="conversation_activity_reset_conversation">Je hebt het gesprek gereset</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s heeft het gesprek gereset</string>
+    <string name="conversation_activity_send_file_warning">Waarschuwing: het is niet mogelijk om te voorkomen dat de ontvanger een document (pdf, word, ppt, excel, zip, etc.) kopieert/opslaat/deelt, dat alleen buiten de applicatie geopend kan worden. Wil je het alsnog versturen?</string>
+    <string name="conversation_activity_send_large_file_message">Dit bestand is groot (%1$d MB). Wil je verder gaan ?</string>
+    <string name="conversation_activity_send_menu_allow_copy">Sta ontvanger toe om deze inhoud te kopiëren/opslaan/delen</string>
+    <string name="conversation_activity_stream_dialog">Wilt u het accepteren?</string>
+    <string name="conversation_activity_unsupported_media">Niet-ondersteund mediaformaat</string>
+    <string name="conversation_activity_video_call">Video-oproep</string>
+    <string name="conversation_activity_video_camera">Videocamera</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">Doc.</string>
+    <string name="conversation_files_activity_links">Links</string>
+    <string name="conversation_files_activity_month">Deze maand</string>
+    <string name="conversation_files_activity_no_files">Din samtale med %1$s indeholder ikke nogen af disse elementer.</string>
+    <string name="conversation_files_activity_title">Media, weblinks en documenten</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Achtergronden &amp; kleuren</string>
+    <string name="conversation_settings_activity_emoji_size">Emoji-formaat</string>
+    <string name="conversation_settings_activity_link_preview">Visualisatie</string>
+    <string name="conversation_settings_activity_link_preview_message">Bekijk een voorproefje van de website.</string>
+    <string name="conversation_settings_activity_link_title">Web links</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">End-to-end versleutelde berichten worden peer-to-peer uitgewisseld, rechtstreeks van apparaat naar apparaat, zonder tussenliggende distributieserver = geen sporen in de cloud.</string>
+    <string name="conversations_fragment_no_result_found">Geen resultaten gevonden voor \'%1$s\'.</string>
+    <string name="conversations_fragment_start">Begin een gesprek</string>
+    <string name="conversations_fragment_title">Gesprekken</string>
+    <string name="conversations_fragment_you">U</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Dit profiel wordt getoond aan gasten die u bellen met deze ‘click-to-call’-link.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Met \"Click-to-call\" kunnen gasten u vanuit een browser bellen zonder de applicatie te installeren.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Elke instantie heeft een naam, afbeelding en beschrijving, die het onderwerp van de oproep vertegenwoordigt, zoals:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">uw klantenservice</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">de auto die u verkoopt</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">een professionele groepsoproep</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">een videodeurbel voor bezorgers.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">Een \"click-to-call\" heeft attributen om aan te geven of het:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">een audio- en/of videogesprek</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">een individueel of groepsgesprek</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">altijd open of beperkt tot een specifieke datum en tijd.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">Deel de \"click-to-call\"-link of QR-code via de kanalen waarmee u relevante mensen kunt bereiken, bijvoorbeeld:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">een ‘call-to-action’ op uw website</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">een inzetstuk op een advertentieplatform</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">een e-mail naar de mensen die zijn uitgenodigd voor het groepsgesprek</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">een bordje op je voordeur voor bezorgers.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Ontvangers scannen de QR-code en openen de link in een browser op hun mobiele apparaat of pc. Ze kunnen dan:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Wijzig de standaardnaam (Gast) die hen tijdens het gesprek vertegenwoordigt</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Bel u door op de webpagina op de knop \"Bellen\" te drukken.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">Na het gesprek kunnen ze de webpagina openhouden om u terug te bellen.</string>
+    <string name="create_external_call_activity_placeholder">Onderwerp (Hulp, Aankondiging, Ontmoeting, Deurbel, …)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Nodig leden uit</string>
+    <string name="create_group_activity_create">Creëren</string>
+    <string name="create_group_activity_member_allow_invitation_message">Groepsleden toestaan hun contacten uit te nodigen</string>
+    <string name="create_group_activity_member_allow_invitation_title">Uitnodiging voor leden</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Leden toestaan andere leden uit te nodigen als persoonlijke contacten</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Leg persoonlijke contacten</string>
+    <string name="create_group_activity_member_allow_post_message">Groepsleden toestaan berichten te plaatsen</string>
+    <string name="create_group_activity_member_allow_post_title">Berichten plaatsen</string>
+    <string name="create_group_activity_member_list">Ledenlijst (%1$d)</string>
+    <string name="create_group_activity_name_hint">Groepsnaam</string>
+    <string name="create_group_activity_title">Groep</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">Zowel naam als afbeelding zijn essentieel voor uw contacten om u te herkennen en te onderscheiden van anderen.</string>
+    <string name="create_profile_activity_message">Deze profielinformatie wordt gebruikt om contacten uit te nodigen.</string>
+    <string name="create_profile_activity_onboarding_message">Voer een profiel (naam en image) in dat u vertegenwoordigt voor uw contacten.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Met profielen kunt u contacten uitnodigen om relaties met u op te bouwen in de applicatie. Je kunt zoveel profielen (persona) hebben als je wilt, elk gekoppeld aan een bepaalde "Space".</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Elk “Profiel” heeft een “Naam” en een “Afbeelding” (vereist), gezien door de contactpersonen die u uitnodigt, en gebruikt als uw initiële profiel geassocieerd met de nieuw gemaakte relaties van die "Space".</string>
+    <string name="create_profile_activity_onboarding_message_part_3">Eenmaal aangemaakt, heeft elke relatie zijn eigen paar “profielen” die u en uw contacten met elkaar vertegenwoordigen.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">U kunt vervolgens wijzigen hoe u bij elk van uw contactpersonen, in elke relatie, afzonderlijk bekend wilt zijn.</string>
+    <string name="create_profile_activity_save_message">Deze naam en afbeelding worden gebruikt om uw contacten uit te nodigen en uw relaties te initialiseren. U kunt ze voor elke relatie aanpassen en personaliseren.</string>
+    <string name="create_profile_activity_welcome1">Voer uw profielfoto in</string>
+    <string name="create_profile_activity_welcome2">Welkom %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">"Spaces" zijn lokaal en niet zichtbaar voor contacten.</string>
+    <string name="create_space_activity_onboarding_message_part_1">Met “Spaces” kunt u uw contacten ordenen op basis van de sociale kringen waartoe zij behoren, bijvoorbeeld. Familie, vrienden, zaken, plezier, enz.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Elke “Space” is gekoppeld aan een “Profiel” dat de persona vertegenwoordigt die u wilt gebruiken bij de interactie met de contacten uit de sociale kring van die Space, bijv. Papa, Johny, Dr. John Doe, Batman, enz.</string>
+    <string name="create_space_activity_onboarding_message_part_3">"Spaces" zijn lokaal voor uw applicatie op uw apparaat. Ze zijn alleen zichtbaar voor u en niet voor uw contacten, noch voor de serviceservers.</string>
+    <string name="create_space_activity_onboarding_message_part_4">Een "Space" heeft:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- een “Naam”, die een specifieke sociale kring vertegenwoordigt waarmee u communiceert;</string>
+    <string name="create_space_activity_onboarding_message_part_6">- een “Afbeelding” waarmee u deze snel kunt identificeren in uw lijst met “Spaces”;</string>
+    <string name="create_space_activity_onboarding_message_part_7">- een kleur “Thema”, om de look &amp; feel te personaliseren</string>
+    <string name="create_space_activity_onboarding_message_part_8">- “Instellingen” die specifiek kunnen zijn voor elke specifieke "Space", waardoor de standaardwaarden die door de applicatie-instellingen zijn gedefinieerd, worden overschreven.</string>
+    <string name="create_space_activity_title">Maak een Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">Deze profielnaam is gekoppeld aan de code die wordt gebruikt om een lopend gesprek door te verbinden naar een browser.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Mijn overschrijvingen</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Typ de letters \'OK\' hieronder om het verwijderen van het account te bevestigen.</string>
+    <string name="deleted_account_activity_delete">Account verwijderen</string>
+    <string name="deleted_account_activity_warning">Aandacht‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">Uw account is verwijderd en alle bijbehorende gegevens zijn vernietigd.&lt;br /&gt;
+        U moet de toepassing sluiten.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Weet u zeker dat u deze relatie wilt verwijderen?</string>
+    <string name="edit_contact_activity_message">Dit contact kan u niet meer bereiken.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Als u dit profiel verwijdert, wordt de bijbehorende uitnodigingscode ongeldig. Bevestig verwijdering?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">Weet u zeker dat u deze \"Click-to-Call\"-code wilt verwijderen?</string>
+    <string name="edit_external_call_activity_delete_message">Deze \"Click-to-Call\"-link is niet meer bruikbaar.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">Bewerk profiel</string>
+    <string name="edit_profile_activity_propagating_all_contacts">naar alle contacten in deze Space</string>
+    <string name="edit_profile_activity_propagating_ask_message">Verspreid de afbeelding, naam of beschrijving die u zojuist hebt gewijzigd:</string>
+    <string name="edit_profile_activity_propagating_except_contacts">voor iedereen, tenzij ze gepersonaliseerd zijn</string>
+    <string name="edit_profile_activity_propagating_message">U kunt de wijzigingen in uw uitnodigingsprofiel doorgeven aan uw bestaande contacten, of niet.</string>
+    <string name="edit_profile_activity_propagating_no_contact">voor niemand</string>
+    <string name="edit_profile_activity_propagating_profile">Profiel wijzigingen doorgeven</string>
+    <string name="edit_profile_activity_remove_active_profile">U kunt het actieve profiel niet verwijderen</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">Nadat de relatie is aangemaakt, is het sterk aan te raden deze te certificeren om de veiligheid te vergroten.</string>
+    <string name="enter_invitation_code_activity_enter_code">Minicode invoeren</string>
+    <string name="enter_invitation_code_activity_error_message">Deze code is ongeldig. Mogelijk is deze al gebruikt of verlopen.</string>
+    <string name="enter_invitation_code_activity_invitation_message">Nadat de relatie is aangemaakt, vergeet niet deze te certificeren om de veiligheid te vergroten.</string>
+    <string name="enter_invitation_code_activity_message">Voer de minicode van uw contactpersoon in om een</string>
+    <string name="enter_invitation_code_activity_onboarding_message">Een contactpersoon heeft u een minicode van 6 tekens gegeven om een</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">De inhoud van gesprekken wordt geëxporteerd in een ZIP-bestand.</string>
+    <string name="export_activity_content_title">Inhoud</string>
+    <string name="export_activity_content_to_export">Inhoud om te exporteren</string>
+    <string name="export_activity_do_not_leave_screen">Verlaat het scherm niet tijdens het exporteren.</string>
+    <string name="export_activity_export">Exporteren</string>
+    <string name="export_activity_file">bestand</string>
+    <string name="export_activity_files">bestanden</string>
+    <string name="export_activity_get_all_content">Het ophalen van de inhoud van het gesprek met %1$s is bezig.</string>
+    <string name="export_activity_get_one_chat">Het ophalen van de inhoud van gesprekken is bezig.</string>
+    <string name="export_activity_images">Beelden</string>
+    <string name="export_activity_no_content_to_export">Geen inhoud om te exporteren</string>
+    <string name="export_activity_one_conversation_zip_file">De inhoud van het gesprek wordt geëxporteerd in een ZIP-bestand.</string>
+    <string name="export_activity_save_location">Locatie</string>
+    <string name="export_activity_save_location_message">Kies waar u wilt exporteren.</string>
+    <string name="export_activity_select_content">Selecteer de inhoud die u wilt exporteren.\nAlleen niet-tijdelijke inhoud, geautoriseerd om te worden gekopieerd/opgeslagen/gedeeld, mag worden geëxporteerd.</string>
+    <string name="export_activity_success">Exporteren voltooid.</string>
+    <string name="export_activity_title">Gesprekken exporteren</string>
+    <string name="export_activity_videos">Videos</string>
+    <string name="export_activity_voice_messages">Spraakberichten</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Fatale fout, code %1$d.\nStart de applicatie opnieuw op en rapporteer het probleem, indien mogelijk, via een feedbackbericht. Sorry voor het ongemak</string>
+    <string name="fatal_error_activity_error_message">Fatale fout: %1$s&lt;br /&gt;
+        U moet de toepassing sluiten.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Contact</string>
+    <string name="feedback_activity_gdpr_notice">Gebruik dit formulier om toegang tot uw accountgegevens aan te vragen.</string>
+    <string name="feedback_activity_help">We stellen uw hulp op prijs bij het identificeren van problemen en het samenwerken met ons om ze op te lossen.</string>
+    <string name="feedback_activity_info_logs">Een Debug Log bevat alleen technische gegevens op laag niveau over applicatie-activiteiten en -gedrag, en onthult GEEN persoonlijke informatie van u.</string>
+    <string name="feedback_activity_logs">Debug Log</string>
+    <string name="feedback_activity_message">Bericht</string>
+    <string name="feedback_activity_send">Stuur</string>
+    <string name="feedback_activity_send_logs">Stuur een Debug Log</string>
+    <string name="feedback_activity_send_message">Feedback verzonden. Bedankt.</string>
+    <string name="feedback_activity_subject">Onderwerp</string>
+    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Deze actie maakt de huidige uitnodigingscode die aan dit profiel is gekoppeld ongeldig. Weet u zeker dat u een nieuwe code wilt genereren?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Genereer een nieuwe uitnodigingscode</string>
+    <string name="fullscreen_qrcode_activity_save_message">Importeer of scan deze uitnodiging QR-code met twinme om dit contact toe te voegen.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Opslaan in fotogalerij</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Machtigt spraakoproepen</string>
+    <string name="group_capabilities_activity_information_programmed_call">Definieer de datum/tijd van oproepen</string>
+    <string name="group_capabilities_activity_information_video_call">Autoriseren video -oproepen</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">De groepsbeheerder heeft deze actie niet geautoriseerd.</string>
+    <string name="group_member_activity_invitation_message">Nodig %1$s uit als een persoonlijk contact</string>
+    <string name="group_member_activity_invitation_title">Uitnodiging</string>
+    <string name="group_member_activity_invite_personnal_relation">Nodig uit als een persoonlijk contact</string>
+    <string name="group_member_activity_remove_message">Weet je zeker dat je leden uit deze groep wilt verwijderen?</string>
+    <string name="group_member_activity_section_administrator">Beheerder</string>
+    <string name="group_member_activity_section_invitation">Uitnodigingen</string>
+    <string name="group_member_activity_section_member">Leden</string>
+    <string name="group_member_activity_title">Groepsleden</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s is bezet</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Oproep geannuleerd met %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Oproep geweigerd met %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s is offline</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Niet geautoriseerd om te bellen</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s heeft deze relatie verwijderd</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s antwoordt niet</string>
+    <string name="info_item_activity_deleted">Verwijderd door ontvanger:</string>
+    <string name="info_item_activity_may_be_copied">Mag worden gekopieerd/opgeslagen/gedeeld…</string>
+    <string name="info_item_activity_may_not_be_copied">Mag niet worden gekopieerd/opgeslagen/gedeeld…</string>
+    <string name="info_item_activity_reactions">Reacties</string>
+    <string name="info_item_activity_received">Ontvangen:</string>
+    <string name="info_item_activity_seen">Bekeken:</string>
+    <string name="info_item_activity_sent">Verzonden:</string>
+    <string name="info_item_activity_updated">Gewijzigd</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Deze actie maakt de huidige uitnodigingscode ongeldig die is gekoppeld aan deze \"click-to-call\"-link. Bevestigen?</string>
+    <string name="invitation_call_activity_generate_code_title">Genereer een nieuwe code voor deze link</string>
+    <string name="invitation_call_activity_invite_message">Open het webadres %1$s of scan de QR-code, om \"%2$s\" te bellen.</string>
+    <string name="invitation_call_activity_message">Deel deze \"click-to-call\"-code met iemand die u vervolgens kan bellen, via internet of een mobiele app.</string>
+    <string name="invitation_call_activity_save_message">Scan deze QR-code om \"%1$s\" te bellen.</string>
+    <string name="invitation_call_activity_share">Publiceer</string>
+    <string name="invitation_call_activity_title">Externe oproep</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Minicode aanmaken</string>
+    <string name="invitation_code_activity_create_code_subtitle">om een contactpersoon uit te nodigen wanneer u geen toegang hebt tot de applicatie.</string>
+    <string name="invitation_code_activity_expiration">Vervaldatum:</string>
+    <string name="invitation_code_activity_history">Mijn minicodes</string>
+    <string name="invitation_code_activity_limit_message">Het maximale aantal actieve minicodes is bereikt. Je moet 24 uur wachten om nieuwe te genereren.</string>
+    <string name="invitation_code_activity_onboarding_message">Minicodes zijn eenmalig te gebruiken en slechts 24 uur geldig. U kunt ze aan uw contactpersonen geven om een</string>
+    <string name="invitation_code_activity_success_message">Het wordt sterk aanbevolen om relaties die u tot stand hebt gebracht te certificeren met een minicode om de beveiliging ervan te versterken.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Vraag je vriend bij jou in de buurt om de QR-code van de \"room\" te scannen met twinme, of tik op de uitnodigingscode om deze naar het klembord te kopiëren.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Audio</string>
+    <string name="last_calls_activity_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">Uw twinme-account op dit apparaat wordt overgezet naar twinme+.</string>
+    <string name="local_account_migration_activity_message_older_version">Zorg ervoor dat u beide apparaten updatet naar de nieuwste versie van de app voordat u met de overdracht begint, om te voorkomen dat u al uw relaties kwijtraakt.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">Contact toevoegen</string>
+    <string name="main_activity_add_group">Een groep maken</string>
+    <string name="main_activity_reset_conversation">Opnieuw instellen</string>
+    <string name="main_activity_reset_conversation_message">Als je dit gesprek reset, worden alle berichten verwijderd, ook die op het apparaat van je contact. Bevestigen?</string>
+    <string name="main_activity_reset_conversation_title">Stel gesprek opnieuw in</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Als je dit gesprek reset, worden alle berichten van het apparaat van elk groepslid verwijderd. Bevestigen?</string>
+    <string name="main_activity_reset_group_conversation_message">Als je dit gesprek reset, worden alle berichten van je apparaat verwijderd. Bevestigen?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">U moet upgraden naar twinme+ om deze functie te gebruiken. U kunt al uw accountgegevens migreren.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">U kunt al uw accountgegevens migreren.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme is beschikbaar als premium-versie met nog meer functies.</string>
+    <string name="migration_twinme_plus_activity_premium_title">Upgrade naar twinme+</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">Over</string>
+    <string name="navigation_activity_application_settings">Applicatie instellingen</string>
+    <string name="navigation_activity_feedback">Stuur feedback</string>
+    <string name="navigation_activity_getting_started">Beginnen</string>
+    <string name="navigation_activity_help">Hulp</string>
+    <string name="navigation_activity_profile">Profielen</string>
+    <string name="navigation_activity_settings">Instellingen</string>
+    <string name="navigation_activity_sign_out">Afmelden</string>
+    <string name="navigation_activity_sounds">Geluiden</string>
+    <string name="navigation_activity_support">Ondersteuning</string>
+    <string name="navigation_activity_title">Menu</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Audio oproep op %1$s</string>
+    <string name="notification_center_audio_message">Heeft u een audiobericht gestuurd</string>
+    <string name="notification_center_audio_message_received">Nieuw audiobericht</string>
+    <string name="notification_center_cancel">Wijs af</string>
+    <string name="notification_center_cleanup_conversation">Een aantal oude berichten zijn verwijderd.</string>
+    <string name="notification_center_deleted_contact">Contactpersoon verwijderd</string>
+    <string name="notification_center_file_message">Stuurde u een bestand</string>
+    <string name="notification_center_file_message_received">Nieuw bestand</string>
+    <string name="notification_center_group_invitation">Stuurde u een uitnodiging</string>
+    <string name="notification_center_group_invitation_received">Nieuwe uitnodiging</string>
+    <string name="notification_center_join_group">Je bent lid van de groep</string>
+    <string name="notification_center_message_received">Nieuw bericht</string>
+    <string name="notification_center_missed_audio_call_to">Gemiste audio oproep op %1$s</string>
+    <string name="notification_center_missed_video_call_to">Gemiste video oproep op %1$s</string>
+    <string name="notification_center_mute">Dempen</string>
+    <string name="notification_center_new_contact">Nieuw contact</string>
+    <string name="notification_center_photo_message">Stuurde u een foto</string>
+    <string name="notification_center_photo_message_received">Nieuwe foto</string>
+    <string name="notification_center_reaction">reageerde %1$s</string>
+    <string name="notification_center_reaction_message">Reageerd op een bericht</string>
+    <string name="notification_center_reaction_message_received">Reactie op een bericht</string>
+    <string name="notification_center_reset_message">Gesprek gewist</string>
+    <string name="notification_center_stop">Hou op</string>
+    <string name="notification_center_transfering_data">Overdracht van lopende berichten…</string>
+    <string name="notification_center_unmute">Dempen opheffen</string>
+    <string name="notification_center_updated_contact_avatar">Afbeelding bijgewerkt</string>
+    <string name="notification_center_updated_contact_name">Naam bijgewerkt</string>
+    <string name="notification_center_video_call_to">Video oproep aan %1$s</string>
+    <string name="notification_center_video_message">Stuurde u een video</string>
+    <string name="notification_center_video_message_received">Nieuwe video</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Audio-oproepen</string>
+    <string name="notification_channel_contact_title">Contacten</string>
+    <string name="notification_channel_group_title">Groepen</string>
+    <string name="notification_channel_message_title">Berichten</string>
+    <string name="notification_channel_missed_title">Gemiste oproepen</string>
+    <string name="notification_channel_system_title">Anderen</string>
+    <string name="notification_channel_video_title">Video-oproepen</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">Geprobeerd u te bellen</string>
+    <string name="notifications_fragment_item_audio_message">Stuurde u een audiobericht</string>
+    <string name="notifications_fragment_item_cleanup_message">heeft een aantal oude berichten opgeruimd.</string>
+    <string name="notifications_fragment_item_deleted_contact">Contactpersoon verwijderd</string>
+    <string name="notifications_fragment_item_file_message">Stuurde u een bestand</string>
+    <string name="notifications_fragment_item_group_invitation">Stuurde u een uitnodiging</string>
+    <string name="notifications_fragment_item_image_message">Stuurde u een foto</string>
+    <string name="notifications_fragment_item_join_group">Je bent lid van de groep</string>
+    <string name="notifications_fragment_item_new_contact">Nieuw contact</string>
+    <string name="notifications_fragment_item_reset_conversation">Heeft het gesprek gereset</string>
+    <string name="notifications_fragment_item_shortest_day">%1$d d</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$d u</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$d m</string>
+    <string name="notifications_fragment_item_shortest_second">%1$d s</string>
+    <string name="notifications_fragment_item_text_message">Stuurde u een bericht</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Afbeelding bijgewerkt</string>
+    <string name="notifications_fragment_item_updated_contact_name">Naam bijgewerkt</string>
+    <string name="notifications_fragment_item_video_call">Geprobeerde u een video oproep te sturen</string>
+    <string name="notifications_fragment_item_video_message">Stuurde u een video</string>
+    <string name="notifications_fragment_no_notification_message">Meldingen met betrekking tot contacten, gesprekken, oproepen, etc. worden hier weergegeven.</string>
+    <string name="notifications_fragment_no_notification_title">U heeft geen melding.</string>
+    <string name="notifications_fragment_reset">Weet je zeker dat je alle meldingen opnieuw wilt instellen?</string>
+    <string name="notifications_fragment_reset_title">Reset meldingen</string>
+    <string name="notifications_fragment_title">Meldingen</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">Lettertypen voor tekens</string>
+    <string name="personalization_activity_font_extra_large">Erg groot</string>
+    <string name="personalization_activity_font_large">Groot</string>
+    <string name="personalization_activity_font_small">Klein</string>
+    <string name="personalization_activity_haptic_feedback">Haptische feedback</string>
+    <string name="personalization_activity_haptic_feedback_message">Tactiel gevoel bij aanraking.</string>
+    <string name="personalization_activity_menu_choose_color">Standaardkleuren</string>
+    <string name="personalization_activity_menu_enter_color">Kleurcode</string>
+    <string name="personalization_activity_mode">Modus</string>
+    <string name="personalization_activity_mode_dark">Donker</string>
+    <string name="personalization_activity_mode_light">Licht</string>
+    <string name="personalization_activity_start_tab_information">Selecteer het tabblad waarop u de applicatie wilt starten.</string>
+    <string name="personalization_activity_start_tab_title">Standaard tabblad</string>
+    <string name="personalization_activity_system">Systeem</string>
+    <string name="personalization_activity_title">Personalisatie</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Verander de camera aan de voor-/achterzijde</string>
+    <string name="premium_services_activity_camera_control_description_2">In-/uitzoomen</string>
+    <string name="premium_services_activity_camera_control_description_3">Om een dierbare of cliënt op afstand te helpen</string>
+    <string name="premium_services_activity_camera_control_description_4">Een bewakingscamera beheren</string>
+    <string name="premium_services_activity_camera_control_subtitle">Bedien de camera van uw contactpersoon tijdens een gesprek met diens toestemming</string>
+    <string name="premium_services_activity_camera_control_title">Camerabediening op afstand</string>
+    <string name="premium_services_activity_click_to_call_description_1">Maak een \"klik om mij te bellen\"-code aan</string>
+    <string name="premium_services_activity_click_to_call_description_2">Publiceer of verspreid op welke manier dan ook</string>
+    <string name="premium_services_activity_click_to_call_description_3">Ontvangers scannen de code en bellen jou</string>
+    <string name="premium_services_activity_click_to_call_description_4">Anoniem zonder spoor in de cloud</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Laat gasten u bellen via internet</string>
+    <string name="premium_services_activity_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_activity_conversation_description_1">Media, bestanden, gesproken notities, berichten</string>
+    <string name="premium_services_activity_conversation_description_2">Ouder dan een bepaalde periode/datum</string>
+    <string name="premium_services_activity_conversation_description_3">Voor één gesprek of voor alle</string>
+    <string name="premium_services_activity_conversation_description_4">Alleen lokaal, geen impact op de andere kant</string>
+    <string name="premium_services_activity_conversation_subtitle">Inhoud exporteren en ruimte vrijmaken</string>
+    <string name="premium_services_activity_conversation_title">Beheer van gesprekken</string>
+    <string name="premium_services_activity_description_part1_subtitle">Directe verbinding tussen apparaten</string>
+    <string name="premium_services_activity_description_part1_title">HD-audio/videokwaliteit</string>
+    <string name="premium_services_activity_description_part2_subtitle">Geen spoor in de cloud</string>
+    <string name="premium_services_activity_description_part2_title">Privacy – Vertrouwelijkheid</string>
+    <string name="premium_services_activity_description_part3_subtitle">Energie-efficiëntie</string>
+    <string name="premium_services_activity_description_part3_title">Eco-verantwoord</string>
+    <string name="premium_services_activity_group_call_description_1">High-definition audio/video</string>
+    <string name="premium_services_activity_group_call_description_2">Directe verbinding tussen apparaten</string>
+    <string name="premium_services_activity_group_call_description_3">Veilig &amp; privé</string>
+    <string name="premium_services_activity_group_call_description_4">Geen spoor in de cloud</string>
+    <string name="premium_services_activity_group_call_subtitle">Nodig contacten uit om deel te nemen aan een spraak-/videogroepsgesprek</string>
+    <string name="premium_services_activity_group_call_title">Groepsoproepen</string>
+    <string name="premium_services_activity_privacy_description_1">Vergrendel app met biometrische of andere authenticatie</string>
+    <string name="premium_services_activity_privacy_description_2">Verberg laatste scherm in app-switcher</string>
+    <string name="premium_services_activity_privacy_description_3">Kortstondige berichten die na een bepaalde tijd verdwijnen</string>
+    <string name="premium_services_activity_privacy_description_4">Voorkom dat een contactpersoon u belt</string>
+    <string name="premium_services_activity_privacy_subtitle">Beheer app, contacten en berichten</string>
+    <string name="premium_services_activity_privacy_title">Meer privacy</string>
+    <string name="premium_services_activity_space_description_1">Meerdere profielen met bijbehorende relaties, gesprekken, geschiedenis</string>
+    <string name="premium_services_activity_space_description_2">Gepersonaliseerd uiterlijk, meldingen en instellingen</string>
+    <string name="premium_services_activity_space_description_3">Voor familie, vrienden, collega’s, zaken, sport, etc.</string>
+    <string name="premium_services_activity_space_description_4">Geheime Spaces niet vermeld, toegankelijk op naam</string>
+    <string name="premium_services_activity_space_subtitle">Voor elke sociale groep waarmee je omgaat</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">Deel je muziek live</string>
+    <string name="premium_services_activity_streaming_description_2">Elke deelnemer kan de mediaspeler bedienen</string>
+    <string name="premium_services_activity_streaming_description_3">Interactie op de oproep tegelijkertijd</string>
+    <string name="premium_services_activity_streaming_description_4">Dezelfde privacy als in het echte leven</string>
+    <string name="premium_services_activity_streaming_subtitle">Stream je media tijdens een gesprek</string>
+    <string name="premium_services_activity_streaming_title">Media delen</string>
+    <string name="premium_services_activity_transfert_description_1">Maak de doorschakelcode en het profiel aan</string>
+    <string name="premium_services_activity_transfert_description_2">Upload de URL of scan de code op een computer</string>
+    <string name="premium_services_activity_transfert_description_3">Maak een bladwijzer van de pagina in een browser</string>
+    <string name="premium_services_activity_transfert_description_4">Bellen vanaf de pagina tijdens een mobiel gesprek</string>
+    <string name="premium_services_activity_transfert_subtitle">Breng een lopend mobiel gesprek over naar een browser</string>
+    <string name="premium_services_activity_transfert_title">Oproep doorverbinden</string>
+    <string name="premium_services_activity_title">Nodig contacten uit om deel te nemen aan een lopend spraak-/videogesprek.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Vergrendel de applicatie met biometrische diensten of met een pincode.</string>
+    <string name="privacy_activity_hide_last_screen_message">Voorkom dat er voorbeelden verschijnen in de applicatiewisselaar</string>
+    <string name="privacy_activity_hide_last_screen_title">Verberg laatste scherm</string>
+    <string name="privacy_activity_lock_screen_message">Ontgrendel de toegang tot de applicatie met behulp van de biometrische of wachtwoordverificatieservices van uw apparaat. U kunt nog steeds inkomende oproepen beantwoorden en meldingen ontvangen terwijl de toegang tot de app is vergrendeld.</string>
+    <string name="privacy_activity_lock_screen_not_available">Deze optie vereist een versie van Android > 5.0</string>
+    <string name="privacy_activity_lock_screen_timeout">Time-out voor toegangsvergrendeling</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Onmiddellijk</string>
+    <string name="privacy_activity_lock_screen_title">Toegangsslot</string>
+    <string name="privacy_activity_title">Privacy</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Profiel toevoegen</string>
+    <string name="profile_fragment_create_profile">Maak een profiel aan</string>
+    <string name="profile_fragment_default_action">Activeren</string>
+    <string name="profile_fragment_default_profile_title">Actief profiel</string>
+    <string name="profile_fragment_identity_title">Profielen</string>
+    <string name="profile_fragment_message">Met dit profiel kunt u uw contacten uitnodigen om een privérelatie met u aan te gaan, onder uw controle.</string>
+    <string name="profile_fragment_twincode_title">Uitnodigingscode</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Een proxy toevoegen</string>
+    <string name="proxy_activity_add_placeholder">Plak of typ de URL van een proxy</string>
+    <string name="proxy_activity_already_use">Deze proxy is al geconfigureerd in je app.</string>
+    <string name="proxy_activity_enable">Een proxy gebruiken</string>
+    <string name="proxy_activity_format">Geldige proxy-URL-indelingen:</string>
+    <string name="proxy_activity_invalid_format">Ongeldige URL-indeling</string>
+    <string name="proxy_activity_limit">"Je hebt de limiet van het aantal toegestane proxy's bereikt (%1$d). Om een "</string>
+    <string name="proxy_activity_list">Mijn proxy\'s</string>
+    <string name="proxy_activity_list_information">Gebruik een proxy uit de onderstaande lijst, alleen als de applicatie geen verbinding kan maken met de service zonder proxy.</string>
+    <string name="proxy_activity_onboarding">Wanneer de toegang tot de signaalservers van de app in uw land geblokkeerd is, kunnen proxyservers deze blokkades in veel gevallen omzeilen en u in staat stellen om privé te communiceren. Naast de in-app proxyservers kunt u ook uw eigen proxyserver aanmaken of een proxyserver van iemand anders gebruiken. Proxyservers hebben onder geen enkele omstandigheid toegang tot de inhoud die wordt uitgewisseld.</string>
+    <string name="proxy_activity_information">Gebruik een proxy alleen als je geen verbinding kunt maken met de service via standaard wifi of mobiele netwerken.</string>
+    <string name="proxy_activity_share">Open de %1$s-link met Twinme op je apparaat om deze proxy automatisch te configureren.</string>
+    <string name="proxy_activity_title">Proxy</string>
+    <string name="proxy_activity_url">Wil je de URL van deze proxy gebruiken?</string>
+    <string name="proxy_activity_warning">Waarschuwing! De URL van deze proxy staat je niet toe om verbinding te maken met de service van de app.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">Machtigingen wijzigen</string>
+    <string name="quality_of_service_activity_enable_notifications">Notificaties aanzetten</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Zonder deze machtigingen kan het erg lang duren voordat berichten hun bestemming bereiken.</string>
+    <string name="quality_of_service_activity_notification_description">Toestaan dat app op de achtergrond wordt uitgevoerd</string>
+    <string name="quality_of_service_activity_notification_title">Berichtuitwisselingen zijn te traag?</string>
+    <string name="quality_of_service_activity_settings">Wijzig app-machtigingen in systeeminstellingen.</string>
+    <string name="quality_of_service_activity_step1_message">Versleutelde berichten worden rechtstreeks in realtime uitgewisseld tussen apparaten, met behulp van een "peer-to-peer"-benadering, zonder contentdistributieservers. Dit zorgt ervoor dat er geen spoor in de cloud is en biedt unieke privacybescherming.</string>
+    <string name="quality_of_service_activity_step2_message">Om een goede servicekwaliteit te garanderen, configureert u uw apparaat zodat de applicatie meldingen op de achtergrond kan ontvangen en sluit het uit van batterij-optimalisaties.</string>
+    <string name="quality_of_service_activity_step3_message">Gebruik de app regelmatig, zodat het besturingssysteem er prioriteit aan geeft en deze niet onverwacht beëindigt. \n\nEn vergeet niet je contacten hierover te informeren!</string>
+    <string name="quality_of_service_activity_warning_background_data">Sta toe dat de app mobiele data op de achtergrond gebruikt.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Sta toe dat de app pushmeldingen ontvangt.</string>
+    <string name="quality_of_service_activity_warning_run_background">Laat de app op de achtergrond draaien.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">Definieer als beheerder</string>
+    <string name="room_members_activity_delete_message">Bevestig het verwijderen van dit lid</string>
+    <string name="room_members_activity_moderators_title">Moderator</string>
+    <string name="room_members_activity_only_admin_message">De enige beheerder kan niet worden verwijderd.</string>
+    <string name="room_members_activity_owner_title">Eigenaar</string>
+    <string name="room_members_activity_participants_title">Deelnemers</string>
+    <string name="room_members_activity_remove_admin_title">Verwijderen als beheerder</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">Voer een uitnodigingslink in of plak deze.</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">Controleer de status van je verbinding met de service</string>
+    <string name="settings_advanced_activity_status_connection_title">Verbindingsstatus</string>
+    <string name="settings_advanced_activity_title">Geavanceerde instellingen</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Sta ontvangers toe om uw inhoud te kopiëren / opslaan / delen</string>
+    <string name="settings_activity_allow_copy_file_title">Elk type bestand</string>
+    <string name="settings_activity_allow_copy_text_title">Tekstberichten</string>
+    <string name="settings_activity_application_notifications">Applicatie meldingen</string>
+    <string name="settings_activity_audio_call_category_title">Audio-oproepen</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Naam van de beltoon</string>
+    <string name="settings_activity_audio_call_notification_title">Ringtone</string>
+    <string name="settings_activity_audio_call_vibration_title">Viber</string>
+    <string name="settings_activity_authorization_title">Rechten</string>
+    <string name="settings_activity_call_item_menu_all">Alle oproepen</string>
+    <string name="settings_activity_chat_category_title">Berichten</string>
+    <string name="settings_activity_chat_ringtone_title">Geluid naam</string>
+    <string name="settings_activity_chat_title">Geluid</string>
+    <string name="settings_activity_chat_vibration_title">Viber</string>
+    <string name="settings_activity_content_information">Definitie van media-inhoud die in een gesprek wordt verzonden: high definition vereist meer gegevens en dus meer transmissietijd.</string>
+    <string name="settings_activity_content_title">Media</string>
+    <string name="settings_activity_default_directory_title">Standaarddirectory voor het maken van back-ups van bestanden</string>
+    <string name="settings_activity_default_sound">Standaard</string>
+    <string name="settings_activity_default_value_message">Deze parameters worden standaard gebruikt op applicatieniveau.</string>
+    <string name="settings_activity_display_call_menu_missed">Alleen gemiste oproepen</string>
+    <string name="settings_activity_display_call_menu_none">Geen oproepen</string>
+    <string name="settings_activity_display_call_none">Geen</string>
+    <string name="settings_activity_display_call_title">Toon oproep meldingen in gesprekken</string>
+    <string name="settings_activity_display_notification_content_title">Toon de inhoud van het bericht</string>
+    <string name="settings_activity_display_notification_like_title">Reacties op berichten</string>
+    <string name="settings_activity_display_notification_sender_title">Toon bericht afzender</string>
+    <string name="settings_activity_ephemeral_message">Verwijder automatisch verzonden berichten</string>
+    <string name="settings_activity_ephemeral_section_title">LEVENSDUUR</string>
+    <string name="settings_activity_ephemeral_title">Verdwijnend bericht</string>
+    <string name="settings_activity_image_title">Foto</string>
+    <string name="settings_activity_message_properties_title">Berichteigenschappen</string>
+    <string name="settings_activity_reset_default_value">Reset naar standaardinstellingen</string>
+    <string name="settings_activity_reset_preferences_button_title">Reset naar standaardwaarden</string>
+    <string name="settings_activity_reset_preferences_message">Reset de meldingsinstellingen naar de standaardinstellingen van de toepassing.</string>
+    <string name="settings_activity_reset_preferences_title">Reset voorkeuren</string>
+    <string name="settings_activity_permissions_title">TOESTEMMINGEN</string>
+    <string name="settings_activity_silent_sound">Stil</string>
+    <string name="settings_activity_sound_enabled_title">GELUIDSMELDINGEN</string>
+    <string name="settings_activity_system_notifications_title">Systeemmeldingen</string>
+    <string name="settings_activity_system_settings_title">Systeeminstellingen</string>
+    <string name="settings_activity_video_call_category_title">Video-oproepen</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Naam van de beltoon</string>
+    <string name="settings_activity_video_call_notification_title">Ringtone</string>
+    <string name="settings_activity_video_call_vibration_title">Viber</string>
+    <string name="settings_activity_welcome_screen_category_title">WELKOM</string>
+    <string name="settings_activity_welcome_screen_summary">Toon de welkomstschermen</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">Toestaan dat deelnemers andere deelnemers uitnodigen als persoonlijke contacten</string>
+    <string name="settings_room_activity_allow_invite_contact">Sta deelnemers toe hun contacten uit te nodigen</string>
+    <string name="settings_room_activity_conference_notifications_inform">Eerste binnenkomst/laatste uitgang</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Alle in-/uitgangen</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Stil</string>
+    <string name="settings_room_activity_display_members">Toon leden</string>
+    <string name="settings_room_activity_room_type_channel">Kanaal - eenrichtingsverkeer</string>
+    <string name="settings_room_activity_room_type_channel_information">Alleen beheerders/moderators kunnen berichten plaatsen</string>
+    <string name="settings_room_activity_room_type_feedback">Kanaal - met feedback</string>
+    <string name="settings_room_activity_room_type_feedback_information">Feedback van deelnemers wordt alleen gezien door beheerders/moderators</string>
+    <string name="settings_room_activity_room_type_forum">Forum</string>
+    <string name="settings_room_activity_room_type_forum_information">Deelnemers kunnen berichten plaatsen die voor iedereen zichtbaar zijn</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Contacten</string>
+    <string name="share_activity_group_list">Groepen</string>
+    <string name="share_activity_title">Delen</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Click-to-call-code</string>
+    <string name="show_call_activity_information_code">Deel deze code om externe oproepen te ontvangen.</string>
+    <string name="show_call_activity_schedule_call">Gepland oproep</string>
+    <string name="show_call_activity_schedule_from">vanaf %1$s</string>
+    <string name="show_call_activity_schedule_from_to">%1$s van %2$s tot %3$s</string>
+    <string name="show_call_activity_schedule_message">Oproep gepland voor een elders gedefinieerde datum en tijd.</string>
+    <string name="show_call_activity_schedule_to">naar %1$s</string>
+    <string name="show_call_activity_settings_call">Type oproep</string>
+    <string name="show_call_activity_settings_group_calls">Groepsoproep</string>
+    <string name="show_call_activity_settings_limited">Gepland</string>
+    <string name="show_call_activity_settings_start">Start</string>
+    <string name="show_call_activity_settings_end">Einde</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Stem</string>
+    <string name="show_contact_activity_chat">Chat</string>
+    <string name="show_contact_activity_export_contents">Inhoud exporteren</string>
+    <string name="show_contact_activity_history_title">Geschiedenis</string>
+    <string name="show_contact_activity_identity_title">Kent me als</string>
+    <string name="show_contact_activity_last_calls">Laatste oproepen</string>
+    <string name="show_contact_activity_cleanup">Schoonmaak</string>
+    <string name="show_contact_activity_pending">In behandeling</string>
+    <string name="show_contact_activity_pending_message">Deze relatie is in oprichting. Even geduld aub.</string>
+    <string name="show_contact_activity_revoked">Verwijderd</string>
+    <string name="show_contact_activity_settings_coach_mark">Bepaal wat uw contactpersoon in deze relatie met u mag doen.</string>
+    <string name="show_contact_activity_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Voeg een lid toe</string>
+    <string name="show_group_activity_invitation_list">Uitnodigingen in behandeling:%1$d</string>
+    <string name="show_group_activity_leave">Verlaat de groep</string>
+    <string name="show_group_activity_leave_confirm_message">Weet u zeker dat u deze groep wilt verlaten?</string>
+    <string name="show_group_activity_leave_message">U verlaat deze groep en u hebt geen toegang meer tot de gesprekken.</string>
+    <string name="show_group_activity_member_list">Ledenlijst (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">Weet u zeker dat u deze groep wilt verwijderen?</string>
+    <string name="show_group_activity_remove_message">Deze groep wordt voor alle leden verwijderd en de gesprekken worden gewist.</string>
+    <string name="show_group_activity_title">Groep</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Beheerinterface</string>
+    <string name="show_room_activity_invite_participants">Nodig deelnemers uit</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Beeld</string>
+    <string name="space_appearance_activity_background_message">Pas de chatachtergrond aan met een kleur of afbeelding.</string>
+    <string name="space_appearance_activity_background_text_title">Tekst</string>
+    <string name="space_appearance_activity_background_title">Achtergrond</string>
+    <string name="space_appearance_activity_container_background_message">Achtergrond van een verzonden bericht</string>
+    <string name="space_appearance_activity_container_background_peer_message">Achtergrond van een ontvangen bericht</string>
+    <string name="space_appearance_activity_container_border_message">Rand van een verzonden bericht</string>
+    <string name="space_appearance_activity_container_border_peer_message">Rand van een ontvangen bericht</string>
+    <string name="space_appearance_activity_container_text_message">Tekst van een verzonden bericht</string>
+    <string name="space_appearance_activity_container_text_peer_message">Tekst van een ontvangen bericht</string>
+    <string name="space_appearance_activity_container_title">Bubbels</string>
+    <string name="space_appearance_activity_default_value">Standaardwaarde</string>
+    <string name="space_appearance_activity_general_title">Algemeen</string>
+    <string name="space_appearance_activity_menu_choose_color">Standaardkleuren</string>
+    <string name="space_appearance_activity_menu_enter_color">Kleurcode</string>
+    <string name="space_appearance_activity_opacity">Ondoorzichtigheid</string>
+    <string name="space_appearance_activity_preview_message">Ik ben mijn balletschoenen vergeten … Kun je ze alsjeblieft meenemen? 😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Hi lieverd!</string>
+    <string name="space_appearance_activity_preview_title">Voorbeeld</string>
+    <string name="space_appearance_activity_theme">Thema</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Een Space is waar uw verschillende persoonlijkheden uw meerdere sociale kringen ontmoeten, inclusief de meest geheime.</string>
+    <string name="spaces_activity_sample_business">Business</string>
+    <string name="spaces_activity_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_activity_sample_family">Familie</string>
+    <string name="spaces_activity_sample_family_name">Pa</string>
+    <string name="spaces_activity_sample_friends">Vrienden</string>
+    <string name="spaces_activity_sample_friends_name">Johny</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Er is een fout opgetreden. Probeer het alstublieft nog een keer.</string>
+    <string name="streaming_audio_activity_no_music_message">Media delen</string>
+    <string name="streaming_audio_activity_no_music_title">Geen muziek gevonden 🙁</string>
+    <string name="streaming_audio_activity_title">Media delen</string>
+    <string name="streaming_audio_activity_unsupported_message">Dit audioformaat wordt niet ondersteund door het apparaat van %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Geclassificeerde advertentie</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Aankondiging</string>
+    <string name="template_click_to_call_activity_template_help">Hulp</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Hulp</string>
+    <string name="template_click_to_call_activity_template_meeting">Ontmoeting</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Ontmoeting</string>
+    <string name="template_click_to_call_activity_template_video_bell">Video deurbel</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Deurbel</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">Naam (Dr. John Doe, mevrouw Smith,…)</string>
+    <string name="template_space_activity_template_business_profile">Mevrouw Samantha Smit</string>
+    <string name="template_space_activity_template_family_placeholder">Naam (vader, moeder,…)</string>
+    <string name="template_space_activity_template_family_profile">Mamma</string>
+    <string name="template_space_activity_template_friends_placeholder">Naam (Johny, Sam,…)</string>
+    <string name="template_space_activity_template_friends_profile">Sam</string>
+    <string name="template_space_activity_template_other">Ander</string>
+    <string name="template_space_activity_template_other_placeholder">Naam (vader, moeder, Johny, dokter John Doe,…)</string>
+    <string name="template_space_activity_template_title">Sjablonen</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">Vraag je vriend bij jou in de buurt om de QR-code van je uitnodiging te scannen met twinme, of tik op je uitnodigingscode om deze naar het klembord te kopiëren.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Weet u zeker dat u deze \"Call Transfer\"-code wilt verwijderen?</string>
+    <string name="transfert_call_activity_delete_message">Deze oproepdoorschakellink wordt verwijderd. Bevestigen?</string>
+    <string name="transfert_call_activity_gallery_message">Scan deze QR-code om uw mobiele gesprekken door te verbinden.</string>
+    <string name="transfert_call_activity_message">Stuur deze code door en maak een bladwijzer voor de URL ervan in de browser waarnaar u uw mobiele oproepen wilt doorverbinden.</string>
+    <string name="transfert_call_activity_reset_message">Deze actie maakt de huidige doorschakelcode ongeldig en maakt een nieuwe aan. Bevestigen?</string>
+    <string name="transfert_call_activity_saved_message">Doorschakelcode opgeslagen in de fotogalerij.</string>
+    <string name="transfert_call_activity_share">Overdragen</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Update beschikbaar</string>
+    <string name="update_app_activity_update_message">De laatste applicatie-update omvatte het volgende:</string>
+    <string name="update_app_activity_update_title">Update nu</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Video aan het bellen&#8230;</string>
+    <string name="video_call_activity_cannot_call">Kan geen videogesprek voeren</string>
+    <string name="video_call_activity_connecting">Verbinding maken&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">Wilt u de oproep beëindigen?</string>
+    <string name="video_call_activity_terminate">Oproep is beëindigd</string>
+    <string name="video_call_activity_terminate_busy">Oproep beëindigd: &lt;b&gt;%1$s&lt;/b&gt; is bezet</string>
+    <string name="video_call_activity_terminate_cancel">Oproep geannuleerd door &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_connectivity_error">Gesprek verbroken vanwege een verbindingsprobleem. Controleer je internetverbinding.</string>
+    <string name="video_call_activity_terminate_decline">Oproep afgewezen door &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_disconnected">Gesprek verbroken vanwege een netwerkfout. Probeer het opnieuw.</string>
+    <string name="video_call_activity_terminate_gone">Oproep beëindigd: &lt;b&gt;%1$s&lt;/b&gt; is offline</string>
+    <string name="video_call_activity_terminate_revoked">Gesprek beëindigd: &lt;b&gt;%1$s&lt;/b&gt; heeft deze relatie met jou verwijderd.</string>
+    <string name="video_call_activity_terminate_success">Oproep beëindigd  door &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_timeout">Oproep beëindigd: &lt;b&gt;%1$s&lt;/b&gt; geeft geen antwoord</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">Door op %1$s te drukken, bevestig ik dat ik heb gelezen en accepteer:</string>
+    <string name="welcome_activity_next">Volgende</string>
+    <string name="welcome_activity_pass">Overspringen</string>
+    <string name="welcome_activity_privacy_policy">Privacybeleid</string>
+    <string name="welcome_activity_start">Begin</string>
+    <string name="welcome_activity_step1_message">Berichten en high-definition spraak-/video-oproepen, bescherming van privacy door ontwerp.</string>
+    <string name="welcome_activity_step2_message">Veilige "peer-to-peer"-communicatie: geen sporen in de cloud.</string>
+    <string name="welcome_activity_step3_message">Geen telefoonnummer, geen adresboek, geen user-id: u kiest zelf hoe u geïdentificeerd wilt worden op basis van met wie u communiceert.</string>
+    <string name="welcome_activity_terms_of_use">Gebruiksvoorwaarden</string>
+
+</resources>

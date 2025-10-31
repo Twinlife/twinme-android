@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/show_room_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/show_room_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/show_room_activity_avatar_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/show_room_activity_tool_bar" />
+
+    <ScrollView
+        android:id="@+id/show_room_activity_content_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/show_room_activity_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/show_contact_content">
+
+            <View
+                android:id="@+id/show_room_activity_slide_mark_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_widthPercent="12%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_content_header_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/show_room_activity_name_view"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:lines="2"
+                    app:layout_widthPercent="56%" />
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_room_activity_edit_clickable_view"
+                    app:layout_widthPercent="19.73%"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/application_edit">
+
+                    <ImageView
+                        android:id="@+id/show_room_activity_edit_image_view"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/action_edit"
+                        app:layout_aspectRatio="100%"
+                        app:layout_heightPercent="40%" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_action_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_content_header_view">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_room_activity_chat_clickable_view"
+                    app:layout_marginStartPercent="10.53%"
+                    app:layout_widthPercent="17.07%">
+
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <org.twinlife.twinme.utils.RoundedView
+                            android:id="@+id/show_room_activity_chat_rounded_view"
+                            android:layout_width="match_parent"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="100%" />
+
+                        <ImageView
+                            android:id="@+id/show_room_activity_chat_view"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/chat"
+                            android:layout_centerInParent="true"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="34.37%" />
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <TextView
+                        android:id="@+id/show_room_activity_chat_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="@string/show_contact_activity_chat" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_room_activity_audio_clickable_view"
+                    android:layout_centerHorizontal="true"
+                    app:layout_widthPercent="17.07%">
+
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <org.twinlife.twinme.utils.RoundedView
+                            android:id="@+id/show_room_activity_audio_rounded_view"
+                            android:layout_width="match_parent"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="100%" />
+
+                        <ImageView
+                            android:id="@+id/show_room_activity_audio_view"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/audio_call"
+                            android:layout_centerInParent="true"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="34.37%" />
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <TextView
+                        android:id="@+id/show_room_activity_audio_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="@string/show_contact_activity_audio" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_room_activity_video_clickable_view"
+                    android:layout_centerHorizontal="true"
+                    app:layout_widthPercent="17.07%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_marginEndPercent="10.53%">
+
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <org.twinlife.twinme.utils.RoundedView
+                            android:id="@+id/show_room_activity_video_rounded_view"
+                            android:layout_width="match_parent"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="100%" />
+
+                        <ImageView
+                            android:id="@+id/show_room_activity_video_view"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/video_call"
+                            android:layout_centerInParent="true"
+                            app:layout_aspectRatio="157.14%"
+                            app:layout_widthPercent="34.37%" />
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <TextView
+                        android:id="@+id/show_room_activity_video_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="@string/show_contact_activity_video" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/show_room_activity_members_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_action_view"
+                android:text="@string/show_room_activity_room_title"
+                android:textAllCaps="true"
+                android:maxLines="1"
+                app:layout_widthPercent="53.33%"
+                app:layout_marginEndPercent="4%"
+                app:layout_marginStartPercent="4%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_list_member_layout_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_light_border"
+                android:layout_below="@+id/show_room_activity_members_title_view">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/show_room_activity_list_member_view"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_admin_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_list_member_layout_view"
+                android:background="@drawable/item_light_border">
+
+                <TextView
+                    android:id="@+id/show_room_activity_admin_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/show_room_activity_admin_title"
+                    app:layout_marginStartPercent="4%" />
+
+                <ImageView
+                    android:id="@+id/show_room_activity_admin_accessory_view"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="?attr/black_color"
+                    app:layout_aspectRatio="54.55%"
+                    app:layout_heightPercent="25%"
+                    app:layout_marginEndPercent="5.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/show_room_activity_identity_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_admin_view"
+                android:text="@string/show_contact_activity_identity_title"
+                android:textAllCaps="true"
+                android:maxLines="1"
+                app:layout_widthPercent="53.33%"
+                app:layout_marginEndPercent="4%"
+                app:layout_marginStartPercent="4%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_identity_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_light_border"
+                android:layout_below="@+id/show_room_activity_identity_title_view">
+
+                <ImageView
+                    android:id="@+id/show_contact_activity_identity_image_view"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/knows_me_as_icon"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="31.67%"
+                    app:layout_marginStartPercent="4.53%" />
+
+                <TextView
+                    android:id="@+id/show_room_activity_identity_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:layout_marginStartPercent="12.8%"
+                    app:layout_marginEndPercent="3.73%" />
+
+                <org.twinlife.twinme.utils.CircularImageView
+                    android:id="@+id/show_room_activity_identity_avatar_view"
+                    android:scaleType="fitCenter"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="56.67%"
+                    app:layout_marginRightPercent="4%"
+                    app:layout_marginEndPercent="4%" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/show_room_activity_last_calls_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_identity_view"
+                android:text="@string/show_contact_activity_history_title"
+                android:textAllCaps="true"
+                android:maxLines="1"
+                app:layout_widthPercent="53.33%"
+                app:layout_marginEndPercent="4%"
+                app:layout_marginStartPercent="4%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_last_calls_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_last_calls_title_view"
+                android:background="@drawable/item_light_border">
+
+                <ImageView
+                    android:id="@+id/show_room_activity_last_calls_image_view"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/last_audio_call"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="31.67%"
+                    app:layout_marginStartPercent="4.53%" />
+
+                <TextView
+                    android:id="@+id/show_room_activity_last_calls_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/show_contact_activity_last_calls"
+                    app:layout_marginEndPercent="4.27%"
+                    app:layout_marginStartPercent="12.8%" />
+
+                <ImageView
+                    android:id="@+id/show_room_activity_last_calls_accessory_view"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="?attr/black_color"
+                    app:layout_aspectRatio="54.55%"
+                    app:layout_heightPercent="25%"
+                    app:layout_marginEndPercent="5.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/show_room_activity_conversations_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_last_calls_view"
+                android:text="@string/conversations_fragment_title"
+                android:textAllCaps="true"
+                android:maxLines="1"
+                app:layout_widthPercent="53.33%"
+                app:layout_marginEndPercent="4%"
+                app:layout_marginStartPercent="4%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_files_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_conversations_title_view"
+                android:background="@drawable/item_light_border">
+
+                <ImageView
+                    android:id="@+id/show_room_activity_files_image_view"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/gallery_icon"
+                    app:layout_aspectRatio="116.45%"
+                    app:layout_heightPercent="29.17%"
+                    app:layout_marginStartPercent="4%" />
+
+                <TextView
+                    android:id="@+id/show_room_activity_files_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/conversation_files_activity_title"
+                    app:layout_marginEndPercent="4.27%"
+                    app:layout_marginStartPercent="12.8%" />
+
+                <ImageView
+                    android:id="@+id/show_room_activity_files_accessory_view"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="@color/accessory_color"
+                    app:layout_aspectRatio="54.55%"
+                    app:layout_heightPercent="25%"
+                    app:layout_marginEndPercent="5.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_export_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_files_view"
+                android:background="@drawable/item_light_border">
+
+                <ImageView
+                    android:id="@+id/show_room_activity_export_image_view"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/share_icon"
+                    app:layout_aspectRatio="98.94%"
+                    app:layout_heightPercent="29.17%"
+                    app:layout_marginStartPercent="4.53%" />
+
+                <TextView
+                    android:id="@+id/show_room_activity_export_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/show_contact_activity_export_contents"
+                    app:layout_marginEndPercent="4.27%"
+                    app:layout_marginStartPercent="12.8%" />
+
+                <ImageView
+                    android:id="@+id/show_room_activity_export_accessory_view"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="@color/accessory_color"
+                    app:layout_aspectRatio="54.55%"
+                    app:layout_heightPercent="25%"
+                    app:layout_marginEndPercent="5.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/show_room_activity_clean_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/show_room_activity_export_view"
+                android:background="@drawable/item_light_border">
+
+                <ImageView
+                    android:id="@+id/show_room_activity_clean_image_view"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/cleanup_icon"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="31.67%"
+                    app:layout_marginStartPercent="4.53%" />
+
+                <TextView
+                    android:id="@+id/show_room_activity_clean_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/show_contact_activity_cleanup"
+                    app:layout_marginEndPercent="4.27%"
+                    app:layout_marginStartPercent="12.8%" />
+
+                <ImageView
+                    android:id="@+id/show_room_activity_clean_accessory_view"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="@color/accessory_color"
+                    app:layout_aspectRatio="54.55%"
+                    app:layout_heightPercent="25%"
+                    app:layout_marginEndPercent="5.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </ScrollView>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/show_room_activity_back_clickable_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="horizontal"
+        app:layout_aspectRatio="100%">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/show_room_activity_back_rounded_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/show_room_activity_back_image_view"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/start_chevron"
+            app:layout_aspectRatio="62.5%"
+            app:layout_heightPercent="37.5%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/show_room_activity_fallback_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/show_room_activity_avatar_view">
+
+        <TextView
+            style="@style/textAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/application_contact_not_found"
+            android:textStyle="italic"
+            app:layout_marginEndPercent="10%"
+            app:layout_marginStartPercent="10%"
+            app:layout_marginTopPercent="10%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/show_room_activity_remove_view"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            app:layout_heightPercent="21.06%">
+
+            <TextView
+                android:id="@+id/show_room_activity_remove_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/application_delete"
+                app:layout_marginStartPercent="4.27%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/show_room_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

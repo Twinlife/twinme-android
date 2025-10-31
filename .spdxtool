@@ -1,0 +1,13 @@
+[default]
+ignore=[
+"*.svg",
+"*.properties",
+"*.toml",
+"*.ico",
+"*.xml",
+"*.ogg",
+"*.html",
+".env.*",
+"*.webmanifest",
+"*.yml"
+]

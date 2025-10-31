@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_activity_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_activity_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/twinme_navigation_content_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/twinme_navigation_tool_bar"
+                layout="@layout/drawer_layout_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/twinme_navigation_call_tool_bar"
+                layout="@layout/calls_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/twinme_navigation_conversations_tool_bar"
+                layout="@layout/conversations_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/twinme_navigation_frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/twinme_navigation_bottom_navigation"
+            android:layout_below="@+id/twinme_navigation_content_tool_bar" />
+
+        <View
+            android:id="@+id/twinme_navigation_bottom_navigation_shadow_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_above="@id/twinme_navigation_bottom_navigation"
+            android:background="@drawable/shadow_bottom_navigation_bar" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/twinme_navigation_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            app:itemTextColor="@drawable/bottom_navigation_color"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconSize="30dp"
+            app:itemTextAppearanceActive="@style/TwinmeBottomNavitationStyle"
+            app:itemTextAppearanceInactive="@style/TwinmeBottomNavitationStyle" />
+
+        <View
+            android:id="@+id/twinme_navigation_overlay_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:visibility="invisible" />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_activity_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_activity_drawer_profiles_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/main_activity_drawer_separator_view"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="?attr/separator_color"
+            android:layout_toEndOf="@+id/main_activity_drawer_profiles_list_view"
+            android:layout_toRightOf="@+id/main_activity_drawer_profiles_list_view"/>
+
+        <ListView
+            android:id="@+id/main_activity_drawer_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/main_activity_drawer_separator_view"
+            android:layout_toRightOf="@+id/main_activity_drawer_separator_view"
+            android:choiceMode="singleChoice"
+            android:background="?attr/white_color"
+            android:divider="@null" />
+
+        <org.twinlife.twinme.utils.coachmark.CoachMarkView
+            android:id="@+id/main_activity_coach_mark_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView
+        android:id="@+id/main_activity_success_authentification_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/base_item_activity_info_date_item_state_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="23.33%"
+            app:layout_marginLeftPercent="3.2%"
+            app:layout_marginStartPercent="3.2%" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/base_item_activity_info_date_item_state_bubble_view"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="13.33%"
+            app:layout_marginStartPercent="4%" />
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_info_date_item_state_avatar_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="23.33%"
+            app:layout_marginLeftPercent="3.2%"
+            app:layout_marginStartPercent="3.2%" />
+
+        <TextView
+            android:id="@+id/base_item_activity_info_date_item_title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_toEndOf="@+id/base_item_activity_info_date_item_state_image_view"
+            android:layout_toRightOf="@+id/base_item_activity_info_date_item_state_image_view"
+            android:text="@string/info_item_activity_sent"
+            android:textColor="?attr/font_default_color"
+            app:layout_widthPercent="37.33%"
+            app:layout_marginLeftPercent="2.93%"
+            app:layout_marginStartPercent="2.93%" />
+
+        <TextView
+            android:id="@+id/base_item_activity_info_date_item_date_text_view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAlignment="gravity"
+            android:gravity="center_vertical|end"
+            android:textColor="?attr/font_default_color"
+            app:layout_widthPercent="41.33%"
+            app:layout_marginEndPercent="4.27%"
+            app:layout_marginRightPercent="4.27%" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/separator_color"
+            android:layout_alignParentBottom="true" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</RelativeLayout>

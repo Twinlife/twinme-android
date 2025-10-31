@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/call_again_confirm_view_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="visible" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_again_confirm_view_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:id="@+id/call_again_confirm_view_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="12%" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/call_again_confirm_view_avatar_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="8dp"
+            android:padding="3dp"
+            app:strokeWidth="3dp"
+            app:strokeColor="@android:color/white"
+            app:shapeAppearanceOverlay="@style/CircleImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_again_confirm_view_slide_mark_view"
+            app:layout_aspectRatio="100%"/>
+
+        <View
+            android:id="@+id/call_again_confirm_view_bullet_view"
+            android:layout_alignRight="@+id/call_again_confirm_view_avatar_view"
+            android:layout_alignEnd="@+id/call_again_confirm_view_avatar_view"
+            android:layout_alignTop="@+id/call_again_confirm_view_avatar_view"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_again_confirm_view_icon_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="8dp"
+            android:layout_alignTop="@+id/call_again_confirm_view_avatar_view"
+            android:layout_toRightOf="@+id/call_again_confirm_view_bullet_view"
+            android:layout_toEndOf="@+id/call_again_confirm_view_bullet_view">
+
+            <ImageView
+                android:id="@+id/call_again_confirm_view_icon_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/generate_code"
+                app:layout_aspectRatio="100%"/>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/call_again_confirm_view_title_view"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_again_confirm_view_avatar_view"
+            android:gravity="center"
+            android:lines="1"
+            app:layout_widthPercent="94%" />
+
+        <TextView
+            android:id="@+id/call_again_confirm_view_message_view"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_again_confirm_view_title_view"
+            android:gravity="center"
+            android:text="@string/conversation_activity_audio_call"
+            app:layout_widthPercent="94%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_again_confirm_view_confirm_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_again_confirm_view_message_view">
+
+            <TextView
+                android:id="@+id/call_again_confirm_view_confirm_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/calls_fragment_call_again_title" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_again_confirm_view_cancel_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/call_again_confirm_view_confirm_view">
+
+            <TextView
+                android:id="@+id/call_again_confirm_view_cancel_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/application_cancel" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

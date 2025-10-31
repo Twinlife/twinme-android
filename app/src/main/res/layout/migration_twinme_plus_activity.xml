@@ -1,0 +1,109 @@
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/migration_twinme_plus_activity_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="5.39%"
+        app:layout_heightPercent="6.6%">
+
+        <ImageView
+            android:id="@+id/migration_twinme_activity_plus_logo"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:layout_aspectRatio="156.25%"
+            android:src="@drawable/twinme_plus_logo" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/migration_twinme_plus_activity_pass_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            app:layout_widthPercent="18.66%"
+            android:contentDescription="@string/application_cancel">
+
+            <ImageView
+                android:id="@+id/migration_twinme_plus_activity_close_view"
+                android:scaleType="fitCenter"
+                android:layout_centerInParent="true"
+                android:src="@drawable/close"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="54.54%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <ImageView
+        android:id="@+id/migration_twinme_plus_activity_image_view"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/migration_twinme_plus_activity_header_view"
+        app:layout_heightPercent="30.58%"
+        app:layout_aspectRatio="120.97%"
+        android:src="@drawable/migration"
+        app:layout_marginTopPercent="8.99%" />
+
+    <TextView
+        android:id="@+id/migration_twinme_plus_activity_migration_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/migration_twinme_plus_activity_image_view"
+        android:gravity="center_horizontal"
+        android:text="@string/migration_twinme_plus_activity_updgrade_message"
+        app:layout_widthPercent="94.67%"
+        app:layout_marginTopPercent="6.59%" />
+
+    <TextView
+        android:id="@+id/migration_twinme_plus_activity_migration_data_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/migration_twinme_plus_activity_migration_text_view"
+        android:gravity="center_horizontal"
+        android:text="@string/migration_twinme_plus_activity_updgrade_account"
+        app:layout_widthPercent="94.67%"
+        app:layout_marginTopPercent="2.25%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/migration_twinme_plus_activity_upgrade_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_marginBottomPercent="6.74%">
+
+        <TextView
+            android:id="@+id/migration_twinme_plus_activity_upgrade_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/migration_twinme_plus_activity_premium_title"
+            app:layout_widthPercent="89.06%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/migration_twinme_plus_activity_do_not_show_view"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_widthPercent="51.2%"
+        app:layout_heightPercent="6.74%">
+
+        <TextView
+            android:id="@+id/migration_twinme_plus_activity_do_not_show_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/application_do_not_display"
+            app:layout_widthPercent="89.58%"
+            app:layout_heightPercent="70%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

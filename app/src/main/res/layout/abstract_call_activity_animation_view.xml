@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <org.twinlife.twinme.utils.RoundedView
+        android:id="@+id/abstract_call_activity_red_rounded_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        app:layout_aspectRatio="100%" />
+
+    <org.twinlife.twinme.utils.RoundedView
+        android:id="@+id/abstract_call_activity_green_rounded_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        app:layout_aspectRatio="100%" />
+
+    <org.twinlife.twinme.utils.RoundedView
+        android:id="@+id/abstract_call_activity_blue_rounded_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        app:layout_aspectRatio="100%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

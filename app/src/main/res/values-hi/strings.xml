@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">स्वीकार करें</string>
+    <string name="application_account_deleted">आपका खाता हटा दिया गया है, अब आपको एप्लिकेशन को अनइंस्टॉल करना होगा।</string>
+    <string name="application_add_contact_no_profile">किसी संपर्क को आमंत्रित करने से पहले आपको एक प्रोफ़ाइल पूरी करनी होगी जो आपका प्रतिनिधित्व करती है। आगे बढ़ना?</string>
+    <string name="application_all">सब</string>
+    <string name="application_appearance">दिखावट</string>
+    <string name="application_are_you_sure">क्या आप निश्चित हैं?</string>
+    <string name="application_authorization_camera">एप्लिकेशन को सिस्टम सेटिंग में कैमरा एक्सेस करने दें।</string>
+    <string name="application_authorization_go_settings">सिस्टम सेटिंग्स पर जाएं</string>
+    <string name="application_authorization_microphone">एप्लिकेशन को सिस्टम सेटिंग में माइक्रोफ़ोन तक पहुंचने दें।</string>
+    <string name="application_authorization_microphone_camera">एप्लिकेशन को सिस्टम सेटिंग में माइक्रोफ़ोन और कैमरा एक्सेस करने की अनुमति दें।</string>
+    <string name="application_authorization_title">अनुपलब्ध प्राधिकरण</string>
+    <string name="application_back">वापस जाएँ</string>
+    <string name="application_camera">कैमरा</string>
+    <string name="application_cancel">रद्द करें</string>
+    <string name="application_canceled_operation"> आपरेशन रद्द करें</string>
+    <string name="application_checking_connection">कनेक्शन की जाँच</string>
+    <string name="application_color">रंग</string>
+    <string name="application_configuration">विन्यास</string>
+    <string name="application_confirm">पुष्टि करें</string>
+    <string name="application_confirm_deletion">हटाने की पुष्टि करें</string>
+    <string name="application_connected">सुरक्षित कनेक्शन सक्षम है।</string>
+    <string name="application_connection_status_no_network">इंटरनेट एक्सेस नहीं है।</string>
+    <string name="application_connection_status_no_network_message">अपना नेटवर्क कनेक्शन जांचें।</string>
+    <string name="application_connection_status_no_services">सेवा तक पहुंच नहीं है।</string>
+    <string name="application_connection_status_no_services_message">VPN का उपयोग करके देखें।</string>
+    <string name="application_contact_not_found">इस संपर्क ने आपके साथ यह संबंध हटा दिया है और अब संपर्क नहीं किया जा सकता है।</string>
+    <string name="application_continue_without_premium_services">प्रीमियम सेवाओं के बिना जारी रखें</string>
+    <string name="application_create_group_no_profile">आपको एक प्रोफ़ाइल पूरी करनी होगी जो इस समूह में आपका प्रतिनिधित्व करती हो। आगे बढ़ना?</string>
+    <string name="application_database_error">डाटाबेस त्रुटि</string>
+    <string name="application_decline">रद्द करें</string>
+    <string name="application_default">चूक</string>
+    <string name="application_delete">हटाना</string>
+    <string name="application_delete_message">क्या आप वाकई इसे हटाना चाहते हैं?</string>
+    <string name="application_denied_permissions">आवश्यक अनुमतियों नहीं दी गई हैं</string>
+    <string name="application_description">विवरण</string>
+    <string name="application_display_all">सभी प्रदर्शित करें</string>
+    <string name="application_do_not_display">अब और प्रदर्शित न करें</string>
+    <string name="application_edit">संपादित करें</string>
+    <string name="application_error_file_not_found">फ़ाइल नहीं मिली।</string>
+    <string name="application_error_media_not_supported">यह छवि/वीडियो प्रारूप एप्लिकेशन द्वारा समर्थित नहीं है।</string>
+    <string name="application_error_no_storage_space">अपर्याप्त भंडारण स्थान</string>
+    <string name="application_group_limit_reached">समूह के सदस्यों की अधिकतम संख्या (%1$d) पार हो गई।</string>
+    <string name="application_group_not_found">आपको समूह से हटा दिया गया है</string>
+    <string name="application_items_selected">%1$d आइटम चुने गए</string>
+    <string name="application_later">बाद में</string>
+    <string name="application_low_usage_message">चेतावनी, यदि आप अक्सर एप्लिकेशन का पर्याप्त उपयोग नहीं करते हैं, तो ओएस संदेशों का आदान-प्रदान करने के लिए इसे नहीं जगा सकता है!</string>
+    <string name="application_one_item_selected">1 आइटम चुना गया</string>
+    <string name="application_migration_no_storage_space">माइग्रेशन पूरा करने के लिए आपके डिवाइस पर पर्याप्त जगह नहीं है। एप्लिकेशन को बंद करें, कुछ स्थान खाली करें और अपडेट पूरा करने के लिए ऐप को फिर से लॉन्च करें।</string>
+    <string name="application_migration_no_storage_space_message">दोनों में से एक डिवाइस में पर्याप्त संग्रहण स्थान नहीं है। माइग्रेशन को पुनः आरंभ करने से पहले उस डिवाइस पर स्थान खाली करें।</string>
+    <string name="application_name_hint">नाम</string>
+    <string name="application_network_connecting">सेवा twinme से कनेक्ट कर रहा है</string>
+    <string name="application_network_connectivity">नेटवर्क कनेक्टिविटी मौजूद है</string>
+    <string name="application_network_status_airplane_message">हवाई जहाज मोड सक्रिय है।</string>
+    <string name="application_network_status_airplane_resolution">हवाई जहाज़ मोड को अक्षम और Wi-Fi या मोबाइल नेटवर्क से कनेक्ट करें।</string>
+    <string name="application_network_status_connected_no_internet">twinme सेवा  के लिए कोई नेटवर्क पहुंच नहीं।</string>
+    <string name="application_network_status_connected_resolution">किसी अन्य नेटवर्क से कनेक्ट करने के लिए प्रयास करें।</string>
+    <string name="application_network_status_connection_timeout">इंटरनेट कनेक्शन स्थापित नहीं कर सकता।</string>
+    <string name="application_network_status_no_internet">कोई इंटरनेट कनेक्शन नहीं।</string>
+    <string name="application_network_status_wifi_disabled">वाई-फाई से अक्षम है।</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">वाई-फाई अक्षम है और कोई मोबाइल इंटरनेट कनेक्शन नहीं है।</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">कृपया, वाई-फाई चालू करें।</string>
+    <string name="application_network_status_wifi_disabled_resolution">कृपया, वाई-फ़ाई चालू करें या एक मोबाइल इंटरनेट कनेक्शन को सक्रिय करें।</string>
+    <string name="application_new_feature">नई जे!</string>
+    <string name="application_no">नहीं</string>
+    <string name="application_no_network_connectivity">कोई नेटवर्क कनेक्टिविटी नहीं</string>
+    <string name="application_no_service">कोई सेवा नहीं</string>
+    <string name="application_not_authorized_operation">अधिकृत नहीं आपरेशन</string>
+    <string name="application_not_authorized_operation_by_your_contact">संचालन आपके संपर्क द्वारा अधिकृत नहीं है।</string>
+    <string name="application_not_connected">सुरक्षित कनेक्शन प्रगति पर है…</string>
+    <string name="application_not_signed_in">सेवा twinme से कनेक्ट नहीं</string>
+    <string name="application_now">अभी</string>
+    <string name="application_ok">ठीक है</string>
+    <string name="application_operation_failure">कार्रवाई विफल रही</string>
+    <string name="application_operation_irreversible">यह ऑपरेशन अपरिवर्तनीय है</string>
+    <string name="application_permission_camera">नई फ़ोटो या वीडियो लेने के लिए कैमरे को एक्सेस करने की अनुमति आवश्यक है।</string>
+    <string name="application_permission_scan_code">क्यूआर कोड को स्कैन करने के लिए कैमरे तक पहुंचने की अनुमति आवश्यक है।</string>
+    <string name="application_photo_gallery">तस्वीर ऐल्बम</string>
+    <string name="application_profile">प्रोफ़ाइल</string>
+    <string name="application_profile_avatar_not_defined"> इस प्रोफाइल के साथ आमंत्रित करने के लिए आपको आपका प्रतिनिधित्व करता चित्र डालना होगा।</string>
+    <string name="application_profile_name_not_defined">इस प्रोफाइल के साथ संपर्कों को आमंत्रित करने के लिए आपको अपना प्रतिनिधित्व करता नाम परिभाषित करने की जरूरत है।</string>
+    <string name="application_remove">हटाना</string>
+    <string name="application_save">सहेजें</string>
+    <string name="application_search_hint">खोज</string>
+    <string name="application_select">चुनते हैं</string>
+    <string name="application_select_application">एप्लीकेशन चुनें</string>
+    <string name="application_select_more">और चुनें...</string>
+    <string name="application_server_timeout">सर्वर समय समाप्ति</string>
+    <string name="application_size_unit">एमबी</string>
+    <string name="application_theme">विषय</string>
+    <string name="application_timeout">समाप्ति देरी</string>
+    <string name="application_timeout_day">1 दिन</string>
+    <string name="application_timeout_hour">1 घंटा</string>
+    <string name="application_timeout_hours">%1$d घंटे</string>
+    <string name="application_timeout_minute">1 मिनट</string>
+    <string name="application_timeout_minutes">%1$d मिनट</string>
+    <string name="application_timeout_month">1 महीना</string>
+    <string name="application_timeout_seconds">%1$d सेकंड</string>
+    <string name="application_timeout_week">1 सप्ताह</string>
+    <string name="application_unknown_name">अज्ञात</string>
+    <string name="application_upgrade">twinme को अपग्रेड करना</string>
+    <string name="application_webrtc_failure">WebRTC विफलता</string>
+    <string name="application_wrong_configuration">कॉन्फ़िगरेशन गलत</string>
+    <string name="application_yes">हाँ</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">एप्लिकेशन कोड</string>
+    <string name="about_activity_information">जानकारी</string>
+    <string name="about_activity_legal">कानूनी नोटिस</string>
+    <string name="about_activity_libraries">लाइब्रेरी</string>
+    <string name="about_activity_message">twinme व्यक्तिगत जानकारी तक पहुंच के बिना एक सुरक्षित चैट और वॉयस / वीडियो कॉल सेवा है।\n\ntwinme WebRTC पर आधारित है, जो वेब पर रीयल-टाइम मल्टीमीडिया संचार सुरक्षित (अंत तक अंत एन्क्रिप्टेड) पीयर-टू-पीयर (कोई रिले सर्वर) के लिए नया मानक है।</string>
+    <string name="about_activity_open_source_information">एप्लिकेशन का स्रोत कोड AGPL-3.0 लाइसेंस के अंतर्गत GitHub पर ओपन सोर्स के रूप में उपलब्ध है।</string>
+    <string name="about_activity_open_sources_licences">ओपन सोर्स लाइसेंस</string>
+    <string name="about_activity_premium_services">प्रीमियम सेवाएं</string>
+    <string name="about_activity_privacy_policy">गोपनीय नीति</string>
+    <string name="about_activity_quality_of_service">सेवा की गुणवत्ता</string>
+    <string name="about_activity_terms_of_use">सेवा के नियम</string>
+    <string name="about_activity_version">संस्करण</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">यह निमंत्रण हटा दिया गया था</string>
+    <string name="accept_group_invitation_activity_in_progress">सदस्यता प्रगति पर है</string>
+    <string name="accept_group_invitation_activity_message">%1$s आपको समूह में शामिल होने के लिए आमंत्रित करता है</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">आमंत्रण स्थानांतरित किया जा रहा है।</string>
+    <string name="accept_invitation_activity_check_connection">अपना इंटरनेट कनेक्शन जांचें।</string>
+    <string name="accept_invitation_activity_existing_contact_message">इस संपर्क से आपका पहले से ही संबंध है. क्या आप एक नया बनाना चाहते हैं?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">गलत संपर्क जानकारी</string>
+    <string name="accept_invitation_activity_local_twincode">आप एक ही खाते में अपने साथ संबंध स्थापित नहीं कर सकते।</string>
+    <string name="accept_invitation_activity_message">%1$s आपसे जुड़ना चाहता है</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">वार्तालाप सामग्री</string>
+    <string name="account_activity_delete_account">आपका खाता, सभी संबद्ध डेटा सहित, स्थायी रूप से हटा दिया जाएगा। पुष्टि करना?</string>
+    <string name="account_activity_delete_account_confirmation">क्या आप वाकई सच हैं कि आप अपना खाता हटाना चाहते हैं?</string>
+    <string name="account_activity_export_content">बाहरी मीडिया में निर्यात करें</string>
+    <string name="account_activity_message_first_part">ऐप को पहली बार इंस्टॉल करने, ऐप को फिर से इंस्टॉल करने, या डिवाइस को रीसेट करने, या मौजूदा खाते को हटाने के बाद एक नया खाता बनाया जाता है।</string>
+    <string name="account_activity_message_second_part">पिछले खाते और डेटा का कोई निशान नहीं बचा है, इसलिए आपको अपने संपर्कों को फिर से आमंत्रित करना होगा।</string>
+    <string name="account_activity_migration_message">आपके खाते को सभी संबद्ध डेटा (संपर्क, संदेश, समूह, आदि) के साथ एक Android डिवाइस से दूसरे में रीयल-टाइम में स्थानांतरित करने के लिए एक खाता माइग्रेशन सेवा उपलब्ध है। इस प्रकार आप पुराने डिवाइस और नए के बीच खातों को स्विच कर सकते हैं।</string>
+    <string name="account_activity_migration_start_from_another_device">किसी अन्य डिवाइस से</string>
+    <string name="account_activity_migration_start_from_current_device">मेरे डिवाइस से</string>
+    <string name="account_activity_migration_title">खाता माइग्रेशन</string>
+    <string name="account_activity_title">लेखा</string>
+    <string name="account_activity_transfer_between_devices">डिवाइस के बीच स्थानांतरण</string>
+    <string name="account_activity_transfer_from_another_device">किसी अन्य डिवाइस से स्थानांतरण</string>
+    <string name="account_activity_transfer_from_device">इस डिवाइस से स्थानांतरण</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">एप्लिकेशन को बंद करें और अपने डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
+    <string name="account_migration_activity_close_message">एप्लिकेशन को बंद करें और नए डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
+    <string name="account_migration_activity_confirm_cancel_message">क्या आप वाकई प्रवास को रद्द करना चाहते हैं?</string>
+    <string name="account_migration_activity_network_message">अपना नेटवर्क कनेक्शन जांचें</string>
+    <string name="account_migration_activity_not_enough_space_for_files">फाइलों के लिए पर्याप्त जगह नहीं</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">डेटाबेस डाउनलोड करने के लिए पर्याप्त जगह नहीं है</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">डेटाबेस अपलोड करने के लिए पर्याप्त जगह नहीं है</string>
+    <string name="account_migration_activity_state_canceled">प्रवास रद्द</string>
+    <string name="account_migration_activity_state_negotiate">इंतज़ार कर रही</string>
+    <string name="account_migration_activity_state_list_files">फाइलों की सूची बनाना</string>
+    <string name="account_migration_activity_state_send_account">खाता भेजना</string>
+    <string name="account_migration_activity_state_send_database">डेटाबेस भेज रहा है</string>
+    <string name="account_migration_activity_state_send_files">फाइलें भेज रहा है</string>
+    <string name="account_migration_activity_state_send_settings">आवेदन सेटिंग भेजना</string>
+    <string name="account_migration_activity_state_terminate">प्रवासन लगभग पूरा।</string>
+    <string name="account_migration_activity_state_wait_account">दूसरे खाते की प्रतीक्षा की जा रही है</string>
+    <string name="account_migration_activity_state_wait_connect">फिर से जुड़ने का इंतजार</string>
+    <string name="account_migration_activity_state_wait_files">फ़ाइलों और डेटाबेस की प्राप्ति की प्रतीक्षा कर रहा है।</string>
+    <string name="account_migration_activity_start">माइग्रेशन शुरू करें</string>
+    <string name="account_migration_activity_stop">माइग्रेशन रोकें</string>
+    <string name="account_migration_activity_success_message">प्रवासन सफलतापूर्वक पूरा हुआ</string>
+    <string name="account_migration_activity_transfer_in_progress">डेटा ट्रांसफर प्रगति पर है</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">प्रत्येक डिवाइस पर इस स्क्रीन को प्रदर्शित करें, और एक दूसरे के QR- कोड को स्कैन करता है।</string>
+    <string name="account_migration_scanner_activity_message_older_version">यह डिवाइस एक पुराने असंगत ओएस संस्करण का उपयोग कर रहा है, जिसके कारण स्थानांतरण के दौरान लक्ष्य डिवाइस पर सभी संबंध नष्ट हो जाएंगे। क्या आप अब भी स्थानांतरण के साथ आगे बढ़ना चाहते हैं?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">लक्ष्य डिवाइस पुराने असंगत OS संस्करण का उपयोग कर रहा है, जिसके कारण स्थानांतरण के दौरान आपके सभी संबंध नष्ट हो जाएंगे। क्या आप अब भी स्थानांतरण के साथ आगे बढ़ना चाहते हैं?</string>
+    <string name="account_migration_scanner_activity_scan_title">स्कैनिंग</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">माइग्रेशन शुरू करने के लिए, दूसरे डिवाइस से इस क्यूआर-कोड को स्कैन करें</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">अन्य डिवाइस के साइड मेनू के \"खाता / किसी अन्य डिवाइस से स्थानांतरण\" अनुभाग में प्रदर्शित क्यूआर कोड को स्कैन करें।</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">स्कैन बंद करो</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">इस कॉल में किसी भागीदार को जोड़ें</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">गैलरी से आयात करें</string>
+    <string name="add_contact_activity_in_person_subtitle">आप के पास के एक व्यक्ति को आमंत्रित करें</string>
+    <string name="add_contact_activity_in_person_title">स्वयं</string>
+    <string name="add_contact_activity_invitation_code_title">मिनी-कोड</string>
+    <string name="add_contact_activity_invite">आमंत्रण</string>
+    <string name="add_contact_activity_invite_message">“%2$s” के साथ निजी तौर पर कनेक्ट करने के लिए अपने मोबाइल डिवाइस twinme के साथ%1$s वेब पता खोलें?</string>
+    <string name="add_contact_activity_invite_subject">twinme निमंत्रण</string>
+    <string name="add_contact_activity_message">अपने बगल में मौजूद अपने दोस्त से अपने क्यूआर-कोड को ट्विनमे से स्कैन करने के लिए कहें, या अपने दोस्त के कोड को स्कैन करने के लिए "स्कैन" बटन पर टैप करें।</string>
+    <string name="add_contact_activity_onboarding_message">twinme आपके मित्रों को नहीं जानता और उन्हें खोज नहीं सकता। आपको उन्हें व्यक्तिगत रूप से आमंत्रित करना चाहिए, जब वे आपके पास हों, या उन्हें अन्य माध्यमों से निमंत्रण भेजकर।</string>
+    <string name="add_contact_activity_scan_code">स्कैन आमंत्रण क्यूआर-कोड</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">यह लिंक दूषित है।</string>
+    <string name="add_contact_activity_scan_error_incorect_link">यह लिंक गलत है।</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">यह लिंक एप्लिकेशन द्वारा प्रबंधित नहीं है।</string>
+    <string name="add_contact_activity_scan_error_revoked_link">यह संबंध हटा दिया गया है।</string>
+    <string name="add_contact_activity_scan_message_call_link">यह लिंक \"Click-to-call\" से संबंधित है</string>
+    <string name="add_contact_activity_scan_message_invitation_link">यह लिंक संपर्क आमंत्रण से संबंधित है</string>
+    <string name="add_contact_activity_scan_message_migration_link">यह लिंक अकाउंट माइग्रेशन से संबंधित है</string>
+    <string name="add_contact_activity_scan_message_transfer_link">यह लिंक कॉल ट्रांसफर से संबंधित है</string>
+    <string name="add_contact_activity_scan_title">स्कैन</string>
+    <string name="add_contact_activity_social_subtitle">संदेश, मेल, सामाजिक नेटवर्क</string>
+    <string name="add_contact_activity_social_title">एक आवेदन के माध्यम से कोड भेजें</string>
+    <string name="add_contact_activity_title">निमंत्रण</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">जोड़ना</string>
+    <string name="add_group_member_activity_title">सदस्यों को जोड़ें</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">स्वागत संदेश</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">कॉलिंग&#8230;</string>
+    <string name="audio_call_activity_cannot_call">वॉइस कॉल नहीं कर सकते</string>
+    <string name="audio_call_activity_connecting">कनेक्ट हो रहा है&#8230;</string>
+    <string name="audio_call_activity_hangup">फोन रख देना</string>
+    <string name="audio_call_activity_hangup_confirmation">आप कॉल काटना चाहते हैं?</string>
+    <string name="audio_call_activity_terminate">कॉल समाप्त कर दिया गया है</string>
+    <string name="audio_call_activity_terminate_busy">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; व्यस्त है</string>
+    <string name="audio_call_activity_terminate_cancel"> &lt;b&gt;%1$s&lt;/b&gt;द्वारा कॉल रद्द</string>
+    <string name="audio_call_activity_terminate_connectivity_error">नेटवर्क त्रुटि: समाप्त कॉल</string>
+    <string name="audio_call_activity_terminate_decline"> &lt;b&gt;%1$s&lt;/b&gt; द्वारा कॉल से इनकार</string>
+    <string name="audio_call_activity_terminate_gone">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; ऑफ- लाइन है</string>
+    <string name="audio_call_activity_terminate_not_authorized">आपके संपर्क ने कॉल के लिए आवश्यक अनुमतियाँ (जैसे, माइक्रोफ़ोन, कैमरा) नहीं दी हैं।</string>
+    <string name="audio_call_activity_terminate_revoked">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; ने आपके साथ यह संबंध हटा दिया है।</string>
+    <string name="audio_call_activity_terminate_success">&lt;b&gt;%1$s&lt;/b&gt; द्वारा कॉल समाप्त</string>
+    <string name="audio_call_activity_terminate_timeout">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; उत्तर नहीं देता</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">%1$s के साथ आपका संबंध अब प्रमाणित है।</string>
+    <string name="authentified_relation_activity_certify_by_scan">क्यूआर-कोड स्कैन करके प्रमाणित करें</string>
+    <string name="authentified_relation_activity_certify_by_video_call">वीडियो कॉल से प्रमाणित करें</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s को वीडियो कॉल के ज़रिए संबंध को प्रमाणित करने के लिए वीडियो कॉल की अनुमति देनी होगी।</string>
+    <string name="authentified_relation_activity_level_2">इस संबंध को प्रमाणित करने के लिए, आपको %1$s के डिवाइस पर प्रदर्शित क्यूआर-कोड को स्कैन करना होगा।</string>
+    <string name="authentified_relation_activity_level_3">इस संबंध को प्रमाणित करने के लिए, %1$s के डिवाइस को इस क्यूआर-कोड को स्कैन करना होगा।</string>
+    <string name="authentified_relation_activity_level_4">%1$s के साथ आपका संबंध प्रमाणित है।</string>
+    <string name="authentified_relation_activity_onboarding_message">एक \"प्रमाणित\" संबंध यह सुनिश्चित करता है कि आप हमेशा सही व्यक्ति के साथ संवाद कर रहे हैं, भले ही सेवा किसी तीसरे पक्ष द्वारा समझौता की गई हो।</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">सुनिश्चित करें कि आप हमेशा सही व्यक्ति के साथ संवाद करें!</string>
+    <string name="authentified_relation_activity_relation_print_message">यह फिंगरप्रिंट दोनों डिवाइस पर समान होना चाहिए।</string>
+    <string name="authentified_relation_activity_relation_print_title">संबंध फिंगरप्रिंट</string>
+    <string name="authentified_relation_activity_start">प्रमाणन शुरू करें</string>
+    <string name="authentified_relation_activity_title">प्रमाणित संबंध</string>
+    <string name="authentified_relation_activity_to_be_certified_title">सम्बन्ध प्रमाणित करें</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">सब</string>
+    <string name="calls_fragment_call_again_message">क्या आप %1$s को वापस बुलाना चाहते हैं?</string>
+    <string name="calls_fragment_call_again_title">वापस कॉल करें</string>
+    <string name="calls_fragment_create_link">एक \"click-to-call\" लिंक बनाएँ</string>
+    <string name="calls_fragment_incoming_call">आने वाली कॉल</string>
+    <string name="calls_fragment_missed_call">मिस कॉल</string>
+    <string name="calls_fragment_missed_call_segmented_control">मिस्ड</string>
+    <string name="calls_fragment_no_call_message">मिस्ड कॉल यहां सूचीबद्ध हैं।</string>
+    <string name="calls_fragment_no_call_title">आपने अभी तक कोई कॉल नहीं की है।</string>
+    <string name="calls_fragment_outgoing_call">आउटगोइंग कॉल</string>
+    <string name="calls_fragment_reset">क्या आप वाकई सभी कॉल सूचनाओं को रीसेट करना चाहते हैं?</string>
+    <string name="calls_fragment_reset_title">कॉल सूचनाएं रीसेट करें</string>
+    <string name="calls_fragment_title">कॉल</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">ब्लूटूथ ऑडियो</string>
+    <string name="call_activity_audio_source_device">डिवाइस इयरफ़ोन</string>
+    <string name="call_activity_audio_source_earphones">इयरफ़ोन</string>
+    <string name="call_activity_audio_source_headset">ऑडियो हेडसेट</string>
+    <string name="call_activity_audio_source_loudspeaker">लाउडस्पीकर</string>
+    <string name="call_activity_battery_restriction_message">ध्यान! जब आप बैकग्राउंड में ऐप चल रहे होते हैं, तो आपको बैटरी के उपयोग की अनुमति देनी चाहिए, अन्यथा कॉल के दौरान आपका माइक्रोफोन कट जा सकता है।</string>
+    <string name="call_activity_camera_control">कैमरा नियंत्रण</string>
+    <string name="call_activity_camera_control_ask_message">वीडियो कॉल के दौरान %1$s से उनके कैमरे को नियंत्रित करने की अनुमति माँगें।</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s कॉल के दौरान आपके कैमरे को नियंत्रित करना चाहता है। आप किसी भी समय नियंत्रण पुनः प्राप्त कर सकते हैं।</string>
+    <string name="call_activity_camera_control_denied">%1$s आपको उसका कैमरा नियंत्रित करने की अनुमति नहीं देता है।</string>
+    <string name="call_activity_camera_control_message">%1$s के कैमरे का नियंत्रण</string>
+    <string name="call_activity_camera_control_needs_help">मदद चाहिए?</string>
+    <string name="call_activity_camera_control_onboarding">यदि आपका संपर्क इसकी अनुमति देता है, तो आप वीडियो कॉल के दौरान उनके कैमरे का नियंत्रण ले सकते हैं और उदाहरण के लिए, स्वयं ज़ूम इन कर सकते हैं। यह वीडियो निगरानी कैमरे को नियंत्रित करने के लिए विशेष रूप से उपयोगी है।</string>
+    <string name="call_activity_camera_control_onboarding_part_2">अपने प्रियजन की अनुमति से, आप कॉल के दौरान उनके कैमरे को नियंत्रित कर सकते हैं और उन्हें दूर से, आसानी से और सुरक्षित रूप से मदद कर सकते हैं।</string>
+    <string name="call_activity_camera_control_remotely">%1$s आपके कैमरे को दूर से नियंत्रित करता है।</string>
+    <string name="call_activity_camera_control_stop">रोको</string>
+    <string name="call_activity_certify_error_message">%1$s ने शब्द को मान्य नहीं किया। संबंध का प्रमाणन विफल हो गया और आपको फिर से प्रयास करना होगा।</string>
+    <string name="call_activity_certify_onboarding_message">वीडियो कॉल आपको एक दूसरे को पहचानने और प्रमाणित संबंध और उसके आदान-प्रदान से जुड़ी सुरक्षा कुंजियों का आदान-प्रदान करने की अनुमति देता है।</string>
+    <string name="call_activity_certify_onboarding_start_message">दूसरे की जाँच के लिए अपनी स्क्रीन पर प्रदर्शित शब्द की वर्तनी बारी-बारी से रखें। एक बार सभी शब्द सत्यापित हो जाने पर, %1$s के साथ आपका संबंध प्रमाणित हो जाएगा।</string>
+    <string name="call_activity_certify_onboarding_title">अपने रिश्ते को प्रमाणित करें</string>
+    <string name="call_activity_certify_video_message">संबंध को प्रमाणित करने के लिए कॉल वीडियो पर होनी चाहिए।</string>
+    <string name="call_activity_coach_mark">इस कॉल में किसी प्रतिभागी को जोड़ने के लिए यहां टैप करें</string>
+    <string name="call_activity_confirm_word">क्या %1$s द्वारा कहा गया शब्द वही है?</string>
+    <string name="call_activity_confirm_word_title">शब्द को मान्य करें</string>
+    <string name="call_activity_error_call_interrupted">कॉल बाधित हुई, त्रुटि: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">कॉल नहीं हो पाई, त्रुटि: %1$d.</string>
+    <string name="call_activity_max_participant_message">समूह कॉल में प्रतिभागियों की अधिकतम संख्या (%1$d) तक पहुंच गई है।</string>
+    <string name="call_activity_not_supported_group_call_message">%1$s का ऐप संस्करण समूह कॉल के साथ संगत नहीं है और इसे अपडेट की आवश्यकता है।</string>
+    <string name="call_activity_quality_message">आप इसे क्या रेटिंग देंगे?</string>
+    <string name="call_activity_quality_title">कॉल गुणवत्ता</string>
+    <string name="call_activity_repeat_word">%1$s इसकी तुलना अपनी स्क्रीन से कर सकेगा.</string>
+    <string name="call_activity_repeat_word_title">शब्द का उच्चारण करें</string>
+    <string name="call_activity_tag_add_to_call">चल रही कॉल में शामिल होने के लिए किसी संपर्क को आमंत्रित करें</string>
+    <string name="call_activity_tag_camera">कैमरा</string>
+    <string name="call_activity_tag_camera_activate">कैमरा सक्रिय करें</string>
+    <string name="call_activity_tag_camera_cut">कैमरा काटें</string>
+    <string name="call_activity_tag_camera_flip">कैमरा पलटें</string>
+    <string name="call_activity_tag_microphone">माइक्रोफ़ोन</string>
+    <string name="call_activity_tag_microphone_activate">माइक्रोफ़ोन सक्रिय करें</string>
+    <string name="call_activity_tag_microphone_mute">माइक्रोफ़ोन म्यूट करें</string>
+    <string name="call_activity_tag_pause">रोकें</string>
+    <string name="call_activity_tag_send_message">संदेश भेजें</string>
+    <string name="call_activity_tag_speaker">लाउड स्पीकर</string>
+    <string name="call_activity_tag_speaker_activate">स्पीकर सक्रिय करें</string>
+    <string name="call_activity_tag_speaker_mute">स्पीकर म्यूट करें</string>
+    <string name="call_activity_transfert_call_message">चालू कॉल स्थानांतरित कर दी गई है.</string>
+    <string name="call_activity_try_to_call_back">वापस कॉल करने का प्रयास करें.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">कैमरा पहले से प्रयोग में है</string>
+    <string name="capture_activity_incorrect_qrcode">गलत twincode</string>
+    <string name="capture_activity_message">इसे स्कैन करने के लिए इस आयत में QR कोड रखें।</string>
+    <string name="capture_activity_no_camera">कैमरा एक twincode स्कैन करने के लिए आवश्यक है</string>
+    <string name="capture_activity_qrcode_saved">फोटो में आमंत्रण कोड सहेजा गया।</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">सभी साफ करें</string>
+    <string name="cleanup_activity_both_clean">वैश्विक सफाई (स्थानीय और दूरस्थ)</string>
+    <string name="cleanup_activity_both_clean_title">वैश्विक सफाई</string>
+    <string name="cleanup_activity_clean">मिटाना</string>
+    <string name="cleanup_activity_conversation">साथ वार्तालाप %s</string>
+    <string name="cleanup_activity_delete_confirmation_message">हटाना अपरिवर्तनीय है। आगे बढ़ने से पहले महत्वपूर्ण सामग्री निर्यात करें। जारी रखना?</string>
+    <string name="cleanup_activity_error">ऑपरेशन के दौरान एक त्रुटि हुई।</string>
+    <string name="cleanup_activity_expiration">समाप्ति की शर्तें</string>
+    <string name="cleanup_activity_free">उपलब्ध</string>
+    <string name="cleanup_activity_info">इस वार्तालाप से संदेशों, मीडिया और फ़ाइलों को हटाने से वे आपके संपर्क के डिवाइस से नहीं हटते हैं, और आप बाद में ऐसा नहीं कर पाएंगे।</string>
+    <string name="cleanup_activity_info_both">इस वार्तालाप से संदेशों, मीडिया और फ़ाइलों को हटाने से वे आपके संपर्क के डिवाइस से भी हट जाते हैं।</string>
+    <string name="cleanup_activity_local_cleanup">स्थानीय-केवल सफाई</string>
+    <string name="cleanup_activity_local_cleanup_title">स्थानीय सफाई</string>
+    <string name="cleanup_activity_medias_and_files">केवल मीडिया और फाइलें</string>
+    <string name="cleanup_activity_medias_and_files_info">बातचीत से मीडिया थंबनेल नहीं निकाले जाते; केवल मूल फ़ाइलें हटाई जाती हैं।</string>
+    <string name="cleanup_activity_medias_and_files_info_both">इस वार्तालाप में आदान-प्रदान की गई फ़ाइलें, फ़ोटो, वीडियो और वॉइस नोट आपके डिवाइस और आपके संपर्क के डिवाइस दोनों से हटा दिए जाएंगे।</string>
+    <string name="cleanup_activity_messages">सभी संदेश और अन्य सामग्री</string>
+    <string name="cleanup_activity_messages_info">बातचीत में किसी भी प्रकार के संदेश (पाठ, फोटो, वीडियो, आवाज, फ़ाइलें, आदि) एप्लिकेशन से हटा दिए जाएंगे।</string>
+    <string name="cleanup_activity_month">%1$d महीने</string>
+    <string name="cleanup_activity_older_than">से अधिक पुराना</string>
+    <string name="cleanup_activity_one_year">1 वर्ष</string>
+    <string name="cleanup_activity_prior_to">निम्न से पहले</string>
+    <string name="cleanup_activity_reset_conversation_message">इस वार्तालाप को रीसेट करने से आपके संपर्क के उपकरण सहित सभी संदेश हट जाएंगे.</string>
+    <string name="cleanup_activity_select_content">आप जो हटाना चाहते हैं उसे चुनें।</string>
+    <string name="cleanup_activity_storage_title">डिस्क मैं स्थान</string>
+    <string name="cleanup_activity_success">ऑपरेशन सफलतापूर्वक पूरा हुआ।</string>
+    <string name="cleanup_activity_title">बातचीत की सफाई</string>
+    <string name="cleanup_activity_total">कुल</string>
+    <string name="cleanup_activity_used">इस्तेमाल किया गया</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">सलाह</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">इस संपर्क को आपको कॉल करने की अनुमति दें</string>
+    <string name="contact_capabilities_activity_automatic_answering">इनकमिंग कॉल का स्वचालित रूप से उत्तर दें</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">सावधानी: यह सेटिंग डिवाइस के माइक्रोफ़ोन और कैमरे को खोलकर (वीडियो कॉल के लिए) इस संपर्क से कॉल का स्वचालित उत्तर देने को सक्रिय करती है।</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">कुछ डिवाइस इस सुविधा को प्रतिबंधित कर सकते हैं।</string>
+    <string name="contact_capabilities_activity_call_settings">कॉल सेटिंग्स</string>
+    <string name="contact_capabilities_activity_camera_control_allow">हमेशा</string>
+    <string name="contact_capabilities_activity_camera_control_ask">हर कॉल पर पूछो</string>
+    <string name="contact_capabilities_activity_camera_control_information">इस संपर्क को वीडियो कॉल के दौरान अपने कैमरे का नियंत्रण स्वचालित रूप से लेने दें।</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">आप अपने संपर्क से, जिसके पास ऐप के प्रीमियम संस्करण तक पहुँच है, वीडियो कॉल के दौरान अपने कैमरे को नियंत्रित करने के लिए कह सकते हैं।</string>
+    <string name="contact_capabilities_activity_camera_control_never">कभी नहीं</string>
+    <string name="contact_capabilities_activity_discreet_relation">विवेकपूर्ण संबंध</string>
+    <string name="contact_capabilities_activity_information_audio_call">संपर्क को आवाज से आपको कॉल करने की अनुमति दें।</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">אינו מציג את שם איש הקשר בהתראות ואינו שומר שיחות בהיסטוריית השיחות.</string>
+    <string name="contact_capabilities_activity_information_limited_call">जब आप नहीं बुलाना चाहते हों तो तारीखें/समय निर्धारित करें।</string>
+    <string name="contact_capabilities_activity_information_programmed_call">वे दिनांक/समय निर्धारित करें जिन्हें आप बुलाना चाहते हैं।</string>
+    <string name="contact_capabilities_activity_information_video_call">संपर्क को आपको वीडियो कॉल करने की अनुमति दें.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">किसी को अपना आमंत्रण कोड स्कैन करने के लिए आमंत्रित करें, या फिर, उनका कोड स्कैन करें...</string>
+    <string name="contacts_fragment_invite_contact_title">संपर्कों को आमंत्रित करें</string>
+    <string name="contacts_fragment_scan_contact_title">आमंत्रण कोड स्कैन करें या दर्ज करें</string>
+    <string name="contacts_fragment_title">संपर्क</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">आवाज कॉल</string>
+    <string name="conversation_activity_audio_message">ध्वनि संदेश</string>
+    <string name="conversation_activity_call_missed">मिस्ड</string>
+    <string name="conversation_activity_cannot_send">तुरंत संदेश नहीं भेज सकते:</string>
+    <string name="conversation_activity_cleanup_conversation">आपने कुछ पुराने संदेश हटा दिए हैं।</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s ने कुछ पुराने संदेश साफ़ कर दिए हैं।</string>
+    <string name="conversation_activity_delete_message">आपका संदेश वास्तव में हटा दिया गया है</string>
+    <string name="conversation_activity_empty_message">कुछ स्मार्ट कहें … या मजेदार!</string>
+    <string name="conversation_activity_edit_message">संदेश को आपके संपर्क के डिवाइस पर तभी संपादित किया जा सकता है, जब उनका ऐप अप-टू-डेट हो।</string>
+    <string name="conversation_activity_ephemeral_coach_mark">इस संदेश को एक निश्चित समय के बाद वार्तालाप से हटाने के लिए भेजें तीर पर देर तक दबाएं।</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">आपके संपर्क के twinme संस्करण पूरी तरह से कार्यशील नहीं है। &lt;br /&gt;
+        कृपया twinme अद्यतन करने के लिए उसे पूछें।</string>
+    <string name="conversation_activity_group_member_information">%1$d सदस्य</string>
+    <string name="conversation_activity_group_not_allowed_post_message">संदेश भेजने की अनुमति नहीं है</string>
+    <string name="conversation_activity_group_one_member">1 सदस्य</string>
+    <string name="conversation_activity_invitation_accepted">आमंत्रण स्वीकार किया गया</string>
+    <string name="conversation_activity_invitation_failed">अपने संपर्क से twinme अपडेट करने के लिए कहें</string>
+    <string name="conversation_activity_invitation_joined">समूह के सदस्य</string>
+    <string name="conversation_activity_invitation_pending">प्रगति पर आमंत्रण</string>
+    <string name="conversation_activity_invitation_refused">आमंत्रण में कमी आई</string>
+    <string name="conversation_activity_invitation_title">मैं आपको समूह में शामिल होने के लिए आमंत्रित करता हूं</string>
+    <string name="conversation_activity_local_cleanup">मुख्य सामग्री को स्थानीय रूप से हटा दिया गया है।</string>
+    <string name="conversation_activity_manage_conversation">बातचीत का प्रबंधन करें</string>
+    <string name="conversation_activity_menu_item_view_copy_message">क्लिपबोर्ड पर कॉपी किया गया!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">प्रतिलिपि</string>
+    <string name="conversation_activity_menu_item_view_delete_title">हटाना</string>
+    <string name="conversation_activity_menu_item_view_forward_title">आगे</string>
+    <string name="conversation_activity_menu_item_view_info_title">जानकारी</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">ऑपरेशन प्रेषक द्वारा अधिकृत नहीं है</string>
+    <string name="conversation_activity_menu_item_view_reply_title">जवाब दे दो</string>
+    <string name="conversation_activity_menu_item_view_save_message">बचाया!</string>
+    <string name="conversation_activity_menu_item_view_save_title">बचाना</string>
+    <string name="conversation_activity_menu_item_view_share_title">शेयर</string>
+    <string name="conversation_activity_message">एक संदेश लिखें</string>
+    <string name="conversation_activity_photo_camera">फ़ोटो कैमरा</string>
+    <string name="conversation_activity_record_confirm_send_record">भेजने के लिए फिर से दबाएं</string>
+    <string name="conversation_activity_record_start_record">रिकॉर्ड करने के लिए दबाकर और पकड़ कर रखें</string>
+    <string name="conversation_activity_record_title">अभिलेख</string>
+    <string name="conversation_activity_reduce_menu_lower">स्टैंडर्ड</string>
+    <string name="conversation_activity_reduce_menu_minimal">न्यूनत</string>
+    <string name="conversation_activity_reduce_menu_original">मूल</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">कोई आकार परिवर्तन नहीं</string>
+    <string name="conversation_activity_reject_stream">रद्द करें</string>
+    <string name="conversation_activity_reply_to">%1$s का उत्तर दें</string>
+    <string name="conversation_activity_reset_conversation">आपने बातचीत को रीसेट कर दिया है</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s ने बातचीत को रीसेट कर दिया है</string>
+    <string name="conversation_activity_send_file_warning">चेतावनी: प्राप्तकर्ता को दस्तावेज़ (पीडीएफ, वर्ड, पीपीटी, एक्सेल, ज़िप इत्यादि) की प्रतिलिपि बनाने/सहेजने/साझा करने से रोकना संभव नहीं है, जिसे केवल एप्लिकेशन के बाहर ही खोला जा सकता है। क्या आप अब भी इसे भेजना चाहते हैं?</string>
+    <string name="conversation_activity_send_large_file_message">यह फ़ाइल बड़ी है (%1$d MB)। क्या आप जारी रखना चाहेंगे ?</string>
+    <string name="conversation_activity_send_menu_allow_copy">प्राप्तकर्ता को इस सामग्री को कॉपी/सहेजने/साझा करने की अनुमति दें</string>
+    <string name="conversation_activity_stream_dialog">आप इसे स्वीकार करना चाहते हैं?</string>
+    <string name="conversation_activity_unsupported_media">असमर्थित मीडिया प्रारूप</string>
+    <string name="conversation_activity_video_call">वीडियो कॉल</string>
+    <string name="conversation_activity_video_camera">वीडियो कैमरा</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">दस्तावेज़</string>
+    <string name="conversation_files_activity_links">लिंक</string>
+    <string name="conversation_files_activity_month">इस महीने</string>
+    <string name="conversation_files_activity_no_files">%1$s के साथ आपकी बातचीत में इनमें से कोई भी तत्व नहीं है।</string>
+    <string name="conversation_files_activity_title">मीडिया, वेब लिंक और दस्तावेज</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">पृष्ठभूमि और रंग</string>
+    <string name="conversation_settings_activity_emoji_size">इमोजी का आकार</string>
+    <string name="conversation_settings_activity_link_preview">विज़ुअलाइज़ेशन</string>
+    <string name="conversation_settings_activity_link_preview_message">वेब साइट का पूर्वावलोकन प्रदर्शित करें.</string>
+    <string name="conversation_settings_activity_link_title">वेब लिंक</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">अंत-से-अंत एन्क्रिप्टेड संदेशों को सहकर्मी से सहकर्मी में आदान-प्रदान किया जाता है, सीधे डिवाइस से डिवाइस तक, एक मध्यवर्ती वितरण सर्वर के बिना = बादल में कोई निशान नहीं।</string>
+    <string name="conversations_fragment_no_result_found">%1$s के लिए कोई परिणाम नहीं मिला.</string>
+    <string name="conversations_fragment_start">बातचीत शुरू करें</string>
+    <string name="conversations_fragment_title">बात चिट</string>
+    <string name="conversations_fragment_you">आप</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">यह प्रोफ़ाइल उन मेहमानों को प्रदर्शित की जाती है जो आपको इस \"click-to-call\" लिंक के साथ कॉल करेंगे।</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call मेहमानों को एप्लिकेशन इंस्टॉल किए बिना ब्राउज़र से आपको कॉल करने की अनुमति देता है।</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">प्रत्येक उदाहरण में एक नाम, छवि और विवरण होता है, जो कॉल के विषय का प्रतिनिधित्व करता है, जैसे:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">आपकी ग्राहक सेवा</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">जो कार आप बेच रहे हैं</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">एक पेशेवर समूह कॉल</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">डिलीवरी करने वालों के लिए एक वीडियो डोरबेल।</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">Click-to-call में यह निर्दिष्ट करने के लिए विशेषताएँ होती हैं कि क्या यह है:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">एक ऑडियो और/या वीडियो कॉल</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">एक व्यक्तिगत या समूह कॉल</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">हमेशा एक विशिष्ट तिथि और समय तक खुला या सीमित।</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">प्रासंगिक लोगों तक पहुंचने की अनुमति देने वाले चैनलों के माध्यम से \"click-to-call\" लिंक या क्यूआर-कोड साझा करें, उदाहरण के लिए:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">आपकी वेबसाइट पर एक \"कॉल-टू-एक्शन\"।</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">वर्गीकृत विज्ञापन प्लेटफ़ॉर्म पर एक प्रविष्टि</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">समूह कॉल में आमंत्रित लोगों को एक ईमेल</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">डिलीवरी करने वालों के लिए आपके सामने वाले दरवाजे पर एक चिन्ह।</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">प्राप्तकर्ता क्यूआर-कोड को स्कैन करते हैं और अपने मोबाइल डिवाइस या पीसी पर ब्राउज़र में लिंक खोलते हैं। वे तब कर सकते हैं:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">कॉल पर उनका प्रतिनिधित्व करने वाला डिफ़ॉल्ट नाम (अतिथि) बदलें</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">वेब पेज पर \"कॉल\" बटन दबाकर आपको कॉल करें।</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">कॉल के बाद, वे आपको वापस कॉल करने के लिए वेब पेज खुला रख सकते हैं।</string>
+    <string name="create_external_call_activity_placeholder">विषय (मदद, घोषणा, मीटिंग, डोरबेल,…)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">सदस्यों को आमंत्रित करो</string>
+    <string name="create_group_activity_create">बनाने</string>
+    <string name="create_group_activity_member_allow_invitation_message">समूह के सदस्यों को उनके संपर्कों को आमंत्रित करने की अनुमति दें</string>
+    <string name="create_group_activity_member_allow_invitation_title">सदस्यों का निमंत्रण</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">सदस्यों को व्यक्तिगत संपर्क के रूप में अन्य सदस्यों को आमंत्रित करने की अनुमति दें</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">व्यक्तिगत संपर्क स्थापित करें</string>
+    <string name="create_group_activity_member_allow_post_message">समूह सदस्यों को संदेश पोस्ट करने दें</string>
+    <string name="create_group_activity_member_allow_post_title">संदेश पोस्ट कर रहा है</string>
+    <string name="create_group_activity_member_list">सदस्यों की सूची (%1$d)</string>
+    <string name="create_group_activity_name_hint">समूह का नाम</string>
+    <string name="create_group_activity_title">समूह</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">आपके संपर्कों को पहचानने और आपको दूसरों से अलग करने के लिए नाम और छवि दोनों आवश्यक हैं।</string>
+    <string name="create_profile_activity_message">इस प्रोफ़ाइल जानकारी का उपयोग संपर्कों को आमंत्रित करने के लिए किया जाता है।</string>
+    <string name="create_profile_activity_onboarding_message">एक प्रोफ़ाइल (नाम और छवि) दर्ज करें जो आपके संपर्कों के साथ आपका प्रतिनिधित्व करती है।</string>
+    <string name="create_profile_activity_onboarding_message_part_1">प्रोफ़ाइल आपको एप्लिकेशन पर आपके साथ संबंध बनाने के लिए संपर्कों को आमंत्रित करने की अनुमति देती है। आप जितनी चाहें उतनी प्रोफ़ाइल (व्यक्तित्व) रख सकते हैं, प्रत्येक एक विशेष "स्पेस" से संबद्ध है।</string>
+    <string name="create_profile_activity_onboarding_message_part_2">प्रत्येक "प्रोफ़ाइल" में एक "नाम" और एक "छवि" (आवश्यक) होती है, जो आपके द्वारा आमंत्रित संपर्कों द्वारा देखी जाती है, और उस "स्पेस" के नव निर्मित संबंधों से जुड़ी आपकी प्रारंभिक प्रोफ़ाइल के रूप में उपयोग की जाती है।</string>
+    <string name="create_profile_activity_onboarding_message_part_3">एक बार बन जाने के बाद, प्रत्येक रिश्ते में "प्रोफ़ाइल" की अपनी जोड़ी होती है जो आपको और आपके संपर्कों को एक-दूसरे का प्रतिनिधित्व करती है।</string>
+    <string name="create_profile_activity_onboarding_message_part_4">फिर आप यह संशोधित कर सकते हैं कि आप अपने प्रत्येक संपर्क के लिए, प्रत्येक रिश्ते के बारे में स्वतंत्र रूप से कैसे जानना चाहते हैं।</string>
+    <string name="create_profile_activity_save_message">इस नाम और छवि का उपयोग आपके संपर्कों को आमंत्रित करने और आपके संबंधों को आरंभ करने के लिए किया जाता है। आप प्रत्येक संबंध के लिए उन्हें संशोधित और अनुकूलित करने में सक्षम होंगे।</string>
+    <string name="create_profile_activity_welcome1">अपना प्रोफ़ाइल चित्र दर्ज करें</string>
+    <string name="create_profile_activity_welcome2">आपका स्वागत है %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">रिक्त स्थान स्थानीय हैं और संपर्कों के लिए दृश्यमान नहीं हैं।</string>
+    <string name="create_space_activity_onboarding_message_part_1">स्पेस आपको अपने संपर्कों को इस अनुसार व्यवस्थित करने में मदद करता है कि वे आपके किस सामाजिक दायरे से संबंधित हैं, उदाहरण के लिए। परिवार, मित्र, व्यवसाय, मौज-मस्ती, आदि।</string>
+    <string name="create_space_activity_onboarding_message_part_2">प्रत्येक "स्पेस" एक "प्रोफ़ाइल" से जुड़ा होता है जो उस व्यक्तित्व का प्रतिनिधित्व करता है जिसका उपयोग आप उस स्पेस के सामाजिक दायरे के संपर्कों के साथ बातचीत करते समय करना चाहते हैं, जैसे, डैड, जॉनी, डॉ. जॉन डो, बैटमैन, आदि।</string>
+    <string name="create_space_activity_onboarding_message_part_3">स्पेस आपके डिवाइस पर आपके एप्लिकेशन के लिए स्थानीय हैं। वे केवल आपको दिखाई देते हैं, आपके संपर्कों या सेवा सर्वरों द्वारा नहीं।</string>
+    <string name="create_space_activity_onboarding_message_part_4">एक "स्पेस" में:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- एक "नाम", उस विशिष्ट सामाजिक दायरे का प्रतिनिधित्व करता है जिसके साथ आप बातचीत करते हैं</string>
+    <string name="create_space_activity_onboarding_message_part_6">- एक "छवि" आपको "स्पेस" की अपनी सूची में इसे तुरंत पहचानने की अनुमति देती है</string>
+    <string name="create_space_activity_onboarding_message_part_7">- एक रंग "थीम", इसके स्वरूप और अनुभव को वैयक्तिकृत करने के लिए</string>
+    <string name="create_space_activity_onboarding_message_part_8">- सेटिंग्स जो प्रत्येक विशेष "स्पेस" के लिए विशिष्ट हो सकती हैं, जिससे एप्लिकेशन सेटिंग्स द्वारा परिभाषित डिफ़ॉल्ट मानों को ओवरराइड किया जा सकता है।</string>
+    <string name="create_space_activity_title">Space बनाएं</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">यह प्रोफ़ाइल नाम किसी चालू कॉल को ब्राउज़र में स्थानांतरित करने के लिए उपयोग किए गए कोड से संबद्ध है।</string>
+    <string name="create_transfert_call_activity_name_placeholder">मेरे स्थानान्तरण</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">खाता हटाने की पुष्टि करने के लिए नीचे \"OK\" अक्षर टाइप करें।</string>
+    <string name="deleted_account_activity_delete">खाता हटाएं</string>
+    <string name="deleted_account_activity_warning">ध्यान‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">आपका खाता हटा दिया गया है और सभी संबंधित डेटा नष्ट कर दिए गए हैं।&lt;br /&gt;
+        आपको एप्लिकेशन को बंद करना होगा।</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">क्या आप वाकई इस संबंध को हटाना चाहते हैं?</string>
+    <string name="edit_contact_activity_message">यह संपर्क अब आप तक नहीं पहुँच पाएगा।</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">इस प्रोफ़ाइल को हटाने से इसका संबद्ध आमंत्रण कोड शून्य हो जाएगा। मिटाने की पुष्टि?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">क्या आप वाकई इस \"Click-to-Call\" कोड को हटाना चाहते हैं?</string>
+    <string name="edit_external_call_activity_delete_message">यह \"Click-to-Call\" लिंक अब उपयोग करने योग्य नहीं होगा।</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">प्रोफ़ाइल संपादित करें</string>
+    <string name="edit_profile_activity_propagating_all_contacts">इस "Space" में सभी संपर्कों के लिए</string>
+    <string name="edit_profile_activity_propagating_ask_message">उस छवि, नाम या विवरण का प्रचार करें जिसे आपने अभी संशोधित किया है:</string>
+    <string name="edit_profile_activity_propagating_except_contacts">सभी के लिए जब तक कि वे वैयक्तिकृत न हों</string>
+    <string name="edit_profile_activity_propagating_message">आप अपने आमंत्रण प्रोफ़ाइल परिवर्तनों को अपने मौजूदा संपर्कों में प्रचारित कर सकते हैं या नहीं।</string>
+    <string name="edit_profile_activity_propagating_no_contact">किसी को नहीं</string>
+    <string name="edit_profile_activity_propagating_profile">प्रोफ़ाइल परिवर्तन का प्रचार करें</string>
+    <string name="edit_profile_activity_remove_active_profile">आप सक्रिय प्रोफ़ाइल नहीं निकाल सकते</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">एक बार संबंध बन जाने के बाद, इसकी सुरक्षा को सुदृढ़ करने के लिए इसे प्रमाणित करने की दृढ़ता से अनुशंसा की जाती है।</string>
+    <string name="enter_invitation_code_activity_enter_code">मिनी-कोड दर्ज करें</string>
+    <string name="enter_invitation_code_activity_error_message">यह कोड अमान्य है। हो सकता है कि इसका पहले ही उपयोग किया जा चुका हो या इसकी समय-सीमा समाप्त हो गई हो।</string>
+    <string name="enter_invitation_code_activity_invitation_message">एक बार संबंध बन जाने के बाद, इसकी सुरक्षा को सुदृढ़ करने के लिए इसे प्रमाणित करना न भूलें।</string>
+    <string name="enter_invitation_code_activity_message">संबंध बनाने के लिए अपने संपर्क द्वारा प्रदान किया गया मिनी-कोड दर्ज करें।</string>
+    <string name="enter_invitation_code_activity_onboarding_message">किसी संपर्क ने आपको संबंध बनाने के लिए 6-वर्ण का मिनी-कोड दिया है। यह एकल-उपयोग मिनी-कोड इसके निर्माण के 24 घंटे बाद समाप्त हो जाता है।</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">बातचीत की सामग्री एक ज़िप फ़ाइल में निर्यात की जाएगी।</string>
+    <string name="export_activity_content_title">अंतर्वस्तु</string>
+    <string name="export_activity_content_to_export">निर्यात करने के लिए सामग्री</string>
+    <string name="export_activity_do_not_leave_screen">एक्सपोर्ट ऑपरेशन के दौरान स्क्रीन को न छोड़ें।</string>
+    <string name="export_activity_export">निर्यात करना</string>
+    <string name="export_activity_file">फ़ाइल</string>
+    <string name="export_activity_files">फ़ाइलें</string>
+    <string name="export_activity_get_all_content">%1$s के साथ बातचीत की सामग्री को पुनः प्राप्त करने का कार्य प्रगति पर है।</string>
+    <string name="export_activity_get_one_chat">वार्तालाप की सामग्री को पुनर्प्राप्त करने का कार्य प्रगति पर है.</string>
+    <string name="export_activity_images">इमेजिस</string>
+    <string name="export_activity_no_content_to_export">निर्यात करने के लिए कोई सामग्री नहीं</string>
+    <string name="export_activity_one_conversation_zip_file">बातचीत की सामग्री एक ज़िप फ़ाइल में निर्यात की जाएगी।</string>
+    <string name="export_activity_save_location">स्थान</string>
+    <string name="export_activity_save_location_message">चुनें कि कहां निर्यात करना है।</string>
+    <string name="export_activity_select_content">वह सामग्री चुनें जिसे आप निर्यात करना चाहते हैं।\nHanya konten non-efemeral, diizinkan untuk disalin/disimpan/dibagikan, yang dapat diekspor.</string>
+    <string name="export_activity_success">निर्यात सफलतापूर्वक पूर्ण हुआ।</string>
+    <string name="export_activity_title">वार्तालाप निर्यात करें</string>
+    <string name="export_activity_videos">वीडियो</string>
+    <string name="export_activity_voice_messages">वॉइस संदेश</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">घातक त्रुटि, कोड %1$d।\nकृपया एप्लिकेशन को पुनरारंभ करें, और यदि आप कर सकते हैं तो फीडबैक संदेश के माध्यम से समस्या की रिपोर्ट करें। असुविधा के लिए खेद है।</string>
+    <string name="fatal_error_activity_error_message">घातक त्रुटि:%1$s&lt;br /&gt;
+        आपको एप्लिकेशन को बंद करना होगा।</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">संपर्क करें</string>
+    <string name="feedback_activity_gdpr_notice">अपने खाते के डेटा तक पहुंच का अनुरोध करने के लिए इस फॉर्म का उपयोग करें।</string>
+    <string name="feedback_activity_help">समस्याओं की पहचान करने और उन्हें हल करने के लिए हमारे साथ काम करने में आपकी मदद के लिए हम आपकी सराहना करते हैं।</string>
+    <string name="feedback_activity_info_logs">डीबग लॉग में एप्लिकेशन गतिविधियों और व्यवहार पर केवल निम्न-स्तरीय तकनीकी डेटा होता है, और यह आपकी किसी भी व्यक्तिगत जानकारी को प्रकट नहीं करता है।</string>
+    <string name="feedback_activity_logs">डीबग लॉग</string>
+    <string name="feedback_activity_message">संदेश</string>
+    <string name="feedback_activity_send">भेजें</string>
+    <string name="feedback_activity_send_logs">डीबग लॉग भेजें</string>
+    <string name="feedback_activity_send_message">प्रतिक्रिया सबमिट की गई। धन्यवाद।</string>
+    <string name="feedback_activity_subject">विषय</string>
+    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">यह क्रिया इस प्रोफ़ाइल से संबद्ध वर्तमान आमंत्रण कोड को अमान्य कर देती है। क्या आप वाकई एक नया कोड बनाना चाहते हैं?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">एक नया निमंत्रण कोड उत्पन्न करें</string>
+    <string name="fullscreen_qrcode_activity_save_message">इस संपर्क को जोड़ने के लिए twinme के साथ इस आमंत्रण क्यूआर-कोड को आयात या स्कैन करें।</string>
+    <string name="fullscreen_qrcode_activity_save_title">फोटो गैलरी के लिए सहेजें</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">वॉयस कॉल को अधिकृत करें</string>
+    <string name="group_capabilities_activity_information_programmed_call">कॉल की तारीख/समय को परिभाषित करें</string>
+    <string name="group_capabilities_activity_information_video_call">वीडियो कॉल को अधिकृत करें</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">समूह व्यवस्थापक ने इस कार्रवाई को अधिकृत नहीं किया।</string>
+    <string name="group_member_activity_invitation_message">व्यक्तिगत संपर्क के रूप में %1$s को आमंत्रित करें</string>
+    <string name="group_member_activity_invitation_title">निमंत्रण</string>
+    <string name="group_member_activity_invite_personnal_relation">व्यक्तिगत संपर्क के रूप में को आमंत्रित करें</string>
+    <string name="group_member_activity_remove_message">क्या आप वाकई इस समूह से सदस्यों को निकालना चाहते हैं?</string>
+    <string name="group_member_activity_section_administrator">प्रशासक</string>
+    <string name="group_member_activity_section_invitation">निमंत्रण</string>
+    <string name="group_member_activity_section_member">सदस्य</string>
+    <string name="group_member_activity_title">समूह के सदस्य</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s व्यस्त है</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">%1$s द्वारा रद्द किया गया कॉल</string>
+    <string name="info_item_activity_call_terminated_reason_decline">कॉल में %1$s की गिरावट आई है</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s ऑफ-लाइन है</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">कॉल करने के लिए अधिकृत नहीं है</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s ने इस संबंध को हटा दिया</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s उत्तर नहीं देता है</string>
+    <string name="info_item_activity_deleted">रिसीवर द्वारा हटा दिया गया:</string>
+    <string name="info_item_activity_may_be_copied">कॉपी/बचाया/साझा किया जा सकता है…</string>
+    <string name="info_item_activity_may_not_be_copied">कॉपी/सहेज/साझा नहीं किया जा सकता है…</string>
+    <string name="info_item_activity_reactions">प्रतिक्रियाओं</string>
+    <string name="info_item_activity_received">प्राप्त किया:</string>
+    <string name="info_item_activity_seen">देखा:</string>
+    <string name="info_item_activity_sent">भेज दिया:</string>
+    <string name="info_item_activity_updated">संशोधित</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">यह क्रिया इस \"क्लिक-टू-कॉल\" लिंक से जुड़े वर्तमान आमंत्रण कोड को अमान्य कर देती है। पुष्टि करना?</string>
+    <string name="invitation_call_activity_generate_code_title">इस लिंक के लिए एक नया कोड जनरेट करें</string>
+    <string name="invitation_call_activity_invite_message">वेब पता %1$s खोलें, या “%2$s” पर कॉल करने के लिए QR-कोड स्कैन करें।</string>
+    <string name="invitation_call_activity_message">इस \"click-to-call\" कोड को किसी ऐसे व्यक्ति के साथ साझा करें जो वेब या मोबाइल ऐप से आपको कॉल कर सके।</string>
+    <string name="invitation_call_activity_save_message">“%1$s” को कॉल करने के लिए इस QR-कोड को स्कैन करें।</string>
+    <string name="invitation_call_activity_share">प्रकाशित करें</string>
+    <string name="invitation_call_activity_title">बाह्य आह्वान</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">मिनी-कोड बनाएँ</string>
+    <string name="invitation_code_activity_create_code_subtitle">जब आपके पास एप्लिकेशन तक पहुंच न हो, तो किसी संपर्क को आमंत्रित करने के लिए।</string>
+    <string name="invitation_code_activity_expiration">समाप्ति:</string>
+    <string name="invitation_code_activity_history">मेरे मिनी-कोड</string>
+    <string name="invitation_code_activity_limit_message">सक्रिय मिनी-कोड की अधिकतम अनुमत संख्या पूरी हो गई है। नए कोड बनाने के लिए आपको 24 घंटे प्रतीक्षा करनी होगी।</string>
+    <string name="invitation_code_activity_onboarding_message">मिनी-कोड एकल-उपयोग वाले होते हैं और केवल 24 घंटों के लिए वैध होते हैं। आप उन्हें अपने संपर्कों को संबंध बनाने के लिए दे सकते हैं जब आपके पास एप्लिकेशन तक पहुँच नहीं होती है (उदाहरण के लिए, बिना फ़ोन के)।</string>
+    <string name="invitation_code_activity_success_message">मिनी-कोड के साथ स्थापित संबंधों को उनकी सुरक्षा को सुदृढ़ करने के लिए प्रमाणित करने की दृढ़ता से अनुशंसा की जाती है।</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">अपने आस-पास के अपने दोस्त से \"कमरे\" के क्यूआर-कोड को ट्विनमे से स्कैन करने के लिए कहें, या क्लिपबोर्ड पर इसे कॉपी करने के लिए आमंत्रण कोड पर टैप करें।</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">आवाज़</string>
+    <string name="last_calls_activity_video">वीडियो</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">इस उपकरण पर आपका twinme खाता twinme+ पर स्थानांतरित किया जाएगा।</string>
+    <string name="local_account_migration_activity_message_older_version">सुनिश्चित करें कि आपने अपने सभी संबंधों को खोने से बचने के लिए, स्थानांतरण शुरू करने से पहले दोनों डिवाइसों को ऐप के नवीनतम संस्करण में अपडेट कर लिया है।</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">संपर्क जोड़ें</string>
+    <string name="main_activity_add_group">एक समूह बनाएं</string>
+    <string name="main_activity_reset_conversation">रीसेट करें</string>
+    <string name="main_activity_reset_conversation_message">इस वार्तालाप को रीसेट करने से आपके संपर्क के उपकरण सहित सभी संदेश हट जाएंगे. पुष्टि करना?</string>
+    <string name="main_activity_reset_conversation_title">वार्तालाप रीसेट  करें</string>
+    <string name="main_activity_reset_group_conversation_admin_message">इस बातचीत को रीसेट करने से समूह के प्रत्येक सदस्य के डिवाइस से सभी संदेश हट जाएंगे. पुष्टि करना?</string>
+    <string name="main_activity_reset_group_conversation_message">इस बातचीत को रीसेट करने से आपके डिवाइस से सभी संदेश हट जाएंगे. पुष्टि करना?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">इस सुविधा का उपयोग करने के लिए आपको twinme+ में अपग्रेड करना होगा। आप अपने सभी खाता डेटा को माइग्रेट करने में सक्षम होंगे।</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">आप अपने सभी खाता डेटा को माइग्रेट करने में सक्षम होंगे।</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme और भी अधिक सुविधाओं के साथ एक प्रीमियम संस्करण के रूप में उपलब्ध है।</string>
+    <string name="migration_twinme_plus_activity_premium_title">twinme+ में अपग्रेड करें</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">के बारे में</string>
+    <string name="navigation_activity_application_settings">अनुप्रयोग सेटिंग</string>
+    <string name="navigation_activity_feedback">प्रतिक्रिया भेजें</string>
+    <string name="navigation_activity_getting_started">शुरुआत</string>
+    <string name="navigation_activity_help">मदद करें</string>
+    <string name="navigation_activity_profile">प्रोफाइल</string>
+    <string name="navigation_activity_settings">समायोजन</string>
+    <string name="navigation_activity_sign_out">साइन आउट</string>
+    <string name="navigation_activity_sounds">ध्वनियां</string>
+    <string name="navigation_activity_support">सहयोग</string>
+    <string name="navigation_activity_title">मेन्यू</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">%1$s को ऑडियो कॉल</string>
+    <string name="notification_center_audio_message">आपको एक ऑडियो संदेश भेजा</string>
+    <string name="notification_center_audio_message_received">नया ऑडियो संदेश</string>
+    <string name="notification_center_cancel">खारिज करें</string>
+    <string name="notification_center_cleanup_conversation">कुछ पुराने संदेश हटा दिए गए हैं।</string>
+    <string name="notification_center_deleted_contact">संपर्क हटा दिया गया</string>
+    <string name="notification_center_file_message">आपको एक फाइल भेजी</string>
+    <string name="notification_center_file_message_received">नई फ़ाइल</string>
+    <string name="notification_center_group_invitation">आपको एक आमंत्रण भेजा है</string>
+    <string name="notification_center_group_invitation_received">नया निमंत्रण</string>
+    <string name="notification_center_join_group">आप समूह के सदस्य हैं</string>
+    <string name="notification_center_message_received">नया संदेश</string>
+    <string name="notification_center_missed_audio_call_to">%1$s को मिस्ड ऑडियो कॉल छूटी</string>
+    <string name="notification_center_missed_video_call_to">%1$s को वीडियो कॉल छूटी</string>
+    <string name="notification_center_mute">मूक</string>
+    <string name="notification_center_new_contact">नया कॉन्ट्रैक्ट</string>
+    <string name="notification_center_photo_message">आपको एक फ़ोटो भेजी</string>
+    <string name="notification_center_photo_message_received">नया चित्र</string>
+    <string name="notification_center_reaction">"प्रतिक्रिया दी %1$s "</string>
+    <string name="notification_center_reaction_message">ने एक संदेश पर प्रतिक्रिया दी</string>
+    <string name="notification_center_reaction_message_received">किसी संदेश पर प्रतिक्रिया।</string>
+    <string name="notification_center_reset_message">बातचीत साफ हो गई</string>
+    <string name="notification_center_stop">रुकें</string>
+    <string name="notification_center_transfering_data">संदेशों का स्थानांतरण प्रगति पर है…</string>
+    <string name="notification_center_unmute">अनम्यूट</string>
+    <string name="notification_center_updated_contact_avatar">छवि अपडेट की गई</string>
+    <string name="notification_center_updated_contact_name">नाम अपडेट किया गया"</string>
+    <string name="notification_center_video_call_to">%1$s को वीडियो कॉल</string>
+    <string name="notification_center_video_message">आपको एक वीडियो भेजा</string>
+    <string name="notification_center_video_message_received">नई वीडियोा</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">ऑडियो कॉलस</string>
+    <string name="notification_channel_contact_title">संपर्क</string>
+    <string name="notification_channel_group_title">समूहों</string>
+    <string name="notification_channel_message_title">संदेश</string>
+    <string name="notification_channel_missed_title">मिस्ड कॉल</string>
+    <string name="notification_channel_system_title">अन्य</string>
+    <string name="notification_channel_video_title">वीडियो कॉल्स</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">आप को कॉल करने का प्रयास किया</string>
+    <string name="notifications_fragment_item_audio_message">आपको एक ऑडियो संदेश भेजा</string>
+    <string name="notifications_fragment_item_cleanup_message">" ने कुछ पुराने संदेश साफ़ कर दिए हैं।"</string>
+    <string name="notifications_fragment_item_deleted_contact">संपर्क हटा दिया गया</string>
+    <string name="notifications_fragment_item_file_message">आपको एक फाइल भेजी</string>
+    <string name="notifications_fragment_item_group_invitation">आपको एक आमंत्रण भेजा है</string>
+    <string name="notifications_fragment_item_image_message">आपको एक फ़ोटो भेजी</string>
+    <string name="notifications_fragment_item_join_group">आप समूह के सदस्य हैं</string>
+    <string name="notifications_fragment_item_new_contact">नया कॉन्ट्रैक्ट</string>
+    <string name="notifications_fragment_item_reset_conversation">ने बातचीत को रीसेट कर दिया है</string>
+    <string name="notifications_fragment_item_shortest_day">%1$dदिन</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$dघंटे</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$dमिनट</string>
+    <string name="notifications_fragment_item_shortest_second">%1$dसेकंड</string>
+    <string name="notifications_fragment_item_text_message">आपको एक संदेश भेजा</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">छवि अपडेट की गई</string>
+    <string name="notifications_fragment_item_updated_contact_name">नाम अपडेट किया गया"</string>
+    <string name="notifications_fragment_item_video_call">आपको वीडियो कॉल की कोशिश की गई</string>
+    <string name="notifications_fragment_item_video_message">आपको एक वीडियो भेजा गया</string>
+    <string name="notifications_fragment_no_notification_message">संपर्क, वार्तालाप, कॉल आदि से संबंधित अधिसूचनाएं यहां सूचीबद्ध हैं।</string>
+    <string name="notifications_fragment_no_notification_title">आपके पास कोई सूचना नहीं है।</string>
+    <string name="notifications_fragment_reset">क्या आप वाकई सभी अधिसूचनाओं को रीसेट करना चाहते हैं?</string>
+    <string name="notifications_fragment_reset_title">नोटिफिकेशन रीसेट करें</string>
+    <string name="notifications_fragment_title">सूचनाएं</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">चरित्र फोंट</string>
+    <string name="personalization_activity_font_extra_large">बहुत बड़ा</string>
+    <string name="personalization_activity_font_large">बड़े</string>
+    <string name="personalization_activity_font_small">छोटा</string>
+    <string name="personalization_activity_haptic_feedback">हैप्टिक राय</string>
+    <string name="personalization_activity_haptic_feedback_message">छूने पर स्पर्शनीय अनुभूति होना।</string>
+    <string name="personalization_activity_menu_choose_color">डिफ़ॉल्ट रंग</string>
+    <string name="personalization_activity_menu_enter_color">रंग संकेत</string>
+    <string name="personalization_activity_mode">मोड</string>
+    <string name="personalization_activity_mode_dark">अंधेरा</string>
+    <string name="personalization_activity_mode_light">रोशनी</string>
+    <string name="personalization_activity_start_tab_information">उस टैब का चयन करें जिस पर आप एप्लिकेशन लॉन्च करना चाहते हैं।</string>
+    <string name="personalization_activity_start_tab_title">डिफ़ॉल्ट टैब</string>
+    <string name="personalization_activity_system">प्रणाली</string>
+    <string name="personalization_activity_title">निजीकरण</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">फ्रंट/रियर कैमरा बदलें</string>
+    <string name="premium_services_activity_camera_control_description_2">ज़ूम इन/आउट करें</string>
+    <string name="premium_services_activity_camera_control_description_3">किसी प्रियजन या क्लाइंट की दूर से सहायता करें</string>
+    <string name="premium_services_activity_camera_control_description_4">निगरानी कैमरा प्रबंधित करें</string>
+    <string name="premium_services_activity_camera_control_subtitle">कॉल के दौरान अपने संपर्क के कैमरे को उनकी अनुमति से नियंत्रित करें</string>
+    <string name="premium_services_activity_camera_control_title">रिमोट कैमरा नियंत्रण</string>
+    <string name="premium_services_activity_click_to_call_description_1">एक \"क्लिक-टू-कॉल मी\" कोड बनाएँ</string>
+    <string name="premium_services_activity_click_to_call_description_2">किसी भी तरह से प्रकाशित या वितरित करें</string>
+    <string name="premium_services_activity_click_to_call_description_3">प्राप्तकर्ता कोड को स्कैन करते हैं और आपको कॉल करते हैं</string>
+    <string name="premium_services_activity_click_to_call_description_4">बादल में कोई निशान नहीं के साथ गुमनाम</string>
+    <string name="premium_services_activity_click_to_call_subtitle">मेहमानों को वेब से आपको कॉल करने की अनुमति दें</string>
+    <string name="premium_services_activity_click_to_call_title">क्लिक-टू-कॉल</string>
+    <string name="premium_services_activity_conversation_description_1">मीडिया, फाइलें, वॉयस नोट्स, संदेश</string>
+    <string name="premium_services_activity_conversation_description_2">एक विशिष्ट अवधि/तिथि से पुराना</string>
+    <string name="premium_services_activity_conversation_description_3">एक बातचीत या सभी के लिए</string>
+    <string name="premium_services_activity_conversation_description_4">स्थानीय-केवल, दूसरे छोर पर कोई प्रभाव नहीं</string>
+    <string name="premium_services_activity_conversation_subtitle">निर्यात सामग्री और फ्री-अप स्थान</string>
+    <string name="premium_services_activity_conversation_title">बातचीत प्रबंधन</string>
+    <string name="premium_services_activity_description_part1_subtitle">उपकरणों के बीच सीधा संबंध</string>
+    <string name="premium_services_activity_description_part1_title">एचडी ऑडियो / वीडियो गुणवत्ता</string>
+    <string name="premium_services_activity_description_part2_subtitle">बादल में कोई निशान नहीं</string>
+    <string name="premium_services_activity_description_part2_title">गोपनीयता - गोपनीयता</string>
+    <string name="premium_services_activity_description_part3_subtitle">ऊर्जा दक्षता</string>
+    <string name="premium_services_activity_description_part3_title">पर्यावरण के जिम्मेदार</string>
+    <string name="premium_services_activity_group_call_description_1">हाई-डेफिनिशन ऑडियो/वीडियो</string>
+    <string name="premium_services_activity_group_call_description_2">उपकरणों के बीच सीधा संबंध</string>
+    <string name="premium_services_activity_group_call_description_3">सुरक्षित और निजी</string>
+    <string name="premium_services_activity_group_call_description_4">बादल में कोई निशान नहीं</string>
+    <string name="premium_services_activity_group_call_subtitle">ध्वनि/वीडियो समूह कॉल में शामिल होने के लिए संपर्कों को आमंत्रित करें</string>
+    <string name="premium_services_activity_group_call_title">समूह कॉल</string>
+    <string name="premium_services_activity_privacy_description_1">बायोमेट्रिक या अन्य प्रमाणीकरण के साथ ऐप को लॉक करें</string>
+    <string name="premium_services_activity_privacy_description_2">ऐप स्विचर में अंतिम स्क्रीन छुपाएं</string>
+    <string name="premium_services_activity_privacy_description_3">अल्पकालिक संदेश जो एक निश्चित समय के बाद गायब हो जाते हैं</string>
+    <string name="premium_services_activity_privacy_description_4">किसी संपर्क को आपको कॉल करने से रोकें</string>
+    <string name="premium_services_activity_privacy_subtitle">नियंत्रण ऐप, संपर्क और संदेश</string>
+    <string name="premium_services_activity_privacy_title">अधिक गोपनीयता</string>
+    <string name="premium_services_activity_space_description_1">संबद्ध संबंधों, वार्तालापों, इतिहास के साथ एकाधिक प्रोफ़ाइल</string>
+    <string name="premium_services_activity_space_description_2">वैयक्तिकृत उपस्थिति, सूचनाएं और सेटिंग्स</string>
+    <string name="premium_services_activity_space_description_3">परिवार, दोस्तों, सहकर्मियों, व्यवसाय, खेल आदि के लिए।</string>
+    <string name="premium_services_activity_space_description_4">गुप्त Spaces सूचीबद्ध नहीं, नाम से पहुँचा</string>
+    <string name="premium_services_activity_space_subtitle">प्रत्येक सामाजिक समूह के साथ आप बातचीत करते हैं</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">अपना संगीत लाइव साझा करें</string>
+    <string name="premium_services_activity_streaming_description_2">प्रत्येक प्रतिभागी मीडिया प्लेयर को नियंत्रित कर सकता है</string>
+    <string name="premium_services_activity_streaming_description_3">कॉल पर एक साथ इंटरैक्ट करें</string>
+    <string name="premium_services_activity_streaming_description_4">वास्तविक जीवन की तरह ही गोपनीयता</string>
+    <string name="premium_services_activity_streaming_subtitle">कॉल के दौरान अपने मीडिया को स्ट्रीम करें</string>
+    <string name="premium_services_activity_streaming_title">मीडिया साझेदारी</string>
+    <string name="premium_services_activity_transfert_description_1">कॉल ट्रांसफ़र कोड और प्रोफ़ाइल बनाएं</string>
+    <string name="premium_services_activity_transfert_description_2">इसका यूआरएल अपलोड करें या कंप्यूटर पर कोड स्कैन करें</string>
+    <string name="premium_services_activity_transfert_description_3">ब्राउज़र पर पृष्ठ को बुकमार्क करें</string>
+    <string name="premium_services_activity_transfert_description_4">मोबाइल कॉल के दौरान पृष्ठ से \"कॉल\"।</string>
+    <string name="premium_services_activity_transfert_subtitle">चल रही मोबाइल कॉल को ब्राउज़र में स्थानांतरित करें</string>
+    <string name="premium_services_activity_transfert_title">कॉल ट्रांसफर</string>
+    <string name="premium_services_activity_title">चल रहे ध्वनि/वीडियो कॉल में शामिल होने के लिए संपर्कों को आमंत्रित करें।</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">एप्लिकेशन को बायोमेट्रिक सेवाओं या पिन कोड के साथ लॉक करें।</string>
+    <string name="privacy_activity_hide_last_screen_message">एप्लिकेशन स्विचर में दिखने से पूर्वावलोकन रोकें</string>
+    <string name="privacy_activity_hide_last_screen_title">अंतिम स्क्रीन छिपाएँ</string>
+    <string name="privacy_activity_lock_screen_message">अपने डिवाइस बायोमेट्रिक या पासकोड प्रमाणीकरण सेवाओं का उपयोग करके एप्लिकेशन तक पहुंच को अनलॉक करें। आप अभी भी इनकमिंग कॉल्स का जवाब दे सकते हैं और ऐप को एक्सेस करने के दौरान नोटिफिकेशन प्राप्त कर सकते हैं।</string>
+    <string name="privacy_activity_lock_screen_not_available">इस विकल्प के लिए Android > 5.0 का संस्करण आवश्यक है</string>
+    <string name="privacy_activity_lock_screen_timeout">एक्सेस लॉक टाइम आउट</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">तुरंत</string>
+    <string name="privacy_activity_lock_screen_title">पहुंच लॉक</string>
+    <string name="privacy_activity_title">गोपनीयता</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">प्रोफ़ाइल जोड़ें</string>
+    <string name="profile_fragment_create_profile">एक प्रोफाइल बनाएं</string>
+    <string name="profile_fragment_default_action">सक्रिय</string>
+    <string name="profile_fragment_default_profile_title">सक्रिय प्रोफ़ाइल</string>
+    <string name="profile_fragment_identity_title">प्रोफाइल</string>
+    <string name="profile_fragment_message">यह प्रोफ़ाइल आपको अपने आपके साथ एक निजी संबंध स्थापित करने के लिए अपने संपर्कों को आमंत्रित करने की अनुमति देती है, नियंत्रण में।</string>
+    <string name="profile_fragment_twincode_title">कोड आमंत्रित</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">प्रॉक्सी जोड़ें</string>
+    <string name="proxy_activity_add_placeholder">प्रॉक्सी का URL पेस्ट करें या टाइप करें</string>
+    <string name="proxy_activity_already_use">यह प्रॉक्सी आपके ऐप में पहले से ही कॉन्फ़िगर है।</string>
+    <string name="proxy_activity_enable">प्रॉक्सी का उपयोग करें</string>
+    <string name="proxy_activity_format">मान्य प्रॉक्सी URL प्रारूप:</string>
+    <string name="proxy_activity_invalid_format">अमान्य URL प्रारूप</string>
+    <string name="proxy_activity_limit">आप अनुमत प्रॉक्सी की संख्या (%1$d) की सीमा तक पहुँच चुके हैं। नया प्रॉक्सी जोड़ने के लिए, आपको पहले एक प्रॉक्सी हटाना होगा।</string>
+    <string name="proxy_activity_list">मेरे प्रॉक्सी</string>
+    <string name="proxy_activity_list_information">नीचे दी गई सूची में से किसी प्रॉक्सी का उपयोग केवल तभी करें जब एप्लिकेशन प्रॉक्सी के बिना सेवा से कनेक्ट न हो सके।</string>
+    <string name="proxy_activity_onboarding">जब आपके देश में ऐप के सिग्नलिंग सर्वर तक पहुँच अवरुद्ध हो जाती है, तो प्रॉक्सी कई परिस्थितियों में इन अवरोधों को बायपास कर सकते हैं और आपको निजी तौर पर संवाद करने की अनुमति दे सकते हैं। इन-ऐप प्रॉक्सी के अलावा, आप अपना खुद का प्रॉक्सी बना सकते हैं या किसी और द्वारा बनाया गया प्रॉक्सी इस्तेमाल कर सकते हैं। प्रॉक्सी किसी भी परिस्थिति में आदान-प्रदान की जा रही सामग्री तक नहीं पहुँच सकते।</string>
+    <string name="proxy_activity_information">प्रॉक्सी का उपयोग केवल तभी करें जब आप मानक वाई-फ़ाई या सेलुलर नेटवर्क से सेवा से कनेक्ट न हो पा रहे हों।</string>
+    <string name="proxy_activity_share">इस प्रॉक्सी को स्वचालित रूप से कॉन्फ़िगर करने के लिए अपने डिवाइस पर twinme के साथ %1$s लिंक खोलें।</string>
+    <string name="proxy_activity_title">प्रॉक्सी</string>
+    <string name="proxy_activity_url">क्या आप इस प्रॉक्सी के URL का उपयोग करना चाहते हैं?</string>
+    <string name="proxy_activity_warning">चेतावनी! इस प्रॉक्सी का URL आपको ऐप की सेवा से कनेक्ट करने की अनुमति नहीं देता है।</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">अनुमतियां बदलें</string>
+    <string name="quality_of_service_activity_enable_notifications">सूचनाएं सक्षम करें</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">इन अनुमतियों के बिना, संदेशों को अपने गंतव्य तक पहुंचने में बहुत लंबा समय लग सकता है।</string>
+    <string name="quality_of_service_activity_notification_description">ऐप को बैकग्राउंड में चलने दें</string>
+    <string name="quality_of_service_activity_notification_title">संदेश का आदान-प्रदान बहुत धीमा है?</string>
+    <string name="quality_of_service_activity_settings">सिस्टम सेटिंग्स में ऐप अनुमतियाँ बदलें।</string>
+    <string name="quality_of_service_activity_step1_message">सामग्री वितरण सर्वर के बिना "पीयर-टू-पीयर" दृष्टिकोण का उपयोग करते हुए, एन्क्रिप्ट किए गए संदेशों का वास्तविक समय में उपकरणों के बीच सीधे आदान-प्रदान किया जाता है। यह सुनिश्चित करता है कि क्लाउड में कोई निशान नहीं है और अद्वितीय गोपनीयता सुरक्षा प्रदान करता है।</string>
+    <string name="quality_of_service_activity_step2_message">सेवा की अच्छी गुणवत्ता सुनिश्चित करने के लिए, एप्लिकेशन को पृष्ठभूमि में सूचनाएं प्राप्त करने की अनुमति देने के लिए अपने डिवाइस को कॉन्फ़िगर करें और इसे बैटरी ऑप्टिमाइज़ेशन से बाहर करें।</string>
+    <string name="quality_of_service_activity_step3_message">ऐप्लिकेशन का बार-बार उपयोग करें ताकि OS इसे प्राथमिकता दे, और इसे अनपेक्षित रूप से समाप्त न करे। \n\nऔर अपने संपर्कों को इस बारे में सूचित करना न भूलें!</string>
+    <string name="quality_of_service_activity_warning_background_data">ऐप को पृष्ठभूमि में मोबाइल डेटा का उपयोग करने की अनुमति दें।</string>
+    <string name="quality_of_service_activity_warning_receive_notification">ऐप को पुश नोटिफिकेशन प्राप्त करने की अनुमति दें।</string>
+    <string name="quality_of_service_activity_warning_run_background">ऐप को बैकग्राउंड में चलने दें.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">प्रशासक के रूप में परिभाषित करें</string>
+    <string name="room_members_activity_delete_message">इस सदस्य को हटाने की पुष्टि करें</string>
+    <string name="room_members_activity_moderators_title">मॉडरेटर</string>
+    <string name="room_members_activity_only_admin_message">अद्वितीय व्यवस्थापक को हटाया नहीं जा सकता।</string>
+    <string name="room_members_activity_owner_title">मालिक</string>
+    <string name="room_members_activity_participants_title">प्रतिभागियों को</string>
+    <string name="room_members_activity_remove_admin_title">व्यवस्थापक के रूप में निकालें</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">आमंत्रण लिंक डालें या चिपकाएँ</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">सेवा से अपने कनेक्शन की स्थिति देखें</string>
+    <string name="settings_advanced_activity_status_connection_title">कनेक्शन स्थिति</string>
+    <string name="settings_advanced_activity_title">उन्नत सेटिंग्स</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">प्राप्तकर्ताओं को अपनी सामग्री को कॉपी / सहेजने / साझा करने की अनुमति दें</string>
+    <string name="settings_activity_allow_copy_file_title">किसी भी प्रकार की फाइल</string>
+    <string name="settings_activity_allow_copy_text_title">मूल संदेश</string>
+    <string name="settings_activity_application_notifications">आवेदन सूचनाएं</string>
+    <string name="settings_activity_audio_call_category_title">ऑडियो कॉलस</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">रिंगटोन नाम</string>
+    <string name="settings_activity_audio_call_notification_title">रिंगटोन</string>
+    <string name="settings_activity_audio_call_vibration_title">वाईबर</string>
+    <string name="settings_activity_authorization_title">अनुमतियां</string>
+    <string name="settings_activity_call_item_menu_all">तमाम कॉल्स</string>
+    <string name="settings_activity_chat_category_title">संदेश</string>
+    <string name="settings_activity_chat_ringtone_title">ध्वनि नाम</string>
+    <string name="settings_activity_chat_title">ध्वनि</string>
+    <string name="settings_activity_chat_vibration_title">वाईबर</string>
+    <string name="settings_activity_content_information">वार्तालाप में भेजी गई मीडिया सामग्री का समाधान: हाई डेफिनिशन के लिए अधिक डेटा की आवश्यकता होती है और इसलिए अधिक प्रसारण समय लगता है।</string>
+    <string name="settings_activity_content_title">मीडिया</string>
+    <string name="settings_activity_default_directory_title">फ़ाइलों को सहेजने के लिए डिफ़ॉल्ट निर्देशिका</string>
+    <string name="settings_activity_default_sound">डिफ़ॉल्ट</string>
+    <string name="settings_activity_default_value_message">इन मापदंडों का उपयोग अनुप्रयोग स्तर पर चूक के रूप में किया जाता है।</string>
+    <string name="settings_activity_display_call_menu_missed">केवल मिस्ड कॉल</string>
+    <string name="settings_activity_display_call_menu_none">एकभी कॊल नही</string>
+    <string name="settings_activity_display_call_none">कुछ भी नहीं</string>
+    <string name="settings_activity_display_call_title">बातचीत में कॉल सूचनाएं दिखाएं</string>
+    <string name="settings_activity_display_notification_content_title">संदेश सामग्री प्रदर्शित करें</string>
+    <string name="settings_activity_display_notification_like_title">संदेशों पर प्रतिक्रियाएँ</string>
+    <string name="settings_activity_display_notification_sender_title">संदेश प्रेषक प्रदर्शित करें</string>
+    <string name="settings_activity_ephemeral_message">भेजे गए संदेशों को स्वचालित रूप से हटाएं</string>
+    <string name="settings_activity_ephemeral_section_title">जीवन काल</string>
+    <string name="settings_activity_ephemeral_title">स्वयं विनाशकारी संदेश</string>
+    <string name="settings_activity_image_title">फ़ोटो</string>
+    <string name="settings_activity_message_properties_title">संदेश गुण</string>
+    <string name="settings_activity_reset_default_value">डिफ़ॉल्ट सेटिंग्स पर रीसेट करें</string>
+    <string name="settings_activity_reset_preferences_button_title">चूक के लिए रीसेट करें</string>
+    <string name="settings_activity_reset_preferences_message">आवेदन चूक के लिए अधिसूचना सेटिंग्स रीसेट करें।</string>
+    <string name="settings_activity_reset_preferences_title">प्राथमिकताएँ रीसेट करें</string>
+    <string name="settings_activity_permissions_title">अनुमति</string>
+    <string name="settings_activity_silent_sound">मूक</string>
+    <string name="settings_activity_sound_enabled_title">ध्वनि सूचनाएं</string>
+    <string name="settings_activity_system_notifications_title">सिस्टम सूचनाएं</string>
+    <string name="settings_activity_system_settings_title">सिस्टम सेटिंग्स</string>
+    <string name="settings_activity_video_call_category_title">वीडियो कॉल्स</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">रिंगटोन नाम</string>
+    <string name="settings_activity_video_call_notification_title">रिंगटोन</string>
+    <string name="settings_activity_video_call_vibration_title">वाईबर</string>
+    <string name="settings_activity_welcome_screen_category_title">स्वागत हे</string>
+    <string name="settings_activity_welcome_screen_summary">स्वागत स्क्रीन दिखाएँ</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">प्रतिभागियों को अन्य प्रतिभागियों को व्यक्तिगत संपर्क के रूप में आमंत्रित करने की अनुमति दें</string>
+    <string name="settings_room_activity_allow_invite_contact">प्रतिभागियों को अपने संपर्कों को आमंत्रित करने दें</string>
+    <string name="settings_room_activity_conference_notifications_inform">पहली प्रविष्टि/अंतिम निकास</string>
+    <string name="settings_room_activity_conference_notifications_noisy">सभी प्रविष्टियां/निकास</string>
+    <string name="settings_room_activity_conference_notifications_quiet">मूक</string>
+    <string name="settings_room_activity_display_members">सदस्य दिखाएं</string>
+    <string name="settings_room_activity_room_type_channel">चैनल - वन वे ओनली</string>
+    <string name="settings_room_activity_room_type_channel_information">केवल व्यवस्थापक/मॉडरेटर ही संदेश पोस्ट कर सकते हैं</string>
+    <string name="settings_room_activity_room_type_feedback">चैनल - फीडबैक के साथ</string>
+    <string name="settings_room_activity_room_type_feedback_information">प्रतिभागियों की प्रतिक्रिया केवल प्रशासकों/मॉडरेटरों द्वारा देखी जाती है</string>
+    <string name="settings_room_activity_room_type_forum">मंच</string>
+    <string name="settings_room_activity_room_type_forum_information">प्रतिभागी सभी के द्वारा देखे गए संदेशों को पोस्ट कर सकते हैं</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">संपर्क</string>
+    <string name="share_activity_group_list">समूहों</string>
+    <string name="share_activity_title">शेयर</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Click-to-call कोड</string>
+    <string name="show_call_activity_information_code">बाहरी कॉल प्राप्त करने के लिए यह कोड साझा करें।</string>
+    <string name="show_call_activity_schedule_call">अनुसूचित कॉल</string>
+    <string name="show_call_activity_schedule_from">%1$s से</string>
+    <string name="show_call_activity_schedule_from_to">%1$s %2$sE से %3$s तक</string>
+    <string name="show_call_activity_schedule_message">कॉल अन्यत्र परिभाषित दिनांक और समय के लिए निर्धारित है।</string>
+    <string name="show_call_activity_schedule_to">%1$s तक</string>
+    <string name="show_call_activity_settings_call">कॉल प्रकार</string>
+    <string name="show_call_activity_settings_group_calls">समूह कॉल</string>
+    <string name="show_call_activity_settings_limited">योजना बनाई</string>
+    <string name="show_call_activity_settings_start">शुरू</string>
+    <string name="show_call_activity_settings_end">अंत</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">आवाज़</string>
+    <string name="show_contact_activity_chat">बातचीत</string>
+    <string name="show_contact_activity_export_contents">सामग्री निर्यात करें</string>
+    <string name="show_contact_activity_history_title">इतिहास</string>
+    <string name="show_contact_activity_identity_title">मुझे जानता है</string>
+    <string name="show_contact_activity_last_calls">आखिरी कॉल</string>
+    <string name="show_contact_activity_cleanup">सफाई</string>
+    <string name="show_contact_activity_pending">लंबित</string>
+    <string name="show_contact_activity_pending_message">यह सम्बन्ध स्थापित हो रहा है। कृपया प्रतीक्षा करें।</string>
+    <string name="show_contact_activity_revoked">हटाया गया</string>
+    <string name="show_contact_activity_settings_coach_mark">परिभाषित करें कि आपके संपर्क को आपके साथ इस संबंध में क्या करने की अनुमति है।</string>
+    <string name="show_contact_activity_video">वीडियो</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">एक सदस्य जोड़ें</string>
+    <string name="show_group_activity_invitation_list">लंबित निमंत्रण: %1$d</string>
+    <string name="show_group_activity_leave">समूह को छोड़ दें</string>
+    <string name="show_group_activity_leave_confirm_message">क्या आप वाकई इस समूह को छोड़ना चाहते हैं?</string>
+    <string name="show_group_activity_leave_message">आप इस समूह को छोड़ देंगे और अब आप इसकी बातचीत तक नहीं पहुँच पाएँगे।</string>
+    <string name="show_group_activity_member_list">सदस्यों की सूची (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">क्या आप वाकई इस समूह को हटाना चाहते हैं?</string>
+    <string name="show_group_activity_remove_message">यह समूह अपने सभी सदस्यों के लिए हटा दिया जाएगा और इसकी बातचीत मिटा दी जाएगी।</string>
+    <string name="show_group_activity_title">समूह</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">प्रशासन इंटरफ़ेस</string>
+    <string name="show_room_activity_invite_participants">प्रतिभागियों को आमंत्रित करें</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">छवि</string>
+    <string name="space_appearance_activity_background_message">किसी रंग या छवि के साथ बातचीत की पृष्ठभूमि को अनुकूलित करें।</string>
+    <string name="space_appearance_activity_background_text_title">टेक्स्ट</string>
+    <string name="space_appearance_activity_background_title">पृष्ठभूमि</string>
+    <string name="space_appearance_activity_container_background_message">भेजे गए संदेश की पृष्ठभूमि</string>
+    <string name="space_appearance_activity_container_background_peer_message">प्राप्त संदेश की पृष्ठभूमि</string>
+    <string name="space_appearance_activity_container_border_message">भेजे गए संदेश की सीमा</string>
+    <string name="space_appearance_activity_container_border_peer_message">प्राप्त संदेश की सीमा</string>
+    <string name="space_appearance_activity_container_text_message">भेजे गए संदेश का पाठ</string>
+    <string name="space_appearance_activity_container_text_peer_message">प्राप्त संदेश का पाठ</string>
+    <string name="space_appearance_activity_container_title">बुलबुले</string>
+    <string name="space_appearance_activity_default_value">डिफ़ॉल्ट मान</string>
+    <string name="space_appearance_activity_general_title">सामान्य</string>
+    <string name="space_appearance_activity_menu_choose_color">डिफ़ॉल्ट रंग</string>
+    <string name="space_appearance_activity_menu_enter_color">रंग संकेत</string>
+    <string name="space_appearance_activity_opacity">अस्पष्टता</string>
+    <string name="space_appearance_activity_preview_message">मैं अपने बैले जूते भूल गया … क्या आप उन्हें अपने साथ ले जा सकते हैं? 😘</string>
+    <string name="space_appearance_activity_preview_peer_message">हैलो स्वीटी!</string>
+    <string name="space_appearance_activity_preview_title">पूर्वावलोकन</string>
+    <string name="space_appearance_activity_theme">विषय</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">एक "अंतरिक्ष" वह जगह है जहां आपके विभिन्न व्यक्तित्व आपके कई सामाजिक मंडलों से मिलते हैं, जिनमें सबसे गुप्त लोग भी शामिल हैं।</string>
+    <string name="spaces_activity_sample_business">व्यापार</string>
+    <string name="spaces_activity_sample_business_name">डॉ. जॉन डो</string>
+    <string name="spaces_activity_sample_family">परिवार</string>
+    <string name="spaces_activity_sample_family_name">पापा</string>
+    <string name="spaces_activity_sample_friends">दोस्त</string>
+    <string name="spaces_activity_sample_friends_name">जॉनी</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">एक गलती हुई है। कृपया पुन: प्रयास करें।</string>
+    <string name="streaming_audio_activity_no_music_message">मीडिया साझेदारी</string>
+    <string name="streaming_audio_activity_no_music_title">कोई संगीत नहीं मिला 🙁</string>
+    <string name="streaming_audio_activity_title">मीडिया साझेदारी</string>
+    <string name="streaming_audio_activity_unsupported_message">यह ऑडियो प्रारूप %1$s के उपकरण द्वारा समर्थित नहीं है।</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">वर्गीकृत विज्ञापन</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">घोषणा</string>
+    <string name="template_click_to_call_activity_template_help">मदद</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">मदद</string>
+    <string name="template_click_to_call_activity_template_meeting">बैठक</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">बैठक</string>
+    <string name="template_click_to_call_activity_template_video_bell">वीडियो डोरबेल</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">डोरबेल</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">नाम (डॉ. जॉन डो, सुश्री स्मिथ,…)</string>
+    <string name="template_space_activity_template_business_profile">सुश्री सामन्था स्मिथ</string>
+    <string name="template_space_activity_template_family_placeholder">नाम (पिताजी, माँ,…)</string>
+    <string name="template_space_activity_template_family_profile">मां</string>
+    <string name="template_space_activity_template_friends_placeholder">नाम (जॉनी, सैम,…)</string>
+    <string name="template_space_activity_template_friends_profile">सैम</string>
+    <string name="template_space_activity_template_other">अन्य</string>
+    <string name="template_space_activity_template_other_placeholder">नाम (पिताजी, माँ, जॉनी, डॉ. जॉन डो,…)</string>
+    <string name="template_space_activity_template_title">टेम्पलेट्स</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">अपने नजदीकी मित्र से अपने आमंत्रण क्यूआर-कोड को ट्विनमे से स्कैन करने के लिए कहें, या अपने आमंत्रण कोड को क्लिपबोर्ड पर कॉपी करने के लिए उस पर टैप करें।</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">क्या आप वाकई इस \"कॉल ट्रांसफ़र\" कोड को हटाना चाहते हैं?</string>
+    <string name="transfert_call_activity_delete_message">यह कॉल ट्रांसफ़र लिंक हटा दिया जाएगा. पुष्टि करना?</string>
+    <string name="transfert_call_activity_gallery_message">अपने मोबाइल कॉल ट्रांसफर करने के लिए इस QR-कोड को स्कैन करें।</string>
+    <string name="transfert_call_activity_message">इस कोड को अग्रेषित करें और इसके URL को उस ब्राउज़र पर बुकमार्क करें जिस पर आप अपने मोबाइल कॉल को स्थानांतरित करना चाहते हैं।</string>
+    <string name="transfert_call_activity_reset_message">यह क्रिया वर्तमान कॉल ट्रांसफ़र कोड को अमान्य कर देती है और एक नया कॉल ट्रांसफ़र कोड बना देती है। पुष्टि करना?</string>
+    <string name="transfert_call_activity_saved_message">कॉल ट्रांसफर कोड फोटो गैलरी में सहेजा गया।</string>
+    <string name="transfert_call_activity_share">स्थानांतरण</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">अपडेट उपलब्ध</string>
+    <string name="update_app_activity_update_message">नवीनतम एप्लिकेशन अपडेट में निम्नलिखित शामिल हैं:</string>
+    <string name="update_app_activity_update_title">अभी अद्यतन करें</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">वीडियो के लिए कॉलिंग&#8230;</string>
+    <string name="video_call_activity_cannot_call">वीडियो कॉल नहीं कर सकते</string>
+    <string name="video_call_activity_connecting">कनेक्ट हो रहा है&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">आप कॉल रखना चाहते हैं?</string>
+    <string name="video_call_activity_terminate">कॉल को समाप्त कर दिया गया है</string>
+    <string name="video_call_activity_terminate_busy">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; व्यस्त है</string>
+    <string name="video_call_activity_terminate_cancel"> &lt;b&gt;%1$s&lt;/b&gt;द्वारा कॉल रद्द</string>
+    <string name="video_call_activity_terminate_connectivity_error">कनेक्टिविटी समस्या के कारण कॉल डिस्कनेक्ट हो गई है। कृपया अपना इंटरनेट कनेक्शन जांचें।</string>
+    <string name="video_call_activity_terminate_decline"> &lt;b&gt;%1$s&lt;/b&gt; द्वारा कॉल से इन्कार</string>
+    <string name="video_call_activity_terminate_disconnected">नेटवर्क त्रुटि के कारण कॉल डिस्कनेक्ट हो गई है। कृपया पुनः प्रयास करें।</string>
+    <string name="video_call_activity_terminate_gone">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; बंद है</string>
+    <string name="video_call_activity_terminate_revoked">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; ने आपके साथ यह संबंध हटा दिया है।</string>
+    <string name="video_call_activity_terminate_success"> &lt;b&gt;%1$s&lt;/b&gt; ने कॉल समाप्त की</string>
+    <string name="video_call_activity_terminate_timeout">कॉल समाप्त: &lt;b&gt;%1$s&lt;/b&gt; उत्तर नहीं देता है</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">%1$s दबाकर, मैं पुष्टि करता हूं कि मैंने पढ़ा और स्वीकार किया है:</string>
+    <string name="welcome_activity_next">निम्नलिखित</string>
+    <string name="welcome_activity_pass">छोड़ें</string>
+    <string name="welcome_activity_privacy_policy">गोपनीयता नीति</string>
+    <string name="welcome_activity_start">शुरू</string>
+    <string name="welcome_activity_step1_message">मैसेजिंग और हाई-डेफिनिशन वॉयस/वीडियो कॉल, डिज़ाइन द्वारा गोपनीयता की रक्षा करना।</string>
+    <string name="welcome_activity_step2_message">सुरक्षित "पीयर-टू-पीयर" संचार: क्लाउड में कोई निशान नहीं।</string>
+    <string name="welcome_activity_step3_message">कोई फ़ोन नंबर नहीं, कोई पता पुस्तिका नहीं, कोई उपयोगकर्ता-आईडी नहीं: आप चुनते हैं कि आप किसके साथ संवाद कर रहे हैं, इसके आधार पर आप कैसे पहचाने जाना चाहते हैं।</string>
+    <string name="welcome_activity_terms_of_use">उपयोग की शर्तें</string>
+
+</resources>

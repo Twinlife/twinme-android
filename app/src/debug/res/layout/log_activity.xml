@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.twinlife.twinme.ui.LogActivity">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%">
+
+        <ImageView
+            android:id="@+id/log_activity_back_image_view"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/start_chevron"
+            app:layout_aspectRatio="54.55%"
+            app:layout_heightPercent="28.50%"
+            app:layout_marginStartPercent="3.47%" />
+
+        <TextView
+            android:id="@+id/log_activity_back_label_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/log_activity_back_image_view"
+            android:layout_toRightOf="@id/log_activity_back_image_view"
+            android:text="@string/application_back"
+            app:layout_marginStartPercent="2.13%" />
+
+        <TextView
+            android:id="@+id/log_activity_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/log_activity_title"
+            tools:layout_editor_absoluteX="162dp" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/log_activity_back_clickable_view"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="25%" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_marginTopPercent="10%">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:layout_marginTopPercent="10%"
+            >
+
+            <Spinner
+                android:id="@+id/debug_select_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <ListView
+                android:id="@+id/log_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:fontFamily="monospace"
+                android:typeface="monospace"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

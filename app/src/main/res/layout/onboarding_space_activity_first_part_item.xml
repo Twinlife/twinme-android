@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/onboarding_space_activity_first_part_item_sample_space_friends_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_centerHorizontal="true">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/onboarding_space_activity_first_part_item_sample_space_friends_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/onboarding_space_activity_first_part_item_sample_space_friends_image_view"
+                android:scaleType="fitCenter"
+                android:layout_centerVertical="true"
+                android:src="@drawable/space_sample_friends"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="73.33%"
+                app:layout_marginStartPercent="4.76%" />
+
+            <TextView
+                android:id="@+id/onboarding_space_activity_first_part_item_sample_space_friends_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/onboarding_space_activity_first_part_item_sample_space_friends_image_view"
+                android:layout_toRightOf="@id/onboarding_space_activity_first_part_item_sample_space_friends_image_view"
+                app:layout_marginStartPercent="4.76%"
+                app:layout_marginEndPercent="4.76%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/onboarding_space_activity_first_part_item_sample_space_family_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/onboarding_space_activity_first_part_item_sample_space_friends_container_view">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/onboarding_space_activity_first_part_item_sample_space_family_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/onboarding_space_activity_first_part_item_sample_space_friends_container_view">
+
+            <ImageView
+                android:id="@+id/onboarding_space_activity_first_part_item_sample_space_family_image_view"
+                android:scaleType="fitCenter"
+                android:layout_centerVertical="true"
+                android:src="@drawable/space_sample_family"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="73.33%"
+                app:layout_marginStartPercent="4.76%" />
+
+            <TextView
+                android:id="@+id/onboarding_space_activity_first_part_item_sample_space_family_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/onboarding_space_activity_first_part_item_sample_space_family_image_view"
+                android:layout_toRightOf="@id/onboarding_space_activity_first_part_item_sample_space_family_image_view"
+                app:layout_marginStartPercent="4.76%"
+                app:layout_marginEndPercent="4.76%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/onboarding_space_activity_first_part_item_sample_space_business_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/onboarding_space_activity_first_part_item_sample_space_family_container_view">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/onboarding_space_activity_first_part_item_sample_space_business_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/spaces_fragment_sample_space_family_view">
+
+            <ImageView
+                android:id="@+id/onboarding_space_activity_first_part_item_sample_space_business_image_view"
+                android:scaleType="fitCenter"
+                android:layout_centerVertical="true"
+                android:src="@drawable/space_sample_business"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="73.33%"
+                app:layout_marginStartPercent="4.76%" />
+
+            <TextView
+                android:id="@+id/onboarding_space_activity_first_part_item_sample_space_business_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/onboarding_space_activity_first_part_item_sample_space_business_image_view"
+                android:layout_toRightOf="@id/onboarding_space_activity_first_part_item_sample_space_business_image_view"
+                app:layout_marginStartPercent="4.76%"
+                app:layout_marginEndPercent="4.76%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/onboarding_space_activity_first_part_item_message_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onboarding_space_activity_first_part_item_sample_space_business_container_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/spaces_activity_message"
+        app:layout_widthPercent="85.33%" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

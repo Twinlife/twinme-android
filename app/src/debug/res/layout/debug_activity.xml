@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.twinlife.twinme.ui.DebugActivity">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="10%">
+
+        <ImageView
+            android:id="@+id/debug_activity_back_image_view"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/start_chevron"
+            app:layout_aspectRatio="54.55%"
+            app:layout_heightPercent="28.50%"
+            app:layout_marginStartPercent="3.47%" />
+
+        <TextView
+            android:id="@+id/debug_activity_back_label_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/debug_activity_back_image_view"
+            android:layout_toRightOf="@id/debug_activity_back_image_view"
+            android:text="@string/application_back"
+            app:layout_marginStartPercent="2.13%" />
+
+        <TextView
+            android:id="@+id/debug_activity_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/debug_activity_title"
+            tools:layout_editor_absoluteX="162dp" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/debug_activity_back_clickable_view"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="25%" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        app:layout_marginTopPercent="10%"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_connection_status" />
+
+        <Button
+            android:id="@+id/debug_disconnect_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_disconnect_title" />
+
+        <Button
+            android:id="@+id/debug_reconnect_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_reconnect_title" />
+
+        <Button
+            android:id="@+id/debug_send_messages_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_send_messages_title" />
+
+        <Button
+            android:id="@+id/debug_delete_conversations_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_delete_conversations_title"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/debug_backup_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_backup_title" />
+
+        <Button
+            android:id="@+id/debug_restore_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_restore_title" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debug_locale_status" />
+
+        <ListView
+            android:id="@+id/debug_select_locale_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:layout_widthPercent="30%" />
+
+    </LinearLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/group_member_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/group_member_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/group_member_activity_member_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/group_member_activity_tool_bar" />
+
+    <TextView
+        android:id="@+id/group_member_activity_fallback_view"
+        style="@style/textAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/twinme_application_content_marginRight"
+        android:layout_marginLeft="@dimen/twinme_application_content_marginLeft"
+        android:layout_marginRight="@dimen/twinme_application_content_marginRight"
+        android:layout_marginStart="@dimen/twinme_application_content_marginLeft"
+        android:text="@string/application_group_not_found"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/group_member_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <org.twinlife.twinme.ui.groups.MenuGroupMemberView
+        android:id="@+id/group_member_activity_menu_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/group_member_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

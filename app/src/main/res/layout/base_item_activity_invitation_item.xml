@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Layout container for the delete action -->
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_invitation_item_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_invitation_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_invitation_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_invitation_item_view"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:layout_aspectRatio="483.33%"
+            app:layout_marginEndPercent="6.93%"
+            app:layout_widthPercent="77.33%">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/base_item_activity_invitation_no_avatar_view"
+                android:layout_centerVertical="true"
+                app:layout_aspectRatio="100%"
+                app:layout_marginStartPercent="6.20%"
+                app:layout_widthPercent="13.79%" />
+
+            <org.twinlife.twinme.utils.CircularImageView
+                android:id="@+id/base_item_activity_invitation_avatar_view"
+                android:layout_centerVertical="true"
+                app:layout_aspectRatio="100%"
+                app:layout_marginStartPercent="6.20%"
+                app:layout_widthPercent="13.79%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/base_item_activity_invitation_avatar_view"
+                android:layout_toRightOf="@id/base_item_activity_invitation_avatar_view"
+                app:layout_marginStartPercent="3.79%"
+                app:layout_marginEndPercent="3.79%">
+
+                <TextView
+                    android:id="@+id/base_item_activity_invitation_item_group_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:lines="1" />
+
+                <TextView
+                    android:id="@+id/base_item_activity_invitation_item_invitation_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_below="@+id/base_item_activity_invitation_item_group_name"
+                    android:maxLines="2" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView
+            android:id="@+id/base_item_activity_invitation_item_delete_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/base_item_activity_invitation_item_view"
+            app:layout_marginEndPercent="6.93%"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/base_item_activity_invitation_item_state_view"
+            android:layout_height="0dp"
+            android:layout_alignBottom="@id/base_item_activity_invitation_item_view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:layout_aspectRatio="100%"
+            app:layout_marginEndPercent="2.4%"
+            app:layout_widthPercent="3.2%"
+            tools:ignore="ContentDescription" />
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_invitation_item_state_avatar_view"
+            android:layout_height="0dp"
+            android:layout_alignBottom="@id/base_item_activity_invitation_item_view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            app:layout_aspectRatio="100%"
+            app:layout_marginEndPercent="2.4%"
+            app:layout_widthPercent="3.2%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/base_item_activity_invitation_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/conversations_fragment_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/conversations_fragment_no_conversation_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/onboarding_step2"
+        android:visibility="gone"
+        app:layout_marginTopPercent="6.16%" />
+
+    <TextView
+        android:id="@+id/conversations_fragment_no_conversation_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversations_fragment_no_conversation_image_view"
+        android:layout_above="@+id/conversations_fragment_invite_contact_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center|top"
+        android:ellipsize="end"
+        android:text="@string/conversations_fragment_no_conversation_message"
+        android:visibility="gone"
+        app:layout_marginTopPercent="4.43%"
+        app:layout_widthPercent="85.33%"  />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversations_fragment_invite_contact_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/conversations_fragment_transfer_view"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/conversations_fragment_invite_contact_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/contacts_fragment_invite_contact_title" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversations_fragment_transfer_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_widthPercent="89.33%"
+        app:layout_heightPercent="6.74%"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/conversations_fragment_transfer_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/account_activity_transfer_from_another_device"
+            app:layout_widthPercent="89.58%"
+            app:layout_heightPercent="70%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversations_fragment_start_conversation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="6.74%"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/conversations_fragment_start_conversation_titl_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/conversations_fragment_start" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <org.twinlife.twinme.ui.mainActivity.RestrictionView
+        android:id="@+id/conversations_fragment_restriction_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="2.25%"
+        app:layout_marginBottomPercent="2.25%" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversations_fragment_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversations_fragment_restriction_view" />
+
+    <org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView
+        android:id="@+id/conversations_fragment_search_tab_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversations_fragment_search_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:layout_below="@+id/conversations_fragment_search_tab_view" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/conversations_fragment_no_result_found_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversations_fragment_search_tab_view"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/conversations_fragment_no_result_found_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/no_result_found"
+            app:layout_marginTopPercent="14.39%"/>
+
+        <TextView
+            android:id="@+id/conversations_fragment_no_result_found_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/conversations_fragment_no_result_found_image_view"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/conversations_fragment_no_result_found"
+            app:layout_marginTopPercent="5.55%"
+            app:layout_widthPercent="85.33%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/conversations_fragment_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notifications_fragment_notification_item_container_view"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="?attr/white_color">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/notifications_fragment_notification_item_sliding_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/notifications_fragment_notification_item_acknowledged_view"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="12.82%"
+            app:layout_marginStartPercent="1.07%" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/notifications_fragment_notification_item_no_avatar_view"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="69.35%"
+            app:layout_marginStartPercent="5.6%" />
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/notifications_fragment_notification_item_avatar_view"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="69.35%"
+            app:layout_marginStartPercent="5.6%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/notifications_fragment_notification_item_information_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/notifications_fragment_notification_item_avatar_view"
+            android:layout_toRightOf="@id/notifications_fragment_notification_item_avatar_view"
+            app:layout_marginEndPercent="2.93%"
+            app:layout_marginStartPercent="4.26%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/notifications_fragment_notification_item_information_top_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/notifications_fragment_notification_item_title_view"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/notifications_fragment_notification_item_avatar_view"
+                    android:layout_toRightOf="@id/notifications_fragment_notification_item_avatar_view"
+                    android:ellipsize="end"
+                    android:lines="1" />
+
+                <ImageView
+                    android:id="@+id/notifications_fragment_notification_item_certified_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/notifications_fragment_notification_item_title_view"
+                    android:layout_toEndOf="@+id/notifications_fragment_notification_item_title_view"
+                    android:src="@drawable/authentified_relation_icon"
+                    android:visibility="gone"
+                    app:layout_aspectRatio="100%" />
+
+                <TextView
+                    android:id="@+id/notifications_fragment_notification_item_time_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end"
+                    android:ellipsize="end"
+                    android:lines="1" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/notifications_fragment_notification_item_information_top_view">
+
+                <ImageView
+                    android:id="@+id/notifications_fragment_notification_item_type_view"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerInside"
+                    app:layout_aspectRatio="100%" />
+
+                <TextView
+                    android:id="@+id/notifications_fragment_notification_item_subtitle_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/notifications_fragment_notification_item_type_view"
+                    android:layout_toRightOf="@id/notifications_fragment_notification_item_type_view"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    app:layout_marginEndPercent="5.5%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:id="@+id/notifications_fragment_notification_item_separator_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/separator_color"
+            android:layout_alignStart="@+id/notifications_fragment_notification_item_information_view"
+            android:layout_alignLeft="@+id/notifications_fragment_notification_item_information_view"
+            android:layout_alignParentBottom="true" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+</LinearLayout>

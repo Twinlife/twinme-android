@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Chấp nhận</string>
+    <string name="application_account_deleted">Tài khoản của bạn đã bị xóa, bạn cần gỡ cài đặt ứng dụng ngay bây giờ.</string>
+    <string name="application_add_contact_no_profile">Bạn cần hoàn tất hồ sơ cá nhân để đại diện cho mình trước khi mời một liên hệ. Tiếp tục?</string>
+    <string name="application_all">Tất cả</string>
+    <string name="application_appearance">Giao diện</string>
+    <string name="application_are_you_sure">Bạn có chắc không?</string>
+    <string name="application_authorization_camera">Cho phép ứng dụng truy cập Máy ảnh trong cài đặt hệ thống.</string>
+    <string name="application_authorization_go_settings">Đi tới cài đặt hệ thống</string>
+    <string name="application_authorization_microphone">Cho phép ứng dụng truy cập Micro trong cài đặt hệ thống.</string>
+    <string name="application_authorization_microphone_camera">Cho phép ứng dụng truy cập Micro và Máy ảnh trong cài đặt hệ thống.</string>
+    <string name="application_authorization_title">Thiếu quyền truy cập</string>
+    <string name="application_back">Quay lại</string>
+    <string name="application_camera">Máy ảnh</string>
+    <string name="application_cancel">Hủy</string>
+    <string name="application_canceled_operation">Đã hủy thao tác</string>
+    <string name="application_checking_connection">Đang kiểm tra kết nối</string>
+    <string name="application_color">Màu sắc</string>
+    <string name="application_configuration">Cấu hình</string>
+    <string name="application_confirm">Xác nhận</string>
+    <string name="application_confirm_deletion">Xác nhận xóa</string>
+    <string name="application_connected">Kết nối bảo mật đã được kích hoạt.</string>
+    <string name="application_connection_status_no_network">Không có kết nối Internet.</string>
+    <string name="application_connection_status_no_network_message">Kiểm tra kết nối mạng của bạn.</string>
+    <string name="application_connection_status_no_services">Không thể truy cập dịch vụ.</string>
+    <string name="application_connection_status_no_services_message">Hãy thử sử dụng VPN.</string>
+    <string name="application_contact_not_found">Liên hệ này đã xóa liên hệ này với bạn và không thể liên lạc được nữa.</string>
+    <string name="application_continue_without_premium_services">Tiếp tục mà không cần dịch vụ cao cấp</string>
+    <string name="application_create_group_no_profile">Bạn cần hoàn tất hồ sơ cá nhân để đại diện cho mình trong nhóm này. Tiếp tục?</string>
+    <string name="application_database_error">Lỗi cơ sở dữ liệu</string>
+    <string name="application_decline">Từ chối</string>
+    <string name="application_default">Mặc định</string>
+    <string name="application_delete">Xóa</string>
+    <string name="application_delete_message">Bạn có chắc muốn xóa không?</string>
+    <string name="application_denied_permissions">Không có đủ quyền cần thiết</string>
+    <string name="application_description">Mô tả</string>
+    <string name="application_display_all">Hiển thị tất cả</string>
+    <string name="application_do_not_display">Không hiển thị nữa</string>
+    <string name="application_edit">Chỉnh sửa</string>
+    <string name="application_error_file_not_found">Định dạng hình ảnh/video này không được ứng dụng hỗ trợ.</string>
+    <string name="application_error_media_not_supported">Không tìm thấy tệp.</string>
+    <string name="application_error_no_storage_space">Không đủ dung lượng lưu trữ</string>
+    <string name="application_group_limit_reached">Đã vượt quá số thành viên tối đa trong nhóm (%1$d).</string>
+    <string name="application_group_not_found">Bạn đã bị xóa khỏi nhóm</string>
+    <string name="application_items_selected">Đã chọn %1$d mục</string>
+    <string name="application_later">Để sau</string>
+    <string name="application_migration_no_storage_space">Thiết bị của bạn không đủ dung lượng để hoàn tất việc di chuyển. Hãy đóng ứng dụng, giải phóng một phần bộ nhớ, và khởi động lại ứng dụng để hoàn tất cập nhật.</string>
+    <string name="application_migration_no_storage_space_message">Một trong hai thiết bị không có đủ dung lượng lưu trữ. Giải phóng dung lượng trên thiết bị đó trước khi khởi động lại quá trình di chuyển.</string>
+    <string name="application_name_hint">Tên</string>
+    <string name="application_network_connecting">Đang kết nối với dịch vụ twinme</string>
+    <string name="application_network_connectivity">Đã có kết nối mạng</string>
+    <string name="application_network_status_airplane_message">Chế độ máy bay đang bật.</string>
+    <string name="application_network_status_airplane_resolution">Vui lòng tắt chế độ máy bay và kết nối với mạng Wi-Fi hoặc dữ liệu di động.</string>
+    <string name="application_network_status_connected_no_internet">Không thể kết nối tới dịch vụ twinme.\nVui lòng kiểm tra kết nối Internet của bạn.</string>
+    <string name="application_network_status_connected_resolution">Thử kết nối với một mạng khác.</string>
+    <string name="application_network_status_connection_timeout">Không thể thiết lập kết nối Internet.</string>
+    <string name="application_network_status_no_internet">Không có kết nối Internet.\nVui lòng kết nối Wi-Fi hoặc mạng di động.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi đã bị tắt.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi đã bị tắt và không có kết nối dữ liệu di động.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Vui lòng bật Wi-Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Vui lòng bật Wi-Fi hoặc kích hoạt kết nối dữ liệu di động.</string>
+    <string name="application_new_feature">Mới!</string>
+    <string name="application_no">Không</string>
+    <string name="application_no_network_connectivity">Không có kết nối mạng</string>
+    <string name="application_no_service">Không có dịch vụ</string>
+    <string name="application_not_authorized_operation">Hành động không được phép</string>
+    <string name="application_not_authorized_operation_by_your_contact">Hành động không được liên hệ của bạn cho phép.</string>
+    <string name="application_not_connected">Đang thiết lập kết nối bảo mật…</string>
+    <string name="application_not_signed_in">Không kết nối với dịch vụ twinme</string>
+    <string name="application_now">Bây giờ</string>
+    <string name="application_ok">OK</string>
+    <string name="application_low_usage_message">Cảnh báo, nếu bạn không sử dụng ứng dụng thường xuyên, hệ điều hành có thể không đánh thức nó để trao đổi tin nhắn!</string>
+    <string name="application_one_item_selected">1 mục đã chọn</string>
+    <string name="application_operation_failure">Thao tác thất bại</string>
+    <string name="application_operation_irreversible">Thao tác này không thể hoàn tác</string>
+    <string name="application_permission_camera">Cần cấp quyền truy cập máy ảnh để chụp ảnh hoặc quay video mới.</string>
+    <string name="application_permission_scan_code">Cần cấp quyền truy cập máy ảnh để quét mã QR.</string>
+    <string name="application_photo_gallery">Album ảnh</string>
+    <string name="application_profile">Hồ sơ</string>
+    <string name="application_profile_avatar_not_defined">Bạn cần chọn ảnh đại diện để đại diện cho mình với các liên hệ bạn mời bằng hồ sơ này.</string>
+    <string name="application_profile_name_not_defined">Bạn cần đặt tên để đại diện cho mình với các liên hệ bạn mời bằng hồ sơ này.</string>
+    <string name="application_remove">Xóa bỏ</string>
+    <string name="application_save">Lưu</string>
+    <string name="application_search_hint">Tìm kiếm</string>
+    <string name="application_timeout">Thời gian hết hạn</string>
+    <string name="application_timeout_day">1 ngày</string>
+    <string name="application_timeout_hour">1 giờ</string>
+    <string name="application_timeout_hours">%1$d giờ</string>
+    <string name="application_timeout_minute">1 phút</string>
+    <string name="application_timeout_minutes">%1$d phút</string>
+    <string name="application_timeout_month">1 tháng</string>
+    <string name="application_timeout_seconds">%1$d giây</string>
+    <string name="application_timeout_week">1 tuần</string>
+    <string name="application_select">Chọn</string>
+    <string name="application_select_application">Chọn ứng dụng</string>
+    <string name="application_select_more">Chọn thêm…</string>
+    <string name="application_server_timeout">Máy chủ phản hồi quá lâu</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Chủ đề</string>
+    <string name="application_unknown_name">Không rõ</string>
+    <string name="application_upgrade">Đang nâng cấp twinme</string>
+    <string name="application_webrtc_failure">Lỗi WebRTC</string>
+    <string name="application_wrong_configuration">Cấu hình không chính xác</string>
+    <string name="application_yes">Có</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Mã ứng dụng</string>
+    <string name="about_activity_information">Thông tin</string>
+    <string name="about_activity_legal">Thông báo pháp lý</string>
+    <string name="about_activity_libraries">Thư viện</string>
+    <string name="about_activity_message">twinme là dịch vụ trò chuyện và gọi thoại/video an toàn, không truy cập thông tin cá nhân.\n\ntwinme dựa trên WebRTC, tiêu chuẩn mới cho truyền thông đa phương tiện thời gian thực giữa các thiết bị (end-to-end encryption, không cần máy chủ trung gian).</string>
+    <string name="about_activity_open_source_information">Mã nguồn của ứng dụng có sẵn dưới dạng Open Source trên GitHub, theo giấy phép AGPL-3.0.</string>
+    <string name="about_activity_open_sources_licences">Giấy phép mã nguồn mở</string>
+    <string name="about_activity_premium_services">Dịch vụ cao cấp</string>
+    <string name="about_activity_privacy_policy">Chính sách quyền riêng tư</string>
+    <string name="about_activity_quality_of_service">Chất lượng dịch vụ</string>
+    <string name="about_activity_terms_of_use">Điều khoản sử dụng</string>
+    <string name="about_activity_version">Phiên bản</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">Lời mời này đã bị xóa</string>
+    <string name="accept_group_invitation_activity_in_progress">Đang chờ tham gia nhóm</string>
+    <string name="accept_group_invitation_activity_message">%1$s mời bạn tham gia nhóm</string>
+
+    <!-- AcceptInvitationViewActivity -->
+    <string name="accept_invitation_activity_being_transferred">Lời mời đang được chuyển.</string>
+    <string name="accept_invitation_activity_check_connection">Kiểm tra kết nối Internet của bạn.</string>
+    <string name="accept_invitation_activity_existing_contact_message">Bạn đã có mối quan hệ với liên hệ này. Bạn có muốn tạo một mối quan hệ mới không?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Thông tin liên hệ không chính xác</string>
+    <string name="accept_invitation_activity_local_twincode">Bạn không thể thiết lập mối quan hệ với chính mình trong cùng một tài khoản.</string>
+    <string name="accept_invitation_activity_message">%1$s muốn kết nối với bạn</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu của bạn.</string>
+    <string name="account_migration_activity_close_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu mới.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Bạn có chắc muốn hủy quá trình di chuyển không?</string>
+    <string name="account_migration_activity_network_message">Kiểm tra kết nối mạng của bạn</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Không đủ dung lượng cho các tệp</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Không đủ dung lượng để tải cơ sở dữ liệu về</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Không đủ dung lượng để tải cơ sở dữ liệu lên</string>
+    <string name="account_migration_activity_start">Bắt đầu di chuyển</string>
+    <string name="account_migration_activity_stop">Dừng di chuyển</string>
+    <string name="account_migration_activity_state_canceled">Đã hủy di chuyển</string>
+    <string name="account_migration_activity_state_list_files">Đang liệt kê tệp</string>
+    <string name="account_migration_activity_state_negotiate">Đang chờ</string>
+    <string name="account_migration_activity_state_send_account">Đang gửi tài khoản</string>
+    <string name="account_migration_activity_state_send_database">Đang gửi cơ sở dữ liệu</string>
+    <string name="account_migration_activity_state_send_files">Đang gửi tệp</string>
+    <string name="account_migration_activity_state_send_settings">Đang gửi cài đặt ứng dụng</string>
+    <string name="account_migration_activity_state_terminate">Di chuyển gần hoàn tất.</string>
+    <string name="account_migration_activity_state_wait_account">Đang chờ tài khoản khác</string>
+    <string name="account_migration_activity_state_wait_connect">Đang chờ kết nối lại</string>
+    <string name="account_migration_activity_state_wait_files">Đang chờ nhận tệp và cơ sở dữ liệu.</string>
+    <string name="account_migration_activity_success_message">Di chuyển hoàn tất thành công</string>
+    <string name="account_migration_activity_transfer_in_progress">Đang chuyển dữ liệu</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Hiển thị màn hình này trên mỗi thiết bị, và một thiết bị sẽ quét mã QR của thiết bị kia.</string>
+    <string name="account_migration_scanner_activity_message_older_version">Thiết bị này đang sử dụng phiên bản hệ điều hành cũ không tương thích, điều này sẽ khiến tất cả các liên hệ bị mất trên thiết bị đích khi chuyển. Bạn vẫn muốn tiếp tục?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">Thiết bị đích đang sử dụng phiên bản hệ điều hành cũ không tương thích, điều này sẽ khiến tất cả các liên hệ của bạn bị mất khi chuyển. Bạn vẫn muốn tiếp tục?</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Để bắt đầu di chuyển, hãy quét mã QR này từ thiết bị khác</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Quét mã QR hiển thị trong phần \"Tài khoản / Chuyển từ thiết bị khác\" trên menu bên của thiết bị kia.</string>
+    <string name="account_migration_scanner_activity_scan_title">Quét</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Dừng quét</string>
+
+    <!--  AccountActivity -->
+    <string name="account_activity_conversations_content_title">Nội dung trò chuyện</string>
+    <string name="account_activity_delete_account">Tài khoản của bạn và toàn bộ dữ liệu liên quan sẽ bị xóa vĩnh viễn. Xác nhận?</string>
+    <string name="account_activity_delete_account_confirmation">Bạn có thực sự chắc chắn muốn xóa tài khoản không?</string>
+    <string name="account_activity_message_first_part">Một tài khoản mới được tạo khi bạn cài đặt ứng dụng lần đầu, hoặc sau khi cài đặt lại ứng dụng, đặt lại thiết bị, hoặc xóa tài khoản hiện tại.</string>
+    <string name="account_activity_export_content">Xuất ra thiết bị lưu trữ ngoài</string>
+    <string name="account_activity_message_second_part">Không còn dấu vết nào của tài khoản và dữ liệu cũ, vì vậy bạn sẽ cần mời lại các liên hệ của mình.</string>
+    <string name="account_activity_migration_message">Dịch vụ di chuyển tài khoản có sẵn để chuyển toàn bộ tài khoản của bạn, bao gồm tất cả dữ liệu liên quan (liên hệ, tin nhắn, nhóm, v.v.), từ thiết bị này sang thiết bị khác theo thời gian thực. Nhờ đó, bạn có thể chuyển tài khoản giữa thiết bị cũ và thiết bị mới.</string>
+    <string name="account_activity_migration_start_from_another_device">Từ thiết bị khác</string>
+    <string name="account_activity_migration_start_from_current_device">Từ thiết bị của tôi</string>
+    <string name="account_activity_migration_title">Di chuyển tài khoản</string>
+    <string name="account_activity_title">Tài khoản</string>
+    <string name="account_activity_transfer_between_devices">Chuyển giữa các thiết bị</string>
+    <string name="account_activity_transfer_from_another_device">Chuyển từ thiết bị khác</string>
+    <string name="account_activity_transfer_from_device">Chuyển từ thiết bị này</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_call_participant_activity_title">Thêm người tham gia cuộc gọi này</string>
+    <string name="add_contact_activity_gallery_title">Nhập từ thư viện</string>
+    <string name="add_contact_activity_in_person_subtitle">Mời một người ở gần bạn</string>
+    <string name="add_contact_activity_in_person_title">Trực tiếp</string>
+    <string name="add_contact_activity_invitation_code_title">Mini-Mã</string>
+    <string name="add_contact_activity_invite">Mời</string>
+    <string name="add_contact_activity_invite_message">Mở địa chỉ web %1$s bằng twinme trên thiết bị di động của bạn để kết nối riêng tư với “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Lời mời từ Twinme</string>
+    <string name="add_contact_activity_message">Yêu cầu bạn bè gần bạn quét mã QR mời của bạn bằng twinme, hoặc nhấn nút \"Quét\" để quét mã của bạn bè.</string>
+    <string name="add_contact_activity_onboarding_message">twinme không biết bạn bè của bạn và không thể tìm kiếm họ. Bạn phải mời họ trực tiếp, bằng twinme khi họ ở gần bạn, hoặc bằng cách gửi lời mời qua phương tiện khác.</string>
+    <string name="add_contact_activity_scan_code">Quét mã QR mời</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Liên kết này đã bị hỏng.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Liên kết này không đúng.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Liên kết này không được ứng dụng hỗ trợ.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Liên hệ này đã bị xóa.</string>
+    <string name="add_contact_activity_scan_message_call_link">Liên kết này tương ứng với \"nhấn để gọi\"</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Liên kết này tương ứng với lời mời kết bạn</string>
+    <string name="add_contact_activity_scan_message_migration_link">Liên kết này tương ứng với việc chuyển tài khoản</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Liên kết này tương ứng với việc chuyển cuộc gọi</string>
+    <string name="add_contact_activity_scan_title">Quét</string>
+    <string name="add_contact_activity_social_subtitle">tin nhắn, email, mạng xã hội</string>
+    <string name="add_contact_activity_social_title">Gửi mã qua ứng dụng</string>
+    <string name="add_contact_activity_title">Lời mời</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Thêm</string>
+    <string name="add_group_member_activity_title">Thêm thành viên</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Tin nhắn chào mừng</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Đang gọi…</string>
+    <string name="audio_call_activity_cannot_call">Không thể thực hiện cuộc gọi thoại</string>
+    <string name="audio_call_activity_connecting">Đang kết nối…</string>
+    <string name="audio_call_activity_hangup">Kết thúc</string>
+    <string name="audio_call_activity_hangup_confirmation">Bạn có muốn kết thúc cuộc gọi không?</string>
+    <string name="audio_call_activity_terminate">Cuộc gọi đã kết thúc</string>
+    <string name="audio_call_activity_terminate_busy">Kết thúc cuộc gọi: %1$s đang bận</string>
+    <string name="audio_call_activity_terminate_cancel">Cuộc gọi bị hủy bởi %1$s</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Kết thúc cuộc gọi: lỗi kết nối mạng</string>
+    <string name="audio_call_activity_terminate_decline">Cuộc gọi bị từ chối bởi %1$s</string>
+    <string name="audio_call_activity_terminate_gone">Kết thúc cuộc gọi: %1$s đang ngoại tuyến</string>
+    <string name="audio_call_activity_terminate_not_authorized">Liên hệ của bạn chưa cấp các quyền cần thiết cho cuộc gọi (ví dụ: micrô, camera).</string>
+    <string name="audio_call_activity_terminate_revoked">Cuộc gọi đã kết thúc: &lt;b&gt;%1$s&lt;/b&gt; đã xóa liên hệ này với bạn.</string>
+    <string name="audio_call_activity_terminate_success">Cuộc gọi được kết thúc bởi %1$s</string>
+    <string name="audio_call_activity_terminate_timeout">Kết thúc cuộc gọi: %1$s không phản hồi</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">Mối quan hệ của bạn với %1$s đã được xác thực.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Xác thực bằng cách quét mã QR</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Xác thực qua cuộc gọi video</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s cần cho phép cuộc gọi video để có thể xác thực mối quan hệ qua video.</string>
+    <string name="authentified_relation_activity_level_2">Để xác thực mối quan hệ này, bạn phải quét mã QR hiển thị trên thiết bị của %1$s.</string>
+    <string name="authentified_relation_activity_level_3">Để xác thực mối quan hệ này, thiết bị của %1$s phải quét mã QR này.</string>
+    <string name="authentified_relation_activity_level_4">Mối quan hệ của bạn với %1$s đã được xác thực.</string>
+    <string name="authentified_relation_activity_onboarding_message">Một mối quan hệ \"đã xác thực\" đảm bảo bạn luôn liên lạc với đúng người, ngay cả khi dịch vụ bị bên thứ ba xâm phạm.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Hãy chắc chắn bạn luôn liên lạc đúng người!</string>
+    <string name="authentified_relation_activity_relation_print_message">Dấu vân tay này phải giống nhau trên cả hai thiết bị.</string>
+    <string name="authentified_relation_activity_relation_print_title">Dấu vân tay mối quan hệ</string>
+    <string name="authentified_relation_activity_start">Bắt đầu xác thực</string>
+    <string name="authentified_relation_activity_to_be_certified_title">Xác thực mối quan hệ</string>
+    <string name="authentified_relation_activity_title">Mối quan hệ đã xác thực</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Âm thanh qua Bluetooth</string>
+    <string name="call_activity_audio_source_device">Tai nghe thiết bị</string>
+    <string name="call_activity_audio_source_earphones">Tai nghe</string>
+    <string name="call_activity_audio_source_headset">Tai nghe có mic</string>
+    <string name="call_activity_audio_source_loudspeaker">Loa ngoài</string>
+    <string name="call_activity_battery_restriction_message">Lưu ý! Bạn phải cho phép sử dụng pin khi ứng dụng chạy ẩn để tránh micrô bị ngắt khi đang gọi điện.</string>
+    <string name="call_activity_camera_control">Điều khiển camera</string>
+    <string name="call_activity_camera_control_ask_message">Yêu cầu %1$s cho phép bạn điều khiển camera của họ trong cuộc gọi video.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s muốn điều khiển camera của bạn trong cuộc gọi. Bạn có thể lấy lại quyền kiểm soát bất cứ lúc nào.</string>
+    <string name="call_activity_camera_control_denied">%1$s không cho phép bạn điều khiển camera của anh ấy/cô ấy.</string>
+    <string name="call_activity_camera_control_message">Điều khiển camera của %1$s</string>
+    <string name="call_activity_camera_control_needs_help">Bạn cần trợ giúp?</string>
+    <string name="call_activity_camera_control_onboarding">Nếu liên hệ của bạn cho phép, bạn có thể điều khiển camera của họ trong cuộc gọi video và tự mình phóng to, chẳng hạn. Điều này đặc biệt hữu ích để điều khiển camera giám sát video.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">Với sự cho phép của người thân, bạn có thể điều khiển camera của họ trong khi gọi điện để hỗ trợ họ từ xa, dễ dàng và an toàn.</string>
+    <string name="call_activity_camera_control_remotely">%1$s điều khiển camera của bạn từ xa.</string>
+    <string name="call_activity_camera_control_stop">Dừng lại</string>
+    <string name="call_activity_certify_error_message">%1$s đã không xác nhận từ khóa. Việc xác thực mối quan hệ đã thất bại, bạn sẽ cần thử lại.</string>
+    <string name="call_activity_certify_onboarding_message">Cuộc gọi video cho phép bạn nhận diện nhau và trao đổi các khóa bảo mật gắn với mối quan hệ đã xác thực.</string>
+    <string name="call_activity_certify_onboarding_start_message">Lần lượt, hãy đọc to từ hiển thị trên màn hình của bạn để người kia xác minh. Khi tất cả các từ đã được xác minh, mối quan hệ với %1$s sẽ được xác thực.</string>
+    <string name="call_activity_certify_onboarding_title">Xác thực mối quan hệ của bạn</string>
+    <string name="call_activity_certify_video_message">Cuộc gọi phải là video để có thể xác thực mối quan hệ.</string>
+    <string name="call_activity_coach_mark">Nhấn vào đây để thêm người tham gia vào cuộc gọi</string>
+    <string name="call_activity_confirm_word">Từ mà %1$s vừa nói có giống nhau không?</string>
+    <string name="call_activity_confirm_word_title">Xác nhận từ</string>
+    <string name="call_activity_error_call_interrupted">Cuộc gọi bị gián đoạn, lỗi: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">Không thể thực hiện cuộc gọi, lỗi: %1$d.</string>
+    <string name="call_activity_max_participant_message">Đã đạt số người tham gia tối đa trong cuộc gọi nhóm (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">Phiên bản ứng dụng của %1$s không tương thích với cuộc gọi nhóm và cần được cập nhật.</string>
+    <string name="call_activity_quality_message">Bạn đánh giá cuộc gọi như thế nào?</string>
+    <string name="call_activity_quality_title">Chất lượng cuộc gọi</string>
+    <string name="call_activity_repeat_word">%1$s có thể so sánh từ này với từ hiển thị trên màn hình của họ.</string>
+    <string name="call_activity_repeat_word_title">Đánh vần từ</string>
+    <string name="call_activity_tag_add_to_call">Mời một liên hệ tham gia cuộc gọi đang diễn ra</string>
+    <string name="call_activity_tag_camera">Máy ảnh</string>
+    <string name="call_activity_tag_camera_activate">Bật máy ảnh</string>
+    <string name="call_activity_tag_camera_cut">Tắt máy ảnh</string>
+    <string name="call_activity_tag_camera_flip">Đổi camera</string>
+    <string name="call_activity_tag_microphone">Micro</string>
+    <string name="call_activity_tag_microphone_activate">Bật micro</string>
+    <string name="call_activity_tag_microphone_mute">Tắt tiếng micro</string>
+    <string name="call_activity_tag_pause">Tạm dừng</string>
+    <string name="call_activity_tag_send_message">Gửi tin nhắn</string>
+    <string name="call_activity_tag_speaker">Loa ngoài</string>
+    <string name="call_activity_tag_speaker_activate">Bật loa</string>
+    <string name="call_activity_tag_speaker_mute">Tắt loa</string>
+    <string name="call_activity_transfert_call_message">Cuộc gọi đang diễn ra đã được chuyển tiếp.</string>
+    <string name="call_activity_try_to_call_back">Thử gọi lại.</string>
+
+    <!-- CallsFragments -->
+    <string name="calls_fragment_all_call_segmented_control">Tất cả</string>
+    <string name="calls_fragment_call_again_message">Bạn có muốn gọi lại %1$s không?</string>
+    <string name="calls_fragment_call_again_title">Gọi lại</string>
+    <string name="calls_fragment_create_link">Tạo liên kết \"nhấn để gọi\"</string>
+    <string name="calls_fragment_incoming_call">Cuộc gọi đến</string>
+    <string name="calls_fragment_missed_call">Cuộc gọi nhỡ</string>
+    <string name="calls_fragment_missed_call_segmented_control">Nhỡ</string>
+    <string name="calls_fragment_no_call_message">Cuộc gọi bị nhỡ sẽ hiển thị tại đây.</string>
+    <string name="calls_fragment_no_call_title">Bạn chưa thực hiện cuộc gọi nào.</string>
+    <string name="calls_fragment_outgoing_call">Cuộc gọi đi</string>
+    <string name="calls_fragment_reset">Bạn có chắc muốn đặt lại tất cả thông báo cuộc gọi không?</string>
+    <string name="calls_fragment_reset_title">Đặt lại thông báo cuộc gọi</string>
+    <string name="calls_fragment_title">Cuộc gọi</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">Máy ảnh đang được sử dụng</string>
+    <string name="capture_activity_incorrect_qrcode">Twincode không đúng</string>
+    <string name="capture_activity_message">Đặt mã QR vào khung hình để quét.</string>
+    <string name="capture_activity_no_camera">Cần có camera để quét twincode</string>
+    <string name="capture_activity_qrcode_saved">Mã lời mời đã được lưu vào ảnh.</string>
+
+    <!-- CleanupActivity -->
+    <string name="coach_mark_view_setting_title">Coach marks</string>
+    <string name="cleanup_activity_all">Xóa tất cả</string>
+    <string name="cleanup_activity_both_clean">Xóa toàn bộ (cả máy bạn và thiết bị kia)</string>
+    <string name="cleanup_activity_both_clean_title">Xóa toàn bộ</string>
+    <string name="cleanup_activity_clean">Xóa</string>
+    <string name="cleanup_activity_conversation">Cuộc trò chuyện với %1$s</string>
+    <string name="cleanup_activity_delete_confirmation_message">Việc xóa là không thể khôi phục. Hãy xuất các nội dung quan trọng trước khi tiếp tục. Tiếp tục?</string>
+    <string name="cleanup_activity_error">Đã xảy ra lỗi trong quá trình thao tác.</string>
+    <string name="cleanup_activity_expiration">Thời hạn lưu trữ</string>
+    <string name="cleanup_activity_free">Khả dụng</string>
+    <string name="cleanup_activity_info">Xóa tin nhắn, phương tiện, và tệp khỏi cuộc trò chuyện này sẽ không xóa chúng khỏi thiết bị của liên hệ, và bạn sẽ không thể làm điều đó sau này.</string>
+    <string name="cleanup_activity_info_both">Xóa tin nhắn, phương tiện, và tệp khỏi cuộc trò chuyện này cũng sẽ xóa chúng khỏi thiết bị của liên hệ.</string>
+    <string name="cleanup_activity_local_cleanup">Chỉ xóa cục bộ</string>
+    <string name="cleanup_activity_local_cleanup_title">Xóa cục bộ</string>
+    <string name="cleanup_activity_medias_and_files">Chỉ phương tiện và tệp</string>
+    <string name="cleanup_activity_medias_and_files_info">Ảnh thu nhỏ phương tiện sẽ không bị xóa khỏi cuộc trò chuyện; chỉ tệp gốc mới bị xóa.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Các tệp, ảnh, video và ghi âm được trao đổi trong cuộc trò chuyện này sẽ bị xóa khỏi cả thiết bị của bạn và thiết bị liên hệ.</string>
+    <string name="cleanup_activity_messages">Tất cả tin nhắn &amp; nội dung khác</string>
+    <string name="cleanup_activity_messages_info">Tất cả loại tin nhắn (văn bản, ảnh, video, ghi âm, tệp, v.v.) sẽ bị xóa khỏi ứng dụng.</string>
+    <string name="cleanup_activity_month">%1$d tháng</string>
+    <string name="cleanup_activity_older_than">Cũ hơn</string>
+    <string name="cleanup_activity_one_year">1 năm</string>
+    <string name="cleanup_activity_prior_to">Trước</string>
+    <string name="cleanup_activity_reset_conversation_message">Đặt lại cuộc trò chuyện này sẽ xóa tất cả tin nhắn, bao gồm cả trên thiết bị của liên hệ.</string>
+    <string name="cleanup_activity_select_content">Chọn nội dung bạn muốn xóa.</string>
+    <string name="cleanup_activity_storage_title">Dung lượng</string>
+    <string name="cleanup_activity_success">Thao tác hoàn tất thành công.</string>
+    <string name="cleanup_activity_title">Dọn dẹp cuộc trò chuyện</string>
+    <string name="cleanup_activity_total">Tổng cộng</string>
+    <string name="cleanup_activity_used">Đã sử dụng</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Cho phép liên hệ này gọi cho bạn</string>
+    <string name="contact_capabilities_activity_automatic_answering">Tự động trả lời cuộc gọi đến</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Chú ý: thiết lập này sẽ tự động trả lời các cuộc gọi từ liên hệ này, mở micro và máy ảnh của thiết bị (với cuộc gọi video).</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Một số thiết bị có thể hạn chế tính năng này.</string>
+    <string name="contact_capabilities_activity_call_settings">Cài đặt cuộc gọi</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Luôn luôn</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Hỏi trong mọi cuộc gọi</string>
+    <string name="contact_capabilities_activity_camera_control_information">Cho phép liên hệ này tự động điều khiển camera của bạn trong cuộc gọi video.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Bạn có thể yêu cầu người liên hệ của mình điều khiển camera trong suốt cuộc gọi video nếu họ có quyền truy cập vào phiên bản cao cấp của ứng dụng</string>
+    <string name="contact_capabilities_activity_camera_control_never">Không bao giờ</string>
+    <string name="contact_capabilities_activity_discreet_relation">Mối quan hệ riêng tư</string>
+    <string name="contact_capabilities_activity_information_audio_call">Cho phép liên hệ này gọi thoại cho bạn.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">Không hiển thị tên liên hệ trong thông báo, và không ghi lại cuộc gọi trong lịch sử.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Đặt thời gian/ngày bạn không muốn bị gọi.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Lên lịch thời gian/ngày bạn muốn được gọi.</string>
+    <string name="contact_capabilities_activity_information_video_call">Cho phép liên hệ này gọi video cho bạn.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Mời ai đó quét mã mời của bạn hoặc quét mã của họ…</string>
+    <string name="contacts_fragment_invite_contact_title">Mời một liên hệ</string>
+    <string name="contacts_fragment_scan_contact_title">Quét hoặc nhập mã mời</string>
+    <string name="contacts_fragment_title">Liên hệ</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_activity_video_camera">Máy quay video</string>
+    <string name="conversation_files_activity_documents">Tài liệu</string>
+    <string name="conversation_files_activity_links">Liên kết</string>
+    <string name="conversation_files_activity_month">Tháng này</string>
+    <string name="conversation_files_activity_no_files">Cuộc trò chuyện với %1$s không chứa bất kỳ mục nào như vậy.</string>
+    <string name="conversation_files_activity_title">Phương tiện, liên kết web và tài liệu</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Hình nền &amp; màu sắc</string>
+    <string name="conversation_settings_activity_emoji_size">Kích thước emoji</string>
+    <string name="conversation_settings_activity_link_preview">Xem trước liên kết</string>
+    <string name="conversation_settings_activity_link_preview_message">Hiển thị bản xem trước của trang web.</string>
+    <string name="conversation_settings_activity_link_title">Liên kết web</string>
+
+    <!--ConversationActivity -->
+    <string name="conversation_activity_audio_call">Gọi thoại</string>
+    <string name="conversation_activity_audio_message">Tin nhắn thoại</string>
+    <string name="conversation_activity_call_missed">bị nhỡ</string>
+    <string name="conversation_activity_cannot_send">Không thể gửi tin nhắn ngay:</string>
+    <string name="conversation_activity_cleanup_conversation">Bạn đã xóa một số tin nhắn cũ.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s đã xóa một số tin nhắn cũ.</string>
+    <string name="conversation_activity_delete_message">Tin nhắn của bạn đã được xóa.</string>
+    <string name="conversation_activity_edit_message">Tin nhắn chỉ có thể được chỉnh sửa trên thiết bị của liên hệ nếu ứng dụng của họ đã được cập nhật.</string>
+    <string name="conversation_activity_empty_message">Hãy nói điều gì đó thú vị… hoặc vui nhộn!</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Nhấn giữ nút gửi để xóa tin nhắn sau một khoảng thời gian.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Phiên bản twinme của liên hệ của bạn không đầy đủ chức năng.\nHãy yêu cầu họ cập nhật ứng dụng.</string>
+    <string name="conversation_activity_group_member_information">%1$d thành viên</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Không được phép gửi tin nhắn</string>
+    <string name="conversation_activity_group_one_member">1 thành viên</string>
+    <string name="conversation_activity_invitation_accepted">Lời mời đã được chấp nhận</string>
+    <string name="conversation_activity_invitation_failed">Yêu cầu liên hệ của bạn cập nhật twinme</string>
+    <string name="conversation_activity_invitation_joined">Đã tham gia nhóm</string>
+    <string name="conversation_activity_invitation_pending">Đang mời</string>
+    <string name="conversation_activity_invitation_refused">Lời mời bị từ chối</string>
+    <string name="conversation_activity_invitation_title">Tôi mời bạn tham gia nhóm</string>
+    <string name="conversation_activity_local_cleanup">Nội dung chính đã bị xóa cục bộ.</string>
+    <string name="conversation_activity_manage_conversation">Quản lý cuộc trò chuyện</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Đã sao chép vào khay nhớ tạm!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Sao chép</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Xóa</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Chuyển tiếp</string>
+    <string name="conversation_activity_menu_item_view_info_title">Thông tin</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">Người gửi không cho phép thao tác này</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Trả lời</string>
+    <string name="conversation_activity_menu_item_view_save_message">Đã lưu!</string>
+    <string name="conversation_activity_menu_item_view_save_title">Lưu</string>
+    <string name="conversation_activity_menu_item_view_share_title">Chia sẻ</string>
+    <string name="conversation_activity_message">Nhập tin nhắn</string>
+    <string name="conversation_activity_photo_camera">Máy ảnh chụp ảnh</string>
+    <string name="conversation_activity_record_confirm_send_record">Nhấn lần nữa để gửi</string>
+    <string name="conversation_activity_record_start_record">Nhấn giữ để ghi âm</string>
+    <string name="conversation_activity_record_title">Ghi âm</string>
+    <string name="conversation_activity_reduce_menu_lower">Chuẩn</string>
+    <string name="conversation_activity_reduce_menu_minimal">Tối thiểu</string>
+    <string name="conversation_activity_reduce_menu_original">Gốc</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Không thay đổi kích thước</string>
+    <string name="conversation_activity_reject_stream">Từ chối</string>
+    <string name="conversation_activity_reset_conversation">Bạn đã đặt lại cuộc trò chuyện</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s đã đặt lại cuộc trò chuyện</string>
+    <string name="conversation_activity_send_file_warning">Cảnh báo: bạn không thể ngăn người nhận sao chép/lưu/chia sẻ tài liệu (pdf, word, ppt, excel, zip, v.v.), vốn sẽ được mở ngoài ứng dụng. Bạn vẫn muốn gửi?</string>
+    <string name="conversation_activity_send_large_file_message">Tệp này lớn (%1$d MB). Bạn có muốn tiếp tục?</string>
+    <string name="conversation_activity_reply_to">Trả lời %1$s</string>
+    <string name="conversation_activity_send_menu_allow_copy">Cho phép người nhận sao chép/lưu/chia sẻ nội dung này</string>
+    <string name="conversation_activity_stream_dialog">Bạn có muốn chấp nhận không?</string>
+    <string name="conversation_activity_unsupported_media">Định dạng phương tiện không được hỗ trợ.</string>
+    <string name="conversation_activity_video_call">Gọi video</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">Tin nhắn được mã hóa đầu-cuối được trao đổi trực tiếp từ thiết bị này đến thiết bị kia, không qua máy chủ trung gian = không để lại dấu vết trên đám mây.</string>
+    <string name="conversations_fragment_no_result_found">Không tìm thấy kết quả nào cho \'%1$s\'.</string>
+    <string name="conversations_fragment_start">Bắt đầu cuộc trò chuyện</string>
+    <string name="conversations_fragment_title">Cuộc trò chuyện</string>
+    <string name="conversations_fragment_you">Bạn</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Nhập tên, hình ảnh và mô tả cho chủ đề cuộc gọi.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Nhấn để gọi\" cho phép khách gọi cho bạn từ trình duyệt mà không cần cài đặt ứng dụng.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Mỗi phiên bản có tên, hình ảnh và mô tả đại diện cho chủ đề cuộc gọi, ví dụ:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">dịch vụ khách hàng của bạn</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">chiếc xe bạn đang bán</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">cuộc gọi nhóm chuyên nghiệp</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">chuông cửa video cho người giao hàng.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">\"Nhấn để gọi\" có các thuộc tính để xác định xem đó là:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">cuộc gọi thoại và/hoặc video</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">cuộc gọi cá nhân hoặc nhóm</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">luôn mở hoặc giới hạn trong ngày/giờ cụ thể.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">Chia sẻ liên kết hoặc mã QR \"nhấn để gọi\" qua các kênh tiếp cận phù hợp, ví dụ:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">nút hành động trên trang web của bạn</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">một mục đăng trên nền tảng rao vặt</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">email cho những người được mời vào cuộc gọi nhóm</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">biển hiệu dán trên cửa nhà bạn cho người giao hàng.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Người nhận quét mã QR và mở liên kết trên trình duyệt của thiết bị di động hoặc PC. Sau đó họ có thể:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Thay đổi tên mặc định (Khách) đại diện trong cuộc gọi</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Gọi cho bạn bằng cách nhấn nút \"Gọi\" trên trang web.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">Sau cuộc gọi, họ có thể giữ trang web mở để gọi lại cho bạn.</string>
+    <string name="create_external_call_activity_placeholder">Chủ đề (Hỗ trợ, Thông báo, Họp, Chuông cửa, …)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Mời thành viên</string>
+    <string name="create_group_activity_create">Tạo nhóm</string>
+    <string name="create_group_activity_member_allow_invitation_message">Cho phép thành viên nhóm mời liên hệ của họ</string>
+    <string name="create_group_activity_member_allow_invitation_title">Mời thành viên</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Cho phép các thành viên mời nhau làm liên hệ cá nhân</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Thiết lập liên hệ cá nhân</string>
+    <string name="create_group_activity_member_allow_post_message">Cho phép thành viên đăng tin nhắn</string>
+    <string name="create_group_activity_member_allow_post_title">Gửi tin nhắn</string>
+    <string name="create_group_activity_member_list">Danh sách thành viên (%1$d)</string>
+    <string name="create_group_activity_name_hint">Tên nhóm</string>
+    <string name="create_group_activity_title">Nhóm</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">Cả tên và hình ảnh đều cần thiết để liên hệ nhận diện bạn.</string>
+    <string name="create_profile_activity_message">Thông tin Hồ sơ này được sử dụng để mời liên hệ.</string>
+    <string name="create_profile_activity_onboarding_message">Nhập hồ sơ (tên và ảnh) đại diện cho bạn với liên hệ.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Hồ sơ cho phép bạn mời các liên hệ tạo mối quan hệ với bạn trong ứng dụng. Bạn có thể có nhiều Hồ sơ (nhân dạng), mỗi cái gắn với một Không gian cụ thể.</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Mỗi \"Hồ sơ\" có \"Tên\" và \"Ảnh\" (bắt buộc), được liên hệ thấy khi được mời, và dùng làm Hồ sơ khởi đầu của bạn trong các mối quan hệ mới của Không gian đó.</string>
+    <string name="create_profile_activity_onboarding_message_part_3">Khi đã tạo, mỗi mối quan hệ có một cặp \"Hồ sơ\" đại diện cho bạn và liên hệ với nhau.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">Sau đó, bạn có thể tùy chỉnh cách mình được nhận diện với từng liên hệ, trong từng mối quan hệ riêng biệt.</string>
+    <string name="create_profile_activity_save_message">Tên và ảnh này được dùng để mời liên hệ và khởi tạo mối quan hệ. Bạn có thể sửa và cá nhân hóa chúng sau.</string>
+    <string name="create_profile_activity_welcome1">Nhập ảnh hồ sơ của bạn</string>
+    <string name="create_profile_activity_welcome2">Chào mừng %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">Các Không gian là cục bộ và không hiển thị với các liên hệ.</string>
+    <string name="create_space_activity_onboarding_message_part_1">Không gian giúp bạn tổ chức các liên hệ theo vòng xã hội tương ứng, ví dụ: Gia đình, Bạn bè, Công việc, Giải trí, v.v.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Mỗi Không gian liên kết với một “Hồ sơ” đại diện cho vai trò bạn muốn sử dụng khi tương tác với các liên hệ thuộc vòng xã hội đó, ví dụ: Bố, Johny, BS. Nguyễn Văn A, Người Dơi, v.v.</string>
+    <string name="create_space_activity_onboarding_message_part_3">Các Không gian chỉ tồn tại trong ứng dụng của bạn trên thiết bị và chỉ mình bạn thấy, không ai khác, kể cả máy chủ dịch vụ.</string>
+    <string name="create_space_activity_onboarding_message_part_4">Một Không gian có:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- một “Tên” đại diện cho vòng xã hội cụ thể</string>
+    <string name="create_space_activity_onboarding_message_part_6">- một “Hình ảnh” giúp bạn nhận diện nhanh trong danh sách Không gian</string>
+    <string name="create_space_activity_onboarding_message_part_7">- một “Chủ đề màu” để cá nhân hóa giao diện</string>
+    <string name="create_space_activity_onboarding_message_part_8">- “Cài đặt” có thể tùy chỉnh cho từng Không gian, ghi đè các giá trị mặc định từ Cài đặt ứng dụng.</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_space_activity_title">Tạo Không gian</string>
+    <string name="create_transfert_call_activity_message">Hồ sơ này liên kết với mã dùng để chuyển cuộc gọi đang diễn ra tới trình duyệt.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Chuyển tiếp cuộc gọi của tôi</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Nhập chữ \"OK\" bên dưới để xác nhận xóa tài khoản.</string>
+    <string name="deleted_account_activity_delete">Xóa tài khoản</string>
+    <string name="deleted_account_activity_warning">Cảnh báo‼️</string>
+    <string name="deleted_account_activity_message">Tài khoản của bạn đã bị xóa và toàn bộ dữ liệu liên quan đã được gỡ khỏi thiết bị và máy chủ.\nBạn phải đóng ứng dụng.</string>
+
+    <!--EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Bạn có chắc muốn xóa mối quan hệ này không?</string>
+    <string name="edit_contact_activity_message">Liên hệ này sẽ không thể liên lạc với bạn nữa.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Xóa hồ sơ này sẽ làm vô hiệu hóa mã mời liên kết với nó. Xác nhận xóa?</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_propagating_ask_message">Bạn muốn áp dụng thay đổi hình ảnh, tên hoặc mô tả:</string>
+    <string name="edit_external_call_activity_delete_confirm_message">Bạn có chắc muốn xóa mã \\\"Nhấn để gọi\\\" này không?</string>
+    <string name="edit_external_call_activity_delete_message">Liên kết \\\"Nhấn để gọi\\\" này sẽ không còn khả dụng.</string>
+    <string name="edit_profile_activity_editing_profile">Chỉnh sửa hồ sơ</string>
+    <string name="edit_profile_activity_propagating_profile">Áp dụng thay đổi hồ sơ</string>
+    <string name="edit_profile_activity_propagating_all_contacts">cho tất cả liên hệ trong Không gian này</string>
+    <string name="edit_profile_activity_propagating_except_contacts">cho tất cả, trừ khi đã được cá nhân hóa</string>
+    <string name="edit_profile_activity_propagating_message">Bạn có thể áp dụng thay đổi hồ sơ mời của mình cho các liên hệ hiện có, hoặc không.</string>
+    <string name="edit_profile_activity_propagating_no_contact">cho không ai cả</string>
+    <string name="edit_profile_activity_remove_active_profile">Bạn không thể xóa hồ sơ đang hoạt động</string>
+
+    <!-- EnterInvitationCodeActivity -->
+    <string name="enter_invitation_code_activity_certified_message">Sau khi tạo mối quan hệ, nên xác thực nó để tăng cường bảo mật.</string>
+    <string name="enter_invitation_code_activity_enter_code">Nhập Mini-Code</string>
+    <string name="enter_invitation_code_activity_error_message">Mã này không hợp lệ. Có thể đã được sử dụng hoặc đã hết hạn.</string>
+    <string name="enter_invitation_code_activity_invitation_message">Sau khi tạo mối quan hệ, đừng quên xác thực nó để tăng cường bảo mật.</string>
+    <string name="enter_invitation_code_activity_message">Nhập Mini-Code được liên hệ cung cấp để tạo mối quan hệ.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">Liên hệ đã cung cấp cho bạn một Mini-Code gồm 6 ký tự để tạo mối quan hệ. Mã này chỉ sử dụng được một lần và sẽ hết hạn sau 24 giờ.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">Nội dung cuộc trò chuyện được xuất thành tệp ZIP có thể lưu trữ hoặc chia sẻ qua bất kỳ ứng dụng nào.</string>
+    <string name="export_activity_content_title">Nội dung</string>
+    <string name="export_activity_content_to_export">Nội dung cần xuất</string>
+    <string name="export_activity_do_not_leave_screen">Không rời khỏi màn hình trong quá trình xuất.</string>
+    <string name="export_activity_export">Xuất</string>
+    <string name="export_activity_file">tệp</string>
+    <string name="export_activity_files">tệp</string>
+    <string name="export_activity_get_all_content">Đang lấy nội dung cuộc trò chuyện với %1$s.</string>
+    <string name="export_activity_get_one_chat">Đang lấy nội dung cuộc trò chuyện.</string>
+    <string name="export_activity_images">Hình ảnh</string>
+    <string name="export_activity_no_content_to_export">Không có nội dung nào để xuất</string>
+    <string name="export_activity_one_conversation_zip_file">Nội dung cuộc trò chuyện được xuất thành tệp ZIP có thể lưu trữ hoặc chia sẻ qua bất kỳ ứng dụng nào.</string>
+    <string name="export_activity_save_location">Vị trí</string>
+    <string name="export_activity_save_location_message">Chọn nơi để xuất dữ liệu.</string>
+    <string name="export_activity_select_content">Chọn nội dung bạn muốn xuất.\nChỉ các nội dung không tự hủy và được phép sao chép/lưu/chia sẻ mới có thể được xuất.</string>
+    <string name="export_activity_success">Xuất thành công.</string>
+    <string name="export_activity_title">Xuất cuộc trò chuyện</string>
+    <string name="export_activity_videos">Video</string>
+    <string name="export_activity_voice_messages">Tin nhắn thoại</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Lỗi nghiêm trọng, mã lỗi %1$d.\nVui lòng khởi động lại ứng dụng và gửi phản hồi nếu có thể. Xin lỗi vì sự bất tiện.</string>
+    <string name="fatal_error_activity_error_message">Lỗi nghiêm trọng: %1$s\nBạn phải đóng ứng dụng.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Liên hệ</string>
+    <string name="feedback_activity_gdpr_notice">Sử dụng biểu mẫu này để yêu cầu truy cập dữ liệu tài khoản của bạn.</string>
+    <string name="feedback_activity_help">Cảm ơn bạn đã giúp chúng tôi xác định vấn đề và cùng nhau khắc phục.</string>
+    <string name="feedback_activity_info_logs">Log kỹ thuật chỉ chứa dữ liệu kỹ thuật cấp thấp về hoạt động ứng dụng và KHÔNG tiết lộ thông tin cá nhân của bạn.</string>
+    <string name="feedback_activity_logs">Log kỹ thuật</string>
+    <string name="feedback_activity_message">Tin nhắn</string>
+    <string name="feedback_activity_send">Gửi</string>
+    <string name="feedback_activity_send_logs">Gửi log kỹ thuật</string>
+    <string name="feedback_activity_send_message">Phản hồi đã được gửi. Cảm ơn bạn.</string>
+    <string name="feedback_activity_subject">Chủ đề</string>
+    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+
+    <!--FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Thao tác này sẽ vô hiệu hóa mã mời hiện tại liên kết với hồ sơ này. Bạn có chắc muốn tạo mã mới không?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Tạo mã mời mới</string>
+    <string name="fullscreen_qrcode_activity_save_message">Nhập hoặc quét mã QR này bằng twinme để thêm liên hệ.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Lưu vào thư viện ảnh</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Cho phép cuộc gọi thoại</string>
+    <string name="group_capabilities_activity_information_programmed_call">Lên lịch thời gian gọi</string>
+    <string name="group_capabilities_activity_information_video_call">Cho phép cuộc gọi video</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">Quản trị viên nhóm không cho phép thao tác này.</string>
+    <string name="group_member_activity_invitation_message">Mời %1$s làm liên hệ cá nhân</string>
+    <string name="group_member_activity_invitation_title">Lời mời</string>
+    <string name="group_member_activity_invite_personnal_relation">Mời làm liên hệ cá nhân</string>
+    <string name="group_member_activity_remove_message">Bạn có chắc muốn xóa thành viên khỏi nhóm này không?</string>
+    <string name="group_member_activity_section_administrator">Quản trị viên</string>
+    <string name="group_member_activity_section_invitation">Lời mời</string>
+    <string name="group_member_activity_section_member">Thành viên</string>
+    <string name="group_member_activity_title">Thành viên nhóm</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s đang bận</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Cuộc gọi bị hủy bởi %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Cuộc gọi bị từ chối bởi %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s đã ngoại tuyến</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Không được phép gọi</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s đã xóa mối quan hệ này</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s không trả lời</string>
+    <string name="info_item_activity_deleted">Đã bị xóa bởi người nhận:</string>
+    <string name="info_item_activity_may_be_copied">Có thể sao chép/lưu/chia sẻ…</string>
+    <string name="info_item_activity_may_not_be_copied">Không thể sao chép/lưu/chia sẻ…</string>
+    <string name="info_item_activity_reactions">Phản hồi</string>
+    <string name="info_item_activity_received">Đã nhận:</string>
+    <string name="info_item_activity_seen">Đã xem:</string>
+    <string name="info_item_activity_sent">Đã gửi:</string>
+    <string name="info_item_activity_updated">Đã chỉnh sửa</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Thao tác này sẽ vô hiệu mã mời hiện tại của liên kết \"nhấn để gọi\" này. Xác nhận?</string>
+    <string name="invitation_call_activity_generate_code_title">Tạo mã mới cho liên kết này</string>
+    <string name="invitation_call_activity_invite_message">Mở địa chỉ web %1$s hoặc quét mã QR để gọi “%2$s”.</string>
+    <string name="invitation_call_activity_message">Chia sẻ mã \"nhấn để gọi\" này với ai đó để họ có thể gọi cho bạn từ web hoặc ứng dụng.</string>
+    <string name="invitation_call_activity_save_message">Quét mã QR này để gọi “%1$s”.</string>
+    <string name="invitation_call_activity_share">Chia sẻ</string>
+    <string name="invitation_call_activity_title">Cuộc gọi từ bên ngoài</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Tạo Mini-Code</string>
+    <string name="invitation_code_activity_create_code_subtitle">để mời một liên hệ khi bạn không thể truy cập ứng dụng.</string>
+    <string name="invitation_code_activity_expiration">Hết hạn:</string>
+    <string name="invitation_code_activity_history">Mini-Code của tôi</string>
+    <string name="invitation_code_activity_limit_message">Đã đạt đến số lượng Mini-Code đang hoạt động tối đa. Bạn phải chờ 24 giờ để tạo mã mới.</string>
+    <string name="invitation_code_activity_onboarding_message">Mini-Code là mã dùng một lần và chỉ có hiệu lực trong 24 giờ. Bạn có thể gửi cho liên hệ để tạo mối quan hệ khi không truy cập được ứng dụng (ví dụ: không có điện thoại).</string>
+    <string name="invitation_code_activity_success_message">Nên xác thực các mối quan hệ được tạo bằng Mini-Code để tăng cường bảo mật.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Yêu cầu bạn bè gần bạn quét mã QR của \"phòng\" bằng twinme hoặc nhấn vào mã mời để sao chép vào bộ nhớ tạm.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Thoại</string>
+    <string name="last_calls_activity_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">Bạn có muốn chuyển tài khoản từ Skred Lite sang Skred không?</string>
+
+    <!-- MainActivity -->
+    <string name="local_account_migration_activity_message_older_version">Hãy đảm bảo bạn cập nhật cả hai thiết bị lên phiên bản mới nhất của ứng dụng trước khi bắt đầu chuyển, để tránh mất toàn bộ liên hệ.</string>
+    <string name="main_activity_add_contact">Thêm liên hệ</string>
+    <string name="main_activity_add_group">Tạo nhóm</string>
+    <string name="main_activity_reset_conversation">Đặt lại</string>
+    <string name="main_activity_reset_conversation_message">Đặt lại cuộc trò chuyện này sẽ xóa tất cả tin nhắn, bao gồm cả tin nhắn trên thiết bị của liên hệ. Xác nhận?</string>
+    <string name="main_activity_reset_conversation_title">Đặt lại cuộc trò chuyện</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Đặt lại cuộc trò chuyện sẽ xóa tất cả tin nhắn khỏi thiết bị của mọi thành viên trong nhóm. Xác nhận?</string>
+    <string name="main_activity_reset_group_conversation_message">Đặt lại cuộc trò chuyện sẽ xóa tất cả tin nhắn khỏi thiết bị của bạn. Xác nhận?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">Bạn cần nâng cấp lên twinme+ để sử dụng tính năng này. Bạn sẽ có thể chuyển toàn bộ dữ liệu tài khoản.</string>
+
+    <!-- NavigationActivity -->
+    <string name="migration_twinme_plus_activity_updgrade_account">Bạn sẽ có thể chuyển toàn bộ dữ liệu tài khoản.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme có phiên bản cao cấp với nhiều tính năng hơn nữa.</string>
+    <string name="migration_twinme_plus_activity_premium_title">Nâng cấp lên twinme+</string>
+    <string name="navigation_activity_about_twinme">Giới thiệu</string>
+    <string name="navigation_activity_application_settings">Cài đặt ứng dụng</string>
+    <string name="navigation_activity_help">Trợ giúp</string>
+    <string name="navigation_activity_feedback">Phản hồi</string>
+    <string name="navigation_activity_getting_started">Bắt đầu</string>
+    <string name="navigation_activity_profile">Hồ sơ</string>
+    <string name="navigation_activity_settings">Cài đặt</string>
+    <string name="navigation_activity_sign_out">Đăng xuất</string>
+    <string name="navigation_activity_sounds">Âm thanh</string>
+    <string name="navigation_activity_support">Hỗ trợ</string>
+
+    <!-- NotificationCenter -->
+    <string name="navigation_activity_title">Menu</string>
+    <string name="notification_center_audio_call_to">Cuộc gọi thoại tới %1$s</string>
+    <string name="notification_center_audio_message">Đã gửi cho bạn một tin nhắn thoại</string>
+    <string name="notification_center_audio_message_received">Tin nhắn thoại mới</string>
+    <string name="notification_center_cancel">Đóng</string>
+    <string name="notification_center_cleanup_conversation">Một số tin nhắn cũ đã bị xóa.</string>
+    <string name="notification_center_deleted_contact">Liên hệ đã xóa</string>
+    <string name="notification_center_file_message">Đã gửi cho bạn một tệp</string>
+    <string name="notification_center_file_message_received">Tệp mới</string>
+    <string name="notification_center_group_invitation">Đã gửi cho bạn một lời mời</string>
+    <string name="notification_center_group_invitation_received">Lời mời mới</string>
+    <string name="notification_center_join_group">Bạn đã tham gia nhóm</string>
+    <string name="notification_center_message_received">Tin nhắn mới</string>
+    <string name="notification_center_missed_audio_call_to">Cuộc gọi thoại nhỡ tới %1$s</string>
+    <string name="notification_center_missed_video_call_to">Cuộc gọi video nhỡ tới %1$s</string>
+    <string name="notification_center_mute">Tắt â</string>
+    <string name="notification_center_new_contact">Liên hệ mới</string>
+    <string name="notification_center_photo_message">Đã gửi cho bạn một ảnh</string>
+    <string name="notification_center_photo_message_received">Ảnh mới</string>
+    <string name="notification_center_reaction">đã phản hồi %1$s</string>
+    <string name="notification_center_reaction_message">Đã phản hồi một tin nhắn</string>
+    <string name="notification_center_reaction_message_received">Phản hồi tin nhắn</string>
+    <string name="notification_center_reset_message">Đã xóa cuộc trò chuyện</string>
+    <string name="notification_center_stop">Dừng</string>
+    <string name="notification_center_transfering_data">Đang chuyển tin nhắn…</string>
+    <string name="notification_center_unmute">Bật âm</string>
+    <string name="notification_center_updated_contact_avatar">Ảnh đại diện đã được cập nhật</string>
+    <string name="notification_center_updated_contact_name">Tên đã được cập nhật</string>
+    <string name="notification_center_video_call_to">Cuộc gọi video tới %1$s</string>
+    <string name="notification_center_video_message">Đã gửi cho bạn một video</string>
+    <string name="notification_center_video_message_received">Video mới</string>
+
+    <!--NotificationsFragment -->
+    <string name="notification_channel_audio_title">Cuộc gọi âm thanh</string>
+    <string name="notification_channel_contact_title">Liên hệ</string>
+    <string name="notification_channel_group_title">Nhóm</string>
+    <string name="notification_channel_message_title">Tin nhắn</string>
+    <string name="notification_channel_missed_title">Cuộc gọi nhỡ</string>
+    <string name="notification_channel_system_title">Khác</string>
+    <string name="notification_channel_video_title">Cuộc gọi video</string>
+    <string name="notifications_fragment_item_audio_call">Đã cố gọi cho bạn</string>
+    <string name="notifications_fragment_item_audio_message">Đã gửi tin nhắn thoại</string>
+    <string name="notifications_fragment_item_cleanup_message">đã xóa một số tin nhắn cũ.</string>
+    <string name="notifications_fragment_item_deleted_contact">Liên hệ đã xóa</string>
+    <string name="notifications_fragment_item_file_message">Đã gửi cho bạn một tệp</string>
+    <string name="notifications_fragment_item_group_invitation">Đã gửi cho bạn lời mời</string>
+    <string name="notifications_fragment_item_image_message">Đã gửi cho bạn một ảnh</string>
+    <string name="notifications_fragment_item_join_group">Bạn đã tham gia nhóm</string>
+    <string name="notifications_fragment_item_new_contact">Liên hệ mới</string>
+    <string name="notifications_fragment_item_reset_conversation">Đã đặt lại cuộc trò chuyện</string>
+    <string name="notifications_fragment_item_shortest_day">%1$dd</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$dh</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$dm</string>
+    <string name="notifications_fragment_item_shortest_second">%1$ds</string>
+    <string name="notifications_fragment_item_text_message">Đã gửi cho bạn một tin nhắn</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Ảnh đã cập nhật</string>
+    <string name="notifications_fragment_item_updated_contact_name">Tên đã cập nhật</string>
+    <string name="notifications_fragment_item_video_call">Đã cố gọi video cho bạn</string>
+    <string name="notifications_fragment_item_video_message">Đã gửi cho bạn một video</string>
+    <string name="notifications_fragment_no_notification_message">Các thông báo liên quan đến liên hệ, cuộc trò chuyện, cuộc gọi, v.v. sẽ hiển thị tại đây.</string>
+    <string name="notifications_fragment_no_notification_title">Bạn chưa có thông báo nào.</string>
+    <string name="notifications_fragment_reset">Bạn có chắc muốn đặt lại tất cả thông báo không?</string>
+    <string name="notifications_fragment_reset_title">Đặt lại thông báo</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="notifications_fragment_title">Thông báo</string>
+    <string name="personalization_activity_font">Phông chữ</string>
+    <string name="personalization_activity_font_extra_large">Rất lớn</string>
+    <string name="personalization_activity_font_large">Lớn</string>
+    <string name="personalization_activity_font_small">Nhỏ</string>
+    <string name="personalization_activity_haptic_feedback">Phản hồi rung</string>
+    <string name="personalization_activity_haptic_feedback_message">Cảm giác xúc giác khi chạm.</string>
+    <string name="personalization_activity_menu_choose_color">Màu mặc định</string>
+    <string name="personalization_activity_menu_enter_color">Mã màu</string>
+    <string name="personalization_activity_mode">Chế độ</string>
+    <string name="personalization_activity_mode_dark">Tối</string>
+    <string name="personalization_activity_mode_light">Sáng</string>
+    <string name="personalization_activity_start_tab_information">Chọn thẻ mà bạn muốn ứng dụng mở khi khởi động.</string>
+    <string name="personalization_activity_start_tab_title">Thẻ mặc định</string>
+    <string name="personalization_activity_system">Hệ thống</string>
+    <string name="personalization_activity_title">Tùy chỉnh</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Thay đổi camera trước/sau</string>
+    <string name="premium_services_activity_camera_control_description_2">Phóng to/thu nhỏ</string>
+    <string name="premium_services_activity_camera_control_description_3">Hỗ trợ người thân hoặc khách hàng từ xa</string>
+    <string name="premium_services_activity_camera_control_description_4">Quản lý camera giám sát</string>
+    <string name="premium_services_activity_camera_control_subtitle">Điều khiển camera của người liên hệ trong khi gọi điện với sự cho phép của họ</string>
+    <string name="premium_services_activity_camera_control_title">Điều khiển Camera Từ xa</string>
+    <string name="premium_services_activity_click_to_call_description_1">Tạo mã \"nhấn để gọi cho tôi\"</string>
+    <string name="premium_services_activity_click_to_call_description_2">Công bố hoặc chia sẻ bằng bất kỳ phương tiện nào</string>
+    <string name="premium_services_activity_click_to_call_description_3">Người nhận quét mã và gọi cho bạn</string>
+    <string name="premium_services_activity_click_to_call_description_4">Ẩn danh, không lưu dấu vết trên đám mây</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Cho phép khách gọi bạn từ trình duyệt web</string>
+    <string name="premium_services_activity_click_to_call_title">Nhấn để gọi</string>
+    <string name="premium_services_activity_conversation_description_1">Phương tiện, tệp, ghi chú thoại, tin nhắn</string>
+    <string name="premium_services_activity_conversation_description_2">Cũ hơn một thời điểm/ngày cụ thể</string>
+    <string name="premium_services_activity_conversation_description_3">Dành cho một cuộc trò chuyện hoặc tất cả</string>
+    <string name="premium_services_activity_conversation_description_4">Chỉ xóa cục bộ, không ảnh hưởng đến phía bên kia</string>
+    <string name="premium_services_activity_conversation_subtitle">Xuất nội dung và giải phóng bộ nhớ</string>
+    <string name="premium_services_activity_conversation_title">Quản lý cuộc trò chuyện</string>
+    <string name="premium_services_activity_description_part1_subtitle">Kết nối trực tiếp giữa các thiết bị</string>
+    <string name="premium_services_activity_description_part1_title">Chất lượng âm thanh/video HD</string>
+    <string name="premium_services_activity_description_part2_subtitle">Không lưu dấu vết trên đám mây</string>
+    <string name="premium_services_activity_description_part2_title">Quyền riêng tư – Bảo mật</string>
+    <string name="premium_services_activity_description_part3_subtitle">Tiết kiệm năng lượng</string>
+    <string name="premium_services_activity_description_part3_title">Thân thiện môi trường</string>
+    <string name="premium_services_activity_group_call_description_1">Âm thanh/video chất lượng cao</string>
+    <string name="premium_services_activity_group_call_description_2">Kết nối trực tiếp giữa các thiết bị</string>
+    <string name="premium_services_activity_group_call_description_3">An toàn &amp; riêng tư</string>
+    <string name="premium_services_activity_group_call_description_4">Không lưu dấu vết trên đám mây</string>
+    <string name="premium_services_activity_group_call_subtitle">Mời liên hệ tham gia cuộc gọi nhóm thoại/video</string>
+    <string name="premium_services_activity_group_call_title">Cuộc gọi nhóm</string>
+    <string name="premium_services_activity_privacy_description_1">Khóa ứng dụng bằng sinh trắc học hoặc mã bảo mật</string>
+    <string name="premium_services_activity_privacy_description_2">Ẩn màn hình cuối cùng trong bộ chuyển đổi ứng dụng</string>
+    <string name="premium_services_activity_privacy_description_3">Tin nhắn tạm thời tự biến mất sau một thời gian</string>
+    <string name="premium_services_activity_privacy_description_4">Chặn liên hệ gọi cho bạn</string>
+    <string name="premium_services_activity_privacy_subtitle">Kiểm soát ứng dụng, liên hệ và tin nhắn</string>
+    <string name="premium_services_activity_privacy_title">Bảo mật hơn</string>
+    <string name="premium_services_activity_space_description_1">Nhiều hồ sơ với liên hệ, trò chuyện và lịch sử riêng</string>
+    <string name="premium_services_activity_space_description_2">Giao diện, thông báo và cài đặt cá nhân hóa</string>
+    <string name="premium_services_activity_space_description_3">Dành cho gia đình, bạn bè, công việc, thể thao, v.v.</string>
+    <string name="premium_services_activity_space_description_4">Không gian bí mật không hiển thị, truy cập bằng tên</string>
+    <string name="premium_services_activity_space_subtitle">Cho từng nhóm xã hội bạn tương tác</string>
+    <string name="premium_services_activity_space_title">Không gian</string>
+    <string name="premium_services_activity_streaming_description_1">Phát nhạc trực tiếp</string>
+    <string name="premium_services_activity_streaming_description_2">Mỗi người tham gia có thể điều khiển trình phát</string>
+    <string name="premium_services_activity_streaming_description_3">Tương tác trong cuộc gọi đồng thời</string>
+    <string name="premium_services_activity_streaming_description_4">Bảo mật như ngoài đời thực</string>
+    <string name="premium_services_activity_streaming_subtitle">Chia sẻ phương tiện khi đang gọi</string>
+    <string name="premium_services_activity_streaming_title">Chia sẻ phương tiện</string>
+    <string name="premium_services_activity_transfert_description_1">Tạo mã và hồ sơ để chuyển cuộc gọi</string>
+    <string name="premium_services_activity_transfert_description_2">Tải URL lên hoặc quét mã trên máy tính</string>
+    <string name="premium_services_activity_transfert_description_3">Đánh dấu trang trên trình duyệt</string>
+    <string name="premium_services_activity_transfert_description_4">\"Gọi\" từ trang đó trong khi đang có cuộc gọi di động</string>
+    <string name="premium_services_activity_transfert_subtitle">Chuyển cuộc gọi từ điện thoại sang trình duyệt</string>
+    <string name="premium_services_activity_transfert_title">Chuyển cuộc gọi</string>
+    <string name="premium_services_activity_title">Mời liên hệ tham gia cuộc gọi thoại/video đang diễn ra.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Khóa ứng dụng bằng sinh trắc học hoặc mã PIN.</string>
+    <string name="privacy_activity_hide_last_screen_message">Ngăn xem trước khi chuyển đổi ứng dụng</string>
+    <string name="privacy_activity_hide_last_screen_title">Ẩn màn hình cuối cùng</string>
+    <string name="privacy_activity_lock_screen_message">Khóa truy cập ứng dụng bằng sinh trắc học hoặc mã bảo mật. Bạn vẫn có thể nhận cuộc gọi và thông báo khi ứng dụng bị khóa.</string>
+    <string name="privacy_activity_lock_screen_not_available">Tùy chọn này yêu cầu Android phiên bản > 5.0</string>
+    <string name="privacy_activity_lock_screen_timeout">Thời gian chờ khóa truy cập</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Ngay lập tức</string>
+    <string name="privacy_activity_lock_screen_title">Khóa truy cập</string>
+    <string name="privacy_activity_title">Quyền riêng tư</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Thêm hồ sơ</string>
+    <string name="profile_fragment_create_profile">Tạo hồ sơ</string>
+    <string name="profile_fragment_default_action">Kích hoạt</string>
+    <string name="profile_fragment_default_profile_title">Hồ sơ đang hoạt động</string>
+    <string name="profile_fragment_identity_title">Hồ sơ</string>
+    <string name="profile_fragment_message">Hồ sơ này cho phép bạn mời liên hệ thiết lập mối quan hệ riêng tư với bạn, dưới quyền kiểm soát của bạn.</string>
+    <string name="profile_fragment_twincode_title">Mã mời</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Thêm Proxy</string>
+    <string name="proxy_activity_add_placeholder">Dán hoặc nhập URL của proxy</string>
+    <string name="proxy_activity_already_use">Proxy này đã được cấu hình trong ứng dụng của bạn.</string>
+    <string name="proxy_activity_enable">Sử dụng Proxy</string>
+    <string name="proxy_activity_format">Định dạng URL proxy hợp lệ:</string>
+    <string name="proxy_activity_invalid_format">Định dạng URL không hợp lệ</string>
+    <string name="proxy_activity_limit">Bạn đã đạt đến giới hạn số lượng proxy được phép (%1$d). Để thêm proxy mới, trước tiên bạn phải xóa một proxy.</string>
+    <string name="proxy_activity_list">Proxy của tôi</string>
+    <string name="proxy_activity_list_information">Chỉ sử dụng proxy từ danh sách bên dưới nếu ứng dụng không thể kết nối với dịch vụ mà không có proxy.</string>
+    <string name="proxy_activity_onboarding">Khi quyền truy cập vào máy chủ tín hiệu của ứng dụng bị chặn ở quốc gia của bạn, proxy có thể bỏ qua các lệnh chặn này trong nhiều trường hợp và cho phép bạn giao tiếp riêng tư. Ngoài proxy trong ứng dụng, bạn có thể tự tạo proxy hoặc sử dụng proxy do người khác tạo. Proxy không thể truy cập nội dung đang được trao đổi trong mọi trường hợp.</string>
+    <string name="proxy_activity_information">Chỉ sử dụng proxy nếu bạn không thể kết nối với dịch vụ từ mạng Wi-Fi hoặc mạng di động tiêu chuẩn.</string>
+    <string name="proxy_activity_share">Mở liên kết %1$s bằng twinme trên thiết bị của bạn để tự động cấu hình proxy này.</string>
+    <string name="proxy_activity_title">Proxy</string>
+    <string name="proxy_activity_url">Bạn có muốn sử dụng URL của proxy này không?</string>
+    <string name="proxy_activity_warning">Cảnh báo! URL của proxy này không cho phép bạn kết nối với dịch vụ của ứng dụng.</string>
+
+    <!-- QualityOfServicesActivity -->
+    <string name="quality_of_service_activity_change_permissions">Thay đổi quyền</string>
+    <string name="quality_of_service_activity_enable_notifications">Bật thông báo</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Nếu không có quyền này, tin nhắn có thể đến rất trễ.</string>
+    <string name="quality_of_service_activity_notification_description">Cho phép ứng dụng chạy nền.</string>
+    <string name="quality_of_service_activity_notification_title">Trao đổi tin nhắn quá chậm?</string>
+    <string name="quality_of_service_activity_settings">Thay đổi quyền ứng dụng trong cài đặt hệ thống.</string>
+    <string name="quality_of_service_activity_step1_message">Tin nhắn được mã hóa trao đổi trực tiếp giữa thiết bị theo thời gian thực, không qua máy chủ trung gian. Điều này bảo đảm không để lại dấu vết và bảo vệ quyền riêng tư tối đa.</string>
+    <string name="quality_of_service_activity_step2_message">Để đảm bảo chất lượng dịch vụ, hãy cho phép ứng dụng nhận thông báo nền và loại trừ khỏi tối ưu hóa pin.</string>
+    <string name="quality_of_service_activity_step3_message">Sử dụng ứng dụng thường xuyên để hệ điều hành ưu tiên và không tự động đóng nó.\n\nĐừng quên chia sẻ thông tin này cho bạn bè!</string>
+
+    <!-- RoomsMembersActivity -->
+    <string name="quality_of_service_activity_warning_background_data">Cho phép ứng dụng sử dụng dữ liệu di động trong nền.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Cho phép ứng dụng nhận thông báo đẩy.</string>
+    <string name="quality_of_service_activity_warning_run_background">Cho phép ứng dụng chạy nền.</string>
+    <string name="room_members_activity_change_admin_title">Đặt làm quản trị viên</string>
+    <string name="room_members_activity_delete_message">Xác nhận xóa thành viên này</string>
+    <string name="room_members_activity_moderators_title">Người kiểm duyệt</string>
+    <string name="room_members_activity_only_admin_message">Không thể xóa quản trị viên duy nhất.</string>
+    <string name="room_members_activity_owner_title">Chủ sở hữu</string>
+    <string name="room_members_activity_participants_title">Người tham gia</string>
+    <string name="room_members_activity_remove_admin_title">Gỡ quyền quản trị</string>
+
+    <!--ScanActivity -->
+    <string name="scan_activity_paste_code">Nhập hoặc dán liên kết mời</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">Kiểm tra trạng thái kết nối của bạn với dịch vụ</string>
+    <string name="settings_advanced_activity_status_connection_title">Trạng thái kết nối</string>
+    <string name="settings_advanced_activity_title">Cài đặt nâng cao</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">Cho phép thành viên mời người khác làm liên hệ cá nhân</string>
+    <string name="settings_room_activity_allow_invite_contact">Cho phép thành viên mời liên hệ của họ</string>
+    <string name="settings_room_activity_conference_notifications_inform">Vào đầu / ra cuối</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Tất cả vào / ra</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Im lặng</string>
+    <string name="settings_room_activity_display_members">Hiển thị thành viên</string>
+    <string name="settings_room_activity_room_type_channel">Kênh - chỉ một chiều</string>
+    <string name="settings_room_activity_room_type_channel_information">Chỉ quản trị viên / người kiểm duyệt được gửi tin nhắn</string>
+    <string name="settings_room_activity_room_type_feedback">Kênh - có phản hồi</string>
+    <string name="settings_room_activity_room_type_feedback_information">Phản hồi chỉ hiển thị với quản trị viên / người kiểm duyệt</string>
+    <string name="settings_room_activity_room_type_forum">Diễn đàn</string>
+    <string name="settings_room_activity_room_type_forum_information">Thành viên có thể gửi tin nhắn cho mọi người xem</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Cho phép người nhận sao chép/lưu/chia sẻ nội dung</string>
+    <string name="settings_activity_allow_copy_file_title">Mọi loại tệp</string>
+    <string name="settings_activity_allow_copy_text_title">Tin nhắn văn bản</string>
+    <string name="settings_activity_application_notifications">Thông báo ứng dụng</string>
+    <string name="settings_activity_audio_call_category_title">Cuộc gọi thoại</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Tên nhạc chuông</string>
+    <string name="settings_activity_audio_call_notification_title">Nhạc chuông</string>
+    <string name="settings_activity_audio_call_vibration_title">Rung</string>
+    <string name="settings_activity_authorization_title">Quyền truy cập</string>
+    <string name="settings_activity_call_item_menu_all">Tất cả cuộc gọi</string>
+    <string name="settings_activity_chat_category_title">Tin nhắn</string>
+    <string name="settings_activity_chat_ringtone_title">Tên âm thanh</string>
+    <string name="settings_activity_chat_title">Âm thanh</string>
+    <string name="settings_activity_chat_vibration_title">Rung</string>
+    <string name="settings_activity_content_information">Độ phân giải nội dung phương tiện trong cuộc trò chuyện: chất lượng cao cần nhiều dữ liệu và thời gian truyền hơn.</string>
+    <string name="settings_activity_content_title">Phương tiện</string>
+    <string name="settings_activity_default_directory_title">Thư mục mặc định để lưu tệp</string>
+    <string name="settings_activity_default_sound">Mặc định</string>
+    <string name="settings_activity_default_value_message">Các cài đặt này được dùng mặc định trên toàn ứng dụng.</string>
+    <string name="settings_activity_display_call_menu_missed">Chỉ cuộc gọi nhỡ</string>
+    <string name="settings_activity_display_call_menu_none">Không có cuộc gọi</string>
+    <string name="settings_activity_display_call_none">Không có</string>
+    <string name="settings_activity_display_call_title">Hiển thị thông báo cuộc gọi trong cuộc trò chuyện</string>
+    <string name="settings_activity_display_notification_content_title">Hiển thị nội dung tin nhắn</string>
+    <string name="settings_activity_display_notification_like_title">Phản ứng với tin nhắn</string>
+    <string name="settings_activity_display_notification_sender_title">Hiển thị người gửi tin nhắn</string>
+    <string name="settings_activity_ephemeral_message">Tự động xóa tin nhắn đã gửi</string>
+    <string name="settings_activity_ephemeral_section_title">THỜI HẠN</string>
+    <string name="settings_activity_ephemeral_title">Tin nhắn tạm thời</string>
+    <string name="settings_activity_image_title">Ảnh</string>
+    <string name="settings_activity_message_properties_title">Thuộc tính tin nhắn</string>
+    <string name="settings_activity_reset_preferences_button_title">Khôi phục mặc định</string>
+    <string name="settings_activity_reset_preferences_message">Khôi phục thiết lập thông báo về mặc định ứng dụng.</string>
+    <string name="settings_activity_reset_preferences_title">Khôi phục tùy chọn</string>
+    <string name="settings_activity_permissions_title">QUYỀN TRUY CẬP</string>
+    <string name="settings_activity_reset_default_value">Khôi phục cài đặt mặc định</string>
+    <string name="settings_activity_silent_sound">Im lặng</string>
+    <string name="settings_activity_sound_enabled_title">THÔNG BÁO ÂM THANH</string>
+    <string name="settings_activity_system_notifications_title">Thông báo hệ thống</string>
+    <string name="settings_activity_system_settings_title">Cài đặt hệ thống</string>
+    <string name="settings_activity_video_call_category_title">Cuộc gọi video</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Tên nhạc chuông</string>
+    <string name="settings_activity_video_call_notification_title">Nhạc chuông</string>
+    <string name="settings_activity_video_call_vibration_title">Rung</string>
+    <string name="settings_activity_welcome_screen_category_title">CHÀO MỪNG</string>
+    <string name="settings_activity_welcome_screen_summary">Hiển thị màn hình chào mừng</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Liên hệ</string>
+    <string name="share_activity_group_list">Nhóm</string>
+    <string name="share_activity_title">Chia sẻ</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Mã \"nhấn để gọi\"</string>
+    <string name="show_call_activity_information_code">Chia sẻ mã này để nhận cuộc gọi từ bên ngoài.</string>
+    <string name="show_call_activity_schedule_call">Cuộc gọi đã hẹn</string>
+    <string name="show_call_activity_schedule_from">từ %1$s</string>
+    <string name="show_call_activity_schedule_from_to">%1$s từ %2$s đến %3$s</string>
+    <string name="show_call_activity_schedule_message">Cuộc gọi đã được lên lịch từ nơi khác.</string>
+    <string name="show_call_activity_schedule_to">đến %1$s</string>
+    <string name="show_call_activity_settings_call">Loại cuộc gọi</string>
+    <string name="show_call_activity_settings_group_calls">Cuộc gọi nhóm</string>
+    <string name="show_call_activity_settings_limited">Đã lên lịch</string>
+    <string name="show_call_activity_settings_start">Bắt đầu</string>
+    <string name="show_call_activity_settings_end">Kết thúc</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Thoại</string>
+    <string name="show_contact_activity_chat">Trò chuyện</string>
+    <string name="show_contact_activity_export_contents">Xuất nội dung</string>
+    <string name="show_contact_activity_history_title">Lịch sử</string>
+    <string name="show_contact_activity_identity_title">Biết tôi với tên</string>
+    <string name="show_contact_activity_last_calls">Cuộc gọi gần đây</string>
+    <string name="show_contact_activity_cleanup">Dọn dẹp</string>
+    <string name="show_contact_activity_pending">Đang chờ</string>
+    <string name="show_contact_activity_pending_message">Mối quan hệ này đang được thiết lập. Vui lòng đợi.</string>
+    <string name="show_contact_activity_revoked">Đã xóa</string>
+    <string name="show_contact_activity_settings_coach_mark">Xác định quyền của liên hệ này trong mối quan hệ với bạn.</string>
+    <string name="show_contact_activity_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Thêm thành viên</string>
+    <string name="show_group_activity_invitation_list">Lời mời đang chờ: %1$d</string>
+    <string name="show_group_activity_leave">Rời nhóm</string>
+    <string name="show_group_activity_leave_confirm_message">Bạn có chắc muốn rời nhóm này không?</string>
+    <string name="show_group_activity_leave_message">Bạn sẽ rời khỏi nhóm và không thể truy cập cuộc trò chuyện.</string>
+    <string name="show_group_activity_member_list">Danh sách thành viên (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">Nhóm này sẽ bị xóa cho tất cả thành viên và toàn bộ cuộc trò chuyện sẽ bị xóa.</string>
+    <string name="show_group_activity_remove_message">Bạn có chắc muốn xóa nhóm này không?</string>
+    <string name="show_group_activity_title">Nhóm</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Giao diện quản trị</string>
+    <string name="show_room_activity_invite_participants">Mời người tham gia</string>
+    <string name="show_room_activity_room_title">Phòng</string>
+
+    <!--SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Hình ảnh</string>
+    <string name="space_appearance_activity_background_message">Tùy chỉnh nền trò chuyện bằng màu sắc hoặc hình ảnh.</string>
+    <string name="space_appearance_activity_background_text_title">Văn bản</string>
+    <string name="space_appearance_activity_background_title">Hình nền</string>
+    <string name="space_appearance_activity_container_background_message">Nền tin nhắn đã gửi</string>
+    <string name="space_appearance_activity_container_background_peer_message">Nền tin nhắn đã nhận</string>
+    <string name="space_appearance_activity_container_border_message">Viền tin nhắn đã gửi</string>
+    <string name="space_appearance_activity_container_border_peer_message">Viền tin nhắn đã nhận</string>
+    <string name="space_appearance_activity_container_text_message">Văn bản tin nhắn đã gửi</string>
+    <string name="space_appearance_activity_container_text_peer_message">Văn bản tin nhắn đã nhận</string>
+    <string name="space_appearance_activity_container_title">Bong bóng</string>
+    <string name="space_appearance_activity_default_value">Giá trị mặc định</string>
+    <string name="space_appearance_activity_general_title">Tổng quan</string>
+    <string name="space_appearance_activity_menu_choose_color">Màu mặc định</string>
+    <string name="space_appearance_activity_menu_enter_color">Mã màu</string>
+    <string name="space_appearance_activity_opacity">Độ mờ</string>
+    <string name="space_appearance_activity_preview_message">Mẹ quên giày múa rồi… Con mang giúp mẹ nhé?😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Chào em yêu!</string>
+    <string name="space_appearance_activity_preview_title">Xem trước</string>
+    <string name="space_appearance_activity_theme">Giao diện</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Một Không gian là nơi các vai trò khác nhau của bạn gặp gỡ các vòng xã hội đa dạng, bao gồm cả những mối quan hệ bí mật nhất.</string>
+    <string name="spaces_activity_sample_business">Công việc</string>
+    <string name="spaces_activity_sample_business_name">BS. Nguyễn Văn A</string>
+    <string name="spaces_activity_sample_family">Gia đình</string>
+    <string name="spaces_activity_sample_family_name">Bố</string>
+    <string name="spaces_activity_sample_friends">Bạn bè</string>
+    <string name="spaces_activity_sample_friends_name">Johny</string>
+    <string name="spaces_activity_title">Không gian</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Đã xảy ra lỗi. Vui lòng thử lại.</string>
+    <string name="streaming_audio_activity_no_music_message">Vui lòng chuyển các tệp nhạc vào thiết bị của bạn.</string>
+    <string name="streaming_audio_activity_no_music_title">Không tìm thấy nhạc 🙁</string>
+    <string name="streaming_audio_activity_title">Chia sẻ phương tiện</string>
+    <string name="streaming_audio_activity_unsupported_message">Định dạng âm thanh này không được thiết bị của %1$s hỗ trợ.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Bạn có chắc muốn xóa mã \\\"Chuyển cuộc gọi\\\" này không?</string>
+    <string name="transfert_call_activity_delete_message">Liên kết chuyển cuộc gọi này sẽ bị xóa. Xác nhận?</string>
+    <string name="transfert_call_activity_gallery_message">Quét mã QR này để chuyển cuộc gọi di động của bạn.</string>
+    <string name="transfert_call_activity_message">Chuyển tiếp mã này và đánh dấu URL trên trình duyệt mà bạn muốn chuyển cuộc gọi.</string>
+    <string name="transfert_call_activity_reset_message">Thao tác này sẽ hủy mã chuyển cuộc gọi hiện tại và tạo mã mới. Xác nhận?</string>
+    <string name="transfert_call_activity_saved_message">Mã chuyển cuộc gọi đã được lưu vào thư viện ảnh.</string>
+    <string name="transfert_call_activity_share">Chuyển tiếp</string>
+
+    <!-- TwincodeActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Rao vặt</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Thông báo</string>
+    <string name="template_click_to_call_activity_template_help">Trợ giúp</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Trợ giúp</string>
+    <string name="template_click_to_call_activity_template_meeting">Cuộc họp</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Cuộc họp</string>
+    <string name="template_click_to_call_activity_template_video_bell">Chuông cửa video</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Chuông cửa</string>
+    <string name="template_space_activity_template_business_placeholder">Tên (BS Nguyễn Văn A, Cô Hoa,...)</string>
+    <string name="template_space_activity_template_business_profile">Cô Samantha Smith</string>
+    <string name="template_space_activity_template_family_placeholder">Tên (Johny, Sam,...)</string>
+    <string name="template_space_activity_template_family_profile">Sam</string>
+    <string name="template_space_activity_template_friends_placeholder">Tên (Bố, Mẹ,…)</string>
+    <string name="template_space_activity_template_friends_profile">Mẹ</string>
+    <string name="template_space_activity_template_other">Khác</string>
+    <string name="template_space_activity_template_other_placeholder">Tên (Bố, Mẹ, Johny, BS Nguyễn Văn A,...)</string>
+    <string name="template_space_activity_template_title">Mẫu</string>
+    <string name="twincode_activity_message">Yêu cầu bạn bè gần bạn quét mã QR mời của bạn bằng twinme, hoặc chạm vào mã mời để sao chép.</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Có bản cập nhật</string>
+    <string name="update_app_activity_update_message">Bản cập nhật mới nhất bao gồm:</string>
+    <string name="update_app_activity_update_title">Cập nhật ngay</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Đang gọi video…</string>
+    <string name="video_call_activity_cannot_call">Không thể thực hiện cuộc gọi video</string>
+    <string name="video_call_activity_connecting">Đang kết nối…</string>
+    <string name="video_call_activity_hangup_confirmation">Bạn có muốn kết thúc cuộc gọi không?</string>
+    <string name="video_call_activity_terminate">Cuộc gọi đã kết thúc</string>
+    <string name="video_call_activity_terminate_busy">Kết thúc cuộc gọi: %1$s đang bận</string>
+    <string name="video_call_activity_terminate_cancel">Cuộc gọi bị hủy bởi %1$s</string>
+    <string name="video_call_activity_terminate_connectivity_error">Cuộc gọi bị ngắt kết nối do sự cố kết nối. Vui lòng kiểm tra kết nối internet của bạn.</string>
+    <string name="video_call_activity_terminate_decline">Cuộc gọi bị từ chối bởi %1$s</string>
+    <string name="video_call_activity_terminate_disconnected">Cuộc gọi bị ngắt kết nối do lỗi mạng. Vui lòng thử lại.</string>
+    <string name="video_call_activity_terminate_gone">Kết thúc cuộc gọi: %1$s đã ngắt kết nối</string>
+    <string name="video_call_activity_terminate_revoked">Cuộc gọi đã kết thúc: &lt;b&gt;%1$s&lt;/b&gt; đã xóa liên hệ này với bạn.</string>
+    <string name="video_call_activity_terminate_success">Cuộc gọi kết thúc bởi %1$s</string>
+    <string name="video_call_activity_terminate_timeout">Kết thúc cuộc gọi: %1$s không phản hồi</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">Bằng cách nhấn %1$s, tôi xác nhận rằng tôi đã đọc và chấp nhận:</string>
+    <string name="welcome_activity_next">Tiếp</string>
+    <string name="welcome_activity_pass">Bỏ qua</string>
+    <string name="welcome_activity_privacy_policy">Chính sách bảo mật</string>
+    <string name="welcome_activity_start">Bắt đầu</string>
+    <string name="welcome_activity_step1_message">Nhắn tin và gọi thoại/video HD bảo vệ quyền riêng tư theo thiết kế.</string>
+    <string name="welcome_activity_step2_message">Giao tiếp \"peer-to-peer\" bảo mật: không lưu dấu vết trên đám mây.</string>
+    <string name="welcome_activity_step3_message">Không cần số điện thoại, danh bạ hay tài khoản người dùng: bạn chọn cách được nhận diện theo người bạn đang giao tiếp.</string>
+    <string name="welcome_activity_terms_of_use">Điều khoản sử dụng</string>
+
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:minHeight="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="32dp"
+        android:layout_height="32dp">
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/conversations_toolbar_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/conversations_toolbar_notification_rounded_view"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/conversations_tool_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+    <RadioGroup
+        android:id="@+id/conversations_tool_bar_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/conversations_tool_bar_all_radio"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segmented_control_left"
+            android:button="@null"
+            android:checked="true"
+            android:lines="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/calls_fragment_all_call_segmented_control" />
+
+        <RadioButton
+            android:id="@+id/conversations_tool_bar_groups_radio"
+            android:layout_height="wrap_content"
+            android:background="@drawable/segmented_control_right"
+            android:button="@null"
+            android:lines="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/share_activity_group_list" />
+
+    </RadioGroup>
+
+</androidx.appcompat.widget.Toolbar>

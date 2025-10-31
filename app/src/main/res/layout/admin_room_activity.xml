@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/admin_room_activity_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/admin_room_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:id="@+id/admin_room_activity_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:fillViewport="true"
+        android:layout_below="@+id/admin_room_activity_tool_bar"
+        app:layout_widthPercent="100%">
+
+        <RelativeLayout
+            android:id="@+id/admin_room_activity_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:background="?attr/background_light_grey_color">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/admin_room_activity_info_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_light_bottom_border">
+
+                <EditText
+                    android:id="@+id/admin_room_activity_name_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/application_name_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="text|textNoSuggestions|textCapSentences"
+                    app:layout_marginEndPercent="26.77%"
+                    app:layout_marginStartPercent="4.53%" />
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/admin_room_activity_avatar_selectable_view"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="69.35%"
+                    app:layout_marginEndPercent="4.53%">
+
+                    <org.twinlife.twinme.utils.RoundedView
+                        android:id="@+id/admin_room_activity_avatar_background_view"
+                        app:layout_aspectRatio="100%"
+                        app:layout_heightPercent="100%" />
+
+                    <org.twinlife.twinme.utils.CircularImageView
+                        android:id="@+id/admin_room_activity_avatar_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/admin_room_activity_avatar_camera_view"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/grey_camera"
+                        app:tint="@color/edit_avatar_image_color"
+                        app:layout_aspectRatio="100%"
+                        app:layout_heightPercent="32.5%" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/admin_room_activity_welcome_view"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/item_light_bottom_border"
+                android:layout_below="@+id/admin_room_activity_info_view">
+
+                <EditText
+                    android:id="@+id/admin_room_activity_welcome_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/admin_room_activity_welcome_message"
+                    android:inputType="text|textNoSuggestions|textCapSentences|textMultiLine"
+                    app:layout_marginEndPercent="4.25%"
+                    app:layout_marginStartPercent="4.25%" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/admin_room_activity_configuration_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="@android:color/transparent"
+                android:text="@string/application_configuration"
+                android:layout_below="@+id/admin_room_activity_welcome_view" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/admin_room_activity_invite_view"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/item_light_bottom_border"
+                android:layout_below="@+id/admin_room_activity_configuration_title">
+
+                <TextView
+                    android:id="@+id/admin_room_activity_invite_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="start"
+                    android:background="@android:color/transparent"
+                    android:text="@string/show_room_activity_invite_participants"
+                    app:layout_marginEndPercent="16.77%"
+                    app:layout_marginStartPercent="4%"
+                    app:layout_marginTopPercent="4%" />
+
+                <ImageView
+                    android:id="@+id/admin_room_activity_invite_image"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="?attr/black_color"
+                    app:layout_aspectRatio="61.54%"
+                    app:layout_heightPercent="30.10%"
+                    app:layout_marginEndPercent="3.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/admin_room_activity_settings_view"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/item_light_bottom_border"
+                android:layout_below="@+id/admin_room_activity_invite_view">
+
+                <TextView
+                    android:id="@+id/admin_room_activity_settings_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="start"
+                    android:background="@android:color/transparent"
+                    android:text="@string/navigation_activity_settings"
+                    app:layout_marginEndPercent="16.77%"
+                    app:layout_marginStartPercent="4%"
+                    app:layout_marginTopPercent="4%" />
+
+                <ImageView
+                    android:id="@+id/admin_room_activity_settings_image"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/end_chevron"
+                    app:tint="?attr/black_color"
+                    app:layout_aspectRatio="61.54%"
+                    app:layout_heightPercent="30.10%"
+                    app:layout_marginEndPercent="3.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/admin_room_activity_remove_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/admin_room_activity_remove_label_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/application_delete" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/admin_group_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

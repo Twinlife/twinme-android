@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_image_item_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_image_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_image_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:id="@+id/base_item_activity_image_item_reply_view"
+            android:layout_alignTop="@+id/base_item_activity_image_item_reply_text"
+            android:layout_alignBottom="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignEnd="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignRight="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignLeft="@+id/base_item_activity_image_item_reply_text"
+            android:layout_alignStart="@+id/base_item_activity_image_item_reply_text" />
+
+        <TextView
+            android:id="@+id/base_item_activity_image_item_reply_text"
+            style="@style/textAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignRight="@+id/base_item_activity_image_item_image_view"
+            android:textColor="@android:color/white"
+            app:layout_marginStartPercent="29.60%" />
+
+        <View
+            android:id="@+id/base_item_activity_image_item_reply_image_content_view"
+            android:layout_alignTop="@+id/base_item_activity_image_item_reply_container_image_view"
+            android:layout_alignBottom="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignEnd="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignRight="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignLeft="@+id/base_item_activity_image_item_reply_container_image_view"
+            android:layout_alignStart="@+id/base_item_activity_image_item_reply_container_image_view" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_image_item_reply_container_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/base_item_activity_image_item_image_view"
+            android:layout_alignRight="@+id/base_item_activity_image_item_image_view">
+
+            <org.twinlife.twinme.utils.RoundedImageView
+                android:id="@+id/base_item_activity_image_item_reply_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.utils.RoundedImageView
+            android:id="@+id/base_item_activity_image_item_image_view"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:layout_marginEndPercent="6.93%"
+            app:layout_widthPercent="66.93%" />
+
+        <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView
+            android:id="@+id/base_item_activity_image_item_delete_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/base_item_activity_image_item_image_view"
+            app:layout_marginEndPercent="6.93%"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/base_item_activity_image_item_state_view"
+            android:layout_height="0dp"
+            android:layout_alignBottom="@id/base_item_activity_image_item_image_view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            app:layout_aspectRatio="100%"
+            app:layout_marginEndPercent="2.4%"
+            app:layout_widthPercent="3.2%" />
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_image_item_state_avatar_view"
+            android:layout_height="0dp"
+            android:layout_alignBottom="@id/base_item_activity_image_item_image_view"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            app:layout_aspectRatio="100%"
+            app:layout_marginEndPercent="2.4%"
+            app:layout_widthPercent="3.2%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/base_item_activity_image_item_annotation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/base_item_activity_image_item_layout_container"
+        android:choiceMode="singleChoice"
+        app:layout_marginEndPercent="6.93%" />
+
+    <View
+        android:id="@+id/base_item_activity_image_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Aksepterer</string>
+    <string name="application_account_deleted">Kontoen din er slettet, du må nå avinstallere applikasjonen.</string>
+    <string name="application_add_contact_no_profile">Du må fylle ut en profil som representerer deg før du inviterer en kontakt. Fortsette?</string>
+    <string name="application_all">Alle</string>
+    <string name="application_appearance">Utseende</string>
+    <string name="application_are_you_sure">Er du sikker?</string>
+    <string name="application_authorization_camera">Tillatt at appen får tilgang til Kameraet i systeminnstillingene.</string>
+    <string name="application_authorization_go_settings">Gå til systeminnstillinger</string>
+    <string name="application_authorization_microphone">Tillatt at appen får tilgang til Mikrofon i systeminnstillingene.</string>
+    <string name="application_authorization_microphone_camera">Tillatt appen får tilgang til Mikrofon og Kamera i systeminnstillinger.</string>
+    <string name="application_authorization_title">Manglende tilgangsautorisasjon</string>
+    <string name="application_back">Tilbake</string>
+    <string name="application_camera">카메라</string>
+    <string name="application_cancel">Avbryt</string>
+    <string name="application_canceled_operation">Avbrutt handling</string>
+    <string name="application_checking_connection">Kontrollerer tilkoblingen</string>
+    <string name="application_color">Farge</string>
+    <string name="application_configuration">Konfigurasjon</string>
+    <string name="application_confirm">Bekrefte</string>
+    <string name="application_confirm_deletion">Bekreft slettingen</string>
+    <string name="application_connected">Sikker tilkobling aktivert.</string>
+    <string name="application_connection_status_no_network">Ingen Internett-tilgang.</string>
+    <string name="application_connection_status_no_network_message">Sjekk nettverkstilkoblingen.</string>
+    <string name="application_connection_status_no_services">Ingen tilgang til tjenesten.</string>
+    <string name="application_connection_status_no_services_message">Prøv å bruke en VPN.</string>
+    <string name="application_contact_not_found">Denne kontakten har slettet denne relasjonen med deg og er ikke lenger tilgjengelig.</string>
+    <string name="application_continue_without_premium_services">Fortsett uten premiumtjenester</string>
+    <string name="application_create_group_no_profile">Du må fylle ut en profil som representerer deg i denne gruppen. Fortsette?</string>
+    <string name="application_database_error">Database feil</string>
+    <string name="application_decline">Avslå</string>
+    <string name="application_default">Misligholde</string>
+    <string name="application_delete">Fjerne</string>
+    <string name="application_delete_message">Er du sikker på at du vil fjerne den?</string>
+    <string name="application_denied_permissions">Nødvendige tillatelser er ikke gitt</string>
+    <string name="application_description">Beskrivelse</string>
+    <string name="application_display_all">Vis alle</string>
+    <string name="application_do_not_display">Ikke vis lenger</string>
+    <string name="application_edit">Redigere</string>
+    <string name="application_error_file_not_found">Filen ble ikke funnet.</string>
+    <string name="application_error_media_not_supported">Dette bilde-/videoformatet støttes ikke av applikasjonen.</string>
+    <string name="application_error_no_storage_space">Utilstrekkelig lagringsplass</string>
+    <string name="application_group_limit_reached">Maksimum antall (%1$d) av gruppemedlemmer er overskredet.</string>
+    <string name="application_group_not_found">Du har blitt fjernet fra gruppe</string>
+    <string name="application_items_selected">%1$d elementer er valgt</string>
+    <string name="application_later">Seinere</string>
+    <string name="application_low_usage_message">Advarsel, hvis du ikke bruker programmet ofte nok, kan det hende at operativsystemet ikke vekker det for å utveksle meldinger!</string>
+    <string name="application_one_item_selected">1 element er valgt</string>
+    <string name="application_migration_no_storage_space">Det er ikke nok plass på enheten til å fullføre migreringen. Lukk applikasjonen, frigjør plass og start appen på nytt for å fullføre oppdateringen.</string>
+    <string name="application_migration_no_storage_space_message">En av de to enhetene har ikke nok lagringsplass. Frigjør plass på den enheten før du starter overføringen på nytt.</string>
+    <string name="application_name_hint">Navn</string>
+    <string name="application_network_connecting">Kobler til twinme-tjeneste</string>
+    <string name="application_network_connectivity">Nettverkstilkobling finnes</string>
+    <string name="application_network_status_airplane_message">Flymodus er aktivert.</string>
+    <string name="application_network_status_airplane_resolution">Deaktiver flymodus og koble til et WiFi- eller mobilnettverk.</string>
+    <string name="application_network_status_connected_no_internet">Ingen nettilgang til twinme-tjenesten.</string>
+    <string name="application_network_status_connected_resolution">Prøv å koble til et annet nettverk.</string>
+    <string name="application_network_status_connection_timeout">Kan ikke opprette internettforbindelsen.</string>
+    <string name="application_network_status_no_internet">Ingen internettforbindelse.</string>
+    <string name="application_network_status_wifi_disabled">WiFi er deaktivert.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">WiFi er deaktivert og det er ingen mobilt internettforbindelse.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Slå på WiFi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Slå på WiFi eller aktiver en mobil internettforbindelse.</string>
+    <string name="application_new_feature">Ny!</string>
+    <string name="application_no">Nei</string>
+    <string name="application_no_network_connectivity">Ingen nettverkstilgang</string>
+    <string name="application_no_service">Ingen tjeneste</string>
+    <string name="application_not_authorized_operation">Ikke godkjent handling</string>
+    <string name="application_not_authorized_operation_by_your_contact">Driften er ikke godkjent av kontakten din.</string>
+    <string name="application_not_connected">Sikker tilkobling pågår…</string>
+    <string name="application_not_signed_in">Ikke koblet til twinme-tjenesten</string>
+    <string name="application_now">Nå</string>
+    <string name="application_ok">OK</string>
+    <string name="application_operation_failure">Handling mislyktes</string>
+    <string name="application_operation_irreversible">Denne operasjonen er irreversibel</string>
+    <string name="application_permission_camera">Tillatelse for å få tilgang til kameraet kreves for å ta et nytt bilde eller video.</string>
+    <string name="application_permission_scan_code">Tillatelse til å få tilgang til kameraet er nødvendig for å skanne en QR-kode.</string>
+    <string name="application_photo_gallery">Fotoalbum</string>
+    <string name="application_profile">Profil</string>
+    <string name="application_profile_avatar_not_defined">Profilbildet ditt er ikke definert</string>
+    <string name="application_profile_name_not_defined">Profilnavnet ditt er ikke definert</string>
+    <string name="application_remove">Fjerne</string>
+    <string name="application_save">Lagre</string>
+    <string name="application_search_hint">Søk</string>
+    <string name="application_select">Velge</string>
+    <string name="application_select_application">Velg applikasjon</string>
+    <string name="application_select_more">Velg flere...</string>
+    <string name="application_server_timeout">Server timeout</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Tema</string>
+    <string name="application_timeout">Utløpsforsinkelse</string>
+    <string name="application_timeout_day">1 dag</string>
+    <string name="application_timeout_hour">1 time</string>
+    <string name="application_timeout_hours">%1$d timer</string>
+    <string name="application_timeout_minute">1 minutt</string>
+    <string name="application_timeout_minutes">%1$d minutter</string>
+    <string name="application_timeout_month">1 måned</string>
+    <string name="application_timeout_seconds">%1$d sekunder</string>
+    <string name="application_timeout_week">1 uke</string>
+    <string name="application_unknown_name">Ukjent</string>
+    <string name="application_upgrade">Oppgradering av twinme</string>
+    <string name="application_webrtc_failure">WebRTC-svikt</string>
+    <string name="application_wrong_configuration">Feil konfigurasjon</string>
+    <string name="application_yes">Ja</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Applikasjonskode</string>
+    <string name="about_activity_information">Informasjon</string>
+    <string name="about_activity_legal">Juridiske merknader</string>
+    <string name="about_activity_libraries">Biblioteker</string>
+    <string name="about_activity_message">twinme er en sikker chatte- og stemme/videosamtale-tjeneste uten tilgang til personlig informasjon.\n\ntwinme er basert på WebRTC, den nye standarden for sikker (ende-til-ende-kryptert) p2p (ingen reléserver) multimediakommunikasjon i sanntid på nettet.</string>
+    <string name="about_activity_open_source_information">Applikasjonens kildekode er tilgjengelig som Open Source på GitHub, under AGPL-3.0-lisensen.</string>
+    <string name="about_activity_open_sources_licences">Åpne kildelisenser</string>
+    <string name="about_activity_premium_services">Premium tjenester</string>
+    <string name="about_activity_privacy_policy">Retningslinjer for personvern</string>
+    <string name="about_activity_quality_of_service">Tjenestekvalitet</string>
+    <string name="about_activity_terms_of_use">Vilkår</string>
+    <string name="about_activity_version">Versjon</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">Denne invitasjonen ble slettet</string>
+    <string name="accept_group_invitation_activity_in_progress">Medlemskap pågår</string>
+    <string name="accept_group_invitation_activity_message">%1$s inviterer deg til å bli med i gruppen</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">Invitasjonen blir overført.</string>
+    <string name="accept_invitation_activity_check_connection">Sjekk Internett-tilkoblingen din.</string>
+    <string name="accept_invitation_activity_existing_contact_message">Du har allerede et forhold til denne kontakten. Vil du lage en ny?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Feil kontaktinformasjon</string>
+    <string name="accept_invitation_activity_local_twincode">Du kan ikke etablere et forhold til deg selv innenfor samme konto.</string>
+    <string name="accept_invitation_activity_message">%1$s ønsker å få kontakt med deg</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">Samtaler innhold</string>
+    <string name="account_activity_delete_account">Kontoen din, sammen med alle tilknyttede data, slettes permanent. Bekrefte?</string>
+    <string name="account_activity_delete_account_confirmation">Er du virkelig sikker på at du vil slette din konto?</string>
+    <string name="account_activity_export_content">Eksporter til eksterne medier</string>
+    <string name="account_activity_message_first_part">En ny konto opprettes når du installerer appen for første gang, etter at appen er installert på nytt, eller enheten er tilbakestilt eller den gjeldende kontoen slettes.</string>
+    <string name="account_activity_message_second_part">Ingen spor av tidligere konto og data gjenstår, så du må invitere kontaktene dine på nytt.</string>
+    <string name="account_activity_migration_message">En kontooverføringstjeneste er tilgjengelig for å overføre kontoen din med alle tilknyttede data (kontakter, meldinger, grupper osv.) Fra en Android-enhet til en annen i sanntid. Du kan dermed bytte konto mellom en gammel enhet og en ny.</string>
+    <string name="account_activity_migration_start_from_another_device">Fra en annen enhet</string>
+    <string name="account_activity_migration_start_from_current_device">Fra enheten min</string>
+    <string name="account_activity_migration_title">Kontomigrering</string>
+    <string name="account_activity_title">Konto</string>
+    <string name="account_activity_transfer_between_devices">Overfør mellom enheter</string>
+    <string name="account_activity_transfer_from_another_device">Overfør fra en annen enhet</string>
+    <string name="account_activity_transfer_from_device">Overfør fra denne enheten</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Lukk applikasjonen og start den på nytt for å få tilgang til dataene dine.</string>
+    <string name="account_migration_activity_close_message">Lukk applikasjonen og start den på nytt for å få tilgang til de nye dataene.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Er du sikker på at du vil avbryte overføringen?</string>
+    <string name="account_migration_activity_network_message">Kontroller nettverkstilkoblingen</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Ikke nok plass til filer</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Ikke nok plass til å laste ned databasen</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Ikke nok plass til å laste opp databasen</string>
+    <string name="account_migration_activity_state_canceled">Migrering avbrutt</string>
+    <string name="account_migration_activity_state_negotiate">Venter</string>
+    <string name="account_migration_activity_state_list_files">Listing filer</string>
+    <string name="account_migration_activity_state_send_account">Sender kontoen</string>
+    <string name="account_migration_activity_state_send_database">Sender databasen</string>
+    <string name="account_migration_activity_state_send_files">Sende filer</string>
+    <string name="account_migration_activity_state_send_settings">Sende programinnstillinger</string>
+    <string name="account_migration_activity_state_terminate">Migrasjon nesten fullført.</string>
+    <string name="account_migration_activity_state_wait_account">Venter på den andre kontoen</string>
+    <string name="account_migration_activity_state_wait_connect">Venter på tilkobling på nytt</string>
+    <string name="account_migration_activity_state_wait_files">Venter på mottak av filer og database.</string>
+    <string name="account_migration_activity_start">Start migrering</string>
+    <string name="account_migration_activity_stop">Stopp migrasjon</string>
+    <string name="account_migration_activity_success_message">Overføringen fullført</string>
+    <string name="account_migration_activity_transfer_in_progress">Dataoverføring pågår</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Vis denne skjermen på hver enhet, og den ene skanner den andre QR-koden.</string>
+    <string name="account_migration_scanner_activity_message_older_version">Denne enheten bruker en gammel inkompatibel OS-versjon, som vil føre til at alle relasjoner på målenheten går tapt under overføringen. Vil du fortsatt fortsette med overføringen?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">Målenheten bruker en gammel inkompatibel OS-versjon, som vil føre til at alle relasjonene dine går tapt under overføringen. Vil du fortsatt fortsette med overføringen?</string>
+    <string name="account_migration_scanner_activity_scan_title">Skanning</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">For å starte migrering, skann denne QR-koden fra den andre enheten</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Skann QR-koden som vises i delen \"Konto / Overfør fra en annen enhet\" i sidemenyen til den andre enheten.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Stopp skanningen</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">Legg til en deltaker i denne samtalen</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">Importer fra galleri</string>
+    <string name="add_contact_activity_in_person_subtitle">Inviter en person nær deg</string>
+    <string name="add_contact_activity_in_person_title">Personlig</string>
+    <string name="add_contact_activity_invitation_code_title">Minikode</string>
+    <string name="add_contact_activity_invite">Invitere</string>
+    <string name="add_contact_activity_invite_message">Åpne nettstedet %1$s med twinme på den mobile enheten din for privat kontakt med “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Twinme-invitasjon</string>
+    <string name="add_contact_activity_message">Be vennen din ved siden av deg om å skanne QR-koden din med twinme, eller trykk på "Skann"-knappen for å skanne vennens kode.</string>
+    <string name="add_contact_activity_onboarding_message">twinme kjenner ikke vennene dine og kan ikke oppdage dem. Du må invitere dem personlig, med twinme når de er nær deg, eller ved å sende dem en invitasjon på annen måte.</string>
+    <string name="add_contact_activity_scan_code">Skann invitasjons QR-kode</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Denne linken er ødelagt.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Denne lenken er feil.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Denne lenken administreres ikke av applikasjonen.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Denne relasjonen er slettet.</string>
+    <string name="add_contact_activity_scan_message_call_link">Denne lenken tilsvarer et \"Click-to-call\"</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Denne lenken tilsvarer en kontaktinvitasjon</string>
+    <string name="add_contact_activity_scan_message_migration_link">Denne koblingen tilsvarer en kontomigrering</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Denne lenken tilsvarer en samtaleoverføring</string>
+    <string name="add_contact_activity_scan_title">Skann</string>
+    <string name="add_contact_activity_social_subtitle">melding, mail, sosialt nettverk</string>
+    <string name="add_contact_activity_social_title">Send koden via en applikasjon</string>
+    <string name="add_contact_activity_title">Invitasjon</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Legg til</string>
+    <string name="add_group_member_activity_title">Legg til medlemmer</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Velkomstmelding</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Ringer&#8230;</string>
+    <string name="audio_call_activity_cannot_call">Kan ikke ringe</string>
+    <string name="audio_call_activity_connecting">Kobler til&#8230;</string>
+    <string name="audio_call_activity_hangup">Legg på</string>
+    <string name="audio_call_activity_hangup_confirmation">Vil du avslutte samtalen?</string>
+    <string name="audio_call_activity_terminate">Samtalen er avsluttet</string>
+    <string name="audio_call_activity_terminate_busy">Samtale avsluttet: &lt;b&gt;%1$s&lt;/b&gt; er opptatt</string>
+    <string name="audio_call_activity_terminate_cancel">Samtale avsluttet av &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Samtale avsluttet: nettverksfeil</string>
+    <string name="audio_call_activity_terminate_decline">Samtalen avvist av &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_gone">Samtalen avsluttet: &lt;b&gt;%1$s&lt;/b&gt; er ikke pålogget</string>
+    <string name="audio_call_activity_terminate_not_authorized">Kontakten din har ikke gitt tillatelsene som kreves for en samtale (f.eks. mikrofon, kamera).</string>
+    <string name="audio_call_activity_terminate_revoked">Samtalen er avsluttet: &lt;b&gt;%1$s&lt;/b&gt; har slettet denne relasjonen med deg.</string>
+    <string name="audio_call_activity_terminate_success">Samtalen avsluttet av &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_timeout">Samtalen avsluttet: &lt;b&gt;%1$s&lt;/b&gt; svarer ikke</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">Din relasjon til %1$s er nå sertifisert.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Sertifiser ved å skanne en QR-kode</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Sertifiser med en videosamtale</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s må tillate videosamtaler for å kunne sertifisere en relasjon via en videosamtale.</string>
+    <string name="authentified_relation_activity_level_2">For å bekrefte denne relasjonen må du skanne QR-koden som vises på %1$ss enhet.</string>
+    <string name="authentified_relation_activity_level_3">For å bekrefte denne relasjonen, må %1$ss enhet skanne denne QR-koden.</string>
+    <string name="authentified_relation_activity_level_4">Din relasjon til %1$s er sertifisert.</string>
+    <string name="authentified_relation_activity_onboarding_message">En \"sertifisert\" relasjon sikrer at du alltid kommuniserer med rett person, selv om tjenesten har blitt kompromittert av en tredjepart.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Pass på at du alltid kommuniserer med rett person!</string>
+    <string name="authentified_relation_activity_relation_print_message">Dette fingeravtrykket må være identisk på begge enhetene.</string>
+    <string name="authentified_relation_activity_relation_print_title">Relasjonsfingeravtrykk</string>
+    <string name="authentified_relation_activity_start">Start sertifisering</string>
+    <string name="authentified_relation_activity_title">Sertifisert forhold</string>
+    <string name="authentified_relation_activity_to_be_certified_title">Bekreft forholdet</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">Alle</string>
+    <string name="calls_fragment_call_again_message">Vil du ringe tilbake %1$s?</string>
+    <string name="calls_fragment_call_again_title">Ring tilbake</string>
+    <string name="calls_fragment_create_link">Opprett en \"click-to-call\"-lenke</string>
+    <string name="calls_fragment_incoming_call">Innkommende anrop</string>
+    <string name="calls_fragment_missed_call">Ubesvart anrop</string>
+    <string name="calls_fragment_missed_call_segmented_control">Savnet</string>
+    <string name="calls_fragment_no_call_message">Tapte anrop er oppført her.</string>
+    <string name="calls_fragment_no_call_title">Du har ikke ringt noen ennå.</string>
+    <string name="calls_fragment_outgoing_call">Utgående anrop</string>
+    <string name="calls_fragment_reset">Er du sikker på at du vil tilbakestille alle varslinger om anrop?</string>
+    <string name="calls_fragment_reset_title">Tilbakestill samtalevarsler</string>
+    <string name="calls_fragment_title">Anrop</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Bluetooth-lyd</string>
+    <string name="call_activity_audio_source_device">Enhetshodetelefoner</string>
+    <string name="call_activity_audio_source_earphones">Øretelefoner</string>
+    <string name="call_activity_audio_source_headset">Audio headset</string>
+    <string name="call_activity_audio_source_loudspeaker">Høyttaler</string>
+    <string name="call_activity_battery_restriction_message">Oppmerksomhet! Du må tillate batteribruk når appen kjører i bakgrunnen, ellers kan mikrofonen kuttes under en samtale.</string>
+    <string name="call_activity_camera_control">Kamerakontroll</string>
+    <string name="call_activity_camera_control_ask_message">Be %1$s om å la deg kontrollere kameraet deres under videosamtalen.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s vil kontrollere kameraet ditt under samtalen. Du kan når som helst få tilbake kontrollen.</string>
+    <string name="call_activity_camera_control_denied">%1$s lar deg ikke kontrollere kameraet hans/hennes.</string>
+    <string name="call_activity_camera_control_message">Kontroll over %1$s sitt kamera</string>
+    <string name="call_activity_camera_control_needs_help">Trenger du hjelp?</string>
+    <string name="call_activity_camera_control_onboarding">Hvis kontakten din tillater det, kan du for eksempel ta kontroll over kameraet deres under en videosamtale og zoome inn selv. Dette er spesielt nyttig for å kontrollere et videoovervåkingskamera.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">Med din kjæres tillatelse kan du kontrollere kameraet deres under en samtale for å hjelpe dem eksternt, enkelt og sikkert.</string>
+    <string name="call_activity_camera_control_remotely">%1$s kontrollerer kameraet ditt eksternt.</string>
+    <string name="call_activity_camera_control_stop">Stopp</string>
+    <string name="call_activity_certify_error_message">%1$s validerte ikke ordet. Sertifiseringen av relasjonen mislyktes, og du må prøve på nytt.</string>
+    <string name="call_activity_certify_onboarding_message">Videosamtalen lar dere identifisere hverandre og utveksle sikkerhetsnøklene knyttet til en sertifisert relasjon og dens sentraler.</string>
+    <string name="call_activity_certify_onboarding_start_message">Stav ordet som vises på skjermen, slik at den andre kan bekrefte det. Når alle ordene er bekreftet, vil relasjonen din med %1$s være sertifisert.</string>
+    <string name="call_activity_certify_onboarding_title">Bekreft forholdet deres</string>
+    <string name="call_activity_certify_video_message">Samtalen må være på video for å kunne bekrefte relasjonen.</string>
+    <string name="call_activity_coach_mark">Trykk her for å legge til en deltaker i denne samtalen</string>
+    <string name="call_activity_confirm_word">Er ordet som %1$s sier, identisk?</string>
+    <string name="call_activity_confirm_word_title">Bekreft ordet</string>
+    <string name="call_activity_error_call_interrupted">Samtalen ble avbrutt, feil: %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">Samtalen kunne ikke gå gjennom, feil: %1$d.</string>
+    <string name="call_activity_max_participant_message">Maksimalt antall deltakere i en gruppesamtale er nådd (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">Appversjonen av %1$s er ikke kompatibel med gruppeanrop og trenger en oppdatering.</string>
+    <string name="call_activity_quality_message">Hvordan vil du rangere det?</string>
+    <string name="call_activity_quality_title">Samtalekvalitet</string>
+    <string name="call_activity_repeat_word">%1$s vil kunne sammenligne det med det som vises på skjermen hans/hennes.</string>
+    <string name="call_activity_repeat_word_title">Stav ordet</string>
+    <string name="call_activity_tag_add_to_call">Inviter en kontakt til å bli med i den pågående samtalen</string>
+    <string name="call_activity_tag_camera">Kamera</string>
+    <string name="call_activity_tag_camera_activate">Aktiver kameraet</string>
+    <string name="call_activity_tag_camera_cut">Klipp av kameraet</string>
+    <string name="call_activity_tag_camera_flip">Snu kameraet</string>
+    <string name="call_activity_tag_microphone">Mikrofon</string>
+    <string name="call_activity_tag_microphone_activate">Aktiver mikrofonen</string>
+    <string name="call_activity_tag_microphone_mute">Demp mikrofonen</string>
+    <string name="call_activity_tag_pause">Pause</string>
+    <string name="call_activity_tag_send_message">Send en melding</string>
+    <string name="call_activity_tag_speaker">Høyttaler</string>
+    <string name="call_activity_tag_speaker_activate">Aktiver høyttaler</string>
+    <string name="call_activity_tag_speaker_mute">Demp høyttaler</string>
+    <string name="call_activity_transfert_call_message">Den pågående samtalen er overført.</string>
+    <string name="call_activity_try_to_call_back">Prøv å ringe tilbake.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">Kamera er allerede i bruk</string>
+    <string name="capture_activity_incorrect_qrcode">Feil twincode</string>
+    <string name="capture_activity_message">Plasser QR-koden i dette rektangelet for å skanne den.</string>
+    <string name="capture_activity_no_camera">Du trenger kamera for å skanne en twincode</string>
+    <string name="capture_activity_qrcode_saved">Invitasjonskode lagret i bilder.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">Fjern alle</string>
+    <string name="cleanup_activity_both_clean">Global rengjøring (lokalt og eksternt)</string>
+    <string name="cleanup_activity_both_clean_title">Global rengjøring</string>
+    <string name="cleanup_activity_clean">Slett</string>
+    <string name="cleanup_activity_conversation">Samtale med %s</string>
+    <string name="cleanup_activity_delete_confirmation_message">Sletting er irreversibel. Eksporter viktig innhold før du fortsetter. Fortsette?</string>
+    <string name="cleanup_activity_error">Det oppsto en feil under operasjonen.</string>
+    <string name="cleanup_activity_expiration">Utløpsvilkår</string>
+    <string name="cleanup_activity_free">Tilgjengelig</string>
+    <string name="cleanup_activity_info">Sletting av meldinger, medier og filer fra denne samtalen sletter dem ikke fra kontaktens enhet, og du vil ikke kunne gjøre det senere.</string>
+    <string name="cleanup_activity_info_both">Sletting av meldinger, medier og filer fra denne samtalen sletter dem også fra kontaktens enhet.</string>
+    <string name="cleanup_activity_local_cleanup">Kun lokal rengjøring</string>
+    <string name="cleanup_activity_local_cleanup_title">Lokal rengjøring</string>
+    <string name="cleanup_activity_medias_and_files">Kun media og filer</string>
+    <string name="cleanup_activity_medias_and_files_info">Medieminiatyrbilder fjernes ikke fra samtalen; bare originalfiler slettes.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Filer, bilder, videoer og talemeldinger som utveksles i denne samtalen vil bli slettet fra både enheten din og kontaktens enhet.</string>
+    <string name="cleanup_activity_messages">Alle meldinger og annet innhold</string>
+    <string name="cleanup_activity_messages_info">Meldinger av alle typer i samtalen (tekst, bilde, video, tale, filer osv.) vil bli slettet fra applikasjonen.</string>
+    <string name="cleanup_activity_month">%1$d måneder</string>
+    <string name="cleanup_activity_older_than">Eldre enn</string>
+    <string name="cleanup_activity_one_year">1 år</string>
+    <string name="cleanup_activity_prior_to">Forut for</string>
+    <string name="cleanup_activity_reset_conversation_message">Hvis du tilbakestiller denne samtalen, slettes alle meldinger, inkludert de på kontaktens enhet.</string>
+    <string name="cleanup_activity_select_content">Velg hva du vil slette.</string>
+    <string name="cleanup_activity_storage_title">Diskplass</string>
+    <string name="cleanup_activity_success">Operasjonen ble fullført.</string>
+    <string name="cleanup_activity_title">Samtale rengjøring</string>
+    <string name="cleanup_activity_total">Total</string>
+    <string name="cleanup_activity_used">Brukt</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Tips</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Tillat denne kontakten å ringe deg</string>
+    <string name="contact_capabilities_activity_automatic_answering">Svar automatisk på innkommende anrop</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Forsiktig: denne innstillingen aktiverer automatisk besvarelse av anrop fra denne kontakten, åpner enhetens mikrofon og kamera (for videosamtaler).</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Noen enheter kan begrense denne funksjonen.</string>
+    <string name="contact_capabilities_activity_call_settings">Anropsinnstillinger</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Alltid</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Spør i hver samtale</string>
+    <string name="contact_capabilities_activity_camera_control_information">Tillat at denne kontakten automatisk tar kontroll over kameraet ditt under en videosamtale.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Du kan be kontakten din med tilgang til premiumversjonen av appen om å kontrollere kameraet ditt under videosamtalene dine.</string>
+    <string name="contact_capabilities_activity_camera_control_never">Aldri</string>
+    <string name="contact_capabilities_activity_discreet_relation">Diskret forhold</string>
+    <string name="contact_capabilities_activity_information_audio_call">Tillat at kontakten ringer deg med stemmen.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">Viser ikke kontaktnavn i varsler og lagrer ikke anrop i anropsloggen.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Angi datoer/klokkeslett når du ikke vil bli oppringt.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Planlegg datoene/klokkeslettet du ønsker å bli oppringt.</string>
+    <string name="contact_capabilities_activity_information_video_call">Tillat at kontakten å videoringe deg.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Inviter noen til å skanne invitasjonskoden din, ellers skann deres...</string>
+    <string name="contacts_fragment_invite_contact_title">Inviter en kontakt</string>
+    <string name="contacts_fragment_scan_contact_title">Skann eller skriv inn en invitasjonskode</string>
+    <string name="contacts_fragment_title">Kontakt</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">Audio anrop</string>
+    <string name="conversation_activity_audio_message">Talemelding</string>
+    <string name="conversation_activity_call_missed">savnet</string>
+    <string name="conversation_activity_cannot_send">Kan ikke sende meldinger umiddelbart:</string>
+    <string name="conversation_activity_cleanup_conversation">Du slettet noen gamle meldinger.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s ryddet opp i noen gamle meldinger.</string>
+    <string name="conversation_activity_delete_message">Din melding er faktisk slettet.</string>
+    <string name="conversation_activity_empty_message">Si noe smart… eller morsomt!</string>
+    <string name="conversation_activity_edit_message">Meldingen kan bare redigeres på kontaktens enhet hvis appen deres er oppdatert.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Langt trykk på send-pilen for å slette denne meldingen fra samtalen etter en viss tid.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Den twinme-versjonen som kontakten din har er ikke fullt ut funksjonell.&lt;br /&gt;
+        Be ham/henne om å oppdatere twinme.</string>
+    <string name="conversation_activity_group_member_information">%1$d medlemmer</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Sende meldinger er ikke tillatt</string>
+    <string name="conversation_activity_group_one_member">1 medlem</string>
+    <string name="conversation_activity_invitation_accepted">Invitasjon akseptert</string>
+    <string name="conversation_activity_invitation_failed">Be kontakt med deg for å oppdatere twinme</string>
+    <string name="conversation_activity_invitation_joined">Medlem av gruppen</string>
+    <string name="conversation_activity_invitation_pending">Invitasjon pågår</string>
+    <string name="conversation_activity_invitation_refused">Invitasjonen avslått</string>
+    <string name="conversation_activity_invitation_title">Jeg inviterer deg til å bli med i gruppen</string>
+    <string name="conversation_activity_local_cleanup">Hovedinnhold er slettet lokalt.</string>
+    <string name="conversation_activity_manage_conversation">Administrer samtalen</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Kopiert til utklippstavlen!</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Kopi</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Fjerne</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Overføre</string>
+    <string name="conversation_activity_menu_item_view_info_title">Info</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">Drift er ikke tillatt av avsenderen</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Svare</string>
+    <string name="conversation_activity_menu_item_view_save_message">Lagret!</string>
+    <string name="conversation_activity_menu_item_view_save_title">Spare</string>
+    <string name="conversation_activity_menu_item_view_share_title">Dele</string>
+    <string name="conversation_activity_message">Skriv en melding</string>
+    <string name="conversation_activity_photo_camera">Fotokamera</string>
+    <string name="conversation_activity_record_confirm_send_record">Trykk igjen for å sende</string>
+    <string name="conversation_activity_record_start_record">Trykk og hold for å tpille inn</string>
+    <string name="conversation_activity_record_title">Ta opp</string>
+    <string name="conversation_activity_reduce_menu_lower">Standard</string>
+    <string name="conversation_activity_reduce_menu_minimal">Minimum</string>
+    <string name="conversation_activity_reduce_menu_original">Original</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Ingen endring av størrelse</string>
+    <string name="conversation_activity_reject_stream">Avvis</string>
+    <string name="conversation_activity_reply_to">Svar på %1$s</string>
+    <string name="conversation_activity_reset_conversation">Du har tilbakestilt samtalen</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s har tilbakestilt samtalen</string>
+    <string name="conversation_activity_send_file_warning">Advarsel: det er ikke mulig å hindre mottaker i å kopiere/lagre/dele et dokument (pdf, word, ppt, excel, zip, etc.), som kun kan åpnes utenfor applikasjonen. Vil du fortsatt sende den?</string>
+    <string name="conversation_activity_send_large_file_message">Denne filen er stor (%1$d MB). Vil du fortsette?</string>
+    <string name="conversation_activity_send_menu_allow_copy">Tillatt mottakeren å kopiere/lagre/dele dette innholdet</string>
+    <string name="conversation_activity_stream_dialog">Vil du godta det?</string>
+    <string name="conversation_activity_unsupported_media">Ustøttet medieformat</string>
+    <string name="conversation_activity_video_call">Video anrop</string>
+    <string name="conversation_activity_video_camera">Videokamera</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">Dok.</string>
+    <string name="conversation_files_activity_links">Lenker</string>
+    <string name="conversation_files_activity_month">Denne måneden</string>
+    <string name="conversation_files_activity_no_files">Samtalen din med %1$s inneholder ingen av disse elementene.</string>
+    <string name="conversation_files_activity_title">Media, weblenker og dokumenter</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Bakgrunner og farger</string>
+    <string name="conversation_settings_activity_emoji_size">Emoji-størrelse</string>
+    <string name="conversation_settings_activity_link_preview">Visualisering</string>
+    <string name="conversation_settings_activity_link_preview_message">Vis en forhåndsvisning av nettstedet.</string>
+    <string name="conversation_settings_activity_link_title">Weblenker</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">Ende-til-ende krypterte meldinger utveksles i peer-to-peer, direkte fra enhet til enhet, uten en mellomliggende distribusjonsserver = ingen spor i skyen.</string>
+    <string name="conversations_fragment_no_result_found">Ingen resultater funnet for \'%1$s\'.</string>
+    <string name="conversations_fragment_start">Start en samtale</string>
+    <string name="conversations_fragment_title">Samtaler</string>
+    <string name="conversations_fragment_you">Du</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Denne profilen vises til gjester som vil ringe deg med denne \"click-to-call\"-lenken.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call lar gjester ringe deg fra en nettleser uten å installere programmet.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Hver forekomst har et navn, bilde og beskrivelse som representerer emnet for samtalen, for eksempel:</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">kundeservicen din</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">bilen du selger</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">en profesjonell gruppesamtale</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">en videoringeklokke for leveringsfolk.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">En \"click-to-call\" har attributter for å spesifisere om den er:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">en lyd- og/eller videosamtale</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">en individuell eller gruppesamtale</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">alltid åpen eller begrenset til en bestemt dato og klokkeslett.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">Del \"click-to-call\"-lenken eller QR-koden gjennom kanalene slik at du kan nå relevante personer, f.eks.:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">en \"call-to-action\" på nettstedet ditt</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">et innlegg på en plattform for rubrikkannonser</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">en e-post til personene som er invitert til gruppesamtalen</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">et skilt på inngangsdøren for leveringsfolk.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Mottakere skanner QR-koden og åpner lenken i en nettleser på mobilenheten eller PC-en. De kan da:</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Endre standardnavnet (gjest) som representerer dem i samtalen</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Ring deg ved å trykke på \"Ring\"-knappen på nettsiden.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">Etter samtalen kan de holde nettsiden åpen for å ringe deg tilbake.</string>
+    <string name="create_external_call_activity_placeholder">Emne (Hjelp, Annonse, Møte, Ringeklokke, …)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Inviter medlemmene</string>
+    <string name="create_group_activity_create">Skape</string>
+    <string name="create_group_activity_member_allow_invitation_message">Tillatt gruppemedlemmer å invitere sine kontakter</string>
+    <string name="create_group_activity_member_allow_invitation_title">Medlemmer invitasjon</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Tillatt medlemmene å invitere andre medlemmer som personlige kontakter</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Etabler personlige kontakter</string>
+    <string name="create_group_activity_member_allow_post_message">Tillatt gruppemedlemmene å legge inn meldinger</string>
+    <string name="create_group_activity_member_allow_post_title">Legg ut meldinger</string>
+    <string name="create_group_activity_member_list">Medlemsliste (%1$d)</string>
+    <string name="create_group_activity_name_hint">Gruppenavn</string>
+    <string name="create_group_activity_title">Gruppe</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">Både navn OG bilde er avgjørende for at kontaktene dine skal gjenkjenne og skille deg fra andre.</string>
+    <string name="create_profile_activity_message">Denne profilinformasjonen brukes til å invitere kontakter.</string>
+    <string name="create_profile_activity_onboarding_message">Skriv inn en profil (navn og bilde) som representerer deg for kontaktene dine.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Profiler lar deg invitere kontakter til å opprette relasjoner med deg på applikasjonen. Du kan ha så mange profiler (persona) du vil, hver tilknyttet et bestemt "Space".</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Hver "Profil" har et "Navn" og et "Bilde" (obligatorisk), sett av kontaktene du inviterer, og brukt som din første profil knyttet til de nyopprettede relasjonene til det "Space".</string>
+    <string name="create_profile_activity_onboarding_message_part_3">Når det er opprettet, har hvert forhold sitt eget par "profiler" som representerer deg og kontaktene dine for hverandre.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">Du kan deretter endre hvordan du ønsker å bli kjent for hver av kontaktene dine, på hvert forhold, uavhengig.</string>
+    <string name="create_profile_activity_save_message">Dette navnet og bildet brukes til å invitere kontaktene dine og initialisere relasjonene dine. Du vil kunne endre og tilpasse dem for hver relasjon.</string>
+    <string name="create_profile_activity_welcome1">Legg inn profilbilde</string>
+    <string name="create_profile_activity_welcome2">Velkommen %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">Spaces er lokale og ikke synlige for kontakter.</string>
+    <string name="create_space_activity_onboarding_message_part_1">Spaces hjelper deg med å organisere kontaktene dine etter hvilke av dine sosiale kretser de tilhører, f.eks. Familie, venner, virksomhet, moro, etc.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Hvert "Space" er knyttet til en "Profil" som representerer personen du vil bruke når du samhandler med kontaktene fra den sosiale kretsen til det "Space", f.eks. pappa, Johny, Dr. John Doe, Batman, etc.</string>
+    <string name="create_space_activity_onboarding_message_part_3">Spaces er lokale for applikasjonen din på enheten din. De er bare synlige for deg og ikke av kontaktene dine eller tjenesteserverne.</string>
+    <string name="create_space_activity_onboarding_message_part_4">Et "Space" har:</string>
+    <string name="create_space_activity_onboarding_message_part_5">- et "navn", som representerer en spesifikk sosial krets du samhandler med</string>
+    <string name="create_space_activity_onboarding_message_part_6">- et "Bilde" som lar deg identifisere det raskt i listen over "Spaces"</string>
+    <string name="create_space_activity_onboarding_message_part_7">- en farge "Tema", for å tilpasse utseendet og følelsen</string>
+    <string name="create_space_activity_onboarding_message_part_8">- Innstillinger som kan være spesifikke for hvert enkelt "Space", og dermed overstyre standardverdiene definert av applikasjonsinnstillingene.</string>
+    <string name="create_space_activity_title">Lag Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">Dette profilnavnet er knyttet til koden som brukes til å overføre en pågående samtale til en nettleser.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Mine overføringer</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Skriv inn bokstavene \"OK\" nedenfor for å bekrefte slettingen av kontoen.</string>
+    <string name="deleted_account_activity_delete">Slett konto</string>
+    <string name="deleted_account_activity_warning">Advarsel‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">Kontoen din er slettet og alle tilknyttede data er eliminert.&lt;br /&gt;
+        Du må stenge programmet.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Er du sikker på at du vil slette denne relasjonen?</string>
+    <string name="edit_contact_activity_message">Denne kontakten vil ikke lenger kunne nå deg.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Sletting av denne profilen vil annullere den tilknyttede invitasjonskoden. Bekreft sletting?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">Er du sikker på at du vil slette denne \"Click-to-Call\"-koden?</string>
+    <string name="edit_external_call_activity_delete_message">Denne \"Click-to-Call\"-koblingen vil ikke lenger være brukbar.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">Rediger profil</string>
+    <string name="edit_profile_activity_propagating_all_contacts">til alle kontakter i dette Space</string>
+    <string name="edit_profile_activity_propagating_ask_message">Spre bildet, navnet eller beskrivelsen du nettopp endret:</string>
+    <string name="edit_profile_activity_propagating_except_contacts">til alle med mindre de er personlig tilpasset</string>
+    <string name="edit_profile_activity_propagating_message">Du kan overføre endringene i invitasjonsprofilen til dine eksisterende kontakter, eller ikke.</string>
+    <string name="edit_profile_activity_propagating_no_contact">til ingen</string>
+    <string name="edit_profile_activity_propagating_profile">Spre profilendringer</string>
+    <string name="edit_profile_activity_remove_active_profile">Du kan ikke fjerne den aktive profilen</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">Når relasjonen er opprettet, anbefales det sterkt å sertifisere den for å styrke sikkerheten.</string>
+    <string name="enter_invitation_code_activity_enter_code">Skriv inn en minikode</string>
+    <string name="enter_invitation_code_activity_error_message">Denne koden er ugyldig. Den kan allerede ha blitt brukt eller utløpt.</string>
+    <string name="enter_invitation_code_activity_invitation_message">Når relasjonen er opprettet, ikke glem å sertifisere den for å styrke sikkerheten.</string>
+    <string name="enter_invitation_code_activity_message">Skriv inn minikoden du fikk av kontakten din for å opprette en relasjon.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">En kontakt ga deg en minikode på 6 tegn for å opprette en relasjon. Denne engangsminikoden utløper 24 timer etter at den ble opprettet.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">Innholdet i samtaler vil bli eksportert i en ZIP-fil.</string>
+    <string name="export_activity_content_title">Innhold</string>
+    <string name="export_activity_content_to_export">Innhold som skal eksporteres</string>
+    <string name="export_activity_do_not_leave_screen">Ikke forlat skjermen under eksportoperasjonen.</string>
+    <string name="export_activity_export">Eksport</string>
+    <string name="export_activity_file">fil</string>
+    <string name="export_activity_files">filer</string>
+    <string name="export_activity_get_all_content">Henting av innholdet i samtalen med %1$s pågår.</string>
+    <string name="export_activity_get_one_chat">Henting av innholdet i samtaler pågår.</string>
+    <string name="export_activity_images">Bilder</string>
+    <string name="export_activity_no_content_to_export">Ikke noe innhold å eksportere</string>
+    <string name="export_activity_one_conversation_zip_file">Innholdet i samtalen vil bli eksportert i en ZIP-fil.</string>
+    <string name="export_activity_save_location">plassering</string>
+    <string name="export_activity_save_location_message">Velg hvor du vil eksportere.</string>
+    <string name="export_activity_select_content">Velg innholdet du vil eksportere.\nKun ikke-flyktig innhold, autorisert til å bli kopiert/lagret/delt, kan eksporteres.</string>
+    <string name="export_activity_success">Eksporten er fullført.</string>
+    <string name="export_activity_title">Eksport av samtaler</string>
+    <string name="export_activity_videos">Videoer</string>
+    <string name="export_activity_voice_messages">Talemeldinger</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Fatal feil, kode %1$d.\nStart applikasjonen på nytt og rapporter problemet via en tilbakemeldingsmelding, hvis du kan. Beklager bryet.</string>
+    <string name="fatal_error_activity_error_message">Fatal feil: %1$s&lt;br /&gt;
+        Du må stenge programmet.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Kontakt</string>
+    <string name="feedback_activity_gdpr_notice">Bruk dette skjemaet for å be om tilgang til kontoinformasjonen din.</string>
+    <string name="feedback_activity_help">Vi setter pris på din hjelp med å identifisere problemer og samarbeide med oss</string>
+    <string name="feedback_activity_info_logs">En feilsøkingslogg inneholder kun tekniske data på lavt nivå om applikasjonsaktiviteter og oppførsel, og avslører IKKE noen av dine personlige opplysninger.</string>
+    <string name="feedback_activity_logs">Feilsøkingslogg</string>
+    <string name="feedback_activity_message">Melding</string>
+    <string name="feedback_activity_send">Send</string>
+    <string name="feedback_activity_send_logs">Send en Feilsøkingslogg</string>
+    <string name="feedback_activity_send_message">Tilbakemelding sendt inn. Takk.</string>
+    <string name="feedback_activity_subject">Emne</string>
+    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Denne handlingen ugyldiggjør den gjeldende invitasjonskoden tilknyttet denne profilen. Er du sikker på at du vil generere en ny kode?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Generer en ny invitasjonskode</string>
+    <string name="fullscreen_qrcode_activity_save_message">Importer eller skann denne QR-koden for invitasjonen med twinme for å legge til denne kontakten.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Lagre i fotogalleriet</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Autoriser stemmesamtaler</string>
+    <string name="group_capabilities_activity_information_programmed_call">Definer datoen/klokkeslettet for samtaler</string>
+    <string name="group_capabilities_activity_information_video_call">Autorisere videosamtaler</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">Gruppeadministratoren autoriserte ikke denne handlingen.</string>
+    <string name="group_member_activity_invitation_message">Invitere %1$s som en personlig kontakt</string>
+    <string name="group_member_activity_invitation_title">Invitasjon</string>
+    <string name="group_member_activity_invite_personnal_relation">Invitere som en personlig kontakt</string>
+    <string name="group_member_activity_remove_message">Er du sikker på at du vil fjerne medlemmer fra denne gruppen?</string>
+    <string name="group_member_activity_section_administrator">Administrator</string>
+    <string name="group_member_activity_section_invitation">Invitasjoner</string>
+    <string name="group_member_activity_section_member">Medlemmer</string>
+    <string name="group_member_activity_title">Gruppemedlemmer</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s er opptatt</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Samtale kansellert med %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Samtalen avslått med %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s er offline</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Ikke autorisert til å ringe</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s fjernet dette forholdet</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s svarer ikke</string>
+    <string name="info_item_activity_deleted">Slettet av mottaker:</string>
+    <string name="info_item_activity_may_be_copied">Kan kopieres/lagres/deles…</string>
+    <string name="info_item_activity_may_not_be_copied">Kan ikke kopieres/lagres/deles…</string>
+    <string name="info_item_activity_reactions">Reaksjoner</string>
+    <string name="info_item_activity_received">Mottatt:</string>
+    <string name="info_item_activity_seen">Sett:</string>
+    <string name="info_item_activity_sent">Sendt:</string>
+    <string name="info_item_activity_updated">Endret</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Denne handlingen ugyldiggjør den gjeldende invitasjonskoden knyttet til denne \"click-to-call\"-koblingen. Bekrefte?</string>
+    <string name="invitation_call_activity_generate_code_title">Generer en ny kode for denne lenken</string>
+    <string name="invitation_call_activity_invite_message">Åpne nettadressen %1$s eller skann QR-koden for å ringe «%2$s».</string>
+    <string name="invitation_call_activity_message">Del denne \"click-to-call\"-koden med noen som deretter kan ringe deg, fra nettet eller mobilappen.</string>
+    <string name="invitation_call_activity_save_message">Skann denne QR-koden for å ringe «%1$s».</string>
+    <string name="invitation_call_activity_share">Publiser</string>
+    <string name="invitation_call_activity_title">Ekstern samtale</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Opprett en minikode</string>
+    <string name="invitation_code_activity_create_code_subtitle">å invitere en kontakt når du ikke har tilgang til applikasjonen.</string>
+    <string name="invitation_code_activity_expiration">Utløp:</string>
+    <string name="invitation_code_activity_history">Mine minikoder</string>
+    <string name="invitation_code_activity_limit_message">Maksimalt antall aktive minikoder er nådd. Du må vente i 24 timer for å generere nye.</string>
+    <string name="invitation_code_activity_onboarding_message">Minikoder er engangsbruk og gyldige i kun 24 timer. Du kan gi dem til kontaktene dine for å opprette en relasjon når du ikke har tilgang til applikasjonen (f.eks. uten telefon).</string>
+    <string name="invitation_code_activity_success_message">Det anbefales på det sterkeste å sertifisere etablerte relasjoner med en minikode for å forsterke sikkerheten deres.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Be vennen din nær deg om å skanne QR-koden til \"room\" med twinme, eller trykk på invitasjonskoden for å kopiere den til utklippstavlen.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Audio</string>
+    <string name="last_calls_activity_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">twinme-kontoen din på denne enheten overføres til twinme+.</string>
+    <string name="local_account_migration_activity_message_older_version">Sørg for at du oppdaterer begge enhetene til den nyeste versjonen av appen før du starter overføringen, for å unngå å miste alle relasjoner.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">Legg til kontakt</string>
+    <string name="main_activity_add_group">Lag en gruppe</string>
+    <string name="main_activity_reset_conversation">Tilbakestill</string>
+    <string name="main_activity_reset_conversation_message">Hvis du tilbakestiller denne samtalen, slettes alle meldinger, inkludert de på kontaktens enhet. Bekrefte?</string>
+    <string name="main_activity_reset_conversation_title">Tilbakestill samtale</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Tilbakestilling av denne samtalen vil slette alle meldinger fra hvert gruppemedlems enhet. Bekrefte?</string>
+    <string name="main_activity_reset_group_conversation_message">Tilbakestilling av denne samtalen vil fjerne alle meldinger fra enheten din. Bekrefte?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">Du må oppgradere til twinme+ for å kunne bruke denne funksjonen. Du vil kunne migrere alle kontodataene dine.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">Du vil kunne migrere alle kontodataene dine.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme er tilgjengelig som en premium versjon med enda flere funksjoner.</string>
+    <string name="migration_twinme_plus_activity_premium_title">Oppgrader til twinme+</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">Om</string>
+    <string name="navigation_activity_application_settings">Applikasjon innstillinger</string>
+    <string name="navigation_activity_feedback">Send tilbakemelding</string>
+    <string name="navigation_activity_getting_started">Kom i gang</string>
+    <string name="navigation_activity_help">Hjelp</string>
+    <string name="navigation_activity_profile">Profiler</string>
+    <string name="navigation_activity_settings">Innstillinger</string>
+    <string name="navigation_activity_sign_out">Logg av</string>
+    <string name="navigation_activity_sounds">Lyder</string>
+    <string name="navigation_activity_support">Brukerstøtte</string>
+    <string name="navigation_activity_title">Meny</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Telefonsamtale med %1$s</string>
+    <string name="notification_center_audio_message">Sendte deg en talemelding</string>
+    <string name="notification_center_audio_message_received">Ny lydmelding</string>
+    <string name="notification_center_cancel">Avvis</string>
+    <string name="notification_center_cleanup_conversation">Noen gamle meldinger er slettet.</string>
+    <string name="notification_center_deleted_contact">Kontakt slettet</string>
+    <string name="notification_center_file_message">Sendte deg en fil</string>
+    <string name="notification_center_file_message_received">Ny fil</string>
+    <string name="notification_center_group_invitation">Sendte deg en invitasjon</string>
+    <string name="notification_center_group_invitation_received">Ny invitasjon</string>
+    <string name="notification_center_join_group">Du er medlem av gruppen</string>
+    <string name="notification_center_message_received">Ny melding</string>
+    <string name="notification_center_missed_audio_call_to">Tapt telefonsamtale med %1$s</string>
+    <string name="notification_center_missed_video_call_to">Tapt videosamtale med %1$s</string>
+    <string name="notification_center_mute">Demp mikrofonen</string>
+    <string name="notification_center_new_contact">Ny kontakt</string>
+    <string name="notification_center_photo_message">Sendte deg et bilde</string>
+    <string name="notification_center_photo_message_received">Nytt bilde</string>
+    <string name="notification_center_reaction">reagerte %1$s</string>
+    <string name="notification_center_reaction_message">Reagerte på en beskjed</string>
+    <string name="notification_center_reaction_message_received">Reaksjon på en beskjed</string>
+    <string name="notification_center_reset_message">Samtalen ble slettet</string>
+    <string name="notification_center_stop">Stoppe</string>
+    <string name="notification_center_transfering_data">Overfører meldinger…</string>
+    <string name="notification_center_unmute">Aktiver mikrofon</string>
+    <string name="notification_center_updated_contact_avatar">Bilde oppdatert</string>
+    <string name="notification_center_updated_contact_name">Navn oppdatert</string>
+    <string name="notification_center_video_call_to">Videosamtale med %1$s</string>
+    <string name="notification_center_video_message">Sendte deg en video</string>
+    <string name="notification_center_video_message_received">Ny video</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Lydanrop</string>
+    <string name="notification_channel_contact_title">Kontakter</string>
+    <string name="notification_channel_group_title">Grupper</string>
+    <string name="notification_channel_message_title">Meldinger</string>
+    <string name="notification_channel_missed_title">Ubesvarte anrop</string>
+    <string name="notification_channel_system_title">Andre</string>
+    <string name="notification_channel_video_title">Videosamtaler</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">Prøvde å ringe deg</string>
+    <string name="notifications_fragment_item_audio_message">Sendte deg en talemelding</string>
+    <string name="notifications_fragment_item_cleanup_message">ryddet opp i noen gamle meldinger.</string>
+    <string name="notifications_fragment_item_deleted_contact">Kontakt slettet</string>
+    <string name="notifications_fragment_item_file_message">Sendte deg en fil</string>
+    <string name="notifications_fragment_item_group_invitation">Sendte deg en invitasjon</string>
+    <string name="notifications_fragment_item_image_message">Sendte deg et bilde</string>
+    <string name="notifications_fragment_item_join_group">Du er medlem av gruppen</string>
+    <string name="notifications_fragment_item_new_contact">Ny kontakt</string>
+    <string name="notifications_fragment_item_reset_conversation">Har tilbakestilt samtalen</string>
+    <string name="notifications_fragment_item_shortest_day">%1$d d</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$d t</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$d m</string>
+    <string name="notifications_fragment_item_shortest_second">%1$d s</string>
+    <string name="notifications_fragment_item_text_message">Sendte deg en melding</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Bilde oppdatert</string>
+    <string name="notifications_fragment_item_updated_contact_name">Navn oppdatert</string>
+    <string name="notifications_fragment_item_video_call">Prøvde å ringe deg med videosamtale</string>
+    <string name="notifications_fragment_item_video_message">Sendte deg en video</string>
+    <string name="notifications_fragment_no_notification_message">Varsler knyttet til kontakter, samtaler, samtaler osv. er oppført her.</string>
+    <string name="notifications_fragment_no_notification_title">Du har ingen varsel.</string>
+    <string name="notifications_fragment_reset">Er du sikker på at du vil tilbakestille alle varsler?</string>
+    <string name="notifications_fragment_reset_title">Tilbakestill varslinger</string>
+    <string name="notifications_fragment_title">Varsler</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">Tegnfonter</string>
+    <string name="personalization_activity_font_extra_large">Veldig stor</string>
+    <string name="personalization_activity_font_large">Stor</string>
+    <string name="personalization_activity_font_small">Liten</string>
+    <string name="personalization_activity_haptic_feedback">Haptisk tilbakemelding</string>
+    <string name="personalization_activity_haptic_feedback_message">Taktil følelse ved berøring.</string>
+    <string name="personalization_activity_menu_choose_color">Standardfarger</string>
+    <string name="personalization_activity_menu_enter_color">Fargekode</string>
+    <string name="personalization_activity_mode">Modus</string>
+    <string name="personalization_activity_mode_dark">Mørk</string>
+    <string name="personalization_activity_mode_light">Lys</string>
+    <string name="personalization_activity_start_tab_information">Velg kategorien du vil starte programmet på.</string>
+    <string name="personalization_activity_start_tab_title">Standard-fanen</string>
+    <string name="personalization_activity_system">System</string>
+    <string name="personalization_activity_title">Tilpasning</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Endre front-/bakkamera</string>
+    <string name="premium_services_activity_camera_control_description_2">Zoom inn/ut</string>
+    <string name="premium_services_activity_camera_control_description_3">For å hjelpe en du er glad i eller en klient eksternt</string>
+    <string name="premium_services_activity_camera_control_description_4">For å administrere et overvåkingskamera</string>
+    <string name="premium_services_activity_camera_control_subtitle">Styr kontaktens kamera under en samtale med deres tillatelse</string>
+    <string name="premium_services_activity_camera_control_title">Fjernkontroll av kamera</string>
+    <string name="premium_services_activity_click_to_call_description_1">Opprett en \"klikk for å ringe meg\"-kode</string>
+    <string name="premium_services_activity_click_to_call_description_2">Publiser eller distribuer på noen måte</string>
+    <string name="premium_services_activity_click_to_call_description_3">Mottakere skanner koden og ringer deg</string>
+    <string name="premium_services_activity_click_to_call_description_4">Anonym uten spor i skyen</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Tillat gjester å ringe deg fra nettet</string>
+    <string name="premium_services_activity_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_activity_conversation_description_1">Media, filer, talenotater, meldinger</string>
+    <string name="premium_services_activity_conversation_description_2">Eldre enn en bestemt periode/dato</string>
+    <string name="premium_services_activity_conversation_description_3">For én samtale eller alle</string>
+    <string name="premium_services_activity_conversation_description_4">Kun lokalt, ingen innvirkning på den andre enden</string>
+    <string name="premium_services_activity_conversation_subtitle">Eksporter innhold og frigjør plass</string>
+    <string name="premium_services_activity_conversation_title">Samtalehåndtering</string>
+    <string name="premium_services_activity_description_part1_subtitle">Direkte tilkobling mellom enheter</string>
+    <string name="premium_services_activity_description_part1_title">HD lyd/video kvalitet</string>
+    <string name="premium_services_activity_description_part2_subtitle">Ingen spor i skyen</string>
+    <string name="premium_services_activity_description_part2_title">Personvern – konfidensialitet</string>
+    <string name="premium_services_activity_description_part3_subtitle">Energieffektivitet</string>
+    <string name="premium_services_activity_description_part3_title">Miljøansvarlig</string>
+    <string name="premium_services_activity_group_call_description_1">Høyoppløselig lyd/video</string>
+    <string name="premium_services_activity_group_call_description_2">Direkte tilkobling mellom enheter</string>
+    <string name="premium_services_activity_group_call_description_3">Trygg og privat</string>
+    <string name="premium_services_activity_group_call_description_4">Ingen spor i skyen</string>
+    <string name="premium_services_activity_group_call_subtitle">Inviter kontakter til å bli med i en tale-/videogruppesamtale</string>
+    <string name="premium_services_activity_group_call_title">Gruppesamtaler</string>
+    <string name="premium_services_activity_privacy_description_1">Lås app med biometrisk eller annen autentisering</string>
+    <string name="premium_services_activity_privacy_description_2">Skjul siste skjerm i appbytter</string>
+    <string name="premium_services_activity_privacy_description_3">Efemere meldinger som forsvinner etter en viss tid</string>
+    <string name="premium_services_activity_privacy_description_4">Hindre en kontakt fra å ringe deg</string>
+    <string name="premium_services_activity_privacy_subtitle">Kontroller app, kontakter og meldinger</string>
+    <string name="premium_services_activity_privacy_title">Mer privatliv</string>
+    <string name="premium_services_activity_space_description_1">Flere profiler med tilhørende relasjoner, samtaler, historie</string>
+    <string name="premium_services_activity_space_description_2">Personlig tilpasset utseende, varsler og innstillinger</string>
+    <string name="premium_services_activity_space_description_3">For familie, venner, kolleger, forretninger, sport, etc.</string>
+    <string name="premium_services_activity_space_description_4">Hemmelige Spaces ikke oppført, åpnet med navn</string>
+    <string name="premium_services_activity_space_subtitle">For hver sosial gruppe du samhandler med</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">Del musikken din live</string>
+    <string name="premium_services_activity_streaming_description_2">Hver deltaker kan kontrollere mediespilleren</string>
+    <string name="premium_services_activity_streaming_description_3">Samhandle på samtalen samtidig</string>
+    <string name="premium_services_activity_streaming_description_4">Samme privatliv som i det virkelige liv</string>
+    <string name="premium_services_activity_streaming_subtitle">Strøm media under en samtale</string>
+    <string name="premium_services_activity_streaming_title">Deling av media</string>
+    <string name="premium_services_activity_transfert_description_1">Opprett samtaleoverføringskoden og profilen</string>
+    <string name="premium_services_activity_transfert_description_2">Last opp URL-en eller skann koden på en datamaskin</string>
+    <string name="premium_services_activity_transfert_description_3">Bokmerke siden i en nettleser</string>
+    <string name="premium_services_activity_transfert_description_4">Ring fra siden under en mobilsamtale</string>
+    <string name="premium_services_activity_transfert_subtitle">Overfør en pågående mobilsamtale til en nettleser</string>
+    <string name="premium_services_activity_transfert_title">Samtaleoverføring</string>
+    <string name="premium_services_activity_title">Inviter kontakter til å bli med i en pågående tale-/videosamtale.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Lås applikasjonen med biometriske tjenester eller med en PIN-kode.</string>
+    <string name="privacy_activity_hide_last_screen_message">Forhindre at forhåndsvisning vises i applikasjonsbryteren</string>
+    <string name="privacy_activity_hide_last_screen_title">Skjul siste skjerm</string>
+    <string name="privacy_activity_lock_screen_message">Lås opp tilgang til applikasjonen ved hjelp av enhetens biometriske tjenester eller passordgodkjenningstjenester. Du kan fortsatt svare på innkommende anrop og motta varsler mens tilgangen til appen er låst.</string>
+    <string name="privacy_activity_lock_screen_not_available">Dette alternativet krever en versjon av Android > 5.0</string>
+    <string name="privacy_activity_lock_screen_timeout">Åpner tidsavbrudd for låsing</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Øyeblikkelig</string>
+    <string name="privacy_activity_lock_screen_title">Tilgangslås</string>
+    <string name="privacy_activity_title">Personvern</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Legg til profil</string>
+    <string name="profile_fragment_create_profile">Opprett en profil</string>
+    <string name="profile_fragment_default_action">Aktiver</string>
+    <string name="profile_fragment_default_profile_title">Aktiv profil</string>
+    <string name="profile_fragment_identity_title">Profiler</string>
+    <string name="profile_fragment_message">Denne profilen lar deg invitere kontaktene dine til å etablere et privat forhold med deg, under din kontroll.</string>
+    <string name="profile_fragment_twincode_title">Invitasjonskode</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Legg til en proxy</string>
+    <string name="proxy_activity_add_placeholder">Lim inn eller skriv inn URL-en til en proxy</string>
+    <string name="proxy_activity_already_use">Denne proxyen er allerede konfigurert i appen din.</string>
+    <string name="proxy_activity_enable">Bruk en proxy</string>
+    <string name="proxy_activity_format">Gyldige formater for proxy-URL:</string>
+    <string name="proxy_activity_invalid_format">Ugyldig URL-format</string>
+    <string name="proxy_activity_limit">Du har nådd grensen for antall tillatte proxyer (%1$d). For å legge til en ny, må du først fjerne en.</string>
+    <string name="proxy_activity_list">Mine proxyer</string>
+    <string name="proxy_activity_list_information">Bruk en proxy fra listen nedenfor, bare hvis applikasjonen ikke kan koble til tjenesten uten en proxy.</string>
+    <string name="proxy_activity_onboarding">Når tilgang til appens signalservere er blokkert i landet ditt, kan proxyer omgå disse blokkeringene under mange omstendigheter og la deg kommunisere privat. I tillegg til proxyene i appen, kan du opprette din egen eller bruke en proxy som er opprettet av noen andre. Proxyer kan ikke få tilgang til innholdet som utveksles under noen omstendigheter.</string>
+    <string name="proxy_activity_information">Bruk bare en proxy hvis du ikke kan koble til tjenesten fra standard Wi-Fi- eller mobilnettverk.</string>
+    <string name="proxy_activity_share">Åpne %1$s-lenken med twinme på enheten din for å konfigurere denne proxyen automatisk.</string>
+    <string name="proxy_activity_title">Proxy</string>
+    <string name="proxy_activity_url">Vil du bruke URL-en til denne proxyen?</string>
+    <string name="proxy_activity_warning">Advarsel! URL-en til denne proxyen tillater deg ikke å koble til appens tjeneste.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">Endre tillatelser</string>
+    <string name="quality_of_service_activity_enable_notifications">Aktiver varsler</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Uten disse tillatelsene kan det ta lang tid før meldinger når destinasjonen.</string>
+    <string name="quality_of_service_activity_notification_description">Tillat appen å kjøre i bakgrunnen</string>
+    <string name="quality_of_service_activity_notification_title">Er meldingsutvekslingen for treg?</string>
+    <string name="quality_of_service_activity_settings">Endre apptillatelser i systeminnstillingene.</string>
+    <string name="quality_of_service_activity_step1_message">Krypterte meldinger utveksles direkte mellom enheter i sanntid, ved hjelp av en "peer-to-peer"-tilnærming, uten innholdsdistribusjonsservere. Dette sikrer at det ikke er spor i skyen og gir unik personvernbeskyttelse.</string>
+    <string name="quality_of_service_activity_step2_message">For å sikre god servicekvalitet, konfigurer enheten din slik at applikasjonen mottar varsler i bakgrunnen og ekskluderer den fra batterioptimalisering.</string>
+    <string name="quality_of_service_activity_step3_message">Bruk appen ofte slik at operativsystemet prioriterer den og ikke avslutter den uventet. \n\nOg ikke glem å informere kontaktene dine om dette!</string>
+    <string name="quality_of_service_activity_warning_background_data">Tillat at appen bruker mobildata i bakgrunnen.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Tillat at appen mottar push-varsler.</string>
+    <string name="quality_of_service_activity_warning_run_background">La appen kjøre i bakgrunnen.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">Definer som administrator</string>
+    <string name="room_members_activity_delete_message">Bekreft at du fjerner dette medlemmet</string>
+    <string name="room_members_activity_moderators_title">Moderator</string>
+    <string name="room_members_activity_only_admin_message">Den eneste administratoren kan ikke fjernes.</string>
+    <string name="room_members_activity_owner_title">Eier</string>
+    <string name="room_members_activity_participants_title">Deltakere</string>
+    <string name="room_members_activity_remove_admin_title">Fjern som administrator</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">Skriv inn eller lim inn en invitasjonslenke</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Developer settings</string>
+    <string name="settings_advanced_activity_status_connection_message">Sjekk statusen for tilkoblingen til tjenesten</string>
+    <string name="settings_advanced_activity_status_connection_title">Tilkoblingsstatus</string>
+    <string name="settings_advanced_activity_title">Avanserte innstillinger</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Tillatt mottakere å kopiere / lagre / dele innholdet ditt:</string>
+    <string name="settings_activity_allow_copy_file_title">Enhver type fil</string>
+    <string name="settings_activity_allow_copy_text_title">Tekstmeldinger</string>
+    <string name="settings_activity_application_notifications">Program varsler</string>
+    <string name="settings_activity_audio_call_category_title">Lydanrop</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Ringetone navn</string>
+    <string name="settings_activity_audio_call_notification_title">Ringetone</string>
+    <string name="settings_activity_audio_call_vibration_title">Viber</string>
+    <string name="settings_activity_authorization_title">Tillatelser</string>
+    <string name="settings_activity_call_item_menu_all">Alle anrop</string>
+    <string name="settings_activity_chat_category_title">Meldinger</string>
+    <string name="settings_activity_chat_ringtone_title">Lydnavn</string>
+    <string name="settings_activity_chat_title">Lyd</string>
+    <string name="settings_activity_chat_vibration_title">Viber</string>
+    <string name="settings_activity_content_information">Oppløsning av medieinnhold som sendes i en samtale: høy oppløsning krever mer data og derfor mer sendetid.</string>
+    <string name="settings_activity_content_title">Media</string>
+    <string name="settings_activity_default_directory_title">Standard katalog for å lagre filer</string>
+    <string name="settings_activity_default_sound">Misligholde</string>
+    <string name="settings_activity_default_value_message">Disse parameterne brukes som standard på applikasjonsnivå.</string>
+    <string name="settings_activity_display_call_menu_missed">Bare tapte anrop</string>
+    <string name="settings_activity_display_call_menu_none">Ingen anrop</string>
+    <string name="settings_activity_display_call_none">Ingen</string>
+    <string name="settings_activity_display_call_title">Vis anrops varsler i samtaler</string>
+    <string name="settings_activity_display_notification_content_title">Vis meldingsinnhold</string>
+    <string name="settings_activity_display_notification_like_title">Reaksjoner på meldinger</string>
+    <string name="settings_activity_display_notification_sender_title">Vis meldings avsender</string>
+    <string name="settings_activity_ephemeral_message">Slett sendte beskjeder automatisk</string>
+    <string name="settings_activity_ephemeral_section_title">LIVSTID</string>
+    <string name="settings_activity_ephemeral_title">Forsvinnende beskjed</string>
+    <string name="settings_activity_image_title">Foto</string>
+    <string name="settings_activity_message_properties_title">Meldingsegenskaper</string>
+    <string name="settings_activity_reset_default_value">Tilbakestill til standardinnstillinger</string>
+    <string name="settings_activity_reset_preferences_button_title">Tilbakestill til standardverdier</string>
+    <string name="settings_activity_reset_preferences_message">Tilbakestill varslingsinnstillinger til standardinnstillinger for applikasjoner.</string>
+    <string name="settings_activity_reset_preferences_title">Tilbakestill innstillinger</string>
+    <string name="settings_activity_permissions_title">TILLATELSER</string>
+    <string name="settings_activity_silent_sound">Taus</string>
+    <string name="settings_activity_sound_enabled_title">SOUND NOTIFICATIONS</string>
+    <string name="settings_activity_system_notifications_title">Systemvarsler</string>
+    <string name="settings_activity_system_settings_title">Systeminnstillinger</string>
+    <string name="settings_activity_video_call_category_title">Videosamtaler</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Ringetone navn</string>
+    <string name="settings_activity_video_call_notification_title">Ringetone</string>
+    <string name="settings_activity_video_call_vibration_title">Viber</string>
+    <string name="settings_activity_welcome_screen_category_title">VELKOMMEN</string>
+    <string name="settings_activity_welcome_screen_summary">Vis velkomstskjermene</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">La deltakerne invitere andre deltakere som personlige kontakter</string>
+    <string name="settings_room_activity_allow_invite_contact">La deltakerne invitere kontaktene sine</string>
+    <string name="settings_room_activity_conference_notifications_inform">Første inngang / siste utgang</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Alle oppføringer / utganger</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Stille</string>
+    <string name="settings_room_activity_display_members">Vis medlemmer</string>
+    <string name="settings_room_activity_room_type_channel">Kanal - bare en vei</string>
+    <string name="settings_room_activity_room_type_channel_information">Bare administratorer / moderatorer kan legge ut meldinger</string>
+    <string name="settings_room_activity_room_type_feedback">Kanal - med tilbakemelding</string>
+    <string name="settings_room_activity_room_type_feedback_information">Deltakernes tilbakemelding blir bare sett av administratorer / moderatorer</string>
+    <string name="settings_room_activity_room_type_forum">Forum</string>
+    <string name="settings_room_activity_room_type_forum_information">Deltakerne kan legge ut meldinger sett av alle</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Kontakter</string>
+    <string name="share_activity_group_list">Grupper</string>
+    <string name="share_activity_title">Dele</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">\"Click-to-call\"-kode</string>
+    <string name="show_call_activity_information_code">Del denne koden for å motta eksterne anrop.</string>
+    <string name="show_call_activity_schedule_call">Planlagt samtale</string>
+    <string name="show_call_activity_schedule_from">fra %1$s</string>
+    <string name="show_call_activity_schedule_from_to">%1$s fra %2$s til %3$s</string>
+    <string name="show_call_activity_schedule_message">Samtale planlagt til en dato og klokkeslett definert et annet sted.</string>
+    <string name="show_call_activity_schedule_to">til %1$s</string>
+    <string name="show_call_activity_settings_call">Type anrop</string>
+    <string name="show_call_activity_settings_group_calls">Gruppeanrop</string>
+    <string name="show_call_activity_settings_limited">Planlagt</string>
+    <string name="show_call_activity_settings_start">Start</string>
+    <string name="show_call_activity_settings_end">Slutt</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Stemme</string>
+    <string name="show_contact_activity_chat">Chat</string>
+    <string name="show_contact_activity_export_contents">Eksporter innhold</string>
+    <string name="show_contact_activity_history_title">Historie</string>
+    <string name="show_contact_activity_identity_title">Kjenner meg som</string>
+    <string name="show_contact_activity_last_calls">Siste samtaler</string>
+    <string name="show_contact_activity_cleanup">Rengjøring</string>
+    <string name="show_contact_activity_pending">Avventende</string>
+    <string name="show_contact_activity_pending_message">Denne relasjonen er under etablering. Vennligst vent.</string>
+    <string name="show_contact_activity_revoked">Slettet</string>
+    <string name="show_contact_activity_settings_coach_mark">Definer hva kontakten din har lov til å gjøre i denne relasjonen med deg.</string>
+    <string name="show_contact_activity_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Legg til et medlem</string>
+    <string name="show_group_activity_invitation_list">Venter på invitasjoner:%1$d</string>
+    <string name="show_group_activity_leave">Forlat gruppen</string>
+    <string name="show_group_activity_leave_confirm_message">Er du sikker på at du vil forlate denne gruppen?</string>
+    <string name="show_group_activity_leave_message">Du forlater denne gruppen, og du vil ikke lenger ha tilgang til samtalene.</string>
+    <string name="show_group_activity_member_list">Medlemsliste (%1$d)</string>
+    <string name="show_group_activity_remove_confirm_message">Er du sikker på at du vil slette denne gruppen?</string>
+    <string name="show_group_activity_remove_message">Denne gruppen vil bli slettet for alle medlemmene, og samtalene vil bli slettet.</string>
+    <string name="show_group_activity_title">Gruppe</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Administrasjonsgrensesnitt</string>
+    <string name="show_room_activity_invite_participants">Inviter deltakerne</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Bilde</string>
+    <string name="space_appearance_activity_background_message">Tilpass samtalebakgrunnen med en farge eller et bilde.</string>
+    <string name="space_appearance_activity_background_text_title">Tekst</string>
+    <string name="space_appearance_activity_background_title">Bakgrunn</string>
+    <string name="space_appearance_activity_container_background_message">Bakgrunnen for en sendt melding</string>
+    <string name="space_appearance_activity_container_background_peer_message">Bakgrunn for en mottatt melding</string>
+    <string name="space_appearance_activity_container_border_message">Grensen til en sendt melding</string>
+    <string name="space_appearance_activity_container_border_peer_message">Grensen til en mottatt melding</string>
+    <string name="space_appearance_activity_container_text_message">Tekst til en sendt melding</string>
+    <string name="space_appearance_activity_container_text_peer_message">Tekst i mottatt melding</string>
+    <string name="space_appearance_activity_container_title">Bobler</string>
+    <string name="space_appearance_activity_default_value">Standardverdi</string>
+    <string name="space_appearance_activity_general_title">Generell</string>
+    <string name="space_appearance_activity_menu_choose_color">Standardfarger</string>
+    <string name="space_appearance_activity_menu_enter_color">Fargekode</string>
+    <string name="space_appearance_activity_opacity">Ugjennomsiktighet</string>
+    <string name="space_appearance_activity_preview_message">Jeg glemte ballettskoene mine … Kan du ta dem med deg? 😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Hei kjære!</string>
+    <string name="space_appearance_activity_preview_title">Forhåndsvisning</string>
+    <string name="space_appearance_activity_theme">Tema</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Et Space er der de forskjellige personlighetene dine møter dine sosiale sirkler, inkludert de mest hemmelige.</string>
+    <string name="spaces_activity_sample_business">Business</string>
+    <string name="spaces_activity_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_activity_sample_family">Familie</string>
+    <string name="spaces_activity_sample_family_name">Pappa</string>
+    <string name="spaces_activity_sample_friends">Venner</string>
+    <string name="spaces_activity_sample_friends_name">Johny</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Det har oppstått en feil. Vær så snill, prøv på nytt.</string>
+    <string name="streaming_audio_activity_no_music_message">Deling av media</string>
+    <string name="streaming_audio_activity_no_music_title">Fant ingen musikk 🙁</string>
+    <string name="streaming_audio_activity_title">Deling av media</string>
+    <string name="streaming_audio_activity_unsupported_message">Dette lydformatet støttes ikke av %1$s s enhet.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Rubrikkannonse</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Annonse</string>
+    <string name="template_click_to_call_activity_template_help">Hjelp</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Hjelp</string>
+    <string name="template_click_to_call_activity_template_meeting">Møte</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Møte</string>
+    <string name="template_click_to_call_activity_template_video_bell">Video ringeklokke</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Ringeklokke</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">Navn (Dr John Doe, Ms Smith,…)</string>
+    <string name="template_space_activity_template_business_profile">Fru Samantha Smith</string>
+    <string name="template_space_activity_template_family_placeholder">Navn (pappa, mamma,…)</string>
+    <string name="template_space_activity_template_family_profile">Mamma</string>
+    <string name="template_space_activity_template_friends_placeholder">Navn (Johny, Sam,…)</string>
+    <string name="template_space_activity_template_friends_profile">Sam</string>
+    <string name="template_space_activity_template_other">Annen</string>
+    <string name="template_space_activity_template_other_placeholder">Navn (pappa, mamma, Johny, Dr John Doe,…)</string>
+    <string name="template_space_activity_template_title">Maler</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">Be vennen din nær deg om å skanne QR-koden for invitasjonen din med twinme, eller trykk på invitasjonskoden for å kopiere den til utklippstavlen.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Er du sikker på at du vil slette denne \"Call Transfer\"-koden?</string>
+    <string name="transfert_call_activity_delete_message">Denne koblingen for samtaleoverføring vil bli slettet. Bekrefte?</string>
+    <string name="transfert_call_activity_gallery_message">Skann denne QR-koden for å overføre mobilsamtalene dine.</string>
+    <string name="transfert_call_activity_message">Videresend denne koden og bokmerk URL-adressen i nettleseren du vil overføre mobilsamtalene dine til.</string>
+    <string name="transfert_call_activity_reset_message">Denne handlingen ugyldiggjør gjeldende samtaleoverføringskode og oppretter en ny. Bekrefte?</string>
+    <string name="transfert_call_activity_saved_message">Samtaleoverføringskode lagret i bildegalleriet.</string>
+    <string name="transfert_call_activity_share">Transfer</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Oppdatering tilgjengelig</string>
+    <string name="update_app_activity_update_message">Den siste applikasjonsoppdateringen inkluderte følgende:</string>
+    <string name="update_app_activity_update_title">Oppdater nå</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Ringer med video&#8230;</string>
+    <string name="video_call_activity_cannot_call">Kan ikke lage en videosamtale</string>
+    <string name="video_call_activity_connecting">Kobler til&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">Vil du avslutte samtalen?</string>
+    <string name="video_call_activity_terminate">Samtalen er avsluttet</string>
+    <string name="video_call_activity_terminate_busy">Samtale avsluttet: &lt;b&gt;%1$s&lt;/b&gt; er opptatt</string>
+    <string name="video_call_activity_terminate_cancel">Samtale avsluttet av &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_connectivity_error">Samtalen ble avbrutt på grunn av et tilkoblingsproblem. Sjekk internettforbindelsen din.</string>
+    <string name="video_call_activity_terminate_decline">Samtale avvist av &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_disconnected">Samtalen ble avbrutt på grunn av en nettverksfeil. Prøv på nytt.</string>
+    <string name="video_call_activity_terminate_gone">Samtale avsluttet: &lt;b&gt;%1$s&lt;/b&gt; er frakoblet</string>
+    <string name="video_call_activity_terminate_revoked">Samtalen er avsluttet: &lt;b&gt;%1$s&lt;/b&gt; har slettet denne relasjonen med deg.</string>
+    <string name="video_call_activity_terminate_success">Samtale avsluttet av &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_timeout">Samtale avsluttet: &lt;b&gt;%1$s&lt;/b&gt; svarer ikke</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">Ved å trykke på %1$s, bekrefter jeg at jeg har lest og godtatt:</string>
+    <string name="welcome_activity_next">Neste</string>
+    <string name="welcome_activity_pass">Skip</string>
+    <string name="welcome_activity_privacy_policy">Personvernregler</string>
+    <string name="welcome_activity_start">Start</string>
+    <string name="welcome_activity_step1_message">Meldinger og høyoppløselige tale-/videosamtaler, som beskytter personvernet ved design.</string>
+    <string name="welcome_activity_step2_message">Sikker "peer-to-peer"-kommunikasjon: ingen spor i skyen.</string>
+    <string name="welcome_activity_step3_message">Ingen telefonnummer, ingen adressebok, ingen bruker-ID: du velger hvordan du vil bli identifisert basert på hvem du kommuniserer med.</string>
+    <string name="welcome_activity_terms_of_use">Vilkår for bruk</string>
+
+</resources>

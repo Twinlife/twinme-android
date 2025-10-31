@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notifications_fragment_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/notifications_fragment_no_notification_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/notifications_placeholder"
+        android:visibility="gone"
+        app:layout_marginTopPercent="23.99%" />
+
+    <TextView
+        android:id="@+id/notifications_fragment_no_notification_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notifications_fragment_no_notification_image_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/notifications_fragment_no_notification_title"
+        android:visibility="gone"
+        app:layout_marginTopPercent="5.55%"
+        app:layout_widthPercent="85.33%" />
+
+    <TextView
+        android:id="@+id/notifications_fragment_no_notification_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notifications_fragment_no_notification_title_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/notifications_fragment_no_notification_message"
+        android:visibility="gone"
+        app:layout_marginTopPercent="1.34%"
+        app:layout_widthPercent="85.33%" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notifications_fragment_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

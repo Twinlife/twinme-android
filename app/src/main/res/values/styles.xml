@@ -1,0 +1,183 @@
+<resources>
+
+    <style name="TwinmeTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:actionBarTabTextStyle">@style/TwinmeActionBarTabTextStyle</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+    </style>
+
+    <style name="TwinmeThemeWithNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/white_color</item>
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="android:editTextColor">#ffffff</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+        <item name="android:windowDisablePreview">true</item>
+
+        <!-- color -->
+        <item name="white_color">@color/white_color</item>
+        <item name="black_color">@color/black_color</item>
+        <item name="popup_background_color">@color/popup_background_color</item>
+        <item name="separator_color">@color/separator_color</item>
+        <item name="grey_light">@color/grey_light</item>
+        <item name="background_light_grey_color">@color/background_light_grey_color</item>
+        <item name="background_grey_color">@color/background_grey_color</item>
+        <item name="action_image_call_color">@color/action_image_call_color</item>
+        <item name="font_default_color">@color/font_default_color</item>
+        <item name="background_menu_color">@color/background_menu_color</item>
+    </style>
+
+    <!-- Identical to TwinmeThemeWithNoActionBar for Android splashscreen -->
+    <style name="Theme.App.Starting" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/white_color</item>
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="android:editTextColor">#ffffff</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+        <item name="android:windowDisablePreview">true</item>
+
+        <!-- color -->
+        <item name="white_color">@color/white_color</item>
+        <item name="black_color">@color/black_color</item>
+        <item name="popup_background_color">@color/popup_background_color</item>
+        <item name="separator_color">@color/separator_color</item>
+        <item name="grey_light">@color/grey_light</item>
+        <item name="background_light_grey_color">@color/background_light_grey_color</item>
+        <item name="background_grey_color">@color/background_grey_color</item>
+        <item name="action_image_call_color">@color/action_image_call_color</item>
+        <item name="font_default_color">@color/font_default_color</item>
+        <item name="background_menu_color">@color/background_menu_color</item>
+    </style>
+
+    <style name="TwinmeThemeLauncher" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TwinmeThemeLight" parent="TwinmeThemeWithNoActionBar">
+        <!-- color -->
+        <item name="white_color">#ffffff</item>
+        <item name="black_color">#000000</item>
+        <item name="popup_background_color">#ffffff</item>
+        <item name="separator_color">#80c7c7cc</item>
+        <item name="grey_light">#efefef</item>
+        <item name="background_light_grey_color">#f9f9f9</item>
+        <item name="background_grey_color">#efefef</item>
+        <item name="action_image_call_color">#000000</item>
+        <item name="font_default_color">#2c2c2c</item>
+        <item name="background_menu_color">#f9f9f9</item>
+    </style>
+
+    <style name="TwinmeThemeDark" parent="TwinmeThemeWithNoActionBar">
+        <!-- color -->
+        <item name="white_color">#000000</item>
+        <item name="black_color">#ffffff</item>
+        <item name="popup_background_color">#484848</item>
+        <item name="separator_color">#80C7C7FF</item>
+        <item name="grey_light">#484848</item>
+        <item name="background_light_grey_color">#000000</item>
+        <item name="background_grey_color">#000000</item>
+        <item name="action_image_call_color">#788a9f</item>
+        <item name="font_default_color">#ffffff</item>
+        <item name="background_menu_color">#484848</item>
+    </style>
+
+    <style name="TwinmeThemeTranslucentWithNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+    </style>
+
+    <style name="TwinmeThemeWithActionBarOverlay" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarTabTextStyle">@style/TwinmeActionBarTabTextStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+    </style>
+
+    <style name="TwinmeThemeWithActionBar" parent="Base.Theme.AppCompat.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Protect from tapjacking -->
+        <item name="android:filterTouchesWhenObscured">true</item>
+    </style>
+
+    <style name="textAppearance" parent="@android:style/TextAppearance" />
+
+    <style name="textAppearanceSmall" parent="@android:style/TextAppearance.Small" />
+
+    <style name="textAppearanceMedium" parent="@android:style/TextAppearance" />
+
+    <style name="textAppearanceLarge" parent="@android:style/TextAppearance.Medium" />
+
+    <style name="TwinmeDialog" parent="@android:style/Theme.Holo.Dialog.MinWidth">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="TwinmePopupWindowStyle" parent="@android:style/Theme.Holo.Light.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="TwinmeActionBarTabTextStyle" parent="@android:style/Widget.Holo.Light.ActionBar.TabText">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="custom_dialog" parent="android:Theme.Dialog">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="PreferenceHeader" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:textColor">@color/font_default_color</item>
+    </style>
+
+    <style name="PreferenceTitle" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_default_color</item>
+    </style>
+
+    <style name="PreferenceInfo" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TwinmeBottomNavitationStyle" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TabLayoutStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ThumbnailImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+</resources>

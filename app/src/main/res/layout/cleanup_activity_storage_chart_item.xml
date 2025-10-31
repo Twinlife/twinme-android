@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/cleanup_activity_storage_chart_item_chart_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_marginStartPercent="4.67%"
+        app:layout_marginEndPercent="4.67%"
+        app:layout_marginTopPercent="13.68%"
+        app:layout_heightPercent="25.26%">
+
+        <View
+            android:id="@+id/cleanup_activity_storage_chart_item_app_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/cleanup_activity_storage_chart_item_used_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/cleanup_activity_storage_chart_item_info_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="11.58%">
+
+        <TextView
+            android:id="@+id/cleanup_activity_storage_chart_item_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            app:layout_marginStartPercent="4.67%" />
+
+        <TextView
+            android:id="@+id/cleanup_activity_storage_chart_item_value_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:layout_marginEndPercent="4.67%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

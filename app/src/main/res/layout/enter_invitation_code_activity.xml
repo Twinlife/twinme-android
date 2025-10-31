@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/enter_invitation_code_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/enter_invitation_code_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/enter_invitation_code_activity_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/enter_invitation_code_activity_tool_bar">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/enter_invitation_code_activity_enter_code_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/enter_invitation_code_activity_enter_code_one_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.twinlife.twinme.ui.contacts.PasteEditText
+                    android:id="@+id/enter_invitation_code_activity_enter_code_one_edit_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/enter_invitation_code_activity_enter_code_two_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_one_content_view"
+                android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_one_content_view">
+
+                <org.twinlife.twinme.ui.contacts.PasteEditText
+                    android:id="@+id/enter_invitation_code_activity_enter_code_two_edit_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/enter_invitation_code_activity_enter_code_three_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_two_content_view"
+                android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_two_content_view">
+
+                <org.twinlife.twinme.ui.contacts.PasteEditText
+                    android:id="@+id/enter_invitation_code_activity_enter_code_three_edit_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/enter_invitation_code_activity_enter_code_four_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_three_content_view"
+                android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_three_content_view">
+
+                <org.twinlife.twinme.ui.contacts.PasteEditText
+                    android:id="@+id/enter_invitation_code_activity_enter_code_four_edit_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/enter_invitation_code_activity_enter_code_five_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_four_content_view"
+                android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_four_content_view">
+
+                <org.twinlife.twinme.ui.contacts.PasteEditText
+                    android:id="@+id/enter_invitation_code_activity_enter_code_five_edit_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/enter_invitation_code_activity_enter_code_six_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_five_content_view"
+                android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_five_content_view">
+
+                <org.twinlife.twinme.ui.contacts.PasteEditText
+                    android:id="@+id/enter_invitation_code_activity_enter_code_six_edit_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:inputType="textCapCharacters" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/enter_invitation_code_activity_confirm_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_invitation_code_activity_enter_code_view">
+
+            <TextView
+                android:id="@+id/enter_invitation_code_activity_confirm_title_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/application_confirm"
+                app:layout_widthPercent="89.06%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/enter_invitation_code_activity_message_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_invitation_code_activity_confirm_view"
+            android:gravity="center"
+            android:text="@string/enter_invitation_code_activity_message" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/enter_invitation_code_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/enter_invitation_code_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

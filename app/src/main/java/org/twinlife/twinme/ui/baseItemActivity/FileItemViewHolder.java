@@ -1,0 +1,301 @@
+/*
+ *  Copyright (c) 2018-2025 twinlife SA.
+ *  SPDX-License-Identifier: AGPL-3.0-only
+ *
+ *  Contributors:
+ *   Yannis Le Gal (Yannis.LeGal@twin.life)
+ *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
+ *   Stephane Carrez (Stephane.Carrez@twin.life)
+ */
+
+package org.twinlife.twinme.ui.baseItemActivity;
+
+import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.text.format.Formatter;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ConversationService.Descriptor;
+import org.twinlife.twinlife.ConversationService.ImageDescriptor;
+import org.twinlife.twinlife.ConversationService.NamedFileDescriptor;
+import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
+import org.twinlife.twinlife.ConversationService.VideoDescriptor;
+import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
+import org.twinlife.twinme.utils.RoundedImageView;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+class FileItemViewHolder extends ItemViewHolder {
+
+    private final View mFileItemContainer;
+    private final GradientDrawable mGradientDrawable;
+    private final TextView mFilenameView;
+    private final ImageView mIconView;
+    private final TextView mFileSizeView;
+    private final View mReplyView;
+    private final TextView mReplyTextView;
+    private final View mReplyToImageContentView;
+    private final RoundedImageView mReplyImageView;
+    private final GradientDrawable mReplyGradientDrawable;
+    private final GradientDrawable mReplyToImageContentGradientDrawable;
+    private final DeleteProgressView mDeleteView;
+
+    private String mFilePath;
+
+    FileItemViewHolder(BaseItemActivity baseItemActivity, View view, boolean allowClick, boolean allowLongClick) {
+
+        super(baseItemActivity, view,
+                R.id.base_item_activity_file_item_container,
+                R.id.base_item_activity_file_item_state_view,
+                R.id.base_item_activity_file_item_state_avatar_view,
+                R.id.base_item_activity_file_item_overlay_view,
+                R.id.base_item_activity_file_item_annotation_view,
+                R.id.base_item_activity_file_item_selected_view,
+                R.id.base_item_activity_file_item_selected_image_view);
+
+        mFileItemContainer = view.findViewById(R.id.base_item_activity_file_item_view);
+        mFileItemContainer.setPadding(FILE_ITEM_WIDTH_PADDING, FILE_ITEM_HEIGHT_PADDING, FILE_ITEM_WIDTH_PADDING, FILE_ITEM_HEIGHT_PADDING);
+        mFileItemContainer.setClickable(false);
+
+        mGradientDrawable = new GradientDrawable();
+        mGradientDrawable.mutate();
+        mGradientDrawable.setColor(Design.getMainStyle());
+        mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mFileItemContainer.setBackground(mGradientDrawable);
+
+        mFilenameView = view.findViewById(R.id.base_item_activity_file_name_view);
+        Design.updateTextFont(mFilenameView, Design.FONT_REGULAR32);
+
+        mFileSizeView = view.findViewById(R.id.base_item_activity_file_size_view);
+        Design.updateTextFont(mFileSizeView, Design.FONT_REGULAR28);
+
+        mIconView = view.findViewById(R.id.base_item_activity_file_item_image_view);
+
+        mReplyTextView = view.findViewById(R.id.base_item_activity_file_item_reply_text);
+        mReplyTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
+        mReplyTextView.setTypeface(getMessageFont().typeface);
+        mReplyTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getMessageFont().size);
+        mReplyTextView.setTextColor(Design.REPLY_FONT_COLOR);
+        mReplyTextView.setMaxLines(3);
+        mReplyTextView.setEllipsize(TextUtils.TruncateAt.END);
+
+        mReplyView = view.findViewById(R.id.base_item_activity_file_item_reply_view);
+
+        mReplyView.setOnClickListener(v -> onReplyClick());
+
+        mReplyGradientDrawable = new GradientDrawable();
+        mReplyGradientDrawable.mutate();
+        mReplyGradientDrawable.setColor(Design.REPLY_BACKGROUND_COLOR);
+        mReplyGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mReplyView.setBackground(mReplyGradientDrawable);
+
+        mReplyImageView = view.findViewById(R.id.base_item_activity_file_item_reply_image_view);
+        ViewGroup.LayoutParams layoutParams = mReplyImageView.getLayoutParams();
+        layoutParams.width = REPLY_IMAGE_ITEM_MAX_WIDTH;
+        layoutParams.height = REPLY_IMAGE_ITEM_MAX_HEIGHT;
+
+        View replyContainerImageView = view.findViewById(R.id.base_item_activity_file_item_reply_container_image_view);
+        replyContainerImageView.setPadding(REPLY_IMAGE_WIDTH_MARGIN, REPLY_IMAGE_HEIGHT_MARGIN, REPLY_IMAGE_WIDTH_MARGIN, REPLY_IMAGE_HEIGHT_MARGIN);
+
+        mReplyToImageContentView = view.findViewById(R.id.base_item_activity_file_item_reply_image_content_view);
+
+        mReplyToImageContentView.setOnClickListener(v -> onReplyClick());
+
+        mReplyToImageContentGradientDrawable = new GradientDrawable();
+        mReplyToImageContentGradientDrawable.mutate();
+        mReplyToImageContentGradientDrawable.setColor(Design.REPLY_BACKGROUND_COLOR);
+        mReplyToImageContentGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mReplyToImageContentView.setBackground(mReplyToImageContentGradientDrawable);
+
+        mDeleteView = view.findViewById(R.id.base_item_activity_file_item_delete_view);
+
+        if (allowClick) {
+            mFileItemContainer.setOnClickListener(v -> {
+
+                if (getBaseItemActivity().isSelectItemMode()) {
+                    onContainerClick();
+                    return;
+                }
+
+                try {
+                    Uri uri = NamedFileProvider.getInstance().getUriForFile(baseItemActivity, new File(mFilePath), getFileItem().getNamedFileDescriptor().getName());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                    baseItemActivity.startActivity(intent);
+                } catch (Exception exception) {
+                    Log.e("FileItemViewHolder", "FileItemViewHolder() exception=" + exception);
+                }
+            });
+        }
+        if (allowLongClick) {
+            mFileItemContainer.setOnLongClickListener(v -> {
+                baseItemActivity.onItemLongPress(getItem());
+                return true;
+            });
+
+            mReplyToImageContentView.setOnLongClickListener(v -> {
+                baseItemActivity.onItemLongPress(getItem());
+                return true;
+            });
+
+            mReplyView.setOnLongClickListener(v -> {
+                baseItemActivity.onItemLongPress(getItem());
+                return true;
+            });
+        }
+    }
+
+    @Override
+    void onBind(Item item) {
+
+        if (!(item instanceof FileItem)) {
+            return;
+        }
+        super.onBind(item);
+
+        // Compute the corner radii only once!
+        final float[] cornerRadii = getCornerRadii();
+
+        mGradientDrawable.setCornerRadii(cornerRadii);
+
+        final FileItem fileItem = (FileItem) item;
+        NamedFileDescriptor namedFileDescriptor = fileItem.getNamedFileDescriptor();
+        mFilePath = getPath(namedFileDescriptor);
+
+        mFilenameView.setText(namedFileDescriptor.getName());
+
+        mFileSizeView.setText(Formatter.formatFileSize(getBaseItemActivity(), namedFileDescriptor.getLength()));
+
+        mIconView.setImageResource(FileItem.getFileIcon(mFilePath));
+
+        mReplyGradientDrawable.setCornerRadii(cornerRadii);
+        mReplyToImageContentGradientDrawable.setCornerRadii(cornerRadii);
+
+        mReplyView.setVisibility(View.GONE);
+        mReplyTextView.setVisibility(View.GONE);
+        mReplyToImageContentView.setVisibility(View.GONE);
+        mReplyImageView.setVisibility(View.GONE);
+
+        final Descriptor replyToDescriptor = item.getReplyToDescriptor();
+        if (replyToDescriptor != null) {
+
+            RelativeLayout.LayoutParams relativeLayoutParams = (RelativeLayout.LayoutParams) mFileItemContainer.getLayoutParams();
+
+            switch (item.getReplyToDescriptor().getType()) {
+                case OBJECT_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_file_item_reply_text);
+
+                    ObjectDescriptor objectDescriptor = (ObjectDescriptor) replyToDescriptor;
+                    mReplyTextView.setText(objectDescriptor.getMessage());
+                    break;
+
+                case IMAGE_DESCRIPTOR:
+                    mReplyToImageContentView.setVisibility(View.VISIBLE);
+                    mReplyImageView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_file_item_reply_container_image_view);
+
+                    setReplyImage(mReplyImageView, (ImageDescriptor) replyToDescriptor);
+                    break;
+
+                case VIDEO_DESCRIPTOR:
+                    mReplyToImageContentView.setVisibility(View.VISIBLE);
+                    mReplyImageView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_file_item_reply_container_image_view);
+
+                    setReplyImage(mReplyImageView, (VideoDescriptor) replyToDescriptor);
+                    break;
+
+                case AUDIO_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_file_item_reply_text);
+
+                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    break;
+
+                case NAMED_FILE_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_file_item_reply_text);
+
+                    NamedFileDescriptor fileDescriptor = (NamedFileDescriptor) replyToDescriptor;
+                    mReplyTextView.setText(fileDescriptor.getName());
+                    break;
+            }
+        }
+    }
+
+    @Override
+    void startDeletedAnimation() {
+
+        if (isDeleteAnimationStarted()) {
+            return;
+        }
+
+        setDeleteAnimationStarted(true);
+        mDeleteView.setVisibility(View.VISIBLE);
+
+        ViewGroup.MarginLayoutParams deleteLayoutParams = (ViewGroup.MarginLayoutParams) mDeleteView.getLayoutParams();
+        deleteLayoutParams.width = mFileItemContainer.getWidth();
+        deleteLayoutParams.height = mFileItemContainer.getHeight();
+        mDeleteView.setLayoutParams(deleteLayoutParams);
+        mDeleteView.setCornerRadii(getCornerRadii());
+        mDeleteView.setOnDeleteProgressListener(() -> deleteItem(getItem()));
+
+        float progress = 0;
+        int animationDuration = DESIGN_DELETE_ANIMATION_DURATION;
+        if (getItem().getDeleteProgress() > 0) {
+            progress = getItem().getDeleteProgress() / 100.0f;
+            animationDuration = (int) (BaseItemViewHolder.DESIGN_DELETE_ANIMATION_DURATION - ((getItem().getDeleteProgress() * BaseItemViewHolder.DESIGN_DELETE_ANIMATION_DURATION) / 100.0));
+        }
+
+        mDeleteView.startAnimation(animationDuration, progress);
+    }
+
+    @Override
+    void onViewRecycled() {
+
+        super.onViewRecycled();
+
+        mReplyImageView.setImageBitmap(null, null);
+        mDeleteView.setVisibility(View.GONE);
+        mDeleteView.setOnDeleteProgressListener(null);
+        setDeleteAnimationStarted(false);
+    }
+
+    @Override
+    List<View> clickableViews() {
+
+        return new ArrayList<View>() {
+            {
+                add(mFileItemContainer);
+                add(getContainer());
+            }
+        };
+    }
+
+    //
+    // Private methods
+    //
+
+    private FileItem getFileItem() {
+
+        return (FileItem) getItem();
+    }
+}

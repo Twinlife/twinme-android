@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="128dp">
+
+    <TextView
+        android:id="@+id/section_title_item_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/contacts_fragment_title"
+        android:textAllCaps="true"
+        app:layout_marginStartPercent="4.53%"
+        app:layout_marginEndPercent="4.26%"
+        app:layout_marginBottomPercent="12.72%" />
+
+    <TextView
+        android:id="@+id/section_title_item_new_feature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/section_title_item_title_view"
+        android:layout_toRightOf="@+id/section_title_item_title_view"
+        android:layout_toEndOf="@+id/section_title_item_title_view"
+        android:text="@string/application_new" />
+
+    <View
+        android:id="@+id/section_title_item_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/success_authentified_relation_view_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/success_authentified_relation_view_close_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close"
+            android:contentDescription="@string/application_cancel"
+            app:layout_aspectRatio="100%"
+            app:layout_marginEndPercent="2.62%" />
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/success_authentified_relation_view_avatar_view"
+            android:layout_centerHorizontal="true"
+            app:layout_aspectRatio="100%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/success_authentified_relation_view_certified_info_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/success_authentified_relation_view_avatar_view">
+
+            <TextView
+                android:id="@+id/success_authentified_relation_view_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/success_authentified_relation_view_certified_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/success_authentified_relation_view_name_view"
+                android:layout_toEndOf="@+id/success_authentified_relation_view_name_view"
+                android:src="@drawable/authentified_relation_icon"
+                app:layout_heightPercent="26.98%"
+                app:layout_aspectRatio="100%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/success_authentified_relation_view_message_view"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/success_authentified_relation_view_certified_info_view"
+            android:gravity="center"
+            app:layout_widthPercent="90.37%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/success_authentified_relation_view_confirm_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/success_authentified_relation_view_confirm_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/application_ok" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/success_authentified_relation_view_animation_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:lottie_rawRes="@raw/certification_animation_success"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false"
+        app:lottie_clipToCompositionBounds="false"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Accepter</string>
+    <string name="application_account_deleted">Votre compte a été supprimé, vous devez maintenant désinstaller l’application.</string>
+    <string name="application_add_contact_no_profile">Vous devez compléter un profil qui vous représente avant d’inviter un contact. Poursuivre ?</string>
+    <string name="application_all">Tout</string>
+    <string name="application_appearance">Apparence</string>
+    <string name="application_are_you_sure">Etes-vous sûr ?</string>
+    <string name="application_authorization_camera">Autoriser l’application à accéder à la Caméra dans les paramètres du système.</string>
+    <string name="application_authorization_go_settings">Aller aux paramètres du système</string>
+    <string name="application_authorization_microphone">Autoriser l’application à accéder au Microphone dans les paramètres système.</string>
+    <string name="application_authorization_microphone_camera">Autoriser l’application à accéder au Microphone et à la Caméra dans les paramètres du système.</string>
+    <string name="application_authorization_title">Autorisation d’accès manquante</string>
+    <string name="application_back">Retour</string>
+    <string name="application_camera">Caméra</string>
+    <string name="application_cancel">Annuler</string>
+    <string name="application_canceled_operation">Opération annulée</string>
+    <string name="application_checking_connection">Vérification de la connexion</string>
+    <string name="application_color">Couleur</string>
+    <string name="application_configuration">Configuration</string>
+    <string name="application_confirm">Confirmer</string>
+    <string name="application_confirm_deletion">Confirmer la suppression</string>
+    <string name="application_connected">Connexion sécurisée activée.</string>
+    <string name="application_connection_status_no_network">Pas d’accès Internet.</string>
+    <string name="application_connection_status_no_network_message">Vérifiez votre connexion réseau.</string>
+    <string name="application_connection_status_no_services">Pas d’accès au service.</string>
+    <string name="application_connection_status_no_services_message">Essayez d’utiliser un VPN.</string>
+    <string name="application_contact_not_found">Ce contact a supprimé cette relation avec vous et n’est plus joignable.</string>
+    <string name="application_continue_without_premium_services">Continuer sans les services premium</string>
+    <string name="application_create_group_no_profile">Vous devez compléter un profil qui vous représente dans ce groupe. Poursuivre ?</string>
+    <string name="application_database_error">Erreur de la base de données</string>
+    <string name="application_decline">Refuser</string>
+    <string name="application_default">Défaut</string>
+    <string name="application_delete">Supprimer</string>
+    <string name="application_delete_message">Voulez-vous vraiment supprimer ?</string>
+    <string name="application_denied_permissions">Les autorisations requises ne sont pas toutes accordées</string>
+    <string name="application_description">Description</string>
+    <string name="application_display_all">Afficher tout</string>
+    <string name="application_do_not_display">Ne plus afficher</string>
+    <string name="application_edit">Modifier</string>
+    <string name="application_error_file_not_found">Le fichier n’a pas été trouvé.</string>
+    <string name="application_error_media_not_supported">Ce format d’image/vidéo n’est pas pris en charge par l’application.</string>
+    <string name="application_error_no_storage_space">Espace de stockage insuffisant</string>
+    <string name="application_group_limit_reached">Nombre maximum (%1$d) de membres d’un groupe dépassé.</string>
+    <string name="application_group_not_found">Vous avez été supprimé du groupe.</string>
+    <string name="application_items_selected">%1$d éléments sélectionnés</string>
+    <string name="application_later">Plus tard</string>
+    <string name="application_low_usage_message">Attention, si vous n’utilisez pas l’application assez souvent, l’OS risque de ne pas la réveiller pour échanger des messages !</string>
+    <string name="application_one_item_selected">1 élément sélectionné</string>
+    <string name="application_migration_no_storage_space">Il n’y a pas assez d’espace sur votre appareil pour terminer la migration. Fermez l’application, libérez de l’espace et relancez l’application pour terminer la mise à jour.</string>
+    <string name="application_migration_no_storage_space_message">L’un des deux appareils ne dispose pas de suffisamment d’espace de stockage. Libérez de l’espace sur cet appareil avant de relancer la migration.</string>
+    <string name="application_name_hint">Nom</string>
+    <string name="application_network_connecting">Connexion à twinme</string>
+    <string name="application_network_connectivity">La connectivité réseau existe</string>
+    <string name="application_network_status_airplane_message">Le mode avion est activé.</string>
+    <string name="application_network_status_airplane_resolution">Veuillez désactiver le mode avion et vous connecter à un réseau Wi-Fi ou mobile.</string>
+    <string name="application_network_status_connected_no_internet">Pas d’accès réseau au service twinme.</string>
+    <string name="application_network_status_connected_resolution">Essayez de vous connecter à un autre réseau.</string>
+    <string name="application_network_status_connection_timeout">Impossible d’établir la connexion Internet.</string>
+    <string name="application_network_status_no_internet">Pas de connexion Internet.</string>
+    <string name="application_network_status_wifi_disabled">Le Wi-Fi est désactivé.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Le Wi-Fi est désactivé et il n’y a pas de connexion Internet mobile.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Veuillez activer le Wi-Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Veuillez activer le Wi-Fi ou une connexion Internet mobile.</string>
+    <string name="application_new_feature">Nouveau !</string>
+    <string name="application_no">Non</string>
+    <string name="application_no_network_connectivity">pas de connectivité réseau</string>
+    <string name="application_no_service">Pas de service</string>
+    <string name="application_not_authorized_operation">Opération non autorisée</string>
+    <string name="application_not_authorized_operation_by_your_contact">Opération non autorisée par votre contact.</string>
+    <string name="application_not_connected">Connexion sécurisée en cours…</string>
+    <string name="application_not_signed_in">Pas connecté au service twinme</string>
+    <string name="application_now">Maintenant</string>
+    <string name="application_ok">OK</string>
+    <string name="application_operation_failure">Echec de l’opération</string>
+    <string name="application_operation_irreversible">Cette opération est irréversible</string>
+    <string name="application_permission_camera">La permission d’accéder à la caméra est nécessaire pour prendre une nouvelle photo ou vidéo.</string>
+    <string name="application_permission_scan_code">La permission d’accéder à la caméra est nécessaire pour scanner un QR code.</string>
+    <string name="application_photo_gallery">Albums photo</string>
+    <string name="application_profile">Profil</string>
+    <string name="application_profile_avatar_not_defined">Vous devez définir l’image qui vous représente lorsque vous invitez un contact avec ce profil.</string>
+    <string name="application_profile_name_not_defined">Vous devez définir le nom qui vous représente lorsque vous invitez un contact avec ce profil.</string>
+    <string name="application_remove">Supprimer</string>
+    <string name="application_save">Enregistrer</string>
+    <string name="application_search_hint">Recherche</string>
+    <string name="application_select">Sélectionner</string>
+    <string name="application_select_application">Sélectionner l’application</string>
+    <string name="application_select_more">Sélectionner plus…</string>
+    <string name="application_server_timeout">Le serveur ne répond pas</string>
+    <string name="application_size_unit">Mo</string>
+    <string name="application_theme">Thème</string>
+    <string name="application_timeout">Délai d’expiration</string>
+    <string name="application_timeout_day">1 jour</string>
+    <string name="application_timeout_hour">1 heure</string>
+    <string name="application_timeout_hours">%1$d heures</string>
+    <string name="application_timeout_minute">1 minute</string>
+    <string name="application_timeout_minutes">%1$d minutes</string>
+    <string name="application_timeout_month">1 mois</string>
+    <string name="application_timeout_seconds">%1$d secondes</string>
+    <string name="application_timeout_week">1 semaine</string>
+    <string name="application_unknown_name">Inconnu</string>
+    <string name="application_upgrade">Mise à niveau de twinme</string>
+    <string name="application_webrtc_failure">Erreur WebRTC</string>
+    <string name="application_wrong_configuration">Configuration incorrecte</string>
+    <string name="application_yes">Oui</string>
+
+    <!-- AboutActivity -->
+    <string name="about_activity_application_code">Code de l\'application</string>
+    <string name="about_activity_information">Informations</string>
+    <string name="about_activity_legal">Mentions légales</string>
+    <string name="about_activity_libraries">Bibliothèques</string>
+    <string name="about_activity_message">twinme est un service de tchat et appels voix/vidéo sécurisés, qui n’accède à aucune information personnelle.\n\ntwinme utilise WebRTC, le nouveau standard du web pour les échanges multimédia sécurisés (chiffrés de bout-en-bout) en temps réel et en peer-to-peer (sans serveur relai).</string>
+    <string name="about_activity_open_source_information">Le code source de l\'application est disponible en Open Source sur GitHub, sous licence AGPL-3.0.</string>
+    <string name="about_activity_open_sources_licences">Licences Open Source</string>
+    <string name="about_activity_premium_services">Premium services</string>
+    <string name="about_activity_privacy_policy">Politique de confidentialité</string>
+    <string name="about_activity_quality_of_service">Qualité de service</string>
+    <string name="about_activity_terms_of_use">Conditions d’utilisation</string>
+    <string name="about_activity_version">Version</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_activity_deleted">L’invitation a été supprimée</string>
+    <string name="accept_group_invitation_activity_in_progress">Adhésion en cours</string>
+    <string name="accept_group_invitation_activity_message">%1$s vous invite à rejoindre le groupe</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_activity_being_transferred">L’invitation est en cours de transfert.</string>
+    <string name="accept_invitation_activity_check_connection">Vérifiez votre connexion Internet.</string>
+    <string name="accept_invitation_activity_existing_contact_message">Vous avez déjà une relation avec ce contact. Voulez-vous en créer une nouvelle ?</string>
+    <string name="accept_invitation_activity_incorrect_contact_information">Information sur le contact incorrecte</string>
+    <string name="accept_invitation_activity_local_twincode">Vous ne pouvez pas établir de relation avec vous-même au sein du même compte.</string>
+    <string name="accept_invitation_activity_message">%1$s souhaite se connecter avec vous</string>
+
+    <!-- AccountActivity -->
+    <string name="account_activity_conversations_content_title">Contenu des conversations</string>
+    <string name="account_activity_delete_account">Votre compte, ainsi que toutes les données associées, seront définitivement supprimés. Confirmer ?</string>
+    <string name="account_activity_delete_account_confirmation">Êtes-vous vraiment sûr de vouloir supprimer votre compte ?</string>
+    <string name="account_activity_export_content">Exporter vers un support externe</string>
+    <string name="account_activity_message_first_part">Un nouveau compte est créé lors de l’installation de l’application pour la première fois, après la réinstallation de l’application, ou la réinitialisation de l’appareil, ou la suppression du compte actuel.</string>
+    <string name="account_activity_message_second_part">Aucune trace du compte et des données précédents ne subsiste, vous devrez donc ré-inviter vos contacts.</string>
+    <string name="account_activity_migration_message">Un service de migration de compte est disponible pour transférer votre compte avec toutes les données associées (contacts, messages, groupes, etc.) d’un appareil Android à un autre en temps réel. Vous pouvez ainsi basculer de compte entre un ancien appareil et un nouveau.</string>
+    <string name="account_activity_migration_start_from_another_device">Depuis un autre appareil </string>
+    <string name="account_activity_migration_start_from_current_device">Depuis mon appareil</string>
+    <string name="account_activity_migration_title">Migration de compte</string>
+    <string name="account_activity_title">Compte</string>
+    <string name="account_activity_transfer_between_devices">Transfert entre appareils</string>
+    <string name="account_activity_transfer_from_another_device">Transférer depuis un autre appareil</string>
+    <string name="account_activity_transfer_from_device">Transférer depuis cet appareil</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_activity_cancel_message">Fermez l’application et redémarrez la pour accéder à vos données.</string>
+    <string name="account_migration_activity_close_message">Fermez l’application et redémarrez la pour accéder aux nouvelles données.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Êtes-vous sûr de vouloir annuler la migration ?</string>
+    <string name="account_migration_activity_network_message">Vérifiez votre connexion réseau</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Espace insuffisant pour les fichiers</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Espace insuffisant pour recevoir la base de données</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Espace insuffisant pour transférer la base de données</string>
+    <string name="account_migration_activity_state_canceled">Migration annulée</string>
+    <string name="account_migration_activity_state_negotiate">En attente</string>
+    <string name="account_migration_activity_state_list_files">Liste des fichiers</string>
+    <string name="account_migration_activity_state_send_account">Envoi du compte</string>
+    <string name="account_migration_activity_state_send_database">Envoi de la base de données</string>
+    <string name="account_migration_activity_state_send_files">Envoi des fichiers</string>
+    <string name="account_migration_activity_state_send_settings">Envoi des paramètres de l’application</string>
+    <string name="account_migration_activity_state_terminate">Migration presque terminée.</string>
+    <string name="account_migration_activity_state_wait_account">Attente de l’autre compte</string>
+    <string name="account_migration_activity_state_wait_connect">Attente de la reconnexion</string>
+    <string name="account_migration_activity_state_wait_files">En attente de réception des fichiers et de la base de données.</string>
+    <string name="account_migration_activity_start">Démarrer la migration</string>
+    <string name="account_migration_activity_stop">Arrêter la migration</string>
+    <string name="account_migration_activity_success_message">Migration terminée avec succès</string>
+    <string name="account_migration_activity_transfer_in_progress">Transfert de données en cours</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_activity_message">Affichez cet écran sur chaque appareil et l’un scanne le QR-Code de l’autre.</string>
+    <string name="account_migration_scanner_activity_message_older_version">Cet appareil utilise une ancienne version du système d’exploitation incompatible, ce qui entraînera la perte de toutes les relations sur l’appareil cible lors du transfert. Souhaitez-vous quand même procéder au transfert ?</string>
+    <string name="account_migration_scanner_activity_message_older_version_target">L’appareil cible utilise une ancienne version du système d’exploitation incompatible, ce qui entraînera la perte de toutes vos relations lors du transfert. Souhaitez-vous quand même procéder au transfert ?</string>
+    <string name="account_migration_scanner_activity_scan_title">Scan</string>
+    <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Pour lancer la migration, scannez ce QRCode à partir de l’autre appareil</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Scanner le QR-code affiché dans la section \"Compte / Transférer depuis un autre appareil\" du menu latéral de l’autre appareil.</string>
+    <string name="account_migration_scanner_activity_stop_scan_title">Arrêter le scan</string>
+
+   <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_activity_title">Ajouter un participant à cet appel</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_activity_gallery_title">Importer depuis la galerie</string>
+    <string name="add_contact_activity_in_person_subtitle">Inviter une personne proche de vous</string>
+    <string name="add_contact_activity_in_person_title">En personne</string>
+    <string name="add_contact_activity_invitation_code_title">Mini-Code</string>
+    <string name="add_contact_activity_invite">Inviter</string>
+    <string name="add_contact_activity_invite_message">Ouvrez le lien %1$s avec twinme sur votre mobile ou scannez le QR-Code pour vous connecter avec “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Invitation twinme</string>
+    <string name="add_contact_activity_message">Demandez à votre ami près de vous de scanner le QR-code de votre invitation avec twinme, ou appuyez sur le bouton « Scanner » pour scanner le code de votre ami.</string>
+    <string name="add_contact_activity_onboarding_message">twinme ne connait pas vos amis et ne peut pas les découvrir. Vous devez les inviter personnellement, avec twinme lorsqu’ils sont près de vous, ou en leur envoyant une invitation par d’autres moyens.</string>
+    <string name="add_contact_activity_scan_code">Scannez le code QR d’invitation</string>
+    <string name="add_contact_activity_scan_error_corrupt_link">Ce lien est corrompu.</string>
+    <string name="add_contact_activity_scan_error_incorect_link">Ce lien est incorrect.</string>
+    <string name="add_contact_activity_scan_error_not_managed_link">Ce lien n’est pas géré par l’application.</string>
+    <string name="add_contact_activity_scan_error_revoked_link">Cette relation a été supprimée.</string>
+    <string name="add_contact_activity_scan_message_call_link">Ce lien correspond à un \"Click to call\"</string>
+    <string name="add_contact_activity_scan_message_invitation_link">Ce lien correspond à une invitation de contact</string>
+    <string name="add_contact_activity_scan_message_migration_link">Ce lien correspond à une migration de compte</string>
+    <string name="add_contact_activity_scan_message_transfer_link">Ce lien correspond à un transfert d’appel</string>
+    <string name="add_contact_activity_scan_title">Scanner</string>
+    <string name="add_contact_activity_social_subtitle">message, mail, réseau social</string>
+    <string name="add_contact_activity_social_title">Envoyer le code via une application</string>
+    <string name="add_contact_activity_title">Invitation</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_activity_add">Ajouter</string>
+    <string name="add_group_member_activity_title">Ajouter des membres</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_activity_welcome_message">Message de bienvenue</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_activity_calling">Appel&#8230;</string>
+    <string name="audio_call_activity_cannot_call">Impossible de passer un appel vocal</string>
+    <string name="audio_call_activity_connecting">Connexion&#8230;</string>
+    <string name="audio_call_activity_hangup">Raccrocher</string>
+    <string name="audio_call_activity_hangup_confirmation">Voulez-vous terminer l’appel ?</string>
+    <string name="audio_call_activity_terminate">Appel terminé</string>
+    <string name="audio_call_activity_terminate_busy">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; est occupé(e)</string>
+    <string name="audio_call_activity_terminate_cancel">Appel annulé par &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_connectivity_error">Appel terminé : erreur réseau</string>
+    <string name="audio_call_activity_terminate_decline">Appel refusé par &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_gone">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; n’est pas connecté(e)</string>
+    <string name="audio_call_activity_terminate_not_authorized">Votre contact n’a pas accordé les autorisations nécessaires à un appel (par exemple, microphone, caméra).</string>
+    <string name="audio_call_activity_terminate_revoked">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; a supprimé cette relation avec vous.</string>
+    <string name="audio_call_activity_terminate_success">Appel terminé par &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_activity_terminate_timeout">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; ne répond pas</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_activity_certified_message">Votre relation avec %1$s est désormais certifiée.</string>
+    <string name="authentified_relation_activity_certify_by_scan">Certifier en scannant un QR-Code</string>
+    <string name="authentified_relation_activity_certify_by_video_call">Certifier avec un appel vidéo</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s doit autoriser les appels vidéo pour pouvoir certifier une relation via un appel vidéo.</string>
+    <string name="authentified_relation_activity_level_2">Pour certifier cette relation, vous devez scanner le QR-Code affiché sur l’appareil de %1$s.</string>
+    <string name="authentified_relation_activity_level_3">Pour certifier cette relation, l’appareil de %1$s doit scanner ce QR-Code.</string>
+    <string name="authentified_relation_activity_level_4">Votre relation avec %1$s est certifiée.</string>
+    <string name="authentified_relation_activity_onboarding_message">Une relation « certifiée » vous assure de toujours communiquer avec la bonne personne, même si le service a été compromis par un tiers.</string>
+    <string name="authentified_relation_activity_onboarding_subtitle">Soyez sûr de toujours communiquer avec la bonne personne !</string>
+    <string name="authentified_relation_activity_relation_print_message">Cette empreinte doit être identique sur les 2 appareils.</string>
+    <string name="authentified_relation_activity_relation_print_title">Empreinte de la relation</string>
+    <string name="authentified_relation_activity_start">Démarrer la certification</string>
+    <string name="authentified_relation_activity_title">Relation certifiée</string>
+    <string name="authentified_relation_activity_to_be_certified_title">Certifier la relation</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_fragment_all_call_segmented_control">Tous</string>
+    <string name="calls_fragment_call_again_message">Voulez-vous rappeler %1$s ?</string>
+    <string name="calls_fragment_call_again_title">Rappeler</string>
+    <string name="calls_fragment_create_link">Créer un lien \"click-to-call\"</string>
+    <string name="calls_fragment_incoming_call">Appel entrant</string>
+    <string name="calls_fragment_missed_call">Appel manqué</string>
+    <string name="calls_fragment_missed_call_segmented_control">Manqués</string>
+    <string name="calls_fragment_no_call_message">Les appels manqués sont répertoriés ici.</string>
+    <string name="calls_fragment_no_call_title">Vous n’avez encore passé aucun appel.</string>
+    <string name="calls_fragment_outgoing_call">Appel sortant</string>
+    <string name="calls_fragment_reset">Êtes-vous sûr de vouloir réinitialiser toutes les notifications d’appels ?</string>
+    <string name="calls_fragment_reset_title">Réinitialiser les notifications d’appels</string>
+    <string name="calls_fragment_title">Appels</string>
+
+    <!-- CallActivity -->
+    <string name="call_activity_audio_source_bluetooth">Audio Bluetooth</string>
+    <string name="call_activity_audio_source_device">Écouteurs de l’appareil</string>
+    <string name="call_activity_audio_source_earphones">Écouteurs</string>
+    <string name="call_activity_audio_source_headset">Casque audio</string>
+    <string name="call_activity_audio_source_loudspeaker">Haut-parleur</string>
+    <string name="call_activity_battery_restriction_message">Attention! Vous devez autoriser l’utilisation de la batterie lorsque l’application fonctionne en arrière-plan afin d’éviter les coupures du micro pendant un appel.</string>
+    <string name="call_activity_camera_control">Contrôle de la caméra</string>
+    <string name="call_activity_camera_control_ask_message">Demandez à %1$s de vous autoriser à contrôler sa caméra pendant l\'appel vidéo.</string>
+    <string name="call_activity_camera_control_confirm_message">%1$s souhaite contrôler votre caméra pendant l\'appel. Vous pouvez reprendre le contrôle à tout moment.</string>
+    <string name="call_activity_camera_control_denied">%1$s ne vous autorise pas à contrôler sa caméra.</string>
+    <string name="call_activity_camera_control_message">Contrôle de la caméra de %1$s</string>
+    <string name="call_activity_camera_control_needs_help">Besoin d\'aide ?</string>
+    <string name="call_activity_camera_control_onboarding">Si votre contact l\'autorise, vous pouvez prendre le contrôle de sa caméra pendant un appel vidéo et zoomer par vous-même, par exemple. Ceci est particulièrement utile pour contrôler une caméra de vidéosurveillance.</string>
+    <string name="call_activity_camera_control_onboarding_part_2">Avec l\'autorisation de votre proche, vous pouvez contrôler sa caméra pendant un appel pour l\'aider à distance, facilement et en toute sécurité.</string>
+    <string name="call_activity_camera_control_remotely">%1$s contrôle votre caméra à distance.</string>
+    <string name="call_activity_camera_control_stop">Arrêter</string>
+    <string name="call_activity_certify_error_message">%1$s n’a pas validé le mot. La certification de la relation a échoué et vous devrez réessayer.</string>
+    <string name="call_activity_certify_onboarding_message">L’appel vidéo permet de s’identifier mutuellement et d’échanger les clés de sécurité associées à une relation certifiée et à ses échanges.</string>
+    <string name="call_activity_certify_onboarding_start_message">Chacun à votre tour, épelez le mot affiché sur votre écran que l’autre pourra vérifier. Une fois tous les mots vérifiés, votre relation avec %1$s sera certifiée.</string>
+    <string name="call_activity_certify_onboarding_title">Certifier votre relation</string>
+    <string name="call_activity_certify_video_message">L’appel doit être en vidéo pour pouvoir certifier la relation.</string>
+    <string name="call_activity_coach_mark">Appuyez ici pour ajouter un participant à cet appel</string>
+    <string name="call_activity_confirm_word">Le mot dit par %1$s est-il identique ?</string>
+    <string name="call_activity_confirm_word_title">Valider le mot</string>
+    <string name="call_activity_error_call_interrupted">L’appel a été interrompu, erreur : %1$d.</string>
+    <string name="call_activity_error_call_not_go_thru">L’appel n’a pas pu aboutir, erreur : %1$d.</string>
+    <string name="call_activity_max_participant_message">Le nombre maximum de participants à un appel de groupe a été atteint (%1$d).</string>
+    <string name="call_activity_not_supported_group_call_message">La version de l’application de %1$s n’est pas compatible avec les appels de groupe et nécessite une mise à jour.</string>
+    <string name="call_activity_quality_message">Quelle note donneriez-vous ?</string>
+    <string name="call_activity_quality_title">Qualité de l’appel</string>
+    <string name="call_activity_repeat_word">%1$s pourra le comparer avec celui de son écran.</string>
+    <string name="call_activity_repeat_word_title">Epeler le mot</string>
+    <string name="call_activity_tag_add_to_call">Inviter un contact à rejoindre l’appel en cours</string>
+    <string name="call_activity_tag_camera">Caméra</string>
+    <string name="call_activity_tag_camera_activate">Activer la caméra</string>
+    <string name="call_activity_tag_camera_cut">Couper la caméra</string>
+    <string name="call_activity_tag_camera_flip">Retourner la caméra</string>
+    <string name="call_activity_tag_microphone">Micro</string>
+    <string name="call_activity_tag_microphone_activate">Activer le micro</string>
+    <string name="call_activity_tag_microphone_mute">Couper le micro</string>
+    <string name="call_activity_tag_pause">Mettre en pause</string>
+    <string name="call_activity_tag_send_message">Envoyer un message</string>
+    <string name="call_activity_tag_speaker">Haut-parleur</string>
+    <string name="call_activity_tag_speaker_activate">Activer le haut-parleur</string>
+    <string name="call_activity_tag_speaker_mute">Couper le haut-parleur</string>
+    <string name="call_activity_transfert_call_message">L’appel en cours a été transféré.</string>
+    <string name="call_activity_try_to_call_back">Essayez de rappeler.</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_activity_create_camera_error">La caméra est déjà utilisée</string>
+    <string name="capture_activity_incorrect_qrcode">twincode incorrect</string>
+    <string name="capture_activity_message">Placer le QR code dans ce rectangle pour le scanner.</string>
+    <string name="capture_activity_no_camera">La caméra est nécessaire pour scanner un twincode</string>
+    <string name="capture_activity_qrcode_saved">Code d’invitation enregistré dans les photos.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_activity_all">Tout effacer</string>
+    <string name="cleanup_activity_both_clean">Nettoyage global (local et distant)</string>
+    <string name="cleanup_activity_both_clean_title">Nettoyage global</string>
+    <string name="cleanup_activity_clean">Supprimer</string>
+    <string name="cleanup_activity_conversation">Conversation avec %s</string>
+    <string name="cleanup_activity_delete_confirmation_message">La suppression est définitive. Il est recommandé d’exporter les contenus que vous souhaitez conserver sur un espace de stockage avant de les supprimer. Poursuivre ?</string>
+    <string name="cleanup_activity_error">Une erreur s’est produite lors de l’opération.</string>
+    <string name="cleanup_activity_expiration">Conditions d’expiration</string>
+    <string name="cleanup_activity_free">Disponible</string>
+    <string name="cleanup_activity_info">La suppression des messages, médias et fichiers de cette conversation ne les supprime pas de l’appareil de votre contact et vous ne pourrez pas le faire plus tard.</string>
+    <string name="cleanup_activity_info_both">La suppression des messages, médias et fichiers de cette conversation les supprime également de l’appareil de votre contact.</string>
+    <string name="cleanup_activity_local_cleanup">Nettoyage local uniquement</string>
+    <string name="cleanup_activity_local_cleanup_title">Nettoyage local</string>
+    <string name="cleanup_activity_medias_and_files">Médias et fichiers uniquement</string>
+    <string name="cleanup_activity_medias_and_files_info">Les vignettes des médias ne sont pas supprimées de la conversation, seulement les fichiers originaux.</string>
+    <string name="cleanup_activity_medias_and_files_info_both">Les fichiers, photos, vidéos et notes vocales échangés dans cette conversation seront supprimés de votre appareil et de l’appareil de votre contact.</string>
+    <string name="cleanup_activity_messages">Tous les messages et autres contenus</string>
+    <string name="cleanup_activity_messages_info">Les messages de tout type dans la conversation (texte, fichier, photo, vidéo, voix, etc.) seront supprimés de l’application.</string>
+    <string name="cleanup_activity_month">%1$d mois</string>
+    <string name="cleanup_activity_older_than">Plus âgé de</string>
+    <string name="cleanup_activity_one_year">1 an</string>
+    <string name="cleanup_activity_prior_to">Antérieur à</string>
+    <string name="cleanup_activity_reset_conversation_message">Cette action supprime tous les messages de cette conversation, y compris sur l’appareil de votre contact</string>
+    <string name="cleanup_activity_select_content">Sélectionnez ce que vous souhaitez supprimer.</string>
+    <string name="cleanup_activity_storage_title">Espace disque</string>
+    <string name="cleanup_activity_success">L’opération s’est terminée avec succès.</string>
+    <string name="cleanup_activity_title">Nettoyage de conversation</string>
+    <string name="cleanup_activity_total">Total</string>
+    <string name="cleanup_activity_used">Utilisé</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Astuces</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_activity_allow_incoming_calls">Autoriser ce contact à vous appeler</string>
+    <string name="contact_capabilities_activity_automatic_answering">Répondre automatiquement aux appels entrants</string>
+    <string name="contact_capabilities_activity_automatic_answering_message">Attention : ce paramètre active la réponse automatique aux appels de ce contact, en ouvrant le microphone et la caméra de l’appareil (pour les appels vidéo).</string>
+    <string name="contact_capabilities_activity_automatic_answering_restriction">Certains appareils peuvent restreindre cette fonctionnalité.</string>
+    <string name="contact_capabilities_activity_call_settings">Paramètres des appels</string>
+    <string name="contact_capabilities_activity_camera_control_allow">Toujours</string>
+    <string name="contact_capabilities_activity_camera_control_ask">Demander à chaque appel</string>
+    <string name="contact_capabilities_activity_camera_control_information">Autorisez ce contact à prendre automatiquement le contrôle de votre caméra pendant un appel vidéo.</string>
+    <string name="contact_capabilities_activity_camera_control_onboarding">Vous pouvez demander à votre contact disposant de la version premium de l\'application, de contrôler votre caméra pendant vos appels vidéo.</string>
+    <string name="contact_capabilities_activity_camera_control_never">Jamais</string>
+    <string name="contact_capabilities_activity_discreet_relation">Relation discrète</string>
+    <string name="contact_capabilities_activity_information_audio_call">Autorisez le contact à vous appeler vocalement.</string>
+    <string name="contact_capabilities_activity_information_discreet_relation">N’affiche pas le nom du contact dans les notifications et n’enregistre pas les appels dans l’historique des appels.</string>
+    <string name="contact_capabilities_activity_information_limited_call">Fixez les dates/heures auxquelles vous ne voulez pas être appelé.</string>
+    <string name="contact_capabilities_activity_information_programmed_call">Programmez les dates/heures auxquelles vous voulez être appelé.</string>
+    <string name="contact_capabilities_activity_information_video_call">Autorisez le contact à vous appeler par vidéo.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_fragment_add_contact_subtitle">Invitez quelqu’un à scanner votre code d’invitation, ou scannez le leur …</string>
+    <string name="contacts_fragment_invite_contact_title">Inviter un contact</string>
+    <string name="contacts_fragment_scan_contact_title">Scanner ou entrer un code d’invitation</string>
+    <string name="contacts_fragment_title">Contacts</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_activity_audio_call">Appel audio</string>
+    <string name="conversation_activity_audio_message">Message vocal</string>
+    <string name="conversation_activity_call_missed">manqué</string>
+    <string name="conversation_activity_cannot_send">Impossible d’envoyer un message immédiatement :</string>
+    <string name="conversation_activity_cleanup_conversation">Vous avez supprimé d\'anciens messages.</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s a supprimé d\'anciens messages.</string>
+    <string name="conversation_activity_delete_message">Votre message a bien été supprimé.</string>
+    <string name="conversation_activity_empty_message">Dites quelque chose d’intelligent… ou amusant !</string>
+    <string name="conversation_activity_edit_message">Le message ne peut être modifié sur l’appareil de votre contact que si son application est à jour.</string>
+    <string name="conversation_activity_ephemeral_coach_mark">Appuyez longuement sur la flèche d’envoi pour supprimer ce message de la conversation au bout d’un certain temps.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">La version de twinme de votre correspondant n’est pas complètement fonctionnelle.&lt;br /&gt;
+        Demandez-lui d’effectuer la mise à jour de twinme.</string>
+    <string name="conversation_activity_group_member_information">%1$d membres</string>
+    <string name="conversation_activity_group_not_allowed_post_message">Envoi de message non autorisé</string>
+    <string name="conversation_activity_group_one_member">1 membre</string>
+    <string name="conversation_activity_invitation_accepted">Invitation acceptée</string>
+    <string name="conversation_activity_invitation_failed">Demandez à votre contact de mettre à jour twinme</string>
+    <string name="conversation_activity_invitation_joined">Membre du groupe</string>
+    <string name="conversation_activity_invitation_pending">Invitation en cours</string>
+    <string name="conversation_activity_invitation_refused">Invitation refusée</string>
+    <string name="conversation_activity_invitation_title">Je vous invite à rejoindre le groupe</string>
+    <string name="conversation_activity_local_cleanup">Le contenu principal a été supprimé localement.</string>
+    <string name="conversation_activity_manage_conversation">Gérer la conversation</string>
+    <string name="conversation_activity_menu_item_view_copy_message">Copié dans le presse-papiers !</string>
+    <string name="conversation_activity_menu_item_view_copy_title">Copier</string>
+    <string name="conversation_activity_menu_item_view_delete_title">Supprimer</string>
+    <string name="conversation_activity_menu_item_view_forward_title">Transférer</string>
+    <string name="conversation_activity_menu_item_view_info_title">Info</string>
+    <string name="conversation_activity_menu_item_view_operation_not_allowed">Opération non autorisée par l’expéditeur</string>
+    <string name="conversation_activity_menu_item_view_reply_title">Répondre</string>
+    <string name="conversation_activity_menu_item_view_save_message">Enregistré !</string>
+    <string name="conversation_activity_menu_item_view_save_title">Sauvegarder</string>
+    <string name="conversation_activity_menu_item_view_share_title">Partager</string>
+    <string name="conversation_activity_message">Entrez un message</string>
+    <string name="conversation_activity_photo_camera">Appareil photo</string>
+    <string name="conversation_activity_record_confirm_send_record">Appuyer à nouveau pour envoyer.</string>
+    <string name="conversation_activity_record_start_record">Maintenir appuyé pour enregistrer.</string>
+    <string name="conversation_activity_record_title">Enregistrer</string>
+    <string name="conversation_activity_reduce_menu_lower">Standard</string>
+    <string name="conversation_activity_reduce_menu_minimal">Minimum</string>
+    <string name="conversation_activity_reduce_menu_original">Original</string>
+    <string name="conversation_activity_reduce_menu_original_subtitle">Pas de redimensionnement</string>
+    <string name="conversation_activity_reject_stream">Refuser</string>
+    <string name="conversation_activity_reply_to">Réponse à %1$s</string>
+    <string name="conversation_activity_reset_conversation">Vous avez réinitialisé la conversation</string>
+    <string name="conversation_activity_reset_conversation_by_peer">%1$s a réinitialisé la conversation</string>
+    <string name="conversation_activity_send_file_warning">Attention : il n’est pas possible d’empêcher le destinataire de copier/sauvegarder/partager un document (pdf, word, ppt, excel, zip, etc.), qui ne peut être ouvert qu’en dehors de l’application. Voulez-vous toujours l’envoyer ?</string>
+    <string name="conversation_activity_send_large_file_message">Ce fichier est volumineux (%1$d Mo). Voulez-vous continuer ?</string>
+    <string name="conversation_activity_send_menu_allow_copy">Autoriser le destinataire à copier/enregistrer/partager ce contenu</string>
+    <string name="conversation_activity_stream_dialog">Voulez-vous accepter ?</string>
+    <string name="conversation_activity_unsupported_media">Format média non supporté.</string>
+    <string name="conversation_activity_video_call">Appel vidéo</string>
+    <string name="conversation_activity_video_camera">Caméra vidéo</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_activity_documents">Doc.</string>
+    <string name="conversation_files_activity_links">Liens</string>
+    <string name="conversation_files_activity_month">Ce mois-ci</string>
+    <string name="conversation_files_activity_no_files">Votre conversation avec %1$s ne contient aucun de ces éléments.</string>
+    <string name="conversation_files_activity_title">Médias, liens Web et documents</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_activity_background_colors">Fonds &amp; couleurs</string>
+    <string name="conversation_settings_activity_emoji_size">Taille des emojis</string>
+    <string name="conversation_settings_activity_link_preview">Visualisation</string>
+    <string name="conversation_settings_activity_link_preview_message">Afficher un aperçu du site web.</string>
+    <string name="conversation_settings_activity_link_title">Liens web</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_fragment_no_conversation_message">Les messages, chiffrés de bout-en-bout, sont échangés en pair-à-pair, directement de terminal à terminal, sans serveur de distribution intermédiaire = pas de traces dans le nuage.</string>
+    <string name="conversations_fragment_no_result_found">Aucun résultat trouvé pour \'%1$s\'.</string>
+    <string name="conversations_fragment_start">Démarrer une conversation</string>
+    <string name="conversations_fragment_title">Conversations</string>
+    <string name="conversations_fragment_you">Vous</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_message">Ce profil est affiché aux invités qui vous appelleront avec ce lien \"click-to-call\".</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">« Click-to-call » permet aux invités de vous appeler depuis un navigateur sans installer l’application.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_2">Chaque instance a un nom, une image et une description, représentant le sujet de l’appel, tels que :</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_3">votre service client</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_4">la voiture que vous vendez</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_5">un appel de groupe professionnel</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_6">une sonnette vidéo pour les livreurs.</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_1">Un « click-to-call » a des attributs pour préciser s’il est:</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_2">un appel audio et/ou vidéo</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_3">un appel individuel ou de groupe</string>
+    <string name="create_external_call_activity_onboarding_part_2_message_4">toujours ouvert ou limité à une date et une heure précises.</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_1">Partagez le lien « click-to-call » ou le QR-code via les canaux permettant de toucher les personnes concernées, par ex.:</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_2">un \"call-to-action\" sur votre site Web</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_3">un encart sur une plateforme de petites annonces</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_4">un email aux personnes invitées à l’appel de groupe</string>
+    <string name="create_external_call_activity_onboarding_part_3_message_5">une pancarte sur votre porte d’entrée pour les livreurs.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_1">Les destinataires scannent le code QR et ouvrent le lien dans un navigateur sur leur mobile ou PC. Ils peuvent alors :</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">Changer le nom par défaut (Invité) qui les représente lors de l’appel</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_3">Vous appeler en appuyant sur le bouton « Appeler » sur la page Web.</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_4">Après l’appel, ils peuvent garder la page Web ouverte pour vous rappeller.</string>
+    <string name="create_external_call_activity_placeholder">Objet (Aide, Annonce, Réunion, Sonnette, …)</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_activity_add_member_hint">Inviter des membres</string>
+    <string name="create_group_activity_create">Créer</string>
+    <string name="create_group_activity_member_allow_invitation_message">Autoriser les membres à inviter leurs contacts</string>
+    <string name="create_group_activity_member_allow_invitation_title">Invitation de membres</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_message">Autoriser les membres à inviter d’autres membres en tant que contacts personnels</string>
+    <string name="create_group_activity_member_allow_invite_member_as_contact_title">Établir des contacts personnels</string>
+    <string name="create_group_activity_member_allow_post_message">Autoriser les membres à poster des messages</string>
+    <string name="create_group_activity_member_allow_post_title">Publier des messages</string>
+    <string name="create_group_activity_member_list">Liste des membres (%1$d)</string>
+    <string name="create_group_activity_name_hint">Nom du groupe</string>
+    <string name="create_group_activity_title">Groupe</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_activity_incomplete_profile_message">Un nom ET une image sont tous deux nécessaires, pour que vos contacts puissent vous distinguer des autres.</string>
+    <string name="create_profile_activity_message">Ces informations de profil sont utilisées pour inviter des contacts.</string>
+    <string name="create_profile_activity_onboarding_message">Entrez un profil (nom &amp; image) qui vous représente auprès de vos contacts.</string>
+    <string name="create_profile_activity_onboarding_message_part_1">Les profils vous permettent d’inviter des contacts à créer des relations avec vous sur l’application. Vous pouvez avoir autant de Profils (persona) que vous le souhaitez, chacun associé à un « Space » particulier.</string>
+    <string name="create_profile_activity_onboarding_message_part_2">Chaque « Profil » a un « Nom » et une « Image » (obligatoire), vus par les contacts que vous invitez, et utilisés comme votre Profil initial associé aux relations nouvellement créées de ce « Space ».</string>
+    <string name="create_profile_activity_onboarding_message_part_3">Une fois créée, chaque relation possède sa propre paire de « Profils » vous représentant, vous et vos contacts, les uns envers les autres.</string>
+    <string name="create_profile_activity_onboarding_message_part_4">Vous pourrez alors modifier comment vous souhaitez être connu de chacun de vos contacts, sur chaque relation, indépendamment.</string>
+    <string name="create_profile_activity_save_message">Ce nom et cette image servent à inviter vos contacts et à initialiser vos relations. Vous pourrez les modifier et les personnaliser pour chaque relation.</string>
+    <string name="create_profile_activity_welcome1">Entrez votre photo de profil</string>
+    <string name="create_profile_activity_welcome2">Bienvenue %1$s !</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_message">Les « Spaces » sont locaux et non visibles par les contacts.</string>
+    <string name="create_space_activity_onboarding_message_part_1">Les « Spaces» vous aident à organiser vos contacts en fonction du cercle social auquel ils appartiennent, par exemple. Famille, Amis, Business, Fun, etc.</string>
+    <string name="create_space_activity_onboarding_message_part_2">Chaque « Space » est associé à un « Profil » représentant le personnage que vous souhaitez utiliser lorsque vous interagissez avec les contacts du cercle social de ce « Space », par exemple Papa, Johny, Dr. John Doe, Batman, etc.</string>
+    <string name="create_space_activity_onboarding_message_part_3">Les « Spaces » sont locaux à votre application sur votre appareil. Ils ne sont visibles que par vous et pas par vos contacts, ni par les serveurs du service.</string>
+    <string name="create_space_activity_onboarding_message_part_4">Un « Space » a :</string>
+    <string name="create_space_activity_onboarding_message_part_5">- un « Nom », représentant un cercle social spécifique avec lequel vous interagissez</string>
+    <string name="create_space_activity_onboarding_message_part_6">- une « Image » vous permettant de l’identifier rapidement dans votre liste de « Spaces »</string>
+    <string name="create_space_activity_onboarding_message_part_7">- un « Thème » de couleur, pour personnaliser son look &amp; feel</string>
+    <string name="create_space_activity_onboarding_message_part_8">- des « Paramètres » qui peuvent être spécifiques à chaque « Space » particulier, remplaçant ainsi les valeurs par défaut définies par les Paramètres de l’application.</string>
+    <string name="create_space_activity_title">Créer un Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_activity_message">Ce profil est associé au code permettant de transférer un appel en cours vers un navigateur.</string>
+    <string name="create_transfert_call_activity_name_placeholder">Mes transferts d’appel</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_activity_confirm_message">Taper les lettres \"OK\" ci-dessous pour confirmer la suppression du compte.</string>
+    <string name="deleted_account_activity_delete">Supprimer le compte</string>
+    <string name="deleted_account_activity_warning">Attention ‼️</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_activity_message">Votre compte a été supprimé et toutes les données associées ont été détruites.&lt;br /&gt;
+        Vous devez fermer l’application.</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_activity_confirm_message">Etes-vous sûr de vouloir supprimer cette relation ?</string>
+    <string name="edit_contact_activity_message">Ce contact ne pourra plus vous joindre.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_activity_delete_message">Cette action invalide le code d’invitation actuel associé à ce profil. Confirmer la suppression ?</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_activity_delete_confirm_message">Êtes-vous sûr de vouloir supprimer ce code \"Click-to-Call\" ?</string>
+    <string name="edit_external_call_activity_delete_message">Ce lien \"Click-to-Call\" ne sera plus utilisable.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_activity_editing_profile">Modifier le profil</string>
+    <string name="edit_profile_activity_propagating_all_contacts">à tous les contacts de ce Space</string>
+    <string name="edit_profile_activity_propagating_ask_message">Propager l’image, le nom, ou la description que vous venez de modifier :</string>
+    <string name="edit_profile_activity_propagating_except_contacts">à tous sauf s’ils sont personnalisés</string>
+    <string name="edit_profile_activity_propagating_message">Vous pouvez propager ou non les modifications de votre profil d’invitation à vos contacts existants.</string>
+    <string name="edit_profile_activity_propagating_no_contact">à personne</string>
+    <string name="edit_profile_activity_propagating_profile">Propager les modifications du profil</string>
+    <string name="edit_profile_activity_remove_active_profile">Le profil actif ne peut pas être supprimé</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_activity_certified_message">Une fois la relation créée, il est fortement recommandé de la certifier pour renforcer sa sécurité.</string>
+    <string name="enter_invitation_code_activity_enter_code">Entrer un Mini-Code</string>
+    <string name="enter_invitation_code_activity_error_message">Ce code n’est pas valide. Il a peut-être déjà été utilisé ou expiré.</string>
+    <string name="enter_invitation_code_activity_invitation_message">Une fois la relation créée, n’oubliez pas de la certifier pour renforcer sa sécurité.</string>
+    <string name="enter_invitation_code_activity_message">Entrer le Mini-Code fourni par votre contact pour créer une relation.</string>
+    <string name="enter_invitation_code_activity_onboarding_message">Un contact vous a donné un Mini-Code à 6 caractères pour créer une relation. Ce Mini-Code à usage unique expire 24h après sa création.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_activity_all_conversations_zip_file">Le contenu des conversations sera exporté dans un fichier ZIP.</string>
+    <string name="export_activity_content_title">Contenus</string>
+    <string name="export_activity_content_to_export">Contenus à exporter</string>
+    <string name="export_activity_do_not_leave_screen">Ne quittez pas l’écran pendant l’opération d’export.</string>
+    <string name="export_activity_export">Export</string>
+    <string name="export_activity_file">fichier</string>
+    <string name="export_activity_files">fichiers</string>
+    <string name="export_activity_get_all_content">La récupération du contenu de la conversation avec %1$s est en cours.</string>
+    <string name="export_activity_get_one_chat">La récupération du contenu des conversations est en cours.</string>
+    <string name="export_activity_images">Images</string>
+    <string name="export_activity_no_content_to_export">Aucun contenu à exporter</string>
+    <string name="export_activity_one_conversation_zip_file">Le contenu de la conversation sera exporté dans un fichier ZIP.</string>
+    <string name="export_activity_save_location">Emplacement</string>
+    <string name="export_activity_save_location_message">Choisissez où exporter.</string>
+    <string name="export_activity_select_content">Sélectionnez les contenus que vous souhaitez exporter.\nSeuls les contenus non éphémères, autorisés à être copiés/sauvegardés/partagés, peuvent être exportés.</string>
+    <string name="export_activity_success">Export terminé avec succès.</string>
+    <string name="export_activity_title">Export de conversations</string>
+    <string name="export_activity_videos">Vidéos</string>
+    <string name="export_activity_voice_messages">Messages vocaux</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_activity_error_code_message">Erreur fatale, code %1$d.\nVeuillez redémarrer l’application et signaler le problème via un message de commentaires, si vous le pouvez. Désolé pour le désagrément.</string>
+    <string name="fatal_error_activity_error_message">Erreur fatale : %1$s&lt;br /&gt;
+        Vous devez fermer l’application.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_activity_contact">Contact</string>
+    <string name="feedback_activity_gdpr_notice">Utilisez ce formulaire pour demander l’accès aux données de votre compte.</string>
+    <string name="feedback_activity_help">Nous apprécions votre aide pour identifier les problèmes et travailler avec nous pour les résoudre.</string>
+    <string name="feedback_activity_info_logs">Un journal de débogage ne contient que des données techniques de bas niveau sur les activités et le comportement de l’application et ne révèle AUCUNE de vos informations personnelles.</string>
+    <string name="feedback_activity_logs">Journal de Débogage</string>
+    <string name="feedback_activity_message">Message</string>
+    <string name="feedback_activity_send">Envoyer</string>
+    <string name="feedback_activity_send_logs">Envoyer un Journal de Débogage</string>
+    <string name="feedback_activity_send_message">Commentaire soumis. Merci.</string>
+    <string name="feedback_activity_subject">Description</string>
+    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_activity_generate_code_message">Cette action invalide le code d’invitation actuel associé à ce profil. Voulez-vous vraiment générer un nouveau code ?</string>
+    <string name="fullscreen_qrcode_activity_generate_code_title">Générer un nouveau code d’invitation</string>
+    <string name="fullscreen_qrcode_activity_save_message">Importez ou scannez ce QR-Code d’invitation avec twinme pour ajouter ce contact.</string>
+    <string name="fullscreen_qrcode_activity_save_title">Enregistrer dans la galerie de photos</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_activity_information_audio_call">Autoriser les appels vocaux</string>
+    <string name="group_capabilities_activity_information_programmed_call">Programmer la date/heure des appels</string>
+    <string name="group_capabilities_activity_information_video_call">Autoriser les appels vidéo</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_activity_admin_not_authorize">L’administrateur du groupe n’a pas autorisé cette action.</string>
+    <string name="group_member_activity_invitation_message">Inviter %1$s en tant que contact personnel</string>
+    <string name="group_member_activity_invitation_title">Invitation</string>
+    <string name="group_member_activity_invite_personnal_relation">Inviter en tant que contact personnel</string>
+    <string name="group_member_activity_remove_message">Voulez-vous vraiment supprimer des membres de ce groupe ?</string>
+    <string name="group_member_activity_section_administrator">Administrateur</string>
+    <string name="group_member_activity_section_invitation">Invitations</string>
+    <string name="group_member_activity_section_member">Membres</string>
+    <string name="group_member_activity_title">Membres du groupe</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_activity_call_terminated_reason_busy">%1$s est occupé</string>
+    <string name="info_item_activity_call_terminated_reason_cancel">Appel annulé par %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_decline">Appel refusé par %1$s</string>
+    <string name="info_item_activity_call_terminated_reason_gone">%1$s est hors ligne</string>
+    <string name="info_item_activity_call_terminated_reason_not_authorized">Pas autorisé à appeler</string>
+    <string name="info_item_activity_call_terminated_reason_revoked">%1$s a supprimé cette relation</string>
+    <string name="info_item_activity_call_terminated_reason_timeout">%1$s ne répond pas</string>
+    <string name="info_item_activity_deleted">Supprimé par le destinataire :</string>
+    <string name="info_item_activity_may_be_copied">Peut être copié/enregistré/partagé…</string>
+    <string name="info_item_activity_may_not_be_copied">Ne peut pas être copié/enregistré/partagé…</string>
+    <string name="info_item_activity_reactions">Réactions</string>
+    <string name="info_item_activity_received">Reçu :</string>
+    <string name="info_item_activity_seen">Vu :</string>
+    <string name="info_item_activity_sent">Envoyé :</string>
+    <string name="info_item_activity_updated">Modifié</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_activity_generate_code_message">Cette action invalide le code d’invitation actuel associé à ce lien \"click-to-call\". Confirmer?</string>
+    <string name="invitation_call_activity_generate_code_title">Générer un nouveau code pour ce lien</string>
+    <string name="invitation_call_activity_invite_message">Ouvrez l’adresse Web %1$s ou scannez le QR-Code, pour appeler \"%2$s\".</string>
+    <string name="invitation_call_activity_message">Partagez ce code \"click-to-call\" avec quelqu’un qui pourra alors vous appeler, depuis le web ou l’application mobile.</string>
+    <string name="invitation_call_activity_save_message">Scannez ce QR-Code pour appeler \"%1$s\".</string>
+    <string name="invitation_call_activity_share">Publier</string>
+    <string name="invitation_call_activity_title">Appel externe</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_activity_create_code">Créer un Mini-Code</string>
+    <string name="invitation_code_activity_create_code_subtitle">pour inviter un contact lorsque vous n’avez pas accès à l’application.</string>
+    <string name="invitation_code_activity_expiration">Expiration :</string>
+    <string name="invitation_code_activity_history">Mes Mini-Codes</string>
+    <string name="invitation_code_activity_limit_message">Le nombre maximum de Mini-Codes actifs autorisés est atteint. Vous devez attendre 24h pour pouvoir en générer de nouveaux.</string>
+    <string name="invitation_code_activity_onboarding_message">Les Mini-Codes sont à usage unique et valables 24 heures seulement. Vous pouvez les donner à vos contacts pour créer une relation lorsque vous n’avez pas accès à l’application (sans téléphone par exemple).</string>
+    <string name="invitation_code_activity_success_message">Il est fortement recommandé de certifier les relations établies avec un Mini-Code pour renforcer leur sécurité.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_activity_message">Demandez à votre ami près de vous de scanner le QR-code de la \"room\" avec twinme, ou appuyez sur le code d’invitation pour le copier dans le presse-papiers.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_activity_audio">Voix</string>
+    <string name="last_calls_activity_video">Vidéo</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_activity_message">Votre compte twinme sur cet appareil va être transféré vers twinme+.</string>
+    <string name="local_account_migration_activity_message_older_version">Assurez-vous de mettre à jour les deux appareils avec la dernière version de l’application avant de démarrer le transfert, pour éviter de perdre toutes vos relations.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_add_contact">Ajouter un contact</string>
+    <string name="main_activity_add_group">Créer un groupe</string>
+    <string name="main_activity_reset_conversation">Réinitialiser</string>
+    <string name="main_activity_reset_conversation_message">Cette action supprime tous les messages de cette conversation, y compris sur l’appareil de votre contact. Confirmer ?</string>
+    <string name="main_activity_reset_conversation_title">Réinitialiser la conversation</string>
+    <string name="main_activity_reset_group_conversation_admin_message">Cette action supprime tous les messages de cette conversation sur l’appareil de chaque membre du groupe. Confirmer ?</string>
+    <string name="main_activity_reset_group_conversation_message">Cette action supprime tous les messages de cette conversation sur votre appareil. Confirmer ?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_activity_premium_feature">Vous devez passer à twinme+ pour utiliser cette fonctionnalité. Vous pourrez migrer toutes les données de votre compte.</string>
+    <string name="migration_twinme_plus_activity_updgrade_account">Vous pourrez migrer toutes les données de votre compte.</string>
+    <string name="migration_twinme_plus_activity_updgrade_message">twinme est disponible en version premium avec encore plus de fonctionnalités.</string>
+    <string name="migration_twinme_plus_activity_premium_title">Passer à twinme+</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_activity_about_twinme">À propos</string>
+    <string name="navigation_activity_application_settings">Paramètres de l’application</string>
+    <string name="navigation_activity_feedback">Commentaires</string>
+    <string name="navigation_activity_getting_started">Pour commencer</string>
+    <string name="navigation_activity_help">Aide</string>
+    <string name="navigation_activity_profile">Mes profils</string>
+    <string name="navigation_activity_settings">Paramètres</string>
+    <string name="navigation_activity_sign_out">Se déconnecter</string>
+    <string name="navigation_activity_sounds">Sons</string>
+    <string name="navigation_activity_support">Support</string>
+    <string name="navigation_activity_title">Menu</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Appel audio pour %1$s</string>
+    <string name="notification_center_audio_message">Vous a envoyé un message audio</string>
+    <string name="notification_center_audio_message_received">Nouveau message audio</string>
+    <string name="notification_center_cancel">Rejeter</string>
+    <string name="notification_center_cleanup_conversation">Certains anciens messages ont été supprimés.</string>
+    <string name="notification_center_deleted_contact">Contact supprimé</string>
+    <string name="notification_center_file_message">Vous a envoyé un fichier</string>
+    <string name="notification_center_file_message_received">Nouveau fichier</string>
+    <string name="notification_center_group_invitation">Vous a envoyé une invitation</string>
+    <string name="notification_center_group_invitation_received">Nouvelle invitation</string>
+    <string name="notification_center_join_group">Vous êtes membre du groupe</string>
+    <string name="notification_center_message_received">Nouveau message</string>
+    <string name="notification_center_missed_audio_call_to">Appel audio pour %1$s manqué</string>
+    <string name="notification_center_missed_video_call_to">Appel vidéo pour %1$s manqué</string>
+    <string name="notification_center_mute">Couper le micro</string>
+    <string name="notification_center_new_contact">Nouveau contact</string>
+    <string name="notification_center_photo_message">Vous a envoyé une photo</string>
+    <string name="notification_center_photo_message_received">Nouvelle photo</string>
+    <string name="notification_center_reaction">a réagi %1$s</string>
+    <string name="notification_center_reaction_message">A réagi à un message</string>
+    <string name="notification_center_reaction_message_received">Réaction à un message</string>
+    <string name="notification_center_reset_message">Conversation réinitialisée</string>
+    <string name="notification_center_stop">Arrêter</string>
+    <string name="notification_center_transfering_data">Transfert de messages en cours…</string>
+    <string name="notification_center_unmute">Activer le micro</string>
+    <string name="notification_center_updated_contact_avatar">Image modifiée</string>
+    <string name="notification_center_updated_contact_name">Nom modifié</string>
+    <string name="notification_center_video_call_to">Appel vidéo pour %1$s</string>
+    <string name="notification_center_video_message">Vous a envoyé une vidéo</string>
+    <string name="notification_center_video_message_received">Nouvelle vidéo</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Appels vocaux</string>
+    <string name="notification_channel_contact_title">Contacts</string>
+    <string name="notification_channel_group_title">Groupes</string>
+    <string name="notification_channel_message_title">Messages</string>
+    <string name="notification_channel_missed_title">Appels manqués</string>
+    <string name="notification_channel_system_title">Autres</string>
+    <string name="notification_channel_video_title">Appels vidéos</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_fragment_item_audio_call">A essayé de vous appeler</string>
+    <string name="notifications_fragment_item_audio_message">Vous a envoyé un message audio</string>
+    <string name="notifications_fragment_item_cleanup_message">a supprimé d\'anciens messages.</string>
+    <string name="notifications_fragment_item_deleted_contact">Contact supprimé</string>
+    <string name="notifications_fragment_item_file_message">Vous a envoyé un fichier</string>
+    <string name="notifications_fragment_item_group_invitation">Vous a envoyé une invitation</string>
+    <string name="notifications_fragment_item_image_message">Vous a envoyé une photo</string>
+    <string name="notifications_fragment_item_join_group">Vous êtes membre du groupe</string>
+    <string name="notifications_fragment_item_new_contact">Nouveau contact</string>
+    <string name="notifications_fragment_item_reset_conversation">A réinitialisé la conversation</string>
+    <string name="notifications_fragment_item_shortest_day">%1$dj</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$dh</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$dmn</string>
+    <string name="notifications_fragment_item_shortest_second">%1$ds</string>
+    <string name="notifications_fragment_item_text_message">Vous a envoyé un message</string>
+    <string name="notifications_fragment_item_updated_contact_avatar">Image modifiée</string>
+    <string name="notifications_fragment_item_updated_contact_name">Nom modifié</string>
+    <string name="notifications_fragment_item_video_call">A essayé de vous appeler en visio</string>
+    <string name="notifications_fragment_item_video_message">Vous a envoyé une vidéo</string>
+    <string name="notifications_fragment_no_notification_message">Les notifications relatives aux contacts, conversations, appels, etc. sont répertoriées ici.</string>
+    <string name="notifications_fragment_no_notification_title">Vous n’avez aucune notification.</string>
+    <string name="notifications_fragment_reset">Êtes-vous sûr de vouloir réinitialiser toutes les notifications ?</string>
+    <string name="notifications_fragment_reset_title">Réinitialiser les notifications</string>
+    <string name="notifications_fragment_title">Notifications</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_activity_font">Polices de caractères</string>
+    <string name="personalization_activity_font_extra_large">Très grande</string>
+    <string name="personalization_activity_font_large">Grande</string>
+    <string name="personalization_activity_font_small">Petite</string>
+    <string name="personalization_activity_haptic_feedback">Retour haptique</string>
+    <string name="personalization_activity_haptic_feedback_message">Sensation tactile au toucher.</string>
+    <string name="personalization_activity_menu_choose_color">Couleurs par défaut</string>
+    <string name="personalization_activity_menu_enter_color">Code couleur</string>
+    <string name="personalization_activity_mode">Mode</string>
+    <string name="personalization_activity_mode_dark">Sombre</string>
+    <string name="personalization_activity_mode_light">Clair</string>
+    <string name="personalization_activity_start_tab_information">Sélectionnez l’onglet sur lequel vous souhaitez lancer l’application.</string>
+    <string name="personalization_activity_start_tab_title">Onglet par défaut</string>
+    <string name="personalization_activity_system">Système</string>
+    <string name="personalization_activity_title">Personnalisation</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_activity_camera_control_description_1">Changer la caméra avant/arrière</string>
+    <string name="premium_services_activity_camera_control_description_2">Zoom in/out</string>
+    <string name="premium_services_activity_camera_control_description_3">Pour assister un proche ou un client à distance</string>
+    <string name="premium_services_activity_camera_control_description_4">Pour gérer une caméra de surveillance</string>
+    <string name="premium_services_activity_camera_control_subtitle">Contrôlez la caméra de votre contact pendant un appel avec son autorisation</string>
+    <string name="premium_services_activity_camera_control_title">Contrôle de la caméra distante</string>
+    <string name="premium_services_activity_click_to_call_description_1">Créer un code \"cliquez pour m’appeler\"</string>
+    <string name="premium_services_activity_click_to_call_description_2">Publier ou diffuser par n’importe quel moyen</string>
+    <string name="premium_services_activity_click_to_call_description_3">Les destinataires scannent le code et vous appellent</string>
+    <string name="premium_services_activity_click_to_call_description_4">Anonyme sans trace dans le cloud</string>
+    <string name="premium_services_activity_click_to_call_subtitle">Autoriser des invités à vous appeler depuis le web</string>
+    <string name="premium_services_activity_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_activity_conversation_description_1">Médias, fichiers, notes vocales, messages</string>
+    <string name="premium_services_activity_conversation_description_2">Plus anciens qu’une période/date spécifique</string>
+    <string name="premium_services_activity_conversation_description_3">Pour une conversation ou toutes</string>
+    <string name="premium_services_activity_conversation_description_4">Uniquement local, sans impact sur le correspondant</string>
+    <string name="premium_services_activity_conversation_subtitle">Exporter du contenu et libérer de l’espace</string>
+    <string name="premium_services_activity_conversation_title">Gestion des conversations</string>
+    <string name="premium_services_activity_description_part1_subtitle">Connexion directe entre appareils</string>
+    <string name="premium_services_activity_description_part1_title">Qualité audio/vidéo HD</string>
+    <string name="premium_services_activity_description_part2_subtitle">Aucune trace dans le cloud</string>
+    <string name="premium_services_activity_description_part2_title">Intimité - Confidentialité</string>
+    <string name="premium_services_activity_description_part3_subtitle">Efficacité énergétique</string>
+    <string name="premium_services_activity_description_part3_title">Eco-responsable</string>
+    <string name="premium_services_activity_group_call_description_1">Audio/vidéo Haute Définition</string>
+    <string name="premium_services_activity_group_call_description_2">Connexion directe entre appareils</string>
+    <string name="premium_services_activity_group_call_description_3">Sécurisés et privés</string>
+    <string name="premium_services_activity_group_call_description_4">Aucune trace dans le cloud</string>
+    <string name="premium_services_activity_group_call_subtitle">Inviter des contacts à rejoindre un appel de groupe vocal/vidéo</string>
+    <string name="premium_services_activity_group_call_title">Appels de groupe</string>
+    <string name="premium_services_activity_privacy_description_1">Verrouiller l’application avec une authentification biométrique ou autre</string>
+    <string name="premium_services_activity_privacy_description_2">Masquer le dernier écran dans le sélecteur d’application</string>
+    <string name="premium_services_activity_privacy_description_3">Messages éphémères qui disparaissent après un certain temps</string>
+    <string name="premium_services_activity_privacy_description_4">Empêcher un contact de vous appeler</string>
+    <string name="premium_services_activity_privacy_subtitle">Contrôler l’application, les contacts et les messages</string>
+    <string name="premium_services_activity_privacy_title">Plus de confidentialité</string>
+    <string name="premium_services_activity_space_description_1">Plusieurs profils avec relations, conversations, historique associés</string>
+    <string name="premium_services_activity_space_description_2">Apparence, notifications et paramètres personnalisés</string>
+    <string name="premium_services_activity_space_description_3">Pour la famille, les amis, les collègues, les affaires, le sport, etc.</string>
+    <string name="premium_services_activity_space_description_4">Spaces secrets non répertoriés, accédés par leur nom</string>
+    <string name="premium_services_activity_space_subtitle">Pour chaque groupe social avec lequel vous interagissez</string>
+    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_streaming_description_1">Partagez vos musiques en direct</string>
+    <string name="premium_services_activity_streaming_description_2">Chaque participant peut contrôler le lecteur</string>
+    <string name="premium_services_activity_streaming_description_3">Interagissez sur l’appel simultanément</string>
+    <string name="premium_services_activity_streaming_description_4">Même intimité que dans la vraie vie</string>
+    <string name="premium_services_activity_streaming_subtitle">Diffusez vos médias pendant un appel</string>
+    <string name="premium_services_activity_streaming_title">Partage de médias</string>
+    <string name="premium_services_activity_transfert_description_1">Créer le code et le profil de transfert d’appel</string>
+    <string name="premium_services_activity_transfert_description_2">Télécharger son URL ou scanner le code sur un ordinateur</string>
+    <string name="premium_services_activity_transfert_description_3">Ajouter la page aux favoris du navigateur</string>
+    <string name="premium_services_activity_transfert_description_4">« Appeler » depuis la page pendant un appel mobile</string>
+    <string name="premium_services_activity_transfert_subtitle">Transférer un appel mobile vers un navigateur</string>
+    <string name="premium_services_activity_transfert_title">Transfert d’appel</string>
+    <string name="premium_services_activity_title">Inviter des contacts à rejoindre un appel audio/vidéo en cours.</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_activity_coach_mark">Verrouillez l’application avec les services biométriques ou avec un code PIN.</string>
+    <string name="privacy_activity_hide_last_screen_message">Ne pas afficher les aperçus dans le sélecteur d’applis.</string>
+    <string name="privacy_activity_hide_last_screen_title">Cacher le dernier écran</string>
+    <string name="privacy_activity_lock_screen_message">Déverrouillez l’accès à l’application à l’aide des services d’authentification biométrique ou par mot de passe de votre appareil. Vous pouvez toujours répondre aux appels entrants et recevoir des notifications lorsque l’accès à l’application est verrouillé.</string>
+    <string name="privacy_activity_lock_screen_not_available">Cette option nécessite une version d’Android > 5.0</string>
+    <string name="privacy_activity_lock_screen_timeout">Délai d’expiration du verrouillage d’accès</string>
+    <string name="privacy_activity_lock_screen_timeout_instant">Instantanément</string>
+    <string name="privacy_activity_lock_screen_title">Verrouillage d’accès</string>
+    <string name="privacy_activity_title">Confidentialité</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_add_profile">Ajouter un profil</string>
+    <string name="profile_fragment_create_profile">Créer un profil</string>
+    <string name="profile_fragment_default_action">Activer</string>
+    <string name="profile_fragment_default_profile_title">Profil actif</string>
+    <string name="profile_fragment_identity_title">Profils</string>
+    <string name="profile_fragment_message">Ce profil vous permet d’inviter vos contacts à établir une relation privée avec vous, sous votre contrôle.</string>
+    <string name="profile_fragment_twincode_title">Code d’invitation</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_activity_add">Ajouter un proxy</string>
+    <string name="proxy_activity_add_placeholder">Collez ou saisissez l’URL d’un proxy</string>
+    <string name="proxy_activity_already_use">Ce proxy est déjà configuré dans votre application.</string>
+    <string name="proxy_activity_enable">Utiliser un proxy</string>
+    <string name="proxy_activity_format">Formats des URL de proxy valides :</string>
+    <string name="proxy_activity_invalid_format">Format d’URL invalide</string>
+    <string name="proxy_activity_limit">Vous avez atteint la limite du nombre de proxys autorisés (%1$d). Pour en ajouter un nouveau, vous devez d’abord en supprimer un.</string>
+    <string name="proxy_activity_list">Mes proxys</string>
+    <string name="proxy_activity_list_information">Utilisez un proxy de la liste ci-dessous, uniquement si l\'application ne peut pas se connecter au service sans proxy.</string>
+    <string name="proxy_activity_onboarding">Lorsque l’accès aux serveurs de signalisation de l’application est bloqué dans votre pays, les proxys peuvent contourner ces blocages dans de nombreuses circonstances et vous permettre de communiquer en privé. En plus des proxys intégrés à l’application, vous pouvez créer le vôtre ou utiliser un proxy créé par quelqu’un d’autre. Les proxys ne peuvent en aucun cas accéder aux contenus échangés.</string>
+    <string name="proxy_activity_information">Utilisez un proxy uniquement si vous ne pouvez pas vous connecter au service depuis un réseau Wi-Fi ou cellulaire standard.</string>
+    <string name="proxy_activity_share">Ouvrez le lien %1$s avec twinme sur votre appareil pour configurer automatiquement ce proxy.</string>
+    <string name="proxy_activity_title">Proxy</string>
+    <string name="proxy_activity_url">Souhaitez-vous utiliser l’URL de ce proxy ?</string>
+    <string name="proxy_activity_warning">Attention ! L’URL de ce proxy ne vous permet pas de vous connecter au service de l’application.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_activity_change_permissions">Modifier les autorisations</string>
+    <string name="quality_of_service_activity_enable_notifications">Activer les notifications</string>
+    <string name="quality_of_service_activity_enable_notifications_warning">Sans ces autorisations, les messages peuvent mettre très longtemps à atteindre leur destination.</string>
+    <string name="quality_of_service_activity_notification_description">Autoriser l’exécution de l’application en arrière-plan</string>
+    <string name="quality_of_service_activity_notification_title">Les échanges de messages sont trop lents ?</string>
+    <string name="quality_of_service_activity_settings">Modifiez les autorisations de l’application dans les paramètres système.</string>
+    <string name="quality_of_service_activity_step1_message">Les messages chiffrés sont échangés directement entre les appareils en temps réel, en utilisant une approche "peer-to-peer", sans serveurs de distribution de contenu. Cela garantit l’absence de trace dans le cloud et offre une protection unique de la confidentialité.</string>
+    <string name="quality_of_service_activity_step2_message">Pour garantir une bonne qualité de service, configurez votre appareil pour permettre à l’application de recevoir des notifications en arrière-plan et l’exclure de l’optimisation de la batterie.</string>
+    <string name="quality_of_service_activity_step3_message">Utilisez fréquemment l’application pour que le système d’exploitation la considère comme importante et ne la termine pas de manière inattendue. \n\nEt n’oubliez pas d’en informer vos contacts !</string>
+    <string name="quality_of_service_activity_warning_background_data">Autoriser l’application à utiliser les données mobiles en arrière-plan.</string>
+    <string name="quality_of_service_activity_warning_receive_notification">Autoriser l’application à recevoir des notifications push.</string>
+    <string name="quality_of_service_activity_warning_run_background">Autoriser l’application à s’exécuter en arrière-plan.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_activity_change_admin_title">Définir comme administrateur</string>
+    <string name="room_members_activity_delete_message">Êtes-vous sûr de vouloir supprimer ce membre de la room ?</string>
+    <string name="room_members_activity_moderators_title">Modérateur</string>
+    <string name="room_members_activity_only_admin_message">Le seul administrateur ne peut pas être supprimé.</string>
+    <string name="room_members_activity_owner_title">Propriétaire</string>
+    <string name="room_members_activity_participants_title">Participants</string>
+    <string name="room_members_activity_remove_admin_title">Supprimer en tant qu’administrateur</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_activity_paste_code">Saisir ou coller un lien d’invitation</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_activity_developer_settings">Paramètres développeurs</string>
+    <string name="settings_advanced_activity_status_connection_message">Vérifiez l’état de votre connexion au service</string>
+    <string name="settings_advanced_activity_status_connection_title">État de la connexion</string>
+    <string name="settings_advanced_activity_title">Paramètres avancés</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_activity_allow_copy_category_title">Autoriser les destinataires à copier/sauvegarder/partager vos contenus</string>
+    <string name="settings_activity_allow_copy_file_title">Tout type de fichier</string>
+    <string name="settings_activity_allow_copy_text_title">Messages de texte</string>
+    <string name="settings_activity_application_notifications">Notifications de l’application</string>
+    <string name="settings_activity_audio_call_category_title">Appels vocaux</string>
+    <string name="settings_activity_audio_call_notification_ringtone_title">Nom de la sonnerie</string>
+    <string name="settings_activity_audio_call_notification_title">Sonnerie</string>
+    <string name="settings_activity_audio_call_vibration_title">Vibreur</string>
+    <string name="settings_activity_authorization_title">Autorisations</string>
+    <string name="settings_activity_call_item_menu_all">Tous les appels</string>
+    <string name="settings_activity_chat_category_title">Messages</string>
+    <string name="settings_activity_chat_ringtone_title">Nom du son</string>
+    <string name="settings_activity_chat_title">Son</string>
+    <string name="settings_activity_chat_vibration_title">Vibreur</string>
+    <string name="settings_activity_content_information">Résolution des contenus médias envoyés dans une conversation : la haute définition nécessite plus de données et donc plus de temps de transmission.</string>
+    <string name="settings_activity_content_title">Médias</string>
+    <string name="settings_activity_default_directory_title">Répertoire par défaut pour sauvegarder les fichiers</string>
+    <string name="settings_activity_default_sound">Défaut</string>
+    <string name="settings_activity_default_value_message">Ces paramètres sont utilisés par défaut au niveau de l’application.</string>
+    <string name="settings_activity_display_call_menu_missed">Appels manqués uniquement</string>
+    <string name="settings_activity_display_call_menu_none">Aucun appel</string>
+    <string name="settings_activity_display_call_none">Aucun</string>
+    <string name="settings_activity_display_call_title">Afficher les notifications d’appel dans les conversations</string>
+    <string name="settings_activity_display_notification_content_title">Afficher le contenu du message</string>
+    <string name="settings_activity_display_notification_like_title">Réactions aux messages</string>
+    <string name="settings_activity_display_notification_sender_title">Afficher l’expéditeur du message</string>
+    <string name="settings_activity_ephemeral_message">Effacer automatiquement les messages envoyés</string>
+    <string name="settings_activity_ephemeral_section_title">DURÉE DE VIE</string>
+    <string name="settings_activity_ephemeral_title">Message éphémère</string>
+    <string name="settings_activity_image_title">Photo</string>
+    <string name="settings_activity_message_properties_title">Propriétés des messages</string>
+    <string name="settings_activity_reset_default_value">Réinitialiser aux paramètres par défaut</string>
+    <string name="settings_activity_reset_preferences_button_title">Réinitialiser aux valeurs par défaut</string>
+    <string name="settings_activity_reset_preferences_message">Réinitialiser les paramètres de notification aux valeurs par défaut de l’application.</string>
+    <string name="settings_activity_reset_preferences_title">Réinitialiser les préférences</string>
+    <string name="settings_activity_permissions_title">AUTORISATIONS</string>
+    <string name="settings_activity_silent_sound">Silencieux</string>
+    <string name="settings_activity_sound_enabled_title">NOTIFICATION SONORES</string>
+    <string name="settings_activity_system_notifications_title">Notifications système</string>
+    <string name="settings_activity_system_settings_title">Paramètres système</string>
+    <string name="settings_activity_video_call_category_title">Appels vidéos</string>
+    <string name="settings_activity_video_call_notification_ringtone_title">Nom de la sonnerie</string>
+    <string name="settings_activity_video_call_notification_title">Sonnerie</string>
+    <string name="settings_activity_video_call_vibration_title">Vibreur</string>
+    <string name="settings_activity_welcome_screen_category_title">ACCUEIL</string>
+    <string name="settings_activity_welcome_screen_summary">Afficher les écrans d’accueil</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_activity_allow_invite_as_personal_contact">Autoriser les participants à inviter d’autres participants en tant que contacts personnels</string>
+    <string name="settings_room_activity_allow_invite_contact">Autoriser les participants à inviter leurs contacts</string>
+    <string name="settings_room_activity_conference_notifications_inform">Première entrée/dernière sortie</string>
+    <string name="settings_room_activity_conference_notifications_noisy">Toutes les entrées/sorties</string>
+    <string name="settings_room_activity_conference_notifications_quiet">Silencieux</string>
+    <string name="settings_room_activity_display_members">Afficher les membres</string>
+    <string name="settings_room_activity_room_type_channel">Canal - à sens unique</string>
+    <string name="settings_room_activity_room_type_channel_information">Seuls les administrateurs/modérateurs peuvent publier des messages</string>
+    <string name="settings_room_activity_room_type_feedback">Canal - avec commentaires</string>
+    <string name="settings_room_activity_room_type_feedback_information">Les commentaires des participants ne sont vus que par les administrateurs/modérateurs</string>
+    <string name="settings_room_activity_room_type_forum">Forum</string>
+    <string name="settings_room_activity_room_type_forum_information">Les participants peuvent poster des messages vus par tout le monde</string>
+
+    <!-- ShareActivity -->
+    <string name="share_activity_contact_list">Contacts</string>
+    <string name="share_activity_group_list">Groupes</string>
+    <string name="share_activity_title">Partager</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_activity_code">Code \"click-to-call\"</string>
+    <string name="show_call_activity_information_code">Partager ce code pour recevoir des appels externes.</string>
+    <string name="show_call_activity_schedule_call">Appel programmé</string>
+    <string name="show_call_activity_schedule_from">de %1$s</string>
+    <string name="show_call_activity_schedule_from_to">%1$s de %2$s à %3$s</string>
+    <string name="show_call_activity_schedule_message">Appel programmé à une date et heure définies par ailleurs.</string>
+    <string name="show_call_activity_schedule_to">à %1$s</string>
+    <string name="show_call_activity_settings_call">Type d’appel</string>
+    <string name="show_call_activity_settings_group_calls">Appel de groupe</string>
+    <string name="show_call_activity_settings_limited">Programmé</string>
+    <string name="show_call_activity_settings_start">Début</string>
+    <string name="show_call_activity_settings_end">Fin</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_activity_audio">Voix</string>
+    <string name="show_contact_activity_chat">Chat</string>
+    <string name="show_contact_activity_export_contents">Exporter les contenus</string>
+    <string name="show_contact_activity_history_title">Historique</string>
+    <string name="show_contact_activity_identity_title">Me connaît comme</string>
+    <string name="show_contact_activity_last_calls">Derniers appels</string>
+    <string name="show_contact_activity_cleanup">Nettoyage</string>
+    <string name="show_contact_activity_pending">En attente</string>
+    <string name="show_contact_activity_pending_message">Cette relation est en cours d’établissement. Veuillez patienter.</string>
+    <string name="show_contact_activity_revoked">Supprimé</string>
+    <string name="show_contact_activity_settings_coach_mark">Définissez ce que votre contact est autorisé à faire dans cette relation avec vous.</string>
+    <string name="show_contact_activity_video">Vidéo</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_activity_add_member">Ajouter un membre</string>
+    <string name="show_group_activity_invitation_list">Invitations en attente : %1$d</string>
+    <string name="show_group_activity_leave">Quitter le groupe</string>
+    <string name="show_group_activity_leave_confirm_message">Etes-vous sûr de vouloir quitter ce groupe ?</string>
+    <string name="show_group_activity_leave_message">Vous allez quitter ce groupe et vous ne pourrez plus accéder à ses conversations.</string>
+    <string name="show_group_activity_member_list">Liste des membres (%1$d)"</string>
+    <string name="show_group_activity_remove_confirm_message">Etes-vous sûr de vouloir supprimer ce groupe ?</string>
+    <string name="show_group_activity_remove_message">Ce groupe sera supprimé pour tous ses membres et ses conversations seront effacées.</string>
+    <string name="show_group_activity_title">Groupe</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_activity_admin_title">Interface d’administration</string>
+    <string name="show_room_activity_invite_participants">Inviter des participants</string>
+    <string name="show_room_activity_room_title">Room</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_activity_background_image_title">Image</string>
+    <string name="space_appearance_activity_background_message">Personnaliser l’arrière-plan des conversations avec une couleur ou une image.</string>
+    <string name="space_appearance_activity_background_text_title">Texte</string>
+    <string name="space_appearance_activity_background_title">Arrière plan</string>
+    <string name="space_appearance_activity_container_background_message">Fond d’un message envoyé</string>
+    <string name="space_appearance_activity_container_background_peer_message">Fond d’un message reçu</string>
+    <string name="space_appearance_activity_container_border_message">Contour d’un message envoyé</string>
+    <string name="space_appearance_activity_container_border_peer_message">Contour d’un message reçu</string>
+    <string name="space_appearance_activity_container_text_message">Texte d’un message envoyé</string>
+    <string name="space_appearance_activity_container_text_peer_message">Texte d’un message reçu</string>
+    <string name="space_appearance_activity_container_title">Bulles</string>
+    <string name="space_appearance_activity_default_value">Valeur par défaut</string>
+    <string name="space_appearance_activity_general_title">Général</string>
+    <string name="space_appearance_activity_menu_choose_color">Couleurs par défaut</string>
+    <string name="space_appearance_activity_menu_enter_color">Code couleur</string>
+    <string name="space_appearance_activity_opacity">Opacité</string>
+    <string name="space_appearance_activity_preview_message">J’ai oublié mes chaussons de danse… Tu peux les prendre avec toi ?😘</string>
+    <string name="space_appearance_activity_preview_peer_message">Coucou ma puce!</string>
+    <string name="space_appearance_activity_preview_title">Aperçu</string>
+    <string name="space_appearance_activity_theme">Thème</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_activity_message">Un Space est l’endroit où vos différentes personnalités rencontrent vos multiples cercles sociaux, y compris les plus secrets.</string>
+    <string name="spaces_activity_sample_business">Business</string>
+    <string name="spaces_activity_sample_business_name">Dr John Doe</string>
+    <string name="spaces_activity_sample_family">Famille</string>
+    <string name="spaces_activity_sample_family_name">Papa</string>
+    <string name="spaces_activity_sample_friends">Amis</string>
+    <string name="spaces_activity_sample_friends_name">Johnny</string>
+    <string name="spaces_activity_title">Spaces</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_activity_error_message">Une erreur est survenue. Veuillez réessayer.</string>
+    <string name="streaming_audio_activity_no_music_message">Veuillez transférer des fichiers de musique sur votre appareil.</string>
+    <string name="streaming_audio_activity_no_music_title">Aucune musique trouvée 🙁</string>
+    <string name="streaming_audio_activity_title">Partage de médias</string>
+    <string name="streaming_audio_activity_unsupported_message">Ce format audio n’est pas pris en charge par l’appareil de %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_activity_template_classified_ad">Petite annonce</string>
+    <string name="template_click_to_call_activity_template_classified_ad_placeholder">Annonce</string>
+    <string name="template_click_to_call_activity_template_help">Aide</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Aide</string>
+    <string name="template_click_to_call_activity_template_meeting">Réunion</string>
+    <string name="template_click_to_call_activity_template_meeting_placeholder">Réunion</string>
+    <string name="template_click_to_call_activity_template_video_bell">Sonnette vidéo</string>
+    <string name="template_click_to_call_activity_template_video_bell_placeholder">Sonnette</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_activity_template_business_placeholder">Nom (Dr John Doe, Mme Smith,…)</string>
+    <string name="template_space_activity_template_business_profile">Mme Samantha Smith</string>
+    <string name="template_space_activity_template_family_placeholder">Nom (Papa, Maman,…)</string>
+    <string name="template_space_activity_template_family_profile">Maman</string>
+    <string name="template_space_activity_template_friends_placeholder">Nom (Johny, Sam,…)</string>
+    <string name="template_space_activity_template_friends_profile">Sam</string>
+    <string name="template_space_activity_template_other">Autre</string>
+    <string name="template_space_activity_template_other_placeholder">Nom (Papa, Maman, Johny, Dr John Doe,…)</string>
+    <string name="template_space_activity_template_title">Modèles</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_activity_message">Demandez à votre ami près de vous de scanner le QR-code de votre invitation avec twinme, ou appuyez sur le code d’invitation pour le copier dans le presse-papiers.</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_activity_delete_confirm_message">Êtes-vous sûr de vouloir supprimer ce code \"Transfert d’Appel\" ?</string>
+    <string name="transfert_call_activity_delete_message">Ce lien de transfert d’appel sera supprimé. Confirmer?</string>
+    <string name="transfert_call_activity_gallery_message">Scannez ce QR-Code pour transférer vos appels mobiles.</string>
+    <string name="transfert_call_activity_message">Transférer ce code et ajouter son URL aux favoris du navigateur vers lequel vous voulez transférer vos appels mobiles.</string>
+    <string name="transfert_call_activity_reset_message">Cette action invalide le code de transfert d’appel actuel et en crée un nouveau. Confirmer?</string>
+    <string name="transfert_call_activity_saved_message">Code de transfert d’appel enregistré dans la galerie de photos.</string>
+    <string name="transfert_call_activity_share">Transférer</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_activity_update_available">Mise à jour disponible</string>
+    <string name="update_app_activity_update_message">La dernière mise à jour de l’application comprenait les éléments suivants :</string>
+    <string name="update_app_activity_update_title">Mettre à jour maintenant</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_activity_calling">Appel vidéo&#8230;</string>
+    <string name="video_call_activity_cannot_call">Impossible de passer un appel vidéo</string>
+    <string name="video_call_activity_connecting">Connexion&#8230;</string>
+    <string name="video_call_activity_hangup_confirmation">Voulez-vous terminer l’appel ?</string>
+    <string name="video_call_activity_terminate">Appel terminé</string>
+    <string name="video_call_activity_terminate_busy">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; est occupé(e)</string>
+    <string name="video_call_activity_terminate_cancel">Appel annulé par &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_connectivity_error">Appel interrompu en raison d’un problème de connectivité. Veuillez vérifier votre connexion internet.</string>
+    <string name="video_call_activity_terminate_decline">Appel refusé par &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_disconnected">Appel interrompu suite à une erreur réseau. Veuillez réessayer.</string>
+    <string name="video_call_activity_terminate_gone">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; n’est pas connecté(e)</string>
+    <string name="video_call_activity_terminate_revoked">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; a supprimé cette relation avec vous.</string>
+    <string name="video_call_activity_terminate_success">Appel terminé par &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_activity_terminate_timeout">Appel terminé : &lt;b&gt;%1$s&lt;/b&gt; ne répond pas</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_activity_accept">En appuyant sur %1$s, je confirme que j’ai lu et accepte :</string>
+    <string name="welcome_activity_next">Suivant</string>
+    <string name="welcome_activity_pass">Passer</string>
+    <string name="welcome_activity_privacy_policy">Politique de confidentialité</string>
+    <string name="welcome_activity_start">Démarrer</string>
+    <string name="welcome_activity_step1_message">Messages et appels audio/vidéo haute-définition protégeant la confidentialité par conception.</string>
+    <string name="welcome_activity_step2_message">Communications en "peer-to-peer" sécurisées : pas de traces dans le cloud.</string>
+    <string name="welcome_activity_step3_message">Pas de numéro de téléphone, pas de carnet d’adresses, pas d’identifiant : vous choisissez comment vous voulez être identifié en fonction de la personne avec qui vous communiquez.</string>
+    <string name="welcome_activity_terms_of_use">Conditions d’utilisation</string>
+
+</resources>
