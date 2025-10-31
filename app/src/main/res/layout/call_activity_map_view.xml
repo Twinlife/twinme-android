@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/call_activity_map_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/call_activity_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/call_activity_map_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/call_activity_map_close_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/close"
+                android:contentDescription="@string/application_cancel" />
+
+            <RelativeLayout
+                android:id="@+id/call_activity_map_reset_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:elevation="5dp">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/call_activity_map_reset_view_background_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/call_activity_map_reset_view_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/reset_map_zoom_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/call_activity_map_fullscreen_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:elevation="5dp">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/call_activity_map_fullscreen_view_background_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/call_activity_map_fullscreen_view_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/fullscreen_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/call_activity_map_share_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/call_activity_location_share"
+                android:elevation="5dp">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/call_activity_map_share_view_background_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/call_activity_map_share_view_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/call_location_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/call_activity_map_type_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:elevation="5dp">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/call_activity_map_type_view_background_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/call_activity_map_type_view_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/satellite_icon" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

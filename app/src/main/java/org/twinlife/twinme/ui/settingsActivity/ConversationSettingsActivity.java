@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.settingsActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -17,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.skin.EmojiSize;
 import org.twinlife.twinme.ui.spaces.ConversationAppearanceActivity;
+import org.twinlife.twinme.ui.spaces.SpaceAppearanceActivity;
 
 public class ConversationSettingsActivity extends AbstractSettingsActivity {
     private static final String LOG_TAG = "ConversationSettings...";
@@ -68,10 +72,20 @@ public class ConversationSettingsActivity extends AbstractSettingsActivity {
     }
 
     @Override
+    public void onSettingClick(Settings.IntConfig intConfig) {
+
+    }
+
+    @Override
     public void onRingToneClick(@NonNull UISetting<String> setting) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onRingToneClick");
         }
+    }
+
+    @Override
+    public void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value) {
+
     }
 
     //
@@ -132,7 +146,11 @@ public class ConversationSettingsActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onConversationAppearance");
         }
 
-        startActivity(ConversationAppearanceActivity.class);
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_ONLY_CONVERSATION, true);
+        intent.putExtra(Intents.INTENT_DEFAULT_SPACE_SETTINGS, true);
+        intent.setClass(this, ConversationAppearanceActivity.class);
+        startActivity(intent);
     }
 
     @Override

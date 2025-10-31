@@ -169,10 +169,10 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (position == POSITION_PROXY_ADD) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAddProxyClick());
-                settingSectionViewHolder.onBind(mActivity.getString(R.string.proxy_activity_add), false);
+                settingSectionViewHolder.onBind(mActivity.getString(R.string.proxy_activity_add), true);
             } else {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onDevelopersSettingsClick());
-                settingSectionViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_developer_settings), false);
+                settingSectionViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_developer_settings), true);
             }
         } else if (viewType == PROXY) {
             ProxyViewHolder proxyViewHolder = (ProxyViewHolder) viewHolder;

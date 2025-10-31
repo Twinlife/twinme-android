@@ -32,8 +32,8 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            app:layout_aspectRatio="156.25%"
-            android:src="@drawable/splash_screen_logo"
+            app:layout_aspectRatio="100%"
+            android:src="@drawable/logo"
             android:layout_below="@+id/welcome_help_activity_slide_mark_view" />
 
         <androidx.recyclerview.widget.RecyclerView

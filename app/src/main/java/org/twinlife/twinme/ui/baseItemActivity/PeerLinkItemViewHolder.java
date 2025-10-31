@@ -129,7 +129,6 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         mTextView.setBackground(mGradientDrawable);
-        mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
 
         mTextView.setOnClickListener(v -> {
             if (getBaseItemActivity().isSelectItemMode()) {
@@ -309,8 +308,11 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
 
         // Compute the corner radii only once!
         final float[] cornerRadii = getCornerRadii();
-
         mGradientDrawable.setCornerRadii(cornerRadii);
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+        }
 
         mTextView.setTypeface(getMessageFont().typeface);
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getMessageFont().size);

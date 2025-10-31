@@ -14,6 +14,9 @@
 
 package org.twinlife.twinme.ui.mainActivity;
 
+import static org.twinlife.twinme.ui.Intents.INTENT_PROFILE_ID;
+import static org.twinlife.twinme.ui.Intents.INTENT_SPACE_ID;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,7 +25,6 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -35,12 +37,12 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -53,10 +55,13 @@ import androidx.core.graphics.ColorUtils;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.billingclient.api.ProductDetails;
+import com.android.billingclient.api.Purchase;
 import com.android.installreferrer.api.InstallReferrerClient;
 import com.android.installreferrer.api.InstallReferrerStateListener;
 import com.android.installreferrer.api.ReferrerDetails;
@@ -70,6 +75,7 @@ import org.twinlife.twinlife.AndroidDeviceInfo;
 import org.twinlife.twinlife.BaseService.ErrorCode;
 import org.twinlife.twinlife.ConnectivityService;
 import org.twinlife.twinlife.ConversationService;
+import org.twinlife.twinlife.NotificationService;
 import org.twinlife.twinlife.TrustMethod;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Utils;
@@ -77,6 +83,7 @@ import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.models.Space;
+import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.services.MainService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -95,20 +102,33 @@ import org.twinlife.twinme.ui.accountActivity.AccountActivity;
 import org.twinlife.twinme.ui.contacts.MenuAddContactView;
 import org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
+import org.twinlife.twinme.ui.externalCallActivity.CreateExternalCallActivity;
+import org.twinlife.twinme.ui.externalCallActivity.TransferCallActivity;
 import org.twinlife.twinme.ui.groups.AcceptGroupInvitationActivity;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.BillingManager;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
+import org.twinlife.twinme.ui.mainActivity.skredBoard.SkredBoardFragment;
+import org.twinlife.twinme.ui.mainActivity.skredBoard.SkredBoardFragmentDelegate;
+import org.twinlife.twinme.ui.mainActivity.skredBoard.SkredboardGestureListener;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
+import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.privacyActivity.PrivacyActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
-import org.twinlife.twinme.ui.profiles.UIProfile;
 import org.twinlife.twinme.ui.settingsActivity.AboutActivity;
 import org.twinlife.twinme.ui.settingsActivity.HelpActivity;
 import org.twinlife.twinme.ui.settingsActivity.MessagesSettingsActivity;
 import org.twinlife.twinme.ui.settingsActivity.PersonalizationActivity;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.settingsActivity.SettingsAdvancedActivity;
 import org.twinlife.twinme.ui.settingsActivity.SoundsSettingsActivity;
+import org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity;
+import org.twinlife.twinme.ui.spaces.SecretSpaceActivity;
+import org.twinlife.twinme.ui.spaces.ShowSpaceActivity;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
+import org.twinlife.twinme.ui.spaces.TemplateSpaceActivity;
+import org.twinlife.twinme.ui.spaces.UISpace;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.CircularImageView;
@@ -125,27 +145,24 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MainActivity extends AbstractTwinmeActivity implements MainService.Observer, AbstractTwinmeActivity.Observer {
+public class MainActivity extends AbstractTwinmeActivity implements MainService.Observer, AbstractTwinmeActivity.Observer, SkredBoardFragmentDelegate, BillingManager.BillingManagerListener {
     private static final String LOG_TAG = "MainActivity";
     private static final boolean DEBUG = false;
 
+    private static final String SKREDBOARD_FRAGMENT = "skredboard";
+
     private static final String CHECKED_REFERRER = "CHECKED_REFERRER";
 
-    private static final String PROFILE_FRAGMENT_TAG = "PROFILE";
+    private static final String SPACES_FRAGMENT_TAG = "SPACES";
     private static final String CALLS_FRAGMENT_TAG = "CALLS";
     private static final String CONTACTS_FRAGMENT_TAG = "CONTACTS";
     private static final String CHAT_FRAGMENT_TAG = "CHAT";
     private static final String NOTIFICATIONS_FRAGMENT_TAG = "NOTIFICATIONS";
     private static final String SELECTED_BOTTOM_TAB = "selectedBottomTab";
-
-    private static final float DESIGN_SIDE_MENU_WIDTH = 680f;
-    private static final float DESIGN_SIDE_MENU_SETTINGS_WIDTH = 520f;
-    private static final float DESIGN_SIDE_PROFILES_WIDTH = 160f;
-    private static final float DESIGN_SIDE_SETTINGS_WIDTH = 520f;
-    private static final float DESIGN_PROFILE_ITEM_HEIGHT = 160f;
 
     private static final int PROFILE_FRAGMENT_INDEX = 0;
     private static final int CALLS_FRAGMENT_INDEX = 1;
@@ -153,6 +170,15 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     private static final int CHAT_FRAGMENT_INDEX = 3;
     private static final int NOTIFICATIONS_FRAGMENT_INDEX = 4;
     private static final int TAB_COUNT = 5;
+
+    private Bundle mSavedInstanceState;
+
+    private static final float DESIGN_SIDE_MENU_WIDTH = 680f;
+    private static final float DESIGN_SIDE_MENU_SETTINGS_WIDTH = 520f;
+    private static final float DESIGN_SIDE_SPACES_WIDTH = 160f;
+    private static final float DESIGN_SIDE_SETTINGS_WIDTH = 520f;
+    private static final float DESIGN_SPACE_ITEM_HEIGHT = 160f;
+    private static final float DESIGN_CREATE_SPACE_ICON_SIZE = 70f;
 
     private static final int COACH_MARK_DELAY = 500;
 
@@ -162,10 +188,13 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     private DrawerLayout mDrawerLayout;
     private View mDrawerContainer;
     private ListView mDrawerListView;
-    private RecyclerView mProfileDrawerListView;
-    private LinearLayoutManager mUIProfilesLinearLayoutManager;
+    private View mLeftMenuView;
+    private RecyclerView mSpaceDrawerListView;
+    private View mCreateSpaceView;
+    private ImageView mCreateSpaceImageView;
+    private LinearLayoutManager mUISpacesLinearLayoutManager;
     private SideMenuListAdapter mSideMenuListAdapter;
-    private ProfilesSideMenuListAdapter mProfileSideMenuListAdapter;
+    private SpacesSideMenuListAdapter mSpaceSideMenuListAdapter;
     private CircularImageView mAvatarView;
     private RoundedView mNotificationView;
     private CircularImageView mCallsAvatarView;
@@ -177,18 +206,25 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     private CoachMarkView mCoachMarkView;
 
     private volatile boolean mInitNavigationItemOnResume = true;
+    @Nullable
     private Profile mProfile;
-    private final List<UIProfile> mUIProfiles = new ArrayList<>();
 
+    @Nullable
     private Space mSpace;
+    private final List<UISpace> mUISpaces = new ArrayList<>();
+
+    private BillingManager mBillingManager;
+
     private UUID mTransferCallId;
 
     private MainService mMainService;
 
     private SharedPreferences mSharedPreferences;
+    private SkredBoardFragment mSkredBoardFragment;
 
     private boolean mIsOnPause = false;
     private boolean mMenuHiddenMode = true;
+    private boolean mCreateLevel = false;
     private boolean mHasPendingNotification = false;
     private boolean mHasConversations = false;
     private int mNbContacts = 0;
@@ -209,11 +245,13 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         super.onCreate(savedInstanceState);
 
+        mSavedInstanceState = savedInstanceState;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 
-        initViews();
-
         mMainService = new MainService(this, getTwinmeContext(), this);
+        mBillingManager = new BillingManager(this, this);
+
+        initViews();
 
         parseIntent(getIntent());
 
@@ -333,17 +371,16 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
 
-        if (mProfile != null && mBottomNavigationView.getSelectedItemId() == R.id.navigation_profile) {
-            return;
-        }
-
         Intent intent = new Intent();
-        if (mProfile != null && mBottomNavigationView.getSelectedItemId() != R.id.navigation_profile) {
-            intent.putExtra(Intents.INTENT_PROFILE_ID, mProfile.getId().toString());
-            intent.setClass(this, ShowProfileActivity.class);
-        } else {
+        if (mSpace == null) {
             intent.putExtra(Intents.INTENT_FIRST_PROFILE, true);
             intent.setClass(this, AddProfileActivity.class);
+        } else if (mSpace.getProfile() == null) {
+            intent.putExtra(INTENT_SPACE_ID, mSpace.getId().toString());
+            intent.setClass(this, EditProfileActivity.class);
+        } else {
+            intent.putExtra(INTENT_PROFILE_ID, mSpace.getProfile().getId().toString());
+            intent.setClass(this, ShowProfileActivity.class);
         }
         startActivity(intent);
     }
@@ -352,8 +389,53 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         if (DEBUG) {
             Log.d(LOG_TAG, "openSideMenu");
         }
+        
 
         mDrawerLayout.openDrawer(GravityCompat.START);
+        showCoachMark();
+    }
+
+    public void openDrawerLayout() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openDrawerLayout");
+        }
+
+        if (mSideMenuListAdapter.isFeatureSubscribed() != isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+            mDrawerListView.invalidateViews();
+        }
+        
+        mUISpacesLinearLayoutManager.scrollToPositionWithOffset(0, (int) (-DESIGN_SPACE_ITEM_HEIGHT * Design.HEIGHT_RATIO));
+
+        ViewGroup.LayoutParams layoutParams = mDrawerListView.getLayoutParams();
+        if (!mUISpaces.isEmpty()) {
+            layoutParams.width = (int) (DESIGN_SIDE_MENU_SETTINGS_WIDTH * Design.WIDTH_RATIO);
+            mLeftMenuView.setVisibility(View.VISIBLE);
+        } else {
+            layoutParams.width = (int) (DESIGN_SIDE_MENU_WIDTH * Design.WIDTH_RATIO);
+            mLeftMenuView.setVisibility(View.GONE);
+        }
+
+        updateSideMenu();
+
+        mDrawerLayout.openDrawer(mDrawerContainer);
+
+        showCoachMark();
+    }
+
+    public void openSkredBoard() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openSkredBoard");
+        }
+
+        mSkredBoardFragment.openSkredBoard();
+    }
+
+    public void closeSkredBoard() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "closeSkredBoard");
+        }
+
+        mSkredBoardFragment.closeSkredBoard();
     }
 
     private void checkReferrer() {
@@ -444,6 +526,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         outState.putInt(SELECTED_BOTTOM_TAB, mBottomNavigationView.getSelectedItemId());
+        getSupportFragmentManager().putFragment(outState, SKREDBOARD_FRAGMENT, mSkredBoardFragment);
 
         super.onSaveInstanceState(outState);
     }
@@ -469,11 +552,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         if (requestCode == CallsFragment.REQUEST_EXTERNAL_CALL_ONBOARDING && resultCode == RESULT_OK) {
             showPremiumFeatureView(UIPremiumFeature.FeatureType.CLICK_TO_CALL);
-        } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_profile) {
-            ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag(PROFILE_FRAGMENT_TAG);
-            if (profileFragment != null) {
-                profileFragment.onActivityResult(requestCode, resultCode, data);
-            }
         }
     }
 
@@ -523,8 +601,8 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             if (mInitNavigationItemOnResume) {
                 mInitNavigationItemOnResume = false;
 
-                if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.PROFILES.ordinal()) {
-                    mBottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+                if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.SPACES.ordinal()) {
+                    mBottomNavigationView.setSelectedItemId(R.id.navigation_spaces);
                 } else if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
                     mBottomNavigationView.setSelectedItemId(R.id.navigation_calls);
                 } else if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
@@ -548,6 +626,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             mBottomNavigationView.setVisibility(View.VISIBLE);
             mBottomNavigationShadowView.setVisibility(View.VISIBLE);
 
+            if (mBillingManager != null) {
+                mBillingManager.fetchPurchases();
+            }
         } else {
             finish();
         }
@@ -561,6 +642,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         super.onDestroy();
 
+        mBillingManager.dispose();
         mMainService.dispose();
     }
 
@@ -570,6 +652,11 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         mHasConversations = intent.getBooleanExtra(Intents.INTENT_HAS_CONVERSATIONS, false);
+        UUID spaceId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_SPACE_ID));
+
+        if (spaceId != null && (mSpace == null || mSpace.getId() != spaceId)) {
+            mMainService.setSpace(spaceId);
+        }
 
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri uri = intent.getData();
@@ -607,7 +694,11 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                     if (errorCode == ErrorCode.SUCCESS && twincodeURI != null) {
                         if (twincodeURI.kind == TwincodeURI.Kind.Invitation) {
                             Intent lIntent = new Intent(Intent.ACTION_VIEW);
-                            lIntent.setClass(this, AcceptInvitationActivity.class);
+                            if (twincodeURI.twincodeOptions != null) {
+                                lIntent.setClass(this, AcceptInvitationSubscriptionActivity.class);
+                            } else {
+                                lIntent.setClass(this, AcceptInvitationActivity.class);
+                            }
                             lIntent.putExtra(Intents.INTENT_TRUST_METHOD, TrustMethod.LINK);
                             lIntent.setData(Uri.parse(twincodeURI.uri));
                             startActivity(lIntent);
@@ -711,6 +802,88 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     }
 
     //
+    // Implement BillingManagerListener.Observer methods
+    //
+
+    @Override
+    public void onGetProducts(List<ProductDetails> productDetails) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetProducts: " + productDetails);
+        }
+
+        if (productDetails != null) {
+            mBillingManager.fetchPurchases();
+        }
+    }
+
+    @Override
+    public void onGetCurrentSubscription(Purchase purchase) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCurrentSubscription: " + purchase);
+        }
+
+        if (!purchase.getProducts().isEmpty()) {
+            boolean isSubscribed = isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL);
+            if (!isSubscribed) {
+                mMainService.subscribeFeature(purchase.getProducts().get(0), purchase.getPurchaseToken(), purchase.getOrderId());
+            }
+        }
+
+    }
+
+    @Override
+    public void onGetCurrentSubscriptionNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCurrentSubscriptionNotFound");
+        }
+
+    }
+
+    @Override
+    public void onPurchaseSuccess(Purchase purchase) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "initViews");
+        }
+
+    }
+
+    @Override
+    public void onPurchaseFailed() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "initViews");
+        }
+    }
+
+    //
+    //
+    // Implement SkredBoardFragmentDelegate
+    //
+
+    @Override
+    public void skredboardDidValidateCode(SkredBoardFragment.SkredboardMode mode, @NonNull String code) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "skredboardDidValidateCode: mode=" + mode + "code=" + code);
+        }
+
+        mSkredBoardFragment.closeSkredBoard();
+
+        switch (mode) {
+            case SET_CODE:
+                mMainService.setLevel(code);
+                break;
+
+            case CREATE_CODE:
+                mCreateLevel = true;
+                mMainService.createLevel(code);
+                break;
+
+            case DELETE_CODE:
+                mMainService.deleteLevel(code);
+                break;
+        }
+    }
+
+    //
     // Implement MainService.Observer methods
     //
 
@@ -729,6 +902,68 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         mProfile = null;
         mSpace = null;
+    }
+
+    @Override
+    public void onGetSpaces(@NonNull List<Space> spaces) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpaces: spaces=" + spaces);
+        }
+
+        mUISpaces.clear();
+
+        boolean allSpacesAreSecret = true;
+
+        for (Space space : spaces) {
+            if (!space.isSecret()) {
+                allSpacesAreSecret = false;
+                break;
+            }
+        }
+
+        if (spaces.isEmpty() || allSpacesAreSecret) {
+            mSpaceSideMenuListAdapter.notifyDataSetChanged();
+            return;
+        }
+
+        AtomicInteger avatarCounter = new AtomicInteger(0);
+        for (Space space : spaces) {
+            if (!space.isSecret()) {
+                avatarCounter.incrementAndGet();
+
+                mMainService.getSpaceImage(space, (Bitmap spaceAvatar) ->
+                        mMainService.getProfileImage(space.getProfile(), (Bitmap profileAvatar) -> {
+                            mSpaceSideMenuListAdapter.updateUISpace(space, spaceAvatar, profileAvatar);
+
+                            if (avatarCounter.decrementAndGet() == 0) {
+                                if (mSpace != null) {
+                                    for (UISpace lSpace : mUISpaces) {
+                                        lSpace.setIsCurrentSpace(lSpace.getSpace().getId() == mSpace.getId());
+                                    }
+                                }
+
+                                mSpaceSideMenuListAdapter.notifyDataSetChanged();
+                            }
+                        }));
+            }
+        }
+    }
+
+    @Override
+    public void onCreateSpace(@NonNull Space space) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCreateSpace: space=" + space);
+        }
+
+        if (space.isSecret()) {
+            mSpaceSideMenuListAdapter.notifyDataSetChanged();
+        } else {
+            mMainService.getSpaceImage(space, (Bitmap spaceAvatar) ->
+                    mMainService.getProfileImage(space.getProfile(), (Bitmap profileAvatar) -> {
+                        mSpaceSideMenuListAdapter.updateUISpace(space, spaceAvatar, profileAvatar);
+                        mSpaceSideMenuListAdapter.notifyDataSetChanged();
+                    }));
+        }
     }
 
     @Override
@@ -754,29 +989,69 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             mSpace = space;
             mProfile = space.getProfile();
 
-            if (!mIsOnPause) {
-                updateFragment();
+            SpaceSettings spaceSettings = mSpace.getSpaceSettings();
+            if (spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+                spaceSettings = getTwinmeContext().getDefaultSpaceSettings();
+            }
+
+            Design.setMainStyle(spaceSettings.getStyle());
+            Design.setupColor(getApplicationContext(), getTwinmeApplication());
+            updateColor();
+
+            if (!mShowWhatsNew) {
+                setStatusBarColor();
+            }
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_calls) {
+                setToolBar(R.id.twinme_navigation_call_tool_bar);
+                CallsFragment callsFragment = (CallsFragment) fragmentManager.findFragmentByTag(CALLS_FRAGMENT_TAG);
+                if (callsFragment != null) {
+                    callsFragment.updateColor();
+                }
+            } else {
+                setToolBar(R.id.twinme_navigation_tool_bar);
+                if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_spaces) {
+                    SpacesFragment spaceFragment = (SpacesFragment) fragmentManager.findFragmentByTag(SPACES_FRAGMENT_TAG);
+                    if (spaceFragment != null) {
+                        spaceFragment.updateColor();
+                    }
+                } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_chat) {
+                    ConversationsFragment conversationsFragment = (ConversationsFragment) fragmentManager.findFragmentByTag(CHAT_FRAGMENT_TAG);
+                    if (conversationsFragment != null) {
+                        conversationsFragment.updateColor();
+                    }
+                } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_contacts) {
+                    ContactsFragment contactsFragment = (ContactsFragment) fragmentManager.findFragmentByTag(CONTACTS_FRAGMENT_TAG);
+                    if (contactsFragment != null) {
+                        contactsFragment.updateColor();
+                    }
+                }
             }
 
             updateBottomNavigationColor();
 
-            mMainService.getProfileImage(mProfile, (Bitmap avatar) -> {
-                if (avatar != null) {
-                    mAvatarView.setImage(this, null,
-                            new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                    mCallsAvatarView.setImage(this, null,
-                            new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                    mConversationsAvatarView.setImage(this, null,
-                            new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                }
+            SpaceSettings effectiveSpaceSettings = spaceSettings;
+            mMainService.getSpaceImage(space, (Bitmap spaceAvatar) ->
+                    mMainService.getProfileImage(mProfile, (Bitmap profileAvatar) -> {
+                        mSpaceSideMenuListAdapter.updateUISpace(space, spaceAvatar, profileAvatar);
+                        mSpaceSideMenuListAdapter.notifyDataSetChanged();
 
-                UIProfile uiProfile = new UIProfile(mProfile, avatar);
-                mSideMenuListAdapter.setUIProfile(uiProfile);
-                mProfileSideMenuListAdapter.notifyDataSetChanged();
-                mDrawerListView.invalidateViews();
-            });
+                        if (profileAvatar != null) {
+                            mAvatarView.setImage(this, null,
+                                    new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                            mCallsAvatarView.setImage(this, null,
+                                    new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                            mConversationsAvatarView.setImage(this, null,
+                                    new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                        }
+
+                        UISpace uiSpace = new UISpace(getTwinmeApplication(), mSpace, spaceAvatar, profileAvatar, effectiveSpaceSettings);
+                        mSideMenuListAdapter.setUISpace(uiSpace);
+                        mDrawerListView.invalidateViews();
+                    }));
+
         }
-
         boolean isReferrerChecked = mCheckReferer && mSharedPreferences.getBoolean(CHECKED_REFERRER, false);
 
         if (isReferrerChecked) {
@@ -785,84 +1060,49 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     }
 
     @Override
+    public void onDeleteSpace(@NonNull UUID spaceId) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onDeleteSpace: spaceId=" + spaceId);
+        }
+
+        mSpaceSideMenuListAdapter.removeUISpace(spaceId);
+    }
+
+    @Override
     public void onUpdateProfile(@NonNull Profile profile) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onUpdateProfile: profile=" + profile);
         }
 
-        mProfile = profile;
+        if (profile.getSpace() != null) {
+            Space space = profile.getSpace();
 
-        mMainService.getProfileImage(mProfile, (Bitmap avatar) -> {
-            if (avatar != null) {
-                mAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                mCallsAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                mConversationsAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-            }
+            mMainService.getSpaceImage(space, (Bitmap spaceAvatar) ->
+                    mMainService.getProfileImage(mProfile, (Bitmap profileAvatar) -> {
+                        SpaceSettings spaceSettings = space.getSpaceSettings();
+                        if (space.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_MESSAGE_SETTINGS, true)) {
+                            spaceSettings = getTwinmeContext().getDefaultSpaceSettings();
+                        }
 
-            mProfileSideMenuListAdapter.updateUIProfile(profile, avatar);
-            mProfileSideMenuListAdapter.notifyDataSetChanged();
+                        UISpace uiSpace = new UISpace(getTwinmeApplication(), space, spaceAvatar, profileAvatar, spaceSettings);
+                        if (mSpace != null && space.getId() == mSpace.getId()) {
+                            mProfile = profile;
 
-            UIProfile uiProfile = new UIProfile(mProfile, avatar);
-            mSideMenuListAdapter.setUIProfile(uiProfile);
-            mDrawerListView.invalidateViews();
+                            if (profileAvatar != null) {
+                                mAvatarView.setImage(this, null,
+                                        new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                                mCallsAvatarView.setImage(this, null,
+                                        new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                                mConversationsAvatarView.setImage(this, null,
+                                        new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                            }
+                            mSideMenuListAdapter.setUISpace(uiSpace);
+                        }
 
-            boolean isReferrerChecked = mCheckReferer && mSharedPreferences.getBoolean(CHECKED_REFERRER, false);
-
-            if (!isReferrerChecked) {
-                checkReferrer();
-            }
-        });
-    }
-
-    @Override
-    public void onGetProfiles(@NonNull List<Profile> profiles) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onGetProfiles: " + profiles);
+                        mSpaceSideMenuListAdapter.updateUISpace(space, spaceAvatar, profileAvatar);
+                        mDrawerListView.invalidateViews();
+                    }));
         }
-
-        mUIProfiles.clear();
-
-        if (profiles.isEmpty()) {
-            mProfileSideMenuListAdapter.notifyDataSetChanged();
-            return;
-        }
-
-        AtomicInteger avatarCounter = new AtomicInteger(profiles.size());
-
-        for (Profile profile : profiles) {
-            mMainService.getProfileImage(profile, (Bitmap avatar) -> {
-                mProfileSideMenuListAdapter.updateUIProfile(profile, avatar);
-
-                if (avatarCounter.decrementAndGet() == 0) {
-                    mProfileSideMenuListAdapter.notifyDataSetChanged();
-                }
-            });
-        }
-    }
-
-    @Override
-    public void onCreateProfile(@NonNull Profile profile) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCreateProfile: " + profile);
-        }
-
-        mMainService.getProfileImage(profile, (Bitmap avatar) -> {
-            mProfileSideMenuListAdapter.updateUIProfile(profile, avatar);
-            mProfileSideMenuListAdapter.notifyDataSetChanged();
-        });
-    }
-
-    @Override
-    public void onDeleteProfile(@NonNull UUID profileId) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onDeleteProfile: " + profileId);
-        }
-
-        mProfileSideMenuListAdapter.removeUIProfile(profileId);
-        mProfileSideMenuListAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -903,9 +1143,36 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             Log.d(LOG_TAG, "onSetCurrentSpace: space=" + space);
         }
 
+        if (mSpace != null && mSpace.getId().equals(space.getId())) {
+            return;
+        }
+
+        if (mSpace != null && mSpace.isSecret()) {
+            mSpaceSideMenuListAdapter.removeUISpace(mSpace.getId());
+        }
+
+        String lastLevelName;
+
+        if (mSpace != null) {
+            lastLevelName = mSpace.getName();
+        } else {
+            lastLevelName = "";
+        }
+
         mSpace = space;
         mProfile = space.getProfile();
         mMainService.getPendingNotifications();
+
+        SpaceSettings spaceSettings = mSpace.getSpaceSettings();
+        if (spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+            spaceSettings = getTwinmeContext().getDefaultSpaceSettings();
+        }
+
+        getTwinmeApplication().updateDisplayMode(Design.getDisplayMode(Integer.parseInt(spaceSettings.getString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, DisplayMode.SYSTEM.ordinal() + ""))));
+
+        Design.setMainStyle(spaceSettings.getStyle());
+        Design.setupColor(getApplicationContext(), getTwinmeApplication());
+        updateColor();
 
         if (!mIsOnPause) {
             updateFragment();
@@ -913,38 +1180,55 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         updateBottomNavigationColor();
+        SpaceSettings effectiveSpaceSettings = spaceSettings;
+        mMainService.getSpaceImage(mSpace, (Bitmap spaceAvatar) ->
+                mMainService.getProfileImage(mProfile, (Bitmap profileAvatar) -> {
+                    if (profileAvatar != null) {
+                        mAvatarView.setImage(this, null,
+                                new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                        mCallsAvatarView.setImage(this, null,
+                                new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                        mConversationsAvatarView.setImage(this, null,
+                                new CircularImageDescriptor(profileAvatar, 0.5f, 0.5f, 0.5f));
+                    }
 
-        mMainService.getProfileImage(mProfile, (Bitmap avatar) -> {
-            if (avatar != null) {
-                mAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                mCallsAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                mConversationsAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-            }
+                    UISpace uiSpace = new UISpace(getTwinmeApplication(), mSpace, spaceAvatar, profileAvatar, effectiveSpaceSettings);
+                    mSideMenuListAdapter.setUISpace(uiSpace);
+                    mDrawerListView.invalidateViews();
 
-            if (mProfile != null) {
-                UIProfile uiProfile = new UIProfile(mProfile, avatar);
-                mSideMenuListAdapter.setUIProfile(uiProfile);
-                mDrawerListView.invalidateViews();
-            }
+                    if (mSpace.isSecret()) {
+                        mSpaceSideMenuListAdapter.updateUISpace(mSpace, spaceAvatar, profileAvatar);
+                    }
 
-            boolean isReferrerChecked = mCheckReferer && mSharedPreferences.getBoolean(CHECKED_REFERRER, false);
+                    for (UISpace lSpace : mUISpaces) {
+                        lSpace.setIsCurrentSpace(lSpace.getSpace().getId() == mSpace.getId());
+                    }
 
-            if (!isReferrerChecked) {
-                checkReferrer();
-            }
+                    mSpaceSideMenuListAdapter.notifyDataSetChanged();
 
-            boolean postNotificationEnable = true;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
-            }
+                    if (mCreateLevel && mSpace.getProfile() == null && !mSpace.getName().equals(getResources().getString(R.string.application_default))) {
+                        mCreateLevel = false;
+                        Intent intent = new Intent();
+                        intent.putExtra(Intents.INTENT_LAST_LEVEL_NAME, lastLevelName);
+                        intent.setClass(this, AddProfileActivity.class);
+                        startActivity(intent);
+                    }
 
-            if (getTwinmeApplication().showEnableNotificationScreen() && mProfile != null && (!NotificationManagerCompat.from(this).areNotificationsEnabled() || !postNotificationEnable)){
-                showEnableNotifications();
-            }
-        });
+                    boolean isReferrerChecked = mCheckReferer && mSharedPreferences.getBoolean(CHECKED_REFERRER, false);
+
+                    if (!isReferrerChecked) {
+                        checkReferrer();
+                    }
+
+                    boolean postNotificationEnable = true;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
+                    }
+
+                    if (getTwinmeApplication().showEnableNotificationScreen() && mProfile != null && (!NotificationManagerCompat.from(this).areNotificationsEnabled() || !postNotificationEnable)){
+                        showEnableNotifications();
+                    }
+                }));
     }
 
     @Override
@@ -963,8 +1247,22 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         mHasPendingNotification = hasPendingNotification;
-
         updateBottomNavigationColor();
+        mMainService.findSpacesNotifications();
+    }
+
+    @Override
+    public void onGetSpacesNotifications(@NonNull Map<Space, NotificationService.NotificationStat> spacesNotifications) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpacesNotifications: spacesNotifications=" + spacesNotifications);
+        }
+
+        for (UISpace space : mUISpaces) {
+            NotificationService.NotificationStat stat = spacesNotifications.get(space.getSpace());
+            space.setHasNotification(stat != null && stat.getPendingCount() > 0);
+        }
+
+        mSpaceSideMenuListAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -1001,12 +1299,31 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
     }
 
-    public void openMenu() {
+    @Override
+    public void onSubscribeSuccess() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "openMenu");
+            Log.d(LOG_TAG, "onSubscribeSuccess");
+        }
+
+        mDrawerListView.invalidateViews();
+    }
+
+    @Override
+    public void onSubscribeFailed(@NonNull ErrorCode errorCode) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSubscribeFailed " + errorCode);
+        }
+
+    }
+
+    @Override
+    public void onSetupFinishedInError(int errorCode) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSetupFinishedInError " + errorCode);
         }
     }
 
+    @Override
     public void updateColor() {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateColor");
@@ -1031,12 +1348,37 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         updateBottomNavigationColor();
 
+        mNotificationView.setBorder(2.0f, Design.WHITE_COLOR);
+        mNotificationView.setColor(Design.DELETE_COLOR_RED);
+
+        mCallsNotificationView.setBorder(2.0f, Design.WHITE_COLOR);
+        mCallsNotificationView.setColor(Design.DELETE_COLOR_RED);
+
+        mConversationsNotificationView.setBorder(2.0f, Design.WHITE_COLOR);
+        mConversationsNotificationView.setColor(Design.DELETE_COLOR_RED);
+
         mFragmentFrameLayout.setBackgroundColor(Design.WHITE_COLOR);
         mDrawerListView.setBackgroundColor(Design.WHITE_COLOR);
         mDrawerListView.invalidateViews();
+
+        mSpaceDrawerListView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
+        mSpaceDrawerListView.invalidate();
+
+        mCreateSpaceView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
+        mCreateSpaceImageView.setColorFilter(Design.BLACK_COLOR);
+
+        mSpaceSideMenuListAdapter.notifyDataSetChanged();
     }
 
-    @SuppressLint("NonConstantResourceId")
+    public int getSpacesListHeight() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getSpacesListHeight");
+        }
+
+        return mSpaceDrawerListView.getHeight();
+    }
+
+    @SuppressLint({"NonConstantResourceId", "ClickableViewAccessibility"})
     private void initViews() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initViews");
@@ -1056,13 +1398,15 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
+                mUISpacesLinearLayoutManager.scrollToPositionWithOffset(0, (int) (-DESIGN_SPACE_ITEM_HEIGHT * Design.HEIGHT_RATIO));
+
                 ViewGroup.LayoutParams layoutParams = mDrawerListView.getLayoutParams();
-                if (mUIProfiles.size() > 1) {
+                if (!mUISpaces.isEmpty()) {
                     layoutParams.width = (int) (DESIGN_SIDE_MENU_SETTINGS_WIDTH * Design.WIDTH_RATIO);
-                    mProfileDrawerListView.setVisibility(View.VISIBLE);
+                    mLeftMenuView.setVisibility(View.VISIBLE);
                 } else {
                     layoutParams.width = (int) (DESIGN_SIDE_MENU_WIDTH * Design.WIDTH_RATIO);
-                    mProfileDrawerListView.setVisibility(View.GONE);
+                    mLeftMenuView.setVisibility(View.GONE);
                 }
 
                 updateSideMenu();
@@ -1093,15 +1437,33 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         layoutParams = mDrawerListView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_SIDE_SETTINGS_WIDTH * Design.WIDTH_RATIO);
 
-        mProfileDrawerListView = findViewById(R.id.main_activity_drawer_profiles_list_view);
+        mLeftMenuView = findViewById(R.id.main_activity_left_view);
+        layoutParams = mLeftMenuView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_SIDE_SPACES_WIDTH * Design.WIDTH_RATIO);
 
-        layoutParams = mProfileDrawerListView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_SIDE_PROFILES_WIDTH * Design.WIDTH_RATIO);
+        mCreateSpaceView = findViewById(R.id.main_activity_create_space_view);
+        mCreateSpaceView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
-        mUIProfilesLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        mProfileDrawerListView.setLayoutManager(mUIProfilesLinearLayoutManager);
-        mProfileDrawerListView.setItemAnimator(null);
-        mProfileDrawerListView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
+        layoutParams = mCreateSpaceView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_SPACE_ITEM_HEIGHT * Design.HEIGHT_RATIO);
+
+        mCreateSpaceView.setOnClickListener(v -> onCreateSpaceClick());
+
+        mCreateSpaceImageView = findViewById(R.id.main_activity_create_space_image_view);
+        mCreateSpaceImageView.setColorFilter(Design.BLACK_COLOR);
+
+        layoutParams = mCreateSpaceImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_CREATE_SPACE_ICON_SIZE * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_CREATE_SPACE_ICON_SIZE * Design.HEIGHT_RATIO);
+
+        mSpaceDrawerListView = findViewById(R.id.main_activity_drawer_spaces_list_view);
+        layoutParams = mSpaceDrawerListView.getLayoutParams();
+        layoutParams.height = Design.DISPLAY_HEIGHT -  ((int) (DESIGN_SPACE_ITEM_HEIGHT * Design.HEIGHT_RATIO) * 2);
+
+        mUISpacesLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        mSpaceDrawerListView.setLayoutManager(mUISpacesLinearLayoutManager);
+        mSpaceDrawerListView.setItemAnimator(null);
+        mSpaceDrawerListView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         mContentFrameLayout = findViewById(R.id.main_activity_content_layout);
 
@@ -1124,58 +1486,84 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         mSideMenuListAdapter = new SideMenuListAdapter(this, onMenuClickListener);
         mDrawerListView.setAdapter(mSideMenuListAdapter);
 
-        ProfilesSideMenuListAdapter.OnProfileClickListener onProfileClickListener = new ProfilesSideMenuListAdapter.OnProfileClickListener() {
+        SpacesSideMenuListAdapter.OnSpaceClickListener onSpaceClickListener = new SpacesSideMenuListAdapter.OnSpaceClickListener() {
             @Override
-            public void onProfileClick(int position) {
+            public void onSpaceClick(int position) {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-
-                if (position >= 0 && position < mUIProfiles.size()) {
-                    UIProfile uiProfile = mUIProfiles.get(position);
-                    mMainService.activeProfile(uiProfile.getProfile());
-                }
+                mMainService.setSpace(mUISpaces.get(position).getId());
             }
 
             @Override
-            public void onEditProfileClick(int position) {
+            public void onSecretSpaceClick() {
+                enterSecretSpace();
+            }
+
+            @Override
+            public void onSpaceLongClick(int position) {
 
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-
-                if (position >= 0 && position < mUIProfiles.size()) {
-                    UIProfile uiProfile = mUIProfiles.get(position);
-                    editProfile(uiProfile);
-                }
+                onShowSpaceClick(mUISpaces.get(position).getId());
             }
         };
 
-        mProfileSideMenuListAdapter = new ProfilesSideMenuListAdapter(this, (int) (DESIGN_PROFILE_ITEM_HEIGHT * Design.HEIGHT_RATIO), mUIProfiles, onProfileClickListener);
-        mProfileDrawerListView.setAdapter(mProfileSideMenuListAdapter);
+        mSpaceSideMenuListAdapter = new SpacesSideMenuListAdapter(this, (int) (DESIGN_SPACE_ITEM_HEIGHT * Design.HEIGHT_RATIO), mUISpaces, onSpaceClickListener);
+        mSpaceDrawerListView.setAdapter(mSpaceSideMenuListAdapter);
 
         View twinmeToolbar = findViewById(R.id.twinme_navigation_tool_bar);
         View callToolbar = findViewById(R.id.twinme_navigation_call_tool_bar);
         View conversationsToolbar = findViewById(R.id.twinme_navigation_conversations_tool_bar);
 
+        SkredboardGestureListener.OnSkredboardGestureListener onSkredboardGestureListener = new SkredboardGestureListener.OnSkredboardGestureListener() {
+            @Override
+            public void onOpenSkredboard() {
+                mSkredBoardFragment.openSkredBoard();
+            }
+
+            @Override
+            public void onCloseSkredboard() {
+                mSkredBoardFragment.closeSkredBoard();
+            }
+
+            @Override
+            public void onSingleTap() {}
+        };
+
+        SkredboardGestureListener toolbarGestureListener = new SkredboardGestureListener(this, onSkredboardGestureListener);
+
+        GestureDetector toolbarGestureDetector = new GestureDetector(this, toolbarGestureListener);
+        twinmeToolbar.setOnTouchListener((v, event) -> toolbarGestureDetector.onTouchEvent(event));
+
+        GestureDetector callToolbarGestureDetector = new GestureDetector(this, toolbarGestureListener);
+        callToolbar.setOnTouchListener((v, event) -> callToolbarGestureDetector.onTouchEvent(event));
+
+        GestureDetector conversationsToolbarGestureDetector = new GestureDetector(this, toolbarGestureListener);
+        conversationsToolbar.setOnTouchListener((v, event) -> conversationsToolbarGestureDetector.onTouchEvent(event));
+
         mAvatarView = findViewById(R.id.toolbar_image);
         mAvatarView.setImage(this, null,
                 new CircularImageDescriptor(getDefaultAvatar(), 0.5f, 0.5f, 0.5f));
-        mAvatarView.setOnClickListener(view -> openSideMenu());
+        mAvatarView.setOnClickListener(view -> openDrawerLayout());
 
         mNotificationView = findViewById(R.id.toolbar_notification_rounded_view);
+        mNotificationView.setBorder(2.0f, Design.WHITE_COLOR);
         mNotificationView.setColor(Design.DELETE_COLOR_RED);
 
         mCallsAvatarView = findViewById(R.id.calls_toolbar_image);
         mCallsAvatarView.setImage(this, null,
                 new CircularImageDescriptor(getDefaultAvatar(), 0.5f, 0.5f, 0.5f));
-        mCallsAvatarView.setOnClickListener(view -> openSideMenu());
+        mCallsAvatarView.setOnClickListener(view -> openDrawerLayout());
 
         mCallsNotificationView = findViewById(R.id.calls_toolbar_notification_rounded_view);
+        mCallsNotificationView.setBorder(2.0f, Design.WHITE_COLOR);
         mCallsNotificationView.setColor(Design.DELETE_COLOR_RED);
 
         mConversationsAvatarView = findViewById(R.id.conversations_toolbar_image);
         mConversationsAvatarView.setImage(this, null,
                 new CircularImageDescriptor(getDefaultAvatar(), 0.5f, 0.5f, 0.5f));
-        mConversationsAvatarView.setOnClickListener(view -> openSideMenu());
+        mConversationsAvatarView.setOnClickListener(view -> openDrawerLayout());
 
         mConversationsNotificationView = findViewById(R.id.conversations_toolbar_notification_rounded_view);
+        mConversationsNotificationView.setBorder(2.0f, Design.WHITE_COLOR);
         mConversationsNotificationView.setColor(Design.DELETE_COLOR_RED);
 
         mFragmentFrameLayout = findViewById(R.id.twinme_navigation_frame_layout);
@@ -1207,22 +1595,11 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             }
 
             final int currentTab = item.getItemId();
-            boolean isFullScreen = false;
-            if (currentTab == R.id.navigation_profile) {
-                setTitle(capitalizedTitle(getString(R.string.application_profile)));
+            if (currentTab == R.id.navigation_spaces) {
                 setToolBar(R.id.twinme_navigation_tool_bar);
+                setTitle(capitalizedTitle(getString(R.string.spaces_activity_title)));
 
-                if (mProfile != null) {
-                    hideToolBar();
-                    isFullScreen = true;
-                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                    getWindow().setStatusBarColor(Color.TRANSPARENT);
-                    twinmeToolbar.setVisibility(View.GONE);
-                } else {
-                    twinmeToolbar.setVisibility(View.VISIBLE);
-                }
-
+                twinmeToolbar.setVisibility(View.VISIBLE);
                 callToolbar.setVisibility(View.GONE);
                 conversationsToolbar.setVisibility(View.GONE);
                 if (getTwinmeApplication().hasNewVersion()) {
@@ -1231,26 +1608,22 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                     mNotificationView.setVisibility(View.GONE);
                 }
 
-                // Get the ProfileFragment from the fragment manager if we can because it could create an
-                // instance of ProfileFragment during main activity restore.  Other fragments don't have
-                // the issue because they don't save any state.
-                ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag(PROFILE_FRAGMENT_TAG);
-                if (profileFragment == null) {
-                    profileFragment = new ProfileFragment();
-                }
-                showFragment(profileFragment, PROFILE_FRAGMENT_TAG);
+                SpacesFragment spaceFragment = new SpacesFragment();
+                showFragment(spaceFragment, SPACES_FRAGMENT_TAG);
 
+                showSpaceOnboarding();
             } else if (currentTab == R.id.navigation_calls) {
                 setTitle(capitalizedTitle(getString(R.string.calls_fragment_title)));
                 setToolBar(R.id.twinme_navigation_call_tool_bar);
                 twinmeToolbar.setVisibility(View.GONE);
                 callToolbar.setVisibility(View.VISIBLE);
+                conversationsToolbar.setVisibility(View.GONE);
                 if (getTwinmeApplication().hasNewVersion()) {
                     mCallsNotificationView.setVisibility(View.VISIBLE);
                 } else {
                     mCallsNotificationView.setVisibility(View.GONE);
                 }
-                conversationsToolbar.setVisibility(View.GONE);
+
                 CallsFragment callsFragment = new CallsFragment();
                 showFragment(callsFragment, CALLS_FRAGMENT_TAG);
 
@@ -1297,12 +1670,23 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 showFragment(notificationsFragment, NOTIFICATIONS_FRAGMENT_TAG);
             }
 
-            applyInsets(R.id.main_activity_content_layout, -1, R.id.twinme_navigation_bottom_navigation, Design.TOOLBAR_COLOR, isFullScreen);
+            applyInsets(R.id.main_activity_content_layout, -1, R.id.twinme_navigation_bottom_navigation, Design.TOOLBAR_COLOR, false);
 
             return true;
         });
 
         mOverlayView = findViewById(R.id.twinme_navigation_overlay_view);
+
+        if (mSavedInstanceState != null) {
+            mSkredBoardFragment = (SkredBoardFragment) getSupportFragmentManager().getFragment(mSavedInstanceState, SKREDBOARD_FRAGMENT);
+        }
+        if (mSkredBoardFragment == null) {
+            mSkredBoardFragment = SkredBoardFragment.newInstance();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.main_activity_skred_board, mSkredBoardFragment).commitAllowingStateLoss();
+            getSupportFragmentManager().executePendingTransactions();
+        }
+        mSkredBoardFragment.setDelegate(this);
 
         mCoachMarkView = findViewById(R.id.main_activity_coach_mark_view);
         CoachMarkView.OnCoachMarkViewListener onCoachMarkViewListener = new CoachMarkView.OnCoachMarkViewListener() {
@@ -1369,7 +1753,11 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 break;
 
             case PERSONALIZATION:
-                startActivity(PersonalizationActivity.class);
+                intent.setClass(this, PersonalizationActivity.class);
+                if (mSpace != null) {
+                    intent.putExtra(Intents.INTENT_SPACE_ID, mSpace.getId().toString());
+                }
+                startActivity(intent);
                 break;
 
             case SOUND_SETTINGS:
@@ -1377,18 +1765,42 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 break;
 
             case MESSAGE_SETTINGS:
-                startActivity(MessagesSettingsActivity.class);
+                intent.setClass(this, MessagesSettingsActivity.class);
+                if (mSpace != null) {
+                    intent.putExtra(Intents.INTENT_SPACE_ID, mSpace.getId().toString());
+                }
+                startActivity(intent);
                 break;
 
             case PRIVACY:
                 startActivity(PrivacyActivity.class);
                 break;
 
+            case SUBSCRIBE:
+                intent.setClass(this, InAppSubscriptionActivity.class);
+                startActivity(intent);
+                break;
+
             case TRANSFER_CALL:
-                showOnboardingView();
+                if (!isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+                    showOnboardingView();
+                } else if (mTransferCallId != null) {
+                    intent.putExtra(Intents.INTENT_CALL_RECEIVER_ID, mTransferCallId.toString());
+                    intent.setClass(this, TransferCallActivity.class);
+                    startActivity(intent);
+                } else {
+                    intent.putExtra(Intents.INTENT_TRANSFER_CALL, true);
+                    intent.setClass(this, CreateExternalCallActivity.class);
+                    startActivity(intent);
+                }
                 break;
 
             case PROFILE:
+                if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_spaces) {
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                }
+
                 if (mProfile != null) {
                     intent.putExtra(Intents.INTENT_PROFILE_ID, mProfile.getId().toString());
                     intent.setClass(this, EditProfileActivity.class);
@@ -1396,7 +1808,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                     intent.putExtra(Intents.INTENT_FIRST_PROFILE, true);
                     intent.setClass(this, AddProfileActivity.class);
                 }
-
                 startActivity(intent);
                 break;
 
@@ -1412,12 +1823,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 startActivity(AccountActivity.class);
                 break;
 
-            case UPGRADE:
-                intent.putExtra(Intents.INTENT_FROM_SIDE_MENU, true);
-                intent.setClass(this, PremiumServicesActivity.class);
-                startActivity(intent);
-                break;
-
             case SIGN_OUT:
                 getTwinmeContext().getAccountService().signOut();
 
@@ -1430,13 +1835,52 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
     }
 
-    private void editProfile(UIProfile uiProfile) {
+    public void onCreateSpaceClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "editProfile: uiProfile=" + uiProfile);
+            Log.d(LOG_TAG, "onCreateSpaceClick");
         }
 
-        Intent intent = new Intent(this, EditProfileActivity.class);
-        intent.putExtra(Intents.INTENT_PROFILE_ID, uiProfile.getProfile().getId().toString());
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+        if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.SPACE)) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.putExtra(Intents.INTENT_SHOW_FIRST_PART_ONBOARDING, mSpace != null);
+            intent.setClass(this, OnboardingSpaceActivity.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setClass(this, TemplateSpaceActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void showSpaceOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showSpaceOnboarding");
+        }
+
+        if (mSpace != null && getTwinmeApplication().showSpaceDescription()) {
+            getTwinmeApplication().hideSpaceDescription();
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.putExtra(Intents.INTENT_SHOW_CREATE_SPACE, false);
+            intent.setClass(this, OnboardingSpaceActivity.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+        } else {
+            getTwinmeApplication().hideSpaceDescription();
+        }
+    }
+
+    private void onShowSpaceClick(UUID spaceId) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onShowSpaceClick: " + spaceId);
+        }
+
+        Intent intent = new Intent();
+        intent.setClass(this, ShowSpaceActivity.class);
+        intent.putExtra(Intents.INTENT_SPACE_ID, spaceId.toString());
         startActivity(intent);
     }
 
@@ -1459,7 +1903,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         );
 
         if (mBottomNavigationView.getMenu().size() == TAB_COUNT) {
-            Drawable profileDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.tab_bar_profile_grey, null);
+            Drawable profileDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.tab_bar_spaces_grey, null);
             if (profileDrawable != null) {
                 profileDrawable.setTintList(colorStateList);
             }
@@ -1523,12 +1967,31 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
     }
 
+    private void enterSecretSpace() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "enterSecretSpace");
+        }
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+        Intent intent = new Intent();
+        intent.setClass(this, SecretSpaceActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
+
     private void updateSideMenu() {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateSideMenu");
         }
 
+        mLeftMenuView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
+
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mDrawerListView.getLayoutParams();
+        marginLayoutParams.topMargin = getBarTopInset();
+        marginLayoutParams.bottomMargin = getBarBottomInset();
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceDrawerListView.getLayoutParams();
         marginLayoutParams.topMargin = getBarTopInset();
         marginLayoutParams.bottomMargin = getBarBottomInset();
     }
@@ -1542,26 +2005,30 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             setStatusBarColor();
         }
 
-        boolean isFullScreen = false;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+
         if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_calls) {
             setToolBar(R.id.twinme_navigation_call_tool_bar);
         } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_chat) {
             setToolBar(R.id.twinme_navigation_conversations_tool_bar);
-        } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_profile) {
+        } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_spaces) {
             setToolBar(R.id.twinme_navigation_tool_bar);
-
-            if (mProfile != null) {
-                hideToolBar();
-                isFullScreen = true;
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                getWindow().setStatusBarColor(Color.TRANSPARENT);
+            SpacesFragment spaceFragment = (SpacesFragment) fragmentManager.findFragmentByTag(SPACES_FRAGMENT_TAG);
+            if (spaceFragment != null) {
+                spaceFragment.updateColor();
             }
         } else {
             setToolBar(R.id.twinme_navigation_tool_bar);
+            if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_contacts) {
+                ContactsFragment contactsFragment = (ContactsFragment) fragmentManager.findFragmentByTag(CONTACTS_FRAGMENT_TAG);
+                if (contactsFragment != null) {
+                    contactsFragment.updateColor();
+                }
+            }
         }
 
-        applyInsets(R.id.main_activity_content_layout, -1, R.id.twinme_navigation_bottom_navigation, Design.TOOLBAR_COLOR, isFullScreen);
+        applyInsets(R.id.main_activity_content_layout, -1, R.id.twinme_navigation_bottom_navigation, Design.TOOLBAR_COLOR, false);
     }
 
     private void showCoachMark() {
@@ -1572,6 +2039,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         if (getTwinmeApplication().showCoachMark(CoachMark.CoachMarkTag.PRIVACY)) {
             if (mDrawerListView.getCount() > 5) {
                 View view = mDrawerListView.getChildAt(5);
+
                 mCoachMarkView.postDelayed(() -> {
                     mCoachMarkView.setVisibility(View.VISIBLE);
                     CoachMark coachMark = new CoachMark(getString(R.string.privacy_activity_coach_mark), CoachMark.CoachMarkTag.PRIVACY, true, true, new Point((int) mDrawerListView.getX(), (int) view.getY()), view.getWidth(), view.getHeight(), 0);
@@ -1588,7 +2056,13 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
 
-        startActivity(PrivacyActivity.class);
+        if (mCoachMarkView.getCoachMark().getCoachMarkTag() == CoachMark.CoachMarkTag.PRIVACY) {
+            Intent intent = new Intent();
+            intent.setClass(this, PrivacyActivity.class);
+            startActivity(intent);
+        } else {
+            onCreateSpaceClick();
+        }
     }
 
     private void showSuccessAuthentification(String name, Bitmap avatar) {
@@ -1856,7 +2330,10 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
             @Override
             public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                startActivity(intent);
+                premiumFeatureConfirmView.animationCloseConfirmView();
             }
 
             @Override

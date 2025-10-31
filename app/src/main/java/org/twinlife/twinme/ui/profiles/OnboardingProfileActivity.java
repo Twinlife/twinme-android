@@ -11,11 +11,13 @@ package org.twinlife.twinme.ui.profiles;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,7 +31,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.ui.TwinmeApplication;
 
 public class OnboardingProfileActivity extends AbstractTwinmeActivity {
 
@@ -50,17 +52,16 @@ public class OnboardingProfileActivity extends AbstractTwinmeActivity {
     private static final int DESIGN_CONTENT_HEIGHT = 738;
     private static final float DESIGN_MORE_TEXT_VIEW_HEIGHT = 80;
     private static final float DESIGN_MORE_TEXT_VIEW_MARGIN = 20;
-    private static final float DESIGN_CREATE_BUTTON_BOTTOM_MARGIN = 40;
     private static final int DESIGN_CLOSE_HEIGHT = 52;
     private static final int DESIGN_CLOSE_TOP_MARGIN = 24;
     private static final int DESIGN_CLOSE_RIGHT_MARGIN = 12;
     private static final int DESIGN_FULLSCREEN_CLOSE_TOP_MARGIN = 50;
     private static final int DESIGN_FULLSCREEN_CLOSE_RIGHT_MARGIN = 44;
     private static final float DESIGN_CONTAINER_PADDING = 12;
+    private static final float DESIGN_DO_NOT_SHOW_HEIGHT = 80f;
     private static int CONTAINER_PADDING;
     private static int IMAGE_MARGIN;
     private static int MORE_TEXT_VIEW_MARGIN;
-    private static int CREATE_BUTTON_BOTTOM_MARGIN;
 
     private TextView mMessageTextView;
     private View mShowMoreTextView;
@@ -140,7 +141,7 @@ public class OnboardingProfileActivity extends AbstractTwinmeActivity {
 
         boolean darkMode = false;
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        int displayMode = Settings.displayMode.getInt();
+        int displayMode = getTwinmeApplication().displayMode();
         if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
             darkMode = true;
         }
@@ -196,7 +197,6 @@ public class OnboardingProfileActivity extends AbstractTwinmeActivity {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) createProfileView.getLayoutParams();
         marginLayoutParams.topMargin = MORE_TEXT_VIEW_MARGIN;
-        marginLayoutParams.bottomMargin = CREATE_BUTTON_BOTTOM_MARGIN;
 
         TextView createProfileTextView = findViewById(R.id.onboarding_profile_activity_create_space_text_view);
         Design.updateTextFont(createProfileTextView, Design.FONT_MEDIUM34);
@@ -205,6 +205,22 @@ public class OnboardingProfileActivity extends AbstractTwinmeActivity {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) createProfileTextView.getLayoutParams();
         marginLayoutParams.leftMargin = Design.BUTTON_MARGIN;
         marginLayoutParams.rightMargin = Design.BUTTON_MARGIN;
+
+        View doNotShowView = findViewById(R.id.onboarding_profile_activity_do_not_show_view);
+        doNotShowView.setOnClickListener(v -> onDoNotShowAgainClick());
+
+        layoutParams = doNotShowView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_DO_NOT_SHOW_HEIGHT * Design.HEIGHT_RATIO);
+
+        TextView doNotShowTextView = findViewById(R.id.onboarding_profile_activity_do_not_show_title_view);
+        doNotShowTextView.setTypeface(Design.FONT_MEDIUM28.typeface);
+        doNotShowTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM28.size);
+        doNotShowTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        doNotShowTextView.setPaintFlags(doNotShowTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        if (mFromSideMenu) {
+            doNotShowView.setVisibility(View.GONE);
+        }
 
         View closeView = findViewById(R.id.onboarding_profile_activity_close_view);
         closeView.setOnClickListener(view -> finish());
@@ -248,6 +264,16 @@ public class OnboardingProfileActivity extends AbstractTwinmeActivity {
         mMessageTextView.setText(message);
     }
 
+    public void onDoNotShowAgainClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onDoNotShowAgainClick");
+        }
+
+        getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.PROFILE, false);
+
+        finish();
+    }
+
     @Override
     public void setupDesign() {
         if (DEBUG) {
@@ -257,6 +283,5 @@ public class OnboardingProfileActivity extends AbstractTwinmeActivity {
         CONTAINER_PADDING = (int) (DESIGN_CONTAINER_PADDING * Design.HEIGHT_RATIO);
         IMAGE_MARGIN = (int) (DESIGN_IMAGE_MARGIN * Design.HEIGHT_RATIO);
         MORE_TEXT_VIEW_MARGIN = (int) (DESIGN_MORE_TEXT_VIEW_MARGIN * Design.HEIGHT_RATIO);
-        CREATE_BUTTON_BOTTOM_MARGIN = (int) (DESIGN_CREATE_BUTTON_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
     }
 }

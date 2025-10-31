@@ -404,6 +404,21 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
         marginLayoutParams.topMargin = ICON_MARGIN;
         marginLayoutParams.setMarginEnd(ICON_MARGIN);
 
+        mSharedLocationView = findViewById(R.id.call_participant_shared_location_layout);
+
+        layoutParams = mSharedLocationView.getLayoutParams();
+        layoutParams.height = ICON_HEIGHT;
+
+        marginLayoutParams = (MarginLayoutParams) mSharedLocationView.getLayoutParams();
+        marginLayoutParams.leftMargin = ICON_MARGIN;
+        marginLayoutParams.topMargin = ICON_MARGIN;
+        marginLayoutParams.setMarginStart(ICON_MARGIN);
+
+        mSharedLocationView.setOnClickListener(v -> mOnCallParticipantClickListener.onLocationTap());
+
+        RoundedView sharedLocationRoundedView = findViewById(R.id.call_participant_shared_location_rounded_view);
+        sharedLocationRoundedView.setColor(Design.BLUE_NORMAL);
+
         mInfoView = findViewById(R.id.call_participant_info_layout);
         mInfoView.setColorFilter(Design.DELETE_COLOR_RED);
         mInfoView.setOnClickListener(v -> mOnCallParticipantClickListener.onInfoTap());
@@ -566,6 +581,12 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
             mMuteMicroView.setVisibility(GONE);
         }
 
+        if (mParticipant.getCurrentGeolocation() != null && CallStatus.isActive(mParticipant.getCallConnection().getStatus())) {
+            mSharedLocationView.setVisibility(VISIBLE);
+        } else {
+            mSharedLocationView.setVisibility(GONE);
+        }
+
         if ((mCallStatus != null &&  mCallStatus.isOnHold()) || mParticipant.getStatus().isOnHold()) {
             mPauseView.setVisibility(VISIBLE);
             mOverlayView.setVisibility(VISIBLE);
@@ -723,6 +744,16 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
     }
 
     @Override
+    protected boolean isLocationSupported() {
+
+        if (mParticipant.isGeolocSupported() != null) {
+            return Boolean.TRUE.equals(mParticipant.isGeolocSupported());
+        }
+
+        return false;
+    }
+
+    @Override
     protected boolean isRemoteCameraControlSupported() {
 
         return mParticipant.isZoomable() != Zoomable.NEVER;
@@ -804,3 +835,4 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
         }
     }
 }
+

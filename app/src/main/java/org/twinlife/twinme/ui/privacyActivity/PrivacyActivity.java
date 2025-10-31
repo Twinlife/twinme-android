@@ -8,25 +8,24 @@
 
 package org.twinlife.twinme.ui.privacyActivity;
 
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.SwitchView;
 
-public class PrivacyActivity extends AbstractTwinmeActivity {
+public class PrivacyActivity extends AbstractTwinmeActivity implements MenuSelectValueView.Observer {
     private static final String LOG_TAG = "PrivacyActivity";
     private static final boolean DEBUG = false;
 
@@ -35,6 +34,16 @@ public class PrivacyActivity extends AbstractTwinmeActivity {
     private static int SECTION_VIEW_HEIGHT;
     private static int TEXT_INFORMATION_TOP_MARGIN;
     private static int SECTION_TOP_MARGIN;
+
+    private SwitchView mScreenLockSwitchView;
+    private SwitchView mHideLastScreenSwitchView;
+    private View mTimeoutScreenLockView;
+    private TextView mTimeoutScreenTextView;
+
+    private MenuSelectValueView mMenuTimeoutView;
+    private View mOverlayView;
+
+    private boolean mUIInitialized = false;
 
     //
     // Override TwinmeActivityImpl methods
@@ -49,6 +58,37 @@ public class PrivacyActivity extends AbstractTwinmeActivity {
         super.onCreate(savedInstanceState);
 
         initViews();
+    }
+
+
+    //implements MenuSelectValueView.Observer
+
+    @Override
+    public void onCloseMenuAnimationEnd() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
+        }
+
+        closeMenu();
+    }
+
+    @Override
+    public void onSelectValue(int value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectValue: " + value);
+        }
+
+    }
+
+    @Override
+    public void onSelectTimeout(UITimeout timeout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+        }
+
+        mTimeoutScreenTextView.setText(timeout.getText());
+        getTwinmeApplication().updateScreenLockTimeout(timeout.getDelay());
+        closeMenu();
     }
 
     //
@@ -81,14 +121,12 @@ public class PrivacyActivity extends AbstractTwinmeActivity {
         ViewGroup.LayoutParams sectionLayoutParams = screenLockView.getLayoutParams();
         sectionLayoutParams.height = SECTION_VIEW_HEIGHT;
         screenLockView.setLayoutParams(sectionLayoutParams);
-        screenLockView.setOnClickListener(view -> onPremiumFeatureClick());
 
-        SwitchView screenLockSwitchView = findViewById(R.id.privacy_activity_screen_lock_checkbox);
-        Design.updateTextFont(screenLockSwitchView, Design.FONT_REGULAR34);
-        screenLockSwitchView.setEnabled(false);
-        screenLockSwitchView.setChecked(false);
-        screenLockSwitchView.setClickable(false);
-        screenLockSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mScreenLockSwitchView = findViewById(R.id.privacy_activity_screen_lock_checkbox);
+        mScreenLockSwitchView.setOnCheckedChangeListener((v, isChecked) -> setUpdated());
+        Design.updateTextFont(mScreenLockSwitchView, Design.FONT_REGULAR34);
+        mScreenLockSwitchView.setChecked(getTwinmeApplication().screenLocked());
+        mScreenLockSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         TextView screenLockInformationView = findViewById(R.id.privacy_activity_screen_lock_information_text_view);
         Design.updateTextFont(screenLockInformationView, Design.FONT_REGULAR28);
@@ -98,18 +136,48 @@ public class PrivacyActivity extends AbstractTwinmeActivity {
         marginLayoutParams.topMargin = TEXT_INFORMATION_TOP_MARGIN;
         marginLayoutParams.bottomMargin = SECTION_TOP_MARGIN;
 
+        if (!isDeviceSecure()) {
+            mScreenLockSwitchView.setEnabled(false);
+            mScreenLockSwitchView.setAlpha(0.5f);
+            screenLockInformationView.setAlpha(0.5f);
+
+            View unavailableScreenLockView = findViewById(R.id.privacy_activity_screen_lock_unavailable);
+            unavailableScreenLockView.setVisibility(View.VISIBLE);
+            unavailableScreenLockView.setOnClickListener(view -> {
+                showAlertMessageView(R.id.privacy_activity_content_view, getString(R.string.deleted_account_activity_warning), getString(R.string.lock_screen_activity_passcode_not_set), false, null);
+            });
+        }
+
+        mTimeoutScreenLockView = findViewById(R.id.privacy_activity_timeout_screen_lock_view);
+        sectionLayoutParams = mTimeoutScreenLockView.getLayoutParams();
+        sectionLayoutParams.height = SECTION_VIEW_HEIGHT;
+        mTimeoutScreenLockView.setLayoutParams(sectionLayoutParams);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTimeoutScreenLockView.getLayoutParams();
+        marginLayoutParams.bottomMargin = SECTION_TOP_MARGIN;
+
+        mTimeoutScreenLockView.setOnClickListener(view -> onScreenLockTimeoutClick());
+
+        TextView timeoutScreenLockTitleView = findViewById(R.id.privacy_activity_timeout_screen_lock_title_view);
+        timeoutScreenLockTitleView.setTypeface(Design.FONT_REGULAR34.typeface);
+        timeoutScreenLockTitleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR34.size);
+        timeoutScreenLockTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mTimeoutScreenTextView = findViewById(R.id.privacy_activity_timeout_screen_lock_value_view);
+        mTimeoutScreenTextView.setTypeface(Design.FONT_REGULAR34.typeface);
+        mTimeoutScreenTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR34.size);
+        mTimeoutScreenTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
         View hideLastScreenView = findViewById(R.id.privacy_activity_hide_last_screen_view);
         sectionLayoutParams = hideLastScreenView.getLayoutParams();
         sectionLayoutParams.height = SECTION_VIEW_HEIGHT;
         hideLastScreenView.setLayoutParams(sectionLayoutParams);
-        hideLastScreenView.setOnClickListener(view -> onPremiumFeatureClick());
 
-        SwitchView hideLastScreenSwitchView = findViewById(R.id.privacy_activity_hide_last_screen_checkbox);
-        Design.updateTextFont(hideLastScreenSwitchView, Design.FONT_REGULAR34);
-        hideLastScreenSwitchView.setEnabled(false);
-        hideLastScreenSwitchView.setChecked(false);
-        hideLastScreenSwitchView.setClickable(false);
-        hideLastScreenSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mHideLastScreenSwitchView = findViewById(R.id.privacy_activity_hide_last_screen_checkbox);
+        mHideLastScreenSwitchView.setOnCheckedChangeListener((v, isChecked) -> setUpdated());
+        Design.updateTextFont(mHideLastScreenSwitchView, Design.FONT_REGULAR34);
+        mHideLastScreenSwitchView.setChecked(getTwinmeApplication().lastScreenHidden());
+        mHideLastScreenSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         TextView hideLastScreenInformationView = findViewById(R.id.privacy_activity_hide_last_screen_information_text_view);
         Design.updateTextFont(hideLastScreenInformationView, Design.FONT_REGULAR28);
@@ -117,50 +185,92 @@ public class PrivacyActivity extends AbstractTwinmeActivity {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) hideLastScreenInformationView.getLayoutParams();
         marginLayoutParams.topMargin = TEXT_INFORMATION_TOP_MARGIN;
-    }
 
-    private void onPremiumFeatureClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onPremiumFeatureClick");
+        if (getTwinmeApplication().screenLocked()) {
+            mTimeoutScreenLockView.setVisibility(View.VISIBLE);
+        } else {
+            mTimeoutScreenLockView.setVisibility(View.GONE);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.privacy_activity_content_view);
+        mTimeoutScreenTextView.setText(UITimeout.getDelay(this, getTwinmeApplication().screenLockTimeout()));
 
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.PRIVACY));
+        mOverlayView = findViewById(R.id.privacy_activity_overlay_view);
+        mOverlayView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
+        mOverlayView.setOnClickListener(view -> closeMenu());
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+        mMenuTimeoutView = findViewById(R.id.privacy_activity__menu_select_value_view);
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+        mMenuTimeoutView.setObserver(this);
+        mMenuTimeoutView.setActivity(this);
+
+        mUIInitialized = true;
+    }
+
+    private void setUpdated() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setUpdated");
+        }
+
+        if (!mUIInitialized) {
+            return;
+        }
+
+        getTwinmeApplication().setScreenLocked(mScreenLockSwitchView.isChecked());
+        getTwinmeApplication().setLastScreenHidden(mHideLastScreenSwitchView.isChecked());
+
+        if (mScreenLockSwitchView.isChecked()) {
+            mTimeoutScreenLockView.setVisibility(View.VISIBLE);
+        } else {
+            mTimeoutScreenLockView.setVisibility(View.GONE);
+        }
+    }
+
+    private void onScreenLockTimeoutClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onScreenLockTimeoutClick");
+        }
+
+        openMenu();
+    }
+
+    private void openMenu() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openMenu");
+        }
+
+        if (mMenuTimeoutView.getVisibility() == View.INVISIBLE) {
+            mMenuTimeoutView.setVisibility(View.VISIBLE);
+            mOverlayView.setVisibility(View.VISIBLE);
+            mMenuTimeoutView.openMenu(MenuSelectValueView.MenuType.LOCKSCREEN);
+            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+            setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        }
+    }
+
+    private boolean isDeviceSecure() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isDeviceSecure");
+        }
+
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+        if (keyguardManager != null) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                return keyguardManager.isDeviceSecure();
             }
+            return keyguardManager.isKeyguardSecure();
+        }
 
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
+        return false;
+    }
 
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
+    private void closeMenu() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "closeMenu");
+        }
 
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
-                setStatusBarColor();
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+        mOverlayView.setVisibility(View.INVISIBLE);
+        setStatusBarColor();
     }
 
     @Override

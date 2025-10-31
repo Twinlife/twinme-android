@@ -25,7 +25,7 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
 
     private static final int TAB_GREY_COLOR = Color.argb(255, 119, 138, 159);
 
-    private final ImageView mProfilesImageView;
+    private final ImageView mSpacesImageView;
     private final ImageView mCallsImageView;
     private final ImageView mContactsImageView;
     private final ImageView mConversationsImageView;
@@ -35,23 +35,27 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
 
     private final AbstractTwinmeActivity mListActivity;
 
+    private int mDefaultColor;
+
     public DefaultTabViewHolder(@NonNull View view, AbstractTwinmeActivity listActivity) {
 
         super(view);
 
         mListActivity = listActivity;
 
+        mDefaultColor = mDefaultColor;
+
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = Design.SECTION_HEIGHT;
         view.setLayoutParams(layoutParams);
         view.setBackgroundColor(Design.WHITE_COLOR);
 
-        View profilesView = view.findViewById(R.id.personalization_activity_default_tab_item_profiles_view);
-        profilesView.setOnClickListener(v -> {
-            mListActivity.getTwinmeApplication().updateDefaultTab(TwinmeApplication.DefaultTab.PROFILES);
+        View spacesView = view.findViewById(R.id.personalization_activity_default_tab_item_spaces_view);
+        spacesView.setOnClickListener(v -> {
+            mListActivity.getTwinmeApplication().updateDefaultTab(TwinmeApplication.DefaultTab.SPACES);
             updateTab();
         });
-        mProfilesImageView = view.findViewById(R.id.personalization_activity_default_tab_item_profiles_image_view);
+        mSpacesImageView = view.findViewById(R.id.personalization_activity_default_tab_item_spaces_image_view);
 
         View callsView = view.findViewById(R.id.personalization_activity_default_tab_item_calls_view);
         callsView.setOnClickListener(v -> {
@@ -82,10 +86,12 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
         mNotificationsImageView = view.findViewById(R.id.personalization_activity_default_tab_item_notifications_image_view);
 
         mSelectedView = view.findViewById(R.id.personalization_activity_default_tab_item_selected_tab_view);
-        mSelectedView.setBackgroundColor(Design.getMainStyle());
+        mSelectedView.setBackgroundColor(mDefaultColor);
     }
 
-    public void onBind() {
+    public void onBind(int defaultColor) {
+
+        mDefaultColor = defaultColor;
 
         updateTab();
         updateColor();
@@ -93,7 +99,6 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
 
     private void updateTab() {
 
-        mProfilesImageView.setColorFilter(TAB_GREY_COLOR);
         mCallsImageView.setColorFilter(TAB_GREY_COLOR);
         mContactsImageView.setColorFilter(TAB_GREY_COLOR);
         mConversationsImageView.setColorFilter(TAB_GREY_COLOR);
@@ -101,20 +106,20 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
 
         float tabWidth = (float) (Design.DISPLAY_WIDTH / 5.0);
 
-        if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.PROFILES.ordinal()) {
-            mProfilesImageView.setColorFilter(Design.getMainStyle());
+        if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.SPACES.ordinal()) {
+            mSpacesImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(0);
         } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
-            mCallsImageView.setColorFilter(Design.getMainStyle());
+            mCallsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth);
         } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
-            mContactsImageView.setColorFilter(Design.getMainStyle());
+            mContactsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth * 2);
         } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal()) {
-            mConversationsImageView.setColorFilter(Design.getMainStyle());
+            mConversationsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth * 3);
         } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.NOTIFICATIONS.ordinal()) {
-            mNotificationsImageView.setColorFilter(Design.getMainStyle());
+            mNotificationsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth * 4);
         }
     }
@@ -122,6 +127,6 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
     private void updateColor() {
 
         itemView.setBackgroundColor(Design.WHITE_COLOR);
-        mSelectedView.setBackgroundColor(Design.getMainStyle());
+        mSelectedView.setBackgroundColor(mDefaultColor);
     }
 }

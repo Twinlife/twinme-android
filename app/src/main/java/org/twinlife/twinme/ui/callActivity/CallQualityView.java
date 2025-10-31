@@ -139,7 +139,7 @@ public class CallQualityView extends PercentRelativeLayout {
         sendClickableView.setOnClickListener(v -> onSendClick());
 
         ShapeDrawable sendViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        sendViewBackground.getPaint().setColor(Design.BLUE_NORMAL);
+        sendViewBackground.getPaint().setColor(Color.parseColor(Design.DEFAULT_COLOR));
         sendClickableView.setBackground(sendViewBackground);
 
         layoutParams = sendClickableView.getLayoutParams();
@@ -162,25 +162,25 @@ public class CallQualityView extends PercentRelativeLayout {
         }
 
         if (mCallQuality > 0) {
-            mStarOneImageView.setImageResource(R.drawable.star_blue);
+            mStarOneImageView.setImageResource(R.drawable.star_red);
         } else {
             mStarOneImageView.setImageResource(R.drawable.star_grey);
         }
 
         if (mCallQuality > 1) {
-            mStarTwoImageView.setImageResource(R.drawable.star_blue);
+            mStarTwoImageView.setImageResource(R.drawable.star_red);
         } else {
             mStarTwoImageView.setImageResource(R.drawable.star_grey);
         }
 
         if (mCallQuality > 2) {
-            mStarThreeImageView.setImageResource(R.drawable.star_blue);
+            mStarThreeImageView.setImageResource(R.drawable.star_red);
         } else {
             mStarThreeImageView.setImageResource(R.drawable.star_grey);
         }
 
         if (mCallQuality > 3) {
-            mStarFourImageView.setImageResource(R.drawable.star_blue);
+            mStarFourImageView.setImageResource(R.drawable.star_red);
         } else {
             mStarFourImageView.setImageResource(R.drawable.star_grey);
         }

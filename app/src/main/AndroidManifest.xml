@@ -26,6 +26,9 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission
         android:name="android.permission.USE_FULL_SCREEN_INTENT"
         android:minSdkVersion="29" />
@@ -107,6 +110,10 @@
         android:localeConfig="@xml/locales_config"
         android:largeHeap="true"
         tools:targetApi="34">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <!-- Disable wearable notification bridge -->
         <meta-data
@@ -192,14 +199,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.twinlife.twinme.ui.accountMigrationActivity.LocalAccountMigrationActivity"
-            android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/TwinmeThemeWithNoActionBar" />
-        <activity
             android:name="org.twinlife.twinme.ui.cleanupActivity.CleanUpActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
@@ -239,6 +238,12 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="org.twinlife.twinme.ui.conversationActivity.PreviewFileActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="org.twinlife.twinme.ui.conversationActivity.PreviewLocationActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
@@ -307,6 +312,12 @@
             android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
         <activity
             android:name="org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.externalCallActivity.TemplateExternalCallActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
@@ -381,6 +392,21 @@
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name="org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity"
+            android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.inAppSubscriptionActivity.InvitationSubscriptionActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name="org.twinlife.twinme.ui.InfoItemActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
@@ -392,6 +418,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="org.twinlife.twinme.ui.LocationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
         <activity
             android:name="org.twinlife.twinme.ui.LogsActivity"
             android:configChanges="orientation|screenSize"
@@ -407,13 +437,13 @@
             android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity
-            android:name="org.twinlife.twinme.ui.MigrationTwinmePlusActivity"
+            android:name="org.twinlife.twinme.ui.newConversationActivity.NewConversationActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="org.twinlife.twinme.ui.newConversationActivity.NewConversationActivity"
+            android:name="org.twinlife.twinme.ui.privacyActivity.LockScreenActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
@@ -457,6 +487,72 @@
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.ContactsSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.ConversationAppearanceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.EditSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.NotificationSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity"
+            android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.SecretSpaceActivity"
+            android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.SettingsSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.MessageSettingsSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.ShowSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.SpacesActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.SpaceAppearanceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.spaces.TemplateSpaceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.ScanActivity"
             android:configChanges="orientation|screenSize"
@@ -578,14 +674,6 @@
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="org.twinlife.twinme.ui.spaces.ConversationAppearanceActivity"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@style/TwinmeThemeWithNoActionBar" />
-        <activity
-            android:name="org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity"
-            android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
-        <activity
             android:name="org.twinlife.twinme.ui.SplashScreenActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
@@ -618,7 +706,7 @@
 
                 <data
                     android:host="invite.${domainName}"
-                    android:scheme="twinme" />
+                    android:scheme="skred" />
             </intent-filter>
             <intent-filter android:autoVerify="true"
                 tools:targetApi="m">
@@ -640,7 +728,7 @@
 
                 <data
                     android:host="authenticate.${domainName}"
-                    android:scheme="twinme" />
+                    android:scheme="skred" />
             </intent-filter>
 
             <intent-filter android:autoVerify="true"

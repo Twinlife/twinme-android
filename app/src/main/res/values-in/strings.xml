@@ -8,6 +8,7 @@
     <string name="application_all">Semua</string>
     <string name="application_appearance">Penampilan</string>
     <string name="application_are_you_sure">Anda yakin?</string>
+    <string name="application_authorization_location">Izinkan aplikasi untuk mengakses Lokasi pada pengaturan sistem.</string>
     <string name="application_authorization_camera">Izinkan aplikasi mengakses Kamera pada pengaturan sistem.</string>
     <string name="application_authorization_go_settings">Buka pengaturan sistem</string>
     <string name="application_authorization_microphone">Izinkan aplikasi mengakses Mikrofon pada pengaturan sistem.</string>
@@ -47,16 +48,19 @@
     <string name="application_group_not_found">Anda telah dikeluarkan dari grup</string>
     <string name="application_items_selected">%1$d item dipilih</string>
     <string name="application_later">Nanti</string>
+    <string name="application_location">Geolokasi</string>
+    <string name="application_location_enabled">Aktifkan layanan Lokasi pada perangkat Anda.</string>
     <string name="application_low_usage_message">Peringatan, jika Anda tidak cukup sering menggunakan aplikasi, OS mungkin tidak membangunkannya untuk bertukar pesan!</string>
+    <string name="application_more_info">Informasi lebih lanjut…</string>
     <string name="application_one_item_selected">1 item dipilih</string>
     <string name="application_migration_no_storage_space">Ruang di perangkat Anda tidak cukup untuk menyelesaikan migrasi. Tutup aplikasi, kosongkan sebagian ruang, dan luncurkan kembali aplikasi untuk menyelesaikan pembaruan.</string>
     <string name="application_migration_no_storage_space_message">Salah satu dari dua perangkat tidak memiliki cukup ruang penyimpanan. Kosongkan ruang di perangkat tersebut sebelum memulai ulang migrasi.</string>
     <string name="application_name_hint">Nama</string>
-    <string name="application_network_connecting">Menyambungkan ke layanan twinme</string>
+    <string name="application_network_connecting">Menyambungkan ke layanan Skred</string>
     <string name="application_network_connectivity">Ada sambungan jaringan</string>
     <string name="application_network_status_airplane_message">Mode pesawat diaktifkan.</string>
     <string name="application_network_status_airplane_resolution">Harap nonaktifkan mode Pesawat dan sambungkan ke Wi-Fi atau jaringan seluler.</string>
-    <string name="application_network_status_connected_no_internet">Tidak ada akses jaringan ke layanan twinme.</string>
+    <string name="application_network_status_connected_no_internet">Tidak ada akses jaringan ke layanan Skred.</string>
     <string name="application_network_status_connected_resolution">Coba sambungkan ke jaringan lain.</string>
     <string name="application_network_status_connection_timeout">Tidak dapat membuat sambungan internet.</string>
     <string name="application_network_status_no_internet">Tidak ada sambungan Internet.</string>
@@ -71,13 +75,15 @@
     <string name="application_not_authorized_operation">Tindakan tidak diizinkan</string>
     <string name="application_not_authorized_operation_by_your_contact">Operasi tidak diizinkan oleh kontak Anda.</string>
     <string name="application_not_connected">Sambungan aman sedang berlangsung…</string>
-    <string name="application_not_signed_in">Tidak tersambung ke layanan twinme</string>
+    <string name="application_not_signed_in">Tidak tersambung ke layanan Skred</string>
     <string name="application_now">Sekarang</string>
     <string name="application_ok">OK</string>
     <string name="application_operation_failure">Tindakan gagal</string>
     <string name="application_operation_irreversible">Operasi ini tidak dapat dibatalkan</string>
     <string name="application_permission_camera">Izin untuk mengakses kamera diperlukan untuk mengambil foto atau video baru.</string>
     <string name="application_permission_scan_code">Izin untuk mengakses kamera diperlukan untuk memindai kode QR.</string>
+    <string name="application_premium_feature_message">Anda harus mengaktifkan layanan premium untuk menggunakan fitur ini.</string>
+    <string name="application_premium_feature_title">Aktifkan layanan premium</string>
     <string name="application_photo_gallery">Album foto</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Anda harus memasukkan gambar yang mewakili Anda ke kontak yang Anda undang dengan profil ini.</string>
@@ -101,7 +107,7 @@
     <string name="application_timeout_seconds">%1$d detik</string>
     <string name="application_timeout_week">1 minggu</string>
     <string name="application_unknown_name">Tidak dikenal</string>
-    <string name="application_upgrade">Meng-upgrade twinme</string>
+    <string name="application_upgrade">Meng-upgrade Skred</string>
     <string name="application_webrtc_failure">WebRTC gagal</string>
     <string name="application_wrong_configuration">Konfigurasi salah</string>
     <string name="application_yes">Ya</string>
@@ -111,7 +117,6 @@
     <string name="about_activity_information">Informasi</string>
     <string name="about_activity_legal">Pemberitahuan Hukum</string>
     <string name="about_activity_libraries">Pustaka</string>
-    <string name="about_activity_message">twinme adalah layanan obrolan &amp; panggilan suara/video yang aman tanpa akses ke informasi pribadi.\n\ntwinme didasarkan pada WebRTC, standar baru untuk komunikasi multimedia real-time (tanpa server relai) yang aman (terenkripsi end-to-end) di web.</string>
     <string name="about_activity_open_source_information">Kode sumber aplikasi tersedia sebagai Open Source di GitHub, di bawah lisensi AGPL-3.0.</string>
     <string name="about_activity_open_sources_licences">Lisensi Sumber Terbuka</string>
     <string name="about_activity_premium_services">Layanan premium</string>
@@ -182,7 +187,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Pindai kode QR yang ditampilkan di bagian \"Akun/Transfer dari perangkat lain\" pada menu samping perangkat lain.</string>
     <string name="account_migration_scanner_activity_stop_scan_title">Hentikan pemindaian</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">Tambahkan peserta ke panggilan ini</string>
 
     <!-- AddContactActivity -->
@@ -191,10 +196,10 @@
     <string name="add_contact_activity_in_person_title">Secara langsung</string>
     <string name="add_contact_activity_invitation_code_title">Mini-Kode</string>
     <string name="add_contact_activity_invite">Undang</string>
-    <string name="add_contact_activity_invite_message">Buka alamat web %1$s dengan twinme pada perangkat seluler Anda atau pindai Kode QR untuk terhubung secara pribadi dengan “%2$s”</string>
-    <string name="add_contact_activity_invite_subject">Undangan Twinme</string>
-    <string name="add_contact_activity_message">Minta teman di sebelah Anda untuk memindai kode QR Anda dengan twinme, atau ketuk tombol "Spasi" untuk memindai kode teman Anda.</string>
-    <string name="add_contact_activity_onboarding_message">twinme tidak mengenal teman Anda dan tidak dapat menemukan mereka. Anda harus mengundang mereka secara pribadi, dengan twinme saat mereka berada di dekat Anda, atau dengan mengirimkan undangan kepada mereka dengan cara lain.</string>
+    <string name="add_contact_activity_invite_message">Buka alamat web %1$s dengan Skred pada perangkat seluler Anda atau pindai Kode QR untuk terhubung secara pribadi dengan “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Undangan Skred</string>
+    <string name="add_contact_activity_message">Minta kontak Anda untuk memindai kode QR undangan Anda dengan Skred, atau ketuk tombol \"Pindai\" untuk memindai kode kontak Anda.</string>
+    <string name="add_contact_activity_onboarding_message">Skred tidak mengenal teman Anda dan tidak dapat menemukan mereka. Anda harus mengundang mereka secara pribadi, dengan Skred saat mereka berada di dekat Anda, atau dengan mengirimkan undangan kepada mereka dengan cara lain.</string>
     <string name="add_contact_activity_scan_code">Pindai kode QR undangan</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Tautan ini rusak.</string>
     <string name="add_contact_activity_scan_error_incorect_link">Tautan ini salah.</string>
@@ -253,7 +258,7 @@
     <string name="calls_fragment_all_call_segmented_control">Semua</string>
     <string name="calls_fragment_call_again_message">Apakah Anda ingin menelepon balik %1$s?</string>
     <string name="calls_fragment_call_again_title">Telepon balik</string>
-    <string name="calls_fragment_create_link">Buat tautan \"click-to-call\".</string>
+    <string name="calls_fragment_create_link">Buat \"click-to-call\"</string>
     <string name="calls_fragment_incoming_call">Panggilan masuk</string>
     <string name="calls_fragment_missed_call">Panggilan tidak terjawab</string>
     <string name="calls_fragment_missed_call_segmented_control">Tidak terjawab</string>
@@ -291,6 +296,11 @@
     <string name="call_activity_confirm_word_title">Validasi kata tersebut</string>
     <string name="call_activity_error_call_interrupted">Panggilan terputus, kesalahan: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Panggilan tidak dapat tersambung, kesalahan: %1$d.</string>
+    <string name="call_activity_location_background_warning">Peringatan: jika aplikasi berjalan di latar belakang, posisi Anda tidak lagi dibagikan kepada kontak Anda. Anda harus mengotorisasi aplikasi untuk selalu mengakses lokasi perangkat ini.</string>
+    <string name="call_activity_location_exact_warning">Perhatian ! Anda tidak membagikan lokasi persis Anda. Anda dapat mengubah izin yang diperlukan di pengaturan aplikasi.</string>
+    <string name="call_activity_location_share">Bagikan lokasi saya</string>
+    <string name="call_activity_location_share_message">Anda sekarang membagikan lokasi Anda selama panggilan.</string>
+    <string name="call_activity_location_stop">Berhenti membagikan lokasi saya</string>
     <string name="call_activity_max_participant_message">Jumlah maksimum peserta dalam panggilan grup telah tercapai (%1$d).</string>
     <string name="call_activity_not_supported_group_call_message">Versi aplikasi %1$s tidak kompatibel dengan panggilan grup dan memerlukan pembaruan.</string>
     <string name="call_activity_quality_message">Bagaimana Anda menilainya?</string>
@@ -315,9 +325,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera sedang digunakan</string>
-    <string name="capture_activity_incorrect_qrcode">Twincode salah</string>
+    <string name="capture_activity_incorrect_qrcode">Skredcode salah</string>
     <string name="capture_activity_message">Tempatkan kode QR di persegi panjang ini untuk memindainya.</string>
-    <string name="capture_activity_no_camera">Kamera diperlukan untuk memindai twincode</string>
+    <string name="capture_activity_no_camera">Kamera diperlukan untuk memindai skredcode</string>
     <string name="capture_activity_qrcode_saved">Kode undangan disimpan di foto.</string>
 
     <!-- CleanupActivity -->
@@ -372,11 +382,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">Jadwalkan tanggal/waktu Anda ingin dihubungi.</string>
     <string name="contact_capabilities_activity_information_video_call">Izinkan kontak tersebut melakukan panggilan video kepada Anda.</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">Kami tidak mendapatkan izin untuk mengakses kontak Anda</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">Izin ditolak</string>
+    <string name="contact_picker_activity_subtitle">UNDANG DENGAN NOMOR TELEPON</string>
+    <string name="contact_picker_activity_title">Undang teman dari kontak</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">Undang seseorang untuk memindai kode undangan Anda, atau, pindai kode mereka...</string>
     <string name="contacts_fragment_invite_contact_title">Undang kontak</string>
     <string name="contacts_fragment_scan_contact_title">Pindai atau masukkan kode undangan</string>
     <string name="contacts_fragment_title">Kontak</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">Anda yakin ingin memindahkan kontak ini?</string>
+    <string name="contact_space_activity_move_title">Pindahkan</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">Panggilan suara</string>
@@ -389,13 +409,14 @@
     <string name="conversation_activity_empty_message">Katakan sesuatu yang cerdas… atau menyenangkan!</string>
     <string name="conversation_activity_edit_message">Pesan hanya dapat diedit di perangkat kontak Anda jika aplikasinya sudah diperbarui.</string>
     <string name="conversation_activity_ephemeral_coach_mark">Tekan lama pada panah kirim untuk menghapus pesan ini dari percakapan setelah waktu tertentu.</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">Versi twinme kontak Anda tidak berfungsi sepenuhnya.&lt;br/&gt;
-        Minta dia untuk memperbarui twinme.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Versi Skred kontak Anda tidak berfungsi sepenuhnya.&lt;br/&gt;
+        Minta dia untuk memperbarui Skred.</string>
     <string name="conversation_activity_group_member_information">%1$d anggota</string>
     <string name="conversation_activity_group_not_allowed_post_message">Mengirim pesan tidak diizinkan</string>
     <string name="conversation_activity_group_one_member">1 anggota</string>
+    <string name="conversation_activity_info">:lock Pesan obrolan dienkripsi pada ponsel Anda dan selama pesan tersebut dikirim.\n Untuk memastikan tingkat keamanan data tertinggi, pesan pesan tersebut dikirim langsung ke ponsel %s dengan menggunakan sambungan peer to peer tanpa server perantara.</string>
     <string name="conversation_activity_invitation_accepted">Undangan diterima</string>
-    <string name="conversation_activity_invitation_failed">Minta kontak Anda untuk memperbarui twinme</string>
+    <string name="conversation_activity_invitation_failed">Minta kontak Anda untuk memperbarui Skred</string>
     <string name="conversation_activity_invitation_joined">Anggota grup</string>
     <string name="conversation_activity_invitation_pending">Undangan sedang diproses</string>
     <string name="conversation_activity_invitation_refused">Undangan ditolak</string>
@@ -455,7 +476,7 @@
     <string name="conversations_fragment_you">Kamu</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">Profil ini ditampilkan kepada tamu yang akan menghubungi Anda dengan tautan \"click-to-call\" ini.</string>
+    <string name="create_external_call_activity_message">Masukkan nama, gambar dan deskripsi subjek panggilan.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call memungkinkan tamu menelepon Anda dari browser tanpa menginstal aplikasi.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Setiap instance memiliki nama, gambar, dan deskripsi, yang mewakili subjek panggilan, seperti:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">layanan pelanggan Anda</string>
@@ -499,10 +520,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">Setelah dibuat, setiap hubungan memiliki pasangan “Profil” yang mewakili Anda dan kontak Anda satu sama lain.</string>
     <string name="create_profile_activity_onboarding_message_part_4">Anda kemudian dapat mengubah cara Anda ingin dikenal oleh setiap kontak Anda, di setiap hubungan, secara mandiri.</string>
     <string name="create_profile_activity_save_message">Nama dan gambar ini digunakan untuk mengundang kontak Anda dan menginisialisasi relasi Anda. Anda akan dapat mengubah dan menyesuaikannya untuk setiap relasi.</string>
+    <string name="create_profile_activity_title">Buat profil Anda</string>
     <string name="create_profile_activity_welcome1">Masukkan gambar profil Anda</string>
     <string name="create_profile_activity_welcome2">Selamat datang %1$s!</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">Gambar</string>
+    <string name="create_space_activity_contact_list">Pindahkan kontak</string>
+    <string name="create_space_activity_contacts_no_profile">Untuk memindahkan kontak ke Space, Anda harus melengkapi profil yang mewakili Anda ke kontak Anda. Apakah Anda ingin melengkapinya?</string>
     <string name="create_space_activity_message">Spaces bersifat lokal dan tidak terlihat oleh kontak.</string>
     <string name="create_space_activity_onboarding_message_part_1">Spaces membantu Anda mengatur kontak sesuai dengan lingkaran sosial mana mereka berada, misalnya. Keluarga, Teman, Bisnis, Kesenangan, dll.</string>
     <string name="create_space_activity_onboarding_message_part_2">Setiap “Space” dikaitkan dengan “Profil” yang mewakili persona yang ingin Anda gunakan saat berinteraksi dengan kontak dari lingkaran sosial "Space" tersebut, misalnya Ayah, Johny, Dr. John Doe, Batman, dll.</string>
@@ -512,6 +537,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- sebuah "Gambar" yang memungkinkan Anda mengidentifikasinya dengan cepat di daftar "Spaces"</string>
     <string name="create_space_activity_onboarding_message_part_7">- “Tema” warna, untuk mempersonalisasi tampilan &amp; nuansanya</string>
     <string name="create_space_activity_onboarding_message_part_8">- “Pengaturan” yang dapat spesifik untuk setiap “Space” tertentu, sehingga mengesampingkan nilai default yang ditentukan oleh Pengaturan aplikasi.</string>
+    <string name="create_space_activity_profile_message">Anda harus memasukkan nama dan gambar yang mewakili Anda ke kontak yang Anda undang dengan profil ini.</string>
+    <string name="create_space_activity_space_hint">Nama (Keluarga, Teman, Bisnis, dll.)</string>
     <string name="create_space_activity_title">Buat Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -531,9 +558,6 @@
     <string name="edit_contact_activity_confirm_message">Apakah Anda yakin ingin menghapus hubungan ini?</string>
     <string name="edit_contact_activity_message">Kontak ini tidak akan dapat menghubungi Anda lagi.</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">Menghapus profil ini akan membatalkan kode undangan terkait. Konfirmasi penghapusan?</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">Apakah Anda yakin ingin menghapus kode \"Click-to-Call\" ini?</string>
     <string name="edit_external_call_activity_delete_message">Link \"Click-to-Call\" ini tidak akan dapat digunakan lagi.</string>
@@ -546,7 +570,13 @@
     <string name="edit_profile_activity_propagating_message">Anda dapat menyebarkan perubahan profil undangan Anda ke kontak yang ada, atau tidak.</string>
     <string name="edit_profile_activity_propagating_no_contact">tidak ada kontak</string>
     <string name="edit_profile_activity_propagating_profile">Sebarkan perubahan profil</string>
-    <string name="edit_profile_activity_remove_active_profile">Anda tidak dapat menghapus profil aktif</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">Untuk mengundang kontak, Anda harus melengkapi profil yang mewakili Anda dengan kontak ini. Apakah Anda ingin melengkapinya?</string>
+    <string name="edit_space_activity_delete_confirmation">Anda benar-benar yakin ingin menghapus Space ini?</string>
+    <string name="edit_space_activity_delete_current_space">Anda tidak dapat menghapus Space yang sedang aktif.</string>
+    <string name="edit_space_activity_delete_message">Menghapus Space akan menghapus semua kontak, grup, dan percakapan dari Space tersebut. Anda yakin ingin menghapus Space ini?</string>
+    <string name="edit_space_activity_delete_only_one_space_message">Anda tidak dapat menghapus satu-satunya Space dari aplikasi.</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">Setelah hubungan tercipta, sangat disarankan untuk mensertifikasinya guna memperkuat keamanannya.</string>
@@ -582,6 +612,10 @@
     <string name="fatal_error_activity_error_message">Kesalahan fatal: %1$s&lt;br/&gt;
         Anda harus menutup aplikasi.</string>
 
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">Anda harus mengundang teman dan terhubung dengan mereka di Skred. Mereka akan muncul pada daftar kontak Anda setelah menerima undangan Anda.</string>
+    <string name="first_invite_contact_activity_ignore">Abaikan</string>
+
     <!-- FeedbackActivity -->
     <string name="feedback_activity_contact">Kontak</string>
     <string name="feedback_activity_gdpr_notice">Gunakan formulir ini untuk meminta akses ke data akun Anda.</string>
@@ -593,12 +627,12 @@
     <string name="feedback_activity_send_logs">Kirim Debug Log</string>
     <string name="feedback_activity_send_message">Umpan balik telah dikirimkan. Terima kasih.</string>
     <string name="feedback_activity_subject">Perihal</string>
-    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+    <string name="feedback_activity_subject_placeholder">[Skred] </string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">Tindakan ini membatalkan kode undangan saat ini yang terkait dengan profil ini. Anda yakin ingin membuat kode baru?</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">Buat kode undangan baru</string>
-    <string name="fullscreen_qrcode_activity_save_message">Impor atau pindai Kode QR undangan ini dengan twinme untuk menambahkan kontak ini.</string>
+    <string name="fullscreen_qrcode_activity_save_message">Impor atau pindai Kode QR undangan ini dengan Skred untuk menambahkan kontak ini.</string>
     <string name="fullscreen_qrcode_activity_save_title">Simpan ke galeri foto</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -616,6 +650,37 @@
     <string name="group_member_activity_section_invitation">Undangan</string>
     <string name="group_member_activity_section_member">Anggota</string>
     <string name="group_member_activity_title">Anggota grup</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s mengundang Anda untuk menikmati layanan premium, yang didukungnya.</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">Panggilan grup dengan suara HQ &amp; gambar HD</string>
+    <string name="in_app_subscription_activity_description_step1_title">Konferensi suara/video berkualitas tinggi</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">Nol data / Nol karbon</string>
+    <string name="in_app_subscription_activity_description_step2_title">Konferensi suara/video yang bertanggung jawab terhadap lingkungan</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">Kerahasiaan mutlak pertukaran</string>
+    <string name="in_app_subscription_activity_description_step3_title">Konferensi suara/video pribadi</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">Koneksi instan definisi tinggi</string>
+    <string name="in_app_subscription_activity_description_step4_title">Konferensi suara/video instan</string>
+    <string name="in_app_subscription_activity_expiration_message">Pembaruan : %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">Saat Anda membeli langganan, itu dibebankan oleh Google langsung ke akun Play Store Anda. Langganan diperpanjang secara otomatis dengan persyaratan yang sama kecuali Anda membatalkan setidaknya 24 jam sebelum akhir periode saat ini. Anda dapat membatalkan tanpa biaya di Play Store kapan saja sehingga langganan tidak diperpanjang di akhir periode berjalan. Anda dapat mengelola langganan Anda dari pengaturan akun Play Store setelah pembelian.</string>
+    <string name="in_app_subscription_activity_free_trial">Uji coba gratis 14 hari.\nLangganan dapat dibatalkan kapan saja.</string>
+    <string name="in_app_subscription_activity_invitation_code">Pindai kode QR undangan atau tempel kode untuk mengakses layanan premium.</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">Kode undangan tidak valid.</string>
+    <string name="in_app_subscription_activity_later_title">Tidak, terima kasih</string>
+    <string name="in_app_subscription_activity_manage_susbcription">Kelola langganan saya</string>
+    <string name="in_app_subscription_activity_month">Bulan</string>
+    <string name="in_app_subscription_activity_not_available">Layanan premium berbayar tidak tersedia di perangkat Anda atau di negara Anda.</string>
+    <string name="in_app_subscription_activity_restore_title">Mengembalikan pembelian</string>
+    <string name="in_app_subscription_activity_search">Cari penawaran berlangganan</string>
+    <string name="in_app_subscription_activity_six_month_title">Paling populer</string>
+    <string name="in_app_subscription_activity_subscription_title">Berlangganan</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">Langganan saat ini</string>
+    <string name="in_app_subscription_activity_subscribe_title">Melanjutkan</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$s sedang sibuk</string>
@@ -635,10 +700,10 @@
     <string name="info_item_activity_updated">Diubah</string>
 
     <!-- InvitationCallActivity -->
-    <string name="invitation_call_activity_generate_code_message">Tindakan ini membatalkan kode undangan saat ini yang terkait dengan tautan \"click-to-call\" ini. Mengonfirmasi?</string>
+    <string name="invitation_call_activity_generate_code_message">Tindakan ini membatalkan kode undangan saat ini yang terkait dengan tautan "click-to-call" ini. Mengonfirmasi?</string>
     <string name="invitation_call_activity_generate_code_title">Hasilkan kode baru untuk tautan ini</string>
     <string name="invitation_call_activity_invite_message">Buka alamat web %1$s atau pindai QR-Code, untuk memanggil “%2$s”.</string>
-    <string name="invitation_call_activity_message">Bagikan kode \"click-to-call\" ini dengan seseorang yang kemudian dapat menghubungi Anda, dari web atau aplikasi seluler.</string>
+    <string name="invitation_call_activity_message">Bagikan kode "click-to-call" ini dengan seseorang yang kemudian dapat menghubungi Anda, dari web atau aplikasi seluler.</string>
     <string name="invitation_call_activity_save_message">Pindai Kode QR ini untuk memanggil “%1$s”.</string>
     <string name="invitation_call_activity_share">Menerbitkan</string>
     <string name="invitation_call_activity_title">Panggilan eksternal</string>
@@ -653,15 +718,16 @@
     <string name="invitation_code_activity_success_message">Sangat disarankan untuk mensertifikasi relasi yang dibuat dengan Mini-Kode guna memperkuat keamanannya.</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">Minta teman Anda di dekat Anda untuk memindai kode QR \"room\" dengan twinme, atau ketuk kode undangan untuk menyalinnya ke papan klip.</string>
+    <string name="invitation_room_activity_message">Minta kontak Anda di dekat Anda untuk memindai kode QR \\\"room\\\" dengan Skred, atau ketuk kode undangan untuk menyalinnya ke papan klip.</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">Suara</string>
     <string name="last_calls_activity_video">Video</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">Akun twinme Anda di perangkat ini akan ditransfer ke twinme+.</string>
-    <string name="local_account_migration_activity_message_older_version">Pastikan Anda memperbarui kedua perangkat ke versi aplikasi terbaru sebelum memulai transfer, untuk menghindari kehilangan semua hubungan Anda.</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">Otentikasi untuk mengakses aplikasi</string>
+    <string name="lock_screen_activity_passcode_not_set">Pengaturan otentikasi perangkat tidak diatur. Buka pengaturan sistem dan atur untuk membuka kunci aplikasi.</string>
+    <string name="lock_screen_activity_unlock">Buka kunci akses ke aplikasi</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">Tambah Kontak</string>
@@ -671,12 +737,10 @@
     <string name="main_activity_reset_conversation_title">Reset Percakapan</string>
     <string name="main_activity_reset_group_conversation_admin_message">Menyetel ulang percakapan ini akan menghapus semua pesan dari setiap perangkat anggota grup. Mengonfirmasi?</string>
     <string name="main_activity_reset_group_conversation_message">Menyetel ulang percakapan ini akan menghapus semua pesan dari perangkat Anda. Mengonfirmasi?</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">Anda perlu meningkatkan ke twinme+ untuk menggunakan fitur ini. Anda akan dapat memigrasikan semua data akun Anda.</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">Anda akan dapat memigrasikan semua data akun Anda.</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme tersedia sebagai versi premium dengan lebih banyak fitur.</string>
-    <string name="migration_twinme_plus_activity_premium_title">Tingkatkan ke twinme+</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">Buat Space</string>
+    <string name="main_activity_skredboard_delete_title">Hapus Space</string>
+    <string name="main_activity_skredboard_message">Masukkan code</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">Tentang</string>
@@ -688,6 +752,8 @@
     <string name="navigation_activity_settings">Pengaturan</string>
     <string name="navigation_activity_sign_out">Keluar</string>
     <string name="navigation_activity_sounds">Bunyi</string>
+    <string name="navigation_activity_subscribe">Temukan Skred+</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; Aktif</string>
     <string name="navigation_activity_support">Dukungan</string>
     <string name="navigation_activity_title">Menu</string>
 
@@ -700,6 +766,8 @@
     <string name="notification_center_deleted_contact">Kontak Dihapus</string>
     <string name="notification_center_file_message">Mengirimi Anda file</string>
     <string name="notification_center_file_message_received">File baru</string>
+    <string name="notification_center_geolocation_message">mengirimi Anda lokasi</string>
+    <string name="notification_center_geolocation_message_received">Lokasi baru</string>
     <string name="notification_center_group_invitation">Mengirimi Anda undangan</string>
     <string name="notification_center_group_invitation_received">Undangan baru</string>
     <string name="notification_center_join_group">Anda adalah anggota grup</string>
@@ -738,6 +806,7 @@
     <string name="notifications_fragment_item_cleanup_message">telah menghapus pesan lama.</string>
     <string name="notifications_fragment_item_deleted_contact">Kontak Dihapus</string>
     <string name="notifications_fragment_item_file_message">Mengirimi Anda file</string>
+    <string name="notifications_fragment_item_geolocation_message">Mengirimi Anda lokasi</string>
     <string name="notifications_fragment_item_group_invitation">Mengirimi Anda undangan</string>
     <string name="notifications_fragment_item_image_message">Mengirimi Anda foto</string>
     <string name="notifications_fragment_item_join_group">Anda adalah anggota grup</string>
@@ -782,7 +851,7 @@
     <string name="premium_services_activity_camera_control_description_4">Untuk mengelola kamera pengawas</string>
     <string name="premium_services_activity_camera_control_subtitle">Kendalikan kamera kontak Anda selama panggilan dengan izin mereka</string>
     <string name="premium_services_activity_camera_control_title">Kontrol Kamera Jarak Jauh</string>
-    <string name="premium_services_activity_click_to_call_description_1">Buat kode \"klik untuk menelepon saya\".</string>
+    <string name="premium_services_activity_click_to_call_description_1">Buat kode "klik untuk menelepon saya".</string>
     <string name="premium_services_activity_click_to_call_description_2">Publikasikan atau distribusikan dengan cara apa pun</string>
     <string name="premium_services_activity_click_to_call_description_3">Penerima memindai kode dan menelepon Anda</string>
     <string name="premium_services_activity_click_to_call_description_4">Anonim tanpa jejak di cloud</string>
@@ -794,30 +863,18 @@
     <string name="premium_services_activity_conversation_description_4">Lokal saja, tidak berdampak pada ujung lainnya</string>
     <string name="premium_services_activity_conversation_subtitle">Ekspor konten dan kosongkan ruang</string>
     <string name="premium_services_activity_conversation_title">Manajemen percakapan</string>
-    <string name="premium_services_activity_description_part1_subtitle">Koneksi langsung antar perangkat</string>
-    <string name="premium_services_activity_description_part1_title">Kualitas audio/video HD</string>
-    <string name="premium_services_activity_description_part2_subtitle">Tidak ada jejak di awan</string>
-    <string name="premium_services_activity_description_part2_title">Privasi – Kerahasiaan</string>
-    <string name="premium_services_activity_description_part3_subtitle">Efisiensi energi</string>
-    <string name="premium_services_activity_description_part3_title">bertanggung jawab terhadap lingkungan</string>
     <string name="premium_services_activity_group_call_description_1">Audio/video definisi tinggi</string>
     <string name="premium_services_activity_group_call_description_2">Koneksi langsung antar perangkat</string>
     <string name="premium_services_activity_group_call_description_3">Aman &amp; pribadi</string>
     <string name="premium_services_activity_group_call_description_4">Tidak ada jejak di awan</string>
     <string name="premium_services_activity_group_call_subtitle">Undang kontak untuk bergabung dengan panggilan grup suara/video</string>
     <string name="premium_services_activity_group_call_title">Panggilan grup</string>
-    <string name="premium_services_activity_privacy_description_1">Kunci aplikasi dengan otentikasi biometrik atau lainnya</string>
-    <string name="premium_services_activity_privacy_description_2">Sembunyikan layar terakhir di pengalih aplikasi</string>
-    <string name="premium_services_activity_privacy_description_3">Pesan sesaat yang menghilang setelah waktu tertentu</string>
-    <string name="premium_services_activity_privacy_description_4">Mencegah kontak menghubungi Anda</string>
-    <string name="premium_services_activity_privacy_subtitle">Kontrol aplikasi, kontak &amp; pesan</string>
-    <string name="premium_services_activity_privacy_title">Lebih banyak privasi</string>
     <string name="premium_services_activity_space_description_1">Beberapa profil dengan relasi terkait, percakapan, riwayat</string>
     <string name="premium_services_activity_space_description_2">Tampilan, pemberitahuan &amp; pengaturan yang dipersonalisasi</string>
     <string name="premium_services_activity_space_description_3">Untuk keluarga, teman, kolega, bisnis, olahraga, dll.</string>
-    <string name="premium_services_activity_space_description_4">Rahasia Spaces tidak terdaftar, diakses dengan nama</string>
+    <string name="premium_services_activity_space_description_4">Rahasia Space tidak terdaftar, diakses dengan nama</string>
     <string name="premium_services_activity_space_subtitle">Untuk setiap kelompok sosial yang berinteraksi dengan Anda</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">Bagikan musik Anda secara langsung</string>
     <string name="premium_services_activity_streaming_description_2">Setiap peserta dapat mengontrol pemutar media</string>
     <string name="premium_services_activity_streaming_description_3">Berinteraksi pada panggilan secara bersamaan</string>
@@ -846,9 +903,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">Tambah Profil</string>
     <string name="profile_fragment_create_profile">Buat profil</string>
-    <string name="profile_fragment_default_action">Aktifkan</string>
-    <string name="profile_fragment_default_profile_title">Profil aktif</string>
-    <string name="profile_fragment_identity_title">Profil</string>
     <string name="profile_fragment_message">Profil ini memungkinkan Anda mengundang kontak Anda untuk menjalin hubungan pribadi dengan Anda, di bawah kendali Anda.</string>
     <string name="profile_fragment_twincode_title">Kode invitasi</string>
 
@@ -864,7 +918,7 @@
     <string name="proxy_activity_list_information">Gunakan proksi dari daftar di bawah ini hanya jika aplikasi tidak dapat terhubung ke layanan tanpa proksi.</string>
     <string name="proxy_activity_onboarding">Ketika akses ke server sinyal aplikasi diblokir di negara Anda, proksi dapat melewati pemblokiran ini dalam banyak keadaan dan memungkinkan Anda berkomunikasi secara pribadi. Selain proksi dalam aplikasi, Anda dapat membuat proksi sendiri atau menggunakan proksi yang dibuat oleh orang lain. Proksi tidak dapat mengakses konten yang dipertukarkan dalam keadaan apa pun.</string>
     <string name="proxy_activity_information">Gunakan proksi hanya jika Anda tidak dapat terhubung ke layanan dari Wi-Fi standar atau jaringan seluler.</string>
-    <string name="proxy_activity_share">Buka tautan %1$s dengan twinme di perangkat Anda untuk mengonfigurasi proksi ini secara otomatis.</string>
+    <string name="proxy_activity_share">Buka tautan %1$s dengan Skred di perangkat Anda untuk mengonfigurasi proksi ini secara otomatis.</string>
     <string name="proxy_activity_title">Proksi</string>
     <string name="proxy_activity_url">Apakah Anda ingin menggunakan URL proksi ini?</string>
     <string name="proxy_activity_warning">Peringatan! URL proksi ini tidak memungkinkan Anda terhubung ke layanan aplikasi.</string>
@@ -933,11 +987,11 @@
     <string name="settings_activity_ephemeral_title">Pesan merusak diri sendiri</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Properti pesan</string>
+    <string name="settings_activity_permissions_title">IZIN</string>
     <string name="settings_activity_reset_default_value">Setel ulang ke pengaturan default</string>
     <string name="settings_activity_reset_preferences_button_title">Reset ke default</string>
     <string name="settings_activity_reset_preferences_message">Reset pengaturan notifikasi ke default aplikasi.</string>
     <string name="settings_activity_reset_preferences_title">Reset preferensi</string>
-    <string name="settings_activity_permissions_title">IZIN</string>
     <string name="settings_activity_silent_sound">Diam</string>
     <string name="settings_activity_sound_enabled_title">NOTIFIKASI BUNYI</string>
     <string name="settings_activity_system_notifications_title">Notifikasi sistem</string>
@@ -963,13 +1017,32 @@
     <string name="settings_room_activity_room_type_forum">Forum</string>
     <string name="settings_room_activity_room_type_forum_information">Peserta dapat memposting pesan yang dilihat oleh semua orang</string>
 
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">Izinkan pemberitahuan</string>
+    <string name="settings_space_activity_allow_notifications_message">Notifikasi hanya akan muncul jika Space itu yang sedang aktif.</string>
+    <string name="settings_space_activity_default_message">Space default adalah Space yang ditampilkan saat aplikasi dimulai.</string>
+    <string name="settings_space_activity_default_value_message">Nilai-nilai ini menggantikan nilai-nilai yang ditetapkan dalam pengaturan default aplikasi.</string>
+    <string name="settings_space_activity_default_value_title">Ubah pengaturan default</string>
+    <string name="settings_space_activity_header_message">Nilai parameter ini menimpa, untuk Space ini, nilai default yang ditentukan pada tingkat aplikasi.</string>
+    <string name="settings_space_activity_permission_create_contact">Buat kontak</string>
+    <string name="settings_space_activity_permission_create_group">Buat grup</string>
+    <string name="settings_space_activity_permission_move_contact">Pindahkan kontak</string>
+    <string name="settings_space_activity_permission_move_group">Pindahkan grup</string>
+    <string name="settings_space_activity_permission_share_space_card">Bagikan kode undangan Space</string>
+    <string name="settings_space_activity_permission_update_identity">Perbarui profil</string>
+    <string name="settings_space_activity_permissions_title">Izin</string>
+    <string name="settings_space_activity_reset_application_value">Reset ke pengaturan default aplikasi</string>
+    <string name="settings_space_activity_secret_message">Space rahasia tidak muncul pada daftar Space. Space tersebut hanya dapat diakses dengan mengetikkan nama persisnya pada bilah pencarian. Namanya tidak dapat diambil kembali, jadi jangan sampai lupa!</string>
+    <string name="settings_space_activity_secret_title">Space Rahasia</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
+
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">Kontak</string>
     <string name="share_activity_group_list">Grup</string>
     <string name="share_activity_title">Bagikan</string>
 
     <!-- ShowCallActivity -->
-    <string name="show_call_activity_code">Kode \"click-to-call\".</string>
+    <string name="show_call_activity_code">Kode "click-to-call".</string>
     <string name="show_call_activity_information_code">Bagikan kode ini untuk menerima panggilan eksternal.</string>
     <string name="show_call_activity_schedule_call">Panggilan terjadwal</string>
     <string name="show_call_activity_schedule_from">dari %1$s</string>
@@ -994,6 +1067,7 @@
     <string name="show_contact_activity_pending_message">Hubungan ini sedang dalam proses untuk dibangun. Harap tunggu.</string>
     <string name="show_contact_activity_revoked">Dihapus</string>
     <string name="show_contact_activity_settings_coach_mark">Tentukan apa yang boleh dilakukan kontak Anda dalam hubungan ini dengan Anda.</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">Video</string>
 
     <!-- ShowGroupActivity -->
@@ -1012,6 +1086,14 @@
     <string name="show_room_activity_invite_participants">Undang peserta</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">Manajemen</string>
+    <string name="show_space_fragment_move_message">Anda harus memiliki beberapa "Spasi" untuk memindahkan kontak.</string>
+    <string name="show_space_fragment_secret_confirm">Konfirmasikan mode \"Rahasia\"</string>
+    <string name="show_space_fragment_secret_disabled_message">Space unik ini tidak dapat didefinisikan sebagai “rahasia”. Anda perlu membuat setidaknya satu \"Space\" lainnya.</string>
+    <string name="show_space_fragment_secret_message">Spaces rahasia tidak muncul dalam daftar Spaces dan hanya dapat dibuka dengan mengetikkan namanya di bilah pencarian. Jangan pernah lupa nama itu!</string>
+    <string name="show_space_fragment_secret_message_confirm">Apakah Anda masih ingin menjadikan Space itu \"Rahasia\"?</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">Gambar</string>
     <string name="space_appearance_activity_background_message">Sesuaikan latar belakang percakapan dengan warna atau gambar.</string>
@@ -1025,7 +1107,7 @@
     <string name="space_appearance_activity_container_text_peer_message">Teks dari pesan yang diterima</string>
     <string name="space_appearance_activity_container_title">Gelembung</string>
     <string name="space_appearance_activity_default_value">Nilai default</string>
-    <string name="space_appearance_activity_general_title">Umum</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">Warna default</string>
     <string name="space_appearance_activity_menu_enter_color">Kode warna</string>
     <string name="space_appearance_activity_opacity">Kegelapan</string>
@@ -1035,7 +1117,18 @@
     <string name="space_appearance_activity_theme">Tema</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">Space Aktif</string>
+    <string name="spaces_activity_add_space">Tambah Space</string>
+    <string name="spaces_activity_create_new_space">Buat Space</string>
+    <string name="spaces_activity_current_space_action">Aktifkan</string>
+    <string name="spaces_activity_delete_default_message">Anda tidak dapat menghapus Space default.</string>
+    <string name="spaces_activity_join_space">Impor Space</string>
     <string name="spaces_activity_message">Sebuah Space adalah tempat berbagai kepribadian Anda bertemu dengan berbagai lingkaran sosial, termasuk yang paling rahasia.</string>
+    <string name="spaces_activity_move_contact_already_in_space">Kontak sudah ada dalam Space ini.</string>
+    <string name="spaces_activity_move_group_already_in_space">Grup sudah ada dalam Space ini.</string>
+    <string name="spaces_activity_move_group_no_profile">Untuk memindahkan grup ke Space, Anda harus melengkapi profil yang mewakili Anda ke grup ini. Apakah Anda ingin melengkapinya?</string>
+    <string name="spaces_activity_move_message">Anda yakin ingin memindahkan grup?</string>
+    <string name="spaces_activity_permission_not_allowed">Anda tidak diizinkan untuk melakukan tindakan ini oleh administrator Space.</string>
     <string name="spaces_activity_sample_business">Bisnis</string>
     <string name="spaces_activity_sample_business_name">Dokter John Doe</string>
     <string name="spaces_activity_sample_family">Keluarga</string>
@@ -1073,11 +1166,11 @@
     <string name="template_space_activity_template_title">Templat</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">Minta teman di dekat Anda untuk memindai kode QR undangan dengan twinme, atau ketuk kode undangan untuk menyalinnya ke papan klip.</string>
+    <string name="twincode_activity_message">Minta kontak di dekat Anda untuk memindai kode QR undangan dengan Skred, atau ketuk kode undangan untuk menyalinnya ke papan klip.</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">Apakah Anda yakin ingin menghapus kode \"Transfer Panggilan\" ini?</string>
-    <string name="transfert_call_activity_delete_message">Tautan transfer panggilan ini akan dihapus. Mengonfirmasi?</string>
+    <string name="transfert_call_activity_delete_message">Tautan \"Transfer Panggilan\" ini tidak akan dapat digunakan lagi.</string>
     <string name="transfert_call_activity_gallery_message">Pindai Kode QR ini untuk mentransfer panggilan seluler Anda.</string>
     <string name="transfert_call_activity_message">Teruskan kode ini dan tandai URL-nya di browser tempat Anda ingin mentransfer panggilan seluler.</string>
     <string name="transfert_call_activity_reset_message">Tindakan ini membatalkan kode transfer panggilan saat ini dan membuat kode baru. Mengonfirmasi?</string>
@@ -1107,13 +1200,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">Dengan menekan %1$s, saya menyatakan bahwa saya telah membaca dan menerima:</string>
-    <string name="welcome_activity_next">Berikutnya</string>
+    <string name="welcome_activity_enter">BERIKUTNYA</string>
     <string name="welcome_activity_pass">Lewati</string>
     <string name="welcome_activity_privacy_policy">Kebijakan privasi</string>
     <string name="welcome_activity_start">Mulai</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">Perpesanan &amp; panggilan suara/video definisi tinggi, melindungi privasi dengan desain.</string>
     <string name="welcome_activity_step2_message">Komunikasi "peer-to-peer" yang aman: tanpa jejak di cloud.</string>
     <string name="welcome_activity_step3_message">Tidak ada nomor telepon, tidak ada buku alamat, tidak ada user-id: Anda memilih bagaimana Anda ingin diidentifikasi berdasarkan dengan siapa Anda berkomunikasi.</string>
-    <string name="welcome_activity_terms_of_use">Ketentuan penggunaan</string>
+    <string name="welcome_activity_terms_of_use">syarat dan ketentuan</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

@@ -11,6 +11,7 @@
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.TextStyle;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.ui.spaces.CustomAppearance;
 import org.twinlife.twinme.utils.async.Loader;
 
 import java.util.List;
@@ -59,8 +61,32 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
     public abstract
     void getContactAvatar(@Nullable UUID peerTwincodeOutboundId, TwinmeContext.Consumer<Bitmap> avatarConsumer);
 
+    public abstract void getMapAvatar(@Nullable UUID peerTwincodeOutboundId, @NonNull TwinmeContext.Consumer<Bitmap> avatarConsumer);
+
     public abstract @Nullable
     Contact getContact();
+
+    @Nullable
+    public String getContactName() {
+
+        Contact contact = getContact();
+        if (contact != null) {
+            return contact.getName();
+        } else {
+            return null;
+        }
+    }
+
+    @Nullable
+    public String getIdentityName() {
+
+        Contact contact = getContact();
+        if (contact != null) {
+            return contact.getIdentityName();
+        } else {
+            return null;
+        }
+    }
 
     public abstract @Nullable
     Group getGroup();
@@ -108,6 +134,9 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
     public abstract @NonNull
     TextStyle getMessageFont();
 
+    public abstract @NonNull
+    CustomAppearance getCustomAppearance();
+
     @Nullable
     public abstract Bitmap getThumbnail(@NonNull FileDescriptor descriptor);
 
@@ -123,6 +152,8 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
         GetTwincodeAction action = new GetTwincodeAction(getTwinmeContext(), twincodeOutboundId);
         action.onResult(observer).start();
     }
+
+    public abstract void saveGeolocationMap(@NonNull Uri path, @NonNull DescriptorId descriptorId);
 
     @Override
     public void setupDesign() {

@@ -24,7 +24,7 @@ import org.twinlife.twinme.skin.Design;
 
 public class ResetSettingsViewHolder extends RecyclerView.ViewHolder {
 
-    private static final float DESIGN_ITEM_VIEW_HEIGHT = 160f;
+    private static final float DESIGN_ITEM_VIEW_HEIGHT = 120f;
     private static final int ITEM_VIEW_HEIGHT;
 
     static {

@@ -33,6 +33,8 @@ import org.twinlife.twinme.utils.CommonUtils;
 public class Settings {
     public static final int MAX_CALL_GROUP_PARTICIPANTS = 8;
 
+    private static final int DEFAULT_TIMEOUT_MESSAGE = 30;
+
     // Sound and vibration settings.
     public static final BooleanConfig soundEnabled = new BooleanConfig("settings_activity_sound_enabled", true, "4383A4B4-F091-4EB5-93E7-4C7A01E6A31D");
     public static final BooleanConfig audioVibration = new BooleanConfig("settings_activity_audio_has_vibration", true, "CA705D70-9029-4746-9719-274EA0F29F7C");
@@ -73,14 +75,23 @@ public class Settings {
     public static final StringConfig defaultUriAuthorityToSave = new StringConfig("settings_activity_default_uri_authority_to_save_files", null, "1E141E92-1DC7-4FCD-9CD8-9D14FCAD8596");
     public static final StringConfig defaultDirectoryToExport = new StringConfig("settings_activity_default_directory_to_export", null, "3AE62A72-6CFB-4F8E-BBFE-730A7AE3AFCA");
     public static final BooleanConfig showGroupCallAnimation = new BooleanConfig("call_activity_show_group_call_animation", true, "BB834EE6-3927-42E1-BC46-5663B2AB47DB");
-    public static final IntConfig profileUpdateMode = new IntConfig("edit_profile_activity_profile_update_mode", Profile.UpdateMode.NONE.ordinal(), "959957DA-B8EE-4506-8A5E-A5006023E13D");
+    public static final IntConfig showClickToCallDescriptionCount = new IntConfig("create_external_call_activity_show_click_to_call_description", 0, "70D0949E-A10f-4156-8D87-EFF914C65962");
+    public static final BooleanConfig showSpaceDescription = new BooleanConfig("space_fragment_show_space_description", true, "C873606B-CA82-4A11-8252-6AD70CD07D7F");
+    public static final IntConfig profileUpdateMode = new IntConfig("edit_profile_activity_profile_update_mode", Profile.UpdateMode.DEFAULT.ordinal(), "959957DA-B8EE-4506-8A5E-A5006023E13D");
+
+    // Twinme+ settings
+    public static final BooleanConfig privacyActivityScreenLock = new BooleanConfig("privacy_activity_screen_lock", false, "D3372EA5-1CB2-4365-92E5-5780B1F982FD");
+    public static final IntConfig privacyScreenLockTimeout = new IntConfig("privacy_activity_timeout_screen_lock", 0, "24223BA2-822B-4867-B826-AE5430D88A4A");
+    public static final BooleanConfig privacyHideLastScreen = new BooleanConfig("privacy_activity_hide_last_screen", false, "579627C5-87B5-403B-A58D-61977DFDD53A");
+    public static final BooleanConfig ephemeralMessageAllowed = new BooleanConfig("settings_activity_ephemeral_message_allowed", false, "7837F336-8422-11EC-A8A3-0242AC120002");
+    public static final IntConfig ephemeralMessageExpireTimeout = new IntConfig("settings_activity_ephemeral_message_expire_timeout", DEFAULT_TIMEOUT_MESSAGE, "585BA89F-86F3-48e0-A07C-C924C50f7C6D");
 
     // Internal settings (they are not transfered by account migration).
     public static final InternalLongConfig firstInstallation = new InternalLongConfig("settings_activity_first_first_installation", 0);
-    public static final InternalLongConfig firstShowUpgradeScreen = new InternalLongConfig("settings_activity_first_show_upgrade_screen_2023", 0);
-    public static final InternalLongConfig lastShowUpgradeScreen = new InternalLongConfig("settings_activity_last_show_upgrade_screen_2023", 0);
+    public static final InternalLongConfig firstShowUpgradeScreen = new InternalLongConfig("settings_activity_first_show_upgrade_screen", 0);
+    public static final InternalLongConfig lastShowUpgradeScreen = new InternalLongConfig("settings_activity_last_show_upgrade_screen", 0);
     public static final InternalBooleanConfig canShowUpgradeScreen = new InternalBooleanConfig("settings_activity_can_show_upgrade_screen", false);
-    public static final InternalBooleanConfig doNotShowUpgradeScreen = new InternalBooleanConfig("settings_activity_do_not_show_upgrade_screen_2023", false);
+    public static final InternalBooleanConfig showConnectedMessage = new InternalBooleanConfig("settings_activity_show_connected_message", false);
     public static final InternalBooleanConfig showCallRestrictionMessage = new InternalBooleanConfig("settings_activity_show_call_restriction_message", true);
     public static final InternalBooleanConfig showCertifiedRelationOnboarding = new InternalBooleanConfig("settings_activity_show_certified_relation_onboarding", true);
     public static final InternalBooleanConfig showSpaceOnboarding = new InternalBooleanConfig("settings_activity_show_space_onboarding", true);
@@ -104,6 +115,10 @@ public class Settings {
 
     // Update
     public static final StringConfig lastInformedVersion = new StringConfig("settings_activity_last_informed_version", null, "AEf8EfAE-40BC-11ED-B878-0242AC120002");
+
+    // Subscription
+    public static final StringConfig premiumSubscriptionInvitationTwincode = new StringConfig("in_app_subscription_activity_invitation_twincode", null, "22CA1D8D-FE44-4D94-B352-3977935FD44B");
+    public static final StringConfig premiumSubscriptionInvitationImage = new StringConfig("in_app_subscription_activity_invitation_image", null, "3FAA6089-253C-4541-A9C7-3EA7D245F926");
 
     // Coach Mark
     public static final LongConfig lastShowCoachMarkConversationEphemeral = new LongConfig("last_show_coach_mark_conversation_ephemeral", 0, "314464E8-228B-4D0F-A1CF-43EEC8BCA45A");

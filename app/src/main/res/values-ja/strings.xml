@@ -9,6 +9,7 @@
     <string name="application_all">すべて</string>
     <string name="application_appearance">外観</string>
     <string name="application_are_you_sure">よろしいですか?</string>
+    <string name="application_authorization_location">アプリがシステム設定で位置情報にアクセスすることを許可します。</string>
     <string name="application_authorization_camera">システム設定でカメラへのアクセスをアプリに許可します。</string>
     <string name="application_authorization_go_settings">システム設定に行く</string>
     <string name="application_authorization_microphone">システム設定でマイクへのアクセスをアプリに許可します。</string>
@@ -48,16 +49,19 @@
     <string name="application_group_not_found">あなたはグループから削除されました</string>
     <string name="application_items_selected">%1$d 個の項目が選択されました</string>
     <string name="application_later">後で</string>
+    <string name="application_location">地理位置情報</string>
+    <string name="application_location_enabled">デバイスで位置情報サービスをアクティブにします。</string>
     <string name="application_low_usage_message">アプリケーションを頻繁に使用しないと、OS がアプリケーションを起動してメッセージを交換しない場合があります。</string>
+    <string name="application_more_info">詳しくは…</string>
     <string name="application_one_item_selected">1 個のアイテムが選択されました</string>
     <string name="application_migration_no_storage_space">移行を完了するのに十分なスペースがデバイスにありません。 アプリケーションを閉じて空き容量を増やし、アプリを再起動してアップデートを完了します。</string>
     <string name="application_migration_no_storage_space_message">2台のデバイスのうち1台に十分なストレージ容量がありません。移行を再開する前に、そのデバイスの空き容量を増やしてください。</string>
     <string name="application_name_hint">名前</string>
-    <string name="application_network_connecting">twinmeサービスへ接続</string>
+    <string name="application_network_connecting">Skredサービスへ接続</string>
     <string name="application_network_connectivity">ネットワーク接続が存在します</string>
     <string name="application_network_status_airplane_message">機内モードが有効になっています。</string>
     <string name="application_network_status_airplane_resolution">機内モードを無効にして、Wi-Fiまたはモバイルネットワークに接続してください。</string>
-    <string name="application_network_status_connected_no_internet">twinmeサービスへのネットワークアクセスがありません。</string>
+    <string name="application_network_status_connected_no_internet">Skredサービスへのネットワークアクセスがありません。</string>
     <string name="application_network_status_connected_resolution">別のネットワークに接続してみてください。</string>
     <string name="application_network_status_connection_timeout">インターネット接続を確立できません。</string>
     <string name="application_network_status_no_internet">インターネットに接続されていません。</string>
@@ -72,13 +76,15 @@
     <string name="application_not_authorized_operation">認定されていない操作です</string>
     <string name="application_not_authorized_operation_by_your_contact">連絡先によって許可されていない操作。</string>
     <string name="application_not_connected">進行中の安全な接続…</string>
-    <string name="application_not_signed_in">twinmeサービスに接続していません</string>
+    <string name="application_not_signed_in">Skredサービスに接続していません</string>
     <string name="application_now">今</string>
     <string name="application_ok">はい</string>
     <string name="application_operation_failure">操作に失敗しました</string>
     <string name="application_operation_irreversible">この操作は元に戻せません</string>
     <string name="application_permission_camera">新しい写真またはビデオを撮影するには、カメラへのアクセス許可が必要です。</string>
     <string name="application_permission_scan_code">QRコードをスキャンするには、カメラへのアクセス許可が必要です。</string>
+    <string name="application_premium_feature_message">この機能を使用するには、プレミアム サービスを有効にする必要があります。</string>
+    <string name="application_premium_feature_title">プレミアム サービスを有効にする</string>
     <string name="application_photo_gallery">フォトアルバム</string>
     <string name="application_profile">プロフィール</string>
     <string name="application_profile_avatar_not_defined">このプロフィールで招待した連絡先に見せる、あなたの画像を入力する必要があります。</string>
@@ -102,7 +108,7 @@
     <string name="application_timeout_seconds">%1$d 秒</string>
     <string name="application_timeout_week">1週間</string>
     <string name="application_unknown_name">知らない相手</string>
-    <string name="application_upgrade">twinmeのアップグレード</string>
+    <string name="application_upgrade">Skredのアップグレード</string>
     <string name="application_webrtc_failure">WebRTCに失敗しました</string>
     <string name="application_wrong_configuration">設定が正しくありません</string>
     <string name="application_yes">はい</string>
@@ -112,7 +118,6 @@
     <string name="about_activity_information">情報</string>
     <string name="about_activity_legal">法的通知</string>
     <string name="about_activity_libraries">ライブラリ</string>
-    <string name="about_activity_message">twinmeは、個人情報へアクセスしない安全なチャットおよび音声/ビデオ通話サービスです。\n\ntwinmeは、Web上の安全な（エンドツーエンドの暗号化）ピアツーピア（中継サーバーなし）のリアルタイムマルチメディア通信の新しい標準である、WebRTCに基づいています。</string>
     <string name="about_activity_open_source_information">アプリケーションのソースコードは、AGPL-3.0ライセンスに基づき、GitHubでオープンソースとして公開されています。</string>
     <string name="about_activity_open_sources_licences">オープンソースライセンス</string>
     <string name="about_activity_premium_services">プレミアムサービス</string>
@@ -183,7 +188,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">他のデバイスのサイドメニューの「アカウント / 別のデバイスからの転送」セクションに表示される QR コードをスキャンします。</string>
     <string name="account_migration_scanner_activity_stop_scan_title">スキャンを停止します</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">この通話に参加者を追加する</string>
 
     <!-- AddContactActivity -->
@@ -192,10 +197,10 @@
     <string name="add_contact_activity_in_person_title">直接</string>
     <string name="add_contact_activity_invitation_code_title">ミニコード</string>
     <string name="add_contact_activity_invite">招待</string>
-    <string name="add_contact_activity_invite_message">モバイル端末でtwinmeのWebアドレス %1$s を開き、「%2$s」に非公開で接続してください</string>
-    <string name="add_contact_activity_invite_subject">Twinme招待</string>
-    <string name="add_contact_activity_message">隣の友達にtwinmeでQRコードをスキャンするように依頼するか、[スキャン]ボタンをタップして友達のコードをスキャンします。</string>
-    <string name="add_contact_activity_onboarding_message">twinme はあなたの友達を認識していないため、見つけることができません。 近くにいる場合は twinme を使用して、または他の方法で招待状を送信して、個人的に招待する必要があります。</string>
+    <string name="add_contact_activity_invite_message">モバイル端末でSkredのWebアドレス %1$s を開き、「%2$s」に非公開で接続してください</string>
+    <string name="add_contact_activity_invite_subject">Skred招待</string>
+    <string name="add_contact_activity_message">Skredを使用して招待状の QR コードをスキャンするように連絡先に依頼するか、「スキャン」ボタンをタップして連絡先のコードをスキャンします。</string>
+    <string name="add_contact_activity_onboarding_message">Skred はあなたの友達を認識していないため、見つけることができません。 近くにいる場合は Skred を使用して、または他の方法で招待状を送信して、個人的に招待する必要があります。</string>
     <string name="add_contact_activity_scan_code">招待QRコードをスキャンする</string>
     <string name="add_contact_activity_scan_error_corrupt_link">このリンクは破損しています。</string>
     <string name="add_contact_activity_scan_error_incorect_link">このリンクは正しくありません。</string>
@@ -254,7 +259,7 @@
     <string name="calls_fragment_all_call_segmented_control">すべて</string>
     <string name="calls_fragment_call_again_message">%1$sにかけ直しますか？</string>
     <string name="calls_fragment_call_again_title">折り返し電話</string>
-    <string name="calls_fragment_create_link">「Click-to-Call」リンクを作成する</string>
+    <string name="calls_fragment_create_link">「Click-to-call」を作成する</string>
     <string name="calls_fragment_incoming_call">電話の着信</string>
     <string name="calls_fragment_missed_call">不在着信</string>
     <string name="calls_fragment_missed_call_segmented_control">不在着信</string>
@@ -292,6 +297,11 @@
     <string name="call_activity_confirm_word_title">単語を検証する</string>
     <string name="call_activity_error_call_interrupted">通話が中断されました。エラー: %1$d。</string>
     <string name="call_activity_error_call_not_go_thru">通話ができませんでした。エラー: %1$d。</string>
+    <string name="call_activity_location_background_warning">警告: アプリケーションがバックグラウンドで実行されている場合、あなたの位置情報は連絡先と共有されなくなります。アプリケーションがこのデバイスの位置情報に常にアクセスすることを許可する必要があります。</string>
+    <string name="call_activity_location_exact_warning">警告! 正確な位置情報を共有していません。アプリケーション設定で必要な権限を変更できます。</string>
+    <string name="call_activity_location_share">位置情報を共有</string>
+    <string name="call_activity_location_share_message">通話中に現在地を共有しています。</string>
+    <string name="call_activity_location_stop">位置情報の共有を停止</string>
     <string name="call_activity_max_participant_message">グループ通話の最大参加者数 (%1$d) に達しました。</string>
     <string name="call_activity_not_supported_group_call_message">%1$s のアプリ バージョンはグループ通話と互換性がないため、更新が必要です。</string>
     <string name="call_activity_quality_message">どのように評価しますか？</string>
@@ -316,9 +326,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">すでにカメラを使用しています</string>
-    <string name="capture_activity_incorrect_qrcode">twincodeが正しくありません</string>
+    <string name="capture_activity_incorrect_qrcode">skredcodeが正しくありません</string>
     <string name="capture_activity_message">この長方形にQRコードを配置してスキャンします。</string>
-    <string name="capture_activity_no_camera">twincodeをスキャンするにはカメラが必要です</string>
+    <string name="capture_activity_no_camera">skredcodeをスキャンするにはカメラが必要です</string>
     <string name="capture_activity_qrcode_saved">招待状コードは写真に保存されています。</string>
 
     <!-- CleanupActivity -->
@@ -373,11 +383,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">電話を受けたい日付/時刻をスケジュールします。</string>
     <string name="contact_capabilities_activity_information_video_call">連絡先があなたにビデオ通話できるようにします。</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">連絡先にアクセスする権限がありません</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">アクセス拒否</string>
+    <string name="contact_picker_activity_subtitle">電話番号で招待</string>
+    <string name="contact_picker_activity_title">連絡先から友達を招待する</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">誰かを招待してあなたの招待コードをスキャンしてもらったり、相手の招待コードをスキャンしてもらったり...</string>
     <string name="contacts_fragment_invite_contact_title">連絡先を招待</string>
     <string name="contacts_fragment_scan_contact_title">招待コードをスキャンまたは入力</string>
     <string name="contacts_fragment_title">連絡先</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">この連絡先を移動してもよろしいですか？</string>
+    <string name="contact_space_activity_move_title">動く</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">音声電話</string>
@@ -390,13 +410,14 @@
     <string name="conversation_activity_empty_message">スマートな何か、または楽しいことを言ってください</string>
     <string name="conversation_activity_edit_message">連絡先のデバイスでメッセージを編集するには、アプリが最新である必要があります。</string>
     <string name="conversation_activity_ephemeral_coach_mark">一定時間後に会話からこのメッセージを削除するには、送信矢印を長押しします。</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">連絡先相手のtwinmeバージョンは完全に機能していません。&lt;br /&gt;
-        相手にtwinmeをアップデートさせてください。</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">連絡先相手のSkredバージョンは完全に機能していません。&lt;br /&gt;
+        相手にSkredをアップデートさせてください。</string>
     <string name="conversation_activity_group_member_information">%1$d 人のメンバー</string>
     <string name="conversation_activity_group_not_allowed_post_message">送信メッセージは許可されません</string>
     <string name="conversation_activity_group_one_member">1人のメンバー</string>
+    <string name="conversation_activity_info">：ロック チャットメッセージは携帯電話とその送信中に暗号化されます。最高レベルのデータセキュリティを確保するために、中間サーバーを使用せずにピアツーピア接続を使用して、%sの電話に直接送信されます。</string>
     <string name="conversation_activity_invitation_accepted">承認された招待状</string>
-    <string name="conversation_activity_invitation_failed">連絡先にtwinmeの更新を依頼する</string>
+    <string name="conversation_activity_invitation_failed">連絡先にSkredの更新を依頼する</string>
     <string name="conversation_activity_invitation_joined">グループのメンバー</string>
     <string name="conversation_activity_invitation_pending">招待状の進行中</string>
     <string name="conversation_activity_invitation_refused">招待が拒否されました</string>
@@ -456,7 +477,7 @@
     <string name="conversations_fragment_you">君</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">このプロフィールは、この「click-to-call」リンクを使用して電話をかけるゲストに表示されます。</string>
+    <string name="create_external_call_activity_message">通話件名の名前、画像、説明を入力します。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">「Click-to-call」では、ゲストはアプリケーションをインストールしなくてもブラウザから電話をかけることができます。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">各インスタンスには、通話の件名を表す名前、画像、説明が含まれます。たとえば、次のとおりです。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">あなたのカスタマーサービス</string>
@@ -500,10 +521,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">作成されると、各関係には、あなたとあなたの連絡先を相互に表す独自の「プロファイル」のペアが作成されます。</string>
     <string name="create_profile_activity_onboarding_message_part_4">その後、各連絡先に対して自分のことをどのように知ってもらいたいかを、関係ごとに個別に変更できます。</string>
     <string name="create_profile_activity_save_message">この名前と画像は、連絡先を招待し、関係を初期化するために使用されます。関係ごとに変更およびカスタマイズできます。</string>
+    <string name="create_profile_activity_title">プロフィールを設定してください</string>
     <string name="create_profile_activity_welcome1">プロフィール画像を入力してください</string>
     <string name="create_profile_activity_welcome2">ようこそ、%1$sさん！</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">画像</string>
+    <string name="create_space_activity_contact_list">連絡先を移動する</string>
+    <string name="create_space_activity_contacts_no_profile">連絡先をSpaceに移動するには、連絡先を表すプロファイルを完成させる必要があります。完了しますか？</string>
     <string name="create_space_activity_message">「スペース」はローカルであり、連絡先には表示されません。</string>
     <string name="create_space_activity_onboarding_message_part_1">「スペース」は、連絡先が所属するソーシャル サークルに応じて連絡先を整理するのに役立ちます。 家族、友人、ビジネス、娯楽など。</string>
     <string name="create_space_activity_onboarding_message_part_2">各「スペース」は、その「スペース」のソーシャル サークルの連絡先 (お父さん、ジョニー、ジョン ドゥ博士、バットマンなど) と対話するときに使用するペルソナを表す「プロファイル」に関連付けられています。</string>
@@ -513,6 +538,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- 「スペース」のリスト内ですぐに識別できる「画像」。</string>
     <string name="create_space_activity_onboarding_message_part_7">- カラー「テーマ」は、見た目と雰囲気をカスタマイズします。</string>
     <string name="create_space_activity_onboarding_message_part_8">- 特定の「スペース」ごとに固有の「設定」。これにより、アプリケーションの設定によって定義されたデフォルト値が上書きされます。</string>
+    <string name="create_space_activity_profile_message">このプロフィールで招待する連絡先を表す名前と画像を入力する必要があります。</string>
+    <string name="create_space_activity_space_hint">お名前（ご家族、ご友人、会社など）</string>
     <string name="create_space_activity_title">Spaceを作成</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -532,9 +559,6 @@
     <string name="edit_contact_activity_confirm_message">この関係を削除してもよろしいですか?</string>
     <string name="edit_contact_activity_message">この連絡先はあなたに連絡できなくなります。</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">このプロフィールを削除すると、関連する招待コードが無効になります。 削除を確認しますか？</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">この「Click-to-Call」コードを削除してもよろしいですか?</string>
     <string name="edit_external_call_activity_delete_message">この「Click-to-Call」リンクは使用できなくなります。</string>
@@ -547,7 +571,13 @@
     <string name="edit_profile_activity_propagating_message">招待プロファイルの変更を既存の連絡先に伝播することも、伝播しないこともできます。</string>
     <string name="edit_profile_activity_propagating_no_contact">誰でもない</string>
     <string name="edit_profile_activity_propagating_profile">プロファイルの変更を伝達する</string>
-    <string name="edit_profile_activity_remove_active_profile">有効なプロファイルを削除することはできません</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">連絡先を招待するには、この連絡先に自分を表すプロファイルを完成させる必要があります。完了しますか？</string>
+    <string name="edit_space_activity_delete_confirmation">このSpaceを削除してもよろしいですか？</string>
+    <string name="edit_space_activity_delete_current_space">現在アクティブな「スペース」は削除できません。</string>
+    <string name="edit_space_activity_delete_message">Spaceを削除すると、そのSpaceからすべての連絡先、グループ、会話が削除されます。このSpaceを削除してもよろしいですか？</string>
+    <string name="edit_space_activity_delete_only_one_space_message">アプリケーションの唯一のSpaceは削除できません。</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">関係を作成したら、セキュリティ強化のため認証することを強くお勧めします。</string>
@@ -594,12 +624,16 @@
     <string name="feedback_activity_send_logs">デバッグ ログを送信</string>
     <string name="feedback_activity_send_message">フィードバックを送信しました。ありがとうございます。</string>
     <string name="feedback_activity_subject">題名</string>
-    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+    <string name="feedback_activity_subject_placeholder">[Skred]</string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">友達を招待して、Skred でつながる必要があります。友達が招待を受け入れると、連絡先リストに表示されます。</string>
+    <string name="first_invite_contact_activity_ignore">無視</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">この操作により、このプロファイルに関連付けられている現在の招待コードが無効になります。新しいコードを生成してもよろしいですか？</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">新しい招待コードを生成する</string>
-    <string name="fullscreen_qrcode_activity_save_message">この連絡先を追加するには、この招待状のQRコードをtwinmeでインポートまたはスキャンします。</string>
+    <string name="fullscreen_qrcode_activity_save_message">この連絡先を追加するには、この招待状のQRコードをSkredでインポートまたはスキャンします。</string>
     <string name="fullscreen_qrcode_activity_save_title">フォトギャラリーに保存</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -617,6 +651,37 @@
     <string name="group_member_activity_section_invitation">招待状</string>
     <string name="group_member_activity_section_member">メンバー</string>
     <string name="group_member_activity_title">グループの人（仲間）たち</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s は、それがサポートするプレミアム サービスを楽しむようにあなたを招待します。</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">HQサウンドとHD画像によるグループ通話</string>
+    <string name="in_app_subscription_activity_description_step1_title">高品質の音声/ビデオ会議</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">ゼロデータ・ゼロカーボン</string>
+    <string name="in_app_subscription_activity_description_step2_title">環境に配慮した音声/ビデオ会議</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">交換の絶対的な機密性</string>
+    <string name="in_app_subscription_activity_description_step3_title">プライベート音声/ビデオ会議</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">高精細瞬時接続</string>
+    <string name="in_app_subscription_activity_description_step4_title">インスタント音声/ビデオ会議</string>
+    <string name="in_app_subscription_activity_expiration_message">リニューアル ： %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">サブスクリプションを購入すると、Google から Play ストア アカウントに直接請求されます。サブスクリプションは、現在の期間が終了する少なくとも 24 時間前にキャンセルしない限り、同じ期間で自動的に更新されます。現在の期間の終了時にサブスクリプションが更新されないように、いつでも Play ストアで無料でキャンセルできます。購入後、Play ストアのアカウント設定からサブスクリプションを管理できます。</string>
+    <string name="in_app_subscription_activity_free_trial">14日間の無料トライアル。\nサブスクリプションはいつでもキャンセルできます。</string>
+    <string name="in_app_subscription_activity_invitation_code">招待 QR コードをスキャンするか、コードを貼り付けて、プレミアム サービスにアクセスします。</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">招待コードが無効です。</string>
+    <string name="in_app_subscription_activity_later_title">結構です</string>
+    <string name="in_app_subscription_activity_manage_susbcription">サブスクリプションを管理する</string>
+    <string name="in_app_subscription_activity_month">月</string>
+    <string name="in_app_subscription_activity_not_available">有料のプレミアム サービスは、お使いのデバイスまたはお住まいの国ではご利用いただけません。</string>
+    <string name="in_app_subscription_activity_restore_title">購入を復元</string>
+    <string name="in_app_subscription_activity_search">サブスクリプション オファーを検索する</string>
+    <string name="in_app_subscription_activity_six_month_title">最も人気のある</string>
+    <string name="in_app_subscription_activity_subscription_title">サブスクリプション</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">現在のサブスクリプション</string>
+    <string name="in_app_subscription_activity_subscribe_title">継続する</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$sはビジーです</string>
@@ -654,15 +719,16 @@
     <string name="invitation_code_activity_success_message">ミニコードで確立した関係は、セキュリティ強化のため、認証することを強くお勧めします。</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">近くの友達にツインミーで「部屋」のQRコードをスキャンするように依頼するか、招待コードをタップしてクリップボードにコピーします。</string>
+    <string name="invitation_room_activity_message">近くの連絡先に、Skred で「ルーム」の QR コードをスキャンするか、招待コードをタップしてクリップボードにコピーするよう依頼してください。</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">ボイス</string>
     <string name="last_calls_activity_video">ビデオ</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">このデバイスのtwinmeアカウントはtwinme+に転送されます。</string>
-    <string name="local_account_migration_activity_message_older_version">すべての関係が失われないように、転送を開始する前に両方のデバイスをアプリの最新バージョンに更新してください。</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">アプリケーションにアクセスするために認証する</string>
+    <string name="lock_screen_activity_passcode_not_set">デバイス認証設定が設定されていません。 システム設定に移動し、アプリケーションのロックを解除するように設定します。</string>
+    <string name="lock_screen_activity_unlock">アプリケーションへのアクセスのロックを解除する</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">連絡先を追加</string>
@@ -672,12 +738,10 @@
     <string name="main_activity_reset_conversation_title">会話をリセット</string>
     <string name="main_activity_reset_group_conversation_admin_message">この会話をリセットすると、各グループ メンバーのデバイスからすべてのメッセージが削除されます。 確認？</string>
     <string name="main_activity_reset_group_conversation_message">この会話をリセットすると、デバイスからすべてのメッセージが削除されます。 確認？</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">この機能を使用するには、twinme+ にアップグレードする必要があります。 すべてのアカウント データを移行できます。</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">すべてのアカウント データを移行できます。</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme は、さらに多くの機能を備えたプレミアム バージョンとして利用できます。</string>
-    <string name="migration_twinme_plus_activity_premium_title">twinme+にアップグレード</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">Space の作成</string>
+    <string name="main_activity_skredboard_delete_title">Space の削除</string>
+    <string name="main_activity_skredboard_message">code の入力</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">このアプリについて</string>
@@ -689,6 +753,8 @@
     <string name="navigation_activity_settings">設定</string>
     <string name="navigation_activity_sign_out">ログアウト</string>
     <string name="navigation_activity_sounds">サウンド</string>
+    <string name="navigation_activity_subscribe">Skred+を発見</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; アクティブ</string>
     <string name="navigation_activity_support">サポート</string>
     <string name="navigation_activity_title">メニュー</string>
 
@@ -701,6 +767,8 @@
     <string name="notification_center_deleted_contact">連絡先が削除されました</string>
     <string name="notification_center_file_message">あなたにファイルを送った</string>
     <string name="notification_center_file_message_received">新しいファイル</string>
+    <string name="notification_center_geolocation_message">あなたに場所を送りました</string>
+    <string name="notification_center_geolocation_message_received">新しい場所</string>
     <string name="notification_center_group_invitation">あなたに招待状を送った</string>
     <string name="notification_center_group_invitation_received">新しい招待状</string>
     <string name="notification_center_join_group">あなたはグループのメンバーです</string>
@@ -739,6 +807,7 @@
     <string name="notifications_fragment_item_cleanup_message">" が古いメッセージをいくつかクリーンアップしました。"</string>
     <string name="notifications_fragment_item_deleted_contact">連絡先が削除されました</string>
     <string name="notifications_fragment_item_file_message">あなたにファイルを送った</string>
+    <string name="notifications_fragment_item_geolocation_message">あなたに場所を送りました</string>
     <string name="notifications_fragment_item_group_invitation">あなたに招待状を送った</string>
     <string name="notifications_fragment_item_image_message">写真を受信しました</string>
     <string name="notifications_fragment_item_join_group">あなたはグループのメンバーです</string>
@@ -795,30 +864,18 @@
     <string name="premium_services_activity_conversation_description_4">ローカルのみ、相手側への影響なし</string>
     <string name="premium_services_activity_conversation_subtitle">コンテンツをエクスポートしてスペースを解放する</string>
     <string name="premium_services_activity_conversation_title">会話管理</string>
-    <string name="premium_services_activity_description_part1_subtitle">デバイス間の直接接続</string>
-    <string name="premium_services_activity_description_part1_title">HD オーディオ/ビデオ品質</string>
-    <string name="premium_services_activity_description_part2_subtitle">クラウドに痕跡なし</string>
-    <string name="premium_services_activity_description_part2_title">プライバシー – 機密保持</string>
-    <string name="premium_services_activity_description_part3_subtitle">エネルギー効率</string>
-    <string name="premium_services_activity_description_part3_title">環境への責任</string>
     <string name="premium_services_activity_group_call_description_1">高精細オーディオ/ビデオ</string>
     <string name="premium_services_activity_group_call_description_2">デバイス間の直接接続</string>
     <string name="premium_services_activity_group_call_description_3">安全でプライベート</string>
     <string name="premium_services_activity_group_call_description_4">クラウドに痕跡なし</string>
     <string name="premium_services_activity_group_call_subtitle">連絡先を音声/ビデオ グループ通話に招待する</string>
     <string name="premium_services_activity_group_call_title">グループ通話</string>
-    <string name="premium_services_activity_privacy_description_1">生体認証またはその他の認証でアプリをロックする</string>
-    <string name="premium_services_activity_privacy_description_2">アプリスイッチャーで最後の画面を隠す</string>
-    <string name="premium_services_activity_privacy_description_3">一定時間後に消える一時的なメッセージ</string>
-    <string name="premium_services_activity_privacy_description_4">連絡先があなたに電話をかけないようにする</string>
-    <string name="premium_services_activity_privacy_subtitle">アプリ、連絡先、メッセージを管理する</string>
-    <string name="premium_services_activity_privacy_title">より多くのプライバシー</string>
     <string name="premium_services_activity_space_description_1">関連付けられた関係、会話、履歴を持つ複数のプロファイル</string>
     <string name="premium_services_activity_space_description_2">パーソナライズされた外観、通知、設定</string>
     <string name="premium_services_activity_space_description_3">家族、友人、同僚、ビジネス、スポーツなどに。</string>
-    <string name="premium_services_activity_space_description_4">秘密の Spaces はリストにない、名前でアクセス</string>
+    <string name="premium_services_activity_space_description_4">秘密の Space はリストにない、名前でアクセス</string>
     <string name="premium_services_activity_space_subtitle">あなたが交流する社会集団ごとに</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">音楽をライブで共有する</string>
     <string name="premium_services_activity_streaming_description_2">各参加者はメディアプレーヤーを制御できます</string>
     <string name="premium_services_activity_streaming_description_3">通話中に同時に対話する</string>
@@ -847,9 +904,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">プロフィールを追加</string>
     <string name="profile_fragment_create_profile">プロフィールを作成する</string>
-    <string name="profile_fragment_default_action">活性化</string>
-    <string name="profile_fragment_default_profile_title">アクティブなプロファイル</string>
-    <string name="profile_fragment_identity_title">プロフィール</string>
     <string name="profile_fragment_message">このプロファイルを使用すると、連絡先を招待して、管理下であなたとのプライベートな関係を確立できます。</string>
     <string name="profile_fragment_twincode_title">招待コード</string>
 
@@ -865,7 +919,7 @@
     <string name="proxy_activity_list_information">アプリケーションがプロキシなしではサービスに接続できない場合にのみ、以下のリストにあるプロキシを使用してください。</string>
     <string name="proxy_activity_onboarding">お住まいの国でアプリのシグナリングサーバーへのアクセスがブロックされている場合、プロキシを使用すると多くの場合、これらのブロックを回避し、プライベートに通信できます。アプリ内プロキシに加えて、独自のプロキシを作成したり、他のユーザーが作成したプロキシを使用したりできます。プロキシは、いかなる状況においても交換されるコンテンツにアクセスすることはできません。</string>
     <string name="proxy_activity_information">標準のWi-Fiまたはモバイルネットワークからサービスに接続できない場合にのみ、プロキシを使用してください。</string>
-    <string name="proxy_activity_share">お使いのデバイスでtwinmeを使って%1$sリンクを開くと、このプロキシが自動的に設定されます。</string>
+    <string name="proxy_activity_share">お使いのデバイスでSkredを使って%1$sリンクを開くと、このプロキシが自動的に設定されます。</string>
     <string name="proxy_activity_title">プロキシ</string>
     <string name="proxy_activity_url">このプロキシのURLを使用しますか？</string>
     <string name="proxy_activity_warning">警告！このプロキシのURLでは、アプリのサービスに接続できません。</string>
@@ -934,11 +988,11 @@
     <string name="settings_activity_ephemeral_title">消えるメッセージ</string>
     <string name="settings_activity_image_title">写真</string>
     <string name="settings_activity_message_properties_title">メッセージのプロパティ</string>
+    <string name="settings_activity_permissions_title">許可</string>
     <string name="settings_activity_reset_default_value">デフォルト設定にリセット</string>
     <string name="settings_activity_reset_preferences_button_title">デフォルトにリセットします</string>
     <string name="settings_activity_reset_preferences_message">通知設定をアプリケーションのデフォルトにリセットします。</string>
     <string name="settings_activity_reset_preferences_title">設定をリセット</string>
-    <string name="settings_activity_permissions_title">許可</string>
     <string name="settings_activity_silent_sound">サイレント</string>
     <string name="settings_activity_sound_enabled_title">サウンド通知</string>
     <string name="settings_activity_system_notifications_title">システム通知</string>
@@ -963,6 +1017,25 @@
     <string name="settings_room_activity_room_type_feedback_information">参加者のフィードバックは、管理者/モデレーターのみが閲覧できます</string>
     <string name="settings_room_activity_room_type_forum">フォーラム</string>
     <string name="settings_room_activity_room_type_forum_information">参加者は誰でも見たメッセージを投稿できます</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">通知を許可する</string>
+    <string name="settings_space_activity_allow_notifications_message">通知は、そのスペースが現在アクティブなスペースである場合にのみ表示されます。</string>
+    <string name="settings_space_activity_default_message">デフォルトのSpaceは、アプリケーション起動時に表示されるSpaceです。</string>
+    <string name="settings_space_activity_default_value_message">これらの値は、アプリケーションのデフォルト設定で設定されている値を上書きします。</string>
+    <string name="settings_space_activity_default_value_title">デフォルト設定を変更する</string>
+    <string name="settings_space_activity_header_message">これらのパラメータの値は、この「スペース」について、アプリケーションレベルで定義されたデフォルト値を上書きします。</string>
+    <string name="settings_space_activity_permission_create_contact">連絡先を作成</string>
+    <string name="settings_space_activity_permission_create_group">グループを作成します</string>
+    <string name="settings_space_activity_permission_move_contact">連絡先を移動</string>
+    <string name="settings_space_activity_permission_move_group">グループを移動</string>
+    <string name="settings_space_activity_permission_share_space_card">Space招待コードを共有</string>
+    <string name="settings_space_activity_permission_update_identity">プロフィールを更新</string>
+    <string name="settings_space_activity_permissions_title">許可</string>
+    <string name="settings_space_activity_reset_application_value">アプリケーションのデフォルト設定にリセット</string>
+    <string name="settings_space_activity_secret_message">シークレットSpaceはSpaceのリストに表示されません。検索バーに正確な名前を入力することによってのみアクセスできます。その名前は取得できないので、忘れないでください！</string>
+    <string name="settings_space_activity_secret_title">秘密の「宇宙」</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
 
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">連絡先</string>
@@ -995,6 +1068,7 @@
     <string name="show_contact_activity_pending_message">この関係が確立されつつあります。 お待ちください。</string>
     <string name="show_contact_activity_revoked">削除されました</string>
     <string name="show_contact_activity_settings_coach_mark">あなたとのこの関係において、あなたの連絡先が何をすることが許可されているかを定義します。</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">ビデオ</string>
 
     <!-- ShowGroupActivity -->
@@ -1013,6 +1087,14 @@
     <string name="show_room_activity_invite_participants">参加者を招待する</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">管理</string>
+    <string name="show_space_fragment_move_message">連絡先を移動するには、複数の「スペース」が必要です。</string>
+    <string name="show_space_fragment_secret_confirm">「秘密」モードを確認してください。</string>
+    <string name="show_space_fragment_secret_disabled_message">この固有の「Space」は「秘密」として定義できません。少なくとも 1 つの別の「Space」を作成する必要があります。</string>
+    <string name="show_space_fragment_secret_message">秘密の「Spaces」は「Spaces」のリストに表示されず、検索バーに名前を入力してのみ開くことができます。名前を忘れないようにしてください!</string>
+    <string name="show_space_fragment_secret_message_confirm">その「Space」を「秘密」にしますか?</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">画像</string>
     <string name="space_appearance_activity_background_message">会話の背景を色または画像でカスタマイズします。</string>
@@ -1026,7 +1108,7 @@
     <string name="space_appearance_activity_container_text_peer_message">受信したメッセージのテキスト</string>
     <string name="space_appearance_activity_container_title">泡</string>
     <string name="space_appearance_activity_default_value">デフォルト値</string>
-    <string name="space_appearance_activity_general_title">一般</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">デフォルトの色</string>
     <string name="space_appearance_activity_menu_enter_color">カラーコード</string>
     <string name="space_appearance_activity_opacity">不透明度</string>
@@ -1036,7 +1118,18 @@
     <string name="space_appearance_activity_theme">テーマ</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">アクティブなSpace</string>
+    <string name="spaces_activity_add_space">Spaceを追加</string>
+    <string name="spaces_activity_create_new_space">Spaceを作成する</string>
+    <string name="spaces_activity_current_space_action">活性化</string>
+    <string name="spaces_activity_delete_default_message">デフォルトのSpaceは削除できません。</string>
+    <string name="spaces_activity_join_space">Spaceをインポートする</string>
     <string name="spaces_activity_message">「スペース」とは、あなたのさまざまな個性が、最も秘密のサークルを含む複数の社会的サークルと出会う場所です。</string>
+    <string name="spaces_activity_move_contact_already_in_space">連絡先は既にこのSpaceにあります。</string>
+    <string name="spaces_activity_move_group_already_in_space">グループはすでにこのSpaceにあります。</string>
+    <string name="spaces_activity_move_group_no_profile">グループをSpaceに移動するには、このグループを表すプロファイルを完成させる必要があります。完了しますか？</string>
+    <string name="spaces_activity_move_message">グループを移動してもよろしいですか？</string>
+    <string name="spaces_activity_permission_not_allowed">Space管理者によるこのアクションの実行は許可されていません。</string>
     <string name="spaces_activity_sample_business">ビジネス</string>
     <string name="spaces_activity_sample_business_name">ジョン・ドゥ博士</string>
     <string name="spaces_activity_sample_family">家族</string>
@@ -1074,11 +1167,11 @@
     <string name="template_space_activity_template_title">テンプレート</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">近くの友達にtwinmeで招待QRコードをスキャンするように依頼するか、招待コードをタップしてクリップボードにコピーします。</string>
+    <string name="twincode_activity_message">近くの連絡先に Skred で招待 QR コードをスキャンするよう依頼するか、招待コードをタップしてクリップボードにコピーしてください。</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">この「通話転送」コードを削除してもよろしいですか?</string>
-    <string name="transfert_call_activity_delete_message">この通話転送リンクは削除されます。 確認する？</string>
+    <string name="transfert_call_activity_delete_message">この「通話転送」リンクは使用できなくなります。</string>
     <string name="transfert_call_activity_gallery_message">携帯電話の通話を転送するには、この QR コードをスキャンしてください。</string>
     <string name="transfert_call_activity_message">このコードを転送し、携帯電話の転送先となるブラウザ上でその URL をブックマークします。</string>
     <string name="transfert_call_activity_reset_message">このアクションにより、現在の通話転送コードが無効になり、新しいコードが作成されます。 確認する？</string>
@@ -1108,13 +1201,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">%1$sを押すことにより、私は以下を読んで受け入れたことを確認します。</string>
-    <string name="welcome_activity_next">次</string>
+    <string name="welcome_activity_enter">次へ</string>
     <string name="welcome_activity_pass">スキップ</string>
     <string name="welcome_activity_privacy_policy">個人情報保護方針</string>
     <string name="welcome_activity_start">開始</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">メッセージングと高解像度の音声/ビデオ通話で、プライバシーを保護する設計。</string>
     <string name="welcome_activity_step2_message">安全な「ピア ツー ピア」通信: クラウドに痕跡はありません。</string>
     <string name="welcome_activity_step3_message">電話番号も、アドレス帳も、ユーザー ID もありません。通信相手に基づいて、識別方法を選択します。</string>
     <string name="welcome_activity_terms_of_use">利用規約</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

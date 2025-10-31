@@ -37,6 +37,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.utils.DotsAdapter;
 
@@ -51,7 +52,6 @@ public class PremiumServicesActivity extends AbstractTwinmeActivity {
     private static final float DESIGN_UPDATE_HEIGHT = 82f;
     private static final float DESIGN_DO_NOT_SHOW_HEIGHT = 68f;
     private static final float DESIGN_DO_NOT_SHOW_MARGIN = 16f;
-
     private static final float DESIGN_BOTTOM_HEIGHT = 188f;
 
     private static final float DESIGN_CLOSE_SIZE = 100f;
@@ -60,20 +60,15 @@ public class PremiumServicesActivity extends AbstractTwinmeActivity {
     private int mCurrentPosition = 0;
     private final List<UIPremiumFeature> mUIPremiumFeature = new ArrayList<>();
 
-    private DotsAdapter mDotsAdapter;
-
     private boolean mHasConversations;
     private boolean mUpgradeFromSplashscreen;
     private boolean mFromSideMenu;
 
-    public static void redirectStoreUpgrade(@NonNull Context context) {
-
-        redirectStore(context, context.getString(R.string.twinme_plus_app_id));
-    }
+    private DotsAdapter mDotsAdapter;
 
     public static void redirectStore(@NonNull Context context) {
 
-        redirectStore(context, context.getString(R.string.twinme_app_id));
+        redirectStore(context, context.getString(R.string.skred_app_id));
     }
 
     public static void redirectStore(@NonNull Context context, @NonNull String appId) {
@@ -271,7 +266,9 @@ public class PremiumServicesActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onUpdateClick");
         }
 
-        PremiumServicesActivity.redirectStoreUpgrade(this);
+        Intent intent = new Intent();
+        intent.setClass(this, InAppSubscriptionActivity.class);
+        startActivity(intent);
     }
 
     private void onDoNotShowClick() {
@@ -285,8 +282,6 @@ public class PremiumServicesActivity extends AbstractTwinmeActivity {
             intent.putExtra(Intents.INTENT_HAS_CONVERSATIONS, mHasConversations);
             startActivity(intent);
         }
-
-        getTwinmeApplication().setDoNotShowUpgradeScreen();
 
         finish();
     }
@@ -312,8 +307,6 @@ public class PremiumServicesActivity extends AbstractTwinmeActivity {
         }
 
         mUIPremiumFeature.clear();
-        mUIPremiumFeature.add(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.PRIVACY));
-        mUIPremiumFeature.add(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.SPACES));
         mUIPremiumFeature.add(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
         mUIPremiumFeature.add(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.STREAMING));
         mUIPremiumFeature.add(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.TRANSFER_CALL));

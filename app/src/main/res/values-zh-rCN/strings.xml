@@ -9,6 +9,7 @@
     <string name="application_all">所有</string>
     <string name="application_appearance">出现</string>
     <string name="application_are_you_sure">你确定吗？</string>
+    <string name="application_authorization_location">允许应用程序在系统设置中访问位置服务。</string>
     <string name="application_authorization_camera">允许应用在系统设置中访问相机。</string>
     <string name="application_authorization_go_settings">转到系统设置</string>
     <string name="application_authorization_microphone">允许应用在系统设置中访问麦克风。</string>
@@ -48,16 +49,19 @@
     <string name="application_group_not_found">您已从群组中删除</string>
     <string name="application_items_selected">已选择 %1$d 个项目</string>
     <string name="application_later">后来</string>
+    <string name="application_location">地理位置</string>
+    <string name="application_location_enabled">在您的设备上激活位置服务。</string>
     <string name="application_low_usage_message">警告，如果您不经常使用该应用程序，操作系统可能不会唤醒它来交换消息！</string>
+    <string name="application_more_info">更多信息…</string>
     <string name="application_one_item_selected">已选择 1 项</string>
     <string name="application_migration_no_storage_space">您的设备上没有足够的空间来完成迁移。 关闭应用程序，释放一些空间，然后重新启动应用程序以完成更新。</string>
     <string name="application_migration_no_storage_space_message">两台设备中，有一台的存储空间不足。请释放该设备的空间，然后再重新开始迁移。</string>
     <string name="application_name_hint">名称</string>
-    <string name="application_network_connecting">连接到twinme服务</string>
+    <string name="application_network_connecting">连接到Skred服务</string>
     <string name="application_network_connectivity">网络连接存在</string>
     <string name="application_network_status_airplane_message">飞行模式被激活</string>
     <string name="application_network_status_airplane_resolution">请关闭飞行模式并连接到Wi-Fi或移动网络。</string>
-    <string name="application_network_status_connected_no_internet">没有网络接入到twinme服务。</string>
+    <string name="application_network_status_connected_no_internet">没有网络接入到Skred服务。</string>
     <string name="application_network_status_connected_resolution">尝试连接到另外一个网络。</string>
     <string name="application_network_status_connection_timeout">无法建立网络连接。</string>
     <string name="application_network_status_no_internet">无网络连接。</string>
@@ -72,13 +76,15 @@
     <string name="application_not_authorized_operation">未授权操作</string>
     <string name="application_not_authorized_operation_by_your_contact">未经您的联系人授权操作。</string>
     <string name="application_not_connected">正在进行安全连接......</string>
-    <string name="application_not_signed_in">没有连接到twinme服务</string>
+    <string name="application_not_signed_in">没有连接到Skred服务</string>
     <string name="application_now">现在</string>
     <string name="application_ok">确定</string>
     <string name="application_operation_failure">操作失败</string>
     <string name="application_operation_irreversible">此操作不可逆</string>
     <string name="application_permission_camera">需要使用相机的权限才能拍摄新照片或视频。</string>
     <string name="application_permission_scan_code">要扫描QR码，必须具有访问相机的权限。</string>
+    <string name="application_premium_feature_message">您必须激活高级服务才能使用此功能。</string>
+    <string name="application_premium_feature_title">激活优质服务</string>
     <string name="application_photo_gallery">相册</string>
     <string name="application_profile">个人资料</string>
     <string name="application_profile_avatar_not_defined">您需要在个人资料中输入一个对于您邀请的联系人来说代表您的图像</string>
@@ -102,7 +108,7 @@
     <string name="application_timeout_seconds">%1$d 秒</string>
     <string name="application_timeout_week">1周</string>
     <string name="application_unknown_name">未知</string>
-    <string name="application_upgrade">升级twinme</string>
+    <string name="application_upgrade">升级Skred</string>
     <string name="application_webrtc_failure">ebRTC失败</string>
     <string name="application_wrong_configuration">配置不正确</string>
     <string name="application_yes">是</string>
@@ -112,7 +118,6 @@
     <string name="about_activity_information">信息</string>
     <string name="about_activity_legal">法律声明</string>
     <string name="about_activity_libraries">库</string>
-    <string name="about_activity_message">twinme 是一个安全的聊天及语音/视频呼叫服务系统，不会获取个人信息。\n\ntwinme 是基于WebRTC-一种网络上安全（端对端）点对点（无延迟服务器）实时多媒体通讯的新标准而打造的。</string>
     <string name="about_activity_open_source_information">该应用程序的源代码已在 GitHub 上开源，遵循 AGPL-3.0 许可证。</string>
     <string name="about_activity_open_sources_licences">开源许可证</string>
     <string name="about_activity_premium_services">优质服务</string>
@@ -183,7 +188,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">扫描另一设备侧面菜单“帐户/从另一设备传输”部分中显示的二维码。</string>
     <string name="account_migration_scanner_activity_stop_scan_title">停止扫描</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">向此通话添加参与者</string>
 
     <!-- AddContactActivity -->
@@ -192,10 +197,10 @@
     <string name="add_contact_activity_in_person_title">现场</string>
     <string name="add_contact_activity_invitation_code_title">迷你代码</string>
     <string name="add_contact_activity_invite">邀请</string>
-    <string name="add_contact_activity_invite_message">在您的移动设备上使用twinme打开网址 %1$s 即可与“%2$s”私密联系</string>
-    <string name="add_contact_activity_invite_subject">Twinme邀请</string>
-    <string name="add_contact_activity_message">让您附近的朋友使用 twinme 扫描您的邀请二维码，或点击“扫描”按钮扫描您朋友的二维码。</string>
-    <string name="add_contact_activity_onboarding_message">twinme 不认识你的朋友，也无法发现他们。 你必须亲自邀请他们，当他们在你附近时用 twinme 邀请他们，或者通过其他方式向他们发送邀请。</string>
+    <string name="add_contact_activity_invite_message">在您的移动设备上使用Skred打开网址 %1$s 即可与“%2$s”私密联系</string>
+    <string name="add_contact_activity_invite_subject">Skred邀请</string>
+    <string name="add_contact_activity_message">请您的联系人使用 Skred 扫描邀请函的二维码，或点击“扫描”按钮扫描您联系人的代码。</string>
+    <string name="add_contact_activity_onboarding_message">Skred 不认识你的朋友，也无法发现他们。 你必须亲自邀请他们，当他们在你附近时用 Skred 邀请他们，或者通过其他方式向他们发送邀请。</string>
     <string name="add_contact_activity_scan_code">扫描邀请二维码</string>
     <string name="add_contact_activity_scan_error_corrupt_link">此链接已损坏。</string>
     <string name="add_contact_activity_scan_error_incorect_link">此链接不正确。</string>
@@ -254,7 +259,7 @@
     <string name="calls_fragment_all_call_segmented_control">所有</string>
     <string name="calls_fragment_call_again_message">您要回拨%1$s吗？</string>
     <string name="calls_fragment_call_again_title">打回来</string>
-    <string name="calls_fragment_create_link">创建“点击通话”链接</string>
+    <string name="calls_fragment_create_link">创建“点击通话”</string>
     <string name="calls_fragment_incoming_call">来电</string>
     <string name="calls_fragment_missed_call">未接来电</string>
     <string name="calls_fragment_missed_call_segmented_control">错过了</string>
@@ -292,6 +297,11 @@
     <string name="call_activity_confirm_word_title">验证单词</string>
     <string name="call_activity_error_call_interrupted">通话中断，错误：%1$d。</string>
     <string name="call_activity_error_call_not_go_thru">通话无法接通，错误：%1$d。</string>
+    <string name="call_activity_location_background_warning">警告：如果应用程序在后台运行，您的位置将不再与您的联系人共享。您必须授权应用程序始终访问此设备的位置。</string>
+    <string name="call_activity_location_exact_warning">注意力！您没有分享您的确切位置。您可以在应用程序设置中更改必要的权限。</string>
+    <string name="call_activity_location_share">分享我的位置</string>
+    <string name="call_activity_location_share_message">您现在正在通话期间共享您的位置。</string>
+    <string name="call_activity_location_stop">停止分享我的位置</string>
     <string name="call_activity_max_participant_message">已达到群组通话参与者的最大数量 (%1$d)。</string>
     <string name="call_activity_not_supported_group_call_message">%1$s 的应用版本与群组通话不兼容，需要更新。</string>
     <string name="call_activity_quality_message">您如何评价它？</string>
@@ -316,9 +326,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">相机已在使用</string>
-    <string name="capture_activity_incorrect_qrcode">twincode码不正确</string>
+    <string name="capture_activity_incorrect_qrcode">skredcode码不正确</string>
     <string name="capture_activity_message">将QR码放在此矩形中进行扫描。</string>
-    <string name="capture_activity_no_camera">需要相机来扫描twincode码</string>
+    <string name="capture_activity_no_camera">需要相机来扫描skredcode码</string>
     <string name="capture_activity_qrcode_saved">邀请代码保存在照片中。</string>
 
     <!-- CleanupActivity -->
@@ -373,11 +383,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">安排您想要接到电话的日期/时间。</string>
     <string name="contact_capabilities_activity_information_video_call">允许联系人与您视频通话。</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">我们没有获得授权访问您的联系人</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">权限被拒绝</string>
+    <string name="contact_picker_activity_subtitle">通过电话号码邀请</string>
+    <string name="contact_picker_activity_title">通过联系人邀请朋友</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">邀请某人扫描您的邀请代码，否则请扫描他们的邀请。</string>
     <string name="contacts_fragment_invite_contact_title">邀请联系人</string>
     <string name="contacts_fragment_scan_contact_title">扫描或输入邀请码</string>
     <string name="contacts_fragment_title">联络人</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">您确定要移动此联系人吗？</string>
+    <string name="contact_space_activity_move_title">"移动 "</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">语音通话</string>
@@ -390,13 +410,14 @@
     <string name="conversation_activity_empty_message">说些聪明的东西或有趣吧！</string>
     <string name="conversation_activity_edit_message">只有当您的联系人的应用已更新到最新版本时，您才能在其设备上编辑该消息。</string>
     <string name="conversation_activity_ephemeral_coach_mark">长按发送箭头可在一定时间后从对话中删除此消息。</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">您联系人的twinme版本功能不完整。&lt;br /&gt;
-        请让他/她进行twinme更新。</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">您联系人的Skred版本功能不完整。&lt;br /&gt;
+        请让他/她进行Skred更新。</string>
     <string name="conversation_activity_group_member_information">%1$d 成员</string>
     <string name="conversation_activity_group_not_allowed_post_message">不允许发送消息</string>
     <string name="conversation_activity_group_one_member">1名成员</string>
+    <string name="conversation_activity_info">：锁定 聊天消息在您的手机内和在传输过程中已被加密。\n 为了确保数据安全性的最高水准，它们以点对点连接、没有中间服务器的方式被直接发送到%s的电话上。</string>
     <string name="conversation_activity_invitation_accepted">邀请被接受</string>
-    <string name="conversation_activity_invitation_failed">请您的联系人更新twinme</string>
+    <string name="conversation_activity_invitation_failed">请您的联系人更新Skred</string>
     <string name="conversation_activity_invitation_joined">该小组成员</string>
     <string name="conversation_activity_invitation_pending">邀请正在进行中</string>
     <string name="conversation_activity_invitation_refused">邀请被拒绝</string>
@@ -456,7 +477,7 @@
     <string name="conversations_fragment_you">你</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">此个人资料将显示给将通过此“click-to-call”链接呼叫您的客人。</string>
+    <string name="create_external_call_activity_message">输入通话主题的名称、图像和描述。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">“点击通话”允许客人通过浏览器给您打电话，而无需安装应用程序。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">每个实例都有一个名称、一个图像和一个描述，代表调用的主题，例如：</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">您的客户服务</string>
@@ -500,10 +521,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">创建后，每个关系都有自己的一对“个人资料”，代表您和您的联系人。</string>
     <string name="create_profile_activity_onboarding_message_part_4">然后，您可以在每个关系中独立修改您希望每个联系人了解的方式。</string>
     <string name="create_profile_activity_save_message">此名称和图片用于邀请您的联系人并初始化您的关系。您可以针对每个关系修改和自定义它们。</string>
+    <string name="create_profile_activity_title">设置您的个人资料</string>
     <string name="create_profile_activity_welcome1">输入您的个人资料图片</string>
     <string name="create_profile_activity_welcome2">欢迎%1$s！</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">图片</string>
+    <string name="create_space_activity_contact_list">移动联系人</string>
+    <string name="create_space_activity_contacts_no_profile">要将联系人移至Space，您必须完成定义个人资料以便为您的联系人标识自己。您要完成吗？</string>
     <string name="create_space_activity_message">“空间”是本地的，对联系人不可见。</string>
     <string name="create_space_activity_onboarding_message_part_1">“空间”可帮助您根据联系人所属的社交圈来组织您的联系人，例如。 家庭、朋友、商务、娱乐等。</string>
     <string name="create_space_activity_onboarding_message_part_2">每个“空间”都与一个“个人资料”相关联，代表您在与该空间社交圈中的联系人交互时想要使用的角色，例如爸爸、约翰、约翰·多伊博士、蝙蝠侠等。</string>
@@ -513,6 +538,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- 一个“图像”，让您可以在“空间”列表中快速识别它</string>
     <string name="create_space_activity_onboarding_message_part_7">- 颜色“主题”，个性化其外观和感觉</string>
     <string name="create_space_activity_onboarding_message_part_8">- “设置”可以特定于每个特定的“空间”，从而覆盖应用程序设置定义的默认值。</string>
+    <string name="create_space_activity_profile_message">您需要输入昵称和图片以便为您的联系人标识自己。</string>
+    <string name="create_space_activity_space_hint">姓名（家人、朋友、公司等）</string>
     <string name="create_space_activity_title">创建Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -532,9 +559,6 @@
     <string name="edit_contact_activity_confirm_message">您确定要删除此关系吗？</string>
     <string name="edit_contact_activity_message">此联系人将无法再联系到您。</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">删除此配置文件将使其关联的邀请代码失效。 确认删除？</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">您确定要删除此“Click-to-Call”代码吗？</string>
     <string name="edit_external_call_activity_delete_message">此“Click-to-Call”链接将不再可用。</string>
@@ -547,7 +571,13 @@
     <string name="edit_profile_activity_propagating_message">您可以将邀请个人资料更改传播给现有联系人，也可以不传播。</string>
     <string name="edit_profile_activity_propagating_no_contact">对任何人都没有</string>
     <string name="edit_profile_activity_propagating_profile">传播个人资料更改</string>
-    <string name="edit_profile_activity_remove_active_profile">您不能删除使用中的个人资料</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">要邀请联系人，您必须完成定义个人资料以便为您的联系人标识自己。您要完成吗？</string>
+    <string name="edit_space_activity_delete_confirmation">您确定要删除此Space吗？</string>
+    <string name="edit_space_activity_delete_current_space">您不能删除当前活动的“空间”。</string>
+    <string name="edit_space_activity_delete_message">删除Space会从该Space中删除所有联系人，群组和对话。 确定要删除此Space吗？</string>
+    <string name="edit_space_activity_delete_only_one_space_message">您不能从应用程序中删除唯一的空间。</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">建立联系后，强烈建议您验证该 PIN 码以增强其安全性。</string>
@@ -594,12 +624,16 @@
     <string name="feedback_activity_send_logs">发送调试日志</string>
     <string name="feedback_activity_send_message">反馈已提交。谢谢。</string>
     <string name="feedback_activity_subject">主题</string>
-    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+    <string name="feedback_activity_subject_placeholder">[Skred]</string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">您必须邀请朋友并和他们在Skred上连接。当他们接受了您的邀请后，他们就会出现在您的联系人列表中。</string>
+    <string name="first_invite_contact_activity_ignore">忽视</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">此操作会使与此个人资料关联的当前邀请代码无效。 您确定要生成新代码吗？</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">产生新的邀请码</string>
-    <string name="fullscreen_qrcode_activity_save_message">使用 twinme 导入或扫描此邀请二维码以添加此联系人。</string>
+    <string name="fullscreen_qrcode_activity_save_message">使用 Skred 导入或扫描此邀请二维码以添加此联系人。</string>
     <string name="fullscreen_qrcode_activity_save_title">保存到照片库</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -617,6 +651,37 @@
     <string name="group_member_activity_section_invitation">邀请</string>
     <string name="group_member_activity_section_member">会员</string>
     <string name="group_member_activity_title">小组成员</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s 邀请您享受它支持的高级服务。</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">具有总部声音和高清图像的群组通话</string>
+    <string name="in_app_subscription_activity_description_step1_title">高品质语音/视频会议</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">零数据/零碳</string>
+    <string name="in_app_subscription_activity_description_step2_title">生态负责任的语音/视频会议</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">交流绝对保密</string>
+    <string name="in_app_subscription_activity_description_step3_title">私人语音/视频会议</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">高清即时连接</string>
+    <string name="in_app_subscription_activity_description_step4_title">即时语音/视频会议</string>
+    <string name="in_app_subscription_activity_expiration_message">续订：%1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">当您购买订阅时，Google 会直接向您的 Play 商店帐户收取费用。除非您在当前期限结束前至少 24 小时取消订阅，否则订阅将按相同条款自动续订。您可以随时在 Play 商店中免费取消订阅，这样订阅就不会在当前期限结束时续订。购买后，您可以通过 Play 商店帐户设置管理您的订阅。</string>
+    <string name="in_app_subscription_activity_free_trial">14 天免费试用。\n订阅可以随时取消。</string>
+    <string name="in_app_subscription_activity_invitation_code">扫描邀请二维码或粘贴邀请码，享受尊享服务。</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">邀请码无效。</string>
+    <string name="in_app_subscription_activity_later_title">不，谢谢</string>
+    <string name="in_app_subscription_activity_manage_susbcription">管理我的订阅</string>
+    <string name="in_app_subscription_activity_month">月</string>
+    <string name="in_app_subscription_activity_not_available">您的设备或您所在的国家/地区不提供付费高级服务。</string>
+    <string name="in_app_subscription_activity_restore_title">恢复购买</string>
+    <string name="in_app_subscription_activity_search">搜索订阅优惠</string>
+    <string name="in_app_subscription_activity_six_month_title">最受欢迎</string>
+    <string name="in_app_subscription_activity_subscription_title">订阅</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">当前订阅</string>
+    <string name="in_app_subscription_activity_subscribe_title">继续</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$s很忙</string>
@@ -654,15 +719,16 @@
     <string name="invitation_code_activity_success_message">强烈建议对使用迷你代码建立的关系进行认证，以增强其安全性。</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">请附近的朋友使用 twinme 扫描“房间”的二维码，或点击邀请码将其复制到剪贴板。</string>
+    <string name="invitation_room_activity_message">请你附近的朋友用 Skred 扫描“房间”的二维码，或点击邀请码将其复制到剪贴板。</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">通话</string>
     <string name="last_calls_activity_video">视频</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">您在此设备上的twinme帐户将转移到twinme+。</string>
-    <string name="local_account_migration_activity_message_older_version">请确保在开始转移之前将两台设备都更新到应用程序的最新版本，以避免丢失所有关系。</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">进行身份验证以访问应用程序</string>
+    <string name="lock_screen_activity_passcode_not_set">未设置设备身份验证设置。 进入系统设置并将其设置为解锁应用程序。</string>
+    <string name="lock_screen_activity_unlock">解锁对应用程序的访问</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">添加联系人</string>
@@ -672,12 +738,10 @@
     <string name="main_activity_reset_conversation_title">重置对话</string>
     <string name="main_activity_reset_group_conversation_admin_message">重置此对话将从每个群组成员的设备中删除所有消息。 确认？</string>
     <string name="main_activity_reset_group_conversation_message">重置此对话将从您的设备中删除所有消息。 确认？</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">您需要升级到 twinme+ 才能使用此功能。 您将能够迁移所有帐户数据。</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">您将能够迁移所有帐户数据。</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme 作为具有更多功能的高级版本提供。</string>
-    <string name="migration_twinme_plus_activity_premium_title">升级到 twinme+</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">创建Space</string>
+    <string name="main_activity_skredboard_delete_title">删除Space</string>
+    <string name="main_activity_skredboard_message">code</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">关于</string>
@@ -689,6 +753,8 @@
     <string name="navigation_activity_settings">设定值</string>
     <string name="navigation_activity_sign_out">退出</string>
     <string name="navigation_activity_sounds">声音</string>
+    <string name="navigation_activity_subscribe">发现 Skred+</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; 积极的</string>
     <string name="navigation_activity_support">支持</string>
     <string name="navigation_activity_title">菜单</string>
 
@@ -701,6 +767,8 @@
     <string name="notification_center_deleted_contact">联系人已删除</string>
     <string name="notification_center_file_message">发给你一个文件</string>
     <string name="notification_center_file_message_received">新文件</string>
+    <string name="notification_center_geolocation_message">发给你他的位置</string>
+    <string name="notification_center_geolocation_message_received">新职位</string>
     <string name="notification_center_group_invitation">向您发送了邀请</string>
     <string name="notification_center_group_invitation_received">新邀请</string>
     <string name="notification_center_join_group">您是该组的成员</string>
@@ -739,6 +807,7 @@
     <string name="notifications_fragment_item_cleanup_message">清理了一些旧消息。</string>
     <string name="notifications_fragment_item_deleted_contact">联系人已删除</string>
     <string name="notifications_fragment_item_file_message">发给你一个文件</string>
+    <string name="notifications_fragment_item_geolocation_message">发给你他的位置</string>
     <string name="notifications_fragment_item_group_invitation">向您发送了邀请</string>
     <string name="notifications_fragment_item_image_message">向您发送了照片</string>
     <string name="notifications_fragment_item_join_group">您是该组的成员</string>
@@ -795,30 +864,18 @@
     <string name="premium_services_activity_conversation_description_4">仅限本地，对另一端无影响</string>
     <string name="premium_services_activity_conversation_subtitle">导出内容和释放空间</string>
     <string name="premium_services_activity_conversation_title">对话管理</string>
-    <string name="premium_services_activity_description_part1_subtitle">设备间直接连接</string>
-    <string name="premium_services_activity_description_part1_title">高清音频/视频质量</string>
-    <string name="premium_services_activity_description_part2_subtitle">云中无踪</string>
-    <string name="premium_services_activity_description_part2_title">隐私——保密</string>
-    <string name="premium_services_activity_description_part3_subtitle">能源效率</string>
-    <string name="premium_services_activity_description_part3_title">对生态负责</string>
     <string name="premium_services_activity_group_call_description_1">高清音频/视频</string>
     <string name="premium_services_activity_group_call_description_2">设备间直接连接</string>
     <string name="premium_services_activity_group_call_description_3">安全和私密</string>
     <string name="premium_services_activity_group_call_description_4">云中无踪</string>
     <string name="premium_services_activity_group_call_subtitle">邀请联系人加入语音/视频群组通话</string>
     <string name="premium_services_activity_group_call_title">群组通话</string>
-    <string name="premium_services_activity_privacy_description_1">使用生物识别或其他身份验证锁定应用程序</string>
-    <string name="premium_services_activity_privacy_description_2">在应用程序切换器中隐藏最后一个屏幕</string>
-    <string name="premium_services_activity_privacy_description_3">特定时间后消失的临时消息</string>
-    <string name="premium_services_activity_privacy_description_4">阻止联系人给您打电话</string>
-    <string name="premium_services_activity_privacy_subtitle">控制应用程序、联系人和信息</string>
-    <string name="premium_services_activity_privacy_title">更多隐私</string>
     <string name="premium_services_activity_space_description_1">具有关联关系、对话、历史记录的多个配置文件</string>
     <string name="premium_services_activity_space_description_2">个性化外观、通知和设置</string>
     <string name="premium_services_activity_space_description_3">对于家人、朋友、同事、企业、运动等。</string>
     <string name="premium_services_activity_space_description_4">未列出的秘密空间，按名称访问</string>
     <string name="premium_services_activity_space_subtitle">对于您与之互动的每个社会群体</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">实时分享您的音乐</string>
     <string name="premium_services_activity_streaming_description_2">每个参与者都可以控制媒体播放器</string>
     <string name="premium_services_activity_streaming_description_3">同时通话互动</string>
@@ -847,9 +904,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">新增个人资料</string>
     <string name="profile_fragment_create_profile">创建个人资料</string>
-    <string name="profile_fragment_default_action">启用</string>
-    <string name="profile_fragment_default_profile_title">活动资料</string>
-    <string name="profile_fragment_identity_title">个人资料</string>
     <string name="profile_fragment_message">此配置文件允许您邀请您的联系人在您的控制下与您建立私人关系。</string>
     <string name="profile_fragment_twincode_title">邀请码</string>
 
@@ -865,7 +919,7 @@
     <string name="proxy_activity_list_information">仅当应用程序无法在没有代理的情况下连接到服务时，才使用以下列表中的代理。</string>
     <string name="proxy_activity_onboarding">当您所在的国家/地区阻止访问应用的信令服务器时，代理可以在许多情况下绕过这些阻止，并允许您进行私密通信。除了应用内代理之外，您还可以创建自己的代理或使用其他人创建的代理。在任何情况下，代理都无法访问正在交换的内容。</string>
     <string name="proxy_activity_information">仅当您无法通过标准 Wi-Fi 或蜂窝网络连接到服务时才使用代理。</string>
-    <string name="proxy_activity_share">在您的设备上使用 twinme 打开 %1$s 链接即可自动配置此代理。</string>
+    <string name="proxy_activity_share">在您的设备上使用 Skred 打开 %1$s 链接即可自动配置此代理。</string>
     <string name="proxy_activity_title">代理</string>
     <string name="proxy_activity_url">是否要使用此代理的 URL？</string>
     <string name="proxy_activity_warning">警告！此代理的 URL 不允许您连接到应用的服务。</string>
@@ -934,11 +988,11 @@
     <string name="settings_activity_ephemeral_title">自我毁灭的讯息</string>
     <string name="settings_activity_image_title">照片</string>
     <string name="settings_activity_message_properties_title">消息属性</string>
+    <string name="settings_activity_permissions_title">权限</string>
     <string name="settings_activity_reset_default_value">恢复默认设置</string>
     <string name="settings_activity_reset_preferences_button_title">重置为默认值。</string>
     <string name="settings_activity_reset_preferences_message">将通知设置重置为应用程序默认值。</string>
     <string name="settings_activity_reset_preferences_title">重置首选项</string>
-    <string name="settings_activity_permissions_title">权限</string>
     <string name="settings_activity_silent_sound">无声</string>
     <string name="settings_activity_sound_enabled_title">声音通知</string>
     <string name="settings_activity_system_notifications_title">系统通知</string>
@@ -963,6 +1017,25 @@
     <string name="settings_room_activity_room_type_feedback_information">参与者的反馈只有管理员/版主才能看到</string>
     <string name="settings_room_activity_room_type_forum">论坛</string>
     <string name="settings_room_activity_room_type_forum_information">参与者可以发布所有人都看到的消息</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">允许通知</string>
+    <string name="settings_space_activity_allow_notifications_message">仅当此空间是当前活动的空间时才会出现通知。</string>
+    <string name="settings_space_activity_default_message">默认的Space是应用程序启动时显示的Space。</string>
+    <string name="settings_space_activity_default_value_message">这些值会覆盖在应用程序默认设置中设置的值。</string>
+    <string name="settings_space_activity_default_value_title">更改默认设置</string>
+    <string name="settings_space_activity_header_message">对于此空间，这些参数的值会覆盖在应用程序级别定义的默认值。</string>
+    <string name="settings_space_activity_permission_create_contact">建立联络人</string>
+    <string name="settings_space_activity_permission_create_group">创建组</string>
+    <string name="settings_space_activity_permission_move_contact">移动联络人</string>
+    <string name="settings_space_activity_permission_move_group">移动组</string>
+    <string name="settings_space_activity_permission_share_space_card">分享Space邀请码</string>
+    <string name="settings_space_activity_permission_update_identity">更新个人信息</string>
+    <string name="settings_space_activity_permissions_title">权限</string>
+    <string name="settings_space_activity_reset_application_value">重置为应用程序默认设置</string>
+    <string name="settings_space_activity_secret_message">机密Space不会出现在Space列表中。只能通过在搜索栏中键入其确切名称来访问它。无法检索其名称，所以请不要忘记它！</string>
+    <string name="settings_space_activity_secret_title">秘密Space</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
 
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">联系人</string>
@@ -995,6 +1068,7 @@
     <string name="show_contact_activity_pending_message">这种关系正在建立。 请稍等。</string>
     <string name="show_contact_activity_revoked">已删除</string>
     <string name="show_contact_activity_settings_coach_mark">定义您的联系人在与您的关系中可以做什么。</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">视频</string>
 
     <!-- ShowGroupActivity -->
@@ -1013,6 +1087,14 @@
     <string name="show_room_activity_invite_participants">邀请参与者</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">经营管理</string>
+    <string name="show_space_fragment_move_message">您必须有多个空间才能移动联系人。</string>
+    <string name="show_space_fragment_secret_confirm">确认“秘密”模式。</string>
+    <string name="show_space_fragment_secret_disabled_message">此唯一“Space”不能定义为“秘密”。您需要创建至少一个其他“Space”。</string>
+    <string name="show_space_fragment_secret_message">秘密「Spaces」不会出现在「Spaces」清单中，只能透过在搜寻栏中输入其名称来开启。永远不要忘记那个名字！</string>
+    <string name="show_space_fragment_secret_message_confirm">您仍要将该「Space」设为「秘密」吗？</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">图片</string>
     <string name="space_appearance_activity_background_message">使用颜色或图像自定义对话背景。</string>
@@ -1026,7 +1108,7 @@
     <string name="space_appearance_activity_container_text_peer_message">收到的短信内容</string>
     <string name="space_appearance_activity_container_title">泡泡</string>
     <string name="space_appearance_activity_default_value">默认值</string>
-    <string name="space_appearance_activity_general_title">一般</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">默认颜色</string>
     <string name="space_appearance_activity_menu_enter_color">色标</string>
     <string name="space_appearance_activity_opacity">不透明度</string>
@@ -1036,7 +1118,18 @@
     <string name="space_appearance_activity_theme">主题</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">主动的Space</string>
+    <string name="spaces_activity_add_space">添加一个Space</string>
+    <string name="spaces_activity_create_new_space">创建一个Space</string>
+    <string name="spaces_activity_current_space_action">启用</string>
+    <string name="spaces_activity_delete_default_message">您不能删除默认的Space。</string>
+    <string name="spaces_activity_join_space">导入一个Space</string>
     <string name="spaces_activity_message">“空间”是您的不同个性与多个社交圈（包括最秘密的社交圈）相遇的地方。</string>
+    <string name="spaces_activity_move_contact_already_in_space">联系人已在此Space中。</string>
+    <string name="spaces_activity_move_group_already_in_space">群组已经在这个Space中。</string>
+    <string name="spaces_activity_move_group_no_profile">要将组移动到Space，您必须完成代表您进入该组的配置文件。您要完成吗？</string>
+    <string name="spaces_activity_move_message">您确定要移动组吗？</string>
+    <string name="spaces_activity_permission_not_allowed">Space管理员不允许您执行此操作。</string>
     <string name="spaces_activity_sample_business">商业</string>
     <string name="spaces_activity_sample_business_name">约翰·多伊博士</string>
     <string name="spaces_activity_sample_family">家庭</string>
@@ -1074,11 +1167,11 @@
     <string name="template_space_activity_template_title">模板</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">请您附近的朋友使用 twinme 扫描您的邀请二维码，或点击您的邀请码将其复制到剪贴板。</string>
+    <string name="twincode_activity_message">请您附近的联系人使用 Skred 扫描您的邀请二维码，或点击邀请码将其复制到剪贴板。</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">您确定要删除此「呼叫转移」代码吗？</string>
-    <string name="transfert_call_activity_delete_message">此呼叫转接链接将被删除。 确认？</string>
+    <string name="transfert_call_activity_delete_message">此「呼叫转移」链接将不再可用。</string>
     <string name="transfert_call_activity_gallery_message">扫描此二维码即可转接您的移动电话。</string>
     <string name="transfert_call_activity_message">转发此代码并在您要将移动呼叫转移到的浏览器上为其 URL 添加书签。</string>
     <string name="transfert_call_activity_reset_message">此操作会使当前的呼叫转接代码失效并创建一个新的代码。 确认？</string>
@@ -1108,13 +1201,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">通过按%1$s，我确认我已阅读并接受：</string>
-    <string name="welcome_activity_next">下一个</string>
+    <string name="welcome_activity_enter">下一步</string>
     <string name="welcome_activity_pass">跳跃</string>
     <string name="welcome_activity_privacy_policy">隐私政策</string>
     <string name="welcome_activity_start">开始</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">消息和高清语音/视频通话，通过设计保护隐私。</string>
     <string name="welcome_activity_step2_message">安全的“点对点”通信：云中无踪迹。</string>
     <string name="welcome_activity_step3_message">没有电话号码、没有地址簿、没有用户 ID：您可以根据与谁通信来选择您希望被识别的方式。</string>
     <string name="welcome_activity_terms_of_use">使用条款</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

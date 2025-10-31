@@ -48,12 +48,13 @@
                 android:src="@drawable/onboarding_add_profile"
                 android:layout_below="@+id/onboarding_profile_activity_title"
                 app:layout_aspectRatio="89.71%" />
-            
+
             <TextView
                 android:id="@+id/onboarding_profile_activity_message_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/onboarding_profile_activity_image"
+                android:layout_above="@+id/onboarding_profile_activity_create_profile_view"
                 android:layout_centerHorizontal="true"
                 android:scrollbars="vertical"
                 android:text="@string/create_profile_activity_onboarding_message_part_1"
@@ -84,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/onboarding_profile_activity_more_text_view">
+                android:layout_above="@+id/onboarding_profile_activity_do_not_show_view">
 
                 <TextView
                     android:id="@+id/onboarding_profile_activity_create_space_text_view"
@@ -92,8 +93,24 @@
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="@string/profile_fragment_create_profile" />
+                    android:text="@string/create_profile_activity_title" />
 
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/onboarding_profile_activity_do_not_show_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/onboarding_profile_activity_do_not_show_title_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/application_do_not_display"
+                    app:layout_widthPercent="89.58%" />
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
         </androidx.percentlayout.widget.PercentRelativeLayout>

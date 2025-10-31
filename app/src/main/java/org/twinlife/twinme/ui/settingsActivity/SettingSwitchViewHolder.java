@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.utils.SwitchView;
 
 public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
@@ -24,6 +25,7 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
     private final SwitchView mSwitchView;
 
     private UISetting<Boolean> mUISetting;
+    private Settings.BooleanConfig mBooleanConfig;
     private final CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener;
 
     public SettingSwitchViewHolder(@NonNull View view, AbstractSettingsActivity settingsActivity) {
@@ -39,7 +41,13 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
         Design.updateTextFont(mSwitchView, Design.FONT_REGULAR32);
         mSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        mOnCheckedChangeListener = (compoundButton, value) -> settingsActivity.onSettingChangeValue(mUISetting, value);
+        mOnCheckedChangeListener = (compoundButton, value) -> {
+            if (mUISetting != null) {
+                settingsActivity.onSettingChangeValue(mUISetting, value);
+            } else {
+                settingsActivity.onSettingChangeValue(mBooleanConfig, value);
+            }
+        };
         mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
     }
 
@@ -57,20 +65,15 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
         updateColor();
     }
 
-    public void onBind(@NonNull String title, boolean isSelected, boolean isEnable) {
+    public void onBind(@NonNull String title, boolean isSelected, Settings.BooleanConfig booleanConfig) {
+
+        mBooleanConfig = booleanConfig;
 
         mSwitchView.setText(title);
 
         mSwitchView.setOnCheckedChangeListener(null);
         mSwitchView.setChecked(isSelected);
-
-        if (isEnable) {
-            mSwitchView.setEnabled(true);
-            mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        } else {
-            mSwitchView.setEnabled(false);
-            mSwitchView.setClickable(false);
-        }
+        mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
 
         updateFont();
         updateColor();

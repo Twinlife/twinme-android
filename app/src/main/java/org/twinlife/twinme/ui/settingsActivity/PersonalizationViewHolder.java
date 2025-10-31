@@ -24,9 +24,13 @@ public class PersonalizationViewHolder extends RecyclerView.ViewHolder {
     private final TextView mTitleView;
     private final ImageView mSelectedView;
 
+    private int mDefaultColor;
+
     public PersonalizationViewHolder(@NonNull View view) {
 
         super(view);
+
+        mDefaultColor = Design.getMainStyle();
 
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = Design.SECTION_HEIGHT;
@@ -38,10 +42,12 @@ public class PersonalizationViewHolder extends RecyclerView.ViewHolder {
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mSelectedView = view.findViewById(R.id.personalization_activity_item_selected_image);
-        mSelectedView.setColorFilter(Design.getMainStyle());
+        mSelectedView.setColorFilter(mDefaultColor);
     }
 
-    public void onBind(String title, boolean isSelected) {
+    public void onBind(String title, boolean isSelected, int defaultColor) {
+
+        mDefaultColor = defaultColor;
 
         mTitleView.setText(title);
 
@@ -64,6 +70,6 @@ public class PersonalizationViewHolder extends RecyclerView.ViewHolder {
 
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         itemView.setBackgroundColor(Design.WHITE_COLOR);
-        mSelectedView.setColorFilter(Design.getMainStyle());
+        mSelectedView.setColorFilter(mDefaultColor);
     }
 }

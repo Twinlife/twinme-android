@@ -22,10 +22,15 @@ import android.widget.TextView;
 import org.twinlife.device.android.twinme.R;
 
 import org.twinlife.twinme.models.Profile;
+import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinlife.DisplayCallsMode;
 import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuSelectValueAdapter implements ListAdapter {
 
@@ -37,10 +42,15 @@ public class MenuSelectValueAdapter implements ListAdapter {
     private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.IMAGE;
 
     private int mSelectedValue = -1;
+    private boolean mForceDarkMode = false;
+
+    private List<UITimeout> mTimeouts = new ArrayList<>();
 
     public interface OnValueClickListener {
 
         void onValueClick(int value);
+
+        void onTimeoutClick(UITimeout UITimeout);
     }
 
     MenuSelectValueAdapter(AbstractTwinmeActivity activity, OnValueClickListener onValueClickListener) {
@@ -49,10 +59,43 @@ public class MenuSelectValueAdapter implements ListAdapter {
         mOnValueClickListener = onValueClickListener;
     }
 
+    public void setForceDarkMode(boolean forceDarkMode) {
+
+        mForceDarkMode = forceDarkMode;
+    }
+
+    public void setSelectedValue(int selectedValue) {
+
+        mSelectedValue = selectedValue;
+    }
+
     public void setMenuType(MenuSelectValueView.MenuType menuType) {
 
         mMenuType = menuType;
         setupSelectedValue();
+
+        if (mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN) {
+            mTimeouts.clear();
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.privacy_activity_lock_screen_timeout_instant), 0));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_minute), 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 5), 5 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 15), 15 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 30), 30 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_hour), 60 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_hours), 4), 4 * 60 * 60));
+        } else if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE) {
+            mTimeouts.clear();
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_seconds), 5), 5));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_seconds), 10), 10));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_seconds), 30), 30));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_minute), 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 5), 5 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 30), 30 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_hour), 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_day), 24 * 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_week), 7 * 24 * 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_month), 30 * 24 * 60 * 60));
+        }
     }
 
     @Override
@@ -68,8 +111,10 @@ public class MenuSelectValueAdapter implements ListAdapter {
     @Override
     public int getCount() {
 
-        if (mMenuType == MenuSelectValueView.MenuType.VIDEO) {
+        if (mMenuType == MenuSelectValueView.MenuType.VIDEO || mMenuType == MenuSelectValueView.MenuType.EDIT_SPACE) {
             return 2;
+        } else if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE || mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN) {
+            return mTimeouts.size();
         }
         return 3;
     }
@@ -107,8 +152,16 @@ public class MenuSelectValueAdapter implements ListAdapter {
                 mSelectedValue = mActivity.getTwinmeApplication().sendVideoSize();
                 break;
 
+            case EDIT_SPACE:
+                mSelectedValue = -1;
+                break;
+
             case DISPLAY_CALLS:
                 mSelectedValue = mActivity.getTwinmeApplication().displayCallsMode().ordinal();
+                break;
+
+            case LOCKSCREEN:
+                mSelectedValue = mActivity.getTwinmeApplication().screenLockTimeout();
                 break;
 
             case PROFILE_UPDATE_MODE:
@@ -148,6 +201,12 @@ public class MenuSelectValueAdapter implements ListAdapter {
             } else {
                 title = mActivity.getString(R.string.conversation_activity_reduce_menu_original);
             }
+        } else if (mMenuType == MenuSelectValueView.MenuType.EDIT_SPACE) {
+            if (position == 0) {
+                title = mActivity.getString(R.string.settings_space_activity_space_category_title);
+            } else {
+                title = mActivity.getString(R.string.application_profile);
+            }
         } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
             if (position == DisplayCallsMode.NONE.ordinal()) {
                 title = mActivity.getString(R.string.settings_activity_display_call_menu_none);
@@ -155,6 +214,18 @@ public class MenuSelectValueAdapter implements ListAdapter {
                 title = mActivity.getString(R.string.settings_activity_display_call_menu_missed);
             } else {
                 title = mActivity.getString(R.string.settings_activity_call_item_menu_all);
+            }
+        } else if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE || mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN) {
+            UITimeout uiTimeout = mTimeouts.get(position);
+            title = uiTimeout.getText();
+            isChecked = uiTimeout.getDelay() == mSelectedValue;
+        } else if (mMenuType == MenuSelectValueView.MenuType.CAMERA_CONTROL) {
+            if (position == Zoomable.NEVER.ordinal()) {
+                title = mActivity.getString(R.string.contact_capabilities_activity_camera_control_never);
+            } else if (position == Zoomable.ASK.ordinal()) {
+                title = mActivity.getString(R.string.contact_capabilities_activity_camera_control_ask);
+            } else {
+                title = mActivity.getString(R.string.contact_capabilities_activity_camera_control_allow);
             }
         } else {
             if (position == Profile.UpdateMode.NONE.ordinal()) {
@@ -175,7 +246,13 @@ public class MenuSelectValueAdapter implements ListAdapter {
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(title);
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        int textColor = Design.FONT_COLOR_DEFAULT;
+        if (mForceDarkMode) {
+            textColor = Color.WHITE;
+        }
+
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(textColor), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if (!subTitle.isEmpty()) {
             spannableStringBuilder.append("\n");
@@ -203,7 +280,13 @@ public class MenuSelectValueAdapter implements ListAdapter {
             separatorView.setVisibility(View.VISIBLE);
         }
 
-        convertView.setOnClickListener(view -> mOnValueClickListener.onValueClick(position));
+        if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE || mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN) {
+            UITimeout uiTimeout = mTimeouts.get(position);
+            convertView.setOnClickListener(view -> mOnValueClickListener.onTimeoutClick(uiTimeout));
+        } else {
+            convertView.setOnClickListener(view -> mOnValueClickListener.onValueClick(position));
+        }
+
 
         return convertView;
     }

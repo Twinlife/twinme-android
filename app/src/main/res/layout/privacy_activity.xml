@@ -68,11 +68,41 @@
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/privacy_activity_hide_last_screen_view"
+            android:id="@+id/privacy_activity_timeout_screen_lock_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/item_light_border"
             android:layout_below="@+id/privacy_activity_screen_lock_information_view">
+
+            <TextView
+                android:id="@+id/privacy_activity_timeout_screen_lock_title_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="start"
+                android:background="@android:color/transparent"
+                android:text="@string/privacy_activity_lock_screen_timeout"
+                app:layout_widthPercent="50.67%"
+                app:layout_marginStartPercent="4.53%" />
+
+            <TextView
+                android:id="@+id/privacy_activity_timeout_screen_lock_value_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/privacy_activity_lock_screen_timeout_instant"
+                android:background="@android:color/transparent"
+                app:layout_marginEndPercent="4.53%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/privacy_activity_hide_last_screen_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_light_border"
+            android:layout_below="@+id/privacy_activity_timeout_screen_lock_view">
 
             <org.twinlife.twinme.utils.SwitchView
                 android:id="@+id/privacy_activity_hide_last_screen_checkbox"
@@ -111,5 +141,17 @@
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/privacy_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
+        android:id="@+id/privacy_activity__menu_select_value_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

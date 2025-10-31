@@ -18,13 +18,14 @@ import org.twinlife.twinme.models.RoomCommand;
 import org.twinlife.twinme.models.RoomCommandResult;
 import org.twinlife.twinme.models.RoomConfigResult;
 import org.twinlife.twinme.models.Typing;
+import org.twinlife.twinme.ui.TwinmeApplicationImpl;
 
 public class Configuration extends TwinmeConfiguration {
 
-    private static final String APPLICATION_NAME = "twinme";
+    private static final String APPLICATION_NAME = "skred";
 
     public Configuration() {
-        super(false); // There is no space but multiple profiles on the space are allowed.
+        super(true);
 
         applicationName = APPLICATION_NAME;
         applicationVersion = BuildConfig.VERSION_NAME;

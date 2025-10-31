@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/splash_screen_logo"
+            android:src="@drawable/logo_white"
             android:scaleType="fitCenter"
             app:layout_marginStartPercent="4.95%" />
 

@@ -27,21 +27,19 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.CircularImageView;
 
 import java.util.UUID;
 
-public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
+public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity implements MenuSelectValueView.Observer {
     private static final String LOG_TAG = "AbstractPreviewActivity";
     private static final boolean DEBUG = false;
 
@@ -75,9 +73,12 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
     protected View mSendView;
     protected View mOverlayView;
     protected MenuSendOptionView mMenuSendOptionView;
+    protected MenuSelectValueView mMenuTimeoutView;
 
     protected boolean mIsMenuSendOptionOpen = false;
     protected boolean mAllowCopy = true;
+    protected boolean mAllowEphemeralMessage = false;
+    protected long mExpireTimeout = 0;
 
     @Nullable
     protected UUID mOriginatorId;
@@ -116,11 +117,47 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
         }
 
         if (mIsMenuSendOptionOpen) {
-            mIsMenuSendOptionOpen = false;
-            mMenuSendOptionView.setVisibility(View.INVISIBLE);
-            mOverlayView.setVisibility(View.INVISIBLE);
-            setStatusBarColor(Color.BLACK);
+            if (mMenuTimeoutView.getVisibility() == View.VISIBLE) {
+                mMenuTimeoutView.setVisibility(View.INVISIBLE);
+            } else {
+                mIsMenuSendOptionOpen = false;
+                mMenuSendOptionView.setVisibility(View.INVISIBLE);
+                mOverlayView.setVisibility(View.INVISIBLE);
+                setStatusBarColor(Color.BLACK);
+            }
         }
+    }
+
+    //
+    // Implement MenuTimeoutView.Observer methods
+    //
+
+    @Override
+    public void onCloseMenuAnimationEnd() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "initViews");
+        }
+
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onSelectValue(int value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectValue");
+        }
+    }
+
+    @Override
+    public void onSelectTimeout(UITimeout timeout) {
+
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectTimeout: timeout=" + timeout);
+        }
+
+        mExpireTimeout = timeout.getDelay();
+        mMenuSendOptionView.updateTimeout((int) mExpireTimeout);
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -242,17 +279,30 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
 
             @Override
             public void onAllowEphemeralClick() {
-                onPremiumFeatureClick();
+
+                if (mMenuTimeoutView.getVisibility() != View.VISIBLE) {
+                    mMenuTimeoutView.setVisibility(View.VISIBLE);
+                    mMenuTimeoutView.setSelectedValue((int) mExpireTimeout);
+                    mMenuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE);
+                }
             }
 
             @Override
             public void onSendFromMenuOptionClick(boolean allowCopy, boolean allowEphemeral, int timeout) {
                 mAllowCopy = allowCopy;
+                mAllowEphemeralMessage = allowEphemeral;
+                mExpireTimeout = timeout;
                 onSendClick();
             }
         };
 
         mMenuSendOptionView.setOnMenuSendOptionObserver(this, menuSendOptionObserver);
+
+        mMenuTimeoutView = findViewById(R.id.privacy_activity_menu_select_value_view);
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+        mMenuTimeoutView.setForceDarkMode(true);
+        mMenuTimeoutView.setObserver(this);
+        mMenuTimeoutView.setActivity(this);
 
         if (mInitMessage != null && !mInitMessage.isEmpty()) {
             mEditText.setText(mInitMessage);
@@ -285,60 +335,11 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             mIsMenuSendOptionOpen = true;
             mMenuSendOptionView.setVisibility(View.VISIBLE);
             mOverlayView.setVisibility(View.VISIBLE);
-            mMenuSendOptionView.openMenu(mAllowCopy);
+            mMenuSendOptionView.openMenu(mAllowCopy, mAllowEphemeralMessage, mExpireTimeout);
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
             setStatusBarColor(color, Color.rgb(72,72,72));
         }
-    }
-
-    protected void onPremiumFeatureClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onPremiumFeatureClick");
-        }
-
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.preview_activity_layout);
-
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.setForceDarkMode(true);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.PRIVACY));
-
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
-            }
-
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
-
-                if (!mIsMenuSendOptionOpen) {
-                    setStatusBarColor();
-                }
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
-        premiumFeatureConfirmView.hideOverlay();
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
-        setStatusBarColor(color, Color.rgb(72,72,72));
     }
 
     private void hideKeyboard() {

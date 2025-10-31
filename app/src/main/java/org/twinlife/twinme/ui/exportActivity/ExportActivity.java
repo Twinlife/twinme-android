@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.text.format.Formatter;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinlife.util.Utils;
+import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.twinme.export.ExportService;
 import org.twinlife.twinme.export.ExportState;
 import org.twinlife.twinme.export.ExportStats;
@@ -41,6 +43,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.settingsActivity.UISetting;
@@ -136,6 +139,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
         UUID spaceId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_SPACE_ID));
 
         Intent serviceIntent = new Intent(this, ExportService.class);
+        serviceIntent.setPackage(getPackageName());
         if (spaceId != null) {
             serviceIntent.putExtra(ExportService.PARAM_SPACE_ID, spaceId);
             mIsExportOneConversation = false;
@@ -173,6 +177,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
 
         // Ask the service to stop (but don't stop the export if it is running).
         Intent serviceIntent = new Intent(this, ExportService.class);
+        serviceIntent.setPackage(getPackageName());
         serviceIntent.setAction(ExportService.ACTION_STOP);
         startService(serviceIntent);
 
@@ -199,7 +204,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
                 }
                 mExportUri = uri;
                 Intent serviceIntent = new Intent(this, ExportService.class);
-
+                serviceIntent.setPackage(getPackageName());
                 serviceIntent.putExtra(ExportService.PARAM_EXPORT_URI, mExportUri);
                 serviceIntent.setAction(ExportService.ACTION_EXPORT);
                 startService(serviceIntent);
@@ -218,43 +223,63 @@ public class ExportActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onActionClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.export_activity_layout);
+        if(!isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
+            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.export_activity_layout);
 
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
+            PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
+            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            premiumFeatureConfirmView.setLayoutParams(layoutParams);
+            premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                @Override
+                public void onConfirmClick() {
+                    Intent intent = new Intent();
+                    intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                    startActivity(intent);
+                    premiumFeatureConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCancelClick() {
+                    premiumFeatureConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onDismissClick() {
+                    premiumFeatureConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                    percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                    setStatusBarColor();
+                }
+            };
+            premiumFeatureConfirmView.setObserver(observer);
+
+            percentRelativeLayout.addView(premiumFeatureConfirmView);
+            premiumFeatureConfirmView.show();
+
+            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+            setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        } else if (mIsExportInProgress) {
+            Intent serviceIntent = new Intent(this, ExportService.class);
+            serviceIntent.setPackage(getPackageName());
+            serviceIntent.setAction(ExportService.ACTION_CANCEL);
+            startService(serviceIntent);
+            finish();
+        } else if (canExport()) {
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.putExtra(Intent.EXTRA_TITLE, mExportName);
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getTwinmeApplication().defaultUriToSaveFiles());
             }
-
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
-                setStatusBarColor();
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+            startActivityForResult(intent, REQUEST_PICK_DOCUMENT);
+        }
     }
 
     public boolean isExportInProgress() {
@@ -530,7 +555,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
         }
 
         Intent serviceIntent = new Intent(this, ExportService.class);
-
+        serviceIntent.setPackage(getPackageName());
         StringBuilder types = new StringBuilder();
         for (UIExport export : mExports) {
 

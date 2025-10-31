@@ -9,6 +9,7 @@
     <string name="application_all">所有</string>
     <string name="application_appearance">出现</string>
     <string name="application_are_you_sure">你確定嗎？</string>
+    <string name="application_authorization_location">允許應用訪問系統設置中的位置信息。</string>
     <string name="application_authorization_camera">允許應用在系統設置中訪問相機。</string>
     <string name="application_authorization_go_settings">轉到系統設置</string>
     <string name="application_authorization_microphone">允許應用在系統設置中訪問麥克風。</string>
@@ -48,12 +49,15 @@
     <string name="application_group_not_found">您已從群組中刪除</string>
     <string name="application_items_selected">已選擇 %1$d 個項目</string>
     <string name="application_later">後來</string>
+    <string name="application_location">地理位置</string>
+    <string name="application_location_enabled">允許應用訪問系統設置中的位置信息。</string>
     <string name="application_low_usage_message">警告，如果您不經常使用該應用程序，操作系統可能不會喚醒它來交換消息！</string>
+    <string name="application_more_info">更多資訊…</string>
     <string name="application_one_item_selected">已選擇 1 項</string>
     <string name="application_migration_no_storage_space">您的裝置上沒有足夠的空間來完成遷移。 關閉應用程序，釋放一些空間，然後重新啟動應用程式以完成更新。</string>
     <string name="application_migration_no_storage_space_message">兩台設備中，有一台的儲存空間不足。請釋放該裝置的空間，然後再重新開始遷移。</string>
     <string name="application_name_hint">名稱</string>
-    <string name="application_network_connecting">連接到twinme服務</string>
+    <string name="application_network_connecting">連接到Skred服務</string>
     <string name="application_network_connectivity">網路連線存在</string>
     <string name="application_network_status_airplane_message">飛行模式被激活</string>
     <string name="application_network_status_airplane_resolution">請禁用飛行模式并連接到Wi-Fi或手機網絡。</string>
@@ -72,13 +76,15 @@
     <string name="application_not_authorized_operation">未授權動作</string>
     <string name="application_not_authorized_operation_by_your_contact">未經您的聯繫人授權操作。</string>
     <string name="application_not_connected">正在進行安全連接......</string>
-    <string name="application_not_signed_in">沒有連線到twinme服務</string>
+    <string name="application_not_signed_in">沒有連線到Skred服務</string>
     <string name="application_now">現在</string>
     <string name="application_ok">確定</string>
     <string name="application_operation_failure">動作失敗</string>
     <string name="application_operation_irreversible">此操作不可逆</string>
     <string name="application_permission_camera">需要使用相機的權限才能拍攝新照片或視頻。</string>
     <string name="application_permission_scan_code">掃描QR碼需要訪問相機的權限。</string>
+    <string name="application_premium_feature_message">您必須激活高級服務才能使用此功能。</string>
+    <string name="application_premium_feature_title">激活優質服務</string>
     <string name="application_photo_gallery">相冊</string>
     <string name="application_profile">個人資料</string>
     <string name="application_profile_avatar_not_defined">您的個人資料圖片未定義</string>
@@ -102,7 +108,7 @@
     <string name="application_timeout_seconds">%1$d 秒</string>
     <string name="application_timeout_week">1週</string>
     <string name="application_unknown_name">未知</string>
-    <string name="application_upgrade">升級twinme</string>
+    <string name="application_upgrade">升級Skred</string>
     <string name="application_webrtc_failure">WebRTC失敗</string>
     <string name="application_wrong_configuration">設定不正確</string>
     <string name="application_yes">是</string>
@@ -112,7 +118,6 @@
     <string name="about_activity_information">信息</string>
     <string name="about_activity_legal">法律声明</string>
     <string name="about_activity_libraries">庫</string>
-    <string name="about_activity_message">twinme 是一個安全的聊天及語音/視頻呼叫服務系統，不會獲取個人信息。\n\ntwinme 是基於網絡的安全（端對端加密）點對點（無延遲服務器）實時多媒體通訊標準而打造的。</string>
     <string name="about_activity_open_source_information">該應用程式的原始程式碼已在 GitHub 上開源，遵循 AGPL-3.0 授權。</string>
     <string name="about_activity_open_sources_licences">開源許可證</string>
     <string name="about_activity_premium_services">優質服務</string>
@@ -183,7 +188,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">掃描另一個裝置側面選單「帳戶/從另一個裝置傳輸」一節中顯示的二維碼。</string>
     <string name="account_migration_scanner_activity_stop_scan_title">停止掃描</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">向此通話添加參與者</string>
 
     <!-- AddContactActivity -->
@@ -192,10 +197,10 @@
     <string name="add_contact_activity_in_person_title">現場</string>
     <string name="add_contact_activity_invitation_code_title">迷你程式碼</string>
     <string name="add_contact_activity_invite">邀請</string>
-    <string name="add_contact_activity_invite_message">在您的移動裝置上使用twinme打開網址 %1$s 即可與「%2$s」私密連絡</string>
-    <string name="add_contact_activity_invite_subject">Twinme邀請</string>
-    <string name="add_contact_activity_message">讓您附近的朋友使用 twinme 掃描您的邀請二維碼，或點擊“掃描”按鈕掃描您朋友的二維碼。</string>
-    <string name="add_contact_activity_onboarding_message">twinme 不認識你的朋友，也無法發現他們。你必須親自邀請他們，當他們在你附近時用 twinme 邀請他們，或者通過其他方式向他們發送邀請。</string>
+    <string name="add_contact_activity_invite_message">在您的移動裝置上使用Skred打開網址 %1$s 即可與「%2$s」私密連絡</string>
+    <string name="add_contact_activity_invite_subject">Skred邀請</string>
+    <string name="add_contact_activity_message">請您的聯絡人使用 Skred 掃描邀請函的二維碼，或點選「掃描」按鈕掃描您聯絡人的代碼。</string>
+    <string name="add_contact_activity_onboarding_message">Skred 不認識你的朋友，也無法發現他們。你必須親自邀請他們，當他們在你附近時用 Skred 邀請他們，或者通過其他方式向他們發送邀請。</string>
     <string name="add_contact_activity_scan_code">掃描邀請二維碼</string>
     <string name="add_contact_activity_scan_error_corrupt_link">該連結已損壞。</string>
     <string name="add_contact_activity_scan_error_incorect_link">此連結不正確。</string>
@@ -254,7 +259,7 @@
     <string name="calls_fragment_all_call_segmented_control">所有</string>
     <string name="calls_fragment_call_again_message">您要回撥%1$s嗎？</string>
     <string name="calls_fragment_call_again_title">打回來</string>
-    <string name="calls_fragment_create_link">創建“點擊通話”鏈接</string>
+    <string name="calls_fragment_create_link">建立“點擊通話”</string>
     <string name="calls_fragment_incoming_call">來電</string>
     <string name="calls_fragment_missed_call">未接來電</string>
     <string name="calls_fragment_missed_call_segmented_control">錯過了</string>
@@ -292,6 +297,11 @@
     <string name="call_activity_confirm_word_title">驗證單字</string>
     <string name="call_activity_error_call_interrupted">通話中斷，錯誤：%1$d。</string>
     <string name="call_activity_error_call_not_go_thru">通話無法接通，錯誤：%1$d。</string>
+    <string name="call_activity_location_background_warning">警告：如果應用程式在背景運行，您的位置將不再與您的聯絡人共用。您必須授權應用程式始終存取該裝置的位置。</string>
+    <string name="call_activity_location_exact_warning">注意力！您沒有分享您的確切位置。您可以在應用程式設定中更改必要的權限。</string>
+    <string name="call_activity_location_share">分享我的位置</string>
+    <string name="call_activity_location_share_message">您現在正在通話期間共享您的位置。</string>
+    <string name="call_activity_location_stop">停止分享我的位置</string>
     <string name="call_activity_max_participant_message">已達到群組通話參與者的最大數量 (%1$d)。</string>
     <string name="call_activity_not_supported_group_call_message">%1$s 的應用版本與群組通話不兼容，需要更新。</string>
     <string name="call_activity_quality_message">您如何評價它？</string>
@@ -316,9 +326,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">相機已在使用</string>
-    <string name="capture_activity_incorrect_qrcode">twincode碼不正確</string>
+    <string name="capture_activity_incorrect_qrcode">skredcode碼不正確</string>
     <string name="capture_activity_message">將QR碼放在此矩形中進行掃描。</string>
-    <string name="capture_activity_no_camera">需要相機來掃描twincode碼</string>
+    <string name="capture_activity_no_camera">需要相機來掃描skredcode碼</string>
     <string name="capture_activity_qrcode_saved">邀請代碼保存在照片中。</string>
 
     <!-- CleanupActivity -->
@@ -373,11 +383,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">安排您想要接到電話的日期/時間。</string>
     <string name="contact_capabilities_activity_information_video_call">允許聯絡人與您視訊通話。</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">需要訪問地址簿。轉到應用程序設置進行設置</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">沒有權限</string>
+    <string name="contact_picker_activity_subtitle">通過電話號碼邀請</string>
+    <string name="contact_picker_activity_title">從聯繫人中邀請朋友</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">邀請某人掃描您的邀請代碼，否則請掃描他們的邀請。</string>
     <string name="contacts_fragment_invite_contact_title">邀請聯繫人</string>
     <string name="contacts_fragment_scan_contact_title">掃描或輸入邀請碼</string>
     <string name="contacts_fragment_title">聯絡人</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">您確定要移動此聯繫人嗎？</string>
+    <string name="contact_space_activity_move_title">移動</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">語音通話</string>
@@ -390,14 +410,15 @@
     <string name="conversation_activity_empty_message">說些聰明的東西或有趣吧！</string>
     <string name="conversation_activity_edit_message">只有當您的聯絡人的應用程式已更新至最新版本時，您才能在其裝置上編輯該訊息。</string>
     <string name="conversation_activity_ephemeral_coach_mark">長按發送箭頭可在一定時間後從對話中刪除此消息。</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">您連絡人的twinme版本功能不完整。&lt;br /&gt;
-        請讓他/她進行twinme更新。</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">您連絡人的Skred版本功能不完整。&lt;br /&gt;
+        請讓他/她進行Skred更新。</string>
     <string name="conversation_activity_group_member_information">%1$d 成員</string>
     <string name="conversation_activity_group_not_allowed_post_message">不允許發送消息</string>
     <string name="conversation_activity_group_one_member">1名成員</string>
+    <string name="conversation_activity_info">:lock 聊天消息在您的手機上和傳輸過程中被加密。為確保最高級別的數據安全，它們通過對等連接直接發送到 %s 的手機，無需中間服務器。</string>
     <string name="conversation_activity_invitation_accepted">邀請被接受</string>
-    <string name="conversation_activity_invitation_failed">請您的聯繫人更新twinme</string>
-    <string name="conversation_activity_invitation_joined">該小組成員</string>
+    <string name="conversation_activity_invitation_failed">請您的聯繫人更新Skred</string>
+    <string name="conversation_activity_invitation_joined">"該小組成員</string>
     <string name="conversation_activity_invitation_pending">邀請正在進行中</string>
     <string name="conversation_activity_invitation_refused">邀請被拒絕</string>
     <string name="conversation_activity_invitation_title">我邀請你加入這個小組</string>
@@ -456,7 +477,7 @@
     <string name="conversations_fragment_you">你</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">此個人資料將顯示給將通過此“click-to-call”鏈接呼叫您的客人。</string>
+    <string name="create_external_call_activity_message">輸入通話主題的名稱、影像和描述。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">「點擊通話」允許客人透過瀏覽器給您打電話，而無需安裝應用程式。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">每個實例都有一個名稱、一個圖像和一個描述，代表調用的主題，例如：</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">您的客戶服務</string>
@@ -500,10 +521,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">創建後，每個關係都有自己的一對“個人資料”，代表您和您的聯絡人。</string>
     <string name="create_profile_activity_onboarding_message_part_4">然後，您可以在每個關係中獨立修改您希望每個聯絡人了解的方式。</string>
     <string name="create_profile_activity_save_message">此名稱和圖像用於邀請您的聯絡人並初始化您的關係。您將能夠針對每個關係進行修改和自訂它們。</string>
+    <string name="create_profile_activity_title">設定您的個人資料</string>
     <string name="create_profile_activity_welcome1">輸入您的個人資料圖片</string>
     <string name="create_profile_activity_welcome2">歡迎%1$s！</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">圖片</string>
+    <string name="create_space_activity_contact_list">移動聯繫人</string>
+    <string name="create_space_activity_contacts_no_profile">要將聯繫人移至Space，您必須完成定義個人資料以便為您的聯繫人標識自己。您要完成嗎？</string>
     <string name="create_space_activity_message">「空間」是本地的，對聯絡人不可見。</string>
     <string name="create_space_activity_onboarding_message_part_1">「空間」可協助您根據聯絡人所屬的社交圈來組織您的聯絡人，例如。 家庭、朋友、商務、娛樂等。</string>
     <string name="create_space_activity_onboarding_message_part_2">每個「空間」都與一個「個人資料」相關聯，代表您在與該空間社交圈中的聯絡人互動時想要使用的角色，例如爸爸、約翰、約翰·多伊博士、蝙蝠俠等。</string>
@@ -513,6 +538,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- 一個“圖像”，讓您可以在“空間”列表中快速識別它</string>
     <string name="create_space_activity_onboarding_message_part_7">- 顏色“主題”，個性化其外觀和感覺</string>
     <string name="create_space_activity_onboarding_message_part_8">- “設定”可以特定於每個特定的“空間”，從而覆蓋應用程式設定定義的預設值。</string>
+    <string name="create_space_activity_profile_message">您需要輸入暱稱和圖片以便為您的聯繫人標識自己。</string>
+    <string name="create_space_activity_space_hint">姓名（家人、朋友、公司等）</string>
     <string name="create_space_activity_title">創建Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -532,13 +559,10 @@
     <string name="edit_contact_activity_confirm_message">您確定要刪除此關係嗎？</string>
     <string name="edit_contact_activity_message">此聯絡人將無法再聯絡您。</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">刪除此配置文件將使其關聯的邀請代碼失效。 確認刪除？</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">您確定要刪除此“Click-to-Call”程式碼嗎？</string>
     <string name="edit_external_call_activity_delete_message">此“Click-to-Call”連結將不再可用。</string>
-    
+
     <!-- EditProfileActivity -->
     <string name="edit_profile_activity_editing_profile">編輯個人資料</string>
     <string name="edit_profile_activity_propagating_all_contacts">致此「空間」中的所有聯絡人</string>
@@ -547,7 +571,13 @@
     <string name="edit_profile_activity_propagating_message">您可以將邀請個人資料變更傳播給現有聯絡人，也可以不傳播。</string>
     <string name="edit_profile_activity_propagating_no_contact">對任何人都沒有</string>
     <string name="edit_profile_activity_propagating_profile">傳播個人資料更改</string>
-    <string name="edit_profile_activity_remove_active_profile">您不能刪除使用中的個人資料</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">要邀請聯繫人，您必須完成定義個人資料以便為您的聯繫人標識自己。您要完成嗎？</string>
+    <string name="edit_space_activity_delete_confirmation">您確定要刪除此Space嗎？</string>
+    <string name="edit_space_activity_delete_current_space">您不能刪除當前活動的“空間”。</string>
+    <string name="edit_space_activity_delete_message">刪除Space會從該Space中刪除所有聯繫人，群組和對話。 確定要刪除此Space嗎？</string>
+    <string name="edit_space_activity_delete_only_one_space_message">您不能從應用程序中刪除唯一的空間。</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">建立聯繫後，強烈建議您驗證該 PIN 碼以增強其安全性。</string>
@@ -594,12 +624,16 @@
     <string name="feedback_activity_send_logs">發送調試日誌</string>
     <string name="feedback_activity_send_message">反饋已提交。謝謝。</string>
     <string name="feedback_activity_subject">主旨</string>
-    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+    <string name="feedback_activity_subject_placeholder">[Skred] </string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">您必須邀請朋友並在 Skred 上與他們聯繫。一旦他們接受了您的邀請，他們就會出現在您的聯繫人列表中。</string>
+    <string name="first_invite_contact_activity_ignore">忽視</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">此操作會使與此個人資料關聯的當前邀請代碼無效。 您確定要生成新代碼嗎？</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">產生新的邀請碼</string>
-    <string name="fullscreen_qrcode_activity_save_message">使用 twinme 導入或掃描此邀請二維碼以添加此聯繫人。</string>
+    <string name="fullscreen_qrcode_activity_save_message">使用 Skred 導入或掃描此邀請二維碼以添加此聯繫人。</string>
     <string name="fullscreen_qrcode_activity_save_title">保存到照片庫</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -617,6 +651,37 @@
     <string name="group_member_activity_section_invitation">邀請</string>
     <string name="group_member_activity_section_member">會員</string>
     <string name="group_member_activity_title">小組成員</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s 邀請您享受它支持的高級服務。</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">具有總部聲音和高清圖像的群組通話</string>
+    <string name="in_app_subscription_activity_description_step1_title">高品質語音/視頻會議</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">零數據/零碳</string>
+    <string name="in_app_subscription_activity_description_step2_title">生態負責任的語音/視頻會議</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">交流絕對保密</string>
+    <string name="in_app_subscription_activity_description_step3_title">私人語音/視頻會議</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">高清即時連接</string>
+    <string name="in_app_subscription_activity_description_step4_title">即時語音/視頻會議</string>
+    <string name="in_app_subscription_activity_expiration_message">續訂：%1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">當您購買訂閱時，Google 會直接向您的 Play 商店帳戶收取費用。除非您在當前期限結束前至少 24 小時取消訂閱，否則訂閱將按相同條款自動續訂。您可以隨時在 Play 商店中免費取消訂閱，這樣訂閱就不會在當前期限結束時續訂。購買後，您可以通過 Play 商店帳戶設置管理您的訂閱。</string>
+    <string name="in_app_subscription_activity_free_trial">14 天免費試用。\n訂閱可以隨時取消。</string>
+    <string name="in_app_subscription_activity_invitation_code">掃描邀請二維碼或粘貼邀請碼，享受尊享服務。</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">邀請碼無效。</string>
+    <string name="in_app_subscription_activity_later_title">不，謝謝</string>
+    <string name="in_app_subscription_activity_manage_susbcription">管理我的訂閱</string>
+    <string name="in_app_subscription_activity_month">月</string>
+    <string name="in_app_subscription_activity_not_available">您的設備或您所在的國家/地區不提供付費高級服務。</string>
+    <string name="in_app_subscription_activity_restore_title">恢復購買</string>
+    <string name="in_app_subscription_activity_search">搜索訂閱優惠</string>
+    <string name="in_app_subscription_activity_six_month_title">最受歡迎</string>
+    <string name="in_app_subscription_activity_subscription_title">訂閱</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">當前訂閱</string>
+    <string name="in_app_subscription_activity_subscribe_title">繼續</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$s很忙</string>
@@ -654,15 +719,16 @@
     <string name="invitation_code_activity_success_message">強烈建議使用迷你程式碼建立的關係進行認證，以增強其安全性。</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">請附近的朋友使用 twinme 掃描“房間”的二維碼，或點擊邀請碼將其複製到剪貼板。</string>
+    <string name="invitation_room_activity_message">請您附近的聯絡人使用 Skred 掃描「房間」的二維碼，或點擊邀請碼將其複製到剪貼簿。</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">語音</string>
     <string name="last_calls_activity_video">視頻</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">您在此設備上的twinme帳戶將被轉移到twinme+。</string>
-    <string name="local_account_migration_activity_message_older_version">請確保在開始轉移之前將兩台裝置都更新到應用程式的最新版本，以避免遺失所有關係。</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">進行身份驗證以訪問應用程序</string>
+    <string name="lock_screen_activity_passcode_not_set">未設置設備身份驗證設置。進入系統設置並將其設置為解鎖應用程序。</string>
+    <string name="lock_screen_activity_unlock">解鎖對應用程序的訪問</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">添加聯繫人</string>
@@ -672,12 +738,10 @@
     <string name="main_activity_reset_conversation_title">重設對話</string>
     <string name="main_activity_reset_group_conversation_admin_message">重置此對話將從每個群組成員的設備中刪除所有消息。 確認？</string>
     <string name="main_activity_reset_group_conversation_message">重置此對話將從您的設備中刪除所有消息。 確認？</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">您需要升級到 twinme+ 才能使用此功能。 您將能夠遷移所有帳戶數據。</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">您將能夠遷移所有帳戶數據。</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme 作為具有更多功能的高級版本提供。</string>
-    <string name="migration_twinme_plus_activity_premium_title">升級到 twinme+</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">創建一個 Space</string>
+    <string name="main_activity_skredboard_delete_title">刪除 Space</string>
+    <string name="main_activity_skredboard_message">輸入 code</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">關於</string>
@@ -689,6 +753,8 @@
     <string name="navigation_activity_settings">設定值</string>
     <string name="navigation_activity_sign_out">登出</string>
     <string name="navigation_activity_sounds">聲音</string>
+    <string name="navigation_activity_subscribe">發現 Skred+</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; 積極的</string>
     <string name="navigation_activity_support">支持</string>
     <string name="navigation_activity_title">功能表</string>
 
@@ -701,6 +767,8 @@
     <string name="notification_center_deleted_contact">聯絡人已刪除</string>
     <string name="notification_center_file_message">發給你一個文件</string>
     <string name="notification_center_file_message_received">新文件</string>
+    <string name="notification_center_geolocation_message">向您發送了位置</string>
+    <string name="notification_center_geolocation_message_received">新地點</string>
     <string name="notification_center_group_invitation">向您發送了邀請</string>
     <string name="notification_center_group_invitation_received">新邀請</string>
     <string name="notification_center_join_group">您是該組的成員</string>
@@ -739,6 +807,7 @@
     <string name="notifications_fragment_item_cleanup_message">清理了一些舊消息。</string>
     <string name="notifications_fragment_item_deleted_contact">聯絡人已刪除</string>
     <string name="notifications_fragment_item_file_message">發給你一個文件</string>
+    <string name="notifications_fragment_item_geolocation_message">向您發送了位置</string>
     <string name="notifications_fragment_item_group_invitation">向您發送了邀請"</string>
     <string name="notifications_fragment_item_image_message">向您傳送了相片</string>
     <string name="notifications_fragment_item_join_group">您是該組的成員"</string>
@@ -795,30 +864,18 @@
     <string name="premium_services_activity_conversation_description_4">僅限本地，對另一端無影響</string>
     <string name="premium_services_activity_conversation_subtitle">導出內容和釋放空間</string>
     <string name="premium_services_activity_conversation_title">對話管理</string>
-    <string name="premium_services_activity_description_part1_subtitle">設備間直接連接</string>
-    <string name="premium_services_activity_description_part1_title">高清音頻/視頻質量</string>
-    <string name="premium_services_activity_description_part2_subtitle">雲中無踪</string>
-    <string name="premium_services_activity_description_part2_title">隱私——保密</string>
-    <string name="premium_services_activity_description_part3_subtitle">能源效率</string>
-    <string name="premium_services_activity_description_part3_title">對生態負責</string>
     <string name="premium_services_activity_group_call_description_1">高清音頻/視頻</string>
     <string name="premium_services_activity_group_call_description_2">設備間直接連接</string>
     <string name="premium_services_activity_group_call_description_3">安全和私密</string>
     <string name="premium_services_activity_group_call_description_4">雲中無踪</string>
     <string name="premium_services_activity_group_call_subtitle">邀請聯繫人加入語音/視頻群組通話</string>
     <string name="premium_services_activity_group_call_title">群組通話</string>
-    <string name="premium_services_activity_privacy_description_1">使用生物識別或其他身份驗證鎖定應用程序</string>
-    <string name="premium_services_activity_privacy_description_2">在應用程序切換器中隱藏最後一個屏幕</string>
-    <string name="premium_services_activity_privacy_description_3">特定時間後消失的臨時消息</string>
-    <string name="premium_services_activity_privacy_description_4">阻止聯繫人給您打電話</string>
-    <string name="premium_services_activity_privacy_subtitle">控制應用程序、聯繫人和信息</string>
-    <string name="premium_services_activity_privacy_title">更多隱私</string>
     <string name="premium_services_activity_space_description_1">具有關聯關係、對話、歷史記錄的多個配置文件</string>
     <string name="premium_services_activity_space_description_2">個性化外觀、通知和設置</string>
     <string name="premium_services_activity_space_description_3">對於家人、朋友、同事、企業、運動等。</string>
     <string name="premium_services_activity_space_description_4">未列出的秘密空間，按名稱訪問</string>
     <string name="premium_services_activity_space_subtitle">對於您與之互動的每個社會群體</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">實時分享您的音樂</string>
     <string name="premium_services_activity_streaming_description_2">每個參與者都可以控制媒體播放器</string>
     <string name="premium_services_activity_streaming_description_3">同時通話互動</string>
@@ -847,9 +904,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">新增個人資料</string>
     <string name="profile_fragment_create_profile">创建个人资料</string>
-    <string name="profile_fragment_default_action">啟用</string>
-    <string name="profile_fragment_default_profile_title">活動資料</string>
-    <string name="profile_fragment_identity_title">個人資料</string>
     <string name="profile_fragment_message">此配置文件允許您邀請您的聯繫人在您的控制下與您建立私人關係。</string>
     <string name="profile_fragment_twincode_title">邀請碼</string>
 
@@ -865,7 +919,7 @@
     <string name="proxy_activity_list_information">只有當應用程式無法在沒有代理程式的情況下連接到服務時，才使用以下清單中的代理程式。</string>
     <string name="proxy_activity_onboarding">當您所在的國家/地區阻止存取應用程式的信令伺服器時，代理程式可以在許多情況下繞過這些阻止，並允許您進行私密通訊。除了應用程式內代理程式之外，您還可以建立自己的代理程式或使用其他人建立的代理程式。在任何情況下，代理程式都無法存取正在交換的內容。</string>
     <string name="proxy_activity_information">僅當您無法透過標準 Wi-Fi 或蜂窩網路連接到服務時才使用代理程式。</string>
-    <string name="proxy_activity_share">在您的裝置上使用 twinme 開啟 %1$s 連結即可自動配置此代理程式。</string>
+    <string name="proxy_activity_share">在您的裝置上使用 Skred 開啟 %1$s 連結即可自動配置此代理程式。</string>
     <string name="proxy_activity_title">代理商</string>
     <string name="proxy_activity_url">是否要使用此代理程式的 URL？</string>
     <string name="proxy_activity_warning">警告！此代理程式的 URL 不允許您連接到應用程式的服務。</string>
@@ -934,11 +988,11 @@
     <string name="settings_activity_ephemeral_title">自我毀滅的訊息</string>
     <string name="settings_activity_image_title">照片</string>
     <string name="settings_activity_message_properties_title">消息屬性</string>
+    <string name="settings_activity_permissions_title">權限</string>
     <string name="settings_activity_reset_default_value">恢復默認設置</string>
     <string name="settings_activity_reset_preferences_button_title">重置為默認值。</string>
     <string name="settings_activity_reset_preferences_message">將通知設置重置為應用程序默認值。</string>
     <string name="settings_activity_reset_preferences_title">重置首選項</string>
-    <string name="settings_activity_permissions_title">權限</string>
     <string name="settings_activity_silent_sound">無聲</string>
     <string name="settings_activity_sound_enabled_title">聲音通知</string>
     <string name="settings_activity_system_notifications_title">系統通知</string>
@@ -963,6 +1017,25 @@
     <string name="settings_room_activity_room_type_feedback_information">參與者的反饋只有管理員/版主才能看到</string>
     <string name="settings_room_activity_room_type_forum">論壇</string>
     <string name="settings_room_activity_room_type_forum_information">參與者可以發布所有人都看到的消息</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">允許通知</string>
+    <string name="settings_space_activity_allow_notifications_message">僅當此空間是當前活動的空間時才會出現通知。</string>
+    <string name="settings_space_activity_default_message">默認的Space是應用程序啟動時顯示的Space。</string>
+    <string name="settings_space_activity_default_value_message">這些值會覆蓋在應用程序默認設置中設置的值。</string>
+    <string name="settings_space_activity_default_value_title">更改默認設置</string>
+    <string name="settings_space_activity_header_message">對於此空間，這些參數的值會覆蓋在應用程序級別定義的默認值。</string>
+    <string name="settings_space_activity_permission_create_contact">建立聯絡人</string>
+    <string name="settings_space_activity_permission_create_group">創建組</string>
+    <string name="settings_space_activity_permission_move_contact">移動聯絡人</string>
+    <string name="settings_space_activity_permission_move_group">移動組</string>
+    <string name="settings_space_activity_permission_share_space_card">分享Space邀請碼</string>
+    <string name="settings_space_activity_permission_update_identity">更新個人信息</string>
+    <string name="settings_space_activity_permissions_title">權限</string>
+    <string name="settings_space_activity_reset_application_value">重置為應用程序默認設置</string>
+    <string name="settings_space_activity_secret_message">機密Space不會出現在Space列表中。只能通過在搜索欄中鍵入其確切名稱來訪問它。無法檢索其名稱，所以請不要忘記它！</string>
+    <string name="settings_space_activity_secret_title">秘密Space</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
 
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">連絡人</string>
@@ -995,6 +1068,7 @@
     <string name="show_contact_activity_pending_message">这种关系正在建立。 请稍等。</string>
     <string name="show_contact_activity_revoked">已刪除</string>
     <string name="show_contact_activity_settings_coach_mark">定義您的聯繫人在與您的關係中可以做什麼。</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">視訊</string>
 
     <!-- ShowGroupActivity -->
@@ -1013,6 +1087,14 @@
     <string name="show_room_activity_invite_participants">邀請參與者</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">經營管理</string>
+    <string name="show_space_fragment_move_message">您必須有多個空間才能移動聯繫人。</string>
+    <string name="show_space_fragment_secret_confirm">確認“秘密”模式。</string>
+    <string name="show_space_fragment_secret_disabled_message">此唯一“Space”不能定義為“秘密”。您需要建立至少一個其他“Space”。</string>
+    <string name="show_space_fragment_secret_message">秘密「Spaces」不會出現在「Spaces」清單中，只能透過在搜尋欄中輸入其名稱來開啟。永遠不要忘記那個名字！</string>
+    <string name="show_space_fragment_secret_message_confirm">您仍要將該「Space」設為「秘密」嗎？</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">圖片</string>
     <string name="space_appearance_activity_background_message">使用顏色或圖像自訂對話背景。</string>
@@ -1026,7 +1108,7 @@
     <string name="space_appearance_activity_container_text_peer_message">收到的短信內容</string>
     <string name="space_appearance_activity_container_title">泡泡</string>
     <string name="space_appearance_activity_default_value">默認值</string>
-    <string name="space_appearance_activity_general_title">一般</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">默認顏色</string>
     <string name="space_appearance_activity_menu_enter_color">色標</string>
     <string name="space_appearance_activity_opacity">不透明度</string>
@@ -1036,7 +1118,18 @@
     <string name="space_appearance_activity_theme">主題</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">主動的Space</string>
+    <string name="spaces_activity_add_space">添加一個Space</string>
+    <string name="spaces_activity_create_new_space">創建一個Space</string>
+    <string name="spaces_activity_current_space_action">啟用</string>
+    <string name="spaces_activity_delete_default_message">您不能刪除默認的Space。</string>
+    <string name="spaces_activity_join_space">導入一個Space</string>
     <string name="spaces_activity_message">「空間」是您的不同個性與多個社交圈（包括最秘密的社交圈）相遇的地方。</string>
+    <string name="spaces_activity_move_contact_already_in_space">聯繫人已在此Space中。</string>
+    <string name="spaces_activity_move_group_already_in_space">群組已經在這個Space中。</string>
+    <string name="spaces_activity_move_group_no_profile">要將組人移至Space，您必須完成定義個人資料以便為您組人標識自己。您要完成嗎？</string>
+    <string name="spaces_activity_move_message">您確定要移動組嗎？</string>
+    <string name="spaces_activity_permission_not_allowed">Space管理員不允許您執行此操作。</string>
     <string name="spaces_activity_sample_business">商業</string>
     <string name="spaces_activity_sample_business_name">約翰·多伊博士</string>
     <string name="spaces_activity_sample_family">家庭</string>
@@ -1074,11 +1167,11 @@
     <string name="template_space_activity_template_title">範本</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">請您附近的朋友使用 twinme 掃描您的邀請二維碼，或點擊您的邀請碼將其複製到剪貼板。</string>
+    <string name="twincode_activity_message">請您附近的聯絡人使用 Skred 掃描您的邀請二維碼，或點擊邀請碼將其複製到剪貼簿。</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">您確定要刪除此「呼叫轉移」代碼嗎？</string>
-    <string name="transfert_call_activity_delete_message">此呼叫轉接鏈接將被刪除。確認？</string>
+    <string name="transfert_call_activity_delete_message">此「呼叫轉移」連結將不再可用。</string>
     <string name="transfert_call_activity_gallery_message">掃描此二維碼即可轉接您的移動電話。</string>
     <string name="transfert_call_activity_message">轉發此程式碼並在您要將行動呼叫轉移到的瀏覽器上為其 URL 新增書籤。</string>
     <string name="transfert_call_activity_reset_message">此操作會使當前的呼叫轉接代碼失效並創建一個新的代碼。確認？</string>
@@ -1108,13 +1201,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">通過按%1$s，我確認我已閱讀並接受：</string>
-    <string name="welcome_activity_next">下一個</string>
+    <string name="welcome_activity_enter">下一個</string>
     <string name="welcome_activity_pass">跳躍</string>
     <string name="welcome_activity_privacy_policy">隱私政策</string>
     <string name="welcome_activity_start">開始</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">消息和高清語音/視頻通話，通過設計保護隱私。</string>
     <string name="welcome_activity_step2_message">安全的“點對點”通信：雲中無踪跡。</string>
     <string name="welcome_activity_step3_message">沒有電話號碼、沒有地址簿、沒有用戶 ID：您可以根據與誰通信來選擇您希望被識別的方式。</string>
     <string name="welcome_activity_terms_of_use">使用條款</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

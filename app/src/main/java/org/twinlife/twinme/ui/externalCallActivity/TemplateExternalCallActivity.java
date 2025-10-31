@@ -91,6 +91,8 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
 
         setTitle(getString(R.string.template_space_activity_template_title));
 
+        applyInsets(R.id.template_external_call_activity_layout, R.id.template_external_call_activity_tool_bar, R.id.template_external_call_activity_list_view, Design.TOOLBAR_COLOR, false);
+
         TemplateExternalCallAdapter.OnTemplateExternalCallClickListener onTemplateClickListener = this::onTemplateClick;
 
         TemplateExternalCallAdapter templateExternalCallAdapter = new TemplateExternalCallAdapter(this, mUITemplates, onTemplateClickListener);
@@ -100,6 +102,7 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
         templateRecyclerView.setAdapter(templateExternalCallAdapter);
         templateRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         templateRecyclerView.setItemAnimator(null);
+        templateRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         mProgressBarView = findViewById(R.id.template_external_call_activity_progress_bar);
     }

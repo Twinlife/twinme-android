@@ -5,6 +5,7 @@
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.mainActivity;
@@ -281,6 +282,7 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
             Log.d(LOG_TAG, "onSetCurrentSpace: space=" + space);
         }
 
+        mNotificationService.getNotifications();
         mNotificationsRecyclerView.scrollToPosition(0);
     }
 
@@ -471,6 +473,7 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
             case NEW_AUDIO_MESSAGE:
             case NEW_VIDEO_MESSAGE:
             case NEW_FILE_MESSAGE:
+            case NEW_GEOLOCATION:
             case UPDATED_ANNOTATION:
                 intent = new Intent();
                 clazz = ConversationActivity.class;

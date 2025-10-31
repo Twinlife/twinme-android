@@ -45,12 +45,14 @@ import org.twinlife.twinlife.ConversationService.VideoDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.AudioTrack;
 import org.twinlife.twinme.utils.AudioTrackView;
+import org.twinlife.twinme.utils.EphemeralView;
 import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.Utils;
 import org.twinlife.twinme.utils.async.AudioTrackLoader;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AudioItemViewHolder extends ItemViewHolder {
@@ -59,6 +61,10 @@ public class AudioItemViewHolder extends ItemViewHolder {
 
     private static final float DESIGN_AUDIO_ITEM_CONTAINER_WIDTH_PERCENT = 0.7733f;
     private static final float DESIGN_AUDIO_TRACK_WIDTH_PERCENT = 0.7172f;
+    private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
+    private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_TOP_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_BOTTOM_MARGIN = 4f;
 
     private final BaseItemActivity.AudioItemObserver mAudioItemObserver;
 
@@ -75,6 +81,9 @@ public class AudioItemViewHolder extends ItemViewHolder {
     private final GradientDrawable mReplyToImageContentGradientDrawable;
     private final DeleteProgressView mDeleteView;
     private final AudioTrackView mAudioTrackView;
+    private final EphemeralView mEphemeralView;
+
+    private CountDownTimer mTimer;
 
     @Nullable
     ExoPlayer mExoPlayer = null;
@@ -137,6 +146,7 @@ public class AudioItemViewHolder extends ItemViewHolder {
 
         mCounter = view.findViewById(R.id.base_item_activity_audio_item_counter);
         Design.updateTextFont(mCounter, Design.FONT_MEDIUM26);
+        mCounter.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mAudioTrackView = view.findViewById(R.id.base_item_activity_audio_item_track_view);
 
@@ -250,6 +260,17 @@ public class AudioItemViewHolder extends ItemViewHolder {
             }
             return true;
         });
+
+        mEphemeralView = view.findViewById(R.id.base_item_activity_audio_item_ephemeral_view);
+        mEphemeralView.setColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
+        layoutParams = mEphemeralView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_EPHEMERAL_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
     }
 
     @Override
@@ -266,6 +287,10 @@ public class AudioItemViewHolder extends ItemViewHolder {
         final float[] cornerRadii = getCornerRadii();
 
         mGradientDrawable.setCornerRadii(cornerRadii);
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+        }
 
         if (mAudioLoader == null) {
             mAudioLoader = new AudioTrackLoader<>(item, audioItem.getAudioDescriptor(), getAudioTrackNbLines());
@@ -335,6 +360,14 @@ public class AudioItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
                     break;
 
+                case GEOLOCATION_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_audio_item_reply_text);
+
+                    mReplyTextView.setText(getBaseItemActivity().getResources().getString(R.string.application_location));
+                    break;
+
                 case NAMED_FILE_DESCRIPTOR:
                     mReplyView.setVisibility(View.VISIBLE);
                     mReplyTextView.setVisibility(View.VISIBLE);
@@ -345,6 +378,32 @@ public class AudioItemViewHolder extends ItemViewHolder {
                     break;
             }
         }
+
+        if (item.isEphemeralItem()) {
+            mEphemeralView.setVisibility(View.VISIBLE);
+            startEphemeralAnimation();
+        } else {
+            mEphemeralView.setVisibility(View.GONE);
+        }
+
+        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
+        overlayLayoutParams.width = getContainer().getWidth();
+
+        if (getBaseItemActivity().isMenuOpen()) {
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getContainer().getLayoutParams();
+            overlayLayoutParams.height = getContainer().getHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
+            getOverlayView().setVisibility(View.VISIBLE);
+            if (getBaseItemActivity().isSelectedItem(getItem().getDescriptorId())) {
+                itemView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
+                getOverlayView().setVisibility(View.INVISIBLE);
+            }
+        } else {
+            overlayLayoutParams.height = OVERLAY_DEFAULT_HEIGHT;
+            getOverlayView().setVisibility(View.INVISIBLE);
+            itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
+
+        getOverlayView().setLayoutParams(overlayLayoutParams);
     }
 
     @Override
@@ -357,6 +416,10 @@ public class AudioItemViewHolder extends ItemViewHolder {
         mDeleteView.setVisibility(View.GONE);
         mDeleteView.setOnDeleteProgressListener(null);
         setDeleteAnimationStarted(false);
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 
     public void resetView() {
@@ -604,5 +667,33 @@ public class AudioItemViewHolder extends ItemViewHolder {
         float audioContainerWidth = Design.DISPLAY_WIDTH * DESIGN_AUDIO_ITEM_CONTAINER_WIDTH_PERCENT;
         float audioTrackWidth = audioContainerWidth * DESIGN_AUDIO_TRACK_WIDTH_PERCENT;
         return (int) (audioTrackWidth / 4);
+    }
+
+    private void startEphemeralAnimation() {
+
+        if (mTimer == null && getItem().getState() == Item.ItemState.READ) {
+            mTimer = new CountDownTimer(getItem().getExpireTimeout(), 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    Date now = new Date();
+                    float timeSinceRead = (now.getTime() - getItem().getReadTimestamp());
+                    float percent = (float) (1.0 - (timeSinceRead / getItem().getExpireTimeout()));
+                    if (percent < 0) {
+                        percent = 0;
+                    } else if (percent > 1) {
+                        percent = 1;
+                    }
+                    mEphemeralView.updateWithProgress(percent);
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            };
+            mTimer.start();
+        } else {
+            mEphemeralView.updateWithProgress(1);
+        }
     }
 }

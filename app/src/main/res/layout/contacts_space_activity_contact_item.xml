@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="124dp">
+
+    <org.twinlife.twinme.utils.CircularImageView
+        android:id="@+id/contacts_space_activity_contact_item_avatar_view"
+        android:scaleType="fitCenter"
+        android:layout_centerVertical="true"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="69.35%"
+        app:layout_marginStartPercent="5.6%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/contacts_space_activity_contact_item_information_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/contacts_space_activity_contact_item_avatar_view"
+        android:layout_toRightOf="@id/contacts_space_activity_contact_item_avatar_view"
+        app:layout_marginStartPercent="4.26%"
+        app:layout_marginEndPercent="4.26%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/contacts_space_activity_contact_item_profile_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/contacts_space_activity_contact_item_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1" />
+
+            <ImageView
+                android:id="@+id/contacts_space_activity_contact_item_certified_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/contacts_space_activity_contact_item_name_view"
+                android:layout_toEndOf="@+id/contacts_space_activity_contact_item_name_view"
+                android:src="@drawable/authentified_relation_icon"
+                android:visibility="gone"
+                app:layout_aspectRatio="100%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/contacts_space_activity_contact_item_space_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contacts_space_activity_contact_item_profile_view"
+            android:ellipsize="end"
+            android:lines="1" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/contacts_space_activity_contact_layout_image"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/circle_grey"
+        android:layout_centerVertical="true"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="36.67%"
+        app:layout_marginEndPercent="4.26%">
+
+        <!-- Image heightPercent is not 100% because we need the circle_grey when it is visible.
+             circle_grey has an oval shape and a white background which is required by Android API 16.  -->
+        <ImageView
+            android:id="@+id/contacts_space_activity_contact_selected_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:background="@drawable/circle_grey"
+            android:src="@drawable/check_mark_grey"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <View
+        android:id="@+id/contacts_space_activity_contact_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignStart="@+id/contacts_space_activity_contact_item_information_view"
+        android:layout_alignLeft="@+id/contacts_space_activity_contact_item_information_view"
+        android:layout_alignParentBottom="true" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

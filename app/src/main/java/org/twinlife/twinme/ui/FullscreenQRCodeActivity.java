@@ -149,9 +149,6 @@ public class FullscreenQRCodeActivity extends AbstractTwinmeActivity implements 
 
         initViews();
         mProfileService = new ShareProfileService(this, getTwinmeContext(), this);
-        if (profileId != null) {
-            mProfileService.getProfile(profileId);
-        }
     }
 
     @Override

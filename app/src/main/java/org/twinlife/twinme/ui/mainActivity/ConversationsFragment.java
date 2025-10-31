@@ -972,6 +972,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
 
         mOnlyGroups = false;
         mConversationsRadioGroup.check(R.id.conversations_tool_bar_all_radio);
+        mUIConversationRecyclerView.scrollToPosition(0);
         updateColor();
     }
 
@@ -1733,7 +1734,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         Design.updateTextFont(mGroupsRadioButton, Design.FONT_REGULAR32);
     }
 
-    private void updateColor() {
+    public void updateColor() {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateColor");
         }
@@ -1744,6 +1745,12 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         mNoConversationTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+        ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        saveViewBackground.getPaint().setColor(Design.getMainStyle());
+        mInviteContactView.setBackground(saveViewBackground);
 
         ColorStateList colorStateList = new ColorStateList(
                 new int[][]{

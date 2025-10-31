@@ -90,6 +90,22 @@
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/onboarding_profile_activity_do_not_show_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/onboarding_profile_activity_do_not_show_title_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/application_do_not_display"
+                    app:layout_widthPercent="89.58%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

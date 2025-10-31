@@ -32,6 +32,18 @@
         android:gravity="start|center_vertical"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/navigation_activity_child_subscribe_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/navigation_activity_child_accessory_level2"
+        android:layout_toStartOf="@+id/navigation_activity_child_accessory_level2"
+        android:layout_centerVertical="true"
+        app:layout_marginEndPercent="2%"
+        android:gravity="center"
+        android:padding="5dp"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/navigation_activity_child_accessory_level2"
         android:layout_width="wrap_content"

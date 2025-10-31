@@ -48,21 +48,20 @@ class PeerInvitationItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         invitationContainer.setBackground(mGradientDrawable);
-        mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
         invitationContainer.setClickable(false);
 
         mGroupNameView = view.findViewById(R.id.base_item_activity_peer_invitation_item_group_name);
-        Design.updateTextFont(mGroupNameView, Design.FONT_MEDIUM26);
         mGroupNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mGroupNameView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mInvitationAvatarView = view.findViewById(R.id.base_item_activity_peer_invitation_avatar_view);
 
         mNoAvatarView = view.findViewById(R.id.base_item_activity_peer_invitation_no_avatar_view);
-        mNoAvatarView.setColor(Design.WHITE_COLOR);
+        mNoAvatarView.setColor(Color.parseColor(Design.DEFAULT_COLOR));
 
         mInvitationView = view.findViewById(R.id.base_item_activity_peer_invitation_item_invitation_view);
         Design.updateTextFont(mInvitationView, Design.FONT_REGULAR26);
-        mInvitationView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mInvitationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         if (allowClick) {
             invitationContainer.setOnClickListener(v -> {
@@ -99,14 +98,20 @@ class PeerInvitationItemViewHolder extends PeerItemViewHolder {
         if (avatar != null) {
             if (avatar.equals(getBaseItemActivity().getTwinmeApplication().getDefaultGroupAvatar())) {
                 mNoAvatarView.setVisibility(View.VISIBLE);
+                mInvitationAvatarView.setColorFilter(Color.WHITE);
             } else {
                 mNoAvatarView.setVisibility(View.GONE);
+                mInvitationAvatarView.setColorFilter(Color.TRANSPARENT);
             }
             mInvitationAvatarView.setImage(mInvitationAvatarView.getContext(), null,
                     new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
         }
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+        }
 
         mGroupNameView.setText(invitation.getGroupName());
         switch (invitation.getStatus()) {

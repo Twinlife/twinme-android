@@ -31,12 +31,14 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.ui.settingsActivity.UICustomColor;
+import org.twinlife.twinme.ui.spaces.UIColorSpace;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.SwitchView;
 
 import java.util.ArrayList;
@@ -66,7 +68,6 @@ public class Design {
 
     public static final int BACKGROUND_COLOR_DEFAULT = Color.rgb(250, 252, 255);
 
-    public static final int BACKGROUND_COLOR_BLUE = Color.rgb(0, 174, 255);
     public static final int BACKGROUND_COLOR_RED = Color.rgb(255, 77, 85);
 
     public static final int BACKGROUND_COLOR_GREY = Color.rgb(239, 239, 239);
@@ -81,6 +82,9 @@ public class Design {
     public static final int BLUE_NORMAL = Color.rgb(0, 174, 255);
     public static final int OVERLAY_VIEW_COLOR = Color.argb(127, 0, 0, 0);
 
+    public static final int ITEM_BACKGROUND_COLOR = Color.rgb(120, 137, 159);
+    public static final int ITEM_FONT_COLOR = Color.rgb(44, 44, 44);
+    public static final int BACKGROUND_SPACE_AVATAR = Color.rgb(239, 239, 239);
     public static final int BOTTOM_GRADIENT_START_COLOR = Color.argb(0, 0, 0, 0);
     public static final int BOTTOM_GRADIENT_END_COLOR = Color.argb(255, 0, 0, 0);
 
@@ -95,7 +99,7 @@ public class Design {
     public static final int BACK_VIEW_COLOR = Color.argb(76, 0, 0, 0);
 
     public static final String MAIN_COLOR_PREFERENCE = "MAIN_COLOR";
-    public static final String DEFAULT_COLOR = "#00AEFF";
+    public static final String DEFAULT_COLOR = "#FB1C5B";
 
     public static GradientDescriptor GRADIENT_COLORS_GREEN;
     public static GradientDescriptor GRADIENT_COLORS_RED;
@@ -122,6 +126,7 @@ public class Design {
     public static TextStyle FONT_REGULAR44;
     public static TextStyle FONT_REGULAR50;
     public static TextStyle FONT_REGULAR64;
+    public static TextStyle FONT_REGULAR88;
     public static TextStyle FONT_MEDIUM16;
     public static TextStyle FONT_MEDIUM20;
     public static TextStyle FONT_MEDIUM24;
@@ -139,9 +144,11 @@ public class Design {
     public static TextStyle FONT_ITALIC_28;
     public static TextStyle FONT_BOLD28;
     public static TextStyle FONT_BOLD26;
+    public static TextStyle FONT_BOLD32;
     public static TextStyle FONT_BOLD34;
     public static TextStyle FONT_BOLD36;
     public static TextStyle FONT_BOLD44;
+    public static TextStyle FONT_BOLD54;
     public static TextStyle FONT_BOLD68;
     public static TextStyle FONT_BOLD88;
 
@@ -511,6 +518,7 @@ public class Design {
         FONT_REGULAR44 = new TextStyle(regularTypeface, (MIN_RATIO * 44 * fontScale) + adjustFontSize);
         FONT_REGULAR50 = new TextStyle(regularTypeface, (MIN_RATIO * 50 * fontScale) + adjustFontSize);
         FONT_REGULAR64 = new TextStyle(regularTypeface, (MIN_RATIO * 64 * fontScale) + adjustFontSize);
+        FONT_REGULAR88 = new TextStyle(regularTypeface, (MIN_RATIO * 88 * fontScale) + adjustFontSize);
 
         FONT_MEDIUM16 = new TextStyle(mediumTypeface, (MIN_RATIO * 16 * fontScale) + adjustFontSize);
         FONT_MEDIUM20 = new TextStyle(mediumTypeface, (MIN_RATIO * 20 * fontScale) + adjustFontSize);
@@ -531,9 +539,11 @@ public class Design {
 
         FONT_BOLD26 = new TextStyle(boldTypeface, (MIN_RATIO * 26 * fontScale) + adjustFontSize);
         FONT_BOLD28 = new TextStyle(boldTypeface, (MIN_RATIO * 28 * fontScale) + adjustFontSize);
+        FONT_BOLD32 = new TextStyle(boldTypeface, (MIN_RATIO * 32 * fontScale) + adjustFontSize);
         FONT_BOLD34 = new TextStyle(boldTypeface, (MIN_RATIO * 34 * fontScale) + adjustFontSize);
         FONT_BOLD36 = new TextStyle(boldTypeface, (MIN_RATIO * 36 * fontScale) + adjustFontSize);
         FONT_BOLD44 = new TextStyle(boldTypeface, (MIN_RATIO * 44 * fontScale) + adjustFontSize);
+        FONT_BOLD54 = new TextStyle(boldTypeface, (MIN_RATIO * 54 * fontScale) + adjustFontSize);
         FONT_BOLD68 = new TextStyle(boldTypeface, (MIN_RATIO * 68 * fontScale) + adjustFontSize);
         FONT_BOLD88 = new TextStyle(boldTypeface, (MIN_RATIO * 88 * fontScale) + adjustFontSize);
 
@@ -560,22 +570,7 @@ public class Design {
 
     public static void setupColor(@NonNull Context context, @NonNull TwinmeApplication application) {
 
-        String mainStyle = getMainStyleString();
-        if (mainStyle != null) {
-            boolean knownColor = false;
-            List<UICustomColor> colors = mainColors();
-            for (UICustomColor color : colors) {
-                if (color.getColor() != null && color.getColor().equals(mainStyle)) {
-                    knownColor = true;
-                    break;
-                }
-            }
-            if (!knownColor) {
-                setMainStyle(DEFAULT_COLOR);
-            }
-        }
-
-        int displayMode = Settings.displayMode.getInt();
+        int displayMode = application.displayMode();
 
         if (displayMode == DisplayMode.SYSTEM.ordinal()) {
             setupSystemColor(context);
@@ -588,7 +583,7 @@ public class Design {
 
     public static void setTheme(@NonNull Activity activity, @NonNull TwinmeApplication application) {
 
-        int displayMode = Settings.displayMode.getInt();
+        int displayMode = application.displayMode();
 
         if (displayMode == DisplayMode.SYSTEM.ordinal()) {
             activity.setTheme(R.style.TwinmeThemeWithNoActionBar);
@@ -597,6 +592,29 @@ public class Design {
         } else if (displayMode == DisplayMode.DARK.ordinal()) {
             activity.setTheme(R.style.TwinmeThemeDark);
         }
+    }
+
+    public static DisplayMode getDisplayMode(int mode) {
+
+        if (mode == DisplayMode.SYSTEM.ordinal()) {
+            return DisplayMode.SYSTEM;
+        } else if (mode == DisplayMode.LIGHT.ordinal()) {
+            return DisplayMode.LIGHT;
+        } else {
+            return DisplayMode.DARK;
+        }
+    }
+
+    public static boolean isDarkMode(@NonNull Context context) {
+
+        boolean darkMode = false;
+        int currentNightMode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int displayMode = Settings.displayMode.getInt();
+        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal()) || displayMode == DisplayMode.DARK.ordinal()) {
+            darkMode = true;
+        }
+
+        return darkMode;
     }
 
     public static void updateValues(@NonNull Context context, @NonNull TwinmeApplication application) {
@@ -721,7 +739,7 @@ public class Design {
         ACTION_IMAGE_CALL_COLOR = Color.parseColor("#000000");
         EDIT_AVATAR_BACKGROUND_COLOR = Color.parseColor("#f3f3f3");
         EDIT_AVATAR_IMAGE_COLOR = Color.parseColor("#c8c8c8");
-        CONVERSATION_BACKGROUND_COLOR = Color.parseColor("#ffffff");
+        CONVERSATION_BACKGROUND_COLOR = Color.parseColor("#efefef");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             CONVERSATION_OVERLAY_COLOR = Color.parseColor("#ccffffff");
@@ -800,18 +818,18 @@ public class Design {
         CUSTOM_TAB_GREY_COLOR = Color.parseColor("#484848");
     }
 
-    public static List<UICustomColor> mainColors() {
+    public static List<UIColorSpace> spaceColors() {
 
-        List<UICustomColor> colors = new ArrayList<>();
-        colors.add(new UICustomColor(null));
-        colors.add(new UICustomColor("#4B90E2"));
-        colors.add(new UICustomColor("#F07675"));
-        colors.add(new UICustomColor("#9DEDB4"));
-        colors.add(new UICustomColor("#9DDBED"));
-        colors.add(new UICustomColor("#89AC8F"));
-        colors.add(new UICustomColor("#E99616"));
-        colors.add(new UICustomColor("#F0CB26"));
-        colors.add(new UICustomColor("#EBBDBF"));
+        List<UIColorSpace> colors = new ArrayList<>();
+        colors.add(new UIColorSpace(null));
+        colors.add(new UIColorSpace("#4B90E2"));
+        colors.add(new UIColorSpace("#F07675"));
+        colors.add(new UIColorSpace("#9DEDB4"));
+        colors.add(new UIColorSpace("#9DDBED"));
+        colors.add(new UIColorSpace("#89AC8F"));
+        colors.add(new UIColorSpace("#E99616"));
+        colors.add(new UIColorSpace("#F0CB26"));
+        colors.add(new UIColorSpace("#EBBDBF"));
         return colors;
     }
 
@@ -839,6 +857,11 @@ public class Design {
         }
     }
 
+    public static int getDefaultColor(@Nullable String style) {
+
+        return CommonUtils.parseColor(style, Color.parseColor(DEFAULT_COLOR));
+    }
+
     public static int getHeight(int height) {
 
         return (int) (height * Design.HEIGHT_RATIO);
@@ -859,6 +882,26 @@ public class Design {
         int mixBlue = (blue1 + blue2) / 2;
 
         return Color.rgb(mixRed, mixGreen, mixBlue);
+    }
+
+    public static int getItemBackgroundColor() {
+
+        if (getMainStyleString().equals(Design.DEFAULT_COLOR)) {
+
+            return ITEM_BACKGROUND_COLOR;
+        }
+
+        return getMainStyle();
+    }
+
+    public static int getItemFontColor(Context context) {
+
+        if (getMainStyleString().equals(Design.DEFAULT_COLOR)) {
+
+            return ITEM_FONT_COLOR;
+        }
+
+        return Color.WHITE;
     }
 
     public static TextStyle getEmojiFont(int nbEmoji) {

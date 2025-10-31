@@ -64,15 +64,14 @@ class TypingItemViewHolder extends BaseItemViewHolder {
         layoutParams.height = TYPING_ITEM_HEIGHT;
         view.setLayoutParams(layoutParams);
 
-        int bubbleColor = Design.getMainStyle();
         mLeftBubbleView = view.findViewById(R.id.base_item_activity_typing_item_left_bubble);
-        mLeftBubbleView.setColor(bubbleColor);
+        mLeftBubbleView.setColor(baseItemActivity.getCustomAppearance().getMainColor());
 
         mMiddleBubbleView = view.findViewById(R.id.base_item_activity_typing_item_middle_bubble);
-        mMiddleBubbleView.setColor(bubbleColor);
+        mMiddleBubbleView.setColor(baseItemActivity.getCustomAppearance().getMainColor());
 
         mRightBubbleView = view.findViewById(R.id.base_item_activity_typing_item_right_bubble);
-        mRightBubbleView.setColor(bubbleColor);
+        mRightBubbleView.setColor(baseItemActivity.getCustomAppearance().getMainColor());
 
         AbstractTwinmeService service = new AbstractTwinmeService("TypingService", baseItemActivity, baseItemActivity.getTwinmeContext(), null);
 

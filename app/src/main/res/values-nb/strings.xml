@@ -9,6 +9,7 @@
     <string name="application_all">Alle</string>
     <string name="application_appearance">Utseende</string>
     <string name="application_are_you_sure">Er du sikker?</string>
+    <string name="application_authorization_location">Gi appen tilgang til posisjon i systeminnstillingene.</string>
     <string name="application_authorization_camera">Tillatt at appen får tilgang til Kameraet i systeminnstillingene.</string>
     <string name="application_authorization_go_settings">Gå til systeminnstillinger</string>
     <string name="application_authorization_microphone">Tillatt at appen får tilgang til Mikrofon i systeminnstillingene.</string>
@@ -48,16 +49,19 @@
     <string name="application_group_not_found">Du har blitt fjernet fra gruppe</string>
     <string name="application_items_selected">%1$d elementer er valgt</string>
     <string name="application_later">Seinere</string>
+    <string name="application_location">Geolokalisering</string>
+    <string name="application_location_enabled">Gi appen tilgang til posisjon i systeminnstillingene.</string>
     <string name="application_low_usage_message">Advarsel, hvis du ikke bruker programmet ofte nok, kan det hende at operativsystemet ikke vekker det for å utveksle meldinger!</string>
+    <string name="application_more_info">Mer informasjon…</string>
     <string name="application_one_item_selected">1 element er valgt</string>
     <string name="application_migration_no_storage_space">Det er ikke nok plass på enheten til å fullføre migreringen. Lukk applikasjonen, frigjør plass og start appen på nytt for å fullføre oppdateringen.</string>
     <string name="application_migration_no_storage_space_message">En av de to enhetene har ikke nok lagringsplass. Frigjør plass på den enheten før du starter overføringen på nytt.</string>
     <string name="application_name_hint">Navn</string>
-    <string name="application_network_connecting">Kobler til twinme-tjeneste</string>
+    <string name="application_network_connecting">Kobler til Skred-tjeneste</string>
     <string name="application_network_connectivity">Nettverkstilkobling finnes</string>
     <string name="application_network_status_airplane_message">Flymodus er aktivert.</string>
     <string name="application_network_status_airplane_resolution">Deaktiver flymodus og koble til et WiFi- eller mobilnettverk.</string>
-    <string name="application_network_status_connected_no_internet">Ingen nettilgang til twinme-tjenesten.</string>
+    <string name="application_network_status_connected_no_internet">Ingen nettilgang til Skred-tjenesten.</string>
     <string name="application_network_status_connected_resolution">Prøv å koble til et annet nettverk.</string>
     <string name="application_network_status_connection_timeout">Kan ikke opprette internettforbindelsen.</string>
     <string name="application_network_status_no_internet">Ingen internettforbindelse.</string>
@@ -72,13 +76,15 @@
     <string name="application_not_authorized_operation">Ikke godkjent handling</string>
     <string name="application_not_authorized_operation_by_your_contact">Driften er ikke godkjent av kontakten din.</string>
     <string name="application_not_connected">Sikker tilkobling pågår…</string>
-    <string name="application_not_signed_in">Ikke koblet til twinme-tjenesten</string>
+    <string name="application_not_signed_in">Ikke koblet til Skred-tjenesten</string>
     <string name="application_now">Nå</string>
     <string name="application_ok">OK</string>
     <string name="application_operation_failure">Handling mislyktes</string>
     <string name="application_operation_irreversible">Denne operasjonen er irreversibel</string>
     <string name="application_permission_camera">Tillatelse for å få tilgang til kameraet kreves for å ta et nytt bilde eller video.</string>
     <string name="application_permission_scan_code">Tillatelse til å få tilgang til kameraet er nødvendig for å skanne en QR-kode.</string>
+    <string name="application_premium_feature_message">Du må aktivere premium-tjenester for å bruke denne funksjonen.</string>
+    <string name="application_premium_feature_title">Aktiver premiumtjenester</string>
     <string name="application_photo_gallery">Fotoalbum</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Profilbildet ditt er ikke definert</string>
@@ -88,7 +94,7 @@
     <string name="application_search_hint">Søk</string>
     <string name="application_select">Velge</string>
     <string name="application_select_application">Velg applikasjon</string>
-    <string name="application_select_more">Velg flere...</string>
+    <string name="application_select_more">Velg flere…</string>
     <string name="application_server_timeout">Server timeout</string>
     <string name="application_size_unit">MB</string>
     <string name="application_theme">Tema</string>
@@ -102,7 +108,7 @@
     <string name="application_timeout_seconds">%1$d sekunder</string>
     <string name="application_timeout_week">1 uke</string>
     <string name="application_unknown_name">Ukjent</string>
-    <string name="application_upgrade">Oppgradering av twinme</string>
+    <string name="application_upgrade">Oppgradering av Skred</string>
     <string name="application_webrtc_failure">WebRTC-svikt</string>
     <string name="application_wrong_configuration">Feil konfigurasjon</string>
     <string name="application_yes">Ja</string>
@@ -112,7 +118,6 @@
     <string name="about_activity_information">Informasjon</string>
     <string name="about_activity_legal">Juridiske merknader</string>
     <string name="about_activity_libraries">Biblioteker</string>
-    <string name="about_activity_message">twinme er en sikker chatte- og stemme/videosamtale-tjeneste uten tilgang til personlig informasjon.\n\ntwinme er basert på WebRTC, den nye standarden for sikker (ende-til-ende-kryptert) p2p (ingen reléserver) multimediakommunikasjon i sanntid på nettet.</string>
     <string name="about_activity_open_source_information">Applikasjonens kildekode er tilgjengelig som Open Source på GitHub, under AGPL-3.0-lisensen.</string>
     <string name="about_activity_open_sources_licences">Åpne kildelisenser</string>
     <string name="about_activity_premium_services">Premium tjenester</string>
@@ -183,7 +188,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Skann QR-koden som vises i delen \"Konto / Overfør fra en annen enhet\" i sidemenyen til den andre enheten.</string>
     <string name="account_migration_scanner_activity_stop_scan_title">Stopp skanningen</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">Legg til en deltaker i denne samtalen</string>
 
     <!-- AddContactActivity -->
@@ -192,10 +197,10 @@
     <string name="add_contact_activity_in_person_title">Personlig</string>
     <string name="add_contact_activity_invitation_code_title">Minikode</string>
     <string name="add_contact_activity_invite">Invitere</string>
-    <string name="add_contact_activity_invite_message">Åpne nettstedet %1$s med twinme på den mobile enheten din for privat kontakt med “%2$s”</string>
-    <string name="add_contact_activity_invite_subject">Twinme-invitasjon</string>
-    <string name="add_contact_activity_message">Be vennen din ved siden av deg om å skanne QR-koden din med twinme, eller trykk på "Skann"-knappen for å skanne vennens kode.</string>
-    <string name="add_contact_activity_onboarding_message">twinme kjenner ikke vennene dine og kan ikke oppdage dem. Du må invitere dem personlig, med twinme når de er nær deg, eller ved å sende dem en invitasjon på annen måte.</string>
+    <string name="add_contact_activity_invite_message">Åpne nettstedet %1$s med Skred på den mobile enheten din for privat kontakt med “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Skred-invitasjon</string>
+    <string name="add_contact_activity_message">Be kontakten din om å skanne QR-koden til invitasjonen din med Skred, eller trykk på \"Skann\"-knappen for å skanne kontaktens kode.</string>
+    <string name="add_contact_activity_onboarding_message">Skred kjenner ikke vennene dine og kan ikke oppdage dem. Du må invitere dem personlig, med Skred når de er nær deg, eller ved å sende dem en invitasjon på annen måte.</string>
     <string name="add_contact_activity_scan_code">Skann invitasjons QR-kode</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Denne linken er ødelagt.</string>
     <string name="add_contact_activity_scan_error_incorect_link">Denne lenken er feil.</string>
@@ -254,7 +259,7 @@
     <string name="calls_fragment_all_call_segmented_control">Alle</string>
     <string name="calls_fragment_call_again_message">Vil du ringe tilbake %1$s?</string>
     <string name="calls_fragment_call_again_title">Ring tilbake</string>
-    <string name="calls_fragment_create_link">Opprett en \"click-to-call\"-lenke</string>
+    <string name="calls_fragment_create_link">Opprett en \"click-to-call\"</string>
     <string name="calls_fragment_incoming_call">Innkommende anrop</string>
     <string name="calls_fragment_missed_call">Ubesvart anrop</string>
     <string name="calls_fragment_missed_call_segmented_control">Savnet</string>
@@ -292,6 +297,11 @@
     <string name="call_activity_confirm_word_title">Bekreft ordet</string>
     <string name="call_activity_error_call_interrupted">Samtalen ble avbrutt, feil: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Samtalen kunne ikke gå gjennom, feil: %1$d.</string>
+    <string name="call_activity_location_background_warning">Advarsel: Hvis applikasjonen kjører i bakgrunnen, vil posisjonen din ikke lenger deles med kontakten din. Du må autorisere appen for alltid å få tilgang til plasseringen til denne enheten.</string>
+    <string name="call_activity_location_exact_warning">Oppmerksomhet! Du deler ikke din eksakte posisjon. Du kan endre de nødvendige tillatelsene i appinnstillingene.</string>
+    <string name="call_activity_location_share">Del posisjonen min</string>
+    <string name="call_activity_location_share_message">Du deler nå posisjonen din under samtalen.</string>
+    <string name="call_activity_location_stop">Slutt å dele posisjonen min</string>
     <string name="call_activity_max_participant_message">Maksimalt antall deltakere i en gruppesamtale er nådd (%1$d).</string>
     <string name="call_activity_not_supported_group_call_message">Appversjonen av %1$s er ikke kompatibel med gruppeanrop og trenger en oppdatering.</string>
     <string name="call_activity_quality_message">Hvordan vil du rangere det?</string>
@@ -316,9 +326,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera er allerede i bruk</string>
-    <string name="capture_activity_incorrect_qrcode">Feil twincode</string>
+    <string name="capture_activity_incorrect_qrcode">Feil skredcode</string>
     <string name="capture_activity_message">Plasser QR-koden i dette rektangelet for å skanne den.</string>
-    <string name="capture_activity_no_camera">Du trenger kamera for å skanne en twincode</string>
+    <string name="capture_activity_no_camera">Du trenger kamera for å skanne en skredcode</string>
     <string name="capture_activity_qrcode_saved">Invitasjonskode lagret i bilder.</string>
 
     <!-- CleanupActivity -->
@@ -373,11 +383,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">Planlegg datoene/klokkeslettet du ønsker å bli oppringt.</string>
     <string name="contact_capabilities_activity_information_video_call">Tillat at kontakten å videoringe deg.</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">Tilgang til adresseboken er nødvendig. Gå til appinnstillinger for å angi den</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">Tillatelse avslått</string>
+    <string name="contact_picker_activity_subtitle">INVITER PÅ TELEFONNUMMER</string>
+    <string name="contact_picker_activity_title">Inviter venn fra kontakter</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">Inviter noen til å skanne invitasjonskoden din, ellers skann deres...</string>
     <string name="contacts_fragment_invite_contact_title">Inviter en kontakt</string>
     <string name="contacts_fragment_scan_contact_title">Skann eller skriv inn en invitasjonskode</string>
     <string name="contacts_fragment_title">Kontakt</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">Er du sikker på at du vil flytte denne kontakt?</string>
+    <string name="contact_space_activity_move_title">Flytte</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">Audio anrop</string>
@@ -390,13 +410,14 @@
     <string name="conversation_activity_empty_message">Si noe smart… eller morsomt!</string>
     <string name="conversation_activity_edit_message">Meldingen kan bare redigeres på kontaktens enhet hvis appen deres er oppdatert.</string>
     <string name="conversation_activity_ephemeral_coach_mark">Langt trykk på send-pilen for å slette denne meldingen fra samtalen etter en viss tid.</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">Den twinme-versjonen som kontakten din har er ikke fullt ut funksjonell.&lt;br /&gt;
-        Be ham/henne om å oppdatere twinme.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Den Skred-versjonen som kontakten din har er ikke fullt ut funksjonell.&lt;br /&gt;
+        Be ham/henne om å oppdatere Skred.</string>
     <string name="conversation_activity_group_member_information">%1$d medlemmer</string>
     <string name="conversation_activity_group_not_allowed_post_message">Sende meldinger er ikke tillatt</string>
     <string name="conversation_activity_group_one_member">1 medlem</string>
+    <string name="conversation_activity_info">:lock Chat-meldingene er kryptert på din mobiltelefon og under overføringen. For å sikre det høyeste nivået av datasikkerhet, sendes de direkte til %s telefon ved å bruke en peer-to-peer-tilkobling uten mellomliggende server.</string>
     <string name="conversation_activity_invitation_accepted">Invitasjon akseptert</string>
-    <string name="conversation_activity_invitation_failed">Be kontakt med deg for å oppdatere twinme</string>
+    <string name="conversation_activity_invitation_failed">Be kontakt med deg for å oppdatere Skred</string>
     <string name="conversation_activity_invitation_joined">Medlem av gruppen</string>
     <string name="conversation_activity_invitation_pending">Invitasjon pågår</string>
     <string name="conversation_activity_invitation_refused">Invitasjonen avslått</string>
@@ -456,7 +477,7 @@
     <string name="conversations_fragment_you">Du</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">Denne profilen vises til gjester som vil ringe deg med denne \"click-to-call\"-lenken.</string>
+    <string name="create_external_call_activity_message">Skriv inn navn, bilde og beskrivelse av samtaleemnet.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call lar gjester ringe deg fra en nettleser uten å installere programmet.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Hver forekomst har et navn, bilde og beskrivelse som representerer emnet for samtalen, for eksempel:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">kundeservicen din</string>
@@ -500,10 +521,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">Når det er opprettet, har hvert forhold sitt eget par "profiler" som representerer deg og kontaktene dine for hverandre.</string>
     <string name="create_profile_activity_onboarding_message_part_4">Du kan deretter endre hvordan du ønsker å bli kjent for hver av kontaktene dine, på hvert forhold, uavhengig.</string>
     <string name="create_profile_activity_save_message">Dette navnet og bildet brukes til å invitere kontaktene dine og initialisere relasjonene dine. Du vil kunne endre og tilpasse dem for hver relasjon.</string>
+    <string name="create_profile_activity_title">Definer profilen din</string>
     <string name="create_profile_activity_welcome1">Legg inn profilbilde</string>
     <string name="create_profile_activity_welcome2">Velkommen %1$s!</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">Bilde</string>
+    <string name="create_space_activity_contact_list">Flytt kontakter</string>
+    <string name="create_space_activity_contacts_no_profile">For å flytte kontakter til et Space, må du fullføre profilen som representerer deg for kontaktene dine. Vil du fullføre det?</string>
     <string name="create_space_activity_message">Spaces er lokale og ikke synlige for kontakter.</string>
     <string name="create_space_activity_onboarding_message_part_1">Spaces hjelper deg med å organisere kontaktene dine etter hvilke av dine sosiale kretser de tilhører, f.eks. Familie, venner, virksomhet, moro, etc.</string>
     <string name="create_space_activity_onboarding_message_part_2">Hvert "Space" er knyttet til en "Profil" som representerer personen du vil bruke når du samhandler med kontaktene fra den sosiale kretsen til det "Space", f.eks. pappa, Johny, Dr. John Doe, Batman, etc.</string>
@@ -513,6 +538,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- et "Bilde" som lar deg identifisere det raskt i listen over "Spaces"</string>
     <string name="create_space_activity_onboarding_message_part_7">- en farge "Tema", for å tilpasse utseendet og følelsen</string>
     <string name="create_space_activity_onboarding_message_part_8">- Innstillinger som kan være spesifikke for hvert enkelt "Space", og dermed overstyre standardverdiene definert av applikasjonsinnstillingene.</string>
+    <string name="create_space_activity_profile_message">Du må skrive inn navnet og bildet som representerer deg for kontaktene du inviterer med denne profilen.</string>
+    <string name="create_space_activity_space_hint">Navn (familie, venner, bedrift osv.)</string>
     <string name="create_space_activity_title">Lag Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -532,9 +559,6 @@
     <string name="edit_contact_activity_confirm_message">Er du sikker på at du vil slette denne relasjonen?</string>
     <string name="edit_contact_activity_message">Denne kontakten vil ikke lenger kunne nå deg.</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">Sletting av denne profilen vil annullere den tilknyttede invitasjonskoden. Bekreft sletting?</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">Er du sikker på at du vil slette denne \"Click-to-Call\"-koden?</string>
     <string name="edit_external_call_activity_delete_message">Denne \"Click-to-Call\"-koblingen vil ikke lenger være brukbar.</string>
@@ -547,7 +571,13 @@
     <string name="edit_profile_activity_propagating_message">Du kan overføre endringene i invitasjonsprofilen til dine eksisterende kontakter, eller ikke.</string>
     <string name="edit_profile_activity_propagating_no_contact">til ingen</string>
     <string name="edit_profile_activity_propagating_profile">Spre profilendringer</string>
-    <string name="edit_profile_activity_remove_active_profile">Du kan ikke fjerne den aktive profilen</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">For å invitere en kontakt, må du fullføre profilen som representerer deg for denne kontakten. Vil du fullføre det?</string>
+    <string name="edit_space_activity_delete_confirmation">Er du virkelig sikker på at du vil slette dette Space?</string>
+    <string name="edit_space_activity_delete_current_space">Du kan ikke slette det aktive Space.</string>
+    <string name="edit_space_activity_delete_message">Hvis du sletter et Space, fjernes alle kontakter, grupper og samtaler fra det Space. Er du sikker på at du vil slette denne "plassen"?</string>
+    <string name="edit_space_activity_delete_only_one_space_message">Du kan ikke slette den eneste Space i applikasjonen.</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">Når relasjonen er opprettet, anbefales det sterkt å sertifisere den for å styrke sikkerheten.</string>
@@ -594,12 +624,16 @@
     <string name="feedback_activity_send_logs">Send en Feilsøkingslogg</string>
     <string name="feedback_activity_send_message">Tilbakemelding sendt inn. Takk.</string>
     <string name="feedback_activity_subject">Emne</string>
-    <string name="feedback_activity_subject_placeholder">[twinme]</string>
+    <string name="feedback_activity_subject_placeholder">[Skred]</string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">Du må invitere venner og få kontakt med dem på Skred. De vil vises i kontaktlisten din når de har godtatt invitasjonen din.</string>
+    <string name="first_invite_contact_activity_ignore">Overse</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">Denne handlingen ugyldiggjør den gjeldende invitasjonskoden tilknyttet denne profilen. Er du sikker på at du vil generere en ny kode?</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">Generer en ny invitasjonskode</string>
-    <string name="fullscreen_qrcode_activity_save_message">Importer eller skann denne QR-koden for invitasjonen med twinme for å legge til denne kontakten.</string>
+    <string name="fullscreen_qrcode_activity_save_message">Importer eller skann denne QR-koden for invitasjonen med Skred for å legge til denne kontakten.</string>
     <string name="fullscreen_qrcode_activity_save_title">Lagre i fotogalleriet</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -617,6 +651,37 @@
     <string name="group_member_activity_section_invitation">Invitasjoner</string>
     <string name="group_member_activity_section_member">Medlemmer</string>
     <string name="group_member_activity_title">Gruppemedlemmer</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s inviterer deg til å nyte premium-tjenester, som den støtter.</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">Gruppesamtaler med HQ-lyd og HD-bilde</string>
+    <string name="in_app_subscription_activity_description_step1_title">Høykvalitets tale-/videokonferanser</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">Null data / Null karbon</string>
+    <string name="in_app_subscription_activity_description_step2_title">Miljøansvarlig tale-/videokonferanser</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">Absolutt konfidensialitet av utvekslinger</string>
+    <string name="in_app_subscription_activity_description_step3_title">Privat tale-/videokonferanse</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">Høyoppløselig øyeblikkelig tilkobling</string>
+    <string name="in_app_subscription_activity_description_step4_title">Øyeblikkelig tale-/videokonferanser</string>
+    <string name="in_app_subscription_activity_expiration_message">Fornyelse: %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">Når du kjøper et abonnement, belastes det av Google direkte til Play Store-kontoen din. Et abonnement fornyes automatisk på samme vilkår med mindre du sier opp minst 24 timer før slutten av gjeldende termin. Du kan kansellere uten kostnad i Play-butikken når som helst, slik at abonnementet ikke fornyes ved slutten av inneværende periode. Du kan administrere abonnementet ditt fra Play Butikk-kontoinnstillingene etter kjøpet.</string>
+    <string name="in_app_subscription_activity_free_trial">14-dagers gratis prøveperiode.\nAbonnementet kan kanselleres når som helst.</string>
+    <string name="in_app_subscription_activity_invitation_code">Skann QR-koden for invitasjonen eller lim inn koden for å få tilgang til premiumtjenester.</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">Ugyldig invitasjonskode.</string>
+    <string name="in_app_subscription_activity_later_title">Nei takk</string>
+    <string name="in_app_subscription_activity_manage_susbcription">Administrer abonnementet mitt</string>
+    <string name="in_app_subscription_activity_month">Måned</string>
+    <string name="in_app_subscription_activity_not_available">Betalte premiumtjenester er ikke tilgjengelige på enheten din eller i ditt land.</string>
+    <string name="in_app_subscription_activity_restore_title">Gjenopprette kjøp</string>
+    <string name="in_app_subscription_activity_search">Søk etter abonnementstilbud</string>
+    <string name="in_app_subscription_activity_six_month_title">Mest populær</string>
+    <string name="in_app_subscription_activity_subscription_title">Abonnement</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">Nåværende abonnement</string>
+    <string name="in_app_subscription_activity_subscribe_title">Fortsette</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$s er opptatt</string>
@@ -636,10 +701,10 @@
     <string name="info_item_activity_updated">Endret</string>
 
     <!-- InvitationCallActivity -->
-    <string name="invitation_call_activity_generate_code_message">Denne handlingen ugyldiggjør den gjeldende invitasjonskoden knyttet til denne \"click-to-call\"-koblingen. Bekrefte?</string>
+    <string name="invitation_call_activity_generate_code_message">Denne handlingen ugyldiggjør den gjeldende invitasjonskoden knyttet til denne "click-to-call"-koblingen. Bekrefte?</string>
     <string name="invitation_call_activity_generate_code_title">Generer en ny kode for denne lenken</string>
     <string name="invitation_call_activity_invite_message">Åpne nettadressen %1$s eller skann QR-koden for å ringe «%2$s».</string>
-    <string name="invitation_call_activity_message">Del denne \"click-to-call\"-koden med noen som deretter kan ringe deg, fra nettet eller mobilappen.</string>
+    <string name="invitation_call_activity_message">Del denne "click-to-call"-koden med noen som deretter kan ringe deg, fra nettet eller mobilappen.</string>
     <string name="invitation_call_activity_save_message">Skann denne QR-koden for å ringe «%1$s».</string>
     <string name="invitation_call_activity_share">Publiser</string>
     <string name="invitation_call_activity_title">Ekstern samtale</string>
@@ -654,15 +719,16 @@
     <string name="invitation_code_activity_success_message">Det anbefales på det sterkeste å sertifisere etablerte relasjoner med en minikode for å forsterke sikkerheten deres.</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">Be vennen din nær deg om å skanne QR-koden til \"room\" med twinme, eller trykk på invitasjonskoden for å kopiere den til utklippstavlen.</string>
+    <string name="invitation_room_activity_message">Be kontakten din nær deg om å skanne QR-koden til \\\"room\\\" med Skred, eller trykk på invitasjonskoden for å kopiere den til utklippstavlen.</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">Audio</string>
     <string name="last_calls_activity_video">Video</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">twinme-kontoen din på denne enheten overføres til twinme+.</string>
-    <string name="local_account_migration_activity_message_older_version">Sørg for at du oppdaterer begge enhetene til den nyeste versjonen av appen før du starter overføringen, for å unngå å miste alle relasjoner.</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">Autentiser for å få tilgang til applikasjonen</string>
+    <string name="lock_screen_activity_passcode_not_set">Enhetsautentiseringsinnstillinger er ikke angitt. Gå til systeminnstillingene og still dem til å låse opp applikasjonen.</string>
+    <string name="lock_screen_activity_unlock">Lås opp tilgangen til applikasjonen</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">Legg til kontakt</string>
@@ -672,12 +738,10 @@
     <string name="main_activity_reset_conversation_title">Tilbakestill samtale</string>
     <string name="main_activity_reset_group_conversation_admin_message">Tilbakestilling av denne samtalen vil slette alle meldinger fra hvert gruppemedlems enhet. Bekrefte?</string>
     <string name="main_activity_reset_group_conversation_message">Tilbakestilling av denne samtalen vil fjerne alle meldinger fra enheten din. Bekrefte?</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">Du må oppgradere til twinme+ for å kunne bruke denne funksjonen. Du vil kunne migrere alle kontodataene dine.</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">Du vil kunne migrere alle kontodataene dine.</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme er tilgjengelig som en premium versjon med enda flere funksjoner.</string>
-    <string name="migration_twinme_plus_activity_premium_title">Oppgrader til twinme+</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">Lag et Space</string>
+    <string name="main_activity_skredboard_delete_title">Slett et Space</string>
+    <string name="main_activity_skredboard_message">Skriv inn en code</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">Om</string>
@@ -689,6 +753,8 @@
     <string name="navigation_activity_settings">Innstillinger</string>
     <string name="navigation_activity_sign_out">Logg av</string>
     <string name="navigation_activity_sounds">Lyder</string>
+    <string name="navigation_activity_subscribe">Oppdag Skred+</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; Aktiv</string>
     <string name="navigation_activity_support">Brukerstøtte</string>
     <string name="navigation_activity_title">Meny</string>
 
@@ -701,6 +767,8 @@
     <string name="notification_center_deleted_contact">Kontakt slettet</string>
     <string name="notification_center_file_message">Sendte deg en fil</string>
     <string name="notification_center_file_message_received">Ny fil</string>
+    <string name="notification_center_geolocation_message">Sendte deg en plassering</string>
+    <string name="notification_center_geolocation_message_received">Ny plassering</string>
     <string name="notification_center_group_invitation">Sendte deg en invitasjon</string>
     <string name="notification_center_group_invitation_received">Ny invitasjon</string>
     <string name="notification_center_join_group">Du er medlem av gruppen</string>
@@ -739,6 +807,7 @@
     <string name="notifications_fragment_item_cleanup_message">ryddet opp i noen gamle meldinger.</string>
     <string name="notifications_fragment_item_deleted_contact">Kontakt slettet</string>
     <string name="notifications_fragment_item_file_message">Sendte deg en fil</string>
+    <string name="notifications_fragment_item_geolocation_message">Sendte deg en plassering</string>
     <string name="notifications_fragment_item_group_invitation">Sendte deg en invitasjon</string>
     <string name="notifications_fragment_item_image_message">Sendte deg et bilde</string>
     <string name="notifications_fragment_item_join_group">Du er medlem av gruppen</string>
@@ -783,7 +852,7 @@
     <string name="premium_services_activity_camera_control_description_4">For å administrere et overvåkingskamera</string>
     <string name="premium_services_activity_camera_control_subtitle">Styr kontaktens kamera under en samtale med deres tillatelse</string>
     <string name="premium_services_activity_camera_control_title">Fjernkontroll av kamera</string>
-    <string name="premium_services_activity_click_to_call_description_1">Opprett en \"klikk for å ringe meg\"-kode</string>
+    <string name="premium_services_activity_click_to_call_description_1">Opprett en "klikk for å ringe meg"-kode</string>
     <string name="premium_services_activity_click_to_call_description_2">Publiser eller distribuer på noen måte</string>
     <string name="premium_services_activity_click_to_call_description_3">Mottakere skanner koden og ringer deg</string>
     <string name="premium_services_activity_click_to_call_description_4">Anonym uten spor i skyen</string>
@@ -795,30 +864,18 @@
     <string name="premium_services_activity_conversation_description_4">Kun lokalt, ingen innvirkning på den andre enden</string>
     <string name="premium_services_activity_conversation_subtitle">Eksporter innhold og frigjør plass</string>
     <string name="premium_services_activity_conversation_title">Samtalehåndtering</string>
-    <string name="premium_services_activity_description_part1_subtitle">Direkte tilkobling mellom enheter</string>
-    <string name="premium_services_activity_description_part1_title">HD lyd/video kvalitet</string>
-    <string name="premium_services_activity_description_part2_subtitle">Ingen spor i skyen</string>
-    <string name="premium_services_activity_description_part2_title">Personvern – konfidensialitet</string>
-    <string name="premium_services_activity_description_part3_subtitle">Energieffektivitet</string>
-    <string name="premium_services_activity_description_part3_title">Miljøansvarlig</string>
     <string name="premium_services_activity_group_call_description_1">Høyoppløselig lyd/video</string>
     <string name="premium_services_activity_group_call_description_2">Direkte tilkobling mellom enheter</string>
     <string name="premium_services_activity_group_call_description_3">Trygg og privat</string>
     <string name="premium_services_activity_group_call_description_4">Ingen spor i skyen</string>
     <string name="premium_services_activity_group_call_subtitle">Inviter kontakter til å bli med i en tale-/videogruppesamtale</string>
     <string name="premium_services_activity_group_call_title">Gruppesamtaler</string>
-    <string name="premium_services_activity_privacy_description_1">Lås app med biometrisk eller annen autentisering</string>
-    <string name="premium_services_activity_privacy_description_2">Skjul siste skjerm i appbytter</string>
-    <string name="premium_services_activity_privacy_description_3">Efemere meldinger som forsvinner etter en viss tid</string>
-    <string name="premium_services_activity_privacy_description_4">Hindre en kontakt fra å ringe deg</string>
-    <string name="premium_services_activity_privacy_subtitle">Kontroller app, kontakter og meldinger</string>
-    <string name="premium_services_activity_privacy_title">Mer privatliv</string>
     <string name="premium_services_activity_space_description_1">Flere profiler med tilhørende relasjoner, samtaler, historie</string>
     <string name="premium_services_activity_space_description_2">Personlig tilpasset utseende, varsler og innstillinger</string>
     <string name="premium_services_activity_space_description_3">For familie, venner, kolleger, forretninger, sport, etc.</string>
-    <string name="premium_services_activity_space_description_4">Hemmelige Spaces ikke oppført, åpnet med navn</string>
+    <string name="premium_services_activity_space_description_4">Hemmelige Space ikke oppført, åpnet med navn</string>
     <string name="premium_services_activity_space_subtitle">For hver sosial gruppe du samhandler med</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">Del musikken din live</string>
     <string name="premium_services_activity_streaming_description_2">Hver deltaker kan kontrollere mediespilleren</string>
     <string name="premium_services_activity_streaming_description_3">Samhandle på samtalen samtidig</string>
@@ -847,9 +904,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">Legg til profil</string>
     <string name="profile_fragment_create_profile">Opprett en profil</string>
-    <string name="profile_fragment_default_action">Aktiver</string>
-    <string name="profile_fragment_default_profile_title">Aktiv profil</string>
-    <string name="profile_fragment_identity_title">Profiler</string>
     <string name="profile_fragment_message">Denne profilen lar deg invitere kontaktene dine til å etablere et privat forhold med deg, under din kontroll.</string>
     <string name="profile_fragment_twincode_title">Invitasjonskode</string>
 
@@ -865,7 +919,7 @@
     <string name="proxy_activity_list_information">Bruk en proxy fra listen nedenfor, bare hvis applikasjonen ikke kan koble til tjenesten uten en proxy.</string>
     <string name="proxy_activity_onboarding">Når tilgang til appens signalservere er blokkert i landet ditt, kan proxyer omgå disse blokkeringene under mange omstendigheter og la deg kommunisere privat. I tillegg til proxyene i appen, kan du opprette din egen eller bruke en proxy som er opprettet av noen andre. Proxyer kan ikke få tilgang til innholdet som utveksles under noen omstendigheter.</string>
     <string name="proxy_activity_information">Bruk bare en proxy hvis du ikke kan koble til tjenesten fra standard Wi-Fi- eller mobilnettverk.</string>
-    <string name="proxy_activity_share">Åpne %1$s-lenken med twinme på enheten din for å konfigurere denne proxyen automatisk.</string>
+    <string name="proxy_activity_share">Åpne %1$s-lenken med Skred på enheten din for å konfigurere denne proxyen automatisk.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Vil du bruke URL-en til denne proxyen?</string>
     <string name="proxy_activity_warning">Advarsel! URL-en til denne proxyen tillater deg ikke å koble til appens tjeneste.</string>
@@ -934,11 +988,11 @@
     <string name="settings_activity_ephemeral_title">Forsvinnende beskjed</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Meldingsegenskaper</string>
+    <string name="settings_activity_permissions_title">TILLATELSER</string>
     <string name="settings_activity_reset_default_value">Tilbakestill til standardinnstillinger</string>
     <string name="settings_activity_reset_preferences_button_title">Tilbakestill til standardverdier</string>
     <string name="settings_activity_reset_preferences_message">Tilbakestill varslingsinnstillinger til standardinnstillinger for applikasjoner.</string>
     <string name="settings_activity_reset_preferences_title">Tilbakestill innstillinger</string>
-    <string name="settings_activity_permissions_title">TILLATELSER</string>
     <string name="settings_activity_silent_sound">Taus</string>
     <string name="settings_activity_sound_enabled_title">SOUND NOTIFICATIONS</string>
     <string name="settings_activity_system_notifications_title">Systemvarsler</string>
@@ -964,13 +1018,32 @@
     <string name="settings_room_activity_room_type_forum">Forum</string>
     <string name="settings_room_activity_room_type_forum_information">Deltakerne kan legge ut meldinger sett av alle</string>
 
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">Tillat varsler</string>
+    <string name="settings_space_activity_allow_notifications_message">Varsler vises bare når dette Space er aktivt for øyeblikket.</string>
+    <string name="settings_space_activity_default_message">Standard Space er Space som vises ved start av applikasjonen.</string>
+    <string name="settings_space_activity_default_value_message">Disse verdiene overstyrer de som er angitt i programmets standardinnstillinger.</string>
+    <string name="settings_space_activity_default_value_title">Endre standardinnstillinger</string>
+    <string name="settings_space_activity_header_message">Verdiene til disse parameterne overstyrer, for dette Space, standard verdiene som er definert på applikasjonsnivå.</string>
+    <string name="settings_space_activity_permission_create_contact">Opprett kontakt</string>
+    <string name="settings_space_activity_permission_create_group">Lag gruppe</string>
+    <string name="settings_space_activity_permission_move_contact">Flytt kontakt</string>
+    <string name="settings_space_activity_permission_move_group">Flytt gruppe</string>
+    <string name="settings_space_activity_permission_share_space_card">Del Space invitasjonskode</string>
+    <string name="settings_space_activity_permission_update_identity">Oppdater profil</string>
+    <string name="settings_space_activity_permissions_title">Tillatelser</string>
+    <string name="settings_space_activity_reset_application_value">Tilbakestill til programmets standardinnstillinger</string>
+    <string name="settings_space_activity_secret_message">En hemmelig Space vises ikke på listen over Space. Det er bare tilgang til det ved å skrive det eksakte navnet i søkefeltet. Navnet kan ikke hentes, så ikke glem det!</string>
+    <string name="settings_space_activity_secret_title">Hemmelig Space</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
+
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">Kontakter</string>
     <string name="share_activity_group_list">Grupper</string>
     <string name="share_activity_title">Dele</string>
 
     <!-- ShowCallActivity -->
-    <string name="show_call_activity_code">\"Click-to-call\"-kode</string>
+    <string name="show_call_activity_code">"Click-to-call"-kode</string>
     <string name="show_call_activity_information_code">Del denne koden for å motta eksterne anrop.</string>
     <string name="show_call_activity_schedule_call">Planlagt samtale</string>
     <string name="show_call_activity_schedule_from">fra %1$s</string>
@@ -995,6 +1068,7 @@
     <string name="show_contact_activity_pending_message">Denne relasjonen er under etablering. Vennligst vent.</string>
     <string name="show_contact_activity_revoked">Slettet</string>
     <string name="show_contact_activity_settings_coach_mark">Definer hva kontakten din har lov til å gjøre i denne relasjonen med deg.</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">Video</string>
 
     <!-- ShowGroupActivity -->
@@ -1013,6 +1087,14 @@
     <string name="show_room_activity_invite_participants">Inviter deltakerne</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">Management</string>
+    <string name="show_space_fragment_move_message">Du må ha flere Spaces for å flytte kontakter.</string>
+    <string name="show_space_fragment_secret_confirm">Bekreft \"Hemmelig\"-modus</string>
+    <string name="show_space_fragment_secret_disabled_message">Dette unike Space kan ikke defineres som \"hemmelig\". Du må opprette minst ett annet \"Space\".</string>
+    <string name="show_space_fragment_secret_message">Hemmelige Spaces vises ikke i listen over Spaces og kan bare åpnes ved å skrive navnet deres i søkefeltet. Glem aldri det navnet!</string>
+    <string name="show_space_fragment_secret_message_confirm">Vil du fortsatt gjøre det Space til \"Secret\"?</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">Bilde</string>
     <string name="space_appearance_activity_background_message">Tilpass samtalebakgrunnen med en farge eller et bilde.</string>
@@ -1026,7 +1108,7 @@
     <string name="space_appearance_activity_container_text_peer_message">Tekst i mottatt melding</string>
     <string name="space_appearance_activity_container_title">Bobler</string>
     <string name="space_appearance_activity_default_value">Standardverdi</string>
-    <string name="space_appearance_activity_general_title">Generell</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">Standardfarger</string>
     <string name="space_appearance_activity_menu_enter_color">Fargekode</string>
     <string name="space_appearance_activity_opacity">Ugjennomsiktighet</string>
@@ -1036,7 +1118,18 @@
     <string name="space_appearance_activity_theme">Tema</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">Aktiv Space</string>
+    <string name="spaces_activity_add_space">Legg til et Space</string>
+    <string name="spaces_activity_create_new_space">Lag et Space</string>
+    <string name="spaces_activity_current_space_action">Aktiver</string>
+    <string name="spaces_activity_delete_default_message">Du kan ikke slette standardområdet.</string>
+    <string name="spaces_activity_join_space">Importer et Space</string>
     <string name="spaces_activity_message">Et Space er der de forskjellige personlighetene dine møter dine sosiale sirkler, inkludert de mest hemmelige.</string>
+    <string name="spaces_activity_move_contact_already_in_space">Kontakt er allerede i denne Space.</string>
+    <string name="spaces_activity_move_group_already_in_space">Gruppen er allerede i denne Space.</string>
+    <string name="spaces_activity_move_group_no_profile">For å flytte en gruppe til et Space, må du fullføre profilen som representerer deg for denne gruppen. Vil du fullføre det?</string>
+    <string name="spaces_activity_move_message">Er du sikker på at du vil flytte gruppen?</string>
+    <string name="spaces_activity_permission_not_allowed">Du har ikke lov til å utføre denne handlingen av Space -administratoren.</string>
     <string name="spaces_activity_sample_business">Business</string>
     <string name="spaces_activity_sample_business_name">Dr. John Doe</string>
     <string name="spaces_activity_sample_family">Familie</string>
@@ -1074,11 +1167,11 @@
     <string name="template_space_activity_template_title">Maler</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">Be vennen din nær deg om å skanne QR-koden for invitasjonen din med twinme, eller trykk på invitasjonskoden for å kopiere den til utklippstavlen.</string>
+    <string name="twincode_activity_message">Be kontakten din nær deg om å skanne QR-koden for invitasjonen din med Skred, eller trykk på invitasjonskoden for å kopiere den til utklippstavlen.</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">Er du sikker på at du vil slette denne \"Call Transfer\"-koden?</string>
-    <string name="transfert_call_activity_delete_message">Denne koblingen for samtaleoverføring vil bli slettet. Bekrefte?</string>
+    <string name="transfert_call_activity_delete_message">Denne \"Call Transfer\"-koblingen vil ikke lenger være brukbar.</string>
     <string name="transfert_call_activity_gallery_message">Skann denne QR-koden for å overføre mobilsamtalene dine.</string>
     <string name="transfert_call_activity_message">Videresend denne koden og bokmerk URL-adressen i nettleseren du vil overføre mobilsamtalene dine til.</string>
     <string name="transfert_call_activity_reset_message">Denne handlingen ugyldiggjør gjeldende samtaleoverføringskode og oppretter en ny. Bekrefte?</string>
@@ -1108,13 +1201,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">Ved å trykke på %1$s, bekrefter jeg at jeg har lest og godtatt:</string>
-    <string name="welcome_activity_next">Neste</string>
+    <string name="welcome_activity_enter">Neste</string>
     <string name="welcome_activity_pass">Skip</string>
     <string name="welcome_activity_privacy_policy">Personvernregler</string>
     <string name="welcome_activity_start">Start</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">Meldinger og høyoppløselige tale-/videosamtaler, som beskytter personvernet ved design.</string>
     <string name="welcome_activity_step2_message">Sikker "peer-to-peer"-kommunikasjon: ingen spor i skyen.</string>
     <string name="welcome_activity_step3_message">Ingen telefonnummer, ingen adressebok, ingen bruker-ID: du velger hvordan du vil bli identifisert basert på hvem du kommuniserer med.</string>
     <string name="welcome_activity_terms_of_use">Vilkår for bruk</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

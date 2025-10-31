@@ -216,23 +216,31 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
         final float[] cornerRadii = getCornerRadii();
 
         mGradientDrawable.setCornerRadii(cornerRadii);
+
         final PeerMessageItem peerMessageItem = (PeerMessageItem) item;
         int countEmoji = countEmoji(peerMessageItem.getContent());
         if (countEmoji == 0) {
             mTextView.setTypeface(getMessageFont().typeface);
             mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getMessageFont().size);
-            mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+            mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+            if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+                mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+            }
             mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
         } else {
             mTextView.setTypeface(Design.getEmojiFont(countEmoji).typeface);
             mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.getEmojiFont(countEmoji).size);
+
             if (peerMessageItem.getReplyToDescriptor() == null) {
                 mGradientDrawable.setColor(Color.TRANSPARENT);
                 mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
                 mTextView.setPadding(0, 0, 0, 0);
             } else {
                 mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
-                mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+                mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+                if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+                    mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+                }
             }
         }
 
@@ -278,8 +286,9 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
         } catch (Exception ex) {
             // Possible exception: android.webkit.WebViewFactory.MissingWebViewPackageException when there is no WebView implementation.
         }
-
-        mTextView.setLinkTextColor(Design.FONT_COLOR_DEFAULT);
+        
+        mTextView.setLinkTextColor(Color.BLACK);
+        mTextView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mReplyGradientDrawable.setCornerRadii(cornerRadii);
         mReplyToImageContentGradientDrawable.setCornerRadii(cornerRadii);

@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.spaces;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -34,6 +35,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractOnboardingActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.utils.DotsAdapter;
 
 public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
@@ -49,6 +51,7 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
 
     private OnboardingSpaceAdapter mOnboardingSpaceAdapter;
 
+    private boolean mShowCreateSpace = true;
     private boolean mShowFirstPart = true;
     private boolean mFromSideMenu = true;
 
@@ -58,6 +61,8 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
             Log.d(LOG_TAG, "onCreate: savedInstanceState=" + savedInstanceState);
         }
 
+        Intent intent = getIntent();
+        mShowCreateSpace = intent.getBooleanExtra(Intents.INTENT_SHOW_CREATE_SPACE, true);
         mFromSideMenu = getIntent().getBooleanExtra(Intents.INTENT_FROM_SIDE_MENU, false);
         mShowFirstPart = getIntent().getBooleanExtra(Intents.INTENT_SHOW_FIRST_PART_ONBOARDING, true);
 
@@ -70,6 +75,11 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
         }
 
         return mFromSideMenu;
+    }
+
+    public boolean showCreateSpace() {
+
+        return mShowCreateSpace;
     }
 
     //
@@ -263,6 +273,20 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
             Log.d(LOG_TAG, "onDoNotShowAgainClick");
         }
 
+        getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.SPACE, false);
+        startTemplate();
+    }
+
+    private void startTemplate() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startTemplate");
+        }
+
+        Intent intent = new Intent();
+        intent.setClass(this, TemplateSpaceActivity.class);
+        startActivity(intent);
+
+        finish();
     }
 
     public void onCreateSpaceClick() {
@@ -273,7 +297,7 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
         if (mFromSideMenu) {
             animationClose();
         } else {
-            finish();
+            startTemplate();
         }
     }
 

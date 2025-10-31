@@ -96,14 +96,15 @@
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
             <LinearLayout
+                android:id="@+id/base_item_activity_file_information_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/base_item_activity_file_item_image_background"
                 android:layout_toRightOf="@id/base_item_activity_file_item_image_background"
                 android:orientation="vertical"
-                app:layout_marginEndPercent="8.8%"
-                app:layout_marginStartPercent="8.8%">
+                app:layout_marginEndPercent="4.2%"
+                app:layout_marginStartPercent="4.2%">
 
                 <TextView
                     android:id="@+id/base_item_activity_file_name_view"
@@ -120,6 +121,22 @@
                     android:maxLines="1"
                     android:textColor="@android:color/white" />
             </LinearLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_file_item_ephemeral_content_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:layout_marginEndPercent="4.2%">
+
+                <org.twinlife.twinme.utils.EphemeralView
+                    android:id="@+id/base_item_activity_file_item_ephemeral_view"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView

@@ -24,7 +24,6 @@ public class UIPremiumFeature {
         CLICK_TO_CALL,
         CONVERSATION,
         GROUP_CALL,
-        PRIVACY,
         SPACES,
         STREAMING,
         TRANSFER_CALL,
@@ -60,6 +59,11 @@ public class UIPremiumFeature {
     public int getImageId() {
 
         return mImageId;
+    }
+
+    public FeatureType getFeatureType() {
+
+        return mFeatureType;
     }
 
     public List<UIPremiumFeatureDetail> getFeatureDetails() {
@@ -105,16 +109,6 @@ public class UIPremiumFeature {
                 mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_group_call_description_2), darkMode ? R.drawable.premium_group_call_dark_icon_2 : R.drawable.premium_group_call_icon_2));
                 mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_group_call_description_3), darkMode ? R.drawable.premium_group_call_dark_icon_3 : R.drawable.premium_group_call_icon_3));
                 mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_group_call_description_4), darkMode ? R.drawable.premium_privacy_dark_icon_1 : R.drawable.premium_privacy_icon_1));
-                break;
-
-            case PRIVACY:
-                mTitle = context.getString(R.string.premium_services_activity_privacy_title);
-                mSubTitle = context.getString(R.string.premium_services_activity_privacy_subtitle);
-                mImageId = darkMode ? R.drawable.premium_feature_privacy_dark : R.drawable.premium_feature_privacy;
-                mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_privacy_description_1), darkMode ? R.drawable.premium_privacy_dark_icon_1 : R.drawable.premium_privacy_icon_1));
-                mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_privacy_description_2), darkMode ? R.drawable.premium_privacy_dark_icon_2 : R.drawable.premium_privacy_icon_2));
-                mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_privacy_description_3), darkMode ? R.drawable.premium_privacy_dark_icon_3 : R.drawable.premium_privacy_icon_3));
-                mFeatureDetails.add(new UIPremiumFeatureDetail(context.getString(R.string.premium_services_activity_privacy_description_4), darkMode ? R.drawable.premium_privacy_dark_icon_4 : R.drawable.premium_privacy_icon_4));
                 break;
 
             case SPACES:

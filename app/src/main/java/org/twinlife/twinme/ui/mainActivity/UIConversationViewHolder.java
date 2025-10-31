@@ -73,7 +73,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         view.setBackgroundColor(Design.WHITE_COLOR);
 
         mNoAvatarView = view.findViewById(R.id.conversations_fragment_conversation_item_no_avatar_view);
-        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        mNoAvatarView.setColor(Color.parseColor(Design.DEFAULT_COLOR));
 
         mAvatarContainerView = view.findViewById(R.id.conversations_fragment_conversation_item_avatar_container_view);
 
@@ -158,6 +158,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
     void onBind(@NonNull Context context, @NonNull UIConversation uiConversation, boolean hideSeparator) {
 
         mNoAvatarView.setVisibility(View.GONE);
+        mAvatarView.setColorFilter(Color.TRANSPARENT);
         mTagView.setVisibility(View.GONE);
         mInformationView.setVisibility(View.VISIBLE);
         mDateView.setVisibility(View.VISIBLE);
@@ -176,6 +177,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
                 mAvatarView.setVisibility(View.VISIBLE);
 
                 if (subject.getAvatarId() == null) {
+                    mAvatarView.setColorFilter(Color.WHITE);
                     mNoAvatarView.setVisibility(View.VISIBLE);
                 }
                 mMemberOneAvatarView.setVisibility(View.GONE);

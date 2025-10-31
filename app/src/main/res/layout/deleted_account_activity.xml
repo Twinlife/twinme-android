@@ -3,31 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_background" />
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:layout_marginTopPercent="20.69%"
-        app:layout_widthPercent="48.27%"
-        app:layout_heightPercent="13.50%">
+        app:layout_marginTopPercent="28.71%"
+        app:layout_widthPercent="52%"
+        app:layout_heightPercent="42.58%">
 
         <ImageView
-            android:id="@+id/splashscreen_activity_logo_view"
-            android:layout_width="wrap_content"
+            android:id="@+id/deleted_account_activity_logo_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/splash_screen_logo"
-            app:layout_widthPercent="32.59%"
-            app:layout_heightPercent="46.11%" />
+            android:src="@drawable/logo_white"
+            app:layout_heightPercent="70.56%" />
 
         <ImageView
-            android:id="@+id/splashscreen_activity_twinme_view"
+            android:id="@+id/deleted_account_activity_twinme_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/splash_screen_twinme"
-            app:layout_heightPercent="44.44%" />
+            android:src="@drawable/splashscreen_text"
+            app:layout_heightPercent="35.91%" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -36,9 +41,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
         android:textColorHighlight="#00FFFFFF"
-        app:layout_marginTopPercent="57.74%"
+        app:layout_marginBottomPercent="7.49%"
         app:layout_widthPercent="81.07%" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

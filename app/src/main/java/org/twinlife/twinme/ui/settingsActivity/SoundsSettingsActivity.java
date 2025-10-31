@@ -149,6 +149,13 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
     }
 
     @Override
+    public void onSettingClick(Settings.IntConfig intConfig) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSettingClick: intConfig= " + intConfig);
+        }
+    }
+
+    @Override
     public void onRingToneClick(@NonNull UISetting<String> setting) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onRingToneClick: setting=" + setting);
@@ -218,6 +225,13 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
 
         if (mUIPostInitialized) {
             mSoundsSettingsAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSettingChangeValue: booleanConfig=" + booleanConfig + " value=" + value);
         }
     }
 

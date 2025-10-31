@@ -8,7 +8,12 @@
 
 package org.twinlife.twinme.ui.mainActivity;
 
+import android.content.res.Resources;
 import android.database.DataSetObserver;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +21,13 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import org.twinlife.device.android.twinme.BuildConfig;
+import androidx.core.view.ViewCompat;
+
+import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.ui.profiles.UIProfile;
+import org.twinlife.twinme.ui.spaces.UISpace;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.Utils;
@@ -38,13 +45,17 @@ public class SideMenuListAdapter implements ListAdapter {
     private static final float DESIGN_TOOLBAR_AVATAR_HEIGHT = 32;
     public static final int NUMBER_TAP_HIDDEN_MODE = 8;
 
+    public static final int DESIGN_SUBSCRIBE_BACKGROUND_COLOR = Color.rgb(186, 241, 215);
+    public static final int DESIGN_SUBSCRIBE_COLOR = Color.rgb(10, 169, 141);
+
     final MainActivity mActivity;
     final List<MenuItem> mMenuItems = new ArrayList<>();
     private final OnMenuClickListener mOnMenuClickListener;
 
     private boolean mHiddenMode = true;
+    private boolean mIsFeatureSubscribed = false;
 
-    private UIProfile mUIProfile;
+    private UISpace mUISpace;
 
     private static final MenuItem[] sMenuItems = {
             new MenuItem(MenuItem.MenuItemLevel.LEVEL0, R.string.application_profile, MenuItem.MenuItemAction.PROFILE),
@@ -56,10 +67,10 @@ public class SideMenuListAdapter implements ListAdapter {
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.premium_services_activity_transfert_title, MenuItem.MenuItemAction.TRANSFER_CALL),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.settings_advanced_activity_title, MenuItem.MenuItemAction.SETTINGS_ADVANCED),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_activity_support, MenuItem.MenuItemAction.NO_ACTION),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_subscribe, MenuItem.MenuItemAction.SUBSCRIBE),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_help, MenuItem.MenuItemAction.HELP),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_about_twinme, MenuItem.MenuItemAction.ABOUT_TWINME),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_activity_title, MenuItem.MenuItemAction.ACCOUNT),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.migration_twinme_plus_activity_premium_title, MenuItem.MenuItemAction.UPGRADE),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_activity_sign_out, MenuItem.MenuItemAction.NO_ACTION),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_sign_out, MenuItem.MenuItemAction.SIGN_OUT)
     };
@@ -73,17 +84,7 @@ public class SideMenuListAdapter implements ListAdapter {
 
         mActivity = activity;
         mOnMenuClickListener = onMenuClickListener;
-
-
-        if (!BuildConfig.DISPLAY_PREMIUM_FEATURE) {
-            for (MenuItem menuItem : sMenuItems) {
-                if (menuItem.getAction() != MenuItem.MenuItemAction.PRIVACY && menuItem.getAction() != MenuItem.MenuItemAction.UPGRADE) {
-                    mMenuItems.add(menuItem);
-                }
-            }
-        } else {
-            mMenuItems.addAll(Arrays.asList(sMenuItems));
-        }
+        mMenuItems.addAll(Arrays.asList(sMenuItems));
     }
 
     public void setHiddenMode(boolean hiddenMode) {
@@ -166,17 +167,21 @@ public class SideMenuListAdapter implements ListAdapter {
             nameView.setTextColor(Design.FONT_COLOR_DEFAULT);
             nameView.setOnClickListener(v -> mActivity.showProfile());
 
-            if (mUIProfile != null) {
-                avatarView.setImage(convertView.getContext(), null, new CircularImageDescriptor(mUIProfile.getAvatar(), 0.5f, 0.5f, 0.5f));
-                nameView.setText(mUIProfile.getName());
+            if (mUISpace != null && mUISpace.getSpace().getProfile() != null) {
+                Bitmap avatar = mUISpace.getAvatar();
+                avatarView.setImage(mActivity, null, new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
+                nameView.setText(mUISpace.getNameProfile());
             } else {
-                avatarView.setImage(convertView.getContext(), null, new CircularImageDescriptor(mActivity.getTwinmeApplication().getAnonymousAvatar(), 0.5f, 0.5f, 0.5f));
-                nameView.setText(mActivity.getString(R.string.profile_fragment_add_profile));
+                Bitmap avatar = mActivity.getTwinmeApplication().getAnonymousAvatar();
+                avatarView.setImage(mActivity, null, new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
+                nameView.setText(mActivity.getResources().getString(R.string.profile_fragment_add_profile));
             }
         } else {
             TextView textView = null;
             ImageView imageView;
             RoundedView roundedView;
+            TextView subscribeView;
+            mIsFeatureSubscribed = mActivity.isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL);
             switch (menuItem.getLevel()) {
                 case LEVEL1:
                     convertView.setBackgroundColor(Design.WHITE_COLOR);
@@ -192,7 +197,6 @@ public class SideMenuListAdapter implements ListAdapter {
                 case LEVEL2:
                     convertView.setBackgroundColor(Design.WHITE_COLOR);
                     layoutParams.height = (int) (DESIGN_LAYER2_HEIGHT * Design.HEIGHT_RATIO);
-
                     textView = convertView.findViewById(R.id.navigation_activity_child_level2);
                     Design.updateTextFont(textView, Design.FONT_REGULAR32);
                     textView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -203,6 +207,19 @@ public class SideMenuListAdapter implements ListAdapter {
                     roundedView = convertView.findViewById(R.id.navigation_activity_child_notification_rounded_view);
                     roundedView.setColor(Design.DELETE_COLOR_RED);
 
+                    subscribeView = convertView.findViewById(R.id.navigation_activity_child_subscribe_view);
+                    subscribeView.setTypeface(Design.FONT_MEDIUM32.typeface);
+                    subscribeView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
+                    subscribeView.setTextColor(DESIGN_SUBSCRIBE_COLOR);
+                    subscribeView.setText(mActivity.getString(R.string.navigation_activity_subscribe_enable));
+
+                    float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+                    float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+                    ShapeDrawable subscribeViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+                    subscribeViewBackground.getPaint().setColor(DESIGN_SUBSCRIBE_BACKGROUND_COLOR);
+                    ViewCompat.setBackground(subscribeView, subscribeViewBackground);
+
                     ViewGroup.LayoutParams roundedViewLayoutParams = roundedView.getLayoutParams();
                     roundedViewLayoutParams.height = (int) (Design.HEIGHT_RATIO * DESIGN_NOTIFICATION_HEIGHT);
 
@@ -212,12 +229,28 @@ public class SideMenuListAdapter implements ListAdapter {
                         roundedView.setVisibility(View.GONE);
                     }
 
+                    if (menuItem.getAction() == MenuItem.MenuItemAction.SUBSCRIBE && mIsFeatureSubscribed) {
+                        subscribeView.setVisibility(View.VISIBLE);
+                    } else {
+                        subscribeView.setVisibility(View.GONE);
+                    }
+
                     break;
             }
             convertView.setLayoutParams(layoutParams);
             convertView.setOnClickListener(view -> mOnMenuClickListener.onMenuClick(menuItem));
             if (textView != null) {
-                textView.setText(Utils.capitalizeString(convertView.getResources().getString(menuItem.getText())));
+
+                if (menuItem.getAction() == MenuItem.MenuItemAction.SUBSCRIBE) {
+                    if (mIsFeatureSubscribed) {
+                        textView.setText(convertView.getResources().getString(R.string.in_app_subscription_activity_title));
+                    } else {
+                        textView.setText(convertView.getResources().getString(R.string.navigation_activity_subscribe));
+                    }
+                } else {
+                    textView.setText(Utils.capitalizeString(convertView.getResources().getString(menuItem.getText())));
+                }
+
                 textView.setVisibility(View.VISIBLE);
             }
         }
@@ -266,9 +299,14 @@ public class SideMenuListAdapter implements ListAdapter {
         return true;
     }
 
-    public void setUIProfile(UIProfile uiProfile) {
+    public void setUISpace(UISpace uiSpace) {
 
-        mUIProfile = uiProfile;
+        mUISpace = uiSpace;
+    }
+
+    public boolean isFeatureSubscribed() {
+
+        return mIsFeatureSubscribed;
     }
 
     private int getActionBarHeight() {

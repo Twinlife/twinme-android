@@ -21,7 +21,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 app:layout_aspectRatio="156.25%"
-                android:src="@drawable/twinme_plus_logo" />
+                android:src="@drawable/logo" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <TextView
@@ -43,6 +43,7 @@
             android:scaleType="fitCenter"
             android:layout_below="@+id/premium_services_activity_item_title_view"
             app:layout_marginTopPercent="2.25%" />
+        <!-- SCz: must fix android:src="@drawable/premium_services" -->
 
         <TextView
             android:id="@+id/premium_services_activity_item_subtitle_view"

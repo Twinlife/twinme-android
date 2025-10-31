@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/menu_select_color_image_cancel_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_send_option"
+        app:layout_marginBottomPercent="1.65%"
+        app:layout_heightPercent="8.39%"
+        app:layout_widthPercent="94.67%">
+
+        <TextView
+            android:id="@+id/menu_select_color_image_cancel_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:lines="1"
+            android:text="@string/application_cancel"
+            app:layout_widthPercent="94.67%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/menu_select_color_image_action_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/menu_select_color_image_cancel_view"
+        android:background="@drawable/menu_send_option"
+        app:layout_marginBottomPercent="1.05%"
+        app:layout_heightPercent="43.47%"
+        app:layout_widthPercent="94.67%">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_image_header_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_heightPercent="24.13%">
+
+            <TextView
+                android:id="@+id/menu_select_color_image_header_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:lines="1"
+                app:layout_widthPercent="94.67%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:layout_below="@+id/menu_select_color_image_header_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/menu_separator_color" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_image_choose_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/menu_select_color_image_header_view"
+            app:layout_heightPercent="34.48%">
+
+            <TextView
+                android:id="@+id/menu_select_color_image_choose_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@string/space_appearance_activity_menu_choose_color"
+                app:layout_widthPercent="94.67%"
+                app:layout_marginTopPercent="10%" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menu_select_color_image_list_view"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/menu_select_color_image_choose_text_view"
+                app:layout_marginStartPercent="2.67%"
+                app:layout_marginTopPercent="5.32%"
+                app:layout_heightPercent="40%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:layout_below="@+id/menu_select_color_image_choose_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/menu_separator_color" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_image_custom_color_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_heightPercent="20.69%"
+            android:layout_below="@+id/menu_select_color_image_choose_view">
+
+            <TextView
+                android:id="@+id/menu_select_color_image_custom_color_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:lines="1"
+                android:text="@string/space_appearance_activity_menu_enter_color"
+                app:layout_widthPercent="94.67%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:layout_below="@+id/menu_select_color_image_custom_color_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/menu_separator_color" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/menu_select_color_image_custom_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_heightPercent="20.69%"
+            android:layout_below="@+id/menu_select_color_image_custom_color_view">
+
+            <TextView
+                android:id="@+id/menu_select_color_image_custom_image_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:lines="1"
+                android:text="@string/space_appearance_activity_background_image_title"
+                app:layout_widthPercent="94.67%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

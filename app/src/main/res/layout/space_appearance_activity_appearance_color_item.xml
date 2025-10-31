@@ -2,8 +2,7 @@
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:background="?attr/white_color">
+    android:layout_height="120dp">
 
     <TextView
         android:id="@+id/space_appearance_activity_appearance_color_item_color_name_view"

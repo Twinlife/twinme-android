@@ -8,6 +8,7 @@
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
  *   Yannis Le Gal (Yannis.LeGal@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.baseItemActivity;
@@ -122,10 +123,9 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         mAudioItemContainer.setBackground(mGradientDrawable);
-        mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
 
         RoundedView controlRoundedView = view.findViewById(R.id.base_item_activity_peer_audio_control_rounded_view);
-        controlRoundedView.setColor(Color.WHITE);
+        controlRoundedView.setColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         mPlayButton = view.findViewById(R.id.base_item_activity_peer_audio_item_play);
 
@@ -139,6 +139,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
 
         mCounter = view.findViewById(R.id.base_item_activity_peer_audio_item_counter);
         Design.updateTextFont(mCounter, Design.FONT_MEDIUM26);
+        mCounter.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mAudioTrackView = view.findViewById(R.id.base_item_activity_peer_audio_item_track_view);
 
@@ -289,6 +290,10 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         final float[] cornerRadii = getCornerRadii();
 
         mGradientDrawable.setCornerRadii(cornerRadii);
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+        }
 
         if (mAudioLoader == null) {
             mAudioLoader = new AudioTrackLoader<>(item, audioItem.getAudioDescriptor(), getAudioTrackNbLines());

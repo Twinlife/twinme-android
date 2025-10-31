@@ -80,7 +80,7 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
         mAvatarView = view.findViewById(R.id.notifications_fragment_notification_item_avatar_view);
 
         mNoAvatarView = view.findViewById(R.id.notifications_fragment_notification_item_no_avatar_view);
-        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        mNoAvatarView.setColor(Color.parseColor(Design.DEFAULT_COLOR));
 
         mTitleView = view.findViewById(R.id.notifications_fragment_notification_item_title_view);
         Design.updateTextFont(mTitleView, Design.FONT_MEDIUM34);
@@ -148,8 +148,10 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
 
             if (avatar.equals(mNotificationActivity.getTwinmeApplication().getDefaultGroupAvatar())) {
                 mNoAvatarView.setVisibility(View.VISIBLE);
+                mAvatarView.setColorFilter(Color.WHITE);
             } else {
                 mNoAvatarView.setVisibility(View.GONE);
+                mAvatarView.setColorFilter(Color.TRANSPARENT);
             }
 
             mAvatarView.setImage(context, null, new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));

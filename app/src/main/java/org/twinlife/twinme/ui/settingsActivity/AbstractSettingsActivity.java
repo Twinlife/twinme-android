@@ -14,6 +14,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.ui.Settings;
 
 public abstract class AbstractSettingsActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "AbstractSettingsActi..";
@@ -21,7 +22,11 @@ public abstract class AbstractSettingsActivity extends AbstractTwinmeActivity {
 
     public abstract void onSettingClick(UISetting<?> setting);
 
+    public abstract void onSettingClick(Settings.IntConfig intConfig);
+
     public abstract void onRingToneClick(UISetting<String> setting);
+
+    public abstract void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value);
 
     public void onSettingChangeValue(@NonNull UISetting<Boolean> setting, boolean value) {
         if (DEBUG) {

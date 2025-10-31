@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/step_onboarding"
+        android:title="1/2"
+        android:enabled="false"
+        app:actionLayout="@layout/toolbar_textview_item"
+        app:showAsAction="always" />
+</menu>

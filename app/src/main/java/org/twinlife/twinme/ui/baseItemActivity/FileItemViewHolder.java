@@ -12,8 +12,10 @@
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -32,13 +34,20 @@ import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
 import org.twinlife.twinlife.ConversationService.VideoDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
+import org.twinlife.twinme.utils.EphemeralView;
 import org.twinlife.twinme.utils.RoundedImageView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 class FileItemViewHolder extends ItemViewHolder {
+
+    private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
+    private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_TOP_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_BOTTOM_MARGIN = 4f;
 
     private final View mFileItemContainer;
     private final GradientDrawable mGradientDrawable;
@@ -52,6 +61,9 @@ class FileItemViewHolder extends ItemViewHolder {
     private final GradientDrawable mReplyGradientDrawable;
     private final GradientDrawable mReplyToImageContentGradientDrawable;
     private final DeleteProgressView mDeleteView;
+    private final EphemeralView mEphemeralView;
+
+    private CountDownTimer mTimer;
 
     private String mFilePath;
 
@@ -78,9 +90,11 @@ class FileItemViewHolder extends ItemViewHolder {
 
         mFilenameView = view.findViewById(R.id.base_item_activity_file_name_view);
         Design.updateTextFont(mFilenameView, Design.FONT_REGULAR32);
+        mFilenameView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mFileSizeView = view.findViewById(R.id.base_item_activity_file_size_view);
         Design.updateTextFont(mFileSizeView, Design.FONT_REGULAR28);
+        mFileSizeView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mIconView = view.findViewById(R.id.base_item_activity_file_item_image_view);
 
@@ -157,6 +171,18 @@ class FileItemViewHolder extends ItemViewHolder {
                 return true;
             });
         }
+
+        mEphemeralView = view.findViewById(R.id.base_item_activity_file_item_ephemeral_view);
+        mEphemeralView.setColor(Color.WHITE);
+
+        layoutParams = mEphemeralView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_EPHEMERAL_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
     }
 
     @Override
@@ -171,6 +197,10 @@ class FileItemViewHolder extends ItemViewHolder {
         final float[] cornerRadii = getCornerRadii();
 
         mGradientDrawable.setCornerRadii(cornerRadii);
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+        }
 
         final FileItem fileItem = (FileItem) item;
         NamedFileDescriptor namedFileDescriptor = fileItem.getNamedFileDescriptor();
@@ -229,6 +259,14 @@ class FileItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
                     break;
 
+                case GEOLOCATION_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_file_item_reply_text);
+
+                    mReplyTextView.setText(getBaseItemActivity().getResources().getString(R.string.application_location));
+                    break;
+
                 case NAMED_FILE_DESCRIPTOR:
                     mReplyView.setVisibility(View.VISIBLE);
                     mReplyTextView.setVisibility(View.VISIBLE);
@@ -239,6 +277,32 @@ class FileItemViewHolder extends ItemViewHolder {
                     break;
             }
         }
+
+        if (item.isEphemeralItem()) {
+            mEphemeralView.setVisibility(View.VISIBLE);
+            startEphemeralAnimation();
+        } else {
+            mEphemeralView.setVisibility(View.GONE);
+        }
+
+        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
+        overlayLayoutParams.width = getContainer().getWidth();
+
+        if (getBaseItemActivity().isMenuOpen()) {
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getContainer().getLayoutParams();
+            overlayLayoutParams.height = getContainer().getHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
+            getOverlayView().setVisibility(View.VISIBLE);
+            if (getBaseItemActivity().isSelectedItem(getItem().getDescriptorId())) {
+                itemView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
+                getOverlayView().setVisibility(View.INVISIBLE);
+            }
+        } else {
+            overlayLayoutParams.height = OVERLAY_DEFAULT_HEIGHT;
+            getOverlayView().setVisibility(View.INVISIBLE);
+            itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
+
+        getOverlayView().setLayoutParams(overlayLayoutParams);
     }
 
     @Override
@@ -277,6 +341,10 @@ class FileItemViewHolder extends ItemViewHolder {
         mDeleteView.setVisibility(View.GONE);
         mDeleteView.setOnDeleteProgressListener(null);
         setDeleteAnimationStarted(false);
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 
     @Override
@@ -297,5 +365,33 @@ class FileItemViewHolder extends ItemViewHolder {
     private FileItem getFileItem() {
 
         return (FileItem) getItem();
+    }
+
+    private void startEphemeralAnimation() {
+
+        if (mTimer == null && getItem().getState() == Item.ItemState.READ) {
+            mTimer = new CountDownTimer(getItem().getExpireTimeout(), 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    Date now = new Date();
+                    float timeSinceRead = (now.getTime() - getItem().getReadTimestamp());
+                    float percent = (float) (1.0 - (timeSinceRead / getItem().getExpireTimeout()));
+                    if (percent < 0) {
+                        percent = 0;
+                    } else if (percent > 1) {
+                        percent = 1;
+                    }
+                    mEphemeralView.updateWithProgress(percent);
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            };
+            mTimer.start();
+        } else {
+            mEphemeralView.updateWithProgress(1);
+        }
     }
 }

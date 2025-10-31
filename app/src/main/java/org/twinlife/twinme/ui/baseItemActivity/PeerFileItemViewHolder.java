@@ -88,16 +88,15 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         mFileItemContainer.setBackground(mGradientDrawable);
-        mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
         mFileItemContainer.setClickable(false);
 
         mFilenameView = view.findViewById(R.id.base_item_activity_peer_file_name_view);
         Design.updateTextFont(mFilenameView, Design.FONT_REGULAR32);
-        mFilenameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mFilenameView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mFileSizeView = view.findViewById(R.id.base_item_activity_peer_file_size_view);
         Design.updateTextFont(mFileSizeView, Design.FONT_REGULAR28);
-        mFileSizeView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mFileSizeView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mIconView = view.findViewById(R.id.base_item_activity_peer_file_item_image_view);
 
@@ -217,7 +216,12 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
 
         // Compute the corner radii only once!
         final float[] cornerRadii = getCornerRadii();
+
         mGradientDrawable.setCornerRadii(cornerRadii);
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+        }
 
         final PeerFileItem peerFileItem = (PeerFileItem) item;
         NamedFileDescriptor namedFileDescriptor = peerFileItem.getNamedFileDescriptor();

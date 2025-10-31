@@ -20,11 +20,11 @@ android {
         buildConfig = true
     }
     defaultConfig {
-        applicationId "org.twinlife.device.android.twinme"
+        applicationId 'mobi.skred.app'
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 496
-        versionName "31.2"
+        versionCode 338
+        versionName "21.2"
         manifestPlaceholders.domainName = "twin.me"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
@@ -45,14 +45,14 @@ android {
             applicationIdSuffix ""
 
             buildConfigField "String", 'APPLICATION_ID_SUFFIX', '""'
-            buildConfigField "String", 'ACCOUNT_ACTIVITY', '"org.twinlife.twinme.ui.AccountActivity"'
-            buildConfigField "String", "CHECK_VERSION_URL", "\"https://twin.me/download/twinme.json\""
-            buildConfigField "String", "FILE_PROVIDER", '"org.twinlife.device.android.twinme.fileprovider"'
+            buildConfigField "String", 'SETTINGS_ACTIVITY', '"org.twinlife.twinme.ui.settingsActivity.SettingsActivity"'
+            buildConfigField "String", "CHECK_VERSION_URL", "\"https://skred.mobi/download/skred.json\""
+            buildConfigField "String", "FILE_PROVIDER", '"mobi.skred.app.fileprovider"'
             buildConfigField "String", "FLAVOR", '""'
-            buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "true"
-            buildConfigField "String", "INVITATION_PARAM_ID", '"twincodeId"'
+            buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "false"
+            buildConfigField "String", "INVITATION_PARAM_ID", '"skredcodeId"'
 
-            manifestPlaceholders.domainName = "twin.me"
+            manifestPlaceholders.domainName = "skred.mobi"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme"
 
             if (System.getenv('SIGNING_KEY_ALIAS') != null) {
@@ -77,18 +77,20 @@ android {
         // Dev settings and build parameters.
         // Use to run the app during the development cycle.
         debug {
-            applicationIdSuffix ".debug"
+            // For Skred, if you use the .debug suffix, billing will not work.
+            // applicationIdSuffix ".debug"
+            // buildConfigField "String", 'APPLICATION_ID_SUFFIX', '".debug"'
             debuggable true
-            buildConfigField "String", 'APPLICATION_ID_SUFFIX', '".debug"'
 
-            buildConfigField "String", 'ACCOUNT_ACTIVITY', '"org.twinlife.twinme.ui.DebugAccountActivity"'
-            buildConfigField "String", "CHECK_VERSION_URL", "\"https://invite.mytwinlife.net/download/twinme.json\""
-            buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "true"
-            buildConfigField "String", "FILE_PROVIDER", '"org.twinlife.device.android.twinme.fileprovider"'
+            buildConfigField "String", 'SETTINGS_ACTIVITY', '"org.twinlife.twinme.ui.settingsActivity.DebugSettingsActivity"'
+            buildConfigField "String", "CHECK_VERSION_URL", "\"https://skred.mobi/download/skred.json\""
+            buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "false"
+            buildConfigField "String", "FILE_PROVIDER", '"mobi.skred.app.fileprovider"'
             buildConfigField "String", "FLAVOR", '"Development"'
-            buildConfigField "String", "INVITATION_PARAM_ID", '"twincodeId"'
+            manifestPlaceholders.domainName = "skred.mobi"
+            buildConfigField "String", "INVITATION_PARAM_ID", '"skredcodeId"'
 
-            manifestPlaceholders.domainName = "mytwinlife.net"
+            manifestPlaceholders.domainName = "skred.mobi"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme.debug"
         }
     }
@@ -96,21 +98,11 @@ android {
     flavorDimensions = ["product", "tier"]
 
     productFlavors {
-        // Needed to setup twinlife & twinme product dimension
         skred {
             dimension "product"
         }
-        twinme {
-            dimension "product"
-        }
 
-        //Skred and Twinme
         free {
-            dimension "tier"
-        }
-
-        //Twinme+
-        '+' {
             dimension "tier"
         }
     }
@@ -120,8 +112,9 @@ android {
         def names = variant.flavors*.name
 
         if (names.contains("skred")) {
-            if(names.contains("+") || variant.buildType.name == 'debug' ) {
-                // skred doesn't have a "plus" variant, nor a debug buildType
+            if(names.contains("+") ) {
+                // skred doesn't have a "plus" variant.
+                // we allow the debug build type in the app module for applicationIdSuffix and such.
                 setIgnore(true)
             }
         }
@@ -153,7 +146,11 @@ dependencies {
     implementation libs.glide
     implementation libs.glide.recyclerview
 
+    implementation libs.play.services.location
+    implementation libs.play.services.maps
+
     implementation libs.installreferrer
+    implementation libs.billing
 
     // Support for Chooser Target (Replaced by direct share targets in Android 10)
     runtimeOnly libs.androidx.sharetarget

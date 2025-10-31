@@ -76,6 +76,7 @@ import org.twinlife.twinme.ui.contacts.InvitationCodeActivity;
 import org.twinlife.twinme.ui.contacts.ResetInvitationConfirmView;
 import org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView;
 import org.twinlife.twinme.ui.conversationFilesActivity.UICustomTab;
 import org.twinlife.twinme.ui.settingsActivity.SettingsAdvancedActivity;
@@ -1186,10 +1187,15 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                 intent.setData(Uri.parse(twincodeURI.uri));
                 intent.putExtra(Intents.INTENT_TRUST_METHOD, mTrustMethod != null ? mTrustMethod : TrustMethod.QR_CODE);
 
-                intent.setClass(this, AcceptInvitationActivity.class);
+                if (twincodeURI.twincodeOptions == null) {
+                    intent.setClass(this, AcceptInvitationActivity.class);
+                } else {
+                    intent.setClass(this, AcceptInvitationSubscriptionActivity.class);
+                }
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 finish();
+
             } else if (twincodeURI.kind == TwincodeURI.Kind.Authenticate) {
                 mProfileService.verifyAuthenticateURI(Uri.parse(twincodeURI.uri), ((BaseService.ErrorCode error, Contact contact) -> {
                     if (error == BaseService.ErrorCode.SUCCESS && contact != null) {

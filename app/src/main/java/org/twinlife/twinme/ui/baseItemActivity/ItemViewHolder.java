@@ -83,6 +83,8 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
 
         super.onBind(item);
         
+        mStateAvatarView.setColorFilter(Color.TRANSPARENT);
+
         switch (item.getState()) {
             case DEFAULT:
                 mStateView.clearAnimation();
@@ -112,7 +114,8 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
                 getBaseItemActivity().getContactAvatar(null, (Bitmap avatar) -> {
                     if (avatar != null) {
                         if (avatar.equals(getBaseItemActivity().getTwinmeApplication().getDefaultGroupAvatar())) {
-                            mStateAvatarView.setImageBitmap(avatar, Design.GREY_ITEM_COLOR, 0, Design.GREY_ITEM_COLOR);
+                        mStateAvatarView.setImageBitmap(avatar, Color.parseColor(Design.DEFAULT_COLOR), 0, Design.GREY_ITEM_COLOR);
+                        mStateAvatarView.setColorFilter(Color.WHITE);
                         } else {
                             mStateAvatarView.setImageBitmap(avatar);
                         }

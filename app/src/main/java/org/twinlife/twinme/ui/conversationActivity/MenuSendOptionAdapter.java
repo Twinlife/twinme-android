@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.utils.Utils;
 
 public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String LOG_TAG = "MenuSendOptionAdapter";
@@ -30,7 +31,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @NonNull
     private final MenuSendOptionView mMenuSendOptionView;
 
-    private final int ITEM_COUNT;
+    private int ITEM_COUNT;
 
     private static final int POSITION_ALLOW_EPHEMERAL = 0;
     private int POSITION_TIMEOUT = 1;
@@ -75,7 +76,17 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         mAllowEphemeral = allowEphemeral;
         mTimeout = timeout;
 
-        notifyDataSetChanged();
+        if (mAllowEphemeral) {
+            ITEM_COUNT = 3;
+            POSITION_TIMEOUT = 1;
+            POSITION_ALLOW_COPY = 2;
+        } else {
+            ITEM_COUNT = 2;
+            POSITION_TIMEOUT = -1;
+            POSITION_ALLOW_COPY = 1;
+        }
+
+        notifyDataSetChanged();;
     }
 
     @Override
@@ -112,15 +123,12 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
 
             boolean isOn = mAllowCopy;
-            boolean isEnabled = true;
             boolean hideSeparator = true;
             int tag = MenuSendOptionView.ALLOW_COPY_TAG;
             int icon = mAllowCopy ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon;
             String title = mActivity.getString(R.string.conversation_activity_send_menu_allow_copy);
             if (position == POSITION_ALLOW_EPHEMERAL) {
-                menuSendOptionViewHolder.itemView.setOnClickListener(v -> mMenuSendOptionView.onAllowEphemeralClick());
                 isOn = mAllowEphemeral;
-                isEnabled = false;
                 tag = MenuSendOptionView.ALLOW_EPHEMERAL_TAG;
                 icon = R.drawable.send_option_ephemeral_icon;
                 title = mActivity.getString(R.string.settings_activity_ephemeral_title);
@@ -129,11 +137,12 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             int finalTag = tag;
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mMenuSendOptionView.onOptionChangeValue(finalTag, value);
-            ((MenuSendOptionViewHolder) viewHolder).onBind(title, icon, tag, isOn, isEnabled, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
+            ((MenuSendOptionViewHolder) viewHolder).onBind(title, icon, tag, isOn, true, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
 
         } else if (viewType == VALUE) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(v -> mMenuSendOptionView.onAllowEphemeralClick());
+            selectValueViewHolder.onBind(mActivity.getString(R.string.application_timeout), Utils.formatTimeout(mActivity, mTimeout), mForceDarkMode, Design.POPUP_BACKGROUND_COLOR);
         }
     }
 

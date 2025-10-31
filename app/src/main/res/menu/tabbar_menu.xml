@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_spaces"
         android:icon="@drawable/tab_bar_profile_icon"
         android:title=""
         android:contentDescription="@string/application_profile" />

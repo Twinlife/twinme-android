@@ -10,7 +10,6 @@ package org.twinlife.twinme.ui.spaces;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -30,7 +29,7 @@ import java.util.Date;
 
 public class PreviewAppearanceViewHolder extends RecyclerView.ViewHolder {
 
-    private static final float DESIGN_ITEM_BOTTOM_MARGIN = 26f;
+    private static final float DESIGN_ITEM_BOTTOM_MARGIN = 12f;
     private static final float DESIGN_ITEM_SMALL_ROUND_CORNER_RADIUS = 8f;
     private static final float DESIGN_ITEM_LARGE_ROUND_CORNER_RADIUS = 38f;
     private static final float DESIGN_TIME_VIEW_HEIGHT = 50f;
@@ -41,8 +40,8 @@ public class PreviewAppearanceViewHolder extends RecyclerView.ViewHolder {
     private static final int ITEM_BOTTOM_MARGIN;
     private static final float ITEM_SMALL_RADIUS;
     private static final float ITEM_LARGE_RADIUS;
-    private static final int TIME_VIEW_HEIGHT;
     private static final int AVATAR_SIZE;
+    private static final int TIME_VIEW_HEIGHT;
     private static final int MESSAGE_ITEM_TEXT_HEIGHT_PADDING;
     private static final int MESSAGE_ITEM_TEXT_WIDTH_PADDING;
 
@@ -105,6 +104,7 @@ public class PreviewAppearanceViewHolder extends RecyclerView.ViewHolder {
         mPeerGradientDrawable.mutate();
         mPeerGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mPeerGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mPeerGradientDrawable.setStroke(Design.BORDER_WIDTH, Design.ITEM_BORDER_COLOR);
         mPeerTextView.setBackground(mPeerGradientDrawable);
 
         AvatarView avatarView = view.findViewById(R.id.preview_appearance_peer_message_item_avatar);
@@ -118,27 +118,34 @@ public class PreviewAppearanceViewHolder extends RecyclerView.ViewHolder {
         avatarView.setImageBitmap(previewAvatarBitmap);
     }
 
-    public void onBind() {
+    public void onBind(CustomAppearance customAppearance, Bitmap conversationBackground) {
 
-        itemView.setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
-        mBackgroundView.setVisibility(View.GONE);
+        if (conversationBackground != null) {
+            mBackgroundView.setImageBitmap(conversationBackground);
+            mBackgroundView.setVisibility(View.VISIBLE);
+        } else {
+            itemView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mBackgroundView.setVisibility(View.GONE);
+        }
 
-        mTimeTextView.setTextColor(Design.TIME_COLOR);
+        mTimeTextView.setTextColor(customAppearance.getConversationBackgroundText());
 
         float[] peerRadii = new float[8];
         Arrays.fill(peerRadii, ITEM_LARGE_RADIUS);
         mPeerGradientDrawable.setCornerRadii(peerRadii);
-        mPeerGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+        mPeerGradientDrawable.setColor(customAppearance.getPeerMessageBackgroundColor());
+        mPeerGradientDrawable.setStroke(Design.BORDER_WIDTH, customAppearance.getPeerMessageBorderColor());
 
         float[] radii = new float[8];
         Arrays.fill(radii, ITEM_LARGE_RADIUS);
         radii[4] = ITEM_SMALL_RADIUS;
         radii[5] = ITEM_SMALL_RADIUS;
         mGradientDrawable.setCornerRadii(radii);
-        mGradientDrawable.setColor(Design.getMainStyle());
+        mGradientDrawable.setColor(customAppearance.getMessageBackgroundColor());
+        mGradientDrawable.setStroke(Design.BORDER_WIDTH, customAppearance.getMessageBorderColor());
 
-        mPeerTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        mTextView.setTextColor(Color.WHITE);
+        mPeerTextView.setTextColor(customAppearance.getPeerMessageTextColor());
+        mTextView.setTextColor(customAppearance.getMessageTextColor());
     }
 
     public void onViewRecycled() {

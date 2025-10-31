@@ -19,6 +19,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,16 +38,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
+import org.twinlife.twinme.models.Space;
+import org.twinlife.twinme.models.schedule.DateTime;
+import org.twinlife.twinme.models.schedule.DateTimeRange;
+import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.EditIdentityActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.callActivity.CallActivity;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.LastCallsActivity;
 import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.ui.cleanupActivity.TypeCleanUpActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
@@ -55,9 +65,11 @@ import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.CircularImageView;
+import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -73,10 +85,12 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private static final int ADD_MEMBERS = 1;
 
     private static final int DESIGN_MEMBER_VIEW_TOP_MARGIN = 40;
-    private static final int DESIGN_DESCRIPTION_VIEW_TOP_MARGIN = 180;
     private static int AVATAR_OVER_SIZE;
     private static int AVATAR_MAX_SIZE;
 
+
+    private static final int DESIGN_PROFILE_NAME_COLOR = Color.rgb(143, 150, 164);
+    private static final float DESIGN_SPACE_ROUND_CORNER_RADIUS_DP = 14f;
 
     private UUID mGroupId;
     private View mBackClickableView;
@@ -91,6 +105,13 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private ShowGroupMemberListAdapter mMemberListAdapter;
     private TextView mIdentityTextView;
     private CircularImageView mIdentityAvatarView;
+    private View mSpaceView;
+    private TextView mSpaceTextView;
+    private RoundedImageView mSpaceAvatarView;
+    private View mNoSpaceAvatarView;
+    private TextView mNoSpaceAvatarTextView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
+    private TextView mProfileTextView;
     private View mChatClickableView;
     private View mAudioClickableView;
     private View mVideoClickableView;
@@ -582,6 +603,37 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
         mIdentityAvatarView = findViewById(R.id.show_group_activity_edit_identity_avatar_view);
 
+        mSpaceView = findViewById(R.id.show_group_activity_space_view);
+        mSpaceView.setOnClickListener(view -> onMoveSpaceClick());
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = Design.ITEM_VIEW_HEIGHT;
+
+        mSpaceAvatarView = findViewById(R.id.show_group_activity_space_avatar_view);
+
+        mNoSpaceAvatarView = findViewById(R.id.show_group_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
+
+        mNoSpaceAvatarTextView = findViewById(R.id.show_group_activity_no_space_avatar_text_view);
+        mNoSpaceAvatarTextView.setTypeface(Design.FONT_BOLD44.typeface);
+        mNoSpaceAvatarTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD44.size);
+        mNoSpaceAvatarTextView.setTextColor(Color.WHITE);
+
+        mSpaceTextView = findViewById(R.id.show_group_activity_space_name_view);
+        mSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
+        mSpaceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM34.size);
+        mSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileTextView = findViewById(R.id.show_group_activity_profile_name_view);
+        mProfileTextView.setTypeface(Design.FONT_MEDIUM32.typeface);
+        mProfileTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
+        mProfileTextView.setTextColor(DESIGN_PROFILE_NAME_COLOR);
+
         mConfigurationTitleView = findViewById(R.id.show_group_activity_configuration_title_view);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfigurationTitleView.getLayoutParams();
@@ -712,6 +764,42 @@ public class ShowGroupActivity extends AbstractGroupActivity {
                 mInviteTextView.setAlpha(0.5f);
             }
 
+            if (mGroup.getSpace() != null) {
+                mSpaceTextView.setText(mGroup.getSpace().getName());
+
+                if (mGroup.getSpace().getProfile() != null) {
+                    mProfileTextView.setText(mGroup.getSpace().getProfile().getName());
+                }
+
+                float corner = DESIGN_SPACE_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+                float[] radii = new float[18];
+                Arrays.fill(radii, corner);
+
+                mNoSpaceAvatarGradientDrawable.setColor(Design.getDefaultColor(mGroup.getSpace().getStyle()));
+
+                if (mGroup.getSpace().hasSpaceAvatar()) {
+                    mGroupService.getSpaceImage(mGroup.getSpace(), (Bitmap spaceAvatar) -> {
+                        mSpaceAvatarView.setVisibility(View.VISIBLE);
+                        mNoSpaceAvatarView.setVisibility(View.GONE);
+                        mNoSpaceAvatarTextView.setVisibility(View.GONE);
+                        mSpaceAvatarView.setImageBitmap(spaceAvatar, radii);
+                        updateInCall();
+                        checkSpacePermission();
+                    });
+                    return;
+                } else {
+                    mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+                    mSpaceAvatarView.setVisibility(View.GONE);
+                    mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+                    mNoSpaceAvatarTextView.setVisibility(View.VISIBLE);
+
+                    String name = mGroup.getSpace().getName();
+                    if (!name.isEmpty()) {
+                        mNoSpaceAvatarTextView.setText(name.substring(0, 1).toUpperCase());
+                    }
+                }
+            }
+
             if (mGroup.isOwner()) {
                 mConfigurationTitleView.setVisibility(View.VISIBLE);
                 mPermissionsView.setVisibility(View.VISIBLE);
@@ -746,6 +834,8 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
             updateInCall();
         }
+
+        checkSpacePermission();
     }
 
     private void onChatClick() {
@@ -767,7 +857,23 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             return;
         }
 
-        showPremiumFeatureView();
+        if (isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+            if (getTwinmeApplication().inCallInfo() == null && mGroup.getCapabilities().hasVideo() && mGroupMembers.size() <= Settings.MAX_CALL_GROUP_PARTICIPANTS && mGroupMembers.size() > 1) {
+                Intent intent = new Intent();
+                intent.putExtra(Intents.INTENT_GROUP_ID, mGroupId.toString());
+                intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_VIDEO_CALL);
+                intent.setClass(this, CallActivity.class);
+                startActivity(intent);
+            } else if (!mGroup.getCapabilities().hasVideo()) {
+                Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
+            } else if (hasSchedule()) {
+                showSchedule();
+            } else if (mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
+                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.call_activity_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
+            }
+        } else {
+            showPremiumFeatureView();
+        }
     }
 
     private void onAudioClick() {
@@ -779,7 +885,24 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             return;
         }
 
-        showPremiumFeatureView();
+        if (isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+            if (getTwinmeApplication().inCallInfo() == null && mGroup.getCapabilities().hasAudio() && mGroupMembers.size() <= Settings.MAX_CALL_GROUP_PARTICIPANTS && mGroupMembers.size() > 1) {
+                Intent intent = new Intent();
+                intent.putExtra(Intents.INTENT_GROUP_ID, mGroupId.toString());
+                intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_CALL);
+                intent.setClass(this, CallActivity.class);
+
+                startActivity(intent);
+            } else if (!mGroup.getCapabilities().hasAudio()) {
+                Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
+            } else if (hasSchedule()) {
+                showSchedule();
+            } else if (mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
+                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.call_activity_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
+            }
+        } else {
+            showPremiumFeatureView();
+        }
     }
 
     private void onListMembersClick() {
@@ -815,6 +938,24 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         }
 
         startActivity(EditIdentityActivity.class, Intents.INTENT_GROUP_ID, mGroupId);
+    }
+
+    private void onMoveSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onMoveSpaceClick");
+        }
+
+        if (mGroup != null && mGroup.getSpace() != null && !mGroup.getSpace().hasPermission(Space.Permission.MOVE_GROUP)) {
+            showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.putExtra(Intents.INTENT_GROUP_ID, mGroupId.toString());
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivity(intent);
     }
 
     private void onPermissionsClick() {
@@ -883,6 +1024,18 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         }
     }
 
+    private void checkSpacePermission() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "checkSpacePermission");
+        }
+
+        if (mGroup != null && mGroup.getSpace() != null && !mGroup.getSpace().hasPermission(Space.Permission.MOVE_GROUP)) {
+            mSpaceView.setAlpha(.5f);
+        } else {
+            mSpaceView.setAlpha(1.f);
+        }
+    }
+
     private void showPremiumFeatureView() {
         if (DEBUG) {
             Log.d(LOG_TAG, "showPremiumFeatureView");
@@ -899,7 +1052,10 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
             @Override
             public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                startActivity(intent);
+                premiumFeatureConfirmView.animationCloseConfirmView();
             }
 
             @Override
@@ -1033,13 +1189,13 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "updateInCall");
         }
 
-        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasAudio() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS))) {
+        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasAudio() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS || hasSchedule()))) {
             mAudioClickableView.setAlpha(0.5f);
         } else {
             mAudioClickableView.setAlpha(1f);
         }
 
-        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasVideo() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS))) {
+        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasVideo() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS || hasSchedule()))) {
             mVideoClickableView.setAlpha(0.5f);
         } else {
             mVideoClickableView.setAlpha(1f);
@@ -1049,6 +1205,45 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             mChatClickableView.setAlpha(0.5f);
         } else {
             mChatClickableView.setAlpha(1f);
+        }
+    }
+
+    private boolean hasSchedule() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hasSchedule");
+        }
+
+        if (mGroup != null && mGroup.getCapabilities().getSchedule() != null && mGroup.getCapabilities().getSchedule().isEnabled()) {
+            return !mGroup.getCapabilities().getSchedule().isNowInRange();
+        }
+
+        return false;
+    }
+
+    private void showSchedule() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showSchedule");
+        }
+
+        String message;
+
+        if (mGroup != null && mGroup.getCapabilities().getSchedule() != null) {
+            Schedule schedule = mGroup.getCapabilities().getSchedule();
+            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
+                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                DateTime start = dateTimeRange.start;
+                DateTime end = dateTimeRange.end;
+
+                if (start.date.equals(end.date)) {
+                    message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
+                } else {
+                    message = String.format("%1$s %2$s", start.formatDateTime(this), end.formatDateTime(this));
+                }
+            } else {
+                message = getString(R.string.show_call_activity_schedule_message);
+            }
+
+            showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.show_call_activity_schedule_call), message, true, null);
         }
     }
 

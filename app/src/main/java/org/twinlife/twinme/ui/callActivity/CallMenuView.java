@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022 twinlife SA.
+ *  Copyright (c) 2022-2024 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -49,6 +49,8 @@ public class CallMenuView extends PercentRelativeLayout {
         void onSelectStreamingAudio();
 
         void onShareInvitation();
+
+        void onOpenMap();
 
         void onMicroMute();
 
@@ -108,14 +110,15 @@ public class CallMenuView extends PercentRelativeLayout {
     private View mConversationView;
     private View mInvitationView;
     private View mStreamingAudioView;
+    private View mLocationView;
     private View mCertifyRelationView;
     private View mCameraControlView;
     private ImageView mMicroMuteImageView;
     private ImageView mCameraMuteImageView;
     private ImageView mSpeakerImageView;
     private ImageView mPauseImageView;
+    private ImageView mLocationImageView;
     private ImageView mCameraControlImageView;
-
     private CallMenuViewState mCallMenuViewState = CallMenuViewState.DEFAULT;
 
     private boolean mIsInCall = false;
@@ -126,7 +129,9 @@ public class CallMenuView extends PercentRelativeLayout {
     private boolean mIsConversationAllowed = false;
     private boolean mIsStreamingAudioSupported = false;
     private boolean mIsShareInvitationAllowed = false;
+    private boolean mIsShareLocationAllowed = false;
     private boolean mIsInPause = false;
+    private boolean mIsLocationShared = false;
     private boolean mHideCertify = false;
     private boolean mIsCertifyRunning = false;
     private boolean mIsCameraControlAllowed = false;
@@ -254,6 +259,22 @@ public class CallMenuView extends PercentRelativeLayout {
         mIsShareInvitationAllowed = isShareInvitationAllowed;
     }
 
+    public void setIsShareLocationAllowed(boolean isShareLocationAllowed) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setIsShareLocationAllowed: " + isShareLocationAllowed);
+        }
+
+        mIsShareLocationAllowed = isShareLocationAllowed;
+    }
+
+    public void setIsLocationShared(boolean isLocationShared) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setIsLocationShared: " + isLocationShared);
+        }
+
+        mIsLocationShared = isLocationShared;
+    }
+
     public void setHideCertifyRelation(boolean hideCertifyRelation) {
         if (DEBUG) {
             Log.d(LOG_TAG, "setHideCertifyRelation: " + hideCertifyRelation);
@@ -315,6 +336,7 @@ public class CallMenuView extends PercentRelativeLayout {
             mConversationView.setAlpha(1.0f);
             mStreamingAudioView.setAlpha(1.0f);
             mInvitationView.setAlpha(1.0f);
+            mLocationView.setAlpha(1.0f);
             mCertifyRelationView.setAlpha(1.0f);
             mCameraControlView.setAlpha(1.0f);
         } else {
@@ -323,6 +345,7 @@ public class CallMenuView extends PercentRelativeLayout {
             mConversationView.setAlpha(0.5f);
             mStreamingAudioView.setAlpha(0.5f);
             mInvitationView.setAlpha(0.5f);
+            mLocationView.setAlpha(0.5f);
             mCertifyRelationView.setAlpha(0.5f);
             mCameraControlView.setAlpha(0.5f);
         }
@@ -393,6 +416,18 @@ public class CallMenuView extends PercentRelativeLayout {
             mInvitationView.setVisibility(View.GONE);
         }
 
+        if (mIsShareLocationAllowed) {
+            mLocationView.setVisibility(View.VISIBLE);
+        } else {
+            mLocationView.setVisibility(View.GONE);
+        }
+
+        if (mIsLocationShared) {
+            mLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.share_location_icon, getContext().getTheme()));
+        } else {
+            mLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_location_icon, getContext().getTheme()));
+        }
+
         if (mHideCertify) {
             mCertifyRelationView.setVisibility(View.GONE);
         } else {
@@ -423,6 +458,14 @@ public class CallMenuView extends PercentRelativeLayout {
         if (mIsShareInvitationAllowed) {
             int margin = BUTTON_HEIGHT * viewPosition + MARGIN_ACTION_BUTTON * viewPosition * 2;
             MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationView.getLayoutParams();
+            marginLayoutParams.leftMargin = margin;
+            marginLayoutParams.setMarginStart(margin);
+            viewPosition++;
+        }
+
+        if (mIsShareLocationAllowed) {
+            int margin = BUTTON_HEIGHT * viewPosition + MARGIN_ACTION_BUTTON * viewPosition * 2;
+            MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mLocationView.getLayoutParams();
             marginLayoutParams.leftMargin = margin;
             marginLayoutParams.setMarginStart(margin);
             viewPosition++;
@@ -582,6 +625,17 @@ public class CallMenuView extends PercentRelativeLayout {
         RoundedView invitationBackgroundView = findViewById(R.id.call_activity_invitation_background_view);
         invitationBackgroundView.setColor(Color.WHITE);
 
+        mLocationView = findViewById(R.id.call_activity_location_view);
+        mLocationView.setOnClickListener(v -> onLocationClick());
+
+        layoutParams = mLocationView.getLayoutParams();
+        layoutParams.height = BUTTON_HEIGHT;
+
+        RoundedView locationBackgroundView = findViewById(R.id.call_activity_location_background_view);
+        locationBackgroundView.setColor(Color.WHITE);
+
+        mLocationImageView = findViewById(R.id.call_activity_location_image_view);
+
         mCertifyRelationView = findViewById(R.id.call_activity_certify_view);
         mCertifyRelationView.setOnClickListener(v -> onCertifyRelationClick());
 
@@ -665,6 +719,16 @@ public class CallMenuView extends PercentRelativeLayout {
 
         if (mIsInCall && !mIsCertifyRunning) {
             mCallMenuListener.onShareInvitation();
+        }
+    }
+
+    private void onLocationClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onLocationClick");
+        }
+
+        if (mIsInCall) {
+            mCallMenuListener.onOpenMap();
         }
     }
 

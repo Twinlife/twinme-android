@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/invitation_subscription_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/invitation_subscription_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/invitation_subscription_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/invitation_subscription_activity_tool_bar"/>
+
+    <TextView
+        android:id="@+id/invitation_subscription_activity_message_view"
+        android:layout_below="@+id/invitation_subscription_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/in_app_subscription_activity_invitation_code"
+        app:layout_widthPercent="89.06%"
+        app:layout_marginTopPercent="3%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/invitation_subscription_activity_camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/invitation_subscription_activity_message_view"
+        app:layout_widthPercent="85.33%"
+        app:layout_heightPercent="54.72%"
+        app:layout_marginTopPercent="6%">
+
+        <TextureView
+            android:id="@+id/invitation_subscription_activity_texture_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginEnd="1dp" />
+
+        <view
+            android:id="@+id/invitation_subscription_activity_view_finder_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="org.twinlife.twinme.ui.AbstractScannerActivity$ViewFinderView"
+            android:background="@drawable/camera_foreground" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/invitation_subscription_activity_scan_info_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/invitation_subscription_activity_scan_icon_view"
+                android:layout_centerVertical="true"
+                android:src="@drawable/scan_code"
+                app:layout_aspectRatio="100%" />
+
+            <TextView
+                android:id="@+id/invitation_subscription_activity_scan_message_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_toRightOf="@+id/invitation_subscription_activity_scan_icon_view"
+                android:layout_toEndOf="@+id/invitation_subscription_activity_scan_icon_view"
+                android:text="@string/add_contact_activity_scan_code"/>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/invitation_subscription_activity_camera_message_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/capture_activity_message" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/invitation_subscription_activity_twincode_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/invitation_subscription_activity_camera_view"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_marginTopPercent="2.99%">
+
+        <ImageView
+            android:id="@+id/invitation_subscription_activity_twincode_copy_view"
+            android:layout_centerVertical="true"
+            android:src="@drawable/copy_item"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="52.63%"
+            app:layout_marginStartPercent="3.76%" />
+
+        <EditText
+            android:id="@+id/invitation_subscription_activity_twincode_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/invitation_subscription_activity_twincode_copy_view"
+            android:layout_toEndOf="@+id/invitation_subscription_activity_twincode_copy_view"
+            android:background="@android:color/transparent"
+            android:hint="@string/scan_activity_paste_code"
+            android:imeOptions="actionDone"
+            android:inputType="text|textNoSuggestions|textCapSentences"
+            app:layout_marginStartPercent="3.76%"
+            app:layout_marginEndPercent="18.75%" />
+
+        <ImageView
+            android:id="@+id/invitation_subscription_activity_twincode_invite_view"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/check_mark_blue"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="70.73%"
+            app:layout_marginEndPercent="6.56%" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/invitation_subscription_activity_import_gallery_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/invitation_subscription_activity_twincode_content_view"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:layout_marginTopPercent="2.99%">
+
+        <ImageView
+            android:id="@+id/invitation_subscription_activity_import_gallery_icon_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/from_gallery" />
+
+        <TextView
+            android:id="@+id/invitation_subscription_activity_import_gallery_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/invitation_subscription_activity_import_gallery_icon_view"
+            android:layout_toEndOf="@+id/invitation_subscription_activity_import_gallery_icon_view"
+            android:text="@string/add_contact_activity_gallery_title" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/invitation_subscription_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

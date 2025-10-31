@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2014-2024 twinlife SA.
+ *  Copyright (c) 2014-2025 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -32,6 +32,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -61,10 +62,15 @@ import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.AcceptInvitationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -73,7 +79,9 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     private static final String LOG_TAG = "AcceptInvitationActi...";
     private static final boolean DEBUG = false;
 
+    private static final float DESIGN_SPACE_ROUND_CORNER_RADIUS_DP = 14f;
     private static final int BULLET_COLOR = Color.rgb(213, 213, 213);
+
     private static final int DESIGN_AVATAR_MARGIN = 60;
     private static final int DESIGN_AVATAR_HEIGHT = 148;
     protected static final int DESIGN_ICON_VIEW_SIZE = 72;
@@ -82,7 +90,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     private static final int DESIGN_BULLET_VIEW_MARGIN = 20;
     protected static final int DESIGN_TITLE_MARGIN = 40;
     private static final int DESIGN_MESSAGE_MARGIN = 30;
-    private static final int DESIGN_CONFIRM_MARGIN = 80;
+    private static final int DESIGN_CONFIRM_MARGIN = 60;
     private static final int DESIGN_CONFIRM_VERTICAL_MARGIN = 10;
     private static final int DESIGN_CONFIRM_HORIZONTAL_MARGIN = 20;
     private static final int DESIGN_CANCEL_HEIGHT = 140;
@@ -100,6 +108,15 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     private View mCancelView;
     private TextView mCancelTextView;
 
+    private TextView mSpaceNameView;
+    private TextView mProfileView;
+    private TextView mSpaceTitleView;
+    private View mSpaceView;
+    private View mNoSpaceAvatarView;
+    private TextView mNoSpaceAvatarTextView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
+    private RoundedImageView mSpaceAvatarView;
+
     private int mRootHeight = 0;
     private int mActionHeight = 0;
 
@@ -107,6 +124,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     private boolean isOpenAnimationEnded = false;
     private boolean isCloseAnimationEnded = false;
 
+    private static final int MOVE_TO_SPACE = 1;
     private static final long CONTACT_CHECK_DELAY = 60 * 1000L; // 60s
 
     private class AcceptListener implements OnClickListener {
@@ -149,6 +167,8 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         }
     }
 
+    private volatile boolean mCreateProfileOnResume = false;
+
     private boolean mUIInitialized = false;
     private boolean mHasTwincode = false;
     private boolean mHasExistingContact = false;
@@ -168,6 +188,8 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     private Space mInitialSpace;
     @Nullable
     private TwincodeURI mTwincodeURI;
+    @Nullable
+    private TrustMethod mTrustMethod = null;
 
     //
     // Override TwinlifeActivityImpl methods
@@ -190,16 +212,15 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
 
         Intent intent = getIntent();
         Uri uri = null;
-        TrustMethod trustMethod;
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             uri = intent.getData();
-            trustMethod = (TrustMethod) intent.getSerializableExtra(Intents.INTENT_TRUST_METHOD);
+            mTrustMethod = (TrustMethod) intent.getSerializableExtra(Intents.INTENT_TRUST_METHOD);
         } else if (intent.hasExtra(Intents.INTENT_INVITATION_LINK)) {
             uri = Uri.parse(intent.getStringExtra(Intents.INTENT_INVITATION_LINK));
-            trustMethod = TrustMethod.LINK;
+            mTrustMethod = TrustMethod.LINK;
         } else {
             mDescriptorId = DescriptorId.fromString(intent.getStringExtra(Intents.INTENT_DESCRIPTOR_ID));
-            trustMethod = TrustMethod.PEER;
+            mTrustMethod = TrustMethod.PEER;
         }
 
         initViews();
@@ -210,7 +231,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         UUID notificationId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_NOTIFICATION_ID));
 
         mAcceptInvitationService = new AcceptInvitationService(this, getTwinmeContext(), this, uri,
-                mDescriptorId, groupId, contactId, notificationId, trustMethod);
+                mDescriptorId, groupId, contactId, notificationId, mTrustMethod);
     }
 
     //
@@ -224,6 +245,14 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         }
 
         super.onResume();
+
+        if (mCreateProfileOnResume) {
+            mCreateProfileOnResume = false;
+
+            Intent intent = new Intent();
+            intent.setClass(AcceptInvitationActivity.this, AddProfileActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -237,6 +266,22 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         }
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == MOVE_TO_SPACE) {
+            String value = data != null ? data.getStringExtra(Intents.INTENT_SPACE_SELECTION) : null;
+            if (value != null && mAcceptInvitationService != null) {
+                mAcceptInvitationService.getSpace(UUID.fromString(value));
+            }
+        }
     }
 
     @Override
@@ -291,9 +336,9 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     }
 
     @Override
-    public void onParseTwincodeURI(@NonNull ErrorCode errorCode, @Nullable TwincodeURI uri) {
+    public void onParseTwincodeURI(@NonNull ErrorCode errorCode, @Nullable TwincodeURI twincodeURI) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onParseTwincodeURI errorCode=" + errorCode + " uri=" + uri);
+            Log.d(LOG_TAG, "onParseTwincodeURI errorCode=" + errorCode + " twincodeURI=" + twincodeURI);
         }
 
         // @todo Handle errors and report an accurate message:
@@ -302,19 +347,30 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         // ErrorCode.ITEM_NOT_FOUND: link targets the application but it is not compatible with the version.
         // TwincodeURI.Kind == Kind.AccountMigration => redirect to account migration
         // TwincodeURI.Kind == Kind.Call|Kind.Transfer => forbidden
-        if (uri != null) {
-            if (uri.kind != TwincodeURI.Kind.Invitation) {
+        if (twincodeURI != null) {
+            if (twincodeURI.kind != TwincodeURI.Kind.Invitation) {
 
                 String message = getString(R.string.accept_invitation_activity_incorrect_contact_information);
-                if (uri.kind == TwincodeURI.Kind.Call) {
+                if (twincodeURI.kind == TwincodeURI.Kind.Call) {
                     message = getString(R.string.add_contact_activity_scan_message_call_link);
-                } else if (uri.kind == TwincodeURI.Kind.AccountMigration) {
+                } else if (twincodeURI.kind == TwincodeURI.Kind.AccountMigration) {
                     message = getString(R.string.add_contact_activity_scan_message_migration_link);
-                } else if (uri.kind == TwincodeURI.Kind.Transfer) {
+                } else if (twincodeURI.kind == TwincodeURI.Kind.Transfer) {
                     message = getString(R.string.add_contact_activity_scan_message_transfer_link);
                 }
 
                 error(message, this::finish);
+                return;
+            }
+            if (twincodeURI.twincodeOptions != null) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(twincodeURI.uri));
+                intent.putExtra(Intents.INTENT_TRUST_METHOD, mTrustMethod != null ? mTrustMethod : TrustMethod.QR_CODE);
+
+                intent.setClass(this, AcceptInvitationSubscriptionActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
                 return;
             }
         }
@@ -332,7 +388,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             error(message, this::finish);
             return;
         }
-        mTwincodeURI = uri;
+        mTwincodeURI = twincodeURI;
         updateViews();
 
     }
@@ -397,10 +453,10 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         }
 
         mContact = contact;
-        if (mDescriptorId != null) {
+        if (mDescriptorId != null && mAcceptInvitationService != null) {
             mAcceptInvitationService.deleteDescriptor(mDescriptorId);
         }
-        if (mNotification != null) {
+        if (mNotification != null && mAcceptInvitationService != null) {
             mAcceptInvitationService.deleteNotification(mNotification);
         } else {
             showContactActivity(contact);
@@ -423,7 +479,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onDeleteDescriptor: descriptorId=" + descriptorId);
         }
 
-        if (mNotification != null) {
+        if (mNotification != null && mAcceptInvitationService != null) {
             mAcceptInvitationService.deleteNotification(mNotification);
         } else {
             if (mContact != null) {
@@ -655,6 +711,48 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
 
+        mSpaceTitleView = findViewById(R.id.accept_invitation_activity_space_title_view);
+        mSpaceTitleView.setTypeface(Design.FONT_BOLD26.typeface);
+        mSpaceTitleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD26.size);
+        mSpaceTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceTitleView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
+
+        mSpaceView = findViewById(R.id.accept_invitation_activity_space_view);
+        mSpaceView.setOnClickListener(view -> onSpaceClick());
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceView.getLayoutParams();
+        marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
+
+        mSpaceAvatarView = findViewById(R.id.accept_invitation_activity_space_avatar_view);
+
+        mNoSpaceAvatarView = findViewById(R.id.accept_invitation_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
+
+        mNoSpaceAvatarTextView = findViewById(R.id.accept_invitation_activity_no_space_avatar_text_view);
+        mNoSpaceAvatarTextView.setTypeface(Design.FONT_BOLD44.typeface);
+        mNoSpaceAvatarTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD44.size);
+        mNoSpaceAvatarTextView.setTextColor(Color.WHITE);
+
+        mSpaceNameView = findViewById(R.id.accept_invitation_activity_space_name_view);
+        mSpaceNameView.setTypeface(Design.FONT_MEDIUM34.typeface);
+        mSpaceNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM34.size);
+        mSpaceNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileView = findViewById(R.id.accept_invitation_activity_profile_name_view);
+        mProfileView.setTypeface(Design.FONT_MEDIUM32.typeface);
+        mProfileView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
+        mProfileView.setTextColor(Design.FONT_COLOR_GREY);
+
         mConfirmView.setOnClickListener(v -> onAccept());
 
         radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -763,7 +861,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
 
             Window window = getWindow();
             window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
-        } else {
+        } else if (mAcceptInvitationService != null) {
             mAcceptInvitationService.createContact(mProfile, mSpace);
         }
     }
@@ -773,6 +871,10 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onDeclineClick");
         }
 
+        if (mInitialSpace != null && mSpace != null && !mInitialSpace.getId().equals(mSpace.getId()) && mAcceptInvitationService != null) {
+            mAcceptInvitationService.setCurrentSpace(mInitialSpace);
+        }
+
         if (mDescriptorId != null && mAcceptInvitationService != null) {
             mAcceptInvitationService.deleteDescriptor(mDescriptorId);
         } else {
@@ -780,10 +882,26 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         }
     }
 
+    private void onSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSwitchSpaceClick");
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivityForResult(intent, MOVE_TO_SPACE);
+    }
+
     @Override
     protected void onBackClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onBackClick");
+        }
+
+        if (mInitialSpace != null && mSpace != null && !mInitialSpace.getId().equals(mSpace.getId()) && mAcceptInvitationService != null) {
+            mAcceptInvitationService.setCurrentSpace(mInitialSpace);
         }
 
         animationCloseInvitationView();
@@ -845,6 +963,8 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             mAvatarView.setVisibility(View.VISIBLE);
             mBulletView.setVisibility(View.VISIBLE);
             mIconView.setVisibility(View.VISIBLE);
+            mSpaceTitleView.setVisibility(View.VISIBLE);
+            mSpaceView.setVisibility(View.VISIBLE);
 
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = 0;
@@ -869,12 +989,48 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             mAvatarView.setVisibility(View.GONE);
             mBulletView.setVisibility(View.GONE);
             mIconView.setVisibility(View.GONE);
+            mSpaceTitleView.setVisibility(View.GONE);
+            mSpaceView.setVisibility(View.GONE);
 
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
 
             String message = getString(R.string.accept_invitation_activity_being_transferred) + "\n" + getString(R.string.accept_invitation_activity_check_connection);
             mMessageView.setText(message);
+        }
+
+        if (mSpace != null && mAcceptInvitationService != null) {
+            mSpaceTitleView.setVisibility(View.VISIBLE);
+            mSpaceView.setVisibility(View.VISIBLE);
+            mSpaceNameView.setText(mSpace.getName());
+            if (mProfile != null) {
+                mProfileView.setText(mProfile.getName());
+            }
+
+            float corner = DESIGN_SPACE_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+            float[] radii = new float[8];
+            Arrays.fill(radii, corner);
+
+            if (mSpace.hasSpaceAvatar()) {
+                mSpaceAvatarView.setVisibility(View.VISIBLE);
+                mNoSpaceAvatarView.setVisibility(View.GONE);
+                mNoSpaceAvatarTextView.setVisibility(View.GONE);
+                mAcceptInvitationService.getSpaceImage(mSpace, (Bitmap avatar) -> mSpaceAvatarView.setImageBitmap(avatar, radii));
+            } else {
+                mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+                mSpaceAvatarView.setVisibility(View.GONE);
+                mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+                mNoSpaceAvatarTextView.setVisibility(View.VISIBLE);
+
+                String name = mSpace.getName();
+                if (!name.isEmpty()) {
+                    mNoSpaceAvatarTextView.setText(name.substring(0, 1).toUpperCase());
+                }
+            }
+            mNoSpaceAvatarGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_DEFAULT));
+        } else {
+            mSpaceTitleView.setVisibility(View.GONE);
+            mSpaceView.setVisibility(View.GONE);
         }
 
         mActionView.postDelayed(() -> {

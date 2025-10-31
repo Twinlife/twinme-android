@@ -35,7 +35,7 @@ class TimeItemViewHolder extends BaseItemViewHolder {
         TextStyle textStyle = Design.FONT_MEDIUM24;
         mTextView.setTypeface(textStyle.typeface);
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textStyle.size);
-        mTextView.setTextColor(Design.TIME_COLOR);
+        mTextView.setTextColor(getBaseItemActivity().getCustomAppearance().getConversationBackgroundText());
     }
 
     @Override

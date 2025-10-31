@@ -69,16 +69,15 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         mCallItemContainer.setBackground(mGradientDrawable);
-        mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
         mCallItemContainer.setClickable(false);
 
         mCallTypeView = view.findViewById(R.id.base_item_activity_peer_call_item_type_call_view);
         Design.updateTextFont(mCallTypeView, Design.FONT_MEDIUM30);
-        mCallTypeView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mCallTypeView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mCallDurationView = view.findViewById(R.id.base_item_activity_peer_call_item_call_duration_view);
         Design.updateTextFont(mCallDurationView, Design.FONT_REGULAR30);
-        mCallDurationView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mCallDurationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mCallAvatarImageView = view.findViewById(R.id.base_item_activity_peer_call_item_avatar_image_view);
         ViewGroup.LayoutParams layoutParams = mCallAvatarImageView.getLayoutParams();
@@ -95,7 +94,7 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
 
         TextView callAgainView = view.findViewById(R.id.base_item_activity_peer_call_item_call_again_title_view);
         Design.updateTextFont(callAgainView, Design.FONT_MEDIUM30);
-        callAgainView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        callAgainView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) callAgainView.getLayoutParams();
         marginLayoutParams.rightMargin = TYPE_CALL_VIEW_MARGIN_RIGHT;
@@ -104,6 +103,7 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         layoutParams = callAgainImageView.getLayoutParams();
         layoutParams.width = TYPE_CALL_VIEW_WIDTH;
         layoutParams.height = TYPE_CALL_VIEW_HEIGHT;
+        callAgainImageView.setColorFilter(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         if (allowClick) {
 
@@ -137,6 +137,10 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         super.onBind(item);
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+        }
 
         final PeerCallItem peerCallItem = (PeerCallItem) item;
         CallDescriptor callDescriptor = peerCallItem.getCallDescriptor();
@@ -154,9 +158,10 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
                 mCallDurationView.setText(getString(R.string.conversation_activity_call_missed));
             } else {
                 mCallDurationView.setText("");
+                mCallDurationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
             }
         } else {
-            mCallDurationView.setTextColor(Design.FONT_COLOR_DEFAULT);
+            mCallDurationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
             int duration = (int) callDescriptor.getDuration() / 1000;
             mCallDurationView.setText(Utils.formatInterval(duration, "mm:ss"));
         }

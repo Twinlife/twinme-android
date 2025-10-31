@@ -121,6 +121,10 @@ public class UIConversation {
                     lastMessage = context.getResources().getString(R.string.notification_center_group_invitation_received);
                     break;
 
+                case GEOLOCATION_DESCRIPTOR:
+                    lastMessage = context.getResources().getString(R.string.notification_center_geolocation_message_received);
+                    break;
+
                 case CLEAR_DESCRIPTOR:
                     lastMessage = context.getResources().getString(R.string.notification_center_cleanup_conversation);
                     break;

@@ -9,6 +9,7 @@
 package org.twinlife.twinme.ui.accountActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.DeleteAccountService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
@@ -94,7 +99,6 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
         }
 
         super.onResume();
-
     }
 
     @Override
@@ -116,6 +120,21 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
     //
     // Implement DeleteAccountService.Observer methods
     //
+
+    @Override
+    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace space=" + space);
+        }
+
+    }
+
+    @Override
+    public void onGetSpaceNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpaceNotFound");
+        }
+    }
 
     @Override
     public void onDeleteAccount() {

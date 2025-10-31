@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.contacts;
 
+import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.models.schedule.Date;
+import org.twinlife.twinme.models.schedule.Time;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.SelectValueViewHolder;
@@ -48,20 +51,27 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static int SECTION_ENABLE_SCHEDULE = 9;
     private static int POSITION_ENABLE_SCHEDULE_INFORMATION = 10;
     private static int POSITION_ENABLE_SCHEDULE = 11;
+    private static int POSITION_SCHEDULE_START = 12;
+    private static int POSITION_SCHEDULE_END = 13;
 
-    private static int SECTION_ANSWERING_AUTOMATIC = 12;
-    private static int POSITION_ALLOW_ANSWERING_AUTOMATIC = 13;
-    private static int POSITION_INFO_ANSWERING_AUTOMATIC = 14;
+    private static int SECTION_ANSWERING_AUTOMATIC = 14;
+    private static int POSITION_ALLOW_ANSWERING_AUTOMATIC = 15;
+    private static int POSITION_INFO_ANSWERING_AUTOMATIC = 16;
 
     private static final int SWITCH = 1;
-    private static final int SECTION = 2;
-    private static final int INFO = 3;
-    private static final int VALUE = 4;
+    private static final int SCHEDULE = 2;
+    private static final int SECTION = 3;
+    private static final int INFO = 4;
+    private static final int VALUE = 5;
 
     public CapabilitiesAdapter(AbstractCapabilitiesActivity listActivity) {
 
         mCapabilitiesActivity = listActivity;
         setHasStableIds(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ITEM_COUNT = 12;
+        }
 
         if (mCapabilitiesActivity.isGroup()) {
             ITEM_COUNT = 6;
@@ -86,6 +96,37 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "getItemCount");
         }
 
+        if (mCapabilitiesActivity.scheduleEnable()) {
+            if (mCapabilitiesActivity.isGroup()) {
+                POSITION_SCHEDULE_START = 6;
+                POSITION_SCHEDULE_END = 7;
+                SECTION_ANSWERING_AUTOMATIC = -1;
+                POSITION_ALLOW_ANSWERING_AUTOMATIC = -1;
+                POSITION_INFO_ANSWERING_AUTOMATIC = -1;
+            } else {
+                POSITION_SCHEDULE_START = 12;
+                POSITION_SCHEDULE_END = 13;
+                SECTION_ANSWERING_AUTOMATIC = 14;
+                POSITION_ALLOW_ANSWERING_AUTOMATIC = 15;
+                POSITION_INFO_ANSWERING_AUTOMATIC = 16;
+            }
+
+            return ITEM_COUNT + 2;
+        }
+
+        POSITION_SCHEDULE_START = -1;
+        POSITION_SCHEDULE_END = -1;
+
+        if (mCapabilitiesActivity.isGroup()) {
+            SECTION_ANSWERING_AUTOMATIC = -1;
+            POSITION_ALLOW_ANSWERING_AUTOMATIC = -1;
+            POSITION_INFO_ANSWERING_AUTOMATIC = -1;
+        } else {
+            SECTION_ANSWERING_AUTOMATIC = 12;
+            POSITION_ALLOW_ANSWERING_AUTOMATIC = 13;
+            POSITION_INFO_ANSWERING_AUTOMATIC = 14;
+        }
+
         return ITEM_COUNT;
     }
 
@@ -95,7 +136,9 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == SECTION_PERMISSION || position == SECTION_DISCREET_RELATION || position == SECTION_ENABLE_SCHEDULE || position == SECTION_ANSWERING_AUTOMATIC || position == SECTION_CAMERA_CONTROL) {
+        if (position == POSITION_SCHEDULE_START || position == POSITION_SCHEDULE_END) {
+            return SCHEDULE;
+        } else if (position == SECTION_PERMISSION || position == SECTION_DISCREET_RELATION || position == SECTION_ENABLE_SCHEDULE || position == SECTION_ANSWERING_AUTOMATIC || position == SECTION_CAMERA_CONTROL) {
             return SECTION;
         } else if (position == POSITION_CAMERA_CONTROL_INFORMATION || position == POSITION_DISCREET_RELATION_INFORMATION || position == POSITION_ENABLE_SCHEDULE_INFORMATION || position == POSITION_INFO_ANSWERING_AUTOMATIC) {
             return INFO;
@@ -120,7 +163,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             boolean isSelected = false;
             String title = "";
             int switchTag = 0;
-            boolean isEnabled = false;
+            boolean isEnabled = true;
 
             if (position == POSITION_ALLOW_AUDIO_CALL) {
                 title = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_information_audio_call);
@@ -132,8 +175,8 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 isSelected = mCapabilitiesActivity.allowVideoCall();
             } else if (position == POSITION_DISCREET_RELATION) {
                 title = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_discreet_relation);
-                switchTag = ContactCapabilitiesActivity.SCHEDULE_SWITCH;
-                isSelected = mCapabilitiesActivity.scheduleEnable();
+                switchTag = ContactCapabilitiesActivity.DISCREET_RELATION_SWITCH;
+                isSelected = mCapabilitiesActivity.discreetRelation();
             } else if (position == POSITION_ENABLE_SCHEDULE) {
                 title = mCapabilitiesActivity.getString(R.string.show_call_activity_settings_limited);
                 switchTag = ContactCapabilitiesActivity.SCHEDULE_SWITCH;
@@ -144,8 +187,22 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 isSelected = mCapabilitiesActivity.allowAnsweringAutomatic();
             }
 
-            capabilityViewHolder.itemView.setOnClickListener(view -> mCapabilitiesActivity.showPremiumFeatureAlert(UIPremiumFeature.FeatureType.PRIVACY));
             capabilityViewHolder.onBind(title, switchTag, isEnabled, isSelected);
+        } else if (viewType == SCHEDULE) {
+            ScheduleViewHolder scheduleViewHolder = (ScheduleViewHolder) viewHolder;
+            Date date;
+            Time time;
+            AbstractCapabilitiesActivity.ScheduleType scheduleType;
+            if (position == POSITION_SCHEDULE_START) {
+                date = mCapabilitiesActivity.getScheduleStartDate();
+                time = mCapabilitiesActivity.getScheduleStartTime();
+                scheduleType = AbstractCapabilitiesActivity.ScheduleType.START;
+            } else {
+                date = mCapabilitiesActivity.getScheduleEndDate();
+                time = mCapabilitiesActivity.getScheduleEndTime();
+                scheduleType = AbstractCapabilitiesActivity.ScheduleType.END;
+            }
+            scheduleViewHolder.onBind(mCapabilitiesActivity, scheduleType, date, time);
         } else if (viewType == SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
 
@@ -193,9 +250,9 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             selectValueViewHolder.itemView.setOnClickListener(v -> mCapabilitiesActivity.onSelectControlCamera());
 
             String value;
-            if (mCapabilitiesActivity.getZoomable() == Zoomable.NEVER) {
+            if (mCapabilitiesActivity.getZoomable().equals(Zoomable.NEVER)) {
                 value = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_never);
-            } else if (mCapabilitiesActivity.getZoomable() == Zoomable.ALLOW) {
+            } else if (mCapabilitiesActivity.getZoomable().equals(Zoomable.ALLOW)) {
                 value = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_allow);
             } else {
                 value = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_ask);
@@ -221,6 +278,9 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (viewType == INFO) {
             convertView = inflater.inflate(R.layout.settings_room_activity_information_item, parent, false);
             return new InformationViewHolder(convertView);
+        } else if (viewType == SCHEDULE) {
+            convertView = inflater.inflate(R.layout.contact_capabilities_activity_schedule_item, parent, false);
+            return new ScheduleViewHolder(convertView, mCapabilitiesActivity);
         } else if (viewType == SWITCH) {
             convertView = inflater.inflate(R.layout.contact_capabilities_activity_item, parent, false);
             return new CapabilityViewHolder(convertView, mCapabilitiesActivity);

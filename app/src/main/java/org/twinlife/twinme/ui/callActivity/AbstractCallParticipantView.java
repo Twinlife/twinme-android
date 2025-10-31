@@ -139,6 +139,8 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
 
         void onInfoTap();
 
+        void onLocationTap();
+
         void onCancelTap();
 
         void onSimpleTap();
@@ -217,6 +219,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
     protected ImageView mMuteMicroView;
     protected ImageView mPauseView;
     protected ImageView mInfoView;
+    protected View mSharedLocationView;
     protected View mOverlayView;
     protected View mZoomView;
     protected TextView mZoomTextView;
@@ -947,6 +950,8 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
     protected abstract boolean isScreenSharing();
 
     protected abstract boolean isMessageSupported();
+    
+    protected abstract boolean isLocationSupported();
 
     protected abstract boolean isRemoteCameraControl();
 

@@ -76,11 +76,11 @@ class CallItemViewHolder extends ItemViewHolder {
 
         mCallTypeView = view.findViewById(R.id.base_item_activity_call_item_type_call_view);
         Design.updateTextFont(mCallTypeView, Design.FONT_MEDIUM30);
-        mCallTypeView.setTextColor(Color.WHITE);
+        mCallTypeView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mCallDurationView = view.findViewById(R.id.base_item_activity_call_item_call_duration_view);
         Design.updateTextFont(mCallDurationView, Design.FONT_REGULAR30);
-        mCallDurationView.setTextColor(Color.WHITE);
+        mCallDurationView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mCallAvatarImageView = view.findViewById(R.id.base_item_activity_call_item_avatar_image_view);
         ViewGroup.LayoutParams layoutParams = mCallAvatarImageView.getLayoutParams();
@@ -98,7 +98,7 @@ class CallItemViewHolder extends ItemViewHolder {
 
         TextView callAgainView = view.findViewById(R.id.base_item_activity_call_item_call_again_title_view);
         Design.updateTextFont(callAgainView, Design.FONT_MEDIUM30);
-        callAgainView.setTextColor(Color.WHITE);
+        callAgainView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) callAgainView.getLayoutParams();
         marginLayoutParams.rightMargin = TYPE_CALL_VIEW_MARGIN_RIGHT;
@@ -107,6 +107,7 @@ class CallItemViewHolder extends ItemViewHolder {
         layoutParams = callAgainImageView.getLayoutParams();
         layoutParams.width = TYPE_CALL_VIEW_WIDTH;
         layoutParams.height = TYPE_CALL_VIEW_HEIGHT;
+        callAgainImageView.setColorFilter(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mDeleteView = view.findViewById(R.id.base_item_activity_call_item_delete_view);
 
@@ -145,6 +146,10 @@ class CallItemViewHolder extends ItemViewHolder {
         super.onBind(item);
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+        }
 
         final CallItem callItem = (CallItem) item;
         CallDescriptor callDescriptor = callItem.getCallDescriptor();

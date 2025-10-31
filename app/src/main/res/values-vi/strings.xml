@@ -9,7 +9,9 @@
     <string name="application_all">Tất cả</string>
     <string name="application_appearance">Giao diện</string>
     <string name="application_are_you_sure">Bạn có chắc không?</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
     <string name="application_authorization_camera">Cho phép ứng dụng truy cập Máy ảnh trong cài đặt hệ thống.</string>
+    <string name="application_authorization_location">Cho phép ứng dụng truy cập Vị trí trong cài đặt hệ thống.</string>
     <string name="application_authorization_go_settings">Đi tới cài đặt hệ thống</string>
     <string name="application_authorization_microphone">Cho phép ứng dụng truy cập Micro trong cài đặt hệ thống.</string>
     <string name="application_authorization_microphone_camera">Cho phép ứng dụng truy cập Micro và Máy ảnh trong cài đặt hệ thống.</string>
@@ -51,11 +53,11 @@
     <string name="application_migration_no_storage_space">Thiết bị của bạn không đủ dung lượng để hoàn tất việc di chuyển. Hãy đóng ứng dụng, giải phóng một phần bộ nhớ, và khởi động lại ứng dụng để hoàn tất cập nhật.</string>
     <string name="application_migration_no_storage_space_message">Một trong hai thiết bị không có đủ dung lượng lưu trữ. Giải phóng dung lượng trên thiết bị đó trước khi khởi động lại quá trình di chuyển.</string>
     <string name="application_name_hint">Tên</string>
-    <string name="application_network_connecting">Đang kết nối với dịch vụ twinme</string>
+    <string name="application_network_connecting">Đang kết nối với dịch vụ Skred</string>
     <string name="application_network_connectivity">Đã có kết nối mạng</string>
     <string name="application_network_status_airplane_message">Chế độ máy bay đang bật.</string>
     <string name="application_network_status_airplane_resolution">Vui lòng tắt chế độ máy bay và kết nối với mạng Wi-Fi hoặc dữ liệu di động.</string>
-    <string name="application_network_status_connected_no_internet">Không thể kết nối tới dịch vụ twinme.\nVui lòng kiểm tra kết nối Internet của bạn.</string>
+    <string name="application_network_status_connected_no_internet">Không thể kết nối tới dịch vụ Skred.\nVui lòng kiểm tra kết nối Internet của bạn.</string>
     <string name="application_network_status_connected_resolution">Thử kết nối với một mạng khác.</string>
     <string name="application_network_status_connection_timeout">Không thể thiết lập kết nối Internet.</string>
     <string name="application_network_status_no_internet">Không có kết nối Internet.\nVui lòng kết nối Wi-Fi hoặc mạng di động.</string>
@@ -70,15 +72,20 @@
     <string name="application_not_authorized_operation">Hành động không được phép</string>
     <string name="application_not_authorized_operation_by_your_contact">Hành động không được liên hệ của bạn cho phép.</string>
     <string name="application_not_connected">Đang thiết lập kết nối bảo mật…</string>
-    <string name="application_not_signed_in">Không kết nối với dịch vụ twinme</string>
+    <string name="application_not_signed_in">Không kết nối với dịch vụ Skred</string>
     <string name="application_now">Bây giờ</string>
     <string name="application_ok">OK</string>
+    <string name="application_location">Định vị</string>
+    <string name="application_location_enabled">Kích hoạt dịch vụ Vị trí trên thiết bị của bạn.</string>
     <string name="application_low_usage_message">Cảnh báo, nếu bạn không sử dụng ứng dụng thường xuyên, hệ điều hành có thể không đánh thức nó để trao đổi tin nhắn!</string>
+    <string name="application_more_info">Thông tin thêm…</string>
     <string name="application_one_item_selected">1 mục đã chọn</string>
     <string name="application_operation_failure">Thao tác thất bại</string>
     <string name="application_operation_irreversible">Thao tác này không thể hoàn tác</string>
     <string name="application_permission_camera">Cần cấp quyền truy cập máy ảnh để chụp ảnh hoặc quay video mới.</string>
     <string name="application_permission_scan_code">Cần cấp quyền truy cập máy ảnh để quét mã QR.</string>
+    <string name="application_premium_feature_message">Bạn cần kích hoạt dịch vụ cao cấp để sử dụng tính năng này.</string>
+    <string name="application_premium_feature_title">Kích hoạt dịch vụ cao cấp</string>
     <string name="application_photo_gallery">Album ảnh</string>
     <string name="application_profile">Hồ sơ</string>
     <string name="application_profile_avatar_not_defined">Bạn cần chọn ảnh đại diện để đại diện cho mình với các liên hệ bạn mời bằng hồ sơ này.</string>
@@ -102,7 +109,7 @@
     <string name="application_size_unit">MB</string>
     <string name="application_theme">Chủ đề</string>
     <string name="application_unknown_name">Không rõ</string>
-    <string name="application_upgrade">Đang nâng cấp twinme</string>
+    <string name="application_upgrade">Đang nâng cấp Skred</string>
     <string name="application_webrtc_failure">Lỗi WebRTC</string>
     <string name="application_wrong_configuration">Cấu hình không chính xác</string>
     <string name="application_yes">Có</string>
@@ -112,7 +119,6 @@
     <string name="about_activity_information">Thông tin</string>
     <string name="about_activity_legal">Thông báo pháp lý</string>
     <string name="about_activity_libraries">Thư viện</string>
-    <string name="about_activity_message">twinme là dịch vụ trò chuyện và gọi thoại/video an toàn, không truy cập thông tin cá nhân.\n\ntwinme dựa trên WebRTC, tiêu chuẩn mới cho truyền thông đa phương tiện thời gian thực giữa các thiết bị (end-to-end encryption, không cần máy chủ trung gian).</string>
     <string name="about_activity_open_source_information">Mã nguồn của ứng dụng có sẵn dưới dạng Open Source trên GitHub, theo giấy phép AGPL-3.0.</string>
     <string name="about_activity_open_sources_licences">Giấy phép mã nguồn mở</string>
     <string name="about_activity_premium_services">Dịch vụ cao cấp</string>
@@ -190,10 +196,10 @@
     <string name="add_contact_activity_in_person_title">Trực tiếp</string>
     <string name="add_contact_activity_invitation_code_title">Mini-Mã</string>
     <string name="add_contact_activity_invite">Mời</string>
-    <string name="add_contact_activity_invite_message">Mở địa chỉ web %1$s bằng twinme trên thiết bị di động của bạn để kết nối riêng tư với “%2$s”</string>
-    <string name="add_contact_activity_invite_subject">Lời mời từ Twinme</string>
-    <string name="add_contact_activity_message">Yêu cầu bạn bè gần bạn quét mã QR mời của bạn bằng twinme, hoặc nhấn nút \"Quét\" để quét mã của bạn bè.</string>
-    <string name="add_contact_activity_onboarding_message">twinme không biết bạn bè của bạn và không thể tìm kiếm họ. Bạn phải mời họ trực tiếp, bằng twinme khi họ ở gần bạn, hoặc bằng cách gửi lời mời qua phương tiện khác.</string>
+    <string name="add_contact_activity_invite_message">Mở địa chỉ web %1$s bằng Skred trên thiết bị di động của bạn để kết nối riêng tư với “%2$s”</string>
+    <string name="add_contact_activity_invite_subject">Lời mời từ Skred</string>
+    <string name="add_contact_activity_message">Yêu cầu bạn bè gần bạn quét mã QR mời của bạn bằng Skred, hoặc nhấn nút \"Quét\" để quét mã của bạn bè.</string>
+    <string name="add_contact_activity_onboarding_message">Skred không biết bạn bè của bạn và không thể tìm kiếm họ. Bạn phải mời họ trực tiếp, bằng Skred khi họ ở gần bạn, hoặc bằng cách gửi lời mời qua phương tiện khác.</string>
     <string name="add_contact_activity_scan_code">Quét mã QR mời</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Liên kết này đã bị hỏng.</string>
     <string name="add_contact_activity_scan_error_incorect_link">Liên kết này không đúng.</string>
@@ -275,6 +281,11 @@
     <string name="call_activity_confirm_word_title">Xác nhận từ</string>
     <string name="call_activity_error_call_interrupted">Cuộc gọi bị gián đoạn, lỗi: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Không thể thực hiện cuộc gọi, lỗi: %1$d.</string>
+    <string name="call_activity_location_background_warning">Cảnh báo: nếu ứng dụng chạy ở chế độ nền, vị trí của bạn sẽ không còn được chia sẻ. Bạn cần cho phép ứng dụng luôn truy cập vị trí của thiết bị.</string>
+    <string name="call_activity_location_exact_warning">Lưu ý: bạn không chia sẻ vị trí chính xác của mình. Bạn có thể thay đổi quyền cần thiết trong phần cài đặt ứng dụng.</string>
+    <string name="call_activity_location_share">Lưu ý: bạn không chia sẻ vị trí chính xác của mình. Bạn có thể thay đổi quyền cần thiết trong phần cài đặt ứng dụng.</string>
+    <string name="call_activity_location_share_message">Bạn hiện đang chia sẻ vị trí trong cuộc gọi.</string>
+    <string name="call_activity_location_stop">Ngừng chia sẻ vị trí</string>
     <string name="call_activity_max_participant_message">Đã đạt số người tham gia tối đa trong cuộc gọi nhóm (%1$d).</string>
     <string name="call_activity_not_supported_group_call_message">Phiên bản ứng dụng của %1$s không tương thích với cuộc gọi nhóm và cần được cập nhật.</string>
     <string name="call_activity_quality_message">Bạn đánh giá cuộc gọi như thế nào?</string>
@@ -314,9 +325,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Máy ảnh đang được sử dụng</string>
-    <string name="capture_activity_incorrect_qrcode">Twincode không đúng</string>
+    <string name="capture_activity_incorrect_qrcode">Skredcode không đúng</string>
     <string name="capture_activity_message">Đặt mã QR vào khung hình để quét.</string>
-    <string name="capture_activity_no_camera">Cần có camera để quét twincode</string>
+    <string name="capture_activity_no_camera">Cần có camera để quét Skredcode</string>
     <string name="capture_activity_qrcode_saved">Mã lời mời đã được lưu vào ảnh.</string>
 
     <!-- CleanupActivity -->
@@ -370,6 +381,10 @@
     <string name="contact_capabilities_activity_information_video_call">Cho phép liên hệ này gọi video cho bạn.</string>
 
     <!-- ContactsFragment -->
+    <string name="contact_picker_activity_address_book_access_denied_message">Chúng tôi không được phép truy cập vào danh bạ của bạn</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">Quyền bị từ chối</string>
+    <string name="contact_picker_activity_subtitle">MỜI BẰNG SỐ ĐIỆN THOẠI</string>
+    <string name="contact_picker_activity_title">Mời bạn bè từ danh bạ</string>
     <string name="contacts_fragment_add_contact_subtitle">Mời ai đó quét mã mời của bạn hoặc quét mã của họ…</string>
     <string name="contacts_fragment_invite_contact_title">Mời một liên hệ</string>
     <string name="contacts_fragment_scan_contact_title">Quét hoặc nhập mã mời</string>
@@ -391,6 +406,8 @@
     <string name="conversation_settings_activity_link_title">Liên kết web</string>
 
     <!--ConversationActivity -->
+    <string name="contact_space_activity_move_message">Bạn có chắc muốn chuyển liên hệ này không?</string>
+    <string name="contact_space_activity_move_title">Chuyển</string>
     <string name="conversation_activity_audio_call">Gọi thoại</string>
     <string name="conversation_activity_audio_message">Tin nhắn thoại</string>
     <string name="conversation_activity_call_missed">bị nhỡ</string>
@@ -401,12 +418,13 @@
     <string name="conversation_activity_edit_message">Tin nhắn chỉ có thể được chỉnh sửa trên thiết bị của liên hệ nếu ứng dụng của họ đã được cập nhật.</string>
     <string name="conversation_activity_empty_message">Hãy nói điều gì đó thú vị… hoặc vui nhộn!</string>
     <string name="conversation_activity_ephemeral_coach_mark">Nhấn giữ nút gửi để xóa tin nhắn sau một khoảng thời gian.</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">Phiên bản twinme của liên hệ của bạn không đầy đủ chức năng.\nHãy yêu cầu họ cập nhật ứng dụng.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Phiên bản Skred của liên hệ của bạn không đầy đủ chức năng.\nHãy yêu cầu họ cập nhật ứng dụng.</string>
     <string name="conversation_activity_group_member_information">%1$d thành viên</string>
     <string name="conversation_activity_group_not_allowed_post_message">Không được phép gửi tin nhắn</string>
     <string name="conversation_activity_group_one_member">1 thành viên</string>
+    <string name="conversation_activity_info">:lock Tin nhắn trò chuyện được mã hóa trên điện thoại của bạn và trong quá trình truyền. Để đảm bảo mức độ bảo mật dữ liệu cao nhất, chúng được gửi trực tiếp đến điện thoại của %1$s thông qua kết nối ngang hàng không có máy chủ trung gian.</string>
     <string name="conversation_activity_invitation_accepted">Lời mời đã được chấp nhận</string>
-    <string name="conversation_activity_invitation_failed">Yêu cầu liên hệ của bạn cập nhật twinme</string>
+    <string name="conversation_activity_invitation_failed">Yêu cầu liên hệ của bạn cập nhật Skred</string>
     <string name="conversation_activity_invitation_joined">Đã tham gia nhóm</string>
     <string name="conversation_activity_invitation_pending">Đang mời</string>
     <string name="conversation_activity_invitation_refused">Lời mời bị từ chối</string>
@@ -495,10 +513,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">Khi đã tạo, mỗi mối quan hệ có một cặp \"Hồ sơ\" đại diện cho bạn và liên hệ với nhau.</string>
     <string name="create_profile_activity_onboarding_message_part_4">Sau đó, bạn có thể tùy chỉnh cách mình được nhận diện với từng liên hệ, trong từng mối quan hệ riêng biệt.</string>
     <string name="create_profile_activity_save_message">Tên và ảnh này được dùng để mời liên hệ và khởi tạo mối quan hệ. Bạn có thể sửa và cá nhân hóa chúng sau.</string>
+    <string name="create_profile_activity_title">Thiết lập hồ sơ của bạn</string>
     <string name="create_profile_activity_welcome1">Nhập ảnh hồ sơ của bạn</string>
     <string name="create_profile_activity_welcome2">Chào mừng %1$s!</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">Ảnh</string>
+    <string name="create_space_activity_contact_list">Chuyển liên hệ</string>
+    <string name="create_space_activity_contacts_no_profile">Để chuyển liên hệ vào Không gian, bạn cần hoàn tất hồ sơ đại diện cho bạn. Bạn có muốn hoàn tất không?</string>
     <string name="create_space_activity_message">Các Không gian là cục bộ và không hiển thị với các liên hệ.</string>
     <string name="create_space_activity_onboarding_message_part_1">Không gian giúp bạn tổ chức các liên hệ theo vòng xã hội tương ứng, ví dụ: Gia đình, Bạn bè, Công việc, Giải trí, v.v.</string>
     <string name="create_space_activity_onboarding_message_part_2">Mỗi Không gian liên kết với một “Hồ sơ” đại diện cho vai trò bạn muốn sử dụng khi tương tác với các liên hệ thuộc vòng xã hội đó, ví dụ: Bố, Johny, BS. Nguyễn Văn A, Người Dơi, v.v.</string>
@@ -510,6 +532,8 @@
     <string name="create_space_activity_onboarding_message_part_8">- “Cài đặt” có thể tùy chỉnh cho từng Không gian, ghi đè các giá trị mặc định từ Cài đặt ứng dụng.</string>
 
     <!-- CreateTransfertCallActivity -->
+    <string name="create_space_activity_profile_message">Bạn cần nhập tên và ảnh đại diện cho bạn khi mời liên hệ.</string>
+    <string name="create_space_activity_space_hint">Tên (Gia đình, Bạn bè, Công việc, v.v.)</string>
     <string name="create_space_activity_title">Tạo Không gian</string>
     <string name="create_transfert_call_activity_message">Hồ sơ này liên kết với mã dùng để chuyển cuộc gọi đang diễn ra tới trình duyệt.</string>
     <string name="create_transfert_call_activity_name_placeholder">Chuyển tiếp cuộc gọi của tôi</string>
@@ -525,7 +549,6 @@
     <string name="edit_contact_activity_message">Liên hệ này sẽ không thể liên lạc với bạn nữa.</string>
 
     <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">Xóa hồ sơ này sẽ làm vô hiệu hóa mã mời liên kết với nó. Xác nhận xóa?</string>
 
     <!-- EditProfileActivity -->
     <string name="edit_profile_activity_propagating_ask_message">Bạn muốn áp dụng thay đổi hình ảnh, tên hoặc mô tả:</string>
@@ -537,9 +560,13 @@
     <string name="edit_profile_activity_propagating_except_contacts">cho tất cả, trừ khi đã được cá nhân hóa</string>
     <string name="edit_profile_activity_propagating_message">Bạn có thể áp dụng thay đổi hồ sơ mời của mình cho các liên hệ hiện có, hoặc không.</string>
     <string name="edit_profile_activity_propagating_no_contact">cho không ai cả</string>
-    <string name="edit_profile_activity_remove_active_profile">Bạn không thể xóa hồ sơ đang hoạt động</string>
 
     <!-- EnterInvitationCodeActivity -->
+    <string name="edit_space_activity_contacts_no_profile">Để mời một liên hệ, bạn phải hoàn tất hồ sơ đại diện cho bạn. Bạn có muốn hoàn tất không?</string>
+    <string name="edit_space_activity_delete_confirmation">Bạn có chắc chắn muốn xóa Không gian này không?</string>
+    <string name="edit_space_activity_delete_current_space">Bạn không thể xóa Không gian đang hoạt động.</string>
+    <string name="edit_space_activity_delete_message">Xóa Không gian sẽ xóa toàn bộ liên hệ, nhóm và cuộc trò chuyện trong Không gian đó. Bạn có chắc muốn tiếp tục?</string>
+    <string name="edit_space_activity_delete_only_one_space_message">Bạn không thể xóa Không gian duy nhất của ứng dụng.</string>
     <string name="enter_invitation_code_activity_certified_message">Sau khi tạo mối quan hệ, nên xác thực nó để tăng cường bảo mật.</string>
     <string name="enter_invitation_code_activity_enter_code">Nhập Mini-Code</string>
     <string name="enter_invitation_code_activity_error_message">Mã này không hợp lệ. Có thể đã được sử dụng hoặc đã hết hạn.</string>
@@ -583,12 +610,14 @@
     <string name="feedback_activity_send_logs">Gửi log kỹ thuật</string>
     <string name="feedback_activity_send_message">Phản hồi đã được gửi. Cảm ơn bạn.</string>
     <string name="feedback_activity_subject">Chủ đề</string>
-    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+    <string name="feedback_activity_subject_placeholder">[Skred] </string>
 
     <!--FullScreenQRCodeActivity -->
+    <string name="first_invite_contact_activity_description">Bạn phải mời bạn bè và kết nối với họ trên Skred. Họ sẽ xuất hiện trong danh sách liên lạc của bạn sau khi họ chấp nhận lời mời của bạn.</string>
+    <string name="first_invite_contact_activity_ignore">Phớt lờ</string>
     <string name="fullscreen_qrcode_activity_generate_code_message">Thao tác này sẽ vô hiệu hóa mã mời hiện tại liên kết với hồ sơ này. Bạn có chắc muốn tạo mã mới không?</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">Tạo mã mời mới</string>
-    <string name="fullscreen_qrcode_activity_save_message">Nhập hoặc quét mã QR này bằng twinme để thêm liên hệ.</string>
+    <string name="fullscreen_qrcode_activity_save_message">Nhập hoặc quét mã QR này bằng Skred để thêm liên hệ.</string>
     <string name="fullscreen_qrcode_activity_save_title">Lưu vào thư viện ảnh</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -608,6 +637,35 @@
     <string name="group_member_activity_title">Thành viên nhóm</string>
 
     <!-- InfoItemActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s mời bạn sử dụng dịch vụ cao cấp mà họ đang hỗ trợ.</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Tạm ngừng đăng ký</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Dịch vụ cao cấp sẽ bị vô hiệu hóa. Bạn có muốn tiếp tục không?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">Cuộc gọi nhóm với âm thanh và hình ảnh HD</string>
+    <string name="in_app_subscription_activity_description_step1_title">Hội nghị âm thanh/video chất lượng cao</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">Không dữ liệu / Không carbon</string>
+    <string name="in_app_subscription_activity_description_step2_title">Hội nghị âm thanh/video thân thiện môi trường</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">Bảo mật tuyệt đối cho cuộc trò chuyện</string>
+    <string name="in_app_subscription_activity_description_step3_title">Hội nghị riêng tư</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">Kết nối tức thì chất lượng cao</string>
+    <string name="in_app_subscription_activity_description_step4_title">Cuộc gọi tức thì</string>
+    <string name="in_app_subscription_activity_expiration_message">Gia hạn: %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Mã mời đã hết hạn</string>
+    <string name="in_app_subscription_activity_footer_message">Thời gian dùng thử miễn phí được áp dụng cho tất cả gói đăng ký và chỉ khả dụng một lần. Khi bạn mua đăng ký, Apple sẽ tính phí trực tiếp vào tài khoản iTunes. Gói đăng ký sẽ tự động gia hạn trừ khi bạn hủy ít nhất 24 giờ trước khi kết thúc kỳ hiện tại. Bạn có thể hủy bất cứ lúc nào trong App Store để tránh bị gia hạn. Bạn có thể quản lý đăng ký từ cài đặt tài khoản iTunes sau khi mua.</string>
+    <string name="in_app_subscription_activity_free_trial">Dùng thử miễn phí 15 ngày.\\nCó thể hủy đăng ký bất kỳ lúc nào.</string>
+    <string name="in_app_subscription_activity_invitation_code">Quét mã QR mời hoặc dán mã để truy cập dịch vụ cao cấp.</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Dịch vụ cao cấp đã được kích hoạt</string>
+    <string name="in_app_subscription_activity_invalid_code">\"Mã mời không hợp lệ.</string>
+    <string name="in_app_subscription_activity_later_title">Không, cảm ơn</string>
+    <string name="in_app_subscription_activity_manage_susbcription">Quản lý đăng ký của tôi</string>
+    <string name="in_app_subscription_activity_month">Tháng</string>
+    <string name="in_app_subscription_activity_not_available">Các dịch vụ trả phí cao cấp không khả dụng trên thiết bị hoặc quốc gia của bạn.</string>
+    <string name="in_app_subscription_activity_restore_title">Khôi phục giao dịch mua</string>
+    <string name="in_app_subscription_activity_search">Tìm kiếm gói đăng ký</string>
+    <string name="in_app_subscription_activity_six_month_title">Phổ biến nhất</string>
+    <string name="in_app_subscription_activity_subscription_title">Đăng ký</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">Đăng ký hiện tại</string>
+    <string name="in_app_subscription_activity_subscribe_title">Tiếp tục</string>
+    <string name="in_app_subscription_activity_used_code">Mã mời đã được sử dụng trên thiết bị khác</string>
     <string name="info_item_activity_call_terminated_reason_busy">%1$s đang bận</string>
     <string name="info_item_activity_call_terminated_reason_cancel">Cuộc gọi bị hủy bởi %1$s</string>
     <string name="info_item_activity_call_terminated_reason_decline">Cuộc gọi bị từ chối bởi %1$s</string>
@@ -643,17 +701,18 @@
     <string name="invitation_code_activity_success_message">Nên xác thực các mối quan hệ được tạo bằng Mini-Code để tăng cường bảo mật.</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">Yêu cầu bạn bè gần bạn quét mã QR của \"phòng\" bằng twinme hoặc nhấn vào mã mời để sao chép vào bộ nhớ tạm.</string>
+    <string name="invitation_room_activity_message">Yêu cầu bạn bè gần bạn quét mã QR của \"phòng\" bằng Skred hoặc nhấn vào mã mời để sao chép vào bộ nhớ tạm.</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">Thoại</string>
     <string name="last_calls_activity_video">Video</string>
 
     <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">Bạn có muốn chuyển tài khoản từ Skred Lite sang Skred không?</string>
 
     <!-- MainActivity -->
-    <string name="local_account_migration_activity_message_older_version">Hãy đảm bảo bạn cập nhật cả hai thiết bị lên phiên bản mới nhất của ứng dụng trước khi bắt đầu chuyển, để tránh mất toàn bộ liên hệ.</string>
+    <string name="lock_screen_activity_local_authentication">Xác thực để truy cập ứng dụng</string>
+    <string name="lock_screen_activity_passcode_not_set">Thiết bị của bạn chưa được cài đặt xác thực. Hãy vào cài đặt hệ thống để kích hoạt tính năng này.</string>
+    <string name="lock_screen_activity_unlock">Mở khóa ứng dụng</string>
     <string name="main_activity_add_contact">Thêm liên hệ</string>
     <string name="main_activity_add_group">Tạo nhóm</string>
     <string name="main_activity_reset_conversation">Đặt lại</string>
@@ -662,13 +721,11 @@
     <string name="main_activity_reset_group_conversation_admin_message">Đặt lại cuộc trò chuyện sẽ xóa tất cả tin nhắn khỏi thiết bị của mọi thành viên trong nhóm. Xác nhận?</string>
     <string name="main_activity_reset_group_conversation_message">Đặt lại cuộc trò chuyện sẽ xóa tất cả tin nhắn khỏi thiết bị của bạn. Xác nhận?</string>
 
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">Bạn cần nâng cấp lên twinme+ để sử dụng tính năng này. Bạn sẽ có thể chuyển toàn bộ dữ liệu tài khoản.</string>
-
     <!-- NavigationActivity -->
-    <string name="migration_twinme_plus_activity_updgrade_account">Bạn sẽ có thể chuyển toàn bộ dữ liệu tài khoản.</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme có phiên bản cao cấp với nhiều tính năng hơn nữa.</string>
-    <string name="migration_twinme_plus_activity_premium_title">Nâng cấp lên twinme+</string>
+    <string name="main_activity_skredboard_access_title">Không gian</string>
+    <string name="main_activity_skredboard_create_title">Tạo Không gian</string>
+    <string name="main_activity_skredboard_delete_title">Xóa Không gian</string>
+    <string name="main_activity_skredboard_message">Nhập mã của bạn</string>
     <string name="navigation_activity_about_twinme">Giới thiệu</string>
     <string name="navigation_activity_application_settings">Cài đặt ứng dụng</string>
     <string name="navigation_activity_help">Trợ giúp</string>
@@ -678,6 +735,8 @@
     <string name="navigation_activity_settings">Cài đặt</string>
     <string name="navigation_activity_sign_out">Đăng xuất</string>
     <string name="navigation_activity_sounds">Âm thanh</string>
+    <string name="navigation_activity_subscribe">Khám phá Skred+</string>
+    <string name="navigation_activity_subscribe_enable">Đã kích hoạt</string>
     <string name="navigation_activity_support">Hỗ trợ</string>
 
     <!-- NotificationCenter -->
@@ -690,6 +749,8 @@
     <string name="notification_center_deleted_contact">Liên hệ đã xóa</string>
     <string name="notification_center_file_message">Đã gửi cho bạn một tệp</string>
     <string name="notification_center_file_message_received">Tệp mới</string>
+    <string name="notification_center_geolocation_message">Đã gửi vị trí cho bạn</string>
+    <string name="notification_center_geolocation_message_received">Vị trí mới</string>
     <string name="notification_center_group_invitation">Đã gửi cho bạn một lời mời</string>
     <string name="notification_center_group_invitation_received">Lời mời mới</string>
     <string name="notification_center_join_group">Bạn đã tham gia nhóm</string>
@@ -726,6 +787,7 @@
     <string name="notifications_fragment_item_cleanup_message">đã xóa một số tin nhắn cũ.</string>
     <string name="notifications_fragment_item_deleted_contact">Liên hệ đã xóa</string>
     <string name="notifications_fragment_item_file_message">Đã gửi cho bạn một tệp</string>
+    <string name="notifications_fragment_item_geolocation_message">Đã gửi vị trí cho bạn</string>
     <string name="notifications_fragment_item_group_invitation">Đã gửi cho bạn lời mời</string>
     <string name="notifications_fragment_item_image_message">Đã gửi cho bạn một ảnh</string>
     <string name="notifications_fragment_item_join_group">Bạn đã tham gia nhóm</string>
@@ -782,24 +844,12 @@
     <string name="premium_services_activity_conversation_description_4">Chỉ xóa cục bộ, không ảnh hưởng đến phía bên kia</string>
     <string name="premium_services_activity_conversation_subtitle">Xuất nội dung và giải phóng bộ nhớ</string>
     <string name="premium_services_activity_conversation_title">Quản lý cuộc trò chuyện</string>
-    <string name="premium_services_activity_description_part1_subtitle">Kết nối trực tiếp giữa các thiết bị</string>
-    <string name="premium_services_activity_description_part1_title">Chất lượng âm thanh/video HD</string>
-    <string name="premium_services_activity_description_part2_subtitle">Không lưu dấu vết trên đám mây</string>
-    <string name="premium_services_activity_description_part2_title">Quyền riêng tư – Bảo mật</string>
-    <string name="premium_services_activity_description_part3_subtitle">Tiết kiệm năng lượng</string>
-    <string name="premium_services_activity_description_part3_title">Thân thiện môi trường</string>
     <string name="premium_services_activity_group_call_description_1">Âm thanh/video chất lượng cao</string>
     <string name="premium_services_activity_group_call_description_2">Kết nối trực tiếp giữa các thiết bị</string>
     <string name="premium_services_activity_group_call_description_3">An toàn &amp; riêng tư</string>
     <string name="premium_services_activity_group_call_description_4">Không lưu dấu vết trên đám mây</string>
     <string name="premium_services_activity_group_call_subtitle">Mời liên hệ tham gia cuộc gọi nhóm thoại/video</string>
     <string name="premium_services_activity_group_call_title">Cuộc gọi nhóm</string>
-    <string name="premium_services_activity_privacy_description_1">Khóa ứng dụng bằng sinh trắc học hoặc mã bảo mật</string>
-    <string name="premium_services_activity_privacy_description_2">Ẩn màn hình cuối cùng trong bộ chuyển đổi ứng dụng</string>
-    <string name="premium_services_activity_privacy_description_3">Tin nhắn tạm thời tự biến mất sau một thời gian</string>
-    <string name="premium_services_activity_privacy_description_4">Chặn liên hệ gọi cho bạn</string>
-    <string name="premium_services_activity_privacy_subtitle">Kiểm soát ứng dụng, liên hệ và tin nhắn</string>
-    <string name="premium_services_activity_privacy_title">Bảo mật hơn</string>
     <string name="premium_services_activity_space_description_1">Nhiều hồ sơ với liên hệ, trò chuyện và lịch sử riêng</string>
     <string name="premium_services_activity_space_description_2">Giao diện, thông báo và cài đặt cá nhân hóa</string>
     <string name="premium_services_activity_space_description_3">Dành cho gia đình, bạn bè, công việc, thể thao, v.v.</string>
@@ -834,9 +884,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">Thêm hồ sơ</string>
     <string name="profile_fragment_create_profile">Tạo hồ sơ</string>
-    <string name="profile_fragment_default_action">Kích hoạt</string>
-    <string name="profile_fragment_default_profile_title">Hồ sơ đang hoạt động</string>
-    <string name="profile_fragment_identity_title">Hồ sơ</string>
     <string name="profile_fragment_message">Hồ sơ này cho phép bạn mời liên hệ thiết lập mối quan hệ riêng tư với bạn, dưới quyền kiểm soát của bạn.</string>
     <string name="profile_fragment_twincode_title">Mã mời</string>
 
@@ -852,7 +899,7 @@
     <string name="proxy_activity_list_information">Chỉ sử dụng proxy từ danh sách bên dưới nếu ứng dụng không thể kết nối với dịch vụ mà không có proxy.</string>
     <string name="proxy_activity_onboarding">Khi quyền truy cập vào máy chủ tín hiệu của ứng dụng bị chặn ở quốc gia của bạn, proxy có thể bỏ qua các lệnh chặn này trong nhiều trường hợp và cho phép bạn giao tiếp riêng tư. Ngoài proxy trong ứng dụng, bạn có thể tự tạo proxy hoặc sử dụng proxy do người khác tạo. Proxy không thể truy cập nội dung đang được trao đổi trong mọi trường hợp.</string>
     <string name="proxy_activity_information">Chỉ sử dụng proxy nếu bạn không thể kết nối với dịch vụ từ mạng Wi-Fi hoặc mạng di động tiêu chuẩn.</string>
-    <string name="proxy_activity_share">Mở liên kết %1$s bằng twinme trên thiết bị của bạn để tự động cấu hình proxy này.</string>
+    <string name="proxy_activity_share">Mở liên kết %1$s bằng Skred trên thiết bị của bạn để tự động cấu hình proxy này.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Bạn có muốn sử dụng URL của proxy này không?</string>
     <string name="proxy_activity_warning">Cảnh báo! URL của proxy này không cho phép bạn kết nối với dịch vụ của ứng dụng.</string>
@@ -952,6 +999,23 @@
     <string name="settings_activity_welcome_screen_summary">Hiển thị màn hình chào mừng</string>
 
     <!-- ShareActivity -->
+    <string name="settings_space_activity_allow_notifications">Cho phép thông báo</string>
+    <string name="settings_space_activity_allow_notifications_message">Thông báo chỉ hiển thị khi Không gian đó đang hoạt động.</string>
+    <string name="settings_space_activity_default_message">Không gian mặc định sẽ được hiển thị khi ứng dụng khởi động.</string>
+    <string name="settings_space_activity_default_value_message">Các giá trị này ghi đè lên cài đặt mặc định của ứng dụng.</string>
+    <string name="settings_space_activity_default_value_title">Thay đổi cài đặt mặc định\"</string>
+    <string name="settings_space_activity_header_message">Các giá trị này sẽ ghi đè cài đặt ứng dụng cho Không gian này.</string>
+    <string name="settings_space_activity_permission_create_contact">Tạo liên hệ</string>
+    <string name="settings_space_activity_permission_create_group">Tạo nhóm</string>
+    <string name="settings_space_activity_permission_move_contact">Chuyển liên hệ</string>
+    <string name="settings_space_activity_permission_move_group">Chuyển nhóm</string>
+    <string name="settings_space_activity_permission_share_space_card">Chia sẻ mã mời Không gian</string>
+    <string name="settings_space_activity_permission_update_identity">Cập nhật hồ sơ</string>
+    <string name="settings_space_activity_permissions_title">Quyền</string>
+    <string name="settings_space_activity_reset_application_value">Đặt lại về cài đặt mặc định</string>
+    <string name="settings_space_activity_secret_message">Không gian bí mật không hiển thị trong danh sách và chỉ truy cập được bằng cách nhập đúng tên. Tên này không thể khôi phục, vì vậy đừng quên!</string>
+    <string name="settings_space_activity_secret_title">Không gian bí mật</string>
+    <string name="settings_space_activity_space_category_title">Không gian</string>
     <string name="share_activity_contact_list">Liên hệ</string>
     <string name="share_activity_group_list">Nhóm</string>
     <string name="share_activity_title">Chia sẻ</string>
@@ -982,6 +1046,7 @@
     <string name="show_contact_activity_pending_message">Mối quan hệ này đang được thiết lập. Vui lòng đợi.</string>
     <string name="show_contact_activity_revoked">Đã xóa</string>
     <string name="show_contact_activity_settings_coach_mark">Xác định quyền của liên hệ này trong mối quan hệ với bạn.</string>
+    <string name="show_contact_activity_space">Không gian:</string>
     <string name="show_contact_activity_video">Video</string>
 
     <!-- ShowGroupActivity -->
@@ -1001,6 +1066,12 @@
     <string name="show_room_activity_room_title">Phòng</string>
 
     <!--SpaceAppearanceActivity -->
+    <string name="show_space_fragment_management">Quản lý</string>
+    <string name="show_space_fragment_move_message">Bạn cần có nhiều Không gian để chuyển liên hệ.</string>
+    <string name="show_space_fragment_secret_confirm">Xác nhận chế độ \\\"Bí mật\\\"</string>
+    <string name="show_space_fragment_secret_disabled_message">Không thể đặt Không gian duy nhất làm bí mật. Hãy tạo thêm một Không gian.</string>
+    <string name="show_space_fragment_secret_message">Không gian bí mật không xuất hiện trong danh sách và chỉ có thể mở bằng cách nhập tên chính xác.</string>
+    <string name="show_space_fragment_secret_message_confirm">Bạn có chắc muốn đặt Không gian này làm \\\"Bí mật\\\"?</string>
     <string name="space_appearance_activity_background_image_title">Hình ảnh</string>
     <string name="space_appearance_activity_background_message">Tùy chỉnh nền trò chuyện bằng màu sắc hoặc hình ảnh.</string>
     <string name="space_appearance_activity_background_text_title">Văn bản</string>
@@ -1023,7 +1094,18 @@
     <string name="space_appearance_activity_theme">Giao diện</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">Không gian đang hoạt động</string>
+    <string name="spaces_activity_add_space">Thêm Không gian</string>
+    <string name="spaces_activity_create_new_space">Tạo Không gian</string>
+    <string name="spaces_activity_current_space_action">Tải</string>
+    <string name="spaces_activity_delete_default_message">Không thể xóa Không gian mặc định.</string>
+    <string name="spaces_activity_join_space">Nhập Không gian</string>
     <string name="spaces_activity_message">Một Không gian là nơi các vai trò khác nhau của bạn gặp gỡ các vòng xã hội đa dạng, bao gồm cả những mối quan hệ bí mật nhất.</string>
+    <string name="spaces_activity_move_contact_already_in_space">Liên hệ đã có trong Không gian này.</string>
+    <string name="spaces_activity_move_group_already_in_space">Nhóm đã có trong Không gian này.</string>
+    <string name="spaces_activity_move_group_no_profile">Để chuyển nhóm, bạn cần hoàn tất hồ sơ đại diện. Bạn có muốn hoàn tất không?</string>
+    <string name="spaces_activity_move_message">Bạn có chắc muốn chuyển nhóm này?</string>
+    <string name="spaces_activity_permission_not_allowed">Bạn không được quản trị viên Không gian cho phép thực hiện hành động này.</string>
     <string name="spaces_activity_sample_business">Công việc</string>
     <string name="spaces_activity_sample_business_name">BS. Nguyễn Văn A</string>
     <string name="spaces_activity_sample_family">Gia đình</string>
@@ -1057,16 +1139,16 @@
     <string name="template_click_to_call_activity_template_meeting_placeholder">Cuộc họp</string>
     <string name="template_click_to_call_activity_template_video_bell">Chuông cửa video</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Chuông cửa</string>
-    <string name="template_space_activity_template_business_placeholder">Tên (BS Nguyễn Văn A, Cô Hoa,...)</string>
+    <string name="template_space_activity_template_business_placeholder">Tên (BS Nguyễn Văn A, Cô Hoa,…)</string>
     <string name="template_space_activity_template_business_profile">Cô Samantha Smith</string>
-    <string name="template_space_activity_template_family_placeholder">Tên (Johny, Sam,...)</string>
+    <string name="template_space_activity_template_family_placeholder">Tên (Johny, Sam,…)</string>
     <string name="template_space_activity_template_family_profile">Sam</string>
     <string name="template_space_activity_template_friends_placeholder">Tên (Bố, Mẹ,…)</string>
     <string name="template_space_activity_template_friends_profile">Mẹ</string>
     <string name="template_space_activity_template_other">Khác</string>
-    <string name="template_space_activity_template_other_placeholder">Tên (Bố, Mẹ, Johny, BS Nguyễn Văn A,...)</string>
+    <string name="template_space_activity_template_other_placeholder">Tên (Bố, Mẹ, Johny, BS Nguyễn Văn A,…)</string>
     <string name="template_space_activity_template_title">Mẫu</string>
-    <string name="twincode_activity_message">Yêu cầu bạn bè gần bạn quét mã QR mời của bạn bằng twinme, hoặc chạm vào mã mời để sao chép.</string>
+    <string name="twincode_activity_message">Yêu cầu bạn bè gần bạn quét mã QR mời của bạn bằng Skred, hoặc chạm vào mã mời để sao chép.</string>
 
     <!-- UpdateAppActivity -->
     <string name="update_app_activity_update_available">Có bản cập nhật</string>
@@ -1091,10 +1173,11 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">Bằng cách nhấn %1$s, tôi xác nhận rằng tôi đã đọc và chấp nhận:</string>
-    <string name="welcome_activity_next">Tiếp</string>
+    <string name="welcome_activity_enter">Tiếp</string>
     <string name="welcome_activity_pass">Bỏ qua</string>
     <string name="welcome_activity_privacy_policy">Chính sách bảo mật</string>
     <string name="welcome_activity_start">Bắt đầu</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">Nhắn tin và gọi thoại/video HD bảo vệ quyền riêng tư theo thiết kế.</string>
     <string name="welcome_activity_step2_message">Giao tiếp \"peer-to-peer\" bảo mật: không lưu dấu vết trên đám mây.</string>
     <string name="welcome_activity_step3_message">Không cần số điện thoại, danh bạ hay tài khoản người dùng: bạn chọn cách được nhận diện theo người bạn đang giao tiếp.</string>

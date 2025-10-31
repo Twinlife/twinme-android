@@ -103,6 +103,8 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
 
         Intent intent = getIntent();
         mAllowCopy = intent.getBooleanExtra(Intents.INTENT_ALLOW_COPY_FILE, getTwinmeApplication().fileCopyAllowed());
+        mAllowEphemeralMessage = intent.getBooleanExtra(Intents.INTENT_ALLOW_EPHEMERAL, false);
+        mExpireTimeout = intent.getLongExtra(Intents.INTENT_EXPIRE_TIMEOUT, 0);
         mPreviewStartWithMedia = intent.getBooleanExtra(Intents.INTENT_PREVIEW_START_WITH_MEDIA, false);
 
         mOriginatorId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_CONTACT_ID));
@@ -243,6 +245,8 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         data.putExtra(Intents.INTENT_TEXT_MESSAGE, mEditText.getText().toString());
         data.putExtra(Intents.INTENT_ALLOW_COPY_FILE, mAllowCopy);
         data.putExtra(Intents.INTENT_ALLOW_COPY_TEXT, mAllowCopy);
+        data.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+        data.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
         data.putParcelableArrayListExtra(Intents.INTENT_CAPTURED_FILE, new ArrayList<>(mFiles));
 
         // Clean the media info: we don't want to erase the file.

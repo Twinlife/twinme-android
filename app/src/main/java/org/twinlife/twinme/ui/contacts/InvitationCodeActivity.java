@@ -392,7 +392,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
 
-        mInvitationCodeService.createInvitationWithCode(false);
+        mInvitationCodeService.createInvitationWithCode(isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL));
     }
 
     private UIInvitationCode addInvitationCode(Invitation invitation) {
@@ -433,7 +433,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
             defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
         } else {
             defaultConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
-            defaultConfirmView.setConfirmTitle(getString(R.string.welcome_activity_next));
+            defaultConfirmView.setConfirmTitle(getString(R.string.welcome_activity_enter));
         }
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {

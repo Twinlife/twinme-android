@@ -10,11 +10,15 @@ package org.twinlife.twinme.ui.callActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,23 +30,33 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.graphics.ColorUtils;
+import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.CallParticipantService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.ui.users.OnContactTouchListener;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIContactListAdapter;
 import org.twinlife.twinme.ui.users.UISelectableContact;
 import org.twinlife.twinme.ui.users.UISelectableContactListAdapter;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.RoundedImageView;
+import org.twinlife.twinme.utils.AlertMessageView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,16 +64,30 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
     private static final String LOG_TAG = "AddCallParticipant...";
     private static final boolean DEBUG = false;
 
+    private static final int PROFILE_VIEW_COLOR = Color.argb(255, 143, 150, 164);
+    private static final float DESIGN_ITEM_ROUND_CORNER_RADIUS_DP = 8f;
+
+    private static final int CHANGE_SPACE = 1;
+
     private static final float DESIGN_ITEM_VIEW_HEIGHT = 120f;
     private static final float DESIGN_SELECTED_BOTTOM_MARGIN = 40f;
+    private static final float DESIGN_SPACE_VIEW_HEIGHT = 144f;
     private static int SELECTED_BOTTOM_MARGIN;
     private static int ITEM_VIEW_HEIGHT;
+    private static int SPACE_VIEW_HEIGHT;
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
     private UISelectableContactListAdapter mUIContactListAdapter;
     private UIContactListAdapter mSelectedUIContactListAdapter;
     private View mActionSaveView;
+    private View mSpaceView;
+    private TextView mSpaceNameView;
+    private TextView mProfileView;
+    private RoundedImageView mAvatarView;
+    private GradientDrawable mGradientDrawable;
+    private View mNoSpaceAvatarView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
     private RecyclerView mSelectedUIContactRecyclerView;
     private RecyclerView mUIContactRecyclerView;
     private EditText mSearchEditText;
@@ -70,6 +98,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
 
     private CallParticipantService mCallParticipantService;
 
+    private Space mSpace;
 
     private int mMaxMemberCount = 0;
 
@@ -122,8 +151,6 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         }
 
         super.onResume();
-
-        mCallParticipantService.getContacts();
     }
 
     //
@@ -188,9 +215,38 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CHANGE_SPACE) {
+            String value = data != null ? data.getStringExtra(Intents.INTENT_SPACE_SELECTION) : null;
+            if (value != null) {
+                mCallParticipantService.getSpace(UUID.fromString(value));
+            }
+        }
+    }
+
     //
     // Override TwinmeActivityImpl methods
     //
+
+    @Override
+    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace: space=" + space);
+        }
+
+        mSpace = space;
+
+        updateSpace();
+
+        mCallParticipantService.getContacts();
+    }
 
     /**
      * Get the list of contacts and build the UI contact list selector.
@@ -244,6 +300,11 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         showBackButton(true);
         setTitle(getString(R.string.add_call_participant_activity_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
+
+        applyInsets(R.id.add_call_participant_activity_layout, R.id.add_call_participant_activity_tool_bar, R.id.add_call_participant_activity_list_view, Design.TOOLBAR_COLOR, false);
+
+        View backgroundView = findViewById(R.id.add_call_participant_activity_background);
+        backgroundView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         View searchView = findViewById(R.id.add_call_participant_activity_search_view);
         searchView.setBackgroundColor(Design.TOOLBAR_COLOR);
@@ -308,12 +369,48 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mActionSaveView.getLayoutParams();
         marginLayoutParams.bottomMargin = SELECTED_BOTTOM_MARGIN;
 
+        mSpaceNameView = findViewById(R.id.add_call_participant_activity_space_name_view);
+        mSpaceNameView.setTypeface(Design.FONT_MEDIUM44.typeface);
+        mSpaceNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM44.size);
+        mSpaceNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileView = findViewById(R.id.add_call_participant_activity_profile_name_view);
+        mProfileView.setTypeface(Design.FONT_REGULAR32.typeface);
+        mProfileView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
+        mProfileView.setTextColor(PROFILE_VIEW_COLOR);
+
+        mAvatarView = findViewById(R.id.add_call_participant_activity_space_avatar_view);
+
+        mSpaceView = findViewById(R.id.add_call_participant_activity_space_view);
+        mSpaceView.setOnClickListener(v -> onSpaceClick());
+        mSpaceView.setBackgroundColor(Design.WHITE_COLOR);
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = SPACE_VIEW_HEIGHT;
+
+        View currentSpaceView = findViewById(R.id.add_call_participant_activity_current_space_view);
+
+        mGradientDrawable = new GradientDrawable();
+        mGradientDrawable.mutate();
+        mGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        ViewCompat.setBackground(currentSpaceView, mGradientDrawable);
+
+        mNoSpaceAvatarView = findViewById(R.id.add_call_participant_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        ViewCompat.setBackground(mNoSpaceAvatarView, mNoSpaceAvatarGradientDrawable);
+
         // List of contacts the user has.
         LinearLayoutManager uiContactLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mUIContactRecyclerView = findViewById(R.id.add_call_participant_activity_list_view);
         mUIContactRecyclerView.setLayoutManager(uiContactLinearLayoutManager);
         mUIContactRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         mUIContactRecyclerView.setItemAnimator(null);
+        mUIContactRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         OnContactTouchListener onContactTouchListener = new OnContactTouchListener(this, mUIContactRecyclerView, this);
         mUIContactRecyclerView.addOnItemTouchListener(onContactTouchListener);
 
@@ -390,6 +487,67 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         }
 
         mUIPostInitialized = true;
+    }
+
+    private void onSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSwitchSpaceClick");
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivityForResult(intent, CHANGE_SPACE);
+    }
+
+    private void updateSpace() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateSpace");
+        }
+
+        if (!mUIInitialized || mSpace == null) {
+
+            return;
+        }
+
+        mSpaceView.setVisibility(View.VISIBLE);
+
+        if (mCallParticipantService.numberSpaces(false) == 1) {
+            mSpaceView.setVisibility(View.GONE);
+        } else {
+            mSpaceView.setVisibility(View.VISIBLE);
+        }
+
+        mSpaceNameView.setText(mSpace.getName());
+        if (mSpace.getProfile() != null) {
+            mProfileView.setText(mSpace.getProfile().getName());
+        }
+
+        float corner = DESIGN_ITEM_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+        float[] radii = new float[8];
+        Arrays.fill(radii, corner);
+
+        if (mSpace.hasSpaceAvatar()) {
+            mAvatarView.setVisibility(View.VISIBLE);
+            mNoSpaceAvatarView.setVisibility(View.GONE);
+            mCallParticipantService.getSpaceImage(mSpace, (Bitmap spaceAvatar) ->
+                    mAvatarView.setImageBitmap(spaceAvatar, radii));
+
+        } else {
+            mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+            mAvatarView.setVisibility(View.GONE);
+            mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+        }
+
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            mGradientDrawable.setCornerRadii(new float[]{corner, corner, 0, 0, 0, 0, corner, corner});
+        } else {
+            mGradientDrawable.setCornerRadii(new float[]{0, 0, corner, corner, corner, corner, 0, 0});
+        }
+
+        mGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_GREY));
+        mNoSpaceAvatarGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_GREY));
     }
 
     /**
@@ -484,5 +642,6 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
 
         SELECTED_BOTTOM_MARGIN = (int) (DESIGN_SELECTED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
         ITEM_VIEW_HEIGHT = (int) (DESIGN_ITEM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        SPACE_VIEW_HEIGHT = (int) (DESIGN_SPACE_VIEW_HEIGHT * Design.HEIGHT_RATIO);
     }
 }

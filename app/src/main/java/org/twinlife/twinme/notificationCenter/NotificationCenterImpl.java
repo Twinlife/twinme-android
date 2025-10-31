@@ -87,6 +87,7 @@ import org.twinlife.twinme.ui.conversationActivity.UIReaction;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.utils.CommonUtils;
 
 import java.util.ArrayList;
@@ -290,6 +291,20 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             case NAMED_FILE_DESCRIPTOR:
                 type = NotificationType.NEW_FILE_MESSAGE;
+                break;
+
+            case GEOLOCATION_DESCRIPTOR:
+                type = NotificationType.NEW_GEOLOCATION;
+
+                if (mTwinmeApplication.getDisplayNotificationSender() && mTwinmeApplication.getDisplayNotificationContent()) {
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notifications_fragment_item_geolocation_message));
+                } else if (mTwinmeApplication.getDisplayNotificationSender() && !mTwinmeApplication.getDisplayNotificationContent()) {
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                } else if (!mTwinmeApplication.getDisplayNotificationSender() && mTwinmeApplication.getDisplayNotificationContent()) {
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_geolocation_message_received));
+                } else {
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                }
                 break;
 
             case INVITATION_DESCRIPTOR:
@@ -769,6 +784,18 @@ public class NotificationCenterImpl implements NotificationCenter {
                     }
                     break;
 
+                case NEW_GEOLOCATION:
+                    if (displayNotificationSender && displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_geolocation_message));
+                    } else if (displayNotificationSender) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                    } else if (displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_geolocation_message_received));
+                    } else {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                    }
+                    break;
+
                 case NEW_GROUP_INVITATION:
                 case NEW_CONTACT_INVITATION:
                     if (displayNotificationSender && displayNotificationContent) {
@@ -899,18 +926,28 @@ public class NotificationCenterImpl implements NotificationCenter {
         if (contact instanceof GroupMember) {
             GroupMember groupMember = (GroupMember) contact;
             Originator owner = groupMember.getGroup();
-
             if (owner instanceof Contact) {
                 conversationIntent.putExtra(Intents.INTENT_CONTACT_ID, owner.getId().toString());
+                if (contact.getSpace() != null) {
+                    conversationIntent.putExtra(Intents.INTENT_SPACE_ID, contact.getSpace().getId().toString());
+                }
             } else {
                 conversationIntent.putExtra(Intents.INTENT_GROUP_ID, owner.getId().toString());
+                if (groupMember.getSpace() != null) {
+                    conversationIntent.putExtra(Intents.INTENT_SPACE_ID, groupMember.getSpace().getId().toString());
+                }
             }
         } else if (contact.isGroup()) {
             // The NEW_GROUP_JOINED notification is received on the Group object so we have a group id.
             conversationIntent.putExtra(Intents.INTENT_GROUP_ID, contact.getId().toString());
-
+            if (contact.getSpace() != null) {
+                conversationIntent.putExtra(Intents.INTENT_SPACE_ID, contact.getSpace().getId().toString());
+            }
         } else {
             conversationIntent.putExtra(Intents.INTENT_CONTACT_ID, contact.getId().toString());
+            if (contact.getSpace() != null) {
+                conversationIntent.putExtra(Intents.INTENT_SPACE_ID, contact.getSpace().getId().toString());
+            }
         }
         PendingIntent conversationPendingIntent = createPendingIntent(notificationId, conversationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -1027,8 +1064,10 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
         }
 
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
-        updateMessageSummary();
+        if (showNotification(contact)) {
+            mNotificationManager.notify(notificationId, notificationBuilder.build());
+            updateMessageSummary();
+        }
     }
 
     private boolean allowReply(@NonNull Originator contact, @NonNull NotificationType notificationType) {
@@ -1058,6 +1097,10 @@ public class NotificationCenterImpl implements NotificationCenter {
         contactIntent.putExtra(Intents.INTENT_SHOW_SPLASHSCREEN, false);
         contactIntent.putExtra(Intents.INTENT_NEW_CONTACT, true);
         contactIntent.putExtra(Intents.INTENT_CONTACT_ID, contact.getId().toString());
+        if (contact.getSpace() != null) {
+            contactIntent.putExtra(Intents.INTENT_SPACE_ID, contact.getSpace().getId().toString());
+        }
+
         PendingIntent conversationPendingIntent = createPendingIntent(notificationId, contactIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mApplication, mContactChannel);
@@ -1081,7 +1124,10 @@ public class NotificationCenterImpl implements NotificationCenter {
             long[] pattern = {0L, 500L};
             notificationBuilder.setVibrate(pattern);
         }
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+
+        if (showNotification(contact)) {
+            mNotificationManager.notify(notificationId, notificationBuilder.build());
+        }
 
         mTwinmeContext.createNotification(NotificationType.NEW_CONTACT, notificationId, contact, null, null);
     }
@@ -1127,7 +1173,10 @@ public class NotificationCenterImpl implements NotificationCenter {
             long[] pattern = {0L, 500L};
             notificationBuilder.setVibrate(pattern);
         }
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+
+        if (showNotification(contact)) {
+            mNotificationManager.notify(notificationId, notificationBuilder.build());
+        }
 
         mTwinmeContext.createNotification(NotificationType.DELETED_CONTACT, notificationId, contact, null, null);
 
@@ -1193,7 +1242,9 @@ public class NotificationCenterImpl implements NotificationCenter {
                 long[] pattern = {0L, 500L};
                 notificationBuilder.setVibrate(pattern);
             }
-            mNotificationManager.notify(notificationId, notificationBuilder.build());
+            if (showNotification(contact)) {
+                mNotificationManager.notify(notificationId, notificationBuilder.build());
+            }
         } else {
             notificationId = Notification.NO_NOTIFICATION_ID;
         }
@@ -1930,7 +1981,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
         int notificationId = newNotificationId();
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+        if (showNotification(originator)) {
+            mNotificationManager.notify(notificationId, notificationBuilder.build());
+        }
 
         NotificationType notificationType = video ? NotificationType.MISSED_VIDEO_CALL : NotificationType.MISSED_AUDIO_CALL;
         mTwinmeContext.createNotification(notificationType, notificationId, originator, null, null);
@@ -2234,6 +2287,17 @@ public class NotificationCenterImpl implements NotificationCenter {
                 editor.apply();
             }
         }
+    }
+
+    private boolean showNotification(Originator originator) {
+
+        if (originator.getSpace() == null) {
+            return true;
+        }
+
+        boolean allowNotification = originator.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DISPLAY_NOTIFICATIONS, true);
+        return allowNotification || (!mTwinmeApplication.isInBackground() && mTwinmeContext.isCurrentSpace(originator));
+
     }
 
     private String emojiFromAnnotationValue(UIReaction.ReactionType reactionType) {

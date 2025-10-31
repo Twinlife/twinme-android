@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -61,6 +62,7 @@ import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
+import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
 import org.twinlife.twinme.ui.rooms.ShowRoomActivity;
@@ -87,6 +89,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
     private static final int DESIGN_CALL_FLOATING_SIZE = 180;
     private static final int DESIGN_TOAST_IMAGE_SIZE = 104;
 
+    protected boolean mCanShowLockScreen = true;
     protected ProgressBar mProgressBarView;
     @Nullable
     protected CallFloatingView mCallFloatingView;
@@ -224,6 +227,12 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
                 appStateInfo.setInfoFloatingViewState(AppStateInfo.InfoFloatingViewState.DEFAULT);
             }
         }
+
+        if (getTwinmeApplication().lastScreenHidden()) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     @Override
@@ -266,6 +275,12 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             showCallFloatingView(info);
         } else {
             hideCallFloatingView();
+        }
+
+        if (getTwinmeApplication().showLockScreen() && mCanShowLockScreen) {
+            Intent intent = new Intent();
+            intent.setClass(this, LockScreenActivity.class);
+            startActivity(intent);
         }
 
         onConnectionStatusChange(twinmeApplication.getConnectionStatus());
@@ -517,6 +532,10 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             setSupportActionBar(toolbar);
 
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().show();
+            }
+
             TextView titleView = findViewById(R.id.toolbar_title);
             if (titleView != null) {
                 Design.updateTextFont(titleView, Design.FONT_BOLD34);
@@ -737,7 +756,6 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
         }
 
         CallStatus callStatus = inCallInfo.getCallMode();
-
         intent.putExtra(Intents.INTENT_CALL_MODE, callStatus);
         intent.setClass(this, CallActivity.class);
         startActivity(intent);

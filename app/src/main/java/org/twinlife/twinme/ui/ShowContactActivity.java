@@ -27,6 +27,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -46,6 +47,7 @@ import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.CertificationLevel;
 import org.twinlife.twinme.models.Contact;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
@@ -59,16 +61,20 @@ import org.twinlife.twinme.ui.contacts.AuthentifiedRelationActivity;
 import org.twinlife.twinme.ui.contacts.ContactCapabilitiesActivity;
 import org.twinlife.twinme.ui.contacts.MenuCertifyView;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.CircularImageView;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
 import org.twinlife.twinme.utils.coachmark.CoachMark;
 import org.twinlife.twinme.utils.coachmark.CoachMarkView;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -79,6 +85,10 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
     private static final int COACH_MARK_DELAY = 500;
 
+    private static final int DESIGN_PROFILE_NAME_COLOR = Color.rgb(143, 150, 164);
+
+    private static final float DESIGN_SPACE_ROUND_CORNER_RADIUS_DP = 14f;
+    private static final int DESIGN_SECTION_HEIGHT = 120;
     private static final float DESIGN_NAME_WIDTH_PERCENT = 0.6667f;
     private static final int DESIGN_CERTIFIED_MARGIN = 20;
     private static final float DESIGN_CERTIFIED_HEIGHT = 34;
@@ -92,6 +102,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
     private View mBackClickableView;
     private ImageView mAvatarView;
     private View mContentView;
+    private View mSpaceView;
     private View mActionView;
     private TextView mNameView;
     private View mCertifiedHeaderView;
@@ -101,6 +112,12 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
     private View mFallbackView;
     private View mAudioClickableView;
     private View mVideoClickableView;
+    private RoundedImageView mSpaceAvatarView;
+    private View mNoSpaceAvatarView;
+    private TextView mNoSpaceAvatarTextView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
+    private TextView mSpaceTextView;
+    private TextView mProfileTextView;
     private View mIdentityView;
     private View mSettingsView;
     private View mCertifiedView;
@@ -279,6 +296,8 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         updateContact();
+
+        checkSpacePermission();
     }
 
     @Override
@@ -376,6 +395,8 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         updateContact();
+
+        checkSpacePermission();
     }
 
     @Override
@@ -604,7 +625,39 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         mLastCallsTextView = findViewById(R.id.show_contact_activity_last_calls_text_view);
 
+        mSpaceView = findViewById(R.id.show_contact_activity_space_view);
+        mSpaceView.setOnClickListener(view -> onMoveSpaceClick());
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_SECTION_HEIGHT * Design.HEIGHT_RATIO);
+
+        mSpaceAvatarView = findViewById(R.id.show_contact_activity_space_avatar_view);
+
+        mNoSpaceAvatarView = findViewById(R.id.show_contact_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
+
+        mNoSpaceAvatarTextView = findViewById(R.id.show_contact_activity_no_space_avatar_text_view);
+        mNoSpaceAvatarTextView.setTypeface(Design.FONT_BOLD44.typeface);
+        mNoSpaceAvatarTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD44.size);
+        mNoSpaceAvatarTextView.setTextColor(Color.WHITE);
+
+        mSpaceTextView = findViewById(R.id.show_contact_activity_space_name_view);
+        mSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
+        mSpaceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM34.size);
+        mSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileTextView = findViewById(R.id.show_contact_activity_profile_name_view);
+        mProfileTextView.setTypeface(Design.FONT_MEDIUM32.typeface);
+        mProfileTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
+        mProfileTextView.setTextColor(DESIGN_PROFILE_NAME_COLOR);
+
         mConversationsTitleView = findViewById(R.id.show_contact_activity_conversations_title_view);
+        mConversationsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mConversationsTitleView.getLayoutParams();
         marginLayoutParams.topMargin = Design.TITLE_IDENTITY_TOP_MARGIN;
@@ -750,6 +803,24 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
     }
 
+    private void onMoveSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onMoveSpaceClick");
+        }
+
+        if (!mContact.getSpace().hasPermission(Space.Permission.MOVE_CONTACT)) {
+            showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivity(intent);
+    }
+
     private void onAudioClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onAudioClick");
@@ -783,6 +854,11 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         if (mContact != null && mContactId != null) {
+
+            if (!mContact.getSpace().hasPermission(Space.Permission.UPDATE_IDENTITY)) {
+                showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+                return;
+            }
 
             if (mContact.hasPrivatePeer()) {
                 startActivity(EditIdentityActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
@@ -824,16 +900,6 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
     }
 
-    private void onRemoveClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onRemoveClick");
-        }
-
-        if (mContact != null && mShowContactService != null) {
-            mShowContactService.deleteContact(mContact);
-        }
-    }
-
     private void onSettingsClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSettingsClick");
@@ -841,6 +907,16 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         if (mContactId != null) {
             startActivity(ContactCapabilitiesActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
+        }
+    }
+
+    private void onRemoveClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onRemoveClick");
+        }
+
+        if (mContact != null && mShowContactService != null) {
+            mShowContactService.deleteContact(mContact);
         }
     }
 
@@ -892,6 +968,38 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             }
 
             mIdentityAvatarView.setImage(this, null, new CircularImageDescriptor(mIdentityAvatar, 0.5f, 0.5f, 0.5f));
+            if (mContact.getSpace() != null) {
+                mSpaceTextView.setText(mContact.getSpace().getName());
+
+                if (mContact.getSpace().getProfile() != null) {
+                    mProfileTextView.setText(mContact.getSpace().getProfile().getName());
+                }
+
+                float corner = DESIGN_SPACE_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+                float[] radii = new float[18];
+                Arrays.fill(radii, corner);
+
+                if (mContact.getSpace().hasSpaceAvatar()) {
+                    mSpaceAvatarView.setVisibility(View.VISIBLE);
+                    mNoSpaceAvatarView.setVisibility(View.GONE);
+                    mNoSpaceAvatarTextView.setVisibility(View.GONE);
+                    mShowContactService.getSpaceImage(mContact.getSpace(), (Bitmap spaceAvatar) ->
+                            mSpaceAvatarView.setImageBitmap(spaceAvatar, radii));
+
+                } else {
+                    mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+                    mSpaceAvatarView.setVisibility(View.GONE);
+                    mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+                    mNoSpaceAvatarTextView.setVisibility(View.VISIBLE);
+
+                    String name = mContact.getSpace().getName();
+                    if (!name.isEmpty()) {
+                        mNoSpaceAvatarTextView.setText(name.substring(0, 1).toUpperCase());
+                    }
+                }
+
+                mNoSpaceAvatarGradientDrawable.setColor(CommonUtils.parseColor(mContact.getSpace().getStyle(), Design.getMainStyle()));
+            }
 
             if (getTwinmeApplication().inCallInfo() != null || !mContact.getCapabilities().hasAudio() || !mContact.hasPrivatePeer() || hasSchedule()) {
                 mAudioClickableView.setAlpha(0.5f);
@@ -940,6 +1048,30 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
                     marginLayoutParams.setMarginStart(0);
                 }
             }
+        }
+    }
+
+    private void checkSpacePermission() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "checkSpacePermission");
+        }
+
+        if (!mContact.getSpace().hasPermission(Space.Permission.MOVE_CONTACT)) {
+            mSpaceView.setAlpha(.5f);
+        } else {
+            mSpaceView.setAlpha(1.f);
+        }
+
+        if (getTwinmeApplication().inCallInfo() != null || !mContact.getCapabilities().hasAudio() || hasSchedule()) {
+            mAudioClickableView.setAlpha(0.5f);
+        } else {
+            mAudioClickableView.setAlpha(1f);
+        }
+
+        if (getTwinmeApplication().inCallInfo() != null || !mContact.getCapabilities().hasVideo() || hasSchedule()) {
+            mVideoClickableView.setAlpha(0.5f);
+        } else {
+            mVideoClickableView.setAlpha(1f);
         }
     }
 

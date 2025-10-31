@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.util.Utils;
+import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.twinme.export.ExportState;
 import org.twinlife.twinme.export.ExportStats;
 import org.twinlife.twinme.models.Contact;
@@ -35,17 +36,19 @@ import org.twinlife.twinme.services.CleanUpService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.exportActivity.UIExport;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.ui.spaces.DeleteSpaceConfirmView;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
 
 public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpService.Observer {
     private static final String LOG_TAG = "CleanUpActivity";
@@ -68,6 +71,10 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
 
     private CleanUpService mCleanupService;
     private String mConversationName;
+
+    private Contact mContact;
+    private Group mGroup;
+    private Space mSpace;
 
     //
     // Override TwinmeActivityImpl methods
@@ -134,43 +141,58 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "onActionClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.cleanup_activity_layout);
+        if(!isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
+            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.cleanup_activity_layout);
 
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
+            PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
+            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            premiumFeatureConfirmView.setLayoutParams(layoutParams);
+            premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                @Override
+                public void onConfirmClick() {
+                    Intent intent = new Intent();
+                    intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                    startActivity(intent);
+                    premiumFeatureConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCancelClick() {
+                    premiumFeatureConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onDismissClick() {
+                    premiumFeatureConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                    percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                    setStatusBarColor();
+                }
+            };
+            premiumFeatureConfirmView.setObserver(observer);
+
+            percentRelativeLayout.addView(premiumFeatureConfirmView);
+            premiumFeatureConfirmView.show();
+
+            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+            setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        } else if (canCleanup()) {
+            if (mContact != null) {
+                mCleanupService.getImage(mContact, this::showConfirmView);
+            } else if (mGroup != null) {
+                mCleanupService.getImage(mGroup, this::showConfirmView);
+            } else if (mSpace != null) {
+                mCleanupService.getSpaceImage(mSpace, this::showConfirmView);
+            } else {
+                showConfirmView(null);
             }
-
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
-                setStatusBarColor();
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        }
     }
 
     //
@@ -182,6 +204,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "onGetContact: " + contact);
         }
 
+        mContact = contact;
         mConversationName = contact.getName();
     }
 
@@ -207,6 +230,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "onGetGroup: " + group);
         }
 
+        mGroup = group;
         mConversationName = group.getName();
     }
 
@@ -225,6 +249,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "onGetSpace: " + space);
         }
 
+        mSpace = space;
         mConversationName = space.getName();
     }
 
@@ -466,6 +491,100 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
         return false;
     }
 
+    private void showConfirmView(@Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showConfirmView");
+        }
+
+        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.cleanup_activity_layout);
+        if (mSpace != null) {
+
+            DeleteSpaceConfirmView deleteSpaceConfirmView = new DeleteSpaceConfirmView(this, null);
+            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            deleteSpaceConfirmView.setLayoutParams(layoutParams);
+
+            deleteSpaceConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
+            deleteSpaceConfirmView.setAvatar(avatar, false);
+            deleteSpaceConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
+
+            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                @Override
+                public void onConfirmClick() {
+                    clearConversation();
+                    deleteSpaceConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCancelClick() {
+                    deleteSpaceConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onDismissClick() {
+                    deleteSpaceConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                    percentRelativeLayout.removeView(deleteSpaceConfirmView);
+                    setStatusBarColor();
+                }
+            };
+            deleteSpaceConfirmView.setObserver(observer);
+
+            percentRelativeLayout.addView(deleteSpaceConfirmView);
+            deleteSpaceConfirmView.show();
+
+            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+            setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        } else {
+            DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
+            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            deleteConfirmView.setLayoutParams(layoutParams);
+
+            if (mContact == null && mGroup == null) {
+                deleteConfirmView.hideAvatar();
+            } else {
+                deleteConfirmView.setAvatar(avatar, avatar == null || avatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
+            }
+
+            deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
+
+            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                @Override
+                public void onConfirmClick() {
+                    clearConversation();
+                    deleteConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCancelClick() {
+                    deleteConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onDismissClick() {
+                    deleteConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                    percentRelativeLayout.removeView(deleteConfirmView);
+                    setStatusBarColor();
+                }
+            };
+            deleteConfirmView.setObserver(observer);
+
+            percentRelativeLayout.addView(deleteConfirmView);
+            deleteConfirmView.show();
+
+            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+            setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        }
+    }
+
     private void clearConversation() {
         if (DEBUG) {
             Log.d(LOG_TAG, "clearConversation");
@@ -474,9 +593,17 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
         UIExport allContent = mContents.get(1);
 
         if (allContent.isChecked()) {
-            mCleanupService.startCleanUp(mUICleanUpExpiration.getClearDate(), ConversationService.ClearMode.CLEAR_LOCAL);
+            if (mLocalCleanUpOnly) {
+                mCleanupService.startCleanUp(mUICleanUpExpiration.getClearDate(), ConversationService.ClearMode.CLEAR_LOCAL);
+            } else {
+                mCleanupService.startCleanUp(mUICleanUpExpiration.getClearDate(), ConversationService.ClearMode.CLEAR_BOTH);
+            }
         } else {
-            mCleanupService.startCleanUp(mUICleanUpExpiration.getClearDate(), ConversationService.ClearMode.CLEAR_MEDIA);
+            if (mLocalCleanUpOnly) {
+                mCleanupService.startCleanUp(mUICleanUpExpiration.getClearDate(), ConversationService.ClearMode.CLEAR_MEDIA);
+            } else {
+                mCleanupService.startCleanUp(mUICleanUpExpiration.getClearDate(), ConversationService.ClearMode.CLEAR_BOTH_MEDIA);
+            }
         }
     }
 }

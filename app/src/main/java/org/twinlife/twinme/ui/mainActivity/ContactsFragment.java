@@ -301,6 +301,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
             Log.d(LOG_TAG, "onSetCurrentSpace: space=" + space);
         }
 
+        mUIContactRecyclerView.scrollToPosition(0);
     }
 
     //
@@ -708,7 +709,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
         Design.updateTextFont(mNoContactTextView, Design.FONT_MEDIUM34);
     }
 
-    private void updateColor() {
+    public void updateColor() {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateColor");
         }

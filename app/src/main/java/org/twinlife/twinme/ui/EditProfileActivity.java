@@ -11,24 +11,30 @@ package org.twinlife.twinme.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputFilter;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -44,12 +50,17 @@ import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.EditIdentityService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
-import org.twinlife.twinme.ui.profiles.MenuPropagatingProfileView;
+import org.twinlife.twinme.ui.profiles.OnboardingProfileActivity;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
+import org.twinlife.twinme.ui.spaces.UITemplateSpace;
 import org.twinlife.twinme.utils.EditableView;
+import org.twinlife.twinme.utils.OnboardingDialog;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
+import org.twinlife.twinme.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -66,6 +77,8 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     protected static final float DESIGN_PROPAGATE_VIEW_TOP_MARGIN = 50f;
     protected static final float DESIGN_PROPAGATE_VIEW_BOTTOM_MARGIN = 30f;
 
+    private static final String PROFILE_ID = "profileId";
+
     private EditableView mEditableView;
 
     private TextView mTitleView;
@@ -81,6 +94,8 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     @Nullable
     private Profile mProfile;
     @Nullable
+    private Space mSpace;
+    @Nullable
     private String mName;
     @Nullable
     private String mDescription;
@@ -90,9 +105,14 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     private Bitmap mUpdatedProfileAvatar;
     private Bitmap mUpdatedProfileLargeAvatar;
     private File mUpdatedProfileAvatarFile;
+    private boolean mCreateProfile = false;
+    @Nullable
+    private UUID mProfileId;
+    private UITemplateSpace mUITemplateSpace;
 
     private EditIdentityService mEditIdentityService;
 
+    private boolean mShowOnboarding = false;
     private boolean mSaveProfile = true;
 
 
@@ -110,24 +130,70 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         setFullscreen();
 
-        Intent intent = getIntent();
-
-        UUID profileId = org.twinlife.twinlife.util.Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_PROFILE_ID));
-        if (profileId == null) {
-
-            finish();
-            return;
-        }
-
         initViews();
 
-        if (savedInstanceState != null && mEditableView != null) {
-            mEditableView.onCreate(savedInstanceState);
-            updateSelectedImage();
+        if (savedInstanceState != null) {
+            // Restore saved profileId created after user answers POST_NOTIFICATIONS.
+            mProfileId = Utils.UUIDFromString(savedInstanceState.getString(PROFILE_ID));
+            if (mEditableView != null) {
+                mEditableView.onCreate(savedInstanceState);
+                updateSelectedImage();
+            }
         }
 
         mEditIdentityService = new EditIdentityService(this, getTwinmeContext(), this);
-        mEditIdentityService.getProfile(profileId);
+
+        Intent intent = getIntent();
+        String profileId = intent.getStringExtra(Intents.INTENT_PROFILE_ID);
+        String spaceId = intent.getStringExtra(Intents.INTENT_SPACE_ID);
+        String name = intent.getStringExtra(Intents.INTENT_PROFILE_NAME);
+        String description = intent.getStringExtra(Intents.INTENT_PROFILE_DESCRIPTION);
+        String avatarFile = intent.getStringExtra(Intents.INTENT_PROFILE_AVATAR);
+        int templateSpaceType = intent.getIntExtra(Intents.INTENT_SPACE_SELECTION, -1);
+
+        if (profileId != null) {
+            mEditIdentityService.getProfile(UUID.fromString(profileId));
+        } else if (spaceId != null) {
+            mEditIdentityService.getSpace(UUID.fromString(spaceId));
+        } else {
+            mCreateProfile = true;
+        }
+
+        if (templateSpaceType != -1) {
+            UITemplateSpace.TemplateType templateType;
+            if (templateSpaceType == UITemplateSpace.TemplateType.BUSINESS_1.ordinal()) {
+                templateType = UITemplateSpace.TemplateType.BUSINESS_1;
+            } else if (templateSpaceType == UITemplateSpace.TemplateType.BUSINESS_2.ordinal()) {
+                templateType = UITemplateSpace.TemplateType.BUSINESS_2;
+            } else if (templateSpaceType == UITemplateSpace.TemplateType.FAMILY_1.ordinal()) {
+                templateType = UITemplateSpace.TemplateType.FAMILY_1;
+            } else if (templateSpaceType == UITemplateSpace.TemplateType.FAMILY_2.ordinal()) {
+                templateType = UITemplateSpace.TemplateType.FAMILY_2;
+            } else if (templateSpaceType == UITemplateSpace.TemplateType.FRIENDS_1.ordinal()) {
+                templateType = UITemplateSpace.TemplateType.FRIENDS_1;
+            } else if (templateSpaceType == UITemplateSpace.TemplateType.FRIENDS_2.ordinal()) {
+                templateType = UITemplateSpace.TemplateType.FRIENDS_2;
+            } else {
+                templateType = UITemplateSpace.TemplateType.OTHER;
+            }
+            mUITemplateSpace = new UITemplateSpace(this, templateType);
+        }
+
+        if (name != null) {
+            mName = name;
+        }
+
+        if (description != null) {
+            mDescription = description;
+        } else {
+            mDescription = "";
+        }
+
+        if (avatarFile != null) {
+            mUpdatedProfileAvatarFile = new File(avatarFile);
+            mAvatar = BitmapFactory.decodeFile(avatarFile);
+            mUpdatedProfileAvatar = mAvatar;
+        }
 
         updateIdentity();
 
@@ -146,7 +212,28 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         mEditIdentityService.dispose();
 
+        // Cleanup capture and cropped images.
+        if (mEditableView != null) {
+            if (!mCreateProfile) {
+                mEditableView.onDestroy();
+            }
+        }
+
         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onResume");
+        }
+
+        if (mCreateProfile && !mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.PROFILE)) {
+            mShowOnboarding = true;
+
+            showOnboarding();
+        }
+        super.onResume();
     }
 
     @Override
@@ -157,6 +244,10 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         super.onSaveInstanceState(outState);
 
+        // Save the profile Id when it was created for Android 13 while we ask for the POST_NOTIFICATIONS permission.
+        if (mProfileId != null) {
+            outState.putString(PROFILE_ID, mProfileId.toString());
+        }
         if (mEditableView != null) {
             mEditableView.onSaveInstanceState(outState);
         }
@@ -189,8 +280,15 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "onRequestPermissions grantedPermissions=" + Arrays.toString(grantedPermissions));
         }
 
+        // Android 13, finish profile creation after asking for POST_NOTIFICATIONS permission
+        // (even if that permission is not granted).
+        if (mProfileId != null && (grantedPermissions.length == 0 || grantedPermissions[0] == Permission.POST_NOTIFICATIONS)) {
+            finishCreateProfile();
+            return;
+        }
+
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new TwinmeActivity.DefaultMessageCallback(R.string.application_ok) {
             });
         }
     }
@@ -198,29 +296,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     //
     // Implement EditIdentityService.Observer methods
     //
-
-    @Override
-    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onGetSpace: space=" + space);
-        }
-
-    }
-
-    @Override
-    public void onUpdateSpace(@NonNull Space space) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
-        }
-
-    }
-
-    @Override
-    public void onCreateProfile(@NonNull Profile profile) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCreateProfile: profile=" + profile);
-        }
-    }
 
     @Override
     public void onGetProfile(@NonNull Profile profile, @Nullable Bitmap avatar) {
@@ -239,7 +314,50 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "onGetProfileNotFound");
         }
 
-        finish();
+        if (mSpace == null) {
+            finish();
+        }
+    }
+
+    @Override
+    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace: space=" + space);
+        }
+
+        mSpace = space;
+        mProfile = space.getProfile();
+
+        if (mProfile == null && !mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.PROFILE)) {
+            showOnboarding();
+        }
+
+        updateIdentity();
+    }
+
+    @Override
+    public void onUpdateSpace(@NonNull Space space) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
+        }
+
+        onGetSpace(space, null);
+    }
+
+    @Override
+    public void onCreateProfile(@NonNull Profile profile) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCreateProfile: profile=" + profile);
+        }
+
+        mProfileId = profile.getId();
+
+        // On Android 13, we must ask for the POST_NOTIFICATIONS permission to be able to post notifications.
+        // If the permission is not granted, messages and calls are received but notifications are not displayed.
+        // It is not possible to answer an incoming call!
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
+            finishCreateProfile();
+        }
     }
 
     @Override
@@ -282,7 +400,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     @Override
     public void onUpdateIdentityAvatar(@NonNull Bitmap avatar) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onUpdateAvatarProfile: avatar=" + avatar);
+            Log.d(LOG_TAG, "onUpdateIdentityAvatar: avatar=" + avatar);
         }
 
         mAvatar = avatar;
@@ -328,6 +446,14 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     // Private methods
     //
 
+    private void finishCreateProfile() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "finishCreateProfile: " + mProfileId);
+        }
+
+        finish();
+    }
+
     private void updateSelectedImage() {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateSelectedImage");
@@ -367,10 +493,17 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         updateProfileUpdateMode();
     }
 
+    @Override
+    public void onSelectTimeout(UITimeout timeout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+        }
+
+    }
+
     //
     // Private methods
     //
-
     @SuppressLint({"ClickableViewAccessibility"})
     @Override
     protected void initViews() {
@@ -389,12 +522,17 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         mEditableView = new EditableView(this);
 
         mAvatarView = findViewById(R.id.edit_profile_activity_avatar_view);
+        mAvatarView.setBackgroundColor(Design.AVATAR_PLACEHOLDER_COLOR);
 
         mAvatarView.setOnClickListener(v -> openMenuPhoto());
 
         ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
         layoutParams.width = Design.AVATAR_MAX_WIDTH;
         layoutParams.height = Design.AVATAR_MAX_HEIGHT;
+
+        ImageView noAvatarView = findViewById(R.id.edit_profile_activity_no_avatar_view);
+
+        noAvatarView.setOnClickListener(v -> openMenuPhoto());
 
         View backClickableView = findViewById(R.id.edit_profile_activity_back_clickable_view);
         GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
@@ -588,6 +726,17 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         Design.updateTextFont(mSaveTextView, Design.FONT_BOLD28);
         mSaveTextView.setTextColor(Color.WHITE);
 
+        TextView messageView = findViewById(R.id.edit_profile_activity_message_view);
+        messageView.setTypeface(Design.FONT_REGULAR32.typeface);
+        messageView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
+        messageView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        layoutParams = messageView.getLayoutParams();
+        layoutParams.width = Design.BUTTON_WIDTH;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) messageView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_NAME_TOP_MARGIN * Design.HEIGHT_RATIO);
+
         mOverlayMenuView = findViewById(R.id.edit_profile_activity_overlay_view);
         mOverlayMenuView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
         mOverlayMenuView.setOnClickListener(view -> closeMenu());
@@ -618,43 +767,81 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "onSaveClick");
         }
 
-        // Make sure we have a valid profile and default name.
-        if (mProfile == null || mName == null || !mSaveProfile) {
-            finish();
+        if (!mSaveProfile) {
             return;
         }
 
         hideKeyboard();
 
-        openMenuPropagatingProfileView();
+        if (mCreateProfile) {
+            if (!checkValueToSave()) {
+                return;
+            }
+
+            Intent data = new Intent();
+            data.putExtra(Intents.INTENT_PROFILE_NAME, mNameView.getText().toString().trim());
+            data.putExtra(Intents.INTENT_PROFILE_DESCRIPTION, mDescriptionView.getText().toString().trim());
+            if (mUpdatedProfileAvatarFile != null) {
+                data.putExtra(Intents.INTENT_PROFILE_AVATAR, mUpdatedProfileAvatarFile.getAbsolutePath());
+            }
+            setResult(RESULT_OK, data);
+            finish();
+        } else {
+            if (mProfile == null && !checkValueToSave()) {
+                return;
+            }
+
+            String updatedIdentityName = mNameView.getText().toString().trim();
+            if (updatedIdentityName.isEmpty()) {
+                updatedIdentityName = mName;
+            }
+
+            String updatedIdentityDescription = mDescriptionView.getText().toString().trim();
+
+            boolean updated = updatedIdentityName != null && !updatedIdentityName.equals(mName);
+            updated = updated || !updatedIdentityDescription.equals(mDescription);
+            updated = updated || mUpdatedProfileAvatar != null;
+
+            if (updated) {
+                Bitmap avatar = mUpdatedProfileAvatar;
+                if (avatar == null) {
+                    avatar = mAvatar;
+                }
+                if (mProfile != null) {
+                    mSaveProfile = false;
+                    mEditIdentityService.updateProfile(mProfile, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                } else if (mSpace != null) {
+                    mSaveProfile = false;
+                    mEditIdentityService.createProfile(mSpace, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                }
+            }
+        }
     }
 
-    private void saveProfile() {
+    private boolean checkValueToSave() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "saveProfile");
+            Log.d(LOG_TAG, "checkValueToSave");
         }
 
-        String updatedIdentityName = mNameView.getText().toString().trim();
-        if (updatedIdentityName.isEmpty()) {
-            updatedIdentityName = mName;
+        String name = mNameView.getText().toString().trim();
+        if (name.isEmpty()) {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.onboarding_profile);
+            DialogInterface.OnCancelListener dialogCancelListener = dialog -> {
+            };
+            OnboardingDialog onboardingDialog = new OnboardingDialog(this);
+            onboardingDialog.setOnCancelListener(dialogCancelListener);
+            onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_activity_incomplete_profile_message)), bitmap,
+                    getString(R.string.application_ok),
+                    onboardingDialog::dismiss
+            );
+            onboardingDialog.show();
+            return false;
+        }  else if (mUpdatedProfileAvatar == null) {
+            openMenuPhoto();
+            return false;
         }
 
-        String updatedIdentityDescription = mDescriptionView.getText().toString().trim();
-
-        boolean updated = !updatedIdentityName.equals(mName);
-        updated = updated || !updatedIdentityDescription.equals(mDescription);
-        updated = updated || mUpdatedProfileAvatar != null;
-
-        if (updated) {
-            Bitmap avatar = mUpdatedProfileAvatar;
-            if (avatar == null) {
-                avatar = mAvatar;
-            }
-            if (mProfile != null) {
-                mSaveProfile = false;
-                mEditIdentityService.updateProfile(mProfile, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
-            }
-        }
+        return true;
     }
 
     private void updateIdentity() {
@@ -669,12 +856,10 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         if (mProfile != null) {
             mName = mProfile.getName();
-
             if (mName.length() > MAX_NAME_LENGTH) {
                 mName = mName.substring(0, MAX_NAME_LENGTH);
             }
             mTitleView.setText(getString(R.string.edit_profile_activity_editing_profile));
-
             if (mProfile.getDescription() != null) {
                 mDescription = mProfile.getDescription();
             } else {
@@ -694,7 +879,11 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         }
 
         if (mName == null || !mName.isEmpty()) {
-            mNameView.setHint(getResources().getString(R.string.application_name_hint));
+            if (mUITemplateSpace != null) {
+                mNameView.setHint(mUITemplateSpace.getProfilePlaceholder());
+            } else {
+                mNameView.setHint(getResources().getString(R.string.application_name_hint));
+            }
         }
 
         // If the nameView contains some text, this is a text entered by the user and the activity was restored.
@@ -723,12 +912,23 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         if (avatar != null) {
             mAvatarView.setImageBitmap(avatar);
+        } else {
+            mAvatarView.setBackgroundColor(Design.AVATAR_PLACEHOLDER_COLOR);
+        }
+
+        if (mSpace != null && !mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+            float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+            float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+            ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+
+            saveViewBackground.getPaint().setColor(Design.getDefaultColor(mSpace.getStyle()));
+            mSaveClickableView.setBackground(saveViewBackground);
         }
     }
 
     private void updateProfileUpdateMode() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "setUpdated");
+            Log.d(LOG_TAG, "updateProfileUpdateMode");
         }
 
         String value;
@@ -791,6 +991,19 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         }
     }
 
+    private void showOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showOnboarding");
+        }
+
+        mShowOnboarding = true;
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setClass(this, OnboardingProfileActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
+
     private void openMenuSelectValue() {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenuSelectValue");
@@ -804,56 +1017,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Window window = getWindow();
             window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
         }
-    }
-
-    private void openMenuPropagatingProfileView() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "openMenuPropagatingProfileView");
-        }
-
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_profile_activity_layout);
-
-        MenuPropagatingProfileView menuPropagatingProfileView = new MenuPropagatingProfileView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPropagatingProfileView.setLayoutParams(layoutParams);
-
-        MenuPropagatingProfileView.Observer observer = new MenuPropagatingProfileView.Observer() {
-            @Override
-            public void onCloseMenuAnimationEnd() {
-
-                menuPropagatingProfileView.animationCloseMenu();
-                saveProfile();
-
-                Window window = getWindow();
-                window.setNavigationBarColor(Design.WHITE_COLOR);
-            }
-
-            @Override
-            public void onSelectValue(int value) {
-
-                menuPropagatingProfileView.animationCloseMenu();
-
-                if (value == Profile.UpdateMode.NONE.ordinal()) {
-                    getTwinmeApplication().setUpdateProfileMode(Profile.UpdateMode.NONE);
-                } else if (value == Profile.UpdateMode.DEFAULT.ordinal()) {
-                    getTwinmeApplication().setUpdateProfileMode(Profile.UpdateMode.DEFAULT);
-                } else if (value == Profile.UpdateMode.ALL.ordinal()) {
-                    getTwinmeApplication().setUpdateProfileMode(Profile.UpdateMode.ALL);
-                }
-                saveProfile();
-
-                Window window = getWindow();
-                window.setNavigationBarColor(Design.WHITE_COLOR);
-            }
-        };
-
-        menuPropagatingProfileView.setObserver(observer);
-        percentRelativeLayout.addView(menuPropagatingProfileView);
-
-        menuPropagatingProfileView.openMenu(getTwinmeApplication().updateProfileMode());
-
-        Window window = getWindow();
-        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void closeMenu() {

@@ -45,6 +45,7 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
 
     private boolean mIsCameraMute = true;
     private boolean mIsMicroMute = false;
+    private boolean mIsLocationShared = false;
 
     public CallParticipantLocaleView(Context context) {
 
@@ -136,6 +137,11 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
         mIsMicroMute = isMicroMute;
     }
 
+    public void setIsLocationShared(boolean isLocationShared) {
+
+        mIsLocationShared = isLocationShared;
+    }
+
     public void setAvatar(Bitmap avatar) {
 
         mAvatar = avatar;
@@ -200,6 +206,21 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
         marginLayoutParams.rightMargin = ICON_MARGIN;
         marginLayoutParams.topMargin = ICON_MARGIN;
         marginLayoutParams.setMarginEnd(ICON_MARGIN);
+
+        mSharedLocationView = findViewById(R.id.call_participant_shared_location_layout);
+
+        layoutParams = mSharedLocationView.getLayoutParams();
+        layoutParams.height = ICON_HEIGHT;
+
+        marginLayoutParams = (MarginLayoutParams) mSharedLocationView.getLayoutParams();
+        marginLayoutParams.leftMargin = ICON_MARGIN;
+        marginLayoutParams.topMargin = ICON_MARGIN;
+        marginLayoutParams.setMarginStart(ICON_MARGIN);
+
+        mSharedLocationView.setOnClickListener(v -> mOnCallParticipantClickListener.onLocationTap());
+
+        RoundedView sharedLocationRoundedView = findViewById(R.id.call_participant_shared_location_rounded_view);
+        sharedLocationRoundedView.setColor(Design.BLUE_NORMAL);
 
         mInfoView = findViewById(R.id.call_participant_info_layout);
         mInfoView.setColorFilter(Design.DELETE_COLOR_RED);
@@ -281,6 +302,12 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
             mMuteMicroView.setVisibility(VISIBLE);
         } else {
             mMuteMicroView.setVisibility(GONE);
+        }
+
+        if (mIsLocationShared) {
+            mSharedLocationView.setVisibility(VISIBLE);
+        } else {
+            mSharedLocationView.setVisibility(GONE);
         }
 
         if (mCallStatus != null && mCallStatus.isOnHold()) {
@@ -409,6 +436,12 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
 
     @Override
     protected boolean isMessageSupported() {
+
+        return false;
+    }
+
+    @Override
+    protected boolean isLocationSupported() {
 
         return false;
     }

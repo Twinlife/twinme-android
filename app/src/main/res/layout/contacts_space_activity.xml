@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contacts_space_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/contacts_space_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/contacts_space_activity_search_view"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/contacts_space_activity_tool_bar">
+
+        <View
+            android:id="@+id/contacts_space_activity_search_content_view"
+            android:layout_centerInParent="true"
+            app:layout_heightPercent="54.54%"
+            app:layout_widthPercent="91.46%"
+            android:background="@drawable/grey_search_rounded" />
+
+        <ImageView
+            android:id="@+id/contacts_space_activity_search_image_view"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search_icon"
+            app:tint="@color/grey"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="21.21%"
+            app:layout_marginStartPercent="6.4%"
+            app:layout_marginEndPercent="1.87%" />
+
+        <EditText
+            android:id="@+id/contacts_space_activity_search_edit_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/contacts_space_activity_search_image_view"
+            android:layout_toRightOf="@+id/contacts_space_activity_search_image_view"
+            android:background="@android:color/transparent"
+            android:hint="@string/application_search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text|textNoSuggestions|textCapSentences"
+            app:layout_marginEndPercent="13.27%" />
+
+        <ImageView
+            android:id="@+id/contacts_space_activity_clear_image_view"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_widthPercent="5%"
+            app:layout_marginEndPercent="6.4%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contacts_space_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/contacts_space_activity_layout_save_view"
+        android:layout_below="@+id/contacts_space_activity_search_view" />
+
+    <!-- 8.69% = 58 / 667
+         6.93% = 26 / 375 -->
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/contacts_space_activity_layout_save_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contacts_space_activity_selected_list_view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/contacts_space_activity_add_title"
+            android:layout_toStartOf="@+id/contacts_space_activity_add_title"
+            app:layout_marginStartPercent="4%" />
+
+        <TextView
+            android:id="@+id/contacts_space_activity_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:layout_marginStartPercent="6.93%"
+            app:layout_marginEndPercent="6.93%"
+            android:text="@string/contact_space_activity_move_title" />
+
+        <View
+            android:id="@+id/contacts_space_activity_add_title_clickable_view"
+            app:layout_heightPercent="100%"
+            android:layout_width="match_parent"
+            android:layout_alignLeft="@+id/contacts_space_activity_add_title"
+            android:layout_alignStart="@+id/contacts_space_activity_add_title"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/contacts_space_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

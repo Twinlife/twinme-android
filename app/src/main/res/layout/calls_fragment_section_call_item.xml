@@ -16,6 +16,28 @@
         app:layout_marginBottomPercent="12.72%" />
 
     <View
+        android:id="@+id/calls_fragment_section_call_item_right_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/calls_fragment_section_call_item_right_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/application_display_all"
+        android:textAllCaps="true"
+        android:gravity="end"
+        app:layout_widthPercent="37.33%"
+        app:layout_marginEndPercent="4.26%"
+        app:layout_marginBottomPercent="12.72%" />
+
+    <View
         android:id="@+id/calls_fragment_section_call_item_separator_view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

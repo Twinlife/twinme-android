@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_profile_activity_name_content_view"
             android:layout_alignEnd="@+id/edit_profile_activity_name_content_view"
-            android:layout_alignRight="@+id/edit_profile_activity_name_content_view" />
+            android:layout_alignRight="@+id/edit_profile_activity_name_content_view"/>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_description_content_view"
@@ -93,6 +93,7 @@
                 android:id="@+id/edit_profile_activity_description_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_above="@+id/edit_profile_activity_counter_view"
                 android:hint="@string/navigation_activity_about_twinme"
                 android:background="@android:color/transparent"
                 android:gravity="top"
@@ -109,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_profile_activity_description_content_view"
             android:layout_alignEnd="@+id/edit_profile_activity_description_content_view"
-            android:layout_alignRight="@+id/edit_profile_activity_description_content_view" />
+            android:layout_alignRight="@+id/edit_profile_activity_description_content_view"/>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_propagate_view"
@@ -136,7 +137,7 @@
                 app:layout_aspectRatio="62%"
                 app:layout_heightPercent="34%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
-
+        
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_save_view"
             android:layout_width="match_parent"
@@ -154,6 +155,14 @@
                 app:layout_widthPercent="89.06%" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/edit_profile_activity_message_view"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/edit_profile_activity_save_view"
+            android:gravity="center"
+            android:text="@string/create_profile_activity_message" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

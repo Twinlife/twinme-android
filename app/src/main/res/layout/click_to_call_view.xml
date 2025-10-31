@@ -4,44 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/click_to_call_view_logo_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ImageView
+        android:id="@+id/click_to_call_view_logo_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:layout_widthPercent="25.6%"
-        app:layout_heightPercent="10.79%"
-        app:layout_marginTopPercent="6.29%">
-
-        <ImageView
-            android:id="@+id/click_to_call_view_logo_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/splash_screen_logo"
-            android:scaleType="fitCenter"
-            app:layout_widthPercent="64.58%"
-            app:layout_heightPercent="61.1%" />
-
-        <ImageView
-            android:id="@+id/click_to_call_view_twinme_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/splash_screen_twinme"
-            android:scaleType="fitCenter"
-            app:tint="#FFFFFF"
-            app:layout_heightPercent="25%" />
-
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+        android:src="@drawable/logo"
+        android:scaleType="fitCenter"
+        app:layout_heightPercent="10.49%"
+        app:layout_aspectRatio="100%"
+        app:layout_marginTopPercent="6.29%" />
 
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/click_to_call_view_invitation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/click_to_call_view_logo_container"
+        android:layout_below="@id/click_to_call_view_logo_view"
         app:layout_widthPercent="85.33%"
         app:layout_heightPercent="52.47%"
         app:layout_marginTopPercent="14.09%">

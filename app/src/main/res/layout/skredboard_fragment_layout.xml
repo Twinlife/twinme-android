@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/skredBoard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black90PercentAlpha"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/skredBoardTitle"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="@string/main_activity_skredboard_access_title"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        app:layout_heightPercent="14.24%"
+        app:layout_marginTopPercent="05.64%" />
+
+    <TextView
+        android:id="@+id/skredBoardEnter"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="@string/main_activity_skredboard_message"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_heightPercent="12.24%"
+        app:layout_marginTopPercent="18.51%" />
+
+    <Button
+        android:id="@+id/deleteAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/translucent"
+        android:text="@string/application_delete"
+        android:textColor="@color/red_normal"
+        android:textSize="14sp"
+        app:layout_heightPercent="17.24%"
+        app:layout_marginStartPercent="03%"
+        app:layout_marginTopPercent="05.64%" />
+
+    <ImageView
+        android:id="@+id/createAccountButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:elevation="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_normal"
+        app:layout_heightPercent="20%"
+        app:layout_marginTopPercent="05.64%"
+        app:layout_widthPercent="20%" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/digitsGridView"
+        android:layout_width="match_parent"
+        android:columnCount="5"
+        android:gravity="center"
+        android:rowCount="2"
+        app:layout_heightPercent="52.18%"
+        app:layout_marginTopPercent="33%" />
+
+    <Button
+        android:id="@+id/validateButton"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/translucent"
+        android:text="@string/application_ok"
+        android:textColor="@color/red_normal"
+        android:textSize="14sp"
+        app:layout_heightPercent="15.24%" />
+</androidx.percentlayout.widget.PercentRelativeLayout>

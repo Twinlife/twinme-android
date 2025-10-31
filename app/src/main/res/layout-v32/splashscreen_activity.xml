@@ -5,6 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_background" />
+
+    <TextView
+        android:id="@+id/splashscreen_activity_twinme_upgrading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:textColorHighlight="#00FFFFFF"
+        android:text="@string/application_upgrade"
+        app:layout_marginTopPercent="6%"
+        app:layout_widthPercent="81.07%" />
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/splashscreen_activity_logo_container"
         android:layout_width="wrap_content"
@@ -19,29 +37,25 @@
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/splash_screen_logo" />
+            android:src="@drawable/logo_white" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <ImageView
         android:id="@+id/splashscreen_activity_twinme_view"
-        android:layout_below="@+id/splashscreen_activity_logo_container"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/splash_screen_twinme"
-        app:tint="@color/splashscreen_logo_color" />
+        android:src="@drawable/splashscreen_text"
+        app:layout_marginTopPercent="55%"
+        app:layout_heightPercent="35.91%" />
 
-    <TextView
-        android:id="@+id/splashscreen_activity_twinme_upgrading"
+    <ImageView
+        android:id="@+id/splashscreen_activity_premium_image_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="@string/application_upgrade"
-        app:layout_marginBottomPercent="7.50%"
-        app:layout_widthPercent="85.33%" />
+        android:layout_alignParentBottom="true" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

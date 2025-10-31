@@ -35,6 +35,7 @@ import androidx.percentlayout.widget.PercentRelativeLayout;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,9 +47,13 @@ public class MenuSelectValueView extends PercentRelativeLayout {
 
     public enum MenuType {
         DISPLAY_CALLS,
+        EDIT_SPACE,
         IMAGE,
         VIDEO,
-        PROFILE_UPDATE_MODE
+        EPHEMERAL_MESSAGE,
+        LOCKSCREEN,
+        PROFILE_UPDATE_MODE,
+        CAMERA_CONTROL
     }
 
     public interface Observer {
@@ -56,6 +61,8 @@ public class MenuSelectValueView extends PercentRelativeLayout {
         void onCloseMenuAnimationEnd();
 
         void onSelectValue(int value);
+
+        void onSelectTimeout(UITimeout timeout);
     }
 
     private static final int DESIGN_TITLE_MARGIN = 40;
@@ -70,6 +77,7 @@ public class MenuSelectValueView extends PercentRelativeLayout {
 
     private boolean isOpenAnimationEnded = false;
     private boolean isCloseAnimationEnded = false;
+    private boolean mForceDarkMode = false;
 
     private Observer mObserver;
     private int mHeight = Design.DISPLAY_HEIGHT;
@@ -108,6 +116,14 @@ public class MenuSelectValueView extends PercentRelativeLayout {
         mObserver = observer;
     }
 
+    public void setForceDarkMode(boolean forceDarkMode) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setForceDarkMode: " + forceDarkMode);
+        }
+
+        mForceDarkMode = forceDarkMode;
+    }
+
     public void openMenu(MenuType menuType) {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenu");
@@ -140,6 +156,20 @@ public class MenuSelectValueView extends PercentRelativeLayout {
         if (isOpenAnimationEnded) {
             return;
         }
+
+        float radius = Design.ACTION_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
+        ShapeDrawable scrollIndicatorBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+
+        if (mForceDarkMode) {
+            scrollIndicatorBackground.getPaint().setColor(Color.rgb(72,72,72));
+            mTitleView.setTextColor(Color.WHITE);
+        } else {
+            scrollIndicatorBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
+            mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        }
+
+        mActionView.setBackground(scrollIndicatorBackground);
 
         int startValue = mHeight;
         int endValue = mHeight - getActionViewHeight();
@@ -226,16 +256,38 @@ public class MenuSelectValueView extends PercentRelativeLayout {
     }
 
     public void setActivity(AbstractTwinmeActivity activity) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setActivity: " + activity);
+        }
 
         mActivity = activity;
 
-        MenuSelectValueAdapter.OnValueClickListener valueClickListener = value -> mObserver.onSelectValue(value);
+        MenuSelectValueAdapter.OnValueClickListener valueClickListener = new MenuSelectValueAdapter.OnValueClickListener() {
+            @Override
+            public void onValueClick(int value) {
+                mObserver.onSelectValue(value);
+            }
+
+            @Override
+            public void onTimeoutClick(UITimeout timeout) {
+                mObserver.onSelectTimeout(timeout);
+            }
+        };
 
         mMenuSelectValueAdapter = new MenuSelectValueAdapter(activity, valueClickListener);
+        mMenuSelectValueAdapter.setForceDarkMode(mForceDarkMode);
 
         mListView = findViewById(R.id.menu_list_view);
         mListView.setBackgroundColor(Color.TRANSPARENT);
         mListView.setAdapter(mMenuSelectValueAdapter);
+    }
+
+    public void setSelectedValue(int value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setSelectedValue: " + value);
+        }
+
+        mMenuSelectValueAdapter.setSelectedValue(value);
     }
 
     private void initViews() {
@@ -286,12 +338,28 @@ public class MenuSelectValueView extends PercentRelativeLayout {
                 mTitleView.setText(mActivity.getString(R.string.show_contact_activity_video));
                 break;
 
+            case EDIT_SPACE:
+                mTitleView.setText(mActivity.getString(R.string.application_edit));
+                break;
+
             case DISPLAY_CALLS:
                 mTitleView.setText(mActivity.getString(R.string.settings_activity_display_call_title));
                 break;
 
+            case EPHEMERAL_MESSAGE:
+                mTitleView.setText(mActivity.getString(R.string.application_timeout));
+                break;
+
+            case LOCKSCREEN:
+                mTitleView.setText(mActivity.getString(R.string.privacy_activity_lock_screen_timeout));
+                break;
+
             case PROFILE_UPDATE_MODE:
                 mTitleView.setText(mActivity.getString(R.string.edit_profile_activity_propagating_profile));
+                break;
+
+            case CAMERA_CONTROL:
+                mTitleView.setText(mActivity.getString(R.string.contact_capabilities_activity_camera_control_information));
                 break;
 
             default:

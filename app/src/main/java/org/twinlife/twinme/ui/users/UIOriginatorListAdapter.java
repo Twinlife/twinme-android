@@ -161,10 +161,9 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
             contactViewHolder.onBind(mListActivity, mUIContacts.get(position), hideSeparator);
         } else if (viewType == TITLE) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
-            sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_fragment_title));
+            sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_fragment_title), false, false);
         } else if (viewType == ADD_CONTACT) {
             AddContactViewHolder addContactViewHolder = (AddContactViewHolder) viewHolder;
-            //addContactViewHolder.itemView.setOnClickListener(view -> mOnCallClickListener.onAddExternalCallClick());
             addContactViewHolder.onBind(mListActivity.getString(R.string.main_activity_add_contact), mListActivity.getString(R.string.contacts_fragment_add_contact_subtitle));
         }
     }

@@ -5,6 +5,7 @@
  *  Contributors:
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
+ *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
  */
 
 package org.twinlife.twinme.services;
@@ -15,6 +16,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.twinlife.twinlife.AccountService;
 import org.twinlife.twinlife.AssertPoint;
 import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.BaseService.ErrorCode;
@@ -44,12 +46,17 @@ public class MainService extends AbstractTwinmeService {
 
     private static final int GET_CURRENT_SPACE = 1;
     private static final int GET_CURRENT_SPACE_DONE = 1 << 1;
-    private static final int GET_PROFILES = 1 << 2;
-    private static final int GET_PROFILES_DONE = 1 << 3;
-    private static final int UPDATE_SPACE = 1 << 4;
-    private static final int UPDATE_SPACE_DONE = 1 << 5;
+    private static final int SUBSCRIBE_FEATURE = 1 << 2;
+    private static final int SUBSCRIBE_FEATURE_DONE = 1 << 3;
+    private static final int GET_SPACES = 1 << 4;
+    private static final int GET_SPACES_DONE = 1 << 5;
     private static final int GET_PENDING_NOTIFICATIONS = 1 << 10;
     private static final int GET_PENDING_NOTIFICATIONS_DONE = 1 << 11;
+    private static final int GET_SPACES_NOTIFICATIONS = 1 << 12;
+    private static final int GET_SPACES_NOTIFICATIONS_DONE = 1 << 13;
+    private static final int SET_LEVEL = 1 << 16;
+    private static final int CREATE_LEVEL = 1 << 18;
+    private static final int DELETE_LEVEL = 1 << 20;
     private static final int GET_TRANSFER_CALL = 1 << 12;
     private static final int GET_TRANSFER_CALL_DONE = 1 << 13;
     private static final int GET_CONVERSATIONS = 1 << 14;
@@ -61,7 +68,7 @@ public class MainService extends AbstractTwinmeService {
     private static final int GET_SPACE = 1 << 24;
     private static final int GET_SPACE_DONE = 1 << 25;
 
-    public interface Observer extends AbstractTwinmeService.Observer {
+    public interface Observer extends AbstractTwinmeService.Observer, SpaceListObserver {
 
         void onSignIn();
 
@@ -73,17 +80,21 @@ public class MainService extends AbstractTwinmeService {
 
         void onGetProfileNotFound();
 
+        void onCreateSpace(@NonNull Space space);
+
         void onUpdateSpace(@NonNull Space space);
+
+        void onDeleteSpace(@NonNull UUID spaceId);
 
         void onUpdateProfile(@NonNull Profile profile);
 
-        void onGetProfiles(@NonNull List<Profile> profiles);
-
-        void onCreateProfile(@NonNull Profile profile);
-
-        void onDeleteProfile(@NonNull UUID profileId);
-
         void onUpdatePendingNotifications(boolean hasPendingNotification);
+
+        void onGetSpacesNotifications(@NonNull Map<Space, NotificationStat> spacesNotifications);
+
+        void onSubscribeSuccess();
+
+        void onSubscribeFailed(@NonNull ErrorCode errorCode);
 
         void onGetTransferCall(@NonNull CallReceiver callReceiver);
 
@@ -132,15 +143,6 @@ public class MainService extends AbstractTwinmeService {
             runOnUiThread(() -> MainService.this.onFatalError(errorCode));
         }
 
-        public void onCreateProfile(long requestId, @NonNull Profile profile) {
-            if (DEBUG) {
-                Log.d(LOG_TAG, "TwinmeContextObserver.onCreateProfile: requestId=" + requestId + " profile=" + profile);
-            }
-
-            MainService.this.onCreateProfile(profile);
-            onOperation();
-        }
-
         @Override
         public void onUpdateProfile(long requestId, @NonNull Profile profile) {
             if (DEBUG) {
@@ -151,13 +153,12 @@ public class MainService extends AbstractTwinmeService {
         }
 
         @Override
-        public void onDeleteProfile(long requestId, @NonNull UUID profileId) {
+        public void onCreateSpace(long requestId, @NonNull Space space) {
             if (DEBUG) {
-                Log.d(LOG_TAG, "TwinmeContextObserver.onDeleteProfile: requestId=" + requestId + " groupId=" + profileId);
+                Log.d(LOG_TAG, "TwinmeContextObserver.onUpdateSpace: requestId=" + requestId + " space=" + space);
             }
 
-            MainService.this.onDeleteProfile(profileId);
-            onOperation();
+            MainService.this.onCreateSpace(space);
         }
 
         @Override
@@ -167,6 +168,15 @@ public class MainService extends AbstractTwinmeService {
             }
 
             MainService.this.onUpdateSpace(space);
+        }
+
+        @Override
+        public void onDeleteSpace(long requestId, @NonNull UUID spaceId) {
+            if (DEBUG) {
+                Log.d(LOG_TAG, "TwinmeContextObserver.onDeleteSpace: requestId=" + requestId + " spaceId=" + spaceId);
+            }
+
+            MainService.this.onDeleteSpace(spaceId);
         }
 
         @Override
@@ -185,7 +195,6 @@ public class MainService extends AbstractTwinmeService {
             }
 
             MainService.this.onSetSpace(space);
-            onOperation();
         }
 
         @Override
@@ -207,14 +216,38 @@ public class MainService extends AbstractTwinmeService {
         }
     }
 
+    private class MainServiceAccountServiceObserver extends AccountService.DefaultServiceObserver {
+
+        @Override
+        public void onSubscribeUpdate(long requestId, @NonNull ErrorCode errorCode) {
+            if (DEBUG) {
+                Log.d(LOG_TAG, "MainServiceAccountServiceObserver.onSubscribeUpdate: requestId=" + requestId + " errorCode=" + errorCode);
+            }
+
+            if (getOperation(requestId) == null) {
+
+                return;
+            }
+
+            MainService.this.onSubscribeUpdate(errorCode);
+        }
+    }
+
     @NonNull
     private final Observer mObserver;
 
     private int mState = 0;
-    private int mWork = 0;
     private UUID mSpaceId;
     private Space mSpace;
-    private Profile mProfile;
+
+    private int mWork = 0;
+    private String mProductId;
+    private String mPurchaseToken;
+    private String mPurchaseOrderId;
+
+    private boolean mCreateLevel = false;
+
+    private final MainServiceAccountServiceObserver mMainServiceAccountServiceObserver;
 
     public MainService(@NonNull AbstractTwinmeActivity activity, @NonNull TwinmeContext twinmeContext, @NonNull Observer observer) {
         super(LOG_TAG, activity, twinmeContext, observer);
@@ -224,11 +257,50 @@ public class MainService extends AbstractTwinmeService {
 
         mObserver = observer;
 
+        mMainServiceAccountServiceObserver = new MainServiceAccountServiceObserver();
+
         mTwinmeContextObserver = new TwinmeContextObserver();
 
         mTwinmeContext.setObserver(mTwinmeContextObserver);
 
         showProgressIndicator();
+    }
+
+    @Override
+    protected void onTwinlifeReady() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onTwinlifeReady");
+        }
+
+        super.onTwinlifeReady();
+
+        mTwinmeContext.getAccountService().addServiceObserver(mMainServiceAccountServiceObserver);
+    }
+
+    protected void onTwinlifeOnline() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onTwinlifeOnline");
+        }
+
+        if (mRestarted) {
+            mRestarted = false;
+
+            if ((mState & SUBSCRIBE_FEATURE) != 0 && (mState & SUBSCRIBE_FEATURE_DONE) == 0) {
+                mState &= ~SUBSCRIBE_FEATURE;
+            }
+        }
+    }
+
+    public void dispose() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "dispose");
+        }
+
+        if (mTwinmeContext.hasTwinlife()) {
+            mTwinmeContext.getAccountService().removeServiceObserver(mMainServiceAccountServiceObserver);
+        }
+
+        super.dispose();
     }
 
     public void getPendingNotifications() {
@@ -238,6 +310,28 @@ public class MainService extends AbstractTwinmeService {
 
         mState &= ~(GET_PENDING_NOTIFICATIONS | GET_PENDING_NOTIFICATIONS_DONE);
         startOperation();
+    }
+
+    public void findSpacesNotifications() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "findSpacesNotifications");
+        }
+
+        long requestId = newOperation(GET_SPACES_NOTIFICATIONS);
+        if (DEBUG) {
+            Log.d(LOG_TAG, "findSpacesNotifications: requestId=" + requestId);
+        }
+        showProgressIndicator();
+
+        mTwinmeContext.getNotificationStats((BaseService.ErrorCode errorCode, Map<Space, NotificationStat> stats) -> {
+            runOnUiThread(() -> {
+                if (stats != null) {
+                    mObserver.onGetSpacesNotifications(stats);
+                }
+            });
+            mState |= GET_SPACES_NOTIFICATIONS_DONE;
+            onOperation();
+        });
     }
 
     public void getContacts() {
@@ -268,14 +362,48 @@ public class MainService extends AbstractTwinmeService {
         startOperation();
     }
 
-    public void activeProfile(@NonNull Profile profile) {
+    public void createLevel(@NonNull String level) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "activeProfile: profile=" + profile);
+            Log.d(LOG_TAG, "createLevel level=" + level);
         }
 
-        mProfile = profile;
-        mWork = UPDATE_SPACE;
-        mState &= ~(UPDATE_SPACE | UPDATE_SPACE_DONE);
+        if (!level.isEmpty()) {
+            mCreateLevel = true;
+            mTwinmeContext.createLevel(newOperation(CREATE_LEVEL), level);
+        }
+    }
+
+    public void setLevel(@NonNull String level) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setLevel level=" + level);
+        }
+
+        if (!level.isEmpty()) {
+            mTwinmeContext.setLevel(newOperation(SET_LEVEL), level);
+        }
+    }
+
+    public void deleteLevel(@NonNull String level) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "deleteLevel level=" + level);
+        }
+
+        if (!level.isEmpty() && !"0".equals(level)) {
+            mTwinmeContext.deleteLevel(newOperation(DELETE_LEVEL), level);
+        }
+    }
+
+    public void subscribeFeature(@NonNull String productId, @NonNull String purchaseToken, @NonNull String purchaseOrderId) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "subscribeFeature: " + productId + " purchaseToken = " + purchaseToken + " purchaseOrderId = " + purchaseOrderId);
+        }
+
+        mProductId = productId;
+        mPurchaseToken = purchaseToken;
+        mPurchaseOrderId = purchaseOrderId;
+
+        mWork = SUBSCRIBE_FEATURE;
+        mState &= ~(SUBSCRIBE_FEATURE | SUBSCRIBE_FEATURE_DONE);
         showProgressIndicator();
         startOperation();
     }
@@ -340,29 +468,27 @@ public class MainService extends AbstractTwinmeService {
         }
 
         //
-        // Step 2: get profiles.
+        // Step 2: get spaces.
         //
 
-        if ((mState & GET_PROFILES) == 0) {
-            mState |= GET_PROFILES;
+        if ((mState & GET_SPACES) == 0) {
+            mState |= GET_SPACES;
 
-            long requestId = newOperation(GET_PROFILES);
-            if (DEBUG) {
-                Log.d(LOG_TAG, "TwinmeContext.getProfiles: requestId=" + requestId);
-            }
-            mTwinmeContext.getProfiles(requestId, (List<Profile> list) -> {
-                finishOperation(requestId);
-                onGetProfiles(list);
+            mTwinmeContext.findSpaces((Space space) -> true, (ErrorCode errorCode, List<Space> spaces) -> {
+                if (spaces != null) {
+                    runOnGetSpaces(mObserver, spaces);
+                }
+                mState |= GET_SPACES_DONE;
                 onOperation();
             });
             return;
         }
-        if ((mState & GET_PROFILES_DONE) == 0) {
+        if ((mState & GET_SPACES_DONE) == 0) {
             return;
         }
 
         //
-        // Step 3
+        // Step 6
         //
 
         if ((mState & GET_PENDING_NOTIFICATIONS) == 0) {
@@ -372,10 +498,7 @@ public class MainService extends AbstractTwinmeService {
                 Log.d(LOG_TAG, "TwinmeContext.getPendingNotifications");
             }
 
-            mTwinmeContext.getSpaceNotificationStats((BaseService.ErrorCode errorCode, NotificationStat stat) -> {
-                onGetSpaceNotificationStats(stat);
-                onOperation();
-            });
+            mTwinmeContext.getSpaceNotificationStats((BaseService.ErrorCode errorCode, NotificationStat stat) -> onGetSpaceNotificationStats(stat));
             return;
         }
         if ((mState & GET_PENDING_NOTIFICATIONS_DONE) == 0) {
@@ -404,10 +527,7 @@ public class MainService extends AbstractTwinmeService {
                 Log.d(LOG_TAG, "TwinmeContext.findCallReceivers: filter=" + filter);
             }
             mTwinmeContext.findCallReceivers(filter,
-                    (List<CallReceiver> callReceivers) -> {
-                        onGetTransferCall(callReceivers);
-                        onOperation();
-                    });
+                    this::onGetTransferCall);
             return;
         }
         if ((mState & GET_TRANSFER_CALL_DONE) == 0) {
@@ -489,6 +609,9 @@ public class MainService extends AbstractTwinmeService {
                     Log.d(LOG_TAG, "TwinmeContext.setCurrentSpace: requestId=" + requestId);
                 }
                 mTwinmeContext.setCurrentSpace(requestId, mSpace);
+                if (!mSpace.isSecret()) {
+                    mTwinmeContext.setDefaultSpace(mSpace);
+                }
                 return;
             }
             if ((mState & SET_SPACE_DONE) == 0) {
@@ -496,20 +619,16 @@ public class MainService extends AbstractTwinmeService {
             }
         }
 
-        //
-        // We must update the current profile.
-        //
-        if (mProfile != null && mSpace != null && (mWork & UPDATE_SPACE) != 0) {
-            if ((mState & UPDATE_SPACE) == 0) {
-                mState |= UPDATE_SPACE;
+        if ((mWork & SUBSCRIBE_FEATURE) != 0) {
 
-                long requestId = newOperation(UPDATE_SPACE);
-                if (DEBUG) {
-                    Log.d(LOG_TAG, "TwinmeContext.updateSpace: requestId=" + requestId + " space=" + mSpace + " profile=" + mProfile);
-                }
-                mTwinmeContext.updateSpace(requestId, mSpace, mProfile);
+            if ((mState & SUBSCRIBE_FEATURE) == 0) {
+                mState |= SUBSCRIBE_FEATURE;
+
+                long requestId = newOperation(SUBSCRIBE_FEATURE);
+                mTwinmeContext.getAccountService().subscribeFeature(requestId, AccountService.MerchantIdentification.MERCHANT_GOOGLE, mProductId, mPurchaseToken, mPurchaseOrderId);
+                return;
             }
-            if ((mState & UPDATE_SPACE_DONE) == 0) {
+            if ((mState & SUBSCRIBE_FEATURE_DONE) == 0) {
                 return;
             }
         }
@@ -557,30 +676,33 @@ public class MainService extends AbstractTwinmeService {
         runOnUiThread(() -> mObserver.onUpdateProfile(profile));
     }
 
-    private void onGetProfiles(@NonNull List<Profile> profiles) {
+    private void onCreateSpace(@NonNull Space space) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onGetProfiles: profiles=" + profiles);
+            Log.d(LOG_TAG, "onCreateSpace: space=" + space);
         }
 
-        mState |= GET_PROFILES_DONE;
+        runOnUiThread(() -> mObserver.onCreateSpace(space));
 
-        runOnUiThread(() -> mObserver.onGetProfiles(profiles));
+        if (mCreateLevel) {
+            mCreateLevel = false;
+            setSpace(space.getId());
+        }
     }
 
-    private void onCreateProfile(@NonNull Profile profile) {
+    private void onUpdateSpace(@NonNull Space space) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onCreateProfile profile=" + profile);
+            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
         }
 
-        runOnUiThread(() -> mObserver.onCreateProfile(profile));
+        runOnUiThread(() -> mObserver.onUpdateSpace(space));
     }
 
-    private void onDeleteProfile(@NonNull UUID profileId) {
+    private void onDeleteSpace(@NonNull UUID spaceId) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onDeleteProfile: profileId=" + profileId);
+            Log.d(LOG_TAG, "onDeleteSpace: spaceId=" + spaceId);
         }
 
-        runOnUiThread(() -> mObserver.onDeleteProfile(profileId));
+        runOnUiThread(() -> mObserver.onDeleteSpace(spaceId));
     }
 
     private void onGetTransferCall(@NonNull List<CallReceiver> callReceivers) {
@@ -593,14 +715,7 @@ public class MainService extends AbstractTwinmeService {
         if (!callReceivers.isEmpty()) {
             runOnUiThread(() -> mObserver.onGetTransferCall(callReceivers.get(0)));
         }
-    }
-
-    private void onUpdateSpace(@NonNull Space space) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
-        }
-
-        runOnUiThread(() -> mObserver.onUpdateSpace(space));
+        onOperation();
     }
 
     private void onSetSpace(@NonNull Space space) {
@@ -611,6 +726,7 @@ public class MainService extends AbstractTwinmeService {
         mState |= SET_SPACE_DONE;
 
         onSetCurrentSpace(space);
+        onOperation();
     }
 
     private void onGetSpaceNotificationStats(NotificationStat notificationStat) {
@@ -620,6 +736,7 @@ public class MainService extends AbstractTwinmeService {
 
         mState |= GET_PENDING_NOTIFICATIONS_DONE;
         runOnUiThread(() -> mObserver.onUpdatePendingNotifications(notificationStat.getPendingCount() > 0));
+        onOperation();
     }
 
     private void onUpdatePendingNotifications(boolean hasPendingNotifications) {
@@ -628,6 +745,29 @@ public class MainService extends AbstractTwinmeService {
         }
 
         runOnUiThread(() -> mObserver.onUpdatePendingNotifications(hasPendingNotifications));
+    }
+
+    private void onSubscribeUpdate(@NonNull ErrorCode errorCode) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSubscribeUpdate: " + errorCode);
+        }
+
+        // When we are offline or failed to send the request, we must retry.
+        if (errorCode == ErrorCode.TWINLIFE_OFFLINE) {
+            mRestarted = true;
+
+            return;
+        }
+
+        mState |= SUBSCRIBE_FEATURE_DONE;
+
+        runOnUiThread(() -> {
+            if (errorCode == ErrorCode.SUCCESS) {
+                mObserver.onSubscribeSuccess();
+            } else {
+                mObserver.onSubscribeFailed(errorCode);
+            }
+        });
     }
 
     private void onCreateCallReceiver(@NonNull CallReceiver callReceiver) {
@@ -685,9 +825,16 @@ public class MainService extends AbstractTwinmeService {
             mState |= GET_CURRENT_SPACE_DONE;
 
             if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
-
+                mObserver.onGetProfileNotFound();
                 return;
             }
+        }
+
+        if (operationId == SET_LEVEL && errorCode == ErrorCode.ITEM_NOT_FOUND) {
+            return;
+        }
+        if (operationId == DELETE_LEVEL && errorCode == ErrorCode.ITEM_NOT_FOUND) {
+            return;
         }
 
         super.onError(operationId, errorCode, errorParameter);

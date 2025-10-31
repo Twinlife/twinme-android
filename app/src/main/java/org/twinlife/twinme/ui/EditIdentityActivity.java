@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -69,6 +70,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
     private Contact mContact;
     private Group mGroup;
     private CallReceiver mCallReceiver;
+    private Space mSpace;
     private String mName;
     private String mDescription;
     private boolean mDisableUpdated = false;
@@ -77,6 +79,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
     private Bitmap mUpdatedProfileAvatar;
     private Bitmap mUpdatedProfileLargeAvatar;
     private File mUpdatedProfileAvatarFile;
+    private boolean mCreateProfile = false;
 
     private EditIdentityService mEditIdentityService;
 
@@ -108,8 +111,12 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         Intent intent = getIntent();
         String profileId = intent.getStringExtra(Intents.INTENT_PROFILE_ID);
         String contactId = intent.getStringExtra(Intents.INTENT_CONTACT_ID);
-        String receiverId = intent.getStringExtra(Intents.INTENT_CALL_RECEIVER_ID);
         String groupId = intent.getStringExtra(Intents.INTENT_GROUP_ID);
+        String spaceId = intent.getStringExtra(Intents.INTENT_SPACE_ID);
+        String receiverId = intent.getStringExtra(Intents.INTENT_CALL_RECEIVER_ID);
+        String name = intent.getStringExtra(Intents.INTENT_PROFILE_NAME);
+        String description = intent.getStringExtra(Intents.INTENT_PROFILE_DESCRIPTION);
+        String avatarFile = intent.getStringExtra(Intents.INTENT_PROFILE_AVATAR);
 
         if (profileId != null) {
             mEditIdentityService.getProfile(UUID.fromString(profileId));
@@ -119,7 +126,27 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
             mEditIdentityService.getGroup(UUID.fromString(groupId));
         } else if (receiverId != null) {
             mEditIdentityService.getCallReceiver(UUID.fromString(receiverId));
+        } else if (spaceId != null) {
+            mEditIdentityService.getSpace(UUID.fromString(spaceId));
+        } else {
+            mCreateProfile = true;
         }
+
+        if (name != null) {
+            mName = name;
+        }
+
+        if (description != null) {
+            mDescription = description;
+        }
+
+        if (avatarFile != null) {
+            mUpdatedProfileAvatarFile = new File(avatarFile);
+            mAvatar = BitmapFactory.decodeFile(avatarFile);
+            mUpdatedProfileAvatar = mAvatar;
+        }
+
+        updateIdentity();
 
         showProgressIndicator();
     }
@@ -138,7 +165,9 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
 
         // Cleanup capture and cropped images.
         if (mEditableView != null) {
-            mEditableView.onDestroy();
+            if (!mCreateProfile) {
+                mEditableView.onDestroy();
+            }
         }
 
         super.onDestroy();
@@ -194,38 +223,6 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
     // Implement EditIdentityService.Observer methods
     //
 
-
-    @Override
-    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onGetSpace: space=" + space);
-        }
-
-    }
-
-    @Override
-    public void onUpdateSpace(@NonNull Space space) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
-        }
-
-        mProfile = space.getProfile();
-
-        updateIdentity();
-
-    }
-
-    @Override
-    public void onCreateProfile(@NonNull Profile profile) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCreateProfile: profile=" + profile);
-        }
-
-        mProfile = profile;
-
-        updateIdentity();
-    }
-
     @Override
     public void onGetProfile(@NonNull Profile profile, @Nullable Bitmap avatar) {
         if (DEBUG) {
@@ -256,6 +253,36 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         mAvatar = avatar;
 
         updateIdentity();
+    }
+
+    @Override
+    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace: space=" + space);
+        }
+
+        mSpace = space;
+
+        mProfile = space.getProfile();
+
+        updateIdentity();
+    }
+
+    @Override
+    public void onUpdateSpace(@NonNull Space space) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
+        }
+
+    }
+
+    @Override
+    public void onCreateProfile(@NonNull Profile profile) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCreateProfile: profile=" + profile);
+        }
+
+        finish();
     }
 
     @Override
@@ -524,7 +551,6 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -585,30 +611,44 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         }
 
         hideKeyboard();
-        String updatedIdentityName = mNameView.getText().toString().trim();
-        if (updatedIdentityName.isEmpty()) {
-            updatedIdentityName = mName;
-        }
 
-        String updatedIdentityDescription = mDescriptionView.getText().toString().trim();
-
-        boolean updated = !updatedIdentityName.equals(mName);
-        updated = updated || !updatedIdentityDescription.equals(mDescription);
-        updated = updated || mUpdatedProfileAvatar != null;
-
-        if (updated) {
-            Bitmap avatar = mUpdatedProfileAvatar;
-            if (avatar == null) {
-                avatar = mAvatar;
+        if (mCreateProfile) {
+            Intent data = new Intent();
+            data.putExtra(Intents.INTENT_PROFILE_NAME, mNameView.getText().toString().trim());
+            data.putExtra(Intents.INTENT_PROFILE_DESCRIPTION, mDescriptionView.getText().toString().trim());
+            if (mUpdatedProfileAvatarFile != null) {
+                data.putExtra(Intents.INTENT_PROFILE_AVATAR, mUpdatedProfileAvatarFile.getAbsolutePath());
             }
-            if (mProfile != null) {
-                mEditIdentityService.updateProfile(mProfile, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
-            } else if (mContact != null) {
-                mEditIdentityService.updateContact(mContact, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
-            } else if (mGroup != null) {
-                mEditIdentityService.updateGroup(mGroup, updatedIdentityName, avatar, mUpdatedProfileAvatarFile);
-            } else if (mCallReceiver != null) {
-                mEditIdentityService.updateCallReceiver(mCallReceiver, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+            setResult(RESULT_OK, data);
+            finish();
+        } else {
+            String updatedIdentityName = mNameView.getText().toString().trim();
+            if (updatedIdentityName.isEmpty()) {
+                updatedIdentityName = mName;
+            }
+
+            String updatedIdentityDescription = mDescriptionView.getText().toString().trim();
+
+            boolean updated = !updatedIdentityName.equals(mName);
+            updated = updated || !updatedIdentityDescription.equals(mDescription);
+            updated = updated || mUpdatedProfileAvatar != null;
+
+            if (updated) {
+                Bitmap avatar = mUpdatedProfileAvatar;
+                if (avatar == null) {
+                    avatar = mAvatar;
+                }
+                if (mProfile != null) {
+                    mEditIdentityService.updateProfile(mProfile, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                } else if (mContact != null) {
+                    mEditIdentityService.updateContact(mContact, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                } else if (mGroup != null) {
+                    mEditIdentityService.updateGroup(mGroup, updatedIdentityName, avatar, mUpdatedProfileAvatarFile);
+                }  else if (mCallReceiver != null) {
+                    mEditIdentityService.updateCallReceiver(mCallReceiver, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                } else if (mSpace != null) {
+                    mEditIdentityService.createProfile(mSpace, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                }
             }
         }
     }

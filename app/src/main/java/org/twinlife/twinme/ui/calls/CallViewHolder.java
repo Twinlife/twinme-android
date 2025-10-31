@@ -77,7 +77,7 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         view.setBackgroundColor(Design.WHITE_COLOR);
 
         mNoAvatarView = view.findViewById(R.id.calls_fragment_call_item_no_avatar_view);
-        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        mNoAvatarView.setColor(Color.parseColor(Design.DEFAULT_COLOR));
 
         mAvatarView = view.findViewById(R.id.calls_fragment_call_item_avatar_view);
 
@@ -126,6 +126,8 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         CallDescriptor callDescriptor = uiCall.getLastCallDescriptor();
         UIOriginator uiOriginator = uiCall.getUIContact();
 
+        mAvatarView.setColorFilter(Color.TRANSPARENT);
+
         if (uiOriginator != null) {
             mService.getImage(uiOriginator.getContact(), (Bitmap avatar) -> {
                 if (uiCall.getCount() > 1) {
@@ -136,6 +138,7 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
 
                 if (uiOriginator.getContact().getAvatarId() == null && uiOriginator.getContact().isGroup()) {
                     mNoAvatarView.setVisibility(View.VISIBLE);
+                    mAvatarView.setColorFilter(Color.WHITE);
                 } else {
                     mNoAvatarView.setVisibility(View.GONE);
                 }

@@ -8,6 +8,7 @@
     <string name="application_all">הכל</string>
     <string name="application_appearance">מראה חיצוני</string>
     <string name="application_are_you_sure">אתה בטוח?</string>
+    <string name="application_authorization_location">אפשר לאפליקציה לגשת למיקום בהגדרות המערכת.</string>
     <string name="application_authorization_camera">אפשר לאפליקציה גישה למצלמה בהגדרות המערכת.</string>
     <string name="application_authorization_go_settings">גש להגדרות המערכת</string>
     <string name="application_authorization_microphone">אפשר לאפליקציה גישה למיקרופון בהגדרות המערכת.</string>
@@ -47,16 +48,19 @@
     <string name="application_group_not_found">הוסרת מהקבוצה</string>
     <string name="application_items_selected">נבחרו %1$d פריטים</string>
     <string name="application_later">אחר כך</string>
+    <string name="application_location">מיקום גיאוגרפי</string>
+    <string name="application_location_enabled">הפעל את שירות המיקום במכשיר שלך.</string>
     <string name="application_low_usage_message">אזהרה, אם אינך משתמש באפליקציה לעתים קרובות מספיק, ייתכן שמערכת ההפעלה לא תעיר אותה כדי להחליף הודעות!</string>
+    <string name="application_more_info">עוד מידע…</string>
     <string name="application_one_item_selected">פריט אחד נבחר</string>
     <string name="application_migration_no_storage_space">אין מספיק מקום במכשיר שלך כדי להשלים את ההעברה. סגור את האפליקציה, פנה מקום והפעל מחדש את האפליקציה כדי להשלים את העדכון.</string>
     <string name="application_migration_no_storage_space_message">לאחד משני המכשירים אין מספיק מקום אחסון. פנה מקום במכשיר זה לפני שתתחיל מחדש את ההעברה.</string>
     <string name="application_name_hint">לִנְקוֹב</string>
-    <string name="application_network_connecting">מתחבר לשירות twinme</string>
+    <string name="application_network_connecting">מתחבר לשירות Skred</string>
     <string name="application_network_connectivity">קיימת קישוריות רשת</string>
     <string name="application_network_status_airplane_message">הופעל מצב טיסה.</string>
     <string name="application_network_status_airplane_resolution">יש לבטל מצב טיסה ולהתחבר ל-Wi-Fi או לרשת סלולרית.</string>
-    <string name="application_network_status_connected_no_internet">אין לשירות twinme גישה לרשת.</string>
+    <string name="application_network_status_connected_no_internet">אין לשירות Skred גישה לרשת.</string>
     <string name="application_network_status_connected_resolution">נסה/י להתחבר לרשת אחרת.</string>
     <string name="application_network_status_connection_timeout">לא ניתן ליצור חיבור לאינטרנט.</string>
     <string name="application_network_status_no_internet">אין חיבור לאינטרנט.</string>
@@ -71,13 +75,15 @@
     <string name="application_not_authorized_operation">פעולה לא מורשית</string>
     <string name="application_not_authorized_operation_by_your_contact">הפעולה אינה מורשית על ידי איש הקשר שלך.</string>
     <string name="application_not_connected">חיבור מאובטח מתבצע…</string>
-    <string name="application_not_signed_in">לא מחובר לשירות twinme</string>
+    <string name="application_not_signed_in">לא מחובר לשירות Skred</string>
     <string name="application_now">עכשיו</string>
     <string name="application_ok">בסדר</string>
     <string name="application_operation_failure">הפעולה נכשלה</string>
     <string name="application_operation_irreversible">פעולה זו היא בלתי הפיכה</string>
     <string name="application_permission_camera">נדרשת הרשאה לגשת למצלמה כדי לצלם תמונה או סרטון חדש.</string>
     <string name="application_permission_scan_code">יש צורך בהרשאת גישה למצלמה כדי לסרוק קוד QR.</string>
+    <string name="application_premium_feature_message">עליך להפעיל שירותי פרימיום כדי להשתמש בתכונה זו.</string>
+    <string name="application_premium_feature_title">הפעל שירותי פרימיום</string>
     <string name="application_photo_gallery">אלבומי תמונות</string>
     <string name="application_profile">פּרוֹפִיל</string>
     <string name="application_profile_avatar_not_defined">עליך להזין את התמונה שמייצגת אותך מול אנשי הקשר שאת/ה מזמין/ה לפרופיל זה.</string>
@@ -101,7 +107,7 @@
     <string name="application_timeout_seconds"> שניות %1$d </string>
     <string name="application_timeout_week">שבוע 1</string>
     <string name="application_unknown_name">לא ידוע</string>
-    <string name="application_upgrade">משדרג twinme</string>
+    <string name="application_upgrade">משדרג Skred</string>
     <string name="application_webrtc_failure">כשל ב-WebRTC</string>
     <string name="application_wrong_configuration">הגדרות שגויות</string>
     <string name="application_yes">כן</string>
@@ -111,7 +117,6 @@
     <string name="about_activity_information">מֵידָע</string>
     <string name="about_activity_legal">הודעות משפטיות</string>
     <string name="about_activity_libraries">ספריות</string>
-    <string name="about_activity_message">twinme הוא שירות שיחות צ’אט ושיחות ווידאו/קוליות מאובטח ללא גישה למידע אישי.\n\ntwinme מבוסס על WebRTC, התקן החדש לתקשורת מולטימדיה מאובטחת (מוצפנת מקצה לקצה) בין משתמש למשתמש (ללא שרת ממסר) ברשת.</string>
     <string name="about_activity_open_source_information">קוד המקור של האפליקציה זמין כקוד פתוח ב-GitHub, תחת רישיון AGPL-3.0.</string>
     <string name="about_activity_open_sources_licences">רישיונות קוד פתוח</string>
     <string name="about_activity_premium_services">שירותי פרימיום</string>
@@ -182,7 +187,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">סרוק את קוד ה-QR המוצג בקטע \"חשבון / העברה ממכשיר אחר\" בתפריט הצד של המכשיר האחר.</string>
     <string name="account_migration_scanner_activity_stop_scan_title">תפסיק לסרוק</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">הוסף משתתף לשיחה זו</string>
 
     <!-- AddContactActivity -->
@@ -191,10 +196,10 @@
     <string name="add_contact_activity_in_person_title">פנים אל פנים</string>
     <string name="add_contact_activity_invitation_code_title">מיני-קוד</string>
     <string name="add_contact_activity_invite">להזמין</string>
-    <string name="add_contact_activity_invite_message">היכנס/י לכתובת האתר %1$s עם twinme בטלפון הנייד שלך או סרוק את קוד QR כדי להתחבר באופן פרטי ל-“%2$s”</string>
-    <string name="add_contact_activity_invite_subject">הזמנה של Twinme</string>
-    <string name="add_contact_activity_message">בקש מחבר שלך שלידך לסרוק את קוד ה-QR שלך עם twinme, או הקש על כפתור "לסרוק" כדי לסרוק את הקוד של החבר שלך.</string>
-    <string name="add_contact_activity_onboarding_message">twinme לא מכיר את החברים שלך ולא יכול לגלות אותם. עליך להזמין אותם באופן אישי, עם twinme כשהם בקרבתך, או באמצעות שליחת הזמנה באמצעים אחרים.</string>
+    <string name="add_contact_activity_invite_message">היכנס/י לכתובת האתר %1$s עם Skred בטלפון הנייד שלך או סרוק את קוד QR כדי להתחבר באופן פרטי ל-“%2$s”</string>
+    <string name="add_contact_activity_invite_subject">הזמנה של Skred</string>
+    <string name="add_contact_activity_message">בקש מאיש הקשר שלך לסרוק את קוד ה-QR של ההזמנה שלך עם \"Skred\", או הקש על כפתור \"סריקה\" כדי לסרוק את הקוד של איש הקשר שלך.</string>
+    <string name="add_contact_activity_onboarding_message">Skred לא מכיר את החברים שלך ולא יכול לגלות אותם. עליך להזמין אותם באופן אישי, עם Skred כשהם בקרבתך, או באמצעות שליחת הזמנה באמצעים אחרים.</string>
     <string name="add_contact_activity_scan_code">סרוק את קוד ה-QR של ההזמנה</string>
     <string name="add_contact_activity_scan_error_corrupt_link">הקישור הזה פגום.</string>
     <string name="add_contact_activity_scan_error_incorect_link">הקישור הזה שגוי.</string>
@@ -253,7 +258,7 @@
     <string name="calls_fragment_all_call_segmented_control">הכל</string>
     <string name="calls_fragment_call_again_message">האם ברצונך להתקשר בחזרה ל-%1$s?</string>
     <string name="calls_fragment_call_again_title">שיחה חוזרת</string>
-    <string name="calls_fragment_create_link">צור קישור \"click-to-call\".</string>
+    <string name="calls_fragment_create_link">צור \"הקלק להתקשר\"</string>
     <string name="calls_fragment_incoming_call">שיחה נכנסת</string>
     <string name="calls_fragment_missed_call">שיחה שלא נענתה</string>
     <string name="calls_fragment_missed_call_segmented_control">השיחה לא נענתה</string>
@@ -291,6 +296,11 @@
     <string name="call_activity_confirm_word_title">לאמת את המילה</string>
     <string name="call_activity_error_call_interrupted">השיחה נקטעה, שגיאה: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">השיחה לא הצליחה לעבור, שגיאה: %1$d.</string>
+    <string name="call_activity_location_background_warning">אזהרה: אם האפליקציה פועלת ברקע, המיקום שלך לא ישותף יותר עם איש הקשר שלך. עליך לאשר לאפליקציה לגשת תמיד למיקום של מכשיר זה.</string>
+    <string name="call_activity_location_exact_warning">אַזהָרָה! אתה לא משתף את המיקום המדויק שלך. אתה יכול לשנות את ההרשאות הדרושות בהגדרות האפליקציה.</string>
+    <string name="call_activity_location_share">שתף את המיקום שלי</string>
+    <string name="call_activity_location_share_message">כעת אתה משתף את המיקום שלך במהלך השיחה.</string>
+    <string name="call_activity_location_stop">תפסיק לשתף את המיקום שלי</string>
     <string name="call_activity_max_participant_message">המספר המרבי של משתתפים בשיחה קבוצתית הגיע (%1$d).</string>
     <string name="call_activity_not_supported_group_call_message">גרסת האפליקציה של %1$s אינה תואמת לשיחות קבוצתיות וצריכה עדכון.</string>
     <string name="call_activity_quality_message">איך היית מדרג את זה?</string>
@@ -348,7 +358,7 @@
     <string name="cleanup_activity_storage_title">שטח דיסק</string>
     <string name="cleanup_activity_success">הפעולה הושלמה בהצלחה.</string>
     <string name="cleanup_activity_title">ניקוי צ\'אט</string>
-    <string name="cleanup_activity_total">סה\"כ</string>
+    <string name="cleanup_activity_total">סה"כ</string>
     <string name="cleanup_activity_used">בשימוש</string>
 
     <!-- CoachMarkView -->
@@ -372,11 +382,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">קבע את התאריכים/שעות שאתה רוצה שיקראו לך.</string>
     <string name="contact_capabilities_activity_information_video_call">אפשר לאיש הקשר להתקשר אליך בווידאו.</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">לא קיבלנו הרשאה לגשת לאנשי הקשר שלך</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">ההרשאה נדחתה</string>
+    <string name="contact_picker_activity_subtitle">הזמן לפי מספר טלפון</string>
+    <string name="contact_picker_activity_title">הזמן חבר מאנשי קשר</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">הזמן מישהו לסרוק את קוד ההזמנה שלך, או סרוק את שלו...</string>
     <string name="contacts_fragment_invite_contact_title">הזמן איש קשר</string>
     <string name="contacts_fragment_scan_contact_title">סרוק או הזן קוד הזמנה</string>
     <string name="contacts_fragment_title">אנשי קשר</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">האם אכן להעביר איש קשר זה?</string>
+    <string name="contact_space_activity_move_title">העבר</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">שיחה קולית</string>
@@ -389,12 +409,13 @@
     <string name="conversation_activity_empty_message">אמור משהו חכם… או מצחיק!</string>
     <string name="conversation_activity_edit_message">ניתן לערוך את ההודעה במכשיר של איש הקשר רק אם האפליקציה שלו מעודכנת.</string>
     <string name="conversation_activity_ephemeral_coach_mark">לחץ לחיצה ארוכה על חץ השליחה כדי למחוק הודעה זו מהשיחה לאחר זמן מסוים.</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">גרסת twinme של איש הקשר שלך אינה מכילה את כל הפונקציות.&lt;br /&gt; אנא בקש/י ממנו/ה לבצע עדכון של twinme.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">גרסת Skred של איש הקשר שלך אינה מכילה את כל הפונקציות.&lt;br /&gt; אנא בקש/י ממנו/ה לבצע עדכון של Skred.</string>
     <string name="conversation_activity_group_member_information">חברי %1$d</string>
     <string name="conversation_activity_group_not_allowed_post_message">שליחת הודעות אינה מורשית</string>
     <string name="conversation_activity_group_one_member">1 חבר</string>
+    <string name="conversation_activity_info">:נעילה הודעות הצ\'אט מוצפנות בטלפון הנייד שלך ובמהלך העברתן.\n כדי להבטיח את רמת האבטחה הגבוהה ביותר של הנתונים, הם נשלחים ישירות לטלפון של %s באמצעות חיבור עמית לעמית ללא שרת מתווך.</string>
     <string name="conversation_activity_invitation_accepted">ההזמנה התקבלה</string>
-    <string name="conversation_activity_invitation_failed">בקש/י מאיש הקשר שלך לעדכן את twinme</string>
+    <string name="conversation_activity_invitation_failed">בקש/י מאיש הקשר שלך לעדכן את Skred</string>
     <string name="conversation_activity_invitation_joined">חבר קבוצה</string>
     <string name="conversation_activity_invitation_pending">ההזמנה בתהליך</string>
     <string name="conversation_activity_invitation_refused">ההזמנה נדחתה</string>
@@ -454,7 +475,7 @@
     <string name="conversations_fragment_you">את</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">פרופיל זה מוצג לאורחים שיתקשרו אליך עם הקישור הזה \"click-to-call\".</string>
+    <string name="create_external_call_activity_message">הזן את השם, התמונה והתיאור של נושא השיחה.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call מאפשר לאורחים להתקשר אליך מדפדפן מבלי להתקין את האפליקציה.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">לכל מופע יש שם, תמונה ותיאור, המייצגים את נושא השיחה, כגון:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">שירות הלקוחות שלך</string>
@@ -498,10 +519,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">לאחר יצירת הקשר, לכל מערכת יחסים יש זוג "פרופילים" משלה המייצגים אותך ואת אנשי הקשר שלך זה מול זה.</string>
     <string name="create_profile_activity_onboarding_message_part_4">לאחר מכן תוכל לשנות את האופן שבו אתה רוצה להיות מוכר לכל אחד מאנשי הקשר שלך, בכל מערכת יחסים, באופן עצמאי.</string>
     <string name="create_profile_activity_save_message">השם והתמונה האלה משמשים להזמנת אנשי הקשר שלך לאתחול הקשרים שלך. תוכל לשנות ולהתאים אותם עבור כל קשר.</string>
+    <string name="create_profile_activity_title">הגדר את הפרופיל שלך</string>
     <string name="create_profile_activity_welcome1">העלה את תמונת הפרופיל שלך</string>
     <string name="create_profile_activity_welcome2">ברוך/ה הבא/ה %1$s!</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">תמונה</string>
+    <string name="create_space_activity_contact_list">העבר אנשי קשר</string>
+    <string name="create_space_activity_contacts_no_profile">כדי להעביר קבוצה Space, עליך להשלים את הפרופיל שמייצג אותך מול איש קשר זה. האם ברצונך להשלים זאת?</string>
     <string name="create_space_activity_message">מרחבים הם מקומיים ואינם גלויים לאנשי קשר.</string>
     <string name="create_space_activity_onboarding_message_part_1">מרחבים עוזרים לך לארגן את אנשי הקשר שלך לפי איזה מהמעגלים החברתיים שלך הם שייכים, למשל. משפחה, חברים, עסקים, כיף וכו\'.</string>
     <string name="create_space_activity_onboarding_message_part_2">כל "מרחב" משויך ל"פרופיל" המייצג את הדמות שבה אתה רוצה להשתמש בעת אינטראקציה עם אנשי הקשר מהמעגל החברתי של אותו מרחב, למשל, אבא, ג\'וני, ד"ר ג\'ון דו, באטמן וכו\'.</string>
@@ -511,6 +536,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- תמונה המאפשרת לך לזהות אותה במהירות ברשימת ה"מרחבים" שלך</string>
     <string name="create_space_activity_onboarding_message_part_7">- צבע "נושא", כדי להתאים אישית את המראה והתחושה שלו</string>
     <string name="create_space_activity_onboarding_message_part_8">- הגדרות שיכולות להיות ספציפיות לכל "מרחב" מסוים, ובכך לעקוף את ערכי ברירת המחדל שהוגדרו על ידי הגדרות האפליקציה.</string>
+    <string name="create_space_activity_profile_message">עליך להזין את התמונה שמייצגת אותך מול אנשי הקשר שאת/ה מזמין/ה לפרופיל זה.</string>
+    <string name="create_space_activity_space_hint">שם (משפחה, חברים, עסקים וכו\')</string>
     <string name="create_space_activity_title">צור Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -529,9 +556,6 @@
     <string name="edit_contact_activity_confirm_message">האם אתה בטוח שברצונך למחוק את הקשר הזה?</string>
     <string name="edit_contact_activity_message">איש קשר זה לא יוכל עוד להשיג אותך.</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">מחיקת פרופיל זה תבטל את קוד ההזמנה המשויך לו. לאשר את המחיקה?</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">האם אתה בטוח שברצונך למחוק את קוד \"Click-to-Call\" זה?</string>
     <string name="edit_external_call_activity_delete_message">קישור \"Click-to-Call\" זה לא יהיה שמיש עוד.</string>
@@ -544,7 +568,13 @@
     <string name="edit_profile_activity_propagating_message">אתה יכול להפיץ את השינויים בפרופיל ההזמנה שלך לאנשי הקשר הקיימים שלך, או לא.</string>
     <string name="edit_profile_activity_propagating_no_contact">לא</string>
     <string name="edit_profile_activity_propagating_profile">הפצת שינויים בפרופיל</string>
-    <string name="edit_profile_activity_remove_active_profile">לא ניתן להסיר פרופיל פעיל</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">כדי להזמין איש קשר, עליך להשלים את הפרופיל שמייצג אותך מול איש קשר זה. האם ברצונך להשלים זאת?</string>
+    <string name="edit_space_activity_delete_confirmation">האם אכן למחוק Space זה?</string>
+    <string name="edit_space_activity_delete_current_space">אינך יכול למחוק את ה\"שטח \"הפעיל כרגע.</string>
+    <string name="edit_space_activity_delete_message">מחיקת Space תסיר את כל אנשי הקשר, הקבוצות והשיחות Space זה. האם אכן למחוק Space זה?</string>
+    <string name="edit_space_activity_delete_only_one_space_message">אינך יכול למחוק את ה Space היחיד של היישום.</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">לאחר יצירת הקשר, מומלץ מאוד לאשר אותו כדי לחזק את האבטחה שלו.</string>
@@ -590,12 +620,16 @@
     <string name="feedback_activity_send_logs">שלח יומן ניפוי באגים</string>
     <string name="feedback_activity_send_message">נשלח משוב. תודה לך.</string>
     <string name="feedback_activity_subject">נושא</string>
-    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+    <string name="feedback_activity_subject_placeholder">[Skred] </string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">עליך להזמין חברים ולהתחבר אליהם ב- Skred. הם יופיעו ברשימת אנשי הקשר שלך לאחר שיקבלו את הזמנתך.</string>
+    <string name="first_invite_contact_activity_ignore">התעלם</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">פעולה זו מבטלת את קוד ההזמנה הנוכחי המשויך לפרופיל זה. האם אכן ליצור קוד חדש?</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">צור קוד הזמנה חדש</string>
-    <string name="fullscreen_qrcode_activity_save_message">יבא או סרוק את ה-QR-Code של ההזמנה עם twinme כדי להוסיף איש קשר זה.</string>
+    <string name="fullscreen_qrcode_activity_save_message">יבא או סרוק את ה-QR-Code של ההזמנה עם Skred כדי להוסיף איש קשר זה.</string>
     <string name="fullscreen_qrcode_activity_save_title">שמור בגלריית תמונות</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -613,6 +647,37 @@
     <string name="group_member_activity_section_invitation">הזמנות</string>
     <string name="group_member_activity_section_member">חברים</string>
     <string name="group_member_activity_title">חברי קבוצה</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s מזמין אותך ליהנות משירותי פרימיום, שבהם הוא תומך.</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">שיחות קבוצתיות עם צליל HQ ותמונת HD</string>
+    <string name="in_app_subscription_activity_description_step1_title">שיחות ועידה קוליות/וידאו באיכות גבוהה</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">אפס נתונים / אפס פחמן</string>
+    <string name="in_app_subscription_activity_description_step2_title">שיחות ועידה קוליות/וידאו אחראיות לסביבה</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">סודיות מוחלטת של חילופי דברים</string>
+    <string name="in_app_subscription_activity_description_step3_title">ועידה קולית/וידאו פרטית</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">חיבור מיידי בחדות גבוהה</string>
+    <string name="in_app_subscription_activity_description_step4_title">שיחות ועידה קוליות/וידאו מיידיות</string>
+    <string name="in_app_subscription_activity_expiration_message">חידוש: %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">כאשר אתה רוכש מנוי, הוא מחויב על ידי Google ישירות לחשבון שלך בחנות Play. מנוי מתחדש אוטומטית באותם תנאים אלא אם תבטל לפחות 24 שעות לפני תום התקופה הנוכחית. ניתן לבטל ללא תשלום בחנות Play בכל עת כדי שהמנוי לא יתחדש בתום התקופה הנוכחית. אתה יכול לנהל את המנוי שלך מהגדרות החשבון שלך בחנות Play לאחר הרכישה.</string>
+    <string name="in_app_subscription_activity_free_trial">14 יום ניסיון חינם. ניתן לבטל את המנוי בכל עת.</string>
+    <string name="in_app_subscription_activity_invitation_code">סרוק את קוד ה-QR של ההזמנה או הדבק את הקוד כדי לגשת לשירותי פרימיום.</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">קוד הזמנה לא חוקי.</string>
+    <string name="in_app_subscription_activity_later_title">לא תודה</string>
+    <string name="in_app_subscription_activity_manage_susbcription">נהל את המנוי שלי</string>
+    <string name="in_app_subscription_activity_month">חוֹדֶשׁ</string>
+    <string name="in_app_subscription_activity_not_available">שירותי פרימיום בתשלום אינם זמינים במכשיר שלך או במדינה שלך.</string>
+    <string name="in_app_subscription_activity_restore_title">לשחזר רכישות</string>
+    <string name="in_app_subscription_activity_search">חפש הצעות מנוי</string>
+    <string name="in_app_subscription_activity_six_month_title">הכי פופולארי</string>
+    <string name="in_app_subscription_activity_subscription_title">מִנוּי</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">מנוי נוכחי</string>
+    <string name="in_app_subscription_activity_subscribe_title">לְהַמשִׁיך</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$s תפוס</string>
@@ -632,11 +697,11 @@
     <string name="info_item_activity_updated">מתוקן</string>
 
     <!-- InvitationCallActivity -->
-    <string name="invitation_call_activity_generate_code_message">פעולה זו מבטלת את קוד ההזמנה הנוכחי המשויך לקישור \"הקלק להתקשר\" זה. לְאַשֵׁר?</string>
+    <string name="invitation_call_activity_generate_code_message">פעולה זו מבטלת את קוד ההזמנה הנוכחי המשויך לקישור "הקלק להתקשר" זה. לְאַשֵׁר?</string>
     <string name="invitation_call_activity_generate_code_title">צור קוד חדש עבור קישור זה</string>
     <string name="invitation_call_activity_invite_message">פתח את כתובת האינטרנט %1$s, או סרוק את ה-QR-Code, כדי לקרוא \"%2$s\".</string>
-    <string name="invitation_call_activity_message">שתף את קוד ה\"click-to-call\" זה עם מישהו שיוכל להתקשר אליך לאחר מכן, מהאינטרנט או מהאפליקציה לנייד.</string>
-    <string name="invitation_call_activity_save_message">סרוק את קוד ה-QR הזה כדי להתקשר ל-\"%1$s\".</string>
+    <string name="invitation_call_activity_message">שתף את קוד ה"click-to-call" זה עם מישהו שיוכל להתקשר אליך לאחר מכן, מהאינטרנט או מהאפליקציה לנייד.</string>
+    <string name="invitation_call_activity_save_message">סרוק את קוד ה-QR הזה כדי להתקשר ל-"%1$s".</string>
     <string name="invitation_call_activity_share">פרסם</string>
     <string name="invitation_call_activity_title">שיחה חיצונית</string>
 
@@ -650,15 +715,16 @@
     <string name="invitation_code_activity_success_message">מומלץ מאוד לאשר קשרים שנוצרו באמצעות מיני-קוד כדי לחזק את אבטחתם.</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">בקש מחבר שלך קרוב אליך לסרוק את קוד ה-QR של \"room\" עם twinme, או הקש על קוד ההזמנה כדי להעתיק אותו ללוח.</string>
+    <string name="invitation_room_activity_message">-QR של ה\\\"חדר\\\" עם Skred, או הקש על קוד ההזמנה כדי להעתיק אותו ללוח.</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">קולית</string>
     <string name="last_calls_activity_video">וידאו</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">חשבון twinme שלך במכשיר זה יועבר ל- +twinme.</string>
-    <string name="local_account_migration_activity_message_older_version">הקפד לעדכן את שני המכשירים לגרסה העדכנית ביותר של האפליקציה לפני תחילת ההעברה, כדי למנוע אובדן של כל הקשרים שלך.</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">אמת כדי לגשת ליישום</string>
+    <string name="lock_screen_activity_passcode_not_set">הגדרות אימות המכשיר אינן מוגדרות. עבור אל הגדרות המערכת והגדר אותן לביטול נעילת האפליקציה.</string>
+    <string name="lock_screen_activity_unlock">בטל את הגישה לאפליקציה</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">הוסף איש קשר</string>
@@ -668,12 +734,10 @@
     <string name="main_activity_reset_conversation_title">אפס שיחה</string>
     <string name="main_activity_reset_group_conversation_admin_message">איפוס שיחה זו ימחק את כל ההודעות מהמכשיר של כל חבר בקבוצה. האם לאשר?</string>
     <string name="main_activity_reset_group_conversation_message">איפוס השיחה הזו יסיר את כל ההודעות מהמכשיר שלך. האם לאשר?</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">עליך לשדרג ל- twinme + כדי להשתמש בתכונה זו. תוכל להעביר את כל נתוני חשבונך.</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">תוכל להעביר את כל נתוני חשבונך.</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme זמין כגרסת פרימיום עם עוד יותר תכונות.</string>
-    <string name="migration_twinme_plus_activity_premium_title">שדרג ל- twinme+</string>
+    <string name="main_activity_skredboard_access_title">לוח Skred</string>
+    <string name="main_activity_skredboard_create_title">צור לוח Skred</string>
+    <string name="main_activity_skredboard_delete_title">מחק לוח Skred</string>
+    <string name="main_activity_skredboard_message">הזן קוד Skred</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">אודות</string>
@@ -685,6 +749,8 @@
     <string name="navigation_activity_settings">הגדרות</string>
     <string name="navigation_activity_sign_out">יציאה</string>
     <string name="navigation_activity_sounds">צלילים</string>
+    <string name="navigation_activity_subscribe">גלה את +Skred</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; פָּעִיל</string>
     <string name="navigation_activity_support">תמיכה</string>
     <string name="navigation_activity_title">תפריט</string>
 
@@ -697,6 +763,8 @@
     <string name="notification_center_deleted_contact">איש קשר נמחק</string>
     <string name="notification_center_file_message">שלח לך קובץ</string>
     <string name="notification_center_file_message_received">קובץ חדש</string>
+    <string name="notification_center_geolocation_message">שלח לך מיקום</string>
+    <string name="notification_center_geolocation_message_received">מיקום חדש</string>
     <string name="notification_center_group_invitation">שלח לך הזמנה</string>
     <string name="notification_center_group_invitation_received">הזמנה חדשה</string>
     <string name="notification_center_join_group">את/ה חבר/ה בקבוצה</string>
@@ -735,6 +803,7 @@
     <string name="notifications_fragment_item_cleanup_message">" ניקה כמה הודעות ישנות."</string>
     <string name="notifications_fragment_item_deleted_contact">איש קשר נמחק</string>
     <string name="notifications_fragment_item_file_message">שלח לך קובץ</string>
+    <string name="notifications_fragment_item_geolocation_message">שלח לך מיקום</string>
     <string name="notifications_fragment_item_group_invitation">שלח לך הזמנה</string>
     <string name="notifications_fragment_item_image_message">שלח לך תמונה</string>
     <string name="notifications_fragment_item_join_group">את/ה חבר/ה בקבוצה</string>
@@ -779,8 +848,8 @@
     <string name="premium_services_activity_camera_control_description_4">ניהול מצלמת מעקב</string>
     <string name="premium_services_activity_camera_control_subtitle">שלוט במצלמה של איש הקשר במהלך שיחה באישורו</string>
     <string name="premium_services_activity_camera_control_title">שליטה מרחוק במצלמה</string>
-    <string name="premium_services_activity_click_to_call_description_1">צור קוד \"לחץ כדי להתקשר אליי\".</string>
-    <string name="premium_services_activity_click_to_call_description_2">צור כתובת אתר/קוד QR של \"לחץ להתקשר אליי\".</string>
+    <string name="premium_services_activity_click_to_call_description_1">צור קוד "לחץ כדי להתקשר אליי".</string>
+    <string name="premium_services_activity_click_to_call_description_2">צור כתובת אתר/קוד QR של "לחץ להתקשר אליי".</string>
     <string name="premium_services_activity_click_to_call_description_3">פרסם או הפצה בכל אמצעי</string>
     <string name="premium_services_activity_click_to_call_description_4">הנמענים סורקים את הקוד ומתקשרים אליך</string>
     <string name="premium_services_activity_click_to_call_subtitle">אפשר לאורחים להתקשר אליך מהאינטרנט</string>
@@ -791,30 +860,18 @@
     <string name="premium_services_activity_conversation_description_4">מקומי בלבד, אין השפעה על הקצה השני</string>
     <string name="premium_services_activity_conversation_subtitle">ייצוא תוכן ופנה מקום</string>
     <string name="premium_services_activity_conversation_title">ניהול שיחות</string>
-    <string name="premium_services_activity_description_part1_subtitle">חיבור ישיר בין מכשירים</string>
-    <string name="premium_services_activity_description_part1_title">איכות אודיו/וידאו HD</string>
-    <string name="premium_services_activity_description_part2_subtitle">אין זכר בענן</string>
-    <string name="premium_services_activity_description_part2_title">פרטיות - סודיות</string>
-    <string name="premium_services_activity_description_part3_subtitle">חסכון באנרגיה</string>
-    <string name="premium_services_activity_description_part3_title">אחראי לסביבה</string>
     <string name="premium_services_activity_group_call_description_1">אודיו/וידאו בהבחנה גבוהה</string>
     <string name="premium_services_activity_group_call_description_2">חיבור ישיר בין מכשירים</string>
     <string name="premium_services_activity_group_call_description_3">מאובטח ופרטי</string>
     <string name="premium_services_activity_group_call_description_4">אין זכר בענן</string>
     <string name="premium_services_activity_group_call_subtitle">הזמן אנשי קשר להצטרף לשיחת קבוצה קולית/וידאו</string>
     <string name="premium_services_activity_group_call_title">שיחות קבוצתיות</string>
-    <string name="premium_services_activity_privacy_description_1">נעל אפליקציה עם אימות ביומטרי או אחר</string>
-    <string name="premium_services_activity_privacy_description_2">הסתר את המסך האחרון במחליף אפליקציות</string>
-    <string name="premium_services_activity_privacy_description_3">הודעות ארעיות שנעלמות לאחר זמן מסוים</string>
-    <string name="premium_services_activity_privacy_description_4">מנע מאיש קשר להתקשר אליך</string>
-    <string name="premium_services_activity_privacy_subtitle">שליטה באפליקציה, אנשי קשר והודעות</string>
-    <string name="premium_services_activity_privacy_title">יותר פרטיות</string>
     <string name="premium_services_activity_space_description_1">פרופילים מרובים עם קשרים, שיחות, היסטוריה משויכים</string>
     <string name="premium_services_activity_space_description_2">מראה מותאם אישית, התראות והגדרות</string>
     <string name="premium_services_activity_space_description_3">למשפחה, חברים, עמיתים, עסקים, ספורט וכו\'.</string>
-    <string name="premium_services_activity_space_description_4">סודיים לא מופיעים ברשימה, הגישה אליהם היא לפי Spaces</string>
+    <string name="premium_services_activity_space_description_4">סודיים לא מופיעים ברשימה, הגישה אליהם היא לפי Space</string>
     <string name="premium_services_activity_space_subtitle">עבור כל קבוצה חברתית שאתה מתקשר איתה</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">שתף את המוזיקה שלך בשידור חי</string>
     <string name="premium_services_activity_streaming_description_2">כל משתתף יכול לשלוט בנגן המדיה</string>
     <string name="premium_services_activity_streaming_description_3">אינטראקציה בשיחה בו זמנית</string>
@@ -843,9 +900,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">הוסף פרופיל</string>
     <string name="profile_fragment_create_profile">צור פרופיל</string>
-    <string name="profile_fragment_default_action">הפעל</string>
-    <string name="profile_fragment_default_profile_title">פרופיל פעיל</string>
-    <string name="profile_fragment_identity_title">פרופילים</string>
     <string name="profile_fragment_message">פרופיל זה מאפשר לך להזמין את אנשי הקשר שלך ליצור איתך קשר פרטי, בשליטתך.</string>
     <string name="profile_fragment_twincode_title">קוד הזמנה</string>
 
@@ -861,7 +915,7 @@
     <string name="proxy_activity_list_information">השתמש בפרוקסי מהרשימה למטה, רק אם האפליקציה לא יכולה להתחבר לשירות ללא פרוקסי.</string>
     <string name="proxy_activity_onboarding">כאשר הגישה לשרתי האיתות של האפליקציה חסומה במדינתך, פרוקסי יכולים לעקוף חסימות אלה בנסיבות רבות ולאפשר לך לתקשר באופן פרטי. בנוסף לפרוקסי בתוך האפליקציה, תוכל ליצור משלך או להשתמש בפרוקסי שנוצר על ידי מישהו אחר. פרוקסי אינם יכולים לגשת לתוכן המועבר בשום פנים ואופן.</string>
     <string name="proxy_activity_information">השתמש בפרוקסי רק אם אינך מצליח להתחבר לשירות מרשתות Wi-Fi או סלולריות רגילות.</string>
-    <string name="proxy_activity_share">פתח את הקישור %1$s עם twinme במכשיר שלך כדי להגדיר באופן אוטומטי את הפרוקסי הזה.</string>
+    <string name="proxy_activity_share">פתח את הקישור %1$s עם Skred במכשיר שלך כדי להגדיר באופן אוטומטי את הפרוקסי הזה.</string>
     <string name="proxy_activity_title">פרוקסי</string>
     <string name="proxy_activity_url">האם ברצונך להשתמש בכתובת URL של פרוקסי זה?</string>
     <string name="proxy_activity_warning">אזהרה! כתובת ה-URL של פרוקסי זה אינה מאפשרת לך להתחבר לשירות האפליקציה.</string>
@@ -930,11 +984,11 @@
     <string name="settings_activity_ephemeral_title">הודעה נעלמת</string>
     <string name="settings_activity_image_title">צילום</string>
     <string name="settings_activity_message_properties_title">מאפייני הודעה</string>
+    <string name="settings_activity_permissions_title">הרשאות</string>
     <string name="settings_activity_reset_default_value">אפס להגדרות ברירת המחדל</string>
     <string name="settings_activity_reset_preferences_button_title">אפס לברירות מחדל</string>
     <string name="settings_activity_reset_preferences_message">אפס הגדרות התראות לברירות המחדל של האפליקציה</string>
     <string name="settings_activity_reset_preferences_title">אפס העדפות</string>
-    <string name="settings_activity_permissions_title">הרשאות</string>
     <string name="settings_activity_silent_sound">שקט</string>
     <string name="settings_activity_sound_enabled_title">התראות קוליות</string>
     <string name="settings_activity_system_notifications_title">התראות מערכת</string>
@@ -960,13 +1014,32 @@
     <string name="settings_room_activity_room_type_forum">פוֹרוּם</string>
     <string name="settings_room_activity_room_type_forum_information">המשתתפים יכולים לפרסם הודעות שנראות על ידי כולם</string>
 
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">אפשר התראות</string>
+    <string name="settings_space_activity_allow_notifications_message">הודעות יופיעו רק כאשר המרחב הזה הוא זה הפעיל כרגע.</string>
+    <string name="settings_space_activity_default_message">Space ברירת מחדל הוא Space המוצג בעת הפעלת האפליקציה.</string>
+    <string name="settings_space_activity_default_value_message">ערכים אלה עוקפים את אלה שהוגדרו בהגדרות ברירת המחדל של היישום.</string>
+    <string name="settings_space_activity_default_value_title">שנה את הגדרות ברירת המחדל</string>
+    <string name="settings_space_activity_header_message">הערכים של פרמטרים אלה מחליפים, עבור מרחב זה, את ערכי ברירת המחדל המוגדרים ברמת האפליקציה.</string>
+    <string name="settings_space_activity_permission_create_contact">צור איש קשר</string>
+    <string name="settings_space_activity_permission_create_group">צור קבוצה</string>
+    <string name="settings_space_activity_permission_move_contact">העבר איש קשר</string>
+    <string name="settings_space_activity_permission_move_group">העבר קבוצה</string>
+    <string name="settings_space_activity_permission_share_space_card">שתף/י קוד הזמנה Space</string>
+    <string name="settings_space_activity_permission_update_identity">עדכון פרופיל</string>
+    <string name="settings_space_activity_permissions_title">התראות</string>
+    <string name="settings_space_activity_reset_application_value">אפס להגדרות ברירת המחדל של האפליקציה</string>
+    <string name="settings_space_activity_secret_message">Space סודי לא מופיע ברשימת Space. ניתן להשיג גישה אליו רק על ידי הזנת שמו המדויק בתיבת החיפוש לא ניתן לאחזר את שמו, אז אל תשכח/י אותו!</string>
+    <string name="settings_space_activity_secret_title">Space סודי</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
+
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">אנשי קשר</string>
     <string name="share_activity_group_list">קבוצה</string>
     <string name="share_activity_title">שתף</string>
 
     <!-- ShowCallActivity -->
-    <string name="show_call_activity_code">קוד \"click-to-call\".</string>
+    <string name="show_call_activity_code">קוד "click-to-call".</string>
     <string name="show_call_activity_information_code">שתף את הקוד הזה כדי לקבל שיחות חיצוניות.</string>
     <string name="show_call_activity_schedule_call">שיחה מתוזמנת</string>
     <string name="show_call_activity_schedule_from">מ-%1$s</string>
@@ -991,6 +1064,7 @@
     <string name="show_contact_activity_pending_message">מערכת היחסים הזו נמצאת בתהליך הקמה. המתן בבקשה.</string>
     <string name="show_contact_activity_revoked">נמחק</string>
     <string name="show_contact_activity_settings_coach_mark">הגדר מה מותר לאיש הקשר שלך לעשות ביחס זה איתך.</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">וידאו</string>
 
     <!-- ShowGroupActivity -->
@@ -1009,6 +1083,14 @@
     <string name="show_room_activity_invite_participants">הזמינו משתתפים</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">ניהול</string>
+    <string name="show_space_fragment_move_message">עליך להיות בעל מספר רווחים כדי להעביר אנשי קשר.</string>
+    <string name="show_space_fragment_secret_confirm">אשר את מצב \"סוד\</string>
+    <string name="show_space_fragment_secret_disabled_message">לא ניתן להגדיר את ה\"Space\" הייחודי הזה כ\"סוד\". עליך ליצור לפחות \"Space\" אחד אחר.</string>
+    <string name="show_space_fragment_secret_message">Spaces סודיים אינם מופיעים ברשימת ה\"Spaces\" וניתן לפתוח אותם רק על ידי הקלדת שמם בשורת החיפוש. לעולם אל תשכח את השם הזה!</string>
+    <string name="show_space_fragment_secret_message_confirm">האם אתה עדיין רוצה להפוך את ה\"Space\" הזה ל\"סוד\"?</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">תמונה</string>
     <string name="space_appearance_activity_background_message">התאמה אישית של רקע שיחות עם צבע או תמונה.</string>
@@ -1022,7 +1104,7 @@
     <string name="space_appearance_activity_container_text_peer_message">טקסט של הודעה שהתקבלה</string>
     <string name="space_appearance_activity_container_title">בועות</string>
     <string name="space_appearance_activity_default_value">ערך ברירת מחדל</string>
-    <string name="space_appearance_activity_general_title">כללי</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">צבעי ברירת מחדל</string>
     <string name="space_appearance_activity_menu_enter_color">קוד צבע</string>
     <string name="space_appearance_activity_opacity">אֲטִימוּת</string>
@@ -1032,7 +1114,18 @@
     <string name="space_appearance_activity_theme">נושא</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">Space פעיל</string>
+    <string name="spaces_activity_add_space">הוסף Space</string>
+    <string name="spaces_activity_create_new_space">הוסף Space</string>
+    <string name="spaces_activity_current_space_action">הפעל</string>
+    <string name="spaces_activity_delete_default_message">לא ניתן למחוק Space ברירת מחדל.</string>
+    <string name="spaces_activity_join_space">הוספת חבר</string>
     <string name="spaces_activity_message">חלל הוא המקום שבו האישיות השונות שלך פוגשת את המעגלים החברתיים המרובים שלך, כולל הסודיים ביותר.</string>
+    <string name="spaces_activity_move_contact_already_in_space">איש הקשר נמצא כבר בSpace זה.</string>
+    <string name="spaces_activity_move_group_already_in_space">הקבוצה נמצאת כבר בSpace זה.</string>
+    <string name="spaces_activity_move_group_no_profile">כדי להעביר קבוצה לSpace, עליך להשלים את הפרופיל שמייצג אותך מול איש קשר זה. האם ברצונך להשלים זאת?</string>
+    <string name="spaces_activity_move_message">האם אכן להעביר את הקבוצה?</string>
+    <string name="spaces_activity_permission_not_allowed">אינך מורשה/ית על ידי מנהל הSpace לבצע פעולה זו.</string>
     <string name="spaces_activity_sample_business">עֵסֶק</string>
     <string name="spaces_activity_sample_business_name">ד"ר ג\'ון דו</string>
     <string name="spaces_activity_sample_family">מִשׁפָּחָה</string>
@@ -1070,11 +1163,11 @@
     <string name="template_space_activity_template_title">תבניות</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">בקש מחבר שלך קרוב אליך לסרוק את קוד ה-QR של ההזמנה שלך עם twinme, או הקש על קוד ההזמנה שלך כדי להעתיק אותו ללוח.</string>
+    <string name="twincode_activity_message">בקש מאיש הקשר שלך הקרוב אליך לסרוק את קוד ה-QR של ההזמנה שלך עם Skred, או הקש על קוד ההזמנה כדי להעתיק אותו ללוח.</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">האם אתה בטוח שברצונך למחוק את קוד \"העברת שיחות\" זה?</string>
-    <string name="transfert_call_activity_delete_message">קישור העברת שיחות זה יימחק. לְאַשֵׁר?</string>
+    <string name="transfert_call_activity_delete_message">קישור \"העברת שיחות\" זה לא יהיה שמיש עוד.</string>
     <string name="transfert_call_activity_gallery_message">סרוק קוד QR זה כדי להעביר את השיחות הניידות שלך.</string>
     <string name="transfert_call_activity_message">העבר את הקוד הזה וסמן את כתובת האתר שלו בדפדפן שאליו תרצה להעביר את השיחות שלך לנייד.</string>
     <string name="transfert_call_activity_reset_message">פעולה זו מבטלת את קוד העברת השיחה הנוכחי ויוצרת קוד חדש. לְאַשֵׁר?</string>
@@ -1104,13 +1197,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">בלחיצה על %1$s, אני מאשר שקראתי ומקבל:</string>
-    <string name="welcome_activity_next">הבא</string>
+    <string name="welcome_activity_enter">הבא</string>
     <string name="welcome_activity_pass">דלג</string>
     <string name="welcome_activity_privacy_policy">מדיניות פרטיות</string>
     <string name="welcome_activity_start">התחלה</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">העברת הודעות ושיחות קול/וידאו בחדות גבוהה, הגנה על הפרטיות על ידי עיצוב.</string>
     <string name="welcome_activity_step2_message">תקשורת מאובטחת של "עמית לעמית": אין עקבות בענן.</string>
     <string name="welcome_activity_step3_message">ללא מספר טלפון, ללא ספר כתובות, ללא מזהה משתמש: אתה בוחר כיצד אתה רוצה להיות מזוהה על סמך מי אתה מתקשר.</string>
-    <string name="welcome_activity_terms_of_use">תנאי שימוש</string>
+    <string name="welcome_activity_terms_of_use">תנאים</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

@@ -59,7 +59,7 @@ public class MenuSendOptionView extends PercentRelativeLayout {
     private boolean mAllowCopy = true;
     private boolean mAllowEphemeral = false;
     private boolean mForceDarkMode = false;
-    private final int mTimeout = 0;
+    private int mTimeout = 0;
 
     private MenuSendOptionAdapter mMenuSendOptionAdapter;
 
@@ -126,12 +126,30 @@ public class MenuSendOptionView extends PercentRelativeLayout {
             Log.d(LOG_TAG, "onOptionChangeValue: tag=" + tag + " value=" + value);
         }
 
+        boolean needsUpdateHeight = false;
         if (tag == ALLOW_COPY_TAG) {
             mAllowCopy = value;
         } else if (tag == ALLOW_EPHEMERAL_TAG) {
+            needsUpdateHeight = true;
             mAllowEphemeral = value;
         }
 
+        mMenuSendOptionAdapter.updateOptions(mAllowCopy, mAllowEphemeral, mTimeout);
+
+        if (needsUpdateHeight) {
+            int actionViewHeight = getActionViewHeight();
+            ViewGroup.LayoutParams layoutParams = mActionView.getLayoutParams();
+            layoutParams.height = actionViewHeight;
+            mActionView.setY(mHeight - actionViewHeight);
+        }
+    }
+
+    public void updateTimeout(int timeout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateTimeout: timeout=" + timeout);
+        }
+
+        mTimeout = timeout;
         mMenuSendOptionAdapter.updateOptions(mAllowCopy, mAllowEphemeral, mTimeout);
     }
 
@@ -185,6 +203,7 @@ public class MenuSendOptionView extends PercentRelativeLayout {
             @Override
             public void onAnimationRepeat(@NonNull Animator animator) {
 
+                mHeight = getHeight();
             }
         });
     }
@@ -236,7 +255,7 @@ public class MenuSendOptionView extends PercentRelativeLayout {
         });
     }
 
-    public void openMenu(boolean allowCopy) {
+    public void openMenu(boolean allowCopy, boolean allowEphemeral, long timeout) {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenu: allowCopy=" + allowCopy);
         }
@@ -245,6 +264,9 @@ public class MenuSendOptionView extends PercentRelativeLayout {
         isCloseAnimationEnded = false;
 
         mAllowCopy = allowCopy;
+        mAllowEphemeral = allowEphemeral;
+        mTimeout = (int) timeout;
+
         mMenuSendOptionAdapter.updateOptions(mAllowCopy, mAllowEphemeral, mTimeout);
         
         float radius = Design.ACTION_RADIUS * Resources.getSystem().getDisplayMetrics().density;

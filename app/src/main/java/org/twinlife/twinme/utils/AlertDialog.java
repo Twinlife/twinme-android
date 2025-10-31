@@ -58,6 +58,8 @@ public class AlertDialog extends Dialog {
     private static final float DESIGN_CLOSE_VIEW_MARGIN = 18;
     private static final float DESIGN_CONTAINER_RADIUS = 6;
 
+    private boolean mCancelClick = false;
+
     public AlertDialog(@NonNull Context context) {
 
         super(context);
@@ -186,12 +188,20 @@ public class AlertDialog extends Dialog {
         rightButton.setBackground(rightButtonBackground);
 
         if (leftRunnable != null) {
-            closeView.setOnClickListener(v -> leftRunnable.run());
+            closeView.setOnClickListener(v -> {
+                mCancelClick = true;
+                leftRunnable.run();
+            });
             leftButton.setOnClickListener(v -> leftRunnable.run());
-            setOnCancelListener(dialogInterface -> leftRunnable.run());
+
+            setOnCancelListener(dialog -> {
+                mCancelClick = true;
+                leftRunnable.run();
+            });
         } else {
             closeView.setOnClickListener(v -> dismiss());
         }
+
         if (rightRunnable != null) {
             rightButton.setOnClickListener(v -> rightRunnable.run());
         }
@@ -295,5 +305,10 @@ public class AlertDialog extends Dialog {
         }
 
         return this;
+    }
+
+    public boolean isCancelClick() {
+
+        return mCancelClick;
     }
 }

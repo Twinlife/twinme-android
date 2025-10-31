@@ -24,6 +24,10 @@ public class MenuPhotoView extends AbstractMenuSelectActionView {
         void onCameraClick();
 
         void onPhotoGalleryClick();
+
+        default void onBackgroundColorClick() {
+
+        }
     }
 
     private Observer mObserver;
@@ -44,9 +48,12 @@ public class MenuPhotoView extends AbstractMenuSelectActionView {
 
         if (position == 0) {
             mObserver.onCameraClick();
-        } else {
+        } else if (position == 1) {
             mObserver.onPhotoGalleryClick();
+        } else {
+            mObserver.onBackgroundColorClick();
         }
+
     }
 
     public void setObserver(Observer observer) {

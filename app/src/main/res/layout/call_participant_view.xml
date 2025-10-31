@@ -76,6 +76,28 @@
         android:visibility="gone" />
 
     <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_participant_shared_location_layout"
+        android:layout_width="0dp"
+        app:layout_aspectRatio="100%"
+        android:visibility="gone">
+
+        <org.twinlife.twinme.utils.RoundedView
+            android:id="@+id/call_participant_shared_location_rounded_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/call_participant_shared_location_image_view"
+            android:scaleType="fitCenter"
+            android:layout_centerInParent="true"
+            android:src="@drawable/call_location_icon"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="53.85%"
+            app:tint="#FFFFFF" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/call_participant_switch_camera_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"

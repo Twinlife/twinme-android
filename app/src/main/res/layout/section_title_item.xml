@@ -10,10 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="@string/contacts_fragment_title"
-        android:textAllCaps="true"
         app:layout_marginStartPercent="4.53%"
         app:layout_marginEndPercent="4.26%"
-        app:layout_marginBottomPercent="12.72%" />
+        app:layout_marginBottomPercent="12.72%"
+        android:textAllCaps="true" />
 
     <TextView
         android:id="@+id/section_title_item_new_feature"

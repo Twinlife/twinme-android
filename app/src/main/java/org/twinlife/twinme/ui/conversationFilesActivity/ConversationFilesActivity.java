@@ -66,7 +66,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
 
-public class ConversationFilesActivity extends AbstractFilesActivity implements LoaderListener<Item>, ItemSelectedActionView.Observer, CustomTabView.Observer {
+public class ConversationFilesActivity extends AbstractFilesActivity implements ConversationFilesService.Observer, LoaderListener<Item>, ItemSelectedActionView.Observer, CustomTabView.Observer {
     private static final String LOG_TAG = "ConversationFilesAc...";
     private static final boolean DEBUG = false;
 

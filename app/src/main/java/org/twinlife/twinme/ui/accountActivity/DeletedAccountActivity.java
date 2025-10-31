@@ -9,6 +9,7 @@
 package org.twinlife.twinme.ui.accountActivity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -63,7 +64,7 @@ public class DeletedAccountActivity extends Activity {
 
         TextView messageView = findViewById(R.id.deleted_account_activity_message_view);
         Design.updateTextFont(messageView, Design.FONT_REGULAR36);
-        messageView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        messageView.setTextColor(Color.WHITE);
         messageView.setText(Html.fromHtml(getString(R.string.deleted_account_activity_message)));
     }
 }

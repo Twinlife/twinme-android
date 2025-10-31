@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-
 import org.twinlife.twinme.skin.Design;
 
 public class SettingSectionViewHolder extends RecyclerView.ViewHolder {
@@ -41,21 +40,28 @@ public class SettingSectionViewHolder extends RecyclerView.ViewHolder {
         mAccessoryView = view.findViewById(R.id.settings_activity_item_section_accessory_view);
     }
 
-    public void onBind(String title, boolean premiumSection) {
+    public void onBind(String title) {
 
         mTextView.setText(title);
         mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mAccessoryView.setVisibility(View.VISIBLE);
 
-        if (premiumSection) {
-            itemView.setAlpha(0.5f);
-        } else {
-            itemView.setAlpha(1.0f);
-        }
-
         updateFont();
         updateColor();
+    }
+
+    public void onBind(String title, boolean isEnabled) {
+
+        onBind(title);
+
+        if (isEnabled) {
+            mTextView.setAlpha(1.0f);
+            mAccessoryView.setAlpha(1.0f);
+        } else {
+            mTextView.setAlpha(0.5f);
+            mAccessoryView.setAlpha(0.5f);
+        }
     }
 
     public void onBind(String title, int color, boolean hideAccessory) {
@@ -68,8 +74,6 @@ public class SettingSectionViewHolder extends RecyclerView.ViewHolder {
         } else {
             mAccessoryView.setVisibility(View.VISIBLE);
         }
-
-        itemView.setAlpha(1.0f);
 
         updateFont();
         updateColor();

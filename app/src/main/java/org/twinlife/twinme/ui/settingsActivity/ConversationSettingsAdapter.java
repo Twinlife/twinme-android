@@ -101,7 +101,7 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnConversationSettingsClickListener.onColorsAndBackgroundClick());
-            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_activity_background_colors), false);
+            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_activity_background_colors));
         } else if (viewType == PERSONNALIZATION) {
             EmojiSizeViewHolder emojiSizeViewHolder = (EmojiSizeViewHolder) viewHolder;
 

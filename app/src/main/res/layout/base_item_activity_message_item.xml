@@ -83,6 +83,23 @@
             app:layout_marginEndPercent="6.93%"
             app:layout_marginStartPercent="29.60%" />
 
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_message_item_ephemeral_content_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:layout_alignStart="@+id/base_item_activity_message_item_text"
+            android:layout_alignLeft="@+id/base_item_activity_message_item_text"
+            android:layout_alignBottom="@+id/base_item_activity_message_item_text">
+
+            <org.twinlife.twinme.utils.EphemeralView
+                android:id="@+id/base_item_activity_message_item_ephemeral_view"
+                android:layout_height="0dp"
+                app:layout_aspectRatio="100%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView
             android:id="@+id/base_item_activity_message_item_delete_view"
             android:layout_width="0dp"

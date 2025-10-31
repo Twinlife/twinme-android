@@ -153,6 +153,22 @@
                 android:textColor="#FFFFFF"
                 app:layout_marginStartPercent="3.59%"
                 app:layout_marginBottomPercent="16.67%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_audio_item_ephemeral_content_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/base_item_activity_audio_item_counter"
+                app:layout_marginEndPercent="4.83%">
+
+                <org.twinlife.twinme.utils.EphemeralView
+                    android:id="@+id/base_item_activity_audio_item_ephemeral_view"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView

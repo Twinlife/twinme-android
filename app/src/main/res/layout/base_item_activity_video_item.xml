@@ -80,6 +80,33 @@
             app:layout_marginEndPercent="6.93%"
             app:layout_widthPercent="66.93%" />
 
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_video_item_bottom_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignLeft="@+id/base_item_activity_video_item_image_view"
+            android:layout_alignStart="@+id/base_item_activity_video_item_image_view"
+            android:layout_alignRight="@+id/base_item_activity_video_item_image_view"
+            android:layout_alignEnd="@+id/base_item_activity_video_item_image_view"
+            android:layout_alignBottom="@+id/base_item_activity_video_item_image_view"
+            android:visibility="gone">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/base_item_activity_video_item_ephemeral_content_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:clipChildren="false"
+                app:layout_marginStartPercent="2.8%">
+
+                <org.twinlife.twinme.utils.EphemeralView
+                    android:id="@+id/base_item_activity_video_item_ephemeral_view"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="100%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
         <ImageView
             android:id="@+id/base_item_activity_video_item_play_view"
             android:layout_height="0dp"

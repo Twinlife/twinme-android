@@ -54,6 +54,7 @@ import org.twinlife.twinme.ui.calls.CallAgainConfirmView;
 import org.twinlife.twinme.ui.calls.LastCallsAdapter;
 import org.twinlife.twinme.ui.calls.UICall;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.users.UIContact;
@@ -687,43 +688,53 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
                     showCallAgainConfirmView(mUIContact, false, callDescriptor.isVideo());
                 }
             } else if (mUIContact.getContact().getType() == Originator.Type.GROUP) {
-                PercentRelativeLayout percentRelativeLayout = findViewById(R.id.last_calls_activity_layout);
+                if (!isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+                    PercentRelativeLayout percentRelativeLayout = findViewById(R.id.last_calls_activity_layout);
 
-                PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-                premiumFeatureConfirmView.setLayoutParams(layoutParams);
-                premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
+                    PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
+                    PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT);
+                    premiumFeatureConfirmView.setLayoutParams(layoutParams);
+                    premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
 
-                AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-                    @Override
-                    public void onConfirmClick() {
-                        premiumFeatureConfirmView.redirectStore();
+                    AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                        @Override
+                        public void onConfirmClick() {
+                            Intent intent = new Intent();
+                            intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                            startActivity(intent);
+                            premiumFeatureConfirmView.animationCloseConfirmView();
+                        }
+
+                        @Override
+                        public void onCancelClick() {
+                            premiumFeatureConfirmView.animationCloseConfirmView();
+                        }
+
+                        @Override
+                        public void onDismissClick() {
+                            premiumFeatureConfirmView.animationCloseConfirmView();
+                        }
+
+                        @Override
+                        public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                            percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                            setStatusBarColor();
+                        }
+                    };
+                    premiumFeatureConfirmView.setObserver(observer);
+
+                    percentRelativeLayout.addView(premiumFeatureConfirmView);
+                    premiumFeatureConfirmView.show();
+
+                    int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+                    setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+                } else {
+                    Group group = (Group) mUIContact.getContact();
+                    if ((callDescriptor.isVideo() && group.getCapabilities().hasVideo()) || (!callDescriptor.isVideo() && group.getCapabilities().hasAudio())) {
+                        showCallAgainConfirmView(mUIContact, true, callDescriptor.isVideo());
                     }
-
-                    @Override
-                    public void onCancelClick() {
-                        premiumFeatureConfirmView.animationCloseConfirmView();
-                    }
-
-                    @Override
-                    public void onDismissClick() {
-                        premiumFeatureConfirmView.animationCloseConfirmView();
-                    }
-
-                    @Override
-                    public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                        percentRelativeLayout.removeView(premiumFeatureConfirmView);
-                        setStatusBarColor();
-                    }
-                };
-                premiumFeatureConfirmView.setObserver(observer);
-
-                percentRelativeLayout.addView(premiumFeatureConfirmView);
-                premiumFeatureConfirmView.show();
-
-                int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-                setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+                }
             }
         }
     }

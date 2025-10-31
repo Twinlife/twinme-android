@@ -18,23 +18,22 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.models.SpaceSettings;
+import org.twinlife.twinme.services.SpaceSettingsService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.utils.FileInfo;
 
-public class MessagesSettingsActivity extends AbstractSettingsActivity implements MenuSelectValueView.Observer {
+public class MessagesSettingsActivity extends AbstractSettingsActivity implements SpaceSettingsService.Observer, MenuSelectValueView.Observer {
     private static final String LOG_TAG = "MessagesSettingsActi...";
     private static final boolean DEBUG = false;
 
@@ -42,8 +41,11 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
 
     private MessagesSettingsAdapter mMessagesSettingsAdapter;
 
-    private MenuSelectValueView mMenuSelectValueView;
     private View mOverlayView;
+
+    private SpaceSettingsService mSpaceSettingsService;
+    private SpaceSettings mDefaultSpaceSettings;
+    private MenuSelectValueView mMenuSelectValueView;
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
@@ -61,12 +63,27 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
 
         super.onCreate(savedInstanceState);
 
+        mDefaultSpaceSettings = getTwinmeContext().getDefaultSpaceSettings();
+
         initViews();
+
+        mSpaceSettingsService = new SpaceSettingsService(this, getTwinmeContext(), this);
     }
 
     //
     // Override Activity methods
     //
+
+    @Override
+    protected void onDestroy() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onDestroy");
+        }
+
+        super.onDestroy();
+
+        mSpaceSettingsService.dispose();
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -129,6 +146,20 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         }
     }
 
+    //
+    // Implement SpaceService.Observer methods
+    //
+
+    @Override
+    public void onUpdateDefaultSpaceSettings(SpaceSettings spaceSettings) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onUpdateDefaultSpaceSettings: spaceSettings=" + spaceSettings);
+        }
+
+        mDefaultSpaceSettings = spaceSettings;
+        mMessagesSettingsAdapter.notifyDataSetChanged();
+    }
+
     //MenuSelectValueView.Observer
 
     @Override
@@ -159,6 +190,17 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         }
 
         mMessagesSettingsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSelectTimeout(UITimeout timeout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+        }
+
+        mDefaultSpaceSettings.setString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, timeout.getDelay() + "");
+        closeMenu();
+        saveDefaultSpaceSettings();
     }
 
     @Override
@@ -193,48 +235,66 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         }
     }
 
-    public void onPremiumFeatureClick() {
+    @Override
+    public void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onPremiumFeatureClick");
+            Log.d(LOG_TAG, "onSettingChangeValue : booleanConfig=" + booleanConfig + " value=" + value);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.messages_settings_activity_layout);
+        if (booleanConfig == Settings.ephemeralMessageAllowed) {
+            mDefaultSpaceSettings.setBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, value);
+        } else if (booleanConfig == Settings.messageCopyAllowed) {
+            mDefaultSpaceSettings.setMessageCopyAllowed(value);
+        } else if (booleanConfig == Settings.fileCopyAllowed) {
+            mDefaultSpaceSettings.setFileCopyAllowed(value);
+        } else if (booleanConfig == Settings.visualizationLink) {
+            booleanConfig.setBoolean(value);
+        }
 
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.PRIVACY));
+        saveDefaultSpaceSettings();
+    }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
-            }
+    @Override
+    public void onSettingClick(Settings.IntConfig intConfig) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSettingClick: intConfig= " + intConfig);
+        }
 
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
+        if (intConfig == Settings.ephemeralMessageExpireTimeout) {
+            openTimeout();
+        }
+    }
 
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
+    public boolean isAllowEphemeral() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isAllowEphemeral");
+        }
 
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
-                setStatusBarColor();
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
+        return mDefaultSpaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
+    }
 
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
+    public long getExpireTimeout() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getExpireTimeout");
+        }
 
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        return Long.parseLong(mDefaultSpaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
+    }
+
+    public boolean messageCopyAllowed() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "messageCopyAllowed");
+        }
+
+        return mDefaultSpaceSettings.messageCopyAllowed();
+    }
+
+    public boolean fileCopyAllowed() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "fileCopyAllowed");
+        }
+
+        return mDefaultSpaceSettings.fileCopyAllowed();
     }
 
     //
@@ -265,11 +325,11 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         settingsRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         settingsRecyclerView.setItemAnimator(null);
 
-        mProgressBarView = findViewById(R.id.messages_settings_activity_progress_bar);
-
         mOverlayView = findViewById(R.id.messages_settings_activity_overlay_view);
         mOverlayView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
-        mOverlayView.setOnClickListener(view -> closeMenuSelectValue());
+        mOverlayView.setOnClickListener(view -> closeMenu());
+
+        mProgressBarView = findViewById(R.id.messages_settings_activity_progress_bar);
 
         mMenuSelectValueView = findViewById(R.id.messages_settings_activity_menu_select_value_view);
         mMenuSelectValueView.setVisibility(View.INVISIBLE);
@@ -287,6 +347,35 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         mUIPostInitialized = true;
     }
 
+    private void saveDefaultSpaceSettings() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "saveDefaultSpaceSettings");
+        }
+
+        mSpaceSettingsService.updateDefaultSpaceSettings(mDefaultSpaceSettings);
+    }
+
+    private void openTimeout() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openTimeout");
+        }
+
+        mMenuType = MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE;
+        long timeout = Long.parseLong(mDefaultSpaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
+        mMenuSelectValueView.setSelectedValue((int) timeout);
+        openMenuSelectValue();
+    }
+
+    private void closeMenu() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "closeMenu");
+        }
+
+        mMenuSelectValueView.setVisibility(View.INVISIBLE);
+        mOverlayView.setVisibility(View.INVISIBLE);
+        setStatusBarColor();
+    }
+
     private void openMenuSelectValue() {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenuSelectValue");
@@ -295,14 +384,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         if (mMenuSelectValueView.getVisibility() == View.INVISIBLE) {
             mMenuSelectValueView.setVisibility(View.VISIBLE);
             mOverlayView.setVisibility(View.VISIBLE);
-
-            if (mMenuType == MenuSelectValueView.MenuType.IMAGE) {
-                mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.IMAGE);
-            } else if (mMenuType == MenuSelectValueView.MenuType.VIDEO) {
-                mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.VIDEO);
-            } else {
-                mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.DISPLAY_CALLS);
-            }
+            mMenuSelectValueView.openMenu(mMenuType);
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
             setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

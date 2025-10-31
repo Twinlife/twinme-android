@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="application_name" translatable="false">twinme debug</string>
+    <string name="application_name" translatable="false">Skred debug</string>
 
     <string name="account_activity_debug_title_view" translatable="false">Debug</string>
     <string name="account_activity_tests_title_view" translatable="false">Tests</string>

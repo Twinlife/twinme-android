@@ -23,6 +23,7 @@ public class UIActionConversation {
     public enum ConversationActionType {
         FILE,
         GALLERY,
+        LOCATION,
         MANAGE_CONVERSATION,
         MEDIAS_AND_FILES,
         PHOTO,
@@ -81,6 +82,12 @@ public class UIActionConversation {
                 mTitle = context.getString(R.string.application_photo_gallery);
                 mIcon = R.drawable.toolbar_picture_grey;
                 mIconColor = Color.rgb(241, 154, 55);
+                break;
+
+            case LOCATION:
+                mTitle = context.getString(R.string.call_activity_location_share);
+                mIcon = R.drawable.toolbar_location_grey;
+                mIconColor = Color.rgb(210, 218, 119);
                 break;
 
             case MANAGE_CONVERSATION:

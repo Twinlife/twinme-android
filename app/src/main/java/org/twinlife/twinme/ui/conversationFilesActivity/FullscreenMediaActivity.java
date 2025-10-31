@@ -114,16 +114,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         mConversationFilesService = new ConversationFilesService(this, getTwinmeContext(), this,
                 descriptorIds, contactId, groupId);
     }
-
-    @Override
-    protected void onResume() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onResume");
-        }
-
-        super.onResume();
-    }
-
+    
     @Override
     protected void onPause() {
         if (DEBUG) {

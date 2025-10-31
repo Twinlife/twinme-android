@@ -76,6 +76,12 @@ public class PremiumFeatureConfirmView extends AbstractConfirmView {
         }
     }
 
+    public void redirectStore() {
+
+        PremiumServicesActivity.redirectStore(getContext());
+        animationCloseConfirmView();
+    }
+
     public void hideOverlay() {
         if (DEBUG) {
             Log.d(LOG_TAG, "hideOverlay");
@@ -84,12 +90,6 @@ public class PremiumFeatureConfirmView extends AbstractConfirmView {
         if (mOverlayView != null) {
             mOverlayView.setBackgroundColor(Color.TRANSPARENT);
         }
-    }
-
-    public void redirectStore() {
-
-        PremiumServicesActivity.redirectStoreUpgrade(getContext());
-        animationCloseConfirmView();
     }
 
     @Override

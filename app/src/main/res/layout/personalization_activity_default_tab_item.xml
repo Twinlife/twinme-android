@@ -5,21 +5,21 @@
     android:layout_height="120dp">
 
     <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/personalization_activity_default_tab_item_profiles_view"
+        android:id="@+id/personalization_activity_default_tab_item_spaces_view"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         app:layout_widthPercent="20%"
         android:contentDescription="@string/application_profile">
 
         <ImageView
-            android:id="@+id/personalization_activity_default_tab_item_profiles_image_view"
+            android:id="@+id/personalization_activity_default_tab_item_spaces_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
-            android:src="@drawable/tab_bar_profile_grey"
+            android:src="@drawable/tab_bar_spaces_grey"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="50%" />
 
@@ -29,10 +29,10 @@
         android:id="@+id/personalization_activity_default_tab_item_calls_view"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_profiles_view"
-        android:layout_toEndOf="@+id/personalization_activity_default_tab_item_profiles_view"
+        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_spaces_view"
+        android:layout_toEndOf="@+id/personalization_activity_default_tab_item_spaces_view"
         app:layout_widthPercent="20%"
-        android:contentDescription="@string/calls_fragment_title">
+        android:contentDescription="@string/show_contact_activity_space">
 
         <ImageView
             android:id="@+id/personalization_activity_default_tab_item_calls_image_view"

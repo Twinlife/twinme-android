@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -39,15 +40,23 @@ import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AcceptInvitationActivity;
 import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.EphemeralView;
 import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 class MessageItemViewHolder extends ItemViewHolder {
 
+    private static final int DESIGN_LINK_COLOR = Color.argb(255, 0, 0, 0);
     private static final int MAX_EMOJI = 5;
+
+    private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
+    private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 14f;
+    private static final float DESIGN_EPHEMERAL_TOP_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_BOTTOM_MARGIN = 14f;
 
     private final View mReplyView;
     private final TextView mReplyTextView;
@@ -58,6 +67,9 @@ class MessageItemViewHolder extends ItemViewHolder {
     private final GradientDrawable mReplyGradientDrawable;
     private final GradientDrawable mReplyToImageContentGradientDrawable;
     private final DeleteProgressView mDeleteView;
+    private final EphemeralView mEphemeralView;
+
+    private CountDownTimer mTimer;
 
     private boolean mIsLongPressDetected = false;
 
@@ -212,6 +224,20 @@ class MessageItemViewHolder extends ItemViewHolder {
                 return super.onTouchEvent(textView, spannable, motionEvent);
             }
         });
+
+        mEphemeralView = view.findViewById(R.id.base_item_activity_message_item_ephemeral_view);
+        mEphemeralView.setColor(Color.WHITE);
+        layoutParams = mEphemeralView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.setMarginStart((int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO));
+        marginLayoutParams.setMarginEnd((int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO));
+
+        marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_EPHEMERAL_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
     }
 
     @Override
@@ -255,7 +281,10 @@ class MessageItemViewHolder extends ItemViewHolder {
         } catch (Exception ex) {
             // Possible exception: android.webkit.WebViewFactory.MissingWebViewPackageException when there is no WebView implementation.
         }
-        mTextView.setLinkTextColor(Color.WHITE);
+        mTextView.setLinkTextColor(DESIGN_LINK_COLOR);
+        mTextView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
+
+        mEphemeralView.setColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         // Compute the corner radii only once!
         final float[] cornerRadii = getCornerRadii();
@@ -266,7 +295,10 @@ class MessageItemViewHolder extends ItemViewHolder {
         if (countEmoji == 0) {
             mTextView.setTypeface(getMessageFont().typeface);
             mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getMessageFont().size);
-            mGradientDrawable.setColor(Design.getMainStyle());
+            mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+            if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+                mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+            }
             mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
         } else {
             mTextView.setTypeface(Design.getEmojiFont(countEmoji).typeface);
@@ -278,7 +310,10 @@ class MessageItemViewHolder extends ItemViewHolder {
                 mTextView.setPadding(0, 0, 0, 0);
             } else {
                 mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
-                mGradientDrawable.setColor(Design.getMainStyle());
+                mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+                if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+                    mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+                }
             }
         }
 
@@ -329,6 +364,14 @@ class MessageItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
                     break;
 
+                case GEOLOCATION_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_message_item_reply_text);
+
+                    mReplyTextView.setText(getBaseItemActivity().getResources().getString(R.string.application_location));
+                    break;
+
                 case NAMED_FILE_DESCRIPTOR:
                     mReplyView.setVisibility(View.VISIBLE);
                     mReplyTextView.setVisibility(View.VISIBLE);
@@ -337,6 +380,36 @@ class MessageItemViewHolder extends ItemViewHolder {
                     NamedFileDescriptor fileDescriptor = (NamedFileDescriptor) replyToDescriptor;
                     mReplyTextView.setText(fileDescriptor.getName());
                     break;
+            }
+        }
+
+        if (item.isEphemeralItem()) {
+            mEphemeralView.setVisibility(View.VISIBLE);
+            startEphemeralAnimation();
+
+            int leftPadding;
+            int rightPadding;
+
+            if (CommonUtils.isLayoutDirectionRTL()) {
+                leftPadding = MESSAGE_ITEM_TEXT_DEFAULT_PADDING;
+                rightPadding = (int) (MESSAGE_ITEM_TEXT_WIDTH_PADDING + (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO));
+            } else {
+                leftPadding = (int) (MESSAGE_ITEM_TEXT_WIDTH_PADDING + (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO));
+                rightPadding = MESSAGE_ITEM_TEXT_DEFAULT_PADDING;
+            }
+
+            if (countEmoji == 0) {
+                mTextView.setPadding(leftPadding, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, rightPadding, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
+            } else {
+                mTextView.setPadding(leftPadding, 0, 0, 0);
+            }
+        } else {
+            mEphemeralView.setVisibility(View.GONE);
+
+            if (countEmoji == 0) {
+                mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
+            } else {
+                mTextView.setPadding(0, 0, 0, 0);
             }
         }
 
@@ -368,6 +441,10 @@ class MessageItemViewHolder extends ItemViewHolder {
         mDeleteView.setVisibility(View.GONE);
         mDeleteView.setOnDeleteProgressListener(null);
         setDeleteAnimationStarted(false);
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 
     @Override
@@ -409,6 +486,39 @@ class MessageItemViewHolder extends ItemViewHolder {
     //
     // Private methods
     //
+
+    private MessageItem getMessageItem() {
+
+        return (MessageItem) getItem();
+    }
+
+    private void startEphemeralAnimation() {
+
+        if (mTimer == null && getItem().getState() == Item.ItemState.READ) {
+            mTimer = new CountDownTimer(getItem().getExpireTimeout(), 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    Date now = new Date();
+                    float timeSinceRead = (now.getTime() - getItem().getReadTimestamp());
+                    float percent = (float) (1.0 - (timeSinceRead / getItem().getExpireTimeout()));
+                    if (percent < 0) {
+                        percent = 0;
+                    } else if (percent > 1) {
+                        percent = 1;
+                    }
+                    mEphemeralView.updateWithProgress(percent);
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            };
+            mTimer.start();
+        } else {
+            mEphemeralView.updateWithProgress(1);
+        }
+    }
 
     private int countEmoji(String content) {
 

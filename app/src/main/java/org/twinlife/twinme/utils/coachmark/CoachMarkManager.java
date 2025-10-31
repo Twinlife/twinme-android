@@ -19,8 +19,7 @@ public class CoachMarkManager {
 
     public boolean showCoachMark() {
 
-        //return Settings.showCoachMark.getBoolean();
-        return false;
+        return Settings.showCoachMark.getBoolean();
     }
 
     public void setShowCoachMark(boolean showCoachMark) {
@@ -36,6 +35,7 @@ public class CoachMarkManager {
 
     public boolean showCoachMark(CoachMark.CoachMarkTag coachMarkTag) {
 
+        return false;
         /*if (!showCoachMark()) {
             return false;
         }
@@ -56,9 +56,9 @@ public class CoachMarkManager {
                 setCountShowCoachMark(coachMarkTag, showCount + 1);
                 return true;
             }
-        }*/
+        }
 
-        return false;
+        return false;*/
     }
 
     private long lastShowCoachMarkDate(CoachMark.CoachMarkTag coachMarkTag) {

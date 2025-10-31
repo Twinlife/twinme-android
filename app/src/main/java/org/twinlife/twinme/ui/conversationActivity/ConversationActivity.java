@@ -33,11 +33,13 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.RenderEffect;
 import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -104,6 +106,7 @@ import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorAnnotation;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
+import org.twinlife.twinlife.ConversationService.GeolocationDescriptor;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
 import org.twinlife.twinlife.ConversationService.ImageDescriptor;
 import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
@@ -128,6 +131,8 @@ import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
 import org.twinlife.twinme.models.Originator;
+import org.twinlife.twinme.models.Space;
+import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.models.Typing;
 import org.twinlife.twinme.services.ConversationService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
@@ -150,6 +155,7 @@ import org.twinlife.twinme.ui.baseItemActivity.InvitationContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.InvitationItem;
 import org.twinlife.twinme.ui.baseItemActivity.Item;
 import org.twinlife.twinme.ui.baseItemActivity.ItemListAdapter;
+import org.twinlife.twinme.ui.baseItemActivity.LocationItem;
 import org.twinlife.twinme.ui.baseItemActivity.LinkItem;
 import org.twinlife.twinme.ui.baseItemActivity.MessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.NameItem;
@@ -161,10 +167,12 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerFileItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerImageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationItem;
+import org.twinlife.twinme.ui.baseItemActivity.PeerLocationItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerLinkItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerMessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
 import org.twinlife.twinme.ui.baseItemActivity.ReplyItemTouchHelper;
+import org.twinlife.twinme.ui.baseItemActivity.SecurityInfoItem;
 import org.twinlife.twinme.ui.baseItemActivity.TimeItem;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
@@ -175,10 +183,15 @@ import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.FullscreenMediaActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ItemSelectedActionView;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
+import org.twinlife.twinme.ui.shareActivity.ShareActivity;
+import org.twinlife.twinme.ui.spaces.CustomAppearance;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.ui.shareActivity.ShareActivity;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
@@ -214,9 +227,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
-public class ConversationActivity extends BaseItemActivity implements ConversationService.Observer,
-        BaseItemActivity.AudioItemObserver, BaseItemActivity.InvitationItemObserver,
-        LoaderListener<Item>, AudioListener, ItemSelectedActionView.Observer, AnnotationsView.Observer {
+public class ConversationActivity extends BaseItemActivity implements ConversationService.Observer, BaseItemActivity.AudioItemObserver, BaseItemActivity.InvitationItemObserver, MenuSelectValueView.Observer, LoaderListener<Item>, AudioListener, ItemSelectedActionView.Observer, AnnotationsView.Observer{
+
     private static final String LOG_TAG = "ConversationActivity";
     private static final boolean DEBUG = false;
 
@@ -241,6 +253,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private static final float DESIGN_AVATAR_MARGIN = 10f;
     private static final float DESIGN_PEER_MENU_START_MARGIN_PERCENT = 0.128f;
     private static final float DESIGN_LOCAL_MENU_END_MARGIN_PERCENT = 0.0693f;
+    private static final float DESIGN_MARKER_VIEW_WIDTH = 120f;
+    private static final float DESIGN_AVATAR_BORDER_INSET = 0f;
+    private static final int DESIGN_BORDER_COLOR_WHITE = Color.argb(255, 255, 255, 255);
+    private static final float DESIGN_AVATAR_BORDER_THICKNESS = 4f / 120f;
     private static final float DESIGN_EDIT_TEXT_WIDTH_INSET = 32f;
     private static final float DESIGN_EDIT_TEXT_HEIGHT_INSET = 20f;
     private static final float DESIGN_EDIT_TEXT_TOP_MARGIN = 28f;
@@ -282,7 +298,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private static final int REQUEST_CREATE_DOCUMENT = 2;
     private static final int REQUEST_PREVIEW_MEDIA = 3;
     private static final int REQUEST_PREVIEW_FILE = 4;
-    private static final int REQUEST_TAKE_PHOTO = 5;
+    private static final int REQUEST_PREVIEW_LOCATION = 5;
+    private static final int REQUEST_TAKE_PHOTO = 6;
 
     private static final int RESULT_DID_SHARE_ACTION = 100;
 
@@ -445,6 +462,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private Bitmap mIdentityAvatar;
     @Nullable
     private Originator mSubject;
+    @Nullable
+    private Space mSpace;
     private final ArrayList<Item> mItems = new ArrayList<>();
     private final ArrayList<Item> mSelectedItems = new ArrayList<>();
     private boolean mBatchUpdate = true;
@@ -462,6 +481,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private View mOverlayView;
     private ProgressBar mProgressBarView;
     private MenuSendOptionView mMenuSendOptionView;
+    private MenuSelectValueView mMenuTimeoutView;
     private MenuActionConversationView mMenuActionConversationView;
     private ReplyView mReplyView;
     private AnnotationsView mAnnotationsView;
@@ -469,6 +489,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private Menu mMenu;
     private boolean mIsMenuSendOptionOpen = false;
     private boolean mAllowCopy = true;
+    private boolean mAllowEphemeralMessage = false;
+    private long mExpireTimeout = 0;
 
     private boolean mIsTyping = false;
     private boolean mIsPeerTyping = false;
@@ -506,6 +528,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private TextStyle mMessageFont;
 
     private SharedPreferences mSharedPreferences;
+
+    @Nullable
+    private CustomAppearance mCustomAppearance;
 
     private int mHeaderHeight;
 
@@ -692,24 +717,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     //
 
     @Override
-    protected void onStart() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onStart");
-        }
-
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onStop");
-        }
-
-        super.onStop();
-    }
-
-    @Override
     protected void onDestroy() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onDestroy");
@@ -812,59 +819,28 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
                 case REQUEST_PREVIEW_MEDIA:
                 case REQUEST_PREVIEW_FILE:
+                case REQUEST_PREVIEW_LOCATION:
                     String textMessage = intent.getStringExtra(Intents.INTENT_TEXT_MESSAGE);
                     boolean allowCopyFile = intent.getBooleanExtra(Intents.INTENT_ALLOW_COPY_FILE, true);
                     boolean allowCopyText = intent.getBooleanExtra(Intents.INTENT_ALLOW_COPY_TEXT, true);
+                    boolean allowEphemeral = intent.getBooleanExtra(Intents.INTENT_ALLOW_EPHEMERAL, false);
+                    long expireTimeout = intent.getLongExtra(Intents.INTENT_EXPIRE_TIMEOUT, 0);
+                    if (!allowEphemeral) {
+                        expireTimeout = 0;
+                    }
 
-                    long expireTimeout = 0;
+                    if (requestCode == REQUEST_PREVIEW_LOCATION) {
+                        double latitudeDelta = intent.getDoubleExtra(Intents.INTENT_LATITUDE_DELTA, 0);
+                        double longitudeDelta = intent.getDoubleExtra(Intents.INTENT_LONGITUDE_DELTA, 0);
+                        double altitude = intent.getDoubleExtra(Intents.INTENT_ALTITUDE, 0);
+                        double latitude = intent.getDoubleExtra(Intents.INTENT_LATITUDE, 0);
+                        double longitude = intent.getDoubleExtra(Intents.INTENT_LONGITUDE, 0);
 
-                    try {
-                        if (intent.hasExtra(Intents.INTENT_SELECTED_URI)) {
-                            ArrayList<String> urisToString = intent.getStringArrayListExtra(Intents.INTENT_SELECTED_URI);
-
-                            if (urisToString != null) {
-                                for (String sendUri : urisToString) {
-                                    FileInfo fileInfo = new FileInfo(getApplicationContext(), Uri.parse(sendUri));
-                                    if (fileInfo.getFilename() != null) {
-                                        if (fileInfo.isImage()) {
-                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                        } else if (fileInfo.isVideo()) {
-                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                        } else {
-                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if (intent.hasExtra(Intents.INTENT_CAPTURED_FILE)) {
-                            ArrayList<Parcelable> captureFiles = intent.getParcelableArrayListExtra(Intents.INTENT_CAPTURED_FILE);
-
-                            if (captureFiles != null) {
-                                for (Parcelable parcelable : captureFiles) {
-
-                                    if (parcelable instanceof FileInfo) {
-                                        FileInfo fileInfo = (FileInfo) parcelable;
-                                        if (fileInfo.getFilename() != null) {
-                                            if (fileInfo.isImage()) {
-                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                            } else if (fileInfo.isVideo()) {
-                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                            } else {
-                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                            }
-                                        }
-                                    } else if (parcelable instanceof UIPreviewFile) {
-                                        UIPreviewFile previewFile = (UIPreviewFile) parcelable;
-                                        FileInfo fileInfo = new FileInfo(getApplicationContext(), previewFile.getUri());
-                                        sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                    }
-                                }
-                            }
-                        }
+                        sendLocation(longitude, latitude, altitude, longitudeDelta, latitudeDelta, expireTimeout);
 
                         if (textMessage != null && !textMessage.trim().isEmpty()) {
+                            mEditText.setText("");
+
                             DescriptorId replyTo = null;
                             if (mReplyItem != null) {
                                 replyTo = mReplyItem.getDescriptorId();
@@ -880,11 +856,77 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                             }
                         }
 
-                        mEditText.setText("");
                         closeReplyView();
-                    } catch (Exception exception) {
-                        Log.d(LOG_TAG, "exception=" + exception.getMessage());
+                    } else {
+                        try {
+                            if (intent.hasExtra(Intents.INTENT_SELECTED_URI)) {
+                                ArrayList<String> urisToString = intent.getStringArrayListExtra(Intents.INTENT_SELECTED_URI);
+
+                                if (urisToString != null) {
+                                    for (String sendUri : urisToString) {
+                                        FileInfo fileInfo = new FileInfo(getApplicationContext(), Uri.parse(sendUri));
+                                        if (fileInfo.getFilename() != null) {
+                                            if (fileInfo.isImage()) {
+                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                            } else if (fileInfo.isVideo()) {
+                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                            } else {
+                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (intent.hasExtra(Intents.INTENT_CAPTURED_FILE)) {
+                                ArrayList<Parcelable> captureFiles = intent.getParcelableArrayListExtra(Intents.INTENT_CAPTURED_FILE);
+
+                                if (captureFiles != null) {
+                                    for (Parcelable parcelable : captureFiles) {
+
+                                        if (parcelable instanceof FileInfo) {
+                                            FileInfo fileInfo = (FileInfo) parcelable;
+                                            if (fileInfo.getFilename() != null) {
+                                                if (fileInfo.isImage()) {
+                                                    sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                                } else if (fileInfo.isVideo()) {
+                                                    sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                                } else {
+                                                    sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                                }
+                                            }
+                                        } else if (parcelable instanceof UIPreviewFile) {
+                                            UIPreviewFile previewFile = (UIPreviewFile) parcelable;
+                                            FileInfo fileInfo = new FileInfo(getApplicationContext(), previewFile.getUri());
+                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (textMessage != null && !textMessage.trim().isEmpty()) {
+                                DescriptorId replyTo = null;
+                                if (mReplyItem != null) {
+                                    replyTo = mReplyItem.getDescriptorId();
+                                }
+
+                                if (mConversationService.isSendingFiles()) {
+                                    mDeferredMessage = textMessage;
+                                    mDeferredAllowCopyText = allowCopyText;
+                                    mDeferredTimeout = expireTimeout;
+                                    mDeferredReplyTo = replyTo;
+                                } else {
+                                    mConversationService.pushMessage(textMessage, allowCopyText, expireTimeout, replyTo);
+                                }
+                            }
+
+                            mEditText.setText("");
+                            closeReplyView();
+                        } catch (Exception exception) {
+                            Log.d(LOG_TAG, "exception=" + exception.getMessage());
+                        }
                     }
+
                     break;
             }
         }
@@ -979,6 +1021,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         boolean microphoneGranted = false;
         boolean storageReadAccessGranted = false;
         boolean storageWriteAccessGranted = false;
+        boolean accessLocationGranted = false;
         for (Permission grantedPermission : grantedPermissions) {
             switch (grantedPermission) {
                 case CAMERA:
@@ -996,6 +1039,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
                 case WRITE_EXTERNAL_STORAGE:
                     storageWriteAccessGranted = true;
+                    break;
+
+                case ACCESS_FINE_LOCATION:
+                case ACCESS_COARSE_LOCATION:
+                    accessLocationGranted = true;
                     break;
             }
         }
@@ -1094,6 +1142,41 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         return mContactAvatar;
     }
 
+    /**
+     * Get the avatar picture to be used for the given peer.
+     * <p>
+     * When the peer twincode is null, use the contact avatar.
+     * <p>
+     * For a normal conversation, this operation always returns the contact avatar.
+     * For a group conversation, we return the group member avatar.
+     *
+     * @param peerTwincodeOutboundId the peer twincode to get the picture.
+     * @param avatarConsumer the consumer which will be called with the avatar, or null if none is found.
+     */
+    @Override
+    public void getMapAvatar(@Nullable UUID peerTwincodeOutboundId, @NonNull TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getMapAvatar: peerTwincodeOutboundId=" + peerTwincodeOutboundId);
+        }
+
+        if (peerTwincodeOutboundId == null) {
+            if (isGroupConversation() && mSubject != null) {
+                mConversationService.getIdentityImage(mSubject, avatarConsumer);
+            } else {
+                mConversationService.getIdentityImage(mSubject, avatarConsumer);
+            }
+        } else {
+            Originator member = mGroupMembers.get(peerTwincodeOutboundId);
+            if (member != null) {
+                mConversationService.getImage(member, avatarConsumer);
+            } else if (isGroupConversation() && mSubject instanceof Group) {
+                mConversationService.getImage(((Group) mSubject).getCurrentMember(), avatarConsumer);
+            } else {
+                avatarConsumer.accept(mContactAvatar);
+            }
+        }
+    }
+
     @Override
     public @Nullable
     Contact getContact() {
@@ -1104,8 +1187,28 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     }
 
     @Override
-    public @Nullable
-    Group getGroup() {
+    @Nullable
+    public String getContactName() {
+
+        if (mSubject != null) {
+            return mSubject.getName();
+        }
+        return null;
+    }
+
+    @Override
+    @Nullable
+    public String getIdentityName() {
+
+        if (mSubject != null) {
+            return mSubject.getIdentityName();
+        }
+        return null;
+    }
+
+    @Override
+    @Nullable
+    public Group getGroup() {
         if (mSubject != null && mSubject.getType() == Originator.Type.GROUP) {
             return (Group) mSubject;
         }
@@ -1296,6 +1399,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         return mReplyItem != null;
     }
 
+    public void saveGeolocationMap(@NonNull Uri path, @NonNull DescriptorId descriptorId) {
+
+        mConversationService.saveGeolocationMap(path, descriptorId);
+    }
+
     //
     // Menu management
     //
@@ -1345,6 +1453,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             case PEER_AUDIO:
             case FILE:
             case PEER_FILE:
+            case LOCATION:
+            case PEER_LOCATION:
                 addReaction = true;
                 break;
 
@@ -1364,7 +1474,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mMenuItemView.setVisibility(View.VISIBLE);
         mHeaderOverlayView.setVisibility(View.VISIBLE);
         mFooterOverlayView.setVisibility(View.VISIBLE);
-        mItemListView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
         mMenuItemView.openMenu();
 
         int countVisibleItem = mItemListViewLayoutManager.findLastVisibleItemPosition() - mItemListViewLayoutManager.findFirstVisibleItemPosition() + 1;
@@ -1393,9 +1502,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         if (itemIndex != -1) {
             int position = mItemListAdapter.indexToPosition(itemIndex);
             View viewSelected = mItemListViewLayoutManager.findViewByPosition(position);
-            View containerRecyclerView = findViewById(R.id.conversation_activity_item_list_container_view);
             if (viewSelected != null) {
-                float viewSelectedY = viewSelected.getY() + mItemListView.getY() + containerRecyclerView.getY();
+                float viewSelectedY = viewSelected.getY() + mItemListView.getY() + mContainerRecyclerView.getY();
                 int menuHeight = getMenuItemViewHeight();
                 DisplayMetrics metrics = getResources().getDisplayMetrics();
                 boolean initialPosition = true;
@@ -1445,6 +1553,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "closeMenu");
         }
 
+        boolean updateStatusBar = true;
+
         if (mIsMenuOpen) {
             mIsMenuOpen = false;
             mSelectedItem = null;
@@ -1459,19 +1569,25 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             overlayLayoutParams.height = mHeaderHeight;
             mHeaderOverlayView.setLayoutParams(overlayLayoutParams);
 
-            mItemListView.setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
             int countVisibleItem = mItemListViewLayoutManager.findLastVisibleItemPosition() - mItemListViewLayoutManager.findFirstVisibleItemPosition() + 1;
             mItemListAdapter.notifyItemRangeChanged(mItemListViewLayoutManager.findFirstVisibleItemPosition(), countVisibleItem);
 
             mItemListView.setScrollEnable(true);
-            setStatusBarColor();
         } else if (mIsMenuSendOptionOpen) {
-            mIsMenuSendOptionOpen = false;
-            mMenuSendOptionView.setVisibility(View.INVISIBLE);
-            mOverlayView.setVisibility(View.INVISIBLE);
-            setStatusBarColor();
+            if (mMenuTimeoutView.getVisibility() == View.VISIBLE) {
+                mMenuTimeoutView.setVisibility(View.INVISIBLE);
+                updateStatusBar = false;
+            } else {
+                mIsMenuSendOptionOpen = false;
+                mMenuSendOptionView.setVisibility(View.INVISIBLE);
+                mOverlayView.setVisibility(View.INVISIBLE);
+            }
         } else if (mAnnotationsView.getVisibility() == View.VISIBLE) {
             mAnnotationsView.animationCloseMenu();
+        }
+
+        if (updateStatusBar) {
+            setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
         }
     }
 
@@ -1522,6 +1638,25 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         return mMessageFont;
+    }
+
+    @Override
+    @NonNull
+    public CustomAppearance getCustomAppearance() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getCustomAppearance");
+        }
+
+        if (mCustomAppearance == null && mSpace != null) {
+            final SpaceSettings spaceSettings = mSpace.getSpaceSettings();
+            if (spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+                mCustomAppearance = new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings());
+            } else {
+                mCustomAppearance = new CustomAppearance(this, spaceSettings);
+            }
+        }
+
+        return mCustomAppearance == null ? new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings()) : mCustomAppearance;
     }
 
     public void closeReplyView() {
@@ -1919,6 +2054,24 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         setTitle(contact.getName());
         mSubject = contact;
+        mSpace = contact.getSpace();
+
+        if (mMenuItemView != null && mSubject.getPeerTwincodeOutbound() != null && !mSubject.getPeerTwincodeOutbound().isSigned()) {
+            mMenuItemView.setCanEditMessage(false);
+        }
+
+        final CustomAppearance customAppearance = getCustomAppearance();
+        if (customAppearance.getConversationBackgroundImageId() != null) {
+            mConversationService.getConversationImage(customAppearance.getConversationBackgroundImageId());
+        } else {
+            setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mContainerRecyclerView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mItemListView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+        }
+
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        mAllowEphemeralMessage = spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
+        mExpireTimeout = Long.parseLong(spaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
 
         if (mMenuItemView != null && mSubject.getPeerTwincodeOutbound() != null && !mSubject.getPeerTwincodeOutbound().isSigned()) {
             mMenuItemView.setCanEditMessage(false);
@@ -1955,6 +2108,23 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         setTitle(contact.getName());
         mSubject = contact;
+        mSpace = contact.getSpace();
+
+        // Force an update of CustomAppearance.
+        mCustomAppearance = null;
+
+        final CustomAppearance customAppearance = getCustomAppearance();
+        if (customAppearance.getConversationBackgroundImageId() != null) {
+            mConversationService.getConversationImage(customAppearance.getConversationBackgroundImageId());
+        } else {
+            setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mContainerRecyclerView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mItemListView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+        }
+
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        mAllowEphemeralMessage = spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
+        mExpireTimeout = Long.parseLong(spaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
 
         updateOptionsMenu();
 
@@ -1984,6 +2154,17 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         setTitle(group.getName());
         mSubject = group;
+        mSpace = group.getSpace();
+
+        final CustomAppearance customAppearance = getCustomAppearance();
+        if (customAppearance.getConversationBackgroundImageId() != null) {
+            mConversationService.getConversationImage(customAppearance.getConversationBackgroundImageId());
+        } else {
+            setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mContainerRecyclerView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+            mItemListView.setBackgroundColor(customAppearance.getConversationBackgroundColor());
+        }
+
         for (GroupMember member : groupMembers) {
             mGroupMembers.put(member.getPeerTwincodeOutboundId(), member);
         }
@@ -2019,10 +2200,22 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             mSendButtonListener.reset();
         }
 
+        if (mSubject != null && mSubject.getAvatarId() == null) {
+            mAvatarView.setColorFilter(Color.parseColor(Design.DEFAULT_COLOR));
+            mNoAvatarView.setVisibility(View.VISIBLE);
+        } else {
+            mAvatarView.setColorFilter(Color.TRANSPARENT);
+            mNoAvatarView.setVisibility(View.GONE);
+        }
+
         if (mContactAvatar != null) {
             mAvatarView.setImage(this, null,
                     new CircularImageDescriptor(mContactAvatar, 0.5f, 0.5f, Design.LIGHT_CIRCULAR_SHADOW_DESCRIPTOR.imageWithShadowRadius));
         }
+
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        mAllowEphemeralMessage = spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
+        mExpireTimeout = Long.parseLong(spaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
 
         if (mSubject != null && mSubject.getAvatarId() == null) {
             mNoAvatarView.setVisibility(View.VISIBLE);
@@ -2136,6 +2329,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         boolean firstObjects = mItems.isEmpty();
         int firstNewItem = mItems.size();
 
+        if (firstObjects && descriptors.size() == 0) {
+            mItems.add(new SecurityInfoItem());
+        }
+
         mBatchUpdate = firstObjects;
 
         for (Descriptor descriptor : descriptors) {
@@ -2178,6 +2375,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 case TWINCODE_DESCRIPTOR:
                     TwincodeDescriptor twincodeDescriptor = (TwincodeDescriptor) descriptor;
                     addTwincodeDescriptor(twincodeDescriptor);
+                    break;
+
+                case GEOLOCATION_DESCRIPTOR:
+                    GeolocationDescriptor geolocationDescriptor = (GeolocationDescriptor) descriptor;
+                    addLocationDescriptor(geolocationDescriptor);
                     break;
 
                 case CLEAR_DESCRIPTOR:
@@ -2275,6 +2477,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 scrollToBottom();
                 break;
 
+            case GEOLOCATION_DESCRIPTOR:
+                addLocationDescriptor((GeolocationDescriptor) descriptor);
+                scrollToBottom();
+                break;
+
             case CLEAR_DESCRIPTOR:
                 addClearDescriptor((ClearDescriptor) descriptor);
                 scrollToBottom();
@@ -2329,6 +2536,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             case TWINCODE_DESCRIPTOR:
                 addTwincodeDescriptor((TwincodeDescriptor) descriptor);
+                break;
+
+            case GEOLOCATION_DESCRIPTOR:
+                addLocationDescriptor((GeolocationDescriptor) descriptor);
+                scrollToBottom();
                 break;
 
             case CLEAR_DESCRIPTOR:
@@ -2498,6 +2710,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                                 mItemListAdapter.notifyItemChanged(mItemListAdapter.indexToPosition(itemIndex));
                             }
                         }
+                        break;
+
+                    case GEOLOCATION_DESCRIPTOR:
+                        addLocationDescriptor((GeolocationDescriptor) descriptor);
+                        scrollToBottom();
                         break;
 
                     case CALL_DESCRIPTOR:
@@ -2689,6 +2906,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetConversationImage: imageId=" + imageId);
         }
+
+        if (mCustomAppearance != null && imageId.getExportedId().equals(mCustomAppearance.getConversationBackgroundImageId())) {
+            mItemListView.setBackgroundColor(Color.TRANSPARENT);
+            bitmap = ThumbnailUtils.extractThumbnail(bitmap, mContainerRecyclerView.getWidth(), mContainerRecyclerView.getHeight());
+            mContainerRecyclerView.setBackground(new BitmapDrawable(getResources(), bitmap));
+        }
     }
 
     @Override
@@ -2823,7 +3046,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         mAnnotationsView.setVisibility(View.INVISIBLE);
         mOverlayView.setVisibility(View.INVISIBLE);
-        setStatusBarColor();
+        setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
     }
 
     //
@@ -2894,7 +3117,16 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "onSendVoiceRecord: recording=" + recording);
         }
 
-        sendFile(Uri.fromFile(recording), recording.getName(), Descriptor.Type.AUDIO_DESCRIPTOR, true, getTwinmeApplication().fileCopyAllowed(), 0);
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        boolean allowEphemeral = spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
+        long timeout = Long.parseLong(spaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
+        if (!allowEphemeral) {
+            timeout = 0;
+        }
+
+        boolean allowCopyFile = spaceSettings.fileCopyAllowed();
+
+        sendFile(Uri.fromFile(recording), recording.getName(), Descriptor.Type.AUDIO_DESCRIPTOR, true, allowCopyFile, timeout);
 
         setSelectedMode(Mode.DEFAULT);
     }
@@ -2934,6 +3166,53 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         return mVoiceRecorderMessageView != null && mVoiceRecorderMessageView.isRecording();
     }
 
+    //implements MenuSelectValueView.Observer
+
+    @Override
+    public void onCloseMenuAnimationEnd() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
+        }
+
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onSelectValue(int value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectValue: " + value);
+        }
+
+    }
+
+    @Override
+    public void onSelectTimeout(UITimeout timeout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+        }
+
+        mExpireTimeout = timeout.getDelay();
+        mMenuSendOptionView.updateTimeout(timeout.getDelay());
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+    }
+
+    @NonNull
+    private SpaceSettings getSpaceSettings() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getSpaceSettings");
+        }
+
+        if (mSpace == null) {
+            return getTwinmeContext().getDefaultSpaceSettings();
+        }
+
+        SpaceSettings spaceSettings = mSpace.getSpaceSettings();
+        if (spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_MESSAGE_SETTINGS, true)) {
+            spaceSettings = getTwinmeContext().getDefaultSpaceSettings();
+        }
+
+        return spaceSettings;
+    }
     //
     // Implement ItemSelectedActionView.Observer methods
     //
@@ -3047,7 +3326,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
                 percentRelativeLayout.removeView(deleteConfirmView);
-                setStatusBarColor();
+                setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
             }
         };
         deleteConfirmView.setObserver(observer);
@@ -3082,7 +3361,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         applyInsets(R.id.conversation_activity_layout, R.id.conversation_activity_top_tool_bar, R.id.conversation_activity_footer, Design.TOOLBAR_COLOR, false);
 
         mNoAvatarView = findViewById(R.id.toolbar_no_image);
-        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        mNoAvatarView.setColor(Color.WHITE);
         mNoAvatarView.setVisibility(View.GONE);
 
         mAvatarView = findViewById(R.id.toolbar_image);
@@ -3130,7 +3409,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mItemListView.setAdapter(mItemListAdapter);
         mItemListView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         mItemListView.setItemAnimator(null);
-        mItemListView.setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
 
         mItemListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -3165,12 +3443,28 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 mContainerRecyclerView.post(this::scrollToBottom);
             }
 
+            if (mItemListViewHeight != mItemListView.getHeight()) {
+                mEmptyConversationView.setVisibility(View.GONE);
+            } else if (mItems.size() == 1) {
+                mEmptyConversationView.setVisibility(View.VISIBLE);
+            }
+
             if (mIsMenuOpen) {
                 setMenuPosition();
                 mMenuItemView.post(mMenuItemView::animationMenu);
                 mMenuReactionView.post(mMenuReactionView::animationMenu);
             }
         });
+
+        if (mCustomAppearance != null) {
+            setBackgroundColor(mCustomAppearance.getConversationBackgroundColor());
+            mContainerRecyclerView.setBackgroundColor(mCustomAppearance.getConversationBackgroundColor());
+            mItemListView.setBackgroundColor(mCustomAppearance.getConversationBackgroundColor());
+        } else {
+            setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
+            mContainerRecyclerView.setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
+            mItemListView.setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
+        }
 
         ReplyItemTouchHelper.OnSwipeItemReplyListener onSwipeItemReplyListener = adapterPosition -> {
             mSelectedItem = mItems.get(adapterPosition - 1);
@@ -3503,12 +3797,15 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                             }
                         }
 
+                        final SpaceSettings spaceSettings = getSpaceSettings();
                         Intent intent = new Intent(this, PreviewFileActivity.class);
 
                         ArrayList<String> urisToString = new ArrayList<>();
                         urisToString.add(Uri.fromFile(contentFile).toString());
                         intent.putStringArrayListExtra(Intents.INTENT_SELECTED_URI, urisToString);
-                        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, getTwinmeApplication().fileCopyAllowed());
+                        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, spaceSettings.fileCopyAllowed());
+                        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+                        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
 
                         if (mSubject != null) {
                             intent.putExtra(Intents.INTENT_CONTACT_ID, mSubject.getId().toString());
@@ -3548,7 +3845,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mHeaderOverlayView = findViewById(R.id.conversation_activity_header_overlay_view);
         mHeaderOverlayView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
         mHeaderOverlayView.setOnClickListener(view -> closeMenu());
-        
+
         mFooterOverlayView = findViewById(R.id.conversation_activity_footer_overlay_view);
         mFooterOverlayView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
         mFooterOverlayView.setOnClickListener(view -> closeMenu());
@@ -3632,17 +3929,30 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             @Override
             public void onAllowEphemeralClick() {
-                showPremiumFeatureView(UIPremiumFeature.FeatureType.PRIVACY, true);
+
+                if (mMenuTimeoutView.getVisibility() != View.VISIBLE) {
+                    mMenuTimeoutView.setVisibility(View.VISIBLE);
+                    mMenuTimeoutView.setSelectedValue((int) mExpireTimeout);
+                    mMenuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE);
+                }
             }
 
             @Override
             public void onSendFromMenuOptionClick(boolean allowCopy, boolean allowEphemeral, int timeout) {
+
                 mAllowCopy = allowCopy;
+                mAllowEphemeralMessage = allowEphemeral;
+                mExpireTimeout = timeout;
                 onSendClick();
             }
         };
 
         mMenuSendOptionView.setOnMenuSendOptionObserver(this, menuSendOptionObserver);
+
+        mMenuTimeoutView = findViewById(R.id.conversation_activity_menu_select_value_view);
+        mMenuTimeoutView.setVisibility(View.INVISIBLE);
+        mMenuTimeoutView.setObserver(this);
+        mMenuTimeoutView.setActivity(this);
 
         mScaleDetector = new ScaleGestureDetector(this, new ScaleListener());
 
@@ -3787,12 +4097,17 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         if (mMenu != null) {
             MenuItem menuAudioItem = mMenu.findItem(R.id.audio_call_action);
             if (getTwinmeApplication().inCallInfo() == null && menuAudioItem.isEnabled()) {
-                if (mGroupId != null) {
-                    showPremiumFeatureView(UIPremiumFeature.FeatureType.GROUP_CALL, false);
+                if (mGroupId != null && !isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+                    showPremiumFeatureView(UIPremiumFeature.FeatureType.GROUP_CALL);
+                } else if (mGroupId != null && mGroupMembers.size() > org.twinlife.twinme.ui.Settings.MAX_CALL_GROUP_PARTICIPANTS) {
+                    showAlertMessageView(R.id.conversation_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.call_activity_max_participant_message), org.twinlife.twinme.ui.Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
                 } else {
                     Intent intent = new Intent();
                     if (mContactId != null) {
                         intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
+                    }
+                    if (mGroupId != null) {
+                        intent.putExtra(Intents.INTENT_GROUP_ID, mGroupId.toString());
                     }
 
                     intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_CALL);
@@ -3811,13 +4126,18 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         if (mMenu != null) {
             MenuItem menuVideoItem = mMenu.findItem(R.id.video_call_action);
             if (getTwinmeApplication().inCallInfo() == null && menuVideoItem.isEnabled()) {
-                if (mGroupId != null) {
-                    showPremiumFeatureView(UIPremiumFeature.FeatureType.GROUP_CALL, false);
+                if (mGroupId != null && !isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+                    showPremiumFeatureView(UIPremiumFeature.FeatureType.GROUP_CALL);
+                } else if (mGroupId != null && mGroupMembers.size() > org.twinlife.twinme.ui.Settings.MAX_CALL_GROUP_PARTICIPANTS) {
+                    showAlertMessageView(R.id.conversation_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.call_activity_max_participant_message), org.twinlife.twinme.ui.Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
                 } else {
                     Intent intent = new Intent();
 
                     if (mContactId != null) {
                         intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
+                    }
+                    if (mGroupId != null) {
+                        intent.putExtra(Intents.INTENT_GROUP_ID, mGroupId.toString());
                     }
 
                     intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_VIDEO_CALL);
@@ -3828,20 +4148,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
     }
 
-    private void onScrollIndicatorClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onScrollIndicatorClick");
-        }
-
-        if (mIsMenuOpen) {
-            return;
-        }
-
-        hapticFeedback();
-        scrollToBottom();
-    }
-
-    private void sendFile(@NonNull Uri file, @NonNull String filename, @NonNull Descriptor.Type type, boolean toDelete, boolean allowCopy, long expireTimeout) {
+    private void sendFile(@NonNull Uri file, @NonNull String filename, @NonNull Descriptor.Type type, boolean toDelete, boolean allowCopy, long timeout) {
         if (DEBUG) {
             Log.d(LOG_TAG, "sendFile");
         }
@@ -3852,7 +4159,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         if (mConversation != null) {
-            mConversationService.pushFile(file, filename, type, toDelete, allowCopy, null, replyTo, expireTimeout);
+            mConversationService.pushFile(file, filename, type, toDelete, allowCopy, null, replyTo, timeout);
         }
     }
 
@@ -3871,6 +4178,32 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
     }
 
+    private void sendLocation(double longitude, double latitude, double altitude, double longitudeDelta, double latitudeDelta, long timeout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "sendLocation");
+        }
+
+        DescriptorId replyTo = null;
+        if (mReplyItem != null) {
+            replyTo = mReplyItem.getDescriptorId();
+        }
+
+        mConversationService.pushGeolocation(longitude, latitude, altitude, longitudeDelta, latitudeDelta, timeout, replyTo);
+    }
+
+    private void onScrollIndicatorClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onScrollIndicatorClick");
+        }
+
+        if (mIsMenuOpen) {
+            return;
+        }
+
+        hapticFeedback();
+        scrollToBottom();
+    }
+
     public void onSendClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSendClick");
@@ -3878,13 +4211,24 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         hapticFeedback();
 
-        boolean allowCopyText = getTwinmeApplication().messageCopyAllowed();
-        boolean allowCopyFile = getTwinmeApplication().fileCopyAllowed();
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        boolean allowCopyText = spaceSettings.messageCopyAllowed();
+        boolean allowCopyFile = spaceSettings.fileCopyAllowed();
+        boolean allowEphemeral = spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
+        long timeout = 0;
+        if (mSpace != null) {
+            timeout = Long.parseLong(spaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
+        }
         if (mIsMenuSendOptionOpen) {
             allowCopyText = mAllowCopy;
             allowCopyFile = mAllowCopy;
+            allowEphemeral = mAllowEphemeralMessage;
+            timeout = mExpireTimeout;
         }
-        long timeout = 0;
+
+        if (!allowEphemeral) {
+            timeout = 0;
+        }
 
         String text = getSendText();
         if (!text.trim().isEmpty()) {
@@ -3928,8 +4272,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             mAllowCopy = false;
 
-            boolean allowCopyText = getTwinmeApplication().messageCopyAllowed();
-            boolean allowCopyFile = getTwinmeApplication().fileCopyAllowed();
+            final SpaceSettings spaceSettings = getSpaceSettings();
+            boolean allowCopyText = spaceSettings.messageCopyAllowed();
+            boolean allowCopyFile = spaceSettings.fileCopyAllowed();
+            boolean allowEphemeral = spaceSettings.getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
 
             boolean isTextToSend = !isEmptyText();
 
@@ -3939,10 +4285,14 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 }
             }
 
+            mAllowEphemeralMessage = allowEphemeral;
+
             mIsMenuSendOptionOpen = true;
             mMenuSendOptionView.setVisibility(View.VISIBLE);
             mOverlayView.setVisibility(View.VISIBLE);
-            mMenuSendOptionView.openMenu(mAllowCopy);
+
+            long timeout = Long.parseLong(spaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
+            mMenuSendOptionView.openMenu(mAllowCopy, allowEphemeral, timeout);
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
             setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
@@ -4371,6 +4721,32 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
     }
 
+    private void addLocationDescriptor(org.twinlife.twinlife.ConversationService.GeolocationDescriptor geolocationDescriptor) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "addLocationDescriptor: geolocationDescriptor=" + geolocationDescriptor);
+        }
+
+        if (mConversationService.isLocalDescriptor(geolocationDescriptor)) {
+            Descriptor replyToDescriptor = null;
+            if (geolocationDescriptor.getReplyToDescriptorId() != null) {
+                replyToDescriptor = getTwinmeContext().getConversationService().getDescriptor(geolocationDescriptor.getReplyToDescriptorId());
+            }
+            LocationItem locationItem = new LocationItem(geolocationDescriptor, replyToDescriptor);
+            addItem(locationItem);
+        } else if (mConversationService.isPeerDescriptor(geolocationDescriptor)) {
+            Descriptor replyToDescriptor = null;
+            if (geolocationDescriptor.getReplyToDescriptorId() != null) {
+                replyToDescriptor = getTwinmeContext().getConversationService().getDescriptor(geolocationDescriptor.getReplyToDescriptorId());
+            }
+            PeerLocationItem peerLocationItem = new PeerLocationItem(geolocationDescriptor, replyToDescriptor);
+            addItem(peerLocationItem);
+        } else {
+            getTwinmeContext().assertion(ApplicationAssertPoint.INVALID_DESCRIPTOR, AssertPoint.create(mSubject)
+                    .putTwincodeId(geolocationDescriptor.getDescriptorId().twincodeOutboundId)
+                    .put(geolocationDescriptor.getType()));
+        }
+    }
+
     private void addItem(Item item) {
         if (DEBUG) {
             Log.d(LOG_TAG, "addItem: item=" + item);
@@ -4454,6 +4830,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             case CALL:
             case CLEAR:
             case INVITATION_CONTACT:
+            case LOCATION:
                 if (previousItem != null) {
                     switch (previousItem.getType()) {
                         case MESSAGE:
@@ -4465,6 +4842,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case INVITATION:
                         case CALL:
                         case INVITATION_CONTACT:
+                        case LOCATION:
                             if (item.getTimestamp() - previousItem.getTimestamp() < MAX_DELTA_TIMESTAMP1) {
                                 int corners = previousItem.getCorners();
                                 previousItem.cornersBitwiseAnd(~(Item.BOTTOM_RIGHT | Item.BOTTOM_LARGE_MARGIN));
@@ -4486,6 +4864,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case PEER_INVITATION:
                         case PEER_CALL:
                         case PEER_INVITATION_CONTACT:
+                        case PEER_LOCATION:
                             int corners = previousItem.getCorners();
                             previousItem.cornersBitwiseOr(Item.BOTTOM_LEFT | Item.BOTTOM_LARGE_MARGIN);
                             boolean visibleAvatar = previousItem.getVisibleAvatar();
@@ -4511,6 +4890,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case INVITATION:
                         case CALL:
                         case INVITATION_CONTACT:
+                        case LOCATION:
                             if (nextItem.getTimestamp() - item.getTimestamp() < MAX_DELTA_TIMESTAMP1) {
                                 item.cornersBitwiseAnd(~(Item.BOTTOM_RIGHT | Item.BOTTOM_LARGE_MARGIN));
                                 int corners = nextItem.getCorners();
@@ -4531,7 +4911,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case PEER_FILE:
                         case PEER_INVITATION:
                         case PEER_CALL:
-                        case PEER_INVITATION_CONTACT: {
+                        case PEER_INVITATION_CONTACT:
+                        case PEER_LOCATION: {
                             item.cornersBitwiseOr(Item.BOTTOM_RIGHT | Item.BOTTOM_LARGE_MARGIN);
                             int corners = nextItem.getCorners();
                             nextItem.cornersBitwiseOr(Item.TOP_LEFT | Item.TOP_LARGE_MARGIN);
@@ -4554,6 +4935,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             case PEER_INVITATION:
             case PEER_CALL:
             case PEER_INVITATION_CONTACT:
+            case PEER_LOCATION:
                 if (previousItem == null || !previousItem.isSamePeer(item)) {
                     // For a group conversation, add the member's name before its item.
                     Originator member = mGroupMembers.get(item.getPeerTwincodeOutboundId());
@@ -4574,7 +4956,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case FILE:
                         case INVITATION:
                         case CALL:
-                        case INVITATION_CONTACT: {
+                        case INVITATION_CONTACT:
+                        case LOCATION: {
                             int corners = previousItem.getCorners();
                             previousItem.cornersBitwiseOr(Item.BOTTOM_RIGHT | Item.BOTTOM_LARGE_MARGIN);
                             previousItemChanged = corners != previousItem.getCorners();
@@ -4590,7 +4973,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case PEER_VIDEO:
                         case PEER_INVITATION:
                         case PEER_CALL:
-                        case PEER_INVITATION_CONTACT: {
+                        case PEER_INVITATION_CONTACT:
+                        case PEER_LOCATION: {
                             if (item.isSamePeer(previousItem) && item.getTimestamp() - previousItem.getTimestamp() < MAX_DELTA_TIMESTAMP1) {
                                 int corners = previousItem.getCorners();
                                 previousItem.cornersBitwiseAnd(~Item.BOTTOM_LEFT);
@@ -4648,7 +5032,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case FILE:
                         case INVITATION:
                         case CALL:
-                        case INVITATION_CONTACT: {
+                        case INVITATION_CONTACT:
+                        case LOCATION: {
                             item.cornersBitwiseOr(Item.BOTTOM_LEFT | Item.BOTTOM_LARGE_MARGIN);
                             int corners = nextItem.getCorners();
                             nextItem.cornersBitwiseOr(Item.TOP_RIGHT | Item.TOP_LARGE_MARGIN);
@@ -4665,6 +5050,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case PEER_INVITATION:
                         case PEER_CALL:
                         case PEER_INVITATION_CONTACT:
+                        case PEER_LOCATION:
                             if (item.isSamePeer(nextItem)) {
                                 if (nextItem.getTimestamp() - item.getTimestamp() < MAX_DELTA_TIMESTAMP1) {
                                     item.cornersBitwiseAnd(~(Item.BOTTOM_LEFT | Item.BOTTOM_LARGE_MARGIN));
@@ -4753,6 +5139,13 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             }
         }
 
+        if (previousItem == null) {
+            mItems.add(0, new SecurityInfoItem());
+            if (notifyAdapter) {
+                mItemListAdapter.notifyItemInserted(mItemListAdapter.indexToPosition(0));
+            }
+        }
+
         if (mItems.isEmpty()) {
             mEmptyConversationView.setVisibility(View.VISIBLE);
         } else {
@@ -4796,6 +5189,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         case CALL:
                         case CLEAR:
                         case INVITATION_CONTACT:
+                        case LOCATION:
                             nameItemToRemove = previousItem;
                             break;
 
@@ -4820,6 +5214,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 case CALL:
                 case CLEAR:
                 case INVITATION_CONTACT:
+                case LOCATION:
                     if (nextItem == null) {
                         previousItem.cornersBitwiseAnd(~Item.BOTTOM_RIGHT);
                         previousItem.updateState();
@@ -4844,6 +5239,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 case PEER_CALL:
                 case PEER_CLEAR:
                 case PEER_INVITATION_CONTACT:
+                case PEER_LOCATION:
                     if (nextItem == null) {
                         previousItem.cornersBitwiseOr(Item.BOTTOM_LEFT);
                         previousItem.setVisibleAvatar(true);
@@ -4879,6 +5275,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 case CALL:
                 case CLEAR:
                 case INVITATION_CONTACT:
+                case LOCATION:
                     if (previousItem == null) {
                         nextItem.cornersBitwiseOr(Item.TOP_RIGHT);
                     } else if (!previousItem.isSamePeer(nextItem)) {
@@ -4902,6 +5299,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 case PEER_CALL:
                 case PEER_CLEAR:
                 case PEER_INVITATION_CONTACT:
+                case PEER_LOCATION:
                     // Propagate the top left corner to the next item because current item is removed.
                     if ((item.getCorners() & Item.TOP_LEFT) != 0) {
                         nextItem.cornersBitwiseOr(Item.TOP_LEFT);
@@ -5082,7 +5480,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
                 percentRelativeLayout.removeView(mMenuActionConversationView);
                 mMenuActionConversationView = null;
-                setStatusBarColor();
+                setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
                 removeBlurEffect();
             }
 
@@ -5091,7 +5489,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
                 percentRelativeLayout.removeView(mMenuActionConversationView);
                 mMenuActionConversationView = null;
-                setStatusBarColor();
+                setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
                 removeBlurEffect();
 
                 switch (actionConversation.getConversationActionType()) {
@@ -5101,6 +5499,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
                     case FILE:
                         onFileClick();
+                        break;
+
+                    case LOCATION:
+                        onShareLocationClick();
                         break;
 
                     case MANAGE_CONVERSATION:
@@ -5147,7 +5549,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{backgroundDrawable, gradientDrawable});
         setStatusBarDrawable(layerDrawable, navColor);
-        
+
         addBlurEffect();
     }
 
@@ -5299,7 +5701,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         intent.putExtra(Intents.INTENT_PREVIEW_START_WITH_MEDIA, true);
         intent.putStringArrayListExtra(Intents.INTENT_SELECTED_URI, urisToString);
-        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  getTwinmeApplication().fileCopyAllowed());
+
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  spaceSettings.fileCopyAllowed());
+
+        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
 
         if (fromDirectShare) {
             intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
@@ -5421,6 +5828,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         Intent intent = new Intent(this, PreviewFileActivity.class);
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  spaceSettings.fileCopyAllowed());
+
+        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
 
         ArrayList<String> urisToString = new ArrayList<>();
         for (Uri uri : uris) {
@@ -5446,6 +5858,37 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         startActivityForResult(intent, REQUEST_PREVIEW_FILE);
+    }
+
+    private void onShareLocationClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onShareLocationClick");
+        }
+
+        Intent intent = new Intent(this, PreviewLocationActivity.class);
+        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
+
+        if (mSubject != null) {
+            intent.putExtra(Intents.INTENT_CONTACT_NAME, mSubject.getName());
+
+            if (mSubject.getAvatarId() != null) {
+                intent.putExtra(Intents.INTENT_AVATAR_ID, mSubject.getAvatarId().getId());
+            }
+
+            if (mSubject instanceof Contact) {
+                Contact contact = (Contact) mSubject;
+                if (contact.getCertificationLevel() == CertificationLevel.LEVEL_4) {
+                    intent.putExtra(Intents.INTENT_IS_CERTIFIED, true);
+                }
+            }
+        }
+
+        if (mEditText.getText() != null) {
+            intent.putExtra(Intents.INTENT_TEXT_MESSAGE, mEditText.getText().toString());
+        }
+
+        startActivityForResult(intent, REQUEST_PREVIEW_LOCATION);
     }
 
     private void onResetConversationConfirmClick() {
@@ -5492,7 +5935,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
                 percentRelativeLayout.removeView(resetConversationConfirmView);
-                setStatusBarColor();
+                setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
             }
         };
         resetConversationConfirmView.setObserver(observer);
@@ -5573,7 +6016,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mItemListAdapter.notifyDataSetChanged();
         setSelectedMode(Mode.DEFAULT);
 
-        setStatusBarColor();
+        setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
     }
 
     private void saveFile() {
@@ -5740,6 +6183,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 menuHeight = MENU_HEIGHT * 7;
                 break;
 
+            case LOCATION:
+            case PEER_LOCATION:
+                menuHeight = MENU_HEIGHT * 4;
+                break;
+
             case INVITATION:
             case PEER_INVITATION:
             case INVITATION_CONTACT:
@@ -5810,7 +6258,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         List<Item> medias = new ArrayList<>();
         for (Item item : mItems) {
             if (item.getType() == Item.ItemType.IMAGE || item.getType() == Item.ItemType.PEER_IMAGE
-            || item.getType() == Item.ItemType.VIDEO || item.getType() == Item.ItemType.PEER_VIDEO) {
+                    || item.getType() == Item.ItemType.VIDEO || item.getType() == Item.ItemType.PEER_VIDEO) {
                 medias.add(item);
             }
         }
@@ -5864,7 +6312,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             if(mSubject != null) {
                 if (mSubject.getType() == Originator.Type.GROUP) {
                     int count = mGroupMembers.size() + 1;
-                    if (count == 1 || count > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
+                    if (count == 1 || count > org.twinlife.twinme.ui.Settings.MAX_CALL_GROUP_PARTICIPANTS) {
                         hasAudio = false;
                         hasVideo = false;
                     }
@@ -5920,12 +6368,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "showCallAgainConfirmView: isVideoCall=" + isVideoCall);
         }
 
-        hideKeyboard();
-
-        if (mGroupId != null) {
-            showPremiumFeatureView(UIPremiumFeature.FeatureType.GROUP_CALL, false);
+        if (mGroupId != null && !isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
+            showPremiumFeatureView(UIPremiumFeature.FeatureType.GROUP_CALL);
             return;
         }
+
+        hideKeyboard();
 
         PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
 
@@ -5984,7 +6432,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
                 percentRelativeLayout.removeView(callAgainConfirmView);
-                setStatusBarColor();
+                setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
             }
         };
         callAgainConfirmView.setObserver(observer);
@@ -5996,7 +6444,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
-    private void showPremiumFeatureView(UIPremiumFeature.FeatureType featureType, boolean hideOverlay) {
+    private void showPremiumFeatureView(UIPremiumFeature.FeatureType featureType) {
         if (DEBUG) {
             Log.d(LOG_TAG, "showPremiumFeatureView: " + featureType);
         }
@@ -6012,7 +6460,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
             @Override
             public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                startActivity(intent);
+                premiumFeatureConfirmView.animationCloseConfirmView();
             }
 
             @Override
@@ -6030,7 +6481,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 percentRelativeLayout.removeView(premiumFeatureConfirmView);
 
                 if (!mIsMenuSendOptionOpen) {
-                    setStatusBarColor();
+                    setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
                 }
             }
         };
@@ -6038,10 +6489,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         percentRelativeLayout.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
-
-        if (hideOverlay) {
-            premiumFeatureConfirmView.hideOverlay();
-        }
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
@@ -6233,7 +6680,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
             percentRelativeLayout.removeView(mMenuActionConversationView);
             mMenuActionConversationView = null;
-            setStatusBarColor();
+            setStatusBarColor(Design.TOOLBAR_COLOR, Design.WHITE_COLOR);
             removeBlurEffect();
 
             return;

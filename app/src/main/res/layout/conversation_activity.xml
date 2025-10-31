@@ -305,8 +305,6 @@
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
-
-
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.percentlayout.widget.PercentRelativeLayout
@@ -383,7 +381,7 @@
 
     <org.twinlife.twinme.ui.conversationActivity.MenuItemView
         android:id="@+id/conversation_activity_menu_item_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <org.twinlife.twinme.ui.conversationActivity.MenuReactionView
@@ -393,6 +391,11 @@
 
     <org.twinlife.twinme.ui.conversationActivity.MenuSendOptionView
         android:id="@+id/conversation_activity_menu_send_option_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
+        android:id="@+id/conversation_activity_menu_select_value_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -447,6 +450,5 @@
             android:layout_centerInParent="true" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
-
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

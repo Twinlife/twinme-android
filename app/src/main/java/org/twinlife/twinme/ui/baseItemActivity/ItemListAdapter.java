@@ -115,6 +115,11 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
 
                 return new TypingItemViewHolder(mBaseItemActivity, convertView);
 
+            case SECURITY_INFO:
+                convertView = inflater.inflate(R.layout.base_item_activity_security_info_item, parent, false);
+
+                return new SecurityInfoItemViewHolder(mBaseItemActivity, convertView);
+
             case MESSAGE:
                 convertView = inflater.inflate(R.layout.base_item_activity_message_item, parent, false);
 
@@ -192,6 +197,16 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
                 convertView = inflater.inflate(R.layout.base_item_activity_peer_invitation_item, parent, false);
 
                 return new PeerInvitationItemViewHolder(mBaseItemActivity, convertView, true, true);
+
+            case LOCATION:
+                convertView = inflater.inflate(R.layout.base_item_activity_location_item, parent, false);
+
+                return new LocationItemViewHolder(mBaseItemActivity, convertView, true, true);
+
+            case PEER_LOCATION:
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
+
+                return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, true, true);
 
             case CALL:
                 convertView = inflater.inflate(R.layout.base_item_activity_call_item, parent, false);

@@ -394,7 +394,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
                         .load(uiWhatsNew.getImage())
                         .into(mImageView);
             } else {
-                Bitmap placeholderBitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.splash_screen_logo);
+                Bitmap placeholderBitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.logo);
                 mImageView.setImageBitmap(placeholderBitmap);
             }
 
@@ -414,7 +414,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
             }
 
             mProgressContainerView.setVisibility(View.VISIBLE);
-            mConfirmTextView.setText(getContext().getString(R.string.welcome_activity_next));
+            mConfirmTextView.setText(getContext().getString(R.string.welcome_activity_enter));
 
             int customBarMargin = (int) (DESIGN_CUSTOM_PROGRESS_MARGIN * Design.WIDTH_RATIO);
             int customBarProgressWidth = (textWidth - ((mUIWhatsNew.size() - 1) * customBarMargin)) / mUIWhatsNew.size();
@@ -495,7 +495,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
                         .load(uiWhatsNew.getImage())
                         .into(mImageView);
             } else {
-                Bitmap placeholderBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.splash_screen_logo);
+                Bitmap placeholderBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.logo);
                 mImageView.setImageBitmap(placeholderBitmap);
             }
 

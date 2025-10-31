@@ -16,6 +16,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -109,10 +110,6 @@ public class AboutActivity extends AbstractTwinmeActivity {
 
         View containerView = findViewById(R.id.about_activity_container_view);
         containerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-
-        TextView messageTextView = findViewById(R.id.about_activity_message_view);
-        Design.updateTextFont(messageTextView, Design.FONT_REGULAR34);
-        messageTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         View versionView = findViewById(R.id.about_activity_version_view);
         versionView.setOnClickListener(view -> onVersionClick());
@@ -244,7 +241,8 @@ public class AboutActivity extends AbstractTwinmeActivity {
         licencesTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         TextView copyrightTextView = findViewById(R.id.about_activity_copyright_view);
-        Design.updateTextFont(copyrightTextView, Design.FONT_REGULAR32);
+        copyrightTextView.setTypeface(Design.FONT_REGULAR32.typeface);
+        copyrightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
         copyrightTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
     }
 

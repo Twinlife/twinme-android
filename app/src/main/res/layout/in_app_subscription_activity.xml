@@ -1,0 +1,508 @@
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/in_app_subscription_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/in_app_subscription_activity_skred_plus_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/in_app_subscription_activity_title"
+                app:layout_widthPercent="95.38%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_close_view"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/in_app_subscription_activity_close_image_view"
+                    android:scaleType="fitCenter"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/close"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="43.33%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_offer_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/in_app_subscription_activity_close_view"
+                android:elevation="3dp"
+                app:layout_heightPercent="34.48%"
+                app:layout_widthPercent="92.53%">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/in_app_subscription_activity_progress_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_heightPercent="1%"
+                    app:layout_marginTopPercent="5.22%">
+
+                    <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
+                        android:id="@+id/in_app_subscription_activity_progress_bar_one"
+                        app:layout_widthPercent="20%"
+                        app:layout_marginStartPercent="4%"
+                        app:layout_marginEndPercent="2%" />
+
+                    <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
+                        android:id="@+id/in_app_subscription_activity_progress_bar_two"
+                        android:layout_toRightOf="@+id/in_app_subscription_activity_progress_bar_one"
+                        android:layout_toEndOf="@+id/in_app_subscription_activity_progress_bar_one"
+                        app:layout_widthPercent="20%"
+                        app:layout_marginStartPercent="2%"
+                        app:layout_marginEndPercent="2%" />
+
+                    <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
+                        android:id="@+id/in_app_subscription_activity_progress_bar_three"
+                        android:layout_toRightOf="@+id/in_app_subscription_activity_progress_bar_two"
+                        android:layout_toEndOf="@+id/in_app_subscription_activity_progress_bar_two"
+                        app:layout_widthPercent="20%"
+                        app:layout_marginStartPercent="2%"
+                        app:layout_marginEndPercent="2%" />
+
+                    <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
+                        android:id="@+id/in_app_subscription_activity_progress_bar_four"
+                        android:layout_toRightOf="@+id/in_app_subscription_activity_progress_bar_three"
+                        android:layout_toEndOf="@+id/in_app_subscription_activity_progress_bar_three"
+                        app:layout_widthPercent="20%"
+                        app:layout_marginStartPercent="2%"
+                        app:layout_marginEndPercent="2%" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <TextView
+                    android:id="@+id/in_app_subscription_activity_title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/in_app_subscription_activity_description_step1_title"
+                    app:layout_widthPercent="95.38%"
+                    app:layout_marginTopPercent="10.87%" />
+
+                <TextView
+                    android:id="@+id/in_app_subscription_activity_description_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/in_app_subscription_activity_title_view"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/in_app_subscription_activity_description_step1_subtitle"
+                    app:layout_widthPercent="95.38%"
+                    app:layout_marginTopPercent="4.34%" />
+
+                <ImageView
+                    android:id="@+id/in_app_subscription_activity_description_image_view"
+                    android:layout_below="@+id/in_app_subscription_activity_description_view"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/in_app_step_one"
+                    app:layout_marginTopPercent="4.35%"
+                    app:layout_widthPercent="100%"/>
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/in_app_subscription_activity_error_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/in_app_subscription_activity_offer_view"
+                android:text="@string/in_app_subscription_activity_not_available"
+                android:gravity="center"
+                app:layout_widthPercent="94.67%"
+                app:layout_marginTopPercent="2.99%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_subscription_offer_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/in_app_subscription_activity_offer_view"
+                android:clipChildren="false"
+                app:layout_marginTopPercent="2.99%"
+                app:layout_heightPercent="29%">
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/in_app_subscription_activity_one_year_subscription_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    app:layout_widthPercent="30%"
+                    app:layout_heightPercent="95%"
+                    app:layout_marginStartPercent="2%">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_card_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="true" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_title_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="6dp"
+                        android:lines="2"
+                        android:gravity="center"
+                        android:text=""
+                        app:layout_marginTopPercent="1.67%"
+                        app:layout_heightPercent="21.11%"
+                        app:layout_widthPercent="94.67%"/>
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_subtitle_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/in_app_subscription_activity_one_year_subscription_title_view"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="@string/in_app_subscription_activity_subscription_title"
+                        app:autoSizeTextType="uniform"
+                        android:singleLine="true"
+                        app:layout_marginTopPercent="2.78%"
+                        app:layout_widthPercent="94.67%"/>
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_duration_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_one_year_subscription_subtitle_view"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="12"/>
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_duration_unit_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_one_year_subscription_duration_view"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="@string/in_app_subscription_activity_month"
+                        app:layout_widthPercent="89.06%" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_price_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_one_year_subscription_duration_unit_view"
+                        android:layout_centerInParent="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:lines="1"
+                        app:layout_widthPercent="89.06%" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_year_subscription_reduction_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_one_year_subscription_price_view"
+                        android:layout_centerInParent="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        app:layout_widthPercent="89.06%" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/in_app_subscription_activity_six_month_subscription_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    app:layout_widthPercent="30%"
+                    app:layout_heightPercent="95%">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_card_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="true" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_title_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_centerHorizontal="true"
+                        android:outlineProvider="none"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:text="@string/in_app_subscription_activity_six_month_title"
+                        app:layout_marginTopPercent="1.67%"
+                        app:layout_heightPercent="21.11%"
+                        app:layout_widthPercent="94.67%"/>
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_subtitle_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/in_app_subscription_activity_six_month_subscription_title_view"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="@string/in_app_subscription_activity_subscription_title"
+                        app:autoSizeTextType="uniform"
+                        android:singleLine="true"
+                        app:layout_marginTopPercent="2.78%"
+                        app:layout_widthPercent="94.67%"/>
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_duration_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/in_app_subscription_activity_six_month_subscription_subtitle_view"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="6" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_duration_unit_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_six_month_subscription_duration_view"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="@string/in_app_subscription_activity_month"
+                        app:layout_widthPercent="89.06%" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_price_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_six_month_subscription_duration_unit_view"
+                        android:layout_centerInParent="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:lines="1"
+                        app:layout_widthPercent="89.06%" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_six_month_subscription_reduction_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_six_month_subscription_price_view"
+                        android:layout_centerInParent="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        app:layout_widthPercent="89.06%" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/in_app_subscription_activity_one_month_subscription_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    app:layout_marginEndPercent="2%"
+                    app:layout_widthPercent="30%"
+                    app:layout_heightPercent="95%">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/in_app_subscription_activity_one_month_subscription_card_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="true" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_month_subscription_title_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text=""
+                        app:layout_marginTopPercent="1.67%"
+                        app:layout_heightPercent="21.11%"
+                        app:layout_widthPercent="94.67%" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_month_subscription_subtitle_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/in_app_subscription_activity_one_month_subscription_title_view"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="@string/in_app_subscription_activity_subscription_title"
+                        app:autoSizeTextType="uniform"
+                        android:singleLine="true"
+                        app:layout_marginTopPercent="2.78%"
+                        app:layout_widthPercent="94.67%"/>
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_month_subscription_duration_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/in_app_subscription_activity_one_month_subscription_subtitle_view"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="1" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_month_subscription_duration_unit_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/in_app_subscription_activity_one_month_subscription_duration_view"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="@string/in_app_subscription_activity_month"
+                        app:layout_widthPercent="89.06%" />
+
+                    <TextView
+                        android:id="@+id/in_app_subscription_activity_one_month_subscription_price_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@+id/in_app_subscription_activity_one_month_subscription_duration_unit_view"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:lines="1"
+                        app:layout_widthPercent="89.06%" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/in_app_subscription_activity_free_trial_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/in_app_subscription_activity_subscription_offer_view"
+                android:layout_centerHorizontal="true"
+                android:text="@string/in_app_subscription_activity_free_trial"
+                android:gravity="center"
+                app:layout_marginTopPercent="1.5%" />
+
+            <TextView
+                android:id="@+id/in_app_subscription_activity_subscribed_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/in_app_subscription_activity_subscription_offer_view"
+                android:text="@string/navigation_activity_subscribe_enable"
+                android:gravity="center"
+                app:layout_widthPercent="94.67%"
+                app:layout_marginTopPercent="1.5%" />
+
+            <ImageView
+                android:id="@+id/in_app_subscription_activity_premium_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/in_app_subscription_activity_subscribed_view"
+                android:scaleType="fitCenter"
+                app:layout_marginTopPercent="3%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_subscribe_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                app:layout_marginTopPercent="2.5%">
+
+                <TextView
+                    android:id="@+id/in_app_subscription_activity_subscribe_title_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/in_app_subscription_activity_subscribe_title"
+                    app:layout_widthPercent="89.06%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_later_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/in_app_subscription_activity_subscribe_view"
+                app:layout_heightPercent="6%">
+
+                <TextView
+                    android:id="@+id/in_app_subscription_activity_later_title_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/application_later"
+                    app:layout_widthPercent="89.06%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_restore_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/in_app_subscription_activity_later_view"
+                app:layout_heightPercent="6%">
+
+                <TextView
+                    android:id="@+id/in_app_subscription_activity_restore_title_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/in_app_subscription_activity_restore_title"
+                    app:layout_widthPercent="89.06%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/in_app_subscription_activity_invite_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/in_app_subscription_activity_restore_view"
+                app:layout_heightPercent="6%">
+
+                <TextView
+                    android:id="@+id/in_app_subscription_activity_invite_title_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/add_contact_activity_title"
+                    app:layout_widthPercent="89.06%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/in_app_subscription_activity_footer_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/in_app_subscription_activity_invite_view"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/in_app_subscription_activity_footer_message"
+                app:layout_widthPercent="92.53%"
+                app:layout_marginBottomPercent="1.5%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </ScrollView>
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -35,7 +35,7 @@
    void set*(***);
    *** get*();
 }
-   
+
 # We want to keep methods in Activity that could be used in the XML attribute onClick
 -keepclassmembers class * extends android.app.Activity {
    public void *(android.view.View);
@@ -52,7 +52,7 @@
 }
 
 # WebView
--keep class org.twinlife.device.android.twinme.R$raw {
+-keep class mobi.skred.app.R$raw {
     *;
 }
 

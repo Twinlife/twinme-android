@@ -52,6 +52,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.AcceptInvitationActivity;
 import org.twinlife.twinme.ui.AddContactActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.AvatarView;
@@ -102,7 +103,9 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
     private boolean mCreateProfile = false;
     private boolean mFirstProfile = false;
     private boolean mFromContact = false;
+    private boolean mFromSubscription = false;
     private boolean mShowOnboarding = false;
+    private String mNameSpace;
     @Nullable
     private UUID mProfileId;
 
@@ -112,6 +115,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
     private CreateProfileService mAddProfileService;
 
+    private String mLastLevelName;
     @Nullable
     private String mInvitationLink;
 
@@ -130,10 +134,18 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
         Intent intent = getIntent();
         mFirstProfile = intent.getBooleanExtra(Intents.INTENT_FIRST_PROFILE, false);
         mFromContact = intent.getBooleanExtra(Intents.INTENT_FROM_CONTACT, false);
+        mFromSubscription = intent.getBooleanExtra(Intents.INTENT_FROM_SUBSCRIPTION, false);
+        mNameSpace = intent.getStringExtra(Intents.INTENT_SPACE_NAME);
         mInvitationLink = intent.getStringExtra(Intents.INTENT_INVITATION_LINK);
 
         setFullscreen();
 
+        if (intent.hasExtra(Intents.INTENT_LAST_LEVEL_NAME)) {
+            mLastLevelName = intent.getStringExtra(Intents.INTENT_LAST_LEVEL_NAME);
+        }
+
+        setFullscreen();
+        
         initViews();
 
         if (savedInstanceState != null) {
@@ -202,6 +214,10 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
     public void onDestroy() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onDestroy");
+        }
+
+        if (mLastLevelName != null && !mLastLevelName.isEmpty()) {
+            mAddProfileService.setLevel(mLastLevelName);
         }
 
         mAddProfileService.dispose();
@@ -287,6 +303,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             Log.d(LOG_TAG, "onCreateProfile: " + profile);
         }
 
+        mLastLevelName = null;
         mCreateProfile = false;
         mProfileId = profile.getId();
 
@@ -311,6 +328,10 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
                 Intent intent = new Intent(this, AddContactActivity.class);
                 intent.putExtra(Intents.INTENT_INVITATION_MODE, AddContactActivity.InvitationMode.INVITE);
                 intent.putExtra(Intents.INTENT_PROFILE_ID, mProfileId.toString());
+                startActivity(intent);
+            } else if (mFromSubscription) {
+                Intent intent = new Intent();
+                intent.setClass(this, InvitationSubscriptionActivity.class);
                 startActivity(intent);
             }
         }
@@ -495,7 +516,13 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
         }
 
         mCreateProfile = true;
-        mAddProfileService.createProfile(getString(R.string.application_default), name, null, mUpdatedProfileAvatar, mUpdatedProfileFile);
+
+        if (mNameSpace != null) {
+            mAddProfileService.createProfile(mNameSpace, name, null, mUpdatedProfileAvatar, mUpdatedProfileFile, true);
+        } else {
+            String nameSpace =  getString(R.string.space_appearance_activity_general_title);
+            mAddProfileService.createProfile(nameSpace, name, null, mUpdatedProfileAvatar, mUpdatedProfileFile, false);
+        }
     }
 
     private void updateProfile() {

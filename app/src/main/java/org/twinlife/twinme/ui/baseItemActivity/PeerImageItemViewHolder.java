@@ -290,7 +290,7 @@ class PeerImageItemViewHolder extends PeerItemViewHolder  {
         }
 
         if (mReplyView.getVisibility() == View.VISIBLE) {
-            mBackgroundGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+            mBackgroundGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
         } else {
             mBackgroundGradientDrawable.setColor(Color.TRANSPARENT);
         }

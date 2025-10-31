@@ -29,7 +29,6 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.FeedbackActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.ui.WebViewActivity;
 import org.twinlife.twinme.ui.externalCallActivity.OnboardingExternalCallActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity;
@@ -71,10 +70,6 @@ public class HelpActivity extends AbstractTwinmeActivity {
         }
 
         switch (position) {
-
-            case HelpAdapter.POSITION_HELP:
-                onHelpClick();
-                break;
 
             case HelpAdapter.POSITION_FAQ:
                 onFAQClick();
@@ -160,17 +155,6 @@ public class HelpActivity extends AbstractTwinmeActivity {
         settingsRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
     }
 
-    private void onHelpClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onHelpClick");
-        }
-
-        Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/help.html");
-        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.navigation_activity_help));
-        startActivity(intent);
-    }
-
     private void onFAQClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onFAQClick");
@@ -178,7 +162,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
 
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(this, Uri.parse(getString(R.string.twinme_faq)));
+        customTabsIntent.launchUrl(this, Uri.parse(getString(R.string.skred_faq)));
     }
 
     private void onBlogClick() {
@@ -188,7 +172,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
 
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(this, Uri.parse(getString(R.string.twinme_blog)));
+        customTabsIntent.launchUrl(this, Uri.parse(getString(R.string.skred_blog)));
     }
 
     private void onWelcomeClick() {
@@ -347,7 +331,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
         boolean darkMode = false;
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         int displayMode = Settings.displayMode.getInt();
-        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
+        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal()) || displayMode == DisplayMode.DARK.ordinal()) {
             darkMode = true;
         }
 

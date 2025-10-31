@@ -104,10 +104,10 @@ public class TypeCleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (position == POSITION_LOCAL_CLEANUP) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onLocalCleanUpClick());
-                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_local_cleanup), false);
+                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_local_cleanup));
             } else if (position == POSITION_BOTH_CLEANUP) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onBothCleanUpClick());
-                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_both_clean), false);
+                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_both_clean));
             } else if (position == POSITION_RESET_CONVERSATION) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onResetConversationClick());
                 settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.main_activity_reset_conversation_title), Design.DELETE_COLOR_RED, true);

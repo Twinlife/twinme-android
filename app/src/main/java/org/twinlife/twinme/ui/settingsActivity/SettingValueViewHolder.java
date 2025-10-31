@@ -8,7 +8,6 @@
 
 package org.twinlife.twinme.ui.settingsActivity;
 
-import android.annotation.SuppressLint;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -25,9 +24,11 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinlife.DisplayCallsMode;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.utils.Utils;
 
 public class SettingValueViewHolder extends RecyclerView.ViewHolder {
 
+    private static final float DESIGN_TEXT_WIDTH_PERCENT = 0.56f;
     private static final float DESIGN_TEXT_LARGE_WIDTH_PERCENT = 0.8267f;
 
     private final TextView mTextView;
@@ -36,6 +37,7 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
     private final ImageView mSelectImageView;
 
     private UISetting<?> mUISetting;
+    private Settings.IntConfig mIntConfig;
 
     public SettingValueViewHolder(@NonNull View view, AbstractSettingsActivity settingsActivity) {
 
@@ -56,10 +58,15 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
 
         mSelectImageView = view.findViewById(R.id.settings_activity_item_image_view);
 
-        itemView.setOnClickListener(v -> settingsActivity.onSettingClick(mUISetting));
+        itemView.setOnClickListener(v -> {
+            if (mUISetting != null) {
+                settingsActivity.onSettingClick(mUISetting);
+            } else {
+                settingsActivity.onSettingClick(mIntConfig);
+            }
+        });
     }
 
-    @SuppressLint("SetTextI18n")
     public void onBind(@NonNull UISetting<?> uiSetting, boolean visible) {
 
         mUISetting = uiSetting;
@@ -115,6 +122,30 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         }
 
         float textViewWidth = Design.DISPLAY_WIDTH * DESIGN_TEXT_LARGE_WIDTH_PERCENT;
+        layoutParams = mTextView.getLayoutParams();
+        layoutParams.width = (int) textViewWidth;
+
+        updateFont();
+        updateColor();
+    }
+
+    public void onBind(String title, long value, boolean visible, Settings.IntConfig intConfig) {
+
+        mIntConfig = intConfig;
+
+        mTextView.setText(title);
+        mValueView.setVisibility(View.VISIBLE);
+        mSelectImageView.setVisibility(View.GONE);
+        mValueView.setText(Utils.formatTimeout(mValueView.getContext(), value));
+
+        ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+        if (visible) {
+            layoutParams.height = Design.SECTION_HEIGHT;
+        } else {
+            layoutParams.height = 0;
+        }
+
+        float textViewWidth = Design.DISPLAY_WIDTH * DESIGN_TEXT_WIDTH_PERCENT;
         layoutParams = mTextView.getLayoutParams();
         layoutParams.width = (int) textViewWidth;
 

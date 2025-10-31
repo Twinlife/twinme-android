@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:background="@android:color/white">
+
+    <include
+        android:id="@+id/add_contact_from_adress_book_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/add_contact_from_adress_book_activity_add_contact_adress_book_view"
+        android:layout_below="@+id/add_contact_from_adress_book_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/add_contact_from_adress_book_activity_content_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/add_contact_from_adress_book_activity_search_view"
+                android:layout_centerVertical="true"
+                app:layout_heightPercent="54.54%"
+                app:layout_widthPercent="91.46%"
+                app:layout_marginStartPercent="4.27%"
+                app:layout_marginEndPercent="4.27%"
+                android:background="@drawable/grey_search_rounded" />
+
+            <ImageView
+                android:id="@+id/add_contact_from_adress_book_activity_search_image_view"
+                android:scaleType="fitCenter"
+                android:src="@drawable/search_icon"
+                app:tint="@color/grey"
+                android:layout_centerVertical="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="21.21%"
+                app:layout_marginStartPercent="6.4%"
+                app:layout_marginEndPercent="1.87%" />
+
+            <EditText
+                android:id="@+id/add_contact_from_adress_book_activity_search_edit_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/add_contact_from_adress_book_activity_search_image_view"
+                android:layout_toRightOf="@+id/add_contact_from_adress_book_activity_search_image_view"
+                android:layout_alignRight="@+id/add_contact_from_adress_book_activity_search_view"
+                android:layout_alignEnd="@+id/add_contact_from_adress_book_activity_search_view"
+                android:background="@android:color/transparent"
+                android:hint="@string/application_search_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="text|textNoSuggestions|textCapSentences"
+                app:layout_marginEndPercent="8.8%" />
+
+            <ImageView
+                android:id="@+id/add_contact_from_adress_book_activity_clear_image_view"
+                android:scaleType="fitCenter"
+                android:src="@drawable/close"
+                android:layout_alignRight="@+id/add_contact_from_adress_book_activity_search_view"
+                android:layout_alignEnd="@+id/add_contact_from_adress_book_activity_search_view"
+                android:layout_centerVertical="true"
+                app:layout_aspectRatio="100%"
+                app:layout_widthPercent="5%"
+                app:layout_marginEndPercent="2.13%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/add_contact_from_adress_book_activity_item_list_view"
+        android:layout_below="@+id/add_contact_from_adress_book_activity_add_contact_adress_book_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/add_contact_from_adress_book_activity_progress_bar"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

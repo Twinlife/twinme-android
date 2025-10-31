@@ -36,6 +36,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -91,6 +93,7 @@ import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.audio.AudioDevice;
 import org.twinlife.twinme.audio.ProximitySensor;
+import org.twinlife.twinme.calls.CallConnection;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.calls.CallParticipantEvent;
 import org.twinlife.twinme.calls.CallParticipantObserver;
@@ -118,13 +121,17 @@ import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.TwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.streamingAudioActivity.StreamingAudioActivity;
 import org.twinlife.twinme.ui.contacts.InvitationCodeConfirmView;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.InfoFloatingView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
@@ -188,7 +195,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private static final int SCALE_ANIMATION_DURATION = 400;
     private static final int SCALE_ANIMATION_REPEAT_DELAY = 7000;
 
-    private static final float DESIGN_MAX_NAME_WIDTH = 340f;
+    private static final float DESIGN_MAX_NAME_WIDTH = 280f;
     private static final float DESIGN_BUTTON_HEIGHT = 100f;
     private static final float DESIGN_VIEW_BUTTON_HEIGHT = 148f;
     private static final float DESIGN_ACTION_BUTTON_HEIGHT = 136f;
@@ -234,18 +241,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             disabled = true;
 
             onAcceptClick();
-        }
-    }
-
-    private class SwipeGesture extends GestureDetector.SimpleOnGestureListener {
-
-        @Override
-        public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
-
-            boolean isDownGesture = velocityY > 0;
-            detectSwipe(isDownGesture);
-
-            return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
 
@@ -306,7 +301,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     case CallService.MESSAGE_CREATE_OUTGOING_CALL:
                     case CallService.MESSAGE_CALLS_MERGED:
-                            // Started an outgoing call
+                        // Started an outgoing call
                         CallActivity.this.updateViews();
                         break;
 
@@ -357,6 +352,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                         CallActivity.this.onUpdateHoldState(intent);
                         break;
 
+                    case CallService.MESSAGE_USER_LOCATION_UPDATE:
+                        // user location has changed
+
+                        CallActivity.this.onUpdateUserLocation(intent);
+                        break;
+
                     case CallService.MESSAGE_ERROR:
                         // Error occurred, CallService is stopping.
                         CallActivity.this.onMessageError(intent);
@@ -374,6 +375,18 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
     }
 
+    private class SwipeGesture extends GestureDetector.SimpleOnGestureListener {
+
+        @Override
+        public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+
+            boolean isDownGesture = velocityY > 0;
+            detectSwipe(isDownGesture);
+
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    }
+
     private Handler mCloseHandler = null;
     private boolean mResumed = false;
     private boolean mAskStateOnResume = false;
@@ -388,6 +401,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private CallMenuView mCallMenuView;
     private CallStreamingAudioView mCallStreamingAudioView;
     private CallConversationView mCallConversationView;
+    private CallMapView mCallMapView;
     private CallCertifyView mCallCertifyView;
     private SelectAudioSourceView mSelectAudioSourceView;
     private CallHoldView mCallHoldView;
@@ -412,6 +426,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private CoachMarkView mCoachMarkView;
     private View mUnreadMessageView;
     private ImageView mUnreadMessageImageView;
+    private View mSharedLocationView;
+    private ImageView mSharedLocationImageView;
     private View mCameraControlView;
     private boolean mIsAudioMute = false;
     private boolean mIsSpeakerOn = false;
@@ -467,6 +483,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private boolean mIsLandscape = false;
     private boolean mCameraGranted = false;
     private boolean mAudioGranted = false;
+    private boolean mAccessLocationGranted = false;
+    private boolean mAccessFineLocationGranted = false;
+    private boolean mAccessBackgroundLocationGranted = false;
+    private boolean mStartShareLocationOnLocationEnable = false;
     private int mRootViewWidth = 0;
     private int mRootViewHeight = 0;
     private int mBarTopInset = 0;
@@ -776,10 +796,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onResume");
         }
 
+        super.onResume();
+
         // Setup the call participant observer before getting the new call service state.
         CallService.setObserver(this);
-
-        super.onResume();
 
         // If the call is finished, terminate the activity (unless a message() dialog is pending).
         CallStatus currentMode = CallService.getCurrentMode();
@@ -870,6 +890,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mCloseHandler = null;
         }
 
+        if (mCallMapView != null) {
+            mCallMapView.stopMap();
+        }
+
         unregisterReceiver(mCallReceiver);
 
         for (AnimatorSet animatorSet : mAnimatorSets) {
@@ -877,6 +901,86 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         super.onDestroy();
+    }
+
+    @Override
+    public void onRequestPermissions(@NonNull Permission[] grantedPermissions) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onRequestPermissions: grantedPermissions=" + Arrays.toString(grantedPermissions));
+        }
+
+        for (Permission grantedPermission : grantedPermissions) {
+            switch (grantedPermission) {
+                case CAMERA:
+                    mCameraGranted = true;
+                    break;
+
+                case RECORD_AUDIO:
+                    mAudioGranted = true;
+                    audioRecordGranted();
+                    break;
+
+                case ACCESS_FINE_LOCATION:
+                    mAccessLocationGranted = true;
+                    mAccessFineLocationGranted = true;
+                    break;
+
+                case ACCESS_COARSE_LOCATION:
+                    mAccessLocationGranted = true;
+                    mAccessFineLocationGranted = false;
+                    break;
+
+                case ACCESS_BACKGROUND_LOCATION:
+                    mAccessBackgroundLocationGranted = true;
+                    break;
+            }
+        }
+
+        if (mAccessLocationGranted) {
+            CallService.initShareLocation(this);
+
+            if (mCallMapView != null) {
+                mCallMapView.setCanShareLocation(mAccessLocationGranted);
+                mCallMapView.setCanShareBackgroundLocation(mAccessBackgroundLocationGranted, this);
+                mCallMapView.setCanShareExactLocation(mAccessFineLocationGranted, this);
+            }
+        }
+
+        if (mAudioGranted && (mCameraGranted || (mMode != null && !mMode.isVideo()))) {
+            if (isCallReady()) {
+                startCall();
+            }
+        } else {
+            terminateCall(TerminateReason.NOT_AUTHORIZED, false);
+
+            String message;
+            if (!mAudioGranted && (!mCameraGranted && (mMode != null && mMode.isVideo()))) {
+                message = getString(R.string.application_authorization_microphone_camera);
+            } else if (!mAudioGranted) {
+                message = getString(R.string.application_authorization_microphone);
+            } else {
+                message = getString(R.string.application_authorization_camera);
+            }
+
+            messageSettings(message, 0L, new SettingsMessageCallback() {
+                @Override
+                public void onCancelClick() {
+                    finish();
+                }
+
+                @Override
+                public void onSettingsClick() {
+
+                    openAppSettings();
+                    finish();
+                }
+
+                @Override
+                public void onTimeout() {
+
+                }
+            });
+        }
     }
 
     @Override
@@ -918,61 +1022,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 }
                 startService(intent);
             }
-        }
-    }
-
-    @Override
-    public void onRequestPermissions(@NonNull Permission[] grantedPermissions) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onRequestPermissions: grantedPermissions=" + Arrays.toString(grantedPermissions));
-        }
-
-        for (Permission grantedPermission : grantedPermissions) {
-            switch (grantedPermission) {
-                case CAMERA:
-                    mCameraGranted = true;
-                    break;
-
-                case RECORD_AUDIO:
-                    mAudioGranted = true;
-                    audioRecordGranted();
-                    break;
-            }
-        }
-        if (mAudioGranted && (mCameraGranted || (mMode != null && !mMode.isVideo()))) {
-            if (isCallReady()) {
-                startCall();
-            }
-        } else {
-            terminateCall(TerminateReason.NOT_AUTHORIZED, false);
-
-            String message;
-            if (!mAudioGranted && (!mCameraGranted && (mMode != null && mMode.isVideo()))) {
-                message = getString(R.string.application_authorization_microphone_camera);
-            } else if (!mAudioGranted) {
-                message = getString(R.string.application_authorization_microphone);
-            } else {
-                message = getString(R.string.application_authorization_camera);
-            }
-
-            messageSettings(message, 0L, new SettingsMessageCallback() {
-                @Override
-                public void onCancelClick() {
-                    finish();
-                }
-
-                @Override
-                public void onSettingsClick() {
-
-                    openAppSettings();
-                    finish();
-                }
-
-                @Override
-                public void onTimeout() {
-
-                }
-            });
         }
     }
 
@@ -1095,7 +1144,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (!mOriginator.hasPeer()) {
             terminateCall(TerminateReason.REVOKED, false);
             
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_layout);
+            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_view);
 
             AlertMessageView alertMessageView = new AlertMessageView(this, null);
             PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -1181,7 +1230,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         updateViews();
     }
 
-    private void onMessageChangeConnectionState(@NonNull Intent intent) {
+    protected void onMessageChangeConnectionState(@NonNull Intent intent) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onMessageChangeConnectionState: intent=" + intent);
         }
@@ -1447,13 +1496,26 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
     private void onUpdateHoldState(@NonNull Intent intent) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onUpdateHoldState");
+            Log.d(LOG_TAG, "onUpdateHoldState: intent=" + intent);
         }
 
         CallStatus mode = (CallStatus) intent.getSerializableExtra(CallService.CALL_SERVICE_STATE);
         if (mode != null && mode != mMode && !(CallStatus.isAccepted(mMode) && CallStatus.isIncoming(mode))) {
             mMode = mode;
             updateViews();
+        }
+    }
+
+    private void onUpdateUserLocation(@NonNull Intent intent) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onUpdateUserLocation");
+        }
+
+        double latitude = intent.getDoubleExtra(CallService.CALL_USER_LOCATION_LATITUDE, 0);
+        double longitude = intent.getDoubleExtra(CallService.CALL_USER_LOCATION_LONGITUDE, 0);
+
+        if (mCallMapView != null) {
+            mCallMapView.updateLocaleLocation(latitude, longitude);
         }
     }
 
@@ -1476,7 +1538,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         startService(result);
     }
 
-    private void onBackClick() {
+    protected void onBackClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onBackClick");
         }
@@ -1620,7 +1682,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
             terminateCall(TerminateReason.REVOKED, false);
 
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_layout);
+            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_view);
 
             AlertMessageView alertMessageView = new AlertMessageView(this, null);
             PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -1850,18 +1912,40 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onPopDescriptor: participant=" + participant + " descriptor=" + descriptor);
         }
 
-        mUnreadMessageView.setVisibility(View.VISIBLE);
-        if (mCallConversationView.getVisibility() == View.GONE) {
+        if (descriptor.getType() == ConversationService.Descriptor.Type.GEOLOCATION_DESCRIPTOR) {
+            mSharedLocationView.setVisibility(View.VISIBLE);
+
             hapticFeedback();
-            mUnreadMessageImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_new_message_icon, null));
-        }
 
-        String name = "";
-        if (participant != null) {
-            name = participant.getName();
-        }
+            if (mCallMapView != null) {
+                mCallMapView.updateLocation(participant, (ConversationService.GeolocationDescriptor) descriptor);
+            }
 
-        mCallConversationView.addDescriptor(descriptor, false, true, name);
+            final AbstractCallParticipantView callParticipantView = getParticipantView(participant);
+            if (callParticipantView == null) {
+                return;
+            }
+
+            if (callParticipantView.isRemoteParticipant()) {
+                CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
+                callParticipantRemoteView.setParticipant(participant);
+                callParticipantRemoteView.updateViews();
+            }
+
+        } else {
+            mUnreadMessageView.setVisibility(View.VISIBLE);
+            if (mCallConversationView.getVisibility() == View.GONE) {
+                hapticFeedback();
+                mUnreadMessageImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_new_message_icon, null));
+            }
+
+            String name = "";
+            if (participant != null) {
+                name = participant.getName();
+            }
+
+            mCallConversationView.addDescriptor(descriptor, false, true, name);
+        }
     }
 
     /**
@@ -1876,7 +1960,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onUpdateGeolocation: participant=" + participant + " descriptor=" + descriptor);
         }
 
-        Log.e(LOG_TAG, "onUpdateGeolocation: participant=" + participant + " descriptor=" + descriptor);
+        if (mCallMapView != null) {
+            mCallMapView.updateLocation(participant, descriptor);
+        }
     }
 
     /**
@@ -1890,7 +1976,20 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onDeleteDescriptor: participant=" + participant + " descriptorId=" + descriptorId);
         }
 
-        Log.e(LOG_TAG, "onDeleteDescriptor: participant=" + participant + " descriptorId=" + descriptorId);
+        if (mCallMapView != null) {
+            mCallMapView.deleteLocation(participant.getParticipantId());
+        }
+
+        final AbstractCallParticipantView callParticipantView = getParticipantView(participant);
+        if (callParticipantView == null) {
+            return;
+        }
+
+        if (callParticipantView.isRemoteParticipant()) {
+            CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
+            callParticipantRemoteView.setParticipant(participant);
+            callParticipantRemoteView.updateViews();
+        }
     }
 
     private void startCall() {
@@ -2087,6 +2186,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             }
 
             @Override
+            public void onOpenMap() {
+
+                onCallLocationClick();
+            }
+
+            @Override
             public void onMicroMute() {
 
                 onMicroMuteClick();
@@ -2230,7 +2335,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mAddParticipantView.setVisibility(View.GONE);
 
         mAddParticipantImageView = findViewById(R.id.call_activity_add_participant_image_view);
-        mAddParticipantImageView.setAlpha(1f);
 
         viewLayoutParams = mAddParticipantView.getLayoutParams();
         viewLayoutParams.height = BUTTON_HEIGHT;
@@ -2241,6 +2345,16 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         viewLayoutParams = mUnreadMessageView.getLayoutParams();
         viewLayoutParams.height = BUTTON_HEIGHT;
+
+        mSharedLocationView = findViewById(R.id.call_activity_shared_location_view);
+        mSharedLocationView.setOnClickListener(v -> onOpenMapClick());
+        mSharedLocationView.setVisibility(View.GONE);
+
+        viewLayoutParams = mSharedLocationView.getLayoutParams();
+        viewLayoutParams.height = BUTTON_HEIGHT;
+
+        mSharedLocationImageView = findViewById(R.id.call_activity_shared_location_image_view);
+        mSharedLocationImageView.setColorFilter(Color.WHITE);
 
         mUnreadMessageImageView = findViewById(R.id.call_activity_unread_message_image_view);
 
@@ -2483,6 +2597,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         mParticipantsView.setVisibility(View.GONE);
+        mAddParticipantView.setVisibility(View.GONE);
+        mCallMenuView.setVisibility(View.GONE);
+        mChronometerView.setVisibility(View.GONE);
         mTransferView.setVisibility(View.VISIBLE);
     }
 
@@ -2512,11 +2629,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "updateViews");
         }
 
-        if (!mUIInitialized || mMode == null) {
+        if (mMode == null || !mUIInitialized) {
 
             return;
         }
-
 
         switch (mMode) {
             case ACCEPTED_INCOMING_CALL:
@@ -2683,6 +2799,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 }
 
                 mCallMenuView.setIsConversationAllowed(isMessageSupported());
+                mCallMenuView.setIsShareLocationAllowed(isLocationSupported());
+                mCallMenuView.setIsLocationShared(CallService.isLocationStartShared());
                 mCallMenuView.updateMenu();
 
                 updateModeInCall();
@@ -2739,30 +2857,52 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                 Map<UUID, String> participantsName = new HashMap<>();
                 final List<CallParticipant> participants = callState.getParticipants();
+                boolean isOneLocationShared = CallService.getCurrentLocation() != null;
                 for (CallParticipant callParticipant : participants) {
                     if (callParticipant.getSenderId() != null) {
                         participantsName.put(callParticipant.getSenderId(), callParticipant.getName());
                     }
+
+                    if (callParticipant.getCurrentGeolocation() != null) {
+                        isOneLocationShared = true;
+                    }
+                }
+
+                if (isOneLocationShared) {
+                    mSharedLocationView.setVisibility(View.VISIBLE);
+                } else {
+                    mSharedLocationView.setVisibility(View.GONE);
+                }
+
+                if (CallService.isLocationStartShared()) {
+                    mSharedLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.share_location_icon, getTheme()));
+                    mSharedLocationImageView.setColorFilter(Color.TRANSPARENT);
+                } else {
+                    mSharedLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_location_icon, getTheme()));
+                    mSharedLocationImageView.setColorFilter(Color.WHITE);
                 }
 
                 boolean unreadMessage = false;
 
                 for (ConversationService.Descriptor descriptor : callState.getDescriptors()) {
-                    boolean isLocal = !callState.isPeerDescriptor(descriptor);
 
-                    String name = "";
+                    if (descriptor.getType() == ConversationService.Descriptor.Type.OBJECT_DESCRIPTOR) {
+                        boolean isLocal = !callState.isPeerDescriptor(descriptor);
 
-                    if (isLocal && mOriginator != null) {
-                        name = mOriginator.getIdentityName();
-                    } else if (participantsName.get(descriptor.getDescriptorId().twincodeOutboundId) != null) {
-                        name = participantsName.get(descriptor.getDescriptorId().twincodeOutboundId);
+                        String name = "";
+
+                        if (isLocal && mOriginator != null) {
+                            name = mOriginator.getIdentityName();
+                        } else if (participantsName.get(descriptor.getDescriptorId().twincodeOutboundId) != null) {
+                            name = participantsName.get(descriptor.getDescriptorId().twincodeOutboundId);
+                        }
+
+                        if (!isLocal && descriptor.getReadTimestamp() == 0) {
+                            unreadMessage = true;
+                        }
+
+                        mCallConversationView.addDescriptor(descriptor, isLocal, false, name);
                     }
-
-                    if (!isLocal && descriptor.getReadTimestamp() == 0) {
-                        unreadMessage = true;
-                    }
-
-                    mCallConversationView.addDescriptor(descriptor, isLocal, false, name);
                 }
 
                 if (mCallConversationView.hasDescriptors()) {
@@ -2895,57 +3035,63 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
             } else {
-                if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.REMOTE_CAMERA) && !mShowRemoteCameraOnboardingView) {
-                    mShowRemoteCameraOnboardingView = true;
-                    OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-                    PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT);
-                    onboardingConfirmView.setLayoutParams(layoutParams);
-                    onboardingConfirmView.setForceDarkMode(true);
-                    onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
-                    onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
-                    onboardingConfirmView.setMessage(getString(R.string.call_activity_camera_control_onboarding_part_2));
-                    onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
-                    onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
-
-                    AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-                        @Override
-                        public void onConfirmClick() {
-                            onboardingConfirmView.animationCloseConfirmView();
+                if (isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
+                    if (mOriginator != null && mOriginator.getCapabilities().getZoomable() == Zoomable.ASK) {
+                        if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.REMOTE_CAMERA) && !mShowRemoteCameraOnboardingView) {
+                            showCameraControlOnboarding();
+                            return;
                         }
 
-                        @Override
-                        public void onCancelClick() {
-                            onboardingConfirmView.animationCloseConfirmView();
-                            getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.REMOTE_CAMERA, false);
-                            onControlCameraClick();
-                        }
+                        DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
+                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT);
+                        defaultConfirmView.setLayoutParams(layoutParams);
+                        defaultConfirmView.setForceDarkMode(true);
+                        defaultConfirmView.setTitle(getString(R.string.call_activity_camera_control));
+                        String message = String.format(getString(R.string.call_activity_camera_control_ask_message), mOriginatorName);
+                        defaultConfirmView.setMessage(message);
+                        defaultConfirmView.setImage(null);
+                        defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+                        defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-                        @Override
-                        public void onDismissClick() {
-                            onboardingConfirmView.animationCloseConfirmView();
-                        }
-
-                        @Override
-                        public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                            mRootView.removeView(onboardingConfirmView);
-
-                            if (fromConfirmAction) {
-                                onControlCameraClick();
+                        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                            @Override
+                            public void onConfirmClick() {
+                                defaultConfirmView.animationCloseConfirmView();
+                                participant.remoteAskControl();
                             }
 
-                            setStatusBarColor();
-                        }
-                    };
-                    onboardingConfirmView.setObserver(observer);
-                    mRootView.addView(onboardingConfirmView);
-                    onboardingConfirmView.show();
+                            @Override
+                            public void onCancelClick() {
+                                defaultConfirmView.animationCloseConfirmView();
+                            }
 
-                    int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-                    setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-                    return;
+                            @Override
+                            public void onDismissClick() {
+                                defaultConfirmView.animationCloseConfirmView();
+                            }
+
+                            @Override
+                            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                                mRootView.removeView(defaultConfirmView);
+                                setStatusBarColor();
+                            }
+                        };
+                        defaultConfirmView.setObserver(observer);
+                        mRootView.addView(defaultConfirmView);
+                        defaultConfirmView.bringToFront();
+                        defaultConfirmView.show();
+
+                        Window window = getWindow();
+                        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+                    } else {
+                        participant.remoteAskControl();
+                    }
+                } else if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.REMOTE_CAMERA) && !mShowRemoteCameraOnboardingView) {
+                    showCameraControlOnboarding();
+                } else {
+                    showPremiumFeature(UIPremiumFeature.FeatureType.CAMERA_CONTROL);
                 }
-                showPremiumFeature(UIPremiumFeature.FeatureType.CAMERA_CONTROL);
             }
         }
     }
@@ -2994,7 +3140,114 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         getTwinmeApplication().hideGroupCallAnimation();
 
-        showPremiumFeature(UIPremiumFeature.FeatureType.GROUP_CALL);
+        CallState callState = CallService.getState();
+        if (callState != null) {
+
+            if (!isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
+                showPremiumFeature(UIPremiumFeature.FeatureType.GROUP_CALL);
+                return;
+            }
+
+            if (mCallParticipantViewList.size() == 2 && callState.getMainParticipant() != null) {
+                Boolean groupSupported = callState.getMainParticipant().isGroupSupported();
+                if (groupSupported == null || !groupSupported) {
+                    PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_view);
+
+                    AlertMessageView alertMessageView = new AlertMessageView(this, null);
+                    PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT);
+                    alertMessageView.setLayoutParams(layoutParams);
+                    alertMessageView.setTitle(getString(R.string.conversation_activity_menu_item_view_info_title));
+                    alertMessageView.setMessage(String.format(getString(R.string.call_activity_not_supported_group_call_message), callState.getMainParticipant().getName()));
+
+                    AlertMessageView.Observer observer = new AlertMessageView.Observer() {
+
+                        @Override
+                        public void onConfirmClick() {
+                            alertMessageView.animationCloseConfirmView();
+                        }
+
+                        @Override
+                        public void onDismissClick() {
+                            alertMessageView.animationCloseConfirmView();
+                        }
+
+                        @Override
+                        public void onCloseViewAnimationEnd() {
+                            percentRelativeLayout.removeView(alertMessageView);
+                            setStatusBarColor();
+                        }
+                    };
+                    alertMessageView.setObserver(observer);
+
+                    percentRelativeLayout.addView(alertMessageView);
+                    alertMessageView.show();
+
+                    Window window = getWindow();
+                    window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+                    return;
+                }
+            }
+
+            if (mCallParticipantViewList.size() >= callState.getMaxMemberCount() && callState.getMaxMemberCount() != 0) {
+                PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_view);
+
+                AlertMessageView alertMessageView = new AlertMessageView(this, null);
+                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+                alertMessageView.setLayoutParams(layoutParams);
+                alertMessageView.setMessage(String.format(getString(R.string.call_activity_max_participant_message), callState.getMaxMemberCount()));
+
+                AlertMessageView.Observer observer = new AlertMessageView.Observer() {
+
+                    @Override
+                    public void onConfirmClick() {
+                        alertMessageView.animationCloseConfirmView();
+                    }
+
+                    @Override
+                    public void onDismissClick() {
+                        alertMessageView.animationCloseConfirmView();
+                    }
+
+                    @Override
+                    public void onCloseViewAnimationEnd() {
+                        percentRelativeLayout.removeView(alertMessageView);
+                        setStatusBarColor();
+                    }
+                };
+                alertMessageView.setObserver(observer);
+
+                percentRelativeLayout.addView(alertMessageView);
+                alertMessageView.show();
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+
+                return;
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (AbstractCallParticipantView callParticipantView : mCallParticipantViewList) {
+                if (callParticipantView.getCallParticipant() != null) {
+                    final CallParticipant callParticipant = callParticipantView.getCallParticipant();
+                    final CallConnection callConnection = callParticipant.getCallConnection();
+                    if (callConnection.getPeerTwincodeOutboundId() != null) {
+                        if (stringBuilder.length() > 0) {
+                            stringBuilder.append(",");
+                        }
+                        stringBuilder.append(callConnection.getPeerTwincodeOutboundId().toString());
+                    }
+                }
+            }
+
+            Intent intent = new Intent();
+            intent.putExtra(Intents.INTENT_CONTACT_SELECTION, stringBuilder.toString());
+            intent.putExtra(Intents.INTENT_MAX_NUMBER_COUNT, callState.getMaxMemberCount());
+            intent.setClass(this, AddCallParticipantActivity.class);
+            startActivityForResult(intent, REQUEST_ADD_PARTICIPANT);
+        }
     }
 
     private void onShareInvitationClick() {
@@ -3110,13 +3363,289 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
     }
 
+    private void onOpenMapClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onOpenMapClick");
+        }
+
+        initMap(true);
+    }
+
+    private void onCallLocationClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCallLocationClick");
+        }
+
+        if (!CallService.isLocationStartShared()) {
+            if (mCallMapView == null) {
+                mStartShareLocationOnLocationEnable = true;
+            } else {
+                if (mCallMapView.canShareLocation()) {
+                    mCallMapView.onShareClick();
+                } else {
+                    showLocationSettings();
+                }
+            }
+
+            initMap(false);
+        } else {
+            if (mCallMapView != null) {
+                mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
+                mCallMenuView.bringToFront();
+                if (mCallMapView.canShareLocation()) {
+                    mCallMapView.onShareClick();
+                } else {
+                    showLocationSettings();
+                }
+            } else {
+                CallService.stopShareLocation(false);
+
+                if (mCallParticipantLocaleView != null) {
+                    mCallParticipantLocaleView.setIsLocationShared(false);
+                    mCallParticipantLocaleView.updateViews();
+                }
+
+                mSharedLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_location_icon, getTheme()));
+                mSharedLocationImageView.setColorFilter(Color.WHITE);
+
+                mCallMenuView.setIsLocationShared(false);
+                mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
+            }
+        }
+    }
+
+    private void initMap(boolean showMap) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "initMap: " + showMap);
+        }
+
+        if (mCallMapView == null) {
+
+            mCallMapView = new CallMapView(this, null);
+
+            // Use same layout parameters in portrait/landscape modes
+            @SuppressWarnings("deprecation")
+            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams.topMargin = BUTTON_HEIGHT;
+            layoutParams.width = Design.DISPLAY_WIDTH - (SIDE_MARGIN * 2);
+            layoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN);
+            layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            mCallMapView.setLayoutParams(layoutParams);
+            mRootView.addView(mCallMapView);
+
+            CallMapView.CallMapListener callMapListener = new CallMapView.CallMapListener() {
+                @Override
+                public void onCloseMap() {
+
+                    ViewGroup.MarginLayoutParams marginLayout = (ViewGroup.MarginLayoutParams) mCallMapView.getLayoutParams();
+                    marginLayout.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN);
+                    mCallMapView.setVisibility(View.GONE);
+
+                    mCallMapView.pauseMap();
+                }
+
+                @Override
+                public void onFullScreenMap(boolean isFullScreen) {
+
+                    if (isFullScreen) {
+                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT);
+                        layoutParams.topMargin = 0;
+                        layoutParams.width = Design.DISPLAY_WIDTH;
+                        layoutParams.bottomMargin = 0;
+                        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                        mCallMapView.setLayoutParams(layoutParams);
+                        mCallMapView.bringToFront();
+                    } else {
+                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT);
+                        layoutParams.topMargin = BUTTON_HEIGHT;
+                        layoutParams.width = Design.DISPLAY_WIDTH - (SIDE_MARGIN * 2);
+                        layoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN);
+                        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                        mCallMapView.setLayoutParams(layoutParams);
+                        mCallMenuView.bringToFront();
+                    }
+                }
+
+                @Override
+                public void onStopShareLocation() {
+                    if (DEBUG) {
+                        Log.d(LOG_TAG, "onStopShareLocation");
+                    }
+
+                    CallService.stopShareLocation(false);
+
+                    if (mCallParticipantLocaleView != null) {
+                        mCallParticipantLocaleView.setIsLocationShared(false);
+                        mCallParticipantLocaleView.updateViews();
+                    }
+
+                    mSharedLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_location_icon, getTheme()));
+                    mSharedLocationImageView.setColorFilter(Color.WHITE);
+
+                    mCallMenuView.setIsLocationShared(false);
+                    mCallMenuView.updateMenu();
+                }
+
+                @Override
+                public void onStartShareLocation(double mapLatitudeDelta, double mapLongitudeDelta) {
+                    if (DEBUG) {
+                        Log.d(LOG_TAG, "onStartShareLocation: " + mapLatitudeDelta + " mapLongitudeDelta=" + mapLongitudeDelta);
+                    }
+
+                    CallService.startShareLocation(mapLatitudeDelta, mapLongitudeDelta);
+
+                    if (mCallParticipantLocaleView != null) {
+                        mCallParticipantLocaleView.setIsLocationShared(true);
+                        mCallParticipantLocaleView.updateViews();
+                    }
+
+                    mSharedLocationImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.share_location_icon, getTheme()));
+                    mSharedLocationImageView.setColorFilter(Color.TRANSPARENT);
+                    mSharedLocationView.setVisibility(View.VISIBLE);
+
+                    mCallMenuView.setIsLocationShared(true);
+                    mCallMenuView.updateMenu();
+                }
+            };
+
+            mCallMapView.setCallMapListener(callMapListener);
+            mCallMapView.startMap();
+
+            if (mCallParticipantLocaleView != null) {
+                mCallMapView.setName(mCallParticipantLocaleView.getName());
+                mCallMapView.setAvatar(mCallParticipantLocaleView.getAvatar());
+            }
+
+            CallState callState = CallService.getState();
+            if (callState != null) {
+                final List<CallParticipant> participants = callState.getParticipants();
+                for (CallParticipant callParticipant : participants) {
+                    if (callParticipant.getCurrentGeolocation() != null) {
+                        mCallMapView.updateLocation(callParticipant, callParticipant.getCurrentGeolocation());
+                    }
+                }
+
+                if (callState.getCurrentGeolocation() != null) {
+                    mCallMapView.setLocationShared(true);
+                    mCallMapView.updateLocaleLocation(callState.getCurrentGeolocation().getLatitude(), callState.getCurrentGeolocation().getLongitude());
+                } else if (CallService.getCurrentLocation() != null) {
+                    Location currentLocation = CallService.getCurrentLocation();
+                    mCallMapView.updateLocaleLocation(currentLocation.getLatitude(), currentLocation.getLongitude());
+                }
+            }
+            checkLocationPermissions();
+        } else {
+            mCallMapView.setLocationShared(CallService.isLocationStartShared());
+            mCallMapView.resumeMap();
+        }
+
+        if (mCallParticipantLocaleView != null) {
+            mCallMapView.setName(mCallParticipantLocaleView.getName());
+            mCallMapView.setAvatar(mCallParticipantLocaleView.getAvatar());
+        }
+
+        mCallMapView.setCanShareLocation(mAccessLocationGranted);
+        mCallMapView.setCanShareBackgroundLocation(mAccessBackgroundLocationGranted, this);
+        mCallMapView.setCanShareExactLocation(mAccessFineLocationGranted, this);
+
+        if (showMap) {
+            mCallMapView.setVisibility(View.VISIBLE);
+            mCallMapView.bringToFront();
+        } else {
+            mCallMapView.setVisibility(View.INVISIBLE);
+        }
+
+
+        if (mAccessLocationGranted) {
+            mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
+            mCallMenuView.bringToFront();
+        }
+    }
+
+    private void checkLocationPermissions() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "checkLocationPermissions");
+        }
+
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (locationManager != null && !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            showLocationSettings();
+        } else {
+            TwinmeActivity.Permission[] permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.ACCESS_FINE_LOCATION, TwinmeActivity.Permission.ACCESS_COARSE_LOCATION};
+            if (checkPermissions(permissions)) {
+                mAccessLocationGranted = true;
+
+                permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.ACCESS_FINE_LOCATION};
+                if (checkPermissionsWithoutRequest(permissions)) {
+                    mAccessFineLocationGranted = true;
+                }
+
+                CallService.initShareLocation(this);
+
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+                    permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.ACCESS_BACKGROUND_LOCATION};
+                    if (checkPermissionsWithoutRequest(permissions)) {
+                        mAccessBackgroundLocationGranted = true;
+                    }
+                } else {
+                    mAccessBackgroundLocationGranted = true;
+                }
+
+                if (mCallMapView != null) {
+                    mCallMapView.setCanShareLocation(mAccessLocationGranted);
+                    mCallMapView.setCanShareBackgroundLocation(mAccessBackgroundLocationGranted, this);
+                    mCallMapView.setCanShareExactLocation(mAccessFineLocationGranted, this);
+
+                    if (mStartShareLocationOnLocationEnable) {
+                        mStartShareLocationOnLocationEnable = false;
+
+                        if (mCallMapView.canShareLocation()) {
+                            mCallMapView.onShareClick();
+                        } else {
+                            messageSettings(getString(R.string.application_location_enabled), 0L, new SettingsMessageCallback() {
+                                @Override
+                                public void onCancelClick() {
+                                    finish();
+                                }
+
+                                @Override
+                                public void onSettingsClick() {
+
+                                    openAppSettings();
+                                }
+
+                                @Override
+                                public void onTimeout() {
+
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private void onAddStreamingAudio() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onAddStreamingAudio");
         }
 
         mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
-        showPremiumFeature(UIPremiumFeature.FeatureType.STREAMING);
+
+        if (!isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
+            showPremiumFeature(UIPremiumFeature.FeatureType.STREAMING);
+        } else {
+            Intent intent = new Intent();
+            intent.setClass(this, StreamingAudioActivity.class);
+            startActivityForResult(intent, REQUEST_ADD_STREAMING_AUDIO);
+        }
     }
 
     private void onAcceptClick() {
@@ -3194,6 +3723,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mCallMenuView.setHideCertifyRelation(hideCertifyRelation);
         mCallMenuView.setIsConversationAllowed(mIsCallReceiver);
         mCallMenuView.setIsShareInvitationAllowed(mIsCallReceiver);
+        mCallMenuView.setIsShareLocationAllowed(!mIsCallReceiver);
 
         if (mUIInitialized && mOriginator != null) {
             boolean isInCall = CallStatus.isActive(mMode);
@@ -3352,7 +3882,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     }
                 }
                 return  getString(R.string.show_call_activity_schedule_call) + " : " + message;
-                
+
             default:
                 String reason;
                 if (mStartTime > 0) {
@@ -3389,6 +3919,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mCoachMarkView.openCoachMark(coachMark);
             }, COACH_MARK_DELAY);
         }
+
     }
 
     private void addCallParticipantAnimation() {
@@ -3794,6 +4325,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                         }
 
                         @Override
+                        public void onLocationTap() {
+                            onLocationParticipantClick(callParticipantRemoteView.getParticipantId());
+                        }
+
+                        @Override
                         public void onCancelTap() {
                             onCancelCallParticipantClick(callParticipantRemoteView);
                         }
@@ -3871,6 +4407,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     }
 
                     @Override
+                    public void onLocationTap() {
+                        onLocationParticipantClick(mCallParticipantLocaleView.getParticipantId());
+                    }
+
+                    @Override
                     public void onCancelTap() {
 
                     }
@@ -3923,6 +4464,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mCallParticipantLocaleView.setName(mOriginator.getIdentityName());
                 mCallParticipantLocaleView.setAvatar(mOriginatorIdentityAvatar);
                 mCallParticipantLocaleView.setMicroMute(mIsAudioMute);
+                mCallParticipantLocaleView.setIsLocationShared(CallService.isLocationStartShared());
 
                 if (CallStatus.isActive(mMode)) {
                     mCallParticipantLocaleView.setCameraMute(mIsCameraMute);
@@ -3938,6 +4480,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mCallParticipantLocaleView.setAvatar(mOriginatorIdentityAvatar);
                 mCallParticipantLocaleView.setMicroMute(mIsAudioMute);
                 mCallParticipantLocaleView.setCameraMute(mIsCameraMute);
+                mCallParticipantLocaleView.setIsLocationShared(CallService.isLocationStartShared());
                 mCallParticipantLocaleView.updateViews();
             }
 
@@ -4044,6 +4587,16 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         } else {
             mNameView.setVisibility(View.GONE);
             mCertifiedImageView.setVisibility(View.GONE);
+        }
+
+        mAddParticipantImageView.setAlpha(1f);
+        if (callState != null && mCallParticipantViewList.size() == 2 && mainParticipant != null) {
+            Boolean groupSupported = mainParticipant.isGroupSupported();
+            if (groupSupported == null || !groupSupported) {
+                mAddParticipantImageView.setAlpha(0.5f);
+            }
+        } else if (callState != null && mCallParticipantViewList.size() >= callState.getMaxMemberCount() && callState.getMaxMemberCount() != 0) {
+            mAddParticipantImageView.setAlpha(0.5f);
         }
 
         if (!mCallParticipantViewList.isEmpty()) {
@@ -4156,6 +4709,25 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         for (AbstractCallParticipantView callParticipantView : mCallParticipantViewList) {
             if (callParticipantView.isMessageSupported()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    private boolean isLocationSupported() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isLocationSupported");
+        }
+
+        if (!CommonUtils.isGooglePlayServicesAvailable(getApplicationContext())) {
+            return false;
+        }
+
+        for (AbstractCallParticipantView callParticipantView : mCallParticipantViewList) {
+            if (callParticipantView.isLocationSupported()) {
                 return true;
             }
         }
@@ -4663,7 +5235,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onInfoCallParticipantClick: " + name);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_layout);
+        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_view);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
         PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -4696,8 +5268,18 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         percentRelativeLayout.addView(alertMessageView);
         alertMessageView.show();
 
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void onLocationParticipantClick(int participantId) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onLocationParticipantClick: " + participantId);
+        }
+
+        onCallLocationClick();
+
+        mCallMapView.zoomToParticipant(participantId);
     }
 
     private void onCancelCallParticipantClick(AbstractCallParticipantView callParticipantView) {
@@ -4717,7 +5299,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onMergeCallClick");
         }
 
-        showPremiumFeature(UIPremiumFeature.FeatureType.GROUP_CALL);
+        if (!isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
+            showPremiumFeature(UIPremiumFeature.FeatureType.GROUP_CALL);
+            return;
+        }
+
+        Intent intent = new Intent(this, CallService.class);
+        intent.setAction(CallService.ACTION_MERGE_CALLS);
+        startService(intent);
     }
 
     private void onHangupHoldCallClick() {
@@ -5125,7 +5714,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
             @Override
             public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), InAppSubscriptionActivity.class);
+                startActivity(intent);
+                premiumFeatureConfirmView.animationCloseConfirmView();
             }
 
             @Override
@@ -5148,6 +5740,60 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         mRootView.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showCameraControlOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showCameraControlOnboarding");
+        }
+
+        mShowRemoteCameraOnboardingView = true;
+        OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
+        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        onboardingConfirmView.setLayoutParams(layoutParams);
+        onboardingConfirmView.setForceDarkMode(true);
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
+        onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
+        onboardingConfirmView.setMessage(getString(R.string.call_activity_camera_control_onboarding_part_2));
+        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+                getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.REMOTE_CAMERA, false);
+                onControlCameraClick();
+            }
+
+            @Override
+            public void onDismissClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                mRootView.removeView(onboardingConfirmView);
+
+                if (fromConfirmAction) {
+                    onControlCameraClick();
+                }
+
+                setStatusBarColor();
+            }
+        };
+        onboardingConfirmView.setObserver(observer);
+        mRootView.addView(onboardingConfirmView);
+        onboardingConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
@@ -5219,6 +5865,54 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         mSelectAudioSourceView.openMenu();
+    }
+
+    private void showLocationSettings() {
+
+        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_view);
+
+        DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
+        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        defaultConfirmView.setLayoutParams(layoutParams);
+        defaultConfirmView.setTitle(getString(R.string.application_location));
+        defaultConfirmView.setMessage(getString(R.string.application_location_enabled));
+        defaultConfirmView.setImage(null);
+        defaultConfirmView.setConfirmTitle(getString(R.string.application_yes));
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                defaultConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                defaultConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                defaultConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                percentRelativeLayout.removeView(defaultConfirmView);
+
+                if (fromConfirmAction) {
+                    Intent locationSettings = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(locationSettings);
+                }
+            }
+        };
+        defaultConfirmView.setObserver(observer);
+        percentRelativeLayout.addView(defaultConfirmView);
+        defaultConfirmView.bringToFront();
+        defaultConfirmView.show();
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void backPressed() {

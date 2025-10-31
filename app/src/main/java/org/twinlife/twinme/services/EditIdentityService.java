@@ -151,33 +151,12 @@ public class EditIdentityService extends AbstractTwinmeService {
 
             EditIdentityService.this.onUpdateCallReceiver(callReceiver);
         }
-
-        @Override
-        public void onSetCurrentSpace(long requestId, @NonNull Space space) {
-            if (DEBUG) {
-                Log.d(LOG_TAG, "TwinmeContextObserver.onSetCurrentSpace: requestId=" + requestId + " space=" + space);
-            }
-
-            finishOperation(requestId);
-
-            EditIdentityService.this.onSetCurrentSpace(space);
-        }
-
-        @Override
-        public void onUpdateSpace(long requestId, @NonNull Space space) {
-            if (DEBUG) {
-                Log.d(LOG_TAG, "TwinmeContextObserver.onUpdateSpace: requestId=" + requestId + " space=" + space);
-            }
-
-            EditIdentityService.this.onUpdateSpace(space);
-        }
     }
 
     @Nullable
     private Observer mObserver;
     private int mState = 0;
     private int mWork = 0;
-    private Space mCurrentSpace;
     @Nullable
     private UUID mSpaceId;
     @Nullable
@@ -199,6 +178,7 @@ public class EditIdentityService extends AbstractTwinmeService {
     private String mName;
     private String mDescription;
     private Profile.UpdateMode mProfileUpdateMode;
+    private Space mSpace;
 
     public EditIdentityService(@NonNull AbstractTwinmeActivity activity, @NonNull TwinmeContext twinmeContext, @NonNull Observer observer) {
         super(LOG_TAG, activity, twinmeContext, observer);
@@ -236,16 +216,44 @@ public class EditIdentityService extends AbstractTwinmeService {
         startOperation();
     }
 
-    public void updateProfile(@NonNull Profile profile, @NonNull String name, @Nullable String descriptionProfile, @NonNull Bitmap avatar, @Nullable File avatarFile) {
+    public void getSpace(@NonNull UUID spaceId) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "updateProfile: profile=" + profile + " name=" + name + " descriptionProfile=" + descriptionProfile + " avatar=" + avatar + " avatarFile=" + avatarFile);
+            Log.d(LOG_TAG, "getSpace: spaceId= " + spaceId);
+        }
+
+        mWork |= GET_SPACE | GET_IDENTITY_AVATAR;
+        mState &= ~(GET_SPACE | GET_SPACE_DONE | GET_IDENTITY_AVATAR | GET_IDENTITY_AVATAR_DONE);
+        mSpaceId = spaceId;
+        showProgressIndicator();
+        startOperation();
+    }
+
+    public void createProfile(Space space, @NonNull String nameProfile, @Nullable String descriptionProfile, @NonNull Bitmap avatar, @Nullable File avatarFile) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "createProfile: space= " + space + " nameProfile= " + nameProfile + " descriptionProfile= " + descriptionProfile + " avatar=" + avatar);
+        }
+
+        mSpace = space;
+        mName = nameProfile;
+        mDescription = descriptionProfile;
+        mAvatar = avatar;
+        mAvatarFile = avatarFile;
+        mWork |= CREATE_PROFILE;
+        mState &= ~(CREATE_PROFILE | CREATE_PROFILE_DONE);
+        showProgressIndicator();
+        startOperation();
+    }
+
+    public void updateProfile(@NonNull Profile profile, @NonNull String name, @Nullable String description, @NonNull Bitmap avatar, @Nullable File avatarFile) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateProfile: profile=" + profile + " name=" + name + " description=" + description + " avatar=" + avatar + " avatarFile=" + avatarFile);
         }
 
         mWork |= UPDATE_PROFILE;
         mState &= ~(UPDATE_PROFILE | UPDATE_PROFILE_DONE);
         mProfile = profile;
         mName = name;
-        mDescription = descriptionProfile;
+        mDescription = description;
         mAvatar = avatar;
         mAvatarFile = avatarFile;
 
@@ -458,6 +466,24 @@ public class EditIdentityService extends AbstractTwinmeService {
             }
         }
 
+        if ((mWork & CREATE_PROFILE) != 0) {
+
+            if ((mState & CREATE_PROFILE) == 0) {
+                mState |= CREATE_PROFILE;
+
+                long requestId = newOperation(CREATE_PROFILE);
+                if (DEBUG) {
+                    Log.d(LOG_TAG, "TwinmeContext.createProfile: requestId=" + requestId + " name=" + mName + " avatar=" + mAvatar);
+                }
+
+                mTwinmeContext.createProfile(requestId, mName, mAvatar, mAvatarFile, mDescription, null, mSpace);
+                return;
+            }
+            if ((mState & CREATE_PROFILE_DONE) == 0) {
+                return;
+            }
+        }
+
         // We must get the contact.
         if ((mWork & GET_CONTACT) != 0 && mContactId != null) {
             if ((mState & GET_CONTACT) == 0) {
@@ -559,27 +585,6 @@ public class EditIdentityService extends AbstractTwinmeService {
         }
 
         //
-        // We must create a profile for the current space.
-        //
-        if (mCurrentSpace != null && (mWork & CREATE_PROFILE) != 0) {
-
-            if ((mState & CREATE_PROFILE) == 0) {
-                mState |= CREATE_PROFILE;
-
-                long requestId = newOperation(CREATE_PROFILE);
-                if (DEBUG) {
-                    Log.d(LOG_TAG, "TwinmeContext.createProfile: requestId=" + requestId + " name=" + mName + " avatar=" + mAvatar);
-                }
-
-                mTwinmeContext.createProfile(requestId, mName, mAvatar, mAvatarFile, mDescription, null, mCurrentSpace);
-                return;
-            }
-            if ((mState & CREATE_PROFILE_DONE) == 0) {
-                return;
-            }
-        }
-
-        //
         // Get a call receiver by ID
         //
 
@@ -601,35 +606,6 @@ public class EditIdentityService extends AbstractTwinmeService {
         //
 
         hideProgressIndicator();
-    }
-
-    private void onGetSpace(@NonNull ErrorCode errorCode, @Nullable Space space) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onGetSpace: space=" + space);
-        }
-
-        mState |= GET_SPACE_DONE;
-        if (space != null) {
-            runOnGetSpace(mObserver, space, null);
-
-            final Profile profile = space.getProfile();
-            if (profile == null) {
-                runOnUiThread(() -> {
-                    if (mObserver != null) {
-                        mObserver.onGetProfileNotFound();
-                    }
-                });
-
-            } else if (mProfileId != null && mProfileId.equals(profile.getId())) {
-                // Trigger the onGetProfile() because this is what we are editing.
-                mState |= GET_PROFILE;
-                onGetProfile(ErrorCode.SUCCESS, profile);
-            } else if (mProfileId == null) {
-                mProfileId = profile.getId();
-                onGetProfile(ErrorCode.SUCCESS, profile);
-            }
-        }
-        onOperation();
     }
 
     private void onUpdateProfile(@Nullable Integer operationId, @NonNull Profile profile) {
@@ -656,6 +632,35 @@ public class EditIdentityService extends AbstractTwinmeService {
         onOperation();
     }
 
+    private void onGetSpace(@NonNull ErrorCode errorCode, @Nullable Space space) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace: space=" + space);
+        }
+
+        mState |= GET_SPACE_DONE;
+
+        runOnGetSpace(mObserver, space, null);
+        if (space != null) {
+            final Profile profile = space.getProfile();
+            if (profile == null) {
+                runOnUiThread(() -> {
+                    if (mObserver != null) {
+                        mObserver.onGetProfileNotFound();
+                    }
+                });
+
+            } else if (mProfileId != null && mProfileId.equals(profile.getId())) {
+                // Trigger the onGetProfile() because this is what we are editing.
+                mState |= GET_PROFILE;
+                onGetProfile(ErrorCode.SUCCESS, profile);
+            } else if (mProfileId == null) {
+                mProfileId = profile.getId();
+                onGetProfile(ErrorCode.SUCCESS, profile);
+            }
+        }
+        onOperation();
+    }
+
     private void onGetProfile(@NonNull ErrorCode errorCode, @Nullable Profile profile) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetProfile: profile=" + profile);
@@ -663,7 +668,6 @@ public class EditIdentityService extends AbstractTwinmeService {
 
         mState |= GET_PROFILE_DONE;
         if (profile != null) {
-
             mProfileId = profile.getId();
             final ImageId avatarId = profile.getAvatarId();
             if (mAvatarId == null || !mAvatarId.equals(avatarId)) {
@@ -754,17 +758,6 @@ public class EditIdentityService extends AbstractTwinmeService {
         onOperation();
     }
 
-    private void onUpdateSpace(@NonNull Space space) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onUpdateSpace: space=" + space);
-        }
-        runOnUiThread(() -> {
-            if (mObserver != null) {
-                mObserver.onUpdateSpace(space);
-            }
-        });
-    }
-
     private void onGetCallReceiver(@NonNull ErrorCode errorCode, @Nullable CallReceiver callReceiver) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetCallReceiver callReceiver=" + callReceiver);
@@ -814,16 +807,6 @@ public class EditIdentityService extends AbstractTwinmeService {
                 mObserver.onCreateProfile(profile);
             }
         });
-        onOperation();
-    }
-
-    protected void onSetCurrentSpace(@NonNull Space space) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSetCurrentSpace: space=" + space);
-        }
-
-        mCurrentSpace = space;
-        super.onSetCurrentSpace(space);
         onOperation();
     }
 

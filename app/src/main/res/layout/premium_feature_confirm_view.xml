@@ -48,7 +48,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/premium_feature_confirm_view_title_view"
             android:gravity="center"
-            android:text="@string/migration_twinme_plus_activity_premium_feature"
+            android:text="@string/application_premium_feature_message"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/migration_twinme_plus_activity_premium_title" />
+                android:text="@string/application_premium_feature_title" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

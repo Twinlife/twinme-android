@@ -226,6 +226,14 @@ public class ReplyView extends PercentRelativeLayout {
                 break;
             }
 
+            case LOCATION:
+            case PEER_LOCATION: {
+                mMessageView.setText(mConversationActivity.getResources().getString(R.string.application_location));
+                mMessageView.setVisibility(VISIBLE);
+                mImageView.setVisibility(GONE);
+                break;
+            }
+
             case FILE:
                 FileItem fileItem = (FileItem) item;
                 mMessageView.setText(fileItem.getNamedFileDescriptor().getName());

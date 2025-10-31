@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2020 twinlife SA.
+ *  Copyright (c) 2019-2021 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -242,6 +242,12 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (viewType == Item.ItemType.PEER_CLEAR.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_peer_clear_item, parent, false);
             return new PeerClearItemViewHolder(mBaseItemActivity, convertView, true);
+        } else if (viewType == Item.ItemType.LOCATION.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_location_item, parent, false);
+            return new LocationItemViewHolder(mBaseItemActivity, convertView, false, false);
+        } else if (viewType == Item.ItemType.PEER_LOCATION.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
+            return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, false, false);
         } else if (viewType == TITLE) {
             convertView = inflater.inflate(R.layout.section_title_item, parent, false);
             return new SectionTitleViewHolder(convertView);

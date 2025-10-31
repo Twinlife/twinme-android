@@ -16,6 +16,18 @@
         android:layout_height="match_parent"
         android:layout_below="@id/contact_capabilities_activity_tool_bar"/>
 
+    <View
+        android:id="@+id/contact_capabilities_activity_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="invisible" />
+
+    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
+        android:id="@+id/contact_capabilities_activity_menu_select_value_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ProgressBar
         android:id="@+id/contact_capabilities_activity_progress_bar"
         style="@android:style/Widget.ProgressBar"

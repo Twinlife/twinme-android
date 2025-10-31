@@ -9,6 +9,7 @@
     <string name="application_all">همه</string>
     <string name="application_appearance">ظاهر</string>
     <string name="application_are_you_sure">مطمئنی؟</string>
+    <string name="application_authorization_location">برای دسترسی به سرویس مکان در تنظیمات سیستم، برنامه را مجاز کنید.</string>
     <string name="application_authorization_camera">برای دسترسی به دوربین در تنظیمات سیستم، برنامه را مجاز کنید.</string>
     <string name="application_authorization_go_settings">به تنظیمات سیستم بروید</string>
     <string name="application_authorization_microphone">السماح للتطبيق بالدخول إلى الكاميرا في إعدادات النظام.</string>
@@ -48,16 +49,19 @@
     <string name="application_group_not_found">شما از گروه حذف شده اید</string>
     <string name="application_items_selected">%1$d مورد انتخاب شد</string>
     <string name="application_later">بعد</string>
+    <string name="application_location">موقعیت جغرافیایی</string>
+    <string name="application_location_enabled">سرویس موقعیت مکانی دستگاه خود را فعال کنید</string>
     <string name="application_low_usage_message">هشدار، اگر به اندازه کافی از برنامه استفاده نکنید، ممکن است سیستم عامل آن را برای تبادل پیام بیدار نکند!</string>
+    <string name="application_more_info">اطلاعات بیشتر…</string>
     <string name="application_one_item_selected">1 مورد انتخاب شد</string>
     <string name="application_migration_no_storage_space">فضای کافی برای تکمیل انتقال در دستگاه شما وجود ندارد. برنامه را ببندید، مقداری فضا آزاد کنید و برای تکمیل به</string>
     <string name="application_migration_no_storage_space_message">یکی از دو دستگاه فضای ذخیره</string>
     <string name="application_name_hint">نام</string>
-    <string name="application_network_connecting">اتصال به سرویس twinme</string>
+    <string name="application_network_connecting">اتصال به سرویس Skred</string>
     <string name="application_network_connectivity">اتصال به شبکه وجود دارد</string>
     <string name="application_network_status_airplane_message">حالت هواپیما فعال است</string>
     <string name="application_network_status_airplane_resolution">لطفا حالت هواپیما را غیرفعال کنید و به یک Wi-Fi یا شبکه تلفن همراه متصل شوید.</string>
-    <string name="application_network_status_connected_no_internet">سرویس twinme به شبکه دسترسی ندارد.</string>
+    <string name="application_network_status_connected_no_internet">سرویس Skred به شبکه دسترسی ندارد.</string>
     <string name="application_network_status_connected_resolution">سعی کنید به یک شبکه دیگر وصل شوید.</string>
     <string name="application_network_status_connection_timeout">اتصال به اینترنت برقرار نمیشود.</string>
     <string name="application_network_status_no_internet">اتصال به اینترنت برقرار نیست.</string>
@@ -72,13 +76,15 @@
     <string name="application_not_authorized_operation">عملیات غیر مجاز</string>
     <string name="application_not_authorized_operation_by_your_contact">عملیات توسط مخاطب شما مجاز نیست</string>
     <string name="application_not_connected">اتصال ایمن در حال انجام است…</string>
-    <string name="application_not_signed_in">به سرویس twinme متصل نیست</string>
+    <string name="application_not_signed_in">به سرویس Skred متصل نیست</string>
     <string name="application_now">اکنون</string>
     <string name="application_ok">خوب</string>
     <string name="application_operation_failure">عدم انجام عملیات</string>
     <string name="application_operation_irreversible">این عمل غیر قابل برگشت است</string>
     <string name="application_permission_camera">اجازه دسترسی به دوربین برای گرفتن عکس یا فیلم جدید لازم است.</string>
     <string name="application_permission_scan_code">مجوز دسترسی به دوربین برای اسکن کد QR لازم است.</string>
+    <string name="application_premium_feature_message">برای استفاده از این ویژگی باید خدمات پریمیوم را فعال کنید.</string>
+    <string name="application_premium_feature_title">خدمات پریمیوم را فعال کنید</string>
     <string name="application_photo_gallery">آلبومهای عکس</string>
     <string name="application_profile">مشخصات</string>
     <string name="application_profile_avatar_not_defined">باید تصویری را که هویت شما را به مخاطبینی که با این پروفایل دعوت میکنید نشان میدهد٬ وارد کنید.</string>
@@ -102,7 +108,7 @@
     <string name="application_timeout_seconds">ثانیه  %1$d</string>
     <string name="application_timeout_week">1 هفته</string>
     <string name="application_unknown_name">ناشناخته</string>
-    <string name="application_upgrade">ارتقاء twinme</string>
+    <string name="application_upgrade">ارتقاء Skred</string>
     <string name="application_webrtc_failure">عدم موفقیت WebRTC</string>
     <string name="application_wrong_configuration">پیکربندی نادرست است</string>
     <string name="application_yes">بله</string>
@@ -112,7 +118,6 @@
     <string name="about_activity_information">اطلاعات</string>
     <string name="about_activity_legal">اعلامیه های حقوقی</string>
     <string name="about_activity_libraries">کتابخانه</string>
-    <string name="about_activity_message">twinme یک سرویس چت صوتی/تصویری امن بدون دسترسی به اطلاعات شخصی است.\n\ntwinme مبتنی بر WebRTC، استاندارد جدید برای ارتباط امن (رمزگذاری سرتاسر) همتا به همتا (بدون هیچ سرور رله) چند رسانه ای لحظه ای در وب است.</string>
     <string name="about_activity_open_source_information">کد منبع برنامه به صورت Open Source در GitHub، تحت مجوز AGPL-3.0 در دسترس است.</string>
     <string name="about_activity_open_sources_licences">مجوزهای منبع باز</string>
     <string name="about_activity_premium_services">خدمات ممتاز</string>
@@ -183,7 +188,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">کد QR نمایش داده شده در بخش «حساب / انتقال از دستگاه دیگر» در منوی کناری دستگاه دیگر را اسکن کنید.</string>
     <string name="account_migration_scanner_activity_stop_scan_title">اسکن را متوقف کنید</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">یک شرکت کننده به این تماس اضافه کنید</string>
 
     <!-- AddContactActivity -->
@@ -192,10 +197,10 @@
     <string name="add_contact_activity_in_person_title">به صورت حضوری</string>
     <string name="add_contact_activity_invitation_code_title">مینی-کد</string>
     <string name="add_contact_activity_invite">دعوت</string>
-    <string name="add_contact_activity_invite_message">برای اتصال خصوصی به <span>“%2$s”</span>٬ آدرس وب %1$s را با twinme در دستگاه تلفن همراه خود باز کنید</string>
-    <string name="add_contact_activity_invite_subject">دعوت Twinme</string>
-    <string name="add_contact_activity_message">از دوستتان بخواهید که کد QR شما را با twinme اسکن کند یا برای اسکن کد دوستتان، روی دکمه "اسکن کنید" ضربه بزنید.</string>
-    <string name="add_contact_activity_onboarding_message">twinme دوستان شما را نمی شناسد و نمی تواند آنها را کشف کند. شما باید آنها را شخصاً دعوت کنید، با twinme زمانی که در نزدیکی شما هستند یا با ارسال دعوت نامه از طریق دیگر برای آنها.</string>
+    <string name="add_contact_activity_invite_message">برای اتصال خصوصی به <span>“%2$s”</span>٬ آدرس وب %1$s را با Skred در دستگاه تلفن همراه خود باز کنید</string>
+    <string name="add_contact_activity_invite_subject">دعوت Skred</string>
+    <string name="add_contact_activity_message">از مخاطب خود بخواهید که کد QR دعوتنامه شما را با Skred اسکن کند یا روی دکمه «اسکن» ضربه بزنید تا کد مخاطب شما اسکن شود.</string>
+    <string name="add_contact_activity_onboarding_message">Skred دوستان شما را نمی شناسد و نمی تواند آنها را کشف کند. شما باید آنها را شخصاً دعوت کنید، با Skred زمانی که در نزدیکی شما هستند یا با ارسال دعوت نامه از طریق دیگر برای آنها.</string>
     <string name="add_contact_activity_scan_code">اسکن کد QR دعوت</string>
     <string name="add_contact_activity_scan_error_corrupt_link">این لینک خراب است</string>
     <string name="add_contact_activity_scan_error_incorect_link">این لینک نادرست است.</string>
@@ -254,7 +259,7 @@
     <string name="calls_fragment_all_call_segmented_control">همه</string>
     <string name="calls_fragment_call_again_message">آیا می خواهید%1$s تماس بگیرید؟</string>
     <string name="calls_fragment_call_again_title">تماس بگیرید</string>
-    <string name="calls_fragment_create_link">یک پیوند \"click-to-call\" ایجاد کنید</string>
+    <string name="calls_fragment_create_link">ایجاد یک \"click-to-call\"</string>
     <string name="calls_fragment_incoming_call">تماس ورودی</string>
     <string name="calls_fragment_missed_call">تماس از دست رفته</string>
     <string name="calls_fragment_missed_call_segmented_control">گمشده</string>
@@ -292,6 +297,11 @@
     <string name="call_activity_confirm_word_title">تأیید کلمه</string>
     <string name="call_activity_error_call_interrupted">تماس قطع شد، خطا: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">تماس انجام نشد، خطا: %1$d.</string>
+    <string name="call_activity_location_background_warning">هشدار: اگر برنامه در پس</string>
+    <string name="call_activity_location_exact_warning">هشدار! شما مکان دقیق خود را به اشتراک نمی گذارید. می توانید مجوزهای لازم را در تنظیمات برنامه تغییر دهید.</string>
+    <string name="call_activity_location_share">مکان من را به اشتراک بگذارید</string>
+    <string name="call_activity_location_share_message">اکنون در حین تماس موقعیت مکانی خود را به اشتراک می گذارید.</string>
+    <string name="call_activity_location_stop">اشتراک</string>
     <string name="call_activity_max_participant_message">حداکثر تعداد شرکت کنندگان در تماس گروهی (%1$d) رسیده است.</string>
     <string name="call_activity_not_supported_group_call_message">نسخه برنامه %1$s با تماس های گروهی سازگار نیست و نیاز به به روز رسانی دارد.</string>
     <string name="call_activity_quality_message">چگونه آن را ارزیابی می کنید؟</string>
@@ -316,9 +326,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">دوربین در حال استفاده است</string>
-    <string name="capture_activity_incorrect_qrcode">twincode اشتباه است</string>
+    <string name="capture_activity_incorrect_qrcode">skredcode اشتباه است</string>
     <string name="capture_activity_message">کد QR را در این مستطیل قرار دهید تا اسکن شود.</string>
-    <string name="capture_activity_no_camera">لازم است دوربین twincode را اسکن کند</string>
+    <string name="capture_activity_no_camera">لازم است دوربین skredcode را اسکن کند</string>
     <string name="capture_activity_qrcode_saved">کد دعوت در عکسها ذخیره شده است</string>
 
     <!-- CleanupActivity -->
@@ -373,11 +383,21 @@
     <string name="contact_capabilities_activity_information_programmed_call">تاریخ ها/زمان هایی را که می خواهید با شما تماس گرفته شود، برنامه ریزی کنید.</string>
     <string name="contact_capabilities_activity_information_video_call">به مخاطب اجازه دهید با شما تماس ویدیویی داشته باشد.</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">ما اجازه دسترسی به مخاطبین شما را دریافت نکردیم</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">مجوز داده نشد</string>
+    <string name="contact_picker_activity_subtitle">دعوت با شماره تلفن</string>
+    <string name="contact_picker_activity_title">دعوت دوستان از بین مخاطبین</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">از یک نفر دعوت کنید تا کد دعوت شما را اسکن کند یا کد او را اسکن کند...</string>
     <string name="contacts_fragment_invite_contact_title">دعوت از مخاطبین</string>
     <string name="contacts_fragment_scan_contact_title">یک کد دعوت نامه را اسکن یا وارد کنید</string>
     <string name="contacts_fragment_title">مخاطب</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">مطمئن هستید که می خواهید این مخاطب را جابجا کنید؟</string>
+    <string name="contact_space_activity_move_title">منتقل کردن</string>
 
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">تماس صوتی</string>
@@ -390,13 +410,14 @@
     <string name="conversation_activity_empty_message">چیزی هوشمندانه بگویید … یا سرگرم کننده!</string>
     <string name="conversation_activity_edit_message">پیام فقط در صورتی قابل ویرایش در دستگاه مخاطب شما است که برنامه او به</string>
     <string name="conversation_activity_ephemeral_coach_mark">برای حذف این پیام از مکالمه پس از مدتی مشخص، روی فلش ارسال به مدت طولانی فشار دهید.</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">نسخه twinme مخاطب شما به طور کامل کار نمیکند. &lt;br /&gt;
-        لطفاً از او بخواهید که twinme را بهروز رسانی کند.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">نسخه Skred مخاطب شما به طور کامل کار نمیکند. &lt;br /&gt;
+        لطفاً از او بخواهید که Skred را بهروز رسانی کند.</string>
     <string name="conversation_activity_group_member_information">%1$d اعضای</string>
     <string name="conversation_activity_group_not_allowed_post_message">ارسال پیام غیر مجاز است</string>
     <string name="conversation_activity_group_one_member">۱ عضو</string>
+    <string name="conversation_activity_info">: قفل پیامهای چت بر روی تلفن همراه شما و در حین انتقال آنها رمزگذاری میشوند.\n برای اطمینان از بالاترین سطح امنیت دادهها، آنها به طور مستقیم با استفاده از اتصال همتا به همتا و بدون هیچ سرور واسطی به تلفن %s ارسال میشوند.</string>
     <string name="conversation_activity_invitation_accepted">دعوت پذیرفته شد</string>
-    <string name="conversation_activity_invitation_failed">تماس خود را برای به روز رسانی twinme بپرسید</string>
+    <string name="conversation_activity_invitation_failed">تماس خود را برای به روز رسانی Skred بپرسید</string>
     <string name="conversation_activity_invitation_joined">عضو گروه</string>
     <string name="conversation_activity_invitation_pending">دعوت در حال انجام است</string>
     <string name="conversation_activity_invitation_refused">دعوتنامه لغو شد</string>
@@ -456,7 +477,7 @@
     <string name="conversations_fragment_you">شما</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">این نمایه برای مهمانانی نمایش داده می شود که با این پیوند \"click-to-call\" با شما تماس خواهند گرفت.</string>
+    <string name="create_external_call_activity_message">نام، تصویر و توضیحات موضوع تماس را وارد کنید.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" به مهمانان اجازه می دهد تا بدون نصب برنامه از طریق مرورگر با شما تماس بگیرند.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">هر نمونه دارای نام، تصویر و توضیحاتی است که نشان دهنده موضوع تماس است، مانند:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">خدمات مشتری شما</string>
@@ -500,10 +521,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">پس از ایجاد، هر رابطه دارای جفت «نمایه» خاص خود است که نشان دهنده شما و مخاطبین شما به یکدیگر است.</string>
     <string name="create_profile_activity_onboarding_message_part_4">سپس می توانید نحوه شناخت هر یک از مخاطبین خود را در هر رابطه به طور مستقل تغییر دهید.</string>
     <string name="create_profile_activity_save_message">این نام و تصویر برای دعوت از مخاطبین شما و تنظیم اولیه روابط شما استفاده می شود. شما می توانید آنها را برای هر رابطه تغییر داده و سفارشی کنید.</string>
+    <string name="create_profile_activity_title">پروفایل خود را تنظیم کنید</string>
     <string name="create_profile_activity_welcome1">تصویر پروفایل خود را وارد کنید</string>
     <string name="create_profile_activity_welcome2"><span>%1$s</span> خوش آمدید!</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">تصویر</string>
+    <string name="create_space_activity_contact_list">انتقال مخاطبین</string>
+    <string name="create_space_activity_contacts_no_profile">برای انتقال مخاطبین به Space ، باید نمایه ای را ارائه دهید که نمایانگر شما برای مخاطبین است. آیا می خواهید آن را تکمیل کنید؟</string>
     <string name="create_space_activity_message">فضاها محلی هستند و برای مخاطبین قابل مشاهده نیستند.</string>
     <string name="create_space_activity_onboarding_message_part_1">فضاها به شما کمک می کند تا مخاطبین خود را بر اساس اینکه به کدام یک از حلقه های اجتماعی خود تعلق دارند، سازماندهی کنید. خانواده، دوستان، تجارت، سرگرمی و غیره</string>
     <string name="create_space_activity_onboarding_message_part_2">هر "فضا" به «نمایه» مربوط می‌شود که نشان‌دهنده شخصیتی است که می‌خواهید هنگام تعامل با مخاطبین حلقه اجتماعی آن "فضا" استفاده کنید، مانند پدر، جانی، دکتر جان دو، بتمن و غیره.</string>
@@ -513,6 +538,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- یک "تصویر" که به شما امکان می دهد آن را به سرعت در لیست "فضاها" خود شناسایی کنید.</string>
     <string name="create_space_activity_onboarding_message_part_7">- یک رنگ "موضوع" برای شخصی کردن ظاهر و احساس آن.</string>
     <string name="create_space_activity_onboarding_message_part_8">- تنظیمات که می تواند برای هر "فضا" خاص باشد، در نتیجه مقادیر پیش فرض تعریف شده توسط تنظیمات برنامه را لغو می کند.</string>
+    <string name="create_space_activity_profile_message">شما باید مخاطبی را که با این پروفایل دعوت می کنید ، نام و تصویری را نشان دهید.</string>
+    <string name="create_space_activity_space_hint">نام (خانواده، دوستان، کسب و کار، و غیره)</string>
     <string name="create_space_activity_title">ایجاد Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -532,9 +559,6 @@
     <string name="edit_contact_activity_confirm_message">آیا مطمئن هستید که می خواهید این رابطه را حذف کنید؟</string>
     <string name="edit_contact_activity_message">این مخاطب دیگر نمی تواند با شما تماس بگیرد.</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">حذف این نمایه کد دعوت مرتبط با آن را باطل می کند. تایید حذف؟</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">آیا مطمئن هستید که می خواهید این کد \"Click-to-Call\" را حذف کنید؟</string>
     <string name="edit_external_call_activity_delete_message">این پیوند \"Click-to-Call\" دیگر قابل استفاده نخواهد بود.</string>
@@ -547,7 +571,13 @@
     <string name="edit_profile_activity_propagating_message">می توانید تغییرات نمایه دعوت خود را به مخاطبین فعلی خود منتشر کنید یا خیر.</string>
     <string name="edit_profile_activity_propagating_no_contact">به هیچ کس</string>
     <string name="edit_profile_activity_propagating_profile">انتشار تغییرات پروفایل</string>
-    <string name="edit_profile_activity_remove_active_profile">نمیتوانید پروفایل فعال را حذف کنید</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">برای دعوت از یک مخاطب ، باید نمایه ای را ارائه دهید که نمایانگر این مخاطب است. آیا می خواهید آن را تکمیل کنید؟</string>
+    <string name="edit_space_activity_delete_confirmation">آیا واقعاً مطمئن هستید که می خواهید این Space را حذف کنید؟</string>
+    <string name="edit_space_activity_delete_current_space">شما نمی توانید Space فعلی را حذف کنید.</string>
+    <string name="edit_space_activity_delete_message">حذف Space همه مخاطبین ، گروه ها و مکالمات را از آن Space حذف می کند. آیا مطمئن هستید که می خواهید این Space را حذف کنید؟</string>
+    <string name="edit_space_activity_delete_only_one_space_message">شما نمی توانید تنها Space را از برنامه حذف کنید.</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">پس از ایجاد رابطه، اکیداً توصیه می شود برای تقویت امنیت آن را تأیید کنید.</string>
@@ -594,12 +624,16 @@
     <string name="feedback_activity_send_logs">ارسال Debug Log</string>
     <string name="feedback_activity_send_message">بازخورد ارسال شد. متشکرم.</string>
     <string name="feedback_activity_subject">موضوع</string>
-    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+    <string name="feedback_activity_subject_placeholder">[Skred] </string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">شما باید دوستان خود را دعوت کنید و با آنها در Skred ارتباط برقرار کنید. وقتی که آنها دعوت شما را قبول کنند در لیست تماس شما ظاهر میشوند.</string>
+    <string name="first_invite_contact_activity_ignore">چشم پوشی</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">این عملکرد کد دعوت فعلی مرتبط با این نمایه را باطل می کند. آیا مطمئن هستید که می خواهید یک کد جدید تولید کنید؟</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">یک کد دعوت جدید ایجاد کنید</string>
-    <string name="fullscreen_qrcode_activity_save_message">برای افزودن این مخاطب، این QR-Code دعوت را با twinme وارد یا اسکن کنید.</string>
+    <string name="fullscreen_qrcode_activity_save_message">برای افزودن این مخاطب، این QR-Code دعوت را با Skred وارد یا اسکن کنید.</string>
     <string name="fullscreen_qrcode_activity_save_title">ذخیره در گالری عکس</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -617,6 +651,37 @@
     <string name="group_member_activity_section_invitation">دعوت نامه ها</string>
     <string name="group_member_activity_section_member">اعضا</string>
     <string name="group_member_activity_title">اعضای گروه</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s از شما دعوت می کند از خدمات ممتازی که پشتیبانی می کند لذت ببرید.</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">تماس های گروهی با صدای HQ و تصویر HD</string>
+    <string name="in_app_subscription_activity_description_step1_title">کنفرانس صوتی/تصویری با کیفیت بالا</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">داده های صفر / کربن صفر</string>
+    <string name="in_app_subscription_activity_description_step2_title">کنفرانس صوتی/ویدیویی سازگار با محیط زیست</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">محرمانه بودن مطلق مبادلات</string>
+    <string name="in_app_subscription_activity_description_step3_title">کنفرانس صوتی/تصویری خصوصی</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">اتصال فوری با کیفیت بالا</string>
+    <string name="in_app_subscription_activity_description_step4_title">کنفرانس صوتی/تصویری فوری</string>
+    <string name="in_app_subscription_activity_expiration_message">بازسازی : %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">هنگامی که اشتراکی را خریداری می کنید، توسط Google به طور مستقیم به حساب Play Store شما شارژ می شود. اشتراک به طور خودکار با همان شرایط تمدید می شود مگر اینکه حداقل 24 ساعت قبل از پایان دوره فعلی اشتراک را لغو کنید. می‌توانید در هر زمانی بدون هزینه در فروشگاه Play لغو کنید تا اشتراک در پایان دوره فعلی تمدید نشود. پس از خرید می توانید اشتراک خود را از تنظیمات حساب Play Store خود مدیریت کنید.</string>
+    <string name="in_app_subscription_activity_free_trial">14 روز آزمایشی رایگان. اشتراک را می توان در هر زمان لغو کرد.</string>
+    <string name="in_app_subscription_activity_invitation_code">برای دسترسی به خدمات ممتاز، کد QR دعوت را اسکن کنید یا کد را جایگذاری کنید.</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">کد دعوت نامعتبر است.</string>
+    <string name="in_app_subscription_activity_later_title">نه ممنون</string>
+    <string name="in_app_subscription_activity_manage_susbcription">اشتراک من را مدیریت کنم</string>
+    <string name="in_app_subscription_activity_month">ماه</string>
+    <string name="in_app_subscription_activity_not_available">خدمات ممتاز پولی در دستگاه یا کشور شما در دسترس نیست.</string>
+    <string name="in_app_subscription_activity_restore_title">بازگرداندن خرید</string>
+    <string name="in_app_subscription_activity_search">پیشنهادات اشتراک را جستجو کنید</string>
+    <string name="in_app_subscription_activity_six_month_title">محبوبترین</string>
+    <string name="in_app_subscription_activity_subscription_title">اشتراک، ابونمان</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">اشتراک فعلی</string>
+    <string name="in_app_subscription_activity_subscribe_title">ادامه هید</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">%1$s مشغول است</string>
@@ -636,10 +701,10 @@
     <string name="info_item_activity_updated">اصلاح</string>
 
     <!-- InvitationCallActivity -->
-    <string name="invitation_call_activity_generate_code_message">این اقدام کد دعوت فعلی مرتبط با پیوند \"click-to-call\" را باطل می‌کند. تایید؟</string>
+    <string name="invitation_call_activity_generate_code_message">این اقدام کد دعوت فعلی مرتبط با پیوند "click-to-call" را باطل می‌کند. تایید؟</string>
     <string name="invitation_call_activity_generate_code_title">یک کد جدید برای این لینک ایجاد کنید</string>
     <string name="invitation_call_activity_invite_message">آدرس وب %1$s را باز کنید، یا QR-Code را اسکن کنید تا با «%2$s» تماس بگیرید.</string>
-    <string name="invitation_call_activity_message">این کد \"click-to-call\" را با شخصی که می‌تواند از طریق وب یا برنامه تلفن همراه با شما تماس بگیرد به اشتراک بگذارید.</string>
+    <string name="invitation_call_activity_message">این کد "click-to-call" را با شخصی که می‌تواند از طریق وب یا برنامه تلفن همراه با شما تماس بگیرد به اشتراک بگذارید.</string>
     <string name="invitation_call_activity_save_message">این QR-Code را اسکن کنید تا با «%1$s» تماس بگیرید.</string>
     <string name="invitation_call_activity_share">منتشر کنید</string>
     <string name="invitation_call_activity_title">تماس خارجی</string>
@@ -654,15 +719,16 @@
     <string name="invitation_code_activity_success_message">اکیدا توصیه می</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">از دوست نزدیک خود بخواهید تا QR-code \"اتاق\" را با twinme اسکن کند یا روی کد دعوت ضربه بزنید تا آن را در کلیپ بورد کپی کنید.</string>
+    <string name="invitation_room_activity_message">" QR \\\"اتاق\\\" را با Skred اسکن کند یا روی کد دعوت ضربه بزنید تا آن را در کلیپ بورد کپی کنید."</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">سمعی</string>
     <string name="last_calls_activity_video">فیلم</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">حساب twinme شما در این دستگاه به +twinme منتقل می شود.</string>
-    <string name="local_account_migration_activity_message_older_version">اطمینان حاصل کنید که قبل از شروع انتقال، هر دو دستگاه را به آخرین نسخه برنامه به</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">برای دسترسی به برنامه ، احراز هویت کنید</string>
+    <string name="lock_screen_activity_passcode_not_set">تنظیمات تأیید اعتبار دستگاه تنظیم نشده است. به تنظیمات سیستم بروید و آنها را برای باز کردن قفل برنامه تنظیم کنید.</string>
+    <string name="lock_screen_activity_unlock">قفل دسترسی به برنامه را باز کنید</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">مخاطب را اضافه کنید</string>
@@ -672,12 +738,10 @@
     <string name="main_activity_reset_conversation_title">بازنشانی مکالمه</string>
     <string name="main_activity_reset_group_conversation_admin_message">بازنشانی این مکالمه همه پیام‌ها را از دستگاه هر یک از اعضای گروه حذف می‌کند. تایید؟</string>
     <string name="main_activity_reset_group_conversation_message">بازنشانی این مکالمه همه پیام‌ها را از دستگاه شما حذف می‌کند. تایید؟</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">برای استفاده از این ویژگی باید به twinme+ ارتقا دهید. شما می توانید تمام داده های حساب خود را منتقل کنید.</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">شما می توانید تمام داده های حساب خود را منتقل کنید.</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">twinme به عنوان یک نسخه برتر با ویژگی های حتی بیشتر در دسترس است.</string>
-    <string name="migration_twinme_plus_activity_premium_title">به twinme+ ارتقا دهید</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">ایحاد Space</string>
+    <string name="main_activity_skredboard_delete_title">حذف Space</string>
+    <string name="main_activity_skredboard_message">وارد کردن code</string>
 
     <!-- NavigationActivity -->
     <string name="navigation_activity_about_twinme">در باره</string>
@@ -689,6 +753,8 @@
     <string name="navigation_activity_settings">تنظیمات</string>
     <string name="navigation_activity_sign_out">خروج</string>
     <string name="navigation_activity_sounds">صداها</string>
+    <string name="navigation_activity_subscribe">کشف +Skred</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; فعال</string>
     <string name="navigation_activity_support">حمایت کردن</string>
     <string name="navigation_activity_title">منو</string>
 
@@ -701,6 +767,8 @@
     <string name="notification_center_deleted_contact">مخاطب حذف شد</string>
     <string name="notification_center_file_message">درک لاسرا لیاف کی</string>
     <string name="notification_center_file_message_received">فایل جدید</string>
+    <string name="notification_center_geolocation_message">محل سکونت خود را ارسال کردید</string>
+    <string name="notification_center_geolocation_message_received">محل جدید</string>
     <string name="notification_center_group_invitation">یک دعوت نامه ارسال کردید</string>
     <string name="notification_center_group_invitation_received">دعوت جدید</string>
     <string name="notification_center_join_group">شما عضو گروه هستید</string>
@@ -739,6 +807,7 @@
     <string name="notifications_fragment_item_cleanup_message">" برخی از پیام"</string>
     <string name="notifications_fragment_item_deleted_contact">مخاطب حذف شد</string>
     <string name="notifications_fragment_item_file_message">درک لاسرا لیاف کی</string>
+    <string name="notifications_fragment_item_geolocation_message">محل سکونت خود را ارسال کردید</string>
     <string name="notifications_fragment_item_group_invitation">دیدرک لاسرا همان توعد کی</string>
     <string name="notifications_fragment_item_image_message">یک عکس به شما ارسال کرد</string>
     <string name="notifications_fragment_item_join_group">دیتسه هورگ وضع امش</string>
@@ -783,7 +852,7 @@
     <string name="premium_services_activity_camera_control_description_4">برای مدیریت دوربین نظارتی</string>
     <string name="premium_services_activity_camera_control_subtitle">کنترل دوربین مخاطب خود در طول تماس با اجازه او</string>
     <string name="premium_services_activity_camera_control_title">کنترل دوربین از راه دور</string>
-    <string name="premium_services_activity_click_to_call_description_1">یک کد \"کلیک برای تماس با من\" ایجاد کنید</string>
+    <string name="premium_services_activity_click_to_call_description_1">یک کد "کلیک برای تماس با من" ایجاد کنید</string>
     <string name="premium_services_activity_click_to_call_description_2">به هر وسیله ای منتشر یا توزیع کنید</string>
     <string name="premium_services_activity_click_to_call_description_3">گیرندگان کد را اسکن کرده و با شما تماس می گیرند</string>
     <string name="premium_services_activity_click_to_call_description_4">ناشناس بدون هیچ اثری در ابر</string>
@@ -795,30 +864,18 @@
     <string name="premium_services_activity_conversation_description_4">فقط محلی، هیچ تاثیری بر طرف دیگر ندارد</string>
     <string name="premium_services_activity_conversation_subtitle">محتویات را صادر کنید و فضای آزاد کنید</string>
     <string name="premium_services_activity_conversation_title">مدیریت مکالمه</string>
-    <string name="premium_services_activity_description_part1_subtitle">ارتباط مستقیم بین دستگاه ها</string>
-    <string name="premium_services_activity_description_part1_title">کیفیت صدا/فیلم HD</string>
-    <string name="premium_services_activity_description_part2_subtitle">هیچ اثری در ابر نیست</string>
-    <string name="premium_services_activity_description_part2_title">حریم خصوصی - محرمانه بودن</string>
-    <string name="premium_services_activity_description_part3_subtitle">بهره وری انرژی</string>
-    <string name="premium_services_activity_description_part3_title">سازگار با محیط زیست</string>
     <string name="premium_services_activity_group_call_description_1">صوتی/تصویری با کیفیت بالا</string>
     <string name="premium_services_activity_group_call_description_2">اتصال مستقیم بین دستگاه ها</string>
     <string name="premium_services_activity_group_call_description_3">امن و خصوصی</string>
     <string name="premium_services_activity_group_call_description_4">هیچ اثری در ابر نیست</string>
     <string name="premium_services_activity_group_call_subtitle">از مخاطبین دعوت کنید تا به تماس گروهی صوتی/تصویری بپیوندند</string>
     <string name="premium_services_activity_group_call_title">تماس های گروهی</string>
-    <string name="premium_services_activity_privacy_description_1">برنامه را با احراز هویت بیومتریک یا دیگر قفل کنید</string>
-    <string name="premium_services_activity_privacy_description_2">آخرین صفحه را در تغییر دهنده برنامه پنهان کنید</string>
-    <string name="premium_services_activity_privacy_description_3">پیام های زودگذر که پس از مدتی مشخص ناپدید می شوند</string>
-    <string name="premium_services_activity_privacy_description_4">از تماس مخاطب با شما جلوگیری کنید</string>
-    <string name="premium_services_activity_privacy_subtitle">برنامه، مخاطبین و پیام ها را کنترل کنید</string>
-    <string name="premium_services_activity_privacy_title">حریم خصوصی بیشتر</string>
     <string name="premium_services_activity_space_description_1">نمایه های متعدد با روابط مرتبط، مکالمات، تاریخچه</string>
     <string name="premium_services_activity_space_description_2">ظاهر، اعلان‌ها و تنظیمات شخصی‌شده</string>
     <string name="premium_services_activity_space_description_3">برای خانواده، دوستان، همکاران، تجارت، ورزش و غیره.</string>
-    <string name="premium_services_activity_space_description_4">Spaces مخفی فهرست نشده است، با نام قابل دسترسی است</string>
+    <string name="premium_services_activity_space_description_4">Space مخفی فهرست نشده است، با نام قابل دسترسی است</string>
     <string name="premium_services_activity_space_subtitle">برای هر گروه اجتماعی که با آنها تعامل دارید</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">موسیقی خود را به صورت زنده به اشتراک بگذارید</string>
     <string name="premium_services_activity_streaming_description_2">هر شرکت کننده می تواند پخش کننده رسانه را کنترل کند</string>
     <string name="premium_services_activity_streaming_description_3">در تماس به طور همزمان تعامل کنید</string>
@@ -847,9 +904,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">اضافه کردن نمایه</string>
     <string name="profile_fragment_create_profile">یک نمایه ایجاد کنید</string>
-    <string name="profile_fragment_default_action">فعال کنید</string>
-    <string name="profile_fragment_default_profile_title">نمایه فعال</string>
-    <string name="profile_fragment_identity_title">پروفایل ها</string>
     <string name="profile_fragment_message">این نمایه به شما این امکان را می دهد که از مخاطبین خود دعوت کنید تا تحت کنترل شما با شما رابطه خصوصی برقرار کنند.</string>
     <string name="profile_fragment_twincode_title">کد دعوت</string>
 
@@ -865,7 +919,7 @@
     <string name="proxy_activity_list_information">از پروکسی موجود در لیست زیر استفاده کنید، فقط در صورتی که برنامه بدون پروکسی نتواند به سرویس متصل شود.</string>
     <string name="proxy_activity_onboarding">وقتی دسترسی به سرورهای سیگنالینگ برنامه در کشور شما مسدود شده باشد، پروکسی‌ها می‌توانند در بسیاری از شرایط از این انسدادها عبور کنند و به شما امکان برقراری ارتباط خصوصی را بدهند. علاوه بر پروکسی‌های درون برنامه، می‌توانید پروکسی خودتان را ایجاد کنید یا از پروکسی ایجاد شده توسط شخص دیگری استفاده کنید. پروکسی‌ها تحت هیچ شرایطی نمی‌توانند به محتوای رد و بدل شده دسترسی داشته باشند.</string>
     <string name="proxy_activity_information">فقط در صورتی از پروکسی استفاده کنید که نمی</string>
-    <string name="proxy_activity_share">برای پیکربندی خودکار این پروکسی، لینک %1$s را با twinme در دستگاه خود باز کنید.</string>
+    <string name="proxy_activity_share">برای پیکربندی خودکار این پروکسی، لینک %1$s را با Skred در دستگاه خود باز کنید.</string>
     <string name="proxy_activity_title">پروکسی</string>
     <string name="proxy_activity_url">آیا می‌خواهید از آدرس اینترنتی این پروکسی استفاده کنید؟</string>
     <string name="proxy_activity_warning">هشدار! آدرس اینترنتی این پروکسی به شما اجازه اتصال به سرویس برنامه را نمی</string>
@@ -934,11 +988,11 @@
     <string name="settings_activity_ephemeral_title">ناپدید شدن پیام</string>
     <string name="settings_activity_image_title">عكس</string>
     <string name="settings_activity_message_properties_title">ویژگی های پیام</string>
+    <string name="settings_activity_permissions_title">مجوزها</string>
     <string name="settings_activity_reset_default_value">بازنشانی به تنظیمات پیش فرض</string>
     <string name="settings_activity_reset_preferences_button_title">تنظیم مقادیر پیش فرض</string>
     <string name="settings_activity_reset_preferences_message">بازنشانی تنظیمات اطلاع رسانی به پیش فرض های برنامه.</string>
     <string name="settings_activity_reset_preferences_title">تنظیمات بازنشانی</string>
-    <string name="settings_activity_permissions_title">مجوزها</string>
     <string name="settings_activity_silent_sound">بیصدا</string>
     <string name="settings_activity_sound_enabled_title">اعلانهای صوتی</string>
     <string name="settings_activity_system_notifications_title">اطلاعیه های سیستم</string>
@@ -964,13 +1018,32 @@
     <string name="settings_room_activity_room_type_forum">انجمن</string>
     <string name="settings_room_activity_room_type_forum_information">شرکت کنندگان می توانند پیام های مشاهده شده توسط همه را ارسال کنند</string>
 
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">اعلان ها را مجاز کنید</string>
+    <string name="settings_space_activity_allow_notifications_message">اعلان‌ها فقط زمانی ظاهر می‌شوند که آن Space فضای فعلی فعال باشد.</string>
+    <string name="settings_space_activity_default_message">Space پیش فرض Space است که هنگام شروع برنامه نمایش داده می شود.</string>
+    <string name="settings_space_activity_default_value_message">این مقادیر، مقادیر تنظیم شده در تنظیمات پیش فرض برنامه را لغو می کنند.</string>
+    <string name="settings_space_activity_default_value_title">تنظیمات پیش فرض را تغییر دهید</string>
+    <string name="settings_space_activity_header_message">مقادیر این پارامترها، برای این فضا، مقادیر پیش فرض تعریف شده در سطح برنامه را لغو می کند.</string>
+    <string name="settings_space_activity_permission_create_contact">ایجاد مخاطب</string>
+    <string name="settings_space_activity_permission_create_group">ایجاد گروه</string>
+    <string name="settings_space_activity_permission_move_contact">انتقال مخاطب</string>
+    <string name="settings_space_activity_permission_move_group">حرکت گروه</string>
+    <string name="settings_space_activity_permission_share_space_card">کد دعوت Space را به اشتراک بگذارید</string>
+    <string name="settings_space_activity_permission_update_identity">بروزرسانی پروفایل</string>
+    <string name="settings_space_activity_permissions_title">مجوزها</string>
+    <string name="settings_space_activity_reset_application_value">تنظیمات پیش فرض برنامه را بازنشانی کنید</string>
+    <string name="settings_space_activity_secret_message">Space مخفی در لیست Space ظاهر نمی شود. فقط با تایپ نام دقیق آن در نوار جستجو ، می توان به آن دسترسی داشت. نام آن قابل بازیابی نیست ، بنابراین فراموش نکنید!</string>
+    <string name="settings_space_activity_secret_title">راز Space</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
+
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">مخاطبین</string>
     <string name="share_activity_group_list">گروه ها</string>
     <string name="share_activity_title">اشتراک گذاری</string>
 
     <!-- ShowCallActivity -->
-    <string name="show_call_activity_code">کد \"click-to-call\".</string>
+    <string name="show_call_activity_code">کد "click-to-call".</string>
     <string name="show_call_activity_information_code">برای دریافت تماس های خارجی این کد را به اشتراک بگذارید.</string>
     <string name="show_call_activity_schedule_call">تماس برنامه ریزی شده</string>
     <string name="show_call_activity_schedule_from">از %1$s</string>
@@ -995,6 +1068,7 @@
     <string name="show_contact_activity_pending_message">این رابطه در حال ایجاد است. لطفا صبر کنید.</string>
     <string name="show_contact_activity_revoked">حذف شد</string>
     <string name="show_contact_activity_settings_coach_mark">تعریف کنید که مخاطب شما مجاز است در این رابطه با شما چه کاری انجام دهد.</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">ویدئو</string>
 
     <!-- ShowGroupActivity -->
@@ -1013,6 +1087,14 @@
     <string name="show_room_activity_invite_participants">از شرکت کنندگان دعوت کنید</string>
     <string name="show_room_activity_room_title">Room</string>
 
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">مدیریت</string>
+    <string name="show_space_fragment_move_message">برای جابجایی مخاطبین باید چندین "فضا" داشته باشید.</string>
+    <string name="show_space_fragment_secret_confirm">حالت \"راز\" را تأیید کنید</string>
+    <string name="show_space_fragment_secret_disabled_message">این Space منحصر به فرد را نمی توان به عنوان \"راز\" تعریف کرد. شما باید حداقل یک \"Space\" دیگر ایجاد کنید.</string>
+    <string name="show_space_fragment_secret_message">Spaces مخفی در لیست \"Spaces\" ظاهر نمی شود و تنها با تایپ نام آنها در نوار جستجو باز می شود. هرگز این نام را فراموش نکنید!</string>
+    <string name="show_space_fragment_secret_message_confirm">آیا هنوز می خواهید آن \"Space\" را \"راز\" بسازید؟</string>
+
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">تصویر</string>
     <string name="space_appearance_activity_background_message">پس زمینه مکالمات را با رنگ یا تصویر سفارشی کنید.</string>
@@ -1026,7 +1108,7 @@
     <string name="space_appearance_activity_container_text_peer_message">متن پیام دریافتی</string>
     <string name="space_appearance_activity_container_title">حباب ها</string>
     <string name="space_appearance_activity_default_value">مقدار پیش فرض</string>
-    <string name="space_appearance_activity_general_title">عمومی</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">رنگهای پیش فرض</string>
     <string name="space_appearance_activity_menu_enter_color">کد رنگ</string>
     <string name="space_appearance_activity_opacity">تیرگی</string>
@@ -1036,7 +1118,18 @@
     <string name="space_appearance_activity_theme">موضوع</string>
 
     <!-- SpacesActivity -->
+    <string name="spaces_activity_active_space">اکتیو Space</string>
+    <string name="spaces_activity_add_space">افزودن Space</string>
+    <string name="spaces_activity_create_new_space">ایجاد Space</string>
+    <string name="spaces_activity_current_space_action">فعال کنید</string>
+    <string name="spaces_activity_delete_default_message">شما نمی توانید پیش فرض Space را حذف کنید.</string>
+    <string name="spaces_activity_join_space">وارد کردن Space</string>
     <string name="spaces_activity_message">فضا جایی است که شخصیت‌های مختلف شما با حلقه‌های اجتماعی متعدد شما، از جمله محرمانه‌ترین حلقه‌ها، ملاقات می‌کنند.</string>
+    <string name="spaces_activity_move_contact_already_in_space">مخاطب در حال حاضر در این Space است.</string>
+    <string name="spaces_activity_move_group_already_in_space">گروه در حال حاضر در این Space قرار دارد.</string>
+    <string name="spaces_activity_move_group_no_profile"> برای انتقال گروه به Spaceی ، باید نمایه ای را ارائه دهید که نمایانگر شما در این گروه باشد. آیا می خواهید آن را تکمیل کنید؟</string>
+    <string name="spaces_activity_move_message">آیا مطمئن هستید که می خواهید گروه را جابجا کنید؟</string>
+    <string name="spaces_activity_permission_not_allowed">شما مجاز به انجام این عمل توسط مدیر Space نیستید.</string>
     <string name="spaces_activity_sample_business">کسب و کار</string>
     <string name="spaces_activity_sample_business_name">دکتر جان دو</string>
     <string name="spaces_activity_sample_family">خانواده</string>
@@ -1074,11 +1167,11 @@
     <string name="template_space_activity_template_title">قالب ها</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">از دوست نزدیک خود بخواهید که کد QR دعوت شما را با twinme اسکن کند یا روی کد دعوت خود ضربه بزنید تا آن را در کلیپ بورد کپی کنید.</string>
+    <string name="twincode_activity_message">" QR دعوت شما را با Skred اسکن کند یا روی کد دعوت ضربه بزنید تا آن را در کلیپ بورد کپی کنید."</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">آیا مطمئن هستید که می خواهید این کد \"انتقال تماس\" را حذف کنید؟</string>
-    <string name="transfert_call_activity_delete_message">این پیوند انتقال تماس حذف خواهد شد. تایید؟</string>
+    <string name="transfert_call_activity_delete_message">این پیوند \"انتقال تماس\" دیگر قابل استفاده نخواهد بود.</string>
     <string name="transfert_call_activity_gallery_message">این کد QR را برای انتقال تماس های تلفن همراه خود اسکن کنید.</string>
     <string name="transfert_call_activity_message">این کد را فوروارد کرده و URL آن را در مرورگری که می‌خواهید تماس‌های تلفن همراه خود را به آن منتقل کنید، نشانک کنید.</string>
     <string name="transfert_call_activity_reset_message">این عمل کد انتقال تماس فعلی را باطل می کند و یک کد جدید ایجاد می کند. تایید؟</string>
@@ -1108,13 +1201,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">با فشار دادن %1$s ، تأیید می کنم که خوانده ام و قبول می کنم:</string>
-    <string name="welcome_activity_next">بعد</string>
+    <string name="welcome_activity_enter">بعدی</string>
     <string name="welcome_activity_pass">پرش</string>
     <string name="welcome_activity_privacy_policy">سیاست حفظ حریم خصوصی</string>
     <string name="welcome_activity_start">شروع کنید</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">پیام‌رسانی و تماس‌های صوتی/تصویری با کیفیت بالا، محافظت از حریم خصوصی با طراحی.</string>
     <string name="welcome_activity_step2_message">ارتباطات امن "همتا به همتا": بدون هیچ اثری در ابر.</string>
     <string name="welcome_activity_step3_message">بدون شماره تلفن، بدون دفترچه آدرس، بدون شناسه کاربری: شما انتخاب می‌کنید که چگونه می‌خواهید شناسایی شوید بر اساس اینکه با چه کسی در ارتباط هستید.</string>
-    <string name="welcome_activity_terms_of_use">شرایط استفاده</string>
+    <string name="welcome_activity_terms_of_use">شرایط و ضوابط</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

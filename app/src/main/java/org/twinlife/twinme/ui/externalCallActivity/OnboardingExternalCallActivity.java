@@ -48,7 +48,9 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
 
     private final List<UIOnboarding> mUIOnboarding = new ArrayList<>();
 
+    private boolean mShowFirstPart = true;
     private boolean mFromSideMenu = false;
+    private boolean mCreateExternalCallEnable = false;
 
     //
     // Override TwinmeActivityImpl methods
@@ -60,7 +62,9 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
             Log.d(LOG_TAG, "onCreate: savedInstanceState=" + savedInstanceState);
         }
 
+        mShowFirstPart = getIntent().getBooleanExtra(Intents.INTENT_SHOW_FIRST_PART_ONBOARDING, true);
         mFromSideMenu = getIntent().getBooleanExtra(Intents.INTENT_FROM_SIDE_MENU, false);
+        mCreateExternalCallEnable = getIntent().getBooleanExtra(Intents.INTENT_CREATE_EXTERNAL_CALL_ENABLE, false);
         initOnboarding();
 
         super.onCreate(savedInstanceState);
@@ -80,13 +84,12 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
             Log.d(LOG_TAG, "onCreateExternalCallClick");
         }
 
-        if (!mFromSideMenu) {
-            Intent intent = new Intent();
-            setResult(RESULT_OK, intent);
-            finish();
-        } else {
+        if (mFromSideMenu) {
             animationClose();
+            return;
         }
+
+        startTemplate();
     }
 
     public void onDoNotShowAgainClick() {
@@ -96,7 +99,7 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
 
         getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.EXTERNAL_CALL, false);
 
-        finish();
+        startTemplate();
     }
 
     public boolean isFromSideMenu() {
@@ -247,10 +250,32 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
             Log.d(LOG_TAG, "initOnboarding");
         }
 
-        mUIOnboarding.add(new UIOnboarding(this, UIOnboarding.OnboardingType.PART_ONE, true));
+        if (mShowFirstPart) {
+            mUIOnboarding.add(new UIOnboarding(this, UIOnboarding.OnboardingType.PART_ONE, true));
+        }
+
         mUIOnboarding.add(new UIOnboarding(this, UIOnboarding.OnboardingType.PART_TWO, true));
         mUIOnboarding.add(new UIOnboarding(this, UIOnboarding.OnboardingType.PART_THREE, true));
         mUIOnboarding.add(new UIOnboarding(this, UIOnboarding.OnboardingType.PART_FOUR, false));
+    }
+
+    private void startTemplate() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startTemplate");
+        }
+
+        if (!mCreateExternalCallEnable) {
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.setClass(this, TemplateExternalCallActivity.class);
+        startActivity(intent);
+
+        finish();
     }
 
     private void setupOnboarding(int lineHeight) {

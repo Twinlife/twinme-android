@@ -89,7 +89,7 @@ public class AnnotationViewHolder extends RecyclerView.ViewHolder {
         float radius = ICON_HEIGHT * 0.5f * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable containerViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        containerViewBackground.getPaint().setColor(Design.GREY_ITEM_COLOR);
+        containerViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
         mContainerView.setBackground(containerViewBackground);
 
         mImageView = view.findViewById(R.id.base_item_activity_annotation_item_image_view);

@@ -6,6 +6,7 @@
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui;
@@ -49,14 +50,17 @@ import org.twinlife.twinme.glide.MediaInfoImageLoader;
 import org.twinlife.twinme.glide.MediaInfoVideoThumbnailLoader;
 import org.twinlife.twinme.glide.TwinlifeImageLoader;
 import org.twinlife.twinme.models.Profile;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.notificationCenter.NotificationCenterImpl;
 import org.twinlife.twinme.services.AdminService;
 import org.twinlife.twinme.calls.CallService;
 import org.twinlife.twinme.services.PeerService;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.EmojiSize;
 import org.twinlife.twinme.skin.FontSize;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.utils.AppStateInfo;
 import org.twinlife.twinme.utils.InCallInfo;
 import org.twinlife.twinme.utils.FileInfo;
@@ -70,7 +74,9 @@ import org.twinlife.twinme.utils.update.LastVersionImpl;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplicationImpl implements TwinmeApplication, JobService.Observer {
     private static final String LOG_TAG = "TwinmeApplicationImpl";
@@ -79,6 +85,8 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     private static final long CALL_QUALITY_MIN_DURATION = 5 * 60;
     private static final long CALL_QUALITY_ASK_FREQUENCY = 10;
     private static final long CALL_QUALITY_INTERVAL_DATE = 10 * 60 * 60 * 24;
+
+    private static final int SHOW_CLICK_TO_CALL_DESCRIPTION_MAX = 5;
 
     private Bitmap mAnonymousAvatar;
     private Bitmap mDefaultAvatar;
@@ -98,6 +106,8 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     private Date mAppBackgroundDate;
     private boolean mIsInBackground = true;
     private WeakReference<TwinmeActivityImpl> mCurrentActivity;
+
+    private boolean mShowLockScreen = false;
 
     private static WeakReference<TwinmeApplicationImpl> sInstance;
 
@@ -194,11 +204,6 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
 
         mNotificationCenter = new NotificationCenterImpl(this, this, twinmeContext);
         return mNotificationCenter;
-    }
-
-    @Override
-    public boolean isFeatureSubscribed(@NonNull Feature feature) {
-        return false;
     }
 
     @Override
@@ -426,7 +431,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             Log.d(LOG_TAG, "showUpgradeScreen");
         }
 
-        if (!canShowUpgradeScreen()) {
+        if (isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL) || !canShowUpgradeScreen()) {
             return false;
         }
 
@@ -434,7 +439,6 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         long threeDay = 3 * oneDay;
         long fifteenDay = 15 * oneDay;
         long oneWeek = 7 * oneDay;
-        long twoWeek = 2 * oneWeek;
 
         long timeInterval = new Date().getTime() / 1000;
 
@@ -442,7 +446,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         long firstShowUpgradeScreen = Settings.firstShowUpgradeScreen.getLong();
         if (firstInstallation > 0 && firstShowUpgradeScreen == 0) {
             long diffTimeSinceFirstInstallation = timeInterval - firstInstallation;
-            if (diffTimeSinceFirstInstallation < twoWeek) {
+            if (diffTimeSinceFirstInstallation < oneDay) {
                 return false;
             }
         }
@@ -472,25 +476,6 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
 
         return showScreen;
     }
-
-    @Override
-    public boolean doNotShowUpgradeScreen() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "doNotShowUpgradeScreen");
-        }
-
-        return Settings.doNotShowUpgradeScreen.getBoolean();
-    }
-
-    @Override
-    public void setDoNotShowUpgradeScreen() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "setDoNotShowUpgradeScreen");
-        }
-
-        Settings.doNotShowUpgradeScreen.setBoolean(true).save();
-    }
-
     @Override
     public boolean canShowUpgradeScreen() {
         if (DEBUG) {
@@ -596,6 +581,12 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             Log.d(LOG_TAG, "displayMode");
         }
 
+        if (mAdminService != null && mAdminService.getCurrentSpace() != null && !mAdminService.getCurrentSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+            return  Integer.parseInt(mAdminService.getCurrentSpace().getSpaceSettings().getString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, Settings.displayMode.getInt() + ""));
+        } else if (getTwinmeContext() != null) {
+            return  Integer.parseInt(getTwinmeContext().getDefaultSpaceSettings().getString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, Settings.displayMode.getInt() + ""));
+        }
+
         return Settings.displayMode.getInt();
     }
 
@@ -605,7 +596,11 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             Log.d(LOG_TAG, "messageCopyAllowed");
         }
 
-        // Twinme has no space, use the application settings.
+        Space space = mAdminService.getCurrentSpace();
+        if (space != null) {
+            return space.messageCopyAllowed();
+        }
+
         return Settings.messageCopyAllowed.getBoolean();
     }
 
@@ -615,7 +610,11 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             Log.d(LOG_TAG, "fileCopyAllowed");
         }
 
-        // Twinme has no space, use the application settings.
+        Space space = mAdminService.getCurrentSpace();
+        if (space != null) {
+            return space.fileCopyAllowed();
+        }
+
         return Settings.fileCopyAllowed.getBoolean();
     }
 
@@ -790,6 +789,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public boolean screenLocked() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "screenLocked");
+        }
+
+        return Settings.privacyActivityScreenLock.getBoolean();
+    }
+
+    @Override
     public boolean isVideoInFitMode() {
         if (DEBUG) {
             Log.d(LOG_TAG, "isVideoInFitMode");
@@ -864,6 +872,88 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public void setScreenLocked(boolean lock) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setScreenLocked: lock=" + lock);
+        }
+
+        Settings.privacyActivityScreenLock.setBoolean(lock).save();
+    }
+
+    @Override
+    public int screenLockTimeout() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "screenLockTimeout");
+        }
+
+        return Settings.privacyScreenLockTimeout.getInt();
+    }
+
+    @Override
+    public void updateScreenLockTimeout(int time) {
+
+        Settings.privacyScreenLockTimeout.setInt(time).save();
+    }
+
+    @Override
+    public boolean lastScreenHidden() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "lastScreenHidden");
+        }
+
+        return Settings.privacyHideLastScreen.getBoolean();
+    }
+
+    @Override
+    public void setLastScreenHidden(boolean hide) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setLastScreenHidden: hide=" + hide);
+        }
+
+        Settings.privacyHideLastScreen.setBoolean(hide).save();
+    }
+
+    @Override
+    public void setAppBackgroundDate(Date date) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setAppBackgroundDate: date=" + date);
+        }
+
+        mAppBackgroundDate = date;
+    }
+
+    @Override
+    public boolean showLockScreen() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showLockScreen");
+        }
+
+        return mShowLockScreen;
+    }
+
+    @Override
+    public void unlockScreen() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "unlockScreen");
+        }
+
+        mShowLockScreen = false;
+        mAppBackgroundDate = null;
+    }
+
+    //
+    //  Ephemeral Message
+    //
+
+    @Override
+    public int ephemeralExpireTimeout(){
+        if (DEBUG) {
+            Log.d(LOG_TAG, "ephemeralExpireTimeout");
+        }
+
+        return Settings.ephemeralMessageExpireTimeout.getInt();
+    }
+
     public void onConnectionStatusChange(@NonNull ConnectionStatus connectionStatus) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onConnectionStatusChange " + connectionStatus);
@@ -911,6 +1001,10 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         sInstance = new WeakReference<>(this);
+
+        mAnonymousAvatar = getScaledAvatar(getResources(), R.drawable.anonymous_avatar);
+        mDefaultAvatar = getScaledAvatar(getResources(), R.drawable.default_avatar);
+        mDefaultGroupAvatar = getScaledAvatar(getResources(), R.drawable.anonymous_group_avatar);
 
         try (InputStream is = getResources().openRawResource(R.raw.tool)) {
             setTwinlifeConfiguration(new Configuration(), is);
@@ -987,6 +1081,22 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
 
         // We are now in foreground: we can stop the peer service since we don't need it anymore.
         PeerService.forceStop(this);
+
+        if (!screenLocked()) {
+            mShowLockScreen = false;
+            return;
+        }
+
+        if (mAppBackgroundDate != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(mAppBackgroundDate);
+            calendar.add(Calendar.SECOND, screenLockTimeout());
+
+            Date lockDate = calendar.getTime();
+            mShowLockScreen = lockDate.before(new Date());
+        } else {
+            mShowLockScreen = true;
+        }
     }
 
     @Override
@@ -1268,6 +1378,33 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     //
+    // Invitation subscription
+    //
+    @Override
+    public String getInvitationSubscriptionImage() {
+
+        return Settings.premiumSubscriptionInvitationImage.getString();
+    }
+
+    @Override
+    public void setInvitationSubscriptionImage(String image) {
+
+        Settings.premiumSubscriptionInvitationImage.setString(image).save();
+    }
+
+    @Override
+    public String getInvitationSubscriptionTwincode() {
+
+        return Settings.premiumSubscriptionInvitationTwincode.getString();
+    }
+
+    @Override
+    public void setInvitationSubscriptionTwincode(String twincode) {
+
+        Settings.premiumSubscriptionInvitationTwincode.setString(twincode).save();
+    }
+
+    //
     // Coach Mark
     //
 
@@ -1293,6 +1430,27 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     public void hideCoachMark(CoachMark.CoachMarkTag coachMarkTag) {
 
         mCoachMarkManager.hideCoachMark(coachMarkTag);
+    }
+
+    //
+    // current space
+    //
+    @Override
+    public boolean isCurrentSpace(UUID spaceId) {
+
+        return mAdminService.getCurrentSpace() != null && mAdminService.getCurrentSpace().getId().equals(spaceId);
+    }
+
+    @Override
+    public boolean hasCurrentSpace() {
+
+        return mAdminService.getCurrentSpace() != null;
+    }
+
+    @Override
+    public Space getCurrentSpace() {
+
+        return mAdminService.getCurrentSpace();
     }
 
     //
@@ -1325,6 +1483,46 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         Settings.showGroupCallAnimation.setBoolean(false).save();
+    }
+
+    //
+    // Click to call description
+    //
+    @Override
+    public boolean showClickToCallDescription() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showClickToCallDescription");
+        }
+
+        int showClickToCallDescriptionCount = Settings.showClickToCallDescriptionCount.getInt();
+        if (showClickToCallDescriptionCount < SHOW_CLICK_TO_CALL_DESCRIPTION_MAX) {
+            Settings.showClickToCallDescriptionCount.setInt(showClickToCallDescriptionCount + 1).save();
+            return true;
+        }
+
+        return false;
+    }
+
+    //
+    // Space description
+    //
+    @Override
+    public boolean showSpaceDescription() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showSpaceDescription");
+        }
+
+        return Settings.showSpaceDescription.getBoolean();
+    }
+
+    @SuppressLint("ApplySharedPref")
+    @Override
+    public void hideSpaceDescription() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hideSpaceDescription");
+        }
+
+        Settings.showSpaceDescription.setBoolean(false).save();
     }
 
     //

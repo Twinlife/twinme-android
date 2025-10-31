@@ -46,18 +46,17 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         invitationContainer.setBackground(mGradientDrawable);
-        mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
         invitationContainer.setClickable(false);
 
         mNameView = view.findViewById(R.id.base_item_activity_peer_invitation_contact_item_name);
         Design.updateTextFont(mNameView, Design.FONT_MEDIUM26);
-        mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mNameView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mAvatarView = view.findViewById(R.id.base_item_activity_peer_invitation_contact_item_avatar_view);
 
         mInvitationView = view.findViewById(R.id.base_item_activity_peer_invitation_contact_item_invitation_view);
         Design.updateTextFont(mInvitationView, Design.FONT_REGULAR26);
-        mInvitationView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mInvitationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         if (allowClick) {
             invitationContainer.setOnClickListener(v -> {
@@ -97,6 +96,10 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
         }
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getPeerMessageBorderColor());
+        }
 
         mNameView.setText(invitation.getName());
         mInvitationView.setText(String.format(getString(R.string.accept_invitation_activity_message), invitation.getName()));

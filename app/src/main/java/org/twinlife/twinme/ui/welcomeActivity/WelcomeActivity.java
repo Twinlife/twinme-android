@@ -12,11 +12,7 @@
 package org.twinlife.twinme.ui.welcomeActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Layout;
@@ -54,11 +50,6 @@ import java.util.regex.Pattern;
 public class WelcomeActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "WelcomeActivity";
     private static final boolean DEBUG = false;
-
-    private static final float DESIGN_ITEM_VIEW_HEIGHT = 860f;
-    private static final float DESIGN_NEXT_VIEW_HEIGHT = 60f;
-    private static final float DESIGN_NEXT_VIEW_MARGIN = 30f;
-    private static int ITEM_VIEW_HEIGHT;
 
     private final List<UIWelcome> mUIWelcome = new ArrayList<>();
 
@@ -238,7 +229,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
 
         mNextTextView = findViewById(R.id.welcome_activity_next_view);
         Design.updateTextFont(mNextTextView, Design.FONT_BOLD34);
-        mNextTextView.setTextColor(Color.WHITE);
+        mNextTextView.setTextColor(Design.getMainStyle());
 
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNextTextView.getLayoutParams();
         marginLayoutParams.leftMargin = Design.BUTTON_MARGIN;
@@ -246,22 +237,6 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
 
         mNextClickableView = findViewById(R.id.welcome_activity_next_clickable_view);
         mNextClickableView.setOnClickListener(v -> onNextRecyclerClick());
-
-        layoutParams = mNextClickableView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_NEXT_VIEW_HEIGHT * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mNextClickableView.getLayoutParams();
-        marginLayoutParams.rightMargin = (int) (DESIGN_NEXT_VIEW_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.setMarginEnd((int) (DESIGN_NEXT_VIEW_MARGIN * Design.WIDTH_RATIO));
-
-        float radius = DESIGN_NEXT_VIEW_HEIGHT * Design.HEIGHT_RATIO * 0.5f * Resources.getSystem().getDisplayMetrics().density;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-        ShapeDrawable createViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        createViewBackground.getPaint().setColor(Design.getMainStyle());
-        mNextClickableView.setBackground(createViewBackground);
-
-        layoutParams = mNextClickableView.getLayoutParams();
-        layoutParams.height = Design.BUTTON_HEIGHT;
 
         mMessageView = findViewById(R.id.welcome_activity_message_view);
         Design.updateTextFont(mMessageView, Design.FONT_REGULAR28);
@@ -399,7 +374,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
                 mMessageView.setText(messageText);
             }
         } else {
-            mNextTextView.setText(getString(R.string.welcome_activity_next));
+            mNextTextView.setText(getString(R.string.welcome_activity_enter));
             mMessageView.setVisibility(View.GONE);
             String messageText = String.format(getString(R.string.welcome_activity_accept), getString(R.string.welcome_activity_pass)) + " " + getResources().getString(R.string.welcome_activity_terms_of_use) + " - " + getResources().getString(R.string.welcome_activity_privacy_policy);
             mMessageView.setText(messageText);
@@ -409,15 +384,6 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
 
         mDotsAdapter.setCurrentPosition(mCurrentPosition);
         addLinks();
-    }
-
-    @Override
-    public void setupDesign() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "setupDesign");
-        }
-
-        ITEM_VIEW_HEIGHT = (int) (DESIGN_ITEM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
     }
 
     private void backPressed() {

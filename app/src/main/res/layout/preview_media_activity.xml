@@ -127,6 +127,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
+        android:id="@+id/privacy_activity_menu_select_value_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ProgressBar
         android:id="@+id/preview_activity_progress_bar"
         style="@android:style/Widget.ProgressBar"

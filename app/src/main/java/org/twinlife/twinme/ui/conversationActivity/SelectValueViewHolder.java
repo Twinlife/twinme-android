@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.conversationActivity;
 
+import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -26,6 +27,8 @@ public class SelectValueViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView mTextView;
 
+    private boolean mForceDarkMode = false;
+
     public SelectValueViewHolder(@NonNull View view) {
 
         super(view);
@@ -40,29 +43,36 @@ public class SelectValueViewHolder extends RecyclerView.ViewHolder {
         mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
     }
 
-    public void onBind(@Nullable String title, String value, boolean isEnable, int backgroundColor) {
+    public void onBind(@Nullable String title, String value, boolean forceDarkMode, int backgroundColor) {
+
+        mForceDarkMode = forceDarkMode;
+
+        int colorTitle = Design.FONT_COLOR_DEFAULT;
+        if (forceDarkMode) {
+            colorTitle = Color.WHITE;
+        }
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 
         if (title != null) {
             spannableStringBuilder.append(title);
-            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(colorTitle), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.append("\n");
         }
 
         int startSubTitle = spannableStringBuilder.length();
         spannableStringBuilder.append(value);
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(title != null ? Design.FONT_COLOR_GREY : Design.FONT_COLOR_DEFAULT), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(title != null ? Design.FONT_COLOR_GREY : colorTitle), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         mTextView.setText(spannableStringBuilder);
 
-        if (isEnable) {
-            mTextView.setAlpha(1.0f);
-        } else {
-            mTextView.setAlpha(0.5f);
-        }
-
         itemView.setBackgroundColor(backgroundColor);
+
+        if (mForceDarkMode) {
+            itemView.setBackgroundColor(Color.rgb(72,72,72));
+        } else {
+            itemView.setBackgroundColor(backgroundColor);
+        }
 
         updateFont();
         updateColor();
@@ -75,6 +85,10 @@ public class SelectValueViewHolder extends RecyclerView.ViewHolder {
 
     private void updateColor() {
 
-        mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        if (mForceDarkMode) {
+            mTextView.setTextColor(Color.WHITE);
+        } else {
+            mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        }
     }
 }

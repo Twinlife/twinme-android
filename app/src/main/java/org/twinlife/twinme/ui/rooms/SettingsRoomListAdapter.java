@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.RoomConfig;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.settingsActivity.PersonalizationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
@@ -199,7 +200,7 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
                     break;
             }
 
-            personalizationViewHolder.onBind(title, isSelected);
+            personalizationViewHolder.onBind(title, isSelected, Design.getMainStyle());
         } else {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
 

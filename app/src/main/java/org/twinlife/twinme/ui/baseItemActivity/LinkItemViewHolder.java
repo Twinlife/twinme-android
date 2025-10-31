@@ -329,11 +329,17 @@ class LinkItemViewHolder extends ItemViewHolder {
         } catch (Exception ex) {
             // Possible exception: android.webkit.WebViewFactory.MissingWebViewPackageException when there is no WebView implementation.
         }
-        mTextView.setLinkTextColor(Color.WHITE);
+        mTextView.setLinkTextColor(Color.BLACK);
+        mTextView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         // Compute the corner radii only once!
         final float[] cornerRadii = getCornerRadii();
         mGradientDrawable.setCornerRadii(cornerRadii);
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+        }
+
         mReplyGradientDrawable.setCornerRadii(cornerRadii);
         mReplyToImageContentGradientDrawable.setCornerRadii(cornerRadii);
 

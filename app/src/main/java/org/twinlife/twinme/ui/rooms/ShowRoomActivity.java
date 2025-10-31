@@ -17,6 +17,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinme.models.Contact;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.ShowRoomService;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
@@ -48,10 +50,13 @@ import org.twinlife.twinme.ui.cleanupActivity.TypeCleanUpActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.utils.CircularImageView;
+import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -59,7 +64,9 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
     private static final String LOG_TAG = "ShowRoomActivity";
     private static final boolean DEBUG = false;
 
+    private static final int DESIGN_PROFILE_NAME_COLOR = Color.rgb(143, 150, 164);
     private static final int DESIGN_ACTION_VIEW_TOP_MARGIN = 80;
+    private static final float DESIGN_SPACE_ROUND_CORNER_RADIUS_DP = 14f;
 
     private static int AVATAR_OVER_SIZE;
     private static int AVATAR_MAX_SIZE;
@@ -69,6 +76,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
     private View mBackClickableView;
     private ImageView mAvatarView;
     private View mContentView;
+    private View mSpaceView;
     private View mAdminView;
     private TextView mNameView;
     private TextView mIdentityTextView;
@@ -76,6 +84,12 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
     private View mFallbackView;
     private View mAudioClickableView;
     private View mVideoClickableView;
+    private RoundedImageView mSpaceAvatarView;
+    private View mNoSpaceAvatarView;
+    private TextView mNoSpaceAvatarTextView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
+    private TextView mSpaceTextView;
+    private TextView mProfileTextView;
     private ShowMemberListAdapter mMemberListAdapter;
 
     private ScrollView mScrollView;
@@ -195,6 +209,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
                 mIdentityAvatar = identityAvatar;
 
                 updateContact();
+                checkSpacePermission();
             });
         } else {
             mFallbackView.setVisibility(View.VISIBLE);
@@ -216,6 +231,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             mIdentityAvatar = getTwinmeApplication().getAnonymousAvatar();
 
             updateContact();
+            checkSpacePermission();
         }
     }
 
@@ -265,6 +281,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
                 mIdentityAvatar = identityAvatar;
 
                 updateContact();
+                checkSpacePermission();
             });
         } else {
             mFallbackView.setVisibility(View.VISIBLE);
@@ -286,6 +303,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             mIdentityAvatar = getTwinmeApplication().getAnonymousAvatar();
 
             updateContact();
+            checkSpacePermission();
         }
     }
 
@@ -552,6 +570,37 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
         Design.updateTextFont(lastCallsTextView, Design.FONT_REGULAR34);
         lastCallsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
+        mSpaceView = findViewById(R.id.show_room_activity_space_view);
+        mSpaceView.setOnClickListener(view -> onMoveSpaceClick());
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        mSpaceAvatarView = findViewById(R.id.show_room_activity_space_avatar_view);
+
+        mNoSpaceAvatarView = findViewById(R.id.show_room_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
+
+        mNoSpaceAvatarTextView = findViewById(R.id.show_room_activity_no_space_avatar_text_view);
+        mNoSpaceAvatarTextView.setTypeface(Design.FONT_BOLD44.typeface);
+        mNoSpaceAvatarTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD44.size);
+        mNoSpaceAvatarTextView.setTextColor(Color.WHITE);
+
+        mSpaceTextView = findViewById(R.id.show_room_activity_space_name_view);
+        mSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
+        mSpaceTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM34.size);
+        mSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileTextView = findViewById(R.id.show_room_activity_profile_name_view);
+        mProfileTextView.setTypeface(Design.FONT_MEDIUM32.typeface);
+        mProfileTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
+        mProfileTextView.setTextColor(DESIGN_PROFILE_NAME_COLOR);
+
         TextView conversationsTitleView = findViewById(R.id.show_room_activity_conversations_title_view);
         Design.updateTextFont(conversationsTitleView, Design.FONT_BOLD28);
         conversationsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -667,6 +716,34 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
         }
     }
 
+    private void onMoveSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onMoveSpaceClick");
+        }
+
+        if (!mRoom.getSpace().hasPermission(Space.Permission.MOVE_CONTACT)) {
+            showAlertMessageView(R.id.show_room_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivity(intent);
+    }
+
+    private void onAdminClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onAdminClick");
+        }
+
+        if (mRoom != null && mRoom.getCapabilities().hasAdmin()) {
+            startActivity(AdminRoomActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
+        }
+    }
+
     private void onAudioClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onAudioClick");
@@ -683,22 +760,18 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
         }
     }
 
-    private void onAdminClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onAdminClick");
-        }
-
-        if (mRoom != null && mRoom.getCapabilities().hasAdmin()) {
-            startActivity(AdminRoomActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
-        }
-    }
-
     private void onEditIdentityClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onEditIdentityClick");
         }
 
         if (mRoom != null && mRoom.hasPrivatePeer()) {
+
+            if (!mRoom.getSpace().hasPermission(Space.Permission.UPDATE_IDENTITY)) {
+                showAlertMessageView(R.id.show_room_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+                return;
+            }
+
             startActivity(EditIdentityActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
         }
     }
@@ -769,6 +842,38 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             mIdentityTextView.setText(mIdentityName);
             mNameView.setText(mContactName);
             mIdentityAvatarView.setImage(this, null, new CircularImageDescriptor(mIdentityAvatar, 0.5f, 0.5f, 0.5f));
+            if (mRoom.getSpace() != null) {
+                mSpaceTextView.setText(mRoom.getSpace().getName());
+
+                if (mRoom.getSpace().getProfile() != null) {
+                    mProfileTextView.setText(mRoom.getSpace().getProfile().getName());
+                }
+
+                float corner = DESIGN_SPACE_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+                float[] radii = new float[18];
+                Arrays.fill(radii, corner);
+
+                if (mRoom.getSpace().hasSpaceAvatar()) {
+                    mShowRoomService.getSpaceImage(mRoom.getSpace(), (Bitmap spaceAvatar) -> {
+                        mSpaceAvatarView.setVisibility(View.VISIBLE);
+                        mNoSpaceAvatarView.setVisibility(View.GONE);
+                        mNoSpaceAvatarTextView.setVisibility(View.GONE);
+                        mSpaceAvatarView.setImageBitmap(spaceAvatar, radii);
+                    });
+                } else {
+                    mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+                    mSpaceAvatarView.setVisibility(View.GONE);
+                    mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+                    mNoSpaceAvatarTextView.setVisibility(View.VISIBLE);
+
+                    String name = mRoom.getSpace().getName();
+                    if (!name.isEmpty()) {
+                        mNoSpaceAvatarTextView.setText(name.substring(0, 1).toUpperCase());
+                    }
+                }
+
+                mNoSpaceAvatarGradientDrawable.setColor(Design.getDefaultColor(mRoom.getSpace().getStyle()));
+            }
 
             if (getTwinmeApplication().inCallInfo() != null || !mRoom.getCapabilities().hasAudio()) {
                 mAudioClickableView.setAlpha(0.5f);
@@ -814,6 +919,30 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             mAvatarView.requestLayout();
 
             mAvatarLastSize = avatarViewSize;
+        }
+    }
+
+    private void checkSpacePermission() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "checkSpacePermission");
+        }
+
+        if (!mRoom.getSpace().hasPermission(Space.Permission.MOVE_CONTACT)) {
+            mSpaceView.setAlpha(.5f);
+        } else {
+            mSpaceView.setAlpha(1.f);
+        }
+
+        if (getTwinmeApplication().inCallInfo() != null || !mRoom.getCapabilities().hasAudio()) {
+            mAudioClickableView.setAlpha(0.5f);
+        } else {
+            mAudioClickableView.setAlpha(1f);
+        }
+
+        if (getTwinmeApplication().inCallInfo() != null || !mRoom.getCapabilities().hasVideo()) {
+            mVideoClickableView.setAlpha(0.5f);
+        } else {
+            mVideoClickableView.setAlpha(1f);
         }
     }
 

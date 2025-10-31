@@ -11,6 +11,7 @@ package org.twinlife.twinme.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -48,6 +49,7 @@ import org.twinlife.twinme.ui.baseItemActivity.InfoItemListAdapter;
 import org.twinlife.twinme.ui.baseItemActivity.InvitationContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.InvitationItem;
 import org.twinlife.twinme.ui.baseItemActivity.Item;
+import org.twinlife.twinme.ui.baseItemActivity.LocationItem;
 import org.twinlife.twinme.ui.baseItemActivity.MessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerAudioItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerCallItem;
@@ -56,10 +58,13 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerFileItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerImageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationItem;
+import org.twinlife.twinme.ui.baseItemActivity.PeerLocationItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerMessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
 import org.twinlife.twinme.ui.baseItemActivity.TimeItem;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
+import org.twinlife.twinme.ui.spaces.CustomAppearance;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
 import org.twinlife.twinme.ui.conversationActivity.UIReaction;
 import org.twinlife.twinme.utils.async.Loader;
@@ -84,14 +89,16 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     private Contact mContact;
     private Group mGroup;
     private Bitmap mContactAvatar;
+    private final Map<UUID, GroupMember> mGroupMembers = new HashMap<>();
     private String mResetConversationName;
     @Nullable
     private Manager<Item> mAsyncItemLoader;
     private boolean mIsPeerItem;
     private boolean mCanUpdateCopy = true;
 
+    @Nullable
+    private CustomAppearance mCustomAppearance;
     private Bitmap mIdentityAvatar;
-    private final Map<UUID, Originator> mGroupMembers = new HashMap<>();
 
     //
     // Override TwinmeActivityImpl methods
@@ -207,6 +214,14 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                     }
                     break;
 
+                case GEOLOCATION_DESCRIPTOR:
+                    if (mIsPeerItem) {
+                        mItem = new PeerLocationItem((ConversationService.GeolocationDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                    } else {
+                        mItem = new LocationItem((ConversationService.GeolocationDescriptor) descriptor, descriptor.getReplyToDescriptor());
+		    }
+	            break;
+
                 case CLEAR_DESCRIPTOR:
                     if (mIsPeerItem) {
                         mItem = new PeerClearItem((ConversationService.ClearDescriptor) descriptor);
@@ -250,6 +265,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                 mAvatar = getAnonymousAvatar();
             }
 
+            if (contact.getSpace() == null || contact.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+                mCustomAppearance = new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings());
+            } else if (contact.getSpace() != null) {
+                mCustomAppearance = new CustomAppearance(this, contact.getSpace().getSpaceSettings());
+            }
+
             updateViews();
             updateAnnotations();
         });
@@ -267,6 +288,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             mAvatar = getAnonymousAvatar();
         }
 
+        if (contact.getSpace() == null || contact.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+            mCustomAppearance = new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings());
+        } else if (contact.getSpace() != null) {
+            mCustomAppearance = new CustomAppearance(this, contact.getSpace().getSpaceSettings());
+        }
+
         updateViews();
     }
 
@@ -277,6 +304,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         }
 
         mAvatar = getAnonymousAvatar();
+        mCustomAppearance = new CustomAppearance();
 
         updateViews();
     }
@@ -292,6 +320,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             mAvatar = getTwinmeApplication().getDefaultGroupAvatar();
         }
 
+        if (group.getSpace() == null || group.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+            mCustomAppearance = new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings());
+        } else if (group.getSpace() != null) {
+            mCustomAppearance = new CustomAppearance(this, group.getSpace().getSpaceSettings());
+        }
+
         updateViews();
     }
 
@@ -302,6 +336,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         }
 
         mAvatar = getTwinmeApplication().getDefaultGroupAvatar();
+        mCustomAppearance = new CustomAppearance();
 
         updateViews();
     }
@@ -366,6 +401,41 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             avatarConsumer.accept(mContactAvatar);
         }
     }
+    
+    /**
+     * Get the avatar picture to be used for the given peer.
+     * <p>
+     * When the peer twincode is null, use the contact avatar.
+     * <p>
+     * For a normal conversation, this operation always returns the contact avatar.
+     * For a group conversation, we return the group member avatar.
+     *
+     * @param peerTwincodeOutboundId the peer twincode to get the picture.
+     * @param avatarConsumer the consumer which will be called with the avatar, or null if none is found.
+     */
+    @Override
+    public void getMapAvatar(@Nullable UUID peerTwincodeOutboundId, @NonNull TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getMapAvatar: peerTwincodeOutboundId=" + peerTwincodeOutboundId);
+        }
+
+        if (peerTwincodeOutboundId == null) {
+            if (isGroupConversation() && mGroup != null) {
+                mInfoItemService.getImage(mGroup.getCurrentMember(), avatarConsumer);
+            } else {
+                avatarConsumer.accept(mContactAvatar);
+            }
+        } else {
+            GroupMember member = mGroupMembers.get(peerTwincodeOutboundId);
+            if (member != null) {
+                mInfoItemService.getImage(member);
+            } else if (isGroupConversation() && mGroup != null) {
+                mInfoItemService.getImage(mGroup.getCurrentMember(), avatarConsumer);
+            } else {
+                avatarConsumer.accept(mContactAvatar);
+            }
+        }
+    }
 
     @Override
     public void onGetGroup(@NonNull Group group, @NonNull List<GroupMember> groupMembers,
@@ -408,7 +478,6 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
         updateAnnotations();
     }
-
 
     @Nullable
     @Override
@@ -545,10 +614,25 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public void saveGeolocationMap(@NonNull Uri path, @NonNull DescriptorId descriptorId) {
+
+    }
+
+    @Override
     @NonNull
     public TextStyle getMessageFont() {
 
         return Design.FONT_REGULAR32;
+    }
+
+    @Override
+    @NonNull
+    public CustomAppearance getCustomAppearance() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getCustomAppearance");
+        }
+
+        return mCustomAppearance == null ? new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings()) : mCustomAppearance;
     }
 
     //

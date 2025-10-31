@@ -10,6 +10,7 @@
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,14 +56,16 @@ class InvitationItemViewHolder extends ItemViewHolder {
 
         mInvitationView = view.findViewById(R.id.base_item_activity_invitation_item_invitation_view);
         Design.updateTextFont(mInvitationView, Design.FONT_REGULAR26);
+        mInvitationView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mGroupNameView = view.findViewById(R.id.base_item_activity_invitation_item_group_name);
         Design.updateTextFont(mGroupNameView, Design.FONT_MEDIUM26);
+        mGroupNameView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mInvitationAvatarView = view.findViewById(R.id.base_item_activity_invitation_avatar_view);
 
         mNoAvatarView = view.findViewById(R.id.base_item_activity_invitation_no_avatar_view);
-        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        mNoAvatarView.setColor(Color.parseColor(Design.DEFAULT_COLOR));
 
         mDeleteView = view.findViewById(R.id.base_item_activity_invitation_item_delete_view);
 
@@ -104,12 +107,19 @@ class InvitationItemViewHolder extends ItemViewHolder {
         if (avatar != null) {
             if (avatar.equals(getBaseItemActivity().getTwinmeApplication().getDefaultGroupAvatar())) {
                 mNoAvatarView.setVisibility(View.VISIBLE);
+                mInvitationAvatarView.setColorFilter(Color.WHITE);
+            } else {
+                mInvitationAvatarView.setColorFilter(Color.TRANSPARENT);
             }
             mInvitationAvatarView.setImage(mInvitationAvatarView.getContext(), null,
                     new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
         }
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+        }
 
         mGroupNameView.setText(invitation.getGroupName());
 

@@ -24,6 +24,8 @@
     <color name="white_color">#ffffff</color>
     <color name="black_color">#000000</color>
     <color name="font_default_color">#2c2c2c</color>
+    <color name="light_background">#80ffffff</color>
+    <color name="black90PercentAlpha">#E6000000</color>
     <color name="background_light_grey_color">#f9f9f9</color>
     <color name="background_grey_color">#efefef</color>
     <color name="background_color_white_opacity_85">#d9ffffff</color>
@@ -36,7 +38,7 @@
     <color name="toolbar_icon_color">#d8d8d8</color>
     <color name="edit_avatar_background_color">#f3f3f3</color>
     <color name="edit_avatar_image_color">#c8c8c8</color>
-    <color name="conversation_background_color">#ffffff</color>
+    <color name="conversation_background_color">#efefef</color>
     <color name="conversation_overlay_color">#e6ffffff</color>
     <color name="conversation_overlay_color_android_31">#ccffffff</color>
     <color name="menu_reaction_background_color">#000000</color>
@@ -69,4 +71,7 @@
 
     <color name="qrcode_laser">#ffcc0000</color> <!-- Android standard ICS color -->
     <color name="qrcode_result_points">#c099cc00</color>
+
+    <!-- Color for Android 12 imposed splash screen -->
+    <color name="skred_color">#fe4544</color>
 </resources>

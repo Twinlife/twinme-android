@@ -75,6 +75,8 @@ class BaseItemViewHolder extends RecyclerView.ViewHolder {
     private static final float DESIGN_REPLY_IMAGE_ITEM_WIDTH_MARGIN = 28f;
     private static final float DESIGN_FILE_ITEM_HEIGHT_PADDING = 20f;
     private static final float DESIGN_FILE_ITEM_WIDTH_PADDING = 20f;
+    private static final float DESIGN_LOCATION_ITEM_MAX_HEIGHT = 342f;
+    private static final float DESIGN_LOCATION_ITEM_MAX_WIDTH = 588f;
     private static final float DESIGN_OVERLAY_DEFAULT_HEIGHT = 10f;
     private static final float DESIGN_LINK_IMAGE_MAX_HEIGHT = 600f;
     private static final float DESIGN_LINK_IMAGE_MAX_WIDTH = 400f;
@@ -109,6 +111,8 @@ class BaseItemViewHolder extends RecyclerView.ViewHolder {
     static final int REPLY_IMAGE_WIDTH_MARGIN;
     static final int FILE_ITEM_HEIGHT_PADDING;
     static final int FILE_ITEM_WIDTH_PADDING;
+    static final int LOCATION_ITEM_MAX_HEIGHT;
+    static final int LOCATION_ITEM_MAX_WIDTH;
     static final int OVERLAY_DEFAULT_HEIGHT;
     static final int LINK_IMAGE_MAX_HEIGHT;
     static final int LINK_IMAGE_MAX_WIDTH;
@@ -140,6 +144,8 @@ class BaseItemViewHolder extends RecyclerView.ViewHolder {
         REPLY_IMAGE_WIDTH_MARGIN = (int) (DESIGN_REPLY_IMAGE_ITEM_WIDTH_MARGIN * Design.WIDTH_RATIO);
         FILE_ITEM_HEIGHT_PADDING = (int) (DESIGN_FILE_ITEM_HEIGHT_PADDING * Design.HEIGHT_RATIO);
         FILE_ITEM_WIDTH_PADDING = (int) (DESIGN_FILE_ITEM_WIDTH_PADDING * Design.WIDTH_RATIO);
+        LOCATION_ITEM_MAX_HEIGHT = (int) (DESIGN_LOCATION_ITEM_MAX_HEIGHT * Design.WIDTH_RATIO);
+        LOCATION_ITEM_MAX_WIDTH = (int) (DESIGN_LOCATION_ITEM_MAX_WIDTH * Design.WIDTH_RATIO);
         OVERLAY_DEFAULT_HEIGHT = (int) (DESIGN_OVERLAY_DEFAULT_HEIGHT * Design.HEIGHT_RATIO);
         LINK_IMAGE_MAX_WIDTH = (int) (DESIGN_LINK_IMAGE_MAX_WIDTH * Design.WIDTH_RATIO);
         LINK_IMAGE_MAX_HEIGHT = (int) (DESIGN_LINK_IMAGE_MAX_HEIGHT * Design.HEIGHT_RATIO);

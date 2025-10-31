@@ -47,6 +47,28 @@ public class DeleteConfirmView extends AbstractConfirmView {
         }
     }
 
+    public void hideAvatar() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hideAvatar");
+        }
+
+        if (mAvatarView != null) {
+            mAvatarView.setVisibility(GONE);
+        }
+
+        if (mIconImageView != null) {
+            mIconImageView.setVisibility(GONE);
+        }
+
+        if (mBulletView != null) {
+            mBulletView.setVisibility(GONE);
+        }
+
+        if (mIconView != null) {
+            mIconView.setVisibility(GONE);
+        }
+    }
+
     @Override
     protected void initViews() {
         if (DEBUG) {

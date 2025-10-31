@@ -86,12 +86,97 @@
             android:text="@string/fullscreen_qrcode_activity_generate_code_message"
             app:layout_widthPercent="94%" />
 
+        <TextView
+            android:id="@+id/accept_invitation_activity_space_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/accept_invitation_activity_message_view"
+            android:text="@string/settings_space_activity_space_category_title"
+            android:textAllCaps="true"
+            android:maxLines="1"
+            app:layout_widthPercent="53.33%"
+            app:layout_marginEndPercent="4%"
+            app:layout_marginStartPercent="4%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/accept_invitation_activity_space_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_light_border"
+            android:layout_below="@+id/accept_invitation_activity_space_title_view">
+
+            <ImageView
+                android:id="@+id/accept_invitation_activity_space_image_view"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/space_icon"
+                app:layout_aspectRatio="133%"
+                app:layout_heightPercent="29.17%"
+                app:layout_marginStartPercent="4.53%" />
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:layout_widthPercent="48.53%"
+                app:layout_marginStartPercent="12.8%">
+
+                <TextView
+                    android:id="@+id/accept_invitation_activity_space_name_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1" />
+
+                <TextView
+                    android:id="@+id/accept_invitation_activity_profile_name_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/accept_invitation_activity_space_name_view"
+                    android:ellipsize="end"
+                    android:lines="1" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/accept_invitation_activity_space_avatar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="56.67%"
+                app:layout_marginRightPercent="4%"
+                app:layout_marginEndPercent="4%">
+
+                <org.twinlife.twinme.utils.RoundedImageView
+                    android:id="@+id/accept_invitation_activity_space_avatar_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter" />
+
+                <View
+                    android:id="@+id/accept_invitation_activity_no_space_avatar_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/accept_invitation_activity_no_space_avatar_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/accept_invitation_activity_confirm_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/accept_invitation_activity_message_view">
+            android:layout_below="@+id/accept_invitation_activity_space_view">
 
             <TextView
                 android:id="@+id/accept_invitation_activity_confirm_text_view"

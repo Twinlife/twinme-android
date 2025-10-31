@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><resources>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
 
     <!-- Application -->
     <string name="application_accept">Прийняти</string>
@@ -7,6 +9,7 @@
     <string name="application_all">Всі</string>
     <string name="application_appearance">Зовнішній вигляд</string>
     <string name="application_are_you_sure">Ви впевнені?</string>
+    <string name="application_authorization_location">Дозволити програмі отримати доступ до геоданих у налаштуваннях системи.</string>
     <string name="application_authorization_camera">Дозволити програмі отримати доступ до камери в налаштуваннях системи.</string>
     <string name="application_authorization_go_settings">Перейдіть до налаштувань системи</string>
     <string name="application_authorization_microphone">Дозволити програмі отримати доступ до мікрофона в налаштуваннях системи.</string>
@@ -46,16 +49,19 @@
     <string name="application_group_not_found">Вас вилучили з групи</string>
     <string name="application_items_selected">Вибрано елементів: %1$d</string>
     <string name="application_later">Пізніше</string>
+    <string name="application_location">Геолокація</string>
+    <string name="application_location_enabled">Активуйте на своєму пристрої послугу визначення місцезнаходження .</string>
     <string name="application_low_usage_message">Увага! Якщо ви не використовуєте програму досить часто, ОС може не вивести її з режиму сну для обміну повідомленнями!</string>
+    <string name="application_more_info">Більше інформації…</string>
     <string name="application_one_item_selected">Вибрано 1 елемент</string>
     <string name="application_migration_no_storage_space">На вашому пристрої недостатньо місця для завершення міграції. Закрийте програму, звільніть місце та перезапустіть програму, щоб завершити оновлення.</string>
     <string name="application_migration_no_storage_space_message">На одному з двох пристроїв недостатньо місця для зберігання. Звільніть місце на цьому пристрої, перш ніж перезапускати міграцію.</string>
     <string name="application_name_hint">Ім’я</string>
-    <string name="application_network_connecting">Підключення до служби Twinme</string>
+    <string name="application_network_connecting">Підключення до служби Skred</string>
     <string name="application_network_connectivity">Підключення до мережі існує</string>
     <string name="application_network_status_airplane_message">Активовано режим «В літаку».</string>
     <string name="application_network_status_airplane_resolution">Вимкніть режим «В літаку» та підключіться до Wi-Fi або мобільної мережі.</string>
-    <string name="application_network_status_connected_no_internet">Доступ мережі до сервісу Twinme відсутній.</string>
+    <string name="application_network_status_connected_no_internet">Доступ мережі до сервісу Skred відсутній.</string>
     <string name="application_network_status_connected_resolution">Спробуйте підключитися до іншої мережі.</string>
     <string name="application_network_status_connection_timeout">Не вдається встановити підключення до Інтернету.</string>
     <string name="application_network_status_no_internet">Підключення до Інтернету відсутнє.</string>
@@ -70,13 +76,15 @@
     <string name="application_not_authorized_operation">Недозволена операція</string>
     <string name="application_not_authorized_operation_by_your_contact">Операція не дозволена вашим контактом.</string>
     <string name="application_not_connected">Виконується безпечне з’єднання…</string>
-    <string name="application_not_signed_in">Підключення до сервісу Twinme відсутнє</string>
+    <string name="application_not_signed_in">Підключення до сервісу Skred відсутнє</string>
     <string name="application_now">Зараз</string>
     <string name="application_ok">ОК</string>
     <string name="application_operation_failure">Збій операції</string>
     <string name="application_operation_irreversible">Ця операція необоротна</string>
     <string name="application_permission_camera">Дозвіл на доступ до камери потрібен для зйомки нового фото чи відео.</string>
     <string name="application_permission_scan_code">Щоб відсканувати QR-код, потрібен дозвіл на доступ до камери.</string>
+    <string name="application_premium_feature_message">Щоб скористатися цією функцією, потрібно активувати преміум-послуги.</string>
+    <string name="application_premium_feature_title">Активуйте преміум-сервіси</string>
     <string name="application_photo_gallery">Фотоальбоми</string>
     <string name="application_profile">Профіль</string>
     <string name="application_profile_avatar_not_defined">Встановіть зображення, яке представлятиме вас контактам, яких ви запросите за допомогою цього профілю.</string>
@@ -100,7 +108,7 @@
     <string name="application_timeout_seconds">%1$d секунд</string>
     <string name="application_timeout_week">1 тиждень</string>
     <string name="application_unknown_name">Невідомо</string>
-    <string name="application_upgrade">Оновлення Twinme</string>
+    <string name="application_upgrade">Оновлення Skred</string>
     <string name="application_webrtc_failure">Збій WebRTC</string>
     <string name="application_wrong_configuration">Неправильна конфігурація</string>
     <string name="application_yes">Так</string>
@@ -110,7 +118,6 @@
     <string name="about_activity_information">Інформація</string>
     <string name="about_activity_legal">Юридичні повідомлення</string>
     <string name="about_activity_libraries">Бібліотеки</string>
-    <string name="about_activity_message">Twinme — це безпечний сервіс голосових/відеодзвінків у чаті без доступу до особистої інформації.\n\nTwinme заснований на WebRTC, новому стандарті для безпечних (наскрізне шифрування) однорангових (без ретрансляційного сервера) мультимедійних комунікацій в реальному часі в Інтернеті.</string>
     <string name="about_activity_open_source_information">Вихідний код програми доступний як Open Source на GitHub за ліцензією AGPL-3.0.</string>
     <string name="about_activity_open_sources_licences">Ліцензії з відкритим кодом</string>
     <string name="about_activity_premium_services">Преміальні послуги</string>
@@ -149,21 +156,21 @@
     <string name="account_activity_transfer_from_device">Передача з цього пристрою</string>
 
     <!-- AccountMigrationActivity -->
-    <string name="account_migration_activity_cancel_message">Закрийте додаток і перезапустіть його, щоб отримати доступ до своїх даних.</string>
-    <string name="account_migration_activity_close_message">Закрийте додаток і перезапустіть його, щоб отримати доступ до нових даних.</string>
-    <string name="account_migration_activity_confirm_cancel_message">Ви впевнені, що хочете скасувати перенос даних?</string>
-    <string name="account_migration_activity_network_message">Перевірте мережеве підключення</string>
-    <string name="account_migration_activity_not_enough_space_for_files">Недостатньо місця для файлів</string>
-    <string name="account_migration_activity_not_enough_space_to_receive">Недостатньо місця для завантаження бази даних</string>
-    <string name="account_migration_activity_not_enough_space_to_upload">Недостатньо місця для завантаження бази даних</string>
-    <string name="account_migration_activity_state_canceled">Перенос даних скасовано</string>
+    <string name="account_migration_activity_cancel_message">Щоб отримати доступ до своїх даних, закрийте та перезапустіть програму.</string>
+    <string name="account_migration_activity_close_message">Закрийте та перезапустіть програму, щоб отримати доступ до нових даних.</string>
+    <string name="account_migration_activity_confirm_cancel_message">Ви впевнені, що хочете відмінити перенесення даних?</string>
+    <string name="account_migration_activity_network_message">Перевірте підключення до мережі</string>
+    <string name="account_migration_activity_not_enough_space_for_files">Недостатньо пам’яті для файлів</string>
+    <string name="account_migration_activity_not_enough_space_to_receive">Недостатньо пам’яті для завантаження бази даних</string>
+    <string name="account_migration_activity_not_enough_space_to_upload">Недостатньо місця для передавання бази даних</string>
+    <string name="account_migration_activity_state_canceled">Перенесення даних скасовано</string>
     <string name="account_migration_activity_state_negotiate">Очікування</string>
-    <string name="account_migration_activity_state_list_files">Список файлів</string>
+    <string name="account_migration_activity_state_list_files">Перелік файлів</string>
     <string name="account_migration_activity_state_send_account">Надсилання облікового запису</string>
     <string name="account_migration_activity_state_send_database">Надсилання бази даних</string>
     <string name="account_migration_activity_state_send_files">Надсилання файлів</string>
-    <string name="account_migration_activity_state_send_settings">Надсилання налаштувань додатку</string>
-    <string name="account_migration_activity_state_terminate">Перенос даних майже завершено.</string>
+    <string name="account_migration_activity_state_send_settings">Надсилання налаштувань програми</string>
+    <string name="account_migration_activity_state_terminate">Перенесення даних майже завершено.</string>
     <string name="account_migration_activity_state_wait_account">Очікування іншого облікового запису</string>
     <string name="account_migration_activity_state_wait_connect">Очікування повторного підключення</string>
     <string name="account_migration_activity_state_wait_files">Очікується отримання файлів і бази даних.</string>
@@ -181,7 +188,7 @@
     <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Відскануйте QR-код, який відображається в розділі «Обліковий запис / Переказ з іншого пристрою» бічного меню іншого пристрою.</string>
     <string name="account_migration_scanner_activity_stop_scan_title">Зупинити сканування</string>
 
-   <!-- AddCallParticipantActivity -->
+    <!-- AddCallParticipantActivity -->
     <string name="add_call_participant_activity_title">Додати учасника до цього дзвінка</string>
 
     <!-- AddContactActivity -->
@@ -190,10 +197,10 @@
     <string name="add_contact_activity_in_person_title">Персонально</string>
     <string name="add_contact_activity_invitation_code_title">Міні-код</string>
     <string name="add_contact_activity_invite">Запросити</string>
-    <string name="add_contact_activity_invite_message">Відкрийте %1$s за допомогою Twinme на своєму мобільному пристрої або відскануйте QR-код, щоб приватно підключитися до «%2$s»</string>
-    <string name="add_contact_activity_invite_subject">Запрошення Twinme</string>
-    <string name="add_contact_activity_message">Попросіть свого друга, який знаходиться поруч, відсканувати ваш QR-код за допомогою twinme, або натисніть кнопку "Сканувати", щоб відсканувати код вашого друга.</string>
-    <string name="add_contact_activity_onboarding_message">twinme не знає ваших друзів і не може їх знайти. Ви повинні запросити їх особисто, за допомогою twinme, коли вони поруч з вами, або надіславши їм запрошення іншим способом.</string>
+    <string name="add_contact_activity_invite_message">На своєму мобільному пристрої за допомогою Skred зайдіть за посиланням %1$s або відскануйте QR-код, щоб приватно підключитися до \"%2$s\"</string>
+    <string name="add_contact_activity_invite_subject">Запрошення від Skred</string>
+    <string name="add_contact_activity_message">Попросіть свого контакта відсканувати QR-код вашого запрошення за допомогою Skred або натисніть кнопку «Сканувати», щоб відсканувати код вашого контакту.</string>
+    <string name="add_contact_activity_onboarding_message">Skred не знає ваших друзів і не може їх знайти. Ви повинні запросити їх особисто, за допомогою Skred, коли вони поруч з вами, або надіславши їм запрошення іншим способом.</string>
     <string name="add_contact_activity_scan_code">Скануйте QR-код запрошення</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Це посилання пошкоджено.</string>
     <string name="add_contact_activity_scan_error_incorect_link">Це посилання неправильне.</string>
@@ -219,7 +226,7 @@
     <string name="audio_call_activity_calling">Виклик…</string>
     <string name="audio_call_activity_cannot_call">Не вдається здійснити голосовий виклик</string>
     <string name="audio_call_activity_connecting">Підключення…</string>
-    <string name="audio_call_activity_hangup">Завершити виклик</string>
+    <string name="audio_call_activity_hangup">Завершити виклик </string>
     <string name="audio_call_activity_hangup_confirmation">Ви хочете завершити дзвінок?</string>
     <string name="audio_call_activity_terminate">Виклик перервано</string>
     <string name="audio_call_activity_terminate_busy">Виклик перервано: абонент &lt;b&gt;%1$s&lt;/b&gt; зайнятий</string>
@@ -252,7 +259,7 @@
     <string name="calls_fragment_all_call_segmented_control">Всі</string>
     <string name="calls_fragment_call_again_message">Ви хочете зателефонувати абоненту %1$s?</string>
     <string name="calls_fragment_call_again_title">Передзвонити</string>
-    <string name="calls_fragment_create_link">Створіть посилання «click-to-call».</string>
+    <string name="calls_fragment_create_link">Створіть «click-to-call»</string>
     <string name="calls_fragment_incoming_call">Вхідний виклик</string>
     <string name="calls_fragment_missed_call">Пропущений виклик</string>
     <string name="calls_fragment_missed_call_segmented_control">Пропущений</string>
@@ -290,6 +297,11 @@
     <string name="call_activity_confirm_word_title">Перевірте слово</string>
     <string name="call_activity_error_call_interrupted">Виклик перервано, помилка: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Виклик не пройшов, помилка: %1$d.</string>
+    <string name="call_activity_location_background_warning">Попередження: якщо програма працює у фоновому режимі, ваш контакт більше не повідомлятиме вашу позицію. Ви повинні авторизувати програму, щоб завжди мати доступ до місцезнаходження цього пристрою.</string>
+    <string name="call_activity_location_exact_warning">Увага! Ви не повідомляєте своє точне місцезнаходження. Ви можете змінити необхідні дозволи в налаштуваннях програми.</string>
+    <string name="call_activity_location_share">Поділитися моїм розташуванням</string>
+    <string name="call_activity_location_share_message">Тепер ви ділитеся своїм місцезнаходженням під час виклику.</string>
+    <string name="call_activity_location_stop">Припинити ділитися моїм місцезнаходженням</string>
     <string name="call_activity_max_participant_message">Досягнуто максимальної кількості учасників групового виклику (%1$d).</string>
     <string name="call_activity_not_supported_group_call_message">Версія програми %1$s несумісна з груповими викликами та потребує оновлення.</string>
     <string name="call_activity_quality_message">Як би ви це оцінили?</string>
@@ -314,9 +326,9 @@
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Камера вже використовується</string>
-    <string name="capture_activity_incorrect_qrcode">Неправильний Twin-код</string>
+    <string name="capture_activity_incorrect_qrcode">Неправильний Skred-код</string>
     <string name="capture_activity_message">Помістіть QR-код у цей прямокутник, щоб відсканувати його.</string>
-    <string name="capture_activity_no_camera">Для сканування Twin-коду потрібна камера</string>
+    <string name="capture_activity_no_camera">Для сканування Skred-коду потрібна камера</string>
     <string name="capture_activity_qrcode_saved">Код запрошення збережений на фотографії.</string>
 
     <!-- CleanupActivity -->
@@ -371,16 +383,26 @@
     <string name="contact_capabilities_activity_information_programmed_call">Заплануйте дати/час, коли ви хочете, щоб вам подзвонили.</string>
     <string name="contact_capabilities_activity_information_video_call">Дозвольте контакту здійснювати вам відеодзвінки.</string>
 
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_activity_address_book_access_denied_message">Ми не отримали дозволу на доступ до ваших контактів</string>
+    <string name="contact_picker_activity_address_book_access_denied_title">Дозвіл не надано</string>
+    <string name="contact_picker_activity_subtitle">ЗАПРОСИТИ ЗА НОМЕРОМ ТЕЛЕФОНУ</string>
+    <string name="contact_picker_activity_title">Запросити друга із контактів</string>
+
     <!-- ContactsFragment -->
     <string name="contacts_fragment_add_contact_subtitle">Запросіть когось відсканувати ваш код запрошення , або відскануйте їхній...</string>
     <string name="contacts_fragment_invite_contact_title">Запросити контакт</string>
     <string name="contacts_fragment_scan_contact_title">Відскануйте або введіть код запрошення</string>
     <string name="contacts_fragment_title">Контакти</string>
 
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_activity_move_message">Ви впевнені, що хочете перемістити цей контакт?</string>
+    <string name="contact_space_activity_move_title">Рухатися</string>
+
     <!-- ConversationActivity -->
     <string name="conversation_activity_audio_call">Голосовий виклик</string>
     <string name="conversation_activity_audio_message">Голосове повідомлення</string>
-    <string name="conversation_activity_call_missed">пропущений</string>
+    <string name="conversation_activity_call_missed">пропущений </string>
     <string name="conversation_activity_cannot_send">Неможливо надіслати повідомлення відразу:</string>
     <string name="conversation_activity_cleanup_conversation">Ви видалили деякі старі повідомлення.</string>
     <string name="conversation_activity_cleanup_conversation_by_peer">%1$s видалив деякі старі повідомлення.</string>
@@ -388,12 +410,13 @@
     <string name="conversation_activity_empty_message">Скажіть щось розумне… або веселе!</string>
     <string name="conversation_activity_edit_message">Повідомлення можна редагувати на пристрої вашого контакту, лише якщо його додаток оновлено.</string>
     <string name="conversation_activity_ephemeral_coach_mark">Натисніть і утримуйте стрілку надсилання, щоб видалити це повідомлення з бесіди через певний час.</string>
-    <string name="conversation_activity_feature_not_supported_by_peer">Версія Twinme у вашого контакту не повністю функціональна.&lt;br /&gt;Попросіть його/її оновити Twinme.</string>
+    <string name="conversation_activity_feature_not_supported_by_peer">Версія Skred у вашого контакту не повністю функціональна.&lt;br /&gt;Попросіть його/її оновити Skred.</string>
     <string name="conversation_activity_group_member_information">Учасників: %1$d</string>
     <string name="conversation_activity_group_not_allowed_post_message">Надсилання повідомлень заборонено</string>
     <string name="conversation_activity_group_one_member">1 учасник</string>
+    <string name="conversation_activity_info">:lock Повідомлення чату кодуються на вашому мобільному пристрої  під час їх передачі.\n Щоб забезпечити найвищий рівень безпеки, дані надсилаються безпосередньо на телефон користувача %s за допомогою однорангового з’єднання без сервера-посередника.</string>
     <string name="conversation_activity_invitation_accepted">Запрошення прийнято</string>
-    <string name="conversation_activity_invitation_failed">Попросіть свого контакта оновити Twinme</string>
+    <string name="conversation_activity_invitation_failed">Попросіть свого контакта оновити Skred</string>
     <string name="conversation_activity_invitation_joined">Учасник групи</string>
     <string name="conversation_activity_invitation_pending">Запрошення в процесі</string>
     <string name="conversation_activity_invitation_refused">Запрошення відхилено</string>
@@ -453,7 +476,7 @@
     <string name="conversations_fragment_you">Ви</string>
 
     <!-- CreateExternalCallActivity -->
-    <string name="create_external_call_activity_message">Цей профіль відображається для гостей, які телефонуватимуть вам за цим посиланням \"click-to-call\".</string>
+    <string name="create_external_call_activity_message">Введіть назву, зображення та опис теми виклику.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">«Click-to-call» дозволяє гостям дзвонити вам з браузера, не встановлюючи додаток.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Кожен екземпляр має ім’я, зображення та опис, що представляє тему виклику, наприклад:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">ваше обслуговування клієнтів</string>
@@ -497,10 +520,14 @@
     <string name="create_profile_activity_onboarding_message_part_3">Після створення у кожного відносини є своя пара «Профілів», які представляють вас та ваші контакти один одному.</string>
     <string name="create_profile_activity_onboarding_message_part_4">Потім ви можете змінити те, як ви хочете, щоб ви знали для кожного з ваших контактів, для кожного відношення, незалежно.</string>
     <string name="create_profile_activity_save_message">Це ім’я та зображення використовуються для запрошення ваших контактів і ініціалізації ваших відносин. Ви зможете змінювати та налаштовувати їх для кожного відношення.</string>
+    <string name="create_profile_activity_title">Налаштуйте свій профіль</string>
     <string name="create_profile_activity_welcome1">Встановіть зображення профілю</string>
     <string name="create_profile_activity_welcome2">Вітаємо, %1$s!</string>
 
     <!-- CreateSpaceActivity -->
+    <string name="create_space_activity_avatar_profile">Зображення</string>
+    <string name="create_space_activity_contact_list">Перемістити контакти</string>
+    <string name="create_space_activity_contacts_no_profile">Щоб перемістити контакти в Space, ви повинні заповнити профіль, який представляє вас у ваших контактах. Ви хочете його завершити?</string>
     <string name="create_space_activity_message">Простори локальні і не видно контактів.</string>
     <string name="create_space_activity_onboarding_message_part_1">Простори допомагають вам організувати ваші контакти відповідно до того, до якого з ваших соціальних кіл вони належать, наприклад. Сім\'я, друзі, бізнес, розваги і т.д.</string>
     <string name="create_space_activity_onboarding_message_part_2">Кожен «Простір» пов\'язаний з «Профілем», який представляє особу, яку ви хочете використовувати при взаємодії з контактами з кола спілкування цього «Простору», наприклад, Папа, Джонні, Доктор Джон Доу, Бетмен і т.д.</string>
@@ -510,6 +537,8 @@
     <string name="create_space_activity_onboarding_message_part_6">- Зображення, що дозволяє швидко ідентифікувати його у списку "Простор";</string>
     <string name="create_space_activity_onboarding_message_part_7">- колір "Тема", щоб персоналізувати його зовнішній вигляд;</string>
     <string name="create_space_activity_onboarding_message_part_8">- Налаштування, які можуть бути специфічними для кожного конкретного "Простору", таким чином перевизначаючи значення за промовчанням, визначені в Налаштуваннях програми.</string>
+    <string name="create_space_activity_profile_message">Вам потрібно ввести ім’я та зображення, які представляють вас, до контактів, яких ви запрошуєте за допомогою цього профілю.</string>
+    <string name="create_space_activity_space_hint">Ім\'я (сім\'я, друзі, бізнес тощо)</string>
     <string name="create_space_activity_title">Створити Space</string>
 
     <!-- CreateTransfertCallActivity -->
@@ -528,9 +557,6 @@
     <string name="edit_contact_activity_confirm_message">Ви впевнені, що бажаєте видалити цей зв’язок?</string>
     <string name="edit_contact_activity_message">Цей контакт більше не зможе зв’язатися з вами.</string>
 
-    <!-- EditIdentityActivity -->
-    <string name="edit_identity_activity_delete_message">Видалення цього профілю призведе до втрати пов’язаного з ним коду запрошення. Підтвердити видалення?</string>
-
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_activity_delete_confirm_message">Ви впевнені, що бажаєте видалити цей код \"Click-to-Call\"?</string>
     <string name="edit_external_call_activity_delete_message">Це посилання «Click-to-Call» більше не можна використовувати.</string>
@@ -543,7 +569,13 @@
     <string name="edit_profile_activity_propagating_message">Ви можете поширювати зміни профілю запрошення на наявні контакти чи ні.</string>
     <string name="edit_profile_activity_propagating_no_contact">ні до кого</string>
     <string name="edit_profile_activity_propagating_profile">Поширювати зміни профілю</string>
-    <string name="edit_profile_activity_remove_active_profile">Ви не можете видалити активний профіль</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_activity_contacts_no_profile">Щоб запросити контакт, ви повинні заповнити профіль, який представляє вас у цьому контакті. Ви хочете його завершити?</string>
+    <string name="edit_space_activity_delete_confirmation">Ви дійсно хочете видалити цей Space?</string>
+    <string name="edit_space_activity_delete_current_space">Ви не можете видалити поточний активний Space.</string>
+    <string name="edit_space_activity_delete_message">Видалення Space видаляє всі контакти, групи та бесіди з цього Space. Ви впевнені, що хочете видалити цей Space?</string>
+    <string name="edit_space_activity_delete_only_one_space_message">Ви не можете видалити єдиний Space із програми.</string>
 
     <!-- EnterInvitationCodeActivity-->
     <string name="enter_invitation_code_activity_certified_message">Після створення зв’язку настійно рекомендується сертифікувати його, щоб посилити його безпеку.</string>
@@ -589,12 +621,16 @@
     <string name="feedback_activity_send_logs">Надіслати Журнал налагодження</string>
     <string name="feedback_activity_send_message">Відгук надіслано. дякую</string>
     <string name="feedback_activity_subject">Тема</string>
-    <string name="feedback_activity_subject_placeholder">[twinme] </string>
+    <string name="feedback_activity_subject_placeholder">[Skred] </string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_activity_description">Запросіть друзів і сконтактуйте з ними через Skred. Вони з’являться у вашому списку контактів після того, як приймуть ваше запрошення.</string>
+    <string name="first_invite_contact_activity_ignore">Ігнорувати</string>
 
     <!-- FullScreenQRCodeActivity -->
     <string name="fullscreen_qrcode_activity_generate_code_message">Ця дія анулює поточний код запрошення, пов’язаний з цим профілем. Ви дійсно хочете створити новий код?</string>
     <string name="fullscreen_qrcode_activity_generate_code_title">Згенерувати новий код запрошення</string>
-    <string name="fullscreen_qrcode_activity_save_message">Імпортуйте або відскануйте QR-код цього запрошення за допомогою Twinme, щоб додати цей контакт.</string>
+    <string name="fullscreen_qrcode_activity_save_message">Імпортуйте або відскануйте QR-код цього запрошення за допомогою Skred, щоб додати цей контакт.</string>
     <string name="fullscreen_qrcode_activity_save_title">Зберегти у фотогалереї</string>
 
     <!-- GroupCapabilitiesActivity -->
@@ -612,6 +648,37 @@
     <string name="group_member_activity_section_invitation">Запрошення</string>
     <string name="group_member_activity_section_member">Учасники</string>
     <string name="group_member_activity_title">Учасники групи</string>
+
+   <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_activity_accept_invitation">%1$s запрошує вас користуватися послугами преміум-класу, які він підтримує.</string>
+    <string name="in_app_subscription_activity_cancel_subscription">Suspend subscription</string>
+    <string name="in_app_subscription_activity_cancel_subscription_confirmation">Premium services will be disabled. Do you want to continue?</string>
+    <string name="in_app_subscription_activity_description_step1_subtitle">Групові дзвінки зі звуком HQ і зображенням HD</string>
+    <string name="in_app_subscription_activity_description_step1_title">Високоякісна голосова/відеоконференція</string>
+    <string name="in_app_subscription_activity_description_step2_subtitle">Нуль даних / Нуль вуглецю</string>
+    <string name="in_app_subscription_activity_description_step2_title">Еко-відповідальна голосова/відеоконференція</string>
+    <string name="in_app_subscription_activity_description_step3_subtitle">Абсолютна конфіденційність обмінів</string>
+    <string name="in_app_subscription_activity_description_step3_title">Приватна голосова/відеоконференція</string>
+    <string name="in_app_subscription_activity_description_step4_subtitle">Миттєве підключення високої чіткості</string>
+    <string name="in_app_subscription_activity_description_step4_title">Миттєві голосові/відеоконференції</string>
+    <string name="in_app_subscription_activity_expiration_message">Поновлення: %1$s</string>
+    <string name="in_app_subscription_activity_expire_code">Expired invite code</string>
+    <string name="in_app_subscription_activity_footer_message">Коли ви купуєте підписку, Google стягує плату безпосередньо з вашого облікового запису Play Store. Підписка автоматично поновлюється на тих самих умовах, якщо ви не скасуєте її принаймні за 24 години до закінчення поточного терміну. Ви можете скасувати безкоштовну підписку в магазині Play у будь-який час, щоб підписку не поновлювати в кінці поточного періоду. Ви можете керувати своєю підпискою в налаштуваннях облікового запису Play Store після покупки.</string>
+    <string name="in_app_subscription_activity_free_trial">14-денна безкоштовна пробна версія.\nПідписку можна скасувати в будь-який момент.</string>
+    <string name="in_app_subscription_activity_invitation_code">Відскануйте QR-код запрошення або вставте код, щоб отримати доступ до преміум-сервісів.</string>
+    <string name="in_app_subscription_activity_invitation_code_success">Premium services enabled</string>
+    <string name="in_app_subscription_activity_invalid_code">Недійсний код запрошення.</string>
+    <string name="in_app_subscription_activity_later_title">Ні, дякую</string>
+    <string name="in_app_subscription_activity_manage_susbcription">Керувати моєю підпискою</string>
+    <string name="in_app_subscription_activity_month">місяць</string>
+    <string name="in_app_subscription_activity_not_available">Платні преміум-послуги недоступні на вашому пристрої чи у вашій країні.</string>
+    <string name="in_app_subscription_activity_restore_title">Відновити покупки</string>
+    <string name="in_app_subscription_activity_search">Пошук пропозицій підписки</string>
+    <string name="in_app_subscription_activity_six_month_title">Найбільш популярний</string>
+    <string name="in_app_subscription_activity_subscription_title">Підписка</string>
+    <string name="in_app_subscription_activity_subscribe_in_progress">Поточна підписка</string>
+    <string name="in_app_subscription_activity_subscribe_title">Продовжити</string>
+    <string name="in_app_subscription_activity_used_code">Invite code used by another device</string>
 
     <!-- InfoItemActivity -->
     <string name="info_item_activity_call_terminated_reason_busy">Абонент %1$s зайнятий</string>
@@ -631,7 +698,7 @@
     <string name="info_item_activity_updated">Змінено</string>
 
     <!-- InvitationCallActivity -->
-    <string name="invitation_call_activity_generate_code_message">Ця дія робить недійсним поточний код запрошення, пов’язаний із цим посиланням \"click-to-call\". Підтвердити?</string>
+    <string name="invitation_call_activity_generate_code_message">Ця дія робить недійсним поточний код запрошення, пов’язаний із цим посиланням "click-to-call". Підтвердити?</string>
     <string name="invitation_call_activity_generate_code_title">Згенеруйте новий код для цього посилання</string>
     <string name="invitation_call_activity_invite_message">Відкрийте веб-адресу %1$s або відскануйте QR-код, щоб викликати «%2$s».</string>
     <string name="invitation_call_activity_message">Поділіться цим кодом «click-to-call» комусь, хто зможе зателефонувати вам з Інтернету чи мобільного додатка.</string>
@@ -649,15 +716,16 @@
     <string name="invitation_code_activity_success_message">Настійно рекомендується сертифікувати зв\'язки, встановлені за допомогою міні-коду, щоб посилити їхню безпеку.</string>
 
     <!-- InvitationRoomActivity -->
-    <string name="invitation_room_activity_message">Попросіть друга відсканувати QR-код «кімнати» за допомогою Twinme, або торкніться коду запрошення, щоб скопіювати його в буфер обміну.</string>
+    <string name="invitation_room_activity_message">Попросіть свого контакта поруч із вами сканувати QR-код \\\"кімнати\\\" за допомогою Skred або торкніться коду запрошення, щоб скопіювати його в буфер обміну.</string>
 
     <!-- LastCallsActivity -->
     <string name="last_calls_activity_audio">Голос</string>
     <string name="last_calls_activity_video">Відео</string>
 
-    <!-- LocalAccountMigrationActivity -->
-    <string name="local_account_migration_activity_message">Ваш обліковий запис twinme на цьому пристрої буде перенесено на twinme+. </string>
-    <string name="local_account_migration_activity_message_older_version">Переконайтеся, що ви оновили обидва пристрої до останньої версії програми перед початком передачі, щоб уникнути втрати зв’язків.</string>
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_activity_local_authentication">Пройдіть автентифікацію для доступу до програми</string>
+    <string name="lock_screen_activity_passcode_not_set">Налаштування автентифікації пристрою не встановлено. Перейдіть до системних налаштувань і налаштуйте їх на розблокування програми.</string>
+    <string name="lock_screen_activity_unlock">Розблокувати доступ до програми</string>
 
     <!-- MainActivity -->
     <string name="main_activity_add_contact">Додати контакт</string>
@@ -667,23 +735,23 @@
     <string name="main_activity_reset_conversation_title">Скинути розмову</string>
     <string name="main_activity_reset_group_conversation_admin_message">Скидання цієї розмови призведе до видалення всіх повідомлень із пристроїв кожного учасника групи. Підтвердити?</string>
     <string name="main_activity_reset_group_conversation_message">Скидання цієї розмови видалить усі повідомлення з вашого пристрою. Підтвердити?</string>
-
-    <!-- MigrationTwinmePlusActivity -->
-    <string name="migration_twinme_plus_activity_premium_feature">Щоб скористатися цією функцією, вам потрібно перейти на Twinme+. Ви зможете перенести всі дані свого облікового запису.</string>
-    <string name="migration_twinme_plus_activity_updgrade_account">Ви зможете перенести всі дані свого облікового запису.</string>
-    <string name="migration_twinme_plus_activity_updgrade_message">Доступна преміум-версія Twinme з ще більшими можливостями. </string>
-    <string name="migration_twinme_plus_activity_premium_title">Оновити до Twinme+</string>
+    <string name="main_activity_skredboard_access_title">Space</string>
+    <string name="main_activity_skredboard_create_title">Створити Space</string>
+    <string name="main_activity_skredboard_delete_title">Видалити скредборд</string>
+    <string name="main_activity_skredboard_message">Ввести Skred код</string>
 
     <!-- NavigationActivity -->
-    <string name="navigation_activity_about_twinme">Про додаток</string>
+    <string name="navigation_activity_about_twinme">Про</string>
     <string name="navigation_activity_application_settings">Налаштування додатку</string>
     <string name="navigation_activity_feedback">Зворотній зв’язок</string>
     <string name="navigation_activity_getting_started">Початок роботи</string>
     <string name="navigation_activity_help">Допомога</string>
     <string name="navigation_activity_profile">Профілі</string>
     <string name="navigation_activity_settings">Налаштування</string>
-    <string name="navigation_activity_sign_out">Вийти з аккаунта</string>
+    <string name="navigation_activity_sign_out">Вийти з облікового запису</string>
     <string name="navigation_activity_sounds">Звуки</string>
+    <string name="navigation_activity_subscribe">Відкрийте для себе Skred+</string>
+    <string name="navigation_activity_subscribe_enable">&#10003; Активний</string>
     <string name="navigation_activity_support">Підтримка</string>
     <string name="navigation_activity_title">Меню</string>
 
@@ -696,6 +764,8 @@
     <string name="notification_center_deleted_contact">Контакт видалено</string>
     <string name="notification_center_file_message">Вам відправлений файл</string>
     <string name="notification_center_file_message_received">Новий файл</string>
+    <string name="notification_center_geolocation_message">надіслав вам місцезнаходження</string>
+    <string name="notification_center_geolocation_message_received">Нова локація</string>
     <string name="notification_center_group_invitation">Надіслав запрошення</string>
     <string name="notification_center_group_invitation_received">Нове запрошення</string>
     <string name="notification_center_join_group">Ви є учасником групи</string>
@@ -734,15 +804,16 @@
     <string name="notifications_fragment_item_cleanup_message">видалив деякі старі повідомлення.</string>
     <string name="notifications_fragment_item_deleted_contact">Контакт видалено</string>
     <string name="notifications_fragment_item_file_message">Вам відправлений файл</string>
+    <string name="notifications_fragment_item_geolocation_message">Надіслали вам місцезнаходження</string>
     <string name="notifications_fragment_item_group_invitation">Надіслав запрошення</string>
     <string name="notifications_fragment_item_image_message">Надіслав фото</string>
     <string name="notifications_fragment_item_join_group">Ви є учасником групи</string>
     <string name="notifications_fragment_item_new_contact">Новий контакт</string>
-    <string name="notifications_fragment_item_reset_conversation">Розмова була скинута</string>
-    <string name="notifications_fragment_item_shortest_day">%1$d дн.</string>
-    <string name="notifications_fragment_item_shortest_hour">%1$d год.</string>
-    <string name="notifications_fragment_item_shortest_minute">%1$d хв.</string>
-    <string name="notifications_fragment_item_shortest_second">%1$d сек.</string>
+    <string name="notifications_fragment_item_reset_conversation">відхилив розмову</string>
+    <string name="notifications_fragment_item_shortest_day">%1$d дн</string>
+    <string name="notifications_fragment_item_shortest_hour">%1$d год</string>
+    <string name="notifications_fragment_item_shortest_minute">%1$d хв</string>
+    <string name="notifications_fragment_item_shortest_second">%1$d сек</string>
     <string name="notifications_fragment_item_text_message">Надіслав повідомлення</string>
     <string name="notifications_fragment_item_updated_contact_avatar">Зображення оновлено</string>
     <string name="notifications_fragment_item_updated_contact_name">Ім’я оновлено</string>
@@ -790,30 +861,18 @@
     <string name="premium_services_activity_conversation_description_4">Лише локально, без впливу на інший кінець</string>
     <string name="premium_services_activity_conversation_subtitle">Експорт вмісту та звільнення місця</string>
     <string name="premium_services_activity_conversation_title">Управління розмовою</string>
-    <string name="premium_services_activity_description_part1_subtitle">Пряме підключення між пристроями</string>
-    <string name="premium_services_activity_description_part1_title">HD якість аудіо/відео</string>
-    <string name="premium_services_activity_description_part2_subtitle">Ні сліду в хмарі</string>
-    <string name="premium_services_activity_description_part2_title">Конфіденційність – конфіденційність</string>
-    <string name="premium_services_activity_description_part3_subtitle">Енергоефективність</string>
-    <string name="premium_services_activity_description_part3_title">екологічно відповідальний</string>
     <string name="premium_services_activity_group_call_description_1">Аудіо/відео високої чіткості</string>
     <string name="premium_services_activity_group_call_description_2">Пряме з’єднання між пристроями</string>
     <string name="premium_services_activity_group_call_description_3">Безпечно та приватно</string>
     <string name="premium_services_activity_group_call_description_4">Ні сліду в хмарі</string>
     <string name="premium_services_activity_group_call_subtitle">Запросіть контакти приєднатися до групового виклику</string>
     <string name="premium_services_activity_group_call_title">Групові дзвінки</string>
-    <string name="premium_services_activity_privacy_description_1">Заблокувати програму за допомогою біометричної аутентифікації</string>
-    <string name="premium_services_activity_privacy_description_2">Приховати останній екран у перемикачі програм</string>
-    <string name="premium_services_activity_privacy_description_3">Ефемерні повідомлення, які зникають через певний час</string>
-    <string name="premium_services_activity_privacy_description_4">Заборонити контакту телефонувати вам</string>
-    <string name="premium_services_activity_privacy_subtitle">Керуйте програмою, контактами та повідомленнями</string>
-    <string name="premium_services_activity_privacy_title">Більше конфіденційності</string>
     <string name="premium_services_activity_space_description_1">Кілька профілів із пов’язаними зв’язками, розмовами, історією</string>
     <string name="premium_services_activity_space_description_2">Персоналізований вигляд, сповіщення та налаштування</string>
     <string name="premium_services_activity_space_description_3">Для родини, друзів, колег, бізнесу, спорту тощо.</string>
-    <string name="premium_services_activity_space_description_4">Секретні Spaces відсутні в списку, доступ доступний за іменем</string>
+    <string name="premium_services_activity_space_description_4">Секретні Space відсутні в списку, доступ доступний за іменем</string>
     <string name="premium_services_activity_space_subtitle">Для кожної соціальної групи, з якою ви взаємодієте</string>
-    <string name="premium_services_activity_space_title">Spaces</string>
+    <string name="premium_services_activity_space_title">Space</string>
     <string name="premium_services_activity_streaming_description_1">Поділіться своєю музикою наживо</string>
     <string name="premium_services_activity_streaming_description_2">Кожен учасник може керувати медіаплеєром</string>
     <string name="premium_services_activity_streaming_description_3">Взаємодіяти під час виклику одночасно</string>
@@ -842,9 +901,6 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_add_profile">Додати профіль</string>
     <string name="profile_fragment_create_profile">Створіть профіль</string>
-    <string name="profile_fragment_default_action">Активувати</string>
-    <string name="profile_fragment_default_profile_title">Активний профіль</string>
-    <string name="profile_fragment_identity_title">Профілі</string>
     <string name="profile_fragment_message">Цей профіль дозволяє запрошувати своїх контактів для встановлення приватних стосунків з вами під вашим контролем.</string>
     <string name="profile_fragment_twincode_title">Код запрошення</string>
 
@@ -860,7 +916,7 @@
     <string name="proxy_activity_list_information">Використовуйте проксі-сервер зі списку нижче, лише якщо програма не може підключитися до служби без проксі-сервера.</string>
     <string name="proxy_activity_onboarding">Коли доступ до сигнальних серверів програми заблоковано у вашій країні, проксі-сервери можуть обійти ці блокування за багатьох обставин і дозволити вам спілкуватися конфіденційно. Окрім проксі-серверів у програмі, ви можете створити свої власні або використовувати проксі-сервер, створений кимось іншим. Проксі-сервери не можуть отримати доступ до вмісту, яким обмінюються, за жодних обставин.</string>
     <string name="proxy_activity_information">Використовуйте проксі, лише якщо ви не можете підключитися до служби через стандартні мережі Wi-Fi або стільникові мережі.</string>
-    <string name="proxy_activity_share">Відкрийте посилання %1$s за допомогою twinme на вашому пристрої, щоб автоматично налаштувати цей проксі-сервер.</string>
+    <string name="proxy_activity_share">Відкрийте посилання %1$s за допомогою Skred на вашому пристрої, щоб автоматично налаштувати цей проксі-сервер.</string>
     <string name="proxy_activity_title">Проксі</string>
     <string name="proxy_activity_url">Ви хочете використовувати URL-адресу цього проксі?</string>
     <string name="proxy_activity_warning">Увага! URL-адреса цього проксі-сервера не дозволяє вам підключитися до служби програми.</string>
@@ -929,11 +985,11 @@
     <string name="settings_activity_ephemeral_title">Зникаюче повідомлення</string>
     <string name="settings_activity_image_title">Фото</string>
     <string name="settings_activity_message_properties_title">Властивості повідомлення</string>
+    <string name="settings_activity_permissions_title">ДОЗВОЛИ</string>
     <string name="settings_activity_reset_default_value">Скинути до параметрів за замовчуванням</string>
     <string name="settings_activity_reset_preferences_button_title">Скинути до налаштувань за замовчуванням</string>
     <string name="settings_activity_reset_preferences_message">Скинути налаштування повідомлень до налаштувань за замовчуванням.</string>
     <string name="settings_activity_reset_preferences_title">Скинути налаштування</string>
-    <string name="settings_activity_permissions_title">ДОЗВОЛИ</string>
     <string name="settings_activity_silent_sound">Без звуку</string>
     <string name="settings_activity_sound_enabled_title">ЗВУКОВІ ПОВІДОМЛЕННЯ</string>
     <string name="settings_activity_system_notifications_title">Системні повідомлення</string>
@@ -958,6 +1014,25 @@
     <string name="settings_room_activity_room_type_feedback_information">Відгуки учасників бачать лише адміністратори/модератори</string>
     <string name="settings_room_activity_room_type_forum">Форум</string>
     <string name="settings_room_activity_room_type_forum_information">Учасники можуть публікувати повідомлення, які видно всім</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_activity_allow_notifications">Дозволити сповіщення</string>
+    <string name="settings_space_activity_allow_notifications_message">Сповіщення з’являтимуться лише тоді, коли цей простір є активним.</string>
+    <string name="settings_space_activity_default_message">Space за замовчуванням - це Space, який відображається під час запуску програми.</string>
+    <string name="settings_space_activity_default_value_message">Параметри, для замінювання параметрів налаштування за замовчуванням, встановлених у додатку.</string>
+    <string name="settings_space_activity_default_value_title">Змінити налаштування за замовчуванням</string>
+    <string name="settings_space_activity_header_message">Значення цих параметрів замінюють для цього Пробілу значення за замовчуванням, визначені на рівні програми.</string>
+    <string name="settings_space_activity_permission_create_contact">Створити контакт</string>
+    <string name="settings_space_activity_permission_create_group">Створити групу</string>
+    <string name="settings_space_activity_permission_move_contact">Перемістити контакт</string>
+    <string name="settings_space_activity_permission_move_group">Перемістити групу</string>
+    <string name="settings_space_activity_permission_share_space_card">Поділіться кодом запрошення Space.</string>
+    <string name="settings_space_activity_permission_update_identity">Оновити профіль</string>
+    <string name="settings_space_activity_permissions_title">Дозволи</string>
+    <string name="settings_space_activity_reset_application_value">Скидання до налаштувань додатку, встановлених за замовчуванням</string>
+    <string name="settings_space_activity_secret_message">Секретний Space не відображається в списку Space. Доступ до нього можна отримати, лише ввівши його точну назву в рядку пошуку. Його назву неможливо відновити, тому не забувайте!</string>
+    <string name="settings_space_activity_secret_title">Секретний Space</string>
+    <string name="settings_space_activity_space_category_title">Space</string>
 
     <!-- ShareActivity -->
     <string name="share_activity_contact_list">Контакти</string>
@@ -990,6 +1065,7 @@
     <string name="show_contact_activity_pending_message">Ці відносини знаходяться в процесі встановлення. Будь ласка, зачекайте.</string>
     <string name="show_contact_activity_revoked">Видалено</string>
     <string name="show_contact_activity_settings_coach_mark">Визначте, що ваш контакт може робити у цьому стосунку з вами.</string>
+    <string name="show_contact_activity_space">Space:</string>
     <string name="show_contact_activity_video">Відео</string>
 
     <!-- ShowGroupActivity -->
@@ -1003,10 +1079,21 @@
     <string name="show_group_activity_remove_message">Цю групу буде видалено для всіх її учасників, а її розмови – видалено.</string>
     <string name="show_group_activity_title">Група</string>
 
+    <!-- SplashScreenActivity -->
+    <string name="splashscreen_activity_tagline" translatable="false">simple n safe</string>
+
     <!-- ShowRoomActivity -->
     <string name="show_room_activity_admin_title">Інтерфейс адміністрування</string>
     <string name="show_room_activity_invite_participants">Запросити учасників</string>
     <string name="show_room_activity_room_title">Кімната</string>
+
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_fragment_management">"Менеджмент "</string>
+    <string name="show_space_fragment_move_message">Щоб перемістити контакти, потрібно мати кілька "Пробілів".</string>
+    <string name="show_space_fragment_secret_confirm">Підтвердьте режим «Секретно»</string>
+    <string name="show_space_fragment_secret_disabled_message">Цей унікальний Space не можна визначити як «таємний». Вам потрібно створити принаймні ще один \"Space\".</string>
+    <string name="show_space_fragment_secret_message">Секретні Spaces не відображаються в списку Spaces, і їх можна відкрити, лише ввівши їх назву в рядок пошуку. Ніколи не забувайте цього імені!</string>
+    <string name="show_space_fragment_secret_message_confirm">Ви все ще хочете зробити цей Space \"Секретом\"?</string>
 
     <!-- SpaceAppearanceActivity -->
     <string name="space_appearance_activity_background_image_title">Зображення</string>
@@ -1021,7 +1108,7 @@
     <string name="space_appearance_activity_container_text_peer_message">Текст отриманого повідомлення</string>
     <string name="space_appearance_activity_container_title">Бульбашки</string>
     <string name="space_appearance_activity_default_value">Значення за замовчуванням</string>
-    <string name="space_appearance_activity_general_title">Генеральний</string>
+    <string name="space_appearance_activity_general_title">Space</string>
     <string name="space_appearance_activity_menu_choose_color">Кольори за замовчуванням</string>
     <string name="space_appearance_activity_menu_enter_color">Код кольору</string>
     <string name="space_appearance_activity_opacity">Непрозорість</string>
@@ -1031,7 +1118,18 @@
     <string name="space_appearance_activity_theme">Тема</string>
 
     <!-- SpacesActivity -->
-    <string name="spaces_activity_message">Bir Space, farklı kişiliklerinizin, en gizli olanlar da dahil olmak üzere birden fazla sosyal çevrenizle buluştuğu yerdir.</string>
+    <string name="spaces_activity_active_space">Активний Space</string>
+    <string name="spaces_activity_add_space">Додати Space</string>
+    <string name="spaces_activity_create_new_space">Створити Space</string>
+    <string name="spaces_activity_current_space_action">Активувати</string>
+    <string name="spaces_activity_delete_default_message">Ви не можете видалити Space за замовчуванням.</string>
+    <string name="spaces_activity_join_space">Імпортуйте Space</string>
+    <string name="spaces_activity_message">Простір - це місце, де ваші різні особистості зустрічаються з вашими численними колами спілкування, включаючи найтаємніші.</string>
+    <string name="spaces_activity_move_contact_already_in_space">Контакт уже є в цьому Space.</string>
+    <string name="spaces_activity_move_group_already_in_space">Група вже в цьому Space.</string>
+    <string name="spaces_activity_move_group_no_profile">Щоб перемістити групу в Space, ви повинні заповнити профіль, який представляє вас у цій групі. Ви хочете його завершити?</string>
+    <string name="spaces_activity_move_message">Ви впевнені, що хочете перемістити групу?</string>
+    <string name="spaces_activity_permission_not_allowed">Вам заборонено виконувати цю дію адміністратором Space.</string>
     <string name="spaces_activity_sample_business">Бізнес</string>
     <string name="spaces_activity_sample_business_name">Доктор Джон Доу</string>
     <string name="spaces_activity_sample_family">Сім\'я</string>
@@ -1069,11 +1167,11 @@
     <string name="template_space_activity_template_title">Шаблони</string>
 
     <!-- TwincodeActivity -->
-    <string name="twincode_activity_message">Попросіть свого друга відсканувати QR-код вашого запрошення за допомогою Twinme, або торкніться коду запрошення, щоб скопіювати його в буфер обміну.</string>
+    <string name="twincode_activity_message">Попросіть свого контакта поруч із вами відсканувати QR-код вашого запрошення за допомогою Skred або торкніться коду запрошення, щоб скопіювати його в буфер обміну.</string>
 
     <!-- TransfertCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">Ви впевнені, що хочете видалити цей код \"Переадресація виклику\"?</string>
-    <string name="transfert_call_activity_delete_message">Це посилання для переадресації виклику буде видалено. Підтвердити?</string>
+    <string name="transfert_call_activity_delete_message">Це посилання «Переадресація виклику» більше не можна використовувати.</string>
     <string name="transfert_call_activity_gallery_message">Відскануйте цей QR-код, щоб перевести ваші мобільні дзвінки.</string>
     <string name="transfert_call_activity_message">Перешліть цей код і додайте його URL-адресу в закладки в браузері, на який ви хочете переадресовувати свої мобільні дзвінки.</string>
     <string name="transfert_call_activity_reset_message">Ця дія робить поточний код переадресації виклику недійсним і створює новий. Підтвердити?</string>
@@ -1103,13 +1201,15 @@
 
     <!-- WelcomeActivity -->
     <string name="welcome_activity_accept">Натискаючи %1$s, я підтверджую, що прочитав і приймаю:</string>
-    <string name="welcome_activity_next">Далі</string>
+    <string name="welcome_activity_enter">ДАЛІ</string>
     <string name="welcome_activity_pass">Пропустити</string>
     <string name="welcome_activity_privacy_policy">Політика конфіденційності</string>
     <string name="welcome_activity_start">Почати</string>
+    <string name="welcome_activity_privacy_policy_url">https://skred.mobi/privacy</string>
     <string name="welcome_activity_step1_message">Обмін повідомленнями та голосові та відеодзвінки високої чіткості, захист конфіденційності за проектом.</string>
     <string name="welcome_activity_step2_message">Безпечний "peer-to-peer" зв’язок: жодних слідів у хмарі.</string>
     <string name="welcome_activity_step3_message">Ні номера телефону, ні адресної книги, ні ідентифікатора користувача: ви вибираєте, як вас ідентифікують на основі того, з ким ви спілкуєтеся.</string>
-    <string name="welcome_activity_terms_of_use">Умови користування</string>
+    <string name="welcome_activity_terms_of_use">правила та умови</string>
+    <string name="welcome_activity_terms_of_use_url">https://skred.mobi/terms</string>
 
 </resources>

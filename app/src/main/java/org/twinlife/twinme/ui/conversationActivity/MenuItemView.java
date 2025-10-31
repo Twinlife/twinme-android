@@ -58,6 +58,7 @@ public class MenuItemView extends PercentRelativeLayout {
         FILE,
         INVITATION,
         CALL,
+        LOCATION,
         CLEAR
     }
 
@@ -150,6 +151,11 @@ public class MenuItemView extends PercentRelativeLayout {
                     menuType = MenuType.INVITATION;
                     break;
 
+                case LOCATION:
+                case PEER_LOCATION:
+                    menuType = MenuType.LOCATION;
+                    break;
+
                 case CLEAR:
                 case PEER_CLEAR:
                     menuType = MenuType.CLEAR;
@@ -194,6 +200,13 @@ public class MenuItemView extends PercentRelativeLayout {
             case CLEAR:
                 mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
                 mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_select_more), R.drawable.select_more_item, UIMenuAction.ActionType.SELECT_MORE, true));
+                break;
+
+            case LOCATION:
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_reply_title), R.drawable.reply_item, UIMenuAction.ActionType.REPLY, true));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, true));
                 mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_select_more), R.drawable.select_more_item, UIMenuAction.ActionType.SELECT_MORE, true));
                 break;
 

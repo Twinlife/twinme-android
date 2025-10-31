@@ -55,6 +55,7 @@ import org.twinlife.twinlife.ConnectionStatus;
 import org.twinlife.twinlife.JobService;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinme.TwinmeContext;
+import org.twinlife.twinme.TwinmeApplication.Feature;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.Settings;
@@ -104,6 +105,15 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
     static String toSystemPermission(Permission permission) {
 
         switch (permission) {
+            case ACCESS_COARSE_LOCATION:
+                return Manifest.permission.ACCESS_COARSE_LOCATION;
+
+            case ACCESS_FINE_LOCATION:
+                return Manifest.permission.ACCESS_FINE_LOCATION;
+
+            case ACCESS_BACKGROUND_LOCATION:
+                return Manifest.permission.ACCESS_BACKGROUND_LOCATION;
+
             case CAMERA:
                 return Manifest.permission.CAMERA;
 
@@ -132,6 +142,15 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
     static Permission toPermission(String permission) {
 
         switch (permission) {
+            case Manifest.permission.ACCESS_COARSE_LOCATION:
+                return Permission.ACCESS_COARSE_LOCATION;
+
+            case Manifest.permission.ACCESS_FINE_LOCATION:
+                return Permission.ACCESS_FINE_LOCATION;
+
+            case Manifest.permission.ACCESS_BACKGROUND_LOCATION:
+                return Permission.ACCESS_BACKGROUND_LOCATION;
+
             case Manifest.permission.CAMERA:
                 return Permission.CAMERA;
 
@@ -275,6 +294,17 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         }
 
         return mAlertDialog != null || mShowAlert;
+    }
+
+    /**
+     * Check if the feature is enabled for the application.
+     *
+     * @param feature the feature identification.
+     * @return true if the feature is enabled.
+     */
+    public boolean isFeatureSubscribed(@NonNull Feature feature) {
+
+        return mTwinmeApplication.isFeatureSubscribed(feature);
     }
 
     //

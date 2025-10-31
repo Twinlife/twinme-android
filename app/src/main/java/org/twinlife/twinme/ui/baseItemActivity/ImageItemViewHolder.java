@@ -13,6 +13,7 @@ package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService.Descriptor;
@@ -32,12 +34,20 @@ import org.twinlife.twinlife.ConversationService.NamedFileDescriptor;
 import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
 import org.twinlife.twinlife.ConversationService.VideoDescriptor;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.utils.EphemeralView;
 import org.twinlife.twinme.utils.RoundedImageView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 class ImageItemViewHolder extends ItemViewHolder {
+
+    private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
+    private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_TOP_MARGIN = 4f;
+    private static final float DESIGN_EPHEMERAL_BOTTOM_MARGIN = 4f;
+    private static final float DESIGN_BOTTOM_VIEW_HEIGHT = 60f;
 
     private final View mReplyView;
     private final TextView mReplyTextView;
@@ -48,6 +58,10 @@ class ImageItemViewHolder extends ItemViewHolder {
     private final GradientDrawable mBackgroundGradientDrawable;
     private final RoundedImageView mImageView;
     private final DeleteProgressView mDeleteView;
+    private final View mBottomView;
+    private final GradientDrawable mBottomGradientDrawable;
+    private final EphemeralView mEphemeralView;
+    private CountDownTimer mTimer;
 
     ImageItemViewHolder(BaseItemActivity baseItemActivity, View view, boolean allowClick, boolean allowLongClick) {
 
@@ -142,6 +156,29 @@ class ImageItemViewHolder extends ItemViewHolder {
                 return true;
             });
         }
+
+        mBottomView = view.findViewById(R.id.base_item_activity_image_item_bottom_view);
+
+        layoutParams = mBottomView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_BOTTOM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+
+        mBottomGradientDrawable = new GradientDrawable();
+        mBottomGradientDrawable.mutate();
+        mBottomGradientDrawable.setColors(new int[]{Design.BOTTOM_GRADIENT_START_COLOR, Design.BOTTOM_GRADIENT_END_COLOR});
+        mBottomGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mBottomView.setBackground(mBottomGradientDrawable);
+
+        mEphemeralView = view.findViewById(R.id.base_item_activity_image_item_ephemeral_view);
+        mEphemeralView.setColor(Color.WHITE);
+
+        layoutParams = mEphemeralView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_EPHEMERAL_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
     }
 
     @Override
@@ -210,6 +247,14 @@ class ImageItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
                     break;
 
+                case GEOLOCATION_DESCRIPTOR:
+                    mReplyView.setVisibility(View.VISIBLE);
+                    mReplyTextView.setVisibility(View.VISIBLE);
+                    relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_image_item_reply_text);
+
+                    mReplyTextView.setText(getBaseItemActivity().getResources().getString(R.string.application_location));
+                    break;
+
                 case NAMED_FILE_DESCRIPTOR:
                     mReplyView.setVisibility(View.VISIBLE);
                     mReplyTextView.setVisibility(View.VISIBLE);
@@ -222,10 +267,44 @@ class ImageItemViewHolder extends ItemViewHolder {
         }
 
         if (mReplyView.getVisibility() == View.VISIBLE) {
-            mBackgroundGradientDrawable.setColor(Design.getMainStyle());
+            mBackgroundGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
         } else {
             mBackgroundGradientDrawable.setColor(Color.TRANSPARENT);
         }
+
+        float[] bottomRadii = getCornerRadii();
+        bottomRadii[0] = 0;
+        bottomRadii[1] = 0;
+        bottomRadii[2] = 0;
+        bottomRadii[3] = 0;
+        mBottomGradientDrawable.setCornerRadii(bottomRadii);
+
+        if (item.isEphemeralItem()) {
+            mBottomView.setVisibility(View.VISIBLE);
+            startEphemeralAnimation();
+        } else {
+            mBottomView.setVisibility(View.GONE);
+        }
+
+        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
+        overlayLayoutParams.width = getContainer().getWidth();
+
+        PercentRelativeLayout.LayoutParams layoutParams = (PercentRelativeLayout.LayoutParams) mImageView.getLayoutParams();
+
+        if (getBaseItemActivity().isMenuOpen()) {
+            overlayLayoutParams.height = getContainer().getHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
+            getOverlayView().setVisibility(View.VISIBLE);
+            if (getBaseItemActivity().isSelectedItem(getItem().getDescriptorId())) {
+                itemView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
+                getOverlayView().setVisibility(View.INVISIBLE);
+            }
+        } else {
+            overlayLayoutParams.height = OVERLAY_DEFAULT_HEIGHT;
+            getOverlayView().setVisibility(View.INVISIBLE);
+            itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
+
+        getOverlayView().setLayoutParams(overlayLayoutParams);
     }
 
     @Override
@@ -238,6 +317,10 @@ class ImageItemViewHolder extends ItemViewHolder {
         mDeleteView.setVisibility(View.GONE);
         mDeleteView.setOnDeleteProgressListener(null);
         setDeleteAnimationStarted(false);
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 
     @Override
@@ -292,5 +375,33 @@ class ImageItemViewHolder extends ItemViewHolder {
         }
 
         return null;
+    }
+
+    private void startEphemeralAnimation() {
+
+        if (mTimer == null && getItem().getState() == Item.ItemState.READ) {
+            mTimer = new CountDownTimer(getItem().getExpireTimeout(), 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    Date now = new Date();
+                    float timeSinceRead = (now.getTime() - getItem().getReadTimestamp());
+                    float percent = (float) (1.0 - (timeSinceRead / getItem().getExpireTimeout()));
+                    if (percent < 0) {
+                        percent = 0;
+                    } else if (percent > 1) {
+                        percent = 1;
+                    }
+                    mEphemeralView.updateWithProgress(percent);
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            };
+            mTimer.start();
+        } else {
+            mEphemeralView.updateWithProgress(1);
+        }
     }
 }

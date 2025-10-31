@@ -70,11 +70,15 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
 
     private int mDisplayMode;
 
+    private int mDefaultColor;
+
     public DisplayModeViewHolder(@NonNull View view, Observer observer) {
 
         super(view);
 
         mObserver = observer;
+
+        mDefaultColor = mDefaultColor;
 
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = (int) (DESIGN_ITEM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
@@ -131,7 +135,7 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
         mLightItemView = view.findViewById(R.id.personalization_activity_mode_item_light_item_view);
 
         ShapeDrawable itemLightViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        itemLightViewBackground.getPaint().setColor(Design.getMainStyle());
+        itemLightViewBackground.getPaint().setColor(mDefaultColor);
         mLightItemView.setBackground(itemLightViewBackground);
 
         mLightTitleView = view.findViewById(R.id.personalization_activity_mode_item_light_title_view);
@@ -139,7 +143,7 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
         mLightTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mLightSelectedView = view.findViewById(R.id.personalization_activity_mode_item_light_check_image_view);
-        mLightSelectedView.setColorFilter(Design.getMainStyle());
+        mLightSelectedView.setColorFilter(mDefaultColor);
 
         mDarkView = view.findViewById(R.id.personalization_activity_mode_item_dark_view);
         mDarkView.setOnClickListener(v -> {
@@ -171,7 +175,7 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
         mDarkItemView = view.findViewById(R.id.personalization_activity_mode_item_dark_item_view);
 
         ShapeDrawable itemDarkViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        itemDarkViewBackground.getPaint().setColor(Design.getMainStyle());
+        itemDarkViewBackground.getPaint().setColor(mDefaultColor);
         mDarkItemView.setBackground(itemDarkViewBackground);
 
         mDarkTitleView = view.findViewById(R.id.personalization_activity_mode_item_dark_title_view);
@@ -179,11 +183,12 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
         mDarkTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mDarkSelectedView = view.findViewById(R.id.personalization_activity_mode_item_dark_check_image_view);
-        mDarkSelectedView.setColorFilter(Design.getMainStyle());
+        mDarkSelectedView.setColorFilter(mDefaultColor);
     }
 
-    public void onBind(int displayMode) {
+    public void onBind(int displayMode, int defaultColor) {
 
+        mDefaultColor = defaultColor;
         mDisplayMode = displayMode;
 
         mSystemSwitchView.setOnCheckedChangeListener(null);
@@ -244,18 +249,18 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
         mLightTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mDarkTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mSystemSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        mLightSelectedView.setColorFilter(Design.getMainStyle());
-        mDarkSelectedView.setColorFilter(Design.getMainStyle());
+        mLightSelectedView.setColorFilter(mDefaultColor);
+        mDarkSelectedView.setColorFilter(mDefaultColor);
 
         float radius = DESIGN_ITEM_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         ShapeDrawable itemLightViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        itemLightViewBackground.getPaint().setColor(Design.getMainStyle());
+        itemLightViewBackground.getPaint().setColor(mDefaultColor);
         mLightItemView.setBackground(itemLightViewBackground);
 
         ShapeDrawable itemDarkViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        itemDarkViewBackground.getPaint().setColor(Design.getMainStyle());
+        itemDarkViewBackground.getPaint().setColor(mDefaultColor);
         mDarkItemView.setBackground(itemDarkViewBackground);
     }
 }

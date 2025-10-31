@@ -26,23 +26,22 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final HelpActivity mHelpActivity;
 
-    private final static int ITEM_COUNT = 14;
+    private final static int ITEM_COUNT = 13;
 
-    private static final int SECTION_INFO = 4;
+    private static final int SECTION_INFO = 3;
 
-    protected static final int POSITION_HELP = 0;
-    protected static final int POSITION_FAQ = 1;
-    protected static final int POSITION_BLOG = 2;
-    protected static final int POSITION_FEEDBACK = 3;
-    protected static final int POSITION_WELCOME = 5;
-    protected static final int POSITION_QUALITY = 6;
-    protected static final int POSITION_PREMIUM = 7;
-    protected static final int POSITION_SPACES = 8;
-    protected static final int POSITION_PROFILE = 9;
-    protected static final int POSITION_CLICK_TO_CALL = 10;
-    protected static final int POSITION_CERTIFY_RELATION = 11;
-    protected static final int POSITION_ACCOUNT_TRANSFER = 12;
-    protected static final int POSITION_PROXY = 13;
+    protected static final int POSITION_FAQ = 0;
+    protected static final int POSITION_BLOG = 1;
+    protected static final int POSITION_FEEDBACK = 2;
+    protected static final int POSITION_WELCOME = 4;
+    protected static final int POSITION_QUALITY = 5;
+    protected static final int POSITION_PREMIUM = 6;
+    protected static final int POSITION_SPACES = 7;
+    protected static final int POSITION_PROFILE = 8;
+    protected static final int POSITION_CLICK_TO_CALL = 9;
+    protected static final int POSITION_CERTIFY_RELATION = 10;
+    protected static final int POSITION_ACCOUNT_TRANSFER = 11;
+    protected static final int POSITION_PROXY = 12;
 
     private static final int SECTION = 0;
     private static final int SUBSECTION = 1;
@@ -89,7 +88,7 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(position));
-            settingSectionViewHolder.onBind(getSubSectionTitle(position), false);
+            settingSectionViewHolder.onBind(getSubSectionTitle(position), true);
         }
     }
 
@@ -128,7 +127,7 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             } else if (viewType == SUBSECTION) {
                 SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(position));
-                settingSectionViewHolder.onBind(getSubSectionTitle(position), false);
+                settingSectionViewHolder.onBind(getSubSectionTitle(position), true);
             }
         }
 
@@ -161,7 +160,7 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             } else if (viewType == SUBSECTION) {
                 SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(position));
-                settingSectionViewHolder.onBind(getSubSectionTitle(position), false);
+                settingSectionViewHolder.onBind(getSubSectionTitle(position), true);
             }
         }
     }
@@ -173,10 +172,6 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         String title = "";
         switch (position) {
-
-            case POSITION_HELP:
-                title = mHelpActivity.getString(R.string.navigation_activity_getting_started);
-                break;
 
             case POSITION_FAQ:
                 title = mHelpActivity.getString(R.string.navigation_activity_faq);

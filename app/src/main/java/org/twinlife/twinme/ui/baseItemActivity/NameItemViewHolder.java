@@ -38,6 +38,7 @@ class NameItemViewHolder extends BaseItemViewHolder {
         super.onBind(item);
 
         mTextView.setText(((NameItem) item).getName());
+        mTextView.setTextColor(getBaseItemActivity().getCustomAppearance().getConversationBackgroundText());
 
         ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
         overlayLayoutParams.height = NAME_ITEM_HEIGHT;

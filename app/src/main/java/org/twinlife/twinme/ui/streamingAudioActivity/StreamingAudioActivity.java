@@ -220,6 +220,8 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
         setTitle(getString(R.string.streaming_audio_activity_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
+        applyInsets(R.id.streaming_audio_activity_layout, R.id.streaming_audio_activity_tool_bar, R.id.streaming_audio_activity_list_view, Design.TOOLBAR_COLOR, false);
+
         View searchView = findViewById(R.id.streaming_audio_activity_search_view);
         searchView.setBackgroundColor(Design.TOOLBAR_COLOR);
 
@@ -290,6 +292,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
         songsRecyclerView.setLayoutManager(streamingAudioLinearLayoutManager);
         songsRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         songsRecyclerView.setItemAnimator(null);
+        songsRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         StreamingAudioAdapter.OnSongClickListener onSongClickListener = position -> {
 

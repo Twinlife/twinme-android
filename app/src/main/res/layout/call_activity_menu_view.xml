@@ -196,6 +196,25 @@
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
             <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/call_activity_location_view"
+                app:layout_aspectRatio="100%"
+                android:layout_alignParentBottom="true">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/call_activity_location_background_view"
+                    android:scaleType="fitCenter"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="100%" />
+
+                <ImageView
+                    android:id="@+id/call_activity_location_image_view"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/call_location_icon"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="56%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/call_activity_certify_view"
                 app:layout_aspectRatio="100%"
                 android:layout_alignParentBottom="true">

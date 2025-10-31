@@ -13,6 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <View
+        android:id="@+id/add_call_participant_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/add_call_participant_activity_tool_bar"/>
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/add_call_participant_activity_search_view"
         android:layout_width="match_parent"
@@ -63,10 +69,70 @@
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/add_call_participant_activity_space_view"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/add_call_participant_activity_search_view">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/add_call_participant_activity_space_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="73.61%"
+            app:layout_marginStartPercent="5.87%">
+
+            <org.twinlife.twinme.utils.RoundedImageView
+                android:id="@+id/add_call_participant_activity_space_avatar_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+
+            <View
+                android:id="@+id/add_call_participant_activity_no_space_avatar_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/add_call_participant_activity_space_avatar"
+            android:layout_toRightOf="@id/add_call_participant_activity_space_avatar"
+            app:layout_widthPercent="48.53%"
+            app:layout_marginStartPercent="6.4%">
+
+            <TextView
+                android:id="@+id/add_call_participant_activity_space_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1" />
+
+            <TextView
+                android:id="@+id/add_call_participant_activity_profile_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/add_call_participant_activity_space_name_view"
+                android:ellipsize="end"
+                android:lines="1" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:id="@+id/add_call_participant_activity_current_space_view"
+            android:layout_centerVertical="true"
+            app:layout_heightPercent="44.44%"
+            app:layout_widthPercent="1.6%" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/add_call_participant_activity_layout_save_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/add_call_participant_activity_search_view"
+        android:layout_below="@+id/add_call_participant_activity_space_view"
         android:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView

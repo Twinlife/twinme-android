@@ -15,26 +15,38 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.core.splashscreen.SplashScreenViewProvider;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.TwincodeOutbound;
+import org.twinlife.twinlife.TwincodeOutboundService;
+import org.twinlife.twinlife.util.Utils;
+import org.twinlife.twinme.models.AccountMigration;
+import org.twinlife.twinme.models.Profile;
+import org.twinlife.twinme.services.AccountMigrationScannerService;
 import org.twinlife.twinme.services.SplashService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
+import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.welcomeActivity.WelcomeActivity;
+import org.twinlife.twinme.TwinmeApplication.Feature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +60,13 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
     private static final long MIN_ANIMATION_DURATION = 500;
     private static final long ANIMATION_DURATION = 1000;
 
+    private static final float DESIGN_PREMIUM_IMAGE_HEIGHT = 410f;
+
     private final List<View> animationList = new ArrayList<>();
     private SplashService mSplashService;
     private AnimatorSet mAnimatorSet;
     private TextView mUpgradeMessage;
+
     private long mStartTime;
     private boolean mReady = false;
     private boolean mStarted = false;
@@ -60,7 +75,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
     private ScheduledFuture<?> mSplashTimer = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onCreate: savedInstanceState=" + savedInstanceState);
         }
@@ -82,7 +97,8 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
                 View view = splashScreenView.getView();
                 PropertyValuesHolder propertyValuesHolderAlpha = PropertyValuesHolder.ofFloat(View.ALPHA, 1.0f, 0.0f);
                 ObjectAnimator alphaViewAnimator = ObjectAnimator.ofPropertyValuesHolder(view, propertyValuesHolderAlpha);
-                alphaViewAnimator.setDuration(500L);
+                alphaViewAnimator.setDuration(200L);
+                mAnimatorSet.start();
 
                 // Call SplashScreenView.remove at the end of your custom animation.
                 alphaViewAnimator.addListener(new AnimatorListenerAdapter() {
@@ -97,6 +113,8 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         }
 
         super.onCreate(savedInstanceState);
+
+        mCanShowLockScreen = false;
 
         TwinmeApplicationImpl twinmeApplication = TwinmeApplicationImpl.getInstance(this);
 
@@ -215,7 +233,15 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         intent.putExtra(Intents.INTENT_HAS_CONVERSATIONS, mHasConversations);
 
         UUID accountMigrationId = getTwinmeContext().getAccountMigrationService().getActiveDeviceMigrationId();
-        if (mState == TwinmeApplication.State.MIGRATION) {
+        if (getTwinmeApplication().screenLocked()) {
+            if (mState == TwinmeApplication.State.MIGRATION) {
+                intent.putExtra(Intents.INTENT_IS_MIGRATION, true);
+                intent.putExtra(Intents.INTENT_ACCOUNT_MIGRATION_ID, accountMigrationId);
+            }
+            intent.putExtra(Intents.INTENT_FROM_SPLASHSCREEN, true);
+            intent.setClass(this, LockScreenActivity.class);
+
+        } else if (mState == TwinmeApplication.State.MIGRATION) {
             intent.putExtra(Intents.INTENT_ACCOUNT_MIGRATION_ID, accountMigrationId);
             intent.setClass(this, AccountMigrationActivity.class);
         } else if (getTwinmeApplication().showWelcomeScreen()) {
@@ -260,18 +286,29 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
 
         mUpgradeMessage = findViewById(R.id.splashscreen_activity_twinme_upgrading);
         Design.updateTextFont(mUpgradeMessage, Design.FONT_REGULAR34);
-        mUpgradeMessage.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mUpgradeMessage.setTextColor(Color.WHITE);
+
+        ImageView premiumImageView = findViewById(R.id.splashscreen_activity_premium_image_view);
+
+        final TwinmeApplication twinmeApplication = getTwinmeApplication();
+        if (twinmeApplication.getInvitationSubscriptionImage() != null && twinmeApplication.isFeatureSubscribed(Feature.GROUP_CALL)) {
+            premiumImageView.setImageBitmap(BitmapFactory.decodeFile(twinmeApplication.getInvitationSubscriptionImage()));
+            premiumImageView.setVisibility(View.VISIBLE);
+        } else {
+            premiumImageView.setVisibility(View.GONE);
+        }
+        ViewGroup.LayoutParams layoutParams = premiumImageView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_PREMIUM_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
 
         logoView.setAlpha((float) 0.0);
         twinmeView.setAlpha((float) 0.0);
-        twinmeView.setColorFilter(Design.BLACK_COLOR);
+        premiumImageView.setAlpha((float) 0.0);
 
         animationList.clear();
 
         animationList.add(logoView);
         animationList.add(twinmeView);
-
-        setStatusBarColor(Design.WHITE_COLOR);
+        animationList.add(premiumImageView);
     }
 
     private void animate() {
@@ -313,7 +350,9 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
             }
         });
         mAnimatorSet.playTogether(animators);
-        mAnimatorSet.start();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            mAnimatorSet.start();
+        }
 
         // We cannot rely on the animation to terminate and move to the main activity because animations can
         // be disabled by the user on Android 12.  Use a specific timer to check and start the main activity.

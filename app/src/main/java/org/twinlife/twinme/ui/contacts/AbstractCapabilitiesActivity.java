@@ -10,7 +10,6 @@ package org.twinlife.twinme.ui.contacts;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ViewGroup;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
@@ -20,14 +19,14 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Capabilities;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.models.schedule.Date;
+import org.twinlife.twinme.models.schedule.DateTime;
+import org.twinlife.twinme.models.schedule.DateTimeRange;
+import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
-import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
-import org.twinlife.twinme.utils.OnboardingConfirmView;
+
+import java.util.TimeZone;
+
 
 public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "AbstractCapabilities...";
@@ -169,103 +168,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         super.onDestroy();
     }
 
-    public void showPremiumFeatureAlert(UIPremiumFeature.FeatureType featureType) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "showPremiumFeatureAlert");
-        }
-
-        ViewGroup viewGroup = findViewById(R.id.capabilities_activity_layout);
-
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
-
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
-            }
-
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                viewGroup.removeView(premiumFeatureConfirmView);
-                setStatusBarColor();
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
-
-        viewGroup.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-    }
-
-    public void showOnboardingView() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "showOnboardingView");
-        }
-
-        ViewGroup viewGroup = findViewById(R.id.capabilities_activity_layout);
-
-        OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
-        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
-        onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
-        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
-        onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
-
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                onboardingConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCancelClick() {
-                onboardingConfirmView.animationCloseConfirmView();
-                getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.REMOTE_CAMERA_SETTING, false);
-            }
-
-            @Override
-            public void onDismissClick() {
-                onboardingConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                viewGroup.removeView(onboardingConfirmView);
-
-                if (fromConfirmAction) {
-                    showPremiumFeatureAlert(UIPremiumFeature.FeatureType.CAMERA_CONTROL);
-                }
-
-                setStatusBarColor();
-            }
-        };
-        onboardingConfirmView.setObserver(observer);
-        viewGroup.addView(onboardingConfirmView);
-        onboardingConfirmView.show();
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-    }
-
     public void onSettingChangeValue(int switchTag, boolean value) {
 
         switch (switchTag) {
@@ -322,22 +224,14 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         if (DEBUG) {
             Log.d(LOG_TAG, "setUpdated");
         }
+    }
 
-        if (!mUIInitialized) {
-            return;
-        }
-
-        if (mCapabilities.hasAudio() == mAllowAudioCall && mCapabilities.hasVideo() == mAllowVideoCall) {
-            if (!mCanSave) {
-                return;
-            }
-            mCanSave = false;
-        } else {
-            if (mCanSave) {
-                return;
-            }
-            mCanSave = true;
-        }
+    protected Schedule createSchedule(){
+        DateTime start = new DateTime(mScheduleStartDate, mScheduleStartTime);
+        DateTime end = new DateTime(mScheduleEndDate, mScheduleEndTime);
+        Schedule schedule = new Schedule(TimeZone.getDefault(), new DateTimeRange(start, end));
+        schedule.setEnabled(mScheduleEnable);
+        return schedule;
     }
 
     protected void initSchedule() {
@@ -367,12 +261,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
     protected void onSelectControlCamera() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSelectControlCamera");
-        }
-
-        if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.REMOTE_CAMERA_SETTING)) {
-            showOnboardingView();
-        } else {
-            showPremiumFeatureAlert(UIPremiumFeature.FeatureType.CAMERA_CONTROL);
         }
     }
 }

@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.settingsActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -19,15 +20,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.models.SpaceSettings;
+import org.twinlife.twinme.services.SpaceSettingsService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.FontSize;
 import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.ui.spaces.MenuSelectColorView;
+import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 
-public class PersonalizationActivity extends AbstractSettingsActivity {
+public class PersonalizationActivity extends AbstractSettingsActivity implements SpaceSettingsService.Observer {
     private static final String LOG_TAG = "PersonalizationActivity";
     private static final boolean DEBUG = false;
 
@@ -36,6 +39,9 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
+
+    private SpaceSettingsService mSpaceSettingsService;
+    private SpaceSettings mDefaultSpaceSettings;
 
     //
     // Override TwinmeActivityImpl methods
@@ -49,12 +55,40 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
 
         super.onCreate(savedInstanceState);
 
+        mDefaultSpaceSettings = getTwinmeContext().getDefaultSpaceSettings();
+
         initViews();
+
+        mSpaceSettingsService = new SpaceSettingsService(this, getTwinmeContext(), this);
     }
 
     //
     // Override Activity methods
     //
+
+    @Override
+    protected void onDestroy() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onDestroy");
+        }
+
+        super.onDestroy();
+
+        mSpaceSettingsService.dispose();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -67,10 +101,49 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
         }
     }
 
+    public DisplayMode getDisplayMode() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getDisplayMode");
+        }
+
+        return  Design.getDisplayMode(Integer.parseInt(mDefaultSpaceSettings.getString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, DisplayMode.SYSTEM.ordinal() + "")));
+    }
+
+    public int getMainColor() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getMainColor");
+        }
+
+        return Design.getDefaultColor(mDefaultSpaceSettings.getStyle());
+    }
+
+    //
+    // Implement SpaceService.Observer methods
+    //
+
+    @Override
+    public void onUpdateDefaultSpaceSettings(SpaceSettings spaceSettings) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onUpdateDefaultSpaceSettings: spaceSettings=" + spaceSettings);
+        }
+
+        mDefaultSpaceSettings = spaceSettings;
+        Design.setupColor(PersonalizationActivity.this, getTwinmeApplication());
+        updateColor();
+        mPersonalizationListAdapter.notifyDataSetChanged();
+    }
+
     @Override
     public void onSettingClick(@NonNull UISetting<?> setting) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSettingClick");
+        }
+    }
+
+    @Override
+    public void onSettingClick(Settings.IntConfig intConfig) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSettingClick: intConfig= " + intConfig);
         }
     }
 
@@ -82,12 +155,18 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
     }
 
     @Override
+    public void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSettingChangeValue: booleanConfig=" + booleanConfig + " value=" + value);
+        }
+    }
+
+    @Override
     public void updateColor() {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateColor");
         }
 
-        Design.setupColor(this, getTwinmeApplication());
         Design.setTheme(this, getTwinmeApplication());
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         setStatusBarColor();
@@ -102,10 +181,20 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "selectedColor color=" + color);
         }
 
-        Design.setMainStyle(color);
+        if (color == null) {
+            color = Design.DEFAULT_COLOR;
+        }
 
+        mDefaultSpaceSettings.setStyle(color);
+
+        if (!getTwinmeApplication().hasCurrentSpace() || getTwinmeApplication().getCurrentSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
+            Design.setMainStyle(color);
+        }
+
+        saveDefaultSpaceSettings();
         mPersonalizationListAdapter.updateColor();
         updateColor();
+        mPersonalizationListAdapter.notifyDataSetChanged();
     }
 
     //
@@ -134,6 +223,9 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             public void onUpdateDisplayMode(DisplayMode displayMode) {
 
                 getTwinmeApplication().updateDisplayMode(displayMode);
+                mDefaultSpaceSettings.setString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, displayMode.ordinal() + "");
+                saveDefaultSpaceSettings();
+
                 Design.setupColor(PersonalizationActivity.this, getTwinmeApplication());
                 updateColor();
                 mPersonalizationListAdapter.updateColor();
@@ -158,19 +250,20 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             }
 
             @Override
-            public void onUpdateConversationColor() {
-
-                onConversationSettingsClick();
-            }
-
-            @Override
             public void onUpdateMainColor() {
 
                 onColorClick();
             }
+
+            @Override
+            public void onUpdateConversationColor() {
+
+                onConversationSettingsClick();
+            }
         };
 
         mPersonalizationListAdapter = new PersonalizationListAdapter(this, onPersonalizationClickListener);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         mPersonalizationRecyclerView = findViewById(R.id.personalization_activity_list_view);
         mPersonalizationRecyclerView.setLayoutManager(linearLayoutManager);
@@ -189,6 +282,14 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
         }
 
         mUIPostInitialized = true;
+    }
+
+    private void saveDefaultSpaceSettings() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "saveDefaultSpaceSettings");
+        }
+
+        mSpaceSettingsService.updateDefaultSpaceSettings(mDefaultSpaceSettings);
     }
 
     private void onConversationSettingsClick() {
@@ -219,12 +320,6 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             }
 
             @Override
-            public void onCustomColor() {
-                percentRelativeLayout.removeView(menuSelectColorView);
-                onPremiumFeatureClick();
-            }
-
-            @Override
             public void onResetColor() {
 
                 menuSelectColorView.animationCloseMenu();
@@ -243,51 +338,6 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
         percentRelativeLayout.addView(menuSelectColorView);
 
         menuSelectColorView.openMenu(getString(R.string.space_appearance_activity_theme), Design.getMainStyleString(), Design.DEFAULT_COLOR);
-
-        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-    }
-
-    private void onPremiumFeatureClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onPremiumFeatureClick");
-        }
-
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.personalization_activity_layout);
-
-        PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
-        premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.SPACES));
-
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
-            @Override
-            public void onConfirmClick() {
-                premiumFeatureConfirmView.redirectStore();
-            }
-
-            @Override
-            public void onCancelClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onDismissClick() {
-                premiumFeatureConfirmView.animationCloseConfirmView();
-            }
-
-            @Override
-            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
-                setStatusBarColor();
-                onColorClick();
-            }
-        };
-        premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
-        premiumFeatureConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

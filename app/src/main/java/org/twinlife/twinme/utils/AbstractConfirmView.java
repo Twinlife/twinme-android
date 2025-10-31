@@ -56,7 +56,7 @@ public class AbstractConfirmView extends PercentRelativeLayout {
         void onCloseViewAnimationEnd(boolean fromConfirmAction);
     }
 
-    private static final int DESIGN_AVATAR_MARGIN = 60;
+    protected static final int DESIGN_AVATAR_MARGIN = 60;
     protected static final int DESIGN_AVATAR_HEIGHT = 148;
     protected static final int DESIGN_ICON_VIEW_SIZE = 72;
     private static final int DESIGN_ICON_IMAGE_VIEW_HEIGHT = 32;
@@ -90,9 +90,10 @@ public class AbstractConfirmView extends PercentRelativeLayout {
     private boolean isOpenAnimationEnded = false;
     private boolean isCloseAnimationEnded = false;
 
-    private boolean mDefaultGroupAvatar = false;
+    protected boolean mDefaultGroupAvatar = false;
     private Bitmap mAvatar;
     private int mIcon = -1;
+    private int mIconColor = Color.TRANSPARENT;
     private String mTitle;
     private SpannableStringBuilder mSpannableTitle;
     private String mMessage;
@@ -176,6 +177,14 @@ public class AbstractConfirmView extends PercentRelativeLayout {
         }
 
         mIcon = icon;
+    }
+
+    public void setIconTintColor(int color) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setIconTintColor: " + color);
+        }
+
+        mIconColor = color;
     }
 
     public void setForceDarkMode(boolean forceDarkMode) {
@@ -377,7 +386,9 @@ public class AbstractConfirmView extends PercentRelativeLayout {
             iconBackgroundDrawable.setCornerRadius((int) ((DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO) * 0.5));
             iconBackgroundDrawable.setStroke(8, Color.WHITE);
             mIconView.setBackground(iconBackgroundDrawable);
+        }
 
+        if (mIconImageView != null) {
             mIconImageView.setColorFilter(Color.WHITE);
 
             layoutParams = mIconImageView.getLayoutParams();
@@ -460,6 +471,7 @@ public class AbstractConfirmView extends PercentRelativeLayout {
         }
 
         if (mIcon != -1 && mIconImageView != null) {
+            mIconImageView.setColorFilter(mIconColor);
             mIconImageView.setImageResource(mIcon);
         }
 
@@ -468,7 +480,8 @@ public class AbstractConfirmView extends PercentRelativeLayout {
             mAvatarView.setVisibility(VISIBLE);
 
             if (mDefaultGroupAvatar) {
-                mAvatarView.setBackgroundColor(Design.GREY_ITEM_COLOR);
+                mAvatarView.setColorFilter(Color.WHITE);
+                mAvatarView.setBackgroundColor(Color.parseColor(Design.DEFAULT_COLOR));
             }
         }
 

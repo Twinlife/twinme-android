@@ -56,6 +56,8 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
     private final View mSeparatorView;
     private final TextStyle mFont;
 
+    private final GradientDrawable mBackgroundAvatarDrawable;
+
     public UIContactViewHolder(@NonNull AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @IdRes int tagId, @IdRes int tagTitleId, @IdRes int tagImageId, @IdRes int certifiedId, @IdRes int separatorId, TextStyle font) {
         super(view);
 
@@ -64,6 +66,13 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
         mFont = font;
 
         mAvatarView = view.findViewById(avatarId);
+
+        mBackgroundAvatarDrawable = new GradientDrawable();
+        mBackgroundAvatarDrawable.mutate();
+        mBackgroundAvatarDrawable.setShape(GradientDrawable.OVAL);
+        mBackgroundAvatarDrawable.setCornerRadii(new float[]{0, 0, 0, 0, 0, 0, 0, 0});
+        mBackgroundAvatarDrawable.setColor(Color.TRANSPARENT);
+        mAvatarView.setBackground(mBackgroundAvatarDrawable);
 
         if (nameId != 0) {
             view.setBackgroundColor(Design.WHITE_COLOR);
@@ -158,6 +167,14 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
             mAvatarView.setImage(context, null,
                     new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
         });
+
+        if (uiContact.getContact().isGroup() && uiContact.getContact().getAvatarId() == null) {
+            mAvatarView.setColorFilter(Color.WHITE);
+            mBackgroundAvatarDrawable.setColor(Color.parseColor(Design.DEFAULT_COLOR));
+        } else {
+            mAvatarView.setColorFilter(Color.TRANSPARENT);
+            mBackgroundAvatarDrawable.setColor(Color.TRANSPARENT);
+        }
 
         if (mNameView != null) {
 

@@ -39,8 +39,6 @@ public class FatalErrorActivity extends Activity {
     private static final String LOG_TAG = "FatalErrorActivity";
     private static final boolean DEBUG = false;
 
-    private static final int DESIGN_MESSAGE_COLOR = Color.rgb(52, 54, 55);
-
     private String mMessage;
     private boolean mCustomMessage = false;
 

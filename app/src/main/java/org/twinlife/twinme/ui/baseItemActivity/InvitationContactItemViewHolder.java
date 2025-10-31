@@ -10,6 +10,7 @@
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ class InvitationContactItemViewHolder extends ItemViewHolder {
 
         mInvitationView = view.findViewById(R.id.base_item_activity_invitation_contact_item_invitation_view);
         Design.updateTextFont(mInvitationView, Design.FONT_REGULAR26);
+        mInvitationView.setTextColor(getBaseItemActivity().getCustomAppearance().getMessageTextColor());
 
         mDeleteView = view.findViewById(R.id.base_item_activity_invitation_contact_item_delete_view);
 
@@ -93,6 +95,10 @@ class InvitationContactItemViewHolder extends ItemViewHolder {
         }
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
+        mGradientDrawable.setColor(getBaseItemActivity().getCustomAppearance().getMessageBackgroundColor());
+        if (getBaseItemActivity().getCustomAppearance().getMessageBorderColor() != Color.TRANSPARENT) {
+            mGradientDrawable.setStroke(Design.BORDER_WIDTH, getBaseItemActivity().getCustomAppearance().getMessageBorderColor());
+        }
 
         mNameView.setText(invitation.getName());
         mInvitationView.setText(getString(R.string.conversation_activity_invitation_pending));

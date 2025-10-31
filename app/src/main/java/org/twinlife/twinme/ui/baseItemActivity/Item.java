@@ -46,6 +46,7 @@ public abstract class Item implements Comparable<Item> {
         INFO_COPY,
         INFO_FILE,
         TIME,
+        SECURITY_INFO,
         TYPING,
         MESSAGE,
         PEER_MESSAGE,
@@ -66,6 +67,8 @@ public abstract class Item implements Comparable<Item> {
         PEER_CALL,
         INVITATION_CONTACT,
         PEER_INVITATION_CONTACT,
+        LOCATION,
+        PEER_LOCATION,
         CLEAR,
         PEER_CLEAR
     }

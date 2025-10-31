@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
@@ -23,6 +24,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -66,11 +68,16 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerMessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
 import org.twinlife.twinme.ui.baseItemActivity.PreviewItemListAdapter;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
+import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
+import org.twinlife.twinme.ui.spaces.CustomAppearance;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.users.OnContactTouchListener;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIContactListAdapter;
 import org.twinlife.twinme.ui.users.UISelectableContact;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.ShareUtils;
 import org.twinlife.twinme.utils.async.Loader;
@@ -78,6 +85,7 @@ import org.twinlife.twinme.utils.async.LoaderListener;
 import org.twinlife.twinme.utils.async.Manager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -90,15 +98,31 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private static final String LOG_TAG = "ShareActivity";
     private static final boolean DEBUG = false;
 
+    private static final int PROFILE_VIEW_COLOR = Color.argb(255, 143, 150, 164);
+
     private static final float DESIGN_SELECTED_BOTTOM_MARGIN = 40f;
+    private static final float DESIGN_SPACE_VIEW_HEIGHT = 144f;
     private static final float DESIGN_EDIT_TEXT_WIDTH_INSET = 32f;
     private static final float DESIGN_EDIT_TEXT_HEIGHT_INSET = 20f;
     private static final float DESIGN_EDIT_TEXT_RADIUS = 18f;
     private static final float DESIGN_COMMENT_VIEW_HEIGHT = 140f;
     private static int SELECTED_BOTTOM_MARGIN;
+    private static int SPACE_VIEW_HEIGHT;
+
+    private static final float DESIGN_ITEM_ROUND_CORNER_RADIUS_DP = 8f;
+
+    private static final int CHANGE_SPACE = 1;
+
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
+    private View mSpaceView;
+    private TextView mSpaceNameView;
+    private TextView mProfileView;
+    private RoundedImageView mAvatarView;
+    private GradientDrawable mGradientDrawable;
+    private View mNoSpaceAvatarView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
     private View mSelectedUIContactView;
     private UIContactListAdapter mSelectedUIContactListAdapter;
     private RecyclerView mSelectedUIContactRecyclerView;
@@ -122,6 +146,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private ShareService mShareService;
 
     private Menu mMenu;
+    private Space mSpace;
 
     @Nullable
     private DescriptorId mForwardDescriptorId;
@@ -134,6 +159,8 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private Manager<Item> mAsyncItemLoader;
 
     private int maxRootViewHeight = 0;
+
+    private boolean mShareExternalContent = false;
 
     //
     // Override TwinmeActivityImpl methods
@@ -199,6 +226,22 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
+    protected void onResume() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onResume");
+        }
+
+        super.onResume();
+
+        if (mShareExternalContent && getTwinmeApplication().screenLocked() && getTwinmeApplication().isInBackground()) {
+            mShareExternalContent = false;
+            Intent intent = new Intent();
+            intent.setClass(this, LockScreenActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onCreateOptionsMenu: menu=" + menu);
@@ -259,15 +302,36 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CHANGE_SPACE) {
+            String value = data != null ? data.getStringExtra(Intents.INTENT_SPACE_SELECTION) : null;
+            if (value != null) {
+                mShareService.getSpace(UUID.fromString(value));
+            }
+        }
+    }
+
     //
     // Override TwinmeActivityImpl methods
     //
+
 
     @Override
     public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetSpace: space=" + space);
         }
+
+        mSpace = space;
+
+        updateSpace();
     }
 
     @Override
@@ -276,6 +340,9 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             Log.d(LOG_TAG, "onSetCurrentSpace: space=" + space);
         }
 
+        mSpace = space;
+
+        updateSpace();
     }
 
     @Override
@@ -661,6 +728,26 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         return Design.FONT_REGULAR32;
     }
 
+    @Override
+    @NonNull
+    public CustomAppearance getCustomAppearance() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getCustomAppearance");
+        }
+
+        return new CustomAppearance();
+    }
+
+    @Override
+    public void saveGeolocationMap(@NonNull Uri path, @NonNull DescriptorId descriptorId) {
+
+    }
+
+
+    public void getMapAvatar(@Nullable UUID peerTwincodeOutboundId, @NonNull TwinmeContext.Consumer<Bitmap> uiConsumer) {
+        uiConsumer.accept(null);
+    }
+
     //
     // Implement LoaderListener methods
     //
@@ -774,6 +861,40 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
             return false;
         });
+
+        mSpaceNameView = findViewById(R.id.share_activity_space_name_view);
+        mSpaceNameView.setTypeface(Design.FONT_MEDIUM44.typeface);
+        mSpaceNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM44.size);
+        mSpaceNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileView = findViewById(R.id.share_activity_profile_name_view);
+        mProfileView.setTypeface(Design.FONT_REGULAR32.typeface);
+        mProfileView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
+        mProfileView.setTextColor(PROFILE_VIEW_COLOR);
+
+        mAvatarView = findViewById(R.id.share_activity_space_avatar_view);
+
+        mSpaceView = findViewById(R.id.share_activity_space_view);
+        mSpaceView.setOnClickListener(v -> onSpaceClick());
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = SPACE_VIEW_HEIGHT;
+
+        View currentSpaceView = findViewById(R.id.share_activity_current_space_view);
+
+        mGradientDrawable = new GradientDrawable();
+        mGradientDrawable.mutate();
+        mGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        currentSpaceView.setBackground(mGradientDrawable);
+
+        mNoSpaceAvatarView = findViewById(R.id.share_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
 
         mSelectedUIContactView = findViewById(R.id.share_activity_layout_selected_view);
         mSelectedUIContactView.setBackgroundColor(Design.WHITE_COLOR);
@@ -981,6 +1102,65 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         return false;
     }
 
+    private void onSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSwitchSpaceClick");
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivityForResult(intent, CHANGE_SPACE);
+    }
+
+    private void updateSpace() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateSpace");
+        }
+
+        if (!mUIInitialized || mSpace == null) {
+
+            return;
+        }
+
+        if (mShareService.numberSpaces(false) == 1) {
+            mSpaceView.setVisibility(View.GONE);
+        } else {
+            mSpaceView.setVisibility(View.VISIBLE);
+        }
+
+        mSpaceNameView.setText(mSpace.getName());
+        if (mSpace.getProfile() != null) {
+            mProfileView.setText(mSpace.getProfile().getName());
+        }
+
+        float corner = DESIGN_ITEM_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+        float[] radii = new float[8];
+        Arrays.fill(radii, corner);
+
+        if (mSpace.hasSpaceAvatar()) {
+            mAvatarView.setVisibility(View.VISIBLE);
+            mNoSpaceAvatarView.setVisibility(View.GONE);
+            mShareService.getSpaceImage(mSpace, (Bitmap spaceAvatar) ->
+                    mAvatarView.setImageBitmap(spaceAvatar, radii));
+
+        } else {
+            mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+            mAvatarView.setVisibility(View.GONE);
+            mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+        }
+
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            mGradientDrawable.setCornerRadii(new float[]{corner, corner, 0, 0, 0, 0, corner, corner});
+        } else {
+            mGradientDrawable.setCornerRadii(new float[]{0, 0, corner, corner, corner, corner, 0, 0});
+        }
+
+        mGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_GREY));
+        mNoSpaceAvatarGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_GREY));
+    }
+
     @NonNull
     private ArrayList<Uri> importFiles(@NonNull Intent intent) {
         if (DEBUG) {
@@ -1011,5 +1191,6 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         }
 
         SELECTED_BOTTOM_MARGIN = (int) (DESIGN_SELECTED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        SPACE_VIEW_HEIGHT = (int) (DESIGN_SPACE_VIEW_HEIGHT * Design.HEIGHT_RATIO);
     }
 }

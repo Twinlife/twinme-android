@@ -26,6 +26,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -45,11 +46,16 @@ import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.services.GroupInvitationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.RoundedImageView;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -61,6 +67,10 @@ import java.util.UUID;
 public class AcceptGroupInvitationActivity extends AbstractGroupActivity implements GroupInvitationService.Observer {
     private static final String LOG_TAG = "AcceptGroupInvitation";
     private static final boolean DEBUG = false;
+
+    private static final int MOVE_TO_SPACE = 1;
+
+    private static final float DESIGN_SPACE_ROUND_CORNER_RADIUS_DP = 14f;
 
     private static final int BULLET_COLOR = Color.rgb(213, 213, 213);
     private static final int DESIGN_AVATAR_MARGIN = 60;
@@ -89,6 +99,14 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
     private View mConfirmView;
     private TextView mConfirmTextView;
     private View mCancelView;
+    private TextView mSpaceNameView;
+    private TextView mProfileView;
+    private TextView mSpaceTitleView;
+    private View mSpaceView;
+    private View mNoSpaceAvatarView;
+    private TextView mNoSpaceAvatarTextView;
+    private GradientDrawable mNoSpaceAvatarGradientDrawable;
+    private RoundedImageView mSpaceAvatarView;
 
     private int mRootHeight = 0;
     private int mActionHeight = 0;
@@ -146,6 +164,10 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
     private boolean mAccepting = false;
     @Nullable
     private GroupInvitationService mGroupInvitationService;
+    @Nullable
+    private Space mSpace;
+    @Nullable
+    private Space mInitialSpace;
 
     //
     // Override TwinlifeActivityImpl methods
@@ -196,6 +218,22 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         }
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == MOVE_TO_SPACE) {
+            final UUID spaceId = data != null ? Utils.UUIDFromString(data.getStringExtra(Intents.INTENT_SPACE_SELECTION)) : null;
+            if (spaceId != null && mGroupInvitationService != null) {
+                mGroupInvitationService.getSpace(spaceId);
+            }
+        }
     }
 
     @Override
@@ -253,6 +291,10 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         mInvitation = invitation;
         mGroup = (Originator) conversation.getSubject();
         updateViews();
+
+        if (mInitialSpace != mSpace && mGroupInvitationService != null && mSpace != null) {
+            mGroupInvitationService.moveGroupToSpace(mSpace, (Group) conversation.getSubject());
+        }
     }
 
     @Override
@@ -271,6 +313,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             Log.d(LOG_TAG, "onMoveGroup group=" + group);
         }
 
+        updateViews();
     }
 
     @Override
@@ -280,6 +323,21 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         }
 
         mInvitation = invitation;
+        updateViews();
+    }
+
+    @Override
+    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCurrentSpace: space=" + space);
+        }
+
+        mSpace = space;
+
+        if (mInitialSpace == null) {
+            mInitialSpace = space;
+        }
+
         updateViews();
     }
 
@@ -500,6 +558,48 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
 
+        mSpaceTitleView = findViewById(R.id.accept_group_invitation_activity_space_title_view);
+        mSpaceTitleView.setTypeface(Design.FONT_BOLD26.typeface);
+        mSpaceTitleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD26.size);
+        mSpaceTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceTitleView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
+
+        mSpaceView = findViewById(R.id.accept_group_invitation_activity_space_view);
+        mSpaceView.setOnClickListener(view -> onSpaceClick());
+
+        layoutParams = mSpaceView.getLayoutParams();
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceView.getLayoutParams();
+        marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
+
+        mSpaceAvatarView = findViewById(R.id.accept_group_invitation_activity_space_avatar_view);
+
+        mNoSpaceAvatarView = findViewById(R.id.accept_group_invitation_activity_no_space_avatar_view);
+
+        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
+        mNoSpaceAvatarGradientDrawable.mutate();
+        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
+
+        mNoSpaceAvatarTextView = findViewById(R.id.accept_group_invitation_activity_no_space_avatar_text_view);
+        mNoSpaceAvatarTextView.setTypeface(Design.FONT_BOLD44.typeface);
+        mNoSpaceAvatarTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD44.size);
+        mNoSpaceAvatarTextView.setTextColor(Color.WHITE);
+
+        mSpaceNameView = findViewById(R.id.accept_group_invitation_activity_space_name_view);
+        mSpaceNameView.setTypeface(Design.FONT_MEDIUM34.typeface);
+        mSpaceNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM34.size);
+        mSpaceNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mProfileView = findViewById(R.id.accept_group_invitation_activity_profile_name_view);
+        mProfileView.setTypeface(Design.FONT_MEDIUM32.typeface);
+        mProfileView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
+        mProfileView.setTextColor(Design.FONT_COLOR_GREY);
+
         mConfirmView.setOnClickListener(v -> onAcceptClick());
 
         radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -577,7 +677,23 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         mCancelView.setAlpha(0.5f);
         mConfirmView.setAlpha(0.5f);
 
+        if (mInitialSpace != null && mSpace != null && !mInitialSpace.getId().equals(mSpace.getId())) {
+            mGroupInvitationService.setCurrentSpace(mInitialSpace);
+        }
+
         mGroupInvitationService.declineInvitation();
+    }
+
+    private void onSpaceClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSwitchSpaceClick");
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_PICKER_MODE, true);
+        intent.setClass(this, SpacesActivity.class);
+
+        startActivityForResult(intent, MOVE_TO_SPACE);
     }
 
     private void onDismissClick() {
@@ -594,7 +710,11 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             Log.d(LOG_TAG, "onBackClick");
         }
 
-        finish();
+        if (mInitialSpace != null && mSpace != null && mGroupInvitationService != null && !mInitialSpace.getId().equals(mSpace.getId())) {
+            mGroupInvitationService.setCurrentSpace(mInitialSpace);
+        }
+
+        animationCloseInvitationView();
     }
 
     private void showAcceptView() {
@@ -616,7 +736,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             Log.d(LOG_TAG, "updateViews");
         }
 
-        if (!mUIInitialized) {
+        if (!mUIInitialized || mGroupInvitationService == null) {
 
             return;
         }
@@ -635,13 +755,47 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
 
         if (mGroupAvatar == null || mGroupAvatar == getTwinmeApplication().getDefaultGroupAvatar()) {
             mAvatarView.setImageBitmap(getTwinmeApplication().getDefaultGroupAvatar());
-            mAvatarView.setBackgroundColor(Design.GREY_ITEM_COLOR);
+            mAvatarView.setColorFilter(Color.WHITE);
+            mAvatarView.setBackgroundColor(Color.parseColor(Design.DEFAULT_COLOR));
         } else {
+            mAvatarView.setColorFilter(Color.TRANSPARENT);
             mAvatarView.setImageBitmap(mGroupAvatar);
             mAvatarView.setBackgroundColor(Color.TRANSPARENT);
         }
 
+        if (mSpace != null) {
+            mSpaceNameView.setText(mSpace.getName());
+            if (mSpace.getProfile() != null) {
+                mProfileView.setText(mSpace.getProfile().getName());
+            }
+
+            float corner = DESIGN_SPACE_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+            float[] radii = new float[8];
+            Arrays.fill(radii, corner);
+
+            if (mSpace.hasSpaceAvatar()) {
+                mSpaceAvatarView.setVisibility(View.VISIBLE);
+                mNoSpaceAvatarView.setVisibility(View.GONE);
+                mNoSpaceAvatarTextView.setVisibility(View.GONE);
+                mGroupInvitationService.getSpaceImage(mSpace, (Bitmap avatar) -> {
+                    mSpaceAvatarView.setImageBitmap(avatar, radii);
+                });
+            } else {
+                mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
+                mSpaceAvatarView.setVisibility(View.GONE);
+                mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+                mNoSpaceAvatarTextView.setVisibility(View.VISIBLE);
+
+                String name = mSpace.getName();
+                if (!name.isEmpty()) {
+                    mNoSpaceAvatarTextView.setText(name.substring(0, 1).toUpperCase());
+                }
+            }
+            mNoSpaceAvatarGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_DEFAULT));
+        }
+
         if (mInvitation != null && mContact != null) {
+            ViewGroup.MarginLayoutParams marginSpaceLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceTitleView.getLayoutParams();
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = 0;
 
@@ -651,8 +805,11 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             mContactImageView.setVisibility(View.VISIBLE);
             mBulletView.setVisibility(View.VISIBLE);
             mIconView.setVisibility(View.VISIBLE);
+            mSpaceTitleView.setVisibility(View.VISIBLE);
+            mSpaceView.setVisibility(View.VISIBLE);
 
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfirmView.getLayoutParams();
+
             switch (mInvitation.getStatus()) {
                 case PENDING:
                     mIconView.setVisibility(View.GONE);
@@ -678,6 +835,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mInvitationStatusImageView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.conversation_activity_invitation_accepted));
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_accepted);
+                    mSpaceTitleView.setVisibility(View.INVISIBLE);
+                    mSpaceView.setVisibility(View.GONE);
+                    marginSpaceLayoutParams.topMargin = 0;
                     break;
 
                 case JOINED:
@@ -691,6 +851,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mIconView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.conversation_activity_invitation_joined));
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_joined);
+                    mSpaceTitleView.setVisibility(View.GONE);
+                    mSpaceView.setVisibility(View.GONE);
+                    marginSpaceLayoutParams.topMargin = 0;
                     break;
 
                 case WITHDRAWN:
@@ -704,6 +867,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mIconView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.accept_group_invitation_activity_deleted));
                     mInvitationStatusImageView.setImageResource(R.drawable.action_delete);
+                    mSpaceTitleView.setVisibility(View.GONE);
+                    mSpaceView.setVisibility(View.GONE);
+                    marginSpaceLayoutParams.topMargin = 0;
                     break;
 
                 default:
@@ -717,6 +883,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mIconView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.conversation_activity_invitation_refused));
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_refused);
+                    mSpaceTitleView.setVisibility(View.GONE);
+                    mSpaceView.setVisibility(View.GONE);
+                    marginSpaceLayoutParams.topMargin = 0;
                     break;
 
             }
@@ -727,6 +896,8 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             mContactImageView.setVisibility(View.GONE);
             mBulletView.setVisibility(View.GONE);
             mIconView.setVisibility(View.GONE);
+            mSpaceTitleView.setVisibility(View.GONE);
+            mSpaceView.setVisibility(View.GONE);
 
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);

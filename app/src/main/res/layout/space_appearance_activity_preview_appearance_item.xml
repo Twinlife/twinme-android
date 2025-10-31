@@ -36,7 +36,7 @@
             android:layout_alignParentBottom="true"
             app:layout_aspectRatio="100%"
             app:layout_marginStartPercent="3.47%"
-            app:layout_marginEndPercent="3.47%" />
+            app:layout_marginEndPercent="3.47%"/>
 
         <TextView
             android:id="@+id/preview_appearance_peer_message_item_text"

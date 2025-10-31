@@ -24,18 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/about_activity_message_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:background="@android:color/transparent"
-                android:text="@string/about_activity_message"
-                app:layout_marginEndPercent="4.53%"
-                app:layout_marginStartPercent="4.53%"
-                app:layout_marginTopPercent="1.5%"
-                app:layout_marginBottomPercent="1.5%" />
-
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/about_activity_version_view"
                 android:layout_width="match_parent"
@@ -263,6 +251,7 @@
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
     </ScrollView>
+
 
 
 
