@@ -1,9 +1,13 @@
 [versions]
+min-sdk-version = "21"
+target-sdk-version = "35"
+compile-sdk-version = "android-35"
 androidJunit5 = "1.13.4.0"
 androidTestCore = "1.8.0"
 annotation = "1.9.1"
 billing = "6.1.0"
 collection = "1.5.0"
+desugar_jdk_libs = "2.1.5"
 testCore = "1.7.0"
 core = "1.16.0"
 coreSplashscreen = "1.1.0-rc01"
@@ -54,6 +58,7 @@ androidx-media3-transformer = { module = "androidx.media3:media3-transformer", v
 androidx-percentlayout = { module = "androidx.percentlayout:percentlayout", version.ref = "percentlayout" }
 androidx-sharetarget = { module = "androidx.sharetarget:sharetarget", version.ref = "sharetarget" }
 billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-recyclerview = { module = "com.github.bumptech.glide:recyclerview-integration", version.ref = "glide" }
 firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }

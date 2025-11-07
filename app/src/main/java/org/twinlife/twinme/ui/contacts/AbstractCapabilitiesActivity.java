@@ -213,7 +213,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
-    public void showOnboardingView() {
+    public void showOnboardingView(boolean hideCancelAction) {
         if (DEBUG) {
             Log.d(LOG_TAG, "showOnboardingView");
         }
@@ -229,6 +229,10 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
+
+        if (hideCancelAction) {
+            onboardingConfirmView.hideCancelView();
+        }
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
             @Override
@@ -251,7 +255,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
                 viewGroup.removeView(onboardingConfirmView);
 
-                if (fromConfirmAction) {
+                if (fromConfirmAction && !hideCancelAction) {
                     showPremiumFeatureAlert(UIPremiumFeature.FeatureType.CAMERA_CONTROL);
                 }
 
@@ -370,7 +374,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         }
 
         if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.REMOTE_CAMERA_SETTING)) {
-            showOnboardingView();
+            showOnboardingView(false);
         } else {
             showPremiumFeatureAlert(UIPremiumFeature.FeatureType.CAMERA_CONTROL);
         }

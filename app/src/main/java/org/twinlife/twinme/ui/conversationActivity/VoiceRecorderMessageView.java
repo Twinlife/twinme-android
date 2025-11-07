@@ -452,8 +452,6 @@ public class VoiceRecorderMessageView extends PercentRelativeLayout implements A
         }
 
         mConversationActivity.hapticFeedback();
-        mConversationActivity.showProgressBar(true);
-        mAudioRecorder.stop();
         mAudioRecorder.getRecording();
 
         if (mCounterDown != null) {
@@ -617,11 +615,21 @@ public class VoiceRecorderMessageView extends PercentRelativeLayout implements A
         mConversationActivity.showProgressBar(false);
 
         releaseRecorder();
+        mConversationActivity.onDeleteRecording();
     }
 
     @Override
     public void onTimerUpdated(long duration, int amplitude) {
         updateDuration(duration, amplitude);
+    }
+
+    @Override
+    public void onRecordingProcessing() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onRecordingProcessing");
+        }
+
+        mConversationActivity.showProgressBar(true);
     }
 
     @Override

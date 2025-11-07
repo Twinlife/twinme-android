@@ -295,7 +295,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             mBarTopInset = bars.top;
             mBarBottomInset = bars.bottom;
-
+            
             v.setBackgroundColor(backgroundColor);
 
             int topPadding = isFullScreen ? 0 : bars.top;
@@ -318,7 +318,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
                 }
             }
 
-            v.setPadding(bars.left, topPadding, bars.right, bottomPadding);
+            v.setPadding(0, topPadding, 0, bottomPadding);
 
             return WindowInsetsCompat.CONSUMED;
         });

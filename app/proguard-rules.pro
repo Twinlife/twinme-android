@@ -106,6 +106,9 @@
 -keep class net.sqlcipher.database.** {
     *;
 }
+-keep class net.sqlcipher.CharArrayBuffer {
+    *;
+}
   
 -keep class org.twinlife.twinlife.crypto.CryptoKey {
     *;

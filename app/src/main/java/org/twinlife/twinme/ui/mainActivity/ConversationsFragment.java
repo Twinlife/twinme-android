@@ -21,6 +21,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -55,6 +56,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AndroidDeviceInfo;
 import org.twinlife.twinlife.BaseService.ErrorCode;
@@ -1181,7 +1183,10 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         marginLayoutParams.rightMargin = Design.BUTTON_MARGIN;
 
         mRestrictionView = view.findViewById(R.id.conversations_fragment_restriction_view);
-        mRestrictionView.setOnClickListener(v -> onAddRestrictionClick());
+        mRestrictionView.setOnClickListener(v -> onRestrictionClick());
+
+        RestrictionView.Observer observer = this::startQualityOfServices;
+        mRestrictionView.setObserver(observer);
 
         layoutParams = mRestrictionView.getLayoutParams();
         layoutParams.width = Design.DISPLAY_WIDTH;
@@ -1303,9 +1308,64 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         startActivity(intent);
     }
 
-    private void onAddRestrictionClick() {
+    private void onRestrictionClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onAddRestrictionClick");
+            Log.d(LOG_TAG, "onRestrictionClick");
+        }
+
+        // This fragment is detached and has no activity: ignore the action.
+        if (!isAdded()) {
+            return;
+        }
+
+        if (mTwinmeActivity != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                final AndroidDeviceInfo androidDeviceInfo = new AndroidDeviceInfo(mTwinmeActivity);
+
+                boolean postNotificationEnable = true;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    postNotificationEnable = mTwinmeActivity.checkPermissionsWithoutRequest(new TwinmeActivity.Permission[]{TwinmeActivity.Permission.POST_NOTIFICATIONS});
+                }
+
+                // Order of checks must be the same as in RestrictionView.updateView().
+                Intent intent = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
+                    if (!mTwinmeActivity.checkPermissions(new TwinmeActivity.Permission[]{TwinmeActivity.Permission.POST_NOTIFICATIONS})) {
+                        intent = new Intent();
+                        intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                        intent.putExtra("android.provider.extra.APP_PACKAGE", mTwinmeActivity.getPackageName());
+                    }
+                } else if (!NotificationManagerCompat.from(mTwinmeActivity).areNotificationsEnabled()) {
+                    intent = new Intent();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                        intent.putExtra("android.provider.extra.APP_PACKAGE", mTwinmeActivity.getPackageName());
+                    } else {
+                        intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                        intent.putExtra("app_package", mTwinmeActivity.getPackageName());
+                        intent.putExtra("app_uid", mTwinmeActivity.getApplicationInfo().uid);
+                    }
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && androidDeviceInfo.isNetworkRestricted()) {
+                    intent = new Intent(android.provider.Settings.ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS);
+                    intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && androidDeviceInfo.isBackgroundRestricted()) {
+                    intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+                } else if (!androidDeviceInfo.isIgnoringBatteryOptimizations()) {
+                    intent = new Intent();
+                    intent.setAction(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                }
+
+                if (intent != null) {
+                    startActivity(intent);
+                }
+            }
+        }
+    }
+
+    private void startQualityOfServices() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startQualityOfServices");
         }
 
         // This fragment is detached and has no activity: ignore the action.
@@ -1319,7 +1379,9 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             startActivity(intent);
             mTwinmeActivity.overridePendingTransition(0, 0);
         }
+
     }
+
 
     private void notifyConversationListChanged() {
         if (DEBUG) {

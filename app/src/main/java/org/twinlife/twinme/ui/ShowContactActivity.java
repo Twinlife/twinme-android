@@ -39,6 +39,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
@@ -61,6 +62,7 @@ import org.twinlife.twinme.ui.contacts.MenuCertifyView;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
+import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
@@ -575,6 +577,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         Design.updateTextFont(newFeatureTitleView, Design.FONT_MEDIUM30);
         newFeatureTitleView.setTextColor(Color.WHITE);
         newFeatureTitleView.setPadding(Design.NEW_FEATURE_PADDING, 0, Design.NEW_FEATURE_PADDING, 0);
+        newFeatureTitleView.setOnClickListener(view -> showControlCameraOnboarding());
 
         layoutParams = newFeatureTitleView.getLayoutParams();
         layoutParams.height = Design.NEW_FEATURE_HEIGHT;
@@ -1171,6 +1174,56 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
                 percentRelativeLayout.removeView(onboardingConfirmView);
+                setFullscreen();
+            }
+        };
+
+        onboardingConfirmView.setObserver(observer);
+        percentRelativeLayout.addView(onboardingConfirmView);
+        onboardingConfirmView.show();
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    public void showControlCameraOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showControlCameraOnboarding");
+        }
+
+        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_contact_activity_layout);
+
+        OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
+        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        onboardingConfirmView.setLayoutParams(layoutParams);
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
+        onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
+        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));
+        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.hideCancelView();
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+                getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.REMOTE_CAMERA_SETTING, false);
+            }
+
+            @Override
+            public void onDismissClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                percentRelativeLayout.removeView(onboardingConfirmView);
+
                 setFullscreen();
             }
         };

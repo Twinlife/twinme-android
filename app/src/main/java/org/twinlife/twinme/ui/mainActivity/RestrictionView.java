@@ -32,6 +32,12 @@ public class RestrictionView extends PercentRelativeLayout {
     private static final String LOG_TAG = "RestrictionView";
     private static final boolean DEBUG = false;
 
+    public interface Observer {
+
+        void onRestrictionInfoClick();
+    }
+
+
     private static final int DESIGN_BACKGROUND_COLOR = Color.argb(255, 56, 56, 56);
     private static final int DESIGN_ACCESSORY_COLOR = Color.argb(255, 97, 97, 97);
     private static final int DESIGN_MESSAGE_COLOR = Color.argb(255, 195, 195, 195);
@@ -40,7 +46,7 @@ public class RestrictionView extends PercentRelativeLayout {
     private static final int DESIGN_MESSAGE_MARGIN = 16;
     private static final int DESIGN_NOTIFICATION_HEIGHT = 40;
     private static final int DESIGN_ACCESSORY_SIZE = 60;
-    private static final int DESIGN_ACCESSORY_IMAGE_SIZE = 22;
+    private static final int DESIGN_ACCESSORY_IMAGE_SIZE = 40;
     private static final int DESIGN_ACCESSORY_RADIUS = 8;
 
     private View mRestrictionContentView;
@@ -49,6 +55,7 @@ public class RestrictionView extends PercentRelativeLayout {
     private TextView mMessageTextView;
 
     private boolean mLowUsage = false;
+    private Observer mObserver;
 
     public RestrictionView(Context context) {
 
@@ -77,6 +84,14 @@ public class RestrictionView extends PercentRelativeLayout {
     public RestrictionView(Context context, AttributeSet attrs, int defStyle) {
 
         super(context, attrs, defStyle);
+    }
+
+    public void setObserver(Observer observer) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setObserver");
+        }
+
+        mObserver = observer;
     }
 
     public void updateView(boolean backgroundRestricted, boolean networkRestricted, boolean lowUsage, boolean notificationDisabled) {
@@ -196,10 +211,22 @@ public class RestrictionView extends PercentRelativeLayout {
         layoutParams = accessoryView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_ACCESSORY_SIZE * Design.HEIGHT_RATIO);
 
+        accessoryView.setOnClickListener(view -> onInfoClick());
+
         ImageView accessoryImageView = findViewById(R.id.restriction_accessory_image_view);
         accessoryImageView.setColorFilter(Color.WHITE);
 
         layoutParams = accessoryImageView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_ACCESSORY_IMAGE_SIZE * Design.HEIGHT_RATIO);
+    }
+
+    private void onInfoClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onInfoClick");
+        }
+
+        if (mObserver != null) {
+            mObserver.onRestrictionInfoClick();
+        }
     }
 }

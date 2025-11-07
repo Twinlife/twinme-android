@@ -1653,14 +1653,30 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
                 if (fromConfirmAction) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        final AndroidDeviceInfo androidDeviceInfo = new AndroidDeviceInfo(getApplicationContext());
+
+                        boolean postNotificationEnable = true;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
+                        }
+
+                        // Order of checks must be the same as in RestrictionView.updateView().
                         Intent intent = null;
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && androidDeviceInfo.isNetworkRestricted()) {
-                            intent = new Intent(android.provider.Settings.ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS);
-                            intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
-                        } else if (!androidDeviceInfo.isIgnoringBatteryOptimizations()) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
+                            if (!checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
+                                intent = new Intent();
+                                intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
+                            }
+                        } else if (!NotificationManagerCompat.from(defaultConfirmView.getContext()).areNotificationsEnabled()) {
                             intent = new Intent();
-                            intent.setAction(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
+                            } else {
+                                intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                                intent.putExtra("app_package", getPackageName());
+                                intent.putExtra("app_uid", getApplicationInfo().uid);
+                            }
                         }
 
                         if (intent != null) {

@@ -15,22 +15,24 @@ android {
             }
         }
     }
-    compileSdkVersion 35
+    compileSdkVersion libs.versions.compile.sdk.version.get()
     buildFeatures {
         buildConfig = true
     }
     defaultConfig {
         applicationId "org.twinlife.device.android.twinme"
-        minSdkVersion 21
-        targetSdkVersion 35
-        versionCode 496
-        versionName "31.2"
+        minSdkVersion libs.versions.min.sdk.version.get() as int
+        targetSdkVersion libs.versions.target.sdk.version.get() as int
+        versionCode 497
+        versionName "31.3"
         manifestPlaceholders.domainName = "twin.me"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
     }
     namespace 'org.twinlife.device.android.twinme'
     compileOptions {
+        coreLibraryDesugaringEnabled true
+
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -154,6 +156,8 @@ dependencies {
     implementation libs.glide.recyclerview
 
     implementation libs.installreferrer
+
+    coreLibraryDesugaring libs.desugar.jdk.libs
 
     // Support for Chooser Target (Replaced by direct share targets in Android 10)
     runtimeOnly libs.androidx.sharetarget
