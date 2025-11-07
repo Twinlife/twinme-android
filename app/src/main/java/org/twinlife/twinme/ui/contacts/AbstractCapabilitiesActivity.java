@@ -263,4 +263,10 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onSelectControlCamera");
         }
     }
+
+    protected void showOnboardingView(boolean hideCancelAction) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showOnboardingView");
+        }
+    }
 }

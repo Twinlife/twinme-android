@@ -154,7 +154,6 @@
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/TwinmeThemeWithNoActionBar" />
         <!--  Use singleTask for CallActivity to avoid multiple launches by Android -->
@@ -762,7 +761,6 @@
             android:name="org.twinlife.twinme.ui.streamingAudioActivity.StreamingAudioActivity"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity

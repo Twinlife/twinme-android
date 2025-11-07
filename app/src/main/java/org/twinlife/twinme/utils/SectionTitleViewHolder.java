@@ -78,9 +78,13 @@ public class SectionTitleViewHolder extends RecyclerView.ViewHolder {
         updateViews(title, hideSeparator, false);
     }
 
-    public void onBind(String title, boolean hideSeparator, boolean isNewFeature) {
+    public void onBind(String title, boolean hideSeparator, boolean isNewFeature, Runnable runnable) {
 
         updateViews(title, hideSeparator, isNewFeature);
+
+        if (runnable != null) {
+            mNewFeatureView.setOnClickListener(view -> runnable.run());
+        }
     }
 
     private void updateViews(String title, boolean hideSeparator, boolean isNewFeature) {

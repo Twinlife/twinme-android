@@ -6280,7 +6280,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         if (!medias.isEmpty()) {
             Item item = medias.get(itemIndex);
-            if (item.needsUpdateReadTimestamp()) {
+            if (item.needsUpdateReadTimestamp() && item.isPeerItem()) {
                 markDescriptorRead(item.getDescriptorId());
             }
         }
