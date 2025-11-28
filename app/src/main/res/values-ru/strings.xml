@@ -955,6 +955,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Проверьте состояние вашего подключения к сервису</string>
     <string name="settings_advanced_activity_status_connection_title">Состояние подключения</string>
+    <string name="settings_advanced_activity_telecom_enable">Опыт звонков на Android</string>
+    <string name="settings_advanced_activity_telecom_information">По умолчанию приложение не интегрируется со службой звонков Android, поскольку эта интеграция может вызывать проблемы с приёмом вызовов в определённых ситуациях и на определённых устройствах. Вы можете включить эту интеграцию для более эффективного управления вызовами, если у вас нет подобных проблем.</string>
+    <string name="settings_advanced_activity_telecom">ЗВОНКИ</string>
     <string name="settings_advanced_activity_title">Расширенные настройки</string>
 
     <!-- SettingsActivity -->

@@ -32,8 +32,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
-import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,7 +51,6 @@ import org.twinlife.twinme.ui.users.UISelectableContact;
 import org.twinlife.twinme.ui.users.UISelectableContactListAdapter;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.RoundedImageView;
-import org.twinlife.twinme.utils.AlertMessageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;

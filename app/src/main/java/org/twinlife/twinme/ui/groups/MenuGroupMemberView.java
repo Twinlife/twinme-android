@@ -16,6 +16,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
@@ -84,11 +86,7 @@ public class MenuGroupMemberView extends PercentRelativeLayout {
         }
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (inflater != null) {
-            View view = inflater.inflate(R.layout.group_member_activity_menu_view, (ViewGroup) getParent());
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-        }
+        inflater.inflate(R.layout.group_member_activity_menu_view, this, true);
         initViews();
     }
 
@@ -260,12 +258,29 @@ public class MenuGroupMemberView extends PercentRelativeLayout {
         scrollIndicatorBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
         mActionView.setBackground(scrollIndicatorBackground);
 
+        View sliderMarkView = findViewById(R.id.group_member_activity_menu_slide_mark_view);
+
+        ViewGroup.LayoutParams layoutParams = sliderMarkView.getLayoutParams();
+        layoutParams.height = Design.SLIDE_MARK_HEIGHT;
+
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.mutate();
+        gradientDrawable.setColor(Color.rgb(244, 244, 244));
+        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        sliderMarkView.setBackground(gradientDrawable);
+
+        float corner = ((float)Design.SLIDE_MARK_HEIGHT / 2) * Resources.getSystem().getDisplayMetrics().density;
+        gradientDrawable.setCornerRadius(corner);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) sliderMarkView.getLayoutParams();
+        marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
+
         mAvatarView = findViewById(R.id.group_member_activity_menu_avatar_view);
 
-        ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
+        layoutParams = mAvatarView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
 
-        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams = (MarginLayoutParams) mAvatarView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_AVATAR_MARGIN * Design.HEIGHT_RATIO);
 
         mNameView = findViewById(R.id.group_member_activity_menu_name_view);
@@ -331,6 +346,8 @@ public class MenuGroupMemberView extends PercentRelativeLayout {
                 bottomInset = insets.getInsets(WindowInsets.Type.systemBars()).bottom;
             }
         }
+
+        mActionView.setPadding(0, 0, 0, bottomInset);
 
         return actionViewHeight + mNameView.getHeight() + bottomInset;
     }

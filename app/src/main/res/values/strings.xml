@@ -983,6 +983,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Check the status of your connection to the service</string>
     <string name="settings_advanced_activity_status_connection_title">Connection status</string>
+    <string name="settings_advanced_activity_telecom_enable">"Android calling experience"</string>
+    <string name="settings_advanced_activity_telecom_information">By default, the application does not integrate the Android calling experience, as this integration can cause call reception problems in certain situations and on certain devices. You can enable this integration for better call management, if you are not experiencing these problems.</string>
+    <string name="settings_advanced_activity_telecom">CALLS</string>
     <string name="settings_advanced_activity_title">Advanced settings</string>
 
     <!-- SettingsActivity -->

@@ -19,12 +19,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.models.schedule.Date;
 import org.twinlife.twinme.models.schedule.Time;
-import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.SelectValueViewHolder;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 

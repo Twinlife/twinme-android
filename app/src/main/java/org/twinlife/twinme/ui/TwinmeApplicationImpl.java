@@ -32,7 +32,6 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 
 import org.twinlife.device.android.twinme.BuildConfig;
-
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConnectionStatus;
@@ -44,6 +43,7 @@ import org.twinlife.twinlife.Twincode;
 import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.NotificationCenter;
 import org.twinlife.twinme.TwinmeContext;
+import org.twinlife.twinme.calls.CallService;
 import org.twinlife.twinme.configuration.Configuration;
 import org.twinlife.twinme.glide.FileDescriptorLoader;
 import org.twinlife.twinme.glide.MediaInfoImageLoader;
@@ -54,16 +54,14 @@ import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.notificationCenter.NotificationCenterImpl;
 import org.twinlife.twinme.services.AdminService;
-import org.twinlife.twinme.calls.CallService;
 import org.twinlife.twinme.services.PeerService;
-import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.EmojiSize;
 import org.twinlife.twinme.skin.FontSize;
 import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.utils.AppStateInfo;
-import org.twinlife.twinme.utils.InCallInfo;
 import org.twinlife.twinme.utils.FileInfo;
+import org.twinlife.twinme.utils.InCallInfo;
 import org.twinlife.twinme.utils.TwinmeActivityImpl;
 import org.twinlife.twinme.utils.coachmark.CoachMark;
 import org.twinlife.twinme.utils.coachmark.CoachMarkManager;
@@ -335,10 +333,13 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
                 break;
 
             case TWINLIFE_OFFLINE:
-                if (!getTwinmeContext().getConnectivityService().isConnectedNetwork()) {
+                final ConnectionStatus connectionStatus = getTwinmeContext().getConnectionStatus();
+                if (connectionStatus == ConnectionStatus.NO_INTERNET) {
                     message = R.string.application_no_network_connectivity;
-                } else {
+                } else if (connectionStatus == ConnectionStatus.CONNECTING) {
                     message = R.string.application_not_connected;
+                } else {
+                    message = R.string.application_not_signed_in;
                 }
                 break;
 
@@ -1523,6 +1524,28 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         Settings.showSpaceDescription.setBoolean(false).save();
+    }
+
+    //
+    // Telecom
+    //
+
+    @Override
+    public boolean isTelecomEnable() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isTelecomEnable");
+        }
+
+        return Settings.useTelecom.getBoolean();
+    }
+
+    @Override
+    public void setUseTelecom(boolean enable) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setUseTelecom");
+        }
+
+        Settings.useTelecom.setBoolean(enable).save();
     }
 
     //

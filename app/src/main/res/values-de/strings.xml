@@ -955,6 +955,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Prüfen Sie den Status Ihrer Verbindung zum Dienst.</string>
     <string name="settings_advanced_activity_status_connection_title">Verbindungsstatus</string>
+    <string name="settings_advanced_activity_telecom_enable">Android-Anruferfahrung</string>
+    <string name="settings_advanced_activity_telecom_information">Standardmäßig integriert die Anwendung nicht die Android-Anruffunktion, da diese Integration in bestimmten Situationen und auf bestimmten Geräten zu Problemen beim Anrufempfang führen kann. Wenn Sie diese Probleme nicht feststellen, können Sie die Integration für eine bessere Anrufverwaltung aktivieren.</string>
+    <string name="settings_advanced_activity_telecom">ANRUFE</string>
     <string name="settings_advanced_activity_title">Erweiterte Einstellungen</string>
 
     <!-- SettingsActivity -->

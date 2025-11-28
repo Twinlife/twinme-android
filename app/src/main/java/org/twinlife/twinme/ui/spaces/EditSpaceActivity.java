@@ -44,7 +44,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -856,13 +855,9 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_space_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_space_activity_layout);
 
         DeleteSpaceConfirmView deleteSpaceConfirmView = new DeleteSpaceConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteSpaceConfirmView.setLayoutParams(layoutParams);
-
         deleteSpaceConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
         deleteSpaceConfirmView.setAvatar(mSpaceAvatar, false);
 
@@ -890,13 +885,12 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteSpaceConfirmView);
+                viewGroup.removeView(deleteSpaceConfirmView);
                 setFullscreen();
             }
         };
         deleteSpaceConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(deleteSpaceConfirmView);
+        viewGroup.addView(deleteSpaceConfirmView);
         deleteSpaceConfirmView.show();
 
         Window window = getWindow();
@@ -925,12 +919,9 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_space_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_space_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPhotoView.setLayoutParams(layoutParams);
-
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
             public void onCameraClick() {
@@ -949,7 +940,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.WHITE_COLOR);
@@ -957,7 +948,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));

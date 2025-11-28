@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -450,12 +449,9 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
             message = getString(R.string.invitation_call_activity_generate_code_message);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.invitation_external_call_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.invitation_external_call_activity_layout);
 
         ResetInvitationConfirmView resetInvitationConfirmView = new ResetInvitationConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        resetInvitationConfirmView.setLayoutParams(layoutParams);
         resetInvitationConfirmView.setAvatar(mAvatar, false);
         resetInvitationConfirmView.setMessage(message);
 
@@ -478,12 +474,11 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(resetInvitationConfirmView);
+                viewGroup.removeView(resetInvitationConfirmView);
             }
         };
         resetInvitationConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(resetInvitationConfirmView);
+        viewGroup.addView(resetInvitationConfirmView);
         resetInvitationConfirmView.show();
     }
 }

@@ -25,11 +25,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,8 +40,8 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuCallCapabilitiesView extends PercentRelativeLayout {
-    private static final String LOG_TAG = "MenuCallCapabiliti...";
+public class MenuCallCapabilitiesView extends RelativeLayout {
+    private static final String LOG_TAG = "MenuCallCapabilities";
     private static final boolean DEBUG = false;
 
     public interface Observer {
@@ -82,17 +81,9 @@ public class MenuCallCapabilitiesView extends PercentRelativeLayout {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.menu_call_capabilities, null);
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.menu_call_capabilities, this, true);
+        initViews();
     }
 
     public void setObserver(Observer observer) {
@@ -122,7 +113,7 @@ public class MenuCallCapabilitiesView extends PercentRelativeLayout {
                 break;
         }
 
-        mMenuCallCapabilitiesAdapter.notifyDataSetChanged();
+        mMenuCallCapabilitiesAdapter.notifyItemChanged(switchTag - 1);
     }
 
     public boolean isCapabilitiesOn(int switchTag) {
@@ -156,7 +147,7 @@ public class MenuCallCapabilitiesView extends PercentRelativeLayout {
         mAllowVideoCall = capabilities.hasVideo();
         mAllowGroupCall = capabilities.hasGroupCall();
 
-        mMenuCallCapabilitiesAdapter.notifyDataSetChanged();
+        mMenuCallCapabilitiesAdapter.notifyItemRangeChanged(0, MenuCallCapabilitiesAdapter.ITEM_COUNT);
 
         ViewGroup.LayoutParams layoutParams = mActionView.getLayoutParams();
         layoutParams.height = getActionViewHeight();
@@ -263,7 +254,7 @@ public class MenuCallCapabilitiesView extends PercentRelativeLayout {
 
         mMenuCallCapabilitiesAdapter = new MenuCallCapabilitiesAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity, RecyclerView.VERTICAL, false);
-        RecyclerView menuRecyclerView = findViewById(R.id.menu_call_capabilites_activity_list_view);
+        RecyclerView menuRecyclerView = findViewById(R.id.menu_call_capabilities_activity_list_view);
         menuRecyclerView.setLayoutManager(linearLayoutManager);
         menuRecyclerView.setAdapter(mMenuCallCapabilitiesAdapter);
         menuRecyclerView.setItemAnimator(null);
@@ -284,7 +275,7 @@ public class MenuCallCapabilitiesView extends PercentRelativeLayout {
             }
         });
 
-        mActionView = findViewById(R.id.menu_call_capabilites_action_view);
+        mActionView = findViewById(R.id.menu_call_capabilities_action_view);
         mActionView.setY(Design.DISPLAY_HEIGHT);
 
         float radius = Design.ACTION_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -292,15 +283,17 @@ public class MenuCallCapabilitiesView extends PercentRelativeLayout {
 
         ShapeDrawable scrollIndicatorBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         scrollIndicatorBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
-        ViewCompat.setBackground(mActionView, scrollIndicatorBackground);
+        mActionView.setBackground(scrollIndicatorBackground);
 
-        mTitleView = findViewById(R.id.menu_call_capabilites_title_view);
+        mTitleView = findViewById(R.id.menu_call_capabilities_title_view);
         Design.updateTextFont(mTitleView, Design.FONT_MEDIUM36);
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_TITLE_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_TITLE_MARGIN * Design.WIDTH_RATIO);
     }
 
     private int getActionViewHeight() {

@@ -35,7 +35,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Profile;
@@ -777,13 +776,9 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         if (mSpace != null && mSpace.getProfile() != null && mSpaceService.numberSpaces(true) <= 1) {
             showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.show_space_fragment_move_message), true, null);
         } else if (mSpace != null && mSpace.getProfile() == null) {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_space_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.show_space_activity_layout);
 
             SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            spaceActionConfirmView.setLayoutParams(layoutParams);
-
             spaceActionConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
             spaceActionConfirmView.setAvatar(mSpaceAvatar, false);
             spaceActionConfirmView.setIcon(R.drawable.action_bar_add_contact);
@@ -811,13 +806,12 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(spaceActionConfirmView);
+                    viewGroup.removeView(spaceActionConfirmView);
                     setFullscreen();
                 }
             };
             spaceActionConfirmView.setObserver(observer);
-
-            percentRelativeLayout.addView(spaceActionConfirmView);
+            viewGroup.addView(spaceActionConfirmView);
             spaceActionConfirmView.show();
 
             Window window = getWindow();
@@ -960,13 +954,9 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_space_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.show_space_activity_layout);
 
         SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        spaceActionConfirmView.setLayoutParams(layoutParams);
-
         spaceActionConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
         spaceActionConfirmView.setAvatar(mSpaceAvatar, false);
 
@@ -994,13 +984,12 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(spaceActionConfirmView);
+                viewGroup.removeView(spaceActionConfirmView);
                 setFullscreen();
             }
         };
         spaceActionConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(spaceActionConfirmView);
+        viewGroup.addView(spaceActionConfirmView);
         spaceActionConfirmView.show();
 
         Window window = getWindow();

@@ -25,7 +25,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -357,12 +356,9 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
             Log.d(LOG_TAG, "onDeleteActionClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_files_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_files_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setAvatar(mAvatar, mAvatar == null || mAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
 
@@ -385,13 +381,12 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
                 setStatusBarColor();
             }
         };
         deleteConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

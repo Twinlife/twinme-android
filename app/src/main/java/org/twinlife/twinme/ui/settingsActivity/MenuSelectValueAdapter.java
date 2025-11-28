@@ -20,12 +20,11 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
-
+import org.twinlife.twinlife.DisplayCallsMode;
 import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinlife.DisplayCallsMode;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 

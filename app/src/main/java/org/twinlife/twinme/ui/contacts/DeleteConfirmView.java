@@ -14,8 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import androidx.percentlayout.widget.PercentRelativeLayout;
-
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 
@@ -36,11 +34,8 @@ public class DeleteConfirmView extends AbstractConfirmView {
 
         try {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             View view = inflater.inflate(R.layout.delete_confirm_view, null);
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
             addView(view);
-
             initViews();
         } catch (Exception e) {
             e.printStackTrace();

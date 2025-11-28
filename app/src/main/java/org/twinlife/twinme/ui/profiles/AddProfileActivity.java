@@ -40,7 +40,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Profile;
@@ -52,8 +51,8 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.AcceptInvitationActivity;
 import org.twinlife.twinme.ui.AddContactActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.inAppSubscriptionActivity.InvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InvitationSubscriptionActivity;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.AvatarView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
@@ -555,11 +554,9 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.add_profile_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.add_profile_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPhotoView.setLayoutParams(layoutParams);
 
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
@@ -579,14 +576,14 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 setStatusBarColor();
             }
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));
@@ -637,12 +634,9 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             Log.d(LOG_TAG, "showOnboarding");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.add_profile_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.add_profile_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.hideTitleView();
         defaultConfirmView.hideCancelView();
 
@@ -681,7 +675,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 mNameView.requestFocus();
@@ -690,7 +684,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -704,13 +698,9 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.add_profile_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.add_profile_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
-
         onboardingConfirmView.setTitle(getString(R.string.application_profile));
 
         boolean darkMode = false;
@@ -752,12 +742,12 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(onboardingConfirmView);
+                viewGroup.removeView(onboardingConfirmView);
                 setStatusBarColor();
             }
         };
         onboardingConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(onboardingConfirmView);
+        viewGroup.addView(onboardingConfirmView);
         onboardingConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

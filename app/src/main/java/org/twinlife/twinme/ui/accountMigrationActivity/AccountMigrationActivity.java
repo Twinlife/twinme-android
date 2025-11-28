@@ -42,7 +42,6 @@ import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AccountMigrationService.QueryInfo;
@@ -332,12 +331,9 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.account_migration_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.account_migration_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
         defaultConfirmView.setMessage(getString(R.string.account_migration_activity_confirm_cancel_message));
 
@@ -370,7 +366,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -381,7 +377,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         Window window = getWindow();
@@ -514,12 +510,9 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
                 mIsAlertMessage = true;
                 mStatusTransferTextView.setText(message);
 
-                PercentRelativeLayout percentRelativeLayout = findViewById(R.id.account_migration_activity_layout);
+                ViewGroup viewGroup = findViewById(R.id.account_migration_activity_layout);
 
                 AlertMessageView alertMessageView = new AlertMessageView(this, null);
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-                alertMessageView.setLayoutParams(layoutParams);
                 alertMessageView.setMessage(message);
 
                 AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -536,7 +529,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
                     @Override
                     public void onCloseViewAnimationEnd() {
-                        percentRelativeLayout.removeView(alertMessageView);
+                        viewGroup.removeView(alertMessageView);
                         mIsAlertMessage = false;
                         setStatusBarColor();
                         onCancelConfirmedClick();
@@ -544,7 +537,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
                 };
                 alertMessageView.setObserver(observer);
 
-                percentRelativeLayout.addView(alertMessageView);
+                viewGroup.addView(alertMessageView);
                 alertMessageView.show();
 
                 int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

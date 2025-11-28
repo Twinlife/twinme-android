@@ -954,6 +954,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Sprawdź stan połączenia z usługą</string>
     <string name="settings_advanced_activity_status_connection_title">Stan połączenia</string>
+    <string name="settings_advanced_activity_telecom_enable">Doświadczenie połączeń w systemie Android</string>
+    <string name="settings_advanced_activity_telecom_information">Domyślnie aplikacja nie integruje funkcji połączeń w systemie Android, ponieważ integracja ta może powodować problemy z odbiorem połączeń w niektórych sytuacjach i na niektórych urządzeniach. Możesz włączyć tę integrację, aby usprawnić zarządzanie połączeniami, jeśli nie występują u Ciebie te problemy.</string>
+    <string name="settings_advanced_activity_telecom">POŁĄCZENIA</string>
     <string name="settings_advanced_activity_title">Ustawienia zaawansowane</string>
 
     <!-- SettingsActivity -->

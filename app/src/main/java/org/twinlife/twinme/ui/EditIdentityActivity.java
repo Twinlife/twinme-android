@@ -33,7 +33,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.TwinmeContext;
@@ -770,11 +769,9 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_identity_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_identity_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPhotoView.setLayoutParams(layoutParams);
 
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
@@ -794,7 +791,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.WHITE_COLOR);
@@ -802,7 +799,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));

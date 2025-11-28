@@ -38,9 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/onboarding_confirm_view_title_view"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             android:scaleType="fitCenter"
             app:layout_aspectRatio="100%"/>
-        
+
         <TextView
             android:id="@+id/onboarding_confirm_view_message_view"
             android:layout_width="wrap_content"

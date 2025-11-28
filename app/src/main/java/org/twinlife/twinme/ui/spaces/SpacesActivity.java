@@ -29,7 +29,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -392,13 +391,9 @@ public class SpacesActivity extends AbstractSpaceActivity {
                 } else if (space.getProfile() == null) {
 
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
-                        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.spaces_activity_layout);
+                        ViewGroup viewGroup = findViewById(R.id.spaces_activity_layout);
 
                         SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT);
-                        spaceActionConfirmView.setLayoutParams(layoutParams);
-
                         spaceActionConfirmView.setSpaceName(space.getSpaceSettings().getName(), space.getSpaceSettings().getStyle());
                         spaceActionConfirmView.setAvatar(avatar, false);
                         spaceActionConfirmView.setIcon(R.drawable.action_bar_add_contact);
@@ -426,13 +421,12 @@ public class SpacesActivity extends AbstractSpaceActivity {
 
                             @Override
                             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                                percentRelativeLayout.removeView(spaceActionConfirmView);
+                                viewGroup.removeView(spaceActionConfirmView);
                                 setStatusBarColor();
                             }
                         };
                         spaceActionConfirmView.setObserver(observer);
-
-                        percentRelativeLayout.addView(spaceActionConfirmView);
+                        viewGroup.addView(spaceActionConfirmView);
                         spaceActionConfirmView.show();
 
                         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -442,13 +436,9 @@ public class SpacesActivity extends AbstractSpaceActivity {
                     showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_move_contact_already_in_space), false, null);
                 } else {
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
-                        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.spaces_activity_layout);
+                        ViewGroup viewGroup = findViewById(R.id.spaces_activity_layout);
 
                         SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT);
-                        spaceActionConfirmView.setLayoutParams(layoutParams);
-
                         spaceActionConfirmView.setSpaceName(space.getSpaceSettings().getName(), space.getSpaceSettings().getStyle());
                         spaceActionConfirmView.setAvatar(avatar, false);
                         spaceActionConfirmView.setIcon(R.drawable.move_contacts_icon);
@@ -477,13 +467,12 @@ public class SpacesActivity extends AbstractSpaceActivity {
 
                             @Override
                             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                                percentRelativeLayout.removeView(spaceActionConfirmView);
+                                viewGroup.removeView(spaceActionConfirmView);
                                 setStatusBarColor();
                             }
                         };
                         spaceActionConfirmView.setObserver(observer);
-
-                        percentRelativeLayout.addView(spaceActionConfirmView);
+                        viewGroup.addView(spaceActionConfirmView);
                         spaceActionConfirmView.show();
 
                         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -496,13 +485,9 @@ public class SpacesActivity extends AbstractSpaceActivity {
                 } else if (space.getProfile() == null) {
 
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
-                        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.spaces_activity_layout);
+                        ViewGroup viewGroup = findViewById(R.id.spaces_activity_layout);
 
                         SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT);
-                        spaceActionConfirmView.setLayoutParams(layoutParams);
-
                         spaceActionConfirmView.setSpaceName(space.getSpaceSettings().getName(), space.getSpaceSettings().getStyle());
                         spaceActionConfirmView.setAvatar(avatar, false);
                         spaceActionConfirmView.setIcon(R.drawable.action_bar_add_contact);
@@ -530,13 +515,12 @@ public class SpacesActivity extends AbstractSpaceActivity {
 
                             @Override
                             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                                percentRelativeLayout.removeView(spaceActionConfirmView);
+                                viewGroup.removeView(spaceActionConfirmView);
                                 setStatusBarColor();
                             }
                         };
                         spaceActionConfirmView.setObserver(observer);
-
-                        percentRelativeLayout.addView(spaceActionConfirmView);
+                        viewGroup.addView(spaceActionConfirmView);
                         spaceActionConfirmView.show();
 
                         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -546,13 +530,9 @@ public class SpacesActivity extends AbstractSpaceActivity {
                     showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_move_group_already_in_space), false, null);
                 } else {
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
-                        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.spaces_activity_layout);
+                        ViewGroup viewGroup = findViewById(R.id.spaces_activity_layout);
 
                         SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-                        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT);
-                        spaceActionConfirmView.setLayoutParams(layoutParams);
-
                         spaceActionConfirmView.setSpaceName(space.getSpaceSettings().getName(), space.getSpaceSettings().getStyle());
                         spaceActionConfirmView.setAvatar(avatar, false);
                         spaceActionConfirmView.setIcon(R.drawable.move_contacts_icon);
@@ -581,13 +561,12 @@ public class SpacesActivity extends AbstractSpaceActivity {
 
                             @Override
                             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                                percentRelativeLayout.removeView(spaceActionConfirmView);
+                                viewGroup.removeView(spaceActionConfirmView);
                                 setStatusBarColor();
                             }
                         };
                         spaceActionConfirmView.setObserver(observer);
-
-                        percentRelativeLayout.addView(spaceActionConfirmView);
+                        viewGroup.addView(spaceActionConfirmView);
                         spaceActionConfirmView.show();
 
                         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

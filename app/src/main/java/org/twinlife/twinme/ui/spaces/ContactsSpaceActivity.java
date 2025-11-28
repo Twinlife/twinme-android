@@ -30,7 +30,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -435,13 +434,9 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
         }
 
         mSpaceService.getSpaceImage(mSpace, (Bitmap avatar) -> {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.contacts_space_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.contacts_space_activity_layout);
 
             SpaceActionConfirmView spaceActionConfirmView = new SpaceActionConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            spaceActionConfirmView.setLayoutParams(layoutParams);
-
             spaceActionConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
             spaceActionConfirmView.setAvatar(avatar, false);
             spaceActionConfirmView.setIconTintColor(Color.WHITE);
@@ -481,13 +476,12 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(spaceActionConfirmView);
+                    viewGroup.removeView(spaceActionConfirmView);
                     setStatusBarColor();
                 }
             };
             spaceActionConfirmView.setObserver(observer);
-
-            percentRelativeLayout.addView(spaceActionConfirmView);
+            viewGroup.addView(spaceActionConfirmView);
             spaceActionConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

@@ -956,6 +956,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Comprueba el estado de tu conexión al servicio</string>
     <string name="settings_advanced_activity_status_connection_title">Estado de la conexión</string>
+    <string name="settings_advanced_activity_telecom_enable">Experiencia de llamadas de Android</string>
+    <string name="settings_advanced_activity_telecom_information">De forma predeterminada, la aplicación no integra la experiencia de llamadas de Android, ya que esta integración puede causar problemas de recepción de llamadas en ciertas situaciones y en ciertos dispositivos. Puedes habilitar esta integración para una mejor gestión de llamadas si no experimentas estos problemas.</string>
+    <string name="settings_advanced_activity_telecom">LLAMADAS</string>
     <string name="settings_advanced_activity_title">Configuración avanzada</string>
 
     <!-- SettingsActivity -->

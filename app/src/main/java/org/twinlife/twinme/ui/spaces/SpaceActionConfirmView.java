@@ -23,9 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.core.view.ViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
-
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.AbstractConfirmView;
@@ -55,17 +52,9 @@ public class SpaceActionConfirmView extends AbstractConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.space_action_confirm_view, null);
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.space_action_confirm_view, this, true);
+        initViews();
     }
 
     public  void setSpaceName(String spaceName, String spaceStyle) {
@@ -89,7 +78,7 @@ public class SpaceActionConfirmView extends AbstractConfirmView {
 
         ShapeDrawable textDrawableBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         textDrawableBackground.getPaint().setColor(color);
-        ViewCompat.setBackground(mSpaceNameView, textDrawableBackground);
+        mSpaceNameView.setBackground(textDrawableBackground);
     }
 
     @Override
@@ -143,7 +132,7 @@ public class SpaceActionConfirmView extends AbstractConfirmView {
 
         ShapeDrawable drawableBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         drawableBackground.getPaint().setColor(Color.WHITE);
-        ViewCompat.setBackground(mNoAvatarView, drawableBackground);
+        mNoAvatarView.setBackground(drawableBackground);
 
         ViewGroup.LayoutParams layoutParams = mNoAvatarView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO);
@@ -179,6 +168,6 @@ public class SpaceActionConfirmView extends AbstractConfirmView {
 
         ShapeDrawable confirmViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         confirmViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mConfirmView, confirmViewBackground);
+        mConfirmView.setBackground(confirmViewBackground);
     }
 }

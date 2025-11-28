@@ -954,6 +954,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Periksa status koneksi Anda ke layanan</string>
     <string name="settings_advanced_activity_status_connection_title">Status koneksi</string>
+    <string name="settings_advanced_activity_telecom_enable">Pengalaman panggilan Android</string>
+    <string name="settings_advanced_activity_telecom_information">Secara default, aplikasi ini tidak mengintegrasikan pengalaman panggilan Android, karena integrasi ini dapat menyebabkan masalah penerimaan panggilan dalam situasi dan perangkat tertentu. Anda dapat mengaktifkan integrasi ini untuk manajemen panggilan yang lebih baik, jika Anda tidak mengalami masalah ini.</string>
+    <string name="settings_advanced_activity_telecom">PANGGILAN</string>
     <string name="settings_advanced_activity_title">Pengaturan lanjutan</string>
 
     <!-- SettingsActivity -->

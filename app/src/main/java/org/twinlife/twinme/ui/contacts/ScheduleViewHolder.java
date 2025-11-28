@@ -116,7 +116,7 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
         String formatDate = "dd MMM yyyy";
         String formatTime;
         if (DateFormat.is24HourFormat(context)) {
-            formatTime = "kk:mm";
+            formatTime = "HH:mm";
         } else {
             formatTime = "hh:mm a";
         }

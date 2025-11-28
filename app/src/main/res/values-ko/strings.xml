@@ -955,6 +955,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">서비스 연결 상태를 확인하세요.</string>
     <string name="settings_advanced_activity_status_connection_title">연결 상태</string>
+    <string name="settings_advanced_activity_telecom_enable">Android 통화 환경</string>
+    <string name="settings_advanced_activity_telecom_information">기본적으로 이 애플리케이션은 Android 통화 환경을 통합하지 않습니다. 이 통합으로 인해 특정 상황이나 특정 기기에서 통화 수신 문제가 발생할 수 있기 때문입니다. 이러한 문제가 발생하지 않으면 이 통합을 활성화하여 통화 관리를 개선할 수 있습니다.</string>
+    <string name="settings_advanced_activity_telecom">통화</string>
     <string name="settings_advanced_activity_title">고급 설정</string>
 
     <!-- SettingsActivity -->

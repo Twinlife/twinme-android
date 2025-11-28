@@ -15,9 +15,6 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -38,17 +35,9 @@ public class InvitationCodeShareView extends AbstractConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.invitation_code_share_view, null);
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.invitation_code_share_view, this, true);
+        initViews();
     }
 
     @Override

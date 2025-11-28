@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -323,12 +322,9 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
             Log.d(LOG_TAG, "openMenuColor");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.space_appearance_activity_content_view);
+        ViewGroup viewGroup = findViewById(R.id.space_appearance_activity_content_view);
 
         MenuSelectColorView menuSelectColorView = new MenuSelectColorView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuSelectColorView.setLayoutParams(layoutParams);
-
         MenuSelectColorView.OnMenuColorListener onMenuColorListener = new MenuSelectColorView.OnMenuColorListener() {
             @Override
             public void onSelectedColor(String color) {
@@ -356,14 +352,14 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
 
             @Override
             public void onCloseMenu() {
-                percentRelativeLayout.removeView(menuSelectColorView);
+                viewGroup.removeView(menuSelectColorView);
                 setStatusBarColor();
             }
         };
 
         menuSelectColorView.setOnMenuColorListener(onMenuColorListener);
         menuSelectColorView.setAppearanceActivity(this);
-        percentRelativeLayout.addView(menuSelectColorView);
+        viewGroup.addView(menuSelectColorView);
 
         String hexColor = "#" + Integer.toHexString(color);
         String hexDefaultColor = "#" + Integer.toHexString(defaultColor);

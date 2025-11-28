@@ -18,7 +18,6 @@ import static org.twinlife.twinme.ui.Intents.INTENT_PROFILE_ID;
 import static org.twinlife.twinme.ui.Intents.INTENT_SPACE_ID;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -56,7 +55,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,15 +65,14 @@ import com.android.installreferrer.api.InstallReferrerStateListener;
 import com.android.installreferrer.api.ReferrerDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.twinlife.twinlife.ProxyDescriptor;
-import org.twinlife.twinlife.SNIProxyDescriptor;
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.AndroidDeviceInfo;
 import org.twinlife.twinlife.BaseService.ErrorCode;
 import org.twinlife.twinlife.ConnectivityService;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.NotificationService;
+import org.twinlife.twinlife.ProxyDescriptor;
+import org.twinlife.twinlife.SNIProxyDescriptor;
 import org.twinlife.twinlife.TrustMethod;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Utils;
@@ -105,15 +102,15 @@ import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.externalCallActivity.CreateExternalCallActivity;
 import org.twinlife.twinme.ui.externalCallActivity.TransferCallActivity;
 import org.twinlife.twinme.ui.groups.AcceptGroupInvitationActivity;
+import org.twinlife.twinme.ui.groups.ShowGroupActivity;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.BillingManager;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.mainActivity.skredBoard.SkredBoardFragment;
 import org.twinlife.twinme.ui.mainActivity.skredBoard.SkredBoardFragmentDelegate;
 import org.twinlife.twinme.ui.mainActivity.skredBoard.SkredboardGestureListener;
-import org.twinlife.twinme.ui.groups.ShowGroupActivity;
-import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
+import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.privacyActivity.PrivacyActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
@@ -2070,16 +2067,42 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             Log.d(LOG_TAG, "showSuccessAuthentification");
         }
 
-        SuccessAuthentifiedRelationView successAuthentifiedRelationView = findViewById(R.id.main_activity_success_authentification_view);
-        successAuthentifiedRelationView.setInfo(this,name, avatar);
-        successAuthentifiedRelationView.setSuccessAuthentifiedRelationListener(() -> {
-            successAuthentifiedRelationView.setVisibility(View.GONE);
-            setStatusBarColor();
-        });
+        SuccessAuthentifiedRelationView successAuthentifiedRelationView = new SuccessAuthentifiedRelationView(this, null);
+        successAuthentifiedRelationView.setAvatar(avatar, false);
+        successAuthentifiedRelationView.setTitle(name);
 
-        successAuthentifiedRelationView.setVisibility(View.VISIBLE);
-        successAuthentifiedRelationView.bringToFront();
-        openMenuColor();
+        String message = String.format(getString(R.string.authentified_relation_activity_certified_message), name);
+        successAuthentifiedRelationView.setMessage(message);
+        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                mDrawerLayout.removeView(successAuthentifiedRelationView);
+                setStatusBarColor();
+            }
+        };
+        successAuthentifiedRelationView.setObserver(observer);
+        mDrawerLayout.addView(successAuthentifiedRelationView);
+        successAuthentifiedRelationView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void showEnableNotifications() {
@@ -2088,9 +2111,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.quality_of_service_activity_settings));
         defaultConfirmView.setMessage(getString(R.string.quality_of_service_activity_enable_notifications_warning));
 
@@ -2224,9 +2244,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(getString(R.string.proxy_activity_title));
@@ -2296,9 +2313,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         mUpdateStatusColor = false;
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        alertMessageView.setLayoutParams(layoutParams);
         alertMessageView.setMessage(message);
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -2338,9 +2352,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -2384,9 +2395,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.TRANSFER_CALL)) {
             OnboardingDetailView onboardingDetailView = new OnboardingDetailView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            onboardingDetailView.setLayoutParams(layoutParams);
 
             UIPremiumFeature uiPremiumFeature = new UIPremiumFeature(this, UIPremiumFeature.FeatureType.TRANSFER_CALL);
             onboardingDetailView.setPremiumFeature(uiPremiumFeature);

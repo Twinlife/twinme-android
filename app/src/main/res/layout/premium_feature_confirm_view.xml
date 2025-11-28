@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/premium_feature_confirm_view_slide_mark_view"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             android:scaleType="fitCenter"
             app:layout_aspectRatio="100%"/>
 

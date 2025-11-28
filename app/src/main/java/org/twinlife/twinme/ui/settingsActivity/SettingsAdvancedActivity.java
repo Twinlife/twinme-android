@@ -16,14 +16,16 @@ import android.util.Log;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.twinlife.twinlife.ProxyDescriptor;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConnectivityService;
+import org.twinlife.twinlife.ProxyDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.utils.AppStateInfo;
 import org.twinlife.twinme.utils.UIAppInfo;
+
+import java.util.List;
 
 public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "SettingsAdvanced...";
@@ -79,7 +81,12 @@ public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
 
         super.onResume();
 
-        mSettingsAdvancedAdapter.updateProxies(getTwinmeContext().getConnectivityService().getUserProxies());
+        List<ProxyDescriptor> userProxies = getTwinmeContext().getConnectivityService().getUserProxies();
+        mSettingsAdvancedAdapter.updateProxies(userProxies);
+
+        if (userProxies.isEmpty() && getTwinmeContext().getConnectivityService().isUserProxyEnabled()) {
+            getTwinmeContext().getConnectivityService().setUserProxyEnabled(false);
+        }
 
         if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);
@@ -110,12 +117,28 @@ public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
         startActivity(DebugSettingsActivity.class);
     }
 
-    public void onSettingChangeValue(boolean value) {
+    public void onProxySettingChangeValue(boolean value) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onSettingChangeValue");
+            Log.d(LOG_TAG, "onProxySettingChangeValue");
         }
 
         getTwinmeContext().getConnectivityService().setUserProxyEnabled(value);
+    }
+
+    public void onTelecomSettingChangeValue(boolean value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onTelecomSettingChangeValue");
+        }
+
+        getTwinmeApplication().setUseTelecom(value);
+    }
+
+    public boolean isTelecomEnable() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isTelecomEnable");
+        }
+
+        return getTwinmeApplication().isTelecomEnable();
     }
 
     public boolean isProxyEnable() {

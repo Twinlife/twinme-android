@@ -50,17 +50,9 @@ public class DeleteSpaceConfirmView extends AbstractConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.delete_space_confirm_view, null);
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.delete_space_confirm_view, this, true);
+        initViews();
     }
 
     public  void setSpaceName(String spaceName, String spaceStyle) {

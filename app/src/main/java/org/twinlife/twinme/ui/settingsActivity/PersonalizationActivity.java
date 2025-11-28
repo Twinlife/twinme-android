@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,9 +22,9 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.services.SpaceSettingsService;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.FontSize;
+import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.spaces.MenuSelectColorView;
 import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
@@ -305,12 +304,9 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
             Log.d(LOG_TAG, "onColorClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.personalization_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.personalization_activity_layout);
 
         MenuSelectColorView menuSelectColorView = new MenuSelectColorView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuSelectColorView.setLayoutParams(layoutParams);
-
         MenuSelectColorView.OnMenuColorListener onMenuColorListener = new MenuSelectColorView.OnMenuColorListener() {
             @Override
             public void onSelectedColor(String color) {
@@ -328,14 +324,14 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
 
             @Override
             public void onCloseMenu() {
-                percentRelativeLayout.removeView(menuSelectColorView);
+                viewGroup.removeView(menuSelectColorView);
                 setStatusBarColor();
             }
         };
 
         menuSelectColorView.setOnMenuColorListener(onMenuColorListener);
         menuSelectColorView.setAppearanceActivity(this);
-        percentRelativeLayout.addView(menuSelectColorView);
+        viewGroup.addView(menuSelectColorView);
 
         menuSelectColorView.openMenu(getString(R.string.space_appearance_activity_theme), Design.getMainStyleString(), Design.DEFAULT_COLOR);
 

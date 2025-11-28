@@ -955,6 +955,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">सेवा से अपने कनेक्शन की स्थिति देखें</string>
     <string name="settings_advanced_activity_status_connection_title">कनेक्शन स्थिति</string>
+    <string name="settings_advanced_activity_telecom_enable">Android कॉलिंग अनुभव</string>
+    <string name="settings_advanced_activity_telecom_information">डिफ़ॉल्ट रूप से, एप्लिकेशन Android कॉलिंग एक्सपीरियंस को इंटीग्रेट नहीं करता है, क्योंकि इस इंटीग्रेशन से कुछ स्थितियों में और कुछ डिवाइस पर कॉल रिसेप्शन की समस्या हो सकती है। अगर आपको ये समस्याएँ नहीं आ रही हैं, तो आप बेहतर कॉल मैनेजमेंट के लिए इस इंटीग्रेशन को इनेबल कर सकते हैं।</string>
+    <string name="settings_advanced_activity_telecom">कॉल</string>
     <string name="settings_advanced_activity_title">उन्नत सेटिंग्स</string>
 
     <!-- SettingsActivity -->

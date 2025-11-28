@@ -33,13 +33,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.libwebsockets.ErrorCategory;
+import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConnectivityService;
 import org.twinlife.twinlife.ProxyDescriptor;
 import org.twinlife.twinlife.SNIProxyDescriptor;
-import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinme.services.ProxyService;
 import org.twinlife.twinme.skin.Design;
@@ -386,13 +385,9 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.add_proxy_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.add_proxy_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
-
         onboardingConfirmView.setTitle(getString(R.string.proxy_activity_title));
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
         onboardingConfirmView.setMessage(getString(R.string.proxy_activity_onboarding));
@@ -422,7 +417,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(onboardingConfirmView);
+                viewGroup.removeView(onboardingConfirmView);
                 setStatusBarColor();
 
                 if (showKeyboard) {
@@ -433,7 +428,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             }
         };
         onboardingConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(onboardingConfirmView);
+        viewGroup.addView(onboardingConfirmView);
         onboardingConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

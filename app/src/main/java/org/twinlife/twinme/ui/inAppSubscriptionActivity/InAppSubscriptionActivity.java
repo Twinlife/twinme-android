@@ -37,7 +37,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.TextViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.ProductDetails;
@@ -889,12 +888,9 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/account/subscriptions?sku=" + mProductDetailsSelected.getProductId() + "&package=" + getString(R.string.skred_app_id))));
             }
         } else if (getTwinmeApplication().getInvitationSubscriptionTwincode() != null) {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.in_app_subscription_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.in_app_subscription_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setTitle(getString(R.string.in_app_subscription_activity_cancel_subscription));
             defaultConfirmView.setMessage(getString(R.string.in_app_subscription_activity_cancel_subscription_confirmation));
             defaultConfirmView.setImage(null);
@@ -918,7 +914,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     setStatusBarColor();
 
                     if (fromConfirmAction) {
@@ -927,7 +923,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
 
             Window window = getWindow();

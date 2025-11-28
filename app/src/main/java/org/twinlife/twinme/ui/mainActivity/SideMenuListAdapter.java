@@ -23,8 +23,8 @@ import android.widget.TextView;
 
 import androidx.core.view.ViewCompat;
 
-import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.spaces.UISpace;

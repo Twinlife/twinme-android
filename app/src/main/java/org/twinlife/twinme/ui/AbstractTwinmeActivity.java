@@ -48,23 +48,22 @@ import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinme.calls.CallService;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.services.AccountMigrationService;
-import org.twinlife.twinme.calls.CallService;
-import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
-import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
+import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.rooms.ShowRoomActivity;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
@@ -371,12 +370,9 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(layout);
+        ViewGroup viewGroup = findViewById(layout);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        alertMessageView.setLayoutParams(layoutParams);
         alertMessageView.setTitle(title);
         alertMessageView.setMessage(message);
 
@@ -394,7 +390,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             @Override
             public void onCloseViewAnimationEnd() {
-                percentRelativeLayout.removeView(alertMessageView);
+                viewGroup.removeView(alertMessageView);
                 if (isFullScreen) {
                     setFullscreen();
                 } else {
@@ -407,8 +403,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             }
         };
         alertMessageView.setObserver(observer);
-
-        percentRelativeLayout.addView(alertMessageView);
+        viewGroup.addView(alertMessageView);
         alertMessageView.show();
 
         if (isFullScreen) {

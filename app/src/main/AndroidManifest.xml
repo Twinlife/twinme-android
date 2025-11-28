@@ -163,7 +163,6 @@
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar" >
             <intent-filter>
                 <action android:name="org.twinlife.device.android.twinme.CallServiceMessage" />
@@ -343,12 +342,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name="org.twinlife.twinme.ui.FullscreenQRCodeActivity"
-            android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/TwinmeThemeWithNoActionBar" />
         <activity
             android:name="org.twinlife.twinme.ui.groups.AcceptGroupInvitationActivity"
             android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
@@ -552,12 +545,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name="org.twinlife.twinme.ui.ScanActivity"
-            android:configChanges="orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/TwinmeThemeWithNoActionBar" />
         <activity
             android:name="org.twinlife.twinme.ui.rooms.ShowRoomActivity"
             android:configChanges="orientation|screenSize"

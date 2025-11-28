@@ -8,18 +8,21 @@
 
 package org.twinlife.twinme.ui.rooms;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,7 +31,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -37,21 +39,23 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.TwincodeURI;
+import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.services.InvitationRoomService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinme.ui.FullscreenQRCodeActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.ScanActivity;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.RoundedView;
+import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
+import org.twinlife.twinme.utils.TwincodeView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -61,9 +65,25 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
     private static final String LOG_TAG = "InvitationRoomActivity";
     private static final boolean DEBUG = false;
 
-    private static final float DESIGN_BUTTON_BOTTOM = 16f;
-    private static final float DESIGN_SOCIAL_BOTTOM = 62f;
-    private static final float DESIGN_SOCIAL_SUBTITLE_BOTTOM = 34f;
+    private static final int ANIMATION_DURATION = 100;
+
+    private static final float DESIGN_ROOM_VIEW_HEIGHT = 92f;
+    private static final float DESIGN_NAME_VIEW_MARGIN = 20f;
+    private static final float DESIGN_CONTAINER_HEIGHT = 720;
+    private static final float DESIGN_QRCODE_SIZE = 316;
+    private static final float DESIGN_MESSAGE_VIEW_MARGIN = 24f;
+    private static final float DESIGN_SHARE_SUBTITLE_VIEW_MARGIN = 10f;
+    private static final float DESIGN_ZOOM_MARGIN = 21f;
+    private static final float DESIGN_SHARE_PADDING = 20f;
+    private static final float DESIGN_SHARE_ICON_SIZE = 42f;
+    private static final float DESIGN_SHARE_ICON_PADDING = 27f;
+    private static final float DESIGN_ZOOM_HEIGHT = 70;
+    private static final float DESIGN_QR_CODE_TOP_MARGIN = 60;
+    private static final float DESIGN_ROOM_VIEW_TOP_MARGIN = 80f;
+    private static final float DESIGN_ROOM_VIEW_BOTTOM_MARGIN = 40f;
+    private static final float DESIGN_CONTAINER_MARGIN = 30;
+    private static final float DESIGN_ACTION_TOP_MARGIN = 64;
+    private static final float DESIGN_ACTION_HEIGHT = 128;
 
     private static final int QRCODE_PIXEL_WIDTH = 295;
     private static final int QRCODE_PIXEL_HEIGHT = 295;
@@ -71,17 +91,33 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
     private static final int BLACK = 0xFF000000;
 
     private CircularImageView mAvatarView;
+
+    private View mContainerView;
     private ImageView mQRCodeView;
     private TextView mNameView;
-    private TextView mTwincodeView;
+    private TextView mRoomView;
+    private View mZoomView;
+    private View mCopyView;
+    private View mSaveView;
     private Bitmap mQRCodeBitmap;
 
+    private TwincodeView mSaveTwincodeView;
+
     private String mRoomName;
-    private UUID mRoomId;
     @Nullable
     private Contact mRoom;
     @Nullable
     private TwincodeURI mInvitationLink;
+
+    @Nullable
+    private Bitmap mAvatar;
+
+    private float mQrCodeInitialTop = 0;
+    private float mQrCodeInitialHeight = 0;
+    private float mQrCodeMaxHeight = 0;
+    private boolean mZoomQRCode = false;
+
+    private boolean mDeferredSaveTwincode = false;
 
     private InvitationRoomService mInvitationRoomService;
 
@@ -96,12 +132,18 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        mRoomId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_CONTACT_ID));
+        UUID roomId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_CONTACT_ID));
+
+        if (roomId == null) {
+            finish();
+            return;
+        }
+
         mRoomName = intent.getStringExtra(Intents.INTENT_ROOM_NAME);
 
         initViews();
 
-        mInvitationRoomService = new InvitationRoomService(this, getTwinmeContext(), this, mRoomId);
+        mInvitationRoomService = new InvitationRoomService(this, getTwinmeContext(), this, roomId);
     }
 
     @Override
@@ -125,26 +167,22 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
     }
 
     @Override
-    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCreateOptionsMenu: menu=" + menu);
+    public void onRequestPermissions(@NonNull Permission[] grantedPermissions) {
+
+        boolean storageWriteAccessGranted = false;
+        for (Permission grantedPermission : grantedPermissions) {
+            if (grantedPermission == Permission.WRITE_EXTERNAL_STORAGE) {
+                storageWriteAccessGranted = true;
+                break;
+            }
         }
 
-        super.onCreateOptionsMenu(menu);
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.add_contact_menu, menu);
-
-        MenuItem menuItem = menu.findItem(R.id.share_action);
-        ImageView imageView = (ImageView) menuItem.getActionView();
-
-        if (imageView != null) {
-            imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.action_bar_share, null));
-            imageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
-            imageView.setOnClickListener(view -> onSocialClick());
+        if (mDeferredSaveTwincode) {
+            mDeferredSaveTwincode = false;
+            if (storageWriteAccessGranted) {
+                saveTwincodeInGallery();
+            }
         }
-
-        return true;
     }
 
     //
@@ -236,95 +274,178 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         setTitle(getString(R.string.show_room_activity_invite_participants));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
-        RoundedView avatarRoundedView = findViewById(R.id.invitation_room_activity_avatar_rounded_view);
-        avatarRoundedView.setColor(Design.POPUP_BACKGROUND_COLOR);
+        applyInsets(R.id.invitation_room_activity_layout, R.id.invitation_room_activity_tool_bar, R.id.settings_room_activity_list_view, Design.TOOLBAR_COLOR, false);
+
+        View backgroundView = findViewById(R.id.invitation_room_activity_background);
+        backgroundView.setBackgroundColor(Design.GREY_BACKGROUND_COLOR);
+
+        View roomView = findViewById(R.id.invitation_room_activity_room_view);
+
+        ViewGroup.LayoutParams layoutParams = roomView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_ROOM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) roomView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_ROOM_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_ROOM_VIEW_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
 
         mAvatarView = findViewById(R.id.invitation_room_activity_avatar_view);
 
-        View roomView = findViewById(R.id.invitation_room_activity_room_view);
-        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        mNameView = findViewById(R.id.invitation_room_activity_name_view);
+        Design.updateTextFont(mNameView, Design.FONT_MEDIUM32);
+        mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_NAME_VIEW_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.setMarginStart((int) (DESIGN_NAME_VIEW_MARGIN * Design.WIDTH_RATIO));
+
+        mContainerView = findViewById(R.id.invitation_room_activity_container_view);
+
+        layoutParams = mContainerView.getLayoutParams();
+        layoutParams.width = Design.BUTTON_WIDTH;
+        layoutParams.height = (int) (DESIGN_CONTAINER_HEIGHT * Design.HEIGHT_RATIO);
+
+        float radius = Design.POPUP_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
-        ShapeDrawable roomViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        roomViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
-        roomView.setBackground(roomViewBackground);
-
-        mNameView = findViewById(R.id.invitation_room_activity_name_view);
-        Design.updateTextFont(mNameView, Design.FONT_REGULAR32);
-        mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        ShapeDrawable containerViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        containerViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
+        mContainerView.setBackground(containerViewBackground);
 
         mQRCodeView = findViewById(R.id.invitation_room_activity_qrcode_view);
         mQRCodeView.setOnClickListener(view -> onQRCodeClick());
 
-        mTwincodeView = findViewById(R.id.invitation_room_activity_twincode_view);
-        Design.updateTextFont(mTwincodeView, Design.FONT_REGULAR30);
-        mTwincodeView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        mTwincodeView.setOnClickListener(v -> onTwincodeClick());
+        layoutParams = mQRCodeView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_QRCODE_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_QRCODE_SIZE * Design.HEIGHT_RATIO);
 
-        TextView messageView = findViewById(R.id.invitation_room_activity_message_view);
-        Design.updateTextFont(messageView, Design.FONT_REGULAR30);
-        messageView.setTextColor(Design.FONT_COLOR_GREY);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mQRCodeView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_QR_CODE_TOP_MARGIN * Design.HEIGHT_RATIO);
 
-        View inviteView = findViewById(R.id.invitation_room_activity_invite_view);
-        inviteView.setOnClickListener(v -> onInviteClick());
+        mZoomView = findViewById(R.id.invitation_room_activity_zoom_view);
+        mZoomView.setOnClickListener(v -> onQRCodeClick());
 
-        ShapeDrawable inviteViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        inviteViewBackground.getPaint().setColor(Design.getMainStyle());
-        inviteView.setBackground(inviteViewBackground);
+        layoutParams = mZoomView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ZOOM_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ZOOM_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.LayoutParams layoutParams = inviteView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.BUTTON_HEIGHT;
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mZoomView.getLayoutParams();
+        marginLayoutParams.topMargin = - (int) (DESIGN_ZOOM_MARGIN * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) inviteView.getLayoutParams();
-        marginLayoutParams.bottomMargin = (int) (DESIGN_BUTTON_BOTTOM * Design.HEIGHT_RATIO);
+        RoundedView zoomRoundedView = findViewById(R.id.invitation_room_activity_zoom_rounded_view);
+        zoomRoundedView.setBorder(1, Design.GREY_COLOR);
+        zoomRoundedView.setColor(Design.WHITE_COLOR);
 
-        TextView inviteTitleView = findViewById(R.id.invitation_room_activity_invite_title_view);
-        Design.updateTextFont(inviteTitleView, Design.FONT_BOLD28);
-        inviteTitleView.setTextColor(Design.WHITE_COLOR);
+        ImageView zoomIconView = findViewById(R.id.invitation_room_activity_zoom_icon_view);
+        zoomIconView.setColorFilter(Design.BLACK_COLOR);
 
-        View scanView = findViewById(R.id.invitation_room_activity_scan_view);
-        scanView.setOnClickListener(v -> onScanClick());
+        mRoomView = findViewById(R.id.invitation_room_activity_room_id_view);
+        Design.updateTextFont(mRoomView, Design.FONT_BOLD28);
+        mRoomView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        ShapeDrawable scanViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        scanViewBackground.getPaint().setColor(Design.BLACK_COLOR);
-        scanView.setBackground(scanViewBackground);
+        mRoomView.setOnClickListener(v -> onCopyClick());
 
-        layoutParams = scanView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.BUTTON_HEIGHT;
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mRoomView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_CONTAINER_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_CONTAINER_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_CONTAINER_MARGIN * Design.WIDTH_RATIO);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) scanView.getLayoutParams();
-        marginLayoutParams.bottomMargin = (int) (DESIGN_BUTTON_BOTTOM * Design.HEIGHT_RATIO);
+        mCopyView = findViewById(R.id.invitation_room_activity_copy_clickable_view);
+        mCopyView.setOnClickListener(v -> onCopyClick());
 
-        TextView scanTitleView = findViewById(R.id.invitation_room_activity_scan_title_view);
-        Design.updateTextFont(scanTitleView, Design.FONT_BOLD28);
-        scanTitleView.setTextColor(Design.WHITE_COLOR);
+        layoutParams = mCopyView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_ACTION_HEIGHT * Design.HEIGHT_RATIO);
 
-        View socialView = findViewById(R.id.invitation_room_activity_social_view);
-        socialView.setOnClickListener(v -> onSocialClick());
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mCopyView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_ACTION_TOP_MARGIN * Design.HEIGHT_RATIO);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) socialView.getLayoutParams();
-        marginLayoutParams.bottomMargin = (int) (DESIGN_SOCIAL_BOTTOM * Design.HEIGHT_RATIO);
+        RoundedView copyRoundedView = findViewById(R.id.invitation_room_activity_copy_rounded_view);
+        copyRoundedView.setBorder(1, Design.GREY_COLOR);
+        copyRoundedView.setColor(Design.WHITE_COLOR);
+
+        ImageView copyIconView = findViewById(R.id.invitation_room_activity_copy_icon_view);
+        copyIconView.setColorFilter(Design.BLACK_COLOR);
+
+        TextView copyTextView = findViewById(R.id.invitation_room_activity_copy_text_view);
+        Design.updateTextFont(copyTextView, Design.FONT_MEDIUM28);
+        copyTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        mSaveView = findViewById(R.id.invitation_room_activity_save_clickable_view);
+        mSaveView.setOnClickListener(v -> onSaveInGalleryClick());
+
+        layoutParams = mSaveView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_ACTION_HEIGHT * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSaveView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_ACTION_TOP_MARGIN * Design.HEIGHT_RATIO);
+
+        RoundedView saveRoundedView = findViewById(R.id.invitation_room_activity_save_rounded_view);
+        saveRoundedView.setBorder(1, Design.GREY_COLOR);
+        saveRoundedView.setColor(Design.WHITE_COLOR);
+
+        ImageView saveIconView = findViewById(R.id.invitation_room_activity_save_icon_view);
+        saveIconView.setColorFilter(Design.BLACK_COLOR);
+
+        TextView saveTextView = findViewById(R.id.invitation_room_activity_save_text_view);
+        Design.updateTextFont(saveTextView, Design.FONT_MEDIUM28);
+        saveTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        View shareView = findViewById(R.id.invitation_room_activity_social_view);
+        shareView.setOnClickListener(v -> onSocialClick());
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) shareView.getLayoutParams();
+        marginLayoutParams.bottomMargin = - (int) (Design.BUTTON_HEIGHT * 0.5);
+
+        radius = (int) (Design.BUTTON_HEIGHT * 0.5) * Resources.getSystem().getDisplayMetrics().density;
+        outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         ShapeDrawable socialViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         socialViewBackground.getPaint().setColor(Design.getMainStyle());
-        socialView.setBackground(socialViewBackground);
+        shareView.setBackground(socialViewBackground);
 
-        layoutParams = socialView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
+        ImageView socialIconView = findViewById(R.id.invitation_room_activity_social_icon_view);
+        socialIconView.setColorFilter(Color.WHITE);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) socialIconView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_SHARE_PADDING * Design.WIDTH_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_SHARE_ICON_PADDING * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_SHARE_ICON_PADDING * Design.HEIGHT_RATIO);
+        marginLayoutParams.setMarginStart((int) (DESIGN_SHARE_PADDING * Design.WIDTH_RATIO));
+
+        layoutParams = socialIconView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_SHARE_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.width = (int) (DESIGN_SHARE_ICON_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = shareView.getLayoutParams();
         layoutParams.height = Design.BUTTON_HEIGHT;
 
         TextView socialViewTitleView = findViewById(R.id.invitation_room_activity_social_title_view);
-        Design.updateTextFont(socialViewTitleView, Design.FONT_BOLD28);
+        Design.updateTextFont(socialViewTitleView, Design.FONT_MEDIUM32);
         socialViewTitleView.setTextColor(Color.WHITE);
 
-        TextView socialViewSubTitleView = findViewById(R.id.invitation_room_activity_social_subtitle_view);
-        Design.updateTextFont(socialViewSubTitleView, Design.FONT_REGULAR24);
-        socialViewSubTitleView.setTextColor(Design.GREY_COLOR);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) socialViewTitleView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_SHARE_PADDING * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_SHARE_PADDING * Design.WIDTH_RATIO);
+        marginLayoutParams.setMarginStart((int) (DESIGN_SHARE_PADDING * Design.WIDTH_RATIO));
+        marginLayoutParams.setMarginEnd((int) (DESIGN_SHARE_PADDING * Design.WIDTH_RATIO));
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) socialViewSubTitleView.getLayoutParams();
-        marginLayoutParams.bottomMargin = (int) (DESIGN_SOCIAL_SUBTITLE_BOTTOM * Design.HEIGHT_RATIO);
+        TextView shareSubTitleView = findViewById(R.id.invitation_room_activity_social_subtitle_view);
+        Design.updateTextFont(shareSubTitleView, Design.FONT_REGULAR24);
+        shareSubTitleView.setTextColor(Design.GREY_COLOR);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) shareSubTitleView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_SHARE_SUBTITLE_VIEW_MARGIN * Design.HEIGHT_RATIO + (Design.BUTTON_HEIGHT * 0.5f)) ;
+
+        TextView messageTextView = findViewById(R.id.invitation_room_activity_message_view);
+        Design.updateTextFont(messageTextView, Design.FONT_MEDIUM28);
+        messageTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) messageTextView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_VIEW_MARGIN * Design.WIDTH_RATIO);
+
+        mSaveTwincodeView = findViewById(R.id.invitation_room_activity_save_twincode_view);
+
+        mQrCodeInitialHeight = DESIGN_QRCODE_SIZE * Design.HEIGHT_RATIO;
+        mQrCodeInitialTop = DESIGN_QR_CODE_TOP_MARGIN * Design.HEIGHT_RATIO;
+        mQrCodeMaxHeight = Design.BUTTON_WIDTH - (DESIGN_CONTAINER_MARGIN * 2 * Design.WIDTH_RATIO);
     }
 
     private void updateRoom() {
@@ -336,7 +457,8 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
             mNameView.setText(mRoom.getName());
             mInvitationRoomService.getImage(mRoom, (Bitmap avatar) -> {
                 if (avatar != null) {
-                    mAvatarView.setImage(this, null, new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
+                    mAvatar = avatar;
+                    mAvatarView.setImage(this, null, new CircularImageDescriptor(mAvatar, 0.5f, 0.5f, 0.5f));
                 }
                 updateQRCode();
             });
@@ -355,7 +477,7 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
             return;
         }
 
-        mTwincodeView.setText(mInvitationLink.label);
+        mRoomView.setText(mInvitationLink.label);
 
         BitMatrix result;
         try {
@@ -424,17 +546,28 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         startActivity(Intent.createChooser(intent, null));
     }
 
-    private void onInviteClick() {
+    private void onQRCodeClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onInviteClick");
+            Log.d(LOG_TAG, "onQRCodeClick");
         }
 
-        Intent intent = new Intent(this, AddParticipantsRoomActivity.class);
-        intent.putExtra(Intents.INTENT_CONTACT_ID, mRoomId.toString());
-        startActivity(intent);
+        if (mRoom == null) {
+            return;
+        }
+
+        mZoomQRCode = !mZoomQRCode;
+        float alpha = mZoomQRCode ? 0.0f : 1.0f;
+
+        float qrCodeHeight = mZoomQRCode ? mQrCodeMaxHeight : mQrCodeInitialHeight;
+        float qrCodeTop = mZoomQRCode ? (mContainerView.getHeight() - mQrCodeMaxHeight) * 0.5f : mQrCodeInitialTop;
+        long animateActionDelay = mZoomQRCode ? 0 : 100;
+        long animateQRCodeDelay = mZoomQRCode ? 100 : 0;
+
+        animateQRCodeAction(alpha, animateActionDelay);
+        animateQRCodeSize(qrCodeTop, qrCodeHeight, animateQRCodeDelay);
     }
 
-    private void onTwincodeClick() {
+    private void onCopyClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onCopyClick");
         }
@@ -445,32 +578,93 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         }
     }
 
-    private void onQRCodeClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onQRCodeClick");
-        }
+    private void onSaveInGalleryClick() {
 
-        if (mRoom == null) {
-            return;
+        Permission[] permissions = new Permission[]{Permission.WRITE_EXTERNAL_STORAGE};
+        mDeferredSaveTwincode = true;
+        if (checkPermissions(permissions)) {
+            mDeferredSaveTwincode = false;
+            saveTwincodeInGallery();
         }
-
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setClass(getApplication(), FullscreenQRCodeActivity.class);
-        intent.putExtra(Intents.INTENT_CONTACT_ID, mRoomId.toString());
-        startActivity(intent);
     }
 
-    private void onScanClick() {
+    private void saveTwincodeInGallery() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onScanClick");
+            Log.d(LOG_TAG, "saveTwincodeInGallery");
         }
 
-        if (mRoom == null) {
-            return;
+        if (mRoom != null && mInvitationLink != null && mQRCodeBitmap != null) {
+            mSaveTwincodeView.setTwincodeInformation(this, mRoom.getName(), mAvatar
+                    , mQRCodeBitmap, mInvitationLink.label,
+                    getString(R.string.fullscreen_qrcode_activity_save_message));
+
+            Bitmap bitmapToSave = getBitmapFromTwincodeView();
+            if (bitmapToSave != null) {
+                new SaveTwincodeAsyncTask(this, bitmapToSave).execute();
+            } else {
+                toast(getString(R.string.application_operation_failure));
+            }
         }
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setClass(getApplication(), ScanActivity.class);
-        startActivity(intent);
+
+    }
+
+    @Nullable
+    private Bitmap getBitmapFromTwincodeView() {
+
+        try {
+            Bitmap bitmap = Bitmap.createBitmap(Design.DISPLAY_WIDTH, Design.DISPLAY_HEIGHT, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            mSaveTwincodeView.layout(0, 0, Design.DISPLAY_WIDTH, Design.DISPLAY_HEIGHT);
+            mSaveTwincodeView.draw(canvas);
+            return bitmap;
+
+        } catch (Throwable exception) {
+
+            if (Logger.ERROR) {
+                Log.e(LOG_TAG, "Exception when creating bitmap", exception);
+            }
+            return null;
+        }
+    }
+
+    private void animateQRCodeAction(float alpha, long delay) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "animateQRCodeAction");
+        }
+
+        PropertyValuesHolder propertyValuesHolderAlpha = PropertyValuesHolder.ofFloat(View.ALPHA, mSaveView.getAlpha(), alpha);
+
+        List<Animator> animators = new ArrayList<>();
+        animators.add(ObjectAnimator.ofPropertyValuesHolder(mCopyView, propertyValuesHolderAlpha));
+        animators.add(ObjectAnimator.ofPropertyValuesHolder(mSaveView, propertyValuesHolderAlpha));
+        animators.add(ObjectAnimator.ofPropertyValuesHolder(mZoomView, propertyValuesHolderAlpha));
+        animators.add(ObjectAnimator.ofPropertyValuesHolder(mRoomView, propertyValuesHolderAlpha));
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setDuration(ANIMATION_DURATION);
+        animatorSet.setStartDelay(delay);
+        animatorSet.playTogether(animators);
+        animatorSet.start();
+    }
+
+    private void animateQRCodeSize(float top, float height, long delay) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "animateQRCodeSize");
+        }
+
+        LayoutTransition layoutTransition = ((ViewGroup) mContainerView).getLayoutTransition();
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        layoutTransition.setStartDelay(LayoutTransition.CHANGING, delay);
+        layoutTransition.setDuration(ANIMATION_DURATION);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mQRCodeView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) top;
+        mQRCodeView.setLayoutParams(marginLayoutParams);
+
+        ViewGroup.LayoutParams layoutParams = mQRCodeView.getLayoutParams();
+        layoutParams.height = (int) height;
+        layoutParams.width = (int) height;
+        mQRCodeView.setLayoutParams(layoutParams);
     }
 }

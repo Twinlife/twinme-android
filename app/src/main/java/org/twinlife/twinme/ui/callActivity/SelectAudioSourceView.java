@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.percentlayout.widget.PercentRelativeLayout;
@@ -32,7 +33,7 @@ import org.twinlife.twinme.skin.Design;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectAudioSourceView extends PercentRelativeLayout {
+public class SelectAudioSourceView extends RelativeLayout {
     private static final String LOG_TAG = "SelectAudioSourceView";
     private static final boolean DEBUG = false;
 
@@ -74,14 +75,8 @@ public class SelectAudioSourceView extends PercentRelativeLayout {
         mCallActivity = (CallActivity) context;
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (inflater != null) {
-            View view;
-            view = inflater.inflate(R.layout.call_activity_select_audio_source_view, (ViewGroup) getParent());
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        }
+        inflater.inflate(R.layout.call_activity_select_audio_source_view, this, true);
+        initViews();
     }
 
     public SelectAudioSourceView(Context context, AttributeSet attrs, int defStyle) {

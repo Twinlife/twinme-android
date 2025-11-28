@@ -296,13 +296,10 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
         if (mCanShareLocation && !mCanShareBackgroundLocation && !mShowBackgroundLocationAlert) {
             mShowBackgroundLocationAlert = true;
 
-            PercentRelativeLayout percentRelativeLayout = callActivity.findViewById(R.id.call_activity_view);
+            ViewGroup viewGroup = callActivity.findViewById(R.id.call_activity_view);
 
             mCardView.setVisibility(View.GONE);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setForceDarkMode(true);
             defaultConfirmView.setTitle(callActivity.getString(R.string.application_authorization_go_settings));
             defaultConfirmView.setMessage(callActivity.getString(R.string.call_activity_location_background_warning));
@@ -327,7 +324,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     mCardView.setVisibility(View.VISIBLE);
                     if (fromConfirmAction) {
                         openAppSettings();
@@ -335,7 +332,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
         }
     }
@@ -350,13 +347,10 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
         if (mCanShareLocation && !mCanShareExactLocation && !mShowExactLocationAlert && !mShowBackgroundLocationAlert) {
             mShowExactLocationAlert = true;
 
-            PercentRelativeLayout percentRelativeLayout = callActivity.findViewById(R.id.call_activity_view);
+            ViewGroup viewGroup = callActivity.findViewById(R.id.call_activity_view);
 
             mCardView.setVisibility(View.GONE);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setForceDarkMode(true);
             defaultConfirmView.setTitle(callActivity.getString(R.string.application_authorization_go_settings));
             defaultConfirmView.setMessage(callActivity.getString(R.string.call_activity_location_exact_warning));
@@ -381,7 +375,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     mCardView.setVisibility(View.VISIBLE);
                     if (fromConfirmAction) {
                         openAppSettings();
@@ -389,7 +383,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
         }
     }

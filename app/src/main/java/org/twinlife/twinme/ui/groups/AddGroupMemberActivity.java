@@ -35,8 +35,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
-import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
+import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;

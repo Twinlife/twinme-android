@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -347,12 +346,9 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onResetPreferencesClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.sounds_settings_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.sounds_settings_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.settings_activity_reset_preferences_title));
         defaultConfirmView.setMessage(getString(R.string.settings_activity_reset_preferences_message));
         defaultConfirmView.setImage(null);
@@ -376,7 +372,7 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -386,7 +382,7 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

@@ -684,9 +684,6 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        alertMessageView.setLayoutParams(layoutParams);
 
         if (isFullScreen()) {
             alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
@@ -756,9 +753,6 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
         defaultConfirmView.setMessage(message);
         defaultConfirmView.setImage(null);
@@ -840,9 +834,6 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        alertMessageView.setLayoutParams(layoutParams);
 
         if (this instanceof CallActivity || this instanceof AbstractPreviewActivity) {
             alertMessageView.setForceDarkMode(true);

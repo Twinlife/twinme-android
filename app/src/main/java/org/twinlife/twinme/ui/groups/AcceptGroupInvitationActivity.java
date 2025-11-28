@@ -46,8 +46,8 @@ import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
-import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.Originator;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.GroupInvitationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
@@ -55,8 +55,8 @@ import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.RoundedImageView;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 

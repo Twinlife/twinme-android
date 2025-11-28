@@ -225,7 +225,7 @@ public class DisplayModeViewHolder extends RecyclerView.ViewHolder {
         String format = "hh:mm";
 
         if (DateFormat.is24HourFormat(mLightTimeView.getContext())) {
-            format = "kk:mm";
+            format = "HH:mm";
         }
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, Locale.getDefault());

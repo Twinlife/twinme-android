@@ -1,11 +1,12 @@
 /*
- *  Copyright (c) 2012-2024 twinlife SA.
+ *  Copyright (c) 2012-2025 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Zhuoyu Ma (Zhuoyu.Ma@twinlife-systems.com)
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
  *   Thibaud David (contact@thibauddavid.com)
+ *   Stephane Carrez (Stephane.Carrez@twin.life)
  */
 
 package org.twinlife.twinme.ui;
@@ -31,12 +32,16 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinme.actions.FeedbackAction;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.SwitchView;
 
-public class FeedbackActivity extends AbstractTwinmeActivity {
+public class FeedbackActivity extends AbstractTwinmeActivity implements FeedbackAction.Consumer {
     private static final String LOG_TAG = "FeedbackActivity";
     private static final boolean DEBUG = false;
 
@@ -242,6 +247,8 @@ public class FeedbackActivity extends AbstractTwinmeActivity {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) sendContentView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_DEVICE_INFO_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_DEVICE_INFO_MARGIN * Design.HEIGHT_RATIO);
+
+        mProgressBarView = findViewById(R.id.feedback_activity_progress_bar);
     }
 
     //
@@ -305,17 +312,12 @@ public class FeedbackActivity extends AbstractTwinmeActivity {
         String subject = mSubjectView.getText().toString();
         String description = mMessageView.getText().toString();
         if (!description.isEmpty() || !subject.equals(mSubject)) {
-
-            if (getTwinmeContext().hasTwinlife()) {
-                String logReport = null;
-                if (mLogsSwitchView.isChecked()) {
-                    logReport = getTwinmeContext().getManagementService().getLogReport();
-                }
-                getTwinmeContext().getManagementService().sendFeedback(email, subject, description, logReport);
-            }
+            showProgressIndicator();
+            FeedbackAction feedbackAction = new FeedbackAction(getTwinmeContext(), email, subject, description, mLogsSwitchView.isChecked());
+            feedbackAction.onResult(this);
+            feedbackAction.start();
+            return;
         }
-
-        Toast.makeText(this, R.string.feedback_activity_send_message, Toast.LENGTH_SHORT).show();
 
         finish();
     }
@@ -331,6 +333,22 @@ public class FeedbackActivity extends AbstractTwinmeActivity {
             inputMethodManager.hideSoftInputFromWindow(mSubjectView.getWindowToken(), 0);
             inputMethodManager.hideSoftInputFromWindow(mMessageView.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public void onSendFeedbackAction(@NonNull BaseService.ErrorCode errorCode) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSendFeedbackAction errorCode=" + errorCode);
+        }
+
+        runOnUiThread(() -> {
+            if (errorCode == BaseService.ErrorCode.SUCCESS) {
+                Toast.makeText(this, R.string.feedback_activity_send_message, Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                onError(errorCode, null, null);
+            }
+        });
     }
 
     private class SendListener implements OnClickListener {

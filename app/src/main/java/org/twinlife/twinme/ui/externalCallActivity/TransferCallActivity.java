@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.view.ViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -322,12 +321,9 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.invitation_external_call_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.invitation_external_call_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setAvatar(mAvatar, false);
 
         String message = getString(R.string.transfert_call_activity_delete_message) + "\n\n"  + getString(R.string.transfert_call_activity_delete_confirm_message);
@@ -354,12 +350,11 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
             }
         };
         deleteConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
     }
 }

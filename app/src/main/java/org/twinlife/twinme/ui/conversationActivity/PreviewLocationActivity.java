@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -505,13 +504,10 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
             Log.d(LOG_TAG, "showLocationSettings");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.preview_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
         mCardView.setVisibility(View.GONE);
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.application_location));
         defaultConfirmView.setMessage(getString(R.string.application_location_enabled));
         defaultConfirmView.setImage(null);
@@ -535,7 +531,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 mCardView.setVisibility(View.VISIBLE);
                 if (fromConfirmAction) {
                     Intent locationSettings = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -544,7 +540,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
     }
 

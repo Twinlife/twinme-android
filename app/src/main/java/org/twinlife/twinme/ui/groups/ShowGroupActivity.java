@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,17 +50,17 @@ import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.EditIdentityActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.callActivity.CallActivity;
-import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.LastCallsActivity;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.ui.spaces.SpacesActivity;
+import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.cleanupActivity.TypeCleanUpActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.spaces.SpacesActivity;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.CircularImageView;
@@ -1041,12 +1040,9 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "showPremiumFeatureView");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_group_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.show_group_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -1070,13 +1066,12 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
                 setFullscreen();
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         Window window = getWindow();

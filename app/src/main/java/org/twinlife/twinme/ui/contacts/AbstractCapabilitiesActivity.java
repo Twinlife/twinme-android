@@ -11,11 +11,6 @@ package org.twinlife.twinme.ui.contacts;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
-
-import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Capabilities;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.models.schedule.Date;
@@ -26,7 +21,6 @@ import org.twinlife.twinme.models.schedule.Time;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 
 import java.util.TimeZone;
-
 
 public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "AbstractCapabilities...";

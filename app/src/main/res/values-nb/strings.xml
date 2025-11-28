@@ -955,6 +955,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Sjekk statusen for tilkoblingen til tjenesten</string>
     <string name="settings_advanced_activity_status_connection_title">Tilkoblingsstatus</string>
+    <string name="settings_advanced_activity_telecom_enable">Android-ringeopplevelse</string>
+    <string name="settings_advanced_activity_telecom_information">Som standard integrerer ikke appen Android-anropsopplevelsen, da denne integrasjonen kan forårsake problemer med samtalemottak i visse situasjoner og på visse enheter. Du kan aktivere denne integrasjonen for bedre samtalehåndtering hvis du ikke opplever disse problemene.</string>
+    <string name="settings_advanced_activity_telecom">SAMTALER</string>
     <string name="settings_advanced_activity_title">Avanserte innstillinger</string>
 
     <!-- SettingsActivity -->

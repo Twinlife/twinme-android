@@ -26,9 +26,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,7 +39,7 @@ import org.twinlife.twinme.ui.baseItemActivity.BaseItemActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnotationsView extends PercentRelativeLayout {
+public class AnnotationsView extends RelativeLayout {
     private static final String LOG_TAG = "AnnotationsView";
     private static final boolean DEBUG = false;
 
@@ -71,17 +71,9 @@ public class AnnotationsView extends PercentRelativeLayout {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.annotations_view, null);
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.annotations_view, this, true);
+        initViews();
     }
 
     public void setObserver(Observer observer) {

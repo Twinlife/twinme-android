@@ -369,7 +369,7 @@ public class SettingsRoomActivity extends AbstractTwinmeActivity implements Edit
             Log.d(LOG_TAG, "setUpdated");
         }
 
-        if (!mUIInitialized) {
+        if (!mUIInitialized || mRoomConfig == null) {
             return;
         }
 

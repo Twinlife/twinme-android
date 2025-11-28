@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -280,12 +279,9 @@ public class TypeCleanUpActivity extends AbstractTwinmeActivity implements Reset
             }
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.type_cleanup_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.type_cleanup_activity_layout);
 
         ResetConversationConfirmView resetConversationConfirmView = new ResetConversationConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        resetConversationConfirmView.setLayoutParams(layoutParams);
         resetConversationConfirmView.setAvatar(avatar, avatar == null || avatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         resetConversationConfirmView.setMessage(message.toString());
 
@@ -308,13 +304,12 @@ public class TypeCleanUpActivity extends AbstractTwinmeActivity implements Reset
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(resetConversationConfirmView);
+                viewGroup.removeView(resetConversationConfirmView);
                 setStatusBarColor();
             }
         };
         resetConversationConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(resetConversationConfirmView);
+        viewGroup.addView(resetConversationConfirmView);
         resetConversationConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

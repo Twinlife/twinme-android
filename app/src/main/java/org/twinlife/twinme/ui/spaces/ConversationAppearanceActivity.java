@@ -27,7 +27,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -614,7 +613,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
             Log.d(LOG_TAG, "openMenuPhoto");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_appearance_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_appearance_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -637,21 +636,21 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
 
             @Override
             public void onBackgroundColorClick() {
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
                 openMenuColor(getString(R.string.space_appearance_activity_background_title), mCustomAppearance.getConversationBackgroundColor(), mCustomAppearance.getConversationBackgroundDefaultColor());
             }
 
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 setStatusBarColor();
             }
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));
@@ -669,12 +668,9 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
             Log.d(LOG_TAG, "openMenuColor");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_appearance_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_appearance_activity_layout);
 
         MenuSelectColorView menuSelectColorView = new MenuSelectColorView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuSelectColorView.setLayoutParams(layoutParams);
-
         MenuSelectColorView.OnMenuColorListener onMenuColorListener = new MenuSelectColorView.OnMenuColorListener() {
             @Override
             public void onSelectedColor(String color) {
@@ -697,14 +693,14 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
 
             @Override
             public void onCloseMenu() {
-                percentRelativeLayout.removeView(menuSelectColorView);
+                viewGroup.removeView(menuSelectColorView);
                 setStatusBarColor();
             }
         };
 
         menuSelectColorView.setOnMenuColorListener(onMenuColorListener);
         menuSelectColorView.setAppearanceActivity(this);
-        percentRelativeLayout.addView(menuSelectColorView);
+        viewGroup.addView(menuSelectColorView);
 
         String hexColor = colorIntToHex(color);
         String hexDefaultColor = colorIntToHex(defaultColor);

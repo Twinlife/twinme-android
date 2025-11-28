@@ -5,56 +5,31 @@
     android:layout_height="match_parent">
 
     <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/room_members_activity_menu_cancel_view"
-        android:layout_width="0dp"
+        android:id="@+id/room_members_activity_menu_action_view"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/menu_send_option"
-        app:layout_widthPercent="94.67%">
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:id="@+id/room_members_activity_menu_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="12%" />
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/room_members_activity_menu_avatar_view"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/room_members_activity_menu_slide_mark_view"
+            app:layout_aspectRatio="100%" />
 
         <TextView
-            android:id="@+id/room_members_activity_menu_cancel_text_view"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            android:lines="1"
-            android:text="@string/application_cancel"
-            app:layout_widthPercent="94.67%" />
-
-    </androidx.percentlayout.widget.PercentRelativeLayout>
-
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/room_members_activity_menu_action_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/room_members_activity_menu_cancel_view"
-        android:background="@drawable/menu_send_option"
-        app:layout_widthPercent="94.67%">
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/room_members_activity_menu_action_header_view"
-            android:layout_width="match_parent"
+            android:id="@+id/room_members_activity_menu_name_view"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
-
-            <org.twinlife.twinme.utils.CircularImageView
-                android:id="@+id/room_members_activity_menu_avatar_view"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
-                app:layout_aspectRatio="100%" />
-
-            <TextView
-                android:id="@+id/room_members_activity_menu_name_view"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/room_members_activity_menu_avatar_view"
-                android:gravity="center"
-                app:layout_widthPercent="89.33%" />
-
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/room_members_activity_menu_avatar_view"
+            android:gravity="center"
+            app:layout_widthPercent="89.33%" />
 
         <View
             android:layout_above="@+id/room_members_activity_menu_invite_view"
@@ -66,44 +41,28 @@
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/room_members_activity_menu_invite_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/room_members_activity_menu_action_header_view">
+            android:layout_above="@+id/room_members_activity_menu_remove_view">
+
+            <ImageView
+                android:id="@+id/room_members_activity_menu_invite_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/invite_member"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="33%"
+                app:layout_marginStartPercent="4%" />
 
             <TextView
                 android:id="@+id/room_members_activity_menu_invite_text_view"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_centerInParent="true"
-                android:lines="2"
-                app:layout_widthPercent="94.67%" />
-
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <View
-            android:layout_above="@+id/room_members_activity_menu_admin_view"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="?attr/separator_color"
-            android:alpha="0.5" />
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/room_members_activity_menu_admin_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/room_members_activity_menu_invite_view">
-
-            <TextView
-                android:id="@+id/room_members_activity_menu_admin_text_view"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_centerInParent="true"
-                android:lines="2"
-                android:text="@string/room_members_activity_change_admin_title"
-                app:layout_widthPercent="94.67%" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/application_remove"
+                app:layout_marginEndPercent="4.27%"
+                app:layout_marginStartPercent="12.8%" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -115,23 +74,68 @@
             android:alpha="0.5" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/room_members_activity_menu_admin_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/room_members_activity_menu_invite_view">
+
+            <ImageView
+                android:id="@+id/room_members_activity_menu_admin_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/settings_icon"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="30%"
+                app:layout_marginStartPercent="4%" />
+
+            <TextView
+                android:id="@+id/room_members_activity_menu_admin_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/application_remove"
+                app:layout_marginEndPercent="4.27%"
+                app:layout_marginStartPercent="12.8%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <View
+            android:layout_below="@+id/room_members_activity_menu_invite_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/separator_color"
+            android:alpha="0.5" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/room_members_activity_menu_remove_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/room_members_activity_menu_admin_view">
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/room_members_activity_menu_remove_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/delete_item"
+                app:layout_aspectRatio="89.33%"
+                app:layout_heightPercent="33%"
+                app:layout_marginStartPercent="4%" />
 
             <TextView
                 android:id="@+id/room_members_activity_menu_remove_text_view"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_centerInParent="true"
-                android:lines="1"
-                android:text="@string/application_delete"
-                app:layout_widthPercent="94.67%" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/application_remove"
+                app:layout_marginEndPercent="4.27%"
+                app:layout_marginStartPercent="12.8%" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
+
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

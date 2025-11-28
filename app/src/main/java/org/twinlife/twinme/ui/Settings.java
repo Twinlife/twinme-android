@@ -131,6 +131,10 @@ public class Settings {
     public static final IntConfig countShowCoachMarkContactCapabilities = new IntConfig("count_show_coach_mark_contact_capabilities", 0, "B9C54866-4FDC-4779-AB76-61547E1ADB2B");
     public static final BooleanConfig showCoachMark = new BooleanConfig("help_activity_show_coach_mark", true, "2088C0ED-A8E7-421B-A687-D4FCFCA4F571");
 
+    // Telecom
+    public static final BooleanConfig useTelecom = new BooleanConfig("settings_advanced_activity_use_telecom", false, "7EC2A54E-8024-4758-9AA9-509AC3375D73");
+
+
     private static Configuration sConfiguration;
 
     /**

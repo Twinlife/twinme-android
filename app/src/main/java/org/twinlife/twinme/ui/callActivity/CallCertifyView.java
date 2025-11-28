@@ -14,6 +14,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -74,6 +75,7 @@ public class CallCertifyView extends PercentRelativeLayout  {
     private static final int DESIGN_ACTION_SIZE = 120;
     private static final int DESIGN_ACTION_MARGIN = 60;
     private static final int DESIGN_ACTION_BOTTOM_MARGIN = 234;
+    private static final int DESIGN_ACTION_BOTTOM_LANDSCAPE_MARGIN = 80;
     private static final int DESIGN_SUCCESS_BOTTOM_MARGIN = 400;
     private static final int DESIGN_AVATAR_SIZE = 180;
     private static final int DESIGN_ICON_SIZE = 42;
@@ -113,22 +115,26 @@ public class CallCertifyView extends PercentRelativeLayout  {
 
         super(context, attrs);
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.call_activity_certify_view, (ViewGroup) getParent());
-            //noinspection deprecation
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.call_activity_certify_view, this, true);
+        initViews();
     }
 
     public CallCertifyView(Context context, AttributeSet attrs, int defStyle) {
 
         super(context, attrs, defStyle);
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mCancelView.getLayoutParams();
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_LANDSCAPE_MARGIN * Design.HEIGHT_RATIO);
+        } else {
+            marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        }
     }
 
     public void setCallCertifyListener(CallCertifyListener callCertifyListener) {
@@ -413,7 +419,12 @@ public class CallCertifyView extends PercentRelativeLayout  {
             marginLayoutParams.rightMargin = (int) (DESIGN_ACTION_MARGIN * Design.WIDTH_RATIO);
         }
 
-        marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_LANDSCAPE_MARGIN * Design.HEIGHT_RATIO);
+        } else {
+            marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        }
 
         RoundedView cancelRoundedView = findViewById(R.id.call_activity_certify_decline_background_view);
         cancelRoundedView.setColor(DESIGN_CANCEL_COLOR);

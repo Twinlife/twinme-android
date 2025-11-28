@@ -34,10 +34,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.TwincodeOutbound;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.ShowRoomService;
-import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;

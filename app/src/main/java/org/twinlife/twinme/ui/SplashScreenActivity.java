@@ -33,12 +33,7 @@ import androidx.core.splashscreen.SplashScreenViewProvider;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
-import org.twinlife.twinlife.TwincodeOutbound;
-import org.twinlife.twinlife.TwincodeOutboundService;
-import org.twinlife.twinlife.util.Utils;
-import org.twinlife.twinme.models.AccountMigration;
-import org.twinlife.twinme.models.Profile;
-import org.twinlife.twinme.services.AccountMigrationScannerService;
+import org.twinlife.twinme.TwinmeApplication.Feature;
 import org.twinlife.twinme.services.SplashService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
@@ -46,7 +41,6 @@ import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.welcomeActivity.WelcomeActivity;
-import org.twinlife.twinme.TwinmeApplication.Feature;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -19,7 +19,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,8 +40,8 @@ import org.twinlife.twinme.ui.exportActivity.UIExport;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.ui.spaces.DeleteSpaceConfirmView;
+import org.twinlife.twinme.utils.AbstractConfirmView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -142,12 +141,9 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
         }
 
         if(!isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL)) {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.cleanup_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.cleanup_activity_layout);
 
             PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            premiumFeatureConfirmView.setLayoutParams(layoutParams);
             premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
 
             AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -171,13 +167,13 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                    viewGroup.removeView(premiumFeatureConfirmView);
                     setStatusBarColor();
                 }
             };
             premiumFeatureConfirmView.setObserver(observer);
 
-            percentRelativeLayout.addView(premiumFeatureConfirmView);
+            viewGroup.addView(premiumFeatureConfirmView);
             premiumFeatureConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -445,17 +441,15 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "openMenuCleanupExpiration");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.cleanup_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.cleanup_activity_layout);
 
         MenuCleanUpExpirationView menuCleanUpExpirationView = new MenuCleanUpExpirationView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuCleanUpExpirationView.setLayoutParams(layoutParams);
 
         MenuCleanUpExpirationView.OnCleanUpExpirationListener onCleanUpExpirationListener = new MenuCleanUpExpirationView.OnCleanUpExpirationListener() {
             @Override
             public void onCloseMenuExpiration() {
 
-                percentRelativeLayout.removeView(menuCleanUpExpirationView);
+                viewGroup.removeView(menuCleanUpExpirationView);
                 setStatusBarColor();
             }
 
@@ -470,7 +464,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
 
         menuCleanUpExpirationView.setOnCleanUpExpirationListener(onCleanUpExpirationListener);
         menuCleanUpExpirationView.setLocalCleanUpActivity(this);
-        percentRelativeLayout.addView(menuCleanUpExpirationView);
+        viewGroup.addView(menuCleanUpExpirationView);
         menuCleanUpExpirationView.openMenu(mUICleanUpExpiration);
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -496,14 +490,10 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "showConfirmView");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.cleanup_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.cleanup_activity_layout);
         if (mSpace != null) {
 
             DeleteSpaceConfirmView deleteSpaceConfirmView = new DeleteSpaceConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            deleteSpaceConfirmView.setLayoutParams(layoutParams);
-
             deleteSpaceConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
             deleteSpaceConfirmView.setAvatar(avatar, false);
             deleteSpaceConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
@@ -527,23 +517,19 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(deleteSpaceConfirmView);
+                    viewGroup.removeView(deleteSpaceConfirmView);
                     setStatusBarColor();
                 }
             };
             deleteSpaceConfirmView.setObserver(observer);
 
-            percentRelativeLayout.addView(deleteSpaceConfirmView);
+            viewGroup.addView(deleteSpaceConfirmView);
             deleteSpaceConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
             setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
         } else {
             DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            deleteConfirmView.setLayoutParams(layoutParams);
-
             if (mContact == null && mGroup == null) {
                 deleteConfirmView.hideAvatar();
             } else {
@@ -571,13 +557,13 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(deleteConfirmView);
+                    viewGroup.removeView(deleteConfirmView);
                     setStatusBarColor();
                 }
             };
             deleteConfirmView.setObserver(observer);
 
-            percentRelativeLayout.addView(deleteConfirmView);
+            viewGroup.addView(deleteConfirmView);
             deleteConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

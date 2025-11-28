@@ -726,7 +726,7 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         String formatDate = "dd MMM yyyy";
         String formatTime;
         if (DateFormat.is24HourFormat(this)) {
-            formatTime = "kk:mm";
+            formatTime = "HH:mm";
         } else {
             formatTime = "hh:mm a";
         }

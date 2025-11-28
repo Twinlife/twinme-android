@@ -51,7 +51,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.view.MenuProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,10 +60,10 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AndroidDeviceInfo;
 import org.twinlife.twinlife.BaseService.ErrorCode;
 import org.twinlife.twinlife.ConversationService;
+import org.twinlife.twinlife.ConversationService.ClearMode;
 import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
-import org.twinlife.twinlife.ConversationService.ClearMode;
 import org.twinlife.twinlife.DisplayCallsMode;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
@@ -1671,9 +1670,6 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
 
             ResetConversationConfirmView resetConversationConfirmView = new ResetConversationConfirmView(mTwinmeActivity, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            resetConversationConfirmView.setLayoutParams(layoutParams);
             resetConversationConfirmView.setAvatar(avatar, avatar == null || avatar.equals(mTwinmeActivity.getTwinmeApplication().getDefaultGroupAvatar()));
             resetConversationConfirmView.setMessage(message.toString());
 

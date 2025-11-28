@@ -42,8 +42,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
-import org.twinlife.twinlife.ConversationService.ImageDescriptor;
 import org.twinlife.twinlife.ConversationService.GeolocationDescriptor;
+import org.twinlife.twinlife.ConversationService.ImageDescriptor;
 import org.twinlife.twinlife.ConversationService.NamedFileDescriptor;
 import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
 import org.twinlife.twinlife.ConversationService.VideoDescriptor;

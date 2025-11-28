@@ -34,8 +34,8 @@ import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.twinlife.twinme.skin.Design;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView;
 import org.twinlife.twinme.ui.conversationFilesActivity.UICustomTab;
 
@@ -99,16 +99,9 @@ public class MenuCleanUpExpirationView extends PercentRelativeLayout implements 
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.cleanup_activity_menu_expiration_view, null);
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.cleanup_activity_menu_expiration_view, this, true);
+        initViews();
     }
 
     public CleanUpActivity getLocalCleanUpActivity() {

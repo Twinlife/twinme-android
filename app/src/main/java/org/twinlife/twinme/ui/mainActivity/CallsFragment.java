@@ -40,7 +40,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.view.MenuProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,17 +47,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.CallDescriptor;
+import org.twinlife.twinlife.ConversationService.ClearMode;
 import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
-import org.twinlife.twinlife.ConversationService.ClearMode;
 import org.twinlife.twinme.TwinmeApplication;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.CallsService;
-import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
@@ -67,15 +66,15 @@ import org.twinlife.twinme.ui.calls.CallAgainConfirmView;
 import org.twinlife.twinme.ui.calls.CallsAdapter;
 import org.twinlife.twinme.ui.calls.CallsAdapter.OnCallClickListener;
 import org.twinlife.twinme.ui.calls.UICall;
-import org.twinlife.twinme.ui.externalCallActivity.TemplateExternalCallActivity;
-import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
+import org.twinlife.twinme.ui.externalCallActivity.InvitationExternalCallActivity;
 import org.twinlife.twinme.ui.externalCallActivity.OnboardingExternalCallActivity;
+import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
+import org.twinlife.twinme.ui.externalCallActivity.TemplateExternalCallActivity;
+import org.twinlife.twinme.ui.externalCallActivity.UICallReceiver;
+import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.ui.externalCallActivity.InvitationExternalCallActivity;
-import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
-import org.twinlife.twinme.ui.externalCallActivity.UICallReceiver;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIOriginator;
 import org.twinlife.twinme.utils.AbstractConfirmView;
@@ -924,11 +923,6 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
             mCallsService.getImage(uiOriginator.getContact(), (Bitmap avatar) -> {
                 DeleteConfirmView deleteConfirmView = new DeleteConfirmView(mTwinmeActivity, null);
-
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-                deleteConfirmView.setLayoutParams(layoutParams);
-
                 deleteConfirmView.setAvatar(avatar, false);
 
                 String message = getString(R.string.edit_external_call_activity_delete_message) + "\n\n"  + getString(R.string.edit_external_call_activity_delete_confirm_message);
@@ -1002,9 +996,6 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(mTwinmeActivity, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(mTwinmeActivity, featureType));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -1058,10 +1049,6 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
         mCallsService.getProfileImage(mTwinmeActivity.getProfile(), (Bitmap avatar) -> {
             DeleteConfirmView deleteConfirmView = new DeleteConfirmView(mTwinmeActivity, null);
-
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            deleteConfirmView.setLayoutParams(layoutParams);
             deleteConfirmView.setAvatar(avatar, false);
 
             String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.calls_fragment_reset);
@@ -1176,10 +1163,6 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
 
             CallAgainConfirmView callAgainConfirmView = new CallAgainConfirmView(mTwinmeActivity, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            callAgainConfirmView.setLayoutParams(layoutParams);
-
             callAgainConfirmView.setTitle(mUICall.getUIContact().getName());
             callAgainConfirmView.setAvatar(avatar, avatar == null || avatar.equals(mTwinmeActivity.getTwinmeApplication().getDefaultGroupAvatar()));
 

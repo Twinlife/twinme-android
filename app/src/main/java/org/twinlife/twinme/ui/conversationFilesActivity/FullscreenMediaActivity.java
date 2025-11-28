@@ -41,7 +41,6 @@ import org.twinlife.twinme.ui.TwinmeActivity;
 import org.twinlife.twinme.ui.baseItemActivity.Item;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.utils.AbstractConfirmView;
-import org.twinlife.twinme.utils.LayoutUtil;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.SaveAsyncTask;
 
@@ -542,10 +541,9 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
 
         mFullscreenMediaAdapter.pausePlayer();
 
-        ViewGroup percentRelativeLayout = findViewById(R.id.fullscreen_media_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.fullscreen_media_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        LayoutUtil.matchParentLayout(deleteConfirmView);
         deleteConfirmView.setAvatar(mAvatar, mAvatar == null || mAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
 
         if (!isShareItem(currentItem)) {
@@ -573,12 +571,12 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
             }
         };
         deleteConfirmView.setObserver(observer);
 
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
     }
 

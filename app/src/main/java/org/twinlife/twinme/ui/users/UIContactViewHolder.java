@@ -27,8 +27,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.twinme.services.AbstractTwinmeService;
-import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.TextStyle;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.Utils;

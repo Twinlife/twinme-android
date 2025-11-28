@@ -9,15 +9,11 @@
 package org.twinlife.twinme.utils;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.core.content.res.ResourcesCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,16 +38,9 @@ public class OnboardingDetailView extends OnboardingConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            mRootView = inflater.inflate(R.layout.onboarding_detail_view, null);
-            addView(mRootView);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mRootView = inflater.inflate(R.layout.onboarding_detail_view, this, true);
+        initViews();
     }
 
     public void setPremiumFeature(UIPremiumFeature premiumFeature) {

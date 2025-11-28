@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
@@ -75,7 +74,6 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
     private TextView mFingerPrintTextView;
     protected View mInfoScanView;
     protected TextView mInfoTextView;
-    private SuccessAuthentifiedRelationView mSuccessAuthentifiedRelationView;
     private boolean mShowOnboarding;
     private boolean mShowWords = true;
     private boolean mStartScan;
@@ -369,9 +367,6 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
 
         mViewFinder = findViewById(R.id.authentified_relation_activity_view_finder_view);
         mViewFinder.setDrawCorner(false);
-
-        mSuccessAuthentifiedRelationView = findViewById(R.id.authentified_relation_activity_success_authentification_view);
-        mSuccessAuthentifiedRelationView.setVisibility(View.GONE);
     }
 
     private void updateViews() {
@@ -604,13 +599,9 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         if (!mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.CERTIFIED_RELATION)) {
             mShowOnboarding = true;
 
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.authentified_relation_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.authentified_relation_activity_layout);
 
             OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            onboardingConfirmView.setLayoutParams(layoutParams);
-
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
             spannableStringBuilder.append(getString(R.string.authentified_relation_activity_to_be_certified_title));
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -654,12 +645,12 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(onboardingConfirmView);
+                    viewGroup.removeView(onboardingConfirmView);
                     setStatusBarColor();
                 }
             };
             onboardingConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(onboardingConfirmView);
+            viewGroup.addView(onboardingConfirmView);
             onboardingConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -672,14 +663,43 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             Log.d(LOG_TAG, "showSuccessAuthentification");
         }
 
-        mSuccessAuthentifiedRelationView.setInfo(this, mContact.getName(), mContactAvatar);
-        mSuccessAuthentifiedRelationView.setSuccessAuthentifiedRelationListener(() -> {
-            mSuccessAuthentifiedRelationView.setVisibility(View.GONE);
-            setStatusBarColor();
-        });
+        ViewGroup viewGroup = findViewById(R.id.authentified_relation_activity_layout);
 
-        mSuccessAuthentifiedRelationView.setVisibility(View.VISIBLE);
-        mSuccessAuthentifiedRelationView.startSuccessAnimation();
-        openMenuColor();
+        SuccessAuthentifiedRelationView successAuthentifiedRelationView = new SuccessAuthentifiedRelationView(this, null);
+        successAuthentifiedRelationView.setAvatar(mContactAvatar, false);
+        successAuthentifiedRelationView.setTitle(mContact.getName());
+
+        String message = String.format(getString(R.string.authentified_relation_activity_certified_message), mContact.getName());
+        successAuthentifiedRelationView.setMessage(message);
+        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(successAuthentifiedRelationView);
+                setStatusBarColor();
+            }
+        };
+        successAuthentifiedRelationView.setObserver(observer);
+        viewGroup.addView(successAuthentifiedRelationView);
+        successAuthentifiedRelationView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 }

@@ -30,24 +30,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
-import org.twinlife.twinlife.ConversationService.DescriptorId;
 import org.twinlife.twinlife.ConversationService.CallDescriptor;
-import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.ClearMode;
+import org.twinlife.twinlife.ConversationService.Conversation;
+import org.twinlife.twinlife.ConversationService.DescriptorId;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.CallsService;
-import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.calls.CallAgainConfirmView;
@@ -609,12 +608,8 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.last_calls_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.last_calls_activity_layout);
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setAvatar(mUIContact.getAvatar(), mUIContact.getAvatar() == null || mUIContact.getAvatar().equals(getTwinmeApplication().getDefaultGroupAvatar()));
 
         String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.calls_fragment_reset);
@@ -640,13 +635,13 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
                 setStatusBarColor();
             }
         };
         deleteConfirmView.setObserver(observer);
 
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -689,12 +684,9 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
                 }
             } else if (mUIContact.getContact().getType() == Originator.Type.GROUP) {
                 if (!isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL)) {
-                    PercentRelativeLayout percentRelativeLayout = findViewById(R.id.last_calls_activity_layout);
+                    ViewGroup viewGroup = findViewById(R.id.last_calls_activity_layout);
 
                     PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-                    PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT);
-                    premiumFeatureConfirmView.setLayoutParams(layoutParams);
                     premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
 
                     AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -718,13 +710,12 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
                         @Override
                         public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                            percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                            viewGroup.removeView(premiumFeatureConfirmView);
                             setStatusBarColor();
                         }
                     };
                     premiumFeatureConfirmView.setObserver(observer);
-
-                    percentRelativeLayout.addView(premiumFeatureConfirmView);
+                    viewGroup.addView(premiumFeatureConfirmView);
                     premiumFeatureConfirmView.show();
 
                     int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -744,13 +735,9 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
             Log.d(LOG_TAG, "showCallAgainConfirmView: uiContact=" + uiContact + " isGroup=" + isGroup + " isVideoCall=" + isVideoCall);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.last_calls_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.last_calls_activity_layout);
 
         CallAgainConfirmView callAgainConfirmView = new CallAgainConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        callAgainConfirmView.setLayoutParams(layoutParams);
-
         callAgainConfirmView.setTitle(uiContact.getName());
         callAgainConfirmView.setAvatar(uiContact.getAvatar(), uiContact.getAvatar() == null || uiContact.getAvatar().equals(getTwinmeApplication().getDefaultGroupAvatar()));
 
@@ -795,13 +782,12 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(callAgainConfirmView);
+                viewGroup.removeView(callAgainConfirmView);
                 setStatusBarColor();
             }
         };
         callAgainConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(callAgainConfirmView);
+        viewGroup.addView(callAgainConfirmView);
         callAgainConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

@@ -21,6 +21,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -73,15 +74,9 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            View view = View.inflate(getContext(), R.layout.menu_icon_view, null);
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.menu_icon_view, this, true);
+        initViews();
     }
 
     public void updateHeight(int height) {
