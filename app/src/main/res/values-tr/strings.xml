@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Hizmet bağlantınızın durumunu kontrol edin</string>
     <string name="settings_advanced_activity_status_connection_title">Bağlantı Durumu</string>
+    <string name="settings_advanced_activity_telecom_enable">Android arama deneyimi</string>
+    <string name="settings_advanced_activity_telecom_information">Uygulama varsayılan olarak Android arama deneyimini entegre etmez, çünkü bu entegrasyon belirli durumlarda ve belirli cihazlarda arama alma sorunlarına neden olabilir. Bu sorunları yaşamıyorsanız, daha iyi arama yönetimi için bu entegrasyonu etkinleştirebilirsiniz.</string>
+    <string name="settings_advanced_activity_telecom">ARAMALAR</string>
     <string name="settings_advanced_activity_title">Gelişmiş Ayarlar</string>
 
     <!-- SettingsActivity -->

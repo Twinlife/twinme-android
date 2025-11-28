@@ -38,6 +38,9 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
     protected final int ACTION_END_DATE = 7;
     protected final int ACTION_END_TIME = 8;
     protected final int ACTION_ADD_MEMBERS = 9;
+    protected final int ACTION_INVITE = 10;
+    protected final int ACTION_CODE = 11;
+    protected final int ACTION_REMOVE = 12;
 
     protected class ViewTapGestureDetector extends GestureDetector.SimpleOnGestureListener {
 
@@ -98,6 +101,18 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
 
                 case ACTION_ADD_MEMBERS:
                     onAddMemberClick();
+                    break;
+
+                case ACTION_INVITE:
+                    onInviteClick();
+                    break;
+
+                case ACTION_CODE:
+                    onInvitationCodeClick();
+                    break;
+
+                case ACTION_REMOVE:
+                    onRemoveClick();
                     break;
 
                 default:
@@ -275,6 +290,24 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
     protected void onAddMemberClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onAddMemberClick");
+        }
+    }
+
+    protected void onInviteClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onInviteClick");
+        }
+    }
+
+    protected void onInvitationCodeClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onInvitationCodeClick");
+        }
+    }
+
+    protected void onRemoveClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onRemoveClick");
         }
     }
 

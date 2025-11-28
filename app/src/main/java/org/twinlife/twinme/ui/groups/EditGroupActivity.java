@@ -38,7 +38,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
@@ -645,12 +644,9 @@ public class EditGroupActivity extends AbstractGroupActivity {
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_group_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_group_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setConfirmTitle(getString(R.string.application_confirm));
         deleteConfirmView.setAvatar(mGroupAvatar, mGroupAvatar == null || mGroupAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         String message = getString(R.string.show_group_activity_leave_message) + "\n\n"  + getString(R.string.show_group_activity_leave_confirm_message);
@@ -681,13 +677,12 @@ public class EditGroupActivity extends AbstractGroupActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
                 setFullscreen();
             }
         };
         deleteConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
 
         Window window = getWindow();
@@ -829,12 +824,9 @@ public class EditGroupActivity extends AbstractGroupActivity {
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_group_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_group_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPhotoView.setLayoutParams(layoutParams);
-
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
             public void onCameraClick() {
@@ -853,7 +845,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.WHITE_COLOR);
@@ -861,7 +853,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));

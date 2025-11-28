@@ -247,6 +247,7 @@ public class AbstractConfirmView extends PercentRelativeLayout {
                     mActionView.setY(mRootHeight - mActionHeight);
                 }
                 isOpenAnimationEnded = true;
+                onFinishOpenAnimation();
             }
 
             @Override
@@ -557,5 +558,11 @@ public class AbstractConfirmView extends PercentRelativeLayout {
         mActionView.setY(Design.DISPLAY_HEIGHT);
         mActionView.invalidate();
         animationOpenConfirmView();
+    }
+
+    protected void onFinishOpenAnimation() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onFinishOpenAnimation");
+        }
     }
 }

@@ -272,6 +272,11 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
 
         setTitle(getString(R.string.account_activity_migration_title));
 
+        applyInsets(R.id.local_account_migration_activity_layout, R.id.local_account_migration_activity_tool_bar, R.id.account_migration_activity_container_view, Design.TOOLBAR_COLOR, false);
+
+        View backgroundView = findViewById(R.id.local_account_migration_activity_background);
+        backgroundView.setBackgroundColor(Design.WHITE_COLOR);
+
         ImageView imageView = findViewById(R.id.local_account_migration_activity_image_view);
 
         ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();

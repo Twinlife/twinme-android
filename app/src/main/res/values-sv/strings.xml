@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Kontrollera statusen för din anslutning till tjänsten</string>
     <string name="settings_advanced_activity_status_connection_title">Anslutningsstatus</string>
+    <string name="settings_advanced_activity_telecom_enable">Android-samtalupplevelse</string>
+    <string name="settings_advanced_activity_telecom_information">Som standard integrerar inte appen Android-samtal, eftersom denna integration kan orsaka problem med samtalsmottagning i vissa situationer och på vissa enheter. Du kan aktivera den här integrationen för bättre samtalshantering om du inte upplever dessa problem.</string>
+    <string name="settings_advanced_activity_telecom">SAMTAL</string>
     <string name="settings_advanced_activity_title">Avancerade inställningar</string>
 
     <!-- SettingsActivity -->

@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-
 import org.twinlife.twinme.skin.Design;
 
 public class SettingSectionViewHolder extends RecyclerView.ViewHolder {

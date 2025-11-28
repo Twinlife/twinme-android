@@ -34,7 +34,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.CallReceiver;
@@ -811,11 +810,9 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "openMenuPropagatingProfileView");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_profile_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_profile_activity_layout);
 
         MenuPropagatingProfileView menuPropagatingProfileView = new MenuPropagatingProfileView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPropagatingProfileView.setLayoutParams(layoutParams);
 
         MenuPropagatingProfileView.Observer observer = new MenuPropagatingProfileView.Observer() {
             @Override
@@ -848,7 +845,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         };
 
         menuPropagatingProfileView.setObserver(observer);
-        percentRelativeLayout.addView(menuPropagatingProfileView);
+        viewGroup.addView(menuPropagatingProfileView);
 
         menuPropagatingProfileView.openMenu(getTwinmeApplication().updateProfileMode());
 
@@ -881,11 +878,9 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_profile_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_profile_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPhotoView.setLayoutParams(layoutParams);
 
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
@@ -905,7 +900,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.WHITE_COLOR);
@@ -913,7 +908,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));

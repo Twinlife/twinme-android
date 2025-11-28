@@ -51,7 +51,6 @@ public class CallConversationView extends PercentRelativeLayout {
     }
 
     private static final int DESIGN_ACTION_VIEW_COLOR = Color.rgb(60, 60, 60);
-    private static final int DESIGN_EDIT_TEXT_CONTAINER_BACKGROUND_COLOR = Color.rgb(72, 72, 72);
     private static final int EDIT_TEXT_BORDER_COLOR = Color.rgb(151, 151, 151);
     private static final int DESIGN_ACTION_VIEW_RADIUS = 14;
 
@@ -84,17 +83,9 @@ public class CallConversationView extends PercentRelativeLayout {
 
         super(context, attrs);
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.call_activity_conversation_view, (ViewGroup) getParent());
-            //noinspection deprecation
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.call_activity_conversation_view, this, true);
+        initViews();
     }
 
     public CallConversationView(Context context, AttributeSet attrs, int defStyle) {

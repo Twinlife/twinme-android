@@ -50,19 +50,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import org.twinlife.twinlife.ProxyDescriptor;
-import org.twinlife.twinlife.SNIProxyDescriptor;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.BaseService.ErrorCode;
 import org.twinlife.twinlife.ConnectivityService;
+import org.twinlife.twinlife.ProxyDescriptor;
+import org.twinlife.twinlife.SNIProxyDescriptor;
 import org.twinlife.twinlife.TrustMethod;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Logger;
@@ -254,19 +253,6 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
                 });
             }
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
-        }
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == FullscreenQRCodeActivity.CONTACT_CREATED_RESULT) {
-            finish();
         }
     }
 
@@ -1085,12 +1071,9 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "onGenerateCodeClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.add_contact_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.add_contact_activity_layout);
 
         ResetInvitationConfirmView resetInvitationConfirmView = new ResetInvitationConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        resetInvitationConfirmView.setLayoutParams(layoutParams);
         resetInvitationConfirmView.setAvatar(mAvatar, false);
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -1112,13 +1095,13 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(resetInvitationConfirmView);
+                viewGroup.removeView(resetInvitationConfirmView);
                 setStatusBarColor();
             }
         };
         resetInvitationConfirmView.setObserver(observer);
 
-        percentRelativeLayout.addView(resetInvitationConfirmView);
+        viewGroup.addView(resetInvitationConfirmView);
         resetInvitationConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -1222,16 +1205,45 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "showSuccessAuthentification");
         }
 
-        SuccessAuthentifiedRelationView  successAuthentifiedRelationView = findViewById(R.id.add_contact_activity_success_authentification_view);
-        successAuthentifiedRelationView.setInfo(this,name, avatar);
-        successAuthentifiedRelationView.setSuccessAuthentifiedRelationListener(() -> {
-            successAuthentifiedRelationView.setVisibility(View.GONE);
-            setStatusBarColor();
-            finish();
-        });
+        ViewGroup viewGroup = findViewById(R.id.add_contact_activity_layout);
 
-        successAuthentifiedRelationView.setVisibility(View.VISIBLE);
-        openMenuColor();
+        SuccessAuthentifiedRelationView successAuthentifiedRelationView = new SuccessAuthentifiedRelationView(this, null);
+        successAuthentifiedRelationView.setAvatar(avatar, false);
+        successAuthentifiedRelationView.setTitle(name);
+
+        String message = String.format(getString(R.string.authentified_relation_activity_certified_message), name);
+        successAuthentifiedRelationView.setMessage(message);
+        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+                finish();
+            }
+
+            @Override
+            public void onCancelClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                successAuthentifiedRelationView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(successAuthentifiedRelationView);
+                setStatusBarColor();
+            }
+        };
+        successAuthentifiedRelationView.setObserver(observer);
+        viewGroup.addView(successAuthentifiedRelationView);
+        successAuthentifiedRelationView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void updateTwincodeHeight() {
@@ -1353,12 +1365,9 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             }
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.add_contact_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.add_contact_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(getString(R.string.proxy_activity_title));
@@ -1392,7 +1401,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -1411,7 +1420,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         };
 
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         Window window = getWindow();

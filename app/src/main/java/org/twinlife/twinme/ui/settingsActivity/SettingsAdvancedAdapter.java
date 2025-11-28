@@ -19,8 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.libwebsockets.ErrorCategory;
 import org.twinlife.device.android.twinme.BuildConfig;
-import org.twinlife.twinlife.ProxyDescriptor;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ProxyDescriptor;
+import org.twinlife.twinme.FeatureUtils;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
@@ -33,16 +34,21 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
     @NonNull
     private final SettingsAdvancedActivity mActivity;
 
-    private static int ITEM_COUNT = 7;
+    private int ITEM_COUNT = 7;
 
     private static final int SECTION_CONNEXION = 0;
     private static final int SECTION_PROXY = 3;
+    private int SECTION_TELECOM = -1;
     private int SECTION_DEBUG = -1;
     private static final int POSITION_CONNEXION_INFO = 1;
     private static final int POSITION_CONNEXION_STATUS = 2;
     private static final int POSITION_PROXY_INFO = 4;
     private static final int POSITION_PROXY_ENABLE = 5;
     private static int POSITION_PROXY_ADD = 6;
+
+    private int POSITION_TELECOM_INFO = -1;
+    private int POSITION_TELECOM_ENABLE = -1;
+
     private int POSITION_DEVELOPER_SETTINGS = -1;
 
     private static final int TITLE = 0;
@@ -63,6 +69,13 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         if (BuildConfig.DEBUG) {
             ITEM_COUNT = 9;
         }
+
+        if (FeatureUtils.isTelecomSupported(mActivity)) {
+            ITEM_COUNT += 3;
+            SECTION_TELECOM = 7;
+            POSITION_TELECOM_INFO = 8;
+            POSITION_TELECOM_ENABLE = 9;
+        }
     }
 
     @Override
@@ -71,30 +84,24 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        if (!mProxies.isEmpty()) {
-            int count = ITEM_COUNT + mProxies.size();
-            if (BuildConfig.DEBUG) {
-                SECTION_DEBUG = count - 2;
-                POSITION_DEVELOPER_SETTINGS = count - 1;
-                POSITION_PROXY_ADD = count - 3;
-            } else {
-                SECTION_DEBUG = -1;
-                POSITION_DEVELOPER_SETTINGS = -1;
-                POSITION_PROXY_ADD = count - 1;
-            }
-
-
-            return count;
-        }
-
-        POSITION_PROXY_ADD = 6;
-
+        int count = ITEM_COUNT + mProxies.size();
         if (BuildConfig.DEBUG) {
-            SECTION_DEBUG = 7;
-            POSITION_DEVELOPER_SETTINGS = 8;
+            SECTION_DEBUG = count - 2;
+            POSITION_DEVELOPER_SETTINGS = count - 1;
+        } else {
+            SECTION_DEBUG = -1;
+            POSITION_DEVELOPER_SETTINGS = -1;
         }
 
-        return ITEM_COUNT;
+        POSITION_PROXY_ADD = POSITION_PROXY_ENABLE + mProxies.size() + 1;
+
+        if (SECTION_TELECOM != -1) {
+            SECTION_TELECOM = POSITION_PROXY_ADD + 1;
+            POSITION_TELECOM_INFO = SECTION_TELECOM + 1;
+            POSITION_TELECOM_ENABLE = POSITION_TELECOM_INFO + 1;
+        }
+
+        return count;
     }
 
     public void updateProxies(List<ProxyDescriptor> proxies) {
@@ -120,13 +127,13 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == POSITION_CONNEXION_INFO || position == POSITION_PROXY_INFO) {
+        if (position == POSITION_CONNEXION_INFO || position == POSITION_PROXY_INFO || position == POSITION_TELECOM_INFO) {
             return INFO;
-        } else if (position == SECTION_CONNEXION || position == SECTION_PROXY || position == SECTION_DEBUG) {
+        } else if (position == SECTION_CONNEXION || position == SECTION_PROXY || position == SECTION_TELECOM || position == SECTION_DEBUG) {
             return TITLE;
         } else if (position == POSITION_CONNEXION_STATUS) {
             return STATUS;
-        } else if (position == POSITION_PROXY_ENABLE) {
+        } else if (position == POSITION_PROXY_ENABLE ||position == POSITION_TELECOM_ENABLE) {
             return CHECKBOX;
         } else if (position == POSITION_PROXY_ADD || position == POSITION_DEVELOPER_SETTINGS) {
             return SUBSECTION;
@@ -153,6 +160,8 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
                 } else {
                     informationViewHolder.onBind(mActivity.getString(R.string.proxy_activity_list_information), true);
                 }
+            }  else if (position == POSITION_TELECOM_INFO) {
+                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_telecom_information), true);
             }
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
@@ -163,8 +172,14 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             connexionStatusViewHolder.onBind(mActivity.getAppInfo());
         } else if (viewType == CHECKBOX) {
             SettingsAdvancedViewHolder settingsViewHolder = (SettingsAdvancedViewHolder) viewHolder;
-            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onSettingChangeValue(value);
-            settingsViewHolder.onBind(mActivity.getString(R.string.proxy_activity_enable), mActivity.isProxyEnable(), !mProxies.isEmpty(), onCheckedChangeListener);
+
+            if (position == POSITION_TELECOM_ENABLE) {
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onTelecomSettingChangeValue(value);
+                settingsViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_telecom_enable), mActivity.isTelecomEnable(), true, onCheckedChangeListener);
+            } else {
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onProxySettingChangeValue(value);
+                settingsViewHolder.onBind(mActivity.getString(R.string.proxy_activity_enable), mActivity.isProxyEnable(), !mProxies.isEmpty(), onCheckedChangeListener);
+            }
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (position == POSITION_PROXY_ADD) {
@@ -231,6 +246,8 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             return mActivity.getString(R.string.settings_advanced_activity_status_connection_title);
         } else if (position == SECTION_PROXY) {
             return mActivity.getString(R.string.proxy_activity_title);
+        } else if (position == SECTION_TELECOM) {
+            return mActivity.getString(R.string.settings_advanced_activity_telecom);
         } else if (position == SECTION_DEBUG) {
             return mActivity.getString(R.string.settings_advanced_activity_debug);
         }

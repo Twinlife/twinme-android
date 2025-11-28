@@ -9,6 +9,7 @@
 package org.twinlife.twinme.ui.premiumServicesActivity;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -17,13 +18,12 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -49,17 +49,22 @@ public class PremiumFeatureConfirmView extends AbstractConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.premium_feature_confirm_view, this, true);
+        initViews();
+    }
 
-            View view = inflater.inflate(R.layout.premium_feature_confirm_view, null);
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
-            addView(view);
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mPremiumFeatureImageView.setVisibility(GONE);
+        } else {
+            mPremiumFeatureImageView.setVisibility(VISIBLE);
         }
+
+        show();
     }
 
     public void initWithPremiumFeature(UIPremiumFeature uiPremiumFeature) {
@@ -111,9 +116,15 @@ public class PremiumFeatureConfirmView extends AbstractConfirmView {
 
         super.initViews();
 
-        ViewGroup.LayoutParams layoutParams = mPremiumFeatureImageView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_IMAGE_WIDTH * Design.WIDTH_RATIO);
-        layoutParams.height = (int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
+        mPremiumFeatureImageView.setMaxWidth((int) (DESIGN_IMAGE_WIDTH * Design.WIDTH_RATIO));
+        mPremiumFeatureImageView.setMaxHeight((int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO));
+
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mPremiumFeatureImageView.setVisibility(GONE);
+        } else {
+            mPremiumFeatureImageView.setVisibility(VISIBLE);
+        }
 
         MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mPremiumFeatureImageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
@@ -131,7 +142,7 @@ public class PremiumFeatureConfirmView extends AbstractConfirmView {
         linkTextView.setPaintFlags(linkTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         linkTextView.setOnClickListener(view -> onPremiumServicesClick());
 
-        layoutParams = linkTextView.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = linkTextView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.BUTTON_HEIGHT;
 

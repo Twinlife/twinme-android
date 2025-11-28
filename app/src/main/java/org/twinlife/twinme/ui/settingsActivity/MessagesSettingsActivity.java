@@ -22,7 +22,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -198,12 +197,9 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
             Log.d(LOG_TAG, "onPremiumFeatureClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.messages_settings_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.messages_settings_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.PRIVACY));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -224,13 +220,12 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
                 setStatusBarColor();
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

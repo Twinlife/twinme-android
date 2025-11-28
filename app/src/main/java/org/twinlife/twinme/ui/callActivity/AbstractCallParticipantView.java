@@ -13,7 +13,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
-
 import android.graphics.Color;
 import android.graphics.Point;
 import android.util.AttributeSet;
@@ -34,7 +33,6 @@ import androidx.percentlayout.widget.PercentRelativeLayout;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.PercentFrameLayout;
 
 public abstract class AbstractCallParticipantView extends PercentRelativeLayout implements View.OnTouchListener {
@@ -335,7 +333,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
                 x = 0;
             }
 
-            animate().setDuration(ANIMATON_DURATION).translationX(x).translationY(0).setInterpolator(new AccelerateDecelerateInterpolator()).start();
+            animate().setDuration(ANIMATON_DURATION).x(x).y(0).setInterpolator(new AccelerateDecelerateInterpolator()).start();
 
             ViewGroup.LayoutParams layoutParams = getLayoutParams();
 
@@ -343,13 +341,13 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
                 layoutParams.width =  mParentViewWidth;
                 layoutParams.height = mParentViewHeight;
             } else {
-                layoutParams.width =  Design.DISPLAY_WIDTH - (MARGIN_PARTICIPANT * 2);
+                layoutParams.width =  mParentViewWidth - (MARGIN_PARTICIPANT * 2);
                 layoutParams.height = mParentViewHeight;
             }
         } else {
             mCallParticipantViewAspect = CallParticipantViewAspect.FIT;
 
-            animate().setDuration(ANIMATON_DURATION).translationX(mX).translationY(mY).setInterpolator(new AccelerateDecelerateInterpolator()).start();
+            animate().setDuration(ANIMATON_DURATION).x(mX).y(mY).setInterpolator(new AccelerateDecelerateInterpolator()).start();
 
             ViewGroup.LayoutParams layoutParams = getLayoutParams();
             layoutParams.width = (int) mWidth;
@@ -463,7 +461,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
             mWidth = mMainParticipantWidth;
             mHeight = mMainParticipantHeight;
             if (mIsLandscape) {
-                if (!CallStatus.isActive(mCallStatus) && mNumberParticipants == 2) {
+                if ((!isVideoCall || (!CallStatus.isActive(mCallStatus))) && mNumberParticipants == 2) {
                     mX = (parentViewWidth * 0.5f) - (mWidth * 0.5f);
                 } else {
                     mX = 0;
@@ -485,13 +483,8 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
         }
 
         if (!isVideoInFitMode() || mCallParticipantViewMode != CallParticipantViewMode.SMALL_LOCALE_VIDEO || mNumberParticipants > 2 ) {
-            MarginLayoutParams marginLayoutParams = (MarginLayoutParams) getLayoutParams();
-            if (CommonUtils.isLayoutDirectionRTL()) {
-                marginLayoutParams.rightMargin = (int) mX;
-            } else {
-                marginLayoutParams.leftMargin = (int) mX;
-            }
 
+            setX(mX);
             setY(mY);
 
             ViewGroup.LayoutParams layoutParams = getLayoutParams();
@@ -555,10 +548,10 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
         }
 
         if (mNumberParticipants != 2 && mNumberParticipants % 2 == 0) {
-            return (Design.DISPLAY_WIDTH - (MARGIN_PARTICIPANT * 3)) * 0.5f ;
+            return (mParentViewWidth - (MARGIN_PARTICIPANT * 3)) * 0.5f ;
         }
 
-        return Design.DISPLAY_WIDTH - (MARGIN_PARTICIPANT * 2);
+        return mParentViewWidth - (MARGIN_PARTICIPANT * 2);
     }
 
     private float getLandscapeMainParticipantWidth() {
@@ -646,7 +639,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
             return getMainParticipantWidth();
         }
 
-        return (Design.DISPLAY_WIDTH - (MARGIN_PARTICIPANT * 3)) * 0.5f;
+        return (mParentViewWidth - (MARGIN_PARTICIPANT * 3)) * 0.5f;
     }
 
     private float getLandscapeParticipantWidth() {
@@ -725,7 +718,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
         }
 
         if (mNumberParticipants == 2 && mIsVideoCall && CallStatus.isActive(mCallStatus) && mCallParticipantViewMode != CallParticipantViewMode.SPLIT_SCREEN) {
-            return Design.DISPLAY_WIDTH - (MARGIN_PARTICIPANT * 2) - mWidth;
+            return mParentViewWidth - (MARGIN_PARTICIPANT * 2) - mWidth;
         } else if (mNumberParticipants == 2) {
             return MARGIN_PARTICIPANT;
         } else if (mNumberParticipants % 2 != 0) {

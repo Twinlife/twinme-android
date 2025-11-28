@@ -9,6 +9,7 @@
 package org.twinlife.twinme.utils;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -24,7 +25,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
-import androidx.percentlayout.widget.PercentRelativeLayout;
+import androidx.annotation.NonNull;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -44,6 +45,8 @@ public class OnboardingConfirmView extends AbstractConfirmView {
     protected View mRootView;
     private ImageView mImageView;
 
+    private int mMessageMaxHeight;
+
 
     public OnboardingConfirmView(Context context) {
         super(context);
@@ -56,16 +59,25 @@ public class OnboardingConfirmView extends AbstractConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mRootView = inflater.inflate(R.layout.onboarding_confirm_view, this, true);
+        initViews();
+    }
 
-            mRootView = inflater.inflate(R.layout.onboarding_confirm_view, null);
-            addView(mRootView);
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
 
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mImageView.setVisibility(GONE);
+            mMessageView.setMaxHeight(Integer.MAX_VALUE);
+        } else {
+            mImageView.setVisibility(VISIBLE);
+            mMessageView.setMaxHeight(mMessageMaxHeight);
         }
+
+        show();
     }
 
     public void setImage(Drawable drawable) {
@@ -114,6 +126,12 @@ public class OnboardingConfirmView extends AbstractConfirmView {
 
         super.initViews();
 
+        mImageView.setMaxWidth((int) (DESIGN_IMAGE_WIDTH * Design.WIDTH_RATIO));
+        mImageView.setMaxHeight((int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO));
+
+        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mImageView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+
         Design.updateTextFont(mTitleView, Design.FONT_MEDIUM36);
 
         ViewTreeObserver viewTreeObserver = mTitleView.getViewTreeObserver();
@@ -121,22 +139,24 @@ public class OnboardingConfirmView extends AbstractConfirmView {
             @Override
             public void onGlobalLayout() {
                 ViewTreeObserver viewTreeObserver = mTitleView.getViewTreeObserver();
-                viewTreeObserver.removeGlobalOnLayoutListener(this);
+                viewTreeObserver.removeOnGlobalLayoutListener(this);
 
-                float messageMaxHeight = mOverlayView.getHeight() - (DESIGN_MIN_HEIGHT * Design.HEIGHT_RATIO) - mTitleView.getHeight();
-                mMessageView.setMaxHeight((int) messageMaxHeight);
+                mMessageMaxHeight = (int) (Design.DISPLAY_HEIGHT - (DESIGN_MIN_HEIGHT * Design.HEIGHT_RATIO) - mTitleView.getHeight());
+                int orientation = getContext().getResources().getConfiguration().orientation;
+                if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    mMessageView.setMaxHeight(Integer.MAX_VALUE);
+                } else {
+                    mMessageView.setMaxHeight(mMessageMaxHeight);
+                }
             }
         });
 
-        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mTitleView.getLayoutParams();
+        marginLayoutParams = (MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_TOP_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.leftMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
         mMessageView.setMovementMethod(new ScrollingMovementMethod());
-
-        float messageMaxHeight = Design.DISPLAY_HEIGHT - (DESIGN_MIN_HEIGHT * Design.HEIGHT_RATIO);
-        mMessageView.setMaxHeight((int) messageMaxHeight);
 
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM32);
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -149,18 +169,21 @@ public class OnboardingConfirmView extends AbstractConfirmView {
         marginLayoutParams.leftMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
-        ViewGroup.LayoutParams layoutParams = mImageView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_IMAGE_WIDTH * Design.WIDTH_RATIO);
-        layoutParams.height = (int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (MarginLayoutParams) mImageView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
-
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         ShapeDrawable confirmViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         confirmViewBackground.getPaint().setColor(Design.getMainStyle());
         mConfirmView.setBackground(confirmViewBackground);
+
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mMessageView.setMaxHeight(Integer.MAX_VALUE);
+            mImageView.setVisibility(GONE);
+        } else {
+            mImageView.setVisibility(VISIBLE);
+            float messageMaxHeight = Design.DISPLAY_HEIGHT - (DESIGN_MIN_HEIGHT * Design.HEIGHT_RATIO) - mTitleView.getHeight();
+            mMessageView.setMaxHeight((int) messageMaxHeight);
+        }
     }
 }

@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">サービスへの接続状態を確認してください</string>
     <string name="settings_advanced_activity_status_connection_title">接続状態</string>
+    <string name="settings_advanced_activity_telecom_enable">Androidの通話エクスペリエンス</string>
+    <string name="settings_advanced_activity_telecom_information">デフォルトでは、このアプリケーションはAndroidの通話エクスペリエンスを統合していません。この統合により、特定の状況や特定のデバイスで通話の受信に問題が発生する可能性があるためです。これらの問題が発生していない場合は、この統合を有効にすることで、通話管理を改善できます。</string>
+    <string name="settings_advanced_activity_telecom">通話</string>
     <string name="settings_advanced_activity_title">詳細設定</string>
 
     <!-- SettingsActivity -->

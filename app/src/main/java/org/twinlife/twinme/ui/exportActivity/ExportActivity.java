@@ -27,7 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -218,12 +217,9 @@ public class ExportActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onActionClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.export_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.export_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -244,13 +240,12 @@ public class ExportActivity extends AbstractTwinmeActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
                 setStatusBarColor();
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

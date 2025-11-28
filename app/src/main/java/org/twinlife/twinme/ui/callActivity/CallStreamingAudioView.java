@@ -76,17 +76,9 @@ public class CallStreamingAudioView extends PercentRelativeLayout {
 
         super(context, attrs);
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.call_activity_streaming_audio_view, (ViewGroup) getParent());
-            //noinspection deprecation
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.call_activity_streaming_audio_view, this, true);
+        initViews();
     }
 
     public CallStreamingAudioView(Context context, AttributeSet attrs, int defStyle) {

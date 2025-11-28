@@ -76,7 +76,7 @@ public class PreviewAppearanceViewHolder extends RecyclerView.ViewHolder {
 
         mTimeTextView = view.findViewById(R.id.preview_appearance_time_text);
         Design.updateTextFont(mTimeTextView, Design.FONT_MEDIUM26);
-        mTimeTextView.setText(DateFormat.format("kk:mm", new Date()));
+        mTimeTextView.setText(DateFormat.format("HH:mm", new Date()));
 
         View containerMessageView = view.findViewById(R.id.preview_appearance_message_item_layout_container);
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) containerMessageView.getLayoutParams();

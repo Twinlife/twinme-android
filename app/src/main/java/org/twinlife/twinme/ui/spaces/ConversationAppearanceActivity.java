@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -118,12 +117,9 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onPremiumFeatureClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_appearance_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_appearance_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.SPACES));
         premiumFeatureConfirmView.setTitle(getString(R.string.personalization_activity_title));
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -144,13 +140,12 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
                 setStatusBarColor();
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

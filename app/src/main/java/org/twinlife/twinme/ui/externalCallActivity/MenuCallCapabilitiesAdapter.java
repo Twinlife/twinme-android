@@ -25,7 +25,7 @@ public class MenuCallCapabilitiesAdapter extends RecyclerView.Adapter<RecyclerVi
 
     private final MenuCallCapabilitiesView mMenuCallCapabilitiesView;
 
-    private final static int ITEM_COUNT = 3;
+    protected final static int ITEM_COUNT = 3;
 
     private static final int POSITION_ALLOW_AUDIO_CALL = 0;
     private static final int POSITION_ALLOW_VIDEO_CALL = 1;

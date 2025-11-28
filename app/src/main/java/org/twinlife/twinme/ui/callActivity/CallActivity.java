@@ -91,15 +91,18 @@ import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.audio.AudioDevice;
 import org.twinlife.twinme.audio.ProximitySensor;
+import org.twinlife.twinme.calls.CallAudioManager;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.calls.CallParticipantEvent;
 import org.twinlife.twinme.calls.CallParticipantObserver;
+import org.twinlife.twinme.calls.CallService;
 import org.twinlife.twinme.calls.CallState;
+import org.twinlife.twinme.calls.CallStatus;
+import org.twinlife.twinme.calls.ErrorType;
 import org.twinlife.twinme.calls.keycheck.WordCheckChallenge;
 import org.twinlife.twinme.calls.streaming.StreamPlayer;
 import org.twinlife.twinme.calls.streaming.StreamingEvent;
 import org.twinlife.twinme.calls.streaming.StreamingStatus;
-import org.twinlife.twinme.calls.CallAudioManager;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.CertificationLevel;
 import org.twinlife.twinme.models.Contact;
@@ -112,16 +115,13 @@ import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.services.AudioCallService;
-import org.twinlife.twinme.calls.CallService;
-import org.twinlife.twinme.calls.ErrorType;
-import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.ui.contacts.InvitationCodeConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.ui.contacts.InvitationCodeConfirmView;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
@@ -692,6 +692,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mRootViewInitialized = true;
             mRootViewWidth = mRootView.getWidth();
             mRootViewHeight = mRootView.getHeight();
+            mIsLandscape = mRootViewWidth > mRootViewHeight;
             updateViews();
         }
 
@@ -702,11 +703,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mIsLandscape = true;
-        } else {
-            mIsLandscape = false;
-        }
+        mIsLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE;
 
         resetParticipantsView();
         updateParticipantsView(CallService.getState());
@@ -1097,13 +1094,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (!mOriginator.hasPeer()) {
             terminateCall(TerminateReason.REVOKED, false);
             
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.call_activity_layout);
 
             AlertMessageView alertMessageView = new AlertMessageView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
             alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
-            alertMessageView.setLayoutParams(layoutParams);
             alertMessageView.setForceDarkMode(true);
             alertMessageView.setTitle(getString(R.string.audio_call_activity_terminate));
             alertMessageView.setMessage(getString(R.string.application_contact_not_found));
@@ -1122,14 +1116,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                 @Override
                 public void onCloseViewAnimationEnd() {
-                    percentRelativeLayout.removeView(alertMessageView);
+                    viewGroup.removeView(alertMessageView);
                     setStatusBarColor();
                     finish();
                 }
             };
             alertMessageView.setObserver(observer);
 
-            percentRelativeLayout.addView(alertMessageView);
+            viewGroup.addView(alertMessageView);
             alertMessageView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -1622,12 +1616,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
             terminateCall(TerminateReason.REVOKED, false);
 
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.call_activity_layout);
 
             AlertMessageView alertMessageView = new AlertMessageView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            alertMessageView.setLayoutParams(layoutParams);
             alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
             alertMessageView.setForceDarkMode(true);
             alertMessageView.setTitle(getString(R.string.audio_call_activity_terminate));
@@ -1647,14 +1638,13 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                 @Override
                 public void onCloseViewAnimationEnd() {
-                    percentRelativeLayout.removeView(alertMessageView);
+                    viewGroup.removeView(alertMessageView);
                     setStatusBarColor();
                     finish();
                 }
             };
             alertMessageView.setObserver(observer);
-
-            percentRelativeLayout.addView(alertMessageView);
+            viewGroup.addView(alertMessageView);
             alertMessageView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -2721,11 +2711,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mContentView.setVisibility(View.GONE);
         }
 
-        if (isOneCameraEnableInCall()) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-        } else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-        }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         if (isRemoteCameraControl()) {
             mCameraControlView.setVisibility(View.VISIBLE);
@@ -2848,9 +2834,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             if (isRemoteCameraControl()) {
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-                defaultConfirmView.setLayoutParams(layoutParams);
                 defaultConfirmView.setForceDarkMode(true);
                 defaultConfirmView.setTitle(getString(R.string.call_activity_camera_control));
                 String message;
@@ -2900,9 +2883,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.REMOTE_CAMERA) && !mShowRemoteCameraOnboardingView) {
                     mShowRemoteCameraOnboardingView = true;
                     OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-                    PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT);
-                    onboardingConfirmView.setLayoutParams(layoutParams);
                     onboardingConfirmView.setForceDarkMode(true);
                     onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
                     onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
@@ -3011,9 +2991,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             service.getProfileImage(getTwinmeApplication().getCurrentSpace().getProfile(), (Bitmap avatar) -> {
                 service.dispose();
                 InvitationCodeConfirmView invitationCodeConfirmView = new InvitationCodeConfirmView(this, null);
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-                invitationCodeConfirmView.setLayoutParams(layoutParams);
                 invitationCodeConfirmView.setForceDarkMode(true);
 
                 invitationCodeConfirmView.setAvatar(avatar, false);
@@ -4012,9 +3989,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 isMainParticipant = callParticipantView.getCallParticipant() == mainParticipant;
             }
             callParticipantView.setCallParticipantViewMode(mCallParticipantViewMode);
-            int width = mRootViewWidth;
+            int width;
             if (mIsLandscape) {
-                width = mRootViewHeight - mBarTopInset;
+                width = Math.max(mRootViewWidth, mRootViewHeight);
+            } else {
+                width = Math.min(mRootViewWidth, mRootViewHeight);
             }
 
             callParticipantView.setPosition(isMainParticipant, width, getParticipantViewHeight(), numberParticipant, position, !mMenuVisibility, currentStatus, isOneCameraEnableInCall, mIsCallReceiver, mIsLandscape);
@@ -4179,9 +4158,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     return;
                 }
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
-                defaultConfirmView.setLayoutParams(layoutParams);
                 defaultConfirmView.setForceDarkMode(true);
                 defaultConfirmView.setTitle(getString(R.string.call_activity_camera_control));
                 String message = String.format(getString(R.string.call_activity_camera_control_confirm_message), mOriginatorName);
@@ -4232,10 +4208,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             case EVENT_CAMERA_CONTROL_DENIED: {
                 AlertMessageView alertMessageView = new AlertMessageView(this, null);
-                PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT);
                 alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
-                alertMessageView.setLayoutParams(layoutParams);
                 alertMessageView.setForceDarkMode(true);
                 alertMessageView.setTitle(getString(R.string.call_activity_camera_control));
                 alertMessageView.setMessage(String.format(getString(R.string.call_activity_camera_control_denied), mOriginatorName));
@@ -4558,12 +4531,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "getParticipantViewHeight");
         }
 
-        int height = mRootViewHeight;
-
+        int height;
         if (mIsLandscape) {
-            height = mRootViewWidth;
+            height = Math.min(mRootViewWidth, mRootViewHeight);
         } else {
-            height -= mBarTopInset;
+            height = Math.max(mRootViewWidth, mRootViewHeight) - mBarTopInset;
         }
 
         int playerHeight = 0;
@@ -4665,13 +4637,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onInfoCallParticipantClick: " + name);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.call_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.call_activity_layout);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
         alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
-        alertMessageView.setLayoutParams(layoutParams);
         alertMessageView.setForceDarkMode(true);
         alertMessageView.setMessage(String.format(getString(R.string.call_activity_not_supported_group_call_message), name));
 
@@ -4689,13 +4658,13 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             @Override
             public void onCloseViewAnimationEnd() {
-                percentRelativeLayout.removeView(alertMessageView);
+                viewGroup.removeView(alertMessageView);
                 setStatusBarColor();
             }
         };
         alertMessageView.setObserver(observer);
 
-        percentRelativeLayout.addView(alertMessageView);
+        viewGroup.addView(alertMessageView);
         alertMessageView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -4966,7 +4935,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mBarTopInset = topPadding;
             }
 
-            v.setPadding(bars.left, topPadding, bars.right, bottomPadding);
+            v.setPadding(0, topPadding, 0, bottomPadding);
 
             return WindowInsetsCompat.CONSUMED;
         });
@@ -5065,9 +5034,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
         onboardingConfirmView.setForceDarkMode(true);
         onboardingConfirmView.setTitle(getString(R.string.authentified_relation_activity_to_be_certified_title));
 
@@ -5120,9 +5086,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.setForceDarkMode(true);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 

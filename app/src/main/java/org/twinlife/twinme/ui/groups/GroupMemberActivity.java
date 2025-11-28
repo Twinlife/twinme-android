@@ -27,14 +27,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
-import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
+import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
@@ -477,7 +476,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         return true;
     }
 
-    //MenuCallCapabilitiesView.Observer
+    //MenuGroupMemberView.Observer
 
     @Override
     public void onCloseMenuAnimationEnd() {
@@ -585,12 +584,9 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             Log.d(LOG_TAG, "onRemoveClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.group_member_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.group_member_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setAvatar(uiContact.getAvatar(), false);
         deleteConfirmView.setMessage(getString(R.string.group_member_activity_remove_message));
 
@@ -613,13 +609,12 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
                 setStatusBarColor();
             }
         };
         deleteConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -693,12 +688,9 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
 
     private void inviteMember(@NonNull UIContact uiContact) {
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.group_member_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.group_member_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setAvatar(uiContact.getAvatar(), false);
         defaultConfirmView.setTitle(uiContact.getName());
         defaultConfirmView.setMessage(String.format(getString(R.string.group_member_activity_invitation_message), uiContact.getName()));
@@ -722,7 +714,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -735,7 +727,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         Window window = getWindow();

@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomMemberService.Observer {
+public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomMemberService.Observer, MenuRoomMemberView.Observer {
     private static final String LOG_TAG = "RoomMembersActivity";
     private static final boolean DEBUG = false;
 
@@ -339,6 +338,20 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
     }
 
     //
+    // MenuRoomMemberView.Observer
+    //
+
+    @Override
+    public void onCloseMenuAnimationEnd() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
+        }
+
+        mMenuRoomMemberView.setVisibility(View.INVISIBLE);
+        mOverlayView.setVisibility(View.INVISIBLE);
+    }
+
+    //
     // Private methods
     //
 
@@ -375,6 +388,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
 
         mMenuRoomMemberView = findViewById(R.id.room_member_activity_menu_view);
         mMenuRoomMemberView.setVisibility(View.INVISIBLE);
+        mMenuRoomMemberView.setObserver(this);
         mMenuRoomMemberView.setRoomMemberActivity(this);
 
         mProgressBarView = findViewById(R.id.room_member_activity_progress_bar);
@@ -427,12 +441,9 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         if (isAdmin && mRoomAdmins.size() == 1) {
             showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.room_members_activity_only_admin_message), false, null);
         } else {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.room_member_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
             defaultConfirmView.setMessage(getString(R.string.application_delete_message));
             defaultConfirmView.setImage(null);
@@ -457,7 +468,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     setStatusBarColor();
 
                     if (fromConfirmAction) {
@@ -466,7 +477,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -484,12 +495,9 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
 
     private void changeAdmin(UIRoomMember roomMember) {
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.room_member_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
         defaultConfirmView.setMessage(getString(R.string.room_members_activity_change_admin_title));
         defaultConfirmView.setImage(null);
@@ -513,7 +521,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -522,7 +530,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -537,12 +545,9 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         if (mRoomAdmins.size() == 1) {
             showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.room_members_activity_only_admin_message), false, null);
         } else {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.room_member_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
             defaultConfirmView.setMessage(getString(R.string.room_members_activity_remove_admin_title));
             defaultConfirmView.setImage(null);
@@ -566,7 +571,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     setStatusBarColor();
 
                     if (fromConfirmAction) {
@@ -575,7 +580,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -588,12 +593,9 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             Log.d(LOG_TAG, "onInviteClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.room_member_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.setTitle(getString(R.string.group_member_activity_invitation_title));
         defaultConfirmView.setMessage(String.format(getString(R.string.group_member_activity_invitation_message), roomMember.getName()));
         defaultConfirmView.setImage(null);
@@ -617,7 +619,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -626,7 +628,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

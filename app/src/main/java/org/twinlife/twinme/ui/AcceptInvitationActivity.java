@@ -43,7 +43,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -704,12 +703,9 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
 
         if (mProfile == null) {
 
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.accept_invitation_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.accept_invitation_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setTitle(getString(R.string.profile_fragment_add_profile));
             defaultConfirmView.setMessage(getString(R.string.application_add_contact_no_profile));
 
@@ -741,7 +737,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     setFullscreen();
 
                     if (fromConfirmAction) {
@@ -758,7 +754,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
 
             Window window = getWindow();

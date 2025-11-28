@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -888,12 +887,9 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "showPremiumFeatureView");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_group_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.show_group_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -914,13 +910,12 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
                 setFullscreen();
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         Window window = getWindow();

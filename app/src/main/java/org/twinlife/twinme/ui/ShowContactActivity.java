@@ -39,8 +39,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.util.Utils;
@@ -62,7 +60,6 @@ import org.twinlife.twinme.ui.contacts.MenuCertifyView;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
-import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
@@ -951,11 +948,9 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             Log.d(LOG_TAG, "openMenuCertify");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_contact_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.show_contact_activity_layout);
 
         MenuCertifyView menuCertifyView = new MenuCertifyView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuCertifyView.setLayoutParams(layoutParams);
 
         MenuCertifyView.Observer observer = new MenuCertifyView.Observer() {
             @Override
@@ -996,7 +991,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuCertifyView);
+                viewGroup.removeView(menuCertifyView);
 
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.WHITE_COLOR);
@@ -1004,7 +999,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         };
 
         menuCertifyView.setObserver(observer);
-        percentRelativeLayout.addView(menuCertifyView);
+        viewGroup.addView(menuCertifyView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.authentified_relation_activity_certify_by_scan), R.drawable.certify_by_scan_icon));
@@ -1119,12 +1114,9 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             Log.d(LOG_TAG, "showCertifyOnboarding");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_contact_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.show_contact_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(getString(R.string.authentified_relation_activity_to_be_certified_title));
@@ -1173,13 +1165,13 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(onboardingConfirmView);
+                viewGroup.removeView(onboardingConfirmView);
                 setFullscreen();
             }
         };
 
         onboardingConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(onboardingConfirmView);
+        viewGroup.addView(onboardingConfirmView);
         onboardingConfirmView.show();
 
         Window window = getWindow();
@@ -1191,12 +1183,9 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             Log.d(LOG_TAG, "showControlCameraOnboarding");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_contact_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.show_contact_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
         onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
         onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));
@@ -1222,14 +1211,14 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(onboardingConfirmView);
+                viewGroup.removeView(onboardingConfirmView);
 
                 setFullscreen();
             }
         };
 
         onboardingConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(onboardingConfirmView);
+        viewGroup.addView(onboardingConfirmView);
         onboardingConfirmView.show();
 
         Window window = getWindow();

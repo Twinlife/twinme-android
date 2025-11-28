@@ -888,6 +888,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Kiểm tra trạng thái kết nối của bạn với dịch vụ</string>
     <string name="settings_advanced_activity_status_connection_title">Trạng thái kết nối</string>
+    <string name="settings_advanced_activity_telecom_enable">Trải nghiệm gọi điện Android</string>
+    <string name="settings_advanced_activity_telecom_information">Theo mặc định, ứng dụng không tích hợp trải nghiệm gọi điện trên Android, vì việc tích hợp này có thể gây ra sự cố nhận cuộc gọi trong một số trường hợp và trên một số thiết bị nhất định. Bạn có thể bật tính năng tích hợp này để quản lý cuộc gọi tốt hơn nếu không gặp phải những sự cố này.</string>
+    <string name="settings_advanced_activity_telecom">CUỘC GỌI</string>
     <string name="settings_advanced_activity_title">Cài đặt nâng cao</string>
 
     <!-- SettingsRoomActivity -->

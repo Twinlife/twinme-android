@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Tarkista yhteytesi tila palveluun</string>
     <string name="settings_advanced_activity_status_connection_title">Yhteyden tila</string>
+    <string name="settings_advanced_activity_telecom_enable">Android-puhelukokemus</string>
+    <string name="settings_advanced_activity_telecom_information">Oletusarvoisesti sovellus ei integroi Android-puhelutoimintoa, koska tämä integraatio voi aiheuttaa puheluiden vastaanotto-ongelmia tietyissä tilanteissa ja tietyillä laitteilla. Voit ottaa tämän integraation käyttöön paremman puheluiden hallinnan saavuttamiseksi, jos sinulla ei ole näitä ongelmia.</string>
+    <string name="settings_advanced_activity_telecom">PUHELUT</string>
     <string name="settings_advanced_activity_title">Lisäasetukset</string>
 
     <!-- SettingsActivity -->

@@ -39,7 +39,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.CallReceiver;
@@ -964,12 +963,9 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
 
         if (mProfile != null) {
 
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.show_profile_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.show_profile_activity_layout);
 
             MenuAddContactView menuAddContactView = new MenuAddContactView(this, null);
-            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            menuAddContactView.setLayoutParams(layoutParams);
-
             MenuAddContactView.Observer observer = new MenuAddContactView.Observer() {
                 @Override
                 public void onStartAddContactByScan() {
@@ -998,14 +994,14 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
                 @Override
                 public void onCloseMenuSelectActionAnimationEnd() {
 
-                    percentRelativeLayout.removeView(menuAddContactView);
+                    viewGroup.removeView(menuAddContactView);
                     setFullscreen();
                 }
             };
 
             menuAddContactView.setObserver(observer);
 
-            percentRelativeLayout.addView(menuAddContactView);
+            viewGroup.addView(menuAddContactView);
 
             List<UIMenuSelectAction> actions = new ArrayList<>();
             actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_scan_contact_title), R.drawable.scan_code));

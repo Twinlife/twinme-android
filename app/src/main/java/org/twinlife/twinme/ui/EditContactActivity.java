@@ -33,7 +33,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.util.Utils;
@@ -383,6 +382,13 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
         mRemoveListener = new RemoveListener();
         removeView.setOnClickListener(mRemoveListener);
 
+        GestureDetector removeGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_REMOVE));
+        removeView.setOnTouchListener((v, motionEvent) -> {
+            removeGestureDetector.onTouchEvent(motionEvent);
+            touchContent(motionEvent);
+            return true;
+        });
+
         layoutParams = removeView.getLayoutParams();
         layoutParams.height = Design.BUTTON_HEIGHT;
 
@@ -428,7 +434,8 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
         }
     }
 
-    private void onRemoveClick() {
+    @Override
+    protected void onRemoveClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onRemoveClick");
         }
@@ -438,12 +445,9 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.edit_contact_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.edit_contact_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setAvatar(mContactAvatar, false);
 
         String message = getString(R.string.edit_contact_activity_message) + "\n\n"  + getString(R.string.edit_contact_activity_confirm_message);
@@ -470,13 +474,13 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
                 setFullscreen();
             }
         };
         deleteConfirmView.setObserver(observer);
 
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
 
         Window window = getWindow();

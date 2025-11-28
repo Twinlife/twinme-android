@@ -897,6 +897,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">בדוק את מצב החיבור שלך לשירות</string>
     <string name="settings_advanced_activity_status_connection_title">מצב חיבור</string>
+    <string name="settings_advanced_activity_telecom_enable">חוויית השיחות של אנדרואיד</string>
+    <string name="settings_advanced_activity_telecom_information">כברירת מחדל, האפליקציה אינה משלבת את חוויית השיחות של אנדרואיד, מכיוון ששילוב זה עלול לגרום לבעיות קליטת שיחות במצבים מסוימים ובמכשירים מסוימים. ניתן להפעיל שילוב זה לניהול שיחות טוב יותר, אם אינך נתקל בבעיות אלה.</string>
+    <string name="settings_advanced_activity_telecom">שיחות</string>
     <string name="settings_advanced_activity_title">הגדרות מתקדמות</string>
 
     <!-- SettingsActivity -->

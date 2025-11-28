@@ -86,7 +86,6 @@ import androidx.core.content.FileProvider;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -100,6 +99,7 @@ import org.twinlife.twinlife.ConversationService.AnnotationType;
 import org.twinlife.twinlife.ConversationService.AudioDescriptor;
 import org.twinlife.twinlife.ConversationService.CallDescriptor;
 import org.twinlife.twinlife.ConversationService.ClearDescriptor;
+import org.twinlife.twinlife.ConversationService.ClearMode;
 import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorAnnotation;
@@ -113,12 +113,11 @@ import org.twinlife.twinlife.ConversationService.TransientObjectDescriptor;
 import org.twinlife.twinlife.ConversationService.TwincodeDescriptor;
 import org.twinlife.twinlife.ConversationService.UpdateType;
 import org.twinlife.twinlife.ConversationService.VideoDescriptor;
-import org.twinlife.twinlife.ConversationService.ClearMode;
+import org.twinlife.twinlife.DisplayCallsMode;
 import org.twinlife.twinlife.ExportedImageId;
 import org.twinlife.twinlife.Filter;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinlife.Twinlife;
-
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.audio.AudioDevice;
 import org.twinlife.twinme.audio.AudioListener;
@@ -134,11 +133,10 @@ import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.TextStyle;
-import org.twinlife.twinlife.DisplayCallsMode;
+import org.twinlife.twinme.ui.ApplicationAssertPoint;
 import org.twinlife.twinme.ui.InfoItemActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.ui.ApplicationAssertPoint;
 import org.twinlife.twinme.ui.baseItemActivity.AudioItem;
 import org.twinlife.twinme.ui.baseItemActivity.AudioItemViewHolder;
 import org.twinlife.twinme.ui.baseItemActivity.BaseItemActivity;
@@ -3018,12 +3016,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "onDeleteActionClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        deleteConfirmView.setLayoutParams(layoutParams);
         deleteConfirmView.setAvatar(mContactAvatar, mContactAvatar == null || mContactAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
 
@@ -3046,13 +3041,13 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(deleteConfirmView);
+                viewGroup.removeView(deleteConfirmView);
                 setStatusBarColor();
             }
         };
         deleteConfirmView.setObserver(observer);
 
-        percentRelativeLayout.addView(deleteConfirmView);
+        viewGroup.addView(deleteConfirmView);
         deleteConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -5070,17 +5065,14 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         hideKeyboard();
         hapticFeedback();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
         mMenuActionConversationView = new MenuActionConversationView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        mMenuActionConversationView.setLayoutParams(layoutParams);
 
         MenuActionConversationView.Observer observer = new MenuActionConversationView.Observer() {
             @Override
             public void onCloseMenu() {
 
-                percentRelativeLayout.removeView(mMenuActionConversationView);
+                viewGroup.removeView(mMenuActionConversationView);
                 mMenuActionConversationView = null;
                 setStatusBarColor();
                 removeBlurEffect();
@@ -5089,7 +5081,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             @Override
             public void onSelectAction(UIActionConversation actionConversation) {
 
-                percentRelativeLayout.removeView(mMenuActionConversationView);
+                viewGroup.removeView(mMenuActionConversationView);
                 mMenuActionConversationView = null;
                 setStatusBarColor();
                 removeBlurEffect();
@@ -5130,7 +5122,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         };
 
         mMenuActionConversationView.initViews(this, observer);
-        percentRelativeLayout.addView(mMenuActionConversationView);
+        viewGroup.addView(mMenuActionConversationView);
 
         int navColor = ColorUtils.compositeColors(Design.CONVERSATION_OVERLAY_COLOR, Design.WHITE_COLOR);
 
@@ -5365,12 +5357,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         hapticFeedback();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 
         MenuManageConversationView menuManageConversationView = new MenuManageConversationView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuManageConversationView.setLayoutParams(layoutParams);
-
         MenuManageConversationView.Observer observer = new MenuManageConversationView.Observer() {
             @Override
             public void onCleanupClick() {
@@ -5397,13 +5386,13 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuManageConversationView);
+                viewGroup.removeView(menuManageConversationView);
                 setStatusBarColor();
             }
         };
 
         menuManageConversationView.setObserver(observer);
-        percentRelativeLayout.addView(menuManageConversationView);
+        viewGroup.addView(menuManageConversationView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.show_contact_activity_cleanup), R.drawable.cleanup_icon));
@@ -5463,12 +5452,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             }
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 
         ResetConversationConfirmView resetConversationConfirmView = new ResetConversationConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        resetConversationConfirmView.setLayoutParams(layoutParams);
         resetConversationConfirmView.setAvatar(mContactAvatar, mContactAvatar == null || mContactAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         resetConversationConfirmView.setMessage(message.toString());
 
@@ -5491,13 +5477,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(resetConversationConfirmView);
+                viewGroup.removeView(resetConversationConfirmView);
                 setStatusBarColor();
             }
         };
         resetConversationConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(resetConversationConfirmView);
+        viewGroup.addView(resetConversationConfirmView);
         resetConversationConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -5927,12 +5912,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             return;
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 
         CallAgainConfirmView callAgainConfirmView = new CallAgainConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        callAgainConfirmView.setLayoutParams(layoutParams);
 
         if (mSubject != null) {
             callAgainConfirmView.setTitle(mSubject.getName());
@@ -5983,13 +5965,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(callAgainConfirmView);
+                viewGroup.removeView(callAgainConfirmView);
                 setStatusBarColor();
             }
         };
         callAgainConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(callAgainConfirmView);
+        viewGroup.addView(callAgainConfirmView);
         callAgainConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -6001,12 +5982,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "showPremiumFeatureView: " + featureType);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -6027,7 +6005,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
 
                 if (!mIsMenuSendOptionOpen) {
                     setStatusBarColor();
@@ -6035,8 +6013,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         if (hideOverlay) {
@@ -6230,8 +6207,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         if (mMenuActionConversationView != null) {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.conversation_activity_layout);
-            percentRelativeLayout.removeView(mMenuActionConversationView);
+            ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
+            viewGroup.removeView(mMenuActionConversationView);
             mMenuActionConversationView = null;
             setStatusBarColor();
             removeBlurEffect();

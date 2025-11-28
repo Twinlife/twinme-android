@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">وضعیت اتصال خود را به سرویس بررسی کنید</string>
     <string name="settings_advanced_activity_status_connection_title">وضعیت اتصال</string>
+    <string name="settings_advanced_activity_telecom_enable">تجربه تماس اندروید</string>
+    <string name="settings_advanced_activity_telecom_information">به طور پیش</string>
+    <string name="settings_advanced_activity_telecom">تماس</string>
     <string name="settings_advanced_activity_title">تنظیمات پیشرفته</string>
 
     <!-- SettingsActivity -->

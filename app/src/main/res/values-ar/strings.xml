@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">تحقق من حالة اتصالك بالخدمة</string>
     <string name="settings_advanced_activity_status_connection_title">حالة الاتصال</string>
+    <string name="settings_advanced_activity_telecom_enable">تجربة مكالمات أندرويد</string>
+    <string name="settings_advanced_activity_telecom_information">افتراضيًا، لا يتكامل التطبيق مع تجربة الاتصال على نظام أندرويد، لأن هذا التكامل قد يُسبب مشاكل في استقبال المكالمات في بعض الحالات وعلى بعض الأجهزة. يمكنك تفعيل هذا التكامل لإدارة مكالماتك بشكل أفضل إذا لم تكن تواجه هذه المشاكل.</string>
+    <string name="settings_advanced_activity_telecom">المكالمات</string>
     <string name="settings_advanced_activity_title">الإعدادات المتقدمة</string>
 
     <!-- SettingsActivity -->

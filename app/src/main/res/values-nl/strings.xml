@@ -902,6 +902,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Controleer de status van je verbinding met de service</string>
     <string name="settings_advanced_activity_status_connection_title">Verbindingsstatus</string>
+    <string name="settings_advanced_activity_telecom_enable">Android-belervaring</string>
+    <string name="settings_advanced_activity_telecom_information">Standaard integreert de app de Android-belervaring niet, omdat deze integratie in bepaalde situaties en op bepaalde apparaten problemen met de oproepontvangst kan veroorzaken. U kunt deze integratie inschakelen voor beter gespreksbeheer als u deze problemen niet ondervindt.</string>
+    <string name="settings_advanced_activity_telecom">OPROEPEN</string>
     <string name="settings_advanced_activity_title">Geavanceerde instellingen</string>
 
     <!-- SettingsActivity -->

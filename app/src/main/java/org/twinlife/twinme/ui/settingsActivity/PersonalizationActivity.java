@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -204,12 +203,9 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onColorClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.personalization_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.personalization_activity_layout);
 
         MenuSelectColorView menuSelectColorView = new MenuSelectColorView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuSelectColorView.setLayoutParams(layoutParams);
-
         MenuSelectColorView.OnMenuColorListener onMenuColorListener = new MenuSelectColorView.OnMenuColorListener() {
             @Override
             public void onSelectedColor(String color) {
@@ -220,7 +216,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
 
             @Override
             public void onCustomColor() {
-                percentRelativeLayout.removeView(menuSelectColorView);
+                viewGroup.removeView(menuSelectColorView);
                 onPremiumFeatureClick();
             }
 
@@ -233,14 +229,14 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
 
             @Override
             public void onCloseMenu() {
-                percentRelativeLayout.removeView(menuSelectColorView);
+                viewGroup.removeView(menuSelectColorView);
                 setStatusBarColor();
             }
         };
 
         menuSelectColorView.setOnMenuColorListener(onMenuColorListener);
         menuSelectColorView.setAppearanceActivity(this);
-        percentRelativeLayout.addView(menuSelectColorView);
+        viewGroup.addView(menuSelectColorView);
 
         menuSelectColorView.openMenu(getString(R.string.space_appearance_activity_theme), Design.getMainStyleString(), Design.DEFAULT_COLOR);
 
@@ -253,12 +249,9 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onPremiumFeatureClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.personalization_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.personalization_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.SPACES));
 
         AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
@@ -279,14 +272,13 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
                 setStatusBarColor();
                 onColorClick();
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

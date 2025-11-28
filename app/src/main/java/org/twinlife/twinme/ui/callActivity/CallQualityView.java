@@ -58,17 +58,9 @@ public class CallQualityView extends PercentRelativeLayout {
 
         super(context, attrs);
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.call_quality_view, (ViewGroup) getParent());
-            //noinspection deprecation
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.call_quality_view, this, true);
+        initViews();
     }
 
     public CallQualityView(Context context, AttributeSet attrs, int defStyle) {

@@ -145,14 +145,6 @@
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
-
-
-    <org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView
-        android:id="@+id/authentified_relation_activity_success_authentification_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
     <ProgressBar
         android:id="@+id/authentified_relation_activity_progress_bar"
         style="@android:style/Widget.ProgressBar"

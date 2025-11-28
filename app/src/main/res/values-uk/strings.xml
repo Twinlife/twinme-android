@@ -896,6 +896,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Перевірте стан вашого підключення до служби</string>
     <string name="settings_advanced_activity_status_connection_title">Стан підключення</string>
+    <string name="settings_advanced_activity_telecom_enable">Досвід дзвінків на Android</string>
+    <string name="settings_advanced_activity_telecom_information">За промовчанням програма не інтегрується зі службою дзвінків Android, оскільки ця інтеграція може викликати проблеми з прийомом дзвінків у певних ситуаціях та на певних пристроях. Ви можете включити цю інтеграцію для більш ефективного керування викликами, якщо у вас немає таких проблем.</string>
+    <string name="settings_advanced_activity_telecom">ДЗВІНКИ</string>
     <string name="settings_advanced_activity_title">Розширені налаштування</string>
 
     <!-- SettingsActivity -->

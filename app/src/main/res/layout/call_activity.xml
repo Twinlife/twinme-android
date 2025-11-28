@@ -15,6 +15,7 @@
         android:id="@+id/call_activity_participants_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layoutDirection="ltr"
         android:animateLayoutChanges="true">
 
         <org.twinlife.twinme.ui.callActivity.ParticipantImageView

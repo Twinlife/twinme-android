@@ -1543,7 +1543,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
 
             int flags = PendingIntent.FLAG_ONE_SHOT;
-            if (FeatureUtils.isTelecomSupported(mApplication.getApplicationContext())) {
+            if (FeatureUtils.isTelecomEnabled(mApplication.getApplicationContext())) {
                 // When Telecom is used, the Decline button is disabled if FLAG_CANCEL_CURRENT is set, no idea why.
                 // Notification behavior shouldn't be affected by this, as the CALL_ID extra is the only thing that changes between two cancelCallIntents.
                 flags |= PendingIntent.FLAG_UPDATE_CURRENT;
@@ -1662,7 +1662,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         // Create notification builder.
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mApplication, mDefaultChannel);
 
-        notificationBuilder.setContentTitle(transferring ? mApplication.getString(R.string.notification_center_transfering_data) : mApplication.getString(R.string.application_checking_connection));
+        final String message = transferring ? mApplication.getString(R.string.notification_center_transfering_data) : mApplication.getString(R.string.application_checking_connection);
+        notificationBuilder.setContentTitle(message);
+        notificationBuilder.setContentText(message);
         notificationBuilder.setWhen(System.currentTimeMillis());
         notificationBuilder.setSmallIcon(R.drawable.logo_small);
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_MAX);

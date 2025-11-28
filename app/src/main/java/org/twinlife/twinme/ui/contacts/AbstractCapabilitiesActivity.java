@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Capabilities;
@@ -221,9 +220,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         ViewGroup viewGroup = findViewById(R.id.capabilities_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
         onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
         onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));

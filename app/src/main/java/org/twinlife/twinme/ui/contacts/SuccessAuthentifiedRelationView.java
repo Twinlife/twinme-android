@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2025 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -14,8 +14,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
@@ -25,49 +23,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.CircularImageView;
+import org.twinlife.twinme.utils.AbstractConfirmView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuccessAuthentifiedRelationView extends PercentRelativeLayout {
+public class SuccessAuthentifiedRelationView extends AbstractConfirmView {
     private static final String LOG_TAG = "SuccessAuthentified...";
     private static final boolean DEBUG = false;
 
-    public interface SuccessAuthentifiedRelationListener {
-
-        void onCloseSuccessAuthentifiedRelationView();
-    }
-
-    private static final int DESIGN_CONTENT_VIEW_WIDTH = 680;
-    private static final int DESIGN_CONTENT_VIEW_HEIGHT = 540;
-    private static final int DESIGN_CONTENT_VIEW_MARGIN = 80;
+    private static final int ANIMATION_DURATION = 2000;
     private static final int DESIGN_ANIMATION_VIEW_MARGIN = 40;
-    private static final int DESIGN_AVATAR_MARGIN = 88;
-    private static final int DESIGN_AVATAR_SIZE = 104;
     private static final int DESIGN_ICON_SIZE = 34;
     private static final int DESIGN_ICON_MARGIN = 20;
-    private static final int DESIGN_ACTION_MARGIN = 34;
-    private static final int DESIGN_ACTION_BOTTOM_MARGIN = 20;
-    private static final int DESIGN_CLOSE_HEIGHT = 52;
-    private static final int DESIGN_CLOSE_TOP_MARGIN = 18;
 
-    private TextView mNameView;
-    private TextView mMessageView;
-    private CircularImageView mAvatarView;
     private LottieAnimationView mAnimationView;
-
-    private SuccessAuthentifiedRelationListener mSuccessAuthentifiedRelationListener;
 
     public SuccessAuthentifiedRelationView(Context context) {
 
@@ -78,136 +55,58 @@ public class SuccessAuthentifiedRelationView extends PercentRelativeLayout {
 
         super(context, attrs);
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.success_authentified_relation_view, (ViewGroup) getParent());
-            //noinspection deprecation
-            view.setLayoutParams(new PercentRelativeLayout.LayoutParams(PercentRelativeLayout.LayoutParams.MATCH_PARENT, PercentRelativeLayout.LayoutParams.MATCH_PARENT));
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.success_authentified_relation_view, this, true);
+        initViews();
     }
 
-    public SuccessAuthentifiedRelationView(Context context, AttributeSet attrs, int defStyle) {
-
-        super(context, attrs, defStyle);
-    }
-
-    public void setInfo(Context context, String name, Bitmap avatar) {
+    @Override
+    protected void onFinishOpenAnimation() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "setInfo");
+            Log.d(LOG_TAG, "onFinishOpenAnimation");
         }
 
-        if (avatar != null) {
-            mAvatarView.setImage(context, null,
-                    new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-        }
-
-        if (name != null) {
-            mNameView.setText(name);
-            mMessageView.setText(String.format(context.getString(R.string.authentified_relation_activity_certified_message), name));
-        }
+        startSuccessAnimation();
     }
 
-    public void setSuccessAuthentifiedRelationListener(SuccessAuthentifiedRelationListener successAuthentifiedRelationListener) {
+    @Override
+    protected void initViews() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initViews");
         }
 
-        mSuccessAuthentifiedRelationListener = successAuthentifiedRelationListener;
-    }
-
-    public void startSuccessAnimation() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "startSuccessAnimation");
-        }
-
-        mAnimationView.setVisibility(VISIBLE);
-        if (!mAnimationView.isAnimating()) {
-            mAnimationView.playAnimation();
-        }
-    }
-
-    private void initViews() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "initViews");
-        }
-
-        setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
-        setOnClickListener(v -> {});
-
-        View contentView = findViewById(R.id.success_authentified_relation_view_content_view);
-
-        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) contentView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_CONTENT_VIEW_MARGIN * Design.HEIGHT_RATIO);
-
-        ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_CONTENT_VIEW_WIDTH * Design.WIDTH_RATIO);
-        layoutParams.height = (int) (DESIGN_CONTENT_VIEW_HEIGHT * Design.HEIGHT_RATIO);
-
-        float radius = Design.POPUP_RADIUS * Resources.getSystem().getDisplayMetrics().density;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-        ShapeDrawable popupViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        popupViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
-        contentView.setBackground(popupViewBackground);
-
+        mOverlayView = findViewById(R.id.success_authentified_relation_view_overlay_view);
+        mActionView = findViewById(R.id.success_authentified_relation_view_action_view);
+        mSlideMarkView = findViewById(R.id.success_authentified_relation_view_slide_mark_view);
         mAvatarView = findViewById(R.id.success_authentified_relation_view_avatar_view);
+        mTitleView = findViewById(R.id.success_authentified_relation_view_name_view);
+        mMessageView = findViewById(R.id.success_authentified_relation_view_message_view);
+        mConfirmView = findViewById(R.id.success_authentified_relation_view_confirm_view);
+        mConfirmTextView = findViewById(R.id.success_authentified_relation_view_confirm_text_view);
 
-        layoutParams = mAvatarView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
-        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (MarginLayoutParams) mAvatarView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_AVATAR_MARGIN * Design.HEIGHT_RATIO);
-
-        mNameView = findViewById(R.id.success_authentified_relation_view_name_view);
-        Design.updateTextFont(mNameView, Design.FONT_MEDIUM34);
-        mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        super.initViews();
 
         ImageView iconCertifiedView = findViewById(R.id.success_authentified_relation_view_certified_image_view);
 
-        layoutParams = iconCertifiedView.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = iconCertifiedView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
 
-        marginLayoutParams = (MarginLayoutParams) iconCertifiedView.getLayoutParams();
+        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) iconCertifiedView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
 
-        mMessageView = findViewById(R.id.success_authentified_relation_view_message_view);
-        Design.updateTextFont(mMessageView, Design.FONT_REGULAR32);
-        mMessageView.setTextColor(Design.FONT_COLOR_DESCRIPTION);
+        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
-        View confirmClickableView = findViewById(R.id.success_authentified_relation_view_confirm_view);
-        confirmClickableView.setOnClickListener(v -> onCloseClick());
+        ShapeDrawable confirmViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        confirmViewBackground.getPaint().setColor(Design.getMainStyle());
+        mConfirmView.setBackground(confirmViewBackground);
 
-        marginLayoutParams = (MarginLayoutParams) confirmClickableView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (DESIGN_ACTION_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_ACTION_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams = (MarginLayoutParams) mConfirmView.getLayoutParams();
+        marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
 
-        ShapeDrawable sendViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        sendViewBackground.getPaint().setColor(Design.BLUE_NORMAL);
-        confirmClickableView.setBackground(sendViewBackground);
-
-        layoutParams = confirmClickableView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.BUTTON_HEIGHT;
-
-        TextView sendTextView = findViewById(R.id.success_authentified_relation_view_confirm_text_view);
-        Design.updateTextFont(sendTextView, Design.FONT_BOLD28);
-        sendTextView.setTextColor(Color.WHITE);
-
-        View closeView = findViewById(R.id.success_authentified_relation_view_close_view);
-        closeView.setOnClickListener(view -> onCloseClick());
-
-        layoutParams = closeView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_CLOSE_HEIGHT * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) closeView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_CLOSE_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams = (MarginLayoutParams) iconCertifiedView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
 
         mAnimationView = findViewById(R.id.success_authentified_relation_view_animation_view);
         mAnimationView.setVisibility(INVISIBLE);
@@ -217,7 +116,7 @@ public class SuccessAuthentifiedRelationView extends PercentRelativeLayout {
         layoutParams.height = (int) (Design.DISPLAY_HEIGHT * 0.5);
 
         marginLayoutParams = (MarginLayoutParams) mAnimationView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_ANIMATION_VIEW_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_ANIMATION_VIEW_MARGIN * Design.HEIGHT_RATIO);
 
         mAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
@@ -235,7 +134,7 @@ public class SuccessAuthentifiedRelationView extends PercentRelativeLayout {
                 animators.add(alphaAnimator);
 
                 AnimatorSet animationSet = new AnimatorSet();
-                animationSet.setDuration(2000);
+                animationSet.setDuration(ANIMATION_DURATION);
                 animationSet.setInterpolator(new DecelerateInterpolator());
                 animationSet.playTogether(animators);
                 animationSet.start();
@@ -253,11 +152,14 @@ public class SuccessAuthentifiedRelationView extends PercentRelativeLayout {
         });
     }
 
-    private void onCloseClick() {
+    private void startSuccessAnimation() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onCloseClick");
+            Log.d(LOG_TAG, "startSuccessAnimation");
         }
 
-        mSuccessAuthentifiedRelationListener.onCloseSuccessAuthentifiedRelationView();
+        mAnimationView.setVisibility(VISIBLE);
+        if (!mAnimationView.isAnimating()) {
+            mAnimationView.playAnimation();
+        }
     }
 }

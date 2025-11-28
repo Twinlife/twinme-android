@@ -35,7 +35,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService.ErrorCode;
@@ -45,8 +44,8 @@ import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinlife.util.Version;
 import org.twinlife.twinme.models.AccountMigration;
 import org.twinlife.twinme.models.Profile;
-import org.twinlife.twinme.services.AccountMigrationService;
 import org.twinlife.twinme.services.AccountMigrationScannerService;
+import org.twinlife.twinme.services.AccountMigrationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractScannerActivity;
@@ -572,12 +571,9 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
                 message = getString(R.string.account_migration_scanner_activity_message_older_version);
             }
 
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.account_migration_scanner_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.account_migration_scanner_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            defaultConfirmView.setLayoutParams(layoutParams);
             defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
             defaultConfirmView.setMessage(message);
 
@@ -609,7 +605,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(defaultConfirmView);
+                    viewGroup.removeView(defaultConfirmView);
                     setStatusBarColor();
 
                     if (fromConfirmAction) {
@@ -620,7 +616,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
                 }
             };
             defaultConfirmView.setObserver(observer);
-            percentRelativeLayout.addView(defaultConfirmView);
+            viewGroup.addView(defaultConfirmView);
             defaultConfirmView.show();
 
             Window window = getWindow();
@@ -672,13 +668,9 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "showOnboarding");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.account_migration_scanner_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.account_migration_scanner_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
-
         onboardingConfirmView.setTitle(getString(R.string.account_activity_migration_title));
 
         boolean darkMode = false;
@@ -712,12 +704,12 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(onboardingConfirmView);
+                viewGroup.removeView(onboardingConfirmView);
                 setStatusBarColor();
             }
         };
         onboardingConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(onboardingConfirmView);
+        viewGroup.addView(onboardingConfirmView);
         onboardingConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

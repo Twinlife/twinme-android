@@ -23,7 +23,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -414,12 +413,9 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
             Log.d(LOG_TAG, "showOnboarding");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.invitation_code_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.invitation_code_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.hideTitleView();
 
         defaultConfirmView.useLargeImage();
@@ -455,12 +451,12 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -472,13 +468,8 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
             Log.d(LOG_TAG, "showShareView: " + invitationCode);
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.invitation_code_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.invitation_code_activity_layout);
         InvitationCodeShareView invitationCodeShareView = new InvitationCodeShareView(this, null);
-
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        invitationCodeShareView.setLayoutParams(layoutParams);
-
         invitationCodeShareView.setTitle(invitationCode.getCode());
 
         String message = getString(R.string.invitation_code_activity_onboarding_message) + "\n\n" + getString(R.string.invitation_code_activity_success_message);
@@ -518,12 +509,12 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(invitationCodeShareView);
+                viewGroup.removeView(invitationCodeShareView);
                 setStatusBarColor();
             }
         };
         invitationCodeShareView.setObserver(observer);
-        percentRelativeLayout.addView(invitationCodeShareView);
+        viewGroup.addView(invitationCodeShareView);
         invitationCodeShareView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

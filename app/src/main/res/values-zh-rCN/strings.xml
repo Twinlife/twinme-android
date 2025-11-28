@@ -901,6 +901,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">检查您与服务的连接状态</string>
     <string name="settings_advanced_activity_status_connection_title">连接状态</string>
+    <string name="settings_advanced_activity_telecom_enable">Android 通话体验</string>
+    <string name="settings_advanced_activity_telecom_information">默认情况下，该应用不集成 Android 通话功能，因为在某些情况下或某些设备上，集成此功能可能会导致通话接收问题。如果您未遇到这些问题，可以启用此功能以获得更好的通话管理体验。</string>
+    <string name="settings_advanced_activity_telecom">通话</string>
     <string name="settings_advanced_activity_title">高级设置</string>
 
     <!-- SettingsActivity -->

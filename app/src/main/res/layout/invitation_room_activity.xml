@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/invitation_room_activity_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,150 +11,239 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <View
+        android:id="@+id/invitation_room_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/invitation_room_activity_tool_bar"/>
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/invitation_room_activity_room_view"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:layout_below="@id/invitation_room_activity_tool_bar"
-        app:layout_widthPercent="82.67%"
-        app:layout_heightPercent="43.47%"
-        app:layout_marginTopPercent="10.49%">
+        android:layout_centerHorizontal="true">
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/invitation_room_activity_avatar_view"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%" />
 
         <TextView
             android:id="@+id/invitation_room_activity_name_view"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            app:layout_widthPercent="93.55%"
-            app:layout_marginTopPercent="17.24%" />
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/invitation_room_activity_avatar_view"
+            android:layout_toRightOf="@+id/invitation_room_activity_avatar_view" />
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/invitation_room_activity_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/invitation_room_activity_room_view"
+        android:animateLayoutChanges="true">
 
         <ImageView
             android:id="@+id/invitation_room_activity_qrcode_view"
-            android:layout_centerInParent="true"
-            android:layout_below="@+id/invitation_room_activity_name_view"
             android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            app:layout_aspectRatio="100%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/invitation_room_activity_zoom_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_aspectRatio="100%"
-            app:layout_heightPercent="51.72%"
-            app:layout_marginTopPercent="5.17%" />
+            android:layout_toRightOf="@+id/invitation_room_activity_qrcode_view"
+            android:layout_toEndOf="@+id/invitation_room_activity_qrcode_view"
+            android:layout_alignTop="@+id/invitation_room_activity_qrcode_view">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/invitation_room_activity_zoom_rounded_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_aspectRatio="100%" />
+
+            <ImageView
+                android:id="@+id/invitation_room_activity_zoom_icon_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/zoom_code"
+                android:layout_centerInParent="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="45.71%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <TextView
-            android:id="@+id/invitation_room_activity_twincode_view"
+            android:id="@+id/invitation_room_activity_room_id_view"
             android:layout_below="@+id/invitation_room_activity_qrcode_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:gravity="center"
-            app:layout_widthPercent="93.55%"
-            app:layout_marginTopPercent="5.17%" />
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+            android:ellipsize="none"
+            android:singleLine="true"
+            android:gravity="center" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/invitation_room_activity_avatar_content_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/invitation_room_activity_tool_bar"
-        app:layout_aspectRatio="100%"
-        app:layout_heightPercent="12.89%"
-        app:layout_marginTopPercent="4.5%">
-
-        <org.twinlife.twinme.utils.RoundedView
-            android:id="@+id/invitation_room_activity_avatar_rounded_view"
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/invitation_room_activity_copy_clickable_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/invitation_room_activity_room_id_view"
+            app:layout_widthPercent="50%">
 
-        <org.twinlife.twinme.utils.CircularImageView
-            android:id="@+id/invitation_room_activity_avatar_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true"
-            app:layout_aspectRatio="100%"
-            app:layout_heightPercent="93.02%" />
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/invitation_room_activity_copy_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="43.75%">
 
-    <TextView
-        android:id="@+id/invitation_room_activity_message_view"
-        android:layout_below="@+id/invitation_room_activity_room_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="@string/invitation_room_activity_message"
-        app:layout_widthPercent="89.06%"
-        app:layout_marginTopPercent="2.99%" />
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/invitation_room_activity_copy_rounded_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_aspectRatio="100%" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/invitation_room_activity_invite_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/invitation_room_activity_scan_view">
+                <ImageView
+                    android:id="@+id/invitation_room_activity_copy_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/copy_item"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="45.71%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
 
-        <TextView
-            android:id="@+id/invitation_room_activity_invite_title_view"
+            <TextView
+                android:id="@+id/invitation_room_activity_copy_text_view"
+                android:layout_below="@+id/invitation_room_activity_copy_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/conversation_activity_menu_item_view_copy_title"
+                app:layout_marginTopPercent="7.81%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/invitation_room_activity_save_clickable_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/contacts_fragment_invite_contact_title"
-            app:layout_widthPercent="89.06%" />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/invitation_room_activity_room_id_view"
+            app:layout_widthPercent="50%">
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/invitation_room_activity_save_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="43.75%">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/invitation_room_activity_scan_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/invitation_room_activity_social_view">
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/invitation_room_activity_save_rounded_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_aspectRatio="100%"/>
 
-        <TextView
-            android:id="@+id/invitation_room_activity_scan_title_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/add_contact_activity_scan_title"
-            app:layout_widthPercent="89.06%" />
+                <ImageView
+                    android:id="@+id/invitation_room_activity_save_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/save_item"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="45.71%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/invitation_room_activity_save_text_view"
+                android:layout_below="@+id/invitation_room_activity_save_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/application_save"
+                app:layout_marginTopPercent="7.81%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/invitation_room_activity_social_view"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/invitation_room_activity_container_view">
+
+        <ImageView
+            android:id="@+id/invitation_room_activity_social_icon_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/share_item" />
 
         <TextView
             android:id="@+id/invitation_room_activity_social_title_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/add_contact_activity_social_title"
-            app:layout_widthPercent="89.06%" />
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/invitation_room_activity_social_icon_view"
+            android:layout_toEndOf="@+id/invitation_room_activity_social_icon_view"
+            android:text="@string/share_activity_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <TextView
         android:id="@+id/invitation_room_activity_social_subtitle_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/invitation_room_activity_social_view"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:gravity="center"
         android:text="@string/add_contact_activity_social_subtitle"
         app:layout_widthPercent="89.06%" />
 
-    <ProgressBar
-        android:id="@+id/invitation_room_activity_progress_bar"
-        style="@android:style/Widget.ProgressBar"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/invitation_room_activity_message_view"
+        android:layout_below="@+id/invitation_room_activity_social_subtitle_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/invitation_room_activity_message"
+        app:layout_widthPercent="89.06%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/invitation_room_activity_remove_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/invitation_room_activity_remove_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/application_delete" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <org.twinlife.twinme.utils.TwincodeView
+        android:id="@+id/invitation_room_activity_save_twincode_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

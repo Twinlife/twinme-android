@@ -900,6 +900,9 @@
     <string name="settings_advanced_activity_developer_settings">Developer settings</string>
     <string name="settings_advanced_activity_status_connection_message">Kontroller status for din forbindelse til tjenesten</string>
     <string name="settings_advanced_activity_status_connection_title">Forbindelsesstatus</string>
+    <string name="settings_advanced_activity_telecom_enable">Android-opkaldsoplevelse</string>
+    <string name="settings_advanced_activity_telecom_information">Som standard integrerer applikationen ikke Android-opkaldsoplevelsen, da denne integration kan forårsage problemer med opkaldsmodtagelse i visse situationer og på visse enheder. Du kan aktivere denne integration for bedre opkaldshåndtering, hvis du ikke oplever disse problemer.</string>
+    <string name="settings_advanced_activity_telecom">OPKALD</string>
     <string name="settings_advanced_activity_title">Avancerede indstillinger</string>
 
     <!-- SettingsActivity -->

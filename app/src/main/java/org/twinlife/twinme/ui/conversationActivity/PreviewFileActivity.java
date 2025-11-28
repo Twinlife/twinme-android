@@ -30,7 +30,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -482,12 +481,9 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
             Log.d(LOG_TAG, "showError");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.preview_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        alertMessageView.setLayoutParams(layoutParams);
         alertMessageView.setForceDarkMode(true);
         alertMessageView.setTitle(getString(R.string.deleted_account_activity_warning));
         alertMessageView.setMessage(getString(R.string.application_error_file_not_found));
@@ -506,13 +502,12 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
 
             @Override
             public void onCloseViewAnimationEnd() {
-                percentRelativeLayout.removeView(alertMessageView);
+                viewGroup.removeView(alertMessageView);
                 setStatusBarColor(Color.BLACK);
             }
         };
         alertMessageView.setObserver(observer);
-
-        percentRelativeLayout.addView(alertMessageView);
+        viewGroup.addView(alertMessageView);
         alertMessageView.show();
 
         setStatusBarColor(Color.BLACK, Color.rgb(72,72,72));

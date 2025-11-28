@@ -12,14 +12,22 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowInsets;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,17 +46,18 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
     private static final String LOG_TAG = "MenuRoomMemberView";
     private static final boolean DEBUG = false;
 
-    private static final long ANIMATION_DURATION = 100;
-    private static final int ACTION_COLOR = Color.argb(255, 0, 122, 255);
+    public interface Observer {
 
-    private static final int DESIGN_AVATAR_HEIGHT = 100;
-    private static final int DESIGN_AVATAR_TOP_MARGIN = 40;
-    private static final int DESIGN_NAME_TOP_MARGIN = 20;
-    private static final int DESIGN_NAME_BOTTOM_MARGIN = 26;
-    private static final int DESIGN_ACTION_HEIGHT = 120;
+        void onCloseMenuAnimationEnd();
+    }
+
+
+    private static final int DESIGN_AVATAR_MARGIN = 40;
+    private static final int DESIGN_AVATAR_SIZE = 100;
+    private static final int DESIGN_TITLE_MARGIN = 20;
+    private static final int DESIGN_TITLE_BOTTOM_MARGIN = 60;
 
     private View mActionView;
-    private View mCancelView;
     private View mInviteView;
     private TextView mInviteTextView;
     private View mAdminView;
@@ -58,10 +67,10 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
     private CircularImageView mAvatarView;
 
     private RoomMembersActivity mRoomMemberActivity;
-
-    private final List<View> mAnimationList = new ArrayList<>();
-
-    private boolean mIsAnimationEnded = false;
+    private Observer mObserver;
+    private boolean isOpenAnimationEnded = false;
+    private boolean isCloseAnimationEnded = false;
+    private int mHeight = Design.DISPLAY_HEIGHT;
 
     private boolean mRemoveAdmin = false;
 
@@ -77,11 +86,7 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
         }
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (inflater != null) {
-            View view = inflater.inflate(R.layout.room_members_activity_menu_view, (ViewGroup) getParent());
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-        }
+        inflater.inflate(R.layout.room_members_activity_menu_view, this, true);
         initViews();
     }
 
@@ -90,6 +95,8 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
             Log.d(LOG_TAG, "openMenu");
         }
 
+        isOpenAnimationEnded = false;
+        isCloseAnimationEnded = false;
         mRemoveAdmin = removeAdminAction;
 
         if (showAdminAction) {
@@ -117,37 +124,33 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
         mNameView.setText(uiRoomMember.getName());
         mInviteTextView.setText(mRoomMemberActivity.getString(R.string.group_member_activity_invite_personnal_relation));
 
-        mIsAnimationEnded = false;
+        ViewGroup.LayoutParams layoutParams = mActionView.getLayoutParams();
+        layoutParams.height = getActionViewHeight();
+        mActionView.setLayoutParams(layoutParams);
+        mActionView.setY(Design.DISPLAY_HEIGHT);
+        mActionView.invalidate();
 
-        mActionView.setAlpha((float) 0.0);
-        mCancelView.setAlpha((float) 0.0);
-
-        mAnimationList.clear();
-
-        mAnimationList.add(mCancelView);
-        mAnimationList.add(mActionView);
-
-        animationMenu();
+        animationOpenMenu();
     }
 
-    public void animationMenu() {
+    public void animationOpenMenu() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "animationMenu");
+            Log.d(LOG_TAG, "animationOpenMenu");
         }
 
-        if (mIsAnimationEnded) {
+        if (isOpenAnimationEnded) {
             return;
         }
 
-        PropertyValuesHolder propertyValuesHolderAlpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.0f, 1.0f);
+        int startValue = mHeight;
+        int endValue = mHeight - getActionViewHeight();
+
+        PropertyValuesHolder propertyValuesHolder = PropertyValuesHolder.ofFloat(View.Y, startValue, endValue);
 
         List<Animator> animators = new ArrayList<>();
-
-        for (View view : mAnimationList) {
-            ObjectAnimator alphaViewAnimator = ObjectAnimator.ofPropertyValuesHolder(view, propertyValuesHolderAlpha);
-            alphaViewAnimator.setDuration(ANIMATION_DURATION);
-            animators.add(alphaViewAnimator);
-        }
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mActionView, propertyValuesHolder);
+        objectAnimator.setDuration(Design.ANIMATION_VIEW_DURATION);
+        animators.add(objectAnimator);
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playSequentially(animators);
@@ -161,7 +164,7 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
             @Override
             public void onAnimationEnd(@NonNull Animator animator) {
 
-                mIsAnimationEnded = true;
+                isOpenAnimationEnded = true;
             }
 
             @Override
@@ -176,6 +179,61 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
         });
     }
 
+    public void animationCloseMenu() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "animationCloseMenu");
+        }
+
+        if (isCloseAnimationEnded) {
+            return;
+        }
+
+        int startValue = mHeight - getActionViewHeight();
+        int endValue = mHeight;
+
+        PropertyValuesHolder propertyValuesHolder = PropertyValuesHolder.ofFloat(View.Y, startValue, endValue);
+
+        List<Animator> animators = new ArrayList<>();
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mActionView, propertyValuesHolder);
+        objectAnimator.setDuration(Design.ANIMATION_VIEW_DURATION);
+        animators.add(objectAnimator);
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(animators);
+        animatorSet.start();
+        animatorSet.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(@NonNull Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(@NonNull Animator animator) {
+
+                isCloseAnimationEnded = true;
+                mObserver.onCloseMenuAnimationEnd();
+            }
+
+            @Override
+            public void onAnimationCancel(@NonNull Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(@NonNull Animator animator) {
+
+            }
+        });
+    }
+
+    public void setObserver(Observer observer) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setObserver: " + observer);
+        }
+
+        mObserver = observer;
+    }
+
     public void setRoomMemberActivity(RoomMembersActivity activty) {
 
         mRoomMemberActivity = activty;
@@ -186,68 +244,93 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
             Log.d(LOG_TAG, "initViews");
         }
 
+        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onGlobalLayout() {
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                mHeight = getHeight();
+            }
+        });
+
         mActionView = findViewById(R.id.room_members_activity_menu_action_view);
 
-        MarginLayoutParams marginLayoutParams = (MarginLayoutParams) mActionView.getLayoutParams();
-        marginLayoutParams.bottomMargin = Design.MENU_ACTION_MARGIN;
+        float radius = Design.ACTION_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
+
+        ShapeDrawable scrollIndicatorBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        scrollIndicatorBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
+        mActionView.setBackground(scrollIndicatorBackground);
+
+        View sliderMarkView = findViewById(R.id.room_members_activity_menu_slide_mark_view);
+
+        ViewGroup.LayoutParams layoutParams = sliderMarkView.getLayoutParams();
+        layoutParams.height = Design.SLIDE_MARK_HEIGHT;
+
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.mutate();
+        gradientDrawable.setColor(Color.rgb(244, 244, 244));
+        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        sliderMarkView.setBackground(gradientDrawable);
+
+        float corner = ((float)Design.SLIDE_MARK_HEIGHT / 2) * Resources.getSystem().getDisplayMetrics().density;
+        gradientDrawable.setCornerRadius(corner);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) sliderMarkView.getLayoutParams();
+        marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
 
         mAvatarView = findViewById(R.id.room_members_activity_menu_avatar_view);
-        ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO);
+
+        layoutParams = mAvatarView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (MarginLayoutParams) mAvatarView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_AVATAR_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_AVATAR_MARGIN * Design.HEIGHT_RATIO);
 
         mNameView = findViewById(R.id.room_members_activity_menu_name_view);
-        Design.updateTextFont(mNameView, Design.FONT_REGULAR34);
+        Design.updateTextFont(mNameView, Design.FONT_MEDIUM34);
         mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         marginLayoutParams = (MarginLayoutParams) mNameView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_NAME_TOP_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.bottomMargin = (int) (DESIGN_NAME_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_TITLE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
 
         mInviteView = findViewById(R.id.room_members_activity_menu_invite_view);
         mInviteView.setOnClickListener(v -> onInviteMemberClick());
 
         layoutParams = mInviteView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_ACTION_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        ImageView inviteImageView = findViewById(R.id.room_members_activity_menu_invite_image_view);
+        inviteImageView.setColorFilter(Design.BLACK_COLOR);
 
         mInviteTextView = findViewById(R.id.room_members_activity_menu_invite_text_view);
-        Design.updateTextFont(mInviteTextView, Design.FONT_BOLD34);
+        Design.updateTextFont(mInviteTextView, Design.FONT_MEDIUM34);
         mInviteTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mAdminView = findViewById(R.id.room_members_activity_menu_admin_view);
         mAdminView.setOnClickListener(v -> onChangeAdminClick());
 
         layoutParams = mAdminView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_ACTION_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        ImageView adminImageView = findViewById(R.id.room_members_activity_menu_admin_image_view);
+        adminImageView.setColorFilter(Design.BLACK_COLOR);
 
         mAdminTextView = findViewById(R.id.room_members_activity_menu_admin_text_view);
-        Design.updateTextFont(mAdminTextView, Design.FONT_BOLD34);
+        Design.updateTextFont(mAdminTextView, Design.FONT_MEDIUM34);
         mAdminTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mRemoveView = findViewById(R.id.room_members_activity_menu_remove_view);
         mRemoveView.setOnClickListener(v -> onRemoveMemberClick());
 
         layoutParams = mRemoveView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_ACTION_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.height = Design.SECTION_HEIGHT;
 
         TextView removeTextView = findViewById(R.id.room_members_activity_menu_remove_text_view);
-        Design.updateTextFont(removeTextView, Design.FONT_BOLD34);
+        Design.updateTextFont(removeTextView, Design.FONT_MEDIUM34);
         removeTextView.setTextColor(Design.FONT_COLOR_RED);
-
-        mCancelView = findViewById(R.id.room_members_activity_menu_cancel_view);
-        mCancelView.setOnClickListener(v -> onCloseMenuClick());
-
-        layoutParams = mCancelView.getLayoutParams();
-        layoutParams.height = Design.MENU_CANCEL_HEIGHT;
-
-        marginLayoutParams = (MarginLayoutParams) mCancelView.getLayoutParams();
-        marginLayoutParams.bottomMargin = Design.MENU_CANCEL_MARGIN;
-
-        TextView cancelTextView = findViewById(R.id.room_members_activity_menu_cancel_text_view);
-        Design.updateTextFont(cancelTextView, Design.FONT_BOLD34);
-        cancelTextView.setTextColor(ACTION_COLOR);
     }
 
     private void onChangeAdminClick() {
@@ -278,18 +361,43 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
         mRoomMemberActivity.onInviteMemberClick();
     }
 
-    private void onCloseMenuClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCloseMenuClick");
-        }
-
-        mRoomMemberActivity.closeMenu();
-    }
-
     @Override
     public void onGlobalLayout() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGlobalLayout");
         }
+    }
+
+    private int getActionViewHeight() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getActionViewHeight");
+        }
+
+        int countAction = 0;
+        if (mAdminView.getVisibility() == View.VISIBLE) {
+            countAction++;
+        }
+
+        if (mInviteView.getVisibility() == View.VISIBLE) {
+            countAction++;
+        }
+
+        if (mRemoveView.getVisibility() == View.VISIBLE) {
+            countAction++;
+        }
+
+        int actionViewHeight = Design.SLIDE_MARK_TOP_MARGIN + Design.SLIDE_MARK_HEIGHT + Design.SECTION_HEIGHT * countAction + (int) ((DESIGN_TITLE_MARGIN + DESIGN_AVATAR_MARGIN + DESIGN_AVATAR_SIZE + DESIGN_TITLE_BOTTOM_MARGIN) * Design.HEIGHT_RATIO);
+
+        int bottomInset = 0;
+        View rootView = ((Activity) getContext()).getWindow().getDecorView();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            WindowInsets insets = rootView.getRootWindowInsets();
+            if (insets != null) {
+                bottomInset = insets.getInsets(WindowInsets.Type.systemBars()).bottom;
+            }
+        }
+
+        mActionView.setPadding(0, 0, 0, bottomInset);
+        return actionViewHeight + mNameView.getHeight() + bottomInset;
     }
 }

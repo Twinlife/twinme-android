@@ -41,7 +41,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.Twinlife;
@@ -893,7 +892,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             String formatDate = "dd MMM yyyy";
             String formatTime;
             if (DateFormat.is24HourFormat(this)) {
-                formatTime = "kk:mm";
+                formatTime = "HH:mm";
             } else {
                 formatTime = "hh:mm a";
             }
@@ -1150,11 +1149,9 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.create_external_call_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.create_external_call_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        menuPhotoView.setLayoutParams(layoutParams);
 
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
@@ -1174,7 +1171,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             @Override
             public void onCloseMenuSelectActionAnimationEnd() {
 
-                percentRelativeLayout.removeView(menuPhotoView);
+                viewGroup.removeView(menuPhotoView);
 
                 Window window = getWindow();
                 window.setNavigationBarColor(Design.WHITE_COLOR);
@@ -1182,7 +1179,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         };
 
         menuPhotoView.setObserver(observer);
-        percentRelativeLayout.addView(menuPhotoView);
+        viewGroup.addView(menuPhotoView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
         actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));

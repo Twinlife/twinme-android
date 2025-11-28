@@ -29,7 +29,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.view.MenuProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -606,10 +605,6 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
         DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
         mNotificationService.getProfileImage(mTwinmeActivity.getProfile(), (Bitmap avatar) -> {
             DeleteConfirmView deleteConfirmView = new DeleteConfirmView(mTwinmeActivity, null);
-
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            deleteConfirmView.setLayoutParams(layoutParams);
             deleteConfirmView.setAvatar(avatar, false);
 
             String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.notifications_fragment_reset);

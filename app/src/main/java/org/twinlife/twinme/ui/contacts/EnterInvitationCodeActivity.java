@@ -38,7 +38,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
@@ -708,12 +707,9 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
 
         hideKeyboard();
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.enter_invitation_code_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.enter_invitation_code_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        defaultConfirmView.setLayoutParams(layoutParams);
         defaultConfirmView.hideTitleView();
 
         defaultConfirmView.useLargeImage();
@@ -748,7 +744,7 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(defaultConfirmView);
+                viewGroup.removeView(defaultConfirmView);
                 setStatusBarColor();
 
                 mEnterCodeOneEditText.requestFocus();
@@ -759,7 +755,7 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
             }
         };
         defaultConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(defaultConfirmView);
+        viewGroup.addView(defaultConfirmView);
         defaultConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
@@ -772,13 +768,9 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
         }
 
         mInvitationCodeService.getImage(twincodeOutbound.getAvatarId(), (Bitmap avatar) -> {
-            PercentRelativeLayout percentRelativeLayout = findViewById(R.id.enter_invitation_code_activity_layout);
+            ViewGroup viewGroup = findViewById(R.id.enter_invitation_code_activity_layout);
 
             InvitationCodeConfirmView invitationCodeConfirmView = new InvitationCodeConfirmView(this, null);
-            PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            invitationCodeConfirmView.setLayoutParams(layoutParams);
-
             invitationCodeConfirmView.setAvatar(avatar, false);
             invitationCodeConfirmView.setTitle(twincodeOutbound.getName());
 
@@ -804,13 +796,12 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
 
                 @Override
                 public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                    percentRelativeLayout.removeView(invitationCodeConfirmView);
+                    viewGroup.removeView(invitationCodeConfirmView);
                     setStatusBarColor();
                 }
             };
             invitationCodeConfirmView.setObserver(observer);
-
-            percentRelativeLayout.addView(invitationCodeConfirmView);
+            viewGroup.addView(invitationCodeConfirmView);
             invitationCodeConfirmView.show();
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

@@ -27,7 +27,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.TwinmeContext;
@@ -297,12 +296,9 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onPremiumFeatureClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.preview_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.setForceDarkMode(true);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.PRIVACY));
 
@@ -324,7 +320,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(premiumFeatureConfirmView);
+                viewGroup.removeView(premiumFeatureConfirmView);
 
                 if (!mIsMenuSendOptionOpen) {
                     setStatusBarColor();
@@ -332,8 +328,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             }
         };
         premiumFeatureConfirmView.setObserver(observer);
-
-        percentRelativeLayout.addView(premiumFeatureConfirmView);
+        viewGroup.addView(premiumFeatureConfirmView);
         premiumFeatureConfirmView.show();
         premiumFeatureConfirmView.hideOverlay();
 

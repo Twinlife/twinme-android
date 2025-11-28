@@ -28,8 +28,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.services.AbstractTwinmeService;
-import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.conversationActivity.UIReaction;
 import org.twinlife.twinme.utils.CircularImageView;

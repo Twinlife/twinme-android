@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -296,13 +295,9 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onProfileClick");
         }
 
-        PercentRelativeLayout percentRelativeLayout = findViewById(R.id.help_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.help_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        PercentRelativeLayout.LayoutParams layoutParams = new PercentRelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        onboardingConfirmView.setLayoutParams(layoutParams);
-
         onboardingConfirmView.setTitle(title);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),image, null));
         onboardingConfirmView.setMessage(message);
@@ -327,12 +322,12 @@ public class HelpActivity extends AbstractTwinmeActivity {
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                percentRelativeLayout.removeView(onboardingConfirmView);
+                viewGroup.removeView(onboardingConfirmView);
                 setStatusBarColor();
             }
         };
         onboardingConfirmView.setObserver(observer);
-        percentRelativeLayout.addView(onboardingConfirmView);
+        viewGroup.addView(onboardingConfirmView);
         onboardingConfirmView.show();
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

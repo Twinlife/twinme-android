@@ -146,18 +146,9 @@ public class CallMenuView extends PercentRelativeLayout {
 
         super(context, attrs);
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.call_activity_menu_view, (ViewGroup) getParent());
-            //noinspection deprecation
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.call_activity_menu_view, this, true);
+        initViews();
     }
 
     public CallMenuView(Context context, AttributeSet attrs, int defStyle) {
