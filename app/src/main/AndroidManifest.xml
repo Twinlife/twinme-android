@@ -517,6 +517,12 @@
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name="org.twinlife.twinme.ui.settingsActivity.AddProxyActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name="org.twinlife.twinme.ui.settingsActivity.ProxyActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"

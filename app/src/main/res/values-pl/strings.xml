@@ -865,6 +865,7 @@
     <string name="proxy_activity_onboarding">Jeśli dostęp do serwerów sygnalizacyjnych aplikacji jest zablokowany w Twoim kraju, serwery proxy mogą w wielu przypadkach ominąć te blokady i umożliwić prywatną komunikację. Oprócz serwerów proxy w aplikacji możesz utworzyć własne lub użyć serwera proxy utworzonego przez kogoś innego. Serwery proxy nie mają dostępu do wymienianych treści pod żadnym pozorem.</string>
     <string name="proxy_activity_information">Używaj serwera proxy tylko wtedy, gdy nie możesz połączyć się z usługą za pośrednictwem standardowej sieci Wi-Fi lub sieci komórkowych.</string>
     <string name="proxy_activity_share">Abra o link %1$s com o Twinme no seu dispositivo para configurar este proxy automaticamente.</string>
+    <string name="proxy_activity_share_message">Udostępnij ten serwer proxy tym, którzy nie mogą już połączyć się z usługą ze względu na próby blokowania.</string>
     <string name="proxy_activity_title">Serwer proxy</string>
     <string name="proxy_activity_url">Czy chcesz użyć adresu URL tego serwera proxy?</string>
     <string name="proxy_activity_warning">Ostrzeżenie! Adres URL tego serwera proxy nie pozwala na połączenie z usługą aplikacji.</string>

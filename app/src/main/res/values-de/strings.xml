@@ -866,6 +866,7 @@
     <string name="proxy_activity_onboarding">Wenn der Zugriff auf die Signalserver der App in Ihrem Land gesperrt ist, können Proxys diese Sperren in vielen Fällen umgehen und Ihnen so eine private Kommunikation ermöglichen. Zusätzlich zu den In-App-Proxys können Sie eigene erstellen oder einen von einer anderen Person erstellten Proxy verwenden. Proxys haben unter keinen Umständen Zugriff auf die ausgetauschten Inhalte.</string>
     <string name="proxy_activity_information">Verwenden Sie einen Proxy nur, wenn Sie über Standard-WLAN oder Mobilfunknetze keine Verbindung zum Dienst herstellen können.</string>
     <string name="proxy_activity_share">Öffnen Sie den %1$s-Link mit twinme auf Ihrem Gerät, um diesen Proxy automatisch zu konfigurieren.</string>
+    <string name="proxy_activity_share_message">Teilen Sie diesen Proxy mit denjenigen, die aufgrund von Blockierungsversuchen keine Verbindung mehr zum Dienst herstellen können.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Möchten Sie die URL dieses Proxys verwenden?</string>
     <string name="proxy_activity_warning">Achtung! Über die URL dieses Proxys können Sie keine Verbindung zum Dienst der App herstellen.</string>

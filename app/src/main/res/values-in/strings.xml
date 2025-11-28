@@ -865,6 +865,7 @@
     <string name="proxy_activity_onboarding">Ketika akses ke server sinyal aplikasi diblokir di negara Anda, proksi dapat melewati pemblokiran ini dalam banyak keadaan dan memungkinkan Anda berkomunikasi secara pribadi. Selain proksi dalam aplikasi, Anda dapat membuat proksi sendiri atau menggunakan proksi yang dibuat oleh orang lain. Proksi tidak dapat mengakses konten yang dipertukarkan dalam keadaan apa pun.</string>
     <string name="proxy_activity_information">Gunakan proksi hanya jika Anda tidak dapat terhubung ke layanan dari Wi-Fi standar atau jaringan seluler.</string>
     <string name="proxy_activity_share">Buka tautan %1$s dengan twinme di perangkat Anda untuk mengonfigurasi proksi ini secara otomatis.</string>
+    <string name="proxy_activity_share_message">Bagikan proksi ini dengan mereka yang tidak dapat lagi terhubung ke layanan karena upaya pemblokiran.</string>
     <string name="proxy_activity_title">Proksi</string>
     <string name="proxy_activity_url">Apakah Anda ingin menggunakan URL proksi ini?</string>
     <string name="proxy_activity_warning">Peringatan! URL proksi ini tidak memungkinkan Anda terhubung ke layanan aplikasi.</string>

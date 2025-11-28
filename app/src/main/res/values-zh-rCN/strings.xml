@@ -866,6 +866,7 @@
     <string name="proxy_activity_onboarding">当您所在的国家/地区阻止访问应用的信令服务器时，代理可以在许多情况下绕过这些阻止，并允许您进行私密通信。除了应用内代理之外，您还可以创建自己的代理或使用其他人创建的代理。在任何情况下，代理都无法访问正在交换的内容。</string>
     <string name="proxy_activity_information">仅当您无法通过标准 Wi-Fi 或蜂窝网络连接到服务时才使用代理。</string>
     <string name="proxy_activity_share">在您的设备上使用 twinme 打开 %1$s 链接即可自动配置此代理。</string>
+    <string name="proxy_activity_share_message">请将此代理服务器分享给因网络封锁而无法连接到该服务的用户。</string>
     <string name="proxy_activity_title">代理</string>
     <string name="proxy_activity_url">是否要使用此代理的 URL？</string>
     <string name="proxy_activity_warning">警告！此代理的 URL 不允许您连接到应用的服务。</string>

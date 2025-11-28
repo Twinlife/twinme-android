@@ -866,6 +866,7 @@
     <string name="proxy_activity_onboarding">När åtkomst till appens signalservrar är blockerad i ditt land kan proxyservrar kringgå dessa blockeringar under många omständigheter och låta dig kommunicera privat. Förutom proxyservrarna i appen kan du skapa dina egna eller använda en proxy som skapats av någon annan. Proxyservrar kan inte komma åt innehållet som utväxlas under några omständigheter.</string>
     <string name="proxy_activity_information">Använd endast en proxy om du inte kan ansluta till tjänsten från vanliga Wi-Fi- eller mobilnätverk.</string>
     <string name="proxy_activity_share">Öppna %1$s-länken med twinme på din enhet för att konfigurera den här proxyn automatiskt.</string>
+    <string name="proxy_activity_share_message">Dela denna proxy med de som inte längre kan ansluta till tjänsten på grund av blockeringsförsök.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Vill du använda den här proxyservrarens URL?</string>
     <string name="proxy_activity_warning">Varning! Den här proxyservrarens URL tillåter dig inte att ansluta till appens tjänst.</string>

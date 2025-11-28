@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/proxy_activity_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,92 +11,258 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <View
+        android:id="@+id/proxy_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/proxy_activity_tool_bar"/>
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/proxy_activity_container_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/proxy_activity_tool_bar">
+        android:layout_below="@id/proxy_activity_tool_bar"
+        android:animateLayoutChanges="true">
 
-        <TextView
-            android:id="@+id/proxy_activity_message_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/proxy_activity_qrcode_view"
+            android:scaleType="fitCenter"
             android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="@string/proxy_activity_warning"
-            app:layout_widthPercent="89.06%" />
+            app:layout_aspectRatio="100%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/proxy_activity_url_content_view"
+            android:id="@+id/proxy_activity_zoom_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_aspectRatio="100%"
+            android:layout_toRightOf="@+id/proxy_activity_qrcode_view"
+            android:layout_toEndOf="@+id/proxy_activity_qrcode_view"
+            android:layout_alignTop="@+id/proxy_activity_qrcode_view">
+
+            <org.twinlife.twinme.utils.RoundedView
+                android:id="@+id/proxy_activity_zoom_rounded_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_aspectRatio="100%" />
+
+            <ImageView
+                android:id="@+id/proxy_activity_zoom_icon_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/zoom_code"
+                android:layout_centerInParent="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="45.71%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/proxy_activity_proxy_view"
+            android:layout_below="@+id/proxy_activity_qrcode_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/proxy_activity_message_view">
+            android:ellipsize="none"
+            android:singleLine="true"
+            android:gravity="center" />
 
-            <org.twinlife.twinme.ui.contacts.PasteEditText
-                android:id="@+id/proxy_activity_url_view"
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/proxy_activity_edit_clickable_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/proxy_activity_proxy_view"
+            app:layout_widthPercent="33%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/proxy_activity_edit_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="43.75%">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/proxy_activity_edit_rounded_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_aspectRatio="100%" />
+
+                <ImageView
+                    android:id="@+id/proxy_activity_edit_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/action_edit"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="45.71%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/proxy_activity_edit_text_view"
+                android:layout_below="@+id/proxy_activity_edit_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:background="@android:color/transparent"
-                android:hint="@string/proxy_activity_add_placeholder"
-                android:imeOptions="actionDone"
-                android:inputType="text|textUri"
-                app:layout_marginStartPercent="5.31%"
-                app:layout_marginEndPercent="5.31%" />
-
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/application_edit"
+                app:layout_marginTopPercent="7.81%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/proxy_activity_save_view"
+            android:id="@+id/proxy_activity_copy_clickable_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/proxy_activity_proxy_view"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/proxy_activity_url_content_view">
+            app:layout_widthPercent="33%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/proxy_activity_copy_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="43.75%">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/proxy_activity_copy_rounded_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_aspectRatio="100%" />
+
+                <ImageView
+                    android:id="@+id/proxy_activity_copy_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/copy_item"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="45.71%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
 
             <TextView
-                android:id="@+id/proxy_activity_save_title_view"
+                android:id="@+id/proxy_activity_copy_text_view"
+                android:layout_below="@+id/proxy_activity_copy_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/conversation_activity_menu_item_view_copy_title"
+                app:layout_marginTopPercent="7.81%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/proxy_activity_save_clickable_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/proxy_activity_proxy_view"
+            app:layout_widthPercent="33%">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/proxy_activity_save_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="43.75%">
+
+                <org.twinlife.twinme.utils.RoundedView
+                    android:id="@+id/proxy_activity_save_rounded_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_aspectRatio="100%"/>
+
+                <ImageView
+                    android:id="@+id/proxy_activity_save_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/save_item"
+                    android:layout_centerInParent="true"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="45.71%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <TextView
+                android:id="@+id/proxy_activity_save_text_view"
+                android:layout_below="@+id/proxy_activity_save_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/application_save"
-                app:layout_widthPercent="89.06%" />
-
+                app:layout_marginTopPercent="7.81%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/proxy_activity_remove_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_below="@+id/proxy_activity_save_view">
-
-            <TextView
-                android:id="@+id/proxy_activity_remove_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/application_delete" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <TextView
-            android:id="@+id/proxy_activity_format_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/proxy_activity_remove_view"
-            android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@+id/proxy_activity_save_view"
-            android:layout_alignStart="@+id/proxy_activity_save_view" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/proxy_activity_progress_bar"
-        style="@android:style/Widget.ProgressBar"
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/proxy_activity_social_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/proxy_activity_container_view">
+
+        <ImageView
+            android:id="@+id/proxy_activity_social_icon_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/share_item" />
+
+        <TextView
+            android:id="@+id/proxy_activity_social_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/proxy_activity_social_icon_view"
+            android:layout_toEndOf="@+id/proxy_activity_social_icon_view"
+            android:text="@string/share_activity_title" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <TextView
+        android:id="@+id/proxy_activity_social_subtitle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/proxy_activity_social_view"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/add_contact_activity_social_subtitle"
+        app:layout_widthPercent="89.06%" />
+
+    <TextView
+        android:id="@+id/proxy_activity_message_view"
+        android:layout_below="@+id/proxy_activity_social_subtitle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/proxy_activity_share_message"
+        app:layout_widthPercent="89.06%" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/proxy_activity_remove_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/proxy_activity_remove_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/application_delete" />
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <org.twinlife.twinme.utils.ProxyView
+        android:id="@+id/proxy_activity_save_proxy_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

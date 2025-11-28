@@ -41,6 +41,7 @@ import org.twinlife.twinme.calls.keycheck.WordCheckChallenge;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.CircularImageView;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.ArrayList;
@@ -292,7 +293,11 @@ public class CallCertifyView extends PercentRelativeLayout  {
         layoutParams.width = (int) (DESIGN_BULLET_SIZE * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (MarginLayoutParams) bulletOneView.getLayoutParams();
-        marginLayoutParams.rightMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            marginLayoutParams.leftMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        } else {
+            marginLayoutParams.rightMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        }
 
         mBulletTwoView = findViewById(R.id.call_activity_certify_view_bullet_two_view);
         mBulletTwoView.setBorder(4, Color.argb(122, 255, 255, 255));
@@ -302,7 +307,11 @@ public class CallCertifyView extends PercentRelativeLayout  {
         layoutParams.width = (int) (DESIGN_BULLET_SIZE * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (MarginLayoutParams) mBulletTwoView.getLayoutParams();
-        marginLayoutParams.rightMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            marginLayoutParams.leftMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        } else {
+            marginLayoutParams.rightMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        }
 
         mBulletThreeView = findViewById(R.id.call_activity_certify_view_bullet_three_view);
         mBulletThreeView.setBorder(4, Color.argb(122, 255, 255, 255));
@@ -319,7 +328,11 @@ public class CallCertifyView extends PercentRelativeLayout  {
         layoutParams.width = (int) (DESIGN_BULLET_SIZE * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (MarginLayoutParams) mBulletFourView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            marginLayoutParams.rightMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        } else {
+            marginLayoutParams.leftMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        }
 
         mBulletFiveView = findViewById(R.id.call_activity_certify_view_bullet_five_view);
         mBulletFiveView.setBorder(4, Color.argb(122, 255, 255, 255));
@@ -329,7 +342,11 @@ public class CallCertifyView extends PercentRelativeLayout  {
         layoutParams.width = (int) (DESIGN_BULLET_SIZE * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (MarginLayoutParams) mBulletFiveView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            marginLayoutParams.rightMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        } else {
+            marginLayoutParams.leftMargin = (int) (DESIGN_BULLET_SIDE_MARGIN * Design.WIDTH_RATIO);
+        }
 
         mAnimationView = findViewById(R.id.call_activity_certify_view_animation_view);
         mAnimationView.setVisibility(INVISIBLE);
@@ -390,7 +407,12 @@ public class CallCertifyView extends PercentRelativeLayout  {
         layoutParams.height = (int) (DESIGN_ACTION_SIZE * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (MarginLayoutParams) mCancelView.getLayoutParams();
-        marginLayoutParams.rightMargin = (int) (DESIGN_ACTION_MARGIN * Design.WIDTH_RATIO);
+        if (CommonUtils.isLayoutDirectionRTL()) {
+            marginLayoutParams.leftMargin = (int) (DESIGN_ACTION_MARGIN * Design.WIDTH_RATIO);
+        } else {
+            marginLayoutParams.rightMargin = (int) (DESIGN_ACTION_MARGIN * Design.WIDTH_RATIO);
+        }
+
         marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
 
         RoundedView cancelRoundedView = findViewById(R.id.call_activity_certify_decline_background_view);

@@ -720,6 +720,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 break;
             }
         }
+
+        bringAbstractConfirmViewToFront();
     }
 
     @Override
@@ -1214,7 +1216,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 addCallParticipantAnimation();
                 mChronometerView.start();
 
-                if (mShowCertifyView) {
+                if (mShowCertifyView && mCallCertifyView == null) {
                     Handler certifyHandler = new Handler();
                     certifyHandler.postDelayed(this::startCertifyVideoCall, CERTIFY_DELAY);
                 }
@@ -4818,6 +4820,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         mCallMenuView.bringToFront();
 
+        bringAbstractConfirmViewToFront();
+
         mCallMenuView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         mCallMenuView.getLayoutTransition().setDuration(ANIMATE_MENU_DURATION);
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallMenuView.getLayoutParams();
@@ -5246,6 +5250,25 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             case FALLBACK:
             case TERMINATED:
                 break;
+        }
+    }
+
+    private void bringAbstractConfirmViewToFront() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "bringAbstractConfirmViewToFront");
+        }
+
+        if (mRootView == null) {
+            return;
+        }
+
+        for (int i = 0; i < mRootView.getChildCount(); i++) {
+            View child = mRootView.getChildAt(i);
+
+            if (child instanceof AbstractConfirmView) {
+                child.bringToFront();
+                return;
+            }
         }
     }
 }

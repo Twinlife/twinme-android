@@ -866,6 +866,7 @@
     <string name="proxy_activity_onboarding">Quando o acesso aos servidores de sinalização da aplicação está bloqueado no seu país, os proxies podem contornar estes bloqueios em muitas circunstâncias e permitir que comunique de forma privada. Além dos proxies na aplicação, pode criar o seu próprio ou utilizar um proxy criado por outra pessoa. Os proxies não podem aceder ao conteúdo que está a ser trocado em nenhuma circunstância.</string>
     <string name="proxy_activity_information">Utilize um proxy apenas se não conseguir ligar-se ao serviço a partir de redes Wi-Fi ou telemóveis padrão.</string>
     <string name="proxy_activity_share">Abra o link %1$s com o twinme no seu dispositivo para configurar este proxy automaticamente.</string>
+    <string name="proxy_activity_share_message">Partilhe este proxy com aqueles que já não se conseguem ligar ao serviço devido a tentativas de bloqueio.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Pretende utilizar o URL deste proxy?</string>
     <string name="proxy_activity_warning">Atenção! O URL deste proxy não permite que se ligue ao serviço da aplicação.</string>
