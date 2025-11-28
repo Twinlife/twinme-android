@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">Quando l’accesso ai server di segnalazione dell’app è bloccato nel tuo Paese, i proxy possono aggirare questi blocchi in molte circostanze e consentirti di comunicare in privato. Oltre ai proxy in-app, puoi crearne uno tuo o utilizzare un proxy creato da qualcun altro. I proxy non possono accedere ai contenuti scambiati in nessun caso.</string>
     <string name="proxy_activity_information">Utilizza un proxy solo se non riesci a connetterti al servizio tramite Wi-Fi standard o reti cellulari.</string>
     <string name="proxy_activity_share">Apri il link %1$s con Skred sul tuo dispositivo per configurare automaticamente questo proxy.</string>
+    <string name="proxy_activity_share_message">Condividi questo proxy con coloro che non riescono più a connettersi al servizio a causa di tentativi di blocco.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Vuoi utilizzare l’URL di questo proxy?</string>
     <string name="proxy_activity_warning">Attenzione! L’URL di questo proxy non ti consente di connetterti al servizio dell’app.</string>

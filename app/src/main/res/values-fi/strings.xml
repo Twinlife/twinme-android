@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">Kun pääsy sovelluksen signalointipalvelimiin on estetty maassasi, välityspalvelimet voivat ohittaa nämä esteet monissa olosuhteissa ja sallia sinun kommunikoida yksityisesti. Sovelluksen sisäisten välityspalvelinten lisäksi voit luoda omia tai käyttää jonkun muun luomaa välityspalvelinta. Välityspalvelimet eivät voi käyttää vaihdettavaa sisältöä missään olosuhteissa.</string>
     <string name="proxy_activity_information">Käytä välityspalvelinta vain, jos et voi muodostaa yhteyttä palveluun tavallisista Wi-Fi- tai matkapuhelinverkoista.</string>
     <string name="proxy_activity_share">Avaa %1$s-linkki Skred-sovelluksella laitteellasi määrittääksesi tämän välityspalvelimen automaattisesti.</string>
+    <string name="proxy_activity_share_message">Jaa tämä välityspalvelin niiden kanssa, jotka eivät enää pysty muodostamaan yhteyttä palveluun estoyritysten vuoksi.</string>
     <string name="proxy_activity_title">Välityspalvelin</string>
     <string name="proxy_activity_url">Haluatko käyttää tämän välityspalvelimen URL-osoitetta?</string>
     <string name="proxy_activity_warning">Varoitus! Tämän välityspalvelimen URL-osoite ei salli yhteyden muodostamista sovelluksen palveluun.</string>

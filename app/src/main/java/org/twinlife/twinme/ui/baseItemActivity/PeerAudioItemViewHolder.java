@@ -471,7 +471,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
 
             @Override
             public void onPlaybackStateChanged(int playbackState) {
-                if (Player.STATE_READY == playbackState && !hasStartedPlayingForFirstTime) {
+                if (Player.STATE_READY == playbackState && !hasStartedPlayingForFirstTime && mExoPlayer != null) {
                     hasStartedPlayingForFirstTime = true;
 
                     long position = getPlayerPosition();

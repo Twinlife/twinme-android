@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">해당 국가에서 앱의 신호 서버 접근이 차단된 경우, 프록시는 여러 상황에서 이러한 차단을 우회하여 비공개로 통신할 수 있도록 합니다. 앱 내 프록시 외에도 직접 프록시를 만들거나 다른 사람이 만든 프록시를 사용할 수 있습니다. 프록시는 어떠한 경우에도 교환되는 콘텐츠에 액세스할 수 없습니다.</string>
     <string name="proxy_activity_information">표준 Wi-Fi 또는 셀룰러 네트워크에서 서비스에 연결할 수 없는 경우에만 프록시를 사용하세요.</string>
     <string name="proxy_activity_share">기기에서 Skred로 %1$s 링크를 열어 이 프록시를 자동으로 구성하세요.</string>
+    <string name="proxy_activity_share_message">차단 시도로 인해 더 이상 서비스에 연결할 수 없는 사용자에게 이 프록시를 공유해 주세요.</string>
     <string name="proxy_activity_title">프록시</string>
     <string name="proxy_activity_url">이 프록시의 URL을 사용하시겠습니까?</string>
     <string name="proxy_activity_warning">경고! 이 프록시의 URL을 사용하여 앱 서비스에 연결할 수 없습니다.</string>

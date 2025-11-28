@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">Ülkenizde uygulamanın sinyal sunucularına erişim engellendiğinde, proxy’ler birçok durumda bu engellemeleri aşabilir ve özel olarak iletişim kurmanıza olanak tanır. Uygulama içi proxy’lere ek olarak, kendi proxy’nizi oluşturabilir veya başkası tarafından oluşturulan bir proxy’yi kullanabilirsiniz. Proxy’ler hiçbir koşulda paylaşılan içeriğe erişemez.</string>
     <string name="proxy_activity_information">Yalnızca standart Wi-Fi veya hücresel ağlardan hizmete bağlanamıyorsanız proxy kullanın.</string>
     <string name="proxy_activity_share">Bu proxy\'yi otomatik olarak yapılandırmak için cihazınızda Skred ile %1$s bağlantısını açın.</string>
+    <string name="proxy_activity_share_message">Bu proxy\'yi engelleme girişimleri nedeniyle artık servise bağlanamayan kişilerle paylaşın.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Bu proxy’nin URL’sini kullanmak istiyor musunuz?</string>
     <string name="proxy_activity_warning">Uyarı! Bu proxy’nin URL’si, uygulamanın hizmetine bağlanmanıza izin vermiyor.</string>

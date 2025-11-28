@@ -900,6 +900,7 @@
     <string name="proxy_activity_onboarding">Khi quyền truy cập vào máy chủ tín hiệu của ứng dụng bị chặn ở quốc gia của bạn, proxy có thể bỏ qua các lệnh chặn này trong nhiều trường hợp và cho phép bạn giao tiếp riêng tư. Ngoài proxy trong ứng dụng, bạn có thể tự tạo proxy hoặc sử dụng proxy do người khác tạo. Proxy không thể truy cập nội dung đang được trao đổi trong mọi trường hợp.</string>
     <string name="proxy_activity_information">Chỉ sử dụng proxy nếu bạn không thể kết nối với dịch vụ từ mạng Wi-Fi hoặc mạng di động tiêu chuẩn.</string>
     <string name="proxy_activity_share">Mở liên kết %1$s bằng Skred trên thiết bị của bạn để tự động cấu hình proxy này.</string>
+    <string name="proxy_activity_share_message">Chia sẻ proxy này với những người không thể kết nối với dịch vụ do bị chặn.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Bạn có muốn sử dụng URL của proxy này không?</string>
     <string name="proxy_activity_warning">Cảnh báo! URL của proxy này không cho phép bạn kết nối với dịch vụ của ứng dụng.</string>

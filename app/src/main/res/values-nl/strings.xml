@@ -87,8 +87,8 @@
     <string name="application_premium_feature_title">Activeer premiumservices</string>
     <string name="application_photo_gallery">Fotoalbums</string>
     <string name="application_profile">Profiel</string>
-    <string name="application_profile_avatar_not_defined">U heeft geen profielfoto</string>
-    <string name="application_profile_name_not_defined">U heeft geen profielfoto</string>
+    <string name="application_profile_avatar_not_defined">U moet de afbeelding invoeren die u vertegenwoordigt bij de contacten die u met dit profiel uitnodigt.</string>
+    <string name="application_profile_name_not_defined">U moet de naam definiëren die u vertegenwoordigt bij de contacten die u met dit profiel uitnodigt.</string>
     <string name="application_remove">Verwijderen</string>
     <string name="application_save">Sla op</string>
     <string name="application_search_hint">Zoeken</string>
@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">Wanneer de toegang tot de signaalservers van de app in uw land geblokkeerd is, kunnen proxyservers deze blokkades in veel gevallen omzeilen en u in staat stellen om privé te communiceren. Naast de in-app proxyservers kunt u ook uw eigen proxyserver aanmaken of een proxyserver van iemand anders gebruiken. Proxyservers hebben onder geen enkele omstandigheid toegang tot de inhoud die wordt uitgewisseld.</string>
     <string name="proxy_activity_information">Gebruik een proxy alleen als je geen verbinding kunt maken met de service via standaard wifi of mobiele netwerken.</string>
     <string name="proxy_activity_share">Open de %1$s-link met Skred op je apparaat om deze proxy automatisch te configureren.</string>
+    <string name="proxy_activity_share_message">Deel deze proxy met degenen die vanwege blokkeringspogingen geen verbinding meer kunnen maken met de service.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Wil je de URL van deze proxy gebruiken?</string>
     <string name="proxy_activity_warning">Waarschuwing! De URL van deze proxy staat je niet toe om verbinding te maken met de service van de app.</string>

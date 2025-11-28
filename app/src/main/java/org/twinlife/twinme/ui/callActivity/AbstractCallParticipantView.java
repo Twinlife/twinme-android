@@ -34,6 +34,7 @@ import androidx.percentlayout.widget.PercentRelativeLayout;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.PercentFrameLayout;
 
 public abstract class AbstractCallParticipantView extends PercentRelativeLayout implements View.OnTouchListener {
@@ -487,7 +488,13 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
         }
 
         if (!isVideoInFitMode() || mCallParticipantViewMode != CallParticipantViewMode.SMALL_LOCALE_VIDEO || mNumberParticipants > 2 ) {
-            setX(mX);
+            MarginLayoutParams marginLayoutParams = (MarginLayoutParams) getLayoutParams();
+            if (CommonUtils.isLayoutDirectionRTL()) {
+                marginLayoutParams.rightMargin = (int) mX;
+            } else {
+                marginLayoutParams.leftMargin = (int) mX;
+            }
+
             setY(mY);
 
             ViewGroup.LayoutParams layoutParams = getLayoutParams();

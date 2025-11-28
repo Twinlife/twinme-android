@@ -916,6 +916,7 @@
     <string name="proxy_activity_onboarding">כאשר הגישה לשרתי האיתות של האפליקציה חסומה במדינתך, פרוקסי יכולים לעקוף חסימות אלה בנסיבות רבות ולאפשר לך לתקשר באופן פרטי. בנוסף לפרוקסי בתוך האפליקציה, תוכל ליצור משלך או להשתמש בפרוקסי שנוצר על ידי מישהו אחר. פרוקסי אינם יכולים לגשת לתוכן המועבר בשום פנים ואופן.</string>
     <string name="proxy_activity_information">השתמש בפרוקסי רק אם אינך מצליח להתחבר לשירות מרשתות Wi-Fi או סלולריות רגילות.</string>
     <string name="proxy_activity_share">פתח את הקישור %1$s עם Skred במכשיר שלך כדי להגדיר באופן אוטומטי את הפרוקסי הזה.</string>
+    <string name="proxy_activity_share_message">שתף את הפרוקסי הזה עם אלו שכבר לא יכולים להתחבר לשירות עקב ניסיונות חסימה.</string>
     <string name="proxy_activity_title">פרוקסי</string>
     <string name="proxy_activity_url">האם ברצונך להשתמש בכתובת URL של פרוקסי זה?</string>
     <string name="proxy_activity_warning">אזהרה! כתובת ה-URL של פרוקסי זה אינה מאפשרת לך להתחבר לשירות האפליקציה.</string>

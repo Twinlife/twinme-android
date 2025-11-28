@@ -243,7 +243,7 @@
     <string name="authentified_relation_activity_certified_message">رابطه شما با %1$s اکنون تایید شده است.</string>
     <string name="authentified_relation_activity_certify_by_scan">با اسکن یک کد QR تأیید کنید</string>
     <string name="authentified_relation_activity_certify_by_video_call">با تماس تصویری تایید کنید</string>
-    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s باید به تماس</string>
+    <string name="authentified_relation_activity_certify_by_video_call_missing_capability">%1$s باید به تماس‌های ویدیویی اجازه دهد تا بتوانند یک رابطه را از طریق تماس ویدیویی تأیید کنند.</string>
     <string name="authentified_relation_activity_level_2">برای تأیید این رابطه، باید QR-Code نمایش داده شده در دستگاه %1$s را اسکن کنید.</string>
     <string name="authentified_relation_activity_level_3">برای تأیید این رابطه، دستگاه %1$s باید این QR-Code را اسکن کند.</string>
     <string name="authentified_relation_activity_level_4">رابطه شما با %1$s تایید شده است.</string>
@@ -405,7 +405,7 @@
     <string name="conversation_activity_call_missed">گمشده</string>
     <string name="conversation_activity_cannot_send">ارسال فوری پیام مقدور نیست:</string>
     <string name="conversation_activity_cleanup_conversation">شما چند تا از پیام‌های قدیمی رو پاک کردید.</string>
-    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s برخی از پیام</string>
+    <string name="conversation_activity_cleanup_conversation_by_peer">%1$s برخی از پیام‌های قدیمی را پاک کرد.</string>
     <string name="conversation_activity_delete_message">تسا هدش کاپ اعقاو امش مایپ</string>
     <string name="conversation_activity_empty_message">چیزی هوشمندانه بگویید … یا سرگرم کننده!</string>
     <string name="conversation_activity_edit_message">پیام فقط در صورتی قابل ویرایش در دستگاه مخاطب شما است که برنامه او به</string>
@@ -494,7 +494,7 @@
     <string name="create_external_call_activity_onboarding_part_3_message_4">یک ایمیل به افرادی که به تماس گروهی دعوت شده اند</string>
     <string name="create_external_call_activity_onboarding_part_3_message_5">تابلویی روی درب ورودی شما برای افراد تحویل دهنده</string>
     <string name="create_external_call_activity_onboarding_part_4_message_1">گیرندگان کد QR را اسکن کرده و پیوند را در یک مرورگر در دستگاه تلفن همراه یا رایانه شخصی خود باز می کنند. سپس آنها می توانند:</string>
-    <string name="create_external_call_activity_onboarding_part_4_message_2">نام پیش</string>
+    <string name="create_external_call_activity_onboarding_part_4_message_2">نام پیش‌فرض (مهمان) که نماینده آنها در تماس است را تغییر دهید</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">با فشار دادن دکمه \"تماس\" در صفحه وب با شما تماس می گیرد.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">پس از تماس، آنها ممکن است صفحه وب را برای تماس مجدد با شما باز نگه دارند.</string>
     <string name="create_external_call_activity_placeholder">موضوع (کمک، اعلام، جلسه، زنگ در، …)</string>
@@ -716,7 +716,7 @@
     <string name="invitation_code_activity_history">مینی-کدهای من</string>
     <string name="invitation_code_activity_limit_message">حداکثر تعداد مینی کدهای فعال مجاز به پایان رسیده است. شما باید 24 ساعت صبر کنید تا موارد جدید تولید کنید.</string>
     <string name="invitation_code_activity_onboarding_message">مینی-کدها یکبار مصرف هستند و فقط ۲۴ ساعت اعتبار دارند. می</string>
-    <string name="invitation_code_activity_success_message">اکیدا توصیه می</string>
+    <string name="invitation_code_activity_success_message">اکیداً توصیه می‌شود روابطی که با یک مینی‌کد برقرار شده‌اند را برای تقویت امنیت آنها تأیید کنید.</string>
 
     <!-- InvitationRoomActivity -->
     <string name="invitation_room_activity_message">" QR \\\"اتاق\\\" را با Skred اسکن کند یا روی کد دعوت ضربه بزنید تا آن را در کلیپ بورد کپی کنید."</string>
@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">وقتی دسترسی به سرورهای سیگنالینگ برنامه در کشور شما مسدود شده باشد، پروکسی‌ها می‌توانند در بسیاری از شرایط از این انسدادها عبور کنند و به شما امکان برقراری ارتباط خصوصی را بدهند. علاوه بر پروکسی‌های درون برنامه، می‌توانید پروکسی خودتان را ایجاد کنید یا از پروکسی ایجاد شده توسط شخص دیگری استفاده کنید. پروکسی‌ها تحت هیچ شرایطی نمی‌توانند به محتوای رد و بدل شده دسترسی داشته باشند.</string>
     <string name="proxy_activity_information">فقط در صورتی از پروکسی استفاده کنید که نمی</string>
     <string name="proxy_activity_share">برای پیکربندی خودکار این پروکسی، لینک %1$s را با Skred در دستگاه خود باز کنید.</string>
+    <string name="proxy_activity_share_message">این پروکسی را با کسانی که به دلیل تلاش‌های مسدودسازی دیگر نمی‌توانند به سرویس متصل شوند، به اشتراک بگذارید.</string>
     <string name="proxy_activity_title">پروکسی</string>
     <string name="proxy_activity_url">آیا می‌خواهید از آدرس اینترنتی این پروکسی استفاده کنید؟</string>
     <string name="proxy_activity_warning">هشدار! آدرس اینترنتی این پروکسی به شما اجازه اتصال به سرویس برنامه را نمی</string>

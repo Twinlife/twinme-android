@@ -70,6 +70,7 @@ import com.google.zxing.qrcode.QRCodeReader;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.camera.CameraManager;
 import org.webrtc.Size;
@@ -1119,7 +1120,12 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
         mQRCodeScanned = true;
         mBeepManager.playBeepSoundAndVibrate();
 
-        Uri uri = Uri.parse(rawResult.getText());
+        String resultText = rawResult.getText();
+        if (resultText != null && resultText.startsWith(TwincodeURI.PROXY_ACTION + "/")) {
+            resultText = resultText.replace(TwincodeURI.PROXY_ACTION + "/", "");
+        }
+
+        Uri uri = Uri.parse(resultText);
         handleDecode(uri);
     }
 }

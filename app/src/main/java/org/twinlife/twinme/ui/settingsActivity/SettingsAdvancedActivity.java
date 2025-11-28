@@ -99,7 +99,7 @@ public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
             showAlertMessageView(R.id.settings_advanced_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.proxy_activity_limit), ConnectivityService.MAX_PROXIES), false, null);
             return;
         }
-        startActivity(ProxyActivity.class);
+        startActivity(AddProxyActivity.class);
     }
 
     public void onDevelopersSettingsClick() {

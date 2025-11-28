@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">お住まいの国でアプリのシグナリングサーバーへのアクセスがブロックされている場合、プロキシを使用すると多くの場合、これらのブロックを回避し、プライベートに通信できます。アプリ内プロキシに加えて、独自のプロキシを作成したり、他のユーザーが作成したプロキシを使用したりできます。プロキシは、いかなる状況においても交換されるコンテンツにアクセスすることはできません。</string>
     <string name="proxy_activity_information">標準のWi-Fiまたはモバイルネットワークからサービスに接続できない場合にのみ、プロキシを使用してください。</string>
     <string name="proxy_activity_share">お使いのデバイスでSkredを使って%1$sリンクを開くと、このプロキシが自動的に設定されます。</string>
+    <string name="proxy_activity_share_message">ブロックの試みによりサービスに接続できなくなったユーザーとこのプロキシを共有します。</string>
     <string name="proxy_activity_title">プロキシ</string>
     <string name="proxy_activity_url">このプロキシのURLを使用しますか？</string>
     <string name="proxy_activity_warning">警告！このプロキシのURLでは、アプリのサービスに接続できません。</string>

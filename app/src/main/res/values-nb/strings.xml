@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">Når tilgang til appens signalservere er blokkert i landet ditt, kan proxyer omgå disse blokkeringene under mange omstendigheter og la deg kommunisere privat. I tillegg til proxyene i appen, kan du opprette din egen eller bruke en proxy som er opprettet av noen andre. Proxyer kan ikke få tilgang til innholdet som utveksles under noen omstendigheter.</string>
     <string name="proxy_activity_information">Bruk bare en proxy hvis du ikke kan koble til tjenesten fra standard Wi-Fi- eller mobilnettverk.</string>
     <string name="proxy_activity_share">Åpne %1$s-lenken med Skred på enheten din for å konfigurere denne proxyen automatisk.</string>
+    <string name="proxy_activity_share_message">Del denne proxy-tjeneren med de som ikke lenger kan koble til tjenesten på grunn av blokkeringsforsøk.</string>
     <string name="proxy_activity_title">Proxy</string>
     <string name="proxy_activity_url">Vil du bruke URL-en til denne proxyen?</string>
     <string name="proxy_activity_warning">Advarsel! URL-en til denne proxyen tillater deg ikke å koble til appens tjeneste.</string>

@@ -920,6 +920,7 @@
     <string name="proxy_activity_onboarding">當您所在的國家/地區阻止存取應用程式的信令伺服器時，代理程式可以在許多情況下繞過這些阻止，並允許您進行私密通訊。除了應用程式內代理程式之外，您還可以建立自己的代理程式或使用其他人建立的代理程式。在任何情況下，代理程式都無法存取正在交換的內容。</string>
     <string name="proxy_activity_information">僅當您無法透過標準 Wi-Fi 或蜂窩網路連接到服務時才使用代理程式。</string>
     <string name="proxy_activity_share">在您的裝置上使用 Skred 開啟 %1$s 連結即可自動配置此代理程式。</string>
+    <string name="proxy_activity_share_message">請將此代理伺服器分享給因網路封鎖而無法連接到該服務的使用者。</string>
     <string name="proxy_activity_title">代理商</string>
     <string name="proxy_activity_url">是否要使用此代理程式的 URL？</string>
     <string name="proxy_activity_warning">警告！此代理程式的 URL 不允許您連接到應用程式的服務。</string>
