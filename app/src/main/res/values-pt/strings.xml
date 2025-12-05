@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">Toque aqui para adicionar um participante a esta chamada</string>
     <string name="call_activity_confirm_word">A palavra dita por %1$s é idêntica?</string>
     <string name="call_activity_confirm_word_title">Validar a palavra</string>
+    <string name="call_activity_connected_bluetooth">O fluxo de áudio foi redirecionado para um dispositivo Bluetooth.</string>
+    <string name="call_activity_connected_speaker">O fluxo de áudio foi redirecionado para o altifalante.</string>
     <string name="call_activity_error_call_interrupted">A chamada foi interrompida, erro: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">A chamada não pôde ser efectuada, erro: %1$d.</string>
     <string name="call_activity_location_background_warning">Atenção: se a aplicação for executada em segundo plano, a sua posição já não será partilhada com o seu contacto. Deve autorizar a aplicação a aceder sempre à localização deste dispositivo.</string>

@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">Tryck här för att lägga till en deltagare i det här samtalet</string>
     <string name="call_activity_confirm_word">Är ordet som %1$s säger identiskt?</string>
     <string name="call_activity_confirm_word_title">Validera ordet</string>
+    <string name="call_activity_connected_bluetooth">Ljudströmmen har omdirigerats till en Bluetooth-enhet.</string>
+    <string name="call_activity_connected_speaker">Ljudströmmen har omdirigerats till högtalaren.</string>
     <string name="call_activity_error_call_interrupted">Samtalet avbröts, fel: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Samtalet kunde inte gå igenom, fel: %1$d.</string>
     <string name="call_activity_location_background_warning">Varning: om applikationen körs i bakgrunden kommer din position inte längre att delas med din kontakt. Du måste auktorisera applikationen för att alltid komma åt platsen för den här enheten.</string>

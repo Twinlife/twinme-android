@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/capabilities_activity_layout"
@@ -26,4 +27,4 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

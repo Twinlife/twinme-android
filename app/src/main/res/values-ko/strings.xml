@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">이 통화에 참가자를 추가하려면 여기를 탭하세요.</string>
     <string name="call_activity_confirm_word">%1$s이(가) 말한 단어가 같은가요?</string>
     <string name="call_activity_confirm_word_title">단어를 확인하세요</string>
+    <string name="call_activity_connected_bluetooth">오디오 스트림이 Bluetooth 기기로 리디렉션되었습니다.</string>
+    <string name="call_activity_connected_speaker">오디오 스트림이 스피커로 리디렉션되었습니다.</string>
     <string name="call_activity_error_call_interrupted">통화가 중단되었습니다. 오류: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">통화가 연결되지 않았습니다. 오류: %1$d.</string>
     <string name="call_activity_location_background_warning">경고: 애플리케이션이 백그라운드에서 실행되는 경우 귀하의 위치는 더 이상 연락처와 공유되지 않습니다. 이 기기의 위치에 항상 액세스하려면 애플리케이션을 승인해야 합니다.</string>

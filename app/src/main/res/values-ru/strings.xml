@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">Нажмите здесь, чтобы добавить участника к этому вызову</string>
     <string name="call_activity_confirm_word">Идентично ли слово, произнесенное %1$s?</string>
     <string name="call_activity_confirm_word_title">Проверьте слово</string>
+    <string name="call_activity_connected_bluetooth">Аудиопоток перенаправлен на Bluetooth-устройство.</string>
+    <string name="call_activity_connected_speaker">Аудиопоток перенаправлен на динамик.</string>
     <string name="call_activity_error_call_interrupted">Звонок был прерван, ошибка: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Звонок не прошел, ошибка: %1$d.</string>
     <string name="call_activity_location_background_warning">Внимание: если приложение работает в фоновом режиме, ваше местоположение больше не будет передано вашему контакту. Вы должны разрешить приложению всегда получать доступ к местоположению этого устройства.</string>

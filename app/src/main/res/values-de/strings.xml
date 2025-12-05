@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">Tippen Sie hier, um diesem Anruf einen Teilnehmer hinzuzufügen</string>
     <string name="call_activity_confirm_word">Ist das von %1$s gesprochene Wort identisch?</string>
     <string name="call_activity_confirm_word_title">Validieren Sie das Wort</string>
+    <string name="call_activity_connected_bluetooth">Der Audiostream wurde an ein Bluetooth-Gerät umgeleitet.</string>
+    <string name="call_activity_connected_speaker">Der Audiostream wurde an den Lautsprecher umgeleitet.</string>
     <string name="call_activity_error_call_interrupted">Der Anruf wurde unterbrochen, Fehler: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Der Anruf konnte nicht erfolgreich sein, Fehler: %1$d.</string>
     <string name="call_activity_location_background_warning">Warnung: Wenn die Anwendung im Hintergrund läuft, wird Ihre Position nicht mehr mit Ihrem Kontakt geteilt. Sie müssen der Anwendung erlauben, immer auf den Standort dieses Geräts zuzugreifen.</string>

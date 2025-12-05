@@ -410,7 +410,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private Chronometer mChronometerView;
     private TextView mMessageView;
     private TextView mTransferView;
-    private CallQualityView mCallQualityView;
     private ParticipantImageView mNoParticipantView;
     private FrameLayout mParticipantsView;
     @Nullable
@@ -462,6 +461,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     @Nullable
     private AudioCallService mAudioCallService;
     private CallServiceReceiver mCallReceiver;
+    private AudioDevice mCurrentAudioDevice = AudioDevice.NONE;
 
     private boolean mShowCallQuality = false;
     private boolean mAskCallQuality = false;
@@ -1325,18 +1325,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mShowCallQuality = getTwinmeApplication().askCallQualityWithCallDuration(duration);
 
                 if (mShowCallQuality) {
-                    mCallQualityView.setCallQualityListener(new CallQualityView.CallQualityListener() {
-                        @Override
-                        public void onSendCallQuality(int quality) {
-                            onSendCallQualityClick(quality);
-                        }
-
-                        @Override
-                        public void onCancelCallQuality() {
-                            finish();
-                        }
-                    });
-                    mCallQualityView.setVisibility(View.VISIBLE);
+                    showCallQualityView();
                 } else {
                     mCloseHandler = new Handler();
                     mCloseHandler.postDelayed(this::closeTimeout, CLOSE_ACTIVITY_TIMEOUT);
@@ -1420,18 +1409,41 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         // if selectedAudioDevice == NONE => default sink, i.e. EARPIECE for audio calls and SPEAKER_PHONE for video calls.
         AudioDevice selectedAudioDevice = audioManager.getSelectedAudioDevice();
+
+        if (mCurrentAudioDevice == selectedAudioDevice) {
+            return;
+        }
+
+        mCurrentAudioDevice = selectedAudioDevice;
+
+        String updateAudioMessage = "";
+        switch (mCurrentAudioDevice) {
+            case BLUETOOTH:
+                updateAudioMessage = getString(R.string.call_activity_connected_bluetooth);
+                break;
+
+            case SPEAKER_PHONE:
+                updateAudioMessage = getString(R.string.call_activity_connected_speaker);
+                break;
+
+            default:
+                break;
+        }
+
         CallStatus mode = (CallStatus) intent.getSerializableExtra(CallService.CALL_SERVICE_STATE);
 
-        if (selectedAudioDevice != null) {
-            boolean speakerOn = selectedAudioDevice == AudioDevice.SPEAKER_PHONE ||
-                    (selectedAudioDevice == AudioDevice.NONE && mode != null && mode.isVideo());
-            if (speakerOn != mIsSpeakerOn) {
-                mIsSpeakerOn = speakerOn;
-                mCallMenuView.setIsInSpeakerOn(mIsSpeakerOn);
-            }
+        boolean speakerOn = selectedAudioDevice == AudioDevice.SPEAKER_PHONE ||
+                (selectedAudioDevice == AudioDevice.NONE && mode != null && mode.isVideo());
+        if (speakerOn != mIsSpeakerOn) {
+            mIsSpeakerOn = speakerOn;
+            mCallMenuView.setIsInSpeakerOn(mIsSpeakerOn);
+        }
 
-            mCallMenuView.setAudioDevice(selectedAudioDevice, audioManager.isHeadsetAvailable());
-            mCallMenuView.updateMenu();
+        mCallMenuView.setAudioDevice(selectedAudioDevice, audioManager.isHeadsetAvailable());
+        mCallMenuView.updateMenu();
+
+        if (CallStatus.isActive(mode) && !updateAudioMessage.isEmpty()) {
+            toast(updateAudioMessage);
         }
     }
 
@@ -1788,6 +1800,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         if (event == CallParticipantEvent.EVENT_CONNECTED) {
             updateViews();
+            return;
+        }
+
+        if (event == CallParticipantEvent.EVENT_IDENTITY && mMode == CallStatus.TERMINATED) {
+            finish();
             return;
         }
 
@@ -2392,8 +2409,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTerminatedView.getLayoutParams();
         marginLayoutParams.rightMargin = SIDE_MARGIN;
         marginLayoutParams.setMarginEnd(SIDE_MARGIN);
-
-        mCallQualityView = findViewById(R.id.call_activity_call_quality_view);
 
         mCoachMarkView = findViewById(R.id.call_activity_coach_mark_view);
         CoachMarkView.OnCoachMarkViewListener onCoachMarkViewListener = new CoachMarkView.OnCoachMarkViewListener() {
@@ -3770,18 +3785,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         if (mShowCallQuality) {
-            mCallQualityView.setCallQualityListener(new CallQualityView.CallQualityListener() {
-                @Override
-                public void onSendCallQuality(int quality) {
-                    onSendCallQualityClick(quality);
-                }
-
-                @Override
-                public void onCancelCallQuality() {
-                    finish();
-                }
-            });
-            mCallQualityView.setVisibility(View.VISIBLE);
+            showCallQualityView();
         } else if (finish) {
             finish();
         } else {
@@ -3819,7 +3823,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 return getString(R.string.audio_call_activity_terminate_not_authorized);
 
             case GONE:
-                return String.format(getString(R.string.audio_call_activity_terminate_gone), mOriginatorName);
+                if (mStartTime > 0) {
+                    return  String.format(getString(R.string.call_activity_error_call_interrupted), terminateReason.ordinal());
+                } else {
+                    return String.format(getString(R.string.audio_call_activity_terminate_gone), mOriginatorName);
+                }
 
             case REVOKED:
                 return String.format(getString(R.string.audio_call_activity_terminate_revoked), mOriginatorName);
@@ -5755,6 +5763,53 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showCallQualityView() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showCallQualityView");
+        }
+
+        CallQualityView callQualityView = new CallQualityView(this, null);
+        callQualityView.setForceDarkMode(true);
+
+        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                callQualityView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                callQualityView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                callQualityView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                mRootView.removeView(callQualityView);
+                setStatusBarColor();
+                finish();
+            }
+        };
+        callQualityView.setObserver(observer);
+
+        CallQualityView.CallQualityObserver callQualityObserver = quality -> {
+            onSendCallQualityClick(quality);
+            callQualityView.animationCloseConfirmView();
+        };
+        callQualityView.setCallQualityObserver(callQualityObserver);
+
+        mRootView.addView(callQualityView);
+        callQualityView.bringToFront();
+        callQualityView.show();
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void openSelectAudioSourceView() {

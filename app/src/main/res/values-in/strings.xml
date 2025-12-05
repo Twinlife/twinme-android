@@ -294,6 +294,8 @@
     <string name="call_activity_coach_mark">Ketuk di sini untuk menambahkan peserta ke panggilan ini</string>
     <string name="call_activity_confirm_word">Apakah kata yang diucapkan oleh %1$s sama?</string>
     <string name="call_activity_confirm_word_title">Validasi kata tersebut</string>
+    <string name="call_activity_connected_bluetooth">Aliran audio telah dialihkan ke perangkat Bluetooth.</string>
+    <string name="call_activity_connected_speaker">Aliran audio telah dialihkan ke speaker.</string>
     <string name="call_activity_error_call_interrupted">Panggilan terputus, kesalahan: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Panggilan tidak dapat tersambung, kesalahan: %1$d.</string>
     <string name="call_activity_location_background_warning">Peringatan: jika aplikasi berjalan di latar belakang, posisi Anda tidak lagi dibagikan kepada kontak Anda. Anda harus mengotorisasi aplikasi untuk selalu mengakses lokasi perangkat ini.</string>

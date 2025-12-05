@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">Bu aramaya bir katılımcı eklemek için buraya dokunun</string>
     <string name="call_activity_confirm_word">%1$s tarafından söylenen kelime aynı mı?</string>
     <string name="call_activity_confirm_word_title">Kelimeyi doğrulayın</string>
+    <string name="call_activity_connected_bluetooth">Ses akışı bir Bluetooth cihazına yönlendirildi.</string>
+    <string name="call_activity_connected_speaker">Ses akışı hoparlöre yönlendirildi.</string>
     <string name="call_activity_error_call_interrupted">Çağrı kesintiye uğradı, hata: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Çağrı gerçekleştirilemedi, hata: %1$d.</string>
     <string name="call_activity_location_background_warning">Uyarı: Uygulama arka planda çalışıyorsa konumunuz artık kişinizle paylaşılmayacaktır. Uygulamaya her zaman bu cihazın konumuna erişmesi için yetki vermelisiniz.</string>

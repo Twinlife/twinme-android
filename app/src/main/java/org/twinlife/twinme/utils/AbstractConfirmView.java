@@ -507,7 +507,7 @@ public class AbstractConfirmView extends PercentRelativeLayout {
         }
     }
 
-    private void onConfirmClick() {
+    protected void onConfirmClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onConfirmClick");
         }

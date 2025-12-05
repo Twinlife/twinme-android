@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">Tocca qui per aggiungere un partecipante a questa chiamata</string>
     <string name="call_activity_confirm_word">La parola pronunciata da %1$s è identica?</string>
     <string name="call_activity_confirm_word_title">Convalidare la parola</string>
+    <string name="call_activity_connected_bluetooth">Il flusso audio è stato reindirizzato a un dispositivo Bluetooth.</string>
+    <string name="call_activity_connected_speaker">Il flusso audio è stato reindirizzato all\'altoparlante.</string>
     <string name="call_activity_error_call_interrupted">La chiamata è stata interrotta, errore: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">La chiamata non è andata a buon fine, errore: %1$d.</string>
     <string name="call_activity_location_background_warning">Attenzione: se l’applicazione viene eseguita in background, la tua posizione non sarà più condivisa con il tuo contatto. È necessario autorizzare l’applicazione ad accedere sempre alla posizione di questo dispositivo.</string>

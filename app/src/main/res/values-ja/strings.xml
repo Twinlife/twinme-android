@@ -295,6 +295,8 @@
     <string name="call_activity_coach_mark">ここをタップして、この通話に参加者を追加します</string>
     <string name="call_activity_confirm_word">%1$s が言った言葉は同じですか?</string>
     <string name="call_activity_confirm_word_title">単語を検証する</string>
+    <string name="call_activity_connected_bluetooth">オーディオストリームが Bluetooth デバイスにリダイレクトされました。</string>
+    <string name="call_activity_connected_speaker">オーディオストリームがスピーカーにリダイレクトされました。</string>
     <string name="call_activity_error_call_interrupted">通話が中断されました。エラー: %1$d。</string>
     <string name="call_activity_error_call_not_go_thru">通話ができませんでした。エラー: %1$d。</string>
     <string name="call_activity_location_background_warning">警告: アプリケーションがバックグラウンドで実行されている場合、あなたの位置情報は連絡先と共有されなくなります。アプリケーションがこのデバイスの位置情報に常にアクセスすることを許可する必要があります。</string>

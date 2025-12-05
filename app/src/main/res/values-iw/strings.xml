@@ -294,6 +294,8 @@
     <string name="call_activity_coach_mark">הקש כאן כדי להוסיף משתתף לשיחה זו</string>
     <string name="call_activity_confirm_word">האם המילה נאמרה על ידי %1$s זהה?</string>
     <string name="call_activity_confirm_word_title">לאמת את המילה</string>
+    <string name="call_activity_connected_bluetooth">זרם האודיו הועבר למכשיר בלוטות\'.</string>
+    <string name="call_activity_connected_speaker">זרם האודיו הועבר לרמקול.</string>
     <string name="call_activity_error_call_interrupted">השיחה נקטעה, שגיאה: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">השיחה לא הצליחה לעבור, שגיאה: %1$d.</string>
     <string name="call_activity_location_background_warning">אזהרה: אם האפליקציה פועלת ברקע, המיקום שלך לא ישותף יותר עם איש הקשר שלך. עליך לאשר לאפליקציה לגשת תמיד למיקום של מכשיר זה.</string>
