@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">이 통화에 참가자를 추가하려면 여기를 탭하세요.</string>
     <string name="call_activity_confirm_word">%1$s이(가) 말한 단어가 같은가요?</string>
     <string name="call_activity_confirm_word_title">단어를 확인하세요</string>
+    <string name="call_activity_connected_bluetooth">오디오 스트림이 Bluetooth 기기로 리디렉션되었습니다.</string>
+    <string name="call_activity_connected_speaker">오디오 스트림이 스피커로 리디렉션되었습니다.</string>
     <string name="call_activity_error_call_interrupted">통화가 중단되었습니다. 오류: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">통화가 연결되지 않았습니다. 오류: %1$d.</string>
     <string name="call_activity_max_participant_message">그룹 통화의 최대 참가자 수(%1$d)에 도달했습니다.</string>

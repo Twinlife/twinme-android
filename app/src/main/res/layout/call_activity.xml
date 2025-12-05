@@ -286,12 +286,6 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone" />
 
-    <org.twinlife.twinme.ui.callActivity.CallQualityView
-        android:id="@+id/call_activity_call_quality_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
     <org.twinlife.twinme.utils.coachmark.CoachMarkView
         android:id="@+id/call_activity_coach_mark_view"
         android:layout_width="match_parent"

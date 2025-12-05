@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">इस कॉल में किसी प्रतिभागी को जोड़ने के लिए यहां टैप करें</string>
     <string name="call_activity_confirm_word">क्या %1$s द्वारा कहा गया शब्द वही है?</string>
     <string name="call_activity_confirm_word_title">शब्द को मान्य करें</string>
+    <string name="call_activity_connected_bluetooth">ऑडियो स्ट्रीम को ब्लूटूथ डिवाइस पर रीडायरेक्ट कर दिया गया है।</string>
+    <string name="call_activity_connected_speaker">ऑडियो स्ट्रीम को स्पीकर पर रीडायरेक्ट कर दिया गया है।</string>
     <string name="call_activity_error_call_interrupted">कॉल बाधित हुई, त्रुटि: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">कॉल नहीं हो पाई, त्रुटि: %1$d.</string>
     <string name="call_activity_max_participant_message">समूह कॉल में प्रतिभागियों की अधिकतम संख्या (%1$d) तक पहुंच गई है।</string>

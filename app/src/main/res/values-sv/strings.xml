@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">Tryck här för att lägga till en deltagare i det här samtalet</string>
     <string name="call_activity_confirm_word">Är ordet som %1$s säger identiskt?</string>
     <string name="call_activity_confirm_word_title">Validera ordet</string>
+    <string name="call_activity_connected_bluetooth">Ljudströmmen har omdirigerats till en Bluetooth-enhet.</string>
+    <string name="call_activity_connected_speaker">Ljudströmmen har omdirigerats till högtalaren.</string>
     <string name="call_activity_error_call_interrupted">Samtalet avbröts, fel: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Samtalet kunde inte gå igenom, fel: %1$d.</string>
     <string name="call_activity_max_participant_message">Det maximala antalet deltagare i ett gruppsamtal har uppnåtts (%1$d).</string>

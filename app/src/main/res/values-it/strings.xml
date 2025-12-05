@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">Tocca qui per aggiungere un partecipante a questa chiamata</string>
     <string name="call_activity_confirm_word">La parola pronunciata da %1$s è identica?</string>
     <string name="call_activity_confirm_word_title">Convalidare la parola</string>
+    <string name="call_activity_connected_bluetooth">Il flusso audio è stato reindirizzato a un dispositivo Bluetooth.</string>
+    <string name="call_activity_connected_speaker">Il flusso audio è stato reindirizzato all\'altoparlante.</string>
     <string name="call_activity_error_call_interrupted">La chiamata è stata interrotta, errore: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">La chiamata non è andata a buon fine, errore: %1$d.</string>
     <string name="call_activity_max_participant_message">È stato raggiunto il numero massimo di partecipanti a una chiamata di gruppo (%1$d).</string>

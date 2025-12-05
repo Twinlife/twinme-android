@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">Napauta tätä lisätäksesi osallistujan tähän puheluun</string>
     <string name="call_activity_confirm_word">Onko %1$s sanoma sana sama?</string>
     <string name="call_activity_confirm_word_title">Vahvista sana</string>
+    <string name="call_activity_connected_bluetooth">Äänivirta on ohjattu uudelleen Bluetooth-laitteeseen.</string>
+    <string name="call_activity_connected_speaker">Äänivirta on ohjattu uudelleen kaiuttimeen.</string>
     <string name="call_activity_error_call_interrupted">Puhelu keskeytettiin, virhe: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Puhelu ei mennyt läpi, virhe: %1$d.</string>
     <string name="call_activity_max_participant_message">Ryhmäpuhelun osallistujien enimmäismäärä on saavutettu (%1$d).</string>

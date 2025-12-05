@@ -2,123 +2,117 @@
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:baselineAligned="false"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/call_quality_activity_content_view"
+    <View
+        android:id="@+id/call_quality_view_overlay_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true">
+        android:clickable="true"
+        android:visibility="visible" />
 
-        <ImageView
-            android:id="@+id/call_quality_activity_close_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/close"
-            app:layout_heightPercent="7.03%"
-            app:layout_aspectRatio="100%"
-            app:layout_marginTopPercent="2.43%"
-            app:layout_marginEndPercent="2.62%"
-            android:contentDescription="@string/application_cancel" />
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/call_quality_view_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:id="@+id/call_quality_view_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="12%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/call_quality_stars_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_widthPercent="68.96%"
-            app:layout_heightPercent="13.51%"
-            app:layout_marginTopPercent="26.84%"
+            android:id="@+id/call_quality_view_stars_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/call_quality_view_slide_mark_view"
             android:layout_centerHorizontal="true">
 
             <ImageView
-                android:id="@+id/call_quality_star_one_image_view"
+                android:id="@+id/call_quality_view_star_one_image_view"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="25%"
                 android:src="@drawable/star_grey"/>
 
             <ImageView
-                android:id="@+id/call_quality_star_two_image_view"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="25%"
+                android:id="@+id/call_quality_view_star_two_image_view"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@+id/call_quality_star_one_image_view"
-                android:layout_toEndOf="@+id/call_quality_star_one_image_view"
+                android:layout_toRightOf="@+id/call_quality_view_star_one_image_view"
+                android:layout_toEndOf="@+id/call_quality_view_star_one_image_view"
                 android:src="@drawable/star_grey"/>
 
             <ImageView
-                android:id="@+id/call_quality_star_three_image_view"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="25%"
+                android:id="@+id/call_quality_view_star_three_image_view"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@+id/call_quality_star_two_image_view"
-                android:layout_toEndOf="@+id/call_quality_star_two_image_view"
+                android:layout_toRightOf="@+id/call_quality_view_star_two_image_view"
+                android:layout_toEndOf="@+id/call_quality_view_star_two_image_view"
                 android:src="@drawable/star_grey"/>
 
             <ImageView
-                android:id="@+id/call_quality_star_four_image_view"
-                app:layout_heightPercent="100%"
-                app:layout_widthPercent="25%"
+                android:id="@+id/call_quality_view_star_four_image_view"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
+                android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@+id/call_quality_star_three_image_view"
-                android:layout_toEndOf="@+id/call_quality_star_three_image_view"
+                android:layout_toRightOf="@+id/call_quality_view_star_three_image_view"
+                android:layout_toEndOf="@+id/call_quality_view_star_three_image_view"
                 android:src="@drawable/star_grey"/>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <TextView
-            android:id="@+id/call_quality_activity_title_view"
-            android:layout_width="wrap_content"
+            android:id="@+id/call_quality_view_title_view"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/call_quality_stars_view"
             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_quality_view_stars_view"
+            android:gravity="center"
             android:text="@string/call_activity_quality_title"
-            app:layout_marginTopPercent="14.06%"
-            app:layout_marginStartPercent="1.72%"
-            app:layout_marginEndPercent="1.72%"/>
+            app:layout_widthPercent="94%" />
 
         <TextView
-            android:id="@+id/call_quality_activity_message_view"
-            android:layout_width="wrap_content"
+            android:id="@+id/call_quality_view_message_view"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/call_quality_activity_title_view"
             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/call_quality_view_title_view"
+            android:gravity="center"
             android:text="@string/call_activity_quality_message"
-            app:layout_marginTopPercent="2.97%"
-            app:layout_marginStartPercent="1.72%"
-            app:layout_marginEndPercent="1.72%" />
+            app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/call_quality_activity_send_view"
-            android:layout_height="match_parent"
+            android:id="@+id/call_quality_view_confirm_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            app:layout_widthPercent="91.38%"
-            app:layout_marginBottomPercent="2.83%">
+            android:layout_below="@+id/call_quality_view_message_view">
 
             <TextView
-                android:id="@+id/call_quality_activity_send_text_view"
+                android:id="@+id/call_quality_view_confirm_text_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/feedback_activity_send"
-                app:layout_widthPercent="89.06%" />
+                android:text="@string/feedback_activity_send" />
 
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/call_quality_view_cancel_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/call_quality_view_confirm_view">
+
+            <TextView
+                android:id="@+id/call_quality_view_cancel_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/application_cancel" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

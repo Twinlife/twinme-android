@@ -306,6 +306,8 @@
     <string name="call_activity_coach_mark">Tap here to add a participant to this call</string>
     <string name="call_activity_confirm_word">Is the word said by %1$s identical?</string>
     <string name="call_activity_confirm_word_title">Validate the word</string>
+    <string name="call_activity_connected_bluetooth">The audio stream has been redirected to a Bluetooth device.</string>
+    <string name="call_activity_connected_speaker">The audio stream has been redirected to the speaker.</string>
     <string name="call_activity_error_call_interrupted">The call was interrupted, error: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">The call could not go thru, error: %1$d.</string>
     <string name="call_activity_max_participant_message">The maximum number of participants in a group call has been reached (%1$d).</string>

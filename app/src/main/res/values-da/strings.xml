@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">Tryk her for at tilføje en deltager til dette opkald</string>
     <string name="call_activity_confirm_word">Er ordet sagt af %1$s identisk?</string>
     <string name="call_activity_confirm_word_title">Bekræft ordet</string>
+    <string name="call_activity_connected_bluetooth">Lydstrømmen er blevet omdirigeret til en Bluetooth-enhed.</string>
+    <string name="call_activity_connected_speaker">Lydstrømmen er blevet omdirigeret til højttaleren.</string>
     <string name="call_activity_error_call_interrupted">Opkaldet blev afbrudt, fejl: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">Opkaldet kunne ikke gå igennem, fejl: %1$d.</string>
     <string name="call_activity_max_participant_message">Det maksimale antal deltagere i et gruppeopkald er nået (%1$d).</string>

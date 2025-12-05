@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">點按此處可將參與者添加到此通話</string>
     <string name="call_activity_confirm_word">%1$s 所說的單字是否相同？</string>
     <string name="call_activity_confirm_word_title">驗證單字</string>
+    <string name="call_activity_connected_bluetooth">"音訊串流已重新導向至藍芽裝置。 "</string>
+    <string name="call_activity_connected_speaker">音訊串流已重新導向至揚聲器。</string>
     <string name="call_activity_error_call_interrupted">通話中斷，錯誤：%1$d。</string>
     <string name="call_activity_error_call_not_go_thru">通話無法接通，錯誤：%1$d。</string>
     <string name="call_activity_max_participant_message">已達到群組通話參與者的最大數量 (%1$d)。</string>

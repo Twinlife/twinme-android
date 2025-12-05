@@ -290,6 +290,8 @@
     <string name="call_activity_coach_mark">برای افزودن یک شرکت کننده به این تماس، اینجا ضربه بزنید</string>
     <string name="call_activity_confirm_word">آیا این کلمه توسط %1$s یکسان گفته شده است؟</string>
     <string name="call_activity_confirm_word_title">تأیید کلمه</string>
+    <string name="call_activity_connected_bluetooth">جریان صدا به یک دستگاه بلوتوث هدایت شده است.</string>
+    <string name="call_activity_connected_speaker">جریان صدا به بلندگو هدایت شده است.</string>
     <string name="call_activity_error_call_interrupted">تماس قطع شد، خطا: %1$d.</string>
     <string name="call_activity_error_call_not_go_thru">تماس انجام نشد، خطا: %1$d.</string>
     <string name="call_activity_max_participant_message">حداکثر تعداد شرکت کنندگان در تماس گروهی (%1$d) رسیده است.</string>

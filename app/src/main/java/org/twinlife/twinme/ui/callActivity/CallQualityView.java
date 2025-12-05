@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022 twinlife SA.
+ *  Copyright (c) 2022-2025 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -10,7 +10,6 @@ package org.twinlife.twinme.ui.callActivity;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
@@ -19,26 +18,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.utils.AbstractConfirmView;
 
-public class CallQualityView extends PercentRelativeLayout {
+public class CallQualityView extends AbstractConfirmView {
     private static final String LOG_TAG = "CallQualityView";
     private static final boolean DEBUG = false;
 
-    public interface CallQualityListener {
+    protected static final int DESIGN_STAR_SIZE = 100;
+    protected static final int DESIGN_STAR_MARGIN = 80;
 
+    public interface CallQualityObserver {
         void onSendCallQuality(int quality);
-
-        void onCancelCallQuality();
     }
-
-    private static final int DESIGN_CONTENT_VIEW_WIDTH = 580;
-    private static final int DESIGN_CONTENT_VIEW_HEIGHT = 740;
 
     private ImageView mStarOneImageView;
     private ImageView mStarTwoImageView;
@@ -47,7 +42,7 @@ public class CallQualityView extends PercentRelativeLayout {
 
     private int mCallQuality = 4;
 
-    private CallQualityListener mCallQualityListener;
+    private CallQualityObserver mCallQualityObserver;
 
     public CallQualityView(Context context) {
 
@@ -63,89 +58,102 @@ public class CallQualityView extends PercentRelativeLayout {
         initViews();
     }
 
-    public CallQualityView(Context context, AttributeSet attrs, int defStyle) {
-
-        super(context, attrs, defStyle);
-    }
-
-    public void setCallQualityListener(CallQualityListener callQualityListener) {
+    public void setCallQualityObserver(CallQualityObserver observer) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "setCallQualityListener: " + callQualityListener);
+            Log.d(LOG_TAG, "setCallQualityObserver: " + observer);
         }
 
-        mCallQualityListener = callQualityListener;
+        mCallQualityObserver = observer;
     }
 
-    private void initViews() {
+    @Override
+    protected void onConfirmClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onConfirmClick");
+        }
+
+        if (mCallQualityObserver != null) {
+            mCallQualityObserver.onSendCallQuality(mCallQuality);
+        }
+    }
+
+    @Override
+    protected void initViews() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initViews");
         }
 
-        setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
+        mOverlayView = findViewById(R.id.call_quality_view_overlay_view);
+        mActionView = findViewById(R.id.call_quality_view_action_view);
+        mSlideMarkView = findViewById(R.id.call_quality_view_slide_mark_view);
+        mTitleView = findViewById(R.id.call_quality_view_title_view);
+        mMessageView = findViewById(R.id.call_quality_view_message_view);
+        mConfirmView = findViewById(R.id.call_quality_view_confirm_view);
+        mConfirmTextView = findViewById(R.id.call_quality_view_confirm_text_view);
+        mCancelView = findViewById(R.id.call_quality_view_cancel_view);
+        mCancelTextView = findViewById(R.id.call_quality_view_cancel_text_view);
 
-        View contentView = findViewById(R.id.call_quality_activity_content_view);
+        super.initViews();
 
-        ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_CONTENT_VIEW_WIDTH * Design.WIDTH_RATIO);
-        layoutParams.height = (int) (DESIGN_CONTENT_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        View starContainer = findViewById(R.id.call_quality_view_stars_view);
 
-        float radius = Design.POPUP_RADIUS * Resources.getSystem().getDisplayMetrics().density;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-        ShapeDrawable popupViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        popupViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
-        contentView.setBackground(popupViewBackground);
+        MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) starContainer.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_STAR_MARGIN * Design.HEIGHT_RATIO);
 
-        mStarOneImageView = findViewById(R.id.call_quality_star_one_image_view);
+        int starSize = (int) (DESIGN_STAR_SIZE * Design.HEIGHT_RATIO);
+
+        mStarOneImageView = findViewById(R.id.call_quality_view_star_one_image_view);
+
+        ViewGroup.LayoutParams layoutParams = mStarOneImageView.getLayoutParams();
+        layoutParams.width = starSize;
+        layoutParams.height = starSize;
+
         mStarOneImageView.setOnClickListener(v -> {
             mCallQuality = 1;
             updateStars();
         });
 
-        mStarTwoImageView = findViewById(R.id.call_quality_star_two_image_view);
+        mStarTwoImageView = findViewById(R.id.call_quality_view_star_two_image_view);
+
+        layoutParams = mStarTwoImageView.getLayoutParams();
+        layoutParams.width = starSize;
+        layoutParams.height = starSize;
+
         mStarTwoImageView.setOnClickListener(v -> {
             mCallQuality = 2;
             updateStars();
         });
 
-        mStarThreeImageView = findViewById(R.id.call_quality_star_three_image_view);
+        mStarThreeImageView = findViewById(R.id.call_quality_view_star_three_image_view);
+
+        layoutParams = mStarThreeImageView.getLayoutParams();
+        layoutParams.width = starSize;
+        layoutParams.height = starSize;
+
         mStarThreeImageView.setOnClickListener(v -> {
             mCallQuality = 3;
             updateStars();
         });
 
-        mStarFourImageView = findViewById(R.id.call_quality_star_four_image_view);
+        mStarFourImageView = findViewById(R.id.call_quality_view_star_four_image_view);
+
+        layoutParams = mStarFourImageView.getLayoutParams();
+        layoutParams.width = starSize;
+        layoutParams.height = starSize;
+
         mStarFourImageView.setOnClickListener(v -> {
             mCallQuality = 4;
             updateStars();
         });
 
-        TextView titleTextView = findViewById(R.id.call_quality_activity_title_view);
-        Design.updateTextFont(titleTextView, Design.FONT_MEDIUM34);
-        titleTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        TextView messageTextView = findViewById(R.id.call_quality_activity_message_view);
-        Design.updateTextFont(messageTextView, Design.FONT_MEDIUM32);
-        messageTextView.setTextColor(Design.FONT_COLOR_DESCRIPTION);
-
-        View sendClickableView = findViewById(R.id.call_quality_activity_send_view);
-        sendClickableView.setOnClickListener(v -> onSendClick());
-
-        ShapeDrawable sendViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        sendViewBackground.getPaint().setColor(Design.BLUE_NORMAL);
-        sendClickableView.setBackground(sendViewBackground);
-
-        layoutParams = sendClickableView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.BUTTON_HEIGHT;
-
-        TextView sendTextView = findViewById(R.id.call_quality_activity_send_text_view);
-        Design.updateTextFont(sendTextView, Design.FONT_BOLD28);
-        sendTextView.setTextColor(Color.WHITE);
-
-        View closeView = findViewById(R.id.call_quality_activity_close_view);
-        closeView.setOnClickListener(view -> onCloseClick());
-
         updateStars();
+
+        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+        ShapeDrawable confirmViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        confirmViewBackground.getPaint().setColor(Design.getMainStyle());
+        mConfirmView.setBackground(confirmViewBackground);
     }
 
     private void updateStars() {
@@ -176,21 +184,5 @@ public class CallQualityView extends PercentRelativeLayout {
         } else {
             mStarFourImageView.setImageResource(R.drawable.star_grey);
         }
-    }
-
-    private void onCloseClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCloseClick");
-        }
-
-        mCallQualityListener.onCancelCallQuality();
-    }
-
-    private void onSendClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSendClick");
-        }
-
-        mCallQualityListener.onSendCallQuality(mCallQuality);
     }
 }
