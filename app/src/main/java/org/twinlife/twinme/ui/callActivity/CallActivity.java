@@ -32,6 +32,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -125,6 +126,7 @@ import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.utils.AbstractConfirmView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.InfoFloatingView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
@@ -446,6 +448,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private AudioCallService mAudioCallService;
     private CallServiceReceiver mCallReceiver;
     private AudioDevice mCurrentAudioDevice = AudioDevice.NONE;
+
+    private ContentObserver mRotationObserver;
 
     private boolean mShowCallQuality = false;
     private boolean mAskCallQuality = false;
@@ -808,8 +812,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mResumed = true;
 
         if (mAudioCallService != null && !mAudioCallService.isConnected()) {
-            showNetworkDisconnect(mVideo ? R.string.video_call_activity_cannot_call : R.string.audio_call_activity_cannot_call, this::finish);
-
+            showNetworkDisconnect(mVideo ? R.string.video_call_activity_cannot_call : R.string.audio_call_activity_cannot_call, () -> {});
         } else if (isCallReady()) {
             startCall();
         }
@@ -867,6 +870,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (mCloseHandler != null) {
             mCloseHandler.removeCallbacksAndMessages(null);
             mCloseHandler = null;
+        }
+
+        if (mRotationObserver != null) {
+            getContentResolver().unregisterContentObserver(mRotationObserver);
         }
 
         unregisterReceiver(mCallReceiver);
@@ -1791,7 +1798,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_ON) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             onFullScreenTapCallParticipantView(callParticipantRemoteView);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+            if (!CommonUtils.isRotationLocked(this)) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+            } else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+            }
         } else if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_OFF) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             onMinimizeTapCallParticipantView(callParticipantRemoteView);
@@ -2346,6 +2357,25 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             }
         });
 
+        mRotationObserver = new ContentObserver(new Handler()) {
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+
+                if (!CommonUtils.isRotationLocked(getApplicationContext())) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+                } else {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+                }
+            }
+        };
+
+        getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION),
+                false,
+                mRotationObserver
+        );
+
         mUIInitialized = true;
     }
 
@@ -2726,7 +2756,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mContentView.setVisibility(View.GONE);
         }
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        if (!CommonUtils.isRotationLocked(this)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        }
 
         if (isRemoteCameraControl()) {
             mCameraControlView.setVisibility(View.VISIBLE);

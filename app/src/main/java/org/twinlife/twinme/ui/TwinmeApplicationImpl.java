@@ -6,6 +6,7 @@
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui;
@@ -70,6 +71,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplicationImpl implements TwinmeApplication, JobService.Observer {
     private static final String LOG_TAG = "TwinmeApplicationImpl";
@@ -78,6 +81,11 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     private static final long CALL_QUALITY_MIN_DURATION = 5 * 60;
     private static final long CALL_QUALITY_ASK_FREQUENCY = 10;
     private static final long CALL_QUALITY_INTERVAL_DATE = 10 * 60 * 60 * 24;
+
+    private static final float AUDIO_PLAYER_SPEED_SLOW = 0.5f;
+    private static final float AUDIO_PLAYER_SPEED_NORMAL = 1.0f;
+    private static final float AUDIO_PLAYER_SPEED_FAST= 1.5f;
+    private static final float AUDIO_PLAYER_SPEED_VERY_FAST = 2.0f;
 
     private Bitmap mAnonymousAvatar;
     private Bitmap mDefaultAvatar;
@@ -843,6 +851,32 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     //
+    // Conversation Management
+    //
+
+    @Override
+    public float audioItemPlaybackSpeed() {
+
+        return Settings.audioItemPlaybackSpeed.getFloat();
+    }
+
+    @Override
+    public  void updateAudioItemPlaybackSpeed() {
+
+        float speed = Settings.audioItemPlaybackSpeed.getFloat();
+        if (speed == AUDIO_PLAYER_SPEED_NORMAL) {
+            speed = AUDIO_PLAYER_SPEED_FAST;
+        } else  if (speed == AUDIO_PLAYER_SPEED_FAST) {
+            speed = AUDIO_PLAYER_SPEED_VERY_FAST;
+        } else  if (speed == AUDIO_PLAYER_SPEED_VERY_FAST) {
+            speed = AUDIO_PLAYER_SPEED_SLOW;
+        } else {
+            speed = AUDIO_PLAYER_SPEED_NORMAL;
+        }
+        Settings.audioItemPlaybackSpeed.setFloat(speed).save();
+    }
+
+    //
     //  App Info Management
     //
 
@@ -956,11 +990,17 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         mAdminService = new AdminService(twinmeContext, this);
         mJobService = twinmeContext.getJobService();
         mJobService.setObserver(this);
-        Glide.get(this).getRegistry()
+
+        Glide glide = Glide.get(this);
+        glide.getRegistry()
                 .append(ImageId.class, Bitmap.class, TwinlifeImageLoader.Factory.create(twinmeContext))
                 .append(ConversationService.FileDescriptor.class, InputStream.class, FileDescriptorLoader.Factory.create(twinmeContext))
                 .append(FileInfo.class, InputStream.class, MediaInfoImageLoader.Factory.create())
                 .append(FileInfo.class, Bitmap.class, MediaInfoVideoThumbnailLoader.Factory.create(this));
+
+        ExecutorService glideCacheExecutor = Executors.newSingleThreadExecutor();
+        glideCacheExecutor.execute(glide::clearDiskCache);
+        glideCacheExecutor.shutdown();
 
         mCoachMarkManager = new CoachMarkManager();
     }

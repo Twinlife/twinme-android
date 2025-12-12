@@ -28,6 +28,7 @@ public class ItemSelectedActionView extends PercentRelativeLayout {
     private static final boolean DEBUG = false;
 
     private static final float DESIGN_ACTION_WIDTH = 120f;
+    private static final float DESIGN_ACTION_VIEW_HEIGHT = 128f;
 
     private TextView mSelectedCountView;
     private View mShareView;
@@ -115,14 +116,18 @@ public class ItemSelectedActionView extends PercentRelativeLayout {
 
         setBackgroundColor(Design.TOOLBAR_COLOR);
 
-        mSelectedCountView = findViewById(R.id.conversaton_files_activity_item_selected_action_text_view);
+        View containerView = findViewById(R.id.conversation_files_activity_item_selected_action_container);
+        ViewGroup.LayoutParams layoutParams = containerView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_ACTION_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+
+        mSelectedCountView = findViewById(R.id.conversation_files_activity_item_selected_action_text_view);
         Design.updateTextFont(mSelectedCountView, Design.FONT_MEDIUM34);
         mSelectedCountView.setTextColor(Color.WHITE);
 
-        mShareView = findViewById(R.id.conversaton_files_activity_item_selected_action_share_view);
+        mShareView = findViewById(R.id.conversation_files_activity_item_selected_action_share_view);
         mShareView.setOnClickListener(view -> onShareClick());
 
-        ViewGroup.LayoutParams layoutParams = mShareView.getLayoutParams();
+        layoutParams = mShareView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_ACTION_WIDTH * Design.WIDTH_RATIO);
 
         mDeleteView = findViewById(R.id.conversaton_files_activity_item_selected_action_delete_view);

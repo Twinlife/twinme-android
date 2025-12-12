@@ -91,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            app:layout_widthPercent="79.70%"
+            app:layout_widthPercent="75.70%"
             app:layout_marginStartPercent="1.85%"
             app:layout_marginLeftPercent="1.85%">
 

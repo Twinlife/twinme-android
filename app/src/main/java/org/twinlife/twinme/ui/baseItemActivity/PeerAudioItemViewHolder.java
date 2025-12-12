@@ -13,8 +13,11 @@
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
@@ -58,8 +61,15 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
     private static final String LOG_TAG = "PeerAudioItemViewHolder";
     private static final boolean DEBUG = false;
 
-    private static final float DESIGN_AUDIO_ITEM_CONTAINER_WIDTH_PERCENT = 0.7733f;
-    private static final float DESIGN_AUDIO_TRACK_WIDTH_PERCENT = 0.7172f;
+    private static final int DESIGN_AUDIO_CONTAINER_WIDTH = 580;
+    private static final int DESIGN_AUDIO_CONTAINER_HEIGHT = 134;
+    private static final int DESIGN_AUDIO_TRACK_WIDTH = 416;
+    private static final int DESIGN_AUDIO_TRACK_HEIGHT = 60;
+    private static final int DESIGN_AUDIO_SPEED_MARGIN = 28;
+    private static final int DESIGN_AUDIO_SPEED_BOTTOM_MARGIN = 12;
+    private static final int DESIGN_AUDIO_SPEED_WIDTH = 80;
+    private static final int DESIGN_AUDIO_SPEED_HEIGHT = 44;
+
     private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
     private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 14f;
     private static final float DESIGN_EPHEMERAL_TOP_MARGIN = 4f;
@@ -71,6 +81,8 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
     private final GradientDrawable mGradientDrawable;
     private final View mPlayButton;
     private final View mStopButton;
+    private final View mSpeedView;
+    private final TextView mSpeedTextView;
     private final TextView mCounter;
     private final View mReplyView;
     private final TextView mReplyTextView;
@@ -111,6 +123,10 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
 
         mAudioItemContainer = view.findViewById(R.id.base_item_activity_peer_audio_item_view);
 
+        ViewGroup.LayoutParams layoutParams = mAudioItemContainer.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AUDIO_CONTAINER_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_AUDIO_CONTAINER_HEIGHT * Design.HEIGHT_RATIO);
+
         mAudioItemContainer.setOnClickListener(v -> {
             if (getBaseItemActivity().isSelectItemMode()) {
                 onContainerClick();
@@ -138,9 +154,14 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         stopImageView.setColorFilter(Design.getMainStyle());
 
         mCounter = view.findViewById(R.id.base_item_activity_peer_audio_item_counter);
+        mCounter.setTextColor(Design.FONT_COLOR_DEFAULT);
         Design.updateTextFont(mCounter, Design.FONT_MEDIUM26);
 
         mAudioTrackView = view.findViewById(R.id.base_item_activity_peer_audio_item_track_view);
+
+        layoutParams = mAudioTrackView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AUDIO_TRACK_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_AUDIO_TRACK_HEIGHT * Design.HEIGHT_RATIO);
 
         mAudioTrackView.setOnTouchListener((v, motionEvent) -> {
 
@@ -207,6 +228,33 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
             return false;
         });
 
+        mSpeedView = view.findViewById(R.id.base_item_activity_peer_audio_item_speed_view);
+        mSpeedView.setVisibility(View.GONE);
+        mSpeedView.setOnClickListener(v -> onSpeedViewClick());
+
+        float radius = DESIGN_AUDIO_SPEED_HEIGHT * Design.HEIGHT_RATIO * 0.5f * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+        ShapeDrawable speedViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        speedViewBackground.getPaint().setColor(Color.WHITE);
+        mSpeedView.setBackground(speedViewBackground);
+
+        layoutParams = mSpeedView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AUDIO_SPEED_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_AUDIO_SPEED_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpeedView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_AUDIO_SPEED_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_AUDIO_SPEED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+
+        mSpeedTextView = view.findViewById(R.id.base_item_activity_peer_audio_item_speed_text_view);
+        mSpeedTextView.setTextColor(Color.BLACK);
+        Design.updateTextFont(mSpeedTextView, Design.FONT_MEDIUM26);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpeedTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (4 * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (4 * Design.WIDTH_RATIO);
+
         mReplyTextView = view.findViewById(R.id.base_item_activity_peer_audio_item_reply_text);
         mReplyTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
         mReplyTextView.setTypeface(getMessageFont().typeface);
@@ -233,7 +281,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         mReplyView.setBackground(mReplyGradientDrawable);
 
         mReplyImageView = view.findViewById(R.id.base_item_activity_peer_audio_item_reply_image_view);
-        ViewGroup.LayoutParams layoutParams = mReplyImageView.getLayoutParams();
+        layoutParams = mReplyImageView.getLayoutParams();
         layoutParams.width = REPLY_IMAGE_ITEM_MAX_WIDTH;
         layoutParams.height = REPLY_IMAGE_ITEM_MAX_HEIGHT;
 
@@ -257,6 +305,10 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         mReplyToImageContentGradientDrawable.setShape(GradientDrawable.RECTANGLE);
         mReplyToImageContentView.setBackground(mReplyToImageContentGradientDrawable);
 
+        View containerEphemeralView = view.findViewById(R.id.base_item_activity_peer_audio_item_ephemeral_content_view);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) containerEphemeralView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_AUDIO_SPEED_MARGIN * Design.WIDTH_RATIO);
+
         mEphemeralView = view.findViewById(R.id.base_item_activity_peer_audio_item_ephemeral_view);
         mEphemeralView.setColor(Design.BLACK_COLOR);
 
@@ -265,7 +317,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
 
         layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -309,6 +361,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         }
         mDuration = Utils.formatInterval(duration, format);
         mCounter.setText(mDuration);
+        updateSpeed();
 
         mReplyGradientDrawable.setCornerRadii(cornerRadii);
         mReplyToImageContentGradientDrawable.setCornerRadii(cornerRadii);
@@ -368,11 +421,14 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
             }
         }
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpeedView.getLayoutParams();
         if (item.isEphemeralItem()) {
             mEphemeralView.setVisibility(View.VISIBLE);
+            marginLayoutParams.rightMargin = (int) (DESIGN_AUDIO_SPEED_MARGIN * Design.WIDTH_RATIO * 2) + (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
             startEphemeralAnimation();
         } else {
             mEphemeralView.setVisibility(View.GONE);
+            marginLayoutParams.rightMargin = (int) (DESIGN_AUDIO_SPEED_MARGIN * Design.WIDTH_RATIO);
         }
     }
 
@@ -382,6 +438,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         mCounter.setText(mDuration);
         mStopButton.setVisibility(View.INVISIBLE);
         mPlayButton.setVisibility(View.VISIBLE);
+        mSpeedView.setVisibility(View.GONE);
 
         if (mExoPlayer != null) {
             if (mCounterDown != null) {
@@ -416,6 +473,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
 
         mAudioTrackView.initTrack(null, Design.PEER_AUDIO_TRACK_COLOR, Design.getMainStyle());
         mReplyImageView.setImageBitmap(null, null);
+        mSpeedView.setVisibility(View.GONE);
 
         if (mTimer != null) {
             mTimer.cancel();
@@ -446,16 +504,20 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
             mAudioItemObserver.onStartPlaying(this);
         }
 
+        updateSpeed();
+
         if (mExoPlayer != null && mExoPlayer.getPlaybackState() == Player.STATE_READY) {
+            mExoPlayer.setPlaybackSpeed(getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed());
             mExoPlayer.play();
             startCountdown();
             mPlayButton.setVisibility(View.INVISIBLE);
             mStopButton.setVisibility(View.VISIBLE);
+            mSpeedView.setVisibility(View.VISIBLE);
             return;
         }
 
         mExoPlayer = new ExoPlayer.Builder(getBaseItemActivity()).build();
-
+        mExoPlayer.setPlaybackSpeed(getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed());
         mExoPlayer.setMediaItem(MediaItem.fromUri(getPath(getPeerAudioItem().getAudioDescriptor())));
         mExoPlayer.addListener(new Player.Listener() {
             /**
@@ -480,6 +542,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
 
                     mPlayButton.setVisibility(View.INVISIBLE);
                     mStopButton.setVisibility(View.VISIBLE);
+                    mSpeedView.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -531,8 +594,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
             mCounterDown.cancel();
         }
 
-        final int tickNumber = getTickNumber(mExoPlayer.getDuration());
-        mCounterDown = new CountDownTimer(counterStartValue, mExoPlayer.getDuration() / tickNumber) {
+        mCounterDown = new CountDownTimer((long) (counterStartValue / getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed()), 100) {
             private final Handler handler = new Handler(Looper.getMainLooper());
 
             @SuppressLint("DefaultLocale")
@@ -541,20 +603,24 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
                 if (mExoPlayer != null) {
                     if (!mIsAudioTrackTouch) {
                         float progressTrack = (float) mExoPlayer.getCurrentPosition() / (float) mExoPlayer.getDuration();
-                        float audioContainerWidth = Design.DISPLAY_WIDTH * DESIGN_AUDIO_ITEM_CONTAINER_WIDTH_PERCENT;
-                        float audioTrackWidth = audioContainerWidth * DESIGN_AUDIO_TRACK_WIDTH_PERCENT;
+                        float audioTrackWidth = DESIGN_AUDIO_TRACK_WIDTH * Design.WIDTH_RATIO;
                         float progressWidth = (int) (audioTrackWidth * progressTrack);
 
                         handler.post(() -> setProgressTrack((int) progressWidth));
                     }
 
-                    int duration = (int) ((millisUntilFinished * (tickNumber - 1) / tickNumber) / 1000);
+                    int remaining = (int) (mExoPlayer.getDuration() - mExoPlayer.getCurrentPosition()) / 1000;
                     String format = "mm:ss";
                     int hour = 60 * 60;
-                    if (duration > hour) {
+                    if (remaining > hour) {
                         format = "hh:mm:ss";
                     }
-                    mCounter.setText(Utils.formatInterval(duration, format));
+                    mCounter.setText(Utils.formatInterval(remaining, format));
+
+                    if (remaining <= 0) {
+                        onFinish();
+                        cancel();
+                    }
                 }
             }
 
@@ -564,9 +630,9 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
                 mCounter.setText(mDuration);
                 mStopButton.setVisibility(View.INVISIBLE);
                 mPlayButton.setVisibility(View.VISIBLE);
+                mSpeedView.setVisibility(View.GONE);
 
-                float audioContainerWidth = Design.DISPLAY_WIDTH * DESIGN_AUDIO_ITEM_CONTAINER_WIDTH_PERCENT;
-                float audioTrackWidth = audioContainerWidth * DESIGN_AUDIO_TRACK_WIDTH_PERCENT;
+                float audioTrackWidth = DESIGN_AUDIO_TRACK_WIDTH * Design.WIDTH_RATIO;
 
                 handler.post(() -> setProgressTrack((int) audioTrackWidth));
                 handler.postDelayed(() -> setProgressTrack(0), 500);
@@ -595,18 +661,6 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         return null;
     }
 
-    private int getTickNumber(long duration) {
-
-        // 15 s -> 64 ticks
-        int tickNumber = Math.round(((float) (duration / 1000) * 64) / 15);
-        if (tickNumber != 0) {
-
-            return tickNumber;
-        }
-
-        return 3;
-    }
-
     private long getPlayerPosition() {
         PeerAudioItem item = getPeerAudioItem();
         if (mPlayerPositionPercent >= 0 && (mExoPlayer != null || item != null)) {
@@ -619,11 +673,30 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         return mPlayerPosition;
     }
 
+    private void onSpeedViewClick() {
+
+        getBaseItemActivity().getTwinmeApplication().updateAudioItemPlaybackSpeed();
+        if (mExoPlayer != null) {
+            mExoPlayer.setPlaybackSpeed(getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed());
+        }
+        updateSpeed();
+        startCountdown();
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void updateSpeed() {
+
+        if (getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed() % 1 != 0) {
+            mSpeedTextView.setText(String.format("%.1fx", getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed()));
+        } else {
+            mSpeedTextView.setText(String.format("%.0fx", getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed()));
+        }
+    }
+
     private int getAudioTrackNbLines() {
 
-        float audioContainerWidth = Design.DISPLAY_WIDTH * DESIGN_AUDIO_ITEM_CONTAINER_WIDTH_PERCENT;
-        float audioTrackWidth = audioContainerWidth * DESIGN_AUDIO_TRACK_WIDTH_PERCENT;
-        return (int) (audioTrackWidth / 4);
+        int lineSpace = (int) (AudioTrackView.AUDIO_TRACK_LINE_SPACE * itemView.getContext().getResources().getDisplayMetrics().density);
+        return (int) (DESIGN_AUDIO_TRACK_WIDTH * Design.WIDTH_RATIO) / lineSpace;
     }
 
     private void startEphemeralAnimation() {

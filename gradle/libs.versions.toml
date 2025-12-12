@@ -1,27 +1,20 @@
 [versions]
-min-sdk-version = "21"
-target-sdk-version = "35"
-compile-sdk-version = "android-35"
-androidJunit5 = "1.13.4.0"
-androidTestCore = "1.8.0"
+# Dependencies
+androidxCore = "1.16.0" # 1.17.0+ requires SDK 36
 annotation = "1.9.1"
-billing = "6.1.0"
-collection = "1.5.0"
-desugar_jdk_libs = "2.1.5"
-testCore = "1.7.0"
-core = "1.16.0"
-coreSplashscreen = "1.1.0-rc01"
-exifinterface = "1.4.1"
-firebaseMessaging = "23.2.1"
-gradle = "8.13.0"
-installreferrer = "2.2"
-junit = "1.3.0"
-junitJupiter = "5.13.4"
-leakcanaryAndroid = "2.14"
-media = "1.7.1"
-constraintlayout = "2.2.1"
-material = "1.13.0"
 appcompat = "1.7.1"
+billing = "6.1.0" # careful testing needed to update this
+browser = "1.8.0" # 1.9.0+ requires SDK 36
+collection = "1.5.0"
+constraintlayout = "2.2.1"
+coreSplashscreen = "1.2.0"
+exifinterface = "1.4.2"
+firebaseMessaging = "23.2.1" # careful testing needed to update this
+glide = "5.0.5"
+installreferrer = "2.2"
+lottie = "6.7.1"
+media = "1.7.1"
+material = "1.13.0"
 media3 = "1.8.0"
 percentlayout = "1.0.0"
 playServicesMaps = "19.2.0"
@@ -29,14 +22,29 @@ playServicesLocation = "21.3.0"
 recyclerview = "1.4.0"
 sharetarget = "1.2.0"
 zip4j = "2.11.5"
-lottie = "6.6.9"
-browser = "1.8.0"
-glide = "5.0.5"
+
+# Tests
+androidTestCore = "1.9.0"
+junit = "1.3.0"
+junitJupiter = "6.0.1"
+testCore = "1.7.0"
+
+# SDK
+compile-sdk-version = "android-35"
+min-sdk-version = "21"
+target-sdk-version = "35"
+
+# Plugins / Build
+androidGradlePlugin = "8.13.2"
+androidJunit5 = "1.14.0.0"
+androidKotlinPlugin = "2.2.21"
+desugarJdkLibs = "2.1.5"
+leakcanaryAndroid = "2.14"
 
 [libraries]
 android-test-core = { module = "de.mannodermaus.junit5:android-test-core", version.ref = "androidTestCore" }
 android-test-runner = { module = "de.mannodermaus.junit5:android-test-runner", version.ref = "androidTestCore" }
-androidx-core = { module = "androidx.core:core", version.ref = "core" }
+androidx-core = { module = "androidx.core:core", version.ref = "androidxCore" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "testCore" }
@@ -58,7 +66,7 @@ androidx-media3-transformer = { module = "androidx.media3:media3-transformer", v
 androidx-percentlayout = { module = "androidx.percentlayout:percentlayout", version.ref = "percentlayout" }
 androidx-sharetarget = { module = "androidx.sharetarget:sharetarget", version.ref = "sharetarget" }
 billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
-desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-recyclerview = { module = "com.github.bumptech.glide:recyclerview-integration", version.ref = "glide" }
 firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }
@@ -66,7 +74,7 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junitJupiter" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 installreferrer = { module = "com.android.installreferrer:installreferrer", version.ref = "installreferrer" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -74,9 +82,8 @@ androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
-
 zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j" }
 
 [plugins]
 android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.2.20" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "androidKotlinPlugin" }

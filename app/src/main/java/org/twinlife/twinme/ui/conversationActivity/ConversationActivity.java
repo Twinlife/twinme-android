@@ -194,10 +194,7 @@ import org.twinlife.twinme.utils.coachmark.CoachMark;
 import org.twinlife.twinme.utils.coachmark.CoachMarkView;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -1995,27 +1992,14 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             setSubTitle(String.format(getString(R.string.conversation_activity_group_member_information), count));
         }
 
-        boolean canSend = false;
-        if (!conversation.hasPermission(org.twinlife.twinlife.ConversationService.Permission.SEND_AUDIO)) {
-            mRecordAudioClickableView.setVisibility(View.GONE);
-        } else {
-            canSend = true;
-        }
-
         if (!conversation.hasPermission(org.twinlife.twinlife.ConversationService.Permission.SEND_MESSAGE)) {
-            mEditText.setEnabled(false);
             mSendAllowed = false;
-            mEditText.setHint(getString(R.string.conversation_activity_group_not_allowed_post_message));
         } else {
-            canSend = true;
             mSendAllowed = true;
         }
-        if (!canSend) {
-            mSendClickableView.setVisibility(View.GONE);
-        } else {
-            // Now, make the send button effective.
-            mSendButtonListener.reset();
-        }
+
+        mSendButtonListener.reset();
+        updateGroupPermissions();
 
         if (mContactAvatar != null) {
             mAvatarView.setImage(this, null,
@@ -3008,6 +2992,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         startActivityForResult(Intent.createChooser(intent, getString(R.string.conversation_activity_menu_item_view_share_title)), RESULT_DID_SHARE_ACTION);
+        onCancelSelectItemModeClick();
     }
 
     @Override
@@ -3027,6 +3012,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             public void onConfirmClick() {
                 deleteItems();
                 deleteConfirmView.animationCloseConfirmView();
+                onCancelSelectItemModeClick();
             }
 
             @Override
@@ -3121,7 +3107,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mItemListView.setLayoutManager(mItemListViewLayoutManager);
         mItemListAdapter = new ItemListAdapter(this, this, mItems);
         mItemListAdapter.setHasStableIds(true);
-        mItemListView.setHasFixedSize(true);
+        mItemListView.setHasFixedSize(false);
         mItemListView.setAdapter(mItemListAdapter);
         mItemListView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         mItemListView.setItemAnimator(null);
@@ -3466,6 +3452,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 layoutParams.height = editTextSize + getBarBottomInset();
                 mVoiceRecorderMessageView.updateViews(editTextSize);
 
+                layoutParams = mItemSelectedActionView.getLayoutParams();
+                layoutParams.height = (int) (DESIGN_SELECTED_VIEW_HEIGHT * Design.HEIGHT_RATIO) + getBarBottomInset();
+
                 mInitToolbar = true;
 
                 if (mSharedText != null) {
@@ -3484,20 +3473,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mEditText.setLayoutParams(marginLayoutParams);
 
         mEditText.setKeyBoardInputCallbackListener((inputContentInfo, flags, opts) -> {
-            if (inputContentInfo.getContentUri().getLastPathSegment() != null) {
+            final Uri uri = inputContentInfo.getContentUri();
+            if (uri.getLastPathSegment() != null) {
                 getTwinmeContext().execute(() -> {
-                    File contentFile = new File(getFilesDir(), inputContentInfo.getContentUri().getLastPathSegment());
-                    try (InputStream inputStream = getContentResolver().openInputStream(inputContentInfo.getContentUri())) {
-                        if (inputStream != null) {
-                            try (OutputStream outputStream = new FileOutputStream(contentFile)) {
-                                byte[] buffer = new byte[1024];
-                                int length;
-                                while ((length = inputStream.read(buffer)) > 0) {
-                                    outputStream.write(buffer, 0, length);
-                                }
-                            }
-                        }
-
+                    final File contentFile = new File(getFilesDir(), uri.getLastPathSegment());
+                    final BaseService.ErrorCode errorCode = Utils.copyUriToFile(getContentResolver(), uri, contentFile);
+                    if (errorCode == BaseService.ErrorCode.SUCCESS) {
                         Intent intent = new Intent(this, PreviewFileActivity.class);
 
                         ArrayList<String> urisToString = new ArrayList<>();
@@ -3508,14 +3489,13 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         if (mSubject != null) {
                             intent.putExtra(Intents.INTENT_CONTACT_ID, mSubject.getId().toString());
                         }
-
                         if (mEditText.getText() != null) {
                             intent.putExtra(Intents.INTENT_TEXT_MESSAGE, mEditText.getText().toString());
                         }
 
                         startActivityForResult(intent, REQUEST_PREVIEW_MEDIA);
-                    } catch (IOException exception) {
-                        Log.e(LOG_TAG, "Error occurred while handling keyboard image", exception);
+                    } else {
+                        runOnUiThread(() -> onExecutionError(errorCode));
                     }
                 });
             }
@@ -3873,11 +3853,14 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         hapticFeedback();
 
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
+
         boolean allowCopyText = getTwinmeApplication().messageCopyAllowed();
-        boolean allowCopyFile = getTwinmeApplication().fileCopyAllowed();
         if (mIsMenuSendOptionOpen) {
             allowCopyText = mAllowCopy;
-            allowCopyFile = mAllowCopy;
         }
         long timeout = 0;
 
@@ -5048,6 +5031,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         hapticFeedback();
+
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
+
         Permission[] permissions = new Permission[]{Permission.RECORD_AUDIO};
         if (checkPermissions(permissions)) {
             setSelectedMode(Mode.MICRO);
@@ -5121,7 +5110,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             }
         };
 
-        mMenuActionConversationView.initViews(this, observer);
+        mMenuActionConversationView.initViews(this, observer, mSendAllowed);
         viewGroup.addView(mMenuActionConversationView);
 
         int navColor = ColorUtils.compositeColors(Design.CONVERSATION_OVERLAY_COLOR, Design.WHITE_COLOR);
@@ -5150,6 +5139,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         hapticFeedback();
 
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
+
         Permission[] permissions = new Permission[]{Permission.CAMERA};
         if (checkPermissions(permissions)) {
             takePhoto();
@@ -5164,6 +5158,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         hapticFeedback();
+
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
 
         Permission[] permissions = new Permission[]{Permission.CAMERA};
         if (checkPermissions(permissions)) {
@@ -5258,6 +5257,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         hapticFeedback();
 
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
+
         if (mMediaPicker != null) {
             launch(mMediaPicker, new PickVisualMediaRequest.Builder()
                     .setMediaType(ActivityResultContracts.PickVisualMedia.ImageAndVideo.INSTANCE)
@@ -5306,6 +5310,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         hapticFeedback();
+
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
 
         if (isRecording()) {
             return;
@@ -6056,6 +6065,28 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             mFooterView.setRenderEffect(null);
             mTopBlurContainerView.setRenderEffect(null);
             mEmptyConversationView.setRenderEffect(null);
+        }
+    }
+
+    private void updateGroupPermissions() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateGroupPermissions");
+        }
+
+        if (!mSendAllowed) {
+            mRecordAudioClickableView.setAlpha(0.5f);
+            mCameraClickableView.setAlpha(0.5f);
+            mSendClickableView.setAlpha(0.5f);
+            mEditText.setPadding((int) (DESIGN_EDIT_TEXT_WIDTH_INSET * Design.WIDTH_RATIO), (int) (DESIGN_EDIT_TEXT_HEIGHT_INSET * Design.HEIGHT_RATIO), (int) (DESIGN_EDITBAR_HEIGHT * Design.HEIGHT_RATIO * 2), (int) (DESIGN_EDIT_TEXT_HEIGHT_INSET * Design.HEIGHT_RATIO));
+            mEditText.setEnabled(false);
+            mEditText.setHint(getString(R.string.conversation_activity_group_not_allowed_post_message));
+        } else {
+            mRecordAudioClickableView.setAlpha(1.0f);
+            mCameraClickableView.setAlpha(1.0f);
+            mSendClickableView.setAlpha(1.0f);
+            mEditText.setPadding((int) (DESIGN_EDIT_TEXT_WIDTH_INSET * Design.WIDTH_RATIO), (int) (DESIGN_EDIT_TEXT_HEIGHT_INSET * Design.HEIGHT_RATIO), (int) (DESIGN_EDIT_TEXT_WIDTH_INSET * Design.WIDTH_RATIO), (int) (DESIGN_EDIT_TEXT_HEIGHT_INSET * Design.HEIGHT_RATIO));
+            mEditText.setEnabled(true);
+            mEditText.setHint(getString(R.string.conversation_activity_message));
         }
     }
 

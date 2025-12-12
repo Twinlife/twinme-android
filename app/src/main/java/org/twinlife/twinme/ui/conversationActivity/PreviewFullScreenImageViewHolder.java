@@ -4,6 +4,7 @@
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.conversationActivity;
@@ -62,6 +63,7 @@ public class PreviewFullScreenImageViewHolder extends RecyclerView.ViewHolder {
     public void onBind(FileInfo fileInfo, PreviewFileActivity previewFileActivity) {
         Glide.with(previewFileActivity)
                 .load(fileInfo)
+                .centerInside()
                 .into(mZoomableImageView);
     }
 

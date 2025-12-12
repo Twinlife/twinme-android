@@ -33,11 +33,13 @@ public class UIActionConversation {
     private String mTitle;
     private int mIcon;
     private int mIconColor;
+    private final boolean mEnable;
     private final ConversationActionType mConversationActionType;
 
-    public UIActionConversation(Context context, ConversationActionType conversationActionType) {
+    public UIActionConversation(Context context, ConversationActionType conversationActionType, boolean enable) {
 
         mConversationActionType = conversationActionType;
+        mEnable = enable;
         initAction(context);
     }
 
@@ -54,6 +56,11 @@ public class UIActionConversation {
     public int getIconColor() {
 
         return mIconColor;
+    }
+
+    public boolean isEnable() {
+
+        return mEnable;
     }
 
     public ConversationActionType getConversationActionType() {

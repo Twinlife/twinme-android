@@ -646,7 +646,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         mItemSelectedActionView.setObserver(this);
 
         ViewGroup.LayoutParams layoutParams = mItemSelectedActionView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_SELECTED_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_SELECTED_VIEW_HEIGHT * Design.HEIGHT_RATIO) + getBarBottomInset();
 
         mUIInitialized = true;
     }
@@ -746,6 +746,9 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
             resetSelectedItems();
         } else {
             mIsSelectMode = true;
+            ViewGroup.LayoutParams layoutParams = mItemSelectedActionView.getLayoutParams();
+            layoutParams.height = (int) (DESIGN_SELECTED_VIEW_HEIGHT * Design.HEIGHT_RATIO) + getBarBottomInset();
+
             mItemSelectedActionView.setVisibility(View.VISIBLE);
 
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mFilesRecyclerView.getLayoutParams();

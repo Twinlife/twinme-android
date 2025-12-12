@@ -12,7 +12,6 @@
 package org.twinlife.twinme.notificationCenter;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -34,6 +33,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.Person;
@@ -43,6 +43,7 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.AssertPoint;
 import org.twinlife.twinlife.BaseService.AttributeNameValue;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.Conversation;
@@ -76,6 +77,7 @@ import org.twinlife.twinme.calls.CallService;
 import org.twinlife.twinme.services.PeerService;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.ApplicationAssertPoint;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.ShowContactActivity;
@@ -455,7 +457,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                             // Even if we have no reply we post the notification again to let Android know it can hide the notification.
                             NotificationCompat.Builder builder = new NotificationCompat.Builder(mApplication, statusBarNotification.getNotification())
                                     .setSilent(true);
-                            mNotificationManager.notify(systemNotification.id, builder.build());
+                            postNotification(systemNotification.id, builder.build());
                         } else {
                             NotificationCompat.MessagingStyle.Message message = new NotificationCompat.MessagingStyle.Message(reply, System.currentTimeMillis(), (Person) null);
                             updateMessageNotification(systemNotification.id, message, null, true);
@@ -588,7 +590,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                         }
                     }
 
-                    mNotificationManager.notify(statusBarNotification.getId(), builder.build());
+                    postNotification(statusBarNotification.getId(), builder.build());
                     updateMessageSummary();
                     return true;
                 }
@@ -629,7 +631,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                     .setStyle(new NotificationCompat.InboxStyle()
                             .setSummaryText(summaryLabel));
 
-            mNotificationManager.notify(MESSAGE_SUMMARY_NOTIFICATION_ID, summaryBuilder.build());
+            postNotification(MESSAGE_SUMMARY_NOTIFICATION_ID, summaryBuilder.build());
         }
     }
 
@@ -1027,7 +1029,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
         }
 
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+        postNotification(notificationId, notificationBuilder.build());
         updateMessageSummary();
     }
 
@@ -1081,7 +1083,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             long[] pattern = {0L, 500L};
             notificationBuilder.setVibrate(pattern);
         }
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+        postNotification(notificationId, notificationBuilder.build());
 
         mTwinmeContext.createNotification(NotificationType.NEW_CONTACT, notificationId, contact, null, null);
     }
@@ -1127,7 +1129,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             long[] pattern = {0L, 500L};
             notificationBuilder.setVibrate(pattern);
         }
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+        postNotification(notificationId, notificationBuilder.build());
 
         mTwinmeContext.createNotification(NotificationType.DELETED_CONTACT, notificationId, contact, null, null);
 
@@ -1193,7 +1195,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                 long[] pattern = {0L, 500L};
                 notificationBuilder.setVibrate(pattern);
             }
-            mNotificationManager.notify(notificationId, notificationBuilder.build());
+            postNotification(notificationId, notificationBuilder.build());
         } else {
             notificationId = Notification.NO_NOTIFICATION_ID;
         }
@@ -1308,7 +1310,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                                     .setNumber(messagingStyle.getMessages().size())
                                     .build();
 
-                            mNotificationManager.notify(activeNotification.getId(), notif);
+                            postNotification(activeNotification.getId(), notif);
                             updateMessageSummary();
                             return;
                         }
@@ -1727,7 +1729,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         // Start foreground service with the notification.  The notification is removed when the service is stopped.
         android.app.Notification notification = notificationBuilder.build();
-        mNotificationManager.notify(ACCOUNT_MIGRATION_NOTIFICATION_ID, notification);
+        postNotification(ACCOUNT_MIGRATION_NOTIFICATION_ID, notification);
         service.startForeground(ACCOUNT_MIGRATION_NOTIFICATION_ID, notification);
 
         return ACCOUNT_MIGRATION_NOTIFICATION_ID;
@@ -1771,7 +1773,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         // Start foreground service with the notification.  The notification is removed when the service is stopped.
         android.app.Notification notification = notificationBuilder.build();
-        mNotificationManager.notify(EXPORT_NOTIFICATION_ID, notification);
+        postNotification(EXPORT_NOTIFICATION_ID, notification);
         service.startForeground(EXPORT_NOTIFICATION_ID, notification);
 
         return EXPORT_NOTIFICATION_ID;
@@ -1823,6 +1825,24 @@ public class NotificationCenterImpl implements NotificationCenter {
     //
     // Private Methods
     //
+
+    private void postNotification(int notificationId, @NonNull android.app.Notification notification) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "postNotification " + notificationId + " notification=" + notification);
+        }
+
+        try {
+            mNotificationManager.notify(notificationId, notification);
+
+        } catch (SecurityException ignored) {
+            // A SecurityException is sometimes raised on some devices due to obscure and rare
+            // reasons (Restricted user profile, Internal system bugs or race conditions).
+            mTwinmeContext.assertion(ApplicationAssertPoint.POST_NOTIFICATION_SECURITY, AssertPoint.createMarker(notificationId));
+
+        } catch (Exception ex) {
+            mTwinmeContext.exception(ApplicationAssertPoint.POST_NOTIFICATION_ERROR, ex, AssertPoint.createMarker(notificationId));
+        }
+    }
 
     @NonNull
     private Bitmap getAvatar(@NonNull Originator contact) {
@@ -1877,6 +1897,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         return result;
     }
 
+    @Override
     public void missedCallNotification(Originator originator, boolean video) {
         if (DEBUG) {
             Log.d(LOG_TAG, "missedCallNotification: originator=" + originator + " video=" + video);
@@ -1932,7 +1953,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
 
         int notificationId = newNotificationId();
-        mNotificationManager.notify(notificationId, notificationBuilder.build());
+        postNotification(notificationId, notificationBuilder.build());
 
         NotificationType notificationType = video ? NotificationType.MISSED_VIDEO_CALL : NotificationType.MISSED_AUDIO_CALL;
         mTwinmeContext.createNotification(notificationType, notificationId, originator, null, null);
@@ -2031,7 +2052,7 @@ public class NotificationCenterImpl implements NotificationCenter {
      * @param channelIndex the channel index.
      * @return the new notification channel or null.
      */
-    @TargetApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.O)
     @Nullable
     private NotificationChannel needFixSoundURI(@NonNull String soundPrefix, @NonNull String channelPrefix, int channelIndex) {
         if (DEBUG) {

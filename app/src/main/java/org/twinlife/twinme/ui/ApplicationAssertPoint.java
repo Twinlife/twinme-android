@@ -15,7 +15,9 @@ public enum ApplicationAssertPoint implements AssertPoint {
     INVALID_POSITION,
     UNEXPECTED_EXCEPTION,
     AUDIO_RECORD_NULL,
-    AUDIO_RECORD_ERROR;
+    AUDIO_RECORD_ERROR,
+    POST_NOTIFICATION_ERROR,
+    POST_NOTIFICATION_SECURITY;
 
     public int getIdentifier() {
 

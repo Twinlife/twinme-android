@@ -4,6 +4,7 @@
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.utils;
@@ -392,6 +393,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
             if (uiWhatsNew.getImage() != null) {
                 Glide.with(getContext())
                         .load(uiWhatsNew.getImage())
+                        .centerInside()
                         .into(mImageView);
             } else {
                 Bitmap placeholderBitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.splash_screen_logo);
@@ -493,6 +495,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
             if (uiWhatsNew.getImage() != null) {
                 Glide.with(context)
                         .load(uiWhatsNew.getImage())
+                        .centerInside()
                         .into(mImageView);
             } else {
                 Bitmap placeholderBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.splash_screen_logo);
