@@ -64,7 +64,7 @@ public class MenuActionConversationView extends PercentRelativeLayout {
         }
     }
 
-    public void initViews(ConversationActivity activity, Observer observer) {
+    public void initViews(ConversationActivity activity, Observer observer, boolean sendAllowed) {
         if (DEBUG) {
             Log.d(LOG_TAG, "initViews");
         }
@@ -84,14 +84,14 @@ public class MenuActionConversationView extends PercentRelativeLayout {
         setOnClickListener(v -> mObserver.onCloseMenu());
 
         List<UIActionConversation> actions = new ArrayList<>();
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.RESET));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MANAGE_CONVERSATION));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MEDIAS_AND_FILES));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.LOCATION));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.FILE));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.GALLERY));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.VIDEO));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.PHOTO));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.RESET, true));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MANAGE_CONVERSATION, true));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MEDIAS_AND_FILES, true));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.LOCATION, sendAllowed));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.FILE, sendAllowed));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.GALLERY, sendAllowed));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.VIDEO, sendAllowed));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.PHOTO, sendAllowed));
 
         MenuActionConversationAdapter.OnActionClickListener onActionClickListener = actionConversation -> mObserver.onSelectAction(actionConversation);
         MenuActionConversationAdapter menuActionConversationAdapter = new MenuActionConversationAdapter(activity, onActionClickListener, actions);

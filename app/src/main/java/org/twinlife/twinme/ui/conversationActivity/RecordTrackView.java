@@ -18,6 +18,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import org.twinlife.twinme.utils.AudioTrackView;
+
 public class RecordTrackView extends View {
 
     private static final float DESIGN_LINE_SPACE = 6f;
@@ -28,7 +30,7 @@ public class RecordTrackView extends View {
     private Paint mPaint;
     private Path mPath = new Path();
 
-    private int mStartLine = 1;
+    private int mStartLine = 0;
 
     public RecordTrackView(Context context) {
         super(context);
@@ -55,14 +57,23 @@ public class RecordTrackView extends View {
 
     public void resetTrack() {
 
-        mStartLine = 1;
+        int lineWidth = (int) (AudioTrackView.AUDIO_TRACK_LINE_WIDTH * getContext().getResources().getDisplayMetrics().density);
+        mStartLine = (int) (lineWidth * 0.5f);
         mPath = new Path();
         invalidate();
     }
 
     public void drawLine(int amplitude) {
 
-        float scaleFactor = (float) (mHeight / MAX_AMPLITUDE);
+        int lineSpace = (int) (AudioTrackView.AUDIO_TRACK_LINE_SPACE * getContext().getResources().getDisplayMetrics().density);
+        int lineWidth = (int) (AudioTrackView.AUDIO_TRACK_LINE_WIDTH * getContext().getResources().getDisplayMetrics().density);
+
+        float scaleFactor = (float) ((mHeight - lineWidth) / MAX_AMPLITUDE);
+
+        if (mStartLine == 0) {
+            mStartLine = (int) (lineWidth * 0.5f);
+        }
+
         int lineHeight = (int) (amplitude * scaleFactor);
         if (lineHeight == 0) {
             lineHeight = 1;
@@ -70,7 +81,7 @@ public class RecordTrackView extends View {
         int startY = (mHeight - lineHeight) / 2;
         mPath.moveTo(mStartLine, startY);
         mPath.lineTo(mStartLine, startY + lineHeight);
-        mStartLine += DESIGN_LINE_SPACE;
+        mStartLine += lineSpace;
         invalidate();
     }
 
@@ -92,11 +103,15 @@ public class RecordTrackView extends View {
     private void init() {
 
         setWillNotDraw(false);
+
+        int lineWidth = (int) (AudioTrackView.AUDIO_TRACK_LINE_WIDTH * getContext().getResources().getDisplayMetrics().density);
+
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(DESIGN_LINE_WIDTH);
+        mPaint.setStrokeWidth(lineWidth);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setColor(Color.WHITE);
     }
 }

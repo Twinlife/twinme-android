@@ -134,6 +134,8 @@ public class Settings {
     // Telecom
     public static final BooleanConfig useTelecom = new BooleanConfig("settings_advanced_activity_use_telecom", false, "7EC2A54E-8024-4758-9AA9-509AC3375D73");
 
+    // Audio Item
+    public static final FloatConfig audioItemPlaybackSpeed = new FloatConfig("conversation_activity_play_back_speed", 1.0f, "D3240A58-3BC0-494C-9D15-CDDCC7543AEA");
 
     private static Configuration sConfiguration;
 
@@ -294,6 +296,34 @@ public class Settings {
         }
     }
 
+    public static class FloatConfig extends Config<Float> {
+
+        FloatConfig(String name, float defaultValue, String uuid) {
+            super(name, defaultValue, uuid, Float.class);
+        }
+
+        public float getFloat() {
+
+            if (mValue != null) {
+
+                return mValue;
+            }
+            if (sConfiguration == null) {
+
+                return mDefault;
+            }
+            mValue = sConfiguration.getFloat(getParameterName(), mDefault);
+            return mValue;
+        }
+
+        public FloatConfig setFloat(float value) {
+
+            mValue = value;
+            sConfiguration.setFloat(getParameterName(), mValue);
+            return this;
+        }
+    }
+
     public static class ColorConfig extends StringConfig {
 
         private Integer mValue;
@@ -407,6 +437,34 @@ public class Settings {
             mValue = value;
             if (sConfiguration != null) {
                 sConfiguration.setLong(mName, mValue);
+            }
+            return this;
+        }
+    }
+
+    public static class InternalFloatConfig extends InternalConfig<Float> {
+        InternalFloatConfig(String name, float defaultValue) {
+            super(name, defaultValue);
+        }
+
+        public float getFloat() {
+
+            if (mValue != null) {
+
+                return mValue;
+            }
+            if (sConfiguration == null) {
+
+                return mDefault;
+            }
+            mValue = sConfiguration.getFloat(mName, mDefault);
+            return mValue;
+        }
+
+        InternalFloatConfig setFloat(float value) {
+            mValue = value;
+            if (sConfiguration != null) {
+                sConfiguration.setFloat(mName, mValue);
             }
             return this;
         }

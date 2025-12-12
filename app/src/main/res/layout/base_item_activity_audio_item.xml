@@ -74,13 +74,12 @@
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_audio_item_view"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layoutDirection="ltr"
-            app:layout_aspectRatio="483.33%"
-            app:layout_marginEndPercent="6.93%"
-            app:layout_widthPercent="77.33%">
+            app:layout_marginEndPercent="6.93%">
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/base_item_activity_audio_control"
@@ -137,8 +136,6 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/base_item_activity_audio_control"
                 android:layout_toRightOf="@id/base_item_activity_audio_control"
-                app:layout_widthPercent="71.72%"
-                app:layout_heightPercent="50%"
                 app:layout_marginStartPercent="3.59%"
                 app:layout_marginTopPercent="8.33%" />
 
@@ -169,6 +166,24 @@
                     android:layout_height="0dp"
                     app:layout_aspectRatio="100%" />
             </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/base_item_activity_audio_item_speed_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/base_item_activity_audio_item_speed_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:lines="1" />
+            </RelativeLayout>
+
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView

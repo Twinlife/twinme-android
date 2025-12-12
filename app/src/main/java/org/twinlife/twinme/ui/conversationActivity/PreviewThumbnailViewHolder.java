@@ -4,6 +4,7 @@
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.conversationActivity;
@@ -89,6 +90,7 @@ public class PreviewThumbnailViewHolder extends RecyclerView.ViewHolder {
             Glide.with(context)
                     .asBitmap()
                     .load(fileInfo)
+                    .centerInside()
                     .into(mThumbnailView);
         } else {
             mThumbnailView.setBackgroundColor(Color.BLACK);

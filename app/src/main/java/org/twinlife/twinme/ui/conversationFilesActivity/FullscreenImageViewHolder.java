@@ -77,6 +77,7 @@ public class FullscreenImageViewHolder extends RecyclerView.ViewHolder {
         Glide.with(mZoomableImageView)
                 .load(imageDescriptor)
                 .thumbnail(Glide.with(mZoomableImageView).load(imageDescriptor).apply(Modes.AS_THUMBNAIL))
+                .centerInside()
                 .into(mZoomableImageView);
 
         mZoomableImageView.resetZoom();

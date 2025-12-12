@@ -328,11 +328,11 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
                 bottomPadding = 0;
                 View bottomView = findViewById(bottomLayout);
                 if (bottomView != null) {
-                    bottomView.setPadding(0, 0, 0, bars.bottom);
+                    bottomView.setPadding(0, 0, bars.right, bars.bottom);
                 }
             }
 
-            v.setPadding(0, topPadding, 0, bottomPadding);
+            v.setPadding(0, topPadding, bars.right, bottomPadding);
 
             return WindowInsetsCompat.CONSUMED;
         });
@@ -446,36 +446,47 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             Log.d(LOG_TAG, "onExecutionError: errorCode=" + errorCode);
         }
 
+        String messageError = "";
         if (errorCode == BaseService.ErrorCode.NO_STORAGE_SPACE) {
-            LayoutInflater inflater = getLayoutInflater();
-            View toastLayout = inflater.inflate(R.layout.toast_error, findViewById(R.id.toast_layout));
-
-            View roundedView = toastLayout.findViewById(R.id.toast_content);
-            float radius = 14f * Resources.getSystem().getDisplayMetrics().density;
-            float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-            ShapeDrawable popupViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-            popupViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
-            roundedView.setBackground(popupViewBackground);
-
-            ImageView imageView = toastLayout.findViewById(R.id.toast_image);
-            ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-            layoutParams.height = layoutParams.width = Design.getHeight(DESIGN_TOAST_IMAGE_SIZE);
-
-            TextView toastTitleView = toastLayout.findViewById(R.id.toast_title);
-            Design.updateTextFont(toastTitleView, Design.FONT_BOLD28);
-            toastTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-            TextView toastTextView = toastLayout.findViewById(R.id.toast_text);
-            toastTextView.setText(getString(R.string.application_error_no_storage_space));
-            Design.updateTextFont(toastTextView, Design.FONT_REGULAR32);
-            toastTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-            Toast toast = new Toast(this);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setView(toastLayout);
-            toast.setGravity(Gravity.FILL_HORIZONTAL | Gravity.TOP, 0, 0);
-            toast.show();
+            messageError = getString(R.string.application_error_no_storage_space);
+        } else if (errorCode == BaseService.ErrorCode.NO_PERMISSION) {
+            messageError = getString(R.string.application_denied_permissions);
+        } else if (errorCode == BaseService.ErrorCode.FILE_NOT_FOUND) {
+            messageError = getString(R.string.application_error_file_not_found);
         }
+
+        if (messageError.isEmpty()) {
+            return;
+        }
+
+        LayoutInflater inflater = getLayoutInflater();
+        View toastLayout = inflater.inflate(R.layout.toast_error, findViewById(R.id.toast_layout));
+
+        View roundedView = toastLayout.findViewById(R.id.toast_content);
+        float radius = 14f * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+        ShapeDrawable popupViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        popupViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
+        roundedView.setBackground(popupViewBackground);
+
+        ImageView imageView = toastLayout.findViewById(R.id.toast_image);
+        ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+        layoutParams.height = layoutParams.width = Design.getHeight(DESIGN_TOAST_IMAGE_SIZE);
+
+        TextView toastTitleView = toastLayout.findViewById(R.id.toast_title);
+        Design.updateTextFont(toastTitleView, Design.FONT_BOLD28);
+        toastTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        TextView toastTextView = toastLayout.findViewById(R.id.toast_text);
+        toastTextView.setText(messageError);
+        Design.updateTextFont(toastTextView, Design.FONT_REGULAR32);
+        toastTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        Toast toast = new Toast(this);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(toastLayout);
+        toast.setGravity(Gravity.FILL_HORIZONTAL | Gravity.TOP, 0, 0);
+        toast.show();
     }
 
     public void onSetCurrentSpace(@NonNull Space space) {

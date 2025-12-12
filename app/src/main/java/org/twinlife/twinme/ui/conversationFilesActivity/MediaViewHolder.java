@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2025 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -98,6 +98,7 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
                 .asBitmap()
                 .load(descriptor)
                 .apply(Modes.AS_THUMBNAIL)
+                .centerInside()
                 .into(mImageView);
 
         if (conversationFilesActivity.isSelectMode()) {

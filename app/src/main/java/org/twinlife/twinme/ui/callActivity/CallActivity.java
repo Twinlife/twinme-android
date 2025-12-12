@@ -32,6 +32,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -401,6 +402,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private CallMenuView mCallMenuView;
     private CallStreamingAudioView mCallStreamingAudioView;
     private CallConversationView mCallConversationView;
+    @Nullable
     private CallMapView mCallMapView;
     private CallCertifyView mCallCertifyView;
     private SelectAudioSourceView mSelectAudioSourceView;
@@ -462,6 +464,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private AudioCallService mAudioCallService;
     private CallServiceReceiver mCallReceiver;
     private AudioDevice mCurrentAudioDevice = AudioDevice.NONE;
+
+    private ContentObserver mRotationObserver;
 
     private boolean mShowCallQuality = false;
     private boolean mAskCallQuality = false;
@@ -828,8 +832,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mResumed = true;
 
         if (mAudioCallService != null && !mAudioCallService.isConnected()) {
-            showNetworkDisconnect(mVideo ? R.string.video_call_activity_cannot_call : R.string.audio_call_activity_cannot_call, this::finish);
-
+            showNetworkDisconnect(mVideo ? R.string.video_call_activity_cannot_call : R.string.audio_call_activity_cannot_call, () -> {});
         } else if (isCallReady()) {
             startCall();
         }
@@ -891,6 +894,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         if (mCallMapView != null) {
             mCallMapView.stopMap();
+        }
+
+        if (mRotationObserver != null) {
+            getContentResolver().unregisterContentObserver(mRotationObserver);
         }
 
         unregisterReceiver(mCallReceiver);
@@ -1853,7 +1860,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_ON) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             onFullScreenTapCallParticipantView(callParticipantRemoteView);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+            if (!CommonUtils.isRotationLocked(this)) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+            } else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+            }
         } else if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_OFF) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             onMinimizeTapCallParticipantView(callParticipantRemoteView);
@@ -2460,6 +2471,25 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             }
         });
 
+        mRotationObserver = new ContentObserver(new Handler()) {
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+
+                if (!CommonUtils.isRotationLocked(getApplicationContext())) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+                } else {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+                }
+            }
+        };
+
+        getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION),
+                false,
+                mRotationObserver
+        );
+
         mUIInitialized = true;
     }
 
@@ -2844,7 +2874,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mContentView.setVisibility(View.GONE);
         }
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        if (!CommonUtils.isRotationLocked(this)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        }
 
         if (isRemoteCameraControl()) {
             mCameraControlView.setVisibility(View.VISIBLE);
@@ -5252,7 +5286,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         onCallLocationClick();
 
-        mCallMapView.zoomToParticipant(participantId);
+        if (mCallMapView != null) {
+            mCallMapView.zoomToParticipant(participantId);
+        }
     }
 
     private void onCancelCallParticipantClick(AbstractCallParticipantView callParticipantView) {

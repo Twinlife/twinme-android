@@ -90,8 +90,9 @@ public class MenuActionConversationViewHolder extends RecyclerView.ViewHolder {
         mIconView.setColorFilter(uiActionConversation.getIconColor());
         mIconRoundedView.setColor(Design.WHITE_COLOR);
 
-        mContainerIconView.animate().alpha(1.0f).setDuration(ANIMATION_DURATION).setStartDelay(visibilityDelay);
-        mTitleView.animate().alpha(1.0f).setDuration(ANIMATION_DURATION).setStartDelay(visibilityDelay);
+        float alpha = uiActionConversation.isEnable() ? 1.0f : 0.5f;
+        mContainerIconView.animate().alpha(alpha).setDuration(ANIMATION_DURATION).setStartDelay(visibilityDelay);
+        mTitleView.animate().alpha(alpha).setDuration(ANIMATION_DURATION).setStartDelay(visibilityDelay);
     }
 
     public void onViewRecycled() {

@@ -23,8 +23,8 @@ android {
         applicationId 'mobi.skred.app'
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 342
-        versionName "21.6"
+        versionCode 344
+        versionName "21.7"
         manifestPlaceholders.domainName = "twin.me"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]

@@ -5,48 +5,55 @@
     android:layout_height="wrap_content">
 
     <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/conversaton_files_activity_item_selected_action_share_view"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true">
+        android:id="@+id/conversation_files_activity_item_selected_action_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/conversaton_files_activity_item_selected_action_share_image_view"
-            android:layout_centerInParent="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/share_item"
-            app:layout_aspectRatio="80.72%"
-            app:layout_heightPercent="28.12%"
-            app:tint="#FFFFFF" />
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversation_files_activity_item_selected_action_share_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true">
 
-    <TextView
-        android:id="@+id/conversaton_files_activity_item_selected_action_text_view"
-        android:layout_toRightOf="@+id/conversaton_files_activity_item_selected_action_share_view"
-        android:layout_toEndOf="@+id/conversaton_files_activity_item_selected_action_share_view"
-        android:layout_toLeftOf="@+id/conversaton_files_activity_item_selected_action_delete_view"
-        android:layout_toStartOf="@+id/conversaton_files_activity_item_selected_action_delete_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_centerInParent="true" />
+            <ImageView
+                android:id="@+id/conversation_files_activity_item_selected_action_share_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/share_item"
+                app:layout_aspectRatio="80.72%"
+                app:layout_heightPercent="28.12%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/conversaton_files_activity_item_selected_action_delete_view"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/conversation_files_activity_item_selected_action_text_view"
+            android:layout_toRightOf="@+id/conversation_files_activity_item_selected_action_share_view"
+            android:layout_toEndOf="@+id/conversation_files_activity_item_selected_action_share_view"
+            android:layout_toLeftOf="@+id/conversaton_files_activity_item_selected_action_delete_view"
+            android:layout_toStartOf="@+id/conversaton_files_activity_item_selected_action_delete_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true" />
 
-        <ImageView
-            android:id="@+id/conversaton_files_activity_item_selected_action_delete_image_view"
-            android:layout_centerInParent="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/toolbar_trash_grey"
-            app:layout_aspectRatio="77.78%"
-            app:layout_heightPercent="28.12%"
-            app:tint="#FFFFFF" />
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/conversaton_files_activity_item_selected_action_delete_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/conversaton_files_activity_item_selected_action_delete_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/toolbar_trash_grey"
+                app:layout_aspectRatio="77.78%"
+                app:layout_heightPercent="28.12%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

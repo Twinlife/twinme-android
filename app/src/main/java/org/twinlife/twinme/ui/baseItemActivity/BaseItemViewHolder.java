@@ -409,8 +409,11 @@ class BaseItemViewHolder extends RecyclerView.ViewHolder {
                     + " " + width + "x" + height);
         }
 
-        Glide.with(imageView).load(fileDescriptor)
-                .override(layoutParams.width, layoutParams.height).fitCenter().into(imageView);
+        Glide.with(imageView)
+                .load(fileDescriptor)
+                .override(layoutParams.width, layoutParams.height)
+                .centerInside()
+                .into(imageView);
     }
 
     private final BaseItemActivity mBaseItemActivity;
