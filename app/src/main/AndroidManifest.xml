@@ -423,9 +423,6 @@
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="org.twinlife.twinme.ui.profiles.OnboardingProfileActivity"
-            android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
-        <activity
             android:name="org.twinlife.twinme.ui.rooms.AddParticipantsRoomActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"

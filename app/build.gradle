@@ -23,8 +23,8 @@ android {
         applicationId "org.twinlife.device.android.twinme"
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 502
-        versionName "31.7"
+        versionCode 503
+        versionName "31.8"
         manifestPlaceholders.domainName = "twin.me"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]

@@ -17,13 +17,12 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
-public class InvitationCodeConfirmView extends AbstractConfirmView {
+public class InvitationCodeConfirmView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "InvitationCodeConfi...";
     private static final boolean DEBUG = false;
 
@@ -40,14 +39,9 @@ public class InvitationCodeConfirmView extends AbstractConfirmView {
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.invitation_code_confirm_view, null);
-            addView(view);
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.invitation_code_confirm_view, this, true);
+        initViews();
     }
 
     @Override

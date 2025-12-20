@@ -21,9 +21,9 @@ import android.view.ViewGroup;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
-public class CallAgainConfirmView  extends AbstractConfirmView {
+public class CallAgainConfirmView  extends AbstractBottomSheetView {
     private static final String LOG_TAG = "CallAgainConfirmView";
     private static final boolean DEBUG = false;
 

@@ -30,7 +30,7 @@ import org.twinlife.twinme.services.ResetConversationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 import java.util.UUID;
 
@@ -285,7 +285,7 @@ public class TypeCleanUpActivity extends AbstractTwinmeActivity implements Reset
         resetConversationConfirmView.setAvatar(avatar, avatar == null || avatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         resetConversationConfirmView.setMessage(message.toString());
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mResetConversationService.resetConversation();

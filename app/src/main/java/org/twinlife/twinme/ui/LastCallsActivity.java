@@ -56,7 +56,7 @@ import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.users.UIContact;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper.OnSwipeItemClickListener;
@@ -615,7 +615,7 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         deleteConfirmView.setMessage(message);
         deleteConfirmView.setConfirmTitle(getString(R.string.calls_fragment_reset_title));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 resetCalls();
@@ -687,7 +687,7 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
                 PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
                 premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.GROUP_CALL));
 
-                AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
                     public void onConfirmClick() {
                         premiumFeatureConfirmView.redirectStore();
@@ -739,7 +739,7 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
             callAgainConfirmView.setIcon(R.drawable.audio_call);
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
 

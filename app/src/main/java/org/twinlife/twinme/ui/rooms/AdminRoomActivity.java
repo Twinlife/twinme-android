@@ -42,7 +42,7 @@ import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
@@ -801,7 +801,7 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
         String message = getString(R.string.application_delete_message);
         deleteConfirmView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 deleteConfirmView.animationCloseConfirmView();

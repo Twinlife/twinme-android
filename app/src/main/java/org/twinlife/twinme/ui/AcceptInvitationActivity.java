@@ -61,7 +61,7 @@ import org.twinlife.twinme.services.AcceptInvitationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
 import java.util.ArrayList;
@@ -719,7 +719,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
             defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();

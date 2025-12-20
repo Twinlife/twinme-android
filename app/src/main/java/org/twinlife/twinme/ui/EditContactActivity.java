@@ -41,7 +41,7 @@ import org.twinlife.twinme.services.EditContactService;
 import org.twinlife.twinme.services.ServiceAssertPoint;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.Locale;
@@ -453,7 +453,7 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
         String message = getString(R.string.edit_contact_activity_message) + "\n\n"  + getString(R.string.edit_contact_activity_confirm_message);
         deleteConfirmView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mEditContactService.deleteContact(mContact);

@@ -30,12 +30,12 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuccessAuthentifiedRelationView extends AbstractConfirmView {
+public class SuccessAuthentifiedRelationView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "SuccessAuthentified...";
     private static final boolean DEBUG = false;
 

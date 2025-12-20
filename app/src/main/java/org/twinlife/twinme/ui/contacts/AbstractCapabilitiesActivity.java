@@ -25,7 +25,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 
 public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
@@ -181,7 +181,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 premiumFeatureConfirmView.redirectStore();
@@ -230,7 +230,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
             onboardingConfirmView.hideCancelView();
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();

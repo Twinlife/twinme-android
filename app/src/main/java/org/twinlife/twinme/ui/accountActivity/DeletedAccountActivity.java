@@ -9,9 +9,14 @@
 package org.twinlife.twinme.ui.accountActivity;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
@@ -60,6 +65,22 @@ public class DeletedAccountActivity extends Activity {
         }
 
         setContentView(R.layout.deleted_account_activity);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.WHITE_COLOR);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Design.WHITE_COLOR);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+        }
+
+        getWindow().getDecorView().setBackgroundColor(Design.WHITE_COLOR);
+
+        ImageView twinmeView = findViewById(R.id.deleted_account_activity_twinme_view);
+        twinmeView.setColorFilter(Design.BLACK_COLOR);
 
         TextView messageView = findViewById(R.id.deleted_account_activity_message_view);
         Design.updateTextFont(messageView, Design.FONT_REGULAR36);

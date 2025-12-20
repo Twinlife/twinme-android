@@ -52,7 +52,7 @@ import org.twinlife.twinme.ui.AcceptInvitationActivity;
 import org.twinlife.twinme.ui.AddContactActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.AvatarView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.EditableView;
@@ -630,7 +630,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -697,7 +697,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();

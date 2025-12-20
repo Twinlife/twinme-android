@@ -89,7 +89,7 @@ import org.twinlife.twinme.ui.newConversationActivity.NewConversationActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
 import org.twinlife.twinme.ui.settingsActivity.QualityOfServiceActivity;
 import org.twinlife.twinme.ui.users.UIContact;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 
@@ -1672,7 +1672,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             resetConversationConfirmView.setAvatar(avatar, avatar == null || avatar.equals(mTwinmeActivity.getTwinmeApplication().getDefaultGroupAvatar()));
             resetConversationConfirmView.setMessage(message.toString());
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     mChatService.resetConversation(uiConversation.getContact());

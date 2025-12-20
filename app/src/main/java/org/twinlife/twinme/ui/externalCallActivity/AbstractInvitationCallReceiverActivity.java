@@ -39,7 +39,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.contacts.ResetInvitationConfirmView;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.ClickToCallView;
 import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
@@ -455,7 +455,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         resetInvitationConfirmView.setAvatar(mAvatar, false);
         resetInvitationConfirmView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mCallReceiverService.changeCallReceiverTwincode(mCallReceiver);

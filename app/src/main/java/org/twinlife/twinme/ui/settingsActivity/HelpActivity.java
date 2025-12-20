@@ -33,7 +33,7 @@ import org.twinlife.twinme.ui.externalCallActivity.OnboardingExternalCallActivit
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
 import org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity;
 import org.twinlife.twinme.ui.welcomeActivity.WelcomeHelpActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 
 public class HelpActivity extends AbstractTwinmeActivity {
@@ -304,7 +304,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();

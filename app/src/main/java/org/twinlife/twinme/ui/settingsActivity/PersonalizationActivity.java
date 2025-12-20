@@ -24,7 +24,7 @@ import org.twinlife.twinme.skin.FontSize;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 public class PersonalizationActivity extends AbstractSettingsActivity {
     private static final String LOG_TAG = "PersonalizationActivity";
@@ -254,7 +254,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.SPACES));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 premiumFeatureConfirmView.redirectStore();

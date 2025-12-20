@@ -105,7 +105,7 @@ import org.twinlife.twinme.ui.settingsActivity.MessagesSettingsActivity;
 import org.twinlife.twinme.ui.settingsActivity.PersonalizationActivity;
 import org.twinlife.twinme.ui.settingsActivity.SettingsAdvancedActivity;
 import org.twinlife.twinme.ui.settingsActivity.SoundsSettingsActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
@@ -1600,7 +1600,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         successAuthentifiedRelationView.setMessage(message);
         successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 successAuthentifiedRelationView.animationCloseConfirmView();
@@ -1649,7 +1649,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.enable_notification_dark : R.drawable.enable_notication, null));
         defaultConfirmView.setConfirmTitle(getString(R.string.quality_of_service_activity_enable_notifications));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -1784,7 +1784,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         defaultConfirmView.setConfirmTitle(getString(R.string.proxy_activity_enable));
         defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -1879,7 +1879,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 premiumFeatureConfirmView.redirectStore();
@@ -1923,7 +1923,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             onboardingDetailView.setConfirmTitle(getString(R.string.application_ok));
             onboardingDetailView.setCancelTitle(getString(R.string.application_do_not_display));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     onboardingDetailView.animationCloseConfirmView();

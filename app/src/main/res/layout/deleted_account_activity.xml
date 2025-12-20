@@ -12,7 +12,7 @@
         app:layout_heightPercent="13.50%">
 
         <ImageView
-            android:id="@+id/splashscreen_activity_logo_view"
+            android:id="@+id/deleted_account_activity_logo_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -21,7 +21,7 @@
             app:layout_heightPercent="46.11%" />
 
         <ImageView
-            android:id="@+id/splashscreen_activity_twinme_view"
+            android:id="@+id/deleted_account_activity_twinme_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

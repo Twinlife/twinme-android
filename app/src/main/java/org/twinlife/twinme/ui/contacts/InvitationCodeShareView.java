@@ -18,9 +18,9 @@ import android.view.LayoutInflater;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
-public class InvitationCodeShareView extends AbstractConfirmView {
+public class InvitationCodeShareView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "InvitationCodeShareView";
     private static final boolean DEBUG = false;
 

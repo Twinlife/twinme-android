@@ -28,7 +28,7 @@ import org.twinlife.twinme.services.RoomMemberService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
 import java.util.ArrayList;
@@ -450,7 +450,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
             defaultConfirmView.setConfirmTitle(getString(R.string.application_delete));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();
@@ -503,7 +503,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -553,7 +553,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();
@@ -601,7 +601,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();

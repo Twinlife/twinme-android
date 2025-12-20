@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 
-public class DefaultConfirmView extends AbstractConfirmView {
+public class DefaultConfirmView extends AbstractBottomSheetView {
 
     private static final String LOG_TAG = "DefaultConfirmView";
     private static final boolean DEBUG = false;

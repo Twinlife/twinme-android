@@ -177,7 +177,7 @@ import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.shareActivity.ShareActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.ConversationEditText;
@@ -1800,6 +1800,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             String content = "";
             String path = "";
+            Uri uri = null;
             switch (mSelectedItem.getType()) {
                 case MESSAGE: {
                     MessageItem messageItem = (MessageItem) mSelectedItem;
@@ -1826,10 +1827,27 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 case VIDEO:
                 case PEER_VIDEO:
                 case AUDIO:
-                case PEER_AUDIO:
-                case FILE:
+                case PEER_AUDIO: {
+                    path = mSelectedItem.getPath();
+                    uri = uriFromPath(path);
+                    break;
+                }
+                case FILE: {
+                    // Share the file with the NamedFileProvider so that the filename is correctly shared.
+                    path = mSelectedItem.getPath();
+                    FileItem fileItem = (FileItem) mSelectedItem;
+                    NamedFileDescriptor namedFileDescriptor = fileItem.getNamedFileDescriptor();
+                    String fileName = namedFileDescriptor.getName();
+                    uri = NamedFileProvider.getInstance().getUriForFile(this, new File(getTwinmeContext().getFilesDir(), path), fileName);
+                    break;
+                }
                 case PEER_FILE: {
                     path = mSelectedItem.getPath();
+                    PeerFileItem fileItem = (PeerFileItem) mSelectedItem;
+                    NamedFileDescriptor namedFileDescriptor = fileItem.getNamedFileDescriptor();
+                    String fileName = namedFileDescriptor.getName();
+                    uri = NamedFileProvider.getInstance().getUriForFile(this, new File(getTwinmeContext().getFilesDir(), path), fileName);
+                    break;
                 }
             }
 
@@ -1837,8 +1855,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             Intent intent = new Intent(Intent.ACTION_SEND);
 
-            if (!path.isEmpty()) {
-                Uri uri = uriFromPath(path);
+            if (uri != null) {
                 FileInfo media = new FileInfo(getApplicationContext(), uri);
                 intent.setType(media.getMimeType());
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
@@ -3007,7 +3024,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         deleteConfirmView.setAvatar(mContactAvatar, mContactAvatar == null || mContactAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 deleteItems();
@@ -5467,7 +5484,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         resetConversationConfirmView.setAvatar(mContactAvatar, mContactAvatar == null || mContactAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         resetConversationConfirmView.setMessage(message.toString());
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mConversationService.resetConversation();
@@ -5582,6 +5599,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             String mimeType = getContentResolver().getType(Uri.fromFile(fileToSave));
             if (mimeType == null) {
                 mimeType = URLConnection.guessContentTypeFromName(fileToSave.getPath());
+                if (mimeType == null) {
+                    mimeType = "application/octet-stream";
+                }
             }
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
@@ -5939,7 +5959,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             callAgainConfirmView.setIcon(R.drawable.audio_call);
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
 
@@ -5996,7 +6016,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 premiumFeatureConfirmView.redirectStore();

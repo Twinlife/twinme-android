@@ -266,6 +266,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         setContentView(R.layout.preview_media_activity);
 
         setStatusBarColor(Color.BLACK);
+        setBackgroundColor(Color.BLACK);
 
         Window window = getWindow();
         window.setNavigationBarColor(Color.BLACK);

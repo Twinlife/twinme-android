@@ -39,7 +39,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.ApplicationAssertPoint;
 import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 
@@ -432,7 +432,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
             defaultConfirmView.setConfirmTitle(getString(R.string.welcome_activity_next));
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -475,7 +475,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
         String message = getString(R.string.invitation_code_activity_onboarding_message) + "\n\n" + getString(R.string.invitation_code_activity_success_message);
         invitationCodeShareView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 invitationCodeShareView.animationCloseConfirmView();

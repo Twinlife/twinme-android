@@ -43,7 +43,7 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerFileItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerLinkItem;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.async.Loader;
 import org.twinlife.twinme.utils.async.LoaderListener;
@@ -362,7 +362,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         deleteConfirmView.setAvatar(mAvatar, mAvatar == null || mAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 deleteItems();

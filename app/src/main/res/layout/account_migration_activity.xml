@@ -31,8 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/account_migration_activity_image_view"
-            app:layout_widthPercent="85.33%"
-            app:layout_heightPercent="17.84%">
+            app:layout_widthPercent="85.33%">
 
             <TextView
                 android:id="@+id/account_migration_activity_progress_text_view"
@@ -40,8 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                app:layout_widthPercent="89.06%"
-                app:layout_marginTopPercent="11.94%" />
+                app:layout_widthPercent="89.06%" />
 
             <ProgressBar
                 android:id="@+id/account_migration_activity_transfer_bar"
@@ -52,9 +50,7 @@
                 android:progressDrawable="@drawable/stream_audio_progress_bar_shape"
                 android:max="100"
                 android:layout_centerHorizontal="true"
-                app:layout_heightPercent="5.97%"
-                app:layout_widthPercent="75%"
-                app:layout_marginTopPercent="14.92%" />
+                app:layout_widthPercent="75%"/>
 
             <TextView
                 android:id="@+id/account_migration_activity_progress_message_view"
@@ -63,8 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                app:layout_widthPercent="89.06%"
-                app:layout_marginTopPercent="18.65%" />
+                app:layout_widthPercent="89.06%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <TextView

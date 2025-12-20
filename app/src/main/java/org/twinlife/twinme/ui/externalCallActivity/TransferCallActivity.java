@@ -29,7 +29,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.EditIdentityActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.RoundedView;
 
 public class TransferCallActivity extends AbstractInvitationCallReceiverActivity {
@@ -324,7 +324,7 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
         String message = getString(R.string.transfert_call_activity_delete_message) + "\n\n"  + getString(R.string.transfert_call_activity_delete_confirm_message);
         deleteConfirmView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mCallReceiverService.deleteCallReceiver(mCallReceiver);
