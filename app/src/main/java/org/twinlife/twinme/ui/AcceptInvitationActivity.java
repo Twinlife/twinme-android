@@ -64,7 +64,7 @@ import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
 import org.twinlife.twinme.ui.spaces.SpacesActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.RoundedImageView;
@@ -817,7 +817,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
             defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();

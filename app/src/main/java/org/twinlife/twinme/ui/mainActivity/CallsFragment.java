@@ -77,7 +77,7 @@ import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIOriginator;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper.OnSwipeItemClickListener;
@@ -928,7 +928,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
                 String message = getString(R.string.edit_external_call_activity_delete_message) + "\n\n"  + getString(R.string.edit_external_call_activity_delete_confirm_message);
                 deleteConfirmView.setMessage(message);
 
-                AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
                     public void onConfirmClick() {
                         mCallsService.deleteCallReceiver((CallReceiver) uiOriginator.getContact());
@@ -998,7 +998,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(mTwinmeActivity, null);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(mTwinmeActivity, featureType));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 Intent intent = new Intent();
@@ -1055,7 +1055,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             deleteConfirmView.setMessage(message);
             deleteConfirmView.setConfirmTitle(getString(R.string.calls_fragment_reset_title));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     resetCalls();
@@ -1174,7 +1174,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
                 callAgainConfirmView.setIcon(R.drawable.audio_call);
             }
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     callAgainConfirmView.animationCloseConfirmView();

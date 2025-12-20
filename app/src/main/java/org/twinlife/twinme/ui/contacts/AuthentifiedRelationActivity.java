@@ -45,7 +45,7 @@ import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractScannerActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.MnemonicCodeUtils;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 import org.twinlife.twinme.utils.camera.CameraManager;
@@ -626,7 +626,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_activity_start));
             onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     onboardingConfirmView.animationCloseConfirmView();
@@ -673,7 +673,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         successAuthentifiedRelationView.setMessage(message);
         successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 successAuthentifiedRelationView.animationCloseConfirmView();

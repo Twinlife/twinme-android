@@ -129,7 +129,7 @@ import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivit
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.streamingAudioActivity.StreamingAudioActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
 import org.twinlife.twinme.utils.CommonUtils;
@@ -3038,7 +3038,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 defaultConfirmView.setConfirmTitle(getString(R.string.call_activity_camera_control_stop));
                 defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-                AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
                     public void onConfirmClick() {
                         defaultConfirmView.animationCloseConfirmView();
@@ -3085,7 +3085,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                         defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
                         defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-                        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                             @Override
                             public void onConfirmClick() {
                                 defaultConfirmView.animationCloseConfirmView();
@@ -3294,7 +3294,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 invitationCodeConfirmView.setConfirmTitle(getString(R.string.add_contact_activity_invite));
                 invitationCodeConfirmView.setMessage(getString(R.string.group_member_activity_invite_personnal_relation));
 
-                AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
                     public void onConfirmClick() {
                         sendInvitation();
@@ -4774,7 +4774,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 defaultConfirmView.setConfirmTitle(getString(R.string.application_accept));
                 defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-                AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
                     public void onConfirmClick() {
                         defaultConfirmView.animationCloseConfirmView();
@@ -5677,7 +5677,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_activity_start));
         onboardingConfirmView.hideCancelView();
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();
@@ -5716,7 +5716,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         premiumFeatureConfirmView.setForceDarkMode(true);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 Intent intent = new Intent();
@@ -5764,7 +5764,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();
@@ -5809,7 +5809,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         CallQualityView callQualityView = new CallQualityView(this, null);
         callQualityView.setForceDarkMode(true);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 callQualityView.animationCloseConfirmView();
@@ -5926,7 +5926,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_yes));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -6001,7 +6001,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         for (int i = 0; i < mRootView.getChildCount(); i++) {
             View child = mRootView.getChildAt(i);
 
-            if (child instanceof AbstractConfirmView) {
+            if (child instanceof AbstractBottomSheetView) {
                 child.bringToFront();
                 return;
             }

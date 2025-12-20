@@ -79,7 +79,7 @@ import org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView;
 import org.twinlife.twinme.ui.conversationFilesActivity.UICustomTab;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.AcceptInvitationSubscriptionActivity;
 import org.twinlife.twinme.ui.settingsActivity.SettingsAdvancedActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -1077,7 +1077,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         ResetInvitationConfirmView resetInvitationConfirmView = new ResetInvitationConfirmView(this, null);
         resetInvitationConfirmView.setAvatar(mAvatar, false);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mProfileService.changeProfileTwincode(() -> updateQRCode());
@@ -1221,7 +1221,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         successAuthentifiedRelationView.setMessage(message);
         successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 successAuthentifiedRelationView.animationCloseConfirmView();
@@ -1389,7 +1389,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         defaultConfirmView.setConfirmTitle(getString(R.string.proxy_activity_enable));
         defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();

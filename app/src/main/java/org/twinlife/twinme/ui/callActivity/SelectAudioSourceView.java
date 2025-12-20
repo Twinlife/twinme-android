@@ -22,7 +22,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 

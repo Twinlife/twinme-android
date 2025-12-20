@@ -48,7 +48,7 @@ import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.groups.GroupMemberListAdapter.OnGroupMemberClickListener;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIInvitation;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
 import java.util.ArrayList;
@@ -590,7 +590,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         deleteConfirmView.setAvatar(uiContact.getAvatar(), false);
         deleteConfirmView.setMessage(getString(R.string.group_member_activity_remove_message));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onConfirmedRemoveClick(uiContact);
@@ -696,7 +696,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         defaultConfirmView.setMessage(String.format(getString(R.string.group_member_activity_invitation_message), uiContact.getName()));
         defaultConfirmView.setConfirmTitle(getString(R.string.add_contact_activity_invite));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();

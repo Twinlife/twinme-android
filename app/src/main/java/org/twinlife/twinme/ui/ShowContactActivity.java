@@ -63,7 +63,7 @@ import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.ui.spaces.SpacesActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
@@ -1276,7 +1276,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_activity_start));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();
@@ -1324,7 +1324,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();

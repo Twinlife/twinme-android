@@ -54,7 +54,7 @@ import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -306,7 +306,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_yes));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();
@@ -357,7 +357,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_yes));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();

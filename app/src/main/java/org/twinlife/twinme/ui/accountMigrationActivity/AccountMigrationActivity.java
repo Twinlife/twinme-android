@@ -57,7 +57,7 @@ import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.SplashScreenActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.TwinmeImmersiveActivityImpl;
@@ -73,8 +73,11 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
     private static final float DESIGN_IMAGE_TOP_MARGIN = 40;
     private static final float DESIGN_IMAGE_BOTTOM_MARGIN = 20;
     private static final float DESIGN_IMAGE_HEIGHT = 520;
-    private static final float DESIGN_PROGRESS_HEIGHT = 220;
     private static final float DESIGN_PROGRESS_MARGIN = 60;
+    private static final float DESIGN_PROGRESS_TEXT_MARGIN = 26;
+    private static final float DESIGN_PROGRESS_BAR_MARGIN = 32;
+    private static final float DESIGN_PROGRESS_BAR_HEIGHT = 14;
+    private static final float DESIGN_PROGRESS_STATE_MARGIN = 40;
 
     protected class CancelListener implements View.OnClickListener {
 
@@ -348,7 +351,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
         defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_activity_stop));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -703,9 +706,6 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         accountViewBackground.getPaint().setColor(Design.MIGRATION_BACKGROUND_COLOR);
         progressView.setBackground(accountViewBackground);
 
-        layoutParams = progressView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_PROGRESS_HEIGHT * Design.HEIGHT_RATIO);
-
         marginLayoutParams = (ViewGroup.MarginLayoutParams) progressView.getLayoutParams();
         marginLayoutParams.bottomMargin = (int) (DESIGN_PROGRESS_MARGIN * Design.HEIGHT_RATIO);
 
@@ -715,13 +715,26 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         int backgroundColor = Color.argb(102, 255, 255, 255);
         mTransferBar.setProgressBackgroundTintList(ColorStateList.valueOf(backgroundColor));
 
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTransferBar.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_PROGRESS_BAR_MARGIN * Design.HEIGHT_RATIO);
+
+        layoutParams = mTransferBar.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_PROGRESS_BAR_HEIGHT * Design.HEIGHT_RATIO);
+
         mProgressTransferTextView = findViewById(R.id.account_migration_activity_progress_text_view);
         Design.updateTextFont(mProgressTransferTextView, Design.FONT_BOLD28);
         mProgressTransferTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mProgressTransferTextView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_PROGRESS_TEXT_MARGIN * Design.HEIGHT_RATIO);
+
         mStatusTransferTextView = findViewById(R.id.account_migration_activity_progress_message_view);
         Design.updateTextFont(mStatusTransferTextView, Design.FONT_BOLD28);
         mStatusTransferTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mStatusTransferTextView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_PROGRESS_STATE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_PROGRESS_STATE_MARGIN * Design.HEIGHT_RATIO);
 
         // Accept button cannot be selected until we are connected.
         mAcceptListener = new AcceptListener();

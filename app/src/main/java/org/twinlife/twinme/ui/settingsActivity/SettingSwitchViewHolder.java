@@ -54,6 +54,7 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
     public void onBind(@NonNull UISetting<Boolean> uiSetting, boolean isSelected) {
 
         mUISetting = uiSetting;
+        mBooleanConfig = null;
 
         mSwitchView.setText(uiSetting.getTitle());
 
@@ -68,6 +69,7 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
     public void onBind(@NonNull String title, boolean isSelected, Settings.BooleanConfig booleanConfig) {
 
         mBooleanConfig = booleanConfig;
+        mUISetting = null;
 
         mSwitchView.setText(title);
 

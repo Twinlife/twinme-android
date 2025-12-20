@@ -25,9 +25,9 @@ import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
-public class SpaceActionConfirmView extends AbstractConfirmView {
+public class SpaceActionConfirmView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "SecretSpaceConfirmView";
     private static final boolean DEBUG = false;
 

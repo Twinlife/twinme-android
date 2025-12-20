@@ -41,7 +41,7 @@ import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivit
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.spaces.DeleteSpaceConfirmView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -146,7 +146,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
             premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     Intent intent = new Intent();
@@ -498,7 +498,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             deleteSpaceConfirmView.setAvatar(avatar, false);
             deleteSpaceConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     clearConversation();
@@ -538,7 +538,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
 
             deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     clearConversation();

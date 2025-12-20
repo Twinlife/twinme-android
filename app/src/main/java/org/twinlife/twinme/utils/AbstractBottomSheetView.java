@@ -41,8 +41,8 @@ import org.twinlife.twinme.skin.Design;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractConfirmView extends PercentRelativeLayout {
-    private static final String LOG_TAG = "AbstractConfirmView";
+public class AbstractBottomSheetView extends PercentRelativeLayout {
+    private static final String LOG_TAG = "AbstractBottomSheetView";
     private static final boolean DEBUG = false;
 
     public interface Observer {
@@ -106,11 +106,11 @@ public class AbstractConfirmView extends PercentRelativeLayout {
     @Nullable
     private Observer mObserver;
 
-    public AbstractConfirmView(Context context) {
+    public AbstractBottomSheetView(Context context) {
         super(context);
     }
 
-    public AbstractConfirmView(Context context, AttributeSet attrs) {
+    public AbstractBottomSheetView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

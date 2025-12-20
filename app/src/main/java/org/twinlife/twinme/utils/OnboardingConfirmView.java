@@ -30,7 +30,7 @@ import androidx.annotation.NonNull;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 
-public class OnboardingConfirmView extends AbstractConfirmView {
+public class OnboardingConfirmView extends AbstractBottomSheetView {
 
     private static final String LOG_TAG = "OnboardingConfirmView";
     private static final boolean DEBUG = false;

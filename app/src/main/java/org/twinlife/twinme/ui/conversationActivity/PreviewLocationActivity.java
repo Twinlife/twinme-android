@@ -55,7 +55,7 @@ import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -513,7 +513,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_authorization_go_settings));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();

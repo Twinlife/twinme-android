@@ -32,7 +32,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 
-public class OnboardingDetailView extends AbstractConfirmView {
+public class OnboardingDetailView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "OnboardingDetailView";
     private static final boolean DEBUG = false;
 

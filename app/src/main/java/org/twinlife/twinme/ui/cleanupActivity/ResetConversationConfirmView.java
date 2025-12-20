@@ -14,9 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
-public class ResetConversationConfirmView extends AbstractConfirmView {
+public class ResetConversationConfirmView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "ResetConversationCo...";
     private static final boolean DEBUG = false;
 

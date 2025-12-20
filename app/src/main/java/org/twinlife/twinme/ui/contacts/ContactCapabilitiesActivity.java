@@ -22,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +42,7 @@ import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 
 import java.util.Calendar;
@@ -503,7 +502,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         premiumFeatureConfirmView.setLayoutParams(layoutParams);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, featureType));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 Intent intent = new Intent();
@@ -556,7 +555,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
             onboardingConfirmView.hideCancelView();
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();

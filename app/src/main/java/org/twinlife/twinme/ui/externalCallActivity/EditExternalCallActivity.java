@@ -38,7 +38,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.Locale;
@@ -486,7 +486,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         }
         deleteConfirmView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mCallReceiverService.deleteCallReceiver(mCallReceiver);

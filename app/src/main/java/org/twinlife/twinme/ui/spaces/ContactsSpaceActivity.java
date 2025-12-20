@@ -46,7 +46,7 @@ import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIContactListAdapter;
 import org.twinlife.twinme.ui.users.UIMoveContact;
 import org.twinlife.twinme.ui.users.UIMoveContactListAdapter;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -446,7 +446,7 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
             spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_activity_move_title));
             spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     if (mSpace != null) {

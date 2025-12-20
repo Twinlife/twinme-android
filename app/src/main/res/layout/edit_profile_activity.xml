@@ -51,6 +51,23 @@
                 android:text="@string/application_profile"
                 app:layout_widthPercent="56%" />
 
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:id="@+id/edit_profile_activity_info_clickable_view"
+                app:layout_widthPercent="19.73%"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/application_edit">
+
+                <ImageView
+                    android:id="@+id/edit_profile_activity_info_image_view"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/onboarding_info_icon"
+                    app:layout_aspectRatio="100%"
+                    app:layout_heightPercent="60%" />
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -80,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_profile_activity_name_content_view"
             android:layout_alignEnd="@+id/edit_profile_activity_name_content_view"
-            android:layout_alignRight="@+id/edit_profile_activity_name_content_view"/>
+            android:layout_alignRight="@+id/edit_profile_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_description_content_view"
@@ -93,7 +110,6 @@
                 android:id="@+id/edit_profile_activity_description_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/edit_profile_activity_counter_view"
                 android:hint="@string/navigation_activity_about_twinme"
                 android:background="@android:color/transparent"
                 android:gravity="top"
@@ -110,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_profile_activity_description_content_view"
             android:layout_alignEnd="@+id/edit_profile_activity_description_content_view"
-            android:layout_alignRight="@+id/edit_profile_activity_description_content_view"/>
+            android:layout_alignRight="@+id/edit_profile_activity_description_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_propagate_view"
@@ -137,7 +153,7 @@
                 app:layout_aspectRatio="62%"
                 app:layout_heightPercent="34%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
-        
+
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_save_view"
             android:layout_width="match_parent"

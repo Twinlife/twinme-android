@@ -40,7 +40,7 @@ import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeActivity;
 import org.twinlife.twinme.ui.baseItemActivity.Item;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.SaveAsyncTask;
 
@@ -552,7 +552,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
             deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 deleteItem();

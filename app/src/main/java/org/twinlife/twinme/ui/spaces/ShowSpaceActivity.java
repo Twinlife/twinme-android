@@ -52,7 +52,7 @@ import org.twinlife.twinme.ui.cleanupActivity.TypeCleanUpActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.SwitchView;
@@ -787,7 +787,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
             spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
             spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     onEditIdentityClick();
@@ -964,7 +964,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         spaceActionConfirmView.setTitle(getString(R.string.application_are_you_sure));
         spaceActionConfirmView.setMessage(message);
         spaceActionConfirmView.setConfirmTitle(getString(R.string.show_space_fragment_secret_confirm));
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mSecretSwitchView.setChecked(true);

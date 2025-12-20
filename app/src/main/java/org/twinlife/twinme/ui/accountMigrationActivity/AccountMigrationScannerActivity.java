@@ -53,7 +53,7 @@ import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.util.TwinmeAttributes;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -587,7 +587,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
             defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_activity_start));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();
@@ -685,7 +685,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 onboardingConfirmView.animationCloseConfirmView();

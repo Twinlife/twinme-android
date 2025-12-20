@@ -49,7 +49,7 @@ import org.twinlife.twinme.services.InvitationCodeService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
 import java.util.List;
@@ -725,7 +725,7 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
             defaultConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
         }
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();
@@ -777,7 +777,7 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
             String message = String.format(getString(R.string.accept_invitation_activity_message), twincodeOutbound.getName())+ "\n\n" + getString(R.string.enter_invitation_code_activity_invitation_message);
             invitationCodeConfirmView.setMessage(message);
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     mInvitationCodeService.createContact(twincodeOutbound);

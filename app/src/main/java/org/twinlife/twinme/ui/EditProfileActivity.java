@@ -11,8 +11,9 @@ package org.twinlife.twinme.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,7 +24,6 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.InputFilter;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -35,11 +35,14 @@ import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.ColorUtils;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.CallReceiver;
@@ -49,14 +52,16 @@ import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.EditIdentityService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
-import org.twinlife.twinme.ui.profiles.OnboardingProfileActivity;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.ui.spaces.UITemplateSpace;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.EditableView;
-import org.twinlife.twinme.utils.OnboardingDialog;
+import org.twinlife.twinme.utils.OnboardingConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
 import org.twinlife.twinme.utils.Utils;
@@ -229,8 +234,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         if (mCreateProfile && !mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.PROFILE)) {
             mShowOnboarding = true;
-
-            showOnboarding();
+            showOnboarding(false);
         }
         super.onResume();
     }
@@ -328,7 +332,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         mProfile = space.getProfile();
 
         if (mProfile == null && !mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.PROFILE)) {
-            showOnboarding();
+            showOnboarding(false);
         }
 
         updateIdentity();
@@ -582,6 +586,15 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         marginLayoutParams = (ViewGroup.MarginLayoutParams) headerView.getLayoutParams();
         marginLayoutParams.topMargin = Design.HEADER_VIEW_TOP_MARGIN;
 
+        View infoView = findViewById(R.id.edit_profile_activity_info_clickable_view);
+        infoView.setOnClickListener(view -> showInfo());
+
+        layoutParams = infoView.getLayoutParams();
+        layoutParams.height = Design.EDIT_CLICKABLE_VIEW_HEIGHT;
+
+        ImageView infoIconView = findViewById(R.id.edit_profile_activity_info_image_view);
+        infoIconView.setColorFilter(Design.BLACK_COLOR);
+
         View nameContentView = findViewById(R.id.edit_profile_activity_name_content_view);
 
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -824,16 +837,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         String name = mNameView.getText().toString().trim();
         if (name.isEmpty()) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.onboarding_profile);
-            DialogInterface.OnCancelListener dialogCancelListener = dialog -> {
-            };
-            OnboardingDialog onboardingDialog = new OnboardingDialog(this);
-            onboardingDialog.setOnCancelListener(dialogCancelListener);
-            onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_activity_incomplete_profile_message)), bitmap,
-                    getString(R.string.application_ok),
-                    onboardingDialog::dismiss
-            );
-            onboardingDialog.show();
+            showOnboarding(true);
             return false;
         }  else if (mUpdatedProfileAvatar == null) {
             openMenuPhoto();
@@ -990,17 +994,131 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         }
     }
 
-    private void showOnboarding() {
+    private void showOnboarding(boolean incompleteProfile) {
         if (DEBUG) {
             Log.d(LOG_TAG, "showOnboarding");
         }
 
-        mShowOnboarding = true;
+        ViewGroup viewGroup = findViewById(R.id.edit_profile_activity_layout);
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setClass(this, OnboardingProfileActivity.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
+        DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
+        defaultConfirmView.hideTitleView();
+        defaultConfirmView.hideCancelView();
+
+        boolean darkMode = false;
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int displayMode = Settings.displayMode.getInt();
+        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
+            darkMode = true;
+        }
+
+        defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
+
+        defaultConfirmView.setMessage(getString(R.string.create_profile_activity_incomplete_profile_message));
+
+        if (incompleteProfile) {
+            defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        } else {
+            defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
+        }
+
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                defaultConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                defaultConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                defaultConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(defaultConfirmView);
+
+                mNameView.requestFocus();
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(mNameView, InputMethodManager.SHOW_IMPLICIT);
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.WHITE_COLOR);
+            }
+        };
+        defaultConfirmView.setObserver(observer);
+        viewGroup.addView(defaultConfirmView);
+        defaultConfirmView.show();
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showInfo() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showInfo");
+        }
+
+        hideKeyboard();
+
+        ViewGroup viewGroup = findViewById(R.id.edit_profile_activity_layout);
+
+        OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
+        onboardingConfirmView.setTitle(getString(R.string.application_profile));
+
+        boolean darkMode = false;
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int displayMode = Settings.displayMode.getInt();
+        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
+            darkMode = true;
+        }
+
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
+
+        String message = getString(R.string.create_profile_activity_onboarding_message_part_1) +
+                "\n\n" +
+                getString(R.string.create_profile_activity_onboarding_message_part_2) +
+                "\n\n" +
+                getString(R.string.create_profile_activity_onboarding_message_part_3) +
+                "\n\n" +
+                getString(R.string.create_profile_activity_onboarding_message_part_4);
+
+        onboardingConfirmView.setMessage(message);
+        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.hideCancelView();
+
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(onboardingConfirmView);
+                setStatusBarColor();
+            }
+        };
+        onboardingConfirmView.setObserver(observer);
+        viewGroup.addView(onboardingConfirmView);
+        onboardingConfirmView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void openMenuSelectValue() {

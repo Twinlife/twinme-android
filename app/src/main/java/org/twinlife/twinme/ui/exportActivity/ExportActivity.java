@@ -46,7 +46,7 @@ import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivit
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.settingsActivity.UISetting;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.FileInfo;
 
 import java.util.ArrayList;
@@ -228,7 +228,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
             PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
             premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.CONVERSATION));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     Intent intent = new Intent();

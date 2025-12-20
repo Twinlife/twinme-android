@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
 public class SoundsSettingsActivity extends AbstractSettingsActivity {
@@ -354,7 +354,7 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();

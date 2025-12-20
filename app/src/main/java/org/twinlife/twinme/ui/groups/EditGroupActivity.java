@@ -50,7 +50,7 @@ import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
@@ -656,7 +656,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
         }
         deleteConfirmView.setMessage(message);
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mGroupService.leaveGroup(mGroup.getMemberTwincodeOutboundId());

@@ -18,6 +18,7 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import android.util.Pair;
 import android.webkit.MimeTypeMap;
 
@@ -30,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NamedFileProvider extends ContentProvider {
+    private static final String LOG_TAG = "NamedFileProvider";
+    private static final boolean DEBUG = false;
 
     private static final String[] COLUMNS = {
             OpenableColumns.DISPLAY_NAME,
@@ -79,6 +82,9 @@ public class NamedFileProvider extends ContentProvider {
     }
 
     public Uri getUriForFile(@SuppressWarnings("unused") @NonNull Context context, @NonNull File file, @NonNull String name) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getUriForFile file=" + file + " name=" + name);
+        }
 
         mFiles.add(new Pair<>(name, file.getPath()));
 
@@ -114,6 +120,9 @@ public class NamedFileProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "query uri=" + uri + " selection=" + selection);
+        }
 
         File file = getFileForUri(uri);
         String displayName = getNameForUri(uri);
@@ -146,6 +155,9 @@ public class NamedFileProvider extends ContentProvider {
     @Override
     @Nullable
     public String getType(@NonNull Uri uri) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getType uri=" + uri);
+        }
 
         File file = getFileForUri(uri);
         int lastDot = file.getName().lastIndexOf('.');
@@ -163,6 +175,9 @@ public class NamedFileProvider extends ContentProvider {
 
     @Override
     public ParcelFileDescriptor openFile(@NonNull Uri uri, @NonNull String mode) throws FileNotFoundException {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openFile uri=" + uri + " mode=" + mode);
+        }
 
         return ParcelFileDescriptor.open(getFileForUri(uri), modeToMode(mode));
     }

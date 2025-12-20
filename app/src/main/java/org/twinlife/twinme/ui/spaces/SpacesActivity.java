@@ -41,7 +41,7 @@ import org.twinlife.twinme.services.SpaceService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.EditProfileActivity;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -402,7 +402,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
 
-                        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                             @Override
                             public void onConfirmClick() {
                                 onEditIdentityClick(space.getId());
@@ -448,7 +448,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_activity_move_title));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-                        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                             @Override
                             public void onConfirmClick() {
                                 mSpaceService.moveContactToSpace(space, mContact);
@@ -496,7 +496,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
 
-                        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                             @Override
                             public void onConfirmClick() {
                                 onEditIdentityClick(space.getId());
@@ -542,7 +542,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_activity_move_title));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
-                        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+                        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                             @Override
                             public void onConfirmClick() {
                                 mSpaceService.moveGroupToSpace(space, mGroup);

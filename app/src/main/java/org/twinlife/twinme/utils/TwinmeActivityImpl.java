@@ -47,7 +47,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService.ErrorCode;
@@ -758,7 +757,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_authorization_go_settings));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 defaultConfirmView.animationCloseConfirmView();

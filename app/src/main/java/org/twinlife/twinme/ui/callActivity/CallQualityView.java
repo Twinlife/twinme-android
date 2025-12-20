@@ -19,12 +19,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
-public class CallQualityView extends AbstractConfirmView {
+public class CallQualityView extends AbstractBottomSheetView {
     private static final String LOG_TAG = "CallQualityView";
     private static final boolean DEBUG = false;
 

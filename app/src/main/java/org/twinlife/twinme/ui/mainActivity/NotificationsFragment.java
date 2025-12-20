@@ -56,7 +56,7 @@ import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
 import org.twinlife.twinme.ui.groups.AcceptGroupInvitationActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
 import org.twinlife.twinme.ui.rooms.ShowRoomActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 
 import java.util.ArrayList;
@@ -614,7 +614,7 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
             deleteConfirmView.setMessage(message);
             deleteConfirmView.setConfirmTitle(getString(R.string.notifications_fragment_reset_title));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     resetNotifications();

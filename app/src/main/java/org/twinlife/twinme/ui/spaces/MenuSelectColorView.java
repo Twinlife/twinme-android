@@ -114,18 +114,9 @@ public class MenuSelectColorView extends PercentRelativeLayout implements OnColo
             Log.d(LOG_TAG, "create");
         }
 
-        try {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = inflater.inflate(R.layout.space_appearance_activity_menu_select_color_view, null);
-            //noinspection deprecation
-            view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            addView(view);
-
-            initViews();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.space_appearance_activity_menu_select_color_view, this, true);
+        initViews();
     }
 
     public void setOnMenuColorListener(OnMenuColorListener menuColorListener) {

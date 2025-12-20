@@ -61,7 +61,7 @@ import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.EditProfileActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
@@ -865,7 +865,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         deleteSpaceConfirmView.setTitle(title);
         deleteSpaceConfirmView.setMessage(getString(R.string.edit_space_activity_delete_message));
 
-        AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
                 mEditSpaceService.updateDefaultSpace(mSpace);

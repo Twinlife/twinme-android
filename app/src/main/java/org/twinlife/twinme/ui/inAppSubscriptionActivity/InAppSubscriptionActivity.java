@@ -53,7 +53,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.WebViewActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
-import org.twinlife.twinme.utils.AbstractConfirmView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 
 import java.io.File;
@@ -896,7 +896,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
 
-            AbstractConfirmView.Observer observer = new AbstractConfirmView.Observer() {
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
                 public void onConfirmClick() {
                     defaultConfirmView.animationCloseConfirmView();
