@@ -39,7 +39,6 @@
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_peer_call_item_view"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             app:layout_marginStartPercent="12.8%"
             app:layout_widthPercent="77.33%"
@@ -64,14 +63,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/base_item_activity_peer_call_item_avatar_image_view"
-                    android:layout_toRightOf="@+id/base_item_activity_peer_call_item_avatar_image_view" />
+                    android:layout_toEndOf="@+id/base_item_activity_peer_call_item_avatar_image_view" />
 
                 <TextView
                     android:id="@+id/base_item_activity_peer_call_item_call_duration_view"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:textAlignment="textEnd"
                     android:gravity="end"
@@ -100,7 +97,6 @@
                 <ImageView
                     android:id="@+id/base_item_activity_peer_call_item_call_again_view"
                     android:layout_toEndOf="@+id/base_item_activity_peer_call_item_call_again_title_view"
-                    android:layout_toRightOf="@+id/base_item_activity_peer_call_item_call_again_title_view"
                     android:layout_centerVertical="true"
                     android:src="@drawable/call_again"
                     app:tint="?attr/font_default_color"

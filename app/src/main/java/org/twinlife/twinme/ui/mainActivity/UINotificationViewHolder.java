@@ -244,9 +244,13 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
                 break;
 
             case NEW_CONTACT_INVITATION:
+                drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
+                subTitle = context.getString(R.string.notifications_fragment_item_invitation);
+                break;
+
             case NEW_GROUP_INVITATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_group_invitation);
+                subTitle = context.getString(R.string.notifications_fragment_item_invitation_group);
                 break;
 
             case NEW_GROUP_JOINED:

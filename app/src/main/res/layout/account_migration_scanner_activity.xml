@@ -44,7 +44,6 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_aspectRatio="100%"
-                    android:layout_toRightOf="@+id/account_migration_scanner_activity_qrcode_view"
                     android:layout_toEndOf="@+id/account_migration_scanner_activity_qrcode_view"
                     android:layout_alignTop="@+id/account_migration_scanner_activity_qrcode_view"
                     app:layout_heightPercent="9.59%">
@@ -110,7 +109,6 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:gravity="center"
-                        android:layout_toRightOf="@+id/account_migration_scanner_activity_scan_icon_view"
                         android:layout_toEndOf="@+id/account_migration_scanner_activity_scan_icon_view"
                         android:text="@string/add_contact_activity_scan_code"/>
                 </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -42,6 +42,7 @@
     <string name="application_do_not_display">Não exibir mais</string>
     <string name="application_edit">Editar</string>
     <string name="application_error_file_not_found">O ficheiro não foi encontrado.</string>
+    <string name="application_error_media_unload">Não foi possível carregar o suporte.</string>
     <string name="application_error_media_not_supported">Este formato de imagem/vídeo não é suportado pela aplicação.</string>
     <string name="application_error_no_storage_space">Espaço de armazenamento insuficiente</string>
     <string name="application_group_limit_reached">Número máximo (%1$d) de membros do grupo excedido.</string>
@@ -52,6 +53,7 @@
     <string name="application_one_item_selected">1 item selecionado</string>
     <string name="application_migration_no_storage_space">Não há espaço suficiente no seu dispositivo para concluir a migração. Feche o aplicativo, libere espaço e reinicie-o para concluir a atualização.</string>
     <string name="application_migration_no_storage_space_message">Um dos dois dispositivos não tem espaço de armazenamento suficiente. Liberte espaço nesse dispositivo antes de reiniciar a migração.</string>
+    <string name="application_more_info">Mais Informações…</string>
     <string name="application_name_hint">Nome</string>
     <string name="application_network_connecting">A ligar ao serviço Twinme</string>
     <string name="application_network_connectivity">Existe ligação de rede</string>
@@ -405,6 +407,11 @@
     <string name="conversation_activity_invitation_title">Eu convido você a se juntar ao grupo</string>
     <string name="conversation_activity_local_cleanup">O conteúdo principal foi excluído localmente.</string>
     <string name="conversation_activity_manage_conversation">Gerencie a conversa</string>
+    <string name="conversation_activity_media_quality_original">Definição original (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Sem redimensionamento - Transferência mais lenta</string>
+    <string name="conversation_activity_media_quality_standard">Definição padrão (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Menor - Transferência mais rápida</string>
+    <string name="conversation_activity_media_quality_title">Resolução da mídia</string>
     <string name="conversation_activity_menu_item_view_copy_message">Copiado para a área de transferência!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Cópia</string>
     <string name="conversation_activity_menu_item_view_delete_title">Remover</string>
@@ -431,6 +438,9 @@
     <string name="conversation_activity_send_file_warning">Atenção: não é possível impedir que o destinatário copie/salve/compartilhe um documento (pdf, word, ppt, excel, zip, etc.), que só pode ser aberto fora do aplicativo. Você ainda quer enviar?</string>
     <string name="conversation_activity_send_large_file_message">Este arquivo é grande (%1$d MB). Você gostaria de continuar ?</string>
     <string name="conversation_activity_send_menu_allow_copy">Permitir que o destinatário copie/salve/compartilhe este conteúdo</string>
+    <string name="conversation_activity_send_quality_size">Meios de grande dimensão (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Enviar em definição standard (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Pode redimensionar para definição padrão (SD) para uma transferência mais rápida.</string>
     <string name="conversation_activity_stream_dialog">Quer aceitá-lo?</string>
     <string name="conversation_activity_unsupported_media">Formato de mídia não suportado</string>
     <string name="conversation_activity_video_call">Vídeo chamada</string>
@@ -703,8 +713,10 @@
     <string name="notification_center_deleted_contact">Contato Excluído</string>
     <string name="notification_center_file_message">Enviou-lhe um arquivo</string>
     <string name="notification_center_file_message_received">Novo arquivo</string>
-    <string name="notification_center_group_invitation">Enviou-lhe um convite</string>
-    <string name="notification_center_group_invitation_received">Novo convite</string>
+    <string name="notification_center_invitation">Enviou-lhe um convite</string>
+    <string name="notification_center_invitation_group">Convida-o para participar num grupo.</string>
+    <string name="notification_center_invitation_received">Novo convite</string>
+    <string name="notification_center_invitation_received_group">Novo convite para o grupo</string>
     <string name="notification_center_join_group">Você é membro do grupo</string>
     <string name="notification_center_message_received">Nova mensagem</string>
     <string name="notification_center_missed_audio_call_to">Chamada de áudio de %1$s perdida</string>
@@ -741,7 +753,8 @@
     <string name="notifications_fragment_item_cleanup_message">limpou algumas mensagens antigas.</string>
     <string name="notifications_fragment_item_deleted_contact">Contato Excluído</string>
     <string name="notifications_fragment_item_file_message">Enviou-lhe um arquivo</string>
-    <string name="notifications_fragment_item_group_invitation">Enviou-lhe um convite</string>
+    <string name="notifications_fragment_item_invitation">Enviou-lhe um convite</string>
+    <string name="notifications_fragment_item_invitation_group">Convida-o para participar num grupo.</string>
     <string name="notifications_fragment_item_image_message">Enviou-lhe uma foto</string>
     <string name="notifications_fragment_item_join_group">Você é membro do grupo</string>
     <string name="notifications_fragment_item_new_contact">Novo contato</string>
@@ -837,8 +850,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Bloqueie o aplicativo com serviços biométricos ou com um código PIN.</string>
-    <string name="privacy_activity_hide_last_screen_message">Impedir que as visualizações apareçam no alternador de aplicativos</string>
-    <string name="privacy_activity_hide_last_screen_title">Ocultar última tela</string>
+    <string name="privacy_activity_hide_last_screen_message">E ocultar a aplicação quando está a ser executada em segundo plano, se o dispositivo o permitir.</string>
+    <string name="privacy_activity_hide_last_screen_title">Proibir capturas de ecrã</string>
     <string name="privacy_activity_lock_screen_message">Desbloqueie o acesso ao aplicativo usando os serviços de autenticação biométrica ou de senha do dispositivo. Você ainda pode atender chamadas e receber notificações enquanto o acesso ao aplicativo está bloqueado.</string>
     <string name="privacy_activity_lock_screen_not_available">Esta opção requer uma versão do Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Tempo limite de bloqueio de acesso</string>

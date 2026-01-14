@@ -21,7 +21,6 @@
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/conversation_files_activity_media_item_selected_view"
-            android:layout_alignRight="@+id/conversation_files_activity_media_item_image_view"
             android:layout_alignEnd="@+id/conversation_files_activity_media_item_image_view"
             android:layout_alignBottom="@+id/conversation_files_activity_media_item_image_view"
             android:background="@drawable/checkbox_background"

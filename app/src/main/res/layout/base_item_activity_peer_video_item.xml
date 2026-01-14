@@ -43,8 +43,6 @@
             android:layout_alignTop="@+id/base_item_activity_peer_video_item_reply_text"
             android:layout_alignBottom="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_peer_video_item_reply_text"
-            android:layout_alignRight="@+id/base_item_activity_peer_video_item_reply_text"
-            android:layout_alignLeft="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignStart="@+id/base_item_activity_peer_video_item_image_view" />
 
         <TextView
@@ -53,7 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/base_item_activity_peer_video_item_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_video_item_image_view"
             android:textColor="@android:color/white"
             app:layout_marginEndPercent="15.73%" />
 
@@ -62,16 +59,13 @@
             android:layout_alignTop="@+id/base_item_activity_peer_video_item_reply_container_image_view"
             android:layout_alignBottom="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_peer_video_item_reply_container_image_view"
-            android:layout_alignRight="@+id/base_item_activity_peer_video_item_reply_container_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignStart="@+id/base_item_activity_peer_video_item_image_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_peer_video_item_reply_container_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/base_item_activity_peer_video_item_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_video_item_image_view">
+            android:layout_alignStart="@+id/base_item_activity_peer_video_item_image_view">
 
             <org.twinlife.twinme.utils.RoundedImageView
                 android:id="@+id/base_item_activity_peer_video_item_reply_image_view"
@@ -83,7 +77,6 @@
         <org.twinlife.twinme.utils.RoundedImageView
             android:id="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_height="0dp"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             app:layout_marginStartPercent="12.8%"
             app:layout_widthPercent="66.93%" />
@@ -92,9 +85,7 @@
             android:id="@+id/base_item_activity_peer_video_item_bottom_view"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_alignLeft="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignStart="@+id/base_item_activity_peer_video_item_image_view"
-            android:layout_alignRight="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_alignBottom="@+id/base_item_activity_peer_video_item_image_view"
             android:visibility="gone">
@@ -132,7 +123,6 @@
                 style="@style/textAppearance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:textColor="@android:color/white"
                 app:layout_marginEndPercent="16%" />
@@ -144,7 +134,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_peer_video_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_peer_video_item_image_view"
-            android:layout_alignRight="@+id/base_item_activity_peer_video_item_image_view"
             android:layout_marginBottom="3dp"
             android:src="@drawable/player_play"
             app:layout_aspectRatio="100%"

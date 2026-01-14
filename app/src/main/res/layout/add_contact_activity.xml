@@ -43,8 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/add_contact_activity_avatar_view"
-            android:layout_toRightOf="@+id/add_contact_activity_avatar_view" />
+            android:layout_toEndOf="@+id/add_contact_activity_avatar_view" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -68,7 +67,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_aspectRatio="100%"
-            android:layout_toRightOf="@+id/add_contact_activity_qrcode_view"
             android:layout_toEndOf="@+id/add_contact_activity_qrcode_view"
             android:layout_alignTop="@+id/add_contact_activity_qrcode_view">
 
@@ -191,7 +189,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@id/add_contact_activity_twincode_view"
             app:layout_widthPercent="33%">
 
@@ -252,7 +249,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/add_contact_activity_social_icon_view"
             android:layout_toEndOf="@+id/add_contact_activity_social_icon_view"
             android:text="@string/share_activity_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -323,7 +319,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:layout_toRightOf="@+id/add_contact_activity_scan_icon_view"
                 android:layout_toEndOf="@+id/add_contact_activity_scan_icon_view"
                 android:text="@string/add_contact_activity_scan_code"/>
         </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -357,7 +352,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/add_contact_activity_import_gallery_icon_view"
             android:layout_toEndOf="@+id/add_contact_activity_import_gallery_icon_view"
             android:text="@string/add_contact_activity_gallery_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -384,7 +378,6 @@
             android:id="@+id/add_contact_activity_twincode_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/add_contact_activity_twincode_copy_view"
             android:layout_toEndOf="@+id/add_contact_activity_twincode_copy_view"
             android:background="@android:color/transparent"
             android:hint="@string/scan_activity_paste_code"
@@ -397,7 +390,6 @@
             android:layout_height="0dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="58%"
             app:layout_marginEndPercent="3.76%">
@@ -439,7 +431,6 @@
             android:id="@+id/add_contact_activity_invitation_code_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/add_contact_activity_invitation_code_image_view"
             android:layout_toEndOf="@+id/add_contact_activity_invitation_code_image_view"
             android:layout_centerVertical="true"
             android:text="@string/add_contact_activity_invitation_code_title" />
@@ -450,7 +441,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:scaleType="fitCenter"
             app:layout_aspectRatio="61.54%"
             app:layout_heightPercent="21.67%"

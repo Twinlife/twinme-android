@@ -273,11 +273,8 @@ class LinkItemViewHolder extends ItemViewHolder {
         }
 
         String linkTitle = mLinkLoader.getTitle();
-        if (linkTitle != null) {
-            mPreviewLinkView.setVisibility(View.VISIBLE);
+        if (linkTitle != null && !linkTitle.isEmpty()) {
             mTitleLinkView.setText(linkTitle);
-        } else {
-            mPreviewLinkView.setVisibility(View.GONE);
         }
 
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -316,6 +313,12 @@ class LinkItemViewHolder extends ItemViewHolder {
             ViewGroup.LayoutParams layoutParams = mPreviewLinkView.getLayoutParams();
             layoutParams.width = LINK_IMAGE_MAX_WIDTH;
             mPreviewLinkView.setLayoutParams(layoutParams);
+        }
+
+        if ((linkTitle != null && !linkTitle.isEmpty()) || mLinkLoader.getImage() != null) {
+            mPreviewLinkView.setVisibility(View.VISIBLE);
+        } else {
+            mPreviewLinkView.setVisibility(View.GONE);
         }
 
         mTextView.setTypeface(getMessageFont().typeface);

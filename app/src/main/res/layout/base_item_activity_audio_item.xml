@@ -35,8 +35,6 @@
             android:layout_alignTop="@+id/base_item_activity_audio_item_reply_text"
             android:layout_alignBottom="@+id/base_item_activity_audio_item_view"
             android:layout_alignEnd="@+id/base_item_activity_audio_item_view"
-            android:layout_alignRight="@+id/base_item_activity_audio_item_view"
-            android:layout_alignLeft="@+id/base_item_activity_audio_item_reply_text"
             android:layout_alignStart="@+id/base_item_activity_audio_item_reply_text" />
 
         <TextView
@@ -45,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/base_item_activity_audio_item_view"
-            android:layout_alignRight="@+id/base_item_activity_audio_item_view"
             android:textColor="@android:color/white"
             app:layout_marginStartPercent="29.60%" />
 
@@ -54,16 +51,13 @@
             android:layout_alignTop="@+id/base_item_activity_audio_item_reply_container_image_view"
             android:layout_alignBottom="@+id/base_item_activity_audio_item_view"
             android:layout_alignEnd="@+id/base_item_activity_audio_item_view"
-            android:layout_alignRight="@+id/base_item_activity_audio_item_view"
-            android:layout_alignLeft="@+id/base_item_activity_audio_item_reply_container_image_view"
             android:layout_alignStart="@+id/base_item_activity_audio_item_reply_container_image_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_audio_item_reply_container_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/base_item_activity_audio_item_view"
-            android:layout_alignRight="@+id/base_item_activity_audio_item_view">
+            android:layout_alignEnd="@+id/base_item_activity_audio_item_view">
 
             <org.twinlife.twinme.utils.RoundedImageView
                 android:id="@+id/base_item_activity_audio_item_reply_image_view"
@@ -77,7 +71,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layoutDirection="ltr"
             app:layout_marginEndPercent="6.93%">
 
@@ -135,7 +128,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/base_item_activity_audio_control"
-                android:layout_toRightOf="@id/base_item_activity_audio_control"
                 app:layout_marginStartPercent="3.59%"
                 app:layout_marginTopPercent="8.33%" />
 
@@ -145,7 +137,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_toEndOf="@id/base_item_activity_audio_control"
-                android:layout_toRightOf="@id/base_item_activity_audio_control"
                 android:lines="1"
                 android:textColor="#FFFFFF"
                 app:layout_marginStartPercent="3.59%"
@@ -156,8 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentEnd="true">
 
                 <TextView
                     android:id="@+id/base_item_activity_audio_item_speed_text_view"
@@ -175,7 +165,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignBottom="@+id/base_item_activity_audio_item_view"
             app:layout_marginEndPercent="6.93%"
             android:visibility="gone" />
@@ -185,7 +174,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_audio_item_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:visibility="gone"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"
@@ -196,7 +184,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_audio_item_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:visibility="gone"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"
@@ -208,7 +195,6 @@
         android:id="@+id/base_item_activity_audio_item_annotation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/base_item_activity_audio_item_container"
         android:choiceMode="singleChoice"

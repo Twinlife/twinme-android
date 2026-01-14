@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/template_external_call_activity_item_avatar_container_view"
-            android:layout_toRightOf="@id/template_external_call_activity_item_avatar_container_view"
             app:layout_widthPercent="60.53%"
             app:layout_marginStartPercent="4.26%">
 
@@ -69,7 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_alignStart="@+id/template_external_call_activity_item_information_view"
-            android:layout_alignLeft="@+id/template_external_call_activity_item_information_view"
             android:layout_alignParentBottom="true" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

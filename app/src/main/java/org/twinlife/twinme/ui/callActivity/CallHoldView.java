@@ -67,8 +67,11 @@ public class CallHoldView extends PercentRelativeLayout {
 
     private ImageView mAvatarView;
     private TextView mNameView;
+    private View mAddToCallView;
 
     private CallHoldListener mCallHoldListener;
+
+    private boolean mCanAddToCall = false;
 
     public CallHoldView(Context context) {
 
@@ -104,6 +107,15 @@ public class CallHoldView extends PercentRelativeLayout {
 
         mNameView.setText(name);
         mAvatarView.setImageBitmap(avatar);
+    }
+
+    public void enableAddToCall(boolean enable) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "enableAddToCall: " + enable);
+        }
+
+        mCanAddToCall = enable;
+        mAddToCallView.setAlpha(enable ? 1.0f : 0.5f);
     }
 
     private void initViews() {
@@ -167,13 +179,13 @@ public class CallHoldView extends PercentRelativeLayout {
         RoundedView swapRoundedView = findViewById(R.id.call_activity_hold_swap_background_view);
         swapRoundedView.setColor(Color.WHITE);
 
-        View addToCallView = findViewById(R.id.call_activity_hold_add_to_call_view);
-        addToCallView.setOnClickListener(v -> onAddToCallClick());
+        mAddToCallView = findViewById(R.id.call_activity_hold_add_to_call_view);
+        mAddToCallView.setOnClickListener(v -> onAddToCallClick());
 
-        viewLayoutParams = addToCallView.getLayoutParams();
+        viewLayoutParams = mAddToCallView.getLayoutParams();
         viewLayoutParams.width = ACTION_WIDTH;
 
-        marginLayoutParams = (MarginLayoutParams) addToCallView.getLayoutParams();
+        marginLayoutParams = (MarginLayoutParams) mAddToCallView.getLayoutParams();
         marginLayoutParams.rightMargin = ACTION_MARGIN;
         marginLayoutParams.setMarginEnd(ACTION_MARGIN);
 
@@ -202,7 +214,9 @@ public class CallHoldView extends PercentRelativeLayout {
             Log.d(LOG_TAG, "onAddToCallClick");
         }
 
-        mCallHoldListener.onAddToCall();
+        if (mCanAddToCall) {
+            mCallHoldListener.onAddToCall();
+        }
     }
 
     private void onHangupClick() {

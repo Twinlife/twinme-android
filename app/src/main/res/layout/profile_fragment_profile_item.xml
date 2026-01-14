@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/profile_fragment_profile_item_avatar_view"
-            android:layout_toRightOf="@id/profile_fragment_profile_item_avatar_view"
             app:layout_marginStartPercent="4.26%"
             app:layout_marginEndPercent="4.26%" />
 
@@ -34,7 +33,6 @@
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
             android:layout_alignStart="@+id/profile_fragment_profile_item_name_view"
-            android:layout_alignLeft="@+id/profile_fragment_profile_item_name_view"
             android:layout_alignParentBottom="true" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -65,7 +65,6 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/click_to_call_view_red_rounded_view"
-                android:layout_toRightOf="@+id/click_to_call_view_red_rounded_view"
                 app:layout_heightPercent="28.89%"
                 app:layout_aspectRatio="100%" />
 
@@ -75,7 +74,6 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/click_to_call_view_yellow_rounded_view"
-                android:layout_toRightOf="@+id/click_to_call_view_yellow_rounded_view"
                 app:layout_heightPercent="28.89%"
                 app:layout_aspectRatio="100%" />
 
@@ -84,7 +82,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_toEndOf="@+id/click_to_call_view_green_rounded_view"
-                android:layout_toRightOf="@+id/click_to_call_view_green_rounded_view"
                 app:layout_heightPercent="57.78%"
                 android:layout_centerVertical="true">
 
@@ -104,7 +101,6 @@
                 android:id="@+id/click_to_call_view_avatar_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 app:layout_aspectRatio="100%"

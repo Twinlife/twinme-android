@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -83,12 +84,15 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
     private View mFooterView;
     private View mSaveView;
     private View mShareView;
+    private View mMuteView;
+    private ImageView mMuteImageView;
 
     private Bitmap mAvatar;
 
     private boolean mCanScroll = true;
 
     private boolean mDeferredSaveMedia = false;
+    private boolean mIsMuted = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -244,6 +248,14 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         }
 
         mCanScroll = !touch;
+    }
+
+    public boolean isMuted() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isMuted");
+        }
+
+        return mIsMuted;
     }
 
     //
@@ -403,6 +415,15 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         layoutParams = mShareView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_ACTION_WIDTH * Design.WIDTH_RATIO);
 
+        mMuteView = findViewById(R.id.fullscreen_media_activity_footer_mute_view);
+        mMuteView.setOnClickListener(view -> onMuteClick());
+
+        layoutParams = mMuteView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ACTION_WIDTH * Design.WIDTH_RATIO);
+
+        mMuteImageView = findViewById(R.id.fullscreen_media_activity_footer_mute_image_view);
+        mMuteImageView.setColorFilter(Color.WHITE);
+
         View deleteView = findViewById(R.id.fullscreen_media_activity_footer_delete_view);
         deleteView.setOnClickListener(view -> onDeleteClick());
 
@@ -537,6 +558,22 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         }
     }
 
+    private void onMuteClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onMuteClick");
+        }
+
+        mIsMuted = !mIsMuted;
+
+        if (mIsMuted) {
+            mMuteImageView.setImageResource(R.drawable.loud_speaker_action_call_off);
+        } else {
+            mMuteImageView.setImageResource(R.drawable.loud_speaker_action_call_on);
+        }
+
+        mFullscreenMediaAdapter.mutePlayer(mIsMuted);
+    }
+
     private void onDeleteClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onDeleteClick");
@@ -553,6 +590,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         ViewGroup viewGroup = findViewById(R.id.fullscreen_media_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
+        deleteConfirmView.setForceDarkMode(true);
         deleteConfirmView.setAvatar(mAvatar, mAvatar == null || mAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
 
         if (!isShareItem(currentItem)) {
@@ -606,7 +644,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
 
     private void updateFooterView(int position) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "deleteItem");
+            Log.d(LOG_TAG, "updateFooterView");
         }
 
         if (position >= 0 && position < mItems.size()) {
@@ -619,6 +657,12 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
                 } else {
                     mShareView.setAlpha(1.f);
                     mSaveView.setAlpha(1.f);
+                }
+
+                if (currentItem.getType() == Item.ItemType.VIDEO || currentItem.getType() == Item.ItemType.PEER_VIDEO) {
+                    mMuteView.setVisibility(View.VISIBLE);
+                } else {
+                    mMuteView.setVisibility(View.GONE);
                 }
             }
         }

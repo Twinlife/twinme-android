@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021-2025 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -57,7 +57,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-public class EditProfileActivity extends AbstractEditActivity implements EditIdentityService.Observer, MenuSelectValueView.Observer {
+public class EditProfileActivity extends AbstractEditActivity implements EditIdentityService.Observer {
     private static final String LOG_TAG = "EditProfileActivity";
     private static final boolean DEBUG = false;
 
@@ -71,9 +71,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     private View mPropagateView;
     private TextView mPropagateTextView;
     private TextView mSaveTextView;
-
-    private View mOverlayMenuView;
-    private MenuSelectValueView mMenuSelectValueView;
 
     private boolean mUIInitialized = false;
 
@@ -340,32 +337,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         });
     }
 
-    //MenuSelectValueView.Observer
-
-    @Override
-    public void onCloseMenuAnimationEnd() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
-        }
-
-        mMenuSelectValueView.setVisibility(View.INVISIBLE);
-        mOverlayMenuView.setVisibility(View.INVISIBLE);
-
-        Window window = getWindow();
-        window.setNavigationBarColor(Design.WHITE_COLOR);
-    }
-
-    @Override
-    public void onSelectValue(int value) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSelectValue: " + value);
-        }
-
-        closeMenuSelectValue();
-        Settings.profileUpdateMode.setInt(value).save();
-        updateProfileUpdateMode();
-    }
-
     //
     // Private methods
     //
@@ -587,15 +558,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         Design.updateTextFont(mSaveTextView, Design.FONT_BOLD28);
         mSaveTextView.setTextColor(Color.WHITE);
 
-        mOverlayMenuView = findViewById(R.id.edit_profile_activity_overlay_view);
-        mOverlayMenuView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
-        mOverlayMenuView.setOnClickListener(view -> closeMenu());
-
-        mMenuSelectValueView = findViewById(R.id.edit_profile_activity_menu_select_value_view);
-        mMenuSelectValueView.setVisibility(View.INVISIBLE);
-        mMenuSelectValueView.setObserver(this);
-        mMenuSelectValueView.setActivity(this);
-
         mProgressBarView = findViewById(R.id.edit_profile_activity_progress_bar);
 
         mUIInitialized = true;
@@ -795,14 +757,36 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "openMenuSelectValue");
         }
 
-        if (mMenuSelectValueView.getVisibility() == View.INVISIBLE) {
-            mMenuSelectValueView.setVisibility(View.VISIBLE);
-            mOverlayMenuView.setVisibility(View.VISIBLE);
-            mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE);
+        ViewGroup viewGroup = findViewById(R.id.edit_profile_activity_layout);
 
-            Window window = getWindow();
-            window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
-        }
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+
+        menuSelectValueView.setActivity(this);
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+
+                viewGroup.removeView(menuSelectValueView);
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.WHITE_COLOR);
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                Settings.profileUpdateMode.setInt(value).save();
+                updateProfileUpdateMode();
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void openMenuPropagatingProfileView() {
@@ -818,7 +802,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             @Override
             public void onCloseMenuAnimationEnd() {
 
-                menuPropagatingProfileView.animationCloseMenu();
+                viewGroup.removeView(menuPropagatingProfileView);
                 saveProfile();
 
                 Window window = getWindow();
@@ -851,24 +835,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         Window window = getWindow();
         window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
-    }
-
-    private void closeMenu() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "closeMenu");
-        }
-
-        if (mMenuSelectValueView.getVisibility() == View.VISIBLE) {
-            closeMenuSelectValue();
-        }
-    }
-
-    private void closeMenuSelectValue() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "closeMenuSelectValue");
-        }
-
-        mMenuSelectValueView.animationCloseMenu();
     }
 
     private void openMenuPhoto() {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/conversation_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -25,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/conversation_activity_item_list_container_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -33,17 +34,26 @@
         android:layout_above="@+id/conversation_activity_footer"
         android:layout_below="@+id/conversation_activity_top_tool_bar">
 
+        <View
+            android:id="@+id/conversation_activity_item_list_overlay_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/conversation_activity_item_list_view"
+            android:clickable="true"
+            android:visibility="invisible" />
+
         <org.twinlife.twinme.ui.conversationActivity.ItemRecyclerView
             android:id="@+id/conversation_activity_item_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_gravity="bottom"
             android:drawSelectorOnTop="false"
             android:listSelector="@android:color/transparent"
             android:overScrollMode="ifContentScrolls"
             android:scrollbars="vertical"
             android:transcriptMode="normal" />
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/conversation_activity_empty_view"
@@ -69,9 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_toLeftOf="@+id/conversation_activity_toolbar_right_view"
             android:layout_toStartOf="@+id/conversation_activity_toolbar_right_view"
-            android:layout_toRightOf="@+id/conversation_activity_toolbar_menu_view"
             android:layout_toEndOf="@+id/conversation_activity_toolbar_menu_view"
             android:clickable="true">
 
@@ -112,7 +120,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/conversation_activity_toolbar_edit_message_image_view"
                     android:layout_toEndOf="@+id/conversation_activity_toolbar_edit_message_image_view"
                     android:text="@string/application_edit" />
 
@@ -124,7 +131,6 @@
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:layout_alignBottom="@+id/conversation_activity_edit_text"
-                android:layout_toLeftOf="@+id/conversation_activity_toolbar_audio_record_view"
                 android:layout_toStartOf="@+id/conversation_activity_toolbar_audio_record_view"
                 android:contentDescription="@string/application_camera"
                 app:layout_aspectRatio="100%">
@@ -156,7 +162,6 @@
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:layout_alignBottom="@+id/conversation_activity_edit_text"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:contentDescription="@string/conversation_activity_record_title"
                 app:layout_aspectRatio="100%">
@@ -238,7 +243,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignBottom="@+id/conversation_activity_edit_toolbar">
 
             <androidx.percentlayout.widget.PercentRelativeLayout
@@ -318,14 +322,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_toLeftOf="@+id/conversation_activity_scroll_indicator_image_view"
             android:layout_toStartOf="@+id/conversation_activity_scroll_indicator_image_view"
             android:layout_centerVertical="true" />
 
         <ImageView
             android:id="@+id/conversation_activity_scroll_indicator_image_view"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/scroll_down_icon"
             app:layout_aspectRatio="100%" />
@@ -343,6 +345,7 @@
         android:layout_height="0dp"
         android:clickable="true"
         android:layout_alignTop="@+id/conversation_activity_top_tool_bar"
+        android:layout_above="@+id/conversation_activity_item_list_container_view"
         android:visibility="invisible" />
 
     <View

@@ -339,23 +339,6 @@ class MessageItemViewHolder extends ItemViewHolder {
                     break;
             }
         }
-
-        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
-        overlayLayoutParams.width = getContainer().getWidth();
-        if (getBaseItemActivity().isMenuOpen()) {
-            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getContainer().getLayoutParams();
-            overlayLayoutParams.height = getContainer().getHeight() + getAnnotationViewHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
-            getOverlayView().setVisibility(View.VISIBLE);
-            if (getBaseItemActivity().isSelectedItem(getItem().getDescriptorId())) {
-                itemView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
-                getOverlayView().setVisibility(View.INVISIBLE);
-            }
-        } else {
-            overlayLayoutParams.height = OVERLAY_DEFAULT_HEIGHT;
-            getOverlayView().setVisibility(View.INVISIBLE);
-            itemView.setBackgroundColor(Color.TRANSPARENT);
-        }
-        getOverlayView().setLayoutParams(overlayLayoutParams);
     }
 
     @Override

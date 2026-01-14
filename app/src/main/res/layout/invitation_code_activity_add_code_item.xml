@@ -32,7 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/invitation_code_activity_add_code_item_add_view"
-        android:layout_toRightOf="@id/invitation_code_activity_add_code_item_add_view"
         android:text="@string/main_activity_add_contact"
         app:layout_marginStartPercent="4.67%"
         app:layout_marginEndPercent="4.67%"/>

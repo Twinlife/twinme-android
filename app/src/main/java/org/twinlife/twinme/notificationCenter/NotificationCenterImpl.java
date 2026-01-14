@@ -299,11 +299,11 @@ public class NotificationCenterImpl implements NotificationCenter {
                 if (invitation.getStatus() == InvitationDescriptor.Status.PENDING) {
                     type = NotificationType.NEW_GROUP_INVITATION;
                     if (displayNotificationSender && displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_group_invitation));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation_group));
                     } else if (displayNotificationSender) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     } else if (displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_group_invitation_received));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation_received_group));
                     } else {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     }
@@ -315,11 +315,11 @@ public class NotificationCenterImpl implements NotificationCenter {
                 if (twincodeDescriptor.getSchemaId().equals(Invitation.SCHEMA_ID)) {
                     type = NotificationType.NEW_CONTACT_INVITATION;
                     if (displayNotificationSender && displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_group_invitation));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation));
                     } else if (displayNotificationSender) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     } else if (displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_group_invitation_received));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation_received));
                     } else {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     }
@@ -494,7 +494,12 @@ public class NotificationCenterImpl implements NotificationCenter {
                     + " annotatingUser=" + annotatingUser);
         }
 
-        messageNotification(contact, null, conversation, new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message_received)), -1,
+        // MessagingStyle.Messages are ordered by date in the conversation notification.
+        // Annotations don't have a timestamp, so we use the current time to try and maintain a coherent message order.
+        // If we use -1 like before, reactions will be displayed first, sometimes before the message it is reacting to.
+        long timestamp = System.currentTimeMillis();
+
+        messageNotification(contact, null, conversation, new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message_received)), timestamp,
                 NotificationType.UPDATED_ANNOTATION, descriptor, annotatingUser);
     }
 
@@ -774,11 +779,11 @@ public class NotificationCenterImpl implements NotificationCenter {
                 case NEW_GROUP_INVITATION:
                 case NEW_CONTACT_INVITATION:
                     if (displayNotificationSender && displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_group_invitation));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation));
                     } else if (displayNotificationSender) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     } else if (displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_group_invitation_received));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation_received));
                     } else {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     }

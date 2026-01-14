@@ -42,6 +42,7 @@
     <string name="application_do_not_display">لا تعرض بعد الآن</string>
     <string name="application_edit">تعديل</string>
     <string name="application_error_file_not_found">لم يتم العثور على الملف.</string>
+    <string name="application_error_media_unload">تعذر تحميل الوسائط.</string>
     <string name="application_error_media_not_supported">هذا التنسيق للصورة/الفيديو غير مدعوم من قِبل التطبيق.</string>
     <string name="application_error_no_storage_space">لا توجد مساحة تخزين كافية</string>
     <string name="application_group_limit_reached">تم تجاوز العدد الأقصى (%1$d) من أعضاء المجموعة.</string>
@@ -52,6 +53,7 @@
     <string name="application_one_item_selected">تم تحديد عنصر واحد</string>
     <string name="application_migration_no_storage_space">لا توجد مساحة كافية على جهازك لإكمال عملية الترحيل. أغلق التطبيق، وقم بتحرير بعض المساحة، ثم أعد تشغيل التطبيق لإكمال التحديث.</string>
     <string name="application_migration_no_storage_space_message">أحد الجهازين لا يحتوي على مساحة تخزين كافية. أفرغ مساحة على هذا الجهاز قبل إعادة تشغيل عملية الترحيل.</string>
+    <string name="application_more_info">معلومات اكثر…</string>
     <string name="application_name_hint">الكنية</string>
     <string name="application_network_connecting">جارٍ الاتصال بخدمة twinme</string>
     <string name="application_network_connectivity">الاتصال بالشبكة موجود</string>
@@ -405,6 +407,11 @@
     <string name="conversation_activity_invitation_title">أدعوك للانضمام إلى المجموعة</string>
     <string name="conversation_activity_local_cleanup">تم حذف المحتويات الرئيسية محليا.</string>
     <string name="conversation_activity_manage_conversation">إدارة المحادثة</string>
+    <string name="conversation_activity_media_quality_original">الدقة الأصلية (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">بدون تغيير الحجم - نقل أبطأ</string>
+    <string name="conversation_activity_media_quality_standard">الدقة القياسية (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">أصغر حجمًا - نقل أسرع</string>
+    <string name="conversation_activity_media_quality_title">دقة الوسائط</string>
     <string name="conversation_activity_menu_item_view_copy_message">نسخ إلى الحافظة!</string>
     <string name="conversation_activity_menu_item_view_copy_title">نسخ</string>
     <string name="conversation_activity_menu_item_view_delete_title">حذف</string>
@@ -431,6 +438,9 @@
     <string name="conversation_activity_send_file_warning">تحذير: لا يمكن منع المستلم من نسخ / حفظ / مشاركة مستند (pdf ، word ، ppt ، excel ، zip ، إلخ) ، والذي لا يمكن فتحه إلا خارج التطبيق. هل مازلت تريد إرسالها؟</string>
     <string name="conversation_activity_send_large_file_message">هذا الملف كبير (%1$d ميغا بايت). هل ترغب في الاستمرار ؟</string>
     <string name="conversation_activity_send_menu_allow_copy">السماح للمستلم بنسخ/حفظ/مشاركة هذا المحتوى</string>
+    <string name="conversation_activity_send_quality_size">وسائط كبيرة (%1$s)</string>
+    <string name="conversation_activity_send_quality_standard">إرسال بدقة قياسية (SD)</string>
+    <string name="conversation_activity_send_quality_warning">يمكنك تغيير الحجم إلى الدقة القياسية (SD) لنقل أسرع.</string>
     <string name="conversation_activity_stream_dialog">هل تريد القبول؟</string>
     <string name="conversation_activity_unsupported_media">تنسيق الوسائط غير مدعوم</string>
     <string name="conversation_activity_video_call">مكالمة فيديو</string>
@@ -703,8 +713,10 @@
     <string name="notification_center_deleted_contact">تم حذف جهة الاتصال</string>
     <string name="notification_center_file_message">ارسل لك ملف</string>
     <string name="notification_center_file_message_received">ملف جديد</string>
-    <string name="notification_center_group_invitation">أرسل لك دعوة</string>
-    <string name="notification_center_group_invitation_received">دعوة جديدة</string>
+    <string name="notification_center_invitation">أرسل لك دعوة</string>
+    <string name="notification_center_invitation_group">يدعوك للانضمام إلى مجموعة.</string>
+    <string name="notification_center_invitation_received">دعوة جديدة</string>
+    <string name="notification_center_invitation_received_group">دعوة جديدة للانضمام إلى مجموعة.</string>
     <string name="notification_center_join_group">أنت عضو في المجموعة</string>
     <string name="notification_center_message_received">رسالة جديدة</string>
     <string name="notification_center_missed_audio_call_to">مكالمة صوتية فائتة مع <span>%1$s</span></string>
@@ -741,7 +753,8 @@
     <string name="notifications_fragment_item_cleanup_message">" قام بمسح بعض الرسائل القديمة."</string>
     <string name="notifications_fragment_item_deleted_contact">تم حذف جهة الاتصال</string>
     <string name="notifications_fragment_item_file_message">فلم كل لسرا</string>
-    <string name="notifications_fragment_item_group_invitation">ةوعد كل لسرأ</string>
+    <string name="notifications_fragment_item_invitation">ةوعد كل لسرأ</string>
+    <string name="notifications_fragment_item_invitation_group">يدعوك للانضمام إلى مجموعة.</string>
     <string name="notifications_fragment_item_image_message">أرسل لك صورة</string>
     <string name="notifications_fragment_item_join_group">ةعومجملا يف وضع تنأ</string>
     <string name="notifications_fragment_item_new_contact">ةديدج لاصتا ةهج</string>
@@ -837,8 +850,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">قفل التطبيق بخدمات المقاييس الحيوية أو برمز PIN.</string>
-    <string name="privacy_activity_hide_last_screen_message">منع المعاينات من الظهور في مبدل التطبيق</string>
-    <string name="privacy_activity_hide_last_screen_title">إخفاء الشاشة الأخيرة</string>
+    <string name="privacy_activity_hide_last_screen_message">وإخفاء التطبيق عند تشغيله في الخلفية، إذا كان الجهاز يسمح بذلك.</string>
+    <string name="privacy_activity_hide_last_screen_title">منع التقاط لقطات الشاشة</string>
     <string name="privacy_activity_lock_screen_message">افتح الوصول إلى التطبيق باستخدام خدمات المصادقة البيومترية أو رمز المرور بجهازك. لا يزال بإمكانك الرد على المكالمات الواردة وتلقي الإخطارات أثناء قفل الوصول إلى التطبيق.</string>
     <string name="privacy_activity_lock_screen_not_available">يتطلب هذا الخيار إصدار Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">مهلة قفل الوصول</string>

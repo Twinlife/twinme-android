@@ -30,7 +30,6 @@
         style="@style/textAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/search_content_message_item_avatar_container"
         android:layout_toEndOf="@+id/search_content_message_item_avatar_container"
         android:textColor="@android:color/black" />
 
@@ -39,22 +38,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignBottom="@+id/search_content_message_item_message">
 
         <TextView
             android:id="@+id/search_content_message_item_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/search_content_message_item_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/search_content_message_item_contact"/>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

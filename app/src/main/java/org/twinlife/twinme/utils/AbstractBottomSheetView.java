@@ -319,6 +319,7 @@ public class AbstractBottomSheetView extends PercentRelativeLayout {
             Log.d(LOG_TAG, "initViews");
         }
 
+        setElevation(1);
         mOverlayView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
         mOverlayView.setAlpha(0);
         mOverlayView.setOnClickListener(v -> onDismissClick());

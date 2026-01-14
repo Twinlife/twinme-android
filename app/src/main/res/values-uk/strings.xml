@@ -40,6 +40,7 @@
     <string name="application_do_not_display">Більше не відображати</string>
     <string name="application_edit">Редагувати</string>
     <string name="application_error_file_not_found">Файл не знайдено.</string>
+    <string name="application_error_media_unload">Не вдалося завантажити медіафайли.</string>
     <string name="application_error_media_not_supported">Цей формат зображення/відео не підтримується програмою.</string>
     <string name="application_error_no_storage_space">Недостатньо місця для зберігання</string>
     <string name="application_group_limit_reached">Перевищено максимальну кількість (%1$d) учасників групи.</string>
@@ -50,6 +51,7 @@
     <string name="application_one_item_selected">Вибрано 1 елемент</string>
     <string name="application_migration_no_storage_space">На вашому пристрої недостатньо місця для завершення міграції. Закрийте програму, звільніть місце та перезапустіть програму, щоб завершити оновлення.</string>
     <string name="application_migration_no_storage_space_message">На одному з двох пристроїв недостатньо місця для зберігання. Звільніть місце на цьому пристрої, перш ніж перезапускати міграцію.</string>
+    <string name="application_more_info">Більше інформації…</string>
     <string name="application_name_hint">Ім’я</string>
     <string name="application_network_connecting">Підключення до служби Twinme</string>
     <string name="application_network_connectivity">Підключення до мережі існує</string>
@@ -402,6 +404,11 @@
     <string name="conversation_activity_invitation_title">Запрошую приєднатися до групи</string>
     <string name="conversation_activity_local_cleanup">Основний вміст було видалено локально.</string>
     <string name="conversation_activity_manage_conversation">Керуйте розмовою</string>
+    <string name="conversation_activity_media_quality_original">Оригінальна чіткість (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Без зміни розміру - Повільніше передавання</string>
+    <string name="conversation_activity_media_quality_standard">Стандартна чіткість (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Менше - Швидше передавання</string>
+    <string name="conversation_activity_media_quality_title">Роздільна здатність медіафайлу</string>
     <string name="conversation_activity_menu_item_view_copy_message">Скопійовано в буфер обміну!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Копіювати</string>
     <string name="conversation_activity_menu_item_view_delete_title">Видалити</string>
@@ -428,6 +435,9 @@
     <string name="conversation_activity_send_file_warning">Попередження: неможливо заборонити одержувачу копіювати/зберігати/ділитися документом (pdf, word, ppt, excel, zip тощо), який можна відкрити лише поза програмою. Ви все ще хочете надіслати?</string>
     <string name="conversation_activity_send_large_file_message">Цей файл великий (%1$d МБ). Хочете продовжити?</string>
     <string name="conversation_activity_send_menu_allow_copy">Дозволити одержувачу копіювати / зберігати / обмінюватися цим вмістом</string>
+    <string name="conversation_activity_send_quality_size">Великий медіафайл (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Надіслати у стандартній чіткості (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Ви можете змінити розмір до стандартної чіткості (SD) для швидшого передавання.</string>
     <string name="conversation_activity_stream_dialog">Ви хочете прийняти?</string>
     <string name="conversation_activity_unsupported_media">Непідтримуваний медіаформат</string>
     <string name="conversation_activity_video_call">Відеодзвінок</string>
@@ -698,8 +708,10 @@
     <string name="notification_center_deleted_contact">Контакт видалено</string>
     <string name="notification_center_file_message">Вам відправлений файл</string>
     <string name="notification_center_file_message_received">Новий файл</string>
-    <string name="notification_center_group_invitation">Надіслав запрошення</string>
-    <string name="notification_center_group_invitation_received">Нове запрошення</string>
+    <string name="notification_center_invitation">Надіслав запрошення</string>
+    <string name="notification_center_invitation_group">запрошує вас приєднатися до групи.</string>
+    <string name="notification_center_invitation_received">Нове запрошення</string>
+    <string name="notification_center_invitation_received_group">Нове запрошення до групи</string>
     <string name="notification_center_join_group">Ви є учасником групи</string>
     <string name="notification_center_message_received">Нове повідомлення</string>
     <string name="notification_center_missed_audio_call_to">Пропущений аудіодзвінок абоненту %1$s</string>
@@ -736,7 +748,8 @@
     <string name="notifications_fragment_item_cleanup_message">видалив деякі старі повідомлення.</string>
     <string name="notifications_fragment_item_deleted_contact">Контакт видалено</string>
     <string name="notifications_fragment_item_file_message">Вам відправлений файл</string>
-    <string name="notifications_fragment_item_group_invitation">Надіслав запрошення</string>
+    <string name="notifications_fragment_item_invitation">Надіслав запрошення</string>
+    <string name="notifications_fragment_item_invitation_group">запрошує вас приєднатися до групи.</string>
     <string name="notifications_fragment_item_image_message">Надіслав фото</string>
     <string name="notifications_fragment_item_join_group">Ви є учасником групи</string>
     <string name="notifications_fragment_item_new_contact">Новий контакт</string>
@@ -832,8 +845,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Заблокуйте програму за допомогою біометричних послуг або PIN-коду.</string>
-    <string name="privacy_activity_hide_last_screen_message">Відсутність попередніх переглядів у перемикачі додатків </string>
-    <string name="privacy_activity_hide_last_screen_title">Приховати останній екран</string>
+    <string name="privacy_activity_hide_last_screen_message">Та приховати програму, коли вона працює у фоновому режимі, якщо пристрій це дозволяє.</string>
+    <string name="privacy_activity_hide_last_screen_title">Заборонити знімки екрана</string>
     <string name="privacy_activity_lock_screen_message">Відкрити доступ до додатку через автентифікацію шляхом введення біометричних даних або паролю. Відповідати на вхідні дзвінки та отримувати сповіщення можливо навіть у разі відсутності доступу до додатку.</string>
     <string name="privacy_activity_lock_screen_not_available">Ця функція доступна для Android &gt; 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Час очікування блокування доступу</string>

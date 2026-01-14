@@ -79,8 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_profile_activity_name_content_view"
-            android:layout_alignEnd="@+id/edit_profile_activity_name_content_view"
-            android:layout_alignRight="@+id/edit_profile_activity_name_content_view" />
+            android:layout_alignEnd="@+id/edit_profile_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_description_content_view"
@@ -108,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_profile_activity_description_content_view"
-            android:layout_alignEnd="@+id/edit_profile_activity_description_content_view"
-            android:layout_alignRight="@+id/edit_profile_activity_description_content_view" />
+            android:layout_alignEnd="@+id/edit_profile_activity_description_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_profile_activity_propagate_view"
@@ -130,7 +128,6 @@
                 android:id="@+id/edit_profile_activity_propagate_image_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/select_value_icon"
                 app:layout_aspectRatio="62%"
@@ -187,17 +184,5 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
-
-    <View
-        android:id="@+id/edit_profile_activity_overlay_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:visibility="invisible" />
-
-    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
-        android:id="@+id/edit_profile_activity_menu_select_value_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

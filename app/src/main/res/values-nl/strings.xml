@@ -42,6 +42,7 @@
     <string name="application_do_not_display">Niet meer weergeven</string>
     <string name="application_edit">Bewerk</string>
     <string name="application_error_file_not_found">Het bestand is niet gevonden.</string>
+    <string name="application_error_media_unload">Media kan niet worden geladen.</string>
     <string name="application_error_media_not_supported">Deze afbeelding/video-indeling wordt niet ondersteund door de applicatie.</string>
     <string name="application_error_no_storage_space">Onvoldoende opslagruimte</string>
     <string name="application_group_limit_reached">Maximum aantal (%1$d) van groepsleden overschreden.</string>
@@ -52,6 +53,7 @@
     <string name="application_one_item_selected">1 item geselecteerd</string>
     <string name="application_migration_no_storage_space">Er is onvoldoende ruimte op uw apparaat om de migratie te voltooien. Sluit de applicatie, maak wat ruimte vrij en start de app opnieuw om de update te voltooien.</string>
     <string name="application_migration_no_storage_space_message">Een van de twee apparaten heeft onvoldoende opslagruimte. Maak ruimte vrij op dat apparaat voordat je de migratie opnieuw start.</string>
+    <string name="application_more_info">Meer informatie…</string>
     <string name="application_name_hint">Naam</string>
     <string name="application_network_connecting">Verbinding maken met de Twinme service</string>
     <string name="application_network_connectivity">Netwerkverbinding aanwezig</string>
@@ -406,6 +408,11 @@
     <string name="conversation_activity_invitation_title">Ik nodig je uit om lid te worden van de groep</string>
     <string name="conversation_activity_local_cleanup">De hoofdinhoud is lokaal verwijderd.</string>
     <string name="conversation_activity_manage_conversation">Beheer het gesprek</string>
+    <string name="conversation_activity_media_quality_original">Originele definitie (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Zonder formaatwijziging - Langzamere overdracht</string>
+    <string name="conversation_activity_media_quality_standard">Standaarddefinitie (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Kleiner - Snellere overdracht</string>
+    <string name="conversation_activity_media_quality_title">Mediaresolutie</string>
     <string name="conversation_activity_menu_item_view_copy_message">Gekopieerd naar het klembord!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kopiëren</string>
     <string name="conversation_activity_menu_item_view_delete_title">Verwijder</string>
@@ -432,6 +439,9 @@
     <string name="conversation_activity_send_file_warning">Waarschuwing: het is niet mogelijk om te voorkomen dat de ontvanger een document (pdf, word, ppt, excel, zip, etc.) kopieert/opslaat/deelt, dat alleen buiten de applicatie geopend kan worden. Wil je het alsnog versturen?</string>
     <string name="conversation_activity_send_large_file_message">Dit bestand is groot (%1$d MB). Wil je verder gaan ?</string>
     <string name="conversation_activity_send_menu_allow_copy">Sta ontvanger toe om deze inhoud te kopiëren/opslaan/delen</string>
+    <string name="conversation_activity_send_quality_size">Grote media (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Verzenden in standaarddefinitie (SD)</string>
+    <string name="conversation_activity_send_quality_warning">U kunt het formaat wijzigen naar standaarddefinitie (SD) voor een snellere overdracht.</string>
     <string name="conversation_activity_stream_dialog">Wilt u het accepteren?</string>
     <string name="conversation_activity_unsupported_media">Niet-ondersteund mediaformaat</string>
     <string name="conversation_activity_video_call">Video-oproep</string>
@@ -704,8 +714,10 @@
     <string name="notification_center_deleted_contact">Contactpersoon verwijderd</string>
     <string name="notification_center_file_message">Stuurde u een bestand</string>
     <string name="notification_center_file_message_received">Nieuw bestand</string>
-    <string name="notification_center_group_invitation">Stuurde u een uitnodiging</string>
-    <string name="notification_center_group_invitation_received">Nieuwe uitnodiging</string>
+    <string name="notification_center_invitation">Stuurde u een uitnodiging</string>
+    <string name="notification_center_invitation_group">nodigt je uit om lid te worden van een groep.</string>
+    <string name="notification_center_invitation_received">Nieuwe uitnodiging</string>
+    <string name="notification_center_invitation_received_group">Nieuwe groepsuitnodiging</string>
     <string name="notification_center_join_group">Je bent lid van de groep</string>
     <string name="notification_center_message_received">Nieuw bericht</string>
     <string name="notification_center_missed_audio_call_to">Gemiste audio oproep op %1$s</string>
@@ -742,7 +754,8 @@
     <string name="notifications_fragment_item_cleanup_message">heeft een aantal oude berichten opgeruimd.</string>
     <string name="notifications_fragment_item_deleted_contact">Contactpersoon verwijderd</string>
     <string name="notifications_fragment_item_file_message">Stuurde u een bestand</string>
-    <string name="notifications_fragment_item_group_invitation">Stuurde u een uitnodiging</string>
+    <string name="notifications_fragment_item_invitation">Stuurde u een uitnodiging</string>
+    <string name="notifications_fragment_item_invitation_group">nodigt je uit om lid te worden van een groep.</string>
     <string name="notifications_fragment_item_image_message">Stuurde u een foto</string>
     <string name="notifications_fragment_item_join_group">Je bent lid van de groep</string>
     <string name="notifications_fragment_item_new_contact">Nieuw contact</string>
@@ -838,8 +851,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Vergrendel de applicatie met biometrische diensten of met een pincode.</string>
-    <string name="privacy_activity_hide_last_screen_message">Voorkom dat er voorbeelden verschijnen in de applicatiewisselaar</string>
-    <string name="privacy_activity_hide_last_screen_title">Verberg laatste scherm</string>
+    <string name="privacy_activity_hide_last_screen_message">En de app verbergen wanneer deze op de achtergrond draait, indien het apparaat dit toestaat.</string>
+    <string name="privacy_activity_hide_last_screen_title">Schermafbeeldingen verbieden</string>
     <string name="privacy_activity_lock_screen_message">Ontgrendel de toegang tot de applicatie met behulp van de biometrische of wachtwoordverificatieservices van uw apparaat. U kunt nog steeds inkomende oproepen beantwoorden en meldingen ontvangen terwijl de toegang tot de app is vergrendeld.</string>
     <string name="privacy_activity_lock_screen_not_available">Deze optie vereist een versie van Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Time-out voor toegangsvergrendeling</string>

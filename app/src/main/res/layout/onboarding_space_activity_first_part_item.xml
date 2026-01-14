@@ -35,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/onboarding_space_activity_first_part_item_sample_space_friends_image_view"
-                android:layout_toRightOf="@id/onboarding_space_activity_first_part_item_sample_space_friends_image_view"
                 app:layout_marginStartPercent="4.76%"
                 app:layout_marginEndPercent="4.76%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -72,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/onboarding_space_activity_first_part_item_sample_space_family_image_view"
-                android:layout_toRightOf="@id/onboarding_space_activity_first_part_item_sample_space_family_image_view"
                 app:layout_marginStartPercent="4.76%"
                 app:layout_marginEndPercent="4.76%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -110,7 +108,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/onboarding_space_activity_first_part_item_sample_space_business_image_view"
-                android:layout_toRightOf="@id/onboarding_space_activity_first_part_item_sample_space_business_image_view"
                 app:layout_marginStartPercent="4.76%"
                 app:layout_marginEndPercent="4.76%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>

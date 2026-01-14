@@ -261,11 +261,8 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
         }
 
         String linkTitle = mLinkLoader.getTitle();
-        if (linkTitle != null) {
-            mPreviewLinkView.setVisibility(View.VISIBLE);
+        if (linkTitle != null && !linkTitle.isEmpty()) {
             mTitleLinkView.setText(linkTitle);
-        } else {
-            mPreviewLinkView.setVisibility(View.GONE);
         }
 
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -305,6 +302,12 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
             ViewGroup.LayoutParams layoutParams = mPreviewLinkView.getLayoutParams();
             layoutParams.width = LINK_IMAGE_MAX_WIDTH;
             mPreviewLinkView.setLayoutParams(layoutParams);
+        }
+
+        if ((linkTitle != null && !linkTitle.isEmpty()) || mLinkLoader.getImage() != null) {
+            mPreviewLinkView.setVisibility(View.VISIBLE);
+        } else {
+            mPreviewLinkView.setVisibility(View.GONE);
         }
 
         // Compute the corner radii only once!

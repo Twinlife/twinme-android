@@ -117,8 +117,11 @@ public class UIConversation {
                     break;
 
                 case INVITATION_DESCRIPTOR:
+                    lastMessage = context.getResources().getString(R.string.notification_center_invitation_received_group);
+                    break;
+
                 case TWINCODE_DESCRIPTOR:
-                    lastMessage = context.getResources().getString(R.string.notification_center_group_invitation_received);
+                    lastMessage = context.getResources().getString(R.string.notification_center_invitation_received);
                     break;
 
                 case CLEAR_DESCRIPTOR:

@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,13 +30,17 @@ import org.twinlife.twinme.ui.TwinmeApplication;
 public class MenuSelectValueAdapter implements ListAdapter {
 
     protected static final float DESIGN_VALUE_HEIGHT = 120;
+    protected static final float DESIGN_CHECKMARK_HEIGHT = 44;
+    protected static final float DESIGN_MARGIN = 32;
 
     private final AbstractTwinmeActivity mActivity;
     private final OnValueClickListener mOnValueClickListener;
 
-    private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.IMAGE;
+    private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
 
     private int mSelectedValue = -1;
+
+    private boolean mForceDarkMode = false;
 
     public interface OnValueClickListener {
 
@@ -54,6 +59,11 @@ public class MenuSelectValueAdapter implements ListAdapter {
         setupSelectedValue();
     }
 
+    public void setForceDarkMode(boolean forceDarkMode) {
+
+        mForceDarkMode = forceDarkMode;
+    }
+
     @Override
     public void registerDataSetObserver(DataSetObserver dataSetObserver) {
 
@@ -67,7 +77,7 @@ public class MenuSelectValueAdapter implements ListAdapter {
     @Override
     public int getCount() {
 
-        if (mMenuType == MenuSelectValueView.MenuType.VIDEO) {
+        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
             return 2;
         }
         return 3;
@@ -98,12 +108,8 @@ public class MenuSelectValueAdapter implements ListAdapter {
         }
 
         switch (mMenuType) {
-            case IMAGE:
-                mSelectedValue = mActivity.getTwinmeApplication().sendImageSize();
-                break;
-
-            case VIDEO:
-                mSelectedValue = mActivity.getTwinmeApplication().sendVideoSize();
+            case QUALITY_MEDIA:
+                mSelectedValue = mActivity.getTwinmeApplication().qualityMedia();
                 break;
 
             case DISPLAY_CALLS:
@@ -130,22 +136,13 @@ public class MenuSelectValueAdapter implements ListAdapter {
         String subTitle = "";
         boolean isChecked = mSelectedValue == position;
 
-        if (mMenuType == MenuSelectValueView.MenuType.IMAGE) {
-            if (position == TwinmeApplication.SendImageSize.SMALL.ordinal()) {
-                title = mActivity.getString(R.string.conversation_activity_reduce_menu_minimal);
-                subTitle = mActivity.getString(R.string.conversation_activity_reduce_menu_minimal_size);
-            } else if (position == TwinmeApplication.SendImageSize.MEDIUM.ordinal()) {
-                title = mActivity.getString(R.string.conversation_activity_reduce_menu_lower);
-                subTitle = mActivity.getString(R.string.conversation_activity_reduce_menu_lower_size);
+        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
+            if (position == TwinmeApplication.QualityMedia.STANDARD.ordinal()) {
+                title = mActivity.getString(R.string.conversation_activity_media_quality_standard);
+                subTitle = mActivity.getString(R.string.conversation_activity_media_quality_standard_subtitle);
             } else {
-                title = mActivity.getString(R.string.conversation_activity_reduce_menu_original);
-                subTitle = mActivity.getString(R.string.conversation_activity_reduce_menu_original_subtitle);
-            }
-        } else if (mMenuType == MenuSelectValueView.MenuType.VIDEO) {
-            if (position == TwinmeApplication.SendVideoSize.LOWER.ordinal()) {
-                title = mActivity.getString(R.string.conversation_activity_reduce_menu_lower);
-            } else {
-                title = mActivity.getString(R.string.conversation_activity_reduce_menu_original);
+                title = mActivity.getString(R.string.conversation_activity_media_quality_original);
+                subTitle = mActivity.getString(R.string.conversation_activity_media_quality_original_subtitle);
             }
         } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
             if (position == DisplayCallsMode.NONE.ordinal()) {
@@ -172,22 +169,35 @@ public class MenuSelectValueAdapter implements ListAdapter {
         TextView nameView = convertView.findViewById(R.id.menu_select_value_child_title);
         Design.updateTextFont(nameView, Design.FONT_REGULAR34);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) nameView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_MARGIN * 2 * Design.WIDTH_RATIO) + (int) (DESIGN_CHECKMARK_HEIGHT * Design.HEIGHT_RATIO);
+
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(title);
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(mForceDarkMode ? Color.WHITE : Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if (!subTitle.isEmpty()) {
             spannableStringBuilder.append("\n");
             int startSubTitle = spannableStringBuilder.length();
             spannableStringBuilder.append(subTitle);
+            spannableStringBuilder.setSpan(new RelativeSizeSpan(0.9f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         nameView.setText(spannableStringBuilder);
 
         View checkMarkView = convertView.findViewById(R.id.menu_select_value_child_title_checkmark_view);
+
+        layoutParams = checkMarkView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_CHECKMARK_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.width = (int) (DESIGN_CHECKMARK_HEIGHT * Design.HEIGHT_RATIO);
+
         ImageView checkMarkImageView = convertView.findViewById(R.id.menu_select_value_child_title_checkmark_image);
         checkMarkImageView.setColorFilter(Design.getMainStyle());
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) checkMarkView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_MARGIN * Design.WIDTH_RATIO);
 
         if (isChecked) {
             checkMarkView.setVisibility(View.VISIBLE);

@@ -17,6 +17,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +34,14 @@ import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
+import org.twinlife.twinme.utils.DefaultConfirmView;
+import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.UUID;
 
@@ -44,20 +49,26 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "AbstractPreviewActivity";
     private static final boolean DEBUG = false;
 
+    private static final long WARNING_ORIGINAL_SIZE = 1024 * 1024 * 10;
+
     protected static final float DESIGN_CONTENT_SEND_VIEW_HEIGHT = 80f;
     protected static final float DESIGN_EDIT_TEXT_WIDTH_INSET = 32f;
     protected static final float DESIGN_EDIT_TEXT_HEIGHT_INSET = 20f;
     protected static final float DESIGN_SEND_IMAGE_HEIGHT = 30f;
-    protected static final float DESIGN_CLOSE_SIZE = 120f;
+    protected static final float DESIGN_HEADER_SIZE = 120f;
+    protected static final float DESIGN_HEADER_MARGIN = 12f;
+    protected static final float DESIGN_HEADER_ACTION_SIZE = 80f;
+    protected static final float DESIGN_CLOSE_SIZE = 32f;
+    protected static final float DESIGN_QUALITY_WIDTH = 46f;
+    protected static final float DESIGN_QUALITY_HEIGHT = 40f;
     protected static final float DESIGN_AVATAR_SIZE = 48f;
     protected static final float DESIGN_CERTIFIED_SIZE = 24f;
-    protected static final float DESIGN_NAME_MARGIN = 12f;
+    protected static final float DESIGN_SEND_VIEW_MARGIN = 60f;
 
     protected static final float DESIGN_THUMBNAIL_HEIGHT = 120f;
     protected static final float DESIGN_THUMBNAIL_MARGIN = 40f;
 
     private static final int EDIT_TEXT_BORDER_COLOR = Color.rgb(78, 78, 78);
-
 
     protected class TwinmeContextObserver extends TwinmeContext.DefaultObserver {
         @Override
@@ -69,6 +80,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
     protected CircularImageView mAvatarView;
     protected TextView mNameView;
     protected ImageView mCertifiedImageView;
+    protected View mQualityView;
+    private  ImageView mQualityImageView;
 
     protected EditText mEditText;
     protected View mSendView;
@@ -77,6 +90,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
 
     protected boolean mIsMenuSendOptionOpen = false;
     protected boolean mAllowCopy = true;
+    protected boolean mPreviewStartWithMedia = false;
+    protected boolean mIsQualityMediaOriginal = false;
 
     @Nullable
     protected UUID mOriginatorId;
@@ -136,32 +151,58 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
     abstract protected void updateViews();
     abstract protected  void send();
 
+    protected long totalFilesSize() {
+
+        return 0;
+    }
+
     protected void initViews() {
+
+        View headerView = findViewById(R.id.preview_activity_header_view);
+
+        ViewGroup.LayoutParams layoutParams = headerView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_HEADER_SIZE * Design.HEIGHT_RATIO);
 
         View closeView = findViewById(R.id.preview_activity_close_view);
         closeView.setOnClickListener(v -> finish());
 
-        ViewGroup.LayoutParams layoutParams = closeView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_CLOSE_SIZE * Design.HEIGHT_RATIO);
-        layoutParams.height = (int) (DESIGN_CLOSE_SIZE * Design.HEIGHT_RATIO);
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) closeView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_HEADER_MARGIN * Design.WIDTH_RATIO);
+
+        RoundedView closeRoundedView = findViewById(R.id.preview_activity_close_rounded_view);
+        closeRoundedView.setColor(Design.BACK_VIEW_COLOR);
+
+        layoutParams = closeRoundedView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_HEADER_ACTION_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_HEADER_ACTION_SIZE * Design.HEIGHT_RATIO);
 
         ImageView closeImageView = findViewById(R.id.preview_activity_close_icon_view);
         closeImageView.setColorFilter(Color.WHITE);
 
-        View headerView = findViewById(R.id.preview_activity_header_view);
-
-        layoutParams = headerView.getLayoutParams();
+        layoutParams = closeImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_CLOSE_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_CLOSE_SIZE * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) headerView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (DESIGN_CLOSE_SIZE * Design.HEIGHT_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_CLOSE_SIZE * Design.HEIGHT_RATIO);
+        View contactView = findViewById(R.id.preview_activity_contact_view);
+
+        layoutParams = contactView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_HEADER_ACTION_SIZE * Design.HEIGHT_RATIO);
+
+        float radius =  (DESIGN_HEADER_ACTION_SIZE * Design.HEIGHT_RATIO) * 0.5f;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+        ShapeDrawable infoBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        infoBackground.getPaint().setColor(Design.BACK_VIEW_COLOR);
+        contactView.setBackground(infoBackground);
 
         mAvatarView = findViewById(R.id.preview_activity_avatar_view);
 
         layoutParams = mAvatarView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_HEADER_MARGIN * Design.WIDTH_RATIO);
 
         mCertifiedImageView = findViewById(R.id.preview_activity_certified_view);
 
@@ -174,20 +215,49 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
         mNameView.setTextColor(Color.WHITE);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (DESIGN_NAME_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_HEADER_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_HEADER_MARGIN * Design.WIDTH_RATIO);
+
+        mQualityView = findViewById(R.id.preview_activity_quality_view);
+        mQualityView.setOnClickListener(v -> onQualityClick());
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mQualityView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_HEADER_MARGIN * Design.WIDTH_RATIO);
+
+        RoundedView qualityRoundedView = findViewById(R.id.preview_activity_quality_rounded_view);
+        qualityRoundedView.setColor(Design.BACK_VIEW_COLOR);
+
+        layoutParams = qualityRoundedView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_HEADER_ACTION_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_HEADER_ACTION_SIZE * Design.HEIGHT_RATIO);
+
+        mQualityImageView = findViewById(R.id.preview_activity_quality_image_view);
+        mQualityImageView.setColorFilter(Color.WHITE);
+
+        layoutParams = mQualityImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_QUALITY_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_QUALITY_HEIGHT * Design.HEIGHT_RATIO);
+
+        if (!mIsQualityMediaOriginal) {
+            mQualityImageView.setImageResource(R.drawable.media_sd_icon);
+        } else {
+            mQualityImageView.setImageResource(R.drawable.media_hd_icon);
+        }
 
         View contentSendView = findViewById(R.id.preview_activity_content_send_view);
         contentSendView.setMinimumHeight((int) (DESIGN_CONTENT_SEND_VIEW_HEIGHT * Design.HEIGHT_RATIO));
         contentSendView.setBackgroundColor(Color.TRANSPARENT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) contentSendView.getLayoutParams();
+        marginLayoutParams.bottomMargin = (int) (DESIGN_SEND_VIEW_MARGIN * Design.HEIGHT_RATIO);
 
         mEditText = findViewById(R.id.preview_activity_edit_text);
         Design.updateTextFont(mEditText, Design.FONT_REGULAR32);
         mEditText.setTextColor(Color.WHITE);
         mEditText.setHintTextColor(Design.PLACEHOLDER_COLOR);
 
-        float radius =  (DESIGN_CONTENT_SEND_VIEW_HEIGHT * Design.HEIGHT_RATIO) * 0.5f;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-
+        radius =  (DESIGN_CONTENT_SEND_VIEW_HEIGHT * Design.HEIGHT_RATIO) * 0.5f;
+        outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setColor(Color.BLACK);
@@ -269,7 +339,101 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onSendClick");
         }
 
-        send();
+        if (!mAllowCopy && !mPreviewStartWithMedia) {
+
+            ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
+
+            DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
+            defaultConfirmView.setForceDarkMode(true);
+            defaultConfirmView.setImage(null);
+            defaultConfirmView.setTitle(getString(R.string.account_migration_activity_state_send_files));
+            defaultConfirmView.setMessage(getString(R.string.conversation_activity_send_file_warning));
+            defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+            defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+
+            AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+                @Override
+                public void onConfirmClick() {
+                    defaultConfirmView.animationCloseConfirmView();
+                    send();
+                }
+
+                @Override
+                public void onCancelClick() {
+                    defaultConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onDismissClick() {
+                    defaultConfirmView.animationCloseConfirmView();
+                }
+
+                @Override
+                public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                    viewGroup.removeView(defaultConfirmView);
+                    setStatusBarColor();
+                }
+            };
+            defaultConfirmView.setObserver(observer);
+            viewGroup.addView(defaultConfirmView);
+            defaultConfirmView.show();
+
+            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
+            setStatusBarColor(color, Color.rgb(72,72,72));
+        } else if (mPreviewStartWithMedia && mIsQualityMediaOriginal) {
+
+            long totalSize = totalFilesSize();
+            if (totalSize > WARNING_ORIGINAL_SIZE) {
+                ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
+
+                DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
+                defaultConfirmView.setForceDarkMode(true);
+                defaultConfirmView.setImage(null);
+                defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
+
+                String message = String.format(getString(R.string.conversation_activity_send_quality_size), Formatter.formatFileSize(this, totalSize)) + "\n\n"  + getString(R.string.conversation_activity_send_quality_warning);
+                defaultConfirmView.setMessage(message);
+                defaultConfirmView.setConfirmTitle(getString(R.string.conversation_activity_send_quality_standard));
+                defaultConfirmView.setCancelTitle(getString(R.string.conversation_activity_media_quality_original));
+
+                AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+                    @Override
+                    public void onConfirmClick() {
+                        defaultConfirmView.animationCloseConfirmView();
+                        mIsQualityMediaOriginal = false;
+                        send();
+                    }
+
+                    @Override
+                    public void onCancelClick() {
+                        defaultConfirmView.animationCloseConfirmView();
+                        send();
+                    }
+
+                    @Override
+                    public void onDismissClick() {
+                        defaultConfirmView.animationCloseConfirmView();
+                    }
+
+                    @Override
+                    public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                        viewGroup.removeView(defaultConfirmView);
+                        setStatusBarColor();
+                    }
+                };
+                defaultConfirmView.setObserver(observer);
+                viewGroup.addView(defaultConfirmView);
+                defaultConfirmView.show();
+
+                int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
+                setStatusBarColor(color, Color.rgb(72,72,72));
+            } else {
+                send();
+            }
+
+        } else {
+            send();
+        }
     }
 
     private void onSendLongClick() {
@@ -289,6 +453,45 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
             setStatusBarColor(color, Color.rgb(72,72,72));
         }
+    }
+
+    private void onQualityClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onQualityClick");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
+
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+        menuSelectValueView.setActivity(this);
+        menuSelectValueView.setForceDarkMode(true);
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+                viewGroup.removeView(menuSelectValueView);
+                setStatusBarColor();
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (value == TwinmeApplication.QualityMedia.STANDARD.ordinal()) {
+                    mIsQualityMediaOriginal = false;
+                    mQualityImageView.setImageResource(R.drawable.media_sd_icon);
+                } else {
+                    mIsQualityMediaOriginal = true;
+                    mQualityImageView.setImageResource(R.drawable.media_hd_icon);
+                }
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.QUALITY_MEDIA);
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
+        setStatusBarColor(color, Color.rgb(72,72,72));
     }
 
     protected void onPremiumFeatureClick() {

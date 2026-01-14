@@ -54,7 +54,6 @@
                     android:id="@+id/show_room_activity_edit_clickable_view"
                     app:layout_widthPercent="19.73%"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:contentDescription="@string/application_edit">
 
@@ -148,7 +147,6 @@
                     android:layout_centerHorizontal="true"
                     app:layout_widthPercent="17.07%"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     app:layout_marginEndPercent="10.53%">
 
                     <androidx.percentlayout.widget.PercentRelativeLayout
@@ -227,7 +225,6 @@
                     android:id="@+id/show_room_activity_admin_accessory_view"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/end_chevron"
                     app:tint="?attr/black_color"
@@ -279,7 +276,6 @@
                     android:scaleType="fitCenter"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     app:layout_aspectRatio="100%"
                     app:layout_heightPercent="56.67%"
                     app:layout_marginRightPercent="4%"
@@ -328,7 +324,6 @@
                     android:id="@+id/show_room_activity_last_calls_accessory_view"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/end_chevron"
                     app:tint="?attr/black_color"
@@ -378,7 +373,6 @@
                     android:id="@+id/show_room_activity_files_accessory_view"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/end_chevron"
                     app:tint="@color/accessory_color"
@@ -416,7 +410,6 @@
                     android:id="@+id/show_room_activity_export_accessory_view"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/end_chevron"
                     app:tint="@color/accessory_color"
@@ -454,7 +447,6 @@
                     android:id="@+id/show_room_activity_clean_accessory_view"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/end_chevron"
                     app:tint="@color/accessory_color"

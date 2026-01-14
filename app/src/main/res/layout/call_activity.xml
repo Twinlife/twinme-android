@@ -93,7 +93,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/call_activity_back_clickable_view"
             android:layout_toEndOf="@+id/call_activity_back_clickable_view"
             android:ellipsize="end"
             android:lines="1"/>
@@ -103,7 +102,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/call_activity_name_view"
             android:layout_toEndOf="@+id/call_activity_name_view"
             android:src="@drawable/authentified_relation_icon"
             android:visibility="gone"
@@ -114,7 +112,6 @@
             android:layout_height="match_parent"
             app:layout_aspectRatio="100%"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_control_camera_view"
             android:layout_toStartOf="@+id/call_activity_control_camera_view"
             android:visibility="gone">
 
@@ -132,7 +129,6 @@
             android:layout_height="match_parent"
             app:layout_aspectRatio="100%"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_add_participant_view"
             android:layout_toStartOf="@+id/call_activity_add_participant_view"
             android:visibility="gone">
 
@@ -150,7 +146,6 @@
             android:layout_height="match_parent"
             app:layout_aspectRatio="100%"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_chronometer_view"
             android:layout_toStartOf="@+id/call_activity_chronometer_view"
             android:contentDescription="@string/add_call_participant_activity_title">
 
@@ -168,7 +163,6 @@
             android:id="@+id/call_activity_chronometer_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:visibility="gone"
             android:layout_centerVertical="true" />
@@ -177,7 +171,6 @@
             android:id="@+id/call_activity_terminated_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:visibility="gone"
             android:layout_centerVertical="true" />
@@ -195,7 +188,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/call_activity_name_view"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:text="@string/audio_call_activity_calling"
             android:visibility="gone"
@@ -221,14 +213,12 @@
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/call_activity_accept_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="43.20%">
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/call_activity_accept_button_view"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 app:layout_heightPercent="68.75%"
                 app:layout_widthPercent="100%">
 

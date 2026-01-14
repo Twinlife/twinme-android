@@ -100,10 +100,6 @@ class TypingItemViewHolder extends BaseItemViewHolder {
 
         setOriginators(getBaseItemActivity().getTypingOriginators(), getBaseItemActivity().getTypingOriginatorsImages());
 
-        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
-        overlayLayoutParams.height = ITEM_VIEW_HEIGHT;
-        getOverlayView().setLayoutParams(overlayLayoutParams);
-
         if (getBaseItemActivity().isMenuOpen()) {
             getOverlayView().setVisibility(View.VISIBLE);
         } else {

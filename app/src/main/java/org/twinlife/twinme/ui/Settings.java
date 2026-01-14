@@ -56,8 +56,7 @@ public class Settings {
     public static final IntConfig displayCallsMode = new IntConfig("settings_activity_display_calls_mode", DisplayCallsMode.MISSED.ordinal(), "FA50C4AC-C196-4F3F-BD68-3DE18D27F44E");
 
     // Message settings
-    public static final IntConfig reduceSizeImage = new IntConfig("settings_activity_reduce_size_image", TwinmeApplication.SendImageSize.ORIGINAL.ordinal(), "85F98FDE-5C4E-11ED-9B6A-0242AC120002");
-    public static final IntConfig reduceSizeVideo = new IntConfig("settings_activity_reduce_size_video", TwinmeApplication.SendVideoSize.ORIGINAL.ordinal(), "E476F52F-C863-4463-BAB4-B89C875E601F");
+    public static final IntConfig qualityMedia = new IntConfig("settings_activity_quality_media", TwinmeApplication.QualityMedia.ORIGINAL.ordinal(), "85F98FDE-5C4E-11ED-9B6A-0242AC120002");
 
     // Notification settings
     public static final BooleanConfig displayNotificationSender = new BooleanConfig("settings_activity_display_notification_sender", true, "2BA7FFAC-7992-4828-B2F3-D27A6F5D9AAB");

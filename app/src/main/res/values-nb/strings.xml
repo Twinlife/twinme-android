@@ -42,6 +42,7 @@
     <string name="application_do_not_display">Ikke vis lenger</string>
     <string name="application_edit">Redigere</string>
     <string name="application_error_file_not_found">Filen ble ikke funnet.</string>
+    <string name="application_error_media_unload">Kan ikke laste inn media.</string>
     <string name="application_error_media_not_supported">Dette bilde-/videoformatet støttes ikke av applikasjonen.</string>
     <string name="application_error_no_storage_space">Utilstrekkelig lagringsplass</string>
     <string name="application_group_limit_reached">Maksimum antall (%1$d) av gruppemedlemmer er overskredet.</string>
@@ -52,6 +53,7 @@
     <string name="application_one_item_selected">1 element er valgt</string>
     <string name="application_migration_no_storage_space">Det er ikke nok plass på enheten til å fullføre migreringen. Lukk applikasjonen, frigjør plass og start appen på nytt for å fullføre oppdateringen.</string>
     <string name="application_migration_no_storage_space_message">En av de to enhetene har ikke nok lagringsplass. Frigjør plass på den enheten før du starter overføringen på nytt.</string>
+    <string name="application_more_info">Mer informasjon…</string>
     <string name="application_name_hint">Navn</string>
     <string name="application_network_connecting">Kobler til twinme-tjeneste</string>
     <string name="application_network_connectivity">Nettverkstilkobling finnes</string>
@@ -405,6 +407,11 @@
     <string name="conversation_activity_invitation_title">Jeg inviterer deg til å bli med i gruppen</string>
     <string name="conversation_activity_local_cleanup">Hovedinnhold er slettet lokalt.</string>
     <string name="conversation_activity_manage_conversation">Administrer samtalen</string>
+    <string name="conversation_activity_media_quality_original">Original definisjon (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Uten endring av størrelse - Tregere overføring</string>
+    <string name="conversation_activity_media_quality_standard">Standard definisjon (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Mindre - Raskere overføring</string>
+    <string name="conversation_activity_media_quality_title">Medieoppløsning</string>
     <string name="conversation_activity_menu_item_view_copy_message">Kopiert til utklippstavlen!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kopi</string>
     <string name="conversation_activity_menu_item_view_delete_title">Fjerne</string>
@@ -431,6 +438,9 @@
     <string name="conversation_activity_send_file_warning">Advarsel: det er ikke mulig å hindre mottaker i å kopiere/lagre/dele et dokument (pdf, word, ppt, excel, zip, etc.), som kun kan åpnes utenfor applikasjonen. Vil du fortsatt sende den?</string>
     <string name="conversation_activity_send_large_file_message">Denne filen er stor (%1$d MB). Vil du fortsette?</string>
     <string name="conversation_activity_send_menu_allow_copy">Tillatt mottakeren å kopiere/lagre/dele dette innholdet</string>
+    <string name="conversation_activity_send_quality_size">Store medier (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Send i standard definisjon (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Du kan endre størrelsen til standard definisjon (SD) for raskere overføring.</string>
     <string name="conversation_activity_stream_dialog">Vil du godta det?</string>
     <string name="conversation_activity_unsupported_media">Ustøttet medieformat</string>
     <string name="conversation_activity_video_call">Video anrop</string>
@@ -703,8 +713,10 @@
     <string name="notification_center_deleted_contact">Kontakt slettet</string>
     <string name="notification_center_file_message">Sendte deg en fil</string>
     <string name="notification_center_file_message_received">Ny fil</string>
-    <string name="notification_center_group_invitation">Sendte deg en invitasjon</string>
-    <string name="notification_center_group_invitation_received">Ny invitasjon</string>
+    <string name="notification_center_invitation">Sendte deg en invitasjon</string>
+    <string name="notification_center_invitation_group">inviterer deg til å bli med i en gruppe.</string>
+    <string name="notification_center_invitation_received">Ny invitasjon</string>
+    <string name="notification_center_invitation_received_group">Ny gruppeinvitasjon</string>
     <string name="notification_center_join_group">Du er medlem av gruppen</string>
     <string name="notification_center_message_received">Ny melding</string>
     <string name="notification_center_missed_audio_call_to">Tapt telefonsamtale med %1$s</string>
@@ -741,7 +753,8 @@
     <string name="notifications_fragment_item_cleanup_message">ryddet opp i noen gamle meldinger.</string>
     <string name="notifications_fragment_item_deleted_contact">Kontakt slettet</string>
     <string name="notifications_fragment_item_file_message">Sendte deg en fil</string>
-    <string name="notifications_fragment_item_group_invitation">Sendte deg en invitasjon</string>
+    <string name="notifications_fragment_item_invitation">Sendte deg en invitasjon</string>
+    <string name="notifications_fragment_item_invitation_group">inviterer deg til å bli med i en gruppe.</string>
     <string name="notifications_fragment_item_image_message">Sendte deg et bilde</string>
     <string name="notifications_fragment_item_join_group">Du er medlem av gruppen</string>
     <string name="notifications_fragment_item_new_contact">Ny kontakt</string>
@@ -837,8 +850,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Lås applikasjonen med biometriske tjenester eller med en PIN-kode.</string>
-    <string name="privacy_activity_hide_last_screen_message">Forhindre at forhåndsvisning vises i applikasjonsbryteren</string>
-    <string name="privacy_activity_hide_last_screen_title">Skjul siste skjerm</string>
+    <string name="privacy_activity_hide_last_screen_message">Og skjul appen når den kjører i bakgrunnen, hvis enheten tillater det.</string>
+    <string name="privacy_activity_hide_last_screen_title">Forby skjermbilder</string>
     <string name="privacy_activity_lock_screen_message">Lås opp tilgang til applikasjonen ved hjelp av enhetens biometriske tjenester eller passordgodkjenningstjenester. Du kan fortsatt svare på innkommende anrop og motta varsler mens tilgangen til appen er låst.</string>
     <string name="privacy_activity_lock_screen_not_available">Dette alternativet krever en versjon av Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Åpner tidsavbrudd for låsing</string>

@@ -51,6 +51,7 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
     private static final float DESIGN_PLAY_PAUSE_VIEW_HEIGHT = 80f;
     private static final float DESIGN_PLAY_PAUSE_VIEW_TOP_MARGIN = -16f;
 
+    private final TextView mMessageView;
     private final SurfaceView mSurfaceView;
     private final View mControlView;
     private final SeekBar mSeekBar;
@@ -104,6 +105,15 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
             fullscreenMediaActivity.onMediaClick();
         });
 
+        mMessageView = view.findViewById(R.id.fullscreen_media_activity_video_item_message_view);
+        Design.updateTextFont(mMessageView, Design.FONT_REGULAR34);
+        mMessageView.setTextColor(Color.WHITE);
+        mMessageView.setVisibility(View.GONE);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_PROGRESS_SIDE_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_PROGRESS_SIDE_MARGIN * Design.WIDTH_RATIO);
+
         mControlView = view.findViewById(R.id.fullscreen_media_activity_video_item_control_view);
         mControlView.setBackgroundColor(Color.BLACK);
 
@@ -114,7 +124,7 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
         Design.updateTextFont(mVideoDurationTextView, Design.FONT_REGULAR28);
         mVideoDurationTextView.setTextColor(Color.WHITE);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mVideoDurationTextView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mVideoDurationTextView.getLayoutParams();
         marginLayoutParams.rightMargin = (int) (DESIGN_PROGRESS_SIDE_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.setMarginEnd((int) (DESIGN_PROGRESS_SIDE_MARGIN * Design.WIDTH_RATIO));
 
@@ -209,6 +219,21 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
         }
     }
 
+    public void mutePlayer(boolean mute) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "mutePlayer");
+        }
+
+        if (mMediaPlayer != null) {
+            try {
+                float volume = mute ? 0.0f : 1.0f;
+                mMediaPlayer.setVolume(volume, volume);
+            } catch (Exception ignored) {
+
+            }
+        }
+    }
+
     public void pausePlayer() {
         if (DEBUG) {
             Log.d(LOG_TAG, "pausePlayer");
@@ -227,7 +252,7 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
         }
     }
 
-    public void onBind(Item item, FullscreenMediaActivity fullscreenMediaActivity, boolean visible) {
+    public void onBind(Item item, FullscreenMediaActivity fullscreenMediaActivity, boolean visible, boolean isMuted) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onBind");
         }
@@ -258,6 +283,8 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
             videoDescriptor = videoItem.getVideoDescriptor();
         }
 
+        mMessageView.setVisibility(View.GONE);
+
         Uri uriVideo = Uri.fromFile(new File(filesDir, videoDescriptor.getPath()));
 
         if (mMediaPlayer == null) {
@@ -267,12 +294,15 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
                 mMediaPlayer.setOnPreparedListener(this);
                 mMediaPlayer.setOnErrorListener(this);
                 mMediaPlayer.setOnCompletionListener(this);
+                float volume = isMuted ? 0.0f : 1.0f;
+                mMediaPlayer.setVolume(volume, volume);
                 mMediaPlayer.prepareAsync();
             } catch (Exception exception) {
                 // TBD add user message
                 exception.printStackTrace();
                 mMediaPlayer.release();
                 mMediaPlayer = null;
+                mMessageView.setVisibility(View.VISIBLE);
             }
 
             SurfaceHolder holder = mSurfaceView.getHolder();
@@ -310,6 +340,8 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
         }
 
         mPlayerReady = true;
+
+        mMessageView.setVisibility(View.GONE);
 
         if (mMediaPlayer == null) {
             return;
@@ -360,6 +392,8 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
 
     @Override
     public boolean onError(@NonNull MediaPlayer player, int what, int extra) {
+
+        mMessageView.setVisibility(View.VISIBLE);
 
         return true;
     }

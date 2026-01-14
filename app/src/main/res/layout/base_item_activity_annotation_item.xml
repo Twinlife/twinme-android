@@ -19,11 +19,9 @@
             android:id="@+id/base_item_activity_annotation_item_count_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/base_item_activity_annotation_item_image_view"
             android:layout_toEndOf="@+id/base_item_activity_annotation_item_image_view"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:gravity="center"/>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

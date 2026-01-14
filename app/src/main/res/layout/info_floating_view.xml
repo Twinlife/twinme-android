@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:maxLines="1"
-        android:layout_toEndOf="@+id/info_floating_view_image"
-        android:layout_toRightOf="@+id/info_floating_view_image" />
+        android:layout_toEndOf="@+id/info_floating_view_image" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

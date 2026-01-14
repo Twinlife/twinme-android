@@ -40,7 +40,6 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/transfer_call_activity_red_rounded_view"
-                android:layout_toRightOf="@+id/transfer_call_activity_red_rounded_view"
                 app:layout_heightPercent="28.89%"
                 app:layout_aspectRatio="100%" />
 
@@ -50,7 +49,6 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/transfer_call_activity_yellow_rounded_view"
-                android:layout_toRightOf="@+id/transfer_call_activity_yellow_rounded_view"
                 app:layout_heightPercent="28.89%"
                 app:layout_aspectRatio="100%" />
 
@@ -59,7 +57,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_toEndOf="@+id/transfer_call_activity_green_rounded_view"
-                android:layout_toRightOf="@+id/transfer_call_activity_green_rounded_view"
                 app:layout_heightPercent="57.78%"
                 android:layout_centerVertical="true">
 
@@ -79,7 +76,6 @@
                 android:id="@+id/transfer_call_activity_avatar_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 app:layout_aspectRatio="100%"
@@ -212,7 +208,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@id/transfer_call_activity_twincode_view"
             app:layout_widthPercent="32.8%"
             app:layout_heightPercent="17.53%"
@@ -274,7 +269,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/transfer_call_activity_social_icon_view"
             android:layout_toEndOf="@+id/transfer_call_activity_social_icon_view"
             android:text="@string/transfert_call_activity_share" />
     </androidx.percentlayout.widget.PercentRelativeLayout>

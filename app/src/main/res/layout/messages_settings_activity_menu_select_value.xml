@@ -4,30 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/menu_action_view"
+    <View
+        android:id="@+id/menu_select_value_view_overlay_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="visible" />
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/menu_select_value_view_action_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
+        <View
+            android:id="@+id/menu_select_value_view_slide_mark_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="12%" />
+
         <TextView
-            android:id="@+id/menu_title_view"
+            android:id="@+id/menu_select_value_view_title_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:lines="2"
+            android:layout_below="@+id/menu_select_value_view_slide_mark_view"
             app:layout_widthPercent="94%" />
 
         <ListView
-            android:id="@+id/menu_list_view"
+            android:id="@+id/menu_select_value_view_list_view"
+            android:layout_below="@+id/menu_select_value_view_title_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/menu_title_view"
-            android:layout_gravity="start"
-            android:choiceMode="singleChoice"
-            android:background="?attr/white_color"
-            android:divider="?attr/separator_color" />
-
+            android:layout_height="wrap_content" />
+        
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

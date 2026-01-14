@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/create_group_item_image_layout__view"
-        android:layout_toRightOf="@id/create_group_item_image_layout__view"
         android:text="@string/main_activity_add_group"
         app:layout_marginStartPercent="4.26%"
         app:layout_marginEndPercent="4.26%" />

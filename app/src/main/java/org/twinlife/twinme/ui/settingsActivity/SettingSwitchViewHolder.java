@@ -43,7 +43,7 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
         mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
     }
 
-    public void onBind(@NonNull UISetting<Boolean> uiSetting, boolean isSelected) {
+    public void onBind(@NonNull UISetting<Boolean> uiSetting, boolean isSelected, boolean isEnable) {
 
         mUISetting = uiSetting;
 
@@ -51,7 +51,14 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
 
         mSwitchView.setOnCheckedChangeListener(null);
         mSwitchView.setChecked(isSelected);
-        mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
+
+        if (isEnable) {
+            mSwitchView.setEnabled(true);
+            mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        } else {
+            mSwitchView.setEnabled(false);
+            mSwitchView.setClickable(false);
+        }
 
         updateFont();
         updateColor();

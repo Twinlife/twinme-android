@@ -165,7 +165,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             if (uiSetting != null) {
                 boolean isSelected = uiSetting.getBoolean();
-                settingsSwitchViewHolder.onBind(uiSetting, isSelected);
+                settingsSwitchViewHolder.onBind(uiSetting, isSelected, true);
             }
         }
     }

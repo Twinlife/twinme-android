@@ -39,7 +39,6 @@
 
         <View
             android:id="@+id/invitation_code_confirm_view_bullet_view"
-            android:layout_alignRight="@+id/invitation_code_confirm_view_avatar_view"
             android:layout_alignEnd="@+id/invitation_code_confirm_view_avatar_view"
             android:layout_alignTop="@+id/invitation_code_confirm_view_avatar_view"
             android:elevation="8dp"
@@ -52,7 +51,6 @@
             android:layout_height="0dp"
             android:elevation="8dp"
             android:layout_alignTop="@+id/invitation_code_confirm_view_avatar_view"
-            android:layout_toRightOf="@+id/invitation_code_confirm_view_bullet_view"
             android:layout_toEndOf="@+id/invitation_code_confirm_view_bullet_view">
 
             <ImageView

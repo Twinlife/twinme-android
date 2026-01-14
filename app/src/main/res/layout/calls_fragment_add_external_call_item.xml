@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/calls_fragment_add_external_call_item_add_view"
-        android:layout_toRightOf="@id/calls_fragment_add_external_call_item_add_view"
         android:text="@string/calls_fragment_create_link"
         app:layout_marginStartPercent="4.67%" />
 

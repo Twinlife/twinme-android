@@ -27,25 +27,22 @@
 
         <TextView
             android:id="@+id/conversation_files_activity_item_selected_action_text_view"
-            android:layout_toRightOf="@+id/conversation_files_activity_item_selected_action_share_view"
             android:layout_toEndOf="@+id/conversation_files_activity_item_selected_action_share_view"
-            android:layout_toLeftOf="@+id/conversaton_files_activity_item_selected_action_delete_view"
-            android:layout_toStartOf="@+id/conversaton_files_activity_item_selected_action_delete_view"
+            android:layout_toStartOf="@+id/conversation_files_activity_item_selected_action_delete_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_centerInParent="true" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/conversaton_files_activity_item_selected_action_delete_view"
+            android:id="@+id/conversation_files_activity_item_selected_action_delete_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true">
 
             <ImageView
-                android:id="@+id/conversaton_files_activity_item_selected_action_delete_image_view"
+                android:id="@+id/conversation_files_activity_item_selected_action_delete_image_view"
                 android:layout_centerInParent="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/toolbar_trash_grey"

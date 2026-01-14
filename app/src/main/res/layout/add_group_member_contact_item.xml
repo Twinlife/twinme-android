@@ -18,7 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/add_group_member_activity_contact_item_avatar_view"
-        android:layout_toRightOf="@id/add_group_member_activity_contact_item_avatar_view"
         android:ellipsize="end"
         android:maxLines="2"
         app:layout_marginStartPercent="4.67%" />
@@ -30,7 +29,6 @@
         android:layout_gravity="start"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/add_group_member_activity_contact_item_avatar_view"
-        android:layout_toRightOf="@id/add_group_member_activity_contact_item_avatar_view"
         android:layout_below="@+id/add_group_member_activity_contact_item_name_view"
         android:visibility="gone"
         android:lines="1"
@@ -42,7 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/add_group_member_activity_contact_item_name_view"
         android:layout_toEndOf="@+id/add_group_member_activity_contact_item_name_view"
         android:src="@drawable/authentified_relation_icon"
         android:visibility="gone"
@@ -51,7 +48,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/add_group_member_activity_contact_layout_image"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/circle_grey"
         android:layout_centerVertical="true"
         app:layout_aspectRatio="100%"
@@ -80,7 +76,6 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_alignStart="@+id/add_group_member_activity_contact_item_name_view"
-        android:layout_alignLeft="@+id/add_group_member_activity_contact_item_name_view"
         android:layout_alignParentBottom="true" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

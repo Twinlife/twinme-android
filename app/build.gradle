@@ -23,8 +23,8 @@ android {
         applicationId "org.twinlife.device.android.twinme"
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 503
-        versionName "31.8"
+        versionCode 506
+        versionName "32.1"
         manifestPlaceholders.domainName = "twin.me"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
@@ -149,6 +149,7 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.media
+    implementation libs.androidx.media3.transformer
     implementation libs.androidx.core.splashscreen
     implementation libs.androidx.browser
     implementation libs.lottie

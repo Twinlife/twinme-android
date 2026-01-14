@@ -81,6 +81,16 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
+    public void mutePlayer(boolean isMuted) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "mutePlayer");
+        }
+
+        if (mCurrentFullscreenVideoViewHolder != null) {
+            mCurrentFullscreenVideoViewHolder.mutePlayer(isMuted);
+        }
+    }
+
     @Override
     public long getItemId(int position) {
         if (DEBUG) {
@@ -140,7 +150,7 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         } else {
             FullscreenVideoViewHolder fullscreenVideoViewHolder = (FullscreenVideoViewHolder) viewHolder;
             Item item = mItems.get(position);
-            fullscreenVideoViewHolder.onBind(item, mFullscreenMediaActivity, mFullscreenMediaActivity.getCurrentPosition() == position);
+            fullscreenVideoViewHolder.onBind(item, mFullscreenMediaActivity, mFullscreenMediaActivity.getCurrentPosition() == position, mFullscreenMediaActivity.isMuted());
         }
     }
 
@@ -159,7 +169,7 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if (viewHolder.getItemViewType() == VIDEO) {
             FullscreenVideoViewHolder fullscreenVideoViewHolder = (FullscreenVideoViewHolder) viewHolder;
             Item item = mItems.get(fullscreenVideoViewHolder.getBindingAdapterPosition());
-            fullscreenVideoViewHolder.onBind(item, mFullscreenMediaActivity, true);
+            fullscreenVideoViewHolder.onBind(item, mFullscreenMediaActivity, true, mFullscreenMediaActivity.isMuted());
             mCurrentFullscreenVideoViewHolder = fullscreenVideoViewHolder;
         }
     }

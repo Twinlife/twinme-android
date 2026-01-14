@@ -90,15 +90,13 @@
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:background="?attr/separator_color"
-            android:layout_toEndOf="@+id/main_activity_drawer_profiles_list_view"
-            android:layout_toRightOf="@+id/main_activity_drawer_profiles_list_view"/>
+            android:layout_toEndOf="@+id/main_activity_drawer_profiles_list_view" />
 
         <ListView
             android:id="@+id/main_activity_drawer_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/main_activity_drawer_separator_view"
-            android:layout_toRightOf="@+id/main_activity_drawer_separator_view"
             android:choiceMode="singleChoice"
             android:background="?attr/white_color"
             android:divider="@null" />

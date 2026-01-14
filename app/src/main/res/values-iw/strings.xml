@@ -41,6 +41,7 @@
     <string name="application_do_not_display">אל תציג יותר</string>
     <string name="application_edit">לַעֲרוֹך</string>
     <string name="application_error_file_not_found">הקובץ לא נמצא.</string>
+    <string name="application_error_media_unload">לא ניתן לטעון מדיה.</string>
     <string name="application_error_media_not_supported">פורמט תמונה/וידאו זה אינו נתמך על ידי האפליקציה.</string>
     <string name="application_error_no_storage_space">אין מספיק שטח אחסון</string>
     <string name="application_group_limit_reached">חריגה מהמספר המירבי (%1$d) של חברים בקבוצה.</string>
@@ -51,6 +52,7 @@
     <string name="application_one_item_selected">פריט אחד נבחר</string>
     <string name="application_migration_no_storage_space">אין מספיק מקום במכשיר שלך כדי להשלים את ההעברה. סגור את האפליקציה, פנה מקום והפעל מחדש את האפליקציה כדי להשלים את העדכון.</string>
     <string name="application_migration_no_storage_space_message">לאחד משני המכשירים אין מספיק מקום אחסון. פנה מקום במכשיר זה לפני שתתחיל מחדש את ההעברה.</string>
+    <string name="application_more_info">עוד מידע…</string>
     <string name="application_name_hint">לִנְקוֹב</string>
     <string name="application_network_connecting">מתחבר לשירות twinme</string>
     <string name="application_network_connectivity">קיימת קישוריות רשת</string>
@@ -403,6 +405,11 @@
     <string name="conversation_activity_invitation_title">אני מזמין/ה אותך להצטרף לקבוצה</string>
     <string name="conversation_activity_local_cleanup">התוכן העיקרי נמחק באופן מקומי.</string>
     <string name="conversation_activity_manage_conversation">לנהל את השיחה</string>
+    <string name="conversation_activity_media_quality_original">רזולוציה מקורית (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">ללא שינוי גודל - העברה איטית יותר</string>
+    <string name="conversation_activity_media_quality_standard">רזולוציה רגילה (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">קטנה יותר - העברה מהירה יותר</string>
+    <string name="conversation_activity_media_quality_title">רזולוציית מדיה</string>
     <string name="conversation_activity_menu_item_view_copy_message">הועתק ללוח עריכה!</string>
     <string name="conversation_activity_menu_item_view_copy_title">העתק</string>
     <string name="conversation_activity_menu_item_view_delete_title">מחק</string>
@@ -429,6 +436,9 @@
     <string name="conversation_activity_send_file_warning">אזהרה: לא ניתן למנוע מהנמען להעתיק/לשמור/לשתף מסמך (pdf, word, ppt, excel, zip וכו\') שניתן לפתוח רק מחוץ לאפליקציה. האם אתה עדיין רוצה לשלוח אותו?</string>
     <string name="conversation_activity_send_large_file_message">קובץ זה גדול (%1$d MB). תרצה להמשיך ?</string>
     <string name="conversation_activity_send_menu_allow_copy">אפשר לנמען להעתיק/לשמור/לשתף תוכן זה</string>
+    <string name="conversation_activity_send_quality_size">מדיה גדולה (%1$s)</string>
+    <string name="conversation_activity_send_quality_standard">שלח ברזולוציה רגילה (SD)</string>
+    <string name="conversation_activity_send_quality_warning">ניתן לשנות את הגודל לרזולוציה רגילה (SD) להעברה מהירה יותר.</string>
     <string name="conversation_activity_stream_dialog">האם ברצונך לקבל זאת?</string>
     <string name="conversation_activity_unsupported_media">פורמט מדיה לא נתמך</string>
     <string name="conversation_activity_video_call">שיחת וידאו</string>
@@ -699,8 +709,10 @@
     <string name="notification_center_deleted_contact">איש קשר נמחק</string>
     <string name="notification_center_file_message">שלח לך קובץ</string>
     <string name="notification_center_file_message_received">קובץ חדש</string>
-    <string name="notification_center_group_invitation">שלח לך הזמנה</string>
-    <string name="notification_center_group_invitation_received">הזמנה חדשה</string>
+    <string name="notification_center_invitation">שלח לך הזמנה</string>
+    <string name="notification_center_invitation_group">מזמין אותך להצטרף לקבוצה.</string>
+    <string name="notification_center_invitation_received">הזמנה חדשה</string>
+    <string name="notification_center_invitation_received_group">הזמנה חדשה לקבוצה.</string>
     <string name="notification_center_join_group">את/ה חבר/ה בקבוצה</string>
     <string name="notification_center_message_received">הודעה חדשה</string>
     <string name="notification_center_missed_audio_call_to">שיחה קולית ל-%1$s לא נענתה</string>
@@ -737,7 +749,8 @@
     <string name="notifications_fragment_item_cleanup_message">" ניקה כמה הודעות ישנות."</string>
     <string name="notifications_fragment_item_deleted_contact">איש קשר נמחק</string>
     <string name="notifications_fragment_item_file_message">שלח לך קובץ</string>
-    <string name="notifications_fragment_item_group_invitation">שלח לך הזמנה</string>
+    <string name="notifications_fragment_item_invitation">שלח לך הזמנה</string>
+    <string name="notifications_fragment_item_invitation_group">מזמין אותך להצטרף לקבוצה.</string>
     <string name="notifications_fragment_item_image_message">שלח לך תמונה</string>
     <string name="notifications_fragment_item_join_group">את/ה חבר/ה בקבוצה</string>
     <string name="notifications_fragment_item_new_contact">איש קשר חדש</string>
@@ -833,8 +846,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">נעל את האפליקציה בשירותים ביומטריים או בקוד PIN.</string>
-    <string name="privacy_activity_hide_last_screen_message">אל תציג תצוגה מקדימה בבוחר האפליקציות.</string>
-    <string name="privacy_activity_hide_last_screen_title">הסתר את המסך האחרון</string>
+    <string name="privacy_activity_hide_last_screen_message">והסתר את האפליקציה כשהיא פועלת ברקע, אם המכשיר מאפשר זאת.</string>
+    <string name="privacy_activity_hide_last_screen_title">אסור צילומי מסך</string>
     <string name="privacy_activity_lock_screen_message">נעילת גישה לאפליקציה באמצעות שירותי הביומטריה או אימות הסיסמה של המכשיר שלך. אתה עדיין יכול לענות לשיחות נכנסות ולקבל התראות כאשר הגישה לאפליקציה נעולה.</string>
     <string name="privacy_activity_lock_screen_not_available">אפשרות זו דורשת גרסת Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">גישה לפסק זמן לנעילה</string>

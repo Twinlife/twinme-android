@@ -19,18 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <View
-        android:id="@+id/messages_settings_activity_overlay_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:visibility="invisible" />
-
-    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
-        android:id="@+id/messages_settings_activity_menu_select_value_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <ProgressBar
         android:id="@+id/messages_settings_activity_progress_bar"
         style="@android:style/Widget.ProgressBar"

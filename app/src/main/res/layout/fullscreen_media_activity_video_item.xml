@@ -12,6 +12,14 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true" />
 
+    <TextView
+        android:id="@+id/fullscreen_media_activity_video_item_message_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/application_error_media_not_supported" />
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/fullscreen_media_activity_video_item_control_view"
         android:layout_width="match_parent"
@@ -36,7 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/fullscreen_media_activity_video_item_seek_bar" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout

@@ -27,7 +27,6 @@
         android:id="@+id/personalization_activity_color_item_separator_view"
         android:layout_width="1dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         app:layout_heightPercent="50%" />
 

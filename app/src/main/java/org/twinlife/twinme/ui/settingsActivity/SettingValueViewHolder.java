@@ -12,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -68,20 +69,15 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         mValueView.setVisibility(View.GONE);
         mSelectImageView.setVisibility(View.VISIBLE);
 
+        String title = uiSetting.getTitle();
         String value = "";
-        if (uiSetting.isSetting(Settings.reduceSizeImage)) {
-            if (uiSetting.getInteger() == TwinmeApplication.SendImageSize.SMALL.ordinal()) {
-                value = itemView.getContext().getString(R.string.conversation_activity_reduce_menu_minimal);
-            } else if (uiSetting.getInteger() == TwinmeApplication.SendImageSize.MEDIUM.ordinal()) {
-                value = itemView.getContext().getString(R.string.conversation_activity_reduce_menu_lower);
+        if (uiSetting.isSetting(Settings.qualityMedia)) {
+            if (uiSetting.getInteger() == TwinmeApplication.QualityMedia.STANDARD.ordinal()) {
+                title = itemView.getContext().getString(R.string.conversation_activity_media_quality_standard);
+                value = itemView.getContext().getString(R.string.conversation_activity_media_quality_standard_subtitle);
             } else {
-                value = itemView.getContext().getString(R.string.conversation_activity_reduce_menu_original);
-            }
-        } else if (uiSetting.isSetting(Settings.reduceSizeVideo)) {
-            if (uiSetting.getInteger() == TwinmeApplication.SendVideoSize.LOWER.ordinal()) {
-                value = itemView.getContext().getString(R.string.conversation_activity_reduce_menu_minimal);
-            } else {
-                value = itemView.getContext().getString(R.string.conversation_activity_reduce_menu_original);
+                title = itemView.getContext().getString(R.string.conversation_activity_media_quality_original);
+                value = itemView.getContext().getString(R.string.conversation_activity_media_quality_original_subtitle);
             }
         } else if (uiSetting.isSetting(Settings.displayCallsMode)) {
             if (uiSetting.getInteger() == DisplayCallsMode.NONE.ordinal()) {
@@ -95,15 +91,16 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 
-        if (!uiSetting.getTitle().isEmpty()) {
-            spannableStringBuilder.append(uiSetting.getTitle());
+        if (!title.isEmpty()) {
+            spannableStringBuilder.append(title);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.append("\n");
         }
 
         int startSubTitle = spannableStringBuilder.length();
         spannableStringBuilder.append(value);
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(!uiSetting.getTitle().isEmpty() ? Design.FONT_COLOR_GREY : Design.FONT_COLOR_DEFAULT), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new RelativeSizeSpan(0.9f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(!title.isEmpty() ? Design.FONT_COLOR_GREY : Design.FONT_COLOR_DEFAULT), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         mTextView.setText(spannableStringBuilder);
 
