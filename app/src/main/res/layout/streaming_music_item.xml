@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/streaming_music_item_cover_container_view"
-        android:layout_toRightOf="@id/streaming_music_item_cover_container_view"
         android:ellipsize="end"
         android:maxLines="5"
         app:layout_marginStartPercent="4.27%"
@@ -45,7 +44,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/streaming_music_item_layout_image"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/circle_grey"
         android:layout_centerVertical="true"
         app:layout_aspectRatio="100%"

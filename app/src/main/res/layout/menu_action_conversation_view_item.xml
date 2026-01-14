@@ -32,7 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/menu_action_conversation_item_icon_container_view"
         android:layout_toEndOf="@+id/menu_action_conversation_item_icon_container_view"
         app:layout_marginEndPercent="4.53%" />
 

@@ -43,6 +43,7 @@
     <string name="application_do_not_display">Älä näytä enää</string>
     <string name="application_edit">Muokata</string>
     <string name="application_error_file_not_found">Tiedostoa ei löytynyt.</string>
+    <string name="application_error_media_unload">Median lataaminen epäonnistui.</string>
     <string name="application_error_media_not_supported">Sovellus ei tue tätä kuva-/videomuotoa.</string>
     <string name="application_error_no_storage_space">Riittämätön tallennustila</string>
     <string name="application_group_limit_reached">Ryhmän jäsenten enimmäismäärä (%1$d) ylittyi.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">Geolocation</string>
     <string name="application_location_enabled">Salli sovelluksen käyttää sijaintia järjestelmäasetuksissa.</string>
     <string name="application_low_usage_message">Varoitus, jos et käytä sovellusta tarpeeksi usein, käyttöjärjestelmä ei ehkä herätä sitä viestien vaihtamiseen!</string>
-    <string name="application_more_info">Lisää tietoa…</string>
     <string name="application_one_item_selected">1 kohde valittu</string>
     <string name="application_migration_no_storage_space">Laitteessa ei ole tarpeeksi tilaa siirron suorittamiseen. Sulje sovellus, vapauta tilaa ja käynnistä sovellus uudelleen päivityksen viimeistelemiseksi.</string>
     <string name="application_migration_no_storage_space_message">Toisella laitteista ei ole tarpeeksi tallennustilaa. Vapauta tilaa kyseisellä laitteella ennen siirron uudelleenkäynnistystä.</string>
+    <string name="application_more_info">Lisää tietoa…</string>
     <string name="application_name_hint">Nimi</string>
     <string name="application_network_connecting">Yhdistetään Skred-palveluun</string>
     <string name="application_network_connectivity">Verkkoyhteys olemassa</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">Kehotan sinua liittymään ryhmään</string>
     <string name="conversation_activity_local_cleanup">Pääsisältö on poistettu paikallisesti.</string>
     <string name="conversation_activity_manage_conversation">Hallita keskustelua</string>
+    <string name="conversation_activity_media_quality_original">Alkuperäinen tarkkuus (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Ilman koon muuttamista - Hitaampi siirto</string>
+    <string name="conversation_activity_media_quality_standard">Normaali tarkkuus (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Pienempi - Nopeampi siirto</string>
+    <string name="conversation_activity_media_quality_title">Median resoluutio</string>
     <string name="conversation_activity_menu_item_view_copy_message">Kopioitu leikepöydälle!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kopio</string>
     <string name="conversation_activity_menu_item_view_delete_title">Poistaa</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">Varoitus: Vastaanottajaa ei voi estää kopioimasta/tallentamasta/jakamasta dokumenttia (pdf, word, ppt, excel, zip jne.), joka voidaan avata vain sovelluksen ulkopuolella. Haluatko silti lähettää sen?</string>
     <string name="conversation_activity_send_large_file_message">Tämä tiedosto on suuri (%1$d Mt). Haluatko jatkaa?</string>
     <string name="conversation_activity_send_menu_allow_copy">Salli vastaanottajan kopioida/tallentaa/jakaa tätä sisältöä</string>
+    <string name="conversation_activity_send_quality_size">Suuri media (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Lähetä normaalitarkkuudella (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Voit muuttaa koon normaalitarkkuuteen (SD) nopeampaa siirtoa varten.</string>
     <string name="conversation_activity_stream_dialog">Haluatko hyväksyä sen?</string>
     <string name="conversation_activity_unsupported_media">Mediamuotoa ei tueta.</string>
     <string name="conversation_activity_video_call">Videopuhelu</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">Uusi tiedosto</string>
     <string name="notification_center_geolocation_message">Lähetti sinulle sijainnin</string>
     <string name="notification_center_geolocation_message_received">Uusi sijainti</string>
-    <string name="notification_center_group_invitation">Lähetti sinulle kutsun</string>
-    <string name="notification_center_group_invitation_received">Uusi kutsu</string>
+    <string name="notification_center_invitation">Lähetti sinulle kutsun</string>
+    <string name="notification_center_invitation_group">kutsuu sinut liittymään ryhmään.</string>
+    <string name="notification_center_invitation_received">Uusi kutsu</string>
+    <string name="notification_center_invitation_received_group">Uusi ryhmäkutsu</string>
     <string name="notification_center_join_group">Olet ryhmän jäsen</string>
     <string name="notification_center_message_received">Uusi viesti</string>
     <string name="notification_center_missed_audio_call_to">Vastaamaton äänipuhelu henkilölle %1$s</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">Yhteyshenkilö poistettu</string>
     <string name="notifications_fragment_item_file_message">Lähetti sinulle tiedoston</string>
     <string name="notifications_fragment_item_geolocation_message">Lähetti sinulle sijainnin</string>
-    <string name="notifications_fragment_item_group_invitation">Lähetti sinulle kutsun</string>
+    <string name="notifications_fragment_item_invitation">Lähetti sinulle kutsun</string>
+    <string name="notifications_fragment_item_invitation_group">kutsuu sinut liittymään ryhmään.</string>
     <string name="notifications_fragment_item_image_message">Lähetti sinulle valokuvan</string>
     <string name="notifications_fragment_item_join_group">Olet ryhmän jäsen</string>
     <string name="notifications_fragment_item_new_contact">Uusi kontakti</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Lukitse sovellus biometrisilla palveluilla tai PIN-koodilla.</string>
-    <string name="privacy_activity_hide_last_screen_message">Estä esikatselujen näkyminen sovelluskytkimessä</string>
-    <string name="privacy_activity_hide_last_screen_title">Piilota viimeinen näyttö</string>
+    <string name="privacy_activity_hide_last_screen_message">Ja piilota sovellus, kun se toimii taustalla, jos laite sallii sen.</string>
+    <string name="privacy_activity_hide_last_screen_title">Estä kuvakaappaukset</string>
     <string name="privacy_activity_lock_screen_message">Avaa sovelluksen käyttö laitteesi biometristen tai pääsykooditodennuspalveluiden avulla. Voit silti vastata saapuviin puheluihin ja vastaanottaa ilmoituksia, kun pääsy sovellukseen on lukittu.</string>
     <string name="privacy_activity_lock_screen_not_available">Tämä vaihtoehto vaatii version Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Pääsee lukituksen aikakatkaisuun</string>

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2012-2025 twinlife SA.
+ *  Copyright (c) 2012-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -750,27 +750,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
-    public int sendImageSize() {
+    public int qualityMedia() {
 
-        return Settings.reduceSizeImage.getInt();
+        return Settings.qualityMedia.getInt();
     }
 
     @Override
-    public void setSendImageSize(SendImageSize sendImageSize) {
+    public void setQualityMedia(QualityMedia qualityMedia) {
 
-        Settings.reduceSizeImage.setInt(sendImageSize.ordinal()).save();
-    }
-
-    @Override
-    public int sendVideoSize() {
-
-        return Settings.reduceSizeVideo.getInt();
-    }
-
-    @Override
-    public void setSendVideoSize(SendVideoSize sendVideoSize) {
-
-        Settings.reduceSizeVideo.setInt(sendVideoSize.ordinal()).save();
+        Settings.qualityMedia.setInt(qualityMedia.ordinal()).save();
     }
 
     public State getState() {

@@ -53,7 +53,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_certify_view_bullet_two_view"
             android:layout_toStartOf="@+id/call_activity_certify_view_bullet_two_view"
             app:layout_aspectRatio="100%" />
 
@@ -62,7 +61,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_certify_view_bullet_three_view"
             android:layout_toStartOf="@+id/call_activity_certify_view_bullet_three_view"
             app:layout_aspectRatio="100%" />
 
@@ -78,7 +76,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/call_activity_certify_view_bullet_three_view"
             android:layout_toEndOf="@+id/call_activity_certify_view_bullet_three_view"
             app:layout_aspectRatio="100%" />
 
@@ -87,7 +84,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/call_activity_certify_view_bullet_four_view"
             android:layout_toEndOf="@+id/call_activity_certify_view_bullet_four_view"
             app:layout_aspectRatio="100%" />
 
@@ -139,7 +135,6 @@
             android:id="@+id/call_activity_certify_confirm_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/call_activity_certify_view_decline_view"
             android:layout_toEndOf="@+id/call_activity_certify_view_decline_view"
             app:layout_aspectRatio="100%">
 
@@ -167,7 +162,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/call_activity_certify_view_action"
         android:gravity="bottom"
         app:layout_marginEndPercent="4.53%" />
@@ -204,7 +198,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/call_activity_certify_view_name_view"
                 android:layout_toEndOf="@+id/call_activity_certify_view_name_view"
                 android:src="@drawable/authentified_relation_icon"
                 app:layout_aspectRatio="100%" />

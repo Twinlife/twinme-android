@@ -301,6 +301,7 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
             }
         }
 
+        mActionView.setPadding(0, 0, 0, bottomInset);
         return (slideMarkHeight + actionViewHeight + titleMargin + titleHeight + bottomInset);
     }
 

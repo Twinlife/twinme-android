@@ -43,6 +43,7 @@
     <string name="application_do_not_display">Visa inte längre</string>
     <string name="application_edit">Redigera</string>
     <string name="application_error_file_not_found">Filen hittades inte.</string>
+    <string name="application_error_media_unload">Det gick inte att ladda media.</string>
     <string name="application_error_media_not_supported">Detta bild-/videoformat stöds inte av programmet.</string>
     <string name="application_error_no_storage_space">Otillräckligt lagringsutrymme</string>
     <string name="application_group_limit_reached">Maximalt antal (%1$d) av gruppmedlemmar överskridits.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">Geolokalisering</string>
     <string name="application_location_enabled">Tillåt appen att komma åt plats i systeminställningarna.</string>
     <string name="application_low_usage_message">Varning, om du inte använder applikationen tillräckligt ofta kan det hända att OS inte väcker det för att utbyta meddelanden!</string>
-    <string name="application_more_info">Mer information…</string>
     <string name="application_one_item_selected">1 objekt har valts</string>
     <string name="application_migration_no_storage_space">Det finns inte tillräckligt med utrymme på din enhet för att slutföra migreringen. Stäng applikationen, frigör lite utrymme och starta om appen för att slutföra uppdateringen.</string>
     <string name="application_migration_no_storage_space_message">En av de två enheterna har inte tillräckligt med lagringsutrymme. Frigör utrymme på den enheten innan du startar om migreringen.</string>
+    <string name="application_more_info">Mer information…</string>
     <string name="application_name_hint">Namn</string>
     <string name="application_network_connecting">Anslutning till Skred tjänsten</string>
     <string name="application_network_connectivity">Nätverksanslutning finns</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">Jag bjuder in dig till gruppen</string>
     <string name="conversation_activity_local_cleanup">Huvudinnehållet har raderats lokalt.</string>
     <string name="conversation_activity_manage_conversation">Hantera konversationen</string>
+    <string name="conversation_activity_media_quality_original">Original definition (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Utan storleksändring - Långsammare överföring</string>
+    <string name="conversation_activity_media_quality_standard">Standard definition (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Mindre - Snabbare överföring</string>
+    <string name="conversation_activity_media_quality_title">Medieupplösning</string>
     <string name="conversation_activity_menu_item_view_copy_message">Kopierad till urklippet!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kopia</string>
     <string name="conversation_activity_menu_item_view_delete_title">Ta bort</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">Varning: det går inte att hindra mottagaren från att kopiera/spara/dela ett dokument (pdf, word, ppt, excel, zip, etc.), som bara kan öppnas utanför applikationen. Vill du fortfarande skicka den?</string>
     <string name="conversation_activity_send_large_file_message">Den här filen är stor (%1$d MB). Vill du fortsätta?</string>
     <string name="conversation_activity_send_menu_allow_copy">Tillåt mottagaren att kopiera/spara/dela det här innehållet</string>
+    <string name="conversation_activity_send_quality_size">Stort media (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Skicka i standard definition (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Du kan ändra storlek till standard definition (SD) för snabbare överföring.</string>
     <string name="conversation_activity_stream_dialog">Vill du acceptera det?</string>
     <string name="conversation_activity_unsupported_media">Mediaformat som inte stöds</string>
     <string name="conversation_activity_video_call">Videosamtal</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">Ny fil</string>
     <string name="notification_center_geolocation_message">Skickade dig en plats</string>
     <string name="notification_center_geolocation_message_received">Ny plats</string>
-    <string name="notification_center_group_invitation">Skickade dig en inbjudan</string>
-    <string name="notification_center_group_invitation_received">Ny inbjudan</string>
+    <string name="notification_center_invitation">Skickade dig en inbjudan</string>
+    <string name="notification_center_invitation_group">inbjuder dig att gå med i en grupp.</string>
+    <string name="notification_center_invitation_received">Ny inbjudan</string>
+    <string name="notification_center_invitation_received_group">Ny gruppinbjudan</string>
     <string name="notification_center_join_group">Du är medlem i gruppen</string>
     <string name="notification_center_message_received">Nytt meddelande</string>
     <string name="notification_center_missed_audio_call_to">Missat röstsamtal från %1$s</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">Kontakt borttagen</string>
     <string name="notifications_fragment_item_file_message">Ditt profilnamn är</string>
     <string name="notifications_fragment_item_geolocation_message">Skickade dig en plats</string>
-    <string name="notifications_fragment_item_group_invitation">Skickade dig en inbjudan</string>
+    <string name="notifications_fragment_item_invitation">Skickade dig en inbjudan</string>
+    <string name="notifications_fragment_item_invitation_group">inbjuder dig att gå med i en grupp.</string>
     <string name="notifications_fragment_item_image_message">Skickat ett foto</string>
     <string name="notifications_fragment_item_join_group">Du är medlem i gruppen</string>
     <string name="notifications_fragment_item_new_contact">Ny kontakt</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Lås applikationen med biometriska tjänster eller med en PIN-kod.</string>
-    <string name="privacy_activity_hide_last_screen_message">Förhindra att förhandsgranskningar visas i applikationsomkopplaren</string>
-    <string name="privacy_activity_hide_last_screen_title">Dölj sista skärmen</string>
+    <string name="privacy_activity_hide_last_screen_message">Och dölj appen när den körs i bakgrunden, om enheten tillåter det.</string>
+    <string name="privacy_activity_hide_last_screen_title">Förbjud skärmdumpar</string>
     <string name="privacy_activity_lock_screen_message">Lås upp åtkomst till applikationen med hjälp av enhetens biometriska eller autentiseringstjänster för lösenord. Du kan fortfarande svara på inkommande samtal och ta emot aviseringar medan åtkomsten till appen är låst.</string>
     <string name="privacy_activity_lock_screen_not_available">Detta alternativ kräver en version av Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Åtkomst till låsetimeout</string>

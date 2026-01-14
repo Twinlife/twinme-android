@@ -39,9 +39,9 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int SECTION_CONTENT = 16;
     private static final int SECTION_LINK = 19;
 
-    private static final int POSITION_DISPLAY_NOTIFCATION_SENDER = 2;
-    private static final int POSITION_DISPLAY_NOTIFCATION_CONTENT = 3;
-    private static final int POSITION_DISPLAY_NOTIFCATION_LIKE = 4;
+    private static final int POSITION_DISPLAY_NOTIFICATION_SENDER = 2;
+    private static final int POSITION_DISPLAY_NOTIFICATION_CONTENT = 3;
+    private static final int POSITION_DISPLAY_NOTIFICATION_LIKE = 4;
 
     private static final int POSITION_ALLOW_COPY_INFORMATION = 6;
     private static final int POSITION_ALLOW_COPY_TEXT = 7;
@@ -52,10 +52,9 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int POSITION_ALLOW_EPHEMERAL = 14;
     private static final int POSITION_TIMEOUT_EPHEMERAL = 15;
     private static final int POSITION_CONTENT_INFORMATION = 17;
-    private static final int POSITION_CONTENT_IMAGE = 18;
+    private static final int POSITION_CONTENT_MEDIA = 18;
     private static final int POSITION_LINK_PREVIEW_INFORMATION = 20;
     private static final int POSITION_LINK_PREVIEW = 21;
-    private static final int POSITION_CONTENT_VIDEO = -1;
 
     private static final int TITLE = 0;
     private static final int CHECKBOX = 1;
@@ -81,6 +80,14 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
         return ITEM_COUNT;
     }
 
+    public void updateMediaQuality() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateMediaQuality");
+        }
+
+        notifyItemChanged(POSITION_CONTENT_MEDIA);
+    }
+
     @Override
     public int getItemViewType(int position) {
         if (DEBUG) {
@@ -91,7 +98,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             return INFO;
         } else if (position == SECTION_NOTIFICATION || position == SECTION_COPY || position == SECTION_EPHEMERAL || position == SECTION_CONTENT || position == SECTION_LINK || position == SECTION_CALLS) {
             return TITLE;
-        } else if (position == POSITION_TIMEOUT_EPHEMERAL || position == POSITION_CONTENT_IMAGE || position == POSITION_CONTENT_VIDEO || position == POSITION_DISPLAY_CALLS) {
+        } else if (position == POSITION_TIMEOUT_EPHEMERAL || position == POSITION_CONTENT_MEDIA || position == POSITION_DISPLAY_CALLS) {
             return VALUE;
         } else {
             return CHECKBOX;
@@ -153,15 +160,15 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             boolean value = false;
 
             switch (position) {
-                case POSITION_DISPLAY_NOTIFCATION_SENDER:
+                case POSITION_DISPLAY_NOTIFICATION_SENDER:
                     uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_sender_title), Settings.displayNotificationSender);
                     break;
 
-                case POSITION_DISPLAY_NOTIFCATION_CONTENT:
+                case POSITION_DISPLAY_NOTIFICATION_CONTENT:
                     uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_content_title), Settings.displayNotificationContent);
                     break;
 
-                case POSITION_DISPLAY_NOTIFCATION_LIKE:
+                case POSITION_DISPLAY_NOTIFICATION_LIKE:
                     uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_like_title), Settings.displayNotificationLike);
                     break;
 
@@ -194,7 +201,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             }
 
             if (uiSetting != null) {
-                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean());
+                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true);
             } else if (title != null) {
                 settingsViewHolder.onBind(title, value, booleanConfig);
             }
@@ -204,10 +211,8 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
                 settingValueViewHolder.onBind(mListActivity.getString(R.string.application_timeout), mListActivity.getExpireTimeout(), mListActivity.isAllowEphemeral(), Settings.ephemeralMessageExpireTimeout);
             } else {
                 UISetting<Integer> uiSetting;
-                if (position == POSITION_CONTENT_IMAGE) {
-                    uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.settings_activity_image_title), Settings.reduceSizeImage);
-                } else if (position == POSITION_CONTENT_VIDEO) {
-                    uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.show_contact_activity_video), Settings.reduceSizeVideo);
+                if (position == POSITION_CONTENT_MEDIA) {
+                    uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.settings_activity_image_title), Settings.qualityMedia);
                 } else {
                     uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, "", Settings.displayCallsMode);
                 }

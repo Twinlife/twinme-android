@@ -16,7 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         app:layout_marginEndPercent="4.67%" />
 
@@ -24,7 +23,6 @@
         android:id="@+id/settings_activity_item_image_view"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:scaleType="fitCenter"
         android:src="@drawable/select_value_icon"
         app:layout_aspectRatio="62%"

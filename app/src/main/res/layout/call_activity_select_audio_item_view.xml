@@ -18,7 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/call_activity_select_audio_source_image_view"
         android:layout_toEndOf="@+id/call_activity_select_audio_source_image_view" />
 
     <ImageView
@@ -27,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:scaleType="fitCenter"
         app:layout_aspectRatio="100%"
         android:src="@drawable/check_mark_blue" />

@@ -103,6 +103,12 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
 
         mNameView.setText(invitation.getName());
         mInvitationView.setText(String.format(getString(R.string.accept_invitation_activity_message), invitation.getName()));
+
+        if (isMenuOpen() && isSelectedItem(item.getDescriptorId())) {
+            if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
+                mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+            }
+        }
     }
 
     @Override

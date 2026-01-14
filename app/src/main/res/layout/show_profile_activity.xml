@@ -19,7 +19,6 @@
         android:clickable="true"
         android:orientation="horizontal"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="6%"
         app:layout_marginEndPercent="4.53%"
@@ -75,7 +74,6 @@
                     android:id="@+id/show_profile_activity_edit_clickable_view"
                     app:layout_widthPercent="19.73%"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true">
 
                     <ImageView
@@ -116,7 +114,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/show_profile_activity_twincode_icon_view"
                     android:layout_toEndOf="@+id/show_profile_activity_twincode_icon_view"
                     android:text="@string/profile_fragment_twincode_title" />
 

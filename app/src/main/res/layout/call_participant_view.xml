@@ -60,7 +60,6 @@
     <ImageView
         android:id="@+id/call_participant_audio_mute_layout"
         android:layout_width="0dp"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/remote_audio_mute"
         app:layout_aspectRatio="100%"
@@ -69,7 +68,6 @@
     <ImageView
         android:id="@+id/call_participant_pause_layout"
         android:layout_width="0dp"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/remote_pause"
         app:layout_aspectRatio="100%"
@@ -152,7 +150,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true">
 
         <TextView

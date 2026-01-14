@@ -17,7 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.util.Log;
-import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
@@ -33,23 +33,20 @@ import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.utils.FileInfo;
 
-public class MessagesSettingsActivity extends AbstractSettingsActivity implements SpaceSettingsService.Observer, MenuSelectValueView.Observer {
+public class MessagesSettingsActivity extends AbstractSettingsActivity implements SpaceSettingsService.Observer {
+
     private static final String LOG_TAG = "MessagesSettingsActi...";
     private static final boolean DEBUG = false;
 
     private static final int REQUEST_PICK_DIRECTORY = 1;
 
     private MessagesSettingsAdapter mMessagesSettingsAdapter;
-
-    private View mOverlayView;
-
     private SpaceSettingsService mSpaceSettingsService;
     private SpaceSettings mDefaultSpaceSettings;
-    private MenuSelectValueView mMenuSelectValueView;
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
-    private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.IMAGE;
+    private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
 
     //
     // Override TwinmeActivityImpl methods
@@ -160,49 +157,6 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         mMessagesSettingsAdapter.notifyDataSetChanged();
     }
 
-    //MenuSelectValueView.Observer
-
-    @Override
-    public void onCloseMenuAnimationEnd() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
-        }
-
-        mMenuSelectValueView.setVisibility(View.INVISIBLE);
-        mOverlayView.setVisibility(View.INVISIBLE);
-        setStatusBarColor();
-    }
-
-    @Override
-    public void onSelectValue(int value) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSelectValue: " + value);
-        }
-
-        closeMenuSelectValue();
-
-        if (mMenuType == MenuSelectValueView.MenuType.IMAGE) {
-            Settings.reduceSizeImage.setInt(value).save();
-        } else if (mMenuType == MenuSelectValueView.MenuType.VIDEO) {
-            Settings.reduceSizeVideo.setInt(value).save();
-        } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
-            Settings.displayCallsMode.setInt(value).save();
-        }
-
-        mMessagesSettingsAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onSelectTimeout(UITimeout timeout) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
-        }
-
-        mDefaultSpaceSettings.setString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, timeout.getDelay() + "");
-        closeMenu();
-        saveDefaultSpaceSettings();
-    }
-
     @Override
     public void onSettingClick(@NonNull UISetting<?> setting) {
         if (DEBUG) {
@@ -217,10 +171,8 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
             }
             startActivityForResult(intent, REQUEST_PICK_DIRECTORY);
         } else if (setting.getTypeSetting() == UISetting.TypeSetting.VALUE) {
-            if (setting.isSetting(Settings.reduceSizeImage)) {
-                mMenuType = MenuSelectValueView.MenuType.IMAGE;
-            } else if (setting.isSetting(Settings.reduceSizeVideo)) {
-                mMenuType = MenuSelectValueView.MenuType.VIDEO;
+            if (setting.isSetting(Settings.qualityMedia)) {
+                mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
             } else {
                 mMenuType = MenuSelectValueView.MenuType.DISPLAY_CALLS;
             }
@@ -325,16 +277,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         settingsRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         settingsRecyclerView.setItemAnimator(null);
 
-        mOverlayView = findViewById(R.id.messages_settings_activity_overlay_view);
-        mOverlayView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
-        mOverlayView.setOnClickListener(view -> closeMenu());
-
         mProgressBarView = findViewById(R.id.messages_settings_activity_progress_bar);
-
-        mMenuSelectValueView = findViewById(R.id.messages_settings_activity_menu_select_value_view);
-        mMenuSelectValueView.setVisibility(View.INVISIBLE);
-        mMenuSelectValueView.setObserver(this);
-        mMenuSelectValueView.setActivity(this);
 
         mUIInitialized = true;
     }
@@ -361,19 +304,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         }
 
         mMenuType = MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE;
-        long timeout = Long.parseLong(mDefaultSpaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
-        mMenuSelectValueView.setSelectedValue((int) timeout);
         openMenuSelectValue();
-    }
-
-    private void closeMenu() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "closeMenu");
-        }
-
-        mMenuSelectValueView.setVisibility(View.INVISIBLE);
-        mOverlayView.setVisibility(View.INVISIBLE);
-        setStatusBarColor();
     }
 
     private void openMenuSelectValue() {
@@ -381,21 +312,50 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
             Log.d(LOG_TAG, "openMenuSelectValue");
         }
 
-        if (mMenuSelectValueView.getVisibility() == View.INVISIBLE) {
-            mMenuSelectValueView.setVisibility(View.VISIBLE);
-            mOverlayView.setVisibility(View.VISIBLE);
-            mMenuSelectValueView.openMenu(mMenuType);
+        ViewGroup viewGroup = findViewById(R.id.messages_settings_activity_layout);
 
-            int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
-            setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-        }
-    }
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+        menuSelectValueView.setActivity(this);
 
-    private void closeMenuSelectValue() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "closeMenuSelectValue");
+        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
+            long timeout = Long.parseLong(mDefaultSpaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
+            menuSelectValueView.setSelectedValue((int) timeout);
         }
 
-        mMenuSelectValueView.animationCloseMenu();
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+                viewGroup.removeView(menuSelectValueView);
+                setStatusBarColor();
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
+                    Settings.qualityMedia.setInt(value).save();
+                } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
+                    Settings.displayCallsMode.setInt(value).save();
+                }
+
+                mMessagesSettingsAdapter.updateMediaQuality();
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
+                menuSelectValueView.animationCloseMenu();
+                mDefaultSpaceSettings.setString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, timeout.getDelay() + "");
+                saveDefaultSpaceSettings();
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(mMenuType);
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 }

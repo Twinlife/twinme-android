@@ -41,7 +41,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/share_activity_search_image_view"
-            android:layout_toRightOf="@+id/share_activity_search_image_view"
             android:background="@android:color/transparent"
             android:hint="@string/application_search_hint"
             android:imeOptions="actionSearch"
@@ -54,7 +53,6 @@
             android:src="@drawable/close"
             android:contentDescription="@string/application_cancel"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             app:layout_aspectRatio="100%"
             app:layout_widthPercent="5%"
@@ -94,7 +92,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/share_activity_space_avatar"
-            android:layout_toRightOf="@id/share_activity_space_avatar"
             app:layout_widthPercent="48.53%"
             app:layout_marginStartPercent="6.4%">
 

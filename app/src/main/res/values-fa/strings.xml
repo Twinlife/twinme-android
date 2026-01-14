@@ -43,6 +43,7 @@
     <string name="application_do_not_display">دیگر نمایش داده نشود</string>
     <string name="application_edit">ویرایش</string>
     <string name="application_error_file_not_found">فایل پیدا نشد</string>
+    <string name="application_error_media_unload">امکان بارگیری رسانه وجود ندارد.</string>
     <string name="application_error_media_not_supported">این فرمت تصویر/ویدیو توسط برنامه پشتیبانی نمی</string>
     <string name="application_error_no_storage_space">فضای ذخیره سازی کافی نیست</string>
     <string name="application_group_limit_reached">"حداکثر تعداد (%1$d) از اعضای گروه بیش از."</string>
@@ -52,10 +53,10 @@
     <string name="application_location">موقعیت جغرافیایی</string>
     <string name="application_location_enabled">سرویس موقعیت مکانی دستگاه خود را فعال کنید</string>
     <string name="application_low_usage_message">هشدار، اگر به اندازه کافی از برنامه استفاده نکنید، ممکن است سیستم عامل آن را برای تبادل پیام بیدار نکند!</string>
-    <string name="application_more_info">اطلاعات بیشتر…</string>
     <string name="application_one_item_selected">1 مورد انتخاب شد</string>
     <string name="application_migration_no_storage_space">فضای کافی برای تکمیل انتقال در دستگاه شما وجود ندارد. برنامه را ببندید، مقداری فضا آزاد کنید و برای تکمیل به</string>
     <string name="application_migration_no_storage_space_message">یکی از دو دستگاه فضای ذخیره</string>
+    <string name="application_more_info">اطلاعات بیشتر…</string>
     <string name="application_name_hint">نام</string>
     <string name="application_network_connecting">اتصال به سرویس Skred</string>
     <string name="application_network_connectivity">اتصال به شبکه وجود دارد</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">من از شما دعوت میکنم که به گروه بپیوندید</string>
     <string name="conversation_activity_local_cleanup">محتوای اصلی به صورت محلی حذف شده است.</string>
     <string name="conversation_activity_manage_conversation">مکالمه را مدیریت کنید</string>
+    <string name="conversation_activity_media_quality_original">کیفیت اصلی (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">بدون تغییر اندازه - انتقال کندتر</string>
+    <string name="conversation_activity_media_quality_standard">کیفیت استاندارد (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">کوچکتر - انتقال سریعتر</string>
+    <string name="conversation_activity_media_quality_title">وضوح رسانه</string>
     <string name="conversation_activity_menu_item_view_copy_message">کپی به کلیپ بورد!</string>
     <string name="conversation_activity_menu_item_view_copy_title">کپی کنید</string>
     <string name="conversation_activity_menu_item_view_delete_title">حذف</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">هشدار: امکان جلوگیری از کپی/ذخیره/اشتراک گذاری سند (pdf، word، ppt، excel، zip و غیره) توسط گیرنده وجود ندارد، که فقط در خارج از برنامه قابل باز شدن است. آیا هنوز می خواهید آن را ارسال کنید؟</string>
     <string name="conversation_activity_send_large_file_message">این فایل بزرگ است (%1$d مگابایت). دوست دارید ادامه دهید ؟</string>
     <string name="conversation_activity_send_menu_allow_copy">اجازه دادن به گیرنده برای کپی/ذخیره/اشتراک گذاری این محتوا</string>
+    <string name="conversation_activity_send_quality_size">رسانه بزرگ (%1$s)</string>
+    <string name="conversation_activity_send_quality_standard">کیفیت استاندارد (SD) را ارسال کنید.</string>
+    <string name="conversation_activity_send_quality_warning">برای انتقال سریع‌تر، می‌توانید اندازه را به کیفیت استاندارد (SD) تغییر دهید.</string>
     <string name="conversation_activity_stream_dialog">میخواهید آن را بپذیرید؟</string>
     <string name="conversation_activity_unsupported_media">قالب رسانه پشتیبانی نشده</string>
     <string name="conversation_activity_video_call">تماس تصویری</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">فایل جدید</string>
     <string name="notification_center_geolocation_message">محل سکونت خود را ارسال کردید</string>
     <string name="notification_center_geolocation_message_received">محل جدید</string>
-    <string name="notification_center_group_invitation">یک دعوت نامه ارسال کردید</string>
-    <string name="notification_center_group_invitation_received">دعوت جدید</string>
+    <string name="notification_center_invitation">یک دعوت نامه ارسال کردید</string>
+    <string name="notification_center_invitation_group">شما را به پیوستن به یک گروه دعوت می</string>
+    <string name="notification_center_invitation_received">دعوت جدید</string>
+    <string name="notification_center_invitation_received_group">دعوتنامه جدید به گروه.</string>
     <string name="notification_center_join_group">شما عضو گروه هستید</string>
     <string name="notification_center_message_received">پیام جدید</string>
     <string name="notification_center_missed_audio_call_to">تماس صوتی از دست رفته به <span>%1$s</span></string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">مخاطب حذف شد</string>
     <string name="notifications_fragment_item_file_message">درک لاسرا لیاف کی</string>
     <string name="notifications_fragment_item_geolocation_message">محل سکونت خود را ارسال کردید</string>
-    <string name="notifications_fragment_item_group_invitation">دیدرک لاسرا همان توعد کی</string>
+    <string name="notifications_fragment_item_invitation">دیدرک لاسرا همان توعد کی</string>
+    <string name="notifications_fragment_item_invitation_group">شما را به پیوستن به یک گروه دعوت می</string>
     <string name="notifications_fragment_item_image_message">یک عکس به شما ارسال کرد</string>
     <string name="notifications_fragment_item_join_group">دیتسه هورگ وضع امش</string>
     <string name="notifications_fragment_item_new_contact">دیدج سامت</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">برنامه را با خدمات بیومتریک یا با کد پین قفل کنید.</string>
-    <string name="privacy_activity_hide_last_screen_message">از نمایش پیش نمایش در برنامه تعویض برنامه جلوگیری کنید</string>
-    <string name="privacy_activity_hide_last_screen_title">پنهان کردن آخرین صفحه</string>
+    <string name="privacy_activity_hide_last_screen_message">و در صورت اجازه دستگاه، برنامه را هنگام اجرا در پس</string>
+    <string name="privacy_activity_hide_last_screen_title">اسکرین شات ممنوع</string>
     <string name="privacy_activity_lock_screen_message">با استفاده از خدمات تأیید بیومتریک یا کد عبور دستگاه ، دسترسی به برنامه را باز کنید. هنگامی که دسترسی به برنامه قفل است ، همچنان می توانید به تماس های دریافتی پاسخ دهید و اعلان ها را دریافت کنید.</string>
     <string name="privacy_activity_lock_screen_not_available">این گزینه به نسخه Android > 5.0 نیاز دارد</string>
     <string name="privacy_activity_lock_screen_timeout">مهلت زمانی قفل دسترسی</string>

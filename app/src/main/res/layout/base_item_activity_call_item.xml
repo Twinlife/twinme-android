@@ -33,7 +33,6 @@
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_call_item_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_marginEndPercent="6.93%"
             app:layout_widthPercent="77.33%"
             app:layout_aspectRatio="362.50%">
@@ -57,15 +56,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/base_item_activity_call_item_avatar_image_view"
-                    android:layout_toRightOf="@+id/base_item_activity_call_item_avatar_image_view" />
+                    android:layout_toEndOf="@+id/base_item_activity_call_item_avatar_image_view" />
 
                 <TextView
                     android:id="@+id/base_item_activity_call_item_call_duration_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:textAlignment="textEnd"
                     android:gravity="end"
                     android:ellipsize="end"
@@ -93,7 +90,6 @@
                 <ImageView
                     android:id="@+id/base_item_activity_call_item_call_again_view"
                     android:layout_toEndOf="@+id/base_item_activity_call_item_call_again_title_view"
-                    android:layout_toRightOf="@+id/base_item_activity_call_item_call_again_title_view"
                     android:layout_centerVertical="true"
                     android:src="@drawable/call_again"
                     app:tint="#ffffff"
@@ -108,7 +104,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignBottom="@+id/base_item_activity_call_item_view"
             app:layout_marginEndPercent="6.93%"
             android:visibility="gone" />
@@ -118,7 +113,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_call_item_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:visibility="gone"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"
@@ -129,7 +123,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_call_item_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:visibility="gone"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"

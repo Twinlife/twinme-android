@@ -376,6 +376,12 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
                 mTextView.setPadding(0, 0, 0, 0);
             }
         }
+
+        if (isMenuOpen() && isSelectedItem(item.getDescriptorId())) {
+            if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
+                mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+            }
+        }
     }
 
     @Override

@@ -55,8 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/base_item_activity_peer_clear_item_avatar"
-                android:layout_toRightOf="@+id/base_item_activity_peer_clear_item_avatar" />
+                android:layout_toEndOf="@+id/base_item_activity_peer_clear_item_avatar" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

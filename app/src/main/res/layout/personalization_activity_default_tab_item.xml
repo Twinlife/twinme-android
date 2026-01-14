@@ -29,7 +29,6 @@
         android:id="@+id/personalization_activity_default_tab_item_calls_view"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_spaces_view"
         android:layout_toEndOf="@+id/personalization_activity_default_tab_item_spaces_view"
         app:layout_widthPercent="20%"
         android:contentDescription="@string/show_contact_activity_space">
@@ -51,7 +50,6 @@
         android:id="@+id/personalization_activity_default_tab_item_contacts_view"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_calls_view"
         android:layout_toEndOf="@+id/personalization_activity_default_tab_item_calls_view"
         app:layout_widthPercent="20%"
         android:contentDescription="@string/contacts_fragment_title">
@@ -72,7 +70,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/personalization_activity_default_tab_item_conversations_view"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_contacts_view"
         android:layout_toEndOf="@+id/personalization_activity_default_tab_item_contacts_view"
         android:layout_centerVertical="true"
         app:layout_widthPercent="20%"
@@ -94,7 +91,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/personalization_activity_default_tab_item_notifications_view"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/personalization_activity_default_tab_item_conversations_view"
         android:layout_toEndOf="@+id/personalization_activity_default_tab_item_conversations_view"
         android:layout_centerVertical="true"
         app:layout_widthPercent="20%"

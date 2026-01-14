@@ -226,12 +226,6 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
                 appStateInfo.setInfoFloatingViewState(AppStateInfo.InfoFloatingViewState.DEFAULT);
             }
         }
-
-        if (getTwinmeApplication().lastScreenHidden()) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
-        } else {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        }
     }
 
     @Override

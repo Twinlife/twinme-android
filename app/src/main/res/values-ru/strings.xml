@@ -43,6 +43,7 @@
     <string name="application_do_not_display">Больше не отображать</string>
     <string name="application_edit">Правка</string>
     <string name="application_error_file_not_found">Файл не найден.</string>
+    <string name="application_error_media_unload">Не удалось загрузить медиафайлы.</string>
     <string name="application_error_media_not_supported">Этот формат изображения/видео не поддерживается приложением.</string>
     <string name="application_error_no_storage_space">Недостаточно места для хранения</string>
     <string name="application_group_limit_reached">Максимальное количество (%1$d) членов группы превышено.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">Геолокации</string>
     <string name="application_location_enabled">Активируйте услугу определения местоположения на вашем устройстве.</string>
     <string name="application_low_usage_message">Внимание, если вы используете приложение недостаточно часто, ОС может не разбудить его для обмена сообщениями!</string>
-    <string name="application_more_info">Больше информации…</string>
     <string name="application_one_item_selected">1 элемент выбран</string>
     <string name="application_migration_no_storage_space">На вашем устройстве недостаточно места для завершения миграции. Закройте приложение, освободите место и перезапустите приложение, чтобы завершить обновление.</string>
     <string name="application_migration_no_storage_space_message">На одном из двух устройств недостаточно места на диске. Освободите место на этом устройстве перед повторным запуском миграции.</string>
+    <string name="application_more_info">Больше информации…</string>
     <string name="application_name_hint">Название</string>
     <string name="application_network_connecting">Подключение к сервису Skred</string>
     <string name="application_network_connectivity">Есть подключение к сети</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">Я приглашаю вас присоединиться к группе</string>
     <string name="conversation_activity_local_cleanup">Основное содержимое удалено локально.</string>
     <string name="conversation_activity_manage_conversation">Управлять разговором</string>
+    <string name="conversation_activity_media_quality_original">Исходное разрешение (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Без изменения размера — более медленная передача</string>
+    <string name="conversation_activity_media_quality_standard">Стандартное разрешение (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Меньший размер — более быстрая передача</string>
+    <string name="conversation_activity_media_quality_title">Разрешение медиафайлов</string>
     <string name="conversation_activity_menu_item_view_copy_message">Скопировано в буфер обмена!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kопия</string>
     <string name="conversation_activity_menu_item_view_delete_title">Удалить</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">Предупреждение: невозможно запретить получателю копировать/сохранять/расшаривать документ (pdf, word, ppt, excel, zip и т. д.), который можно открыть только вне приложения. Вы все еще хотите отправить его?</string>
     <string name="conversation_activity_send_large_file_message">Этот файл большой (%1$d МБ). Желаете ли вы продолжить ?</string>
     <string name="conversation_activity_send_menu_allow_copy">Разрешить получателю копировать/сохранять/делиться этим контентом</string>
+    <string name="conversation_activity_send_quality_size">Большой размер медиафайлов (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Отправьте в стандартном разрешении (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Вы можете изменить размер до стандартного разрешения (SD) для более быстрой передачи.</string>
     <string name="conversation_activity_stream_dialog">Вы хотите принять?</string>
     <string name="conversation_activity_unsupported_media">Неподдерживаемый формат мультимедиа</string>
     <string name="conversation_activity_video_call">Видеозвонок</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">Новый файл</string>
     <string name="notification_center_geolocation_message">oтправил вам свое местоположение</string>
     <string name="notification_center_geolocation_message_received">Новое место</string>
-    <string name="notification_center_group_invitation">Отправил вам приглашение</string>
-    <string name="notification_center_group_invitation_received">Новое приглашение</string>
+    <string name="notification_center_invitation">Отправил вам приглашение</string>
+    <string name="notification_center_invitation_group">приглашает вас присоединиться к группе.</string>
+    <string name="notification_center_invitation_received">Новое приглашение</string>
+    <string name="notification_center_invitation_received_group">Новое приглашение в группу</string>
     <string name="notification_center_join_group">Вы являетесь участником группы</string>
     <string name="notification_center_message_received">Новое сообщение</string>
     <string name="notification_center_missed_audio_call_to">Пропущенный аудиовызов %1$s</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">Контакт удалён</string>
     <string name="notifications_fragment_item_file_message">отправил вам файл</string>
     <string name="notifications_fragment_item_geolocation_message">Отправил вам свое местоположение</string>
-    <string name="notifications_fragment_item_group_invitation">Отправил вам приглашение</string>
+    <string name="notifications_fragment_item_invitation">Отправил вам приглашение</string>
+    <string name="notifications_fragment_item_invitation_group">приглашает вас присоединиться к группе.</string>
     <string name="notifications_fragment_item_image_message">Отправил(а) вам фото</string>
     <string name="notifications_fragment_item_join_group">Вы являетесь участником группы</string>
     <string name="notifications_fragment_item_new_contact">Новый контакт</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Заблокируйте приложение с помощью биометрических сервисов или PIN-кода.</string>
-    <string name="privacy_activity_hide_last_screen_message">Запретить предварительный просмотр в переключателе приложений</string>
-    <string name="privacy_activity_hide_last_screen_title">Скрыть последний экран</string>
+    <string name="privacy_activity_hide_last_screen_message">И скрыть приложение, когда оно работает в фоновом режиме, если устройство это позволяет.</string>
+    <string name="privacy_activity_hide_last_screen_title">Запретить создание скриншотов</string>
     <string name="privacy_activity_lock_screen_message">Разблокируйте доступ к приложению с помощью служб биометрической аутентификации или аутентификации по паролю. Вы по-прежнему можете отвечать на входящие звонки и получать уведомления, пока доступ к приложению заблокирован.</string>
     <string name="privacy_activity_lock_screen_not_available">Для этого варианта требуется версия Android > 5.0.</string>
     <string name="privacy_activity_lock_screen_timeout">Тайм-аут блокировки доступа</string>

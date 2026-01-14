@@ -79,8 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/create_group_activity_name_content_view"
-            android:layout_alignEnd="@+id/create_group_activity_name_content_view"
-            android:layout_alignRight="@+id/create_group_activity_name_content_view" />
+            android:layout_alignEnd="@+id/create_group_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/create_group_activity_description_content_view"
@@ -108,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/create_group_activity_description_content_view"
-            android:layout_alignEnd="@+id/create_group_activity_description_content_view"
-            android:layout_alignRight="@+id/create_group_activity_description_content_view" />
+            android:layout_alignEnd="@+id/create_group_activity_description_content_view" />
 
         <TextView
             android:id="@+id/create_group_activity_members_title_view"
@@ -153,7 +151,6 @@
                 android:id="@+id/create_group_activity_no_member_accessory_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/end_chevron"
                 app:tint="@color/accessory_color"
@@ -208,7 +205,6 @@
                 android:id="@+id/create_group_activity_permissions_accessory_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/end_chevron"
                 app:tint="@color/accessory_color"

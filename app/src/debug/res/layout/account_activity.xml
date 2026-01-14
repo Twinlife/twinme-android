@@ -30,7 +30,6 @@
             app:layout_widthPercent="25%"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/account_activity_debug_title_view"
-            android:layout_toRightOf="@+id/account_activity_debug_title_view"
             android:gravity="center"
             android:text="@string/account_activity_logs_title_view" />
 
@@ -39,7 +38,6 @@
             app:layout_widthPercent="25%"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/account_activity_logs_title_view"
-            android:layout_toRightOf="@+id/account_activity_logs_title_view"
             android:gravity="center"
             android:text="@string/account_activity_config_title_view" />
 
@@ -48,7 +46,6 @@
             app:layout_widthPercent="25%"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/account_activity_config_title_view"
-            android:layout_toRightOf="@+id/account_activity_config_title_view"
             android:gravity="center"
             android:text="@string/account_activity_tests_title_view"
             android:visibility="gone" />

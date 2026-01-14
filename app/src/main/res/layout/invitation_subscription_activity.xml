@@ -75,7 +75,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:layout_toRightOf="@+id/invitation_subscription_activity_scan_icon_view"
                 android:layout_toEndOf="@+id/invitation_subscription_activity_scan_icon_view"
                 android:text="@string/add_contact_activity_scan_code"/>
         </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -111,7 +110,6 @@
             android:id="@+id/invitation_subscription_activity_twincode_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/invitation_subscription_activity_twincode_copy_view"
             android:layout_toEndOf="@+id/invitation_subscription_activity_twincode_copy_view"
             android:background="@android:color/transparent"
             android:hint="@string/scan_activity_paste_code"
@@ -124,7 +122,6 @@
             android:id="@+id/invitation_subscription_activity_twincode_invite_view"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:src="@drawable/check_mark_blue"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="70.73%"
@@ -152,7 +149,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/invitation_subscription_activity_import_gallery_icon_view"
             android:layout_toEndOf="@+id/invitation_subscription_activity_import_gallery_icon_view"
             android:text="@string/add_contact_activity_gallery_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>

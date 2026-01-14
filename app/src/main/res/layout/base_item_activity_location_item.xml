@@ -36,8 +36,6 @@
             android:layout_alignTop="@+id/base_item_activity_location_item_reply_text"
             android:layout_alignBottom="@+id/base_item_activity_location_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_location_item_image_view"
-            android:layout_alignRight="@+id/base_item_activity_location_item_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_location_item_reply_text"
             android:layout_alignStart="@+id/base_item_activity_location_item_reply_text" />
 
         <TextView
@@ -46,7 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/base_item_activity_location_item_image_view"
-            android:layout_alignRight="@+id/base_item_activity_location_item_image_view"
             android:textColor="@android:color/white"
             app:layout_marginStartPercent="29.60%" />
 
@@ -55,16 +52,13 @@
             android:layout_alignTop="@+id/base_item_activity_location_item_reply_container_image_view"
             android:layout_alignBottom="@+id/base_item_activity_location_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_location_item_image_view"
-            android:layout_alignRight="@+id/base_item_activity_location_item_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_location_item_reply_container_image_view"
             android:layout_alignStart="@+id/base_item_activity_location_item_reply_container_image_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_location_item_reply_container_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/base_item_activity_location_item_image_view"
-            android:layout_alignRight="@+id/base_item_activity_location_item_image_view">
+            android:layout_alignEnd="@+id/base_item_activity_location_item_image_view">
 
             <org.twinlife.twinme.utils.RoundedImageView
                 android:id="@+id/base_item_activity_location_item_reply_image_view"
@@ -77,7 +71,6 @@
             android:id="@+id/base_item_activity_location_item_map_container"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_aspectRatio="168.42%"
             app:layout_marginEndPercent="6.93%"
             app:layout_widthPercent="78.4%">
@@ -94,7 +87,6 @@
             android:id="@+id/base_item_activity_location_item_image_view"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_marginEndPercent="6.93%"
             app:layout_widthPercent="78.4%" />
 
@@ -103,7 +95,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clipChildren="false"
-            android:layout_alignRight="@+id/base_item_activity_location_item_image_view"
             android:layout_alignEnd="@+id/base_item_activity_location_item_image_view"
             android:layout_alignBottom="@+id/base_item_activity_location_item_image_view">
 
@@ -124,7 +115,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_location_item_map_container"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:visibility="gone"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"
@@ -135,7 +125,6 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@id/base_item_activity_location_item_map_container"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:visibility="gone"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"
@@ -146,7 +135,6 @@
         android:id="@+id/base_item_activity_location_item_annotation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/base_item_activity_location_item_layout_container"
         android:choiceMode="singleChoice"
@@ -156,7 +144,6 @@
         android:id="@+id/base_item_activity_location_item_overlay_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
         android:visibility="invisible" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

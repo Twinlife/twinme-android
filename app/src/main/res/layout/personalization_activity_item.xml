@@ -15,7 +15,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/personalization_activity_item_layout_image"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/circle_grey"
         android:layout_centerVertical="true"
         app:layout_aspectRatio="100%"

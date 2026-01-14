@@ -20,7 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/export_activity_content_item_image"
         android:layout_toEndOf="@+id/export_activity_content_item_image"
         app:layout_marginStartPercent="4.26%"
         app:layout_marginEndPercent="20.26%" />
@@ -28,7 +27,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/export_activity_content_item_layout_image"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/circle_grey"
         android:layout_centerVertical="true"
         app:layout_aspectRatio="100%"

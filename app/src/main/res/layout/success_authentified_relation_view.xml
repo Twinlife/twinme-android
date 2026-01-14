@@ -57,7 +57,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/success_authentified_relation_view_name_view"
                 android:layout_toEndOf="@+id/success_authentified_relation_view_name_view"
                 android:src="@drawable/authentified_relation_icon" />
 

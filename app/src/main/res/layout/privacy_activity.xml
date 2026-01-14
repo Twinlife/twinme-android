@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/privacy_activity_content_view"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/privacy_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,147 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:id="@+id/privacy_activity_screen_container_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/privacy_activity_tool_bar">
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/privacy_activity_screen_lock_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/item_light_border">
-
-            <org.twinlife.twinme.utils.SwitchView
-                android:id="@+id/privacy_activity_screen_lock_checkbox"
-                style="@style/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:checked="true"
-                app:layout_marginEndPercent="4.26%"
-                app:layout_marginStartPercent="4.53%"
-                app:layout_marginTopPercent="2%"
-                app:layout_marginBottomPercent="2%"
-                android:text="@string/privacy_activity_lock_screen_title"
-                android:textOn=""
-                android:textOff=""
-                android:track="@drawable/switch_track"
-                android:thumb="@drawable/switch_thumb_on"
-                android:switchMinWidth="0dp" />
-
-            <View
-                android:id="@+id/privacy_activity_screen_lock_unavailable"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/translucent"
-                android:visibility="gone" />
-
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/privacy_activity_screen_lock_information_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/privacy_activity_screen_lock_view">
-
-            <TextView
-                android:id="@+id/privacy_activity_screen_lock_information_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:background="@android:color/transparent"
-                android:text="@string/privacy_activity_lock_screen_message"
-                app:layout_marginStartPercent="4.53%"
-                app:layout_marginEndPercent="4.53%" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/privacy_activity_timeout_screen_lock_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/item_light_border"
-            android:layout_below="@+id/privacy_activity_screen_lock_information_view">
-
-            <TextView
-                android:id="@+id/privacy_activity_timeout_screen_lock_title_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="start"
-                android:background="@android:color/transparent"
-                android:text="@string/privacy_activity_lock_screen_timeout"
-                app:layout_widthPercent="50.67%"
-                app:layout_marginStartPercent="4.53%" />
-
-            <TextView
-                android:id="@+id/privacy_activity_timeout_screen_lock_value_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:text="@string/privacy_activity_lock_screen_timeout_instant"
-                android:background="@android:color/transparent"
-                app:layout_marginEndPercent="4.53%" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/privacy_activity_hide_last_screen_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/item_light_border"
-            android:layout_below="@+id/privacy_activity_timeout_screen_lock_view">
-
-            <org.twinlife.twinme.utils.SwitchView
-                android:id="@+id/privacy_activity_hide_last_screen_checkbox"
-                style="@style/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:checked="true"
-                app:layout_marginEndPercent="4.26%"
-                app:layout_marginStartPercent="4.53%"
-                app:layout_marginTopPercent="2%"
-                app:layout_marginBottomPercent="2%"
-                android:text="@string/privacy_activity_hide_last_screen_title"
-                android:textOn=""
-                android:textOff=""
-                android:track="@drawable/switch_track"
-                android:thumb="@drawable/switch_thumb_on"
-                android:switchMinWidth="0dp" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/privacy_activity_hide_last_screen_information_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/privacy_activity_hide_last_screen_view">
-
-            <TextView
-                android:id="@+id/privacy_activity_hide_last_screen_information_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:background="@android:color/transparent"
-                android:text="@string/privacy_activity_hide_last_screen_message"
-                app:layout_marginStartPercent="4.53%"
-                app:layout_marginEndPercent="4.53%" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-    </androidx.percentlayout.widget.PercentRelativeLayout>
-
-    <View
-        android:id="@+id/privacy_activity_overlay_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:visibility="invisible" />
-
-    <org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView
-        android:id="@+id/privacy_activity__menu_select_value_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/privacy_activity_list_view"
+        android:layout_below="@+id/privacy_activity_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-</androidx.percentlayout.widget.PercentRelativeLayout>
+    
+</RelativeLayout>

@@ -309,6 +309,12 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
         } else {
             mEphemeralView.setVisibility(View.GONE);
         }
+
+        if (isMenuOpen() && isSelectedItem(item.getDescriptorId())) {
+            if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
+                mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+            }
+        }
     }
 
     @Override

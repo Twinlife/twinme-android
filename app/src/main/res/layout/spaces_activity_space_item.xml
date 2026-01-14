@@ -59,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/spaces_activity_space_item_space_view"
-            android:layout_toRightOf="@id/spaces_activity_space_item_space_view"
             app:layout_widthPercent="60.53%"
             app:layout_marginStartPercent="4.26%">
 
@@ -83,7 +82,6 @@
             android:id="@+id/spaces_activity_space_item_current_space_image_view"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:src="@drawable/check_mark_blue"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="32.26%"
@@ -93,7 +91,6 @@
             android:id="@+id/spaces_activity_space_item_color_view"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="27.78%"
             app:layout_marginEndPercent="5.87%" />
@@ -109,7 +106,6 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_alignStart="@+id/spaces_activity_space_item_space_information_view"
-            android:layout_alignLeft="@+id/spaces_activity_space_item_space_information_view"
             android:layout_alignParentBottom="true" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

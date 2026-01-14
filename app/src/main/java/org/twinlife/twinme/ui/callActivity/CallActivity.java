@@ -1295,8 +1295,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         TerminateReason terminateReason = (TerminateReason) intent.getSerializableExtra(CallService.CALL_SERVICE_TERMINATE_REASON);
 
         boolean isHoldCall = intent.getBooleanExtra(CallService.CALL_IS_HOLD_CALL, false);
+        boolean isDoubleCall = intent.getBooleanExtra(CallService.CALL_IS_DOUBLE_CALL, false);
 
-        if (isHoldCall) {
+        if (isHoldCall || isDoubleCall) {
             mCallHoldView.setVisibility(View.GONE);
             animateMenu();
             return;
@@ -1810,9 +1811,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             return;
         }
 
-        if (event == CallParticipantEvent.EVENT_IDENTITY && mMode == CallStatus.TERMINATED) {
-            finish();
-            return;
+        if (event == CallParticipantEvent.EVENT_IDENTITY) {
+            if (mMode == CallStatus.TERMINATED) {
+                finish();
+                return;
+            } else if (CallService.isDoubleCall()) {
+                updateViews();
+                return;
+            }
         }
 
         if (isStreamEvent(event)) {
@@ -2349,6 +2355,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         menuViewLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         mCallHoldView.setLayoutParams(menuViewLayoutParams);
         mCallHoldView.bringToFront();
+        mCallHoldView.enableAddToCall(false);
 
         mAddParticipantView = findViewById(R.id.call_activity_add_participant_view);
         mAddParticipantView.setOnClickListener(v -> onAddParticipantClick());
@@ -2506,7 +2513,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         float alphaHeader = 1f;
         mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
         if (mMenuVisibility) {
-            if (mCallCertifyView != null) {
+            if (mCallCertifyView != null && mCallCertifyView.getVisibility() == View.VISIBLE && CallService.isKeyCheckRunning()) {
                 alphaHeader = 0.5f;
             }
 
@@ -2521,7 +2528,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             int callHoldHeight = 0;
             if (CallService.isDoubleCall()) {
-
                 callHoldHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
             }
 
@@ -2750,6 +2756,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     if (holdCallState != null && holdCallState.getOriginator() != null) {
                         mCallHoldView.setVisibility(View.VISIBLE);
                         mCallHoldView.setCallInfo(holdCallState.getOriginator().getName(), holdCallState.getAvatar());
+                        mCallHoldView.enableAddToCall(!CallStatus.isIncoming(holdCallState.getStatus()));
                     }
                 } else {
                     mCallHoldView.setVisibility(View.GONE);
@@ -2768,6 +2775,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mAddParticipantView.setVisibility(View.GONE);
                 mUnreadMessageView.setVisibility(View.GONE);
                 mCameraControlView.setVisibility(View.GONE);
+                mSharedLocationView.setVisibility(View.GONE);
                 mTerminatedView.setVisibility(View.VISIBLE);
 
                 if (mCallCertifyView != null) {
@@ -3020,6 +3028,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         CallState callState = CallService.getState();
         if (callState != null && callState.getMainParticipant() != null) {
             CallParticipant participant = callState.getMainParticipant();
+
+            if (participant.isWaitingForCameraControlAnswer()) {
+                return;
+            }
 
             if (isRemoteCameraControl()) {
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
@@ -3431,9 +3443,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mSharedLocationImageView.setColorFilter(Color.WHITE);
 
                 mCallMenuView.setIsLocationShared(false);
-                mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
             }
         }
+
+        mCallMenuView.setCallMenuViewState(CallMenuView.CallMenuViewState.DEFAULT);
     }
 
     private void initMap(boolean showMap) {
@@ -4812,9 +4825,13 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             case EVENT_CAMERA_CONTROL_GRANTED:
                 participant.remoteCameraMute(false);
+                mCallMenuView.setIsWaitingForCameraControlAnswer(false);
+                mCallMenuView.updateMenu();
                 break;
 
             case EVENT_CAMERA_CONTROL_DENIED: {
+                mCallMenuView.setIsWaitingForCameraControlAnswer(false);
+                mCallMenuView.updateMenu();
                 AlertMessageView alertMessageView = new AlertMessageView(this, null);
                 alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
                 alertMessageView.setForceDarkMode(true);
@@ -5047,13 +5064,16 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 // Peer has confirmed a word. If we've also validated this word,
                 // CallService.getCurrentKeyCheckWord() will return the next word.
                 mWordCheckChallenge = CallService.getKeyCheckCurrentWord();
-                updateWord = true;
+                WordCheckChallenge failedChallenge = CallService.getKeyCheckPeerError();
+                if (failedChallenge == null) {
+                    updateWord = true;
+                }
+
                 break;
 
             case EVENT_WORD_CHECK_RESULT_KO:
                 // Peer has marked a word as invalid. We can get the failed challenge through
                 // CallService.getKeyCheckPeerError()
-                WordCheckChallenge failedChallenge = CallService.getKeyCheckPeerError();
                 mCallCertifyView.certifyRelationFailed();
                 stopKeyCheckSession();
                 break;
@@ -5074,7 +5094,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 break;
         }
 
-        if (updateWord) {
+        if (updateWord && CallService.isKeyCheckRunning()) {
             mCallCertifyView.setCurrentWord(mWordCheckChallenge);
         }
     }
@@ -5591,6 +5611,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     if (mWordCheckChallenge != null) {
                         sendKeyCheckResult(mWordCheckChallenge.index, false);
+                        stopKeyCheckSession();
                     }
                 }
 
@@ -5608,7 +5629,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 public void onCertifyViewFinish() {
 
                     mCallCertifyView.setVisibility(View.GONE);
-                    mHeaderView.setAlpha(1.f);
+                    mHeaderView.setAlpha(1.0f);
                     mCallMenuView.setHideCertifyRelation(true);
                     mCallMenuView.setIsCertifyRunning(false);
                     mCallMenuView.updateMenu();
@@ -5922,6 +5943,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
         defaultConfirmView.setTitle(getString(R.string.application_location));
+        defaultConfirmView.setForceDarkMode(true);
         defaultConfirmView.setMessage(getString(R.string.application_location_enabled));
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_yes));

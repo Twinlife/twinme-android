@@ -39,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/menu_select_color_view_title_view"
-            android:layout_alignLeft="@+id/menu_select_color_view_default_color_content_view"
             android:layout_alignStart="@+id/menu_select_color_view_default_color_content_view"
             android:textAllCaps="true"
             android:text="@string/personalization_activity_menu_choose_color"/>
@@ -63,7 +62,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/menu_select_color_view_default_color_content_view"
-            android:layout_alignLeft="@+id/menu_select_color_view_enter_color_view"
             android:layout_alignStart="@+id/menu_select_color_view_enter_color_view"
             android:textAllCaps="true"
             android:text="@string/personalization_activity_menu_enter_color"/>
@@ -90,7 +88,6 @@
                 android:background="@android:color/transparent"
                 android:imeOptions="actionDone"
                 android:inputType="text|textNoSuggestions|textCapSentences"
-                android:layout_toRightOf="@+id/menu_select_color_view_enter_color_prefix_view"
                 android:layout_toEndOf="@+id/menu_select_color_view_enter_color_prefix_view" />
 
             <org.twinlife.twinme.utils.RoundedView
@@ -98,7 +95,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>

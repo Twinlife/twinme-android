@@ -58,6 +58,7 @@
     <string name="application_do_not_display">Do not display anymore</string>
     <string name="application_edit">Edit</string>
     <string name="application_error_file_not_found">The file was not found.</string>
+    <string name="application_error_media_unload">Unable to load media.</string>
     <string name="application_error_media_not_supported">This image/video format is not supported by the application.</string>
     <string name="application_error_no_storage_space">Insufficient storage space</string>
     <string name="application_group_limit_reached">Maximum number (%1$d) of group members exceeded.</string>
@@ -67,10 +68,10 @@
     <string name="application_location_enabled">Activate Location service on your device.</string>
     <string name="application_items_selected">%1$d items selected</string>
     <string name="application_low_usage_message">Warning, if you don’t use the application often enough, the OS may not wake it up to exchange messages!</string>
-    <string name="application_more_info">More information…</string>
     <string name="application_one_item_selected">1 item selected</string>
     <string name="application_migration_no_storage_space">There is not enough space on your device to complete the migration. Close the application, free up some space, and relaunch the app to complete the update.</string>
     <string name="application_migration_no_storage_space_message">One of the two devices does not have enough storage space. Free up space on that device before restarting the migration.</string>
+    <string name="application_more_info">More information…</string>
     <string name="application_name_hint">Name</string>
     <string name="application_network_connecting">Connecting to Skred service</string>
     <string name="application_network_connectivity">Network connectivity exists</string>
@@ -132,7 +133,7 @@
     <string name="application_yes">Yes</string>
 
     <!-- AboutActivity -->
-    <string name="about_activity_copyright" translatable="false">©2025 SKRED</string>
+    <string name="about_activity_copyright" translatable="false">©2026 SKRED</string>
     <string name="about_activity_application_code">Application Code</string>
     <string name="about_activity_information">Information</string>
     <string name="about_activity_legal">Legal Notices</string>
@@ -446,6 +447,11 @@
     <string name="conversation_activity_invitation_title">I invite you to join the group</string>
     <string name="conversation_activity_local_cleanup">Main contents have been deleted locally.</string>
     <string name="conversation_activity_manage_conversation">Manage the conversation</string>
+    <string name="conversation_activity_media_quality_original">Original definition (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">No resizing - Slower transfer</string>
+    <string name="conversation_activity_media_quality_standard">Standard definition (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Smaller - Faster transfer</string>
+    <string name="conversation_activity_media_quality_title">Media resolution</string>
     <string name="conversation_activity_menu_item_view_copy_message">Copied to the clipboard!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Copy</string>
     <string name="conversation_activity_menu_item_view_delete_title">Delete</string>
@@ -474,6 +480,9 @@
     <string name="conversation_activity_send_file_warning">Warning: it is not possible to prevent the recipient from copying/saving/sharing a document (pdf, word, ppt, excel, zip, etc.), which can only be opened outside the application. Do you still want to send it?</string>
     <string name="conversation_activity_send_large_file_message">This file is large (%1$d MB). Would you like to continue ?</string>
     <string name="conversation_activity_send_menu_allow_copy">Allow recipient to copy/save/share this content</string>
+    <string name="conversation_activity_send_quality_size">Large media (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Send in standard definition (SD)</string>
+    <string name="conversation_activity_send_quality_warning">You can resize to standard definition (SD) for faster transfer.</string>
     <string name="conversation_activity_stream_dialog">Do you want to accept it?</string>
     <string name="conversation_activity_unsupported_media">Unsupported media format.</string>
     <string name="conversation_activity_video_call">Video call</string>
@@ -797,8 +806,10 @@
     <string name="notification_center_file_message_received">New file</string>
     <string name="notification_center_geolocation_message">sent you a location</string>
     <string name="notification_center_geolocation_message_received">New location</string>
-    <string name="notification_center_group_invitation">Sent you an invitation</string>
-    <string name="notification_center_group_invitation_received">New invitation</string>
+    <string name="notification_center_invitation">Sent you an invitation</string>
+    <string name="notification_center_invitation_group">invites you to join a group.</string>
+    <string name="notification_center_invitation_received">New invitation</string>
+    <string name="notification_center_invitation_received_group">New group invitation</string>
     <string name="notification_center_join_group">You are member of the group</string>
     <string name="notification_center_message_received">New message</string>
     <string name="notification_center_missed_audio_call_to">Missed audio call to %1$s</string>
@@ -836,7 +847,8 @@
     <string name="notifications_fragment_item_deleted_contact">Contact Deleted</string>
     <string name="notifications_fragment_item_file_message">Sent you a file</string>
     <string name="notifications_fragment_item_geolocation_message">Sent you a location</string>
-    <string name="notifications_fragment_item_group_invitation">Sent you an invitation</string>
+    <string name="notifications_fragment_item_invitation">Sent you an invitation</string>
+    <string name="notifications_fragment_item_invitation_group">invites you to join a group.</string>
     <string name="notifications_fragment_item_image_message">Sent you a photo</string>
     <string name="notifications_fragment_item_join_group">You are member of the group</string>
     <string name="notifications_fragment_item_new_contact">New contact</string>
@@ -920,8 +932,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Lock the application with biometric services or with a PIN code.</string>
-    <string name="privacy_activity_hide_last_screen_message">Prevent previews from appearing in the application switcher</string>
-    <string name="privacy_activity_hide_last_screen_title">Hide last screen</string>
+    <string name="privacy_activity_hide_last_screen_message">And hide the application when it goes into the background, if the device allows it.</string>
+    <string name="privacy_activity_hide_last_screen_title">Forbid screenshots</string>
     <string name="privacy_activity_lock_screen_message">Unlock access to the application using your device biometric or passcode authentication services. You can still answer incoming calls and receive notifications while access to the app is locked.</string>
     <string name="privacy_activity_lock_screen_not_available">This option requires a version of Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Access lock timeout</string>

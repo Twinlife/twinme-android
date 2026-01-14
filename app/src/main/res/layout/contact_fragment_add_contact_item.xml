@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/contacts_fragment_add_contact_item_add_view"
-        android:layout_toRightOf="@id/contacts_fragment_add_contact_item_add_view"
         android:text="@string/main_activity_add_contact"
         app:layout_marginStartPercent="4.67%" />
 

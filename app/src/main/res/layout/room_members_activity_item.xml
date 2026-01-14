@@ -18,7 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/room_member_activity_item_avatar_view"
-        android:layout_toRightOf="@id/room_member_activity_item_avatar_view"
         app:layout_marginStartPercent="4.26%"
         app:layout_marginEndPercent="4.26%" />
 
@@ -27,7 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_alignStart="@+id/room_member_activity_item_name_view"
-        android:layout_alignLeft="@+id/room_member_activity_item_name_view"
         android:layout_alignParentBottom="true" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

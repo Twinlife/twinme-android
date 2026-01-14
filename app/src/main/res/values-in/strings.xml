@@ -42,6 +42,7 @@
     <string name="application_do_not_display">Jangan tampilkan lagi</string>
     <string name="application_edit">Edit</string>
     <string name="application_error_file_not_found">File tidak ditemukan.</string>
+    <string name="application_error_media_unload">Tidak dapat memuat media.</string>
     <string name="application_error_media_not_supported">Format gambar/video ini tidak didukung oleh aplikasi.</string>
     <string name="application_error_no_storage_space">Ruang penyimpanan tidak cukup</string>
     <string name="application_group_limit_reached">Jumlah maksimal (%1$d) anggota grup terlampaui.</string>
@@ -51,10 +52,10 @@
     <string name="application_location">Geolokasi</string>
     <string name="application_location_enabled">Aktifkan layanan Lokasi pada perangkat Anda.</string>
     <string name="application_low_usage_message">Peringatan, jika Anda tidak cukup sering menggunakan aplikasi, OS mungkin tidak membangunkannya untuk bertukar pesan!</string>
-    <string name="application_more_info">Informasi lebih lanjut…</string>
     <string name="application_one_item_selected">1 item dipilih</string>
     <string name="application_migration_no_storage_space">Ruang di perangkat Anda tidak cukup untuk menyelesaikan migrasi. Tutup aplikasi, kosongkan sebagian ruang, dan luncurkan kembali aplikasi untuk menyelesaikan pembaruan.</string>
     <string name="application_migration_no_storage_space_message">Salah satu dari dua perangkat tidak memiliki cukup ruang penyimpanan. Kosongkan ruang di perangkat tersebut sebelum memulai ulang migrasi.</string>
+    <string name="application_more_info">Informasi lebih lanjut…</string>
     <string name="application_name_hint">Nama</string>
     <string name="application_network_connecting">Menyambungkan ke layanan Skred</string>
     <string name="application_network_connectivity">Ada sambungan jaringan</string>
@@ -425,6 +426,11 @@
     <string name="conversation_activity_invitation_title">Saya mengundang Anda untuk bergabung dengan grup</string>
     <string name="conversation_activity_local_cleanup">Konten utama telah dihapus secara lokal.</string>
     <string name="conversation_activity_manage_conversation">Kelola percakapan</string>
+    <string name="conversation_activity_media_quality_original">Resolusi asli (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Tanpa mengubah ukuran - Transfer lebih lambat</string>
+    <string name="conversation_activity_media_quality_standard">Resolusi standar (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Lebih kecil - Transfer lebih cepat</string>
+    <string name="conversation_activity_media_quality_title">Resolusi media</string>
     <string name="conversation_activity_menu_item_view_copy_message">Disalin ke clipboard!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Salin</string>
     <string name="conversation_activity_menu_item_view_delete_title">Hapus</string>
@@ -451,6 +457,9 @@
     <string name="conversation_activity_send_file_warning">Peringatan: tidak mungkin mencegah penerima menyalin/menyimpan/membagikan dokumen (pdf, word, ppt, excel, zip, dll.), yang hanya dapat dibuka di luar aplikasi. Apakah Anda masih ingin mengirimkannya?</string>
     <string name="conversation_activity_send_large_file_message">File ini besar (%1$d MB). Apakah Anda ingin melanjutkan?</string>
     <string name="conversation_activity_send_menu_allow_copy">Izinkan penerima untuk menyalin/menyimpan/membagikan konten ini</string>
+    <string name="conversation_activity_send_quality_size">Media besar (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Kirim dalam resolusi standar (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Anda dapat mengubah ukuran ke resolusi standar (SD) untuk transfer yang lebih cepat.</string>
     <string name="conversation_activity_stream_dialog">Apakah Anda ingin menerimanya?</string>
     <string name="conversation_activity_unsupported_media">Format media tidak didukung</string>
     <string name="conversation_activity_video_call">Panggilan video</string>
@@ -770,8 +779,10 @@
     <string name="notification_center_file_message_received">File baru</string>
     <string name="notification_center_geolocation_message">mengirimi Anda lokasi</string>
     <string name="notification_center_geolocation_message_received">Lokasi baru</string>
-    <string name="notification_center_group_invitation">Mengirimi Anda undangan</string>
-    <string name="notification_center_group_invitation_received">Undangan baru</string>
+    <string name="notification_center_invitation">Mengirimi Anda undangan</string>
+    <string name="notification_center_invitation_group">mengundang Anda untuk bergabung dengan grup.</string>
+    <string name="notification_center_invitation_received">Undangan baru</string>
+    <string name="notification_center_invitation_received_group">Undangan grup baru</string>
     <string name="notification_center_join_group">Anda adalah anggota grup</string>
     <string name="notification_center_message_received">Pesan baru</string>
     <string name="notification_center_missed_audio_call_to">Panggilan suara tak terjawab ke %1$s</string>
@@ -809,7 +820,8 @@
     <string name="notifications_fragment_item_deleted_contact">Kontak Dihapus</string>
     <string name="notifications_fragment_item_file_message">Mengirimi Anda file</string>
     <string name="notifications_fragment_item_geolocation_message">Mengirimi Anda lokasi</string>
-    <string name="notifications_fragment_item_group_invitation">Mengirimi Anda undangan</string>
+    <string name="notifications_fragment_item_invitation">Mengirimi Anda undangan</string>
+    <string name="notifications_fragment_item_invitation_group">mengundang Anda untuk bergabung dengan grup.</string>
     <string name="notifications_fragment_item_image_message">Mengirimi Anda foto</string>
     <string name="notifications_fragment_item_join_group">Anda adalah anggota grup</string>
     <string name="notifications_fragment_item_new_contact">Kontak baru</string>
@@ -893,8 +905,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Kunci aplikasi dengan layanan biometrik atau dengan kode PIN.</string>
-    <string name="privacy_activity_hide_last_screen_message">Cegah pratinjau agar tidak muncul di pengalih aplikasi</string>
-    <string name="privacy_activity_hide_last_screen_title">Sembunyikan layar terakhir</string>
+    <string name="privacy_activity_hide_last_screen_message">Dan menyembunyikan aplikasi saat berjalan di latar belakang, jika perangkat mengizinkannya.</string>
+    <string name="privacy_activity_hide_last_screen_title">Melarang tangkapan layar</string>
     <string name="privacy_activity_lock_screen_message">Buka kunci akses ke aplikasi menggunakan biometrik perangkat atau layanan otentikasi kode sandi. Anda masih dapat menjawab panggilan masuk dan menerima pemberitahuan saat akses ke aplikasi terkunci.</string>
     <string name="privacy_activity_lock_screen_not_available">Opsi ini membutuhkan versi Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Akses penguncian waktu tunggu</string>

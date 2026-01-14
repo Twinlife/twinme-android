@@ -79,8 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/create_external_call_activity_name_content_view"
-            android:layout_alignEnd="@+id/create_external_call_activity_name_content_view"
-            android:layout_alignRight="@+id/create_external_call_activity_name_content_view" />
+            android:layout_alignEnd="@+id/create_external_call_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/create_external_call_activity_description_content_view"
@@ -108,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/create_external_call_activity_description_content_view"
-            android:layout_alignEnd="@+id/create_external_call_activity_description_content_view"
-            android:layout_alignRight="@+id/create_external_call_activity_description_content_view" />
+            android:layout_alignEnd="@+id/create_external_call_activity_description_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/create_external_call_activity_settings_view"
@@ -130,7 +128,6 @@
                 android:id="@+id/create_external_call_activity_settings_accessory_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/select_value_icon"
                 app:layout_aspectRatio="62%"
@@ -190,7 +187,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 app:layout_heightPercent="66.67%"
-                android:layout_toLeftOf="@+id/create_external_call_activity_start_hour_view"
                 android:layout_toStartOf="@+id/create_external_call_activity_start_hour_view">
 
                 <TextView
@@ -208,7 +204,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 app:layout_heightPercent="66.67%">
 
@@ -251,7 +246,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 app:layout_heightPercent="66.67%"
-                android:layout_toLeftOf="@+id/create_external_call_activity_end_hour_view"
                 android:layout_toStartOf="@+id/create_external_call_activity_end_hour_view">
 
                 <TextView
@@ -270,7 +264,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 app:layout_heightPercent="66.67%">
 

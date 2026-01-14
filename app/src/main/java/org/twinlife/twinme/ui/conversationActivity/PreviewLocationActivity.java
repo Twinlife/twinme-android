@@ -104,6 +104,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         Intent intent = getIntent();
         mAllowEphemeralMessage = intent.getBooleanExtra(Intents.INTENT_ALLOW_EPHEMERAL, false);
         mExpireTimeout = intent.getLongExtra(Intents.INTENT_EXPIRE_TIMEOUT, 0);
+        mShareLocation = true;
 
         if (intent.hasExtra(Intents.INTENT_CONTACT_NAME)) {
             mContactName = intent.getStringExtra(Intents.INTENT_CONTACT_NAME);
@@ -254,15 +255,18 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         showToolBar(false);
         showBackButton(true);
 
-        applyInsets(R.id.preview_activity_layout, -1, -1, Color.BLACK, false);
+        applyInsets(R.id.preview_activity_layout, -1, R.id.preview_activity_content_send_view, Color.BLACK, false);
 
         super.initViews();
+
+        mQualityView.setVisibility(View.GONE);
 
         mSendView.setAlpha(0.5f);
 
         float radius = DESIGN_ACTION_VIEW_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         mCardView = findViewById(R.id.preview_location_activity_card_view);
         mCardView.setRadius(radius);
+        mCardView.setZ(2);
 
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCardView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MAP_TOP_MARGIN * Design.HEIGHT_RATIO);

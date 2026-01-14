@@ -314,17 +314,6 @@ class LocationItemViewHolder extends ItemViewHolder implements OnMapReadyCallbac
         } else {
             mEphemeralView.setVisibility(View.GONE);
         }
-
-        if (getBaseItemActivity().isMenuOpen()) {
-            getOverlayView().setVisibility(View.VISIBLE);
-            if (getBaseItemActivity().isSelectedItem(getItem().getDescriptorId())) {
-                itemView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
-                getOverlayView().setVisibility(View.INVISIBLE);
-            }
-        } else {
-            getOverlayView().setVisibility(View.INVISIBLE);
-            itemView.setBackgroundColor(Color.TRANSPARENT);
-        }
     }
 
     @Override

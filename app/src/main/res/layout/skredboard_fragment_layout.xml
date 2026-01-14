@@ -31,7 +31,6 @@
     <Button
         android:id="@+id/deleteAccountButton"
         android:layout_width="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="@color/translucent"
         android:text="@string/application_delete"
@@ -44,7 +43,6 @@
     <ImageView
         android:id="@+id/createAccountButton"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:elevation="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/add_normal"
@@ -66,7 +64,6 @@
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@color/translucent"
         android:text="@string/application_ok"
         android:textColor="@color/red_normal"

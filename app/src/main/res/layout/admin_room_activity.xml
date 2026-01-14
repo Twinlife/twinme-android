@@ -79,8 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/admin_room_activity_name_content_view"
-            android:layout_alignEnd="@+id/admin_room_activity_name_content_view"
-            android:layout_alignRight="@+id/admin_room_activity_name_content_view" />
+            android:layout_alignEnd="@+id/admin_room_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/admin_room_activity_description_content_view"
@@ -108,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/admin_room_activity_description_content_view"
-            android:layout_alignEnd="@+id/admin_room_activity_description_content_view"
-            android:layout_alignRight="@+id/admin_room_activity_description_content_view" />
+            android:layout_alignEnd="@+id/admin_room_activity_description_content_view" />
 
         <TextView
             android:id="@+id/admin_room_activity_configuration_title_view"
@@ -117,7 +115,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/admin_room_activity_counter_description_view"
             android:text="@string/application_configuration"
-            android:layout_alignLeft="@+id/admin_room_activity_description_content_view"
             android:textAllCaps="true"
             android:maxLines="1" />
 
@@ -150,7 +147,6 @@
                 android:id="@+id/admin_room_activity_permissions_accessory_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/end_chevron"
                 app:tint="@color/accessory_color"
@@ -187,7 +183,6 @@
                 android:id="@+id/admin_room_activity_invite_accessory_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/end_chevron"
                 app:tint="@color/accessory_color"
@@ -224,7 +219,6 @@
                 android:id="@+id/admin_room_activity_code_accessory_view"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/end_chevron"
                 app:tint="@color/accessory_color"

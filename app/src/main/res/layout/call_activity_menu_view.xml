@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/call_activity_layout"
+    android:id="@+id/call_activity_menu_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -46,7 +46,6 @@
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/call_activity_pause_view"
                 android:layout_toEndOf="@+id/call_activity_hangup_view"
-                android:layout_toRightOf="@+id/call_activity_hangup_view"
                 app:layout_aspectRatio="100%">
 
                 <org.twinlife.twinme.utils.RoundedView
@@ -69,8 +68,7 @@
                 android:id="@+id/call_activity_camera_mute_view"
                 app:layout_aspectRatio="100%"
                 android:layout_centerHorizontal="true"
-                android:layout_toEndOf="@+id/call_activity_pause_view"
-                android:layout_toRightOf="@+id/call_activity_pause_view">
+                android:layout_toEndOf="@+id/call_activity_pause_view">
 
                 <org.twinlife.twinme.utils.RoundedView
                     android:id="@+id/call_activity_camera_mute_background_view"
@@ -91,7 +89,6 @@
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/call_activity_micro_mute_view"
                 android:layout_toEndOf="@+id/call_activity_camera_mute_view"
-                android:layout_toRightOf="@+id/call_activity_camera_mute_view"
                 app:layout_aspectRatio="100%">
 
                 <org.twinlife.twinme.utils.RoundedView
@@ -113,10 +110,8 @@
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/call_activity_speaker_on_view"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_toEndOf="@+id/call_activity_micro_mute_view"
-                android:layout_toRightOf="@+id/call_activity_micro_mute_view"
                 app:layout_aspectRatio="100%">
 
                 <org.twinlife.twinme.utils.RoundedView

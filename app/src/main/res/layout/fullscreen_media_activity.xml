@@ -62,7 +62,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/fullscreen_media_activity_footer_share_view"
             android:layout_toEndOf="@+id/fullscreen_media_activity_footer_share_view">
 
             <ImageView
@@ -76,11 +75,27 @@
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/fullscreen_media_activity_footer_mute_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/fullscreen_media_activity_footer_delete_view"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/fullscreen_media_activity_footer_mute_image_view"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/loud_speaker_action_call_off"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="50%"
+                app:tint="#FFFFFF" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/fullscreen_media_activity_footer_delete_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true">
 
             <ImageView

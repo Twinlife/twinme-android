@@ -19,7 +19,6 @@
         android:id="@+id/calls_fragment_section_call_item_right_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"/>
 
@@ -27,7 +26,6 @@
         android:id="@+id/calls_fragment_section_call_item_right_title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:text="@string/application_display_all"

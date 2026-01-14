@@ -84,6 +84,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -142,6 +143,7 @@ import org.twinlife.twinme.ui.ApplicationAssertPoint;
 import org.twinlife.twinme.ui.InfoItemActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.baseItemActivity.AudioItem;
 import org.twinlife.twinme.ui.baseItemActivity.AudioItemViewHolder;
 import org.twinlife.twinme.ui.baseItemActivity.BaseItemActivity;
@@ -222,7 +224,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
-public class ConversationActivity extends BaseItemActivity implements ConversationService.Observer, BaseItemActivity.AudioItemObserver, BaseItemActivity.InvitationItemObserver, MenuSelectValueView.Observer, LoaderListener<Item>, AudioListener, ItemSelectedActionView.Observer, AnnotationsView.Observer{
+public class ConversationActivity extends BaseItemActivity implements ConversationService.Observer, BaseItemActivity.AudioItemObserver, BaseItemActivity.InvitationItemObserver, LoaderListener<Item>, AudioListener, ItemSelectedActionView.Observer, AnnotationsView.Observer{
 
     private static final String LOG_TAG = "ConversationActivity";
     private static final boolean DEBUG = false;
@@ -421,7 +423,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private Conversation mConversation;
 
     private TextView mEmptyConversationView;
-    private FrameLayout mContainerRecyclerView;
+    private ConstraintLayout mContainerRecyclerView;
+    private View mContainerHeaderOverlayView;
     private ItemRecyclerView mItemListView;
     private LinearLayoutManager mItemListViewLayoutManager;
     private ItemListAdapter mItemListAdapter;
@@ -476,7 +479,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private View mOverlayView;
     private ProgressBar mProgressBarView;
     private MenuSendOptionView mMenuSendOptionView;
-    private MenuSelectValueView mMenuTimeoutView;
     private MenuActionConversationView mMenuActionConversationView;
     private ReplyView mReplyView;
     private AnnotationsView mAnnotationsView;
@@ -495,6 +497,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private ScheduledFuture<?> mTypingTimer = null;
     private ScheduledFuture<?> mPeerTypingTimer = null;
     private long mTypingSendTime = 0;
+
+    private int mCountVisibleItem = -1;
+    private int mFirstVisiblePosition = -1;
 
     private boolean mSelectItemMode = false;
 
@@ -694,11 +699,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             // Get the contact and group after we resume so that we can refresh the information.
             final DisplayCallsMode callsMode = getTwinmeApplication().displayCallsMode();
             if (mContactId != null) {
-                mLoadingDescriptors = true;
+                mLoadingDescriptors = mItems.isEmpty();
                 mConversationService.getContact(mContactId, callsMode, mDescriptorFilter);
             }
             if (mGroupId != null) {
-                mLoadingDescriptors = true;
+                mLoadingDescriptors = mItems.isEmpty();
                 mConversationService.getGroup(mGroupId, callsMode, mDescriptorFilter);
             }
             mConversationService.setActiveConversation();
@@ -1416,20 +1421,14 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         hapticFeedback();
         mIsMenuOpen = true;
 
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
+        int compositeColor = ColorUtils.compositeColors(Design.BACKGROUND_COLOR_WHITE_OPACITY85, Design.TOOLBAR_COLOR);
+        viewGroup.setBackgroundColor(compositeColor);
+
         int menuHeight = getMenuItemViewHeight();
         LayoutParams layoutParams = mMenuItemView.getLayoutParams();
         layoutParams.height = menuHeight;
-
-        ViewGroup.LayoutParams overlayLayoutParams = mHeaderOverlayView.getLayoutParams();
-        if (mItemListViewLayoutManager.findFirstVisibleItemPosition() == 0 && mItemListView.getY() > 0) {
-            overlayLayoutParams.height = (int) (mContainerRecyclerView.getY() + mItemListView.getY() + BaseItemActivity.HEADER_HEIGHT);
-        } else if (mItemListViewLayoutManager.findFirstVisibleItemPosition() == 0) {
-            overlayLayoutParams.height = (int) (mContainerRecyclerView.getY() + BaseItemActivity.HEADER_HEIGHT);
-        } else {
-            overlayLayoutParams.height = (int) (mContainerRecyclerView.getY());
-        }
-        mHeaderOverlayView.setLayoutParams(overlayLayoutParams);
-
+        
         mReplyView.hideOverlay(false);
         mScrollIndicatorOverlayView.setVisibility(View.VISIBLE);
 
@@ -1469,14 +1468,15 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         mMenuItemView.setVisibility(View.VISIBLE);
         mHeaderOverlayView.setVisibility(View.VISIBLE);
         mFooterOverlayView.setVisibility(View.VISIBLE);
+        mContainerHeaderOverlayView.setVisibility(View.VISIBLE);
         mMenuItemView.openMenu();
 
-        int countVisibleItem = mItemListViewLayoutManager.findLastVisibleItemPosition() - mItemListViewLayoutManager.findFirstVisibleItemPosition() + 1;
-        mItemListAdapter.notifyItemRangeChanged(mItemListViewLayoutManager.findFirstVisibleItemPosition(), countVisibleItem);
+        mCountVisibleItem = mItemListViewLayoutManager.findLastVisibleItemPosition() - mItemListViewLayoutManager.findFirstVisibleItemPosition() + 1;
+        mFirstVisiblePosition = mItemListViewLayoutManager.findFirstVisibleItemPosition();
+        mItemListAdapter.notifyItemRangeChanged(mFirstVisiblePosition, mCountVisibleItem);
         mItemListView.setScrollEnable(false);
 
-        int color = ColorUtils.compositeColors(Design.BACKGROUND_COLOR_WHITE_OPACITY85, Design.TOOLBAR_COLOR);
-        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+        setStatusBarColor(compositeColor, Design.POPUP_BACKGROUND_COLOR);
     }
 
     void setMenuPosition() {
@@ -1553,30 +1553,27 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         if (mIsMenuOpen) {
             mIsMenuOpen = false;
             mSelectedItem = null;
+            ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
+            viewGroup.setBackgroundColor(Design.TOOLBAR_COLOR);
             mMenuItemView.setVisibility(View.INVISIBLE);
             mMenuReactionView.setVisibility(View.INVISIBLE);
+            mContainerHeaderOverlayView.setVisibility(View.INVISIBLE);
             mHeaderOverlayView.setVisibility(View.INVISIBLE);
             mFooterOverlayView.setVisibility(View.INVISIBLE);
             mReplyView.hideOverlay(true);
             mScrollIndicatorOverlayView.setVisibility(View.GONE);
 
-            ViewGroup.LayoutParams overlayLayoutParams = mHeaderOverlayView.getLayoutParams();
-            overlayLayoutParams.height = mHeaderHeight;
-            mHeaderOverlayView.setLayoutParams(overlayLayoutParams);
-
-            int countVisibleItem = mItemListViewLayoutManager.findLastVisibleItemPosition() - mItemListViewLayoutManager.findFirstVisibleItemPosition() + 1;
-            mItemListAdapter.notifyItemRangeChanged(mItemListViewLayoutManager.findFirstVisibleItemPosition(), countVisibleItem);
+            if (mCountVisibleItem == -1) {
+                mCountVisibleItem = mItemListViewLayoutManager.findLastVisibleItemPosition() - mItemListViewLayoutManager.findFirstVisibleItemPosition() + 1;
+                mFirstVisiblePosition = mItemListViewLayoutManager.findFirstVisibleItemPosition();
+            }
+            mItemListAdapter.notifyItemRangeChanged(mFirstVisiblePosition, mCountVisibleItem);
 
             mItemListView.setScrollEnable(true);
         } else if (mIsMenuSendOptionOpen) {
-            if (mMenuTimeoutView.getVisibility() == View.VISIBLE) {
-                mMenuTimeoutView.setVisibility(View.INVISIBLE);
-                updateStatusBar = false;
-            } else {
-                mIsMenuSendOptionOpen = false;
-                mMenuSendOptionView.setVisibility(View.INVISIBLE);
-                mOverlayView.setVisibility(View.INVISIBLE);
-            }
+            mIsMenuSendOptionOpen = false;
+            mMenuSendOptionView.setVisibility(View.INVISIBLE);
+            mOverlayView.setVisibility(View.INVISIBLE);
         } else if (mAnnotationsView.getVisibility() == View.VISIBLE) {
             mAnnotationsView.animationCloseMenu();
         }
@@ -2986,19 +2983,19 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         Set<Item> toUpdate = new HashSet<>(list);
 
         int lastVisibleItemPosition = mItemListViewLayoutManager.findLastVisibleItemPosition();
-
         for (int index = mItems.size() - 1; index >= 0; index--) {
             Item lItem = mItems.get(index);
             if (toUpdate.remove(lItem)) {
-                mItemListAdapter.notifyItemChanged(mItemListAdapter.indexToPosition(index));
-
+                if (!mIsMenuOpen) {
+                    mItemListAdapter.notifyItemChanged(mItemListAdapter.indexToPosition(index));
+                }
                 if (toUpdate.isEmpty()) {
                     break;
                 }
             }
         }
 
-        if (lastVisibleItemPosition == mItems.size()) {
+        if (lastVisibleItemPosition == mItems.size() && !mIsMenuOpen) {
             // Scroll only if the view is still valid.
             if (mItemListView != null) {
                 mItemListViewLayoutManager.scrollToPosition(lastVisibleItemPosition);
@@ -3163,36 +3160,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
     private boolean isRecording() {
         return mVoiceRecorderMessageView != null && mVoiceRecorderMessageView.isRecording();
-    }
-
-    //implements MenuSelectValueView.Observer
-
-    @Override
-    public void onCloseMenuAnimationEnd() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
-        }
-
-        mMenuTimeoutView.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void onSelectValue(int value) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSelectValue: " + value);
-        }
-
-    }
-
-    @Override
-    public void onSelectTimeout(UITimeout timeout) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
-        }
-
-        mExpireTimeout = timeout.getDelay();
-        mMenuSendOptionView.updateTimeout(timeout.getDelay());
-        mMenuTimeoutView.setVisibility(View.INVISIBLE);
     }
 
     @NonNull
@@ -3434,6 +3401,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         mContainerRecyclerView = findViewById(R.id.conversation_activity_item_list_container_view);
         mContainerRecyclerView.setBackgroundColor(Design.CONVERSATION_BACKGROUND_COLOR);
+
+        mContainerHeaderOverlayView = findViewById(R.id.conversation_activity_item_list_overlay_view);
+        mContainerHeaderOverlayView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
+        mContainerHeaderOverlayView.setOnClickListener(view -> closeMenu());
 
         mContainerRecyclerView.addOnLayoutChangeListener((view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
 
@@ -3787,15 +3758,19 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             final Uri uri = inputContentInfo.getContentUri();
             if (uri.getLastPathSegment() != null) {
                 getTwinmeContext().execute(() -> {
-                    final File contentFile = new File(getFilesDir(), uri.getLastPathSegment());
-                    final BaseService.ErrorCode errorCode = Utils.copyUriToFile(getContentResolver(), uri, contentFile);
-                    if (errorCode == BaseService.ErrorCode.SUCCESS) {
-
+                    final FileInfo fileInfo = new FileInfo(getApplicationContext(), uri);
+                    final FileInfo copy;
+                    if (fileInfo.isImage() || fileInfo.isVideo()) {
+                        copy = fileInfo.saveMedia(getApplicationContext(), TwinmeApplication.QualityMedia.ORIGINAL.ordinal());
+                    } else  {
+                        copy = fileInfo.saveFile(getApplicationContext());
+                    }
+                    if (copy != null) {
                         final SpaceSettings spaceSettings = getSpaceSettings();
                         Intent intent = new Intent(this, PreviewFileActivity.class);
 
                         ArrayList<String> urisToString = new ArrayList<>();
-                        urisToString.add(Uri.fromFile(contentFile).toString());
+                        urisToString.add(copy.getUri().toString());
                         intent.putStringArrayListExtra(Intents.INTENT_SELECTED_URI, urisToString);
                         intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, spaceSettings.fileCopyAllowed());
                         intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
@@ -3810,7 +3785,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
                         startActivityForResult(intent, REQUEST_PREVIEW_MEDIA);
                     } else {
-                        runOnUiThread(() -> onExecutionError(errorCode));
+                        runOnUiThread(() -> onExecutionError(BaseService.ErrorCode.NO_STORAGE_SPACE));
                     }
                 });
             }
@@ -3923,11 +3898,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             @Override
             public void onAllowEphemeralClick() {
 
-                if (mMenuTimeoutView.getVisibility() != View.VISIBLE) {
-                    mMenuTimeoutView.setVisibility(View.VISIBLE);
-                    mMenuTimeoutView.setSelectedValue((int) mExpireTimeout);
-                    mMenuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE);
-                }
+                onTimeoutClick();
             }
 
             @Override
@@ -3941,11 +3912,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         };
 
         mMenuSendOptionView.setOnMenuSendOptionObserver(this, menuSendOptionObserver);
-
-        mMenuTimeoutView = findViewById(R.id.conversation_activity_menu_select_value_view);
-        mMenuTimeoutView.setVisibility(View.INVISIBLE);
-        mMenuTimeoutView.setObserver(this);
-        mMenuTimeoutView.setActivity(this);
 
         mScaleDetector = new ScaleGestureDetector(this, new ScaleListener());
 
@@ -4444,7 +4410,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             mSendClickableView.setAlpha(1.0f);
             mCameraClickableView.setVisibility(View.GONE);
             mRecordAudioClickableView.setVisibility(View.GONE);
-        } else {
+        } else if(mEditItem == null) {
             mSendClickableView.setAlpha(0.7f);
             mCameraClickableView.setVisibility(View.VISIBLE);
             mRecordAudioClickableView.setVisibility(View.VISIBLE);
@@ -5779,6 +5745,48 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
     }
 
+    private void onTimeoutClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onTimeoutClick");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
+
+        MenuSelectValueView menuTimeoutView = new MenuSelectValueView(this, null);
+        menuTimeoutView.setActivity(this);
+        menuTimeoutView.setForceDarkMode(true);
+        menuTimeoutView.setSelectedValue((int) mExpireTimeout);
+        menuTimeoutView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+
+                viewGroup.removeView(menuTimeoutView);
+                mOverlayView.setVisibility(View.VISIBLE);
+                setStatusBarColor();
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
+                menuTimeoutView.animationCloseMenu();
+                mExpireTimeout = timeout.getDelay();
+                mMenuSendOptionView.updateTimeout((int) mExpireTimeout);
+            }
+        });
+
+        mOverlayView.setVisibility(View.GONE);
+        viewGroup.addView(menuTimeoutView);
+        menuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE);
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
+        setStatusBarColor(color, Color.rgb(72,72,72));
+    }
+
     private void onManageConversationClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onManageConversationClick");
@@ -6177,10 +6185,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         int menuHeight = MENU_HEIGHT;
         switch (mSelectedItem.getType()) {
             case MESSAGE:
+            case LINK:
                 menuHeight = MENU_HEIGHT * 8;
                 break;
             case PEER_MESSAGE:
-            case LINK:
             case PEER_LINK:
             case IMAGE:
             case PEER_IMAGE:

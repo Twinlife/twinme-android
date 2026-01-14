@@ -43,6 +43,7 @@
     <string name="application_do_not_display">Ne plus afficher</string>
     <string name="application_edit">Modifier</string>
     <string name="application_error_file_not_found">Le fichier n’a pas été trouvé.</string>
+    <string name="application_error_media_unload">Impossible de charger le média.</string>
     <string name="application_error_media_not_supported">Ce format d’image/vidéo n’est pas pris en charge par l’application.</string>
     <string name="application_error_no_storage_space">Espace de stockage insuffisant</string>
     <string name="application_group_limit_reached">Nombre maximum (%1$d) de membres d’un groupe dépassé.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">Géolocalisation</string>
     <string name="application_location_enabled">Activer le service de Localisation de votre appareil.</string>
     <string name="application_low_usage_message">Attention, si vous n’utilisez pas l’application assez souvent, l’OS risque de ne pas la réveiller pour échanger des messages !</string>
-    <string name="application_more_info">Plus d’information…</string>
     <string name="application_one_item_selected">1 élément sélectionné</string>
     <string name="application_migration_no_storage_space">Il n’y a pas assez d’espace sur votre appareil pour terminer la migration. Fermez l’application, libérez de l’espace et relancez l’application pour terminer la mise à jour.</string>
     <string name="application_migration_no_storage_space_message">L’un des deux appareils ne dispose pas de suffisamment d’espace de stockage. Libérez de l’espace sur cet appareil avant de relancer la migration.</string>
+    <string name="application_more_info">Plus d’information…</string>
     <string name="application_name_hint">Nom</string>
     <string name="application_network_connecting">Connexion à Skred</string>
     <string name="application_network_connectivity">La connectivité réseau existe</string>
@@ -427,6 +428,11 @@
     <string name="conversation_activity_invitation_title">Je vous invite à rejoindre le groupe</string>
     <string name="conversation_activity_local_cleanup">Le contenu principal a été supprimé localement.</string>
     <string name="conversation_activity_manage_conversation">Gérer la conversation</string>
+    <string name="conversation_activity_media_quality_original">Définition originale (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Sans redimensionnement - Transfert plus lent</string>
+    <string name="conversation_activity_media_quality_standard">Définition standard (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Plus petit - Transfert plus rapide</string>
+    <string name="conversation_activity_media_quality_title">Résolution des média</string>
     <string name="conversation_activity_menu_item_view_copy_message">Copié dans le presse-papiers !</string>
     <string name="conversation_activity_menu_item_view_copy_title">Copier</string>
     <string name="conversation_activity_menu_item_view_delete_title">Supprimer</string>
@@ -453,6 +459,9 @@
     <string name="conversation_activity_send_file_warning">Attention : il n’est pas possible d’empêcher le destinataire de copier/sauvegarder/partager un document (pdf, word, ppt, excel, zip, etc.), qui ne peut être ouvert qu’en dehors de l’application. Voulez-vous toujours l’envoyer ?</string>
     <string name="conversation_activity_send_large_file_message">Ce fichier est volumineux (%1$d Mo). Voulez-vous continuer ?</string>
     <string name="conversation_activity_send_menu_allow_copy">Autoriser le destinataire à copier/enregistrer/partager ce contenu</string>
+    <string name="conversation_activity_send_quality_size">Média volumineux (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Envoyer en définition standard (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Vous pouvez redimensionner en définition standard (SD) pour un transfert plus rapide.</string>
     <string name="conversation_activity_stream_dialog">Voulez-vous accepter ?</string>
     <string name="conversation_activity_unsupported_media">Format média non supporté.</string>
     <string name="conversation_activity_video_call">Appel vidéo</string>
@@ -772,8 +781,10 @@
     <string name="notification_center_file_message_received">Nouveau fichier</string>
     <string name="notification_center_geolocation_message">vous a envoyé sa localisation</string>
     <string name="notification_center_geolocation_message_received">Nouvelle position</string>
-    <string name="notification_center_group_invitation">Vous a envoyé une invitation</string>
-    <string name="notification_center_group_invitation_received">Nouvelle invitation</string>
+    <string name="notification_center_invitation">Vous a envoyé une invitation</string>
+    <string name="notification_center_invitation_group">vous invite à rejoindre un groupe.</string>
+    <string name="notification_center_invitation_received">Nouvelle invitation</string>
+    <string name="notification_center_invitation_received_group">Nouvelle invitation de groupe</string>
     <string name="notification_center_join_group">Vous êtes membre du groupe</string>
     <string name="notification_center_message_received">Nouveau message</string>
     <string name="notification_center_missed_audio_call_to">Appel audio pour %1$s manqué</string>
@@ -811,7 +822,8 @@
     <string name="notifications_fragment_item_deleted_contact">Contact supprimé</string>
     <string name="notifications_fragment_item_file_message">Vous a envoyé un fichier</string>
     <string name="notifications_fragment_item_geolocation_message">Vous a envoyé sa localisation</string>
-    <string name="notifications_fragment_item_group_invitation">Vous a envoyé une invitation</string>
+    <string name="notifications_fragment_item_invitation">Vous a envoyé une invitation</string>
+    <string name="notifications_fragment_item_invitation_group">vous invite à rejoindre un groupe.</string>
     <string name="notifications_fragment_item_image_message">Vous a envoyé une photo</string>
     <string name="notifications_fragment_item_join_group">Vous êtes membre du groupe</string>
     <string name="notifications_fragment_item_new_contact">Nouveau contact</string>
@@ -895,8 +907,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Verrouillez l’application avec les services biométriques ou avec un code PIN.</string>
-    <string name="privacy_activity_hide_last_screen_message">Ne pas afficher les aperçus dans le sélecteur d’applis.</string>
-    <string name="privacy_activity_hide_last_screen_title">Cacher le dernier écran</string>
+    <string name="privacy_activity_hide_last_screen_message">"Et masquer l’application lorsqu’elle passe en arrière-plan, si l’appareil le permet. "</string>
+    <string name="privacy_activity_hide_last_screen_title">Interdire les captures d\'écran</string>
     <string name="privacy_activity_lock_screen_message">Déverrouillez l’accès à l’application à l’aide des services d’authentification biométrique ou par mot de passe de votre appareil. Vous pouvez toujours répondre aux appels entrants et recevoir des notifications lorsque l’accès à l’application est verrouillé.</string>
     <string name="privacy_activity_lock_screen_not_available">Cette option nécessite une version d’Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Délai d’expiration du verrouillage d’accès</string>

@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/conversation_settings_activity_emoji_size_item_emoji_view"
-        android:layout_toRightOf="@id/conversation_settings_activity_emoji_size_item_emoji_view"
         android:layout_centerVertical="true"
         app:layout_marginStartPercent="2.67%"
         app:layout_marginEndPercent="20.26%" />
@@ -25,7 +24,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/conversation_settings_activity_emoji_size_item_layout_image"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/circle_grey"
         android:layout_centerVertical="true"
         app:layout_aspectRatio="100%"

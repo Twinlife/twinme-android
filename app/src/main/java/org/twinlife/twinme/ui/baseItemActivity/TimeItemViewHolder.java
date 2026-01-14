@@ -45,10 +45,6 @@ class TimeItemViewHolder extends BaseItemViewHolder {
 
         mTextView.setText(CommonUtils.formatItemInterval(getBaseItemActivity(), item.getTimestamp()));
 
-        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
-        overlayLayoutParams.height = TIME_ITEM_HEIGHT;
-        getOverlayView().setLayoutParams(overlayLayoutParams);
-
         if (isMenuOpen()) {
             getOverlayView().setVisibility(View.VISIBLE);
         } else {

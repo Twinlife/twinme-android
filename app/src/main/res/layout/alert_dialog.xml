@@ -14,7 +14,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:scaleType="fitCenter"
             android:src="@drawable/close"
             android:contentDescription="@string/application_cancel" />
@@ -57,7 +56,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/alert_dialog_message">
 
             <TextView

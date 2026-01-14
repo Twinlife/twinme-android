@@ -40,10 +40,6 @@ class NameItemViewHolder extends BaseItemViewHolder {
         mTextView.setText(((NameItem) item).getName());
         mTextView.setTextColor(getBaseItemActivity().getCustomAppearance().getConversationBackgroundText());
 
-        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
-        overlayLayoutParams.height = NAME_ITEM_HEIGHT;
-        getOverlayView().setLayoutParams(overlayLayoutParams);
-
         if (isMenuOpen()) {
             getOverlayView().setVisibility(View.VISIBLE);
         } else {

@@ -43,6 +43,7 @@
     <string name="application_do_not_display">Artık gösterme</string>
     <string name="application_edit">Düzenle</string>
     <string name="application_error_file_not_found">Dosya bulunamadı.</string>
+    <string name="application_error_media_unload">Medya yüklenemedi.</string>
     <string name="application_error_media_not_supported">Bu resim/video biçimi uygulama tarafından desteklenmiyor.</string>
     <string name="application_error_no_storage_space">Yetersiz depolama alanı</string>
     <string name="application_group_limit_reached">Grup üyelerinin maksimum sayısı (%1$d) aşıldı.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">Coğrafi Konum</string>
     <string name="application_location_enabled">Cihazınızın konum servisini etkinleştirin.</string>
     <string name="application_low_usage_message">Uyarı, uygulamayı yeterince sık kullanmazsanız, işletim sistemi mesaj alışverişi yapmak için onu uyandırmayabilir!</string>
-    <string name="application_more_info">Daha fazla bilgi…</string>
     <string name="application_one_item_selected">1 öğe seçildi</string>
     <string name="application_migration_no_storage_space">Cihazınızda taşıma işlemini tamamlamak için yeterli alan yok. Uygulamayı kapatın, biraz yer açın ve güncellemeyi tamamlamak için uygulamayı yeniden başlatın.</string>
     <string name="application_migration_no_storage_space_message">İki cihazdan birinde yeterli depolama alanı yok. Göçü yeniden başlatmadan önce o cihazda yer açın.</string>
+    <string name="application_more_info">Daha fazla bilgi…</string>
     <string name="application_name_hint">Ad</string>
     <string name="application_network_connecting">Skred servisine bağlanılıyor</string>
     <string name="application_network_connectivity">Ağ bağlantısı mevcut</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">Sizi gruba katılmaya davet ediyorum</string>
     <string name="conversation_activity_local_cleanup">Ana içerikler yerel olarak silindi.</string>
     <string name="conversation_activity_manage_conversation">Sohbeti Yönetin</string>
+    <string name="conversation_activity_media_quality_original">Orijinal çözünürlük (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Yeniden boyutlandırma olmadan - Daha yavaş aktarım</string>
+    <string name="conversation_activity_media_quality_standard">Standart çözünürlük (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Daha küçük - Daha hızlı aktarım</string>
+    <string name="conversation_activity_media_quality_title">Medya çözünürlüğü</string>
     <string name="conversation_activity_menu_item_view_copy_message">Panoya kopyalandı!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kopya</string>
     <string name="conversation_activity_menu_item_view_delete_title">Kaldır</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">Uyarı: Yalnızca uygulama dışında açılabilen bir belgenin (pdf, word, ppt, excel, zip vb.) alıcı tarafından kopyalanması/kaydedilmesi/paylaşması engellenemez. Hala göndermek istiyor musun?</string>
     <string name="conversation_activity_send_large_file_message">Bu dosya büyük (%1$d MB). Devam etmek ister misin ?</string>
     <string name="conversation_activity_send_menu_allow_copy">Alıcının bu içeriği kopyalamasına/kaydetmesine/paylaşmasına izin ver</string>
+    <string name="conversation_activity_send_quality_size">Büyük medya (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Standart çözünürlükte (SD) gönderin</string>
+    <string name="conversation_activity_send_quality_warning">Daha hızlı aktarım için standart çözünürlüğe (SD) yeniden boyutlandırabilirsiniz.</string>
     <string name="conversation_activity_stream_dialog">Kabul etmek istiyor musunuz?</string>
     <string name="conversation_activity_unsupported_media">Desteklenmeyen medya biçimi</string>
     <string name="conversation_activity_video_call">Görüntülü arama</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">Yeni dosya</string>
     <string name="notification_center_geolocation_message">sana bir konum gönderdi</string>
     <string name="notification_center_geolocation_message_received">Yeni konum</string>
-    <string name="notification_center_group_invitation">Sana bir davetiye gönderdi</string>
-    <string name="notification_center_group_invitation_received">Yeni davetiye</string>
+    <string name="notification_center_invitation">Sana bir davetiye gönderdi</string>
+    <string name="notification_center_invitation_group">sizi bir gruba katılmaya davet ediyor.</string>
+    <string name="notification_center_invitation_received">Yeni davetiye</string>
+    <string name="notification_center_invitation_received_group">Yeni grup daveti</string>
     <string name="notification_center_join_group">Grubun üyesisin</string>
     <string name="notification_center_message_received">Yeni Mesaj</string>
     <string name="notification_center_missed_audio_call_to">%1$s kişisine yapılan sesli arama kaçırıldı</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">Kişi Silindi</string>
     <string name="notifications_fragment_item_file_message">Sana bir dosya yolladı</string>
     <string name="notifications_fragment_item_geolocation_message">Sana bir konum gönderdi</string>
-    <string name="notifications_fragment_item_group_invitation">Sana bir davetiye gönderdi</string>
+    <string name="notifications_fragment_item_invitation">Sana bir davetiye gönderdi</string>
+    <string name="notifications_fragment_item_invitation_group">sizi bir gruba katılmaya davet ediyor.</string>
     <string name="notifications_fragment_item_image_message">Size bir fotoğraf gönderdi</string>
     <string name="notifications_fragment_item_join_group">Grubun üyesisin</string>
     <string name="notifications_fragment_item_new_contact">Yeni bağlantı</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Uygulamayı biyometrik servislerle veya bir PIN koduyla kilitleyin.</string>
-    <string name="privacy_activity_hide_last_screen_message">Uygulama değiştiricide önizlemelerin görünmesini engelleyin</string>
-    <string name="privacy_activity_hide_last_screen_title">Son ekranı gizle</string>
+    <string name="privacy_activity_hide_last_screen_message">Ve cihaz izin veriyorsa, uygulama arka planda çalışırken gizle.</string>
+    <string name="privacy_activity_hide_last_screen_title">Ekran görüntüsü almayı yasakla</string>
     <string name="privacy_activity_lock_screen_message">Cihazınızın biyometrik veya şifre doğrulama hizmetlerini kullanarak uygulamaya erişimin kilidini açın. Uygulamaya erişim kilitliyken de gelen aramaları cevaplayabilir ve bildirimler alabilirsiniz.</string>
     <string name="privacy_activity_lock_screen_not_available">Bu seçenek için Android > 5.0 sürümü gerekir</string>
     <string name="privacy_activity_lock_screen_timeout">Erişim kilidi zaman aşımı</string>

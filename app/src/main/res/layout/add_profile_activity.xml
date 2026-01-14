@@ -67,8 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/add_profile_activity_name_content_view"
-            android:layout_alignEnd="@+id/add_profile_activity_name_content_view"
-            android:layout_alignRight="@+id/add_profile_activity_name_content_view" />
+            android:layout_alignEnd="@+id/add_profile_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/add_profile_activity_save_view"

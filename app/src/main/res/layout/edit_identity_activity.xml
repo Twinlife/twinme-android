@@ -79,8 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_identity_activity_name_content_view"
-            android:layout_alignEnd="@+id/edit_identity_activity_name_content_view"
-            android:layout_alignRight="@+id/edit_identity_activity_name_content_view" />
+            android:layout_alignEnd="@+id/edit_identity_activity_name_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_identity_activity_description_content_view"
@@ -108,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_identity_activity_description_content_view"
-            android:layout_alignEnd="@+id/edit_identity_activity_description_content_view"
-            android:layout_alignRight="@+id/edit_identity_activity_description_content_view" />
+            android:layout_alignEnd="@+id/edit_identity_activity_description_content_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/edit_identity_activity_save_view"

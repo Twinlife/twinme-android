@@ -43,8 +43,6 @@
             android:layout_alignTop="@+id/base_item_activity_peer_message_item_reply_text"
             android:layout_alignBottom="@+id/base_item_activity_peer_message_item_text"
             android:layout_alignEnd="@+id/base_item_activity_peer_message_item_reply_text"
-            android:layout_alignRight="@+id/base_item_activity_peer_message_item_reply_text"
-            android:layout_alignLeft="@+id/base_item_activity_peer_message_item_text"
             android:layout_alignStart="@+id/base_item_activity_peer_message_item_text" />
 
         <TextView
@@ -53,7 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/base_item_activity_peer_message_item_text"
-            android:layout_alignLeft="@+id/base_item_activity_peer_message_item_text"
             android:textColor="@android:color/white"
             app:layout_marginEndPercent="15.73%" />
 
@@ -62,16 +59,13 @@
             android:layout_alignTop="@+id/base_item_activity_peer_message_item_reply_container_image_view"
             android:layout_alignBottom="@+id/base_item_activity_peer_message_item_text"
             android:layout_alignEnd="@+id/base_item_activity_peer_message_item_reply_container_image_view"
-            android:layout_alignRight="@+id/base_item_activity_peer_message_item_reply_container_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_message_item_text"
             android:layout_alignStart="@+id/base_item_activity_peer_message_item_text" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_peer_message_item_reply_container_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/base_item_activity_peer_message_item_text"
-            android:layout_alignLeft="@+id/base_item_activity_peer_message_item_text">
+            android:layout_alignStart="@+id/base_item_activity_peer_message_item_text">
 
             <org.twinlife.twinme.utils.RoundedImageView
                 android:id="@+id/base_item_activity_peer_message_item_reply_image_view"
@@ -96,8 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:clipChildren="false"
-            android:layout_alignStart="@+id/base_item_activity_peer_message_item_text"
-            android:layout_alignLeft="@+id/base_item_activity_peer_message_item_text">
+            android:layout_alignStart="@+id/base_item_activity_peer_message_item_text">
 
             <org.twinlife.twinme.utils.EphemeralView
                 android:id="@+id/base_item_activity_peer_message_item_ephemeral_view"
@@ -118,7 +111,6 @@
         android:id="@+id/base_item_activity_peer_message_item_overlay_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
         android:visibility="invisible" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

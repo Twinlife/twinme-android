@@ -111,7 +111,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/feedback_activity_logs_view"
-                android:layout_alignLeft="@+id/feedback_activity_logs_view"
                 android:layout_below="@+id/feedback_activity_logs_view"
                 android:text="@string/feedback_activity_info_logs"
                 android:gravity="center_vertical|start" />
@@ -121,7 +120,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/feedback_activity_logs_info"
-                android:layout_alignLeft="@+id/feedback_activity_logs_info"
                 android:layout_below="@+id/feedback_activity_logs_info"
                 android:text="@string/feedback_activity_logs"/>
 
@@ -146,7 +144,6 @@
             <TextView
                 android:id="@+id/feedback_activity_device_info"
                 android:layout_alignStart="@+id/feedback_activity_send_content_view"
-                android:layout_alignLeft="@+id/feedback_activity_send_content_view"
                 android:layout_below="@+id/feedback_activity_send_content_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

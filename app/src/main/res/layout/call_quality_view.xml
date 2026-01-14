@@ -43,7 +43,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@+id/call_quality_view_star_one_image_view"
                 android:layout_toEndOf="@+id/call_quality_view_star_one_image_view"
                 android:src="@drawable/star_grey"/>
 
@@ -52,7 +51,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@+id/call_quality_view_star_two_image_view"
                 android:layout_toEndOf="@+id/call_quality_view_star_two_image_view"
                 android:src="@drawable/star_grey"/>
 
@@ -61,7 +59,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@+id/call_quality_view_star_three_image_view"
                 android:layout_toEndOf="@+id/call_quality_view_star_three_image_view"
                 android:src="@drawable/star_grey"/>
         </androidx.percentlayout.widget.PercentRelativeLayout>

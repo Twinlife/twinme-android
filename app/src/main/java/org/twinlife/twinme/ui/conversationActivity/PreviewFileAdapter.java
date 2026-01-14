@@ -42,6 +42,14 @@ public class PreviewFileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         setHasStableIds(false);
     }
 
+    public void updateFiles() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateFiles");
+        }
+
+        notifyItemRangeChanged(0, mFiles.size());
+    }
+
     public void stopPlayer() {
         if (DEBUG) {
             Log.d(LOG_TAG, "stopPlayer");

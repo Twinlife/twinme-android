@@ -39,7 +39,6 @@
 
         <View
             android:id="@+id/call_again_confirm_view_bullet_view"
-            android:layout_alignRight="@+id/call_again_confirm_view_avatar_view"
             android:layout_alignEnd="@+id/call_again_confirm_view_avatar_view"
             android:layout_alignTop="@+id/call_again_confirm_view_avatar_view"
             android:elevation="8dp"
@@ -52,7 +51,6 @@
             android:layout_height="0dp"
             android:elevation="8dp"
             android:layout_alignTop="@+id/call_again_confirm_view_avatar_view"
-            android:layout_toRightOf="@+id/call_again_confirm_view_bullet_view"
             android:layout_toEndOf="@+id/call_again_confirm_view_bullet_view">
 
             <ImageView

@@ -38,7 +38,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/notifications_fragment_notification_item_avatar_view"
-            android:layout_toRightOf="@id/notifications_fragment_notification_item_avatar_view"
             app:layout_marginEndPercent="2.93%"
             app:layout_marginStartPercent="4.26%">
 
@@ -54,7 +53,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/notifications_fragment_notification_item_avatar_view"
-                    android:layout_toRightOf="@id/notifications_fragment_notification_item_avatar_view"
                     android:ellipsize="end"
                     android:lines="1" />
 
@@ -63,7 +61,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/notifications_fragment_notification_item_title_view"
                     android:layout_toEndOf="@+id/notifications_fragment_notification_item_title_view"
                     android:src="@drawable/authentified_relation_icon"
                     android:visibility="gone"
@@ -75,7 +72,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:gravity="end"
                     android:ellipsize="end"
                     android:lines="1" />
@@ -99,7 +95,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/notifications_fragment_notification_item_type_view"
-                    android:layout_toRightOf="@id/notifications_fragment_notification_item_type_view"
                     android:ellipsize="end"
                     android:lines="1"
                     app:layout_marginEndPercent="5.5%" />
@@ -113,7 +108,6 @@
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
             android:layout_alignStart="@+id/notifications_fragment_notification_item_information_view"
-            android:layout_alignLeft="@+id/notifications_fragment_notification_item_information_view"
             android:layout_alignParentBottom="true" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

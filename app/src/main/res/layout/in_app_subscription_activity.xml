@@ -25,7 +25,6 @@
                 android:id="@+id/in_app_subscription_activity_close_view"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true">
 
                 <ImageView
@@ -62,7 +61,6 @@
 
                     <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
                         android:id="@+id/in_app_subscription_activity_progress_bar_two"
-                        android:layout_toRightOf="@+id/in_app_subscription_activity_progress_bar_one"
                         android:layout_toEndOf="@+id/in_app_subscription_activity_progress_bar_one"
                         app:layout_widthPercent="20%"
                         app:layout_marginStartPercent="2%"
@@ -70,7 +68,6 @@
 
                     <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
                         android:id="@+id/in_app_subscription_activity_progress_bar_three"
-                        android:layout_toRightOf="@+id/in_app_subscription_activity_progress_bar_two"
                         android:layout_toEndOf="@+id/in_app_subscription_activity_progress_bar_two"
                         app:layout_widthPercent="20%"
                         app:layout_marginStartPercent="2%"
@@ -78,7 +75,6 @@
 
                     <org.twinlife.twinme.ui.inAppSubscriptionActivity.CustomProgressBarView
                         android:id="@+id/in_app_subscription_activity_progress_bar_four"
-                        android:layout_toRightOf="@+id/in_app_subscription_activity_progress_bar_three"
                         android:layout_toEndOf="@+id/in_app_subscription_activity_progress_bar_three"
                         app:layout_widthPercent="20%"
                         app:layout_marginStartPercent="2%"
@@ -318,7 +314,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     app:layout_marginEndPercent="2%"
                     app:layout_widthPercent="30%"

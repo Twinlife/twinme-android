@@ -1172,7 +1172,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             FileInfo fileInfo = new FileInfo(getApplicationContext(), sharedFile);
             FileInfo copy;
             if (fileInfo.isImage() || fileInfo.isVideo()) {
-                copy = fileInfo.saveMedia(getApplicationContext(), getTwinmeApplication().sendImageSize());
+                copy = fileInfo.saveMedia(getApplicationContext(), getTwinmeApplication().qualityMedia());
             } else {
                 copy = fileInfo.saveFile(getApplicationContext());
             }

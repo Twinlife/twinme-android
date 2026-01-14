@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_alignBottom="@+id/section_title_item_title_view"
-        android:layout_toRightOf="@+id/section_title_item_title_view"
         android:layout_toEndOf="@+id/section_title_item_title_view"
         android:text="@string/application_new" />
 

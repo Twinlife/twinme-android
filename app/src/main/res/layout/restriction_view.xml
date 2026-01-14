@@ -37,7 +37,6 @@
                     android:layout_centerVertical="true"
                     android:text="@string/quality_of_service_activity_notification_title"
                     android:layout_toEndOf="@+id/restriction_content_image_view"
-                    android:layout_toRightOf="@+id/restriction_content_image_view"
                     app:layout_marginStartPercent="3.27%"
                     app:layout_marginEndPercent="4.75%" />
 
@@ -64,7 +63,6 @@
                     android:layout_height="wrap_content"
                     app:layout_aspectRatio="113.80%"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     app:layout_marginEndPercent="2.38%" >
 
                     <ImageView

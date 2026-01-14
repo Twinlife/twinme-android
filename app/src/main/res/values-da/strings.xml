@@ -43,6 +43,7 @@
     <string name="application_do_not_display">Vis ikke igen</string>
     <string name="application_edit">Redigere</string>
     <string name="application_error_file_not_found">Filen blev ikke fundet.</string>
+    <string name="application_error_media_unload">Kan ikke indlæse medier.</string>
     <string name="application_error_media_not_supported">Dette billed-/videoformat understøttes ikke af applikationen.</string>
     <string name="application_error_no_storage_space">Utilstrækkelig lagerplads</string>
     <string name="application_group_limit_reached">Maksimum antal (%1$d) af gruppemedlemmer overskredet.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">Geolokalisering</string>
     <string name="application_location_enabled">Giv appen adgang til placering i systemindstillinger.</string>
     <string name="application_low_usage_message">Advarsel, hvis du ikke bruger programmet ofte nok, vil OS muligvis ikke vække det til at udveksle beskeder!</string>
-    <string name="application_more_info">Mere information…</string>
     <string name="application_one_item_selected">1 element valgt</string>
     <string name="application_migration_no_storage_space">Der er ikke nok plads på din enhed til at fuldføre migreringen. Luk applikationen, frigør noget plads, og genstart appen for at fuldføre opdateringen.</string>
     <string name="application_migration_no_storage_space_message">En af de to enheder har ikke nok lagerplads. Frigør plads på den enhed, før du genstarter migreringen.</string>
+    <string name="application_more_info">Mere information…</string>
     <string name="application_name_hint">Navn</string>
     <string name="application_network_connecting">Tilslutning til Skred</string>
     <string name="application_network_connectivity">Der er oprettet netværksforbindelse</string>
@@ -425,6 +426,11 @@
     <string name="conversation_activity_invitation_title">Jeg inviterer dig at deltage i gruppen</string>
     <string name="conversation_activity_local_cleanup">Hovedindholdet er blevet slettet lokalt.</string>
     <string name="conversation_activity_manage_conversation">Administrer samtalen</string>
+    <string name="conversation_activity_media_quality_original">Original definition (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Uden størrelsesændring - Langsommere overførsel</string>
+    <string name="conversation_activity_media_quality_standard">Standard definition (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Mindre - Hurtigere overførsel</string>
+    <string name="conversation_activity_media_quality_title">Medieopløsning</string>
     <string name="conversation_activity_menu_item_view_copy_message">Kopieret til udklipsholderen!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Kopi</string>
     <string name="conversation_activity_menu_item_view_delete_title">Fjerne</string>
@@ -451,6 +457,9 @@
     <string name="conversation_activity_send_file_warning">Advarsel: det er ikke muligt at forhindre modtageren i at kopiere/gemme/dele et dokument (pdf, word, ppt, excel, zip osv.), som kun kan åbnes uden for applikationen. Vil du stadig sende den?</string>
     <string name="conversation_activity_send_large_file_message">Denne fil er stor (%1$d MB). Vil du fortsætte?</string>
     <string name="conversation_activity_send_menu_allow_copy">Tillad modtageren at kopiere/gemme/dele dette indhold</string>
+    <string name="conversation_activity_send_quality_size">Stort medie (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Send i standard definition (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Du kan ændre størrelsen til standard definition (SD) for hurtigere overførsel.</string>
     <string name="conversation_activity_stream_dialog">Vil du acceptere det?</string>
     <string name="conversation_activity_unsupported_media">Ikke-understøttet medieformat.</string>
     <string name="conversation_activity_video_call">Video opkald</string>
@@ -770,8 +779,10 @@
     <string name="notification_center_file_message_received">Ny fil modtaget</string>
     <string name="notification_center_geolocation_message">Har sendt dig en lokation</string>
     <string name="notification_center_geolocation_message_received">Ny placering</string>
-    <string name="notification_center_group_invitation">Sendte dig en invitation</string>
-    <string name="notification_center_group_invitation_received">Ny invitation</string>
+    <string name="notification_center_invitation">Sendte dig en invitation</string>
+    <string name="notification_center_invitation_group">inviterer dig til at deltage i en gruppe.</string>
+    <string name="notification_center_invitation_received">Ny invitation</string>
+    <string name="notification_center_invitation_received_group">Ny gruppeinvitation</string>
     <string name="notification_center_join_group">Du er medlem af gruppen</string>
     <string name="notification_center_message_received">Ny besked</string>
     <string name="notification_center_missed_audio_call_to">Ubesvaret lydopkald til %1$s</string>
@@ -809,7 +820,8 @@
     <string name="notifications_fragment_item_deleted_contact">Kontakt slettet</string>
     <string name="notifications_fragment_item_file_message">Sendte dig en fil</string>
     <string name="notifications_fragment_item_geolocation_message">Har sendt dig en lokation</string>
-    <string name="notifications_fragment_item_group_invitation">Sendte dig en invitation</string>
+    <string name="notifications_fragment_item_invitation">Sendte dig en invitation</string>
+    <string name="notifications_fragment_item_invitation_group">inviterer dig til at deltage i en gruppe.</string>
     <string name="notifications_fragment_item_image_message">Sendte dig et foto</string>
     <string name="notifications_fragment_item_join_group">Du er medlem af gruppen</string>
     <string name="notifications_fragment_item_new_contact">Ny kontakt</string>
@@ -893,8 +905,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Lås applikationen med biometriske tjenester eller med en PIN-kode.</string>
-    <string name="privacy_activity_hide_last_screen_message">Undgå, at forhåndsvisning vises i applikationsomskifteren</string>
-    <string name="privacy_activity_hide_last_screen_title">Skjul sidste skærm</string>
+    <string name="privacy_activity_hide_last_screen_message">Og skjul appen, når den kører i baggrunden, hvis enheden tillader det.</string>
+    <string name="privacy_activity_hide_last_screen_title">Forbyd skærmbilleder</string>
     <string name="privacy_activity_lock_screen_message">Lås op for adgang til applikationen ved hjælp af enhedens biometriske tjenester eller adgangskodeautentificeringstjenester. Du kan stadig besvare indgående opkald og modtage underretninger, mens adgangen til appen er låst.</string>
     <string name="privacy_activity_lock_screen_not_available">Denne mulighed kræver en version af Android > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Adgang til låsetimeout</string>

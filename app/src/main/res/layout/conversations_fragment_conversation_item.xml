@@ -42,7 +42,6 @@
 
             <org.twinlife.twinme.utils.CircularImageView
                 android:id="@+id/conversations_fragment_conversation_item_member_two_avatar_view"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/conversations_fragment_conversation_item_member_one_avatar_view"
                 android:scaleType="fitCenter"
@@ -58,7 +57,6 @@
 
             <org.twinlife.twinme.utils.CircularImageView
                 android:id="@+id/conversations_fragment_conversation_item_member_four_avatar_view"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:scaleType="fitCenter"
@@ -67,7 +65,6 @@
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/conversations_fragment_conversation_item_more_view"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 app:layout_aspectRatio="100%"
@@ -95,7 +92,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/conversations_fragment_conversation_item_avatar_container_view"
-            android:layout_toRightOf="@id/conversations_fragment_conversation_item_avatar_container_view"
             app:layout_marginStartPercent="4.67%">
 
             <androidx.percentlayout.widget.PercentRelativeLayout
@@ -116,7 +112,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/conversations_fragment_conversation_item_name_view"
                     android:layout_toEndOf="@+id/conversations_fragment_conversation_item_name_view"
                     android:src="@drawable/authentified_relation_icon"
                     android:visibility="gone"
@@ -129,7 +124,6 @@
                     android:layout_gravity="end"
                     android:gravity="end"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:ellipsize="end"
                     android:lines="1" />
@@ -141,7 +135,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:visibility="gone">
 
@@ -172,7 +165,6 @@
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
             android:layout_alignStart="@+id/conversations_fragment_conversation_item_text_view"
-            android:layout_alignLeft="@+id/conversations_fragment_conversation_item_text_view"
             android:layout_alignParentBottom="true" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

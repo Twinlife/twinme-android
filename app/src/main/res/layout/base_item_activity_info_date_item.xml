@@ -41,7 +41,6 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_toEndOf="@+id/base_item_activity_info_date_item_state_image_view"
-            android:layout_toRightOf="@+id/base_item_activity_info_date_item_state_image_view"
             android:text="@string/info_item_activity_sent"
             android:textColor="?attr/font_default_color"
             app:layout_widthPercent="37.33%"
@@ -51,7 +50,6 @@
         <TextView
             android:id="@+id/base_item_activity_info_date_item_date_text_view"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textAlignment="gravity"

@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:checked="true"
-        android:layout_toRightOf="@+id/menu_send_option_item_icon"
         android:layout_toEndOf="@+id/menu_send_option_item_icon"
         android:textOn=""
         android:textOff=""

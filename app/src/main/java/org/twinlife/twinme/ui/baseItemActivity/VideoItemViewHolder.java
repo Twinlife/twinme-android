@@ -279,26 +279,6 @@ class VideoItemViewHolder extends ItemViewHolder {
         } else {
             mBottomView.setVisibility(View.GONE);
         }
-
-        ViewGroup.LayoutParams overlayLayoutParams = getOverlayView().getLayoutParams();
-        overlayLayoutParams.width = getContainer().getWidth();
-
-        PercentRelativeLayout.LayoutParams layoutParams = (PercentRelativeLayout.LayoutParams) mImageView.getLayoutParams();
-
-        if (getBaseItemActivity().isMenuOpen()) {
-            overlayLayoutParams.height = getContainer().getHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
-            getOverlayView().setVisibility(View.VISIBLE);
-            if (getBaseItemActivity().isSelectedItem(getItem().getDescriptorId())) {
-                itemView.setBackgroundColor(Design.BACKGROUND_COLOR_WHITE_OPACITY85);
-                getOverlayView().setVisibility(View.INVISIBLE);
-            }
-        } else {
-            overlayLayoutParams.height = OVERLAY_DEFAULT_HEIGHT;
-            getOverlayView().setVisibility(View.INVISIBLE);
-            itemView.setBackgroundColor(Color.TRANSPARENT);
-        }
-
-        getOverlayView().setLayoutParams(overlayLayoutParams);
     }
 
     @Override

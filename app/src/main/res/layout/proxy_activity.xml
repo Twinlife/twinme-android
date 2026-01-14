@@ -36,7 +36,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_aspectRatio="100%"
-            android:layout_toRightOf="@+id/proxy_activity_qrcode_view"
             android:layout_toEndOf="@+id/proxy_activity_qrcode_view"
             android:layout_alignTop="@+id/proxy_activity_qrcode_view">
 
@@ -159,7 +158,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@id/proxy_activity_proxy_view"
             app:layout_widthPercent="33%">
 
@@ -220,7 +218,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/proxy_activity_social_icon_view"
             android:layout_toEndOf="@+id/proxy_activity_social_icon_view"
             android:text="@string/share_activity_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -44,6 +44,7 @@
     <string name="application_do_not_display">Không hiển thị nữa</string>
     <string name="application_edit">Chỉnh sửa</string>
     <string name="application_error_file_not_found">Định dạng hình ảnh/video này không được ứng dụng hỗ trợ.</string>
+    <string name="application_error_media_unload">Không thể tải phương tiện.</string>
     <string name="application_error_media_not_supported">Không tìm thấy tệp.</string>
     <string name="application_error_no_storage_space">Không đủ dung lượng lưu trữ</string>
     <string name="application_group_limit_reached">Đã vượt quá số thành viên tối đa trong nhóm (%1$d).</string>
@@ -52,6 +53,7 @@
     <string name="application_later">Để sau</string>
     <string name="application_migration_no_storage_space">Thiết bị của bạn không đủ dung lượng để hoàn tất việc di chuyển. Hãy đóng ứng dụng, giải phóng một phần bộ nhớ, và khởi động lại ứng dụng để hoàn tất cập nhật.</string>
     <string name="application_migration_no_storage_space_message">Một trong hai thiết bị không có đủ dung lượng lưu trữ. Giải phóng dung lượng trên thiết bị đó trước khi khởi động lại quá trình di chuyển.</string>
+    <string name="application_more_info">Thông tin thêm…</string>
     <string name="application_name_hint">Tên</string>
     <string name="application_network_connecting">Đang kết nối với dịch vụ Skred</string>
     <string name="application_network_connectivity">Đã có kết nối mạng</string>
@@ -78,7 +80,6 @@
     <string name="application_location">Định vị</string>
     <string name="application_location_enabled">Kích hoạt dịch vụ Vị trí trên thiết bị của bạn.</string>
     <string name="application_low_usage_message">Cảnh báo, nếu bạn không sử dụng ứng dụng thường xuyên, hệ điều hành có thể không đánh thức nó để trao đổi tin nhắn!</string>
-    <string name="application_more_info">Thông tin thêm…</string>
     <string name="application_one_item_selected">1 mục đã chọn</string>
     <string name="application_operation_failure">Thao tác thất bại</string>
     <string name="application_operation_irreversible">Thao tác này không thể hoàn tác</string>
@@ -433,6 +434,11 @@
     <string name="conversation_activity_invitation_title">Tôi mời bạn tham gia nhóm</string>
     <string name="conversation_activity_local_cleanup">Nội dung chính đã bị xóa cục bộ.</string>
     <string name="conversation_activity_manage_conversation">Quản lý cuộc trò chuyện</string>
+    <string name="conversation_activity_media_quality_original">Độ phân giải gốc (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">Không thay đổi kích thước - Tốc độ truyền chậm hơn</string>
+    <string name="conversation_activity_media_quality_standard">Độ phân giải tiêu chuẩn (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">Nhỏ hơn - Tốc độ truyền nhanh hơn</string>
+    <string name="conversation_activity_media_quality_title">Độ phân giải phương tiện</string>
     <string name="conversation_activity_menu_item_view_copy_message">Đã sao chép vào khay nhớ tạm!</string>
     <string name="conversation_activity_menu_item_view_copy_title">Sao chép</string>
     <string name="conversation_activity_menu_item_view_delete_title">Xóa</string>
@@ -459,6 +465,9 @@
     <string name="conversation_activity_send_large_file_message">Tệp này lớn (%1$d MB). Bạn có muốn tiếp tục?</string>
     <string name="conversation_activity_reply_to">Trả lời %1$s</string>
     <string name="conversation_activity_send_menu_allow_copy">Cho phép người nhận sao chép/lưu/chia sẻ nội dung này</string>
+    <string name="conversation_activity_send_quality_size">Phương tiện lớn (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">Gửi ở độ phân giải tiêu chuẩn (SD)</string>
+    <string name="conversation_activity_send_quality_warning">Bạn có thể thay đổi kích thước thành độ phân giải tiêu chuẩn (SD) để truyền nhanh hơn.</string>
     <string name="conversation_activity_stream_dialog">Bạn có muốn chấp nhận không?</string>
     <string name="conversation_activity_unsupported_media">Định dạng phương tiện không được hỗ trợ.</string>
     <string name="conversation_activity_video_call">Gọi video</string>
@@ -753,8 +762,10 @@
     <string name="notification_center_file_message_received">Tệp mới</string>
     <string name="notification_center_geolocation_message">Đã gửi vị trí cho bạn</string>
     <string name="notification_center_geolocation_message_received">Vị trí mới</string>
-    <string name="notification_center_group_invitation">Đã gửi cho bạn một lời mời</string>
-    <string name="notification_center_group_invitation_received">Lời mời mới</string>
+    <string name="notification_center_invitation">Đã gửi cho bạn một lời mời</string>
+    <string name="notification_center_invitation_group">Mời bạn tham gia nhóm.</string>
+    <string name="notification_center_invitation_received">Lời mời mới</string>
+    <string name="notification_center_invitation_received_group">Lời mời tham gia nhóm mới</string>
     <string name="notification_center_join_group">Bạn đã tham gia nhóm</string>
     <string name="notification_center_message_received">Tin nhắn mới</string>
     <string name="notification_center_missed_audio_call_to">Cuộc gọi thoại nhỡ tới %1$s</string>
@@ -790,7 +801,8 @@
     <string name="notifications_fragment_item_deleted_contact">Liên hệ đã xóa</string>
     <string name="notifications_fragment_item_file_message">Đã gửi cho bạn một tệp</string>
     <string name="notifications_fragment_item_geolocation_message">Đã gửi vị trí cho bạn</string>
-    <string name="notifications_fragment_item_group_invitation">Đã gửi cho bạn lời mời</string>
+    <string name="notifications_fragment_item_invitation">Đã gửi cho bạn lời mời</string>
+    <string name="notifications_fragment_item_invitation_group">Mời bạn tham gia nhóm.</string>
     <string name="notifications_fragment_item_image_message">Đã gửi cho bạn một ảnh</string>
     <string name="notifications_fragment_item_join_group">Bạn đã tham gia nhóm</string>
     <string name="notifications_fragment_item_new_contact">Liên hệ mới</string>
@@ -874,8 +886,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">Khóa ứng dụng bằng sinh trắc học hoặc mã PIN.</string>
-    <string name="privacy_activity_hide_last_screen_message">Ngăn xem trước khi chuyển đổi ứng dụng</string>
-    <string name="privacy_activity_hide_last_screen_title">Ẩn màn hình cuối cùng</string>
+    <string name="privacy_activity_hide_last_screen_message">Và ẩn ứng dụng khi chạy ngầm, nếu thiết bị cho phép.</string>
+    <string name="privacy_activity_hide_last_screen_title">Cấm chụp ảnh màn hình</string>
     <string name="privacy_activity_lock_screen_message">Khóa truy cập ứng dụng bằng sinh trắc học hoặc mã bảo mật. Bạn vẫn có thể nhận cuộc gọi và thông báo khi ứng dụng bị khóa.</string>
     <string name="privacy_activity_lock_screen_not_available">Tùy chọn này yêu cầu Android phiên bản > 5.0</string>
     <string name="privacy_activity_lock_screen_timeout">Thời gian chờ khóa truy cập</string>

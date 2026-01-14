@@ -17,7 +17,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:layout_widthPercent="37.33%" />
@@ -26,7 +25,6 @@
         android:id="@+id/search_section_item_right_title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/search_section_item_right_view"
         android:layout_alignEnd="@+id/search_section_item_right_view"
         android:layout_centerVertical="true"
         android:text="@string/application_display_all"

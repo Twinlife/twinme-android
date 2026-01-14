@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:background="?attr/white_color">
@@ -10,22 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:gravity="center_vertical"
-        app:layout_marginStartPercent="5.6%"
-        app:layout_marginEndPercent="5.6%" />
+        android:gravity="center_vertical" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/menu_select_value_child_title_checkmark_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/circle_grey"
-        android:layout_centerVertical="true"
-        app:layout_aspectRatio="100%"
-        app:layout_heightPercent="36.67%"
-        app:layout_marginEndPercent="4.26%">
+        android:layout_centerVertical="true">
 
-        <!-- Image heightPercent is not 100% because we need the circle_grey when it is visible.
-             circle_grey has an oval shape and a white background which is required by Android API 16.  -->
         <ImageView
             android:id="@+id/menu_select_value_child_title_checkmark_image"
             android:layout_width="wrap_content"
@@ -36,11 +30,9 @@
             android:scaleType="fitCenter"
             android:cropToPadding="true"
             android:background="@drawable/circle_grey"
-            android:src="@drawable/check_mark_grey"
-            app:layout_aspectRatio="100%"
-            app:layout_heightPercent="100%" />
+            android:src="@drawable/check_mark_grey" />
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
     <View
         android:id="@+id/menu_select_value_child_separator"
@@ -49,4 +41,4 @@
         android:background="?attr/separator_color"
         android:layout_alignParentBottom="true" />
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

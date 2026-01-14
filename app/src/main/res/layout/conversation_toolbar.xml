@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/authentified_relation_white_icon"
                 android:layout_alignBottom="@+id/toolbar_image"
-                android:layout_alignRight="@+id/toolbar_image"
+                android:layout_alignEnd="@+id/toolbar_image"
                 android:visibility="gone" />
 
         </RelativeLayout>

@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/conversation_files_activity_document_item_type_view"
-        android:layout_toRightOf="@id/conversation_files_activity_document_item_type_view"
         android:ellipsize="end"
         android:maxLines="5"
         app:layout_marginStartPercent="4.27%"
@@ -35,7 +34,6 @@
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/conversation_files_activity_document_item_selected_view"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/checkbox_background"
         android:layout_centerVertical="true"
         app:layout_aspectRatio="100%"

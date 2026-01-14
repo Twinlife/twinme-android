@@ -11,7 +11,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         app:layout_aspectRatio="100%"
         android:layout_alignTop="@+id/side_menu_header_avatar_view"
         app:layout_heightPercent="32.31%"

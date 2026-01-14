@@ -43,6 +43,7 @@
     <string name="application_do_not_display">不再顯示</string>
     <string name="application_edit">編輯</string>
     <string name="application_error_file_not_found">未找到該文件。</string>
+    <string name="application_error_media_unload">無法載入媒體。</string>
     <string name="application_error_media_not_supported">該應用程式不支援此圖像/視訊格式。</string>
     <string name="application_error_no_storage_space">儲存空間不足</string>
     <string name="application_group_limit_reached">超出組成員的最大數量（%1$d）。</string>
@@ -52,10 +53,10 @@
     <string name="application_location">地理位置</string>
     <string name="application_location_enabled">允許應用訪問系統設置中的位置信息。</string>
     <string name="application_low_usage_message">警告，如果您不經常使用該應用程序，操作系統可能不會喚醒它來交換消息！</string>
-    <string name="application_more_info">更多資訊…</string>
     <string name="application_one_item_selected">已選擇 1 項</string>
     <string name="application_migration_no_storage_space">您的裝置上沒有足夠的空間來完成遷移。 關閉應用程序，釋放一些空間，然後重新啟動應用程式以完成更新。</string>
     <string name="application_migration_no_storage_space_message">兩台設備中，有一台的儲存空間不足。請釋放該裝置的空間，然後再重新開始遷移。</string>
+    <string name="application_more_info">更多資訊…</string>
     <string name="application_name_hint">名稱</string>
     <string name="application_network_connecting">連接到Skred服務</string>
     <string name="application_network_connectivity">網路連線存在</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">我邀請你加入這個小組</string>
     <string name="conversation_activity_local_cleanup">主要內容已在本地刪除。</string>
     <string name="conversation_activity_manage_conversation">管理對話</string>
+    <string name="conversation_activity_media_quality_original">原始清晰度 (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">不調整大小 - 傳輸速度較慢</string>
+    <string name="conversation_activity_media_quality_standard">標清 (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">縮小 - 傳輸速度較快</string>
+    <string name="conversation_activity_media_quality_title">媒體解析度</string>
     <string name="conversation_activity_menu_item_view_copy_message">複製到剪貼板！</string>
     <string name="conversation_activity_menu_item_view_copy_title">複製</string>
     <string name="conversation_activity_menu_item_view_delete_title">刪除</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">警告：無法阻止接收者復制/保存/共享文檔（pdf、word、ppt、excel、zip 等），這些文檔只能在應用程序外部打開。您還想發送嗎？</string>
     <string name="conversation_activity_send_large_file_message">此文件很大 (%1$d MB)。你想繼續嗎 ？</string>
     <string name="conversation_activity_send_menu_allow_copy">允許收件人復制/保存/共享此內容</string>
+    <string name="conversation_activity_send_quality_size">大尺寸媒體 (%1$s)。</string>
+    <string name="conversation_activity_send_quality_standard">以標清 (SD) 格式發送。</string>
+    <string name="conversation_activity_send_quality_warning">您可以調整為標清 (SD) 以加快傳輸速度。</string>
     <string name="conversation_activity_stream_dialog">您要接受嗎？</string>
     <string name="conversation_activity_unsupported_media">不支援的媒體格式</string>
     <string name="conversation_activity_video_call">視頻電話</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">新文件</string>
     <string name="notification_center_geolocation_message">向您發送了位置</string>
     <string name="notification_center_geolocation_message_received">新地點</string>
-    <string name="notification_center_group_invitation">向您發送了邀請</string>
-    <string name="notification_center_group_invitation_received">新邀請</string>
+    <string name="notification_center_invitation">向您發送了邀請</string>
+    <string name="notification_center_invitation_group">邀請您加入群組。</string>
+    <string name="notification_center_invitation_received">新邀請</string>
+    <string name="notification_center_invitation_received_group">新的群組邀請。</string>
     <string name="notification_center_join_group">您是該組的成員</string>
     <string name="notification_center_message_received">新消息</string>
     <string name="notification_center_missed_audio_call_to">未接%1$s的語音通話</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">聯絡人已刪除</string>
     <string name="notifications_fragment_item_file_message">發給你一個文件</string>
     <string name="notifications_fragment_item_geolocation_message">向您發送了位置</string>
-    <string name="notifications_fragment_item_group_invitation">向您發送了邀請"</string>
+    <string name="notifications_fragment_item_invitation">向您發送了邀請"</string>
+    <string name="notifications_fragment_item_invitation_group">邀請您加入群組。</string>
     <string name="notifications_fragment_item_image_message">向您傳送了相片</string>
     <string name="notifications_fragment_item_join_group">您是該組的成員"</string>
     <string name="notifications_fragment_item_new_contact">新聯繫人</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">使用生物識別服務或 PIN 碼鎖定應用程序。</string>
-    <string name="privacy_activity_hide_last_screen_message">防止預覽出現在應用程序切換器中</string>
-    <string name="privacy_activity_hide_last_screen_title">隱藏上一個屏幕</string>
+    <string name="privacy_activity_hide_last_screen_message">如果裝置允許，請在應用程式後台運行時將其隱藏。</string>
+    <string name="privacy_activity_hide_last_screen_title">禁止螢幕截圖</string>
     <string name="privacy_activity_lock_screen_message">使用設備生物識別或密碼驗證服務解鎖對應用程序的訪問。在訪問該應用程序時，您仍然可以接聽來電並接收通知。</string>
     <string name="privacy_activity_lock_screen_not_available">此選項需要Android > 5.0的版本</string>
     <string name="privacy_activity_lock_screen_timeout">訪問鎖定超時</string>

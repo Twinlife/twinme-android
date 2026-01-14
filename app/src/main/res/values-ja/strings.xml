@@ -43,6 +43,7 @@
     <string name="application_do_not_display">もう表示しない</string>
     <string name="application_edit">編集</string>
     <string name="application_error_file_not_found">ファイルが見つかりません。</string>
+    <string name="application_error_media_unload">メディアを読み込めません。</string>
     <string name="application_error_media_not_supported">この画像/ビデオ形式はアプリケーションでサポートされていません。</string>
     <string name="application_error_no_storage_space">収納スペースが足りない</string>
     <string name="application_group_limit_reached">グループメンバーの最大数（%1$d）を超えました。</string>
@@ -52,10 +53,10 @@
     <string name="application_location">地理位置情報</string>
     <string name="application_location_enabled">デバイスで位置情報サービスをアクティブにします。</string>
     <string name="application_low_usage_message">アプリケーションを頻繁に使用しないと、OS がアプリケーションを起動してメッセージを交換しない場合があります。</string>
-    <string name="application_more_info">詳しくは…</string>
     <string name="application_one_item_selected">1 個のアイテムが選択されました</string>
     <string name="application_migration_no_storage_space">移行を完了するのに十分なスペースがデバイスにありません。 アプリケーションを閉じて空き容量を増やし、アプリを再起動してアップデートを完了します。</string>
     <string name="application_migration_no_storage_space_message">2台のデバイスのうち1台に十分なストレージ容量がありません。移行を再開する前に、そのデバイスの空き容量を増やしてください。</string>
+    <string name="application_more_info">詳しくは…</string>
     <string name="application_name_hint">名前</string>
     <string name="application_network_connecting">Skredサービスへ接続</string>
     <string name="application_network_connectivity">ネットワーク接続が存在します</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">私はグループに参加するようにあなたを招待します</string>
     <string name="conversation_activity_local_cleanup">メインコンテンツはローカルで削除されました。</string>
     <string name="conversation_activity_manage_conversation">会話を管理します</string>
+    <string name="conversation_activity_media_quality_original">オリジナル解像度 (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">リサイズなし - 転送速度低下</string>
+    <string name="conversation_activity_media_quality_standard">標準解像度 (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">サイズを小さく - 転送速度向上</string>
+    <string name="conversation_activity_media_quality_title">メディア解像度</string>
     <string name="conversation_activity_menu_item_view_copy_message">クリップボードにコピーしました！</string>
     <string name="conversation_activity_menu_item_view_copy_title">コピーする</string>
     <string name="conversation_activity_menu_item_view_delete_title">削除する</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">警告: アプリケーションの外部でのみ開くことができるドキュメント (pdf、word、ppt、excel、zip など) を受信者がコピー/保存/共有することを防ぐことはできません。 それでも送信しますか?</string>
     <string name="conversation_activity_send_large_file_message">このファイルは大きい（%1$d MB）。 続行しますか？</string>
     <string name="conversation_activity_send_menu_allow_copy">受信者にこのコンテンツのコピー/保存/共有を許可する</string>
+    <string name="conversation_activity_send_quality_size">大容量メディア (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">標準解像度 (SD) で送信してください。</string>
+    <string name="conversation_activity_send_quality_warning">転送速度向上のため、標準解像度 (SD) にリサイズできます。</string>
     <string name="conversation_activity_stream_dialog">承認しますか？</string>
     <string name="conversation_activity_unsupported_media">サポートされていないメディア形式</string>
     <string name="conversation_activity_video_call">ビデオ通話</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">新しいファイル</string>
     <string name="notification_center_geolocation_message">あなたに場所を送りました</string>
     <string name="notification_center_geolocation_message_received">新しい場所</string>
-    <string name="notification_center_group_invitation">あなたに招待状を送った</string>
-    <string name="notification_center_group_invitation_received">新しい招待状</string>
+    <string name="notification_center_invitation">あなたに招待状を送った</string>
+    <string name="notification_center_invitation_group">がグループへの参加を招待しています。</string>
+    <string name="notification_center_invitation_received">新しい招待状</string>
+    <string name="notification_center_invitation_received_group">新しいグループへの招待。</string>
     <string name="notification_center_join_group">あなたはグループのメンバーです</string>
     <string name="notification_center_message_received">新しいメッセージ</string>
     <string name="notification_center_missed_audio_call_to">%1$sへの音声通話の不在着信があります</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">連絡先が削除されました</string>
     <string name="notifications_fragment_item_file_message">あなたにファイルを送った</string>
     <string name="notifications_fragment_item_geolocation_message">あなたに場所を送りました</string>
-    <string name="notifications_fragment_item_group_invitation">あなたに招待状を送った</string>
+    <string name="notifications_fragment_item_invitation">あなたに招待状を送った</string>
+    <string name="notifications_fragment_item_invitation_group">がグループへの参加を招待しています。</string>
     <string name="notifications_fragment_item_image_message">写真を受信しました</string>
     <string name="notifications_fragment_item_join_group">あなたはグループのメンバーです</string>
     <string name="notifications_fragment_item_new_contact">新しい連絡先</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">生体認証サービスまたは PIN コードでアプリケーションをロックします。</string>
-    <string name="privacy_activity_hide_last_screen_message">プレビューがアプリケーションスイッチャーに表示されないようにする</string>
-    <string name="privacy_activity_hide_last_screen_title">最後の画面を非表示</string>
+    <string name="privacy_activity_hide_last_screen_message">また、デバイスが許可している場合、バックグラウンドで実行中のアプリを非表示にします。</string>
+    <string name="privacy_activity_hide_last_screen_title">スクリーンショットを禁止</string>
     <string name="privacy_activity_lock_screen_message">デバイスの生体認証またはパスコード認証サービスを使用して、アプリケーションへのアクセスのロックを解除します。 アプリへのアクセスがロックされている間も、着信に応答して通知を受け取ることができます。</string>
     <string name="privacy_activity_lock_screen_not_available">このオプションには、5.0を超えるバージョンのAndroidが必要です</string>
     <string name="privacy_activity_lock_screen_timeout">アクセスロックタイムアウト</string>

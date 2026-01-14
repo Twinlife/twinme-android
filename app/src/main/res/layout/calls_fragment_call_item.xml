@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/calls_fragment_call_item_avatar_view"
-            android:layout_toRightOf="@id/calls_fragment_call_item_avatar_view"
             app:layout_marginEndPercent="29.33%"
             app:layout_marginStartPercent="4.27%">
 
@@ -55,7 +54,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/calls_fragment_call_item_name_view"
                     android:layout_toEndOf="@+id/calls_fragment_call_item_name_view"
                     android:src="@drawable/authentified_relation_icon"
                     android:visibility="gone"
@@ -79,7 +77,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/calls_fragment_call_item_type_image_view"
-                    android:layout_toRightOf="@id/calls_fragment_call_item_type_image_view"
                     android:ellipsize="end"
                     android:lines="1" />
             </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -92,7 +89,6 @@
             android:layout_gravity="end"
             android:gravity="end"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:ellipsize="end"
             app:layout_widthPercent="21.33%"
@@ -104,7 +100,6 @@
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
             android:layout_alignStart="@+id/calls_fragment_call_item_information_view"
-            android:layout_alignLeft="@+id/calls_fragment_call_item_information_view"
             android:layout_alignParentBottom="true" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -46,7 +46,6 @@
             android:textColor="@android:color/black"
             android:text="@string/space_appearance_activity_preview_peer_message"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/preview_appearance_peer_message_item_avatar"
             android:layout_toEndOf="@+id/preview_appearance_peer_message_item_avatar"
             app:layout_marginEndPercent="15.73%" />
 
@@ -64,7 +63,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
             android:text="@string/space_appearance_activity_preview_message"
             app:layout_marginEndPercent="6.93%"
@@ -75,7 +73,6 @@
             android:layout_height="20dp"
             android:layout_alignBottom="@id/preview_appearance_message_item_text"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:src="@drawable/received_state"
             app:layout_aspectRatio="100%"
             app:layout_marginEndPercent="2.4%"

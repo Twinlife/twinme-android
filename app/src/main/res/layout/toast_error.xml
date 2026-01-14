@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/toast_image"
-            android:layout_toRightOf="@+id/toast_image"
             android:orientation="vertical"
             app:layout_marginStartPercent="4.95%"
             app:layout_marginEndPercent="4.95%">

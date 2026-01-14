@@ -136,6 +136,7 @@ public class CallMenuView extends PercentRelativeLayout {
     private boolean mIsCertifyRunning = false;
     private boolean mIsCameraControlAllowed = false;
     private boolean mIsRemoteCameraControl = false;
+    private boolean mIsWaitingForCameraControlAnswer = false;
 
     private AudioDevice mAudioDevice;
     private boolean mIsHeadSetAvailable = false;
@@ -298,6 +299,14 @@ public class CallMenuView extends PercentRelativeLayout {
         mIsRemoteCameraControl = isRemoteCameraControl;
     }
 
+    public void setIsWaitingForCameraControlAnswer(boolean isWaitingForCameraControlAnswer) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setIsWaitingForCameraControlAnswer: " + isWaitingForCameraControlAnswer);
+        }
+
+        mIsWaitingForCameraControlAnswer = isWaitingForCameraControlAnswer;
+    }
+
     public void setAudioDevice(AudioDevice audioDevice, boolean isHeadSetAvailable) {
         if (DEBUG) {
             Log.d(LOG_TAG, "setAudioDevice: " + audioDevice);
@@ -431,6 +440,10 @@ public class CallMenuView extends PercentRelativeLayout {
                 mCameraControlImageView.setColorFilter(Design.DELETE_COLOR_RED);
             } else {
                 mCameraControlImageView.setColorFilter(Color.BLACK);
+            }
+
+            if (mIsWaitingForCameraControlAnswer) {
+                mCameraControlView.setAlpha(0.5f);
             }
         } else {
             mCameraControlView.setVisibility(View.INVISIBLE);

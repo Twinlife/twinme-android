@@ -295,10 +295,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
         if (mCanShareLocation && !mCanShareBackgroundLocation && !mShowBackgroundLocationAlert) {
             mShowBackgroundLocationAlert = true;
-
             ViewGroup viewGroup = callActivity.findViewById(R.id.call_activity_view);
-
-            mCardView.setVisibility(View.GONE);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
             defaultConfirmView.setForceDarkMode(true);
             defaultConfirmView.setTitle(callActivity.getString(R.string.application_authorization_go_settings));

@@ -43,6 +43,7 @@
     <string name="application_do_not_display">더 이상 표시하지 않음</string>
     <string name="application_edit">편집</string>
     <string name="application_error_file_not_found">파일을 찾을 수 없습니다.</string>
+    <string name="application_error_media_unload">미디어를 로드할 수 없습니다.</string>
     <string name="application_error_media_not_supported">이 이미지/비디오 형식은 애플리케이션에서 지원되지 않습니다.</string>
     <string name="application_error_no_storage_space">저장 공간 부족</string>
     <string name="application_group_limit_reached">그룹 구성원의 최대 수 (%1$d)를 초과했습니다.</string>
@@ -52,10 +53,10 @@
     <string name="application_location">지리적 위치</string>
     <string name="application_location_enabled">장치에서 위치 서비스를 활성화하십시오.</string>
     <string name="application_low_usage_message">경고, 응용 프로그램을 충분히 자주 사용하지 않으면 OS가 메시지를 교환하기 위해 절전 모드를 해제하지 못할 수 있습니다!</string>
-    <string name="application_more_info">추가 정보…</string>
     <string name="application_one_item_selected">1개 항목 선택됨</string>
     <string name="application_migration_no_storage_space">기기에 마이그레이션을 완료할 공간이 부족합니다. 애플리케이션을 닫고 공간을 확보한 후 앱을 다시 실행하여 업데이트를 완료하세요.</string>
     <string name="application_migration_no_storage_space_message">두 기기 중 하나에 저장 공간이 부족합니다. 마이그레이션을 다시 시작하기 전에 해당 기기의 저장 공간을 확보하세요.</string>
+    <string name="application_more_info">추가 정보…</string>
     <string name="application_name_hint">이름</string>
     <string name="application_network_connecting">Skred 서비스 연결 중</string>
     <string name="application_network_connectivity">네트워크 연결이 존재합니다</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">그룹에 가입하도록 초대합니다</string>
     <string name="conversation_activity_local_cleanup">주요 콘텐츠는 로컬에서 삭제되었습니다.</string>
     <string name="conversation_activity_manage_conversation">대화를 관리하십시오</string>
+    <string name="conversation_activity_media_quality_original">원본 해상도(HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">크기 조정 없이 - 전송 속도 저하</string>
+    <string name="conversation_activity_media_quality_standard">표준 해상도(SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">더 작은 크기 - 전송 속도 향상</string>
+    <string name="conversation_activity_media_quality_title">미디어 해상도</string>
     <string name="conversation_activity_menu_item_view_copy_message">클립 보드에 복사되었습니다!</string>
     <string name="conversation_activity_menu_item_view_copy_title">사본</string>
     <string name="conversation_activity_menu_item_view_delete_title">지우다</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">경고: 애플리케이션 외부에서만 열 수 있는 문서(pdf, word, ppt, excel, zip 등)를 받는 사람이 복사/저장/공유하는 것을 막을 수 없습니다. 그래도 보내시겠습니까?</string>
     <string name="conversation_activity_send_large_file_message">이 파일은 큽니다(%1$dMB). 계속하시겠습니까?</string>
     <string name="conversation_activity_send_menu_allow_copy">수신자가이 콘텐츠를 복사/저장/공유하도록 허용</string>
+    <string name="conversation_activity_send_quality_size">대용량 미디어(%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">표준 해상도(SD)로 전송하세요.</string>
+    <string name="conversation_activity_send_quality_warning">더 빠른 전송을 위해 표준 해상도(SD)로 크기를 조정할 수 있습니다.</string>
     <string name="conversation_activity_stream_dialog">수락하시겠습니까?</string>
     <string name="conversation_activity_unsupported_media">지원되지 않는 미디어 형식</string>
     <string name="conversation_activity_video_call">영상 통화</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">새로운 파일</string>
     <string name="notification_center_geolocation_message">위치를 보냈습니다</string>
     <string name="notification_center_geolocation_message_received">새 위치</string>
-    <string name="notification_center_group_invitation">너에게 초대장을 보냈어</string>
-    <string name="notification_center_group_invitation_received">새로운 파일</string>
+    <string name="notification_center_invitation">너에게 초대장을 보냈어</string>
+    <string name="notification_center_invitation_group">그룹에 초대합니다.</string>
+    <string name="notification_center_invitation_received">새로운 파일</string>
+    <string name="notification_center_invitation_received_group">새 그룹 초대.</string>
     <string name="notification_center_join_group">당신은 그룹의 구성원입니다</string>
     <string name="notification_center_message_received">새로운 메시지</string>
     <string name="notification_center_missed_audio_call_to">%1$s 에게 거부된 음성 전화</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">연락처 삭제됨</string>
     <string name="notifications_fragment_item_file_message">당신에게 파일을 보냈습니다</string>
     <string name="notifications_fragment_item_geolocation_message">위치를 보냈습니다.</string>
-    <string name="notifications_fragment_item_group_invitation">너에게 초대장을 보냈어</string>
+    <string name="notifications_fragment_item_invitation">너에게 초대장을 보냈어</string>
+    <string name="notifications_fragment_item_invitation_group">그룹에 초대합니다.</string>
     <string name="notifications_fragment_item_image_message">나에게 사진을 전송함</string>
     <string name="notifications_fragment_item_join_group">당신은 그룹의 구성원입니다</string>
     <string name="notifications_fragment_item_new_contact">새 연락처</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">생체 인식 서비스 또는 PIN 코드로 애플리케이션을 잠급니다.</string>
-    <string name="privacy_activity_hide_last_screen_message">응용 프로그램 전환기에 미리보기가 나타나지 않도록 방지</string>
-    <string name="privacy_activity_hide_last_screen_title">마지막 화면 숨기기</string>
+    <string name="privacy_activity_hide_last_screen_message">기기에서 허용하는 경우, 백그라운드에서 실행 중인 앱을 숨깁니다.</string>
+    <string name="privacy_activity_hide_last_screen_title">스크린샷 금지</string>
     <string name="privacy_activity_lock_screen_message">장치 생체 인식 또는 암호 인증 서비스를 사용하여 애플리케이션에 대한 액세스를 잠금 해제합니다. 앱에 대한 액세스가 잠겨있는 동안에도 수신 전화를 받고 알림을받을 수 있습니다.</string>
     <string name="privacy_activity_lock_screen_not_available">이 옵션을 사용하려면 Android > 5.0 버전이 필요합니다.</string>
     <string name="privacy_activity_lock_screen_timeout">액세스 잠금 시간 초과</string>

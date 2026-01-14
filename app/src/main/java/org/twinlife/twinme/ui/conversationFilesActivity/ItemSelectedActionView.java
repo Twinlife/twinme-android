@@ -130,7 +130,7 @@ public class ItemSelectedActionView extends PercentRelativeLayout {
         layoutParams = mShareView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_ACTION_WIDTH * Design.WIDTH_RATIO);
 
-        mDeleteView = findViewById(R.id.conversaton_files_activity_item_selected_action_delete_view);
+        mDeleteView = findViewById(R.id.conversation_files_activity_item_selected_action_delete_view);
         mDeleteView.setOnClickListener(view -> onDeleteClick());
 
         layoutParams = mDeleteView.getLayoutParams();

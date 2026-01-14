@@ -246,9 +246,13 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
                 break;
 
             case NEW_CONTACT_INVITATION:
+                drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
+                subTitle = context.getString(R.string.notifications_fragment_item_invitation);
+                break;
+
             case NEW_GROUP_INVITATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_group_invitation);
+                subTitle = context.getString(R.string.notifications_fragment_item_invitation_group);
                 break;
 
             case NEW_GROUP_JOINED:
@@ -260,6 +264,11 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
                 mTypeView.setImageResource(UIReaction.getNotificationImageReactionWithReactionType(uiNotification.getLastNotification().getAnnotationValue()));
                 mTypeView.setColorFilter(UIReaction.getColorFilterReactionWithReactionType(uiNotification.getLastNotification().getAnnotationValue()));
                 subTitle = context.getString(R.string.notification_center_reaction_message);
+                break;
+
+            case NEW_GEOLOCATION:
+                drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_location_message, null);
+                subTitle = context.getString(R.string.notifications_fragment_item_geolocation_message);
                 break;
         }
         if (drawable != null) {

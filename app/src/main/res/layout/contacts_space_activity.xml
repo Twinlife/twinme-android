@@ -41,7 +41,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/contacts_space_activity_search_image_view"
-            android:layout_toRightOf="@+id/contacts_space_activity_search_image_view"
             android:background="@android:color/transparent"
             android:hint="@string/application_search_hint"
             android:imeOptions="actionSearch"
@@ -53,7 +52,6 @@
             android:scaleType="fitCenter"
             android:src="@drawable/close"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             app:layout_aspectRatio="100%"
             app:layout_widthPercent="5%"
@@ -82,8 +80,6 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/contacts_space_activity_add_title"
             android:layout_toStartOf="@+id/contacts_space_activity_add_title"
             app:layout_marginStartPercent="4%" />
 
@@ -93,7 +89,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             app:layout_marginStartPercent="6.93%"
             app:layout_marginEndPercent="6.93%"
@@ -103,10 +98,8 @@
             android:id="@+id/contacts_space_activity_add_title_clickable_view"
             app:layout_heightPercent="100%"
             android:layout_width="match_parent"
-            android:layout_alignLeft="@+id/contacts_space_activity_add_title"
             android:layout_alignStart="@+id/contacts_space_activity_add_title"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentEnd="true" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

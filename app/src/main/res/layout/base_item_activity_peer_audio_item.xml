@@ -44,8 +44,6 @@
             android:layout_alignTop="@+id/base_item_activity_peer_audio_item_reply_text"
             android:layout_alignBottom="@+id/base_item_activity_peer_audio_item_view"
             android:layout_alignEnd="@+id/base_item_activity_peer_audio_item_reply_text"
-            android:layout_alignRight="@+id/base_item_activity_peer_audio_item_reply_text"
-            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view"
             android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view" />
 
         <TextView
@@ -54,7 +52,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view"
             android:textColor="@android:color/white"
             app:layout_marginEndPercent="15.73%" />
 
@@ -63,16 +60,13 @@
             android:layout_alignTop="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
             android:layout_alignBottom="@+id/base_item_activity_peer_audio_item_view"
             android:layout_alignEnd="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
-            android:layout_alignRight="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view"
             android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_peer_audio_item_reply_container_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view"
-            android:layout_alignLeft="@+id/base_item_activity_peer_audio_item_view">
+            android:layout_alignStart="@+id/base_item_activity_peer_audio_item_view">
 
             <org.twinlife.twinme.utils.RoundedImageView
                 android:id="@+id/base_item_activity_peer_audio_item_reply_image_view"
@@ -85,7 +79,6 @@
             android:id="@+id/base_item_activity_peer_audio_item_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layoutDirection="ltr"
             app:layout_marginStartPercent="12.8%">
@@ -144,7 +137,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/base_item_activity_peer_audio_control"
-                android:layout_toRightOf="@id/base_item_activity_peer_audio_control"
                 app:layout_marginStartPercent="3.59%"
                 app:layout_marginTopPercent="8.33%" />
 
@@ -154,7 +146,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_toEndOf="@id/base_item_activity_peer_audio_control"
-                android:layout_toRightOf="@id/base_item_activity_peer_audio_control"
                 android:lines="1"
                 android:textColor="#000000"
                 app:layout_marginStartPercent="3.59%"
@@ -166,7 +157,6 @@
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignBottom="@+id/base_item_activity_peer_audio_item_counter">
 
                 <org.twinlife.twinme.utils.EphemeralView
@@ -179,7 +169,6 @@
                 android:id="@+id/base_item_activity_peer_audio_item_speed_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true">
 
@@ -200,7 +189,7 @@
         android:id="@+id/base_item_activity_peer_audio_item_annotation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/base_item_activity_peer_audio_item_layout_container"
+        android:layout_below="@+id/base_item_activity_peer_audio_item_container"
         android:choiceMode="singleChoice"
         app:layout_marginStartPercent="12.8%" />
 

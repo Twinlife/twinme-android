@@ -43,6 +43,7 @@
     <string name="application_do_not_display">अब और प्रदर्शित न करें</string>
     <string name="application_edit">संपादित करें</string>
     <string name="application_error_file_not_found">फ़ाइल नहीं मिली।</string>
+    <string name="application_error_media_unload">मीडिया लोड नहीं हो पा रहा है।</string>
     <string name="application_error_media_not_supported">यह छवि/वीडियो प्रारूप एप्लिकेशन द्वारा समर्थित नहीं है।</string>
     <string name="application_error_no_storage_space">अपर्याप्त भंडारण स्थान</string>
     <string name="application_group_limit_reached">समूह के सदस्यों की अधिकतम संख्या (%1$d) पार हो गई।</string>
@@ -52,10 +53,10 @@
     <string name="application_location">जियोलोकेशन</string>
     <string name="application_location_enabled">अपने डिवाइस पर स्थान सेवा को सक्रिय करें.</string>
     <string name="application_low_usage_message">चेतावनी, यदि आप अक्सर एप्लिकेशन का पर्याप्त उपयोग नहीं करते हैं, तो ओएस संदेशों का आदान-प्रदान करने के लिए इसे नहीं जगा सकता है!</string>
-    <string name="application_more_info">अधिक जानकारी…</string>
     <string name="application_one_item_selected">1 आइटम चुना गया</string>
     <string name="application_migration_no_storage_space">माइग्रेशन पूरा करने के लिए आपके डिवाइस पर पर्याप्त जगह नहीं है। एप्लिकेशन को बंद करें, कुछ स्थान खाली करें और अपडेट पूरा करने के लिए ऐप को फिर से लॉन्च करें।</string>
     <string name="application_migration_no_storage_space_message">दोनों में से एक डिवाइस में पर्याप्त संग्रहण स्थान नहीं है। माइग्रेशन को पुनः आरंभ करने से पहले उस डिवाइस पर स्थान खाली करें।</string>
+    <string name="application_more_info">अधिक जानकारी…</string>
     <string name="application_name_hint">नाम</string>
     <string name="application_network_connecting">सेवा Skred से कनेक्ट कर रहा है</string>
     <string name="application_network_connectivity">नेटवर्क कनेक्टिविटी मौजूद है</string>
@@ -426,6 +427,11 @@
     <string name="conversation_activity_invitation_title">मैं आपको समूह में शामिल होने के लिए आमंत्रित करता हूं</string>
     <string name="conversation_activity_local_cleanup">मुख्य सामग्री को स्थानीय रूप से हटा दिया गया है।</string>
     <string name="conversation_activity_manage_conversation">बातचीत का प्रबंधन करें</string>
+    <string name="conversation_activity_media_quality_original">ओरिजिनल डेफ़िनिशन (HD)</string>
+    <string name="conversation_activity_media_quality_original_subtitle">बिना साइज़ बदले - धीमा ट्रांसफ़र</string>
+    <string name="conversation_activity_media_quality_standard">स्टैंडर्ड डेफ़िनिशन (SD)</string>
+    <string name="conversation_activity_media_quality_standard_subtitle">छोटा - तेज़ ट्रांसफ़र</string>
+    <string name="conversation_activity_media_quality_title">मीडिया रिज़ॉल्यूशन</string>
     <string name="conversation_activity_menu_item_view_copy_message">क्लिपबोर्ड पर कॉपी किया गया!</string>
     <string name="conversation_activity_menu_item_view_copy_title">प्रतिलिपि</string>
     <string name="conversation_activity_menu_item_view_delete_title">हटाना</string>
@@ -452,6 +458,9 @@
     <string name="conversation_activity_send_file_warning">चेतावनी: प्राप्तकर्ता को दस्तावेज़ (पीडीएफ, वर्ड, पीपीटी, एक्सेल, ज़िप इत्यादि) की प्रतिलिपि बनाने/सहेजने/साझा करने से रोकना संभव नहीं है, जिसे केवल एप्लिकेशन के बाहर ही खोला जा सकता है। क्या आप अब भी इसे भेजना चाहते हैं?</string>
     <string name="conversation_activity_send_large_file_message">यह फ़ाइल बड़ी है (%1$d MB)। क्या आप जारी रखना चाहेंगे ?</string>
     <string name="conversation_activity_send_menu_allow_copy">प्राप्तकर्ता को इस सामग्री को कॉपी/सहेजने/साझा करने की अनुमति दें</string>
+    <string name="conversation_activity_send_quality_size">बड़ा मीडिया (%1$s).</string>
+    <string name="conversation_activity_send_quality_standard">स्टैंडर्ड डेफ़िनिशन (SD) में भेजें</string>
+    <string name="conversation_activity_send_quality_warning">तेज़ ट्रांसफ़र के लिए आप स्टैंडर्ड डेफ़िनिशन (SD) में साइज़ बदल सकते हैं.</string>
     <string name="conversation_activity_stream_dialog">आप इसे स्वीकार करना चाहते हैं?</string>
     <string name="conversation_activity_unsupported_media">असमर्थित मीडिया प्रारूप</string>
     <string name="conversation_activity_video_call">वीडियो कॉल</string>
@@ -771,8 +780,10 @@
     <string name="notification_center_file_message_received">नई फ़ाइल</string>
     <string name="notification_center_geolocation_message">आपको एक स्थान भेजा है</string>
     <string name="notification_center_geolocation_message_received">नया स्थान</string>
-    <string name="notification_center_group_invitation">आपको एक आमंत्रण भेजा है</string>
-    <string name="notification_center_group_invitation_received">नया निमंत्रण</string>
+    <string name="notification_center_invitation">आपको एक आमंत्रण भेजा है</string>
+    <string name="notification_center_invitation_group">आपको एक ग्रुप में शामिल होने के लिए इनवाइट करता है।</string>
+    <string name="notification_center_invitation_received">नया निमंत्रण</string>
+    <string name="notification_center_invitation_received_group">नया ग्रुप इनविटेशन।</string>
     <string name="notification_center_join_group">आप समूह के सदस्य हैं</string>
     <string name="notification_center_message_received">नया संदेश</string>
     <string name="notification_center_missed_audio_call_to">%1$s को मिस्ड ऑडियो कॉल छूटी</string>
@@ -810,7 +821,8 @@
     <string name="notifications_fragment_item_deleted_contact">संपर्क हटा दिया गया</string>
     <string name="notifications_fragment_item_file_message">आपको एक फाइल भेजी</string>
     <string name="notifications_fragment_item_geolocation_message">आपको एक स्थान भेजा है</string>
-    <string name="notifications_fragment_item_group_invitation">आपको एक आमंत्रण भेजा है</string>
+    <string name="notifications_fragment_item_invitation">आपको एक आमंत्रण भेजा है</string>
+    <string name="notifications_fragment_item_invitation_group">आपको एक ग्रुप में शामिल होने के लिए इनवाइट करता है।</string>
     <string name="notifications_fragment_item_image_message">आपको एक फ़ोटो भेजी</string>
     <string name="notifications_fragment_item_join_group">आप समूह के सदस्य हैं</string>
     <string name="notifications_fragment_item_new_contact">नया कॉन्ट्रैक्ट</string>
@@ -894,8 +906,8 @@
 
     <!-- PrivacyActivity -->
     <string name="privacy_activity_coach_mark">एप्लिकेशन को बायोमेट्रिक सेवाओं या पिन कोड के साथ लॉक करें।</string>
-    <string name="privacy_activity_hide_last_screen_message">एप्लिकेशन स्विचर में दिखने से पूर्वावलोकन रोकें</string>
-    <string name="privacy_activity_hide_last_screen_title">अंतिम स्क्रीन छिपाएँ</string>
+    <string name="privacy_activity_hide_last_screen_message">और अगर डिवाइस इजाज़त दे, तो ऐप को बैकग्राउंड में चलने पर छिपा दें।</string>
+    <string name="privacy_activity_hide_last_screen_title">स्क्रीनशॉट लेने से मना करें</string>
     <string name="privacy_activity_lock_screen_message">अपने डिवाइस बायोमेट्रिक या पासकोड प्रमाणीकरण सेवाओं का उपयोग करके एप्लिकेशन तक पहुंच को अनलॉक करें। आप अभी भी इनकमिंग कॉल्स का जवाब दे सकते हैं और ऐप को एक्सेस करने के दौरान नोटिफिकेशन प्राप्त कर सकते हैं।</string>
     <string name="privacy_activity_lock_screen_not_available">इस विकल्प के लिए Android > 5.0 का संस्करण आवश्यक है</string>
     <string name="privacy_activity_lock_screen_timeout">एक्सेस लॉक टाइम आउट</string>

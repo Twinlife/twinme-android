@@ -37,8 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/invitation_room_activity_avatar_view"
-            android:layout_toRightOf="@+id/invitation_room_activity_avatar_view" />
+            android:layout_toEndOf="@+id/invitation_room_activity_avatar_view" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -61,7 +60,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_aspectRatio="100%"
-            android:layout_toRightOf="@+id/invitation_room_activity_qrcode_view"
             android:layout_toEndOf="@+id/invitation_room_activity_qrcode_view"
             android:layout_alignTop="@+id/invitation_room_activity_qrcode_view">
 
@@ -201,7 +199,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/invitation_room_activity_social_icon_view"
             android:layout_toEndOf="@+id/invitation_room_activity_social_icon_view"
             android:text="@string/share_activity_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>

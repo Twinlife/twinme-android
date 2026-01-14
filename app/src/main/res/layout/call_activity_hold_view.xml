@@ -30,14 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/call_activity_hold_avatar_container_view"
-            android:layout_toRightOf="@id/call_activity_hold_avatar_container_view"
             android:ellipsize="end"
             android:maxLines="3" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/call_activity_hold_swap_view"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_hold_add_to_call_view"
             android:layout_toStartOf="@+id/call_activity_hold_add_to_call_view"
             app:layout_aspectRatio="100%">
 
@@ -59,7 +57,6 @@
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/call_activity_hold_add_to_call_view"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_activity_hold_hangup_view"
             android:layout_toStartOf="@+id/call_activity_hold_hangup_view"
             app:layout_aspectRatio="100%">
 
@@ -82,7 +79,6 @@
             android:id="@+id/call_activity_hold_hangup_view"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             app:layout_aspectRatio="100%"
             android:contentDescription="@string/audio_call_activity_hangup">
 

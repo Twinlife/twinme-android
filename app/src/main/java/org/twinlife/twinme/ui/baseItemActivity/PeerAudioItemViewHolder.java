@@ -435,6 +435,12 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
             mEphemeralView.setVisibility(View.GONE);
             marginLayoutParams.rightMargin = (int) (DESIGN_AUDIO_SPEED_MARGIN * Design.WIDTH_RATIO);
         }
+
+        if (isMenuOpen() && isSelectedItem(item.getDescriptorId())) {
+            if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
+                mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
+            }
+        }
     }
 
     public void resetView() {

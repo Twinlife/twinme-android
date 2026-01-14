@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2024 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -60,6 +60,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
     private SplashService mSplashService;
     private AnimatorSet mAnimatorSet;
     private TextView mUpgradeMessage;
+    private ImageView mPremiumImageView;
 
     private long mStartTime;
     private boolean mReady = false;
@@ -163,6 +164,14 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
 
         mState = state;
         mUpgradeMessage.setVisibility(state == TwinmeApplication.State.UPGRADING ? View.VISIBLE : View.INVISIBLE);
+
+        final TwinmeApplication twinmeApplication = getTwinmeApplication();
+        if (twinmeApplication.getInvitationSubscriptionImage() != null && twinmeApplication.isFeatureSubscribed(Feature.GROUP_CALL)) {
+            mPremiumImageView.setImageBitmap(BitmapFactory.decodeFile(twinmeApplication.getInvitationSubscriptionImage()));
+            mPremiumImageView.setVisibility(View.VISIBLE);
+        } else {
+            mPremiumImageView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -282,27 +291,20 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         Design.updateTextFont(mUpgradeMessage, Design.FONT_REGULAR34);
         mUpgradeMessage.setTextColor(Color.WHITE);
 
-        ImageView premiumImageView = findViewById(R.id.splashscreen_activity_premium_image_view);
+        mPremiumImageView = findViewById(R.id.splashscreen_activity_premium_image_view);
 
-        final TwinmeApplication twinmeApplication = getTwinmeApplication();
-        if (twinmeApplication.getInvitationSubscriptionImage() != null && twinmeApplication.isFeatureSubscribed(Feature.GROUP_CALL)) {
-            premiumImageView.setImageBitmap(BitmapFactory.decodeFile(twinmeApplication.getInvitationSubscriptionImage()));
-            premiumImageView.setVisibility(View.VISIBLE);
-        } else {
-            premiumImageView.setVisibility(View.GONE);
-        }
-        ViewGroup.LayoutParams layoutParams = premiumImageView.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = mPremiumImageView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_PREMIUM_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
 
         logoView.setAlpha((float) 0.0);
         twinmeView.setAlpha((float) 0.0);
-        premiumImageView.setAlpha((float) 0.0);
+        mPremiumImageView.setAlpha((float) 0.0);
 
         animationList.clear();
 
         animationList.add(logoView);
         animationList.add(twinmeView);
-        animationList.add(premiumImageView);
+        animationList.add(mPremiumImageView);
     }
 
     private void animate() {

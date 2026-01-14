@@ -47,7 +47,6 @@
                 android:id="@+id/enter_invitation_code_activity_enter_code_two_content_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_one_content_view"
                 android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_one_content_view">
 
                 <org.twinlife.twinme.ui.contacts.PasteEditText
@@ -65,7 +64,6 @@
                 android:id="@+id/enter_invitation_code_activity_enter_code_three_content_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_two_content_view"
                 android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_two_content_view">
 
                 <org.twinlife.twinme.ui.contacts.PasteEditText
@@ -83,7 +81,6 @@
                 android:id="@+id/enter_invitation_code_activity_enter_code_four_content_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_three_content_view"
                 android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_three_content_view">
 
                 <org.twinlife.twinme.ui.contacts.PasteEditText
@@ -101,7 +98,6 @@
                 android:id="@+id/enter_invitation_code_activity_enter_code_five_content_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_four_content_view"
                 android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_four_content_view">
 
                 <org.twinlife.twinme.ui.contacts.PasteEditText
@@ -120,7 +116,6 @@
                 android:id="@+id/enter_invitation_code_activity_enter_code_six_content_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/enter_invitation_code_activity_enter_code_five_content_view"
                 android:layout_toEndOf="@+id/enter_invitation_code_activity_enter_code_five_content_view">
 
                 <org.twinlife.twinme.ui.contacts.PasteEditText

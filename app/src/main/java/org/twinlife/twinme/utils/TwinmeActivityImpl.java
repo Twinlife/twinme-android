@@ -224,6 +224,12 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
             getWindow().getDecorView().setBackgroundColor(mBackgroundColor);
         }
         mTwinmeApplication.setCurrentActivity(this);
+
+        if (getTwinmeApplication().lastScreenHidden()) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     @Override
