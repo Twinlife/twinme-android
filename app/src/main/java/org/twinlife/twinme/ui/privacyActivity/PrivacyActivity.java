@@ -170,7 +170,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
         });
 
         viewGroup.addView(menuSelectValueView);
-        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.LOCKSCREEN);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.LOCKSCREEN, getTwinmeApplication().screenLockTimeout());
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

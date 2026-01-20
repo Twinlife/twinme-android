@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Bu özelliği kullanmak için premium hizmetleri etkinleştirmelisiniz.</string>
     <string name="application_premium_feature_title">Premium hizmetleri etkinleştirin</string>
     <string name="application_photo_gallery">Fotoğraf albümleri</string>
+    <string name="application_processing_please_wait">İşlem devam ediyor… Lütfen bekleyin.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Bu profille davet ettiğiniz kişilere sizi temsil eden görüntüyü göndermelisiniz.</string>
     <string name="application_profile_name_not_defined">Bu profille davet ettiğiniz kişilere sizi temsil eden adı tanımlamalısınız.</string>

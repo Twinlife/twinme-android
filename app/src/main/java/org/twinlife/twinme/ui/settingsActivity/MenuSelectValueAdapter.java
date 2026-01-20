@@ -71,10 +71,10 @@ public class MenuSelectValueAdapter implements ListAdapter {
         mSelectedValue = selectedValue;
     }
 
-    public void setMenuType(MenuSelectValueView.MenuType menuType) {
+    public void setMenuType(MenuSelectValueView.MenuType menuType, int defaultValue) {
 
         mMenuType = menuType;
-        setupSelectedValue();
+        mSelectedValue = defaultValue;
 
         if (mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN) {
             mTimeouts.clear();
@@ -137,38 +137,6 @@ public class MenuSelectValueAdapter implements ListAdapter {
     public boolean hasStableIds() {
 
         return true;
-    }
-
-    private void setupSelectedValue() {
-
-        if (mActivity == null) {
-            return;
-        }
-
-        switch (mMenuType) {
-            case QUALITY_MEDIA:
-                mSelectedValue = mActivity.getTwinmeApplication().qualityMedia();
-                break;
-
-            case EDIT_SPACE:
-                mSelectedValue = -1;
-                break;
-
-            case DISPLAY_CALLS:
-                mSelectedValue = mActivity.getTwinmeApplication().displayCallsMode().ordinal();
-                break;
-
-            case LOCKSCREEN:
-                mSelectedValue = mActivity.getTwinmeApplication().screenLockTimeout();
-                break;
-
-            case PROFILE_UPDATE_MODE:
-                mSelectedValue = mActivity.getTwinmeApplication().updateProfileMode();
-                break;
-
-            default:
-                break;
-        }
     }
 
     @Override

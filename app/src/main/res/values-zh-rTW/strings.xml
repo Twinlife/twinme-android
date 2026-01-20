@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">您必須激活高級服務才能使用此功能。</string>
     <string name="application_premium_feature_title">激活優質服務</string>
     <string name="application_photo_gallery">相冊</string>
+    <string name="application_processing_please_wait">正在處理……請稍候。</string>
     <string name="application_profile">個人資料</string>
     <string name="application_profile_avatar_not_defined">您的個人資料圖片未定義</string>
     <string name="application_profile_name_not_defined">您的個人資料名字未定義</string>

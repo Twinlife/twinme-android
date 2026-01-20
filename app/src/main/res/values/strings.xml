@@ -15,7 +15,7 @@
 
     <!-- URL -->
     <string name="skred_blog" translatable="false">https://www.skred.app/blog/</string>
-    <string name="skred_faq" translatable="false">https://skred.mobi/help</string>
+    <string name="skred_faq" translatable="false">https://skred.mobi/support</string>
 
     <!-- Application -->
     <string name="application_accept">Accept</string>
@@ -105,6 +105,7 @@
     <string name="application_premium_feature_message">You must activate premium services to use this feature.</string>
     <string name="application_premium_feature_title">Activate premium services</string>
     <string name="application_photo_gallery">Photo albums</string>
+    <string name="application_processing_please_wait">Processing… Please wait.</string>
     <string name="application_profile">Profile</string>
     <string name="application_profile_avatar_not_defined">You need to enter the image that represents you to the contacts you invite with this profile.</string>
     <string name="application_profile_name_not_defined">You need to define the name that represents you to the contacts you invite with this profile.</string>

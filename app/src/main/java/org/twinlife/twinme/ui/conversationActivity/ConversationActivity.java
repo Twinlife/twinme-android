@@ -5781,7 +5781,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         mOverlayView.setVisibility(View.GONE);
         viewGroup.addView(menuTimeoutView);
-        menuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE);
+        menuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE, -1);
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
         setStatusBarColor(color, Color.rgb(72,72,72));
@@ -6462,6 +6462,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         if (DEBUG) {
             Log.d(LOG_TAG, "showPremiumFeatureView: " + featureType);
         }
+
+        hideKeyboard();
 
         ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 

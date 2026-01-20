@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Du måste aktivera premiumtjänster för att använda den här funktionen.</string>
     <string name="application_premium_feature_title">Aktivera premiumtjänster</string>
     <string name="application_photo_gallery">Fotoalbum</string>
+    <string name="application_processing_please_wait">Bearbetar… Vänta.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Din profilbild är inte definierad</string>
     <string name="application_profile_name_not_defined">Ditt profilnamn är inte definierat</string>

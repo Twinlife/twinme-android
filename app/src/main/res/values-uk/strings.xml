@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Щоб скористатися цією функцією, потрібно активувати преміум-послуги.</string>
     <string name="application_premium_feature_title">Активуйте преміум-сервіси</string>
     <string name="application_photo_gallery">Фотоальбоми</string>
+    <string name="application_processing_please_wait">Обробка… Зачекайте.</string>
     <string name="application_profile">Профіль</string>
     <string name="application_profile_avatar_not_defined">Встановіть зображення, яке представлятиме вас контактам, яких ви запросите за допомогою цього профілю.</string>
     <string name="application_profile_name_not_defined">Встановіть ім’я, яке представлятиме вас контактам, яких ви запросите за допомогою цього профілю.</string>

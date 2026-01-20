@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Du skal aktivere premium-tjenester for at bruge denne funktion.</string>
     <string name="application_premium_feature_title">Aktiver premium-tjenester</string>
     <string name="application_photo_gallery">Fotoalbummer</string>
+    <string name="application_processing_please_wait">Behandler… Vent venligst.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Du skal definere dit profilbillede før du inviterer en kontakt med denne profil.</string>
     <string name="application_profile_name_not_defined">Du skal definere dit profilnavn før du inviterer en kontakt med denne profil.</string>

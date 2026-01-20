@@ -86,6 +86,7 @@
     <string name="application_premium_feature_message">Anda harus mengaktifkan layanan premium untuk menggunakan fitur ini.</string>
     <string name="application_premium_feature_title">Aktifkan layanan premium</string>
     <string name="application_photo_gallery">Album foto</string>
+    <string name="application_processing_please_wait">Sedang diproses… Mohon tunggu.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Anda harus memasukkan gambar yang mewakili Anda ke kontak yang Anda undang dengan profil ini.</string>
     <string name="application_profile_name_not_defined">Anda harus membuat nama yang mewakili Anda ke kontak yang Anda undang dengan profil ini.</string>

@@ -234,6 +234,11 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
     void onViewRecycled() {
 
         super.onViewRecycled();
+
+        if (mEphemeralTimer != null) {
+            mEphemeralTimer.cancel();
+            mEphemeralTimer = null;
+        }
     }
 
     boolean isDeleteAnimationStarted() {

@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Você deve ativar os serviços premium para usar este recurso.</string>
     <string name="application_premium_feature_title">Ativar serviços premium</string>
     <string name="application_photo_gallery">Álbuns de fotos</string>
+    <string name="application_processing_please_wait">Processamento… Aguarde.</string>
     <string name="application_profile">Perfil</string>
     <string name="application_profile_avatar_not_defined">É necessário inserir a sua imagem para os contactos que convida com este perfil.</string>
     <string name="application_profile_name_not_defined">É necessário definir o seu nome para os contactos que convida com este perfil.</string>

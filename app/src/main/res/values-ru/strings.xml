@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Вы должны активировать премиум-услуги, чтобы использовать эту функцию.</string>
     <string name="application_premium_feature_title">Активировать премиум-услуги</string>
     <string name="application_photo_gallery">Фотоальбомы</string>
+    <string name="application_processing_please_wait">Обработка… Пожалуйста, подождите.</string>
     <string name="application_profile">Профиль</string>
     <string name="application_profile_avatar_not_defined">Вам нужно выбрать изображение, которое представляет вас контактам, которых вы приглашаете через этот профиль.</string>
     <string name="application_profile_name_not_defined">Вам необходимо указать имя, которое представляет вас контактам, которых вы приглашаете из этого профиля.</string>

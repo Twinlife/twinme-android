@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">이 기능을 사용하려면 프리미엄 서비스를 활성화해야 합니다.</string>
     <string name="application_premium_feature_title">프리미엄 서비스 활성화</string>
     <string name="application_photo_gallery">사진 앨범</string>
+    <string name="application_processing_please_wait">처리 중입니다… 잠시 기다려 주세요.</string>
     <string name="application_profile">프로필</string>
     <string name="application_profile_avatar_not_defined">이 프로필로 초대할 상대에게 표시할 이미지를 입력해야 합니다.</string>
     <string name="application_profile_name_not_defined">이 프로필로 초대할 상대에게 표시할 이름을 정해야 합니다.</string>

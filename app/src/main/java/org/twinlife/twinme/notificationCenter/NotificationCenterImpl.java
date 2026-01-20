@@ -373,7 +373,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         }
 
         if (!mTwinmeApplication.getDisplayNotificationSender() || mTwinmeApplication.screenLocked()) {
-            ShortcutManagerCompat.removeAllDynamicShortcuts(mApplication.getApplicationContext());
+            removeAllDynamicShortcuts();
             return;
         }
 
@@ -430,6 +430,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
         }
 
+        removeAllDynamicShortcuts();
         ShortcutManagerCompat.setDynamicShortcuts(context, shortcuts);
     }
 
@@ -450,6 +451,15 @@ public class NotificationCenterImpl implements NotificationCenter {
         if (DEBUG) {
             Log.d(LOG_TAG, "removeDynamicShortcuts");
         }
+
+        List<ShortcutInfoCompat> dynamicShortcuts = ShortcutManagerCompat.getDynamicShortcuts(mApplication);
+
+        List<String> shortcutIds = new ArrayList<>();
+        for (ShortcutInfoCompat shortcut : dynamicShortcuts) {
+            shortcutIds.add(shortcut.getId());
+        }
+
+        ShortcutManagerCompat.removeLongLivedShortcuts(mApplication, shortcutIds);
 
         ShortcutManagerCompat.removeAllDynamicShortcuts(mApplication);
     }

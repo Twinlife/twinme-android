@@ -47,6 +47,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
     private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
+    private int mDefaultValue = -1;
 
     //
     // Override TwinmeActivityImpl methods
@@ -173,8 +174,10 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         } else if (setting.getTypeSetting() == UISetting.TypeSetting.VALUE) {
             if (setting.isSetting(Settings.qualityMedia)) {
                 mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
+                mDefaultValue = getTwinmeApplication().qualityMedia();
             } else {
                 mMenuType = MenuSelectValueView.MenuType.DISPLAY_CALLS;
+                mDefaultValue = getTwinmeApplication().displayCallsMode().ordinal();
             }
             openMenuSelectValue();
         }
@@ -353,7 +356,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         });
 
         viewGroup.addView(menuSelectValueView);
-        menuSelectValueView.openMenu(mMenuType);
+        menuSelectValueView.openMenu(mMenuType, mDefaultValue);
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

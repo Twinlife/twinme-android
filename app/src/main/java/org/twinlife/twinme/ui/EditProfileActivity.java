@@ -1111,7 +1111,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         });
 
         viewGroup.addView(menuSelectValueView);
-        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE, getTwinmeApplication().updateProfileMode());
 
         Window window = getWindow();
         window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);

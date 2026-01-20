@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">يجب عليك تنشيط الخدمات المميزة لاستخدام هذه الميزة.</string>
     <string name="application_premium_feature_title">تفعيل الخدمات المميزة</string>
     <string name="application_photo_gallery">ألبومات الصور</string>
+    <string name="application_processing_please_wait">جارٍ المعالجة... يرجى الانتظار.</string>
     <string name="application_profile">مظهر جانبي</string>
     <string name="application_profile_avatar_not_defined">يتعين عليك إدخال صورة تمثلك لجهات الاتصال التي تدعوها باستخدام هذه الصفحة الشخصية.</string>
     <string name="application_profile_name_not_defined">يتعين عليك تحديد اسم يمثلك لجهات الاتصال التي تدعوها باستخدام هذه الصفحة الشخصية.</string>

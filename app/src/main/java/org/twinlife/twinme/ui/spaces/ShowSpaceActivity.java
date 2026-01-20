@@ -931,7 +931,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         if (mMenuSelectValueView.getVisibility() == View.INVISIBLE) {
             mMenuSelectValueView.setVisibility(View.VISIBLE);
             mOverlayMenuView.setVisibility(View.VISIBLE);
-            mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.EDIT_SPACE);
+            mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.EDIT_SPACE, -1);
         }
     }
 

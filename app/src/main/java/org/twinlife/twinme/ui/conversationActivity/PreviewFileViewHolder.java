@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2025 twinlife SA.
+ *  Copyright (c) 2025-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -79,10 +79,10 @@ public class PreviewFileViewHolder extends RecyclerView.ViewHolder {
             spannableStringBuilder.append(fileInfo.getFilename());
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            if (fileInfo.getSize() != null) {
+            if (fileInfo.getSize() > 0) {
                 spannableStringBuilder.append("\n");
                 int startInfo = spannableStringBuilder.length();
-                spannableStringBuilder.append(Formatter.formatFileSize(context, Integer.parseInt(fileInfo.getSize())));
+                spannableStringBuilder.append(Formatter.formatFileSize(context, fileInfo.getSize()));
                 spannableStringBuilder.setSpan(new RelativeSizeSpan(0.8f), startInfo, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 

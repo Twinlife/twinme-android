@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">U moet premiumservices activeren om deze functie te gebruiken.</string>
     <string name="application_premium_feature_title">Activeer premiumservices</string>
     <string name="application_photo_gallery">Fotoalbums</string>
+    <string name="application_processing_please_wait">Bezig met verwerken… Even geduld alstublieft.</string>
     <string name="application_profile">Profiel</string>
     <string name="application_profile_avatar_not_defined">U moet de afbeelding invoeren die u vertegenwoordigt bij de contacten die u met dit profiel uitnodigt.</string>
     <string name="application_profile_name_not_defined">U moet de naam definiëren die u vertegenwoordigt bij de contacten die u met dit profiel uitnodigt.</string>

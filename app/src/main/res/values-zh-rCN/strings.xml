@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">您必须激活高级服务才能使用此功能。</string>
     <string name="application_premium_feature_title">激活优质服务</string>
     <string name="application_photo_gallery">相册</string>
+    <string name="application_processing_please_wait">正在处理……请稍候。</string>
     <string name="application_profile">个人资料</string>
     <string name="application_profile_avatar_not_defined">您需要在个人资料中输入一个对于您邀请的联系人来说代表您的图像</string>
     <string name="application_profile_name_not_defined">您需要在个人资料中定义一个对于您邀请的联系人来说代表您的名称。</string>

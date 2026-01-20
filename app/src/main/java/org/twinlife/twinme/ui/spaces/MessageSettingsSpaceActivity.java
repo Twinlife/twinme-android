@@ -297,7 +297,7 @@ public class MessageSettingsSpaceActivity extends AbstractSpaceActivity implemen
             mOverlayView.setVisibility(View.VISIBLE);
             mMenuTimeoutView.setVisibility(View.VISIBLE);
             mMenuTimeoutView.setSelectedValue((int) mExpireTimeout);
-            mMenuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE);
+            mMenuTimeoutView.openMenu(MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE, -1);
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
             setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
         }

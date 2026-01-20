@@ -87,6 +87,7 @@
     <string name="application_premium_feature_message">Sinun on aktivoitava premium-palvelut, jotta voit käyttää tätä ominaisuutta.</string>
     <string name="application_premium_feature_title">Aktivoi premium-palvelut</string>
     <string name="application_photo_gallery">Kuva-albumit</string>
+    <string name="application_processing_please_wait">Käsitellään… Odota hetki.</string>
     <string name="application_profile">Profiili</string>
     <string name="application_profile_avatar_not_defined">Profiilikuvaa ei ole määritelty</string>
     <string name="application_profile_name_not_defined">Profiilinimeäsi ei ole määritetty</string>

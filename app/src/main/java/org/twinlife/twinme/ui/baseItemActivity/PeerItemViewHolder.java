@@ -175,6 +175,11 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
     void onViewRecycled() {
 
         super.onViewRecycled();
+
+        if (mEphemeralTimer != null) {
+            mEphemeralTimer.cancel();
+            mEphemeralTimer = null;
+        }
     }
 
     void deleteEphemeralItem() {

@@ -371,6 +371,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
 
         DatePickerDialog.OnDateSetListener onDateSetListener = (datePicker, y, m, d) -> {
             mScheduleStartDate = new Date(y, m+1, d);
+            setUpdated();
             mCapabilitiesAdapter.notifyDataSetChanged();
         };
 
@@ -397,6 +398,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, h, m) -> {
             mScheduleStartTime = new Time(h, m);
+            setUpdated();
             mCapabilitiesAdapter.notifyDataSetChanged();
         };
 
@@ -425,6 +427,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
 
         DatePickerDialog.OnDateSetListener onDateSetListener = (datePicker, y, m, d) -> {
             mScheduleEndDate = new Date(y, m+1, d);
+            setUpdated();
             mCapabilitiesAdapter.notifyDataSetChanged();
         };
 
@@ -456,6 +459,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, h, m) -> {
             mScheduleEndTime = new Time(h, m);
+            setUpdated();
             mCapabilitiesAdapter.notifyDataSetChanged();
         };
 
@@ -481,7 +485,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         if (mMenuSelectValueView.getVisibility() == View.INVISIBLE) {
             mMenuSelectValueView.setVisibility(View.VISIBLE);
             mOverlayMenuView.setVisibility(View.VISIBLE);
-            mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.CAMERA_CONTROL);
+            mMenuSelectValueView.openMenu(MenuSelectValueView.MenuType.CAMERA_CONTROL, -1);
             mMenuSelectValueView.setSelectedValue(mZoomable.ordinal());
 
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);

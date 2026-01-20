@@ -508,6 +508,8 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
             Log.d(LOG_TAG, "showLocationSettings");
         }
 
+        hideKeyboard();
+        
         ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
         mCardView.setVisibility(View.GONE);
