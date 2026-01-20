@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Cần cấp quyền truy cập máy ảnh để chụp ảnh hoặc quay video mới.</string>
     <string name="application_permission_scan_code">Cần cấp quyền truy cập máy ảnh để quét mã QR.</string>
     <string name="application_photo_gallery">Album ảnh</string>
+    <string name="application_processing_please_wait">Đang xử lý… Vui lòng chờ.</string>
     <string name="application_profile">Hồ sơ</string>
     <string name="application_profile_avatar_not_defined">Bạn cần chọn ảnh đại diện để đại diện cho mình với các liên hệ bạn mời bằng hồ sơ này.</string>
     <string name="application_profile_name_not_defined">Bạn cần đặt tên để đại diện cho mình với các liên hệ bạn mời bằng hồ sơ này.</string>

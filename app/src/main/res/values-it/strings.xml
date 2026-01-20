@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Per scattare una nuova foto o registrare un nuovo video è necessaria l’autorizzazione ad accedere alla fotocamera.</string>
     <string name="application_permission_scan_code">L’autorizzazione per accedere alla telecamera è necessaria per scansionare un codice QR.</string>
     <string name="application_photo_gallery">Album fotografici</string>
+    <string name="application_processing_please_wait">Elaborazione in corso... Attendi.</string>
     <string name="application_profile">Profilo</string>
     <string name="application_profile_avatar_not_defined">Devi inserire l’immagine che ti rappresenta per i contatti che inviti con questo profilo.</string>
     <string name="application_profile_name_not_defined">Devi definire il nome che ti rappresenta per i contatti che inviti con questo profilo.</string>

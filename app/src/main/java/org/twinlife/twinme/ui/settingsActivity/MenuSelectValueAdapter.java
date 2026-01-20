@@ -53,10 +53,10 @@ public class MenuSelectValueAdapter implements ListAdapter {
         mOnValueClickListener = onValueClickListener;
     }
 
-    public void setMenuType(MenuSelectValueView.MenuType menuType) {
+    public void setMenuType(MenuSelectValueView.MenuType menuType, int defaultValue) {
 
         mMenuType = menuType;
-        setupSelectedValue();
+        mSelectedValue = defaultValue;
     }
 
     public void setForceDarkMode(boolean forceDarkMode) {
@@ -99,30 +99,6 @@ public class MenuSelectValueAdapter implements ListAdapter {
     public boolean hasStableIds() {
 
         return true;
-    }
-
-    private void setupSelectedValue() {
-
-        if (mActivity == null) {
-            return;
-        }
-
-        switch (mMenuType) {
-            case QUALITY_MEDIA:
-                mSelectedValue = mActivity.getTwinmeApplication().qualityMedia();
-                break;
-
-            case DISPLAY_CALLS:
-                mSelectedValue = mActivity.getTwinmeApplication().displayCallsMode().ordinal();
-                break;
-
-            case PROFILE_UPDATE_MODE:
-                mSelectedValue = mActivity.getTwinmeApplication().updateProfileMode();
-                break;
-
-            default:
-                break;
-        }
     }
 
     @Override

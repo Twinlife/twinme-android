@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Tillatelse for å få tilgang til kameraet kreves for å ta et nytt bilde eller video.</string>
     <string name="application_permission_scan_code">Tillatelse til å få tilgang til kameraet er nødvendig for å skanne en QR-kode.</string>
     <string name="application_photo_gallery">Fotoalbum</string>
+    <string name="application_processing_please_wait">Behandler ... Vent litt.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Profilbildet ditt er ikke definert</string>
     <string name="application_profile_name_not_defined">Profilnavnet ditt er ikke definert</string>

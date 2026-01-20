@@ -113,7 +113,7 @@ public class MenuSelectValueView extends RelativeLayout {
         mForceDarkMode = forceDarkMode;
     }
 
-    public void openMenu(MenuType menuType) {
+    public void openMenu(MenuType menuType, int defaultValue) {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenu");
         }
@@ -123,7 +123,7 @@ public class MenuSelectValueView extends RelativeLayout {
         isOpenAnimationEnded = false;
         isCloseAnimationEnded = false;
 
-        mMenuSelectValueAdapter.setMenuType(menuType);
+        mMenuSelectValueAdapter.setMenuType(menuType, defaultValue);
         mMenuSelectValueAdapter.setForceDarkMode(mForceDarkMode);
         mListView.invalidateViews();
 

@@ -5042,9 +5042,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     mCallCertifyView.setVisibility(View.GONE);
                     mHeaderView.setAlpha(1.0f);
-                    mCallMenuView.setHideCertifyRelation(true);
+                    updateOriginator();
                     mCallMenuView.setIsCertifyRunning(false);
                     mCallMenuView.updateMenu();
+
                     if (!mMenuVisibility) {
                         setMenuVisibility(true);
                     }

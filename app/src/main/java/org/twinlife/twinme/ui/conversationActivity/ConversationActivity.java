@@ -6022,6 +6022,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "showPremiumFeatureView: " + featureType);
         }
 
+        hideKeyboard();
+
         ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);

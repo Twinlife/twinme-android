@@ -27,7 +27,7 @@ import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 public class PrivacyActivity extends AbstractSettingsActivity {
     private static final String LOG_TAG = "PrivacyActivity";
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     //
     // Override TwinmeActivityImpl methods

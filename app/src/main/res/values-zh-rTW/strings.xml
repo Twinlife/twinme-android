@@ -82,6 +82,7 @@
     <string name="application_permission_camera">需要使用相機的權限才能拍攝新照片或視頻。</string>
     <string name="application_permission_scan_code">掃描QR碼需要訪問相機的權限。</string>
     <string name="application_photo_gallery">相冊</string>
+    <string name="application_processing_please_wait">正在處理……請稍候。</string>
     <string name="application_profile">個人資料</string>
     <string name="application_profile_avatar_not_defined">您的個人資料圖片未定義</string>
     <string name="application_profile_name_not_defined">您的個人資料名字未定義</string>

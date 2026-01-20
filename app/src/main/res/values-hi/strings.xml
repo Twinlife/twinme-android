@@ -82,6 +82,7 @@
     <string name="application_permission_camera">नई फ़ोटो या वीडियो लेने के लिए कैमरे को एक्सेस करने की अनुमति आवश्यक है।</string>
     <string name="application_permission_scan_code">क्यूआर कोड को स्कैन करने के लिए कैमरे तक पहुंचने की अनुमति आवश्यक है।</string>
     <string name="application_photo_gallery">तस्वीर ऐल्बम</string>
+    <string name="application_processing_please_wait">प्रोसेस हो रहा है… कृपया इंतज़ार करें.</string>
     <string name="application_profile">प्रोफ़ाइल</string>
     <string name="application_profile_avatar_not_defined"> इस प्रोफाइल के साथ आमंत्रित करने के लिए आपको आपका प्रतिनिधित्व करता चित्र डालना होगा।</string>
     <string name="application_profile_name_not_defined">इस प्रोफाइल के साथ संपर्कों को आमंत्रित करने के लिए आपको अपना प्रतिनिधित्व करता नाम परिभाषित करने की जरूरत है।</string>

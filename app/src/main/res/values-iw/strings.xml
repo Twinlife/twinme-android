@@ -81,6 +81,7 @@
     <string name="application_permission_camera">נדרשת הרשאה לגשת למצלמה כדי לצלם תמונה או סרטון חדש.</string>
     <string name="application_permission_scan_code">יש צורך בהרשאת גישה למצלמה כדי לסרוק קוד QR.</string>
     <string name="application_photo_gallery">אלבומי תמונות</string>
+    <string name="application_processing_please_wait">עיבוד... אנא המתן.</string>
     <string name="application_profile">פּרוֹפִיל</string>
     <string name="application_profile_avatar_not_defined">עליך להזין את התמונה שמייצגת אותך מול אנשי הקשר שאת/ה מזמין/ה לפרופיל זה.</string>
     <string name="application_profile_name_not_defined">עליך להגדיר את השם שמייצג אותך מול אנשי הקשר שאת/ה מזמין/ה לפרופיל זה.</string>

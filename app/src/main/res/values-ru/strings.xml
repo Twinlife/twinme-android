@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Разрешение на доступ к камере требуется, чтобы сделать новое фото или видео.</string>
     <string name="application_permission_scan_code">Разрешение на доступ к камере необходимо для сканирования QR-кода.</string>
     <string name="application_photo_gallery">Фотоальбомы</string>
+    <string name="application_processing_please_wait">Обработка… Пожалуйста, подождите.</string>
     <string name="application_profile">Профиль</string>
     <string name="application_profile_avatar_not_defined">Вам нужно выбрать изображение, которое представляет вас контактам, которых вы приглашаете через этот профиль.</string>
     <string name="application_profile_name_not_defined">Вам необходимо указать имя, которое представляет вас контактам, которых вы приглашаете из этого профиля.</string>

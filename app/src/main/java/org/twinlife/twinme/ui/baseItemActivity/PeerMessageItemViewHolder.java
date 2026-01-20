@@ -376,6 +376,11 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
 
         mTextView.setText(null);
         mReplyImageView.setImageBitmap(null, null);
+
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 
 

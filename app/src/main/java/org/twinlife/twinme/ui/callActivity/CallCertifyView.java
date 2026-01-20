@@ -229,7 +229,8 @@ public class CallCertifyView extends PercentRelativeLayout  {
         mConfirmView.setVisibility(GONE);
         mTitleView.setVisibility(GONE);
         mMessageView.setText(String.format(getResources().getString(R.string.call_activity_certify_error_message), mName));
-
+        mWordCheckChallenge = null;
+        resetBulletsView();
         Handler handler = new Handler();
         Runnable runnable = () -> mCallCertifyListener.onCertifyViewFinish();
         handler.postDelayed(runnable, 5000);
@@ -479,6 +480,8 @@ public class CallCertifyView extends PercentRelativeLayout  {
 
         mCallCertifyListener.onCancelWord();
         mCallCertifyListener.onCertifyViewFinish();
+        mWordCheckChallenge = null;
+        resetBulletsView();
     }
 
     private void onConfirmClick() {
@@ -524,5 +527,23 @@ public class CallCertifyView extends PercentRelativeLayout  {
             mBulletFiveView.setBorder(4, Color.WHITE);
             mBulletFiveView.setColor(Color.WHITE);
         }
+    }
+
+    private void resetBulletsView() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "resetBulletsView");
+        }
+
+        mBulletTwoView.setBorder(4, Color.argb(122, 255, 255, 255));
+        mBulletTwoView.setColor(Color.TRANSPARENT);
+
+        mBulletThreeView.setBorder(4, Color.argb(122, 255, 255, 255));
+        mBulletThreeView.setColor(Color.TRANSPARENT);
+
+        mBulletFourView.setBorder(4, Color.argb(122, 255, 255, 255));
+        mBulletFourView.setColor(Color.TRANSPARENT);
+
+        mBulletFiveView.setBorder(4, Color.argb(122, 255, 255, 255));
+        mBulletFiveView.setColor(Color.TRANSPARENT);
     }
 }

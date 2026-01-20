@@ -82,6 +82,7 @@
     <string name="application_permission_camera">新しい写真またはビデオを撮影するには、カメラへのアクセス許可が必要です。</string>
     <string name="application_permission_scan_code">QRコードをスキャンするには、カメラへのアクセス許可が必要です。</string>
     <string name="application_photo_gallery">フォトアルバム</string>
+    <string name="application_processing_please_wait">処理中…お待ちください。</string>
     <string name="application_profile">プロフィール</string>
     <string name="application_profile_avatar_not_defined">このプロフィールで招待した連絡先に見せる、あなたの画像を入力する必要があります。</string>
     <string name="application_profile_name_not_defined">このプロフィールで招待した連絡先に見せる、あなたの名前を決める必要があります。</string>

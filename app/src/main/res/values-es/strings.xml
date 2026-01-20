@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Se requiere permiso para acceder a la cámara para tomar una nueva foto o video.</string>
     <string name="application_permission_scan_code">Se necesita permiso para acceder a la cámara para escanear un código QR.</string>
     <string name="application_photo_gallery">Álbumes de fotos</string>
+    <string name="application_processing_please_wait">Procesando… Por favor espere.</string>
     <string name="application_profile">Perfil</string>
     <string name="application_profile_avatar_not_defined">Debes introducir la imagen que te represente para los contactos que invites con este perfil.</string>
     <string name="application_profile_name_not_defined">Debes definir el nombre que te represente para los contactos que invites con este perfil.</string>

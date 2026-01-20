@@ -82,6 +82,7 @@
     <string name="application_permission_camera">اجازه دسترسی به دوربین برای گرفتن عکس یا فیلم جدید لازم است.</string>
     <string name="application_permission_scan_code">مجوز دسترسی به دوربین برای اسکن کد QR لازم است.</string>
     <string name="application_photo_gallery">آلبومهای عکس</string>
+    <string name="application_processing_please_wait">در حال پردازش… لطفا صبر کنید.</string>
     <string name="application_profile">مشخصات</string>
     <string name="application_profile_avatar_not_defined">باید تصویری را که هویت شما را به مخاطبینی که با این پروفایل دعوت میکنید نشان میدهد٬ وارد کنید.</string>
     <string name="application_profile_name_not_defined">باید نامی را که هویت شما را به مخاطبینی که با این پروفایل دعوت میکنید نشان میدهد٬ تعریف کنید.</string>

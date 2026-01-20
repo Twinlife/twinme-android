@@ -30,15 +30,18 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
+import androidx.core.content.FileProvider;
 import androidx.media3.common.util.UnstableApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService.ErrorCode;
 import org.twinlife.twinlife.ImageService;
+import org.twinlife.twinlife.Twinlife;
 import org.twinlife.twinme.models.CertificationLevel;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
@@ -91,6 +94,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
     private ActivityResultLauncher<PickVisualMediaRequest> mMediaPicker;
 
     private int mCountFiles = 0;
+    private String mApplicationFileUri;
 
     //
     // Override TwinmeActivityImpl methods
@@ -110,6 +114,12 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         mInitMessage = intent.getStringExtra(Intents.INTENT_TEXT_MESSAGE);
 
         mIsQualityMediaOriginal = getTwinmeApplication().qualityMedia() == TwinmeApplication.QualityMedia.ORIGINAL.ordinal();
+
+        // Get our application URI prefix so that `importFile()` can recognize our file and avoid a copy by using the direct file access.
+        // This only concerns media files created by `takePhoto()` and `takeVideo()` from ConversationActivity.
+        File dir = new File(getFilesDir(), Twinlife.TMP_DIR + "/t.jpg");
+        mApplicationFileUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".fileprovider", dir).toString();
+        mApplicationFileUri = mApplicationFileUri.substring(0, mApplicationFileUri.lastIndexOf('/'));
 
         initViews();
 
@@ -259,8 +269,8 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         long totalSize = 0;
 
         for (FileInfo fileInfo : mFiles) {
-            if (fileInfo.getSize() != null) {
-                totalSize += Long.parseLong(fileInfo.getSize());
+            if (fileInfo.getSize() > 0) {
+                totalSize += fileInfo.getSize();
             }
         }
 
@@ -453,11 +463,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         for (FileInfo fileInfo : files) {
             // If there is a previous picture file, remove it to cleanup the file system.
             if (fileInfo.isFile()) {
-                String oldPath = fileInfo.getPath();
-                if (oldPath != null) {
-                    File toDelete = new File(oldPath);
-                    toDelete.delete();
-                }
+                fileInfo.removeFile();
             }
         }
 
@@ -474,11 +480,18 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         runOnUiThread(this::allFilesCopied);
 
         final Context context = getApplicationContext();
+
+        // If the file is provided by our own file provider, it is located in the tmp directory and we can access it directly.
+        // We can avoid an expensive copy if the media is a video for example.
+        if (uri.toString().startsWith(mApplicationFileUri)) {
+            uri = Uri.fromFile(new File(new File(context.getFilesDir(), Twinlife.TMP_DIR), uri.toString().substring(mApplicationFileUri.length())));
+        }
         final FileInfo fileInfo = new FileInfo(context, uri);
 
         final FileInfo copy;
-        if (uri.getPath() != null && uri.getPath().startsWith(getApplicationContext().getCacheDir().getAbsolutePath())) {
-            // File already copied, see ShareActivity.importFiles()
+        if (fileInfo.isFile()) {
+            // File already copied, see ShareActivity.importFiles() or file was saved in TMP_DIR,
+            // see ConversationActivity.takePhoto() and takeVideo(), for the video we avoid a big file copy!
             copy = fileInfo;
         } else if (fileInfo.isImage() || fileInfo.isVideo()) {
             copy = fileInfo.saveMedia(context, TwinmeApplication.QualityMedia.ORIGINAL.ordinal());
@@ -525,6 +538,8 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         if (DEBUG) {
             Log.d(LOG_TAG, "showError");
         }
+
+        hideKeyboard();
 
         ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
@@ -644,6 +659,21 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         if (mCountFiles == 0) {
             mOverlayView.setVisibility(View.GONE);
             mProgressBarView.setVisibility(View.GONE);
+
+            mPreviewStartWithMedia = true;
+
+            for (FileInfo fileInfo : mFiles) {
+                if (!fileInfo.isImage() && !fileInfo.isVideo()) {
+                    mPreviewStartWithMedia = false;
+                    break;
+                }
+            }
+
+            if (mPreviewStartWithMedia) {
+                mQualityView.setVisibility(View.VISIBLE);
+            } else {
+                mQualityView.setVisibility(View.GONE);
+            }
         } else {
             mOverlayView.setVisibility(View.VISIBLE);
             mProgressBarView.setVisibility(View.VISIBLE);

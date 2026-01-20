@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Yeni bir fotoğraf veya video çekmek için kameraya erişim izni gerekir.</string>
     <string name="application_permission_scan_code">QR kodunu taramak için kameraya erişim izni gereklidir.</string>
     <string name="application_photo_gallery">Fotoğraf albümleri</string>
+    <string name="application_processing_please_wait">İşlem devam ediyor… Lütfen bekleyin.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Bu profille davet ettiğiniz kişilere sizi temsil eden görüntüyü göndermelisiniz.</string>
     <string name="application_profile_name_not_defined">Bu profille davet ettiğiniz kişilere sizi temsil eden adı tanımlamalısınız.</string>

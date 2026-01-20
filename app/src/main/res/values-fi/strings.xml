@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Uuden valokuvan tai videon ottaminen edellyttää lupaa käyttää kameraa.</string>
     <string name="application_permission_scan_code">QR-koodin skannaamiseen tarvitaan lupa käyttää kameraa.</string>
     <string name="application_photo_gallery">Kuva-albumit</string>
+    <string name="application_processing_please_wait">Käsitellään… Odota hetki.</string>
     <string name="application_profile">Profiili</string>
     <string name="application_profile_avatar_not_defined">Profiilikuvaa ei ole määritelty</string>
     <string name="application_profile_name_not_defined">Profiilinimeäsi ei ole määritetty</string>

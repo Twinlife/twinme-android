@@ -81,6 +81,7 @@
     <string name="application_permission_camera">Aby zrobić nowe zdjęcie lub nagrać film, wymagane jest zezwolenie na dostęp do aparatu.</string>
     <string name="application_permission_scan_code">Aby zeskanować kod QR, konieczne jest zezwolenie na dostęp do kamery.</string>
     <string name="application_photo_gallery">Foto albumy</string>
+    <string name="application_processing_please_wait">Przetwarzanie… Proszę czekać.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Musisz wprowadzić obraz, który reprezentuje Cię do kontaktów, które zapraszasz za pomocą tego profilu.</string>
     <string name="application_profile_name_not_defined">Musisz zdefiniować nazwę, która będzie Cię reprezentować w kontaktach zapraszanych za pomocą tego profilu.</string>

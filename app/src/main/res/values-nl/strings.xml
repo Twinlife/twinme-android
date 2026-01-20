@@ -82,6 +82,7 @@
     <string name="application_permission_camera">Toestemming voor toegang tot de camera is vereist om een nieuwe foto of video te maken.</string>
     <string name="application_permission_scan_code">Toestemming voor toegang tot de camera is vereist om een QR-code te scannen.</string>
     <string name="application_photo_gallery">Fotoalbums</string>
+    <string name="application_processing_please_wait">Bezig met verwerken… Even geduld alstublieft.</string>
     <string name="application_profile">Profiel</string>
     <string name="application_profile_avatar_not_defined">U moet de afbeelding invoeren die u vertegenwoordigt bij de contacten die u met dit profiel uitnodigt.</string>
     <string name="application_profile_name_not_defined">U moet de naam definiëren die u vertegenwoordigt bij de contacten die u met dit profiel uitnodigt.</string>

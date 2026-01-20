@@ -81,6 +81,7 @@
     <string name="application_permission_camera">Izin untuk mengakses kamera diperlukan untuk mengambil foto atau video baru.</string>
     <string name="application_permission_scan_code">Izin untuk mengakses kamera diperlukan untuk memindai kode QR.</string>
     <string name="application_photo_gallery">Album foto</string>
+    <string name="application_processing_please_wait">Sedang diproses… Mohon tunggu.</string>
     <string name="application_profile">Profil</string>
     <string name="application_profile_avatar_not_defined">Anda harus memasukkan gambar yang mewakili Anda ke kontak yang Anda undang dengan profil ini.</string>
     <string name="application_profile_name_not_defined">Anda harus membuat nama yang mewakili Anda ke kontak yang Anda undang dengan profil ini.</string>

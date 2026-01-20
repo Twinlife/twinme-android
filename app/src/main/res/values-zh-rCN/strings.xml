@@ -82,6 +82,7 @@
     <string name="application_permission_camera">需要使用相机的权限才能拍摄新照片或视频。</string>
     <string name="application_permission_scan_code">要扫描QR码，必须具有访问相机的权限。</string>
     <string name="application_photo_gallery">相册</string>
+    <string name="application_processing_please_wait">正在处理……请稍候。</string>
     <string name="application_profile">个人资料</string>
     <string name="application_profile_avatar_not_defined">您需要在个人资料中输入一个对于您邀请的联系人来说代表您的图像</string>
     <string name="application_profile_name_not_defined">您需要在个人资料中定义一个对于您邀请的联系人来说代表您的名称。</string>

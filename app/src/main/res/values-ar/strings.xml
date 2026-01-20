@@ -82,6 +82,7 @@
     <string name="application_permission_camera">مطلوب إذن للوصول إلى الكاميرا لالتقاط صورة جديدة أو مقطع فيديو.</string>
     <string name="application_permission_scan_code">إذن الوصول إلى الكاميرا ضروري لمسح رمز الاستجابة السريعة ضوئيًا.</string>
     <string name="application_photo_gallery">ألبومات الصور</string>
+    <string name="application_processing_please_wait">جارٍ المعالجة... يرجى الانتظار.</string>
     <string name="application_profile">مظهر جانبي</string>
     <string name="application_profile_avatar_not_defined">يتعين عليك إدخال صورة تمثلك لجهات الاتصال التي تدعوها باستخدام هذه الصفحة الشخصية.</string>
     <string name="application_profile_name_not_defined">يتعين عليك تحديد اسم يمثلك لجهات الاتصال التي تدعوها باستخدام هذه الصفحة الشخصية.</string>

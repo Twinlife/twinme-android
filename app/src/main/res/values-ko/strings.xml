@@ -82,6 +82,7 @@
     <string name="application_permission_camera">새로운 사진이나 동영상을 찍으려면 카메라 접근 권한이 필요합니다.</string>
     <string name="application_permission_scan_code">QR 코드를 스캔하려면 카메라 액세스 권한이 필요합니다.</string>
     <string name="application_photo_gallery">사진 앨범</string>
+    <string name="application_processing_please_wait">처리 중입니다… 잠시 기다려 주세요.</string>
     <string name="application_profile">프로필</string>
     <string name="application_profile_avatar_not_defined">이 프로필로 초대할 상대에게 표시할 이미지를 입력해야 합니다.</string>
     <string name="application_profile_name_not_defined">이 프로필로 초대할 상대에게 표시할 이름을 정해야 합니다.</string>

@@ -339,6 +339,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onSendClick");
         }
 
+        hideKeyboard();
+
         if (!mAllowCopy && !mPreviewStartWithMedia) {
 
             ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
@@ -460,6 +462,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onQualityClick");
         }
 
+        hideKeyboard();
+
         ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
         MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
@@ -488,7 +492,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
         });
 
         viewGroup.addView(menuSelectValueView);
-        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.QUALITY_MEDIA);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.QUALITY_MEDIA, mIsQualityMediaOriginal ? TwinmeApplication.QualityMedia.ORIGINAL.ordinal() : TwinmeApplication.QualityMedia.STANDARD.ordinal());
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Color.BLACK);
         setStatusBarColor(color, Color.rgb(72,72,72));
@@ -498,6 +502,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
         if (DEBUG) {
             Log.d(LOG_TAG, "onPremiumFeatureClick");
         }
+
+        hideKeyboard();
 
         ViewGroup viewGroup = findViewById(R.id.preview_activity_layout);
 
@@ -539,7 +545,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
         setStatusBarColor(color, Color.rgb(72,72,72));
     }
 
-    private void hideKeyboard() {
+    protected void hideKeyboard() {
         if (DEBUG) {
             Log.d(LOG_TAG, "hideKeyboard");
         }

@@ -80,6 +80,7 @@
     <string name="application_permission_camera">Дозвіл на доступ до камери потрібен для зйомки нового фото чи відео.</string>
     <string name="application_permission_scan_code">Щоб відсканувати QR-код, потрібен дозвіл на доступ до камери.</string>
     <string name="application_photo_gallery">Фотоальбоми</string>
+    <string name="application_processing_please_wait">Обробка… Зачекайте.</string>
     <string name="application_profile">Профіль</string>
     <string name="application_profile_avatar_not_defined">Встановіть зображення, яке представлятиме вас контактам, яких ви запросите за допомогою цього профілю.</string>
     <string name="application_profile_name_not_defined">Встановіть ім’я, яке представлятиме вас контактам, яких ви запросите за допомогою цього профілю.</string>
