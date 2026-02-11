@@ -488,6 +488,7 @@
     <string name="conversations_fragment_you">Ви</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Строк дії посилання</string>
     <string name="create_external_call_activity_message">Введіть назву, зображення та опис теми виклику.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">«Click-to-call» дозволяє гостям дзвонити вам з браузера, не встановлюючи додаток.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Кожен екземпляр має ім’я, зображення та опис, що представляє тему виклику, наприклад:</string>

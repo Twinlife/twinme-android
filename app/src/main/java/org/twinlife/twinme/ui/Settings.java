@@ -104,6 +104,9 @@ public class Settings {
     public static final InternalBooleanConfig showTransferCallOnboarding = new InternalBooleanConfig("settings_activity_show_transfer_call_onboarding", true);
     public static final InternalBooleanConfig showProxyOnboarding = new InternalBooleanConfig("settings_activity_show_proxy_onboarding", true);
 
+    public static final InternalBooleanConfig showWarningBackgroundLocation = new InternalBooleanConfig("settings_activity_show_warning_location_background", true);
+    public static final InternalBooleanConfig showWarningExactLocation = new InternalBooleanConfig("settings_activity_show_warning_exact_location", true);
+
     public static final InternalBooleanConfig showWarningEditMessage = new InternalBooleanConfig("settings_activity_show_warning_edit_message", true);
     public static final InternalLongConfig lastShowEnableNotificationScreen = new InternalLongConfig("settings_activity_last_show_enable_notifications_screen", 0);
 

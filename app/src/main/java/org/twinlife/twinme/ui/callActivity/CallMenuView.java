@@ -22,11 +22,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.audio.AudioDevice;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.RoundedView;
 
@@ -116,11 +118,14 @@ public class CallMenuView extends PercentRelativeLayout {
     private ImageView mMicroMuteImageView;
     private ImageView mCameraMuteImageView;
     private ImageView mSpeakerImageView;
+    private View mPauseView;
     private ImageView mPauseImageView;
     private ImageView mLocationImageView;
     private ImageView mCameraControlImageView;
     private CallMenuViewState mCallMenuViewState = CallMenuViewState.DEFAULT;
 
+    @Nullable
+    private CallStatus mCallStatus;
     private boolean mIsInCall = false;
     private boolean mIsAudioMuted = false;
     private boolean mIsSpeakerOn = false;
@@ -177,6 +182,14 @@ public class CallMenuView extends PercentRelativeLayout {
         }
 
         return mCallMenuViewState;
+    }
+
+    public void setCallStatus(CallStatus callStatus) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setCallStatus: " + callStatus);
+        }
+
+        mCallStatus = callStatus;
     }
 
     public void setIsInCall(boolean isInCall) {
@@ -383,6 +396,12 @@ public class CallMenuView extends PercentRelativeLayout {
             layoutParams.width = (int) (DESIGN_ICON_PAUSE_CALL_HEIGHT * Design.HEIGHT_RATIO);
         }
 
+        if (mIsInCall || (mCallStatus != null && mCallStatus.isOnHold())) {
+            mPauseView.setAlpha(1.0f);
+        } else {
+            mPauseView.setAlpha(0.5f);
+        }
+
         if (mIsVideoAllowed && mIsInCall) {
             mCameraMuteView.setAlpha(1.0f);
         } else {
@@ -584,18 +603,17 @@ public class CallMenuView extends PercentRelativeLayout {
         mSpeakerImageView = findViewById(R.id.call_activity_speaker_on_image_view);
         mSpeakerImageView.setColorFilter(Color.BLACK);
 
-        View pauseView = findViewById(R.id.call_activity_pause_view);
-        pauseView.setOnClickListener(v -> onPauseClick());
+        mPauseView = findViewById(R.id.call_activity_pause_view);
+        mPauseView.setOnClickListener(v -> onPauseClick());
 
-        layoutParams = pauseView.getLayoutParams();
+        layoutParams = mPauseView.getLayoutParams();
         layoutParams.height = BUTTON_HEIGHT;
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) pauseView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mPauseView.getLayoutParams();
         marginLayoutParams.leftMargin = MARGIN_ACTION_BUTTON;
         marginLayoutParams.rightMargin = MARGIN_ACTION_BUTTON;
         marginLayoutParams.setMarginStart(MARGIN_ACTION_BUTTON);
         marginLayoutParams.setMarginEnd(MARGIN_ACTION_BUTTON);
-
 
         RoundedView pauseBackgroundView = findViewById(R.id.call_activity_pause_background_view);
         pauseBackgroundView.setColor(Color.WHITE);

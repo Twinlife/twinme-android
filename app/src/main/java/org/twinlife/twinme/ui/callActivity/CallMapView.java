@@ -54,6 +54,7 @@ import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
@@ -293,15 +294,16 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
         mCanShareBackgroundLocation = canShareBackgroundLocation;
 
-        if (mCanShareLocation && !mCanShareBackgroundLocation && !mShowBackgroundLocationAlert) {
+        if (mCanShareLocation && !mCanShareBackgroundLocation && !mShowBackgroundLocationAlert && callActivity.getTwinmeApplication().startWarningLocationBackground()) {
             mShowBackgroundLocationAlert = true;
             ViewGroup viewGroup = callActivity.findViewById(R.id.call_activity_view);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
             defaultConfirmView.setForceDarkMode(true);
-            defaultConfirmView.setTitle(callActivity.getString(R.string.application_authorization_go_settings));
+            defaultConfirmView.setTitle(callActivity.getString(R.string.call_activity_location_share));
             defaultConfirmView.setMessage(callActivity.getString(R.string.call_activity_location_background_warning));
             defaultConfirmView.setImage(null);
-            defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_yes));
+            defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_authorization_go_settings));
+            defaultConfirmView.setCancelTitle(callActivity.getString(R.string.application_do_not_display));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -312,6 +314,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
                 @Override
                 public void onCancelClick() {
                     defaultConfirmView.animationCloseConfirmView();
+                    callActivity.getTwinmeApplication().setShowWarningLocationBackground(false);
                 }
 
                 @Override
@@ -341,7 +344,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
         mCanShareExactLocation = canShareExactLocation;
 
-        if (mCanShareLocation && !mCanShareExactLocation && !mShowExactLocationAlert && !mShowBackgroundLocationAlert) {
+        if (mCanShareLocation && !mCanShareExactLocation && !mShowExactLocationAlert && !mShowBackgroundLocationAlert && callActivity.getTwinmeApplication().startWarningLocationExact()) {
             mShowExactLocationAlert = true;
 
             ViewGroup viewGroup = callActivity.findViewById(R.id.call_activity_view);
@@ -349,10 +352,11 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
             mCardView.setVisibility(View.GONE);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
             defaultConfirmView.setForceDarkMode(true);
-            defaultConfirmView.setTitle(callActivity.getString(R.string.application_authorization_go_settings));
+            defaultConfirmView.setTitle(callActivity.getString(R.string.call_activity_location_share));
             defaultConfirmView.setMessage(callActivity.getString(R.string.call_activity_location_exact_warning));
             defaultConfirmView.setImage(null);
-            defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_yes));
+            defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_authorization_go_settings));
+            defaultConfirmView.setCancelTitle(callActivity.getString(R.string.application_do_not_display));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -363,6 +367,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
                 @Override
                 public void onCancelClick() {
                     defaultConfirmView.animationCloseConfirmView();
+                    callActivity.getTwinmeApplication().setShowWarningLocationExact(false);
                 }
 
                 @Override

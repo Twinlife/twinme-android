@@ -487,6 +487,7 @@
     <string name="conversations_fragment_you">את</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">תוקף קישור</string>
     <string name="create_external_call_activity_message">הזן את השם, התמונה והתיאור של נושא השיחה.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call מאפשר לאורחים להתקשר אליך מדפדפן מבלי להתקין את האפליקציה.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">לכל מופע יש שם, תמונה ותיאור, המייצגים את נושא השיחה, כגון:</string>

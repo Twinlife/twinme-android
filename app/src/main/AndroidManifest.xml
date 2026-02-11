@@ -255,7 +255,6 @@
         <activity
             android:name="org.twinlife.twinme.ui.conversationFilesActivity.FullscreenMediaActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="sensor"
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity

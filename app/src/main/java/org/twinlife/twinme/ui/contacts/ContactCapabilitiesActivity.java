@@ -30,6 +30,7 @@ import org.twinlife.twinme.models.Capabilities;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.models.schedule.Date;
+import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
@@ -46,6 +47,7 @@ import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity implements EditContactCapabilitiesService.Observer, MenuSelectValueView.Observer {
@@ -231,6 +233,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         }
 
         boolean scheduleUpdated;
+        checkDate();
 
         if (!mScheduleEnable) {
             scheduleUpdated = mCapabilities.getSchedule() != null && mCapabilities.getSchedule().isEnabled();
@@ -593,5 +596,26 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void checkDate() {
+        if(DEBUG) {
+            Log.d(LOG_TAG, "checkDate");
+        }
+
+        if (mScheduleStartDate == null || mScheduleStartTime == null || mScheduleEndDate == null || mScheduleEndTime == null) {
+            return;
+        }
+
+        final Calendar startCalendar = new DateTime(mScheduleStartDate, mScheduleStartTime).toCalendar(TimeZone.getDefault());
+        final Calendar endCalendar = new DateTime(mScheduleEndDate, mScheduleEndTime).toCalendar(TimeZone.getDefault());
+
+        if (startCalendar.after(endCalendar)) {
+            endCalendar.setTimeInMillis(startCalendar.getTimeInMillis());
+            endCalendar.add(Calendar.HOUR_OF_DAY, 1);
+
+            mScheduleEndDate = Date.from(endCalendar);
+            mScheduleEndTime = Time.from(endCalendar);
+        }
     }
 }

@@ -488,6 +488,7 @@
     <string name="conversations_fragment_you">Kamu</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Validitas tautan</string>
     <string name="create_external_call_activity_message">Masukkan nama, gambar dan deskripsi subjek panggilan.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call memungkinkan tamu menelepon Anda dari browser tanpa menginstal aplikasi.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Setiap instance memiliki nama, gambar, dan deskripsi, yang mewakili subjek panggilan, seperti:</string>

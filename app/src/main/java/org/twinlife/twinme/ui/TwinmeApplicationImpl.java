@@ -1702,6 +1702,30 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public boolean startWarningLocationBackground() {
+
+        return Settings.showWarningBackgroundLocation.getBoolean();
+    }
+
+    @Override
+    public void setShowWarningLocationBackground(boolean show) {
+
+        Settings.showWarningBackgroundLocation.setBoolean(show).save();
+    }
+
+    @Override
+    public boolean startWarningLocationExact() {
+
+        return Settings.showWarningExactLocation.getBoolean();
+    }
+
+    @Override
+    public void setShowWarningLocationExact(boolean show) {
+
+        Settings.showWarningExactLocation.setBoolean(show).save();
+    }
+
+    @Override
     public boolean startWarningEditMessage() {
 
         return Settings.showWarningEditMessage.getBoolean();

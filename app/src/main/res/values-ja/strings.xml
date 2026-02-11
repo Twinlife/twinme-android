@@ -489,6 +489,7 @@
     <string name="conversations_fragment_you">君</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">リンクの有効期限</string>
     <string name="create_external_call_activity_message">通話件名の名前、画像、説明を入力します。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">「Click-to-call」では、ゲストはアプリケーションをインストールしなくてもブラウザから電話をかけることができます。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">各インスタンスには、通話の件名を表す名前、画像、説明が含まれます。たとえば、次のとおりです。</string>

@@ -489,6 +489,7 @@
     <string name="conversations_fragment_you">Sen</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Bağlantı Geçerliliği</string>
     <string name="create_external_call_activity_message">Çağrı konusunun adını, resmini ve açıklamasını girin.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\", konukların uygulamayı yüklemeden sizi bir tarayıcıdan aramasına olanak tanır.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Her örneğin, çağrının konusunu temsil eden bir adı, resmi ve açıklaması vardır; örneğin:</string>

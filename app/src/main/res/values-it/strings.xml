@@ -489,6 +489,7 @@
     <string name="conversations_fragment_you">voi</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Validità del link</string>
     <string name="create_external_call_activity_message">Inserisci il nome, l’immagine e la descrizione dell’oggetto della chiamata.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call consente agli ospiti di chiamarti da un browser senza installare l’applicazione.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Ogni istanza ha un nome, un’immagine e una descrizione, che rappresentano l’oggetto della chiamata, come ad esempio:</string>

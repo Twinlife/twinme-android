@@ -489,6 +489,7 @@
     <string name="conversations_fragment_you">شما</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">اعتبار لینک</string>
     <string name="create_external_call_activity_message">نام، تصویر و توضیحات موضوع تماس را وارد کنید.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" به مهمانان اجازه می دهد تا بدون نصب برنامه از طریق مرورگر با شما تماس بگیرند.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">هر نمونه دارای نام، تصویر و توضیحاتی است که نشان دهنده موضوع تماس است، مانند:</string>

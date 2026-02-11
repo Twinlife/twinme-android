@@ -489,6 +489,7 @@
     <string name="conversations_fragment_you">Sinä</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Linkin voimassaolo</string>
     <string name="create_external_call_activity_message">Anna puhelun aiheen nimi, kuva ja kuvaus.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call -toiminnon avulla vieraat voivat soittaa sinulle selaimesta asentamatta sovellusta.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Jokaisella esiintymällä on nimi, kuva ja kuvaus, jotka edustavat puhelun aihetta, kuten:</string>
