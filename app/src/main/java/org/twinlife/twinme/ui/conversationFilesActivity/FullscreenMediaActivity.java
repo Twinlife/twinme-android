@@ -286,7 +286,9 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
             Log.d(LOG_TAG, "onMarkDescriptorDeleted: " + descriptor);
         }
 
+        int indexToRemove = -1;
         for (Item item : mItems) {
+            indexToRemove++;
             if (item.getDescriptorId().equals(descriptor.getDescriptorId())) {
                 mItems.remove(item);
                 break;
@@ -296,7 +298,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         if (mItems.isEmpty()) {
             finish();
         } else {
-            mFullscreenMediaAdapter.setItems(mItems);
+            mFullscreenMediaAdapter.removeItem(indexToRemove);
         }
     }
 
@@ -306,12 +308,15 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
             Log.d(LOG_TAG, "onDeleteDescriptors: " + descriptorList);
         }
 
+        int indexToRemove = -1;
         Iterator<Item> iterator = mItems.iterator();
         while (iterator.hasNext()) {
+            indexToRemove++;
             Item item = iterator.next();
             ConversationService.DescriptorId descriptorId = item.getDescriptorId();
             if (descriptorList.remove(descriptorId)) {
                 iterator.remove();
+                mFullscreenMediaAdapter.removeItem(indexToRemove);
                 if (descriptorList.isEmpty()) {
                     break;
                 }
@@ -320,8 +325,6 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
 
         if (mItems.isEmpty()) {
             finish();
-        } else {
-            mFullscreenMediaAdapter.setItems(mItems);
         }
     }
 

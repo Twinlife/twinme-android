@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">你</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">連結有效期限</string>
     <string name="create_external_call_activity_message">此個人資料將顯示給將通過此“click-to-call”鏈接呼叫您的客人。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">「點擊通話」允許客人透過瀏覽器給您打電話，而無需安裝應用程式。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">每個實例都有一個名稱、一個圖像和一個描述，代表調用的主題，例如：</string>

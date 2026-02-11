@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">आप</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">लिंक वैलिडिटी</string>
     <string name="create_external_call_activity_message">यह प्रोफ़ाइल उन मेहमानों को प्रदर्शित की जाती है जो आपको इस \"click-to-call\" लिंक के साथ कॉल करेंगे।</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call मेहमानों को एप्लिकेशन इंस्टॉल किए बिना ब्राउज़र से आपको कॉल करने की अनुमति देता है।</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">प्रत्येक उदाहरण में एक नाम, छवि और विवरण होता है, जो कॉल के विषय का प्रतिनिधित्व करता है, जैसे:</string>

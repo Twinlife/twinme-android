@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2015-2025 twinlife SA.
+ *  Copyright (c) 2015-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -1481,13 +1481,22 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         if (discreet) {
             callerName = mApplication.getResources().getString(R.string.calls_fragment_incoming_call);
-            callerShortcutId = null;
             avatar = mTwinmeApplication.getAnonymousAvatar();
+            callerShortcutId = null;
         } else {
-            callerName = originator.getType() == Originator.Type.GROUP_MEMBER ? ((GroupMember) originator).getGroup().getName() : originator.getName();
-            callerShortcutId = originator.getType() == Originator.Type.GROUP_MEMBER ? ((GroupMember) originator).getGroup().getShortcutId() : originator.getShortcutId();
-            if (avatar == null) {
-                avatar = originator.getType() == Originator.Type.GROUP_MEMBER ? getAvatar(((GroupMember) originator).getGroup()) : getAvatar(originator);
+            if (originator.getType() == Originator.Type.GROUP_MEMBER) {
+                Originator group = ((GroupMember) originator).getGroup();
+                callerName = group.getName() + "/" + originator.getName();
+                if (avatar == null) {
+                    avatar = getAvatar(group);
+                }
+                callerShortcutId = group.getShortcutId();
+            } else {
+                callerName = originator.getName();
+                if (avatar == null) {
+                    avatar = getAvatar(originator);
+                }
+                callerShortcutId = originator.getShortcutId();
             }
         }
         String calleeName = originator.getIdentityName();

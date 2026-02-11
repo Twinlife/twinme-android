@@ -11,6 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <View
+        android:id="@+id/transfer_call_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/transfer_call_activity_tool_bar"/>
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/transfer_call_activity_invitation_view"
         android:layout_width="match_parent"
@@ -18,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/transfer_call_activity_tool_bar"
         app:layout_widthPercent="85.33%"
-        app:layout_heightPercent="59.97%"
+        app:layout_heightPercent="54.97%"
         app:layout_marginTopPercent="7.49%">
 
         <androidx.percentlayout.widget.PercentRelativeLayout

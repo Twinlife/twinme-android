@@ -2678,6 +2678,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mNoParticipantView.setVisibility(View.VISIBLE);
         }
 
+        mCallMenuView.setCallStatus(mMode);
         mCallMenuView.setIsInCall(CallStatus.isActive(mMode));
         if (!mVideo && !CallStatus.isActive(mMode)) {
             mIsCameraMute = true;
@@ -3095,6 +3096,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private void onCallPauseClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onCallPauseClick");
+        }
+
+        if (mMode == null || (!CallStatus.isActive(mMode) && !mMode.isOnHold())) {
+            return;
         }
 
         Intent intent = new Intent(this, CallService.class);

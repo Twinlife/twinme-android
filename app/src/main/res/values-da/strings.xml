@@ -468,6 +468,7 @@
     <string name="conversations_fragment_you">Du</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Linkgyldighed</string>
     <string name="create_external_call_activity_message">Denne profil vises til gæster, som vil ringe til dig med dette \"click-to-call\"-link.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call giver gæster mulighed for at ringe til dig fra en browser uden at skulle installere applikationen.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Hver forekomst har et navn, billede og beskrivelse, der repræsenterer emnet for opkaldet, såsom:</string>

@@ -464,6 +464,7 @@
     <string name="conversations_fragment_you">Bạn</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Thời hạn hiệu lực của liên kết</string>
     <string name="create_external_call_activity_message">Nhập tên, hình ảnh và mô tả cho chủ đề cuộc gọi.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">\"Nhấn để gọi\" cho phép khách gọi cho bạn từ trình duyệt mà không cần cài đặt ứng dụng.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Mỗi phiên bản có tên, hình ảnh và mô tả đại diện cho chủ đề cuộc gọi, ví dụ:</string>

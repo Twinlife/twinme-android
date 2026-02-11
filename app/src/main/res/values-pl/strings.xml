@@ -468,6 +468,7 @@
     <string name="conversations_fragment_you">Ty</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Ważność łącza</string>
     <string name="create_external_call_activity_message">Ten profil jest wyświetlany gościom, którzy zadzwonią do Ciebie za pomocą linku „click-to-call”.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">„Click-to-call” umożliwia gościom dzwonienie do Ciebie z przeglądarki bez konieczności instalowania aplikacji.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Każda instancja ma nazwę, obraz i opis reprezentujący temat połączenia, taki jak:</string>

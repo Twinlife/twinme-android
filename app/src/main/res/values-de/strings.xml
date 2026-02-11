@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">Sie</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Gültigkeit des Links</string>
     <string name="create_external_call_activity_message">Dieses Profil wird Gästen angezeigt, die Sie über diesen „Click-to-Call“-Link anrufen.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Mit „Click-to-Call“ können Gäste Sie über einen Browser anrufen, ohne die Anwendung installieren zu müssen.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Jede Instanz verfügt über einen Namen, ein Bild und eine Beschreibung, die den Betreff des Anrufs darstellen, z. B.:</string>

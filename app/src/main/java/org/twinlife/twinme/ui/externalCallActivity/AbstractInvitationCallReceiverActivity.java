@@ -14,7 +14,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,9 +31,16 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.models.CallReceiver;
+import org.twinlife.twinme.models.Capabilities;
+import org.twinlife.twinme.models.schedule.Date;
+import org.twinlife.twinme.models.schedule.DateTime;
+import org.twinlife.twinme.models.schedule.DateTimeRange;
+import org.twinlife.twinme.models.schedule.Schedule;
+import org.twinlife.twinme.models.schedule.Time;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -42,13 +51,21 @@ import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.ClickToCallView;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.EnumMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivity implements CallReceiverService.Observer {
@@ -93,6 +110,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
     protected CallReceiverService mCallReceiverService;
     protected TwincodeURI mInvitationLink;
     protected Bitmap mAvatar;
+    protected String mScheduleMessage;
 
     //
     // Override TwinmeActivityImpl methods
@@ -332,7 +350,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         if (twincodeOutboundId == null) {
             return;
         }
-
+        mScheduleMessage = null;
         File file = new File(getExternalCacheDir() + "/qrcode.png");
         try {
             FileOutputStream outStream = new FileOutputStream(file);
@@ -345,10 +363,11 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
             Log.e(LOG_TAG, "Cannot save QR-code: " + e.getMessage());
         }
 
+        File icsFile = generateFileICS();
+
         String name = callReceiverName.replace('.', '\u2024').replace(':', '\u02d0');
         Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("text/plain");
+
         String subject;
         if (mCallReceiver.isTransfer()) {
             subject = getString(R.string.premium_services_activity_transfert_title);
@@ -357,15 +376,37 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         }
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
+        ArrayList<Uri> uris = new ArrayList<>();
+
         if (file != null) {
-            Uri uri = NamedFileProvider.getInstance().getUriForFile(this, file, name + "-QR-code.png");
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.setDataAndType(uri, "image/png");
-            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            Uri uriCode = NamedFileProvider.getInstance().getUriForFile(this, file, name + "-QR-code.png");
+            uris.add(uriCode);
+        }
+
+        if (icsFile != null) {
+            String formatDate = "yyMMdd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+            Uri uriSchedule = NamedFileProvider.getInstance().getUriForFile(this, icsFile, "twinme_call" + "-" + simpleDateFormat.format(new java.util.Date()) + ".ics");
+            uris.add(uriSchedule);
+        }
+
+        if (!uris.isEmpty()) {
+            intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+            intent.setType("*/*");
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            intent.setType("text/plain");
+            intent.setAction(Intent.ACTION_SEND);
         }
 
         String message = String.format(getString(R.string.invitation_call_activity_invite_message),
                 mInvitationLink.uri, name);
+
+        if (mScheduleMessage != null) {
+            message += mScheduleMessage;
+        }
+
         intent.putExtra(Intent.EXTRA_TEXT, message);
         startActivity(Intent.createChooser(intent, null));
     }
@@ -480,5 +521,101 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         resetInvitationConfirmView.setObserver(observer);
         viewGroup.addView(resetInvitationConfirmView);
         resetInvitationConfirmView.show();
+    }
+
+    @Nullable
+    private File generateFileICS() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "generateFileICS");
+        }
+
+        Capabilities capabilities = mCallReceiver.getCapabilities();
+
+        final Schedule schedule = capabilities.getSchedule();
+        if (schedule != null && schedule.isEnabled()) {
+
+            if (!schedule.getTimeRanges().isEmpty()) {
+
+                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                Date scheduleStartDate = dateTimeRange.start.date;
+                Time scheduleStartTime = dateTimeRange.start.time;
+                Date scheduleEndDate = dateTimeRange.end.date;
+                Time ScheduleEndTime = dateTimeRange.end.time;
+
+                final Calendar startCalendar = new DateTime(scheduleStartDate, scheduleStartTime).toCalendar(TimeZone.getDefault());
+                final Calendar endCalendar = new DateTime(scheduleEndDate, ScheduleEndTime).toCalendar(TimeZone.getDefault());
+
+                String formatDate = "yyyyMMdd'T'HHmmss'Z'";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("BEGIN:VCALENDAR\n");
+                stringBuilder.append("PRODID:");
+                stringBuilder.append(getString(R.string.application_name));
+                stringBuilder.append("\n");
+                stringBuilder.append("BEGIN:VEVENT\n");
+                stringBuilder.append("UID:");
+                stringBuilder.append(mCallReceiver.getId());
+                stringBuilder.append("\n");
+                stringBuilder.append("SEQUENCE:2");
+                stringBuilder.append("\n");
+                stringBuilder.append("DTSTAMP:");
+                stringBuilder.append(simpleDateFormat.format(new java.util.Date()));
+                stringBuilder.append("\n");
+                stringBuilder.append("DTSTART:");
+                stringBuilder.append(simpleDateFormat.format(startCalendar.getTime()));
+                stringBuilder.append("\n");
+                stringBuilder.append("DTEND:");
+                stringBuilder.append(simpleDateFormat.format(endCalendar.getTime()));
+                stringBuilder.append("\n");
+                stringBuilder.append("SUMMARY:");
+                stringBuilder.append(mCallReceiver.getName());
+                stringBuilder.append("\n");
+                stringBuilder.append("LOCATION:");
+                stringBuilder.append(mInvitationLink.uri);
+                stringBuilder.append("\n");
+                if (mCallReceiver.getDescription() != null) {
+                    stringBuilder.append("DESCRIPTION:");
+                    stringBuilder.append(mCallReceiver.getDescription());
+                    stringBuilder.append("\n");
+                }
+                stringBuilder.append("END:VEVENT\n");
+                stringBuilder.append("END:VCALENDAR\n");
+
+                StringBuilder messgaeStringBuilder = new StringBuilder();
+                formatDate = "YYYY/MM/dd HH:mm";
+                SimpleDateFormat messageDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+                messgaeStringBuilder.append("\n\n");
+                messgaeStringBuilder.append(getString(R.string.create_external_call_activity_link_validity));
+                messgaeStringBuilder.append("\n");
+                messgaeStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                messgaeStringBuilder.append(" : ");
+                messgaeStringBuilder.append(messageDateFormat.format(startCalendar.getTime()));
+                messgaeStringBuilder.append("\n");
+                messgaeStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                messgaeStringBuilder.append(" : ");
+                messgaeStringBuilder.append(messageDateFormat.format(endCalendar.getTime()));
+
+                mScheduleMessage = messgaeStringBuilder.toString();
+
+                File file = null;
+                try {
+                    file = File.createTempFile("twinme_call", ".ics", getCacheDir());
+
+                    try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                        fileOutputStream.write(stringBuilder.toString().getBytes(StandardCharsets.UTF_8));
+                    }
+                    return file;
+                } catch (Exception exception) {
+                    Log.e(LOG_TAG, "exception = ", exception);
+                    if (file != null && !file.delete()) {
+                        Log.w(LOG_TAG, "Cannot remove file");
+                    }
+
+                    return null;
+                }
+            }
+        }
+        return null;
     }
 }

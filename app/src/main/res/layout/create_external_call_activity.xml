@@ -66,7 +66,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:background="@android:color/transparent"
-                android:hint="@string/application_name_hint"
+                android:hint="@string/create_external_call_activity_placeholder"
                 android:imeOptions="actionDone"
                 android:inputType="text|textNoSuggestions|textCapSentences"
                 app:layout_marginStartPercent="5.31%"

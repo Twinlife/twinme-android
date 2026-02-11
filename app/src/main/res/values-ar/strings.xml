@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">أنت</string>
     
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">صلاحية الرابط</string>
     <string name="create_external_call_activity_message">يتم عرض ملف التعريف هذا للضيوف الذين سيتصلون بك من خلال رابط \"click-to-call\" هذا.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">تتيح ميزة \"انقر للاتصال\" للضيوف الاتصال بك من المتصفح دون تثبيت التطبيق.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">ولكل مثيل اسم وصورة ووصف يمثل موضوع المكالمة، مثل:</string>

@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">Tú</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Validez del enlace</string>
     <string name="create_external_call_activity_message">Este perfil se muestra a los invitados que lo llamarán con este enlace \"click-to-call\".</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" permite a los invitados llamarlo desde un navegador sin instalar la aplicación.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Cada instancia tiene un nombre, imagen y descripción, que representa el tema de la llamada, como por ejemplo:</string>

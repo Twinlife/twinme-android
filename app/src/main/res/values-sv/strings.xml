@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">Du</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Länkgiltighet</string>
     <string name="create_external_call_activity_message">Den här profilen visas för gäster som kommer att ringa dig med den här \"click-to-call\"-länken.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" låter gäster ringa dig från en webbläsare utan att installera programmet.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Varje instans har ett namn, bild och beskrivning som representerar samtalets ämne, till exempel:</string>

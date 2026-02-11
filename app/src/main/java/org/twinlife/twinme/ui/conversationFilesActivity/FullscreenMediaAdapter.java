@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023-2025 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -9,7 +9,6 @@
 
 package org.twinlife.twinme.ui.conversationFilesActivity;
 
-import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,14 +50,21 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         setHasStableIds(false);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void setItems(List<Item> items) {
         if (DEBUG) {
             Log.d(LOG_TAG, "setItems: " + items);
         }
 
         mItems = items;
-        notifyDataSetChanged();
+        notifyItemChanged(0, getItemCount());
+    }
+
+    public void removeItem(int position) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "removeItem: " + position);
+        }
+
+        notifyItemRemoved(position);
     }
 
     public void stopPlayer() {

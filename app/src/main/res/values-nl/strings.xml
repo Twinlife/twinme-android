@@ -470,6 +470,7 @@
     <string name="conversations_fragment_you">U</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Geldigheid van de link</string>
     <string name="create_external_call_activity_message">Dit profiel wordt getoond aan gasten die u bellen met deze ‘click-to-call’-link.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">Met \"Click-to-call\" kunnen gasten u vanuit een browser bellen zonder de applicatie te installeren.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Elke instantie heeft een naam, afbeelding en beschrijving, die het onderwerp van de oproep vertegenwoordigt, zoals:</string>

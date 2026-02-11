@@ -469,6 +469,7 @@
     <string name="conversations_fragment_you">Ты</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_link_validity">Срок действия ссылки</string>
     <string name="create_external_call_activity_message">Этот профиль отображается для гостей, которые позвонят вам по этой ссылке «click-to-call».</string>
     <string name="create_external_call_activity_onboarding_part_1_message_1">«Click-to-call» позволяет гостям звонить вам из браузера без установки приложения.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Каждый экземпляр имеет имя, изображение и описание, представляющие тему вызова, например:</string>

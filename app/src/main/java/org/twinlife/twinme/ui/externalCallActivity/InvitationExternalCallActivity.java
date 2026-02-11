@@ -67,6 +67,11 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
 
         setTitle(getString(R.string.premium_services_activity_click_to_call_title));
 
+        applyInsets(R.id.invitation_external_call_activity_layout, R.id.invitation_external_call_activity_tool_bar, R.id.invitation_external_call_activity_background, DESIGN_NAVIGATION_BAR_COLOR, false);
+
+        View backgroundView = findViewById(R.id.invitation_external_call_activity_background);
+        backgroundView.setBackgroundColor(Color.BLACK);
+
         View invitationView = findViewById(R.id.invitation_external_call_activity_invitation_view);
         float radius = DESIGN_CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};

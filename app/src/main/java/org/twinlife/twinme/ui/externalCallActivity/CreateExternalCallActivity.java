@@ -56,8 +56,12 @@ import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.EditableView;
+import org.twinlife.twinme.utils.OnboardingDetailView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.SwitchView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
@@ -219,9 +223,9 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         super.onResume();
 
-        if (!mShowPremiumFeatureDescription && mIsTransferCall) {
+        if (!mShowPremiumFeatureDescription && mIsTransferCall && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.TRANSFER_CALL)) {
             mShowPremiumFeatureDescription = true;
-            //TBD show transfer call onboarding
+            showOnboardingView();
         }
     }
 
@@ -1259,5 +1263,52 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         } catch (IOException exception) {
             mUpdatedCallFile = null;
         }
+    }
+
+    private void showOnboardingView() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showOnboardingView");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.create_external_call_activity_layout);
+
+        OnboardingDetailView onboardingDetailView = new OnboardingDetailView(this, null);
+
+        UIPremiumFeature uiPremiumFeature = new UIPremiumFeature(this, UIPremiumFeature.FeatureType.TRANSFER_CALL);
+        onboardingDetailView.setPremiumFeature(uiPremiumFeature);
+        onboardingDetailView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingDetailView.setCancelTitle(getString(R.string.application_do_not_display));
+
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                onboardingDetailView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                onboardingDetailView.animationCloseConfirmView();
+                getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.TRANSFER_CALL, false);
+            }
+
+            @Override
+            public void onDismissClick() {
+                onboardingDetailView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(onboardingDetailView);
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.WHITE_COLOR);
+            }
+        };
+        onboardingDetailView.setObserver(observer);
+        viewGroup.addView(onboardingDetailView);
+        onboardingDetailView.show();
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 }
