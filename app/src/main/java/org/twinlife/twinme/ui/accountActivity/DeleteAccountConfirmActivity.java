@@ -348,7 +348,7 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().equals("OK")) {
+                if (canDeleteAccount(s.toString())) {
                     mConfirmView.setAlpha(1.0f);
                     mCanDelete = true;
 
@@ -356,7 +356,6 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
                     if (inputMethodManager != null) {
                         inputMethodManager.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
                     }
-
                 } else {
                     mConfirmView.setAlpha(0.5f);
                     mCanDelete = false;
@@ -440,5 +439,17 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
         mActionView.setY(Design.DISPLAY_HEIGHT);
         mActionView.invalidate();
         animationOpenInvitationView();
+    }
+
+    private boolean canDeleteAccount(String text) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "canDeleteAccount: " + text);
+        }
+
+        if (text.equalsIgnoreCase("OK") || text.equalsIgnoreCase(getString(R.string.application_ok)) || text.equalsIgnoreCase("ОК")) {
+            return true;
+        }
+
+        return false;
     }
 }
