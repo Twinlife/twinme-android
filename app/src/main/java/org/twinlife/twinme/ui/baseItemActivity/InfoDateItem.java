@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -27,19 +27,26 @@ public class InfoDateItem extends Item {
     private final InfoDateItemType mInfoDateItemType;
     private final Item mItem;
     private final Bitmap mAvatar;
+    private final String mName;
 
-    public InfoDateItem(InfoDateItemType infoDateItemType, Item item, Bitmap avatar) {
+    public InfoDateItem(InfoDateItemType infoDateItemType, Item item, String name, Bitmap avatar) {
 
         super(ItemType.INFO_DATE, DEFAULT_DESCRIPTOR_ID, 0);
 
         mInfoDateItemType = infoDateItemType;
         mItem = item;
+        mName = name;
         mAvatar = avatar;
     }
 
     public Bitmap getAvatar() {
 
         return mAvatar;
+    }
+
+    public String getName() {
+
+        return mName;
     }
 
     //

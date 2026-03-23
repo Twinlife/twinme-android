@@ -8,6 +8,8 @@
 
 package org.twinlife.twinme.ui.baseItemActivity;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -60,6 +62,12 @@ public class PeerLocationItem extends Item {
     public long getTimestamp() {
 
         return getCreatedTimestamp();
+    }
+
+    @Override
+    String getInformation(Context context) {
+
+        return mGeolocationDescriptor.getLatitude() + "," + mGeolocationDescriptor.getLongitude();
     }
 
     //

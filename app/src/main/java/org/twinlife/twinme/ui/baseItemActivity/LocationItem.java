@@ -8,6 +8,10 @@
 
 package org.twinlife.twinme.ui.baseItemActivity;
 
+import android.content.Context;
+import android.text.format.DateUtils;
+import android.text.format.Formatter;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -45,6 +49,12 @@ public class LocationItem extends Item {
     public long getTimestamp() {
 
         return getCreatedTimestamp();
+    }
+
+    @Override
+    String getInformation(Context context) {
+
+        return mLocationDescriptor.getLatitude() + "," + mLocationDescriptor.getLongitude();
     }
 
     //

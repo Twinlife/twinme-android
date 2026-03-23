@@ -70,7 +70,11 @@ public abstract class Item implements Comparable<Item> {
         LOCATION,
         PEER_LOCATION,
         CLEAR,
-        PEER_CLEAR
+        PEER_CLEAR,
+        INFO_SECTION,
+        INFO_ANNOTATION,
+        INFO_EPHEMERAL,
+        INFO_DELETED
     }
 
     public enum ItemState {

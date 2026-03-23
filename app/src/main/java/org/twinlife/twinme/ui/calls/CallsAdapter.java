@@ -154,7 +154,7 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             ViewGroup.LayoutParams layoutParams = convertView.getLayoutParams();
             layoutParams.height = (int) (DESIGN_ITEM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
             convertView.setLayoutParams(layoutParams);
-            return new UIContactViewHolder<>(mService, convertView,  R.id.contacts_fragment_contact_item_name_view, R.id.contacts_fragment_contact_item_avatar_view, 0, 0, R.id.contacts_fragment_contact_item_tag_image_view,  R.id.contacts_fragment_contact_item_certified_image_view, R.id.contacts_fragment_contact_item_separator_view, Design.FONT_REGULAR34);
+            return new UIContactViewHolder<>(mService, convertView,  R.id.contacts_fragment_contact_item_name_view, R.id.contacts_fragment_contact_item_avatar_view, 0, 0, R.id.contacts_fragment_contact_item_tag_image_view,  R.id.contacts_fragment_contact_item_conference_image_view,  R.id.contacts_fragment_contact_item_certified_image_view, R.id.contacts_fragment_contact_item_separator_view, Design.FONT_REGULAR34);
         } else {
             convertView = inflater.inflate(R.layout.calls_fragment_call_item, parent, false);
             return new CallViewHolder(mService, convertView);
@@ -229,60 +229,56 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    public void setCallReicevers(@NonNull List<CallReceiver> callReicevers) {
-
-        TwinmeApplication twinmeApplication = mListActivity.getTwinmeApplication();
+    public void setCallReceivers(@NonNull List<CallReceiver> callReceivers) {
 
         mUICallReceivers.clear();
-        for (CallReceiver callReceiver : callReicevers) {
-            mUICallReceivers.add(create(twinmeApplication, callReceiver, null));
+        for (CallReceiver callReceiver : callReceivers) {
+            updateUICallReceiver(callReceiver);
         }
 
         updateIndexes();
-
-        Collections.sort(mUICallReceivers);
     }
 
     /**
-     * Update the originator in the list.
+     * Update the callReceiver in the list.
      *
-     * @param originator the originator to update or add.
+     * @param callReceiver the callReceiver to update or add.
      */
-    public void updateUIOriginator(Originator originator) {
+    public void updateUICallReceiver(CallReceiver callReceiver) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "updateUIOriginator: originator=" + originator);
+            Log.d(LOG_TAG, "updateUICallReceiver: callReceiver=" + callReceiver);
         }
 
-        UICallReceiver uiOriginator = null;
-        for (UICallReceiver lUIOriginator : mUICallReceivers) {
-            if (lUIOriginator.getContact().getId().equals(originator.getId())) {
-                uiOriginator = lUIOriginator;
+        UICallReceiver uiCallReceiver = null;
+        for (UICallReceiver lUICallReceiver : mUICallReceivers) {
+            if (lUICallReceiver.getContact().getId().equals(callReceiver.getId())) {
+                uiCallReceiver = lUICallReceiver;
                 break;
             }
         }
 
-        if (uiOriginator != null) {
-            mUICallReceivers.remove(uiOriginator);
-            uiOriginator.update(mListActivity.getTwinmeApplication(), originator, null);
+        if (uiCallReceiver != null) {
+            mUICallReceivers.remove(uiCallReceiver);
+            uiCallReceiver.update(mListActivity.getTwinmeApplication(), callReceiver, null);
         } else {
-            uiOriginator = create(mListActivity.getTwinmeApplication(), originator, null);
+            uiCallReceiver = create(mListActivity.getTwinmeApplication(), callReceiver, null);
         }
 
-        // TBD Sort using id order when name are equals
         boolean added = false;
         int size = mUICallReceivers.size();
+
+        long callReceiverDate = callReceiver.getCreationDate();
         for (int i = 0; i < size; i++) {
-            String callReceiverName1 = mUICallReceivers.get(i).getName();
-            String callReceiverName2 = uiOriginator.getName();
-            if (callReceiverName1 != null && callReceiverName2 != null && callReceiverName1.compareToIgnoreCase(callReceiverName2) > 0) {
-                mUICallReceivers.add(i, uiOriginator);
+            CallReceiver lCallReceiver = (CallReceiver) mUICallReceivers.get(i).getContact();
+            if (lCallReceiver.getCreationDate() < callReceiverDate) {
+                mUICallReceivers.add(i, uiCallReceiver);
                 added = true;
                 break;
             }
         }
 
         if (!added) {
-            mUICallReceivers.add(uiOriginator);
+            mUICallReceivers.add(uiCallReceiver);
         }
 
         updateIndexes();
@@ -293,14 +289,14 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return new UICallReceiver(application, originator, avatar);
     }
 
-    public void removeUIOriginator(UUID originatorId) {
+    public void removeUICallReceiver(UUID originatorId) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "removeUIOriginator: originatorId=" + originatorId);
+            Log.d(LOG_TAG, "removeUICallReceiver: originatorId=" + originatorId);
         }
 
-        for (UIOriginator uiOriginator : mUICallReceivers) {
-            if (uiOriginator.getContact().getId().equals(originatorId)) {
-                mUICallReceivers.remove(uiOriginator);
+        for (UICallReceiver uiCallReceiver : mUICallReceivers) {
+            if (uiCallReceiver.getContact().getId().equals(originatorId)) {
+                mUICallReceivers.remove(uiCallReceiver);
                 break;
             }
         }

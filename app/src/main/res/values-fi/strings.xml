@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Hyväksyä</string>
     <string name="application_account_deleted">Tilisi on poistettu, sinun on nyt poistettava sovellus.</string>
+    <string name="application_account_restored_error">Tämän laitteen tili on palautettu toiselle laitteelle. Sinun on poistettava sovellus.</string>
     <string name="application_add_contact_no_profile">Sinun on täytettävä sinua edustava profiili ennen yhteyshenkilön kutsumista. Edetä?</string>
     <string name="application_all">Kaikki</string>
     <string name="application_appearance">Ulkomuoto</string>
@@ -42,6 +43,7 @@
     <string name="application_display_all">Näytä kaikki</string>
     <string name="application_do_not_display">Älä näytä enää</string>
     <string name="application_edit">Muokata</string>
+    <string name="application_error_code">Virhekoodi: %1$s</string>
     <string name="application_error_file_not_found">Tiedostoa ei löytynyt.</string>
     <string name="application_error_media_unload">Median lataaminen epäonnistui.</string>
     <string name="application_error_media_not_supported">Sovellus ei tue tätä kuva-/videomuotoa.</string>
@@ -110,6 +112,7 @@
     <string name="application_timeout_seconds">%1$d sekuntia</string>
     <string name="application_timeout_week">1 viikko</string>
     <string name="application_unknown_name">Tuntematon</string>
+    <string name="application_until">Kunnes %1$s</string>
     <string name="application_upgrade">Skred päivittäminen</string>
     <string name="application_webrtc_failure">WebRTC-vika</string>
     <string name="application_wrong_configuration">Virheellinen kokoonpano</string>
@@ -142,16 +145,22 @@
     <string name="accept_invitation_activity_message">%1$s haluaa olla yhteydessä sinuun</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Varmuuskopiointi ulkoiselle tallennusvälineelle</string>
+    <string name="account_activity_backup_restore">Varmuuskopioi/Palauta</string>
+    <string name="account_activity_backup_verify">Vahvista varmuuskopio</string>
+    <string name="account_activity_backup_list">Varmuuskopio Historia</string>
     <string name="account_activity_conversations_content_title">Keskustelujen sisältö</string>
     <string name="account_activity_delete_account">Tilisi ja kaikki siihen liittyvät tiedot poistetaan pysyvästi. Vahvistaa?</string>
     <string name="account_activity_delete_account_confirmation">Oletko todella varma, että haluat poistaa tilisi?</string>
     <string name="account_activity_export_content">Vie ulkoiselle medialle</string>
     <string name="account_activity_message_first_part">Uusi tili luodaan, kun sovellus asennetaan ensimmäisen kerran, sovelluksen uudelleenasennuksen, laitteen nollauksen tai nykyisen tilin poistamisen jälkeen.</string>
     <string name="account_activity_message_second_part">Aiemmasta tilistä ja tiedoista ei jää jälkiä, joten sinun on kutsuttava yhteystietosi uudelleen.</string>
+    <string name="account_activity_message_third_part">Tilin poistaminen mitätöi myös kaikki kyseiselle tilille luodut varmuuskopiot, jolloin varmuuskopion palauttaminen kyseiseltä tililtä tälle tai toiselle laitteelle on mahdotonta.</string>
     <string name="account_activity_migration_message">Tilinsiirtopalvelu on käytettävissä tilisi ja siihen liittyvien tietojen (yhteystiedot, viestit, ryhmät jne.) Siirtämiseksi yhdestä Android-laitteesta reaaliajassa. Voit siis vaihtaa tiliä vanhan laitteen ja uuden välillä.</string>
     <string name="account_activity_migration_start_from_another_device">Toisesta laitteesta</string>
     <string name="account_activity_migration_start_from_current_device">Laitteeltani</string>
     <string name="account_activity_migration_title">Tilin siirto</string>
+    <string name="account_activity_restore">Palauttaminen ulkoisista tallennusvälineistä</string>
     <string name="account_activity_title">Tili</string>
     <string name="account_activity_transfer_between_devices">Siirto laitteiden välillä</string>
     <string name="account_activity_transfer_from_another_device">Siirto toisesta laitteesta</string>
@@ -205,7 +214,8 @@
     <string name="add_contact_activity_onboarding_message">Skred ei tunne ystäviäsi eikä voi löytää heitä. Sinun tulee kutsua heidät henkilökohtaisesti, Skred kanssa, kun he ovat lähelläsi, tai lähettämällä heille kutsu muulla tavalla.</string>
     <string name="add_contact_activity_scan_code">Skannaa kutsun QR-koodi</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Tämä linkki on vioittunut.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Tämä linkki on virheellinen.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Tämä kutsulinkki on vanhentunut.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Tämä linkki on virheellinen.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Sovellus ei hallinnoi tätä linkkiä.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Tämä suhde on poistettu.</string>
     <string name="add_contact_activity_scan_message_call_link">Tämä linkki vastaa \"soita napsauttamalla\"</string>
@@ -213,6 +223,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Tämä linkki vastaa tilin siirtoa</string>
     <string name="add_contact_activity_scan_message_transfer_link">Tämä linkki vastaa puhelun siirtoa</string>
     <string name="add_contact_activity_scan_title">Skannata</string>
+    <string name="add_contact_activity_share_image_message">Tuo tai skannaa tämän kutsun QR-koodi Skred-sovelluksella lisätäksesi \"%1$s\":n yhteystietoihin.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s kutsuu sinut yksityiseen suhteeseen Skred.</string>
+    <string name="add_contact_activity_share_message_part_2">Skred on vertaisverkon kautta salattu viestintäpalvelu ja teräväpiirtoääni-/videopuhelut. Rekisteröitymistä ei vaadita.</string>
+    <string name="add_contact_activity_share_message_part_3">Avaa tämä URL-osoite Skred-sovelluksella mobiililaitteellasi lisätäksesi \"%1$s\":n yhteystietoihin:</string>
+    <string name="add_contact_activity_share_message_part_4">Vaihtoehtoisesti voit tuoda tai skannata liitteenä olevan kuvan kutsun QR-koodin Skred-sovelluksella.</string>
+    <string name="add_contact_activity_share_title">%1$s kutsuu sinut Skred-palveluun</string>
     <string name="add_contact_activity_social_subtitle">viesti, posti, sosiaalinen verkosto</string>
     <string name="add_contact_activity_social_title">Lähetä koodi sovelluksen kautta</string>
     <string name="add_contact_activity_title">Kutsu</string>
@@ -256,7 +272,45 @@
     <string name="authentified_relation_activity_start">Aloita sertifiointi</string>
     <string name="authentified_relation_activity_title">Sertifioitu suhde</string>
     <string name="authentified_relation_activity_to_be_certified_title">Varmentaa suhde</string>
-    
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Varmuuskopio</string>
+    <string name="backup_activity_beta_message_part_1">Varmuuskopiointi-/palautuspalvelua ehdotetaan BETA-testauksessa mahdollisten ongelmien tunnistamiseksi ennen sen yleistä julkaisua.</string>
+    <string name="backup_activity_beta_message_part_2">Tämä palvelu on tarkoitettu vain tilien metatietojen (profiilit, yhteystiedot, ryhmät) varmuuskopiointiin ulkoiseen tallennustilaan, jotta ne voidaan palauttaa myöhemmin toiselle laitteelle, jos alkuperäinen varastetaan tai tuhoutuu.</string>
+    <string name="backup_activity_beta_message_part_3">Tilinsiirtopalvelua tulisi käyttää kaikkien tilitietojen (mukaan lukien keskustelut) siirtämiseen yhdestä (vanhasta) laitteesta toiseen (uuteen) laitteeseen, kun molemmat laitteet ovat käytettävissä.</string>
+    <string name="backup_activity_confirm_message">Varmuuskopion palauttamiseksi sinun on syötettävä yllä olevat 12 sanaa siinä järjestyksessä, jolloin se voidaan purkaa.</string>
+    <string name="backup_activity_content">Sisällys</string>
+    <string name="backup_activity_content_diff_added">Lisätty</string>
+    <string name="backup_activity_content_diff_updated">Muokattu</string>
+    <string name="backup_activity_content_diff_deleted">Poistettu</string>
+    <string name="backup_activity_content_diff_message">Tässä ovat muutokset nykyisiin tietoihisi verrattuna:</string>
+    <string name="backup_activity_content_info">Varmuuskopiot eivät sisällä keskusteluja, ryhmiä, ilmoituksia ja historiaa.</string>
+    <string name="backup_activity_error_words">Annetut sanat eivät salli varmuuskopion salauksen purkamista.</string>
+    <string name="backup_activity_generate_word">Luoda</string>
+    <string name="backup_activity_last_backup">Viimeinen varmuuskopio %1$s</string>
+    <string name="backup_activity_new_backup">Uusi varmuuskopio</string>
+    <string name="backup_activity_onboarding">Tee salattu varmuuskopio tilitiedoista (\"Spaces\", profiilit, yhteystiedot, \"click-to-call\"), joka voidaan palauttaa tähän tai toiseen laitteeseen.</string>
+    <string name="backup_activity_reminder">Viimeisin varmuuskopiosi luotiin yli 30 päivää sitten.</string>
+    <string name="backup_activity_save_file_message">Tallenna varmuuskopiotiedosto haluamallesi laitteelle ja säilytä salasanat myöhempää palautusta varten.</string>
+    <string name="backup_activity_security">Turvallisuus</string>
+    <string name="backup_activity_security_info">Varmuuskopiointiavainta edustaa 12 sanan sarja, jota vaaditaan palauttamiseen.</string>
+    <string name="backup_activity_success">Varmuuskopio valmistui onnistuneesti!</string>
+    <string name="backup_activity_success_info">Pidä tämä luettelo 12 sanasta, jotta voit palauttaa tämän varmuuskopion.</string>
+    <string name="backup_activity_title">Varmuuskopio</string>
+    <string name="backup_activity_use_last_backup_words">Käytä samaa sanaluetteloa kuin viimeisessä varmuuskopiossa.</string>
+    <string name="backup_activity_verify_completed">Vahvistus valmis!</string>
+    <string name="backup_activity_verify_message">Voit myös tarkistaa varmuuskopiotiedoston eheyden ja sen sisältämien tietojen ajantasaisuuden kohdasta: Tili/Vahvista varmuuskopio.</string>
+    <string name="backup_activity_verify_up_to_date">Varmuuskopiosi on ajan tasalla.</string>
+    <string name="backup_activity_verify_not_up_to_date">Varmuuskopiosi ei ole ajan tasalla.</string>
+    <string name="backup_activity_verify_words">Vahvistaaksesi varmuuskopion sinun on annettava 12 sanan sarja sen salauksen purkamiseksi.</string>
+    <string name="backup_activity_wait_message">Älä jätä tätä näyttöä varmuuskopion ollessa käynnissä.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Mitätöi varmuuskopioni</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Kaikki aiemmat varmuuskopiosi mitätöityvät, eikä niitä voida enää palauttaa.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Muista luoda uusi varmuuskopio, joka voidaan palauttaa tälle tai toiselle laitteelle.</string>
+    <string name="backups_activity_no_backup_message">Tälle laitteelle ei ole tehty varmuuskopioita.</string>
+
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Kaikki</string>
     <string name="calls_fragment_call_again_message">Haluatko soittaa takaisin %1$s?</string>
@@ -327,6 +381,7 @@
     <string name="call_activity_tag_speaker_mute">Mykistä kaiutin</string>
     <string name="call_activity_transfert_call_message">Käynnissä oleva puhelu on siirretty.</string>
     <string name="call_activity_try_to_call_back">Yritä soittaa takaisin.</string>
+    <string name="call_activity_waiting_conference_call">Kukaan ei ole vielä liittynyt puheluun. Odota hetki…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera jo käytössä</string>
@@ -489,9 +544,24 @@
     <string name="conversations_fragment_you">Sinä</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Puhelun määrittäminen</string>
+    <string name="create_external_call_activity_call_type">Puhelutyyppi</string>
+    <string name="create_external_call_activity_conference_call_description">Liity neuvottelupuheluun suoraan selaimesta. Ihanteellinen liike- tai perhekokouksiin.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Neuvottelupuhelu</string>
+    <string name="create_external_call_activity_conference_call_title">Neuvottelupuhelu</string>
+    <string name="create_external_call_activity_continuous_link_description">Ei rajoituksia linkin voimassaololle</string>
+    <string name="create_external_call_activity_continuous_link_title">Pysyvä</string>
+    <string name="create_external_call_activity_create_message">Anna puhelun aiheen nimi, kuva ja kuvaus.</string>
+    <string name="create_external_call_activity_delete_link_setting">Tämä linkki ei ole enää voimassa määritetyn ajan kuluttua.</string>
+    <string name="create_external_call_activity_direct_call_description">Vastaanota puhelu suoraan laitteellesi henkilöltä, jolla ei ole sovellusta.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Suora</string>
+    <string name="create_external_call_activity_direct_call_title">Suora puhelu</string>
+    <string name="create_external_call_activity_group_call_description">Jopa 8 osallistujaa</string>
     <string name="create_external_call_activity_link_validity">Linkin voimassaolo</string>
-    <string name="create_external_call_activity_message">Anna puhelun aiheen nimi, kuva ja kuvaus.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call -toiminnon avulla vieraat voivat soittaa sinulle selaimesta asentamatta sovellusta.</string>
+    <string name="create_external_call_activity_message">Tämä profiili näytetään vieraille, jotka soittavat sinulle tällä \"click-to-call\" -linkillä.</string>
+    <string name="create_external_call_activity_name_required">Nimi ja kuva vaaditaan tämän \"Click-to-call\" -toiminnon esittämiseen.</string>
+    <string name="create_external_call_activity_notification_setting">Saat ilmoituksen heti, kun ensimmäinen osallistuja liittyy neuvotteluun.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call -toiminto antaa vieraille mahdollisuuden soittaa sinulle tai liittyä neuvottelupuheluun (\"Click-to-meet\") selaimesta ilman sovelluksen asentamista.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Jokaisella esiintymällä on nimi, kuva ja kuvaus, jotka edustavat puhelun aihetta, kuten:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">asiakaspalveluasi</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">myymäsi auto</string>
@@ -510,7 +580,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Vaihda oletusnimi (Vieras), joka edustaa heitä puhelussa</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Soita sinulle painamalla \"Soita\" -painiketta verkkosivulla.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Puhelun jälkeen he voivat pitää verkkosivun auki soittaakseen sinulle takaisin.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Click-to-call -ominaisuuden määrittäminen</string>
+    <string name="create_external_call_activity_onboarding_title_3">Jaa \"Click-to-call\" -puhelu</string>
+    <string name="create_external_call_activity_onboarding_title_4">Käytä \"Click-to-call\" -ominaisuutta</string>
     <string name="create_external_call_activity_placeholder">Aihe (Auta, Ilmoita, Tapaaminen, Ovikello,…)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Mukauta linkin voimassaolopäiviä/kellonaikoja</string>
+    <string name="create_external_call_activity_recurrent_link_title">Jaksoittainen</string>
+    <string name="create_external_call_activity_unique_link_description">Aseta linkin voimassaolon alkamis- ja päättymispäivät</string>
+    <string name="create_external_call_activity_unique_link_title">Kertakäyttöinen</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Kutsu jäseniä</string>
@@ -716,6 +793,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Tämä toiminto mitätöi nykyisen kutsukoodin, joka liittyy tähän "click-to-call" -linkkiin. Vahvistaa?</string>
     <string name="invitation_call_activity_generate_code_title">Luo uusi koodi tälle linkille</string>
+    <string name="invitation_call_activity_invite_meeting_message">Avaa verkko-osoite %1$s, tai skannaa QR-koodi, liittyäksesi kokoukseen “%2$s”.</string>
     <string name="invitation_call_activity_invite_message">Avaa verkko-osoite %1$s tai skannaa QR-koodi soittaaksesi \"%2$s\".</string>
     <string name="invitation_call_activity_message">Jaa tämä "click-to-call" -koodi jonkun kanssa, joka voi sitten soittaa sinulle verkosta tai mobiilisovelluksesta.</string>
     <string name="invitation_call_activity_save_message">Skannaa tämä QR-koodi soittaaksesi "%1$s".</string>
@@ -777,6 +855,7 @@
     <string name="notification_center_audio_message_received">Uusi ääniviesti</string>
     <string name="notification_center_cancel">Hylkää</string>
     <string name="notification_center_cleanup_conversation">Joitakin vanhoja viestejä on poistettu.</string>
+    <string name="notification_center_conference_join_call">Yksi osallistuja liittyi puheluun.</string>
     <string name="notification_center_deleted_contact">Yhteyshenkilö poistettu</string>
     <string name="notification_center_file_message">Lähetti sinulle tiedoston</string>
     <string name="notification_center_file_message_received">Uusi tiedosto</string>
@@ -786,6 +865,7 @@
     <string name="notification_center_invitation_group">kutsuu sinut liittymään ryhmään.</string>
     <string name="notification_center_invitation_received">Uusi kutsu</string>
     <string name="notification_center_invitation_received_group">Uusi ryhmäkutsu</string>
+    <string name="notification_center_join_call">%1$s liittyi juuri puheluun</string>
     <string name="notification_center_join_group">Olet ryhmän jäsen</string>
     <string name="notification_center_message_received">Uusi viesti</string>
     <string name="notification_center_missed_audio_call_to">Vastaamaton äänipuhelu henkilölle %1$s</string>
@@ -955,6 +1035,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Salli sovelluksen vastaanottaa push-ilmoituksia.</string>
     <string name="quality_of_service_activity_warning_run_background">Anna sovelluksen toimia taustalla.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ on asennettava tälle laitteelle, jotta twinme+-tilin varmuuskopio voidaan palauttaa.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Varmuuskopion tehnyt laite on edelleen kirjautuneena sisään.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Jos palautat varmuuskopion tälle uudelle laitteelle, laitteen tili, jolla varmuuskopio tehtiin, mitätöidään automaattisesti.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Jos haluat siirtää tilisi uudelle laitteelle ja sinulla on vielä vanha laite, on parempi käyttää \"tilin siirtoa\" varmuuskopion palauttamisen sijaan, koska se siirtää myös keskustelut, ryhmät, ilmoitukset ja historian.</string>
+    <string name="restore_activity_confirm">Oletko varma, että haluat korvata nykyiset tilitiedot seuraavilla varmuuskopioilla olevilla tiedoilla?</string>
+    <string name="restore_activity_confirm_restore">Haluatko edelleen palauttaa tämän varmuuskopion?</string>
+    <string name="restore_activity_content_contact_deleted_message">Varmuuskopioinnin jälkeen poistettuja tietoja ei voida palauttaa.</string>
+    <string name="restore_activity_content_profile_reset">Kutsukoodi muutettu.</string>
+    <string name="restore_activity_content_profile_reset_message">Varmuuskopioituun profiiliin liittyvä kutsukoodi on virheellinen. Uusi kutsukoodi luodaan palautusprosessin aikana.</string>
+    <string name="restore_activity_enter_words">Syötä 12 sanan sarja, jonka avulla voidaan purkaa varmuuskopio.</string>
+    <string name="restore_activity_error_message">Virhe varmuuskopion palauttamisessa.</string>
+    <string name="restore_activity_error_message_verify_backup">Virhe varmuuskopioinnin vahvistamisessa.</string>
+    <string name="restore_activity_file_not_supported">Varmuuskopiotiedoston on oltava muodossa \"skrdbckp\".</string>
+    <string name="restore_activity_more_recent_backup">Samalla tilillä on tehty uudempi varmuuskopio.</string>
+    <string name="restore_activity_onboarding">Varmuuskopion palauttaminen korvaa nykyisen tilata.</string>
+    <string name="restore_activity_onboarding_words">Varmuuskopion palauttamiseksi sinun on annettava 12 sanan sarja, jonka avulla se voidaan purkaa.</string>
+    <string name="restore_activity_onboarding_verify">Varmista, että varmuuskopio on voimassa ja ajan tasalla nykyisillä tiedoillasi.</string>
+    <string name="restore_activity_paste">Liitä leikepöydän sanaluettelo.</string>
+    <string name="restore_activity_paste_error">Virheellinen sanaluettelo.</string>
+    <string name="restore_activity_restore">Palauttaa</string>
+    <string name="restore_activity_select_backup">Valitse varmuuskopio</string>
+    <string name="restore_activity_state_restore_account">Tiliä palautetaan...</string>
+    <string name="restore_activity_state_restore_data">Tietoja palautetaan...</string>
+    <string name="restore_activity_state_restore_starting">Palautusta aloitetaan.</string>
+    <string name="restore_activity_state_restore_verify_account">Tilin vahvistus…</string>
+    <string name="restore_activity_state_restore_verify_data">Tietojen vahvistus…</string>
+    <string name="restore_activity_state_restore_verify_starting">Vahvistus aloitetaan…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Odotetaan vahvistusta.</string>
+    <string name="restore_activity_success">Restaurointi suoritettu onnistuneesti!</string>
+    <string name="restore_activity_success_message">Sulje sovellus ja käynnistä se uudelleen käyttääksesi uutta tietoa.</string>
+    <string name="restore_activity_title">Palautus</string>
+    <string name="restore_activity_verify_same_account">Vahvistus on suoritettava samalla laitteella, jota käytettiin varmuuskopiointiin.</string>
+    <string name="restore_activity_warning">Tämän varmuuskopion palauttaminen korvaa kaikki nykyiset tilitiedot varmuuskopion tiedoilla.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Aseta järjestelmänvalvojaksi</string>
     <string name="room_members_activity_delete_message">Vahvista tämän jäsenen poisto</string>
@@ -1008,15 +1123,18 @@
     <string name="settings_activity_ephemeral_title">Katoava viesti</string>
     <string name="settings_activity_image_title">Kuva</string>
     <string name="settings_activity_message_properties_title">Viestin ominaisuudet</string>
-    <string name="settings_activity_permissions_title">LUVAT</string>
+    <string name="settings_activity_message_reactions_notification">Ilmoitus viestireaktioista</string>
     <string name="settings_activity_reset_default_value">Palauta oletusasetukset</string>
     <string name="settings_activity_reset_preferences_button_title">Palauta oletusarvot</string>
     <string name="settings_activity_reset_preferences_message">Palauta ilmoitusasetukset sovelluksen oletusarvoihin.</string>
     <string name="settings_activity_reset_preferences_title">Nollaa asetukset</string>
+    <string name="settings_activity_permissions_title">LUVAT</string>
+    <string name="settings_activity_silent_mode">Hiljainen tila</string>
     <string name="settings_activity_silent_sound">Hiljainen</string>
     <string name="settings_activity_sound_enabled_title">ÄÄNEN ILMOITUKSET</string>
     <string name="settings_activity_system_notifications_title">Järjestelmän ilmoitukset</string>
     <string name="settings_activity_system_settings_title">Järjestelmäasetukset</string>
+    <string name="settings_activity_turn_off_notification_sounds">Poista ilmoitusäänet käytöstä</string>
     <string name="settings_activity_video_call_category_title">Videopuhelut</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Soittoäänen nimi</string>
     <string name="settings_activity_video_call_notification_title">Soittoääni</string>
@@ -1064,7 +1182,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Click-to-call -koodi</string>
+    <string name="show_call_activity_conference_call_information">Jaa tämä linkki soittaaksesi sinulle tai liittyäksesi neuvotteluun selaimesta.</string>
     <string name="show_call_activity_information_code">Jaa tämä koodi vastaanottaaksesi ulkopuheluja.</string>
+    <string name="show_call_activity_meeting_organizer">Tämän kokouksen järjestäjä</string>
     <string name="show_call_activity_schedule_call">Aikataulutettu puhelu</string>
     <string name="show_call_activity_schedule_from">%1$s alkaen</string>
     <string name="show_call_activity_schedule_from_to">%1$s %2$s - %3$s</string>
@@ -1167,12 +1287,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Pikkuilmoitus</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Lisää ilmoitukseen linkki, jonka avulla potentiaaliset ostajat voivat soittaa sinulle ilman sovelluksen asentamista.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Ilmoita</string>
-    <string name="template_click_to_call_activity_template_help">Auta</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Auta</string>
+    <string name="template_click_to_call_activity_template_default_description">Mukauta puhelulinkkiä tarpeen mukaan.</string>
+    <string name="template_click_to_call_activity_template_help">Asiakaspalvelu</string>
+    <string name="template_click_to_call_activity_template_help_description">Linkki soittaaksesi asiakaspalveluusi selaimesta.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Asiakaspalvelu</string>
+    <string name="template_click_to_call_activity_template_job">Työhaastattelu</string>
+    <string name="template_click_to_call_activity_template_job_description">Linkki, jonka avulla kiinnostuneet rekrytoijat voivat soittaa sinulle haastattelua varten.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Työhaastattelu</string>
     <string name="template_click_to_call_activity_template_meeting">Tapaaminen</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Jaa linkki liittyäksesi neuvotteluun selaimesta.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Tapaaminen</string>
+    <string name="template_click_to_call_activity_template_profile_description">Linkki soittaakseen sinulle ilman sovelluksen asentamista.</string>
     <string name="template_click_to_call_activity_template_video_bell">Video ovikello</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Anna kuljettajan soittaa sinulle ohjeiden saamiseksi.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Ovikello</string>
 
     <!-- TemplateSpaceActivity -->

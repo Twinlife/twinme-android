@@ -63,10 +63,12 @@ import org.twinlife.twinlife.TerminateReason;
 import org.twinlife.twinlife.Twincode;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinlife.util.Logger;
+import org.twinlife.twinme.ConferenceEvent;
 import org.twinlife.twinme.FeatureUtils;
 import org.twinlife.twinme.NotificationCenter;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.AccountMigration;
+import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
@@ -83,10 +85,12 @@ import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.ShowContactActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
+import org.twinlife.twinme.ui.backupActivity.BackupActivity;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationActivity.UIReaction;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
+import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
@@ -95,6 +99,7 @@ import org.twinlife.twinme.utils.CommonUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -937,6 +942,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             if (notification != null) {
                 conversationIntent.putExtra(Intents.INTENT_NOTIFICATION_ID, notification.getId().toString());
             }
+            conversationIntent.putExtra(Intents.INTENT_DESCRIPTOR_ID, descriptor.getDescriptorId().toString());
         } else {
             conversationIntent.putExtra(Intents.INTENT_NEW_MESSAGE, true);
         }
@@ -1268,6 +1274,50 @@ public class NotificationCenterImpl implements NotificationCenter {
         }
         mTwinmeContext.createNotification(type, notificationId, contact, null, null);
 
+    }
+
+    @Override
+    public void onConferenceEvent(@NonNull CallReceiver conference, @NonNull ConferenceEvent event, long date) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onConferenceEvent: conference=" + conference + " event=" + event + " date=" + new Date(date));
+        }
+        
+        if (event == ConferenceEvent.FIRST_JOIN && conference.getCapabilities().hasNotifyJoin()) {
+            String conferenceName = conference.getName();
+            Bitmap conferenceAvatar = getAvatar(conference);
+
+            Intent showCallReceiverIntent;
+            showCallReceiverIntent = new Intent(mApplication, ShowExternalCallActivity.class);
+            showCallReceiverIntent.putExtra(Intents.INTENT_CALL_RECEIVER_ID, conference.getId().toString());
+
+            PendingIntent showCallReceiverPendingIntent = createPendingIntent(0, showCallReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mApplication, mContactChannel);
+
+            if (!TextUtils.isEmpty(conferenceName)) {
+                notificationBuilder.setContentTitle(conferenceName);
+            } else {
+                notificationBuilder.setContentTitle(mApplication.getString(R.string.application_name));
+            }
+
+            if (mTwinmeApplication.getVibration(TwinmeApplication.RingtoneType.NOTIFICATION_RINGTONE)) {
+                long[] pattern = {0L, 500L};
+                notificationBuilder.setVibrate(pattern);
+            }
+
+            notificationBuilder.setContentIntent(showCallReceiverPendingIntent);
+            notificationBuilder.setContentText(mApplication.getString(R.string.notification_center_conference_join_call));
+            notificationBuilder.setAutoCancel(true);
+            notificationBuilder.setSmallIcon(R.drawable.logo_small);
+            notificationBuilder.setLargeIcon(conferenceAvatar);
+            notificationBuilder.setLights(Design.BLUE_NORMAL, 1000, 500);
+            notificationBuilder.setCategory(NotificationCompat.CATEGORY_EVENT);
+            notificationBuilder.setPriority(NotificationCompat.PRIORITY_MAX);
+            notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+
+            int notificationId = newNotificationId();
+            postNotification(notificationId, notificationBuilder.build());
+        }
     }
 
     @Override
@@ -1853,6 +1903,41 @@ public class NotificationCenterImpl implements NotificationCenter {
         service.startForeground(EXPORT_NOTIFICATION_ID, notification);
 
         return EXPORT_NOTIFICATION_ID;
+    }
+
+    public int startBackupService(@NonNull Service service, int progress) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startBackupService progress=" + progress);
+        }
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mApplication, mDefaultChannel);
+
+        PendingIntent pendingIntent = createPendingIntent(0, new Intent(mApplication, BackupActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+        notificationBuilder.setSmallIcon(R.drawable.logo_small);
+        notificationBuilder.setLights(Design.BLUE_NORMAL, 1000, 500);
+        notificationBuilder.setContentIntent(pendingIntent);
+
+        notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        notificationBuilder.setOngoing(true);
+        notificationBuilder.setAutoCancel(true);
+
+        // Create notification builder.
+
+        notificationBuilder.setContentTitle(service.getString(R.string.backup_activity_title));
+        notificationBuilder.setWhen(System.currentTimeMillis());
+        notificationBuilder.setSmallIcon(R.drawable.logo_small);
+        notificationBuilder.setPriority(NotificationCompat.PRIORITY_MAX);
+        notificationBuilder.setCategory(NotificationCompat.CATEGORY_SERVICE);
+        notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        notificationBuilder.setProgress(100, progress, true);
+
+        // Start foreground service with the notification.  The notification is removed when the service is stopped.
+        android.app.Notification notification = notificationBuilder.build();
+        mNotificationManager.notify(BACKUP_NOTIFICATION_ID, notification);
+        service.startForeground(BACKUP_NOTIFICATION_ID, notification);
+
+        return BACKUP_NOTIFICATION_ID;
     }
 
     /**

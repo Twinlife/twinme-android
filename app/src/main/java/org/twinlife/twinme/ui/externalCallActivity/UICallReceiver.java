@@ -36,4 +36,16 @@ public class UICallReceiver extends UIOriginator {
 
         return false;
     }
+
+    @Override
+    public boolean isConference() {
+
+        if (getContact() instanceof CallReceiver) {
+            CallReceiver callReceiver = (CallReceiver) getContact();
+            return callReceiver.isConference();
+        }
+
+        return false;
+    }
+
 }

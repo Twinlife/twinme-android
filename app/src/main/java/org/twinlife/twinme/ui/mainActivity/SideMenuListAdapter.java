@@ -78,6 +78,8 @@ public class SideMenuListAdapter implements ListAdapter {
     public interface OnMenuClickListener {
 
         void onMenuClick(MenuItem menuItem);
+
+        void onBadgeClick(MenuItem menuItem);
     }
 
     SideMenuListAdapter(MainActivity activity, OnMenuClickListener onMenuClickListener) {
@@ -181,6 +183,8 @@ public class SideMenuListAdapter implements ListAdapter {
             ImageView imageView;
             RoundedView roundedView;
             TextView subscribeView;
+            TextView badgeView;
+
             mIsFeatureSubscribed = mActivity.isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL);
             switch (menuItem.getLevel()) {
                 case LEVEL1:
@@ -220,6 +224,24 @@ public class SideMenuListAdapter implements ListAdapter {
                     subscribeViewBackground.getPaint().setColor(DESIGN_SUBSCRIBE_BACKGROUND_COLOR);
                     ViewCompat.setBackground(subscribeView, subscribeViewBackground);
 
+                    badgeView = convertView.findViewById(R.id.navigation_activity_child_badge_view);
+                    Design.updateTextFont(badgeView, Design.FONT_MEDIUM30);
+                    badgeView.setTextColor(Color.WHITE);
+                    badgeView.setPadding(Design.NEW_FEATURE_PADDING, 0, Design.NEW_FEATURE_PADDING, 0);
+                    badgeView.setVisibility(View.GONE);
+                    badgeView.setOnClickListener(view -> mOnMenuClickListener.onBadgeClick(menuItem));
+
+                    ViewGroup.LayoutParams badgeViewLayoutParams = badgeView.getLayoutParams();
+                    badgeViewLayoutParams.height = Design.NEW_FEATURE_HEIGHT;
+
+                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) badgeView.getLayoutParams();
+                    marginLayoutParams.leftMargin = Design.NEW_FEATURE_MARGIN;
+                    marginLayoutParams.rightMargin = Design.NEW_FEATURE_MARGIN;
+
+                    ShapeDrawable newFeatureTitleViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+                    newFeatureTitleViewBackground.getPaint().setColor(Design.getMainStyle());
+                    badgeView.setBackground(newFeatureTitleViewBackground);
+
                     ViewGroup.LayoutParams roundedViewLayoutParams = roundedView.getLayoutParams();
                     roundedViewLayoutParams.height = (int) (Design.HEIGHT_RATIO * DESIGN_NOTIFICATION_HEIGHT);
 
@@ -233,6 +255,12 @@ public class SideMenuListAdapter implements ListAdapter {
                         subscribeView.setVisibility(View.VISIBLE);
                     } else {
                         subscribeView.setVisibility(View.GONE);
+                    }
+
+                    if (menuItem.getAction() == MenuItem.MenuItemAction.ACCOUNT) {
+                        badgeView.setVisibility(View.VISIBLE);
+                    } else {
+                        badgeView.setVisibility(View.GONE);
                     }
 
                     break;

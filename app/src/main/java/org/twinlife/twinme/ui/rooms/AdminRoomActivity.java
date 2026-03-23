@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -22,9 +22,9 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -346,12 +346,7 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
         mNoAvatarView.setOnClickListener(v -> openMenuPhoto());
 
         View backClickableView = findViewById(R.id.admin_room_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -363,8 +358,26 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
         RoundedView backRoundedView = findViewById(R.id.admin_room_activity_back_rounded_view);
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
+        mScrollView = findViewById(R.id.admin_room_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
+
         mContentView = findViewById(R.id.admin_room_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
+
+        View editAvatarView = findViewById(R.id.admin_room_activity_edit_avatar_clickable_view);
+        editAvatarView.setOnClickListener(view -> openMenuPhoto());
+
+        layoutParams = editAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
 
         setBackground(mContentView);
 
@@ -383,8 +396,6 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
-
-        mContentView.setOnTouchListener((v, motionEvent) -> touchContent(motionEvent));
 
         TextView titleView = findViewById(R.id.admin_room_activity_title_view);
         Design.updateTextFont(titleView, Design.FONT_BOLD44);
@@ -432,11 +443,10 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
             }
         });
 
-        GestureDetector nameGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_NAME));
-        mNameView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = nameGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mNameView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterNameView = findViewById(R.id.admin_room_activity_counter_name_view);
@@ -484,11 +494,10 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
             }
         });
 
-        GestureDetector descriptionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_DESCRIPTION));
-        mDescriptionView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = descriptionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mDescriptionView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterDescriptionView = findViewById(R.id.admin_room_activity_counter_description_view);
@@ -516,13 +525,6 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
 
         settingsView.setOnClickListener(view -> onSettingsViewClick());
 
-        GestureDetector permissionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SETTINGS));
-        settingsView.setOnTouchListener((v, motionEvent) -> {
-            permissionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
-
         TextView settingsTextView = findViewById(R.id.admin_room_activity_settings_text_view);
         Design.updateTextFont(settingsTextView, Design.FONT_REGULAR34);
         settingsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -536,13 +538,6 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
         layoutParams.height = Design.ITEM_VIEW_HEIGHT;
 
         inviteView.setOnClickListener(view -> onInviteClick());
-
-        GestureDetector inviteViewGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_INVITE));
-        inviteView.setOnTouchListener((v, motionEvent) -> {
-            inviteViewGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
 
         TextView inviteTextView = findViewById(R.id.admin_room_activity_invite_text_view);
         Design.updateTextFont(inviteTextView, Design.FONT_REGULAR34);
@@ -558,13 +553,6 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
 
         roomCodeView.setOnClickListener(view -> onRoomCodeClick());
 
-        GestureDetector roomCodeViewGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_CODE));
-        roomCodeView.setOnTouchListener((v, motionEvent) -> {
-            roomCodeViewGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
-
         TextView roomCodeTextView = findViewById(R.id.admin_room_activity_code_text_view);
         Design.updateTextFont(roomCodeTextView, Design.FONT_REGULAR34);
         roomCodeTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -575,13 +563,6 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
         mSaveClickableView = findViewById(R.id.admin_room_activity_save_view);
         mSaveClickableView.setAlpha(0.5f);
         mSaveClickableView.setOnClickListener(v -> onSaveClick());
-
-        GestureDetector saveGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SAVE));
-        mSaveClickableView.setOnTouchListener((v, motionEvent) -> {
-            saveGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
 
         layoutParams = mSaveClickableView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

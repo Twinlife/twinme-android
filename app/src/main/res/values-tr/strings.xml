@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Kabul etmek</string>
     <string name="application_account_deleted">Hesabınız silindi, şimdi uygulamayı kaldırmalısınız.</string>
+    <string name="application_account_restored_error">Bu cihazın hesabı başka bir cihaza geri yüklendi. Uygulamayı kaldırmanız gerekiyor.</string>
     <string name="application_add_contact_no_profile">Bir kişiyi davet etmeden önce, sizi temsil eden bir profili tamamlamanız gerekir. Devam mı?</string>
     <string name="application_all">Tümü</string>
     <string name="application_appearance">Görünüm</string>
@@ -42,6 +43,7 @@
     <string name="application_display_all">Tümünü göster</string>
     <string name="application_do_not_display">Artık gösterme</string>
     <string name="application_edit">Düzenle</string>
+    <string name="application_error_code">Hata kodu: %1$s</string>
     <string name="application_error_file_not_found">Dosya bulunamadı.</string>
     <string name="application_error_media_unload">Medya yüklenemedi.</string>
     <string name="application_error_media_not_supported">Bu resim/video biçimi uygulama tarafından desteklenmiyor.</string>
@@ -110,6 +112,7 @@
     <string name="application_timeout_seconds">%1$d saniye</string>
     <string name="application_timeout_week">1 hafta</string>
     <string name="application_unknown_name">Bilinmeyen</string>
+    <string name="application_until">%1$s\'ye kadar</string>
     <string name="application_upgrade">Yükseltme Skred</string>
     <string name="application_webrtc_failure">WebRTC arızası</string>
     <string name="application_wrong_configuration">Hatalı yapılandırma</string>
@@ -142,16 +145,22 @@
     <string name="accept_invitation_activity_message">%1$s seninle bağlanmak istiyor</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Harici medyaya yedekleme</string>
+    <string name="account_activity_backup_restore">Yedekleme/Geri Yükleme</string>
+    <string name="account_activity_backup_verify">Yedeklemeyi Doğrula</string>
+    <string name="account_activity_backup_list">Yedekleme geçmişi</string>
     <string name="account_activity_conversations_content_title">Konuşma içeriği</string>
     <string name="account_activity_delete_account">Hesabınız, ilişkili tüm verilerle birlikte kalıcı olarak silinecektir. Onaylıyor musunuz?</string>
     <string name="account_activity_delete_account_confirmation">Hesabınızı silmek istediğinizden gerçekten emin misiniz?</string>
     <string name="account_activity_export_content">Harici ortama aktar</string>
     <string name="account_activity_message_first_part">Uygulamayı ilk kez yüklerken, uygulamayı yeniden yükledikten veya cihazı sıfırladıktan veya mevcut hesabı sildikten sonra yeni bir hesap oluşturulur.</string>
     <string name="account_activity_message_second_part">Önceki hesap ve verilerden hiçbir iz kalmaz, bu nedenle kişilerinizi yeniden davet etmeniz gerekir.</string>
+    <string name="account_activity_message_third_part">Bir hesabı silmek, o hesapta oluşturulan tüm yedeklemeleri geçersiz kılar ve bu hesaptan alınan bir yedeklemeyi bu veya başka bir cihaza geri yüklemeyi imkansız hale getirir.</string>
     <string name="account_activity_migration_message">Hesabınızı tüm ilişkili verilerle (kişiler, mesajlar, gruplar vb.) bir Android cihazdan diğerine gerçek zamanlı olarak aktarmak için bir hesap taşıma hizmeti mevcuttur. Böylece eski bir cihaz ile yeni bir cihaz arasında hesaplar arasında geçiş yapabilirsiniz.</string>
     <string name="account_activity_migration_start_from_another_device">Başka bir cihazdan</string>
     <string name="account_activity_migration_start_from_current_device">Cihazımdan</string>
     <string name="account_activity_migration_title">Hesap taşıma</string>
+    <string name="account_activity_restore">Harici medyaya geri yükleme</string>
     <string name="account_activity_title">Hesap</string>
     <string name="account_activity_transfer_between_devices">Cihazlar arasında transfer</string>
     <string name="account_activity_transfer_from_another_device">Başka bir cihazdan transfer</string>
@@ -205,7 +214,8 @@
     <string name="add_contact_activity_onboarding_message">Skred, arkadaşlarınızı tanımaz ve onları keşfedemez. Onları kişisel olarak, yakınınızdayken Skred ile veya başka bir yolla davet göndererek davet etmelisiniz.</string>
     <string name="add_contact_activity_scan_code">Davet QR kodunu tarayın</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Bu bağlantı bozuk.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Bu bağlantı yanlıştır.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Bu davet bağlantısının süresi dolmuştur.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Bu bağlantı yanlıştır.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Bu bağlantı uygulama tarafından yönetilmiyor.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Bu ilişki silindi.</string>
     <string name="add_contact_activity_scan_message_call_link">Bu bağlantı \"Click-to-call\"ya karşılık gelir</string>
@@ -213,6 +223,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Bu bağlantı bir hesap taşıma işlemine karşılık gelir</string>
     <string name="add_contact_activity_scan_message_transfer_link">Bu bağlantı bir çağrı aktarımına karşılık gelir</string>
     <string name="add_contact_activity_scan_title">Tarama</string>
+    <string name="add_contact_activity_share_image_message">%1$s\'yi kişi olarak eklemek için bu davet QR kodunu Skred ile içe aktarın veya tarayın.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s sizi Skred\'de özel bir ilişkiye girmeye davet ediyor - özel mesajlaşma uygulaması.</string>
+    <string name="add_contact_activity_share_message_part_2">Skred, eşler arası uçtan uca şifrelenmiş mesajlaşma hizmeti ve Yüksek Çözünürlüklü (HD) sesli/görüntülü aramalar sunar. Kayıt gerekmez.</string>
+    <string name="add_contact_activity_share_message_part_3">%1$s\'yi kişi olarak eklemek için bu URL\'yi mobil cihazınızda Skred ile açın:</string>
+    <string name="add_contact_activity_share_message_part_4">Alternatif olarak, ekli resimdeki davet QR kodunu Skred ile içe aktarabilir veya tarayabilirsiniz.</string>
+    <string name="add_contact_activity_share_title">%1$s sizi Skred\'ye davet ediyor</string>
     <string name="add_contact_activity_social_subtitle">mesaj, posta, sosyal ağ</string>
     <string name="add_contact_activity_social_title">Kodu bir uygulama yoluyla gönderme</string>
     <string name="add_contact_activity_title">Davet</string>
@@ -257,6 +273,44 @@
     <string name="authentified_relation_activity_title">Onaylı ilişki</string>
     <string name="authentified_relation_activity_to_be_certified_title">İlişkiyi onayla</string>
 
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Yedekleme</string>
+    <string name="backup_activity_beta_message_part_1">Yedekleme/geri yükleme hizmeti, genel kullanıma sunulmadan önce olası sorunları belirlemek amacıyla BETA testinde sunulmaktadır.</string>
+    <string name="backup_activity_beta_message_part_2">Bu hizmet, yalnızca hesap meta verilerini (profiller, kişiler, gruplar) harici depolamaya yedeklemek ve orijinal cihaz çalınırsa veya imha edilirse daha sonra başka bir cihazda geri yüklemek için tasarlanmıştır.</string>
+    <string name="backup_activity_beta_message_part_3">Hesap aktarma hizmeti, her iki cihaz da kullanılabilir olduğunda, tüm hesap verilerini (konuşmalar dahil) bir (eski) cihazdan başka bir (yeni) cihaza aktarmak için kullanılmalıdır.</string>
+    <string name="backup_activity_confirm_message">Yedeklemeyi geri yüklemek için, yukarıdaki 12 kelimeyi bu sırayla girmeniz ve şifre çözülmesine izin vermeniz gerekir.</string>
+    <string name="backup_activity_content">İçerik</string>
+    <string name="backup_activity_content_diff_added">Eklendi</string>
+    <string name="backup_activity_content_diff_updated">Değiştirildi</string>
+    <string name="backup_activity_content_diff_deleted">Silindi</string>
+    <string name="backup_activity_content_diff_message">Mevcut verilerinizle karşılaştırıldığında değişiklikler şunlardır:</string>
+    <string name="backup_activity_content_info">Yedeklemeler, konuşmaları, grupları, bildirimleri ve geçmişi içermez.</string>
+    <string name="backup_activity_error_words">Girilen kelimeler yedeklemenin şifresinin çözülmesine izin vermiyor.</string>
+    <string name="backup_activity_generate_word">Üretmek</string>
+    <string name="backup_activity_last_backup">%1$s Son yedekleme</string>
+    <string name="backup_activity_new_backup">Yeni yedekleme</string>
+    <string name="backup_activity_onboarding">Hesap verilerinizin (\"Spaces\", profiller, kişiler, \"click-to-call\") şifreli bir yedeğini oluşturun ve bu yedek bu cihaza veya başka bir cihaza geri yüklenebilir.</string>
+    <string name="backup_activity_reminder">Son yedeklemeniz 30 günden daha önce oluşturuldu.</string>
+    <string name="backup_activity_save_file_message">Yedekleme dosyasını istediğiniz cihaza kaydedin ve parolaları daha sonra geri yüklemek üzere saklayın.</string>
+    <string name="backup_activity_security">Güvenlik</string>
+    <string name="backup_activity_security_info">Yedekleme şifreleme anahtarı, restorasyon için gerekli olacak 12 kelimelik bir dizi ile temsil edilir.</string>
+    <string name="backup_activity_success">Yedekleme başarıyla tamamlandı!</string>
+    <string name="backup_activity_success_info">Bu yedeklemeyi geri yükleyebilmeniz için bu 12 kelime listesini saklayın.</string>
+    <string name="backup_activity_title">Yedekleme</string>
+    <string name="backup_activity_use_last_backup_words">Son yedekleme ile aynı kelime listesini kullanın.</string>
+    <string name="backup_activity_verify_completed">Doğrulama tamamlandı!</string>
+    <string name="backup_activity_verify_message">Ayrıca, bir yedekleme dosyasının bütünlüğünü ve içerdiği verilerin güncel olup olmadığını şuradan kontrol edebilirsiniz: Hesap/Yedeklemeyi doğrula.</string>
+    <string name="backup_activity_verify_up_to_date">Yedeğiniz güncel.</string>
+    <string name="backup_activity_verify_not_up_to_date">Yedeğiniz güncel değil.</string>
+    <string name="backup_activity_verify_words">Bir yedeklemeyi doğrulamak için, şifresini çözmek üzere 12 kelimelik diziyi girmeniz gerekir.</string>
+    <string name="backup_activity_wait_message">Yedekleme devam ederken bu ekrandan ayrılmayın.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Yedeklemelerimi geçersiz kıl</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Önceki tüm yedeklemeleriniz geçersiz hale gelecek ve artık geri yüklenemeyecektir.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Bu cihaza veya başka bir cihaza geri yüklenebilecek yeni bir yedekleme oluşturmayı unutmayın.</string>
+    <string name="backups_activity_no_backup_message">Bu cihazda yedekleme yapılmadı.</string>
+
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Tümü</string>
     <string name="calls_fragment_call_again_message">%1$s’yi geri aramak ister misiniz?</string>
@@ -283,7 +337,7 @@
     <string name="call_activity_camera_control_ask_message">Görüntülü görüşme sırasında kamerasını kontrol etmenize izin vermesi için %1$s ile iletişime geçin.</string>
     <string name="call_activity_camera_control_confirm_message">%1$s, arama sırasında kameranızı kontrol etmek istiyor. Kontrolü istediğiniz zaman geri alabilirsiniz.</string>
     <string name="call_activity_camera_control_denied">%1$s kamerasını kontrol etmenize izin vermiyor.</string>
-    <string name="call_activity_camera_control_message">%1$s\'nin kamerasının kontrolü</string>
+    <string name="call_activity_camera_control_message">%1$s’nin kamerasının kontrolü</string>
     <string name="call_activity_camera_control_needs_help">Yardıma mı ihtiyacınız var?</string>
     <string name="call_activity_camera_control_onboarding">Kişiniz izin verirse, görüntülü arama sırasında kameranın kontrolünü ele geçirebilir ve örneğin kendiniz yakınlaştırabilirsiniz. Bu, özellikle bir video gözetim kamerasını kontrol etmek için kullanışlıdır.</string>
     <string name="call_activity_camera_control_onboarding_part_2">Sevdiğiniz kişinin izniyle, görüşme sırasında kamerasını kontrol ederek ona uzaktan, kolay ve güvenli bir şekilde yardımcı olabilirsiniz.</string>
@@ -327,6 +381,7 @@
     <string name="call_activity_tag_speaker_mute">Hoparlörün sesini kapat</string>
     <string name="call_activity_transfert_call_message">Devam eden çağrı aktarıldı.</string>
     <string name="call_activity_try_to_call_back">Geri aramayı deneyin.</string>
+    <string name="call_activity_waiting_conference_call">Henüz kimse aramaya katılmadı. Lütfen bekleyin…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera zaten kullanılıyor</string>
@@ -483,15 +538,30 @@
 
     <!-- ConversationsFragment -->
     <string name="conversations_fragment_no_conversation_message">Uçtan uca şifrelenmiş iletiler, ara dağıtım sunucusu olmadan doğrudan aygıttan aygıta eşler arası olarak değiştirilir = bulutta iz yok.</string>
-    <string name="conversations_fragment_no_result_found">\'%1$s\' için sonuç bulunamadı.</string>
+    <string name="conversations_fragment_no_result_found">’%1$s’ için sonuç bulunamadı.</string>
     <string name="conversations_fragment_start">Bir konuşma başlatın</string>
     <string name="conversations_fragment_title">Konuşmalar</string>
     <string name="conversations_fragment_you">Sen</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Arama yapılandırması</string>
+    <string name="create_external_call_activity_call_type">Çağrı Türü</string>
+    <string name="create_external_call_activity_conference_call_description">Doğrudan bir tarayıcıdan konferans görüşmesine katılın. İş veya aile toplantıları için idealdir.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Konferans görüşmesi</string>
+    <string name="create_external_call_activity_conference_call_title">Konferans görüşmesi</string>
+    <string name="create_external_call_activity_continuous_link_description">Bağlantı geçerliliğinde kısıtlama yok</string>
+    <string name="create_external_call_activity_continuous_link_title">Kalıcı</string>
+    <string name="create_external_call_activity_create_message">Çağrı konusunun adını, resmini ve açıklamasını girin.</string>
+    <string name="create_external_call_activity_delete_link_setting">Bu bağlantı belirtilen sürenin ardından geçerliliğini yitirecektir.</string>
+    <string name="create_external_call_activity_direct_call_description">Uygulamaya sahip olmayan birinden doğrudan cihazınızda arama alın.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Doğrudan</string>
+    <string name="create_external_call_activity_direct_call_title">Doğrudan arama</string>
+    <string name="create_external_call_activity_group_call_description">En fazla 8 katılımcı</string>
     <string name="create_external_call_activity_link_validity">Bağlantı Geçerliliği</string>
-    <string name="create_external_call_activity_message">Çağrı konusunun adını, resmini ve açıklamasını girin.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\", konukların uygulamayı yüklemeden sizi bir tarayıcıdan aramasına olanak tanır.</string>
+    <string name="create_external_call_activity_message">Bu profil, sizi bu \"click-to-call\" bağlantısıyla arayacak olan konuklara görüntülenir.</string>
+    <string name="create_external_call_activity_name_required">Bu \"Click-to-call\" özelliğini temsil etmek için bir isim ve resim gereklidir.</string>
+    <string name="create_external_call_activity_notification_setting">İlk katılımcı konferansa katılır katılmaz bildirim alın.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" özelliği, misafirlerin uygulamayı yüklemeden bir tarayıcıdan sizi aramasına veya konferans görüşmesine (\"Click-to-meet\") katılmasına olanak tanır.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Her örneğin, çağrının konusunu temsil eden bir adı, resmi ve açıklaması vardır; örneğin:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">müşteri hizmetleriniz</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">sattığın araba</string>
@@ -510,7 +580,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Aramada onları temsil eden varsayılan adı (Misafir) değiştirin</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Web sayfasındaki \"Ara\" butonuna basarak sizi arayın.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Aramadan sonra sizi geri aramak için web sayfasını açık tutabilirler.</string>
+    <string name="create_external_call_activity_onboarding_title_2">\"Click-to-call\" özelliğini ayarlayın</string>
+    <string name="create_external_call_activity_onboarding_title_3">\"Click-to-call\" özelliğini paylaşın</string>
+    <string name="create_external_call_activity_onboarding_title_4">\"Click-to-call\" özelliğini kullanın</string>
     <string name="create_external_call_activity_placeholder">Konu (Yardım, Duyuru, Toplantı, Kapı Zili,…)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Bağlantının geçerli olduğu günleri/saatleri özelleştirin</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periyodik</string>
+    <string name="create_external_call_activity_unique_link_description">"Bağlantı geçerliliğinin başlangıç "</string>
+    <string name="create_external_call_activity_unique_link_title">Tek Kullanımlık</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Üyeleri davet et</string>
@@ -716,6 +793,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Bu eylem, bu "click-to-call" bağlantısıyla ilişkili mevcut davet kodunu geçersiz kılar. Onaylamak?</string>
     <string name="invitation_call_activity_generate_code_title">Bu bağlantı için yeni bir kod oluşturun</string>
+    <string name="invitation_call_activity_invite_meeting_message">%1$s web adresini açın, veya QR kodunu tarayın, “%2$s” toplantısına katılmak için.</string>
     <string name="invitation_call_activity_invite_message">“%2$s”yi aramak için %1$s web adresini açın veya QR Kodunu tarayın.</string>
     <string name="invitation_call_activity_message">Bu "click-to-call" kodunu, web veya mobil uygulamadan sizi arayabilecek biriyle paylaşın.</string>
     <string name="invitation_call_activity_save_message">“%1$s”yi aramak için bu QR Kodunu tarayın.</string>
@@ -777,6 +855,7 @@
     <string name="notification_center_audio_message_received">Yeni sesli mesaj</string>
     <string name="notification_center_cancel">Reddet</string>
     <string name="notification_center_cleanup_conversation">Bazı eski mesajlar silindi.</string>
+    <string name="notification_center_conference_join_call">Bir katılımcı aramaya katıldı.</string>
     <string name="notification_center_deleted_contact">Kişi Silindi</string>
     <string name="notification_center_file_message">sana bir dosya yolladı</string>
     <string name="notification_center_file_message_received">Yeni dosya</string>
@@ -786,6 +865,7 @@
     <string name="notification_center_invitation_group">sizi bir gruba katılmaya davet ediyor.</string>
     <string name="notification_center_invitation_received">Yeni davetiye</string>
     <string name="notification_center_invitation_received_group">Yeni grup daveti</string>
+    <string name="notification_center_join_call">%1$s aramaya katıldı</string>
     <string name="notification_center_join_group">Grubun üyesisin</string>
     <string name="notification_center_message_received">Yeni Mesaj</string>
     <string name="notification_center_missed_audio_call_to">%1$s kişisine yapılan sesli arama kaçırıldı</string>
@@ -955,6 +1035,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Uygulamanın anlık bildirimler almasına izin verin.</string>
     <string name="quality_of_service_activity_warning_run_background">Uygulamanın arka planda çalışmasına izin verin.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ hesap yedeğini geri yüklemek için bu cihaza twinme+ yüklenmiş olmalıdır.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Yedeklemeyi yapan cihazda oturum hala açık.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Yedeklemeyi bu yeni cihaza geri yüklerseniz, yedeklemenin yapıldığı cihazın hesabı otomatik olarak geçersiz kılınır.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Hesabınızı yeni bir cihaza aktarmak istiyorsanız ve hala eski hesabınız varsa, yedeklemeyi geri yüklemek yerine \"hesap taşıma\" işlemini kullanmanız tercih edilir, çünkü bu işlem konuşmaları, grupları, bildirimleri ve geçmişi de aktarır.</string>
+    <string name="restore_activity_confirm">Geçerli hesap verilerini yedeklemeden aşağıdaki verilerle değiştirmek istediğinizden emin misiniz?</string>
+    <string name="restore_activity_confirm_restore">Bu yedeklemeyi geri yüklemek istiyor musunuz?</string>
+    <string name="restore_activity_content_contact_deleted_message">Yedeklemeden sonra silinen veriler geri yüklenemez.</string>
+    <string name="restore_activity_content_profile_reset">Davet kodu değiştirildi.</string>
+    <string name="restore_activity_content_profile_reset_message">Yedeklenen profille ilişkili davet kodu geçersiz. Geri yükleme işlemi sırasında yeni bir davet kodu oluşturulacaktır.</string>
+    <string name="restore_activity_enter_words">Yedeklemenin şifresini çözmeye izin veren 12 kelime serisini girin.</string>
+    <string name="restore_activity_error_message">Yedekleme geri yüklenirken hata oluştu.</string>
+    <string name="restore_activity_error_message_verify_backup">Yedeklemeyi doğrulama hatası.</string>
+    <string name="restore_activity_file_not_supported">Yedekleme dosyası \"skrdbckp\" biçiminde olmalıdır.</string>
+    <string name="restore_activity_more_recent_backup">Aynı hesapla daha yeni bir yedekleme yapıldı.</string>
+    <string name="restore_activity_onboarding">Bir yedeklemenin geri yüklenmesi geçerli hesap verilerinin yerini alacaktır.</string>
+    <string name="restore_activity_onboarding_words">Bir yedeklemeyi geri yüklemek için, şifre çözülmesine izin veren 12 kelimelik seriyi girmeniz gerekir.</string>
+    <string name="restore_activity_onboarding_verify">Bir yedeklemenin geçerli ve mevcut verilerinizle güncel olduğunu doğrulayın.</string>
+    <string name="restore_activity_paste">Panodan kelimelerin listesini yapıştırın.</string>
+    <string name="restore_activity_paste_error">Geçersiz kelime listesi.</string>
+    <string name="restore_activity_restore">Geri yükleme</string>
+    <string name="restore_activity_select_backup">Bir yedekleme seçin</string>
+    <string name="restore_activity_state_restore_account">Hesap geri yükleniyor...</string>
+    <string name="restore_activity_state_restore_data">Veriler geri yükleniyor...</string>
+    <string name="restore_activity_state_restore_starting">Geri yükleme başlatılıyor.</string>
+    <string name="restore_activity_state_restore_verify_account">Hesap doğrulama…</string>
+    <string name="restore_activity_state_restore_verify_data">Veri doğrulama…</string>
+    <string name="restore_activity_state_restore_verify_starting">Doğrulama başlıyor…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Onay bekleniyor.</string>
+    <string name="restore_activity_success">Restorasyon başarıyla tamamlandı!</string>
+    <string name="restore_activity_success_message">Uygulamayı kapatın ve yeni verilere erişmek için yeniden başlatın.</string>
+    <string name="restore_activity_title">Restorasyon</string>
+    <string name="restore_activity_verify_same_account">Doğrulama işlemi, yedekleme için kullanılan aynı cihazda gerçekleştirilmelidir.</string>
+    <string name="restore_activity_warning">Bu yedeklemenin geri yüklenmesi, tüm geçerli hesap verilerinin yedekten verilerle değiştirilir.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Yönetici olarak tanımla</string>
     <string name="room_members_activity_delete_message">Bu üyeyi kaldırmayı onaylayın</string>
@@ -1008,15 +1123,18 @@
     <string name="settings_activity_ephemeral_title">Kaybolan mesaj</string>
     <string name="settings_activity_image_title">Fotoğraf</string>
     <string name="settings_activity_message_properties_title">Mesaj özellikleri</string>
-    <string name="settings_activity_permissions_title">İZİNLER</string>
+    <string name="settings_activity_message_reactions_notification">Mesaj tepkileri hakkında bildirim</string>
     <string name="settings_activity_reset_default_value">Varsayılan ayarlara sıfırla</string>
     <string name="settings_activity_reset_preferences_button_title">Varsayılanlara sıfırla</string>
     <string name="settings_activity_reset_preferences_message">Bildirim ayarlarını uygulama varsayılanlarına sıfırla.</string>
     <string name="settings_activity_reset_preferences_title">Tercihleri sıfırla</string>
+    <string name="settings_activity_permissions_title">İZİNLER</string>
+    <string name="settings_activity_silent_mode">Sessiz mod</string>
     <string name="settings_activity_silent_sound">Sessiz</string>
     <string name="settings_activity_sound_enabled_title">SES BİLDİRİMLERİ</string>
     <string name="settings_activity_system_notifications_title">Sistem bildirimleri</string>
     <string name="settings_activity_system_settings_title">Sistem ayarları</string>
+    <string name="settings_activity_turn_off_notification_sounds">Bildirim seslerini kapat</string>
     <string name="settings_activity_video_call_category_title">Görüntülü aramalar</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Zil sesi adı</string>
     <string name="settings_activity_video_call_notification_title">Zil sesi</string>
@@ -1064,7 +1182,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Click-to-call kodu</string>
+    <string name="show_call_activity_conference_call_information">Sizi aramak veya tarayıcıdan konferansa katılmak için bu bağlantıyı paylaşın.</string>
     <string name="show_call_activity_information_code">Harici aramaları almak için bu kodu paylaşın.</string>
+    <string name="show_call_activity_meeting_organizer">Bu toplantının organizatörü</string>
     <string name="show_call_activity_schedule_call">Zamanlanmış çağrı</string>
     <string name="show_call_activity_schedule_from">%1$s tarihinden itibaren</string>
     <string name="show_call_activity_schedule_from_to">%1$s - %2$s - %3$s arası</string>
@@ -1167,12 +1287,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Gizli reklam</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Potansiyel alıcıların uygulamayı yüklemeden sizi aramasına olanak tanıyan bir bağlantıyı ilana ekleyin.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Duyuru</string>
-    <string name="template_click_to_call_activity_template_help">Yardım</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Yardım</string>
+    <string name="template_click_to_call_activity_template_default_description">Çağrı bağlantısını gerektiği gibi özelleştirin.</string>
+    <string name="template_click_to_call_activity_template_help">Müşteri Hizmetleri</string>
+    <string name="template_click_to_call_activity_template_help_description">Tarayıcıdan müşteri hizmetlerinizi aramak için bağlantı.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Müşteri Hizmetleri</string>
+    <string name="template_click_to_call_activity_template_job">İş Görüşmesi</string>
+    <string name="template_click_to_call_activity_template_job_description">İlgilenen işe alımcıların sizi görüşme için aramasına olanak tanıyan bağlantı.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">İş Görüşmesi</string>
     <string name="template_click_to_call_activity_template_meeting">Toplantı</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Tarayıcıdan konferansa katılmak için bir bağlantı paylaşın.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Toplantı</string>
+    <string name="template_click_to_call_activity_template_profile_description">Uygulamayı yüklemeden sizi aramak için bağlantı.</string>
     <string name="template_click_to_call_activity_template_video_bell">Görüntülü kapı zili</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Teslimat sürücüsünün talimatlar için sizi aramasına izin verin.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Kapı Zili</string>
 
     <!-- TemplateSpaceActivity -->

@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Aanvaarden</string>
     <string name="application_account_deleted">Uw account is verwijderd, u moet de applicatie nu verwijderen.</string>
+    <string name="application_account_restored_error">Het account van dit apparaat is hersteld naar een ander apparaat. U moet de app verwijderen.</string>
     <string name="application_add_contact_no_profile">U moet een profiel invullen dat u vertegenwoordigt, voordat u een contactpersoon uitnodigt. Doorgaan?</string>
     <string name="application_all">Allemaal</string>
     <string name="application_appearance">Uiterlijk</string>
@@ -42,6 +43,7 @@
     <string name="application_display_all">Alles weergeven</string>
     <string name="application_do_not_display">Niet meer weergeven</string>
     <string name="application_edit">Bewerk</string>
+    <string name="application_error_code">Foutcode: %1$s</string>
     <string name="application_error_file_not_found">Het bestand is niet gevonden.</string>
     <string name="application_error_media_unload">Media kan niet worden geladen.</string>
     <string name="application_error_media_not_supported">Deze afbeelding/video-indeling wordt niet ondersteund door de applicatie.</string>
@@ -110,6 +112,7 @@
     <string name="application_timeout_seconds">%1$d seconden</string>
     <string name="application_timeout_week">1 week</string>
     <string name="application_unknown_name">Onbekend</string>
+    <string name="application_until">Tot %1$s</string>
     <string name="application_upgrade">Skred upgraden</string>
     <string name="application_webrtc_failure">WebRTC is mislukt</string>
     <string name="application_wrong_configuration">Configuratie is onjuist</string>
@@ -142,16 +145,22 @@
     <string name="accept_invitation_activity_message">%1$s wil verbinding met je maken</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Back -up naar externe media</string>
+    <string name="account_activity_backup_restore">Back -up / herstellen</string>
+    <string name="account_activity_backup_verify">Een back-up verifiëren</string>
+    <string name="account_activity_backup_list">Back-upgeschiedenis</string>
     <string name="account_activity_conversations_content_title">Gespreksinhoud</string>
     <string name="account_activity_delete_account">Uw account, samen met alle bijbehorende gegevens, wordt permanent verwijderd. Bevestigen?</string>
     <string name="account_activity_delete_account_confirmation">Weet u echt zeker dat u uw account wilt verwijderen?</string>
     <string name="account_activity_export_content">Exporteren naar externe media</string>
     <string name="account_activity_message_first_part">Er wordt een nieuw account aangemaakt bij de eerste installatie van de app, na het opnieuw installeren van de app, het resetten van het apparaat of het verwijderen van het huidige account.</string>
     <string name="account_activity_message_second_part">Er blijft geen spoor van vorig account en gegevens over, dus u moet uw contacten opnieuw uitnodigen.</string>
+    <string name="account_activity_message_third_part">"Als u een account verwijdert, worden alle back-ups die op dat account zijn gemaakt ongeldig. Het is dan onmogelijk om een "</string>
     <string name="account_activity_migration_message">Er is een accountmigratieservice beschikbaar om uw account met alle bijbehorende gegevens (contacten, berichten, groepen, enz.) in realtime van het ene Android-apparaat naar het andere over te zetten. U kunt dus van account wisselen tussen een oud apparaat en een nieuw apparaat.</string>
     <string name="account_activity_migration_start_from_another_device">Vanaf een ander apparaat</string>
     <string name="account_activity_migration_start_from_current_device">Vanaf mijn apparaat</string>
     <string name="account_activity_migration_title">Accountmigratie</string>
+    <string name="account_activity_restore">Herstel van externe media</string>
     <string name="account_activity_title">Account</string>
     <string name="account_activity_transfer_between_devices">Overdracht tussen apparaten</string>
     <string name="account_activity_transfer_from_another_device">Overdracht vanaf een ander apparaat</string>
@@ -187,7 +196,7 @@
     <string name="account_migration_scanner_activity_message_older_version_target">Het doelapparaat gebruikt een oude, incompatibele versie van het besturingssysteem, waardoor al uw relaties tijdens de overdracht verloren gaan. Wilt u toch doorgaan met de overdracht?</string>
     <string name="account_migration_scanner_activity_scan_title">Scannen</string>
     <string name="account_migration_scanner_activity_migration_start_from_another_device_message">Om de migratie te starten, scant u deze QR-code vanaf het andere apparaat</string>
-    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Scan de QR-code die wordt weergegeven in het gedeelte \'Account / Overdracht vanaf een ander apparaat\' van het zijmenu van het andere apparaat.</string>
+    <string name="account_migration_scanner_activity_migration_start_from_current_device_message">Scan de QR-code die wordt weergegeven in het gedeelte ’Account / Overdracht vanaf een ander apparaat’ van het zijmenu van het andere apparaat.</string>
     <string name="account_migration_scanner_activity_stop_scan_title">Stop scan</string>
 
     <!-- AddCallParticipantActivity -->
@@ -205,7 +214,8 @@
     <string name="add_contact_activity_onboarding_message">Skred kent je vrienden niet en kan ze niet ontdekken. Je moet ze persoonlijk uitnodigen, met Skred als ze in de buurt zijn, of door ze op een andere manier een uitnodiging te sturen.</string>
     <string name="add_contact_activity_scan_code">Scan uitnodiging QR-code</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Deze link is beschadigd.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Deze link is onjuist.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Deze uitnodigingslink is verlopen.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Deze link is onjuist.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Deze link wordt niet beheerd door de applicatie.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Deze relatie is verwijderd.</string>
     <string name="add_contact_activity_scan_message_call_link">Deze link komt overeen met een \"Click to call\"</string>
@@ -213,6 +223,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Deze link komt overeen met een accountmigratie</string>
     <string name="add_contact_activity_scan_message_transfer_link">Deze link komt overeen met een oproepdoorschakeling</string>
     <string name="add_contact_activity_scan_title">Scannen</string>
+    <string name="add_contact_activity_share_image_message">Importeer of scan deze uitnodigings-QR-code met Skred om \"%1$s\" als contactpersoon toe te voegen.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s nodigt je uit om een privérelatie aan te gaan op Skred.</string>
+    <string name="add_contact_activity_share_message_part_2">Skred is een peer-to-peer, end-to-end versleutelde berichtenservice en biedt spraak-/videogesprekken in hoge definitie (HD). Registratie is niet vereist.</string>
+    <string name="add_contact_activity_share_message_part_3">Open deze URL met Skred op je mobiele apparaat om \"%1$s\" als contactpersoon toe te voegen:</string>
+    <string name="add_contact_activity_share_message_part_4">Je kunt ook de uitnodigings-QR-code in de bijgevoegde afbeelding importeren of scannen met Skred.</string>
+    <string name="add_contact_activity_share_title">%1$s nodigt je uit voor Skred</string>
     <string name="add_contact_activity_social_subtitle">bericht, mail, sociaal netwerk</string>
     <string name="add_contact_activity_social_title">Stuur de code via een applicatie</string>
     <string name="add_contact_activity_title">Uitnodiging</string>
@@ -256,6 +272,44 @@
     <string name="authentified_relation_activity_start">Start certificering</string>
     <string name="authentified_relation_activity_title">Gecertificeerde relatie</string>
     <string name="authentified_relation_activity_to_be_certified_title">Certificeer de relatie</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Back -up</string>
+    <string name="backup_activity_beta_message_part_1">De back-up-/herstelservice wordt momenteel in bètatests aangeboden om potentiële problemen te identificeren vóór de algemene release.</string>
+    <string name="backup_activity_beta_message_part_2">Deze service is bedoeld om alleen accountmetadata (profielen, contacten, groepen) naar externe opslag te back-uppen, zodat deze later op een ander apparaat kunnen worden hersteld als het origineel wordt gestolen of vernietigd.</string>
+    <string name="backup_activity_beta_message_part_3">De accountoverdrachtservice moet worden gebruikt om alle accountgegevens (inclusief gesprekken) van een (oud) apparaat naar een ander (nieuw) apparaat over te zetten, wanneer beide apparaten beschikbaar zijn.</string>
+    <string name="backup_activity_confirm_message">Om de back -up te herstellen, moet u in die volgorde de 12 woorden hierboven invoeren, waardoor deze kan worden gedecodeerd.</string>
+    <string name="backup_activity_content">Inhoud</string>
+    <string name="backup_activity_content_diff_added">Toegevoegd</string>
+    <string name="backup_activity_content_diff_updated">Gewijzigd</string>
+    <string name="backup_activity_content_diff_deleted">Verwijderd</string>
+    <string name="backup_activity_content_diff_message">Dit zijn de wijzigingen ten opzichte van uw huidige gegevens:</string>
+    <string name="backup_activity_content_info">Back-ups bevatten geen gesprekken, groepen, meldingen en geschiedenis.</string>
+    <string name="backup_activity_error_words">De ingevoerde woorden zorgen er niet voor dat de back-up kan worden gedecodeerd.</string>
+    <string name="backup_activity_generate_word">Genereren</string>
+    <string name="backup_activity_last_backup">Laatste back -up op %1$s</string>
+    <string name="backup_activity_new_backup">Nieuwe back-up</string>
+    <string name="backup_activity_onboarding">Maak een versleutelde back-up van accountgegevens (\"Spaces\", profielen, contacten, \"click-to-call\") die kan worden hersteld naar dit apparaat of een ander apparaat.</string>
+    <string name="backup_activity_reminder">Uw laatste back-up is meer dan 30 dagen geleden gemaakt.</string>
+    <string name="backup_activity_save_file_message">Sla het back-upbestand op het apparaat van uw keuze op en bewaar de wachtwoorden voor later herstel.</string>
+    <string name="backup_activity_security">Beveiliging</string>
+    <string name="backup_activity_security_info">De back-up-encryptiesleutel wordt weergegeven door een reeks van 12 woorden die nodig zijn voor herstel.</string>
+    <string name="backup_activity_success">Back -up is met succes voltooid!</string>
+    <string name="backup_activity_success_info">Houd deze lijst met 12 woorden bij, zodat u deze back -up kunt herstellen.</string>
+    <string name="backup_activity_title">Back -up</string>
+    <string name="backup_activity_use_last_backup_words">Gebruik dezelfde lijst met woorden als voor de laatste back -up.</string>
+    <string name="backup_activity_verify_completed">Verificatie voltooid!</string>
+    <string name="backup_activity_verify_message">U kunt ook de integriteit van een back-upbestand en de actualiteit van de gegevens controleren via: Account/Een back-up verifiëren.</string>
+    <string name="backup_activity_verify_up_to_date">Uw back-up is up-to-date.</string>
+    <string name="backup_activity_verify_not_up_to_date">Uw back-up is niet up-to-date.</string>
+    <string name="backup_activity_verify_words">Om een ​​back-up te verifiëren, moet u de reeks van 12 woorden invoeren om deze te ontsleutelen.</string>
+    <string name="backup_activity_wait_message">Verlaat dit scherm niet terwijl de back -up aan de gang is.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Mijn back-ups ongeldig maken</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Al uw eerdere back-ups worden ongeldig en kunnen niet meer worden hersteld.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Vergeet niet een nieuwe back-up te maken, die u naar dit apparaat of een ander apparaat kunt herstellen.</string>
+    <string name="backups_activity_no_backup_message">Er is geen back-up gemaakt op dit apparaat.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Allemaal</string>
@@ -327,6 +381,7 @@
     <string name="call_activity_tag_speaker_mute">Demp de luidspreker</string>
     <string name="call_activity_transfert_call_message">Het lopende gesprek is doorverbonden.</string>
     <string name="call_activity_try_to_call_back">Probeer terug te bellen.</string>
+    <string name="call_activity_waiting_conference_call">Er heeft zich nog niemand bij het gesprek aangesloten. Even geduld alstublieft…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Camera is al in gebruik</string>
@@ -483,15 +538,30 @@
 
     <!-- ConversationsFragment -->
     <string name="conversations_fragment_no_conversation_message">End-to-end versleutelde berichten worden peer-to-peer uitgewisseld, rechtstreeks van apparaat naar apparaat, zonder tussenliggende distributieserver = geen sporen in de cloud.</string>
-    <string name="conversations_fragment_no_result_found">Geen resultaten gevonden voor \'%1$s\'.</string>
+    <string name="conversations_fragment_no_result_found">Geen resultaten gevonden voor ’%1$s’.</string>
     <string name="conversations_fragment_start">Begin een gesprek</string>
     <string name="conversations_fragment_title">Gesprekken</string>
     <string name="conversations_fragment_you">U</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Oproepconfiguratie</string>
+    <string name="create_external_call_activity_call_type">Oproeptype</string>
+    <string name="create_external_call_activity_conference_call_description">Neem rechtstreeks deel aan een conference call vanuit een browser. Ideaal voor zakelijke of familiebijeenkomsten.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Conference call</string>
+    <string name="create_external_call_activity_conference_call_title">Conference call</string>
+    <string name="create_external_call_activity_continuous_link_description">Geen beperkingen op de geldigheid van de link</string>
+    <string name="create_external_call_activity_continuous_link_title">Permanent</string>
+    <string name="create_external_call_activity_create_message">Voer de naam, afbeelding en beschrijving van het oproeponderwerp in.</string>
+    <string name="create_external_call_activity_delete_link_setting">Deze link is na de aangegeven periode niet meer geldig.</string>
+    <string name="create_external_call_activity_direct_call_description">Ontvang een oproep rechtstreeks op uw apparaat van iemand die de app niet heeft.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Direct</string>
+    <string name="create_external_call_activity_direct_call_title">Directe oproep</string>
+    <string name="create_external_call_activity_group_call_description">Maximaal 8 deelnemers</string>
     <string name="create_external_call_activity_link_validity">Geldigheid van de link</string>
-    <string name="create_external_call_activity_message">Voer de naam, afbeelding en beschrijving van het oproeponderwerp in.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Met \"Click-to-call\" kunnen gasten u vanuit een browser bellen zonder de applicatie te installeren.</string>
+    <string name="create_external_call_activity_message">Dit profiel wordt getoond aan gasten die u bellen met deze ‘click-to-call’-link.</string>
+    <string name="create_external_call_activity_name_required">Een naam en afbeelding zijn vereist voor deze \"Click-to-call\"-functie.</string>
+    <string name="create_external_call_activity_notification_setting">Ontvang een melding zodra de eerste deelnemer deelneemt aan de conference call.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Met \'Click-to-call\' kunnen gasten u bellen of deelnemen aan een conference call (\'Click-to-meet\') vanuit een browser zonder de app te installeren.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Elke instantie heeft een naam, afbeelding en beschrijving, die het onderwerp van de oproep vertegenwoordigt, zoals:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">uw klantenservice</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">de auto die u verkoopt</string>
@@ -510,7 +580,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Wijzig de standaardnaam (Gast) die hen tijdens het gesprek vertegenwoordigt</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Bel u door op de webpagina op de knop \"Bellen\" te drukken.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Na het gesprek kunnen ze de webpagina openhouden om u terug te bellen.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Een \'Click-to-call\' instellen</string>
+    <string name="create_external_call_activity_onboarding_title_3">Een \'Click-to-call\' delen</string>
+    <string name="create_external_call_activity_onboarding_title_4">Een \'Click-to-call\' gebruiken</string>
     <string name="create_external_call_activity_placeholder">Onderwerp (Hulp, Aankondiging, Ontmoeting, Deurbel, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Pas de dagen/tijden aan waarop de link geldig is</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periodiek</string>
+    <string name="create_external_call_activity_unique_link_description">Stel de begin- en einddatum van de link in</string>
+    <string name="create_external_call_activity_unique_link_title">Eenmalig gebruik</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Nodig leden uit</string>
@@ -560,7 +637,7 @@
     <string name="create_transfert_call_activity_name_placeholder">Mijn overschrijvingen</string>
 
     <!-- DeleteAccountActivity -->
-    <string name="deleted_account_activity_confirm_message">Typ de letters \'OK\' hieronder om het verwijderen van het account te bevestigen.</string>
+    <string name="deleted_account_activity_confirm_message">Typ de letters ’OK’ hieronder om het verwijderen van het account te bevestigen.</string>
     <string name="deleted_account_activity_delete">Account verwijderen</string>
     <string name="deleted_account_activity_warning">Aandacht‼️</string>
 
@@ -716,6 +793,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Deze actie maakt de huidige uitnodigingscode ongeldig die is gekoppeld aan deze "click-to-call"-link. Bevestigen?</string>
     <string name="invitation_call_activity_generate_code_title">Genereer een nieuwe code voor deze link</string>
+    <string name="invitation_call_activity_invite_meeting_message">Open het webadres %1$s, of scan de QR-code, om deel te nemen aan de vergadering “%2$s”.</string>
     <string name="invitation_call_activity_invite_message">Open het webadres %1$s of scan de QR-code, om \"%2$s\" te bellen.</string>
     <string name="invitation_call_activity_message">Deel deze "click-to-call"-code met iemand die u vervolgens kan bellen, via internet of een mobiele app.</string>
     <string name="invitation_call_activity_save_message">Scan deze QR-code om "%1$s" te bellen.</string>
@@ -777,6 +855,7 @@
     <string name="notification_center_audio_message_received">Nieuw audiobericht</string>
     <string name="notification_center_cancel">Wijs af</string>
     <string name="notification_center_cleanup_conversation">Een aantal oude berichten zijn verwijderd.</string>
+    <string name="notification_center_conference_join_call">Eén deelnemer nam deel aan het gesprek.</string>
     <string name="notification_center_deleted_contact">Contactpersoon verwijderd</string>
     <string name="notification_center_file_message">Stuurde u een bestand</string>
     <string name="notification_center_file_message_received">Nieuw bestand</string>
@@ -786,6 +865,7 @@
     <string name="notification_center_invitation_group">nodigt je uit om lid te worden van een groep.</string>
     <string name="notification_center_invitation_received">Nieuwe uitnodiging</string>
     <string name="notification_center_invitation_received_group">Nieuwe groepsuitnodiging</string>
+    <string name="notification_center_join_call">%1$s is zojuist aan het gesprek toegevoegd</string>
     <string name="notification_center_join_group">Je bent lid van de groep</string>
     <string name="notification_center_message_received">Nieuw bericht</string>
     <string name="notification_center_missed_audio_call_to">Gemiste audio oproep op %1$s</string>
@@ -931,7 +1011,7 @@
     <string name="proxy_activity_format">Geldige proxy-URL-indelingen:</string>
     <string name="proxy_activity_invalid_format">Ongeldige URL-indeling</string>
     <string name="proxy_activity_limit">"Je hebt de limiet van het aantal toegestane proxy's bereikt (%1$d). Om een "</string>
-    <string name="proxy_activity_list">Mijn proxy\'s</string>
+    <string name="proxy_activity_list">Mijn proxy’s</string>
     <string name="proxy_activity_list_information">Gebruik een proxy uit de onderstaande lijst, alleen als de applicatie geen verbinding kan maken met de service zonder proxy.</string>
     <string name="proxy_activity_onboarding">Wanneer de toegang tot de signaalservers van de app in uw land geblokkeerd is, kunnen proxyservers deze blokkades in veel gevallen omzeilen en u in staat stellen om privé te communiceren. Naast de in-app proxyservers kunt u ook uw eigen proxyserver aanmaken of een proxyserver van iemand anders gebruiken. Proxyservers hebben onder geen enkele omstandigheid toegang tot de inhoud die wordt uitgewisseld.</string>
     <string name="proxy_activity_information">Gebruik een proxy alleen als je geen verbinding kunt maken met de service via standaard wifi of mobiele netwerken.</string>
@@ -954,6 +1034,41 @@
     <string name="quality_of_service_activity_warning_background_data">Sta toe dat de app mobiele data op de achtergrond gebruikt.</string>
     <string name="quality_of_service_activity_warning_receive_notification">Sta toe dat de app pushmeldingen ontvangt.</string>
     <string name="quality_of_service_activity_warning_run_background">Laat de app op de achtergrond draaien.</string>
+
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ moet op dit apparaat geïnstalleerd zijn om een ​​back-up van uw twinme+-account te kunnen herstellen.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Het apparaat waarop de back-up is gemaakt, is nog steeds aangemeld.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Als u de back-up herstelt naar dit nieuwe apparaat, wordt het account van het apparaat waarop de back-up is gemaakt, automatisch ongeldig gemaakt.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Als u uw account wilt overzetten naar een nieuw apparaat en u nog steeds het oude hebt, is het beter om de bewerking \"Accountmigratie\" te gebruiken in plaats van een back-up te herstellen, omdat hiermee ook gesprekken, groepen, meldingen en geschiedenis worden overgezet.</string>
+    <string name="restore_activity_confirm">Weet u zeker dat u de huidige accountgegevens wilt vervangen door de volgende gegevens van de back -up?</string>
+    <string name="restore_activity_confirm_restore">Wilt u deze back-up toch herstellen?</string>
+    <string name="restore_activity_content_contact_deleted_message">Gegevens die na de back-up zijn verwijderd, kunnen niet worden hersteld.</string>
+    <string name="restore_activity_content_profile_reset">Uitnodigingscode gewijzigd.</string>
+    <string name="restore_activity_content_profile_reset_message">De uitnodigingscode die is gekoppeld aan het back-upprofiel is ongeldig. Er wordt een nieuwe uitnodigingscode gegenereerd tijdens het herstelproces.</string>
+    <string name="restore_activity_enter_words">Voer de serie van 12 woorden in die de back -up kunnen decoderen.</string>
+    <string name="restore_activity_error_message">Fout bij het herstellen van de back-up.</string>
+    <string name="restore_activity_error_message_verify_backup">Fout bij het verifiëren van de back-up.</string>
+    <string name="restore_activity_file_not_supported">Het back-upbestand moet de indeling \"skrdbckp\" hebben.</string>
+    <string name="restore_activity_more_recent_backup">Er is een recentere back-up gemaakt met hetzelfde account.</string>
+    <string name="restore_activity_onboarding">Het herstellen van een back -up vervangt de huidige accountgegevens.</string>
+    <string name="restore_activity_onboarding_words">"Om een "</string>
+    <string name="restore_activity_onboarding_verify">Controleer of een back-up geldig en up-to-date is met uw huidige gegevens.</string>
+    <string name="restore_activity_paste">Plak de lijst met woorden van het klembord.</string>
+    <string name="restore_activity_paste_error">Ongeldige woordenlijst.</string>
+    <string name="restore_activity_restore">Herstellen</string>
+    <string name="restore_activity_select_backup">Selecteer een back-up</string>
+    <string name="restore_activity_state_restore_account">Account herstellen...</string>
+    <string name="restore_activity_state_restore_data">Gegevens herstellen...</string>
+    <string name="restore_activity_state_restore_starting">Herstellen starten.</string>
+    <string name="restore_activity_state_restore_verify_account">Accountverificatie…</string>
+    <string name="restore_activity_state_restore_verify_data">Gegevensverificatie…</string>
+    <string name="restore_activity_state_restore_verify_starting">Verificatie gestart…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Wachten op bevestiging.</string>
+    <string name="restore_activity_success">Restauratie is met succes voltooid!</string>
+    <string name="restore_activity_success_message">Sluit de applicatie en start deze opnieuw op om toegang te krijgen tot de nieuwe gegevens.</string>
+    <string name="restore_activity_title">Herstel</string>
+    <string name="restore_activity_verify_same_account">De verificatie moet worden uitgevoerd op hetzelfde apparaat dat voor de back-up is gebruikt.</string>
+    <string name="restore_activity_warning">Het herstellen van deze back -up vervangt alle huidige accountgegevens door de gegevens van de back -up.</string>
 
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Definieer als beheerder</string>
@@ -1008,15 +1123,18 @@
     <string name="settings_activity_ephemeral_title">Verdwijnend bericht</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Berichteigenschappen</string>
-    <string name="settings_activity_permissions_title">TOESTEMMINGEN</string>
+    <string name="settings_activity_message_reactions_notification">Meldingen bij reacties op berichten</string>
     <string name="settings_activity_reset_default_value">Reset naar standaardinstellingen</string>
     <string name="settings_activity_reset_preferences_button_title">Reset naar standaardwaarden</string>
     <string name="settings_activity_reset_preferences_message">Reset de meldingsinstellingen naar de standaardinstellingen van de toepassing.</string>
     <string name="settings_activity_reset_preferences_title">Reset voorkeuren</string>
+    <string name="settings_activity_permissions_title">TOESTEMMINGEN</string>
+    <string name="settings_activity_silent_mode">Stille modus</string>
     <string name="settings_activity_silent_sound">Stil</string>
     <string name="settings_activity_sound_enabled_title">GELUIDSMELDINGEN</string>
     <string name="settings_activity_system_notifications_title">Systeemmeldingen</string>
     <string name="settings_activity_system_settings_title">Systeeminstellingen</string>
+    <string name="settings_activity_turn_off_notification_sounds">Meldingsgeluiden uitschakelen</string>
     <string name="settings_activity_video_call_category_title">Video-oproepen</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Naam van de beltoon</string>
     <string name="settings_activity_video_call_notification_title">Ringtone</string>
@@ -1064,7 +1182,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Click-to-call-code</string>
+    <string name="show_call_activity_conference_call_information">Deel deze link om u te bellen of deel te nemen aan een conferentiegesprek vanuit een browser.</string>
     <string name="show_call_activity_information_code">Deel deze code om externe oproepen te ontvangen.</string>
+    <string name="show_call_activity_meeting_organizer">Organisator van deze bijeenkomst</string>
     <string name="show_call_activity_schedule_call">Gepland oproep</string>
     <string name="show_call_activity_schedule_from">vanaf %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s van %2$s tot %3$s</string>
@@ -1167,12 +1287,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Geclassificeerde advertentie</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Voeg een link toe aan een advertentie zodat potentiële kopers u kunnen bellen zonder de app te installeren.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Aankondiging</string>
-    <string name="template_click_to_call_activity_template_help">Hulp</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Hulp</string>
+    <string name="template_click_to_call_activity_template_default_description">Pas een bellink naar wens aan.</string>
+    <string name="template_click_to_call_activity_template_help">Klantenservice</string>
+    <string name="template_click_to_call_activity_template_help_description">Link om uw klantenservice te bellen vanuit een browser.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Klantenservice</string>
+    <string name="template_click_to_call_activity_template_job">Sollicitatiegesprek</string>
+    <string name="template_click_to_call_activity_template_job_description">Link waarmee geïnteresseerde recruiters u kunnen bellen voor een sollicitatiegesprek.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Sollicitatiegesprek</string>
     <string name="template_click_to_call_activity_template_meeting">Ontmoeting</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Deel een link om deel te nemen aan een conferentiegesprek vanuit een browser.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Ontmoeting</string>
+    <string name="template_click_to_call_activity_template_profile_description">Link om je te bellen zonder de app te installeren.</string>
     <string name="template_click_to_call_activity_template_video_bell">Video deurbel</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Sta de bezorger toe om u te bellen voor instructies.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Deurbel</string>
 
     <!-- TemplateSpaceActivity -->

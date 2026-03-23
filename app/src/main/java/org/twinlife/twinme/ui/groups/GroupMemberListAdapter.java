@@ -254,7 +254,7 @@ public class GroupMemberListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 ViewGroup.LayoutParams layoutParams = convertView.getLayoutParams();
                 layoutParams.height = mItemHeight;
                 convertView.setLayoutParams(layoutParams);
-                return new UIContactViewHolder<UIContact>(mService, convertView, mNameId, mAvatarId, 0, 0, 0, 0, mSeparatorId, Design.FONT_REGULAR34);
+                return new UIContactViewHolder<UIContact>(mService, convertView, mNameId, mAvatarId, 0, 0, 0, 0, 0, mSeparatorId, Design.FONT_REGULAR34);
             }
             case INVITATION: {
                 convertView = inflater.inflate(mResource, parent, false);

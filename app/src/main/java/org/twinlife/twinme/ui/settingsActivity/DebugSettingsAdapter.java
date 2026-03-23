@@ -158,6 +158,15 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
             case PROXY:
                 return mActivity.getString(R.string.proxy_activity_title);
 
+            case BACKUP:
+                return mActivity.getString(R.string.account_activity_backup);
+
+            case RESTORE:
+                return mActivity.getString(R.string.account_activity_restore);
+
+            case VERIFY_BACKUP:
+                return mActivity.getString(R.string.account_activity_backup_verify);
+
             default:
                 return "";
         }

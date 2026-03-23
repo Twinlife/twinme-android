@@ -1,42 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="128dp">
 
-    <org.twinlife.twinme.utils.CircularImageView
-        android:id="@+id/annotation_info_item_avatar_view"
-        android:scaleType="fitCenter"
-        android:layout_centerVertical="true"
-        app:layout_aspectRatio="100%"
-        app:layout_heightPercent="69.35%"
-        app:layout_marginStartPercent="5.6%" />
 
-    <TextView
-        android:id="@+id/annotation_info_item_name_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/annotation_info_item_avatar_view"
-        app:layout_marginStartPercent="4.26%" />
-
-    <ImageView
-        android:id="@+id/annotation_info_item_reaction_image_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/reaction_like"
-        app:layout_heightPercent="46.67%"
-        app:layout_aspectRatio="100%"
-        app:layout_marginEndPercent="4.26%" />
-
-    <View
-        android:id="@+id/annotation_info_item_separator_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignStart="@+id/annotation_info_item_name_view"
-        android:layout_alignParentBottom="true" />
+        android:layout_height="match_parent">
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/annotation_info_item_avatar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/annotation_info_item_name_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/annotation_info_item_avatar_view"
+            app:layout_constraintEnd_toStartOf="@id/annotation_info_item_date_reaction_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/annotation_info_item_reaction_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/reaction_like"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/annotation_info_item_separator_view"/>
+
+        <TextView
+            android:id="@+id/annotation_info_item_date_reaction_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textAlignment="gravity"
+            android:gravity="center_vertical|end"
+            android:textColor="?attr/font_default_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/annotation_info_item_separator_view" />
+
+        <View
+            android:id="@+id/annotation_info_item_separator_view"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="?attr/separator_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

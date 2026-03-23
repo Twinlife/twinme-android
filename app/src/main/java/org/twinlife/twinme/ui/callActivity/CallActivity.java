@@ -194,6 +194,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private static final int HIDE_MENU_VIDEO_CALL_DELAY = 3000;
 
     private static final int SCALE_ANIMATION_DURATION = 400;
+    private static final int SCALE_MESSAGE_ANIMATION_REPEAT_DELAY = 3000;
     private static final int SCALE_ANIMATION_REPEAT_DELAY = 7000;
 
     private static final float DESIGN_MAX_NAME_WIDTH = 280f;
@@ -407,6 +408,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private CallCertifyView mCallCertifyView;
     private SelectAudioSourceView mSelectAudioSourceView;
     private CallHoldView mCallHoldView;
+    private CallInfoView mCallInfoView;
     private TextView mNameView;
     private View mCertifiedImageView;
     private Chronometer mChronometerView;
@@ -450,6 +452,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private boolean mShowCertifyView = false;
     private boolean mHideMenuOnVideoCall = false;
     private boolean mShowRemoteCameraOnboardingView = false;
+    private boolean mStartPopMessageAnimation = false;
 
     @Nullable
     private CallStatus mMode;
@@ -513,6 +516,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private WordCheckChallenge mWordCheckChallenge;
 
     private final List<AnimatorSet> mAnimatorSets = new ArrayList<>();
+
+    private AnimatorSet mUnreadMessageAnimatorSet;
 
     //
     // Override TwinlifeActivity methods
@@ -906,6 +911,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             animatorSet.removeAllListeners();
         }
 
+        if (mUnreadMessageAnimatorSet != null) {
+            mUnreadMessageAnimatorSet.removeAllListeners();
+        }
+
         super.onDestroy();
     }
 
@@ -1012,6 +1021,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                         intent.putExtra(CallService.PARAM_CONTACT_ID, contactId);
                         intent.putExtra(CallService.PARAM_CALL_MODE, CallStatus.OUTGOING_CALL);
                         intent.putExtra(CallService.PARAM_CALL_ADD_PARTICIPANT, true);
+                        intent.putExtra(CallService.PARAM_CALL_TYPE, Originator.Type.CONTACT);
                         startService(intent);
                     }
                 }
@@ -1247,6 +1257,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         ConnectionState state = (ConnectionState) intent.getSerializableExtra(CallService.CALL_SERVICE_CONNECTION_STATE);
         mHasCamera = intent.getBooleanExtra(CallService.CALL_HAS_CAMERA, false);
         CallStatus mode = (CallStatus) intent.getSerializableExtra(CallService.CALL_SERVICE_STATE);
+
         if (CallStatus.isActive(mode)) {
 
             mMode = mode;
@@ -1502,7 +1513,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         if (cameraMute != mIsCameraMute) {
             mIsCameraMute = cameraMute;
-
             mCallMenuView.setIsCameraMuted(mIsCameraMute);
             mCallMenuView.updateMenu();
         }
@@ -1839,6 +1849,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (callParticipantView.isRemoteParticipant()) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             callParticipantRemoteView.setParticipant(participant);
+            if (mIsCallReceiver) {
+                callParticipantRemoteView.setCallReceiverAvatar(mOriginatorAvatar);
+            }
             callParticipantRemoteView.updateViews();
         }
 
@@ -1963,6 +1976,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             if (mCallConversationView.getVisibility() == View.GONE) {
                 hapticFeedback();
                 mUnreadMessageImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_new_message_icon, null));
+
+                popMessageAnimation();
+                if (!mMenuVisibility) {
+                    setMenuVisibility(true);
+                }
             }
 
             String name = "";
@@ -2029,6 +2047,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Intent intent = new Intent(this, CallService.class);
             intent.setAction(CallService.ACTION_OUTGOING_CALL);
             intent.putExtra(CallService.PARAM_CALL_MODE, mMode);
+            intent.putExtra(CallService.PARAM_CALL_TYPE, mOriginator.getType());
 
             if (mOriginator != null && mOriginator.getType() == Originator.Type.GROUP) {
                 intent.putExtra(CallService.PARAM_GROUP_ID, mOriginatorId);
@@ -2357,6 +2376,16 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mCallHoldView.bringToFront();
         mCallHoldView.enableAddToCall(false);
 
+        mCallInfoView = findViewById(R.id.call_activity_call_info_view);
+
+        menuViewLayoutParams = new PercentRelativeLayout.LayoutParams(MENU_VIEW_WIDTH,
+                DEFAULT_CONTAINER_HEIGHT);
+        menuViewLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN);
+        menuViewLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        menuViewLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        mCallInfoView.setLayoutParams(menuViewLayoutParams);
+        mCallInfoView.bringToFront();
+
         mAddParticipantView = findViewById(R.id.call_activity_add_participant_view);
         mAddParticipantView.setOnClickListener(v -> onAddParticipantClick());
         mAddParticipantView.setVisibility(View.GONE);
@@ -2531,7 +2560,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 callHoldHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
             }
 
-            marginLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN + playerHeight + callHoldHeight);
+            int callInfoHeight = 0;
+            if (CallStatus.isWaiting(mMode)) {
+                callInfoHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
+            }
+
+            marginLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN + playerHeight + callHoldHeight + callInfoHeight);
 
             ((ViewGroup) mHeaderView).getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mHeaderView.getLayoutParams();
@@ -2539,10 +2573,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             mCallStreamingAudioView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallStreamingAudioView.getLayoutParams();
-            marginLayoutParams.bottomMargin = (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN) + PARTICIPANTS_BOTTOM_MARGIN + callHoldHeight;
+            marginLayoutParams.bottomMargin = (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN) + PARTICIPANTS_BOTTOM_MARGIN + callHoldHeight + callInfoHeight;
 
             mCallHoldView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallHoldView.getLayoutParams();
+            marginLayoutParams.bottomMargin = (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN) + PARTICIPANTS_BOTTOM_MARGIN + callInfoHeight;
+
+            mCallInfoView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallInfoView.getLayoutParams();
             marginLayoutParams.bottomMargin = (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN) + PARTICIPANTS_BOTTOM_MARGIN;
 
             mCallMenuView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -2568,7 +2606,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 callHoldHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
             }
 
-            marginLayoutParams.bottomMargin = playerHeight + callHoldHeight;
+            int callInfoHeight = 0;
+            if (CallStatus.isWaiting(mMode)) {
+                callInfoHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
+            }
+
+            marginLayoutParams.bottomMargin = playerHeight + callHoldHeight + callInfoHeight;
 
             ((ViewGroup) mHeaderView).getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mHeaderView.getLayoutParams();
@@ -2576,10 +2619,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             mCallStreamingAudioView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallStreamingAudioView.getLayoutParams();
-            marginLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + callHoldHeight;
+            marginLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + callHoldHeight + callInfoHeight;
 
             mCallHoldView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallHoldView.getLayoutParams();
+            marginLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN + callInfoHeight;
+
+            mCallInfoView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallInfoView.getLayoutParams();
             marginLayoutParams.bottomMargin = PARTICIPANTS_BOTTOM_MARGIN;
 
             mCallMenuView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -2683,6 +2730,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mCallMenuView.setVisibility(View.VISIBLE);
                 mMessageView.setText(getString(R.string.audio_call_activity_connecting));
                 mAnswerCallView.setVisibility(View.GONE);
+                mCallInfoView.setVisibility(View.GONE);
                 break;
 
             case INCOMING_CALL:
@@ -2696,6 +2744,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mCallMenuView.setVisibility(View.GONE);
                 mMessageView.setVisibility(View.VISIBLE);
                 mAnswerCallView.setVisibility(View.VISIBLE);
+                mCallInfoView.setVisibility(View.GONE);
                 break;
 
             case OUTGOING_CALL:
@@ -2704,6 +2753,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             case IN_VIDEO_BELL:
                 mCallMenuView.setVisibility(View.VISIBLE);
                 mMessageView.setVisibility(View.VISIBLE);
+                mCallInfoView.setVisibility(View.GONE);
                 break;
 
             case IN_CALL:
@@ -2736,6 +2786,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mBackClickableView.setVisibility(View.VISIBLE);
                 mMessageView.setVisibility(View.GONE);
                 mAnswerCallView.setVisibility(View.GONE);
+                mCallInfoView.setVisibility(View.GONE);
 
                 if (mChronometerView.getVisibility() != View.VISIBLE) {
                     if (mAvatarAnimatorSet != null) {
@@ -2766,9 +2817,19 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                 break;
 
+            case CALL_WAITING:
+                mAnswerCallView.setVisibility(View.GONE);
+
+                Handler callInfoHandler = new Handler();
+                callInfoHandler.postDelayed(this::showCallInfo, CERTIFY_DELAY);
+
+                mCallInfoView.updateMessage(getString(R.string.call_activity_waiting_conference_call));
+                break;
+
             case TERMINATED:
                 mCallMenuView.setVisibility(View.GONE);
                 mCallStreamingAudioView.setVisibility(View.GONE);
+                mCallInfoView.setVisibility(View.GONE);
                 mNameView.setVisibility(View.GONE);
                 mCertifiedImageView.setVisibility(View.GONE);
                 mChronometerView.setVisibility(View.GONE);
@@ -2797,6 +2858,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         mCallMenuView.setCallStatus(mMode);
         mCallMenuView.setIsInCall(CallStatus.isActive(mMode));
+
         if (!mVideo && !CallStatus.isActive(mMode)) {
             mIsCameraMute = true;
             mCallMenuView.setIsCameraMuted(true);
@@ -2839,7 +2901,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 }
 
                 // This is an audio call, the camera is not active.
-                if (mMode == CallStatus.IN_CALL) {
+                if (mMode == CallStatus.IN_CALL && !mIsCallReceiver) {
                     mIsCameraMute = true;
                     mCallMenuView.setIsCameraMuted(true);
                 }
@@ -3396,6 +3458,16 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mCallConversationView.reloadData();
         mCallConversationView.setVisibility(View.VISIBLE);
         mUnreadMessageImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_message_icon, null));
+
+        if (mStartPopMessageAnimation) {
+            mStartPopMessageAnimation = false;
+
+            if (mUnreadMessageAnimatorSet != null) {
+                mUnreadMessageAnimatorSet.cancel();
+                mUnreadMessageAnimatorSet.removeAllListeners();
+                mUnreadMessageAnimatorSet = null;
+            }
+        }
 
         mCallConversationView.bringToFront();
 
@@ -4341,6 +4413,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     callParticipantRemoteView.setColor(getRandomColor());
                     callParticipantRemoteView.setInitVideoInFitMode(getTwinmeApplication().isVideoInFitMode());
 
+                    if (mIsCallReceiver) {
+                        callParticipantRemoteView.setCallReceiverAvatar(mOriginatorAvatar);
+                    }
+
                     AbstractCallParticipantView.OnCallParticipantClickListener onCallParticipantClickListener = new AbstractCallParticipantView.OnCallParticipantClickListener() {
                         @Override
                         public void onSimpleTap() {
@@ -4417,6 +4493,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 } else {
                     CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView) callParticipantView;
                     callParticipantRemoteView.setParticipant(callParticipant);
+
+                    if (mIsCallReceiver) {
+                        callParticipantRemoteView.setCallReceiverAvatar(mOriginatorAvatar);
+                    }
                 }
             }
 
@@ -4494,7 +4574,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                 mCallParticipantLocaleView.setOnCallParticipantScaleListener(onCallParticipantScaleListener);
 
-                mCallParticipantLocaleView.setName(mOriginator.getIdentityName());
+                if (mIsCallReceiver && (mOriginator.getIdentityName() == null || mOriginator.getIdentityName().isEmpty())) {
+                    mCallParticipantLocaleView.setName(mOriginator.getName());
+                } else {
+                    mCallParticipantLocaleView.setName(mOriginator.getIdentityName());
+                }
+
                 mCallParticipantLocaleView.setAvatar(mOriginatorIdentityAvatar);
                 mCallParticipantLocaleView.setMicroMute(mIsAudioMute);
                 mCallParticipantLocaleView.setIsLocationShared(CallService.isLocationStartShared());
@@ -4634,7 +4719,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mAddParticipantImageView.setAlpha(0.5f);
         }
 
-        if (!mCallParticipantViewList.isEmpty()) {
+        if (!mCallParticipantViewList.isEmpty() && !CallStatus.isWaiting(currentStatus)) {
             mNoParticipantView.setVisibility(View.GONE);
         } else {
             mNoParticipantView.setVisibility(View.VISIBLE);
@@ -5181,10 +5266,15 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             callHoldHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
         }
 
+        int callInfoHeight = 0;
+        if (CallStatus.isWaiting(mMode)) {
+            callInfoHeight =  DEFAULT_CONTAINER_HEIGHT + PARTICIPANTS_BOTTOM_MARGIN;
+        }
+
         if (mMenuVisibility) {
-            return height - (BUTTON_HEIGHT + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN) + PARTICIPANTS_BOTTOM_MARGIN + playerHeight + callHoldHeight);
+            return height - (BUTTON_HEIGHT + (MENU_VIEW_HEIGHT - DEFAULT_MENU_VIEW_BOTTOM_MARGIN) + PARTICIPANTS_BOTTOM_MARGIN + playerHeight + callHoldHeight + callInfoHeight);
         } else {
-            return height - SIDE_MARGIN - playerHeight - callHoldHeight;
+            return height - SIDE_MARGIN - playerHeight - callHoldHeight - callInfoHeight;
         }
     }
 
@@ -5987,6 +6077,59 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         Window window = getWindow();
         window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+
+    }
+
+    private void popMessageAnimation() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "popMessageAnimation");
+        }
+
+        if (!mStartPopMessageAnimation && mUnreadMessageAnimatorSet == null) {
+            mStartPopMessageAnimation = true;
+            PropertyValuesHolder propertyValuesHolderX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 1.4f);
+            PropertyValuesHolder propertyValuesHolderY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 1.4f);
+
+            ObjectAnimator scaleViewAnimator = ObjectAnimator.ofPropertyValuesHolder(mUnreadMessageImageView, propertyValuesHolderX, propertyValuesHolderY);
+            scaleViewAnimator.setRepeatMode(ValueAnimator.REVERSE);
+            scaleViewAnimator.setRepeatCount(1);
+
+            mUnreadMessageAnimatorSet = new AnimatorSet();
+            mUnreadMessageAnimatorSet.playSequentially(scaleViewAnimator);
+            mUnreadMessageAnimatorSet.setStartDelay(SCALE_MESSAGE_ANIMATION_REPEAT_DELAY);
+            mUnreadMessageAnimatorSet.setDuration(SCALE_ANIMATION_DURATION);
+            mUnreadMessageAnimatorSet.start();
+            mUnreadMessageAnimatorSet.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(@NonNull Animator animator) {
+                }
+
+                @Override
+                public void onAnimationEnd(@NonNull Animator animator) {
+                    if (mStartPopMessageAnimation && mUnreadMessageAnimatorSet != null) {
+                        mUnreadMessageAnimatorSet.start();
+                    }
+                }
+
+                @Override
+                public void onAnimationCancel(@NonNull Animator animator) {
+                }
+
+                @Override
+                public void onAnimationRepeat(@NonNull Animator animator) {
+                }
+            });
+        }
+    }
+
+    private void showCallInfo() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showCallInfo");
+        }
+
+        if (CallStatus.isWaiting(mMode)) {
+            mCallInfoView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void backPressed() {

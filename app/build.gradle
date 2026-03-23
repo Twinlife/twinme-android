@@ -23,9 +23,10 @@ android {
         applicationId 'mobi.skred.app'
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 350
-        versionName "22.3.1"
+        versionCode 352
+        versionName "23.2"
         manifestPlaceholders.domainName = "twin.me"
+        manifestPlaceholders.backupExtension = "skrdbckp"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
     }
@@ -53,6 +54,7 @@ android {
             buildConfigField "String", "FLAVOR", '""'
             buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "false"
             buildConfigField "String", "INVITATION_PARAM_ID", '"skredcodeId"'
+            buildConfigField "String", "BACKUP_EXTENSION", '"skrdckp"'
 
             manifestPlaceholders.domainName = "skred.mobi"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme"
@@ -74,6 +76,7 @@ android {
 
             applicationIdSuffix ".staging"
             buildConfigField "String", 'APPLICATION_ID_SUFFIX', '".staging"'
+            buildConfigField "String", "BACKUP_EXTENSION", '"twmbckp"'
         }
 
         // Dev settings and build parameters.
@@ -91,9 +94,12 @@ android {
             buildConfigField "String", "FLAVOR", '"Development"'
             manifestPlaceholders.domainName = "skred.mobi"
             buildConfigField "String", "INVITATION_PARAM_ID", '"skredcodeId"'
+            buildConfigField "String", "BACKUP_EXTENSION", '"skrdbckp"'
 
             manifestPlaceholders.domainName = "skred.mobi"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme.debug"
+
+            getIsDefault().set(true)
         }
     }
 

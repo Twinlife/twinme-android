@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -14,9 +14,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +29,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.models.CallReceiver;
@@ -41,6 +38,7 @@ import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -51,13 +49,12 @@ import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.ClickToCallView;
-import org.twinlife.twinme.utils.CommonUtils;
-import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -191,7 +188,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
     //
 
     @Override
-    public void onGetCallReceiver(@Nullable CallReceiver callReceiver) {
+    public void onGetCallReceiver(@Nullable CallReceiver callReceiver, @Nullable Bitmap avatar) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetCallReceiver: " + callReceiver);
         }
@@ -199,6 +196,16 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         mCallReceiver = callReceiver;
 
         updateExternalCall();
+    }
+
+    @Override
+    public void onGetCallReceiverNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCallReceiverNotFound");
+        }
+
+        // @todo report an error message.
+        finish();
     }
 
     @Override
@@ -372,7 +379,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         if (mCallReceiver.isTransfer()) {
             subject = getString(R.string.premium_services_activity_transfert_title);
         } else {
-            subject = getString(R.string.add_contact_activity_invite_subject);
+            subject = mCallReceiver.getName();
         }
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
@@ -400,8 +407,14 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
             intent.setAction(Intent.ACTION_SEND);
         }
 
-        String message = String.format(getString(R.string.invitation_call_activity_invite_message),
-                mInvitationLink.uri, name);
+        String message;
+        if (mCallReceiver.isConference()) {
+            message = String.format(getString(R.string.invitation_call_activity_invite_meeting_message),
+                    mInvitationLink.uri, name);
+        } else {
+            message = String.format(getString(R.string.invitation_call_activity_invite_message),
+                    mInvitationLink.uri, name);
+        }
 
         if (mScheduleMessage != null) {
             message += mScheduleMessage;
@@ -536,86 +549,169 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
 
             if (!schedule.getTimeRanges().isEmpty()) {
 
-                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
-                Date scheduleStartDate = dateTimeRange.start.date;
-                Time scheduleStartTime = dateTimeRange.start.time;
-                Date scheduleEndDate = dateTimeRange.end.date;
-                Time ScheduleEndTime = dateTimeRange.end.time;
+                if (schedule.getTimeRanges().get(0) instanceof DateTimeRange) {
+                    DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                    Date scheduleStartDate = dateTimeRange.start.date;
+                    Time scheduleStartTime = dateTimeRange.start.time;
+                    Date scheduleEndDate = dateTimeRange.end.date;
+                    Time ScheduleEndTime = dateTimeRange.end.time;
 
-                final Calendar startCalendar = new DateTime(scheduleStartDate, scheduleStartTime).toCalendar(TimeZone.getDefault());
-                final Calendar endCalendar = new DateTime(scheduleEndDate, ScheduleEndTime).toCalendar(TimeZone.getDefault());
+                    final Calendar startCalendar = new DateTime(scheduleStartDate, scheduleStartTime).toCalendar(TimeZone.getDefault());
+                    final Calendar endCalendar = new DateTime(scheduleEndDate, ScheduleEndTime).toCalendar(TimeZone.getDefault());
 
-                String formatDate = "yyyyMMdd'T'HHmmss'Z'";
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+                    String formatDate = "yyyyMMdd'T'HHmmss";
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+                    simpleDateFormat.setTimeZone(TimeZone.getDefault());
 
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("BEGIN:VCALENDAR\n");
-                stringBuilder.append("PRODID:");
-                stringBuilder.append(getString(R.string.application_name));
-                stringBuilder.append("\n");
-                stringBuilder.append("BEGIN:VEVENT\n");
-                stringBuilder.append("UID:");
-                stringBuilder.append(mCallReceiver.getId());
-                stringBuilder.append("\n");
-                stringBuilder.append("SEQUENCE:2");
-                stringBuilder.append("\n");
-                stringBuilder.append("DTSTAMP:");
-                stringBuilder.append(simpleDateFormat.format(new java.util.Date()));
-                stringBuilder.append("\n");
-                stringBuilder.append("DTSTART:");
-                stringBuilder.append(simpleDateFormat.format(startCalendar.getTime()));
-                stringBuilder.append("\n");
-                stringBuilder.append("DTEND:");
-                stringBuilder.append(simpleDateFormat.format(endCalendar.getTime()));
-                stringBuilder.append("\n");
-                stringBuilder.append("SUMMARY:");
-                stringBuilder.append(mCallReceiver.getName());
-                stringBuilder.append("\n");
-                stringBuilder.append("LOCATION:");
-                stringBuilder.append(mInvitationLink.uri);
-                stringBuilder.append("\n");
-                if (mCallReceiver.getDescription() != null) {
-                    stringBuilder.append("DESCRIPTION:");
-                    stringBuilder.append(mCallReceiver.getDescription());
-                    stringBuilder.append("\n");
-                }
-                stringBuilder.append("END:VEVENT\n");
-                stringBuilder.append("END:VCALENDAR\n");
-
-                StringBuilder messgaeStringBuilder = new StringBuilder();
-                formatDate = "YYYY/MM/dd HH:mm";
-                SimpleDateFormat messageDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-                messgaeStringBuilder.append("\n\n");
-                messgaeStringBuilder.append(getString(R.string.create_external_call_activity_link_validity));
-                messgaeStringBuilder.append("\n");
-                messgaeStringBuilder.append(getString(R.string.show_call_activity_settings_start));
-                messgaeStringBuilder.append(" : ");
-                messgaeStringBuilder.append(messageDateFormat.format(startCalendar.getTime()));
-                messgaeStringBuilder.append("\n");
-                messgaeStringBuilder.append(getString(R.string.show_call_activity_settings_end));
-                messgaeStringBuilder.append(" : ");
-                messgaeStringBuilder.append(messageDateFormat.format(endCalendar.getTime()));
-
-                mScheduleMessage = messgaeStringBuilder.toString();
-
-                File file = null;
-                try {
-                    file = File.createTempFile("skred_call", ".ics", getCacheDir());
-
-                    try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-                        fileOutputStream.write(stringBuilder.toString().getBytes(StandardCharsets.UTF_8));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append("BEGIN:VCALENDAR\r\n");
+                    stringBuilder.append("VERSION:2.0\r\n");
+                    stringBuilder.append("PRODID:");
+                    stringBuilder.append(getString(R.string.application_name));
+                    stringBuilder.append("\r\n");
+                    stringBuilder.append("METHOD:REQUEST\r\n");
+                    stringBuilder.append("BEGIN:VEVENT\r\n");
+                    stringBuilder.append("UID:");
+                    stringBuilder.append(mCallReceiver.getId());
+                    stringBuilder.append("\r\n");
+                    if (mCallReceiver.getLong(UIConfigExternalCall.PROPERTY_CALL_RECEIVER_UPDATE_COUNTER, 0) > 0) {
+                        stringBuilder.append("SEQUENCE:");
+                        stringBuilder.append(mCallReceiver.getLong(UIConfigExternalCall.PROPERTY_CALL_RECEIVER_UPDATE_COUNTER, 0));
+                        stringBuilder.append("\r\n");
                     }
-                    return file;
-                } catch (Exception exception) {
-                    Log.e(LOG_TAG, "exception = ", exception);
-                    if (file != null && !file.delete()) {
-                        Log.w(LOG_TAG, "Cannot remove file");
+                    stringBuilder.append("DTSTAMP:");
+                    stringBuilder.append(simpleDateFormat.format(new java.util.Date()));
+                    stringBuilder.append("\r\n");
+                    stringBuilder.append("DTSTART;TZID=");
+                    stringBuilder.append(TimeZone.getDefault().getID());
+                    stringBuilder.append(":");
+                    stringBuilder.append(simpleDateFormat.format(startCalendar.getTime()));
+                    stringBuilder.append("\r\n");
+                    stringBuilder.append("DTEND;TZID=");
+                    stringBuilder.append(TimeZone.getDefault().getID());
+                    stringBuilder.append(":");
+                    stringBuilder.append(simpleDateFormat.format(endCalendar.getTime()));
+                    stringBuilder.append("\r\n");
+                    stringBuilder.append("SUMMARY:");
+                    stringBuilder.append(mCallReceiver.getName());
+                    stringBuilder.append("\r\n");
+                    stringBuilder.append("LOCATION:");
+                    stringBuilder.append(mInvitationLink.uri);
+                    stringBuilder.append("\r\n");
+                    if (mCallReceiver.getDescription() != null && !mCallReceiver.getDescription().isEmpty()) {
+                        stringBuilder.append("DESCRIPTION:");
+                        stringBuilder.append(getDescriptionForICSFile());
+                        stringBuilder.append("\r\n");
+                    }
+                    stringBuilder.append("END:VEVENT\r\n");
+                    stringBuilder.append("END:VCALENDAR\r\n");
+                    
+                    StringBuilder messageStringBuilder = new StringBuilder();
+                    formatDate = "YYYY/MM/dd HH:mm";
+                    SimpleDateFormat messageDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+                    messageStringBuilder.append("\n\n");
+                    messageStringBuilder.append(getString(R.string.create_external_call_activity_link_validity));
+                    messageStringBuilder.append("\n");
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(messageDateFormat.format(startCalendar.getTime()));
+                    messageStringBuilder.append("\n");
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(messageDateFormat.format(endCalendar.getTime()));
+
+                    mScheduleMessage = messageStringBuilder.toString();
+
+                    File file = null;
+                    try {
+                        formatDate = "YYYY-MM-dd";
+                        SimpleDateFormat fileDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+                        file = File.createTempFile("skred-call-" + fileDateFormat.format(startCalendar.getTime()), ".ics", getCacheDir());
+
+                        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                            fileOutputStream.write(stringBuilder.toString().getBytes(StandardCharsets.UTF_8));
+                        }
+                        return file;
+                    } catch (Exception exception) {
+                        Log.e(LOG_TAG, "exception = ", exception);
+                        if (file != null && !file.delete()) {
+                            Log.w(LOG_TAG, "Cannot remove file");
+                        }
+
+                        return null;
+                    }
+                } else if (schedule.getTimeRanges().get(0) instanceof WeeklyTimeRange) {
+                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) schedule.getTimeRanges().get(0);
+                    Time scheduleStartTime = weeklyTimeRange.start;
+                    Time scheduleEndTime = weeklyTimeRange.end;
+                    StringBuilder messageStringBuilder = new StringBuilder();
+                    messageStringBuilder.append("\n\n");
+                    messageStringBuilder.append(getString(R.string.create_external_call_activity_link_validity));
+                    messageStringBuilder.append("\n");
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(scheduleStartTime);
+                    messageStringBuilder.append("\n");
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(scheduleEndTime);
+                    messageStringBuilder.append("\n\n");
+
+                    DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(Locale.getDefault());
+                    String[] weekDays = dateFormatSymbols.getWeekdays();
+
+                    for (WeeklyTimeRange.DayOfWeek dayOfWeek : weeklyTimeRange.days) {
+                        String dayString = "";
+                        switch (dayOfWeek) {
+                            case MONDAY:
+                                dayString = weekDays[2];
+                                break;
+                            case TUESDAY:
+                                dayString = weekDays[3];
+                                break;
+                            case WEDNESDAY:
+                                dayString = weekDays[4];
+                                break;
+                            case THURSDAY:
+                                dayString = weekDays[5];
+                                break;
+                            case FRIDAY:
+                                dayString = weekDays[6];
+                                break;
+                            case SATURDAY:
+                                dayString = weekDays[7];
+                                break;
+                            case SUNDAY:
+                                dayString = weekDays[1];
+                                break;
+                        }
+
+                        if (!dayString.isEmpty()) {
+                            messageStringBuilder.append(dayString);
+                            messageStringBuilder.append("\n");
+                        }
+
                     }
 
-                    return null;
+                    mScheduleMessage = messageStringBuilder.toString();
                 }
             }
         }
         return null;
+    }
+
+    private String getDescriptionForICSFile() {
+
+        if (mCallReceiver.getDescription().isEmpty()) {
+            return "";
+        }
+
+        return mCallReceiver.getDescription()
+                .replace("\\", "\\\\")
+                .replace(";", "\\;")
+                .replace(",", "\\,")
+                .replace("\r\n", "\n")
+                .replace("\r", "\n")
+                .replace("\n", "\\n");
     }
 }

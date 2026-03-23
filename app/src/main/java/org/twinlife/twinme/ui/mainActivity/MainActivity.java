@@ -18,6 +18,7 @@ import static org.twinlife.twinme.ui.Intents.INTENT_PROFILE_ID;
 import static org.twinlife.twinme.ui.Intents.INTENT_SPACE_ID;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,6 +48,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -81,6 +83,7 @@ import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.SpaceSettings;
+import org.twinlife.twinme.services.BackupService;
 import org.twinlife.twinme.services.MainService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -96,6 +99,7 @@ import org.twinlife.twinme.ui.ShowContactActivity;
 import org.twinlife.twinme.ui.ShowProfileActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.accountActivity.AccountActivity;
+import org.twinlife.twinme.ui.backupActivity.RestoreActivity;
 import org.twinlife.twinme.ui.contacts.MenuAddContactView;
 import org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
@@ -131,6 +135,7 @@ import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.DefaultConfirmView;
+import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.OnboardingDetailView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
@@ -386,7 +391,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         if (DEBUG) {
             Log.d(LOG_TAG, "openSideMenu");
         }
-        
 
         mDrawerLayout.openDrawer(GravityCompat.START);
         showCoachMark();
@@ -658,6 +662,13 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri uri = intent.getData();
             if (uri != null) {
+
+                if (uri.getScheme() != null && (uri.getScheme().equals("content") || uri.getScheme().equals("file"))) {
+                    Uri finalUri = uri;
+                    getTwinmeContext().execute(() -> openBackup(finalUri));
+                    return;
+                }
+
                 String path = uri.getPath();
                 if (path == null || "/".equals(path)) {
                     // Invitation with twincodeId or skredcodeId
@@ -687,6 +698,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                     }
                     uri = Uri.parse(twincodeId);
                 }
+
                 mMainService.parseURI(uri, (ErrorCode errorCode, TwincodeURI twincodeURI) -> {
                     if (errorCode == ErrorCode.SUCCESS && twincodeURI != null) {
                         if (twincodeURI.kind == TwincodeURI.Kind.Invitation) {
@@ -706,16 +718,16 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 if (error == ErrorCode.SUCCESS) {
                                     mMainService.getImage(contact, (Bitmap avatar) -> showSuccessAuthentification(contact.getName(), avatar));
                                 } else {
-                                    showAlertMessage(getLinkError(error, R.string.add_contact_activity_scan_error_incorect_link));
+                                    showAlertMessage(getLinkError(error, R.string.add_contact_activity_scan_error_incorrect_link));
                                 }
                             }));
                         } else if (twincodeURI.kind == TwincodeURI.Kind.Proxy) {
                             addProxy(twincodeURI.twincodeOptions);
                         } else {
-                            showAlertMessage(getLinkError(twincodeURI.kind, R.string.add_contact_activity_scan_error_incorect_link));
+                            showAlertMessage(getLinkError(twincodeURI.kind, R.string.add_contact_activity_scan_error_incorrect_link));
                         }
                     } else {
-                        showAlertMessage(getLinkError(errorCode, R.string.add_contact_activity_scan_error_incorect_link));
+                        showAlertMessage(getLinkError(errorCode, R.string.add_contact_activity_scan_error_incorrect_link));
                     }
                 });
             }
@@ -1450,7 +1462,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         mCreateSpaceImageView.setColorFilter(Design.BLACK_COLOR);
 
         layoutParams = mCreateSpaceImageView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_CREATE_SPACE_ICON_SIZE * Design.WIDTH_RATIO);
+        layoutParams.width = (int) (DESIGN_CREATE_SPACE_ICON_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_CREATE_SPACE_ICON_SIZE * Design.HEIGHT_RATIO);
 
         mSpaceDrawerListView = findViewById(R.id.main_activity_drawer_spaces_list_view);
@@ -1478,7 +1490,17 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         };
         mDrawerLayout.addDrawerListener(drawerToggle);
 
-        SideMenuListAdapter.OnMenuClickListener onMenuClickListener = this::onMenuItemClick;
+        SideMenuListAdapter.OnMenuClickListener onMenuClickListener = new SideMenuListAdapter.OnMenuClickListener() {
+            @Override
+            public void onMenuClick(MenuItem menuItem) {
+                onMenuItemClick(menuItem);
+            }
+
+            @Override
+            public void onBadgeClick(MenuItem menuItem) {
+                onBadgeItemClick(menuItem);
+            }
+        };
 
         mSideMenuListAdapter = new SideMenuListAdapter(this, onMenuClickListener);
         mDrawerListView.setAdapter(mSideMenuListAdapter);
@@ -1852,6 +1874,19 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
     }
 
+    private void onBadgeItemClick(MenuItem menuItem) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onBadgeItemClick: menuItem=" + menuItem);
+        }
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+        Intent intent = new Intent();
+        intent.putExtra(Intents.INTENT_SHOW_ONBOARDING, true);
+        intent.setClass(this, AccountActivity.class);
+        startActivity(intent);
+    }
+
     private void showSpaceOnboarding() {
         if (DEBUG) {
             Log.d(LOG_TAG, "showSpaceOnboarding");
@@ -1991,6 +2026,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpaceDrawerListView.getLayoutParams();
         marginLayoutParams.topMargin = getBarTopInset();
         marginLayoutParams.bottomMargin = getBarBottomInset();
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mCreateSpaceView.getLayoutParams();
+        marginLayoutParams.bottomMargin = getBarBottomInset();
     }
 
     private void updateFragment() {
@@ -2026,6 +2064,72 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         applyInsets(R.id.main_activity_content_layout, -1, R.id.twinme_navigation_bottom_navigation, Design.TOOLBAR_COLOR, false);
+    }
+
+    @WorkerThread
+    private void openBackup(Uri backupUri) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openBackup");
+        }
+
+        FileInfo fileInfo = new FileInfo(this, backupUri);
+        if (fileInfo.getFilename() != null && !fileInfo.getFilename().endsWith(org.twinlife.twinlife.BuildConfig.BACKUP_EXTENSION)) {
+            runOnUiThread(this::fileNotSupported);
+        } else {
+            final Context context = getApplicationContext();
+            final FileInfo copy;
+            if (backupUri.getPath() != null && backupUri.getPath().startsWith(getApplicationContext().getCacheDir().getAbsolutePath())) {
+                copy = fileInfo;
+            } else {
+                copy = fileInfo.saveFile(context);
+            }
+
+            if (copy != null) {
+                runOnUiThread(() -> {
+                    Intent intent = new Intent();
+                    intent.putExtra(BackupService.BACKUP_SERVICE_FILE_NAME, fileInfo.getFilename());
+                    intent.putExtra(BackupService.BACKUP_SERVICE_FILE_PATH, copy.getUri().toString());
+                    intent.putExtra(Intents.INTENT_BACKUP_VERIFY_MODE, false);
+                    intent.setClass(this, RestoreActivity.class);
+                    startActivity(intent);
+                });
+            }
+        }
+    }
+
+    private void fileNotSupported() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "fileNotSupported");
+        }
+
+        AlertMessageView alertMessageView = new AlertMessageView(this, null);
+        alertMessageView.setMessage(getString(R.string.restore_activity_file_not_supported));
+
+        AlertMessageView.Observer observer = new AlertMessageView.Observer() {
+
+            @Override
+            public void onConfirmClick() {
+                alertMessageView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                alertMessageView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd() {
+                mDrawerLayout.removeView(alertMessageView);
+                setStatusBarColor();
+            }
+        };
+        alertMessageView.setObserver(observer);
+
+        mDrawerLayout.addView(alertMessageView);
+        alertMessageView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void showCoachMark() {

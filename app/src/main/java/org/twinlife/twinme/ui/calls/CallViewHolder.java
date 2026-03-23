@@ -37,11 +37,11 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
     private static final String LOG_TAG = "CallViewHolder";
     private static final boolean DEBUG = false;
 
+    private static final float DESIGN_DATE_WIDTH = 160f;
     private static final float DESIGN_TYPE_CALL_VIEW_HEIGHT = 28f;
     private static final float DESIGN_TYPE_CALL_VIEW_WIDTH = 18f;
     private static final float DESIGN_TYPE_CALL_VIEW_MARGIN_RIGHT = 14f;
     private static final float DESIGN_ITEM_VIEW_HEIGHT = 126f;
-    private static final int DESIGN_AVATAR_HEIGHT = 86;
     private static final float DESIGN_NAME_MARGIN_PERCENT = 0.392f;
     private static final int ITEM_VIEW_HEIGHT;
     private static final int TYPE_CALL_VIEW_HEIGHT;
@@ -79,7 +79,27 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         mNoAvatarView = view.findViewById(R.id.calls_fragment_call_item_no_avatar_view);
         mNoAvatarView.setColor(Color.parseColor(Design.DEFAULT_COLOR));
 
+        layoutParams = mNoAvatarView.getLayoutParams();
+        layoutParams.width = Design.AVATAR_HEIGHT;
+        layoutParams.height = Design.AVATAR_HEIGHT;
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNoAvatarView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.AVATAR_MARGIN;
+
         mAvatarView = view.findViewById(R.id.calls_fragment_call_item_avatar_view);
+
+        layoutParams = mAvatarView.getLayoutParams();
+        layoutParams.width = Design.AVATAR_HEIGHT;
+        layoutParams.height = Design.AVATAR_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.AVATAR_MARGIN;
+
+        View informationView = view.findViewById(R.id.calls_fragment_call_item_information_view);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) informationView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.NAME_TRAILING;
+        marginLayoutParams.rightMargin = Design.NAME_TRAILING + (int) (Design.WIDTH_RATIO * DESIGN_DATE_WIDTH);
 
         mNameView = view.findViewById(R.id.calls_fragment_call_item_name_view);
         Design.updateTextFont(mNameView, Design.FONT_MEDIUM34);
@@ -91,7 +111,7 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         layoutParams.height = TYPE_CALL_VIEW_HEIGHT;
 
         boolean isRTL = CommonUtils.isLayoutDirectionRTL();
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTypeImageView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTypeImageView.getLayoutParams();
         if (isRTL) {
             marginLayoutParams.leftMargin = TYPE_CALL_VIEW_MARGIN_RIGHT;
             marginLayoutParams.setMarginStart(TYPE_CALL_VIEW_MARGIN_RIGHT);
@@ -108,9 +128,15 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         Design.updateTextFont(mDateView, Design.FONT_MEDIUM26);
         mDateView.setTextColor(TEXT_VIEW_COLOR);
 
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDateView.getLayoutParams();
+        marginLayoutParams.rightMargin = Design.NAME_TRAILING;
+
+        mDateView.setMaxWidth((int)(DESIGN_DATE_WIDTH * Design.WIDTH_RATIO));
+
         mCertifiedView = view.findViewById(R.id.calls_fragment_call_item_certified_image_view);
 
         layoutParams = mCertifiedView.getLayoutParams();
+        layoutParams.width = Design.CERTIFIED_HEIGHT;
         layoutParams.height = Design.CERTIFIED_HEIGHT;
 
         mSeparatorView = view.findViewById(R.id.calls_fragment_call_item_separator_view);
@@ -149,11 +175,11 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
 
         if (uiCall.isCertified()) {
             mCertifiedView.setVisibility(View.VISIBLE);
-            float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_NAME_MARGIN_PERCENT) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING - Design.CERTIFIED_HEIGHT;
+            float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_NAME_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - Design.CERTIFIED_HEIGHT;
             mNameView.setMaxWidth((int) maxWidth);
         } else {
             mCertifiedView.setVisibility(View.GONE);
-            float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_NAME_MARGIN_PERCENT) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO);
+            float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_NAME_MARGIN_PERCENT) - Design.AVATAR_HEIGHT;
             mNameView.setMaxWidth((int) maxWidth);
         }
 

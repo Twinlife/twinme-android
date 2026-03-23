@@ -26,7 +26,7 @@ public class UIInvitationViewHolder extends UIContactViewHolder<UIContact> {
     private final TextView mInvitationStatus;
 
     public UIInvitationViewHolder(@NonNull AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @IdRes int separatorId) {
-        super(service, view, nameId, avatarId, 0, 0, 0, 0, separatorId, Design.FONT_REGULAR34);
+        super(service, view, nameId, avatarId, 0, 0, 0, 0, 0, separatorId, Design.FONT_REGULAR34);
 
         mInvitationStatus = view.findViewById(R.id.group_member_activity_member_item_invitation_status_text);
         Design.updateTextFont(mInvitationStatus, Design.FONT_REGULAR24);

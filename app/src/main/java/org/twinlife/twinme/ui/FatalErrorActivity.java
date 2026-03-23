@@ -77,6 +77,8 @@ public class FatalErrorActivity extends Activity {
             mMessage = String.format(application.getString(R.string.fatal_error_activity_error_code_message), ErrorCode.LIBRARY_ERROR.ordinal());
         }
 
+        //TODO BPK: handle ACCOUNT_RESTORED error (and RESTORE_IN_PROGRESS?)
+
         initViews();
     }
 

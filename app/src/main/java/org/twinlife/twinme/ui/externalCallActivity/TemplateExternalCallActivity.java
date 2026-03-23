@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -9,30 +9,34 @@
 package org.twinlife.twinme.ui.externalCallActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.CallReceiver;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.OnboardingConfirmView;
 
 public class TemplateExternalCallActivity extends AbstractTwinmeActivity implements CallReceiverService.Observer {
     private static final String LOG_TAG = "TemplateExternalCall...";
     private static final boolean DEBUG = false;
 
-    private final List<UITemplateExternalCall> mUITemplates = new ArrayList<>();
-
     private CallReceiverService mCallReceiverService;
+
+    private TemplateExternalCallAdapter mTemplateExternalCallAdapter;
 
     //
     // Override TwinmeActivityImpl methods
@@ -48,7 +52,6 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
 
         mCallReceiverService = new CallReceiverService(this, getTwinmeContext(), this);
 
-        initTemplates();
         initViews();
     }
 
@@ -76,6 +79,72 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
         finish();
     }
 
+    @Override
+    public void onGetCallReceiverNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCallReceiverNotFound");
+        }
+
+        finish();
+    }
+
+    @Override
+    public void onGetSpace(Space space) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace: " + space);
+        }
+
+        if (space.getProfile() != null) {
+            mCallReceiverService.getImage(space.getProfile().getAvatarId(), (Bitmap avatar) -> {
+                mTemplateExternalCallAdapter.updateProfileTemplate(space.getProfile().getName(), avatar);
+            });
+        }
+    }
+
+    public void showOnboardingView() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showOnboardingView");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.template_external_call_activity_layout);
+
+        OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_click_to_call, null));
+        onboardingConfirmView.setTitle(getString(R.string.premium_services_activity_click_to_call_title));
+        onboardingConfirmView.setMessage(getString(R.string.create_external_call_activity_onboarding_part_1_message_1));
+        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.hideCancelView();
+
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCancelClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(onboardingConfirmView);
+                setStatusBarColor();
+            }
+        };
+        onboardingConfirmView.setObserver(observer);
+        viewGroup.addView(onboardingConfirmView);
+        onboardingConfirmView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
     private void initViews() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initViews");
@@ -95,11 +164,11 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
 
         TemplateExternalCallAdapter.OnTemplateExternalCallClickListener onTemplateClickListener = this::onTemplateClick;
 
-        TemplateExternalCallAdapter templateExternalCallAdapter = new TemplateExternalCallAdapter(this, mUITemplates, onTemplateClickListener);
+        mTemplateExternalCallAdapter = new TemplateExternalCallAdapter(this, onTemplateClickListener);
         LinearLayoutManager uiSpacesLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView templateRecyclerView = findViewById(R.id.template_external_call_activity_list_view);
         templateRecyclerView.setLayoutManager(uiSpacesLinearLayoutManager);
-        templateRecyclerView.setAdapter(templateExternalCallAdapter);
+        templateRecyclerView.setAdapter(mTemplateExternalCallAdapter);
         templateRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         templateRecyclerView.setItemAnimator(null);
         templateRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
@@ -107,27 +176,14 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
         mProgressBarView = findViewById(R.id.template_external_call_activity_progress_bar);
     }
 
-    private void initTemplates() {
+    private void onTemplateClick(UITemplateExternalCall templateExternalCall) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "initTemplates");
+            Log.d(LOG_TAG, "onTemplateClick: position=" + templateExternalCall);
         }
 
-        mUITemplates.clear();
-        mUITemplates.add(new UITemplateExternalCall(this, UITemplateExternalCall.TemplateType.MEETING));
-        mUITemplates.add(new UITemplateExternalCall(this, UITemplateExternalCall.TemplateType.HELP));
-        mUITemplates.add(new UITemplateExternalCall(this, UITemplateExternalCall.TemplateType.CLASSIFIED_AD));
-        mUITemplates.add(new UITemplateExternalCall(this, UITemplateExternalCall.TemplateType.VIDEO_BELL));
-        mUITemplates.add(new UITemplateExternalCall(this, UITemplateExternalCall.TemplateType.OTHER));
-    }
-
-    private void onTemplateClick(int position) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onTemplateClick: position=" + position);
-        }
-
-        if (position >= 0 && position < mUITemplates.size()) {
+        if (templateExternalCall != null) {
             Intent intent = new Intent();
-            intent.putExtra(Intents.INTENT_TEMPLATE_SELECTION, mUITemplates.get(position).getTemplateType().ordinal());
+            intent.putExtra(Intents.INTENT_TEMPLATE_SELECTION, templateExternalCall.getTemplateType().ordinal());
             intent.setClass(this, CreateExternalCallActivity.class);
             startActivity(intent);
         }

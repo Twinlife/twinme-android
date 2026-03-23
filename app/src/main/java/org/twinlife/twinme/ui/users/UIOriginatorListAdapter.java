@@ -227,7 +227,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
      */
     public UIContactViewHolder<E> createUIContactViewHolder(View convertView) {
 
-        return new UIContactViewHolder<>(mService, convertView, mNameId, mAvatarId, mTagId, mTagTitleId, 0, mCertifiedId, mSeparatorId, Design.FONT_REGULAR34);
+        return new UIContactViewHolder<>(mService, convertView, mNameId, mAvatarId, mTagId, mTagTitleId, 0, 0, mCertifiedId, mSeparatorId, Design.FONT_REGULAR34);
     }
 
     /**

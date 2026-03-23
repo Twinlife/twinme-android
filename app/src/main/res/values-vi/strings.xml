@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Chấp nhận</string>
     <string name="application_account_deleted">Tài khoản của bạn đã bị xóa, bạn cần gỡ cài đặt ứng dụng ngay bây giờ.</string>
+    <string name="application_account_restored_error">Tài khoản trên thiết bị này đã được khôi phục sang thiết bị khác. Bạn cần gỡ cài đặt ứng dụng.</string>
     <string name="application_add_contact_no_profile">Bạn cần hoàn tất hồ sơ cá nhân để đại diện cho mình trước khi mời một liên hệ. Tiếp tục?</string>
     <string name="application_all">Tất cả</string>
     <string name="application_appearance">Giao diện</string>
@@ -43,6 +44,7 @@
     <string name="application_display_all">Hiển thị tất cả</string>
     <string name="application_do_not_display">Không hiển thị nữa</string>
     <string name="application_edit">Chỉnh sửa</string>
+    <string name="application_error_code">Mã lỗi: %1$s</string>
     <string name="application_error_file_not_found">Định dạng hình ảnh/video này không được ứng dụng hỗ trợ.</string>
     <string name="application_error_media_unload">Không thể tải phương tiện.</string>
     <string name="application_error_media_not_supported">Không tìm thấy tệp.</string>
@@ -111,6 +113,7 @@
     <string name="application_size_unit">MB</string>
     <string name="application_theme">Chủ đề</string>
     <string name="application_unknown_name">Không rõ</string>
+    <string name="application_until">Cho đến khi %1$s</string>
     <string name="application_upgrade">Đang nâng cấp Skred</string>
     <string name="application_webrtc_failure">Lỗi WebRTC</string>
     <string name="application_wrong_configuration">Cấu hình không chính xác</string>
@@ -176,16 +179,22 @@
     <string name="account_migration_scanner_activity_stop_scan_title">Dừng quét</string>
 
     <!--  AccountActivity -->
+    <string name="account_activity_backup">Sao lưu vào phương tiện lưu trữ ngoài</string>
+    <string name="account_activity_backup_restore">Sao lưu / Khôi phục</string>
+    <string name="account_activity_backup_verify">Xác minh bản sao lưu</string>
+    <string name="account_activity_backup_list">Lịch sử sao lưu</string>
     <string name="account_activity_conversations_content_title">Nội dung trò chuyện</string>
     <string name="account_activity_delete_account">Tài khoản của bạn và toàn bộ dữ liệu liên quan sẽ bị xóa vĩnh viễn. Xác nhận?</string>
     <string name="account_activity_delete_account_confirmation">Bạn có thực sự chắc chắn muốn xóa tài khoản không?</string>
     <string name="account_activity_message_first_part">Một tài khoản mới được tạo khi bạn cài đặt ứng dụng lần đầu, hoặc sau khi cài đặt lại ứng dụng, đặt lại thiết bị, hoặc xóa tài khoản hiện tại.</string>
     <string name="account_activity_export_content">Xuất ra thiết bị lưu trữ ngoài</string>
     <string name="account_activity_message_second_part">Không còn dấu vết nào của tài khoản và dữ liệu cũ, vì vậy bạn sẽ cần mời lại các liên hệ của mình.</string>
+    <string name="account_activity_message_third_part">Xóa tài khoản cũng sẽ làm mất hiệu lực tất cả các bản sao lưu được tạo trên tài khoản đó, khiến việc khôi phục bản sao lưu từ tài khoản đó sang thiết bị này hoặc thiết bị khác là không thể.</string>
     <string name="account_activity_migration_message">Dịch vụ di chuyển tài khoản có sẵn để chuyển toàn bộ tài khoản của bạn, bao gồm tất cả dữ liệu liên quan (liên hệ, tin nhắn, nhóm, v.v.), từ thiết bị này sang thiết bị khác theo thời gian thực. Nhờ đó, bạn có thể chuyển tài khoản giữa thiết bị cũ và thiết bị mới.</string>
     <string name="account_activity_migration_start_from_another_device">Từ thiết bị khác</string>
     <string name="account_activity_migration_start_from_current_device">Từ thiết bị của tôi</string>
     <string name="account_activity_migration_title">Di chuyển tài khoản</string>
+    <string name="account_activity_restore">Khôi phục từ phương tiện lưu trữ ngoài</string>
     <string name="account_activity_title">Tài khoản</string>
     <string name="account_activity_transfer_between_devices">Chuyển giữa các thiết bị</string>
     <string name="account_activity_transfer_from_another_device">Chuyển từ thiết bị khác</string>
@@ -204,7 +213,8 @@
     <string name="add_contact_activity_onboarding_message">Skred không biết bạn bè của bạn và không thể tìm kiếm họ. Bạn phải mời họ trực tiếp, bằng Skred khi họ ở gần bạn, hoặc bằng cách gửi lời mời qua phương tiện khác.</string>
     <string name="add_contact_activity_scan_code">Quét mã QR mời</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Liên kết này đã bị hỏng.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Liên kết này không đúng.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Liên kết mời này đã hết hạn.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Liên kết này không đúng.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Liên kết này không được ứng dụng hỗ trợ.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Liên hệ này đã bị xóa.</string>
     <string name="add_contact_activity_scan_message_call_link">Liên kết này tương ứng với \"nhấn để gọi\"</string>
@@ -212,6 +222,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Liên kết này tương ứng với việc chuyển tài khoản</string>
     <string name="add_contact_activity_scan_message_transfer_link">Liên kết này tương ứng với việc chuyển cuộc gọi</string>
     <string name="add_contact_activity_scan_title">Quét</string>
+    <string name="add_contact_activity_share_image_message">Nhập hoặc quét mã QR lời mời này bằng Skred để thêm \"%1$s\" làm liên hệ.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s mời bạn tham gia vào một mối quan hệ riêng tư trên Skred.</string>
+    <string name="add_contact_activity_share_message_part_2">Skred là dịch vụ nhắn tin mã hóa đầu cuối ngang hàng và cuộc gọi thoại/video độ phân giải cao (HD). Không cần đăng ký.</string>
+    <string name="add_contact_activity_share_message_part_3">Mở URL này bằng Skred trên thiết bị di động của bạn để thêm \"%1$s\" làm liên hệ:</string>
+    <string name="add_contact_activity_share_message_part_4">Ngoài ra, bạn có thể nhập hoặc quét mã QR lời mời trong hình ảnh đính kèm bằng Skred.</string>
+    <string name="add_contact_activity_share_title">%1$s mời bạn tham gia Skred</string>
     <string name="add_contact_activity_social_subtitle">tin nhắn, email, mạng xã hội</string>
     <string name="add_contact_activity_social_title">Gửi mã qua ứng dụng</string>
     <string name="add_contact_activity_title">Lời mời</string>
@@ -255,6 +271,38 @@
     <string name="authentified_relation_activity_start">Bắt đầu xác thực</string>
     <string name="authentified_relation_activity_to_be_certified_title">Xác thực mối quan hệ</string>
     <string name="authentified_relation_activity_title">Mối quan hệ đã xác thực</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Sao lưu</string>
+    <string name="backup_activity_beta_message_part_1">Dịch vụ sao lưu/khôi phục đang được thử nghiệm BETA để xác định các vấn đề tiềm ẩn trước khi phát hành rộng rãi.</string>
+    <string name="backup_activity_beta_message_part_2">Dịch vụ này chỉ nhằm mục đích sao lưu siêu dữ liệu tài khoản (hồ sơ, danh bạ, nhóm) vào bộ nhớ ngoài để có thể khôi phục sau này trên thiết bị khác, nếu thiết bị gốc bị đánh cắp hoặc bị hỏng.</string>
+    <string name="backup_activity_beta_message_part_3">Dịch vụ chuyển tài khoản nên được sử dụng để chuyển tất cả dữ liệu tài khoản (bao gồm cả cuộc trò chuyện) từ thiết bị (cũ) sang thiết bị (mới) khác, khi cả hai thiết bị đều khả dụng.</string>
+    <string name="backup_activity_confirm_message">Để khôi phục bản sao lưu, bạn cần nhập 12 từ ở trên theo thứ tự đó, cho phép giải mã.</string>
+    <string name="backup_activity_content">Nội dung</string>
+    <string name="backup_activity_content_diff_added">Đã thêm</string>
+    <string name="backup_activity_content_diff_updated">Đã sửa đổi</string>
+    <string name="backup_activity_content_diff_deleted">Đã xóa</string>
+    <string name="backup_activity_content_diff_message">Dưới đây là những thay đổi so với dữ liệu hiện tại của bạn:</string>
+    <string name="backup_activity_content_info">Bản sao lưu không bao gồm các cuộc trò chuyện, nhóm, thông báo và lịch sử.</string>
+    <string name="backup_activity_error_words">Các từ đã nhập không cho phép giải mã bản sao lưu.</string>
+    <string name="backup_activity_generate_word">Tạo</string>
+    <string name="backup_activity_last_backup">Sao lưu lần cuối vào ngày %1$s</string>
+    <string name="backup_activity_new_backup">Bản sao lưu mới</string>
+    <string name="backup_activity_onboarding">Tạo bản sao lưu được mã hóa dữ liệu tài khoản (\"Spaces\", hồ sơ, danh bạ, \"click-to-call\") để có thể khôi phục sang thiết bị này hoặc thiết bị khác.</string>
+    <string name="backup_activity_reminder">Bản sao lưu gần nhất của bạn được tạo cách đây hơn 30 ngày.</string>
+    <string name="backup_activity_save_file_message">Lưu tệp sao lưu vào thiết bị bạn chọn và giữ lại mật khẩu để khôi phục sau.</string>
+    <string name="backup_activity_security">Bảo mật</string>
+    <string name="backup_activity_security_info">Khóa mã hóa sao lưu được biểu thị bằng một chuỗi 12 từ cần thiết cho quá trình khôi phục.</string>
+    <string name="backup_activity_success">Quá trình sao lưu đã hoàn tất!</string>
+    <string name="backup_activity_success_info">Hãy giữ lại danh sách 12 từ này để bạn có thể khôi phục bản sao lưu này.</string>
+    <string name="backup_activity_title">Sao lưu</string>
+    <string name="backup_activity_use_last_backup_words">Sử dụng cùng danh sách các từ như trong lần sao lưu trước.</string>
+    <string name="backup_activity_verify_completed">Xác minh hoàn tất!</string>
+    <string name="backup_activity_verify_message">Bạn cũng có thể kiểm tra tính toàn vẹn của tệp sao lưu và xem dữ liệu trong đó có được cập nhật hay không bằng cách: Tài khoản/Xác minh bản sao lưu.</string>
+    <string name="backup_activity_verify_up_to_date">Bản sao lưu của bạn đã được cập nhật.</string>
+    <string name="backup_activity_verify_not_up_to_date">Bản sao lưu của bạn chưa được cập nhật.</string>
+    <string name="backup_activity_verify_words">Để xác minh bản sao lưu, bạn cần nhập chuỗi 12 từ để giải mã.</string>
+    <string name="backup_activity_wait_message">Không rời khỏi màn hình này trong khi quá trình sao lưu đang diễn ra.</string>
 
     <!-- CallActivity -->
     <string name="call_activity_audio_source_bluetooth">Âm thanh qua Bluetooth</string>
@@ -311,6 +359,13 @@
     <string name="call_activity_tag_speaker_mute">Tắt loa</string>
     <string name="call_activity_transfert_call_message">Cuộc gọi đang diễn ra đã được chuyển tiếp.</string>
     <string name="call_activity_try_to_call_back">Thử gọi lại.</string>
+    <string name="call_activity_waiting_conference_call">Chưa có ai tham gia cuộc gọi. Vui lòng chờ…</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Hủy bản sao lưu của tôi</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Tất cả các bản sao lưu trước đó của bạn sẽ không còn hiệu lực và không thể khôi phục được nữa.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Đừng quên tạo một bản sao lưu mới, có thể được khôi phục vào thiết bị này hoặc thiết bị khác.</string>
+    <string name="backups_activity_no_backup_message">Chưa có bản sao lưu nào được thực hiện trên thiết bị này.</string>
 
     <!-- CallsFragments -->
     <string name="calls_fragment_all_call_segmented_control">Tất cả</string>
@@ -481,9 +536,24 @@
     <string name="conversations_fragment_you">Bạn</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Cấu hình cuộc gọi</string>
+    <string name="create_external_call_activity_call_type">Loại cuộc gọi</string>
+    <string name="create_external_call_activity_conference_call_description">Tham gia cuộc gọi hội nghị trực tiếp từ trình duyệt. Lý tưởng cho các cuộc họp kinh doanh hoặc gia đình.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Cuộc gọi hội nghị</string>
+    <string name="create_external_call_activity_conference_call_title">Cuộc gọi hội nghị</string>
+    <string name="create_external_call_activity_continuous_link_description">Không có hạn chế về thời hạn hiệu lực của liên kết</string>
+    <string name="create_external_call_activity_continuous_link_title">Vĩnh viễn</string>
+    <string name="create_external_call_activity_create_message">Nhập tên, hình ảnh và mô tả cho chủ đề cuộc gọi.</string>
+    <string name="create_external_call_activity_delete_link_setting">Liên kết này sẽ không còn hiệu lực sau thời gian quy định.</string>
+    <string name="create_external_call_activity_direct_call_description">Nhận cuộc gọi trực tiếp trên thiết bị của bạn từ người không có ứng dụng.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Trực tiếp</string>
+    <string name="create_external_call_activity_direct_call_title">Gọi trực tiếp</string>
+    <string name="create_external_call_activity_group_call_description">Tối đa 8 người tham gia</string>
     <string name="create_external_call_activity_link_validity">Thời hạn hiệu lực của liên kết</string>
     <string name="create_external_call_activity_message">Nhập tên, hình ảnh và mô tả cho chủ đề cuộc gọi.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Nhấn để gọi\" cho phép khách gọi cho bạn từ trình duyệt mà không cần cài đặt ứng dụng.</string>
+    <string name="create_external_call_activity_name_required">Cần có tên và hình ảnh để đại diện cho \"Click-to-call\" này.</string>
+    <string name="create_external_call_activity_notification_setting">Nhận thông báo ngay khi người tham gia đầu tiên tham gia hội nghị.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Tính năng \"Click-to-call\" cho phép khách gọi cho bạn hoặc tham gia cuộc gọi hội nghị (\"Click-to-meet\") từ trình duyệt mà không cần cài đặt ứng dụng.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Mỗi phiên bản có tên, hình ảnh và mô tả đại diện cho chủ đề cuộc gọi, ví dụ:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">dịch vụ khách hàng của bạn</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">chiếc xe bạn đang bán</string>
@@ -502,7 +572,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Thay đổi tên mặc định (Khách) đại diện trong cuộc gọi</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Gọi cho bạn bằng cách nhấn nút \"Gọi\" trên trang web.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Sau cuộc gọi, họ có thể giữ trang web mở để gọi lại cho bạn.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Thiết lập cuộc gọi \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_3">Chia sẻ cuộc gọi \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_4">Sử dụng cuộc gọi \"Click-to-call\"</string>
     <string name="create_external_call_activity_placeholder">Chủ đề (Hỗ trợ, Thông báo, Họp, Chuông cửa, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Tùy chỉnh ngày/giờ liên kết có hiệu lực</string>
+    <string name="create_external_call_activity_recurrent_link_title">Định kỳ</string>
+    <string name="create_external_call_activity_unique_link_description">Đặt ngày bắt đầu và ngày kết thúc hiệu lực của liên kết</string>
+    <string name="create_external_call_activity_unique_link_title">Sử dụng một lần</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Mời thành viên</string>
@@ -698,6 +775,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Thao tác này sẽ vô hiệu mã mời hiện tại của liên kết \"nhấn để gọi\" này. Xác nhận?</string>
     <string name="invitation_call_activity_generate_code_title">Tạo mã mới cho liên kết này</string>
+    <string name="invitation_call_activity_invite_meeting_message">Mở địa chỉ web %1$s, hoặc quét mã QR, để tham gia cuộc họp “%2$s”.</string>
     <string name="invitation_call_activity_invite_message">Mở địa chỉ web %1$s hoặc quét mã QR để gọi “%2$s”.</string>
     <string name="invitation_call_activity_message">Chia sẻ mã \"nhấn để gọi\" này với ai đó để họ có thể gọi cho bạn từ web hoặc ứng dụng.</string>
     <string name="invitation_call_activity_save_message">Quét mã QR này để gọi “%1$s”.</string>
@@ -759,6 +837,7 @@
     <string name="notification_center_audio_message_received">Tin nhắn thoại mới</string>
     <string name="notification_center_cancel">Đóng</string>
     <string name="notification_center_cleanup_conversation">Một số tin nhắn cũ đã bị xóa.</string>
+    <string name="notification_center_conference_join_call">Một người tham gia đã kết nối vào cuộc gọi.</string>
     <string name="notification_center_deleted_contact">Liên hệ đã xóa</string>
     <string name="notification_center_file_message">Đã gửi cho bạn một tệp</string>
     <string name="notification_center_file_message_received">Tệp mới</string>
@@ -768,6 +847,7 @@
     <string name="notification_center_invitation_group">Mời bạn tham gia nhóm.</string>
     <string name="notification_center_invitation_received">Lời mời mới</string>
     <string name="notification_center_invitation_received_group">Lời mời tham gia nhóm mới</string>
+    <string name="notification_center_join_call">%1$s vừa tham gia cuộc gọi</string>
     <string name="notification_center_join_group">Bạn đã tham gia nhóm</string>
     <string name="notification_center_message_received">Tin nhắn mới</string>
     <string name="notification_center_missed_audio_call_to">Cuộc gọi thoại nhỡ tới %1$s</string>
@@ -932,6 +1012,41 @@
     <string name="quality_of_service_activity_step2_message">Để đảm bảo chất lượng dịch vụ, hãy cho phép ứng dụng nhận thông báo nền và loại trừ khỏi tối ưu hóa pin.</string>
     <string name="quality_of_service_activity_step3_message">Sử dụng ứng dụng thường xuyên để hệ điều hành ưu tiên và không tự động đóng nó.\n\nĐừng quên chia sẻ thông tin này cho bạn bè!</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ phải được cài đặt trên thiết bị này để khôi phục bản sao lưu tài khoản twinme+.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Thiết bị đã tạo bản sao lưu vẫn đang đăng nhập.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Nếu bạn khôi phục bản sao lưu sang thiết bị mới này, tài khoản của thiết bị đã tạo bản sao lưu sẽ tự động bị vô hiệu hóa.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Nếu bạn muốn chuyển tài khoản của mình sang thiết bị mới và vẫn còn thiết bị cũ, tốt nhất nên sử dụng thao tác \"di chuyển tài khoản\" thay vì khôi phục bản sao lưu, vì thao tác này cũng sẽ chuyển các cuộc trò chuyện, nhóm, thông báo và lịch sử.</string>
+    <string name="restore_activity_confirm">Bạn có chắc chắn muốn thay thế dữ liệu tài khoản hiện tại bằng dữ liệu sau từ bản sao lưu không?</string>
+    <string name="restore_activity_confirm_restore">Bạn vẫn muốn khôi phục bản sao lưu này chứ?</string>
+    <string name="restore_activity_content_contact_deleted_message">Dữ liệu bị xóa sau khi sao lưu không thể khôi phục.</string>
+    <string name="restore_activity_content_profile_reset">Mã mời đã thay đổi.</string>
+    <string name="restore_activity_content_profile_reset_message">Mã mời liên kết với hồ sơ đã sao lưu không hợp lệ. Mã mời mới sẽ được tạo trong quá trình khôi phục.</string>
+    <string name="restore_activity_enter_words">Nhập chuỗi 12 từ cho phép giải mã bản sao lưu.</string>
+    <string name="restore_activity_error_message">Lỗi khi khôi phục bản sao lưu.</string>
+    <string name="restore_activity_error_message_verify_backup">Lỗi xác minh sao lưu.</string>
+    <string name="restore_activity_file_not_supported">Tệp sao lưu phải ở định dạng \"skrdbckp\".</string>
+    <string name="restore_activity_more_recent_backup">Một bản sao lưu gần đây hơn đã được thực hiện bằng cùng một tài khoản.</string>
+    <string name="restore_activity_onboarding">Khôi phục bản sao lưu sẽ thay thế dữ liệu tài khoản hiện tại.</string>
+    <string name="restore_activity_onboarding_words">Để khôi phục bản sao lưu, bạn cần nhập 12 từ ở trên theo thứ tự đó, cho phép giải mã.</string>
+    <string name="restore_activity_onboarding_verify">Xác minh bản sao lưu hợp lệ và cập nhật với dữ liệu hiện tại của bạn.</string>
+    <string name="restore_activity_paste">Dán danh sách các từ từ bảng nhớ tạm.</string>
+    <string name="restore_activity_paste_error">Danh sách từ không hợp lệ.</string>
+    <string name="restore_activity_restore">Khôi phục</string>
+    <string name="restore_activity_select_backup">Chọn bản sao lưu</string>
+    <string name="restore_activity_state_restore_account">Đang khôi phục tài khoản...</string>
+    <string name="restore_activity_state_restore_data">Đang khôi phục dữ liệu...</string>
+    <string name="restore_activity_state_restore_starting">Đang bắt đầu khôi phục.</string>
+    <string name="restore_activity_state_restore_verify_account">Xác minh tài khoản…</string>
+    <string name="restore_activity_state_restore_verify_data">Xác minh dữ liệu…</string>
+    <string name="restore_activity_state_restore_verify_starting">Bắt đầu xác minh…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Đang chờ xác nhận.</string>
+    <string name="restore_activity_success">Khôi phục đã hoàn tất thành công!</string>
+    <string name="restore_activity_success_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu mới.</string>
+    <string name="restore_activity_title">Khôi phục</string>
+    <string name="restore_activity_verify_same_account">Việc xác minh phải được thực hiện trên cùng thiết bị đã được sử dụng để sao lưu.</string>
+    <string name="restore_activity_warning">Khôi phục bản sao lưu này sẽ thay thế tất cả dữ liệu tài khoản hiện tại bằng dữ liệu từ bản sao lưu.</string>
+
     <!-- RoomsMembersActivity -->
     <string name="quality_of_service_activity_warning_background_data">Cho phép ứng dụng sử dụng dữ liệu di động trong nền.</string>
     <string name="quality_of_service_activity_warning_receive_notification">Cho phép ứng dụng nhận thông báo đẩy.</string>
@@ -1006,11 +1121,14 @@
     <string name="settings_activity_reset_preferences_message">Khôi phục thiết lập thông báo về mặc định ứng dụng.</string>
     <string name="settings_activity_reset_preferences_title">Khôi phục tùy chọn</string>
     <string name="settings_activity_permissions_title">QUYỀN TRUY CẬP</string>
+    <string name="settings_activity_message_reactions_notification">Thông báo khi có phản hồi tin nhắn</string>
     <string name="settings_activity_reset_default_value">Khôi phục cài đặt mặc định</string>
+    <string name="settings_activity_silent_mode">Chế độ im lặng</string>
     <string name="settings_activity_silent_sound">Im lặng</string>
     <string name="settings_activity_sound_enabled_title">THÔNG BÁO ÂM THANH</string>
     <string name="settings_activity_system_notifications_title">Thông báo hệ thống</string>
     <string name="settings_activity_system_settings_title">Cài đặt hệ thống</string>
+    <string name="settings_activity_turn_off_notification_sounds">Tắt âm thanh thông báo</string>
     <string name="settings_activity_video_call_category_title">Cuộc gọi video</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Tên nhạc chuông</string>
     <string name="settings_activity_video_call_notification_title">Nhạc chuông</string>
@@ -1042,7 +1160,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Mã \"nhấn để gọi\"</string>
+    <string name="show_call_activity_conference_call_information">Chia sẻ liên kết này để gọi cho bạn hoặc tham gia hội nghị từ trình duyệt.</string>
     <string name="show_call_activity_information_code">Chia sẻ mã này để nhận cuộc gọi từ bên ngoài.</string>
+    <string name="show_call_activity_meeting_organizer">Người tổ chức cuộc họp này</string>
     <string name="show_call_activity_schedule_call">Cuộc gọi đã hẹn</string>
     <string name="show_call_activity_schedule_from">từ %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s từ %2$s đến %3$s</string>
@@ -1152,12 +1272,21 @@
 
     <!-- TwincodeActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Rao vặt</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Chèn liên kết vào quảng cáo rao vặt cho phép người mua tiềm năng gọi cho bạn mà không cần cài đặt ứng dụng.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Thông báo</string>
-    <string name="template_click_to_call_activity_template_help">Trợ giúp</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Trợ giúp</string>
+    <string name="template_click_to_call_activity_template_default_description">Tùy chỉnh liên kết cuộc gọi theo nhu cầu.</string>
+    <string name="template_click_to_call_activity_template_help">Dịch vụ khách hàng</string>
+    <string name="template_click_to_call_activity_template_help_description">Liên kết để gọi cho dịch vụ khách hàng của bạn từ trình duyệt.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Dịch vụ khách hàng</string>
+    <string name="template_click_to_call_activity_template_job">Phỏng vấn xin việc</string>
+    <string name="template_click_to_call_activity_template_job_description">Liên kết cho phép nhà tuyển dụng quan tâm gọi cho bạn để phỏng vấn.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Phỏng vấn xin việc</string>
     <string name="template_click_to_call_activity_template_meeting">Cuộc họp</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Chia sẻ liên kết để tham gia hội nghị từ trình duyệt.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Cuộc họp</string>
+    <string name="template_click_to_call_activity_template_profile_description">Liên kết để gọi cho bạn mà không cần cài đặt ứng dụng.</string>
     <string name="template_click_to_call_activity_template_video_bell">Chuông cửa video</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Cho phép tài xế giao hàng gọi cho bạn để được hướng dẫn.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Chuông cửa</string>
     <string name="template_space_activity_template_business_placeholder">Tên (BS Nguyễn Văn A, Cô Hoa,…)</string>
     <string name="template_space_activity_template_business_profile">Cô Samantha Smith</string>

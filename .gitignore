@@ -16,3 +16,4 @@
 *.swp
 *.iml
 /scripts/release/env
+/export_dev_db

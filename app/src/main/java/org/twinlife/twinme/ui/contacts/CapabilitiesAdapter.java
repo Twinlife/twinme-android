@@ -191,30 +191,35 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ScheduleViewHolder scheduleViewHolder = (ScheduleViewHolder) viewHolder;
             Date date;
             Time time;
+            Runnable dateRunnable = null;
+            Runnable timeRunnable = null;
             AbstractCapabilitiesActivity.ScheduleType scheduleType;
             if (position == POSITION_SCHEDULE_START) {
                 date = mCapabilitiesActivity.getScheduleStartDate();
                 time = mCapabilitiesActivity.getScheduleStartTime();
+                dateRunnable = () -> mCapabilitiesActivity.onDateClick(AbstractCapabilitiesActivity.ScheduleType.START);
+                timeRunnable = () -> mCapabilitiesActivity.onTimeClick(AbstractCapabilitiesActivity.ScheduleType.START);
                 scheduleType = AbstractCapabilitiesActivity.ScheduleType.START;
             } else {
                 date = mCapabilitiesActivity.getScheduleEndDate();
                 time = mCapabilitiesActivity.getScheduleEndTime();
+                dateRunnable = () -> mCapabilitiesActivity.onDateClick(AbstractCapabilitiesActivity.ScheduleType.END);
+                timeRunnable = () -> mCapabilitiesActivity.onTimeClick(AbstractCapabilitiesActivity.ScheduleType.END);
                 scheduleType = AbstractCapabilitiesActivity.ScheduleType.END;
             }
-            scheduleViewHolder.onBind(mCapabilitiesActivity, scheduleType, date, time);
+
+            scheduleViewHolder.onBind(mCapabilitiesActivity, scheduleType, date, time, dateRunnable, timeRunnable);
         } else if (viewType == SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
 
             String title = "";
             boolean hideSeparator = false;
-            boolean isNewFeature = false;
             Runnable runnable = null;
             if (position == SECTION_PERMISSION) {
                 title = mCapabilitiesActivity.getString(R.string.settings_activity_authorization_title);
             } else if (position == SECTION_CAMERA_CONTROL) {
                 title = mCapabilitiesActivity.getString(R.string.call_activity_camera_control);
                 hideSeparator = true;
-                isNewFeature = true;
                 runnable = () -> mCapabilitiesActivity.showOnboardingView(true);
             } else if (position == SECTION_DISCREET_RELATION) {
                 title = mCapabilitiesActivity.getString(R.string.privacy_activity_title);
@@ -222,8 +227,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 title = mCapabilitiesActivity.getString(R.string.show_call_activity_schedule_call);
                 hideSeparator = true;
             }
-
-            sectionTitleViewHolder.onBind(title, hideSeparator, isNewFeature, runnable);
+            sectionTitleViewHolder.onBind(title, hideSeparator, null, runnable);
         } else if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
 
@@ -281,7 +285,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return new InformationViewHolder(convertView);
         } else if (viewType == SCHEDULE) {
             convertView = inflater.inflate(R.layout.contact_capabilities_activity_schedule_item, parent, false);
-            return new ScheduleViewHolder(convertView, mCapabilitiesActivity);
+            return new ScheduleViewHolder(convertView);
         } else if (viewType == SWITCH) {
             convertView = inflater.inflate(R.layout.contact_capabilities_activity_item, parent, false);
             return new CapabilityViewHolder(convertView, mCapabilitiesActivity);

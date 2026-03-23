@@ -32,7 +32,7 @@ public class UISelectableContactViewHolder extends UIContactViewHolder<UISelecta
 
     public UISelectableContactViewHolder(AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @IdRes int certifiedId, @IdRes int separatorId, boolean showSelection) {
 
-        super(service, view, nameId, avatarId, 0, 0, 0, certifiedId, separatorId, Design.FONT_REGULAR32);
+        super(service, view, nameId, avatarId, 0, 0, 0, 0, certifiedId, separatorId, Design.FONT_REGULAR32);
 
         mSelectionLayout = view.findViewById(R.id.add_group_member_activity_contact_layout_image);
 
@@ -53,7 +53,7 @@ public class UISelectableContactViewHolder extends UIContactViewHolder<UISelecta
         marginLayoutParams.rightMargin = Design.NAME_TRAILING;
         marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
 
-        float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
+        float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
 
         if (mCertifiedView != null) {
             if (uiContact.isCertified()) {
@@ -62,7 +62,7 @@ public class UISelectableContactViewHolder extends UIContactViewHolder<UISelecta
                 marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
                 marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
 
-                maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING - (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
+                maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
             } else {
                 mCertifiedView.setVisibility(View.GONE);
             }

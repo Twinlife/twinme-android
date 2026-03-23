@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2015-2025 twinlife SA.
+ *  Copyright (c) 2015-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -25,9 +25,9 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -419,12 +419,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         layoutParams.height = Design.AVATAR_MAX_HEIGHT;
 
         View backClickableView = findViewById(R.id.edit_identity_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -436,8 +431,26 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         RoundedView backRoundedView = findViewById(R.id.edit_identity_activity_back_rounded_view);
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
+        mScrollView = findViewById(R.id.edit_identity_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
+
         mContentView = findViewById(R.id.edit_identity_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
+
+        View editAvatarView = findViewById(R.id.edit_identity_activity_edit_avatar_clickable_view);
+        editAvatarView.setOnClickListener(view -> openMenuPhoto());
+
+        layoutParams = editAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
 
         setBackground(mContentView);
 
@@ -456,8 +469,6 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
-
-        mContentView.setOnTouchListener((v, motionEvent) -> touchContent(motionEvent));
 
         mTitleView = findViewById(R.id.edit_identity_activity_title_view);
         Design.updateTextFont(mTitleView, Design.FONT_BOLD44);
@@ -505,11 +516,10 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
             }
         });
 
-        GestureDetector nameGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_NAME));
-        mNameView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = nameGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mNameView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterNameView = findViewById(R.id.edit_identity_activity_counter_name_view);
@@ -557,11 +567,10 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
             }
         });
 
-        GestureDetector descriptionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_DESCRIPTION));
-        mDescriptionView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = descriptionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mDescriptionView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterDescriptionView = findViewById(R.id.edit_identity_activity_counter_description_view);
@@ -575,13 +584,6 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
         mSaveClickableView = findViewById(R.id.edit_identity_activity_save_view);
         mSaveClickableView.setOnClickListener(v -> onSaveClick());
         mSaveClickableView.setAlpha(0.5f);
-
-        GestureDetector saveGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SAVE));
-        mSaveClickableView.setOnTouchListener((v, motionEvent) -> {
-            saveGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
 
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(Design.getMainStyle());
@@ -643,8 +645,8 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
                     mEditIdentityService.updateContact(mContact, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
                 } else if (mGroup != null) {
                     mEditIdentityService.updateGroup(mGroup, updatedIdentityName, avatar, mUpdatedProfileAvatarFile);
-                }  else if (mCallReceiver != null) {
-                    mEditIdentityService.updateCallReceiver(mCallReceiver, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
+                } else if (mCallReceiver != null) {
+                    mEditIdentityService.updateOrganizer(mCallReceiver, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
                 } else if (mSpace != null) {
                     mEditIdentityService.createProfile(mSpace, updatedIdentityName, updatedIdentityDescription, avatar, mUpdatedProfileAvatarFile);
                 }

@@ -91,6 +91,7 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
     private View mEditView;
     private View mCopyView;
     private View mSaveView;
+    private View mRemoveView;
 
     private ImageView mQRCodeView;
     private ProxyView mSaveProxyView;
@@ -146,6 +147,20 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
             if (mProxyDescriptor != null) {
                 mProxyService.getProxyURI(mProxyDescriptor);
             }
+        }
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
+
+        if (mRemoveView != null) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mRemoveView.getLayoutParams();
+            marginLayoutParams.bottomMargin = (int) (DESIGN_REMOVE_VIEW_MARGIN * Design.HEIGHT_RATIO) + getBarBottomInset();
         }
     }
 
@@ -431,15 +446,15 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
 
         mSaveProxyView = findViewById(R.id.proxy_activity_save_proxy_view);
 
-        View removeView = findViewById(R.id.proxy_activity_remove_view);
-        removeView.setOnClickListener(v -> {
+        mRemoveView = findViewById(R.id.proxy_activity_remove_view);
+        mRemoveView.setOnClickListener(v -> {
             onDeleteClick();
         });
 
-        layoutParams = removeView.getLayoutParams();
+        layoutParams = mRemoveView.getLayoutParams();
         layoutParams.height = Design.BUTTON_HEIGHT;
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) removeView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mRemoveView.getLayoutParams();
         marginLayoutParams.bottomMargin = (int) (DESIGN_REMOVE_VIEW_MARGIN * Design.HEIGHT_RATIO);
 
         TextView removeTextView = findViewById(R.id.proxy_activity_remove_text_view);

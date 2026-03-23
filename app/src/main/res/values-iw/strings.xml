@@ -4,6 +4,7 @@
     <!-- Application -->
     <string name="application_accept">קבל</string>
     <string name="application_account_deleted">חשבונך נמחק, כעת עליך להסיר את התקנת האפליקציה.</string>
+    <string name="application_account_restored_error">החשבון של מכשיר זה שוחזר למכשיר אחר. עליך להסיר את ההתקנה של האפליקציה.</string>
     <string name="application_add_contact_no_profile">עליך להשלים פרופיל המייצג אותך לפני הזמנת איש קשר. להמשיך?</string>
     <string name="application_all">הכל</string>
     <string name="application_appearance">מראה חיצוני</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">הצג הכל</string>
     <string name="application_do_not_display">אל תציג יותר</string>
     <string name="application_edit">לַעֲרוֹך</string>
+    <string name="application_error_code">קוד שגיאה: %1$s</string>
     <string name="application_error_file_not_found">הקובץ לא נמצא.</string>
     <string name="application_error_media_unload">לא ניתן לטעון מדיה.</string>
     <string name="application_error_media_not_supported">פורמט תמונה/וידאו זה אינו נתמך על ידי האפליקציה.</string>
@@ -109,6 +111,7 @@
     <string name="application_timeout_seconds"> שניות %1$d </string>
     <string name="application_timeout_week">שבוע 1</string>
     <string name="application_unknown_name">לא ידוע</string>
+    <string name="application_until">עד %1$s</string>
     <string name="application_upgrade">משדרג Skred</string>
     <string name="application_webrtc_failure">כשל ב-WebRTC</string>
     <string name="application_wrong_configuration">הגדרות שגויות</string>
@@ -141,16 +144,22 @@
     <string name="accept_invitation_activity_message">%1$s רוצה להתחבר אליך</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">גיבוי לתקשורת חיצונית</string>
+    <string name="account_activity_backup_restore">גיבוי / שחזור</string>
+    <string name="account_activity_backup_verify">אימות גיבוי</string>
+    <string name="account_activity_backup_list">היסטוריית גיבויים</string>
     <string name="account_activity_conversations_content_title">תוכן שיחות</string>
     <string name="account_activity_delete_account">החשבון שלך, יחד עם כל הנתונים המשויכים, יימחקו לצמיתות. האם לאשר?</string>
     <string name="account_activity_delete_account_confirmation">האם אכן למחוק את חשבונך?</string>
     <string name="account_activity_export_content">ייצוא למדיה חיצונית</string>
     <string name="account_activity_message_first_part">חשבון חדש נוצר בעת התקנת האפליקציה בפעם הראשונה, לאחר התקנה מחדש של האפליקציה, או איפוס המכשיר, או מחיקת החשבון הנוכחי.</string>
     <string name="account_activity_message_second_part">לא נשאר זכר לחשבון ונתונים קודמים, אז תצטרך להזמין מחדש את אנשי הקשר שלך.</string>
+    <string name="account_activity_message_third_part">מחיקת חשבון מבטלת גם את כל הגיבויים שנוצרו בחשבון זה, מה שמקשה על שחזור גיבוי מחשבון זה למכשיר זה או אחר.</string>
     <string name="account_activity_migration_message">שירות העברת חשבונות זמין להעברת חשבונך עם כל הנתונים המשויכים (אנשי קשר, הודעות, קבוצות וכו …) ממכשיר Android אחד לאחר בזמן אמת. כך תוכלו להחליף חשבונות בין מכשיר ישן למכשיר חדש.</string>
     <string name="account_activity_migration_start_from_another_device">ממכשיר אחר</string>
     <string name="account_activity_migration_start_from_current_device">מהמכשיר שלי</string>
     <string name="account_activity_migration_title">העברת חשבון</string>
+    <string name="account_activity_restore">שחזור מהתקשורת החיצונית</string>
     <string name="account_activity_title">חשבון</string>
     <string name="account_activity_transfer_between_devices">העברה בין מכשירים</string>
     <string name="account_activity_transfer_from_another_device">העבר ממכשיר אחר</string>
@@ -204,7 +213,8 @@
     <string name="add_contact_activity_onboarding_message">Skred לא מכיר את החברים שלך ולא יכול לגלות אותם. עליך להזמין אותם באופן אישי, עם Skred כשהם בקרבתך, או באמצעות שליחת הזמנה באמצעים אחרים.</string>
     <string name="add_contact_activity_scan_code">סרוק את קוד ה-QR של ההזמנה</string>
     <string name="add_contact_activity_scan_error_corrupt_link">הקישור הזה פגום.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">הקישור הזה שגוי.</string>
+    <string name="add_contact_activity_scan_error_expired_link">פג תוקף קישור ההזמנה הזה.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">הקישור הזה שגוי.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">קישור זה אינו מנוהל על ידי האפליקציה.</string>
     <string name="add_contact_activity_scan_error_revoked_link">קשר זה נמחק.</string>
     <string name="add_contact_activity_scan_message_call_link">קישור זה מתאים ל\"Click-to-call\"</string>
@@ -212,6 +222,12 @@
     <string name="add_contact_activity_scan_message_migration_link">קישור זה מתאים להעברת חשבון</string>
     <string name="add_contact_activity_scan_message_transfer_link">קישור זה מתאים להעברת שיחה</string>
     <string name="add_contact_activity_scan_title">לסרוק</string>
+    <string name="add_contact_activity_share_image_message">ייבא או סרוק את קוד ה-QR של ההזמנה עם Skred כדי להוסיף את \"%1$s\" כאיש קשר.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s מזמין אותך להיכנס למערכת יחסים פרטית ב-\"Skred - מסנג\'ר פרטי\".</string>
+    <string name="add_contact_activity_share_message_part_2">Skred הוא שירות הודעות מוצפן מקצה לקצה של עמית לעמית ושיחות קול/וידאו באיכות High-Definition (HD). אין צורך ברישום.</string>
+    <string name="add_contact_activity_share_message_part_3">פתח כתובת URL זו עם Skred במכשיר הנייד שלך כדי להוסיף את \"%1$s\" כאיש קשר:</string>
+    <string name="add_contact_activity_share_message_part_4">לחלופין, תוכל לייבא או לסרוק את קוד ה-QR של ההזמנה בתמונה המצורפת עם Skred.</string>
+    <string name="add_contact_activity_share_title">%1$s מזמין אותך ל-Skred</string>
     <string name="add_contact_activity_social_subtitle">הודעה, דוא"ל, רשת חברתית</string>
     <string name="add_contact_activity_social_title">שלח קוד דרך האפליקציה</string>
     <string name="add_contact_activity_title">הזמנה</string>
@@ -255,6 +271,44 @@
     <string name="authentified_relation_activity_start">התחל הסמכה</string>
     <string name="authentified_relation_activity_title">קשר מוסמך</string>
     <string name="authentified_relation_activity_to_be_certified_title">תאשר את הקשר</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">גיבוי</string>
+    <string name="backup_activity_beta_message_part_1">שירות הגיבוי/שחזור מוצע בבדיקות BETA על מנת לזהות בעיות פוטנציאליות לפני השקתו הכללית.</string>
+    <string name="backup_activity_beta_message_part_2">שירות זה נועד לגבות רק מטא-נתונים של חשבונות (פרופילים, אנשי קשר, קבוצות) לאחסון חיצוני, כך שניתן יהיה לשחזר אותם מאוחר יותר במכשיר אחר, אם המקור נגנב או נהרס.</string>
+    <string name="backup_activity_beta_message_part_3">שירות זה נועד לגבות רק מטא-נתונים של חשבונות (פרופילים, אנשי קשר, קבוצות) לאחסון חיצוני, כך שניתן יהיה לשחזר אותם מאוחר יותר במכשיר אחר, אם המקור נגנב או נהרס.</string>
+    <string name="backup_activity_confirm_message">כדי לשחזר את הגיבוי, תצטרך להזין את 12 המילים שלמעלה בסדר הזה, ולאפשר לפענח אותו.</string>
+    <string name="backup_activity_content">תוֹכֶן</string>
+    <string name="backup_activity_content_diff_added">נוסף</string>
+    <string name="backup_activity_content_diff_updated">שונה</string>
+    <string name="backup_activity_content_diff_deleted">נמחק</string>
+    <string name="backup_activity_content_diff_message">להלן השינויים בהשוואה לנתונים הנוכחיים שלך:</string>
+    <string name="backup_activity_content_info">גיבויים אינם כוללים שיחות, קבוצות, התראות והיסטוריה.</string>
+    <string name="backup_activity_error_words">המילים שהוזנו אינן מאפשרות פענוח של הגיבוי.</string>
+    <string name="backup_activity_generate_word">לִיצוֹר</string>
+    <string name="backup_activity_last_backup">גיבוי אחרון ב- %1$s</string>
+    <string name="backup_activity_new_backup">גיבוי חדש</string>
+    <string name="backup_activity_onboarding">בצע גיבוי מוצפן של נתוני חשבון (\"Spaces\", פרופילים, אנשי קשר, \"click-to-call\") שניתן לשחזר למכשיר זה או למכשיר אחר.</string>
+    <string name="backup_activity_reminder">הגיבוי האחרון שלך נוצר לפני יותר מ-30 יום.</string>
+    <string name="backup_activity_save_file_message">שמור את קובץ הגיבוי במכשיר שתבחר ושמור את הסיסמאות לשחזור מאוחר יותר.</string>
+    <string name="backup_activity_security">בִּטָחוֹן</string>
+    <string name="backup_activity_security_info">מפתח הצפנת הגיבוי מיוצג על ידי סדרה של 12 מילים שיידרשו לשיקום.</string>
+    <string name="backup_activity_success">הגיבוי הושלם בהצלחה!</string>
+    <string name="backup_activity_success_info">שמור על רשימה זו של 12 מילים כך שתוכל לשחזר את הגיבוי הזה.</string>
+    <string name="backup_activity_title">גיבוי</string>
+    <string name="backup_activity_use_last_backup_words">השתמש באותה רשימת מילים כמו לגיבוי האחרון.</string>
+    <string name="backup_activity_verify_completed">האימות הושלם!</string>
+    <string name="backup_activity_verify_message">תוכל גם לבדוק את תקינות קובץ הגיבוי והאם הנתונים שהוא מכיל מעודכנים מ: חשבון/אמת גיבוי.</string>
+    <string name="backup_activity_verify_up_to_date">הגיבוי שלך מעודכן.</string>
+    <string name="backup_activity_verify_not_up_to_date">הגיבוי שלך אינו מעודכן.</string>
+    <string name="backup_activity_verify_words">כדי לאמת גיבוי, עליך להזין את רצף 12 המילים כדי לפענח אותו.</string>
+    <string name="backup_activity_wait_message">אל תשאיר את המסך הזה בזמן שהגיבוי מתבצע.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">בטל את הגיבויים שלי</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">כל הגיבויים הקודמים שלך יהפכו ללא תקפים ולא ניתן יהיה עוד לשחזר אותם.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">אל תשכח ליצור גיבוי חדש, שניתן לשחזר למכשיר זה או למכשיר אחר.</string>
+    <string name="backups_activity_no_backup_message">לא בוצע גיבוי במכשיר זה.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">הכל</string>
@@ -326,6 +380,7 @@
     <string name="call_activity_tag_speaker_mute">השתקת רמקול</string>
     <string name="call_activity_transfert_call_message">השיחה המתנהלת הועברה.</string>
     <string name="call_activity_try_to_call_back">תנסה להתקשר בחזרה.</string>
+    <string name="call_activity_waiting_conference_call">אף אחד עדיין לא הצטרף לשיחה. אנא המתן...</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">המצלמה נמצאת כבר בשימוש</string>
@@ -487,9 +542,24 @@
     <string name="conversations_fragment_you">את</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">תצורת שיחה</string>
+    <string name="create_external_call_activity_call_type">סוג שיחה</string>
+    <string name="create_external_call_activity_conference_call_description">הצטרף לשיחת ועידה ישירות מדפדפן. אידיאלי לפגישות עסקיות או משפחתיות.</string>
+    <string name="create_external_call_activity_conference_call_short_title">שיחת ועידה</string>
+    <string name="create_external_call_activity_conference_call_title">שיחת ועידה</string>
+    <string name="create_external_call_activity_continuous_link_description">אין הגבלות על תוקף הקישור</string>
+    <string name="create_external_call_activity_continuous_link_title">קבוע</string>
+    <string name="create_external_call_activity_create_message">הזן את השם, התמונה והתיאור של נושא השיחה.</string>
+    <string name="create_external_call_activity_delete_link_setting">קישור זה לא יהיה תקף עוד לאחר התקופה שצוינה.</string>
+    <string name="create_external_call_activity_direct_call_description">קבל שיחה ישירות במכשיר שלך ממישהו שאין לו את האפליקציה.</string>
+    <string name="create_external_call_activity_direct_call_short_title">ישירה</string>
+    <string name="create_external_call_activity_direct_call_title">שיחה ישירה</string>
+    <string name="create_external_call_activity_group_call_description">עד 8 משתתפים</string>
     <string name="create_external_call_activity_link_validity">תוקף קישור</string>
-    <string name="create_external_call_activity_message">הזן את השם, התמונה והתיאור של נושא השיחה.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call מאפשר לאורחים להתקשר אליך מדפדפן מבלי להתקין את האפליקציה.</string>
+    <string name="create_external_call_activity_message">פרופיל זה מוצג לאורחים שיתקשרו אליך עם הקישור הזה \"click-to-call\".</string>
+    <string name="create_external_call_activity_name_required">נדרשים שם ותמונה כדי לייצג את \"Click-to-call\" זה.</string>
+    <string name="create_external_call_activity_notification_setting">קבל הודעה ברגע שהמשתתף הראשון מצטרף לוועידה.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" מאפשר לאורחים להתקשר אליך או להצטרף לשיחת ועידה (\"Click-to-meet\") מדפדפן מבלי להתקין את האפליקציה.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">לכל מופע יש שם, תמונה ותיאור, המייצגים את נושא השיחה, כגון:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">שירות הלקוחות שלך</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">המכונית שאתה מוכר</string>
@@ -508,7 +578,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">שנה את שם ברירת המחדל (אורח) המייצג אותם בשיחה</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">התקשר אליך על ידי לחיצה על כפתור \"התקשר\" בדף האינטרנט.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">לאחר השיחה, הם עשויים להשאיר את דף האינטרנט פתוח כדי להתקשר אליך בחזרה.</string>
+    <string name="create_external_call_activity_onboarding_title_2">הגדרת \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_3">שתף \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_4">השתמש ב\"Click-to-call\"</string>
     <string name="create_external_call_activity_placeholder">נושא (עזרה, הכרזה, פגישה, פעמון דלת,...)</string>
+    <string name="create_external_call_activity_recurrent_link_description">התאם אישית את הימים/שעות שהקישור תקף</string>
+    <string name="create_external_call_activity_recurrent_link_title">תקופתי</string>
+    <string name="create_external_call_activity_unique_link_description">קבע את תאריכי ההתחלה והסיום של תוקף הקישור</string>
+    <string name="create_external_call_activity_unique_link_title">שימוש חד פעמי</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">הזמן חברים</string>
@@ -712,6 +789,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">פעולה זו מבטלת את קוד ההזמנה הנוכחי המשויך לקישור "הקלק להתקשר" זה. לְאַשֵׁר?</string>
     <string name="invitation_call_activity_generate_code_title">צור קוד חדש עבור קישור זה</string>
+    <string name="invitation_call_activity_invite_meeting_message">פתח את כתובת האינטרנט %1$s, או סרוק את קוד ה-QR, כדי להצטרף לפגישה \"%2$s\".</string>
     <string name="invitation_call_activity_invite_message">פתח את כתובת האינטרנט %1$s, או סרוק את ה-QR-Code, כדי לקרוא \"%2$s\".</string>
     <string name="invitation_call_activity_message">שתף את קוד ה"click-to-call" זה עם מישהו שיוכל להתקשר אליך לאחר מכן, מהאינטרנט או מהאפליקציה לנייד.</string>
     <string name="invitation_call_activity_save_message">סרוק את קוד ה-QR הזה כדי להתקשר ל-"%1$s".</string>
@@ -773,6 +851,7 @@
     <string name="notification_center_audio_message_received">הודעה קולית חדשה</string>
     <string name="notification_center_cancel">בטל</string>
     <string name="notification_center_cleanup_conversation">כמה הודעות ישנות נמחקו.</string>
+    <string name="notification_center_conference_join_call">משתתף אחד הצטרף לשיחה.</string>
     <string name="notification_center_deleted_contact">איש קשר נמחק</string>
     <string name="notification_center_file_message">שלח לך קובץ</string>
     <string name="notification_center_file_message_received">קובץ חדש</string>
@@ -782,6 +861,7 @@
     <string name="notification_center_invitation_group">מזמין אותך להצטרף לקבוצה.</string>
     <string name="notification_center_invitation_received">הזמנה חדשה</string>
     <string name="notification_center_invitation_received_group">הזמנה חדשה לקבוצה.</string>
+    <string name="notification_center_join_call">%1$s הצטרף זה עתה לשיחה</string>
     <string name="notification_center_join_group">את/ה חבר/ה בקבוצה</string>
     <string name="notification_center_message_received">הודעה חדשה</string>
     <string name="notification_center_missed_audio_call_to">שיחה קולית ל-%1$s לא נענתה</string>
@@ -951,6 +1031,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">אפשר לאפליקציה לקבל הודעות דחיפה.</string>
     <string name="quality_of_service_activity_warning_run_background">אפשר לאפליקציה לפעול ברקע.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">יש להתקין את twinme+ במכשיר זה על מנת לשחזר גיבוי של חשבון twinme+.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">המכשיר שבוצע הגיבוי עדיין מחובר.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">אם תשחזר את הגיבוי למכשיר החדש, החשבון של המכשיר שבו בוצע הגיבוי יבוטל אוטומטית.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">אם ברצונך להעביר את החשבון שלך למכשיר חדש, ועדיין יש לך את החשבון הישן, עדיף להשתמש בפעולת \"העברת חשבון\", במקום שחזור גיבוי, מכיוון שהיא תעביר גם שיחות, קבוצות, התראות והיסטוריה.</string>
+    <string name="restore_activity_confirm">האם אתה בטוח שאתה רוצה להחליף את נתוני החשבון הנוכחי בנתונים הבאים מהגיבוי?</string>
+    <string name="restore_activity_confirm_restore">האם אתה עדיין רוצה לשחזר גיבוי זה?</string>
+    <string name="restore_activity_content_contact_deleted_message">לא ניתן לשחזר נתונים שנמחקו לאחר הגיבוי.</string>
+    <string name="restore_activity_content_profile_reset">קוד ההזמנה השתנה.</string>
+    <string name="restore_activity_content_profile_reset_message">קוד ההזמנה המשויך לפרופיל המגובה אינו חוקי. קוד הזמנה חדש ייווצר במהלך תהליך השחזור.</string>
+    <string name="restore_activity_enter_words">הזן את סדרת 12 המילים המאפשרת לפענח את הגיבוי.</string>
+    <string name="restore_activity_error_message">שגיאה בשחזור הגיבוי.</string>
+    <string name="restore_activity_error_message_verify_backup">שגיאה באימות הגיבוי.</string>
+    <string name="restore_activity_file_not_supported">קובץ הגיבוי חייב להיות בפורמט \"skrdbckp\".</string>
+    <string name="restore_activity_more_recent_backup">בוצע גיבוי עדכני יותר עם אותו חשבון.</string>
+    <string name="restore_activity_onboarding">שחזור גיבוי יחליף את נתוני החשבון הנוכחי.</string>
+    <string name="restore_activity_onboarding_words">כדי לשחזר גיבוי, תצטרך להיכנס לסדרה של 12 מילים המאפשרת לפענח.</string>
+    <string name="restore_activity_onboarding_verify">ודא שהגיבוי תקף ומעודכן בנתונים הנוכחיים שלך.</string>
+    <string name="restore_activity_paste">הדבק את רשימת המילים מהלוח.</string>
+    <string name="restore_activity_paste_error">רשימת מילים לא חוקית.</string>
+    <string name="restore_activity_restore">לְשַׁחְזֵר</string>
+    <string name="restore_activity_select_backup">בחר גיבוי</string>
+    <string name="restore_activity_state_restore_account">משחזר חשבון...</string>
+    <string name="restore_activity_state_restore_data">משחזר נתונים...</string>
+    <string name="restore_activity_state_restore_starting">התחלת שחזור.</string>
+    <string name="restore_activity_state_restore_verify_account">אימות חשבון...</string>
+    <string name="restore_activity_state_restore_verify_data">אימות נתונים...</string>
+    <string name="restore_activity_state_restore_verify_starting">האימות מתחיל...</string>
+    <string name="restore_activity_state_restore_wait_confirm">ממתין לאישור.</string>
+    <string name="restore_activity_success">השיקום הושלם בהצלחה!</string>
+    <string name="restore_activity_success_message">סגור את האפליקציה והפעל אותה מחדש כדי לגשת לנתונים החדשים.</string>
+    <string name="restore_activity_title">שִׁחזוּר</string>
+    <string name="restore_activity_verify_same_account">יש לבצע את האימות באותו מכשיר בו נעשה שימוש לגיבוי.</string>
+    <string name="restore_activity_warning">שחזור גיבוי זה יחליף את כל נתוני החשבון הנוכחי בנתונים מהגיבוי.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">הגדר כמנהל</string>
     <string name="room_members_activity_delete_message">אשר את הסרת חבר זה</string>
@@ -1004,15 +1119,18 @@
     <string name="settings_activity_ephemeral_title">הודעה נעלמת</string>
     <string name="settings_activity_image_title">צילום</string>
     <string name="settings_activity_message_properties_title">מאפייני הודעה</string>
-    <string name="settings_activity_permissions_title">הרשאות</string>
+    <string name="settings_activity_message_reactions_notification">התראה על תגובות להודעות</string>
     <string name="settings_activity_reset_default_value">אפס להגדרות ברירת המחדל</string>
     <string name="settings_activity_reset_preferences_button_title">אפס לברירות מחדל</string>
     <string name="settings_activity_reset_preferences_message">אפס הגדרות התראות לברירות המחדל של האפליקציה</string>
     <string name="settings_activity_reset_preferences_title">אפס העדפות</string>
+    <string name="settings_activity_permissions_title">הרשאות</string>
+    <string name="settings_activity_silent_mode">מצב שקט</string>
     <string name="settings_activity_silent_sound">שקט</string>
     <string name="settings_activity_sound_enabled_title">התראות קוליות</string>
     <string name="settings_activity_system_notifications_title">התראות מערכת</string>
     <string name="settings_activity_system_settings_title">הגדרות מערכת</string>
+    <string name="settings_activity_turn_off_notification_sounds">כבה צלילי התראה</string>
     <string name="settings_activity_video_call_category_title">שיחות וידאו</string>
     <string name="settings_activity_video_call_notification_ringtone_title">שם צלצול</string>
     <string name="settings_activity_video_call_notification_title">צלצול</string>
@@ -1060,7 +1178,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">קוד "click-to-call".</string>
+    <string name="show_call_activity_conference_call_information">שתף קישור זה כדי להתקשר אליך או להצטרף לוועידה מדפדפן.</string>
     <string name="show_call_activity_information_code">שתף את הקוד הזה כדי לקבל שיחות חיצוניות.</string>
+    <string name="show_call_activity_meeting_organizer">מארגן הפגישה הזו</string>
     <string name="show_call_activity_schedule_call">שיחה מתוזמנת</string>
     <string name="show_call_activity_schedule_from">מ-%1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s מ-%2$s עד %3$s</string>
@@ -1163,12 +1283,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">מודעה מסווגת</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">הוסף קישור במודעה מסווגת המאפשר לקונים פוטנציאליים להתקשר אליך מבלי להתקין את האפליקציה.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">הכרזה</string>
-    <string name="template_click_to_call_activity_template_help">עֶזרָה</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">עֶזרָה</string>
+    <string name="template_click_to_call_activity_template_default_description">התאם אישית קישור שיחה לפי הצורך.</string>
+    <string name="template_click_to_call_activity_template_help">שירות לקוחות</string>
+    <string name="template_click_to_call_activity_template_help_description">קישור להתקשרות לשירות הלקוחות שלך מדפדפן.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">שירות לקוחות</string>
+    <string name="template_click_to_call_activity_template_job">ראיון עבודה</string>
+    <string name="template_click_to_call_activity_template_job_description">קישור המאפשר למגייסים מעוניינים להתקשר אליך לראיון.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">ראיון עבודה</string>
     <string name="template_click_to_call_activity_template_meeting">פְּגִישָׁה</string>
+    <string name="template_click_to_call_activity_template_meeting_description">שתף קישור להצטרפות לוועידה מדפדפן.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">פְּגִישָׁה</string>
+    <string name="template_click_to_call_activity_template_profile_description">קישור להתקשרות אליך מבלי להתקין את האפליקציה.</string>
     <string name="template_click_to_call_activity_template_video_bell">פעמון דלת וידאו</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">אפשר לנהג המשלוח להתקשר אליך לקבלת הוראות.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">פעמון דלת וידאו</string>
 
     <!-- TemplateSpaceActivity -->

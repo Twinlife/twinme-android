@@ -37,7 +37,7 @@ public class UIMoveContactViewHolder extends UIContactViewHolder<UIMoveContact> 
 
     UIMoveContactViewHolder(AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @IdRes int certifiedId, @IdRes int separatorId, boolean showSelection) {
 
-        super(service, view, nameId, avatarId, 0, 0, 0, certifiedId, separatorId, Design.FONT_REGULAR32);
+        super(service, view, nameId, avatarId, 0, 0, 0, 0, certifiedId, separatorId, Design.FONT_REGULAR32);
 
         mSelectedView = view.findViewById(R.id.contacts_space_activity_contact_selected_image);
         mSelectedView.setColorFilter(Design.getMainStyle());
@@ -68,13 +68,13 @@ public class UIMoveContactViewHolder extends UIContactViewHolder<UIMoveContact> 
         mNameView.setTypeface(Design.FONT_MEDIUM34.typeface);
         mNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM34.size);
 
-        float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
+        float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
 
         if (uiContact.isCertified()) {
             marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
             marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
 
-            maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING - (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
+            maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * (DESIGN_MARGIN_PERCENT + DESIGN_SELECTION_MARGIN_PERCENT)) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT - (DESIGN_SELECTION_HEIGHT * Design.HEIGHT_RATIO);
         }
 
         mNameView.setMaxWidth((int) maxWidth);

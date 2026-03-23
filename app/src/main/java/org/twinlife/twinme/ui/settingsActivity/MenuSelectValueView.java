@@ -57,6 +57,8 @@ public class MenuSelectValueView extends RelativeLayout {
         EPHEMERAL_MESSAGE,
         LOCKSCREEN,
         PROFILE_UPDATE_MODE,
+        EXTERNAL_CALL_EXPIRATION,
+        EXTERNAL_CALL_TYPE,
         CAMERA_CONTROL
     }
 
@@ -378,6 +380,14 @@ public class MenuSelectValueView extends RelativeLayout {
 
             case CAMERA_CONTROL:
                 mTitleView.setText(mActivity.getString(R.string.contact_capabilities_activity_camera_control_information));
+                break;
+
+            case EXTERNAL_CALL_TYPE:
+                mTitleView.setText(mActivity.getString(R.string.create_external_call_activity_call_type));
+                break;
+
+            case EXTERNAL_CALL_EXPIRATION:
+                mTitleView.setText(mActivity.getString(R.string.create_external_call_activity_link_validity));
                 break;
 
             default:

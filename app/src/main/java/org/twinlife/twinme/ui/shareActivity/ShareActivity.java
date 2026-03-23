@@ -135,7 +135,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private EditText mEditText;
     private final List<UISelectableContact> mUIContacts = new ArrayList<>();
     private final List<UISelectableContact> mUIGroups = new ArrayList<>();
-    private final List<FileInfo> mSharedUri = new ArrayList<>();
+    private final List<FileInfo> mSharedFiles = new ArrayList<>();
     private final List<UIContact> mSelectedUIContact = new ArrayList<>();
 
     private CharSequence mMessageFromIntent;
@@ -155,6 +155,8 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     @Nullable
     private Item mItem;
     private boolean mIsPeerItem;
+
+    private UUID mCurrentConversationId;
 
     private Manager<Item> mAsyncItemLoader;
 
@@ -190,7 +192,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
                 intent.setAction(incomingIntent.getAction());
                 intent.putExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID, incomingIntent.getStringExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID));
                 intent.putExtra(Intent.EXTRA_TEXT, ShareUtils.getSharedText(incomingIntent));
-                intent.putParcelableArrayListExtra(Intents.INTENT_DIRECT_SHARE_URIS, importFiles(incomingIntent));
+                intent.putParcelableArrayListExtra(Intents.INTENT_DIRECT_SHARE_FILES, importFiles(incomingIntent));
                 intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 runOnUiThread(() -> {
                     hideProgressIndicator();
@@ -425,8 +427,10 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             Log.d(LOG_TAG, "onGetConversation: conversation=" + conversation);
         }
 
-        for (int i = 0; i < mSharedUri.size(); i++) {
-            FileInfo media = mSharedUri.get(i);
+        mCurrentConversationId = conversation.getId();
+
+        for (int i = 0; i < mSharedFiles.size(); i++) {
+            FileInfo media = mSharedFiles.get(i);
             String filename = media.getFilename();
             if (filename == null) {
                 String mimeType = media.getMimeType();
@@ -467,7 +471,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             }
         }
 
-        if (!mSelectedUIContact.isEmpty()) {
+        if (!mSelectedUIContact.isEmpty() && !mShareService.isSendingFiles()) {
             UIContact uiContact = mSelectedUIContact.remove(0);
             mShareService.getConversation(uiContact.getContact());
         } else if (!mShareService.isSendingFiles()) {
@@ -542,9 +546,13 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
-    public void onSendFilesFinished() {
+    public void onSendFilesFinished(@Nullable UUID conversationId) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSendFilesFinished");
+        }
+
+        if (conversationId != null && !conversationId.equals(mCurrentConversationId)) {
+            return;
         }
 
         if (mDeferredMessage != null) {
@@ -555,6 +563,10 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
         if (!mSendFileError && mSelectedUIContact.isEmpty()) {
             finish();
+        } else if (!mSelectedUIContact.isEmpty()) {
+            mCurrentConversationId = null;
+            UIContact uiContact = mSelectedUIContact.remove(0);
+            mShareService.getConversation(uiContact.getContact());
         }
     }
 
@@ -1021,9 +1033,9 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             return;
         }
 
-        List<Uri> sharedUris = ShareUtils.getSharedFiles(getIntent());
+        List<FileInfo> sharedFiles = ShareUtils.getSharedFiles(getApplicationContext(), getIntent());
 
-        if (sharedUris.isEmpty()) {
+        if (sharedFiles.isEmpty()) {
             // Get the first selected contact and remove it from the list immediately.
             UIContact uiContact = mSelectedUIContact.remove(0);
             mShareService.getConversation(uiContact.getContact());
@@ -1031,11 +1043,10 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         } else {
             getTwinmeContext().execute(() -> {
 
-                for (Uri uri: sharedUris) {
-                    FileInfo media = new FileInfo(getApplicationContext(), uri);
+                for (FileInfo media: sharedFiles) {
                     if (media.getFilename() != null) {
                         // The file can be sent only when it has a filename.
-                        mSharedUri.add(media);
+                        mSharedFiles.add(media);
                     }
                 }
 
@@ -1162,14 +1173,13 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @NonNull
-    private ArrayList<Uri> importFiles(@NonNull Intent intent) {
+    private ArrayList<FileInfo> importFiles(@NonNull Intent intent) {
         if (DEBUG) {
             Log.d(LOG_TAG, "importFiles");
         }
 
-        ArrayList<Uri> res = new ArrayList<>();
-        for (Uri sharedFile : ShareUtils.getSharedFiles(intent)) {
-            FileInfo fileInfo = new FileInfo(getApplicationContext(), sharedFile);
+        ArrayList<FileInfo> res = new ArrayList<>();
+        for (FileInfo fileInfo : ShareUtils.getSharedFiles(getApplicationContext(), intent)) {
             FileInfo copy;
             if (fileInfo.isImage() || fileInfo.isVideo()) {
                 copy = fileInfo.saveMedia(getApplicationContext(), getTwinmeApplication().qualityMedia());
@@ -1177,7 +1187,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
                 copy = fileInfo.saveFile(getApplicationContext());
             }
             if (copy != null) {
-                res.add(copy.getUri());
+                res.add(copy);
             }
         }
 

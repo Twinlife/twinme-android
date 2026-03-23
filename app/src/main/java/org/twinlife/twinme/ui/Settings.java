@@ -103,6 +103,10 @@ public class Settings {
     public static final InternalBooleanConfig showRemoteCameraSettingOnboarding = new InternalBooleanConfig("settings_activity_show_remote_camera_setting_onboarding", true);
     public static final InternalBooleanConfig showTransferCallOnboarding = new InternalBooleanConfig("settings_activity_show_transfer_call_onboarding", true);
     public static final InternalBooleanConfig showProxyOnboarding = new InternalBooleanConfig("settings_activity_show_proxy_onboarding", true);
+    public static final InternalBooleanConfig showBackupOnboarding = new InternalBooleanConfig("settings_activity_show_backup_onboarding", true);
+    public static final InternalBooleanConfig showRestoreOnboarding = new InternalBooleanConfig("settings_activity_show_restore_onboarding", true);
+    public static final InternalBooleanConfig showVerifyBackupOnboarding = new InternalBooleanConfig("settings_activity_show_verify_backup_onboarding", true);
+    public static final InternalBooleanConfig showBetaBackupOnboarding = new InternalBooleanConfig("settings_activity_show_beta_backup_onboarding", true);
 
     public static final InternalBooleanConfig showWarningBackgroundLocation = new InternalBooleanConfig("settings_activity_show_warning_location_background", true);
     public static final InternalBooleanConfig showWarningExactLocation = new InternalBooleanConfig("settings_activity_show_warning_exact_location", true);
@@ -121,6 +125,10 @@ public class Settings {
     // Subscription
     public static final StringConfig premiumSubscriptionInvitationTwincode = new StringConfig("in_app_subscription_activity_invitation_twincode", null, "22CA1D8D-FE44-4D94-B352-3977935FD44B");
     public static final StringConfig premiumSubscriptionInvitationImage = new StringConfig("in_app_subscription_activity_invitation_image", null, "3FAA6089-253C-4541-A9C7-3EA7D245F926");
+
+    // Backup
+    public static final InternalLongConfig firstInstallationBackupDate = new InternalLongConfig("backup_activity_first_date", 0);
+    public static final LongConfig lastBackupDate =new LongConfig("backup_activity_last_date", 0, "E55ECCE5-A709-4C5d-9D7D-09CDDEA8f8C5");
 
     // Coach Mark
     public static final LongConfig lastShowCoachMarkConversationEphemeral = new LongConfig("last_show_coach_mark_conversation_ephemeral", 0, "314464E8-228B-4D0F-A1CF-43EEC8BCA45A");

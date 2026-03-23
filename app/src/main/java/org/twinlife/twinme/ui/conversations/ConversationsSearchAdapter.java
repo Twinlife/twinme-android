@@ -220,7 +220,7 @@ public class ConversationsSearchAdapter extends ListAdapter<SearchResultItem, Re
             layoutParams.height = Design.ITEM_VIEW_HEIGHT;
             convertView.setLayoutParams(layoutParams);
 
-            return new UIContactViewHolder<UIContact>(mChatService, convertView, R.id.contacts_fragment_contact_item_name_view, R.id.contacts_fragment_contact_item_avatar_view, R.id.contacts_fragment_contact_item_tag_view, R.id.contacts_fragment_contact_item_tag_title_view, 0, R.id.contacts_fragment_contact_item_certified_image_view, R.id.contacts_fragment_contact_item_separator_view, Design.FONT_REGULAR34);
+            return new UIContactViewHolder<UIContact>(mChatService, convertView, R.id.contacts_fragment_contact_item_name_view, R.id.contacts_fragment_contact_item_avatar_view, R.id.contacts_fragment_contact_item_tag_view, R.id.contacts_fragment_contact_item_tag_title_view, 0, 0, R.id.contacts_fragment_contact_item_certified_image_view, R.id.contacts_fragment_contact_item_separator_view, Design.FONT_REGULAR34);
         } else {
             convertView = inflater.inflate(R.layout.search_content_message_item, parent, false);
             return new SearchContentMessageViewHolder(mChatService, convertView);

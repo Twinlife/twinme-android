@@ -820,13 +820,14 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             return;
         }
 
-        UIConversation uiConversation = mUIConversationsMap.remove(conversation.getId());
+        UIConversation uiConversation = mUIConversationsMap.get(conversation.getId());
         if (uiConversation != null) {
             if (conversation.isGroup()) {
                 uiConversation.setLastDescriptor(null, null);
             } else {
                 uiConversation.resetUIConversation();
                 mUIConversations.remove(uiConversation);
+                mUIConversationsMap.remove(conversation.getId());
             }
             notifyConversationListChanged();
         }

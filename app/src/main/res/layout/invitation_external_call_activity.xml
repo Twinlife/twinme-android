@@ -252,7 +252,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/invitation_call_activity_message"
+        android:text="@string/show_call_activity_conference_call_information"
         app:layout_widthPercent="89.06%"
         app:layout_marginTopPercent="9.22%" />
 

@@ -55,8 +55,15 @@ import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
+import org.twinlife.twinme.models.LinkValidity;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Space;
+import org.twinlife.twinme.models.schedule.Date;
+import org.twinlife.twinme.models.schedule.DateTime;
+import org.twinlife.twinme.models.schedule.DateTimeRange;
+import org.twinlife.twinme.models.schedule.Schedule;
+import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallsService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
@@ -82,13 +89,17 @@ import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper.OnSwipeItemClickListener;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class CallsFragment extends TabbarFragment implements CallsService.Observer, ViewTreeObserver.OnGlobalLayoutListener {
@@ -390,7 +401,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         mCallReceivers.clear();
         mOnlyMissedCalls = false;
         mCallRadioGroup.check(R.id.calls_tool_bar_all_radio);
-        mCallsListAdapter.setCallReicevers(new ArrayList<>());
+        mCallsListAdapter.setCallReceivers(new ArrayList<>());
         mCallsRecyclerView.scrollToPosition(0);
     }
 
@@ -532,7 +543,24 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             Log.d(LOG_TAG, "onGetCallReceivers: callReceivers=" + callReceivers);
         }
 
-        mCallsListAdapter.setCallReicevers(callReceivers);
+        List<CallReceiver> filteredCallReceivers = new ArrayList<>();
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new java.util.Date(System.currentTimeMillis()));
+        Date date = Date.from(calendar);
+        Time time = Time.from(calendar);
+        DateTime currentDateTime = new DateTime(date, time);
+
+        for (CallReceiver callReceiver : callReceivers) {
+            DateTime expireDateTime = getExpiredDate(callReceiver);
+            if (expireDateTime != null && currentDateTime.compareTo(expireDateTime) > 0) {
+                mCallsService.deleteCallReceiver(callReceiver);
+            } else {
+                filteredCallReceivers.add(callReceiver);
+            }
+        }
+
+        mCallsListAdapter.setCallReceivers(filteredCallReceivers);
         mCallReceivers = mCallsListAdapter.getCallReceivers();
 
         if (mUIInitialized) {
@@ -557,7 +585,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             return;
         }
 
-        mCallsListAdapter.updateUIOriginator(callReceiver);
+        mCallsListAdapter.updateUICallReceiver(callReceiver);
         mCallReceivers = mCallsListAdapter.getCallReceivers();
 
         if (mUIInitialized) {
@@ -575,7 +603,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             return;
         }
 
-        mCallsListAdapter.updateUIOriginator(callReceiver);
+        mCallsListAdapter.updateUICallReceiver(callReceiver);
         mCallReceivers = mCallsListAdapter.getCallReceivers();
 
         if (mUIInitialized) {
@@ -589,7 +617,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             Log.d(LOG_TAG, "onDeleteCallReceiver: " + callReceiverId);
         }
 
-        mCallsListAdapter.removeUIOriginator(callReceiverId);
+        mCallsListAdapter.removeUICallReceiver(callReceiverId);
         mCallReceivers = mCallsListAdapter.getCallReceivers();
 
         if (mUIInitialized) {
@@ -788,7 +816,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         // Setup the service after the view is initialized but before the adapter.
         mCallsService = new CallsService(mTwinmeActivity, mTwinmeActivity.getTwinmeContext(), this, null, null);
 
-        mCallsListAdapter = new CallsAdapter(mTwinmeActivity, mCallsService, mFilteredCalls, new ArrayList<>(), onCallClickListener);
+        mCallsListAdapter = new CallsAdapter(mTwinmeActivity, mCallsService, mFilteredCalls, mCallReceivers, onCallClickListener);
         mCallsRecyclerView.setAdapter(mCallsListAdapter);
 
         mUIInitialized = true;
@@ -1131,6 +1159,11 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
 
         Originator originator = mUICall.getContact();
 
+        if (hasSchedule(originator)) {
+            showSchedule(originator);
+            return;
+        }
+        
         if (!mTwinmeActivity.isFeatureSubscribed(TwinmeApplication.Feature.GROUP_CALL) && originator.getType() == Originator.Type.GROUP) {
             showPremiumFeatureClick(UIPremiumFeature.FeatureType.GROUP_CALL);
             return;
@@ -1231,6 +1264,27 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         });
     }
 
+    private DateTime getExpiredDate(@NonNull CallReceiver callReceiver) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "getExpiredDate: callReceiver=" + callReceiver);
+        }
+
+        if (callReceiver.getCapabilities().getLinkValidity() == LinkValidity.SINGLE_USE) {
+            if (callReceiver.getCapabilities().getSchedule() != null && callReceiver.getCapabilities().getSchedule().getTimeRanges() != null && !callReceiver.getCapabilities().getSchedule().getTimeRanges().isEmpty()) {
+                if (callReceiver.getCapabilities().getSchedule().getTimeRanges().get(0) instanceof DateTimeRange) {
+                    DateTimeRange dateTimeRange = (DateTimeRange) callReceiver.getCapabilities().getSchedule().getTimeRanges().get(0);
+                    DateTime endDateTime = dateTimeRange.end;
+                    Calendar calendar = endDateTime.toCalendar(TimeZone.getDefault());
+                    calendar.add(Calendar.DATE, 1);
+                    return DateTime.from(calendar);
+                }
+            }
+        }
+
+        return null;
+
+    }
+
     private void addMenu() {
         if (DEBUG) {
             Log.d(LOG_TAG, "addMenu");
@@ -1277,6 +1331,99 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             }
 
         }, getViewLifecycleOwner());
+    }
+
+    private boolean hasSchedule(Originator originator) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hasSchedule");
+        }
+
+        if (originator != null && originator.getCapabilities().getSchedule() != null && originator.getCapabilities().getSchedule().isEnabled()) {
+            return !originator.getCapabilities().getSchedule().isNowInRange();
+        }
+
+        return false;
+    }
+
+    private void showSchedule(Originator originator) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showSchedule");
+        }
+
+        String message = "";
+        if (originator != null && originator.getCapabilities().getSchedule() != null) {
+            Schedule schedule = originator.getCapabilities().getSchedule();
+            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
+
+                if (schedule.getTimeRanges().get(0) instanceof WeeklyTimeRange) {
+                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) schedule.getTimeRanges().get(0);
+                    Time scheduleStartTime = weeklyTimeRange.start;
+                    Time scheduleEndTime = weeklyTimeRange.end;
+                    StringBuilder messageStringBuilder = new StringBuilder();
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(scheduleStartTime);
+                    messageStringBuilder.append("\n");
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(scheduleEndTime);
+                    messageStringBuilder.append("\n\n");
+
+                    DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(Locale.getDefault());
+                    String[] weekDays = dateFormatSymbols.getWeekdays();
+
+                    for (WeeklyTimeRange.DayOfWeek dayOfWeek : weeklyTimeRange.days) {
+                        String dayString = "";
+                        switch (dayOfWeek) {
+                            case MONDAY:
+                                dayString = weekDays[2];
+                                break;
+                            case TUESDAY:
+                                dayString = weekDays[3];
+                                break;
+                            case WEDNESDAY:
+                                dayString = weekDays[4];
+                                break;
+                            case THURSDAY:
+                                dayString = weekDays[5];
+                                break;
+                            case FRIDAY:
+                                dayString = weekDays[6];
+                                break;
+                            case SATURDAY:
+                                dayString = weekDays[7];
+                                break;
+                            case SUNDAY:
+                                dayString = weekDays[1];
+                                break;
+                        }
+
+                        if (!dayString.isEmpty()) {
+                            messageStringBuilder.append(dayString);
+                            messageStringBuilder.append("\n");
+                        }
+
+                        message = messageStringBuilder.toString();
+                    }
+                } else {
+                    DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                    DateTime start = dateTimeRange.start;
+                    DateTime end = dateTimeRange.end;
+
+                    if (start.date.equals(end.date)) {
+                        message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(getContext()), end.formatTime(getContext()));
+                    } else {
+                        message = String.format("%1$s %2$s", start.formatDateTime(getContext()), end.formatDateTime(getContext()));
+                    }
+                }
+            } else {
+                message = getString(R.string.show_call_activity_schedule_message);
+            }
+
+            if (mTwinmeActivity != null) {
+                mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(R.string.show_call_activity_schedule_call), message, true, null);
+            }
+        }
     }
 
     public void updateFont() {

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -9,6 +9,7 @@
 package org.twinlife.twinme.ui.externalCallActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -21,9 +22,9 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -32,15 +33,22 @@ import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
+import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.RoundedView;
+import org.twinlife.twinme.utils.UIMenuSelectAction;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -82,6 +90,12 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
     private String mDescription;
     private boolean mUpdated = false;
     private Bitmap mAvatar;
+
+    private EditableView mEditableView;
+
+    private Bitmap mUpdatedAvatar;
+    private Bitmap mUpdatedLargeAvatar;
+    private File mUpdatedAvatarFile;
 
     private CallReceiverService mCallReceiverService;
     private CallReceiver mCallReceiver;
@@ -139,17 +153,35 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         super.onSaveInstanceState(outState);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (mEditableView != null) {
+            mEditableView.onActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Activity.RESULT_OK) {
+                updateSelectedImage();
+            }
+        }
+    }
+
     //
     // Implement CallReceiverService.Observer methods
     //
 
     @Override
-    public void onGetCallReceiver(@Nullable CallReceiver callReceiver) {
+    public void onGetCallReceiver(@Nullable CallReceiver callReceiver, @Nullable Bitmap avatar) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetCallReceiver: " + callReceiver);
         }
 
         mCallReceiver = callReceiver;
+        mAvatar = avatar;
 
         setFullscreen();
         mRemoveListener.enable();
@@ -158,16 +190,17 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         if (mCallReceiver.getDescription() != null) {
             mDescription = mCallReceiver.getDescription();
         }
+        updateExternalCall();
+    }
 
-        mCallReceiverService.getImage(callReceiver, (Bitmap avatar) -> {
-            mAvatar = avatar;
+    @Override
+    public void onGetCallReceiverNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCallReceiverNotFound");
+        }
 
-            if (mCallReceiver.getAvatarId() != null) {
-                mCallReceiverService.getLargeAvatar(mCallReceiver.getAvatarId());
-            }
-
-            updateExternalCall();
-        });
+        // @todo report an error message.
+        finish();
     }
 
     @Override
@@ -202,6 +235,20 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         }
     }
 
+    private void updateSelectedImage() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateSelectedImage");
+        }
+
+        mEditableView.getSelectedImage((String path, Bitmap bitmap, Bitmap largeImage) -> {
+            mUpdatedAvatarFile = new File(path);
+            mUpdatedAvatar = bitmap;
+            mUpdatedLargeAvatar = largeImage;
+            mUpdated = true;
+            updateExternalCall();
+        });
+    }
+
     //
     // Private methods
     //
@@ -222,18 +269,16 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         setTitle(getString(R.string.application_profile));
 
         mAvatarView = findViewById(R.id.edit_external_call_activity_avatar_view);
+        mAvatarView.setOnClickListener(v -> openMenuPhoto());
+
+        mEditableView = new EditableView(this);
 
         ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
         layoutParams.width = Design.AVATAR_MAX_WIDTH;
         layoutParams.height = Design.AVATAR_MAX_HEIGHT;
 
         View backClickableView = findViewById(R.id.edit_external_call_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -245,8 +290,25 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         RoundedView backRoundedView = findViewById(R.id.edit_external_call_activity_back_rounded_view);
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
+        mScrollView = findViewById(R.id.edit_external_call_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
+
         mContentView = findViewById(R.id.edit_external_call_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
+
+        View editAvatarView = findViewById(R.id.edit_external_call_activity_edit_avatar_clickable_view);
+        editAvatarView.setOnClickListener(view -> openMenuPhoto());
+        layoutParams = editAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
 
         setBackground(mContentView);
 
@@ -258,15 +320,13 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         gradientDrawable.mutate();
         gradientDrawable.setColor(Color.rgb(244, 244, 244));
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(slideMarkView, gradientDrawable);
+        slideMarkView.setBackground(gradientDrawable);
 
         float corner = ((float)Design.SLIDE_MARK_HEIGHT / 2) * Resources.getSystem().getDisplayMetrics().density;
         gradientDrawable.setCornerRadius(corner);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
-
-        mContentView.setOnTouchListener((v, motionEvent) -> touchContent(motionEvent));
 
         mTitleView = findViewById(R.id.edit_external_call_activity_title_view);
         Design.updateTextFont(mTitleView, Design.FONT_BOLD44);
@@ -282,7 +342,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable nameViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         nameViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(nameContentView, nameViewBackground);
+        nameContentView.setBackground(nameViewBackground);
 
         layoutParams = nameContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -314,11 +374,10 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
             }
         });
 
-        GestureDetector nameGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_NAME));
-        mNameView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = nameGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mNameView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterNameView = findViewById(R.id.edit_external_call_activity_counter_name_view);
@@ -367,11 +426,10 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
             }
         });
 
-        GestureDetector descriptionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_DESCRIPTION));
-        mDescriptionView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = descriptionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mDescriptionView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterDescriptionView = findViewById(R.id.edit_external_call_activity_counter_description_view);
@@ -386,16 +444,9 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         mSaveClickableView.setOnClickListener(v -> onSaveClick());
         mSaveClickableView.setAlpha(0.5f);
 
-        GestureDetector saveGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SAVE));
-        mSaveClickableView.setOnTouchListener((v, motionEvent) -> {
-            saveGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
-
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mSaveClickableView, saveViewBackground);
+        mSaveClickableView.setBackground(saveViewBackground);
 
         layoutParams = mSaveClickableView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -411,13 +462,6 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         View removeView = findViewById(R.id.edit_external_call_activity_remove_view);
         mRemoveListener = new RemoveListener();
         removeView.setOnClickListener(mRemoveListener);
-
-        GestureDetector removeGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_REMOVE));
-        removeView.setOnTouchListener((v, motionEvent) -> {
-            removeGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
 
         layoutParams = removeView.getLayoutParams();
         layoutParams.height = Design.BUTTON_HEIGHT;
@@ -456,9 +500,10 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
 
         boolean updated = !callReceiverName.equals(mName);
         updated = updated || (callReceiverDescription != null && !callReceiverDescription.equals(mDescription));
+        updated = updated || mUpdatedAvatar != null;
 
         if (updated) {
-            mCallReceiverService.updateCallReceiver(mCallReceiver, callReceiverName, callReceiverDescription, mCallReceiver.getIdentityName(), mCallReceiver.getIdentityDescription(), null, null, null);
+            mCallReceiverService.updateCallReceiver(mCallReceiver, callReceiverName, callReceiverDescription, mUpdatedAvatar, mUpdatedAvatarFile);
         }
     }
 
@@ -597,9 +642,16 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
             }
         });
 
-        if (mAvatar != null) {
+        if (mUpdatedLargeAvatar != null) {
+            mAvatarView.setImageBitmap(mUpdatedLargeAvatar);
+            setUpdated();
+        } else if (mUpdatedAvatar != null) {
+            mAvatarView.setImageBitmap(mUpdatedAvatar);
+            setUpdated();
+        } else if (mAvatar != null) {
             mAvatarView.setImageBitmap(mAvatar);
         }
+
     }
 
     private void setUpdated() {
@@ -614,5 +666,54 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         mUpdated = true;
 
         mSaveClickableView.setAlpha(1.0f);
+    }
+
+    private void openMenuPhoto() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openMenuPhoto");
+        }
+
+        hideKeyboard();
+
+        ViewGroup viewGroup = findViewById(R.id.edit_external_call_activity_layout);
+
+        MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
+
+        MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
+            @Override
+            public void onCameraClick() {
+
+                menuPhotoView.animationCloseMenu();
+                mEditableView.onCameraClick();
+            }
+
+            @Override
+            public void onPhotoGalleryClick() {
+
+                menuPhotoView.animationCloseMenu();
+                mEditableView.onGalleryClick();
+            }
+
+            @Override
+            public void onCloseMenuSelectActionAnimationEnd() {
+
+                viewGroup.removeView(menuPhotoView);
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.WHITE_COLOR);
+            }
+        };
+
+        menuPhotoView.setObserver(observer);
+        viewGroup.addView(menuPhotoView);
+
+        List<UIMenuSelectAction> actions = new ArrayList<>();
+        actions.add(new UIMenuSelectAction(getString(R.string.application_camera), R.drawable.grey_camera));
+        actions.add(new UIMenuSelectAction(getString(R.string.application_photo_gallery), R.drawable.from_gallery));
+        menuPhotoView.setActions(actions, this);
+        menuPhotoView.openMenu(true);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 }

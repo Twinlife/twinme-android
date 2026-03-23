@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -54,8 +54,8 @@ public class EditIdentityService extends AbstractTwinmeService {
     private static final int CREATE_PROFILE_DONE = 1 << 21;
     private static final int GET_CALL_RECEIVER = 1 << 23;
     private static final int GET_CALL_RECEIVER_DONE = 1 << 24;
-    private static final int UPDATE_CALL_RECEIVER = 1 << 25;
-    private static final int UPDATE_CALL_RECEIVER_DONE = 1 << 26;
+    private static final int UPDATE_ORGANIZER = 1 << 25;
+    private static final int UPDATE_ORGANIZER_DONE = 1 << 26;
 
     public interface Observer extends AbstractTwinmeService.Observer, ContactObserver, SpaceObserver {
 
@@ -286,7 +286,7 @@ public class EditIdentityService extends AbstractTwinmeService {
      * Find a {@link CallReceiver} by its DB ID.
      * <p>
      * Once found, the CallReceiver will be made available through the
-     * {@link CallReceiverService.Observer#onGetCallReceiver(CallReceiver)} callback. If no CallReceiver was found,
+     * {@link CallReceiverService.Observer#onGetCallReceiver(CallReceiver, Bitmap)} callback. If no CallReceiver was found,
      * the callback will be called with a null argument.
      *
      * @param callReceiverId the ID of the CallReceiver.
@@ -360,9 +360,9 @@ public class EditIdentityService extends AbstractTwinmeService {
      * @param avatar       The thumbnail of the call receiver's avatar.
      * @param avatarFile   The actual call receiver's avatar. Mandatory if avatar is not null.
      */
-    public void updateCallReceiver(@NonNull CallReceiver callReceiver, @Nullable String identityName, @Nullable String description, @Nullable Bitmap avatar, @Nullable File avatarFile) {
+    public void updateOrganizer(@NonNull CallReceiver callReceiver, @Nullable String identityName, @Nullable String description, @Nullable Bitmap avatar, @Nullable File avatarFile) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "deleteCallReceiver: callReceiver=");
+            Log.d(LOG_TAG, "updateOrganizer: callReceiver=" + callReceiver);
         }
 
         mCallReceiver = callReceiver;
@@ -371,8 +371,8 @@ public class EditIdentityService extends AbstractTwinmeService {
         mAvatar = avatar;
         mAvatarFile = avatarFile;
 
-        mWork |= UPDATE_CALL_RECEIVER;
-        mState &= ~(UPDATE_CALL_RECEIVER | UPDATE_CALL_RECEIVER_DONE);
+        mWork |= UPDATE_ORGANIZER;
+        mState &= ~(UPDATE_ORGANIZER | UPDATE_ORGANIZER_DONE);
 
         startOperation();
     }
@@ -559,27 +559,20 @@ public class EditIdentityService extends AbstractTwinmeService {
         // Update a call receiver
         //
 
-        if (mCallReceiver != null && (mWork & UPDATE_CALL_RECEIVER) != 0) {
-            if ((mState & UPDATE_CALL_RECEIVER) == 0) {
-                mState |= UPDATE_CALL_RECEIVER;
+        if (mCallReceiver != null && (mWork & UPDATE_ORGANIZER) != 0) {
+            if ((mState & UPDATE_ORGANIZER) == 0) {
+                mState |= UPDATE_ORGANIZER;
 
-                long requestId = newOperation(UPDATE_CALL_RECEIVER);
+                long requestId = newOperation(UPDATE_ORGANIZER);
                 if (DEBUG) {
                     Log.d(LOG_TAG, "mTwinmeContext.updateCallReceiver: requestId=" + requestId);
                 }
 
-                String callReceiverName = mCallReceiver.getName();
-                String callReceiverDescription = mCallReceiver.getDescription();
-
-                if (mCallReceiver.isTransfer()) {
-                    callReceiverName = mName;
-                    callReceiverDescription = mDescription;
-                }
-                mTwinmeContext.updateCallReceiver(requestId, mCallReceiver, callReceiverName, callReceiverDescription, mName, mDescription, mAvatar, mAvatarFile, null);
+                mTwinmeContext.updateOrganizer(requestId, mCallReceiver, mName, mDescription, mAvatar, mAvatarFile);
                 return;
             }
 
-            if ((mState & UPDATE_CALL_RECEIVER_DONE) == 0) {
+            if ((mState & UPDATE_ORGANIZER_DONE) == 0) {
                 return;
             }
         }
@@ -786,7 +779,7 @@ public class EditIdentityService extends AbstractTwinmeService {
             Log.d(LOG_TAG, "onUpdateCallReceiver callReceiver=" + callReceiver);
         }
 
-        mState |= UPDATE_CALL_RECEIVER_DONE;
+        mState |= UPDATE_ORGANIZER_DONE;
 
         runOnUiThread(() -> {
             if (mObserver != null) {
@@ -848,8 +841,8 @@ public class EditIdentityService extends AbstractTwinmeService {
 
                     return;
 
-                case UPDATE_CALL_RECEIVER:
-                    mState |= UPDATE_CALL_RECEIVER_DONE;
+                case UPDATE_ORGANIZER:
+                    mState |= UPDATE_ORGANIZER_DONE;
                     runOnUiThread(() -> {
                         if (mObserver != null) {
                             mObserver.onGetCallReceiverNotFound();

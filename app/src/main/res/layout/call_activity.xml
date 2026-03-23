@@ -293,6 +293,13 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone" />
 
+    <org.twinlife.twinme.ui.callActivity.CallInfoView
+        android:id="@+id/call_activity_call_info_view"
+        android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
     <org.twinlife.twinme.utils.coachmark.CoachMarkView
         android:id="@+id/call_activity_coach_mark_view"
         android:layout_width="match_parent"

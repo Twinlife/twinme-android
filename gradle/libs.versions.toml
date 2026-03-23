@@ -72,6 +72,7 @@ glide-recyclerview = { module = "com.github.bumptech.glide:recyclerview-integrat
 firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junitJupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }

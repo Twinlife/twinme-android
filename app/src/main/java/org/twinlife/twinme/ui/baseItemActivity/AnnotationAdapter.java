@@ -1,9 +1,10 @@
 /*
- *  Copyright (c) 2023-2024 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.baseItemActivity;
@@ -105,7 +106,8 @@ public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder
                 drawable = ResourcesCompat.getDrawable(mActivity.getResources(), R.drawable.reaction_unknown, mActivity.getTheme());
                 colorFilter = Design.BLACK_COLOR;
             } else {
-                UIReaction.ReactionType reactionType = UIReaction.ReactionType.values()[descriptorAnnotation.getValue()];
+                // LIKE annotations always have an int value, so the cast is safe.
+                UIReaction.ReactionType reactionType = UIReaction.ReactionType.values()[(int)descriptorAnnotation.getValue()];
 
                 switch (reactionType) {
                     case UNLIKE:

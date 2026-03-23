@@ -93,7 +93,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="top|center_horizontal"
+        android:lines="5"
         android:text="@string/fullscreen_qrcode_activity_save_message"
         app:layout_widthPercent="89.06%"
         app:layout_marginTopPercent="4.35%" />

@@ -10,6 +10,7 @@ package org.twinlife.twinme.ui.contacts;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -115,14 +116,24 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
         super.onResume();
 
-        if (!mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.MINI_CODE)) {
-            mShowOnboarding = true;
-            showOnboarding(false);
-        }
-
         if (mUIInvitationCodeList.isEmpty()) {
             mInvitationCodeService.getInvitations();
         }
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            showFirstOnboarding();
+        }
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
+
+        showFirstOnboarding();
     }
 
     @Override
@@ -519,5 +530,16 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showFirstOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showFirstOnboarding");
+        }
+
+        if (!mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.MINI_CODE)) {
+            mShowOnboarding = true;
+            showOnboarding(false);
+        }
     }
 }

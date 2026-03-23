@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -146,9 +147,11 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             if (uiSetting != null) {
                 if (!mPrivacyActivity.isDeviceSecure()) {
                     settingsViewHolder.itemView.setOnClickListener(v -> mPrivacyActivity.onDeviceSecureMessage());
-                    settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), false);
+                    settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), false, null);
                 } else {
-                    settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true);
+                    UISetting<Boolean> finalUiSetting = uiSetting;
+                    CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mPrivacyActivity.onSettingChangeValue(finalUiSetting, isChecked);
+                    settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
                 }
             }
 
@@ -176,10 +179,10 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return new SectionTitleViewHolder(convertView);
         } else if (viewType == CHECKBOX) {
             convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
-            return new SettingSwitchViewHolder(convertView, mPrivacyActivity);
+            return new SettingSwitchViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.settings_activity_item_value, parent, false);
-            return new SettingValueViewHolder(convertView, mPrivacyActivity);
+            return new SettingValueViewHolder(convertView);
         }
     }
 }

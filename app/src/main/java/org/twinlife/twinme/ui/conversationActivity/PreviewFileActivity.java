@@ -125,12 +125,12 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
 
         initViews();
 
-        ArrayList<String> urisToString = intent.getStringArrayListExtra(Intents.INTENT_SELECTED_URI);
+        List<FileInfo> fileInfos = intent.getParcelableArrayListExtra(Intents.INTENT_SELECTED_FILES);
 
-        if (urisToString != null) {
-            for (String uri : urisToString) {
+        if (fileInfos != null) {
+            for (FileInfo fileInfo : fileInfos) {
                 // Import the file locally immediately to avoid a SecurityException later.
-                getTwinmeContext().execute(() -> importFile(Uri.parse(uri)));
+                getTwinmeContext().execute(() -> importFile(fileInfo));
             }
         }
 
@@ -489,6 +489,21 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
             uri = Uri.fromFile(new File(new File(context.getFilesDir(), Twinlife.TMP_DIR), uri.toString().substring(mApplicationFileUri.length())));
         }
         final FileInfo fileInfo = new FileInfo(context, uri);
+
+        importFile(fileInfo);
+    }
+
+    @UnstableApi
+    @WorkerThread
+    private void importFile(@NonNull FileInfo fileInfo) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "importFile: fileInfo=" + fileInfo);
+        }
+
+        mCountFiles++;
+        runOnUiThread(this::allFilesCopied);
+
+        final Context context = getApplicationContext();
 
         final FileInfo copy;
         if (fileInfo.isFile()) {

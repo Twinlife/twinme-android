@@ -257,6 +257,13 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
     }
 
     @Override
+    public void onGetTwincodeExpired() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetTwincodeExpired");
+        }
+    }
+
+    @Override
     public void onParseTwincodeURI(@NonNull ErrorCode errorCode, @Nullable TwincodeURI uri) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onParseTwincodeURI errorCode=" + errorCode + " uri=" + uri);

@@ -377,11 +377,13 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         if (errorCode != ErrorCode.SUCCESS) {
             String message = getString(R.string.accept_invitation_activity_incorrect_contact_information);
             if (errorCode == ErrorCode.BAD_REQUEST) {
-                message = getString(R.string.add_contact_activity_scan_error_incorect_link);
+                message = getString(R.string.add_contact_activity_scan_error_incorrect_link);
             } else if (errorCode == ErrorCode.FEATURE_NOT_IMPLEMENTED) {
                 message = getString(R.string.add_contact_activity_scan_error_not_managed_link);
             } else if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
                 message = getString(R.string.add_contact_activity_scan_error_corrupt_link);
+            } else if (errorCode == ErrorCode.EXPIRED) {
+                message = getString(R.string.add_contact_activity_scan_error_expired_link);
             }
 
             error(message, this::finish);
@@ -410,6 +412,15 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
     public void onGetTwincodeNotFound() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetTwincodeNotFound");
+        }
+
+        error(getString(R.string.add_contact_activity_scan_error_revoked_link), this::finish);
+    }
+
+    @Override
+    public void onGetTwincodeExpired() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetTwincodeExpired");
         }
 
         error(getString(R.string.add_contact_activity_scan_error_revoked_link), this::finish);

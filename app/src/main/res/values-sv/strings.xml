@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Acceptera</string>
     <string name="application_account_deleted">Ditt konto har tagits bort, du måste nu avinstallera applikationen.</string>
+    <string name="application_account_restored_error">Kontot på den här enheten har återställts till en annan enhet. Du måste avinstallera appen.</string>
     <string name="application_add_contact_no_profile">Du måste fylla i en profil som representerar dig innan du bjuder in en kontakt. Fortsätt?</string>
     <string name="application_all">Allt</string>
     <string name="application_appearance">Utseende</string>
@@ -42,6 +43,7 @@
     <string name="application_display_all">Visa alla</string>
     <string name="application_do_not_display">Visa inte längre</string>
     <string name="application_edit">Redigera</string>
+    <string name="application_error_code">Felkod: %1$s</string>
     <string name="application_error_file_not_found">Filen hittades inte.</string>
     <string name="application_error_media_unload">Det gick inte att ladda media.</string>
     <string name="application_error_media_not_supported">Detta bild-/videoformat stöds inte av programmet.</string>
@@ -110,6 +112,7 @@
     <string name="application_timeout_seconds">%1$d sekunder</string>
     <string name="application_timeout_week">1 vecka</string>
     <string name="application_unknown_name">Okänd</string>
+    <string name="application_until">Tills %1$s</string>
     <string name="application_upgrade">Uppgradera Skred</string>
     <string name="application_webrtc_failure">WebRTC misslyckades</string>
     <string name="application_wrong_configuration">Konfiguration felaktig</string>
@@ -142,16 +145,22 @@
     <string name="accept_invitation_activity_message">%1$s vill ansluta till dig</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Säkerhetskopiering på extern media</string>
+    <string name="account_activity_backup_restore">Säkerhetskopiering / återställning</string>
+    <string name="account_activity_backup_verify">Verifiera en säkerhetskopia</string>
+    <string name="account_activity_backup_list">Säkerhetskopiering Historik</string>
     <string name="account_activity_conversations_content_title">Konversationsinnehåll</string>
     <string name="account_activity_delete_account">Ditt konto, tillsammans med all tillhörande data, kommer att raderas permanent. Bekräfta?</string>
     <string name="account_activity_delete_account_confirmation">Är du verkligen säker på att du vill radera ditt konto?</string>
     <string name="account_activity_export_content">Exportera till extern media</string>
     <string name="account_activity_message_first_part">Ett nytt konto skapas när du installerar appen för första gången, efter att du har installerat om appen eller återställt enheten eller tagit bort det aktuella kontot.</string>
     <string name="account_activity_message_second_part">Inga spår av tidigare konto och data finns kvar, så du måste bjuda in dina kontakter igen.</string>
+    <string name="account_activity_message_third_part">Att ta bort ett konto ogiltigförklarar också alla säkerhetskopior som skapats på det kontot, vilket gör det omöjligt att återställa en säkerhetskopia från det kontot till den här eller en annan enhet.</string>
     <string name="account_activity_migration_message">En kontomigreringstjänst är tillgänglig för att överföra ditt konto med all associerad data (kontakter, meddelanden, grupper etc.) från en Android-enhet till en annan i realtid. Du kan alltså växla konton mellan en gammal enhet och en ny.</string>
     <string name="account_activity_migration_start_from_another_device">Från en annan enhet</string>
     <string name="account_activity_migration_start_from_current_device">Från min enhet</string>
     <string name="account_activity_migration_title">Kontomigrering</string>
+    <string name="account_activity_restore">Återställer från externa media</string>
     <string name="account_activity_title">Konto</string>
     <string name="account_activity_transfer_between_devices">Överföring mellan enheter</string>
     <string name="account_activity_transfer_from_another_device">Överför från en annan enhet</string>
@@ -205,7 +214,8 @@
     <string name="add_contact_activity_onboarding_message">Skred känner inte dina vänner och kan inte upptäcka dem. Du måste bjuda in dem personligen, med Skred när de är nära dig, eller genom att skicka en inbjudan till dem på annat sätt.</string>
     <string name="add_contact_activity_scan_code">Skanna inbjudan QR-kod</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Den här länken är skadad.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Denna länk är felaktig.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Den här inbjudningslänken har gått ut.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Denna länk är felaktig.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Denna länk hanteras inte av applikationen.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Den här relationen har raderats.</string>
     <string name="add_contact_activity_scan_message_call_link">Denna länk motsvarar ett \"Click-to-call\"</string>
@@ -213,6 +223,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Denna länk motsvarar en kontomigrering</string>
     <string name="add_contact_activity_scan_message_transfer_link">Denna länk motsvarar en samtalsöverföring</string>
     <string name="add_contact_activity_scan_title">Skanna</string>
+    <string name="add_contact_activity_share_image_message">Importera eller skanna denna QR-kod för inbjudan med Skred för att lägga till \"%1$s\" som en kontakt.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s inbjuder dig att inleda en privat relation på Skred.</string>
+    <string name="add_contact_activity_share_message_part_2">Skred är en peer-to-peer end-to-end krypterad meddelandetjänst och High-Definition (HD) röst-/videosamtal. Ingen registrering krävs.</string>
+    <string name="add_contact_activity_share_message_part_3">Öppna denna URL med Skred på din mobila enhet för att lägga till \"%1$s\" som en kontakt:</string>
+    <string name="add_contact_activity_share_message_part_4">Alternativt kan du importera eller skanna QR-koden för inbjudan i den bifogade bilden med Skred.</string>
+    <string name="add_contact_activity_share_title">%1$s inbjuder dig till Skred</string>
     <string name="add_contact_activity_social_subtitle">meddelande, e-post, socialt nätverk</string>
     <string name="add_contact_activity_social_title">Skicka koden via en applikation</string>
     <string name="add_contact_activity_title">Inbjudan</string>
@@ -256,6 +272,44 @@
     <string name="authentified_relation_activity_start">Starta certifiering</string>
     <string name="authentified_relation_activity_title">Certifierad relation</string>
     <string name="authentified_relation_activity_to_be_certified_title">Intyga relationen</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Säkerhetskopiering</string>
+    <string name="backup_activity_beta_message_part_1">Säkerhetskopierings-/återställningstjänsten föreslås i BETA-testning för att identifiera potentiella problem innan den släpps allmänt.</string>
+    <string name="backup_activity_beta_message_part_2">Den här tjänsten är avsedd att säkerhetskopiera endast kontometadata (profiler, kontakter, grupper) till extern lagring så att den kan återställas senare på en annan enhet om originalet blir stulet eller förstört.</string>
+    <string name="backup_activity_beta_message_part_3">Kontoöverföringstjänsten bör användas för att överföra all kontodata (inklusive konversationer) från en (gammal) enhet till en annan (ny) enhet, när båda enheterna är tillgängliga.</string>
+    <string name="backup_activity_confirm_message">För att återställa säkerhetskopian måste du ange de 12 orden ovan i den ordningen, så att den kan dekrypteras.</string>
+    <string name="backup_activity_content">Innehåll</string>
+    <string name="backup_activity_content_diff_added">Tillagd</string>
+    <string name="backup_activity_content_diff_updated">Modifierad</string>
+    <string name="backup_activity_content_diff_deleted">Borttagen</string>
+    <string name="backup_activity_content_diff_message">Här är ändringarna jämfört med dina aktuella data:</string>
+    <string name="backup_activity_content_info">Säkerhetskopior inkluderar inte konversationer, grupper, aviseringar och historik.</string>
+    <string name="backup_activity_error_words">De angivna orden tillåter inte att säkerhetskopian dekrypteras.</string>
+    <string name="backup_activity_generate_word">Generera</string>
+    <string name="backup_activity_last_backup">Senaste säkerhetskopiering på %1$s</string>
+    <string name="backup_activity_new_backup">Ny säkerhetskopia</string>
+    <string name="backup_activity_onboarding">Gör en krypterad säkerhetskopia av kontodata (\"Spaces\", profiler, kontakter, \"click-to-call\") som kan återställas till den här enheten eller en annan.</string>
+    <string name="backup_activity_reminder">Din senaste säkerhetskopia skapades för mer än 30 dagar sedan.</string>
+    <string name="backup_activity_save_file_message">Spara säkerhetskopian på den enhet du väljer och behåll lösenorden för senare återställning.</string>
+    <string name="backup_activity_security">Säkerhet</string>
+    <string name="backup_activity_security_info">Säkerhetskopieringskrypteringsnyckeln representeras av en serie med 12 ord som kommer att krävas för restaureringen.</string>
+    <string name="backup_activity_success">Säkerhetskopiering slutfördes framgångsrikt!</string>
+    <string name="backup_activity_success_info">Håll den här listan med 12 ord så att du kan återställa denna säkerhetskopia.</string>
+    <string name="backup_activity_title">Säkerhetskopiering</string>
+    <string name="backup_activity_use_last_backup_words">Använd samma lista med ord som för den senaste säkerhetskopian.</string>
+    <string name="backup_activity_verify_completed">Verifiering klar!</string>
+    <string name="backup_activity_verify_message">Du kan också kontrollera integriteten för en säkerhetskopia och om informationen den innehåller är uppdaterad från: Konto/Verifiera en säkerhetskopia.</string>
+    <string name="backup_activity_verify_up_to_date">Din säkerhetskopia är uppdaterad.</string>
+    <string name="backup_activity_verify_not_up_to_date">Din säkerhetskopia är inte uppdaterad.</string>
+    <string name="backup_activity_verify_words">För att verifiera en säkerhetskopia måste du ange 12-ordssekvensen för att dekryptera den.</string>
+    <string name="backup_activity_wait_message">Lämna inte den här skärmen medan säkerhetskopian pågår.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Ogiltigförklara mina säkerhetskopior</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Alla dina tidigare säkerhetskopior blir ogiltiga och kan inte längre återställas.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Glöm inte att skapa en ny säkerhetskopia, som kan återställas till den här enheten eller en annan.</string>
+    <string name="backups_activity_no_backup_message">Ingen säkerhetskopia har gjorts på den här enheten.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Allt</string>
@@ -327,6 +381,7 @@
     <string name="call_activity_tag_speaker_mute">Stäng av högtalaren</string>
     <string name="call_activity_transfert_call_message">Det pågående samtalet har överförts.</string>
     <string name="call_activity_try_to_call_back">Försök att ringa tillbaka.</string>
+    <string name="call_activity_waiting_conference_call">Ingen har anslutit sig till samtalet ännu. Vänta…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera används redan</string>
@@ -489,9 +544,24 @@
     <string name="conversations_fragment_you">Du</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Samtalskonfiguration</string>
+    <string name="create_external_call_activity_call_type">Samtalstyp</string>
+    <string name="create_external_call_activity_conference_call_description">Delta i ett konferenssamtal direkt från en webbläsare. Perfekt för affärs- eller familjemöten.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Konferenssamtal</string>
+    <string name="create_external_call_activity_conference_call_title">Konferenssamtal</string>
+    <string name="create_external_call_activity_continuous_link_description">Inga begränsningar för länkgiltighet</string>
+    <string name="create_external_call_activity_continuous_link_title">Permanent</string>
+    <string name="create_external_call_activity_create_message">Ange namn, bild och beskrivning av samtalsämnet.</string>
+    <string name="create_external_call_activity_delete_link_setting">Den här länken är inte längre giltig efter den angivna perioden.</string>
+    <string name="create_external_call_activity_direct_call_description">Ta emot ett samtal direkt på din enhet från någon som inte har appen.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Direkt</string>
+    <string name="create_external_call_activity_direct_call_title">Direktsamtal</string>
+    <string name="create_external_call_activity_group_call_description">Upp till 8 deltagare</string>
     <string name="create_external_call_activity_link_validity">Länkgiltighet</string>
-    <string name="create_external_call_activity_message">Ange namn, bild och beskrivning av samtalsämnet.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" låter gäster ringa dig från en webbläsare utan att installera programmet.</string>
+    <string name="create_external_call_activity_message">Den här profilen visas för gäster som kommer att ringa dig med den här \"click-to-call\"-länken.</string>
+    <string name="create_external_call_activity_name_required">Ett namn och en bild krävs för att representera denna \"Click-to-call\".</string>
+    <string name="create_external_call_activity_notification_setting">Få meddelanden så snart den första deltagaren ansluter till konferensen.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" låter gäster ringa dig eller delta i ett konferenssamtal (\"Click-to-meet\") från en webbläsare utan att installera appen.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Varje instans har ett namn, bild och beskrivning som representerar samtalets ämne, till exempel:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">din kundtjänst</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">bilen du säljer</string>
@@ -510,7 +580,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Ändra standardnamnet (Gäst) som representerar dem i samtalet</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Ring dig genom att trycka på knappen \"Ring\" på webbsidan.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Efter samtalet kan de hålla webbsidan öppen för att ringa dig tillbaka.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Konfigurera ett \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_3">Dela ett \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_4">Använd ett \"Click-to-call\"</string>
     <string name="create_external_call_activity_placeholder">Ämne (Hjälp, Meddelande, Möte, Dörrklocka, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Anpassa de dagar/tider då länken är giltig</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periodisk</string>
+    <string name="create_external_call_activity_unique_link_description">Ställ in start- och slutdatum för länkgiltigheten</string>
+    <string name="create_external_call_activity_unique_link_title">Engångsbruk</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Bjud in medlemmar</string>
@@ -716,6 +793,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Denna åtgärd ogiltigförklarar den aktuella inbjudningskoden som är kopplad till denna "click-to-call"-länk. Bekräfta?</string>
     <string name="invitation_call_activity_generate_code_title">Skapa en ny kod för denna länk</string>
+    <string name="invitation_call_activity_invite_meeting_message">Öppna webbadressen %1$s, eller skanna QR-koden, för att delta i mötet \"%2$s\".</string>
     <string name="invitation_call_activity_invite_message">Öppna webbadressen %1$s eller skanna QR-koden för att ringa \"%2$s\".</string>
     <string name="invitation_call_activity_message">Dela den här "click-to-call"-koden med någon som sedan kan ringa dig, från webben eller mobilappen.</string>
     <string name="invitation_call_activity_save_message">Skanna den här QR-koden för att ringa "%1$s".</string>
@@ -777,6 +855,7 @@
     <string name="notification_center_audio_message_received">Nytt ljudmeddelande</string>
     <string name="notification_center_cancel">Avfärda</string>
     <string name="notification_center_cleanup_conversation">Några gamla meddelanden har raderats.</string>
+    <string name="notification_center_conference_join_call">En deltagare gick med i samtalet.</string>
     <string name="notification_center_deleted_contact">Kontakt borttagen</string>
     <string name="notification_center_file_message">Ditt profilnamn är</string>
     <string name="notification_center_file_message_received">Ny fil</string>
@@ -786,6 +865,7 @@
     <string name="notification_center_invitation_group">inbjuder dig att gå med i en grupp.</string>
     <string name="notification_center_invitation_received">Ny inbjudan</string>
     <string name="notification_center_invitation_received_group">Ny gruppinbjudan</string>
+    <string name="notification_center_join_call">%1$s gick just med i samtalet</string>
     <string name="notification_center_join_group">Du är medlem i gruppen</string>
     <string name="notification_center_message_received">Nytt meddelande</string>
     <string name="notification_center_missed_audio_call_to">Missat röstsamtal från %1$s</string>
@@ -955,6 +1035,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Tillåt att appen tar emot push-meddelanden.</string>
     <string name="quality_of_service_activity_warning_run_background">Tillåt appen att köras i bakgrunden.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ måste vara installerat på den här enheten för att återställa en säkerhetskopia av ett twinme+-konto.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Enheten som gjorde säkerhetskopian är fortfarande inloggad.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Om du återställer säkerhetskopian till den här nya enheten kommer kontot för den enhet som säkerhetskopian gjordes på att automatiskt ogiltigförklaras.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Om du vill överföra ditt konto till en ny enhet och du fortfarande har den gamla är det att föredra att använda åtgärden \"kontomigrering\" snarare än att återställa en säkerhetskopia, eftersom det också kommer att överföra konversationer, grupper, aviseringar och historik.</string>
+    <string name="restore_activity_confirm">Är du säker på att du vill byta ut information om bytesbalansen med följande data från säkerhetskopian?</string>
+    <string name="restore_activity_confirm_restore">Vill du fortfarande återställa den här säkerhetskopian?</string>
+    <string name="restore_activity_content_contact_deleted_message">Data som raderats efter säkerhetskopiering kan inte återställas.</string>
+    <string name="restore_activity_content_profile_reset">Inbjudningskod ändrad.</string>
+    <string name="restore_activity_content_profile_reset_message">Inbjudningskoden som är kopplad till den säkerhetskopierade profilen är ogiltig. En ny inbjudningskod genereras under återställningsprocessen.</string>
+    <string name="restore_activity_enter_words">Ange serien med 12 ord som gör det möjligt att dekryptera säkerhetskopian.</string>
+    <string name="restore_activity_error_message">Fel vid återställning av säkerhetskopia.</string>
+    <string name="restore_activity_error_message_verify_backup">Fel vid verifiering av säkerhetskopiering.</string>
+    <string name="restore_activity_file_not_supported">Säkerhetskopieringsfilen måste vara i formatet \"skrdbckp\".</string>
+    <string name="restore_activity_more_recent_backup">En nyare säkerhetskopia gjordes med samma konto.</string>
+    <string name="restore_activity_onboarding">Att återställa en säkerhetskopia kommer att ersätta informationen om bytesbalansen.</string>
+    <string name="restore_activity_onboarding_words">För att återställa en säkerhetskopia måste du ange serien med 12 ord så att den kan dekrypteras.</string>
+    <string name="restore_activity_onboarding_verify">Verifiera att en säkerhetskopia är giltig och uppdaterad med dina aktuella data.</string>
+    <string name="restore_activity_paste">Klistra in listan med ord från urklippet.</string>
+    <string name="restore_activity_paste_error">Ogiltig ordlista.</string>
+    <string name="restore_activity_restore">Återställa</string>
+    <string name="restore_activity_select_backup">Välj en säkerhetskopia</string>
+    <string name="restore_activity_state_restore_account">Återställer konto...</string>
+    <string name="restore_activity_state_restore_data">Återställer data...</string>
+    <string name="restore_activity_state_restore_starting">Startar återställning.</string>
+    <string name="restore_activity_state_restore_verify_account">Kontoverifiering…</string>
+    <string name="restore_activity_state_restore_verify_data">Dataverifiering…</string>
+    <string name="restore_activity_state_restore_verify_starting">Verifiering startar…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Väntar på bekräftelse.</string>
+    <string name="restore_activity_success">Restaurering slutfördes framgångsrikt!</string>
+    <string name="restore_activity_success_message">Stäng appen och starta om den för att komma åt de nya uppgifterna.</string>
+    <string name="restore_activity_title">Restaurering</string>
+    <string name="restore_activity_verify_same_account">Verifieringen måste utföras på samma enhet som används för säkerhetskopieringen.</string>
+    <string name="restore_activity_warning">Återställning av denna säkerhetskopia kommer att ersätta all information om löpande konton med data från säkerhetskopian.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Definiera som administratör</string>
     <string name="room_members_activity_delete_message">Bekräfta att du tar bort den här medlemmen</string>
@@ -1008,15 +1123,18 @@
     <string name="settings_activity_ephemeral_title">Självförstörande meddelanden</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Meddelandeegenskaper</string>
-    <string name="settings_activity_permissions_title">TILLSTÅND</string>
+    <string name="settings_activity_message_reactions_notification">Avisering vid meddelandereaktioner</string>
     <string name="settings_activity_reset_default_value">Återställ till standardinställningar</string>
     <string name="settings_activity_reset_preferences_button_title">Återställ till standardvärden</string>
     <string name="settings_activity_reset_preferences_message">Återställ inställningsinställningar till standardinställningarna för program.</string>
     <string name="settings_activity_reset_preferences_title">Återställ inställningar</string>
+    <string name="settings_activity_permissions_title">TILLSTÅND</string>
+    <string name="settings_activity_silent_mode">Tyst läge</string>
     <string name="settings_activity_silent_sound">Silent</string>
     <string name="settings_activity_sound_enabled_title">SOUND NOTIFICATIONS</string>
     <string name="settings_activity_system_notifications_title">Systemmeddelanden</string>
     <string name="settings_activity_system_settings_title">Systeminställningar</string>
+    <string name="settings_activity_turn_off_notification_sounds">Stäng av aviseringsljud</string>
     <string name="settings_activity_video_call_category_title">Videosamtal</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Ringtone namn</string>
     <string name="settings_activity_video_call_notification_title">Ringtone</string>
@@ -1064,7 +1182,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">click-to-call-kod</string>
+    <string name="show_call_activity_conference_call_information">Dela den här länken för att ringa dig eller delta i en konferens från en webbläsare.</string>
     <string name="show_call_activity_information_code">Dela den här koden för att ta emot externa samtal.</string>
+    <string name="show_call_activity_meeting_organizer">Organisatör av detta möte</string>
     <string name="show_call_activity_schedule_call">Schemalagt samtal</string>
     <string name="show_call_activity_schedule_from">från %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s från %2$s till %3$s</string>
@@ -1167,12 +1287,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Klassificerad annons</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Infoga en länk i en annons som gör det möjligt för potentiella köpare att ringa dig utan att installera appen.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Meddelande</string>
-    <string name="template_click_to_call_activity_template_help">Hjälp</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Hjälp</string>
+    <string name="template_click_to_call_activity_template_default_description">Anpassa en samtalslänk efter behov.</string>
+    <string name="template_click_to_call_activity_template_help">Kundtjänst</string>
+    <string name="template_click_to_call_activity_template_help_description">Länk för att ringa din kundtjänst från en webbläsare.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Kundtjänst</string>
+    <string name="template_click_to_call_activity_template_job">Jobbintervju</string>
+    <string name="template_click_to_call_activity_template_job_description">Länk som gör det möjligt för intresserade rekryterare att ringa dig för en intervju.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Jobbintervju</string>
     <string name="template_click_to_call_activity_template_meeting">Möte</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Dela en länk för att delta i en konferens från en webbläsare.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Möte</string>
+    <string name="template_click_to_call_activity_template_profile_description">Länk för att ringa dig utan att installera appen.</string>
     <string name="template_click_to_call_activity_template_video_bell">Video dörrklocka</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Tillåt leveranschauffören att ringa dig för instruktioner.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Dörrklocka</string>
 
     <!-- TemplateSpaceActivity -->

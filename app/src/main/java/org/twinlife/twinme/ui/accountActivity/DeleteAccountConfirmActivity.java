@@ -45,8 +45,6 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "DeleteAccountConfirm...";
     private static final boolean DEBUG = false;
 
-    private static final int DESIGN_IMAGE_WIDTH = 400;
-    private static final int DESIGN_IMAGE_HEIGHT = 240;
     protected static final int DESIGN_TITLE_MARGIN = 40;
     private static final int DESIGN_MESSAGE_MARGIN = 30;
     private static final int DESIGN_CONFIRM_MARGIN = 40;
@@ -231,7 +229,6 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
         mOverlayView = findViewById(R.id.delete_account_confirm_activity_overlay_view);
         mActionView = findViewById(R.id.delete_account_confirm_activity_action_view);
         View slideMarkView = findViewById(R.id.delete_account_confirm_activity_slide_mark_view);
-        ImageView deleteAccountImageView = findViewById(R.id.delete_account_confirm_activity_feature_image_view);
         TextView titleView = findViewById(R.id.delete_account_confirm_activity_title_view);
         mMessageView = findViewById(R.id.delete_account_confirm_activity_message_view);
         mConfirmView = findViewById(R.id.delete_account_confirm_activity_confirm_view);
@@ -273,8 +270,8 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) titleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
 
-        mMessageView.setTextColor(Design.FONT_COLOR_GREY);
-        Design.updateTextFont(mMessageView, Design.FONT_MEDIUM40);
+        mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        Design.updateTextFont(mMessageView, Design.FONT_MEDIUM36);
 
         String message = getString(R.string.application_operation_irreversible) + "\n\n" + getString(R.string.account_activity_delete_account);
         mMessageView.setText(message);
@@ -318,13 +315,6 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
 
         cancelTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         Design.updateTextFont(cancelTextView, Design.FONT_BOLD36);
-
-        layoutParams = deleteAccountImageView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_IMAGE_WIDTH * Design.WIDTH_RATIO);
-        layoutParams.height = (int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) deleteAccountImageView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
 
         mDeleteConfirmView = findViewById(R.id.delete_account_confirm_activity_confirm_content_view);
         mDeleteConfirmView.setVisibility(View.GONE);

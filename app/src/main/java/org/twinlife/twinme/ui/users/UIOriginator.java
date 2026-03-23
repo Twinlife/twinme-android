@@ -109,6 +109,11 @@ public class UIOriginator implements Comparable<UIOriginator> {
         return false;
     }
 
+    public boolean isConference() {
+
+        return false;
+    }
+
     public void update(@NonNull TwinmeApplication twinmeApplication, @NonNull Originator contact, Bitmap avatar) {
 
         mContact = contact;

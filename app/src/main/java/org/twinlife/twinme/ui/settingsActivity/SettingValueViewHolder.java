@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.settingsActivity;
 
+import android.annotation.SuppressLint;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -40,7 +41,7 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
     private UISetting<?> mUISetting;
     private Settings.IntConfig mIntConfig;
 
-    public SettingValueViewHolder(@NonNull View view, AbstractSettingsActivity settingsActivity) {
+    public SettingValueViewHolder(@NonNull View view) {
 
         super(view);
 
@@ -58,19 +59,16 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         mValueView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mSelectImageView = view.findViewById(R.id.settings_activity_item_image_view);
-
-        itemView.setOnClickListener(v -> {
-            if (mUISetting != null) {
-                settingsActivity.onSettingClick(mUISetting);
-            } else {
-                settingsActivity.onSettingClick(mIntConfig);
-            }
-        });
     }
 
-    public void onBind(@NonNull UISetting<?> uiSetting, boolean visible) {
+    @SuppressLint("SetTextI18n")
+    public void onBind(@NonNull UISetting<?> uiSetting, boolean visible, Runnable runnable) {
 
-        mUISetting = uiSetting;
+        if (runnable != null) {
+            itemView.setOnClickListener(v -> runnable.run());
+        } else {
+            itemView.setOnClickListener(null);
+        }
 
         mTextView.setText(uiSetting.getTitle());
         mValueView.setVisibility(View.GONE);

@@ -32,9 +32,9 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -272,11 +272,11 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         super.onActivityResult(requestCode, resultCode, data);
 
         if (mEditableView != null) {
-                mEditableView.onActivityResult(requestCode, resultCode, data);
+            mEditableView.onActivityResult(requestCode, resultCode, data);
 
-                if (resultCode == Activity.RESULT_OK) {
-                    updateSelectedImage();
-                }
+            if (resultCode == Activity.RESULT_OK) {
+                updateSelectedImage();
+            }
         }
 
     }
@@ -479,12 +479,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         layoutParams.height = Design.AVATAR_MAX_HEIGHT;
 
         View backClickableView = findViewById(R.id.edit_space_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -496,8 +491,26 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         RoundedView backRoundedView = findViewById(R.id.edit_space_activity_back_rounded_view);
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
+        mScrollView = findViewById(R.id.edit_space_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
+
         mContentView = findViewById(R.id.edit_space_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
+
+        View editAvatarView = findViewById(R.id.edit_space_activity_edit_avatar_clickable_view);
+        editAvatarView.setOnClickListener(view -> openMenuPhoto());
+
+        layoutParams = editAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
 
         View slideMarkView = findViewById(R.id.edit_space_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
@@ -515,8 +528,6 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
 
-        mContentView.setOnTouchListener((v, motionEvent) -> touchContent(motionEvent));
-
         TextView titleView = findViewById(R.id.edit_space_activity_title_view);
         titleView.setTypeface(Design.FONT_BOLD44.typeface);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD44.size);
@@ -532,7 +543,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable nameViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         nameViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(nameContentView, nameViewBackground);
+        nameContentView.setBackground(nameViewBackground);
 
         layoutParams = nameContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -571,11 +582,10 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             }
         });
 
-        GestureDetector nameGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_NAME));
-        mNameView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = nameGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mNameView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
 
         mCounterNameView = findViewById(R.id.edit_space_activity_counter_name_view);
@@ -625,13 +635,12 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             }
         });
 
-        GestureDetector descriptionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_DESCRIPTION));
-        mDescriptionView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = descriptionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mDescriptionView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSaveClickableView.getBottom()), 100);
+            }
         });
-
+        
         mCounterDescriptionView = findViewById(R.id.edit_space_activity_counter_description_view);
         mCounterDescriptionView.setTypeface(Design.FONT_REGULAR26.typeface);
         mCounterDescriptionView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR26.size);
@@ -682,13 +691,6 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         mSaveClickableView.setOnClickListener(v -> onSaveClick());
         mSaveClickableView.setAlpha(0.5f);
 
-        GestureDetector saveGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SAVE));
-        mSaveClickableView.setOnTouchListener((v, motionEvent) -> {
-            saveGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
-
         layoutParams = mSaveClickableView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.BUTTON_HEIGHT;
@@ -698,7 +700,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mSaveClickableView, saveViewBackground);
+        mSaveClickableView.setBackground(saveViewBackground);
 
         TextView saveTextView = findViewById(R.id.edit_space_activity_save_title_view);
         saveTextView.setTypeface(Design.FONT_BOLD28.typeface);
@@ -922,6 +924,9 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         ViewGroup viewGroup = findViewById(R.id.edit_space_activity_layout);
 
         MenuPhotoView menuPhotoView = new MenuPhotoView(this, null);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        menuPhotoView.setLayoutParams(layoutParams);
+
         MenuPhotoView.Observer observer = new MenuPhotoView.Observer() {
             @Override
             public void onCameraClick() {

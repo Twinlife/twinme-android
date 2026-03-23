@@ -596,6 +596,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         newFeatureTitleView.setTextColor(Color.WHITE);
         newFeatureTitleView.setPadding(Design.NEW_FEATURE_PADDING, 0, Design.NEW_FEATURE_PADDING, 0);
         newFeatureTitleView.setOnClickListener(view -> showControlCameraOnboarding());
+        newFeatureTitleView.setVisibility(View.GONE);
 
         layoutParams = newFeatureTitleView.getLayoutParams();
         layoutParams.height = Design.NEW_FEATURE_HEIGHT;

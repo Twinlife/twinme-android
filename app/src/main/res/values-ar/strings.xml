@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">قبول</string>
     <string name="application_account_deleted">تم حذف حسابك ، يجب الآن إلغاء تثبيت التطبيق.</string>
+    <string name="application_account_restored_error">تم نقل حساب هذا الجهاز إلى جهاز آخر. عليك إلغاء تثبيت التطبيق.</string>
     <string name="application_add_contact_no_profile">يجب عليك إكمال ملف تعريف يمثلك ، قبل دعوة جهة اتصال. يتابع؟</string>
     <string name="application_all">الكل</string>
     <string name="application_appearance">مظهر خارجي</string>
@@ -42,6 +43,7 @@
     <string name="application_display_all">عرض الكل</string>
     <string name="application_do_not_display">لا تعرض بعد الآن</string>
     <string name="application_edit">تعديل</string>
+    <string name="application_error_code">رمز الخطأ: %1$s</string>
     <string name="application_error_file_not_found">لم يتم العثور على الملف.</string>
     <string name="application_error_media_unload">تعذر تحميل الوسائط.</string>
     <string name="application_error_media_not_supported">هذا التنسيق للصورة/الفيديو غير مدعوم من قِبل التطبيق.</string>
@@ -110,6 +112,7 @@
     <string name="application_timeout_seconds">ثانية %1$d</string>
     <string name="application_timeout_week">أسبوع 1</string>
     <string name="application_unknown_name">غير معروف</string>
+    <string name="application_until">حتى %1$s</string>
     <string name="application_upgrade">ترقية Skred</string>
     <string name="application_webrtc_failure">فشل بتقنية WebRTC</string>
     <string name="application_wrong_configuration">خطأ في التهيئة</string>
@@ -142,16 +145,22 @@
     <string name="accept_invitation_activity_message">يريد%1$s الاتصال بك</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">النسخ الاحتياطي على وسائل الإعلام الخارجية</string>
+    <string name="account_activity_backup_restore">النسخ الاحتياطي/الاستعادة</string>
+    <string name="account_activity_backup_verify">التحقق من النسخة الاحتياطية</string>
+    <string name="account_activity_backup_list">سجل النسخ الاحتياطي</string>
     <string name="account_activity_conversations_content_title">محتوى المحادثات</string>
     <string name="account_activity_delete_account">سيتم حذف حسابك ، إلى جانب جميع البيانات المرتبطة به ، بشكل دائم. يتأكد؟</string>
     <string name="account_activity_delete_account_confirmation">هل أنت متأكد من أنك تريد حذف حسابك؟</string>
     <string name="account_activity_export_content">التصدير إلى وسائط خارجية</string>
     <string name="account_activity_message_first_part">يتم إنشاء حساب جديد عند تثبيت التطبيق لأول مرة ، بعد إعادة تثبيت التطبيق ، أو إعادة ضبط الجهاز ، أو حذف الحساب الحالي.</string>
     <string name="account_activity_message_second_part">لم يتبق أي أثر للحساب والبيانات السابقة ، لذا سيتعين عليك إعادة دعوة جهات الاتصال الخاصة بك.</string>
+    <string name="account_activity_message_third_part">يؤدي حذف الحساب أيضًا إلى إبطال جميع النسخ الاحتياطية المُنشأة عليه، مما يجعل استعادة نسخة احتياطية منه إلى هذا الجهاز أو أي جهاز آخر أمرًا مستحيلًا.</string>
     <string name="account_activity_migration_message">تتوفر خدمة ترحيل الحساب لنقل حسابك بجميع البيانات المرتبطة (جهات الاتصال ، والرسائل ، والمجموعات ، وما إلى ذلك) من جهاز Android إلى آخر في الوقت الفعلي. يمكنك بالتالي تبديل الحسابات بين جهاز قديم وآخر جديد.</string>
     <string name="account_activity_migration_start_from_another_device">من جهاز آخر</string>
     <string name="account_activity_migration_start_from_current_device">من جهازي</string>
     <string name="account_activity_migration_title">ترحيل الحساب</string>
+    <string name="account_activity_restore">استعادة من وسائل الإعلام الخارجية</string>
     <string name="account_activity_title">حساب</string>
     <string name="account_activity_transfer_between_devices">النقل بين الأجهزة</string>
     <string name="account_activity_transfer_from_another_device">النقل من جهاز آخر</string>
@@ -205,7 +214,8 @@
     <string name="add_contact_activity_onboarding_message">Skred لا تعرف أصدقاءك ولا يمكنها اكتشافهم. يجب عليك دعوتهم شخصيًا ، مع Skred عندما يكونون بالقرب منك ، أو بإرسال دعوة لهم بوسائل أخرى.</string>
     <string name="add_contact_activity_scan_code">مسح دعوة رمز الاستجابة السريعة</string>
     <string name="add_contact_activity_scan_error_corrupt_link">هذا الرابط فاسد.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">هذا الرابط غير صحيح.</string>
+    <string name="add_contact_activity_scan_error_expired_link">انتهت صلاحية رابط الدعوة هذا.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">هذا الرابط غير صحيح.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">لا تتم إدارة هذا الارتباط بواسطة التطبيق.</string>
     <string name="add_contact_activity_scan_error_revoked_link">تم حذف هذه العلاقة.</string>
     <string name="add_contact_activity_scan_message_call_link">يتوافق هذا الرابط مع \"Click-to-call\"</string>
@@ -213,6 +223,12 @@
     <string name="add_contact_activity_scan_message_migration_link">يتوافق هذا الرابط مع ترحيل الحساب</string>
     <string name="add_contact_activity_scan_message_transfer_link">هذا الرابط يتوافق مع تحويل المكالمات</string>
     <string name="add_contact_activity_scan_title">مسح</string>
+    <string name="add_contact_activity_share_image_message">استورد أو امسح رمز الاستجابة السريعة (QR) الخاص بالدعوة باستخدام Skred لإضافة \"%1$s\" كجهة اتصال.</string>
+    <string name="add_contact_activity_share_message_part_1">يدعوك \"%1$s\" إلى التواصل بشكل خاص على Skred - تطبيق المراسلة الخاص.</string>
+    <string name="add_contact_activity_share_message_part_2">Skred هي خدمة مراسلة مشفرة من طرف إلى طرف من نظير إلى نظير تسمح بإجراء مكالمات صوتية/مرئية عالية الدقة (HD). لا يتطلب التسجيل.</string>
+    <string name="add_contact_activity_share_message_part_3">افتح هذا الرابط باستخدام Skred على جهازك المحمول لإضافة \"%1$s\" كجهة اتصال:</string>
+    <string name="add_contact_activity_share_message_part_4">أو يمكنك استيراد أو مسح رمز الاستجابة السريعة (QR) الخاص بالدعوة في الصورة المرفقة باستخدام Skred.</string>
+    <string name="add_contact_activity_share_title">يدعوك \"%1$s\" إلى Skred</string>
     <string name="add_contact_activity_social_subtitle">رسالة ، بريد ، شبكة اجتماعية</string>
     <string name="add_contact_activity_social_title">أرسل الرمز عبر تطبيق</string>
     <string name="add_contact_activity_title">دعوة</string>
@@ -256,6 +272,44 @@
     <string name="authentified_relation_activity_start">بدء الإثبات</string>
     <string name="authentified_relation_activity_title">علاقة معتمدة</string>
     <string name="authentified_relation_activity_to_be_certified_title">التصديق على العلاقة</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">نسخة احتياطية</string>
+    <string name="backup_activity_beta_message_part_1">خدمة النسخ الاحتياطي/الاستعادة قيد الاختبار التجريبي (بيتا) لتحديد المشكلات المحتملة قبل إطلاقها رسميًا.</string>
+    <string name="backup_activity_beta_message_part_2">تهدف هذه الخدمة إلى نسخ بيانات الحساب الوصفية فقط (الملفات الشخصية، جهات الاتصال، المجموعات) إلى وحدة تخزين خارجية، بحيث يمكن استعادتها لاحقًا على جهاز آخر في حال سرقة الجهاز الأصلي أو تلفه.</string>
+    <string name="backup_activity_beta_message_part_3">يجب استخدام خدمة نقل الحساب لنقل جميع بيانات الحساب (بما في ذلك المحادثات) من جهاز (قديم) إلى جهاز آخر (جديد)، عند توفر كلا الجهازين.</string>
+    <string name="backup_activity_confirm_message">لاستعادة النسخ الاحتياطي ، ستحتاج إلى إدخال 12 كلمة أعلاه في هذا الترتيب ، مما يسمح بفك تشفيرها.</string>
+    <string name="backup_activity_content">محتويات</string>
+    <string name="backup_activity_content_diff_added">تمت الإضافة</string>
+    <string name="backup_activity_content_diff_updated">مُعدَّل</string>
+    <string name="backup_activity_content_diff_deleted">تم الحذف</string>
+    <string name="backup_activity_content_diff_message">إليك التغييرات المُقارنة ببياناتك الحالية:</string>
+    <string name="backup_activity_content_info">لا تشمل النسخ الاحتياطية المحادثات، والمجموعات، والإشعارات، وسجل التصفح.</string>
+    <string name="backup_activity_error_words">الكلمات المدخلة لا تسمح بفك تشفير النسخة الاحتياطية.</string>
+    <string name="backup_activity_generate_word">يولد</string>
+    <string name="backup_activity_last_backup">آخر نسخة احتياطية على %1$s</string>
+    <string name="backup_activity_new_backup">نسخة احتياطية جديدة</string>
+    <string name="backup_activity_onboarding">شئ نسخة احتياطية مشفرة لبيانات حسابك (\"Spaces\"، الملفات الشخصية، جهات الاتصال، \"click-to-call\") التي يمكن استعادتها إلى هذا الجهاز أو جهاز آخر.</string>
+    <string name="backup_activity_reminder">تم إنشاء آخر نسخة احتياطية لك منذ أكثر من ٣٠ يومًا.</string>
+    <string name="backup_activity_save_file_message">احفظ ملف النسخة الاحتياطية على الجهاز الذي تختاره، واحتفظ بكلمات المرور لاستعادتها لاحقًا.</string>
+    <string name="backup_activity_security">حماية</string>
+    <string name="backup_activity_security_info">يتم تمثيل مفتاح التشفير الاحتياطي بسلسلة من 12 كلمة ستكون ضرورية للاستعادة.</string>
+    <string name="backup_activity_success">اكتمل النسخ الاحتياطي بنجاح!</string>
+    <string name="backup_activity_success_info">احتفظ بهذه القائمة المكونة من 12 كلمة حتى تتمكن من استعادة هذه النسخة الاحتياطية.</string>
+    <string name="backup_activity_title">نسخة احتياطية</string>
+    <string name="backup_activity_use_last_backup_words">استخدم نفس قائمة الكلمات كما في آخر نسخة احتياطية.</string>
+    <string name="backup_activity_verify_completed">اكتمل التحقق!</string>
+    <string name="backup_activity_verify_message">يمكنك أيضًا التحقق من سلامة ملف النسخة الاحتياطية، وما إذا كانت البيانات التي يحتوي عليها محدثة من: الحساب/التحقق من النسخة الاحتياطية.</string>
+    <string name="backup_activity_verify_up_to_date">نسختك الاحتياطية مُحدثة.</string>
+    <string name="backup_activity_verify_not_up_to_date">نسختك الاحتياطية غير مُحدثة.</string>
+    <string name="backup_activity_verify_words">للتحقق من النسخة الاحتياطية، أدخل تسلسل الكلمات المكون من ١٢ كلمة لفك تشفيرها.</string>
+    <string name="backup_activity_wait_message">لا تترك هذه الشاشة بينما تكون النسخ الاحتياطي قيد التقدم.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">إلغاء نسخي الاحتياطية</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">ستُصبح جميع نسخك الاحتياطية السابقة غير صالحة ولن تتمكن من استعادتها.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">لا تنسَ إنشاء نسخة احتياطية جديدة، والتي يُمكن استعادتها على هذا الجهاز أو جهاز آخر.</string>
+    <string name="backups_activity_no_backup_message">لم يتم عمل نسخة احتياطية على هذا الجهاز.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">الكل</string>
@@ -327,6 +381,7 @@
     <string name="call_activity_tag_speaker_mute">كتم صوت المتكلم</string>
     <string name="call_activity_transfert_call_message">تم تحويل المكالمة الجارية.</string>
     <string name="call_activity_try_to_call_back">حاول معاودة الاتصال.</string>
+    <string name="call_activity_waiting_conference_call">لم ينضم أحد إلى المكالمة بعد. يُرجى الانتظار…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">الكاميرا مستخدمة بالفعل</string>
@@ -489,9 +544,24 @@
     <string name="conversations_fragment_you">أنت</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">إعدادات المكالمات</string>
+    <string name="create_external_call_activity_call_type">نوع المكالمة</string>
+    <string name="create_external_call_activity_conference_call_description">انضم إلى مكالمة جماعية مباشرة من المتصفح. مثالية لاجتماعات العمل أو الاجتماعات العائلية.</string>
+    <string name="create_external_call_activity_conference_call_short_title">مكالمة جماعية</string>
+    <string name="create_external_call_activity_conference_call_title">مكالمة جماعية</string>
+    <string name="create_external_call_activity_continuous_link_description">لا قيود على صلاحية الرابط</string>
+    <string name="create_external_call_activity_continuous_link_title">دائم</string>
+    <string name="create_external_call_activity_create_message">أدخل الاسم والصورة ووصف موضوع المكالمة.</string>
+    <string name="create_external_call_activity_delete_link_setting">لن يكون هذا الرابط صالحًا بعد الفترة المحددة.</string>
+    <string name="create_external_call_activity_direct_call_description">استقبل مكالمة مباشرة على جهازك من شخص لا يملك التطبيق.</string>
+    <string name="create_external_call_activity_direct_call_short_title">مباشر</string>
+    <string name="create_external_call_activity_direct_call_title">مكالمة مباشرة</string>
+    <string name="create_external_call_activity_group_call_description">حتى 8 مشاركين</string>
     <string name="create_external_call_activity_link_validity">صلاحية الرابط</string>
-    <string name="create_external_call_activity_message">أدخل الاسم والصورة ووصف موضوع المكالمة.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">تتيح ميزة \"انقر للاتصال\" للضيوف الاتصال بك من المتصفح دون تثبيت التطبيق.</string>
+    <string name="create_external_call_activity_message">يتم عرض ملف التعريف هذا للضيوف الذين سيتصلون بك من خلال رابط \"click-to-call\" هذا.</string>
+    <string name="create_external_call_activity_name_required">يلزم اسم وصورة لتمثيل \"Click-to-call\".</string>
+    <string name="create_external_call_activity_notification_setting">تلقي إشعار فور انضمام أول مشارك إلى المكالمة.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">تتيح لك ميزة \"Click-to-call\" إمكانية الاتصال بك أو الانضمام إلى مكالمة جماعية (\"Click-to-meet\") من خلال المتصفح دون الحاجة إلى تثبيت التطبيق.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">ولكل مثيل اسم وصورة ووصف يمثل موضوع المكالمة، مثل:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">خدمة العملاء الخاصة بك</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">السيارة التي تبيعها</string>
@@ -510,7 +580,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">قم بتغيير الاسم الافتراضي (ضيف) الذي يمثله في المكالمة</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">اتصل بك عن طريق الضغط على زر \"اتصال\" الموجود على صفحة الويب.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">بعد المكالمة، قد يبقون صفحة الويب مفتوحة لمعاودة الاتصال بك.</string>
+    <string name="create_external_call_activity_onboarding_title_2">إعداد \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_3">مشاركة \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_4">استخدام \"Click-to-call\"</string>
     <string name="create_external_call_activity_placeholder">الموضوع (مساعدة، إعلان، اجتماع، جرس الباب، ...)</string>
+    <string name="create_external_call_activity_recurrent_link_description">خصص أيام/أوقات صلاحية الرابط</string>
+    <string name="create_external_call_activity_recurrent_link_title">دوري</string>
+    <string name="create_external_call_activity_unique_link_description">حدد تاريخي بدء وانتهاء صلاحية الرابط</string>
+    <string name="create_external_call_activity_unique_link_title">استخدام لمرة واحدة</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">دعوة أعضاء</string>
@@ -716,6 +793,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">يؤدي هذا الإجراء إلى إبطال رمز الدعوة الحالي المرتبط برابط "النقر للاتصال" هذا. يتأكد؟</string>
     <string name="invitation_call_activity_generate_code_title">إنشاء رمز جديد لهذا الارتباط</string>
+    <string name="invitation_call_activity_invite_meeting_message">افتح عنوان الويب %1$s، أو امسح رمز الاستجابة السريعة، للانضمام إلى الاجتماع \"%2$s\".</string>
     <string name="invitation_call_activity_invite_message">افتح عنوان الويب %1$s ، أو امسح رمز الاستجابة السريعة ، للاتصال بـ “%2$s”.</string>
     <string name="invitation_call_activity_message">شارك رمز "click-to-call" هذا مع شخص يمكنه بعد ذلك الاتصال بك ، من الويب أو تطبيق الهاتف.</string>
     <string name="invitation_call_activity_save_message">امسح رمز الاستجابة السريعة هذا للاتصال بـ "%1$s".</string>
@@ -777,6 +855,7 @@
     <string name="notification_center_audio_message_received">رسالة صوتية جديدة</string>
     <string name="notification_center_cancel">رفض</string>
     <string name="notification_center_cleanup_conversation">تم حذف بعض الرسائل القديمة.</string>
+    <string name="notification_center_conference_join_call">انضم مشارك واحد إلى المكالمة.</string>
     <string name="notification_center_deleted_contact">تم حذف جهة الاتصال</string>
     <string name="notification_center_file_message">ارسل لك ملف</string>
     <string name="notification_center_file_message_received">ملف جديد</string>
@@ -786,6 +865,7 @@
     <string name="notification_center_invitation_group">يدعوك للانضمام إلى مجموعة.</string>
     <string name="notification_center_invitation_received">دعوة جديدة</string>
     <string name="notification_center_invitation_received_group">دعوة جديدة للانضمام إلى مجموعة.</string>
+    <string name="notification_center_join_call">انضم %1$s للتو إلى المكالمة</string>
     <string name="notification_center_join_group">أنت عضو في المجموعة</string>
     <string name="notification_center_message_received">رسالة جديدة</string>
     <string name="notification_center_missed_audio_call_to">مكالمة صوتية فائتة مع <span>%1$s</span></string>
@@ -955,6 +1035,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">السماح للتطبيق بتلقي إشعارات الدفع.</string>
     <string name="quality_of_service_activity_warning_run_background">السماح للتطبيق بالعمل في الخلفية.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">يجب تثبيت twinme+ على هذا الجهاز حتى تتمكن من استعادة نسخة احتياطية لحساب twinme+.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">الجهاز الذي أجرى النسخة الاحتياطية لا يزال مسجلاً الدخول.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">في حال استعادة النسخة الاحتياطية إلى هذا الجهاز الجديد، سيتم إلغاء حساب الجهاز الذي أجريت عليه النسخة الاحتياطية تلقائيًا.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">إذا كنت ترغب في نقل حسابك إلى جهاز جديد، ولا يزال حسابك القديم موجودًا، يُفضل استخدام عملية \"نقل الحساب\" بدلاً من استعادة النسخة الاحتياطية، حيث ستنقل أيضًا المحادثات والمجموعات والإشعارات وسجل التصفح.</string>
+    <string name="restore_activity_confirm">هل أنت متأكد من أنك تريد استبدال بيانات الحساب الجاري بالبيانات التالية من النسخ الاحتياطي؟</string>
+    <string name="restore_activity_confirm_restore">هل ما زلت ترغب في استعادة هذه النسخة الاحتياطية؟</string>
+    <string name="restore_activity_content_contact_deleted_message">لا يمكن استعادة البيانات المحذوفة بعد النسخ الاحتياطي.</string>
+    <string name="restore_activity_content_profile_reset">تم تغيير رمز الدعوة.</string>
+    <string name="restore_activity_content_profile_reset_message">رمز الدعوة المرتبط بالملف الشخصي الذي تم نسخه احتياطيًا غير صالح. سيتم إنشاء رمز دعوة جديد أثناء عملية الاستعادة.</string>
+    <string name="restore_activity_enter_words">أدخل سلسلة من 12 كلمة تسمح بفك تشفير النسخ الاحتياطي.</string>
+    <string name="restore_activity_error_message">حدث خطأ أثناء استعادة النسخة الاحتياطية.</string>
+    <string name="restore_activity_error_message_verify_backup">خطأ في التحقق من النسخة الاحتياطية.</string>
+    <string name="restore_activity_file_not_supported">يجب أن يكون ملف النسخ الاحتياطي بصيغة \"skrdbckp\".</string>
+    <string name="restore_activity_more_recent_backup">تم عمل نسخة احتياطية أحدث باستخدام الحساب نفسه.</string>
+    <string name="restore_activity_onboarding">ستؤدي استعادة النسخة الاحتياطية إلى استبدال بيانات الحساب الحالي.</string>
+    <string name="restore_activity_onboarding_words">لاستعادة النسخة الاحتياطية، ستحتاج إلى إدخال الكلمات الـ 12 المذكورة أعلاه بهذا الترتيب، والتي ستؤدي إلى فك تشفيرها.</string>
+    <string name="restore_activity_onboarding_verify">تأكد من أن النسخة الاحتياطية صالحة ومُحدثة ببياناتك الحالية.</string>
+    <string name="restore_activity_paste">الصق قائمة الكلمات من الحافظة.</string>
+    <string name="restore_activity_paste_error">قائمة كلمات غير صالحة.</string>
+    <string name="restore_activity_restore">استعادة</string>
+    <string name="restore_activity_select_backup">اختر نسخة احتياطية</string>
+    <string name="restore_activity_state_restore_account">جارٍ استعادة الحساب...</string>
+    <string name="restore_activity_state_restore_data">جارٍ استعادة البيانات...</string>
+    <string name="restore_activity_state_restore_starting">جاري بدء الاستعادة.</string>
+    <string name="restore_activity_state_restore_verify_account">التحقق من الحساب...</string>
+    <string name="restore_activity_state_restore_verify_data">التحقق من البيانات...</string>
+    <string name="restore_activity_state_restore_verify_starting">بدء التحقق...</string>
+    <string name="restore_activity_state_restore_wait_confirm">في انتظار التأكيد.</string>
+    <string name="restore_activity_success">تمت عملية الاستعادة بنجاح!</string>
+    <string name="restore_activity_success_message">أغلق التطبيق وأعد تشغيله للوصول إلى البيانات الجديدة.</string>
+    <string name="restore_activity_title">استعادة</string>
+    <string name="restore_activity_verify_same_account">يجب إجراء التحقق على نفس الجهاز المستخدم في النسخ الاحتياطي.</string>
+    <string name="restore_activity_warning">ستؤدي استعادة هذه النسخة الاحتياطية إلى استبدال كافة بيانات الحساب الحالي بالبيانات الموجودة في النسخة الاحتياطية.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">تعيين كمسؤول</string>
     <string name="room_members_activity_delete_message">تأكيد حذف هذا العضو</string>
@@ -1008,15 +1123,18 @@
     <string name="settings_activity_ephemeral_title">رسالة سريعة الزوال</string>
     <string name="settings_activity_image_title">صور</string>
     <string name="settings_activity_message_properties_title">خصائص الرسالة</string>
-    <string name="settings_activity_permissions_title">الأذونات</string>
+    <string name="settings_activity_message_reactions_notification">إشعارات حول ردود الفعل على الرسائل</string>
     <string name="settings_activity_reset_default_value">إعادة التعيين إلى الإعدادات الافتراضية</string>
     <string name="settings_activity_reset_preferences_button_title">إعادة التعيين إلى القيم الافتراضية</string>
     <string name="settings_activity_reset_preferences_message">إعادة تعيين إعدادات الإخطار إلى الافتراضات التطبيق.</string>
     <string name="settings_activity_reset_preferences_title">إعادة تعيين التفضيلات</string>
+    <string name="settings_activity_permissions_title">الأذونات</string>
+    <string name="settings_activity_silent_mode">الوضع الصامت</string>
     <string name="settings_activity_silent_sound">صامت</string>
     <string name="settings_activity_sound_enabled_title">أصوات الإخطار</string>
     <string name="settings_activity_system_notifications_title">إخطارات النظام</string>
     <string name="settings_activity_system_settings_title">اعدادات النظام</string>
+    <string name="settings_activity_turn_off_notification_sounds">إيقاف أصوات الإشعارات</string>
     <string name="settings_activity_video_call_category_title">مكالمات الفيديو</string>
     <string name="settings_activity_video_call_notification_ringtone_title">إختيار الصوت</string>
     <string name="settings_activity_video_call_notification_title">رنين</string>
@@ -1064,7 +1182,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">رمز "click-to-call"</string>
+    <string name="show_call_activity_conference_call_information">شارك هذا الرابط للاتصال بك أو الانضمام إلى مكالمة جماعية من متصفح.</string>
     <string name="show_call_activity_information_code">شارك هذا الرمز لتلقي المكالمات.</string>
+    <string name="show_call_activity_meeting_organizer">منظم هذا الاجتماع</string>
     <string name="show_call_activity_schedule_call">مكالمة مجدولة</string>
     <string name="show_call_activity_schedule_from">من %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s من %2$s إلى %3$s</string>
@@ -1167,12 +1287,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">اعلان مصنف</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">أدرج رابطًا في إعلان مبوب يسمح للمشترين المحتملين بالاتصال بك دون تثبيت التطبيق.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">إعلان</string>
-    <string name="template_click_to_call_activity_template_help">يساعد</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">يساعد</string>
+    <string name="template_click_to_call_activity_template_default_description">خصص رابط المكالمة حسب الحاجة.</string>
+    <string name="template_click_to_call_activity_template_help">خدمة العملاء</string>
+    <string name="template_click_to_call_activity_template_help_description">رابط للاتصال بخدمة العملاء من متصفح.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">خدمة العملاء</string>
+    <string name="template_click_to_call_activity_template_job">مقابلة عمل</string>
+    <string name="template_click_to_call_activity_template_job_description">رابط يسمح للموظفين المهتمين بالتوظيف بالاتصال بك لإجراء مقابلة.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">مقابلة عمل</string>
     <string name="template_click_to_call_activity_template_meeting">لقاء</string>
+    <string name="template_click_to_call_activity_template_meeting_description">شارك رابطًا للانضمام إلى مكالمة جماعية من متصفح.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">لقاء</string>
+    <string name="template_click_to_call_activity_template_profile_description">رابط للاتصال بك دون تثبيت التطبيق.</string>
     <string name="template_click_to_call_activity_template_video_bell">جرس الباب بالفيديو</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">اسمح لسائق التوصيل بالاتصال بك للحصول على التعليمات.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">جرس</string>
 
     <!-- TemplateSpaceActivity -->

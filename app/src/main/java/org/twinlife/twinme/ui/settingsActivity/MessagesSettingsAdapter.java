@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2022 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -201,9 +202,13 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             }
 
             if (uiSetting != null) {
-                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true);
+                UISetting<Boolean> finalUiSetting = uiSetting;
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(finalUiSetting, isChecked);
+                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
             } else if (title != null) {
-                settingsViewHolder.onBind(title, value, booleanConfig);
+                Settings.BooleanConfig finalBooleanConfig = booleanConfig;
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(finalBooleanConfig, isChecked);
+                settingsViewHolder.onBind(title, value, booleanConfig, onCheckedChangeListener);
             }
         } else if (viewType == VALUE) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
@@ -216,7 +221,8 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
                 } else {
                     uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, "", Settings.displayCallsMode);
                 }
-                settingValueViewHolder.onBind(uiSetting, true);
+                Runnable runnable = () -> mListActivity.onSettingClick(uiSetting);
+                settingValueViewHolder.onBind(uiSetting, true, runnable);
             }
         }
     }
@@ -239,10 +245,10 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             return new SectionTitleViewHolder(convertView);
         } else if (viewType == CHECKBOX) {
             convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
-            return new SettingSwitchViewHolder(convertView, mListActivity);
+            return new SettingSwitchViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.settings_activity_item_value, parent, false);
-            return new SettingValueViewHolder(convertView, mListActivity);
+            return new SettingValueViewHolder(convertView);
         }
     }
 

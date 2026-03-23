@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">स्वीकार करें</string>
     <string name="application_account_deleted">आपका खाता हटा दिया गया है, अब आपको एप्लिकेशन को अनइंस्टॉल करना होगा।</string>
+    <string name="application_account_restored_error">इस डिवाइस का अकाउंट दूसरे डिवाइस पर रीस्टोर कर दिया गया है। आपको ऐप अनइंस्टॉल करना होगा।</string>
     <string name="application_add_contact_no_profile">किसी संपर्क को आमंत्रित करने से पहले आपको एक प्रोफ़ाइल पूरी करनी होगी जो आपका प्रतिनिधित्व करती है। आगे बढ़ना?</string>
     <string name="application_all">सब</string>
     <string name="application_appearance">दिखावट</string>
@@ -42,6 +43,7 @@
     <string name="application_display_all">सभी प्रदर्शित करें</string>
     <string name="application_do_not_display">अब और प्रदर्शित न करें</string>
     <string name="application_edit">संपादित करें</string>
+    <string name="application_error_code">एरर कोड: %1$s</string>
     <string name="application_error_file_not_found">फ़ाइल नहीं मिली।</string>
     <string name="application_error_media_unload">मीडिया लोड नहीं हो पा रहा है।</string>
     <string name="application_error_media_not_supported">यह छवि/वीडियो प्रारूप एप्लिकेशन द्वारा समर्थित नहीं है।</string>
@@ -110,6 +112,7 @@
     <string name="application_timeout_seconds">%1$d सेकंड</string>
     <string name="application_timeout_week">1 सप्ताह</string>
     <string name="application_unknown_name">अज्ञात</string>
+    <string name="application_until">%1$s तक</string>
     <string name="application_upgrade">Skred को अपग्रेड करना</string>
     <string name="application_webrtc_failure">WebRTC विफलता</string>
     <string name="application_wrong_configuration">कॉन्फ़िगरेशन गलत</string>
@@ -142,16 +145,22 @@
     <string name="accept_invitation_activity_message">%1$s आपसे जुड़ना चाहता है</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">बाहरी मीडिया पर बैकअप</string>
+    <string name="account_activity_backup_restore">बैकअप / पुनर्स्थापना</string>
+    <string name="account_activity_backup_verify">बैकअप सत्यापित करें</string>
+    <string name="account_activity_backup_list">बैकअप इतिहास</string>
     <string name="account_activity_conversations_content_title">वार्तालाप सामग्री</string>
     <string name="account_activity_delete_account">आपका खाता, सभी संबद्ध डेटा सहित, स्थायी रूप से हटा दिया जाएगा। पुष्टि करना?</string>
     <string name="account_activity_delete_account_confirmation">क्या आप वाकई सच हैं कि आप अपना खाता हटाना चाहते हैं?</string>
     <string name="account_activity_export_content">बाहरी मीडिया में निर्यात करें</string>
     <string name="account_activity_message_first_part">ऐप को पहली बार इंस्टॉल करने, ऐप को फिर से इंस्टॉल करने, या डिवाइस को रीसेट करने, या मौजूदा खाते को हटाने के बाद एक नया खाता बनाया जाता है।</string>
     <string name="account_activity_message_second_part">पिछले खाते और डेटा का कोई निशान नहीं बचा है, इसलिए आपको अपने संपर्कों को फिर से आमंत्रित करना होगा।</string>
+    <string name="account_activity_message_third_part">किसी खाते को हटाने से उस खाते पर बनाए गए सभी बैकअप भी अमान्य हो जाते हैं, जिससे उस खाते से इस या किसी अन्य डिवाइस पर बैकअप को पुनर्स्थापित करना असंभव हो जाता है।</string>
     <string name="account_activity_migration_message">आपके खाते को सभी संबद्ध डेटा (संपर्क, संदेश, समूह, आदि) के साथ एक Android डिवाइस से दूसरे में रीयल-टाइम में स्थानांतरित करने के लिए एक खाता माइग्रेशन सेवा उपलब्ध है। इस प्रकार आप पुराने डिवाइस और नए के बीच खातों को स्विच कर सकते हैं।</string>
     <string name="account_activity_migration_start_from_another_device">किसी अन्य डिवाइस से</string>
     <string name="account_activity_migration_start_from_current_device">मेरे डिवाइस से</string>
     <string name="account_activity_migration_title">खाता माइग्रेशन</string>
+    <string name="account_activity_restore">बाहरी मीडिया से पुनर्स्थापित करना</string>
     <string name="account_activity_title">लेखा</string>
     <string name="account_activity_transfer_between_devices">डिवाइस के बीच स्थानांतरण</string>
     <string name="account_activity_transfer_from_another_device">किसी अन्य डिवाइस से स्थानांतरण</string>
@@ -205,7 +214,8 @@
     <string name="add_contact_activity_onboarding_message">Skred आपके मित्रों को नहीं जानता और उन्हें खोज नहीं सकता। आपको उन्हें व्यक्तिगत रूप से आमंत्रित करना चाहिए, जब वे आपके पास हों, या उन्हें अन्य माध्यमों से निमंत्रण भेजकर।</string>
     <string name="add_contact_activity_scan_code">स्कैन आमंत्रण क्यूआर-कोड</string>
     <string name="add_contact_activity_scan_error_corrupt_link">यह लिंक दूषित है।</string>
-    <string name="add_contact_activity_scan_error_incorect_link">यह लिंक गलत है।</string>
+    <string name="add_contact_activity_scan_error_expired_link">यह इनविटेशन लिंक एक्सपायर हो गया है।</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">यह लिंक गलत है।</string>
     <string name="add_contact_activity_scan_error_not_managed_link">यह लिंक एप्लिकेशन द्वारा प्रबंधित नहीं है।</string>
     <string name="add_contact_activity_scan_error_revoked_link">यह संबंध हटा दिया गया है।</string>
     <string name="add_contact_activity_scan_message_call_link">यह लिंक \"Click-to-call\" से संबंधित है</string>
@@ -213,6 +223,12 @@
     <string name="add_contact_activity_scan_message_migration_link">यह लिंक अकाउंट माइग्रेशन से संबंधित है</string>
     <string name="add_contact_activity_scan_message_transfer_link">यह लिंक कॉल ट्रांसफर से संबंधित है</string>
     <string name="add_contact_activity_scan_title">स्कैन</string>
+    <string name="add_contact_activity_share_image_message">%1$s को कॉन्टैक्ट के तौर पर जोड़ने के लिए Skred के साथ इस इनविटेशन QR-कोड को इंपोर्ट या स्कैन करें।</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s आपको Skred - प्राइवेट मैसेंजर पर एक प्राइवेट रिलेशनशिप में आने के लिए इनवाइट करता है।</string>
+    <string name="add_contact_activity_share_message_part_2">Skred एक पीयर-टू-पीयर एंड-टू-एंड एन्क्रिप्टेड मैसेजिंग सर्विस और हाई-डेफ़िनिशन (HD) वॉइस/वीडियो कॉल है। किसी रजिस्ट्रेशन की ज़रूरत नहीं है।</string>
+    <string name="add_contact_activity_share_message_part_3">%1$s को कॉन्टैक्ट के तौर पर जोड़ने के लिए अपने मोबाइल डिवाइस पर Skred के साथ यह URL खोलें:</string>
+    <string name="add_contact_activity_share_message_part_4">या फिर, आप Skred के साथ अटैच की गई इमेज में इनविटेशन QR-कोड को इंपोर्ट या स्कैन कर सकते हैं।</string>
+    <string name="add_contact_activity_share_title">%1$s आपको Skred पर इनवाइट करता है</string>
     <string name="add_contact_activity_social_subtitle">संदेश, मेल, सामाजिक नेटवर्क</string>
     <string name="add_contact_activity_social_title">एक आवेदन के माध्यम से कोड भेजें</string>
     <string name="add_contact_activity_title">निमंत्रण</string>
@@ -256,6 +272,44 @@
     <string name="authentified_relation_activity_start">प्रमाणन शुरू करें</string>
     <string name="authentified_relation_activity_title">प्रमाणित संबंध</string>
     <string name="authentified_relation_activity_to_be_certified_title">सम्बन्ध प्रमाणित करें</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">बैकअप</string>
+    <string name="backup_activity_beta_message_part_1">बैक-अप/रिस्टोर सर्विस को BETA टेस्टिंग में प्रपोज़ किया गया है ताकि इसके जनरल रिलीज़ से पहले संभावित दिक्कतों की पहचान की जा सके।</string>
+    <string name="backup_activity_beta_message_part_2">इस सर्विस का मकसद सिर्फ़ अकाउंट मेटाडेटा (प्रोफ़ाइल, कॉन्टैक्ट, ग्रुप) का एक्सटर्नल स्टोरेज में बैकअप लेना है, ताकि अगर ओरिजिनल चोरी हो जाए या खराब हो जाए, तो इसे बाद में किसी दूसरे डिवाइस पर रिस्टोर किया जा सके।</string>
+    <string name="backup_activity_beta_message_part_3">अकाउंट ट्रांसफ़र सर्विस का इस्तेमाल सभी अकाउंट डेटा (बातचीत सहित) को एक (पुराने) डिवाइस से दूसरे (नए) डिवाइस में ट्रांसफ़र करने के लिए किया जाना चाहिए, जब दोनों डिवाइस उपलब्ध हों।</string>
+    <string name="backup_activity_confirm_message">बैकअप को पुनर्स्थापित करने के लिए, आपको उस क्रम में उपरोक्त 12 शब्दों को दर्ज करना होगा, जिससे यह डिक्रिप्ट किया जा सके।</string>
+    <string name="backup_activity_content">सामग्री</string>
+    <string name="backup_activity_content_diff_added">जोड़ा गया</string>
+    <string name="backup_activity_content_diff_updated">मॉडिफाइड</string>
+    <string name="backup_activity_content_diff_deleted">हटाया गया</string>
+    <string name="backup_activity_content_diff_message">आपके वर्तमान डेटा की तुलना में ये परिवर्तन इस प्रकार हैं:</string>
+    <string name="backup_activity_content_info">बैकअप में बातचीत, समूह, सूचनाएँ और इतिहास शामिल नहीं होते हैं।</string>
+    <string name="backup_activity_error_words">दर्ज किए गए शब्द बैकअप को डिक्रिप्ट करने की अनुमति नहीं देते हैं।</string>
+    <string name="backup_activity_generate_word">उत्पन्न करें</string>
+    <string name="backup_activity_last_backup">अंतिम बैकअप %1$s</string>
+    <string name="backup_activity_new_backup">नया बैकअप</string>
+    <string name="backup_activity_onboarding">खाता डेटा (\"Spaces\", प्रोफ़ाइल, संपर्क, \"click-to-call\") का एक एन्क्रिप्टेड बैकअप बनाएँ जिसे इस डिवाइस या किसी अन्य डिवाइस पर पुनर्स्थापित किया जा सके।</string>
+    <string name="backup_activity_reminder">आपका पिछला बैकअप 30 दिन से ज़्यादा पहले बनाया गया था।</string>
+    <string name="backup_activity_save_file_message">बैकअप फ़ाइल को अपनी पसंद के डिवाइस पर सेव करें और बाद में पुनर्स्थापित करने के लिए पासवर्ड सुरक्षित रखें।</string>
+    <string name="backup_activity_security">सुरक्षा</string>
+    <string name="backup_activity_security_info">बैकअप एन्क्रिप्शन कुंजी को 12 शब्दों की एक श्रृंखला द्वारा दर्शाया गया है जो बहाली के लिए आवश्यक होगा।</string>
+    <string name="backup_activity_success">बैकअप सफलतापूर्वक पूरा हुआ!</string>
+    <string name="backup_activity_success_info">12 शब्दों की इस सूची को रखें ताकि आप इस बैकअप को पुनर्स्थापित कर सकें।</string>
+    <string name="backup_activity_title">बैकअप</string>
+    <string name="backup_activity_use_last_backup_words">अंतिम बैकअप के लिए शब्दों की एक ही सूची का उपयोग करें।</string>
+    <string name="backup_activity_verify_completed">सत्यापन पूरा हुआ!</string>
+    <string name="backup_activity_verify_message">आप बैकअप फ़ाइल की विश्वसनीयता और उसमें मौजूद डेटा के अप-टू-डेट होने की जाँच निम्न माध्यम से भी कर सकते हैं: खाता/बैकअप सत्यापित करें।</string>
+    <string name="backup_activity_verify_up_to_date">आपका बैकअप अद्यतित है।</string>
+    <string name="backup_activity_verify_not_up_to_date">आपका बैकअप अद्यतित नहीं है।</string>
+    <string name="backup_activity_verify_words">बैकअप सत्यापित करने के लिए, आपको इसे डिक्रिप्ट करने के लिए 12-शब्द अनुक्रम दर्ज करना होगा।</string>
+    <string name="backup_activity_wait_message">इस स्क्रीन को न छोड़ें जबकि बैकअप प्रगति पर है।</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">मेरे बैकअप अमान्य करें</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">आपके सभी पिछले बैकअप अमान्य हो जाएँगे और अब उन्हें पुनर्स्थापित नहीं किया जा सकेगा।</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">एक नया बैकअप बनाना न भूलें, जिसे इस डिवाइस या किसी अन्य डिवाइस पर पुनर्स्थापित किया जा सकता है।</string>
+    <string name="backups_activity_no_backup_message">इस डिवाइस पर कोई बैकअप नहीं बनाया गया है।</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">सब</string>
@@ -327,6 +381,7 @@
     <string name="call_activity_tag_speaker_mute">स्पीकर म्यूट करें</string>
     <string name="call_activity_transfert_call_message">चालू कॉल स्थानांतरित कर दी गई है.</string>
     <string name="call_activity_try_to_call_back">वापस कॉल करने का प्रयास करें.</string>
+    <string name="call_activity_waiting_conference_call">अभी तक कोई भी कॉल में शामिल नहीं हुआ है। कृपया इंतज़ार करें…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">कैमरा पहले से प्रयोग में है</string>
@@ -489,9 +544,24 @@
     <string name="conversations_fragment_you">आप</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">कॉल कॉन्फ़िगरेशन</string>
+    <string name="create_external_call_activity_call_type">कॉल टाइप</string>
+    <string name="create_external_call_activity_conference_call_description">सीधे ब्राउज़र से कॉन्फ़्रेंस कॉल में शामिल हों। बिज़नेस या फ़ैमिली मीटिंग के लिए बढ़िया।</string>
+    <string name="create_external_call_activity_conference_call_short_title">कॉन्फ़्रेंस कॉल</string>
+    <string name="create_external_call_activity_conference_call_title">कॉन्फ़्रेंस कॉल</string>
+    <string name="create_external_call_activity_continuous_link_description">लिंक वैलिडिटी पर कोई रोक नहीं</string>
+    <string name="create_external_call_activity_continuous_link_title">परमानेंट</string>
+    <string name="create_external_call_activity_create_message">कॉल विषय का नाम, छवि और विवरण दर्ज करें।</string>
+    <string name="create_external_call_activity_delete_link_setting">यह लिंक तय समय के बाद वैलिड नहीं रहेगा।</string>
+    <string name="create_external_call_activity_direct_call_description">ऐसे किसी व्यक्ति से सीधे अपने डिवाइस पर कॉल पाएं जिसके पास ऐप नहीं है।</string>
+    <string name="create_external_call_activity_direct_call_short_title">डायरेक्ट</string>
+    <string name="create_external_call_activity_direct_call_title">डायरेक्ट कॉल</string>
+    <string name="create_external_call_activity_group_call_description">8 पार्टिसिपेंट तक</string>
     <string name="create_external_call_activity_link_validity">लिंक वैलिडिटी</string>
-    <string name="create_external_call_activity_message">कॉल विषय का नाम, छवि और विवरण दर्ज करें।</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call मेहमानों को एप्लिकेशन इंस्टॉल किए बिना ब्राउज़र से आपको कॉल करने की अनुमति देता है।</string>
+    <string name="create_external_call_activity_message">यह प्रोफ़ाइल उन मेहमानों को प्रदर्शित की जाती है जो आपको इस \"click-to-call\" लिंक के साथ कॉल करेंगे।</string>
+    <string name="create_external_call_activity_name_required">इस \"Click-to-call\" को दिखाने के लिए नाम और इमेज ज़रूरी है।</string>
+    <string name="create_external_call_activity_notification_setting">जैसे ही पहला पार्टिसिपेंट कॉन्फ्रेंस में शामिल होगा, आपको नोटिफ़िकेशन मिलेगा।</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" मेहमानों को ऐप इंस्टॉल किए बिना ब्राउज़र से आपको कॉल करने या कॉन्फ़्रेंस कॉल (\"Click-to-meet\") में शामिल होने की सुविधा देता है।</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">प्रत्येक उदाहरण में एक नाम, छवि और विवरण होता है, जो कॉल के विषय का प्रतिनिधित्व करता है, जैसे:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">आपकी ग्राहक सेवा</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">जो कार आप बेच रहे हैं</string>
@@ -510,7 +580,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">कॉल पर उनका प्रतिनिधित्व करने वाला डिफ़ॉल्ट नाम (अतिथि) बदलें</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">वेब पेज पर \"कॉल\" बटन दबाकर आपको कॉल करें।</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">कॉल के बाद, वे आपको वापस कॉल करने के लिए वेब पेज खुला रख सकते हैं।</string>
+    <string name="create_external_call_activity_onboarding_title_2">\"Click-to-call\" सेट अप करें</string>
+    <string name="create_external_call_activity_onboarding_title_3">\"Click-to-call\" शेयर करें</string>
+    <string name="create_external_call_activity_onboarding_title_4">\"Click-to-call\" का इस्तेमाल करें</string>
     <string name="create_external_call_activity_placeholder">विषय (मदद, घोषणा, मीटिंग, डोरबेल,…)</string>
+    <string name="create_external_call_activity_recurrent_link_description">लिंक के वैलिड रहने के दिन/समय कस्टमाइज़ करें</string>
+    <string name="create_external_call_activity_recurrent_link_title">पीरियोडिक</string>
+    <string name="create_external_call_activity_unique_link_description">लिंक वैलिडिटी की शुरू और खत्म होने की तारीखें सेट करें</string>
+    <string name="create_external_call_activity_unique_link_title">सिंगल यूज़</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">सदस्यों को आमंत्रित करो</string>
@@ -716,6 +793,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">यह क्रिया इस "क्लिक-टू-कॉल" लिंक से जुड़े वर्तमान आमंत्रण कोड को अमान्य कर देती है। पुष्टि करना?</string>
     <string name="invitation_call_activity_generate_code_title">इस लिंक के लिए एक नया कोड जनरेट करें</string>
+    <string name="invitation_call_activity_invite_meeting_message">मीटिंग “%2$s” में शामिल होने के लिए वेब एड्रेस %1$s खोलें, या QR-Code स्कैन करें।</string>
     <string name="invitation_call_activity_invite_message">वेब पता %1$s खोलें, या “%2$s” पर कॉल करने के लिए QR-कोड स्कैन करें।</string>
     <string name="invitation_call_activity_message">इस "click-to-call" कोड को किसी ऐसे व्यक्ति के साथ साझा करें जो वेब या मोबाइल ऐप से आपको कॉल कर सके।</string>
     <string name="invitation_call_activity_save_message">“%1$s” को कॉल करने के लिए इस QR-कोड को स्कैन करें।</string>
@@ -777,6 +855,7 @@
     <string name="notification_center_audio_message_received">नया ऑडियो संदेश</string>
     <string name="notification_center_cancel">खारिज करें</string>
     <string name="notification_center_cleanup_conversation">कुछ पुराने संदेश हटा दिए गए हैं।</string>
+    <string name="notification_center_conference_join_call">एक पार्टिसिपेंट कॉल में शामिल हुआ।</string>
     <string name="notification_center_deleted_contact">संपर्क हटा दिया गया</string>
     <string name="notification_center_file_message">आपको एक फाइल भेजी</string>
     <string name="notification_center_file_message_received">नई फ़ाइल</string>
@@ -786,6 +865,7 @@
     <string name="notification_center_invitation_group">आपको एक ग्रुप में शामिल होने के लिए इनवाइट करता है।</string>
     <string name="notification_center_invitation_received">नया निमंत्रण</string>
     <string name="notification_center_invitation_received_group">नया ग्रुप इनविटेशन।</string>
+    <string name="notification_center_join_call">%1$s अभी कॉल में शामिल हुए हैं</string>
     <string name="notification_center_join_group">आप समूह के सदस्य हैं</string>
     <string name="notification_center_message_received">नया संदेश</string>
     <string name="notification_center_missed_audio_call_to">%1$s को मिस्ड ऑडियो कॉल छूटी</string>
@@ -955,6 +1035,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">ऐप को पुश नोटिफिकेशन प्राप्त करने की अनुमति दें।</string>
     <string name="quality_of_service_activity_warning_run_background">ऐप को बैकग्राउंड में चलने दें.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ खाता बैकअप को पुनर्स्थापित करने के लिए इस डिवाइस पर twinme+ स्थापित होना आवश्यक है।</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">जिस डिवाइस से बैकअप बनाया गया था वह अभी भी साइन इन है।</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">यदि आप इस नए डिवाइस पर बैकअप पुनर्स्थापित करते हैं, तो जिस डिवाइस पर बैकअप बनाया गया था उसका खाता स्वतः ही अमान्य हो जाएगा।</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">यदि आप अपना खाता किसी नए डिवाइस पर स्थानांतरित करना चाहते हैं, और आपके पास अभी भी पुराना डिवाइस है, तो बैकअप पुनर्स्थापित करने के बजाय \"खाता माइग्रेशन\" प्रक्रिया का उपयोग करना बेहतर होगा, क्योंकि यह बातचीत, समूह, सूचनाएँ और इतिहास भी स्थानांतरित कर देगा।</string>
+    <string name="restore_activity_confirm">क्या आप सुनिश्चित हैं कि आप बैकअप से निम्न डेटा के साथ चालू खाता डेटा को बदलना चाहते हैं?</string>
+    <string name="restore_activity_confirm_restore">क्या आप अब भी इस बैकअप को पुनर्स्थापित करना चाहते हैं?</string>
+    <string name="restore_activity_content_contact_deleted_message">बैकअप के बाद डिलीट किया गया डेटा रिस्टोर नहीं किया जा सकता।</string>
+    <string name="restore_activity_content_profile_reset">इनविटेशन कोड बदल गया है।</string>
+    <string name="restore_activity_content_profile_reset_message">बैकअप की गई प्रोफ़ाइल से जुड़ा इनविटेशन कोड इनवैलिड है। रिस्टोर प्रोसेस के दौरान एक नया इनविटेशन कोड जेनरेट होगा।</string>
+    <string name="restore_activity_enter_words">बैकअप को डिक्रिप्ट करने की अनुमति देने वाले 12 शब्दों की श्रृंखला दर्ज करें।</string>
+    <string name="restore_activity_error_message">बैकअप पुनर्स्थापित करते समय त्रुटि।</string>
+    <string name="restore_activity_error_message_verify_backup">बैकअप वेरिफ़ाई करते समय एरर।</string>
+    <string name="restore_activity_file_not_supported">बैकअप फ़ाइल \"skrdbckp\" फ़ॉर्मेट में होनी चाहिए।</string>
+    <string name="restore_activity_more_recent_backup">उसी खाते से हाल ही में एक और बैकअप बनाया गया था।</string>
+    <string name="restore_activity_onboarding">बैकअप को पुनर्स्थापित करने से चालू खाता डेटा बदल जाएगा।</string>
+    <string name="restore_activity_onboarding_words">बैकअप को पुनर्स्थापित करने के लिए, आपको 12 शब्दों की श्रृंखला में प्रवेश करने की आवश्यकता होगी, जिससे इसे डिक्रिप्ट किया जा सके।</string>
+    <string name="restore_activity_onboarding_verify">पुष्टि करें कि बैकअप मान्य है और आपके वर्तमान डेटा के साथ अद्यतित है।</string>
+    <string name="restore_activity_paste">क्लिपबोर्ड से शब्दों की सूची पेस्ट करें।</string>
+    <string name="restore_activity_paste_error">शब्दों की इनवैलिड लिस्ट।</string>
+    <string name="restore_activity_restore">पुनर्स्थापित करें</string>
+    <string name="restore_activity_select_backup">बैकअप चुनें</string>
+    <string name="restore_activity_state_restore_account">खाता पुनर्स्थापित किया जा रहा है...</string>
+    <string name="restore_activity_state_restore_data">डेटा पुनर्स्थापित किया जा रहा है...</string>
+    <string name="restore_activity_state_restore_starting">पुनर्स्थापना प्रारंभ।</string>
+    <string name="restore_activity_state_restore_verify_account">अकाउंट वेरिफ़िकेशन…</string>
+    <string name="restore_activity_state_restore_verify_data">डेटा वेरिफ़िकेशन…</string>
+    <string name="restore_activity_state_restore_verify_starting">वेरिफ़िकेशन शुरू हो रहा है…</string>
+    <string name="restore_activity_state_restore_wait_confirm">पुष्टि की प्रतीक्षा है।</string>
+    <string name="restore_activity_success">पुनर्स्थापना सफलतापूर्वक पूरी हुई!</string>
+    <string name="restore_activity_success_message">ऐप को बंद करें और नए डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
+    <string name="restore_activity_title">बहाली</string>
+    <string name="restore_activity_verify_same_account">वेरिफिकेशन उसी डिवाइस पर किया जाना चाहिए जिसका इस्तेमाल बैकअप के लिए किया गया था।</string>
+    <string name="restore_activity_warning">इस बैकअप को पुनर्स्थापित करने से सभी चालू खाता डेटा को बैकअप से डेटा के साथ बदल दिया जाएगा।</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">प्रशासक के रूप में परिभाषित करें</string>
     <string name="room_members_activity_delete_message">इस सदस्य को हटाने की पुष्टि करें</string>
@@ -1008,15 +1123,18 @@
     <string name="settings_activity_ephemeral_title">स्वयं विनाशकारी संदेश</string>
     <string name="settings_activity_image_title">फ़ोटो</string>
     <string name="settings_activity_message_properties_title">संदेश गुण</string>
-    <string name="settings_activity_permissions_title">अनुमति</string>
+    <string name="settings_activity_message_reactions_notification">मैसेज रिएक्शन पर नोटिफ़िकेशन</string>
     <string name="settings_activity_reset_default_value">डिफ़ॉल्ट सेटिंग्स पर रीसेट करें</string>
     <string name="settings_activity_reset_preferences_button_title">चूक के लिए रीसेट करें</string>
     <string name="settings_activity_reset_preferences_message">आवेदन चूक के लिए अधिसूचना सेटिंग्स रीसेट करें।</string>
     <string name="settings_activity_reset_preferences_title">प्राथमिकताएँ रीसेट करें</string>
+    <string name="settings_activity_permissions_title">अनुमति</string>
+    <string name="settings_activity_silent_mode">साइलेंट मोड</string>
     <string name="settings_activity_silent_sound">मूक</string>
     <string name="settings_activity_sound_enabled_title">ध्वनि सूचनाएं</string>
     <string name="settings_activity_system_notifications_title">सिस्टम सूचनाएं</string>
     <string name="settings_activity_system_settings_title">सिस्टम सेटिंग्स</string>
+    <string name="settings_activity_turn_off_notification_sounds">नोटिफ़िकेशन साउंड बंद करें</string>
     <string name="settings_activity_video_call_category_title">वीडियो कॉल्स</string>
     <string name="settings_activity_video_call_notification_ringtone_title">रिंगटोन नाम</string>
     <string name="settings_activity_video_call_notification_title">रिंगटोन</string>
@@ -1064,7 +1182,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Click-to-call कोड</string>
+    <string name="show_call_activity_conference_call_information">ब्राउज़र से आपको कॉल करने या कॉन्फ्रेंस में शामिल होने के लिए यह लिंक शेयर करें।</string>
     <string name="show_call_activity_information_code">बाहरी कॉल प्राप्त करने के लिए यह कोड साझा करें।</string>
+    <string name="show_call_activity_meeting_organizer">इस बैठक के आयोजक</string>
     <string name="show_call_activity_schedule_call">अनुसूचित कॉल</string>
     <string name="show_call_activity_schedule_from">%1$s से</string>
     <string name="show_call_activity_schedule_from_to">%1$s %2$sE से %3$s तक</string>
@@ -1167,12 +1287,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">वर्गीकृत विज्ञापन</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">क्लासिफ़ाइड ऐड में एक लिंक डालें जिससे संभावित खरीदार ऐप इंस्टॉल किए बिना आपको कॉल कर सकें।</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">घोषणा</string>
-    <string name="template_click_to_call_activity_template_help">मदद</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">मदद</string>
+    <string name="template_click_to_call_activity_template_default_description">ज़रूरत के हिसाब से कॉल लिंक कस्टमाइज़ करें।</string>
+    <string name="template_click_to_call_activity_template_help">कस्टमर सर्विस</string>
+    <string name="template_click_to_call_activity_template_help_description">ब्राउज़र से अपनी कस्टमर सर्विस को कॉल करने के लिए लिंक।</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">कस्टमर सर्विस</string>
+    <string name="template_click_to_call_activity_template_job">जॉब इंटरव्यू</string>
+    <string name="template_click_to_call_activity_template_job_description">लिंक जिससे इंटरेस्टेड रिक्रूटर आपको इंटरव्यू के लिए कॉल कर सकें।</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">जॉब इंटरव्यू</string>
     <string name="template_click_to_call_activity_template_meeting">बैठक</string>
+    <string name="template_click_to_call_activity_template_meeting_description">ब्राउज़र से कॉन्फ्रेंस में शामिल होने के लिए लिंक शेयर करें।</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">बैठक</string>
+    <string name="template_click_to_call_activity_template_profile_description">ऐप इंस्टॉल किए बिना आपको कॉल करने के लिए लिंक।</string>
     <string name="template_click_to_call_activity_template_video_bell">वीडियो डोरबेल</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">डिलीवरी ड्राइवर को इंस्ट्रक्शन के लिए आपको कॉल करने दें।</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">डोरबेल</string>
 
     <!-- TemplateSpaceActivity -->

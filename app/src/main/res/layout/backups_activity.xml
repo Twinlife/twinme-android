@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backups_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/backups_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/backups_activity_background"
+        android:layout_below="@+id/backups_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/backups_activity_list_view"
+        android:layout_below="@+id/backups_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/backups_activity_no_backups_view"
+        android:layout_below="@+id/backups_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/backups_activity_no_backups_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/onboarding_backup"/>
+
+        <TextView
+            android:id="@+id/backups_activity_no_backups_message_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/backups_activity_no_backups_image_view"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/backups_activity_no_backup_message" />
+
+        <RelativeLayout
+            android:id="@+id/backups_activity_new_backup_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/backups_activity_new_backup_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/backup_activity_new_backup" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

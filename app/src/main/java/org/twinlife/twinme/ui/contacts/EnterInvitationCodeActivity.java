@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -109,21 +110,20 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
 
         super.onResume();
 
-        if (!mShowOnboarding) {
-            mShowOnboarding = true;
-
-            if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.ENTER_MINI_CODE)) {
-                showOnboarding(false);
-            } else {
-                mEnterCodeOneEditText.postDelayed(() -> {
-                    mEnterCodeOneEditText.requestFocus();
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    if (inputMethodManager != null) {
-                        inputMethodManager.showSoftInput(mEnterCodeOneEditText, InputMethodManager.SHOW_IMPLICIT);
-                    }
-                }, 500);
-            }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            showFirstOnboarding();
         }
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
+
+        showFirstOnboarding();
     }
 
     @Override
@@ -861,6 +861,28 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
         mEnterCodeFiveEditText.setText("");
         mEnterCodeSixEditText.setText("");
         mEnterCodeOneEditText.requestFocus();
+    }
+
+    private void showFirstOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showFirstOnboarding");
+        }
+
+        if (!mShowOnboarding) {
+            mShowOnboarding = true;
+
+            if (getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.ENTER_MINI_CODE)) {
+                showOnboarding(false);
+            } else {
+                mEnterCodeOneEditText.postDelayed(() -> {
+                    mEnterCodeOneEditText.requestFocus();
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (inputMethodManager != null) {
+                        inputMethodManager.showSoftInput(mEnterCodeOneEditText, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                }, 500);
+            }
+        }
     }
 
 }

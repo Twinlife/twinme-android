@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/show_external_call_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -70,47 +71,126 @@
                 app:layout_widthPercent="90.93%" />
 
             <androidx.percentlayout.widget.PercentRelativeLayout
-                android:id="@+id/show_external_call_activity_twincode_view"
-                android:layout_width="wrap_content"
+                android:id="@+id/show_external_call_activity_action_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/show_external_call_activity_description_text_view">
 
-                <ImageView
-                    android:id="@+id/show_external_call_activity_twincode_icon_view"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/qrcode" />
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_external_call_activity_share_clickable_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/show_external_call_activity_audio_clickable_view">
 
-                <TextView
-                    android:id="@+id/show_external_call_activity_twincode_title_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/show_external_call_activity_twincode_icon_view"
-                    android:text="@string/show_call_activity_code" />
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <org.twinlife.twinme.utils.RoundedView
+                            android:id="@+id/show_external_call_activity_share_rounded_view"
+                            android:layout_width="match_parent"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="100%" />
+
+                        <ImageView
+                            android:id="@+id/show_external_call_activity_share_view"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/qrcode"
+                            android:layout_centerInParent="true"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="34.37%" />
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <TextView
+                        android:id="@+id/show_external_call_activity_share_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="@string/share_activity_title" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_external_call_activity_audio_clickable_view"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <org.twinlife.twinme.utils.RoundedView
+                            android:id="@+id/show_external_call_activity_audio_rounded_view"
+                            android:layout_width="match_parent"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="100%" />
+
+                        <ImageView
+                            android:id="@+id/show_external_call_activity_audio_view"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/audio_call"
+                            android:layout_centerInParent="true"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="34.37%" />
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <TextView
+                        android:id="@+id/show_external_call_activity_audio_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="@string/show_contact_activity_audio" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/show_external_call_activity_video_clickable_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@+id/show_external_call_activity_audio_clickable_view">
+
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <org.twinlife.twinme.utils.RoundedView
+                            android:id="@+id/show_external_call_activity_video_rounded_view"
+                            android:layout_width="match_parent"
+                            app:layout_aspectRatio="100%"
+                            app:layout_widthPercent="100%" />
+
+                        <ImageView
+                            android:id="@+id/show_external_call_activity_video_view"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/video_call"
+                            android:layout_centerInParent="true"
+                            app:layout_aspectRatio="157.14%"
+                            app:layout_widthPercent="34.37%" />
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <TextView
+                        android:id="@+id/show_external_call_activity_video_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="@string/show_contact_activity_video" />
+                </androidx.percentlayout.widget.PercentRelativeLayout>
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
-
-            <TextView
-                android:id="@+id/show_external_call_activity_message_view"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_twincode_view"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:text="@string/show_call_activity_information_code"
-                app:layout_widthPercent="90.93%" />
 
             <TextView
                 android:id="@+id/show_external_call_activity_identity_title_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_message_view"
-                android:text="@string/show_contact_activity_identity_title"
+                android:layout_below="@+id/show_external_call_activity_action_view"
+                android:text="@string/show_call_activity_meeting_organizer"
                 android:textAllCaps="true"
                 android:maxLines="1"
-                app:layout_widthPercent="53.33%"
                 app:layout_marginEndPercent="4%"
                 app:layout_marginStartPercent="4%" />
 
@@ -152,187 +232,17 @@
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
-            <TextView
-                android:id="@+id/show_external_call_activity_settings_title_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_identity_view"
-                android:text="@string/navigation_activity_settings"
-                android:textAllCaps="true"
-                android:maxLines="1"
-                app:layout_widthPercent="53.33%"
-                app:layout_marginEndPercent="4%"
-                app:layout_marginStartPercent="4%" />
-
-            <androidx.percentlayout.widget.PercentRelativeLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/show_external_call_activity_settings_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_settings_title_view"
-                android:background="@drawable/item_light_border">
-
-                <TextView
-                    android:id="@+id/show_external_call_activity_settings_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/show_call_activity_settings_call"
-                    app:layout_marginEndPercent="10.27%"
-                    app:layout_marginStartPercent="4%" />
-
-                <ImageView
-                    android:id="@+id/show_external_call_activity_settings_accessory_view"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/select_value_icon"
-                    app:layout_aspectRatio="62%"
-                    app:layout_heightPercent="34%"
-                    app:layout_marginEndPercent="5.33%" />
-            </androidx.percentlayout.widget.PercentRelativeLayout>
-
-            <androidx.percentlayout.widget.PercentRelativeLayout
-                android:id="@+id/show_external_call_activity_limited_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_settings_view"
-                android:background="@drawable/item_light_border">
-
-                <org.twinlife.twinme.utils.SwitchView
-                    android:id="@+id/show_external_call_activity_limited_checkbox"
-                    style="@style/textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:checked="true"
-                    app:layout_marginEndPercent="5.47%"
-                    app:layout_marginStartPercent="4%"
-                    android:text="@string/show_call_activity_settings_limited"
-                    android:textOn=""
-                    android:textOff=""
-                    android:track="@drawable/switch_track"
-                    android:thumb="@drawable/switch_thumb_on"
-                    android:switchMinWidth="0dp" />
-            </androidx.percentlayout.widget.PercentRelativeLayout>
-
-            <androidx.percentlayout.widget.PercentRelativeLayout
-                android:id="@+id/show_external_call_activity_start_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_limited_view"
-                android:background="@drawable/item_light_border">
-
-                <TextView
-                    android:id="@+id/show_external_call_activity_start_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/show_call_activity_settings_start"
-                    app:layout_marginEndPercent="10.27%"
-                    app:layout_marginStartPercent="4%" />
-
-                <androidx.percentlayout.widget.PercentRelativeLayout
-                    android:id="@+id/show_external_call_activity_start_date_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    app:layout_heightPercent="66.67%"
-                    android:layout_toStartOf="@+id/show_external_call_activity_start_hour_view">
-
-                    <TextView
-                        android:id="@+id/show_external_call_activity_start_date_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:lines="1"
-                        android:gravity="center" />
-
-                </androidx.percentlayout.widget.PercentRelativeLayout>
-
-                <androidx.percentlayout.widget.PercentRelativeLayout
-                    android:id="@+id/show_external_call_activity_start_hour_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    app:layout_heightPercent="66.67%"
-                    app:layout_marginEndPercent="5.47%">
-
-                    <TextView
-                        android:id="@+id/show_external_call_activity_start_hour_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:text="" />
-
-                </androidx.percentlayout.widget.PercentRelativeLayout>
-
-            </androidx.percentlayout.widget.PercentRelativeLayout>
-
-            <androidx.percentlayout.widget.PercentRelativeLayout
-                android:id="@+id/show_external_call_activity_end_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_start_view"
-                android:background="@drawable/item_light_border">
-
-                <TextView
-                    android:id="@+id/show_external_call_activity_end_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/show_call_activity_settings_end"
-                    app:layout_marginEndPercent="4.27%"
-                    app:layout_marginStartPercent="4%" />
-
-                <androidx.percentlayout.widget.PercentRelativeLayout
-                    android:id="@+id/show_external_call_activity_end_date_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    app:layout_heightPercent="66.67%"
-                    android:layout_toStartOf="@+id/show_external_call_activity_end_hour_view">
-
-                    <TextView
-                        android:id="@+id/show_external_call_activity_end_date_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:text="" />
-
-                </androidx.percentlayout.widget.PercentRelativeLayout>
-
-                <androidx.percentlayout.widget.PercentRelativeLayout
-                    android:id="@+id/show_external_call_activity_end_hour_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    app:layout_heightPercent="66.67%"
-                    app:layout_marginEndPercent="5.47%">
-
-                    <TextView
-                        android:id="@+id/show_external_call_activity_end_hour_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:text="" />
-
-                </androidx.percentlayout.widget.PercentRelativeLayout>
-
-            </androidx.percentlayout.widget.PercentRelativeLayout>
+                android:layout_below="@+id/show_external_call_activity_identity_view" />
 
             <TextView
                 android:id="@+id/show_external_call_activity_last_calls_title_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/show_external_call_activity_end_view"
+                android:layout_below="@+id/show_external_call_activity_settings_view"
                 android:text="@string/show_contact_activity_history_title"
                 android:textAllCaps="true"
                 android:maxLines="1"

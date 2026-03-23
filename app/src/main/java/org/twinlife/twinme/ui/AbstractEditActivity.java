@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021-2023 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -9,18 +9,19 @@
 package org.twinlife.twinme.ui;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 
 import org.twinlife.twinme.skin.Design;
 
@@ -28,105 +29,8 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "AbstractEditActivity";
     private static final boolean DEBUG = false;
 
-    protected final int ACTION_BACK = 0;
-    protected final int ACTION_SAVE = 1;
-    protected final int ACTION_EDIT_NAME = 2;
-    protected final int ACTION_EDIT_DESCRIPTION = 3;
-    protected final int ACTION_SETTINGS = 4;
-    protected final int ACTION_START_DATE = 5;
-    protected final int ACTION_START_TIME = 6;
-    protected final int ACTION_END_DATE = 7;
-    protected final int ACTION_END_TIME = 8;
-    protected final int ACTION_ADD_MEMBERS = 9;
-    protected final int ACTION_INVITE = 10;
-    protected final int ACTION_CODE = 11;
-    protected final int ACTION_REMOVE = 12;
-
-    protected class ViewTapGestureDetector extends GestureDetector.SimpleOnGestureListener {
-
-        private final int mAction;
-
-        public ViewTapGestureDetector(int action) {
-            mAction = action;
-        }
-
-        @Override
-        public boolean onDoubleTap(@NonNull MotionEvent e) {
-            return false;
-        }
-
-        @Override
-        public void onLongPress(@NonNull MotionEvent e) {
-        }
-
-        @Override
-        public boolean onSingleTapConfirmed(@NonNull MotionEvent e) {
-
-            switch (mAction) {
-                case ACTION_BACK:
-                    onBackClick();
-                    break;
-
-                case ACTION_SAVE:
-                    onSaveClick();
-                    break;
-
-                case ACTION_EDIT_NAME:
-                    onNameViewClick();
-                    break;
-
-                case ACTION_EDIT_DESCRIPTION:
-                    onDescriptionViewClick();
-                    break;
-
-                case ACTION_SETTINGS:
-                    onSettingsViewClick();
-                    break;
-
-                case ACTION_START_DATE:
-                    onStartDateViewClick();
-                    break;
-
-                case ACTION_START_TIME:
-                    onStartTimeViewClick();
-                    break;
-
-                case ACTION_END_DATE:
-                    onEndDateViewClick();
-                    break;
-
-                case ACTION_END_TIME:
-                    onEndTimeViewClick();
-                    break;
-
-                case ACTION_ADD_MEMBERS:
-                    onAddMemberClick();
-                    break;
-
-                case ACTION_INVITE:
-                    onInviteClick();
-                    break;
-
-                case ACTION_CODE:
-                    onInvitationCodeClick();
-                    break;
-
-                case ACTION_REMOVE:
-                    onRemoveClick();
-                    break;
-
-                default:
-                    break;
-            }
-            return true;
-        }
-
-        @Override
-        public boolean onDown(@NonNull MotionEvent e) {
-
-            return true;
-        }
-    }
+    protected static int AVATAR_OVER_SIZE;
+    protected static int AVATAR_MAX_SIZE;
 
     public static final int MAX_NAME_LENGTH = 32;
     public static final int MAX_DESCRIPTION_LENGTH = 128;
@@ -136,6 +40,7 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
     public static final float DESIGN_DESCRIPTION_TOP_MARGIN = 44f;
     public static final float DESIGN_COUNTER_TOP_MARGIN = 2f;
 
+    protected NestedScrollView mScrollView;
     protected View mContentView;
     protected ImageView mAvatarView;
     protected EditText mNameView;
@@ -144,8 +49,9 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
     protected TextView mCounterDescriptionView;
     protected View mSaveClickableView;
 
-    private float mContentViewDY;
-
+    protected boolean mInitScrollView = false;
+    protected float mAvatarLastSize = -1;
+    protected float mScrollPosition = -1;
 
     //
     // Override TwinmeActivityImpl methods
@@ -158,7 +64,7 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
         }
 
         super.onCreate(savedInstanceState);
-
+        
         setFullscreen();
 
         initViews();
@@ -178,6 +84,26 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(mNameView.getWindowToken(), 0);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        if (mScrollView != null && !mInitScrollView) {
+            mInitScrollView = true;
+            Rect rectangle = new Rect();
+            getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
+            int contentHeight = mContentView.getHeight();
+            if (contentHeight < rectangle.height()) {
+                contentHeight = rectangle.height();
+            }
+
+            ViewGroup.LayoutParams layoutParams = mContentView.getLayoutParams();
+            layoutParams.height = contentHeight + AVATAR_OVER_SIZE;
+            mScrollView.post(() -> mScrollView.scrollBy(0, AVATAR_OVER_SIZE));
         }
     }
 
@@ -204,11 +130,21 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "hideKeyboard");
         }
 
+        mNameView.clearFocus();
+        mDescriptionView.clearFocus();
+
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(mNameView.getWindowToken(), 0);
             inputMethodManager.hideSoftInputFromWindow(mDescriptionView.getWindowToken(), 0);
         }
+    }
+
+    protected void updateContentHeight() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateContentHeight");
+        }
+
     }
 
     //
@@ -253,7 +189,6 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             inputMethodManager.showSoftInput(mDescriptionView, InputMethodManager.SHOW_IMPLICIT);
-            updateContentOffset();
         }
     }
 
@@ -311,58 +246,6 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
         }
     }
 
-    protected boolean touchContent(MotionEvent motionEvent) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "touchContent");
-        }
-
-        switch (motionEvent.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mContentViewDY = mContentView.getY() - motionEvent.getRawY();
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                float newY = motionEvent.getRawY() + mContentViewDY;
-                float diffY = mContentView.getY() - newY;
-
-                if (newY > Design.CONTENT_VIEW_MIN_Y && newY < Design.CONTENT_VIEW_INITIAL_POSITION) {
-                    mContentView.animate()
-                            .y(motionEvent.getRawY() + mContentViewDY)
-                            .setDuration(0)
-                            .start();
-                }
-
-                float avatarViewWidth = mAvatarView.getWidth() - diffY;
-                float avatarViewHeight = mAvatarView.getHeight() - diffY;
-
-                if (avatarViewWidth < Design.DISPLAY_WIDTH) {
-                    avatarViewWidth = Design.DISPLAY_WIDTH;
-                } else if (avatarViewWidth > Design.AVATAR_MAX_WIDTH) {
-                    avatarViewWidth = Design.AVATAR_MAX_WIDTH;
-                }
-
-                if (avatarViewHeight < (Design.AVATAR_MAX_HEIGHT - Design.AVATAR_OVER_WIDTH)) {
-                    avatarViewHeight = Design.AVATAR_MAX_HEIGHT - Design.AVATAR_OVER_WIDTH;
-                } else if (avatarViewHeight > Design.AVATAR_MAX_HEIGHT) {
-                    avatarViewHeight = Design.AVATAR_MAX_HEIGHT;
-                }
-
-                ViewGroup.LayoutParams avatarLayoutParams = mAvatarView.getLayoutParams();
-                avatarLayoutParams.width = (int) avatarViewWidth;
-                avatarLayoutParams.height = (int) avatarViewHeight;
-                mAvatarView.requestLayout();
-
-                break;
-
-            case MotionEvent.ACTION_UP:
-                break;
-
-            default:
-                return false;
-        }
-        return true;
-    }
-
     protected void updateContentOffset() {
 
         float contentY = Design.CONTENT_VIEW_FOCUS_Y;
@@ -391,5 +274,42 @@ public abstract class AbstractEditActivity extends AbstractTwinmeActivity {
         avatarLayoutParams.width = (int) avatarViewWidth;
         avatarLayoutParams.height = (int) avatarViewHeight;
         mAvatarView.requestLayout();
+    }
+
+    protected void updateAvatarSize(float deltaY) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateAvatarSize: " + deltaY);
+        }
+
+        if (mAvatarLastSize == -1) {
+            mAvatarLastSize = AVATAR_MAX_SIZE - AVATAR_OVER_SIZE;
+        }
+
+        float avatarViewSize = mAvatarLastSize + deltaY;
+
+        if (avatarViewSize < Design.DISPLAY_WIDTH) {
+            avatarViewSize = Design.DISPLAY_WIDTH;
+        } else if (avatarViewSize > AVATAR_MAX_SIZE) {
+            avatarViewSize = AVATAR_MAX_SIZE;
+        }
+
+        if (avatarViewSize != mAvatarLastSize) {
+            ViewGroup.LayoutParams avatarLayoutParams = mAvatarView.getLayoutParams();
+            avatarLayoutParams.width = (int) avatarViewSize;
+            avatarLayoutParams.height = (int) avatarViewSize;
+            mAvatarView.requestLayout();
+
+            mAvatarLastSize = avatarViewSize;
+        }
+    }
+
+    @Override
+    public void setupDesign() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openMenuCapabilities");
+        }
+
+        AVATAR_OVER_SIZE = (int) (Design.AVATAR_OVER_WIDTH * Design.WIDTH_RATIO);
+        AVATAR_MAX_SIZE = Design.DISPLAY_WIDTH + (AVATAR_OVER_SIZE * 2);
     }
 }

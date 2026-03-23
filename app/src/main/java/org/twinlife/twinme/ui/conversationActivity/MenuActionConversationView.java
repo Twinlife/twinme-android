@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +80,11 @@ public class MenuActionConversationView extends PercentRelativeLayout {
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.RESET, true));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MANAGE_CONVERSATION, true));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MEDIAS_AND_FILES, true));
-        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.LOCATION, sendAllowed));
+
+        if (CommonUtils.isGooglePlayServicesAvailable(getContext())) {
+            actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.LOCATION, sendAllowed));
+        }
+        
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.FILE, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.GALLERY, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.VIDEO, sendAllowed));

@@ -157,7 +157,7 @@ public class NewConversationListAdapter extends RecyclerView.Adapter<RecyclerVie
             ViewGroup.LayoutParams layoutParams = convertView.getLayoutParams();
             layoutParams.height = mItemHeight;
             convertView.setLayoutParams(layoutParams);
-            return new UIContactViewHolder<UIContact>(mService, convertView, mNameId, mAvatarId, mTagId, mTagTitleId, 0, mCertifiedId, mSeparatorId, Design.FONT_REGULAR34);
+            return new UIContactViewHolder<UIContact>(mService, convertView, mNameId, mAvatarId, mTagId, mTagTitleId, 0, 0, mCertifiedId, mSeparatorId, Design.FONT_REGULAR34);
         }
     }
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2015-2025 twinlife SA.
+ *  Copyright (c) 2015-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -70,7 +70,6 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -93,7 +92,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.jetbrains.annotations.NotNull;
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AssertPoint;
@@ -214,6 +212,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -637,7 +636,12 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         mMediaPicker = registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(10), uris -> {
             if (!uris.isEmpty()) {
-                onPreviewMedia(uris, false);
+                List<FileInfo> fileInfos = new ArrayList<>();
+
+                for (Uri uri : uris) {
+                    fileInfos.add(new FileInfo(getApplicationContext(), uri));
+                }
+                onPreviewMedia(fileInfos, false);
             }
         });
     }
@@ -781,24 +785,26 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         super.onActivityResult(requestCode, resultCode, intent);
 
+        List<FileInfo> fileInfos;
+
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_GET_FILE:
-                    List<Uri> fileUris = new ArrayList<>();
+                    fileInfos = new ArrayList<>();
                     ClipData clipData = (intent == null) ? null : intent.getClipData();
                     if (clipData != null && clipData.getItemCount() > 0) {
                         for (int i = 0; i < clipData.getItemCount(); i++) {
-                            fileUris.add(clipData.getItemAt(i).getUri());
+                            fileInfos.add(new FileInfo(getApplicationContext(), clipData.getItemAt(i).getUri()));
                         }
                     } else {
                         // single selection or old android
                         Uri uri = (intent == null) ? null : intent.getData();
                         if (uri != null) {
-                            fileUris.add(uri);
+                            fileInfos.add(new FileInfo(getApplicationContext(), uri));
                         }
                     }
-                    onPreviewFile(fileUris, false);
-                    break;
+                    onPreviewFile(fileInfos, false);
+                    return;
 
                 case REQUEST_CREATE_DOCUMENT:
                     Uri fileUri = (intent == null) ? null : intent.getData();
@@ -807,15 +813,13 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                     } else {
                         closeMenu();
                     }
-                    break;
+                    return;
 
                 case REQUEST_TAKE_PHOTO:
                     if (mCaptureUri != null) {
-                        List<Uri> uris = new ArrayList<>();
-                        uris.add(mCaptureUri);
-                        onPreviewMedia(uris, false);
+                        onPreviewMedia(Collections.singletonList(new FileInfo(getApplicationContext(), mCaptureUri)), false);
                     }
-                    break;
+                    return;
 
                 case REQUEST_PREVIEW_MEDIA:
                 case REQUEST_PREVIEW_FILE:
@@ -837,10 +841,54 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         double longitude = intent.getDoubleExtra(Intents.INTENT_LONGITUDE, 0);
 
                         sendLocation(longitude, latitude, altitude, longitudeDelta, latitudeDelta, expireTimeout);
+                        break;
+                    }
+                    try {
+                        if (intent.hasExtra(Intents.INTENT_SELECTED_FILES)) {
+                            fileInfos = intent.getParcelableArrayListExtra(Intents.INTENT_SELECTED_FILES);
+
+                            if (fileInfos != null) {
+                                for (FileInfo fileInfo : fileInfos) {
+                                    if (fileInfo.getFilename() != null) {
+                                        if (fileInfo.isImage()) {
+                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                        } else if (fileInfo.isVideo()) {
+                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                        } else {
+                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (intent.hasExtra(Intents.INTENT_CAPTURED_FILE)) {
+                            ArrayList<Parcelable> captureFiles = intent.getParcelableArrayListExtra(Intents.INTENT_CAPTURED_FILE);
+
+                            if (captureFiles != null) {
+                                for (Parcelable parcelable : captureFiles) {
+
+                                    if (parcelable instanceof FileInfo) {
+                                        FileInfo fileInfo = (FileInfo) parcelable;
+                                        if (fileInfo.getFilename() != null) {
+                                            if (fileInfo.isImage()) {
+                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                            } else if (fileInfo.isVideo()) {
+                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                            } else {
+                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                            }
+                                        }
+                                    } else if (parcelable instanceof UIPreviewFile) {
+                                        UIPreviewFile previewFile = (UIPreviewFile) parcelable;
+                                        FileInfo fileInfo = new FileInfo(getApplicationContext(), previewFile.getUri());
+                                        sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
+                                    }
+                                }
+                            }
+                        }
 
                         if (textMessage != null && !textMessage.trim().isEmpty()) {
-                            mEditText.setText("");
-
                             DescriptorId replyTo = null;
                             if (mReplyItem != null) {
                                 replyTo = mReplyItem.getDescriptorId();
@@ -856,77 +904,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                             }
                         }
 
+                        mEditText.setText("");
                         closeReplyView();
-                    } else {
-                        try {
-                            if (intent.hasExtra(Intents.INTENT_SELECTED_URI)) {
-                                ArrayList<String> urisToString = intent.getStringArrayListExtra(Intents.INTENT_SELECTED_URI);
-
-                                if (urisToString != null) {
-                                    for (String sendUri : urisToString) {
-                                        FileInfo fileInfo = new FileInfo(getApplicationContext(), Uri.parse(sendUri));
-                                        if (fileInfo.getFilename() != null) {
-                                            if (fileInfo.isImage()) {
-                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                            } else if (fileInfo.isVideo()) {
-                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                            } else {
-                                                sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (intent.hasExtra(Intents.INTENT_CAPTURED_FILE)) {
-                                ArrayList<Parcelable> captureFiles = intent.getParcelableArrayListExtra(Intents.INTENT_CAPTURED_FILE);
-
-                                if (captureFiles != null) {
-                                    for (Parcelable parcelable : captureFiles) {
-
-                                        if (parcelable instanceof FileInfo) {
-                                            FileInfo fileInfo = (FileInfo) parcelable;
-                                            if (fileInfo.getFilename() != null) {
-                                                if (fileInfo.isImage()) {
-                                                    sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.IMAGE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                                } else if (fileInfo.isVideo()) {
-                                                    sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.VIDEO_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                                } else {
-                                                    sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                                }
-                                            }
-                                        } else if (parcelable instanceof UIPreviewFile) {
-                                            UIPreviewFile previewFile = (UIPreviewFile) parcelable;
-                                            FileInfo fileInfo = new FileInfo(getApplicationContext(), previewFile.getUri());
-                                            sendFile(fileInfo.getUri(), fileInfo.getFilename(), Descriptor.Type.NAMED_FILE_DESCRIPTOR, true, allowCopyFile, expireTimeout);
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (textMessage != null && !textMessage.trim().isEmpty()) {
-                                DescriptorId replyTo = null;
-                                if (mReplyItem != null) {
-                                    replyTo = mReplyItem.getDescriptorId();
-                                }
-
-                                if (mConversationService.isSendingFiles()) {
-                                    mDeferredMessage = textMessage;
-                                    mDeferredAllowCopyText = allowCopyText;
-                                    mDeferredTimeout = expireTimeout;
-                                    mDeferredReplyTo = replyTo;
-                                } else {
-                                    mConversationService.pushMessage(textMessage, allowCopyText, expireTimeout, replyTo);
-                                }
-                            }
-
-                            mEditText.setText("");
-                            closeReplyView();
-                        } catch (Exception exception) {
-                            Log.d(LOG_TAG, "exception=" + exception.getMessage());
-                        }
+                    } catch (Exception exception) {
+                        Log.d(LOG_TAG, "exception=" + exception.getMessage());
                     }
-
                     break;
             }
         }
@@ -1357,7 +1339,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             return;
         }
 
-        mConversationService.listAnnotations(descriptorId, (BaseService.ErrorCode errorCode, Map<TwincodeOutbound, org.twinlife.twinlife.ConversationService.DescriptorAnnotation> annotations) -> {
+        mConversationService.listAnnotations(descriptorId, (BaseService.ErrorCode errorCode, Map<TwincodeOutbound, List<DescriptorAnnotation>> annotations) -> {
             // This lambda is run by mTwinlifeExecutor, so we can call the blocking getImage() variant.
 
             if (annotations == null || mSubject == null) {
@@ -1366,17 +1348,19 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             List<UIAnnotation> uiAnnotations = new ArrayList<>();
 
-            for (Map.Entry<TwincodeOutbound, DescriptorAnnotation> annotation : annotations.entrySet()) {
-                DescriptorAnnotation descriptorAnnotation = annotation.getValue();
+            for (Map.Entry<TwincodeOutbound, List<DescriptorAnnotation>> peerAnnotations : annotations.entrySet()) {
+                List<DescriptorAnnotation> descriptorAnnotations = peerAnnotations.getValue();
 
-                if (descriptorAnnotation.getType() == AnnotationType.LIKE) {
-                    String name = annotation.getKey().getName();
-                    Bitmap avatar = mConversationService.getTwincodeImage(annotation.getKey());
-                    UIReaction uiReaction = new UIReaction(descriptorAnnotation.getValue());
+                for (DescriptorAnnotation annotation: descriptorAnnotations) {
+                    if (annotation.getType() == AnnotationType.LIKE) {
+                        String name = peerAnnotations.getKey().getName();
+                        Bitmap avatar = mConversationService.getTwincodeImage(peerAnnotations.getKey());
+                        UIReaction uiReaction = new UIReaction((int) annotation.getValue());
 
-                    if (name != null && avatar != null) {
-                        UIAnnotation uiAnnotation = new UIAnnotation(uiReaction, name, avatar);
-                        uiAnnotations.add(uiAnnotation);
+                        if (name != null && avatar != null) {
+                            UIAnnotation uiAnnotation = new UIAnnotation(uiReaction, name, avatar, -1, AnnotationType.LIKE);
+                            uiAnnotations.add(uiAnnotation);
+                        }
                     }
                 }
             }
@@ -3108,7 +3092,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
     }
 
-    public void onSendVoiceRecord(@NotNull File recording) {
+    public void onSendVoiceRecord(@NonNull File recording) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSendVoiceRecord: recording=" + recording);
         }
@@ -3769,12 +3753,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         final SpaceSettings spaceSettings = getSpaceSettings();
                         Intent intent = new Intent(this, PreviewFileActivity.class);
 
-                        ArrayList<String> urisToString = new ArrayList<>();
-                        urisToString.add(copy.getUri().toString());
-                        intent.putStringArrayListExtra(Intents.INTENT_SELECTED_URI, urisToString);
-                        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, spaceSettings.fileCopyAllowed());
-                        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
-                        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
+                        ArrayList<FileInfo> fileInfos = new ArrayList<>();
+                        fileInfos.add(copy);
+                        intent.putExtra(Intents.INTENT_SELECTED_FILES, fileInfos);
+                        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, getTwinmeApplication().fileCopyAllowed());
 
                         if (mSubject != null) {
                             intent.putExtra(Intents.INTENT_CONTACT_ID, mSubject.getId().toString());
@@ -5650,9 +5632,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
     }
 
-    private void onPreviewMedia(List<Uri> uris, boolean fromDirectShare) {
+    private void onPreviewMedia(List<FileInfo> fileInfos, boolean fromDirectShare) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onPreviewMedia: uris=" + uris + " fromDirectShare=" + fromDirectShare);
+            Log.d(LOG_TAG, "onPreviewMedia: fileInfos=" + fileInfos + " fromDirectShare=" + fromDirectShare);
         }
 
         Intent intent = new Intent(this, PreviewFileActivity.class);
@@ -5669,19 +5651,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             intent.putExtra(Intents.INTENT_TEXT_MESSAGE, mSharedText.toString());
         }
 
-        ArrayList<String> urisToString = new ArrayList<>();
-        for (Uri uri : uris) {
-            urisToString.add(uri.toString());
-        }
-
         intent.putExtra(Intents.INTENT_PREVIEW_START_WITH_MEDIA, true);
-        intent.putStringArrayListExtra(Intents.INTENT_SELECTED_URI, urisToString);
-
-        final SpaceSettings spaceSettings = getSpaceSettings();
-        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  spaceSettings.fileCopyAllowed());
-
-        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
-        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
+        intent.putExtra(Intents.INTENT_SELECTED_FILES, new ArrayList<>(fileInfos));
+        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  getTwinmeApplication().fileCopyAllowed());
 
         if (fromDirectShare) {
             intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
@@ -5841,9 +5813,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
-    private void onPreviewFile(List<Uri> uris, boolean fromDirectShare) {
+    private void onPreviewFile(List<FileInfo> fileInfos, boolean fromDirectShare) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onPreviewFile: " + uris);
+            Log.d(LOG_TAG, "onPreviewFile: " + fileInfos);
         }
 
         Intent intent = new Intent(this, PreviewFileActivity.class);
@@ -5853,12 +5825,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
         intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
 
-        ArrayList<String> urisToString = new ArrayList<>();
-        for (Uri uri : uris) {
-            urisToString.add(uri.toString());
-        }
-
-        intent.putStringArrayListExtra(Intents.INTENT_SELECTED_URI, urisToString);
+        intent.putExtra(Intents.INTENT_SELECTED_FILES, new ArrayList<>(fileInfos));
 
         if (mContactId != null || mGroupId != null) {
             intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId != null ? mContactId.toString() : mGroupId.toString());
@@ -6664,11 +6631,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         getTwinmeContext().execute(() -> {
 
             CharSequence sharedText = ShareUtils.getSharedText(intent);
-            List<Uri> sharedUris = ShareUtils.getSharedFiles(intent);
+            List<FileInfo> sharedFiles = ShareUtils.getSharedFiles(getApplicationContext(), intent);
 
             boolean mediaOnly = true;
-            for (Uri uri : sharedUris) {
-                String type = getContentResolver().getType(uri);
+            for (FileInfo fileInfo : sharedFiles) {
+                String type = fileInfo.getMimeType();
                 if (type == null || (!type.startsWith("image/") && !type.startsWith("video/"))) {
                     mediaOnly = false;
                     break;
@@ -6686,11 +6653,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                     }
                 }
 
-                if (!sharedUris.isEmpty()) {
+                if (!sharedFiles.isEmpty()) {
                     if (finalMediaOnly) {
-                        onPreviewMedia(sharedUris, true);
+                        onPreviewMedia(sharedFiles, true);
                     } else {
-                        onPreviewFile(sharedUris, true);
+                        onPreviewFile(sharedFiles, true);
                     }
                 }
             });

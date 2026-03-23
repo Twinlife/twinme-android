@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -25,45 +25,49 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.Twinlife;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Capabilities;
+import org.twinlife.twinme.models.LinkValidity;
 import org.twinlife.twinme.models.Space;
+import org.twinlife.twinme.models.TwincodeKind;
 import org.twinlife.twinme.models.schedule.Date;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
+import org.twinlife.twinme.ui.externalCallActivity.UIConfigExternalCall.ConfigExternalCallTypeCall;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.OnboardingDetailView;
 import org.twinlife.twinme.utils.RoundedView;
-import org.twinlife.twinme.utils.SwitchView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
 
 import java.io.File;
@@ -71,7 +75,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -118,22 +121,13 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
     static final int REQUEST_SHOW_FEATURE = 2;
 
-    protected static final float DESIGN_SETTINGS_TOP_MARGIN = 32f;
-
     private EditableView mEditableView;
     private TextView mTitleView;
     private TextView mMessageView;
     private ImageView mNoAvatarView;
-    private View mSettingsView;
-    private TextView mSettingsTextView;
-    private View mLimitedView;
-    private SwitchView mLimitedSwitchView;
-    private View mStartView;
-    private TextView mStartDateTextView;
-    private TextView mStartTimeTextView;
-    private View mEndView;
-    private TextView mEndDateTextView;
-    private TextView mEndTimeTextView;
+
+    private RecyclerView mSettingsRecyclerView;
+    private ExternalCallConfigAdapter mExternalCallConfigAdapter;
 
     private View mOverlayMenuView;
     private MenuCallCapabilitiesView mMenuCapabilitiesView;
@@ -149,22 +143,14 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
     private Space mSpace;
 
-    private Date mScheduleStartDate;
-    private Time mScheduleStartTime;
-    private Date mScheduleEndDate;
-    private Time mScheduleEndTime;
-
-    private boolean mAllowVoiceCall = true;
-    private boolean mAllowVideoCall = true;
-    private boolean mAllowGroupCall = false;
-    private boolean mScheduleEnable = false;
-
     private boolean mIsTransferCall = false;
 
     private UITemplateExternalCall mUITemplateExternalCall;
+    private UIConfigExternalCall mConfigExternalCall;
 
     private CallReceiverService mCallReceiverService;
-
+    @Nullable
+    private UITemplateExternalCall.TemplateType mTemplateType;
     private boolean mShowPremiumFeatureDescription = false;
 
     //
@@ -186,19 +172,13 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         int selection = intent.getIntExtra(Intents.INTENT_TEMPLATE_SELECTION, -1);
         if (selection != -1) {
-            UITemplateExternalCall.TemplateType templateType;
-            if (selection == UITemplateExternalCall.TemplateType.CLASSIFIED_AD.ordinal()) {
-                templateType = UITemplateExternalCall.TemplateType.CLASSIFIED_AD;
-            } else if (selection == UITemplateExternalCall.TemplateType.HELP.ordinal()) {
-                templateType = UITemplateExternalCall.TemplateType.HELP;
-            } else if (selection == UITemplateExternalCall.TemplateType.MEETING.ordinal()) {
-                templateType = UITemplateExternalCall.TemplateType.MEETING;
-            } else if (selection == UITemplateExternalCall.TemplateType.VIDEO_BELL.ordinal()) {
-                templateType = UITemplateExternalCall.TemplateType.VIDEO_BELL;
+            UITemplateExternalCall.TemplateType[] values = UITemplateExternalCall.TemplateType.values();
+            if (selection >= 0 && selection < values.length) {
+                mTemplateType = values[selection];
             } else {
-                templateType = UITemplateExternalCall.TemplateType.OTHER;
+                mTemplateType = UITemplateExternalCall.TemplateType.OTHER;
             }
-            mUITemplateExternalCall = new UITemplateExternalCall(this, templateType);
+            mUITemplateExternalCall = new UITemplateExternalCall(this, mTemplateType);
         }
 
         initViews();
@@ -227,6 +207,8 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             mShowPremiumFeatureDescription = true;
             showOnboardingView();
         }
+
+        updateContentHeight();
     }
 
     @Override
@@ -288,6 +270,20 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
     }
 
+    @Override
+    protected void updateContentHeight() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateContentHeight");
+        }
+
+        mSettingsRecyclerView.post(() -> {
+            mSettingsRecyclerView.requestLayout();
+            ViewGroup.LayoutParams layoutParams = mContentView.getLayoutParams();
+            layoutParams.height = (int) (mMessageView.getY() + mMessageView.getHeight() + AVATAR_MAX_SIZE);
+            mContentView.setLayoutParams(layoutParams);
+        });
+    }
+
     //
     // Implement CallReceiverService.Observer methods
     //
@@ -299,6 +295,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         mSpace = space;
+        initCallReceiver();
     }
 
     @Override
@@ -325,6 +322,28 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         finish();
     }
 
+    @Override
+    public void onGetCallReceiverNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCallReceiverNotFound");
+        }
+
+        finish();
+    }
+
+    @Override
+    public void onGetProfileAvatar(@NonNull Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetProfileAvatar: " + avatar);
+        }
+
+        mUpdatedCallFile = CommonUtils.saveBitmap(avatar);
+        mUpdatedCallLargeAvatar = avatar;
+        mUpdated = true;
+        mNoAvatarView.setVisibility(View.GONE);
+        updateExternalCall();
+    }
+
     //MenuCallCapabilitiesView.Observer
 
     @Override
@@ -333,9 +352,9 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
         }
 
-        mAllowVoiceCall = mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VOICE_CALL_SWITCH);
-        mAllowVideoCall = mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VIDEO_CALL_SWITCH);
-        mAllowGroupCall = mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.GROUP_CALL_SWITCH);
+        mConfigExternalCall.setAllowVoiceCall(mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VOICE_CALL_SWITCH));
+        mConfigExternalCall.setAllowVideoCall(mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VIDEO_CALL_SWITCH));
+        mConfigExternalCall.setAllowGroupCall(mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.GROUP_CALL_SWITCH));
 
         mMenuCapabilitiesView.setVisibility(View.INVISIBLE);
         mOverlayMenuView.setVisibility(View.INVISIBLE);
@@ -343,7 +362,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         Window window = getWindow();
         window.setNavigationBarColor(Design.WHITE_COLOR);
 
-        updateCallCapabilities();
+        updateConfig();
     }
 
     //
@@ -382,12 +401,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         mNoAvatarView.setOnClickListener(v -> openMenuPhoto());
 
         View backClickableView = findViewById(R.id.create_external_call_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -400,9 +414,27 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
         mContentView = findViewById(R.id.create_external_call_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
+
+        View editAvatarView = findViewById(R.id.create_external_call_activity_edit_avatar_clickable_view);
+        editAvatarView.setOnClickListener(view -> openMenuPhoto());
+
+        layoutParams = editAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
 
         setBackground(mContentView);
+
+        mScrollView = findViewById(R.id.create_external_call_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
 
         View slideMarkView = findViewById(R.id.create_external_call_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
@@ -412,15 +444,13 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         gradientDrawable.mutate();
         gradientDrawable.setColor(Color.rgb(244, 244, 244));
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(slideMarkView, gradientDrawable);
+        slideMarkView.setBackground(gradientDrawable);
 
         float corner = ((float)Design.SLIDE_MARK_HEIGHT / 2) * Resources.getSystem().getDisplayMetrics().density;
         gradientDrawable.setCornerRadius(corner);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
-
-        mContentView.setOnTouchListener((v, motionEvent) -> touchContent(motionEvent));
 
         mTitleView = findViewById(R.id.create_external_call_activity_title_view);
         Design.updateTextFont(mTitleView, Design.FONT_BOLD44);
@@ -436,7 +466,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable nameViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         nameViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(nameContentView, nameViewBackground);
+        nameContentView.setBackground(nameViewBackground);
 
         layoutParams = nameContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -468,11 +498,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             }
         });
 
-        GestureDetector nameGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_NAME));
-        mNameView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = nameGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mNameView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSettingsRecyclerView.getTop()), 100);
+            }
         });
 
         mCounterNameView = findViewById(R.id.create_external_call_activity_counter_name_view);
@@ -487,7 +516,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         ShapeDrawable descriptionContentViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         descriptionContentViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(descriptionContentView, descriptionContentViewBackground);
+        descriptionContentView.setBackground(descriptionContentViewBackground);
 
         layoutParams = descriptionContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -520,11 +549,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             }
         });
 
-        GestureDetector descriptionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_DESCRIPTION));
-        mDescriptionView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = descriptionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mDescriptionView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mSettingsRecyclerView.getTop()), 100);
+            }
         });
 
         mCounterDescriptionView = findViewById(R.id.create_external_call_activity_counter_description_view);
@@ -535,168 +563,86 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mCounterDescriptionView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_COUNTER_TOP_MARGIN * Design.HEIGHT_RATIO);
 
-        mSettingsView = findViewById(R.id.create_external_call_activity_settings_view);
+        mSettingsRecyclerView = findViewById(R.id.create_external_call_activity_settings_view);
 
-        GestureDetector settingsGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SETTINGS));
-        mSettingsView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = settingsGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
-        });
-
-        layoutParams = mSettingsView.getLayoutParams();
+        layoutParams = mSettingsRecyclerView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.SECTION_HEIGHT;
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSettingsView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_SETTINGS_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSettingsRecyclerView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_DESCRIPTION_TOP_MARGIN * Design.HEIGHT_RATIO);
 
-        mSettingsTextView = findViewById(R.id.create_external_call_activity_settings_text_view);
-        Design.updateTextFont(mSettingsTextView, Design.FONT_REGULAR34);
-        mSettingsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mConfigExternalCall = new UIConfigExternalCall(this, true);
 
-        mLimitedView = findViewById(R.id.create_external_call_activity_limited_view);
+        ExternalCallConfigAdapter.OnExternalCallConfigClickListener onExternalCallConfigClickListener = new ExternalCallConfigAdapter.OnExternalCallConfigClickListener() {
+            @Override
+            public void onExternalCallConfigClick(UIConfigExternalCallItem configExternalCall) {
 
-        layoutParams = mLimitedView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.SECTION_HEIGHT;
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
+                    openMenuCapabilities();
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
+                    openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE, mConfigExternalCall.getConfigCallType().ordinal());
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
+                    openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION, mConfigExternalCall.getLinkValidity().ordinal());
+                }
+            }
 
-        mLimitedSwitchView = findViewById(R.id.create_external_call_activity_limited_checkbox);
-        Design.updateTextFont(mLimitedSwitchView, Design.FONT_REGULAR34);
-        mLimitedSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        mLimitedSwitchView.setOnCheckedChangeListener((buttonView, isChecked) -> saveLimited());
+            @Override
+            public void onDateViewClick(UIConfigExternalCallItem configExternalCall) {
 
-        mStartView = findViewById(R.id.create_external_call_activity_start_view);
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                   onStartDateViewClick();
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                   onEndDateViewClick();
+                }
+            }
 
-        layoutParams = mStartView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.SECTION_HEIGHT;
+            @Override
+            public void onTimeViewClick(UIConfigExternalCallItem configExternalCall) {
 
-        TextView startTextView = findViewById(R.id.create_external_call_activity_start_text_view);
-        Design.updateTextFont(startTextView, Design.FONT_REGULAR34);
-        startTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                    onStartTimeViewClick();
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                    onEndTimeViewClick();
+                }
+            }
 
-        View startDateView = findViewById(R.id.create_external_call_activity_start_date_view);
+            @Override
+            public void onSelectDayClick(UIScheduleDay scheduleDay) {
 
-        GestureDetector startDateGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_START_DATE));
-        startDateView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = startDateGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
-        });
+                onSelectScheduleDayClick(scheduleDay);
+            }
 
-        layoutParams = startDateView.getLayoutParams();
-        layoutParams.width = Design.DATE_VIEW_WIDTH;
+            @Override
+            public void onSwitchValueChanged(UIConfigExternalCallItem configExternalCall, boolean value) {
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) startDateView.getLayoutParams();
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_MARGIN;
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.DELETE) {
+                    mConfigExternalCall.setDeleteLinkSetting(value);
+                } if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.NOTIFICATION) {
+                    mConfigExternalCall.setNotificationJoinSetting(value);
+                }
 
-        ShapeDrawable startDateViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        startDateViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(startDateView, startDateViewBackground);
+                updateConfig();
+            }
+        };
 
-        mStartDateTextView = findViewById(R.id.create_external_call_activity_start_date_text_view);
-        Design.updateTextFont(mStartDateTextView, Design.FONT_REGULAR32);
-        mStartDateTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mExternalCallConfigAdapter = new ExternalCallConfigAdapter(this, mConfigExternalCall, onExternalCallConfigClickListener);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mStartDateTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
 
-        View startHourView = findViewById(R.id.create_external_call_activity_start_hour_view);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        GestureDetector startHourGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_START_TIME));
-        startHourView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = startHourGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
-        });
-
-        layoutParams = startHourView.getLayoutParams();
-        layoutParams.width = Design.HOUR_VIEW_WIDTH;
-
-        ShapeDrawable startHourViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        startHourViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(startHourView, startHourViewBackground);
-
-        mStartTimeTextView = findViewById(R.id.create_external_call_activity_start_hour_text_view);
-        Design.updateTextFont(mStartTimeTextView, Design.FONT_REGULAR32);
-        mStartTimeTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mStartTimeTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
-
-        mEndView = findViewById(R.id.create_external_call_activity_end_view);
-
-        layoutParams = mEndView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
-        layoutParams.height = Design.SECTION_HEIGHT;
-
-        TextView endTextView = findViewById(R.id.create_external_call_activity_end_text_view);
-        Design.updateTextFont(endTextView, Design.FONT_REGULAR34);
-        endTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        View endDateView = findViewById(R.id.create_external_call_activity_end_date_view);
-
-        GestureDetector endDateGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_END_DATE));
-        endDateView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = endDateGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
-        });
-
-        layoutParams = endDateView.getLayoutParams();
-        layoutParams.width = Design.DATE_VIEW_WIDTH;
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) endDateView.getLayoutParams();
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_MARGIN;
-
-        ShapeDrawable endDateViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        endDateViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(endDateView, endDateViewBackground);
-
-        mEndDateTextView = findViewById(R.id.create_external_call_activity_end_date_text_view);
-        Design.updateTextFont(mEndDateTextView, Design.FONT_REGULAR32);
-        mEndDateTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEndDateTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
-
-        View endHourView = findViewById(R.id.create_external_call_activity_end_hour_view);
-
-        GestureDetector endHourGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_END_TIME));
-        endHourView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = endHourGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
-        });
-
-        layoutParams = endHourView.getLayoutParams();
-        layoutParams.width = Design.HOUR_VIEW_WIDTH;
-
-        ShapeDrawable endHourViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        endHourViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(endHourView, endHourViewBackground);
-
-        mEndTimeTextView = findViewById(R.id.create_external_call_activity_end_hour_text_view);
-        Design.updateTextFont(mEndTimeTextView, Design.FONT_REGULAR32);
-        mEndTimeTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEndTimeTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
+        mSettingsRecyclerView.setLayoutManager(linearLayoutManager);
+        mSettingsRecyclerView.setAdapter(mExternalCallConfigAdapter);
+        mSettingsRecyclerView.setItemAnimator(null);
+        mSettingsRecyclerView.setHasFixedSize(false);
 
         mSaveClickableView = findViewById(R.id.create_external_call_activity_save_view);
         mSaveClickableView.setOnClickListener(v -> onSaveClick());
-
-        GestureDetector saveGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SAVE));
-        mSaveClickableView.setOnTouchListener((v, motionEvent) -> {
-            saveGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
 
         layoutParams = mSaveClickableView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -704,7 +650,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mSaveClickableView, saveViewBackground);
+        mSaveClickableView.setBackground(saveViewBackground);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mSaveClickableView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_SAVE_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -737,8 +683,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         mUIInitialized = true;
 
         initCallReceiver();
-        updateCallCapabilities();
-        updateSchedule();
+        updateConfig();
     }
 
     private void updateSelectedImage() {
@@ -756,23 +701,13 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         });
     }
 
-    private void saveLimited() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "saveLimited");
-        }
-
-        mScheduleEnable = mLimitedSwitchView.isChecked();
-
-        if (mScheduleEnable && mScheduleStartDate == null) {
-            initSchedule();
-        }
-
-        updateSchedule();
-    }
-
     private void initCallReceiver() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initCallReceiver");
+        }
+
+        if (mSpace == null) {
+            return;
         }
 
         if (mIsTransferCall) {
@@ -790,7 +725,11 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         if (mUITemplateExternalCall != null) {
             if (mUITemplateExternalCall.getTemplateType() != UITemplateExternalCall.TemplateType.OTHER) {
-                mNameView.setText(mUITemplateExternalCall.getName());
+                if (mUITemplateExternalCall.getTemplateType() == UITemplateExternalCall.TemplateType.PROFILE && mSpace.getProfile() != null) {
+                    mNameView.setText(mSpace.getProfile().getName());
+                } else {
+                    mNameView.setText(mUITemplateExternalCall.getName());
+                }
             }
 
             mNameView.setHint(mUITemplateExternalCall.getPlaceholder());
@@ -799,117 +738,18 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
                 mUpdatedCallAvatar = BitmapFactory.decodeResource(getResources(), mUITemplateExternalCall.getAvatarId());
                 mAvatarView.setImageBitmap(mUpdatedCallAvatar);
                 createFileFromTemplate();
+            } else if (mUITemplateExternalCall.getTemplateType() == UITemplateExternalCall.TemplateType.PROFILE) {
+                if (mSpace.getProfile() != null) {
+                    mCallReceiverService.getImage(mSpace.getProfile().getAvatarId(), (Bitmap avatar) -> {
+                        mAvatarView.setImageBitmap(avatar);
+                    });
+                    mCallReceiverService.getProfileAvatar(mSpace.getProfile().getAvatarId());
+                }
             }
 
-            mAllowVoiceCall = mUITemplateExternalCall.voiceCallAllowed();
-            mAllowVideoCall = mUITemplateExternalCall.videoCallAllowed();
-            mAllowGroupCall  = mUITemplateExternalCall.groupCallAllowed();
-            mScheduleEnable = mUITemplateExternalCall.hasSchedule();
-
-            if (mScheduleEnable && mScheduleStartDate == null) {
-                initSchedule();
-            }
-        }
-    }
-
-    private void updateCallCapabilities() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "updateCallCapabilities");
-        }
-
-        SpannableStringBuilder spannableCapabilitesStringBuilder = new SpannableStringBuilder();
-
-        if (mAllowVoiceCall) {
-            spannableCapabilitesStringBuilder.append(getString(R.string.show_contact_activity_audio));
-        }
-
-        if (mAllowVideoCall) {
-            if (!spannableCapabilitesStringBuilder.toString().isEmpty()) {
-                spannableCapabilitesStringBuilder.append(", ");
-            }
-            spannableCapabilitesStringBuilder.append(getString(R.string.show_contact_activity_video));
-        }
-
-        if (mAllowGroupCall) {
-            if (!spannableCapabilitesStringBuilder.toString().isEmpty()) {
-                spannableCapabilitesStringBuilder.append(", ");
-            }
-            spannableCapabilitesStringBuilder.append(getString(R.string.show_group_activity_title));
-        }
-
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.show_call_activity_settings_call));
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        if (!spannableCapabilitesStringBuilder.toString().isEmpty()) {
-            spannableStringBuilder.append("\n");
-            int startSubTitle = spannableStringBuilder.length();
-            spannableStringBuilder.append(spannableCapabilitesStringBuilder.toString());
-            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        mSettingsTextView.setText(spannableStringBuilder);
-    }
-
-    private void initSchedule() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "initSchedule");
-        }
-
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new java.util.Date(System.currentTimeMillis()));
-
-        calendar.add(Calendar.HOUR, 1);
-        calendar.set(Calendar.MINUTE, 0);
-        mScheduleStartDate = Date.from(calendar);
-        mScheduleStartTime = Time.from(calendar);
-
-        calendar.add(Calendar.HOUR, 1);
-        mScheduleEndDate = Date.from(calendar);
-        mScheduleEndTime = Time.from(calendar);
-    }
-
-    private void updateSchedule() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "updateSchedule");
-        }
-
-        if (!mUIInitialized) {
-            return;
-        }
-
-        if (mIsTransferCall) {
-            mSettingsView.setVisibility(View.GONE);
-            mLimitedView.setVisibility(View.GONE);
-        }
-
-        mLimitedSwitchView.setChecked(mScheduleEnable);
-
-        if (mScheduleEnable) {
-            mStartView.setVisibility(View.VISIBLE);
-            mEndView.setVisibility(View.VISIBLE);
-
-            final Calendar startCalendar = new DateTime(mScheduleStartDate, mScheduleStartTime).toCalendar(TimeZone.getDefault());
-
-            final Calendar endCalendar = new DateTime(mScheduleEndDate, mScheduleEndTime).toCalendar(TimeZone.getDefault());
-
-            String formatDate = "dd MMM yyyy";
-            String formatTime;
-            if (DateFormat.is24HourFormat(this)) {
-                formatTime = "HH:mm";
-            } else {
-                formatTime = "hh:mm a";
-            }
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-            mStartDateTextView.setText(simpleDateFormat.format(startCalendar.getTime()));
-            mEndDateTextView.setText(simpleDateFormat.format(endCalendar.getTime()));
-
-            SimpleDateFormat simpleTimeFormat = new SimpleDateFormat(formatTime, Locale.getDefault());
-            mStartTimeTextView.setText(simpleTimeFormat.format(startCalendar.getTime()));
-            mEndTimeTextView.setText(simpleTimeFormat.format(endCalendar.getTime()));
+            mConfigExternalCall.initWithTemplate(mUITemplateExternalCall);
         } else {
-            mStartView.setVisibility(View.GONE);
-            mEndView.setVisibility(View.GONE);
+            mConfigExternalCall.initDefault();
         }
     }
 
@@ -923,10 +763,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         int day;
         int month;
         int year;
-        if (mScheduleStartDate != null) {
-            day = mScheduleStartDate.day;
-            month = mScheduleStartDate.month - 1;
-            year = mScheduleStartDate.year;
+        if (mConfigExternalCall.getScheduleStartDate() != null) {
+            day = mConfigExternalCall.getScheduleStartDate().day;
+            month = mConfigExternalCall.getScheduleStartDate().month - 1;
+            year = mConfigExternalCall.getScheduleStartDate().year;
         } else {
             day = calendar.get(Calendar.DAY_OF_MONTH);
             month = calendar.get(Calendar.MONTH);
@@ -934,8 +774,8 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         DatePickerDialog.OnDateSetListener onDateSetListener = (datePicker, y, m, d) -> {
-            mScheduleStartDate = new Date(y, m+1, d);
-            updateSchedule();
+            mConfigExternalCall.setScheduleStartDate(new Date(y, m+1, d));
+            updateConfig();
         };
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, onDateSetListener, year, month, day);
@@ -951,9 +791,9 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         int hour;
         int minute;
-        if (mScheduleStartTime != null) {
-            hour = mScheduleStartTime.hour;
-            minute = mScheduleStartTime.minute;
+        if (mConfigExternalCall.getScheduleStartTime() != null) {
+            hour = mConfigExternalCall.getScheduleStartTime() .hour;
+            minute = mConfigExternalCall.getScheduleStartTime() .minute;
         } else {
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -961,8 +801,8 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, h, m) -> {
-            mScheduleStartTime = new Time(h, m);
-            updateSchedule();
+            mConfigExternalCall.setScheduleStartTime(new Time(h, m));
+            updateConfig();
         };
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
@@ -979,10 +819,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         int day;
         int month;
         int year;
-        if (mScheduleEndDate != null) {
-            day = mScheduleEndDate.day;
-            month = mScheduleEndDate.month - 1;
-            year = mScheduleEndDate.year;
+        if (mConfigExternalCall.getScheduleEndDate() != null) {
+            day = mConfigExternalCall.getScheduleEndDate().day;
+            month = mConfigExternalCall.getScheduleEndDate().month - 1;
+            year = mConfigExternalCall.getScheduleEndDate().year;
         } else {
             day = calendar.get(Calendar.DAY_OF_MONTH);
             month = calendar.get(Calendar.MONTH);
@@ -990,14 +830,14 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         DatePickerDialog.OnDateSetListener onDateSetListener = (datePicker, y, m, d) -> {
-            mScheduleEndDate = new Date(y, m+1, d);
-            updateSchedule();
+            mConfigExternalCall.setScheduleEndDate(new Date(y, m+1, d));
+            updateConfig();
         };
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, onDateSetListener, year, month, day);
 
-        if (mScheduleStartDate != null) {
-            calendar.set(mScheduleStartDate.year, mScheduleStartDate.month - 1, mScheduleStartDate.day);
+        if (mConfigExternalCall.getScheduleStartDate() != null) {
+            calendar.set(mConfigExternalCall.getScheduleStartDate() .year, mConfigExternalCall.getScheduleStartDate() .month - 1, mConfigExternalCall.getScheduleStartDate() .day);
             datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         }
 
@@ -1012,9 +852,9 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         int hour;
         int minute;
-        if (mScheduleEndTime != null) {
-            hour = mScheduleEndTime.hour;
-            minute = mScheduleEndTime.minute;
+        if (mConfigExternalCall.getScheduleEndTime() != null) {
+            hour = mConfigExternalCall.getScheduleEndTime().hour;
+            minute = mConfigExternalCall.getScheduleEndTime().minute;
         } else {
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -1022,12 +862,22 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, h, m) -> {
-            mScheduleEndTime = new Time(h, m);
-            updateSchedule();
+            mConfigExternalCall.setScheduleEndTime(new Time(h, m));
+            updateConfig();
         };
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
         timePickerDialog.show();
+    }
+
+    private void onSelectScheduleDayClick(UIScheduleDay scheduleDay) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectScheduleDayClick: scheduleDay=" + scheduleDay);
+        }
+
+        scheduleDay.setSelected(!scheduleDay.isSelected());
+        mConfigExternalCall.updateDaySelected(scheduleDay.getDayOfWeek(), scheduleDay.isSelected());
+        updateConfig();
     }
 
     @Override
@@ -1037,7 +887,6 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         hideKeyboard();
-        openMenuCapabilities();
     }
 
     @Override
@@ -1053,13 +902,20 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         hideKeyboard();
 
+        // Note: with the PROFILE template, we don't give any avatar to the createCallReceiver() as it will copy the profile image.
+        String name = mNameView.getText().toString().trim();
+        if (name.isEmpty() || (mUpdatedCallAvatar == null && mTemplateType != UITemplateExternalCall.TemplateType.PROFILE)) {
+            showAlertMessageView(R.id.create_external_call_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.create_external_call_activity_name_required), true, null);
+            return;
+        }
+
         mCreateExternalCall = true;
 
-        String name = mNameView.getText().toString().trim();
         String description = mDescriptionView.getText().toString().trim();
+        Capabilities capabilities;
 
-        Capabilities capabilities = new Capabilities();
         if (mIsTransferCall) {
+            capabilities = new Capabilities();
             capabilities.setCapTransfer(true);
 
             if (mUpdatedCallFile == null) {
@@ -1069,21 +925,34 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
                 }
             }
         } else {
-            capabilities.setCapAudio(mAllowVoiceCall);
-            capabilities.setCapVideo(mAllowVideoCall);
-            capabilities.setCapGroupCall(mAllowGroupCall);
+            if (mConfigExternalCall.getConfigCallType() == ConfigExternalCallTypeCall.CALL_CONFERENCE) {
+                capabilities = new Capabilities(TwincodeKind.CONFERENCE, false);
+            } else {
+                capabilities = new Capabilities();
+            }
 
-            if (mScheduleEnable) {
-                DateTime startDateTime = new DateTime(mScheduleStartDate, mScheduleStartTime);
-                DateTime startEndTime = new DateTime(mScheduleEndDate, mScheduleEndTime);
+            capabilities.setCapAudio(mConfigExternalCall.allowVoiceCall());
+            capabilities.setCapVideo(mConfigExternalCall.allowVideoCall());
+            capabilities.setCapGroupCall(mConfigExternalCall.allowGroupCall());
+            capabilities.setCapNotifyJoin(mConfigExternalCall.notificationJoinCall());
+            capabilities.setLinkValidity(mConfigExternalCall.getLinkValidity());
+
+            if (mConfigExternalCall.getLinkValidity() == LinkValidity.SINGLE_USE) {
+                DateTime startDateTime = new DateTime(mConfigExternalCall.getScheduleStartDate(), mConfigExternalCall.getScheduleStartTime());
+                DateTime startEndTime = new DateTime(mConfigExternalCall.getScheduleEndDate(), mConfigExternalCall.getScheduleEndTime());
                 DateTimeRange dateTimeRange = new DateTimeRange(startDateTime, startEndTime);
                 Schedule schedule = new Schedule(TimeZone.getDefault(), dateTimeRange);
-                schedule.setEnabled(mLimitedSwitchView.isChecked());
+                schedule.setEnabled(true);
+                capabilities.setSchedule(schedule);
+            } else if (mConfigExternalCall.getLinkValidity() == LinkValidity.PERIODIC) {
+                WeeklyTimeRange weeklyTimeRange = new WeeklyTimeRange(mConfigExternalCall.getSelectedDaysOfWeek(), mConfigExternalCall.getScheduleStartTime(), mConfigExternalCall.getScheduleEndTime());
+                Schedule schedule = new Schedule(TimeZone.getDefault(), weeklyTimeRange);
+                schedule.setEnabled(true);
                 capabilities.setSchedule(schedule);
             }
         }
 
-        mCallReceiverService.createCallReceiver(mSpace, name, description, name, description, mUpdatedCallAvatar, mUpdatedCallFile, capabilities);
+        mCallReceiverService.createCallReceiver(mSpace, name, description, mUpdatedCallAvatar, mUpdatedCallFile, capabilities);
     }
 
     private void updateExternalCall() {
@@ -1114,7 +983,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         if (mMenuCapabilitiesView.getVisibility() == View.VISIBLE) {
-            closeMenuCapabilites();
+            closeMenuCapabilities();
         }
     }
 
@@ -1128,9 +997,9 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             mOverlayMenuView.setVisibility(View.VISIBLE);
 
             Capabilities capabilities = new Capabilities();
-            capabilities.setCapAudio(mAllowVoiceCall);
-            capabilities.setCapVideo(mAllowVideoCall);
-            capabilities.setCapGroupCall(mAllowGroupCall);
+            capabilities.setCapAudio(mConfigExternalCall.allowVoiceCall());
+            capabilities.setCapVideo(mConfigExternalCall.allowVideoCall());
+            capabilities.setCapGroupCall(mConfigExternalCall.allowGroupCall());
             mMenuCapabilitiesView.openMenu(capabilities);
 
             Window window = getWindow();
@@ -1138,12 +1007,59 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
     }
 
-    private void closeMenuCapabilites() {
+    private void closeMenuCapabilities() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "closeMenuCapabilites");
+            Log.d(LOG_TAG, "closeMenuCapabilities");
         }
 
         mMenuCapabilitiesView.animationCloseMenu();
+    }
+
+    private void openMenuSelectValue(MenuSelectValueView.MenuType menuType, int selectedValue) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openMenuSelectValue");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.create_external_call_activity_layout);
+
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+
+        menuSelectValueView.setActivity(this);
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+
+                viewGroup.removeView(menuSelectValueView);
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.WHITE_COLOR);
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (menuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE) {
+                    mConfigExternalCall.setConfigCallType(ConfigExternalCallTypeCall.values()[value]);
+                } else if (menuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION) {
+                    mConfigExternalCall.setLinkValidity(LinkValidity.values()[value]);
+                }
+
+                 updateConfig();
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(menuType, selectedValue);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void openMenuPhoto() {
@@ -1263,6 +1179,19 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         } catch (IOException exception) {
             mUpdatedCallFile = null;
         }
+    }
+
+    private void updateConfig() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateConfig");
+        }
+
+        if (mIsTransferCall) {
+            mSettingsRecyclerView.setVisibility(View.GONE);
+        }
+
+        mExternalCallConfigAdapter.updateConfigItems(mConfigExternalCall);
+        updateContentHeight();
     }
 
     private void showOnboardingView() {

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017-2020 twinlife SA.
+ *  Copyright (c) 2017-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -39,7 +39,6 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
     private static final int DESIGN_TAG_MARGIN = 12;
     protected static final int DESIGN_CERTIFIED_MARGIN = 20;
     protected static final float DESIGN_MARGIN_PERCENT = 0.0986f;
-    protected static final int DESIGN_AVATAR_HEIGHT = 86;
 
     private static final int DESIGN_TAG_BORDER_WIDTH = 2;
 
@@ -53,12 +52,14 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
     private final ImageView mTagImageView;
     protected final ImageView mCertifiedView;
 
+    private final ImageView mConferenceImageView;
+
     private final View mSeparatorView;
     private final TextStyle mFont;
 
     private final GradientDrawable mBackgroundAvatarDrawable;
 
-    public UIContactViewHolder(@NonNull AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @IdRes int tagId, @IdRes int tagTitleId, @IdRes int tagImageId, @IdRes int certifiedId, @IdRes int separatorId, TextStyle font) {
+    public UIContactViewHolder(@NonNull AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @IdRes int tagId, @IdRes int tagTitleId, @IdRes int tagImageId, @IdRes int conferenceImageId, @IdRes int certifiedId, @IdRes int separatorId, TextStyle font) {
         super(view);
 
         mService = service;
@@ -74,6 +75,13 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
         mBackgroundAvatarDrawable.setColor(Color.TRANSPARENT);
         mAvatarView.setBackground(mBackgroundAvatarDrawable);
 
+        ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
+        layoutParams.width = Design.AVATAR_HEIGHT;
+        layoutParams.height = Design.AVATAR_HEIGHT;
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.AVATAR_MARGIN;
+
         if (nameId != 0) {
             view.setBackgroundColor(Design.WHITE_COLOR);
             mNameView = view.findViewById(nameId);
@@ -81,8 +89,10 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
             mNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mFont.size);
             mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
+            marginLayoutParams.leftMargin = Design.NAME_TRAILING;
             marginLayoutParams.rightMargin = Design.NAME_TRAILING;
+            marginLayoutParams.setMarginStart(Design.NAME_TRAILING);
             marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
         } else {
             mNameView = null;
@@ -92,10 +102,10 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
         if (tagId != 0) {
             mTagView = view.findViewById(tagId);
 
-            ViewGroup.LayoutParams layoutParams = mTagView.getLayoutParams();
+            layoutParams = mTagView.getLayoutParams();
             layoutParams.height = (int) (DESIGN_TAG_HEIGHT * Design.HEIGHT_RATIO);
 
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagView.getLayoutParams();
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagView.getLayoutParams();
             marginLayoutParams.rightMargin = Design.NAME_TRAILING;
             marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
         } else {
@@ -106,7 +116,7 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
             mTagTitleView = view.findViewById(tagTitleId);
             Design.updateTextFont(mTagTitleView, Design.FONT_REGULAR28);
 
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagTitleView.getLayoutParams();
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagTitleView.getLayoutParams();
             marginLayoutParams.leftMargin = (int) (DESIGN_TAG_MARGIN * Design.WIDTH_RATIO);
             marginLayoutParams.rightMargin = (int) (DESIGN_TAG_MARGIN * Design.WIDTH_RATIO);
         } else {
@@ -116,23 +126,39 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
         if (tagImageId != 0) {
             mTagImageView = view.findViewById(tagImageId);
 
-            ViewGroup.LayoutParams layoutParams = mTagImageView.getLayoutParams();
+            layoutParams = mTagImageView.getLayoutParams();
+            layoutParams.width = (int) (DESIGN_TAG_HEIGHT * Design.HEIGHT_RATIO);
             layoutParams.height = (int) (DESIGN_TAG_HEIGHT * Design.HEIGHT_RATIO);
 
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagImageView.getLayoutParams();
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagImageView.getLayoutParams();
             marginLayoutParams.rightMargin = Design.NAME_TRAILING;
             marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
         } else {
             mTagImageView = null;
         }
 
+        if (conferenceImageId != 0) {
+            mConferenceImageView = view.findViewById(conferenceImageId);
+
+            layoutParams = mConferenceImageView.getLayoutParams();
+            layoutParams.width = (int) (DESIGN_TAG_HEIGHT * Design.HEIGHT_RATIO);
+            layoutParams.height = (int) (DESIGN_TAG_HEIGHT * Design.HEIGHT_RATIO);
+
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mConferenceImageView.getLayoutParams();
+            marginLayoutParams.rightMargin = Design.NAME_TRAILING;
+            marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
+        } else {
+            mConferenceImageView = null;
+        }
+
         if (certifiedId != 0) {
             mCertifiedView = view.findViewById(certifiedId);
 
-            ViewGroup.LayoutParams layoutParams = mCertifiedView.getLayoutParams();
+            layoutParams = mCertifiedView.getLayoutParams();
+            layoutParams.width = Design.CERTIFIED_HEIGHT;
             layoutParams.height = Design.CERTIFIED_HEIGHT;
 
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCertifiedView.getLayoutParams();
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mCertifiedView.getLayoutParams();
             marginLayoutParams.rightMargin = Design.NAME_TRAILING;
             marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
         } else {
@@ -189,7 +215,7 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
             marginLayoutParams.rightMargin = Design.NAME_TRAILING;
             marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
 
-            float maxWidth = Design.DISPLAY_WIDTH - mNameView.getX() - (Design.NAME_TRAILING);
+            float maxWidth = Design.DISPLAY_WIDTH - marginLayoutParams.leftMargin - marginLayoutParams.rightMargin - Design.AVATAR_HEIGHT - Design.AVATAR_MARGIN;
             mNameView.setMaxWidth((int) maxWidth);
         }
 
@@ -216,18 +242,10 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
                 paint.setTypeface(Design.FONT_REGULAR28.typeface);
                 paint.setStyle(Paint.Style.STROKE);
 
-                float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING - ((DESIGN_CERTIFIED_MARGIN + (DESIGN_TAG_MARGIN * 2)) * Design.WIDTH_RATIO) - paint.measureText(uiContact.getUIContactTag().getTitle());
+                float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - ((DESIGN_CERTIFIED_MARGIN + (DESIGN_TAG_MARGIN * 2)) * Design.WIDTH_RATIO) - paint.measureText(uiContact.getUIContactTag().getTitle());
                 mNameView.setMaxWidth((int) maxWidth);
             } else {
                 mTagView.setVisibility(View.GONE);
-            }
-        }
-
-        if (mTagImageView != null) {
-            if (uiContact.isScheduleEnable()) {
-                mTagImageView.setVisibility(View.VISIBLE);
-            } else {
-                mTagImageView.setVisibility(View.GONE);
             }
         }
 
@@ -239,11 +257,45 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
                 marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
                 marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
 
-                float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - Design.NAME_TRAILING -  (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT;
+                float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING -  (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT;
                 mNameView.setMaxWidth((int) maxWidth);
             } else {
                 mCertifiedView.setVisibility(View.GONE);
             }
+        }
+
+        if (mTagImageView != null && mNameView != null) {
+            if (uiContact.isScheduleEnable()) {
+                mTagImageView.setVisibility(View.VISIBLE);
+            } else {
+                mTagImageView.setVisibility(View.GONE);
+            }
+
+            ViewGroup.LayoutParams layoutParams = mTagImageView.getLayoutParams();
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTagImageView.getLayoutParams();
+            int maxWidth = mNameView.getMaxWidth();
+            mNameView.setMaxWidth(maxWidth - layoutParams.height - marginLayoutParams.rightMargin);
+        }
+
+        if (mConferenceImageView != null && mNameView != null) {
+            if (uiContact.isConference()) {
+                mConferenceImageView.setVisibility(View.VISIBLE);
+            } else {
+                mConferenceImageView.setVisibility(View.GONE);
+            }
+
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mConferenceImageView.getLayoutParams();
+            if (mTagImageView != null && mTagImageView.getVisibility() == View.VISIBLE) {
+                marginLayoutParams.rightMargin = Design.NAME_TRAILING;
+                marginLayoutParams.setMarginEnd(Design.NAME_TRAILING);
+            } else {
+                marginLayoutParams.rightMargin = 0;
+                marginLayoutParams.setMarginEnd(0);
+            }
+
+            ViewGroup.LayoutParams layoutParams = mConferenceImageView.getLayoutParams();
+            int maxWidth = mNameView.getMaxWidth();
+            mNameView.setMaxWidth(maxWidth - layoutParams.height - Design.NAME_TRAILING);
         }
 
         if (mSeparatorView != null) {
