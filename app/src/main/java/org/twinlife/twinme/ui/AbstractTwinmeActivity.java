@@ -46,6 +46,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import org.twinlife.device.android.twinme.R;
@@ -161,6 +162,13 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
         }
 
         Design.updateValues(this, getTwinmeApplication());
+    }
+
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
     }
 
     public void updateInCall() {
@@ -319,9 +327,12 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             v.setPadding(0, topPadding, bars.right, bottomPadding);
 
+            onApplyInsetsFinish();
+
             return WindowInsetsCompat.CONSUMED;
         });
     }
+
 
     /**
      * Run the haptic feedback according to user's settings.

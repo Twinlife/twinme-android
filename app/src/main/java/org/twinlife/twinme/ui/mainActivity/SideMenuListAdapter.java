@@ -8,7 +8,11 @@
 
 package org.twinlife.twinme.ui.mainActivity;
 
+import android.content.res.Resources;
 import android.database.DataSetObserver;
+import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +71,8 @@ public class SideMenuListAdapter implements ListAdapter {
     public interface OnMenuClickListener {
 
         void onMenuClick(MenuItem menuItem);
+
+        void onBadgeClick(MenuItem menuItem);
     }
 
     SideMenuListAdapter(MainActivity activity, OnMenuClickListener onMenuClickListener) {
@@ -177,6 +183,7 @@ public class SideMenuListAdapter implements ListAdapter {
             TextView textView = null;
             ImageView imageView;
             RoundedView roundedView;
+            TextView badgeView;
             switch (menuItem.getLevel()) {
                 case LEVEL1:
                     convertView.setBackgroundColor(Design.WHITE_COLOR);
@@ -203,6 +210,27 @@ public class SideMenuListAdapter implements ListAdapter {
                     roundedView = convertView.findViewById(R.id.navigation_activity_child_notification_rounded_view);
                     roundedView.setColor(Design.DELETE_COLOR_RED);
 
+                    float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+                    float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+                    badgeView = convertView.findViewById(R.id.navigation_activity_child_badge_view);
+                    Design.updateTextFont(badgeView, Design.FONT_MEDIUM30);
+                    badgeView.setTextColor(Color.WHITE);
+                    badgeView.setPadding(Design.NEW_FEATURE_PADDING, 0, Design.NEW_FEATURE_PADDING, 0);
+                    badgeView.setVisibility(View.GONE);
+                    badgeView.setOnClickListener(view -> mOnMenuClickListener.onBadgeClick(menuItem));
+
+                    ViewGroup.LayoutParams badgeViewLayoutParams = badgeView.getLayoutParams();
+                    badgeViewLayoutParams.height = Design.NEW_FEATURE_HEIGHT;
+
+                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) badgeView.getLayoutParams();
+                    marginLayoutParams.leftMargin = Design.NEW_FEATURE_MARGIN;
+                    marginLayoutParams.rightMargin = Design.NEW_FEATURE_MARGIN;
+
+                    ShapeDrawable newFeatureTitleViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+                    newFeatureTitleViewBackground.getPaint().setColor(Design.getMainStyle());
+                    badgeView.setBackground(newFeatureTitleViewBackground);
+
                     ViewGroup.LayoutParams roundedViewLayoutParams = roundedView.getLayoutParams();
                     roundedViewLayoutParams.height = (int) (Design.HEIGHT_RATIO * DESIGN_NOTIFICATION_HEIGHT);
 
@@ -210,6 +238,12 @@ public class SideMenuListAdapter implements ListAdapter {
                         roundedView.setVisibility(View.VISIBLE);
                     } else {
                         roundedView.setVisibility(View.GONE);
+                    }
+
+                    if (menuItem.getAction() == MenuItem.MenuItemAction.ACCOUNT) {
+                        badgeView.setVisibility(View.VISIBLE);
+                    } else {
+                        badgeView.setVisibility(View.GONE);
                     }
 
                     break;

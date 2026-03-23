@@ -13,6 +13,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,12 @@ import org.twinlife.twinme.skin.Design;
 
 public class SelectValueViewHolder extends RecyclerView.ViewHolder {
 
+    private static final int DESIGN_MARGIN = 34;
+    private static final int DESIGN_ICON_WIDTH = 22;
+    private static final int DESIGN_ICON_HEIGHT = 34;
+
     private final TextView mTextView;
+    private final ImageView mIconView;
 
     public SelectValueViewHolder(@NonNull View view) {
 
@@ -38,6 +44,26 @@ public class SelectValueViewHolder extends RecyclerView.ViewHolder {
         mTextView = view.findViewById(R.id.select_value_item_title);
         Design.updateTextFont(mTextView, Design.FONT_REGULAR32);
         mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_MARGIN * Design.WIDTH_RATIO);
+
+        mIconView = view.findViewById(R.id.select_value_item_icon_view);
+        layoutParams = mIconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_HEIGHT * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mIconView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_MARGIN * Design.WIDTH_RATIO);
+    }
+
+    public void resetMargins() {
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = 0;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mIconView.getLayoutParams();
+        marginLayoutParams.rightMargin = 0;
     }
 
     public void onBind(@Nullable String title, String value, boolean isEnable, int backgroundColor) {

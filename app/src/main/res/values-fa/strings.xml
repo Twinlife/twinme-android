@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">پذیرش</string>
     <string name="application_account_deleted">حساب شما حذف شده است، اکنون باید برنامه را حذف نصب کنید.</string>
+    <string name="application_account_restored_error">حساب این دستگاه به دستگاه دیگری بازیابی شده است. شما باید برنامه را حذف نصب کنید.</string>
     <string name="application_add_contact_no_profile">قبل از دعوت از مخاطب، باید نمایه ای را تکمیل کنید که نماینده شما باشد. ادامه دهید؟</string>
     <string name="application_all">همه</string>
     <string name="application_appearance">ظاهر</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">نمایش همه</string>
     <string name="application_do_not_display">دیگر نمایش داده نشود</string>
     <string name="application_edit">ویرایش</string>
+    <string name="application_error_code">کد خطا: %1$s</string>
     <string name="application_error_file_not_found">فایل پیدا نشد</string>
     <string name="application_error_media_unload">امکان بارگیری رسانه وجود ندارد.</string>
     <string name="application_error_media_not_supported">این فرمت تصویر/ویدیو توسط برنامه پشتیبانی نمی</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">ثانیه  %1$d</string>
     <string name="application_timeout_week">1 هفته</string>
     <string name="application_unknown_name">ناشناخته</string>
+    <string name="application_until">تا %1$s</string>
     <string name="application_upgrade">ارتقاء twinme</string>
     <string name="application_webrtc_failure">عدم موفقیت WebRTC</string>
     <string name="application_wrong_configuration">پیکربندی نادرست است</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$s می خواهد با شما ارتباط برقرار کند</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">پشتیبان گیری در رسانه های خارجی</string>
+    <string name="account_activity_backup_restore">پشتیبان گیری / بازیابی</string>
+    <string name="account_activity_backup_verify">تأیید نسخه پشتیبان</string>
+    <string name="account_activity_backup_list">تاریخچه نسخه پشتیبان</string>
     <string name="account_activity_conversations_content_title">محتوای گفتگو</string>
     <string name="account_activity_delete_account">حساب شما، همراه با تمام داده های مرتبط، برای همیشه حذف خواهد شد. تایید؟</string>
     <string name="account_activity_delete_account_confirmation">آیا واقعا مطمئن هستید که می خواهید حساب خود را حذف کنید؟</string>
     <string name="account_activity_export_content">صادرات به رسانه خارجی</string>
     <string name="account_activity_message_first_part">هنگام نصب برنامه برای اولین بار، پس از نصب مجدد برنامه، یا تنظیم مجدد دستگاه یا حذف حساب جاری، یک حساب جدید ایجاد می شود.</string>
     <string name="account_activity_message_second_part">هیچ اثری از حساب و داده های قبلی باقی نمی ماند، بنابراین باید مخاطبین خود را دوباره دعوت کنید.</string>
+    <string name="account_activity_message_third_part">حذف یک حساب کاربری همچنین تمام پشتیبان‌های ایجاد شده در آن حساب را باطل می‌کند و بازیابی پشتیبان از آن حساب به این دستگاه یا دستگاه دیگر را غیرممکن می‌سازد.</string>
     <string name="account_activity_migration_message">یک سرویس انتقال حساب برای انتقال حساب شما با تمام داده های مرتبط (مخاطبین ، پیام ها ، گروه ها و ...) از یک دستگاه Android به دستگاه دیگر در زمان واقعی در دسترس است. بنابراین می توانید حساب ها را بین یک دستگاه قدیمی و یک دستگاه جدید تغییر دهید.</string>
     <string name="account_activity_migration_start_from_another_device">از دستگاه دیگری</string>
     <string name="account_activity_migration_start_from_current_device">از دستگاه من</string>
     <string name="account_activity_migration_title">نتقال حساب</string>
+    <string name="account_activity_restore">بازیابی از رسانه های خارجی</string>
     <string name="account_activity_title">حساب</string>
     <string name="account_activity_transfer_between_devices">انتقال بین دستگاه ها</string>
     <string name="account_activity_transfer_from_another_device">انتقال از دستگاه دیگری</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme دوستان شما را نمی شناسد و نمی تواند آنها را کشف کند. شما باید آنها را شخصاً دعوت کنید، با twinme زمانی که در نزدیکی شما هستند یا با ارسال دعوت نامه از طریق دیگر برای آنها.</string>
     <string name="add_contact_activity_scan_code">اسکن کد QR دعوت</string>
     <string name="add_contact_activity_scan_error_corrupt_link">این لینک خراب است</string>
-    <string name="add_contact_activity_scan_error_incorect_link">این لینک نادرست است.</string>
+    <string name="add_contact_activity_scan_error_expired_link">این لینک دعوت منقضی شده است.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">این لینک نادرست است.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">این پیوند توسط برنامه مدیریت نمی شود.</string>
     <string name="add_contact_activity_scan_error_revoked_link">این رابطه حذف شده است.</string>
     <string name="add_contact_activity_scan_message_call_link">این پیوند مربوط به \"Click-to-call\" است</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">این پیوند مربوط به انتقال حساب است</string>
     <string name="add_contact_activity_scan_message_transfer_link">این پیوند مربوط به انتقال تماس است</string>
     <string name="add_contact_activity_scan_title">اسکن کنید</string>
+    <string name="add_contact_activity_share_image_message">برای افزودن \"%1$s\" به عنوان مخاطب، این کد QR دعوت را با twinme وارد یا اسکن کنید.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s شما را به یک رابطه خصوصی در twinme - پیام‌رسان خصوصی - دعوت می‌کند.</string>
+    <string name="add_contact_activity_share_message_part_2">twinme یک سرویس پیام‌رسانی رمزگذاری‌شده‌ی سرتاسری و همتا به همتا و تماس‌های صوتی/تصویری با کیفیت بالا (HD) است. نیازی به ثبت‌نام نیست.</string>
+    <string name="add_contact_activity_share_message_part_3">این URL را با twinme در دستگاه تلفن همراه خود باز کنید تا \"%1$s\" را به عنوان مخاطب اضافه کنید:</string>
+    <string name="add_contact_activity_share_message_part_4">روش دیگر این است که می‌توانید کد QR دعوتنامه را که در تصویر پیوست شده است با twinme وارد یا اسکن کنید.</string>
+    <string name="add_contact_activity_share_title">%1$s شما را به twinme دعوت می</string>
     <string name="add_contact_activity_social_subtitle">پیام ، نامه ، شبکه اجتماعی</string>
     <string name="add_contact_activity_social_title">ارسال کد از طریق یک برنامه</string>
     <string name="add_contact_activity_title">دعوت</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">صدور گواهینامه را شروع کنید</string>
     <string name="authentified_relation_activity_title">رابطه تایید شده</string>
     <string name="authentified_relation_activity_to_be_certified_title">رابطه را تایید کنید</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">تهیه نسخه پشتیبان</string>
+    <string name="backup_activity_beta_message_part_1">سرویس پشتیبان‌گیری/بازیابی در مرحله‌ی آزمایش بتا (BETA) قرار دارد تا مشکلات احتمالی قبل از انتشار عمومی شناسایی شوند.</string>
+    <string name="backup_activity_beta_message_part_2">این سرویس فقط برای پشتیبان‌گیری از فراداده‌های حساب (پروفایل‌ها، مخاطبین، گروه‌ها) در حافظه خارجی در نظر گرفته شده است تا در صورت سرقت یا از بین رفتن نسخه اصلی، بتوان بعداً آن را در دستگاه دیگری بازیابی کرد.</string>
+    <string name="backup_activity_beta_message_part_3">سرویس انتقال حساب باید برای انتقال تمام داده‌های حساب (از جمله مکالمات) از یک دستگاه (قدیمی) به دستگاه دیگر (جدید) در صورت موجود بودن هر دو دستگاه استفاده شود.</string>
+    <string name="backup_activity_confirm_message">برای بازگرداندن نسخه پشتیبان ، باید 12 کلمه فوق را به آن ترتیب وارد کنید و اجازه می دهد تا رمزگشایی شود.</string>
+    <string name="backup_activity_content">مطالب</string>
+    <string name="backup_activity_content_diff_added">اضافه شده</string>
+    <string name="backup_activity_content_diff_updated">اصلاح</string>
+    <string name="backup_activity_content_diff_deleted">حذف شده</string>
+    <string name="backup_activity_content_diff_message">در اینجا تغییرات در مقایسه با داده</string>
+    <string name="backup_activity_content_info">پشتیبان‌گیری شامل مکالمات، گروه‌ها، اعلان‌ها و تاریخچه نمی‌شود.</string>
+    <string name="backup_activity_error_words">کلمات وارد شده اجازه رمزگشایی نسخه پشتیبان را نمی</string>
+    <string name="backup_activity_generate_word">تولید کردن</string>
+    <string name="backup_activity_last_backup">آخرین نسخه پشتیبان از %1$s</string>
+    <string name="backup_activity_new_backup">نسخه پشتیبان جدید</string>
+    <string name="backup_activity_onboarding">یک نسخه پشتیبان رمزگذاری شده از اطلاعات حساب (فضاها، پروفایل‌ها، مخاطبین، کلیک برای تماس) تهیه کنید که بتوان آن را در این دستگاه یا دستگاه دیگری بازیابی کرد.</string>
+    <string name="backup_activity_reminder">آخرین نسخه پشتیبان شما بیش از ۳۰ روز پیش ایجاد شده است.</string>
+    <string name="backup_activity_save_file_message">فایل پشتیبان را در دستگاه مورد نظر خود ذخیره کنید و رمزهای عبور را برای بازیابی بعدی نگه دارید.</string>
+    <string name="backup_activity_security">امنیت</string>
+    <string name="backup_activity_security_info">کلید رمزگذاری پشتیبان توسط یک سری از 12 کلمه نشان داده شده است که برای ترمیم مورد نیاز است.</string>
+    <string name="backup_activity_success">پشتیبان گیری با موفقیت انجام شد!</string>
+    <string name="backup_activity_success_info">این لیست از 12 کلمه را نگه دارید تا بتوانید این نسخه پشتیبان را بازیابی کنید.</string>
+    <string name="backup_activity_title">تهیه نسخه پشتیبان</string>
+    <string name="backup_activity_use_last_backup_words">از همان لیست کلمات برای آخرین نسخه پشتیبان استفاده کنید.</string>
+    <string name="backup_activity_verify_completed">تأیید کامل شد!</string>
+    <string name="backup_activity_verify_message">همچنین می‌توانید از طریق حساب کاربری/تأیید نسخه پشتیبان، صحت فایل پشتیبان و به‌روز بودن داده‌های موجود در آن را بررسی کنید.</string>
+    <string name="backup_activity_verify_up_to_date">نسخه پشتیبان شما به</string>
+    <string name="backup_activity_verify_not_up_to_date">نسخه پشتیبان شما به</string>
+    <string name="backup_activity_verify_words">برای تأیید نسخه پشتیبان، باید دنباله ۱۲ کلمه‌ای را برای رمزگشایی آن وارد کنید.</string>
+    <string name="backup_activity_wait_message">این صفحه را در حالی که نسخه پشتیبان تهیه شده است ، ترک نکنید.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">پشتیبان‌های من را نامعتبر کن</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">تمام نسخه‌های پشتیبان قبلی شما نامعتبر می‌شوند و دیگر قابل بازیابی نیستند.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">فراموش نکنید که یک نسخه پشتیبان جدید ایجاد کنید که می</string>
+    <string name="backups_activity_no_backup_message">هیچ نسخه پشتیبان در این دستگاه ایجاد نشده است.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">همه</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">صدای بلندگو را قطع کنید</string>
     <string name="call_activity_transfert_call_message">تماس در حال انجام منتقل شده است.</string>
     <string name="call_activity_try_to_call_back">سعی کنید تماس بگیرید.</string>
+    <string name="call_activity_waiting_conference_call">هنوز کسی به تماس ملحق نشده است. لطفا صبر کنید...</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">دوربین در حال استفاده است</string>
@@ -469,9 +524,23 @@
     <string name="conversations_fragment_you">شما</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">پیکربندی تماس</string>
+    <string name="create_external_call_activity_call_type">نوع تماس</string>
+    <string name="create_external_call_activity_conference_call_description">مستقیماً از طریق مرورگر به یک کنفرانس تلفنی بپیوندید. ایده‌آل برای جلسات کاری یا خانوادگی.</string>
+    <string name="create_external_call_activity_conference_call_short_title">تماس کنفرانسی</string>
+    <string name="create_external_call_activity_conference_call_title">تماس کنفرانسی</string>
+    <string name="create_external_call_activity_continuous_link_description">بدون محدودیت در اعتبار لینک</string>
+    <string name="create_external_call_activity_continuous_link_title">دائمی</string>
+    <string name="create_external_call_activity_delete_link_setting">این لینک پس از مدت زمان مشخص شده دیگر معتبر نخواهد بود.</string>
+    <string name="create_external_call_activity_direct_call_description">مستقیماً از کسی که برنامه را ندارد، روی دستگاهتان تماس دریافت کنید.</string>
+    <string name="create_external_call_activity_direct_call_short_title">مستقیم</string>
+    <string name="create_external_call_activity_direct_call_title">تماس مستقیم</string>
+    <string name="create_external_call_activity_group_call_description">حداکثر ۸ شرکت‌کننده</string>
     <string name="create_external_call_activity_link_validity">اعتبار لینک</string>
     <string name="create_external_call_activity_message">این نمایه برای مهمانانی نمایش داده می شود که با این پیوند \"click-to-call\" با شما تماس خواهند گرفت.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" به مهمانان اجازه می دهد تا بدون نصب برنامه از طریق مرورگر با شما تماس بگیرند.</string>
+    <string name="create_external_call_activity_name_required">برای نمایش این \"Click-to-call\" به یک نام و تصویر نیاز است.</string>
+    <string name="create_external_call_activity_notification_setting">به محض اینکه اولین شرکت کننده به کنفرانس ملحق شد، مطلع شوید.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">قابلیت کلیک برای تماس به مهمانان این امکان را می‌دهد که بدون نصب برنامه، از طریق مرورگر با شما تماس بگیرند یا به یک کنفرانس تلفنی (کلیک برای ملاقات) بپیوندند.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">هر نمونه دارای نام، تصویر و توضیحاتی است که نشان دهنده موضوع تماس است، مانند:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">خدمات مشتری شما</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">ماشینی که می فروشید</string>
@@ -490,7 +559,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">نام پیش‌فرض (مهمان) که نماینده آنها در تماس است را تغییر دهید</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">با فشار دادن دکمه \"تماس\" در صفحه وب با شما تماس می گیرد.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">پس از تماس، آنها ممکن است صفحه وب را برای تماس مجدد با شما باز نگه دارند.</string>
+    <string name="create_external_call_activity_onboarding_title_2">تنظیم «Click-to-call»</string>
+    <string name="create_external_call_activity_onboarding_title_3">به اشتراک گذاشتن «Click-to-call»</string>
+    <string name="create_external_call_activity_onboarding_title_4">استفاده از «Click-to-call»</string>
     <string name="create_external_call_activity_placeholder">موضوع (کمک، اعلام، جلسه، زنگ در، …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">روزها/زمان‌های معتبر بودن لینک را سفارشی کنید</string>
+    <string name="create_external_call_activity_recurrent_link_title">دوره</string>
+    <string name="create_external_call_activity_unique_link_description">تاریخ شروع و پایان اعتبار لینک را تنظیم کنید</string>
+    <string name="create_external_call_activity_unique_link_title">استفاده یکباره</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">دعوت اعضا</string>
@@ -652,6 +728,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">این اقدام کد دعوت فعلی مرتبط با پیوند \"click-to-call\" را باطل می‌کند. تایید؟</string>
     <string name="invitation_call_activity_generate_code_title">یک کد جدید برای این لینک ایجاد کنید</string>
+    <string name="invitation_call_activity_invite_meeting_message">آدرس وب %1$s را باز کنید، یا کد QR را اسکن کنید، برای پیوستن به جلسه «%2$s».</string>
     <string name="invitation_call_activity_invite_message">آدرس وب %1$s را باز کنید، یا QR-Code را اسکن کنید تا با «%2$s» تماس بگیرید.</string>
     <string name="invitation_call_activity_message">این کد \"click-to-call\" را با شخصی که می‌تواند از طریق وب یا برنامه تلفن همراه با شما تماس بگیرد به اشتراک بگذارید.</string>
     <string name="invitation_call_activity_save_message">این QR-Code را اسکن کنید تا با «%1$s» تماس بگیرید.</string>
@@ -712,6 +789,7 @@
     <string name="notification_center_audio_message_received">پیام صوتی جدید</string>
     <string name="notification_center_cancel">رد</string>
     <string name="notification_center_cleanup_conversation">تعدادی از پیام‌های قدیمی حذف شده‌اند.</string>
+    <string name="notification_center_conference_join_call">یکی از شرکت‌کنندگان به این فراخوان پیوست.</string>
     <string name="notification_center_deleted_contact">مخاطب حذف شد</string>
     <string name="notification_center_file_message">درک لاسرا لیاف کی</string>
     <string name="notification_center_file_message_received">فایل جدید</string>
@@ -719,6 +797,7 @@
     <string name="notification_center_invitation_group">شما را به پیوستن به یک گروه دعوت می</string>
     <string name="notification_center_invitation_received">دعوت جدید</string>
     <string name="notification_center_invitation_received_group">دعوتنامه جدید به گروه.</string>
+    <string name="notification_center_join_call">%1$s همین الان به تماس پیوست</string>
     <string name="notification_center_join_group">شما عضو گروه هستید</string>
     <string name="notification_center_message_received">پیام جدید</string>
     <string name="notification_center_missed_audio_call_to">تماس صوتی از دست رفته به <span>%1$s</span></string>
@@ -902,6 +981,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">به برنامه اجازه دهید اعلان</string>
     <string name="quality_of_service_activity_warning_run_background">به برنامه اجازه دهید در پس</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">برای بازیابی نسخه پشتیبان حساب twinme+، twinme+ باید روی این دستگاه نصب شود.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">دستگاهی که نسخه پشتیبان را ایجاد کرده است، هنوز وارد سیستم شده است.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">اگر نسخه پشتیبان را در این دستگاه جدید بازیابی کنید، حساب دستگاهی که نسخه پشتیبان در آن ایجاد شده است، به</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">اگر می</string>
+    <string name="restore_activity_confirm">آیا مطمئن هستید که می خواهید داده های حساب جاری را با داده های زیر از نسخه پشتیبان جایگزین کنید؟</string>
+    <string name="restore_activity_confirm_restore">آیا هنوز می‌خواهید این نسخه پشتیبان را بازیابی کنید؟</string>
+    <string name="restore_activity_content_contact_deleted_message">اطلاعات حذف شده پس از پشتیبان گیری قابل بازیابی نیستند.</string>
+    <string name="restore_activity_content_profile_reset">کد دعوت تغییر کرد.</string>
+    <string name="restore_activity_content_profile_reset_message">کد دعوت مرتبط با پروفایل پشتیبان‌گیری شده نامعتبر است. در طول فرآیند بازیابی، یک کد دعوت جدید ایجاد خواهد شد.</string>
+    <string name="restore_activity_enter_words">سری 12 کلمه را وارد کنید که امکان رمزگشایی نسخه پشتیبان تهیه را می کند.</string>
+    <string name="restore_activity_error_message">خطا در بازیابی نسخه پشتیبان.</string>
+    <string name="restore_activity_error_message_verify_backup">خطا در تأیید نسخه پشتیبان.</string>
+    <string name="restore_activity_file_not_supported">فایل پشتیبان باید با فرمت \"twmbckp\" باشد.</string>
+    <string name="restore_activity_more_recent_backup">یک نسخه پشتیبان جدیدتر با همان حساب ایجاد شده است.</string>
+    <string name="restore_activity_onboarding">بازگرداندن یک نسخه پشتیبان ، داده های حساب جاری را جایگزین می کند.</string>
+    <string name="restore_activity_onboarding_words">برای بازگرداندن یک نسخه پشتیبان ، باید وارد سری 12 کلمه شوید که اجازه می دهد آن را رمزگشایی کند.</string>
+    <string name="restore_activity_onboarding_verify">تأیید کنید که نسخه پشتیبان معتبر و به‌روز با داده‌های فعلی شما است.</string>
+    <string name="restore_activity_paste">لیست کلمات را از کلیپ بورد جایگذاری کنید.</string>
+    <string name="restore_activity_paste_error">لیست نامعتبر کلمات.</string>
+    <string name="restore_activity_restore">بازیابی کنید</string>
+    <string name="restore_activity_select_backup">یک نسخه پشتیبان انتخاب کنید</string>
+    <string name="restore_activity_state_restore_account">بازیابی حساب...</string>
+    <string name="restore_activity_state_restore_data">بازیابی داده</string>
+    <string name="restore_activity_state_restore_starting">شروع بازیابی.</string>
+    <string name="restore_activity_state_restore_verify_account">تأیید حساب...</string>
+    <string name="restore_activity_state_restore_verify_data">تأیید داده‌ها…</string>
+    <string name="restore_activity_state_restore_verify_starting">شروع تأیید...</string>
+    <string name="restore_activity_state_restore_wait_confirm">منتظر تأیید هستم.</string>
+    <string name="restore_activity_success">ترمیم با موفقیت به پایان رسید!</string>
+    <string name="restore_activity_success_message">برنامه را ببندید و آن را مجدداً راه اندازی کنید تا به داده های جدید دسترسی پیدا کنید.</string>
+    <string name="restore_activity_title">ترمیم</string>
+    <string name="restore_activity_verify_same_account">تأیید باید روی همان دستگاهی که برای پشتیبان‌گیری استفاده شده است، انجام شود.</string>
+    <string name="restore_activity_warning">بازیابی این نسخه پشتیبان ، تمام داده های حساب جاری را با داده های پشتیبان جایگزین می کند.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">به عنوان مدیر تعریف کنید</string>
     <string name="room_members_activity_delete_message">حذف این عضو را تأیید کنید</string>
@@ -955,15 +1069,18 @@
     <string name="settings_activity_ephemeral_title">ناپدید شدن پیام</string>
     <string name="settings_activity_image_title">عكس</string>
     <string name="settings_activity_message_properties_title">ویژگی های پیام</string>
+    <string name="settings_activity_message_reactions_notification">اعلان در مورد واکنش</string>
     <string name="settings_activity_reset_default_value">بازنشانی به تنظیمات پیش فرض</string>
     <string name="settings_activity_reset_preferences_button_title">تنظیم مقادیر پیش فرض</string>
     <string name="settings_activity_reset_preferences_message">بازنشانی تنظیمات اطلاع رسانی به پیش فرض های برنامه.</string>
     <string name="settings_activity_reset_preferences_title">تنظیمات بازنشانی</string>
     <string name="settings_activity_permissions_title">مجوزها</string>
+    <string name="settings_activity_silent_mode">حالت بی</string>
     <string name="settings_activity_silent_sound">بیصدا</string>
     <string name="settings_activity_sound_enabled_title">اعلانهای صوتی</string>
     <string name="settings_activity_system_notifications_title">اطلاعیه های سیستم</string>
     <string name="settings_activity_system_settings_title">تنظیمات سیستم</string>
+    <string name="settings_activity_turn_off_notification_sounds">صداهای اعلان را خاموش کنید</string>
     <string name="settings_activity_video_call_category_title">تماسهای تصویری</string>
     <string name="settings_activity_video_call_notification_ringtone_title">نام آهنگ زنگ</string>
     <string name="settings_activity_video_call_notification_title">آهنگ زنگ</string>
@@ -992,7 +1109,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">کد \"click-to-call\".</string>
+    <string name="show_call_activity_conference_call_information">این لینک را برای تماس با شما یا پیوستن به کنفرانس از طریق مرورگر به اشتراک بگذارید.</string>
     <string name="show_call_activity_information_code">برای دریافت تماس های خارجی این کد را به اشتراک بگذارید.</string>
+    <string name="show_call_activity_meeting_organizer">برگزارکننده این جلسه</string>
     <string name="show_call_activity_schedule_call">تماس برنامه ریزی شده</string>
     <string name="show_call_activity_schedule_from">از %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s از %2$s تا %3$s</string>
@@ -1075,12 +1194,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">آگهی طبقه بندی شده</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">لینکی را در یک آگهی طبقه‌بندی‌شده قرار دهید که به خریداران بالقوه اجازه می‌دهد بدون نصب برنامه با شما تماس بگیرند.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">اعلام</string>
-    <string name="template_click_to_call_activity_template_help">کمک</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">کمک</string>
+    <string name="template_click_to_call_activity_template_default_description">در صورت نیاز، یک لینک تماس سفارشی کنید.</string>
+    <string name="template_click_to_call_activity_template_help">خدمات مشتریان</string>
+    <string name="template_click_to_call_activity_template_help_description">لینکی برای تماس با خدمات مشتریان از طریق مرورگر.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">خدمات مشتریان</string>
+    <string name="template_click_to_call_activity_template_job">مصاحبه شغلی</string>
+    <string name="template_click_to_call_activity_template_job_description">لینکی که به استخدام‌کنندگان علاقه‌مند اجازه می‌دهد برای مصاحبه با شما تماس بگیرند.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">مصاحبه شغلی</string>
     <string name="template_click_to_call_activity_template_meeting">ملاقات</string>
+    <string name="template_click_to_call_activity_template_meeting_description">لینکی برای پیوستن به کنفرانس از طریق مرورگر به اشتراک بگذارید.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">ملاقات</string>
+    <string name="template_click_to_call_activity_template_profile_description">لینک برای تماس با شما بدون نصب برنامه.</string>
     <string name="template_click_to_call_activity_template_video_bell">زنگ ویدیویی</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">به راننده تحویل کالا اجازه دهید برای راهنمایی با شما تماس بگیرد.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">زنگ در</string>
 
     <!-- TemplateSpaceActivity -->

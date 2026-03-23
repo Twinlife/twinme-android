@@ -9,11 +9,18 @@
 package org.twinlife.twinme.ui.accountActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.text.LineBreaker;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
@@ -24,6 +31,15 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 public class DeleteAccountActivity extends AbstractTwinmeActivity implements DeleteAccountService.Observer {
     private static final String LOG_TAG = "DeleteAccountActivity";
     private static final boolean DEBUG = false;
+
+    private static final int DESIGN_IMAGE_MARGIN = 100;
+    private static final int DESIGN_MESSAGE_VERTICAL_MARGIN = 60;
+    private static final int DESIGN_MESSAGE_HORIZONTAL_MARGIN = 40;
+    private static final int DESIGN_DELETE_MARGIN = 20;
+    private static final int DESIGN_CONFIRM_VERTICAL_MARGIN = 10;
+    private static final int DESIGN_CONFIRM_HORIZONTAL_MARGIN = 20;
+    private static final int DESIGN_CANCEL_HEIGHT = 140;
+    private static final int DESIGN_CANCEL_MARGIN = 80;
 
     private static final int CONFIRM_DELETE_ACCOUNT = 3;
 
@@ -145,31 +161,75 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.deleted_account_activity_delete));
+        setTitle(getString(R.string.account_activity_title));
 
         applyInsets(R.id.delete_account_activity_layout, R.id.delete_account_activity_tool_bar, R.id.delete_account_activity_content_view, Design.TOOLBAR_COLOR, false);
 
         View contentView = findViewById(R.id.delete_account_activity_content_view);
         contentView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
+        ImageView imageView = findViewById(R.id.delete_account_activity_image_view);
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) imageView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_IMAGE_MARGIN * Design.HEIGHT_RATIO);
+
         TextView accountTextView = findViewById(R.id.delete_account_activity_message_view);
         accountTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         Design.updateTextFont(accountTextView, Design.FONT_MEDIUM34);
 
         String accountText = getResources().getString(R.string.account_activity_message_first_part) +
-                "\n\n" + getResources().getString(R.string.account_activity_message_second_part);
+                "\n\n" + getResources().getString(R.string.account_activity_message_second_part) +
+                "\n\n" + getResources().getString(R.string.account_activity_message_third_part);
         accountTextView.setText(accountText);
+        accountTextView.setMovementMethod(new ScrollingMovementMethod());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            accountTextView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+        }
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) accountTextView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+
+        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         View deleteView = findViewById(R.id.delete_account_activity_delete_view);
+        ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        saveViewBackground.getPaint().setColor(Design.DELETE_COLOR_RED);
+        deleteView.setBackground(saveViewBackground);
+
         ViewGroup.LayoutParams layoutParams = deleteView.getLayoutParams();
-        layoutParams.height = Design.BUTTON_HEIGHT;
+        layoutParams.width = Design.BUTTON_WIDTH;
+
+        deleteView.setMinimumHeight(Design.BUTTON_HEIGHT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) deleteView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_DELETE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) ((DESIGN_CANCEL_HEIGHT) * Design.HEIGHT_RATIO);
+
+        TextView deleteTextView = findViewById(R.id.delete_account_activity_delete_text_view);
+        deleteTextView.setTextColor(Color.WHITE);
+        Design.updateTextFont(deleteTextView, Design.FONT_BOLD36);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) deleteTextView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_CONFIRM_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_CONFIRM_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
         mDeleteListener = new DeleteListener();
         deleteView.setOnClickListener(mDeleteListener);
 
-        TextView deleteTextView = findViewById(R.id.delete_account_activity_delete_label_view);
-        deleteTextView.setTextColor(Color.RED);
-        Design.updateTextFont(deleteTextView, Design.FONT_MEDIUM34);
+        View cancelView = findViewById(R.id.delete_account_activity_cancel_view);
+        cancelView.setOnClickListener(v -> onCancelClick());
+
+        layoutParams = cancelView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_CANCEL_HEIGHT * Design.HEIGHT_RATIO);
+
+        TextView cancelTextView = findViewById(R.id.delete_account_activity_cancel_text_view);
+        cancelTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        Design.updateTextFont(cancelTextView, Design.FONT_BOLD36);
 
         mProgressBarView = findViewById(R.id.delete_account_activity_progress_bar);
     }
@@ -183,5 +243,13 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
         intent.setClass(this, DeleteAccountConfirmActivity.class);
         startActivityForResult(intent, CONFIRM_DELETE_ACCOUNT);
         overridePendingTransition(0, 0);
+    }
+
+    private void onCancelClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onCancelClick");
+        }
+
+        finish();
     }
 }

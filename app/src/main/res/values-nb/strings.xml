@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Aksepterer</string>
     <string name="application_account_deleted">Kontoen din er slettet, du må nå avinstallere applikasjonen.</string>
+    <string name="application_account_restored_error">Kontoen til denne enheten er gjenopprettet til en annen enhet. Du må avinstallere appen.</string>
     <string name="application_add_contact_no_profile">Du må fylle ut en profil som representerer deg før du inviterer en kontakt. Fortsette?</string>
     <string name="application_all">Alle</string>
     <string name="application_appearance">Utseende</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">Vis alle</string>
     <string name="application_do_not_display">Ikke vis lenger</string>
     <string name="application_edit">Redigere</string>
+    <string name="application_error_code">Feilkode: %1$s</string>
     <string name="application_error_file_not_found">Filen ble ikke funnet.</string>
     <string name="application_error_media_unload">Kan ikke laste inn media.</string>
     <string name="application_error_media_not_supported">Dette bilde-/videoformatet støttes ikke av applikasjonen.</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">%1$d sekunder</string>
     <string name="application_timeout_week">1 uke</string>
     <string name="application_unknown_name">Ukjent</string>
+    <string name="application_until">Inntil %1$s</string>
     <string name="application_upgrade">Oppgradering av twinme</string>
     <string name="application_webrtc_failure">WebRTC-svikt</string>
     <string name="application_wrong_configuration">Feil konfigurasjon</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$s ønsker å få kontakt med deg</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Sikkerhetskopiering til eksterne medier</string>
+    <string name="account_activity_backup_restore">Sikkerhetskopiering / gjenoppretting</string>
+    <string name="account_activity_backup_verify">Bekreft en sikkerhetskopi</string>
+    <string name="account_activity_backup_list">Sikkerhetskopiering Historikk</string>
     <string name="account_activity_conversations_content_title">Samtaler innhold</string>
     <string name="account_activity_delete_account">Kontoen din, sammen med alle tilknyttede data, slettes permanent. Bekrefte?</string>
     <string name="account_activity_delete_account_confirmation">Er du virkelig sikker på at du vil slette din konto?</string>
     <string name="account_activity_export_content">Eksporter til eksterne medier</string>
     <string name="account_activity_message_first_part">En ny konto opprettes når du installerer appen for første gang, etter at appen er installert på nytt, eller enheten er tilbakestilt eller den gjeldende kontoen slettes.</string>
     <string name="account_activity_message_second_part">Ingen spor av tidligere konto og data gjenstår, så du må invitere kontaktene dine på nytt.</string>
+    <string name="account_activity_message_third_part">Sletting av en konto ugyldiggjør også alle sikkerhetskopier som er opprettet på den kontoen, noe som gjør det umulig å gjenopprette en sikkerhetskopi fra den kontoen til denne eller en annen enhet.</string>
     <string name="account_activity_migration_message">En kontooverføringstjeneste er tilgjengelig for å overføre kontoen din med alle tilknyttede data (kontakter, meldinger, grupper osv.) Fra en Android-enhet til en annen i sanntid. Du kan dermed bytte konto mellom en gammel enhet og en ny.</string>
     <string name="account_activity_migration_start_from_another_device">Fra en annen enhet</string>
     <string name="account_activity_migration_start_from_current_device">Fra enheten min</string>
     <string name="account_activity_migration_title">Kontomigrering</string>
+    <string name="account_activity_restore">Gjenopprett fra eksterne medier</string>
     <string name="account_activity_title">Konto</string>
     <string name="account_activity_transfer_between_devices">Overfør mellom enheter</string>
     <string name="account_activity_transfer_from_another_device">Overfør fra en annen enhet</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme kjenner ikke vennene dine og kan ikke oppdage dem. Du må invitere dem personlig, med twinme når de er nær deg, eller ved å sende dem en invitasjon på annen måte.</string>
     <string name="add_contact_activity_scan_code">Skann invitasjons QR-kode</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Denne linken er ødelagt.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Denne lenken er feil.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Denne invitasjonslenken er utløpt.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Denne lenken er feil.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Denne lenken administreres ikke av applikasjonen.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Denne relasjonen er slettet.</string>
     <string name="add_contact_activity_scan_message_call_link">Denne lenken tilsvarer et \"Click-to-call\"</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Denne koblingen tilsvarer en kontomigrering</string>
     <string name="add_contact_activity_scan_message_transfer_link">Denne lenken tilsvarer en samtaleoverføring</string>
     <string name="add_contact_activity_scan_title">Skann</string>
+    <string name="add_contact_activity_share_image_message">Importer eller skann denne QR-koden for invitasjonen med twinme for å legge til \"%1$s\" som en kontakt.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s inviterer deg til å inngå et privat forhold på twinme - privat messenger.</string>
+    <string name="add_contact_activity_share_message_part_2">twinme er en peer-to-peer ende-til-ende kryptert meldingstjeneste og HD-tale-/videosamtaler. Ingen registrering er nødvendig.</string>
+    <string name="add_contact_activity_share_message_part_3">Åpne denne URL-en med twinme på mobilenheten din for å legge til \"%1$s\" som en kontakt:</string>
+    <string name="add_contact_activity_share_message_part_4">Alternativt kan du importere eller skanne QR-koden for invitasjonen i det vedlagte bildet med twinme.</string>
+    <string name="add_contact_activity_share_title">%1$s inviterer deg til twinme</string>
     <string name="add_contact_activity_social_subtitle">melding, mail, sosialt nettverk</string>
     <string name="add_contact_activity_social_title">Send koden via en applikasjon</string>
     <string name="add_contact_activity_title">Invitasjon</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">Start sertifisering</string>
     <string name="authentified_relation_activity_title">Sertifisert forhold</string>
     <string name="authentified_relation_activity_to_be_certified_title">Bekreft forholdet</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Sikkerhetskopi</string>
+    <string name="backup_activity_beta_message_part_1">Sikkerhetskopierings-/gjenopprettingstjenesten er foreslått i BETA-testing for å identifisere potensielle problemer før den generelle utgivelsen.</string>
+    <string name="backup_activity_beta_message_part_2">Denne tjenesten er ment å sikkerhetskopiere kun kontometadata (profiler, kontakter, grupper) til ekstern lagring, slik at de kan gjenopprettes senere på en annen enhet hvis originalen blir stjålet eller ødelagt.</string>
+    <string name="backup_activity_beta_message_part_3">Kontooverføringstjenesten bør brukes til å overføre alle kontodata (inkludert samtaler) fra én (gammel) enhet til en annen (ny) enhet, når begge enhetene er tilgjengelige.</string>
+    <string name="backup_activity_confirm_message">For å gjenopprette sikkerhetskopien, må du oppgi de 12 ordene ovenfor i den rekkefølgen, slik at den kan dekrypteres.</string>
+    <string name="backup_activity_content">Innhold</string>
+    <string name="backup_activity_content_diff_added">Lagt til</string>
+    <string name="backup_activity_content_diff_updated">Modifisert</string>
+    <string name="backup_activity_content_diff_deleted">Slettet</string>
+    <string name="backup_activity_content_diff_message">Her er endringene sammenlignet med dine nåværende data:</string>
+    <string name="backup_activity_content_info">Sikkerhetskopier inkluderer ikke samtaler, grupper, varsler og historikk.</string>
+    <string name="backup_activity_error_words">Ordene som er skrevet inn tillater ikke at sikkerhetskopien dekrypteres.</string>
+    <string name="backup_activity_generate_word">Generere</string>
+    <string name="backup_activity_last_backup">Siste sikkerhetskopi på %1$s</string>
+    <string name="backup_activity_new_backup">Ny sikkerhetskopi</string>
+    <string name="backup_activity_onboarding">Lag en kryptert sikkerhetskopi av kontodata (\"Spaces\", profiler, kontakter, \"click-to-call\") som kan gjenopprettes til denne enheten eller en annen.</string>
+    <string name="backup_activity_reminder">Din siste sikkerhetskopi ble opprettet for mer enn 30 dager siden.</string>
+    <string name="backup_activity_save_file_message">Lagre sikkerhetskopifilen på enheten du velger, og behold passordene for senere gjenoppretting.</string>
+    <string name="backup_activity_security">Sikkerhet</string>
+    <string name="backup_activity_security_info">Sikkerhetskopieringskrypteringsnøkkelen er representert med en serie på 12 ord som vil være nødvendig for restaureringen.</string>
+    <string name="backup_activity_success">Sikkerhetskopiering fullført med hell!</string>
+    <string name="backup_activity_success_info">Oppbevar denne listen med 12 ord slik at du kan gjenopprette denne sikkerhetskopien.</string>
+    <string name="backup_activity_title">Sikkerhetskopi</string>
+    <string name="backup_activity_use_last_backup_words">Bruk den samme listen over ord som for siste sikkerhetskopi.</string>
+    <string name="backup_activity_verify_completed">Bekreftelse fullført!</string>
+    <string name="backup_activity_verify_message">Du kan også sjekke integriteten til en sikkerhetskopifil og om dataene den inneholder er oppdaterte fra: Konto/Bekreft en sikkerhetskopi.</string>
+    <string name="backup_activity_verify_up_to_date">Sikkerhetskopien din er oppdatert.</string>
+    <string name="backup_activity_verify_not_up_to_date">Sikkerhetskopien din er ikke oppdatert.</string>
+    <string name="backup_activity_verify_words">For å bekrefte en sikkerhetskopi må du skrive inn 12-ordssekvensen for å dekryptere den.</string>
+    <string name="backup_activity_wait_message">Ikke la denne skjermen ligge mens sikkerhetskopien pågår.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Ugyldiggjør sikkerhetskopiene mine</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Alle dine tidligere sikkerhetskopier blir ugyldige og kan ikke lenger gjenopprettes.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Ikke glem å opprette en ny sikkerhetskopi, som kan gjenopprettes til denne enheten eller en annen.</string>
+    <string name="backups_activity_no_backup_message">Ingen sikkerhetskopiering er gjort på denne enheten.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Alle</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">Demp høyttaler</string>
     <string name="call_activity_transfert_call_message">Den pågående samtalen er overført.</string>
     <string name="call_activity_try_to_call_back">Prøv å ringe tilbake.</string>
+    <string name="call_activity_waiting_conference_call">Ingen har blitt med i samtalen ennå. Vent litt ...</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera er allerede i bruk</string>
@@ -469,9 +524,23 @@
     <string name="conversations_fragment_you">Du</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Anropskonfigurasjon</string>
+    <string name="create_external_call_activity_call_type">Anropstype</string>
+    <string name="create_external_call_activity_conference_call_description">Bli med i en konferansesamtale direkte fra en nettleser. Ideelt for forretnings- eller familiemøter.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Konferansesamtale</string>
+    <string name="create_external_call_activity_conference_call_title">Konferansesamtale</string>
+    <string name="create_external_call_activity_continuous_link_description">Ingen begrensninger på lenkegyldighet</string>
+    <string name="create_external_call_activity_continuous_link_title">Permanent</string>
+    <string name="create_external_call_activity_delete_link_setting">Denne lenken vil ikke lenger være gyldig etter den angitte perioden.</string>
+    <string name="create_external_call_activity_direct_call_description">Motta en samtale direkte på enheten din fra noen som ikke har appen.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Direkte</string>
+    <string name="create_external_call_activity_direct_call_title">Direkte anrop</string>
+    <string name="create_external_call_activity_group_call_description">Opptil 8 deltakere</string>
     <string name="create_external_call_activity_link_validity">Lenkegyldighet</string>
     <string name="create_external_call_activity_message">Denne profilen vises til gjester som vil ringe deg med denne \"click-to-call\"-lenken.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call lar gjester ringe deg fra en nettleser uten å installere programmet.</string>
+    <string name="create_external_call_activity_name_required">Et navn og bilde kreves for å representere denne \"Click-to-call\".</string>
+    <string name="create_external_call_activity_notification_setting">Bli varslet så snart den første deltakeren blir med i konferansen.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">«Click-to-call» lar gjester ringe deg eller delta i en konferansesamtale («Click-to-meet») fra en nettleser uten å installere appen.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Hver forekomst har et navn, bilde og beskrivelse som representerer emnet for samtalen, for eksempel:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">kundeservicen din</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">bilen du selger</string>
@@ -490,7 +559,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Endre standardnavnet (gjest) som representerer dem i samtalen</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Ring deg ved å trykke på \"Ring\"-knappen på nettsiden.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Etter samtalen kan de holde nettsiden åpen for å ringe deg tilbake.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Konfigurer en «Click-to-call»</string>
+    <string name="create_external_call_activity_onboarding_title_3">Del en «Click-to-call»</string>
+    <string name="create_external_call_activity_onboarding_title_4">Bruk en «Click-to-call»</string>
     <string name="create_external_call_activity_placeholder">Emne (Hjelp, Annonse, Møte, Ringeklokke, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Tilpass dagene/klokkeslettene lenken er gyldig</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periodisk</string>
+    <string name="create_external_call_activity_unique_link_description">Angi start- og sluttdatoer for lenkegyldigheten</string>
+    <string name="create_external_call_activity_unique_link_title">Engangsbruk</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Inviter medlemmene</string>
@@ -652,6 +728,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Denne handlingen ugyldiggjør den gjeldende invitasjonskoden knyttet til denne \"click-to-call\"-koblingen. Bekrefte?</string>
     <string name="invitation_call_activity_generate_code_title">Generer en ny kode for denne lenken</string>
+    <string name="invitation_call_activity_invite_meeting_message">Åpne nettadressen %1$s, eller skann QR-koden, for å bli med i møtet «%2$s».</string>
     <string name="invitation_call_activity_invite_message">Åpne nettadressen %1$s eller skann QR-koden for å ringe «%2$s».</string>
     <string name="invitation_call_activity_message">Del denne \"click-to-call\"-koden med noen som deretter kan ringe deg, fra nettet eller mobilappen.</string>
     <string name="invitation_call_activity_save_message">Skann denne QR-koden for å ringe «%1$s».</string>
@@ -712,6 +789,7 @@
     <string name="notification_center_audio_message_received">Ny lydmelding</string>
     <string name="notification_center_cancel">Avvis</string>
     <string name="notification_center_cleanup_conversation">Noen gamle meldinger er slettet.</string>
+    <string name="notification_center_conference_join_call">Én deltaker ble med i samtalen.</string>
     <string name="notification_center_deleted_contact">Kontakt slettet</string>
     <string name="notification_center_file_message">Sendte deg en fil</string>
     <string name="notification_center_file_message_received">Ny fil</string>
@@ -719,6 +797,7 @@
     <string name="notification_center_invitation_group">inviterer deg til å bli med i en gruppe.</string>
     <string name="notification_center_invitation_received">Ny invitasjon</string>
     <string name="notification_center_invitation_received_group">Ny gruppeinvitasjon</string>
+    <string name="notification_center_join_call">%1$s ble nettopp med i samtalen</string>
     <string name="notification_center_join_group">Du er medlem av gruppen</string>
     <string name="notification_center_message_received">Ny melding</string>
     <string name="notification_center_missed_audio_call_to">Tapt telefonsamtale med %1$s</string>
@@ -902,6 +981,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Tillat at appen mottar push-varsler.</string>
     <string name="quality_of_service_activity_warning_run_background">La appen kjøre i bakgrunnen.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ må være installert på denne enheten for å gjenopprette en sikkerhetskopi av en twinme+-konto.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Enheten som laget sikkerhetskopien er fortsatt pålogget.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Hvis du gjenoppretter sikkerhetskopien til denne nye enheten, blir kontoen til enheten som sikkerhetskopien ble gjort på automatisk ugyldig.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Hvis du vil overføre kontoen din til en ny enhet, og du fortsatt har den gamle, er det å foretrekke å bruke \"kontomigrering\"-operasjonen i stedet for å gjenopprette en sikkerhetskopi, da det også vil overføre samtaler, grupper, varsler og historikk.</string>
+    <string name="restore_activity_confirm">Er du sikker på at du vil erstatte driftsdataene med følgende data fra sikkerhetskopien?</string>
+    <string name="restore_activity_confirm_restore">Vil du fortsatt gjenopprette denne sikkerhetskopien?</string>
+    <string name="restore_activity_content_contact_deleted_message">Data slettet etter sikkerhetskopiering kan ikke gjenopprettes.</string>
+    <string name="restore_activity_content_profile_reset">Invitasjonskode endret.</string>
+    <string name="restore_activity_content_profile_reset_message">Invitasjonskoden knyttet til den sikkerhetskopierte profilen er ugyldig. En ny invitasjonskode vil bli generert under gjenopprettingsprosessen.</string>
+    <string name="restore_activity_enter_words">Skriv inn serien med 12 ord som lar dekryptere sikkerhetskopien.</string>
+    <string name="restore_activity_error_message">Feil under gjenoppretting av sikkerhetskopien.</string>
+    <string name="restore_activity_error_message_verify_backup">Feil ved bekreftelse av sikkerhetskopiering.</string>
+    <string name="restore_activity_file_not_supported">Sikkerhetskopien må være i formatet «twmbckp».</string>
+    <string name="restore_activity_more_recent_backup">En nyere sikkerhetskopi ble gjort med samme konto.</string>
+    <string name="restore_activity_onboarding">Gjenoppretting av en sikkerhetskopi vil erstatte data for driftskonto.</string>
+    <string name="restore_activity_onboarding_words">For å gjenopprette en sikkerhetskopi, må du gå inn i serien med 12 ord slik at den kan dekrypteres.</string>
+    <string name="restore_activity_onboarding_verify">Bekreft at en sikkerhetskopi er gyldig og oppdatert med dine nåværende data.</string>
+    <string name="restore_activity_paste">Lim inn listen over ord fra utklippstavlen.</string>
+    <string name="restore_activity_paste_error">Ugyldig ordliste.</string>
+    <string name="restore_activity_restore">Restaurere</string>
+    <string name="restore_activity_select_backup">Velg en sikkerhetskopi</string>
+    <string name="restore_activity_state_restore_account">Gjenoppretter konto...</string>
+    <string name="restore_activity_state_restore_data">Gjenoppretter data...</string>
+    <string name="restore_activity_state_restore_starting">Starter gjenoppretting.</string>
+    <string name="restore_activity_state_restore_verify_account">Kontoverifisering…</string>
+    <string name="restore_activity_state_restore_verify_data">Dataverifisering…</string>
+    <string name="restore_activity_state_restore_verify_starting">Verifisering starter…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Venter på bekreftelse.</string>
+    <string name="restore_activity_success">Restaurering fullført med hell!</string>
+    <string name="restore_activity_success_message">Lukk appen og start den på nytt for å få tilgang til de nye dataene.</string>
+    <string name="restore_activity_title">Restaurering</string>
+    <string name="restore_activity_verify_same_account">Verifiseringen må utføres på samme enhet som ble brukt til sikkerhetskopieringen.</string>
+    <string name="restore_activity_warning">Gjenoppretting av denne sikkerhetskopien vil erstatte alle data for driftskontoer med dataene fra sikkerhetskopien.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Definer som administrator</string>
     <string name="room_members_activity_delete_message">Bekreft at du fjerner dette medlemmet</string>
@@ -955,15 +1069,18 @@
     <string name="settings_activity_ephemeral_title">Forsvinnende beskjed</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Meldingsegenskaper</string>
+    <string name="settings_activity_message_reactions_notification">Varsling om meldingsreaksjoner</string>
     <string name="settings_activity_reset_default_value">Tilbakestill til standardinnstillinger</string>
     <string name="settings_activity_reset_preferences_button_title">Tilbakestill til standardverdier</string>
     <string name="settings_activity_reset_preferences_message">Tilbakestill varslingsinnstillinger til standardinnstillinger for applikasjoner.</string>
     <string name="settings_activity_reset_preferences_title">Tilbakestill innstillinger</string>
     <string name="settings_activity_permissions_title">TILLATELSER</string>
+    <string name="settings_activity_silent_mode">Stillemodus</string>
     <string name="settings_activity_silent_sound">Taus</string>
     <string name="settings_activity_sound_enabled_title">SOUND NOTIFICATIONS</string>
     <string name="settings_activity_system_notifications_title">Systemvarsler</string>
     <string name="settings_activity_system_settings_title">Systeminnstillinger</string>
+    <string name="settings_activity_turn_off_notification_sounds">Slå av varslingslyder</string>
     <string name="settings_activity_video_call_category_title">Videosamtaler</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Ringetone navn</string>
     <string name="settings_activity_video_call_notification_title">Ringetone</string>
@@ -992,7 +1109,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">\"Click-to-call\"-kode</string>
+    <string name="show_call_activity_conference_call_information">Del denne lenken for å ringe deg eller bli med i en konferanse fra en nettleser.</string>
     <string name="show_call_activity_information_code">Del denne koden for å motta eksterne anrop.</string>
+    <string name="show_call_activity_meeting_organizer">Arrangør av dette møtet</string>
     <string name="show_call_activity_schedule_call">Planlagt samtale</string>
     <string name="show_call_activity_schedule_from">fra %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s fra %2$s til %3$s</string>
@@ -1075,12 +1194,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Rubrikkannonse</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Sett inn en lenke i en rubrikkannonse som lar potensielle kjøpere ringe deg uten å installere appen.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Annonse</string>
-    <string name="template_click_to_call_activity_template_help">Hjelp</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Hjelp</string>
+    <string name="template_click_to_call_activity_template_default_description">Tilpass en samtalelenke etter behov.</string>
+    <string name="template_click_to_call_activity_template_help">Kundeservice</string>
+    <string name="template_click_to_call_activity_template_help_description">Lenke for å ringe kundeservice fra en nettleser.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Kundeservice</string>
+    <string name="template_click_to_call_activity_template_job">Jobbintervju</string>
+    <string name="template_click_to_call_activity_template_job_description">Lenke som lar interesserte rekrutterere ringe deg til et intervju.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Jobbintervju</string>
     <string name="template_click_to_call_activity_template_meeting">Møte</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Del en lenke for å bli med i en konferanse fra en nettleser.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Møte</string>
+    <string name="template_click_to_call_activity_template_profile_description">Lenke for å ringe deg uten å installere appen.</string>
     <string name="template_click_to_call_activity_template_video_bell">Video ringeklokke</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Tillat at sjåføren ringer deg for instruksjoner.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Ringeklokke</string>
 
     <!-- TemplateSpaceActivity -->

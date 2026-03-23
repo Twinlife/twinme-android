@@ -41,9 +41,10 @@ public class PersonalizationViewHolder extends RecyclerView.ViewHolder {
         mSelectedView.setColorFilter(Design.getMainStyle());
     }
 
-    public void onBind(String title, boolean isSelected) {
+    public void onBind(String title, boolean isSelected, int backgroundColor) {
 
         mTitleView.setText(title);
+        itemView.setBackgroundColor(backgroundColor);
 
         if (isSelected) {
             mSelectedView.setVisibility(View.VISIBLE);
@@ -63,7 +64,6 @@ public class PersonalizationViewHolder extends RecyclerView.ViewHolder {
     private void updateColor() {
 
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        itemView.setBackgroundColor(Design.WHITE_COLOR);
         mSelectedView.setColorFilter(Design.getMainStyle());
     }
 }

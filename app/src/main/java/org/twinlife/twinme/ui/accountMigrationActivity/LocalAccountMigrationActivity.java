@@ -213,6 +213,16 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
     }
 
     @Override
+    public void onGetTwincodeExpired() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetTwincodeExpired");
+        }
+
+        setResult(Activity.RESULT_CANCELED);
+        finish();
+    }
+
+    @Override
     public void onAccountMigrationConnected(@NonNull UUID accountMigrationId) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onAccountMigrationConnected accountMigrationId=" + accountMigrationId);

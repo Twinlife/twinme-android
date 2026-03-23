@@ -22,10 +22,12 @@ import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.DisplayCallsMode;
+import org.twinlife.twinme.models.LinkValidity;
 import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.ui.externalCallActivity.UIConfigExternalCall;
 
 public class MenuSelectValueAdapter implements ListAdapter {
 
@@ -77,7 +79,7 @@ public class MenuSelectValueAdapter implements ListAdapter {
     @Override
     public int getCount() {
 
-        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
+        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA || mMenuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE) {
             return 2;
         }
         return 3;
@@ -128,13 +130,32 @@ public class MenuSelectValueAdapter implements ListAdapter {
             } else {
                 title = mActivity.getString(R.string.settings_activity_call_item_menu_all);
             }
-        } else {
+        } else if (mMenuType == MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE) {
             if (position == Profile.UpdateMode.NONE.ordinal()) {
                 title = mActivity.getString(R.string.edit_profile_activity_propagating_no_contact);
             } else if (position == Profile.UpdateMode.DEFAULT.ordinal()) {
                 title = mActivity.getString(R.string.edit_profile_activity_propagating_except_contacts);
             } else {
                 title = mActivity.getString(R.string.edit_profile_activity_propagating_all_contacts);
+            }
+        } else if (mMenuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE) {
+            if (position == UIConfigExternalCall.ConfigExternalCallTypeCall.CALL_DIRECT.ordinal()) {
+                title = mActivity.getString(R.string.create_external_call_activity_direct_call_title);
+                subTitle = mActivity.getString(R.string.create_external_call_activity_direct_call_description);
+            } else {
+                title = mActivity.getString(R.string.create_external_call_activity_conference_call_title);
+                subTitle = mActivity.getString(R.string.create_external_call_activity_conference_call_description);
+            }
+        } else {
+            if (position == LinkValidity.PERMANENT.ordinal()) {
+                title = mActivity.getString(R.string.create_external_call_activity_continuous_link_title);
+                subTitle = mActivity.getString(R.string.create_external_call_activity_continuous_link_description);
+            } else if (position == LinkValidity.SINGLE_USE.ordinal()) {
+                title = mActivity.getString(R.string.create_external_call_activity_unique_link_title);
+                subTitle = mActivity.getString(R.string.create_external_call_activity_unique_link_description);
+            } else {
+                title = mActivity.getString(R.string.create_external_call_activity_recurrent_link_title);
+                subTitle = mActivity.getString(R.string.create_external_call_activity_recurrent_link_description);
             }
         }
 

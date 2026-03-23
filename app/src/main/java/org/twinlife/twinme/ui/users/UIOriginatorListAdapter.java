@@ -161,7 +161,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
             contactViewHolder.onBind(mListActivity, mUIContacts.get(position), hideSeparator);
         } else if (viewType == TITLE) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
-            sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_fragment_title));
+            sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_fragment_title), false, false);
         } else if (viewType == ADD_CONTACT) {
             AddContactViewHolder addContactViewHolder = (AddContactViewHolder) viewHolder;
             //addContactViewHolder.itemView.setOnClickListener(view -> mOnCallClickListener.onAddExternalCallClick());
@@ -228,7 +228,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
      */
     public UIContactViewHolder<E> createUIContactViewHolder(View convertView) {
 
-        return new UIContactViewHolder<>(mService, convertView, mNameId, mAvatarId, mTagId, mTagTitleId, 0, mCertifiedId, mSeparatorId, Design.FONT_REGULAR34);
+        return new UIContactViewHolder<>(mService, convertView, mNameId, mAvatarId, mTagId, mTagTitleId, 0, 0, mCertifiedId, mSeparatorId, Design.FONT_REGULAR34);
     }
 
     /**

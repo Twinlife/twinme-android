@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2020 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -20,13 +20,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.AnnotationInfoViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.MenuSendOptionViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -36,11 +38,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int BACKGROUND_COLOR_GREY = Color.argb(64, 195, 212, 231);
     private final BaseItemActivity mBaseItemActivity;
     private final List<Item> mItems;
-    private List<UIAnnotation> mUIAnnotations = new ArrayList<>();
     private final Item mItem;
-
-    private static final int TITLE = 100;
-    private static final int ANNOTATIONS = 101;
 
     private final boolean mCanUpdateCopy;
 
@@ -56,9 +54,27 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public void setAnnotations(List<UIAnnotation> uiAnnotations) {
 
-        mUIAnnotations = uiAnnotations;
+        Collections.sort(uiAnnotations, Comparator.comparingInt(UIAnnotation::getOrderPriority));
 
-        notifyDataSetChanged();
+        for (int i = 0 ; i < uiAnnotations.size(); i++) {
+            UIAnnotation uiAnnotation = uiAnnotations.get(i);
+            if (i == 0 || (!uiAnnotation.getAnnotationType().equals(uiAnnotations.get(i-1).getAnnotationType()))) {
+                String title = "";
+                ConversationService.AnnotationType annotationType = uiAnnotation.getAnnotationType();
+                if (annotationType == ConversationService.AnnotationType.LIKE) {
+                    title = mBaseItemActivity.getString(R.string.info_item_activity_reactions);
+                } else if (annotationType== ConversationService.AnnotationType.RECEIVED) {
+                    title = mBaseItemActivity.getString(R.string.info_item_activity_received);
+                } else if (annotationType == ConversationService.AnnotationType.READ) {
+                    title = mBaseItemActivity.getString(R.string.info_item_activity_seen);
+                }
+                mItems.add(new InfoSectionItem(mItem, title));
+            }
+
+            mItems.add(new InfoAnnotationItem(mItem, uiAnnotation));
+        }
+
+        notifyItemRangeChanged(0, mItems.size());
     }
 
     @Override
@@ -67,9 +83,6 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        if (!mUIAnnotations.isEmpty()) {
-            return mItems.size() + mUIAnnotations.size() + 1;
-        }
         return mItems.size();
     }
 
@@ -79,13 +92,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "getItemViewType: position=" + position);
         }
 
-        if (position < mItems.size()) {
-            return getItem(position).getType().ordinal();
-        } else if (position == mItems.size()) {
-            return TITLE;
-        } else {
-            return ANNOTATIONS;
-        }
+        return getItem(position).getType().ordinal();
     }
 
     @Override
@@ -94,15 +101,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "getItemId: position=" + position);
         }
 
-        if (position < mItems.size()) {
-            return getItem(position).getItemId();
-        } else if (position == mItems.size()) {
-            return -1;
-        }
-
-        int annotationPosition = position - mItems.size() - 1;
-        UIAnnotation uiAnnotation = mUIAnnotations.get(annotationPosition);
-        return uiAnnotation.getItemId() + mItems.size();
+        return getItem(position).getItemId();
     }
 
     @Override
@@ -111,45 +110,50 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "onBindViewHolder: viewHolder=" + viewHolder + " position=" + position);
         }
 
-        if (position < mItems.size()) {
-            Item item = getItem(position);
+        Item item = getItem(position);
 
-            if (mCanUpdateCopy && item.getType() == Item.ItemType.INFO_COPY
-                    && mItem != null
-                    && (mItem.getType() == Item.ItemType.MESSAGE
-                    || mItem.getType() == Item.ItemType.IMAGE
-                    || mItem.getType() == Item.ItemType.VIDEO
-                    || mItem.getType() == Item.ItemType.AUDIO
-                    || mItem.getType() == Item.ItemType.FILE)) {
+        if (mCanUpdateCopy && item.getType() == Item.ItemType.INFO_COPY
+                && mItem != null
+                && (mItem.getType() == Item.ItemType.MESSAGE
+                || mItem.getType() == Item.ItemType.IMAGE
+                || mItem.getType() == Item.ItemType.VIDEO
+                || mItem.getType() == Item.ItemType.AUDIO
+                || mItem.getType() == Item.ItemType.FILE)) {
 
-                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
-                MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
-                menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, true, onCheckedChangeListener);
-            } else {
-                BaseItemViewHolder baseItemViewHolder = (BaseItemViewHolder) viewHolder;
-                baseItemViewHolder.onBind(item);
-                switch (item.getType()) {
-                    case INFO_DATE:
-                    case INFO_COPY:
-                    case INFO_FILE:
-                        viewHolder.itemView.setBackgroundColor(Design.WHITE_COLOR);
-                        break;
+            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
+            MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
+            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, true, onCheckedChangeListener);
+        } else if (item.getType() == Item.ItemType.INFO_SECTION) {
+            SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
+            InfoSectionItem infoSectionItem = (InfoSectionItem) item;
+            sectionTitleViewHolder.onBind(infoSectionItem.getTitle(), Design.LIGHT_GREY_BACKGROUND_COLOR, true);
+        } else if (item.getType() == Item.ItemType.INFO_ANNOTATION) {
+            InfoAnnotationItem infoAnnotationItem = (InfoAnnotationItem) item;
 
-                    default:
-                        viewHolder.itemView.setBackgroundColor(BACKGROUND_COLOR_GREY);
-                        break;
-                }
+            boolean hideSeparator = false;
+            if (position + 1 < mItems.size() && mItems.get(position + 1).getType() != Item.ItemType.INFO_ANNOTATION) {
+                hideSeparator = true;
             }
 
-        } else if (position == mItems.size()) {
-            SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mBaseItemActivity.getString(R.string.info_item_activity_reactions), true);
-        } else {
-            int annotationPosition = position - mItems.size() - 1;
-            UIAnnotation uiAnnotation = mUIAnnotations.get(annotationPosition);
+            UIAnnotation uiAnnotation = infoAnnotationItem.getAnnotation();
             AnnotationInfoViewHolder annotationInfoViewHolder = (AnnotationInfoViewHolder) viewHolder;
-            boolean hideSeparator = annotationPosition + 1 == mUIAnnotations.size();
             annotationInfoViewHolder.onBind(mBaseItemActivity, uiAnnotation, Design.WHITE_COLOR, hideSeparator);
+        } else {
+            BaseItemViewHolder baseItemViewHolder = (BaseItemViewHolder) viewHolder;
+            baseItemViewHolder.onBind(item);
+            switch (item.getType()) {
+                case INFO_DATE:
+                case INFO_COPY:
+                case INFO_FILE:
+                case INFO_DELETED:
+                case INFO_EPHEMERAL:
+                    viewHolder.itemView.setBackgroundColor(Design.WHITE_COLOR);
+                    break;
+
+                default:
+                    viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT);
+                    break;
+            }
         }
     }
 
@@ -182,6 +186,9 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (viewType == Item.ItemType.INFO_FILE.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_info_file_item, parent, false);
             return new InfoFileItemViewHolder(mBaseItemActivity, convertView);
+        } else if (viewType == Item.ItemType.INFO_SECTION.ordinal()) {
+            convertView = inflater.inflate(R.layout.section_title_item, parent, false);
+            return new SectionTitleViewHolder(convertView);
         } else if (viewType == Item.ItemType.MESSAGE.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_message_item, parent, false);
             return new MessageItemViewHolder(mBaseItemActivity, convertView);
@@ -242,10 +249,10 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (viewType == Item.ItemType.PEER_CLEAR.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_peer_clear_item, parent, false);
             return new PeerClearItemViewHolder(mBaseItemActivity, convertView, true);
-        } else if (viewType == TITLE) {
-            convertView = inflater.inflate(R.layout.section_title_item, parent, false);
-            return new SectionTitleViewHolder(convertView);
-        } else if (viewType == ANNOTATIONS) {
+        } else if (viewType == Item.ItemType.INFO_EPHEMERAL.ordinal() || viewType == Item.ItemType.INFO_DELETED.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_info_icon_item, parent, false);
+            return new InfoIconItemViewHolder(mBaseItemActivity, convertView);
+        } else if (viewType == Item.ItemType.INFO_ANNOTATION.ordinal()) {
             convertView = inflater.inflate(R.layout.annotation_info_item, parent, false);
             return new AnnotationInfoViewHolder(convertView);
         } else {

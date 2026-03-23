@@ -17,6 +17,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -139,6 +140,20 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         }
 
         super.onResume();
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            showOnboarding();
+        }
+
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
 
         showOnboarding();
     }

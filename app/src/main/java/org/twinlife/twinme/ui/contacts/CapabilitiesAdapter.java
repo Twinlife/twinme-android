@@ -151,14 +151,12 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             String title = "";
             boolean hideSeparator = false;
-            boolean isNewFeature = false;
             Runnable runnable = null;
             if (position == SECTION_PERMISSION) {
                 title = mCapabilitiesActivity.getString(R.string.settings_activity_authorization_title);
             } else if (position == SECTION_CAMERA_CONTROL) {
                 title = mCapabilitiesActivity.getString(R.string.call_activity_camera_control);
                 hideSeparator = true;
-                isNewFeature = true;
                 runnable = () -> mCapabilitiesActivity.showOnboardingView(true);
             } else if (position == SECTION_DISCREET_RELATION) {
                 title = mCapabilitiesActivity.getString(R.string.privacy_activity_title);
@@ -166,8 +164,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 title = mCapabilitiesActivity.getString(R.string.show_call_activity_schedule_call);
                 hideSeparator = true;
             }
-
-            sectionTitleViewHolder.onBind(title, hideSeparator, isNewFeature, runnable);
+            sectionTitleViewHolder.onBind(title, hideSeparator, null, runnable);
         } else if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
 

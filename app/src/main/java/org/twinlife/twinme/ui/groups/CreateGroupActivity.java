@@ -24,9 +24,9 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -400,12 +400,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         mNoAvatarView.setOnClickListener(v -> openMenuPhoto());
 
         View backClickableView = findViewById(R.id.create_group_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -417,8 +412,26 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         RoundedView backRoundedView = findViewById(R.id.create_group_activity_back_rounded_view);
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
+        mScrollView = findViewById(R.id.create_group_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
+
         mContentView = findViewById(R.id.create_group_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
+
+        View editAvatarView = findViewById(R.id.create_group_activity_edit_avatar_clickable_view);
+        editAvatarView.setOnClickListener(view -> openMenuPhoto());
+
+        layoutParams = editAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
 
         setBackground(mContentView);
 
@@ -437,8 +450,6 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
-
-        mContentView.setOnTouchListener((v, motionEvent) -> touchContent(motionEvent));
 
         mTitleView = findViewById(R.id.create_group_activity_title_view);
         Design.updateTextFont(mTitleView, Design.FONT_BOLD44);
@@ -486,11 +497,10 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
             }
         });
 
-        GestureDetector nameGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_NAME));
-        mNameView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = nameGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mNameView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mConfigurationTitleView.getTop()), 100);
+            }
         });
 
         mCounterNameView = findViewById(R.id.create_group_activity_counter_name_view);
@@ -538,11 +548,10 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
             }
         });
 
-        GestureDetector descriptionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_EDIT_DESCRIPTION));
-        mDescriptionView.setOnTouchListener((v, motionEvent) -> {
-            boolean result = descriptionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return result;
+        mDescriptionView.setOnFocusChangeListener((view, focus) -> {
+            if (focus) {
+                mScrollView.postDelayed(() -> mScrollView.smoothScrollTo(0, mConfigurationTitleView.getTop()), 100);
+            }
         });
 
         mCounterDescriptionView = findViewById(R.id.create_group_activity_counter_description_view);
@@ -594,19 +603,8 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         mMemberListAdapter = new ShowGroupMemberListAdapter(this, mGroupService, new ArrayList<>(), Design.BUTTON_WIDTH);
         mMemberRecyclerView.setAdapter(mMemberListAdapter);
 
-        GestureDetector memberGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_ADD_MEMBERS));
-        memberView.setOnTouchListener((v, motionEvent) -> {
-            memberGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
-
-        GestureDetector memberListGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_ADD_MEMBERS));
-        mMemberRecyclerView.setOnTouchListener((v, motionEvent) -> {
-            memberListGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        memberView.setOnClickListener(view -> onAddMemberClick());
+        mMemberRecyclerView.setOnClickListener(view -> onAddMemberClick());
 
         mConfigurationTitleView = findViewById(R.id.create_group_activity_configuration_title_view);
         Design.updateTextFont(mConfigurationTitleView, Design.FONT_BOLD26);
@@ -625,13 +623,6 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
 
         permissionView.setOnClickListener(view -> onSettingsViewClick());
 
-        GestureDetector permissionGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SETTINGS));
-        permissionView.setOnTouchListener((v, motionEvent) -> {
-            permissionGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
-
         mPermissionsTextView = findViewById(R.id.create_group_activity_permissions_text_view);
         Design.updateTextFont(mPermissionsTextView, Design.FONT_REGULAR34);
         mPermissionsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -642,13 +633,6 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         mSaveClickableView = findViewById(R.id.create_group_activity_save_view);
         mSaveClickableView.setAlpha(0.5f);
         mSaveClickableView.setOnClickListener(v -> onSaveClick());
-
-        GestureDetector saveGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_SAVE));
-        mSaveClickableView.setOnTouchListener((v, motionEvent) -> {
-            saveGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
 
         layoutParams = mSaveClickableView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

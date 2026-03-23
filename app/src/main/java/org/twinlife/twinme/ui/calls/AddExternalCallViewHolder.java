@@ -26,17 +26,14 @@ import org.twinlife.twinme.utils.RoundedView;
 
 public class AddExternalCallViewHolder extends RecyclerView.ViewHolder {
 
-    private static final float DESIGN_ADD_VIEW_SIZE = 86f;
     private static final float DESIGN_ADD_VIEW_MARGIN = 20f;
     private static final float DESIGN_ADD_ICON_SIZE = 36f;
     private static final float DESIGN_TEXT_MARGIN = 8f;
-    private static final int ADD_VIEW_SIZE;
     private static final int ADD_VIEW_MARGIN;
     private static final int ADD_ICON_SIZE;
     private static final int TEXT_MARGIN;
 
     static {
-        ADD_VIEW_SIZE = (int) (DESIGN_ADD_VIEW_SIZE * Design.HEIGHT_RATIO);
         ADD_VIEW_MARGIN = (int) (DESIGN_ADD_VIEW_MARGIN * Design.HEIGHT_RATIO);
         ADD_ICON_SIZE = (int) (DESIGN_ADD_ICON_SIZE * Design.HEIGHT_RATIO);
         TEXT_MARGIN = (int) (DESIGN_TEXT_MARGIN * Design.HEIGHT_RATIO);
@@ -50,16 +47,18 @@ public class AddExternalCallViewHolder extends RecyclerView.ViewHolder {
 
         view.setBackgroundColor(Design.WHITE_COLOR);
 
-        RoundedView roundedView = view.findViewById(R.id.calls_fragment_add_external_call_item_rounded_view);
-        roundedView.setColor(Design.getMainStyle());
+        View addView = view.findViewById(R.id.calls_fragment_add_external_call_item_add_view);
+        ViewGroup.LayoutParams layoutParams = addView.getLayoutParams();
+        layoutParams.width = Design.AVATAR_HEIGHT;
+        layoutParams.height = Design.AVATAR_HEIGHT;
 
-        ViewGroup.LayoutParams layoutParams = roundedView.getLayoutParams();
-        layoutParams.width = ADD_VIEW_SIZE;
-        layoutParams.height = ADD_VIEW_SIZE;
-
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) roundedView.getLayoutParams();
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) addView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.AVATAR_MARGIN;
         marginLayoutParams.topMargin = ADD_VIEW_MARGIN;
         marginLayoutParams.bottomMargin = ADD_VIEW_MARGIN;
+
+        RoundedView roundedView = view.findViewById(R.id.calls_fragment_add_external_call_item_rounded_view);
+        roundedView.setColor(Design.getMainStyle());
 
         ImageView imageView = view.findViewById(R.id.calls_fragment_add_external_call_item_image_view);
 
@@ -72,6 +71,8 @@ public class AddExternalCallViewHolder extends RecyclerView.ViewHolder {
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.NAME_TRAILING;
+        marginLayoutParams.rightMargin = Design.NAME_TRAILING;
         marginLayoutParams.topMargin = TEXT_MARGIN;
         marginLayoutParams.bottomMargin = TEXT_MARGIN;
     }

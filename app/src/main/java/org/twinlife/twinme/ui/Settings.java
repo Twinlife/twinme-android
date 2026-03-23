@@ -92,6 +92,10 @@ public class Settings {
     public static final InternalBooleanConfig showRemoteCameraSettingOnboarding = new InternalBooleanConfig("settings_activity_show_remote_camera_setting_onboarding", true);
     public static final InternalBooleanConfig showTransferCallOnboarding = new InternalBooleanConfig("settings_activity_show_transfer_call_onboarding", true);
     public static final InternalBooleanConfig showProxyOnboarding = new InternalBooleanConfig("settings_activity_show_proxy_onboarding", true);
+    public static final InternalBooleanConfig showBackupOnboarding = new InternalBooleanConfig("settings_activity_show_backup_onboarding", true);
+    public static final InternalBooleanConfig showRestoreOnboarding = new InternalBooleanConfig("settings_activity_show_restore_onboarding", true);
+    public static final InternalBooleanConfig showVerifyBackupOnboarding = new InternalBooleanConfig("settings_activity_show_verify_backup_onboarding", true);
+    public static final InternalBooleanConfig showBetaBackupOnboarding = new InternalBooleanConfig("settings_activity_show_beta_backup_onboarding", true);
 
     public static final InternalBooleanConfig showWarningEditMessage = new InternalBooleanConfig("settings_activity_show_warning_edit_message", true);
     public static final InternalLongConfig lastShowEnableNotificationScreen = new InternalLongConfig("settings_activity_last_show_enable_notifications_screen", 0);
@@ -103,6 +107,11 @@ public class Settings {
 
     // Update
     public static final StringConfig lastInformedVersion = new StringConfig("settings_activity_last_informed_version", null, "AEf8EfAE-40BC-11ED-B878-0242AC120002");
+
+    // Backup
+    public static final InternalLongConfig firstInstallationBackupDate = new InternalLongConfig("backup_activity_first_date", 0);
+    public static final LongConfig lastBackupDate =new LongConfig("backup_activity_last_date", 0, "E55ECCE5-A709-4C5d-9D7D-09CDDEA8f8C5");
+
 
     // Coach Mark
     public static final LongConfig lastShowCoachMarkConversationEphemeral = new LongConfig("last_show_coach_mark_conversation_ephemeral", 0, "314464E8-228B-4D0F-A1CF-43EEC8BCA45A");

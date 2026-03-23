@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/delete_account_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/delete_account_activity_content_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,35 +25,47 @@
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/delete_account"
-            app:layout_marginTopPercent="7.64%" />
+            android:src="@drawable/delete_account" />
 
         <TextView
             android:id="@+id/delete_account_activity_message_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/delete_account_activity_image_view"
-            android:layout_centerHorizontal="true"
-            app:layout_marginTopPercent="4.95%"
-            app:layout_widthPercent="85.33%" />
+            android:layout_above="@+id/delete_account_activity_delete_view"
+            android:layout_centerHorizontal="true" />
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/delete_account_activity_delete_view"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:layout_marginBottomPercent="2.25%">
+            android:layout_centerHorizontal="true">
 
             <TextView
-                android:id="@+id/delete_account_activity_delete_label_view"
+                android:id="@+id/delete_account_activity_delete_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/deleted_account_activity_delete" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/delete_account_activity_cancel_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/delete_account_activity_cancel_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/application_delete" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+                android:text="@string/application_cancel" />
+        </RelativeLayout>
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/delete_account_activity_progress_bar"
@@ -63,4 +75,4 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

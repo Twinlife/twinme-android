@@ -12,6 +12,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -24,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowInsets;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -300,6 +302,15 @@ public class AlertMessageView extends PercentRelativeLayout {
         ShapeDrawable scrollIndicatorBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         scrollIndicatorBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
         mActionView.setBackground(scrollIndicatorBackground);
+
+        View rootView = ((Activity) getContext()).getWindow().getDecorView();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            WindowInsets insets = rootView.getRootWindowInsets();
+            if (insets != null) {
+                int bottomInset = insets.getInsets(WindowInsets.Type.systemBars()).bottom;
+                mActionView.setPadding(0, 0, 0, bottomInset);
+            }
+        }
 
         ViewGroup.LayoutParams layoutParams = mSlideMarkView.getLayoutParams();
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;

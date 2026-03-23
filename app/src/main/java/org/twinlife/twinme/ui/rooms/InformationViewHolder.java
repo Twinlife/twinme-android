@@ -17,10 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.TextStyle;
 
 public class InformationViewHolder extends RecyclerView.ViewHolder {
 
     private static final float DESIGN_TEXT_TOP_MARGIN = 20f;
+    private static final int DESIGN_HORIZONTAL_MARGIN = 34;
+
     private static final int TEXT_TOP_MARGIN;
 
     static {
@@ -28,6 +31,12 @@ public class InformationViewHolder extends RecyclerView.ViewHolder {
     }
 
     private final TextView mInformationView;
+
+    private int mBackgroundColor = Design.LIGHT_GREY_BACKGROUND_COLOR;
+
+    private int mTextColor = Design.FONT_COLOR_GREY;
+    private TextStyle mTextStyle = Design.FONT_REGULAR28;
+
 
     public InformationViewHolder(@NonNull View view) {
 
@@ -39,9 +48,41 @@ public class InformationViewHolder extends RecyclerView.ViewHolder {
 
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInformationView.getLayoutParams();
         marginLayoutParams.topMargin = TEXT_TOP_MARGIN;
+        marginLayoutParams.leftMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+    }
+
+    public void resetMargins() {
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInformationView.getLayoutParams();
+        marginLayoutParams.leftMargin = 0;
+        marginLayoutParams.rightMargin = 0;
     }
 
     public void onBind(String information, boolean isSubTitle) {
+
+        updateViews(information, isSubTitle);
+    }
+
+    public void onBind(String information, boolean isSubTitle, int backgroundColor) {
+
+        mBackgroundColor = backgroundColor;
+        updateViews(information, isSubTitle);
+    }
+
+    public void onBind(String information, boolean isSubTitle, int backgroundColor, int textColor, TextStyle textStyle) {
+
+        mBackgroundColor = backgroundColor;
+        mTextColor = textColor;
+        mTextStyle = textStyle;
+        updateViews(information, isSubTitle);
+    }
+
+    public void onViewRecycled() {
+
+    }
+
+    private void updateViews(String information, boolean isSubTitle) {
 
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInformationView.getLayoutParams();
         if (isSubTitle) {
@@ -57,18 +98,14 @@ public class InformationViewHolder extends RecyclerView.ViewHolder {
         updateColor();
     }
 
-    public void onViewRecycled() {
-
-    }
-
     private void updateFont() {
 
-        Design.updateTextFont(mInformationView, Design.FONT_REGULAR28);
+        Design.updateTextFont(mInformationView, mTextStyle);
     }
 
     private void updateColor() {
 
-        itemView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        mInformationView.setTextColor(Design.FONT_COLOR_GREY);
+        itemView.setBackgroundColor(mBackgroundColor);
+        mInformationView.setTextColor(mTextColor);
     }
 }

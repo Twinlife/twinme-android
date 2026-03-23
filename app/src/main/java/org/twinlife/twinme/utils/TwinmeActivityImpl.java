@@ -864,12 +864,14 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
     public String getLinkError(@NonNull ErrorCode errorCode, @StringRes int defaultMessage) {
 
         if (errorCode == ErrorCode.BAD_REQUEST) {
-            return getString(R.string.add_contact_activity_scan_error_incorect_link);
+            return getString(R.string.add_contact_activity_scan_error_incorrect_link);
         } else if (errorCode == ErrorCode.FEATURE_NOT_IMPLEMENTED) {
             return getString(R.string.add_contact_activity_scan_error_not_managed_link);
         } else if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
             return getString(R.string.add_contact_activity_scan_error_corrupt_link);
-        } else {
+        } else if (errorCode == ErrorCode.EXPIRED) {
+            return getString(R.string.add_contact_activity_scan_error_expired_link);
+        }else {
             return getString(defaultMessage);
         }
     }

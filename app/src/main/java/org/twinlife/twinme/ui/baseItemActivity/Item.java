@@ -67,7 +67,11 @@ public abstract class Item implements Comparable<Item> {
         INVITATION_CONTACT,
         PEER_INVITATION_CONTACT,
         CLEAR,
-        PEER_CLEAR
+        PEER_CLEAR,
+        INFO_SECTION,
+        INFO_ANNOTATION,
+        INFO_EPHEMERAL,
+        INFO_DELETED
     }
 
     public enum ItemState {

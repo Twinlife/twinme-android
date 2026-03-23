@@ -104,6 +104,7 @@
         android:supportsRtl="true"
         android:theme="@style/TwinmeTheme"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:localeConfig="@xml/locales_config"
         android:largeHeap="true"
         tools:targetApi="34">
@@ -198,6 +199,27 @@
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar" />
         <activity
+            android:name="org.twinlife.twinme.ui.backupActivity.BackupActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.backupActivity.BackupsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.backupActivity.RestoreActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name="org.twinlife.twinme.ui.backupActivity.SuccessBackupActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
             android:name="org.twinlife.twinme.ui.cleanupActivity.CleanUpActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
@@ -268,31 +290,31 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.EditIdentityActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.EditProfileActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.externalCallActivity.CreateExternalCallActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.externalCallActivity.EditExternalCallActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.externalCallActivity.InvitationExternalCallActivity"
             android:configChanges="orientation|screenSize"
@@ -304,6 +326,12 @@
             android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
         <activity
             android:name="org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.externalCallActivity.TemplateExternalCallActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
@@ -344,7 +372,7 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.groups.EditGroupActivity"
             android:configChanges="orientation|screenSize"
@@ -642,6 +670,7 @@
                     android:host="proxy.${domainName}"
                     android:scheme="https" />
             </intent-filter>
+
             <intent-filter android:autoVerify="true"
                 tools:targetApi="m">
                 <action android:name="android.intent.action.VIEW" />
@@ -652,6 +681,18 @@
                 <data
                     android:host="proxy.${domainName}"
                     android:scheme="twinme" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\.${backupExtension}" />
+
             </intent-filter>
 
             <meta-data
@@ -708,7 +749,11 @@
             android:name="org.twinlife.twinme.services.PeerService"
             android:exported="false"
             android:foregroundServiceType="dataSync" />
-
+        <service
+            android:name="org.twinlife.twinme.services.BackupService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" >
+        </service>
         <!-- Google Firebase Services -->
         <service
             android:name="org.twinlife.twinme.services.TwinmeFirebaseMessagingService"

@@ -347,6 +347,18 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         updateViews();
     }
 
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        if (mInvitationCodeView != null) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationCodeView.getLayoutParams();
+            marginLayoutParams.bottomMargin = (int) (getBarBottomInset() + DESIGN_INVITATION_CODE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        }
+    }
+
     //
     // Private methods
     //
@@ -862,17 +874,40 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         if (mProfile == null || mInvitationLink == null) {
             return;
         }
+
         String profileName = mProfile.getName();
-        File file = new File(getExternalCacheDir() + "/qrcode.png");
-        try {
-            FileOutputStream outStream = new FileOutputStream(file);
-            mQRCodeBitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream);
-            outStream.flush();
-            outStream.close();
-        } catch (Exception e) {
-            // Exception could happen if there is no space left on the device.
-            file = null;
-            Log.e(LOG_TAG, "Cannot save QR-code: " + e.getMessage());
+        mProfileService.getProfileImage(mProfile, (Bitmap avatar) -> {
+            if (mProfile != null && mInvitationLink != null) {
+                String shareMessage = String.format(getString(R.string.add_contact_activity_share_image_message), profileName);
+                mSaveTwincodeView.setTwincodeInformation(this, profileName, avatar,
+                        mQRCodeBitmap, mInvitationLink.label,
+                        shareMessage);
+            }
+
+            Bitmap bitmapToSave = getBitmapFromTwincodeView();
+            File file = new File(getExternalCacheDir() + "/qrcode.png");
+            if (bitmapToSave == null) {
+                bitmapToSave = mQRCodeBitmap;
+            }
+
+            try {
+                FileOutputStream outStream = new FileOutputStream(file);
+                bitmapToSave.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+                outStream.flush();
+                outStream.close();
+                startShareIntent(file, profileName);
+            } catch (Exception e) {
+                // Exception could happen if there is no space left on the device.
+                Log.e(LOG_TAG, "Cannot save QR-code: " + e.getMessage());
+                startShareIntent(null, profileName);
+            }
+        });
+    }
+
+    private void startShareIntent(File file, String profileName) {
+
+        if (mInvitationLink == null) {
+            return;
         }
 
         //noinspection UnnecessaryUnicodeEscape
@@ -880,17 +915,28 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.add_contact_activity_invite_subject));
+
+        String shareTitle = String.format(getString(R.string.add_contact_activity_share_title), name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, shareTitle);
 
         if (file != null) {
-            Uri uri = NamedFileProvider.getInstance().getUriForFile(this, file, name + "-QR-code.png");
+            Uri uri = NamedFileProvider.getInstance().getUriForFile(this, file, name + "-twincode.png");
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setDataAndType(uri, "image/png");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
         }
 
-        intent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.add_contact_activity_invite_message),
-                mInvitationLink.uri, name));
+        String shareMessage = String.format(getString(R.string.add_contact_activity_share_message_part_1), name) +
+                "\n\n" +
+                getString(R.string.add_contact_activity_share_message_part_2) +
+                "\n\n" +
+                String.format(getString(R.string.add_contact_activity_share_message_part_3), name) +
+                "\n" +
+                mInvitationLink.uri +
+                "\n\n" +
+                getString(R.string.add_contact_activity_share_message_part_4);
+
+        intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         startActivity(Intent.createChooser(intent, null));
     }
 
@@ -993,9 +1039,10 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             mDeferredSaveTwincode = false;
             mProfileService.getProfileImage(mProfile, (Bitmap avatar) -> {
                 if (mProfile != null && mInvitationLink != null) {
+                    String shareMessage = String.format(getString(R.string.add_contact_activity_share_image_message), mProfile.getName());
                     mSaveTwincodeView.setTwincodeInformation(this, mProfile.getName(), avatar,
                             mQRCodeBitmap, mInvitationLink.label,
-                            getString(R.string.fullscreen_qrcode_activity_save_message));
+                            shareMessage);
                 }
 
                 Bitmap bitmapToSave = getBitmapFromTwincodeView();
@@ -1178,7 +1225,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                     if (error == BaseService.ErrorCode.SUCCESS && contact != null) {
                         mProfileService.getImage(contact, (Bitmap avatar) -> showSuccessAuthentification(contact.getName(), avatar));
                     } else {
-                        incorrectQRCode(getLinkError(errorCode, R.string.add_contact_activity_scan_error_incorect_link));
+                        incorrectQRCode(getLinkError(errorCode, R.string.add_contact_activity_scan_error_incorrect_link));
                     }
                 }));
             } else if (twincodeURI.kind == TwincodeURI.Kind.Proxy) {

@@ -58,6 +58,10 @@ public class ReplyItemTouchHelper extends ItemTouchHelper.Callback {
         }
 
         mReplyIcon = ResourcesCompat.getDrawable(recyclerView.getResources(), R.drawable.reply_swipe_icon, null);
+        if (mReplyIcon != null) {
+            mReplyIcon.setTint(Design.BLACK_COLOR);
+        }
+
         mOnSwipeItemReplyListener = onSwipeItemReplyListener;
     }
 

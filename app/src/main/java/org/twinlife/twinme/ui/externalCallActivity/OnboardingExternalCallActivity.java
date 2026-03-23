@@ -46,6 +46,8 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
     private static final int MIN_CONTENT_CELL_FROM_SIDE_MENU_HEIGHT = 542;
     private static final int MIN_CONTENT_CELL_HEIGHT = 662;
 
+    private TextView mTitleView;
+
     private final List<UIOnboarding> mUIOnboarding = new ArrayList<>();
 
     private boolean mFromSideMenu = false;
@@ -95,7 +97,6 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
         }
 
         getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.EXTERNAL_CALL, false);
-
         finish();
     }
 
@@ -110,7 +111,6 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
     //
     // Private methods
     //
-
 
     @Override
     protected void initViews() {
@@ -157,11 +157,11 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
 
-        TextView titleTextView = findViewById(R.id.onboarding_external_call_activity_title);
-        Design.updateTextFont(titleTextView, Design.FONT_MEDIUM36);
-        titleTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mTitleView = findViewById(R.id.onboarding_external_call_activity_title);
+        Design.updateTextFont(mTitleView, Design.FONT_MEDIUM36);
+        mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) titleTextView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_ONBOARDING_TOP_MARGIN * Design.HEIGHT_RATIO);
 
         OnboardingExternalCallAdapter onboardingExternalCallAdapter = new OnboardingExternalCallAdapter(this, mUIOnboarding);
@@ -186,7 +186,7 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
         dotsRecyclerView.setAdapter(mDotsAdapter);
         dotsRecyclerView.setItemAnimator(null);
 
-        setupOnboarding(titleTextView.getLineHeight());
+        setupOnboarding(mTitleView.getLineHeight());
 
         layoutParams = dotsRecyclerView.getLayoutParams();
         layoutParams.width = mUIOnboarding.size() * Design.DOT_SIZE;
@@ -206,6 +206,13 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
                     if (centerView != null) {
                         mCurrentPosition = linearLayoutManager.getPosition(centerView);
                         mDotsAdapter.setCurrentPosition(mCurrentPosition);
+
+                        if (mCurrentPosition >= 0) {
+                            UIOnboarding uiOnboarding = mUIOnboarding.get(mCurrentPosition);
+                            if (uiOnboarding.getTitle() != null) {
+                                mTitleView.setText(uiOnboarding.getTitle());
+                            }
+                        }
                     }
                 }
             }
@@ -240,6 +247,18 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
         }
 
         animationClose();
+    }
+
+    private void startTemplate() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startTemplate");
+        }
+
+        Intent intent = new Intent();
+        intent.setClass(this, TemplateExternalCallActivity.class);
+        startActivity(intent);
+
+        finish();
     }
 
     private void initOnboarding() {

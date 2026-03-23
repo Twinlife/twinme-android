@@ -50,7 +50,9 @@ public class MenuSelectValueView extends RelativeLayout {
     public enum MenuType {
         DISPLAY_CALLS,
         QUALITY_MEDIA,
-        PROFILE_UPDATE_MODE
+        PROFILE_UPDATE_MODE,
+        EXTERNAL_CALL_EXPIRATION,
+        EXTERNAL_CALL_TYPE
     }
 
     public interface Observer {
@@ -331,6 +333,14 @@ public class MenuSelectValueView extends RelativeLayout {
 
             case PROFILE_UPDATE_MODE:
                 mTitleView.setText(mActivity.getString(R.string.edit_profile_activity_propagating_profile));
+                break;
+
+            case EXTERNAL_CALL_TYPE:
+                mTitleView.setText(mActivity.getString(R.string.create_external_call_activity_call_type));
+                break;
+
+            case EXTERNAL_CALL_EXPIRATION:
+                mTitleView.setText(mActivity.getString(R.string.create_external_call_activity_link_validity));
                 break;
 
             default:

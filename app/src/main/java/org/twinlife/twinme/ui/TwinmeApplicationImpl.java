@@ -81,6 +81,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     private static final long CALL_QUALITY_MIN_DURATION = 5 * 60;
     private static final long CALL_QUALITY_ASK_FREQUENCY = 10;
     private static final long CALL_QUALITY_INTERVAL_DATE = 10 * 60 * 60 * 24;
+    private static final long BACKUP_ASK_FREQUENCY = 60 * 60 * 24 * 30;
 
     private static final float AUDIO_PLAYER_SPEED_SLOW = 0.5f;
     private static final float AUDIO_PLAYER_SPEED_NORMAL = 1.0f;
@@ -244,9 +245,14 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
 
             case WRONG_LIBRARY_CONFIGURATION:
             case LIBRARY_TOO_OLD:
+            case RESTORE_IN_PROGRESS: // TODO BKP: error messages, see enum for error code meaning
                 message = R.string.application_wrong_configuration;
                 break;
 
+            case ACCOUNT_RESTORED:
+                message = R.string.application_account_restored_error;
+                break;
+                
             case SERVICE_UNAVAILABLE:
             case TWINLIFE_OFFLINE:
                 message = R.string.application_not_connected;
@@ -839,6 +845,37 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     //
+    // Backup
+    //
+
+    @Override
+    public boolean showBackupWarning() {
+
+        long timeInterval = new Date().getTime() / 1000;
+
+        long lastBackupDateLong = Settings.lastBackupDate.getLong();
+        long diffTimeSinceLastBackup = timeInterval - lastBackupDateLong;
+        return diffTimeSinceLastBackup > BACKUP_ASK_FREQUENCY;
+    }
+
+    @Override
+    public void setLastBackupDate() {
+
+        Settings.lastBackupDate.setLong(new Date().getTime() / 1000).save();
+    }
+
+    @Override
+    public void setFirstInstallationBackupDate() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setFirstInstallationBackupDate");
+        }
+
+        if (Settings.firstInstallationBackupDate.getLong() == 0) {
+            Settings.firstInstallationBackupDate.setLong(new Date().getTime() / 1000).save();
+        }
+    }
+
+    //
     // Conversation Management
     //
 
@@ -991,6 +1028,8 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         glideCacheExecutor.shutdown();
 
         mCoachMarkManager = new CoachMarkManager();
+
+        setFirstInstallationBackupDate();
     }
 
     @Override
@@ -1432,6 +1471,18 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             case PROXY:
                 return Settings.showProxyOnboarding.getBoolean();
 
+            case BACKUP:
+                return Settings.showBackupOnboarding.getBoolean();
+
+            case RESTORE:
+                return Settings.showRestoreOnboarding.getBoolean();
+
+            case VERIFY_BACKUP:
+                return Settings.showVerifyBackupOnboarding.getBoolean();
+
+            case BACKUP_BETA:
+                return Settings.showBetaBackupOnboarding.getBoolean();
+
             default:
                 return false;
         }
@@ -1483,6 +1534,21 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
 
             case PROXY:
                 Settings.showProxyOnboarding.setBoolean(state).save();
+
+            case BACKUP:
+                Settings.showBackupOnboarding.setBoolean(state).save();
+                break;
+
+            case RESTORE:
+                Settings.showRestoreOnboarding.setBoolean(state).save();
+                break;
+
+            case VERIFY_BACKUP:
+                Settings.showVerifyBackupOnboarding.setBoolean(state).save();
+                break;
+
+            case BACKUP_BETA:
+                Settings.showBetaBackupOnboarding.setBoolean(state).save();
                 break;
 
             default:
@@ -1504,6 +1570,10 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         Settings.showRemoteCameraSettingOnboarding.setBoolean(true).save();
         Settings.showTransferCallOnboarding.setBoolean(true).save();
         Settings.showProxyOnboarding.setBoolean(true).save();
+        Settings.showBackupOnboarding.setBoolean(true).save();
+        Settings.showRestoreOnboarding.setBoolean(true).save();
+        Settings.showVerifyBackupOnboarding.setBoolean(true).save();
+        Settings.showBetaBackupOnboarding.setBoolean(true).save();
     }
 
     @Override

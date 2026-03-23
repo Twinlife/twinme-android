@@ -175,9 +175,8 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
 
         super.onResume();
 
-        if (!mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.TRANSFER)) {
-            mShowOnboarding = true;
-            showOnboarding();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            showFirstOnboarding();
         }
 
         // Update again the QR-code because the twincode could change.
@@ -186,6 +185,17 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         if (mAccountMigrationScannerService != null && !mAccountMigrationScannerService.isConnected()) {
             showNetworkDisconnect(R.string.account_activity_migration_title, this::finish);
         }
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
+
+        showFirstOnboarding();
     }
 
     @Override
@@ -288,6 +298,15 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
     public void onGetTwincodeNotFound() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetTwincodeNotFound");
+        }
+
+        incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
+    }
+
+    @Override
+    public void onGetTwincodeExpired() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetTwincodeExpired");
         }
 
         incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
@@ -714,6 +733,17 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showFirstOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showFirstOnboarding");
+        }
+
+        if (!mShowOnboarding && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.TRANSFER)) {
+            mShowOnboarding = true;
+            showOnboarding();
+        }
     }
 
     @Override

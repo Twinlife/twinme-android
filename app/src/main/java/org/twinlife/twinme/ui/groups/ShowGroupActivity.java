@@ -58,6 +58,7 @@ import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -398,7 +399,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "onLeaveGroup group=" + group + " memberTwincodeId=" + memberTwincodeId);
         }
 
-        if (mGroup != null && mGroup.getMemberTwincodeOutboundId().equals(memberTwincodeId)) {
+        if (mGroup != null && Objects.equals(mGroup.getMemberTwincodeOutboundId(), memberTwincodeId)) {
             finish();
         }
     }

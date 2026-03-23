@@ -28,12 +28,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.calls.CallParticipant;
 import org.twinlife.twinme.calls.CallStatus;
-import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.RoundedView;
@@ -76,6 +76,9 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
     private int mFillVideoHeight = 0;
 
     private boolean mDeferredMinZoom = false;
+
+    @Nullable
+    private Bitmap mCallReceiverAvatar;
 
     public CallParticipantRemoteView(Context context) {
 
@@ -178,6 +181,11 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
         }
 
         return  mParticipant.getAvatar();
+    }
+
+    public void setCallReceiverAvatar(Bitmap avatar) {
+
+        mCallReceiverAvatar = avatar;
     }
 
     @Override
@@ -519,7 +527,6 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
         }
 
         if (mParticipant.isCameraMute() || (mIsVideoCall && !CallStatus.isActive(mCallStatus)) || CallStatus.isTerminated(mCallStatus)) {
-            boolean callReceiver = mParticipant.getCallConnection().getOriginator() != null && mParticipant.getCallConnection().getOriginator().getType() == Originator.Type.CALL_RECEIVER;
             mRemoteRenderLayout.setVisibility(GONE);
             mAvatarView.setVisibility(VISIBLE);
             mSwitchCameraView.setVisibility(GONE);
@@ -528,7 +535,11 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
                 mAvatarView.setImageBitmap(mParticipant.getGroupAvatar());
                 mAvatarView.setVisibility(VISIBLE);
                 mNoAvatarContainerView.setVisibility(GONE);
-            } else if (getAvatar() != null && (!callReceiver || !CallStatus.isActive(mCallStatus))) {
+            } else if (mIsCallReceiver && !CallStatus.isActive(mCallStatus) && mCallReceiverAvatar != null) {
+                mAvatarView.setImageBitmap(mCallReceiverAvatar);
+                mAvatarView.setVisibility(VISIBLE);
+                mNoAvatarContainerView.setVisibility(GONE);
+            } else if (!mIsCallReceiver && getAvatar() != null) {
                 mAvatarView.setImageBitmap(getAvatar());
                 mAvatarView.setVisibility(VISIBLE);
                 mNoAvatarContainerView.setVisibility(GONE);

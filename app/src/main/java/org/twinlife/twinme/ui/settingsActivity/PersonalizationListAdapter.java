@@ -217,7 +217,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
                 personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.EXTRA_LARGE));
                 isSelected = fontSize == FontSize.EXTRA_LARGE.ordinal();
             }
-            personalizationViewHolder.onBind(title, isSelected);
+            personalizationViewHolder.onBind(title, isSelected, Design.WHITE_COLOR);
         } else if (viewType == DEFAULT_TAB) {
             DefaultTabViewHolder defaultTabViewHolder = (DefaultTabViewHolder) viewHolder;
             defaultTabViewHolder.onBind();

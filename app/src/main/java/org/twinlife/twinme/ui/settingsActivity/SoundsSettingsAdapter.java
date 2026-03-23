@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -147,7 +148,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         } else if (viewType == CHECKBOX) {
             SettingSwitchViewHolder settingsSwitchViewHolder = (SettingSwitchViewHolder) viewHolder;
 
-            UISetting<Boolean> uiSetting = null;
+            UISetting<Boolean> uiSetting;
 
             if (position == SECTION_MESSAGES + 1) {
                 uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_chat_vibration_title), Settings.notificationVibration);
@@ -161,11 +162,14 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_video_call_vibration_title), Settings.videoVibration);
             } else if (position == SECTION_VIDEO_CALL + 2) {
                 uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_video_call_notification_title), Settings.videoRingEnabled);
+            } else {
+                uiSetting = null;
             }
 
             if (uiSetting != null) {
                 boolean isSelected = uiSetting.getBoolean();
-                settingsSwitchViewHolder.onBind(uiSetting, isSelected, true);
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mListActivity.onSettingChangeValue(uiSetting, value);
+                settingsSwitchViewHolder.onBind(uiSetting, isSelected, true, onCheckedChangeListener);
             }
         }
     }
@@ -185,7 +189,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             return new SectionTitleViewHolder(convertView);
         } else if (viewType == CHECKBOX) {
             convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
-            return new SettingSwitchViewHolder(convertView, mListActivity);
+            return new SettingSwitchViewHolder(convertView);
         } else if (viewType == RINGTONE) {
             convertView = inflater.inflate(R.layout.settings_activity_item_ringtone, parent, false);
             return new RingtoneViewHolder(convertView, mListActivity);

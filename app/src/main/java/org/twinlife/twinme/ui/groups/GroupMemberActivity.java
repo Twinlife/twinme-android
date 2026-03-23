@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -358,7 +359,9 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             Log.d(LOG_TAG, "onInviteGroup conversation=" + conversation + "invitationDescriptor" + invitationDescriptor);
         }
 
-        mInvitedContacts.put(conversation.getContactId(), invitationDescriptor);
+        if (mInvitedContacts != null) {
+            mInvitedContacts.put(conversation.getContactId(), invitationDescriptor);
+        }
     }
 
     @Override
@@ -516,27 +519,25 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             @Override
             public void onAdminClick(UIContact uiAdmin) {
 
-                boolean canInvite = false;
-                if (mGroup != null && mCanInviteMemberAsContact && uiAdmin.getContact().getPeerTwincodeOutboundId() != mGroup.getMemberTwincodeOutboundId()) {
-                    canInvite = true;
-                }
-                openMenu(uiAdmin, canInvite, mCanRemove);
+                openMenu(uiAdmin, canInvite(uiAdmin), mCanRemove);
             }
 
             @Override
             public void onMemberClick(UIContact uiMember) {
 
-                boolean canInvite = false;
-                if (mGroup != null && mCanInviteMemberAsContact && uiMember.getContact().getPeerTwincodeOutboundId() != mGroup.getMemberTwincodeOutboundId()) {
-                    canInvite = true;
-                }
-                openMenu(uiMember, canInvite, mCanRemove);
+                openMenu(uiMember, canInvite(uiMember), mCanRemove);
             }
 
             @Override
             public void onInvitationClick(UIInvitation uiInvitation) {
 
                 openMenu(uiInvitation, false, true);
+            }
+
+            private boolean canInvite(@NonNull UIContact uiContact) {
+                return mGroup != null &&
+                        mCanInviteMemberAsContact &&
+                        !Objects.equals(uiContact.getContact().getPeerTwincodeOutboundId(), mGroup.getMemberTwincodeOutboundId());
             }
         };
 
@@ -654,10 +655,13 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
     private void updateMembers() {
         if (mMenu != null) {
             MenuItem addMemberMenuItem = mMenu.findItem(R.id.add_member_action);
-            if (mCanInvite) {
-                addMemberMenuItem.getActionView().setAlpha(1.0f);
-            } else {
-                addMemberMenuItem.getActionView().setAlpha(0.5f);
+            View actionView = addMemberMenuItem.getActionView();
+            if (actionView != null) {
+                if (mCanInvite) {
+                    actionView.setAlpha(1.0f);
+                } else {
+                    actionView.setAlpha(0.5f);
+                }
             }
         }
 

@@ -16,6 +16,7 @@
     <!-- Application -->
     <string name="application_accept">Accept</string>
     <string name="application_account_deleted">Your account has been deleted, you must now uninstall the application.</string>
+    <string name="application_account_restored_error">This device\'s account has been restored to another device. You need to uninstall the app.</string>
     <string name="application_add_contact_no_profile">You must complete a profile that represents you, before inviting a contact. Proceed?</string>
     <string name="application_all">All</string>
     <string name="application_appearance">Appearance</string>
@@ -25,6 +26,7 @@
     <string name="application_authorization_microphone">Allow app to access Microphone in system settings.</string>
     <string name="application_authorization_microphone_camera">Allow app to access Microphone and Camera in system settings.</string>
     <string name="application_authorization_title">Missing access authorization</string>
+    <string name="application_beta" translatable="false">BETA</string>
     <string name="application_back">Back</string>
     <string name="application_camera">Camera</string>
     <string name="application_cancel">Cancel</string>
@@ -52,6 +54,7 @@
     <string name="application_display_all">Display all</string>
     <string name="application_do_not_display">Do not display anymore</string>
     <string name="application_edit">Edit</string>
+    <string name="application_error_code">Error code: %1$s</string>
     <string name="application_error_file_not_found">The file was not found.</string>
     <string name="application_error_media_unload">Unable to load media.</string>
     <string name="application_error_media_not_supported">This image/video format is not supported by the application.</string>
@@ -119,6 +122,7 @@
     <string name="application_timeout_seconds">%1$d seconds</string>
     <string name="application_timeout_week">1 week</string>
     <string name="application_unknown_name">Unknown</string>
+    <string name="application_until">Until %1$s</string>
     <string name="application_upgrade">Upgrading twinme</string>
     <string name="application_webrtc_failure">WebRTC failure</string>
     <string name="application_wrong_configuration">Configuration incorrect</string>
@@ -154,16 +158,22 @@
     <string name="accept_invitation_activity_message">%1$s wants to connect with you</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Backup to external media</string>
+    <string name="account_activity_backup_restore">Backup / Restore</string>
+    <string name="account_activity_backup_verify">Verify a backup</string>
+    <string name="account_activity_backup_list">Backup history</string>
     <string name="account_activity_conversations_content_title">Conversations content</string>
     <string name="account_activity_delete_account">Your account, along with all associated data, will be permanently deleted. Confirm?</string>
     <string name="account_activity_delete_account_confirmation">Are you really sure you want to delete your account?</string>
     <string name="account_activity_export_content">Export to external media</string>
     <string name="account_activity_message_first_part">A new account is created when installing the app for the first time, after re-installing the app, or resetting the device, or deleting the current account.</string>
     <string name="account_activity_message_second_part">No trace of previous account and data remains, so you’ll have to re-invite your contacts.</string>
+    <string name="account_activity_message_third_part">Deleting an account also invalidates all backups created on that account, making it impossible to restore a backup from that account to this or another device.</string>
     <string name="account_activity_migration_message">An account migration service is available to transfer your account with all associated data (contacts, messages, groups, etc.) from one Android device to another in real-time. You can thus switch accounts between an old device and a new one.</string>
     <string name="account_activity_migration_start_from_another_device">From another device</string>
     <string name="account_activity_migration_start_from_current_device">From my device</string>
     <string name="account_activity_migration_title">Account migration</string>
+    <string name="account_activity_restore">Restore from external media</string>
     <string name="account_activity_title">Account</string>
     <string name="account_activity_transfer_between_devices">Transfer between devices</string>
     <string name="account_activity_transfer_from_another_device">Transfer from another device</string>
@@ -217,7 +227,8 @@
     <string name="add_contact_activity_onboarding_message">twinme does not know your friends and cannot discover them. You must invite them personally, with twinme when they are near you, or by sending them an invitation by other means.</string>
     <string name="add_contact_activity_scan_code">Scan invite QR-code</string>
     <string name="add_contact_activity_scan_error_corrupt_link">This link is corrupted.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">This link is incorrect.</string>
+    <string name="add_contact_activity_scan_error_expired_link">This invitation link has expired.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">This link is incorrect.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">This link is not managed by the application.</string>
     <string name="add_contact_activity_scan_error_revoked_link">This relation has been deleted.</string>
     <string name="add_contact_activity_scan_message_call_link">This link corresponds to a \"click to call\"</string>
@@ -225,6 +236,12 @@
     <string name="add_contact_activity_scan_message_migration_link">This link corresponds to an account migration</string>
     <string name="add_contact_activity_scan_message_transfer_link">This link corresponds to a call transfer</string>
     <string name="add_contact_activity_scan_title">Scan</string>
+    <string name="add_contact_activity_share_image_message">Import or scan this invitation QR-code with twinme to add \"%1$s\" as a contact.</string>
+    <string name="add_contact_activity_share_message_part_1">" %1$s invites you to enter into a private relationship on twinme - private messenger."</string>
+    <string name="add_contact_activity_share_message_part_2">twinme is a peer-to-peer end-to-end encrypted messaging service and High-Definition (HD) voice/video calls. No registration is required.</string>
+    <string name="add_contact_activity_share_message_part_3">Open this URL with twinme on your mobile device to add \"%1$s\" as a contact:</string>
+    <string name="add_contact_activity_share_message_part_4">Alternatively, you can import or scan the invitation QR-code in the attached image with twinme.</string>
+    <string name="add_contact_activity_share_title">%1$s invites you to twinme</string>
     <string name="add_contact_activity_social_subtitle">message, mail, social network</string>
     <string name="add_contact_activity_social_title">Send the code via an application</string>
     <string name="add_contact_activity_title">Invitation</string>
@@ -268,6 +285,44 @@
     <string name="authentified_relation_activity_start">Start certification</string>
     <string name="authentified_relation_activity_title">Certified relation</string>
     <string name="authentified_relation_activity_to_be_certified_title">Certify the relation</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Backup</string>
+    <string name="backup_activity_beta_message_part_1">The back-up/restore service is proposed in BETA testing in order to identify potential issues before its general release.</string>
+    <string name="backup_activity_beta_message_part_2">This service is intended to back up only account metadata (profiles, contacts, groups) to external storage so it can be restored later on another device, if the original is stolen or destroyed.</string>
+    <string name="backup_activity_beta_message_part_3">The account transfer service should be used to transfer all account data (including conversations) from one (old) device to another (new) device, when both devices are available.</string>
+    <string name="backup_activity_confirm_message">To restore the backup, you will need to enter the 12 words above in that order, allowing it to be decrypted.</string>
+    <string name="backup_activity_content">Contents</string>
+    <string name="backup_activity_content_diff_added">Added</string>
+    <string name="backup_activity_content_diff_updated">Modified</string>
+    <string name="backup_activity_content_diff_deleted">Deleted</string>
+    <string name="backup_activity_content_diff_message">Here are the changes compared to your current data:</string>
+    <string name="backup_activity_content_info">Backups do not include conversations, groups, notifications, and history.</string>
+    <string name="backup_activity_error_words">The words entered do not allow the backup to be decrypted.</string>
+    <string name="backup_activity_generate_word">Generate</string>
+    <string name="backup_activity_last_backup">Last backup on %1$s</string>
+    <string name="backup_activity_new_backup">New backup</string>
+    <string name="backup_activity_onboarding">Make an encrypted backup of account data (Spaces, profiles, contacts, click-to-call) that can be restored to this device or another one.</string>
+    <string name="backup_activity_reminder">Your last backup was created more than 30 days ago.</string>
+    <string name="backup_activity_save_file_message">Save the backup file to the device of your choice and keep the passwords for later restoration.</string>
+    <string name="backup_activity_security">Security</string>
+    <string name="backup_activity_security_info">The backup encryption key is represented by a series of 12 words that will be required for the restoration.</string>
+    <string name="backup_activity_success">Backup completed successfully!</string>
+    <string name="backup_activity_success_info">Keep this list of 12 words so you can restore this backup.</string>
+    <string name="backup_activity_title">Backup</string>
+    <string name="backup_activity_use_last_backup_words">Use the same list of words as for the last backup.</string>
+    <string name="backup_activity_verify_completed">Verification complete!</string>
+    <string name="backup_activity_verify_message">You can also check the integrity of a backup file and whether the data it contains is up-to-date from: Account/Verify a backup.</string>
+    <string name="backup_activity_verify_up_to_date">Your backup is up to date.</string>
+    <string name="backup_activity_verify_not_up_to_date">Your backup is not up to date.</string>
+    <string name="backup_activity_verify_words">To verify a backup, you need to enter the 12-word sequence to decrypt it.</string>
+    <string name="backup_activity_wait_message">Do not leave this screen while the backup is in progress.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Invalidate my backups</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">All your previous backups will become invalid and can no longer be restored.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Don’t forget to create a new backup, which can be restored to this device or another one.</string>
+    <string name="backups_activity_no_backup_message">No backup has been made on this device.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">All</string>
@@ -334,6 +389,7 @@
     <string name="call_activity_tag_speaker_mute">Mute speaker</string>
     <string name="call_activity_transfert_call_message">The on-going call has been transferred.</string>
     <string name="call_activity_try_to_call_back">Try to call back.</string>
+    <string name="call_activity_waiting_conference_call">"No one has joined the call yet. Please wait… "</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Camera already in use</string>
@@ -482,15 +538,29 @@
 
     <!-- ConversationsFragment -->
     <string name="conversations_fragment_no_conversation_message">End-to-end encrypted messages are exchanged in peer-to-peer, directly from device to device, without an intermediate distribution server = no traces in the cloud.</string>
-    <string name="conversations_fragment_no_result_found">No results found for \'%1$s\'.</string>
+    <string name="conversations_fragment_no_result_found">No results found for ’%1$s’.</string>
     <string name="conversations_fragment_start">Start a conversation</string>
     <string name="conversations_fragment_title">Conversations</string>
     <string name="conversations_fragment_you">You</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Call configuration</string>
+    <string name="create_external_call_activity_call_type">Call type</string>
+    <string name="create_external_call_activity_conference_call_description">Join a conference call directly from a browser. Ideal for business or family meetings.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Conference call</string>
+    <string name="create_external_call_activity_conference_call_title">Conference call</string>
+    <string name="create_external_call_activity_continuous_link_description">No restrictions on link validity</string>
+    <string name="create_external_call_activity_continuous_link_title">Permanent</string>
+    <string name="create_external_call_activity_delete_link_setting">This link will no longer be valid after the specified period.</string>
+    <string name="create_external_call_activity_direct_call_description">Receive a call directly on your device from someone who doesn\'t have the app.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Direct</string>
+    <string name="create_external_call_activity_direct_call_title">Direct call</string>
+    <string name="create_external_call_activity_group_call_description">Up to 8 participants</string>
     <string name="create_external_call_activity_link_validity">Link Validity</string>
     <string name="create_external_call_activity_message">This profile is displayed to guests who will call you with this \"click-to-call\" link.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" allows guests to call you from a browser without installing the application.</string>
+    <string name="create_external_call_activity_name_required">A name and image are required to represent this \"Click-to-call\".</string>
+    <string name="create_external_call_activity_notification_setting">Be notified as soon as the first participant joins the conference.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call allows guests to call you or join a conference call (Click-to-meet) from a browser without installing the app.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Each instance has a name, image, and description, representing the subject of the call, such as:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">your customer service</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">the car you are selling</string>
@@ -509,7 +579,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Change the default name (Guest) representing them on the call</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Call you by pressing the \"Call\" button on the web page.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">After the call, they may keep the web page open to call you back.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Set up a Click-to-call</string>
+    <string name="create_external_call_activity_onboarding_title_3">Share a Click-to-call</string>
+    <string name="create_external_call_activity_onboarding_title_4">Use a Click-to-call</string>
     <string name="create_external_call_activity_placeholder">Subject (Help, Announce, Meeting, Doorbell, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Customize the days/times the link is valid</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periodic</string>
+    <string name="create_external_call_activity_unique_link_description">Set the start and end dates of the link validity</string>
+    <string name="create_external_call_activity_unique_link_title">Single Use</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Invite members</string>
@@ -671,6 +748,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">This action invalidates the current invite code associated with this \"click-to-call\" link. Confirm?</string>
     <string name="invitation_call_activity_generate_code_title">Generate a new code for this link</string>
+    <string name="invitation_call_activity_invite_meeting_message">Open the web address %1$s, or scan the QR-Code, to join the meeting “%2$s”.</string>
     <string name="invitation_call_activity_invite_message">Open the web address %1$s or scan the QR-Code, to call “%2$s”.</string>
     <string name="invitation_call_activity_message">Share this \"click-to-call\" code with someone who can then call you, from the web or mobile app.</string>
     <string name="invitation_call_activity_save_message">Scan this QR-Code to call “%1$s”.</string>
@@ -733,6 +811,7 @@
     <string name="notification_center_audio_message_received">New audio message</string>
     <string name="notification_center_cancel">Dismiss</string>
     <string name="notification_center_cleanup_conversation">Some old messages have been deleted.</string>
+    <string name="notification_center_conference_join_call">One participant joined the call.</string>
     <string name="notification_center_deleted_contact">Contact Deleted</string>
     <string name="notification_center_file_message">Sent you a file</string>
     <string name="notification_center_file_message_received">New file</string>
@@ -740,6 +819,7 @@
     <string name="notification_center_invitation_group">invites you to join a group.</string>
     <string name="notification_center_invitation_received">New invitation</string>
     <string name="notification_center_invitation_received_group">New group invitation</string>
+    <string name="notification_center_join_call">%1$s just joined the call</string>
     <string name="notification_center_join_group">You are member of the group</string>
     <string name="notification_center_message_received">New message</string>
     <string name="notification_center_missed_audio_call_to">Missed audio call to %1$s</string>
@@ -924,6 +1004,42 @@
     <string name="quality_of_service_activity_warning_receive_notification">Allow app to receive push notifications.</string>
     <string name="quality_of_service_activity_warning_run_background">Allow app to run in background.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ must be installed on this device in order to restore a twinme+ account backup.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">The device that made the backup is still signed in.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">If you restore the backup to this new device, the account of the device on which the backup was made will be automatically invalidated.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">If you want to transfer your account to a new device, and you still have the old one, it is preferable to use the \"account migration\" operation, rather than restoring a backup, as it will also transfer conversations, groups, notifications, and history.</string>
+    <string name="restore_activity_confirm">Are you sure you want to replace the current account data with the following data from the backup?</string>
+    <string name="restore_activity_confirm_restore">Do you still want to restore this backup?</string>
+    <string name="restore_activity_content_contact_deleted_message">Data deleted after backup cannot be restored.</string>
+    <string name="restore_activity_content_profile_reset">Invitation code changed.</string>
+    <string name="restore_activity_content_profile_reset_message">The invitation code associated with the backed-up profile is invalid. A new invitation code will be generated during the restore process.</string>
+    <string name="restore_activity_enter_words">Enter the series of 12 words allowing to decrypt the backup.</string>
+    <string name="restore_activity_error_message">Error restoring backup.</string>
+    <string name="restore_activity_error_message_verify_backup">Error verifying backup.</string>
+    <string name="restore_activity_file_not_supported">The backup file must be in \"twmbckp\" format.</string>
+    <string name="restore_activity_more_recent_backup">A more recent backup was made with the same account.</string>
+    <string name="restore_activity_onboarding">Restoring a backup will replace the current account data.</string>
+    <string name="restore_activity_onboarding_words">To restore a backup, you will need to enter the series of 12 words allowing it to be decrypted.</string>
+    <string name="restore_activity_onboarding_verify">Verify that a backup is valid and up to date with your current data.</string>
+    <string name="restore_activity_paste">Paste the list of words from the clipboard.</string>
+    <string name="restore_activity_paste_error">Invalid word list.</string>
+    <string name="restore_activity_restore">Restore</string>
+    <string name="restore_activity_select_backup">Select a backup</string>
+    <string name="restore_activity_state_restore_account">Restoring account…</string>
+    <string name="restore_activity_state_restore_data">Restoring data…</string>
+    <string name="restore_activity_state_restore_starting">Starting restore.</string>
+    <string name="restore_activity_state_restore_verify_account">Account verification…</string>
+    <string name="restore_activity_state_restore_verify_data">Data verification…</string>
+    <string name="restore_activity_state_restore_verify_starting">Verification starting…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Waiting for confirmation.</string>
+    <string name="restore_activity_success">Restoration completed successfully!</string>
+    <string name="restore_activity_success_message">Close the app and restart it to access the new data.</string>
+    <string name="restore_activity_title">Restoration</string>
+    <string name="restore_activity_verify_same_account">The verification must be performed on the same device used for the backup.</string>
+    <string name="restore_activity_warning">Restoring this backup will replace all current account data with the data from the backup.</string>
+
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Define as administrator</string>
     <string name="room_members_activity_delete_message">Confirm removing this member</string>
@@ -978,15 +1094,18 @@
     <string name="settings_activity_ephemeral_title">Disappearing message</string>
     <string name="settings_activity_image_title">Photo</string>
     <string name="settings_activity_message_properties_title">Message properties</string>
+    <string name="settings_activity_message_reactions_notification">Notification on message reactions</string>
     <string name="settings_activity_reset_default_value">Reset to default settings</string>
     <string name="settings_activity_reset_preferences_button_title">Reset to defaults</string>
     <string name="settings_activity_reset_preferences_message">Reset notification settings to application defaults.</string>
     <string name="settings_activity_reset_preferences_title">Reset preferences</string>
     <string name="settings_activity_permissions_title">PERMISSIONS</string>
+    <string name="settings_activity_silent_mode">Silent mode</string>
     <string name="settings_activity_silent_sound">Silent</string>
     <string name="settings_activity_sound_enabled_title">SOUND NOTIFICATIONS</string>
     <string name="settings_activity_system_notifications_title">System notifications</string>
     <string name="settings_activity_system_settings_title">System settings</string>
+    <string name="settings_activity_turn_off_notification_sounds">Turn off notification sounds</string>
     <string name="settings_activity_video_call_category_title">Video calls</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Ringtone name</string>
     <string name="settings_activity_video_call_notification_title">Ringtone</string>
@@ -1015,7 +1134,9 @@
     
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">\"Click-to-call\" code</string>
+    <string name="show_call_activity_conference_call_information">Share this link to call you or join a conference from a browser.</string>
     <string name="show_call_activity_information_code">Share this code to receive external calls.</string>
+    <string name="show_call_activity_meeting_organizer">Organizer of this meeting</string>
     <string name="show_call_activity_schedule_call">Scheduled call</string>
     <string name="show_call_activity_schedule_from">from %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s from %2$s to %3$s</string>
@@ -1099,12 +1220,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Classified ad</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Insert a link in a classified ad allowing potential buyers to call you without installing the app.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Announce</string>
-    <string name="template_click_to_call_activity_template_help">Help</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Help</string>
+    <string name="template_click_to_call_activity_template_default_description">Customize a call link as needed.</string>
+    <string name="template_click_to_call_activity_template_help">Customer Service</string>
+    <string name="template_click_to_call_activity_template_help_description">Link to call your customer service from a browser.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Customer Service</string>
+    <string name="template_click_to_call_activity_template_job">Job Interview</string>
+    <string name="template_click_to_call_activity_template_job_description">Link allowing interested recruiters to call you for an interview.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Job Interview</string>
     <string name="template_click_to_call_activity_template_meeting">Meeting</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Share a link to join a conference from a browser.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Meeting</string>
+    <string name="template_click_to_call_activity_template_profile_description">Link to call you without installing the app.</string>
     <string name="template_click_to_call_activity_template_video_bell">Video doorbell</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Allow the delivery driver to call you for instructions.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Doorbell</string>
 
     <!-- TemplateSpaceActivity -->

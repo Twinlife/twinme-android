@@ -17,34 +17,35 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.format.DateFormat;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Capabilities;
+import org.twinlife.twinme.models.LinkValidity;
 import org.twinlife.twinme.models.schedule.Date;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -52,11 +53,12 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.EditIdentityActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.LastCallsActivity;
+import org.twinlife.twinme.ui.callActivity.CallActivity;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.RoundedView;
-import org.twinlife.twinme.utils.SwitchView;
 
-import java.text.SimpleDateFormat;
+import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -66,32 +68,41 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
     private static final String LOG_TAG = "ShowExternalCall...";
     private static final boolean DEBUG = false;
 
-    private static final int DESIGN_MESSAGE_VIEW_TOP_MARGIN = 60;
+    protected static final float DESIGN_ACTION_ITEM_VIEW = 128f;
+    protected static final float DESIGN_ACTION_ITEM_MARGIN = 104f;
+
     private static int AVATAR_OVER_SIZE;
     private static int AVATAR_MAX_SIZE;
 
     private View mContentView;
-    private View mTwincodeView;
-    private TextView mMessageView;
     private View mEditView;
     private TextView mDescriptionTextView;
     private ImageView mAvatarView;
     private TextView mTitleView;
     private TextView mIdentityTextView;
     private CircularImageView mIdentityAvatarView;
-    private TextView mSettingsTextView;
-    private SwitchView mLimitedSwitchView;
-    private View mStartView;
-    private TextView mStartDateTextView;
-    private TextView mStartTimeTextView;
-    private View mEndView;
-    private TextView mEndDateTextView;
-    private TextView mEndTimeTextView;
+    private RecyclerView mSettingsRecyclerView;
 
     private View mOverlayMenuView;
     private MenuCallCapabilitiesView mMenuCapabilitiesView;
 
     private ScrollView mScrollView;
+    private View mAudioClickableView;
+    private View mVideoClickableView;
+    private View mShareClickableView;
+    private RoundedView mRoundedShareView;
+    private TextView mShareTextView;
+    private RoundedView mRoundedVideoView;
+    private TextView mVideoTextView;
+    private RoundedView mRoundedAudioView;
+    private TextView mAudioTextView;
+    private TextView mIdentityTitleView;
+    private View mIdentityView;
+
+    private View mLastCallsView;
+    private TextView mLastCallsTitleView;
+    private TextView mLastCallsTextView;
+    private ExternalCallConfigAdapter mExternalCallConfigAdapter;
 
     private boolean mUIInitialized = false;
 
@@ -107,10 +118,7 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
     private float mAvatarLastSize = -1;
     private float mScrollPosition = -1;
 
-    private Date mScheduleStartDate;
-    private Time mScheduleStartTime;
-    private Date mScheduleEndDate;
-    private Time mScheduleEndTime;
+    private UIConfigExternalCall mConfigExternalCall;
 
     //
     // Override TwinmeActivityImpl methods
@@ -165,6 +173,8 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             layoutParams.height = contentHeight + AVATAR_MAX_SIZE;
 
             mScrollView.post(() -> mScrollView.scrollBy(0, AVATAR_OVER_SIZE));
+
+            updateContentHeight();
         }
 
         super.onResume();
@@ -195,27 +205,24 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
     //
 
     @Override
-    public void onGetCallReceiver(@Nullable CallReceiver callReceiver) {
+    public void onGetCallReceiver(@Nullable CallReceiver callReceiver, @Nullable Bitmap image) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetCallReceiver: " + callReceiver);
         }
 
         mCallReceiver = callReceiver;
+        mAvatar = image;
+        updateExternalCall();
+    }
 
-        if (mCallReceiverService == null) {
-            mIdentityAvatar = getTwinmeApplication().getAnonymousAvatar();
-            updateExternalCall();
-            return;
+    @Override
+    public void onGetCallReceiverNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCallReceiverNotFound");
         }
 
-        mCallReceiverService.getIdentityImage(callReceiver, (Bitmap identityAvatar) -> {
-            mIdentityAvatar = identityAvatar;
-            if (mCallReceiver != null && mCallReceiver.getAvatarId() != null) {
-                mCallReceiverService.getLargeAvatar(mCallReceiver.getAvatarId());
-            }
-
-            updateExternalCall();
-        });
+        // @todo report a message that the call receiver is invalid.
+        finish();
     }
 
     @Override
@@ -225,7 +232,7 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
 
         if (mCallReceiver != null && callReceiver.getId().equals(mCallReceiver.getId())) {
-            onGetCallReceiver(callReceiver);
+            onGetCallReceiver(callReceiver, null);
         }
     }
 
@@ -258,13 +265,17 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onCloseMenuAnimationEnd");
         }
 
+        mConfigExternalCall.setAllowVoiceCall(mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VOICE_CALL_SWITCH));
+        mConfigExternalCall.setAllowVideoCall(mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VIDEO_CALL_SWITCH));
+        mConfigExternalCall.setAllowGroupCall(mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.GROUP_CALL_SWITCH));
+
         mMenuCapabilitiesView.setVisibility(View.INVISIBLE);
         mOverlayMenuView.setVisibility(View.INVISIBLE);
 
         Window window = getWindow();
         window.setNavigationBarColor(Design.WHITE_COLOR);
 
-        saveCallCapabilities();
+        saveCapabilities();
     }
 
     //
@@ -355,64 +366,67 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         ImageView editImageView = findViewById(R.id.show_external_call_activity_edit_image_view);
         editImageView.setColorFilter(Design.getMainStyle());
 
-        mTwincodeView = findViewById(R.id.show_external_call_activity_twincode_view);
-        mTwincodeView.setOnClickListener(view -> onTwincodeClick());
+        View actionView = findViewById(R.id.show_external_call_activity_action_view);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTwincodeView.getLayoutParams();
-        marginLayoutParams.topMargin = Design.TWINCODE_VIEW_TOP_MARGIN;
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) actionView.getLayoutParams();
+        marginLayoutParams.topMargin = Design.ACTION_VIEW_TOP_MARGIN;
 
-        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-        ShapeDrawable twincodeViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        twincodeViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mTwincodeView, twincodeViewBackground);
+        mShareClickableView = findViewById(R.id.show_external_call_activity_share_clickable_view);
+        mShareClickableView.setOnClickListener(view -> onTwincodeClick());
 
-        ImageView twincodeIconView = findViewById(R.id.show_external_call_activity_twincode_icon_view);
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) twincodeIconView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.TWINCODE_PADDING;
-        marginLayoutParams.topMargin = Design.TWINCODE_ICON_PADDING;
-        marginLayoutParams.bottomMargin = Design.TWINCODE_ICON_PADDING;
-        marginLayoutParams.setMarginStart(Design.TWINCODE_PADDING);
+        layoutParams = mShareClickableView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ACTION_ITEM_VIEW * Design.WIDTH_RATIO);
+        layoutParams.height = Design.ACTION_CLICKABLE_VIEW_HEIGHT;
 
-        layoutParams = twincodeIconView.getLayoutParams();
-        layoutParams.height = Design.TWINCODE_ICON_SIZE;
-        layoutParams.width = Design.TWINCODE_ICON_SIZE;
+        mRoundedShareView = findViewById(R.id.show_external_call_activity_share_rounded_view);
+        mShareTextView = findViewById(R.id.show_external_call_activity_share_text_view);
 
-        TextView twincodeTextView = findViewById(R.id.show_external_call_activity_twincode_title_view);
-        Design.updateTextFont(twincodeTextView, Design.FONT_REGULAR28);
-        twincodeTextView.setTextColor(Color.WHITE);
+        mVideoClickableView = findViewById(R.id.show_external_call_activity_video_clickable_view);
+        mVideoClickableView.setOnClickListener(view -> onVideoClick());
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) twincodeTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.TWINCODE_PADDING;
-        marginLayoutParams.rightMargin = Design.TWINCODE_PADDING;
-        marginLayoutParams.setMarginStart(Design.TWINCODE_PADDING);
-        marginLayoutParams.setMarginEnd(Design.TWINCODE_PADDING);
+        layoutParams = mVideoClickableView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ACTION_ITEM_VIEW * Design.WIDTH_RATIO);
+        layoutParams.height = Design.ACTION_CLICKABLE_VIEW_HEIGHT;
+
+        mRoundedVideoView = findViewById(R.id.show_external_call_activity_video_rounded_view);
+        mVideoTextView = findViewById(R.id.show_external_call_activity_video_text_view);
+
+        mAudioClickableView = findViewById(R.id.show_external_call_activity_audio_clickable_view);
+        mAudioClickableView.setOnClickListener(view -> onAudioClick());
+
+        layoutParams = mAudioClickableView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ACTION_ITEM_VIEW * Design.WIDTH_RATIO);
+        layoutParams.height = Design.ACTION_CLICKABLE_VIEW_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mVideoClickableView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_ACTION_ITEM_MARGIN * Design.WIDTH_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mAudioClickableView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_ACTION_ITEM_MARGIN * Design.WIDTH_RATIO);
+
+        mRoundedAudioView = findViewById(R.id.show_external_call_activity_audio_rounded_view);
+        mRoundedAudioView.setColor(Design.AUDIO_CALL_COLOR);
+
+        mAudioTextView = findViewById(R.id.show_external_call_activity_audio_text_view);
 
         mDescriptionTextView = findViewById(R.id.show_external_call_activity_description_text_view);
         Design.updateTextFont(mDescriptionTextView, Design.FONT_MEDIUM34);
         mDescriptionTextView.setTextColor(Design.FONT_COLOR_DESCRIPTION);
 
-        mMessageView = findViewById(R.id.show_external_call_activity_message_view);
-        Design.updateTextFont(mMessageView, Design.FONT_REGULAR26);
-        mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mIdentityView = findViewById(R.id.show_external_call_activity_identity_view);
+        mIdentityView.setOnClickListener(view -> onEditIdentityClick());
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
-
-        View identityView = findViewById(R.id.show_external_call_activity_identity_view);
-        identityView.setOnClickListener(view -> onEditIdentityClick());
-
-        layoutParams = identityView.getLayoutParams();
+        layoutParams = mIdentityView.getLayoutParams();
         layoutParams.height = Design.SECTION_HEIGHT;
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) identityView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mIdentityView.getLayoutParams();
         marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
 
-        TextView identityTitleView = findViewById(R.id.show_external_call_activity_identity_title_view);
-        Design.updateTextFont(identityTitleView, Design.FONT_BOLD26);
-        identityTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mIdentityTitleView = findViewById(R.id.show_external_call_activity_identity_title_view);
+        Design.updateTextFont(mIdentityTitleView, Design.FONT_BOLD26);
+        mIdentityTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) identityTitleView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mIdentityTitleView.getLayoutParams();
         marginLayoutParams.topMargin = Design.TITLE_IDENTITY_TOP_MARGIN;
 
         mIdentityTextView = findViewById(R.id.show_external_call_activity_identity_text_view);
@@ -421,155 +435,101 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
 
         mIdentityAvatarView = findViewById(R.id.show_external_call_activity_identity_avatar_view);
 
-        TextView settingsTitleView = findViewById(R.id.show_external_call_activity_settings_title_view);
-        Design.updateTextFont(settingsTitleView, Design.FONT_BOLD26);
-        settingsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mSettingsRecyclerView = findViewById(R.id.show_external_call_activity_settings_view);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) settingsTitleView.getLayoutParams();
+        mConfigExternalCall = new UIConfigExternalCall(this, false);
+
+        ExternalCallConfigAdapter.OnExternalCallConfigClickListener onExternalCallConfigClickListener = new ExternalCallConfigAdapter.OnExternalCallConfigClickListener() {
+            @Override
+            public void onExternalCallConfigClick(UIConfigExternalCallItem configExternalCall) {
+
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
+                    openMenuCapabilities();
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
+                    openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE, mConfigExternalCall.getConfigCallType().ordinal());
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
+                    openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION, mConfigExternalCall.getLinkValidity().ordinal());
+                }
+            }
+
+            @Override
+            public void onDateViewClick(UIConfigExternalCallItem configExternalCall) {
+
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                    onStartDateViewClick();
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                    onEndDateViewClick();
+                }
+            }
+
+            @Override
+            public void onTimeViewClick(UIConfigExternalCallItem configExternalCall) {
+
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                    onStartTimeViewClick();
+                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                    onEndTimeViewClick();
+                }
+            }
+
+            @Override
+            public void onSelectDayClick(UIScheduleDay scheduleDay) {
+
+                onSelectScheduleDayClick(scheduleDay);
+            }
+
+            @Override
+            public void onSwitchValueChanged(UIConfigExternalCallItem configExternalCall, boolean value) {
+
+                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.DELETE) {
+                    mConfigExternalCall.setDeleteLinkSetting(value);
+                } if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.NOTIFICATION) {
+                    mConfigExternalCall.setNotificationJoinSetting(value);
+                }
+
+                saveCapabilities();
+            }
+        };
+
+        mExternalCallConfigAdapter = new ExternalCallConfigAdapter(this, mConfigExternalCall, onExternalCallConfigClickListener);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+
+        mSettingsRecyclerView.setLayoutManager(linearLayoutManager);
+        mSettingsRecyclerView.setAdapter(mExternalCallConfigAdapter);
+        mSettingsRecyclerView.setItemAnimator(null);
+
+        mLastCallsTitleView = findViewById(R.id.show_external_call_activity_last_calls_title_view);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mLastCallsTitleView.getLayoutParams();
         marginLayoutParams.topMargin = Design.TITLE_IDENTITY_TOP_MARGIN;
 
-        View settingsView = findViewById(R.id.show_external_call_activity_settings_view);
-        settingsView.setOnClickListener(view -> onSettingsClick());
-
-        layoutParams = settingsView.getLayoutParams();
+        mLastCallsView = findViewById(R.id.show_external_call_activity_last_calls_view);
+        layoutParams = mLastCallsView.getLayoutParams();
         layoutParams.height = Design.SECTION_HEIGHT;
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) settingsView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mLastCallsView.getLayoutParams();
         marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
 
-        mSettingsTextView = findViewById(R.id.show_external_call_activity_settings_text_view);
-        Design.updateTextFont(mSettingsTextView, Design.FONT_REGULAR34);
-        mSettingsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mLastCallsView.setOnClickListener(view -> onLastCallsClick());
 
-        View limitedView = findViewById(R.id.show_external_call_activity_limited_view);
+        mLastCallsTextView = findViewById(R.id.show_external_call_activity_last_calls_text_view);
+        Design.updateTextFont(mLastCallsTextView, Design.FONT_BOLD26);
+        mLastCallsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        layoutParams = limitedView.getLayoutParams();
-        layoutParams.height = Design.SECTION_HEIGHT;
-
-        mLimitedSwitchView = findViewById(R.id.show_external_call_activity_limited_checkbox);
-        Design.updateTextFont(mLimitedSwitchView, Design.FONT_REGULAR34);
-        mLimitedSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        mLimitedSwitchView.setOnCheckedChangeListener((buttonView, isChecked) -> saveLimited());
-
-        mStartView = findViewById(R.id.show_external_call_activity_start_view);
-
-        layoutParams = mStartView.getLayoutParams();
-        layoutParams.height = Design.SECTION_HEIGHT;
-
-        TextView startTextView = findViewById(R.id.show_external_call_activity_start_text_view);
-        Design.updateTextFont(startTextView, Design.FONT_REGULAR34);
-        startTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        View startDateView = findViewById(R.id.show_external_call_activity_start_date_view);
-        startDateView.setOnClickListener(v -> onStartDateClick());
-
-        layoutParams = startDateView.getLayoutParams();
-        layoutParams.width = Design.DATE_VIEW_WIDTH;
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) startDateView.getLayoutParams();
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_MARGIN;
-
-        ShapeDrawable startDateViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        startDateViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(startDateView, startDateViewBackground);
-
-        mStartDateTextView = findViewById(R.id.show_external_call_activity_start_date_text_view);
-        Design.updateTextFont(mStartDateTextView, Design.FONT_REGULAR32);
-        mStartDateTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mStartDateTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
-
-        View startHourView = findViewById(R.id.show_external_call_activity_start_hour_view);
-        startHourView.setOnClickListener(v -> onStartHourClick());
-
-        layoutParams = startHourView.getLayoutParams();
-        layoutParams.width = Design.HOUR_VIEW_WIDTH;
-
-        ShapeDrawable startHourViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        startHourViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(startHourView, startHourViewBackground);
-
-        mStartTimeTextView = findViewById(R.id.show_external_call_activity_start_hour_text_view);
-        Design.updateTextFont(mStartTimeTextView, Design.FONT_REGULAR32);
-        mStartTimeTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mStartTimeTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
-
-        mEndView = findViewById(R.id.show_external_call_activity_end_view);
-
-        layoutParams = mEndView.getLayoutParams();
-        layoutParams.height = Design.SECTION_HEIGHT;
-
-        TextView endTextView = findViewById(R.id.show_external_call_activity_end_text_view);
-        Design.updateTextFont(endTextView, Design.FONT_REGULAR34);
-        endTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        View endDateView = findViewById(R.id.show_external_call_activity_end_date_view);
-        endDateView.setOnClickListener(v -> onEndDateClick());
-
-        layoutParams = endDateView.getLayoutParams();
-        layoutParams.width = Design.DATE_VIEW_WIDTH;
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) endDateView.getLayoutParams();
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_MARGIN;
-
-        ShapeDrawable endDateViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        endDateViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(endDateView, endDateViewBackground);
-
-        mEndDateTextView = findViewById(R.id.show_external_call_activity_end_date_text_view);
-        Design.updateTextFont(mEndDateTextView, Design.FONT_REGULAR32);
-        mEndDateTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEndDateTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
-
-        View endHourView = findViewById(R.id.show_external_call_activity_end_hour_view);
-        endHourView.setOnClickListener(v -> onEndHourClick());
-
-        layoutParams = endHourView.getLayoutParams();
-        layoutParams.width = Design.HOUR_VIEW_WIDTH;
-
-        ShapeDrawable endHourViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        endHourViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        ViewCompat.setBackground(endHourView, endHourViewBackground);
-
-        mEndTimeTextView = findViewById(R.id.show_external_call_activity_end_hour_text_view);
-        Design.updateTextFont(mEndTimeTextView, Design.FONT_REGULAR32);
-        mEndTimeTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEndTimeTextView.getLayoutParams();
-        marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
-        marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
-
-        TextView lastCallsTitleView = findViewById(R.id.show_external_call_activity_last_calls_title_view);
-        Design.updateTextFont(lastCallsTitleView, Design.FONT_BOLD26);
-        lastCallsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) lastCallsTitleView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mLastCallsTextView.getLayoutParams();
         marginLayoutParams.topMargin = Design.TITLE_IDENTITY_TOP_MARGIN;
-
-        View lastCallsView = findViewById(R.id.show_external_call_activity_last_calls_view);
-        layoutParams = lastCallsView.getLayoutParams();
-        layoutParams.height = Design.SECTION_HEIGHT;
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) lastCallsView.getLayoutParams();
-        marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
-
-        lastCallsView.setOnClickListener(view -> onLastCallsClick());
-
-        TextView lastCallsTextView = findViewById(R.id.show_external_call_activity_last_calls_text_view);
-        Design.updateTextFont(lastCallsTextView, Design.FONT_REGULAR34);
-        lastCallsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mOverlayMenuView = findViewById(R.id.show_external_call_activity_overlay_view);
         mOverlayMenuView.setBackgroundColor(Design.OVERLAY_VIEW_COLOR);
-        mOverlayMenuView.setOnClickListener(view -> closeMenuCapabilites());
+        mOverlayMenuView.setOnClickListener(view -> closeMenuCapabilities());
 
         mMenuCapabilitiesView = findViewById(R.id.show_external_call_activity_menu_call_capabilities_view);
         mMenuCapabilitiesView.setVisibility(View.INVISIBLE);
@@ -596,12 +556,26 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         mTitleView.setText(name);
         mDescriptionTextView.setText(description);
         mDescriptionTextView.setVisibility(View.VISIBLE);
-        mMessageView.setVisibility(View.VISIBLE);
-        mTwincodeView.setVisibility(View.VISIBLE);
         mEditView.setVisibility(View.VISIBLE);
 
-        mIdentityTextView.setText(mCallReceiver.getIdentityName());
-        mIdentityAvatarView.setImage(this, null, new CircularImageDescriptor(mIdentityAvatar, 0.5f, 0.5f, 0.5f));
+        mConfigExternalCall.initWithCapabilities(mCallReceiver.getCapabilities(), mCallReceiver.isConference());
+
+        if (!mCallReceiver.isConference()) {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mShareClickableView.getLayoutParams();
+            layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            mShareClickableView.setLayoutParams(layoutParams);
+
+            mAudioClickableView.setVisibility(View.GONE);
+            mVideoClickableView.setVisibility(View.GONE);
+            mIdentityTitleView.setVisibility(View.GONE);
+            mIdentityView.setVisibility(View.GONE);
+        } else {
+            mIdentityTextView.setText(mCallReceiver.getIdentityName());
+            mCallReceiverService.getOrganizerAvatar(mCallReceiver, (Bitmap avatar) -> {
+                mIdentityAvatar = avatar;
+                mIdentityAvatarView.setImage(this, null, new CircularImageDescriptor(mIdentityAvatar, 0.5f, 0.5f, 0.5f));
+            });
+        }
 
         if (mAvatar == null) {
             mCallReceiverService.getImage(mCallReceiver, (Bitmap avatar) -> {
@@ -613,149 +587,29 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
                     mAvatarView.setBackgroundColor(Design.AVATAR_PLACEHOLDER_COLOR);
                 }
 
-                updateCallCapabilities();
+                mExternalCallConfigAdapter.updateConfigItems(mConfigExternalCall);
             });
         } else {
             mAvatarView.setImageBitmap(mAvatar);
-            updateCallCapabilities();
+            mExternalCallConfigAdapter.updateConfigItems(mConfigExternalCall);
         }
+
+        updateContentHeight();
     }
 
-    private void updateCallCapabilities() {
+    private void onStartDateViewClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "updateCallCapabilities");
-        }
-
-        if (mCallReceiver == null) {
-            return;
-        }
-        Capabilities capabilities = mCallReceiver.getCapabilities();
-
-        SpannableStringBuilder spannableCapabilitesStringBuilder = new SpannableStringBuilder();
-
-        if (capabilities.hasAudio()) {
-            spannableCapabilitesStringBuilder.append(getString(R.string.show_contact_activity_audio));
-        }
-
-        if (capabilities.hasVideo()) {
-            if (!spannableCapabilitesStringBuilder.toString().isEmpty()) {
-                spannableCapabilitesStringBuilder.append(", ");
-            }
-            spannableCapabilitesStringBuilder.append(getString(R.string.show_contact_activity_video));
-        }
-
-        if (capabilities.hasGroupCall()) {
-            if (!spannableCapabilitesStringBuilder.toString().isEmpty()) {
-                spannableCapabilitesStringBuilder.append(", ");
-            }
-            spannableCapabilitesStringBuilder.append(getString(R.string.show_group_activity_title));
-        }
-
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.show_call_activity_settings_call));
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        if (!spannableCapabilitesStringBuilder.toString().isEmpty()) {
-            spannableStringBuilder.append("\n");
-            int startSubTitle = spannableStringBuilder.length();
-            spannableStringBuilder.append(spannableCapabilitesStringBuilder.toString());
-            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        mSettingsTextView.setText(spannableStringBuilder);
-
-        final Schedule schedule = capabilities.getSchedule();
-        if (schedule != null) {
-            if (schedule.isEnabled()) {
-                mStartView.setVisibility(View.VISIBLE);
-                mEndView.setVisibility(View.VISIBLE);
-            } else {
-                mStartView.setVisibility(View.GONE);
-                mEndView.setVisibility(View.GONE);
-            }
-
-            if (!schedule.getTimeRanges().isEmpty()) {
-                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
-                mScheduleStartDate = dateTimeRange.start.date;
-                mScheduleStartTime = dateTimeRange.start.time;
-                mScheduleEndDate = dateTimeRange.end.date;
-                mScheduleEndTime = dateTimeRange.end.time;
-
-                updateSchedule(false);
-            } else {
-                mStartDateTextView.setText("");
-                mStartTimeTextView.setText("");
-                mEndDateTextView.setText("");
-                mEndTimeTextView.setText("");
-            }
-            mLimitedSwitchView.setChecked(schedule.isEnabled());
-        } else {
-            mLimitedSwitchView.setChecked(false);
-            mStartView.setVisibility(View.GONE);
-            mEndView.setVisibility(View.GONE);
-        }
-    }
-
-    private void initSchedule() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "initSchedule");
-        }
-
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new java.util.Date(System.currentTimeMillis()));
-
-        calendar.add(Calendar.HOUR, 1);
-        calendar.set(Calendar.MINUTE, 0);
-        mScheduleStartDate = Date.from(calendar);
-        mScheduleStartTime = Time.from(calendar);
-
-        calendar.add(Calendar.HOUR, 1);
-        mScheduleEndDate = Date.from(calendar);
-        mScheduleEndTime = Time.from(calendar);
-    }
-
-    private void updateSchedule(boolean save) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "updateSchedule");
-        }
-
-        final Calendar startCalendar = new DateTime(mScheduleStartDate, mScheduleStartTime).toCalendar(TimeZone.getDefault());
-
-        final Calendar endCalendar = new DateTime(mScheduleEndDate, mScheduleEndTime).toCalendar(TimeZone.getDefault());
-
-        String formatDate = "dd MMM yyyy";
-        String formatTime;
-        if (DateFormat.is24HourFormat(this)) {
-            formatTime = "HH:mm";
-        } else {
-            formatTime = "hh:mm a";
-        }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-        mStartDateTextView.setText(simpleDateFormat.format(startCalendar.getTime()));
-        mEndDateTextView.setText(simpleDateFormat.format(endCalendar.getTime()));
-
-        SimpleDateFormat simpleTimeFormat = new SimpleDateFormat(formatTime, Locale.getDefault());
-        mStartTimeTextView.setText(simpleTimeFormat.format(startCalendar.getTime()));
-        mEndTimeTextView.setText(simpleTimeFormat.format(endCalendar.getTime()));
-
-        if (save) {
-            saveCallSchedule();
-        }
-    }
-
-    private void onStartDateClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onStartDateClick");
+            Log.d(LOG_TAG, "onStartDateViewClick");
         }
 
         final Calendar calendar = Calendar.getInstance();
         int day;
         int month;
         int year;
-        if (mScheduleStartDate != null) {
-            day = mScheduleStartDate.day;
-            month = mScheduleStartDate.month - 1;
-            year = mScheduleStartDate.year;
+        if (mConfigExternalCall.getScheduleStartDate() != null) {
+            day = mConfigExternalCall.getScheduleStartDate().day;
+            month = mConfigExternalCall.getScheduleStartDate().month - 1;
+            year = mConfigExternalCall.getScheduleStartDate().year;
         } else {
             day = calendar.get(Calendar.DAY_OF_MONTH);
             month = calendar.get(Calendar.MONTH);
@@ -763,8 +617,8 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
 
         DatePickerDialog.OnDateSetListener onDateSetListener = (datePicker, y, m, d) -> {
-            mScheduleStartDate = new Date(y, m+1, d);
-            updateSchedule(true);
+            mConfigExternalCall.setScheduleStartDate(new Date(y, m+1, d));
+            saveCapabilities();
         };
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, onDateSetListener, year, month, day);
@@ -772,16 +626,16 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         datePickerDialog.show();
     }
 
-    private void onStartHourClick() {
+    private void onStartTimeViewClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onStartHourClick");
+            Log.d(LOG_TAG, "onStartTimeViewClick");
         }
 
         int hour;
         int minute;
-        if (mScheduleStartTime != null) {
-            hour = mScheduleStartTime.hour;
-            minute = mScheduleStartTime.minute;
+        if (mConfigExternalCall.getScheduleStartTime() != null) {
+            hour = mConfigExternalCall.getScheduleStartTime().hour;
+            minute = mConfigExternalCall.getScheduleStartTime().minute;
         } else {
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -789,27 +643,27 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, h, m) -> {
-            mScheduleStartTime = new Time(h, m);
-            updateSchedule(true);
+            mConfigExternalCall.setScheduleStartTime(new Time(h, m));
+            saveCapabilities();
         };
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
         timePickerDialog.show();
     }
 
-    private void onEndDateClick() {
+    private void onEndDateViewClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onEndDateClick");
+            Log.d(LOG_TAG, "onEndDateViewClick");
         }
 
         final Calendar calendar = Calendar.getInstance();
         int day;
         int month;
         int year;
-        if (mScheduleEndDate != null) {
-            day = mScheduleEndDate.day;
-            month = mScheduleEndDate.month - 1;
-            year = mScheduleEndDate.year;
+        if (mConfigExternalCall.getScheduleEndDate() != null) {
+            day = mConfigExternalCall.getScheduleEndDate().day;
+            month = mConfigExternalCall.getScheduleEndDate().month - 1;
+            year = mConfigExternalCall.getScheduleEndDate().year;
         } else {
             day = calendar.get(Calendar.DAY_OF_MONTH);
             month = calendar.get(Calendar.MONTH);
@@ -817,30 +671,30 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
 
         DatePickerDialog.OnDateSetListener onDateSetListener = (datePicker, y, m, d) -> {
-            mScheduleEndDate = new Date(y, m+1, d);
-            updateSchedule(true);
+            mConfigExternalCall.setScheduleEndDate(new Date(y, m+1, d));
+            saveCapabilities();
         };
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, onDateSetListener, year, month, day);
 
-        if (mScheduleStartDate != null) {
-            calendar.set(mScheduleStartDate.year, mScheduleStartDate.month - 1, mScheduleStartDate.day);
+        if (mConfigExternalCall.getScheduleStartDate() != null) {
+            calendar.set(mConfigExternalCall.getScheduleStartDate().year, mConfigExternalCall.getScheduleStartDate().month - 1, mConfigExternalCall.getScheduleStartDate().day);
             datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         }
 
         datePickerDialog.show();
     }
 
-    private void onEndHourClick() {
+    private void onEndTimeViewClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onEndHourClick");
+            Log.d(LOG_TAG, "onEndTimeViewClick");
         }
 
         int hour;
         int minute;
-        if (mScheduleEndTime != null) {
-            hour = mScheduleEndTime.hour;
-            minute = mScheduleEndTime.minute;
+        if (mConfigExternalCall.getScheduleEndTime() != null) {
+            hour = mConfigExternalCall.getScheduleEndTime() .hour;
+            minute = mConfigExternalCall.getScheduleEndTime() .minute;
         } else {
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -848,12 +702,23 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = (view, h, m) -> {
-            mScheduleEndTime = new Time(h, m);
-            updateSchedule(true);
+            mConfigExternalCall.setScheduleEndTime(new Time(h, m));
+            saveCapabilities();
         };
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
         timePickerDialog.show();
+    }
+
+    private void onSelectScheduleDayClick(UIScheduleDay scheduleDay) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectScheduleDayClick: scheduleDay=" + scheduleDay);
+        }
+
+        scheduleDay.setSelected(!scheduleDay.isSelected());
+        mConfigExternalCall.updateDaySelected(scheduleDay.getDayOfWeek(), scheduleDay.isSelected());
+        mExternalCallConfigAdapter.updateConfigItems(mConfigExternalCall);
+        saveCapabilities();
     }
 
     protected void onEditExternalCallClick() {
@@ -872,20 +737,56 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         startActivity(InvitationExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
     }
 
+    protected void onAudioClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onAudioClick");
+        }
+
+        if (mCallReceiver == null) {
+            return;
+        }
+
+        if (getTwinmeApplication().inCallInfo() == null && mCallReceiver.getCapabilities().hasAudio() && !hasSchedule()) {
+            Intent intent = new Intent();
+            intent.putExtra(Intents.INTENT_CONTACT_ID, mCallReceiver.getId().toString());
+            intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_CALL);
+
+            startActivity(CallActivity.class, intent);
+        } else if (!mCallReceiver.getCapabilities().hasAudio()) {
+            Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
+        } else if (hasSchedule()) {
+            showSchedule();
+        }
+    }
+
+    protected void onVideoClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onVideoClick");
+        }
+
+        if (mCallReceiver == null) {
+            return;
+        }
+
+        if (getTwinmeApplication().inCallInfo() == null && mCallReceiver.getCapabilities().hasVideo() && !hasSchedule()) {
+            Intent intent = new Intent();
+            intent.putExtra(Intents.INTENT_CONTACT_ID, mCallReceiver.getId().toString());
+            intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_VIDEO_CALL);
+
+            startActivity(CallActivity.class, intent);
+        } else if (!mCallReceiver.getCapabilities().hasVideo()) {
+            Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
+        } else if (hasSchedule()) {
+            showSchedule();
+        }
+    }
+
     protected void onEditIdentityClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onEditIdentityClick");
         }
 
         startActivity(EditIdentityActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
-    }
-
-    protected void onSettingsClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onSettingsClick");
-        }
-
-        openMenuCapabilities();
     }
 
     protected void onLastCallsClick() {
@@ -898,61 +799,41 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
     }
 
-    private void saveLimited() {
+    private void saveCapabilities() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "saveLimited");
-        }
-
-        if (mCallReceiver != null) {
-            Capabilities capabilities = mCallReceiver.getCapabilities();
-
-            if (capabilities.getSchedule() == null) {
-                initSchedule();
-            }
-
-            saveCallSchedule();
-        }
-    }
-
-    private void saveCallCapabilities() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "saveCallCapabilities");
+            Log.d(LOG_TAG, "saveCapabilities");
         }
 
         if (mCallReceiver == null) {
             return;
         }
         Capabilities capabilities = mCallReceiver.getCapabilities();
-        boolean allowAudioCall = mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VOICE_CALL_SWITCH);
-        boolean allowVideoCall = mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.VIDEO_CALL_SWITCH);
-        boolean allowGroupCall = mMenuCapabilitiesView.isCapabilitiesOn(MenuCallCapabilitiesView.GROUP_CALL_SWITCH);
 
-        if (capabilities.hasAudio() == allowAudioCall && capabilities.hasVideo() == allowVideoCall && capabilities.hasGroupCall() == allowGroupCall) {
-            return;
+        capabilities.setCapAudio(mConfigExternalCall.allowVoiceCall());
+        capabilities.setCapVideo(mConfigExternalCall.allowVideoCall());
+        capabilities.setCapGroupCall(mConfigExternalCall.allowGroupCall());
+        capabilities.setCapNotifyJoin(mConfigExternalCall.notificationJoinCall());
+        capabilities.setLinkValidity(mConfigExternalCall.getLinkValidity());
+
+        if (mConfigExternalCall.getLinkValidity() == LinkValidity.SINGLE_USE && mConfigExternalCall.getScheduleStartDate() != null) {
+            DateTime startDateTime = new DateTime(mConfigExternalCall.getScheduleStartDate(), mConfigExternalCall.getScheduleStartTime());
+            DateTime startEndTime = new DateTime(mConfigExternalCall.getScheduleEndDate(), mConfigExternalCall.getScheduleEndTime());
+            DateTimeRange dateTimeRange = new DateTimeRange(startDateTime, startEndTime);
+            Schedule schedule = new Schedule(TimeZone.getDefault(), dateTimeRange);
+            schedule.setEnabled(true);
+            capabilities.setSchedule(schedule);
+        } else if (mConfigExternalCall.getLinkValidity() == LinkValidity.PERIODIC) {
+            WeeklyTimeRange weeklyTimeRange = new WeeklyTimeRange(mConfigExternalCall.getSelectedDaysOfWeek(), mConfigExternalCall.getScheduleStartTime(), mConfigExternalCall.getScheduleEndTime());
+            Schedule schedule = new Schedule(TimeZone.getDefault(), weeklyTimeRange);
+            schedule.setEnabled(true);
+            capabilities.setSchedule(schedule);
+        } else if (capabilities.getSchedule() != null) {
+            capabilities.setSchedule(null);
         }
 
-        capabilities.setCapAudio(allowAudioCall);
-        capabilities.setCapVideo(allowVideoCall);
-        capabilities.setCapGroupCall(allowGroupCall);
-        mCallReceiverService.updateCallReceiver(mCallReceiver, mCallReceiver.getName(), null, mCallReceiver.getIdentityName(), null, null, null, capabilities);
-    }
-
-    private void saveCallSchedule() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "saveCallSchedule");
-        }
-
-        if (mCallReceiver == null) {
-            return;
-        }
-        Capabilities capabilities = mCallReceiver.getCapabilities();
-        DateTime startDateTime = new DateTime(mScheduleStartDate, mScheduleStartTime);
-        DateTime startEndTime = new DateTime(mScheduleEndDate, mScheduleEndTime);
-        DateTimeRange dateTimeRange = new DateTimeRange(startDateTime, startEndTime);
-        Schedule schedule = new Schedule(TimeZone.getDefault(), dateTimeRange);
-        schedule.setEnabled(mLimitedSwitchView.isChecked());
-        capabilities.setSchedule(schedule);
-        mCallReceiverService.updateCallReceiver(mCallReceiver, mCallReceiver.getName(), null, mCallReceiver.getIdentityName(), null, null, null, capabilities);
+        mCallReceiver.putLong(UIConfigExternalCall.PROPERTY_CALL_RECEIVER_UPDATE_COUNTER, mCallReceiver.getLong(UIConfigExternalCall.PROPERTY_CALL_RECEIVER_UPDATE_COUNTER, 0) + 1, getTwinmeContext());
+        mCallReceiverService.updateCallReceiver(mCallReceiver, capabilities);
+        updateContentHeight();
     }
 
     private void openMenuCapabilities() {
@@ -970,12 +851,55 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
     }
 
-    private void closeMenuCapabilites() {
+    private void closeMenuCapabilities() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "closeMenuCapabilites");
+            Log.d(LOG_TAG, "closeMenuCapabilities");
         }
 
         mMenuCapabilitiesView.animationCloseMenu();
+    }
+
+    private void openMenuSelectValue(MenuSelectValueView.MenuType menuType, int selectedValue) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openMenuSelectValue");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.show_external_call_activity_layout);
+
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+
+        menuSelectValueView.setActivity(this);
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+
+                viewGroup.removeView(menuSelectValueView);
+
+                Window window = getWindow();
+                window.setNavigationBarColor(Design.WHITE_COLOR);
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (menuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE) {
+                    mConfigExternalCall.setConfigCallType(UIConfigExternalCall.ConfigExternalCallTypeCall.values()[value]);
+                } else if (menuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION) {
+                    mConfigExternalCall.setLinkValidity(LinkValidity.values()[value]);
+                }
+
+                mExternalCallConfigAdapter.updateConfigItems(mConfigExternalCall);
+                saveCapabilities();
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(menuType, selectedValue);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void updateAvatarSize(float deltaY) {
@@ -1005,10 +929,181 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
     }
 
+    private void updateContentHeight() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateContentHeight");
+        }
+
+        mSettingsRecyclerView.post(() -> {
+            mSettingsRecyclerView.requestLayout();
+            ViewGroup.LayoutParams layoutParams = mContentView.getLayoutParams();
+            layoutParams.height = (int) (mLastCallsView.getY() + mLastCallsView.getHeight() + AVATAR_MAX_SIZE);
+            mContentView.setLayoutParams(layoutParams);
+        });
+    }
+
+    private boolean hasSchedule() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hasSchedule");
+        }
+
+        if (mCallReceiver != null && mCallReceiver.getCapabilities().getSchedule() != null && mCallReceiver.getCapabilities().getSchedule().isEnabled()) {
+            return !mCallReceiver.getCapabilities().getSchedule().isNowInRange();
+        }
+
+        return false;
+    }
+
+    private void showSchedule() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showSchedule");
+        }
+
+        String message = "";
+        if (mCallReceiver != null && mCallReceiver.getCapabilities().getSchedule() != null) {
+            Schedule schedule = mCallReceiver.getCapabilities().getSchedule();
+            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
+
+                if (schedule.getTimeRanges().get(0) instanceof WeeklyTimeRange) {
+                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) schedule.getTimeRanges().get(0);
+                    Time scheduleStartTime = weeklyTimeRange.start;
+                    Time scheduleEndTime = weeklyTimeRange.end;
+                    StringBuilder messageStringBuilder = new StringBuilder();
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(scheduleStartTime);
+                    messageStringBuilder.append("\n");
+                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(" : ");
+                    messageStringBuilder.append(scheduleEndTime);
+                    messageStringBuilder.append("\n\n");
+
+                    DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(Locale.getDefault());
+                    String[] weekDays = dateFormatSymbols.getWeekdays();
+
+                    for (WeeklyTimeRange.DayOfWeek dayOfWeek : weeklyTimeRange.days) {
+                        String dayString = "";
+                        switch (dayOfWeek) {
+                            case MONDAY:
+                                dayString = weekDays[2];
+                                break;
+                            case TUESDAY:
+                                dayString = weekDays[3];
+                                break;
+                            case WEDNESDAY:
+                                dayString = weekDays[4];
+                                break;
+                            case THURSDAY:
+                                dayString = weekDays[5];
+                                break;
+                            case FRIDAY:
+                                dayString = weekDays[6];
+                                break;
+                            case SATURDAY:
+                                dayString = weekDays[7];
+                                break;
+                            case SUNDAY:
+                                dayString = weekDays[1];
+                                break;
+                        }
+
+                        if (!dayString.isEmpty()) {
+                            messageStringBuilder.append(dayString);
+                            messageStringBuilder.append("\n");
+                        }
+
+                        message = messageStringBuilder.toString();
+                    }
+                } else {
+                    DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                    DateTime start = dateTimeRange.start;
+                    DateTime end = dateTimeRange.end;
+
+                    if (start.date.equals(end.date)) {
+                        message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
+                    } else {
+                        message = String.format("%1$s %2$s", start.formatDateTime(this), end.formatDateTime(this));
+                    }
+                }
+            } else {
+                message = getString(R.string.show_call_activity_schedule_message);
+            }
+
+            showAlertMessageView(R.id.show_external_call_activity_layout, getString(R.string.show_call_activity_schedule_call), message, true, null);
+        }
+    }
+
+    public void updateInCall() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateInCall");
+        }
+
+        if (getTwinmeApplication().inCallInfo() != null || (mCallReceiver != null && (!mCallReceiver.getCapabilities().hasAudio() || !mCallReceiver.hasPrivatePeer())) || hasSchedule()) {
+            mAudioClickableView.setAlpha(0.5f);
+        } else {
+            mAudioClickableView.setAlpha(1f);
+        }
+
+        if (getTwinmeApplication().inCallInfo() != null || (mCallReceiver != null && (!mCallReceiver.getCapabilities().hasVideo() || !mCallReceiver.hasPrivatePeer())) || hasSchedule()) {
+            mVideoClickableView.setAlpha(0.5f);
+        } else {
+            mVideoClickableView.setAlpha(1f);
+        }
+    }
+
+    @Override
+    public void updateFont() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateFont");
+        }
+
+        super.updateFont();
+
+        if (!mUIInitialized) {
+            return;
+        }
+
+        Design.updateTextFont(mTitleView, Design.FONT_BOLD44);
+        Design.updateTextFont(mDescriptionTextView, Design.FONT_REGULAR32);
+        Design.updateTextFont(mShareTextView, Design.FONT_REGULAR28);
+        Design.updateTextFont(mVideoTextView, Design.FONT_REGULAR28);
+        Design.updateTextFont(mAudioTextView, Design.FONT_REGULAR28);
+        Design.updateTextFont(mIdentityTitleView, Design.FONT_BOLD26);
+        Design.updateTextFont(mIdentityTextView, Design.FONT_REGULAR34);
+        Design.updateTextFont(mLastCallsTitleView, Design.FONT_BOLD26);
+        Design.updateTextFont(mLastCallsTextView, Design.FONT_REGULAR34);
+    }
+
+    @Override
+    public void updateColor() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateColor");
+        }
+
+        super.updateColor();
+
+        if (!mUIInitialized) {
+            return;
+        }
+
+        mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mDescriptionTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mRoundedShareView.setColor(Design.GREY_COLOR);
+        mShareTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mRoundedVideoView.setColor(Design.VIDEO_CALL_COLOR);
+        mVideoTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mRoundedAudioView.setColor(Design.AUDIO_CALL_COLOR);
+        mAudioTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mIdentityTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mIdentityTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mLastCallsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mLastCallsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+    }
+
     @Override
     public void setupDesign() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "openMenuCapabilities");
+            Log.d(LOG_TAG, "setupDesign");
         }
 
         AVATAR_OVER_SIZE = (int) (Design.AVATAR_OVER_WIDTH * Design.WIDTH_RATIO);

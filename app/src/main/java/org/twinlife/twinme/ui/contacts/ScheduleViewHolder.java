@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -32,6 +32,12 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class ScheduleViewHolder extends RecyclerView.ViewHolder {
+
+    private static final int DESIGN_LEFT_MARGIN = 30;
+    private static final int DESIGN_RIGHT_MARGIN = 76;
+    private static final int DESIGN_DATE_MARGIN = 40;
+    private static final int DESIGN_DATE_HEIGHT = 80;
+
     protected static final float DESIGN_ITEM_VIEW_HEIGHT = 120f;
     protected static final int ITEM_VIEW_HEIGHT;
 
@@ -40,12 +46,12 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
     }
 
     private final TextView mTitleView;
+    private final View mDateView;
     private final TextView mDateTextView;
+    private final View mTimeView;
     private final TextView mTimeTextView;
 
-    private AbstractCapabilitiesActivity.ScheduleType mScheduleType;
-
-    public ScheduleViewHolder(@NonNull View view, AbstractCapabilitiesActivity activity) {
+    public ScheduleViewHolder(@NonNull View view) {
 
         super(view);
 
@@ -58,13 +64,17 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
         Design.updateTextFont(mTitleView, Design.FONT_REGULAR34);
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        View dateView = view.findViewById(R.id.contact_capabilities_activity_schedule_item_date_view);
-        dateView.setOnClickListener(v -> activity.onDateClick(mScheduleType));
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO);
 
-        layoutParams = dateView.getLayoutParams();
+        mDateView = view.findViewById(R.id.contact_capabilities_activity_schedule_item_date_view);
+
+        layoutParams = mDateView.getLayoutParams();
         layoutParams.width = Design.DATE_VIEW_WIDTH;
+        layoutParams.height = (int) (DESIGN_DATE_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) dateView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDateView.getLayoutParams();
         marginLayoutParams.rightMargin = Design.DATE_VIEW_MARGIN;
 
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -72,7 +82,7 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
         ShapeDrawable startDateViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         startDateViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        dateView.setBackground(startDateViewBackground);
+        mDateView.setBackground(startDateViewBackground);
 
         mDateTextView = view.findViewById(R.id.contact_capabilities_activity_schedule_item_date_text_view);
         Design.updateTextFont(mDateTextView, Design.FONT_REGULAR32);
@@ -82,15 +92,15 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
         marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
         marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
 
-        View timeView = view.findViewById(R.id.contact_capabilities_activity_schedule_item_time_view);
-        timeView.setOnClickListener(v -> activity.onTimeClick(mScheduleType));
+        mTimeView = view.findViewById(R.id.contact_capabilities_activity_schedule_item_time_view);
 
-        layoutParams = timeView.getLayoutParams();
+        layoutParams = mTimeView.getLayoutParams();
         layoutParams.width = Design.HOUR_VIEW_WIDTH;
+        layoutParams.height = (int) (DESIGN_DATE_HEIGHT * Design.HEIGHT_RATIO);
 
         ShapeDrawable startHourViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         startHourViewBackground.getPaint().setColor(Design.DATE_BACKGROUND_COLOR);
-        timeView.setBackground(startHourViewBackground);
+        mTimeView.setBackground(startHourViewBackground);
 
         mTimeTextView = view.findViewById(R.id.contact_capabilities_activity_schedule_item_time_text_view);
         Design.updateTextFont(mTimeTextView, Design.FONT_REGULAR32);
@@ -99,33 +109,53 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTimeTextView.getLayoutParams();
         marginLayoutParams.leftMargin = Design.DATE_VIEW_PADDING;
         marginLayoutParams.rightMargin = Design.DATE_VIEW_PADDING;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTimeView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_DATE_MARGIN * Design.WIDTH_RATIO);
     }
 
-    public void onBind(Context context, AbstractCapabilitiesActivity.ScheduleType scheduleType, Date scheduleDate, Time scheduleTime) {
+    public void resetMargins() {
 
-        mScheduleType = scheduleType;
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
+        marginLayoutParams.leftMargin = 0;
 
-        if (mScheduleType == AbstractCapabilitiesActivity.ScheduleType.START) {
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTimeView.getLayoutParams();
+        marginLayoutParams.rightMargin = 0;
+    }
+
+    public void onBind(Context context, AbstractCapabilitiesActivity.ScheduleType scheduleType, Date scheduleDate, Time scheduleTime, Runnable dateRunnable, Runnable timeRunnable) {
+
+        if (dateRunnable != null) {
+            mDateView.setOnClickListener(v -> dateRunnable.run());
+            mDateView.setVisibility(View.VISIBLE);
+        } else {
+            mDateView.setOnClickListener(null);
+            mDateView.setVisibility(View.GONE);
+        }
+
+        if (timeRunnable != null) {
+            mTimeView.setOnClickListener(v -> timeRunnable.run());
+        } else {
+            mTimeView.setOnClickListener(null);
+        }
+
+        if (scheduleType == AbstractCapabilitiesActivity.ScheduleType.START) {
             mTitleView.setText(context.getString(R.string.show_call_activity_settings_start));
         } else {
             mTitleView.setText(context.getString(R.string.show_call_activity_settings_end));
         }
 
-        final Calendar calendar = new DateTime(scheduleDate, scheduleTime).toCalendar(TimeZone.getDefault());
+        if (scheduleDate != null && scheduleTime != null) {
+            final Calendar calendar = new DateTime(scheduleDate, scheduleTime).toCalendar(TimeZone.getDefault());
 
-        String formatDate = "dd MMM yyyy";
-        String formatTime;
-        if (DateFormat.is24HourFormat(context)) {
-            formatTime = "HH:mm";
-        } else {
-            formatTime = "hh:mm a";
+            String formatDate = "dd MMM yyyy";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+            mDateTextView.setText(simpleDateFormat.format(calendar.getTime()));
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-        mDateTextView.setText(simpleDateFormat.format(calendar.getTime()));
-
-        SimpleDateFormat simpleTimeFormat = new SimpleDateFormat(formatTime, Locale.getDefault());
-        mTimeTextView.setText(simpleTimeFormat.format(calendar.getTime()));
+        if (scheduleTime != null) {
+            mTimeTextView.setText(scheduleTime.toString());
+        }
 
         updateFont();
         updateColor();

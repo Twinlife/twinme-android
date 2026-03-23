@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">동의</string>
     <string name="application_account_deleted">계정이 삭제되었습니다. 이제 애플리케이션을 제거해야 합니다.</string>
+    <string name="application_account_restored_error">이 기기의 계정이 다른 기기로 복원되었습니다. 앱을 삭제해야 합니다.</string>
     <string name="application_add_contact_no_profile">연락처를 초대하기 전에 귀하를 나타내는 프로필을 작성해야 합니다. 계속하시겠습니까?</string>
     <string name="application_all">모두</string>
     <string name="application_appearance">외관</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">모두 표시</string>
     <string name="application_do_not_display">더 이상 표시하지 않음</string>
     <string name="application_edit">편집</string>
+    <string name="application_error_code">오류 코드: %1$s</string>
     <string name="application_error_file_not_found">파일을 찾을 수 없습니다.</string>
     <string name="application_error_media_unload">미디어를 로드할 수 없습니다.</string>
     <string name="application_error_media_not_supported">이 이미지/비디오 형식은 애플리케이션에서 지원되지 않습니다.</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">%1$d 초</string>
     <string name="application_timeout_week">1 일주</string>
     <string name="application_unknown_name">알 수 없음</string>
+    <string name="application_until">%1$s까지</string>
     <string name="application_upgrade">twinme 업그레이드</string>
     <string name="application_webrtc_failure">WebRTC 오류</string>
     <string name="application_wrong_configuration">잘못된 구성</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$s 님이 나와 연결하려고합니다</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">외부 미디어로 백업</string>
+    <string name="account_activity_backup_restore">백업 / 복원</string>
+    <string name="account_activity_backup_verify">백업 확인</string>
+    <string name="account_activity_backup_list">백업 기록</string>
     <string name="account_activity_conversations_content_title">대화 콘텐츠</string>
     <string name="account_activity_delete_account">귀하의 계정은 모든 관련 데이터와 함께 영구적으로 삭제됩니다. 확인하시겠습니까?</string>
     <string name="account_activity_delete_account_confirmation">정말로 계정을 삭제 하시겠습니까?</string>
     <string name="account_activity_export_content">외부 미디어로 내보내기</string>
     <string name="account_activity_message_first_part">최초 앱 설치 시, 앱 재설치 시, 단말기 초기화 시, 기존 계정 삭제 시 새로운 계정이 생성됩니다.</string>
     <string name="account_activity_message_second_part">이전 계정 및 데이터의 흔적이 남지 않으므로 연락처를 다시 초대해야 합니다.</string>
+    <string name="account_activity_message_third_part">계정을 삭제하면 해당 계정에 생성된 모든 백업이 무효화되어 해당 계정의 백업을 이 기기나 다른 기기로 복원할 수 없습니다.</string>
     <string name="account_activity_migration_message">계정 이전 서비스를 사용하여 모든 관련 데이터 (연락처, 메시지, 그룹 등)가있는 계정을 한 Android 기기에서 다른 기기로 실시간으로 전송할 수 있습니다. 따라서 이전 장치와 새 장치간에 계정을 전환 할 수 있습니다.</string>
     <string name="account_activity_migration_start_from_another_device">다른 장치에서</string>
     <string name="account_activity_migration_start_from_current_device">내 장치에서</string>
     <string name="account_activity_migration_title">계정 마이그레이션</string>
+    <string name="account_activity_restore">외부 미디어에서 복원하십시오</string>
     <string name="account_activity_title">계정</string>
     <string name="account_activity_transfer_between_devices">기기 간 전송</string>
     <string name="account_activity_transfer_from_another_device">다른 기기에서 전송</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme는 당신의 친구를 알지 못하며 그들을 발견할 수 없습니다. 개인적으로 초대해야 하며, 근처에 있을 때 twinme로 초대하거나 다른 방법으로 초대장을 보내야 합니다.</string>
     <string name="add_contact_activity_scan_code">초대 QR 코드 스캔</string>
     <string name="add_contact_activity_scan_error_corrupt_link">이 링크는 손상되었습니다.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">이 링크는 올바르지 않습니다.</string>
+    <string name="add_contact_activity_scan_error_expired_link">이 초대 링크는 만료되었습니다.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">이 링크는 올바르지 않습니다.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">이 링크는 애플리케이션에서 관리되지 않습니다.</string>
     <string name="add_contact_activity_scan_error_revoked_link">이 관계가 삭제되었습니다.</string>
     <string name="add_contact_activity_scan_message_call_link">이 링크는 \"Click-to-call\"에 해당합니다.</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">이 링크는 계정 이전에 해당합니다.</string>
     <string name="add_contact_activity_scan_message_transfer_link">이 링크는 통화 전달에 해당합니다.</string>
     <string name="add_contact_activity_scan_title">스캔</string>
+    <string name="add_contact_activity_share_image_message">%1$s를 연락처로 추가하려면 이 초대 QR 코드를 twinme로 가져오거나 스캔하세요.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s가 twinme 개인 메신저에서 비공개 관계를 맺도록 초대합니다.</string>
+    <string name="add_contact_activity_share_message_part_2">twinme는 종단 간 암호화된 P2P 메시징 및 고화질(HD) 음성/영상 통화 서비스입니다. 회원가입은 필요하지 않습니다.</string>
+    <string name="add_contact_activity_share_message_part_3">%1$s를 연락처로 추가하려면 모바일 기기에서 twinme로 이 URL을 여세요.</string>
+    <string name="add_contact_activity_share_message_part_4">또는 첨부된 이미지의 초대 QR 코드를 twinme로 가져오거나 스캔할 수도 있습니다.</string>
+    <string name="add_contact_activity_share_title">%1$s가 twinme에 초대합니다.</string>
     <string name="add_contact_activity_social_subtitle">메시지, 메일, 소셜 네트워크</string>
     <string name="add_contact_activity_social_title">응용 프로그램을 통해 코드를 보내십시오</string>
     <string name="add_contact_activity_title">초대</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">인증 시작</string>
     <string name="authentified_relation_activity_title">인증된 관계</string>
     <string name="authentified_relation_activity_to_be_certified_title">관계를 인증하세요</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">지원</string>
+    <string name="backup_activity_beta_message_part_1">백업/복원 서비스는 정식 출시 전 잠재적인 문제를 파악하기 위해 베타 테스트 중입니다.</string>
+    <string name="backup_activity_beta_message_part_2">이 서비스는 계정 메타데이터(프로필, 연락처, 그룹)만 외부 저장소에 백업하여 원본 기기가 도난당하거나 파손된 경우 다른 기기에서 복원할 수 있도록 설계되었습니다.</string>
+    <string name="backup_activity_beta_message_part_3">계정 전송 서비스는 두 기기 모두 사용 가능한 경우, 모든 계정 데이터(대화 포함)를 한 (이전) 기기에서 다른 (새) 기기로 전송하는 데 사용해야 합니다.</string>
+    <string name="backup_activity_confirm_message">백업을 복원하려면 위의 12 단어를 해당 순서대로 입력하여 해독 할 수 있습니다.</string>
+    <string name="backup_activity_content">내용물</string>
+    <string name="backup_activity_content_diff_added">추가됨</string>
+    <string name="backup_activity_content_diff_updated">수정됨</string>
+    <string name="backup_activity_content_diff_deleted">삭제됨</string>
+    <string name="backup_activity_content_diff_message">현재 데이터와 비교한 변경 사항은 다음과 같습니다.</string>
+    <string name="backup_activity_content_info">백업에는 대화, 그룹, 알림 및 기록이 포함되지 않습니다.</string>
+    <string name="backup_activity_error_words">입력한 단어로는 백업을 해독할 수 없습니다.</string>
+    <string name="backup_activity_generate_word">생성하다</string>
+    <string name="backup_activity_last_backup">%1$s에 마지막 백업</string>
+    <string name="backup_activity_new_backup">새 백업</string>
+    <string name="backup_activity_onboarding">계정 데이터(\"Spaces\", 프로필, 연락처, \"click-to-call\")를 암호화하여 이 기기 또는 다른 기기에 복원할 수 있는 백업을 만드세요.</string>
+    <string name="backup_activity_reminder">마지막 백업이 생성된 지 30일이 지났습니다.</string>
+    <string name="backup_activity_save_file_message">백업 파일을 원하는 기기에 저장하고 나중에 복원할 수 있도록 비밀번호를 보관하세요.</string>
+    <string name="backup_activity_security">보안</string>
+    <string name="backup_activity_security_info">백업 암호화 키는 복원에 필요한 일련의 12 단어로 표시됩니다.</string>
+    <string name="backup_activity_success">백업이 성공적으로 완료되었습니다!</string>
+    <string name="backup_activity_success_info">이 백업을 복원 할 수 있도록이 12 단어 목록을 유지하십시오.</string>
+    <string name="backup_activity_title">지원</string>
+    <string name="backup_activity_use_last_backup_words">마지막 백업과 동일한 단어 목록을 사용하십시오.</string>
+    <string name="backup_activity_verify_completed">확인 완료!</string>
+    <string name="backup_activity_verify_message">계정/백업 확인을 통해 백업 파일의 무결성과 포함된 데이터가 최신 상태인지 확인할 수도 있습니다.</string>
+    <string name="backup_activity_verify_up_to_date">백업이 최신 상태입니다.</string>
+    <string name="backup_activity_verify_not_up_to_date">백업이 최신 상태가 아닙니다.</string>
+    <string name="backup_activity_verify_words">백업을 확인하려면 12단어 시퀀스를 입력하여 암호를 해독해야 합니다.</string>
+    <string name="backup_activity_wait_message">백업이 진행되는 동안이 화면을 남기지 마십시오.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">내 백업 무효화</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">이전 백업이 모두 무효화되어 더 이상 복원할 수 없습니다.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">새 백업을 만들어 이 기기 또는 다른 기기에 복원하는 것을 잊지 마세요.</string>
+    <string name="backups_activity_no_backup_message">이 기기에 백업이 생성되지 않았습니다.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">모두</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">스피커 음소거</string>
     <string name="call_activity_transfert_call_message">진행 중인 통화가 전환되었습니다.</string>
     <string name="call_activity_try_to_call_back">다시 전화를 걸어보세요.</string>
+    <string name="call_activity_waiting_conference_call">아직 통화에 참여한 사람이 없습니다. 잠시 기다려 주세요…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">카메라 이미 사용 중</string>
@@ -469,9 +524,23 @@
     <string name="conversations_fragment_you">당신</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">통화 구성</string>
+    <string name="create_external_call_activity_call_type">통화 유형</string>
+    <string name="create_external_call_activity_conference_call_description">브라우저에서 바로 회의 통화에 참여합니다. 비즈니스 또는 가족 회의에 적합합니다.</string>
+    <string name="create_external_call_activity_conference_call_short_title">회의 통화</string>
+    <string name="create_external_call_activity_conference_call_title">회의 통화</string>
+    <string name="create_external_call_activity_continuous_link_description">링크 유효 기간 제한 없음</string>
+    <string name="create_external_call_activity_continuous_link_title">영구</string>
+    <string name="create_external_call_activity_delete_link_setting">이 링크는 지정된 기간이 지나면 더 이상 유효하지 않습니다.</string>
+    <string name="create_external_call_activity_direct_call_description">앱이 설치되지 않은 상대방으로부터 기기로 직접 전화를 받습니다.</string>
+    <string name="create_external_call_activity_direct_call_short_title">직접 통화</string>
+    <string name="create_external_call_activity_direct_call_title">직접 통화</string>
+    <string name="create_external_call_activity_group_call_description">최대 8명 참가</string>
     <string name="create_external_call_activity_link_validity">링크 유효 기간</string>
     <string name="create_external_call_activity_message">이 프로필은 \"click-to-call\" 링크를 통해 귀하에게 전화할 손님에게 표시됩니다.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call을 사용하면 손님이 애플리케이션을 설치하지 않고도 브라우저에서 전화를 걸 수 있습니다.</string>
+    <string name="create_external_call_activity_name_required">이 \"Click-to-call\" 기능을 사용하려면 이름과 이미지가 필요합니다.</string>
+    <string name="create_external_call_activity_notification_setting">첫 번째 참가자가 회의에 참여하면 알림을 받습니다.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" 기능을 사용하면 앱을 설치하지 않은 사용자도 브라우저에서 전화를 걸거나 회의 통화(\"Click-to-meet\")에 참여할 수 있습니다.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">각 인스턴스에는 다음과 같이 호출 제목을 나타내는 이름, 이미지 및 설명이 있습니다.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">귀하의 고객 서비스</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">당신이 판매하는 자동차</string>
@@ -490,7 +559,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">통화 시 상대방을 나타내는 기본 이름(Guest)을 변경합니다.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">홈페이지의 \"통화\" 버튼을 눌러 전화주세요.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">통화 후에는 다시 전화하기 위해 웹페이지를 열어 둘 수도 있습니다.</string>
+    <string name="create_external_call_activity_onboarding_title_2">\"Click-to-call\" 설정</string>
+    <string name="create_external_call_activity_onboarding_title_3">\"Click-to-cal\" 공유</string>
+    <string name="create_external_call_activity_onboarding_title_4">\"Click-to-cal\" 사용</string>
     <string name="create_external_call_activity_placeholder">제목(도움말, 공지, 회의, 초인종, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">링크 유효 기간 설정</string>
+    <string name="create_external_call_activity_recurrent_link_title">주기적</string>
+    <string name="create_external_call_activity_unique_link_description">링크 유효 기간 시작일과 종료일 설정</string>
+    <string name="create_external_call_activity_unique_link_title">일회성</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">회원 초대</string>
@@ -652,6 +728,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">이 작업은 이 \"click-to-call\" 링크와 연결된 현재 초대 코드를 무효화합니다. 확인하시겠습니까?</string>
     <string name="invitation_call_activity_generate_code_title">이 링크에 대한 새 코드 생성</string>
+    <string name="invitation_call_activity_invite_meeting_message">웹 주소 %1$s을 열거나 QR 코드를 스캔하여 회의 “%2$s”에 참여하세요.</string>
     <string name="invitation_call_activity_invite_message">웹 주소 %1$s를 열거나 QR 코드를 스캔하여 \"%2$s\"에 전화하십시오.</string>
     <string name="invitation_call_activity_message">웹 또는 모바일 앱에서 전화를 걸 수 있는 사람과 이 \"Click-to-Call\" 코드를 공유하십시오.</string>
     <string name="invitation_call_activity_save_message">%1$s에 전화하려면 이 QR 코드를 스캔하세요.</string>
@@ -712,6 +789,7 @@
     <string name="notification_center_audio_message_received">새 오디오 메시지</string>
     <string name="notification_center_cancel">거부</string>
     <string name="notification_center_cleanup_conversation">이전 메시지가 삭제되었습니다.</string>
+    <string name="notification_center_conference_join_call">참가자 한 명이 통화에 참여했습니다.</string>
     <string name="notification_center_deleted_contact">연락처 삭제됨</string>
     <string name="notification_center_file_message">당신에게 파일을 보냈습니다</string>
     <string name="notification_center_file_message_received">새로운 파일</string>
@@ -719,6 +797,7 @@
     <string name="notification_center_invitation_group">그룹에 초대합니다.</string>
     <string name="notification_center_invitation_received">새로운 파일</string>
     <string name="notification_center_invitation_received_group">새 그룹 초대.</string>
+    <string name="notification_center_join_call">%1$s님이 방금 통화에 참여했습니다.</string>
     <string name="notification_center_join_group">당신은 그룹의 구성원입니다</string>
     <string name="notification_center_message_received">새로운 메시지</string>
     <string name="notification_center_missed_audio_call_to">%1$s 에게 거부된 음성 전화</string>
@@ -902,6 +981,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">앱이 푸시 알림을 받도록 허용합니다.</string>
     <string name="quality_of_service_activity_warning_run_background">앱이 백그라운드에서 실행되도록 허용합니다.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ 계정 백업을 복원하려면 이 기기에 twinme+를 설치해야 합니다.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">백업을 생성한 기기는 여전히 로그인되어 있습니다.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">이 새 기기에 백업을 복원하면 백업이 생성된 기기의 계정이 자동으로 무효화됩니다.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">계정을 새 기기로 이전하고 싶지만 기존 기기가 아직 있는 경우, 백업을 복원하는 것보다 \"계정 마이그레이션\" 작업을 사용하는 것이 좋습니다. 이 작업을 수행하면 대화, 그룹, 알림 및 기록도 함께 전송됩니다.</string>
+    <string name="restore_activity_confirm">현재 계정 데이터를 백업의 다음 데이터로 바꾸려고합니까?</string>
+    <string name="restore_activity_confirm_restore">이 백업을 복원하시겠습니까?</string>
+    <string name="restore_activity_content_contact_deleted_message">백업 후 삭제된 데이터는 복원할 수 없습니다.</string>
+    <string name="restore_activity_content_profile_reset">초대 코드가 변경되었습니다.</string>
+    <string name="restore_activity_content_profile_reset_message">백업된 프로필과 연결된 초대 코드가 유효하지 않습니다. 복원 과정에서 새 초대 코드가 생성됩니다.</string>
+    <string name="restore_activity_enter_words">백업을 해독 할 수있는 일련의 12 단어를 입력하십시오.</string>
+    <string name="restore_activity_error_message">백업 복원 중 오류가 발생했습니다.</string>
+    <string name="restore_activity_error_message_verify_backup">백업 확인 오류.</string>
+    <string name="restore_activity_file_not_supported">백업 파일은 \"twmbckp\" 형식이어야 합니다.</string>
+    <string name="restore_activity_more_recent_backup">동일한 계정으로 최근 백업이 생성되었습니다.</string>
+    <string name="restore_activity_onboarding">백업을 복원하면 현재 계정 데이터가 대체됩니다.</string>
+    <string name="restore_activity_onboarding_words">백업을 복원하려면 일련의 12 단어를 입력하여 해독 할 수 있습니다.</string>
+    <string name="restore_activity_onboarding_verify">백업이 유효하고 현재 데이터와 최신 상태인지 확인하세요.</string>
+    <string name="restore_activity_paste">클립 보드에서 단어 목록을 붙여 넣습니다.</string>
+    <string name="restore_activity_paste_error">잘못된 단어 목록입니다.</string>
+    <string name="restore_activity_restore">복원하다</string>
+    <string name="restore_activity_select_backup">백업 선택</string>
+    <string name="restore_activity_state_restore_account">계정을 복원하는 중...</string>
+    <string name="restore_activity_state_restore_data">데이터를 복원하는 중...</string>
+    <string name="restore_activity_state_restore_starting">복원을 시작합니다.</string>
+    <string name="restore_activity_state_restore_verify_account">계정 확인…</string>
+    <string name="restore_activity_state_restore_verify_data">데이터 확인…</string>
+    <string name="restore_activity_state_restore_verify_starting">확인 시작…</string>
+    <string name="restore_activity_state_restore_wait_confirm">확인을 기다리는 중입니다.</string>
+    <string name="restore_activity_success">복원이 성공적으로 완료되었습니다!</string>
+    <string name="restore_activity_success_message">앱을 닫고 다시 시작하여 새 데이터에 액세스하십시오.</string>
+    <string name="restore_activity_title">복구</string>
+    <string name="restore_activity_verify_same_account">검증은 백업에 사용된 동일한 기기에서 수행해야 합니다.</string>
+    <string name="restore_activity_warning">이 백업을 복원하면 모든 현재 계정 데이터를 백업의 데이터로 바꿉니다.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">관리자로 정의</string>
     <string name="room_members_activity_delete_message">이 구성원 제거 확인</string>
@@ -955,15 +1069,18 @@
     <string name="settings_activity_ephemeral_title">사라지는 메시지</string>
     <string name="settings_activity_image_title">사진</string>
     <string name="settings_activity_message_properties_title">메시지 속성</string>
+    <string name="settings_activity_message_reactions_notification">메시지 반응 알림</string>
     <string name="settings_activity_reset_default_value">기본 설정으로 초기화</string>
     <string name="settings_activity_reset_preferences_button_title">기본값으로 재설정하십시오</string>
     <string name="settings_activity_reset_preferences_message">알림 설정을 응용 프로그램 기본값으로 재설정하십시오.</string>
     <string name="settings_activity_reset_preferences_title">환경 설정 다시 설정</string>
     <string name="settings_activity_permissions_title">퍼미션</string>
+    <string name="settings_activity_silent_mode">무음 모드</string>
     <string name="settings_activity_silent_sound">무음</string>
     <string name="settings_activity_sound_enabled_title">알림음</string>
     <string name="settings_activity_system_notifications_title">시스템 설정</string>
     <string name="settings_activity_system_settings_title">시스템 알림</string>
+    <string name="settings_activity_turn_off_notification_sounds">알림 소리 끄기</string>
     <string name="settings_activity_video_call_category_title">화상 전화</string>
     <string name="settings_activity_video_call_notification_ringtone_title">벨소리 이름</string>
     <string name="settings_activity_video_call_notification_title">벨소리</string>
@@ -992,7 +1109,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Click-to-Call 코드</string>
+    <string name="show_call_activity_conference_call_information">이 링크를 공유하여 전화를 걸거나 브라우저에서 회의에 참여하세요.</string>
     <string name="show_call_activity_information_code">외부 전화를 받으려면 이 코드를 공유하세요.</string>
+    <string name="show_call_activity_meeting_organizer">이번 회의 주최자</string>
     <string name="show_call_activity_schedule_call">예정된 통화</string>
     <string name="show_call_activity_schedule_from">%1$s부터</string>
     <string name="show_call_activity_schedule_from_to">%1$s부터 %2$s부터 %3$s까지</string>
@@ -1075,12 +1194,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">분류된 광고</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">광고에 링크를 삽입하여 잠재 구매자가 앱을 설치하지 않고도 전화할 수 있도록 하세요.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">공지</string>
-    <string name="template_click_to_call_activity_template_help">돕다</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">돕다</string>
+    <string name="template_click_to_call_activity_template_default_description">필요에 따라 통화 링크를 맞춤 설정하세요.</string>
+    <string name="template_click_to_call_activity_template_help">고객 서비스</string>
+    <string name="template_click_to_call_activity_template_help_description">브라우저에서 고객 서비스 센터로 전화할 수 있는 링크입니다.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">고객 서비스</string>
+    <string name="template_click_to_call_activity_template_job">취업 면접</string>
+    <string name="template_click_to_call_activity_template_job_description">관심 있는 채용 담당자가 면접을 위해 전화할 수 있는 링크입니다.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">취업 면접</string>
     <string name="template_click_to_call_activity_template_meeting">회의</string>
+    <string name="template_click_to_call_activity_template_meeting_description">브라우저에서 회의에 참여할 수 있는 링크를 공유하세요.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">회의</string>
+    <string name="template_click_to_call_activity_template_profile_description">앱 설치 없이 전화를 걸 수 있는 링크입니다.</string>
     <string name="template_click_to_call_activity_template_video_bell">비디오 초인종</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">배달 기사가 안내 사항을 확인하기 위해 전화할 수 있도록 허용하세요.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">초인종</string>
 
     <!-- TemplateSpaceActivity -->

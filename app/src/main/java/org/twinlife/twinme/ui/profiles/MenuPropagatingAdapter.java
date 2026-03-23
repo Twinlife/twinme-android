@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Profile;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.settingsActivity.PersonalizationViewHolder;
 
 public class MenuPropagatingAdapter extends RecyclerView.Adapter<PersonalizationViewHolder> {
@@ -84,7 +85,7 @@ public class MenuPropagatingAdapter extends RecyclerView.Adapter<Personalization
         }
 
 
-        viewHolder.onBind(title, isSelected);
+        viewHolder.onBind(title, isSelected, Design.POPUP_BACKGROUND_COLOR);
     }
 
     @Override

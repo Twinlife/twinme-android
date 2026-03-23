@@ -309,7 +309,7 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
             Log.d(LOG_TAG, "onEditTransferCallClick");
         }
 
-        startActivity(EditIdentityActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        startActivity(EditExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
     }
 
     private void onRemoveClick() {

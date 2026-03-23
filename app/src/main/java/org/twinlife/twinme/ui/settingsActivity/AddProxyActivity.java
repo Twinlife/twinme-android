@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -66,6 +67,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
     private ProxyService mProxyService;
 
     private boolean mShowOnboarding = false;
+    private boolean mShowInfo = false;
 
     //
     // Override TwinmeActivityImpl methods
@@ -113,18 +115,20 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
 
         super.onResume();
 
-        if (!mShowOnboarding && mProxyDescriptor == null && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.PROXY)) {
-            mShowOnboarding = true;
-            showInfo(true, true);
-        } else if (mProxyView != null) {
-            mProxyView.postDelayed(() -> {
-                mProxyView.requestFocus();
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (inputMethodManager != null) {
-                    inputMethodManager.showSoftInput(mProxyView, InputMethodManager.SHOW_IMPLICIT);
-                }
-            }, 500);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            showFirstOnboarding();
         }
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
+
+        showFirstOnboarding();
     }
 
     @Override
@@ -419,7 +423,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
                 viewGroup.removeView(onboardingConfirmView);
                 setStatusBarColor();
-
+                mShowInfo = false;
                 if (showKeyboard) {
                     mProxyView.requestFocus();
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -433,6 +437,8 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+
+        mShowInfo = true;
     }
 
     private void hideKeyboard() {
@@ -443,6 +449,25 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(mProxyView.getWindowToken(), 0);
+        }
+    }
+
+    private void showFirstOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showFirstOnboarding");
+        }
+
+        if (!mShowOnboarding && mProxyDescriptor == null && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.PROXY)) {
+            mShowOnboarding = true;
+            showInfo(true, true);
+        } else if (mProxyView != null && !mShowInfo) {
+            mProxyView.postDelayed(() -> {
+                mProxyView.requestFocus();
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (inputMethodManager != null) {
+                    inputMethodManager.showSoftInput(mProxyView, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }, 500);
         }
     }
 }

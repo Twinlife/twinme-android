@@ -21,8 +21,6 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.ui.settingsActivity.SettingSwitchViewHolder;
-import org.twinlife.twinme.ui.settingsActivity.SettingValueViewHolder;
-import org.twinlife.twinme.ui.settingsActivity.UISetting;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
 public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -107,7 +105,7 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 title = mPrivacyActivity.getString(R.string.privacy_activity_hide_last_screen_title);
             }
 
-            settingsViewHolder.onBind(title, false, false);
+            settingsViewHolder.onBind(title, false, false, null);
         }
     }
 
@@ -129,7 +127,7 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return new SectionTitleViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
-            return new SettingSwitchViewHolder(convertView, mPrivacyActivity);
+            return new SettingSwitchViewHolder(convertView);
         }
     }
 }

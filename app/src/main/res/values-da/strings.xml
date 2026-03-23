@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Acceptér</string>
     <string name="application_account_deleted">Din konto er blevet slettet, du skal nu afinstallere applikationen.</string>
+    <string name="application_account_restored_error">Denne enheds konto er blevet gendannet til en anden enhed. Du skal afinstallere appen.</string>
     <string name="application_add_contact_no_profile">Du skal udfylde en profil, der repræsenterer dig, før du inviterer en kontakt. Fortsæt?</string>
     <string name="application_all">Alle</string>
     <string name="application_appearance">Udseende</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">Vis alle</string>
     <string name="application_do_not_display">Vis ikke igen</string>
     <string name="application_edit">Redigere</string>
+    <string name="application_error_code">Fejlkode: %1$s</string>
     <string name="application_error_file_not_found">Filen blev ikke fundet.</string>
     <string name="application_error_media_unload">Kan ikke indlæse medier.</string>
     <string name="application_error_media_not_supported">Dette billed-/videoformat understøttes ikke af applikationen.</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">%1$d sekunder</string>
     <string name="application_timeout_week">1 uge</string>
     <string name="application_unknown_name">Ukendt</string>
+    <string name="application_until">Indtil %1$s</string>
     <string name="application_upgrade">twinme-opgradering</string>
     <string name="application_webrtc_failure">WebRTC-fejl</string>
     <string name="application_wrong_configuration">Konfigurationen er forkert</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$s ønsker at oprette forbindelse til dig</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Backup på eksterne medier</string>
+    <string name="account_activity_backup_restore">Backup / gendannelse</string>
+    <string name="account_activity_backup_verify">Bekræft en sikkerhedskopi</string>
+    <string name="account_activity_backup_list">Sikkerheds Kopierings Historik</string>
     <string name="account_activity_conversations_content_title">Samtaler indhold</string>
     <string name="account_activity_delete_account">Din konto vil sammen med alle tilknyttede data blive slettet permanent. Bekræfte?</string>
     <string name="account_activity_delete_account_confirmation">Er du virkelig sikker på, at du vil slette din konto?</string>
     <string name="account_activity_export_content">Eksporter til eksterne medier</string>
     <string name="account_activity_message_first_part">En ny konto oprettes, når du installerer appen for første gang, efter geninstallation af appen eller nulstilling af enheden eller sletning af den aktuelle konto.</string>
     <string name="account_activity_message_second_part">Der er ingen spor af tidligere konto og data tilbage, så du bliver nødt til at invitere dine kontakter igen.</string>
+    <string name="account_activity_message_third_part">Sletning af en konto ugyldiggør også alle sikkerhedskopier, der er oprettet på den konto, hvilket gør det umuligt at gendanne en sikkerhedskopi fra den konto til denne eller en anden enhed.</string>
     <string name="account_activity_migration_message">En kontomigreringstjeneste er tilgængelig til at overføre din konto med alle tilknyttede data (kontakter, meddelelser, grupper osv.) Fra en Android-enhed til en anden i realtid. Du kan således skifte konto mellem en gammel enhed og en ny.</string>
     <string name="account_activity_migration_start_from_another_device">Fra en anden enhed</string>
     <string name="account_activity_migration_start_from_current_device">Fra min enhed</string>
     <string name="account_activity_migration_title">Kontomigrering</string>
+    <string name="account_activity_restore">Gendan fra eksterne medier</string>
     <string name="account_activity_title">Konto</string>
     <string name="account_activity_transfer_between_devices">Overførsel mellem enheder</string>
     <string name="account_activity_transfer_from_another_device">Overfør fra en anden enhed</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme kender ikke dine venner og kan ikke opdage dem. Du skal invitere dem personligt, med twinme, når de er i nærheden af dig, eller ved at sende dem en invitation på anden vis.</string>
     <string name="add_contact_activity_scan_code">Scan invitations QR-kode</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Dette link er beskadiget.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Dette link er forkert.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Dette invitationslink er udløbet.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Dette link er forkert.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Dette link administreres ikke af applikationen.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Denne relation er blevet slettet.</string>
     <string name="add_contact_activity_scan_message_call_link">Dette link svarer til et \"Click-to-call\"</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Dette link svarer til en kontomigrering</string>
     <string name="add_contact_activity_scan_message_transfer_link">Dette link svarer til en viderestilling af opkald</string>
     <string name="add_contact_activity_scan_title">Scanning</string>
+    <string name="add_contact_activity_share_image_message">Importer eller scan denne QR-kode til invitationen med twinme for at tilføje \"%1$s\" som en kontakt.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s inviterer dig til at indgå i et privat forhold på twinme - privat messenger.</string>
+    <string name="add_contact_activity_share_message_part_2">twinme er en peer-to-peer end-to-end krypteret beskedtjeneste og High-Definition (HD) tale-/videoopkald. Ingen registrering er påkrævet.</string>
+    <string name="add_contact_activity_share_message_part_3">Åbn denne URL med twinme på din mobilenhed for at tilføje \"%1$s\" som en kontakt:</string>
+    <string name="add_contact_activity_share_message_part_4">Alternativt kan du importere eller scanne QR-koden til invitationen i det vedhæftede billede med twinme.</string>
+    <string name="add_contact_activity_share_title">%1$s inviterer dig til twinme</string>
     <string name="add_contact_activity_social_subtitle">besked, mail, socialt netværk</string>
     <string name="add_contact_activity_social_title">Send koden via en ansøgning</string>
     <string name="add_contact_activity_title">Invitation</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">Start certificering</string>
     <string name="authentified_relation_activity_title">Certificeret relation</string>
     <string name="authentified_relation_activity_to_be_certified_title">Bekræft forholdet</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Backup</string>
+    <string name="backup_activity_beta_message_part_1">Sikkerhedskopierings-/gendannelsestjenesten foreslås i BETA-test for at identificere potentielle problemer før dens generelle udgivelse.</string>
+    <string name="backup_activity_beta_message_part_2">Denne tjeneste er beregnet til kun at sikkerhedskopiere kontometadata (profiler, kontakter, grupper) til ekstern lagring, så de kan gendannes senere på en anden enhed, hvis originalen bliver stjålet eller ødelagt.</string>
+    <string name="backup_activity_beta_message_part_3">Kontooverførselstjenesten bør bruges til at overføre alle kontodata (inklusive samtaler) fra en (gammel) enhed til en anden (ny) enhed, når begge enheder er tilgængelige.</string>
+    <string name="backup_activity_confirm_message">For at gendanne sikkerhedskopien skal du indtaste de 12 ord ovenfor i denne rækkefølge, så den kan dekrypteres.</string>
+    <string name="backup_activity_content">Indhold</string>
+    <string name="backup_activity_content_diff_added">Tilføjet</string>
+    <string name="backup_activity_content_diff_updated">Ændret</string>
+    <string name="backup_activity_content_diff_deleted">Slettet</string>
+    <string name="backup_activity_content_diff_message">Her er ændringerne i forhold til dine nuværende data:</string>
+    <string name="backup_activity_content_info">Sikkerhedskopier inkluderer ikke samtaler, grupper, notifikationer og historik.</string>
+    <string name="backup_activity_error_words">De indtastede ord tillader ikke, at sikkerhedskopien dekrypteres.</string>
+    <string name="backup_activity_generate_word">Frembringe</string>
+    <string name="backup_activity_last_backup">Sidste backup %1$s</string>
+    <string name="backup_activity_new_backup">Ny sikkerhedskopi</string>
+    <string name="backup_activity_onboarding">Lav en krypteret sikkerhedskopi af kontodata (\"Spaces\", profiler, kontakter, \"click-to-call\"), der kan gendannes til denne enhed eller en anden.</string>
+    <string name="backup_activity_reminder">Din sidste sikkerhedskopi blev oprettet for mere end 30 dage siden.</string>
+    <string name="backup_activity_save_file_message">Gem sikkerhedskopifilen på den valgte enhed, og gem adgangskoderne til senere gendannelse.</string>
+    <string name="backup_activity_security">Sikkerhed</string>
+    <string name="backup_activity_security_info">Backup -krypteringsnøglen er repræsenteret af en serie på 12 ord, der kræves til restaurering.</string>
+    <string name="backup_activity_success">Backup afsluttet med succes!</string>
+    <string name="backup_activity_success_info">Opbevar denne liste over 12 ord, så du kan gendanne denne sikkerhedskopi.</string>
+    <string name="backup_activity_title">Backup</string>
+    <string name="backup_activity_use_last_backup_words">Brug den samme liste over ord som for den sidste sikkerhedskopi.</string>
+    <string name="backup_activity_verify_completed">Bekræftelse fuldført!</string>
+    <string name="backup_activity_verify_message">Du kan også kontrollere integriteten af ​​en sikkerhedskopifil og om de data, den indeholder, er opdaterede fra: Konto/Bekræft en sikkerhedskopi.</string>
+    <string name="backup_activity_verify_up_to_date">Din sikkerhedskopi er opdateret.</string>
+    <string name="backup_activity_verify_not_up_to_date">Din sikkerhedskopi er ikke opdateret.</string>
+    <string name="backup_activity_verify_words">For at bekræfte en sikkerhedskopi skal du indtaste 12-ordssekvensen for at dekryptere den.</string>
+    <string name="backup_activity_wait_message">Forlad ikke denne skærm, mens sikkerhedskopien er i gang.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Ugyldiggør mine sikkerhedskopier</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Alle dine tidligere sikkerhedskopier bliver ugyldige og kan ikke længere gendannes.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Glem ikke at oprette en ny sikkerhedskopi, som kan gendannes til denne enhed eller en anden.</string>
+    <string name="backups_activity_no_backup_message">Der er ikke foretaget nogen sikkerhedskopi på denne enhed.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Alle</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">Slå højttaler fra</string>
     <string name="call_activity_transfert_call_message">Det igangværende opkald er blevet omstillet.</string>
     <string name="call_activity_try_to_call_back">Prøv at ringe tilbage.</string>
+    <string name="call_activity_waiting_conference_call">Ingen har deltaget i opkaldet endnu. Vent venligst…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Kamera allerede i brug</string>
@@ -468,9 +523,23 @@
     <string name="conversations_fragment_you">Du</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Opkaldskonfiguration</string>
+    <string name="create_external_call_activity_call_type">Opkaldstype</string>
+    <string name="create_external_call_activity_conference_call_description">Deltag i et telefonmøde direkte fra en browser. Ideel til forretnings- eller familiemøder.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Telefonmøde</string>
+    <string name="create_external_call_activity_conference_call_title">Telefonmøde</string>
+    <string name="create_external_call_activity_continuous_link_description">Ingen begrænsninger på linkgyldighed</string>
+    <string name="create_external_call_activity_continuous_link_title">Permanent</string>
+    <string name="create_external_call_activity_delete_link_setting">Dette link vil ikke længere være gyldigt efter den angivne periode.</string>
+    <string name="create_external_call_activity_direct_call_description">Modtag et opkald direkte på din enhed fra en person, der ikke har appen.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Direkte</string>
+    <string name="create_external_call_activity_direct_call_title">Direkte opkald</string>
+    <string name="create_external_call_activity_group_call_description">Op til 8 deltagere</string>
     <string name="create_external_call_activity_link_validity">Linkgyldighed</string>
     <string name="create_external_call_activity_message">Denne profil vises til gæster, som vil ringe til dig med dette \"click-to-call\"-link.</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call giver gæster mulighed for at ringe til dig fra en browser uden at skulle installere applikationen.</string>
+    <string name="create_external_call_activity_name_required">Et navn og et billede er påkrævet for at repræsentere denne \"Click-to-call\".</string>
+    <string name="create_external_call_activity_notification_setting">Få besked, så snart den første deltager deltager i konferencen.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Click-to-call giver gæster mulighed for at ringe til dig eller deltage i et telefonmøde (\"Click-to-meet\") fra en browser uden at installere appen.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Hver forekomst har et navn, billede og beskrivelse, der repræsenterer emnet for opkaldet, såsom:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">din kundeservice</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">bilen du sælger</string>
@@ -489,7 +558,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Skift standardnavnet (Gæst), der repræsenterer dem under opkaldet</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Ring til dig ved at trykke på knappen \"Ring\" på websiden.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Efter opkaldet kan de holde websiden åben for at ringe tilbage til dig.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Opret en \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_3">Del en \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_4">Brug en \"Click-to-call\"</string>
     <string name="create_external_call_activity_placeholder">Emne (Hjælp, Annoncering, Møde, Dørklokke, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Tilpas de dage/tidspunkter, linket er gyldigt</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periodisk</string>
+    <string name="create_external_call_activity_unique_link_description">Indstil start- og slutdatoer for linkgyldigheden</string>
+    <string name="create_external_call_activity_unique_link_title">Engangsbrug</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Inviter medlemmer</string>
@@ -651,6 +727,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Denne handling ugyldiggør den aktuelle invitationskode, der er knyttet til dette \"click-to-call\"-link. Bekræfte?</string>
     <string name="invitation_call_activity_generate_code_title">Generer en ny kode til dette link</string>
+    <string name="invitation_call_activity_invite_meeting_message">Åbn webadressen %1$s, eller scan QR-koden, for at deltage i mødet “%2$s”.</string>
     <string name="invitation_call_activity_invite_message">Åbn webadressen %1$s eller scan QR-koden for at ringe til \"%2$s\".</string>
     <string name="invitation_call_activity_message">Del denne \"click-to-call\"-kode med en person, som derefter kan ringe til dig fra nettet eller mobilappen.</string>
     <string name="invitation_call_activity_save_message">Scan denne QR-kode for at ringe til \"%1$s\".</string>
@@ -711,6 +788,7 @@
     <string name="notification_center_audio_message_received">Ny lydmeddelelse</string>
     <string name="notification_center_cancel">Afvis</string>
     <string name="notification_center_cleanup_conversation">Nogle gamle beskeder er blevet slettet.</string>
+    <string name="notification_center_conference_join_call">Én deltager deltog i opkaldet.</string>
     <string name="notification_center_deleted_contact">Kontakt slettet</string>
     <string name="notification_center_file_message">Sendte dig en fil</string>
     <string name="notification_center_file_message_received">Ny fil modtaget</string>
@@ -718,6 +796,7 @@
     <string name="notification_center_invitation_group">inviterer dig til at deltage i en gruppe.</string>
     <string name="notification_center_invitation_received">Ny invitation</string>
     <string name="notification_center_invitation_received_group">Ny gruppeinvitation</string>
+    <string name="notification_center_join_call">%1$s har lige deltaget i opkaldet</string>
     <string name="notification_center_join_group">Du er medlem af gruppen</string>
     <string name="notification_center_message_received">Ny besked</string>
     <string name="notification_center_missed_audio_call_to">Ubesvaret lydopkald til %1$s</string>
@@ -901,6 +980,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Tillad, at appen modtager push-beskeder.</string>
     <string name="quality_of_service_activity_warning_run_background">Tillad appen at køre i baggrunden.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ skal være installeret på denne enhed for at gendanne en backup af en twinme+ konto.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Den enhed, der lavede sikkerhedskopien, er stadig logget ind.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Hvis du gendanner sikkerhedskopien til denne nye enhed, bliver kontoen på den enhed, hvor sikkerhedskopien blev foretaget, automatisk ugyldiggjort.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Hvis du vil overføre din konto til en ny enhed, og du stadig har den gamle, er det at foretrække at bruge \"kontomigrering\"-handlingen i stedet for at gendanne en sikkerhedskopi, da det også vil overføre samtaler, grupper, notifikationer og historik.</string>
+    <string name="restore_activity_confirm">Er du sikker på, at du vil udskifte de løbende kontodata med følgende data fra sikkerhedskopien?</string>
+    <string name="restore_activity_confirm_restore">Vil du stadig gendanne denne sikkerhedskopi?</string>
+    <string name="restore_activity_content_contact_deleted_message">Data slettet efter sikkerhedskopiering kan ikke gendannes.</string>
+    <string name="restore_activity_content_profile_reset">Invitationskode ændret.</string>
+    <string name="restore_activity_content_profile_reset_message">Invitationskoden knyttet til den sikkerhedskopierede profil er ugyldig. En ny invitationskode genereres under gendannelsesprocessen.</string>
+    <string name="restore_activity_enter_words">Indtast serien med 12 ord, der giver mulighed for at dekryptere sikkerhedskopien.</string>
+    <string name="restore_activity_error_message">Fejl under gendannelse af backup.</string>
+    <string name="restore_activity_error_message_verify_backup">Fejl ved bekræftelse af sikkerhedskopiering.</string>
+    <string name="restore_activity_file_not_supported">Backupfilen skal være i formatet \"twmbckp\".</string>
+    <string name="restore_activity_more_recent_backup">En nyere sikkerhedskopi blev foretaget med den samme konto.</string>
+    <string name="restore_activity_onboarding">Gendannelse af en sikkerhedskopi vil erstatte dataene for løbende konto.</string>
+    <string name="restore_activity_onboarding_words">For at gendanne en sikkerhedskopi skal du indtaste serien med 12 ord, så den kan dekrypteres.</string>
+    <string name="restore_activity_onboarding_verify">Bekræft, at en sikkerhedskopi er gyldig og opdateret med dine nuværende data.</string>
+    <string name="restore_activity_paste">Indsæt listen over ord fra udklipsholderen.</string>
+    <string name="restore_activity_paste_error">Ugyldig ordliste.</string>
+    <string name="restore_activity_restore">Gendanne</string>
+    <string name="restore_activity_select_backup">Vælg en sikkerhedskopi</string>
+    <string name="restore_activity_state_restore_account">Gendanner konto...</string>
+    <string name="restore_activity_state_restore_data">Gendanner data...</string>
+    <string name="restore_activity_state_restore_starting">Starter gendannelse.</string>
+    <string name="restore_activity_state_restore_verify_account">Kontobekræftelse…</string>
+    <string name="restore_activity_state_restore_verify_data">Databekræftelse…</string>
+    <string name="restore_activity_state_restore_verify_starting">Bekræftelse starter…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Venter på bekræftelse.</string>
+    <string name="restore_activity_success">Restaurering afsluttet med succes!</string>
+    <string name="restore_activity_success_message">Luk appen og genstart den for at få adgang til de nye data.</string>
+    <string name="restore_activity_title">Restaurering</string>
+    <string name="restore_activity_verify_same_account">Bekræftelsen skal udføres på den samme enhed, der bruges til sikkerhedskopieringen.</string>
+    <string name="restore_activity_warning">Gendannelse af denne sikkerhedskopi vil erstatte alle data om aktuelle konto med dataene fra sikkerhedskopien.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Angiv som administrator</string>
     <string name="room_members_activity_delete_message">Bekræft sletning af dette medlem</string>
@@ -954,15 +1068,18 @@
     <string name="settings_activity_ephemeral_title">Forsvindende besked</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Meddelelsesegenskaber</string>
+    <string name="settings_activity_message_reactions_notification">Notifikation om beskedreaktioner</string>
     <string name="settings_activity_reset_default_value">Nulstil til standardindstillinger</string>
     <string name="settings_activity_reset_preferences_button_title">Nulstil til standardværdier</string>
     <string name="settings_activity_reset_preferences_message">Nulstil meddelelsesindstillinger til standardindstillinger for applikationer.</string>
     <string name="settings_activity_reset_preferences_title">Nulstil præferencer</string>
     <string name="settings_activity_permissions_title">TILLADELSER</string>
+    <string name="settings_activity_silent_mode">Lydløs tilstand</string>
     <string name="settings_activity_silent_sound">Tavs</string>
     <string name="settings_activity_sound_enabled_title">SOUND NOTIFICATIONS</string>
     <string name="settings_activity_system_notifications_title">Systemmeddelelser</string>
     <string name="settings_activity_system_settings_title">Systemindstillinger</string>
+    <string name="settings_activity_turn_off_notification_sounds">Sluk notifikationslyde</string>
     <string name="settings_activity_video_call_category_title">Videoopkald</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Ringetone navn</string>
     <string name="settings_activity_video_call_notification_title">Ringetone</string>
@@ -1013,7 +1130,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Click-to-call-kode</string>
+    <string name="show_call_activity_conference_call_information">Del dette link for at ringe til dig eller deltage i en konference fra en browser.</string>
     <string name="show_call_activity_information_code">Del denne kode for at modtage eksterne opkald.</string>
+    <string name="show_call_activity_meeting_organizer">Arrangør af dette møde</string>
     <string name="show_call_activity_schedule_call">Planlagt opkald</string>
     <string name="show_call_activity_schedule_from">fra %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s fra %2$s til %3$s</string>
@@ -1075,12 +1194,21 @@
     <!-- TemplateClickToCallActivity -->
     <string name="transfert_call_activity_delete_confirm_message">Er du sikker på, at du vil slette denne \"Opkaldsoverførsel\"-kode?</string>
     <string name="template_click_to_call_activity_template_classified_ad">Rubrikannonce</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Indsæt et link i en rubrikannonce, der giver potentielle købere mulighed for at ringe til dig uden at installere appen.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Annoncering</string>
-    <string name="template_click_to_call_activity_template_help">Hjælp</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Hjælp</string>
+    <string name="template_click_to_call_activity_template_default_description">Tilpas et opkaldslink efter behov.</string>
+    <string name="template_click_to_call_activity_template_help">Kundeservice</string>
+    <string name="template_click_to_call_activity_template_help_description">Link til at ringe til din kundeservice fra en browser.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Kundeservice</string>
+    <string name="template_click_to_call_activity_template_job">Jobsamtale</string>
+    <string name="template_click_to_call_activity_template_job_description">Link, der giver interesserede rekrutterere mulighed for at ringe til dig til en jobsamtale.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Jobsamtale</string>
     <string name="template_click_to_call_activity_template_meeting">Møde</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Del et link for at deltage i en konference fra en browser.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Møde</string>
+    <string name="template_click_to_call_activity_template_profile_description">Link til at ringe til dig uden at installere appen.</string>
     <string name="template_click_to_call_activity_template_video_bell">Video dørklokke</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Tillad chaufføren at ringe til dig for at få instruktioner.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Dørklokke</string>
 
     <!-- TemplateSpaceActivity -->

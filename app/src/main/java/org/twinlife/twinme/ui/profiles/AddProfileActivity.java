@@ -20,6 +20,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -160,11 +161,20 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         super.onResume();
 
-        if (!mShowOnboarding) {
-            mShowOnboarding = true;
-
-            showOnboarding(false);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            showFirstOnboarding();
         }
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        super.onApplyInsetsFinish();
+
+        showFirstOnboarding();
     }
 
     @Override
@@ -725,6 +735,18 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showFirstOnboarding() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showFirstOnboarding");
+        }
+
+        if (!mShowOnboarding) {
+            mShowOnboarding = true;
+
+            showOnboarding(false);
+        }
     }
 
     @Override

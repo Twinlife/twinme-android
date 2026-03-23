@@ -60,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 
 public class EditGroupActivity extends AbstractGroupActivity {
@@ -352,7 +353,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "onLeaveGroup group=" + group + " memberTwincodeId=" + memberTwincodeId);
         }
 
-        if (mGroup != null && mGroup.getMemberTwincodeOutboundId().equals(memberTwincodeId)) {
+        if (mGroup != null && Objects.equals(mGroup.getMemberTwincodeOutboundId(), memberTwincodeId)) {
             finish();
         }
     }
@@ -659,7 +660,10 @@ public class EditGroupActivity extends AbstractGroupActivity {
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
-                mGroupService.leaveGroup(mGroup.getMemberTwincodeOutboundId());
+                UUID memberTwincodeOutboundId = mGroup.getMemberTwincodeOutboundId();
+                if (memberTwincodeOutboundId != null) {
+                    mGroupService.leaveGroup(memberTwincodeOutboundId);
+                }
                 deleteConfirmView.animationCloseConfirmView();
             }
 

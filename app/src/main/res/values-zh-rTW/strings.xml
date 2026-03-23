@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">接受</string>
     <string name="application_account_deleted">您的帳戶已被刪除，您現在必須卸載該應用程序。</string>
+    <string name="application_account_restored_error">此設備的帳戶已恢復至另一台設備。您需要卸載此應用程式。</string>
     <string name="application_add_contact_no_profile">在邀請聯繫人之前，您必須完成代表您的個人資料。 繼續？</string>
     <string name="application_all">所有</string>
     <string name="application_appearance">出现</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">全部顯示</string>
     <string name="application_do_not_display">不再顯示</string>
     <string name="application_edit">編輯</string>
+    <string name="application_error_code">錯誤代碼：%1$s</string>
     <string name="application_error_file_not_found">未找到該文件。</string>
     <string name="application_error_media_unload">無法載入媒體。</string>
     <string name="application_error_media_not_supported">該應用程式不支援此圖像/視訊格式。</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">%1$d 秒</string>
     <string name="application_timeout_week">1週</string>
     <string name="application_unknown_name">未知</string>
+    <string name="application_until">直到 %1$s</string>
     <string name="application_upgrade">升級twinme</string>
     <string name="application_webrtc_failure">WebRTC失敗</string>
     <string name="application_wrong_configuration">設定不正確</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$s想與您建立聯繫</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">在外部介質上備份</string>
+    <string name="account_activity_backup_restore">備份 /還原</string>
+    <string name="account_activity_backup_verify">驗證備份</string>
+    <string name="account_activity_backup_list">備份歷史記錄</string>
     <string name="account_activity_conversations_content_title">對話內容</string>
     <string name="account_activity_delete_account">您的帳戶以及所有相關數據將被永久刪除。 確認？</string>
     <string name="account_activity_delete_account_confirmation">您真的確定要刪除自己的帳戶嗎？</string>
     <string name="account_activity_export_content">匯出到外部媒體</string>
     <string name="account_activity_message_first_part">首次安裝應用程序、重新安裝應用程序、重置設備或刪除當前帳戶後，都會創建一個新帳戶。</string>
     <string name="account_activity_message_second_part">以前的帳戶和數據不會留下任何痕跡，因此您必須重新邀請您的聯繫人。</string>
+    <string name="account_activity_message_third_part">刪除帳戶也會使該帳戶下建立的所有備份失效，無法將該帳戶的備份還原到此裝置或其他裝置。</string>
     <string name="account_activity_migration_message">帳戶遷移服務可用於將您的帳戶以及所有相關數據（聯繫人、消息、群組等）從一台 Android 設備實時轉移到另一台。 因此，您可以在舊設備和新設備之間切換帳戶。</string>
     <string name="account_activity_migration_start_from_another_device">從另一台設備</string>
     <string name="account_activity_migration_start_from_current_device">從我的設備</string>
     <string name="account_activity_migration_title">帳戶遷移</string>
+    <string name="account_activity_restore">從外部媒體還原</string>
     <string name="account_activity_title">帳戶</string>
     <string name="account_activity_transfer_between_devices">裝置間傳輸</string>
     <string name="account_activity_transfer_from_another_device">從另一個裝置傳輸</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme 不認識你的朋友，也無法發現他們。你必須親自邀請他們，當他們在你附近時用 twinme 邀請他們，或者通過其他方式向他們發送邀請。</string>
     <string name="add_contact_activity_scan_code">掃描邀請二維碼</string>
     <string name="add_contact_activity_scan_error_corrupt_link">該連結已損壞。</string>
-    <string name="add_contact_activity_scan_error_incorect_link">此連結不正確。</string>
+    <string name="add_contact_activity_scan_error_expired_link">此邀請連結已過期。</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">此連結不正確。</string>
     <string name="add_contact_activity_scan_error_not_managed_link">此連結不受應用程式管理。</string>
     <string name="add_contact_activity_scan_error_revoked_link">此關係已刪除。</string>
     <string name="add_contact_activity_scan_message_call_link">此連結對應於“點擊通話”</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">此連結對應帳戶遷移</string>
     <string name="add_contact_activity_scan_message_transfer_link">此連結對應呼叫轉接</string>
     <string name="add_contact_activity_scan_title">掃描</string>
+    <string name="add_contact_activity_share_image_message">使用 twinme 匯入或掃描此邀請二維碼，即可將「%1$s」新增為聯絡人。</string>
+    <string name="add_contact_activity_share_message_part_1">「%1$s」邀請您在 twinme（一款私密即時通訊應用程式）上建立私人關係。</string>
+    <string name="add_contact_activity_share_message_part_2">twinme 是一款點對點端對端加密即時通訊服務和高畫質 (HD) 語音/視訊通話服務。無需註冊。</string>
+    <string name="add_contact_activity_share_message_part_3">在您的行動裝置上使用 twinme 開啟此 URL，即可將「%1$s」新增為聯絡人：</string>
+    <string name="add_contact_activity_share_message_part_4">或者，您也可以使用 twinme 匯入或掃描附件圖片中的邀請二維碼。</string>
+    <string name="add_contact_activity_share_title">「%1$s」邀請您加入 twinme</string>
     <string name="add_contact_activity_social_subtitle">消息，郵件，社交網絡</string>
     <string name="add_contact_activity_social_title">通過應用程序發送代碼</string>
     <string name="add_contact_activity_title">邀請</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">開始認證</string>
     <string name="authentified_relation_activity_title">認證關係</string>
     <string name="authentified_relation_activity_to_be_certified_title">驗證關係</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">備份</string>
+    <string name="backup_activity_beta_message_part_1">備份/復原服務目前處於 Beta 測試階段，旨在正式發布前識別潛在問題。</string>
+    <string name="backup_activity_beta_message_part_2">此服務僅用於將帳戶元資料（個人資料、聯絡人、群組）備份到外部存儲，以便在原始設備被盜或損壞時，可以在其他設備上恢復。</string>
+    <string name="backup_activity_beta_message_part_3">帳戶轉移服務用於在兩台裝置都可用時，將所有帳戶資料（包括對話）從一台（舊）裝置傳輸到另一台（新）裝置。</string>
+    <string name="backup_activity_confirm_message">要恢復備份，您將需要按該順序輸入上面的12個單詞，以解密它。</string>
+    <string name="backup_activity_content">內容</string>
+    <string name="backup_activity_content_diff_added">已新增</string>
+    <string name="backup_activity_content_diff_updated">已修改</string>
+    <string name="backup_activity_content_diff_deleted">已刪除</string>
+    <string name="backup_activity_content_diff_message">以下是與當前數據相比的更改：</string>
+    <string name="backup_activity_content_info">備份不包括對話、群組、通知和歷史記錄。</string>
+    <string name="backup_activity_error_words">輸入的單字不允許解密備份。</string>
+    <string name="backup_activity_generate_word">生成</string>
+    <string name="backup_activity_last_backup">上的最後備份％@</string>
+    <string name="backup_activity_new_backup">新備份</string>
+    <string name="backup_activity_onboarding">請對帳戶資料（「Spaces」、個人資料、聯絡人、「click-to-call」）進行加密備份，以便將其還原至此裝置或其他裝置。</string>
+    <string name="backup_activity_reminder">您上次備份的建立時間已超過 30 天。</string>
+    <string name="backup_activity_save_file_message">將備份檔案儲存到您選擇的設備，並保留密碼以便日後復原。</string>
+    <string name="backup_activity_security">安全</string>
+    <string name="backup_activity_security_info">備份加密密鑰由恢復所需的一系列 12 個字表示。</string>
+    <string name="backup_activity_success">備份成功完成！</string>
+    <string name="backup_activity_success_info">保留此列表的12個單詞，以便您可以還原此備份。</string>
+    <string name="backup_activity_title">備份</string>
+    <string name="backup_activity_use_last_backup_words">使用與最後備份相同的單詞列表。</string>
+    <string name="backup_activity_verify_completed">驗證完成！</string>
+    <string name="backup_activity_verify_message">您也可以透過以下方式檢查備份檔案的完整性以及其中包含的資料是否為最新：帳戶/驗證備份。</string>
+    <string name="backup_activity_verify_up_to_date">您的備份已更新。</string>
+    <string name="backup_activity_verify_not_up_to_date">您的備份不是最新的。</string>
+    <string name="backup_activity_verify_words">要驗證備份，您需要輸入 12 個單字的序列來解密。</string>
+    <string name="backup_activity_wait_message">備份進行時，請勿離開此屏幕。</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">使我的備份無效</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">您之前的所有備份都將失效，並且無法復原。</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">請不要忘記建立新的備份，以便將其還原到此裝置或其他裝置。</string>
+    <string name="backups_activity_no_backup_message">此設備尚未備份。</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">所有</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">靜音揚聲器</string>
     <string name="call_activity_transfert_call_message">正在進行的通話已轉接。</string>
     <string name="call_activity_try_to_call_back">嘗試回撥。</string>
+    <string name="call_activity_waiting_conference_call">目前還沒有人加入通話。請稍候…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">相機已在使用</string>
@@ -469,9 +524,23 @@
     <string name="conversations_fragment_you">你</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">通話配置</string>
+    <string name="create_external_call_activity_call_type">通話類型</string>
+    <string name="create_external_call_activity_conference_call_description">直接從瀏覽器加入電話會議。非常適合商務或家庭會議。</string>
+    <string name="create_external_call_activity_conference_call_short_title">電話會議</string>
+    <string name="create_external_call_activity_conference_call_title">電話會議</string>
+    <string name="create_external_call_activity_continuous_link_description">連結有效期限無限制</string>
+    <string name="create_external_call_activity_continuous_link_title">永久有效</string>
+    <string name="create_external_call_activity_delete_link_setting">此連結將在指定期限後失效。</string>
+    <string name="create_external_call_activity_direct_call_description">直接在您的裝置上接聽來自未安裝應用程式的來電。</string>
+    <string name="create_external_call_activity_direct_call_short_title">直接通話</string>
+    <string name="create_external_call_activity_direct_call_title">直接通話</string>
+    <string name="create_external_call_activity_group_call_description">最多 8 位參與者</string>
     <string name="create_external_call_activity_link_validity">連結有效期限</string>
     <string name="create_external_call_activity_message">此個人資料將顯示給將通過此“click-to-call”鏈接呼叫您的客人。</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">「點擊通話」允許客人透過瀏覽器給您打電話，而無需安裝應用程式。</string>
+    <string name="create_external_call_activity_name_required">此“Click-to-call”功能需要姓名和頭像。</string>
+    <string name="create_external_call_activity_notification_setting">第一位參與者加入會議時立即收到通知。</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">「Click-to-call」功能可讓訪客無需安裝應用程式即可透過瀏覽器撥打您的電話或加入電話會議（「Click-to-meet」）。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">每個實例都有一個名稱、一個圖像和一個描述，代表調用的主題，例如：</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">您的客戶服務</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">你要賣的車</string>
@@ -490,7 +559,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">更改在通話中代表他們的預設名稱（訪客）</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">按網頁上的「呼叫」按鈕打給您。</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">通話結束後，他們可能會保持網頁開啟以便回電給您。</string>
+    <string name="create_external_call_activity_onboarding_title_2">設定「Click-to-call」</string>
+    <string name="create_external_call_activity_onboarding_title_3">分享「Click-to-call」</string>
+    <string name="create_external_call_activity_onboarding_title_4">使用「Click-to-call」</string>
     <string name="create_external_call_activity_placeholder">主題（幫助、公告、會議、門鈴......）</string>
+    <string name="create_external_call_activity_recurrent_link_description">自訂連結的有效日期/時間</string>
+    <string name="create_external_call_activity_recurrent_link_title">定期有效</string>
+    <string name="create_external_call_activity_unique_link_description">設定連結有效期限的開始和結束日期</string>
+    <string name="create_external_call_activity_unique_link_title">一次有效</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">邀請成員</string>
@@ -652,6 +728,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">此操作使与此“点击通话”链接关联的当前邀请代码无效。 确认？</string>
     <string name="invitation_call_activity_generate_code_title">为此链接生成新代码</string>
+    <string name="invitation_call_activity_invite_meeting_message">開啟網址 %1$s，或掃描二維碼，即可加入會議「%2$s」。</string>
     <string name="invitation_call_activity_invite_message">打开网址%1$s 或扫描二维码，呼叫“%2$s”。</string>
     <string name="invitation_call_activity_message">与可以通过网络或移动应用程序呼叫您的人分享此“点击呼叫”代码。</string>
     <string name="invitation_call_activity_save_message">掃描此 QR 碼以呼叫“%1$s”。</string>
@@ -712,6 +789,7 @@
     <string name="notification_center_audio_message_received">新的音頻消息</string>
     <string name="notification_center_cancel">解除</string>
     <string name="notification_center_cleanup_conversation">一些舊消息已被刪除。</string>
+    <string name="notification_center_conference_join_call">一名參與者加入了通話。</string>
     <string name="notification_center_deleted_contact">聯絡人已刪除</string>
     <string name="notification_center_file_message">發給你一個文件</string>
     <string name="notification_center_file_message_received">新文件</string>
@@ -719,6 +797,7 @@
     <string name="notification_center_invitation_group">邀請您加入群組。</string>
     <string name="notification_center_invitation_received">新邀請</string>
     <string name="notification_center_invitation_received_group">新的群組邀請。</string>
+    <string name="notification_center_join_call">%1$s 剛加入通話</string>
     <string name="notification_center_join_group">您是該組的成員</string>
     <string name="notification_center_message_received">新消息</string>
     <string name="notification_center_missed_audio_call_to">未接%1$s的語音通話</string>
@@ -902,6 +981,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">允許應用程式接收推播通知。</string>
     <string name="quality_of_service_activity_warning_run_background">允許應用程式在背景運行。</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">若要還原 twinme+ 帳戶備份，必須在此裝置上安裝 twinme+。</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">進行備份的設備仍處於登入狀態。</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">如果您將備份還原到此新設備，則進行備份的設備的帳戶將自動失效。</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">如果您想將帳戶轉移到新設備，並且您仍然擁有舊帳戶，最好使用「帳戶遷移」操作，而不是恢復備份，因為遷移作業也會轉移對話、群組、通知和歷史記錄。</string>
+    <string name="restore_activity_confirm">您確定要用備份中的以下數據替換頻道數據嗎？</string>
+    <string name="restore_activity_confirm_restore">您仍要還原此備份嗎？</string>
+    <string name="restore_activity_content_contact_deleted_message">備份後刪除的資料無法恢復。</string>
+    <string name="restore_activity_content_profile_reset">邀請碼已更改。</string>
+    <string name="restore_activity_content_profile_reset_message">與備份的個人資料關聯的邀請碼無效。恢復過程中將產生新的邀請碼。</string>
+    <string name="restore_activity_enter_words">輸入允許解密備份的12個單詞系列。</string>
+    <string name="restore_activity_error_message">恢復備份時發生錯誤。</string>
+    <string name="restore_activity_error_message_verify_backup">驗證備份時發生錯誤。</string>
+    <string name="restore_activity_file_not_supported">備份檔案必須為“twmbckp”格式。</string>
+    <string name="restore_activity_more_recent_backup">已使用同一帳戶進行了更新的備份。</string>
+    <string name="restore_activity_onboarding">恢復備份將替換當前帳戶數據。</string>
+    <string name="restore_activity_onboarding_words">要恢復備份，您將需要輸入一系列12個單詞，以解密它。</string>
+    <string name="restore_activity_onboarding_verify">驗證備份是否有效，並包含您目前的資料。</string>
+    <string name="restore_activity_paste">粘貼剪貼板中的單詞列表。</string>
+    <string name="restore_activity_paste_error">無效的詞表。</string>
+    <string name="restore_activity_restore">恢復</string>
+    <string name="restore_activity_select_backup">選擇備份</string>
+    <string name="restore_activity_state_restore_account">正在恢復帳戶…</string>
+    <string name="restore_activity_state_restore_data">正在恢復資料…</string>
+    <string name="restore_activity_state_restore_starting">正在開始恢復。</string>
+    <string name="restore_activity_state_restore_verify_account">帳戶驗證…</string>
+    <string name="restore_activity_state_restore_verify_data">數據驗證…</string>
+    <string name="restore_activity_state_restore_verify_starting">驗證開始…</string>
+    <string name="restore_activity_state_restore_wait_confirm">等待確認。</string>
+    <string name="restore_activity_success">修復成功完成！</string>
+    <string name="restore_activity_success_message">關閉應用程序並重新啟動以訪問新數據。</string>
+    <string name="restore_activity_title">復原</string>
+    <string name="restore_activity_verify_same_account">驗證必須在用於備份的相同裝置上執行。</string>
+    <string name="restore_activity_warning">恢復此備份將用備份中的數據替換所有頻道數據。</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">定義為管理員</string>
     <string name="room_members_activity_delete_message">確認刪除該成員</string>
@@ -955,15 +1069,18 @@
     <string name="settings_activity_ephemeral_title">自我毀滅的訊息</string>
     <string name="settings_activity_image_title">照片</string>
     <string name="settings_activity_message_properties_title">消息屬性</string>
+    <string name="settings_activity_message_reactions_notification">訊息回覆通知</string>
     <string name="settings_activity_reset_default_value">恢復默認設置</string>
     <string name="settings_activity_reset_preferences_button_title">重置為默認值。</string>
     <string name="settings_activity_reset_preferences_message">將通知設置重置為應用程序默認值。</string>
     <string name="settings_activity_reset_preferences_title">重置首選項</string>
     <string name="settings_activity_permissions_title">權限</string>
+    <string name="settings_activity_silent_mode">靜音模式</string>
     <string name="settings_activity_silent_sound">無聲</string>
     <string name="settings_activity_sound_enabled_title">聲音通知</string>
     <string name="settings_activity_system_notifications_title">系統通知</string>
     <string name="settings_activity_system_settings_title">系統設置</string>
+    <string name="settings_activity_turn_off_notification_sounds">關閉通知聲音</string>
     <string name="settings_activity_video_call_category_title">視頻通話</string>
     <string name="settings_activity_video_call_notification_ringtone_title">鈴聲名稱</string>
     <string name="settings_activity_video_call_notification_title">鈴聲</string>
@@ -992,7 +1109,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">“點擊通話”代碼</string>
+    <string name="show_call_activity_conference_call_information">分享此鏈接，即可透過瀏覽器撥打您的電話或加入會議。</string>
     <string name="show_call_activity_information_code">分享此代碼以接聽外部電話。</string>
+    <string name="show_call_activity_meeting_organizer">本次會議的組織者</string>
     <string name="show_call_activity_schedule_call">預定的通話</string>
     <string name="show_call_activity_schedule_from">從%1$s開始</string>
     <string name="show_call_activity_schedule_from_to">%1$s 從 %2$s 到 %3$s</string>
@@ -1075,12 +1194,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">分類廣告</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">在分類廣告中插入鏈接，讓潛在買家無需安裝應用程式即可聯繫您。</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">公告</string>
-    <string name="template_click_to_call_activity_template_help">幫幫我</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">幫幫我</string>
+    <string name="template_click_to_call_activity_template_default_description">根據需要自訂通話連結。</string>
+    <string name="template_click_to_call_activity_template_help">客戶服務</string>
+    <string name="template_click_to_call_activity_template_help_description">透過瀏覽器撥打客戶服務專線的連結。</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">客戶服務</string>
+    <string name="template_click_to_call_activity_template_job">求職面試</string>
+    <string name="template_click_to_call_activity_template_job_description">允許有興趣的招聘人員致電您進行面試的連結。</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">求職面試</string>
     <string name="template_click_to_call_activity_template_meeting">會議</string>
+    <string name="template_click_to_call_activity_template_meeting_description">分享鏈接，即可透過瀏覽器加入會議。</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">會議</string>
+    <string name="template_click_to_call_activity_template_profile_description">無需安裝應用程式即可撥打電話的連結。</string>
     <string name="template_click_to_call_activity_template_video_bell">可視門鈴</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">允許送貨司機致電您詢問指示。</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">門鈴</string>
 
     <!-- TemplateSpaceActivity -->

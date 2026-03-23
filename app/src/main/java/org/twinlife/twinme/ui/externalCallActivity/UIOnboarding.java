@@ -32,6 +32,9 @@ public class UIOnboarding {
     private static int sItemId = 0;
 
     private final long mItemId;
+
+    @Nullable
+    private String mTitle;
     @Nullable
     private String mMessage;
     private int mImageId;
@@ -56,6 +59,12 @@ public class UIOnboarding {
     public OnboardingType getOnboardingType() {
 
         return mOnboardingType;
+    }
+
+    @Nullable
+    public String getTitle() {
+
+        return mTitle;
     }
 
     public String getMessage() {
@@ -95,6 +104,7 @@ public class UIOnboarding {
                 stringBuilder.append("    • ");
                 stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_6));
                 mImageId = R.drawable.onboarding_click_to_call;
+                mTitle = context.getString(R.string.premium_services_activity_click_to_call_title);
                 break;
 
             case PART_TWO:
@@ -109,6 +119,7 @@ public class UIOnboarding {
                 stringBuilder.append("    • ");
                 stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_2_message_4));
                 mImageId = R.drawable.onboarding_click_to_call_2;
+                mTitle = context.getString(R.string.create_external_call_activity_onboarding_title_2);
                 break;
 
             case PART_THREE:
@@ -126,6 +137,7 @@ public class UIOnboarding {
                 stringBuilder.append("    • ");
                 stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_3_message_5));
                 mImageId = R.drawable.onboarding_click_to_call_3;
+                mTitle = context.getString(R.string.create_external_call_activity_onboarding_title_3);
                 break;
 
             case PART_FOUR:
@@ -139,6 +151,7 @@ public class UIOnboarding {
                 stringBuilder.append("\n\n");
                 stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_4_message_4));
                 mImageId = R.drawable.onboarding_click_to_call_4;
+                mTitle = context.getString(R.string.create_external_call_activity_onboarding_title_4);
                 break;
 
             default:

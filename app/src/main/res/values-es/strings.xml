@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">Aceptar</string>
     <string name="application_account_deleted">Su cuenta ha sido eliminada, ahora debe desinstalar la aplicación.</string>
+    <string name="application_account_restored_error">La cuenta de este dispositivo se ha restaurado en otro. Debe desinstalar la aplicación.</string>
     <string name="application_add_contact_no_profile">Debes completar un perfil que te represente, antes de invitar a un contacto. ¿Proceder?</string>
     <string name="application_all">Todas</string>
     <string name="application_appearance">Apariencia</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">Mostrar todo</string>
     <string name="application_do_not_display">No mostrar más</string>
     <string name="application_edit">Editar</string>
+    <string name="application_error_code">Código de error: %1$s</string>
     <string name="application_error_file_not_found">No se encontró el archivo.</string>
     <string name="application_error_media_unload">No se puede cargar el contenido multimedia.</string>
     <string name="application_error_media_not_supported">Este formato de imagen/vídeo no es compatible con la aplicación.</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">%1$d segundos</string>
     <string name="application_timeout_week">1 semana</string>
     <string name="application_unknown_name">Desconocido</string>
+    <string name="application_until">Hasta %1$s</string>
     <string name="application_upgrade">Actualización de twinme</string>
     <string name="application_webrtc_failure">Error de WebRTC</string>
     <string name="application_wrong_configuration">Configuración incorrecta</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$s quiere conectarse contigo</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Copia de seguridad en medios externos</string>
+    <string name="account_activity_backup_restore">Copia de seguridad / restauración</string>
+    <string name="account_activity_backup_verify">Verificar una copia de seguridad</string>
+    <string name="account_activity_backup_list">Historial de copias de seguridad</string>
     <string name="account_activity_conversations_content_title">Contenido de las conversaciones</string>
     <string name="account_activity_delete_account">Su cuenta, junto con todos los datos asociados, se eliminarán de forma permanente. ¿Confirmar?</string>
     <string name="account_activity_delete_account_confirmation">¿Está realmente seguro de querer eliminar su cuenta?</string>
     <string name="account_activity_export_content">Exportar a un medio externo</string>
     <string name="account_activity_message_first_part">Se crea una nueva cuenta al instalar la aplicación por primera vez, después de volver a instalar la aplicación, restablecer el dispositivo o eliminar la cuenta actual.</string>
     <string name="account_activity_message_second_part">No queda ningún rastro de la cuenta y los datos anteriores, por lo que tendrá que volver a invitar a sus contactos.</string>
+    <string name="account_activity_message_third_part">Eliminar una cuenta también invalida todas las copias de seguridad creadas en ella, lo que imposibilita restaurar una copia de seguridad de esa cuenta en este u otro dispositivo.</string>
     <string name="account_activity_migration_message">Un servicio de migración de cuenta está disponible para transferir su cuenta con todos los datos asociados (contactos, mensajes, grupos, etc.) de un dispositivo Android a otro en tiempo real. Por lo tanto, puede cambiar de cuenta entre un dispositivo antiguo y uno nuevo.</string>
     <string name="account_activity_migration_start_from_another_device">Desde otro dispositivo</string>
     <string name="account_activity_migration_start_from_current_device">Desde mi dispositivo</string>
     <string name="account_activity_migration_title">Migración de cuenta</string>
+    <string name="account_activity_restore">Restaurar desde medios externos</string>
     <string name="account_activity_title">Cuenta</string>
     <string name="account_activity_transfer_between_devices">Transferencia entre dispositivos</string>
     <string name="account_activity_transfer_from_another_device">Transferencia desde otro dispositivo</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme no conoce a tus amigos y no puede descubrirlos. Debes invitarlos personalmente, con twinme cuando estén cerca de ti, o enviándoles una invitación por otros medios.</string>
     <string name="add_contact_activity_scan_code">Escanear código QR de invitación</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Este enlace está dañado.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Este enlace es incorrecto.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Este enlace de invitación ha expirado.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Este enlace es incorrecto.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Este enlace no es gestionado por la aplicación.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Esta relación ha sido eliminada.</string>
     <string name="add_contact_activity_scan_message_call_link">Este enlace corresponde a un \"Click-to-call\"</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Este enlace corresponde a una migración de cuenta.</string>
     <string name="add_contact_activity_scan_message_transfer_link">Este enlace corresponde a una transferencia de llamada.</string>
     <string name="add_contact_activity_scan_title">Escanear</string>
+    <string name="add_contact_activity_share_image_message">Importa o escanea este código QR de invitación con twinme para añadir a \"%1$s\" como contacto.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s te invita a iniciar una relación privada en twinme, la mensajería privada.</string>
+    <string name="add_contact_activity_share_message_part_2">twinme es un servicio de mensajería peer-to-peer con cifrado de extremo a extremo y llamadas de voz/video de alta definición (HD). No es necesario registrarse.</string>
+    <string name="add_contact_activity_share_message_part_3">Abre esta URL con twinme en tu dispositivo móvil para añadir a \"%1$s\" como contacto:</string>
+    <string name="add_contact_activity_share_message_part_4">Alternativamente, puedes importar o escanear el código QR de invitación de la imagen adjunta con twinme.</string>
+    <string name="add_contact_activity_share_title">%1$s te invita a twinme.</string>
     <string name="add_contact_activity_social_subtitle">mensaje, correo, red social</string>
     <string name="add_contact_activity_social_title">Enviar el código a través de una aplicación</string>
     <string name="add_contact_activity_title">Invitación</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">Iniciar certificación</string>
     <string name="authentified_relation_activity_title">Relación certificada</string>
     <string name="authentified_relation_activity_to_be_certified_title">Certificar la relación</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Backup</string>
+    <string name="backup_activity_beta_message_part_1">El servicio de copia de seguridad/restauración se encuentra en fase beta para identificar posibles problemas antes de su lanzamiento general.</string>
+    <string name="backup_activity_beta_message_part_2">Este servicio está diseñado para respaldar únicamente los metadatos de la cuenta (perfiles, contactos, grupos) en un almacenamiento externo para que puedan restaurarse posteriormente en otro dispositivo, en caso de robo o destrucción del dispositivo original.</string>
+    <string name="backup_activity_beta_message_part_3">El servicio de transferencia de cuenta debe utilizarse para transferir todos los datos de la cuenta (incluidas las conversaciones) de un dispositivo (antiguo) a otro (nuevo), siempre que ambos dispositivos estén disponibles.</string>
+    <string name="backup_activity_confirm_message">Para restaurar la copia de seguridad, deberá ingresar las 12 palabras anteriores en ese orden, lo que permite descifrarlo.</string>
+    <string name="backup_activity_content">Contenido</string>
+    <string name="backup_activity_content_diff_added">Añadido</string>
+    <string name="backup_activity_content_diff_updated">Modificado</string>
+    <string name="backup_activity_content_diff_deleted">Eliminado</string>
+    <string name="backup_activity_content_diff_message">Estos son los cambios en comparación con sus datos actuales:</string>
+    <string name="backup_activity_content_info">Las copias de seguridad no incluyen conversaciones, grupos, notificaciones ni historial.</string>
+    <string name="backup_activity_error_words">Las palabras ingresadas no permiten descifrar la copia de seguridad.</string>
+    <string name="backup_activity_generate_word">Generar</string>
+    <string name="backup_activity_last_backup">Última copia de seguridad en %1$s</string>
+    <string name="backup_activity_new_backup">Nueva copia de seguridad</string>
+    <string name="backup_activity_onboarding">Crea una copia de seguridad cifrada de los datos de la cuenta (\"Spaces\", perfiles, contactos, \"click-to-call\") que se pueda restaurar en este dispositivo o en otro.</string>
+    <string name="backup_activity_reminder">Su última copia de seguridad se creó hace más de 30 días.</string>
+    <string name="backup_activity_save_file_message">Guarda la copia de seguridad en el dispositivo que prefieras y conserva las contraseñas para restaurarlas posteriormente.</string>
+    <string name="backup_activity_security">Seguridad</string>
+    <string name="backup_activity_security_info">La clave de cifrado de respaldo está representada por una serie de 12 palabras que se requerirán para la restauración.</string>
+    <string name="backup_activity_success">¡Copia de seguridad completada con éxito!</string>
+    <string name="backup_activity_success_info">Mantenga esta lista de 12 palabras para que pueda restaurar esta copia de seguridad.</string>
+    <string name="backup_activity_title">Backup</string>
+    <string name="backup_activity_use_last_backup_words">Use la misma lista de palabras que para la última copia de seguridad.</string>
+    <string name="backup_activity_verify_completed">¡Verificación completa!</string>
+    <string name="backup_activity_verify_message">También puedes comprobar la integridad de una copia de seguridad y si los datos que contiene están actualizados desde: Cuenta/Verificar copia de seguridad.</string>
+    <string name="backup_activity_verify_up_to_date">Su copia de seguridad está actualizada.</string>
+    <string name="backup_activity_verify_not_up_to_date">Su copia de seguridad no está actualizada.</string>
+    <string name="backup_activity_verify_words">Para verificar una copia de seguridad, debe ingresar la secuencia de 12 palabras para descifrarla.</string>
+    <string name="backup_activity_wait_message">No deje esta pantalla mientras la copia de seguridad está en progreso.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Invalidar mis copias de seguridad</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Todas sus copias de seguridad anteriores dejarán de ser válidas y ya no podrán restaurarse.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">No olvide crear una nueva copia de seguridad, que podrá restaurarse en este dispositivo o en otro.</string>
+    <string name="backups_activity_no_backup_message">No se ha realizado ninguna copia de seguridad en este dispositivo.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Todas</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">Silenciar altavoz</string>
     <string name="call_activity_transfert_call_message">La llamada en curso ha sido transferida.</string>
     <string name="call_activity_try_to_call_back">Intente volver a llamar.</string>
+    <string name="call_activity_waiting_conference_call">Nadie se ha unido a la llamada todavía. Espere…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">La cámara ya está en uso</string>
@@ -469,9 +524,23 @@
     <string name="conversations_fragment_you">Tú</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Configuración de llamadas</string>
+    <string name="create_external_call_activity_call_type">Tipo de llamada</string>
+    <string name="create_external_call_activity_conference_call_description">Únase a una conferencia telefónica directamente desde un navegador. Ideal para reuniones de negocios o familiares.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Conferencia telefónica</string>
+    <string name="create_external_call_activity_conference_call_title">Conferencia telefónica</string>
+    <string name="create_external_call_activity_continuous_link_description">Sin restricciones de validez del enlace</string>
+    <string name="create_external_call_activity_continuous_link_title">Permanente</string>
+    <string name="create_external_call_activity_delete_link_setting">Este enlace dejará de ser válido después del periodo especificado.</string>
+    <string name="create_external_call_activity_direct_call_description">Reciba una llamada directamente en su dispositivo de alguien que no tenga la aplicación.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Directa</string>
+    <string name="create_external_call_activity_direct_call_title">Llamada directa</string>
+    <string name="create_external_call_activity_group_call_description">Hasta 8 participantes</string>
     <string name="create_external_call_activity_link_validity">Validez del enlace</string>
     <string name="create_external_call_activity_message">Este perfil se muestra a los invitados que lo llamarán con este enlace \"click-to-call\".</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">\"Click-to-call\" permite a los invitados llamarlo desde un navegador sin instalar la aplicación.</string>
+    <string name="create_external_call_activity_name_required">Se requiere un nombre y una imagen para representar esta Click-to-call.</string>
+    <string name="create_external_call_activity_notification_setting">"Reciba una notificación en cuanto el primer participante se una a la conferencia. "</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">La función \"Click-to-call\" permite que sus invitados le llamen o se unan a una conferencia telefónica (\"Click-to-meet\") desde un navegador sin necesidad de instalar la aplicación.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Cada instancia tiene un nombre, imagen y descripción, que representa el tema de la llamada, como por ejemplo:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">su servicio al cliente</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">el auto que estas vendiendo</string>
@@ -490,7 +559,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Cambiar el nombre predeterminado (Invitado) que los representa en la llamada</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Llamarte pulsando el botón \"Llamar\" de la página web.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Después de la llamada, es posible que mantengan abierta la página web para devolverle la llamada.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Configure una llamada \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_3">Comparta una llamada \"Click-to-call\"</string>
+    <string name="create_external_call_activity_onboarding_title_4">Use una llamada \"Click-to-call\"</string>
     <string name="create_external_call_activity_placeholder">Asunto (Ayuda, Anuncio, Reunión, Timbre,…)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Personalice los días y horarios de validez del enlace</string>
+    <string name="create_external_call_activity_recurrent_link_title">Periódico</string>
+    <string name="create_external_call_activity_unique_link_description">Establezca las fechas de inicio y fin de la validez del enlace</string>
+    <string name="create_external_call_activity_unique_link_title">Uso único</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Invitar a los miembros</string>
@@ -652,6 +728,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Esta acción invalida el código de invitación actual asociado con este enlace de \"click-to-call\". ¿Confirmar?</string>
     <string name="invitation_call_activity_generate_code_title">Generar un nuevo código para este enlace</string>
+    <string name="invitation_call_activity_invite_meeting_message">Abra la dirección web %1$s, o escanee el código QR para unirse a la reunión “%2$s\".</string>
     <string name="invitation_call_activity_invite_message">Abra la dirección web %1$s o escanee el código QR para llamar a “%2$s”.</string>
     <string name="invitation_call_activity_message">Comparta este código de \"click-to-call\" con alguien que luego pueda llamarlo, desde la web o la aplicación móvil.</string>
     <string name="invitation_call_activity_save_message">Escanee este código QR para llamar a \"%1$s\".</string>
@@ -712,6 +789,7 @@
     <string name="notification_center_audio_message_received">Nuevo mensaje de audio</string>
     <string name="notification_center_cancel">Desechar</string>
     <string name="notification_center_cleanup_conversation">Se eliminaron algunos mensajes antiguos.</string>
+    <string name="notification_center_conference_join_call">Un participante se unió a la llamada.</string>
     <string name="notification_center_deleted_contact">Contacto eliminado</string>
     <string name="notification_center_file_message">Te ha enviado un archivo</string>
     <string name="notification_center_file_message_received">Archivo nuevo</string>
@@ -719,6 +797,7 @@
     <string name="notification_center_invitation_group">Te invita a unirte a un grupo.</string>
     <string name="notification_center_invitation_received">Nueva invitación</string>
     <string name="notification_center_invitation_received_group">Nueva invitación a un grupo</string>
+    <string name="notification_center_join_call">%1$s acaba de unirse a la llamada</string>
     <string name="notification_center_join_group">Eres miembro del grupo</string>
     <string name="notification_center_message_received">Nuevo mensaje</string>
     <string name="notification_center_missed_audio_call_to">Llamada de audio perdida para %1$s</string>
@@ -902,6 +981,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Permita que la aplicación reciba notificaciones automáticas.</string>
     <string name="quality_of_service_activity_warning_run_background">Permita que la aplicación se ejecute en segundo plano.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">Para restaurar una copia de seguridad de la cuenta de twinme+, debe tener instalado twinme+ en este dispositivo.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">El dispositivo que realizó la copia de seguridad sigue conectado.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Si restauras la copia de seguridad en este nuevo dispositivo, la cuenta del dispositivo en el que se realizó la copia de seguridad se invalidará automáticamente.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Si desea transferir su cuenta a un nuevo dispositivo y aún conserva el antiguo, es preferible usar la operación de \"migración de cuenta\" en lugar de restaurar una copia de seguridad, ya que también se transferirán las conversaciones, los grupos, las notificaciones y el historial.</string>
+    <string name="restore_activity_confirm">¿Está seguro de que desea reemplazar los datos de la cuenta corriente con los siguientes datos de la copia de seguridad?</string>
+    <string name="restore_activity_confirm_restore">¿Aún quieres restaurar esta copia de seguridad?</string>
+    <string name="restore_activity_content_contact_deleted_message">Los datos eliminados tras la copia de seguridad no se pueden restaurar.</string>
+    <string name="restore_activity_content_profile_reset">Código de invitación modificado.</string>
+    <string name="restore_activity_content_profile_reset_message">El código de invitación asociado al perfil respaldado no es válido. Se generará un nuevo código de invitación durante el proceso de restauración.</string>
+    <string name="restore_activity_enter_words">Ingrese la serie de 12 palabras que permiten descifrar la copia de seguridad.</string>
+    <string name="restore_activity_error_message">Error al restaurar la copia de seguridad.</string>
+    <string name="restore_activity_error_message_verify_backup">Error al verificar la copia de seguridad.</string>
+    <string name="restore_activity_file_not_supported">El archivo de copia de seguridad debe tener el formato \"twmbckp\".</string>
+    <string name="restore_activity_more_recent_backup">Se realizó una copia de seguridad más reciente con la misma cuenta.</string>
+    <string name="restore_activity_onboarding">Restaurar una copia de seguridad reemplazará los datos de la cuenta corriente.</string>
+    <string name="restore_activity_onboarding_words">Para restaurar una copia de seguridad, deberá ingresar la serie de 12 palabras, lo que permite descifrarlo.</string>
+    <string name="restore_activity_onboarding_verify">Verifique que una copia de seguridad sea válida y esté actualizada con sus datos actuales.</string>
+    <string name="restore_activity_paste">Pegue la lista de palabras del portapapeles.</string>
+    <string name="restore_activity_paste_error">Lista de palabras no válida.</string>
+    <string name="restore_activity_restore">Restaurar</string>
+    <string name="restore_activity_select_backup">Seleccionar una copia de seguridad</string>
+    <string name="restore_activity_state_restore_account">Restaurando cuenta...</string>
+    <string name="restore_activity_state_restore_data">Restaurando datos...</string>
+    <string name="restore_activity_state_restore_starting">Iniciando restauración.</string>
+    <string name="restore_activity_state_restore_verify_account">Verificación de cuenta…</string>
+    <string name="restore_activity_state_restore_verify_data">Verificación de datos…</string>
+    <string name="restore_activity_state_restore_verify_starting">Iniciando la verificación…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Esperando confirmación.</string>
+    <string name="restore_activity_success">Restauración completada con éxito!</string>
+    <string name="restore_activity_success_message">Cierre la aplicación y reinicie para acceder a los nuevos datos.</string>
+    <string name="restore_activity_title">Restauración</string>
+    <string name="restore_activity_verify_same_account">La verificación debe realizarse en el mismo dispositivo utilizado para la copia de seguridad.</string>
+    <string name="restore_activity_warning">Restaurar esta copia de seguridad reemplazará todos los datos de la cuenta corriente con los datos de la copia de seguridad.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Definir como administrador</string>
     <string name="room_members_activity_delete_message">Confirma la eliminación de este miembro</string>
@@ -955,15 +1069,18 @@
     <string name="settings_activity_ephemeral_title">Mensaje autodestructivo</string>
     <string name="settings_activity_image_title">Foto</string>
     <string name="settings_activity_message_properties_title">Propiedades del mensaje</string>
+    <string name="settings_activity_message_reactions_notification">Notificación de reacciones a mensajes</string>
     <string name="settings_activity_reset_default_value">Restablecer a la configuración predeterminada</string>
     <string name="settings_activity_reset_preferences_button_title">Restablecer a los valores predeterminados</string>
     <string name="settings_activity_reset_preferences_message">Restablecer la configuración de notificación a los valores predeterminados de la aplicación.</string>
     <string name="settings_activity_reset_preferences_title">Restablecer preferencias</string>
     <string name="settings_activity_permissions_title">PERMISOS</string>
+    <string name="settings_activity_silent_mode">Modo silencioso</string>
     <string name="settings_activity_silent_sound">Silencioso</string>
     <string name="settings_activity_sound_enabled_title">SONIDOS DE NOTIFICACIÓN</string>
     <string name="settings_activity_system_notifications_title">Notificaciones del sistema</string>
     <string name="settings_activity_system_settings_title">Ajustes del sistema</string>
+    <string name="settings_activity_turn_off_notification_sounds">Desactivar sonidos de notificación</string>
     <string name="settings_activity_video_call_category_title">Video llamadas</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Nombre del tono de llamada</string>
     <string name="settings_activity_video_call_notification_title">Campana</string>
@@ -992,7 +1109,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Código de \"click-to-call\"</string>
+    <string name="show_call_activity_conference_call_information">Comparte este enlace para llamarte o unirte a una conferencia desde un navegador.</string>
     <string name="show_call_activity_information_code">Comparte este código para recibir llamadas externas.</string>
+    <string name="show_call_activity_meeting_organizer">Organizador de esta reunión</string>
     <string name="show_call_activity_schedule_call">llamada programada</string>
     <string name="show_call_activity_schedule_from">desde %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s de %2$s a %3$s</string>
@@ -1075,12 +1194,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Anuncio clasificado</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Introduce un enlace en un anuncio clasificado para que los compradores potenciales te llamen sin instalar la aplicación.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Anuncio</string>
-    <string name="template_click_to_call_activity_template_help">Ayuda</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Ayuda</string>
+    <string name="template_click_to_call_activity_template_default_description">Personaliza el enlace de la llamada según sea necesario.</string>
+    <string name="template_click_to_call_activity_template_help">Servicio al Cliente</string>
+    <string name="template_click_to_call_activity_template_help_description">Enlace para llamar a tu servicio de atención al cliente desde un navegador.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Servicio al Cliente</string>
+    <string name="template_click_to_call_activity_template_job">Entrevista de trabajo</string>
+    <string name="template_click_to_call_activity_template_job_description">"Enlace para que los reclutadores interesados "</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Entrevista de trabajo</string>
     <string name="template_click_to_call_activity_template_meeting">Reunión</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Comparte un enlace para unirte a una conferencia desde un navegador.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Reunión</string>
+    <string name="template_click_to_call_activity_template_profile_description">Enlace para llamarte sin instalar la app.</string>
     <string name="template_click_to_call_activity_template_video_bell">Timbre con vídeo</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Permite que el repartidor te llame para pedirte instrucciones.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Timbre</string>
 
     <!-- TemplateSpaceActivity -->

@@ -3,6 +3,7 @@
     <!-- Application -->
     <string name="application_accept">Прийняти</string>
     <string name="application_account_deleted">Ваш обліковий запис видалено тепер необхідно видалити програму.</string>
+    <string name="application_account_restored_error">Обліковий запис цього пристрою відновлено на іншому пристрої. Вам потрібно видалити програму.</string>
     <string name="application_add_contact_no_profile">Ви повинні заповнити профіль, який представляє вас, перш ніж запросити контакт. Продовжити?</string>
     <string name="application_all">Всі</string>
     <string name="application_appearance">Зовнішній вигляд</string>
@@ -39,6 +40,7 @@
     <string name="application_display_all">Показати все</string>
     <string name="application_do_not_display">Більше не відображати</string>
     <string name="application_edit">Редагувати</string>
+    <string name="application_error_code">Код помилки: %1$s</string>
     <string name="application_error_file_not_found">Файл не знайдено.</string>
     <string name="application_error_media_unload">Не вдалося завантажити медіафайли.</string>
     <string name="application_error_media_not_supported">Цей формат зображення/відео не підтримується програмою.</string>
@@ -103,6 +105,7 @@
     <string name="application_timeout_seconds">%1$d секунд</string>
     <string name="application_timeout_week">1 тиждень</string>
     <string name="application_unknown_name">Невідомо</string>
+    <string name="application_until">До %1$s</string>
     <string name="application_upgrade">Оновлення Twinme</string>
     <string name="application_webrtc_failure">Збій WebRTC</string>
     <string name="application_wrong_configuration">Неправильна конфігурація</string>
@@ -136,16 +139,22 @@
     <string name="accept_invitation_activity_message">%1$s хоче зв’язатися з вами</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">Резервне копіювання зовнішніх медіа</string>
+    <string name="account_activity_backup_restore">Резервне копіювання / Відновлення</string>
+    <string name="account_activity_backup_verify">Перевірка резервної копії</string>
+    <string name="account_activity_backup_list">Історія резервних копій</string>
     <string name="account_activity_conversations_content_title">Зміст розмов</string>
     <string name="account_activity_delete_account">Ваш обліковий запис разом із усіма пов’язаними даними буде остаточно видалено. Підтвердити?</string>
     <string name="account_activity_delete_account_confirmation">Ви дійсно впевнені, що хочете видалити свій обліковий запис?</string>
     <string name="account_activity_export_content">Експорт на зовнішній носій</string>
     <string name="account_activity_message_first_part">Новий обліковий запис створюється під час першого встановлення програми, після повторної інсталяції програми, скидання налаштувань пристрою чи видалення поточного облікового запису.</string>
     <string name="account_activity_message_second_part">Від попереднього облікового запису та даних не залишилося жодних слідів, тому вам доведеться повторно запросити своїх контактів.</string>
+    <string name="account_activity_message_third_part">Видалення облікового запису також анулює всі резервні копії, створені в цьому обліковому записі, що унеможливлює відновлення резервної копії з цього облікового запису на цей чи інший пристрій.</string>
     <string name="account_activity_migration_message">Для перенесення облікового запису з усіма пов’язаними з ним даними (контакти, повідомлення, групи і т.д.) з одного пристрою Android на інший в режимі реального часу доступна послуга переносу даних облікового запису. Таким чином, ви можете переносити облікові записи зі старого пристрою на новий.</string>
     <string name="account_activity_migration_start_from_another_device">З іншого пристрою</string>
     <string name="account_activity_migration_start_from_current_device">З мого пристрою</string>
     <string name="account_activity_migration_title">Перенос даних облікового запису</string>
+    <string name="account_activity_restore">Відновити із зовнішніх медіа</string>
     <string name="account_activity_title">Обліковий запис</string>
     <string name="account_activity_transfer_between_devices">Передача між пристроями</string>
     <string name="account_activity_transfer_from_another_device">Передача з іншого пристрою</string>
@@ -199,7 +208,8 @@
     <string name="add_contact_activity_onboarding_message">twinme не знає ваших друзів і не може їх знайти. Ви повинні запросити їх особисто, за допомогою twinme, коли вони поруч з вами, або надіславши їм запрошення іншим способом.</string>
     <string name="add_contact_activity_scan_code">Скануйте QR-код запрошення</string>
     <string name="add_contact_activity_scan_error_corrupt_link">Це посилання пошкоджено.</string>
-    <string name="add_contact_activity_scan_error_incorect_link">Це посилання неправильне.</string>
+    <string name="add_contact_activity_scan_error_expired_link">Термін дії цього посилання-запрошення минув.</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">Це посилання неправильне.</string>
     <string name="add_contact_activity_scan_error_not_managed_link">Це посилання не керується програмою.</string>
     <string name="add_contact_activity_scan_error_revoked_link">Цей зв\'язок видалено.</string>
     <string name="add_contact_activity_scan_message_call_link">Це посилання відповідає \"Click-to-call\"</string>
@@ -207,6 +217,12 @@
     <string name="add_contact_activity_scan_message_migration_link">Це посилання відповідає міграції облікового запису</string>
     <string name="add_contact_activity_scan_message_transfer_link">Це посилання відповідає переадресації виклику</string>
     <string name="add_contact_activity_scan_title">Сканувати</string>
+    <string name="add_contact_activity_share_image_message">Імпортуйте або відскануйте QR-код цього запрошення за допомогою twinme, щоб додати \"%1$s\" як контакт.</string>
+    <string name="add_contact_activity_share_message_part_1">%1$s запрошує вас до приватних стосунків у twinme - приватному месенджері.</string>
+    <string name="add_contact_activity_share_message_part_2">twinme - це служба обміну повідомленнями з наскрізним шифруванням між користувачами та голосових/відеодзвінків високої чіткості (HD). Реєстрація не потрібна.</string>
+    <string name="add_contact_activity_share_message_part_3">Відкрийте цю URL-адресу за допомогою twinme на своєму мобільному пристрої, щоб додати \"%1$s\" як контакт:</string>
+    <string name="add_contact_activity_share_message_part_4">Крім того, ви можете імпортувати або відсканувати QR-код запрошення на доданому зображенні за допомогою twinme.</string>
+    <string name="add_contact_activity_share_title">%1$s запрошує вас до twinme</string>
     <string name="add_contact_activity_social_subtitle">повідомлення, пошта, соціальна мережа</string>
     <string name="add_contact_activity_social_title">Надішліть код через додаток</string>
     <string name="add_contact_activity_title">Запрошення</string>
@@ -250,6 +266,44 @@
     <string name="authentified_relation_activity_start">Почати сертифікацію</string>
     <string name="authentified_relation_activity_title">Сертифікований зв\'язок</string>
     <string name="authentified_relation_activity_to_be_certified_title">Засвідчити зв\'язок</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">Резервне копіювання</string>
+    <string name="backup_activity_beta_message_part_1">Служба резервного копіювання/відновлення пропонується на стадії БЕТА-тестування, щоб виявити потенційні проблеми перед її загальним випуском.</string>
+    <string name="backup_activity_beta_message_part_2">Ця служба призначена для резервного копіювання лише метаданих облікового запису (профілів, контактів, груп) на зовнішній накопичувач, щоб їх можна було відновити пізніше на іншому пристрої, якщо оригінал буде викрадено або знищено.</string>
+    <string name="backup_activity_beta_message_part_3">Служба перенесення облікових записів повинна використовуватися для перенесення всіх даних облікового запису (включаючи розмови) з одного (старого) пристрою на інший (новий), коли обидва пристрої доступні.</string>
+    <string name="backup_activity_confirm_message">Щоб відновити резервну копію, вам потрібно буде ввести 12 слів вище в такому порядку, дозволяючи його розшифрувати.</string>
+    <string name="backup_activity_content">Вміст</string>
+    <string name="backup_activity_content_diff_added">Додано</string>
+    <string name="backup_activity_content_diff_updated">Змінено</string>
+    <string name="backup_activity_content_diff_deleted">Видалено</string>
+    <string name="backup_activity_content_diff_message">Ось зміни порівняно з вашими поточними даними:</string>
+    <string name="backup_activity_content_info">Резервні копії не включають розмови, групи, сповіщення та історію.</string>
+    <string name="backup_activity_error_words">Введені слова не дозволяють розшифрувати резервну копію.</string>
+    <string name="backup_activity_generate_word">Генерувати</string>
+    <string name="backup_activity_last_backup">Останнє збереження: %1$s</string>
+    <string name="backup_activity_new_backup">Нова резервна копія</string>
+    <string name="backup_activity_onboarding">Створіть зашифровану резервну копію даних облікового запису (\"Spaces\", профілі, контакти, \"click-to-call\"), яку можна відновити на цьому або іншому пристрої.</string>
+    <string name="backup_activity_reminder">Вашу останню резервну копію було створено понад 30 днів тому.</string>
+    <string name="backup_activity_save_file_message">Збережіть файл резервної копії на вибраному пристрої та збережіть паролі для подальшого відновлення.</string>
+    <string name="backup_activity_security">Безпека</string>
+    <string name="backup_activity_security_info">Ключ резервного шифрування представлений серією з 12 слів, які знадобляться для реставрації.</string>
+    <string name="backup_activity_success">Резервне копіювання завершено успішно!</string>
+    <string name="backup_activity_success_info">Зберігайте цей список з 12 слів, щоб ви могли відновити цю резервну копію.</string>
+    <string name="backup_activity_title">Резервне копіювання</string>
+    <string name="backup_activity_use_last_backup_words">Використовуйте той самий список слів, що і для останньої резервної копії.</string>
+    <string name="backup_activity_verify_completed">"Перевірку завершено! "</string>
+    <string name="backup_activity_verify_message">Ви також можете перевірити цілісність файлу резервної копії та актуальність даних, які він містить, за допомогою: Обліковий запис/Перевірити резервну копію.</string>
+    <string name="backup_activity_verify_up_to_date">"Ваша резервна копія актуальна. "</string>
+    <string name="backup_activity_verify_not_up_to_date">Ваша резервна копія не актуальна.</string>
+    <string name="backup_activity_verify_words">Щоб перевірити резервну копію, потрібно ввести послідовність із 12 слів для її розшифрування.</string>
+    <string name="backup_activity_wait_message">Не залишайте цей екран, поки резервна копія триває.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">Анулювати мої резервні копії</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">Усі ваші попередні резервні копії стануть недійсними та їх більше не можна буде відновити.</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">Не забудьте створити нову резервну копію, яку можна відновити на цьому або іншому пристрої.</string>
+    <string name="backups_activity_no_backup_message">На цьому пристрої не було створено резервних копій.</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">Всі</string>
@@ -316,6 +370,7 @@
     <string name="call_activity_tag_speaker_mute">Вимкнути динамік</string>
     <string name="call_activity_transfert_call_message">Поточний виклик переведено.</string>
     <string name="call_activity_try_to_call_back">Спробуйте передзвонити.</string>
+    <string name="call_activity_waiting_conference_call">Ніхто ще не приєднався до дзвінка. Зачекайте…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">Камера вже використовується</string>
@@ -466,9 +521,23 @@
     <string name="conversations_fragment_you">Ви</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">Налаштування виклику</string>
+    <string name="create_external_call_activity_call_type">Тип дзвінка</string>
+    <string name="create_external_call_activity_conference_call_description">Приєднуйтесь до конференц-дзвінка безпосередньо з браузера. Ідеально підходить для ділових чи сімейних зустрічей.</string>
+    <string name="create_external_call_activity_conference_call_short_title">Конференц-дзвінок</string>
+    <string name="create_external_call_activity_conference_call_title">Конференц-дзвінок</string>
+    <string name="create_external_call_activity_continuous_link_description">Без обмежень щодо терміну дії посилання</string>
+    <string name="create_external_call_activity_continuous_link_title">Постійний</string>
+    <string name="create_external_call_activity_delete_link_setting">Це посилання стане недійсним після зазначеного періоду.</string>
+    <string name="create_external_call_activity_direct_call_description">Приймайте дзвінок безпосередньо на своєму пристрої від людини, яка не має програми.</string>
+    <string name="create_external_call_activity_direct_call_short_title">Прямий виклик</string>
+    <string name="create_external_call_activity_direct_call_title">Прямий виклик</string>
+    <string name="create_external_call_activity_group_call_description">До 8 учасників</string>
     <string name="create_external_call_activity_link_validity">Строк дії посилання</string>
     <string name="create_external_call_activity_message">Цей профіль відображається для гостей, які телефонуватимуть вам за цим посиланням \"click-to-call\".</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">«Click-to-call» дозволяє гостям дзвонити вам з браузера, не встановлюючи додаток.</string>
+    <string name="create_external_call_activity_name_required">Для представлення цього \"Click-to-call\" потрібні ім\'я та зображення.</string>
+    <string name="create_external_call_activity_notification_setting">Отримуйте повідомлення, коли перший учасник приєднається до конференції.</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">Функція «Click-to-call» дозволяє гостям дзвонити або приєднуватися до конференц-дзвінка («Click-to-meet») з браузера без встановлення програми.</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">Кожен екземпляр має ім’я, зображення та опис, що представляє тему виклику, наприклад:</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">ваше обслуговування клієнтів</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">автомобіль, який ви продаєте</string>
@@ -487,7 +556,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">Змініть ім’я за замовчуванням (Гість), яке представляє їх під час виклику</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">Вам зателефонують, натиснувши кнопку «Виклик» на веб-сторінці.</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">Після дзвінка вони можуть залишити веб-сторінку відкритою, щоб передзвонити вам.</string>
+    <string name="create_external_call_activity_onboarding_title_2">Налаштувати «Click-to-call»</string>
+    <string name="create_external_call_activity_onboarding_title_3">Поділитись «Click-to-call»</string>
+    <string name="create_external_call_activity_onboarding_title_4">Використовувати «Click-to-call»</string>
     <string name="create_external_call_activity_placeholder">Тема (Допомога, Оголошення, Зустріч, Дверний дзвінок, …)</string>
+    <string name="create_external_call_activity_recurrent_link_description">Налаштуйте дні/час дії посилання</string>
+    <string name="create_external_call_activity_recurrent_link_title">Періодичний</string>
+    <string name="create_external_call_activity_unique_link_description">Встановіть дати початку та закінчення дії посилання</string>
+    <string name="create_external_call_activity_unique_link_title">Одноразовий</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">Запросити учасників</string>
@@ -647,6 +723,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">Ця дія робить недійсним поточний код запрошення, пов’язаний із цим посиланням \"click-to-call\". Підтвердити?</string>
     <string name="invitation_call_activity_generate_code_title">Згенеруйте новий код для цього посилання</string>
+    <string name="invitation_call_activity_invite_meeting_message">Відкрийте веб-адресу %1$s, або проскануйте QR-код, щоб приєднатися до зустрічі «%2$s».</string>
     <string name="invitation_call_activity_invite_message">Відкрийте веб-адресу %1$s або відскануйте QR-код, щоб викликати «%2$s».</string>
     <string name="invitation_call_activity_message">Поділіться цим кодом «click-to-call» комусь, хто зможе зателефонувати вам з Інтернету чи мобільного додатка.</string>
     <string name="invitation_call_activity_save_message">Відскануйте цей QR-код, щоб викликати «%1$s».</string>
@@ -707,6 +784,7 @@
     <string name="notification_center_audio_message_received">Нове аудіоповідомлення</string>
     <string name="notification_center_cancel">Відхилити</string>
     <string name="notification_center_cleanup_conversation">Деякі старі повідомлення було видалено.</string>
+    <string name="notification_center_conference_join_call">Один учасник приєднався до дзвінка.</string>
     <string name="notification_center_deleted_contact">Контакт видалено</string>
     <string name="notification_center_file_message">Вам відправлений файл</string>
     <string name="notification_center_file_message_received">Новий файл</string>
@@ -714,6 +792,7 @@
     <string name="notification_center_invitation_group">запрошує вас приєднатися до групи.</string>
     <string name="notification_center_invitation_received">Нове запрошення</string>
     <string name="notification_center_invitation_received_group">Нове запрошення до групи</string>
+    <string name="notification_center_join_call">%1$s щойно приєднався до дзвінка</string>
     <string name="notification_center_join_group">Ви є учасником групи</string>
     <string name="notification_center_message_received">Нове повідомлення</string>
     <string name="notification_center_missed_audio_call_to">Пропущений аудіодзвінок абоненту %1$s</string>
@@ -897,6 +976,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">Дозволити програмі отримувати push-повідомлення.</string>
     <string name="quality_of_service_activity_warning_run_background">Дозволити програмі працювати у фоновому режимі.</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">Для відновлення резервної копії облікового запису twinme+ на цьому пристрої має бути встановлено twinme+.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">Пристрій, на якому було створено резервну копію, все ще зареєстровано.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">Якщо ви відновите резервну копію на цьому новому пристрої, обліковий запис пристрою, на якому було створено резервну копію, буде автоматично анульовано.</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">Якщо ви хочете перенести свій обліковий запис на новий пристрій, а у вас все ще є старий, краще використовувати операцію \"міграції облікового запису\", ніж відновлення резервної копії, оскільки це також перенесе розмови, групи, сповіщення та історію.</string>
+    <string name="restore_activity_confirm">Ви впевнені, що хочете замінити поточні дані облікового запису на наступні дані з резервної копії?</string>
+    <string name="restore_activity_confirm_restore">Ви все ще хочете відновити цю резервну копію?</string>
+    <string name="restore_activity_content_contact_deleted_message">Дані, видалені після резервного копіювання, не можна відновити.</string>
+    <string name="restore_activity_content_profile_reset">Код запрошення змінено.</string>
+    <string name="restore_activity_content_profile_reset_message">Код запрошення, пов\'язаний із резервним профілем, недійсний. Новий код запрошення буде згенеровано під час процесу відновлення.</string>
+    <string name="restore_activity_enter_words">Введіть серію з 12 слів, що дозволяють розшифрувати резервну копію.</string>
+    <string name="restore_activity_error_message">Помилка відновлення резервної копії.</string>
+    <string name="restore_activity_error_message_verify_backup">Помилка перевірки резервної копії.</string>
+    <string name="restore_activity_file_not_supported">Файл резервної копії має бути у форматі \"twmbckp\".</string>
+    <string name="restore_activity_more_recent_backup">Новіша резервна копія була створена з тим самим обліковим записом.</string>
+    <string name="restore_activity_onboarding">Відновлення резервного копіювання замінить поточні дані облікового запису.</string>
+    <string name="restore_activity_onboarding_words">Щоб відновити резервну копію, вам потрібно буде ввести серію з 12 слів, що дозволяють його розшифрувати.</string>
+    <string name="restore_activity_onboarding_verify">Перевірте, чи резервна копія дійсна та актуальна на ваші поточні дані.</string>
+    <string name="restore_activity_paste">Вставте список слів із буфера обміну.</string>
+    <string name="restore_activity_paste_error">Недійсний список слів.</string>
+    <string name="restore_activity_restore">Відновити</string>
+    <string name="restore_activity_select_backup">Виберіть резервну копію</string>
+    <string name="restore_activity_state_restore_account">Відновлення облікового запису...</string>
+    <string name="restore_activity_state_restore_data">Відновлення даних...</string>
+    <string name="restore_activity_state_restore_starting">Початок відновлення.</string>
+    <string name="restore_activity_state_restore_verify_account">Перевірка облікового запису…</string>
+    <string name="restore_activity_state_restore_verify_data">Перевірка даних…</string>
+    <string name="restore_activity_state_restore_verify_starting">Початок перевірки…</string>
+    <string name="restore_activity_state_restore_wait_confirm">Очікування підтвердження.</string>
+    <string name="restore_activity_success">Реставрація завершена успішно!</string>
+    <string name="restore_activity_success_message">Закрийте додаток і перезапустіть його, щоб отримати доступ до нових даних.</string>
+    <string name="restore_activity_title">Відновлення</string>
+    <string name="restore_activity_verify_same_account">Перевірку необхідно виконати на тому ж пристрої, що й для резервного копіювання.</string>
+    <string name="restore_activity_warning">Відновлення цього резервного копіювання замінить усі поточні дані облікового запису на дані з резервної копії.</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">Визначити як адміністратора</string>
     <string name="room_members_activity_delete_message">Підтвердьте видалення цього користувача</string>
@@ -950,15 +1064,18 @@
     <string name="settings_activity_ephemeral_title">Зникаюче повідомлення</string>
     <string name="settings_activity_image_title">Фото</string>
     <string name="settings_activity_message_properties_title">Властивості повідомлення</string>
+    <string name="settings_activity_message_reactions_notification">Сповіщення про реакції на повідомлення</string>
     <string name="settings_activity_reset_default_value">Скинути до параметрів за замовчуванням</string>
     <string name="settings_activity_reset_preferences_button_title">Скинути до налаштувань за замовчуванням</string>
     <string name="settings_activity_reset_preferences_message">Скинути налаштування повідомлень до налаштувань за замовчуванням.</string>
     <string name="settings_activity_reset_preferences_title">Скинути налаштування</string>
     <string name="settings_activity_permissions_title">ДОЗВОЛИ</string>
+    <string name="settings_activity_silent_mode">Беззвучний режим</string>
     <string name="settings_activity_silent_sound">Без звуку</string>
     <string name="settings_activity_sound_enabled_title">ЗВУКОВІ ПОВІДОМЛЕННЯ</string>
     <string name="settings_activity_system_notifications_title">Системні повідомлення</string>
     <string name="settings_activity_system_settings_title">Системні налаштування</string>
+    <string name="settings_activity_turn_off_notification_sounds">Вимкнути звуки сповіщень</string>
     <string name="settings_activity_video_call_category_title">Відеодзвінки</string>
     <string name="settings_activity_video_call_notification_ringtone_title">Назва рінгтона</string>
     <string name="settings_activity_video_call_notification_title">Рінгтон</string>
@@ -987,7 +1104,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">Код «click-to-call».</string>
+    <string name="show_call_activity_conference_call_information">Поділіться цим посиланням, щоб вам зателефонували або приєдналися до конференції з браузера.</string>
     <string name="show_call_activity_information_code">Поділіться цим кодом, щоб отримувати зовнішні виклики.</string>
+    <string name="show_call_activity_meeting_organizer">Організатор цієї зустрічі</string>
     <string name="show_call_activity_schedule_call">Запланований дзвінок</string>
     <string name="show_call_activity_schedule_from">від %1$s</string>
     <string name="show_call_activity_schedule_from_to">%1$s з %2$s до %3$s</string>
@@ -1070,12 +1189,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">Оголошення</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">Вставте посилання в оголошення, що дозволяє потенційним покупцям зателефонувати вам без встановлення програми.</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">Оголошення</string>
-    <string name="template_click_to_call_activity_template_help">Допомога</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">Допомога</string>
+    <string name="template_click_to_call_activity_template_default_description">За потреби налаштуйте посилання для дзвінка.</string>
+    <string name="template_click_to_call_activity_template_help">Служба підтримки клієнтів</string>
+    <string name="template_click_to_call_activity_template_help_description">Посилання для дзвінка до служби підтримки клієнтів з браузера.</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">Служба підтримки клієнтів</string>
+    <string name="template_click_to_call_activity_template_job">Співбесіда</string>
+    <string name="template_click_to_call_activity_template_job_description">Посилання, яке дозволяє зацікавленим рекрутерам зателефонувати вам для проведення співбесіди.</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">Співбесіда</string>
     <string name="template_click_to_call_activity_template_meeting">Зустріч</string>
+    <string name="template_click_to_call_activity_template_meeting_description">Поділіться посиланням для приєднання до конференції з браузера.</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">Зустріч</string>
+    <string name="template_click_to_call_activity_template_profile_description">Посилання для дзвінка вам без встановлення програми.</string>
     <string name="template_click_to_call_activity_template_video_bell">Дверний відеодзвінок</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">Дозвольте кур\'єру зателефонувати вам для отримання вказівок.</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">Дверний дзвінок</string>
 
     <!-- TemplateSpaceActivity -->

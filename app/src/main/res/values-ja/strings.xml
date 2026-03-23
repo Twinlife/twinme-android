@@ -5,6 +5,7 @@
     <!-- Application -->
     <string name="application_accept">承認</string>
     <string name="application_account_deleted">アカウントが削除されました。アプリケーションをアンインストールする必要があります。</string>
+    <string name="application_account_restored_error">このデバイスのアカウントは別のデバイスに復元されました。アプリをアンインストールする必要があります。</string>
     <string name="application_add_contact_no_profile">連絡先を招待する前に、あなたを代表するプロフィールを完成させる必要があります。 続行？</string>
     <string name="application_all">すべて</string>
     <string name="application_appearance">外観</string>
@@ -41,6 +42,7 @@
     <string name="application_display_all">すべて表示</string>
     <string name="application_do_not_display">もう表示しない</string>
     <string name="application_edit">編集</string>
+    <string name="application_error_code">エラーコード: %1$s</string>
     <string name="application_error_file_not_found">ファイルが見つかりません。</string>
     <string name="application_error_media_unload">メディアを読み込めません。</string>
     <string name="application_error_media_not_supported">この画像/ビデオ形式はアプリケーションでサポートされていません。</string>
@@ -105,6 +107,7 @@
     <string name="application_timeout_seconds">%1$d 秒</string>
     <string name="application_timeout_week">1週間</string>
     <string name="application_unknown_name">知らない相手</string>
+    <string name="application_until">%1$sまで</string>
     <string name="application_upgrade">twinmeのアップグレード</string>
     <string name="application_webrtc_failure">WebRTCに失敗しました</string>
     <string name="application_wrong_configuration">設定が正しくありません</string>
@@ -138,16 +141,22 @@
     <string name="accept_invitation_activity_message">%1$sがあなたとの接続を求めています</string>
 
     <!-- AccountActivity -->
+    <string name="account_activity_backup">外部メディアへのバックアップ</string>
+    <string name="account_activity_backup_restore">バックアップ /復元</string>
+    <string name="account_activity_backup_verify">バックアップを確認</string>
+    <string name="account_activity_backup_list">バックアップ履歴</string>
     <string name="account_activity_conversations_content_title">会話の内容</string>
     <string name="account_activity_delete_account">アカウントは、関連するすべてのデータとともに完全に削除されます。 確認？</string>
     <string name="account_activity_delete_account_confirmation">本当にあなたのアカウントを削除してもよろしいですか？</string>
     <string name="account_activity_export_content">外部メディアへのエクスポート</string>
     <string name="account_activity_message_first_part">初めてアプリをインストールしたとき、アプリを再インストールしたとき、デバイスをリセットしたとき、または現在のアカウントを削除したときに、新しいアカウントが作成されます。</string>
     <string name="account_activity_message_second_part">以前のアカウントとデータの痕跡は残っていないため、連絡先を再度招待する必要があります。</string>
+    <string name="account_activity_message_third_part">アカウントを削除すると、そのアカウントで作成されたすべてのバックアップが無効になり、そのアカウントからこのデバイスまたは他のデバイスにバックアップを復元できなくなります。</string>
     <string name="account_activity_migration_message">アカウント移行サービスを利用して、関連するすべてのデータ（連絡先、メッセージ、グループなど）を含むアカウントを1つのAndroidデバイスから別のAndroidデバイスにリアルタイムで転送できます。 したがって、古いデバイスと新しいデバイスの間でアカウントを切り替えることができます。</string>
     <string name="account_activity_migration_start_from_another_device">別のデバイスから</string>
     <string name="account_activity_migration_start_from_current_device">自分のデバイスから</string>
     <string name="account_activity_migration_title">アカウントの移行</string>
+    <string name="account_activity_restore">外部メディアから復元します</string>
     <string name="account_activity_title">アカウント</string>
     <string name="account_activity_transfer_between_devices">デバイス間の転送</string>
     <string name="account_activity_transfer_from_another_device">別のデバイスからの転送</string>
@@ -201,7 +210,8 @@
     <string name="add_contact_activity_onboarding_message">twinme はあなたの友達を認識していないため、見つけることができません。 近くにいる場合は twinme を使用して、または他の方法で招待状を送信して、個人的に招待する必要があります。</string>
     <string name="add_contact_activity_scan_code">招待QRコードをスキャンする</string>
     <string name="add_contact_activity_scan_error_corrupt_link">このリンクは破損しています。</string>
-    <string name="add_contact_activity_scan_error_incorect_link">このリンクは正しくありません。</string>
+    <string name="add_contact_activity_scan_error_expired_link">この招待リンクは期限が切れています。</string>
+    <string name="add_contact_activity_scan_error_incorrect_link">このリンクは正しくありません。</string>
     <string name="add_contact_activity_scan_error_not_managed_link">このリンクはアプリケーションによって管理されていません。</string>
     <string name="add_contact_activity_scan_error_revoked_link">この関係は削除されました。</string>
     <string name="add_contact_activity_scan_message_call_link">このリンクは「Click-to-call」に対応しています</string>
@@ -209,6 +219,12 @@
     <string name="add_contact_activity_scan_message_migration_link">このリンクはアカウントの移行に対応しています</string>
     <string name="add_contact_activity_scan_message_transfer_link">このリンクは通話転送に対応しています</string>
     <string name="add_contact_activity_scan_title">スキャン</string>
+    <string name="add_contact_activity_share_image_message">「%1$s」を連絡先に追加するには、この招待QRコードをインポートするか、twinmeでスキャンしてください。</string>
+    <string name="add_contact_activity_share_message_part_1">「%1$s」があなたをtwinme（プライベートメッセンジャー）でのプライベートな関係に招待しています。</string>
+    <string name="add_contact_activity_share_message_part_2">twinmeは、ピアツーピアのエンドツーエンド暗号化メッセージングサービスと、高解像度（HD）の音声/ビデオ通話を提供するサービスです。登録は不要です。</string>
+    <string name="add_contact_activity_share_message_part_3">モバイルデバイスでtwinmeを使ってこのURLを開き、「%1$s」を連絡先に追加してください。</string>
+    <string name="add_contact_activity_share_message_part_4">または、添付画像にある招待QRコードをtwinmeでインポートまたはスキャンすることもできます。</string>
+    <string name="add_contact_activity_share_title">「%1$s」があなたをtwinmeに招待しています</string>
     <string name="add_contact_activity_social_subtitle">メッセージ、メール、ソーシャルネットワーク</string>
     <string name="add_contact_activity_social_title">アプリケーションを介してコードを送信する</string>
     <string name="add_contact_activity_title">招待</string>
@@ -252,6 +268,44 @@
     <string name="authentified_relation_activity_start">認証の開始</string>
     <string name="authentified_relation_activity_title">認証された関係</string>
     <string name="authentified_relation_activity_to_be_certified_title">関係を認証する</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_activity_backup">バックアップ</string>
+    <string name="backup_activity_beta_message_part_1">バックアップ/復元サービスは、一般公開前に潜在的な問題を特定するためにベータテストで提案されています。</string>
+    <string name="backup_activity_beta_message_part_2">このサービスは、アカウントのメタデータ（プロフィール、連絡先、グループ）のみを外部ストレージにバックアップし、元のデバイスが盗難または破損した場合に、後で別のデバイスで復元できるようにすることを目的としています。</string>
+    <string name="backup_activity_beta_message_part_3">アカウント移行サービスは、両方のデバイスが利用可能な場合に、1つの（古い）デバイスから別の（新しい）デバイスにすべてのアカウントデータ（会話を含む）を移行するために使用してください。</string>
+    <string name="backup_activity_confirm_message">バックアップを復元するには、その順序で上記の12語を入力して、復号化できるようにする必要があります。</string>
+    <string name="backup_activity_content">コンテンツ</string>
+    <string name="backup_activity_content_diff_added">追加</string>
+    <string name="backup_activity_content_diff_updated">変更済み</string>
+    <string name="backup_activity_content_diff_deleted">削除</string>
+    <string name="backup_activity_content_diff_message">現在のデータと比較した変更点は次のとおりです。</string>
+    <string name="backup_activity_content_info">バックアップには、会話、グループ、通知、履歴は含まれません。</string>
+    <string name="backup_activity_error_words">入力した単語ではバックアップを復号できません。</string>
+    <string name="backup_activity_generate_word">生成する</string>
+    <string name="backup_activity_last_backup">％@の最後のバックアップ</string>
+    <string name="backup_activity_new_backup">新しいバックアップ</string>
+    <string name="backup_activity_onboarding">アカウントデータ（「Spaces」、プロフィール、連絡先、「click-to-call」）の暗号化されたバックアップを作成します。このバックアップは、このデバイスまたは別のデバイスに復元できます。</string>
+    <string name="backup_activity_reminder">最後のバックアップは30日以上前に作成されています。</string>
+    <string name="backup_activity_save_file_message">バックアップファイルを任意のデバイスに保存し、後で復元できるようにパスワードを保管してください。</string>
+    <string name="backup_activity_security">安全</string>
+    <string name="backup_activity_security_info">バックアップ暗号化キーは、復元に必要な一連の12語で表されます。</string>
+    <string name="backup_activity_success">バックアップが正常に完了しました！</string>
+    <string name="backup_activity_success_info">このバックアップを復元できるように、この12の単語のリストを保持します。</string>
+    <string name="backup_activity_title">バックアップ</string>
+    <string name="backup_activity_use_last_backup_words">最後のバックアップと同じ単語のリストを使用します。</string>
+    <string name="backup_activity_verify_completed">確認完了！</string>
+    <string name="backup_activity_verify_message">また、「アカウント」>「バックアップを確認」から、バックアップファイルの整合性とデータが最新かどうかを確認することもできます。</string>
+    <string name="backup_activity_verify_up_to_date">バックアップは最新です。</string>
+    <string name="backup_activity_verify_not_up_to_date">バックアップは最新ではありません。</string>
+    <string name="backup_activity_verify_words">バックアップを確認するには、12語の文字列を入力して復号する必要があります。</string>
+    <string name="backup_activity_wait_message">バックアップが進行中にこの画面を離れないでください。</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_activity_invalidate_backup">バックアップを無効にする</string>
+    <string name="backups_activity_invalidate_backup_message_part_one">以前のバックアップはすべて無効になり、復元できなくなります。</string>
+    <string name="backups_activity_invalidate_backup_message_part_two">新しいバックアップを作成してください。このデバイスまたは別のデバイスに復元できます。</string>
+    <string name="backups_activity_no_backup_message">このデバイスにはバックアップが作成されていません。</string>
 
     <!-- CallsFragment -->
     <string name="calls_fragment_all_call_segmented_control">すべて</string>
@@ -318,6 +372,7 @@
     <string name="call_activity_tag_speaker_mute">スピーカーをミュート</string>
     <string name="call_activity_transfert_call_message">進行中の通話は転送されました。</string>
     <string name="call_activity_try_to_call_back">折り返し電話をかけてください。</string>
+    <string name="call_activity_waiting_conference_call">まだ誰も通話に参加していません。お待ちください…</string>
 
     <!-- CaptureActivity -->
     <string name="capture_activity_create_camera_error">すでにカメラを使用しています</string>
@@ -469,9 +524,23 @@
     <string name="conversations_fragment_you">君</string>
 
     <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_activity_call_configuration">通話設定</string>
+    <string name="create_external_call_activity_call_type">通話の種類</string>
+    <string name="create_external_call_activity_conference_call_description">ブラウザから直接電話会議に参加できます。ビジネスや家族の会議に最適です。</string>
+    <string name="create_external_call_activity_conference_call_short_title">電話会議</string>
+    <string name="create_external_call_activity_conference_call_title">電話会議</string>
+    <string name="create_external_call_activity_continuous_link_description">リンクの有効期限に制限はありません</string>
+    <string name="create_external_call_activity_continuous_link_title">無期限</string>
+    <string name="create_external_call_activity_delete_link_setting">このリンクは指定された期間を過ぎると無効になります。</string>
+    <string name="create_external_call_activity_direct_call_description">アプリをインストールしていない相手からの電話を、デバイスで直接受信できます。</string>
+    <string name="create_external_call_activity_direct_call_short_title">直接</string>
+    <string name="create_external_call_activity_direct_call_title">直接通話</string>
+    <string name="create_external_call_activity_group_call_description">最大8人まで参加可能</string>
     <string name="create_external_call_activity_link_validity">リンクの有効期限</string>
     <string name="create_external_call_activity_message">このプロフィールは、この「click-to-call」リンクを使用して電話をかけるゲストに表示されます。</string>
-    <string name="create_external_call_activity_onboarding_part_1_message_1">「Click-to-call」では、ゲストはアプリケーションをインストールしなくてもブラウザから電話をかけることができます。</string>
+    <string name="create_external_call_activity_name_required">この「Click-to-call」には、名前と画像が必要です。</string>
+    <string name="create_external_call_activity_notification_setting">最初の参加者が会議に参加するとすぐに通知されます。</string>
+    <string name="create_external_call_activity_onboarding_part_1_message_1">「Click-to-call」を使用すると、ゲストはアプリをインストールせずにブラウザから電話をかけたり、電話会議（「Click-to-meet」）に参加したりできます。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_2">各インスタンスには、通話の件名を表す名前、画像、説明が含まれます。たとえば、次のとおりです。</string>
     <string name="create_external_call_activity_onboarding_part_1_message_3">あなたのカスタマーサービス</string>
     <string name="create_external_call_activity_onboarding_part_1_message_4">あなたが売っている車</string>
@@ -490,7 +559,14 @@
     <string name="create_external_call_activity_onboarding_part_4_message_2">通話中に相手を表すデフォルトの名前 (ゲスト) を変更します。</string>
     <string name="create_external_call_activity_onboarding_part_4_message_3">ウェブページ上の「電話をかける」ボタンを押して電話をかけます。</string>
     <string name="create_external_call_activity_onboarding_part_4_message_4">電話の後、折り返し電話するために Web ページを開いたままにする場合があります。</string>
+    <string name="create_external_call_activity_onboarding_title_2">「Click-to-call」を設定する</string>
+    <string name="create_external_call_activity_onboarding_title_3">「Click-to-call」を共有する</string>
+    <string name="create_external_call_activity_onboarding_title_4">「Click-to-call」を使用する</string>
     <string name="create_external_call_activity_placeholder">件名 (ヘルプ、アナウンス、会議、ドアベルなど)</string>
+    <string name="create_external_call_activity_recurrent_link_description">リンクの有効期間をカスタマイズできます</string>
+    <string name="create_external_call_activity_recurrent_link_title">定期的</string>
+    <string name="create_external_call_activity_unique_link_description">リンクの有効期限の開始日と終了日を設定できます</string>
+    <string name="create_external_call_activity_unique_link_title">1回限り</string>
 
     <!-- CreateGroupActivity -->
     <string name="create_group_activity_add_member_hint">メンバーを招待</string>
@@ -652,6 +728,7 @@
     <!-- InvitationCallActivity -->
     <string name="invitation_call_activity_generate_code_message">この操作により、この「Click-to-Call」リンクに関連付けられている現在の招待コードが無効になります。 確認？</string>
     <string name="invitation_call_activity_generate_code_title">このリンクの新しいコードを生成</string>
+    <string name="invitation_call_activity_invite_meeting_message">会議「%2$s」に参加するには、Web アドレス %1$s を開くか、QR コードをスキャンしてください。</string>
     <string name="invitation_call_activity_invite_message">Web アドレス %1$s を開くか、QR コードをスキャンして、「%2$s」を呼び出します。</string>
     <string name="invitation_call_activity_message">この「Click-to-Call」コードを誰かと共有すると、ウェブまたはモバイル アプリからあなたに電話をかけることができます。</string>
     <string name="invitation_call_activity_save_message">この QR コードをスキャンして「%1$s」に電話してください。</string>
@@ -712,6 +789,7 @@
     <string name="notification_center_audio_message_received">新しい音声メッセージ</string>
     <string name="notification_center_cancel">解散</string>
     <string name="notification_center_cleanup_conversation">古いメッセージの一部は削除されました。</string>
+    <string name="notification_center_conference_join_call">1人の参加者が通話に参加しました。</string>
     <string name="notification_center_deleted_contact">連絡先が削除されました</string>
     <string name="notification_center_file_message">あなたにファイルを送った</string>
     <string name="notification_center_file_message_received">新しいファイル</string>
@@ -719,6 +797,7 @@
     <string name="notification_center_invitation_group">がグループへの参加を招待しています。</string>
     <string name="notification_center_invitation_received">新しい招待状</string>
     <string name="notification_center_invitation_received_group">新しいグループへの招待。</string>
+    <string name="notification_center_join_call">%1$s さんが通話に参加しました</string>
     <string name="notification_center_join_group">あなたはグループのメンバーです</string>
     <string name="notification_center_message_received">新しいメッセージ</string>
     <string name="notification_center_missed_audio_call_to">%1$sへの音声通話の不在着信があります</string>
@@ -902,6 +981,41 @@
     <string name="quality_of_service_activity_warning_receive_notification">アプリがプッシュ通知を受信できるようにします。</string>
     <string name="quality_of_service_activity_warning_run_background">アプリがバックグラウンドで実行できるようにします。</string>
 
+    <!-- RestoreActivity -->
+    <string name="restore_activity_application_error">twinme+ アカウントのバックアップを復元するには、このデバイスに twinme+ がインストールされている必要があります。</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_one">バックアップを作成したデバイスはまだログインしています。</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_two">この新しいデバイスにバックアップを復元すると、バックアップを作成したデバイスのアカウントは自動的に無効になります。</string>
+    <string name="restore_activity_backup_device_always_signed_in_part_three">アカウントを新しいデバイスに移行したいが、古いデバイスをまだお持ちの場合は、バックアップの復元ではなく「アカウント移行」操作をご利用いただくことをおすすめします。この操作では、会話、グループ、通知、履歴も移行されます。</string>
+    <string name="restore_activity_confirm">現在のアカウントデータをバックアップの次のデータに置き換えたいですか？</string>
+    <string name="restore_activity_confirm_restore">このバックアップを復元しますか？</string>
+    <string name="restore_activity_content_contact_deleted_message">バックアップ後に削除されたデータは復元できません。</string>
+    <string name="restore_activity_content_profile_reset">招待コードが変更されました。</string>
+    <string name="restore_activity_content_profile_reset_message">バックアップされたプロフィールに関連付けられた招待コードが無効です。復元プロセス中に新しい招待コードが生成されます。</string>
+    <string name="restore_activity_enter_words">バックアップを復号化できるようにする12語のシリーズを入力します。</string>
+    <string name="restore_activity_error_message">バックアップの復元中にエラーが発生しました。</string>
+    <string name="restore_activity_error_message_verify_backup">バックアップの検証中にエラーが発生しました。</string>
+    <string name="restore_activity_file_not_supported">バックアップファイルは「twmbckp」形式である必要があります。</string>
+    <string name="restore_activity_more_recent_backup">同じアカウントで、より最近のバックアップが作成されています。</string>
+    <string name="restore_activity_onboarding">バックアップを復元すると、現在のアカウントデータが置き換えられます。</string>
+    <string name="restore_activity_onboarding_words">バックアップを復元するには、12の単語を復号化できるようにする1つのシリーズを入力する必要があります。</string>
+    <string name="restore_activity_onboarding_verify">バックアップが有効で、現在のデータと最新の状態であることを確認してください。</string>
+    <string name="restore_activity_paste">クリップボードの単語のリストを貼り付けます。</string>
+    <string name="restore_activity_paste_error">単語リストが無効です。</string>
+    <string name="restore_activity_restore">復元する</string>
+    <string name="restore_activity_select_backup">バックアップを選択</string>
+    <string name="restore_activity_state_restore_account">アカウントを復元しています...</string>
+    <string name="restore_activity_state_restore_data">データを復元しています...</string>
+    <string name="restore_activity_state_restore_starting">復元を開始しています。</string>
+    <string name="restore_activity_state_restore_verify_account">アカウント検証…</string>
+    <string name="restore_activity_state_restore_verify_data">データ検証…</string>
+    <string name="restore_activity_state_restore_verify_starting">検証開始…</string>
+    <string name="restore_activity_state_restore_wait_confirm">確認を待っています。</string>
+    <string name="restore_activity_success">修復が正常に完了しました！</string>
+    <string name="restore_activity_success_message">アプリを閉じて再起動して、新しいデータにアクセスします。</string>
+    <string name="restore_activity_title">復元</string>
+    <string name="restore_activity_verify_same_account">検証はバックアップに使用したのと同じデバイスで実行する必要があります。</string>
+    <string name="restore_activity_warning">このバックアップを復元すると、現在のすべてのアカウントデータがバックアップのデータに置き換えられます。</string>
+
     <!-- RoomMembersActivity -->
     <string name="room_members_activity_change_admin_title">管理者として定義する</string>
     <string name="room_members_activity_delete_message">このメンバーの削除を確認してください</string>
@@ -955,15 +1069,18 @@
     <string name="settings_activity_ephemeral_title">消えるメッセージ</string>
     <string name="settings_activity_image_title">写真</string>
     <string name="settings_activity_message_properties_title">メッセージのプロパティ</string>
+    <string name="settings_activity_message_reactions_notification">メッセージへの反応通知</string>
     <string name="settings_activity_reset_default_value">デフォルト設定にリセット</string>
     <string name="settings_activity_reset_preferences_button_title">デフォルトにリセットします</string>
     <string name="settings_activity_reset_preferences_message">通知設定をアプリケーションのデフォルトにリセットします。</string>
     <string name="settings_activity_reset_preferences_title">設定をリセット</string>
     <string name="settings_activity_permissions_title">許可</string>
+    <string name="settings_activity_silent_mode">サイレントモード</string>
     <string name="settings_activity_silent_sound">サイレント</string>
     <string name="settings_activity_sound_enabled_title">サウンド通知</string>
     <string name="settings_activity_system_notifications_title">システム通知</string>
     <string name="settings_activity_system_settings_title">システム設定</string>
+    <string name="settings_activity_turn_off_notification_sounds">通知音をオフにする</string>
     <string name="settings_activity_video_call_category_title">ビデオ通話</string>
     <string name="settings_activity_video_call_notification_ringtone_title">着メロの名前</string>
     <string name="settings_activity_video_call_notification_title">着メロ</string>
@@ -992,7 +1109,9 @@
 
     <!-- ShowCallActivity -->
     <string name="show_call_activity_code">「Click-to-Call」コード</string>
+    <string name="show_call_activity_conference_call_information">このリンクを共有して、電話をかけたり、ブラウザから会議に参加したりできます。</string>
     <string name="show_call_activity_information_code">このコードを共有して、外部通話を受信します。</string>
+    <string name="show_call_activity_meeting_organizer">この会議の主催者</string>
     <string name="show_call_activity_schedule_call">予約通話</string>
     <string name="show_call_activity_schedule_from">%1$s から</string>
     <string name="show_call_activity_schedule_from_to">%1$s から %2$s まで %3$s</string>
@@ -1075,12 +1194,21 @@
 
     <!-- TemplateClickToCallActivity -->
     <string name="template_click_to_call_activity_template_classified_ad">案内広告</string>
+    <string name="template_click_to_call_activity_template_classified_ad_description">クラシファイド広告にリンクを挿入すると、見込み客はアプリをインストールしなくても電話をかけることができます。</string>
     <string name="template_click_to_call_activity_template_classified_ad_placeholder">アナウンス</string>
-    <string name="template_click_to_call_activity_template_help">ヘルプ</string>
-    <string name="template_click_to_call_activity_template_help_placeholder">ヘルプ</string>
+    <string name="template_click_to_call_activity_template_default_description">必要に応じて通話リンクをカスタマイズしてください。</string>
+    <string name="template_click_to_call_activity_template_help">カスタマーサービス</string>
+    <string name="template_click_to_call_activity_template_help_description">ブラウザからカスタマーサービスに電話するためのリンクです。</string>
+    <string name="template_click_to_call_activity_template_help_placeholder">カスタマーサービス</string>
+    <string name="template_click_to_call_activity_template_job">就職面接</string>
+    <string name="template_click_to_call_activity_template_job_description">興味のある採用担当者が面接のために電話をかけることができるリンクです。</string>
+    <string name="template_click_to_call_activity_template_job_placeholder">就職面接</string>
     <string name="template_click_to_call_activity_template_meeting">ミーティング</string>
+    <string name="template_click_to_call_activity_template_meeting_description">ブラウザから会議に参加するためのリンクを共有してください。</string>
     <string name="template_click_to_call_activity_template_meeting_placeholder">ミーティング</string>
+    <string name="template_click_to_call_activity_template_profile_description">アプリをインストールせずに電話をかけるためのリンクです。</string>
     <string name="template_click_to_call_activity_template_video_bell">ビデオドアホン</string>
+    <string name="template_click_to_call_activity_template_video_bell_description">配達ドライバーが指示を電話で確認できるようにします。</string>
     <string name="template_click_to_call_activity_template_video_bell_placeholder">ドアベルなど</string>
 
     <!-- TemplateSpaceActivity -->

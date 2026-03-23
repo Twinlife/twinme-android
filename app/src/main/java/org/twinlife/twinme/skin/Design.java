@@ -144,6 +144,8 @@ public class Design {
     public static TextStyle FONT_BOLD44;
     public static TextStyle FONT_BOLD68;
     public static TextStyle FONT_BOLD88;
+    public static TextStyle FONT_MONOSPACE30;
+    public static TextStyle FONT_MONOSPACE34;
 
     public static TextStyle FONT_EMOJI_EXTRA_EXTRA_LARGE;
     public static TextStyle FONT_EMOJI_EXTRA_LARGE;
@@ -228,6 +230,7 @@ public class Design {
     private static final int DESIGN_AVATAR_MAX_WIDTH = 990;
     private static final int DESIGN_AVATAR_MAX_HEIGHT = 916;
     private static final int DESIGN_AVATAR_HEIGHT = 86;
+    private static final int DESIGN_AVATAR_MARGIN = 34;
     private static final int DESIGN_CERTIFIED_HEIGHT = 28;
     private static final int DESIGN_NAME_TRAILING = 38;
     private static final float DESIGN_DESCRIPTION_CONTENT_VIEW_HEIGHT = 162f;
@@ -270,6 +273,7 @@ public class Design {
     public static int AVATAR_MAX_WIDTH;
     public static int AVATAR_MAX_HEIGHT;
     public static int AVATAR_HEIGHT;
+    public static int AVATAR_MARGIN;
     public static int NAME_TRAILING;
     public static int CERTIFIED_HEIGHT;
     public static float DESCRIPTION_CONTENT_VIEW_HEIGHT;
@@ -432,6 +436,7 @@ public class Design {
         AVATAR_MAX_WIDTH = (int) (DESIGN_AVATAR_MAX_WIDTH * WIDTH_RATIO);
         AVATAR_MAX_HEIGHT = (int) (DESIGN_AVATAR_MAX_HEIGHT * HEIGHT_RATIO);
         AVATAR_HEIGHT = (int) (DESIGN_AVATAR_HEIGHT * HEIGHT_RATIO);
+        AVATAR_MARGIN = (int) (DESIGN_AVATAR_MARGIN * WIDTH_RATIO);
         NAME_TRAILING = (int) (DESIGN_NAME_TRAILING * WIDTH_RATIO);
         CERTIFIED_HEIGHT = (int) (DESIGN_CERTIFIED_HEIGHT * HEIGHT_RATIO);
         DESCRIPTION_CONTENT_VIEW_HEIGHT = (int) (DESIGN_DESCRIPTION_CONTENT_VIEW_HEIGHT * HEIGHT_RATIO);
@@ -471,6 +476,7 @@ public class Design {
         Typeface regularTypeface = Typeface.DEFAULT;
         Typeface boldTypeface = Typeface.DEFAULT_BOLD;
         Typeface italicTypeface = Typeface.defaultFromStyle(Typeface.ITALIC);
+        Typeface monospaceTypeface = Typeface.MONOSPACE;
 
         Typeface mediumTypeface;
         try {
@@ -536,6 +542,9 @@ public class Design {
         FONT_BOLD44 = new TextStyle(boldTypeface, (MIN_RATIO * 44 * fontScale) + adjustFontSize);
         FONT_BOLD68 = new TextStyle(boldTypeface, (MIN_RATIO * 68 * fontScale) + adjustFontSize);
         FONT_BOLD88 = new TextStyle(boldTypeface, (MIN_RATIO * 88 * fontScale) + adjustFontSize);
+
+        FONT_MONOSPACE30 = new TextStyle(monospaceTypeface, (MIN_RATIO * 30 * fontScale) + adjustFontSize);
+        FONT_MONOSPACE34 = new TextStyle(monospaceTypeface, (MIN_RATIO * 34 * fontScale) + adjustFontSize);
 
         if (application.emojiFontSize() == EmojiSize.SMALL.ordinal()) {
             FONT_EMOJI_EXTRA_EXTRA_LARGE = new TextStyle(boldTypeface, (MIN_RATIO * 100 * fontScale) + adjustFontSize);

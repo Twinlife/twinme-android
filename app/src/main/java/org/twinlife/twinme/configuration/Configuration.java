@@ -5,6 +5,7 @@
  *  Contributors:
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.configuration;
@@ -58,5 +59,6 @@ public class Configuration extends TwinmeConfiguration {
 
         peerCallServiceConfiguration.serviceOn = true;
         cryptoServiceConfiguration.serviceOn = true;
+        backupServiceConfiguration.serviceOn = true;
     }
 }

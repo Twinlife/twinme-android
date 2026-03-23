@@ -24,7 +24,7 @@ class TypingAvatarViewHolder extends UIContactViewHolder<UIContact> {
 
     TypingAvatarViewHolder(AbstractTwinmeService service, View view, @IdRes int nameId, @IdRes int avatarId, @SuppressWarnings("unused") TextStyle font) {
 
-        super(service, view, nameId, avatarId, 0, 0, 0, 0, 0, Design.FONT_REGULAR32);
+        super(service, view, nameId, avatarId, 0, 0, 0, 0, 0, 0, Design.FONT_REGULAR32);
     }
 
     public void onBind(Context context, UIContact uiContact, boolean lightBackground) {

@@ -26,11 +26,21 @@
 
     <TextView
         android:id="@+id/navigation_activity_child_level2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_marginStartPercent="5.6%"
         android:gravity="start|center_vertical"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/navigation_activity_child_badge_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_toEndOf="@+id/navigation_activity_child_level2"
+        android:text="@string/application_new" />
 
     <ImageView
         android:id="@+id/navigation_activity_child_accessory_level2"

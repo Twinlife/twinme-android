@@ -23,9 +23,10 @@ android {
         applicationId "org.twinlife.device.android.twinme"
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 509
-        versionName "32.3.1"
+        versionCode 512
+        versionName "33.2"
         manifestPlaceholders.domainName = "twin.me"
+        manifestPlaceholders.backupExtension = "twmbckp"
 
         resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
     }
@@ -53,6 +54,7 @@ android {
             buildConfigField "String", "FLAVOR", '""'
             buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "true"
             buildConfigField "String", "INVITATION_PARAM_ID", '"twincodeId"'
+            buildConfigField "String", "BACKUP_EXTENSION", '"twmbckp"'
 
             manifestPlaceholders.domainName = "twin.me"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme"
@@ -74,6 +76,7 @@ android {
 
             applicationIdSuffix ".staging"
             buildConfigField "String", 'APPLICATION_ID_SUFFIX', '".staging"'
+            buildConfigField "String", "BACKUP_EXTENSION", '"twmbckp"'
         }
 
         // Dev settings and build parameters.
@@ -92,6 +95,8 @@ android {
 
             manifestPlaceholders.domainName = "mytwinlife.net"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme.debug"
+
+            getIsDefault().set(true)
         }
     }
 
@@ -104,11 +109,13 @@ android {
         }
         twinme {
             dimension "product"
+            getIsDefault().set(true)
         }
 
         //Skred and Twinme
         free {
             dimension "tier"
+            getIsDefault().set(true)
         }
 
         //Twinme+
