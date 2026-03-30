@@ -60,7 +60,7 @@ public class BackupViewHolder extends RecyclerView.ViewHolder {
         }
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(backupInfo.getId().toString());
+        spannableStringBuilder.append(backupInfo.getId());
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         spannableStringBuilder.append("\n");

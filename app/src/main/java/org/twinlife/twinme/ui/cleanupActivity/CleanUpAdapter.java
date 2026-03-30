@@ -69,7 +69,7 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private List<UIExport> mExports;
     private List<UIStorage> mStorages;
     private UICleanUpExpiration mUICleanUpExpiration;
-    private CleanupSwitchViewHolder.Observer mCleanupExpirationSwitchObserver;
+    private final CleanupSwitchViewHolder.Observer mCleanupExpirationSwitchObserver;
 
     public CleanUpAdapter(CleanUpActivity listActivity, List<UIExport> exports, List<UIStorage> storages, UICleanUpExpiration cleanUpExpiration, OnCleanupClickListener onCleanupClickListener, CleanupSwitchViewHolder.Observer cleanupExpirationSwitchObserver) {
 

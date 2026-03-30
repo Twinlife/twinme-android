@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
+import org.twinlife.twinme.utils.Utils;
 
 public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String LOG_TAG = "AccountAdapter";
@@ -27,12 +29,12 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     private final AccountActivity mAccountActivity;
 
-    private static final int ITEM_COUNT = 13;
+    private static final int ITEM_COUNT = 14;
 
     private static final int SECTION_TRANSFER = 0;
     private static final int SECTION_BACKUP = 3;
-    private static final int SECTION_CONVERSATIONS = 8;
-    private static final int SECTION_DELETE_ACCOUNT = 11;
+    private static final int SECTION_CONVERSATIONS = 9;
+    private static final int SECTION_DELETE_ACCOUNT = 12;
 
     private static final int POSITION_TRANSFER_FROM_CURRENT_DEVICE = 1;
     private static final int POSITION_TRANSFER_FROM_ANOTHER_DEVICE = 2;
@@ -40,11 +42,13 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int POSITION_RESTORE = 5;
     private static final int POSITION_VERIFY_BACKUP = 6;
     private static final int POSITION_BACKUS = 7;
-    private static final int POSITION_EXPORT_CONVERSATIONS = 9;
-    private static final int POSITION_CLEANUP = 10;
+    private static final int POSITION_LAST_BACKUP = 8;
+    private static final int POSITION_EXPORT_CONVERSATIONS = 10;
+    private static final int POSITION_CLEANUP = 11;
 
     private static final int TITLE = 0;
     private static final int SUBSECTION = 1;
+    private static final int INFO = 2;
 
     AccountAdapter(@NonNull AccountActivity listActivity) {
 
@@ -69,6 +73,8 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         if (position == SECTION_TRANSFER || position == SECTION_BACKUP || position == SECTION_CONVERSATIONS  || position == SECTION_DELETE_ACCOUNT) {
             return TITLE;
+        } else if (position == POSITION_LAST_BACKUP) {
+            return INFO;
         } else {
             return SUBSECTION;
         }
@@ -138,6 +144,15 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onDeleteAccountClick());
             }
             settingIconViewHolder.onBind(title, textColor, iconId, iconColor, false);
+        } else if (viewType == INFO) {
+            InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
+            if (mAccountActivity.getTwinmeApplication().getLastBackupDate() > 0) {
+                String lastBackupDate = Utils.formatBackupInterval(mAccountActivity, mAccountActivity.getTwinmeApplication().getLastBackupDate() * 1000L, true);
+                String message = String.format(mAccountActivity.getString(R.string.backup_activity_last_backup), lastBackupDate);
+                informationViewHolder.onBind(message, false);
+            } else {
+                informationViewHolder.onBind("", false);
+            }
         }
     }
 
@@ -154,6 +169,9 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (viewType == TITLE) {
             convertView = inflater.inflate(R.layout.section_title_item, parent, false);
             return new SectionTitleViewHolder(convertView);
+        } else if (viewType == INFO) {
+            convertView = inflater.inflate(R.layout.settings_room_activity_information_item, parent, false);
+            return new InformationViewHolder(convertView);
         } else  {
             convertView = inflater.inflate(R.layout.setting_icon_item, parent, false);
             return new SettingIconViewHolder(convertView);

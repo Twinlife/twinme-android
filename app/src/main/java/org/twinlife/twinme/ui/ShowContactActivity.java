@@ -91,7 +91,6 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
     private View mBackClickableView;
     private ImageView mAvatarView;
     private View mContentView;
-    private View mActionView;
     private TextView mNameView;
     private View mCertifiedHeaderView;
     private TextView mDescriptionView;
@@ -489,7 +488,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         mDescriptionView = findViewById(R.id.show_contact_activity_description_view);
 
-        mActionView = findViewById(R.id.show_contact_activity_action_view);
+        View mActionView = findViewById(R.id.show_contact_activity_action_view);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mActionView.getLayoutParams();
         marginLayoutParams.topMargin = Design.ACTION_VIEW_TOP_MARGIN;

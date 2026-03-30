@@ -103,7 +103,6 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     private JobService mJobService;
     private CoachMarkManager mCoachMarkManager;
     private boolean mShowConnectedMessage = true;
-    private Date mAppBackgroundDate;
     private boolean mIsInBackground = true;
     private WeakReference<TwinmeActivityImpl> mCurrentActivity;
 
@@ -571,6 +570,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public boolean hapticFeedbackModeEnable() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hapticFeedbackModeEnable");
+        }
+
+        return Settings.hapticFeedbackEnable.getBoolean();
+    }
+
+    @Override
     public int defaultTab() {
         if (DEBUG) {
             Log.d(LOG_TAG, "defaultTab");
@@ -865,6 +873,18 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public long getLastBackupDate() {
+
+        return Settings.lastBackupDate.getLong();
+    }
+
+    @Override
+    public void clearLastBackupDate() {
+
+        Settings.lastBackupDate.setLong(0).save();
+    }
+
+    @Override
     public void setFirstInstallationBackupDate() {
         if (DEBUG) {
             Log.d(LOG_TAG, "setFirstInstallationBackupDate");
@@ -1039,7 +1059,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         mIsInBackground = true;
-        mAppBackgroundDate = new Date();
+        Date mAppBackgroundDate = new Date();
         boolean isIdle = mJobService.isIdle();
         if (!isIdle && !CallService.isRunning()) {
             PeerService.startService(this, 0, System.currentTimeMillis());

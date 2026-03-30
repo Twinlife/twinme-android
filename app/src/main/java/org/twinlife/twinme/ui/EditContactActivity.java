@@ -154,7 +154,7 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
 
         mContact = contact;
         if (mContact.hasPeer()) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            setFullscreen();
             mRemoveListener.enable();
             mContactName = mContact.getName();
 

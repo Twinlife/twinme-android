@@ -199,9 +199,8 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
         }
 
         mGroup = group;
-        ConversationService.GroupConversation  groupConversation = conversation;
 
-        long joinPermissions = groupConversation.getJoinPermissions();
+        long joinPermissions = conversation.getJoinPermissions();
         mAllowInvitation = (joinPermissions & (1L << ConversationService.Permission.INVITE_MEMBER.ordinal())) != 0;
         mAllowInviteMemberAsContact = (joinPermissions & (1L << ConversationService.Permission.SEND_TWINCODE.ordinal())) != 0;
         mAllowPostMessage = (joinPermissions & (1L << ConversationService.Permission.SEND_MESSAGE.ordinal())) != 0;

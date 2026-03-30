@@ -274,7 +274,7 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
                     if (enable && (value == null || value.isEmpty())) {
                         enableSetting.setBoolean(false);
 
-                    } else if (!enable && value != null && value.length() > 0) {
+                    } else if (!enable && value != null && !value.isEmpty()) {
                         enableSetting.setBoolean(true);
 
                     }

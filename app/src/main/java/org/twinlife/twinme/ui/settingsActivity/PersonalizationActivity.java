@@ -21,7 +21,6 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.FontSize;
-import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
@@ -79,6 +78,8 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onRingToneClick");
         }
     }
+
+
 
     @Override
     public void updateColor() {
@@ -144,15 +145,6 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
                 getTwinmeApplication().updateFontSize(fontSize);
                 Design.setupFont(PersonalizationActivity.this, getTwinmeApplication());
                 updateColor();
-                mPersonalizationListAdapter.updateColor();
-            }
-
-            @Override
-            public void onUpdateHapticFeedback(TwinmeApplication.HapticFeedbackMode hapticFeedbackMode) {
-
-                getTwinmeApplication().updateHapticFeedbackMode(hapticFeedbackMode);
-
-                hapticFeedback();
                 mPersonalizationListAdapter.updateColor();
             }
 

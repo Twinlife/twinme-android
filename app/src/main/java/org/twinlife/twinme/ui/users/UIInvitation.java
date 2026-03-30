@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2024 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -34,7 +34,7 @@ public class UIInvitation extends UIContact {
 
     public InvitationDescriptor.Status getStatus() {
 
-        return mInvitation.getStatus();
+        return mInvitation != null ? mInvitation.getStatus() : InvitationDescriptor.Status.PENDING;
     }
 
     public ConversationService.InvitationDescriptor getInvitationDescriptor() {
@@ -44,6 +44,6 @@ public class UIInvitation extends UIContact {
 
     public boolean peerFailure() {
 
-        return mInvitation.getReceivedTimestamp() < 0;
+        return mInvitation != null && mInvitation.getReceivedTimestamp() < 0;
     }
 }

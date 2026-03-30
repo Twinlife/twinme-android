@@ -41,6 +41,9 @@
     <string name="application_description">Mô tả</string>
     <string name="application_display_all">Hiển thị tất cả</string>
     <string name="application_do_not_display">Không hiển thị nữa</string>
+    <string name="application_duration_hour">giờ</string>
+    <string name="application_duration_minute">ph</string>
+    <string name="application_duration_second">giây</string>
     <string name="application_edit">Chỉnh sửa</string>
     <string name="application_error_code">Mã lỗi: %1$s</string>
     <string name="application_error_file_not_found">Định dạng hình ảnh/video này không được ứng dụng hỗ trợ.</string>
@@ -708,6 +711,10 @@
     <string name="info_item_activity_deleted">Đã bị xóa bởi người nhận:</string>
     <string name="info_item_activity_may_be_copied">Có thể sao chép/lưu/chia sẻ…</string>
     <string name="info_item_activity_may_not_be_copied">Không thể sao chép/lưu/chia sẻ…</string>
+    <string name="info_item_activity_not_delivered">Không gửi được</string>
+    <string name="info_item_activity_not_delivered_expiration">Tin nhắn không thể được gửi sau 15 ngày.</string>
+    <string name="info_item_activity_not_delivered_storage">Thiết bị của người nhận không đủ dung lượng lưu trữ để nhận nội dung này.</string>
+    <string name="info_item_activity_not_delivered_update">Ứng dụng của người nhận cần được cập nhật.</string>
     <string name="info_item_activity_reactions">Phản hồi</string>
     <string name="info_item_activity_received">Đã nhận:</string>
     <string name="info_item_activity_seen">Đã xem:</string>
@@ -848,7 +855,7 @@
     <string name="personalization_activity_font_large">Lớn</string>
     <string name="personalization_activity_font_small">Nhỏ</string>
     <string name="personalization_activity_haptic_feedback">Phản hồi rung</string>
-    <string name="personalization_activity_haptic_feedback_message">Cảm giác xúc giác khi chạm.</string>
+    <string name="personalization_activity_haptic_feedback_message">Cảm giác xúc giác khi chạm</string>
     <string name="personalization_activity_menu_choose_color">Màu mặc định</string>
     <string name="personalization_activity_menu_enter_color">Mã màu</string>
     <string name="personalization_activity_mode">Chế độ</string>

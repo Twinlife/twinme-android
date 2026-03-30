@@ -38,6 +38,9 @@
     <string name="application_denied_permissions">Необхідні дозволи не надані</string>
     <string name="application_description">Опис</string>
     <string name="application_display_all">Показати все</string>
+    <string name="application_duration_hour">год</string>
+    <string name="application_duration_minute">хв</string>
+    <string name="application_duration_second">с</string>
     <string name="application_do_not_display">Більше не відображати</string>
     <string name="application_edit">Редагувати</string>
     <string name="application_error_code">Код помилки: %1$s</string>
@@ -714,6 +717,10 @@
     <string name="info_item_activity_deleted">Видалено одержувачем:</string>
     <string name="info_item_activity_may_be_copied">Можна скопіювати/зберегти/поділитися…</string>
     <string name="info_item_activity_may_not_be_copied">Не можна скопіювати/зберегти/поділитися…</string>
+    <string name="info_item_activity_not_delivered">Не доставлено</string>
+    <string name="info_item_activity_not_delivered_expiration">Повідомлення не вдалося доставити через 15 днів.</string>
+    <string name="info_item_activity_not_delivered_storage">На пристрої одержувача недостатньо місця для отримання цього контенту.</string>
+    <string name="info_item_activity_not_delivered_update">Потрібно оновити програму одержувача.</string>
     <string name="info_item_activity_reactions">Реакція</string>
     <string name="info_item_activity_received">Отримано:</string>
     <string name="info_item_activity_seen">Подивилося:</string>
@@ -856,7 +863,7 @@
     <string name="personalization_activity_font_large">Великий</string>
     <string name="personalization_activity_font_small">Маленький</string>
     <string name="personalization_activity_haptic_feedback">Тактильний зворотний зв’язок</string>
-    <string name="personalization_activity_haptic_feedback_message">Тактильне відчуття при дотику.</string>
+    <string name="personalization_activity_haptic_feedback_message">Тактильне відчуття при дотику</string>
     <string name="personalization_activity_menu_choose_color">Кольори за замовчуванням</string>
     <string name="personalization_activity_menu_enter_color">Код кольору</string>
     <string name="personalization_activity_mode">Режим</string>

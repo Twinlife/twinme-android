@@ -81,11 +81,11 @@ public class ShareListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         int count = 0;
 
-        if (mUIContacts.size() > 0) {
+        if (!mUIContacts.isEmpty()) {
             count = mUIContacts.size() + 1;
         }
 
-        if (mUIGroups.size() > 0) {
+        if (!mUIGroups.isEmpty()) {
             count = count + mUIGroups.size() + 1;
         }
 
@@ -100,21 +100,21 @@ public class ShareListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         int positionContactMin = -1;
         int positionContactMax = -1;
-        if (mUIContacts.size() > 0) {
+        if (!mUIContacts.isEmpty()) {
             positionContactMin = 1;
             positionContactMax = mUIContacts.size();
         }
 
         int positionGroupMin = -1;
         int positionGroupMax = getItemCount() - 1;
-        if (mUIGroups.size() > 0) {
+        if (!mUIGroups.isEmpty()) {
             positionGroupMin = positionContactMax + 2;
         }
 
-        if (position == 0 && mUIContacts.size() > 0) {
+        if (position == 0 && !mUIContacts.isEmpty()) {
             mMinContactPosition = position + 1;
             return CONTACTS_TITLE;
-        } else if (position == positionGroupMin - 1 && mUIGroups.size() > 0) {
+        } else if (position == positionGroupMin - 1 && !mUIGroups.isEmpty()) {
             mMinGroupPosition = position + 1;
             return GROUPS_TITLE;
         } else if (position >= positionContactMin && position <= positionContactMax) {
@@ -134,20 +134,20 @@ public class ShareListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         int positionContactMin = -1;
         int positionContactMax = -1;
-        if (mUIContacts.size() > 0) {
+        if (!mUIContacts.isEmpty()) {
             positionContactMin = 1;
             positionContactMax = mUIContacts.size();
         }
 
         int positionGroupMin = -1;
         int positionGroupMax = getItemCount() - 1;
-        if (mUIGroups.size() > 0) {
+        if (!mUIGroups.isEmpty()) {
             positionGroupMin = positionContactMax + 2;
         }
 
-        if (position == 0 && mUIContacts.size() > 0) {
+        if (position == 0 && !mUIContacts.isEmpty()) {
             return -1;
-        } else if (position == positionGroupMin - 1 && mUIGroups.size() > 0) {
+        } else if (position == positionGroupMin - 1 && !mUIGroups.isEmpty()) {
             return -1;
         } else if (position >= positionContactMin && position <= positionContactMax) {
             return mUIContacts.get(position - positionContactMin).getItemId();

@@ -28,7 +28,7 @@ public class WordCompletionViewHolder  extends RecyclerView.ViewHolder {
     private static final float DESIGN_WORD_HEIGHT = 80f;
     private static final float DESIGN_WORD_MARGIN = 14f;
 
-    private TextView mWordView;
+    private final TextView mWordView;
 
     public WordCompletionViewHolder(@NonNull View view) {
 

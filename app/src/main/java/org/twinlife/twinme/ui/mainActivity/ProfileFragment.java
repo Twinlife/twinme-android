@@ -510,7 +510,7 @@ public class ProfileFragment extends TabbarFragment implements ProfileService.Ob
             Log.d(LOG_TAG, "onAddContactClick");
         }
 
-        if (mProfile != null) {
+        if (mProfile != null && mTwinmeActivity != null) {
             DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
 
             MenuAddContactView menuAddContactView = new MenuAddContactView(mTwinmeActivity, null);

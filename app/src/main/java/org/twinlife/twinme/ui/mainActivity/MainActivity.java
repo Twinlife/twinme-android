@@ -164,7 +164,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     private View mDrawerContainer;
     private ListView mDrawerListView;
     private RecyclerView mProfileDrawerListView;
-    private LinearLayoutManager mUIProfilesLinearLayoutManager;
     private SideMenuListAdapter mSideMenuListAdapter;
     private ProfilesSideMenuListAdapter mProfileSideMenuListAdapter;
     private CircularImageView mAvatarView;
@@ -1107,7 +1106,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         layoutParams = mProfileDrawerListView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_SIDE_PROFILES_WIDTH * Design.WIDTH_RATIO);
 
-        mUIProfilesLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        LinearLayoutManager mUIProfilesLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         mProfileDrawerListView.setLayoutManager(mUIProfilesLinearLayoutManager);
         mProfileDrawerListView.setItemAnimator(null);
         mProfileDrawerListView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);

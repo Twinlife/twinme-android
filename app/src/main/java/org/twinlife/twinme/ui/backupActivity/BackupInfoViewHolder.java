@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024-2025 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -65,7 +64,7 @@ public class BackupInfoViewHolder extends RecyclerView.ViewHolder {
 
         ShapeDrawable containerViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         containerViewBackground.getPaint().setColor(Design.GREY_ITEM_COLOR);
-        ViewCompat.setBackground(containerView, containerViewBackground);
+        containerView.setBackground(containerViewBackground);
 
         View iconView = view.findViewById(R.id.restore_activity_backup_info_icon_view);
 
@@ -78,7 +77,7 @@ public class BackupInfoViewHolder extends RecyclerView.ViewHolder {
 
         ShapeDrawable iconViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         iconViewBackground.getPaint().setColor(Design.WHITE_COLOR);
-        ViewCompat.setBackground(iconView, iconViewBackground);
+        iconView.setBackground(iconViewBackground);
 
         ImageView iconImageView = view.findViewById(R.id.restore_activity_backup_info_image_view);
 

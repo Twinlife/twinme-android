@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.ui.settingsActivity.SettingSwitchViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;

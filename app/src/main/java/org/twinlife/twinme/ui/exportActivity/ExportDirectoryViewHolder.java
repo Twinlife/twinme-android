@@ -25,7 +25,6 @@ public class ExportDirectoryViewHolder extends RecyclerView.ViewHolder {
 
     private final EditText mEditTextView;
     private final TextView mDirectoryView;
-    private UISetting<String> mUISetting;
 
     public ExportDirectoryViewHolder(@NonNull View view, ExportActivity exportActivity) {
 
@@ -49,8 +48,6 @@ public class ExportDirectoryViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(@NonNull UISetting<String> uiSetting) {
-
-        mUISetting = uiSetting;
 
         mEditTextView.setText(uiSetting.getTitle());
         mDirectoryView.setText(uiSetting.getTitle());

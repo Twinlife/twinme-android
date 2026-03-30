@@ -475,10 +475,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         if (DEBUG) {
             Log.d(LOG_TAG, "importFile uri=" + uri);
         }
-
-        mCountFiles++;
-        runOnUiThread(this::allFilesCopied);
-
+        
         final Context context = getApplicationContext();
 
         // If the file is provided by our own file provider, it is located in the tmp directory and we can access it directly.

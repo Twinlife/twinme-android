@@ -39,12 +39,12 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
     private static final String LOG_TAG = "AbstractCallParticip...";
     private static final boolean DEBUG = false;
 
-    enum CallParticipantViewAspect {
+    public enum CallParticipantViewAspect {
         FIT,
         FULLSCREEN
     }
 
-    enum CallParticipantViewMode {
+    public enum CallParticipantViewMode {
         SMALL_LOCALE_VIDEO,
         SMALL_REMOTE_VIDEO,
         SPLIT_SCREEN
@@ -547,7 +547,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
             Log.d(LOG_TAG, "getPortraitMainParticipantWidth");
         }
 
-        if (mNumberParticipants != 2 && mNumberParticipants % 2 == 0) {
+        if ((mNumberParticipants != 2 && mNumberParticipants % 2 == 0) || mNumberParticipants == 7) {
             return (mParentViewWidth - (MARGIN_PARTICIPANT * 3)) * 0.5f ;
         }
 
@@ -593,7 +593,7 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
 
         if (mNumberParticipants == 2 && mIsVideoCall && CallStatus.isActive(mCallStatus) && mCallParticipantViewMode != CallParticipantViewMode.SPLIT_SCREEN) {
             return mParentViewHeight;
-        } else if (mNumberParticipants == 2 || mNumberParticipants == 4) {
+        } else if (mNumberParticipants == 2 || mNumberParticipants == 4 || mNumberParticipants == 7) {
             return (mParentViewHeight - MARGIN_PARTICIPANT) * 0.5f;
         } else if (mNumberParticipants == 3) {
             return (mParentViewHeight - MARGIN_PARTICIPANT) * 0.67f;
@@ -679,6 +679,8 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
             return mParentViewHeight;
         } else if (mNumberParticipants == 3) {
             return (mParentViewHeight - MARGIN_PARTICIPANT) * 0.33f;
+        } else if (mNumberParticipants == 7) {
+            return (mParentViewHeight - (MARGIN_PARTICIPANT * 3)) / 4.f;
         }
 
         return getMainParticipantHeight();
@@ -722,7 +724,9 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
         } else if (mNumberParticipants == 2) {
             return MARGIN_PARTICIPANT;
         } else if (mNumberParticipants % 2 != 0) {
-            if (mPosition % 2 == 0) {
+            if (mPosition == 2 && mNumberParticipants == 7) {
+                return mWidth + (MARGIN_PARTICIPANT * 2);
+            } else if (mPosition % 2 == 0) {
                 return MARGIN_PARTICIPANT;
             } else {
                 return mWidth + (MARGIN_PARTICIPANT * 2);
@@ -820,7 +824,9 @@ public abstract class AbstractCallParticipantView extends PercentRelativeLayout 
                 return (mHeight * 2) + (MARGIN_PARTICIPANT * 2);
             }
         } else if (mNumberParticipants == 7) {
-            if (mPosition < 4) {
+            if (mPosition == 2) {
+                return 0;
+            } else if (mPosition < 4) {
                 return mHeight + MARGIN_PARTICIPANT;
             } else if (mPosition < 6) {
                 return (mHeight * 2) + (MARGIN_PARTICIPANT * 2);

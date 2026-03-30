@@ -53,6 +53,9 @@
     <string name="application_description">Description</string>
     <string name="application_display_all">Display all</string>
     <string name="application_do_not_display">Do not display anymore</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">m</string>
+    <string name="application_duration_second">s</string>
     <string name="application_edit">Edit</string>
     <string name="application_error_code">Error code: %1$s</string>
     <string name="application_error_file_not_found">The file was not found.</string>
@@ -739,6 +742,10 @@
     <string name="info_item_activity_deleted">Deleted by receiver:</string>
     <string name="info_item_activity_may_be_copied">May be copied/saved/shared…</string>
     <string name="info_item_activity_may_not_be_copied">May not be copied/saved/shared…</string>
+    <string name="info_item_activity_not_delivered">Not delivered</string>
+    <string name="info_item_activity_not_delivered_expiration">The message could not be delivered after 15 days.</string>
+    <string name="info_item_activity_not_delivered_storage">The recipient\'s device does not have enough storage space to receive this content.</string>
+    <string name="info_item_activity_not_delivered_update">The recipient\'s app needs to be updated.</string>
     <string name="info_item_activity_reactions">Reactions</string>
     <string name="info_item_activity_received">Received:</string>
     <string name="info_item_activity_seen">Seen:</string>
@@ -883,7 +890,7 @@
     <string name="personalization_activity_font_large">Large</string>
     <string name="personalization_activity_font_small">Small</string>
     <string name="personalization_activity_haptic_feedback">Haptic feedback</string>
-    <string name="personalization_activity_haptic_feedback_message">Tactile feeling when touching.</string>
+    <string name="personalization_activity_haptic_feedback_message">Tactile feeling when touching</string>
     <string name="personalization_activity_menu_choose_color">Default colors</string>
     <string name="personalization_activity_menu_enter_color">Color code</string>
     <string name="personalization_activity_mode">Mode</string>

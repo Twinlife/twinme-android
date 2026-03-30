@@ -53,8 +53,8 @@ public class MenuSendOptionView extends PercentRelativeLayout {
 
     protected View mActionView;
 
-    protected static int ALLOW_COPY_TAG = 0;
-    protected static int ALLOW_EPHEMERAL_TAG = 1;
+    protected static final int ALLOW_COPY_TAG = 0;
+    protected static final int ALLOW_EPHEMERAL_TAG = 1;
 
     private boolean mAllowCopy = true;
     private boolean mAllowEphemeral = false;

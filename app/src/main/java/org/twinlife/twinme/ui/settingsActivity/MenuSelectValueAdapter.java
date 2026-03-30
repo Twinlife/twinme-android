@@ -203,6 +203,7 @@ public class MenuSelectValueAdapter implements ListAdapter {
         }
 
         View separatorView = convertView.findViewById(R.id.menu_select_value_child_separator);
+        separatorView.setBackgroundColor(Design.SEPARATOR_COLOR);
         if (position + 1 == getCount()) {
             separatorView.setVisibility(View.GONE);
         } else {

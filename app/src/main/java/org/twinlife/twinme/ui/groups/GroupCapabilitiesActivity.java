@@ -44,11 +44,9 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
     private static final boolean DEBUG = false;
 
     private UUID mGroupId;
-    private Group mGroup;
 
     private GroupService mGroupService;
 
-    private boolean mUIInitialized = false;
     private final boolean mUIPostInitialized = false;
 
     //
@@ -147,7 +145,6 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
             Log.d(LOG_TAG, "onGetGroup group=" + group);
         }
 
-        mGroup = group;
     }
 
     @Override
@@ -241,7 +238,7 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
 
         mProgressBarView = findViewById(R.id.group_capabilities_activity_progress_bar);
 
-        mUIInitialized = true;
+        boolean mUIInitialized = true;
     }
 
 }

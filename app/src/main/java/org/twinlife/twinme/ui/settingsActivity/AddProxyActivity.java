@@ -59,7 +59,6 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
     public static final float DESIGN_PROXY_TOP_MARGIN = 60f;
     public static final float DESIGN_SAVE_TOP_MARGIN = 40f;
 
-    private TextView mMessageView;
     private PasteEditText mProxyView;
     private View mSaveClickableView;
     private int mProxyPosition = -1;
@@ -336,7 +335,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         marginLayoutParams = (ViewGroup.MarginLayoutParams) formatView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_SAVE_TOP_MARGIN * Design.HEIGHT_RATIO);
 
-        mMessageView = findViewById(R.id.add_proxy_activity_message_view);
+        TextView mMessageView = findViewById(R.id.add_proxy_activity_message_view);
         mMessageView.setTypeface(Design.FONT_REGULAR32.typeface);
         mMessageView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);

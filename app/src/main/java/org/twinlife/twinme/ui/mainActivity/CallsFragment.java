@@ -406,7 +406,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         }
 
         for (CallDescriptor callDescriptor : descriptors) {
-            if (!mAllCalls.contains(callDescriptor)) {
+            if (!mAllCalls.contains(callDescriptor) && callDescriptor.getTerminateReason() != null) {
                 mAllCalls.add(callDescriptor);
             }
         }
@@ -443,6 +443,10 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             Log.d(LOG_TAG, "onAddDescriptor: descriptor=" + descriptor);
         }
 
+        if (descriptor.getTerminateReason() == null) {
+            return;
+        }
+
         if (!mAllCalls.contains(descriptor)) {
             mAllCalls.add(0, descriptor);
         }
@@ -454,6 +458,10 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
     public void onUpdateDescriptor(@NonNull CallDescriptor descriptor) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onUpdateDescriptor: descriptor=" + descriptor);
+        }
+
+        if (descriptor.getTerminateReason() == null) {
+            return;
         }
 
         boolean isUpdated = false;

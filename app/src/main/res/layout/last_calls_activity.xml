@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/last_calls_activity_tool_bar"
-        layout="@layout/last_calls_toolbar"
+        layout="@layout/conversation_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

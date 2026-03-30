@@ -70,7 +70,6 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
     private static final boolean DEBUG = false;
 
     private static final float DESIGN_SELECTED_BOTTOM_MARGIN = 40f;
-    private static int SELECTED_BOTTOM_MARGIN;
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
@@ -655,7 +654,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
             Log.d(LOG_TAG, "setupDesign");
         }
 
-        SELECTED_BOTTOM_MARGIN = (int) (DESIGN_SELECTED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        int SELECTED_BOTTOM_MARGIN = (int) (DESIGN_SELECTED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
     }
 
     @Override

@@ -153,6 +153,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
         int viewType = getItemViewType(position);
 
         if (viewType == CONTACT) {
+            //noinspection rawtypes
             UIContactViewHolder contactViewHolder = (UIContactViewHolder) viewHolder;
             if (mAddContact) {
                 position = position - 2;
@@ -206,6 +207,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
         if (viewType == CONTACT && position != -1) {
+            //noinspection rawtypes
             UIContactViewHolder uiContactViewHolder = (UIContactViewHolder)viewHolder;
             uiContactViewHolder.onViewRecycled();
         }

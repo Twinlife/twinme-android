@@ -218,7 +218,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
     private static int BUTTON_HEIGHT;
     private static int VIEW_BUTTON_HEIGHT;
-    private static int ACTION_BUTTON_HEIGHT;
 
     private class AcceptListener implements OnClickListener {
 
@@ -427,7 +426,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private String mOriginatorName;
     private Bitmap mOriginatorAvatar;
     private Bitmap mOriginatorIdentityAvatar;
-    private Bitmap mButtonBackground;
     private boolean mTerminated = false;
     private boolean mConnected = false;
     private boolean mStarted = false;
@@ -521,12 +519,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         ContextCompat.registerReceiver(getBaseContext(), mCallReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
 
         // We don't need a big image for the button background.
-        mButtonBackground = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
+        Bitmap mButtonBackground = Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888);
         mButtonBackground.eraseColor(Design.ACTION_CALL_COLOR);
 
         BUTTON_HEIGHT = (int) (DESIGN_BUTTON_HEIGHT * Design.HEIGHT_RATIO);
         VIEW_BUTTON_HEIGHT = (int) (DESIGN_VIEW_BUTTON_HEIGHT * Design.HEIGHT_RATIO);
-        ACTION_BUTTON_HEIGHT = (int) (DESIGN_ACTION_BUTTON_HEIGHT * Design.HEIGHT_RATIO);
+        int ACTION_BUTTON_HEIGHT = (int) (DESIGN_ACTION_BUTTON_HEIGHT * Design.HEIGHT_RATIO);
         MENU_VIEW_HEIGHT = (int) (DESIGN_MENU_VIEW_HEIGHT * Design.HEIGHT_RATIO);
         MENU_VIEW_WIDTH = Design.DISPLAY_WIDTH;
         MENU_VIEW_BOTTOM_MARGIN = (int) (DESIGN_MENU_VIEW_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
@@ -3573,9 +3571,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     if (mInfoFloatingView != null) {
                         ViewTreeObserver viewTreeObserver = mInfoFloatingView.getViewTreeObserver();
                         viewTreeObserver.removeOnGlobalLayoutListener(this);
-                        if (info.position() != null) {
-                            mInfoFloatingView.setX(info.position().x);
-                            mInfoFloatingView.setY(info.position().y);
+                        final Point position = info.position();
+                        if (position != null) {
+                            mInfoFloatingView.setX(position.x);
+                            mInfoFloatingView.setY(position.y);
                             mInfoFloatingView.setVisibility(View.VISIBLE);
                         } else {
                             mInfoFloatingView.moveToTopRight();
@@ -4101,7 +4100,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         return sortedViews;
     }
 
-    private void updateParticipantsView(CallState callState) {
+    private void updateParticipantsView(@Nullable CallState callState) {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateParticipantsView");
         }
@@ -4124,10 +4123,13 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             if (callParticipantView.isRemoteParticipant()) {
                 participantsName.append(callParticipantView.getName());
             }
+
             boolean isMainParticipant = false;
-            if (callState != null) {
-                isMainParticipant = callParticipantView.getCallParticipant() == mainParticipant;
+            CallParticipant viewParticipant = callParticipantView.getCallParticipant();
+            if (viewParticipant != null && mainParticipant != null && (mainParticipant.getParticipantId() == viewParticipant.getParticipantId() || (viewParticipant.getTransferredFromParticipantId() != null && mainParticipant.getParticipantId() == viewParticipant.getTransferredFromParticipantId()))) {
+                isMainParticipant = true;
             }
+
             callParticipantView.setCallParticipantViewMode(mCallParticipantViewMode);
             int width;
             if (mIsLandscape) {
@@ -4994,13 +4996,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "hapticFeedback");
         }
 
-        final TwinmeApplication twinmeApplication = getTwinmeApplication();
-        final int hapticFeedbackMode = twinmeApplication.hapticFeedbackMode();
-
-        if (hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.SYSTEM.ordinal()) {
+        if (getTwinmeApplication().hapticFeedbackModeEnable()) {
             getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        } else if (hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.ON.ordinal()) {
-            getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
     }
 

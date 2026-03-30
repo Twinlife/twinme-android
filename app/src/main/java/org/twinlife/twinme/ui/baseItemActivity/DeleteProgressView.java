@@ -27,7 +27,7 @@ public class DeleteProgressView extends View {
     private float mClipRatio = 0f;
     private DeleteProgressListener mDeleteProgressListener;
 
-    interface DeleteProgressListener {
+    public interface DeleteProgressListener {
 
         void onAnimationDeletedEnded();
     }

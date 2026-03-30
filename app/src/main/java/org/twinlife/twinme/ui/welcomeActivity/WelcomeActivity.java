@@ -58,7 +58,6 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
     private static final float DESIGN_ITEM_VIEW_HEIGHT = 860f;
     private static final float DESIGN_NEXT_VIEW_HEIGHT = 60f;
     private static final float DESIGN_NEXT_VIEW_MARGIN = 30f;
-    private static int ITEM_VIEW_HEIGHT;
 
     private final List<UIWelcome> mUIWelcome = new ArrayList<>();
 
@@ -417,7 +416,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "setupDesign");
         }
 
-        ITEM_VIEW_HEIGHT = (int) (DESIGN_ITEM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        int ITEM_VIEW_HEIGHT = (int) (DESIGN_ITEM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
     }
 
     private void backPressed() {

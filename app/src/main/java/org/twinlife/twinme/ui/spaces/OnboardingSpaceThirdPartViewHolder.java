@@ -41,7 +41,6 @@ public class OnboardingSpaceThirdPartViewHolder extends RecyclerView.ViewHolder 
         CREATE_BUTTON_MARGIN = (int) (DESIGN_CREATE_BUTTON_MARGIN * Design.HEIGHT_RATIO);
     }
 
-    private final View mCreateSpaceView;
     private final TextView mCreateSpaceTextView;
     private final TextView mMessageTextView;
     private final View mDoNotShowView;
@@ -68,7 +67,7 @@ public class OnboardingSpaceThirdPartViewHolder extends RecyclerView.ViewHolder 
         marginLayoutParams.leftMargin = Design.ONBOARDING_TEXT_MARGIN;
         marginLayoutParams.rightMargin = Design.ONBOARDING_TEXT_MARGIN;
 
-        mCreateSpaceView = view.findViewById(R.id.onboarding_space_activity_third_part_item_create_space_view);
+        View mCreateSpaceView = view.findViewById(R.id.onboarding_space_activity_third_part_item_create_space_view);
         mCreateSpaceView.setOnClickListener(v -> onboardingSpaceActivity.onCreateSpaceClick());
 
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;

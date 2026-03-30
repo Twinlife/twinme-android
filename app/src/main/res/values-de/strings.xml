@@ -41,6 +41,9 @@
     <string name="application_description">Beschreibung</string>
     <string name="application_display_all">Alle anzeigen</string>
     <string name="application_do_not_display">Nicht mehr anzeigen</string>
+    <string name="application_duration_hour">Std.</string>
+    <string name="application_duration_minute">Min.</string>
+    <string name="application_duration_second">Sek.</string>
     <string name="application_edit">Bearbeiten</string>
     <string name="application_error_code">Fehlercode: %1$s</string>
     <string name="application_error_file_not_found">Die Datei wurde nicht gefunden.</string>
@@ -719,6 +722,10 @@
     <string name="info_item_activity_deleted">Vom Empfänger gelöscht:</string>
     <string name="info_item_activity_may_be_copied">Kann kopiert/gespeichert/geteilt werden…</string>
     <string name="info_item_activity_may_not_be_copied">Darf nicht kopiert/gespeichert/geteilt werden…</string>
+    <string name="info_item_activity_not_delivered">Nicht zugestellt</string>
+    <string name="info_item_activity_not_delivered_expiration">Die Nachricht konnte nach 15 Tagen nicht zugestellt werden.</string>
+    <string name="info_item_activity_not_delivered_storage">Auf dem Gerät des Empfängers ist nicht genügend Speicherplatz vorhanden, um diesen Inhalt zu empfangen.</string>
+    <string name="info_item_activity_not_delivered_update">Die App des Empfängers muss aktualisiert werden.</string>
     <string name="info_item_activity_reactions">Reaktionen</string>
     <string name="info_item_activity_received">Empfangen:</string>
     <string name="info_item_activity_seen">Gesehen:</string>
@@ -861,7 +868,7 @@
     <string name="personalization_activity_font_large">Groß</string>
     <string name="personalization_activity_font_small">Klein</string>
     <string name="personalization_activity_haptic_feedback">Haptisches Feedback</string>
-    <string name="personalization_activity_haptic_feedback_message">Tastgefühl beim Berühren.</string>
+    <string name="personalization_activity_haptic_feedback_message">Tastgefühl beim Berühren</string>
     <string name="personalization_activity_menu_choose_color">Standardfarben</string>
     <string name="personalization_activity_menu_enter_color">Farbcode</string>
     <string name="personalization_activity_mode">Modus</string>

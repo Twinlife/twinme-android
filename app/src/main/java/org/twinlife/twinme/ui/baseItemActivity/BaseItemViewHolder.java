@@ -48,7 +48,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class BaseItemViewHolder extends RecyclerView.ViewHolder {
+public class BaseItemViewHolder extends RecyclerView.ViewHolder {
     private static final String LOG_TAG = "BaseItemViewHolder";
     private static final boolean DEBUG = false;
 

@@ -409,6 +409,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
         mService.deleteBackups((errorCode, ignored) -> {
             if (errorCode == BaseService.ErrorCode.SUCCESS && !isDestroyed()) {
                 mBackupInfos.clear();
+                getTwinmeApplication().clearLastBackupDate();
                 runOnUiThread(this::updateViews);
             }
         });

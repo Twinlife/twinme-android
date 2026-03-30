@@ -25,7 +25,6 @@ public class OnColorTouchListener implements RecyclerView.OnItemTouchListener, G
     private final GestureDetector mGestureDetector;
     private boolean mSingleTap;
     private final OnColorObserver mObserver;
-    private final RecyclerView mRecyclerView;
 
     public interface OnColorObserver {
         /**
@@ -44,7 +43,6 @@ public class OnColorTouchListener implements RecyclerView.OnItemTouchListener, G
         }
 
         mObserver = observer;
-        mRecyclerView = recyclerView;
         mGestureDetector = new GestureDetector(listActivity, this);
     }
 

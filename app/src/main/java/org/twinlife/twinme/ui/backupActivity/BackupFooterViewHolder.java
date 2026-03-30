@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -58,7 +57,7 @@ public class BackupFooterViewHolder extends RecyclerView.ViewHolder {
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable backupViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         backupViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mActionView, backupViewBackground);
+        mActionView.setBackground(backupViewBackground);
 
         layoutParams = mActionView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

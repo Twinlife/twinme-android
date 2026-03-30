@@ -393,7 +393,13 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
         if (icsFile != null) {
             String formatDate = "yyMMdd";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-            Uri uriSchedule = NamedFileProvider.getInstance().getUriForFile(this, icsFile, "twinme_call" + "-" + simpleDateFormat.format(new java.util.Date()) + ".ics");
+
+            String callType = "-call-";
+            if (mCallReceiver.isConference()) {
+                callType = "-meet-";
+            }
+
+            Uri uriSchedule = NamedFileProvider.getInstance().getUriForFile(this, icsFile, "twinme" + callType + simpleDateFormat.format(new java.util.Date()) + ".ics");
             uris.add(uriSchedule);
         }
 

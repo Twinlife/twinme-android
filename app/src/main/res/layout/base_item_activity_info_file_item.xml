@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/base_info_activity_info_file_item_icon_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/notification_file_message" />
 
         <TextView
             android:id="@+id/base_info_activity_info_file_item_text_view"
@@ -14,10 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:textColor="?attr/font_default_color"
-            app:layout_marginLeftPercent="3.47%"
-            app:layout_marginStartPercent="3.47%" />
+            android:layout_toEndOf="@+id/base_info_activity_info_file_item_icon_view" />
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
-
-
+    </RelativeLayout>
 </RelativeLayout>

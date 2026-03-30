@@ -35,7 +35,6 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final String LOG_TAG = "ItemListAdapter";
     private static final boolean DEBUG = false;
 
-    private static final int BACKGROUND_COLOR_GREY = Color.argb(64, 195, 212, 231);
     private final BaseItemActivity mBaseItemActivity;
     private final List<Item> mItems;
     private final Item mItem;
@@ -122,7 +121,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
             MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
-            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, true, onCheckedChangeListener);
+            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
         } else if (item.getType() == Item.ItemType.INFO_SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             InfoSectionItem infoSectionItem = (InfoSectionItem) item;

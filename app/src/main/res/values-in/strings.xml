@@ -40,6 +40,9 @@
     <string name="application_description">Deskripsi</string>
     <string name="application_display_all">Tampilkan semua</string>
     <string name="application_do_not_display">Jangan tampilkan lagi</string>
+    <string name="application_duration_hour">j</string>
+    <string name="application_duration_minute">mnt</string>
+    <string name="application_duration_second">dtk</string>
     <string name="application_edit">Edit</string>
     <string name="application_error_code">Kode kesalahan: %1$s</string>
     <string name="application_error_file_not_found">File tidak ditemukan.</string>
@@ -718,6 +721,10 @@
     <string name="info_item_activity_deleted">Dihapus oleh penerima:</string>
     <string name="info_item_activity_may_be_copied">Dapat disalin/disimpan/dibagikan…</string>
     <string name="info_item_activity_may_not_be_copied">Tidak dapat disalin/disimpan/dibagikan…</string>
+    <string name="info_item_activity_not_delivered">Tidak terkirim</string>
+    <string name="info_item_activity_not_delivered_expiration">Pesan tidak dapat dikirim setelah 15 hari.</string>
+    <string name="info_item_activity_not_delivered_storage">Perangkat penerima tidak memiliki cukup ruang penyimpanan untuk menerima konten ini.</string>
+    <string name="info_item_activity_not_delivered_update">Aplikasi penerima perlu diperbarui.</string>
     <string name="info_item_activity_reactions">Reaksi</string>
     <string name="info_item_activity_received">Diterima:</string>
     <string name="info_item_activity_seen">Dilihat:</string>
@@ -860,7 +867,7 @@
     <string name="personalization_activity_font_large">Besar</string>
     <string name="personalization_activity_font_small">Kecil</string>
     <string name="personalization_activity_haptic_feedback">Umpan balik haptik</string>
-    <string name="personalization_activity_haptic_feedback_message">Perasaan taktil saat disentuh.</string>
+    <string name="personalization_activity_haptic_feedback_message">Perasaan taktil saat disentuh</string>
     <string name="personalization_activity_menu_choose_color">Warna default</string>
     <string name="personalization_activity_menu_enter_color">Kode warna</string>
     <string name="personalization_activity_mode">Mode</string>

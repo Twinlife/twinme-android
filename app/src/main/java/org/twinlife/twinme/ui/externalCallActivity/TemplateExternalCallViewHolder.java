@@ -56,7 +56,7 @@ public class TemplateExternalCallViewHolder extends RecyclerView.ViewHolder {
     private final View mNoAvatarView;
     private final ImageView mIconView;
 
-    private GradientDrawable mNoAvatarGradientDrawable;
+    private final GradientDrawable mNoAvatarGradientDrawable;
 
     TemplateExternalCallViewHolder(@NonNull View view) {
 

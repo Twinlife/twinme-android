@@ -24,7 +24,7 @@ import org.twinlife.twinme.utils.SwitchView;
 
 public class MenuSendOptionViewHolder extends RecyclerView.ViewHolder {
 
-    private static final float DESIGN_ICON_SIZE = 42f;
+    private static final float DESIGN_ICON_SIZE = 36f;
     private static final float DESIGN_ICON_MARGIN = 34f;
 
     private final SwitchView mSwitchView;

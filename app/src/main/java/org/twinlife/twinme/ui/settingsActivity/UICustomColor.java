@@ -11,14 +11,12 @@ package org.twinlife.twinme.ui.settingsActivity;
 public class UICustomColor {
     private static int sItemId = 0;
 
-    private final long mItemId;
-
     private final String mColor;
 
     private boolean mSelected;
 
     public UICustomColor(String color) {
-        mItemId = sItemId++;
+        long mItemId = sItemId++;
 
         mColor = color;
         mSelected = false;

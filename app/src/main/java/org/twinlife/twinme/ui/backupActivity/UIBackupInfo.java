@@ -40,6 +40,6 @@ public class UIBackupInfo {
 
     public String formatDate(Context context) {
 
-        return CommonUtils.formatBackupInterval(context, mBackupDate);
+        return CommonUtils.formatBackupInterval(context, mBackupDate, false);
     }
 }

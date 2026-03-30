@@ -41,6 +41,9 @@
     <string name="application_description">Beskrivelse</string>
     <string name="application_display_all">Vis alle</string>
     <string name="application_do_not_display">Vis ikke igen</string>
+    <string name="application_duration_hour">t</string>
+    <string name="application_duration_minute">min</string>
+    <string name="application_duration_second">sek</string>
     <string name="application_edit">Redigere</string>
     <string name="application_error_code">Fejlkode: %1$s</string>
     <string name="application_error_file_not_found">Filen blev ikke fundet.</string>
@@ -718,6 +721,10 @@
     <string name="info_item_activity_deleted">Slettet af modtager:</string>
     <string name="info_item_activity_may_be_copied">Kan kopieres/gemmes/deles…</string>
     <string name="info_item_activity_may_not_be_copied">Må ikke kopieres/gemmes/deles…</string>
+    <string name="info_item_activity_not_delivered">Ikke leveret</string>
+    <string name="info_item_activity_not_delivered_expiration">Beskeden kunne ikke leveres efter 15 dage.</string>
+    <string name="info_item_activity_not_delivered_storage">Modtagerens enhed har ikke nok lagerplads til at modtage dette indhold.</string>
+    <string name="info_item_activity_not_delivered_update">Modtagerens app skal opdateres.</string>
     <string name="info_item_activity_reactions">Reaktioner</string>
     <string name="info_item_activity_received">Modtaget:</string>
     <string name="info_item_activity_seen">Set:</string>
@@ -860,7 +867,7 @@
     <string name="personalization_activity_font_large">Stor</string>
     <string name="personalization_activity_font_small">Lille</string>
     <string name="personalization_activity_haptic_feedback">Haptisk feedback</string>
-    <string name="personalization_activity_haptic_feedback_message">Taktil følelse ved berøring.</string>
+    <string name="personalization_activity_haptic_feedback_message">Taktil følelse ved berøring</string>
     <string name="personalization_activity_menu_choose_color">Standardfarver</string>
     <string name="personalization_activity_menu_enter_color">Farvekode</string>
     <string name="personalization_activity_mode">Mode</string>

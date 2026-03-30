@@ -66,7 +66,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
 
     protected boolean mCanSave = false;
 
-    protected boolean mUIInitialized = false;
+    protected final boolean mUIInitialized = false;
     protected boolean mUIPostInitialized = false;
 
     //

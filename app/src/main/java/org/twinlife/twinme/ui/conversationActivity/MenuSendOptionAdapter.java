@@ -34,7 +34,6 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static final int POSITION_ALLOW_EPHEMERAL = 0;
     private int POSITION_TIMEOUT = 1;
-    private int POSITION_ALLOW_COPY = 2;
 
     private static final int CHECKBOX = 0;
     private static final int VALUE = 1;
@@ -53,6 +52,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         mTimeout = timeout;
         mForceDarkMode = forceDarkMode;
 
+        int POSITION_ALLOW_COPY = 2;
         if (mAllowEphemeral) {
             ITEM_COUNT = 3;
             POSITION_TIMEOUT = 1;

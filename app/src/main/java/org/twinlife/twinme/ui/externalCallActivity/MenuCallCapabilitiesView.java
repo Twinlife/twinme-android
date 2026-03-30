@@ -301,7 +301,7 @@ public class MenuCallCapabilitiesView extends RelativeLayout {
             Log.d(LOG_TAG, "getActionViewHeight");
         }
 
-        int actionViewHeight = (int) Design.SECTION_HEIGHT * mMenuCallCapabilitiesAdapter.getItemCount();
+        int actionViewHeight = Design.SECTION_HEIGHT * mMenuCallCapabilitiesAdapter.getItemCount();
 
         int bottomInset = 0;
         View rootView = ((Activity) getContext()).getWindow().getDecorView();

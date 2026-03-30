@@ -101,7 +101,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             Log.d(LOG_TAG, "openMenu");
         }
 
-        if (mRoom == null) {
+        if (mRoom == null || mRoom.getIdentityTwincodeOutbound() == null) {
             return;
         }
 

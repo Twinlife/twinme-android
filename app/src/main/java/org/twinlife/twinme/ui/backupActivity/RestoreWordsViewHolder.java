@@ -38,7 +38,7 @@ public class RestoreWordsViewHolder  extends RecyclerView.ViewHolder {
     private static final String LOG_TAG = "RestoreWordsViewHolder";
     private static final boolean DEBUG = false;
 
-    private class CustomGridLayoutManager extends GridLayoutManager {
+    private static class CustomGridLayoutManager extends GridLayoutManager {
 
         public CustomGridLayoutManager(Context context, int lineCount) {
             super(context, lineCount);

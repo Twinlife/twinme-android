@@ -29,7 +29,6 @@ import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.ui.users.UIContactViewHolder;
 import org.twinlife.twinme.ui.users.UIOriginator;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 

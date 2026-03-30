@@ -41,6 +41,9 @@
     <string name="application_description">描述</string>
     <string name="application_display_all">全部显示</string>
     <string name="application_do_not_display">不再显示</string>
+    <string name="application_duration_hour">小时</string>
+    <string name="application_duration_minute">分</string>
+    <string name="application_duration_second">秒</string>
     <string name="application_edit">编辑</string>
     <string name="application_error_code">错误代码：%1$s</string>
     <string name="application_error_file_not_found">未找到该文件。</string>
@@ -283,7 +286,7 @@
     <string name="backup_activity_content_info">备份不包括对话、群组、通知和历史记录。</string>
     <string name="backup_activity_error_words">输入的单词不允许解密备份。</string>
     <string name="backup_activity_generate_word">生成</string>
-    <string name="backup_activity_last_backup">上的最后备份％@</string>
+    <string name="backup_activity_last_backup">上的最后备份%1$s</string>
     <string name="backup_activity_new_backup">新备份</string>
     <string name="backup_activity_onboarding">请对帐户数据（“Spaces”、个人资料、联系人、“click-to-call”）进行加密备份，以便将其恢复到此设备或其他设备。</string>
     <string name="backup_activity_reminder">您上次备份的创建时间已超过 30 天。</string>
@@ -719,6 +722,10 @@
     <string name="info_item_activity_deleted">由接收者删除：</string>
     <string name="info_item_activity_may_be_copied">可以复制/保存/共享......</string>
     <string name="info_item_activity_may_not_be_copied">不得复制/保存/共享......</string>
+    <string name="info_item_activity_not_delivered">未送达</string>
+    <string name="info_item_activity_not_delivered_expiration">15天后，信息仍无法送达。</string>
+    <string name="info_item_activity_not_delivered_storage">收件人的设备存储空间不足，无法接收此内容。</string>
+    <string name="info_item_activity_not_delivered_update">收件人的应用需要更新。</string>
     <string name="info_item_activity_reactions">反应</string>
     <string name="info_item_activity_received">收稿日期：</string>
     <string name="info_item_activity_seen">看：</string>

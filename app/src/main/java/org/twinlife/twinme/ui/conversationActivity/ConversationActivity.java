@@ -488,7 +488,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     @Nullable
     private Item mEditItem;
     private boolean mIsMenuOpen = false;
-    private int mItemListViewHeight;
     private int mOpenItemIndex = -1;
     private int mScrollIndicatorCount = 0;
 
@@ -2516,7 +2515,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         }
 
                         if (itemIndex == -1) {
-                            addCallDescriptor((CallDescriptor) descriptor);
+                            CallDescriptor callDescriptor = (CallDescriptor) descriptor;
+                            addCallDescriptor(callDescriptor);
+                            if (callDescriptor.getTerminateReason() != null) {
+                                scrollToBottom();
+                            }
                         } else {
                             Item item = mItems.get(itemIndex);
 
@@ -3732,7 +3735,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         mUIPostInitialized = true;
-        mItemListViewHeight = mItemListView.getHeight();
+        int mItemListViewHeight = mItemListView.getHeight();
 
         if (mOpenItemIndex != -1) {
             mItemListView.scrollToPosition(mOpenItemIndex);
@@ -4234,6 +4237,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private void addCallDescriptor(CallDescriptor callDescriptor) {
         if (DEBUG) {
             Log.d(LOG_TAG, "addCallDescriptor: callDescriptor=" + callDescriptor);
+        }
+
+        if (callDescriptor.getTerminateReason() == null) {
+            return;
         }
 
         Item callItem = callDescriptor.isIncoming() ? new PeerCallItem(callDescriptor) : new CallItem(callDescriptor);
@@ -5386,7 +5393,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             startActivity(ConversationFilesActivity.class, Intents.INTENT_GROUP_ID, mGroupId);
         }
     }
-
+    
     private void onManageConversationClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onManageConversationClick");

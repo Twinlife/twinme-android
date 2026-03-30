@@ -80,6 +80,7 @@ public class AddGroupMemberListAdapter extends UIOriginatorListAdapter<UIContact
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
 
+        //noinspection rawtypes
         UIContactViewHolder uiContactViewHolder = (UIContactViewHolder) viewHolder;
         if (mOffset == 1 && position == 0) {
             uiContactViewHolder.onBind(mListActivity, mCurrentAvatar);

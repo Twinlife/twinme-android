@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 
 public class EditProfileActivity extends AbstractEditActivity implements EditIdentityService.Observer {
@@ -81,7 +82,6 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
     @Nullable
     private String mDescription;
     private boolean mDisableUpdated = false;
-    private boolean mUpdated = false;
     private Bitmap mAvatar;
     private Bitmap mUpdatedProfileAvatar;
     private Bitmap mUpdatedProfileLargeAvatar;
@@ -604,11 +604,11 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         String updatedIdentityDescription = mDescriptionView.getText().toString().trim();
 
-        boolean updated = !updatedIdentityName.equals(mName);
+        boolean updated = updatedIdentityName != null && !updatedIdentityName.equals(mName);
         updated = updated || !updatedIdentityDescription.equals(mDescription);
         updated = updated || mUpdatedProfileAvatar != null;
 
-        if (updated) {
+        if (updated && updatedIdentityName != null) {
             Bitmap avatar = mUpdatedProfileAvatar;
             if (avatar == null) {
                 avatar = mAvatar;
@@ -725,12 +725,11 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             return;
         }
 
+        boolean mUpdated = false;
         if (mProfile == null) {
             String name = mNameView.getText().toString().trim();
             if (!name.isEmpty() && mUpdatedProfileAvatar != null) {
                 mUpdated = true;
-            } else {
-                mUpdated = false;
             }
         } else {
             String updatedIdentityName = mNameView.getText().toString().trim();
@@ -740,7 +739,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
             String updatedIdentityDescription = mDescriptionView.getText().toString().trim();
 
-            boolean updated = !updatedIdentityName.equals(mName);
+            boolean updated = updatedIdentityName != null && !updatedIdentityName.equals(mName);
             updated = updated || !updatedIdentityDescription.equals(mDescription);
             updated = updated || mUpdatedProfileAvatar != null;
 

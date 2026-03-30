@@ -15,7 +15,6 @@ import androidx.annotation.Nullable;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.LinkValidity;
-import org.twinlife.twinme.models.schedule.Date;
 import org.twinlife.twinme.models.schedule.Time;
 import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.ui.externalCallActivity.UIConfigExternalCall.ConfigExternalCallTypeCall;
@@ -188,7 +187,7 @@ public class UITemplateExternalCall extends UITemplateItem {
                 mAllowVideoCall = false;
                 mAllowGroupCall = false;
                 mScheduleStartTime = Time.from("10:00");
-                mScheduleEndTime = Time.from("18:00");;
+                mScheduleEndTime = Time.from("18:00");
                 mScheduleDays = new ArrayList<>(Arrays.asList(
                         WeeklyTimeRange.DayOfWeek.MONDAY,
                         WeeklyTimeRange.DayOfWeek.TUESDAY,
