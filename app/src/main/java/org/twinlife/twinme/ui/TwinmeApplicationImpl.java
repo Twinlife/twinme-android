@@ -553,6 +553,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public boolean hapticFeedbackModeEnable() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "hapticFeedbackModeEnable");
+        }
+
+        return Settings.hapticFeedbackEnable.getBoolean();
+    }
+
+    @Override
     public int defaultTab() {
         if (DEBUG) {
             Log.d(LOG_TAG, "defaultTab");
@@ -867,6 +876,18 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     public void setLastBackupDate() {
 
         Settings.lastBackupDate.setLong(new Date().getTime() / 1000).save();
+    }
+
+    @Override
+    public long getLastBackupDate() {
+
+        return Settings.lastBackupDate.getLong();
+    }
+
+    @Override
+    public void clearLastBackupDate() {
+
+        Settings.lastBackupDate.setLong(0).save();
     }
 
     @Override

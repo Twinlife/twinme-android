@@ -22,8 +22,6 @@ public class DebugSettingsActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "DebugSettingsActivity";
     private static final boolean DEBUG = false;
 
-    private DebugSettingsAdapter mDebugSettingsAdapter;
-
     //
     // Override TwinmeActivityImpl methods
     //
@@ -69,7 +67,7 @@ public class DebugSettingsActivity extends AbstractTwinmeActivity {
 
         applyInsets(R.id.debug_settings_activity_layout, R.id.debug_settings_activity_tool_bar, R.id.debug_settings_activity_list_view, Design.TOOLBAR_COLOR, false);
 
-        mDebugSettingsAdapter = new DebugSettingsAdapter(this);
+        DebugSettingsAdapter mDebugSettingsAdapter = new DebugSettingsAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView settingsRecyclerView = findViewById(R.id.debug_settings_activity_list_view);
         settingsRecyclerView.setLayoutManager(linearLayoutManager);

@@ -22,6 +22,8 @@ import org.twinlife.twinme.utils.CommonUtils;
 public class InfoIconItemViewHolder extends BaseItemViewHolder {
 
     private static final float DESIGN_ITEM_VIEW_HEIGHT = 120f;
+    private static final float DESIGN_ICON_SIZE = 36f;
+    private static final float DESIGN_ICON_MARGIN = 34f;
     private static final int ITEM_VIEW_HEIGHT;
 
     static {
@@ -45,6 +47,14 @@ public class InfoIconItemViewHolder extends BaseItemViewHolder {
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mIconView = view.findViewById(R.id.info_icon_item_image_view);
+
+        layoutParams = mIconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mIconView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
 
         mDateTextView = view.findViewById(R.id.info_icon_item_date_view);
         Design.updateTextFont(mDateTextView, Design.FONT_REGULAR32);

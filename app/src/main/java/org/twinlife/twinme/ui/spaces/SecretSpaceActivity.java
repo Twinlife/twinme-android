@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -25,7 +25,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Space;
@@ -86,7 +85,7 @@ public class SecretSpaceActivity extends AbstractTwinmeActivity implements Secre
 
         mSecretSpace = null;
 
-        if (spaces.size() > 0) {
+        if (!spaces.isEmpty()) {
             mSecretSpace = spaces.get(0);
         }
     }
@@ -134,13 +133,13 @@ public class SecretSpaceActivity extends AbstractTwinmeActivity implements Secre
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable popupViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         popupViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
-        ViewCompat.setBackground(contentView, popupViewBackground);
+        contentView.setBackground(popupViewBackground);
 
         View nameContentView = findViewById(R.id.secret_space_activity_content_name_view);
 
         ShapeDrawable colorContentViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         colorContentViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(nameContentView, colorContentViewBackground);
+        nameContentView.setBackground(colorContentViewBackground);
 
         layoutParams = nameContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -175,7 +174,7 @@ public class SecretSpaceActivity extends AbstractTwinmeActivity implements Secre
 
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(Design.BLUE_NORMAL);
-        ViewCompat.setBackground(sendClickableView, saveViewBackground);
+        sendClickableView.setBackground(saveViewBackground);
 
         TextView saveTextView = findViewById(R.id.secret_space_activity_send_text_view);
         saveTextView.setTypeface(Design.FONT_BOLD28.typeface);
@@ -190,7 +189,7 @@ public class SecretSpaceActivity extends AbstractTwinmeActivity implements Secre
 
         ShapeDrawable cancelViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         cancelViewBackground.getPaint().setColor(Design.BUTTON_RED_COLOR);
-        ViewCompat.setBackground(cancelView, cancelViewBackground);
+        cancelView.setBackground(cancelViewBackground);
 
         TextView cancelTextView = findViewById(R.id.secret_space_activity_cancel_text_view);
         cancelTextView.setTypeface(Design.FONT_BOLD28.typeface);

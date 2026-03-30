@@ -40,7 +40,7 @@ public class CustomAppearance {
     public static final String PROPERTY_DARK_MESSAGE_TEXT_COLOR = "DarkMessageTextColor";
     public static final String PROPERTY_DARK_PEER_MESSAGE_TEXT_COLOR = "DarkPeerMessageTextColor";
 
-    SpaceSettings mSpaceSettings;
+    final SpaceSettings mSpaceSettings;
 
     DisplayMode mDisplayMode;
 

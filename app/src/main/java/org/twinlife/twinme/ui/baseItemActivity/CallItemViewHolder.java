@@ -161,16 +161,16 @@ class CallItemViewHolder extends ItemViewHolder {
             mCallTypeView.setText(getString(R.string.conversation_activity_audio_call));
         }
 
+        if (callDescriptor.getTerminateReason() != null) {
+            int duration = (int) callDescriptor.getDuration() / 1000;
+            mCallDurationView.setText(Utils.formatCallDuration(itemView.getContext(), duration));
+        } else {
+            mCallDurationView.setText("");
+        }
+
         getBaseItemActivity().getContactAvatar(null, (Bitmap avatar) -> {
             if (avatar != null) {
                 mCallAvatarImageView.setImageBitmap(avatar);
-            }
-
-            if (callDescriptor.getTerminateReason() != null) {
-                int duration = (int) callDescriptor.getDuration() / 1000;
-                mCallDurationView.setText(Utils.formatInterval(duration, "mm:ss"));
-            } else {
-                mCallDurationView.setText("");
             }
         });
     }

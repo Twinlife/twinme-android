@@ -163,7 +163,7 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         } else {
             mCallDurationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
             int duration = (int) callDescriptor.getDuration() / 1000;
-            mCallDurationView.setText(Utils.formatInterval(duration, "mm:ss"));
+            mCallDurationView.setText(Utils.formatCallDuration(itemView.getContext(), duration));
         }
 
         getBaseItemActivity().getContactAvatar(null, (Bitmap avatar) -> {

@@ -1,5 +1,6 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2026
+ *  twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -34,7 +35,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.ViewCompat;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -510,7 +510,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
         ShapeDrawable containerViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         containerViewBackground.getPaint().setColor(DESIGN_ACTION_VIEW_COLOR);
-        ViewCompat.setBackground(containerView, containerViewBackground);
+        containerView.setBackground(containerViewBackground);
 
         mCardView = findViewById(R.id.call_activity_card_view);
         mCardView.setRadius(radius);

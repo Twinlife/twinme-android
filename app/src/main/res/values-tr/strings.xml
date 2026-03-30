@@ -42,6 +42,9 @@
     <string name="application_description">Açıklama</string>
     <string name="application_display_all">Tümünü göster</string>
     <string name="application_do_not_display">Artık gösterme</string>
+    <string name="application_duration_hour">sa</string>
+    <string name="application_duration_minute">dk</string>
+    <string name="application_duration_second">sn</string>
     <string name="application_edit">Düzenle</string>
     <string name="application_error_code">Hata kodu: %1$s</string>
     <string name="application_error_file_not_found">Dosya bulunamadı.</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s bu ilişkiyi kaldırdı</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s cevap vermiyor</string>
     <string name="info_item_activity_deleted">Alıcı tarafından silindi:</string>
+    <string name="info_item_activity_location">Konum</string>
+    <string name="info_item_activity_location_map_error">Cihazınız %1$s konumunu gösteren haritayı görüntüleyemiyor.</string>
     <string name="info_item_activity_may_be_copied">Kopyalanabilir/kaydedilebilir/paylaşılabilir…</string>
     <string name="info_item_activity_may_not_be_copied">Kopyalanamaz/kaydedilemez/paylaşılamaz…</string>
+    <string name="info_item_activity_not_delivered">Teslim edilemedi</string>
+    <string name="info_item_activity_not_delivered_expiration">Mesaj 15 gün sonra teslim edilemedi.</string>
+    <string name="info_item_activity_not_delivered_storage">Alıcının cihazında bu içeriği almak için yeterli depolama alanı yok.</string>
+    <string name="info_item_activity_not_delivered_update">Alıcının uygulamasının güncellenmesi gerekiyor.</string>
     <string name="info_item_activity_reactions">Tepkiler</string>
     <string name="info_item_activity_received">Alınan:</string>
     <string name="info_item_activity_seen">Görülme:</string>
@@ -930,7 +939,7 @@
     <string name="personalization_activity_font_large">Büyük</string>
     <string name="personalization_activity_font_small">Küçük</string>
     <string name="personalization_activity_haptic_feedback">Dokunsal geribildirim</string>
-    <string name="personalization_activity_haptic_feedback_message">Dokunduğunuzda dokunma hissi.</string>
+    <string name="personalization_activity_haptic_feedback_message">Dokunduğunuzda dokunma hissi</string>
     <string name="personalization_activity_menu_choose_color">Varsayılan renkler</string>
     <string name="personalization_activity_menu_enter_color">Renk kodu</string>
     <string name="personalization_activity_mode">Kip</string>

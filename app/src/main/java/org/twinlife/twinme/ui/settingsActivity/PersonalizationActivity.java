@@ -153,6 +153,8 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
         }
     }
 
+
+
     @Override
     public void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value) {
         if (DEBUG) {
@@ -236,15 +238,6 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
                 getTwinmeApplication().updateFontSize(fontSize);
                 Design.setupFont(PersonalizationActivity.this, getTwinmeApplication());
                 updateColor();
-                mPersonalizationListAdapter.updateColor();
-            }
-
-            @Override
-            public void onUpdateHapticFeedback(TwinmeApplication.HapticFeedbackMode hapticFeedbackMode) {
-
-                getTwinmeApplication().updateHapticFeedbackMode(hapticFeedbackMode);
-
-                hapticFeedback();
                 mPersonalizationListAdapter.updateColor();
             }
 

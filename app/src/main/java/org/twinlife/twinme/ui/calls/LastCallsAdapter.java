@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2020 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -17,12 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 
 import java.util.List;
 
-public class LastCallsAdapter extends RecyclerView.Adapter<CallViewHolder> {
+public class LastCallsAdapter extends RecyclerView.Adapter<LastCallViewHolder> {
     private static final String LOG_TAG = "LastCallsAdapter";
     private static final boolean DEBUG = false;
 
@@ -33,9 +32,6 @@ public class LastCallsAdapter extends RecyclerView.Adapter<CallViewHolder> {
     private final AbstractTwinmeActivity mListActivity;
 
     @NonNull
-    private final AbstractTwinmeService mService;
-
-    @NonNull
     private final List<UICall> mUICalls;
 
     public interface OnLastCallClickListener {
@@ -43,10 +39,8 @@ public class LastCallsAdapter extends RecyclerView.Adapter<CallViewHolder> {
         void onCallClick(int position);
     }
 
-    public LastCallsAdapter(@NonNull AbstractTwinmeActivity listActivity, @NonNull AbstractTwinmeService service,
-                        @NonNull List<UICall> uiCalls, @NonNull OnLastCallClickListener onCallClickListener) {
+    public LastCallsAdapter(@NonNull AbstractTwinmeActivity listActivity, @NonNull List<UICall> uiCalls, @NonNull OnLastCallClickListener onCallClickListener) {
 
-        mService = service;
         mOnCallClickListener = onCallClickListener;
         mListActivity = listActivity;
         mUICalls = uiCalls;
@@ -55,15 +49,15 @@ public class LastCallsAdapter extends RecyclerView.Adapter<CallViewHolder> {
 
     @NonNull
     @Override
-    public CallViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LastCallViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onCreateViewHolder: parent=" + parent + " viewType=" + viewType);
         }
 
         LayoutInflater inflater = mListActivity.getLayoutInflater();
-        View convertView = inflater.inflate(R.layout.calls_fragment_call_item, parent, false);
+        View convertView = inflater.inflate(R.layout.last_calls_activity_item, parent, false);
 
-        CallViewHolder callViewHolder = new CallViewHolder(mService, convertView);
+        LastCallViewHolder callViewHolder = new LastCallViewHolder(convertView);
         convertView.setOnClickListener(v -> {
             int position = callViewHolder.getBindingAdapterPosition();
             if (position >= 0) {
@@ -74,7 +68,7 @@ public class LastCallsAdapter extends RecyclerView.Adapter<CallViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CallViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull LastCallViewHolder viewHolder, int position) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onBindViewHolder: viewHolder=" + viewHolder + " position=" + position);
         }
@@ -96,7 +90,7 @@ public class LastCallsAdapter extends RecyclerView.Adapter<CallViewHolder> {
     }
 
     @Override
-    public void onViewRecycled(@NonNull CallViewHolder viewHolder) {
+    public void onViewRecycled(@NonNull LastCallViewHolder viewHolder) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onViewRecycled: viewHolder=" + viewHolder);
         }

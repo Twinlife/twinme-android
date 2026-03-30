@@ -140,16 +140,6 @@ public class AbstractGroupActivity extends AbstractTwinmeActivity implements Gro
     }
 
     @Override
-    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
-
-    }
-
-    @Override
-    public void onGetSpaceNotFound() {
-
-    }
-
-    @Override
     public void onErrorLimitReached() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onErrorLimitReached");

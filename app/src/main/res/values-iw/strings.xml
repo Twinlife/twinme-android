@@ -41,6 +41,9 @@
     <string name="application_description">תיאור</string>
     <string name="application_display_all">הצג הכל</string>
     <string name="application_do_not_display">אל תציג יותר</string>
+    <string name="application_duration_hour">ש׳</string>
+    <string name="application_duration_minute">ד׳</string>
+    <string name="application_duration_second">שנ׳</string>
     <string name="application_edit">לַעֲרוֹך</string>
     <string name="application_error_code">קוד שגיאה: %1$s</string>
     <string name="application_error_file_not_found">הקובץ לא נמצא.</string>
@@ -778,8 +781,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s הוסר מקשר זה</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s לא עונה</string>
     <string name="info_item_activity_deleted">נמחק על ידי הנמען:</string>
+    <string name="info_item_activity_location">מיקום</string>
+    <string name="info_item_activity_location_map_error">המכשיר שלך אינו יכול להציג את המפה עם המיקום של %1$s.</string>
     <string name="info_item_activity_may_be_copied">ניתן להעתיק/לשמור/לשתף…</string>
     <string name="info_item_activity_may_not_be_copied">לא ניתן להעתיק/לשמור/לשתף…</string>
+    <string name="info_item_activity_not_delivered">לא נמסר</string>
+    <string name="info_item_activity_not_delivered_expiration">לא ניתן היה לשלוח את ההודעה לאחר 15 ימים.</string>
+    <string name="info_item_activity_not_delivered_storage">במכשיר של הנמען אין מספיק שטח אחסון כדי לקבל תוכן זה.</string>
+    <string name="info_item_activity_not_delivered_update">יש לעדכן את האפליקציה של הנמען.</string>
     <string name="info_item_activity_reactions">תגובות</string>
     <string name="info_item_activity_received">התקבל:</string>
     <string name="info_item_activity_seen">נצפה:</string>
@@ -926,7 +935,7 @@
     <string name="personalization_activity_font_large">גדול</string>
     <string name="personalization_activity_font_small">קטן</string>
     <string name="personalization_activity_haptic_feedback">משוב מישוש</string>
-    <string name="personalization_activity_haptic_feedback_message">תחושת מישוש בעת מגע.</string>
+    <string name="personalization_activity_haptic_feedback_message">תחושת מישוש בעת מגע</string>
     <string name="personalization_activity_menu_choose_color">צבעי ברירת מחדל</string>
     <string name="personalization_activity_menu_enter_color">קוד צבע</string>
     <string name="personalization_activity_mode">צורה</string>

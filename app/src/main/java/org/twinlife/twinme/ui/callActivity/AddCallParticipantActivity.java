@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022-2025 twinlife SA.
+ *  Copyright (c) 2022-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -31,7 +31,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -391,7 +390,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(currentSpaceView, mGradientDrawable);
+        currentSpaceView.setBackground(mGradientDrawable);
 
         mNoSpaceAvatarView = findViewById(R.id.add_call_participant_activity_no_space_avatar_view);
 
@@ -399,7 +398,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         mNoSpaceAvatarGradientDrawable.mutate();
         mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
         mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(mNoSpaceAvatarView, mNoSpaceAvatarGradientDrawable);
+        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
 
         // List of contacts the user has.
         LinearLayoutManager uiContactLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

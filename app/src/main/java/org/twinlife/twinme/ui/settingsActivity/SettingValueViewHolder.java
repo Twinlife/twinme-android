@@ -124,7 +124,7 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         updateColor();
     }
 
-    public void onBind(String title, long value, boolean visible, Settings.IntConfig intConfig) {
+    public void onBind(String title, long value, boolean visible, Settings.IntConfig intConfig, Runnable runnable) {
 
         mIntConfig = intConfig;
 
@@ -132,6 +132,12 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         mValueView.setVisibility(View.VISIBLE);
         mSelectImageView.setVisibility(View.GONE);
         mValueView.setText(Utils.formatTimeout(mValueView.getContext(), value));
+
+        if (runnable != null) {
+            itemView.setOnClickListener(v -> runnable.run());
+        } else {
+            itemView.setOnClickListener(null);
+        }
 
         ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
         if (visible) {

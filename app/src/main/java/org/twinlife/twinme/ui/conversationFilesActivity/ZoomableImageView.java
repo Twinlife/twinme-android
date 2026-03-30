@@ -225,7 +225,7 @@ public class ZoomableImageView extends AppCompatImageView {
         }
 
         @Override
-        public void onScaleEnd(ScaleGestureDetector detector) {
+        public void onScaleEnd(@NonNull ScaleGestureDetector detector) {
 
             getParent().requestDisallowInterceptTouchEvent(false);
             mOnZoomImageTouchListener.onScaleEnd();

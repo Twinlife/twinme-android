@@ -42,6 +42,9 @@
     <string name="application_description">Descrição</string>
     <string name="application_display_all">Mostrar tudo</string>
     <string name="application_do_not_display">Não exibir mais</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">min</string>
+    <string name="application_duration_second">s</string>
     <string name="application_edit">Editar</string>
     <string name="application_error_code">Código de erro: %1$s</string>
     <string name="application_error_file_not_found">O ficheiro não foi encontrado.</string>
@@ -783,8 +786,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s removeu esta relação</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s não responde</string>
     <string name="info_item_activity_deleted">Excluído pelo destinatário:</string>
+    <string name="info_item_activity_location">Localização</string>
+    <string name="info_item_activity_location_map_error">O seu dispositivo não pode apresentar o mapa com a localização de %1$s.</string>
     <string name="info_item_activity_may_be_copied">Pode ser copiado/salvo/compartilhado…</string>
     <string name="info_item_activity_may_not_be_copied">Não pode ser copiado/salvo/compartilhado…</string>
+    <string name="info_item_activity_not_delivered">Não entregue</string>
+    <string name="info_item_activity_not_delivered_expiration">A mensagem não pôde ser entregue ao fim de 15 dias.</string>
+    <string name="info_item_activity_not_delivered_storage">O dispositivo do destinatário não tem espaço de armazenamento suficiente para receber este conteúdo.</string>
+    <string name="info_item_activity_not_delivered_update">A aplicação do destinatário precisa de ser atualizada.</string>
     <string name="info_item_activity_reactions">Reações</string>
     <string name="info_item_activity_received">Recebido:</string>
     <string name="info_item_activity_seen">Visto:</string>
@@ -931,7 +940,7 @@
     <string name="personalization_activity_font_large">Ampla</string>
     <string name="personalization_activity_font_small">Pequeno</string>
     <string name="personalization_activity_haptic_feedback">Feedback tátil</string>
-    <string name="personalization_activity_haptic_feedback_message">Sensação tátil ao tocar.</string>
+    <string name="personalization_activity_haptic_feedback_message">Sensação tátil ao tocar</string>
     <string name="personalization_activity_menu_choose_color">Cores padrão</string>
     <string name="personalization_activity_menu_enter_color">Código de cores</string>
     <string name="personalization_activity_mode">Modo</string>

@@ -321,7 +321,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
             Log.d(LOG_TAG, "onUIContactClick position=" + position);
         }
 
-        if (position >= 2 && (position - 2) < mUIContacts.size()) {
+        if (position >= 2 && (position - 2) < mUIContacts.size() && mTwinmeActivity != null) {
 
             InputMethodManager inputMethodManager = (InputMethodManager) mTwinmeActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputMethodManager != null && mSearchView != null) {

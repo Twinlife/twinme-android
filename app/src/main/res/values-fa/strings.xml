@@ -42,6 +42,9 @@
     <string name="application_description">شرح</string>
     <string name="application_display_all">نمایش همه</string>
     <string name="application_do_not_display">دیگر نمایش داده نشود</string>
+    <string name="application_duration_hour">ساعت</string>
+    <string name="application_duration_minute">دقیقه</string>
+    <string name="application_duration_second">ثانیه</string>
     <string name="application_edit">ویرایش</string>
     <string name="application_error_code">کد خطا: %1$s</string>
     <string name="application_error_file_not_found">فایل پیدا نشد</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s این رابطه را حذف کرد</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s جواب نمی دهد</string>
     <string name="info_item_activity_deleted">حذف شده توسط گیرنده:</string>
+    <string name="info_item_activity_location">مکان</string>
+    <string name="info_item_activity_location_map_error">دستگاه شما نمی‌تواند نقشه حاوی موقعیت %1$s را نمایش دهد.</string>
     <string name="info_item_activity_may_be_copied">ممکن است کپی / ذخیره / اشتراک گذاری…</string>
     <string name="info_item_activity_may_not_be_copied">ممکن نیست کپی / نجات / اشتراک گذاری…</string>
+    <string name="info_item_activity_not_delivered">تحویل داده نشد</string>
+    <string name="info_item_activity_not_delivered_expiration">پیام پس از ۱۵ روز تحویل داده نشد.</string>
+    <string name="info_item_activity_not_delivered_storage">دستگاه گیرنده فضای ذخیره‌سازی کافی برای دریافت این محتوا ندارد.</string>
+    <string name="info_item_activity_not_delivered_update">برنامه گیرنده باید به‌روزرسانی شود.</string>
     <string name="info_item_activity_reactions">واکنش ها</string>
     <string name="info_item_activity_received">اخذ شده:</string>
     <string name="info_item_activity_seen">مشاهده گردید:</string>
@@ -930,7 +939,7 @@
     <string name="personalization_activity_font_large">بزرگ</string>
     <string name="personalization_activity_font_small">کم اهمیت</string>
     <string name="personalization_activity_haptic_feedback">بازخورد لمسی</string>
-    <string name="personalization_activity_haptic_feedback_message">احساس لامسه هنگام لمس.</string>
+    <string name="personalization_activity_haptic_feedback_message">احساس لامسه هنگام لمس</string>
     <string name="personalization_activity_menu_choose_color">رنگهای پیش فرض</string>
     <string name="personalization_activity_menu_enter_color">کد رنگ</string>
     <string name="personalization_activity_mode">روش</string>

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -67,7 +66,7 @@ public class SpaceSideMenuViewHolder extends RecyclerView.ViewHolder {
         mSpaceGradientDrawable.mutate();
         mSpaceGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
         mSpaceGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(mSpaceView, mSpaceGradientDrawable);
+        mSpaceView.setBackground(mSpaceGradientDrawable);
 
         float corner = DESIGN_ITEM_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
         float[] radii = new float[8];
@@ -86,7 +85,7 @@ public class SpaceSideMenuViewHolder extends RecyclerView.ViewHolder {
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.getMainStyle());
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(mCurrentSpaceView, mGradientDrawable);
+        mCurrentSpaceView.setBackground(mGradientDrawable);
 
         mNotificationMarkView = view.findViewById(R.id.side_menu_space_item_notitification_view);
         mNotificationMarkView.setVisibility(View.INVISIBLE);

@@ -608,10 +608,23 @@ public class VoiceRecorderMessageView extends PercentRelativeLayout implements A
             Log.d(LOG_TAG, "onRecordingError errorCode=" + errorCode + " exception=" + exception);
         }
 
-        String toastMessage = mConversationActivity.getString(R.string.conversation_activity_audio_message) + " " + mConversationActivity.getString(R.string.application_operation_failure);
-        Toast.makeText(mConversationActivity, toastMessage, Toast.LENGTH_SHORT).show();
+        if (errorCode != AudioRecorder.ErrorCode.EMPTY_FILE) {
 
-        mConversationActivity.getTwinmeContext().assertion(ApplicationAssertPoint.AUDIO_RECORD_ERROR, AssertPoint.create(errorCode));
+            String toastMessage = mConversationActivity.getString(R.string.conversation_activity_audio_message) + " " + mConversationActivity.getString(R.string.application_operation_failure);
+            boolean assertion = true;
+            if (errorCode == AudioRecorder.ErrorCode.NO_STORAGE_SPACE) {
+                assertion = false;
+                toastMessage = mConversationActivity.getString(R.string.conversation_activity_audio_message) + " " + mConversationActivity.getString(R.string.application_error_no_storage_space);
+            }
+
+            Toast.makeText(mConversationActivity, toastMessage, Toast.LENGTH_SHORT).show();
+
+            if (assertion) {
+                mConversationActivity.getTwinmeContext().assertion(ApplicationAssertPoint.AUDIO_RECORD_ERROR, AssertPoint.create(errorCode));
+            }
+        }
+
+
         mConversationActivity.showProgressBar(false);
 
         releaseRecorder();

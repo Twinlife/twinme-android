@@ -25,6 +25,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.AnnotationInfoViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.MenuSendOptionViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
 import java.util.Collections;
@@ -35,7 +36,6 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final String LOG_TAG = "ItemListAdapter";
     private static final boolean DEBUG = false;
 
-    private static final int BACKGROUND_COLOR_GREY = Color.argb(64, 195, 212, 231);
     private final BaseItemActivity mBaseItemActivity;
     private final List<Item> mItems;
     private final Item mItem;
@@ -122,7 +122,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
             MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
-            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, true, onCheckedChangeListener);
+            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
         } else if (item.getType() == Item.ItemType.INFO_SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             InfoSectionItem infoSectionItem = (InfoSectionItem) item;
@@ -253,8 +253,13 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             convertView = inflater.inflate(R.layout.base_item_activity_location_item, parent, false);
             return new LocationItemViewHolder(mBaseItemActivity, convertView, false, false);
         } else if (viewType == Item.ItemType.PEER_LOCATION.ordinal()) {
-            convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
-            return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, false, false);
+            if (CommonUtils.isGooglePlayServicesAvailable(mBaseItemActivity)) {
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
+                return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, false, false);
+            } else {
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_location_coordinate_item, parent, false);
+                return new PeerLocationCoordinateItemViewHolder(mBaseItemActivity, convertView, true, true);
+            }
         } else if (viewType == Item.ItemType.INFO_EPHEMERAL.ordinal() || viewType == Item.ItemType.INFO_DELETED.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_info_icon_item, parent, false);
             return new InfoIconItemViewHolder(mBaseItemActivity, convertView);

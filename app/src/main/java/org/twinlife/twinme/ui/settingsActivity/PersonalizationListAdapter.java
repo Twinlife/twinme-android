@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.FontSize;
-import org.twinlife.twinme.ui.TwinmeApplication;
+import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.ui.spaces.AppearanceColorViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
@@ -34,9 +35,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         void onUpdateDisplayMode(DisplayMode displayMode);
 
         void onUpdateFontSize(FontSize fontSize);
-
-        void onUpdateHapticFeedback(TwinmeApplication.HapticFeedbackMode hapticFeedbackMode);
-
+        
         void onUpdateMainColor();
 
         void onUpdateConversationColor();
@@ -46,7 +45,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private final OnPersonalizationClickListener mOnPersonalizationClickListener;
 
-    private final static int ITEM_COUNT = 19;
+    private final static int ITEM_COUNT = 16;
 
     private static final int SECTION_INFO = 0;
     private static final int SECTION_DEFAULT_TAB = 1;
@@ -65,11 +64,8 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
     private static final int POSITION_FONT_SMALL = 11;
     private static final int POSITION_FONT_LARGE = 12;
     private static final int POSITION_FONT_EXTRA_LARGE = 13;
-    private static final int POSITION_HAPTIC_FEEDBACK_INFORMATION = 15;
+    private static final int POSITION_HAPTIC_FEEDBACK = 15;
 
-    private static final int POSITION_HAPTIC_FEEDBACK_SYSTEM = 16;
-    private static final int POSITION_HAPTIC_FEEDBACK_ON = 17;
-    private static final int POSITION_HAPTIC_FEEDBACK_OFF = 18;
 
     private static final int TITLE = 0;
     private static final int PERSONALIZATION = 1;
@@ -78,6 +74,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
     private static final int DISPLAY_MODE = 4;
     private static final int COLOR = 5;
     private static final int SUBSECTION = 6;
+    private static final int CHECKBOX = 7;
 
     PersonalizationListAdapter(PersonalizationActivity listActivity, OnPersonalizationClickListener onPersonalizationClickListener) {
 
@@ -113,7 +110,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             return TITLE;
         } else if (position == POSITION_SELECT_DEFAULT_TAB) {
             return DEFAULT_TAB;
-        } else if (position == POSITION_DEFAULT_TAB_INFORMATION || position == SECTION_INFO || position == POSITION_HAPTIC_FEEDBACK_INFORMATION) {
+        } else if (position == POSITION_DEFAULT_TAB_INFORMATION || position == SECTION_INFO) {
             return INFORMATION;
         } else if (position == POSITION_DISPLAY_MODE) {
             return DISPLAY_MODE;
@@ -121,6 +118,8 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             return COLOR;
         } else if (position == POSITION_CONVERSATION_APPEARANCE) {
             return SUBSECTION;
+        } else if (position == POSITION_HAPTIC_FEEDBACK) {
+            return CHECKBOX;
         } else {
             return PERSONALIZATION;
         }
@@ -156,27 +155,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             String title = "";
 
             int fontSize = mListActivity.getTwinmeApplication().fontSize();
-            int hapticFeedbackMode = mListActivity.getTwinmeApplication().hapticFeedbackMode();
-
             switch (position) {
-                case POSITION_HAPTIC_FEEDBACK_SYSTEM:
-                    title = mListActivity.getString(R.string.personalization_activity_system);
-                    personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateHapticFeedback(TwinmeApplication.HapticFeedbackMode.SYSTEM));
-                    isSelected = hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.SYSTEM.ordinal();
-                    break;
-
-                case POSITION_HAPTIC_FEEDBACK_ON:
-                    title = mListActivity.getString(R.string.application_on);
-                    personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateHapticFeedback(TwinmeApplication.HapticFeedbackMode.ON));
-                    isSelected = hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.ON.ordinal();
-                    break;
-
-                case POSITION_HAPTIC_FEEDBACK_OFF:
-                    title = mListActivity.getString(R.string.application_off);
-                    personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateHapticFeedback(TwinmeApplication.HapticFeedbackMode.OFF));
-                    isSelected = hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.OFF.ordinal();
-                    break;
-
                 case POSITION_FONT_SYSTEM:
                     title = mListActivity.getString(R.string.personalization_activity_system);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.SYSTEM));
@@ -215,6 +194,11 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             } else {
                 informationViewHolder.onBind(mListActivity.getString(R.string.personalization_activity_haptic_feedback_message), true);
             }
+        } else if (viewType == CHECKBOX) {
+            SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
+            UISetting<Boolean> uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.personalization_activity_haptic_feedback_message), Settings.hapticFeedbackEnable);
+            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(uiSetting, isChecked);
+            settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
         }
     }
 
@@ -249,6 +233,9 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
                 mOnPersonalizationClickListener.onUpdateDisplayMode(displayMode);
             };
             return new DisplayModeViewHolder(convertView, observer);
+        } else if (viewType == CHECKBOX) {
+            convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
+            return new SettingSwitchViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.personalization_activity_item, parent, false);
             return new PersonalizationViewHolder(convertView);

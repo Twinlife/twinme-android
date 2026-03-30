@@ -63,8 +63,6 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
     private InvitationCodeService mInvitationCodeService;
 
-    private Profile mProfile;
-
     //
     // Override TwinmeActivityImpl methods
     //
@@ -244,7 +242,6 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
             Log.d(LOG_TAG, "onGetProfile profile=" + profile);
         }
 
-        mProfile = profile;
     }
 
     @Override
@@ -412,8 +409,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
         if (invitation != null && invitation.getInvitationCode() != null) {
             long expirationDate = (invitation.getCreationDate() / 1000) + (60L * 60 * invitation.getInvitationCode().getValidityPeriod());
-            UIInvitationCode invitationCode = new UIInvitationCode(invitation, invitation.getInvitationCode().getCode(), expirationDate);
-            return invitationCode;
+            return new UIInvitationCode(invitation, invitation.getInvitationCode().getCode(), expirationDate);
         }
 
         return null;

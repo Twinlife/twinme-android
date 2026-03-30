@@ -42,6 +42,9 @@
     <string name="application_description">Beskrivelse</string>
     <string name="application_display_all">Vis alle</string>
     <string name="application_do_not_display">Ikke vis lenger</string>
+    <string name="application_duration_hour">t</string>
+    <string name="application_duration_minute">min</string>
+    <string name="application_duration_second">sek</string>
     <string name="application_edit">Redigere</string>
     <string name="application_error_code">Feilkode: %1$s</string>
     <string name="application_error_file_not_found">Filen ble ikke funnet.</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s fjernet dette forholdet</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s svarer ikke</string>
     <string name="info_item_activity_deleted">Slettet av mottaker:</string>
+    <string name="info_item_activity_location">Plassering</string>
+    <string name="info_item_activity_location_map_error">Enheten din kan ikke vise kartet med plasseringen til %1$s.</string>
     <string name="info_item_activity_may_be_copied">Kan kopieres/lagres/deles…</string>
     <string name="info_item_activity_may_not_be_copied">Kan ikke kopieres/lagres/deles…</string>
+    <string name="info_item_activity_not_delivered">Ikke levert</string>
+    <string name="info_item_activity_not_delivered_expiration">Meldingen kunne ikke leveres etter 15 dager.</string>
+    <string name="info_item_activity_not_delivered_storage">Mottakerens enhet har ikke nok lagringsplass til å motta dette innholdet.</string>
+    <string name="info_item_activity_not_delivered_update">Mottakerens app må oppdateres.</string>
     <string name="info_item_activity_reactions">Reaksjoner</string>
     <string name="info_item_activity_received">Mottatt:</string>
     <string name="info_item_activity_seen">Sett:</string>
@@ -930,7 +939,7 @@
     <string name="personalization_activity_font_large">Stor</string>
     <string name="personalization_activity_font_small">Liten</string>
     <string name="personalization_activity_haptic_feedback">Haptisk tilbakemelding</string>
-    <string name="personalization_activity_haptic_feedback_message">Taktil følelse ved berøring.</string>
+    <string name="personalization_activity_haptic_feedback_message">Taktil følelse ved berøring</string>
     <string name="personalization_activity_menu_choose_color">Standardfarger</string>
     <string name="personalization_activity_menu_enter_color">Fargekode</string>
     <string name="personalization_activity_mode">Modus</string>

@@ -760,6 +760,11 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         uiConsumer.accept(null);
     }
 
+    @Override
+    public String getPeerName(@Nullable UUID peerTwincodeOutboundId) {
+        return "";
+    }
+
     //
     // Implement LoaderListener methods
     //

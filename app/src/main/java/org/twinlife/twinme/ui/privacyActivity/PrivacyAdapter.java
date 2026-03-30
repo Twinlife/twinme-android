@@ -157,7 +157,8 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         } else if (viewType == VALUE) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
-            settingValueViewHolder.onBind(mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_timeout), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout);
+            Runnable runnable = () -> mPrivacyActivity.onSettingClick(Settings.privacyScreenLockTimeout);
+            settingValueViewHolder.onBind(mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_timeout), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout, runnable);
         }
     }
 

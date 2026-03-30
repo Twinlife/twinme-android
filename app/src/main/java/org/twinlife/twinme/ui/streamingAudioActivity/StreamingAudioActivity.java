@@ -316,7 +316,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "getSongs");
         }
 
-        if (mMusicItems.size() > 0) {
+        if (!mMusicItems.isEmpty()) {
             return;
         }
 
@@ -338,9 +338,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
                 Bitmap artwork;
                 try {
                     artwork = MediaStore.Images.Media.getBitmap(getContentResolver(), artworkUri);
-                } catch (Exception exception) {
-                    artwork = null;
-                } catch (OutOfMemoryError error) {
+                } catch (Exception | OutOfMemoryError exception) {
                     artwork = null;
                 }
 
@@ -365,7 +363,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
             }
             cursor.close();
 
-            if (items.size() > 0) {
+            if (!items.isEmpty()) {
                 final List<MusicItem> newItems = items;
                 mHandler.post(() -> addItems(newItems));
             }
@@ -420,7 +418,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
 
         mStreamingAudioAdapter.setMusicItems(mFilteredMusicItems);
 
-        if (mFilteredMusicItems.size() == 0) {
+        if (mFilteredMusicItems.isEmpty()) {
             mNoMusicFoundImageView.setVisibility(View.VISIBLE);
             mNoMusicTitleView.setVisibility(View.VISIBLE);
             mNoMusicTextView.setVisibility(View.VISIBLE);

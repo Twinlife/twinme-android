@@ -2064,14 +2064,23 @@ public class NotificationCenterImpl implements NotificationCenter {
             Log.d(LOG_TAG, "missedCallNotification: originator=" + originator + " video=" + video);
         }
 
-        String callerName = originator.getName();
-        Bitmap callerAvatar = getAvatar(originator);
-
+        String callerName = null;
+        Bitmap callerAvatar = null;
         String calleeName = null;
+
         if (!originator.getIdentityCapabilities().hasDiscreet()) {
+            if (originator.getType() == Originator.Type.GROUP_MEMBER) {
+                Originator group = ((GroupMember)originator).getGroup();
+
+                callerName = group.getName() + "/" + originator.getName();
+                callerAvatar = getAvatar(group);
+            } else {
+                callerName = originator.getName();
+                callerAvatar = getAvatar(originator);
+            }
+
             calleeName = originator.getIdentityName();
         }
-
 
         Intent showContactIntent;
 

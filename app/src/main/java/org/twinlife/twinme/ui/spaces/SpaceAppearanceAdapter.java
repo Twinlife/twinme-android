@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -57,9 +56,6 @@ public class SpaceAppearanceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static final int COLOR = 3;
     private static final int SUBSECTION = 4;
 
-    @Nullable
-    private Space mSpace;
-
     private final OnSpaceAppearanceClickListener mOnSpaceAppearanceClickListener;
 
     public SpaceAppearanceAdapter(@NonNull SpaceAppearanceActivity listActivity, OnSpaceAppearanceClickListener onSpaceAppearanceClickListener) {
@@ -71,7 +67,6 @@ public class SpaceAppearanceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     public void setSpace(Space space) {
 
-        mSpace = space;
         notifyDataSetChanged();
     }
 

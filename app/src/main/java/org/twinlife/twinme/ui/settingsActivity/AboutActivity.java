@@ -327,9 +327,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
             DialogInterface.OnDismissListener dismissListener = dialogInterface -> setStatusBarColor();
             whatsNewDialog.setOnCancelListener(dialogCancelListener);
             whatsNewDialog.setOnDismissListener(dismissListener);
-            whatsNewDialog.setup(getTwinmeApplication().getLastVersion(), () -> {
-                whatsNewDialog.dismiss();
-            }, false);
+            whatsNewDialog.setup(getTwinmeApplication().getLastVersion(), whatsNewDialog::dismiss, false);
             whatsNewDialog.show();
 
             Window window = getWindow();

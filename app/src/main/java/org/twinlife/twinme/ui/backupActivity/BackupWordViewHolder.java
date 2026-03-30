@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024-2025 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -22,7 +22,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -59,7 +58,7 @@ public class BackupWordViewHolder extends RecyclerView.ViewHolder {
 
         ShapeDrawable containerViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         containerViewBackground.getPaint().setColor(Design.GREY_ITEM_COLOR);
-        ViewCompat.setBackground(containerView, containerViewBackground);
+        containerView.setBackground(containerViewBackground);
 
         mWordView = view.findViewById(R.id.create_backup_activity_word_item_text);
         mWordView.setTypeface(Design.FONT_MONOSPACE30.typeface);

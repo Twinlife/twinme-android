@@ -66,8 +66,6 @@ public class SettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerView.View
     private static final int INFO = 2;
     private static final int SUBSECTION = 3;
 
-    private boolean mDisplaySpacePermissions = false;
-
     @Nullable
     private Space mSpace;
 
@@ -95,6 +93,7 @@ public class SettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerView.View
             Log.d(LOG_TAG, "getItemCount");
         }
 
+        boolean mDisplaySpacePermissions = false;
         if (mDisplaySpacePermissions) {
             return ITEM_COUNT;
         }

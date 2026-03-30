@@ -19,10 +19,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -291,6 +287,8 @@ public class MenuSelectValueView extends RelativeLayout {
 
         mListView = findViewById(R.id.menu_select_value_view_list_view);
         mListView.setBackgroundColor(Color.TRANSPARENT);
+        mListView.setDivider(null);
+        mListView.setDividerHeight(0);
         mListView.setAdapter(mMenuSelectValueAdapter);
     }
 

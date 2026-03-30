@@ -30,10 +30,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.Design;
@@ -392,7 +390,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
 
         ShapeDrawable descriptionContentViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         descriptionContentViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(descriptionContentView, descriptionContentViewBackground);
+        descriptionContentView.setBackground(descriptionContentViewBackground);
 
         layoutParams = descriptionContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -16,8 +16,6 @@ import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-
-import androidx.core.view.ViewCompat;
 
 import java.util.Arrays;
 
@@ -81,7 +79,7 @@ public class RoundedFrameLayout extends FrameLayout {
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Color.TRANSPARENT);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(this, mGradientDrawable);
+        setBackground(mGradientDrawable);
 
         mPath = new Path();
 

@@ -221,7 +221,7 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
 
         float maxRecyclerViewHeight = Design.DISPLAY_HEIGHT - (MIN_CONTENT_VIEW_HEIGHT * Design.HEIGHT_RATIO) - lineHeight - Design.DOT_SIZE;
 
-        float recyclerViewHeight = 0;
+        float recyclerViewHeight;
 
         float firstPartContentHeight = MIN_CONTENT_FIRST_PART * Design.HEIGHT_RATIO;
         float secondPartContentHeight = MIN_CONTENT_SECOND_PART * Design.HEIGHT_RATIO;
@@ -312,7 +312,7 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
         textPaint.setTextSize(Design.FONT_MEDIUM32.size);
         textPaint.setTypeface(Design.FONT_MEDIUM32.typeface);
 
-        int textWidth = (int) (Design.DISPLAY_WIDTH - (Design.ONBOARDING_TEXT_MARGIN * 2));
+        int textWidth = Design.DISPLAY_WIDTH - (Design.ONBOARDING_TEXT_MARGIN * 2);
         Layout.Alignment alignment = Layout.Alignment.ALIGN_NORMAL;
         StaticLayout staticLayout = new StaticLayout(message, textPaint, textWidth, alignment, 1, 0, false);
         return staticLayout.getHeight();

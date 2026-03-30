@@ -125,7 +125,6 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
     protected TextView mInfoTextView;
     protected TextView mScanTitleView;
 
-    private Profile mProfile;
     private boolean mHasRelations;
     private boolean mFromCurrentDevice = false;
     private boolean mShowOnboarding = false;
@@ -250,7 +249,6 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "onGetDefaultProfile profile=" + profile);
         }
 
-        mProfile = profile;
     }
 
     @Override

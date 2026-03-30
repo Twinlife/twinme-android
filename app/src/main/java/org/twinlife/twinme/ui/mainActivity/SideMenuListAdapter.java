@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2021 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -20,8 +20,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.TwinmeApplication;
@@ -222,7 +220,7 @@ public class SideMenuListAdapter implements ListAdapter {
 
                     ShapeDrawable subscribeViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
                     subscribeViewBackground.getPaint().setColor(DESIGN_SUBSCRIBE_BACKGROUND_COLOR);
-                    ViewCompat.setBackground(subscribeView, subscribeViewBackground);
+                    subscribeView.setBackground(subscribeViewBackground);
 
                     badgeView = convertView.findViewById(R.id.navigation_activity_child_badge_view);
                     Design.updateTextFont(badgeView, Design.FONT_MEDIUM30);

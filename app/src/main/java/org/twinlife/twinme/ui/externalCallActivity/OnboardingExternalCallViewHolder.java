@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023-2025 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -49,7 +48,7 @@ public class OnboardingExternalCallViewHolder extends RecyclerView.ViewHolder {
     private final TextView mCreateTextView;
     private final View mDoNotShowView;
 
-    OnboardingExternalCallViewHolder(OnboardingExternalCallActivity onboardingExternalCallActivity, @NonNull View view) {
+    OnboardingExternalCallViewHolder(@NonNull OnboardingExternalCallActivity onboardingExternalCallActivity, @NonNull View view) {
 
         super(view);
 
@@ -77,7 +76,7 @@ public class OnboardingExternalCallViewHolder extends RecyclerView.ViewHolder {
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable createViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         createViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(mCreateView, createViewBackground);
+        mCreateView.setBackground(createViewBackground);
 
         layoutParams = mCreateView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

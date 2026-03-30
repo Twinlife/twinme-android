@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -21,8 +21,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -75,7 +73,7 @@ public class DeleteSpaceConfirmView extends AbstractBottomSheetView {
 
         ShapeDrawable textDrawableBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         textDrawableBackground.getPaint().setColor(color);
-        ViewCompat.setBackground(mSpaceNameView, textDrawableBackground);
+        mSpaceNameView.setBackground(textDrawableBackground);
     }
 
     @Override
@@ -129,7 +127,7 @@ public class DeleteSpaceConfirmView extends AbstractBottomSheetView {
 
         ShapeDrawable drawableBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         drawableBackground.getPaint().setColor(Color.WHITE);
-        ViewCompat.setBackground(mNoAvatarView, drawableBackground);
+        mNoAvatarView.setBackground(drawableBackground);
 
         ViewGroup.LayoutParams layoutParams = mNoAvatarView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO);

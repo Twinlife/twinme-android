@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017-2024 twinlife SA & Telefun SAS.
+ *  Copyright (c) 2017-2026 twinlife SA & Telefun SAS.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -50,7 +49,7 @@ public class SecurityInfoItemViewHolder extends BaseItemViewHolder {
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.POPUP_BACKGROUND_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(mTextView, mGradientDrawable);
+        mTextView.setBackground(mGradientDrawable);
     }
 
     @Override

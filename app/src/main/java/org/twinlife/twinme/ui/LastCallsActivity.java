@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2023 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -10,9 +10,7 @@
 package org.twinlife.twinme.ui;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,10 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,11 +37,13 @@ import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.CallReceiver;
+import org.twinlife.twinme.models.CertificationLevel;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.CallsService;
+import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.calls.CallAgainConfirmView;
@@ -58,7 +55,9 @@ import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper;
 import org.twinlife.twinme.utils.SwipeItemTouchHelper.OnSwipeItemClickListener;
 
@@ -67,13 +66,19 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class LastCallsActivity extends AbstractTwinmeActivity implements CallsService.Observer, ViewTreeObserver.OnGlobalLayoutListener {
+public class LastCallsActivity extends AbstractTwinmeActivity implements CallsService.Observer {
     private static final String LOG_TAG = "LastCallsActivity";
     private static final boolean DEBUG = false;
 
+    private static final float DESIGN_AVATAR_VIEW_HEIGHT = 42f;
+    private static final float DESIGN_AVATAR_MARGIN = 10f;
+    private static int AVATAR_VIEW_HEIGHT;
+    private static int AVATAR_MARGIN;
+
+    private RoundedView mNoAvatarView;
+    private CircularImageView mAvatarView;
+    private View mCertifiedView;
     private LastCallsAdapter mCallsListAdapter;
-    private RadioButton mAudioRadioButton;
-    private RadioButton mVideoRadioButton;
     private RecyclerView mCallsRecyclerView;
     private ImageView mNoCallImageView;
     private TextView mNoCallTitleView;
@@ -81,7 +86,6 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
     private final ArrayList<CallDescriptor> mAllCalls = new ArrayList<>();
     private final ArrayList<UICall> mFilteredCalls = new ArrayList<>();
     private UIContact mUIContact;
-    private boolean mVideoCalls = false;
     private boolean mResetAllCalls = false;
 
     private CallsService mCallsService;
@@ -127,22 +131,6 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         }
 
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onGlobalLayout() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onGlobalLayout");
-        }
-
-        int maxWidth = mAudioRadioButton.getWidth();
-
-        if (mVideoRadioButton.getWidth() > maxWidth) {
-            maxWidth = mVideoRadioButton.getWidth();
-        }
-
-        mAudioRadioButton.setWidth(maxWidth);
-        mVideoRadioButton.setWidth(maxWidth);
     }
 
     @Override
@@ -193,6 +181,7 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         }
 
         mUIContact = new UIContact(getTwinmeApplication(), contact, avatar);
+        updateToolbar();
     }
 
     @Override
@@ -203,12 +192,13 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
     }
 
     @Override
-    public void onGetGroup(@NonNull Group contact, @Nullable Bitmap avatar) {
+    public void onGetGroup(@NonNull Group group, @Nullable Bitmap avatar) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onGetGroup: group=" + contact);
+            Log.d(LOG_TAG, "onGetGroup: group=" + group);
         }
 
-        mUIContact = new UIContact(getTwinmeApplication(), contact, avatar);
+        mUIContact = new UIContact(getTwinmeApplication(), group, avatar);
+        updateToolbar();
     }
 
     @Override
@@ -247,6 +237,7 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
         if (mUIContact != null) {
             mUIContact.setAvatar(avatar);
+            updateToolbar();
         }
     }
 
@@ -449,45 +440,38 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         showBackButton(true);
         applyInsets(R.id.last_calls_activity_layout, R.id.last_calls_activity_tool_bar, R.id.last_calls_activity_list_view, Design.TOOLBAR_COLOR, false);
 
-        RadioGroup callRadioGroup = findViewById(R.id.last_calls_tool_bar_radio_group);
+        mNoAvatarView = findViewById(R.id.toolbar_no_image);
+        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        mNoAvatarView.setVisibility(View.GONE);
 
-        mAudioRadioButton = findViewById(R.id.last_calls_tool_bar_audio_radio);
-        Design.updateTextFont(mAudioRadioButton, Design.FONT_REGULAR32);
+        mAvatarView = findViewById(R.id.toolbar_image);
+        ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
+        layoutParams.height = AVATAR_VIEW_HEIGHT;
+        //noinspection SuspiciousNameCombination
+        layoutParams.width = AVATAR_VIEW_HEIGHT;
+        mAvatarView.setLayoutParams(layoutParams);
+        mNoAvatarView.setLayoutParams(layoutParams);
 
-        ColorStateList colorStateList = new ColorStateList(
-                new int[][]{
-                        new int[]{android.R.attr.state_checked},
-                        new int[]{}
-                },
-                new int[]{
-                        Design.getMainStyle(),
-                        Color.WHITE
-                }
-        );
-
-        mAudioRadioButton.setTextColor(colorStateList);
-
-        mVideoRadioButton = findViewById(R.id.last_calls_tool_bar_video_radio);
-        mVideoRadioButton.setTextColor(colorStateList);
-        Design.updateTextFont(mVideoRadioButton, Design.FONT_REGULAR32);
-
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
         if (CommonUtils.isLayoutDirectionRTL()) {
-            mAudioRadioButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.segmented_control_right, null));
-            mVideoRadioButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.segmented_control_left, null));
+            marginLayoutParams.leftMargin = AVATAR_MARGIN;
+            marginLayoutParams.setMarginStart(AVATAR_MARGIN);
+        } else {
+            marginLayoutParams.rightMargin = AVATAR_MARGIN;
+            marginLayoutParams.setMarginEnd(AVATAR_MARGIN);
         }
 
-        ViewTreeObserver viewTreeObserver = mVideoRadioButton.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(this);
+        mAvatarView.setLayoutParams(layoutParams);
+        mNoAvatarView.setLayoutParams(layoutParams);
 
-        callRadioGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
-            if (checkedId == R.id.last_calls_tool_bar_audio_radio) {
-                mVideoCalls = false;
-            } else if (checkedId == R.id.last_calls_tool_bar_video_radio) {
-                mVideoCalls = true;
-            }
+        mCertifiedView = findViewById(R.id.toolbar_certified_image);
+        mCertifiedView.setVisibility(View.GONE);
 
-            updateCalls();
-        });
+        layoutParams = mCertifiedView.getLayoutParams();
+        layoutParams.height = (int) (AVATAR_VIEW_HEIGHT * 0.5f);
+        //noinspection SuspiciousNameCombination
+        layoutParams.width = (int) (AVATAR_VIEW_HEIGHT * 0.5f);
+        mCertifiedView.setLayoutParams(layoutParams);
 
         LastCallsAdapter.OnLastCallClickListener onCallClickListener = position -> {
             if (getTwinmeApplication().inCallInfo() == null) {
@@ -547,9 +531,9 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
             originatorId = UUID.fromString(groupId);
             originatorType = Originator.Type.GROUP;
         } else {
-            String callReceiverdId = intent.getStringExtra(Intents.INTENT_CALL_RECEIVER_ID);
-            if (callReceiverdId != null) {
-                originatorId = UUID.fromString(callReceiverdId);
+            String callReceiverId = intent.getStringExtra(Intents.INTENT_CALL_RECEIVER_ID);
+            if (callReceiverId != null) {
+                originatorId = UUID.fromString(callReceiverId);
                 originatorType = Originator.Type.CALL_RECEIVER;
             }
         }
@@ -557,7 +541,7 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         // Setup the service after the view is initialized but before the adapter.
         mCallsService = new CallsService(this, getTwinmeContext(), this, originatorId, originatorType);
 
-        mCallsListAdapter = new LastCallsAdapter(this, mCallsService, mFilteredCalls, onCallClickListener);
+        mCallsListAdapter = new LastCallsAdapter(this, mFilteredCalls, onCallClickListener);
         mCallsRecyclerView.setAdapter(mCallsListAdapter);
     }
 
@@ -569,13 +553,11 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         mFilteredCalls.clear();
 
         for (CallDescriptor callDescriptor : mAllCalls) {
-            if (callDescriptor.isVideo() == mVideoCalls) {
-                UICall uiCall = new UICall(mUIContact, callDescriptor);
-                mFilteredCalls.add(uiCall);
-            }
+            UICall uiCall = new UICall(mUIContact, callDescriptor);
+            mFilteredCalls.add(uiCall);
         }
 
-        mCallsListAdapter.notifyDataSetChanged();
+        mCallsListAdapter.notifyItemRangeChanged(0, mFilteredCalls.size());
 
         if (mFilteredCalls.isEmpty() && mCallsService.isGetDescriptorDone()) {
             mNoCallImageView.setVisibility(View.VISIBLE);
@@ -589,6 +571,10 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
         if (mMenu != null) {
             MenuItem resetMenuItem = mMenu.findItem(R.id.reset_calls_action);
+            if (resetMenuItem.getActionView() == null) {
+                return;
+            }
+
             if (mAllCalls.isEmpty()) {
                 resetMenuItem.setEnabled(false);
                 resetMenuItem.getActionView().setAlpha(0.5f);
@@ -659,8 +645,10 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
         if (mMenu != null) {
             MenuItem resetMenuItem = mMenu.findItem(R.id.reset_calls_action);
-            resetMenuItem.setEnabled(false);
-            resetMenuItem.getActionView().setAlpha(0.5f);
+            if (resetMenuItem.getActionView() != null) {
+                resetMenuItem.setEnabled(false);
+                resetMenuItem.getActionView().setAlpha(0.5f);
+            }
         }
 
         for (int i = 0; i < mAllCalls.size(); i++) {
@@ -805,6 +793,42 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         }
     }
 
+    private void updateToolbar() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateToolbar");
+        }
+
+        if (mUIContact != null) {
+            setTitle(mUIContact.getName());
+
+            if (mUIContact.getAvatar() != null) {
+                mAvatarView.setImage(this, null,
+                        new CircularImageDescriptor(mUIContact.getAvatar(), 0.5f, 0.5f, 0.5f));
+                mAvatarView.setVisibility(View.VISIBLE);
+
+                if (mUIContact.getContact().getAvatarId() == null) {
+                    mNoAvatarView.setVisibility(View.VISIBLE);
+                } else {
+                    mNoAvatarView.setVisibility(View.GONE);
+                }
+            } else {
+                mAvatarView.setVisibility(View.GONE);
+                mNoAvatarView.setVisibility(View.VISIBLE);
+            }
+
+            if (mUIContact.getContact().getType() == Originator.Type.CONTACT) {
+                Contact contact = (Contact) mUIContact.getContact();
+                if (contact.getCertificationLevel() == CertificationLevel.LEVEL_4) {
+                    mCertifiedView.setVisibility(View.VISIBLE);
+                } else {
+                    mCertifiedView.setVisibility(View.GONE);
+                }
+            } else {
+                mCertifiedView.setVisibility(View.GONE);
+            }
+        }
+    }
+
     @Override
     public void updateColor() {
         if (DEBUG) {
@@ -831,9 +855,19 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
 
         super.updateFont();
 
-        Design.updateTextFont(mAudioRadioButton, Design.FONT_REGULAR32);
-        Design.updateTextFont(mVideoRadioButton, Design.FONT_REGULAR32);
         Design.updateTextFont(mNoCallTitleView, Design.FONT_MEDIUM34);
         Design.updateTextFont(mNoCallTextView, Design.FONT_MEDIUM28);
+    }
+
+    @Override
+    public void setupDesign() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setupDesign");
+        }
+
+        super.setupDesign();
+
+        AVATAR_VIEW_HEIGHT = (int) (DESIGN_AVATAR_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        AVATAR_MARGIN = (int) (DESIGN_AVATAR_MARGIN * Design.HEIGHT_RATIO);
     }
 }

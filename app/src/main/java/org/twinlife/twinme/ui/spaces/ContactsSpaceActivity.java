@@ -275,7 +275,7 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
             if (sb.length() > 0) {
                 sb.append(",");
             }
-            sb.append(contact.getId().toString());
+            sb.append(contact.getId());
         }
         return sb.toString();
     }

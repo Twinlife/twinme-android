@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2021 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -83,7 +82,7 @@ public class SpaceViewHolder extends RecyclerView.ViewHolder {
         mNoAvatarGradientDrawable.mutate();
         mNoAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
         mNoAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(mNoAvatarView, mNoAvatarGradientDrawable);
+        mNoAvatarView.setBackground(mNoAvatarGradientDrawable);
 
         mDescriptionView = view.findViewById(R.id.spaces_activity_space_item_description_name_view);
         mDescriptionView.setTypeface(Design.FONT_MEDIUM32.typeface);
@@ -104,7 +103,7 @@ public class SpaceViewHolder extends RecyclerView.ViewHolder {
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.BACKGROUND_SPACE_AVATAR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(mCurrentSpaceView, mGradientDrawable);
+        mCurrentSpaceView.setBackground(mGradientDrawable);
 
         mSeparatorView = view.findViewById(R.id.spaces_activity_space_item_current_separator_view);
         mSeparatorView.setBackgroundColor(Design.SEPARATOR_COLOR);

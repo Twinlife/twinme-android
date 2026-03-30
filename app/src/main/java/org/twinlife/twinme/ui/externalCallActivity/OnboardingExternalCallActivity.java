@@ -291,7 +291,7 @@ public class OnboardingExternalCallActivity extends AbstractOnboardingActivity {
         }
 
         float maxRecyclerViewHeight = Design.DISPLAY_HEIGHT - (MIN_CONTENT_VIEW_HEIGHT * Design.HEIGHT_RATIO) - lineHeight - Design.DOT_SIZE;
-        int textWidth = (int ) (Design.DISPLAY_WIDTH - (Design.ONBOARDING_TEXT_MARGIN * 2));
+        int textWidth = Design.DISPLAY_WIDTH - (Design.ONBOARDING_TEXT_MARGIN * 2);
 
         float recyclerViewHeight = 0;
         float minContentCellHeight = mFromSideMenu ? (MIN_CONTENT_CELL_FROM_SIDE_MENU_HEIGHT * Design.HEIGHT_RATIO) : (MIN_CONTENT_CELL_HEIGHT * Design.HEIGHT_RATIO);

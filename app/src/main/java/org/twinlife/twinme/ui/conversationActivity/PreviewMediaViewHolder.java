@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2025 twinlife SA.
+ *  Copyright (c) 2025-2026 twinlife SA.
  *
  *  All Rights Reserved.
  *
@@ -31,8 +31,6 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.Utils;
-
-import java.util.Arrays;
 
 public class PreviewMediaViewHolder extends RecyclerView.ViewHolder {
     private static final String LOG_TAG = "PreviewMediaViewHolder";
@@ -82,9 +80,6 @@ public class PreviewMediaViewHolder extends RecyclerView.ViewHolder {
             Log.d(LOG_TAG, "onBind: preview=" + mediaInfo);
         }
 
-        float[] radii = new float[8];
-        Arrays.fill(radii, Design.CONTAINER_RADIUS);
-
         if (mediaInfo.isImage()) {
             BitmapDrawable bitmap = null;
             if (mediaInfo.getPath() != null && mediaInfo.isFile()) {
@@ -106,10 +101,8 @@ public class PreviewMediaViewHolder extends RecyclerView.ViewHolder {
                     bitmap = new BitmapDrawable(context.getResources(), mediaImage);
                     mThumbnailView.setImageBitmap(bitmap.getBitmap());
 
-                } catch (Exception exception) {
+                } catch (Exception | OutOfMemoryError exception) {
                     Log.e(LOG_TAG, "Cannot load bitmap for " + context + ": " + exception);
-                } catch (OutOfMemoryError error) {
-                    Log.e(LOG_TAG, "Cannot load bitmap for " + context + ": " + error);
                 }
             }
         } else if (mediaInfo.isVideo()) {
@@ -119,8 +112,7 @@ public class PreviewMediaViewHolder extends RecyclerView.ViewHolder {
                     mThumbnailView.setImageBitmap(bitmap);
                 }
             } else if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O_MR1) {
-                try {
-                    MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
+                try (MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever()) {
                     mediaMetadataRetriever.setDataSource(context, mediaInfo.getUri());
                     Bitmap bitmap = mediaMetadataRetriever.getScaledFrameAtTime(1000, MediaMetadataRetriever.OPTION_NEXT_SYNC, 120, 120);
                     if (bitmap != null) {

@@ -886,6 +886,13 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             return;
         }
 
+        if (descriptor.getType() == Descriptor.Type.CALL_DESCRIPTOR) {
+            ConversationService.CallDescriptor callDescriptor = (ConversationService.CallDescriptor) descriptor;
+            if (callDescriptor.getTerminateReason() == null) {
+                return;
+            }
+        }
+
         if (conversation instanceof ConversationService.GroupMemberConversation) {
             conversation = ((ConversationService.GroupMemberConversation) conversation).getGroupConversation();
         }
@@ -920,13 +927,20 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             return;
         }
 
+        if (descriptor.getType() == Descriptor.Type.CALL_DESCRIPTOR) {
+            ConversationService.CallDescriptor callDescriptor = (ConversationService.CallDescriptor) descriptor;
+            if (callDescriptor.getTerminateReason() == null) {
+                return;
+            }
+        }
+
         if (conversation instanceof ConversationService.GroupMemberConversation) {
             conversation = ((ConversationService.GroupMemberConversation) conversation).getGroupConversation();
         }
 
         UIConversation uiConversation = mUIConversationsMap.get(conversation.getId());
         if (uiConversation != null) {
-            if (uiConversation.getLastDescriptor() != null && uiConversation.getLastDescriptor().getDescriptorId().equals(descriptor.getDescriptorId())) {
+            if ((uiConversation.getLastDescriptor() != null && uiConversation.getLastDescriptor().getDescriptorId().equals(descriptor.getDescriptorId())) || uiConversation.getLastDescriptor() == null || (uiConversation.getLastDescriptor() != null && uiConversation.getLastDescriptor().getCreatedTimestamp() < descriptor.getCreatedTimestamp() && descriptor.getType() == ConversationService.Descriptor.Type.CALL_DESCRIPTOR)) {
                 uiConversation.setLastDescriptor(getContext(), descriptor);
                 updateUIConversation(uiConversation);
                 if (mMessagesSearchView != null && mMessagesSearchView.getQuery().toString().isEmpty()) {
@@ -1609,7 +1623,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         // This fragment is detached and has no activity: ignore the action.
-        if (!isAdded()) {
+        if (!isAdded() || mTwinmeActivity == null) {
             return;
         }
 

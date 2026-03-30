@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2022 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -39,7 +39,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.MenuProvider;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -565,7 +564,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         ShapeDrawable spaceViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         spaceViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
         spaceViewBackground.getPaint().setShadowLayer(DESIGN_SHADOW_RADIUS, 0, DESIGN_SHADOW_OFFSET, DESIGN_SHADOW_COLOR);
-        ViewCompat.setBackground(friendsSpaceView, spaceViewBackground);
+        friendsSpaceView.setBackground(spaceViewBackground);
 
         TextView friendsSpaceTextView = view.findViewById(R.id.spaces_fragment_sample_space_friends_text_view);
         friendsSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
@@ -591,7 +590,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         layoutParams.width = SAMPLE_VIEW_WIDTH;
         layoutParams.height = SAMPLE_VIEW_HEIGHT;
 
-        ViewCompat.setBackground(familySpaceView, spaceViewBackground);
+        familySpaceView.setBackground(spaceViewBackground);
 
         TextView familySpaceTextView = view.findViewById(R.id.spaces_fragment_sample_space_family_text_view);
         familySpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
@@ -617,7 +616,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         layoutParams.width = SAMPLE_VIEW_WIDTH;
         layoutParams.height = SAMPLE_VIEW_HEIGHT;
 
-        ViewCompat.setBackground(businessSpaceView, spaceViewBackground);
+        businessSpaceView.setBackground(spaceViewBackground);
 
         TextView businessSpaceTextView = view.findViewById(R.id.spaces_fragment_sample_space_business_text_view);
         businessSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
@@ -649,7 +648,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable createViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         createViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(createSpaceView, createViewBackground);
+        createSpaceView.setBackground(createViewBackground);
 
         layoutParams = createSpaceView.getLayoutParams();
         layoutParams.height = Design.BUTTON_HEIGHT;
@@ -809,7 +808,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             ShapeDrawable spaceViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
             spaceViewBackground.getPaint().setColor(Design.POPUP_BACKGROUND_COLOR);
             spaceViewBackground.getPaint().setShadowLayer(DESIGN_SHADOW_RADIUS, 0, DESIGN_SHADOW_OFFSET, DESIGN_SHADOW_COLOR);
-            ViewCompat.setBackground(friendsSpaceView, spaceViewBackground);
+            friendsSpaceView.setBackground(spaceViewBackground);
 
             TextView friendsSpaceTextView = view.findViewById(R.id.spaces_fragment_sample_space_friends_text_view);
             friendsSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
@@ -827,7 +826,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             friendsSpaceTextView.setText(spannableStringBuilder);
 
             View familySpaceView = view.findViewById(R.id.spaces_fragment_sample_space_family_view);
-            ViewCompat.setBackground(familySpaceView, spaceViewBackground);
+            familySpaceView.setBackground(spaceViewBackground);
 
             TextView familySpaceTextView = view.findViewById(R.id.spaces_fragment_sample_space_family_text_view);
             familySpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
@@ -845,7 +844,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             familySpaceTextView.setText(spannableStringBuilder);
 
             View businessSpaceView = view.findViewById(R.id.spaces_fragment_sample_space_business_view);
-            ViewCompat.setBackground(businessSpaceView, spaceViewBackground);
+            businessSpaceView.setBackground(spaceViewBackground);
 
             TextView businessSpaceTextView = view.findViewById(R.id.spaces_fragment_sample_space_business_text_view);
             businessSpaceTextView.setTypeface(Design.FONT_MEDIUM34.typeface);
@@ -874,7 +873,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
             ShapeDrawable createViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
             createViewBackground.getPaint().setColor(Design.getMainStyle());
-            ViewCompat.setBackground(createSpaceView, createViewBackground);
+            createSpaceView.setBackground(createViewBackground);
 
             TextView moreInfoTextView = getView().findViewById(R.id.spaces_fragment_more_info_text_view);
             moreInfoTextView.setTypeface(Design.FONT_BOLD28.typeface);

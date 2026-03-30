@@ -46,7 +46,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import org.twinlife.device.android.twinme.R;
@@ -355,13 +354,8 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             return;
         }
 
-        final TwinmeApplication twinmeApplication = getTwinmeApplication();
-        final int hapticFeedbackMode = twinmeApplication.hapticFeedbackMode();
-
-        if (hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.SYSTEM.ordinal()) {
+        if (getTwinmeApplication().hapticFeedbackModeEnable()) {
             getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        } else if (hapticFeedbackMode == TwinmeApplication.HapticFeedbackMode.ON.ordinal()) {
-            getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
     }
 
@@ -715,9 +709,10 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
                     if (mCallFloatingView != null) {
                         ViewTreeObserver viewTreeObserver = mCallFloatingView.getViewTreeObserver();
                         viewTreeObserver.removeOnGlobalLayoutListener(this);
-                        if (info.position() != null) {
-                            mCallFloatingView.setX(info.position().x);
-                            mCallFloatingView.setY(info.position().y);
+                        final Point position = info.position();
+                        if (position != null) {
+                            mCallFloatingView.setX(position.x);
+                            mCallFloatingView.setY(position.y);
                         } else {
                             mCallFloatingView.moveToTopRight();
                         }

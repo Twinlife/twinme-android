@@ -45,6 +45,7 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
     @NonNull
     private final AbstractTwinmeService mService;
     private final CircularImageView mAvatarView;
+    @Nullable
     protected final TextView mNameView;
 
     private final View mTagView;
@@ -233,17 +234,21 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
                 mTagTitleView.setTextColor(uiContact.getUIContactTag().getForegroundColor());
                 mTagTitleView.setText(uiContact.getUIContactTag().getTitle());
 
-                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
-                marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
-                marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
+                if (mNameView != null) {
+                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
+                    marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
+                    marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
+                }
 
                 Paint paint = new Paint();
                 paint.setTextSize(Design.FONT_REGULAR28.size);
                 paint.setTypeface(Design.FONT_REGULAR28.typeface);
                 paint.setStyle(Paint.Style.STROKE);
 
-                float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - ((DESIGN_CERTIFIED_MARGIN + (DESIGN_TAG_MARGIN * 2)) * Design.WIDTH_RATIO) - paint.measureText(uiContact.getUIContactTag().getTitle());
-                mNameView.setMaxWidth((int) maxWidth);
+                if (mNameView != null) {
+                    float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - ((DESIGN_CERTIFIED_MARGIN + (DESIGN_TAG_MARGIN * 2)) * Design.WIDTH_RATIO) - paint.measureText(uiContact.getUIContactTag().getTitle());
+                    mNameView.setMaxWidth((int) maxWidth);
+                }
             } else {
                 mTagView.setVisibility(View.GONE);
             }
@@ -253,12 +258,14 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
             if (uiContact.isCertified()) {
                 mCertifiedView.setVisibility(View.VISIBLE);
 
-                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
-                marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
-                marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
+                if (mNameView != null) {
+                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
+                    marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
+                    marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
 
-                float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING -  (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT;
-                mNameView.setMaxWidth((int) maxWidth);
+                    float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - Design.AVATAR_HEIGHT - Design.NAME_TRAILING - (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT;
+                    mNameView.setMaxWidth((int) maxWidth);
+                }
             } else {
                 mCertifiedView.setVisibility(View.GONE);
             }

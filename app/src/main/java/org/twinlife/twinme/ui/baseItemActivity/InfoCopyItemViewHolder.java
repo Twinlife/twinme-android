@@ -15,12 +15,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 
 class InfoCopyItemViewHolder extends BaseItemViewHolder {
 
     private static final float DESIGN_ITEM_VIEW_HEIGHT = 120f;
+    private static final float DESIGN_ICON_MARGIN = 34f;
+    private static final float DESIGN_ICON_SIZE = 36f;
+
     private static final int ITEM_VIEW_HEIGHT;
 
     static {
@@ -38,10 +43,22 @@ class InfoCopyItemViewHolder extends BaseItemViewHolder {
         layoutParams.height = ITEM_VIEW_HEIGHT;
         view.setLayoutParams(layoutParams);
 
+        mCopyAllowedImageView = view.findViewById(R.id.info_copy_item_image_view);
+        mCopyAllowedImageView.setColorFilter(Design.BLACK_COLOR);
+
+        layoutParams = mCopyAllowedImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCopyAllowedImageView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
+
         mTextView = view.findViewById(R.id.info_copy_item_text_view);
         Design.updateTextFont(mTextView, Design.FONT_REGULAR32);
 
-        mCopyAllowedImageView = view.findViewById(R.id.info_copy_item_image_view);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
     }
 
     @Override
@@ -54,10 +71,10 @@ class InfoCopyItemViewHolder extends BaseItemViewHolder {
         InfoCopyItem infoCopyItem = (InfoCopyItem) item;
         if (infoCopyItem.getItem().isClearLocalItem() || !infoCopyItem.getItem().getCopyAllowed()) {
             mTextView.setText(getString(R.string.info_item_activity_may_not_be_copied));
-            mCopyAllowedImageView.setBackgroundResource(R.drawable.not_allowed_copy);
+            mCopyAllowedImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.not_allowed_copy, null));
         } else {
             mTextView.setText(getString(R.string.info_item_activity_may_be_copied));
-            mCopyAllowedImageView.setBackgroundResource(R.drawable.allowed_copy);
+            mCopyAllowedImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.allowed_copy, null));
         }
     }
 }

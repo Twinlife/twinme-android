@@ -49,4 +49,32 @@ public class Utils extends CommonUtils {
 
         return Long.toString(timeout);
     }
+
+    public static String formatCallDuration(Context context, long duration) {
+
+        long hours = duration / 3600;
+        long minutes = (duration % 3600) / 60;
+        long seconds = duration % 60;
+
+        StringBuilder callDurationBuilder = new StringBuilder();
+        if (hours > 0) {
+            callDurationBuilder.append(hours).append(context.getString(R.string.application_duration_hour));
+        }
+
+        if (minutes > 0) {
+            if (callDurationBuilder.length() > 0) {
+                callDurationBuilder.append(" ");
+            }
+            callDurationBuilder.append(minutes).append(context.getString(R.string.application_duration_minute));
+        }
+
+        if (seconds > 0 || callDurationBuilder.length() == 0) {
+            if (callDurationBuilder.length() > 0) {
+                callDurationBuilder.append(" ");
+            }
+            callDurationBuilder.append(seconds).append(context.getString(R.string.application_duration_second));
+        }
+
+        return callDurationBuilder.toString();
+    }
 }

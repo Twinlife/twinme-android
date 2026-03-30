@@ -142,7 +142,7 @@ public class PreviewFileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         if (viewHolder.getItemViewType() == VIDEO) {
             PreviewFullScreenVideoViewHolder previewFullScreenVideoViewHolder = (PreviewFullScreenVideoViewHolder) viewHolder;
-            FileInfo fileInfo = (FileInfo) mFiles.get(previewFullScreenVideoViewHolder.getBindingAdapterPosition());
+            FileInfo fileInfo = mFiles.get(previewFullScreenVideoViewHolder.getBindingAdapterPosition());
             previewFullScreenVideoViewHolder.onBind(fileInfo, mPreviewFileActivity, true);
             mCurrentFullscreenVideoViewHolder = previewFullScreenVideoViewHolder;
         } else {

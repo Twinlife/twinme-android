@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import org.twinlife.device.android.twinme.R;
@@ -35,13 +36,15 @@ public class ColorSpaceAdapter extends Adapter<ColorSpaceViewHolder> {
     private final AbstractTwinmeActivity mListActivity;
     private final List<UIColorSpace> mUIColor;
     private final int mColorWidth;
+    @Nullable
     private final OnColorClickListener mOnColorClickListener;
 
     private String mDefaultColor;
     private String mSelectedColor;
     private boolean mEnterColorEnable;
 
-    ColorSpaceAdapter(AbstractTwinmeActivity listActivity, List<UIColorSpace> colors, OnColorClickListener onColorClickListener, int colorWidth) {
+    ColorSpaceAdapter(@NonNull AbstractTwinmeActivity listActivity, @NonNull List<UIColorSpace> colors,
+                      @Nullable OnColorClickListener onColorClickListener, int colorWidth) {
         mListActivity = listActivity;
         mUIColor = colors;
         mOnColorClickListener = onColorClickListener;
@@ -92,7 +95,9 @@ public class ColorSpaceAdapter extends Adapter<ColorSpaceViewHolder> {
 
         if (position == mUIColor.size()) {
             viewHolder.onBindEditStyle(mEnterColorEnable);
-            viewHolder.itemView.setOnClickListener(view -> mOnColorClickListener.onEnterCustomColor());
+            if (mOnColorClickListener != null) {
+                viewHolder.itemView.setOnClickListener(view -> mOnColorClickListener.onEnterCustomColor());
+            }
         } else {
             UIColorSpace customColor = mUIColor.get(position);
             boolean isSelected = false;

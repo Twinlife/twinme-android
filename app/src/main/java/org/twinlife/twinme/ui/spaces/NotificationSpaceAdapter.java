@@ -108,7 +108,7 @@ public class NotificationSpaceAdapter extends RecyclerView.Adapter<RecyclerView.
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_fragment_title), false);
         } else if (viewType == CHECKBOX) {
             SettingSpaceViewHolder settingsViewHolder = (SettingSpaceViewHolder) viewHolder;
-            String spaceSettingProperty = SpaceSettingProperty.PROPERTY_DISPLAY_NOTIFICATIONS;;
+            String spaceSettingProperty = SpaceSettingProperty.PROPERTY_DISPLAY_NOTIFICATIONS;
             String title = mListActivity.getString(R.string.settings_space_activity_allow_notifications);
             boolean value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DISPLAY_NOTIFICATIONS, true);
 

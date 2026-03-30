@@ -189,15 +189,27 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
             mTypeImageView.setImageResource(R.drawable.history_audio_call);
         }
 
+        String callDuration = "";
+        if (callDescriptor.getTerminateReason() != null && callDescriptor.getDuration() > 0) {
+            int duration = (int) callDescriptor.getDuration() / 1000;
+            callDuration = Utils.formatCallDuration(context, duration);
+        }
+
+        String callType = "";
         if (callDescriptor.isIncoming()) {
             if (uiOriginator != null && uiOriginator.getContact().getType() == Originator.Type.CALL_RECEIVER) {
-                mTypeView.setText(context.getString(R.string.premium_services_activity_click_to_call_title));
+                callType = context.getString(R.string.premium_services_activity_click_to_call_title);
             } else {
-                mTypeView.setText(context.getString(R.string.calls_fragment_incoming_call));
+                callType = context.getString(R.string.calls_fragment_incoming_call);
             }
-
         } else {
-            mTypeView.setText(context.getString(R.string.calls_fragment_outgoing_call));
+            callType = context.getString(R.string.calls_fragment_outgoing_call);
+        }
+
+        if (!callDuration.isEmpty()) {
+            mTypeView.setText(String.format("%s - %s", callType, callDuration));
+        } else {
+            mTypeView.setText(callType);
         }
 
         if (!callDescriptor.isAccepted() && callDescriptor.isIncoming() && callDescriptor.getTerminateReason() != null) {

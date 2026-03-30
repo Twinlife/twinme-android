@@ -42,6 +42,9 @@
     <string name="application_description">Описание</string>
     <string name="application_display_all">Показать все</string>
     <string name="application_do_not_display">Больше не отображать</string>
+    <string name="application_duration_hour">ч</string>
+    <string name="application_duration_minute">мин</string>
+    <string name="application_duration_second">с</string>
     <string name="application_edit">Правка</string>
     <string name="application_error_code">Код ошибки: %1$s</string>
     <string name="application_error_file_not_found">Файл не найден.</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s удалил это отношение</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s не отвечает</string>
     <string name="info_item_activity_deleted">Удалено получателем:</string>
+    <string name="info_item_activity_location">Местоположение</string>
+    <string name="info_item_activity_location_map_error">Ваше устройство не может отобразить карту с местоположением %1$s.</string>
     <string name="info_item_activity_may_be_copied">Может быть скопировано/сохранено/передано…</string>
     <string name="info_item_activity_may_not_be_copied">Не может быть скопировано/сохранено/передано…</string>
+    <string name="info_item_activity_not_delivered">Не доставлено</string>
+    <string name="info_item_activity_not_delivered_expiration">Сообщение не может быть доставлено в течение 15 дней.</string>
+    <string name="info_item_activity_not_delivered_storage">На устройстве получателя недостаточно места для хранения этого контента.</string>
+    <string name="info_item_activity_not_delivered_update">Приложение получателя необходимо обновить.</string>
     <string name="info_item_activity_reactions">Реакции</string>
     <string name="info_item_activity_received">Получено:</string>
     <string name="info_item_activity_seen">Просмотров:</string>
@@ -930,7 +939,7 @@
     <string name="personalization_activity_font_large">большой</string>
     <string name="personalization_activity_font_small">Маленький</string>
     <string name="personalization_activity_haptic_feedback">Тактильная обратная связь</string>
-    <string name="personalization_activity_haptic_feedback_message">Тактильные ощущения при прикосновении.</string>
+    <string name="personalization_activity_haptic_feedback_message">Тактильные ощущения при прикосновении</string>
     <string name="personalization_activity_menu_choose_color">Цвета по умолчанию</string>
     <string name="personalization_activity_menu_enter_color">Цветовой код</string>
     <string name="personalization_activity_mode">Цветовая схема</string>

@@ -41,6 +41,9 @@
     <string name="application_description">Opis</string>
     <string name="application_display_all">Wyświetl wszystko</string>
     <string name="application_do_not_display">Nie wyświetlaj więcej</string>
+    <string name="application_duration_hour">g</string>
+    <string name="application_duration_minute">min</string>
+    <string name="application_duration_second">s</string>
     <string name="application_edit">Edytuj</string>
     <string name="application_error_code">Kod błędu: %1$s</string>
     <string name="application_error_file_not_found">Plik nie został znaleziony.</string>
@@ -781,8 +784,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s usunęli tę relację</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s nie odpowiada</string>
     <string name="info_item_activity_deleted">Usunięte przez odbiorcę:</string>
+    <string name="info_item_activity_location">Lokalizacja</string>
+    <string name="info_item_activity_location_map_error">Twoje urządzenie nie może wyświetlić mapy z lokalizacją %1$s.</string>
     <string name="info_item_activity_may_be_copied">Można kopiować / zapisywać / udostępniać…</string>
     <string name="info_item_activity_may_not_be_copied">Nie można kopiować / zapisywać / udostępniać…</string>
+    <string name="info_item_activity_not_delivered">Nie dostarczono</string>
+    <string name="info_item_activity_not_delivered_expiration">Wiadomości nie można było dostarczyć po 15 dniach.</string>
+    <string name="info_item_activity_not_delivered_storage">Na urządzeniu odbiorcy nie ma wystarczającej ilości miejsca, aby odebrać tę treść.</string>
+    <string name="info_item_activity_not_delivered_update">Aplikacja odbiorcy wymaga aktualizacji.</string>
     <string name="info_item_activity_reactions">Reakcje</string>
     <string name="info_item_activity_received">Odebrane:</string>
     <string name="info_item_activity_seen">Widziany:</string>
@@ -929,7 +938,7 @@
     <string name="personalization_activity_font_large">Duże</string>
     <string name="personalization_activity_font_small">Małe</string>
     <string name="personalization_activity_haptic_feedback">Dotykowa informacja zwrotna</string>
-    <string name="personalization_activity_haptic_feedback_message">Wrażenie dotykowe podczas dotykania.</string>
+    <string name="personalization_activity_haptic_feedback_message">Wrażenie dotykowe podczas dotykania</string>
     <string name="personalization_activity_menu_choose_color">Kolory domyślne</string>
     <string name="personalization_activity_menu_enter_color">Kod koloru</string>
     <string name="personalization_activity_mode">Tryb</string>

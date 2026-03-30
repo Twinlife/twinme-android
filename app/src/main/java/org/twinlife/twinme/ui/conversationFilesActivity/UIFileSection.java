@@ -56,7 +56,7 @@ public class UIFileSection {
             return mTitle;
         }
 
-        if (mItems.size() == 0) {
+        if (mItems.isEmpty()) {
             return "";
         }
 

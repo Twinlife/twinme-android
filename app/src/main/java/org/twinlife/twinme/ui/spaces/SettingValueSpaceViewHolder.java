@@ -62,9 +62,7 @@ public class SettingValueSpaceViewHolder extends RecyclerView.ViewHolder {
         mValueView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
         mValueView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        itemView.setOnClickListener(v -> {
-            mObserver.onSettingClick(mSpaceSettingProperty);
-        });
+        itemView.setOnClickListener(v -> mObserver.onSettingClick(mSpaceSettingProperty));
     }
 
     public void onBind(String spaceSettingProperty, String title, long value, boolean visible) {

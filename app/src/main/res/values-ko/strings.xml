@@ -42,6 +42,9 @@
     <string name="application_description">기술</string>
     <string name="application_display_all">모두 표시</string>
     <string name="application_do_not_display">더 이상 표시하지 않음</string>
+    <string name="application_duration_hour">시간</string>
+    <string name="application_duration_minute">분</string>
+    <string name="application_duration_second">초</string>
     <string name="application_edit">편집</string>
     <string name="application_error_code">오류 코드: %1$s</string>
     <string name="application_error_file_not_found">파일을 찾을 수 없습니다.</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s 님이이 관계를 삭제했습니다</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s가 답변하지 않습니다</string>
     <string name="info_item_activity_deleted">수신자가 삭제 :</string>
+    <string name="info_item_activity_location">위치</string>
+    <string name="info_item_activity_location_map_error">기기에서 %1$s의 위치가 표시된 지도를 표시할 수 없습니다.</string>
     <string name="info_item_activity_may_be_copied">복사 / 저장 / 공유 가능…</string>
     <string name="info_item_activity_may_not_be_copied">복사 / 저장 / 공유 할 수 없습니다…</string>
+    <string name="info_item_activity_not_delivered">배달 실패</string>
+    <string name="info_item_activity_not_delivered_expiration">15일이 지나도 메시지를 배달할 수 없습니다.</string>
+    <string name="info_item_activity_not_delivered_storage">수신자의 기기에 이 콘텐츠를 수신할 저장 공간이 부족합니다.</string>
+    <string name="info_item_activity_not_delivered_update">수신자의 앱을 업데이트해야 합니다.</string>
     <string name="info_item_activity_reactions">반응</string>
     <string name="info_item_activity_received">받은 :</string>
     <string name="info_item_activity_seen">조회 :</string>
@@ -930,7 +939,7 @@
     <string name="personalization_activity_font_large">큰</string>
     <string name="personalization_activity_font_small">작은</string>
     <string name="personalization_activity_haptic_feedback">햅틱 피드백</string>
-    <string name="personalization_activity_haptic_feedback_message">만졌을 때의 촉감.</string>
+    <string name="personalization_activity_haptic_feedback_message">만졌을 때의 촉감</string>
     <string name="personalization_activity_menu_choose_color">기본 색상</string>
     <string name="personalization_activity_menu_enter_color">색상 코드</string>
     <string name="personalization_activity_mode">패션</string>

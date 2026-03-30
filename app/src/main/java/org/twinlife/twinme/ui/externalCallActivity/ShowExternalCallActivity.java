@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023-2024 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -329,7 +328,7 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         gradientDrawable.mutate();
         gradientDrawable.setColor(Color.rgb(244, 244, 244));
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(slideMarkView, gradientDrawable);
+        slideMarkView.setBackground(gradientDrawable);
 
         float corner = ((float)Design.SLIDE_MARK_HEIGHT / 2) * Resources.getSystem().getDisplayMetrics().density;
         gradientDrawable.setCornerRadius(corner);
@@ -727,7 +726,9 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onEditExternalCallClick");
         }
 
-        startActivity(EditExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        if (mCallReceiver != null) {
+            startActivity(EditExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        }
     }
 
     protected void onTwincodeClick() {
@@ -735,7 +736,9 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onTwincodeClick");
         }
 
-        startActivity(InvitationExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        if (mCallReceiver != null) {
+            startActivity(InvitationExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        }
     }
 
     protected void onAudioClick() {
@@ -787,7 +790,9 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onEditIdentityClick");
         }
 
-        startActivity(EditIdentityActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        if (mCallReceiver != null) {
+            startActivity(EditIdentityActivity.class, Intents.INTENT_CALL_RECEIVER_ID, mCallReceiver.getId());
+        }
     }
 
     protected void onLastCallsClick() {

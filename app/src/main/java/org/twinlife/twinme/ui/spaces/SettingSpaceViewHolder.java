@@ -28,6 +28,9 @@ public class SettingSpaceViewHolder extends RecyclerView.ViewHolder {
     }
 
     private static final float DESIGN_ITEM_VIEW_HEIGHT = 120f;
+    private static final int DESIGN_LEFT_MARGIN = 34;
+    private static final int DESIGN_RIGHT_MARGIN = 32;
+    private static final int DESIGN_VERTICAL_MARGIN = 3;
     private static final int ITEM_VIEW_HEIGHT;
 
     static {
@@ -57,6 +60,12 @@ public class SettingSpaceViewHolder extends RecyclerView.ViewHolder {
         mSwitchView.setTypeface(Design.FONT_REGULAR32.typeface);
         mSwitchView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
         mSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mSwitchView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
 
         mOnCheckedChangeListener = (compoundButton, value) -> mObserver.onSettingChangeValue(mSpaceSettingProperty, value);
         mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);

@@ -42,6 +42,9 @@
     <string name="application_description">Omschrijving</string>
     <string name="application_display_all">Alles weergeven</string>
     <string name="application_do_not_display">Niet meer weergeven</string>
+    <string name="application_duration_hour">u</string>
+    <string name="application_duration_minute">min</string>
+    <string name="application_duration_second">s</string>
     <string name="application_edit">Bewerk</string>
     <string name="application_error_code">Foutcode: %1$s</string>
     <string name="application_error_file_not_found">Het bestand is niet gevonden.</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s heeft deze relatie verwijderd</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s antwoordt niet</string>
     <string name="info_item_activity_deleted">Verwijderd door ontvanger:</string>
+    <string name="info_item_activity_location">Locatie</string>
+    <string name="info_item_activity_location_map_error">Uw apparaat kan de kaart met de locatie %1$s niet weergeven.</string>
     <string name="info_item_activity_may_be_copied">Mag worden gekopieerd/opgeslagen/gedeeld…</string>
     <string name="info_item_activity_may_not_be_copied">Mag niet worden gekopieerd/opgeslagen/gedeeld…</string>
+    <string name="info_item_activity_not_delivered">Niet bezorgd</string>
+    <string name="info_item_activity_not_delivered_expiration">Het bericht kon na 15 dagen nog steeds niet worden bezorgd.</string>
+    <string name="info_item_activity_not_delivered_storage">Het apparaat van de ontvanger heeft onvoldoende opslagruimte voor deze inhoud.</string>
+    <string name="info_item_activity_not_delivered_update">De app van de ontvanger moet worden bijgewerkt.</string>
     <string name="info_item_activity_reactions">Reacties</string>
     <string name="info_item_activity_received">Ontvangen:</string>
     <string name="info_item_activity_seen">Bekeken:</string>
@@ -930,7 +939,7 @@
     <string name="personalization_activity_font_large">Groot</string>
     <string name="personalization_activity_font_small">Klein</string>
     <string name="personalization_activity_haptic_feedback">Haptische feedback</string>
-    <string name="personalization_activity_haptic_feedback_message">Tactiel gevoel bij aanraking.</string>
+    <string name="personalization_activity_haptic_feedback_message">Tactiel gevoel bij aanraking</string>
     <string name="personalization_activity_menu_choose_color">Standaardkleuren</string>
     <string name="personalization_activity_menu_enter_color">Kleurcode</string>
     <string name="personalization_activity_mode">Modus</string>

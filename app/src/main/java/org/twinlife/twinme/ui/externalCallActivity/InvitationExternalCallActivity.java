@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -21,8 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -85,7 +83,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
         invitationViewBorder.getPaint().setStrokeWidth(DESIGN_CONTAINER_BORDER);
 
         LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{invitationViewBackground, invitationViewBorder});
-        ViewCompat.setBackground(invitationView, layerDrawable);
+        invitationView.setBackground(layerDrawable);
 
         View headerView = findViewById(R.id.invitation_external_call_activity_header_view);
         outerRadii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
@@ -99,7 +97,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
         headerViewBorder.getPaint().setStrokeWidth(DESIGN_CONTAINER_BORDER);
 
         LayerDrawable headerLayerDrawable = new LayerDrawable(new Drawable[]{headerViewBackground, headerViewBorder});
-        ViewCompat.setBackground(headerView, headerLayerDrawable);
+        headerView.setBackground(headerLayerDrawable);
 
         ViewGroup.LayoutParams layoutParams = headerView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_HEADER_VIEW_HEIGHT * Design.HEIGHT_RATIO);
@@ -130,7 +128,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
         outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable nameViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         nameViewBackground.getPaint().setColor(DESIGN_NAME_VIEW_COLOR);
-        ViewCompat.setBackground(nameContainerView, nameViewBackground);
+        nameContainerView.setBackground(nameViewBackground);
 
         int rightMargin = (int) ((DESIGN_AVATAR_VIEW_HEIGHT * Design.HEIGHT_RATIO) + ((DESIGN_ROUNDED_VIEW_MARGIN + DESIGN_AVATAR_VIEW_MARGIN) * Design.WIDTH_RATIO));
 
@@ -159,7 +157,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
         outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable qrCodeViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         qrCodeViewBackground.getPaint().setColor(Color.WHITE);
-        ViewCompat.setBackground(qrCodeContainerView, qrCodeViewBackground);
+        qrCodeContainerView.setBackground(qrCodeViewBackground);
 
         qrCodeContainerView.setOnClickListener(v -> onTwincodeClick());
 
@@ -213,7 +211,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
 
         ShapeDrawable shareViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         shareViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(shareView, shareViewBackground);
+        shareView.setBackground(shareViewBackground);
 
         ImageView socialIconView = findViewById(R.id.invitation_external_call_activity_social_icon_view);
         socialIconView.setColorFilter(Color.WHITE);

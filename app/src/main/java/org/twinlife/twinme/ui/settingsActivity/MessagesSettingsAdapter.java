@@ -213,7 +213,8 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
         } else if (viewType == VALUE) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             if (position == POSITION_TIMEOUT_EPHEMERAL) {
-                settingValueViewHolder.onBind(mListActivity.getString(R.string.application_timeout), mListActivity.getExpireTimeout(), mListActivity.isAllowEphemeral(), Settings.ephemeralMessageExpireTimeout);
+                Runnable runnable = () -> mListActivity.onSettingClick(Settings.ephemeralMessageExpireTimeout);
+                settingValueViewHolder.onBind(mListActivity.getString(R.string.application_timeout), mListActivity.getExpireTimeout(), mListActivity.isAllowEphemeral(), Settings.ephemeralMessageExpireTimeout, runnable);
             } else {
                 UISetting<Integer> uiSetting;
                 if (position == POSITION_CONTENT_MEDIA) {

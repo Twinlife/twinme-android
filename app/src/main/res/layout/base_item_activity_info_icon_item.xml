@@ -13,11 +13,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ephemeral_icon"
-            app:layout_aspectRatio="83.33%"
-            app:layout_heightPercent="30%"
-            app:layout_marginLeftPercent="3.47%"
-            app:layout_marginStartPercent="3.47%" />
+            android:src="@drawable/ephemeral_icon" />
 
         <TextView
             android:id="@+id/info_icon_item_text_view"

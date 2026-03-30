@@ -310,7 +310,7 @@ public class EnterInvitationCodeActivity extends AbstractTwinmeActivity implemen
         marginLayoutParams.topMargin = (int) (DESIGN_ENTER_CODE_TOP_MARGIN * Design.HEIGHT_RATIO);
 
         int editTextMargin = (int) (DESIGN_ENTER_CODE_MARGIN * Design.WIDTH_RATIO);
-        int editTextWidth = (int) ((Design.BUTTON_WIDTH - (editTextMargin * 5)) / 6);
+        int editTextWidth = (Design.BUTTON_WIDTH - (editTextMargin * 5)) / 6;
 
         View enterCodeOneView = findViewById(R.id.enter_invitation_code_activity_enter_code_one_content_view);
 

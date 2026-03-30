@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -26,7 +26,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
@@ -121,7 +120,7 @@ public class LockScreenActivity extends AbstractTwinmeActivity {
 
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(Color.WHITE);
-        ViewCompat.setBackground(unlockClickableView, saveViewBackground);
+        unlockClickableView.setBackground(saveViewBackground);
 
         ViewGroup.LayoutParams layoutParams = unlockClickableView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

@@ -42,6 +42,9 @@
     <string name="application_description">विवरण</string>
     <string name="application_display_all">सभी प्रदर्शित करें</string>
     <string name="application_do_not_display">अब और प्रदर्शित न करें</string>
+    <string name="application_duration_hour">घं</string>
+    <string name="application_duration_minute">मि</string>
+    <string name="application_duration_second">से</string>
     <string name="application_edit">संपादित करें</string>
     <string name="application_error_code">एरर कोड: %1$s</string>
     <string name="application_error_file_not_found">फ़ाइल नहीं मिली।</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s ने इस संबंध को हटा दिया</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s उत्तर नहीं देता है</string>
     <string name="info_item_activity_deleted">रिसीवर द्वारा हटा दिया गया:</string>
+    <string name="info_item_activity_location">लोकेशन</string>
+    <string name="info_item_activity_location_map_error">आपका डिवाइस %1$s की लोकेशन वाला मैप नहीं दिखा सकता।</string>
     <string name="info_item_activity_may_be_copied">कॉपी/बचाया/साझा किया जा सकता है…</string>
     <string name="info_item_activity_may_not_be_copied">कॉपी/सहेज/साझा नहीं किया जा सकता है…</string>
+    <string name="info_item_activity_not_delivered">डिलीवर नहीं हुआ</string>
+    <string name="info_item_activity_not_delivered_expiration">मैसेज 15 दिन बाद भी डिलीवर नहीं हो सका।</string>
+    <string name="info_item_activity_not_delivered_storage">पाने वाले के डिवाइस में यह कंटेंट पाने के लिए काफ़ी स्टोरेज स्पेस नहीं है।</string>
+    <string name="info_item_activity_not_delivered_update">पाने वाले के ऐप को अपडेट करने की ज़रूरत है।</string>
     <string name="info_item_activity_reactions">प्रतिक्रियाओं</string>
     <string name="info_item_activity_received">प्राप्त किया:</string>
     <string name="info_item_activity_seen">देखा:</string>

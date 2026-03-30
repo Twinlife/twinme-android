@@ -63,8 +63,9 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
 
     public abstract void getMapAvatar(@Nullable UUID peerTwincodeOutboundId, @NonNull TwinmeContext.Consumer<Bitmap> avatarConsumer);
 
-    public abstract @Nullable
-    Contact getContact();
+    public abstract String getPeerName(@Nullable UUID peerTwincodeOutboundId);
+
+    public abstract @Nullable Contact getContact();
 
     @Nullable
     public String getContactName() {

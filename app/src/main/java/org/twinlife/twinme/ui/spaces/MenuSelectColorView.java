@@ -33,7 +33,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -420,7 +419,7 @@ public class MenuSelectColorView extends PercentRelativeLayout implements OnColo
         outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable defaultColorViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         defaultColorViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(defaultColorView, defaultColorViewBackground);
+        defaultColorView.setBackground(defaultColorViewBackground);
 
         layoutParams = defaultColorView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -440,7 +439,7 @@ public class MenuSelectColorView extends PercentRelativeLayout implements OnColo
 
         ShapeDrawable enterColorViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         enterColorViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(mEnterColorView, enterColorViewBackground);
+        mEnterColorView.setBackground(enterColorViewBackground);
 
         layoutParams = mEnterColorView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;

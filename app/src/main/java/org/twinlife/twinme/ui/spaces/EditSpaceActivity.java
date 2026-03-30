@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2025 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -43,7 +43,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,8 +81,8 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
     private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
-        ImageView mImageView;
-        File mFile;
+        final ImageView mImageView;
+        final File mFile;
 
         public DownloadImageTask(ImageView imageView, File avatarFile) {
             mImageView = imageView;
@@ -137,9 +136,6 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
     protected UIColorSpace mSelectedColor;
 
     private EditSpaceService mEditSpaceService;
-
-    private boolean mHasContacts = false;
-    private boolean mHasGroups = false;
 
     private boolean mCreateSpace = false;
 
@@ -390,7 +386,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             Log.d(LOG_TAG, "onGetContacts: contacts=" + contacts);
         }
 
-        mHasContacts = contacts.size() > 0;
+        boolean mHasContacts = !contacts.isEmpty();
     }
 
     @Override
@@ -399,7 +395,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             Log.d(LOG_TAG, "onGetGroups: groups=" + groups);
         }
 
-        mHasGroups = groups.size() > 0;
+        boolean mHasGroups = !groups.isEmpty();
     }
 
     @Override
@@ -520,7 +516,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         gradientDrawable.mutate();
         gradientDrawable.setColor(Color.rgb(244, 244, 244));
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(slideMarkView, gradientDrawable);
+        slideMarkView.setBackground(gradientDrawable);
 
         float corner = ((float) Design.SLIDE_MARK_HEIGHT / 2) * Resources.getSystem().getDisplayMetrics().density;
         gradientDrawable.setCornerRadius(corner);
@@ -601,7 +597,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
         ShapeDrawable descriptionContentViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         descriptionContentViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(descriptionContentView, descriptionContentViewBackground);
+        descriptionContentView.setBackground(descriptionContentViewBackground);
 
         layoutParams = descriptionContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -654,7 +650,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
         ShapeDrawable colorViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         colorViewBackground.getPaint().setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
-        ViewCompat.setBackground(colorContentView, colorViewBackground);
+        colorContentView.setBackground(colorViewBackground);
 
         layoutParams = colorContentView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
@@ -834,7 +830,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
                 float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
                 ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
                 saveViewBackground.getPaint().setColor(color);
-                ViewCompat.setBackground(mSaveClickableView, saveViewBackground);
+                mSaveClickableView.setBackground(saveViewBackground);
 
                 updateSpaceColor();
             }
@@ -1052,7 +1048,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         saveViewBackground.getPaint().setColor(saveColor);
-        ViewCompat.setBackground(mSaveClickableView, saveViewBackground);
+        mSaveClickableView.setBackground(saveViewBackground);
 
         mUIColorSpaceListAdapter.setSelectedColor(mSelectedColor.getStringColor());
     }

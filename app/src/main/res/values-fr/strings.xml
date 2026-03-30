@@ -42,6 +42,9 @@
     <string name="application_description">Description</string>
     <string name="application_display_all">Afficher tout</string>
     <string name="application_do_not_display">Ne plus afficher</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">min</string>
+    <string name="application_duration_second">s</string>
     <string name="application_edit">Modifier</string>
     <string name="application_error_code">Code erreur : %1$s</string>
     <string name="application_error_file_not_found">Le fichier n’a pas été trouvé.</string>
@@ -783,8 +786,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$s a supprimé cette relation</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s ne répond pas</string>
     <string name="info_item_activity_deleted">Supprimé par le destinataire :</string>
+    <string name="info_item_activity_location">Position</string>
+    <string name="info_item_activity_location_map_error">Votre appareil ne peut pas afficher la carte avec la position de %1$s.</string>
     <string name="info_item_activity_may_be_copied">Peut être copié/enregistré/partagé…</string>
     <string name="info_item_activity_may_not_be_copied">Ne peut pas être copié/enregistré/partagé…</string>
+    <string name="info_item_activity_not_delivered">Non livré</string>
+    <string name="info_item_activity_not_delivered_expiration">Le message n\'a pas pu être remis après 15 jours.</string>
+    <string name="info_item_activity_not_delivered_storage">L\'appareil du destinataire ne dispose pas d\'un espace de stockage suffisant pour recevoir ce contenu.</string>
+    <string name="info_item_activity_not_delivered_update">L\'application du destinataire doit être mise à jour.</string>
     <string name="info_item_activity_reactions">Réactions</string>
     <string name="info_item_activity_received">Reçu :</string>
     <string name="info_item_activity_seen">Vu :</string>
@@ -931,7 +940,7 @@
     <string name="personalization_activity_font_large">Grande</string>
     <string name="personalization_activity_font_small">Petite</string>
     <string name="personalization_activity_haptic_feedback">Retour haptique</string>
-    <string name="personalization_activity_haptic_feedback_message">Sensation tactile au toucher.</string>
+    <string name="personalization_activity_haptic_feedback_message">Sensation tactile au toucher</string>
     <string name="personalization_activity_menu_choose_color">Couleurs par défaut</string>
     <string name="personalization_activity_menu_enter_color">Code couleur</string>
     <string name="personalization_activity_mode">Mode</string>

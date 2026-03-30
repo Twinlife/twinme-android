@@ -42,6 +42,9 @@
     <string name="application_description">説明</string>
     <string name="application_display_all">すべて表示</string>
     <string name="application_do_not_display">もう表示しない</string>
+    <string name="application_duration_hour">時間</string>
+    <string name="application_duration_minute">分</string>
+    <string name="application_duration_second">秒</string>
     <string name="application_edit">編集</string>
     <string name="application_error_code">エラーコード: %1$s</string>
     <string name="application_error_file_not_found">ファイルが見つかりません。</string>
@@ -287,7 +290,7 @@
     <string name="backup_activity_content_info">バックアップには、会話、グループ、通知、履歴は含まれません。</string>
     <string name="backup_activity_error_words">入力した単語ではバックアップを復号できません。</string>
     <string name="backup_activity_generate_word">生成する</string>
-    <string name="backup_activity_last_backup">％@の最後のバックアップ</string>
+    <string name="backup_activity_last_backup">%1$sの最後のバックアップ</string>
     <string name="backup_activity_new_backup">新しいバックアップ</string>
     <string name="backup_activity_onboarding">アカウントデータ（「Spaces」、プロフィール、連絡先、「click-to-call」）の暗号化されたバックアップを作成します。このバックアップは、このデバイスまたは別のデバイスに復元できます。</string>
     <string name="backup_activity_reminder">最後のバックアップは30日以上前に作成されています。</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">%1$sがこの関係を削除しました</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$sが応答しません</string>
     <string name="info_item_activity_deleted">受信者によって削除されました：</string>
+    <string name="info_item_activity_location">位置情報</string>
+    <string name="info_item_activity_location_map_error">お使いの端末では、%1$s の位置の地図を表示できません。</string>
     <string name="info_item_activity_may_be_copied">コピー/保存/共有できます…</string>
     <string name="info_item_activity_may_not_be_copied">コピー/保存/共有できません…</string>
+    <string name="info_item_activity_not_delivered">配信されませんでした</string>
+    <string name="info_item_activity_not_delivered_expiration">15日間送信してもメッセージが配信されませんでした。</string>
+    <string name="info_item_activity_not_delivered_storage">受信者の端末には、このコンテンツを受信するのに十分なストレージ容量がありません。</string>
+    <string name="info_item_activity_not_delivered_update">受信者のアプリをアップデートする必要があります。</string>
     <string name="info_item_activity_reactions">反応</string>
     <string name="info_item_activity_received">受け取った：</string>
     <string name="info_item_activity_seen">閲覧中：</string>

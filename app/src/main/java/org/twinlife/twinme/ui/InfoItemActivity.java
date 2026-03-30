@@ -84,17 +84,26 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     private static final String LOG_TAG = "InfoItemActivity";
     private static final boolean DEBUG = false;
 
+    @Nullable
     private UUID mGroupId;
+    @Nullable
     private Bitmap mAvatar;
+    @Nullable
     private Item mItem;
     @Nullable
     private Map<TwincodeOutbound, List<DescriptorAnnotation>> mAnnotations = null;
+    @Nullable
     private InfoItemListAdapter mInfoItemListAdapter;
+    @SuppressWarnings("NotNullFieldNotInitialized") // Initialized in onCreate() -> can only be null in onDestroy()
+    @NonNull
     private InfoItemService mInfoItemService;
+    @Nullable
     private Contact mContact;
+    @Nullable
     private Group mGroup;
+    @Nullable
     private Bitmap mContactAvatar;
-    private final Map<UUID, GroupMember> mGroupMembers = new HashMap<>();
+    @Nullable
     private String mResetConversationName;
     @Nullable
     private Manager<Item> mAsyncItemLoader;
@@ -104,6 +113,8 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     @Nullable
     private CustomAppearance mCustomAppearance;
     private Bitmap mIdentityAvatar;
+    @NonNull
+    private final Map<UUID, Originator> mGroupMembers = new HashMap<>();
 
     //
     // Override TwinmeActivityImpl methods
@@ -138,8 +149,14 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             Log.d(LOG_TAG, "updateDescriptor updateDescriptor=" + allowCopy);
         }
 
+        if (mItem == null) {
+            return;
+        }
+
         mItem.setCopyAllowed(allowCopy);
-        mInfoItemListAdapter.notifyDataSetChanged();
+        if (mInfoItemListAdapter != null) {
+            mInfoItemListAdapter.notifyDataSetChanged();
+        }
         mInfoItemService.updateDescriptor(mItem.getDescriptorId(), allowCopy);
     }
 
@@ -241,7 +258,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
             if (mItem != null && mItem.isPeerItem() && mGroup != null) {
                 mInfoItemService.getImage(mGroupMembers.get(mItem.getPeerTwincodeOutboundId()), (Bitmap memberAvatar) -> {
-                    mAvatar = memberAvatar;
+                    setAvatar(memberAvatar);
                     updateViews();
                     updateAnnotations();
                 });
@@ -268,16 +285,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         }
 
         mInfoItemService.getIdentityImage(contact, (Bitmap identityAvatar) -> {
-            mIdentityAvatar = identityAvatar;
-
-            if (mIdentityAvatar == null) {
-                mIdentityAvatar = getTwinmeApplication().getAnonymousAvatar();
-            }
+            setIdentityAvatar(identityAvatar);
 
             if (contact.hasPeer()) {
-                mAvatar = avatar == null ? getDefaultAvatar() : avatar;
+                setAvatar(avatar);
             } else {
-                mAvatar = getAnonymousAvatar();
+                setAvatar(getAnonymousAvatar());
             }
 
             if (contact.getSpace() == null || contact.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
@@ -287,7 +300,6 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             }
 
             updateViews();
-            updateAnnotations();
         });
     }
 
@@ -298,9 +310,9 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         }
 
         if (contact.hasPeer()) {
-            mAvatar = avatar == null ? getDefaultAvatar() : avatar;
+            setAvatar(avatar);
         } else {
-            mAvatar = getAnonymousAvatar();
+            setAvatar(getAnonymousAvatar());
         }
 
         if (contact.getSpace() == null || contact.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
@@ -318,7 +330,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             Log.d(LOG_TAG, "onGetContactNotFound");
         }
 
-        mAvatar = getAnonymousAvatar();
+        setAvatar(getAnonymousAvatar());
         mCustomAppearance = new CustomAppearance();
 
         updateViews();
@@ -329,11 +341,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
         mGroup = group;
 
-        if (avatar != null) {
-            mAvatar = avatar;
-        } else {
-            mAvatar = getTwinmeApplication().getDefaultGroupAvatar();
-        }
+        setGroupAvatar(avatar);
 
         if (group.getSpace() == null || group.getSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
             mCustomAppearance = new CustomAppearance(this, getTwinmeContext().getDefaultSpaceSettings());
@@ -350,7 +358,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             Log.d(LOG_TAG, "onGetGroupNotFound");
         }
 
-        mAvatar = getTwinmeApplication().getDefaultGroupAvatar();
+        setAvatar(getTwinmeApplication().getDefaultGroupAvatar());
         mCustomAppearance = new CustomAppearance();
 
         updateViews();
@@ -366,7 +374,9 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             Log.d(LOG_TAG, "onLoaded");
         }
 
-        mInfoItemListAdapter.notifyDataSetChanged();
+        if (mInfoItemListAdapter != null) {
+            mInfoItemListAdapter.notifyDataSetChanged();
+        }
     }
 
     //
@@ -382,6 +392,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         if (mAsyncItemLoader != null) {
             mAsyncItemLoader.stop();
         }
+        //noinspection ConstantValue : mInfoItemService will be null here if the intent doesn't have the required extras.
         if (mInfoItemService != null) {
             mInfoItemService.dispose();
         }
@@ -397,8 +408,9 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     @Override
     public void onUpdateDescriptor(@NonNull ConversationService.Descriptor descriptor, ConversationService.UpdateType updateType) {
 
-
-        mInfoItemListAdapter.notifyDataSetChanged();
+        if (mInfoItemListAdapter != null) {
+            mInfoItemListAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -416,7 +428,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             avatarConsumer.accept(mContactAvatar);
         }
     }
-    
+
     /**
      * Get the avatar picture to be used for the given peer.
      * <p>
@@ -441,7 +453,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                 avatarConsumer.accept(mContactAvatar);
             }
         } else {
-            GroupMember member = mGroupMembers.get(peerTwincodeOutboundId);
+            Originator member = mGroupMembers.get(peerTwincodeOutboundId);
             if (member != null) {
                 mInfoItemService.getImage(member);
             } else if (isGroupConversation() && mGroup != null) {
@@ -453,6 +465,24 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public String getPeerName(@Nullable UUID peerTwincodeOutboundId) {
+
+        if (peerTwincodeOutboundId == null) {
+            return getContactName();
+        }
+
+        if (mGroupMembers.isEmpty()) {
+            return getContactName();
+        }
+
+        Originator member = mGroupMembers.get(peerTwincodeOutboundId);
+        if (member != null) {
+            return member.getName();
+        }
+        return getContactName();
+    }
+
+    @Override
     public void onGetGroup(@NonNull Group group, @NonNull List<GroupMember> groupMembers,
                            @NonNull ConversationService.GroupConversation conversation, @Nullable Bitmap avatar) {
         if (DEBUG) {
@@ -461,11 +491,8 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
         mContactAvatar = avatar;
         mInfoItemService.getIdentityImage(group, (Bitmap identityAvatar) -> {
-            mIdentityAvatar = identityAvatar;
+            setIdentityAvatar(identityAvatar);
 
-            if (mIdentityAvatar == null) {
-                mIdentityAvatar = getTwinmeApplication().getAnonymousAvatar();
-            }
             mGroup = group;
             for (GroupMember member : groupMembers) {
                 mGroupMembers.put(member.getPeerTwincodeOutboundId(), member);
@@ -473,15 +500,11 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
             if (mItem != null && mItem.isPeerItem()) {
                 mInfoItemService.getImage(mGroupMembers.get(mItem.getPeerTwincodeOutboundId()), (Bitmap memberAvatar) -> {
-                    mAvatar = memberAvatar;
+                    setAvatar(memberAvatar);
                     updateViews();
                 });
             }  else {
-                if (avatar != null) {
-                    mAvatar = avatar;
-                } else {
-                    mAvatar = getTwinmeApplication().getDefaultGroupAvatar();
-                }
+                setGroupAvatar(avatar);
 
                 updateViews();
             }
@@ -500,12 +523,9 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
         if (mItem != null && mItem.isPeerItem()) {
             mInfoItemService.getImage(mGroupMembers.get(mItem.getPeerTwincodeOutboundId()), (Bitmap memberAvatar) -> {
-                mAvatar = memberAvatar;
+                setAvatar(memberAvatar);
                 updateViews();
-                updateAnnotations();
             });
-        } else {
-            updateAnnotations();
         }
     }
 
@@ -695,11 +715,10 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             items.add(new TimeItem(mItem.getTimestamp()));
             items.add(mItem);
 
-            items.add(new InfoSectionItem(mItem, getString(R.string.navigation_activity_settings)));
-
             switch (mItem.getType()) {
                 case MESSAGE:
                 case PEER_MESSAGE:
+                    items.add(new InfoSectionItem(mItem, getString(R.string.navigation_activity_settings)));
                     items.add(new InfoCopyItem(mItem));
                     break;
                 case IMAGE:
@@ -710,13 +729,16 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                 case PEER_AUDIO:
                 case FILE:
                 case PEER_FILE:
+                    items.add(new InfoSectionItem(mItem, getString(R.string.navigation_activity_settings)));
                     items.add(new InfoCopyItem(mItem));
                     items.add(new InfoFileItem(mItem));
                     break;
                 case CALL:
                 case PEER_CALL:
+                    items.add(new InfoFileItem(mItem));
                 case LOCATION:
                 case PEER_LOCATION:
+                    items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_location)));
                     items.add(new InfoFileItem(mItem));
                     break;
                 default:
@@ -733,7 +755,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
             if (mItem.getType() != Item.ItemType.CALL && mItem.getType() != Item.ItemType.PEER_CALL) {
 
-                if (mGroupId == null) {
+                if (mContact != null) {
                     items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_sent)));
                     items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, mItem.isPeerItem() ? mContact.getPeerName() : mContact.getIdentityName(), mItem.isPeerItem() ? mAvatar : mIdentityAvatar));
 
@@ -749,7 +771,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                         items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_received)));
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
                     }
-                } else {
+                } else if (mGroup != null) {
                     items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_sent)));
 
                     if (mItem.isPeerItem()) {
@@ -828,7 +850,23 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                 }
             }
 
-            runOnUiThread(() -> mInfoItemListAdapter.setAnnotations(uiAnnotations));
+            runOnUiThread(() -> {
+                if (mInfoItemListAdapter != null) {
+                    mInfoItemListAdapter.setAnnotations(uiAnnotations);
+                }
+            });
         });
+    }
+
+    private void setAvatar(@Nullable Bitmap avatar) {
+        mAvatar = avatar != null ? avatar : getDefaultAvatar();
+    }
+
+    private void setGroupAvatar(@Nullable Bitmap avatar) {
+        mAvatar = avatar != null ? avatar : getTwinmeApplication().getDefaultGroupAvatar();
+    }
+
+    private void setIdentityAvatar(@Nullable Bitmap avatar) {
+        mIdentityAvatar = avatar != null ? avatar : getTwinmeApplication().getAnonymousAvatar();
     }
 }

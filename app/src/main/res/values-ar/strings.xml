@@ -42,6 +42,9 @@
     <string name="application_description">وصف</string>
     <string name="application_display_all">عرض الكل</string>
     <string name="application_do_not_display">لا تعرض بعد الآن</string>
+    <string name="application_duration_hour">س</string>
+    <string name="application_duration_minute">د</string>
+    <string name="application_duration_second">ث</string>
     <string name="application_edit">تعديل</string>
     <string name="application_error_code">رمز الخطأ: %1$s</string>
     <string name="application_error_file_not_found">لم يتم العثور على الملف.</string>
@@ -782,8 +785,14 @@
     <string name="info_item_activity_call_terminated_reason_revoked">حذف %1$s هذه العلاقة</string>
     <string name="info_item_activity_call_terminated_reason_timeout">%1$s لا يستجيب</string>
     <string name="info_item_activity_deleted">تم الحذف من قبل المستلم:</string>
+    <string name="info_item_activity_location">الموقع</string>
+    <string name="info_item_activity_location_map_error">لا يمكن لجهازك عرض الخريطة التي تحمل موقع %1$s.</string>
     <string name="info_item_activity_may_be_copied">يمكن نسخ / حفظ / مشاركة …</string>
     <string name="info_item_activity_may_not_be_copied">لا يمكن نسخ / حفظ / مشاركة …</string>
+    <string name="info_item_activity_not_delivered">لم يتم التسليم</string>
+    <string name="info_item_activity_not_delivered_expiration">تعذّر تسليم الرسالة بعد مرور 15 يومًا.</string>
+    <string name="info_item_activity_not_delivered_storage">لا يملك جهاز المستلم مساحة تخزين كافية لاستقبال هذا المحتوى.</string>
+    <string name="info_item_activity_not_delivered_update">يحتاج تطبيق المستلم إلى التحديث.</string>
     <string name="info_item_activity_reactions">ردود الفعل</string>
     <string name="info_item_activity_received">تم الاستلام:</string>
     <string name="info_item_activity_seen">رأيت:</string>

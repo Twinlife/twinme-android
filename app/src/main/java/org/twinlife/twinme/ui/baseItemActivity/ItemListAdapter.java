@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.utils.CommonUtils;
 
 import java.util.List;
 
@@ -204,9 +205,14 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
                 return new LocationItemViewHolder(mBaseItemActivity, convertView, true, true);
 
             case PEER_LOCATION:
-                convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
 
-                return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, true, true);
+                if (CommonUtils.isGooglePlayServicesAvailable(mBaseItemActivity)) {
+                    convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
+                    return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, true, true);
+                } else {
+                    convertView = inflater.inflate(R.layout.base_item_activity_peer_location_coordinate_item, parent, false);
+                    return new PeerLocationCoordinateItemViewHolder(mBaseItemActivity, convertView, true, true);
+                }
 
             case CALL:
                 convertView = inflater.inflate(R.layout.base_item_activity_call_item, parent, false);

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2023 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -34,7 +34,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.ViewCompat;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Profile;
@@ -228,7 +227,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
     //
 
     @Override
-    public void onGetSpace(Space space, Bitmap avatar) {
+    public void onGetSpace(@NonNull Space space, Bitmap avatar) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetSpace space=" + space);
         }
@@ -423,7 +422,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         gradientDrawable.mutate();
         gradientDrawable.setColor(Color.rgb(244, 244, 244));
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        ViewCompat.setBackground(slideMarkView, gradientDrawable);
+        slideMarkView.setBackground(gradientDrawable);
 
         float corner = ((DESIGN_SLIDE_MARK_HEIGHT * Design.HEIGHT_RATIO) / 2) * Resources.getSystem().getDisplayMetrics().density;
         gradientDrawable.setCornerRadius(corner);
@@ -468,7 +467,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
         ShapeDrawable twincodeViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         twincodeViewBackground.getPaint().setColor(Design.getMainStyle());
-        ViewCompat.setBackground(twincodeView, twincodeViewBackground);
+        twincodeView.setBackground(twincodeViewBackground);
 
         mTwincodeIconView = findViewById(R.id.show_space_activity_twincode_icon_view);
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTwincodeIconView.getLayoutParams();

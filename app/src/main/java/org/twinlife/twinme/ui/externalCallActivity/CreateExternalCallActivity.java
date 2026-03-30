@@ -88,8 +88,8 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
     private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
-        ImageView mImageView;
-        File mFile;
+        final ImageView mImageView;
+        final File mFile;
 
         public DownloadImageTask(ImageView imageView, File avatarFile) {
             mImageView = imageView;

@@ -1124,6 +1124,24 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         return mContactAvatar;
     }
 
+    @Override
+    public String getPeerName(@Nullable UUID peerTwincodeOutboundId) {
+
+        if (peerTwincodeOutboundId == null) {
+            return getContactName();
+        }
+
+        if (mGroupMembers == null || mGroupMembers.isEmpty()) {
+            return getContactName();
+        }
+
+        Originator member = mGroupMembers.get(peerTwincodeOutboundId);
+        if (member != null) {
+            return member.getName();
+        }
+        return getContactName();
+    }
+
     /**
      * Get the avatar picture to be used for the given peer.
      * <p>
@@ -2707,7 +2725,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         }
 
                         if (itemIndex == -1) {
-                            addCallDescriptor((CallDescriptor) descriptor);
+                            CallDescriptor callDescriptor = (CallDescriptor) descriptor;
+                            addCallDescriptor(callDescriptor);
+                            if (callDescriptor.getTerminateReason() != null) {
+                                scrollToBottom();
+                            }
                         } else {
                             Item item = mItems.get(itemIndex);
 
@@ -3750,13 +3772,16 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         copy = fileInfo.saveFile(getApplicationContext());
                     }
                     if (copy != null) {
-                        final SpaceSettings spaceSettings = getSpaceSettings();
                         Intent intent = new Intent(this, PreviewFileActivity.class);
 
                         ArrayList<FileInfo> fileInfos = new ArrayList<>();
                         fileInfos.add(copy);
                         intent.putExtra(Intents.INTENT_SELECTED_FILES, fileInfos);
-                        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, getTwinmeApplication().fileCopyAllowed());
+
+                        final SpaceSettings spaceSettings = getSpaceSettings();
+                        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  spaceSettings.fileCopyAllowed());
+                        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+                        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
 
                         if (mSubject != null) {
                             intent.putExtra(Intents.INTENT_CONTACT_ID, mSubject.getId().toString());
@@ -4512,6 +4537,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
     private void addCallDescriptor(CallDescriptor callDescriptor) {
         if (DEBUG) {
             Log.d(LOG_TAG, "addCallDescriptor: callDescriptor=" + callDescriptor);
+        }
+
+        if (callDescriptor.getTerminateReason() == null) {
+            return;
         }
 
         Item callItem = callDescriptor.isIncoming() ? new PeerCallItem(callDescriptor) : new CallItem(callDescriptor);
@@ -5651,9 +5680,13 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             intent.putExtra(Intents.INTENT_TEXT_MESSAGE, mSharedText.toString());
         }
 
+        final SpaceSettings spaceSettings = getSpaceSettings();
+        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  spaceSettings.fileCopyAllowed());
+        intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
+        intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
+
         intent.putExtra(Intents.INTENT_PREVIEW_START_WITH_MEDIA, true);
         intent.putExtra(Intents.INTENT_SELECTED_FILES, new ArrayList<>(fileInfos));
-        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  getTwinmeApplication().fileCopyAllowed());
 
         if (fromDirectShare) {
             intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
@@ -5726,7 +5759,6 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
         MenuSelectValueView menuTimeoutView = new MenuSelectValueView(this, null);
         menuTimeoutView.setActivity(this);
-        menuTimeoutView.setForceDarkMode(true);
         menuTimeoutView.setSelectedValue((int) mExpireTimeout);
         menuTimeoutView.setObserver(new MenuSelectValueView.Observer() {
             @Override
@@ -5819,9 +5851,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         Intent intent = new Intent(this, PreviewFileActivity.class);
+        
         final SpaceSettings spaceSettings = getSpaceSettings();
         intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE,  spaceSettings.fileCopyAllowed());
-
         intent.putExtra(Intents.INTENT_ALLOW_EPHEMERAL, mAllowEphemeralMessage);
         intent.putExtra(Intents.INTENT_EXPIRE_TIMEOUT, mExpireTimeout);
 

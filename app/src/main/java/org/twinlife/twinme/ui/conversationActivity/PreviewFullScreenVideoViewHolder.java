@@ -79,7 +79,7 @@ public class PreviewFullScreenVideoViewHolder extends RecyclerView.ViewHolder im
                 float progressBarWidth = Design.DISPLAY_WIDTH - (DESIGN_PROGRESS_SIDE_MARGIN * Design.WIDTH_RATIO * 2f);
                 long interval = (long) (0.5f * duration / progressBarWidth);
                 mHandler.postDelayed(this, interval);
-                mSeekBar.setProgress((int) duration);
+                mSeekBar.setProgress(duration);
             }
         }
     };

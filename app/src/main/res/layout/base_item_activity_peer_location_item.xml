@@ -33,9 +33,10 @@
 
         <org.twinlife.twinme.utils.AvatarView
             android:id="@+id/base_item_activity_peer_location_item_avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_alignParentBottom="true"
+            app:layout_aspectRatio="100%"
             app:layout_marginStartPercent="3.47%" />
 
         <View
