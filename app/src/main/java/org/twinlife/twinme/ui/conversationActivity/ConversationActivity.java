@@ -92,6 +92,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.ui.gifPickerActivity.GifPickerActivity;
 import org.twinlife.twinlife.AssertPoint;
 import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConversationService.AnnotationType;
@@ -516,6 +517,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
     private ActivityResultLauncher<PickVisualMediaRequest> mMediaPicker;
 
+    private ActivityResultLauncher<Intent> mGifPicker;
+
     /**
      * If not null, indicates to {@link ConversationActivity#onGetDescriptors(List)} that the user taped a reply and
      * we're waiting on additional descriptors to scroll back to the "reply-to" message.
@@ -617,6 +620,17 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                     fileInfos.add(new FileInfo(getApplicationContext(), uri));
                 }
                 onPreviewMedia(fileInfos, false);
+            }
+        });
+
+        mGifPicker = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                String path = result.getData().getStringExtra(GifPickerActivity.EXTRA_GIF_PATH);
+                String name = result.getData().getStringExtra(GifPickerActivity.EXTRA_GIF_NAME);
+                if (path != null) {
+                    sendFile(Uri.fromFile(new File(path)), name != null ? name : "gif.gif",
+                            Descriptor.Type.IMAGE_DESCRIPTOR, true, getTwinmeApplication().fileCopyAllowed(), 0);
+                }
             }
         });
     }
@@ -5120,6 +5134,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         onGalleryClick();
                         break;
 
+                    case GIF:
+                        onGifClick();
+                        break;
+
                     case FILE:
                         onFileClick();
                         break;
@@ -5287,6 +5305,23 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
 
             startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);
         } catch (ActivityNotFoundException e) {
+        }
+    }
+
+    private void onGifClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGifClick");
+        }
+
+        hapticFeedback();
+
+        if (!mSendAllowed) {
+            toast(getString(R.string.conversation_activity_group_not_allowed_post_message));
+            return;
+        }
+
+        if (mGifPicker != null) {
+            mGifPicker.launch(new Intent(this, GifPickerActivity.class));
         }
     }
 

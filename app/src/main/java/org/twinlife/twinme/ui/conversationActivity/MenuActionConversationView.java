@@ -81,6 +81,7 @@ public class MenuActionConversationView extends PercentRelativeLayout {
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MEDIAS_AND_FILES, true));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.FILE, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.GALLERY, sendAllowed));
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.GIF, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.VIDEO, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.PHOTO, sendAllowed));
 

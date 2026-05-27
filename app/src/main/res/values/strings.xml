@@ -1299,4 +1299,14 @@
     <string name="welcome_activity_step3_message">No phone number, no address book, no user-id: you choose how you want to be identified based on who you are communicating with.</string>
     <string name="welcome_activity_terms_of_use">Terms of use</string>
 
+    <!-- GIF feature (Tenor / Giphy) -->
+    <string name="tenor_api_key" translatable="false"></string>
+    <string name="giphy_api_key" translatable="false"></string>
+    <string name="conversation_activity_gif">GIF</string>
+    <string name="gif_picker_search_hint">Search GIFs</string>
+    <string name="gif_picker_no_results">No GIFs found</string>
+    <string name="gif_picker_error">Could not load GIFs. Check your connection and API key.</string>
+    <string name="gif_picker_not_configured">GIF search is not configured.\nAdd a Tenor or Giphy API key (tenor_api_key / giphy_api_key) in strings.xml.</string>
+    <string name="gif_picker_powered_by">Powered by %1$s</string>
+    <string name="gif_picker_download_error">Could not download this GIF.</string>
 </resources>

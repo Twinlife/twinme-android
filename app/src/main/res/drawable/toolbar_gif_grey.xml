@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2026 twinlife SA.
+  SPDX-License-Identifier: AGPL-3.0-only
+  Menu icon for the GIF action. Tinted at runtime via setColorFilter, so the
+  fill colour here is irrelevant; the play cut-out uses evenOdd fillType.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#000000"
+        android:fillType="evenOdd"
+        android:pathData="M4,4 L20,4 A2,2 0 0 1 22,6 L22,18 A2,2 0 0 1 20,20 L4,20 A2,2 0 0 1 2,18 L2,6 A2,2 0 0 1 4,4 Z M10,8.5 L10,15.5 L15.5,12 Z" />
+</vector>
