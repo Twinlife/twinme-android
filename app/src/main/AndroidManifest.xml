@@ -797,6 +797,12 @@
             android:exported="false"
             android:grantUriPermissions="true" />
 
+        <activity
+            android:name="org.twinlife.twinme.ui.gifPickerActivity.GifPickerActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>
