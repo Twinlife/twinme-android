@@ -84,9 +84,9 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             String message = "";
             if (position == POSITION_LOCK_SCREEN_INFORMATION) {
-                message = mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_message);
+                message = mPrivacyActivity.getString(R.string.privacy_view_lock_screen_message);
             } else if (position == POSITION_PREVENT_SCREENSHOT_INFORMATION) {
-                message = mPrivacyActivity.getString(R.string.privacy_activity_hide_last_screen_message);
+                message = mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_message);
             }
             informationViewHolder.onBind(message, false);
 
@@ -99,9 +99,9 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             String title = "";
             if (position == POSITION_LOCK_SCREEN) {
-                title = mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_title);
+                title = mPrivacyActivity.getString(R.string.privacy_view_lock_screen_title);
             } else if (position == POSITION_PREVENT_SCREENSHOT) {
-                title = mPrivacyActivity.getString(R.string.privacy_activity_hide_last_screen_title);
+                title = mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_title);
             }
 
             settingsViewHolder.onBind(title, false, false, null);

@@ -294,7 +294,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
     //
 
     @Override
-    public void onRequestPermissions(@NonNull TwinmeActivity.Permission[] grantedPermissions) {
+    public void onRequestPermissions(@NonNull Permission[] grantedPermissions) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onRequestPermissions grantedPermissions=" + Arrays.toString(grantedPermissions));
         }
@@ -387,7 +387,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             };
             OnboardingDialog onboardingDialog = new OnboardingDialog(this);
             onboardingDialog.setOnCancelListener(dialogCancelListener);
-            onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_activity_onboarding_message)), bitmap,
+            onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_view_onboarding_message)), bitmap,
                     getString(R.string.application_ok),
                     onboardingDialog::dismiss
             );
@@ -853,7 +853,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             };
             OnboardingDialog onboardingDialog = new OnboardingDialog(this);
             onboardingDialog.setOnCancelListener(dialogCancelListener);
-            onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_activity_incomplete_profile_message)), bitmap,
+            onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_view_incomplete_profile_message)), bitmap,
                     getString(R.string.application_ok),
                     onboardingDialog::dismiss
             );
@@ -1004,8 +1004,8 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             viewGroup.addView(menuAddContactView);
 
             List<UIMenuSelectAction> actions = new ArrayList<>();
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_scan_contact_title), R.drawable.scan_code));
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_invite_contact_title), R.drawable.qrcode));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_scan_contact_title), R.drawable.scan_code));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_invite_contact_title), R.drawable.qrcode));
             menuAddContactView.setActions(actions, this);
             menuAddContactView.openMenu(false);
 

@@ -86,15 +86,15 @@ public class UICleanUpExpiration {
         String  title = "";
         switch (mExpirationType) {
             case ALL:
-                title = context.getString(R.string.cleanup_activity_all);
+                title = context.getString(R.string.cleanup_view_all);
                 break;
 
             case DATE:
-                title = context.getString(R.string.cleanup_activity_prior_to);
+                title = context.getString(R.string.cleanup_view_prior_to);
                 break;
 
             case VALUE:
-                title = context.getString(R.string.cleanup_activity_older_than);
+                title = context.getString(R.string.cleanup_view_older_than);
                 break;
         }
 
@@ -121,15 +121,15 @@ public class UICleanUpExpiration {
                     break;
 
                 case THREE_MONTHS:
-                    value = String.format(context.getString(R.string.cleanup_activity_month), 3);
+                    value = String.format(context.getString(R.string.cleanup_view_month), 3);
                     break;
 
                 case SIX_MONTHS:
-                    value = String.format(context.getString(R.string.cleanup_activity_month), 6);
+                    value = String.format(context.getString(R.string.cleanup_view_month), 6);
                     break;
 
                 case ONE_YEAR:
-                    value = context.getString(R.string.cleanup_activity_one_year);
+                    value = context.getString(R.string.cleanup_view_one_year);
                     break;
 
             }

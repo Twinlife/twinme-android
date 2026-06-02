@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/local_account_migration_activity_message"
+        android:text="@string/local_account_migration_view_message"
         app:layout_widthPercent="89.06%" />
 
     <androidx.percentlayout.widget.PercentRelativeLayout

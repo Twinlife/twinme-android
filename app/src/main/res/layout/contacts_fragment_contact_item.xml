@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/show_contact_activity_pending" />
+            android:text="@string/show_contact_view_pending" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

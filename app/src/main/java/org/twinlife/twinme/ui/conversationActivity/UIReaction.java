@@ -1,9 +1,10 @@
 /*
- *  Copyright (c) 2023 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.conversationActivity;
@@ -23,7 +24,10 @@ public class UIReaction {
         HUNGER,
         SURPRISED,
         SCREAMING,
-        FIRE
+        FIRE;
+
+        // Avoid cloning the values array multiple times per reaction.
+        private static final ReactionType[] VALUES = values();
     }
 
     private ReactionType mReactionType;
@@ -38,11 +42,11 @@ public class UIReaction {
 
     public UIReaction(int reaction) {
 
-        if (reaction < 0 || reaction >= ReactionType.values().length) {
+        if (reaction < 0 || reaction >= ReactionType.VALUES.length) {
             mImage = R.drawable.reaction_unknown;
             mColorFilter = Design.BLACK_COLOR;
         } else {
-            initTypeAndImage(ReactionType.values()[reaction]);
+            initTypeAndImage(ReactionType.VALUES[reaction]);
         }
     }
 
@@ -113,18 +117,22 @@ public class UIReaction {
 
     static public ReactionType getReactionTypeWithInt(int reactionType) {
 
-        return ReactionType.values()[reactionType];
+        return ReactionType.VALUES[reactionType];
     }
 
     public static int getNotificationImageReactionWithReactionType(int reactionType) {
 
-        if (reactionType < 0 || reactionType >= ReactionType.values().length) {
+        if (reactionType < 0 || reactionType >= ReactionType.VALUES.length) {
             return R.drawable.reaction_unknown;
         }
 
         int image;
 
         switch (getReactionTypeWithInt(reactionType)) {
+            case LIKE:
+                image = R.drawable.notification_reaction_like;
+                break;
+
             case UNLIKE:
                 image = R.drawable.notification_reaction_unlike;
                 break;

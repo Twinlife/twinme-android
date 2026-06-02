@@ -348,8 +348,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
             defaultConfirmView.setForceDarkMode(true);
             defaultConfirmView.setImage(null);
-            defaultConfirmView.setTitle(getString(R.string.account_migration_activity_state_send_files));
-            defaultConfirmView.setMessage(getString(R.string.conversation_activity_send_file_warning));
+            defaultConfirmView.setTitle(getString(R.string.account_migration_view_state_send_files));
+            defaultConfirmView.setMessage(getString(R.string.conversation_view_send_file_warning));
             defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
             defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
@@ -391,12 +391,12 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
                 defaultConfirmView.setForceDarkMode(true);
                 defaultConfirmView.setImage(null);
-                defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
+                defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
 
-                String message = String.format(getString(R.string.conversation_activity_send_quality_size), Formatter.formatFileSize(this, totalSize)) + "\n\n"  + getString(R.string.conversation_activity_send_quality_warning);
+                String message = String.format(getString(R.string.conversation_view_send_quality_size), Formatter.formatFileSize(this, totalSize)) + "\n\n"  + getString(R.string.conversation_view_send_quality_warning);
                 defaultConfirmView.setMessage(message);
-                defaultConfirmView.setConfirmTitle(getString(R.string.conversation_activity_send_quality_standard));
-                defaultConfirmView.setCancelTitle(getString(R.string.conversation_activity_media_quality_original));
+                defaultConfirmView.setConfirmTitle(getString(R.string.conversation_view_send_quality_standard));
+                defaultConfirmView.setCancelTitle(getString(R.string.conversation_view_media_quality_original));
 
                 AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override

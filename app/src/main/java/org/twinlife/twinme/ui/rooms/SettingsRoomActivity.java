@@ -30,6 +30,7 @@ import org.twinlife.twinme.services.EditRoomService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.utils.CommonUtils;
 
 import java.util.UUID;
 
@@ -298,7 +299,7 @@ public class SettingsRoomActivity extends AbstractTwinmeActivity implements Edit
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.navigation_activity_settings));
+        setTitle(getString(R.string.navigation_view_settings));
 
         applyInsets(R.id.settings_room_activity_layout, R.id.settings_room_activity_tool_bar, R.id.settings_room_activity_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -380,8 +381,7 @@ public class SettingsRoomActivity extends AbstractTwinmeActivity implements Edit
             mCanSave = false;
             if (mMenu != null) {
                 MenuItem saveMenuItem = mMenu.findItem(R.id.save_action);
-                saveMenuItem.getActionView().setAlpha(0.5f);
-                saveMenuItem.setEnabled(false);
+                CommonUtils.setMenuItem(saveMenuItem, false, 0.5f, 1.0f);
             }
         } else {
             if (mCanSave) {
@@ -390,8 +390,7 @@ public class SettingsRoomActivity extends AbstractTwinmeActivity implements Edit
             mCanSave = true;
             if (mMenu != null) {
                 MenuItem saveMenuItem = mMenu.findItem(R.id.save_action);
-                saveMenuItem.getActionView().setAlpha(1.0f);
-                saveMenuItem.setEnabled(true);
+                CommonUtils.setMenuItem(saveMenuItem, true, 0.5f, 1.0f);
             }
         }
     }

@@ -1,0 +1,1296 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Acceptați</string>
+    <string name="application_account_deleted">Contul dvs. a fost șters, trebuie acum să dezinstalați aplicația.</string>
+    <string name="application_account_restored_error">Contul acestui dispozitiv a fost restaurat pe un alt dispozitiv. Trebuie să dezinstalați aplicația.</string>
+    <string name="application_add_contact_no_profile">Trebuie să completați un profil care vă reprezintă înainte de a invita un contact. Continuați?</string>
+    <string name="application_all">Toate</string>
+    <string name="application_appearance">Aspect</string>
+    <string name="application_are_you_sure">Sunteți sigur?</string>
+    <string name="application_authorization_camera">Permiteți aplicației accesul la Cameră în setările sistemului.</string>
+    <string name="application_authorization_go_settings">Accesați setările sistemului</string>
+    <string name="application_authorization_microphone">Permiteți aplicației accesul la Microfon în setările sistemului.</string>
+    <string name="application_authorization_microphone_camera">Permiteți aplicației accesul la Microfon și Cameră în setările sistemului.</string>
+    <string name="application_authorization_title">Lipsă autorizare de acces</string>
+    <string name="application_back">Înapoi</string>
+    <string name="application_backup_restore">Restaurarea copiei de rezervă</string>
+    <string name="application_backup_verify">Verificarea copiei de rezervă</string>
+    <string name="application_camera">Cameră</string>
+    <string name="application_cancel">Anulați</string>
+    <string name="application_canceled_operation">Operațiune anulată</string>
+    <string name="application_checking_connection">Verificare conexiune</string>
+    <string name="application_color">Culoare</string>
+    <string name="application_configuration">Configurație</string>
+    <string name="application_confirm">Confirmați</string>
+    <string name="application_confirm_deletion">Confirmați ștergerea</string>
+    <string name="application_connected">Conexiune securizată activată.</string>
+    <string name="application_connection_status_no_network">Fără acces la Internet.</string>
+    <string name="application_connection_status_no_network_message">Verificați conexiunea la rețea.</string>
+    <string name="application_connection_status_no_services">Fără acces la serviciu.</string>
+    <string name="application_connection_status_no_services_message">Încercați utilizarea unui VPN.</string>
+    <string name="application_contact_not_found">Acest contact a șters relația cu dvs. și nu mai este disponibil.</string>
+    <string name="application_continue_without_premium_services">Continuați fără servicii premium</string>
+    <string name="application_create_group_no_profile">Trebuie să completați un profil care vă reprezintă în acest grup. Continuați?</string>
+    <string name="application_database_error">Eroare bază de date</string>
+    <string name="application_decline">Refuzați</string>
+    <string name="application_default">Implicit</string>
+    <string name="application_delete">Ștergeți</string>
+    <string name="application_delete_message">Sigur doriți să îl ștergeți?</string>
+    <string name="application_denied_permissions">Permisiunile necesare nu sunt acordate</string>
+    <string name="application_description">Descriere</string>
+    <string name="application_display_all">Afișare toate</string>
+    <string name="application_do_not_display">Nu mai afișați</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">m</string>
+    <string name="application_duration_second">s</string>
+    <string name="application_edit">Editare</string>
+    <string name="application_error_code">Cod de eroare: %1$s</string>
+    <string name="application_error_file_not_found">Fișierul nu a fost găsit.</string>
+    <string name="application_error_media_not_supported">Acest format imagine/video nu este suportat de aplicație.</string>
+    <string name="application_error_media_unload">Imposibil de încărcat media.</string>
+    <string name="application_error_no_storage_space">Spațiu de stocare insuficient</string>
+    <string name="application_group_limit_reached">Numărul maxim (%1$d) de membri ai grupului a fost depășit.</string>
+    <string name="application_group_not_found">Ați fost eliminat din grup</string>
+    <string name="application_items_selected">%1$d elemente selectate</string>
+    <string name="application_later">Mai târziu</string>
+    <string name="application_low_usage_message">Atenție, dacă nu utilizați aplicația suficient de des, sistemul de operare poate să nu o activeze pentru schimbul de mesaje!</string>
+    <string name="application_migration_no_storage_space">Nu există suficient spațiu pe dispozitivul dvs. pentru a finaliza migrarea. Închideți aplicația, eliberați spațiu și relansați aplicația pentru a finaliza actualizarea.</string>
+    <string name="application_migration_no_storage_space_message">Unul dintre cele două dispozitive nu are suficient spațiu de stocare. Eliberați spațiu pe acel dispozitiv înainte de a relua migrarea.</string>
+    <string name="application_more_info">Mai multe informații…</string>
+    <string name="application_name_hint">Nume</string>
+    <string name="application_network_connecting">Conectare la serviciul twinme</string>
+    <string name="application_network_connectivity">Conectivitatea rețelei există</string>
+    <string name="application_network_status_airplane_message">Modul Avion este activat.</string>
+    <string name="application_network_status_airplane_resolution">Vă rugăm să dezactivați Modul Avion și să vă conectați la o rețea Wi-Fi sau mobilă.</string>
+    <string name="application_network_status_connected_no_internet">Fără acces la serviciul twinme.</string>
+    <string name="application_network_status_connected_resolution">Încercați să vă conectați la o altă rețea.</string>
+    <string name="application_network_status_connection_timeout">Nu se poate stabili conexiunea la Internet.</string>
+    <string name="application_network_status_no_internet">Fără conexiune Internet.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi este dezactivat.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi este dezactivat și nu există conexiune mobilă la Internet.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Vă rugăm să activați Wi-Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Vă rugăm să activați Wi-Fi sau o conexiune mobilă.</string>
+    <string name="application_new_feature">Nou!</string>
+    <string name="application_no">Nu</string>
+    <string name="application_no_network_connectivity">Fără conectivitate la rețea</string>
+    <string name="application_no_service">Fără serviciu</string>
+    <string name="application_not_authorized_operation">Operațiune neautorizată</string>
+    <string name="application_not_authorized_operation_by_your_contact">Operațiune neautorizată de contactul dvs.</string>
+    <string name="application_not_connected">Conexiune securizată în curs…</string>
+    <string name="application_not_signed_in">Neconectat la serviciul twinme</string>
+    <string name="application_now">Acum</string>
+    <string name="application_ok">OK</string>
+    <string name="application_one_item_selected">1 element selectat</string>
+    <string name="application_operation_failure">Eroare operațiune</string>
+    <string name="application_operation_irreversible">Această operațiune este ireversibilă</string>
+    <string name="application_permission_camera">Permisiunea de acces la cameră este necesară pentru a face o fotografie sau un videoclip.</string>
+    <string name="application_permission_scan_code">Permisiunea de acces la cameră este necesară pentru a scana un cod QR.</string>
+    <string name="application_photo_gallery">Albume foto</string>
+    <string name="application_processing_please_wait">Procesare… Vă rugăm așteptați.</string>
+    <string name="application_profile">Profil</string>
+    <string name="application_profile_avatar_not_defined">Trebuie să introduceți imaginea care vă reprezintă pentru contactele invitate cu acest profil.</string>
+    <string name="application_profile_name_not_defined">Trebuie să definiți numele care vă reprezintă pentru contactele invitate cu acest profil.</string>
+    <string name="application_remove">Eliminați</string>
+    <string name="application_save">Salvați</string>
+    <string name="application_search_hint">Căutare</string>
+    <string name="application_select">Selectați</string>
+    <string name="application_select_application">Selectați aplicația</string>
+    <string name="application_select_more">Selectați mai multe…</string>
+    <string name="application_server_timeout">Timp de răspuns server expirat</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Temă</string>
+    <string name="application_timeout">Timeout</string>
+    <string name="application_timeout_day">1 zi</string>
+    <string name="application_timeout_hour">1 oră</string>
+    <string name="application_timeout_hours">%1$d ore</string>
+    <string name="application_timeout_minute">1 minut</string>
+    <string name="application_timeout_minutes">%1$d minute</string>
+    <string name="application_timeout_month">1 lună</string>
+    <string name="application_timeout_seconds">%1$d secunde</string>
+    <string name="application_timeout_week">1 săptămână</string>
+    <string name="application_unknown_name">Necunoscut</string>
+    <string name="application_until">Până la %1$s</string>
+    <string name="application_upgrade">Actualizare twinme</string>
+    <string name="application_webrtc_failure">Eroare WebRTC</string>
+    <string name="application_wrong_configuration">Configurație incorectă</string>
+    <string name="application_yes">Da</string>
+
+    <!-- AboutActivity -->
+    <string name="about_view_application_code">Cod aplicație</string>
+    <string name="about_view_information">Informații</string>
+    <string name="about_view_legal">Mențiuni legale</string>
+    <string name="about_view_libraries">Biblioteci</string>
+    <string name="about_view_message">twinme este un serviciu securizat de chat și apeluri vocale/video fără acces la informații personale.\n\ntwinme este bazat pe WebRTC, noul standard pentru comunicații multimedia securizate (criptate end-to-end) peer-to-peer (fără server intermediar) în timp real pe web.</string>
+    <string name="about_view_open_source_information">Codul sursă al aplicației este disponibil ca Open Source pe GitHub, sub licența AGPL-3.0.</string>
+    <string name="about_view_open_sources_licences">Licențe Open Source</string>
+    <string name="about_view_premium_services">Servicii premium</string>
+    <string name="about_view_privacy_policy">Politica de confidențialitate</string>
+    <string name="about_view_quality_of_service">Calitatea serviciului</string>
+    <string name="about_view_terms_of_use">Termeni de utilizare</string>
+    <string name="about_view_version">Versiune</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_view_deleted">Această invitație a fost ștearsă</string>
+    <string name="accept_group_invitation_view_in_progress">Aderare în curs</string>
+    <string name="accept_group_invitation_view_message">%1$s vă invită să vă alăturați grupului</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_view_being_transferred">Invitația este în curs de transfer.</string>
+    <string name="accept_invitation_view_check_connection">Verificați conexiunea la Internet.</string>
+    <string name="accept_invitation_view_existing_contact_message">Aveți deja o relație cu acest contact. Doriți să creați una nouă?</string>
+    <string name="accept_invitation_view_incorrect_contact_information">Informații de contact incorecte</string>
+    <string name="accept_invitation_view_local_twincode">Nu puteți stabili o relație cu dvs. în același cont.</string>
+    <string name="accept_invitation_view_message">%1$s dorește să se conecteze cu dvs.</string>
+
+    <!-- AccountActivity -->
+    <string name="account_view_backup">Copie de rezervă pe suport extern</string>
+    <string name="account_view_backup_restore">Copie de rezervă / Restaurare</string>
+    <string name="account_view_backup_verify">Verifică o copie de rezervă</string>
+    <string name="account_view_backup_list">Istoricul copiilor de rezervă</string>
+    <string name="account_view_conversations_content_title">Conținutul conversațiilor</string>
+    <string name="account_view_delete_account">Contul dvs., împreună cu toate datele asociate, va fi șters definitiv. Confirmați?</string>
+    <string name="account_view_delete_account_confirmation">Sigur doriți să vă ștergeți contul?</string>
+    <string name="account_view_export_content">Export pe suport extern</string>
+    <string name="account_view_message_first_part">Un cont nou este creat la instalarea aplicației pentru prima dată, după reinstalare, resetarea dispozitivului sau ștergerea contului curent.</string>
+    <string name="account_view_message_second_part">Nu rămâne nicio urmă a contului anterior și a datelor, deci va trebui să vă reinvitați contactele.</string>
+    <string name="account_view_message_third_part">Ștergerea unui cont invalidează, de asemenea, toate copiile de rezervă create pentru acel cont, făcând imposibilă restaurarea unei copii de rezervă de pe acel cont pe acest dispozitiv sau pe altul.</string>
+    <string name="account_view_migration_message">Un serviciu de migrare a contului este disponibil pentru transferul contului împreună cu toate datele asociate (contacte, mesaje, grupuri etc.) între două dispozitive Android în timp real. Astfel puteți comuta conturile între un dispozitiv vechi și unul nou.</string>
+    <string name="account_view_migration_start_from_another_device">De pe alt dispozitiv</string>
+    <string name="account_view_migration_start_from_current_device">De pe dispozitivul meu</string>
+    <string name="account_view_migration_title">Migrare cont</string>
+    <string name="account_view_restore">Restaurează de pe suport extern</string>
+    <string name="account_view_title">Cont</string>
+    <string name="account_view_transfer_between_devices">Transfer între dispozitive</string>
+    <string name="account_view_transfer_from_another_device">Transfer de pe alt dispozitiv</string>
+    <string name="account_view_transfer_from_device">Transfer de pe acest dispozitiv</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_view_cancel_message">Închideți aplicația și reporniți-o pentru a accesa datele.</string>
+    <string name="account_migration_view_close_message">Închideți aplicația și reporniți-o pentru a accesa noile date.</string>
+    <string name="account_migration_view_confirm_cancel_message">Sigur doriți să anulați migrarea?</string>
+    <string name="account_migration_view_network_message">Verificați conexiunea la rețea</string>
+    <string name="account_migration_view_not_enough_space_for_files">Spațiu insuficient pentru fișiere</string>
+    <string name="account_migration_view_not_enough_space_to_receive">Spațiu insuficient pentru descărcarea bazei de date</string>
+    <string name="account_migration_view_not_enough_space_to_upload">Spațiu insuficient pentru încărcarea bazei de date</string>
+    <string name="account_migration_view_start">Porniți migrarea</string>
+    <string name="account_migration_view_state_canceled">Migrare anulată</string>
+    <string name="account_migration_view_state_list_files">Listare fișiere</string>
+    <string name="account_migration_view_state_negotiate">Așteptare</string>
+    <string name="account_migration_view_state_send_account">Trimitere cont</string>
+    <string name="account_migration_view_state_send_database">Trimitere bază de date</string>
+    <string name="account_migration_view_state_send_files">Trimitere fișiere</string>
+    <string name="account_migration_view_state_send_settings">Trimitere setări aplicație</string>
+    <string name="account_migration_view_state_terminate">Migrare aproape finalizată.</string>
+    <string name="account_migration_view_state_wait_account">Așteptare contul celuilalt dispozitiv</string>
+    <string name="account_migration_view_state_wait_connect">Așteptare reconectare</string>
+    <string name="account_migration_view_state_wait_files">Așteptare primire fișiere și bază de date.</string>
+    <string name="account_migration_view_stop">Oprire migrare</string>
+    <string name="account_migration_view_success_message">Migrare finalizată cu succes</string>
+    <string name="account_migration_view_transfer_in_progress">Transfer de date în curs</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_message">Afișați acest ecran pe fiecare dispozitiv, iar unul va scana codul QR al celuilalt.</string>
+    <string name="account_migration_scanner_view_message_older_version">Acest dispozitiv folosește o versiune mai veche de OS incompatibilă, ceea ce va duce la pierderea tuturor relațiilor de pe dispozitivul țintă în timpul transferului. Doriți totuși să continuați?</string>
+    <string name="account_migration_scanner_view_message_older_version_target">Dispozitivul țintă folosește o versiune veche de OS incompatibilă, ceea ce va duce la pierderea tuturor relațiilor dvs. în timpul transferului. Doriți totuși să continuați?</string>
+    <string name="account_migration_scanner_view_migration_start_from_another_device_message">Pentru a lansa migrarea, scanați acest cod QR de pe celălalt dispozitiv</string>
+    <string name="account_migration_scanner_view_migration_start_from_current_device_message">Scanați codul QR afișat în secțiunea „Cont / Transfer de pe alt dispozitiv” din meniul lateral al celuilalt dispozitiv.</string>
+    <string name="account_migration_scanner_view_scan_title">Scanare</string>
+    <string name="account_migration_scanner_view_stop_scan_title">Opriți scanarea</string>
+
+    <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_view_title">Adăugați un participant la acest apel</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_view_gallery_title">Import din galerie</string>
+    <string name="add_contact_view_in_person_subtitle">Invitați o persoană din apropiere</string>
+    <string name="add_contact_view_in_person_title">În persoană</string>
+    <string name="add_contact_view_invitation_code_title">Mini-Cod</string>
+    <string name="add_contact_view_invite">Invitați</string>
+    <string name="add_contact_view_invite_message">Deschideți adresa web %1$s cu twinme pe dispozitivul mobil sau scanați codul QR pentru a vă conecta privat cu „%2$s”</string>
+    <string name="add_contact_view_invite_subject">Invitație Twinme</string>
+    <string name="add_contact_view_message">Rugați prietenul de lângă dvs. să scaneze codul dvs. QR de invitație cu twinme sau apăsați butonul „Scanare” pentru a scana codul prietenului dvs.</string>
+    <string name="add_contact_view_onboarding_message">twinme nu vă cunoaște prietenii și nu îi poate descoperi. Trebuie să îi invitați personal, cu twinme când sunt lângă dvs. sau prin trimiterea unei invitații prin alte mijloace.</string>
+    <string name="add_contact_view_scan_code">Scanați codul QR de invitație</string>
+    <string name="add_contact_view_scan_error_corrupt_link">Acest link este corupt.</string>
+    <string name="add_contact_view_scan_error_expired_link">Acest link de invitație a expirat.</string>
+    <string name="add_contact_view_scan_error_incorrect_link">Acest link este incorect.</string>
+    <string name="add_contact_view_scan_error_not_managed_link">Acest link nu este gestionat de aplicație.</string>
+    <string name="add_contact_view_scan_error_revoked_link">Această relație a fost ștearsă.</string>
+    <string name="add_contact_view_scan_message_call_link">Acest link corespunde unui „click to call”</string>
+    <string name="add_contact_view_scan_message_invitation_link">Acest link corespunde unei invitații de contact</string>
+    <string name="add_contact_view_scan_message_migration_link">Acest link corespunde unei migrări de cont</string>
+    <string name="add_contact_view_scan_message_transfer_link">Acest link corespunde unui transfer de apel</string>
+    <string name="add_contact_view_scan_title">Scanare</string>
+    <string name="add_contact_view_share_image_message">Importați sau scanați acest cod QR de invitație cu Skred pentru a adăuga \"%1$s\" ca contact.</string>
+    <string name="add_contact_view_share_message_part_1">%1$s vă invită să intrați într-o relație privată pe Skred.</string>
+    <string name="add_contact_view_share_message_part_2">Skred este un serviciu de mesagerie peer-to-peer cu criptare end-to-end și apeluri video/voce HD. Nu este necesară înregistrarea.</string>
+    <string name="add_contact_view_share_message_part_3">Deschideți acest URL cu Skred pe dispozitivul dvs. mobil pentru a adăuga \"%1$s\" ca contact:</string>
+    <string name="add_contact_view_share_message_part_4">Alternativ, puteți importa sau scana codul QR de invitație din imaginea atașată cu Skred.</string>
+    <string name="add_contact_view_share_title">%1$s vă invită pe Skred</string>
+    <string name="add_contact_view_social_subtitle">mesaj, e-mail, rețea socială</string>
+    <string name="add_contact_view_social_title">Trimiteți codul printr-o aplicație</string>
+    <string name="add_contact_view_title">Invitație</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_view_add">Adăugați</string>
+    <string name="add_group_member_view_title">Adăugați membri</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_view_welcome_message">Mesaj de bun venit</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_view_calling">Se apelează…</string>
+    <string name="audio_call_view_cannot_call">Nu se poate iniția un apel vocal</string>
+    <string name="audio_call_view_connecting">Se conectează…</string>
+    <string name="audio_call_view_hangup">Închide apelul</string>
+    <string name="audio_call_view_hangup_confirmation">Doriți să închideți apelul?</string>
+    <string name="audio_call_view_terminate">Apelul a fost încheiat</string>
+    <string name="audio_call_view_terminate_busy">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; este ocupat</string>
+    <string name="audio_call_view_terminate_cancel">Apel anulat de &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_connectivity_error">Apel încheiat: eroare de rețea</string>
+    <string name="audio_call_view_terminate_decline">Apel respins de &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_gone">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; este offline</string>
+    <string name="audio_call_view_terminate_not_authorized">Contactul dvs. nu a acordat permisiunile necesare pentru un apel (ex.: microfon, cameră).</string>
+    <string name="audio_call_view_terminate_revoked">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; a șters această relație cu dvs.</string>
+    <string name="audio_call_view_terminate_success">Apel încheiat de &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_timeout">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; nu răspunde</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_view_certified_message">Relația dvs. cu %1$s este acum certificată.</string>
+    <string name="authentified_relation_view_certify_by_scan">Certificați prin scanarea unui cod QR</string>
+    <string name="authentified_relation_view_certify_by_video_call">Certificați prin apel video</string>
+    <string name="authentified_relation_view_certify_by_video_call_missing_capability">%1$s trebuie să permită apelurile video pentru a putea certifica o relație printr-un apel video.</string>
+    <string name="authentified_relation_view_level_2">Pentru a certifica această relație, trebuie să scanați codul QR afișat pe dispozitivul lui %1$s.</string>
+    <string name="authentified_relation_view_level_3">Pentru a certifica această relație, dispozitivul lui %1$s trebuie să scaneze acest cod QR.</string>
+    <string name="authentified_relation_view_level_4">Relația dvs. cu %1$s este certificată.</string>
+    <string name="authentified_relation_view_onboarding_message">O relație „certificată” garantează că comunicați întotdeauna cu persoana potrivită, chiar dacă serviciul ar fi compromis de o terță parte.</string>
+    <string name="authentified_relation_view_onboarding_subtitle">Fiți sigur că comunicați mereu cu persoana potrivită!</string>
+    <string name="authentified_relation_view_relation_print_message">Această amprentă trebuie să fie identică pe ambele dispozitive.</string>
+    <string name="authentified_relation_view_relation_print_title">Amprentă relație</string>
+    <string name="authentified_relation_view_start">Porniți certificarea</string>
+    <string name="authentified_relation_view_title">Relație certificată</string>
+    <string name="authentified_relation_view_to_be_certified_title">Certificați relația</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_view_backup">Copie de rezervă</string>
+    <string name="backup_view_beta_message_part_1">Serviciul de backup/restaurare este propus în testare BETA pentru a identifica eventuale probleme înainte de lansarea sa generală.</string>
+    <string name="backup_view_beta_message_part_2">Acest serviciu este destinat să salveze doar metadatele contului (profiluri, contacte, grupuri) în stocare externă, astfel încât să poată fi restaurate ulterior pe alt dispozitiv, dacă originalul este furat sau distrus.</string>
+    <string name="backup_view_beta_message_part_3">Serviciul de transfer al contului ar trebui folosit pentru a transfera toate datele contului (inclusiv conversațiile) de pe un dispozitiv (vechi) pe altul (nou), atunci când ambele dispozitive sunt disponibile.</string>
+    <string name="backup_view_confirm_message">Pentru a restaura copia de rezervă, va trebui să introduceți cele 12 cuvinte de mai sus în această ordine, permițând decriptarea acesteia.</string>
+    <string name="backup_view_content">Conținut</string>
+    <string name="backup_view_content_diff_added">Adăugat</string>
+    <string name="backup_view_content_diff_updated">Modificat</string>
+    <string name="backup_view_content_diff_deleted">Șters</string>
+    <string name="backup_view_content_diff_message">Iată modificările față de datele dvs. curente:</string>
+    <string name="backup_view_content_info">Copiile de rezervă nu includ conversații, notificări și istoric.</string>
+    <string name="backup_view_error_words">Cuvintele introduse nu permit decriptarea copiei de rezervă.</string>
+    <string name="backup_view_generate_word">Generează</string>
+    <string name="backup_view_last_backup">Ultima copie de rezervă la %1$s</string>
+    <string name="backup_view_new_backup">Copie de rezervă nouă</string>
+    <string name="backup_view_onboarding">Creați o copie de rezervă criptată a datelor contului (Space-uri, profiluri, contacte, grupuri, click-to-call) care poate fi restaurată pe acest dispozitiv sau pe altul.</string>
+    <string name="backup_view_reminder">Ultima dvs. copie de rezervă a fost creată cu mai mult de 30 de zile în urmă.</string>
+    <string name="backup_view_save_file_message">Salvați fișierul de backup pe dispozitivul dorit și păstrați parolele pentru restaurarea ulterioară.</string>
+    <string name="backup_view_security">Securitate</string>
+    <string name="backup_view_security_info">Cheia de criptare a copiei de rezervă este reprezentată de o serie de 12 cuvinte care vor fi necesare pentru restaurare.</string>
+    <string name="backup_view_success">Copie de rezervă finalizată cu succes!</string>
+    <string name="backup_view_success_info">Păstrați această listă de 12 cuvinte pentru a putea restaura această copie de rezervă.</string>
+    <string name="backup_view_title">Copie de rezervă</string>
+    <string name="backup_view_use_last_backup_words">Folosiți aceeași listă de cuvinte ca pentru ultima copie de rezervă.</string>
+    <string name="backup_view_verify_completed">Verificare finalizată!</string>
+    <string name="backup_view_verify_message">Puteți verifica și integritatea unui fișier de backup și dacă datele pe care le conține sunt actualizate din: Cont/Verifică o copie de rezervă.</string>
+    <string name="backup_view_verify_up_to_date">Copia dvs. de rezervă este actualizată.</string>
+    <string name="backup_view_verify_not_up_to_date">Copia dvs. de rezervă nu este actualizată.</string>
+    <string name="backup_view_verify_words">Pentru a verifica o copie de rezervă, trebuie să introduceți secvența de 12 cuvinte pentru a o decripta.</string>
+    <string name="backup_view_wait_message">Nu părăsiți acest ecran cât timp copia de rezervă este în curs.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_view_invalidate_backup">Invalidează copiile mele de rezervă</string>
+    <string name="backups_view_invalidate_backup_message_part_one">Toate copiile dvs. de rezervă anterioare vor deveni invalide și nu vor mai putea fi restaurate.</string>
+    <string name="backups_view_invalidate_backup_message_part_two">Nu uitați să creați o copie de rezervă nouă, care poate fi restaurată pe acest dispozitiv sau pe altul.</string>
+    <string name="backups_view_no_backup_message">Nu a fost creată nicio copie de rezervă pe acest dispozitiv.</string>
+
+    <!-- CallActivity -->
+    <string name="call_view_audio_source_bluetooth">Audio Bluetooth</string>
+    <string name="call_view_audio_source_device">Căști dispozitiv</string>
+    <string name="call_view_audio_source_earphones">Căști</string>
+    <string name="call_view_audio_source_headset">Set audio</string>
+    <string name="call_view_audio_source_loudspeaker">Difuzor</string>
+    <string name="call_view_battery_restriction_message">Atenție! Trebuie să permiteți utilizarea bateriei în fundal pentru a evita întreruperile microfonului în timpul apelurilor.</string>
+    <string name="call_view_camera_control">Control cameră</string>
+    <string name="call_view_camera_control_ask_message">Cereți lui %1$s să vă permită controlul camerei sale în timpul apelului video.</string>
+    <string name="call_view_camera_control_confirm_message">%1$s dorește să vă controleze camera în timpul apelului. Puteți recăpăta controlul oricând.</string>
+    <string name="call_view_camera_control_denied">%1$s nu vă permite să controlați camera sa.</string>
+    <string name="call_view_camera_control_message">Controlul camerei lui %1$s</string>
+    <string name="call_view_camera_control_needs_help">Aveți nevoie de ajutor?</string>
+    <string name="call_view_camera_control_onboarding">Dacă contactul permite, puteți prelua controlul camerei sale în timpul unui apel video și puteți face zoom, de exemplu. Este util în special pentru camere de supraveghere.</string>
+    <string name="call_view_camera_control_onboarding_part_2">Cu permisiunea persoanei apropiate, puteți controla camera acesteia pentru a o ajuta de la distanță, ușor și în siguranță.</string>
+    <string name="call_view_camera_control_remotely">%1$s vă controlează camera de la distanță.</string>
+    <string name="call_view_camera_control_stop">Opriți</string>
+    <string name="call_view_certify_error_message">%1$s nu a validat cuvântul. Certificarea relației a eșuat și trebuie să încercați din nou.</string>
+    <string name="call_view_certify_onboarding_message">Apelul video permite identificarea reciprocă și schimbul cheilor de securitate asociate unei relații certificate.</string>
+    <string name="call_view_certify_onboarding_start_message">Pe rând, pronunțați cuvântul afișat pe ecran pentru ca celălalt să îl poată verifica. După validarea tuturor cuvintelor, relația dvs. cu %1$s va fi certificată.</string>
+    <string name="call_view_certify_onboarding_title">Certificați relația</string>
+    <string name="call_view_certify_video_message">Apelul trebuie să fie video pentru a certifica relația.</string>
+    <string name="call_view_coach_mark">Atingeți aici pentru a adăuga un participant la acest apel</string>
+    <string name="call_view_confirm_word">Cuvântul spus de %1$s este identic?</string>
+    <string name="call_view_confirm_word_title">Validați cuvântul</string>
+    <string name="call_view_connected_bluetooth">Fluxul audio a fost redirecționat către un dispozitiv Bluetooth.</string>
+    <string name="call_view_connected_speaker">Fluxul audio a fost redirecționat către difuzor.</string>
+    <string name="call_view_error_call_interrupted">Apelul a fost întrerupt, eroare: %1$d.</string>
+    <string name="call_view_error_call_not_go_thru">Apelul nu a putut fi efectuat, eroare: %1$d.</string>
+    <string name="call_view_max_participant_message">Numărul maxim de participanți într-un apel de grup a fost atins (%1$d).</string>
+    <string name="call_view_not_supported_group_call_message">Versiunea aplicației lui %1$s nu este compatibilă cu apelurile de grup și necesită o actualizare.</string>
+    <string name="call_view_quality_message">Cum l-ați evalua?</string>
+    <string name="call_view_quality_title">Calitatea apelului</string>
+    <string name="call_view_repeat_word">%1$s îl va putea compara cu cel de pe ecranul său.</string>
+    <string name="call_view_repeat_word_title">Pronunțați cuvântul</string>
+    <string name="call_view_tag_add_to_call">Invitați un contact să se alăture apelului în curs</string>
+    <string name="call_view_tag_camera">Cameră</string>
+    <string name="call_view_tag_camera_activate">Activați camera</string>
+    <string name="call_view_tag_camera_cut">Opriți camera</string>
+    <string name="call_view_tag_camera_flip">Schimbați camera</string>
+    <string name="call_view_tag_microphone">Microfon</string>
+    <string name="call_view_tag_microphone_activate">Activați microfonul</string>
+    <string name="call_view_tag_microphone_mute">Dezactivați microfonul</string>
+    <string name="call_view_tag_pause">Pauză</string>
+    <string name="call_view_tag_send_message">Trimiteți un mesaj</string>
+    <string name="call_view_tag_speaker">Difuzor</string>
+    <string name="call_view_tag_speaker_activate">Activați difuzorul</string>
+    <string name="call_view_tag_speaker_mute">Opriți difuzorul</string>
+    <string name="call_view_transfer_call_message">Apelul în curs a fost transferat.</string>
+    <string name="call_view_try_to_call_back">Încercați să reapelați.</string>
+    <string name="call_view_waiting_conference_call">"Nimeni nu s-a alăturat încă apelului. Vă rugăm să așteptați… "</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_view_all_call_segmented_control">Toate</string>
+    <string name="calls_view_call_again_message">Doriți să reapelați %1$s?</string>
+    <string name="calls_view_call_again_title">Reapelați</string>
+    <string name="calls_view_create_link">Creați un link „click-to-call”</string>
+    <string name="calls_view_incoming_call">Apel primit</string>
+    <string name="calls_view_missed_call">Apel pierdut</string>
+    <string name="calls_view_missed_call_segmented_control">Pierdute</string>
+    <string name="calls_view_no_call_message">Apelurile pierdute sunt listate aici.</string>
+    <string name="calls_view_no_call_title">Nu ați efectuat încă niciun apel.</string>
+    <string name="calls_view_outgoing_call">Apel efectuat</string>
+    <string name="calls_view_reset">Sigur doriți să resetați toate notificările apelurilor?</string>
+    <string name="calls_view_reset_title">Resetare notificări apeluri</string>
+    <string name="calls_view_title">Apeluri</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_view_create_camera_error">Camera este deja utilizată</string>
+    <string name="capture_view_incorrect_qrcode">Twincode incorect</string>
+    <string name="capture_view_message">Plasați codul QR în acest dreptunghi pentru a-l scana.</string>
+    <string name="capture_view_no_camera">Camera este necesară pentru a scana un twincode</string>
+    <string name="capture_view_qrcode_saved">Codul de invitație a fost salvat în fotografii.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_view_all">Ștergeți tot</string>
+    <string name="cleanup_view_both_clean">Curățare globală (locală și la contact)</string>
+    <string name="cleanup_view_both_clean_title">Curățare globală</string>
+    <string name="cleanup_view_clean">Ștergeți</string>
+    <string name="cleanup_view_conversation">Conversație cu %s</string>
+    <string name="cleanup_view_delete_confirmation_message">Ștergerea este ireversibilă. Exportați conținuturile importante înainte de a continua. Continuați?</string>
+    <string name="cleanup_view_error">A apărut o eroare în timpul operațiunii.</string>
+    <string name="cleanup_view_expiration">Termen de expirare</string>
+    <string name="cleanup_view_free">Disponibil</string>
+    <string name="cleanup_view_info">Ștergerea mesajelor, media și fișierelor din această conversație nu le elimină de pe dispozitivul contactului dvs., iar acest lucru nu va mai fi posibil ulterior.</string>
+    <string name="cleanup_view_info_both">Ștergerea mesajelor, media și fișierelor din această conversație le șterge și de pe dispozitivul contactului dvs.</string>
+    <string name="cleanup_view_local_cleanup">Curățare locală</string>
+    <string name="cleanup_view_local_cleanup_title">Curățare locală</string>
+    <string name="cleanup_view_medias_and_files">Doar media și fișiere</string>
+    <string name="cleanup_view_medias_and_files_info">Miniaturile media nu sunt eliminate din conversație; sunt șterse doar fișierele originale.</string>
+    <string name="cleanup_view_medias_and_files_info_both">Fișierele, fotografiile, videoclipurile și notele vocale din această conversație vor fi șterse atât de pe dispozitivul dvs., cât și de pe cel al contactului.</string>
+    <string name="cleanup_view_messages">Toate mesajele &amp; alte conținuturi</string>
+    <string name="cleanup_view_messages_info">Mesajele de orice tip din conversație (text, foto, video, voce, fișiere etc.) vor fi șterse din aplicație.</string>
+    <string name="cleanup_view_month">%1$d luni</string>
+    <string name="cleanup_view_older_than">Mai vechi decât</string>
+    <string name="cleanup_view_one_year">1 an</string>
+    <string name="cleanup_view_prior_to">Anterior datei</string>
+    <string name="cleanup_view_reset_conversation_message">Resetarea acestei conversații va șterge toate mesajele, inclusiv cele de pe dispozitivul contactului.</string>
+    <string name="cleanup_view_select_content">Selectați ce doriți să ștergeți.</string>
+    <string name="cleanup_view_storage_title">Spațiu pe disc</string>
+    <string name="cleanup_view_success">Operațiunea s-a încheiat cu succes.</string>
+    <string name="cleanup_view_title">Curățare conversație</string>
+    <string name="cleanup_view_total">Total</string>
+    <string name="cleanup_view_used">Utilizat</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Instrucțiuni vizuale</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_view_allow_incoming_calls">Permiteți acestui contact să vă apeleze</string>
+    <string name="contact_capabilities_view_automatic_answering">Răspunde automat apelurilor primite</string>
+    <string name="contact_capabilities_view_automatic_answering_message">Atenție: această setare activează răspunsul automat la apelurile acestui contact, deschizând microfonul și camera dispozitivului (pentru apeluri video).</string>
+    <string name="contact_capabilities_view_automatic_answering_restriction">Unele dispozitive pot restricționa această funcție.</string>
+    <string name="contact_capabilities_view_call_settings">Setări apel</string>
+    <string name="contact_capabilities_view_camera_control_allow">Întotdeauna</string>
+    <string name="contact_capabilities_view_camera_control_ask">Întreabă la fiecare apel</string>
+    <string name="contact_capabilities_view_camera_control_information">Permiteți acestui contact să preia controlul camerei dvs. în timpul unui apel video.</string>
+    <string name="contact_capabilities_view_camera_control_never">Niciodată</string>
+    <string name="contact_capabilities_view_camera_control_onboarding">Puteți cere contactului cu acces la versiunea premium să vă controleze camera în timpul apelurilor video.</string>
+    <string name="contact_capabilities_view_discreet_relation">Relație discretă</string>
+    <string name="contact_capabilities_view_information_audio_call">Permiteți contactului să vă apeleze vocal.</string>
+    <string name="contact_capabilities_view_information_discreet_relation">Nu afișează numele contactului în notificări și nu înregistrează apelurile în istoricul apelurilor.</string>
+    <string name="contact_capabilities_view_information_limited_call">Stabiliți zile/intervale orare în care nu doriți să fiți apelat.</string>
+    <string name="contact_capabilities_view_information_programmed_call">Programați zile/intervale orare în care doriți să fiți apelat.</string>
+    <string name="contact_capabilities_view_information_video_call">Permiteți contactului să vă apeleze video.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_view_add_contact_subtitle">Invitați pe cineva să scaneze codul dvs. sau scanați-l pe al lor…</string>
+    <string name="contacts_view_invite_contact_title">Invitați un contact</string>
+    <string name="contacts_view_scan_contact_title">Scanați sau introduceți un cod de invitație</string>
+    <string name="contacts_view_title">Contacte</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_view_audio_call">Apel vocal</string>
+    <string name="conversation_view_audio_message">Mesaj vocal</string>
+    <string name="conversation_view_call_missed">pierdut</string>
+    <string name="conversation_view_cannot_send">Nu se pot trimite mesaje imediat:</string>
+    <string name="conversation_view_cleanup_conversation">Ați șters unele mesaje vechi.</string>
+    <string name="conversation_view_cleanup_conversation_by_peer">%1$s a curățat unele mesaje vechi.</string>
+    <string name="conversation_view_delete_message">Mesajul dvs. a fost șters.</string>
+    <string name="conversation_view_edit_message">Mesajul poate fi editat pe dispozitivul contactului doar dacă aplicația acestuia este actualizată.</string>
+    <string name="conversation_view_empty_message">Spuneți ceva inteligent … sau amuzant!</string>
+    <string name="conversation_view_ephemeral_coach_mark">Țineți apăsat pe săgeata de trimitere pentru a șterge acest mesaj după un anumit timp.</string>
+    <string name="conversation_view_feature_not_supported_by_peer">Versiunea twinme a contactului dvs. nu este complet funcțională.<br /> Vă rugăm să îl rugați să actualizeze aplicația.</string>
+    <string name="conversation_view_group_member_information">%1$d membri</string>
+    <string name="conversation_view_group_not_allowed_post_message">Trimiterea mesajelor nu este permisă</string>
+    <string name="conversation_view_group_one_member">1 membru</string>
+    <string name="conversation_view_invitation_accepted">Invitație acceptată</string>
+    <string name="conversation_view_invitation_failed">Rugați contactul să actualizeze twinme</string>
+    <string name="conversation_view_invitation_joined">Membru al grupului</string>
+    <string name="conversation_view_invitation_pending">Invitație în curs</string>
+    <string name="conversation_view_invitation_refused">Invitație refuzată</string>
+    <string name="conversation_view_invitation_title">Vă invit să vă alăturați grupului</string>
+    <string name="conversation_view_local_cleanup">Conținuturile principale au fost șterse local.</string>
+    <string name="conversation_view_manage_conversation">Gestionați conversația</string>
+    <string name="conversation_view_media_quality_original">Definiție originală (HD)</string>
+    <string name="conversation_view_media_quality_original_subtitle">Fără redimensionare - Transfer mai lent</string>
+    <string name="conversation_view_media_quality_standard">Definiție standard (SD)</string>
+    <string name="conversation_view_media_quality_standard_subtitle">Mai mic - Transfer mai rapid</string>
+    <string name="conversation_view_media_quality_title">Rezoluție media</string>
+    <string name="conversation_view_menu_item_view_copy_message">Copiat în clipboard!</string>
+    <string name="conversation_view_menu_item_view_copy_title">Copiați</string>
+    <string name="conversation_view_menu_item_view_delete_title">Ștergeți</string>
+    <string name="conversation_view_menu_item_view_forward_title">Redirecționați</string>
+    <string name="conversation_view_menu_item_view_info_title">Info</string>
+    <string name="conversation_view_menu_item_view_operation_not_allowed">Operațiune nepermisă de expeditor</string>
+    <string name="conversation_view_menu_item_view_reply_title">Răspundeți</string>
+    <string name="conversation_view_menu_item_view_save_message">Salvat!</string>
+    <string name="conversation_view_menu_item_view_save_title">Salvați</string>
+    <string name="conversation_view_menu_item_view_share_title">Partajați</string>
+    <string name="conversation_view_message">Scrieți un mesaj</string>
+    <string name="conversation_view_photo_camera">Cameră foto</string>
+    <string name="conversation_view_record_confirm_send_record">Apăsați din nou pentru a trimite</string>
+    <string name="conversation_view_record_start_record">Apăsați și țineți pentru a înregistra</string>
+    <string name="conversation_view_record_title">Înregistrare</string>
+    <string name="conversation_view_reduce_menu_lower">Standard</string>
+    <string name="conversation_view_reduce_menu_minimal">Minim</string>
+    <string name="conversation_view_reduce_menu_original">Original</string>
+    <string name="conversation_view_reduce_menu_original_subtitle">Fără redimensionare</string>
+    <string name="conversation_view_reject_stream">Refuzați</string>
+    <string name="conversation_view_reply_to">Răspundeți lui %1$s</string>
+    <string name="conversation_view_reset_conversation">Ați resetat conversația</string>
+    <string name="conversation_view_reset_conversation_by_peer">%1$s a resetat conversația</string>
+    <string name="conversation_view_send_file_warning">Atenție: nu este posibil să împiedicați destinatarul să copieze/salveze/partajeze un document (pdf, word, ppt, excel, zip etc.), deoarece acesta poate fi deschis doar în afara aplicației. Doriți totuși să îl trimiteți?</string>
+    <string name="conversation_view_send_large_file_message">Acest fișier este mare (%1$d MB). Doriți să continuați?</string>
+    <string name="conversation_view_send_menu_allow_copy">Permiteți destinatarului să copieze/salveze/partajeze acest conținut</string>
+    <string name="conversation_view_send_quality_size">Media de dimensiuni mari (%1$s).</string>
+    <string name="conversation_view_send_quality_standard">Trimiteți în definiție standard (SD)</string>
+    <string name="conversation_view_send_quality_warning">Puteți redimensiona la definiție standard (SD) pentru un transfer mai rapid.</string>
+    <string name="conversation_view_stream_dialog">Doriți să îl acceptați?</string>
+    <string name="conversation_view_unsupported_media">Format media nesuportat.</string>
+    <string name="conversation_view_video_call">Apel video</string>
+    <string name="conversation_view_video_camera">Cameră video</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_view_documents">Doc.</string>
+    <string name="conversation_files_view_links">Linkuri</string>
+    <string name="conversation_files_view_month">Luna aceasta</string>
+    <string name="conversation_files_view_no_files">Conversația dvs. cu %1$s nu conține astfel de elemente.</string>
+    <string name="conversation_files_view_title">Media, linkuri web și documente</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_view_background_colors">Fundaluri &amp; culori</string>
+    <string name="conversation_settings_view_emoji_size">Dimensiune emoji</string>
+    <string name="conversation_settings_view_link_preview">Previzualizare</string>
+    <string name="conversation_settings_view_link_preview_message">Afișați o previzualizare a site-ului web.</string>
+    <string name="conversation_settings_view_link_title">Linkuri web</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_view_no_conversation_message">Mesajele criptate end-to-end sunt schimbate direct între dispozitive, peer-to-peer, fără un server intermediar = fără urme în cloud.</string>
+    <string name="conversations_view_no_result_found">Nu a fost găsit niciun rezultat pentru „%1$s”.</string>
+    <string name="conversations_view_start">Începeți o conversație</string>
+    <string name="conversations_view_title">Conversații</string>
+    <string name="conversations_view_you">Dvs.</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_view_call_configuration">Configurație apel</string>
+    <string name="create_external_call_view_call_type">Tip apel</string>
+    <string name="create_external_call_view_conference_call_description">Alăturați-vă unui apel conferință direct din browser. Ideal pentru întâlniri de afaceri sau familiale.</string>
+    <string name="create_external_call_view_conference_call_short_title">Apel conferință</string>
+    <string name="create_external_call_view_conference_call_title">Apel conferință</string>
+    <string name="create_external_call_view_continuous_link_description">Fără restricții de valabilitate a linkului</string>
+    <string name="create_external_call_view_continuous_link_title">Permanent</string>
+    <string name="create_external_call_view_delete_link_setting">Invalidează automat linkul după expirarea intervalului de timp</string>
+    <string name="create_external_call_view_direct_call_description">Primiți un apel direct pe dispozitiv de la cineva care nu are aplicația.</string>
+    <string name="create_external_call_view_direct_call_short_title">Direct</string>
+    <string name="create_external_call_view_direct_call_title">Apel direct</string>
+    <string name="create_external_call_view_group_call_description">Până la 8 participanți</string>
+    <string name="create_external_call_view_link_validity">Valabilitate link</string>
+    <string name="create_external_call_view_message">Acest profil este afișat invitaților care vă vor apela cu acest link „click-to-call”.</string>
+    <string name="create_external_call_view_name_required">Sunt necesare un nume și o imagine pentru a reprezenta acest \"Click-to-call\".</string>
+    <string name="create_external_call_view_notification_setting">Fiți notificat imediat ce primul participant se alătură conferinței.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_1">Click-to-call permite invitaților să vă apeleze sau să se alăture unei conferințe (Click-to-meet) dintr-un browser fără a instala aplicația.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_2">Fiecare instanță are un nume, o imagine și o descriere care reprezintă subiectul apelului, precum:</string>
+    <string name="create_external_call_view_onboarding_part_1_message_3">serviciul dvs. clienți</string>
+    <string name="create_external_call_view_onboarding_part_1_message_4">mașina pe care o vindeți</string>
+    <string name="create_external_call_view_onboarding_part_1_message_5">un apel profesional de grup</string>
+    <string name="create_external_call_view_onboarding_part_1_message_6">un video-interfon pentru curieri.</string>
+    <string name="create_external_call_view_onboarding_part_2_message_1">Un „click-to-call” are atribute pentru a specifica dacă este:</string>
+    <string name="create_external_call_view_onboarding_part_2_message_2">un apel audio și/sau video</string>
+    <string name="create_external_call_view_onboarding_part_2_message_3">un apel individual sau de grup</string>
+    <string name="create_external_call_view_onboarding_part_2_message_4">mereu deschis sau limitat la o anumită dată și oră.</string>
+    <string name="create_external_call_view_onboarding_part_3_message_1">Distribuiți linkul sau codul QR „click-to-call” prin canale care pot ajunge la persoanele relevante, de exemplu:</string>
+    <string name="create_external_call_view_onboarding_part_3_message_2">un „call-to-action” pe site-ul dvs.</string>
+    <string name="create_external_call_view_onboarding_part_3_message_3">un anunț pe o platformă de mică publicitate</string>
+    <string name="create_external_call_view_onboarding_part_3_message_4">un e-mail către persoanele invitate la apelul de grup</string>
+    <string name="create_external_call_view_onboarding_part_3_message_5">un semn pe ușa dvs. pentru curieri.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_1">Destinatarii scanează codul QR și deschid linkul într-un browser pe dispozitivul mobil sau PC. Ei pot apoi:</string>
+    <string name="create_external_call_view_onboarding_part_4_message_2">Să schimbe numele implicit (Guest) care îi reprezintă în apel</string>
+    <string name="create_external_call_view_onboarding_part_4_message_3">Să vă apeleze apăsând butonul „Call” de pe pagina web.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_4">După apel, pot păstra pagina deschisă pentru a vă reapela.</string>
+    <string name="create_external_call_view_onboarding_title_2">Configurați un Click-to-call</string>
+    <string name="create_external_call_view_onboarding_title_3">Distribuiți un Click-to-call</string>
+    <string name="create_external_call_view_onboarding_title_4">Folosiți un Click-to-call</string>
+    <string name="create_external_call_view_placeholder">Subiect (Ajutor, Anunț, Întâlnire, Sonerie, …)</string>
+    <string name="create_external_call_view_recurrent_link_description">Personalizați zilele/orele în care linkul este valabil</string>
+    <string name="create_external_call_view_recurrent_link_title">Periodic</string>
+    <string name="create_external_call_view_unique_link_description">Setați datele de început și de sfârșit ale valabilității linkului</string>
+    <string name="create_external_call_view_unique_link_title">O singură utilizare</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_view_add_member_hint">Invitați membri</string>
+    <string name="create_group_view_create">Creați</string>
+    <string name="create_group_view_member_allow_invitation_message">Permiteți membrilor grupului să își invite contactele</string>
+    <string name="create_group_view_member_allow_invitation_title">Invitarea membrilor</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_message">Permiteți membrilor să invite alți membri ca contacte personale</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_title">Stabiliți contacte personale</string>
+    <string name="create_group_view_member_allow_post_message">Permiteți membrilor grupului să posteze mesaje</string>
+    <string name="create_group_view_member_allow_post_title">Postarea mesajelor</string>
+    <string name="create_group_view_member_list">Lista membrilor (%1$d)</string>
+    <string name="create_group_view_name_hint">Nume grup</string>
+    <string name="create_group_view_subtitle">Invită contacte să se alăture unui grup de chat.</string>
+    <string name="create_group_view_title">Grup</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_view_incomplete_profile_message">Atât numele, cât și imaginea sunt esențiale pentru ca contactele dvs. să vă recunoască și să vă distingă.</string>
+    <string name="create_profile_view_message">Aceste informații de Profil sunt utilizate pentru a invita contacte.</string>
+    <string name="create_profile_view_onboarding_message">Introduceți un profil (nume &amp; imagine) care vă reprezintă în fața contactelor dvs.</string>
+    <string name="create_profile_view_onboarding_message_part_1">Profilurile vă permit să invitați contacte pentru a crea relații cu dvs. în aplicație. Puteți avea câte Profile (persona) doriți, fiecare asociat unui anumit „Spațiu”.</string>
+    <string name="create_profile_view_onboarding_message_part_2">Fiecare „Profil” are un „Nume” și o „Imagine” (obligatorii), vizibile contactelor invitate și utilizate ca Profil inițial pentru relațiile noi din acel „Spațiu”.</string>
+    <string name="create_profile_view_onboarding_message_part_3">Odată creată, fiecare relație are propria pereche de „Profiluri” care vă reprezintă reciproc.</string>
+    <string name="create_profile_view_onboarding_message_part_4">Ulterior, puteți modifica modul în care doriți să fiți cunoscut de fiecare contact, în fiecare relație, independent.</string>
+    <string name="create_profile_view_save_message">Acest nume și această imagine sunt folosite pentru a invita contactele și a inițializa relațiile. Le veți putea modifica pentru fiecare relație.</string>
+    <string name="create_profile_view_welcome1">Introduceți fotografia profilului</string>
+    <string name="create_profile_view_welcome2">Bun venit %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_view_message">„Spațiile” sunt locale și nu sunt vizibile contactelor.</string>
+    <string name="create_space_view_onboarding_message_part_1">„Spațiile” vă ajută să organizați contactele după cercul social căruia aparțin, de ex. Familie, Prieteni, Afaceri, Distracție etc.</string>
+    <string name="create_space_view_onboarding_message_part_2">Fiecare „Spațiu” este asociat unui „Profil” care reprezintă persona pe care doriți să o utilizați în interacțiunile cu contactele din acel cerc social, de ex., Tată, Johny, Dr. John Doe, Batman etc.</string>
+    <string name="create_space_view_onboarding_message_part_3">„Spațiile” sunt locale pe dispozitivul dvs. Nu sunt vizibile contactelor și nici serverelor serviciului.</string>
+    <string name="create_space_view_onboarding_message_part_4">Un „Spațiu” are:</string>
+    <string name="create_space_view_onboarding_message_part_5">- un „Nume”, care reprezintă un anumit cerc social</string>
+    <string name="create_space_view_onboarding_message_part_6">- o „Imagine” care vă ajută să îl identificați rapid în lista de „Spații”</string>
+    <string name="create_space_view_onboarding_message_part_7">- o „Temă” coloristică pentru personalizare</string>
+    <string name="create_space_view_onboarding_message_part_8">- „Setări” specifice fiecărui „Spațiu”, suprascriind valorile implicite ale aplicației.</string>
+    <string name="create_space_view_title">Creați Spațiu</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_view_message">Acest profil este asociat codului utilizat pentru transferul unui apel în curs într-un browser.</string>
+    <string name="create_transfert_call_view_name_placeholder">Transferurile mele de apel</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_view_confirm_message">Introduceți literele „OK” mai jos pentru a confirma ștergerea contului.</string>
+    <string name="deleted_account_view_delete">Ștergeți contul</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_view_message">Contul dvs. a fost șters, iar toate datele asociate au fost distruse.<br /> Trebuie să închideți aplicația.</string>
+    <string name="deleted_account_view_warning">Atenție‼️</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_view_confirm_message">Sigur doriți să ștergeți această relație?</string>
+    <string name="edit_contact_view_message">Acest contact nu va mai putea să vă contacteze.</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_view_delete_confirm_message">Sigur doriți să ștergeți acest cod „Click-to-Call”?</string>
+    <string name="edit_external_call_view_delete_message">Acest link „Click-to-Call” nu va mai putea fi folosit.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_view_delete_message">Ștergerea acestui profil va invalida codul de invitație asociat. Confirmați ștergerea?</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_view_editing_profile">Editare profil</string>
+    <string name="edit_profile_view_propagating_all_contacts">către toate contactele din acest Spațiu</string>
+    <string name="edit_profile_view_propagating_ask_message">Propagați imaginea, numele sau descrierea tocmai modificate:</string>
+    <string name="edit_profile_view_propagating_except_contacts">către toate, cu excepția celor personalizate</string>
+    <string name="edit_profile_view_propagating_message">Puteți propaga modificările profilului de invitație către contactele existente sau nu.</string>
+    <string name="edit_profile_view_propagating_no_contact">către nimeni</string>
+    <string name="edit_profile_view_propagating_profile">Propagați modificările profilului</string>
+    <string name="edit_profile_view_remove_active_profile">Nu puteți elimina profilul activ</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_view_certified_message">După crearea relației, este recomandat să o certificați pentru a-i crește securitatea.</string>
+    <string name="enter_invitation_code_view_enter_code">Introduceți un Mini-Cod</string>
+    <string name="enter_invitation_code_view_error_message">Acest cod este invalid. Poate a fost folosit sau a expirat.</string>
+    <string name="enter_invitation_code_view_invitation_message">După crearea relației, nu uitați să o certificați pentru a-i crește securitatea.</string>
+    <string name="enter_invitation_code_view_message">Introduceți Mini-Codul furnizat de contact pentru a crea o relație.</string>
+    <string name="enter_invitation_code_view_onboarding_message">Un contact v-a transmis un Mini-Cod de 6 caractere pentru a crea o relație. Acest Mini-Cod de unică folosință expiră după 24 de ore.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_view_all_conversations_zip_file">Conținutul conversațiilor va fi exportat într-un fișier ZIP.</string>
+    <string name="export_view_content_title">Conținuturi</string>
+    <string name="export_view_content_to_export">Conținuturi de exportat</string>
+    <string name="export_view_do_not_leave_screen">Nu părăsiți ecranul în timpul operațiunii de export.</string>
+    <string name="export_view_export">Exportați</string>
+    <string name="export_view_file">fișier</string>
+    <string name="export_view_files">fișiere</string>
+    <string name="export_view_get_all_content">Se preiau conținuturile conversației cu %1$s.</string>
+    <string name="export_view_get_one_chat">Se preiau conținuturile conversațiilor.</string>
+    <string name="export_view_images">Imagini</string>
+    <string name="export_view_no_content_to_export">Nu există conținut de exportat</string>
+    <string name="export_view_one_conversation_zip_file">Conținutul conversației va fi exportat într-un fișier ZIP.</string>
+    <string name="export_view_save_location">Locație</string>
+    <string name="export_view_save_location_message">Alegeți locul de export.</string>
+    <string name="export_view_select_content">Selectați conținuturile pe care doriți să le exportați.\nDoar conținuturile non-efemere, autorizate pentru copiere/salvare/partajare pot fi exportate.</string>
+    <string name="export_view_success">Export finalizat cu succes.</string>
+    <string name="export_view_title">Export conversații</string>
+    <string name="export_view_videos">Videoclipuri</string>
+    <string name="export_view_voice_messages">Mesaje vocale</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_view_error_code_message">Eroare fatală, cod %1$d.\nReporniți aplicația și raportați problema printr-un mesaj de feedback, dacă puteți. Ne cerem scuze pentru neplăceri.</string>
+    <string name="fatal_error_view_error_message">Eroare fatală: %1$s<br /> Trebuie să închideți aplicația.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_view_contact">Contact</string>
+    <string name="feedback_view_gdpr_notice">Utilizați acest formular pentru a solicita acces la datele contului dvs.</string>
+    <string name="feedback_view_help">Apreciem ajutorul dvs. în identificarea problemelor și colaborarea pentru a le rezolva.</string>
+    <string name="feedback_view_info_logs">Un jurnal de depanare conține doar date tehnice de nivel scăzut despre activitățile aplicației și NU dezvăluie informații personale.</string>
+    <string name="feedback_view_logs">Jurnal depanare</string>
+    <string name="feedback_view_message">Mesaj</string>
+    <string name="feedback_view_send">Trimiteți</string>
+    <string name="feedback_view_send_logs">Trimiteți un jurnal de depanare</string>
+    <string name="feedback_view_send_message">Feedback trimis. Vă mulțumim.</string>
+    <string name="feedback_view_subject">Subiect</string>
+    <string name="feedback_view_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_view_generate_code_message">Această acțiune invalidează codul actual de invitație asociat acestui profil. Sigur doriți să generați un cod nou?</string>
+    <string name="fullscreen_qrcode_view_generate_code_title">Generați un cod nou de invitație</string>
+    <string name="fullscreen_qrcode_view_save_message">Importați sau scanați acest cod QR de invitație cu twinme pentru a adăuga contactul.</string>
+    <string name="fullscreen_qrcode_view_save_title">Salvați în galeria foto</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_view_information_audio_call">Autorizați apelurile vocale</string>
+    <string name="group_capabilities_view_information_programmed_call">Programați data/ora apelurilor</string>
+    <string name="group_capabilities_view_information_video_call">Autorizați apelurile video</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_view_admin_not_authorize">Administratorul grupului nu a autorizat această acțiune.</string>
+    <string name="group_member_view_invitation_message">Invitați %1$s ca contact personal</string>
+    <string name="group_member_view_invitation_title">Invitație</string>
+    <string name="group_member_view_invite_personnal_relation">Invitați ca contact personal</string>
+    <string name="group_member_view_remove_message">Sigur doriți să eliminați membri din acest grup?</string>
+    <string name="group_member_view_section_administrator">Administrator</string>
+    <string name="group_member_view_section_invitation">Invitații</string>
+    <string name="group_member_view_section_member">Membri</string>
+    <string name="group_member_view_title">Membrii grupului</string>
+
+    <!-- HelpActivity -->
+    <string name="help_view_standard_services">Servicii standard</string>
+    <string name="help_view_advanced_functions">Funcții avansate</string>
+    <string name="help_view_additional_features">Funcții suplimentare</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_view_call_terminated_reason_busy">%1$s este ocupat</string>
+    <string name="info_item_view_call_terminated_reason_cancel">Apel anulat de %1$s</string>
+    <string name="info_item_view_call_terminated_reason_decline">Apel respins de %1$s</string>
+    <string name="info_item_view_call_terminated_reason_gone">%1$s este offline</string>
+    <string name="info_item_view_call_terminated_reason_not_authorized">Neautorizat pentru apel</string>
+    <string name="info_item_view_call_terminated_reason_revoked">%1$s a eliminat această relație</string>
+    <string name="info_item_view_call_terminated_reason_timeout">%1$s nu răspunde</string>
+    <string name="info_item_view_deleted">Șters de destinatar:</string>
+    <string name="info_item_view_may_be_copied">Poate fi copiat/salvat/partajat…</string>
+    <string name="info_item_view_may_not_be_copied">Nu poate fi copiat/salvat/partajat…</string>
+    <string name="info_item_view_not_delivered">Nelivrat</string>
+    <string name="info_item_view_not_delivered_expiration">Mesajul nu a putut fi livrat după 15 zile.</string>
+    <string name="info_item_view_not_delivered_storage">Dispozitivul destinatarului nu are suficient spațiu de stocare pentru a primi acest conținut.</string>
+    <string name="info_item_view_not_delivered_update">Aplicația destinatarului trebuie actualizată.</string>
+    <string name="info_item_view_reactions">Reacții</string>
+    <string name="info_item_view_received">Primit:</string>
+    <string name="info_item_view_seen">Văzut:</string>
+    <string name="info_item_view_sent">Trimis:</string>
+    <string name="info_item_view_updated">Editat</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_view_generate_code_message">Această acțiune invalidează codul actual de invitație asociat acestui link „click-to-call”. Confirmați?</string>
+    <string name="invitation_call_view_generate_code_title">Generați un cod nou pentru acest link</string>
+    <string name="invitation_call_view_invite_meeting_message">Deschideți adresa web %1$s sau scanați codul QR pentru a vă alătura întâlnirii „%2$s”.</string>
+    <string name="invitation_call_view_invite_message">Deschideți adresa web %1$s sau scanați codul QR pentru a apela „%2$s”.</string>
+    <string name="invitation_call_view_message">Distribuiți acest cod „click-to-call” unei persoane care vă poate apela din web sau din aplicația mobilă.</string>
+    <string name="invitation_call_view_save_message">Scanați acest cod QR pentru a apela „%1$s”.</string>
+    <string name="invitation_call_view_share">Publicați</string>
+    <string name="invitation_call_view_title">Apel extern</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_view_create_code">Creați un Mini-Cod</string>
+    <string name="invitation_code_view_create_code_subtitle">pentru a invita un contact când nu aveți acces la aplicație.</string>
+    <string name="invitation_code_view_expiration">Expiră:</string>
+    <string name="invitation_code_view_history">Mini-Codurile mele</string>
+    <string name="invitation_code_view_limit_message">Numărul maxim de Mini-Coduri active a fost atins. Trebuie să așteptați 24 de ore pentru a genera altele noi.</string>
+    <string name="invitation_code_view_onboarding_message">Mini-Codurile sunt de unică folosință și valabile doar 24 de ore. Le puteți transmite contactelor pentru a crea o relație când nu aveți acces la aplicație (ex.: fără telefon).</string>
+    <string name="invitation_code_view_success_message">Se recomandă puternic certificarea relațiilor create cu Mini-Coduri pentru a le crește securitatea.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_view_message">Rugați prietenul de lângă dvs. să scaneze codul QR al „camerei” cu twinme sau apăsați pe cod pentru a-l copia în clipboard.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_view_audio">Vocal</string>
+    <string name="last_calls_view_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_view_message">Contul dvs. twinme de pe acest dispozitiv va fi transferat pe twinme+.</string>
+    <string name="local_account_migration_view_message_older_version">Asigurați-vă că actualizați ambele dispozitive la ultima versiune înainte de transfer, pentru a evita pierderea relațiilor.</string>
+
+    <!-- MainActivity -->
+    <string name="main_view_add_contact">Adăugați contact</string>
+    <string name="main_view_add_group">Creați un grup</string>
+    <string name="main_view_reset_conversation">Resetare</string>
+    <string name="main_view_reset_conversation_message">Resetarea acestei conversații va șterge toate mesajele, inclusiv pe cele de pe dispozitivul contactului. Confirmați?</string>
+    <string name="main_view_reset_conversation_title">Resetare conversație</string>
+    <string name="main_view_reset_group_conversation_admin_message">Resetarea acestei conversații va șterge toate mesajele de pe dispozitivul fiecărui membru al grupului. Confirmați?</string>
+    <string name="main_view_reset_group_conversation_message">Resetarea acestei conversații va elimina toate mesajele de pe dispozitivul dvs. Confirmați?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_view_premium_feature">Trebuie să faceți upgrade la twinme+ pentru a utiliza această funcție. Veți putea migra toate datele contului.</string>
+    <string name="migration_twinme_plus_view_premium_title">Upgrade la twinme+</string>
+    <string name="migration_twinme_plus_view_upgrade_account">Veți putea migra toate datele contului.</string>
+    <string name="migration_twinme_plus_view_upgrade_message">twinme este disponibil într-o versiune premium cu și mai multe funcții.</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_view_about_twinme">Despre</string>
+    <string name="navigation_view_application_settings">Setări aplicație</string>
+    <string name="navigation_view_feedback">Feedback</string>
+    <string name="navigation_view_getting_started">Începeți</string>
+    <string name="navigation_view_help">Ajutor</string>
+    <string name="navigation_view_profile">Profiluri</string>
+    <string name="navigation_view_settings">Setări</string>
+    <string name="navigation_view_sign_out">Deconectare</string>
+    <string name="navigation_view_sounds">Sunete</string>
+    <string name="navigation_view_support">Asistență</string>
+    <string name="navigation_view_title">Meniu</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Apel vocal către %1$s</string>
+    <string name="notification_center_audio_message">V-a trimis un mesaj audio</string>
+    <string name="notification_center_audio_message_received">Mesaj audio nou</string>
+    <string name="notification_center_cancel">Închide</string>
+    <string name="notification_center_cleanup_conversation">Unele mesaje vechi au fost șterse.</string>
+    <string name="notification_center_conference_join_call">Un participant s-a alăturat apelului.</string>
+    <string name="notification_center_deleted_contact">Contact șters</string>
+    <string name="notification_center_file_message">V-a trimis un fișier</string>
+    <string name="notification_center_file_message_received">Fișier nou</string>
+    <string name="notification_center_invitation">V-a trimis o invitație</string>
+    <string name="notification_center_invitation_group">vă invită să vă alăturați unui grup.</string>
+    <string name="notification_center_invitation_received">Invitație nouă</string>
+    <string name="notification_center_invitation_group_received">Invitație de grup nouă</string>
+    <string name="notification_center_join_call">%1$s s-a alăturat apelului</string>
+    <string name="notification_center_join_group">Sunteți membru al grupului</string>
+    <string name="notification_center_message_received">Mesaj nou</string>
+    <string name="notification_center_missed_audio_call_to">Apel vocal pierdut către %1$s</string>
+    <string name="notification_center_missed_video_call_to">Apel video pierdut către %1$s</string>
+    <string name="notification_center_mute">Mute</string>
+    <string name="notification_center_new_contact">Contact nou</string>
+    <string name="notification_center_poll_message">ți-a trimis un sondaj</string>
+    <string name="notification_center_poll_message_received">Sondaj nou</string>
+    <string name="notification_center_poll_vote">A răspuns la un sondaj</string>
+    <string name="notification_center_photo_message">V-a trimis o fotografie</string>
+    <string name="notification_center_photo_message_received">Fotografie nouă</string>
+    <string name="notification_center_reaction">a reacționat %1$s</string>
+    <string name="notification_center_reaction_message">A reacționat la un mesaj</string>
+    <string name="notification_center_reaction_message_received">Reacție la un mesaj</string>
+    <string name="notification_center_reset_message">Conversație resetată</string>
+    <string name="notification_center_stop">Opriți</string>
+    <string name="notification_center_transfering_data">Se transferă mesajele…</string>
+    <string name="notification_center_unmute">Unmute</string>
+    <string name="notification_center_updated_contact_avatar">Imagine actualizată</string>
+    <string name="notification_center_updated_contact_name">Nume actualizat</string>
+    <string name="notification_center_video_call_to">Apel video către %1$s</string>
+    <string name="notification_center_video_message">V-a trimis un videoclip</string>
+    <string name="notification_center_video_message_received">Videoclip nou</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Apeluri vocale</string>
+    <string name="notification_channel_contact_title">Contacte</string>
+    <string name="notification_channel_group_title">Grupuri</string>
+    <string name="notification_channel_message_title">Mesaje</string>
+    <string name="notification_channel_missed_title">Apeluri pierdute</string>
+    <string name="notification_channel_system_title">Altele</string>
+    <string name="notification_channel_video_title">Apeluri video</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_view_item_audio_call">A încercat să vă apeleze</string>
+    <string name="notifications_view_item_audio_message">V-a trimis un mesaj audio</string>
+    <string name="notifications_view_item_cleanup_message">a șters unele mesaje vechi.</string>
+    <string name="notifications_view_item_deleted_contact">Contact șters</string>
+    <string name="notifications_view_item_file_message">V-a trimis un fișier</string>
+    <string name="notifications_view_item_image_message">V-a trimis o fotografie</string>
+    <string name="notifications_view_item_invitation">V-a trimis o invitație</string>
+    <string name="notifications_view_item_invitation_group">vă invită să vă alăturați unui grup.</string>
+    <string name="notifications_view_item_join_group">Sunteți membru al grupului</string>
+    <string name="notifications_view_item_new_contact">Contact nou</string>
+    <string name="notifications_view_item_reset_conversation">A resetat conversația</string>
+    <string name="notifications_view_item_poll_message">ți-a trimis un sondaj</string>
+    <string name="notifications_view_item_shortest_day">%1$dz</string>
+    <string name="notifications_view_item_shortest_hour">%1$d h</string>
+    <string name="notifications_view_item_shortest_minute">%1$d m</string>
+    <string name="notifications_view_item_shortest_second">%1$d s</string>
+    <string name="notifications_view_item_text_message">V-a trimis un mesaj</string>
+    <string name="notifications_view_item_updated_contact_avatar">Imagine actualizată</string>
+    <string name="notifications_view_item_updated_contact_name">Nume actualizat</string>
+    <string name="notifications_view_item_video_call">A încercat să vă apeleze video</string>
+    <string name="notifications_view_item_video_message">V-a trimis un videoclip</string>
+    <string name="notifications_view_no_notification_message">Notificările legate de contacte, conversații, apeluri etc. sunt listate aici.</string>
+    <string name="notifications_view_no_notification_title">Nu aveți notificări.</string>
+    <string name="notifications_view_reset">Sigur doriți să resetați toate notificările?</string>
+    <string name="notifications_view_reset_title">Resetare notificări</string>
+    <string name="notifications_view_title">Notificări</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_view_font">Fonturi de caractere</string>
+    <string name="personalization_view_font_extra_large">Foarte mare</string>
+    <string name="personalization_view_font_large">Mare</string>
+    <string name="personalization_view_font_small">Mic</string>
+    <string name="personalization_view_haptic_feedback">Feedback haptic</string>
+    <string name="personalization_view_haptic_feedback_message">Senzație tactilă la atingere.</string>
+    <string name="personalization_view_menu_choose_color">Culori implicite</string>
+    <string name="personalization_view_menu_enter_color">Cod culoare</string>
+    <string name="personalization_view_mode">Mod</string>
+    <string name="personalization_view_mode_dark">Întunecat</string>
+    <string name="personalization_view_mode_light">Luminos</string>
+    <string name="personalization_view_start_tab_information">Selectați fila pe care doriți să pornească aplicația.</string>
+    <string name="personalization_view_start_tab_title">Fila implicită</string>
+    <string name="personalization_view_system">Sistem</string>
+    <string name="personalization_view_title">Personalizare</string>
+
+    <!-- PollActivity -->
+    <string name="poll_view_add_response">Adaugă un răspuns</string>
+    <string name="poll_view_allow_multiple">Permite răspunsuri multiple</string>
+    <string name="poll_view_ask_question">Pune o întrebare</string>
+    <string name="poll_view_choice">Opțiunea %1$d</string>
+    <string name="poll_view_enter_response">Introduceți un răspuns</string>
+    <string name="poll_view_title">Sondaj</string>
+    <string name="poll_view_results">Vezi rezultatele</string>
+
+    <!-- PreviewFilesActivity -->
+    <string name="preview_files_view_resize_message">Se redimensionează înainte de trimitere…</string>
+    <string name="preview_files_view_retrieving_media_message">Se preia media în curs de desfășurare…</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_view_camera_control_description_1">Schimbați camera față/spate</string>
+    <string name="premium_services_view_camera_control_description_2">Măriți/micșorați</string>
+    <string name="premium_services_view_camera_control_description_3">Pentru a ajuta o persoană dragă sau un client de la distanță</string>
+    <string name="premium_services_view_camera_control_description_4">Pentru a gestiona o cameră de supraveghere</string>
+    <string name="premium_services_view_camera_control_subtitle">Controlați camera contactului în timpul unui apel, cu permisiunea acestuia</string>
+    <string name="premium_services_view_camera_control_title">Control cameră de la distanță</string>
+    <string name="premium_services_view_click_to_call_description_1">Creați un cod „click-to-call me”</string>
+    <string name="premium_services_view_click_to_call_description_2">Publicați sau distribuiți prin orice mijloc</string>
+    <string name="premium_services_view_click_to_call_description_3">Destinatarii scanează codul și vă apelează</string>
+    <string name="premium_services_view_click_to_call_description_4">Anonim, fără urme în cloud</string>
+    <string name="premium_services_view_click_to_call_subtitle">Permiteți invitaților să vă apeleze din web</string>
+    <string name="premium_services_view_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_view_conversation_description_1">Media, fișiere, note vocale, mesaje</string>
+    <string name="premium_services_view_conversation_description_2">Mai vechi decât o anumită perioadă/dată</string>
+    <string name="premium_services_view_conversation_description_3">Pentru o conversație sau pentru toate</string>
+    <string name="premium_services_view_conversation_description_4">Doar local, fără impact asupra celuilalt capăt</string>
+    <string name="premium_services_view_conversation_subtitle">Exportați conținuturi și eliberați spațiu</string>
+    <string name="premium_services_view_conversation_title">Gestionare conversații</string>
+    <string name="premium_services_view_description_part1_subtitle">Conexiune directă între dispozitive</string>
+    <string name="premium_services_view_description_part1_title">Calitate audio/video HD</string>
+    <string name="premium_services_view_description_part2_subtitle">Fără urme în cloud</string>
+    <string name="premium_services_view_description_part2_title">Confidențialitate</string>
+    <string name="premium_services_view_description_part3_subtitle">Eficiență energetică</string>
+    <string name="premium_services_view_description_part3_title">Eco-responsabil</string>
+    <string name="premium_services_view_group_call_description_1">Audio/video în înaltă definiție</string>
+    <string name="premium_services_view_group_call_description_2">Conexiune directă între dispozitive</string>
+    <string name="premium_services_view_group_call_description_3">Securizat &amp; privat</string>
+    <string name="premium_services_view_group_call_description_4">Fără urme în cloud</string>
+    <string name="premium_services_view_group_call_subtitle">Invitați contacte să se alăture unui apel de grup</string>
+    <string name="premium_services_view_group_call_title">Apeluri de grup</string>
+    <string name="premium_services_view_privacy_description_1">Blocați aplicația cu biometric sau alte metode</string>
+    <string name="premium_services_view_privacy_description_2">Ascundeți ultimul ecran în aplicațiile recente</string>
+    <string name="premium_services_view_privacy_description_3">Mesaje efemere care dispar după un timp</string>
+    <string name="premium_services_view_privacy_description_4">Împiedicați un contact să vă apeleze</string>
+    <string name="premium_services_view_privacy_subtitle">Controlați aplicația, contactele și mesajele</string>
+    <string name="premium_services_view_privacy_title">Mai multă confidențialitate</string>
+    <string name="premium_services_view_space_description_1">Profiluri multiple cu relații, conversații, istoric asociat</string>
+    <string name="premium_services_view_space_description_2">Aspect, notificări și setări personalizate</string>
+    <string name="premium_services_view_space_description_3">Pentru familie, prieteni, colegi, afaceri, sport etc.</string>
+    <string name="premium_services_view_space_description_4">Spații secrete neafișate, accesibile prin nume</string>
+    <string name="premium_services_view_space_subtitle">Pentru fiecare grup social cu care interacționați</string>
+    <string name="premium_services_view_space_title">Spații</string>
+    <string name="premium_services_view_streaming_description_1">Partajați muzica live</string>
+    <string name="premium_services_view_streaming_description_2">Fiecare participant poate controla playerul</string>
+    <string name="premium_services_view_streaming_description_3">Interacționați simultan în timpul apelului</string>
+    <string name="premium_services_view_streaming_description_4">Aceeași confidențialitate ca în viața reală</string>
+    <string name="premium_services_view_streaming_subtitle">Partajați media în timpul unui apel</string>
+    <string name="premium_services_view_streaming_title">Partajare media</string>
+    <string name="premium_services_view_title">Invitați contacte să se alăture unui apel vocal/video în curs.</string>
+    <string name="premium_services_view_transfert_description_1">Creați codul și profilul pentru transferul apelului</string>
+    <string name="premium_services_view_transfert_description_2">Încărcați URL-ul sau scanați codul pe un computer</string>
+    <string name="premium_services_view_transfert_description_3">Adăugați pagina la favorite în browser</string>
+    <string name="premium_services_view_transfert_description_4">Apelați din pagină în timpul unui apel mobil</string>
+    <string name="premium_services_view_transfert_subtitle">Transferați un apel mobil către un browser</string>
+    <string name="premium_services_view_transfert_title">Transfer apel</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_view_coach_mark">Blocați aplicația cu servicii biometrice sau un cod PIN.</string>
+    <string name="privacy_view_hide_last_screen_message">Și ascundeți aplicația când merge în fundal, dacă dispozitivul permite.</string>
+    <string name="privacy_view_hide_last_screen_title">Interziceți capturile de ecran</string>
+    <string name="privacy_view_lock_screen_message">Deblocați accesul la aplicație prin autentificare biometrică sau cod. Puteți răspunde în continuare la apeluri și primi notificări chiar dacă aplicația este blocată.</string>
+    <string name="privacy_view_lock_screen_not_available">Această opțiune necesită Android &gt; 5.0</string>
+    <string name="privacy_view_lock_screen_timeout">Timeout blocare acces</string>
+    <string name="privacy_view_lock_screen_timeout_instant">Instantaneu</string>
+    <string name="privacy_view_lock_screen_title">Blocare acces</string>
+    <string name="privacy_view_title">Confidențialitate</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_view_add_profile">Adăugați profil</string>
+    <string name="profile_view_create_profile">Creați un profil</string>
+    <string name="profile_view_default_action">Activați</string>
+    <string name="profile_view_default_profile_title">Profil activ</string>
+    <string name="profile_view_identity_title">Profiluri</string>
+    <string name="profile_view_message">Acest profil vă permite să invitați contacte pentru a stabili o relație privată, sub controlul dvs.</string>
+    <string name="profile_view_twincode_title">Cod invitație</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_view_add">Adăugați un Proxy</string>
+    <string name="proxy_view_add_placeholder">Lipiți sau introduceți URL-ul proxy-ului</string>
+    <string name="proxy_view_already_use">Acest proxy este deja configurat în aplicația dvs.</string>
+    <string name="proxy_view_enable">Utilizați un Proxy</string>
+    <string name="proxy_view_format">Formate valide URL proxy:</string>
+    <string name="proxy_view_information">Folosiți un proxy doar dacă nu vă puteți conecta la serviciu prin rețele Wi-Fi sau mobile obișnuite.</string>
+    <string name="proxy_view_invalid_format">Format URL invalid</string>
+    <string name="proxy_view_limit">Ați atins limita numărului de proxy-uri permise (%1$d). Pentru a adăuga unul nou, trebuie să eliminați unul.</string>
+    <string name="proxy_view_list">Proxy-urile mele</string>
+    <string name="proxy_view_list_information">Folosiți un proxy din lista de mai jos doar dacă aplicația nu se poate conecta la serviciu fără proxy.</string>
+    <string name="proxy_view_onboarding">Când accesul la serverele de semnalizare este blocat în țara dvs., proxy-urile pot ocoli aceste blocaje și vă permit să comunicați privat. În plus față de proxy-urile din aplicație, puteți crea propriul proxy sau utiliza unul creat de altcineva. Proxy-urile nu pot accesa niciodată conținuturile schimbate.</string>
+    <string name="proxy_view_share">Deschideți linkul %1$s cu twinme pe dispozitiv pentru a configura automat acest proxy.</string>
+    <string name="proxy_view_share_message">Distribuiți acest proxy celor care nu se mai pot conecta la serviciu din cauza tentativelor de blocare.</string>
+    <string name="proxy_view_title">Proxy</string>
+    <string name="proxy_view_url">Doriți să utilizați URL-ul acestui proxy?</string>
+    <string name="proxy_view_warning">Atenție! URL-ul acestui proxy nu permite conectarea la serviciul aplicației.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_view_change_permissions">Modificați permisiunile</string>
+    <string name="quality_of_service_view_enable_notifications">Activați notificările</string>
+    <string name="quality_of_service_view_enable_notifications_warning">Fără aceste permisiuni, mesajele pot ajunge cu multă întârziere.</string>
+    <string name="quality_of_service_view_notification_description">Permiteți aplicației să ruleze în fundal</string>
+    <string name="quality_of_service_view_notification_title">Mesajele ajung prea lent?</string>
+    <string name="quality_of_service_view_settings">Modificați permisiunile aplicației în setările sistemului.</string>
+    <string name="quality_of_service_view_step1_message">Mesajele criptate sunt schimbate direct între dispozitive în timp real, fără servere de distribuție. Astfel nu există urme în cloud și se asigură confidențialitate unică.</string>
+    <string name="quality_of_service_view_step2_message">Pentru o calitate bună a serviciului, permiteți aplicației să primească notificări în fundal și excludeți-o din optimizările de baterie.</string>
+    <string name="quality_of_service_view_step3_message">Folosiți aplicația frecvent, astfel încât sistemul să o prioritizeze și să nu o închidă neașteptat.\n\nȘi nu uitați să vă informați contactele!</string>
+    <string name="quality_of_service_view_warning_background_data">Permiteți utilizarea datelor mobile în fundal.</string>
+    <string name="quality_of_service_view_warning_receive_notification">Permiteți primirea notificărilor push.</string>
+    <string name="quality_of_service_view_warning_run_background">Permiteți rularea în fundal.</string>
+
+    <!-- RestoreActivity -->
+    <string name="restore_view_application_error">twinme+ trebuie instalat pe acest dispozitiv pentru a restaura o copie de rezervă a contului twinme+.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_one">Dispozitivul care a făcut copia de rezervă este încă autentificat.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_two">Dacă restaurați copia de rezervă pe acest dispozitiv nou, contul dispozitivului pe care a fost făcută copia de rezervă va fi invalidat automat.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_three">Dacă doriți să vă transferați contul pe un dispozitiv nou și îl aveți încă pe cel vechi, este de preferat să folosiți operațiunea \\\"migrare cont\\\" în locul restaurării unei copii de rezervă, deoarece va transfera și conversațiile, notificările și istoricul.</string>
+    <string name="restore_view_confirm">Sigur doriți să înlocuiți datele curente ale contului cu următoarele date din copia de rezervă?</string>
+    <string name="restore_view_confirm_restore">Mai doriți să restaurați această copie de rezervă?</string>
+    <string name="restore_view_content_contact_deleted_message">Datele șterse după realizarea copiei de rezervă nu pot fi restaurate.</string>
+    <string name="restore_view_content_profile_reset">Codul de invitație s-a schimbat.</string>
+    <string name="restore_view_content_profile_reset_message">Codul de invitație asociat profilului salvat este invalid. Un nou cod de invitație va fi generat în timpul procesului de restaurare.</string>
+    <string name="restore_view_enter_words">Introduceți seria de 12 cuvinte care permite decriptarea copiei de rezervă.</string>
+    <string name="restore_view_error_message">Eroare la restaurarea copiei de rezervă.</string>
+    <string name="restore_view_error_message_verify_backup">Eroare la verificarea copiei de rezervă.</string>
+    <string name="restore_view_file_not_supported">Fișierul de backup trebuie să fie în formatul \"skrdbckp\".</string>
+    <string name="restore_view_more_recent_backup">A fost realizată o copie de rezervă mai recentă cu același cont.</string>
+    <string name="restore_view_onboarding">Restaurarea unei copii de rezervă va înlocui datele curente ale contului.</string>
+    <string name="restore_view_onboarding_words">Pentru a restaura o copie de rezervă, va trebui să introduceți seria de 12 cuvinte care permite decriptarea acesteia.</string>
+    <string name="restore_view_onboarding_verify">Verificați că o copie de rezervă este validă și actualizată cu datele dvs. curente.</string>
+    <string name="restore_view_paste">Lipiți lista de cuvinte din clipboard.</string>
+    <string name="restore_view_paste_error">Listă de cuvinte invalidă.</string>
+    <string name="restore_view_restore">Restaurează</string>
+    <string name="restore_view_select_backup">Selectați o copie de rezervă</string>
+    <string name="restore_view_state_restore_account">Se restaurează contul…</string>
+    <string name="restore_view_state_restore_data">Se restaurează datele…</string>
+    <string name="restore_view_state_restore_starting">Se începe restaurarea.</string>
+    <string name="restore_view_state_restore_verify_account">Se verifică contul…</string>
+    <string name="restore_view_state_restore_verify_data">Se verifică datele…</string>
+    <string name="restore_view_state_restore_verify_starting">Se începe verificarea…</string>
+    <string name="restore_view_state_restore_wait_confirm">Se așteaptă confirmarea.</string>
+    <string name="restore_view_success">Restaurarea s-a finalizat cu succes!</string>
+    <string name="restore_view_success_message">Închideți aplicația și reporniți-o pentru a accesa noile date.</string>
+    <string name="restore_view_title">Restaurare</string>
+    <string name="restore_view_verify_same_account">Verificarea trebuie efectuată pe același dispozitiv folosit pentru copie de rezervă.</string>
+    <string name="restore_view_warning">Restaurarea acestei copii de rezervă va înlocui toate datele curente ale contului cu datele din copie.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_view_change_admin_title">Definește ca administrator</string>
+    <string name="room_members_view_delete_message">Confirmați eliminarea acestui membru</string>
+    <string name="room_members_view_moderators_title">Moderator</string>
+    <string name="room_members_view_only_admin_message">Singurul administrator nu poate fi eliminat.</string>
+    <string name="room_members_view_owner_title">Proprietar</string>
+    <string name="room_members_view_participants_title">Participanți</string>
+    <string name="room_members_view_remove_admin_title">Elimină statutul de administrator</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_view_paste_code">Introduceți sau lipiți un link de invitație</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_view_allow_copy_category_title">Permiteți destinatarilor să copieze/salveze/partajeze conținuturile dvs.</string>
+    <string name="settings_view_allow_copy_file_title">Orice tip de fișier</string>
+    <string name="settings_view_allow_copy_text_title">Mesaje text</string>
+    <string name="settings_view_application_notifications">Notificări aplicație</string>
+    <string name="settings_view_audio_call_category_title">Apeluri audio</string>
+    <string name="settings_view_audio_call_notification_ringtone_title">Nume ton apel</string>
+    <string name="settings_view_audio_call_notification_title">Ton apel</string>
+    <string name="settings_view_audio_call_vibration_title">Vibrare</string>
+    <string name="settings_view_authorization_title">Permisiuni</string>
+    <string name="settings_view_call_item_menu_all">Toate apelurile</string>
+    <string name="settings_view_chat_category_title">Mesaje</string>
+    <string name="settings_view_chat_ringtone_title">Nume sunet</string>
+    <string name="settings_view_chat_title">Sunet</string>
+    <string name="settings_view_chat_vibration_title">Vibrare</string>
+    <string name="settings_view_content_information">Rezoluția conținutului media trimis într-o conversație: definiția înaltă necesită mai multe date și timp de transmisie.</string>
+    <string name="settings_view_content_title">Media</string>
+    <string name="settings_view_default_directory_title">Director implicit pentru salvarea fișierelor</string>
+    <string name="settings_view_default_sound">Implicit</string>
+    <string name="settings_view_default_value_message">Acești parametri sunt utilizați ca valori implicite la nivelul aplicației.</string>
+    <string name="settings_view_display_call_menu_missed">Doar apeluri pierdute</string>
+    <string name="settings_view_display_call_menu_none">Fără apeluri</string>
+    <string name="settings_view_display_call_none">Niciunul</string>
+    <string name="settings_view_display_call_title">Afișați notificările apelurilor în conversații</string>
+    <string name="settings_view_display_notification_content_title">Afișați conținutul mesajelor</string>
+    <string name="settings_view_display_notification_like_title">Reacții la mesaje</string>
+    <string name="settings_view_display_notification_sender_title">Afișați expeditorul mesajului</string>
+    <string name="settings_view_ephemeral_message">Ștergeți automat mesajele trimise</string>
+    <string name="settings_view_ephemeral_section_title">DURATĂ</string>
+    <string name="settings_view_ephemeral_title">Mesaj care dispare</string>
+    <string name="settings_view_image_title">Fotografie</string>
+    <string name="settings_view_message_properties_title">Proprietăți mesaj</string>
+    <string name="settings_view_message_reactions_notification">Notificare pentru reacțiile la mesaje</string>
+    <string name="settings_view_permissions_title">PERMISIUNI</string>
+    <string name="settings_view_reset_default_value">Resetați la valorile implicite</string>
+    <string name="settings_view_reset_preferences_button_title">Resetare implicită</string>
+    <string name="settings_view_reset_preferences_message">Resetați setările notificărilor la valorile implicite ale aplicației.</string>
+    <string name="settings_view_reset_preferences_title">Resetare preferințe</string>
+    <string name="settings_view_silent_mode">Mod silențios</string>
+    <string name="settings_view_silent_sound">Mut</string>
+    <string name="settings_view_sound_enabled_title">NOTIFICĂRI SONORE</string>
+    <string name="settings_view_system_notifications_title">Notificări sistem</string>
+    <string name="settings_view_system_settings_title">Setări sistem</string>
+    <string name="settings_view_turn_off_notification_sounds">Oprește sunetele notificărilor</string>
+    <string name="settings_view_video_call_category_title">Apeluri video</string>
+    <string name="settings_view_video_call_notification_ringtone_title">Nume ton</string>
+    <string name="settings_view_video_call_notification_title">Ton apel</string>
+    <string name="settings_view_video_call_vibration_title">Vibrare</string>
+    <string name="settings_view_welcome_screen_category_title">BUN VENIT</string>
+    <string name="settings_view_welcome_screen_summary">Afișați ecranele de bun venit</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_developer_settings">Setări dezvoltator</string>
+    <string name="settings_advanced_view_status_connection_message">Verificați starea conexiunii la serviciu</string>
+    <string name="settings_advanced_view_status_connection_title">Stare conexiune</string>
+    <string name="settings_advanced_view_telecom">APELURI</string>
+    <string name="settings_advanced_view_telecom_enable">„Experiența de apelare Android”</string>
+    <string name="settings_advanced_view_telecom_information">Implicit, aplicația nu integrează experiența de apelare Android, deoarece aceasta poate cauza probleme la primirea apelurilor în anumite situații. O puteți activa pentru o gestionare mai bună a apelurilor dacă nu întâmpinați aceste probleme.</string>
+    <string name="settings_advanced_view_title">Setări avansate</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_view_allow_invite_as_personal_contact">Permiteți participanților să invite alți participanți ca contacte personale</string>
+    <string name="settings_room_view_allow_invite_contact">Permiteți participanților să își invite contactele</string>
+    <string name="settings_room_view_conference_notifications_inform">Prima intrare/ultima ieșire</string>
+    <string name="settings_room_view_conference_notifications_noisy">Toate intrările/ieșirile</string>
+    <string name="settings_room_view_conference_notifications_quiet">Silence</string>
+    <string name="settings_room_view_display_members">Afișați membrii</string>
+    <string name="settings_room_view_room_type_channel">Canal - unidirecțional</string>
+    <string name="settings_room_view_room_type_channel_information">Numai administratorii/moderatorii pot posta mesaje</string>
+    <string name="settings_room_view_room_type_feedback">Canal - cu feedback</string>
+    <string name="settings_room_view_room_type_feedback_information">Feedback-ul participanților este vizibil doar administratorilor/moderatorilor</string>
+    <string name="settings_room_view_room_type_forum">Forum</string>
+    <string name="settings_room_view_room_type_forum_information">Participanții pot posta mesaje vizibile pentru toți</string>
+
+    <!-- ShareActivity -->
+    <string name="share_view_contact_list">Contacte</string>
+    <string name="share_view_group_list">Grupuri</string>
+    <string name="share_view_title">Partajați</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_view_code">Cod „Click-to-call”</string>
+    <string name="show_call_view_conference_call_information">Distribuiți acest link pentru a fi apelat sau pentru a intra într-o conferință din browser.</string>
+    <string name="show_call_view_information_code">Distribuiți acest cod pentru a primi apeluri externe.</string>
+    <string name="show_call_view_meeting_organizer">Organizatorul acestei întâlniri</string>
+    <string name="show_call_view_schedule_call">Apel programat</string>
+    <string name="show_call_view_schedule_from">de la %1$s</string>
+    <string name="show_call_view_schedule_from_to">%1$s de la %2$s la %3$s</string>
+    <string name="show_call_view_schedule_message">Apel programat pentru o dată și oră definite în altă parte.</string>
+    <string name="show_call_view_schedule_to">până la %1$s</string>
+    <string name="show_call_view_settings_call">Tipul apelului</string>
+    <string name="show_call_view_settings_end">Sfârșit</string>
+    <string name="show_call_view_settings_group_calls">Apel de grup</string>
+    <string name="show_call_view_settings_limited">Programat</string>
+    <string name="show_call_view_settings_start">Începe</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_view_audio">Vocal</string>
+    <string name="show_contact_view_chat">Chat</string>
+    <string name="show_contact_view_cleanup">Curățare</string>
+    <string name="show_contact_view_export_contents">Exportă conținuturi</string>
+    <string name="show_contact_view_history_title">Istoric</string>
+    <string name="show_contact_view_identity_title">Mă cunoaște ca</string>
+    <string name="show_contact_view_last_calls">Ultimele apeluri</string>
+    <string name="show_contact_view_pending">În curs</string>
+    <string name="show_contact_view_pending_message">Această relație este în curs de stabilire. Vă rugăm să așteptați.</string>
+    <string name="show_contact_view_revoked">Șters</string>
+    <string name="show_contact_view_settings_coach_mark">Definește ce are voie să facă acest contact în relația cu dvs.</string>
+    <string name="show_contact_view_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_view_add_member">Adăugați un membru</string>
+    <string name="show_group_view_invitation_list">Invitații în așteptare: %1$d</string>
+    <string name="show_group_view_leave">Părăsiți grupul</string>
+    <string name="show_group_view_leave_confirm_message">Sigur doriți să părăsiți acest grup?</string>
+    <string name="show_group_view_leave_message">Veți părăsi acest grup și nu veți mai putea accesa conversațiile sale.</string>
+    <string name="show_group_view_member_list">Lista membrilor (%1$d)</string>
+    <string name="show_group_view_remove_confirm_message">Sigur doriți să ștergeți acest grup?</string>
+    <string name="show_group_view_remove_message">Acest grup va fi șters pentru toți membrii săi, iar conversațiile vor fi eliminate.</string>
+    <string name="show_group_view_title">Grup</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_view_admin_title">Interfață administrare</string>
+    <string name="show_room_view_invite_participants">Invitați participanți</string>
+    <string name="show_room_view_room_title">Cameră</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_view_background_image_title">Imagine</string>
+    <string name="space_appearance_view_background_message">Personalizați fundalul conversațiilor cu o culoare sau imagine.</string>
+    <string name="space_appearance_view_background_text_title">Text</string>
+    <string name="space_appearance_view_background_title">Fundal</string>
+    <string name="space_appearance_view_container_background_message">Fundal mesaj trimis</string>
+    <string name="space_appearance_view_container_background_peer_message">Fundal mesaj primit</string>
+    <string name="space_appearance_view_container_border_message">Chenar mesaj trimis</string>
+    <string name="space_appearance_view_container_border_peer_message">Chenar mesaj primit</string>
+    <string name="space_appearance_view_container_text_message">Text mesaj trimis</string>
+    <string name="space_appearance_view_container_text_peer_message">Text mesaj primit</string>
+    <string name="space_appearance_view_container_title">Baloane</string>
+    <string name="space_appearance_view_default_value">Valoare implicită</string>
+    <string name="space_appearance_view_general_title">General</string>
+    <string name="space_appearance_view_menu_choose_color">Culori implicite</string>
+    <string name="space_appearance_view_menu_enter_color">Cod culoare</string>
+    <string name="space_appearance_view_opacity">Opacitate</string>
+    <string name="space_appearance_view_preview_message">Am uitat pantofii de balet… Poți să-i aduci cu tine te rog?😘</string>
+    <string name="space_appearance_view_preview_peer_message">Bună, iubire!</string>
+    <string name="space_appearance_view_preview_title">Previzualizare</string>
+    <string name="space_appearance_view_theme">Temă</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_view_message">Un Spațiu este locul unde personalitățile tale diferite întâlnesc multiplele cercuri sociale, inclusiv pe cele mai secrete.</string>
+    <string name="spaces_view_sample_business">Afaceri</string>
+    <string name="spaces_view_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_view_sample_family">Familie</string>
+    <string name="spaces_view_sample_family_name">Tată</string>
+    <string name="spaces_view_sample_friends">Prieteni</string>
+    <string name="spaces_view_sample_friends_name">Johny</string>
+    <string name="spaces_view_title">Spații</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_view_error_message">A apărut o eroare. Vă rugăm să încercați din nou.</string>
+    <string name="streaming_audio_view_no_music_message">Vă rugăm să transferați fișiere muzicale pe dispozitiv.</string>
+    <string name="streaming_audio_view_no_music_title">Nu a fost găsită muzică 🙁</string>
+    <string name="streaming_audio_view_title">Partajare media</string>
+    <string name="streaming_audio_view_unsupported_message">Acest format audio nu este suportat de dispozitivul lui %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_view_template_classified_ad">Anunț de mică publicitate</string>
+    <string name="template_click_to_call_view_template_classified_ad_description">Introduceți un link într-un anunț care permite potențialilor cumpărători să vă apeleze fără să instaleze aplicația.</string>
+    <string name="template_click_to_call_view_template_classified_ad_placeholder">Anunț</string>
+    <string name="template_click_to_call_view_template_default_description">Personalizați un link de apel după necesități.</string>
+    <string name="template_click_to_call_view_template_help">Serviciu Clienți</string>
+    <string name="template_click_to_call_view_template_help_description">Link pentru a apela serviciul clienți din browser.</string>
+    <string name="template_click_to_call_view_template_help_placeholder">Serviciu Clienți</string>
+    <string name="template_click_to_call_view_template_job">Interviu de angajare</string>
+    <string name="template_click_to_call_view_template_job_description">Link care permite recrutorilor interesați să vă apeleze pentru un interviu.</string>
+    <string name="template_click_to_call_view_template_job_placeholder">Interviu</string>
+    <string name="template_click_to_call_view_template_meeting">Întâlnire</string>
+    <string name="template_click_to_call_view_template_meeting_description">Distribuiți un link pentru a se alătura unei conferințe din browser.</string>
+    <string name="template_click_to_call_view_template_meeting_placeholder">Întâlnire</string>
+    <string name="template_click_to_call_view_template_profile_description">Link pentru a fi sunat fără a instala aplicația.</string>
+    <string name="template_click_to_call_view_template_video_bell">Sonerie video</string>
+    <string name="template_click_to_call_view_template_video_bell_description">Permiteți curierului să vă apeleze pentru instrucțiuni.</string>
+    <string name="template_click_to_call_view_template_video_bell_placeholder">Sonerie</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_view_template_business_placeholder">Nume (Dr John Doe, Dna Smith,…)</string>
+    <string name="template_space_view_template_business_profile">Dna Samantha Smith</string>
+    <string name="template_space_view_template_family_placeholder">Nume (Tată, Mamă,…)</string>
+    <string name="template_space_view_template_family_profile">Mamă</string>
+    <string name="template_space_view_template_friends_placeholder">Nume (Johny, Sam,…)</string>
+    <string name="template_space_view_template_friends_profile">Sam</string>
+    <string name="template_space_view_template_other">Altele</string>
+    <string name="template_space_view_template_other_placeholder">Nume (Tată, Mamă, Johny, Dr John Doe,…)</string>
+    <string name="template_space_view_template_title">Șabloane</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_view_delete_confirm_message">Sigur doriți să ștergeți acest cod „Call Transfer”?</string>
+    <string name="transfert_call_view_delete_message">Acest link de transfer apel va fi șters. Confirmați?</string>
+    <string name="transfert_call_view_gallery_message">Scanați acest cod QR pentru a transfera apelurile mobile.</string>
+    <string name="transfert_call_view_message">Trimiteți acest cod și adăugați URL-ul său în browserul către care doriți să transferați apelurile mobile.</string>
+    <string name="transfert_call_view_reset_message">Această acțiune invalidează codul curent de transfer și creează unul nou. Confirmați?</string>
+    <string name="transfert_call_view_saved_message">Codul de transfer apel a fost salvat în galerie.</string>
+    <string name="transfert_call_view_share">Transfer</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_view_message">Rugați prietenul de lângă dvs. să scaneze codul dvs. QR de invitație cu twinme sau apăsați pe cod pentru a-l copia în clipboard.</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_view_update_available">Actualizare disponibilă</string>
+    <string name="update_app_view_update_message">Ultima actualizare a aplicației a inclus următoarele:</string>
+    <string name="update_app_view_update_title">Actualizați acum</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_view_calling">Se apelează video…</string>
+    <string name="video_call_view_cannot_call">Nu se poate iniția un apel video</string>
+    <string name="video_call_view_connecting">Se conectează…</string>
+    <string name="video_call_view_hangup_confirmation">Doriți să închideți apelul?</string>
+    <string name="video_call_view_terminate">Apelul a fost încheiat</string>
+    <string name="video_call_view_terminate_busy">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; este ocupat</string>
+    <string name="video_call_view_terminate_cancel">Apel anulat de &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_connectivity_error">Apel întrerupt din cauza unei probleme de conectivitate. Verificați conexiunea la internet.</string>
+    <string name="video_call_view_terminate_decline">Apel respins de &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_disconnected">Apel întrerupt din cauza unei erori de rețea. Încercați din nou.</string>
+    <string name="video_call_view_terminate_gone">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; este offline</string>
+    <string name="video_call_view_terminate_revoked">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; a șters această relație cu dvs.</string>
+    <string name="video_call_view_terminate_success">Apel încheiat de &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_timeout">Apel încheiat: &lt;b&gt;%1$s&lt;/b&gt; nu răspunde</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_view_accept">Apăsând %1$s, confirm că am citit și accept:</string>
+    <string name="welcome_view_next">Următorul</string>
+    <string name="welcome_view_pass">Sari peste</string>
+    <string name="welcome_view_privacy_policy">Politica de confidențialitate</string>
+    <string name="welcome_view_start">Start</string>
+    <string name="welcome_view_step1_message">Mesagerie &amp; apeluri vocale/video în înaltă definiție care protejează confidențialitatea prin design.</string>
+    <string name="welcome_view_step2_message">Comunicare securizată „peer-to-peer”: fără urme în cloud.</string>
+    <string name="welcome_view_step3_message">Fără număr de telefon, fără agendă, fără ID utilizator: decideți cum doriți să fiți identificat în funcție de persoana cu care comunicați.</string>
+    <string name="welcome_view_terms_of_use">Termeni de utilizare</string>
+</resources>

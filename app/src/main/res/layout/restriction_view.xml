@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/quality_of_service_activity_notification_title"
+                    android:text="@string/quality_of_service_view_notification_title"
                     android:layout_toEndOf="@+id/restriction_content_image_view"
                     app:layout_marginStartPercent="3.27%"
                     app:layout_marginEndPercent="4.75%" />
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/quality_of_service_activity_notification_description"
+                    android:text="@string/quality_of_service_view_notification_description"
                     app:layout_marginStartPercent="4.75%"
                     app:layout_marginEndPercent="14.58%" />
 

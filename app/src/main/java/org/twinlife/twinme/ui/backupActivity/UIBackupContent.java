@@ -33,11 +33,11 @@ public class UIBackupContent {
         String  title = "";
         switch (mBackupContentType) {
             case CONTACTS:
-                title = context.getString(R.string.share_activity_contact_list);
+                title = context.getString(R.string.share_view_contact_list);
                 break;
 
             case GROUPS:
-                title = context.getString(R.string.share_activity_group_list);
+                title = context.getString(R.string.share_view_group_list);
                 break;
         }
 

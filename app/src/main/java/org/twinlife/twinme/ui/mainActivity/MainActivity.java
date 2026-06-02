@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2014-2025 twinlife SA.
+ *  Copyright (c) 2014-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -22,7 +22,6 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -38,7 +37,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -86,11 +84,13 @@ import org.twinlife.twinme.ui.AddContactActivity;
 import org.twinlife.twinme.ui.EditProfileActivity;
 import org.twinlife.twinme.ui.FatalErrorActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.ShowContactActivity;
 import org.twinlife.twinme.ui.ShowProfileActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.accountActivity.AccountActivity;
+import org.twinlife.twinme.ui.backupActivity.MenuBackupView;
 import org.twinlife.twinme.ui.backupActivity.RestoreActivity;
 import org.twinlife.twinme.ui.contacts.MenuAddContactView;
 import org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView;
@@ -135,7 +135,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
     private static final String CHECKED_REFERRER = "CHECKED_REFERRER";
 
-    private static final String PROFILE_FRAGMENT_TAG = "PROFILE";
     private static final String CALLS_FRAGMENT_TAG = "CALLS";
     private static final String CONTACTS_FRAGMENT_TAG = "CONTACTS";
     private static final String CHAT_FRAGMENT_TAG = "CHAT";
@@ -148,12 +147,11 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     private static final float DESIGN_SIDE_SETTINGS_WIDTH = 520f;
     private static final float DESIGN_PROFILE_ITEM_HEIGHT = 160f;
 
-    private static final int PROFILE_FRAGMENT_INDEX = 0;
-    private static final int CALLS_FRAGMENT_INDEX = 1;
-    private static final int CONTACTS_FRAGMENT_INDEX = 2;
-    private static final int CHAT_FRAGMENT_INDEX = 3;
-    private static final int NOTIFICATIONS_FRAGMENT_INDEX = 4;
-    private static final int TAB_COUNT = 5;
+    private static final int CALLS_FRAGMENT_INDEX = 0;
+    private static final int CONTACTS_FRAGMENT_INDEX = 1;
+    private static final int CHAT_FRAGMENT_INDEX = 2;
+    private static final int NOTIFICATIONS_FRAGMENT_INDEX = 3;
+    private static final int TAB_COUNT = 4;
 
     private static final int COACH_MARK_DELAY = 500;
 
@@ -311,8 +309,8 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             mDrawerLayout.addView(menuAddContactView);
 
             List<UIMenuSelectAction> actions = new ArrayList<>();
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_scan_contact_title), R.drawable.scan_code));
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_invite_contact_title), R.drawable.qrcode));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_scan_contact_title), R.drawable.scan_code));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_invite_contact_title), R.drawable.qrcode));
             menuAddContactView.setActions(actions, this);
             menuAddContactView.openMenu(false);
 
@@ -333,12 +331,8 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
 
-        if (mProfile != null && mBottomNavigationView.getSelectedItemId() == R.id.navigation_profile) {
-            return;
-        }
-
         Intent intent = new Intent();
-        if (mProfile != null && mBottomNavigationView.getSelectedItemId() != R.id.navigation_profile) {
+        if (mProfile != null) {
             intent.putExtra(Intents.INTENT_PROFILE_ID, mProfile.getId().toString());
             intent.setClass(this, ShowProfileActivity.class);
         } else {
@@ -469,11 +463,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         if (requestCode == CallsFragment.REQUEST_EXTERNAL_CALL_ONBOARDING && resultCode == RESULT_OK) {
             showPremiumFeatureView(UIPremiumFeature.FeatureType.CLICK_TO_CALL);
-        } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_profile) {
-            ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag(PROFILE_FRAGMENT_TAG);
-            if (profileFragment != null) {
-                profileFragment.onActivityResult(requestCode, resultCode, data);
-            }
         }
     }
 
@@ -523,9 +512,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             if (mInitNavigationItemOnResume) {
                 mInitNavigationItemOnResume = false;
 
-                if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.PROFILES.ordinal()) {
-                    mBottomNavigationView.setSelectedItemId(R.id.navigation_profile);
-                } else if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
+                if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
                     mBottomNavigationView.setSelectedItemId(R.id.navigation_calls);
                 } else if (getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
                     mBottomNavigationView.setSelectedItemId(R.id.navigation_contacts);
@@ -626,16 +613,16 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 if (error == ErrorCode.SUCCESS) {
                                     mMainService.getImage(contact, (Bitmap avatar) -> showSuccessAuthentification(contact.getName(), avatar));
                                 } else {
-                                    showAlertMessage(getLinkError(error, R.string.add_contact_activity_scan_error_incorrect_link));
+                                    showAlertMessage(getLinkError(error, R.string.add_contact_view_scan_error_incorrect_link));
                                 }
                             }));
                         } else if (twincodeURI.kind == TwincodeURI.Kind.Proxy) {
                             addProxy(twincodeURI.twincodeOptions);
                         } else {
-                            showAlertMessage(getLinkError(twincodeURI.kind, R.string.add_contact_activity_scan_error_incorrect_link));
+                            showAlertMessage(getLinkError(twincodeURI.kind, R.string.add_contact_view_scan_error_incorrect_link));
                         }
                     } else {
-                        showAlertMessage(getLinkError(errorCode, R.string.add_contact_activity_scan_error_incorrect_link));
+                        showAlertMessage(getLinkError(errorCode, R.string.add_contact_view_scan_error_incorrect_link));
                     }
                 });
             }
@@ -1226,44 +1213,12 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
             final int currentTab = item.getItemId();
             boolean isFullScreen = false;
-            if (currentTab == R.id.navigation_profile) {
-                setTitle(capitalizedTitle(getString(R.string.application_profile)));
-                setToolBar(R.id.twinme_navigation_tool_bar);
-
-                if (mProfile != null) {
-                    hideToolBar();
-                    isFullScreen = true;
-                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                    getWindow().setStatusBarColor(Color.TRANSPARENT);
-                    twinmeToolbar.setVisibility(View.GONE);
-                } else {
-                    twinmeToolbar.setVisibility(View.VISIBLE);
-                }
-
-                callToolbar.setVisibility(View.GONE);
-                conversationsToolbar.setVisibility(View.GONE);
-                if (getTwinmeApplication().hasNewVersion()) {
-                    mNotificationView.setVisibility(View.VISIBLE);
-                } else {
-                    mNotificationView.setVisibility(View.GONE);
-                }
-
-                // Get the ProfileFragment from the fragment manager if we can because it could create an
-                // instance of ProfileFragment during main activity restore.  Other fragments don't have
-                // the issue because they don't save any state.
-                ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag(PROFILE_FRAGMENT_TAG);
-                if (profileFragment == null) {
-                    profileFragment = new ProfileFragment();
-                }
-                showFragment(profileFragment, PROFILE_FRAGMENT_TAG);
-
-            } else if (currentTab == R.id.navigation_calls) {
-                setTitle(capitalizedTitle(getString(R.string.calls_fragment_title)));
+            if (currentTab == R.id.navigation_calls) {
+                setTitle(capitalizedTitle(getString(R.string.calls_view_title)));
                 setToolBar(R.id.twinme_navigation_call_tool_bar);
                 twinmeToolbar.setVisibility(View.GONE);
                 callToolbar.setVisibility(View.VISIBLE);
-                if (getTwinmeApplication().hasNewVersion()) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
                     mCallsNotificationView.setVisibility(View.VISIBLE);
                 } else {
                     mCallsNotificationView.setVisibility(View.GONE);
@@ -1273,12 +1228,12 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 showFragment(callsFragment, CALLS_FRAGMENT_TAG);
 
             } else if (currentTab == R.id.navigation_contacts) {
-                setTitle(capitalizedTitle(getString(R.string.contacts_fragment_title)));
+                setTitle(capitalizedTitle(getString(R.string.contacts_view_title)));
                 setToolBar(R.id.twinme_navigation_tool_bar);
                 twinmeToolbar.setVisibility(View.VISIBLE);
                 callToolbar.setVisibility(View.GONE);
                 conversationsToolbar.setVisibility(View.GONE);
-                if (getTwinmeApplication().hasNewVersion()) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
                     mNotificationView.setVisibility(View.VISIBLE);
                 } else {
                     mNotificationView.setVisibility(View.GONE);
@@ -1287,12 +1242,12 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 showFragment(contactsFragment, CONTACTS_FRAGMENT_TAG);
 
             } else if (currentTab == R.id.navigation_chat) {
-                setTitle(capitalizedTitle(getString(R.string.conversations_fragment_title)));
+                setTitle(capitalizedTitle(getString(R.string.conversations_view_title)));
                 setToolBar(R.id.twinme_navigation_conversations_tool_bar);
                 twinmeToolbar.setVisibility(View.GONE);
                 callToolbar.setVisibility(View.GONE);
                 conversationsToolbar.setVisibility(View.VISIBLE);
-                if (getTwinmeApplication().hasNewVersion()) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
                     mConversationsNotificationView.setVisibility(View.VISIBLE);
                 } else {
                     mConversationsNotificationView.setVisibility(View.GONE);
@@ -1301,12 +1256,12 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 showFragment(conversationsFragment, CHAT_FRAGMENT_TAG);
 
             } else if (currentTab == R.id.navigation_notifications) {
-                setTitle(capitalizedTitle(getString(R.string.notifications_fragment_title)));
+                setTitle(capitalizedTitle(getString(R.string.notifications_view_title)));
                 setToolBar(R.id.twinme_navigation_tool_bar);
                 twinmeToolbar.setVisibility(View.VISIBLE);
                 callToolbar.setVisibility(View.GONE);
                 conversationsToolbar.setVisibility(View.GONE);
-                if (getTwinmeApplication().hasNewVersion()) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
                     mNotificationView.setVisibility(View.VISIBLE);
                 } else {
                     mNotificationView.setVisibility(View.GONE);
@@ -1490,16 +1445,6 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         );
 
         if (mBottomNavigationView.getMenu().size() == TAB_COUNT) {
-            Drawable profileDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.tab_bar_profile_grey, null);
-            if (profileDrawable != null) {
-                profileDrawable.setTintList(colorStateList);
-            }
-            mBottomNavigationView.getMenu().getItem(PROFILE_FRAGMENT_INDEX).setIcon(profileDrawable);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mBottomNavigationView.getMenu().getItem(PROFILE_FRAGMENT_INDEX).setContentDescription(getString(R.string.application_profile));
-            }
-
             Drawable callDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.tab_bar_call_grey, null);
             if (callDrawable != null) {
                 callDrawable.setTintList(colorStateList);
@@ -1507,7 +1452,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             mBottomNavigationView.getMenu().getItem(CALLS_FRAGMENT_INDEX).setIcon(callDrawable);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mBottomNavigationView.getMenu().getItem(CALLS_FRAGMENT_INDEX).setContentDescription(getString(R.string.calls_fragment_title));
+                mBottomNavigationView.getMenu().getItem(CALLS_FRAGMENT_INDEX).setContentDescription(getString(R.string.calls_view_title));
             }
 
             Drawable contactDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.tab_bar_contacts_grey, null);
@@ -1517,7 +1462,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             mBottomNavigationView.getMenu().getItem(CONTACTS_FRAGMENT_INDEX).setIcon(contactDrawable);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mBottomNavigationView.getMenu().getItem(CONTACTS_FRAGMENT_INDEX).setContentDescription(getString(R.string.contacts_fragment_title));
+                mBottomNavigationView.getMenu().getItem(CONTACTS_FRAGMENT_INDEX).setContentDescription(getString(R.string.contacts_view_title));
             }
 
             Drawable chatDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.tab_bar_chat_grey, null);
@@ -1527,7 +1472,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             mBottomNavigationView.getMenu().getItem(CHAT_FRAGMENT_INDEX).setIcon(chatDrawable);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mBottomNavigationView.getMenu().getItem(CHAT_FRAGMENT_INDEX).setContentDescription(getString(R.string.conversations_fragment_title));
+                mBottomNavigationView.getMenu().getItem(CHAT_FRAGMENT_INDEX).setContentDescription(getString(R.string.conversations_view_title));
             }
 
             if (mHasPendingNotification) {
@@ -1549,7 +1494,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             }
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mBottomNavigationView.getMenu().getItem(NOTIFICATIONS_FRAGMENT_INDEX).setContentDescription(getString(R.string.notifications_fragment_title));
+                mBottomNavigationView.getMenu().getItem(NOTIFICATIONS_FRAGMENT_INDEX).setContentDescription(getString(R.string.notifications_view_title));
             }
         }
     }
@@ -1576,20 +1521,34 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         boolean isFullScreen = false;
         if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_calls) {
             setToolBar(R.id.twinme_navigation_call_tool_bar);
+            if (mCallsNotificationView != null) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
+                    mCallsNotificationView.setVisibility(View.VISIBLE);
+                } else {
+                    mCallsNotificationView.setVisibility(View.GONE);
+                }
+            }
+
         } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_chat) {
             setToolBar(R.id.twinme_navigation_conversations_tool_bar);
-        } else if (mBottomNavigationView.getSelectedItemId() == R.id.navigation_profile) {
-            setToolBar(R.id.twinme_navigation_tool_bar);
 
-            if (mProfile != null) {
-                hideToolBar();
-                isFullScreen = true;
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                getWindow().setStatusBarColor(Color.TRANSPARENT);
+            if (mConversationsNotificationView != null) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
+                    mConversationsNotificationView.setVisibility(View.VISIBLE);
+                } else {
+                    mConversationsNotificationView.setVisibility(View.GONE);
+                }
             }
         } else {
             setToolBar(R.id.twinme_navigation_tool_bar);
+
+            if (mNotificationView != null) {
+                if (getTwinmeApplication().hasNewVersion() || getTwinmeApplication().showBackupWarning()) {
+                    mNotificationView.setVisibility(View.VISIBLE);
+                } else {
+                    mNotificationView.setVisibility(View.GONE);
+                }
+            }
         }
 
         applyInsets(R.id.main_activity_content_layout, -1, R.id.twinme_navigation_bottom_navigation, Design.TOOLBAR_COLOR, isFullScreen);
@@ -1615,12 +1574,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
             if (copy != null) {
                 runOnUiThread(() -> {
-                    Intent intent = new Intent();
-                    intent.putExtra(BackupService.BACKUP_SERVICE_FILE_NAME, fileInfo.getFilename());
-                    intent.putExtra(BackupService.BACKUP_SERVICE_FILE_PATH, copy.getUri().toString());
-                    intent.putExtra(Intents.INTENT_BACKUP_VERIFY_MODE, false);
-                    intent.setClass(this, RestoreActivity.class);
-                    startActivity(intent);
+                    showMenuBackup(copy, fileInfo.getFilename());
                 });
             }
         }
@@ -1632,7 +1586,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        alertMessageView.setMessage(getString(R.string.restore_activity_file_not_supported));
+        alertMessageView.setMessage(getString(R.string.restore_view_file_not_supported));
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
 
@@ -1671,7 +1625,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 View view = mDrawerListView.getChildAt(5);
                 mCoachMarkView.postDelayed(() -> {
                     mCoachMarkView.setVisibility(View.VISIBLE);
-                    CoachMark coachMark = new CoachMark(getString(R.string.privacy_activity_coach_mark), CoachMark.CoachMarkTag.PRIVACY, true, true, new Point((int) mDrawerListView.getX(), (int) view.getY()), view.getWidth(), view.getHeight(), 0);
+                    CoachMark coachMark = new CoachMark(getString(R.string.privacy_view_coach_mark), CoachMark.CoachMarkTag.PRIVACY, true, true, new Point((int) mDrawerListView.getX(), (int) view.getY()), view.getWidth(), view.getHeight(), 0);
                     mCoachMarkView.openCoachMark(coachMark);
                 }, COACH_MARK_DELAY);
             }
@@ -1697,7 +1651,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         successAuthentifiedRelationView.setAvatar(avatar, false);
         successAuthentifiedRelationView.setTitle(name);
 
-        String message = String.format(getString(R.string.authentified_relation_activity_certified_message), name);
+        String message = String.format(getString(R.string.authentified_relation_view_certified_message), name);
         successAuthentifiedRelationView.setMessage(message);
         successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
 
@@ -1737,8 +1691,8 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.quality_of_service_activity_settings));
-        defaultConfirmView.setMessage(getString(R.string.quality_of_service_activity_enable_notifications_warning));
+        defaultConfirmView.setTitle(getString(R.string.quality_of_service_view_settings));
+        defaultConfirmView.setMessage(getString(R.string.quality_of_service_view_enable_notifications_warning));
 
         boolean darkMode = false;
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -1748,7 +1702,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.enable_notification_dark : R.drawable.enable_notication, null));
-        defaultConfirmView.setConfirmTitle(getString(R.string.quality_of_service_activity_enable_notifications));
+        defaultConfirmView.setConfirmTitle(getString(R.string.quality_of_service_view_enable_notifications));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -1772,36 +1726,33 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    boolean postNotificationEnable = true;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
+                    }
 
-                        boolean postNotificationEnable = true;
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                            postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
-                        }
-
-                        // Order of checks must be the same as in RestrictionView.updateView().
-                        Intent intent = null;
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
-                            if (!checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
-                                intent = new Intent();
-                                intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
-                            }
-                        } else if (!NotificationManagerCompat.from(defaultConfirmView.getContext()).areNotificationsEnabled()) {
+                    // Order of checks must be the same as in RestrictionView.updateView().
+                    Intent intent = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
+                        if (!checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
                             intent = new Intent();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
-                            } else {
-                                intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-                                intent.putExtra("app_package", getPackageName());
-                                intent.putExtra("app_uid", getApplicationInfo().uid);
-                            }
+                            intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                            intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
                         }
+                    } else if (!NotificationManagerCompat.from(defaultConfirmView.getContext()).areNotificationsEnabled()) {
+                        intent = new Intent();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                            intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
+                        } else {
+                            intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                            intent.putExtra("app_package", getPackageName());
+                            intent.putExtra("app_uid", getApplicationInfo().uid);
+                        }
+                    }
 
-                        if (intent != null) {
-                            startActivity(intent);
-                        }
+                    if (intent != null) {
+                        startActivity(intent);
                     }
                 }
             }
@@ -1816,6 +1767,59 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void showMenuBackup(FileInfo backupFile, String backupName) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showMenuBackup");
+        }
+
+        MenuBackupView menuBackupView = new MenuBackupView(this, null);
+        menuBackupView.setBackup(backupName, this);
+
+        MenuBackupView.MenuBackupViewObserver observer = new MenuBackupView.MenuBackupViewObserver() {
+
+            @Override
+            public void onCloseMenuBackupViewAnimationEnd() {
+
+                mDrawerLayout.removeView(menuBackupView);
+            }
+
+            @Override
+            public void onStartRestoreBackup() {
+                menuBackupView.animationCloseMenu();
+                startRestoreActivity(backupFile, backupName, false);
+            }
+
+            @Override
+            public void onStartVerifyBackup() {
+                menuBackupView.animationCloseMenu();
+                startRestoreActivity(backupFile, backupName, true);
+            }
+        };
+
+        menuBackupView.setObserver(observer);
+        mDrawerLayout.addView(menuBackupView);
+        menuBackupView.openMenu();
+
+        Window window = getWindow();
+        window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void startRestoreActivity(FileInfo backupFile, String backupName, boolean verifyMode) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startRestoreActivity");
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(BackupService.BACKUP_SERVICE_FILE_NAME, backupName);
+        intent.putExtra(BackupService.BACKUP_SERVICE_FILE_PATH, backupFile.getUri().toString());
+        intent.putExtra(Intents.INTENT_BACKUP_VERIFY_MODE, verifyMode);
+        intent.setClass(this, RestoreActivity.class);
+        startActivity(intent);
     }
 
     private void showWhatsNew() {
@@ -1858,13 +1862,13 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         final List<ProxyDescriptor> proxies = getTwinmeContext().getConnectivityService().getUserProxies();
         if (proxies.size() >= ConnectivityService.MAX_PROXIES) {
-            showAlertMessage(String.format(getString(R.string.proxy_activity_limit), ConnectivityService.MAX_PROXIES));
+            showAlertMessage(String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES));
             return;
         }
 
         for (ProxyDescriptor proxyDescriptor : proxies) {
             if (proxyDescriptor.getDescriptor().equalsIgnoreCase(proxy)) {
-                showAlertMessage(getString(R.string.proxy_activity_already_use));
+                showAlertMessage(getString(R.string.proxy_view_already_use));
                 return;
             }
         }
@@ -1872,7 +1876,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.proxy_activity_title));
+        spannableStringBuilder.append(getString(R.string.proxy_view_title));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n\n");
         int startSubTitle = spannableStringBuilder.length();
@@ -1880,9 +1884,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         defaultConfirmView.setSpannableTitle(spannableStringBuilder);
-        defaultConfirmView.setMessage(getString(R.string.proxy_activity_url));
+        defaultConfirmView.setMessage(getString(R.string.proxy_view_url));
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
-        defaultConfirmView.setConfirmTitle(getString(R.string.proxy_activity_enable));
+        defaultConfirmView.setConfirmTitle(getString(R.string.proxy_view_enable));
         defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -1910,7 +1914,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 if (fromConfirmAction) {
                     SNIProxyDescriptor proxyDescriptor = SNIProxyDescriptor.create(proxy);
                     if (proxyDescriptor == null) {
-                        showAlertMessage(getString(R.string.proxy_activity_invalid_format));
+                        showAlertMessage(getString(R.string.proxy_view_invalid_format));
                         return;
                     }
                     proxies.add(proxyDescriptor);

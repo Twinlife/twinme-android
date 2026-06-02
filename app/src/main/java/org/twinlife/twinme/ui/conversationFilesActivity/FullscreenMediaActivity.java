@@ -38,12 +38,12 @@ import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.services.ConversationFilesService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.TwinmeActivity;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.baseItemActivity.Item;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.FileInfo;
-import org.twinlife.twinme.utils.SaveAsyncTask;
+import org.twinlife.twinme.utils.SaveBackgroundAction;
 
 import java.io.File;
 import java.util.Arrays;
@@ -502,7 +502,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
 
         if (currentItem != null) {
             if (!isShareItem(currentItem)) {
-                Toast.makeText(this, R.string.conversation_activity_menu_item_view_operation_not_allowed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.conversation_view_menu_item_view_operation_not_allowed, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -510,7 +510,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
                 return;
             }
 
-            TwinmeActivity.Permission[] permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.WRITE_EXTERNAL_STORAGE};
+            Permission[] permissions = new Permission[]{Permission.WRITE_EXTERNAL_STORAGE};
             mDeferredSaveMedia = true;
             if (checkPermissions(permissions)) {
                 mDeferredSaveMedia = false;
@@ -527,8 +527,8 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         final Item currentItem = getCurrentItem();
         if (currentItem != null) {
             File file = new File(getTwinmeContext().getFilesDir(), currentItem.getPath());
-            SaveAsyncTask save = new SaveAsyncTask(this, file, uriFromPath(currentItem.getPath()));
-            save.execute();
+            SaveBackgroundAction save = new SaveBackgroundAction(this, file, uriFromPath(currentItem.getPath()), R.string.conversation_view_menu_item_view_save_message);
+            save.start();
         }
     }
 
@@ -541,7 +541,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
 
         if (currentItem != null) {
             if (!isShareItem(currentItem)) {
-                Toast.makeText(this, R.string.conversation_activity_menu_item_view_operation_not_allowed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.conversation_view_menu_item_view_operation_not_allowed, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -557,7 +557,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
             }
 
-            startActivityForResult(Intent.createChooser(intent, getString(R.string.conversation_activity_menu_item_view_share_title)), RESULT_DID_SHARE_ACTION);
+            startActivityForResult(Intent.createChooser(intent, getString(R.string.conversation_view_menu_item_view_share_title)), RESULT_DID_SHARE_ACTION);
         }
     }
 
@@ -599,7 +599,7 @@ public class FullscreenMediaActivity extends AbstractFilesActivity {
         if (!isShareItem(currentItem)) {
             deleteConfirmView.setMessage(getString(R.string.application_operation_irreversible));
         } else {
-            deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
+            deleteConfirmView.setMessage(getString(R.string.cleanup_view_delete_confirmation_message));
         }
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

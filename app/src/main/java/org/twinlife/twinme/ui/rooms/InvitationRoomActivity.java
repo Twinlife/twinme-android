@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021-2024 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -47,10 +47,11 @@ import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.RoundedView;
-import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
+import org.twinlife.twinme.utils.SaveTwincodeBackgroundAction;
 import org.twinlife.twinme.utils.TwincodeView;
 
 import java.io.File;
@@ -143,7 +144,8 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
 
         initViews();
 
-        mInvitationRoomService = new InvitationRoomService(this, getTwinmeContext(), this, roomId);
+        final Uri link = Uri.parse(intent.getStringExtra(Intents.INTENT_INVITATION_LINK));
+        mInvitationRoomService = new InvitationRoomService(this, getTwinmeContext(), this, roomId, link);
     }
 
     @Override
@@ -271,7 +273,7 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.show_room_activity_invite_participants));
+        setTitle(getString(R.string.show_room_view_invite_participants));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.invitation_room_activity_layout, R.id.invitation_room_activity_tool_bar, R.id.settings_room_activity_list_view, Design.TOOLBAR_COLOR, false);
@@ -532,7 +534,7 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.add_contact_activity_invite_subject));
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.add_contact_view_invite_subject));
 
         if (file != null) {
             Uri uri = NamedFileProvider.getInstance().getUriForFile(this, file, name + "-QR-code.png");
@@ -541,7 +543,7 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
             intent.putExtra(Intent.EXTRA_STREAM, uri);
         }
 
-        intent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.add_contact_activity_invite_message),
+        intent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.add_contact_view_invite_message),
                 mInvitationLink.uri, name));
         startActivity(Intent.createChooser(intent, null));
     }
@@ -574,7 +576,7 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
 
         if (mInvitationLink != null) {
             org.twinlife.twinme.utils.Utils.setClipboard(this, mInvitationLink.uri);
-            Toast.makeText(this, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -596,11 +598,11 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
         if (mRoom != null && mInvitationLink != null && mQRCodeBitmap != null) {
             mSaveTwincodeView.setTwincodeInformation(this, mRoom.getName(), mAvatar
                     , mQRCodeBitmap, mInvitationLink.label,
-                    getString(R.string.fullscreen_qrcode_activity_save_message));
+                    getString(R.string.fullscreen_qrcode_view_save_message));
 
             Bitmap bitmapToSave = getBitmapFromTwincodeView();
             if (bitmapToSave != null) {
-                new SaveTwincodeAsyncTask(this, bitmapToSave).execute();
+                new SaveTwincodeBackgroundAction(this, bitmapToSave, R.string.capture_view_qrcode_saved).start();
             } else {
                 toast(getString(R.string.application_operation_failure));
             }

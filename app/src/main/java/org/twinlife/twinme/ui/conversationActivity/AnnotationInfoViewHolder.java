@@ -11,6 +11,10 @@ package org.twinlife.twinme.ui.conversationActivity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +26,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -107,6 +112,7 @@ public class AnnotationInfoViewHolder extends RecyclerView.ViewHolder {
                 new CircularImageDescriptor(annotation.getAvatar(), 0.5f, 0.5f, 0.5f));
 
         mNameView.setText(annotation.getName());
+        Design.updateTextFont(mNameView, Design.FONT_REGULAR30);
 
         if (annotation.getAnnotationType() == ConversationService.AnnotationType.LIKE && annotation.getReaction() != null) {
             mReactionView.setVisibility(View.VISIBLE);
@@ -114,15 +120,47 @@ public class AnnotationInfoViewHolder extends RecyclerView.ViewHolder {
             Drawable drawable = ResourcesCompat.getDrawable(context.getResources(), annotation.getReaction().getImage(), null);
             mReactionView.setImageDrawable(drawable);
             mReactionView.setColorFilter(annotation.getReaction().getColorFilter());
+        } else if (annotation.getAnnotationType() == ConversationService.AnnotationType.ERROR && annotation.getValue() > 0) {
+            Design.updateTextFont(mNameView, Design.FONT_MEDIUM30);
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+            spannableStringBuilder.append(annotation.getName());
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            String message = "";
+
+            BaseService.ErrorCode errorCode = BaseService.ErrorCode.toErrorCode((int)annotation.getValue());
+            if (errorCode == BaseService.ErrorCode.FEATURE_NOT_SUPPORTED_BY_PEER) {
+                message = context.getString(R.string.info_item_view_not_delivered_update);
+            } else if (errorCode == BaseService.ErrorCode.EXPIRED) {
+                message = context.getString(R.string.info_item_view_not_delivered_expiration);
+            } else if (errorCode == BaseService.ErrorCode.NO_STORAGE_SPACE) {
+                message = context.getString(R.string.info_item_view_not_delivered_storage);
+            }
+
+            if (!message.isEmpty()) {
+                spannableStringBuilder.append("\n");
+                int startInfo = spannableStringBuilder.length();
+                spannableStringBuilder.append(message);
+                spannableStringBuilder.setSpan(new RelativeSizeSpan(0.87f), startInfo, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startInfo, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            }
+            mNameView.setText(spannableStringBuilder);
+            Drawable drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.not_sent_state, null);
+            mReactionView.setImageDrawable(drawable);
+            mReactionView.setColorFilter(Color.TRANSPARENT);
+
         } else {
             mReactionView.setVisibility(View.GONE);
             mDateTextView.setVisibility(View.VISIBLE);
             
-            long timestamp = annotation.getTimestamp();
+            long timestamp = annotation.getValue();
             if (timestamp > 0) {
                 mDateTextView.setText(CommonUtils.formatItemInterval(itemView.getContext(), timestamp));
-            } else {
+            } else if (annotation.getAnnotationType() != ConversationService.AnnotationType.POLL) {
                 mDateTextView.setText("-");
+            } else {
+                mDateTextView.setText("");
             }
         }
 

@@ -974,11 +974,11 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
                     Time scheduleStartTime = weeklyTimeRange.start;
                     Time scheduleEndTime = weeklyTimeRange.end;
                     StringBuilder messageStringBuilder = new StringBuilder();
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_start));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(scheduleStartTime);
                     messageStringBuilder.append("\n");
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_end));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(scheduleEndTime);
                     messageStringBuilder.append("\n\n");
@@ -1025,16 +1025,16 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
                     DateTime end = dateTimeRange.end;
 
                     if (start.date.equals(end.date)) {
-                        message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
+                        message = String.format(getString(R.string.show_call_view_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
                     } else {
                         message = String.format("%1$s %2$s", start.formatDateTime(this), end.formatDateTime(this));
                     }
                 }
             } else {
-                message = getString(R.string.show_call_activity_schedule_message);
+                message = getString(R.string.show_call_view_schedule_message);
             }
 
-            showAlertMessageView(R.id.show_external_call_activity_layout, getString(R.string.show_call_activity_schedule_call), message, true, null);
+            showAlertMessageView(R.id.show_external_call_activity_layout, getString(R.string.show_call_view_schedule_call), message, true, null);
         }
     }
 

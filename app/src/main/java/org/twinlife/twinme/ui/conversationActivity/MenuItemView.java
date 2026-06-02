@@ -56,6 +56,7 @@ public class MenuItemView extends PercentRelativeLayout {
         VIDEO,
         AUDIO,
         FILE,
+        POLL,
         INVITATION,
         CALL,
         CLEAR
@@ -141,6 +142,10 @@ public class MenuItemView extends PercentRelativeLayout {
                 case PEER_FILE:
                     menuType = MenuType.FILE;
                     break;
+                case POLL:
+                case PEER_POLL:
+                    menuType = MenuType.POLL;
+                    break;
                 case INVITATION:
                 case PEER_INVITATION:
                 case INVITATION_CONTACT:
@@ -165,15 +170,15 @@ public class MenuItemView extends PercentRelativeLayout {
 
         switch (menuType) {
             case TEXT:
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
                 if (selectedItem != null && !selectedItem.isPeerItem() && mCanEditMessage) {
                     mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_edit), R.drawable.edit_message_icon, UIMenuAction.ActionType.EDIT, true));
                 }
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_reply_title), R.drawable.reply_item, UIMenuAction.ActionType.REPLY, enableReply));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_forward_title), R.drawable.forward_item, UIMenuAction.ActionType.FORWARD, enableAction));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_share_title), R.drawable.share_item, UIMenuAction.ActionType.SHARE, enableAction));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_copy_title), R.drawable.copy_item, UIMenuAction.ActionType.COPY, enableAction));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_reply_title), R.drawable.reply_item, UIMenuAction.ActionType.REPLY, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_forward_title), R.drawable.forward_item, UIMenuAction.ActionType.FORWARD, enableAction));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_share_title), R.drawable.share_item, UIMenuAction.ActionType.SHARE, enableAction));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_copy_title), R.drawable.copy_item, UIMenuAction.ActionType.COPY, enableAction));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
                 mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_select_more), R.drawable.select_more_item, UIMenuAction.ActionType.SELECT_MORE, true));
                 break;
 
@@ -181,19 +186,25 @@ public class MenuItemView extends PercentRelativeLayout {
             case VIDEO:
             case AUDIO:
             case FILE:
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_reply_title), R.drawable.reply_item, UIMenuAction.ActionType.REPLY, enableReply));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_forward_title), R.drawable.forward_item, UIMenuAction.ActionType.FORWARD, enableAction));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_share_title), R.drawable.share_item, UIMenuAction.ActionType.SHARE, enableAction));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_save_title), R.drawable.save_item, UIMenuAction.ActionType.SAVE, enableAction));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_reply_title), R.drawable.reply_item, UIMenuAction.ActionType.REPLY, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_forward_title), R.drawable.forward_item, UIMenuAction.ActionType.FORWARD, enableAction));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_share_title), R.drawable.share_item, UIMenuAction.ActionType.SHARE, enableAction));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_save_title), R.drawable.save_item, UIMenuAction.ActionType.SAVE, enableAction));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_select_more), R.drawable.select_more_item, UIMenuAction.ActionType.SELECT_MORE, true));
+                break;
+
+            case POLL:
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
                 mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_select_more), R.drawable.select_more_item, UIMenuAction.ActionType.SELECT_MORE, true));
                 break;
 
             case INVITATION:
             case CLEAR:
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
-                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_activity_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_info_title), R.drawable.info_item, UIMenuAction.ActionType.INFO, true));
+                mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.conversation_view_menu_item_view_delete_title), R.drawable.toolbar_trash_grey, UIMenuAction.ActionType.DELETE, enableReply));
                 mActions.add(new UIMenuAction(mConversationActivity.getString(R.string.application_select_more), R.drawable.select_more_item, UIMenuAction.ActionType.SELECT_MORE, true));
                 break;
 

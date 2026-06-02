@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/calls_fragment_add_external_call_item_add_view"
-        android:text="@string/calls_fragment_create_link" />
+        android:text="@string/calls_view_create_link" />
 
     <View
         android:id="@+id/calls_fragment_add_external_call_item_separator_view"

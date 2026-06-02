@@ -373,7 +373,7 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
             switch (buttonType) {
                 case DELETE:
                     mColorLink = Design.DELETE_COLOR_RED;
-                    mStringLink = R.string.conversation_activity_menu_item_view_delete_title;
+                    mStringLink = R.string.conversation_view_menu_item_view_delete_title;
                     mDrawableLink = R.drawable.action_delete;
                     break;
 
@@ -385,13 +385,13 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
 
                 case RESET:
                     mColorLink = Design.DELETE_COLOR_RED;
-                    mStringLink = R.string.main_activity_reset_conversation;
+                    mStringLink = R.string.main_view_reset_conversation;
                     mDrawableLink = R.drawable.action_delete;
                     break;
 
                 case DELETE_AND_SHARE:
                     mColorLink = Design.DELETE_COLOR_RED;
-                    mStringLink = R.string.conversation_activity_menu_item_view_delete_title;
+                    mStringLink = R.string.conversation_view_menu_item_view_delete_title;
                     mDrawableLink = R.drawable.action_delete;
                     break;
             }
@@ -514,7 +514,7 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
             deleteDrawable.setBounds(actionDrawableLeft, actionDrawableTop, actionDrawableRight, actionDrawableBottom);
             deleteDrawable.draw(canvas);
 
-            text = (String) resources.getText(R.string.share_activity_title);
+            text = (String) resources.getText(R.string.share_view_title);
             textWidth = textPaint.measureText(text);
 
             RectF secondButton = new RectF(leftAbscissa, itemView.getTop(), rightAbscissa, itemView.getBottom());

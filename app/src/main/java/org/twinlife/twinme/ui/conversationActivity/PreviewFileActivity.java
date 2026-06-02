@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
@@ -49,6 +50,7 @@ import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.FileInfo;
@@ -64,6 +66,9 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
 
     private static final int REQUEST_GET_FILE = 1;
 
+    protected static final float DESIGN_STATE_VERTICAL_MARGIN = 44f;
+    protected static final float DESIGN_STATE_HORIZONTAL_MARGIN = 34f;
+
     private class MediaLinearLayoutManager extends LinearLayoutManager {
 
         public MediaLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
@@ -77,6 +82,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         }
     }
 
+    private TextView mStateTextView;
     @Nullable
     private PreviewFileAdapter mPreviewFileAdapter;
     private PreviewThumbnailAdapter mPreviewThumbnailAdapter;
@@ -371,6 +377,16 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         }
 
         mProgressBarView = findViewById(R.id.preview_activity_progress_bar);
+
+        mStateTextView = findViewById(R.id.preview_activity_state_text_view);
+        mStateTextView.setTextColor(Color.WHITE);
+        Design.updateTextFont(mStateTextView, Design.FONT_REGULAR32);
+        mStateTextView.setVisibility(View.GONE);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) thumbnailListView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_STATE_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_STATE_HORIZONTAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_STATE_HORIZONTAL_MARGIN * Design.HEIGHT_RATIO);
     }
 
     @Override
@@ -557,7 +573,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
         alertMessageView.setForceDarkMode(true);
-        alertMessageView.setTitle(getString(R.string.deleted_account_activity_warning));
+        alertMessageView.setTitle(getString(R.string.deleted_account_view_warning));
         alertMessageView.setMessage(getString(R.string.application_error_file_not_found));
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -671,6 +687,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         if (mCountFiles == 0) {
             mOverlayView.setVisibility(View.GONE);
             mProgressBarView.setVisibility(View.GONE);
+            mStateTextView.setVisibility(View.GONE);
 
             mPreviewStartWithMedia = true;
 
@@ -689,6 +706,9 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         } else {
             mOverlayView.setVisibility(View.VISIBLE);
             mProgressBarView.setVisibility(View.VISIBLE);
+            mStateTextView.setVisibility(View.VISIBLE);
+
+            mStateTextView.setText(getString(R.string.preview_files_view_retrieving_media_message));
         }
     }
 
@@ -779,10 +799,13 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         if (mCountFiles == 0) {
             mOverlayView.setVisibility(View.GONE);
             mProgressBarView.setVisibility(View.GONE);
+            mStateTextView.setVisibility(View.GONE);
             sendIntent();
         } else {
             mOverlayView.setVisibility(View.VISIBLE);
             mProgressBarView.setVisibility(View.VISIBLE);
+            mStateTextView.setVisibility(View.VISIBLE);
+            mStateTextView.setText(getString(R.string.preview_files_view_resize_message));
         }
     }
 

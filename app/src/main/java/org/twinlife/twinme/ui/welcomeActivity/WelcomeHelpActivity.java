@@ -222,9 +222,9 @@ public class WelcomeHelpActivity extends AbstractOnboardingActivity {
             darkMode = true;
         }
 
-        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_activity_step1_message), darkMode ? R.drawable.onboarding_step1_dark : R.drawable.onboarding_step1));
-        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_activity_step2_message), darkMode ? R.drawable.onboarding_step2_dark : R.drawable.onboarding_step2));
-        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_activity_step3_message), darkMode ? R.drawable.onboarding_step3_dark : R.drawable.onboarding_step3));
+        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_view_step1_message), darkMode ? R.drawable.onboarding_step1_dark : R.drawable.onboarding_step1));
+        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_view_step2_message), darkMode ? R.drawable.onboarding_step2_dark : R.drawable.onboarding_step2));
+        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_view_step3_message), darkMode ? R.drawable.onboarding_step3_dark : R.drawable.onboarding_step3));
     }
 
     private void setupWelcome() {

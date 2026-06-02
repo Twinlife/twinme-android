@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/edit_profile_activity_propagating_message"
+            android:text="@string/edit_profile_view_propagating_message"
             android:layout_below="@+id/menu_propagating_profile_view_slide_mark_view"
             app:layout_widthPercent="94%" />
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/edit_profile_activity_propagating_ask_message"
+            android:text="@string/edit_profile_view_propagating_ask_message"
             android:layout_below="@+id/menu_propagating_profile_view_title_view"
             app:layout_widthPercent="94%" />
 

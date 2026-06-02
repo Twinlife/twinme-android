@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AssertPoint;
 import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.CryptoService;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Invitation;
@@ -180,7 +181,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
     }
 
     @Override
-    public void onGetInvitationCode(@Nullable TwincodeOutbound twincodeOutbound, @Nullable Bitmap bitmap, @Nullable String publicKey) {
+    public void onGetInvitationCode(@Nullable TwincodeOutbound twincodeOutbound, @Nullable Bitmap bitmap, @Nullable CryptoService.PublicKeyData publicKey) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onGetInvitationCode: twincodeOutbound=" + twincodeOutbound + " publicKey=" + publicKey);
         }
@@ -205,7 +206,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
 
         mOverlayView.setVisibility(View.GONE);
         mProgressBarView.setVisibility(View.GONE);
-        error(getString(R.string.invitation_code_activity_limit_message), null);
+        error(getString(R.string.invitation_code_view_limit_message), null);
     }
 
     @Override
@@ -303,7 +304,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
         setContentView(R.layout.invitation_code_activity);
 
         setStatusBarColor();
-        setTitle(getString(R.string.add_contact_activity_invitation_code_title));
+        setTitle(getString(R.string.add_contact_view_invitation_code_title));
         setToolBar(R.id.invitation_code_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
@@ -428,7 +429,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
         defaultConfirmView.useLargeImage();
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_mini_code, null));
 
-        String message = getString(R.string.invitation_code_activity_onboarding_message) + "\n\n" + getString(R.string.invitation_code_activity_success_message);
+        String message = getString(R.string.invitation_code_view_onboarding_message) + "\n\n" + getString(R.string.invitation_code_view_success_message);
         defaultConfirmView.setMessage(message);
 
         if (fromInfo) {
@@ -436,7 +437,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
             defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
         } else {
             defaultConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
-            defaultConfirmView.setConfirmTitle(getString(R.string.welcome_activity_next));
+            defaultConfirmView.setConfirmTitle(getString(R.string.welcome_view_next));
         }
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -479,7 +480,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
         InvitationCodeShareView invitationCodeShareView = new InvitationCodeShareView(this, null);
         invitationCodeShareView.setTitle(invitationCode.getCode());
 
-        String message = getString(R.string.invitation_code_activity_onboarding_message) + "\n\n" + getString(R.string.invitation_code_activity_success_message);
+        String message = getString(R.string.invitation_code_view_onboarding_message) + "\n\n" + getString(R.string.invitation_code_view_success_message);
         invitationCodeShareView.setMessage(message);
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

@@ -16,7 +16,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:lines="2"
-            android:text="@string/show_call_activity_settings_call" />
+            android:text="@string/show_call_view_settings_call" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_call_capabilities_activity_list_view"

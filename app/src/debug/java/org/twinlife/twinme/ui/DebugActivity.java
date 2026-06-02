@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.Permission;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.DebugService;
 import org.twinlife.twinlife.debug.DebugTwinlifeImpl;
@@ -169,7 +170,7 @@ public class DebugActivity extends AbstractTwinmeActivity implements ContactsSer
 
                 Originator c = conversation.isGroup() ? mGroups.get(conversation.getContactId()) : mContacts.get(conversation.getContactId());
 
-                if (conversation.hasPermission(ConversationService.Permission.SEND_MESSAGE)) {
+                if (conversation.hasPermission(Permission.SEND_MESSAGE)) {
                     int msgId = mNumber;
                     for (int repeat = 0; repeat < 4; repeat++) {
                         long requestId = mContactsService.newOperation(0x1000000);

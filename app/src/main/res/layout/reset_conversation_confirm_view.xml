@@ -71,7 +71,7 @@
             android:layout_below="@+id/reset_conversation_confirm_view_avatar_view"
             android:gravity="center"
             android:lines="1"
-            android:text="@string/deleted_account_activity_warning"
+            android:text="@string/deleted_account_view_warning"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -80,7 +80,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/reset_conversation_confirm_view_title_view"
             android:gravity="center"
-            android:text="@string/main_activity_reset_conversation_message"
+            android:text="@string/main_view_reset_conversation_message"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/main_activity_reset_conversation_title" />
+                android:text="@string/main_view_reset_conversation_title" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

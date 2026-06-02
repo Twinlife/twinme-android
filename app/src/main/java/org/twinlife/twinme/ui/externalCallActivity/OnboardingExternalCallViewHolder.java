@@ -122,7 +122,7 @@ public class OnboardingExternalCallViewHolder extends RecyclerView.ViewHolder {
                 mDoNotShowView.setVisibility(View.INVISIBLE);
                 layoutParams.height = 0;
             } else {
-                mCreateTextView.setText(itemView.getContext().getString(R.string.calls_fragment_create_link));
+                mCreateTextView.setText(itemView.getContext().getString(R.string.calls_view_create_link));
                 mDoNotShowView.setVisibility(View.VISIBLE);
                 layoutParams.height = (int) (DESIGN_DO_NOT_SHOW_HEIGHT * Design.HEIGHT_RATIO);
             }

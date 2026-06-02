@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/main_activity_reset_conversation"
+                android:text="@string/main_view_reset_conversation"
                 app:layout_marginTopPercent="7.81%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -180,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/conversation_activity_menu_item_view_copy_title"
+                android:text="@string/conversation_view_menu_item_view_copy_title"
                 app:layout_marginTopPercent="7.81%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -250,7 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/add_contact_activity_social_icon_view"
-            android:text="@string/share_activity_title" />
+            android:text="@string/share_view_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <TextView
@@ -260,7 +260,7 @@
         android:layout_below="@+id/add_contact_activity_social_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/add_contact_activity_social_subtitle"
+        android:text="@string/add_contact_view_social_subtitle"
         app:layout_widthPercent="89.06%" />
 
     <TextView
@@ -270,7 +270,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/add_contact_activity_message"
+        android:text="@string/add_contact_view_message"
         app:layout_widthPercent="89.06%" />
 
     <androidx.percentlayout.widget.PercentRelativeLayout
@@ -320,7 +320,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:layout_toEndOf="@+id/add_contact_activity_scan_icon_view"
-                android:text="@string/add_contact_activity_scan_code"/>
+                android:text="@string/add_contact_view_scan_code"/>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <TextView
@@ -329,7 +329,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/capture_activity_message" />
+            android:text="@string/capture_view_message" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.percentlayout.widget.PercentRelativeLayout
@@ -353,7 +353,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/add_contact_activity_import_gallery_icon_view"
-            android:text="@string/add_contact_activity_gallery_title" />
+            android:text="@string/add_contact_view_gallery_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.percentlayout.widget.PercentRelativeLayout
@@ -380,7 +380,7 @@
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/add_contact_activity_twincode_copy_view"
             android:background="@android:color/transparent"
-            android:hint="@string/scan_activity_paste_code"
+            android:hint="@string/scan_view_paste_code"
             android:imeOptions="actionDone"
             android:inputType="textWebEmailAddress" />
 
@@ -433,7 +433,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/add_contact_activity_invitation_code_image_view"
             android:layout_centerVertical="true"
-            android:text="@string/add_contact_activity_invitation_code_title" />
+            android:text="@string/add_contact_view_invitation_code_title" />
 
         <ImageView
             android:id="@+id/add_contact_activity_invitation_code_accessory_view"

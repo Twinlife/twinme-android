@@ -63,7 +63,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
 
         setBackgroundColor(Color.BLACK);
 
-        setTitle(getString(R.string.premium_services_activity_click_to_call_title));
+        setTitle(getString(R.string.premium_services_view_click_to_call_title));
 
         applyInsets(R.id.invitation_external_call_activity_layout, R.id.invitation_external_call_activity_tool_bar, R.id.invitation_external_call_activity_background, DESIGN_NAVIGATION_BAR_COLOR, false);
 

@@ -357,8 +357,8 @@ public class MenuCleanUpExpirationView extends PercentRelativeLayout implements 
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
 
         List<UICustomTab> customTabs = new ArrayList<>();
-        customTabs.add(new UICustomTab(getContext().getString(R.string.cleanup_activity_older_than), UICustomTab.CustomTabType.PERIOD, true));
-        customTabs.add(new UICustomTab(getContext().getString(R.string.cleanup_activity_prior_to), UICustomTab.CustomTabType.DATE, false));
+        customTabs.add(new UICustomTab(getContext().getString(R.string.cleanup_view_older_than), UICustomTab.CustomTabType.PERIOD, true));
+        customTabs.add(new UICustomTab(getContext().getString(R.string.cleanup_view_prior_to), UICustomTab.CustomTabType.DATE, false));
 
         CustomTabView customTabView = findViewById(R.id.menu_expiration_view_tab_view);
 

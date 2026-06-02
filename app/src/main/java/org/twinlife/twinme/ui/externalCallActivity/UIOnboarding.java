@@ -88,70 +88,70 @@ public class UIOnboarding {
 
         switch (mOnboardingType) {
             case PART_ONE:
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_1));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_1_message_1));
                 stringBuilder.append("\n\n");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_2));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_1_message_2));
                 stringBuilder.append("\n\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_3));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_1_message_3));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_4));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_1_message_4));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_5));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_1_message_5));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_1_message_6));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_1_message_6));
                 mImageId = R.drawable.onboarding_click_to_call;
-                mTitle = context.getString(R.string.premium_services_activity_click_to_call_title);
+                mTitle = context.getString(R.string.premium_services_view_click_to_call_title);
                 break;
 
             case PART_TWO:
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_2_message_1));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_2_message_1));
                 stringBuilder.append("\n\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_2_message_2));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_2_message_2));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_2_message_3));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_2_message_3));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_2_message_4));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_2_message_4));
                 mImageId = R.drawable.onboarding_click_to_call_2;
-                mTitle = context.getString(R.string.create_external_call_activity_onboarding_title_2);
+                mTitle = context.getString(R.string.create_external_call_view_onboarding_title_2);
                 break;
 
             case PART_THREE:
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_3_message_1));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_3_message_1));
                 stringBuilder.append("\n\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_3_message_2));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_3_message_2));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_3_message_3));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_3_message_3));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_3_message_4));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_3_message_4));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_3_message_5));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_3_message_5));
                 mImageId = R.drawable.onboarding_click_to_call_3;
-                mTitle = context.getString(R.string.create_external_call_activity_onboarding_title_3);
+                mTitle = context.getString(R.string.create_external_call_view_onboarding_title_3);
                 break;
 
             case PART_FOUR:
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_4_message_1));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_4_message_1));
                 stringBuilder.append("\n\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_4_message_2));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_4_message_2));
                 stringBuilder.append("\n");
                 stringBuilder.append("    • ");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_4_message_3));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_4_message_3));
                 stringBuilder.append("\n\n");
-                stringBuilder.append(context.getString(R.string.create_external_call_activity_onboarding_part_4_message_4));
+                stringBuilder.append(context.getString(R.string.create_external_call_view_onboarding_part_4_message_4));
                 mImageId = R.drawable.onboarding_click_to_call_4;
-                mTitle = context.getString(R.string.create_external_call_activity_onboarding_title_4);
+                mTitle = context.getString(R.string.create_external_call_view_onboarding_title_4);
                 break;
 
             default:

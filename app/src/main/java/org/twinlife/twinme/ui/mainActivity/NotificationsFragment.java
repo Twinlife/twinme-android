@@ -470,6 +470,7 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
             case NEW_AUDIO_MESSAGE:
             case NEW_VIDEO_MESSAGE:
             case NEW_FILE_MESSAGE:
+            case NEW_POLL_MESSAGE:
             case UPDATED_ANNOTATION:
                 intent = new Intent();
                 clazz = ConversationActivity.class;
@@ -607,9 +608,9 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
             DeleteConfirmView deleteConfirmView = new DeleteConfirmView(mTwinmeActivity, null);
             deleteConfirmView.setAvatar(avatar, false);
 
-            String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.notifications_fragment_reset);
+            String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.notifications_view_reset);
             deleteConfirmView.setMessage(message);
-            deleteConfirmView.setConfirmTitle(getString(R.string.notifications_fragment_reset_title));
+            deleteConfirmView.setConfirmTitle(getString(R.string.notifications_view_reset_title));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -764,7 +765,7 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
                     imageView.setColorFilter(Color.WHITE);
                     imageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
                     imageView.setOnClickListener(view -> onResetClick());
-                    imageView.setContentDescription(getString(R.string.notifications_fragment_reset_title));
+                    imageView.setContentDescription(getString(R.string.notifications_view_reset_title));
                 }
 
                 setEnabled(menuItem, !mUINotifications.isEmpty());

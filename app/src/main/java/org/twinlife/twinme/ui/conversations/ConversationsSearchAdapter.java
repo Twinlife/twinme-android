@@ -101,7 +101,7 @@ public class ConversationsSearchAdapter extends ListAdapter<SearchResultItem, Re
             }
         } else { // ALL
             if (!searchContacts.isEmpty()) {
-                items.add(new SearchResultItem.Header(ConversationsFragment.SearchFilter.CONTACTS, mConversationsFragment.getString(R.string.contacts_fragment_title)));
+                items.add(new SearchResultItem.Header(ConversationsFragment.SearchFilter.CONTACTS, mConversationsFragment.getString(R.string.contacts_view_title)));
                 int nbContacts = mConversationsFragment.isShowAllContacts() ? searchContacts.size() : Math.min(searchContacts.size(), ConversationsFragment.MIN_RESULTS_VISIBLE);
                 for (int i = 0; i < nbContacts; i++) {
                     items.add(new SearchResultItem.Conversation(SearchResultItem.Type.CONTACT, searchContacts.get(i), searchContent));
@@ -110,7 +110,7 @@ public class ConversationsSearchAdapter extends ListAdapter<SearchResultItem, Re
             }
 
             if (!searchGroups.isEmpty()) {
-                items.add(new SearchResultItem.Header(ConversationsFragment.SearchFilter.GROUPS, mConversationsFragment.getString(R.string.share_activity_group_list)));
+                items.add(new SearchResultItem.Header(ConversationsFragment.SearchFilter.GROUPS, mConversationsFragment.getString(R.string.share_view_group_list)));
                 int nbGroups = mConversationsFragment.isShowAllGroups() ? searchGroups.size() : Math.min(searchGroups.size(), ConversationsFragment.MIN_RESULTS_VISIBLE);
                 for (int i = 0; i < nbGroups; i++) {
                     items.add(new SearchResultItem.Conversation(SearchResultItem.Type.GROUP, searchGroups.get(i), searchContent));
@@ -119,7 +119,7 @@ public class ConversationsSearchAdapter extends ListAdapter<SearchResultItem, Re
             }
 
             if (!searchConversations.isEmpty()) {
-                items.add(new SearchResultItem.Header(ConversationsFragment.SearchFilter.MESSAGES, mConversationsFragment.getString(R.string.settings_activity_chat_category_title)));
+                items.add(new SearchResultItem.Header(ConversationsFragment.SearchFilter.MESSAGES, mConversationsFragment.getString(R.string.settings_view_chat_category_title)));
                 for (UIConversation uiConversation : searchConversations) {
                     items.add(new SearchResultItem.Conversation(SearchResultItem.Type.MESSAGE, uiConversation, searchContent));
                 }

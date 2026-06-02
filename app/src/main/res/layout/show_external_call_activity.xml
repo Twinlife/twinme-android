@@ -41,7 +41,7 @@
                     android:layout_centerInParent="true"
                     android:gravity="center"
                     android:lines="1"
-                    android:text="@string/premium_services_activity_click_to_call_title"
+                    android:text="@string/premium_services_view_click_to_call_title"
                     app:layout_widthPercent="66.67%" />
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
@@ -108,7 +108,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/share_activity_title" />
+                        android:text="@string/share_view_title" />
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
@@ -143,7 +143,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/show_contact_activity_audio" />
+                        android:text="@string/show_contact_view_audio" />
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
@@ -178,7 +178,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/show_contact_activity_video" />
+                        android:text="@string/show_contact_view_video" />
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/show_external_call_activity_action_view"
-                android:text="@string/show_call_activity_meeting_organizer"
+                android:text="@string/show_call_view_meeting_organizer"
                 android:textAllCaps="true"
                 android:maxLines="1"
                 app:layout_marginEndPercent="4%"
@@ -243,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/show_external_call_activity_settings_view"
-                android:text="@string/show_contact_activity_history_title"
+                android:text="@string/show_contact_view_history_title"
                 android:textAllCaps="true"
                 android:maxLines="1"
                 app:layout_widthPercent="53.33%"
@@ -271,7 +271,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/show_contact_activity_last_calls"
+                    android:text="@string/show_contact_view_last_calls"
                     app:layout_marginEndPercent="4.27%"
                     app:layout_marginStartPercent="12.8%" />
 

@@ -110,7 +110,7 @@
                         android:layout_centerInParent="true"
                         android:gravity="center"
                         android:layout_toEndOf="@+id/account_migration_scanner_activity_scan_icon_view"
-                        android:text="@string/add_contact_activity_scan_code"/>
+                        android:text="@string/add_contact_view_scan_code"/>
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
                 <TextView
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="@string/capture_activity_message" />
+                    android:text="@string/capture_view_message" />
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/account_migration_scanner_activity_message"
+            android:text="@string/account_migration_scanner_view_message"
             app:layout_widthPercent="89.06%"
             app:layout_marginTopPercent="2.99%" />
 

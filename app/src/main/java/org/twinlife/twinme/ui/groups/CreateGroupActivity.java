@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2025 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -48,6 +48,7 @@ import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -572,7 +573,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         mInviteTextView = findViewById(R.id.create_group_activity_invite_title_view);
         Design.updateTextFont(mInviteTextView, Design.FONT_BOLD28);
         mInviteTextView.setTextColor(Design.getMainStyle());
-        mInviteTextView.setText(" + " + getResources().getText(R.string.add_group_member_activity_add));
+        mInviteTextView.setText(" + " + getResources().getText(R.string.add_group_member_view_add));
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mInviteTextView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MEMBER_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -676,7 +677,19 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         mName = mNameView.getText().toString().trim();
         String groupDescription = mDescriptionView.getText().toString().trim();
 
-        long permissions = ~0;
+        List<org.twinlife.twinlife.Permission> permissions = new ArrayList<>();
+        permissions.add(org.twinlife.twinlife.Permission.RECEIVE_MESSAGE);
+        if (mAllowInvitation) {
+            permissions.add(org.twinlife.twinlife.Permission.MANAGE_MEMBER);
+        }
+        if (mAllowPostMessage) {
+            permissions.add(org.twinlife.twinlife.Permission.ALLOW_POST);
+        }
+        if (mAllowInviteMemberAsContact) {
+            permissions.add(org.twinlife.twinlife.Permission.SEND_TWINCODE);
+        }
+
+        /*long permissions = ~0;
         permissions &= ~(1L << ConversationService.Permission.UPDATE_MEMBER.ordinal());
         permissions &= ~(1L << ConversationService.Permission.REMOVE_MEMBER.ordinal());
         permissions &= ~(1L << ConversationService.Permission.RESET_CONVERSATION.ordinal());
@@ -692,7 +705,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         }
         if (!mAllowInviteMemberAsContact) {
             permissions &= ~(1L << ConversationService.Permission.SEND_TWINCODE.ordinal());
-        }
+        }*/
         List<Contact> selectedMembers = AddGroupMemberActivity.fromIntentString(mContacts, mSelectedMembers);
         mGroupService.createGroup(mName, groupDescription, mAvatar, mAvatarFile, selectedMembers, permissions);
     }

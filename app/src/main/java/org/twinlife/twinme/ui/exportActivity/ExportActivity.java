@@ -281,7 +281,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
         }
 
         if (!mIsContentToExport) {
-            return getString(R.string.export_activity_no_content_to_export);
+            return getString(R.string.export_view_no_content_to_export);
         }
 
         boolean isOneContentToExportIsChecked = false;
@@ -306,22 +306,22 @@ public class ExportActivity extends AbstractTwinmeActivity {
         StringBuilder builder = new StringBuilder();
 
         if (mIsExportOneConversation) {
-            builder.append(getString(R.string.export_activity_one_conversation_zip_file));
+            builder.append(getString(R.string.export_view_one_conversation_zip_file));
         } else {
-            builder.append(getString(R.string.export_activity_all_conversations_zip_file));
+            builder.append(getString(R.string.export_view_all_conversations_zip_file));
         }
 
         if (isOneContentToExportIsChecked) {
             builder.append("\n");
-            builder.append(getString(R.string.export_activity_content_to_export));
+            builder.append(getString(R.string.export_view_content_to_export));
             builder.append(" : ");
 
             if (totalCountMessage > 0) {
                 String messageTitle;
                 if (totalCountMessage > 1) {
-                    messageTitle = getString(R.string.settings_activity_chat_category_title);
+                    messageTitle = getString(R.string.settings_view_chat_category_title);
                 } else {
-                    messageTitle = getString(R.string.feedback_activity_message);
+                    messageTitle = getString(R.string.feedback_view_message);
                 }
 
                 builder.append(String.format("%d %s%s", totalCountMessage, messageTitle, totalCountFile > 0 ? " - " : ""));
@@ -340,7 +340,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
         }
 
         if (state == ExportState.EXPORT_DONE) {
-            Toast.makeText(this, R.string.export_activity_success, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.export_view_success, Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -386,7 +386,7 @@ public class ExportActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.export_activity_title));
+        setTitle(getString(R.string.export_view_title));
         applyInsets(R.id.export_activity_layout, R.id.export_activity_tool_bar, R.id.export_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         initExport();

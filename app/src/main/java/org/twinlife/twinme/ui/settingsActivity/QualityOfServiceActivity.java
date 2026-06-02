@@ -37,6 +37,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AndroidDeviceInfo;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractOnboardingActivity;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.utils.DotsAdapter;
 
 import java.util.ArrayList;
@@ -98,46 +99,44 @@ public class QualityOfServiceActivity extends AbstractOnboardingActivity {
             Log.d(LOG_TAG, "onPermissionsClick");
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            final AndroidDeviceInfo androidDeviceInfo = new AndroidDeviceInfo(this);
+        final AndroidDeviceInfo androidDeviceInfo = new AndroidDeviceInfo(this);
 
-            boolean postNotificationEnable = true;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
-            }
+        boolean postNotificationEnable = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            postNotificationEnable = checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
+        }
 
-            // Order of checks must be the same as in RestrictionView.updateView().
-            Intent intent = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
-                if (!checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
-                    intent = new Intent();
-                    intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                    intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
-                }
-            } else if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+        // Order of checks must be the same as in RestrictionView.updateView().
+        Intent intent = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
+            if (!checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
                 intent = new Intent();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                    intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
-                } else {
-                    intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-                    intent.putExtra("app_package", getPackageName());
-                    intent.putExtra("app_uid", getApplicationInfo().uid);
-                }
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && androidDeviceInfo.isNetworkRestricted()) {
-                intent = new Intent(Settings.ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS);
-                intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && androidDeviceInfo.isBackgroundRestricted()) {
-                intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
-            } else  if (!androidDeviceInfo.isIgnoringBatteryOptimizations()) {
-                intent = new Intent();
-                intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
             }
+        } else if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            intent = new Intent();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
+            } else {
+                intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                intent.putExtra("app_package", getPackageName());
+                intent.putExtra("app_uid", getApplicationInfo().uid);
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && androidDeviceInfo.isNetworkRestricted()) {
+            intent = new Intent(Settings.ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS);
+            intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && androidDeviceInfo.isBackgroundRestricted()) {
+            intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+        } else  if (!androidDeviceInfo.isIgnoringBatteryOptimizations()) {
+            intent = new Intent();
+            intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+        }
 
-            if (intent != null) {
-                startActivity(intent);
-            }
+        if (intent != null) {
+            startActivity(intent);
         }
     }
 

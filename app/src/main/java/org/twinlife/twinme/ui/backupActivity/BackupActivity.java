@@ -188,7 +188,7 @@ public class BackupActivity extends AbstractTwinmeActivity {
         }
 
         Utils.setClipboard(this, getWordsList());
-        Toast.makeText(this, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
     }
 
     private void onMessageWordsGenerated(@NonNull Intent intent) {
@@ -275,7 +275,7 @@ public class BackupActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.backup_activity_title));
+        setTitle(getString(R.string.backup_view_title));
 
         applyInsets(R.id.backup_activity_layout, R.id.backup_activity_tool_bar, R.id.backup_activity_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -408,9 +408,9 @@ public class BackupActivity extends AbstractTwinmeActivity {
         } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.KEY_GEN_FAILED && baseErrorCode == BaseService.ErrorCode.TWINLIFE_OFFLINE) {
             message = getString(R.string.application_connection_status_no_network_message);
         } else {
-            message = getString(R.string.cleanup_activity_error);
+            message = getString(R.string.cleanup_view_error);
         }
 
-        showAlertMessageView(R.id.backup_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.backup_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 }

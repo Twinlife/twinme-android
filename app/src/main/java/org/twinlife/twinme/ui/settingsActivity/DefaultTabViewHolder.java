@@ -25,7 +25,6 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
 
     private static final int TAB_GREY_COLOR = Color.argb(255, 119, 138, 159);
 
-    private final ImageView mProfilesImageView;
     private final ImageView mCallsImageView;
     private final ImageView mContactsImageView;
     private final ImageView mConversationsImageView;
@@ -45,13 +44,6 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
         layoutParams.height = Design.SECTION_HEIGHT;
         view.setLayoutParams(layoutParams);
         view.setBackgroundColor(Design.WHITE_COLOR);
-
-        View profilesView = view.findViewById(R.id.personalization_activity_default_tab_item_profiles_view);
-        profilesView.setOnClickListener(v -> {
-            mListActivity.getTwinmeApplication().updateDefaultTab(TwinmeApplication.DefaultTab.PROFILES);
-            updateTab();
-        });
-        mProfilesImageView = view.findViewById(R.id.personalization_activity_default_tab_item_profiles_image_view);
 
         View callsView = view.findViewById(R.id.personalization_activity_default_tab_item_calls_view);
         callsView.setOnClickListener(v -> {
@@ -93,29 +85,24 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
 
     private void updateTab() {
 
-        mProfilesImageView.setColorFilter(TAB_GREY_COLOR);
         mCallsImageView.setColorFilter(TAB_GREY_COLOR);
         mContactsImageView.setColorFilter(TAB_GREY_COLOR);
         mConversationsImageView.setColorFilter(TAB_GREY_COLOR);
         mNotificationsImageView.setColorFilter(TAB_GREY_COLOR);
 
-        float tabWidth = (float) (Design.DISPLAY_WIDTH / 5.0);
-
-        if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.PROFILES.ordinal()) {
-            mProfilesImageView.setColorFilter(Design.getMainStyle());
-            mSelectedView.setX(0);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
+        float tabWidth = (float) (Design.DISPLAY_WIDTH / 4.0);
+        if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
             mCallsImageView.setColorFilter(Design.getMainStyle());
-            mSelectedView.setX(tabWidth);
+            mSelectedView.setX(0);
         } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
             mContactsImageView.setColorFilter(Design.getMainStyle());
-            mSelectedView.setX(tabWidth * 2);
+            mSelectedView.setX(tabWidth);
         } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal()) {
             mConversationsImageView.setColorFilter(Design.getMainStyle());
-            mSelectedView.setX(tabWidth * 3);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.NOTIFICATIONS.ordinal()) {
+            mSelectedView.setX(tabWidth * 2);
+        } else {
             mNotificationsImageView.setColorFilter(Design.getMainStyle());
-            mSelectedView.setX(tabWidth * 4);
+            mSelectedView.setX(tabWidth * 3);
         }
     }
 

@@ -165,7 +165,7 @@
         android:gravity="center"
         android:layout_alignParentEnd="true"
         app:layout_widthPercent="16.53%"
-        android:contentDescription="@string/feedback_activity_send">
+        android:contentDescription="@string/feedback_view_send">
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/conversation_activity_voice_recorder_send_view"

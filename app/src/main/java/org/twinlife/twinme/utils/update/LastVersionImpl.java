@@ -340,9 +340,9 @@ public class LastVersionImpl implements Serializable, LastVersion {
         return lastVersion;
     }
 
-    public void save(@NonNull Context context) {
+    public void save(@NonNull File cacheDir) {
 
-        File file = new File(context.getCacheDir(), SAVE_NAME);
+        File file = new File(cacheDir, SAVE_NAME);
 
         mLastCheckDate = new Date();
         try (FileOutputStream fos = new FileOutputStream(file)) {

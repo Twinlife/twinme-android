@@ -62,7 +62,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:text="@string/conversation_activity_empty_message"
+        android:text="@string/conversation_view_empty_message"
         android:layout_below="@id/conversation_activity_top_tool_bar"
         android:visibility="gone"
         app:layout_widthPercent="84%"
@@ -97,7 +97,8 @@
                 android:layout_centerVertical="true"
                 android:background="@null"
                 android:gravity="start"
-                android:hint="@string/conversation_activity_message"
+                android:hint="@string/conversation_view_message"
+                android:maxLines="10"
                 android:inputType="textMultiLine|textAutoCorrect|textAutoComplete|textCapSentences"
                 android:scrollbars="vertical" />
 
@@ -163,7 +164,7 @@
                 android:clipChildren="false"
                 android:layout_alignBottom="@+id/conversation_activity_edit_text"
                 android:layout_alignParentEnd="true"
-                android:contentDescription="@string/conversation_activity_record_title"
+                android:contentDescription="@string/conversation_view_record_title"
                 app:layout_aspectRatio="100%">
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
@@ -250,7 +251,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
-                android:contentDescription="@string/feedback_activity_send">
+                android:contentDescription="@string/feedback_view_send">
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
                     android:layout_width="wrap_content"

@@ -131,7 +131,7 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
                 sectionTitleViewHolder.resetMargins();
             }
 
-            sectionTitleViewHolder.onBind(mActivity.getString(R.string.create_external_call_activity_call_configuration), Design.WHITE_COLOR, false);
+            sectionTitleViewHolder.onBind(mActivity.getString(R.string.create_external_call_view_call_configuration), Design.WHITE_COLOR, false);
         } else {
             UIConfigExternalCallItem configItem = mConfigExternalCall.getConfigItems().get(position - 1);
             if (viewType == VALUE) {
@@ -211,7 +211,7 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
                     informationViewHolder.resetMargins();
                 }
 
-                informationViewHolder.onBind(mActivity.getString(R.string.create_external_call_activity_delete_link_setting), true, Design.WHITE_COLOR, Design.FONT_COLOR_DEFAULT, Design.FONT_REGULAR30);
+                informationViewHolder.onBind(mActivity.getString(R.string.create_external_call_view_delete_link_setting), true, Design.WHITE_COLOR, Design.FONT_COLOR_DEFAULT, Design.FONT_REGULAR30);
             }
         }
     }

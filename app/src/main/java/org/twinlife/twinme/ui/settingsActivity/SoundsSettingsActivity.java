@@ -158,18 +158,18 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
         int ringToneType = RingtoneManager.TYPE_RINGTONE;
         if (setting.isSetting(Settings.notificatonRingtone)) {
             defaultUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.notification_ringtone);
-            title = getString(R.string.settings_activity_chat_ringtone_title);
+            title = getString(R.string.settings_view_chat_ringtone_title);
             ringToneType = RingtoneManager.TYPE_NOTIFICATION;
             mSettingKind = SoundSetting.SOUND_NOTIFICATION;
 
         } else if (setting.isSetting(Settings.audioCallRingtone)) {
             defaultUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.audio_call_ringtone);
-            title = getString(R.string.settings_activity_audio_call_notification_ringtone_title);
+            title = getString(R.string.settings_view_audio_call_notification_ringtone_title);
             mSettingKind = SoundSetting.SOUND_AUDIO;
 
         } else if (setting.isSetting(Settings.videoCallRingtone)) {
             defaultUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video_call_ringtone);
-            title = getString(R.string.settings_activity_video_call_notification_ringtone_title);
+            title = getString(R.string.settings_view_video_call_notification_ringtone_title);
             mSettingKind = SoundSetting.SOUND_VIDEO;
         }
 
@@ -303,7 +303,7 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.notifications_fragment_title));
+        setTitle(getString(R.string.notifications_view_title));
         applyInsets(R.id.sounds_settings_activity_layout, R.id.sounds_settings_activity_tool_bar, R.id.sounds_settings_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mSoundsSettingsAdapter = new SoundsSettingsAdapter(this);
@@ -335,8 +335,8 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
         ViewGroup viewGroup = findViewById(R.id.sounds_settings_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.settings_activity_reset_preferences_title));
-        defaultConfirmView.setMessage(getString(R.string.settings_activity_reset_preferences_message));
+        defaultConfirmView.setTitle(getString(R.string.settings_view_reset_preferences_title));
+        defaultConfirmView.setMessage(getString(R.string.settings_view_reset_preferences_message));
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
 

@@ -55,31 +55,31 @@ public class CallItem extends Item {
         if (mCallDescriptor.getTerminateReason() != null) {
             switch (mCallDescriptor.getTerminateReason()) {
                 case BUSY:
-                    callStatus = String.format(context.getResources().getString(R.string.info_item_activity_call_terminated_reason_busy), contactName);
+                    callStatus = String.format(context.getResources().getString(R.string.info_item_view_call_terminated_reason_busy), contactName);
                     break;
 
                 case GONE:
-                    callStatus = String.format(context.getResources().getString(R.string.info_item_activity_call_terminated_reason_gone), contactName);
+                    callStatus = String.format(context.getResources().getString(R.string.info_item_view_call_terminated_reason_gone), contactName);
                     break;
 
                 case DECLINE:
-                    callStatus = String.format(context.getResources().getString(R.string.info_item_activity_call_terminated_reason_decline), contactName);
+                    callStatus = String.format(context.getResources().getString(R.string.info_item_view_call_terminated_reason_decline), contactName);
                     break;
 
                 case REVOKED:
-                    callStatus = String.format(context.getResources().getString(R.string.info_item_activity_call_terminated_reason_revoked), contactName);
+                    callStatus = String.format(context.getResources().getString(R.string.info_item_view_call_terminated_reason_revoked), contactName);
                     break;
 
                 case NOT_AUTHORIZED:
-                    callStatus = context.getResources().getString(R.string.info_item_activity_call_terminated_reason_not_authorized);
+                    callStatus = context.getResources().getString(R.string.info_item_view_call_terminated_reason_not_authorized);
                     break;
 
                 case CANCEL:
-                    callStatus = String.format(context.getResources().getString(R.string.info_item_activity_call_terminated_reason_cancel), contactName);
+                    callStatus = String.format(context.getResources().getString(R.string.info_item_view_call_terminated_reason_cancel), contactName);
                     break;
 
                 case TIMEOUT:
-                    callStatus = String.format(context.getResources().getString(R.string.info_item_activity_call_terminated_reason_timeout), contactName);
+                    callStatus = String.format(context.getResources().getString(R.string.info_item_view_call_terminated_reason_timeout), contactName);
                     break;
 
                 default:

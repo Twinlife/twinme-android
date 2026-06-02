@@ -109,7 +109,9 @@
 -keep class net.sqlcipher.CharArrayBuffer {
     *;
 }
-  
+
+# Crypto / BoringSSL
+
 -keep class org.twinlife.twinlife.crypto.CryptoKey {
     *;
 }

@@ -42,7 +42,8 @@ class InvitationItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_invitation_item_state_avatar_view,
                 R.id.base_item_activity_invitation_item_overlay_view,
                 R.id.base_item_activity_invitation_item_selected_view,
-                R.id.base_item_activity_invitation_item_selected_image_view);
+                R.id.base_item_activity_invitation_item_selected_image_view,
+                R.id.base_item_activity_invitation_item_error_image_view);
 
         mInvitationContainer = view.findViewById(R.id.base_item_activity_invitation_item_view);
 
@@ -114,24 +115,24 @@ class InvitationItemViewHolder extends ItemViewHolder {
         mGroupNameView.setText(invitation.getGroupName());
 
         if (invitation.getState() == Item.ItemState.NOT_SENT) {
-            mInvitationView.setText(getString(R.string.conversation_activity_invitation_failed));
+            mInvitationView.setText(getString(R.string.conversation_view_invitation_failed));
         } else if (invitation.getState() != Item.ItemState.PEER_DELETED && invitation.getState() != Item.ItemState.BOTH_DELETED) {
             switch (invitation.getStatus()) {
                 case PENDING:
-                    mInvitationView.setText(getString(R.string.conversation_activity_invitation_pending));
+                    mInvitationView.setText(getString(R.string.conversation_view_invitation_pending));
                     break;
 
                 case ACCEPTED:
-                    mInvitationView.setText(getString(R.string.conversation_activity_invitation_accepted));
+                    mInvitationView.setText(getString(R.string.conversation_view_invitation_accepted));
                     break;
 
                 case JOINED:
-                    mInvitationView.setText(getString(R.string.conversation_activity_invitation_joined));
+                    mInvitationView.setText(getString(R.string.conversation_view_invitation_joined));
                     break;
 
                 case REFUSED:
                 case WITHDRAWN:
-                    mInvitationView.setText(getString(R.string.conversation_activity_invitation_refused));
+                    mInvitationView.setText(getString(R.string.conversation_view_invitation_refused));
                     break;
             }
         }

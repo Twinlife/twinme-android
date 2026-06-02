@@ -96,6 +96,18 @@
             </androidx.percentlayout.widget.PercentRelativeLayout>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
+        <ImageView
+            android:id="@+id/base_item_activity_link_error_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toStartOf="@+id/base_item_activity_link_item_text"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:src="@drawable/info_item"
+            app:layout_aspectRatio="100%" />
+
         <TextView
             android:id="@+id/base_item_activity_link_item_text"
             style="@style/textAppearance"
@@ -104,8 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:textColor="@android:color/white"
-            app:layout_marginEndPercent="6.93%"
-            app:layout_marginStartPercent="29.60%" />
+            app:layout_marginEndPercent="6.93%" />
 
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView
             android:id="@+id/base_item_activity_link_item_delete_view"

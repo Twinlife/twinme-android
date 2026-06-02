@@ -25,7 +25,7 @@
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/call_activity_hangup_view"
                 app:layout_aspectRatio="100%"
-                android:contentDescription="@string/audio_call_activity_hangup">
+                android:contentDescription="@string/audio_call_view_hangup">
 
                 <View
                     android:id="@+id/call_activity_hangup_rounded_view"

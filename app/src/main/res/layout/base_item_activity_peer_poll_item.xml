@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_peer_poll_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_poll_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_peer_poll_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_peer_poll_item_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            app:layout_aspectRatio="100%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_poll_item_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="77.33%">
+
+            <TextView
+                android:id="@+id/base_item_activity_peer_poll_item_question_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/base_item_activity_peer_poll_item_choices_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/base_item_activity_peer_poll_item_question_view" />
+
+            <LinearLayout
+                android:id="@+id/base_item_activity_peer_poll_item_results_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/base_item_activity_peer_poll_item_choices_view"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_poll_item_results_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/poll_view_results"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/base_item_activity_peer_poll_item_annotation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/base_item_activity_peer_poll_item_container"
+        android:choiceMode="singleChoice" />
+
+    <View
+        android:id="@+id/base_item_activity_peer_poll_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2014-2025 twinlife SA.
+ *  Copyright (c) 2014-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -60,5 +60,6 @@ public class Configuration extends TwinmeConfiguration {
         peerCallServiceConfiguration.serviceOn = true;
         cryptoServiceConfiguration.serviceOn = true;
         backupServiceConfiguration.serviceOn = true;
+        secureRosterServiceConfiguration.serviceOn = true;
     }
 }

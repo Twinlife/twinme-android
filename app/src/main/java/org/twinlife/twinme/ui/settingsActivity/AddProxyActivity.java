@@ -202,7 +202,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             Log.d(LOG_TAG, "onErrorAddProxy");
         }
 
-        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.proxy_activity_invalid_format), false, null);
+        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_invalid_format), false, null);
     }
 
     @Override
@@ -211,7 +211,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             Log.d(LOG_TAG, "onErrorAlreadyUsed");
         }
 
-        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.proxy_activity_already_use), false, null);
+        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_already_use), false, null);
     }
 
     @Override
@@ -220,7 +220,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             Log.d(LOG_TAG, "onErrorLimitReached");
         }
 
-        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.proxy_activity_limit), ConnectivityService.MAX_PROXIES), false, null);
+        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, null);
     }
 
     //
@@ -239,7 +239,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.proxy_activity_title));
+        setTitle(getString(R.string.proxy_view_title));
         setBackgroundColor(Design.WHITE_COLOR);
 
         applyInsets(R.id.add_proxy_activity_layout, R.id.add_proxy_activity_tool_bar, R.id.add_proxy_activity_container_view, Design.TOOLBAR_COLOR, false);
@@ -327,7 +327,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         saveTextView.setTextColor(Color.WHITE);
 
         TextView formatView = findViewById(R.id.add_proxy_activity_format_view);
-        formatView.setText(String.format("%s \n %s", getString(R.string.proxy_activity_format), getString(R.string.proxy_activity_format_sample)));
+        formatView.setText(String.format("%s \n %s", getString(R.string.proxy_view_format), getString(R.string.proxy_view_format_sample)));
         formatView.setTypeface(Design.FONT_ITALIC_28.typeface);
         formatView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_ITALIC_28.size);
         formatView.setTextColor(Design.FONT_COLOR_GREY);
@@ -349,7 +349,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
 
             if (mProxyDescriptor.getLastError() != null && mProxyDescriptor.getLastError() != ErrorCategory.ERR_NONE) {
                 mMessageView.setVisibility(View.VISIBLE);
-                mMessageView.setText(R.string.proxy_activity_warning);
+                mMessageView.setText(R.string.proxy_view_warning);
             }
         }
     }
@@ -391,9 +391,9 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         ViewGroup viewGroup = findViewById(R.id.add_proxy_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        onboardingConfirmView.setTitle(getString(R.string.proxy_activity_title));
+        onboardingConfirmView.setTitle(getString(R.string.proxy_view_title));
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
-        onboardingConfirmView.setMessage(getString(R.string.proxy_activity_onboarding));
+        onboardingConfirmView.setMessage(getString(R.string.proxy_view_onboarding));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 

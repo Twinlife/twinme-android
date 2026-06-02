@@ -523,9 +523,9 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
 
         String message;
         if (mCallReceiver.isTransfer()) {
-            message = getString(R.string.transfert_call_activity_delete_message) + "\n\n"  + getString(R.string.transfert_call_activity_delete_confirm_message);
+            message = getString(R.string.transfert_call_view_delete_message) + "\n\n"  + getString(R.string.transfert_call_view_delete_confirm_message);
         } else {
-            message = getString(R.string.edit_external_call_activity_delete_message) + "\n\n"  + getString(R.string.edit_external_call_activity_delete_confirm_message);
+            message = getString(R.string.edit_external_call_view_delete_message) + "\n\n"  + getString(R.string.edit_external_call_view_delete_confirm_message);
         }
         deleteConfirmView.setMessage(message);
 

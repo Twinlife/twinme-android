@@ -70,10 +70,10 @@ class InfoCopyItemViewHolder extends BaseItemViewHolder {
 
         InfoCopyItem infoCopyItem = (InfoCopyItem) item;
         if (infoCopyItem.getItem().isClearLocalItem() || !infoCopyItem.getItem().getCopyAllowed()) {
-            mTextView.setText(getString(R.string.info_item_activity_may_not_be_copied));
+            mTextView.setText(getString(R.string.info_item_view_may_not_be_copied));
             mCopyAllowedImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.not_allowed_copy, null));
         } else {
-            mTextView.setText(getString(R.string.info_item_activity_may_be_copied));
+            mTextView.setText(getString(R.string.info_item_view_may_be_copied));
             mCopyAllowedImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.allowed_copy, null));
         }
     }

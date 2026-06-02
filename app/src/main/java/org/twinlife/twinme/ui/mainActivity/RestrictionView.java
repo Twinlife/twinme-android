@@ -103,11 +103,11 @@ public class RestrictionView extends PercentRelativeLayout {
 
         // Order of checks must be the same as in QualityOfServiceActivity.onPermissionsClick().
         if (notificationDisabled) {
-            mMessageTextView.setText(getResources().getString(R.string.quality_of_service_activity_warning_receive_notification));
+            mMessageTextView.setText(getResources().getString(R.string.quality_of_service_view_warning_receive_notification));
         } else if (networkRestricted) {
-            mMessageTextView.setText(getResources().getString(R.string.quality_of_service_activity_warning_background_data));
+            mMessageTextView.setText(getResources().getString(R.string.quality_of_service_view_warning_background_data));
         } else {
-            mMessageTextView.setText(getResources().getString(R.string.quality_of_service_activity_warning_run_background));
+            mMessageTextView.setText(getResources().getString(R.string.quality_of_service_view_warning_run_background));
         }
 
         if (lowUsage) {

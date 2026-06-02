@@ -104,12 +104,12 @@ public class RestoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 BackupFooterViewHolder backupFooterViewHolder = (BackupFooterViewHolder) viewHolder;
                 if (mRestoreActivity.isVerifyBackupMode()) {
                     if (mRestoreActivity.isVerifyBackupTerminated() && !mRestoreActivity.getRestoreReport().isRestoreUpToDate()) {
-                        backupFooterViewHolder.onBind(mRestoreActivity.getString(R.string.backup_activity_new_backup), mRestoreActivity.canRestore());
+                        backupFooterViewHolder.onBind(mRestoreActivity.getString(R.string.backup_view_new_backup), mRestoreActivity.canRestore());
                     } else {
-                        backupFooterViewHolder.onBind(mRestoreActivity.getString(R.string.account_activity_backup_verify), mRestoreActivity.canRestore());
+                        backupFooterViewHolder.onBind(mRestoreActivity.getString(R.string.account_view_backup_verify), mRestoreActivity.canRestore());
                     }
                 } else {
-                    backupFooterViewHolder.onBind(mRestoreActivity.getString(R.string.restore_activity_restore), mRestoreActivity.canRestore());
+                    backupFooterViewHolder.onBind(mRestoreActivity.getString(R.string.restore_view_restore), mRestoreActivity.canRestore());
                 }
                 break;
             }
@@ -213,24 +213,41 @@ public class RestoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
                 if (!mRestoreActivity.getRestoreReport().profiles.isStatsUpToDate()) {
                     mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mRestoreActivity.getString(R.string.application_profile), -1, -1, -1));
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.restore_activity_content_profile_reset), R.drawable.generate_code, -1, Design.BLACK_COLOR));
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mRestoreActivity.getString(R.string.restore_activity_content_profile_reset_message), -1, -1, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.restore_view_content_profile_reset), R.drawable.generate_code, -1, Design.BLACK_COLOR));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mRestoreActivity.getString(R.string.restore_view_content_profile_reset_message), -1, -1, -1));
                 }
 
                 if (!mRestoreActivity.getRestoreReport().contacts.isStatsUpToDate()) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mRestoreActivity.getString(R.string.contacts_fragment_title), -1, -1, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mRestoreActivity.getString(R.string.contacts_view_title), -1, -1, -1));
 
                     if (mRestoreActivity.getRestoreReport().contacts.added != 0) {
-                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_activity_content_diff_added), R.drawable.contacts_icon, mRestoreActivity.getRestoreReport().contacts.added, Design.BLACK_COLOR));
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_view_content_diff_added), R.drawable.contacts_icon, mRestoreActivity.getRestoreReport().contacts.added, Design.BLACK_COLOR));
                     }
 
                     if (mRestoreActivity.getRestoreReport().contacts.modified != 0) {
-                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_activity_content_diff_updated), R.drawable.action_edit, mRestoreActivity.getRestoreReport().contacts.modified, Design.BLACK_COLOR));
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_view_content_diff_updated), R.drawable.action_edit, mRestoreActivity.getRestoreReport().contacts.modified, Design.BLACK_COLOR));
                     }
 
                     if (mRestoreActivity.getRestoreReport().contacts.deleted != 0) {
-                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_activity_content_diff_deleted), R.drawable.delete_item, mRestoreActivity.getRestoreReport().contacts.deleted, -1));
-                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mRestoreActivity.getString(R.string.restore_activity_content_contact_deleted_message), -1, -1, -1));
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_view_content_diff_deleted), R.drawable.delete_item, mRestoreActivity.getRestoreReport().contacts.deleted, -1));
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mRestoreActivity.getString(R.string.restore_view_content_contact_deleted_message), -1, -1, -1));
+                    }
+                }
+
+                if (!mRestoreActivity.getRestoreReport().groups.isStatsUpToDate()) {
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mRestoreActivity.getString(R.string.share_view_group_list), -1, -1, -1));
+
+                    if (mRestoreActivity.getRestoreReport().groups.added != 0) {
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_view_content_diff_added), R.drawable.groups_icon, mRestoreActivity.getRestoreReport().groups.added, Design.BLACK_COLOR));
+                    }
+
+                    if (mRestoreActivity.getRestoreReport().groups.modified != 0) {
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_view_content_diff_updated), R.drawable.action_edit, mRestoreActivity.getRestoreReport().groups.modified, Design.BLACK_COLOR));
+                    }
+
+                    if (mRestoreActivity.getRestoreReport().groups.deleted != 0) {
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mRestoreActivity.getString(R.string.backup_view_content_diff_deleted), R.drawable.delete_item, mRestoreActivity.getRestoreReport().groups.deleted, -1));
+                        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mRestoreActivity.getString(R.string.restore_view_content_contact_deleted_message), -1, -1, -1));
                     }
                 }
 

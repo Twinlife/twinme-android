@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:background="@android:color/transparent"
-                android:text="@string/about_activity_message"
+                android:text="@string/about_view_message"
                 app:layout_marginEndPercent="4.53%"
                 app:layout_marginStartPercent="4.53%"
                 app:layout_marginTopPercent="1.5%"
@@ -50,7 +50,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="start"
                     android:background="@android:color/transparent"
-                    android:text="@string/about_activity_version"
+                    android:text="@string/about_view_version"
                     app:layout_marginEndPercent="4.26%"
                     app:layout_marginStartPercent="4.53%" />
 
@@ -89,7 +89,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="@string/update_app_activity_update_available"
+                    android:text="@string/update_app_view_update_available"
                     app:layout_widthPercent="89.06%" />
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:background="@android:color/transparent"
-                android:text="@string/about_activity_legal"
+                android:text="@string/about_view_legal"
                 android:textAllCaps="true"
                 android:layout_below="@+id/about_activity_update_view" />
 
@@ -117,7 +117,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="start"
                     android:background="@android:color/transparent"
-                    android:text="@string/about_activity_terms_of_use"
+                    android:text="@string/about_view_terms_of_use"
                     app:layout_marginEndPercent="4.26%"
                     app:layout_marginStartPercent="4.53%" />
 
@@ -147,7 +147,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="start"
                     android:background="@android:color/transparent"
-                    android:text="@string/about_activity_privacy_policy"
+                    android:text="@string/about_view_privacy_policy"
                     app:layout_marginEndPercent="4.26%"
                     app:layout_marginStartPercent="4.53%" />
 
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:background="@android:color/transparent"
-                android:text="@string/about_activity_open_source"
+                android:text="@string/about_view_open_source"
                 android:textAllCaps="true"
                 android:layout_below="@+id/about_activity_privacy_policy_view" />
 
@@ -187,7 +187,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="start"
                     android:background="@android:color/transparent"
-                    android:text="@string/about_activity_application_code"
+                    android:text="@string/about_view_application_code"
                     app:layout_marginEndPercent="4.26%"
                     app:layout_marginStartPercent="4.53%" />
 
@@ -209,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:background="@android:color/transparent"
-                android:text="@string/about_activity_open_source_information"
+                android:text="@string/about_view_open_source_information"
                 android:layout_below="@+id/about_activity_application_code_view" />
 
             <androidx.percentlayout.widget.PercentRelativeLayout
@@ -226,7 +226,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="start"
                     android:background="@android:color/transparent"
-                    android:text="@string/about_activity_open_sources_licences"
+                    android:text="@string/about_view_open_sources_licences"
                     app:layout_marginEndPercent="4.26%"
                     app:layout_marginStartPercent="4.53%" />
 
@@ -249,7 +249,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:background="@android:color/transparent"
-                android:text="@string/about_activity_copyright"
+                android:text="@string/about_view_copyright"
                 android:layout_below="@+id/about_activity_licences_view"
                 app:layout_marginEndPercent="4.53%"
                 app:layout_marginStartPercent="4.53%"

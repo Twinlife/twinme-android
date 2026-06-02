@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
@@ -25,6 +26,7 @@ import java.util.List;
 
 class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
 
+    private final View mInvitationContainer;
     private final TextView mNameView;
     private final TextView mInvitationView;
     private final GradientDrawable mGradientDrawable;
@@ -39,15 +41,23 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
                 R.id.base_item_activity_peer_invitation_contact_item_selected_view,
                 R.id.base_item_activity_peer_invitation_contact_item_selected_image_view);
 
-        View invitationContainer = view.findViewById(R.id.base_item_activity_peer_invitation_contact_item_view);
+        mInvitationContainer = view.findViewById(R.id.base_item_activity_peer_invitation_contact_item_view);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationContainer.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mInvitationContainer.setLayoutParams(marginLayoutParams);
 
         mGradientDrawable = new GradientDrawable();
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        invitationContainer.setBackground(mGradientDrawable);
+        mInvitationContainer.setBackground(mGradientDrawable);
         mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
-        invitationContainer.setClickable(false);
+        mInvitationContainer.setClickable(false);
 
         mNameView = view.findViewById(R.id.base_item_activity_peer_invitation_contact_item_name);
         Design.updateTextFont(mNameView, Design.FONT_MEDIUM26);
@@ -60,7 +70,7 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
         mInvitationView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         if (allowClick) {
-            invitationContainer.setOnClickListener(v -> {
+            mInvitationContainer.setOnClickListener(v -> {
 
                 if (getBaseItemActivity().isSelectItemMode()) {
                     onContainerClick();
@@ -72,7 +82,7 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
             });
         }
         if (allowLongClick) {
-            invitationContainer.setOnLongClickListener(v -> {
+            mInvitationContainer.setOnLongClickListener(v -> {
                 baseItemActivity.onItemLongPress(getItem());
                 return true;
             });
@@ -99,7 +109,18 @@ class PeerInvitationContactItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setCornerRadii(getCornerRadii());
 
         mNameView.setText(invitation.getName());
-        mInvitationView.setText(String.format(getString(R.string.accept_invitation_activity_message), invitation.getName()));
+        mInvitationView.setText(String.format(getString(R.string.accept_invitation_view_message), invitation.getName()));
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationContainer.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mInvitationContainer.setLayoutParams(marginLayoutParams);
+        }
     }
 
     @Override

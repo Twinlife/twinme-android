@@ -75,7 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/welcome_activity_next" />
+                android:text="@string/welcome_view_next" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

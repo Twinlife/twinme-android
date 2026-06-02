@@ -61,7 +61,7 @@ public class ExportActionViewHolder extends RecyclerView.ViewHolder {
         ShapeDrawable actionViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         if (!isExportInProgress) {
             actionViewBackground.getPaint().setColor(Design.getMainStyle());
-            mTitleView.setText(mActionView.getContext().getString(R.string.export_activity_export));
+            mTitleView.setText(mActionView.getContext().getString(R.string.export_view_export));
         } else {
             actionViewBackground.getPaint().setColor(Design.DELETE_COLOR_RED);
             mTitleView.setText(mActionView.getContext().getString(R.string.application_cancel));

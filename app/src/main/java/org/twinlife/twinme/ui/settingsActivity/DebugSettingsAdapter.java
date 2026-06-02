@@ -126,46 +126,46 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         switch (TwinmeApplication.OnboardingType.values()[position]) {
             case CERTIFIED_RELATION:
-                return mActivity.getString(R.string.authentified_relation_activity_title);
+                return mActivity.getString(R.string.authentified_relation_view_title);
 
             case EXTERNAL_CALL:
-                return mActivity.getString(R.string.premium_services_activity_click_to_call_title);
+                return mActivity.getString(R.string.premium_services_view_click_to_call_title);
 
             case PROFILE:
                 return mActivity.getString(R.string.application_profile);
 
             case SPACE:
-                return mActivity.getString(R.string.premium_services_activity_space_title);
+                return mActivity.getString(R.string.premium_services_view_space_title);
 
             case TRANSFER:
-                return mActivity.getString(R.string.account_activity_transfer_between_devices);
+                return mActivity.getString(R.string.account_view_transfer_between_devices);
 
             case TRANSFER_CALL:
-                return mActivity.getString(R.string.premium_services_activity_transfert_title);
+                return mActivity.getString(R.string.premium_services_view_transfert_title);
 
             case ENTER_MINI_CODE:
-                return mActivity.getString(R.string.enter_invitation_code_activity_enter_code);
+                return mActivity.getString(R.string.enter_invitation_code_view_enter_code);
 
             case MINI_CODE:
-                return mActivity.getString(R.string.invitation_code_activity_create_code);
+                return mActivity.getString(R.string.invitation_code_view_create_code);
 
             case REMOTE_CAMERA:
-                return mActivity.getString(R.string.call_activity_camera_control);
+                return mActivity.getString(R.string.call_view_camera_control);
 
             case REMOTE_CAMERA_SETTING:
-                return mActivity.getString(R.string.call_activity_camera_control) + " - " + mActivity.getString(R.string.navigation_activity_settings);
+                return mActivity.getString(R.string.call_view_camera_control) + " - " + mActivity.getString(R.string.navigation_view_settings);
 
             case PROXY:
-                return mActivity.getString(R.string.proxy_activity_title);
+                return mActivity.getString(R.string.proxy_view_title);
 
             case BACKUP:
-                return mActivity.getString(R.string.account_activity_backup);
+                return mActivity.getString(R.string.account_view_backup);
 
             case RESTORE:
-                return mActivity.getString(R.string.account_activity_restore);
+                return mActivity.getString(R.string.account_view_restore);
 
             case VERIFY_BACKUP:
-                return mActivity.getString(R.string.account_activity_backup_verify);
+                return mActivity.getString(R.string.account_view_backup_verify);
 
             default:
                 return "";

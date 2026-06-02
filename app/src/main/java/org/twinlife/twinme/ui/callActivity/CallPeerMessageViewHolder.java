@@ -60,7 +60,7 @@ public class CallPeerMessageViewHolder extends AbstractCallMessageViewHolder {
 
         mTextView.setOnLongClickListener(v -> {
             Utils.setClipboard(callActivity, mTextView.getText().toString());
-            Toast.makeText(callActivity, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(callActivity, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
 
             return false;
         });

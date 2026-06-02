@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center|top"
         android:ellipsize="end"
-        android:text="@string/add_contact_activity_onboarding_message"
+        android:text="@string/add_contact_view_onboarding_message"
         android:visibility="gone"
         app:layout_marginTopPercent="4.43%"
         app:layout_widthPercent="85.33%" />
@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/profile_fragment_create_profile" />
+            android:text="@string/profile_view_create_profile" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -62,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/account_activity_transfer_from_another_device"
+            android:text="@string/account_view_transfer_from_another_device"
             app:layout_widthPercent="89.58%"
             app:layout_heightPercent="70%" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -108,7 +108,7 @@
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="6%"
         app:layout_marginEndPercent="4.53%"
-        android:contentDescription="@string/add_contact_activity_title">
+        android:contentDescription="@string/add_contact_view_title">
 
         <org.twinlife.twinme.utils.RoundedView
             android:id="@+id/profile_fragment_add_contact_rounded_view"
@@ -202,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/profile_fragment_twincode_icon_view"
-                    android:text="@string/profile_fragment_twincode_title" />
+                    android:text="@string/profile_view_twincode_title" />
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -212,7 +212,7 @@
                 android:layout_below="@+id/profile_fragment_twincode_view"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/profile_fragment_message"
+                android:text="@string/profile_view_message"
                 app:layout_widthPercent="90.93%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

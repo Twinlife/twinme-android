@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/deleted_account_activity_delete" />
+                android:text="@string/deleted_account_view_delete" />
         </RelativeLayout>
 
         <RelativeLayout

@@ -110,8 +110,8 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_click_to_call, null));
-        onboardingConfirmView.setTitle(getString(R.string.premium_services_activity_click_to_call_title));
-        onboardingConfirmView.setMessage(getString(R.string.create_external_call_activity_onboarding_part_1_message_1));
+        onboardingConfirmView.setTitle(getString(R.string.premium_services_view_click_to_call_title));
+        onboardingConfirmView.setMessage(getString(R.string.create_external_call_view_onboarding_part_1_message_1));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
@@ -158,7 +158,7 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.template_space_activity_template_title));
+        setTitle(getString(R.string.template_space_view_template_title));
 
         applyInsets(R.id.template_external_call_activity_layout, R.id.template_external_call_activity_tool_bar, R.id.template_external_call_activity_list_view, Design.TOOLBAR_COLOR, false);
 

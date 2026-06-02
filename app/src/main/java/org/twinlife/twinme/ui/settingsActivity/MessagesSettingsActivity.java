@@ -214,7 +214,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity {
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.settings_activity_chat_category_title));
+        setTitle(getString(R.string.settings_view_chat_category_title));
         applyInsets(R.id.messages_settings_activity_layout, R.id.messages_settings_activity_tool_bar, R.id.messages_settings_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mMessagesSettingsAdapter = new MessagesSettingsAdapter(this);

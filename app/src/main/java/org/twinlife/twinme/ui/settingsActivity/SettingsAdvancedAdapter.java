@@ -153,15 +153,15 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_CONNEXION_INFO) {
-                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_status_connection_message), true);
+                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_status_connection_message), true);
             } else if (position == POSITION_PROXY_INFO) {
                 if (mProxies.isEmpty()) {
-                    informationViewHolder.onBind(mActivity.getString(R.string.proxy_activity_information), true);
+                    informationViewHolder.onBind(mActivity.getString(R.string.proxy_view_information), true);
                 } else {
-                    informationViewHolder.onBind(mActivity.getString(R.string.proxy_activity_list_information), true);
+                    informationViewHolder.onBind(mActivity.getString(R.string.proxy_view_list_information), true);
                 }
             }  else if (position == POSITION_TELECOM_INFO) {
-                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_telecom_information), true);
+                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_telecom_information), true);
             }
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
@@ -175,19 +175,19 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             if (position == POSITION_TELECOM_ENABLE) {
                 CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onTelecomSettingChangeValue(value);
-                settingsViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_telecom_enable), mActivity.isTelecomEnable(), true, onCheckedChangeListener);
+                settingsViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_telecom_enable), mActivity.isTelecomEnable(), true, onCheckedChangeListener);
             } else {
                 CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onProxySettingChangeValue(value);
-                settingsViewHolder.onBind(mActivity.getString(R.string.proxy_activity_enable), mActivity.isProxyEnable(), !mProxies.isEmpty(), onCheckedChangeListener);
+                settingsViewHolder.onBind(mActivity.getString(R.string.proxy_view_enable), mActivity.isProxyEnable(), !mProxies.isEmpty(), onCheckedChangeListener);
             }
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (position == POSITION_PROXY_ADD) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAddProxyClick());
-                settingSectionViewHolder.onBind(mActivity.getString(R.string.proxy_activity_add), false);
+                settingSectionViewHolder.onBind(mActivity.getString(R.string.proxy_view_add), false);
             } else {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onDevelopersSettingsClick());
-                settingSectionViewHolder.onBind(mActivity.getString(R.string.settings_advanced_activity_developer_settings), false);
+                settingSectionViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_developer_settings), false);
             }
         } else if (viewType == PROXY) {
             ProxyViewHolder proxyViewHolder = (ProxyViewHolder) viewHolder;
@@ -243,13 +243,13 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         if (position == SECTION_CONNEXION) {
-            return mActivity.getString(R.string.settings_advanced_activity_status_connection_title);
+            return mActivity.getString(R.string.settings_advanced_view_status_connection_title);
         } else if (position == SECTION_PROXY) {
-            return mActivity.getString(R.string.proxy_activity_title);
+            return mActivity.getString(R.string.proxy_view_title);
         } else if (position == SECTION_TELECOM) {
-            return mActivity.getString(R.string.settings_advanced_activity_telecom);
+            return mActivity.getString(R.string.settings_advanced_view_telecom);
         } else if (position == SECTION_DEBUG) {
-            return mActivity.getString(R.string.settings_advanced_activity_debug);
+            return mActivity.getString(R.string.settings_advanced_view_debug);
         }
 
         return "";

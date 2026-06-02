@@ -80,7 +80,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             app:layout_aspectRatio="100%"
-            android:contentDescription="@string/audio_call_activity_hangup">
+            android:contentDescription="@string/audio_call_view_hangup">
 
             <org.twinlife.twinme.utils.RoundedView
                 android:id="@+id/call_activity_hold_hangup_rounded_view"

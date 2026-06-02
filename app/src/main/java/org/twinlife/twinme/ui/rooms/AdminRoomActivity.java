@@ -34,12 +34,14 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.RoomConfig;
 import org.twinlife.twinme.services.EditRoomService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
@@ -551,7 +553,7 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
         layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.ITEM_VIEW_HEIGHT;
 
-        roomCodeView.setOnClickListener(view -> onRoomCodeClick());
+        roomCodeView.setOnClickListener(view -> onInvitationCodeClick());
 
         TextView roomCodeTextView = findViewById(R.id.admin_room_activity_code_text_view);
         Design.updateTextFont(roomCodeTextView, Design.FONT_REGULAR34);
@@ -746,9 +748,13 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
             Log.d(LOG_TAG, "onInviteClick");
         }
 
-        if (mRoom.getPublicPeerTwincodeOutboundId() != null) {
+        final TwincodeURI invitationLink = mRoomConfig != null ? mRoomConfig.getInvitationURI() : null;
+        if (invitationLink != null || mRoom.getPublicPeerTwincodeOutboundId() != null) {
             Intent intent = new Intent(this, AddParticipantsRoomActivity.class);
             intent.putExtra(Intents.INTENT_CONTACT_ID, mRoomId.toString());
+            if (invitationLink != null) {
+                intent.putExtra(Intents.INTENT_INVITATION_LINK, invitationLink.uri);
+            }
             startActivity(intent);
         }
     }
@@ -759,10 +765,14 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
             Log.d(LOG_TAG, "onInvitationCodeClick");
         }
 
-        if (mRoom.getPublicPeerTwincodeOutboundId() != null) {
+        final TwincodeURI invitationLink = mRoomConfig != null ? mRoomConfig.getInvitationURI() : null;
+        if (invitationLink != null || mRoom.getPublicPeerTwincodeOutboundId() != null) {
             Intent intent = new Intent(this, InvitationRoomActivity.class);
             intent.putExtra(Intents.INTENT_CONTACT_ID, mRoom.getId().toString());
             intent.putExtra(Intents.INTENT_ROOM_NAME, mRoom.getName());
+            if (invitationLink != null) {
+                intent.putExtra(Intents.INTENT_INVITATION_LINK, invitationLink.uri);
+            }
             startActivity(intent);
         }
     }
@@ -816,16 +826,6 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-    }
-
-    private void onRoomCodeClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onRoomCodeClick");
-        }
-
-        if (mRoom != null) {
-            startActivity(SettingsRoomActivity.class, Intents.INTENT_CONTACT_ID, mRoom.getId());
-        }
     }
 
     private void openMenuPhoto() {

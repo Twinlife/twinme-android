@@ -105,13 +105,13 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             String title;
             if (position == SECTION_NOTIFICATION_SOUND) {
-                title = mListActivity.getString(R.string.settings_activity_application_notifications);
+                title = mListActivity.getString(R.string.settings_view_application_notifications);
             } else if (position == SECTION_MESSAGES) {
-                title = mListActivity.getString(R.string.settings_activity_chat_category_title);
+                title = mListActivity.getString(R.string.settings_view_chat_category_title);
             } else if (position == SECTION_AUDIO_CALL) {
-                title = mListActivity.getString(R.string.settings_activity_audio_call_category_title);
+                title = mListActivity.getString(R.string.settings_view_audio_call_category_title);
             } else {
-                title = mListActivity.getString(R.string.settings_activity_video_call_category_title);
+                title = mListActivity.getString(R.string.settings_view_video_call_category_title);
             }
             sectionTitleViewHolder.onBind(title, false);
         } else if (viewType == SETTING) {
@@ -120,11 +120,11 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             UISetting<?> uiSetting = null;
 
             if (position == SECTION_NOTIFICATION_SOUND + 1) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.SYSTEM, mListActivity.getString(R.string.settings_activity_system_settings_title));
+                uiSetting = new UISetting<>(UISetting.TypeSetting.SYSTEM, mListActivity.getString(R.string.settings_view_system_settings_title));
             } else if (position == SECTION_MESSAGES + 1) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.SYSTEM_MESSAGE, mListActivity.getString(R.string.settings_activity_system_settings_title));
+                uiSetting = new UISetting<>(UISetting.TypeSetting.SYSTEM_MESSAGE, mListActivity.getString(R.string.settings_view_system_settings_title));
             } else if (position == SECTION_NOTIFICATION_SOUND + 2) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.RESET, mListActivity.getString(R.string.settings_activity_reset_preferences_button_title));
+                uiSetting = new UISetting<>(UISetting.TypeSetting.RESET, mListActivity.getString(R.string.settings_view_reset_preferences_button_title));
             }
 
             if (uiSetting != null) {
@@ -135,11 +135,11 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             UISetting<String> uiSetting = null;
             if (position == SECTION_MESSAGES + 3) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.RINGTONE, mListActivity.getString(R.string.settings_activity_chat_ringtone_title), Settings.notificatonRingtone);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.RINGTONE, mListActivity.getString(R.string.settings_view_chat_ringtone_title), Settings.notificatonRingtone);
             } else if (position == SECTION_AUDIO_CALL + 3) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.RINGTONE, mListActivity.getString(R.string.settings_activity_audio_call_notification_ringtone_title), Settings.audioCallRingtone);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.RINGTONE, mListActivity.getString(R.string.settings_view_audio_call_notification_ringtone_title), Settings.audioCallRingtone);
             } else if (position == SECTION_VIDEO_CALL + 3) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.RINGTONE, mListActivity.getString(R.string.settings_activity_video_call_notification_ringtone_title), Settings.videoCallRingtone);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.RINGTONE, mListActivity.getString(R.string.settings_view_video_call_notification_ringtone_title), Settings.videoCallRingtone);
             }
 
             if (uiSetting != null) {
@@ -151,17 +151,17 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             UISetting<Boolean> uiSetting;
 
             if (position == SECTION_MESSAGES + 1) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_chat_vibration_title), Settings.notificationVibration);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_chat_vibration_title), Settings.notificationVibration);
             } else if (position == SECTION_MESSAGES + 2) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_chat_title), Settings.notificationRingEnabled);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_chat_title), Settings.notificationRingEnabled);
             } else if (position == SECTION_AUDIO_CALL + 1) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_audio_call_vibration_title), Settings.audioVibration);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_audio_call_vibration_title), Settings.audioVibration);
             } else if (position == SECTION_AUDIO_CALL + 2) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_audio_call_notification_title), Settings.audioRingEnabled);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_audio_call_notification_title), Settings.audioRingEnabled);
             } else if (position == SECTION_VIDEO_CALL + 1) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_video_call_vibration_title), Settings.videoVibration);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_video_call_vibration_title), Settings.videoVibration);
             } else if (position == SECTION_VIDEO_CALL + 2) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_video_call_notification_title), Settings.videoRingEnabled);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_video_call_notification_title), Settings.videoRingEnabled);
             } else {
                 uiSetting = null;
             }
@@ -236,15 +236,15 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 defaultSound = ringtoneUri != null && ringtoneUri.equals(android.provider.Settings.System.DEFAULT_RINGTONE_URI);
             }
         } else {
-            return mListActivity.getString(R.string.settings_activity_default_sound);
+            return mListActivity.getString(R.string.settings_view_default_sound);
         }
 
         if (!enable) {
-            return mListActivity.getString(R.string.settings_activity_silent_sound);
+            return mListActivity.getString(R.string.settings_view_silent_sound);
         }
 
         if (defaultSound || value == null || value.isEmpty()) {
-            return mListActivity.getString(R.string.settings_activity_default_sound);
+            return mListActivity.getString(R.string.settings_view_default_sound);
         }
 
         final Ringtone ringtone = RingtoneManager.getRingtone(mListActivity, ringtoneUri);
@@ -255,6 +255,6 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             }
         }
 
-        return mListActivity.getString(R.string.settings_activity_default_sound);
+        return mListActivity.getString(R.string.settings_view_default_sound);
     }
 }

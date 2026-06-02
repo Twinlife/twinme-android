@@ -31,7 +31,7 @@
             android:layout_below="@+id/backup_content_confirm_view_slide_mark_view"
             android:gravity="center"
             android:lines="1"
-            android:text="@string/backup_activity_content"
+            android:text="@string/backup_view_content"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/backup_content_confirm_view_title_view"
             android:gravity="center"
-            android:text="@string/backup_activity_content_info"
+            android:text="@string/backup_view_content_info"
             app:layout_widthPercent="94%" />
 
         <androidx.recyclerview.widget.RecyclerView

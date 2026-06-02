@@ -116,8 +116,12 @@ public class UIConversation {
                     lastMessage = context.getResources().getString(R.string.notification_center_file_message_received);
                     break;
 
+                case POLL_DESCRIPTOR:
+                    lastMessage = context.getResources().getString(R.string.notification_center_poll_message_received);
+                    break;
+
                 case INVITATION_DESCRIPTOR:
-                    lastMessage = context.getResources().getString(R.string.notification_center_invitation_received_group);
+                    lastMessage = context.getResources().getString(R.string.notification_center_invitation_group_received);
                     break;
 
                 case TWINCODE_DESCRIPTOR:
@@ -132,11 +136,11 @@ public class UIConversation {
                     CallDescriptor callDescriptor = (CallDescriptor) mLastDescriptor;
 
                     if (!callDescriptor.isAccepted() && callDescriptor.isIncoming() && callDescriptor.getTerminateReason() != null) {
-                        lastMessage = context.getResources().getString(R.string.calls_fragment_missed_call);
+                        lastMessage = context.getResources().getString(R.string.calls_view_missed_call);
                     } else if (callDescriptor.isIncoming()) {
-                        lastMessage = context.getResources().getString(R.string.calls_fragment_incoming_call);
+                        lastMessage = context.getResources().getString(R.string.calls_view_incoming_call);
                     } else {
-                        lastMessage = context.getResources().getString(R.string.calls_fragment_outgoing_call);
+                        lastMessage = context.getResources().getString(R.string.calls_view_outgoing_call);
                     }
                     break;
 

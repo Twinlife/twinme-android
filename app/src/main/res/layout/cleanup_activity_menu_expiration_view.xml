@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/cleanup_activity_expiration"
+            android:text="@string/cleanup_view_expiration"
             android:layout_below="@+id/menu_expiration_view_slide_mark_view"
             app:layout_widthPercent="94%" />
 

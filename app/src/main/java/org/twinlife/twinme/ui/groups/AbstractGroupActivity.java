@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2020 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -50,6 +50,8 @@ public class AbstractGroupActivity extends AbstractTwinmeActivity implements Gro
     private static final boolean DEBUG = false;
 
     protected static final int DESIGN_HINT_COLOR = Color.parseColor("#bdbdbd");
+    @Nullable
+    protected Group mGroup;
 
     //
     // Override TwinmeActivityImpl methods
@@ -145,7 +147,7 @@ public class AbstractGroupActivity extends AbstractTwinmeActivity implements Gro
             Log.d(LOG_TAG, "onErrorLimitReached");
         }
 
-        error(String.format(getString(R.string.application_group_limit_reached), ConversationService.MAX_GROUP_MEMBERS), this::hideProgressIndicator);
+        error(String.format(getString(R.string.application_group_limit_reached), getMaxMemberCount()), this::hideProgressIndicator);
     }
 
     @Override
@@ -155,5 +157,10 @@ public class AbstractGroupActivity extends AbstractTwinmeActivity implements Gro
         }
 
         onError(null, getString(R.string.application_contact_not_found), this::finish);
+    }
+
+    protected long getMaxMemberCount() {
+
+        return mGroup == null ? ConversationService.MAX_GROUP_MEMBERS : mGroup.getMaxMemberCount();
     }
 }

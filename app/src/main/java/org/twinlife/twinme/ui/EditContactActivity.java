@@ -443,7 +443,7 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setAvatar(mContactAvatar, false);
 
-        String message = getString(R.string.edit_contact_activity_message) + "\n\n"  + getString(R.string.edit_contact_activity_confirm_message);
+        String message = getString(R.string.edit_contact_view_message) + "\n\n"  + getString(R.string.edit_contact_view_confirm_message);
         deleteConfirmView.setMessage(message);
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

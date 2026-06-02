@@ -404,7 +404,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
 
             mProgressContainerView.setVisibility(View.GONE);
 
-            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_activity_update_title) : getContext().getString(R.string.application_ok));
+            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_view_update_title) : getContext().getString(R.string.application_ok));
 
             layoutParams.height = getMessageHeight(uiWhatsNew.getMessage(), textWidth);
         } else {
@@ -416,7 +416,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
             }
 
             mProgressContainerView.setVisibility(View.VISIBLE);
-            mConfirmTextView.setText(getContext().getString(R.string.welcome_activity_next));
+            mConfirmTextView.setText(getContext().getString(R.string.welcome_view_next));
 
             int customBarMargin = (int) (DESIGN_CUSTOM_PROGRESS_MARGIN * Design.WIDTH_RATIO);
             int customBarProgressWidth = (textWidth - ((mUIWhatsNew.size() - 1) * customBarMargin)) / mUIWhatsNew.size();
@@ -513,7 +513,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
         }
 
         if (mCurrentWhatsNew + 1 == mUIWhatsNew.size()) {
-            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_activity_update_title) : getContext().getString(R.string.application_ok));
+            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_view_update_title) : getContext().getString(R.string.application_ok));
             mShowAllWhatsNew = true;
         }
     }

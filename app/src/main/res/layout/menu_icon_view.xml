@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:layout_below="@+id/menu_icon_view_view_slide_mark_view"
-            android:text="@string/account_activity_migration_title"
+            android:text="@string/account_view_migration_title"
             app:layout_widthPercent="94%" />
 
         <androidx.recyclerview.widget.RecyclerView

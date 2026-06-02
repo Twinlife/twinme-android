@@ -114,7 +114,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.privacy_activity_title));
+        setTitle(getString(R.string.privacy_view_title));
         applyInsets(R.id.privacy_activity_layout, R.id.privacy_activity_tool_bar,R.id.privacy_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         PrivacyAdapter privacyAdapter = new PrivacyAdapter(this);

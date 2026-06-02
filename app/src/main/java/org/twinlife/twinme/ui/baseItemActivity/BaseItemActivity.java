@@ -15,6 +15,7 @@ import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
 import org.twinlife.twinlife.ConversationService.FileDescriptor;
@@ -30,6 +31,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.utils.async.Loader;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public abstract class BaseItemActivity extends AbstractTwinmeActivity {
@@ -59,6 +61,10 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
     public abstract
     void getContactAvatar(@Nullable UUID peerTwincodeOutboundId, TwinmeContext.Consumer<Bitmap> avatarConsumer);
 
+    public abstract void getPollAvatar(@Nullable UUID twincodeOutboundId, TwinmeContext.Consumer<Bitmap> avatarConsumer);
+
+    public abstract boolean isUserVote(@Nullable UUID twincodeOutboundId);
+
     public abstract @Nullable
     Contact getContact();
 
@@ -75,6 +81,8 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
 
     public abstract boolean isSelectItemMode();
 
+    public abstract boolean displayPeerItemAvatar();
+
     public abstract @Nullable
     List<Originator> getTypingOriginators();
 
@@ -89,6 +97,8 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
 
     public abstract void onReplyClick(@NonNull DescriptorId descriptorId);
 
+    public abstract void onInfoErrorClick(@NonNull Item item);
+
     public abstract boolean isMenuOpen();
 
     public abstract boolean isReplyViewOpen();
@@ -98,6 +108,10 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
     public abstract void onItemClick(Item item);
 
     public abstract void onAnnotationClick(@Nullable DescriptorId descriptorId);
+
+    public abstract void onSelectPollChoiceClick(@NonNull ConversationService.PollDescriptor pollDescriptor, ConversationService.PollDescriptor.Choice choice, @NonNull Map<UUID, List<ConversationService.PollDescriptor.Choice>> votes);
+
+    public abstract void onPollResultClick(@NonNull ConversationService.PollDescriptor pollDescriptor);
 
     public abstract void audioCall();
 

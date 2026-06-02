@@ -55,7 +55,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.UUID;
 
 public class EditProfileActivity extends AbstractEditActivity implements EditIdentityService.Observer {
@@ -636,7 +635,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             if (mName.length() > MAX_NAME_LENGTH) {
                 mName = mName.substring(0, MAX_NAME_LENGTH);
             }
-            mTitleView.setText(getString(R.string.edit_profile_activity_editing_profile));
+            mTitleView.setText(getString(R.string.edit_profile_view_editing_profile));
 
             if (mProfile.getDescription() != null) {
                 mDescription = mProfile.getDescription();
@@ -696,15 +695,15 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         String value;
         if (getTwinmeApplication().updateProfileMode() == Profile.UpdateMode.NONE.ordinal()) {
-            value = getString(R.string.edit_profile_activity_propagating_no_contact);
+            value = getString(R.string.edit_profile_view_propagating_no_contact);
         } else if (getTwinmeApplication().updateProfileMode() == Profile.UpdateMode.DEFAULT.ordinal()) {
-            value = getString(R.string.edit_profile_activity_propagating_except_contacts);
+            value = getString(R.string.edit_profile_view_propagating_except_contacts);
         } else {
-            value = getString(R.string.edit_profile_activity_propagating_all_contacts);
+            value = getString(R.string.edit_profile_view_propagating_all_contacts);
         }
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.edit_profile_activity_propagating_profile));
+        spannableStringBuilder.append(getString(R.string.edit_profile_view_propagating_profile));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         spannableStringBuilder.append("\n");

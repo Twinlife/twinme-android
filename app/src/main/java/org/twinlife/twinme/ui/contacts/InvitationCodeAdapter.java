@@ -118,11 +118,11 @@ public class InvitationCodeAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         if (viewType == TITLE) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
-            sectionCallViewHolder.onBind(mInvitationCodeActivity.getString(R.string.invitation_code_activity_history), false, false);
+            sectionCallViewHolder.onBind(mInvitationCodeActivity.getString(R.string.invitation_code_view_history), false, false);
         } else if (viewType == ADD_INVITATION_CODE) {
             AddInvitationCodeViewHolder addInvitationCodeViewHolder = (AddInvitationCodeViewHolder) viewHolder;
             addInvitationCodeViewHolder.itemView.setOnClickListener(view -> mOnInvitationCodeListener.onAddInvitationCodeClick());
-            addInvitationCodeViewHolder.onBind(mInvitationCodeActivity.getString(R.string.invitation_code_activity_create_code), mInvitationCodeActivity.getString(R.string.invitation_code_activity_create_code_subtitle));
+            addInvitationCodeViewHolder.onBind(mInvitationCodeActivity.getString(R.string.invitation_code_view_create_code), mInvitationCodeActivity.getString(R.string.invitation_code_view_create_code_subtitle));
         } else {
             InvitationCodeViewHolder invitationCodeViewHolder = (InvitationCodeViewHolder) viewHolder;
             boolean hideSeparator = position == mUIInvitationCode.size() + SECTION_INVITATION_CODE;

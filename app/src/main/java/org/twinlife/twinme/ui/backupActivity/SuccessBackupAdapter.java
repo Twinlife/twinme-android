@@ -100,23 +100,23 @@ public class SuccessBackupAdapter extends RecyclerView.Adapter<RecyclerView.View
                 int saveActionIcon = R.drawable.save_item;
                 Runnable saveRunnable = mSuccessBackupActivity::onSaveFileClick;
 
-                String shareActionTitle = mSuccessBackupActivity.getString(R.string.share_activity_title);
+                String shareActionTitle = mSuccessBackupActivity.getString(R.string.share_view_title);
                 int shareActionIcon = R.drawable.share_item;
                 Runnable shareRunnable = mSuccessBackupActivity::onShareClick;
 
                 backupActionViewHolder.onBind(saveActionIcon, shareActionIcon, saveActionTitle, shareActionTitle, saveRunnable, shareRunnable);
             } else {
-                String copyActionTitle = mSuccessBackupActivity.getString(R.string.conversation_activity_menu_item_view_copy_title);
+                String copyActionTitle = mSuccessBackupActivity.getString(R.string.conversation_view_menu_item_view_copy_title);
                 int copyActionIcon = R.drawable.copy_item;
                 Runnable copyRunnable = mSuccessBackupActivity::onCopyClick;
                 backupActionViewHolder.onBind(copyActionIcon, -1, copyActionTitle, null, copyRunnable, null);
             }
         } else if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            informationViewHolder.onBind(mSuccessBackupActivity.getString(R.string.backup_activity_security_info), true);
+            informationViewHolder.onBind(mSuccessBackupActivity.getString(R.string.backup_view_security_info), true);
         } else if (viewType == SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mSuccessBackupActivity.getString(R.string.backup_activity_security), true);
+            sectionTitleViewHolder.onBind(mSuccessBackupActivity.getString(R.string.backup_view_security), true);
         } else if (viewType == WORDS) {
             BackupWordsViewHolder backupWordsViewHolder = (BackupWordsViewHolder) viewHolder;
             backupWordsViewHolder.onBind(mBackupWords);

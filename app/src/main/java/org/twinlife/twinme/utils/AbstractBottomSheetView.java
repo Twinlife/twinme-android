@@ -410,37 +410,43 @@ public class AbstractBottomSheetView extends PercentRelativeLayout {
             marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
         }
 
-        Design.updateTextFont(mMessageView, Design.FONT_MEDIUM40);
-        mMessageView.setTextColor(Design.FONT_COLOR_GREY);
+        if (mMessageView != null) {
+            Design.updateTextFont(mMessageView, Design.FONT_MEDIUM40);
+            mMessageView.setTextColor(Design.FONT_COLOR_GREY);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
+            marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+        }
 
-        mConfirmView.setOnClickListener(v -> onConfirmClick());
+        if (mConfirmView != null) {
+            mConfirmView.setOnClickListener(v -> onConfirmClick());
 
-        radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
-        outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+            radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+            outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
-        ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        saveViewBackground.getPaint().setColor(Design.DELETE_COLOR_RED);
-        mConfirmView.setBackground(saveViewBackground);
+            ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+            saveViewBackground.getPaint().setColor(Design.DELETE_COLOR_RED);
+            mConfirmView.setBackground(saveViewBackground);
 
-        layoutParams = mConfirmView.getLayoutParams();
-        layoutParams.width = Design.BUTTON_WIDTH;
+            layoutParams = mConfirmView.getLayoutParams();
+            layoutParams.width = Design.BUTTON_WIDTH;
 
-        mConfirmView.setMinimumHeight(Design.BUTTON_HEIGHT);
+            mConfirmView.setMinimumHeight(Design.BUTTON_HEIGHT);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfirmView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfirmView.getLayoutParams();
+            marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
+        }
 
-        Design.updateTextFont(mConfirmTextView, Design.FONT_BOLD36);
-        mConfirmTextView.setTextColor(Color.WHITE);
+        if (mConfirmTextView != null) {
+            Design.updateTextFont(mConfirmTextView, Design.FONT_BOLD36);
+            mConfirmTextView.setTextColor(Color.WHITE);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfirmTextView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.leftMargin = (int) (DESIGN_CONFIRM_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_CONFIRM_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfirmTextView.getLayoutParams();
+            marginLayoutParams.topMargin = (int) (DESIGN_CONFIRM_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+            marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+            marginLayoutParams.leftMargin = (int) (DESIGN_CONFIRM_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+            marginLayoutParams.rightMargin = (int) (DESIGN_CONFIRM_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+        }
 
         if (mCancelView != null) {
             mCancelView.setOnClickListener(v -> onCancelClick());

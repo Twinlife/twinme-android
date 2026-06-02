@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2025 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.Permission;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
@@ -27,6 +28,7 @@ import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,7 +41,6 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
     public static final int ALLOW_INVITE_MEMBER_AS_CONTACT_SWITCH = 2;
 
     private UUID mGroupId;
-    private Group mGroup;
 
     private SettingsGroupAdapter mSettingsGroupAdapter;
     private GroupService mGroupService;
@@ -101,22 +102,33 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
         super.onPause();
 
         if (mGroup != null) {
-            long permissions = ~0;
-            permissions &= ~(1L << ConversationService.Permission.UPDATE_MEMBER.ordinal());
-            permissions &= ~(1L << ConversationService.Permission.REMOVE_MEMBER.ordinal());
-            permissions &= ~(1L << ConversationService.Permission.RESET_CONVERSATION.ordinal());
-            if (!mAllowInvitation) {
-                permissions &= ~(1L << ConversationService.Permission.INVITE_MEMBER.ordinal());
+            List<Permission> permissions = new ArrayList<>();
+            permissions.add(Permission.RECEIVE_MESSAGE);
+            // long permissions = ~0;
+            if (mAllowInvitation) {
+                permissions.add(Permission.MANAGE_MEMBER);
             }
-            if (!mAllowPostMessage) {
-                permissions &= ~(1L << ConversationService.Permission.SEND_MESSAGE.ordinal());
-                permissions &= ~(1L << ConversationService.Permission.SEND_AUDIO.ordinal());
-                permissions &= ~(1L << ConversationService.Permission.SEND_VIDEO.ordinal());
-                permissions &= ~(1L << ConversationService.Permission.SEND_IMAGE.ordinal());
-                permissions &= ~(1L << ConversationService.Permission.SEND_FILE.ordinal());
+            //permissions &= ~(1L << Permission.UPDATE_MEMBER.ordinal());
+            //permissions &= ~(1L << Permission.REMOVE_MEMBER.ordinal());
+            //permissions &= ~(1L << Permission.RESET_CONVERSATION.ordinal());
+            // if (!mAllowInvitation) {
+            //    permissions &= ~(1L << Permission.INVITE_MEMBER.ordinal());
+            //}
+            //if (!mAllowPostMessage) {
+            //    permissions &= ~(1L << ConversationService.Permission.SEND_MESSAGE.ordinal());
+            //    permissions &= ~(1L << ConversationService.Permission.SEND_AUDIO.ordinal());
+            //    permissions &= ~(1L << ConversationService.Permission.SEND_VIDEO.ordinal());
+            //    permissions &= ~(1L << ConversationService.Permission.SEND_IMAGE.ordinal());
+            //    permissions &= ~(1L << ConversationService.Permission.SEND_FILE.ordinal());
+            //}
+            if (mAllowPostMessage) {
+                permissions.add(Permission.ALLOW_POST);
             }
-            if (!mAllowInviteMemberAsContact) {
-                permissions &= ~(1L << ConversationService.Permission.SEND_TWINCODE.ordinal());
+            //if (!mAllowInviteMemberAsContact) {
+            //    permissions &= ~(1L << ConversationService.Permission.SEND_TWINCODE.ordinal());
+            //}
+            if (mAllowInviteMemberAsContact) {
+                permissions.add(Permission.SEND_TWINCODE);
             }
 
             mGroupService.updateGroupPermissions(permissions);
@@ -200,10 +212,10 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
 
         mGroup = group;
 
-        long joinPermissions = conversation.getJoinPermissions();
-        mAllowInvitation = (joinPermissions & (1L << ConversationService.Permission.INVITE_MEMBER.ordinal())) != 0;
-        mAllowInviteMemberAsContact = (joinPermissions & (1L << ConversationService.Permission.SEND_TWINCODE.ordinal())) != 0;
-        mAllowPostMessage = (joinPermissions & (1L << ConversationService.Permission.SEND_MESSAGE.ordinal())) != 0;
+        final Permission joinPermissions = conversation.getJoinPermissions();
+        mAllowInvitation = joinPermissions.hasPermission(Permission.INVITE_MEMBER);
+        mAllowInviteMemberAsContact = joinPermissions.hasPermission(Permission.SEND_TWINCODE);
+        mAllowPostMessage = joinPermissions.hasPermission(Permission.ALLOW_POST);
 
         mSettingsGroupAdapter.notifyDataSetChanged();
     }
@@ -229,7 +241,7 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.settings_activity_authorization_title));
+        setTitle(getString(R.string.settings_view_authorization_title));
         applyInsets(R.id.settings_group_activity_layout, R.id.settings_group_activity_tool_bar, R.id.settings_group_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mSettingsGroupAdapter = new SettingsGroupAdapter(this);

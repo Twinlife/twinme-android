@@ -198,7 +198,7 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
         if (version.first.major >= supportedVersion.major) {
             mAccountMigrationScannerService.createAccountMigration();
         } else {
-            mInformationTextView.setText(getString(R.string.local_account_migration_activity_message_older_version));
+            mInformationTextView.setText(getString(R.string.local_account_migration_view_message_older_version));
         }
     }
 
@@ -280,7 +280,7 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
         showToolBar(true);
         showBackButton(false);
 
-        setTitle(getString(R.string.account_activity_migration_title));
+        setTitle(getString(R.string.account_view_migration_title));
 
         applyInsets(R.id.local_account_migration_activity_layout, R.id.local_account_migration_activity_tool_bar, R.id.account_migration_activity_container_view, Design.TOOLBAR_COLOR, false);
 

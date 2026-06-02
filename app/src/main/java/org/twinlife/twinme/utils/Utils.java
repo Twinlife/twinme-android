@@ -26,7 +26,7 @@ public class Utils extends CommonUtils {
         long oneMonth = oneDay * 30;
 
         if (timeout == 0) {
-            return context.getResources().getString(R.string.privacy_activity_lock_screen_timeout_instant);
+            return context.getResources().getString(R.string.privacy_view_lock_screen_timeout_instant);
         } else if (timeout < oneMinute) {
             return String.format(context.getResources().getString(R.string.application_timeout_seconds), timeout);
         } else if (timeout == oneMinute) {

@@ -230,7 +230,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity {
         menuSelectColorView.setAppearanceActivity(this);
         viewGroup.addView(menuSelectColorView);
 
-        menuSelectColorView.openMenu(getString(R.string.space_appearance_activity_theme), Design.getMainStyleString(), Design.DEFAULT_COLOR);
+        menuSelectColorView.openMenu(getString(R.string.space_appearance_view_theme), Design.getMainStyleString(), Design.DEFAULT_COLOR);
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

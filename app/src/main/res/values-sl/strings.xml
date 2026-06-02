@@ -1,0 +1,1298 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Sprejmi</string>
+    <string name="application_account_deleted">Vaš račun je bil izbrisan, zdaj morate odstraniti aplikacijo.</string>
+    <string name="application_account_restored_error">Račun te naprave je bil obnovljen na drugo napravo. Aplikacijo morate odstraniti.</string>
+    <string name="application_add_contact_no_profile">Pred povabilom stika morate dokončati profil, ki vas predstavlja. Nadaljujete?</string>
+    <string name="application_all">Vse</string>
+    <string name="application_appearance">Videz</string>
+    <string name="application_are_you_sure">Ali ste prepričani?</string>
+    <string name="application_authorization_camera">V sistemskih nastavitvah dovolite aplikaciji dostop do kamere.</string>
+    <string name="application_authorization_go_settings">Pojdi v sistemske nastavitve</string>
+    <string name="application_authorization_microphone">V sistemskih nastavitvah dovolite aplikaciji dostop do mikrofona.</string>
+    <string name="application_authorization_microphone_camera">V sistemskih nastavitvah dovolite aplikaciji dostop do mikrofona in kamere.</string>
+    <string name="application_authorization_title">Manjkajoča dovoljenja</string>
+    <string name="application_back">Nazaj</string>
+    <string name="application_backup_restore">Obnovi varnostno kopijo</string>
+    <string name="application_backup_verify">Preveri varnostno kopijo</string>
+    <string name="application_camera">Kamera</string>
+    <string name="application_cancel">Prekliči</string>
+    <string name="application_canceled_operation">Operacija preklicana</string>
+    <string name="application_checking_connection">Preverjanje povezave</string>
+    <string name="application_color">Barva</string>
+    <string name="application_configuration">Konfiguracija</string>
+    <string name="application_confirm">Potrdi</string>
+    <string name="application_confirm_deletion">Potrdite izbris</string>
+    <string name="application_connected">Varna povezava omogočena.</string>
+    <string name="application_connection_status_no_network">Ni dostopa do interneta.</string>
+    <string name="application_connection_status_no_network_message">Preverite svojo omrežno povezavo.</string>
+    <string name="application_connection_status_no_services">Ni dostopa do storitve.</string>
+    <string name="application_connection_status_no_services_message">Poskusite uporabiti VPN.</string>
+    <string name="application_contact_not_found">Ta stik je izbrisal ta odnos z vami in ni več dosegljiv.</string>
+    <string name="application_continue_without_premium_services">Nadaljuj brez premium storitev</string>
+    <string name="application_create_group_no_profile">Pred ustvarjanjem skupine morate dokončati profil, ki vas predstavlja v tej skupini. Nadaljujete?</string>
+    <string name="application_database_error">Napaka podatkovne baze</string>
+    <string name="application_decline">Zavrni</string>
+    <string name="application_default">Privzeto</string>
+    <string name="application_delete">Izbriši</string>
+    <string name="application_delete_message">Ali ste prepričani, da želite to izbrisati?</string>
+    <string name="application_denied_permissions">Zahtevana dovoljenja niso odobrena</string>
+    <string name="application_description">Opis</string>
+    <string name="application_display_all">Prikaži vse</string>
+    <string name="application_do_not_display">Ne prikazuj več</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">m</string>
+    <string name="application_duration_second">s</string>
+    <string name="application_edit">Uredi</string>
+    <string name="application_error_code">Koda napake: %1$s</string>
+    <string name="application_error_file_not_found">Datoteka ni bila najdena.</string>
+    <string name="application_error_media_not_supported">Ta format slike/videa aplikacija ne podpira.</string>
+    <string name="application_error_media_unload">Medija ni mogoče naložiti.</string>
+    <string name="application_error_no_storage_space">Ni dovolj prostora za shranjevanje</string>
+    <string name="application_group_limit_reached">Največje število (%1$d) članov skupine je preseženo.</string>
+    <string name="application_group_not_found">Odstranjeni ste bili iz skupine</string>
+    <string name="application_items_selected">Izbranih elementov: %1$d</string>
+    <string name="application_later">Kasneje</string>
+    <string name="application_low_usage_message">Opozorilo: če aplikacije ne uporabljate dovolj pogosto, je operacijski sistem morda ne bo prebudil za izmenjavo sporočil!</string>
+    <string name="application_migration_no_storage_space">Na vaši napravi ni dovolj prostora za dokončanje migracije. Zaprite aplikacijo, sprostite nekaj prostora in jo znova zaženite, da dokončate posodobitev.</string>
+    <string name="application_migration_no_storage_space_message">Ena od obeh naprav nima dovolj prostora za shranjevanje. Pred ponovnim zagonom migracije sprostite prostor na tej napravi.</string>
+    <string name="application_more_info">Več informacij…</string>
+    <string name="application_name_hint">Ime</string>
+    <string name="application_network_connecting">Povezovanje s storitvijo twinme</string>
+    <string name="application_network_connectivity">Omrežna povezljivost je vzpostavljena</string>
+    <string name="application_network_status_airplane_message">Letalski način je vklopljen.</string>
+    <string name="application_network_status_airplane_resolution">Onemogočite letalski način in se povežite z omrežjem Wi-Fi ali mobilnim omrežjem.</string>
+    <string name="application_network_status_connected_no_internet">Ni omrežnega dostopa do storitve twinme.</string>
+    <string name="application_network_status_connected_resolution">Poskusite se povezati z drugim omrežjem.</string>
+    <string name="application_network_status_connection_timeout">Internetne povezave ni mogoče vzpostaviti.</string>
+    <string name="application_network_status_no_internet">Ni internetne povezave.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi je onemogočen.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi je onemogočen in ni mobilne internetne povezave.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Vklopite Wi-Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Prosimo, vklopite Wi-Fi ali aktivirajte mobilno internetno povezavo.</string>
+    <string name="application_new_feature">Novo!</string>
+    <string name="application_no">Ne</string>
+    <string name="application_no_network_connectivity">Ni omrežne povezljivosti</string>
+    <string name="application_no_service">Ni storitve</string>
+    <string name="application_not_authorized_operation">Dejanje ni dovoljeno</string>
+    <string name="application_not_authorized_operation_by_your_contact">Dejanja vaš stik ne dovoljuje.</string>
+    <string name="application_not_connected">Vzpostavljanje varne povezave …</string>
+    <string name="application_not_signed_in">Ni povezave s storitvijo twinme</string>
+    <string name="application_now">Zdaj</string>
+    <string name="application_ok">V redu</string>
+    <string name="application_one_item_selected">Izbran 1 element</string>
+    <string name="application_operation_failure">Dejanje ni uspelo</string>
+    <string name="application_operation_irreversible">Tega dejanja ni mogoče razveljaviti</string>
+    <string name="application_permission_camera">Za posnetek nove fotografije ali videa je potrebno dovoljenje za dostop do kamere.</string>
+    <string name="application_permission_scan_code">Za skeniranje kode QR je potrebno dovoljenje za dostop do kamere.</string>
+    <string name="application_photo_gallery">Foto albumi</string>
+    <string name="application_processing_please_wait">Obdelava … Prosimo, počakajte.</string>
+    <string name="application_profile">Profil</string>
+    <string name="application_profile_avatar_not_defined">Vnesti morate sliko, ki vas predstavlja stikom, ki jih povabite s tem profilom.</string>
+    <string name="application_profile_name_not_defined">Določiti morate ime, ki vas predstavlja stikom, ki jih povabite s tem profilom.</string>
+    <string name="application_remove">Odstrani</string>
+    <string name="application_save">Shrani</string>
+    <string name="application_search_hint">Išči</string>
+    <string name="application_select">Izberi</string>
+    <string name="application_select_application">Izberi aplikacijo</string>
+    <string name="application_select_more">Izberi več …</string>
+    <string name="application_server_timeout">Časovna omejitev strežnika</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Tema</string>
+    <string name="application_timeout">Časovna omejitev</string>
+    <string name="application_timeout_day">1 dan</string>
+    <string name="application_timeout_hour">1 ura</string>
+    <string name="application_timeout_hours">%1$d ur</string>
+    <string name="application_timeout_minute">1 minuta</string>
+    <string name="application_timeout_minutes">%1$d minut</string>
+    <string name="application_timeout_month">1 mesec</string>
+    <string name="application_timeout_seconds">%1$d sekund</string>
+    <string name="application_timeout_week">1 teden</string>
+    <string name="application_unknown_name">Neznano</string>
+    <string name="application_until">Do %1$s</string>
+    <string name="application_upgrade">Nadgrajevanje twinme</string>
+    <string name="application_webrtc_failure">Napaka WebRTC</string>
+    <string name="application_wrong_configuration">Napačna konfiguracija</string>
+    <string name="application_yes">Da</string>
+
+    <!-- AboutActivity -->
+    <string name="about_view_application_code">Koda aplikacije</string>
+    <string name="about_view_information">Informacije</string>
+    <string name="about_view_legal">Pravne informacije</string>
+    <string name="about_view_libraries">Knjižnice</string>
+    <string name="about_view_message">twinme je varna storitev za klepet ter glasovne/video klice brez dostopa do osebnih podatkov.\n\ntwinme temelji na WebRTC, novem standardu za varne (šifrirane od konca do konca) neposredne (brez posredniškega strežnika) večpredstavnostne komunikacije v realnem času na spletu.</string>
+    <string name="about_view_open_source_information">Izvorna koda aplikacije je na voljo kot odprtokodna na GitHubu pod licenco AGPL-3.0.</string>
+    <string name="about_view_open_sources_licences">Licence odprtokodne programske opreme</string>
+    <string name="about_view_premium_services">Premium storitve</string>
+    <string name="about_view_privacy_policy">Politika zasebnosti</string>
+    <string name="about_view_quality_of_service">Kakovost storitve</string>
+    <string name="about_view_terms_of_use">Pogoji uporabe</string>
+    <string name="about_view_version">Različica</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_view_deleted">To povabilo je bilo izbrisano</string>
+    <string name="accept_group_invitation_view_in_progress">Članstvo v obdelavi</string>
+    <string name="accept_group_invitation_view_message">%1$s vas vabi, da se pridružite skupini</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_view_being_transferred">Povabilo se prenaša.</string>
+    <string name="accept_invitation_view_check_connection">Preverite svojo internetno povezavo.</string>
+    <string name="accept_invitation_view_existing_contact_message">S tem stikom že imate vzpostavljen odnos. Ali želite ustvariti novega?</string>
+    <string name="accept_invitation_view_incorrect_contact_information">Nepravilni podatki o stiku</string>
+    <string name="accept_invitation_view_local_twincode">V okviru istega računa ne morete vzpostaviti odnosa sami s sabo.</string>
+    <string name="accept_invitation_view_message">%1$s se želi povezati z vami</string>
+
+    <!-- AccountActivity -->
+    <string name="account_view_backup">Varnostna kopija na zunanji medij</string>
+    <string name="account_view_backup_restore">Varnostna kopija / Obnovitev</string>
+    <string name="account_view_backup_verify">Preveri varnostno kopijo</string>
+    <string name="account_view_backup_list">Zgodovina varnostnih kopij</string>
+    <string name="account_view_conversations_content_title">Vsebina pogovorov</string>
+    <string name="account_view_delete_account">Vaš račun skupaj z vsemi povezanimi podatki bo trajno izbrisan. Potrdite?</string>
+    <string name="account_view_delete_account_confirmation">Ali ste res prepričani, da želite izbrisati svoj račun?</string>
+    <string name="account_view_export_content">Izvozi na zunanji medij</string>
+    <string name="account_view_message_first_part">Nov račun se ustvari ob prvi namestitvi aplikacije, po ponovni namestitvi aplikacije, ponastavitvi naprave ali izbrisu trenutnega računa.</string>
+    <string name="account_view_message_second_part">Prejšnji račun in podatki ne ostanejo shranjeni, zato boste morali znova povabiti svoje stike.</string>
+    <string name="account_view_message_third_part">Brisanje računa razveljavi tudi vse varnostne kopije, ustvarjene na tem računu, zato jih ni mogoče obnoviti na tej ali drugi napravi.</string>
+    <string name="account_view_migration_message">Na voljo je storitev migracije računa za prenos vašega računa z vsemi povezanimi podatki (stiki, sporočila, skupine itd.) z ene naprave Android na drugo v realnem času. Tako lahko preklapljate med računi na stari in novi napravi.</string>
+    <string name="account_view_migration_start_from_another_device">Z druge naprave</string>
+    <string name="account_view_migration_start_from_current_device">Z moje naprave</string>
+    <string name="account_view_migration_title">Migracija računa</string>
+    <string name="account_view_restore">Obnovi z zunanjega medija</string>
+    <string name="account_view_title">Račun</string>
+    <string name="account_view_transfer_between_devices">Prenos med napravami</string>
+    <string name="account_view_transfer_from_another_device">Prenos z druge naprave</string>
+    <string name="account_view_transfer_from_device">Prenos s te naprave</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_view_cancel_message">Zaprite aplikacijo in jo znova zaženite za dostop do svojih podatkov.</string>
+    <string name="account_migration_view_close_message">Zaprite aplikacijo in jo znova zaženite za dostop do novih podatkov.</string>
+    <string name="account_migration_view_confirm_cancel_message">Ali ste prepričani, da želite preklicati migracijo?</string>
+    <string name="account_migration_view_network_message">Preverite svojo omrežno povezavo</string>
+    <string name="account_migration_view_not_enough_space_for_files">Ni dovolj prostora za datoteke</string>
+    <string name="account_migration_view_not_enough_space_to_receive">Ni dovolj prostora za prenos podatkovne baze</string>
+    <string name="account_migration_view_not_enough_space_to_upload">Ni dovolj prostora za nalaganje podatkovne baze</string>
+    <string name="account_migration_view_start">Začni migracijo</string>
+    <string name="account_migration_view_state_canceled">Migracija preklicana</string>
+    <string name="account_migration_view_state_list_files">Pridobivanje seznama datotek</string>
+    <string name="account_migration_view_state_negotiate">Čakanje</string>
+    <string name="account_migration_view_state_send_account">Pošiljanje računa</string>
+    <string name="account_migration_view_state_send_database">Pošiljanje podatkovne baze</string>
+    <string name="account_migration_view_state_send_files">Pošiljanje datotek</string>
+    <string name="account_migration_view_state_send_settings">Pošiljanje nastavitev aplikacije</string>
+    <string name="account_migration_view_state_terminate">Migracija je skoraj končana.</string>
+    <string name="account_migration_view_state_wait_account">Čakanje na drugi račun</string>
+    <string name="account_migration_view_state_wait_connect">Čakanje na ponovno povezavo</string>
+    <string name="account_migration_view_state_wait_files">Čakanje na prejem datotek in podatkovne baze.</string>
+    <string name="account_migration_view_stop">Ustavi migracijo</string>
+    <string name="account_migration_view_success_message">Migracija je bila uspešno zaključena</string>
+    <string name="account_migration_view_transfer_in_progress">Prenos podatkov v teku</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_message">Prikažite ta zaslon na vsaki napravi, nato ena naprava skenira QR-kodo druge.</string>
+    <string name="account_migration_scanner_view_message_older_version">Ta naprava uporablja staro, nezdružljivo različico OS, zaradi česar bodo med prenosom izgubljeni vsi odnosi na ciljni napravi. Ali želite kljub temu nadaljevati s prenosom?</string>
+    <string name="account_migration_scanner_view_message_older_version_target">Ciljna naprava uporablja staro, nezdružljivo različico OS, zaradi česar bodo med prenosom izgubljeni vsi vaši odnosi. Ali želite kljub temu nadaljevati s prenosom?</string>
+    <string name="account_migration_scanner_view_migration_start_from_another_device_message">Za začetek migracije skenirajte to QR-kodo z druge naprave</string>
+    <string name="account_migration_scanner_view_migration_start_from_current_device_message">Skenirajte QR-kodo, prikazano v razdelku »Račun / Prenos z druge naprave« v stranskem meniju druge naprave.</string>
+    <string name="account_migration_scanner_view_scan_title">Skeniraj</string>
+    <string name="account_migration_scanner_view_stop_scan_title">Ustavi skeniranje</string>
+
+    <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_view_title">Dodaj udeleženca v ta klic</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_view_gallery_title">Uvozi iz galerije</string>
+    <string name="add_contact_view_in_person_subtitle">Povabite osebo v svoji bližini</string>
+    <string name="add_contact_view_in_person_title">Osebno</string>
+    <string name="add_contact_view_invitation_code_title">Mini-koda</string>
+    <string name="add_contact_view_invite">Povabi</string>
+    <string name="add_contact_view_invite_message">Odprite spletni naslov %1$s s twinme na svoji mobilni napravi ali skenirajte QR-kodo za zasebno povezavo z »%2$s«</string>
+    <string name="add_contact_view_invite_subject">Twinme povabilo</string>
+    <string name="add_contact_view_message">Prosite prijatelja v svoji bližini, naj s twinme skenira vašo QR-kodo povabila, ali tapnite gumb »Skeniraj«, da skenirate kodo svojega prijatelja.</string>
+    <string name="add_contact_view_onboarding_message">twinme ne pozna vaših prijateljev in jih ne more odkriti. Povabiti jih morate osebno s twinme, ko so v vaši bližini, ali jim poslati povabilo na drug način.</string>
+    <string name="add_contact_view_scan_code">Skeniraj QR-kodo povabila</string>
+    <string name="add_contact_view_scan_error_corrupt_link">Ta povezava je poškodovana.</string>
+    <string name="add_contact_view_scan_error_expired_link">Ta povezava za povabilo je potekla.</string>
+    <string name="add_contact_view_scan_error_incorrect_link">Ta povezava je nepravilna.</string>
+    <string name="add_contact_view_scan_error_not_managed_link">Te povezave aplikacija ne upravlja.</string>
+    <string name="add_contact_view_scan_error_revoked_link">Ta odnos je bil izbrisan.</string>
+    <string name="add_contact_view_scan_message_call_link">Ta povezava ustreza »klikni za klic«</string>
+    <string name="add_contact_view_scan_message_invitation_link">Ta povezava ustreza povabilu stika</string>
+    <string name="add_contact_view_scan_message_migration_link">Ta povezava ustreza migraciji računa</string>
+    <string name="add_contact_view_scan_message_transfer_link">Ta povezava ustreza prenosu klica</string>
+    <string name="add_contact_view_scan_title">Skeniraj</string>
+    <string name="add_contact_view_share_image_message">Uvozite ali skenirajte to QR kodo povabila s Skredom, da dodate \"%1$s\" kot stik.</string>
+    <string name="add_contact_view_share_message_part_1">%1$s vas vabi, da v Skredu vzpostavite zaseben odnos.</string>
+    <string name="add_contact_view_share_message_part_2">Skred je storitev sporočanja peer-to-peer s šifriranjem od konca do konca in HD glasovnimi/video klici. Registracija ni potrebna.</string>
+    <string name="add_contact_view_share_message_part_3">To URL-naslov odprite s Skredom na svoji mobilni napravi, da dodate \"%1$s\" kot stik:</string>
+    <string name="add_contact_view_share_message_part_4">Lahko pa tudi uvozite ali skenirate QR kodo povabila na priloženi sliki s Skredom.</string>
+    <string name="add_contact_view_share_title">%1$s vas vabi na Skred</string>
+    <string name="add_contact_view_social_subtitle">sporočilo, e-pošta, družbeno omrežje</string>
+    <string name="add_contact_view_social_title">Pošlji kodo prek aplikacije</string>
+    <string name="add_contact_view_title">Povabilo</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_view_add">Dodaj</string>
+    <string name="add_group_member_view_title">Dodaj člane</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_view_welcome_message">Pozdravno sporočilo</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_view_calling">Klicanje …</string>
+    <string name="audio_call_view_cannot_call">Ni mogoče opraviti glasovnega klica</string>
+    <string name="audio_call_view_connecting">Povezovanje …</string>
+    <string name="audio_call_view_hangup">Končaj klic</string>
+    <string name="audio_call_view_hangup_confirmation">Ali želite končati klic?</string>
+    <string name="audio_call_view_terminate">Klic je bil prekinjen</string>
+    <string name="audio_call_view_terminate_busy">Klic prekinjen: &lt;b&gt;%1$s&lt;/b&gt; je zaseden</string>
+    <string name="audio_call_view_terminate_cancel">Klic je preklical/-a &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_connectivity_error">Klic prekinjen: omrežna napaka</string>
+    <string name="audio_call_view_terminate_decline">Klic je zavrnil/-a &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_gone">Klic prekinjen: &lt;b&gt;%1$s&lt;/b&gt; je brez povezave</string>
+    <string name="audio_call_view_terminate_not_authorized">Vaš stik ni odobril dovoljenj, potrebnih za klic (npr. mikrofon, kamera).</string>
+    <string name="audio_call_view_terminate_revoked">Klic končan: &lt;b&gt;%1$s&lt;/b&gt; je izbrisal/-a ta odnos z vami.</string>
+    <string name="audio_call_view_terminate_success">Klic je prekinil/-a &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_timeout">Klic prekinjen: &lt;b&gt;%1$s&lt;/b&gt; se ne oglasi</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_view_certified_message">Vaš odnos z %1$s je zdaj certificiran.</string>
+    <string name="authentified_relation_view_certify_by_scan">Certificiraj s skeniranjem kode QR</string>
+    <string name="authentified_relation_view_certify_by_video_call">Certificiraj z video klicem</string>
+    <string name="authentified_relation_view_certify_by_video_call_missing_capability">%1$s mora dovoliti video klice, da bo mogoče certificirati odnos prek video klica.</string>
+    <string name="authentified_relation_view_level_2">Za certificiranje tega odnosa morate skenirati kodo QR, prikazano na napravi uporabnika %1$s.</string>
+    <string name="authentified_relation_view_level_3">Za certificiranje tega odnosa mora naprava uporabnika %1$s skenirati to kodo QR.</string>
+    <string name="authentified_relation_view_level_4">Vaš odnos z %1$s je certificiran.</string>
+    <string name="authentified_relation_view_onboarding_message">»Certificiran« odnos zagotavlja, da vedno komunicirate s pravo osebo, tudi če je bila storitev kompromitirana s strani tretje osebe.</string>
+    <string name="authentified_relation_view_onboarding_subtitle">Prepričajte se, da vedno komunicirate s pravo osebo!</string>
+    <string name="authentified_relation_view_relation_print_message">Ta prstni odtis mora biti na obeh napravah enak.</string>
+    <string name="authentified_relation_view_relation_print_title">Prstni odtis odnosa</string>
+    <string name="authentified_relation_view_start">Začni certificiranje</string>
+    <string name="authentified_relation_view_title">Certificiran odnos</string>
+    <string name="authentified_relation_view_to_be_certified_title">Certificiraj odnos</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_view_backup">Varnostna kopija</string>
+    <string name="backup_view_beta_message_part_1">Storitev varnostnega kopiranja/obnovitve je na voljo v preizkusni različici BETA, da bi pred splošno izdajo odkrili morebitne težave.</string>
+    <string name="backup_view_beta_message_part_2">Ta storitev je namenjena varnostnemu kopiranju samo metapodatkov računa (profili, stiki, skupine) v zunanji pomnilnik, da jih je mogoče pozneje obnoviti na drugi napravi, če je izvirna ukradena ali uničena.</string>
+    <string name="backup_view_beta_message_part_3">Storitev prenosa računa je treba uporabiti za prenos vseh podatkov računa (vključno s pogovori) z ene (stare) naprave na drugo (novo) napravo, ko sta obe napravi na voljo.</string>
+    <string name="backup_view_confirm_message">Za obnovitev varnostne kopije morate vnesti 12 zgornjih besed v tem vrstnem redu, da jo je mogoče dešifrirati.</string>
+    <string name="backup_view_content">Vsebina</string>
+    <string name="backup_view_content_diff_added">Dodano</string>
+    <string name="backup_view_content_diff_updated">Spremenjeno</string>
+    <string name="backup_view_content_diff_deleted">Izbrisano</string>
+    <string name="backup_view_content_diff_message">Tukaj so spremembe glede na vaše trenutne podatke:</string>
+    <string name="backup_view_content_info">Varnostne kopije ne vključujejo pogovorov, obvestil in zgodovine.</string>
+    <string name="backup_view_error_words">Vnesene besede ne omogočajo dešifriranja varnostne kopije.</string>
+    <string name="backup_view_generate_word">Ustvari</string>
+    <string name="backup_view_last_backup">Zadnja varnostna kopija %1$s</string>
+    <string name="backup_view_new_backup">Nova varnostna kopija</string>
+    <string name="backup_view_onboarding">Ustvarite šifrirano varnostno kopijo podatkov računa (prostori, profili, stiki, skupine, click-to-call), ki jo je mogoče obnoviti na to ali drugo napravo.</string>
+    <string name="backup_view_reminder">Vaša zadnja varnostna kopija je bila ustvarjena pred več kot 30 dnevi.</string>
+    <string name="backup_view_save_file_message">Shrani datoteko varnostne kopije na izbrano napravo in ohrani gesla za kasnejšo obnovitev.</string>
+    <string name="backup_view_security">Varnost</string>
+    <string name="backup_view_security_info">Ključ za šifriranje varnostne kopije je predstavljen z zaporedjem 12 besed, ki bodo potrebne za obnovitev.</string>
+    <string name="backup_view_success">Varnostna kopija je bila uspešno dokončana!</string>
+    <string name="backup_view_success_info">Obdržite ta seznam 12 besed, da boste lahko obnovili to varnostno kopijo.</string>
+    <string name="backup_view_title">Varnostna kopija</string>
+    <string name="backup_view_use_last_backup_words">Uporabite isti seznam besed kot za zadnjo varnostno kopijo.</string>
+    <string name="backup_view_verify_completed">Preverjanje je končano!</string>
+    <string name="backup_view_verify_message">Preverite lahko tudi celovitost varnostne datoteke in ali so podatki v njej posodobljeni prek: Račun/Preveri varnostno kopijo.</string>
+    <string name="backup_view_verify_up_to_date">Vaša varnostna kopija je posodobljena.</string>
+    <string name="backup_view_verify_not_up_to_date">Vaša varnostna kopija ni posodobljena.</string>
+    <string name="backup_view_verify_words">Za preverjanje varnostne kopije morate vnesti zaporedje 12 besed, da jo dešifrirate.</string>
+    <string name="backup_view_wait_message">Ne zapuščajte tega zaslona, dokler je varnostno kopiranje v teku.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_view_invalidate_backup">Razveljavi moje varnostne kopije</string>
+    <string name="backups_view_invalidate_backup_message_part_one">Vse vaše prejšnje varnostne kopije bodo neveljavne in jih ne bo več mogoče obnoviti.</string>
+    <string name="backups_view_invalidate_backup_message_part_two">Ne pozabite ustvariti nove varnostne kopije, ki jo je mogoče obnoviti na to ali drugo napravo.</string>
+    <string name="backups_view_no_backup_message">Na tej napravi ni bila ustvarjena nobena varnostna kopija.</string>
+
+    <!-- CallActivity -->
+    <string name="call_view_audio_source_bluetooth">Zvok prek Bluetootha</string>
+    <string name="call_view_audio_source_device">Slušalka naprave</string>
+    <string name="call_view_audio_source_earphones">Slušalke</string>
+    <string name="call_view_audio_source_headset">Naglavne slušalke</string>
+    <string name="call_view_audio_source_loudspeaker">Zvočnik</string>
+    <string name="call_view_battery_restriction_message">Pozor! Če aplikacija deluje v ozadju, morate dovoliti porabo baterije, da se med klicem izognete prekinjanju mikrofona.</string>
+    <string name="call_view_camera_control">Nadzor kamere</string>
+    <string name="call_view_camera_control_ask_message">Prosite %1$s, naj vam med video klicem dovoli nadzor svoje kamere.</string>
+    <string name="call_view_camera_control_confirm_message">%1$s bi rad/-a med klicem nadzoroval/-a vašo kamero. Nadzor lahko kadar koli prevzamete nazaj.</string>
+    <string name="call_view_camera_control_denied">%1$s vam ne dovoli nadzora njegove/njene kamere.</string>
+    <string name="call_view_camera_control_message">Nadzor kamere uporabnika %1$s</string>
+    <string name="call_view_camera_control_needs_help">Potrebujete pomoč?</string>
+    <string name="call_view_camera_control_onboarding">Če vaš stik to dovoli, lahko med video klicem prevzamete nadzor njegove/njene kamere in na primer sami povečate sliko. To je še posebej uporabno za upravljanje videonadzorne kamere.</string>
+    <string name="call_view_camera_control_onboarding_part_2">Z dovoljenjem vašega bližnjega lahko med klicem nadzorujete njegovo/njeno kamero ter mu/ji na daljavo pomagate enostavno in varno.</string>
+    <string name="call_view_camera_control_remotely">%1$s na daljavo nadzoruje vašo kamero.</string>
+    <string name="call_view_camera_control_stop">Ustavi</string>
+    <string name="call_view_certify_error_message">%1$s ni potrdil/-a besede. Certificiranje odnosa ni uspelo in boste morali poskusiti znova.</string>
+    <string name="call_view_certify_onboarding_message">Video klic vam omogoča, da se medsebojno prepoznate in izmenjate varnostne ključe, povezane s certificiranim odnosom in njegovimi izmenjavami.</string>
+    <string name="call_view_certify_onboarding_start_message">Izmenično črkujte besedo, prikazano na zaslonu, ki jo lahko drugi preveri. Ko so vse besede preverjene, bo vaš odnos z %1$s certificiran.</string>
+    <string name="call_view_certify_onboarding_title">Certificirajte svoj odnos</string>
+    <string name="call_view_certify_video_message">Klic mora biti video, da je mogoče certificirati odnos.</string>
+    <string name="call_view_coach_mark">Tapnite tukaj, da dodate udeleženca temu klicu</string>
+    <string name="call_view_confirm_word">Ali je beseda, ki jo je izrekel/-la %1$s, enaka?</string>
+    <string name="call_view_confirm_word_title">Potrdite besedo</string>
+    <string name="call_view_connected_bluetooth">Zvočni tok je bil preusmerjen na napravo Bluetooth.</string>
+    <string name="call_view_connected_speaker">Zvočni tok je bil preusmerjen na zvočnik.</string>
+    <string name="call_view_error_call_interrupted">Klic je bil prekinjen, napaka: %1$d.</string>
+    <string name="call_view_error_call_not_go_thru">Klica ni bilo mogoče vzpostaviti, napaka: %1$d.</string>
+    <string name="call_view_max_participant_message">Doseženo je največje število udeležencev v skupinskem klicu (%1$d).</string>
+    <string name="call_view_not_supported_group_call_message">Različica aplikacije uporabnika %1$s ni združljiva s skupinskimi klici in potrebuje posodobitev.</string>
+    <string name="call_view_quality_message">Kako bi jo ocenili?</string>
+    <string name="call_view_quality_title">Kakovost klica</string>
+    <string name="call_view_repeat_word">%1$s jo bo lahko primerjal/-a s tisto na svojem zaslonu.</string>
+    <string name="call_view_repeat_word_title">Črkujte besedo</string>
+    <string name="call_view_tag_add_to_call">Povabi stik, da se pridruži tekočemu klicu</string>
+    <string name="call_view_tag_camera">Kamera</string>
+    <string name="call_view_tag_camera_activate">Vklopi kamero</string>
+    <string name="call_view_tag_camera_cut">Izklopi kamero</string>
+    <string name="call_view_tag_camera_flip">Zamenjaj kamero</string>
+    <string name="call_view_tag_microphone">Mikrofon</string>
+    <string name="call_view_tag_microphone_activate">Vklopi mikrofon</string>
+    <string name="call_view_tag_microphone_mute">Utišaj mikrofon</string>
+    <string name="call_view_tag_pause">Premor</string>
+    <string name="call_view_tag_send_message">Pošlji sporočilo</string>
+    <string name="call_view_tag_speaker">Zvočnik</string>
+    <string name="call_view_tag_speaker_activate">Vklopi zvočnik</string>
+    <string name="call_view_tag_speaker_mute">Utišaj zvočnik</string>
+    <string name="call_view_transfer_call_message">Tekoči klic je bil prenesen.</string>
+    <string name="call_view_try_to_call_back">Poskusite poklicati nazaj.</string>
+    <string name="call_view_waiting_conference_call">"Nihče se še ni pridružil klicu. Počakajte… "</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_view_all_call_segmented_control">Vse</string>
+    <string name="calls_view_call_again_message">Ali želite poklicati nazaj %1$s?</string>
+    <string name="calls_view_call_again_title">Pokliči nazaj</string>
+    <string name="calls_view_create_link">Ustvari povezavo »klikni za klic«</string>
+    <string name="calls_view_incoming_call">Dohodni klic</string>
+    <string name="calls_view_missed_call">Zgrešen klic</string>
+    <string name="calls_view_missed_call_segmented_control">Zgrešeni</string>
+    <string name="calls_view_no_call_message">Tukaj so navedeni zgrešeni klici.</string>
+    <string name="calls_view_no_call_title">Še niste opravili nobenega klica.</string>
+    <string name="calls_view_outgoing_call">Odhodni klic</string>
+    <string name="calls_view_reset">Ali ste prepričani, da želite ponastaviti vsa obvestila o klicih?</string>
+    <string name="calls_view_reset_title">Ponastavi obvestila o klicih</string>
+    <string name="calls_view_title">Klici</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_view_create_camera_error">Kamera je že v uporabi</string>
+    <string name="capture_view_incorrect_qrcode">Nepravilna koda twincode</string>
+    <string name="capture_view_message">Postavite kodo QR v ta pravokotnik, da jo skenirate.</string>
+    <string name="capture_view_no_camera">Za skeniranje kode twincode je potrebna kamera</string>
+    <string name="capture_view_qrcode_saved">Koda za povabilo je shranjena v fotografijah.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_view_all">Počisti vse</string>
+    <string name="cleanup_view_both_clean">Globalno čiščenje (lokalno in oddaljeno)</string>
+    <string name="cleanup_view_both_clean_title">Globalno čiščenje</string>
+    <string name="cleanup_view_clean">Izbriši</string>
+    <string name="cleanup_view_conversation">Pogovor z %s</string>
+    <string name="cleanup_view_delete_confirmation_message">Izbris je nepovraten. Pred nadaljevanjem izvozite pomembno vsebino. Nadaljujete?</string>
+    <string name="cleanup_view_error">Med dejanjem je prišlo do napake.</string>
+    <string name="cleanup_view_expiration">Pogoji poteka</string>
+    <string name="cleanup_view_free">Na voljo</string>
+    <string name="cleanup_view_info">Brisanje sporočil, medijev in datotek iz tega pogovora jih ne odstrani iz naprave vašega stika, kasneje pa tega ne boste mogli storiti.</string>
+    <string name="cleanup_view_info_both">Brisanje sporočil, medijev in datotek iz tega pogovora jih odstrani tudi iz naprave vašega stika.</string>
+    <string name="cleanup_view_local_cleanup">Samo lokalno čiščenje</string>
+    <string name="cleanup_view_local_cleanup_title">Lokalno čiščenje</string>
+    <string name="cleanup_view_medias_and_files">Samo mediji in datoteke</string>
+    <string name="cleanup_view_medias_and_files_info">Sličice medijev se ne odstranijo iz pogovora; izbrišejo se le izvirne datoteke.</string>
+    <string name="cleanup_view_medias_and_files_info_both">Datoteke, fotografije, videi in glasovne opombe, izmenjane v tem pogovoru, bodo izbrisane z vaše naprave in iz naprave vašega stika.</string>
+    <string name="cleanup_view_messages">Vsa sporočila &amp; druga vsebina</string>
+    <string name="cleanup_view_messages_info">Sporočila vseh vrst v pogovoru (besedilo, fotografija, video, glas, datoteke itd.) bodo izbrisana iz aplikacije.</string>
+    <string name="cleanup_view_month">%1$d mesecev</string>
+    <string name="cleanup_view_older_than">Starejše kot</string>
+    <string name="cleanup_view_one_year">1 leto</string>
+    <string name="cleanup_view_prior_to">Pred</string>
+    <string name="cleanup_view_reset_conversation_message">Ponastavitev tega pogovora bo izbrisala vsa sporočila, tudi tista na napravi vašega stika.</string>
+    <string name="cleanup_view_select_content">Izberite, kaj želite izbrisati.</string>
+    <string name="cleanup_view_storage_title">Prostor na disku</string>
+    <string name="cleanup_view_success">Dejanje je bilo uspešno zaključeno.</string>
+    <string name="cleanup_view_title">Čiščenje pogovora</string>
+    <string name="cleanup_view_total">Skupaj</string>
+    <string name="cleanup_view_used">Uporabljeno</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Vodniki</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_view_allow_incoming_calls">Dovoli temu stiku, da vas kliče</string>
+    <string name="contact_capabilities_view_automatic_answering">Samodejno odgovarjaj na dohodne klice</string>
+    <string name="contact_capabilities_view_automatic_answering_message">Pozor: ta nastavitev vklopi samodejno odgovarjanje na klice tega stika ter odpre mikrofon in kamero naprave (za video klice).</string>
+    <string name="contact_capabilities_view_automatic_answering_restriction">Nekatere naprave lahko omejujejo to funkcijo.</string>
+    <string name="contact_capabilities_view_call_settings">Nastavitve klicev</string>
+    <string name="contact_capabilities_view_camera_control_allow">Vedno</string>
+    <string name="contact_capabilities_view_camera_control_ask">Vprašaj ob vsakem klicu</string>
+    <string name="contact_capabilities_view_camera_control_information">Dovoli temu stiku, da med video klicem samodejno prevzame nadzor nad vašo kamero.</string>
+    <string name="contact_capabilities_view_camera_control_never">Nikoli</string>
+    <string name="contact_capabilities_view_camera_control_onboarding">Stik z dostopom do premium različice aplikacije lahko prosite, da nadzoruje vašo kamero med vašimi video klici.</string>
+    <string name="contact_capabilities_view_discreet_relation">Diskreten odnos</string>
+    <string name="contact_capabilities_view_information_audio_call">Dovoli stiku, da vas kliče z glasom.</string>
+    <string name="contact_capabilities_view_information_discreet_relation">V obvestilih ne prikaže imena stika in ne beleži klicev v zgodovini klicev.</string>
+    <string name="contact_capabilities_view_information_limited_call">Nastavite datume/čase, ko ne želite prejemati klicev.</string>
+    <string name="contact_capabilities_view_information_programmed_call">Načrtujte datume/čase, ko želite prejemati klice.</string>
+    <string name="contact_capabilities_view_information_video_call">Dovoli stiku, da vas kliče z videom.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_view_add_contact_subtitle">Povabite nekoga, da skenira vašo kodo povabila, ali pa skenirajte njegovo …</string>
+    <string name="contacts_view_invite_contact_title">Povabi stik</string>
+    <string name="contacts_view_scan_contact_title">Skeniraj ali vnesi kodo povabila</string>
+    <string name="contacts_view_title">Stiki</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_view_audio_call">Glasovni klic</string>
+    <string name="conversation_view_audio_message">Glasovno sporočilo</string>
+    <string name="conversation_view_call_missed">zgrešen</string>
+    <string name="conversation_view_cannot_send">Ni mogoče takoj poslati sporočil:</string>
+    <string name="conversation_view_cleanup_conversation">Izbrisali ste nekaj starih sporočil.</string>
+    <string name="conversation_view_cleanup_conversation_by_peer">%1$s je počistil/-a nekaj starih sporočil.</string>
+    <string name="conversation_view_delete_message">Vaše sporočilo je bilo res izbrisano.</string>
+    <string name="conversation_view_edit_message">Sporočilo je mogoče urediti na napravi vašega stika le, če je njegova aplikacija posodobljena.</string>
+    <string name="conversation_view_empty_message">Recite nekaj pametnega … ali zabavnega!</string>
+    <string name="conversation_view_ephemeral_coach_mark">Dolgo pritisnite puščico za pošiljanje, da izbrišete to sporočilo iz pogovora po določenem času.</string>
+    <string name="conversation_view_feature_not_supported_by_peer">Različica twinme pri vašem stiku ni povsem funkcionalna.&lt;br /&gt;
+        Prosimo, prosite ga/jo, naj posodobi twinme.</string>
+    <string name="conversation_view_group_member_information">%1$d članov</string>
+    <string name="conversation_view_group_not_allowed_post_message">Pošiljanje sporočil ni dovoljeno</string>
+    <string name="conversation_view_group_one_member">1 član</string>
+    <string name="conversation_view_invitation_accepted">Povabilo sprejeto</string>
+    <string name="conversation_view_invitation_failed">Prosite stik, naj posodobi twinme</string>
+    <string name="conversation_view_invitation_joined">Član skupine</string>
+    <string name="conversation_view_invitation_pending">Povabilo v teku</string>
+    <string name="conversation_view_invitation_refused">Povabilo zavrnjeno</string>
+    <string name="conversation_view_invitation_title">Vabim vas, da se pridružite skupini</string>
+    <string name="conversation_view_local_cleanup">Glavna vsebina je bila lokalno izbrisana.</string>
+    <string name="conversation_view_manage_conversation">Upravljaj pogovor</string>
+    <string name="conversation_view_media_quality_original">Izvirna ločljivost (HD)</string>
+    <string name="conversation_view_media_quality_original_subtitle">Brez spreminjanja velikosti – počasnejši prenos</string>
+    <string name="conversation_view_media_quality_standard">Standardna ločljivost (SD)</string>
+    <string name="conversation_view_media_quality_standard_subtitle">Manjše – hitrejši prenos</string>
+    <string name="conversation_view_media_quality_title">Ločljivost medijev</string>
+    <string name="conversation_view_menu_item_view_copy_message">Kopirano v odložišče!</string>
+    <string name="conversation_view_menu_item_view_copy_title">Kopiraj</string>
+    <string name="conversation_view_menu_item_view_delete_title">Izbriši</string>
+    <string name="conversation_view_menu_item_view_forward_title">Posreduj</string>
+    <string name="conversation_view_menu_item_view_info_title">Informacije</string>
+    <string name="conversation_view_menu_item_view_operation_not_allowed">Dejanja pošiljatelj ne dovoljuje</string>
+    <string name="conversation_view_menu_item_view_reply_title">Odgovori</string>
+    <string name="conversation_view_menu_item_view_save_message">Shranjeno!</string>
+    <string name="conversation_view_menu_item_view_save_title">Shrani</string>
+    <string name="conversation_view_menu_item_view_share_title">Deli</string>
+    <string name="conversation_view_message">Vnesite sporočilo</string>
+    <string name="conversation_view_photo_camera">Kamera za fotografije</string>
+    <string name="conversation_view_record_confirm_send_record">Pritisnite znova za pošiljanje</string>
+    <string name="conversation_view_record_start_record">Pritisnite in držite za snemanje</string>
+    <string name="conversation_view_record_title">Snemaj</string>
+    <string name="conversation_view_reduce_menu_lower">Standardno</string>
+    <string name="conversation_view_reduce_menu_minimal">Minimalno</string>
+    <string name="conversation_view_reduce_menu_original">Izvirno</string>
+    <string name="conversation_view_reduce_menu_original_subtitle">Brez spreminjanja velikosti</string>
+    <string name="conversation_view_reject_stream">Zavrni</string>
+    <string name="conversation_view_reply_to">Odgovori osebi %1$s</string>
+    <string name="conversation_view_reset_conversation">Ponastavili ste pogovor</string>
+    <string name="conversation_view_reset_conversation_by_peer">%1$s je ponastavil/-a pogovor</string>
+    <string name="conversation_view_send_file_warning">Opozorilo: prejemniku ni mogoče preprečiti kopiranja/shranjevanja/deljenja dokumenta (pdf, word, ppt, excel, zip itd.), ki ga je mogoče odpreti samo zunaj aplikacije. Ali ga še vedno želite poslati?</string>
+    <string name="conversation_view_send_large_file_message">Ta datoteka je velika (%1$d MB). Ali želite nadaljevati?</string>
+    <string name="conversation_view_send_menu_allow_copy">Dovoli prejemniku kopiranje/shranjevanje/deljenje te vsebine</string>
+    <string name="conversation_view_send_quality_size">Velik medij (%1$s).</string>
+    <string name="conversation_view_send_quality_standard">Pošlji v standardni ločljivosti (SD)</string>
+    <string name="conversation_view_send_quality_warning">Za hitrejši prenos lahko zmanjšate na standardno ločljivost (SD).</string>
+    <string name="conversation_view_stream_dialog">Ali ga želite sprejeti?</string>
+    <string name="conversation_view_unsupported_media">Nepodprt format medija.</string>
+    <string name="conversation_view_video_call">Video klic</string>
+    <string name="conversation_view_video_camera">Kamera za video</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_view_documents">Dok.</string>
+    <string name="conversation_files_view_links">Povezave</string>
+    <string name="conversation_files_view_month">Ta mesec</string>
+    <string name="conversation_files_view_no_files">Vaš pogovor z %1$s ne vsebuje nobenega od teh elementov.</string>
+    <string name="conversation_files_view_title">Mediji, spletne povezave in dokumenti</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_view_background_colors">Ozadja &amp; barve</string>
+    <string name="conversation_settings_view_emoji_size">Velikost emojijev</string>
+    <string name="conversation_settings_view_link_preview">Vizualizacija</string>
+    <string name="conversation_settings_view_link_preview_message">Prikaži predogled spletnega mesta.</string>
+    <string name="conversation_settings_view_link_title">Spletne povezave</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_view_no_conversation_message">Sporočila, šifrirana od konca do konca, se izmenjujejo neposredno med napravami (peer-to-peer), brez vmesnega distribucijskega strežnika = brez sledi v oblaku.</string>
+    <string name="conversations_view_no_result_found">Ni najdenih rezultatov za »%1$s«.</string>
+    <string name="conversations_view_start">Začni pogovor</string>
+    <string name="conversations_view_title">Pogovori</string>
+    <string name="conversations_view_you">Vi</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_view_call_configuration">Konfiguracija klica</string>
+    <string name="create_external_call_view_call_type">Vrsta klica</string>
+    <string name="create_external_call_view_conference_call_description">Pridružite se konferenčnemu klicu neposredno iz brskalnika. Idealno za poslovna ali družinska srečanja.</string>
+    <string name="create_external_call_view_conference_call_short_title">Konferenčni klic</string>
+    <string name="create_external_call_view_conference_call_title">Konferenčni klic</string>
+    <string name="create_external_call_view_continuous_link_description">Brez omejitev veljavnosti povezave</string>
+    <string name="create_external_call_view_continuous_link_title">Trajna</string>
+    <string name="create_external_call_view_delete_link_setting">Samodejno razveljavi povezavo po preteku časovnega obdobja</string>
+    <string name="create_external_call_view_direct_call_description">Prejmite klic neposredno na svojo napravo od nekoga, ki nima aplikacije.</string>
+    <string name="create_external_call_view_direct_call_short_title">Neposreden</string>
+    <string name="create_external_call_view_direct_call_title">Neposreden klic</string>
+    <string name="create_external_call_view_group_call_description">Do 8 udeležencev</string>
+    <string name="create_external_call_view_link_validity">Veljavnost povezave</string>
+    <string name="create_external_call_view_message">Ta profil je prikazan gostom, ki vas bodo poklicali s to povezavo »klikni za klic«.</string>
+    <string name="create_external_call_view_name_required">Za predstavitev tega \"Click-to-call\" sta zahtevana ime in slika.</string>
+    <string name="create_external_call_view_notification_setting">Obvesti me, ko se prvemu udeležencu pridruži konferenci.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_1">Click-to-call omogoča gostom, da vas pokličejo ali se pridružijo konferenčnemu klicu (Click-to-meet) iz brskalnika, brez namestitve aplikacije.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_2">Vsak primer ima ime, sliko in opis, ki predstavljajo predmet klica, na primer:</string>
+    <string name="create_external_call_view_onboarding_part_1_message_3">vaša služba za pomoč strankam</string>
+    <string name="create_external_call_view_onboarding_part_1_message_4">avto, ki ga prodajate</string>
+    <string name="create_external_call_view_onboarding_part_1_message_5">profesionalni skupinski klic</string>
+    <string name="create_external_call_view_onboarding_part_1_message_6">video zvonec za dostavljavce.</string>
+    <string name="create_external_call_view_onboarding_part_2_message_1">»Click-to-call« ima atribute za določitev, ali gre za:</string>
+    <string name="create_external_call_view_onboarding_part_2_message_2">avdio in/ali video klic</string>
+    <string name="create_external_call_view_onboarding_part_2_message_3">posamezen ali skupinski klic</string>
+    <string name="create_external_call_view_onboarding_part_2_message_4">vedno odprt ali omejen na določen datum in čas.</string>
+    <string name="create_external_call_view_onboarding_part_3_message_1">Delite povezavo ali QR-kodo »click-to-call« prek kanalov, ki omogočajo doseganje ustreznih ljudi, npr.:</string>
+    <string name="create_external_call_view_onboarding_part_3_message_2">»poziv k dejanju« na vaši spletni strani</string>
+    <string name="create_external_call_view_onboarding_part_3_message_3">oglas na platformi z malimi oglasi</string>
+    <string name="create_external_call_view_onboarding_part_3_message_4">e-pošta ljudem, povabljenim v skupinski klic</string>
+    <string name="create_external_call_view_onboarding_part_3_message_5">znak na vaših vhodnih vratih za dostavljavce.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_1">Prejemniki skenirajo QR-kodo in odprejo povezavo v brskalniku na mobilni napravi ali računalniku. Nato lahko:</string>
+    <string name="create_external_call_view_onboarding_part_4_message_2">spremenijo privzeto ime (Gost), ki jih predstavlja v klicu</string>
+    <string name="create_external_call_view_onboarding_part_4_message_3">vas pokličejo s pritiskom na gumb »Kliči« na spletni strani.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_4">po klicu lahko spletno stran pustijo odprto, da vas pokličejo nazaj.</string>
+    <string name="create_external_call_view_onboarding_title_2">Nastavite Click-to-call</string>
+    <string name="create_external_call_view_onboarding_title_3">Delite Click-to-call</string>
+    <string name="create_external_call_view_onboarding_title_4">Uporabite Click-to-call</string>
+    <string name="create_external_call_view_placeholder">Tema (Pomoč, Oglas, Sestanek, Zvonček, …)</string>
+    <string name="create_external_call_view_recurrent_link_description">Prilagodite dneve/čase veljavnosti povezave</string>
+    <string name="create_external_call_view_recurrent_link_title">Periodična</string>
+    <string name="create_external_call_view_unique_link_description">Nastavite začetni in končni datum veljavnosti povezave</string>
+    <string name="create_external_call_view_unique_link_title">Enkratna uporaba</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_view_add_member_hint">Povabi člane</string>
+    <string name="create_group_view_create">Ustvari</string>
+    <string name="create_group_view_member_allow_invitation_message">Dovoli članom skupine, da povabijo svoje stike</string>
+    <string name="create_group_view_member_allow_invitation_title">Povabila članov</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_message">Dovoli članom, da povabijo druge člane kot osebne stike</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_title">Vzpostavi osebne stike</string>
+    <string name="create_group_view_member_allow_post_message">Dovoli članom skupine objavljanje sporočil</string>
+    <string name="create_group_view_member_allow_post_title">Objavljanje sporočil</string>
+    <string name="create_group_view_member_list">Seznam članov (%1$d)</string>
+    <string name="create_group_view_name_hint">Ime skupine</string>
+    <string name="create_group_view_subtitle">Povabite stike, da se pridružijo klepetalni skupini.</string>
+    <string name="create_group_view_title">Skupina</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_view_incomplete_profile_message">Tako ime KOT slika sta bistvena, da vas stiki prepoznajo in razlikujejo od drugih.</string>
+    <string name="create_profile_view_message">Ti podatki profila se uporabljajo za povabilo stikov.</string>
+    <string name="create_profile_view_onboarding_message">Vnesite profil (ime &amp; slika), ki vas predstavlja vašim stikom.</string>
+    <string name="create_profile_view_onboarding_message_part_1">Profili omogočajo, da povabite stike k ustvarjanju odnosov z vami v aplikaciji. Imate lahko toliko profilov (person), kolikor želite, vsakega povezanega z določenim »Prostorom«.</string>
+    <string name="create_profile_view_onboarding_message_part_2">Vsak »Profil« ima »Ime« in »Sliko« (obvezno), ki ju vidijo stiki, ki jih povabite, in se uporabljata kot vaš začetni Profil, povezan z novo ustvarjenimi odnosi tega »Prostora«.</string>
+    <string name="create_profile_view_onboarding_message_part_3">Ko je odnos ustvarjen, ima vsak odnos svoj par »Profilov«, ki vas in vaše stike predstavljata drug drugemu.</string>
+    <string name="create_profile_view_onboarding_message_part_4">Nato lahko neodvisno prilagodite, kako želite biti znani vsakemu od svojih stikov, za vsak odnos posebej.</string>
+    <string name="create_profile_view_save_message">To ime in slika se uporabljata za povabilo stikov in inicializacijo vaših odnosov. Za vsak odnos ju boste lahko pozneje spremenili in prilagodili.</string>
+    <string name="create_profile_view_welcome1">Vnesite svojo profilno sliko</string>
+    <string name="create_profile_view_welcome2">Dobrodošli, %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_view_message">»Prostori« so lokalni in niso vidni stikom.</string>
+    <string name="create_space_view_onboarding_message_part_1">»Prostori« vam pomagajo organizirati stike glede na to, kateremu družbenemu krogu pripadajo, npr. Družina, Prijatelji, Posel, Zabava itd.</string>
+    <string name="create_space_view_onboarding_message_part_2">Vsak »Prostor« je povezan s »Profilom«, ki predstavlja persono, ki jo želite uporabiti pri interakciji s stiki iz družbenega kroga tega »Prostora«, npr. Oče, Johny, dr. John Doe, Batman itd.</string>
+    <string name="create_space_view_onboarding_message_part_3">»Prostori« so lokalni v vaši aplikaciji na vaši napravi. Vidni so samo vam in ne vašim stikom niti strežnikom storitve.</string>
+    <string name="create_space_view_onboarding_message_part_4">»Prostor« ima:</string>
+    <string name="create_space_view_onboarding_message_part_5">- »Ime«, ki predstavlja določen družbeni krog, s katerim komunicirate</string>
+    <string name="create_space_view_onboarding_message_part_6">- »Sliko«, ki vam omogoča hitro prepoznavo na seznamu »Prostorov«</string>
+    <string name="create_space_view_onboarding_message_part_7">- barvno »Temo« za personalizacijo videza &amp; občutka</string>
+    <string name="create_space_view_onboarding_message_part_8">- »Nastavitve«, ki so lahko specifične za posamezen »Prostor« in s tem preglasijo privzete vrednosti, določene v nastavitvah aplikacije.</string>
+    <string name="create_space_view_title">Ustvari Prostor</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_view_message">Ta profil je povezan s kodo, ki se uporablja za prenos tekočega klica v brskalnik.</string>
+    <string name="create_transfert_call_view_name_placeholder">Moji prenosi klicev</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_view_confirm_message">Za potrditev izbrisa računa spodaj vnesite črke »OK«.</string>
+    <string name="deleted_account_view_delete">Izbriši račun</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_view_message">Vaš račun je bil izbrisan in vsi povezani podatki so bili uničeni.&lt;br /&gt;
+        Zapreti morate aplikacijo.</string>
+    <string name="deleted_account_view_warning">Opozorilo‼️</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_view_confirm_message">Ali ste prepričani, da želite izbrisati ta odnos?</string>
+    <string name="edit_contact_view_message">Ta stik vas ne bo več mogel doseči.</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_view_delete_confirm_message">Ali ste prepričani, da želite izbrisati to kodo »Click-to-Call«?</string>
+    <string name="edit_external_call_view_delete_message">Ta povezava »Click-to-Call« ne bo več uporabna.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_view_delete_message">Izbris tega profila bo razveljavil njegovo povezano kodo povabila. Potrdite izbris?</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_view_editing_profile">Uredi profil</string>
+    <string name="edit_profile_view_propagating_all_contacts">vsem stikom v tem Prostoru</string>
+    <string name="edit_profile_view_propagating_ask_message">Razširi sliko, ime ali opis, ki ste ga pravkar spremenili:</string>
+    <string name="edit_profile_view_propagating_except_contacts">vsem, razen če so prilagojeni</string>
+    <string name="edit_profile_view_propagating_message">Spremembe profila za povabila lahko razširite na obstoječe stike ali pa ne.</string>
+    <string name="edit_profile_view_propagating_no_contact">nikomur</string>
+    <string name="edit_profile_view_propagating_profile">Razširi spremembe profila</string>
+    <string name="edit_profile_view_remove_active_profile">Aktivnega profila ni mogoče odstraniti</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_view_certified_message">Ko je odnos ustvarjen, je močno priporočljivo, da ga certificirate in s tem okrepite njegovo varnost.</string>
+    <string name="enter_invitation_code_view_enter_code">Vnesite Mini-kodo</string>
+    <string name="enter_invitation_code_view_error_message">Ta koda ni veljavna. Morda je bila že uporabljena ali je potekla.</string>
+    <string name="enter_invitation_code_view_invitation_message">Ko je odnos ustvarjen, ga ne pozabite certificirati, da okrepite njegovo varnost.</string>
+    <string name="enter_invitation_code_view_message">Vnesite Mini-kodo, ki vam jo je posredoval vaš stik, da ustvarite odnos.</string>
+    <string name="enter_invitation_code_view_onboarding_message">Stik vam je dal 6-znakovno Mini-kodo za ustvarjanje odnosa. Ta enkratna Mini-koda poteče 24 ur po nastanku.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_view_all_conversations_zip_file">Vsebina pogovorov bo izvožena v ZIP datoteko.</string>
+    <string name="export_view_content_title">Vsebina</string>
+    <string name="export_view_content_to_export">Vsebina za izvoz</string>
+    <string name="export_view_do_not_leave_screen">Med izvozom ne zapuščajte zaslona.</string>
+    <string name="export_view_export">Izvozi</string>
+    <string name="export_view_file">datoteka</string>
+    <string name="export_view_files">datoteke</string>
+    <string name="export_view_get_all_content">Pridobivanje vsebine pogovora z %1$s poteka.</string>
+    <string name="export_view_get_one_chat">Pridobivanje vsebine pogovorov poteka.</string>
+    <string name="export_view_images">Slike</string>
+    <string name="export_view_no_content_to_export">Ni vsebine za izvoz</string>
+    <string name="export_view_one_conversation_zip_file">Vsebina pogovora bo izvožena v ZIP datoteko.</string>
+    <string name="export_view_save_location">Lokacija</string>
+    <string name="export_view_save_location_message">Izberite, kam želite izvoziti.</string>
+    <string name="export_view_select_content">Izberite vsebino, ki jo želite izvoziti.\nIzvoziti je mogoče le ne-ephemeral vsebino, ki jo je dovoljeno kopirati/shraniti/deliti.</string>
+    <string name="export_view_success">Izvoz je bil uspešno zaključen.</string>
+    <string name="export_view_title">Izvoz pogovorov</string>
+    <string name="export_view_videos">Videi</string>
+    <string name="export_view_voice_messages">Glasovna sporočila</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_view_error_code_message">Usodna napaka, koda %1$d.\nProsimo, znova zaženite aplikacijo in, če lahko, prijavite težavo prek povratnega sporočila. Oprostite za nevšečnosti.</string>
+    <string name="fatal_error_view_error_message">Usodna napaka: %1$s&lt;br /&gt;
+        Zapreti morate aplikacijo.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_view_contact">Kontakt</string>
+    <string name="feedback_view_gdpr_notice">Uporabite ta obrazec za zahtevo dostopa do podatkov vašega računa.</string>
+    <string name="feedback_view_help">Cenimo vašo pomoč pri prepoznavanju težav in sodelovanju z nami pri njihovem odpravljanju.</string>
+    <string name="feedback_view_info_logs">Dnevnik razhroščevanja vsebuje le nizkonivojske tehnične podatke o dejavnostih in vedenju aplikacije ter NE razkriva nobenih vaših osebnih podatkov.</string>
+    <string name="feedback_view_logs">Dnevnik razhroščevanja</string>
+    <string name="feedback_view_message">Sporočilo</string>
+    <string name="feedback_view_send">Pošlji</string>
+    <string name="feedback_view_send_logs">Pošlji dnevnik razhroščevanja</string>
+    <string name="feedback_view_send_message">Povratne informacije so bile poslane. Hvala.</string>
+    <string name="feedback_view_subject">Zadeva</string>
+    <string name="feedback_view_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_view_generate_code_message">To dejanje razveljavi trenutno kodo povabila, povezano s tem profilom. Ali ste prepričani, da želite ustvariti novo kodo?</string>
+    <string name="fullscreen_qrcode_view_generate_code_title">Ustvari novo kodo povabila</string>
+    <string name="fullscreen_qrcode_view_save_message">Uvozite ali skenirajte to QR-kodo povabila s twinme, da dodate ta stik.</string>
+    <string name="fullscreen_qrcode_view_save_title">Shrani v galerijo fotografij</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_view_information_audio_call">Dovoli glasovne klice</string>
+    <string name="group_capabilities_view_information_programmed_call">Načrtuj datum/čas klicev</string>
+    <string name="group_capabilities_view_information_video_call">Dovoli video klice</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_view_admin_not_authorize">Skrbnik skupine tega dejanja ni dovolil.</string>
+    <string name="group_member_view_invitation_message">Povabi %1$s kot osebni stik</string>
+    <string name="group_member_view_invitation_title">Povabilo</string>
+    <string name="group_member_view_invite_personnal_relation">Povabi kot osebni stik</string>
+    <string name="group_member_view_remove_message">Ali ste prepričani, da želite odstraniti člane iz te skupine?</string>
+    <string name="group_member_view_section_administrator">Skrbnik</string>
+    <string name="group_member_view_section_invitation">Povabila</string>
+    <string name="group_member_view_section_member">Člani</string>
+    <string name="group_member_view_title">Člani skupine</string>
+
+    <!-- HelpActivity -->
+    <string name="help_view_standard_services">Standardne storitve</string>
+    <string name="help_view_advanced_functions">Napredne funkcije</string>
+    <string name="help_view_additional_features">Dodatne funkcije</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_view_call_terminated_reason_busy">%1$s je zaseden</string>
+    <string name="info_item_view_call_terminated_reason_cancel">Klic je preklical/-a %1$s</string>
+    <string name="info_item_view_call_terminated_reason_decline">Klic je zavrnil/-a %1$s</string>
+    <string name="info_item_view_call_terminated_reason_gone">%1$s je brez povezave</string>
+    <string name="info_item_view_call_terminated_reason_not_authorized">Ni dovoljeno klicati</string>
+    <string name="info_item_view_call_terminated_reason_revoked">%1$s je odstranil/-a ta odnos</string>
+    <string name="info_item_view_call_terminated_reason_timeout">%1$s se ne oglasi</string>
+    <string name="info_item_view_deleted">Izbrisano s strani prejemnika:</string>
+    <string name="info_item_view_may_be_copied">Dovoljeno kopiranje/shranjevanje/deljenje…</string>
+    <string name="info_item_view_may_not_be_copied">Kopiranje/shranjevanje/deljenje ni dovoljeno…</string>
+    <string name="info_item_view_not_delivered">Ni dostavljeno</string>
+    <string name="info_item_view_not_delivered_expiration">Sporočila po 15 dneh ni bilo mogoče dostaviti.</string>
+    <string name="info_item_view_not_delivered_storage">Naprava prejemnika nima dovolj prostora za shranjevanje, da bi prejela to vsebino.</string>
+    <string name="info_item_view_not_delivered_update">Aplikacijo prejemnika je treba posodobiti.</string>
+    <string name="info_item_view_reactions">Reakcije</string>
+    <string name="info_item_view_received">Prejeto:</string>
+    <string name="info_item_view_seen">Videno:</string>
+    <string name="info_item_view_sent">Poslano:</string>
+    <string name="info_item_view_updated">Urejeno</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_view_generate_code_message">To dejanje razveljavi trenutno kodo povabila, povezano s to povezavo »click-to-call«. Potrdite?</string>
+    <string name="invitation_call_view_generate_code_title">Ustvari novo kodo za to povezavo</string>
+    <string name="invitation_call_view_invite_meeting_message">Odprite spletni naslov %1$s ali skenirajte QR-kodo, da se pridružite srečanju »%2$s«.</string>
+    <string name="invitation_call_view_invite_message">Odprite spletni naslov %1$s ali skenirajte QR-kodo, da pokličete »%2$s«.</string>
+    <string name="invitation_call_view_message">Delite to kodo »click-to-call« z nekom, ki vas lahko nato pokliče prek spleta ali mobilne aplikacije.</string>
+    <string name="invitation_call_view_save_message">Skenirajte to QR-kodo, da pokličete »%1$s«.</string>
+    <string name="invitation_call_view_share">Objavi</string>
+    <string name="invitation_call_view_title">Zunanji klic</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_view_create_code">Ustvari Mini-kodo</string>
+    <string name="invitation_code_view_create_code_subtitle">za povabilo stika, ko nimate dostopa do aplikacije.</string>
+    <string name="invitation_code_view_expiration">Poteče:</string>
+    <string name="invitation_code_view_history">Moje Mini-kode</string>
+    <string name="invitation_code_view_limit_message">Doseženo je največje dovoljeno število aktivnih Mini-kod. Za ustvarjanje novih morate počakati 24 ur.</string>
+    <string name="invitation_code_view_onboarding_message">Mini-kode so enkratne in veljajo samo 24 ur. Lahko jih daste svojim stikom za ustvarjanje odnosa, ko nimate dostopa do aplikacije (npr. brez telefona).</string>
+    <string name="invitation_code_view_success_message">Močno priporočamo, da odnose, vzpostavljene z Mini-kodo, certificirate, da okrepite njihovo varnost.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_view_message">Prosite prijatelja v svoji bližini, naj s twinme skenira QR-kodo »sobe«, ali tapnite kodo povabila, da jo kopirate v odložišče.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_view_audio">Glas</string>
+    <string name="last_calls_view_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_view_message">Vaš račun twinme na tej napravi bo prenesen na twinme+.</string>
+    <string name="local_account_migration_view_message_older_version">Pred začetkom prenosa poskrbite, da sta obe napravi posodobljeni na najnovejšo različico aplikacije, da se izognete izgubi vseh odnosov.</string>
+
+    <!-- MainActivity -->
+    <string name="main_view_add_contact">Dodaj stik</string>
+    <string name="main_view_add_group">Ustvari skupino</string>
+    <string name="main_view_reset_conversation">Ponastavi</string>
+    <string name="main_view_reset_conversation_message">Ponastavitev tega pogovora bo izbrisala vsa sporočila, tudi tista na napravi vašega stika. Potrdite?</string>
+    <string name="main_view_reset_conversation_title">Ponastavi pogovor</string>
+    <string name="main_view_reset_group_conversation_admin_message">Ponastavitev tega pogovora bo izbrisala vsa sporočila iz naprave vsakega člana skupine. Potrdite?</string>
+    <string name="main_view_reset_group_conversation_message">Ponastavitev tega pogovora bo odstranila vsa sporočila z vaše naprave. Potrdite?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_view_premium_feature">Za uporabo te funkcije morate nadgraditi na twinme+. Prenesli boste lahko vse podatke svojega računa.</string>
+    <string name="migration_twinme_plus_view_premium_title">Nadgradite na twinme+</string>
+    <string name="migration_twinme_plus_view_upgrade_account">Prenesli boste lahko vse podatke svojega računa.</string>
+    <string name="migration_twinme_plus_view_upgrade_message">twinme je na voljo kot premium različica z še več funkcijami.</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_view_about_twinme">O aplikaciji</string>
+    <string name="navigation_view_application_settings">Nastavitve aplikacije</string>
+    <string name="navigation_view_feedback">Povratne informacije</string>
+    <string name="navigation_view_getting_started">Začetek</string>
+    <string name="navigation_view_help">Pomoč</string>
+    <string name="navigation_view_profile">Profili</string>
+    <string name="navigation_view_settings">Nastavitve</string>
+    <string name="navigation_view_sign_out">Odjava</string>
+    <string name="navigation_view_sounds">Zvoki</string>
+    <string name="navigation_view_support">Podpora</string>
+    <string name="navigation_view_title">Meni</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Glasovni klic osebi %1$s</string>
+    <string name="notification_center_audio_message">Poslal/-a vam je glasovno sporočilo</string>
+    <string name="notification_center_audio_message_received">Novo glasovno sporočilo</string>
+    <string name="notification_center_cancel">Opusti</string>
+    <string name="notification_center_cleanup_conversation">Nekaj starih sporočil je bilo izbrisanih.</string>
+    <string name="notification_center_conference_join_call">Eden udeleženec se je pridružil klicu.</string>
+    <string name="notification_center_deleted_contact">Stik izbrisan</string>
+    <string name="notification_center_file_message">Poslal/-a vam je datoteko</string>
+    <string name="notification_center_file_message_received">Nova datoteka</string>
+    <string name="notification_center_invitation">Poslal/-a vam je povabilo</string>
+    <string name="notification_center_invitation_group">vas vabi, da se pridružite skupini.</string>
+    <string name="notification_center_invitation_received">Novo povabilo</string>
+    <string name="notification_center_invitation_group_received">Novo povabilo v skupino</string>
+    <string name="notification_center_join_call">%1$s se je pravkar pridružil/-a klicu</string>
+    <string name="notification_center_join_group">Ste član skupine</string>
+    <string name="notification_center_message_received">Novo sporočilo</string>
+    <string name="notification_center_missed_audio_call_to">Zgrešen glasovni klic osebi %1$s</string>
+    <string name="notification_center_missed_video_call_to">Zgrešen video klic osebi %1$s</string>
+    <string name="notification_center_mute">Utišaj</string>
+    <string name="notification_center_new_contact">Nov stik</string>
+    <string name="notification_center_poll_message">Vam je poslal anketo</string>
+    <string name="notification_center_poll_message_received">Nova anketa</string>
+    <string name="notification_center_poll_vote">Je odgovoril na anketo</string>
+    <string name="notification_center_photo_message">Poslal/-a vam je fotografijo</string>
+    <string name="notification_center_photo_message_received">Nova fotografija</string>
+    <string name="notification_center_reaction">reagiral/-a %1$s</string>
+    <string name="notification_center_reaction_message">Reakcija na sporočilo</string>
+    <string name="notification_center_reaction_message_received">Reakcija na sporočilo</string>
+    <string name="notification_center_reset_message">Pogovor je počiščen</string>
+    <string name="notification_center_stop">Ustavi</string>
+    <string name="notification_center_transfering_data">Prenos sporočil …</string>
+    <string name="notification_center_unmute">Vklopi zvok</string>
+    <string name="notification_center_updated_contact_avatar">Slika posodobljena</string>
+    <string name="notification_center_updated_contact_name">Ime posodobljeno</string>
+    <string name="notification_center_video_call_to">Video klic osebi %1$s</string>
+    <string name="notification_center_video_message">Poslal/-a vam je video</string>
+    <string name="notification_center_video_message_received">Nov video</string>
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Glasovni klici</string>
+    <string name="notification_channel_contact_title">Stiki</string>
+    <string name="notification_channel_group_title">Skupine</string>
+    <string name="notification_channel_message_title">Sporočila</string>
+    <string name="notification_channel_missed_title">Zgrešeni klici</string>
+    <string name="notification_channel_system_title">Drugo</string>
+    <string name="notification_channel_video_title">Video klici</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_view_item_audio_call">Poskusil/-a vas je poklicati</string>
+    <string name="notifications_view_item_audio_message">Poslal/-a vam je glasovno sporočilo</string>
+    <string name="notifications_view_item_cleanup_message">je počistil/-a nekaj starih sporočil.</string>
+    <string name="notifications_view_item_deleted_contact">Stik izbrisan</string>
+    <string name="notifications_view_item_file_message">Poslal/-a vam je datoteko</string>
+    <string name="notifications_view_item_image_message">Poslal/-a vam je fotografijo</string>
+    <string name="notifications_view_item_invitation">Poslal/-a vam je povabilo</string>
+    <string name="notifications_view_item_invitation_group">vas vabi, da se pridružite skupini.</string>
+    <string name="notifications_view_item_join_group">Ste član skupine</string>
+    <string name="notifications_view_item_new_contact">Nov stik</string>
+    <string name="notifications_view_item_reset_conversation">je ponastavil/-a pogovor</string>
+    <string name="notifications_view_item_poll_message">Vam je poslal anketo</string>
+    <string name="notifications_view_item_shortest_day">%1$dd</string>
+    <string name="notifications_view_item_shortest_hour">%1$dh</string>
+    <string name="notifications_view_item_shortest_minute">%1$dm</string>
+    <string name="notifications_view_item_shortest_second">%1$ds</string>
+    <string name="notifications_view_item_text_message">Poslal/-a vam je sporočilo</string>
+    <string name="notifications_view_item_updated_contact_avatar">Slika posodobljena</string>
+    <string name="notifications_view_item_updated_contact_name">Ime posodobljeno</string>
+    <string name="notifications_view_item_video_call">Poskusil/-a vas je video poklicati</string>
+    <string name="notifications_view_item_video_message">Poslal/-a vam je video</string>
+    <string name="notifications_view_no_notification_message">Obvestila, povezana s stiki, pogovori, klici itd., so navedena tukaj.</string>
+    <string name="notifications_view_no_notification_title">Nimate obvestil.</string>
+    <string name="notifications_view_reset">Ali ste prepričani, da želite ponastaviti vsa obvestila?</string>
+    <string name="notifications_view_reset_title">Ponastavi obvestila</string>
+    <string name="notifications_view_title">Obvestila</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_view_font">Pisave</string>
+    <string name="personalization_view_font_extra_large">Zelo velika</string>
+    <string name="personalization_view_font_large">Velika</string>
+    <string name="personalization_view_font_small">Majhna</string>
+    <string name="personalization_view_haptic_feedback">Haptični odziv</string>
+    <string name="personalization_view_haptic_feedback_message">Taktilni občutek ob dotiku.</string>
+    <string name="personalization_view_menu_choose_color">Privzete barve</string>
+    <string name="personalization_view_menu_enter_color">Koda barve</string>
+    <string name="personalization_view_mode">Način</string>
+    <string name="personalization_view_mode_dark">Temni</string>
+    <string name="personalization_view_mode_light">Svetli</string>
+    <string name="personalization_view_start_tab_information">Izberite zavihek, na katerem želite zagnati aplikacijo.</string>
+    <string name="personalization_view_start_tab_title">Privzeti zavihek</string>
+    <string name="personalization_view_system">Sistem</string>
+    <string name="personalization_view_title">Personalizacija</string>
+
+    <!-- PollActivity -->
+    <string name="poll_view_add_response">Dodaj odgovor</string>
+    <string name="poll_view_allow_multiple">Dovoli več odgovorov</string>
+    <string name="poll_view_ask_question">Postavi vprašanje</string>
+    <string name="poll_view_choice">Izbira %1$d</string>
+    <string name="poll_view_enter_response">Vnesite odgovor</string>
+    <string name="poll_view_title">Anketa</string>
+    <string name="poll_view_results">Poglej rezultate</string>
+
+    <!-- PreviewFilesActivity -->
+    <string name="preview_files_view_resize_message">Spreminjanje velikosti pred pošiljanjem ...</string>
+    <string name="preview_files_view_retrieving_media_message">Pridobivanje medijev v teku ...</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_view_camera_control_description_1">Preklop sprednje/zadnje kamere</string>
+    <string name="premium_services_view_camera_control_description_2">Povečaj/pomanjšaj</string>
+    <string name="premium_services_view_camera_control_description_3">Za pomoč bližnjemu ali stranki na daljavo</string>
+    <string name="premium_services_view_camera_control_description_4">Za upravljanje videonadzorne kamere</string>
+    <string name="premium_services_view_camera_control_subtitle">Z dovoljenjem upravljajte kamero svojega stika med klicem</string>
+    <string name="premium_services_view_camera_control_title">Oddaljeni nadzor kamere</string>
+    <string name="premium_services_view_click_to_call_description_1">Ustvarite kodo »klikni, da me pokličeš«</string>
+    <string name="premium_services_view_click_to_call_description_2">Objavite ali razširite na kateri koli način</string>
+    <string name="premium_services_view_click_to_call_description_3">Prejemniki skenirajo kodo in vas pokličejo</string>
+    <string name="premium_services_view_click_to_call_description_4">Anonimno, brez sledi v oblaku</string>
+    <string name="premium_services_view_click_to_call_subtitle">Gostom omogočite, da vas pokličejo prek spleta</string>
+    <string name="premium_services_view_click_to_call_title">Click-to-call</string>
+    <string name="premium_services_view_conversation_description_1">Mediji, datoteke, glasovne opombe, sporočila</string>
+    <string name="premium_services_view_conversation_description_2">Starejše od določenega obdobja/datuma</string>
+    <string name="premium_services_view_conversation_description_3">Za en pogovor ali vse</string>
+    <string name="premium_services_view_conversation_description_4">Samo lokalno, brez vpliva na drugo stran</string>
+    <string name="premium_services_view_conversation_subtitle">Izvozite vsebino in sprostite prostor</string>
+    <string name="premium_services_view_conversation_title">Upravljanje pogovorov</string>
+    <string name="premium_services_view_description_part1_subtitle">Neposredna povezava med napravami</string>
+    <string name="premium_services_view_description_part1_title">HD kakovost zvoka/videa</string>
+    <string name="premium_services_view_description_part2_subtitle">Brez sledi v oblaku</string>
+    <string name="premium_services_view_description_part2_title">Zasebnost – zaupnost</string>
+    <string name="premium_services_view_description_part3_subtitle">Energijska učinkovitost</string>
+    <string name="premium_services_view_description_part3_title">Eko-odgovorno</string>
+    <string name="premium_services_view_group_call_description_1">Visokoločljivostni zvok/video</string>
+    <string name="premium_services_view_group_call_description_2">Neposredna povezava med napravami</string>
+    <string name="premium_services_view_group_call_description_3">Varno &amp; zasebno</string>
+    <string name="premium_services_view_group_call_description_4">Brez sledi v oblaku</string>
+    <string name="premium_services_view_group_call_subtitle">Povabite stike v glasovni/video skupinski klic</string>
+    <string name="premium_services_view_group_call_title">Skupinski klici</string>
+    <string name="premium_services_view_privacy_description_1">Zaklenite aplikacijo z biometrijo ali drugo overitvijo</string>
+    <string name="premium_services_view_privacy_description_2">Skrij zadnji zaslon v preklopniku aplikacij</string>
+    <string name="premium_services_view_privacy_description_3">Ephemeral sporočila, ki izginejo po določenem času</string>
+    <string name="premium_services_view_privacy_description_4">Preprečite, da bi vas stik klical</string>
+    <string name="premium_services_view_privacy_subtitle">Nadzor nad aplikacijo, stiki &amp; sporočili</string>
+    <string name="premium_services_view_privacy_title">Več zasebnosti</string>
+    <string name="premium_services_view_space_description_1">Več profilov s pripadajočimi odnosi, pogovori, zgodovino</string>
+    <string name="premium_services_view_space_description_2">Prilagojen videz, obvestila &amp; nastavitve</string>
+    <string name="premium_services_view_space_description_3">Za družino, prijatelje, sodelavce, posel, šport itd.</string>
+    <string name="premium_services_view_space_description_4">Skrivni Prostori niso na seznamu, dostopni po imenu</string>
+    <string name="premium_services_view_space_subtitle">Za vsako družbeno skupino, s katero komunicirate</string>
+    <string name="premium_services_view_space_title">Prostori</string>
+    <string name="premium_services_view_streaming_description_1">Delite svojo glasbo v živo</string>
+    <string name="premium_services_view_streaming_description_2">Vsak udeleženec lahko upravlja predvajalnik</string>
+    <string name="premium_services_view_streaming_description_3">Hkrati komunicirajte med klicem</string>
+    <string name="premium_services_view_streaming_description_4">Enaka zasebnost kot v resničnem življenju</string>
+    <string name="premium_services_view_streaming_subtitle">Delite medije med klicem</string>
+    <string name="premium_services_view_streaming_title">Deljenje medijev</string>
+    <string name="premium_services_view_title">Povabite stike, da se pridružijo tekočemu glasovnemu/video klicu.</string>
+    <string name="premium_services_view_transfert_description_1">Ustvarite kodo in profil za prenos klica</string>
+    <string name="premium_services_view_transfert_description_2">Naložite njen URL ali skenirajte kodo na računalniku</string>
+    <string name="premium_services_view_transfert_description_3">Dodajte stran med zaznamke v brskalniku</string>
+    <string name="premium_services_view_transfert_description_4">Na strani pritisnite »Kliči« med mobilnim klicem</string>
+    <string name="premium_services_view_transfert_subtitle">Prenesite mobilni klic v brskalnik</string>
+    <string name="premium_services_view_transfert_title">Prenos klica</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_view_coach_mark">Zaklenite aplikacijo z biometričnimi storitvami ali s PIN-kodo.</string>
+    <string name="privacy_view_hide_last_screen_message">In skrijte aplikacijo, ko deluje v ozadju, če naprava to omogoča.</string>
+    <string name="privacy_view_hide_last_screen_title">Prepovej posnetke zaslona</string>
+    <string name="privacy_view_lock_screen_message">Odklenite dostop do aplikacije z biometričnimi storitvami ali storitvami preverjanja pristnosti z geslom naprave. Še vedno lahko odgovarjate na dohodne klice in prejemate obvestila, medtem ko je dostop do aplikacije zaklenjen.</string>
+    <string name="privacy_view_lock_screen_not_available">Ta možnost zahteva različico Androida &gt; 5.0</string>
+    <string name="privacy_view_lock_screen_timeout">Časovna omejitev zaklepa dostopa</string>
+    <string name="privacy_view_lock_screen_timeout_instant">Takoj</string>
+    <string name="privacy_view_lock_screen_title">Zaklep dostopa</string>
+    <string name="privacy_view_title">Zasebnost</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_view_add_profile">Dodaj profil</string>
+    <string name="profile_view_create_profile">Ustvari profil</string>
+    <string name="profile_view_default_action">Aktiviraj</string>
+    <string name="profile_view_default_profile_title">Aktivni profil</string>
+    <string name="profile_view_identity_title">Profili</string>
+    <string name="profile_view_message">Ta profil vam omogoča, da povabite svoje stike k vzpostavitvi zasebnega odnosa z vami, pod vašim nadzorom.</string>
+    <string name="profile_view_twincode_title">Koda za povabilo</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_view_add">Dodaj proxy</string>
+    <string name="proxy_view_add_placeholder">Prilepite ali vnesite URL proxya</string>
+    <string name="proxy_view_already_use">Ta proxy je v vaši aplikaciji že konfiguriran.</string>
+    <string name="proxy_view_enable">Uporabi proxy</string>
+    <string name="proxy_view_format">Veljavni formati URL proxya:</string>
+    <string name="proxy_view_information">Proxy uporabite samo, če se s storitvijo ne morete povezati prek običajnih omrežij Wi-Fi ali mobilnih omrežij.</string>
+    <string name="proxy_view_invalid_format">Neveljaven format URL-ja</string>
+    <string name="proxy_view_limit">Dosegli ste omejitev števila dovoljenih proxyjev (%1$d). Če želite dodati novega, morate najprej odstraniti enega.</string>
+    <string name="proxy_view_list">Moji proxyji</string>
+    <string name="proxy_view_list_information">Proxy s spodnjega seznama uporabite samo, če se aplikacija brez proxya ne more povezati s storitvijo.</string>
+    <string name="proxy_view_onboarding">Ko je dostop do signalnih strežnikov aplikacije v vaši državi blokiran, lahko proxyji v mnogih primerih obidejo te blokade in vam omogočijo zasebno komunikacijo. Poleg proxyjev v aplikaciji lahko ustvarite svojega ali uporabite proxy, ki ga je ustvaril nekdo drug. Proxyji v nobenem primeru ne morejo dostopati do izmenjevane vsebine.</string>
+    <string name="proxy_view_share">Odprite povezavo %1$s s twinme na svoji napravi, da samodejno konfigurirate ta proxy.</string>
+    <string name="proxy_view_share_message">Delite ta proxy s tistimi, ki se zaradi poskusov blokiranja ne morejo več povezati s storitvijo.</string>
+    <string name="proxy_view_title">Proxy</string>
+    <string name="proxy_view_url">Ali želite uporabiti URL tega proxya?</string>
+    <string name="proxy_view_warning">Opozorilo! URL tega proxya ne omogoča povezave s storitvijo aplikacije.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_view_change_permissions">Spremeni dovoljenja</string>
+    <string name="quality_of_service_view_enable_notifications">Omogoči obvestila</string>
+    <string name="quality_of_service_view_enable_notifications_warning">Brez teh dovoljenj lahko sporočila do cilja potujejo zelo dolgo.</string>
+    <string name="quality_of_service_view_notification_description">Dovoli delovanje aplikacije v ozadju</string>
+    <string name="quality_of_service_view_notification_title">Izmenjava sporočil je prepočasna?</string>
+    <string name="quality_of_service_view_settings">V sistemskih nastavitvah spremenite dovoljenja aplikacije.</string>
+    <string name="quality_of_service_view_step1_message">Šifrirana sporočila se izmenjujejo neposredno med napravami v realnem času z uporabo pristopa »peer-to-peer«, brez strežnikov za distribucijo vsebine. To zagotavlja, da v oblaku ni sledi, in nudi edinstveno zaščito zasebnosti.</string>
+    <string name="quality_of_service_view_step2_message">Za dobro kakovost storitve nastavite napravo tako, da aplikaciji dovoli prejemanje obvestil v ozadju in jo izključi iz optimizacij baterije.</string>
+    <string name="quality_of_service_view_step3_message">Aplikacijo uporabljajte pogosto, da ji operacijski sistem daje prednost in je ne prekine nepričakovano.\n\nIn ne pozabite o tem obvestiti svojih stikov!</string>
+    <string name="quality_of_service_view_warning_background_data">Dovoli aplikaciji uporabo mobilnih podatkov v ozadju.</string>
+    <string name="quality_of_service_view_warning_receive_notification">Dovoli aplikaciji prejemanje potisnih obvestil.</string>
+    <string name="quality_of_service_view_warning_run_background">Dovoli delovanje aplikacije v ozadju.</string>
+
+    <!-- RestoreActivity -->
+    <string name="restore_view_application_error">twinme+ mora biti nameščen na tej napravi, da lahko obnovite varnostno kopijo računa twinme+.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_one">Naprava, ki je naredila varnostno kopijo, je še vedno prijavljena.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_two">Če obnovite varnostno kopijo na to novo napravo, bo račun naprave, na kateri je bila varnostna kopija narejena, samodejno razveljavljen.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_three">Če želite prenesti svoj račun na novo napravo in imate še staro, je bolje uporabiti operacijo \\\"migracije računa\\\" namesto obnove varnostne kopije, saj bo prenesla tudi pogovore, obvestila in zgodovino.</string>
+    <string name="restore_view_confirm">Ali ste prepričani, da želite zamenjati trenutne podatke računa z naslednjimi podatki iz varnostne kopije?</string>
+    <string name="restore_view_confirm_restore">Ali še vedno želite obnoviti to varnostno kopijo?</string>
+    <string name="restore_view_content_contact_deleted_message">Podatkov, izbrisanih po varnostni kopiji, ni mogoče obnoviti.</string>
+    <string name="restore_view_content_profile_reset">Koda povabila se je spremenila.</string>
+    <string name="restore_view_content_profile_reset_message">Koda povabila, povezana z varnostno kopiranim profilom, je neveljavna. Med postopkom obnove bo ustvarjena nova koda povabila.</string>
+    <string name="restore_view_enter_words">Vnesite zaporedje 12 besed, ki omogoča dešifriranje varnostne kopije.</string>
+    <string name="restore_view_error_message">Napaka pri obnavljanju varnostne kopije.</string>
+    <string name="restore_view_error_message_verify_backup">Napaka pri preverjanju varnostne kopije.</string>
+    <string name="restore_view_file_not_supported">Datoteka varnostne kopije mora biti v formatu \"skrdbckp\".</string>
+    <string name="restore_view_more_recent_backup">Z istim računom je bila narejena novejša varnostna kopija.</string>
+    <string name="restore_view_onboarding">Obnova varnostne kopije bo zamenjala trenutne podatke računa.</string>
+    <string name="restore_view_onboarding_words">Za obnovitev varnostne kopije boste morali vnesti zaporedje 12 besed, ki omogoča njeno dešifriranje.</string>
+    <string name="restore_view_onboarding_verify">Preverite, da je varnostna kopija veljavna in posodobljena glede na vaše trenutne podatke.</string>
+    <string name="restore_view_paste">Prilepite seznam besed iz odložišča.</string>
+    <string name="restore_view_paste_error">Neveljaven seznam besed.</string>
+    <string name="restore_view_restore">Obnovi</string>
+    <string name="restore_view_select_backup">Izberite varnostno kopijo</string>
+    <string name="restore_view_state_restore_account">Obnavljanje računa…</string>
+    <string name="restore_view_state_restore_data">Obnavljanje podatkov…</string>
+    <string name="restore_view_state_restore_starting">Začetek obnove.</string>
+    <string name="restore_view_state_restore_verify_account">Preverjanje računa…</string>
+    <string name="restore_view_state_restore_verify_data">Preverjanje podatkov…</string>
+    <string name="restore_view_state_restore_verify_starting">Začetek preverjanja…</string>
+    <string name="restore_view_state_restore_wait_confirm">Čakanje na potrditev.</string>
+    <string name="restore_view_success">Obnovitev je bila uspešno zaključena!</string>
+    <string name="restore_view_success_message">Zaprite aplikacijo in jo znova zaženite za dostop do novih podatkov.</string>
+    <string name="restore_view_title">Obnova</string>
+    <string name="restore_view_verify_same_account">Preverjanje je treba opraviti na isti napravi, uporabljeni za varnostno kopijo.</string>
+    <string name="restore_view_warning">Obnova te varnostne kopije bo zamenjala vse trenutne podatke računa s podatki iz varnostne kopije.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_view_change_admin_title">Določi kot skrbnika</string>
+    <string name="room_members_view_delete_message">Potrdite odstranitev tega člana</string>
+    <string name="room_members_view_moderators_title">Moderator</string>
+    <string name="room_members_view_only_admin_message">Edinega skrbnika ni mogoče odstraniti.</string>
+    <string name="room_members_view_owner_title">Lastnik</string>
+    <string name="room_members_view_participants_title">Udeleženci</string>
+    <string name="room_members_view_remove_admin_title">Odstrani kot skrbnika</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_view_paste_code">Vnesite ali prilepite povezavo povabila</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_view_allow_copy_category_title">Dovoli prejemnikom kopiranje/shranjevanje/deljenje vaše vsebine</string>
+    <string name="settings_view_allow_copy_file_title">Katera koli vrsta datoteke</string>
+    <string name="settings_view_allow_copy_text_title">Besedilna sporočila</string>
+    <string name="settings_view_application_notifications">Obvestila aplikacije</string>
+    <string name="settings_view_audio_call_category_title">Glasovni klici</string>
+    <string name="settings_view_audio_call_notification_ringtone_title">Ime melodije zvonjenja</string>
+    <string name="settings_view_audio_call_notification_title">Melodija zvonjenja</string>
+    <string name="settings_view_audio_call_vibration_title">Vibriranje</string>
+    <string name="settings_view_authorization_title">Dovoljenja</string>
+    <string name="settings_view_call_item_menu_all">Vsi klici</string>
+    <string name="settings_view_chat_category_title">Sporočila</string>
+    <string name="settings_view_chat_ringtone_title">Ime zvoka</string>
+    <string name="settings_view_chat_title">Zvok</string>
+    <string name="settings_view_chat_vibration_title">Vibriranje</string>
+    <string name="settings_view_content_information">Ločljivost medijskih vsebin, poslanih v pogovoru: visoka ločljivost zahteva več podatkov in zato več časa za prenos.</string>
+    <string name="settings_view_content_title">Mediji</string>
+    <string name="settings_view_default_directory_title">Privzeti imenik za shranjevanje datotek</string>
+    <string name="settings_view_default_sound">Privzeto</string>
+    <string name="settings_view_default_value_message">Ti parametri se uporabljajo kot privzete vrednosti na ravni aplikacije.</string>
+    <string name="settings_view_display_call_menu_missed">Samo zgrešeni klici</string>
+    <string name="settings_view_display_call_menu_none">Brez klicev</string>
+    <string name="settings_view_display_call_none">Brez</string>
+    <string name="settings_view_display_call_title">Prikaži obvestila o klicih v pogovorih</string>
+    <string name="settings_view_display_notification_content_title">Prikaži vsebino sporočil</string>
+    <string name="settings_view_display_notification_like_title">Reakcije na sporočila</string>
+    <string name="settings_view_display_notification_sender_title">Prikaži pošiljatelja sporočila</string>
+    <string name="settings_view_ephemeral_message">Samodejno izbriši poslana sporočila</string>
+    <string name="settings_view_ephemeral_section_title">ŽIVLJENJSKA DOBA</string>
+    <string name="settings_view_ephemeral_title">Izginjajoče sporočilo</string>
+    <string name="settings_view_image_title">Fotografija</string>
+    <string name="settings_view_message_properties_title">Lastnosti sporočila</string>
+    <string name="settings_view_message_reactions_notification">Obvestilo o reakcijah na sporočila</string>
+    <string name="settings_view_permissions_title">DOVOLJENJA</string>
+    <string name="settings_view_reset_default_value">Ponastavi na privzete nastavitve</string>
+    <string name="settings_view_reset_preferences_button_title">Ponastavi na privzeto</string>
+    <string name="settings_view_reset_preferences_message">Ponastavi nastavitve obvestil na privzete nastavitve aplikacije.</string>
+    <string name="settings_view_reset_preferences_title">Ponastavi nastavitve</string>
+    <string name="settings_view_silent_mode">Tihi način</string>
+    <string name="settings_view_silent_sound">Tiho</string>
+    <string name="settings_view_sound_enabled_title">ZVOČNA OBVESTILA</string>
+    <string name="settings_view_system_notifications_title">Sistemska obvestila</string>
+    <string name="settings_view_system_settings_title">Sistemske nastavitve</string>
+    <string name="settings_view_turn_off_notification_sounds">Izklopi zvoke obvestil</string>
+    <string name="settings_view_video_call_category_title">Video klici</string>
+    <string name="settings_view_video_call_notification_ringtone_title">Ime melodije zvonjenja</string>
+    <string name="settings_view_video_call_notification_title">Melodija zvonjenja</string>
+    <string name="settings_view_video_call_vibration_title">Vibriranje</string>
+    <string name="settings_view_welcome_screen_category_title">DOBRODOŠLI</string>
+    <string name="settings_view_welcome_screen_summary">Prikaži uvodne zaslone</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_developer_settings">Nastavitve za razvijalce</string>
+    <string name="settings_advanced_view_status_connection_message">Preverite stanje povezave s storitvijo</string>
+    <string name="settings_advanced_view_status_connection_title">Stanje povezave</string>
+    <string name="settings_advanced_view_telecom">KLICI</string>
+    <string name="settings_advanced_view_telecom_enable">"Android izkušnja klicanja"</string>
+    <string name="settings_advanced_view_telecom_information">Privzeto aplikacija ne integrira Androidove izkušnje klicanja, saj lahko ta integracija v določenih situacijah in na nekaterih napravah povzroči težave pri prejemanju klicev. To integracijo lahko omogočite za boljše upravljanje klicev, če teh težav ne opažate.</string>
+    <string name="settings_advanced_view_title">Napredne nastavitve</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_view_allow_invite_as_personal_contact">Dovoli udeležencem, da povabijo druge udeležence kot osebne stike</string>
+    <string name="settings_room_view_allow_invite_contact">Dovoli udeležencem, da povabijo svoje stike</string>
+    <string name="settings_room_view_conference_notifications_inform">Prvi vstop/zadnji izhod</string>
+    <string name="settings_room_view_conference_notifications_noisy">Vsi vstopi/izhodi</string>
+    <string name="settings_room_view_conference_notifications_quiet">Tiho</string>
+    <string name="settings_room_view_display_members">Prikaži člane</string>
+    <string name="settings_room_view_room_type_channel">Kanal – enosmerno</string>
+    <string name="settings_room_view_room_type_channel_information">Sporočila lahko objavljajo samo skrbniki/moderatorji</string>
+    <string name="settings_room_view_room_type_feedback">Kanal – s povratnimi informacijami</string>
+    <string name="settings_room_view_room_type_feedback_information">Povratne informacije udeležencev vidijo samo skrbniki/moderatorji</string>
+    <string name="settings_room_view_room_type_forum">Forum</string>
+    <string name="settings_room_view_room_type_forum_information">Udeleženci lahko objavljajo sporočila, ki jih vidijo vsi</string>
+
+    <!-- ShareActivity -->
+    <string name="share_view_contact_list">Stiki</string>
+    <string name="share_view_group_list">Skupine</string>
+    <string name="share_view_title">Deli</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_view_code">Koda »click-to-call«</string>
+    <string name="show_call_view_conference_call_information">Delite to povezavo, da vas lahko pokličejo ali se pridružijo konferenci iz brskalnika.</string>
+    <string name="show_call_view_information_code">Delite to kodo za prejemanje zunanjih klicev.</string>
+    <string name="show_call_view_meeting_organizer">Organizator tega srečanja</string>
+    <string name="show_call_view_schedule_call">Načrtovan klic</string>
+    <string name="show_call_view_schedule_from">od %1$s</string>
+    <string name="show_call_view_schedule_from_to">%1$s od %2$s do %3$s</string>
+    <string name="show_call_view_schedule_message">Klic je načrtovan za datum in čas, določena drugje.</string>
+    <string name="show_call_view_schedule_to">do %1$s</string>
+    <string name="show_call_view_settings_call">Vrsta klica</string>
+    <string name="show_call_view_settings_end">Konec</string>
+    <string name="show_call_view_settings_group_calls">Skupinski klic</string>
+    <string name="show_call_view_settings_limited">Načrtovan</string>
+    <string name="show_call_view_settings_start">Začetek</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_view_audio">Glas</string>
+    <string name="show_contact_view_chat">Klepet</string>
+    <string name="show_contact_view_cleanup">Čiščenje</string>
+    <string name="show_contact_view_export_contents">Izvozi vsebino</string>
+    <string name="show_contact_view_history_title">Zgodovina</string>
+    <string name="show_contact_view_identity_title">Pozna me kot</string>
+    <string name="show_contact_view_last_calls">Zadnji klici</string>
+    <string name="show_contact_view_pending">V teku</string>
+    <string name="show_contact_view_pending_message">Ta odnos se vzpostavlja. Prosimo, počakajte.</string>
+    <string name="show_contact_view_revoked">Izbrisano</string>
+    <string name="show_contact_view_settings_coach_mark">Določite, kaj vaš stik sme početi v tem odnosu z vami.</string>
+    <string name="show_contact_view_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_view_add_member">Dodaj člana</string>
+    <string name="show_group_view_invitation_list">Povabila v teku: %1$d</string>
+    <string name="show_group_view_leave">Zapusti skupino</string>
+    <string name="show_group_view_leave_confirm_message">Ali ste prepričani, da želite zapustiti to skupino?</string>
+    <string name="show_group_view_leave_message">Zapustili boste to skupino in ne boste več mogli dostopati do njenih pogovorov.</string>
+    <string name="show_group_view_member_list">Seznam članov (%1$d)</string>
+    <string name="show_group_view_remove_confirm_message">Ali ste prepričani, da želite izbrisati to skupino?</string>
+    <string name="show_group_view_remove_message">Ta skupina bo izbrisana za vse člane, njeni pogovori pa bodo izbrisani.</string>
+    <string name="show_group_view_title">Skupina</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_view_admin_title">Administracijski vmesnik</string>
+    <string name="show_room_view_invite_participants">Povabi udeležence</string>
+    <string name="show_room_view_room_title">Soba</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_view_background_image_title">Slika</string>
+    <string name="space_appearance_view_background_message">Prilagodite ozadje pogovorov z barvo ali sliko.</string>
+    <string name="space_appearance_view_background_text_title">Besedilo</string>
+    <string name="space_appearance_view_background_title">Ozadje</string>
+    <string name="space_appearance_view_container_background_message">Ozadje poslanega sporočila</string>
+    <string name="space_appearance_view_container_background_peer_message">Ozadje prejetega sporočila</string>
+    <string name="space_appearance_view_container_border_message">Rob poslanega sporočila</string>
+    <string name="space_appearance_view_container_border_peer_message">Rob prejetega sporočila</string>
+    <string name="space_appearance_view_container_text_message">Besedilo poslanega sporočila</string>
+    <string name="space_appearance_view_container_text_peer_message">Besedilo prejetega sporočila</string>
+    <string name="space_appearance_view_container_title">Mehurčki</string>
+    <string name="space_appearance_view_default_value">Privzeta vrednost</string>
+    <string name="space_appearance_view_general_title">Splošno</string>
+    <string name="space_appearance_view_menu_choose_color">Privzete barve</string>
+    <string name="space_appearance_view_menu_enter_color">Koda barve</string>
+    <string name="space_appearance_view_opacity">Prosojnost</string>
+    <string name="space_appearance_view_preview_message">Pozabil/-a sem baletne copate… Mi jih lahko prineseš?😘</string>
+    <string name="space_appearance_view_preview_peer_message">Živjo, dragi/draga!</string>
+    <string name="space_appearance_view_preview_title">Predogled</string>
+    <string name="space_appearance_view_theme">Tema</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_view_message">Prostor je kraj, kjer se vaše različne osebnosti srečajo z vašimi različnimi družbenimi krogi, vključno z najbolj skrivnimi.</string>
+    <string name="spaces_view_sample_business">Posel</string>
+    <string name="spaces_view_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_view_sample_family">Družina</string>
+    <string name="spaces_view_sample_family_name">Oče</string>
+    <string name="spaces_view_sample_friends">Prijatelji</string>
+    <string name="spaces_view_sample_friends_name">Johny</string>
+    <string name="spaces_view_title">Prostori</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_view_error_message">Prišlo je do napake. Prosimo, poskusite znova.</string>
+    <string name="streaming_audio_view_no_music_message">Prosimo, prenesite glasbene datoteke v svojo napravo.</string>
+    <string name="streaming_audio_view_no_music_title">Ni bilo mogoče najti glasbe 🙁</string>
+    <string name="streaming_audio_view_title">Deljenje medijev</string>
+    <string name="streaming_audio_view_unsupported_message">Ta zvočni format ni podprt na napravi uporabnika %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_view_template_classified_ad">Mali oglas</string>
+    <string name="template_click_to_call_view_template_classified_ad_description">V mali oglas vstavite povezavo, ki potencialnim kupcem omogoča, da vas pokličejo brez namestitve aplikacije.</string>
+    <string name="template_click_to_call_view_template_classified_ad_placeholder">Oglas</string>
+    <string name="template_click_to_call_view_template_default_description">Povezavo za klic prilagodite po potrebi.</string>
+    <string name="template_click_to_call_view_template_help">Služba za pomoč strankam</string>
+    <string name="template_click_to_call_view_template_help_description">Povezava za klic vaše službe za pomoč strankam iz brskalnika.</string>
+    <string name="template_click_to_call_view_template_help_placeholder">Služba za pomoč strankam</string>
+    <string name="template_click_to_call_view_template_job">Razgovor za službo</string>
+    <string name="template_click_to_call_view_template_job_description">Povezava, ki zainteresiranim kadrovikom omogoča, da vas pokličejo za razgovor.</string>
+    <string name="template_click_to_call_view_template_job_placeholder">Razgovor za službo</string>
+    <string name="template_click_to_call_view_template_meeting">Sestanek</string>
+    <string name="template_click_to_call_view_template_meeting_description">Delite povezavo za pridružitev konferenci iz brskalnika.</string>
+    <string name="template_click_to_call_view_template_meeting_placeholder">Sestanek</string>
+    <string name="template_click_to_call_view_template_profile_description">Povezava za klic brez namestitve aplikacije.</string>
+    <string name="template_click_to_call_view_template_video_bell">Video domofon</string>
+    <string name="template_click_to_call_view_template_video_bell_description">Dostavljavcu omogočite, da vas pokliče za navodila.</string>
+    <string name="template_click_to_call_view_template_video_bell_placeholder">Domofon</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_view_template_business_placeholder">Ime (dr John Doe, gospa Smith,…)</string>
+    <string name="template_space_view_template_business_profile">Ga. Samantha Smith</string>
+    <string name="template_space_view_template_family_placeholder">Ime (oče, mama,…)</string>
+    <string name="template_space_view_template_family_profile">Mama</string>
+    <string name="template_space_view_template_friends_placeholder">Ime (Johny, Sam,…)</string>
+    <string name="template_space_view_template_friends_profile">Sam</string>
+    <string name="template_space_view_template_other">Drugo</string>
+    <string name="template_space_view_template_other_placeholder">Ime (oče, mama, Johny, dr John Doe,…)</string>
+    <string name="template_space_view_template_title">Predloge</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_view_delete_confirm_message">Ali ste prepričani, da želite izbrisati to kodo »Prenos klica«?</string>
+    <string name="transfert_call_view_delete_message">Povezava za prenos klica bo izbrisana. Potrdite?</string>
+    <string name="transfert_call_view_gallery_message">Skenirajte to QR-kodo za prenos svojih mobilnih klicev.</string>
+    <string name="transfert_call_view_message">Posredujte to kodo in dodajte njen URL med zaznamke v brskalniku, kamor želite prenesti mobilne klice.</string>
+    <string name="transfert_call_view_reset_message">To dejanje razveljavi trenutno kodo za prenos klica in ustvari novo. Potrdite?</string>
+    <string name="transfert_call_view_saved_message">Koda za prenos klica je shranjena v galerijo fotografij.</string>
+    <string name="transfert_call_view_share">Prenesi</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_view_message">Prosite prijatelja v svoji bližini, naj s twinme skenira vašo QR-kodo povabila, ali tapnite kodo povabila, da jo kopirate v odložišče.</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_view_update_available">Posodobitev je na voljo</string>
+    <string name="update_app_view_update_message">Najnovejša posodobitev aplikacije je vključevala naslednje:</string>
+    <string name="update_app_view_update_title">Posodobi zdaj</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_view_calling">Klicanje videa …</string>
+    <string name="video_call_view_cannot_call">Ni mogoče opraviti video klica</string>
+    <string name="video_call_view_connecting">Povezovanje …</string>
+    <string name="video_call_view_hangup_confirmation">Ali želite končati klic?</string>
+    <string name="video_call_view_terminate">Klic je bil prekinjen</string>
+    <string name="video_call_view_terminate_busy">Klic prekinjen: &lt;b&gt;%1$s&lt;/b&gt; je zaseden</string>
+    <string name="video_call_view_terminate_cancel">Klic je preklical/-a &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_connectivity_error">Klic je bil prekinjen zaradi težave s povezljivostjo. Preverite svojo internetno povezavo.</string>
+    <string name="video_call_view_terminate_decline">Klic je zavrnil/-a &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_disconnected">Klic je bil prekinjen zaradi omrežne napake. Prosimo, poskusite znova.</string>
+    <string name="video_call_view_terminate_gone">Klic prekinjen: &lt;b&gt;%1$s&lt;/b&gt; je brez povezave</string>
+    <string name="video_call_view_terminate_revoked">Klic končan: &lt;b&gt;%1$s&lt;/b&gt; je izbrisal/-a ta odnos z vami.</string>
+    <string name="video_call_view_terminate_success">Klic je prekinil/-a &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_timeout">Klic prekinjen: &lt;b&gt;%1$s&lt;/b&gt; se ne oglasi</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_view_accept">S pritiskom na %1$s potrjujem, da sem prebral/-a in sprejemam:</string>
+    <string name="welcome_view_next">Naprej</string>
+    <string name="welcome_view_pass">Preskoči</string>
+    <string name="welcome_view_privacy_policy">Politika zasebnosti</string>
+    <string name="welcome_view_start">Začni</string>
+    <string name="welcome_view_step1_message">Sporočanje &amp; visokoločljivostni glasovni/video klici z zaščito zasebnosti že po zasnovi.</string>
+    <string name="welcome_view_step2_message">Varna komunikacija »peer-to-peer«: brez sledi v oblaku.</string>
+    <string name="welcome_view_step3_message">Brez telefonske številke, brez imenika, brez uporabniškega ID-ja: sami izberete, kako želite biti identificirani glede na to, s kom komunicirate.</string>
+    <string name="welcome_view_terms_of_use">Pogoji uporabe</string>
+</resources>

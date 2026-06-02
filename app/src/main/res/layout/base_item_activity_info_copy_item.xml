@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_toEndOf="@+id/info_copy_item_image_view"
-            android:text="@string/info_item_activity_may_be_copied"
+            android:text="@string/info_item_view_may_be_copied"
             android:textColor="?attr/font_default_color"  />
 
         <View

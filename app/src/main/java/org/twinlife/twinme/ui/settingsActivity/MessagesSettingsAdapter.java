@@ -134,15 +134,15 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_ALLOW_COPY_INFORMATION) {
-                informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_allow_copy_category_title), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_allow_copy_category_title), true);
             } else if (position == POSITION_DISPLAY_CALLS_INFORMATION) {
-                informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_display_call_title), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_display_call_title), true);
             } else if (position == POSITION_CONTENT_INFORMATION) {
-                informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_content_information), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_content_information), true);
             } else if (position == POSITION_LINK_PREVIEW_INFORMATION) {
-                informationViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_activity_link_preview_message), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_view_link_preview_message), true);
             } else {
-                informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_ephemeral_message), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_ephemeral_message), true);
             }
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
@@ -155,27 +155,27 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             UISetting<Boolean> uiSetting = null;
 
             if (position == POSITION_LINK_PREVIEW) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.conversation_settings_activity_link_preview), Settings.visualizationLink);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.conversation_settings_view_link_preview), Settings.visualizationLink);
             } else {
                 switch (position) {
                     case POSITION_DISPLAY_NOTIFICATION_SENDER:
-                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_sender_title), Settings.displayNotificationSender);
+                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_display_notification_sender_title), Settings.displayNotificationSender);
                         break;
 
                     case POSITION_DISPLAY_NOTIFICATION_CONTENT:
-                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_content_title), Settings.displayNotificationContent);
+                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_display_notification_content_title), Settings.displayNotificationContent);
                         break;
 
                     case POSITION_DISPLAY_NOTIFICATION_LIKE:
-                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_like_title), Settings.displayNotificationLike);
+                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_display_notification_like_title), Settings.displayNotificationLike);
                         break;
 
                     case POSITION_ALLOW_COPY_TEXT:
-                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_allow_copy_text_title), Settings.messageCopyAllowed);
+                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_allow_copy_text_title), Settings.messageCopyAllowed);
                         break;
 
                     case POSITION_ALLOW_COPY_FILE:
-                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_allow_copy_file_title), Settings.fileCopyAllowed);
+                        uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_allow_copy_file_title), Settings.fileCopyAllowed);
                         break;
 
                     default:
@@ -189,13 +189,13 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
                 settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
             } else {
                 settingsViewHolder.itemView.setOnClickListener(v -> mListActivity.onPremiumFeatureClick());
-                settingsViewHolder.onBind(mListActivity.getString(R.string.settings_activity_ephemeral_title), false, false, null);
+                settingsViewHolder.onBind(mListActivity.getString(R.string.settings_view_ephemeral_title), false, false, null);
             }
         } else if (viewType == VALUE) {
             SettingValueViewHolder settingsViewHolder = (SettingValueViewHolder) viewHolder;
             UISetting<Integer> uiSetting;
             if (position == POSITION_CONTENT_MEDIA) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.settings_activity_content_title), Settings.qualityMedia);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.settings_view_content_title), Settings.qualityMedia);
             } else {
                 uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, "", Settings.displayCallsMode);
             }
@@ -253,17 +253,17 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
         String title = "";
 
         if (position == SECTION_NOTIFICATION) {
-            title = mListActivity.getString(R.string.settings_activity_system_notifications_title);
+            title = mListActivity.getString(R.string.settings_view_system_notifications_title);
         } else if (position == SECTION_COPY) {
-            title = mListActivity.getString(R.string.settings_activity_permissions_title);
+            title = mListActivity.getString(R.string.settings_view_permissions_title);
         } else if (position == SECTION_CALLS) {
-            title = mListActivity.getString(R.string.calls_fragment_title);
+            title = mListActivity.getString(R.string.calls_view_title);
         } else if (position == SECTION_EPHEMERAL) {
-            title = mListActivity.getString(R.string.settings_activity_ephemeral_section_title);
+            title = mListActivity.getString(R.string.settings_view_ephemeral_section_title);
         } else if (position == SECTION_CONTENT) {
-            title = mListActivity.getString(R.string.settings_activity_content_title);
+            title = mListActivity.getString(R.string.settings_view_content_title);
         } else if (position == SECTION_LINK) {
-            title = mListActivity.getString(R.string.conversation_settings_activity_link_title);
+            title = mListActivity.getString(R.string.conversation_settings_view_link_title);
         }
 
         return title;

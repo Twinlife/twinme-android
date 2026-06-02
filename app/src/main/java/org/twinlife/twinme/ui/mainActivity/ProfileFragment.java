@@ -563,8 +563,8 @@ public class ProfileFragment extends TabbarFragment implements ProfileService.Ob
             drawerLayout.addView(menuAddContactView);
 
             List<UIMenuSelectAction> actions = new ArrayList<>();
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_scan_contact_title), R.drawable.scan_code));
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_invite_contact_title), R.drawable.qrcode));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_scan_contact_title), R.drawable.scan_code));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_invite_contact_title), R.drawable.qrcode));
             menuAddContactView.setActions(actions, mTwinmeActivity);
             menuAddContactView.openMenu(false);
 

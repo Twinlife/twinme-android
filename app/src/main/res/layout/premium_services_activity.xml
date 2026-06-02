@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/migration_twinme_plus_activity_premium_title"
+                android:text="@string/migration_twinme_plus_view_premium_title"
                 app:layout_widthPercent="89.06%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

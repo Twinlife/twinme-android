@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/confirm_restore_view_slide_mark_view"
             android:gravity="center"
-            android:text="@string/deleted_account_activity_warning"
+            android:text="@string/deleted_account_view_warning"
             android:lines="1"
             app:layout_widthPercent="94%" />
 
@@ -40,7 +40,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/confirm_restore_view_title_view"
             android:gravity="center"
-            android:text="@string/restore_activity_warning"
+            android:text="@string/restore_view_warning"
             app:layout_widthPercent="94%" />
 
         <androidx.recyclerview.widget.RecyclerView

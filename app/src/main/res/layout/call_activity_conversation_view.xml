@@ -39,7 +39,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:hint="@string/conversation_activity_message"
+                android:hint="@string/conversation_view_message"
                 android:inputType="textMultiLine|textAutoCorrect|textAutoComplete|textCapSentences"
                 android:scrollbars="vertical"
                 app:layout_widthPercent="80.14%" />

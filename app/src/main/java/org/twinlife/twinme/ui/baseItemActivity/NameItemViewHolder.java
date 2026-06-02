@@ -10,6 +10,7 @@
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
@@ -29,6 +30,10 @@ class NameItemViewHolder extends BaseItemViewHolder {
         mTextView = view.findViewById(R.id.base_item_activity_name_item_text);
         Design.updateTextFont(mTextView, Design.FONT_REGULAR24);
         mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT;
+        mTextView.setLayoutParams(marginLayoutParams);
     }
 
     @Override

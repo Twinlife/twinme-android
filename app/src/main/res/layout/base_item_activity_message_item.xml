@@ -73,8 +73,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:textColor="@android:color/white"
-            app:layout_marginEndPercent="6.93%"
-            app:layout_marginStartPercent="29.60%" />
+            app:layout_marginEndPercent="6.93%" />
+
+        <ImageView
+            android:id="@+id/base_item_activity_message_item_error_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/base_item_activity_message_item_text"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:src="@drawable/info_item"
+            app:layout_aspectRatio="100%" />
 
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView
             android:id="@+id/base_item_activity_message_item_delete_view"

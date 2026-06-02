@@ -17,8 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.accountActivity.SettingIconViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
-import org.twinlife.twinme.utils.Utils;
+
+import java.util.List;
 
 public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String LOG_TAG = "HelpAdapter";
@@ -26,31 +29,16 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final HelpActivity mHelpActivity;
 
-    private final static int ITEM_COUNT = 14;
-
-    private static final int SECTION_INFO = 4;
-
-    protected static final int POSITION_HELP = 0;
-    protected static final int POSITION_FAQ = 1;
-    protected static final int POSITION_BLOG = 2;
-    protected static final int POSITION_FEEDBACK = 3;
-    protected static final int POSITION_WELCOME = 5;
-    protected static final int POSITION_QUALITY = 6;
-    protected static final int POSITION_PREMIUM = 7;
-    protected static final int POSITION_SPACES = 8;
-    protected static final int POSITION_PROFILE = 9;
-    protected static final int POSITION_CLICK_TO_CALL = 10;
-    protected static final int POSITION_CERTIFY_RELATION = 11;
-    protected static final int POSITION_ACCOUNT_TRANSFER = 12;
-    protected static final int POSITION_PROXY = 13;
-
     private static final int SECTION = 0;
     private static final int SUBSECTION = 1;
+
+    private final List<UIHelpItem> mItems = new java.util.ArrayList<>();
 
     HelpAdapter(HelpActivity helpActivity) {
 
         mHelpActivity = helpActivity;
-        setHasStableIds(true);
+        initItems();
+        setHasStableIds(false);
     }
 
     @Override
@@ -59,7 +47,7 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        return ITEM_COUNT;
+        return mItems.size();
     }
 
     @Override
@@ -68,7 +56,8 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == SECTION_INFO) {
+        UIHelpItem item = mItems.get(position);
+        if (item instanceof UIHelpSection) {
             return SECTION;
         } else {
             return SUBSECTION;
@@ -82,14 +71,15 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         int viewType = getItemViewType(position);
-
+        UIHelpItem item = mItems.get(position);
         if (viewType == SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mHelpActivity.getString(R.string.about_activity_information), false);
+            sectionTitleViewHolder.onBind(item.getTitle(), false);
         } else if (viewType == SUBSECTION) {
-            SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
-            settingSectionViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(position));
-            settingSectionViewHolder.onBind(getSubSectionTitle(position), false);
+            UIHelpSubSection subSection = (UIHelpSubSection) item;
+            SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
+            settingIconViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(subSection.getHelpSubSectionType()));
+            settingIconViewHolder.onBind(subSection.getTitle(), Design.FONT_COLOR_DEFAULT, subSection.getIcon(), Design.BLACK_COLOR, false);
         }
     }
 
@@ -107,8 +97,8 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             convertView = inflater.inflate(R.layout.section_title_item, parent, false);
             return new SectionTitleViewHolder(convertView);
         } else {
-            convertView = inflater.inflate(R.layout.settings_activity_item_section, parent, false);
-            return new SettingSectionViewHolder(convertView);
+            convertView = inflater.inflate(R.layout.setting_icon_item, parent, false);
+            return new SettingIconViewHolder(convertView);
         }
     }
 
@@ -119,19 +109,20 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         int position = viewHolder.getBindingAdapterPosition();
-        int viewType = getItemViewType(position);
 
         if (position != -1) {
+            int viewType = getItemViewType(position);
+            UIHelpItem item = mItems.get(position);
             if (viewType == SECTION) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-                sectionTitleViewHolder.onBind(mHelpActivity.getString(R.string.about_activity_information), false);
+                sectionTitleViewHolder.onBind(item.getTitle(), false);
             } else if (viewType == SUBSECTION) {
-                SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
-                settingSectionViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(position));
-                settingSectionViewHolder.onBind(getSubSectionTitle(position), false);
+                UIHelpSubSection subSection = (UIHelpSubSection) item;
+                SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
+                settingIconViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(subSection.getHelpSubSectionType()));
+                settingIconViewHolder.onBind(subSection.getTitle(), Design.FONT_COLOR_DEFAULT, subSection.getIcon(), Design.BLACK_COLOR, false);
             }
         }
-
     }
 
     @Override
@@ -152,84 +143,43 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         super.onViewAttachedToWindow(viewHolder);
 
         int position = viewHolder.getBindingAdapterPosition();
-        int viewType = getItemViewType(position);
 
         if (position != -1) {
+            int viewType = getItemViewType(position);
+            UIHelpItem item = mItems.get(position);
             if (viewType == SECTION) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-                sectionTitleViewHolder.onBind(mHelpActivity.getString(R.string.about_activity_information), false);
+                sectionTitleViewHolder.onBind(item.getTitle(), false);
             } else if (viewType == SUBSECTION) {
-                SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
-                settingSectionViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(position));
-                settingSectionViewHolder.onBind(getSubSectionTitle(position), false);
+                UIHelpSubSection subSection = (UIHelpSubSection) item;
+                SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
+                settingIconViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(subSection.getHelpSubSectionType()));
+                settingIconViewHolder.onBind(subSection.getTitle(), Design.FONT_COLOR_DEFAULT, subSection.getIcon(), Design.BLACK_COLOR, false);
             }
         }
     }
 
-    private String getSubSectionTitle(int position) {
+    private void initItems() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "getSubSectionTitle: " + position);
+            Log.d(LOG_TAG, "initItems");
         }
 
-        String title = "";
-        switch (position) {
+        mItems.clear();
 
-            case POSITION_HELP:
-                title = mHelpActivity.getString(R.string.navigation_activity_getting_started);
-                break;
+        List<UIHelpSection> sections = new java.util.ArrayList<>();
+        sections.add(new UIHelpSection(mHelpActivity, UIHelpSection.HelpSectionType.GENERAL));
+        sections.add(new UIHelpSection(mHelpActivity, UIHelpSection.HelpSectionType.STANDARD_SERVICES));
+        sections.add(new UIHelpSection(mHelpActivity, UIHelpSection.HelpSectionType.PREMIUM_SERVICES));
+        sections.add(new UIHelpSection(mHelpActivity, UIHelpSection.HelpSectionType.ADVANCED_SERVICES));
 
-            case POSITION_FAQ:
-                title = mHelpActivity.getString(R.string.navigation_activity_faq);
-                break;
-
-            case POSITION_BLOG:
-                title = mHelpActivity.getString(R.string.navigation_activity_blog);
-                break;
-
-            case POSITION_FEEDBACK:
-                title = mHelpActivity.getString(R.string.navigation_activity_feedback);
-                break;
-
-            case POSITION_WELCOME:
-                title = Utils.capitalizeString(mHelpActivity.getString(R.string.settings_activity_welcome_screen_category_title));
-                break;
-
-            case POSITION_QUALITY:
-                title = mHelpActivity.getString(R.string.about_activity_quality_of_service);
-                break;
-
-            case POSITION_PREMIUM:
-                title = mHelpActivity.getString(R.string.about_activity_premium_services);
-                break;
-
-            case POSITION_SPACES:
-                title = mHelpActivity.getString(R.string.premium_services_activity_space_title);
-                break;
-
-            case POSITION_PROFILE:
-                title = mHelpActivity.getString(R.string.application_profile);
-                break;
-
-            case POSITION_CLICK_TO_CALL:
-                title = mHelpActivity.getString(R.string.premium_services_activity_click_to_call_title);
-                break;
-
-            case POSITION_CERTIFY_RELATION:
-                title = mHelpActivity.getString(R.string.authentified_relation_activity_title);
-                break;
-
-            case POSITION_ACCOUNT_TRANSFER:
-                title = mHelpActivity.getString(R.string.account_activity_transfer_between_devices);
-                break;
-
-            case POSITION_PROXY:
-                title = mHelpActivity.getString(R.string.proxy_activity_title);
-                break;
-
-            default:
-                break;
+        for (UIHelpSection section : sections) {
+            if (section.getTitle() != null && !section.getTitle().isEmpty()) {
+                mItems.add(section);
+            }
+            mItems.addAll(section.getItems());
         }
 
-        return title;
+        notifyItemRangeChanged(0, mItems.size());
     }
+
 }

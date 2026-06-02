@@ -11,8 +11,7 @@
         <TextView
             android:id="@+id/base_item_activity_name_item_text"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_marginStartPercent="12.8%" />
+            android:layout_height="match_parent" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

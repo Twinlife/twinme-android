@@ -95,7 +95,7 @@ public class UIGroupConversation extends UIConversation {
     public String getLastMessage(Context context) {
 
         if (mGroupConversationState == ConversationService.GroupConversation.State.CREATED) {
-            return context.getString(R.string.conversation_activity_invitation_accepted);
+            return context.getString(R.string.conversation_view_invitation_accepted);
         } else {
             return super.getLastMessage(context);
         }

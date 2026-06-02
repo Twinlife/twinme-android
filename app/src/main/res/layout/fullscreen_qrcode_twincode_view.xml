@@ -116,7 +116,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="top|center_horizontal"
         android:lines="5"
-        android:text="@string/fullscreen_qrcode_activity_save_message"
+        android:text="@string/fullscreen_qrcode_view_save_message"
         app:layout_widthPercent="89.06%"
         app:layout_marginTopPercent="4.35%" />
 

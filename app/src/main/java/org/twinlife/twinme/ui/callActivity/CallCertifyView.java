@@ -153,8 +153,8 @@ public class CallCertifyView extends PercentRelativeLayout  {
         if (name != null) {
             mName = name;
             mNameView.setText(mName);
-            mMessageView.setText(String.format(getResources().getString(R.string.call_activity_repeat_word), mName));
-            mSuccessMessageView.setText(String.format(getResources().getString(R.string.authentified_relation_activity_certified_message), mName));
+            mMessageView.setText(String.format(getResources().getString(R.string.call_view_repeat_word), mName));
+            mSuccessMessageView.setText(String.format(getResources().getString(R.string.authentified_relation_view_certified_message), mName));
         }
     }
 
@@ -187,13 +187,13 @@ public class CallCertifyView extends PercentRelativeLayout  {
         }
 
         if (mWordCheckChallenge.checker) {
-            mTitleView.setText(getResources().getString(R.string.call_activity_confirm_word_title));
-            mMessageView.setText(String.format(getResources().getString(R.string.call_activity_confirm_word), mName));
+            mTitleView.setText(getResources().getString(R.string.call_view_confirm_word_title));
+            mMessageView.setText(String.format(getResources().getString(R.string.call_view_confirm_word), mName));
             mCancelView.setVisibility(VISIBLE);
             mConfirmView.setVisibility(VISIBLE);
         } else {
-            mTitleView.setText(getResources().getString(R.string.call_activity_repeat_word_title));
-            mMessageView.setText(String.format(getResources().getString(R.string.call_activity_repeat_word), mName));
+            mTitleView.setText(getResources().getString(R.string.call_view_repeat_word_title));
+            mMessageView.setText(String.format(getResources().getString(R.string.call_view_repeat_word), mName));
             mCancelView.setVisibility(INVISIBLE);
             mConfirmView.setVisibility(INVISIBLE);
         }
@@ -228,7 +228,7 @@ public class CallCertifyView extends PercentRelativeLayout  {
         mCancelView.setVisibility(GONE);
         mConfirmView.setVisibility(GONE);
         mTitleView.setVisibility(GONE);
-        mMessageView.setText(String.format(getResources().getString(R.string.call_activity_certify_error_message), mName));
+        mMessageView.setText(String.format(getResources().getString(R.string.call_view_certify_error_message), mName));
         mWordCheckChallenge = null;
         resetBulletsView();
         Handler handler = new Handler();

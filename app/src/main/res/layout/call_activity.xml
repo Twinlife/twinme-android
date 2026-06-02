@@ -147,7 +147,7 @@
             app:layout_aspectRatio="100%"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/call_activity_chronometer_view"
-            android:contentDescription="@string/add_call_participant_activity_title">
+            android:contentDescription="@string/add_call_participant_view_title">
 
             <ImageView
                 android:id="@+id/call_activity_add_participant_image_view"
@@ -189,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/call_activity_name_view"
             android:layout_alignParentEnd="true"
-            android:text="@string/audio_call_activity_calling"
+            android:text="@string/audio_call_view_calling"
             android:visibility="gone"
             app:layout_marginTopPercent="1.8%" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -199,7 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/call_activity_transfert_call_message"
+        android:text="@string/call_view_transfer_call_message"
         android:visibility="gone" />
 
     <androidx.percentlayout.widget.PercentRelativeLayout

@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/calls_fragment_create_link" />
+            android:text="@string/calls_view_create_link" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

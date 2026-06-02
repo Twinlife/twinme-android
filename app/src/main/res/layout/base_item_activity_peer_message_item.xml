@@ -35,8 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentBottom="true"
-            app:layout_aspectRatio="100%"
-            app:layout_marginStartPercent="3.47%" />
+            app:layout_aspectRatio="100%" />
 
         <View
             android:id="@+id/base_item_activity_peer_message_item_reply_view"
@@ -80,9 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:textColor="@android:color/black"
-            app:layout_marginStartPercent="12.8%"
-            app:layout_marginEndPercent="15.73%" />
+            android:textColor="@android:color/black" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_peer_message_item_ephemeral_content_view"
@@ -104,8 +101,7 @@
         android:id="@+id/base_item_activity_peer_message_item_annotation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/base_item_activity_peer_message_item_layout_container"
-        app:layout_marginStartPercent="12.8%" />
+        android:layout_below="@+id/base_item_activity_peer_message_item_layout_container" />
 
     <View
         android:id="@+id/base_item_activity_peer_message_item_overlay_view"

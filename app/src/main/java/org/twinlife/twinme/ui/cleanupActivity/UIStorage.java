@@ -60,15 +60,15 @@ public class UIStorage {
         String  title = "";
         switch (mStorageType) {
             case TOTAL:
-                title = context.getString(R.string.cleanup_activity_total);
+                title = context.getString(R.string.cleanup_view_total);
                 break;
 
             case USED:
-                title = context.getString(R.string.cleanup_activity_used);
+                title = context.getString(R.string.cleanup_view_used);
                 break;
 
             case FREE:
-                title = context.getString(R.string.cleanup_activity_free);
+                title = context.getString(R.string.cleanup_view_free);
                 break;
 
             case APP:
@@ -79,7 +79,7 @@ public class UIStorage {
                 if (mName != null) {
                     title = mName;
                 } else {
-                    title = context.getString(R.string.conversations_fragment_title);
+                    title = context.getString(R.string.conversations_view_title);
                 }
                 break;
         }

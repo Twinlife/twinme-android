@@ -321,24 +321,24 @@ public class MenuSelectValueView extends RelativeLayout {
 
         switch (mMenuType) {
             case QUALITY_MEDIA: {
-                mTitleView.setText(mActivity.getString(R.string.conversation_activity_media_quality_title));
+                mTitleView.setText(mActivity.getString(R.string.conversation_view_media_quality_title));
                 break;
             }
 
             case DISPLAY_CALLS:
-                mTitleView.setText(mActivity.getString(R.string.settings_activity_display_call_title));
+                mTitleView.setText(mActivity.getString(R.string.settings_view_display_call_title));
                 break;
 
             case PROFILE_UPDATE_MODE:
-                mTitleView.setText(mActivity.getString(R.string.edit_profile_activity_propagating_profile));
+                mTitleView.setText(mActivity.getString(R.string.edit_profile_view_propagating_profile));
                 break;
 
             case EXTERNAL_CALL_TYPE:
-                mTitleView.setText(mActivity.getString(R.string.create_external_call_activity_call_type));
+                mTitleView.setText(mActivity.getString(R.string.create_external_call_view_call_type));
                 break;
 
             case EXTERNAL_CALL_EXPIRATION:
-                mTitleView.setText(mActivity.getString(R.string.create_external_call_activity_link_validity));
+                mTitleView.setText(mActivity.getString(R.string.create_external_call_view_link_validity));
                 break;
 
             default:

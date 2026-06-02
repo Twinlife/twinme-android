@@ -97,7 +97,7 @@ public class PeerClearItemViewHolder extends PeerItemViewHolder {
         super.onBind(item);
 
         PeerClearItem peerClearItem = (PeerClearItem) item;
-        mResetView.setText(String.format(getString(R.string.conversation_activity_cleanup_conversation_by_peer), peerClearItem.getName()));
+        mResetView.setText(String.format(getString(R.string.conversation_view_cleanup_conversation_by_peer), peerClearItem.getName()));
 
         getBaseItemActivity().getContactAvatar(null, (Bitmap avatar) -> {
             if (avatar != null) {

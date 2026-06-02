@@ -53,7 +53,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/migration_twinme_plus_activity_image_view"
         android:gravity="center_horizontal"
-        android:text="@string/migration_twinme_plus_activity_updgrade_message"
+        android:text="@string/migration_twinme_plus_view_upgrade_message"
         app:layout_widthPercent="94.67%"
         app:layout_marginTopPercent="6.59%" />
 
@@ -64,7 +64,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/migration_twinme_plus_activity_migration_text_view"
         android:gravity="center_horizontal"
-        android:text="@string/migration_twinme_plus_activity_updgrade_account"
+        android:text="@string/migration_twinme_plus_view_upgrade_account"
         app:layout_widthPercent="94.67%"
         app:layout_marginTopPercent="2.25%" />
 
@@ -82,7 +82,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/migration_twinme_plus_activity_premium_title"
+            android:text="@string/migration_twinme_plus_view_premium_title"
             app:layout_widthPercent="89.06%" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

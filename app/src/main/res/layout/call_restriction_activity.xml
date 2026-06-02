@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/about_activity_quality_of_service"
+                android:text="@string/about_view_quality_of_service"
                 android:layout_below="@+id/call_restriction_activity_logo" />
 
             <ImageView
@@ -62,7 +62,7 @@
                 android:layout_centerHorizontal="true"
                 android:scrollbars="vertical"
                 android:gravity="center"
-                android:text="@string/call_activity_battery_restriction_message"
+                android:text="@string/call_view_battery_restriction_message"
                 app:layout_widthPercent="88.27%" />
 
             <androidx.percentlayout.widget.PercentRelativeLayout

@@ -151,10 +151,10 @@ public class RoomMemberListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         if (viewType == ADMIN_TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.group_member_activity_section_administrator), false);
+            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.group_member_view_section_administrator), false);
         } else if (viewType == MEMBERS_TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.room_members_activity_participants_title), false);
+            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.room_members_view_participants_title), false);
         } else if (viewType == ADMIN) {
             boolean hideSeparator = mUIAdmins.size() == position;
             RoomMemberViewHolder roomMemberViewHolder = (RoomMemberViewHolder) viewHolder;

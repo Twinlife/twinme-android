@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -72,6 +73,8 @@ public class AddParticipantsRoomActivity extends AbstractTwinmeActivity implemen
     private Contact mRoom;
     private UUID mRoomId;
 
+    @Nullable
+    private Uri mInvitationLink;
     private InvitationRoomService mInvitationRoomService;
 
     //
@@ -93,7 +96,9 @@ public class AddParticipantsRoomActivity extends AbstractTwinmeActivity implemen
         } else {
             finish();
         }
-
+        if (intent.hasExtra(Intents.INTENT_INVITATION_LINK)) {
+            mInvitationLink = Uri.parse(intent.getStringExtra(Intents.INTENT_INVITATION_LINK));
+        }
         initViews();
     }
 
@@ -171,7 +176,7 @@ public class AddParticipantsRoomActivity extends AbstractTwinmeActivity implemen
         MenuItem menuItem = menu.findItem(R.id.add_action);
 
         TextView titleView = (TextView) menuItem.getActionView();
-        String title = menuItem.getTitle().toString();
+        String title = String.valueOf(menuItem.getTitle());
 
         if (titleView != null) {
             Design.updateTextFont(titleView, Design.FONT_BOLD36);
@@ -266,7 +271,7 @@ public class AddParticipantsRoomActivity extends AbstractTwinmeActivity implemen
         setToolBar(R.id.add_participants_room_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.contacts_fragment_invite_contact_title));
+        setTitle(getString(R.string.contacts_view_invite_contact_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.add_participants_room_activity_layout, R.id.add_participants_room_activity_tool_bar, R.id.add_participants_room_activity_list_view, Design.TOOLBAR_COLOR, false);
@@ -351,7 +356,7 @@ public class AddParticipantsRoomActivity extends AbstractTwinmeActivity implemen
         mSelectedUIContactRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         mSelectedUIContactRecyclerView.setItemAnimator(null);
 
-        mInvitationRoomService = new InvitationRoomService(this, getTwinmeContext(), this, mRoomId);
+        mInvitationRoomService = new InvitationRoomService(this, getTwinmeContext(), this, mRoomId, mInvitationLink);
 
         mUIContactListAdapter = new UISelectableContactListAdapter(this, mInvitationRoomService, ITEM_VIEW_HEIGHT, mUIContacts,
                 R.layout.add_group_member_contact_item, R.id.add_group_member_activity_contact_item_name_view,

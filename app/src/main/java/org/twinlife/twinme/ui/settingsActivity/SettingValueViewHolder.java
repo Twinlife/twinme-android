@@ -73,19 +73,19 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         String value = "";
         if (uiSetting.isSetting(Settings.qualityMedia)) {
             if (uiSetting.getInteger() == TwinmeApplication.QualityMedia.STANDARD.ordinal()) {
-                title = itemView.getContext().getString(R.string.conversation_activity_media_quality_standard);
-                value = itemView.getContext().getString(R.string.conversation_activity_media_quality_standard_subtitle);
+                title = itemView.getContext().getString(R.string.conversation_view_media_quality_standard);
+                value = itemView.getContext().getString(R.string.conversation_view_media_quality_standard_subtitle);
             } else {
-                title = itemView.getContext().getString(R.string.conversation_activity_media_quality_original);
-                value = itemView.getContext().getString(R.string.conversation_activity_media_quality_original_subtitle);
+                title = itemView.getContext().getString(R.string.conversation_view_media_quality_original);
+                value = itemView.getContext().getString(R.string.conversation_view_media_quality_original_subtitle);
             }
         } else if (uiSetting.isSetting(Settings.displayCallsMode)) {
             if (uiSetting.getInteger() == DisplayCallsMode.NONE.ordinal()) {
-                value = itemView.getContext().getString(R.string.settings_activity_display_call_none);
+                value = itemView.getContext().getString(R.string.settings_view_display_call_none);
             } else if (uiSetting.getInteger() == DisplayCallsMode.MISSED.ordinal()) {
-                value = itemView.getContext().getString(R.string.calls_fragment_missed_call_segmented_control);
+                value = itemView.getContext().getString(R.string.calls_view_missed_call_segmented_control);
             } else {
-                value = itemView.getContext().getString(R.string.calls_fragment_all_call_segmented_control);
+                value = itemView.getContext().getString(R.string.calls_view_all_call_segmented_control);
             }
         }
 

@@ -160,9 +160,9 @@ public class TemplateExternalCallAdapter extends RecyclerView.Adapter<RecyclerVi
         }
 
         mUITemplateItems.clear();
-        mUITemplateItems.add(new UITemplateSection(mTemplateActivity.getString(R.string.create_external_call_activity_conference_call_title)));
+        mUITemplateItems.add(new UITemplateSection(mTemplateActivity.getString(R.string.create_external_call_view_conference_call_title)));
         mUITemplateItems.add(new UITemplateExternalCall(mTemplateActivity, UITemplateExternalCall.TemplateType.MEETING));
-        mUITemplateItems.add(new UITemplateSection(mTemplateActivity.getString(R.string.create_external_call_activity_direct_call_title)));
+        mUITemplateItems.add(new UITemplateSection(mTemplateActivity.getString(R.string.create_external_call_view_direct_call_title)));
         mUITemplateItems.add(new UITemplateExternalCall(mTemplateActivity, UITemplateExternalCall.TemplateType.HELP));
         mUITemplateItems.add(new UITemplateExternalCall(mTemplateActivity, UITemplateExternalCall.TemplateType.JOB));
         mUITemplateItems.add(new UITemplateExternalCall(mTemplateActivity, UITemplateExternalCall.TemplateType.CLASSIFIED_AD));

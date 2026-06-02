@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:text="@string/show_call_activity_settings_start"/>
+        android:text="@string/show_call_view_settings_start"/>
 
     <RelativeLayout
         android:id="@+id/contact_capabilities_activity_schedule_item_date_view"

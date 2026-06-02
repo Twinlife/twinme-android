@@ -168,10 +168,10 @@ public class ShareListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         if (viewType == CONTACTS_TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_activity_contact_list), false);
+            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_view_contact_list), false);
         } else if (viewType == GROUPS_TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_activity_group_list), false);
+            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_view_group_list), false);
         } else if (viewType == CONTACTS && position >= mMinContactPosition && position - mMinContactPosition < mUIContacts.size()) {
             boolean hideSeparator = position - 1 == mUIContacts.size();
             ((UISelectableContactViewHolder) viewHolder).onBind(mListActivity, mUIContacts.get(position - mMinContactPosition), hideSeparator, true, false);

@@ -183,6 +183,14 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
                 convertView = inflater.inflate(R.layout.base_item_activity_peer_file_item, parent, false);
                 return new PeerFileItemViewHolder(mBaseItemActivity, convertView, true, true);
 
+            case POLL:
+                convertView = inflater.inflate(R.layout.base_item_activity_poll_item, parent, false);
+                return new PollItemViewHolder(mBaseItemActivity, convertView);
+
+            case PEER_POLL:
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_poll_item, parent, false);
+                return new PeerPollItemViewHolder(mBaseItemActivity, convertView);
+
             case INVITATION:
                 convertView = inflater.inflate(R.layout.base_item_activity_invitation_item, parent, false);
 

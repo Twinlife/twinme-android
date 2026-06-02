@@ -195,12 +195,12 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         String callType = "";
         if (callDescriptor.isIncoming()) {
             if (uiOriginator != null && uiOriginator.getContact().getType() == Originator.Type.CALL_RECEIVER) {
-                callType = context.getString(R.string.premium_services_activity_click_to_call_title);
+                callType = context.getString(R.string.premium_services_view_click_to_call_title);
             } else {
-                callType = context.getString(R.string.calls_fragment_incoming_call);
+                callType = context.getString(R.string.calls_view_incoming_call);
             }
         } else {
-            callType = context.getString(R.string.calls_fragment_outgoing_call);
+            callType = context.getString(R.string.calls_view_outgoing_call);
         }
 
         if (!callDuration.isEmpty()) {
@@ -211,7 +211,7 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
 
         if (!callDescriptor.isAccepted() && callDescriptor.isIncoming() && callDescriptor.getTerminateReason() != null) {
             mNameView.setTextColor(Design.DELETE_COLOR_RED);
-            mTypeView.setText(context.getString(R.string.calls_fragment_missed_call));
+            mTypeView.setText(context.getString(R.string.calls_view_missed_call));
         } else {
             mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
         }

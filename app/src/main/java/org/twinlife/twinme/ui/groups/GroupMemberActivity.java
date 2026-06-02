@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2021 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -34,6 +34,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
 import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
+import org.twinlife.twinlife.Permission;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
@@ -75,8 +76,6 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
     private View mFallbackView;
 
     private boolean mUIInitialized = false;
-    @Nullable
-    private Group mGroup;
     private final List<UIContact> mUIMembers = new ArrayList<>();
     private final List<UIInvitation> mUIInvitations = new ArrayList<>();
     @Nullable
@@ -189,9 +188,9 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             }
 
             // If the user has permissions to invite other users, display the add member button.
-            mCanInvite = conversation.hasPermission(ConversationService.Permission.INVITE_MEMBER);
-            mCanRemove = conversation.hasPermission(ConversationService.Permission.REMOVE_MEMBER);
-            mCanInviteMemberAsContact = conversation.hasPermission(ConversationService.Permission.SEND_TWINCODE);
+            mCanInvite = conversation.hasPermission(Permission.INVITE_MEMBER);
+            mCanRemove = conversation.hasPermission(Permission.REMOVE_MEMBER);
+            mCanInviteMemberAsContact = conversation.hasPermission(Permission.SEND_TWINCODE);
         } else {
             mFallbackView.setVisibility(View.VISIBLE);
 
@@ -422,7 +421,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             if (canInvite) {
                 inviteMember(mSelectedContact);
             } else {
-                showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.group_member_activity_admin_not_authorize), false, null);
+                showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
             }
         }
 
@@ -440,7 +439,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
 
                 closeMenu(false);
             } else {
-                showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.group_member_activity_admin_not_authorize), false, null);
+                showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
             }
         }
 
@@ -508,7 +507,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.group_member_activity_title));
+        setTitle(getString(R.string.group_member_view_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         applyInsets(R.id.group_member_activity_layout, R.id.group_member_activity_tool_bar, R.id.group_member_activity_member_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -589,7 +588,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setAvatar(uiContact.getAvatar(), false);
-        deleteConfirmView.setMessage(getString(R.string.group_member_activity_remove_message));
+        deleteConfirmView.setMessage(getString(R.string.group_member_view_remove_message));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -643,7 +642,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         }
 
         if (!mCanInvite) {
-            showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.group_member_activity_admin_not_authorize), false, null);
+            showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
         } else if (mGroupId != null) {
             Intent intent = new Intent();
             intent.setClass(this, AddGroupMemberActivity.class);
@@ -697,8 +696,8 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
         defaultConfirmView.setAvatar(uiContact.getAvatar(), false);
         defaultConfirmView.setTitle(uiContact.getName());
-        defaultConfirmView.setMessage(String.format(getString(R.string.group_member_activity_invitation_message), uiContact.getName()));
-        defaultConfirmView.setConfirmTitle(getString(R.string.add_contact_activity_invite));
+        defaultConfirmView.setMessage(String.format(getString(R.string.group_member_view_invitation_message), uiContact.getName()));
+        defaultConfirmView.setConfirmTitle(getString(R.string.add_contact_view_invite));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

@@ -76,8 +76,8 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AddContactActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
-import org.twinlife.twinme.ui.TwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationScannerActivity;
 import org.twinlife.twinme.ui.cleanupActivity.ResetConversationConfirmView;
@@ -1047,7 +1047,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         mConversationsTitleView = mTwinmeActivity.findViewById(R.id.conversations_tool_bar_title);
         Design.updateTextFont(mConversationsTitleView, Design.FONT_BOLD34);
         mConversationsTitleView.setTextColor(Color.WHITE);
-        mConversationsTitleView.setText(getString(R.string.conversations_fragment_title));
+        mConversationsTitleView.setText(getString(R.string.conversations_view_title));
 
         mConversationsRadioGroup = mTwinmeActivity.findViewById(R.id.conversations_tool_bar_radio_group);
 
@@ -1333,46 +1333,44 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         if (mTwinmeActivity != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                final AndroidDeviceInfo androidDeviceInfo = new AndroidDeviceInfo(mTwinmeActivity);
+            final AndroidDeviceInfo androidDeviceInfo = new AndroidDeviceInfo(mTwinmeActivity);
 
-                boolean postNotificationEnable = true;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    postNotificationEnable = mTwinmeActivity.checkPermissionsWithoutRequest(new TwinmeActivity.Permission[]{TwinmeActivity.Permission.POST_NOTIFICATIONS});
-                }
+            boolean postNotificationEnable = true;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                postNotificationEnable = mTwinmeActivity.checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
+            }
 
-                // Order of checks must be the same as in RestrictionView.updateView().
-                Intent intent = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
-                    if (!mTwinmeActivity.checkPermissions(new TwinmeActivity.Permission[]{TwinmeActivity.Permission.POST_NOTIFICATIONS})) {
-                        intent = new Intent();
-                        intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                        intent.putExtra("android.provider.extra.APP_PACKAGE", mTwinmeActivity.getPackageName());
-                    }
-                } else if (!NotificationManagerCompat.from(mTwinmeActivity).areNotificationsEnabled()) {
+            // Order of checks must be the same as in RestrictionView.updateView().
+            Intent intent = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !postNotificationEnable) {
+                if (!mTwinmeActivity.checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
                     intent = new Intent();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                        intent.putExtra("android.provider.extra.APP_PACKAGE", mTwinmeActivity.getPackageName());
-                    } else {
-                        intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-                        intent.putExtra("app_package", mTwinmeActivity.getPackageName());
-                        intent.putExtra("app_uid", mTwinmeActivity.getApplicationInfo().uid);
-                    }
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && androidDeviceInfo.isNetworkRestricted()) {
-                    intent = new Intent(android.provider.Settings.ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS);
-                    intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && androidDeviceInfo.isBackgroundRestricted()) {
-                    intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
-                } else if (!androidDeviceInfo.isIgnoringBatteryOptimizations()) {
-                    intent = new Intent();
-                    intent.setAction(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                    intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra("android.provider.extra.APP_PACKAGE", mTwinmeActivity.getPackageName());
                 }
+            } else if (!NotificationManagerCompat.from(mTwinmeActivity).areNotificationsEnabled()) {
+                intent = new Intent();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    intent.setAction(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra("android.provider.extra.APP_PACKAGE", mTwinmeActivity.getPackageName());
+                } else {
+                    intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                    intent.putExtra("app_package", mTwinmeActivity.getPackageName());
+                    intent.putExtra("app_uid", mTwinmeActivity.getApplicationInfo().uid);
+                }
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && androidDeviceInfo.isNetworkRestricted()) {
+                intent = new Intent(android.provider.Settings.ACTION_IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS);
+                intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && androidDeviceInfo.isBackgroundRestricted()) {
+                intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+            } else if (!androidDeviceInfo.isIgnoringBatteryOptimizations()) {
+                intent = new Intent();
+                intent.setAction(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+            }
 
-                if (intent != null) {
-                    startActivity(intent);
-                }
+            if (intent != null) {
+                startActivity(intent);
             }
         }
     }
@@ -1434,7 +1432,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                 ViewGroup.LayoutParams layoutParams = mNoConversationImageView.getLayoutParams();
                 layoutParams.height = (int) (DESIGN_IMAGE_VIEW_HEIGHT * Design.HEIGHT_RATIO);
 
-                mNoConversationTextView.setText(getString(R.string.add_contact_activity_onboarding_message));
+                mNoConversationTextView.setText(getString(R.string.add_contact_view_onboarding_message));
             } else if (mUIConversations.isEmpty() && mOnGetConversationsIsDone) {
                 if (mMenu != null) {
                     MenuItem newChatMenuItem = mMenu.findItem(R.id.new_chat_action);
@@ -1455,7 +1453,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                 ViewGroup.LayoutParams layoutParams = mNoConversationImageView.getLayoutParams();
                 layoutParams.height = (int) (DESIGN_NO_CONVERSATION_IMAGE_VIEW_HEIGHT * Design.HEIGHT_RATIO);
 
-                mNoConversationTextView.setText(getString(R.string.conversations_fragment_no_conversation_message));
+                mNoConversationTextView.setText(getString(R.string.conversations_view_no_conversation_message));
             } else if (mOnGetConversationsIsDone) {
                 if (mMenu != null) {
                     MenuItem newChatMenuItem = mMenu.findItem(R.id.new_chat_action);
@@ -1672,13 +1670,13 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                 return;
             }
 
-            Spanned message = Html.fromHtml(getString(R.string.main_activity_reset_conversation_message));
+            Spanned message = Html.fromHtml(getString(R.string.main_view_reset_conversation_message));
             if (uiConversation.getContact().isGroup()) {
                 Group group = (Group) uiConversation.getContact();
                 if (group.isOwner()) {
-                    message = Html.fromHtml(getString(R.string.main_activity_reset_group_conversation_admin_message));
+                    message = Html.fromHtml(getString(R.string.main_view_reset_group_conversation_admin_message));
                 } else {
-                    message = Html.fromHtml(getString(R.string.main_activity_reset_group_conversation_message));
+                    message = Html.fromHtml(getString(R.string.main_view_reset_group_conversation_message));
                 }
             }
             DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
@@ -1762,7 +1760,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
 
             boolean postNotificationEnable = true;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                postNotificationEnable = mTwinmeActivity.checkPermissionsWithoutRequest(new TwinmeActivity.Permission[]{TwinmeActivity.Permission.POST_NOTIFICATIONS});
+                postNotificationEnable = mTwinmeActivity.checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
             }
 
             final boolean notificationDisabled = !NotificationManagerCompat.from(mTwinmeActivity).areNotificationsEnabled() || !postNotificationEnable;
@@ -1790,7 +1788,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         if (mNoResultFoundTitleView != null) {
-            mNoResultFoundTitleView.setText(String.format(getString(R.string.conversations_fragment_no_result_found), text));
+            mNoResultFoundTitleView.setText(String.format(getString(R.string.conversations_view_no_result_found), text));
         }
         
         searchDescriptor(text);
@@ -1860,7 +1858,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                     mNewChatImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.action_bar_new_chat, null));
                     mNewChatImageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
                     mNewChatImageView.setOnClickListener(view -> onAddGroupClick());
-                    mNewChatImageView.setContentDescription(getString(R.string.conversations_fragment_title));
+                    mNewChatImageView.setContentDescription(getString(R.string.conversations_view_title));
                 }
 
                 MenuItem searchItem = menu.findItem(R.id.search_action);
@@ -1926,10 +1924,10 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         List<UICustomTab> customTabs = new ArrayList<>();
-        customTabs.add(new UICustomTab(getString(R.string.calls_fragment_all_call_segmented_control), UICustomTab.CustomTabType.ALL, true));
-        customTabs.add(new UICustomTab(getString(R.string.contacts_fragment_title), UICustomTab.CustomTabType.CONTACTS, false));
-        customTabs.add(new UICustomTab(getString(R.string.share_activity_group_list), UICustomTab.CustomTabType.GROUPS, false));
-        customTabs.add(new UICustomTab(getString(R.string.settings_activity_chat_category_title), UICustomTab.CustomTabType.MESSAGES, false));
+        customTabs.add(new UICustomTab(getString(R.string.calls_view_all_call_segmented_control), UICustomTab.CustomTabType.ALL, true));
+        customTabs.add(new UICustomTab(getString(R.string.contacts_view_title), UICustomTab.CustomTabType.CONTACTS, false));
+        customTabs.add(new UICustomTab(getString(R.string.share_view_group_list), UICustomTab.CustomTabType.GROUPS, false));
+        customTabs.add(new UICustomTab(getString(R.string.settings_view_chat_category_title), UICustomTab.CustomTabType.MESSAGES, false));
 
         mCustomTabView.initTabs(customTabs, this);
         mCustomTabView.updateColor(Design.WHITE_COLOR, Design.getMainStyle(), Color.WHITE, Design.GREY_ITEM_COLOR);

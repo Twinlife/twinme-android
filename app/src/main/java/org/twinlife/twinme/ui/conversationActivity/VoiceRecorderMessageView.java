@@ -610,11 +610,11 @@ public class VoiceRecorderMessageView extends PercentRelativeLayout implements A
 
         if (errorCode != AudioRecorder.ErrorCode.EMPTY_FILE) {
 
-            String toastMessage = mConversationActivity.getString(R.string.conversation_activity_audio_message) + " " + mConversationActivity.getString(R.string.application_operation_failure);
+            String toastMessage = mConversationActivity.getString(R.string.conversation_view_audio_message) + " " + mConversationActivity.getString(R.string.application_operation_failure);
             boolean assertion = true;
             if (errorCode == AudioRecorder.ErrorCode.NO_STORAGE_SPACE) {
                 assertion = false;
-                toastMessage = mConversationActivity.getString(R.string.conversation_activity_audio_message) + " " + mConversationActivity.getString(R.string.application_error_no_storage_space);
+                toastMessage = mConversationActivity.getString(R.string.conversation_view_audio_message) + " " + mConversationActivity.getString(R.string.application_error_no_storage_space);
             }
 
             Toast.makeText(mConversationActivity, toastMessage, Toast.LENGTH_SHORT).show();

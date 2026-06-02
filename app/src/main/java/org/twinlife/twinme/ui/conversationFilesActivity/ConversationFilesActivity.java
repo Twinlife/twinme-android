@@ -44,6 +44,7 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerLinkItem;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.async.Loader;
 import org.twinlife.twinme.utils.async.LoaderListener;
@@ -173,7 +174,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         MenuItem menuItem = menu.findItem(R.id.select_action);
 
         TextView titleView = (TextView) menuItem.getActionView();
-        String title = menuItem.getTitle().toString();
+        String title = String.valueOf(menuItem.getTitle());
 
         if (titleView != null) {
             Design.updateTextFont(titleView, Design.FONT_BOLD36);
@@ -347,7 +348,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
             intent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
         }
 
-        startActivityForResult(Intent.createChooser(intent, getString(R.string.conversation_activity_menu_item_view_share_title)), RESULT_DID_SHARE_ACTION);
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.conversation_view_menu_item_view_share_title)), RESULT_DID_SHARE_ACTION);
     }
 
     @Override
@@ -360,7 +361,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setAvatar(mAvatar, mAvatar == null || mAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
-        deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
+        deleteConfirmView.setMessage(getString(R.string.cleanup_view_delete_confirmation_message));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -454,7 +455,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
 
 
         String name = contact.getName();
-        mNoItemTitleView.setText(String.format(getString(R.string.conversation_files_activity_no_files), name));
+        mNoItemTitleView.setText(String.format(getString(R.string.conversation_files_view_no_files), name));
         setTitle(name);
         mAvatar = avatar;
     }
@@ -466,7 +467,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         }
 
         String name = contact.getName();
-        mNoItemTitleView.setText(String.format(getString(R.string.conversation_files_activity_no_files), name));
+        mNoItemTitleView.setText(String.format(getString(R.string.conversation_files_view_no_files), name));
         setTitle(name);
         mAvatar = avatar;
     }
@@ -478,7 +479,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         }
 
         String name = group.getName();
-        mNoItemTitleView.setText(String.format(getString(R.string.conversation_files_activity_no_files), name));
+        mNoItemTitleView.setText(String.format(getString(R.string.conversation_files_view_no_files), name));
         setTitle(name);
         mAvatar = avatar;
     }
@@ -609,7 +610,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.conversation_files_activity_title));
+        setTitle(getString(R.string.conversation_files_view_title));
         applyInsets(R.id.conversation_files_activity_layout, R.id.conversation_files_activity_tool_bar, R.id.conversation_files_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mNoItemFoundImageView = findViewById(R.id.conversation_files_activity_no_item_found_image_view);
@@ -665,10 +666,10 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         }
 
         List<UICustomTab> customTabs = new ArrayList<>();
-        customTabs.add(new UICustomTab(getString(R.string.export_activity_images), UICustomTab.CustomTabType.IMAGE, true));
-        customTabs.add(new UICustomTab(getString(R.string.export_activity_videos), UICustomTab.CustomTabType.VIDEO, false));
-        customTabs.add(new UICustomTab(getString(R.string.conversation_files_activity_documents), UICustomTab.CustomTabType.DOCUMENT, false));
-        customTabs.add(new UICustomTab(getString(R.string.conversation_files_activity_links), UICustomTab.CustomTabType.LINK, false));
+        customTabs.add(new UICustomTab(getString(R.string.export_view_images), UICustomTab.CustomTabType.IMAGE, true));
+        customTabs.add(new UICustomTab(getString(R.string.export_view_videos), UICustomTab.CustomTabType.VIDEO, false));
+        customTabs.add(new UICustomTab(getString(R.string.conversation_files_view_documents), UICustomTab.CustomTabType.DOCUMENT, false));
+        customTabs.add(new UICustomTab(getString(R.string.conversation_files_view_links), UICustomTab.CustomTabType.LINK, false));
 
         CustomTabView customTabView = findViewById(R.id.conversation_files_activity_tab_view);
 
@@ -815,8 +816,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
 
             if (mMenu != null) {
                 MenuItem selectMenuItem = mMenu.findItem(R.id.select_action);
-                selectMenuItem.setEnabled(false);
-                selectMenuItem.getActionView().setAlpha(0.5f);
+                CommonUtils.setMenuItem(selectMenuItem, false, 0.5f, 1.0f);
             }
         } else {
             mNoItemFoundImageView.setVisibility(View.GONE);
@@ -824,8 +824,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
 
             if (mMenu != null) {
                 MenuItem selectMenuItem = mMenu.findItem(R.id.select_action);
-                selectMenuItem.setEnabled(true);
-                selectMenuItem.getActionView().setAlpha(1.0f);
+                CommonUtils.setMenuItem(selectMenuItem, true, 0.5f, 1.0f);
             }
         }
 

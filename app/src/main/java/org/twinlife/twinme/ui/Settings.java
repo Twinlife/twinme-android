@@ -113,7 +113,7 @@ public class Settings {
     // Backup
     public static final InternalLongConfig firstInstallationBackupDate = new InternalLongConfig("backup_activity_first_date", 0);
     public static final LongConfig lastBackupDate =new LongConfig("backup_activity_last_date", 0, "E55ECCE5-A709-4C5d-9D7D-09CDDEA8f8C5");
-
+    public static final LongConfig lastBackupAlertDate = new LongConfig("backup_activity_last_alert_date", 0, "58D0333B-3972-4037-80AF-71775A12116F");
 
     // Coach Mark
     public static final LongConfig lastShowCoachMarkConversationEphemeral = new LongConfig("last_show_coach_mark_conversation_ephemeral", 0, "314464E8-228B-4D0F-A1CF-43EEC8BCA45A");

@@ -29,6 +29,7 @@ import org.twinlife.twinme.services.BackupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationScannerActivity;
 import org.twinlife.twinme.ui.backupActivity.BackupActivity;
@@ -118,7 +119,10 @@ public class AccountActivity extends AbstractTwinmeActivity {
         super.onResume();
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-            if (mStartOnboardingOnResume && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.BACKUP_BETA)) {
+            if (getTwinmeApplication().showBackupWarning()) {
+                getTwinmeApplication().setLastBackupAlertDate();
+                showBackupWarning();
+            } else if (mStartOnboardingOnResume && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.BACKUP_BETA)) {
                 mStartOnboardingOnResume = false;
                 showBackupOnboarding(OnboardingBackupType.BETA, true);
             }
@@ -129,7 +133,10 @@ public class AccountActivity extends AbstractTwinmeActivity {
     public void onApplyInsetsFinish() {
         super.onApplyInsetsFinish();
 
-        if (mStartOnboardingOnResume && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.BACKUP_BETA)) {
+        if (getTwinmeApplication().showBackupWarning()) {
+            getTwinmeApplication().setLastBackupAlertDate();
+            showBackupWarning();
+        } else if (mStartOnboardingOnResume && getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.BACKUP_BETA)) {
             mStartOnboardingOnResume = false;
             showBackupOnboarding(OnboardingBackupType.BETA, true);
         }
@@ -277,7 +284,7 @@ public class AccountActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.account_activity_title));
+        setTitle(getString(R.string.account_view_title));
 
         applyInsets(R.id.account_activity_layout, R.id.account_activity_tool_bar, R.id.account_activity_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -315,26 +322,26 @@ public class AccountActivity extends AbstractTwinmeActivity {
             String message;
             String action;
             if (onboardingBackupType == OnboardingBackupType.BACKUP) {
-                title = getString(R.string.account_activity_backup);
-                message = getString(R.string.backup_activity_onboarding);
-                action = getString(R.string.backup_activity_backup);
+                title = getString(R.string.account_view_backup);
+                message = getString(R.string.backup_view_onboarding);
+                action = getString(R.string.backup_view_backup);
             } else if (onboardingBackupType == OnboardingBackupType.RESTORE) {
-                title = getString(R.string.account_activity_restore);
-                message = getResources().getString(R.string.restore_activity_onboarding) +
-                        "\n\n" + getResources().getString(R.string.restore_activity_onboarding_words);
-                action = getString(R.string.restore_activity_restore);
+                title = getString(R.string.account_view_restore);
+                message = getResources().getString(R.string.restore_view_onboarding) +
+                        "\n\n" + getResources().getString(R.string.restore_view_onboarding_words);
+                action = getString(R.string.restore_view_restore);
             } else if (onboardingBackupType == OnboardingBackupType.VERIFY) {
-                title = getString(R.string.account_activity_backup_verify);
-                message = getResources().getString(R.string.restore_activity_onboarding_verify) +
-                        "\n\n" + getResources().getString(R.string.backup_activity_verify_words);
-                action = getString(R.string.restore_activity_select_backup);
+                title = getString(R.string.account_view_backup_verify);
+                message = getResources().getString(R.string.restore_view_onboarding_verify) +
+                        "\n\n" + getResources().getString(R.string.backup_view_verify_words);
+                action = getString(R.string.restore_view_select_backup);
             } else {
-                title = getString(R.string.account_activity_backup_restore);
-                message = getString(R.string.backup_activity_beta_message_part_1) +
+                title = getString(R.string.account_view_backup_restore);
+                message = getString(R.string.backup_view_beta_message_part_1) +
                         "\n\n" +
-                        getString(R.string.backup_activity_beta_message_part_2) +
+                        getString(R.string.backup_view_beta_message_part_2) +
                         "\n\n" +
-                        getString(R.string.backup_activity_beta_message_part_3);
+                        getString(R.string.backup_view_beta_message_part_3);
                 action = getString(R.string.application_ok);
             }
 
@@ -400,6 +407,51 @@ public class AccountActivity extends AbstractTwinmeActivity {
         }
     }
 
+    private void showBackupWarning() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showBackupWarning");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.account_activity_layout);
+
+        OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
+        onboardingConfirmView.setTitle(getString(R.string.account_view_backup));
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_backup, null));
+        onboardingConfirmView.setMessage(getString(R.string.backup_view_reminder));
+        onboardingConfirmView.setConfirmTitle(getString(R.string.backup_view_new_backup));
+        onboardingConfirmView.setCancelTitle(getString(R.string.application_later));
+
+        AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
+            @Override
+            public void onConfirmClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+                startBackupIntent(OnboardingBackupType.BACKUP);
+            }
+
+            @Override
+            public void onCancelClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onDismissClick() {
+                onboardingConfirmView.animationCloseConfirmView();
+            }
+
+            @Override
+            public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
+                viewGroup.removeView(onboardingConfirmView);
+                setStatusBarColor();
+            }
+        };
+
+        onboardingConfirmView.setObserver(observer);
+        viewGroup.addView(onboardingConfirmView);
+        onboardingConfirmView.show();
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
     private void showRestoreWarning() {
         if (DEBUG) {
             Log.d(LOG_TAG, "showRestoreWarning");
@@ -408,10 +460,10 @@ public class AccountActivity extends AbstractTwinmeActivity {
         ViewGroup viewGroup = findViewById(R.id.account_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        onboardingConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
-        onboardingConfirmView.setMessage(getString(R.string.restore_activity_backup_device_always_signed_in_part_three));
-        onboardingConfirmView.setConfirmTitle( getString(R.string.account_activity_transfer_from_another_device));
-        onboardingConfirmView.setCancelTitle(getString(R.string.account_activity_restore));
+        onboardingConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+        onboardingConfirmView.setMessage(getString(R.string.restore_view_backup_device_always_signed_in_part_three));
+        onboardingConfirmView.setConfirmTitle( getString(R.string.account_view_transfer_from_another_device));
+        onboardingConfirmView.setCancelTitle(getString(R.string.account_view_restore));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -520,7 +572,7 @@ public class AccountActivity extends AbstractTwinmeActivity {
         ViewGroup viewGroup = findViewById(R.id.account_activity_layout);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-        alertMessageView.setMessage(getString(R.string.restore_activity_file_not_supported));
+        alertMessageView.setMessage(getString(R.string.restore_view_file_not_supported));
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
 

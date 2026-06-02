@@ -67,27 +67,27 @@ public class UIAudioSource {
 
         switch (mAudioDevice) {
             case SPEAKER_PHONE:
-                mName = context.getString(R.string.call_activity_audio_source_loudspeaker);
+                mName = context.getString(R.string.call_view_audio_source_loudspeaker);
                 mIcon = R.drawable.loud_speaker_action_call_on;
                 break;
 
             case WIRED_HEADSET:
-                mName = context.getString(R.string.call_activity_audio_source_headset);
+                mName = context.getString(R.string.call_view_audio_source_headset);
                 mIcon = R.drawable.audio_headphone_icon;
                 break;
 
             case EARPIECE:
-                mName =context.getString(R.string.call_activity_audio_source_device);
+                mName =context.getString(R.string.call_view_audio_source_device);
                 mIcon = R.drawable.audio_phonespeaker_icon;
                 break;
 
             case BLUETOOTH:
-                mName = context.getString(R.string.call_activity_audio_source_bluetooth);
+                mName = context.getString(R.string.call_view_audio_source_bluetooth);
                 mIcon = R.drawable.audio_bluetooth_icon;
                 break;
 
             case NONE:
-                mName = context.getString(R.string.call_activity_audio_source_earphones);
+                mName = context.getString(R.string.call_view_audio_source_earphones);
                 mIcon = R.drawable.audio_phonespeaker_icon;
                 break;
         }

@@ -65,6 +65,7 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
     private static final float DESIGN_FORWARD_ITEM_HEIGHT = 34f;
     private static final float DESIGN_MESSAGE_ITEM_TEXT_HEIGHT_PADDING = 10f;
     private static final float DESIGN_MESSAGE_ITEM_TEXT_WIDTH_PADDING = 32f;
+    private static final float DESIGN_MESSAGE_MAX_WIDTH = 540f;
     private static final float DESIGN_IMAGE_ITEM_MAX_WIDTH = 500f;
     private static final float DESIGN_IMAGE_ITEM_MAX_HEIGHT = 889f;
     private static final float DESIGN_FORWARDED_IMAGE_ITEM_MAX_HEIGHT = 240f;
@@ -81,7 +82,6 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
     private static final float DESIGN_LINK_PREVIEW_BOTTOM_MARGIN = 20f;
     private static final int DESIGN_CHECKBOX_MARGIN = 26;
     private static final int DESIGN_CHECKBOX_HEIGHT = 44;
-
 
     private static final long DESIGN_LONG_CLICK_DURATION = 500;
     static final int DESIGN_DELETE_ANIMATION_DURATION = 5000; // ms
@@ -100,6 +100,7 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
     static final int MESSAGE_ITEM_TEXT_DEFAULT_PADDING;
     static final int MESSAGE_ITEM_TEXT_WIDTH_PADDING;
     static final int IMAGE_ITEM_MAX_HEIGHT;
+    static final int MESSAGE_MAX_WIDTH;
     static final int IMAGE_ITEM_MAX_WIDTH;
     static final int FORWARDED_IMAGE_ITEM_MAX_HEIGHT;
     static final int FORWARDED_SMALL_IMAGE_ITEM_MAX_HEIGHT;
@@ -130,6 +131,7 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
         FORWARD_ITEM_HEIGHT = (int) (DESIGN_FORWARD_ITEM_HEIGHT * Design.HEIGHT_RATIO);
         MESSAGE_ITEM_TEXT_DEFAULT_PADDING = (int) (DESIGN_MESSAGE_ITEM_TEXT_HEIGHT_PADDING * Design.HEIGHT_RATIO);
         MESSAGE_ITEM_TEXT_WIDTH_PADDING = (int) (DESIGN_MESSAGE_ITEM_TEXT_WIDTH_PADDING * Design.WIDTH_RATIO);
+        MESSAGE_MAX_WIDTH = (int) (DESIGN_MESSAGE_MAX_WIDTH * Design.WIDTH_RATIO);
         IMAGE_ITEM_MAX_HEIGHT = (int) (DESIGN_IMAGE_ITEM_MAX_HEIGHT * Design.WIDTH_RATIO);
         IMAGE_ITEM_MAX_WIDTH = (int) (DESIGN_IMAGE_ITEM_MAX_WIDTH * Design.WIDTH_RATIO);
         FORWARDED_IMAGE_ITEM_MAX_HEIGHT = (int) (DESIGN_FORWARDED_IMAGE_ITEM_MAX_HEIGHT * Design.HEIGHT_RATIO);
@@ -511,13 +513,13 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
             if (mBaseItemActivity.isSelectItemMode()) {
                 mSelectedView.setVisibility(View.VISIBLE);
             } else {
-                mSelectedView.setVisibility(View.GONE);
+                mSelectedView.setVisibility(View.INVISIBLE);
             }
 
             if (mItem.isSelected()) {
                 mSelectedImageView.setVisibility(View.VISIBLE);
             } else {
-                mSelectedImageView.setVisibility(View.GONE);
+                mSelectedImageView.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -637,7 +639,7 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
 
     protected void deleteItem(@NonNull Item item) {
 
-        mBaseItemActivity.toast(getString(R.string.conversation_activity_delete_message));
+        mBaseItemActivity.toast(getString(R.string.conversation_view_delete_message));
 
         mBaseItemActivity.deleteItem(item.getDescriptorId());
     }

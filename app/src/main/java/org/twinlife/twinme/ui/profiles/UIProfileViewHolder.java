@@ -77,7 +77,7 @@ public class UIProfileViewHolder extends RecyclerView.ViewHolder {
             if (isActiveProfile) {
                 spannableProfile.append("\n");
                 int startActiveTitle = spannableProfile.length();
-                spannableProfile.append(context.getString(R.string.profile_fragment_default_profile_title));
+                spannableProfile.append(context.getString(R.string.profile_view_default_profile_title));
                 spannableProfile.setSpan(new ForegroundColorSpan(PROFILE_VIEW_COLOR), startActiveTitle, spannableProfile.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 spannableProfile.setSpan(new RelativeSizeSpan(0.8f), startActiveTitle, spannableProfile.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }

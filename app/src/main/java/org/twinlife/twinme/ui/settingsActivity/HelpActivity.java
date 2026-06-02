@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -64,62 +64,65 @@ public class HelpActivity extends AbstractTwinmeActivity {
         super.onDestroy();
     }
 
-    public void onSubSectionClick(int position) {
+    public void onSubSectionClick(UIHelpSubSection.HelpSubSectionType type) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSubSectionClick");
         }
 
-        switch (position) {
-
-            case HelpAdapter.POSITION_HELP:
+        switch (type) {
+            case GETTING_STARTED:
                 onHelpClick();
                 break;
 
-            case HelpAdapter.POSITION_FAQ:
+            case FAQ:
                 onFAQClick();
                 break;
 
-            case HelpAdapter.POSITION_BLOG:
+            case BLOG:
                 onBlogClick();
                 break;
 
-            case HelpAdapter.POSITION_FEEDBACK:
+            case FEEDBACK:
                 onFeedbackClick();
                 break;
 
-            case HelpAdapter.POSITION_WELCOME:
+            case WELCOME:
                 onWelcomeClick();
                 break;
 
-            case HelpAdapter.POSITION_QUALITY:
+            case QUALITY_OF_SERVICES:
                 onQualityOfServiceClick();
                 break;
 
-            case HelpAdapter.POSITION_PREMIUM:
+            case ADDITIONAL_FUNCTIONS:
                 onPremiumServicesClick();
                 break;
 
-            case HelpAdapter.POSITION_SPACES:
+            case SPACES:
                 onSpacesClick();
                 break;
 
-            case HelpAdapter.POSITION_PROFILE:
+            case PROFILE:
                 onProfileClick();
                 break;
 
-            case HelpAdapter.POSITION_CLICK_TO_CALL:
+            case CLICK_TO_CALL:
                 onClickToCallClick();
                 break;
 
-            case HelpAdapter.POSITION_CERTIFY_RELATION:
+            case CERTIFIED_RELATION:
                 onCertifiedRelationClick();
                 break;
 
-            case HelpAdapter.POSITION_ACCOUNT_TRANSFER:
+            case ACCOUNT_TRANSFER:
                 onTransferClick();
                 break;
 
-            case HelpAdapter.POSITION_PROXY:
+            case BACKUP:
+                onBackupClick();
+                break;
+
+            case PROXY:
                 onProxyClick();
                 break;
 
@@ -146,7 +149,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.navigation_activity_help));
+        setTitle(getString(R.string.navigation_view_help));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         applyInsets(R.id.help_activity_layout, R.id.help_activity_tool_bar, R.id.help_activity_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -166,7 +169,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
 
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/help.html");
-        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.navigation_activity_help));
+        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.navigation_view_help));
         startActivity(intent);
     }
 
@@ -175,9 +178,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onFAQClick");
         }
 
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(this, Uri.parse(getString(R.string.twinme_faq)));
+        startActivity(FAQActivity.class);
     }
 
     private void onBlogClick() {
@@ -236,13 +237,13 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onProfileClick");
         }
 
-        String message = getString(R.string.create_profile_activity_onboarding_message_part_1) +
+        String message = getString(R.string.create_profile_view_onboarding_message_part_1) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_2) +
+                getString(R.string.create_profile_view_onboarding_message_part_2) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_3) +
+                getString(R.string.create_profile_view_onboarding_message_part_3) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_4);
+                getString(R.string.create_profile_view_onboarding_message_part_4);
 
         showOnboardingView(getString(R.string.application_profile), message, isDarkMode() ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile);
     }
@@ -263,7 +264,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onTransferClick");
         }
 
-        showOnboardingView(getString(R.string.account_activity_migration_title), getString(R.string.account_activity_migration_message), isDarkMode() ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration);
+        showOnboardingView(getString(R.string.account_view_migration_title), getString(R.string.account_view_migration_message), isDarkMode() ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration);
     }
 
     private void onCertifiedRelationClick() {
@@ -271,7 +272,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onCertifiedRelationClick");
         }
 
-        showOnboardingView(getString(R.string.authentified_relation_activity_to_be_certified_title), getString(R.string.authentified_relation_activity_onboarding_message), isDarkMode() ? R.drawable.onboarding_authentified_relation_dark : R.drawable.onboarding_authentified_relation);
+        showOnboardingView(getString(R.string.authentified_relation_view_to_be_certified_title), getString(R.string.authentified_relation_view_onboarding_message), isDarkMode() ? R.drawable.onboarding_authentified_relation_dark : R.drawable.onboarding_authentified_relation);
     }
 
     private void onFeedbackClick() {
@@ -287,7 +288,21 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onProxyClick");
         }
 
-        showOnboardingView(getString(R.string.proxy_activity_title), getString(R.string.proxy_activity_onboarding), R.drawable.onboarding_proxy);
+        showOnboardingView(getString(R.string.proxy_view_title), getString(R.string.proxy_view_onboarding), R.drawable.onboarding_proxy);
+    }
+
+    private void onBackupClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onBackupClick");
+        }
+
+        String message = getString(R.string.backup_view_beta_message_part_1) +
+                "\n\n" +
+                getString(R.string.backup_view_beta_message_part_2) +
+                "\n\n" +
+                getString(R.string.backup_view_beta_message_part_3);
+
+        showOnboardingView(getString(R.string.account_view_backup_restore), message, R.drawable.onboarding_backup);
     }
 
     private void showOnboardingView(String title, String message, int image) {

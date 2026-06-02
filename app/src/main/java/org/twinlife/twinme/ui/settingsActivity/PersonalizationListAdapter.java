@@ -163,7 +163,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateConversationColor());
-            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversations_fragment_title), false);
+            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversations_view_title), false);
         } else if (viewType == COLOR) {
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;
             appearanceColorViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateMainColor());
@@ -180,19 +180,19 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
 
             int fontSize = mListActivity.getTwinmeApplication().fontSize();
             if (position == POSITION_FONT_SYSTEM) {
-                title = mListActivity.getString(R.string.personalization_activity_system);
+                title = mListActivity.getString(R.string.personalization_view_system);
                 personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.SYSTEM));
                 isSelected = fontSize == FontSize.SYSTEM.ordinal();
             } else if (position == POSITION_FONT_SMALL) {
-                title = mListActivity.getString(R.string.personalization_activity_font_small);
+                title = mListActivity.getString(R.string.personalization_view_font_small);
                 personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.SMALL));
                 isSelected = fontSize == FontSize.SMALL.ordinal();
             } else if (position == POSITION_FONT_LARGE) {
-                title = mListActivity.getString(R.string.personalization_activity_font_large);
+                title = mListActivity.getString(R.string.personalization_view_font_large);
                 personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.LARGE));
                 isSelected = fontSize == FontSize.LARGE.ordinal();
             } else if (position == POSITION_FONT_EXTRA_LARGE) {
-                title = mListActivity.getString(R.string.personalization_activity_font_extra_large);
+                title = mListActivity.getString(R.string.personalization_view_font_extra_large);
                 personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.EXTRA_LARGE));
                 isSelected = fontSize == FontSize.EXTRA_LARGE.ordinal();
             }
@@ -203,13 +203,13 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         } else if (viewType == INFORMATION) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_DEFAULT_TAB_INFORMATION) {
-                informationViewHolder.onBind(mListActivity.getString(R.string.personalization_activity_start_tab_information), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.personalization_view_start_tab_information), true);
             } else {
-                informationViewHolder.onBind(mListActivity.getString(R.string.personalization_activity_haptic_feedback_message), true);
+                informationViewHolder.onBind(mListActivity.getString(R.string.personalization_view_haptic_feedback_message), true);
             }
         } else if (viewType == CHECKBOX) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
-            UISetting<Boolean> uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.personalization_activity_haptic_feedback_message), Settings.hapticFeedbackEnable);
+            UISetting<Boolean> uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.personalization_view_haptic_feedback_message), Settings.hapticFeedbackEnable);
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(uiSetting, isChecked);
             settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
         }
@@ -303,13 +303,13 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         if (position == SECTION_COLOR) {
             title = mListActivity.getString(R.string.application_color);
         } else if (position == SECTION_DEFAULT_TAB) {
-            title = mListActivity.getString(R.string.personalization_activity_start_tab_title);
+            title = mListActivity.getString(R.string.personalization_view_start_tab_title);
         } else if (position == SECTION_MODE) {
-            title = mListActivity.getString(R.string.personalization_activity_mode);
+            title = mListActivity.getString(R.string.personalization_view_mode);
         } else if (position == SECTION_HAPTIC_FEEDBACK) {
-            title = mListActivity.getString(R.string.personalization_activity_haptic_feedback);
+            title = mListActivity.getString(R.string.personalization_view_haptic_feedback);
         } else if (position == SECTION_FONT) {
-            title = mListActivity.getString(R.string.personalization_activity_font);
+            title = mListActivity.getString(R.string.personalization_view_font);
         }
 
         return title;

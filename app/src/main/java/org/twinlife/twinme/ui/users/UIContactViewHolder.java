@@ -44,7 +44,7 @@ public class UIContactViewHolder<E extends UIOriginator> extends RecyclerView.Vi
 
     @NonNull
     private final AbstractTwinmeService mService;
-    private final CircularImageView mAvatarView;
+    protected final CircularImageView mAvatarView;
     @Nullable
     protected final TextView mNameView;
 

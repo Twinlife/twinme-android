@@ -161,7 +161,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.contact_capabilities_activity_call_settings));
+        setTitle(getString(R.string.contact_capabilities_view_call_settings));
         applyInsets(R.id.capabilities_activity_layout, R.id.contact_capabilities_activity_tool_bar, R.id.contact_capabilities_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mCapabilitiesAdapter = new CapabilitiesAdapter(this);

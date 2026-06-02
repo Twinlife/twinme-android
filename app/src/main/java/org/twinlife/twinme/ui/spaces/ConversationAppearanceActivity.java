@@ -121,7 +121,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity {
 
         PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);
         premiumFeatureConfirmView.initWithPremiumFeature(new UIPremiumFeature(this, UIPremiumFeature.FeatureType.SPACES));
-        premiumFeatureConfirmView.setTitle(getString(R.string.personalization_activity_title));
+        premiumFeatureConfirmView.setTitle(getString(R.string.personalization_view_title));
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {

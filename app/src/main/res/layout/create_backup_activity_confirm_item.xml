@@ -37,6 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/create_backup_activity_confirm_item_layout_image"
-        android:text="@string/backup_activity_confirm_message"/>
+        android:text="@string/backup_view_confirm_message"/>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

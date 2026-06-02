@@ -33,7 +33,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
@@ -124,8 +123,6 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
     private GroupService mGroupService;
-    @Nullable
-    private Group mGroup;
     private GroupConversation mGroupConversation;
     private List<UIContact> mGroupMembers = new ArrayList<>();
     private Bitmap mGroupAvatar;
@@ -250,7 +247,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             if (mIdentityName == null) {
                 mIdentityName = getTwinmeApplication().getAnonymousName();
             }
-            mCanInvite = conversation.hasPermission(ConversationService.Permission.INVITE_MEMBER) && conversation.getState() == GroupConversation.State.JOINED;
+            mCanInvite = conversation.hasPermission(org.twinlife.twinlife.Permission.INVITE_MEMBER) && conversation.getState() == GroupConversation.State.JOINED;
         } else {
             mFallbackView.setVisibility(View.VISIBLE);
             mBackClickableView.setVisibility(View.GONE);
@@ -420,7 +417,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         setToolBar(R.id.show_group_activity_tool_bar);
         showToolBar(false);
         showBackButton(true);
-        setTitle(getString(R.string.show_group_activity_title));
+        setTitle(getString(R.string.show_group_view_title));
 
         applyInsets(R.id.show_group_activity_layout, -1, -1, Design.WHITE_COLOR, true);
 
@@ -536,7 +533,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         marginLayoutParams.topMargin = (int) (DESIGN_MEMBER_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
 
         mInviteTextView = findViewById(R.id.show_group_activity_invite_title_view);
-        mInviteTextView.setText(" + " + getResources().getText(R.string.add_group_member_activity_add));
+        mInviteTextView.setText(" + " + getResources().getText(R.string.add_group_member_view_add));
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mInviteTextView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MEMBER_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -804,7 +801,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
                 intent.setClass(this, AddGroupMemberActivity.class);
                 startActivityForResult(intent, ADD_MEMBERS);
             } else {
-                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.group_member_activity_admin_not_authorize), true, null);
+                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), true, null);
             }
         }
     }

@@ -162,11 +162,11 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
             contactViewHolder.onBind(mListActivity, mUIContacts.get(position), hideSeparator);
         } else if (viewType == TITLE) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
-            sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_fragment_title), false, false);
+            sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_view_title), false, false);
         } else if (viewType == ADD_CONTACT) {
             AddContactViewHolder addContactViewHolder = (AddContactViewHolder) viewHolder;
             //addContactViewHolder.itemView.setOnClickListener(view -> mOnCallClickListener.onAddExternalCallClick());
-            addContactViewHolder.onBind(mListActivity.getString(R.string.main_activity_add_contact), mListActivity.getString(R.string.contacts_fragment_add_contact_subtitle));
+            addContactViewHolder.onBind(mListActivity.getString(R.string.main_view_add_contact), mListActivity.getString(R.string.contacts_view_add_contact_subtitle), R.drawable.add_contact, 0);
         }
     }
 
@@ -182,7 +182,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
         if (viewType == CONTACT) {
             View convertView = inflater.inflate(mResource, parent, false);
             ViewGroup.LayoutParams layoutParams = convertView.getLayoutParams();
-            if (mResource == R.layout.add_group_member_selected_contact) {
+            if (mResource == R.layout.add_group_member_selected_contact || mResource == R.layout.conversation_activity_typing_contact) {
                 layoutParams.width = mItemHeight;
             }
             layoutParams.height = mItemHeight;

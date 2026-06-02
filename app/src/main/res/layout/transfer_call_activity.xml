@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/main_activity_reset_conversation"
+                android:text="@string/main_view_reset_conversation"
                 app:layout_marginTopPercent="7.81%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -276,7 +276,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/transfer_call_activity_social_icon_view"
-            android:text="@string/transfert_call_activity_share" />
+            android:text="@string/transfert_call_view_share" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <TextView
@@ -286,7 +286,7 @@
         android:layout_below="@+id/transfer_call_activity_social_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/add_contact_activity_social_subtitle"
+        android:text="@string/add_contact_view_social_subtitle"
         app:layout_widthPercent="89.06%" />
 
     <TextView
@@ -296,7 +296,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/transfert_call_activity_message"
+        android:text="@string/transfert_call_view_message"
         app:layout_widthPercent="89.06%"
         app:layout_marginTopPercent="7.22%" />
 

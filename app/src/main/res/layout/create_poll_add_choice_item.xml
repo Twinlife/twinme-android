@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/create_poll_add_choice_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/create_poll_add_choice_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/create_poll_add_choice_counter_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"/>
+
+        <EditText
+            android:id="@+id/create_poll_add_choice_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            android:imeOptions="actionNext"
+            android:inputType="text|textNoSuggestions|textCapSentences"
+            android:hint="@string/poll_view_add_response"
+            android:layout_below="@+id/create_poll_add_choice_title_view"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

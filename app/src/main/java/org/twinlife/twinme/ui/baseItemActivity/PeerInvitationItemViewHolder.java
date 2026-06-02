@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2025 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
@@ -26,6 +27,7 @@ import java.util.List;
 
 class PeerInvitationItemViewHolder extends PeerItemViewHolder {
 
+    private final View mInvitationContainer;
     private final TextView mGroupNameView;
     private final TextView mInvitationView;
     private final GradientDrawable mGradientDrawable;
@@ -41,15 +43,23 @@ class PeerInvitationItemViewHolder extends PeerItemViewHolder {
                 R.id.base_item_activity_peer_invitation_item_selected_view,
                 R.id.base_item_activity_peer_invitation_item_selected_image_view);
 
-        View invitationContainer = view.findViewById(R.id.base_item_activity_peer_invitation_item_view);
+        mInvitationContainer = view.findViewById(R.id.base_item_activity_peer_invitation_item_view);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationContainer.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mInvitationContainer.setLayoutParams(marginLayoutParams);
 
         mGradientDrawable = new GradientDrawable();
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
         mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        invitationContainer.setBackground(mGradientDrawable);
+        mInvitationContainer.setBackground(mGradientDrawable);
         mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
-        invitationContainer.setClickable(false);
+        mInvitationContainer.setClickable(false);
 
         mGroupNameView = view.findViewById(R.id.base_item_activity_peer_invitation_item_group_name);
         Design.updateTextFont(mGroupNameView, Design.FONT_MEDIUM26);
@@ -65,7 +75,7 @@ class PeerInvitationItemViewHolder extends PeerItemViewHolder {
         mInvitationView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         if (allowClick) {
-            invitationContainer.setOnClickListener(v -> {
+            mInvitationContainer.setOnClickListener(v -> {
 
                 if (getBaseItemActivity().isSelectItemMode()) {
                     onContainerClick();
@@ -77,7 +87,7 @@ class PeerInvitationItemViewHolder extends PeerItemViewHolder {
             });
         }
         if (allowLongClick) {
-            invitationContainer.setOnLongClickListener(v -> {
+            mInvitationContainer.setOnLongClickListener(v -> {
                 baseItemActivity.onItemLongPress(getItem());
                 return true;
             });
@@ -111,21 +121,32 @@ class PeerInvitationItemViewHolder extends PeerItemViewHolder {
         mGroupNameView.setText(invitation.getGroupName());
         switch (invitation.getStatus()) {
             case PENDING:
-                mInvitationView.setText(getString(R.string.conversation_activity_invitation_title));
+                mInvitationView.setText(getString(R.string.conversation_view_invitation_title));
                 break;
 
             case ACCEPTED:
-                mInvitationView.setText(getString(R.string.conversation_activity_invitation_accepted));
+                mInvitationView.setText(getString(R.string.conversation_view_invitation_accepted));
                 break;
 
             case JOINED:
-                mInvitationView.setText(getString(R.string.conversation_activity_invitation_joined));
+                mInvitationView.setText(getString(R.string.conversation_view_invitation_joined));
                 break;
 
             case REFUSED:
             case WITHDRAWN:
-                mInvitationView.setText(getString(R.string.conversation_activity_invitation_refused));
+                mInvitationView.setText(getString(R.string.conversation_view_invitation_refused));
                 break;
+        }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationContainer.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mInvitationContainer.setLayoutParams(marginLayoutParams);
         }
     }
 

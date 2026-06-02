@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/create_poll_footer_header_question_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:imeOptions="actionNext"
+        android:hint="@string/poll_view_ask_question"
+        android:maxLines="5"
+        android:inputType="textMultiLine|text|textNoSuggestions|textCapSentences"/>
+
+    <TextView
+        android:id="@+id/create_poll_footer_header_counter_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/create_poll_footer_header_question_view" />
+
+    <org.twinlife.twinme.utils.SwitchView
+        android:id="@+id/create_poll_footer_header_allow_multiple_switch_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/create_poll_footer_header_counter_view"
+        android:checked="true"
+        android:text="@string/poll_view_allow_multiple"
+        android:textOn=""
+        android:textOff=""
+        android:track="@drawable/switch_track"
+        android:thumb="@drawable/switch_thumb_on"
+        android:switchMinWidth="0dp" />
+
+</RelativeLayout>

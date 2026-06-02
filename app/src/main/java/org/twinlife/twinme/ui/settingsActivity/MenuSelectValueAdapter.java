@@ -116,46 +116,46 @@ public class MenuSelectValueAdapter implements ListAdapter {
 
         if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
             if (position == TwinmeApplication.QualityMedia.STANDARD.ordinal()) {
-                title = mActivity.getString(R.string.conversation_activity_media_quality_standard);
-                subTitle = mActivity.getString(R.string.conversation_activity_media_quality_standard_subtitle);
+                title = mActivity.getString(R.string.conversation_view_media_quality_standard);
+                subTitle = mActivity.getString(R.string.conversation_view_media_quality_standard_subtitle);
             } else {
-                title = mActivity.getString(R.string.conversation_activity_media_quality_original);
-                subTitle = mActivity.getString(R.string.conversation_activity_media_quality_original_subtitle);
+                title = mActivity.getString(R.string.conversation_view_media_quality_original);
+                subTitle = mActivity.getString(R.string.conversation_view_media_quality_original_subtitle);
             }
         } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
             if (position == DisplayCallsMode.NONE.ordinal()) {
-                title = mActivity.getString(R.string.settings_activity_display_call_menu_none);
+                title = mActivity.getString(R.string.settings_view_display_call_menu_none);
             } else if (position == DisplayCallsMode.MISSED.ordinal()) {
-                title = mActivity.getString(R.string.settings_activity_display_call_menu_missed);
+                title = mActivity.getString(R.string.settings_view_display_call_menu_missed);
             } else {
-                title = mActivity.getString(R.string.settings_activity_call_item_menu_all);
+                title = mActivity.getString(R.string.settings_view_call_item_menu_all);
             }
         } else if (mMenuType == MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE) {
             if (position == Profile.UpdateMode.NONE.ordinal()) {
-                title = mActivity.getString(R.string.edit_profile_activity_propagating_no_contact);
+                title = mActivity.getString(R.string.edit_profile_view_propagating_no_contact);
             } else if (position == Profile.UpdateMode.DEFAULT.ordinal()) {
-                title = mActivity.getString(R.string.edit_profile_activity_propagating_except_contacts);
+                title = mActivity.getString(R.string.edit_profile_view_propagating_except_contacts);
             } else {
-                title = mActivity.getString(R.string.edit_profile_activity_propagating_all_contacts);
+                title = mActivity.getString(R.string.edit_profile_view_propagating_all_contacts);
             }
         } else if (mMenuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE) {
             if (position == UIConfigExternalCall.ConfigExternalCallTypeCall.CALL_DIRECT.ordinal()) {
-                title = mActivity.getString(R.string.create_external_call_activity_direct_call_title);
-                subTitle = mActivity.getString(R.string.create_external_call_activity_direct_call_description);
+                title = mActivity.getString(R.string.create_external_call_view_direct_call_title);
+                subTitle = mActivity.getString(R.string.create_external_call_view_direct_call_description);
             } else {
-                title = mActivity.getString(R.string.create_external_call_activity_conference_call_title);
-                subTitle = mActivity.getString(R.string.create_external_call_activity_conference_call_description);
+                title = mActivity.getString(R.string.create_external_call_view_conference_call_title);
+                subTitle = mActivity.getString(R.string.create_external_call_view_conference_call_description);
             }
         } else {
             if (position == LinkValidity.PERMANENT.ordinal()) {
-                title = mActivity.getString(R.string.create_external_call_activity_continuous_link_title);
-                subTitle = mActivity.getString(R.string.create_external_call_activity_continuous_link_description);
+                title = mActivity.getString(R.string.create_external_call_view_continuous_link_title);
+                subTitle = mActivity.getString(R.string.create_external_call_view_continuous_link_description);
             } else if (position == LinkValidity.SINGLE_USE.ordinal()) {
-                title = mActivity.getString(R.string.create_external_call_activity_unique_link_title);
-                subTitle = mActivity.getString(R.string.create_external_call_activity_unique_link_description);
+                title = mActivity.getString(R.string.create_external_call_view_unique_link_title);
+                subTitle = mActivity.getString(R.string.create_external_call_view_unique_link_description);
             } else {
-                title = mActivity.getString(R.string.create_external_call_activity_recurrent_link_title);
-                subTitle = mActivity.getString(R.string.create_external_call_activity_recurrent_link_description);
+                title = mActivity.getString(R.string.create_external_call_view_recurrent_link_title);
+                subTitle = mActivity.getString(R.string.create_external_call_view_recurrent_link_description);
             }
         }
 

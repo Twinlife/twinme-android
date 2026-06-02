@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/proxy_activity_warning"
+            android:text="@string/proxy_view_warning"
             app:layout_widthPercent="89.06%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:background="@android:color/transparent"
-                android:hint="@string/proxy_activity_add_placeholder"
+                android:hint="@string/proxy_view_add_placeholder"
                 android:imeOptions="actionDone"
                 android:inputType="text|textUri"
                 app:layout_marginStartPercent="5.31%"

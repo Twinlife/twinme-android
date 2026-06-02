@@ -51,13 +51,13 @@ public class UIContactTag {
 
         switch (mContactTag) {
             case PENDING:
-                mTitle = context.getString(R.string.show_contact_activity_pending);
+                mTitle = context.getString(R.string.show_contact_view_pending);
                 mBackgroundColor = Color.argb(30, 255, 147, 0);
                 mForegroundColor = Color.argb(255, 255, 147, 0);
                 break;
 
             case REVOKED:
-                mTitle = context.getString(R.string.show_contact_activity_revoked);
+                mTitle = context.getString(R.string.show_contact_view_revoked);
                 mBackgroundColor = Color.argb(30, 253, 96, 93);
                 mForegroundColor = Color.argb(255, 253, 96, 93);
                 break;

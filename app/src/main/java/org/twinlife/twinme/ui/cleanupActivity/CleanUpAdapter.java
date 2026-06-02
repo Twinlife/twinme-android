@@ -168,24 +168,24 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             if (position == SECTION_STORAGE) {
-                sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_storage_title), true);
+                sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_storage_title), true);
             } else if (position == SECTION_CONTENT) {
-                sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.export_activity_content_title), true);
+                sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.export_view_content_title), true);
             } else {
-                sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_expiration), true);
+                sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_expiration), true);
             }
         } else if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_CONTENT_INFORMATION) {
-                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_select_content), true);
+                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_select_content), true);
             } else if (position == POSITION_CONTENT_FILE_INFORMATION) {
                 if (mCleanupActivity.isLocalCleanUpOnly()) {
-                    informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_medias_and_files_info), true);
+                    informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_medias_and_files_info), true);
                 } else {
-                    informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_medias_and_files_info_both), true);
+                    informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_medias_and_files_info_both), true);
                 }
             } else {
-                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_messages_info), true);
+                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_messages_info), true);
             }
         } else if (viewType == CONTENT) {
             ExportContentViewHolder exportContentViewHolder = (ExportContentViewHolder) viewHolder;
@@ -207,7 +207,7 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             storageChartViewHolder.onBind(mStorages);
         } else if (viewType == SWITCH) {
             CleanupSwitchViewHolder cleanupSwitchViewHolder = (CleanupSwitchViewHolder) viewHolder;
-            cleanupSwitchViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_all), mUICleanUpExpiration.getExpirationType() == UICleanUpExpiration.ExpirationType.ALL);
+            cleanupSwitchViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_all), mUICleanUpExpiration.getExpirationType() == UICleanUpExpiration.ExpirationType.ALL);
         } else if (viewType == VALUE) {
             ExpirationViewHolder expirationViewHolder = (ExpirationViewHolder) viewHolder;
             expirationViewHolder.itemView.setOnClickListener(view -> mOnCleanupClickListener.onSelectExpiration());

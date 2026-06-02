@@ -94,7 +94,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/accept_group_invitation_activity_title_view"
             android:gravity="center"
-            android:text="@string/fullscreen_qrcode_activity_generate_code_message"
+            android:text="@string/fullscreen_qrcode_view_generate_code_message"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout

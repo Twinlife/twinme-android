@@ -132,7 +132,7 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
 
         if (mCallStatus != null && CallStatus.isIncoming(mCallStatus)) {
             if (mParticipant.getCallConnection().getOriginator() != null && mParticipant.getCallConnection().getOriginator().getIdentityCapabilities().hasDiscreet()) {
-                return getContext().getString(R.string.calls_fragment_incoming_call);
+                return getContext().getString(R.string.calls_view_incoming_call);
             }
         }
 

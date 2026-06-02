@@ -27,6 +27,7 @@ import org.twinlife.twinme.ui.conversationActivity.MenuSendOptionViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -51,9 +52,11 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         setHasStableIds(true);
     }
 
-    public void setAnnotations(List<UIAnnotation> uiAnnotations) {
+    public void setAnnotations(List<UIAnnotation> uiAnnotations, int startIndex) {
 
         Collections.sort(uiAnnotations, Comparator.comparingInt(UIAnnotation::getOrderPriority));
+
+        List<Item> itemsToAdd = new ArrayList<>();
 
         for (int i = 0 ; i < uiAnnotations.size(); i++) {
             UIAnnotation uiAnnotation = uiAnnotations.get(i);
@@ -61,18 +64,21 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 String title = "";
                 ConversationService.AnnotationType annotationType = uiAnnotation.getAnnotationType();
                 if (annotationType == ConversationService.AnnotationType.LIKE) {
-                    title = mBaseItemActivity.getString(R.string.info_item_activity_reactions);
+                    title = mBaseItemActivity.getString(R.string.info_item_view_reactions);
                 } else if (annotationType== ConversationService.AnnotationType.RECEIVED) {
-                    title = mBaseItemActivity.getString(R.string.info_item_activity_received);
+                    title = mBaseItemActivity.getString(R.string.info_item_view_received);
                 } else if (annotationType == ConversationService.AnnotationType.READ) {
-                    title = mBaseItemActivity.getString(R.string.info_item_activity_seen);
+                    title = mBaseItemActivity.getString(R.string.info_item_view_seen);
+                } else if (annotationType == ConversationService.AnnotationType.ERROR) {
+                    title = mBaseItemActivity.getString(R.string.info_item_view_not_delivered);
                 }
-                mItems.add(new InfoSectionItem(mItem, title));
+                itemsToAdd.add(new InfoSectionItem(mItem, title));
             }
 
-            mItems.add(new InfoAnnotationItem(mItem, uiAnnotation));
+            itemsToAdd.add(new InfoAnnotationItem(mItem, uiAnnotation));
         }
 
+        mItems.addAll(startIndex, itemsToAdd);
         notifyItemRangeChanged(0, mItems.size());
     }
 
@@ -121,7 +127,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
             MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
-            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_activity_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
+            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_view_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
         } else if (item.getType() == Item.ItemType.INFO_SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             InfoSectionItem infoSectionItem = (InfoSectionItem) item;
@@ -224,6 +230,12 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (viewType == Item.ItemType.PEER_FILE.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_peer_file_item, parent, false);
             return new PeerFileItemViewHolder(mBaseItemActivity, convertView, false, false);
+        } else if (viewType == Item.ItemType.POLL.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_poll_item, parent, false);
+            return new PollItemViewHolder(mBaseItemActivity, convertView);
+        } else if (viewType == Item.ItemType.PEER_POLL.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_peer_poll_item, parent, false);
+            return new PeerPollItemViewHolder(mBaseItemActivity, convertView);
         } else if (viewType == Item.ItemType.INVITATION.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_invitation_item, parent, false);
             return new InvitationItemViewHolder(mBaseItemActivity, convertView, false, false);

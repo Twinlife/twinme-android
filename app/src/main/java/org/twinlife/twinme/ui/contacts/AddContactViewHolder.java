@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.contacts;
 
+import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
@@ -43,6 +45,7 @@ public class AddContactViewHolder extends RecyclerView.ViewHolder {
     }
 
     private final TextView mTitleView;
+    private final ImageView mIconView;
 
     public AddContactViewHolder(@NonNull View view) {
 
@@ -61,9 +64,8 @@ public class AddContactViewHolder extends RecyclerView.ViewHolder {
         marginLayoutParams.topMargin = ADD_VIEW_MARGIN;
         marginLayoutParams.bottomMargin = ADD_VIEW_MARGIN;
 
-        ImageView imageView = view.findViewById(R.id.contacts_fragment_add_contact_item_image_view);
-
-        layoutParams = imageView.getLayoutParams();
+        mIconView = view.findViewById(R.id.contacts_fragment_add_contact_item_image_view);
+        layoutParams = mIconView.getLayoutParams();
         layoutParams.width = ADD_ICON_SIZE;
         layoutParams.height = ADD_ICON_SIZE;
 
@@ -76,7 +78,7 @@ public class AddContactViewHolder extends RecyclerView.ViewHolder {
         marginLayoutParams.bottomMargin = TEXT_MARGIN;
     }
 
-    public void onBind(String title, String subTitle) {
+    public void onBind(String title, String subTitle, int icon, int iconSize) {
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(title);
@@ -87,6 +89,15 @@ public class AddContactViewHolder extends RecyclerView.ViewHolder {
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.87f), startInfo, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startInfo, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTitleView.setText(spannableStringBuilder);
+
+        mIconView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), icon, null));
+        mIconView.setColorFilter(Color.WHITE);
+
+        if (iconSize != 0) {
+            ViewGroup.LayoutParams layoutParams = mIconView.getLayoutParams();
+            layoutParams.width = iconSize;
+            layoutParams.height = iconSize;
+        }
 
         updateColor();
     }

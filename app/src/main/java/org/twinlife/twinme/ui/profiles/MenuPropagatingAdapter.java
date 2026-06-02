@@ -62,21 +62,21 @@ public class MenuPropagatingAdapter extends RecyclerView.Adapter<Personalization
         String title;
         boolean isSelected;
         if (position == 0) {
-            title = mMenuPropagatingProfileView.getContext().getString(R.string.edit_profile_activity_propagating_no_contact);
+            title = mMenuPropagatingProfileView.getContext().getString(R.string.edit_profile_view_propagating_no_contact);
             isSelected = mMenuPropagatingProfileView.getUpdateMode() == Profile.UpdateMode.NONE;
             viewHolder.itemView.setOnClickListener(view -> {
                 mOnMenuPropagatingClickListener.onSelectUpdateMode(Profile.UpdateMode.NONE);
                 notifyItemRangeChanged(0, ITEM_COUNT);
             });
         } else if (position == 1) {
-            title = mMenuPropagatingProfileView.getContext().getString(R.string.edit_profile_activity_propagating_except_contacts);
+            title = mMenuPropagatingProfileView.getContext().getString(R.string.edit_profile_view_propagating_except_contacts);
             isSelected = mMenuPropagatingProfileView.getUpdateMode() == Profile.UpdateMode.DEFAULT;
             viewHolder.itemView.setOnClickListener(view -> {
                 mOnMenuPropagatingClickListener.onSelectUpdateMode(Profile.UpdateMode.DEFAULT);
                 notifyItemRangeChanged(0, ITEM_COUNT);
             });
         } else {
-            title = mMenuPropagatingProfileView.getContext().getString(R.string.edit_profile_activity_propagating_all_contacts);
+            title = mMenuPropagatingProfileView.getContext().getString(R.string.edit_profile_view_propagating_all_contacts);
             isSelected = mMenuPropagatingProfileView.getUpdateMode() == Profile.UpdateMode.ALL;
             viewHolder.itemView.setOnClickListener(view -> {
                 mOnMenuPropagatingClickListener.onSelectUpdateMode(Profile.UpdateMode.ALL);

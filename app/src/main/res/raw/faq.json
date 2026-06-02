@@ -1,0 +1,614 @@
+[
+  {
+    "title": "Introduction",
+    "articles": [
+      {
+        "id" : 1,
+        "title": "What is twinme?",
+        "description": "<p>twinme is a new generation messaging and audio/video call service that prioritizes the privacy and security of digital communications. What sets twinme apart from other alternatives is its unique approach to anonymous user identification, and peer-to-peer real-time exchanges between devices, without data transit servers.</p><p>Unlike traditional services, twinme does not rely on user IDs or any form of personal identification. It operates on an anonymous &#8220;relations&#8221; architecture, allowing users to establish connections between instances of the application on different devices. This means that twinme doesn&#8217;t require sign-up, access to personal information, phone numbers, email addresses, or searches through your device&#8217;s address book.</p><p>Moreover, twinme ensures that exchanges remain completely private and untraceable. By utilizing direct, real-time connections between devices through a peer-to-peer approach, twinme bypasses the need for data transit servers. This means that no external entity can access the exchanged contents outside of the communicating devices. The privacy and security of your conversations are maintained without leaving any trace, even in encrypted form, in the cloud.</p><p>Each relation you establish on twinme is unique to a specific correspondent and cannot be transferred to, or used by anyone else.  You can remove a relation with just one click, making yourself unreachable to that individual. This feature ensures that twinme protects you from the risks of unexpected personal public exposure, unsolicited calls, harassment, or spam.</p><p>With twinme, you have the freedom to interact online just as you would in real life, with complete control over your digital communications.</p> <a href='https://youtu.be/uj2bFKQ_L60'> Twinme Private Messenger</a>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 2,
+        "title": "What makes twinme special?",
+        "description": "<p>With all popular communications services, you are identified by your phone number, which is becoming your public contact information that can be used by anyone without your control and even your knowledge. By searching through your device address book, these communications services reconcile your contacts’ personal information with all their subscribers’ address books to complete your connections graph at any level. You do not know how to contact your friends’ friends but your communication service does know how to and can sell this information to 3<sup>rd</sup>parties.</p><p>twinme’s purpose is to give control of digital communication back to the people, by empowering each of us to hide or share all or part of our intimacy in a unique and personalized way, just like we do every day in real life with our beloved &amp; our family, close &amp; distant friends, colleagues &amp; acquaintances, customers &amp; suppliers, even unknown encounters.</p><p>twinme allows you to define, manage and revoke your contact information, which is unique to each one of your correspondents, not transferable, and not usable by anyone else.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 3,
+        "title": "Who are the people behind twinme?",
+        "description": "<p>Funded by two experienced entrepreneurs and technologists (Michel Gien, CEO and Christian Jacquemot, CTO), Twinlife, the company that develops twinme, aims at challenging the current telecommunications and instant messaging services relationship model, based on your mobile phone number. This number is being used as a universal identification mechanism and yet it is public and processed by mobile applications that access your device address book without authorization from the numbers’ owners.</p><p>Your digital life personal information has become a product through data mining and is sold for advertising. This situation raises a number of ethics questions, relative to the protection of your privacy and, as a consequence, your freedom of choice when it comes to managing and controlling your digital life.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 4,
+        "title": "What is the technology behind twinme?",
+        "description": "<p>twinme relationships model is based on an original patented &#8220;twincode&#8221; technology allowing to set up dynamic relations between application instances running on internet (mobile) devices. It is implemented as an extension of the XMPP Openfire signaling server.</p><p>Voice/video calls and message exchanges use the WebRTC open source technology (the new standard for secure real-time peer-to-peer multimedia exchanges on the web). All interactions are encrypted and happen in peer-to-peer, directly between devices in real-time, with no content distribution server in-between, thus insuring that no data traces (even encrypted) are left in the cloud.</p><p>This combination provides the most disruptive and secure communications service on the market today.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 5,
+        "title": "Can anyone use twinme?",
+        "description": "<p>twinme has been designed as a user-friendly messaging application that is ready to use as soon as installed on your device, with no need to sign up. All you need is an internet connection (WiFi or 3G/4G/LTE).</p><p>twinme is ideal for kids: it turns a simple tablet into a secure communication device. Without a phone number, e-mail address, social network ID or user name, children cannot discover or be discovered online by strangers. The only possible contacts are those met in-person (family and friends). Parents are reinsured and little ones learn how to use their first grown-up messaging app without any risk.</p><p>With that in mind, twinme has been pre-loaded into the Kurio XTREME2, TAB 2, and MOTION 2 by Gulli kids tablets.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 6,
+        "title": "Which languages does twinme support?",
+        "description": "<p>twinme supports 24 languages including English, French, Arabic, Chinese (simplified and traditional), Danish, Dutch, Finish, German, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Norwegian, Persian, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian. Other languages can be supported on demand.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 7,
+        "title": "What is twinme business model?",
+        "description": "<p><strong>twinme+</strong>is a premium version of twinme private messenger, available for a small one-time only fee.</p><p>In addition to all the functions and services offered by twinme, twinme+ offers the following features:</p><ul><li>&#8220;Spaces&#8221;, each with your own &#8220;Profile&#8221;, to organize your relations, conversations, notifications, appearance and parameters, according to each social group you interact with. Different Spaces can be used for interacting with your family, friends, colleagues, sport mates, etc.;<br/>You can even create &#8220;Secret Spaces&#8221;, which do not appear in the list of Spaces and can only be opened by typing their name (do not forget that name as it will be impossible to retrieve);</li><li>&#8220;Ephemeral messages&#8221;, ie messages which disappear at both ends after a certain time;</li><li>Option to lock/unlock the application using your device biometric or pin locking services;</li><li>Option to prevent a contact from making voice/video calls;</li><li>Streaming music on your device during calls;</li><li>Launching group calls;</li><li>Inviting additional contacts to join an on-going voice/video group call;</li><li>Transferring an on-going voice/video call from a mobile to a PC;</li><li>Publishing QR-codes from the calls tab that allow guests to call you without installing the application (click-to-call).</li></ul><br/><p>If twinme is already installed on your device, your twinme account will be automatically transferred with all its associated data (contacts, conversations, etc.) to twinme+ and you can then uninstall twinme from your device.</p><p><strong>twinpro</strong>private communications service is available for licensing to organizations concerned with securing their internal communications, as well as private interactions with their customers and partners. The mobile applications can be personalized to the organization brand and the service run on a dedicated infrastructure.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Basics",
+    "articles": [
+      {
+        "id" : 8,
+        "title": "How do I get started?",
+        "description": "<p>twinme does not use phone numbers, user-id’s or public address books in order to protect your privacy. twinme doesn&#8217;t know your friends and cannot discover them. You need to invite them in person.</p><p>Before adding contacts, you need to create a default invitation profile, with a name and an image (a photo taken on the spot, or a picture from your photo album). This profile will represent you when you invite a new contact or accept a contact’s invitation. It will allow your contacts to distinguish you from their other contacts.  Once connected with someone, your name and image become unique to this relation and you can change them for each of your contacts individually.</p><p>To invite a person near you, you both tap the &#8220;+&#8221; icon at the top of the contacts tab and one scans the other’s invitation QR-code.</p><p>If your friend is away, tap the &#8220;+&#8221; icon at the top of the contacts tab, press the &#8220;Invite&#8221; tab, and tap on the &#8220;Share&#8221; button to send your invitation code by text, email, or any other application. Your friend opens the web address in the message with its twinme application, and accepts the invitation.</p><p>You can also save your invitation QR-code to your gallery and send it to your friends by any means, including posting it on a social network.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 9,
+        "title": "How can I connect with people?",
+        "description": "<p>To add contacts, you need to share your twinme invitation “twincode” with your contacts’ twinme application and have them accept it (or to accept theirs).</p><ul><li>To invite a contact next to you, you should both open your twinme application and press the “+&#8221; icon at the top of the contacts tab. One then &#8220;Invite&#8221; the other to &#8220;Scan&#8221; its invitation QR-code, and accept the invitation. A new entry appears in your contact list with the name and image of the invitation profile your contact used to invite you. However, you and your contact are now paired in a unique way and you can change your image and name for that contact&#8217;s relation only.</li><li>In order to invite contacts remotely, you need to send them your twinme invitation url (the same that is represented by the QR-code used to invite “In-person”) by pressing the &#8220;Share&#8221; button on the &#8220;Invite&#8221; tab and picking one of the applications available on your device. When receiving your message, your contact needs to open the included url with their twinme application and accept your invitation.</li><li>Another way, to invite people you may not know yet, is to publish the url of your invitation “twincode” on a website, a business card, an email signature, etc. either literally or with its QR-code. Your “audience” will then be able to open the url, or scan the QR-code with their twinme application to become one of your contacts.</li><li>If, at any time, you reset the invitation code, it invalidates the current one and creates a new one. No one can get in touch with you using the &#8220;old&#8221; invitation code anymore. Already established relations are unaffected, and remain valid.</li></ul>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 10,
+        "title": "How can I personalize my contacts?",
+        "description": "<p>You can change your contact’s name as shown in your contacts list by tapping the “Pencil” icon next to your contact&#8217;s name on the displayed contact screen. Your contacts’ names are only visible to you on your twinme application on your device and are not communicated to any of your contacts.</p><p>You can also change how each of your contacts “knows you” individually, i.e., your “image” as it appears on this particular contact’s device, and your default “name” for that contact. Tap on your &#8220;KNOWS ME AS&#8221; entry of a displayed contact to change it.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 11,
+        "title": "How can I remove someone from my contacts?",
+        "description": "<p>Click on your contact’s name, then on the “Pencil” icon next to your contact&#8217;s name. At the bottom of the Edit screen, press the “Delete” command to suppress this relation.</p><p>Once you have deleted a relation, neither of you can use twinme to reach the other person anymore. You need to invite each other&#8217;s again in order to reconnect.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 12,
+        "title": "How can I modify my default profile?",
+        "description": "<p>Your default profile (your name and image) is used by default when inviting a new contact or accepting a contact’s invitation.</p><p>Tap on your profile image at the top corner of any twinme home screen to display the &#8220;Settings&#8221; menu tab.  Tap again on your profile image and on the “Pencil” icon to edit it. You can then modify the image and/or the name and/or the description (about) of your default invitation profile. Changes become effective after tapping on “Save”.</p><p>You may decide to propagate the change to your contacts, or not.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 13,
+        "title": "How do I know which profile I am using?",
+        "description": "<p>Your default profile is the one displayed at the top corner of your twinme home screen. Your name and image attached to the default profile are used by default when inviting a new contact or accepting a contact’s invitation.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 14,
+        "title": "How can I invite family and friends to join twinme?",
+        "description": "<p>If your friend or family member is next to you, you both open your twinme application, press [[AddContact]] at the top of the contacts tab. One then “Invite” the other to “Scan” its invitation QR-code, and accept the invitation.</p><p>If your friend or family member is remote, tap the “Share” button on the “Invite” tab and pick one of the applications available on your device. When receiving your message, your friend needs to open the included url with their twinme application and accept your invitation.</p><p>For more details, see <a href='https://twin.me/support/connect-people'> How can I connect with people?</a></p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 15,
+        "title": "Can I block/ unblock someone on twinme?",
+        "description": "<p>You can indeed manage your relations and control how you interact with your contacts. If you wish to restrict communication with a specific twinme contact, you can delete the relation you have with them. This action prevents both parties from reaching each other.</p><p>To remove someone from your contacts, click on your contact’s name, then on the “Pencil” icon next to your contact’s name. At the bottom of the Edit screen, press the “Delete” command to suppress this relation.</p><p>Once you have deleted a relation, neither of you can use twinme to reach the other person anymore. You need to invite each other’s again in order to reconnect.</p><p>Furthermore, twinme allows you to customize your relations by specifying how and when your contacts can reach you. For instance, you can prevent a contact from initiating voice and/or video calls, while still allowing messaging. You can also define specific times and days during which someone can call you or set restrictions based on the time of day.</p><p>By utilizing these features, twinme offers you greater control over your connections and the ability to tailor your communication experience to your preferences.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 16,
+        "title": "Can I scan the QR-Code or open the url of my friend's invitation and accept it several times ?",
+        "description": "<p>Each &#8220;Contact&#8221; listed in your twinme app represents a unique and reciprocal relation between your device and your contact&#8217;s device. Whenever you accept an invitation from someone, twinme creates a new entry in your &#8220;Contacts&#8221; list, which indicates a new relation with that contact&#8217;s device. This means that you can have multiple relations with the same person, such as a work relation and a personal relation, each associated to a different name and image.</p><p>If you delete a contact entry, only the associated relation is removed, and it does not affect any other relation you may have with that same person.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 17,
+        "title": "What to do when I get a notification that my contact does not have the latest version of the app?",
+        "description": "<p>When sending a message to a contact, you may see the following notification:</p><p><em>“</em><em>The twinme version of your contact is not fully functional. P</em><em>lease ask him/her to perform a twinme update.”</em></p><p>It means your contact’s twinme version is not able to perform the latest functions, such as receiving a photo, seeing the status of messages, etc. You should ask your contact to update twinme so you can both benefit from the latest features.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 18,
+        "title": "I am going to get a new mobile device. How can I transfer my twinme private information to my new device?",
+        "description": "<p>You can migrate your account between and &#8220;old&#8221; Android or iOS device and a &#8220;new&#8221; one, whether it runs Android or iOS.</p><p>Install the application on your new device and launch the account transfer service on both the old and new devices. This service is accessible by tapping your profile picture at the top to open the side menu, then SUPPORT / Account / TRANSFER BETWEEN DEVICES.</p><p>This service exchanges the existing account data (profiles, contacts, conversations, history, etc.) on the old device with the &#8220;empty&#8221; account on the new one. The transfer may take some time, depending on the amount of data in the account database.</p><p>Once the exchange has been completed, you can then delete the &#8220;empty&#8221; account on the old device and de-install the app.</p><p>On iOS devices, you should also be able to use the standard iOS applications transfer service, with the encryption option &#8220;ON&#8221;.</p><p>A back-up/restore on external media service is currently under development, to cope with lost or stolen devices.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 19,
+        "title": "How can I delete my twinme account?",
+        "description": "<p>Your account is attached to the instance of the application on your device. It was created the first time you opened the application on that device.</p><p>To delete your account, go the side menu by tapping your profile picture at the top, then SUPPORT / Account and &#8220;Delete account&#8221; at the bottom. This removes all application-related data (profiles, contacts, messages, media, history, etc.) from your device database, and deletes the account from the twinme signaling servers.</p><p>Once the account has been deleted, you can uninstall the application from your device.</p><p>Before deleting your account, it might be wise to reset all your conversations, so they are also reset on your contacts&#8217; device, and remove all your contacts so they are notified when they try to reach you.</p><p>If you uninstall the application or make a factory reset of your device, your account will become &#8220;unreachable&#8221;. The local data on your device will be removed, but there may remain some metadata on the signaling servers for some time. Your contacts will not be notified when they try to reach you.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 20,
+        "title": "I had created a profile with contacts on my old phone. How can I retrieve that profile into my new phone?",
+        "description": "<p>You can migrate your account between and “old” Android or iOS device and a “new” one, whether it runs Android or iOS.</p><p>Install the application on your new device and launch the account transfer service on both the old and new devices. This service is accessible by tapping your profile picture at the top to open the side menu, then SUPPORT / Account / TRANSFER BETWEEN DEVICES.</p><p>This service exchanges the existing account data (profiles, contacts, conversations, history, etc.) on the old device with the “empty” account on the new one. The transfer may take some time, depending on the amount of data in the account database.</p><p>Once the exchange has been completed, you can then delete the “empty” account on the old device and de-install the app.</p><p>On iOS devices, you should also be able to use the standard iOS applications transfer service, with the encryption option “ON”.</p><p>A back-up/restore on external media service is currently under development, to cope with lost or stolen devices.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Messaging",
+    "articles": [
+      {
+        "id" : 21,
+        "title": "How do I send a text message?",
+        "description": "<p>Click on the contact you want to text with and then on “Chat” [[Chat]] &nbsp;or “Conversation with”.</p><p>Type your text in the “Type a message” window and tap on “Send”&nbsp; [[Send]] to send.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 22,
+        "title": "How are my conversations organized?",
+        "description": "<p>Conversations are listed by contact alphabetically.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 23,
+        "title": "How can I delete a conversation history?",
+        "description": "<p>In the “Conversation” screen with your contact, click on “Trash” [[Trash]].</p><p>A message appears asking you to confirm the operation. By tapping “OK” all contents exchanged in this conversation with this contact are removed from both your and your contact’s device simultaneously.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 24,
+        "title": "How can I share a picture?",
+        "description": "<p>Click on the contact you want to share a picture with and on “Chat” [[Chat]] or “Conversation with”.</p><p>Under “Type a message”, click on the “Camera” [[Camera]]. You can either take a picture on the spot with the shutter button [[Camera]], or pick one from your photo album [[Gallery]].<br/>A check mark appears on the top right of each selected picture, and a small figure next to the “Camera” icon indicates the number of pictures selected.</p><p>Click on &#8220;Send&#8221; [[Send]] to send.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 25,
+        "title": "How can I store a received photo on my device?",
+        "description": "<p>From twinme standpoint, message contents like photos remain under control of the sender. By default, you cannot copy, store, or share received content.</p><p>The ability to allow senders to authorize individual contacts to copy, store or share their content will be available in a forthcoming twinme release.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 26,
+        "title": "How can I send a file?",
+        "description": "<p>The ability to send any type of file in conversations will be available in a forthcoming twinme release.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 27,
+        "title": "How can I forward a message?",
+        "description": "<p>From twinme standpoint, message contents remain under the control of the sender. By default, you cannot copy, store, or share received content.</p><p>The ability to allow senders to authorize individual contacts to copy, store or share their content will be available in a forthcoming twinme release.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 28,
+        "title": "How can I tell if a message I've sent has been delivered?",
+        "description": "<p>Indications of a message being sent, delivered &amp; read will be available in a forthcoming twinme release.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 29,
+        "title": "Can anyone read the messages I send on twinme?",
+        "description": "<p>Message exchanged are end-to-end encrypted and happen in peer-to-peer directly from device to device, with no staging server storing contents in between.</p><p>Contents remain on the end devices and can be wiped out on both ends simultaneously by a simple tap from either end. Encryption works transparently in the background and doesn’t need to be activated first.</p><p>Check twinme <a href='https://twin.me/privacy-policy/'>Privacy Policy</a> for more details.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 30,
+        "title": "How can I share a YouTube, Vimeo video, or SoundCloud audio links?",
+        "description": "<p><em>The ability to send and play audio and video links will be available in a forthcoming twinme release.</em></p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 31,
+        "title": "How do I know when a message has been delivered to & read by my contact?",
+        "description": "<p>When your message is being sent, the icon [[Spinner]] appears next to it. It means the message is being transferred to your contact’s device.</p><p>When your message has actually been received by your contact’s device, the message status icon changes to [[ReceivedState]].</p><p>When your message has been opened by your contact the message status icon turns into your contact’s profile picture. This picture icon moves down with the latest message that has been opened by your contact.</p><p>The  message status icon [[NotSentState]] shows that the content you want to share (a photo or video for example) has not been able to be sent to your contact within a reasonable delay.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 32,
+        "title": "Why does it take a longer time sometimes until a message is sent to or received by the recipient?",
+        "description": "<p>twinme stands out from other instant messaging services because it does not rely on content distribution servers to store and forward messages. Instead, messages are sent directly between devices in real-time using a &#8220;peer-to-peer&#8221; approach. Both the sender and recipient need to be online for messages to be transferred, and the contents remain on the sender&#8217;s device until both parties are active with a working internet connection. This design decision prioritizes user privacy by avoiding leaving traces of conversations on the network.</p><p>To ensure optimal performance, it is important that users configure their device so that twinme can run and receive notifications in the background, and is not subject to battery optimization. Android device configuration can be checked at <a href='https://dontkillmyapp.com/'>https://dontkillmyapp.com</a>. Additionally, it is recommended to use the app regularly so that the operating system considers it important and does not kill it. If messages do not appear, you can refresh the application by “zapping” it.</p><p>With twinme, when a message is sent, it means that the recipient has received it, but it may not have been seen. Other chat services may immediately send your contents to the distribution server, but not necessarily to the recipient if they&#8217;re not online.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Calling",
+    "articles": [
+      {
+        "id" : 33,
+        "title": "How can I start/end a voice call?",
+        "description": "<p><em>Select the contact you wish to call.</em></p><p><em>Click on “Voice” [[AudioCal]] to call your contact. To end the call, click on</em><em>“Cancel”.</em></p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 34,
+        "title": "How can I answer a call?",
+        "description": "<p>When one of your contacts is calling you, their name appears on your screen.</p><p>Click on “Accept” to answer the call or “Dismiss” to reject it.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 35,
+        "title": "How can I mute my microphone?",
+        "description": "<p>Tap on “Mute” [[MicroMute]] to mute your microphone. Tap again to set it back on when you need to.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 36,
+        "title": "How can I activate the loudspeaker?",
+        "description": "<p>Tap on “Speaker” [[SpeakerOn]] to switch the hands-free speakers on. Tap again to switch them off.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 37,
+        "title": "What happens if I get an incoming call on my mobile device, when I'm on a twinme call?",
+        "description": "<p>You can take both calls simultaneously, and “mute” one while being on the other.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 38,
+        "title": "How can I start/end a video call?",
+        "description": "<p>Click on the contact you wish to call. Click on “Video” [[VideoCall]] to call your contact.</p><p>To end the call, click on “Cancel”.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 39,
+        "title": "How can I answer a video call?",
+        "description": "<p><em>When one of your contacts is calling you, their name appears on your screen (or their live video image if they used the “Video Bell” feature).</em></p><p><em>Click on “Accept” to answer the call or “Dismiss” to reject it.</em></p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 40,
+        "title": "How can I switch front and back cameras while on a video call?",
+        "description": "<p><em>While on a video call, tap on [[SwitchCamera]] underneath the video to switch from the front to the back camera.</em></p><p><em>Tap again to switch back to the front camera.</em></p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 41,
+        "title": "How can I tell if leave missed a call?",
+        "description": "<p>If you missed a twinme call, a notification appears on the notification bar at the top of your device screen.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 42,
+        "title": "How can I switch the video off while on a video call?",
+        "description": "<p><em>To switch off the video while on a call, tap on [[VideoMute]]. Your image will then freeze at the other end.</em></p><p><em>To switch the video back on, tap</em>[[VideoMute]].</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 43,
+        "title": "What happens if I get an incoming call on twinme when I'm already on a twinme call?",
+        "description": "<p><em>Your contact will be notified on his screen that you are already “busy” on a twinme call.</em></p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 44,
+        "title": "Can I use twinme to call people in other countries for free?",
+        "description": "<p><em>You can call your twinme contacts no matter where they are in the world as long as you both have an internet connection (WiFi and/or 3G/4G/LTE).</em></p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 45,
+        "title": "Are calls end-to-end encrypted?",
+        "description": "<p><em>All conversations are end-to-end encrypted and happen in peer-to-peer directly from device to device, with no staging server storing contents in between.</em></p><p><em>Encryption works transparently in the background and doesn’t need to be activated first.</em></p><p><em>Check twinme </em> <a href='https://twin.me/privacy-policy/'><em>Privacy Policy</em></a><em> for more details.</em></p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Settings and update",
+    "articles": [
+      {
+        "id" : 46,
+        "title": "How do I access the Menu?",
+        "description": "<p><em>Tap on [[Menu]] at the top left of the twinme home screen to enter “Edit Profile”.</em></p><p><em>Tap on [[Menu]] at the bottom right corner of your screen to access the Menu.</em></p>",
+        "tags": ["Settings", "Update"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 47,
+        "title": "How can I change the different ringtones?",
+        "description": "<p>On Android devices, you can change the ringtone for twinme notifications by going to &#8220;System Settings&#8221;, then to the &#8220;Apps&#8221; section, and selecting twinme. From there, you should be able to access the &#8220;Notifications&#8221; menu and customize your ringtones.</p><p>On iOS devices, open the &#8220;APPLICATION SETTINGS&#8221; menu by tapping on your profile picture at the top of the Contacts, Conversation, or Notifications screen, then selecting &#8220;Notifications&#8221; to change the default ringtone for twinme notifications.</p>",
+        "tags": ["Settings", "Update"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 48,
+        "title": "Can I put a password on twinme?",
+        "description": "<p>By upgrading to twinme+, the premium version of twinme available for a small one-time fee, you gain access to additional privacy-focused features. One of these features is the ability to lock and unlock the application using your device&#8217;s biometric or pin locking services.</p>",
+        "tags": ["Settings", "Update"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 49,
+        "title": "My kid has a Kurio Xtreme2 (or Motion 2 by Gulli) tablet, which came with twinme pre-installed. Is this version of twinme up-to-date ?",
+        "description": "<p>Twinme versions 4.6.2 or 5.0.0 were originally pre-installed on the Kurio Xtreme2 and Motion2 by Gulli kids tablets. These versions are not the latest available; they have  known errors and do not support the latest and greatest features.<span class='apple-converted-space'> You should therefore update twinme using Kurio’s updater, as shown on the video below:</span></p><p> <a href='https://www.youtube.com/embed/BZCIT-g5tBo/'>Kurio tablet</a></p>",
+        "tags": ["Settings", "Update"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Security and permissions",
+    "articles": [
+      {
+        "id" : 50,
+        "title": "How does twinme protect my data?",
+        "description": "<p>By not collecting any of your personal information, twinme avoids their dissemination, either voluntarily (e.g. commercial) or not (piracy, in particular).</p><p>twinme does not require you to sign-up with personal information such as a phone number, email address, or social network ID. You are not personally identified by the application, twinme only knows about your device that can communicate with your contacts’ device. twinme does not have any personal information about anyone using twinme and it cannot use your device address book to try identify people you may know that could have installed twinme as well. This is why you need to invite twinme contacts explicitly, because “you” know them, not twinme.</p><p>However, twinme does store on your device, and as a back-up on its servers, your profile attributes (names and images) as well as your contacts’.</p><p>All exchanged contents (messages, photos) and voice/video calls, happen in peer-to-peer directly from device to device, without a staging server storing data in between. Contents remain on the end devices and can be wiped out on both ends simultaneously by a simple tap from either end. In addition, all exchanges are end-to-end encrypted by the open source WebRTC protocol used for peer-to-peer multimedia and data exchanges. WebRTC uses the “TLS” encryption protocol, a web standard for accessing secure sites (https), also available in open source.</p><p>twinme is indeed one of the most respectful private messenger application, not only for you, but for your contacts as well. Check twinme <a href='https://twin.me/privacy-policy/'>Privacy Policy</a> for more details.</p>",
+        "tags": ["Security", "Permissions"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 51,
+        "title": "Does twinme use servers? Where is my data stored?",
+        "description": "<p>twinme uses signaling servers to connect devices with each other. Message conversations and voice/video calls happen in peer-to-peer directly from device to device with no staging server storing content in between.</p><p>&nbsp;</p><h3>Where are twinme signaling servers located?</h3><p>twinme servers are located in the EU (Germany at the moment).</p>",
+        "tags": ["Security", "Permissions"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 52,
+        "title": "Where are twinme signaling servers located?",
+        "description": "<p>twinme servers are located in the EU (Germany at the moment).</p>",
+        "tags": ["Security", "Permissions"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 53,
+        "title": "What permissions do I need to grant to use twinme?",
+        "description": "<p>twinme requires users to grant as little access as possible to their device features so as to guarantee maximum freedom &amp; privacy.</p><p>No other private messenger asks for so few permission like twinme (as illustrated by Signal below).</p><p>twinme needs access to:<br/>&#8211; Camera so you can use it to take photos &amp; make video calls<br/>&#8211; Microphone so you can make audio &amp; video calls, and when you want to record audio messages<br/>&#8211; Storage (SD-card) in order to access multimedia contents (photos &amp; music), which you want to share.</p><p>twinme asks you for permission before you use any of these features for the first time &amp; you can choose to “Allow” or “Deny” access as you go along.</p><p>In addition, on the latest Android versions, beginning in Android 6.0, you can also revoke a permission at any time, by going to the app&#8217;s Settings screen.</p><p>&nbsp;</p><ul><li><h4><strong>Accessing the camera</strong></h4></li></ul><p>To get started, twinme asks to grant access to either the camera or media stored on your device to define your default profile picture. You need to grant either one –at least momentarily- to create a default profile that will be used to invite your twinme contacts.</p><p>twinme allows you to share photos (and soon videos) taken on the spot within a chat conversation. If you choose to deny access to the camera, you will not be able to take pictures when you tap on the camera icon.</p><p>twinme allows you to make HD video calls. If you choose to deny access to the camera, you will not be able to make video calls.</p><p>When you meet someone “In-person” and want to connect with twinme, you can scan his/her QR-code with your camera. If you choose to deny access to the camera, you will need the other person to scan your QR-Code instead.</p><ul><li><h4><strong>Accessing the microphone</strong></h4></li></ul><p>The microphone allows you to make voice &amp; video calls and is required when you want to record audio messages. If you choose to deny access to the microphone, you will not be able to use those features.</p><ul><li><h4><strong>Accessing external storage</strong></h4></li></ul><p>To get started, twinme needs access to either the camera or media stored on your device to set your default profile picture. You need to grant either one –at least momentarily- to create a default profile that will be used to invite your twinme contacts.</p><p>When you tap on the camera icon in a conversation, you can access photos stored on your device. If you deny access to the media storage, you will not be able to send photos.</p><p>&nbsp;</p><p><strong><em>How do I</em><em>modify the permissions granted to twinme on my Android phone?</em></strong></p><p>On the latest Android releases, beginning in Android 6.0, you can modify the permissions granted to twinme at any time, by going to the app&#8217;s Settings screen: Settings &gt; Apps &gt; Twinme &gt; Permissions.</p>",
+        "tags": ["Security", "Permissions"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 54,
+        "title": "How do I modify the permissions granted to twinme on my Android phone?",
+        "description": "On the latest Android releases, beginning in Android 6.0, you can modify the permissions granted to twinme at any time, by going to the app's Settings screen: Settings >Apps >Twinme >Permissions.",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Help and feedback",
+    "articles": [
+      {
+        "id" : 55,
+        "title": "How can I get help?",
+        "description": "<p>Tap on [[Menu]] at the top left of the twinme home screen to enter “Edit Profile”. At the bottom right corner, tap on [[Menu]]  and then on “Help”.</p><p>You can also ask for specific help directly to the twinme support team using the <a href='https://twin.me/en/contact/'>contact form</a>, and providing an email address where to get an answer.</p>",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 56,
+        "title": "How can I give feedback?",
+        "description": "<p>Tap on [[Menu]]  at the top left of the twinme home screen to enter “Edit Profile”. At the bottom right corner, tap on [[Menu]] and then on “Send feedback”.</p><p>Enter your email address so we can follow up with you regarding your feedback, type your message in the “Description” box and then “Accept”.</p><p>You can also send your feedback from the twinme website using its <a href='https://twin.me/en/contact/'>contact form</a>.</p>",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  }
+]
+
+
+

@@ -79,7 +79,7 @@ public class VideoItem extends Item {
     String getInformation(@NonNull Context context) {
 
         if (isClearLocalItem()) {
-            return context.getString(R.string.conversation_activity_local_cleanup);
+            return context.getString(R.string.conversation_view_local_cleanup);
         } else {
             StringBuilder stringBuilder = new StringBuilder();
             if (mVideoDescriptor.getExtension() != null) {

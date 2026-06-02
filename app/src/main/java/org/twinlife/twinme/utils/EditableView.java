@@ -40,7 +40,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.Twinlife;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinme.ui.TwinmeActivity.Permission;
+import org.twinlife.twinme.ui.Permission;
 
 import java.io.File;
 import java.io.IOException;

@@ -107,7 +107,7 @@
                         android:id="@+id/edit_profile_activity_description_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/navigation_activity_about_twinme"
+                        android:hint="@string/navigation_view_about_twinme"
                         android:background="@android:color/transparent"
                         android:gravity="top"
                         android:inputType="textMultiLine|textNoSuggestions|textCapSentences"
@@ -136,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/edit_profile_activity_propagating_profile"
+                        android:text="@string/edit_profile_view_propagating_profile"
                         app:layout_marginEndPercent="10.27%" />
 
                     <ImageView

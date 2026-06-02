@@ -115,7 +115,8 @@ public class AudioItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_audio_item_overlay_view,
                 R.id.base_item_activity_audio_item_annotation_view,
                 R.id.base_item_activity_audio_item_selected_view,
-                R.id.base_item_activity_audio_item_selected_image_view);
+                R.id.base_item_activity_audio_item_selected_image_view,
+                R.id.base_item_activity_audio_item_error_image_view);
 
         mAudioItemObserver = audioItemObserver;
 
@@ -379,7 +380,7 @@ public class AudioItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_audio_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case NAMED_FILE_DESCRIPTOR:

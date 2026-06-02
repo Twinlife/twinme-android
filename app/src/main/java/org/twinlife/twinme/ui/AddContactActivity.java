@@ -82,7 +82,7 @@ import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
-import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
+import org.twinlife.twinme.utils.SaveTwincodeBackgroundAction;
 import org.twinlife.twinme.utils.TwincodeView;
 import org.twinlife.twinme.utils.camera.CameraManager;
 
@@ -241,12 +241,12 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                     if (mProfile != null && mInvitationLink != null) {
                         mSaveTwincodeView.setTwincodeInformation(this, mProfile.getName(), avatar,
                                 mQRCodeBitmap, mInvitationLink.label,
-                                getString(R.string.fullscreen_qrcode_activity_save_message));
+                                getString(R.string.fullscreen_qrcode_view_save_message));
                     }
 
                     Bitmap bitmapToSave = getBitmapFromTwincodeView();
                     if (bitmapToSave != null) {
-                        new SaveTwincodeAsyncTask(this, bitmapToSave).execute();
+                        new SaveTwincodeBackgroundAction(this, bitmapToSave, R.string.capture_view_qrcode_saved).start();
                     } else {
                         toast(getString(R.string.application_operation_failure));
                     }
@@ -262,7 +262,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -381,9 +381,9 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         applyInsets(R.id.add_contact_activity_layout, R.id.add_contact_activity_tool_bar, R.id.add_contact_activity_background, Design.TOOLBAR_COLOR, false);
 
         if (mInvitationMode == InvitationMode.INVITE_ONLY) {
-            setTitle(getString(R.string.add_contact_activity_title));
+            setTitle(getString(R.string.add_contact_view_title));
         } else {
-            setTitle(getString(R.string.main_activity_add_contact));
+            setTitle(getString(R.string.main_view_add_contact));
         }
 
         View backgroundView = findViewById(R.id.add_contact_activity_background);
@@ -430,7 +430,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         mMessageInviteView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         if (mInvitationMode == InvitationMode.INVITE_ONLY) {
-            mMessageInviteView.setText(getResources().getString(R.string.twincode_activity_message));
+            mMessageInviteView.setText(getResources().getString(R.string.twincode_view_message));
         }
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageInviteView.getLayoutParams();
@@ -828,7 +828,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         } else {
             mInfoScanView.setVisibility(View.GONE);
             mMessageView.setVisibility(View.VISIBLE);
-            mMessageView.setText(getResources().getString(R.string.capture_activity_no_camera));
+            mMessageView.setText(getResources().getString(R.string.capture_view_no_camera));
         }
     }
 
@@ -878,7 +878,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         String profileName = mProfile.getName();
         mProfileService.getProfileImage(mProfile, (Bitmap avatar) -> {
             if (mProfile != null && mInvitationLink != null) {
-                String shareMessage = String.format(getString(R.string.add_contact_activity_share_image_message), profileName);
+                String shareMessage = String.format(getString(R.string.add_contact_view_share_image_message), profileName);
                 mSaveTwincodeView.setTwincodeInformation(this, profileName, avatar,
                         mQRCodeBitmap, mInvitationLink.label,
                         shareMessage);
@@ -916,7 +916,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("text/plain");
 
-        String shareTitle = String.format(getString(R.string.add_contact_activity_share_title), name);
+        String shareTitle = String.format(getString(R.string.add_contact_view_share_title), name);
         intent.putExtra(Intent.EXTRA_SUBJECT, shareTitle);
 
         if (file != null) {
@@ -926,15 +926,15 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             intent.putExtra(Intent.EXTRA_STREAM, uri);
         }
 
-        String shareMessage = String.format(getString(R.string.add_contact_activity_share_message_part_1), name) +
+        String shareMessage = String.format(getString(R.string.add_contact_view_share_message_part_1), name) +
                 "\n\n" +
-                getString(R.string.add_contact_activity_share_message_part_2) +
+                getString(R.string.add_contact_view_share_message_part_2) +
                 "\n\n" +
-                String.format(getString(R.string.add_contact_activity_share_message_part_3), name) +
+                String.format(getString(R.string.add_contact_view_share_message_part_3), name) +
                 "\n" +
                 mInvitationLink.uri +
                 "\n\n" +
-                getString(R.string.add_contact_activity_share_message_part_4);
+                getString(R.string.add_contact_view_share_message_part_4);
 
         intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         startActivity(Intent.createChooser(intent, null));
@@ -1027,7 +1027,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
         if (mInvitationLink != null) {
             org.twinlife.twinme.utils.Utils.setClipboard(this, mInvitationLink.uri);
-            Toast.makeText(this, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -1039,7 +1039,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             mDeferredSaveTwincode = false;
             mProfileService.getProfileImage(mProfile, (Bitmap avatar) -> {
                 if (mProfile != null && mInvitationLink != null) {
-                    String shareMessage = String.format(getString(R.string.add_contact_activity_share_image_message), mProfile.getName());
+                    String shareMessage = String.format(getString(R.string.add_contact_view_share_image_message), mProfile.getName());
                     mSaveTwincodeView.setTwincodeInformation(this, mProfile.getName(), avatar,
                             mQRCodeBitmap, mInvitationLink.label,
                             shareMessage);
@@ -1047,7 +1047,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
                 Bitmap bitmapToSave = getBitmapFromTwincodeView();
                 if (bitmapToSave != null) {
-                    new SaveTwincodeAsyncTask(this, bitmapToSave).execute();
+                    new SaveTwincodeBackgroundAction(this, bitmapToSave, R.string.capture_view_qrcode_saved).start();
                 } else {
                     toast(getString(R.string.application_operation_failure));
                 }
@@ -1077,8 +1077,8 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         }
 
         List<UICustomTab> customTabs = new ArrayList<>();
-        customTabs.add(new UICustomTab(getString(R.string.add_contact_activity_invite), UICustomTab.CustomTabType.INVITE, mInvitationMode == InvitationMode.INVITE));
-        customTabs.add(new UICustomTab(getString(R.string.add_contact_activity_scan_title), UICustomTab.CustomTabType.SCAN, mInvitationMode == InvitationMode.SCAN));
+        customTabs.add(new UICustomTab(getString(R.string.add_contact_view_invite), UICustomTab.CustomTabType.INVITE, mInvitationMode == InvitationMode.INVITE));
+        customTabs.add(new UICustomTab(getString(R.string.add_contact_view_scan_title), UICustomTab.CustomTabType.SCAN, mInvitationMode == InvitationMode.SCAN));
 
         mCustomTabView = findViewById(R.id.add_contact_activity_tab_view);
 
@@ -1225,16 +1225,16 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                     if (error == BaseService.ErrorCode.SUCCESS && contact != null) {
                         mProfileService.getImage(contact, (Bitmap avatar) -> showSuccessAuthentification(contact.getName(), avatar));
                     } else {
-                        incorrectQRCode(getLinkError(errorCode, R.string.add_contact_activity_scan_error_incorrect_link));
+                        incorrectQRCode(getLinkError(errorCode, R.string.add_contact_view_scan_error_incorrect_link));
                     }
                 }));
             } else if (twincodeURI.kind == TwincodeURI.Kind.Proxy) {
                 addProxy(twincodeURI.twincodeOptions);
             } else {
-                incorrectQRCode(getLinkError(twincodeURI.kind, R.string.capture_activity_incorrect_qrcode));
+                incorrectQRCode(getLinkError(twincodeURI.kind, R.string.capture_view_incorrect_qrcode));
             }
         } else {
-            incorrectQRCode(getLinkError(errorCode, R.string.capture_activity_incorrect_qrcode));
+            incorrectQRCode(getLinkError(errorCode, R.string.capture_view_incorrect_qrcode));
         }
     }
 
@@ -1244,7 +1244,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     private void showSuccessAuthentification(String name, Bitmap avatar) {
@@ -1258,7 +1258,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         successAuthentifiedRelationView.setAvatar(avatar, false);
         successAuthentifiedRelationView.setTitle(name);
 
-        String message = String.format(getString(R.string.authentified_relation_activity_certified_message), name);
+        String message = String.format(getString(R.string.authentified_relation_view_certified_message), name);
         successAuthentifiedRelationView.setMessage(message);
         successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
 
@@ -1401,13 +1401,13 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
         final List<ProxyDescriptor> proxies = getTwinmeContext().getConnectivityService().getUserProxies();
         if (proxies.size() >= ConnectivityService.MAX_PROXIES) {
-            showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.proxy_activity_limit), ConnectivityService.MAX_PROXIES), false, this::finish);
+            showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, this::finish);
             return;
         }
 
         for (ProxyDescriptor proxyDescriptor : proxies) {
             if (proxyDescriptor.getDescriptor().equalsIgnoreCase(proxy)) {
-                showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.proxy_activity_already_use), false, null);
+                showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_already_use), false, null);
                 return;
             }
         }
@@ -1417,7 +1417,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.proxy_activity_title));
+        spannableStringBuilder.append(getString(R.string.proxy_view_title));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n\n");
         int startSubTitle = spannableStringBuilder.length();
@@ -1425,9 +1425,9 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         defaultConfirmView.setSpannableTitle(spannableStringBuilder);
-        defaultConfirmView.setMessage(getString(R.string.proxy_activity_url));
+        defaultConfirmView.setMessage(getString(R.string.proxy_view_url));
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
-        defaultConfirmView.setConfirmTitle(getString(R.string.proxy_activity_enable));
+        defaultConfirmView.setConfirmTitle(getString(R.string.proxy_view_enable));
         defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -1454,7 +1454,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                 if (fromConfirmAction) {
                     SNIProxyDescriptor proxyDescriptor = SNIProxyDescriptor.create(proxy);
                     if (proxyDescriptor == null) {
-                        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.proxy_activity_invalid_format), false, null);
+                        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_invalid_format), false, null);
                         return;
                     }
                     proxies.add(proxyDescriptor);

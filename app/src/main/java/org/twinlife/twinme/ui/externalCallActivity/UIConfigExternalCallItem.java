@@ -39,23 +39,23 @@ public class UIConfigExternalCallItem {
 
         switch (mConfigExternalCallSettings) {
             case CALL_TYPE:
-                mTitle = context.getString(R.string.create_external_call_activity_call_type);
+                mTitle = context.getString(R.string.create_external_call_view_call_type);
                 break;
 
             case PERMISSIONS:
-                mTitle = context.getString(R.string.settings_activity_authorization_title);
+                mTitle = context.getString(R.string.settings_view_authorization_title);
                 break;
 
             case EXPIRATION:
-                mTitle = context.getString(R.string.create_external_call_activity_link_validity);
+                mTitle = context.getString(R.string.create_external_call_view_link_validity);
                 break;
 
             case DELETE:
-                mTitle = context.getString(R.string.create_external_call_activity_delete_link_setting);
+                mTitle = context.getString(R.string.create_external_call_view_delete_link_setting);
                 break;
 
             case NOTIFICATION:
-                mTitle = context.getString(R.string.create_external_call_activity_notification_setting);
+                mTitle = context.getString(R.string.create_external_call_view_notification_setting);
                 break;
 
             default:

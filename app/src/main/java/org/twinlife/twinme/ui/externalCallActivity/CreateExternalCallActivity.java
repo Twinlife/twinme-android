@@ -21,7 +21,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -56,6 +55,7 @@ import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.externalCallActivity.UIConfigExternalCall.ConfigExternalCallTypeCall;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeApplication;
@@ -64,6 +64,7 @@ import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.DownloadImageBackgroundAction;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.OnboardingDetailView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -84,39 +85,6 @@ import java.util.TimeZone;
 public class CreateExternalCallActivity extends AbstractEditActivity implements CallReceiverService.Observer, MenuCallCapabilitiesView.Observer {
     private static final String LOG_TAG = "CreateExternalCallA...";
     private static final boolean DEBUG = false;
-
-    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-
-        final ImageView mImageView;
-        final File mFile;
-
-        public DownloadImageTask(ImageView imageView, File avatarFile) {
-            mImageView = imageView;
-            mFile = avatarFile;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap bitmap = null;
-            try (InputStream in = new java.net.URL(urldisplay).openStream()) {
-                bitmap = BitmapFactory.decodeStream(in);
-                FileOutputStream outStream = new FileOutputStream(mFile);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-                outStream.flush();
-                outStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        protected void onPostExecute(Bitmap bitmap) {
-
-            if (bitmap != null) {
-                mImageView.setImageBitmap(bitmap);
-            }
-        }
-    }
 
     static final int REQUEST_SHOW_FEATURE = 2;
 
@@ -710,13 +678,13 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         if (mIsTransferCall) {
-            mTitleView.setText(getString(R.string.premium_services_activity_transfert_title));
+            mTitleView.setText(getString(R.string.premium_services_view_transfert_title));
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.transfert_call_placeholder);
             mAvatarView.setImageBitmap(bitmap);
             mUpdatedCallAvatar = bitmap;
             createFileFromPlaceholder();
-            mMessageView.setText(getString(R.string.create_transfert_call_activity_message));
-            String name = getString(R.string.create_transfert_call_activity_name_placeholder);
+            mMessageView.setText(getString(R.string.create_transfert_call_view_message));
+            String name = getString(R.string.create_transfert_call_view_name_placeholder);
             mNameView.setHint(name);
             mNameView.setText(name);
             mCounterNameView.setText(String.format(Locale.getDefault(), "%d/%d", name.length(), MAX_NAME_LENGTH));
@@ -739,9 +707,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
                 createFileFromTemplate();
             } else if (mUITemplateExternalCall.getTemplateType() == UITemplateExternalCall.TemplateType.PROFILE) {
                 if (mSpace.getProfile() != null) {
-                    mCallReceiverService.getImage(mSpace.getProfile().getAvatarId(), (Bitmap avatar) -> {
-                        mAvatarView.setImageBitmap(avatar);
-                    });
+                    mCallReceiverService.getImage(mSpace.getProfile().getAvatarId(), (Bitmap avatar) -> mAvatarView.setImageBitmap(avatar));
                     mCallReceiverService.getProfileAvatar(mSpace.getProfile().getAvatarId());
                 }
             }
@@ -904,7 +870,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         // Note: with the PROFILE template, we don't give any avatar to the createCallReceiver() as it will copy the profile image.
         String name = mNameView.getText().toString().trim();
         if (name.isEmpty() || (mUpdatedCallAvatar == null && mTemplateType != UITemplateExternalCall.TemplateType.PROFILE)) {
-            showAlertMessageView(R.id.create_external_call_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.create_external_call_activity_name_required), true, null);
+            showAlertMessageView(R.id.create_external_call_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.create_external_call_view_name_required), true, null);
             return;
         }
 
@@ -1168,8 +1134,8 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         try {
             //noinspection ResultOfMethodCallIgnored
             mUpdatedCallFile.createNewFile();
-            DownloadImageTask downloadImageTask = new DownloadImageTask(mAvatarView, mUpdatedCallFile);
-            downloadImageTask.execute(mUITemplateExternalCall.getAvatarUrl());
+            DownloadImageBackgroundAction downloadImageTask = new DownloadImageBackgroundAction(getTwinmeContext(), mAvatarView, mUpdatedCallFile, mUITemplateExternalCall.getAvatarUrl());
+            downloadImageTask.start();
         } catch (IOException exception) {
             mUpdatedCallFile = null;
         }

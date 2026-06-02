@@ -117,7 +117,7 @@ public class FeedbackActivity extends AbstractTwinmeActivity implements Feedback
         setToolBar(R.id.feedback_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.navigation_activity_feedback));
+        setTitle(getString(R.string.navigation_view_feedback));
         applyInsets(R.id.feedback_activity_content_view, R.id.feedback_activity_tool_bar, R.id.feedback_activity_contact_scrollview, Design.TOOLBAR_COLOR, false);
 
         ScrollView scrollView = findViewById(R.id.feedback_activity_contact_scrollview);
@@ -208,7 +208,7 @@ public class FeedbackActivity extends AbstractTwinmeActivity implements Feedback
         marginLayoutParams.topMargin = (int) (DESIGN_INFO_TOP_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_INFO_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
 
-        String infoLogs = getString(R.string.feedback_activity_info_logs) + "\n\n" + getString(R.string.feedback_activity_help);
+        String infoLogs = getString(R.string.feedback_view_info_logs) + "\n\n" + getString(R.string.feedback_view_help);
         mInfoLogsView.setText(infoLogs);
 
         mLogsReportView = findViewById(R.id.feedback_activity_logs_report);
@@ -240,7 +240,7 @@ public class FeedbackActivity extends AbstractTwinmeActivity implements Feedback
 
         String deviceInfo = "Device Model: " + getDeviceName() + "\nOS version: " + Build.VERSION.RELEASE + "\nApp version: " + getVersionName();
         deviceInfo += " " + BuildConfig.FLAVOR;
-        deviceInfo += "\n" + getString(R.string.feedback_activity_gdpr_notice);
+        deviceInfo += "\n" + getString(R.string.feedback_view_gdpr_notice);
         mDeviceInfoTextView.setText(deviceInfo);
         mDeviceInfoTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
@@ -343,7 +343,7 @@ public class FeedbackActivity extends AbstractTwinmeActivity implements Feedback
 
         runOnUiThread(() -> {
             if (errorCode == BaseService.ErrorCode.SUCCESS) {
-                Toast.makeText(this, R.string.feedback_activity_send_message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.feedback_view_send_message, Toast.LENGTH_SHORT).show();
                 finish();
             } else {
                 onError(errorCode, null, null);

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2025 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -91,6 +91,14 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
         mGradientDrawable.setStroke(Design.BORDER_WIDTH, Color.TRANSPARENT);
         mFileItemContainer.setClickable(false);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mFileItemContainer.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mFileItemContainer.setLayoutParams(marginLayoutParams);
+
         mFilenameView = view.findViewById(R.id.base_item_activity_peer_file_name_view);
         Design.updateTextFont(mFilenameView, Design.FONT_REGULAR32);
         mFilenameView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -156,7 +164,7 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
         layoutParams = mEphemeralView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -285,7 +293,7 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_peer_file_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case NAMED_FILE_DESCRIPTOR:
@@ -304,6 +312,17 @@ class PeerFileItemViewHolder extends PeerItemViewHolder {
             startEphemeralAnimation();
         } else {
             mEphemeralView.setVisibility(View.GONE);
+        }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mFileItemContainer.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mFileItemContainer.setLayoutParams(marginLayoutParams);
         }
     }
 

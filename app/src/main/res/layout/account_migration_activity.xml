@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/account_migration_activity_network_message"
+            android:text="@string/account_migration_view_network_message"
             app:layout_widthPercent="89.06%"/>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -85,7 +85,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/account_migration_activity_start" />
+                android:text="@string/account_migration_view_start" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -120,7 +120,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/account_migration_activity_stop"
+                android:text="@string/account_migration_view_stop"
                 app:layout_widthPercent="89.06%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

@@ -63,7 +63,7 @@
                         android:layout_centerInParent="true"
                         android:gravity="center"
                         android:lines="1"
-                        android:text="@string/create_group_activity_title"
+                        android:text="@string/create_group_view_title"
                         app:layout_widthPercent="56%" />
 
                 </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -107,7 +107,7 @@
                         android:id="@+id/create_group_activity_description_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/navigation_activity_about_twinme"
+                        android:hint="@string/navigation_view_about_twinme"
                         android:background="@android:color/transparent"
                         android:gravity="top"
                         android:inputType="textMultiLine|textNoSuggestions|textCapSentences"
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/create_group_activity_counter_description_view"
                     android:layout_alignStart="@+id/create_group_activity_list_member_layout_view"
-                    android:text="@string/group_member_activity_section_member"
+                    android:text="@string/group_member_view_section_member"
                     android:textAllCaps="true"
                     android:maxLines="1"
                     app:layout_widthPercent="53.33%"
@@ -159,7 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/add_group_member_activity_title"
+                        android:text="@string/add_group_member_view_title"
                         app:layout_marginEndPercent="4.27%" />
 
                     <ImageView
@@ -212,7 +212,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_activity_authorization_title"
+                        android:text="@string/settings_view_authorization_title"
                         app:layout_marginEndPercent="4.27%"
                         app:layout_marginStartPercent="12.8%" />
 

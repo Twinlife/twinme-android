@@ -60,7 +60,9 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerImageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerMessageItem;
+import org.twinlife.twinme.ui.baseItemActivity.PeerPollItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
+import org.twinlife.twinme.ui.baseItemActivity.PollItem;
 import org.twinlife.twinme.ui.baseItemActivity.TimeItem;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
@@ -104,6 +106,8 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     private Manager<Item> mAsyncItemLoader;
     private boolean mIsPeerItem;
     private boolean mCanUpdateCopy = true;
+
+    private int mStartAnnotationIndex = 0;
 
     private Bitmap mIdentityAvatar;
     @NonNull
@@ -212,6 +216,14 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                         mItem = new PeerInvitationItem(this, this, (ConversationService.InvitationDescriptor) descriptor);
                     } else {
                         mItem = new InvitationItem(this, this, (ConversationService.InvitationDescriptor) descriptor);
+                    }
+                    break;
+
+                case POLL_DESCRIPTOR:
+                    if (mIsPeerItem) {
+                        mItem = new PeerPollItem((ConversationService.PollDescriptor) descriptor);
+                    } else {
+                        mItem = new PollItem((ConversationService.PollDescriptor) descriptor);
                     }
                     break;
 
@@ -395,6 +407,53 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public void getPollAvatar(@Nullable UUID peerTwincodeOutboundId, TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+
+        Originator subject;
+        if (mContact != null) {
+            subject = mContact;
+        } else if (mGroup != null) {
+            subject = mGroup;
+        } else {
+            avatarConsumer.accept(mContactAvatar);
+            return;
+        }
+
+        if (isUserVote(peerTwincodeOutboundId)) {
+            mInfoItemService.getIdentityImage(subject, avatarConsumer);
+        } else {
+            Originator member = mGroupMembers.get(peerTwincodeOutboundId);
+            if (member != null) {
+                mInfoItemService.getImage(member, avatarConsumer);
+            } else if (isGroupConversation() && subject instanceof Group) {
+                mInfoItemService.getImage(((Group) subject).getCurrentMember(), avatarConsumer);
+            } else {
+                avatarConsumer.accept(mContactAvatar);
+            }
+        }
+    }
+
+    @Override
+    public boolean isUserVote(@Nullable UUID peerTwincodeOutboundId) {
+
+        Originator subject;
+        if (mContact != null) {
+            subject = mContact;
+        } else if (mGroup != null) {
+            subject = mGroup;
+        } else {
+            return false;
+        }
+
+        UUID twincodeOutboundId = null;
+        if (subject.getTwincodeOutboundId() != null) {
+            twincodeOutboundId = subject.getTwincodeOutboundId();
+        }
+
+        return twincodeOutboundId != null && twincodeOutboundId.equals(peerTwincodeOutboundId);
+    }
+
+    @Override
     public void onGetGroup(@NonNull Group group, @NonNull List<GroupMember> groupMembers,
                            @NonNull ConversationService.GroupConversation conversation, @Nullable Bitmap avatar) {
         if (DEBUG) {
@@ -479,6 +538,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public boolean displayPeerItemAvatar() {
+
+        return false;
+    }
+
+    @Override
     @Nullable
     public List<Originator> getTypingOriginators() {
 
@@ -525,6 +590,11 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public void onInfoErrorClick(@NonNull Item item) {
+
+    }
+
+    @Override
     public void onMediaClick(@NonNull DescriptorId descriptorId) {
 
     }
@@ -536,6 +606,16 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
     @Override
     public void onAnnotationClick(@Nullable DescriptorId descriptorId) {
+
+    }
+
+    @Override
+    public void onSelectPollChoiceClick(@NonNull ConversationService.PollDescriptor pollDescriptor, ConversationService.PollDescriptor.Choice choice, @NonNull Map<UUID, List<org.twinlife.twinlife.ConversationService.PollDescriptor.Choice>> votes) {
+
+    }
+
+    @Override
+    public  void onPollResultClick(@NonNull org.twinlife.twinlife.ConversationService.PollDescriptor pollDescriptor) {
 
     }
 
@@ -598,7 +678,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         setToolBar(R.id.info_item_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.conversation_activity_menu_item_view_info_title));
+        setTitle(getString(R.string.conversation_view_menu_item_view_info_title));
         applyInsets(R.id.info_item_activity_layout, R.id.info_item_activity_tool_bar, R.id.info_item_activity_item_info_list_view, Design.TOOLBAR_COLOR, false);
     }
 
@@ -612,11 +692,10 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             items.add(new TimeItem(mItem.getTimestamp()));
             items.add(mItem);
 
-
             switch (mItem.getType()) {
                 case MESSAGE:
                 case PEER_MESSAGE:
-                    items.add(new InfoSectionItem(mItem, getString(R.string.navigation_activity_settings)));
+                    items.add(new InfoSectionItem(mItem, getString(R.string.navigation_view_settings)));
                     items.add(new InfoCopyItem(mItem));
                     break;
                 case IMAGE:
@@ -627,7 +706,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                 case PEER_AUDIO:
                 case FILE:
                 case PEER_FILE:
-                    items.add(new InfoSectionItem(mItem, getString(R.string.navigation_activity_settings)));
+                    items.add(new InfoSectionItem(mItem, getString(R.string.navigation_view_settings)));
                     items.add(new InfoCopyItem(mItem));
                     items.add(new InfoFileItem(mItem));
                     break;
@@ -647,51 +726,60 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                 items.add(new InfoEphemeralItem(mItem));
             }
 
+            mStartAnnotationIndex = items.size();
+
             if (mItem.getType() != Item.ItemType.CALL && mItem.getType() != Item.ItemType.PEER_CALL) {
 
                 if (mContact != null) {
-                    items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_sent)));
-                    items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, mItem.isPeerItem() ? mContact.getPeerName() : mContact.getIdentityName(), mItem.isPeerItem() ? mAvatar : mIdentityAvatar));
+                    if (mItem.getReadTimestamp() > 0) {
+                        items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_seen)));
+                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
+                    } else if (mItem.getReceivedTimestamp() > 0) {
+                        items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_received)));
+                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
+                    }
 
                     if (mItem.isEdited()) {
-                        items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_updated) + " : "));
+                        items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_updated) + " : "));
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mAvatar : mIdentityAvatar));
                     }
 
-                    if (mItem.getReadTimestamp() > 0) {
-                        items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_seen)));
-                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
-                    } else {
-                        items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_received)));
-                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
-                    }
                 } else if (mGroup != null) {
-                    items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_sent)));
+                    if (mItem.isPeerItem()) {
+                        Originator member = mGroupMembers.get(mItem.getPeerTwincodeOutboundId());
+                        String memberName = member != null ? member.getName() : "";
 
+                        if (mItem.getReadTimestamp() > 0) {
+                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_seen)));
+                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mGroup.getIdentityName(), mIdentityAvatar));
+                        } else {
+                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_received)));
+                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mGroup.getIdentityName(), mIdentityAvatar));
+                        }
+
+                        if (mItem.isEdited()) {
+                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_updated) + " : "));
+                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, memberName, mAvatar));
+                        }
+                    } else {
+                        if (mItem.isEdited()) {
+                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_updated) + " : "));
+                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, mGroup.getIdentityName(), mIdentityAvatar));
+                        }
+                    }
+                }
+
+                if (mContact != null) {
+                    items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_sent)));
+                    items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, mItem.isPeerItem() ? mContact.getPeerName() : mContact.getIdentityName(), mItem.isPeerItem() ? mAvatar : mIdentityAvatar));
+                } else if (mGroup != null) {
+                    items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_sent)));
                     if (mItem.isPeerItem()) {
                         Originator member = mGroupMembers.get(mItem.getPeerTwincodeOutboundId());
                         String memberName = member != null ? member.getName() : "";
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, memberName, mAvatar));
-
-                        if (mItem.isEdited()) {
-                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_updated) + " : "));
-                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, memberName, mAvatar));
-                        }
-
-                        if (mItem.getReadTimestamp() > 0) {
-                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_seen)));
-                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mGroup.getIdentityName(), mIdentityAvatar));
-                        } else {
-                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_received)));
-                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mGroup.getIdentityName(), mIdentityAvatar));
-                        }
                     } else {
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, mGroup.getIdentityName(), mIdentityAvatar));
-
-                        if (mItem.isEdited()) {
-                            items.add(new InfoSectionItem(mItem, getString(R.string.info_item_activity_updated) + " : "));
-                            items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, mGroup.getIdentityName(), mIdentityAvatar));
-                        }
                     }
                 }
             }
@@ -732,12 +820,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                             UIAnnotation uiAnnotation = new UIAnnotation(uiReaction, name, avatar, -1, ConversationService.AnnotationType.LIKE);
                             uiAnnotations.add(uiAnnotation);
                         }
-                    } else if (descriptorAnnotation.getType() == ConversationService.AnnotationType.RECEIVED || descriptorAnnotation.getType() == ConversationService.AnnotationType.READ) {
+                    } else if (descriptorAnnotation.getType() == ConversationService.AnnotationType.RECEIVED || descriptorAnnotation.getType() == ConversationService.AnnotationType.READ || descriptorAnnotation.getType() == ConversationService.AnnotationType.ERROR) {
                         Bitmap avatar = mInfoItemService.getTwincodeImage(twincodeOutbound);
-                        long timestamp = descriptorAnnotation.getValue();
+                        long value = descriptorAnnotation.getValue();
 
                         if (name != null && avatar != null) {
-                            UIAnnotation uiAnnotation = new UIAnnotation(null, name, avatar, timestamp, descriptorAnnotation.getType());
+                            UIAnnotation uiAnnotation = new UIAnnotation(null, name, avatar, value, descriptorAnnotation.getType());
                             uiAnnotations.add(uiAnnotation);
                         }
                     }
@@ -746,7 +834,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
             runOnUiThread(() -> {
                 if (mInfoItemListAdapter != null) {
-                    mInfoItemListAdapter.setAnnotations(uiAnnotations);
+                    mInfoItemListAdapter.setAnnotations(uiAnnotations, mStartAnnotationIndex);
                 }
             });
         });

@@ -87,31 +87,31 @@ public class UIExport {
 
         switch (mExportContentType) {
             case MESSAGE:
-                title = context.getString(R.string.settings_activity_chat_category_title);
+                title = context.getString(R.string.settings_view_chat_category_title);
                 break;
 
             case IMAGE:
-                title = context.getString(R.string.export_activity_images);
+                title = context.getString(R.string.export_view_images);
                 break;
 
             case VIDEO:
-                title = context.getString(R.string.export_activity_videos);
+                title = context.getString(R.string.export_view_videos);
                 break;
 
             case AUDIO:
-                title = context.getString(R.string.export_activity_voice_messages);
+                title = context.getString(R.string.export_view_voice_messages);
                 break;
 
             case FILE:
-                title = context.getString(R.string.export_activity_files);
+                title = context.getString(R.string.export_view_files);
                 break;
 
             case MEDIA_AND_FILE:
-                title = context.getString(R.string.cleanup_activity_medias_and_files);
+                title = context.getString(R.string.cleanup_view_medias_and_files);
                 break;
 
             case ALL:
-                title = context.getString(R.string.cleanup_activity_messages);
+                title = context.getString(R.string.cleanup_view_messages);
                 break;
         }
 
@@ -139,15 +139,15 @@ public class UIExport {
 
         if (mExportContentType == ExportContentType.MESSAGE) {
             if (mCount > 1) {
-                contentType = context.getString(R.string.settings_activity_chat_category_title);
+                contentType = context.getString(R.string.settings_view_chat_category_title);
             } else {
-                contentType = context.getString(R.string.feedback_activity_message);
+                contentType = context.getString(R.string.feedback_view_message);
             }
         } else {
             if (mCount > 1) {
-                contentType = context.getString(R.string.export_activity_files);
+                contentType = context.getString(R.string.export_view_files);
             } else {
-                contentType = context.getString(R.string.export_activity_file);
+                contentType = context.getString(R.string.export_view_file);
             }
         }
 

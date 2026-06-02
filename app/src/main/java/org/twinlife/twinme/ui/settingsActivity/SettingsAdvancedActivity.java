@@ -103,7 +103,7 @@ public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
         }
 
         if (getTwinmeContext().getConnectivityService().getUserProxies().size() >= ConnectivityService.MAX_PROXIES) {
-            showAlertMessageView(R.id.settings_advanced_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.proxy_activity_limit), ConnectivityService.MAX_PROXIES), false, null);
+            showAlertMessageView(R.id.settings_advanced_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, null);
             return;
         }
         startActivity(AddProxyActivity.class);
@@ -194,7 +194,7 @@ public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
         setToolBar(R.id.settings_advanced_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.settings_advanced_activity_title));
+        setTitle(getString(R.string.settings_advanced_view_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.settings_advanced_activity_layout, R.id.settings_advanced_activity_tool_bar, R.id.settings_advanced_activity_list_view, Design.TOOLBAR_COLOR, false);

@@ -25,6 +25,7 @@ import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.contacts.AddContactViewHolder;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIContactViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
@@ -59,6 +60,8 @@ public class NewConversationListAdapter extends RecyclerView.Adapter<RecyclerVie
     private static final int CREATE_GROUP = 0;
     private static final int CONTACTS_TITLE = 1;
     private static final int CONTACTS = 2;
+
+    private static final int DESIGN_ADD_ICON_SIZE = 40;
 
     NewConversationListAdapter(NewConversationActivity listActivity, AbstractTwinmeService service, int itemHeight,
                                List<UIContact> contacts,
@@ -128,6 +131,10 @@ public class NewConversationListAdapter extends RecyclerView.Adapter<RecyclerVie
         }
 
         if (position < 2) {
+            if (position == 0) {
+                AddContactViewHolder addContactViewHolder = (AddContactViewHolder) viewHolder;
+                addContactViewHolder.onBind(mListActivity.getString(R.string.main_view_add_group), mListActivity.getString(R.string.create_group_view_subtitle), R.drawable.groups_icon, (int) (DESIGN_ADD_ICON_SIZE * Design.HEIGHT_RATIO));
+            }
             return;
         }
 
@@ -147,8 +154,9 @@ public class NewConversationListAdapter extends RecyclerView.Adapter<RecyclerVie
         View convertView;
 
         if (viewType == CREATE_GROUP) {
-            convertView = inflater.inflate(R.layout.create_group_item, parent, false);
-            return new CreateGroupViewHolder(mListActivity, convertView);
+            convertView = inflater.inflate(R.layout.contact_fragment_add_contact_item, parent, false);
+            convertView.setOnClickListener(v -> mListActivity.onCreateGroupClick());
+            return new AddContactViewHolder(convertView);
         } else if (viewType == CONTACTS_TITLE) {
             convertView = inflater.inflate(R.layout.section_title_item, parent, false);
             return new SectionTitleViewHolder(convertView);

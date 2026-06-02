@@ -74,6 +74,6 @@ public class MenuAddContactView  extends AbstractMenuSelectActionView {
 
         super.initViews();
 
-        mTitleView.setText(getResources().getString(R.string.main_activity_add_contact));
+        mTitleView.setText(getResources().getString(R.string.main_view_add_contact));
     }
 }

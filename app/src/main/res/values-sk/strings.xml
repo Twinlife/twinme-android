@@ -1,0 +1,1296 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Prijať</string>
+    <string name="application_account_deleted">Váš účet bol odstránený, teraz musíte aplikáciu odinštalovať.</string>
+    <string name="application_account_restored_error">Účet tohto zariadenia bol obnovený na iné zariadenie. Musíte odinštalovať aplikáciu.</string>
+    <string name="application_add_contact_no_profile">Pred pozvaním kontaktu musíte dokončiť profil, ktorý vás reprezentuje. Pokračovať?</string>
+    <string name="application_all">Všetko</string>
+    <string name="application_appearance">Vzhľad</string>
+    <string name="application_are_you_sure">Ste si istý?</string>
+    <string name="application_authorization_camera">V systémových nastaveniach povoľte aplikácii prístup ku kamere.</string>
+    <string name="application_authorization_go_settings">Prejsť do systémových nastavení</string>
+    <string name="application_authorization_microphone">V systémových nastaveniach povoľte aplikácii prístup k mikrofónu.</string>
+    <string name="application_authorization_microphone_camera">V systémových nastaveniach povoľte aplikácii prístup k mikrofónu a kamere.</string>
+    <string name="application_authorization_title">Chýbajúce oprávnenia</string>
+    <string name="application_back">Späť</string>
+    <string name="application_backup_restore">Obnoviť zálohu</string>
+    <string name="application_backup_verify">Overiť zálohu</string>
+    <string name="application_camera">Kamera</string>
+    <string name="application_cancel">Zrušiť</string>
+    <string name="application_canceled_operation">Operácia zrušená</string>
+    <string name="application_checking_connection">Kontrola pripojenia</string>
+    <string name="application_color">Farba</string>
+    <string name="application_configuration">Konfigurácia</string>
+    <string name="application_confirm">Potvrdiť</string>
+    <string name="application_confirm_deletion">Potvrdiť odstránenie</string>
+    <string name="application_connected">Bezpečné pripojenie je aktívne.</string>
+    <string name="application_connection_status_no_network">Bez internetového pripojenia.</string>
+    <string name="application_connection_status_no_network_message">Skontrolujte svoje sieťové pripojenie.</string>
+    <string name="application_connection_status_no_services">Žiadny prístup k službe.</string>
+    <string name="application_connection_status_no_services_message">Skúste použiť VPN.</string>
+    <string name="application_contact_not_found">Tento kontakt odstránil vzťah s vami a už nie je dostupný.</string>
+    <string name="application_continue_without_premium_services">Pokračovať bez prémiových služieb</string>
+    <string name="application_create_group_no_profile">Pred vytvorením skupiny musíte dokončiť profil, ktorý vás v nej reprezentuje. Pokračovať?</string>
+    <string name="application_database_error">Chyba databázy</string>
+    <string name="application_decline">Odmietnuť</string>
+    <string name="application_default">Predvolené</string>
+    <string name="application_delete">Odstrániť</string>
+    <string name="application_delete_message">Naozaj to chcete odstrániť?</string>
+    <string name="application_denied_permissions">Požadované oprávnenia neboli udelené</string>
+    <string name="application_description">Popis</string>
+    <string name="application_display_all">Zobraziť všetko</string>
+    <string name="application_do_not_display">Nezobrazovať viac</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">m</string>
+    <string name="application_duration_second">s</string>
+    <string name="application_edit">Upraviť</string>
+    <string name="application_error_code">Kód chyby: %1$s</string>
+    <string name="application_error_file_not_found">Súbor sa nenašiel.</string>
+    <string name="application_error_media_not_supported">Tento formát obrázka/videa nie je podporovaný aplikáciou.</string>
+    <string name="application_error_media_unload">Médiá sa nepodarilo načítať.</string>
+    <string name="application_error_no_storage_space">Nedostatok úložného priestoru</string>
+    <string name="application_group_limit_reached">Maximálny počet (%1$d) členov skupiny prekročený.</string>
+    <string name="application_group_not_found">Boli ste odstránený zo skupiny</string>
+    <string name="application_items_selected">%1$d položiek vybraných</string>
+    <string name="application_later">Neskôr</string>
+    <string name="application_low_usage_message">Upozornenie, ak aplikáciu nepoužívate dostatočne často, OS ju nemusí prebudiť na výmenu správ!</string>
+    <string name="application_migration_no_storage_space">Na dokončenie migrácie nemáte v zariadení dostatok miesta. Zatvorte aplikáciu, uvoľnite miesto a znova ju spustite.</string>
+    <string name="application_migration_no_storage_space_message">Jedno z dvoch zariadení nemá dostatok úložného priestoru. Uvoľnite miesto a reštartujte migráciu.</string>
+    <string name="application_more_info">Viac informácií…</string>
+    <string name="application_name_hint">Meno</string>
+    <string name="application_network_connecting">Pripájanie k službe twinme</string>
+    <string name="application_network_connectivity">Existuje sieťové pripojenie</string>
+    <string name="application_network_status_airplane_message">Režim lietadlo je aktivovaný.</string>
+    <string name="application_network_status_airplane_resolution">Vypnite režim lietadlo a pripojte sa k Wi‑Fi alebo mobilnej sieti.</string>
+    <string name="application_network_status_connected_no_internet">Žiadny prístup k službe twinme.</string>
+    <string name="application_network_status_connected_resolution">Skúste sa pripojiť k inej sieti.</string>
+    <string name="application_network_status_connection_timeout">Nie je možné vytvoriť internetové pripojenie.</string>
+    <string name="application_network_status_no_internet">Bez internetového pripojenia.</string>
+    <string name="application_network_status_wifi_disabled">Wi‑Fi je vypnuté.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi‑Fi je vypnuté a nie je dostupné mobilné dáta.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Zapnite Wi‑Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Zapnite Wi‑Fi alebo aktivujte mobilné dáta.</string>
+    <string name="application_new_feature">Nové!</string>
+    <string name="application_no">Nie</string>
+    <string name="application_no_network_connectivity">Žiadne sieťové pripojenie</string>
+    <string name="application_no_service">Žiadna služba</string>
+    <string name="application_not_authorized_operation">Neoprávnená operácia</string>
+    <string name="application_not_authorized_operation_by_your_contact">Operácia nebola povolená vaším kontaktom.</string>
+    <string name="application_not_connected">Prebieha bezpečné pripojenie…</string>
+    <string name="application_not_signed_in">Nepripojený k službe twinme</string>
+    <string name="application_now">Teraz</string>
+    <string name="application_ok">OK</string>
+    <string name="application_one_item_selected">1 položka vybraná</string>
+    <string name="application_operation_failure">Zlyhanie operácie</string>
+    <string name="application_operation_irreversible">Táto operácia je nevratná</string>
+    <string name="application_permission_camera">Na vytvorenie novej fotografie alebo videa je potrebné povolenie na prístup ku kamere.</string>
+    <string name="application_permission_scan_code">Na skenovanie QR kódu je potrebné povolenie na prístup ku kamere.</string>
+    <string name="application_photo_gallery">Fotoalbumy</string>
+    <string name="application_processing_please_wait">Spracúva sa… Prosím, čakajte.</string>
+    <string name="application_profile">Profil</string>
+    <string name="application_profile_avatar_not_defined">Musíte vložiť obrázok, ktorý vás bude reprezentovať pre kontakty pozývané cez tento profil.</string>
+    <string name="application_profile_name_not_defined">Musíte definovať meno, ktoré vás bude reprezentovať pre kontakty pozývané cez tento profil.</string>
+    <string name="application_remove">Odstrániť</string>
+    <string name="application_save">Uložiť</string>
+    <string name="application_search_hint">Hľadať</string>
+    <string name="application_select">Vybrať</string>
+    <string name="application_select_application">Vybrať aplikáciu</string>
+    <string name="application_select_more">Vybrať viac…</string>
+    <string name="application_server_timeout">Časový limit servera</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Téma</string>
+    <string name="application_timeout">Časový limit</string>
+    <string name="application_timeout_day">1 deň</string>
+    <string name="application_timeout_hour">1 hodina</string>
+    <string name="application_timeout_hours">%1$d hodín</string>
+    <string name="application_timeout_minute">1 minúta</string>
+    <string name="application_timeout_minutes">%1$d minút</string>
+    <string name="application_timeout_month">1 mesiac</string>
+    <string name="application_timeout_seconds">%1$d sekúnd</string>
+    <string name="application_timeout_week">1 týždeň</string>
+    <string name="application_unknown_name">Neznáme</string>
+    <string name="application_until">Do %1$s</string>
+    <string name="application_upgrade">Aktualizácia twinme</string>
+    <string name="application_webrtc_failure">Chyba WebRTC</string>
+    <string name="application_wrong_configuration">Nesprávna konfigurácia</string>
+    <string name="application_yes">Áno</string>
+
+    <!-- AboutActivity -->
+    <string name="about_view_application_code">Kód aplikácie</string>
+    <string name="about_view_information">Informácie</string>
+    <string name="about_view_legal">Právne informácie</string>
+    <string name="about_view_libraries">Knižnice</string>
+    <string name="about_view_message">twinme je bezpečná služba pre hlasové/video hovory bez prístupu k osobným údajom.\n\ntwinme je založené na WebRTC, novom štandarde pre bezpečnú (end‑to‑end šifrovanú) peer‑to‑peer (bez sprostredkovateľského servera) komunikáciu v reálnom čase na webe.</string>
+    <string name="about_view_open_source_information">Zdrojový kód aplikácie je dostupný ako Open Source na GitHube pod licenciou AGPL‑3.0.</string>
+    <string name="about_view_open_sources_licences">Open Source licencie</string>
+    <string name="about_view_premium_services">Prémiové služby</string>
+    <string name="about_view_privacy_policy">Zásady ochrany osobných údajov</string>
+    <string name="about_view_quality_of_service">Kvalita služby</string>
+    <string name="about_view_terms_of_use">Podmienky používania</string>
+    <string name="about_view_version">Verzia</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_view_deleted">Toto pozvanie bolo odstránené</string>
+    <string name="accept_group_invitation_view_in_progress">Čaká sa na členstvo</string>
+    <string name="accept_group_invitation_view_message">%1$s vás pozýva pridať sa do skupiny</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_view_being_transferred">Pozvanie sa prenáša.</string>
+    <string name="accept_invitation_view_check_connection">Skontrolujte svoje internetové pripojenie.</string>
+    <string name="accept_invitation_view_existing_contact_message">S týmto kontaktom už máte vzťah. Chcete vytvoriť nový?</string>
+    <string name="accept_invitation_view_incorrect_contact_information">Nesprávne informácie o kontakte</string>
+    <string name="accept_invitation_view_local_twincode">Nemôžete nadviazať vzťah sami so sebou v rámci rovnakého účtu.</string>
+    <string name="accept_invitation_view_message">%1$s sa chce s vami spojiť</string>
+
+    <!-- AccountActivity -->
+    <string name="account_view_backup">Záloha na externé médium</string>
+    <string name="account_view_backup_restore">Záloha / Obnovenie</string>
+    <string name="account_view_backup_verify">Overiť zálohu</string>
+    <string name="account_view_backup_list">História záloh</string>
+    <string name="account_view_conversations_content_title">Obsah konverzácií</string>
+    <string name="account_view_delete_account">Váš účet a všetky súvisiace údaje budú natrvalo odstránené. Potvrdiť?</string>
+    <string name="account_view_delete_account_confirmation">Naozaj chcete odstrániť svoj účet?</string>
+    <string name="account_view_export_content">Exportovať na externé médium</string>
+    <string name="account_view_message_first_part">Nový účet sa vytvorí pri prvom nainštalovaní aplikácie, po opätovnej inštalácii, po resetovaní zariadenia alebo odstránení súčasného účtu.</string>
+    <string name="account_view_message_second_part">Nezostane žiadna stopa predchádzajúceho účtu a údajov, takže budete musieť svojich kontaktov znova pozvať.</string>
+    <string name="account_view_message_third_part">Vymazanie účtu tiež zneplatní všetky zálohy vytvorené na tomto účte, takže nebude možné obnoviť zálohu z tohto účtu na toto ani na iné zariadenie.</string>
+    <string name="account_view_migration_message">Služba migrácie účtu umožňuje preniesť váš účet so všetkými súvisiacimi údajmi (kontakty, správy, skupiny atď.) z jedného zariadenia so systémom Android do druhého v reálnom čase. Môžete tak prepnúť účet zo starého zariadenia na nové.</string>
+    <string name="account_view_migration_start_from_another_device">Z iného zariadenia</string>
+    <string name="account_view_migration_start_from_current_device">Z môjho zariadenia</string>
+    <string name="account_view_migration_title">Migrácia účtu</string>
+    <string name="account_view_restore">Obnoviť z externého média</string>
+    <string name="account_view_title">Účet</string>
+    <string name="account_view_transfer_between_devices">Prenos medzi zariadeniami</string>
+    <string name="account_view_transfer_from_another_device">Prenos z iného zariadenia</string>
+    <string name="account_view_transfer_from_device">Prenos z tohto zariadenia</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_view_cancel_message">Zatvorte aplikáciu a reštartujte ju, aby ste získali prístup k údajom.</string>
+    <string name="account_migration_view_close_message">Zatvorte aplikáciu a reštartujte ju, aby ste získali prístup k novým údajom.</string>
+    <string name="account_migration_view_confirm_cancel_message">Naozaj chcete zrušiť migráciu?</string>
+    <string name="account_migration_view_network_message">Skontrolujte svoje sieťové pripojenie</string>
+    <string name="account_migration_view_not_enough_space_for_files">Nedostatok miesta pre súbory</string>
+    <string name="account_migration_view_not_enough_space_to_receive">Nedostatok miesta na stiahnutie databázy</string>
+    <string name="account_migration_view_not_enough_space_to_upload">Nedostatok miesta na nahranie databázy</string>
+    <string name="account_migration_view_start">Spustiť migráciu</string>
+    <string name="account_migration_view_state_canceled">Migrácia zrušená</string>
+    <string name="account_migration_view_state_list_files">Zoznam súborov</string>
+    <string name="account_migration_view_state_negotiate">Čakanie</string>
+    <string name="account_migration_view_state_send_account">Odosielanie účtu</string>
+    <string name="account_migration_view_state_send_database">Odosielanie databázy</string>
+    <string name="account_migration_view_state_send_files">Odosielanie súborov</string>
+    <string name="account_migration_view_state_send_settings">Odosielanie nastavení aplikácie</string>
+    <string name="account_migration_view_state_terminate">Migrácia takmer dokončená.</string>
+    <string name="account_migration_view_state_wait_account">Čakanie na druhý účet</string>
+    <string name="account_migration_view_state_wait_connect">Čakanie na opätovné pripojenie</string>
+    <string name="account_migration_view_state_wait_files">Čaká sa na príjem súborov a databázy.</string>
+    <string name="account_migration_view_stop">Zastaviť migráciu</string>
+    <string name="account_migration_view_success_message">Migrácia úspešne dokončená</string>
+    <string name="account_migration_view_transfer_in_progress">Prebieha prenos údajov</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_message">Zobrazte túto obrazovku na oboch zariadeniach a jedno nech naskenuje QR‑kód druhého.</string>
+    <string name="account_migration_scanner_view_message_older_version">Toto zariadenie používa starú nekompatibilnú verziu OS, čo spôsobí stratu všetkých vzťahov na cieľovom zariadení počas prenosu. Chcete napriek tomu pokračovať?</string>
+    <string name="account_migration_scanner_view_message_older_version_target">Cieľové zariadenie používa starú nekompatibilnú verziu OS, čo spôsobí stratu všetkých vašich vzťahov počas prenosu. Chcete napriek tomu pokračovať?</string>
+    <string name="account_migration_scanner_view_migration_start_from_another_device_message">Ak chcete spustiť migráciu, naskenujte tento QR‑kód z druhého zariadenia</string>
+    <string name="account_migration_scanner_view_migration_start_from_current_device_message">Naskenujte QR‑kód zobrazený v sekcii „Účet / Prenos z iného zariadenia“ v bočnom menu druhého zariadenia.</string>
+    <string name="account_migration_scanner_view_scan_title">Skenovať</string>
+    <string name="account_migration_scanner_view_stop_scan_title">Zastaviť skenovanie</string>
+
+    <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_view_title">Pridať účastníka do hovoru</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_view_gallery_title">Importovať z galérie</string>
+    <string name="add_contact_view_in_person_subtitle">Pozvite osobu vo vašej blízkosti</string>
+    <string name="add_contact_view_in_person_title">Osobne</string>
+    <string name="add_contact_view_invitation_code_title">Mini‑Kód</string>
+    <string name="add_contact_view_invite">Pozvať</string>
+    <string name="add_contact_view_invite_message">Otvorte webovú adresu %1$s pomocou twinme na svojom mobilnom zariadení alebo naskenujte QR‑kód, aby ste sa súkromne spojili s „%2$s“</string>
+    <string name="add_contact_view_invite_subject">Pozvánka Twinme</string>
+    <string name="add_contact_view_message">Požiadajte svojho priateľa v blízkosti, aby naskenoval váš pozývací QR‑kód pomocou twinme, alebo klepnite na tlačidlo „Skenovať“ a naskenujte kód vášho priateľa.</string>
+    <string name="add_contact_view_onboarding_message">twinme nepozná vašich priateľov a nemôže ich vyhľadať. Musíte ich pozvať osobne, pomocou twinme, keď sú nablízku, alebo poslaním pozvánky iným spôsobom.</string>
+    <string name="add_contact_view_scan_code">Skenovať pozývací QR‑kód</string>
+    <string name="add_contact_view_scan_error_corrupt_link">Tento odkaz je poškodený.</string>
+    <string name="add_contact_view_scan_error_expired_link">Tento pozývací odkaz vypršal.</string>
+    <string name="add_contact_view_scan_error_incorrect_link">Tento odkaz je nesprávny.</string>
+    <string name="add_contact_view_scan_error_not_managed_link">Tento odkaz nie je spravovaný aplikáciou.</string>
+    <string name="add_contact_view_scan_error_revoked_link">Tento vzťah bol odstránený.</string>
+    <string name="add_contact_view_scan_message_call_link">Tento odkaz zodpovedá „kliknutiu na volanie“</string>
+    <string name="add_contact_view_scan_message_invitation_link">Tento odkaz zodpovedá pozvánke kontaktu</string>
+    <string name="add_contact_view_scan_message_migration_link">Tento odkaz zodpovedá migrácii účtu</string>
+    <string name="add_contact_view_scan_message_transfer_link">Tento odkaz zodpovedá prenosu hovoru</string>
+    <string name="add_contact_view_scan_title">Skenovať</string>
+    <string name="add_contact_view_share_image_message">Importujte alebo naskenujte tento QR kód pozvánky pomocou Skred, aby ste pridali \"%1$s\" ako kontakt.</string>
+    <string name="add_contact_view_share_message_part_1">%1$s vás pozýva vstúpiť do súkromného vzťahu na Skred.</string>
+    <string name="add_contact_view_share_message_part_2">Skred je peer-to-peer služba na zasielanie správ s end-to-end šifrovaním a HD hlasovými/video hovormi. Registrácia nie je potrebná.</string>
+    <string name="add_contact_view_share_message_part_3">Otvorte túto URL so Skred na svojom mobilnom zariadení, aby ste pridali \"%1$s\" ako kontakt:</string>
+    <string name="add_contact_view_share_message_part_4">Prípadne môžete importovať alebo naskenovať QR kód pozvánky v priloženom obrázku pomocou Skred.</string>
+    <string name="add_contact_view_share_title">%1$s vás pozýva do Skred</string>
+    <string name="add_contact_view_social_subtitle">správa, e‑mail, sociálna sieť</string>
+    <string name="add_contact_view_social_title">Poslať kód cez aplikáciu</string>
+    <string name="add_contact_view_title">Pozvánka</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_view_add">Pridať</string>
+    <string name="add_group_member_view_title">Pridať členov</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_view_welcome_message">Uvítacia správa</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_view_calling">Volanie…</string>
+    <string name="audio_call_view_cannot_call">Nie je možné uskutočniť hlasový hovor</string>
+    <string name="audio_call_view_connecting">Pripájanie…</string>
+    <string name="audio_call_view_hangup">Zložiť</string>
+    <string name="audio_call_view_hangup_confirmation">Chcete ukončiť hovor?</string>
+    <string name="audio_call_view_terminate">Hovor bol ukončený</string>
+    <string name="audio_call_view_terminate_busy">Hovor ukončený: <b>%1$s</b> je zaneprázdnený</string>
+    <string name="audio_call_view_terminate_cancel">Hovor zrušil <b>%1$s</b></string>
+    <string name="audio_call_view_terminate_connectivity_error">Hovor ukončený: chyba siete</string>
+    <string name="audio_call_view_terminate_decline">Hovor odmietol <b>%1$s</b></string>
+    <string name="audio_call_view_terminate_gone">Hovor ukončený: <b>%1$s</b> je offline</string>
+    <string name="audio_call_view_terminate_not_authorized">Váš kontakt neudelil oprávnenia potrebné na hovor (napr. mikrofón, kamera).</string>
+    <string name="audio_call_view_terminate_revoked">Hovor ukončený: <b>%1$s</b> odstránil tento vzťah s vami.</string>
+    <string name="audio_call_view_terminate_success">Hovor ukončil <b>%1$s</b></string>
+    <string name="audio_call_view_terminate_timeout">Hovor ukončený: <b>%1$s</b> neodpovedá</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_view_certified_message">Váš vzťah s %1$s je teraz certifikovaný.</string>
+    <string name="authentified_relation_view_certify_by_scan">Certifikovať skenovaním QR kódu</string>
+    <string name="authentified_relation_view_certify_by_video_call">Certifikovať videohovorom</string>
+    <string name="authentified_relation_view_certify_by_video_call_missing_capability">%1$s musí povoliť videohovory, aby bolo možné certifikovať vzťah videohovorom.</string>
+    <string name="authentified_relation_view_level_2">Na certifikáciu tohto vzťahu musíte naskenovať QR‑kód zobrazený na zariadení používateľa %1$s.</string>
+    <string name="authentified_relation_view_level_3">Na certifikáciu tohto vzťahu musí zariadenie používateľa %1$s naskenovať tento QR‑kód.</string>
+    <string name="authentified_relation_view_level_4">Váš vzťah s %1$s je certifikovaný.</string>
+    <string name="authentified_relation_view_onboarding_message">„Certifikovaný“ vzťah zaručuje, že vždy komunikujete so správnou osobou, aj keď by bola služba kompromitovaná treťou stranou.</string>
+    <string name="authentified_relation_view_onboarding_subtitle">Uistite sa, že vždy komunikujete so správnou osobou!</string>
+    <string name="authentified_relation_view_relation_print_message">Tento odtlačok vzťahu musí byť na oboch zariadeniach identický.</string>
+    <string name="authentified_relation_view_relation_print_title">Odtlačok vzťahu</string>
+    <string name="authentified_relation_view_start">Spustiť certifikáciu</string>
+    <string name="authentified_relation_view_title">Certifikovaný vzťah</string>
+    <string name="authentified_relation_view_to_be_certified_title">Certifikovať vzťah</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_view_backup">Záloha</string>
+    <string name="backup_view_beta_message_part_1">Služba zálohovania/obnovy je ponúkaná v testovaní BETA, aby bolo možné pred jej všeobecným vydaním identifikovať možné problémy.</string>
+    <string name="backup_view_beta_message_part_2">Táto služba je určená iba na zálohovanie metadát účtu (profily, kontakty, skupiny) do externého úložiska, aby sa dali neskôr obnoviť na inom zariadení, ak je pôvodné odcudzené alebo zničené.</string>
+    <string name="backup_view_beta_message_part_3">Službu prenosu účtu treba použiť na prenos všetkých údajov účtu (vrátane konverzácií) z jedného (starého) zariadenia do druhého (nového) zariadenia, keď sú obe zariadenia k dispozícii.</string>
+    <string name="backup_view_confirm_message">Na obnovenie zálohy musíte zadať 12 vyššie uvedených slov v tomto poradí, aby sa dala dešifrovať.</string>
+    <string name="backup_view_content">Obsah</string>
+    <string name="backup_view_content_diff_added">Pridané</string>
+    <string name="backup_view_content_diff_updated">Upravené</string>
+    <string name="backup_view_content_diff_deleted">Vymazané</string>
+    <string name="backup_view_content_diff_message">Tu sú zmeny oproti vašim aktuálnym údajom:</string>
+    <string name="backup_view_content_info">Zálohy neobsahujú konverzácie, oznámenia a históriu.</string>
+    <string name="backup_view_error_words">Zadané slová neumožňujú dešifrovanie zálohy.</string>
+    <string name="backup_view_generate_word">Generovať</string>
+    <string name="backup_view_last_backup">Posledná záloha %1$s</string>
+    <string name="backup_view_new_backup">Nová záloha</string>
+    <string name="backup_view_onboarding">Vytvorte šifrovanú zálohu údajov účtu (priestory, profily, kontakty, skupiny, click-to-call), ktorú možno obnoviť na toto alebo iné zariadenie.</string>
+    <string name="backup_view_reminder">Vaša posledná záloha bola vytvorená pred viac ako 30 dňami.</string>
+    <string name="backup_view_save_file_message">Uložte súbor zálohy na zariadenie podľa vlastného výberu a uchovajte heslá na neskoršie obnovenie.</string>
+    <string name="backup_view_security">Bezpečnosť</string>
+    <string name="backup_view_security_info">Šifrovací kľúč zálohy je reprezentovaný sériou 12 slov, ktoré budú potrebné na obnovenie.</string>
+    <string name="backup_view_success">Záloha bola úspešne dokončená!</string>
+    <string name="backup_view_success_info">Uchovajte si tento zoznam 12 slov, aby ste mohli túto zálohu obnoviť.</string>
+    <string name="backup_view_title">Záloha</string>
+    <string name="backup_view_use_last_backup_words">Použite rovnaký zoznam slov ako pri poslednej zálohe.</string>
+    <string name="backup_view_verify_completed">Overenie dokončené!</string>
+    <string name="backup_view_verify_message">Môžete tiež skontrolovať integritu súboru zálohy a či sú údaje v ňom aktuálne z: Účet/Overiť zálohu.</string>
+    <string name="backup_view_verify_up_to_date">Vaša záloha je aktuálna.</string>
+    <string name="backup_view_verify_not_up_to_date">Vaša záloha nie je aktuálna.</string>
+    <string name="backup_view_verify_words">Na overenie zálohy musíte zadať sekvenciu 12 slov, aby sa dala dešifrovať.</string>
+    <string name="backup_view_wait_message">Neopúšťajte túto obrazovku, kým prebieha zálohovanie.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_view_invalidate_backup">Zneplatniť moje zálohy</string>
+    <string name="backups_view_invalidate_backup_message_part_one">Všetky vaše predchádzajúce zálohy budú neplatné a už ich nebude možné obnoviť.</string>
+    <string name="backups_view_invalidate_backup_message_part_two">Nezabudnite vytvoriť novú zálohu, ktorú možno obnoviť na toto alebo iné zariadenie.</string>
+    <string name="backups_view_no_backup_message">Na tomto zariadení nebola vytvorená žiadna záloha.</string>
+
+    <!-- CallActivity -->
+    <string name="call_view_audio_source_bluetooth">Bluetooth audio</string>
+    <string name="call_view_audio_source_device">Slúchadlá zariadenia</string>
+    <string name="call_view_audio_source_earphones">Slúchadlá</string>
+    <string name="call_view_audio_source_headset">Audio headset</string>
+    <string name="call_view_audio_source_loudspeaker">Reproduktor</string>
+    <string name="call_view_battery_restriction_message">Pozor! Musíte povoliť používanie batérie, keď aplikácia beží na pozadí, aby ste predišli prerušeniam mikrofónu počas hovoru.</string>
+    <string name="call_view_camera_control">Ovládanie kamery</string>
+    <string name="call_view_camera_control_ask_message">Požiadajte %1$s, aby vám počas videohovoru umožnil ovládať jeho kameru.</string>
+    <string name="call_view_camera_control_confirm_message">%1$s by chcel počas hovoru ovládať vašu kameru. Kedykoľvek môžete prevziať kontrolu späť.</string>
+    <string name="call_view_camera_control_denied">%1$s vám neumožňuje ovládať jeho/jej kameru.</string>
+    <string name="call_view_camera_control_message">Ovládanie kamery používateľa %1$s</string>
+    <string name="call_view_camera_control_needs_help">Potrebujete pomoc?</string>
+    <string name="call_view_camera_control_onboarding">Ak to váš kontakt povolí, môžete počas videohovoru prevziať kontrolu nad jeho kamerou a napríklad si sami priblížiť obraz. Je to užitočné najmä pri ovládaní bezpečnostnej kamery.</string>
+    <string name="call_view_camera_control_onboarding_part_2">S povolením blízkej osoby môžete počas hovoru ovládať jej kameru, aby ste jej mohli jednoducho a bezpečne pomôcť na diaľku.</string>
+    <string name="call_view_camera_control_remotely">%1$s ovláda vašu kameru na diaľku.</string>
+    <string name="call_view_camera_control_stop">Zastaviť</string>
+    <string name="call_view_certify_error_message">%1$s nepotvrdil slovo. Certifikácia vzťahu zlyhala a musíte to skúsiť znova.</string>
+    <string name="call_view_certify_onboarding_message">Videohovor vám umožňuje vzájomne sa identifikovať a vymeniť si bezpečnostné kľúče asociované s certifikovaným vzťahom a jeho výmenami.</string>
+    <string name="call_view_certify_onboarding_start_message">Postupne vyslovte slovo zobrazené na obrazovke a nechajte ho overiť druhou stranou. Keď budú všetky slová overené, váš vzťah s %1$s bude certifikovaný.</string>
+    <string name="call_view_certify_onboarding_title">Certifikovať váš vzťah</string>
+    <string name="call_view_certify_video_message">Na certifikáciu vzťahu musí byť hovor vo video režime.</string>
+    <string name="call_view_coach_mark">Klepnite sem, aby ste pridali účastníka do tohto hovoru</string>
+    <string name="call_view_confirm_word">Je slovo vyslovené používateľom %1$s totožné?</string>
+    <string name="call_view_confirm_word_title">Overiť slovo</string>
+    <string name="call_view_connected_bluetooth">Zvukový tok bol presmerovaný na zariadenie Bluetooth.</string>
+    <string name="call_view_connected_speaker">Zvukový tok bol presmerovaný na reproduktor.</string>
+    <string name="call_view_error_call_interrupted">Hovor bol prerušený, chyba: %1$d.</string>
+    <string name="call_view_error_call_not_go_thru">Hovor sa nepodarilo uskutočniť, chyba: %1$d.</string>
+    <string name="call_view_max_participant_message">Bol dosiahnutý maximálny počet účastníkov skupinového hovoru (%1$d).</string>
+    <string name="call_view_not_supported_group_call_message">Verzia aplikácie používateľa %1$s nie je kompatibilná so skupinovými hovormi a vyžaduje aktualizáciu.</string>
+    <string name="call_view_quality_message">Ako by ste ho ohodnotili?</string>
+    <string name="call_view_quality_title">Kvalita hovoru</string>
+    <string name="call_view_repeat_word">%1$s ho bude môcť porovnať so slovom zobrazeným na jeho/jej obrazovke.</string>
+    <string name="call_view_repeat_word_title">Vyslovte slovo</string>
+    <string name="call_view_tag_add_to_call">Pozvať kontakt, aby sa pridal k prebiehajúcemu hovoru</string>
+    <string name="call_view_tag_camera">Kamera</string>
+    <string name="call_view_tag_camera_activate">Aktivovať kameru</string>
+    <string name="call_view_tag_camera_cut">Vypnúť kameru</string>
+    <string name="call_view_tag_camera_flip">Prepnúť kameru</string>
+    <string name="call_view_tag_microphone">Mikrofón</string>
+    <string name="call_view_tag_microphone_activate">Aktivovať mikrofón</string>
+    <string name="call_view_tag_microphone_mute">Stlmiť mikrofón</string>
+    <string name="call_view_tag_pause">Pozastaviť</string>
+    <string name="call_view_tag_send_message">Odoslať správu</string>
+    <string name="call_view_tag_speaker">Reproduktor</string>
+    <string name="call_view_tag_speaker_activate">Aktivovať reproduktor</string>
+    <string name="call_view_tag_speaker_mute">Stlmiť reproduktor</string>
+    <string name="call_view_transfer_call_message">Prebiehajúci hovor bol prenesený.</string>
+    <string name="call_view_try_to_call_back">Skúste zavolať späť.</string>
+    <string name="call_view_waiting_conference_call">"Do hovoru sa ešte nikto nepripojil. Počkajte, prosím… "</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_view_all_call_segmented_control">Všetky</string>
+    <string name="calls_view_call_again_message">Chcete zavolať späť používateľovi %1$s?</string>
+    <string name="calls_view_call_again_title">Zavolať späť</string>
+    <string name="calls_view_create_link">Vytvoriť odkaz „kliknúť na volanie“</string>
+    <string name="calls_view_incoming_call">Prichádzajúci hovor</string>
+    <string name="calls_view_missed_call">Zmeškaný hovor</string>
+    <string name="calls_view_missed_call_segmented_control">Zmeškané</string>
+    <string name="calls_view_no_call_message">Zmeškané hovory sú uvedené tu.</string>
+    <string name="calls_view_no_call_title">Zatiaľ ste nevykonali žiadne hovory.</string>
+    <string name="calls_view_outgoing_call">Odchádzajúci hovor</string>
+    <string name="calls_view_reset">Naozaj chcete obnoviť všetky oznámenia o hovoroch?</string>
+    <string name="calls_view_reset_title">Obnoviť oznámenia o hovoroch</string>
+    <string name="calls_view_title">Hovory</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_view_create_camera_error">Kamera už používaná</string>
+    <string name="capture_view_incorrect_qrcode">Nesprávny twincode</string>
+    <string name="capture_view_message">Umiestnite QR kód do tohto obdĺžnika, aby ste ho naskenovali.</string>
+    <string name="capture_view_no_camera">Na skenovanie twincode je potrebná kamera</string>
+    <string name="capture_view_qrcode_saved">Pozývací kód uložený v fotografiách.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_view_all">Vymazať všetko</string>
+    <string name="cleanup_view_both_clean">Globálne čistenie (lokálne a vzdialené)</string>
+    <string name="cleanup_view_both_clean_title">Globálne čistenie</string>
+    <string name="cleanup_view_clean">Odstrániť</string>
+    <string name="cleanup_view_conversation">Konverzácia s %s</string>
+    <string name="cleanup_view_delete_confirmation_message">Odstránenie je nevratné. Pred pokračovaním exportujte dôležitý obsah. Pokračovať?</string>
+    <string name="cleanup_view_error">Počas operácie došlo k chybe.</string>
+    <string name="cleanup_view_expiration">Podmienky expirácie</string>
+    <string name="cleanup_view_free">Dostupné</string>
+    <string name="cleanup_view_info">Odstránenie správ, médií a súborov z tejto konverzácie ich neodstráni zo zariadenia vášho kontaktu a nebudete to môcť urobiť neskôr.</string>
+    <string name="cleanup_view_info_both">Odstránenie správ, médií a súborov z tejto konverzácie ich odstráni aj zo zariadenia vášho kontaktu.</string>
+    <string name="cleanup_view_local_cleanup">Len lokálne čistenie</string>
+    <string name="cleanup_view_local_cleanup_title">Lokálne čistenie</string>
+    <string name="cleanup_view_medias_and_files">Iba médiá a súbory</string>
+    <string name="cleanup_view_medias_and_files_info">Miniatúry médií sa z konverzácie neodstránia; odstránia sa iba pôvodné súbory.</string>
+    <string name="cleanup_view_medias_and_files_info_both">Súbory, fotografie, videá a hlasové poznámky budú odstránené zo zariadenia vášho aj zariadenia vášho kontaktu.</string>
+    <string name="cleanup_view_messages">Všetky správy a ostatný obsah</string>
+    <string name="cleanup_view_messages_info">Správy akéhokoľvek typu (text, foto, video, hlas, súbory atď.) budú odstránené z aplikácie.</string>
+    <string name="cleanup_view_month">%1$d mesiacov</string>
+    <string name="cleanup_view_older_than">Staršie než</string>
+    <string name="cleanup_view_one_year">1 rok</string>
+    <string name="cleanup_view_prior_to">Pred</string>
+    <string name="cleanup_view_reset_conversation_message">Obnovenie tejto konverzácie odstráni všetky správy, vrátane tých na zariadení vášho kontaktu.</string>
+    <string name="cleanup_view_select_content">Vyberte, čo chcete odstrániť.</string>
+    <string name="cleanup_view_storage_title">Diskový priestor</string>
+    <string name="cleanup_view_success">Operácia bola úspešne dokončená.</string>
+    <string name="cleanup_view_title">Čistenie konverzácie</string>
+    <string name="cleanup_view_total">Celkom</string>
+    <string name="cleanup_view_used">Použité</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Tipy</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_view_allow_incoming_calls">Povoliť tomuto kontaktu volať vám</string>
+    <string name="contact_capabilities_view_automatic_answering">Automaticky prijímať prichádzajúce hovory</string>
+    <string name="contact_capabilities_view_automatic_answering_message">Upozornenie: toto nastavenie aktivuje automatické prijatie hovorov od tohto kontaktu, čím sa otvorí mikrofón a kamera zariadenia (pri videohovoroch).</string>
+    <string name="contact_capabilities_view_automatic_answering_restriction">Niektoré zariadenia môžu obmedzovať túto funkciu.</string>
+    <string name="contact_capabilities_view_call_settings">Nastavenia hovorov</string>
+    <string name="contact_capabilities_view_camera_control_allow">Vždy</string>
+    <string name="contact_capabilities_view_camera_control_ask">Pýtať sa pri každom hovore</string>
+    <string name="contact_capabilities_view_camera_control_information">Povoliť tomuto kontaktu automaticky prevziať kontrolu nad vašou kamerou počas videohovoru.</string>
+    <string name="contact_capabilities_view_camera_control_never">Nikdy</string>
+    <string name="contact_capabilities_view_camera_control_onboarding">Môžete požiadať kontakt s prístupom k prémiovej verzii aplikácie, aby ovládal vašu kameru počas videohovorov.</string>
+    <string name="contact_capabilities_view_discreet_relation">Diskrétny vzťah</string>
+    <string name="contact_capabilities_view_information_audio_call">Povoliť hlasové volanie.</string>
+    <string name="contact_capabilities_view_information_discreet_relation">Nezobrazuje meno kontaktu v upozorneniach a nezaznamenáva hovory v histórii.</string>
+    <string name="contact_capabilities_view_information_limited_call">Nastavte dátumy/časy, keď nechcete byť kontaktovaní.</string>
+    <string name="contact_capabilities_view_information_programmed_call">Naplánujte dátumy/časy, keď chcete byť kontaktovaní.</string>
+    <string name="contact_capabilities_view_information_video_call">Povoliť videohovor.</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_view_add_contact_subtitle">Pozvite niekoho, aby naskenoval váš pozývací kód, alebo naskenujte ich…</string>
+    <string name="contacts_view_invite_contact_title">Pozvať kontakt</string>
+    <string name="contacts_view_scan_contact_title">Naskenovať alebo zadať pozývací kód</string>
+    <string name="contacts_view_title">Kontakty</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_view_audio_call">Hlasový hovor</string>
+    <string name="conversation_view_audio_message">Hlasová správa</string>
+    <string name="conversation_view_call_missed">zmeškaný</string>
+    <string name="conversation_view_cannot_send">Nie je možné odoslať správy okamžite:</string>
+    <string name="conversation_view_cleanup_conversation">Odstránili ste niektoré staré správy.</string>
+    <string name="conversation_view_cleanup_conversation_by_peer">%1$s odstránil niektoré staré správy.</string>
+    <string name="conversation_view_delete_message">Vaša správa bola odstránená.</string>
+    <string name="conversation_view_edit_message">Správa môže byť upravená na zariadení kontaktu iba ak má aktuálnu verziu aplikácie.</string>
+    <string name="conversation_view_empty_message">Povedzte niečo múdre… alebo vtipné!</string>
+    <string name="conversation_view_ephemeral_coach_mark">Dlhým stlačením na šípku odoslania môžete správu po čase vymazať.</string>
+    <string name="conversation_view_feature_not_supported_by_peer">Verzia twinme vášho kontaktu nie je plne funkčná.<br /> Prosím, požiadajte ho o aktualizáciu twinme.</string>
+    <string name="conversation_view_group_member_information">%1$d členov</string>
+    <string name="conversation_view_group_not_allowed_post_message">Odosielanie správ nie je povolené</string>
+    <string name="conversation_view_group_one_member">1 člen</string>
+    <string name="conversation_view_invitation_accepted">Pozvanie prijaté</string>
+    <string name="conversation_view_invitation_failed">Požiadajte kontakt o aktualizáciu twinme</string>
+    <string name="conversation_view_invitation_joined">Člen skupiny</string>
+    <string name="conversation_view_invitation_pending">Prebieha pozvanie</string>
+    <string name="conversation_view_invitation_refused">Pozvanie odmietnuté</string>
+    <string name="conversation_view_invitation_title">Pozývam vás, aby ste sa pripojili ku skupine</string>
+    <string name="conversation_view_local_cleanup">Hlavný obsah bol lokálne odstránený.</string>
+    <string name="conversation_view_manage_conversation">Spravovať konverzáciu</string>
+    <string name="conversation_view_media_quality_original">Pôvodné rozlíšenie (HD)</string>
+    <string name="conversation_view_media_quality_original_subtitle">Bez zmeny veľkosti – pomalší prenos</string>
+    <string name="conversation_view_media_quality_standard">Štandardné rozlíšenie (SD)</string>
+    <string name="conversation_view_media_quality_standard_subtitle">Menšie – rýchlejší prenos</string>
+    <string name="conversation_view_media_quality_title">Rozlíšenie médií</string>
+    <string name="conversation_view_menu_item_view_copy_message">Skopírované do schránky!</string>
+    <string name="conversation_view_menu_item_view_copy_title">Kopírovať</string>
+    <string name="conversation_view_menu_item_view_delete_title">Odstrániť</string>
+    <string name="conversation_view_menu_item_view_forward_title">Preposlať</string>
+    <string name="conversation_view_menu_item_view_info_title">Informácie</string>
+    <string name="conversation_view_menu_item_view_operation_not_allowed">Operácia nie je povolená odosielateľom</string>
+    <string name="conversation_view_menu_item_view_reply_title">Odpovedať</string>
+    <string name="conversation_view_menu_item_view_save_message">Uložené!</string>
+    <string name="conversation_view_menu_item_view_save_title">Uložiť</string>
+    <string name="conversation_view_menu_item_view_share_title">Zdieľať</string>
+    <string name="conversation_view_message">Napíšte správu</string>
+    <string name="conversation_view_photo_camera">Fotoaparát</string>
+    <string name="conversation_view_record_confirm_send_record">Stlačte znova pre odoslanie</string>
+    <string name="conversation_view_record_start_record">Stlačte a podržte pre nahrávanie</string>
+    <string name="conversation_view_record_title">Nahrať</string>
+    <string name="conversation_view_reduce_menu_lower">Štandardné</string>
+    <string name="conversation_view_reduce_menu_minimal">Minimálne</string>
+    <string name="conversation_view_reduce_menu_original">Originálne</string>
+    <string name="conversation_view_reduce_menu_original_subtitle">Bez zmeny veľkosti</string>
+    <string name="conversation_view_reject_stream">Odmietnuť</string>
+    <string name="conversation_view_reply_to">Odpoveď pre %1$s</string>
+    <string name="conversation_view_reset_conversation">Konverzácia bola obnovená</string>
+    <string name="conversation_view_reset_conversation_by_peer">%1$s obnovil konverzáciu</string>
+    <string name="conversation_view_send_file_warning">Upozornenie: nie je možné zabrániť príjemcovi v kopírovaní/ukladaní/zdieľaní dokumentu (pdf, word, ppt, excel, zip atď.), ktorý sa otvára mimo aplikácie. Chcete ho napriek tomu odoslať?</string>
+    <string name="conversation_view_send_large_file_message">Tento súbor je veľký (%1$d MB). Chcete pokračovať?</string>
+    <string name="conversation_view_send_menu_allow_copy">Povoliť príjemcovi kopírovať/ukladať/zdieľať tento obsah</string>
+    <string name="conversation_view_send_quality_size">Veľké médium (%1$s).</string>
+    <string name="conversation_view_send_quality_standard">Odoslať v štandardnom rozlíšení (SD)</string>
+    <string name="conversation_view_send_quality_warning">Môžete zmeniť veľkosť na štandardné rozlíšenie (SD) pre rýchlejší prenos.</string>
+    <string name="conversation_view_stream_dialog">Chcete to prijať?</string>
+    <string name="conversation_view_unsupported_media">Nepodporovaný formát médií.</string>
+    <string name="conversation_view_video_call">Videohovor</string>
+    <string name="conversation_view_video_camera">Videokamera</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_view_documents">Dok.</string>
+    <string name="conversation_files_view_links">Odkazy</string>
+    <string name="conversation_files_view_month">Tento mesiac</string>
+    <string name="conversation_files_view_no_files">Vaša konverzácia s %1$s neobsahuje žiadne z týchto prvkov.</string>
+    <string name="conversation_files_view_title">Médiá, webové odkazy a dokumenty</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_view_background_colors">Pozadia a farby</string>
+    <string name="conversation_settings_view_emoji_size">Veľkosť emoji</string>
+    <string name="conversation_settings_view_link_preview">Vizualizácia</string>
+    <string name="conversation_settings_view_link_preview_message">Zobraziť náhľad webovej stránky.</string>
+    <string name="conversation_settings_view_link_title">Webové odkazy</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_view_no_conversation_message">Správy šifrované end-to-end sa vymieňajú peer-to-peer, priamo medzi zariadeniami, bez distribučného servera = žiadne stopy v cloude.</string>
+    <string name="conversations_view_no_result_found">Nenašli sa žiadne výsledky pre „%1$s“.</string>
+    <string name="conversations_view_start">Začať konverzáciu</string>
+    <string name="conversations_view_title">Konverzácie</string>
+    <string name="conversations_view_you">Vy</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_view_call_configuration">Konfigurácia hovoru</string>
+    <string name="create_external_call_view_call_type">Typ hovoru</string>
+    <string name="create_external_call_view_conference_call_description">Pripojte sa ku konferenčnému hovoru priamo z prehliadača. Ideálne pre pracovné alebo rodinné stretnutia.</string>
+    <string name="create_external_call_view_conference_call_short_title">Konferenčný hovor</string>
+    <string name="create_external_call_view_conference_call_title">Konferenčný hovor</string>
+    <string name="create_external_call_view_continuous_link_description">Bez obmedzení platnosti odkazu</string>
+    <string name="create_external_call_view_continuous_link_title">Permanentný</string>
+    <string name="create_external_call_view_delete_link_setting">Automaticky zneplatniť odkaz po uplynutí časového rozsahu</string>
+    <string name="create_external_call_view_direct_call_description">Prijmite hovor priamo na svojom zariadení od niekoho, kto nemá aplikáciu.</string>
+    <string name="create_external_call_view_direct_call_short_title">Priamy</string>
+    <string name="create_external_call_view_direct_call_title">Priamy hovor</string>
+    <string name="create_external_call_view_group_call_description">Až 8 účastníkov</string>
+    <string name="create_external_call_view_link_validity">Platnosť odkazu</string>
+    <string name="create_external_call_view_message">Tento profil sa zobrazí hosťom, ktorí vám zavolajú pomocou tohto odkazu „kliknúť na volanie“.</string>
+    <string name="create_external_call_view_name_required">Na reprezentáciu tohto \"Click-to-call\" je potrebný názov a obrázok.</string>
+    <string name="create_external_call_view_notification_setting">Dostanete upozornenie, hneď ako sa prvý účastník pripojí ku konferencii.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_1">Click-to-call umožňuje hosťom zavolať vám alebo sa pripojiť ku konferenčnému hovoru (Click-to-meet) z prehliadača bez inštalácie aplikácie.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_2">Každá inštancia má názov, obrázok a popis reprezentujúce účel hovoru, napríklad:</string>
+    <string name="create_external_call_view_onboarding_part_1_message_3">váš zákaznícky servis</string>
+    <string name="create_external_call_view_onboarding_part_1_message_4">auto, ktoré predávate</string>
+    <string name="create_external_call_view_onboarding_part_1_message_5">profesionálny skupinový hovor</string>
+    <string name="create_external_call_view_onboarding_part_1_message_6">videozvonček pre kuriérov.</string>
+    <string name="create_external_call_view_onboarding_part_2_message_1">„Click-to-call“ má atribúty určujúce, či ide o:</string>
+    <string name="create_external_call_view_onboarding_part_2_message_2">audio a/alebo video hovor</string>
+    <string name="create_external_call_view_onboarding_part_2_message_3">individuálny alebo skupinový hovor</string>
+    <string name="create_external_call_view_onboarding_part_2_message_4">vždy dostupný alebo obmedzený na konkrétny dátum a čas.</string>
+    <string name="create_external_call_view_onboarding_part_3_message_1">Zdieľajte odkaz alebo QR kód prostredníctvom kanálov, ktoré oslovia relevantných ľudí, napríklad:</string>
+    <string name="create_external_call_view_onboarding_part_3_message_2">výzvu na akciu na vašej webstránke</string>
+    <string name="create_external_call_view_onboarding_part_3_message_3">inzerát na inzertnej platforme</string>
+    <string name="create_external_call_view_onboarding_part_3_message_4">e‑mail pre ľudí pozvaných do skupinového hovoru</string>
+    <string name="create_external_call_view_onboarding_part_3_message_5">označenie na vašich dverách pre kuriérov.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_1">Príjemcovia naskenujú QR kód a otvoria odkaz v prehliadači na mobile alebo PC. Potom môžu:</string>
+    <string name="create_external_call_view_onboarding_part_4_message_2">zmeniť predvolené meno (Hosť)</string>
+    <string name="create_external_call_view_onboarding_part_4_message_3">zavolať vám stlačením tlačidla „Volanie“ na stránke</string>
+    <string name="create_external_call_view_onboarding_part_4_message_4">ponechať stránku otvorenú a zavolať vám znova.</string>
+    <string name="create_external_call_view_onboarding_title_2">Nastaviť Click‑to‑call</string>
+    <string name="create_external_call_view_onboarding_title_3">Zdieľať Click‑to‑call</string>
+    <string name="create_external_call_view_onboarding_title_4">Použiť Click‑to‑call</string>
+    <string name="create_external_call_view_placeholder">Predmet (Pomoc, Oznámenie, Stretnutie, Zvonček…)</string>
+    <string name="create_external_call_view_recurrent_link_description">Prispôsobiť dni/časy, kedy je odkaz platný</string>
+    <string name="create_external_call_view_recurrent_link_title">Periodický</string>
+    <string name="create_external_call_view_unique_link_description">Nastaviť začiatok a koniec platnosti odkazu</string>
+    <string name="create_external_call_view_unique_link_title">Jednorazový</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_view_add_member_hint">Pozvať členov</string>
+    <string name="create_group_view_create">Vytvoriť</string>
+    <string name="create_group_view_member_allow_invitation_message">Povoliť členom skupiny pozývať svoje kontakty</string>
+    <string name="create_group_view_member_allow_invitation_title">Pozývanie členov</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_message">Povoliť členom pozývať ostatných členov ako osobné kontakty</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_title">Nadviazať osobné kontakty</string>
+    <string name="create_group_view_member_allow_post_message">Povoliť členom odosielať správy</string>
+    <string name="create_group_view_member_allow_post_title">Odosielanie správ</string>
+    <string name="create_group_view_member_list">Zoznam členov (%1$d)</string>
+    <string name="create_group_view_name_hint">Názov skupiny</string>
+    <string name="create_group_view_subtitle">Pozvite kontakty, aby sa pripojili k chatovacej skupine.</string>
+    <string name="create_group_view_title">Skupina</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_view_incomplete_profile_message">Meno aj obrázok sú nevyhnutné, aby vás kontakty rozpoznali a odlíšili od ostatných.</string>
+    <string name="create_profile_view_message">Tieto profilové údaje sa používajú na pozývanie kontaktov.</string>
+    <string name="create_profile_view_onboarding_message">Zadajte profil (meno a obrázok), ktorý vás reprezentuje vašim kontaktom.</string>
+    <string name="create_profile_view_onboarding_message_part_1">Profily vám umožnia pozývať kontakty na vytvorenie vzťahov. Môžete mať toľko profilov, koľko chcete, každý priradený k jednému Priestoru.</string>
+    <string name="create_profile_view_onboarding_message_part_2">Každý profil má „Meno“ a „Obrázok“ (povinné), ktoré vidia pozvané kontakty a používajú sa na prvotné nastavenie vzťahu v Priestore.</string>
+    <string name="create_profile_view_onboarding_message_part_3">Každý vzťah má svoj vlastný pár profilov reprezentujúcich každú stranu.</string>
+    <string name="create_profile_view_onboarding_message_part_4">Potom môžete upraviť, ako chcete byť vnímaní každým kontaktom v každom vzťahu.</string>
+    <string name="create_profile_view_save_message">Toto meno a obrázok sa používajú na pozvanie kontaktov a inicializáciu vzťahov. Neskôr ich môžete upravovať individuálne.</string>
+    <string name="create_profile_view_welcome1">Zadajte svoju profilovú fotografiu</string>
+    <string name="create_profile_view_welcome2">Vitajte %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_view_message">„Priestory“ sú lokálne a kontakty ich nevidia.</string>
+    <string name="create_space_view_onboarding_message_part_1">„Priestory“ vám pomáhajú organizovať kontakty podľa sociálnych kruhov (Rodina, Priatelia, Biznis…)</string>
+    <string name="create_space_view_onboarding_message_part_2">Každý Priestor je priradený profilu reprezentujúcemu osobnosť, ktorú chcete používať v danom kruhu (napr. Otec, Dr. John Doe…).</string>
+    <string name="create_space_view_onboarding_message_part_3">Priestory existujú iba lokálne vo vašom zariadení. Kontakty ani servery ich nevidia.</string>
+    <string name="create_space_view_onboarding_message_part_4">„Priestor“ má:</string>
+    <string name="create_space_view_onboarding_message_part_5">– „Názov“ reprezentujúci sociálny kruh</string>
+    <string name="create_space_view_onboarding_message_part_6">– „Obrázok“ na rýchlu identifikáciu</string>
+    <string name="create_space_view_onboarding_message_part_7">– farebnú „Tému“</string>
+    <string name="create_space_view_onboarding_message_part_8">– „Nastavenia“ špecifické pre Priestor, ktoré môžu nahradiť predvolené hodnoty aplikácie.</string>
+    <string name="create_space_view_title">Vytvoriť Priestor</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_view_message">Tento profil je spojený s kódom používaným na prenos prebiehajúceho hovoru do prehliadača.</string>
+    <string name="create_transfert_call_view_name_placeholder">Moje prenosy hovorov</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_view_confirm_message">Zadajte „OK“ nižšie na potvrdenie odstránenia účtu.</string>
+    <string name="deleted_account_view_delete">Odstrániť účet</string>
+
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_view_message">Váš účet bol odstránený a všetky súvisiace údaje boli zničené.<br /> Musíte zavrieť aplikáciu.</string>
+    <string name="deleted_account_view_warning">Upozornenie‼️</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_view_confirm_message">Naozaj chcete odstrániť tento vzťah?</string>
+    <string name="edit_contact_view_message">Tento kontakt vás už nebude môcť kontaktovať.</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_view_delete_confirm_message">Naozaj chcete odstrániť tento kód „Click-to-Call“?</string>
+    <string name="edit_external_call_view_delete_message">Tento odkaz „Click-to-Call“ už nebude možné používať.</string>
+
+    <!-- EditIdentityActivity -->
+    <string name="edit_identity_view_delete_message">Odstránením tohto profilu zneplatníte jeho pozývací kód. Potvrdiť odstránenie?</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_view_editing_profile">Upraviť profil</string>
+    <string name="edit_profile_view_propagating_all_contacts">pre všetky kontakty v tomto Priestore</string>
+    <string name="edit_profile_view_propagating_ask_message">Propagovať práve upravený obrázok, meno alebo popis:</string>
+    <string name="edit_profile_view_propagating_except_contacts">pre všetkých okrem tých s personalizáciou</string>
+    <string name="edit_profile_view_propagating_message">Zmeny pozývacieho profilu môžete propagovať existujúcim kontaktom alebo nie.</string>
+    <string name="edit_profile_view_propagating_no_contact">pre nikoho</string>
+    <string name="edit_profile_view_propagating_profile">Propagovať zmeny profilu</string>
+    <string name="edit_profile_view_remove_active_profile">Aktívny profil nemožno odstrániť</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_view_certified_message">Po vytvorení vzťahu sa odporúča jeho certifikácia pre posilnenie bezpečnosti.</string>
+    <string name="enter_invitation_code_view_enter_code">Zadajte Mini‑Kód</string>
+    <string name="enter_invitation_code_view_error_message">Tento kód je neplatný. Možno bol použitý alebo expiroval.</string>
+    <string name="enter_invitation_code_view_invitation_message">Po vytvorení vzťahu nezabudnite vykonať certifikáciu.</string>
+    <string name="enter_invitation_code_view_message">Zadajte Mini‑Kód, ktorý vám poskytol váš kontakt na vytvorenie vzťahu.</string>
+    <string name="enter_invitation_code_view_onboarding_message">Kontakt vám poskytol 6‑znakový Mini‑Kód. Tento jednorazový kód expiruje po 24 hodinách.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_view_all_conversations_zip_file">Obsah konverzácií bude exportovaný do ZIP súboru.</string>
+    <string name="export_view_content_title">Obsah</string>
+    <string name="export_view_content_to_export">Obsah na export</string>
+    <string name="export_view_do_not_leave_screen">Počas exportu neopúšťajte obrazovku.</string>
+    <string name="export_view_export">Exportovať</string>
+    <string name="export_view_file">súbor</string>
+    <string name="export_view_files">súbory</string>
+    <string name="export_view_get_all_content">Prebieha získavanie obsahu konverzácie s %1$s.</string>
+    <string name="export_view_get_one_chat">Prebieha získavanie obsahu konverzácií.</string>
+    <string name="export_view_images">Obrázky</string>
+    <string name="export_view_no_content_to_export">Žiadny obsah na export</string>
+    <string name="export_view_one_conversation_zip_file">Obsah konverzácie bude exportovaný do ZIP súboru.</string>
+    <string name="export_view_save_location">Umiestnenie</string>
+    <string name="export_view_save_location_message">Vyberte miesto exportu.</string>
+    <string name="export_view_select_content">Vyberte obsah, ktorý chcete exportovať.\nExportovať možno len ne‑efemérny obsah, povolený na kopírovanie/ukladanie/zdieľanie.</string>
+    <string name="export_view_success">Export bol úspešne dokončený.</string>
+    <string name="export_view_title">Export konverzácií</string>
+    <string name="export_view_videos">Videá</string>
+    <string name="export_view_voice_messages">Hlasové správy</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_view_error_code_message">Fatálna chyba, kód %1$d.\nReštartujte aplikáciu a ak môžete, nahláste problém spätnou väzbou. Ospravedlňujeme sa za nepríjemnosti.</string>
+    <string name="fatal_error_view_error_message">Fatálna chyba: %1$s<br /> Musíte zavrieť aplikáciu.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_view_contact">Kontakt</string>
+    <string name="feedback_view_gdpr_notice">Použite tento formulár na požiadanie o prístup k údajom vášho účtu.</string>
+    <string name="feedback_view_help">Vážime si vašu pomoc pri identifikácii problémov a spolupráci na ich riešení.</string>
+    <string name="feedback_view_info_logs">Ladiaci log obsahuje iba nízkoúrovňové technické údaje o činnosti aplikácie a neodhaľuje žiadne vaše osobné informácie.</string>
+    <string name="feedback_view_logs">Ladiaci log</string>
+    <string name="feedback_view_message">Správa</string>
+    <string name="feedback_view_send">Odoslať</string>
+    <string name="feedback_view_send_logs">Odoslať ladiaci log</string>
+    <string name="feedback_view_send_message">Spätná väzba bola odoslaná. Ďakujeme.</string>
+    <string name="feedback_view_subject">Predmet</string>
+    <string name="feedback_view_subject_placeholder">[twinme] </string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_view_generate_code_message">Táto akcia zneplatní aktuálny pozývací kód priradený k tomuto profilu. Ste si istí, že chcete vytvoriť nový kód?</string>
+    <string name="fullscreen_qrcode_view_generate_code_title">Vytvoriť nový pozývací kód</string>
+    <string name="fullscreen_qrcode_view_save_message">Importujte alebo naskenujte tento QR‑kód pozvánky pomocou twinme na pridanie kontaktu.</string>
+    <string name="fullscreen_qrcode_view_save_title">Uložiť do galérie</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_view_information_audio_call">Povoliť hlasové hovory</string>
+    <string name="group_capabilities_view_information_programmed_call">Naplánovať dátum/čas hovorov</string>
+    <string name="group_capabilities_view_information_video_call">Povoliť videohovory</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_view_admin_not_authorize">Administrátor skupiny nepovolil túto akciu.</string>
+    <string name="group_member_view_invitation_message">Pozvať %1$s ako osobný kontakt</string>
+    <string name="group_member_view_invitation_title">Pozvánka</string>
+    <string name="group_member_view_invite_personnal_relation">Pozvať ako osobný kontakt</string>
+    <string name="group_member_view_remove_message">Naozaj chcete odstrániť členov z tejto skupiny?</string>
+    <string name="group_member_view_section_administrator">Administrátor</string>
+    <string name="group_member_view_section_invitation">Pozvánky</string>
+    <string name="group_member_view_section_member">Členovia</string>
+    <string name="group_member_view_title">Členovia skupiny</string>
+
+    <!-- HelpActivity -->
+    <string name="help_view_standard_services">Štandardné služby</string>
+    <string name="help_view_advanced_functions">Pokročilé funkcie</string>
+    <string name="help_view_additional_features">Ďalšie funkcie</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_view_call_terminated_reason_busy">%1$s je zaneprázdnený</string>
+    <string name="info_item_view_call_terminated_reason_cancel">Hovor zrušil %1$s</string>
+    <string name="info_item_view_call_terminated_reason_decline">Hovor odmietol %1$s</string>
+    <string name="info_item_view_call_terminated_reason_gone">%1$s je offline</string>
+    <string name="info_item_view_call_terminated_reason_not_authorized">Hovor nie je povolený</string>
+    <string name="info_item_view_call_terminated_reason_revoked">%1$s odstránil tento vzťah</string>
+    <string name="info_item_view_call_terminated_reason_timeout">%1$s neodpovedá</string>
+    <string name="info_item_view_deleted">Odstránil príjemca:</string>
+    <string name="info_item_view_may_be_copied">Môže byť kopírované/uložené/zdieľané…</string>
+    <string name="info_item_view_may_not_be_copied">Nesmie byť kopírované/uložené/zdieľané…</string>
+    <string name="info_item_view_not_delivered">Nedoručené</string>
+    <string name="info_item_view_not_delivered_expiration">Správu nebolo možné doručiť po 15 dňoch.</string>
+    <string name="info_item_view_not_delivered_storage">Zariadenie príjemcu nemá dostatok úložného priestoru na prijatie tohto obsahu.</string>
+    <string name="info_item_view_not_delivered_update">Aplikáciu príjemcu je potrebné aktualizovať.</string>
+    <string name="info_item_view_reactions">Reakcie</string>
+    <string name="info_item_view_received">Prijaté:</string>
+    <string name="info_item_view_seen">Videné:</string>
+    <string name="info_item_view_sent">Odoslané:</string>
+    <string name="info_item_view_updated">Upravené</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_view_generate_code_message">Táto akcia zneplatní aktuálny kód pozvánky priradený k tomuto odkazu „click-to-call“. Potvrdiť?</string>
+    <string name="invitation_call_view_generate_code_title">Vytvoriť nový kód pre tento odkaz</string>
+    <string name="invitation_call_view_invite_meeting_message">Otvorte webovú adresu %1$s alebo naskenujte QR‑kód pre pripojenie k stretnutiu „%2$s“.</string>
+    <string name="invitation_call_view_invite_message">Otvorte webovú adresu %1$s alebo naskenujte QR‑kód pre volanie „%2$s“.</string>
+    <string name="invitation_call_view_message">Zdieľajte tento „click‑to‑call“ kód s niekým, kto vám následne môže zavolať cez web alebo mobilnú aplikáciu.</string>
+    <string name="invitation_call_view_save_message">Naskenujte tento QR‑kód, aby ste zavolali „%1$s“.</string>
+    <string name="invitation_call_view_share">Publikovať</string>
+    <string name="invitation_call_view_title">Externý hovor</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_view_create_code">Vytvoriť Mini‑Kód</string>
+    <string name="invitation_code_view_create_code_subtitle">na pozvanie kontaktu, keď nemáte prístup k aplikácii.</string>
+    <string name="invitation_code_view_expiration">Platnosť:</string>
+    <string name="invitation_code_view_history">Moje Mini‑Kódy</string>
+    <string name="invitation_code_view_limit_message">Bol dosiahnutý maximálny počet aktívnych Mini‑Kódov. Musíte počkať 24 hodín na vytvorenie nových.</string>
+    <string name="invitation_code_view_onboarding_message">Mini‑Kódy sú jednorazové a platné iba 24 hodín. Môžete ich dať svojim kontaktom na vytvorenie vzťahu, keď nemáte prístup k aplikácii (napr. bez telefónu).</string>
+    <string name="invitation_code_view_success_message">Dôrazne sa odporúča certifikovať vzťahy vytvorené pomocou Mini‑Kódu na zvýšenie bezpečnosti.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_view_message">Požiadajte svojho priateľa v blízkosti, aby naskenoval QR‑kód „miestnosti“ pomocou twinme, alebo ťuknite na pozývací kód na jeho kopírovanie.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_view_audio">Hlas</string>
+    <string name="last_calls_view_video">Video</string>
+
+    <!-- LocalAccountMigrationActivity -->
+    <string name="local_account_migration_view_message">Váš účet twinme na tomto zariadení bude prenesený do twinme+.</string>
+    <string name="local_account_migration_view_message_older_version">Pred začatím prenosu aktualizujte obe zariadenia na najnovšiu verziu aplikácie, aby ste predišli strate všetkých vzťahov.</string>
+
+    <!-- MainActivity -->
+    <string name="main_view_add_contact">Pridať kontakt</string>
+    <string name="main_view_add_group">Vytvoriť skupinu</string>
+    <string name="main_view_reset_conversation">Obnoviť</string>
+    <string name="main_view_reset_conversation_message">Obnovením tejto konverzácie odstránite všetky správy, vrátane tých na zariadení vášho kontaktu. Potvrdiť?</string>
+    <string name="main_view_reset_conversation_title">Obnoviť konverzáciu</string>
+    <string name="main_view_reset_group_conversation_admin_message">Obnovením tejto konverzácie odstránite všetky správy zo zariadenia každého člena skupiny. Potvrdiť?</string>
+    <string name="main_view_reset_group_conversation_message">Obnovením tejto konverzácie odstránite všetky správy z vášho zariadenia. Potvrdiť?</string>
+
+    <!-- MigrationTwinmePlusActivity -->
+    <string name="migration_twinme_plus_view_premium_feature">Na používanie tejto funkcie musíte prejsť na twinme+. Budete môcť migrovať všetky údaje svojho účtu.</string>
+    <string name="migration_twinme_plus_view_premium_title">Prejsť na twinme+</string>
+    <string name="migration_twinme_plus_view_upgrade_account">Budete môcť migrovať všetky údaje svojho účtu.</string>
+    <string name="migration_twinme_plus_view_upgrade_message">twinme je dostupné ako prémiová verzia s ešte viac funkciami.</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_view_about_twinme">O aplikácii</string>
+    <string name="navigation_view_application_settings">Nastavenia aplikácie</string>
+    <string name="navigation_view_feedback">Spätná väzba</string>
+    <string name="navigation_view_getting_started">Začíname</string>
+    <string name="navigation_view_help">Pomoc</string>
+    <string name="navigation_view_profile">Profily</string>
+    <string name="navigation_view_settings">Nastavenia</string>
+    <string name="navigation_view_sign_out">Odhlásiť sa</string>
+    <string name="navigation_view_sounds">Zvuky</string>
+    <string name="navigation_view_support">Podpora</string>
+    <string name="navigation_view_title">Menu</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Hlasový hovor pre %1$s</string>
+    <string name="notification_center_audio_message">Odoslal vám hlasovú správu</string>
+    <string name="notification_center_audio_message_received">Nová hlasová správa</string>
+    <string name="notification_center_cancel">Zrušiť</string>
+    <string name="notification_center_cleanup_conversation">Niektoré staré správy boli odstránené.</string>
+    <string name="notification_center_conference_join_call">Jeden účastník sa pripojil k hovoru.</string>
+    <string name="notification_center_deleted_contact">Kontakt odstránený</string>
+    <string name="notification_center_file_message">Odoslal vám súbor</string>
+    <string name="notification_center_file_message_received">Nový súbor</string>
+    <string name="notification_center_invitation">Odoslal vám pozvánku</string>
+    <string name="notification_center_invitation_group">pozýva vás pripojiť sa ku skupine.</string>
+    <string name="notification_center_invitation_received">Nová pozvánka</string>
+    <string name="notification_center_invitation_group_received">Nová skupinová pozvánka</string>
+    <string name="notification_center_join_call">%1$s sa práve pripojil k hovoru</string>
+    <string name="notification_center_join_group">Ste členom skupiny</string>
+    <string name="notification_center_message_received">Nová správa</string>
+    <string name="notification_center_missed_audio_call_to">Zmeškaný hlasový hovor pre %1$s</string>
+    <string name="notification_center_missed_video_call_to">Zmeškaný videohovor pre %1$s</string>
+    <string name="notification_center_mute">Stlmiť</string>
+    <string name="notification_center_new_contact">Nový kontakt</string>
+    <string name="notification_center_poll_message">Vám poslal(a) prieskum</string>
+    <string name="notification_center_poll_message_received">Nový prieskum</string>
+    <string name="notification_center_poll_vote">Odpovedal(a) na prieskum</string>
+    <string name="notification_center_photo_message">Odoslal vám fotografiu</string>
+    <string name="notification_center_photo_message_received">Nová fotografia</string>
+    <string name="notification_center_reaction">reagoval %1$s</string>
+    <string name="notification_center_reaction_message">Zareagoval na správu</string>
+    <string name="notification_center_reaction_message_received">Reakcia na správu</string>
+    <string name="notification_center_reset_message">Konverzácia bola vyčistená</string>
+    <string name="notification_center_stop">Zastaviť</string>
+    <string name="notification_center_transfering_data">Prenášanie správ…</string>
+    <string name="notification_center_unmute">Zrušiť stlmenie</string>
+    <string name="notification_center_updated_contact_avatar">Obrázok aktualizovaný</string>
+    <string name="notification_center_updated_contact_name">Meno aktualizované</string>
+    <string name="notification_center_video_call_to">Videohovor pre %1$s</string>
+    <string name="notification_center_video_message">Odoslal vám video</string>
+    <string name="notification_center_video_message_received">Nové video</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Hlasové hovory</string>
+    <string name="notification_channel_contact_title">Kontakty</string>
+    <string name="notification_channel_group_title">Skupiny</string>
+    <string name="notification_channel_message_title">Správy</string>
+    <string name="notification_channel_missed_title">Zmeškané hovory</string>
+    <string name="notification_channel_system_title">Iné</string>
+    <string name="notification_channel_video_title">Videohovory</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_view_item_audio_call">Pokúsil sa vám zavolať</string>
+    <string name="notifications_view_item_audio_message">Odoslal vám hlasovú správu</string>
+    <string name="notifications_view_item_cleanup_message">odstránil niektoré staré správy.</string>
+    <string name="notifications_view_item_deleted_contact">Kontakt odstránený</string>
+    <string name="notifications_view_item_file_message">Odoslal vám súbor</string>
+    <string name="notifications_view_item_image_message">Odoslal vám fotografiu</string>
+    <string name="notifications_view_item_invitation">Odoslal vám pozvánku</string>
+    <string name="notifications_view_item_invitation_group">pozýva vás pripojiť sa ku skupine.</string>
+    <string name="notifications_view_item_join_group">Ste členom skupiny</string>
+    <string name="notifications_view_item_new_contact">Nový kontakt</string>
+    <string name="notifications_view_item_reset_conversation">Obnovil konverzáciu</string>
+    <string name="notifications_view_item_poll_message">Vám poslal(a) prieskum</string>
+    <string name="notifications_view_item_shortest_day">%1$dd</string>
+    <string name="notifications_view_item_shortest_hour">%1$dh</string>
+    <string name="notifications_view_item_shortest_minute">%1$dm</string>
+    <string name="notifications_view_item_shortest_second">%1$ds</string>
+    <string name="notifications_view_item_text_message">Odoslal vám správu</string>
+    <string name="notifications_view_item_updated_contact_avatar">Obrázok aktualizovaný</string>
+    <string name="notifications_view_item_updated_contact_name">Meno aktualizované</string>
+    <string name="notifications_view_item_video_call">Pokúsil sa vám videovolat</string>
+    <string name="notifications_view_item_video_message">Odoslal vám video</string>
+    <string name="notifications_view_no_notification_message">Oznámenia týkajúce sa kontaktov, konverzácií, hovorov atď. sú uvedené tu.</string>
+    <string name="notifications_view_no_notification_title">Nemáte žiadne oznámenia.</string>
+    <string name="notifications_view_reset">Naozaj chcete obnoviť všetky oznámenia?</string>
+    <string name="notifications_view_reset_title">Obnoviť oznámenia</string>
+    <string name="notifications_view_title">Oznámenia</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_view_font">Fonty</string>
+    <string name="personalization_view_font_extra_large">Extra veľké</string>
+    <string name="personalization_view_font_large">Veľké</string>
+    <string name="personalization_view_font_small">Malé</string>
+    <string name="personalization_view_haptic_feedback">Haptická odozva</string>
+    <string name="personalization_view_haptic_feedback_message">Hmatová odozva pri dotyku.</string>
+    <string name="personalization_view_menu_choose_color">Predvolené farby</string>
+    <string name="personalization_view_menu_enter_color">Kód farby</string>
+    <string name="personalization_view_mode">Režim</string>
+    <string name="personalization_view_mode_dark">Tmavý</string>
+    <string name="personalization_view_mode_light">Svetlý</string>
+    <string name="personalization_view_start_tab_information">Vyberte kartu, na ktorej chcete aplikáciu spúšťať.</string>
+    <string name="personalization_view_start_tab_title">Predvolená karta</string>
+    <string name="personalization_view_system">Systém</string>
+    <string name="personalization_view_title">Prispôsobenie</string>
+
+    <!-- PollActivity -->
+    <string name="poll_view_add_response">Pridať odpoveď</string>
+    <string name="poll_view_allow_multiple">Povoliť viac odpovedí</string>
+    <string name="poll_view_ask_question">Položte otázku</string>
+    <string name="poll_view_choice">Možnosť %1$d</string>
+    <string name="poll_view_enter_response">Zadajte odpoveď</string>
+    <string name="poll_view_title">Anketa</string>
+    <string name="poll_view_results">Zobraziť výsledky</string>
+
+    <!-- PreviewFilesActivity -->
+    <string name="preview_files_view_resize_message">Zmena veľkosti pred odoslaním…</string>
+    <string name="preview_files_view_retrieving_media_message">Prebieha načítanie médií…</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_view_camera_control_description_1">Prepnúť prednú/zadnú kameru</string>
+    <string name="premium_services_view_camera_control_description_2">Priblížiť/oddialiť</string>
+    <string name="premium_services_view_camera_control_description_3">Pomoc blízkej osobe alebo klientovi na diaľku</string>
+    <string name="premium_services_view_camera_control_description_4">Správa bezpečnostnej kamery</string>
+    <string name="premium_services_view_camera_control_subtitle">Ovládajte kameru kontaktu počas hovoru s jeho povolením</string>
+    <string name="premium_services_view_camera_control_title">Vzdialené ovládanie kamery</string>
+    <string name="premium_services_view_click_to_call_description_1">Vytvoriť kód „kliknúť‑na‑zavolanie“</string>
+    <string name="premium_services_view_click_to_call_description_2">Publikovať alebo distribuovať akýmkoľvek spôsobom</string>
+    <string name="premium_services_view_click_to_call_description_3">Príjemcovia naskenujú kód a zavolajú vám</string>
+    <string name="premium_services_view_click_to_call_description_4">Anonymné, bez stôp v cloude</string>
+    <string name="premium_services_view_click_to_call_subtitle">Umožnite hosťom volať vám z webu</string>
+    <string name="premium_services_view_click_to_call_title">Click‑to‑call</string>
+    <string name="premium_services_view_conversation_description_1">Médiá, súbory, hlasové poznámky, správy</string>
+    <string name="premium_services_view_conversation_description_2">Staršie ako určité obdobie/dátum</string>
+    <string name="premium_services_view_conversation_description_3">Pre jednu alebo všetky konverzácie</string>
+    <string name="premium_services_view_conversation_description_4">Iba lokálne, bez vplyvu na druhú stranu</string>
+    <string name="premium_services_view_conversation_subtitle">Export obsahu a uvoľnenie miesta</string>
+    <string name="premium_services_view_conversation_title">Správa konverzácií</string>
+    <string name="premium_services_view_description_part1_subtitle">Priame spojenie medzi zariadeniami</string>
+    <string name="premium_services_view_description_part1_title">HD kvalita zvuku/videa</string>
+    <string name="premium_services_view_description_part2_subtitle">Bez stôp v cloude</string>
+    <string name="premium_services_view_description_part2_title">Súkromie – Dôvernosť</string>
+    <string name="premium_services_view_description_part3_subtitle">Energetická efektivita</string>
+    <string name="premium_services_view_description_part3_title">Eko‑zodpovednosť</string>
+    <string name="premium_services_view_group_call_description_1">Vysokokvalitný zvuk/video</string>
+    <string name="premium_services_view_group_call_description_2">Priame spojenie medzi zariadeniami</string>
+    <string name="premium_services_view_group_call_description_3">Bezpečné a súkromné</string>
+    <string name="premium_services_view_group_call_description_4">Bez stôp v cloude</string>
+    <string name="premium_services_view_group_call_subtitle">Pozvite kontakty na hlasový/video skupinový hovor</string>
+    <string name="premium_services_view_group_call_title">Skupinové hovory</string>
+    <string name="premium_services_view_privacy_description_1">Uzamykajte aplikáciu biometrickým alebo iným overením</string>
+    <string name="premium_services_view_privacy_description_2">Skryte poslednú obrazovku v prepínači aplikácií</string>
+    <string name="premium_services_view_privacy_description_3">Efemérne správy, ktoré sa po čase vymažú</string>
+    <string name="premium_services_view_privacy_description_4">Zabrániť kontaktu volať vám</string>
+    <string name="premium_services_view_privacy_subtitle">Kontrola aplikácie, kontaktov a správ</string>
+    <string name="premium_services_view_privacy_title">Viac súkromia</string>
+    <string name="premium_services_view_space_description_1">Viacero profilov s príslušnými vzťahmi, konverzáciami, históriou</string>
+    <string name="premium_services_view_space_description_2">Personalizovaný vzhľad, upozornenia a nastavenia</string>
+    <string name="premium_services_view_space_description_3">Pre rodinu, priateľov, kolegov, biznis, šport atď.</string>
+    <string name="premium_services_view_space_description_4">Tajné Priestory nie sú uvedené, prístupné len podľa názvu</string>
+    <string name="premium_services_view_space_subtitle">Pre každý sociálny kruh, s ktorým komunikujete</string>
+    <string name="premium_services_view_space_title">Priestory</string>
+    <string name="premium_services_view_streaming_description_1">Zdieľajte svoju hudbu naživo</string>
+    <string name="premium_services_view_streaming_description_2">Každý účastník môže ovládať prehrávač</string>
+    <string name="premium_services_view_streaming_description_3">Interagujte počas hovoru simultánne</string>
+    <string name="premium_services_view_streaming_description_4">Rovnaké súkromie ako v reálnom živote</string>
+    <string name="premium_services_view_streaming_subtitle">Streamujte médiá počas hovoru</string>
+    <string name="premium_services_view_streaming_title">Zdieľanie médií</string>
+    <string name="premium_services_view_title">Pozvite kontakty, aby sa pripojili k prebiehajúcemu hlasovému/video hovoru.</string>
+    <string name="premium_services_view_transfert_description_1">Vytvoriť kód a profil na prenos hovoru</string>
+    <string name="premium_services_view_transfert_description_2">Nahrať jeho URL alebo naskenovať kód na počítači</string>
+    <string name="premium_services_view_transfert_description_3">Pridať stránku do záložiek v prehliadači</string>
+    <string name="premium_services_view_transfert_description_4">„Zavolať“ zo stránky počas mobilného hovoru</string>
+    <string name="premium_services_view_transfert_subtitle">Prenos mobilného hovoru do prehliadača</string>
+    <string name="premium_services_view_transfert_title">Prenos hovoru</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_view_coach_mark">Uzamknite aplikáciu pomocou biometrie alebo PIN kódu.</string>
+    <string name="privacy_view_hide_last_screen_message">A skryte aplikáciu pri prechode na pozadie, ak to zariadenie umožňuje.</string>
+    <string name="privacy_view_hide_last_screen_title">Zakázať snímky obrazovky</string>
+    <string name="privacy_view_lock_screen_message">Odomknite prístup do aplikácie pomocou biometrického overenia alebo kódu zariadenia. Počas zamknutia môžete stále prijímať hovory a oznámenia.</string>
+    <string name="privacy_view_lock_screen_not_available">Táto možnosť vyžaduje Android > 5.0</string>
+    <string name="privacy_view_lock_screen_timeout">Časový limit uzamknutia</string>
+    <string name="privacy_view_lock_screen_timeout_instant">Okamžite</string>
+    <string name="privacy_view_lock_screen_title">Uzamknutie prístupu</string>
+    <string name="privacy_view_title">Súkromie</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_view_add_profile">Pridať profil</string>
+    <string name="profile_view_create_profile">Vytvoriť profil</string>
+    <string name="profile_view_default_action">Aktivovať</string>
+    <string name="profile_view_default_profile_title">Aktívny profil</string>
+    <string name="profile_view_identity_title">Profily</string>
+    <string name="profile_view_message">Tento profil vám umožňuje pozývať kontakty na vytvorenie súkromného vzťahu pod vašou kontrolou.</string>
+    <string name="profile_view_twincode_title">Pozývací kód</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_view_add">Pridať proxy</string>
+    <string name="proxy_view_add_placeholder">Vložte alebo napíšte URL proxy servera</string>
+    <string name="proxy_view_already_use">Tento proxy server je už v aplikácii nakonfigurovaný.</string>
+    <string name="proxy_view_enable">Použiť proxy</string>
+    <string name="proxy_view_format">Platné formáty URL proxy:</string>
+    <string name="proxy_view_information">Použite proxy len vtedy, ak sa z bežnej Wi‑Fi alebo mobilnej siete nedokážete pripojiť k službe.</string>
+    <string name="proxy_view_invalid_format">Neplatný formát URL</string>
+    <string name="proxy_view_limit">Dosiahli ste limit povolených proxy (%1$d). Ak chcete pridať nový, musíte najskôr jeden odstrániť.</string>
+    <string name="proxy_view_list">Moje proxy</string>
+    <string name="proxy_view_list_information">Použite proxy zo zoznamu nižšie len vtedy, ak sa aplikácia bez proxy nepripojí k službe.</string>
+    <string name="proxy_view_onboarding">Keď sú signalizačné servery aplikácie vo vašej krajine blokované, proxy môžu často tieto blokácie obísť a umožniť súkromnú komunikáciu. Okrem zabudovaných proxy môžete vytvoriť vlastné alebo použiť cudzie. Proxy nikdy nemajú prístup k obsahu komunikácie.</string>
+    <string name="proxy_view_share">Otvorte odkaz %1$s pomocou twinme na vašom zariadení pre automatickú konfiguráciu proxy.</string>
+    <string name="proxy_view_share_message">Zdieľajte tento proxy s tými, ktorí sa v dôsledku blokovania nemôžu pripojiť k službe.</string>
+    <string name="proxy_view_title">Proxy</string>
+    <string name="proxy_view_url">Chcete použiť URL tohto proxy?</string>
+    <string name="proxy_view_warning">Upozornenie! URL tohto proxy neumožňuje pripojenie k službe aplikácie.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_view_change_permissions">Zmeniť povolenia</string>
+    <string name="quality_of_service_view_enable_notifications">Povoliť upozornenia</string>
+    <string name="quality_of_service_view_enable_notifications_warning">Bez týchto povolení môže doručenie správ trvať veľmi dlho.</string>
+    <string name="quality_of_service_view_notification_description">Povoliť aplikácii bežať na pozadí</string>
+    <string name="quality_of_service_view_notification_title">Správy sa doručujú príliš pomaly?</string>
+    <string name="quality_of_service_view_settings">Zmeňte povolenia aplikácie v systémových nastaveniach.</string>
+    <string name="quality_of_service_view_step1_message">Šifrované správy sa vymieňajú priamo medzi zariadeniami v reálnom čase pomocou peer‑to‑peer prístupu, bez distribučných serverov. Zaručuje to nulové stopy v cloude a jedinečnú ochranu súkromia.</string>
+    <string name="quality_of_service_view_step2_message">Aby ste zaistili kvalitnú službu, povoľte aplikácii prijímať upozornenia na pozadí a vylúčte ju z optimalizácie batérie.</string>
+    <string name="quality_of_service_view_step3_message">Používajte aplikáciu pravidelne, aby ju OS uprednostnil a neukončoval ju nečakane. \n\nA nezabudnite o tom informovať aj svoje kontakty!</string>
+    <string name="quality_of_service_view_warning_background_data">Povoliť aplikácii používať mobilné dáta na pozadí.</string>
+    <string name="quality_of_service_view_warning_receive_notification">Povoliť aplikácii prijímať push upozornenia.</string>
+    <string name="quality_of_service_view_warning_run_background">Povoliť aplikácii bežať na pozadí.</string>
+
+    <!-- RestoreActivity -->
+    <string name="restore_view_application_error">Aby bolo možné obnoviť zálohu účtu twinme+, musí byť na tomto zariadení nainštalované twinme+.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_one">Zariadenie, ktoré vytvorilo zálohu, je stále prihlásené.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_two">Ak obnovíte zálohu na toto nové zariadenie, účet zariadenia, na ktorom bola záloha vytvorená, bude automaticky zneplatnený.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_three">Ak chcete preniesť svoj účet na nové zariadenie a stále máte staré, je vhodnejšie použiť operáciu \\\"migrácie účtu\\\" namiesto obnovenia zálohy, pretože prenesie aj konverzácie, oznámenia a históriu.</string>
+    <string name="restore_view_confirm">Ste si istí, že chcete nahradiť aktuálne údaje účtu nasledujúcimi údajmi zo zálohy?</string>
+    <string name="restore_view_confirm_restore">Chcete túto zálohu stále obnoviť?</string>
+    <string name="restore_view_content_contact_deleted_message">Údaje vymazané po zálohe nie je možné obnoviť.</string>
+    <string name="restore_view_content_profile_reset">Pozývací kód sa zmenil.</string>
+    <string name="restore_view_content_profile_reset_message">Pozývací kód spojený so zálohovaným profilom je neplatný. Počas procesu obnovy sa vygeneruje nový pozývací kód.</string>
+    <string name="restore_view_enter_words">Zadajte sekvenciu 12 slov umožňujúcu dešifrovanie zálohy.</string>
+    <string name="restore_view_error_message">Chyba pri obnove zálohy.</string>
+    <string name="restore_view_error_message_verify_backup">Chyba pri overovaní zálohy.</string>
+    <string name="restore_view_file_not_supported">Súbor zálohy musí byť vo formáte \"skrdbckp\".</string>
+    <string name="restore_view_more_recent_backup">S rovnakým účtom bola vytvorená novšia záloha.</string>
+    <string name="restore_view_onboarding">Obnovenie zálohy nahradí aktuálne údaje účtu.</string>
+    <string name="restore_view_onboarding_words">Na obnovenie zálohy budete musieť zadať sekvenciu 12 slov umožňujúcu jej dešifrovanie.</string>
+    <string name="restore_view_onboarding_verify">Skontrolujte, či je záloha platná a aktuálna vzhľadom na vaše aktuálne údaje.</string>
+    <string name="restore_view_paste">Vložte zoznam slov zo schránky.</string>
+    <string name="restore_view_paste_error">Neplatný zoznam slov.</string>
+    <string name="restore_view_restore">Obnoviť</string>
+    <string name="restore_view_select_backup">Vyberte zálohu</string>
+    <string name="restore_view_state_restore_account">Obnovuje sa účet…</string>
+    <string name="restore_view_state_restore_data">Obnovujú sa údaje…</string>
+    <string name="restore_view_state_restore_starting">Začína sa obnovenie.</string>
+    <string name="restore_view_state_restore_verify_account">Overuje sa účet…</string>
+    <string name="restore_view_state_restore_verify_data">Overujú sa údaje…</string>
+    <string name="restore_view_state_restore_verify_starting">Začína sa overovanie…</string>
+    <string name="restore_view_state_restore_wait_confirm">Čaká sa na potvrdenie.</string>
+    <string name="restore_view_success">Obnovenie bolo úspešne dokončené!</string>
+    <string name="restore_view_success_message">Zatvorte aplikáciu a reštartujte ju, aby ste získali prístup k novým údajom.</string>
+    <string name="restore_view_title">Obnovenie</string>
+    <string name="restore_view_verify_same_account">Overenie sa musí vykonať na tom istom zariadení, ktoré sa použilo na zálohu.</string>
+    <string name="restore_view_warning">Obnovenie tejto zálohy nahradí všetky aktuálne údaje účtu údajmi zo zálohy.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_view_change_admin_title">Nastaviť ako administrátora</string>
+    <string name="room_members_view_delete_message">Potvrdiť odstránenie člena</string>
+    <string name="room_members_view_moderators_title">Moderátor</string>
+    <string name="room_members_view_only_admin_message">Jediného administrátora nie je možné odstrániť.</string>
+    <string name="room_members_view_owner_title">Vlastník</string>
+    <string name="room_members_view_participants_title">Účastníci</string>
+    <string name="room_members_view_remove_admin_title">Odstrániť ako administrátora</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_view_paste_code">Zadajte alebo vložte pozývací odkaz</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_view_allow_copy_category_title">Povoliť príjemcom kopírovať/ukladať/zdieľať váš obsah</string>
+    <string name="settings_view_allow_copy_file_title">Akýkoľvek typ súboru</string>
+    <string name="settings_view_allow_copy_text_title">Textové správy</string>
+    <string name="settings_view_application_notifications">Upozornenia aplikácie</string>
+    <string name="settings_view_audio_call_category_title">Hlasové hovory</string>
+    <string name="settings_view_audio_call_notification_ringtone_title">Názov zvonenia</string>
+    <string name="settings_view_audio_call_notification_title">Zvonenie</string>
+    <string name="settings_view_audio_call_vibration_title">Vibrácie</string>
+    <string name="settings_view_authorization_title">Povolenia</string>
+    <string name="settings_view_call_item_menu_all">Všetky hovory</string>
+    <string name="settings_view_chat_category_title">Správy</string>
+    <string name="settings_view_chat_ringtone_title">Názov zvuku</string>
+    <string name="settings_view_chat_title">Zvuk</string>
+    <string name="settings_view_chat_vibration_title">Vibrovať</string>
+    <string name="settings_view_content_information">Rozlíšenie mediálneho obsahu odoslaného v konverzácii: vysoké rozlíšenie vyžaduje viac dát a teda dlhší čas prenosu.</string>
+    <string name="settings_view_content_title">Médiá</string>
+    <string name="settings_view_default_directory_title">Predvolený priečinok na ukladanie súborov</string>
+    <string name="settings_view_default_sound">Predvolené</string>
+    <string name="settings_view_default_value_message">Tieto parametre sa používajú ako predvolené na úrovni aplikácie.</string>
+    <string name="settings_view_display_call_menu_missed">Iba zmeškané hovory</string>
+    <string name="settings_view_display_call_menu_none">Žiadne hovory</string>
+    <string name="settings_view_display_call_none">Žiadne</string>
+    <string name="settings_view_display_call_title">Zobraziť oznámenia o hovoroch v konverzáciách</string>
+    <string name="settings_view_display_notification_content_title">Zobraziť obsah správ</string>
+    <string name="settings_view_display_notification_like_title">Reakcie na správy</string>
+    <string name="settings_view_display_notification_sender_title">Zobraziť odosielateľa správy</string>
+    <string name="settings_view_ephemeral_message">Automaticky mazať odoslané správy</string>
+    <string name="settings_view_ephemeral_section_title">ŽIVOTNOSŤ</string>
+    <string name="settings_view_ephemeral_title">Miznúca správa</string>
+    <string name="settings_view_image_title">Fotografia</string>
+    <string name="settings_view_message_properties_title">Vlastnosti správy</string>
+    <string name="settings_view_message_reactions_notification">Oznámenie o reakciách na správy</string>
+    <string name="settings_view_permissions_title">POVOLENIA</string>
+    <string name="settings_view_reset_default_value">Obnoviť predvolené nastavenia</string>
+    <string name="settings_view_reset_preferences_button_title">Obnoviť predvolené</string>
+    <string name="settings_view_reset_preferences_message">Obnoviť nastavenia upozornení na predvolené hodnoty aplikácie.</string>
+    <string name="settings_view_reset_preferences_title">Obnoviť preferencie</string>
+    <string name="settings_view_silent_mode">Tichý režim</string>
+    <string name="settings_view_silent_sound">Ticho</string>
+    <string name="settings_view_sound_enabled_title">ZVUKOVÉ UPOZORNENIA</string>
+    <string name="settings_view_system_notifications_title">Systémové upozornenia</string>
+    <string name="settings_view_system_settings_title">Systémové nastavenia</string>
+    <string name="settings_view_turn_off_notification_sounds">Vypnúť zvuky oznámení</string>
+    <string name="settings_view_video_call_category_title">Videohovory</string>
+    <string name="settings_view_video_call_notification_ringtone_title">Názov zvonenia</string>
+    <string name="settings_view_video_call_notification_title">Zvonenie</string>
+    <string name="settings_view_video_call_vibration_title">Vibrovať</string>
+    <string name="settings_view_welcome_screen_category_title">VITAJTE</string>
+    <string name="settings_view_welcome_screen_summary">Zobraziť uvítacie obrazovky</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_developer_settings">Vývojárske nastavenia</string>
+    <string name="settings_advanced_view_status_connection_message">Skontrolovať stav vášho pripojenia k službe</string>
+    <string name="settings_advanced_view_status_connection_title">Stav pripojenia</string>
+    <string name="settings_advanced_view_telecom">HOVORY</string>
+    <string name="settings_advanced_view_telecom_enable">„Android calling experience“</string>
+    <string name="settings_advanced_view_telecom_information">Predvolene aplikácia neintegruje „Android calling experience“, pretože táto integrácia môže v určitých situáciách a na niektorých zariadeniach spôsobovať problémy s prijímaním hovorov. Ak tieto problémy nemáte, môžete túto integráciu povoliť pre lepšiu správu hovorov.</string>
+    <string name="settings_advanced_view_title">Pokročilé nastavenia</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_view_allow_invite_as_personal_contact">Povoliť účastníkom pozývať iných účastníkov ako osobné kontakty</string>
+    <string name="settings_room_view_allow_invite_contact">Povoliť účastníkom pozývať svoje kontakty</string>
+    <string name="settings_room_view_conference_notifications_inform">Prvý vstup/posledný odchod</string>
+    <string name="settings_room_view_conference_notifications_noisy">Všetky vstupy/odchody</string>
+    <string name="settings_room_view_conference_notifications_quiet">Ticho</string>
+    <string name="settings_room_view_display_members">Zobraziť členov</string>
+    <string name="settings_room_view_room_type_channel">Kanál – iba jednosmerný</string>
+    <string name="settings_room_view_room_type_channel_information">Iba administrátori/moderátori môžu odosielať správy</string>
+    <string name="settings_room_view_room_type_feedback">Kanál – s odozvou</string>
+    <string name="settings_room_view_room_type_feedback_information">Odozva účastníkov je viditeľná iba pre administrátorov/moderátorov</string>
+    <string name="settings_room_view_room_type_forum">Fórum</string>
+    <string name="settings_room_view_room_type_forum_information">Účastníci môžu odosielať správy viditeľné pre všetkých</string>
+
+    <!-- ShareActivity -->
+    <string name="share_view_contact_list">Kontakty</string>
+    <string name="share_view_group_list">Skupiny</string>
+    <string name="share_view_title">Zdieľať</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_view_code">„Click‑to‑call“ kód</string>
+    <string name="show_call_view_conference_call_information">Zdieľajte tento odkaz pre volanie alebo pripojenie ku konferencii z prehliadača.</string>
+    <string name="show_call_view_information_code">Zdieľajte tento kód, aby ste mohli prijímať externé hovory.</string>
+    <string name="show_call_view_meeting_organizer">Organizátor tohto stretnutia</string>
+    <string name="show_call_view_schedule_call">Naplánovaný hovor</string>
+    <string name="show_call_view_schedule_from">od %1$s</string>
+    <string name="show_call_view_schedule_from_to">%1$s od %2$s do %3$s</string>
+    <string name="show_call_view_schedule_message">Hovor naplánovaný na dátum a čas definovaný inde.</string>
+    <string name="show_call_view_schedule_to">do %1$s</string>
+    <string name="show_call_view_settings_call">Typ hovoru</string>
+    <string name="show_call_view_settings_end">Koniec</string>
+    <string name="show_call_view_settings_group_calls">Skupinový hovor</string>
+    <string name="show_call_view_settings_limited">Naplánovaný</string>
+    <string name="show_call_view_settings_start">Začať</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_view_audio">Hlas</string>
+    <string name="show_contact_view_chat">Chat</string>
+    <string name="show_contact_view_cleanup">Čistenie</string>
+    <string name="show_contact_view_export_contents">Exportovať obsah</string>
+    <string name="show_contact_view_history_title">História</string>
+    <string name="show_contact_view_identity_title">Pozná ma ako</string>
+    <string name="show_contact_view_last_calls">Posledné hovory</string>
+    <string name="show_contact_view_pending">Prebieha</string>
+    <string name="show_contact_view_pending_message">Tento vzťah sa vytvára. Prosím, počkajte.</string>
+    <string name="show_contact_view_revoked">Odstránené</string>
+    <string name="show_contact_view_settings_coach_mark">Definujte, čo môže váš kontakt v tomto vzťahu robiť.</string>
+    <string name="show_contact_view_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_view_add_member">Pridať člena</string>
+    <string name="show_group_view_invitation_list">Čakajúce pozvánky: %1$d</string>
+    <string name="show_group_view_leave">Opustiť skupinu</string>
+    <string name="show_group_view_leave_confirm_message">Naozaj chcete opustiť túto skupinu?</string>
+    <string name="show_group_view_leave_message">Opustíte túto skupinu a stratíte prístup ku jej konverzáciám.</string>
+    <string name="show_group_view_member_list">Zoznam členov (%1$d)</string>
+    <string name="show_group_view_remove_confirm_message">Naozaj chcete odstrániť túto skupinu?</string>
+    <string name="show_group_view_remove_message">Táto skupina bude odstránená pre všetkých jej členov a jej konverzácie budú vymazané.</string>
+    <string name="show_group_view_title">Skupina</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_view_admin_title">Administrátorské rozhranie</string>
+    <string name="show_room_view_invite_participants">Pozvať účastníkov</string>
+    <string name="show_room_view_room_title">Miestnosť</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_view_background_image_title">Obrázok</string>
+    <string name="space_appearance_view_background_message">Prispôsobte pozadie konverzácií farbou alebo obrázkom.</string>
+    <string name="space_appearance_view_background_text_title">Text</string>
+    <string name="space_appearance_view_background_title">Pozadie</string>
+    <string name="space_appearance_view_container_background_message">Pozadie odoslanej správy</string>
+    <string name="space_appearance_view_container_background_peer_message">Pozadie prijatej správy</string>
+    <string name="space_appearance_view_container_border_message">Rám odoslanej správy</string>
+    <string name="space_appearance_view_container_border_peer_message">Rám prijatej správy</string>
+    <string name="space_appearance_view_container_text_message">Text odoslanej správy</string>
+    <string name="space_appearance_view_container_text_peer_message">Text prijatej správy</string>
+    <string name="space_appearance_view_container_title">Bubliny</string>
+    <string name="space_appearance_view_default_value">Predvolená hodnota</string>
+    <string name="space_appearance_view_general_title">Všeobecné</string>
+    <string name="space_appearance_view_menu_choose_color">Predvolené farby</string>
+    <string name="space_appearance_view_menu_enter_color">Kód farby</string>
+    <string name="space_appearance_view_opacity">Priehľadnosť</string>
+    <string name="space_appearance_view_preview_message">Zabudla som si baletné topánky… Prinesieš mi ich prosím?😘</string>
+    <string name="space_appearance_view_preview_peer_message">Ahoj zlatko!</string>
+    <string name="space_appearance_view_preview_title">Náhľad</string>
+    <string name="space_appearance_view_theme">Téma</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_view_message">Priestor je miesto, kde sa vaše rôzne identity stretávajú s vašimi sociálnymi okruhmi, vrátane tých najtajnejších.</string>
+    <string name="spaces_view_sample_business">Biznis</string>
+    <string name="spaces_view_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_view_sample_family">Rodina</string>
+    <string name="spaces_view_sample_family_name">Otec</string>
+    <string name="spaces_view_sample_friends">Priatelia</string>
+    <string name="spaces_view_sample_friends_name">Johny</string>
+    <string name="spaces_view_title">Priestory</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_view_error_message">Nastala chyba. Skúste to znova.</string>
+    <string name="streaming_audio_view_no_music_message">Preneste hudobné súbory do svojho zariadenia.</string>
+    <string name="streaming_audio_view_no_music_title">Hudba sa nenašla 🙁</string>
+    <string name="streaming_audio_view_title">Zdieľanie médií</string>
+    <string name="streaming_audio_view_unsupported_message">Tento zvukový formát nie je podporovaný zariadením používateľa %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_view_template_classified_ad">Inzerát</string>
+    <string name="template_click_to_call_view_template_classified_ad_description">Vložte odkaz do inzerátu, ktorý umožní potenciálnym kupujúcim zavolať vám bez inštalácie aplikácie.</string>
+    <string name="template_click_to_call_view_template_classified_ad_placeholder">Inzerát</string>
+    <string name="template_click_to_call_view_template_default_description">Prispôsobte odkaz na hovor podľa potreby.</string>
+    <string name="template_click_to_call_view_template_help">Zákaznícky servis</string>
+    <string name="template_click_to_call_view_template_help_description">Odkaz na volanie vášho zákazníckeho servisu z prehliadača.</string>
+    <string name="template_click_to_call_view_template_help_placeholder">Zákaznícky servis</string>
+    <string name="template_click_to_call_view_template_job">Pracovný pohovor</string>
+    <string name="template_click_to_call_view_template_job_description">Odkaz, ktorý umožní záujemcom zavolať vám kvôli pohovoru.</string>
+    <string name="template_click_to_call_view_template_job_placeholder">Pracovný pohovor</string>
+    <string name="template_click_to_call_view_template_meeting">Stretnutie</string>
+    <string name="template_click_to_call_view_template_meeting_description">Zdieľajte odkaz na pripojenie ku konferencii cez prehliadač.</string>
+    <string name="template_click_to_call_view_template_meeting_placeholder">Stretnutie</string>
+    <string name="template_click_to_call_view_template_profile_description">Odkaz na zavolanie bez inštalácie aplikácie.</string>
+    <string name="template_click_to_call_view_template_video_bell">Videozvonček</string>
+    <string name="template_click_to_call_view_template_video_bell_description">Umožnite kuriérovi zavolať vám pre inštrukcie.</string>
+    <string name="template_click_to_call_view_template_video_bell_placeholder">Zvonček</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_view_template_business_placeholder">Meno (Dr John Doe, Ms Smith,…)</string>
+    <string name="template_space_view_template_business_profile">Ms Samantha Smith</string>
+    <string name="template_space_view_template_family_placeholder">Meno (Otec, Mama,…)</string>
+    <string name="template_space_view_template_family_profile">Mama</string>
+    <string name="template_space_view_template_friends_placeholder">Meno (Johny, Sam,…)</string>
+    <string name="template_space_view_template_friends_profile">Sam</string>
+    <string name="template_space_view_template_other">Iné</string>
+    <string name="template_space_view_template_other_placeholder">Meno (Otec, Mama, Johny, Dr John Doe,…)</string>
+    <string name="template_space_view_template_title">Šablóny</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_view_delete_confirm_message">Naozaj chcete odstrániť tento kód „Prenos hovoru“?</string>
+    <string name="transfert_call_view_delete_message">Tento odkaz na prenos hovoru bude odstránený. Potvrdiť?</string>
+    <string name="transfert_call_view_gallery_message">Naskenujte tento QR‑kód pre prenos mobilných hovorov.</string>
+    <string name="transfert_call_view_message">Prepošlite tento kód a pridajte jeho URL do záložiek prehliadača, do ktorého chcete prenášať svoje mobilné hovory.</string>
+    <string name="transfert_call_view_reset_message">Táto akcia zneplatní aktuálny kód na prenos hovoru a vytvorí nový. Potvrdiť?</string>
+    <string name="transfert_call_view_saved_message">Kód na prenos hovoru uložený do galérie.</string>
+    <string name="transfert_call_view_share">Preniesť</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_view_message">Požiadajte priateľa v blízkosti, aby naskenoval váš QR‑kód pozvánky pomocou twinme, alebo ťuknite na pozývací kód na jeho kopírovanie.</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_view_update_available">Dostupná aktualizácia</string>
+    <string name="update_app_view_update_message">Najnovšia aktualizácia aplikácie obsahuje nasledujúce:</string>
+    <string name="update_app_view_update_title">Aktualizovať teraz</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_view_calling">Volanie videa…</string>
+    <string name="video_call_view_cannot_call">Nedá sa uskutočniť videohovor</string>
+    <string name="video_call_view_connecting">Pripájam sa…</string>
+    <string name="video_call_view_hangup_confirmation">Chcete ukončiť hovor?</string>
+    <string name="video_call_view_terminate">Hovor bol ukončený</string>
+    <string name="video_call_view_terminate_busy">Hovor ukončený: <b>%1$s</b> je zaneprázdnený</string>
+    <string name="video_call_view_terminate_cancel">Hovor zrušil <b>%1$s</b></string>
+    <string name="video_call_view_terminate_connectivity_error">Hovor bol prerušený kvôli problému s pripojením. Skontrolujte svoje internetové pripojenie.</string>
+    <string name="video_call_view_terminate_decline">Hovor odmietol <b>%1$s</b></string>
+    <string name="video_call_view_terminate_disconnected">Hovor bol odpojený kvôli chybe siete. Skúste to znova.</string>
+    <string name="video_call_view_terminate_gone">Hovor ukončený: <b>%1$s</b> je offline</string>
+    <string name="video_call_view_terminate_revoked">Hovor ukončený: <b>%1$s</b> odstránil tento vzťah.</string>
+    <string name="video_call_view_terminate_success">Hovor ukončil <b>%1$s</b></string>
+    <string name="video_call_view_terminate_timeout">Hovor ukončený: <b>%1$s</b> neodpovedá</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_view_accept">Stlačením %1$s potvrdzujem, že som si prečítal a prijímam:</string>
+    <string name="welcome_view_next">Ďalej</string>
+    <string name="welcome_view_pass">Preskočiť</string>
+    <string name="welcome_view_privacy_policy">Zásady ochrany súkromia</string>
+    <string name="welcome_view_start">Spustiť</string>
+    <string name="welcome_view_step1_message">Správy a vysokokvalitné hlasové/videohovory chrániace súkromie už od návrhu.</string>
+    <string name="welcome_view_step2_message">Bezpečná „peer‑to‑peer“ komunikácia: žiadne stopy v cloude.</string>
+    <string name="welcome_view_step3_message">Žiadne telefónne číslo, žiadny adresár, žiadne ID používateľa: sami si vyberáte, ako chcete byť identifikovaní podľa toho, s kým komunikujete.</string>
+    <string name="welcome_view_terms_of_use">Podmienky používania</string>
+</resources>

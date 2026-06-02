@@ -85,11 +85,11 @@ public class OnboardingSpaceFirstPartViewHolder extends RecyclerView.ViewHolder 
         friendsSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(context.getString(R.string.spaces_activity_sample_friends));
+        spannableStringBuilder.append(context.getString(R.string.spaces_view_sample_friends));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n");
         int startName = spannableStringBuilder.length();
-        spannableStringBuilder.append(context.getString(R.string.spaces_activity_sample_friends_name));
+        spannableStringBuilder.append(context.getString(R.string.spaces_view_sample_friends_name));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         friendsSpaceTextView.setText(spannableStringBuilder);
@@ -110,11 +110,11 @@ public class OnboardingSpaceFirstPartViewHolder extends RecyclerView.ViewHolder 
         familySpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(context.getString(R.string.spaces_activity_sample_family));
+        spannableStringBuilder.append(context.getString(R.string.spaces_view_sample_family));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n");
         startName = spannableStringBuilder.length();
-        spannableStringBuilder.append(context.getString(R.string.spaces_activity_sample_family_name));
+        spannableStringBuilder.append(context.getString(R.string.spaces_view_sample_family_name));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         familySpaceTextView.setText(spannableStringBuilder);
@@ -135,11 +135,11 @@ public class OnboardingSpaceFirstPartViewHolder extends RecyclerView.ViewHolder 
         businessSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(context.getString(R.string.spaces_activity_sample_business));
+        spannableStringBuilder.append(context.getString(R.string.spaces_view_sample_business));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n");
         startName = spannableStringBuilder.length();
-        spannableStringBuilder.append(context.getString(R.string.spaces_activity_sample_business_name));
+        spannableStringBuilder.append(context.getString(R.string.spaces_view_sample_business_name));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         businessSpaceTextView.setText(spannableStringBuilder);
@@ -157,7 +157,7 @@ public class OnboardingSpaceFirstPartViewHolder extends RecyclerView.ViewHolder 
 
     public void onBind(Context context) {
 
-        String message = context.getString(R.string.spaces_activity_message);
+        String message = context.getString(R.string.spaces_view_message);
         mMessageTextView.setText(message);
     }
 

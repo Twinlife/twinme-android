@@ -101,7 +101,7 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnConversationSettingsClickListener.onColorsAndBackgroundClick());
-            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_activity_background_colors), false);
+            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_view_background_colors), false);
         } else if (viewType == PERSONNALIZATION) {
             EmojiSizeViewHolder emojiSizeViewHolder = (EmojiSizeViewHolder) viewHolder;
 
@@ -111,16 +111,16 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
             int emojiFontSize = mListActivity.getTwinmeApplication().emojiFontSize();
             EmojiSize emojiSize = EmojiSize.STANDARD;
             if (position == POSITION_SMALL_EMOJI) {
-                title = mListActivity.getString(R.string.personalization_activity_font_small);
+                title = mListActivity.getString(R.string.personalization_view_font_small);
                 emojiSizeViewHolder.itemView.setOnClickListener(view -> mOnConversationSettingsClickListener.onUpdateEmojiSize(EmojiSize.SMALL));
                 isSelected = emojiFontSize == EmojiSize.SMALL.ordinal();
                 emojiSize = EmojiSize.SMALL;
             } else if (position == POSITION_STANDARD_EMOJI) {
-                title = mListActivity.getString(R.string.conversation_activity_reduce_menu_lower);
+                title = mListActivity.getString(R.string.conversation_view_reduce_menu_lower);
                 emojiSizeViewHolder.itemView.setOnClickListener(view -> mOnConversationSettingsClickListener.onUpdateEmojiSize(EmojiSize.STANDARD));
                 isSelected = emojiFontSize == EmojiSize.STANDARD.ordinal();
             } else if (position == POSITION_LARGE_EMOJI) {
-                title = mListActivity.getString(R.string.personalization_activity_font_large);
+                title = mListActivity.getString(R.string.personalization_view_font_large);
                 emojiSizeViewHolder.itemView.setOnClickListener(view -> mOnConversationSettingsClickListener.onUpdateEmojiSize(EmojiSize.LARGE));
                 isSelected = emojiFontSize == EmojiSize.LARGE.ordinal();
                 emojiSize = EmojiSize.LARGE;
@@ -199,7 +199,7 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
         String title = "";
 
         if (position == SECTION_EMOJI) {
-            title = mListActivity.getString(R.string.conversation_settings_activity_emoji_size);
+            title = mListActivity.getString(R.string.conversation_settings_view_emoji_size);
         }
 
         return title;
