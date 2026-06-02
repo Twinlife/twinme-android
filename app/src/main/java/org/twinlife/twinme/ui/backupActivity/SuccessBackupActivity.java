@@ -11,7 +11,6 @@ package org.twinlife.twinme.ui.backupActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
@@ -37,7 +36,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
-import org.twinlife.twinme.utils.SaveAsyncTask;
+import org.twinlife.twinme.utils.SaveBackgroundAction;
 import org.twinlife.twinme.utils.Utils;
 
 import java.io.File;
@@ -197,7 +196,7 @@ public class SuccessBackupActivity extends AbstractTwinmeActivity {
         }
 
         Utils.setClipboard(this, getWordsList());
-        Toast.makeText(this, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
     }
 
     public void onSaveFileClick() {
@@ -245,7 +244,7 @@ public class SuccessBackupActivity extends AbstractTwinmeActivity {
         showBackButton(true);
         setBackgroundColor(Design.WHITE_COLOR);
 
-        setTitle(getString(R.string.backup_activity_title));
+        setTitle(getString(R.string.backup_view_title));
 
         applyInsets(R.id.success_backup_activity_layout, R.id.success_backup_activity_tool_bar, R.id.success_backup_activity_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -297,9 +296,9 @@ public class SuccessBackupActivity extends AbstractTwinmeActivity {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         onboardingConfirmView.setLayoutParams(layoutParams);
 
-        String title = getString(R.string.backup_activity_success);
-        String message = getString(R.string.backup_activity_save_file_message)
-                + "\n\n" + getString(R.string.backup_activity_verify_message);
+        String title = getString(R.string.backup_view_success);
+        String message = getString(R.string.backup_view_save_file_message)
+                + "\n\n" + getString(R.string.backup_view_verify_message);
 
         onboardingConfirmView.setTitle(title);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_backup, null));
@@ -346,7 +345,7 @@ public class SuccessBackupActivity extends AbstractTwinmeActivity {
         }
 
         File path = new File(mBackupFilePath);
-        SaveAsyncTask save = new SaveAsyncTask(this, path, uri);
-        save.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        SaveBackgroundAction save = new SaveBackgroundAction(this, path, uri, R.string.conversation_view_menu_item_view_save_message);
+        save.start();
     }
 }

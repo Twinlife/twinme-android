@@ -746,7 +746,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         }
 
         if (mContact != null) {
-            mMessageView.setText(String.format(getString(R.string.accept_group_invitation_activity_message), mContact.getName()));
+            mMessageView.setText(String.format(getString(R.string.accept_group_invitation_view_message), mContact.getName()));
         }
 
         if (mContactAvatar != null) {
@@ -833,7 +833,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mContactImageView.setVisibility(View.GONE);
                     mIconView.setVisibility(View.VISIBLE);
                     mInvitationStatusImageView.setVisibility(View.VISIBLE);
-                    mMessageView.setText(getString(R.string.conversation_activity_invitation_accepted));
+                    mMessageView.setText(getString(R.string.conversation_view_invitation_accepted));
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_accepted);
                     mSpaceTitleView.setVisibility(View.INVISIBLE);
                     mSpaceView.setVisibility(View.GONE);
@@ -849,7 +849,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mIconView.setVisibility(View.VISIBLE);
-                    mMessageView.setText(getString(R.string.conversation_activity_invitation_joined));
+                    mMessageView.setText(getString(R.string.conversation_view_invitation_joined));
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_joined);
                     mSpaceTitleView.setVisibility(View.GONE);
                     mSpaceView.setVisibility(View.GONE);
@@ -865,7 +865,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mIconView.setVisibility(View.VISIBLE);
-                    mMessageView.setText(getString(R.string.accept_group_invitation_activity_deleted));
+                    mMessageView.setText(getString(R.string.accept_group_invitation_view_deleted));
                     mInvitationStatusImageView.setImageResource(R.drawable.action_delete);
                     mSpaceTitleView.setVisibility(View.GONE);
                     mSpaceView.setVisibility(View.GONE);
@@ -881,7 +881,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mIconView.setVisibility(View.VISIBLE);
-                    mMessageView.setText(getString(R.string.conversation_activity_invitation_refused));
+                    mMessageView.setText(getString(R.string.conversation_view_invitation_refused));
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_refused);
                     mSpaceTitleView.setVisibility(View.GONE);
                     mSpaceView.setVisibility(View.GONE);
@@ -902,7 +902,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
 
-            String message = getString(R.string.accept_invitation_activity_being_transferred) + "\n" + getString(R.string.accept_invitation_activity_check_connection);
+            String message = getString(R.string.accept_invitation_view_being_transferred) + "\n" + getString(R.string.accept_invitation_view_check_connection);
             mMessageView.setText(message);
         }
 

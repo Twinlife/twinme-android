@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/conversation_activity_menu_item_view_copy_title"
+                android:text="@string/conversation_view_menu_item_view_copy_title"
                 app:layout_marginTopPercent="7.81%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -200,7 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/invitation_room_activity_social_icon_view"
-            android:text="@string/share_activity_title" />
+            android:text="@string/share_view_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <TextView
@@ -210,7 +210,7 @@
         android:layout_below="@+id/invitation_room_activity_social_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/add_contact_activity_social_subtitle"
+        android:text="@string/add_contact_view_social_subtitle"
         app:layout_widthPercent="89.06%" />
 
     <TextView
@@ -220,7 +220,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/invitation_room_activity_message"
+        android:text="@string/invitation_room_view_message"
         app:layout_widthPercent="89.06%" />
 
     <androidx.percentlayout.widget.PercentRelativeLayout

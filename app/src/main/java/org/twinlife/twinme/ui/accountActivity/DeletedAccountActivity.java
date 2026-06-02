@@ -65,6 +65,6 @@ public class DeletedAccountActivity extends Activity {
         TextView messageView = findViewById(R.id.deleted_account_activity_message_view);
         Design.updateTextFont(messageView, Design.FONT_REGULAR36);
         messageView.setTextColor(Color.WHITE);
-        messageView.setText(Html.fromHtml(getString(R.string.deleted_account_activity_message)));
+        messageView.setText(Html.fromHtml(getString(R.string.deleted_account_view_message)));
     }
 }

@@ -114,7 +114,7 @@ public class ReplyView extends PercentRelativeLayout {
     @SuppressLint({"StringFormatInvalid", "StringFormatMatches"})
     public void showReply(Item item, String contactName) {
 
-        mTitleView.setText(String.format(mConversationActivity.getString(R.string.conversation_activity_reply_to), contactName));
+        mTitleView.setText(String.format(mConversationActivity.getString(R.string.conversation_view_reply_to), contactName));
 
         String path;
         Bitmap thumbnail;
@@ -220,7 +220,7 @@ public class ReplyView extends PercentRelativeLayout {
 
             case AUDIO:
             case PEER_AUDIO: {
-                mMessageView.setText(mConversationActivity.getResources().getString(R.string.conversation_activity_audio_message));
+                mMessageView.setText(mConversationActivity.getResources().getString(R.string.conversation_view_audio_message));
                 mMessageView.setVisibility(VISIBLE);
                 mImageView.setVisibility(GONE);
                 break;

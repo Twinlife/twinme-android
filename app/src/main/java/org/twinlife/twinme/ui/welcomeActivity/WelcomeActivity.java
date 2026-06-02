@@ -37,6 +37,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.WebViewActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
@@ -241,7 +242,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         mMessageView = findViewById(R.id.welcome_activity_message_view);
         Design.updateTextFont(mMessageView, Design.FONT_REGULAR28);
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
-        String messageText = String.format(getString(R.string.welcome_activity_accept), getString(R.string.welcome_activity_pass)) + " " + getResources().getString(R.string.welcome_activity_terms_of_use) + " - " + getResources().getString(R.string.welcome_activity_privacy_policy);
+        String messageText = String.format(getString(R.string.welcome_view_accept), getString(R.string.welcome_view_pass)) + " " + getResources().getString(R.string.welcome_view_terms_of_use) + " - " + getResources().getString(R.string.welcome_view_privacy_policy);
         mMessageView.setText(messageText);
         addLinks();
 
@@ -310,8 +311,8 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "addLinks");
         }
 
-        addLinks(mMessageView, getString(R.string.welcome_activity_terms_of_use), "file:///android_res/raw/terms_of_service.html");
-        addLinks(mMessageView, getString(R.string.welcome_activity_privacy_policy), "file:///android_res/raw/privacy_policy.html");
+        addLinks(mMessageView, getString(R.string.welcome_view_terms_of_use), "file:///android_res/raw/terms_of_service.html");
+        addLinks(mMessageView, getString(R.string.welcome_view_privacy_policy), "file:///android_res/raw/privacy_policy.html");
         mMessageView.setMovementMethod(new TextViewLinkHandler() {
         });
     }
@@ -341,10 +342,10 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             darkMode = true;
         }
 
-        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_activity_step1_message), darkMode ? R.drawable.onboarding_step1_dark : R.drawable.onboarding_step1));
-        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_activity_step2_message), darkMode ? R.drawable.onboarding_step2_dark : R.drawable.onboarding_step2));
-        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_activity_step3_message), darkMode ? R.drawable.onboarding_step3_dark : R.drawable.onboarding_step3));
-        mUIWelcome.add(new UIWelcome(getString(R.string.quality_of_service_activity_step2_message), darkMode ? R.drawable.quality_service_step2_dark : R.drawable.quality_service_step2));
+        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_view_step1_message), darkMode ? R.drawable.onboarding_step1_dark : R.drawable.onboarding_step1));
+        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_view_step2_message), darkMode ? R.drawable.onboarding_step2_dark : R.drawable.onboarding_step2));
+        mUIWelcome.add(new UIWelcome(getString(R.string.welcome_view_step3_message), darkMode ? R.drawable.onboarding_step3_dark : R.drawable.onboarding_step3));
+        mUIWelcome.add(new UIWelcome(getString(R.string.quality_of_service_view_step2_message), darkMode ? R.drawable.quality_service_step2_dark : R.drawable.quality_service_step2));
     }
 
     private void setupAction() {
@@ -368,15 +369,15 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             } else {
                 mNextTextView.setVisibility(View.VISIBLE);
                 mNextClickableView.setVisibility(View.VISIBLE);
-                mNextTextView.setText(getString(R.string.welcome_activity_start));
+                mNextTextView.setText(getString(R.string.welcome_view_start));
                 mMessageView.setVisibility(View.VISIBLE);
-                String messageText = String.format(getString(R.string.welcome_activity_accept), getString(R.string.welcome_activity_start)) + " " + getResources().getString(R.string.welcome_activity_terms_of_use) + " - " + getResources().getString(R.string.welcome_activity_privacy_policy);
+                String messageText = String.format(getString(R.string.welcome_view_accept), getString(R.string.welcome_view_start)) + " " + getResources().getString(R.string.welcome_view_terms_of_use) + " - " + getResources().getString(R.string.welcome_view_privacy_policy);
                 mMessageView.setText(messageText);
             }
         } else {
-            mNextTextView.setText(getString(R.string.welcome_activity_enter));
+            mNextTextView.setText(getString(R.string.welcome_view_enter));
             mMessageView.setVisibility(View.GONE);
-            String messageText = String.format(getString(R.string.welcome_activity_accept), getString(R.string.welcome_activity_pass)) + " " + getResources().getString(R.string.welcome_activity_terms_of_use) + " - " + getResources().getString(R.string.welcome_activity_privacy_policy);
+            String messageText = String.format(getString(R.string.welcome_view_accept), getString(R.string.welcome_view_pass)) + " " + getResources().getString(R.string.welcome_view_terms_of_use) + " - " + getResources().getString(R.string.welcome_view_privacy_policy);
             mMessageView.setText(messageText);
             mNextTextView.setVisibility(View.VISIBLE);
             mNextClickableView.setVisibility(View.VISIBLE);

@@ -94,23 +94,23 @@ public class TypeCleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_LOCAL_CLEANUP_INFORMATION) {
-                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_info), true);
+                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_info), true);
             } else if (position == POSITION_BOTH_CLEANUP_INFORMATION) {
-                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_info_both), true);
+                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_info_both), true);
             } else if (position == POSITION_RESET_CONVERSATION_INFORMATION) {
-                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_reset_conversation_message), true);
+                informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_reset_conversation_message), true);
             }
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (position == POSITION_LOCAL_CLEANUP) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onLocalCleanUpClick());
-                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_local_cleanup));
+                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_local_cleanup));
             } else if (position == POSITION_BOTH_CLEANUP) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onBothCleanUpClick());
-                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_activity_both_clean));
+                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_both_clean));
             } else if (position == POSITION_RESET_CONVERSATION) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onResetConversationClick());
-                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.main_activity_reset_conversation_title), Design.DELETE_COLOR_RED, true);
+                settingSectionViewHolder.onBind(mCleanupActivity.getString(R.string.main_view_reset_conversation_title), Design.DELETE_COLOR_RED, true);
             }
         }
     }

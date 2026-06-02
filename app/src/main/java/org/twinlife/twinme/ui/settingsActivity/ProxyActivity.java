@@ -46,9 +46,10 @@ import org.twinlife.twinme.services.ProxyService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.utils.ProxyView;
 import org.twinlife.twinme.utils.RoundedView;
-import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
+import org.twinlife.twinme.utils.SaveTwincodeBackgroundAction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -273,7 +274,7 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
 
         applyInsets(R.id.proxy_activity_layout, R.id.proxy_activity_tool_bar, R.id.proxy_activity_background, Design.TOOLBAR_COLOR, false);
 
-        setTitle(getString(R.string.proxy_activity_title));
+        setTitle(getString(R.string.proxy_view_title));
 
         View backgroundView = findViewById(R.id.proxy_activity_background);
         backgroundView.setBackgroundColor(Design.GREY_BACKGROUND_COLOR);
@@ -479,9 +480,9 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.proxy_activity_title));
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.proxy_view_title));
         String shareUrl = TwincodeURI.PROXY_ACTION + "/" + mProxyDescriptor.getDescriptor();
-        intent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.proxy_activity_share), shareUrl));
+        intent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.proxy_view_share), shareUrl));
         startActivity(Intent.createChooser(intent, null));
     }
 
@@ -562,7 +563,7 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
         if (mProxyDescriptor != null) {
             String shareUrl = TwincodeURI.PROXY_ACTION + "/" + mProxyDescriptor.getDescriptor();
             org.twinlife.twinme.utils.Utils.setClipboard(this, shareUrl);
-            Toast.makeText(this, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -596,11 +597,11 @@ public class ProxyActivity extends AbstractTwinmeActivity implements ProxyServic
             Log.d(LOG_TAG, "saveProxyInGallery");
         }
 
-        mSaveProxyView.setInformation(mQRCodeBitmap, mProxyDescriptor.getDescriptor(), getString(R.string.proxy_activity_share_message));
+        mSaveProxyView.setInformation(mQRCodeBitmap, mProxyDescriptor.getDescriptor(), getString(R.string.proxy_view_share_message));
 
         Bitmap bitmapToSave = getBitmapFromProxyView();
         if (bitmapToSave != null) {
-            new SaveTwincodeAsyncTask(this, bitmapToSave).execute();
+            new SaveTwincodeBackgroundAction(this, bitmapToSave, R.string.capture_view_qrcode_saved).start();
         } else {
             toast(getString(R.string.application_operation_failure));
         }

@@ -374,7 +374,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         showToolBar(false);
         showBackButton(true);
 
-        setTitle(getString(R.string.show_contact_activity_space));
+        setTitle(getString(R.string.show_contact_view_space));
 
         applyInsets(R.id.show_space_activity_layout, -1, -1, Design.WHITE_COLOR, true);
 
@@ -544,7 +544,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         layoutParams.height = (int) (DESIGN_SECTION_HEIGHT * Design.HEIGHT_RATIO);
 
         mSecretView.setOnLongClickListener(v -> {
-            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.settings_space_activity_secret_title), getString(R.string.settings_space_activity_secret_message), true, null);
+            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.settings_space_view_secret_title), getString(R.string.settings_space_view_secret_message), true, null);
             return true;
         });
 
@@ -675,7 +675,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
                     mIdentityAvatarView.setVisibility(View.VISIBLE);
                     mNameView.setVisibility(View.VISIBLE);
                     mTwincodeIconView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.qrcode, null));
-                    mTwincodeTextView.setText(getString(R.string.profile_fragment_twincode_title));
+                    mTwincodeTextView.setText(getString(R.string.profile_view_twincode_title));
 
                     ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mHeaderView.getLayoutParams();
                     marginLayoutParams.topMargin = (int) (DESIGN_IDENTITY_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -693,7 +693,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
                     mIdentityAvatarView.setVisibility(View.GONE);
                     mNameView.setVisibility(View.GONE);
                     mTwincodeIconView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.action_bar_add_contact, null));
-                    mTwincodeTextView.setText(getString(R.string.profile_fragment_add_profile));
+                    mTwincodeTextView.setText(getString(R.string.profile_view_add_profile));
 
                     ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mHeaderView.getLayoutParams();
                     marginLayoutParams.topMargin = (int) (DESIGN_HEADER_VIEW_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -773,7 +773,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         }
 
         if (mSpace != null && mSpace.getProfile() != null && mSpaceService.numberSpaces(true) <= 1) {
-            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.show_space_fragment_move_message), true, null);
+            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.show_space_view_move_message), true, null);
         } else if (mSpace != null && mSpace.getProfile() == null) {
             ViewGroup viewGroup = findViewById(R.id.show_space_activity_layout);
 
@@ -781,8 +781,8 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
             spaceActionConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
             spaceActionConfirmView.setAvatar(mSpaceAvatar, false);
             spaceActionConfirmView.setIcon(R.drawable.action_bar_add_contact);
-            spaceActionConfirmView.setTitle(getString(R.string.create_profile_activity_title));
-            spaceActionConfirmView.setMessage(getString(R.string.create_space_activity_contacts_no_profile));
+            spaceActionConfirmView.setTitle(getString(R.string.create_profile_view_title));
+            spaceActionConfirmView.setMessage(getString(R.string.create_space_view_contacts_no_profile));
             spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
             spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
 
@@ -949,7 +949,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         }
 
         if (mSpaceService.numberSpaces(false) == 1) {
-            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.settings_space_activity_secret_title), getString(R.string.show_space_fragment_secret_disabled_message), true, null);
+            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.settings_space_view_secret_title), getString(R.string.show_space_view_secret_disabled_message), true, null);
             return;
         }
 
@@ -959,10 +959,10 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         spaceActionConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
         spaceActionConfirmView.setAvatar(mSpaceAvatar, false);
 
-        String message = getString(R.string.show_space_fragment_secret_message) + "\n\n"  + getString(R.string.show_space_fragment_secret_message_confirm);
+        String message = getString(R.string.show_space_view_secret_message) + "\n\n"  + getString(R.string.show_space_view_secret_message_confirm);
         spaceActionConfirmView.setTitle(getString(R.string.application_are_you_sure));
         spaceActionConfirmView.setMessage(message);
-        spaceActionConfirmView.setConfirmTitle(getString(R.string.show_space_fragment_secret_confirm));
+        spaceActionConfirmView.setConfirmTitle(getString(R.string.show_space_view_secret_confirm));
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {

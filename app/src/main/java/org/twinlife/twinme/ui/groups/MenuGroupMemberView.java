@@ -121,7 +121,7 @@ public class MenuGroupMemberView extends PercentRelativeLayout {
             mRemoveView.setAlpha(0.5f);
         }
 
-        mInviteTextView.setText(mGroupMemberActivity.getString(R.string.group_member_activity_invite_personnal_relation));
+        mInviteTextView.setText(mGroupMemberActivity.getString(R.string.group_member_view_invite_personnal_relation));
 
         mAvatarView.setImage(mGroupMemberActivity, null,
                 new CircularImageDescriptor(uiContact.getAvatar(), 0.5f, 0.5f, 0.5f));

@@ -32,6 +32,18 @@
                 app:layout_heightPercent="100%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
+        <ImageView
+            android:id="@+id/base_item_activity_invitation_contact_item_error_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toStartOf="@+id/base_item_activity_invitation_contact_item_view"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:src="@drawable/info_item"
+            app:layout_aspectRatio="100%" />
+
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_invitation_contact_item_view"
             android:layout_height="0dp"

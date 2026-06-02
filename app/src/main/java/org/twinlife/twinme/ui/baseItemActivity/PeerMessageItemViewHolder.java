@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016-2025 twinlife SA.
+ *  Copyright (c) 2016-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -82,6 +82,16 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
 
         mTextView = view.findViewById(R.id.base_item_activity_peer_message_item_text);
         mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mTextView.setLayoutParams(marginLayoutParams);
+        mTextView.setMaxWidth(BaseItemViewHolder.MESSAGE_MAX_WIDTH);
+
         mGradientDrawable = new GradientDrawable();
         mGradientDrawable.mutate();
         mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
@@ -195,7 +205,7 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
         layoutParams = mEphemeralView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -334,7 +344,7 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_peer_message_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case NAMED_FILE_DESCRIPTOR:
@@ -381,6 +391,17 @@ class PeerMessageItemViewHolder extends PeerItemViewHolder {
             if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
                 mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
             }
+        }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mTextView.setLayoutParams(marginLayoutParams);
         }
     }
 

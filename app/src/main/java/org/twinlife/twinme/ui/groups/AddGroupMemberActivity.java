@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2025 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -34,7 +34,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
 import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.util.Utils;
@@ -85,8 +84,6 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
     private final List<UIContact> mUISelected = new ArrayList<>();
     private String mSelected;
     private GroupService mGroupService;
-    @Nullable
-    private Group mGroup;
     @NonNull
     private Set<UUID> mInvitedContacts = new HashSet<>();
 
@@ -197,7 +194,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
         MenuItem menuItem = menu.findItem(R.id.add_action);
 
         TextView titleView = (TextView) menuItem.getActionView();
-        String title = menuItem.getTitle().toString();
+        String title = String.valueOf(menuItem.getTitle());
 
         if (titleView != null) {
             Design.updateTextFont(titleView, Design.FONT_BOLD36);
@@ -391,7 +388,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
         setToolBar(R.id.add_group_member_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.add_group_member_activity_title));
+        setTitle(getString(R.string.add_group_member_view_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.add_group_member_activity_layout, R.id.add_group_member_activity_tool_bar, R.id.add_group_member_activity_list_view, Design.TOOLBAR_COLOR, false);
@@ -559,7 +556,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
                     memberCount++;
                 }
 
-                setSubTitle(memberCount + " / " + ConversationService.MAX_GROUP_MEMBERS);
+                setSubTitle(memberCount + " / " + getMaxMemberCount());
             }
         }
     }
@@ -599,16 +596,17 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
 
             } else {
                 boolean isMaxGroupMembers = false;
+                final long maxMemberCount = getMaxMemberCount();
                 if (mGroup != null) {
-                    if (mUISelected.size() >= ConversationService.MAX_GROUP_MEMBERS) {
+                    if (mUISelected.size() >= maxMemberCount) {
                         isMaxGroupMembers = true;
                     }
-                } else if (mUISelected.size() + 1 >= ConversationService.MAX_GROUP_MEMBERS) {
+                } else if (mUISelected.size() + 1 >= maxMemberCount) {
                     isMaxGroupMembers = true;
                 }
 
                 if (isMaxGroupMembers) {
-                    showAlertMessageView(R.id.add_group_member_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.application_group_limit_reached), ConversationService.MAX_GROUP_MEMBERS), false, null);
+                    showAlertMessageView(R.id.add_group_member_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.application_group_limit_reached), maxMemberCount), false, null);
                     return false;
                 }
 
@@ -634,7 +632,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
         return false;
     }
 
-    private boolean containsContact(List<UIContact> uiContacts, Contact contact) {
+    private boolean containsContact(@NonNull List<UIContact> uiContacts, @NonNull Contact contact) {
 
         boolean contains = false;
         for (UIContact uiContact : uiContacts) {

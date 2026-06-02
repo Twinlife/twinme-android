@@ -645,7 +645,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         }
 
         if (groupMembers.size() + 1 > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
-            mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.call_activity_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), false, null);
+            mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), false, null);
         } else {
             callAgain();
         }
@@ -961,7 +961,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
                 DeleteConfirmView deleteConfirmView = new DeleteConfirmView(mTwinmeActivity, null);
                 deleteConfirmView.setAvatar(avatar, false);
 
-                String message = getString(R.string.edit_external_call_activity_delete_message) + "\n\n"  + getString(R.string.edit_external_call_activity_delete_confirm_message);
+                String message = getString(R.string.edit_external_call_view_delete_message) + "\n\n"  + getString(R.string.edit_external_call_view_delete_confirm_message);
                 deleteConfirmView.setMessage(message);
 
                 AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -1087,9 +1087,9 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             DeleteConfirmView deleteConfirmView = new DeleteConfirmView(mTwinmeActivity, null);
             deleteConfirmView.setAvatar(avatar, false);
 
-            String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.calls_fragment_reset);
+            String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.calls_view_reset);
             deleteConfirmView.setMessage(message);
-            deleteConfirmView.setConfirmTitle(getString(R.string.calls_fragment_reset_title));
+            deleteConfirmView.setConfirmTitle(getString(R.string.calls_view_reset_title));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -1208,10 +1208,10 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
             callAgainConfirmView.setAvatar(avatar, avatar == null || avatar.equals(mTwinmeActivity.getTwinmeApplication().getDefaultGroupAvatar()));
 
             if (mUICall.getLastCallDescriptor().isVideo()) {
-                callAgainConfirmView.setMessage(getString(R.string.conversation_activity_video_call));
+                callAgainConfirmView.setMessage(getString(R.string.conversation_view_video_call));
                 callAgainConfirmView.setIcon(R.drawable.video_call);
             } else {
-                callAgainConfirmView.setMessage(getString(R.string.conversation_activity_audio_call));
+                callAgainConfirmView.setMessage(getString(R.string.conversation_view_audio_call));
                 callAgainConfirmView.setIcon(R.drawable.audio_call);
             }
 
@@ -1325,7 +1325,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
                     mResetCallsImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.action_bar_delete, null));
                     mResetCallsImageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
                     mResetCallsImageView.setOnClickListener(view -> onResetClick());
-                    mResetCallsImageView.setContentDescription(getString(R.string.calls_fragment_reset_title));
+                    mResetCallsImageView.setContentDescription(getString(R.string.calls_view_reset_title));
                 }
 
                 // Update to take into account the menu.
@@ -1368,11 +1368,11 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
                     Time scheduleStartTime = weeklyTimeRange.start;
                     Time scheduleEndTime = weeklyTimeRange.end;
                     StringBuilder messageStringBuilder = new StringBuilder();
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_start));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(scheduleStartTime);
                     messageStringBuilder.append("\n");
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_end));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(scheduleEndTime);
                     messageStringBuilder.append("\n\n");
@@ -1419,17 +1419,17 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
                     DateTime end = dateTimeRange.end;
 
                     if (start.date.equals(end.date)) {
-                        message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(getContext()), end.formatTime(getContext()));
+                        message = String.format(getString(R.string.show_call_view_schedule_from_to), start.formatDate(), start.formatTime(getContext()), end.formatTime(getContext()));
                     } else {
                         message = String.format("%1$s %2$s", start.formatDateTime(getContext()), end.formatDateTime(getContext()));
                     }
                 }
             } else {
-                message = getString(R.string.show_call_activity_schedule_message);
+                message = getString(R.string.show_call_view_schedule_message);
             }
 
             if (mTwinmeActivity != null) {
-                mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(R.string.show_call_activity_schedule_call), message, true, null);
+                mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(R.string.show_call_view_schedule_call), message, true, null);
             }
         }
     }

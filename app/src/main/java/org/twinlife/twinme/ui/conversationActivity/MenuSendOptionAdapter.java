@@ -126,12 +126,12 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             boolean hideSeparator = true;
             int tag = MenuSendOptionView.ALLOW_COPY_TAG;
             int icon = mAllowCopy ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon;
-            String title = mActivity.getString(R.string.conversation_activity_send_menu_allow_copy);
+            String title = mActivity.getString(R.string.conversation_view_send_menu_allow_copy);
             if (position == POSITION_ALLOW_EPHEMERAL) {
                 isOn = mAllowEphemeral;
                 tag = MenuSendOptionView.ALLOW_EPHEMERAL_TAG;
                 icon = R.drawable.send_option_ephemeral_icon;
-                title = mActivity.getString(R.string.settings_activity_ephemeral_title);
+                title = mActivity.getString(R.string.settings_view_ephemeral_title);
                 hideSeparator = false;
             }
 

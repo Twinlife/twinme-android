@@ -39,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/invitation_code_share_view_code_view"
             android:gravity="center"
-            android:text="@string/invitation_code_activity_success_message"
+            android:text="@string/invitation_code_view_success_message"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout

@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/invite_action"
-        android:title="@string/add_contact_activity_invite"
+        android:title="@string/add_contact_view_invite"
         app:actionLayout="@layout/toolbar_textview_item"
         app:showAsAction="always" />
 </menu>

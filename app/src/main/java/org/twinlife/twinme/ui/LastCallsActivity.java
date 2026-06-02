@@ -598,9 +598,9 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setAvatar(mUIContact.getAvatar(), mUIContact.getAvatar() == null || mUIContact.getAvatar().equals(getTwinmeApplication().getDefaultGroupAvatar()));
 
-        String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.calls_fragment_reset);
+        String message = getString(R.string.application_operation_irreversible) + "\n\n"  + getString(R.string.calls_view_reset);
         deleteConfirmView.setMessage(message);
-        deleteConfirmView.setConfirmTitle(getString(R.string.calls_fragment_reset_title));
+        deleteConfirmView.setConfirmTitle(getString(R.string.calls_view_reset_title));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -730,10 +730,10 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
         callAgainConfirmView.setAvatar(uiContact.getAvatar(), uiContact.getAvatar() == null || uiContact.getAvatar().equals(getTwinmeApplication().getDefaultGroupAvatar()));
 
         if (isVideoCall) {
-            callAgainConfirmView.setMessage(getString(R.string.conversation_activity_video_call));
+            callAgainConfirmView.setMessage(getString(R.string.conversation_view_video_call));
             callAgainConfirmView.setIcon(R.drawable.video_call);
         } else {
-            callAgainConfirmView.setMessage(getString(R.string.conversation_activity_audio_call));
+            callAgainConfirmView.setMessage(getString(R.string.conversation_view_audio_call));
             callAgainConfirmView.setIcon(R.drawable.audio_call);
         }
 

@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="@string/conversation_activity_message"
+            android:hint="@string/conversation_view_message"
             android:inputType="textMultiLine|textAutoCorrect|textAutoComplete|textCapSentences"
             android:scrollbars="vertical"
             app:layout_widthPercent="83.06%"
@@ -164,5 +164,13 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/preview_activity_state_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ellipsize="end"
+        android:layout_below="@+id/preview_activity_progress_bar" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/backup_activity_title"
+            android:text="@string/backup_view_title"
             android:layout_toEndOf="@+id/restore_activity_backup_info_icon_view" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -52,7 +52,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/lock_screen_activity_unlock"
+            android:text="@string/lock_screen_view_unlock"
             app:layout_widthPercent="89.06%" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

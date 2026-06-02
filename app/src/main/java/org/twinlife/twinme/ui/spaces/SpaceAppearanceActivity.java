@@ -243,7 +243,7 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.navigation_activity_settings));
+        setTitle(getString(R.string.navigation_view_settings));
 
         applyInsets(R.id.space_appearance_activity_content_view, R.id.space_appearance_activity_tool_bar, R.id.space_appearance_activity_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -363,7 +363,7 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
 
         String hexColor = "#" + Integer.toHexString(color);
         String hexDefaultColor = "#" + Integer.toHexString(defaultColor);
-        menuSelectColorView.openMenu(getString(R.string.space_appearance_activity_theme), hexColor, hexDefaultColor);
+        menuSelectColorView.openMenu(getString(R.string.space_appearance_view_theme), hexColor, hexDefaultColor);
 
         int statusBarColor = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(statusBarColor, Design.POPUP_BACKGROUND_COLOR);

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/onboarding_space_activity_second_part_item_image"
         android:layout_centerHorizontal="true"
-        android:text="@string/create_space_activity_onboarding_message_part_1"
+        android:text="@string/create_space_view_onboarding_message_part_1"
         android:scrollbars="vertical" />
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

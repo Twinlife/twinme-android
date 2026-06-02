@@ -70,7 +70,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             app:layout_marginEndPercent="5.46%"
-            android:text="@string/welcome_activity_enter" />
+            android:text="@string/welcome_view_enter" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <View

@@ -75,17 +75,17 @@ public class BackupContentConfirmView extends AbstractBottomSheetView {
         recyclerView.setAdapter(backupContentAdapter);
 
         if (!restoreReport.isRestoreUpToDate()) {
-            String diffMessage = String.format("%s\n\n%s", getContext().getString(R.string.backup_activity_verify_not_up_to_date), getContext().getString(R.string.backup_activity_content_diff_message));
+            String diffMessage = String.format("%s\n\n%s", getContext().getString(R.string.backup_view_verify_not_up_to_date), getContext().getString(R.string.backup_view_content_diff_message));
             if (isLastBackup) {
                 mMessageView.setText(diffMessage);
             } else {
-                mMessageView.setText(String.format("%s\n%s", getContext().getString(R.string.restore_activity_more_recent_backup), diffMessage));
+                mMessageView.setText(String.format("%s\n%s", getContext().getString(R.string.restore_view_more_recent_backup), diffMessage));
             }
         } else {
             if (isLastBackup) {
-                mMessageView.setText(getContext().getString(R.string.restore_activity_confirm));
+                mMessageView.setText(getContext().getString(R.string.restore_view_confirm));
             } else {
-                mMessageView.setText(String.format("%s\n\n%s", getContext().getString(R.string.restore_activity_more_recent_backup), getContext().getString(R.string.restore_activity_confirm)));
+                mMessageView.setText(String.format("%s\n\n%s", getContext().getString(R.string.restore_view_more_recent_backup), getContext().getString(R.string.restore_view_confirm)));
             }
         }
 

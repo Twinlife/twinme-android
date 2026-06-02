@@ -39,6 +39,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
@@ -637,7 +638,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
             @Override
             public void onBackgroundColorClick() {
                 viewGroup.removeView(menuPhotoView);
-                openMenuColor(getString(R.string.space_appearance_activity_background_title), mCustomAppearance.getConversationBackgroundColor(), mCustomAppearance.getConversationBackgroundDefaultColor());
+                openMenuColor(getString(R.string.space_appearance_view_background_title), mCustomAppearance.getConversationBackgroundColor(), mCustomAppearance.getConversationBackgroundDefaultColor());
             }
 
             @Override

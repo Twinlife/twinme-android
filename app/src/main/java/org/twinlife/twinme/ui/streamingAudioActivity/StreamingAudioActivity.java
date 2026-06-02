@@ -42,6 +42,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.conversationActivity.MusicItem;
 import org.twinlife.twinme.utils.FileInfo;
 import org.twinlife.twinme.utils.MediaMetaData;
@@ -188,7 +189,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
         MenuItem menuItem = menu.findItem(R.id.add_action);
 
         TextView titleView = (TextView) menuItem.getActionView();
-        String title = menuItem.getTitle().toString();
+        String title = String.valueOf(menuItem.getTitle());
 
         if (titleView != null) {
             Design.updateTextFont(titleView, Design.FONT_BOLD36);
@@ -217,7 +218,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
         setToolBar(R.id.streaming_audio_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.streaming_audio_activity_title));
+        setTitle(getString(R.string.streaming_audio_view_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.streaming_audio_activity_layout, R.id.streaming_audio_activity_tool_bar, R.id.streaming_audio_activity_list_view, Design.TOOLBAR_COLOR, false);
@@ -347,7 +348,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
                 int id = FileInfo.getColumnInt(cursor, MediaStore.Audio.Media._ID);
                 Uri contentUri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
 
-                if (artist != null && artist.equals(getString(R.string.streaming_audio_activity_unknown_artist))) {
+                if (artist != null && artist.equals(getString(R.string.streaming_audio_view_unknown_artist))) {
                     artist = null;
                 }
 

@@ -201,7 +201,7 @@ public class MessageSettingsSpaceActivity extends AbstractSpaceActivity implemen
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.settings_activity_chat_category_title));
+        setTitle(getString(R.string.settings_view_chat_category_title));
 
         applyInsets(R.id.message_settings_space_activity_content_view, R.id.message_settings_space_activity_tool_bar, R.id.message_settings_space_activity_list_view, Design.TOOLBAR_COLOR, false);
 

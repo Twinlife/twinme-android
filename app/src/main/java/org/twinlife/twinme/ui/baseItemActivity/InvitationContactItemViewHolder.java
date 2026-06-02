@@ -41,7 +41,8 @@ class InvitationContactItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_invitation_contact_item_state_avatar_view,
                 R.id.base_item_activity_invitation_contact_item_overlay_view,
                 R.id.base_item_activity_invitation_contact_item_selected_view,
-                R.id.base_item_activity_invitation_contact_item_selected_image_view);
+                R.id.base_item_activity_invitation_contact_item_selected_image_view,
+                R.id.base_item_activity_invitation_contact_item_error_image_view);
 
         mInvitationContainer = view.findViewById(R.id.base_item_activity_invitation_contact_item_view);
 
@@ -101,7 +102,7 @@ class InvitationContactItemViewHolder extends ItemViewHolder {
         }
 
         mNameView.setText(invitation.getName());
-        mInvitationView.setText(getString(R.string.conversation_activity_invitation_pending));
+        mInvitationView.setText(getString(R.string.conversation_view_invitation_pending));
     }
 
     @Override

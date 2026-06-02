@@ -39,6 +39,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int SECTION_EPHEMERAL = 12;
     private static final int SECTION_CONTENT = 16;
     private static final int SECTION_LINK = 19;
+    private static final int SECTION_MAP = 22;
 
     private static final int POSITION_DISPLAY_NOTIFICATION_SENDER = 2;
     private static final int POSITION_DISPLAY_NOTIFICATION_CONTENT = 3;
@@ -56,6 +57,8 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int POSITION_CONTENT_MEDIA = 18;
     private static final int POSITION_LINK_PREVIEW_INFORMATION = 20;
     private static final int POSITION_LINK_PREVIEW = 21;
+    private static final int POSITION_MAP_PREVIEW_INFORMATION = 23;
+    private static final int POSITION_MAP_PREVIEW = 24;
 
     private static final int TITLE = 0;
     private static final int CHECKBOX = 1;
@@ -63,7 +66,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int VALUE = 3;
 
     static {
-        ITEM_COUNT = 22;
+        ITEM_COUNT = 25;
     }
 
     MessagesSettingsAdapter(@NonNull MessagesSettingsActivity listActivity) {
@@ -95,9 +98,9 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == SECTION_INFO || position == POSITION_ALLOW_COPY_INFORMATION || position == POSITION_EPHEMERAL_INFORMATION || position == POSITION_CONTENT_INFORMATION || position == POSITION_LINK_PREVIEW_INFORMATION || position == POSITION_DISPLAY_CALLS_INFORMATION) {
+        if (position == SECTION_INFO || position == POSITION_ALLOW_COPY_INFORMATION || position == POSITION_EPHEMERAL_INFORMATION || position == POSITION_CONTENT_INFORMATION || position == POSITION_LINK_PREVIEW_INFORMATION  ||  position == POSITION_DISPLAY_CALLS_INFORMATION || position == POSITION_MAP_PREVIEW_INFORMATION) {
             return INFO;
-        } else if (position == SECTION_NOTIFICATION || position == SECTION_COPY || position == SECTION_EPHEMERAL || position == SECTION_CONTENT || position == SECTION_LINK || position == SECTION_CALLS) {
+        } else if (position == SECTION_NOTIFICATION || position == SECTION_COPY || position == SECTION_EPHEMERAL || position == SECTION_CONTENT || position == SECTION_LINK || position == SECTION_CALLS || position == SECTION_MAP) {
             return TITLE;
         } else if (position == POSITION_TIMEOUT_EPHEMERAL || position == POSITION_CONTENT_MEDIA || position == POSITION_DISPLAY_CALLS) {
             return VALUE;
@@ -118,27 +121,31 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             switch (position) {
                 case SECTION_INFO:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_default_value_message), false);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_default_value_message), false);
                     break;
 
                 case POSITION_ALLOW_COPY_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_allow_copy_category_title), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_allow_copy_category_title), true);
                     break;
 
                 case POSITION_DISPLAY_CALLS_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_display_call_title), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_display_call_title), true);
                     break;
 
                 case POSITION_EPHEMERAL_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_ephemeral_message), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_ephemeral_message), true);
                     break;
 
                 case POSITION_LINK_PREVIEW_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_activity_link_preview_message), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_view_link_preview_message), true);
                     break;
 
                 case POSITION_CONTENT_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_content_information), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_content_information), true);
+                    break;
+
+                case POSITION_MAP_PREVIEW_INFORMATION:
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_show_location_on_map), true);
                     break;
 
                 default:
@@ -162,39 +169,45 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             switch (position) {
                 case POSITION_DISPLAY_NOTIFICATION_SENDER:
-                    uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_sender_title), Settings.displayNotificationSender);
+                    uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_display_notification_sender_title), Settings.displayNotificationSender);
                     break;
 
                 case POSITION_DISPLAY_NOTIFICATION_CONTENT:
-                    uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_content_title), Settings.displayNotificationContent);
+                    uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_display_notification_content_title), Settings.displayNotificationContent);
                     break;
 
                 case POSITION_DISPLAY_NOTIFICATION_LIKE:
-                    uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_activity_display_notification_like_title), Settings.displayNotificationLike);
+                    uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.settings_view_display_notification_like_title), Settings.displayNotificationLike);
                     break;
 
                 case POSITION_ALLOW_COPY_TEXT:
-                    title = mListActivity.getString(R.string.settings_activity_allow_copy_text_title);
+                    title = mListActivity.getString(R.string.settings_view_allow_copy_text_title);
                     value = mListActivity.messageCopyAllowed();
                     booleanConfig = Settings.messageCopyAllowed;
                     break;
 
                 case POSITION_ALLOW_COPY_FILE:
-                    title = mListActivity.getString(R.string.settings_activity_allow_copy_file_title);
+                    title = mListActivity.getString(R.string.settings_view_allow_copy_file_title);
                     value = mListActivity.fileCopyAllowed();
                     booleanConfig = Settings.fileCopyAllowed;
                     break;
 
                 case POSITION_ALLOW_EPHEMERAL:
-                    title = mListActivity.getString(R.string.settings_activity_ephemeral_title);
+                    title = mListActivity.getString(R.string.settings_view_ephemeral_title);
                     value = mListActivity.isAllowEphemeral();
                     booleanConfig = Settings.ephemeralMessageAllowed;
                     break;
 
                 case POSITION_LINK_PREVIEW:
-                    title = mListActivity.getString(R.string.conversation_settings_activity_link_preview);
+                    title = mListActivity.getString(R.string.conversation_settings_view_link_preview);
                     value = mListActivity.getTwinmeApplication().visualizationLink();
                     booleanConfig = Settings.visualizationLink;
+                    break;
+
+                case POSITION_MAP_PREVIEW:
+                    title = mListActivity.getString(R.string.settings_view_show_maps);
+                    value = mListActivity.getTwinmeApplication().visualizationMap();
+                    booleanConfig = Settings.visualizationMap;
                     break;
 
                 default:
@@ -218,7 +231,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
             } else {
                 UISetting<Integer> uiSetting;
                 if (position == POSITION_CONTENT_MEDIA) {
-                    uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.settings_activity_image_title), Settings.qualityMedia);
+                    uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, mListActivity.getString(R.string.settings_view_image_title), Settings.qualityMedia);
                 } else {
                     uiSetting = new UISetting<>(UISetting.TypeSetting.VALUE, "", Settings.displayCallsMode);
                 }
@@ -276,27 +289,31 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
         String title = "";
         switch (position) {
             case SECTION_NOTIFICATION:
-                title = mListActivity.getString(R.string.settings_activity_system_notifications_title);
+                title = mListActivity.getString(R.string.settings_view_system_notifications_title);
                 break;
 
             case SECTION_COPY:
-                title = mListActivity.getString(R.string.settings_activity_permissions_title);
+                title = mListActivity.getString(R.string.settings_view_permissions_title);
                 break;
 
             case SECTION_EPHEMERAL:
-                title = mListActivity.getString(R.string.settings_activity_ephemeral_section_title);
+                title = mListActivity.getString(R.string.settings_view_ephemeral_section_title);
                 break;
 
             case SECTION_CONTENT:
-                title = mListActivity.getString(R.string.settings_activity_content_title);
+                title = mListActivity.getString(R.string.settings_view_content_title);
                 break;
 
             case SECTION_LINK:
-                title = mListActivity.getString(R.string.conversation_settings_activity_link_title);
+                title = mListActivity.getString(R.string.conversation_settings_view_link_title);
                 break;
 
             case SECTION_CALLS:
-                title = mListActivity.getString(R.string.calls_fragment_title);
+                title = mListActivity.getString(R.string.calls_view_title);
+                break;
+
+            case SECTION_MAP:
+                title = mListActivity.getString(R.string.info_item_view_location);
                 break;
 
             default:

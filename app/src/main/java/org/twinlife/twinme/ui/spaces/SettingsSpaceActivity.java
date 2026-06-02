@@ -188,7 +188,7 @@ public class SettingsSpaceActivity extends AbstractSpaceActivity {
         showBackButton(true);
 
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.navigation_activity_settings));
+        setTitle(getString(R.string.navigation_view_settings));
 
         applyInsets(R.id.settings_space_activity_content_view, R.id.settings_space_activity_tool_bar, R.id.settings_space_activity_list_view, Design.TOOLBAR_COLOR, false);
 

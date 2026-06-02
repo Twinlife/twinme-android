@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/onboarding_external_call_activity_slide_mark_view"
-            android:text="@string/premium_services_activity_click_to_call_title" />
+            android:text="@string/premium_services_view_click_to_call_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/onboarding_external_call_activity_recycler_view"

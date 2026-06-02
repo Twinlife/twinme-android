@@ -205,6 +205,13 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
         if (mMapView != null) {
             mMapView.onStop();
+            mMapView.onDestroy();
+        }
+
+        if (mGoogleMap != null) {
+            mGoogleMap.clear();
+            mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+            mGoogleMap = null;
         }
     }
 
@@ -245,9 +252,9 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
                 mCallMapListener.onStartShareLocation(latitudeDelta, longitudeDelta);
 
                 mShareImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.share_location_icon, null));
-                mShareView.setContentDescription(getContext().getString(R.string.call_activity_location_stop));
+                mShareView.setContentDescription(getContext().getString(R.string.call_view_location_stop));
                 mIsLocationShared = true;
-                Toast.makeText(getContext(), getContext().getString(R.string.call_activity_location_share_message), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getContext().getString(R.string.call_view_location_share_message), Toast.LENGTH_SHORT).show();
             } catch (Exception ex) {
                 if (Logger.ERROR) {
                     Log.e(LOG_TAG, "Exception in onShareClick", ex);
@@ -299,8 +306,8 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
             ViewGroup viewGroup = callActivity.findViewById(R.id.call_activity_view);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
             defaultConfirmView.setForceDarkMode(true);
-            defaultConfirmView.setTitle(callActivity.getString(R.string.call_activity_location_share));
-            defaultConfirmView.setMessage(callActivity.getString(R.string.call_activity_location_background_warning));
+            defaultConfirmView.setTitle(callActivity.getString(R.string.call_view_location_share));
+            defaultConfirmView.setMessage(callActivity.getString(R.string.call_view_location_background_warning));
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_authorization_go_settings));
             defaultConfirmView.setCancelTitle(callActivity.getString(R.string.application_do_not_display));
@@ -352,8 +359,8 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
             mCardView.setVisibility(View.GONE);
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(callActivity, null);
             defaultConfirmView.setForceDarkMode(true);
-            defaultConfirmView.setTitle(callActivity.getString(R.string.call_activity_location_share));
-            defaultConfirmView.setMessage(callActivity.getString(R.string.call_activity_location_exact_warning));
+            defaultConfirmView.setTitle(callActivity.getString(R.string.call_view_location_share));
+            defaultConfirmView.setMessage(callActivity.getString(R.string.call_view_location_exact_warning));
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(callActivity.getString(R.string.application_authorization_go_settings));
             defaultConfirmView.setCancelTitle(callActivity.getString(R.string.application_do_not_display));
@@ -483,10 +490,10 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
 
         if (mIsLocationShared) {
             mShareImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.share_location_icon, null));
-            mShareView.setContentDescription(getContext().getString(R.string.call_activity_location_stop));
+            mShareView.setContentDescription(getContext().getString(R.string.call_view_location_stop));
         } else {
             mShareImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_location_icon, null));
-            mShareView.setContentDescription(getContext().getString(R.string.call_activity_location_share));
+            mShareView.setContentDescription(getContext().getString(R.string.call_view_location_share));
         }
 
         if (mCanShareLocation) {
@@ -761,7 +768,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
             mIsLocationShared = false;
             mCallMapListener.onStopShareLocation();
             mShareImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_location_icon, null));
-            mShareView.setContentDescription(getContext().getString(R.string.call_activity_location_share));
+            mShareView.setContentDescription(getContext().getString(R.string.call_view_location_share));
         } else if (mGoogleMap != null) {
 
             // GoogleMap API can raise various exceptions.
@@ -773,7 +780,7 @@ public class CallMapView extends PercentRelativeLayout implements OnMapReadyCall
                 mCallMapListener.onStartShareLocation(latitudeDelta, longitudeDelta);
 
                 mShareImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.share_location_icon, null));
-                mShareView.setContentDescription(getContext().getString(R.string.call_activity_location_stop));
+                mShareView.setContentDescription(getContext().getString(R.string.call_view_location_stop));
                 mIsLocationShared = true;
             } catch (Exception ex) {
                 if (Logger.ERROR) {

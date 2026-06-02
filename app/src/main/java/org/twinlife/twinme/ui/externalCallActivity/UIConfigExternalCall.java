@@ -290,20 +290,20 @@ public class UIConfigExternalCall {
     public String getCallType() {
 
         if (mConfigCallType == ConfigExternalCallTypeCall.CALL_DIRECT) {
-            return mContext.getString(R.string.create_external_call_activity_direct_call_short_title);
+            return mContext.getString(R.string.create_external_call_view_direct_call_short_title);
         } else {
-            return mContext.getString(R.string.create_external_call_activity_conference_call_title);
+            return mContext.getString(R.string.create_external_call_view_conference_call_title);
         }
     }
 
     public String getExpiration() {
 
         if (mLinkValidity == LinkValidity.PERMANENT) {
-            return mContext.getString(R.string.create_external_call_activity_continuous_link_title);
+            return mContext.getString(R.string.create_external_call_view_continuous_link_title);
         } else if (mLinkValidity == LinkValidity.SINGLE_USE) {
-            return mContext.getString(R.string.create_external_call_activity_unique_link_title);
+            return mContext.getString(R.string.create_external_call_view_unique_link_title);
         } else {
-            return mContext.getString(R.string.create_external_call_activity_recurrent_link_title);
+            return mContext.getString(R.string.create_external_call_view_recurrent_link_title);
         }
     }
 
@@ -312,21 +312,21 @@ public class UIConfigExternalCall {
         StringBuilder message = new StringBuilder();
 
         if (mAllowVoiceCall) {
-            message.append(mContext.getString(R.string.show_contact_activity_audio));
+            message.append(mContext.getString(R.string.show_contact_view_audio));
         }
 
         if (mAllowVideoCall) {
             if (!message.toString().isEmpty()) {
                 message.append(", ");
             }
-            message.append(mContext.getString(R.string.show_contact_activity_video));
+            message.append(mContext.getString(R.string.show_contact_view_video));
         }
 
         if (mAllowGroupCall) {
             if (!message.toString().isEmpty()) {
                 message.append(", ");
             }
-            message.append(mContext.getString(R.string.show_group_activity_title));
+            message.append(mContext.getString(R.string.show_group_view_title));
         }
 
         return message.toString();

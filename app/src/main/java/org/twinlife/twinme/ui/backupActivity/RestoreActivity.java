@@ -336,7 +336,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
                 }
 
                 if (incorrectWordToPaste) {
-                    toast(getString(R.string.restore_activity_paste_error));
+                    toast(getString(R.string.restore_view_paste_error));
                 }
             }
         }
@@ -367,7 +367,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         }
 
         if (mRestoreState == null) {
-            return new SpannableStringBuilder( mVerifyBackupMode ? getString(R.string.restore_activity_error_message_verify_backup) : getString(R.string.restore_activity_error_message));
+            return new SpannableStringBuilder( mVerifyBackupMode ? getString(R.string.restore_view_error_message_verify_backup) : getString(R.string.restore_view_error_message));
         }
 
         if (mTerminateReason != null && mTerminateReason == TerminateReason.ERROR) {
@@ -378,42 +378,42 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         String message = "";
         switch (mRestoreState) {
             case STARTING:
-                message = mVerifyBackupMode ? getString(R.string.restore_activity_state_restore_verify_starting) : getString(R.string.restore_activity_state_restore_starting);
+                message = mVerifyBackupMode ? getString(R.string.restore_view_state_restore_verify_starting) : getString(R.string.restore_view_state_restore_starting);
                 break;
 
             case RESTORE_ACCOUNT:
-                message = mVerifyBackupMode ? getString(R.string.restore_activity_state_restore_verify_account) : getString(R.string.restore_activity_state_restore_account);
+                message = mVerifyBackupMode ? getString(R.string.restore_view_state_restore_verify_account) : getString(R.string.restore_view_state_restore_account);
                 break;
 
             case RESTORE_DATA:
-                message = mVerifyBackupMode ? getString(R.string.restore_activity_state_restore_verify_data) : getString(R.string.restore_activity_state_restore_data);
+                message = mVerifyBackupMode ? getString(R.string.restore_view_state_restore_verify_data) : getString(R.string.restore_view_state_restore_data);
                 break;
 
             case WAIT_CONFIRM:
-                message = getString(R.string.restore_activity_state_restore_wait_confirm);
+                message = getString(R.string.restore_view_state_restore_wait_confirm);
                 break;
 
             case TERMINATED:
                 if (mVerifyBackupMode) {
-                    title = getString(R.string.backup_activity_verify_completed);
+                    title = getString(R.string.backup_view_verify_completed);
                     if (mRestoreReport != null && mRestoreReport.isRestoreUpToDate()) {
                         if (mIsLastBackup) {
-                            message = getString(R.string.backup_activity_verify_up_to_date);
+                            message = getString(R.string.backup_view_verify_up_to_date);
                         } else {
-                            message = getString(R.string.restore_activity_more_recent_backup) + "\n\n" + getString(R.string.backup_activity_verify_up_to_date);
+                            message = getString(R.string.restore_view_more_recent_backup) + "\n\n" + getString(R.string.backup_view_verify_up_to_date);
                         }
                     } else if (mRestoreReport != null) {
                         if (mIsLastBackup) {
-                            message = getString(R.string.backup_activity_verify_not_up_to_date) + "\n\n" + getString(R.string.backup_activity_content_diff_message);
+                            message = getString(R.string.backup_view_verify_not_up_to_date) + "\n\n" + getString(R.string.backup_view_content_diff_message);
                         } else {
-                            message = getString(R.string.restore_activity_more_recent_backup) + "\n\n" + getString(R.string.backup_activity_content_diff_message);
+                            message = getString(R.string.restore_view_more_recent_backup) + "\n\n" + getString(R.string.backup_view_content_diff_message);
                         }
                     } else {
                         title = getString(R.string.application_canceled_operation);
                     }
                 } else {
-                    title = getString(R.string.restore_activity_success);
-                    message = getString(R.string.restore_activity_success_message);
+                    title = getString(R.string.restore_view_success);
+                    message = getString(R.string.restore_view_success_message);
                 }
 
                 break;
@@ -421,7 +421,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             case CANCEL:
                 if (!mVerifyBackupMode) {
                     title = getString(R.string.application_canceled_operation);
-                    message = getString(R.string.account_migration_activity_cancel_message);
+                    message = getString(R.string.account_migration_view_cancel_message);
                 }
 
             default:
@@ -509,13 +509,13 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             String message;
             String actionTitle;
             if (mVerifyBackupMode) {
-                title = getString(R.string.account_activity_backup_verify);
-                message = getString(R.string.restore_activity_onboarding_verify);
+                title = getString(R.string.account_view_backup_verify);
+                message = getString(R.string.restore_view_onboarding_verify);
                 actionTitle = getString(R.string.application_confirm);
             } else {
-                title = getString(R.string.deleted_account_activity_warning);
-                message = getString(R.string.restore_activity_warning);
-                actionTitle = getString(R.string.restore_activity_restore);
+                title = getString(R.string.deleted_account_view_warning);
+                message = getString(R.string.restore_view_warning);
+                actionTitle = getString(R.string.restore_view_restore);
             }
 
             defaultConfirmView.setTitle(title);
@@ -606,9 +606,9 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         applyInsets(R.id.restore_activity_layout, R.id.restore_activity_tool_bar, R.id.restore_activity_background, Design.TOOLBAR_COLOR, false);
 
         if (mVerifyBackupMode) {
-            setTitle(getString(R.string.account_activity_backup_verify));
+            setTitle(getString(R.string.account_view_backup_verify));
         } else {
-            setTitle(getString(R.string.restore_activity_title));
+            setTitle(getString(R.string.restore_view_title));
         }
 
         initBackupWords();
@@ -821,17 +821,17 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.NO_SPACE_LEFT) {
             message = getString(R.string.application_error_no_storage_space);
         } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.INVALID_KEY) {
-            message = getString(R.string.backup_activity_error_words);
+            message = getString(R.string.backup_view_error_words);
         } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.DIFFERENT_ACCOUNT) {
-            message = getString(R.string.restore_activity_verify_same_account);
+            message = getString(R.string.restore_view_verify_same_account);
         } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.INVALID_FILE && !mIsBackupHeaderInfoOK) {
-            message = getString(R.string.restore_activity_file_not_supported);
+            message = getString(R.string.restore_view_file_not_supported);
             runnable = this::finish;
         } else {
-            message = mVerifyBackupMode ? getString(R.string.restore_activity_error_message_verify_backup) : getString(R.string.restore_activity_error_message);
+            message = mVerifyBackupMode ? getString(R.string.restore_view_error_message_verify_backup) : getString(R.string.restore_view_error_message);
         }
 
-        showAlertMessageView(R.id.restore_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, runnable);
+        showAlertMessageView(R.id.restore_activity_layout, getString(R.string.deleted_account_view_warning), message, false, runnable);
     }
 
     private boolean isAllWordsCompleted() {
@@ -938,7 +938,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         BackupContentConfirmView backupContentConfirmView = new BackupContentConfirmView(this, null);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         backupContentConfirmView.setLayoutParams(layoutParams);
-        backupContentConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
+        backupContentConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
         backupContentConfirmView.setConfirmTitle(getString(R.string.application_confirm));
         backupContentConfirmView.initRestoreReport(mRestoreReport, mIsLastBackup);
 
@@ -984,7 +984,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-        showAlertMessageView(R.id.restore_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.restore_activity_application_error), false, this::rollbackRestore);
+        showAlertMessageView(R.id.restore_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.restore_view_application_error), false, this::rollbackRestore);
     }
 
     private void terminateActivity() {

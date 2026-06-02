@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="@string/restore_activity_enter_words" />
+        android:text="@string/restore_view_enter_words" />
 
     <RelativeLayout
         android:id="@+id/restore_activity_words_item_container_view"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/restore_activity_words_item_paste_image_view"
-                android:text="@string/restore_activity_paste" />
+                android:text="@string/restore_view_paste" />
 
         </RelativeLayout>
     </RelativeLayout>

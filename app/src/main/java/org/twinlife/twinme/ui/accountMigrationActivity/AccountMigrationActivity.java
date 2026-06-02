@@ -265,7 +265,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         super.onResume();
 
         if (!mIsConnected) {
-            showNetworkDisconnect(R.string.audio_call_activity_cannot_call, () -> {});
+            showNetworkDisconnect(R.string.audio_call_view_cannot_call, () -> {});
         }
     }
 
@@ -337,8 +337,8 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         ViewGroup viewGroup = findViewById(R.id.account_migration_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
-        defaultConfirmView.setMessage(getString(R.string.account_migration_activity_confirm_cancel_message));
+        defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+        defaultConfirmView.setMessage(getString(R.string.account_migration_view_confirm_cancel_message));
 
         boolean darkMode = false;
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -349,7 +349,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
         defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
-        defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_activity_stop));
+        defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_view_stop));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -436,23 +436,23 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
             String status = "";
             if (mState == State.NEGOTIATE) {
-                status = getResources().getString(R.string.account_migration_activity_state_negotiate);
+                status = getResources().getString(R.string.account_migration_view_state_negotiate);
             } else if (mState == State.LIST_FILES) {
-                status = getResources().getString(R.string.account_migration_activity_state_list_files);
+                status = getResources().getString(R.string.account_migration_view_state_list_files);
             } else if (mState == State.SEND_FILES) {
-                status = getResources().getString(R.string.account_migration_activity_state_send_files);
+                status = getResources().getString(R.string.account_migration_view_state_send_files);
             } else if (mState == State.SEND_SETTINGS) {
-                status = getResources().getString(R.string.account_migration_activity_state_send_settings);
+                status = getResources().getString(R.string.account_migration_view_state_send_settings);
             } else if (mState == State.SEND_DATABASE) {
-                status = getResources().getString(R.string.account_migration_activity_state_send_database);
+                status = getResources().getString(R.string.account_migration_view_state_send_database);
             } else if (mState == State.WAIT_FILES) {
-                status = getResources().getString(R.string.account_migration_activity_state_wait_files);
+                status = getResources().getString(R.string.account_migration_view_state_wait_files);
             } else if (mState == State.SEND_ACCOUNT) {
-                status = getResources().getString(R.string.account_migration_activity_state_send_account);
+                status = getResources().getString(R.string.account_migration_view_state_send_account);
             } else if (mState == State.WAIT_ACCOUNT) {
-                status = getResources().getString(R.string.account_migration_activity_state_wait_account);
+                status = getResources().getString(R.string.account_migration_view_state_wait_account);
             } else if (mState == State.TERMINATE) {
-                status = getResources().getString(R.string.account_migration_activity_state_terminate);
+                status = getResources().getString(R.string.account_migration_view_state_terminate);
             }
 
             mStatusTransferTextView.setText(status);
@@ -485,9 +485,9 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         }
 
         if (!migrationStatus.isConnected()) {
-            mInformationView.setText(getResources().getString(R.string.account_migration_activity_state_wait_connect));
+            mInformationView.setText(getResources().getString(R.string.account_migration_view_state_wait_connect));
         } else if (mState == State.STARTING) {
-            mInformationView.setText(getResources().getString(R.string.account_migration_activity_network_message));
+            mInformationView.setText(getResources().getString(R.string.account_migration_view_network_message));
         } else {
             mInformationView.setText("");
         }
@@ -497,16 +497,16 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             String message = null;
 
             if (peerQueryStats.getDatabaseFileSize() >= localQueryStats.getDatabaseAvailableSpace()) {
-                message = getResources().getString(R.string.account_migration_activity_not_enough_space_to_receive);
+                message = getResources().getString(R.string.account_migration_view_not_enough_space_to_receive);
             }
             if (localQueryStats.getDatabaseFileSize() >= peerQueryStats.getDatabaseAvailableSpace()) {
-                message = getResources().getString(R.string.account_migration_activity_not_enough_space_to_upload);
+                message = getResources().getString(R.string.account_migration_view_not_enough_space_to_upload);
             }
             if (peerQueryStats.getTotalFileSize() >= localQueryStats.getFilesystemAvailableSpace()) {
-                message = getResources().getString(R.string.account_migration_activity_not_enough_space_for_files);
+                message = getResources().getString(R.string.account_migration_view_not_enough_space_for_files);
             }
             if (localQueryStats.getTotalFileSize() >= peerQueryStats.getFilesystemAvailableSpace()) {
-                message = getResources().getString(R.string.account_migration_activity_not_enough_space_for_files);
+                message = getResources().getString(R.string.account_migration_view_not_enough_space_for_files);
             }
 
             if (message != null && !mIsAlertMessage) {
@@ -665,7 +665,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         setStatusBarColor();
         setToolBar(R.id.account_migration_activity_tool_bar);
         showToolBar(true);
-        setTitle(getString(R.string.account_activity_migration_title));
+        setTitle(getString(R.string.account_view_migration_title));
         setBackgroundColor(Design.WHITE_COLOR);
 
         applyInsets(R.id.account_migration_activity_layout, R.id.account_migration_activity_tool_bar, R.id.account_migration_activity_container_view, Design.TOOLBAR_COLOR, false);
@@ -848,8 +848,8 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             } else {
                 mCancelButton.setVisibility(View.VISIBLE);
             }
-            mInformationView.setText(getResources().getString(R.string.account_migration_activity_cancel_message));
-            mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_activity_state_canceled));
+            mInformationView.setText(getResources().getString(R.string.account_migration_view_cancel_message));
+            mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_state_canceled));
             if (mCanceled) {
                 terminateActivity();
             }
@@ -859,11 +859,11 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             mCancelButton.setVisibility(View.VISIBLE);
 
             if (migrationStatus != null && migrationStatus.getErrorCode() == org.twinlife.twinlife.AccountMigrationService.ErrorCode.NO_SPACE_LEFT) {
-                mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_activity_not_enough_space_for_files));
+                mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_not_enough_space_for_files));
                 mInformationView.setText(getResources().getString(R.string.application_migration_no_storage_space_message));
             } else {
-                mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_activity_state_canceled));
-                String info = getResources().getString(R.string.cleanup_activity_error);
+                mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_state_canceled));
+                String info = getResources().getString(R.string.cleanup_view_error);
                 if (migrationStatus != null && migrationStatus.getErrorCode() != null) {
                     info += "\n" + migrationStatus.getErrorCode();
                 }
@@ -876,8 +876,8 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             mStartView.setVisibility(View.GONE);
             mDeclineView.setVisibility(View.GONE);
             mCancelButton.setVisibility(View.GONE);
-            mInformationView.setText(getResources().getString(R.string.account_migration_activity_close_message));
-            mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_activity_success_message));
+            mInformationView.setText(getResources().getString(R.string.account_migration_view_close_message));
+            mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_success_message));
             mContentView.setOnClickListener(view -> terminateActivity());
             mInformationView.postDelayed(terminateRunnable, CLOSE_ACTIVITY_TIMEOUT);
         }

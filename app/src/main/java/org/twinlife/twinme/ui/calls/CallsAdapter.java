@@ -172,19 +172,19 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
             if (position == SECTION_EXTERNAL_CALLS) {
                 boolean showRightView = !mDisplayAllCallReceiver && mUICallReceivers.size() > NB_CALL_RECEIVER;
-                sectionCallViewHolder.onBind(mListActivity.getString(R.string.premium_services_activity_click_to_call_title), showRightView, mNbCallReceiverToDisplay == 0);
+                sectionCallViewHolder.onBind(mListActivity.getString(R.string.premium_services_view_click_to_call_title), showRightView, mNbCallReceiverToDisplay == 0);
                 sectionCallViewHolder.mRightView.setOnClickListener(v -> {
                     mDisplayAllCallReceiver = true;
                     updateIndexes();
                     notifyDataSetChanged();
                 });
             } else {
-                sectionCallViewHolder.onBind(mListActivity.getString(R.string.show_contact_activity_history_title), false, false);
+                sectionCallViewHolder.onBind(mListActivity.getString(R.string.show_contact_view_history_title), false, false);
             }
         } else if (viewType == ADD_EXTERNAL_CALL) {
             AddExternalCallViewHolder addExternalCallViewHolder = (AddExternalCallViewHolder) viewHolder;
             addExternalCallViewHolder.itemView.setOnClickListener(view -> mOnCallClickListener.onAddExternalCallClick());
-            addExternalCallViewHolder.onBind(mListActivity.getString(R.string.calls_fragment_create_link), mListActivity.getString(R.string.show_call_activity_information_code));
+            addExternalCallViewHolder.onBind(mListActivity.getString(R.string.calls_view_create_link), mListActivity.getString(R.string.show_call_view_information_code));
         } else if (viewType == EXTERNAL_CALL) {
             UIContactViewHolder<UIOriginator> externalCallViewHolder = (UIContactViewHolder<UIOriginator>) viewHolder;
             externalCallViewHolder.itemView.setOnClickListener(v -> {

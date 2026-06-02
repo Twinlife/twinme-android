@@ -105,39 +105,39 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             int iconId;
             int iconColor = Design.SHOW_ICON_COLOR;
             if (position == POSITION_TRANSFER_FROM_CURRENT_DEVICE) {
-                title = mAccountActivity.getString(R.string.account_activity_transfer_from_device);
+                title = mAccountActivity.getString(R.string.account_view_transfer_from_device);
                 iconId = R.drawable.migration_my_device_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(true));
             } else if (position == POSITION_TRANSFER_FROM_ANOTHER_DEVICE) {
-                title = mAccountActivity.getString(R.string.account_activity_transfer_from_another_device);
+                title = mAccountActivity.getString(R.string.account_view_transfer_from_another_device);
                 iconId = R.drawable.migration_another_device_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(false));
             } else if (position == POSITION_BACKUP) {
-                title = mAccountActivity.getString(R.string.account_activity_backup);
+                title = mAccountActivity.getString(R.string.account_view_backup);
                 iconId = R.drawable.backup_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onBackupClick());
             } else if (position == POSITION_RESTORE) {
-                title = mAccountActivity.getString(R.string.account_activity_restore);
+                title = mAccountActivity.getString(R.string.account_view_restore);
                 iconId = R.drawable.restore_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onRestoreClick());
             } else if (position == POSITION_VERIFY_BACKUP) {
-                title = mAccountActivity.getString(R.string.account_activity_backup_verify);
+                title = mAccountActivity.getString(R.string.account_view_backup_verify);
                 iconId = R.drawable.backup_verify_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onVerifyBackupClick());
             } else if (position == POSITION_BACKUS) {
-                title = mAccountActivity.getString(R.string.account_activity_backup_list);
+                title = mAccountActivity.getString(R.string.account_view_backup_list);
                 iconId = R.drawable.backup_list_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onBackupsClick());
             } else if (position == POSITION_EXPORT_CONVERSATIONS) {
-                title = mAccountActivity.getString(R.string.show_contact_activity_export_contents);
+                title = mAccountActivity.getString(R.string.show_contact_view_export_contents);
                 iconId = R.drawable.share_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onExportClick());
             } else if (position == POSITION_CLEANUP) {
-                title = mAccountActivity.getString(R.string.show_contact_activity_cleanup);
+                title = mAccountActivity.getString(R.string.show_contact_view_cleanup);
                 iconId = R.drawable.cleanup_icon;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onCleanupClick());
             } else {
-                title = mAccountActivity.getString(R.string.deleted_account_activity_delete);
+                title = mAccountActivity.getString(R.string.deleted_account_view_delete);
                 textColor = Design.DELETE_COLOR_RED;
                 iconId = R.drawable.delete_icon;
                 iconColor = Design.DELETE_COLOR_RED;
@@ -148,7 +148,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (mAccountActivity.getTwinmeApplication().getLastBackupDate() > 0) {
                 String lastBackupDate = Utils.formatBackupInterval(mAccountActivity, mAccountActivity.getTwinmeApplication().getLastBackupDate() * 1000L, true);
-                String message = String.format(mAccountActivity.getString(R.string.backup_activity_last_backup), lastBackupDate);
+                String message = String.format(mAccountActivity.getString(R.string.backup_view_last_backup), lastBackupDate);
                 informationViewHolder.onBind(message, false);
             } else {
                 informationViewHolder.onBind("", false);
@@ -199,31 +199,31 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 int iconId;
                 int iconColor = Design.SHOW_ICON_COLOR;
                 if (position == POSITION_TRANSFER_FROM_CURRENT_DEVICE) {
-                    title = mAccountActivity.getString(R.string.account_activity_transfer_from_device);
+                    title = mAccountActivity.getString(R.string.account_view_transfer_from_device);
                     iconId = R.drawable.migration_my_device_icon;
                     settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(true));
                 } else if (position == POSITION_TRANSFER_FROM_ANOTHER_DEVICE) {
-                    title = mAccountActivity.getString(R.string.account_activity_transfer_from_another_device);
+                    title = mAccountActivity.getString(R.string.account_view_transfer_from_another_device);
                     iconId = R.drawable.migration_another_device_icon;
                     settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(false));
                 } else if (position == POSITION_BACKUP) {
-                    title = mAccountActivity.getString(R.string.account_activity_backup);
+                    title = mAccountActivity.getString(R.string.account_view_backup);
                     iconId = R.drawable.backup_icon;
                     settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onBackupClick());
                 } else if (position == POSITION_RESTORE) {
-                    title = mAccountActivity.getString(R.string.account_activity_restore);
+                    title = mAccountActivity.getString(R.string.account_view_restore);
                     iconId = R.drawable.restore_icon;
                     settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onRestoreClick());
                 } else if (position == POSITION_EXPORT_CONVERSATIONS) {
-                    title = mAccountActivity.getString(R.string.show_contact_activity_export_contents);
+                    title = mAccountActivity.getString(R.string.show_contact_view_export_contents);
                     iconId = R.drawable.share_icon;
                     settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onExportClick());
                 } else if (position == POSITION_CLEANUP) {
-                    title = mAccountActivity.getString(R.string.show_contact_activity_cleanup);
+                    title = mAccountActivity.getString(R.string.show_contact_view_cleanup);
                     iconId = R.drawable.cleanup_icon;
                     settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onCleanupClick());
                 } else {
-                    title = mAccountActivity.getString(R.string.deleted_account_activity_delete);
+                    title = mAccountActivity.getString(R.string.deleted_account_view_delete);
                     textColor = Design.DELETE_COLOR_RED;
                     iconId = R.drawable.delete_icon;
                     iconColor = Design.DELETE_COLOR_RED;
@@ -239,11 +239,11 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         String title = "";
 
         if (position == SECTION_TRANSFER) {
-            title = mAccountActivity.getString(R.string.account_activity_transfer_between_devices);
+            title = mAccountActivity.getString(R.string.account_view_transfer_between_devices);
         } else if (position == SECTION_BACKUP) {
-            title = mAccountActivity.getString(R.string.account_activity_backup_restore);
+            title = mAccountActivity.getString(R.string.account_view_backup_restore);
         } else if (position == SECTION_CONVERSATIONS) {
-            title = mAccountActivity.getString(R.string.account_activity_conversations_content_title);
+            title = mAccountActivity.getString(R.string.account_view_conversations_content_title);
         }
 
         return title;

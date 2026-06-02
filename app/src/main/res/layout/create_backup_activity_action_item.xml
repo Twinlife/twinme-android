@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/backup_activity_action_item_left_image_view"
-                android:text="@string/conversation_activity_menu_item_view_copy_title" />
+                android:text="@string/conversation_view_menu_item_view_copy_title" />
 
         </RelativeLayout>
 
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/backup_activity_action_item_right_image_view"
-                android:text="@string/backup_activity_generate_word" />
+                android:text="@string/backup_view_generate_word" />
 
         </RelativeLayout>
     </RelativeLayout>

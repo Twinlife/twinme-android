@@ -1,16 +1,15 @@
 /*
- *  Copyright (c) 2019 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.baseItemActivity;
 
 import android.content.Context;
-import android.text.format.DateUtils;
-import android.text.format.Formatter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +27,7 @@ public class LocationItem extends Item {
         super(Item.ItemType.LOCATION, locationDescriptor, replyToDescriptor);
 
         mLocationDescriptor = locationDescriptor;
+        setCopyAllowed(mLocationDescriptor.isCopyAllowed());
     }
 
     GeolocationDescriptor getGeolocationDescriptor() {
@@ -52,7 +52,7 @@ public class LocationItem extends Item {
     }
 
     @Override
-    String getInformation(Context context) {
+    public String getInformation(Context context) {
 
         return mLocationDescriptor.getLatitude() + "," + mLocationDescriptor.getLongitude();
     }

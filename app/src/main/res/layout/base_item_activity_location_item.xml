@@ -67,6 +67,18 @@
                 android:layout_centerInParent="true" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
+        <ImageView
+            android:id="@+id/base_item_activity_location_item_error_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toStartOf="@+id/base_item_activity_location_item_map_container"
+            android:scaleType="fitCenter"
+            android:cropToPadding="true"
+            android:src="@drawable/info_item"
+            app:layout_aspectRatio="100%" />
+
         <org.twinlife.twinme.utils.RoundedFrameLayout
             android:id="@+id/base_item_activity_location_item_map_container"
             android:layout_height="0dp"
@@ -80,7 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 map:cameraZoom="12"
-                map:liteMode="true" />
+                map:liteMode="true"
+                map:mapType="none" />
         </org.twinlife.twinme.utils.RoundedFrameLayout>
 
         <org.twinlife.twinme.utils.RoundedImageView

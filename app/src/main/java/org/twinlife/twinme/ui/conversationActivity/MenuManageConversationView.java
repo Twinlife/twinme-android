@@ -74,6 +74,6 @@ public class MenuManageConversationView extends AbstractMenuSelectActionView {
 
         super.initViews();
 
-        mTitleView.setText(getResources().getString(R.string.conversation_activity_manage_conversation));
+        mTitleView.setText(getResources().getString(R.string.conversation_view_manage_conversation));
     }
 }

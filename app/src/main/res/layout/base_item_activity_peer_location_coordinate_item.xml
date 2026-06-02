@@ -76,9 +76,9 @@
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_peer_location_item_coordinate_container"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_marginStartPercent="12.8%"
-            app:layout_widthPercent="63.47%">
+            app:layout_widthPercent="77.33%">
 
             <RelativeLayout
                 android:id="@+id/base_item_activity_peer_location_item_coordinate_info_view"
@@ -100,21 +100,38 @@
                     android:layout_toEndOf="@+id/base_item_activity_peer_location_item_coordinate_icon_view"/>
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/base_item_activity_peer_location_item_coordinate_message_view"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/base_item_activity_peer_location_item_coordinate_bottom_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/base_item_activity_peer_location_item_coordinate_info_view"
-                android:layout_alignStart="@+id/base_item_activity_peer_location_item_coordinate_info_view"
-                android:text="@string/info_item_activity_location_map_error"/>
+                android:layout_alignStart="@+id/base_item_activity_peer_location_item_coordinate_info_view">
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_location_item_coordinate_message_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/settings_view_show_location_on_map" />
+
+                <ImageView
+                    android:id="@+id/base_item_activity_peer_location_item_coordinate_show_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/base_item_activity_peer_location_item_coordinate_message_view"
+                    android:src="@drawable/call_again"
+                    app:tint="#ffffff"
+                    app:layout_aspectRatio="100%" />
+
+            </RelativeLayout>
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/base_item_activity_peer_location_item_ephemeral_content_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
-                android:layout_below="@+id/base_item_activity_peer_location_item_coordinate_message_view"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true">
 
                 <org.twinlife.twinme.utils.EphemeralView
@@ -125,16 +142,13 @@
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
-
-
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/base_item_activity_peer_location_item_annotation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/base_item_activity_peer_location_item_layout_container"
-        app:layout_marginStartPercent="12.8%" />
+        android:layout_below="@+id/base_item_activity_peer_location_item_layout_container" />
 
     <View
         android:id="@+id/base_item_activity_peer_location_item_overlay_view"

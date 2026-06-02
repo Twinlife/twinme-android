@@ -69,7 +69,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/call_quality_view_stars_view"
             android:gravity="center"
-            android:text="@string/call_activity_quality_title"
+            android:text="@string/call_view_quality_title"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -78,7 +78,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/call_quality_view_title_view"
             android:gravity="center"
-            android:text="@string/call_activity_quality_message"
+            android:text="@string/call_view_quality_message"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/feedback_activity_send" />
+                android:text="@string/feedback_view_send" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

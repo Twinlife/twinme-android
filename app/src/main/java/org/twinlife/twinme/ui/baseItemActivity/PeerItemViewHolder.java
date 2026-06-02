@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2021 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.AvatarView;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -45,6 +44,11 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mAvatarView.getLayoutParams();
         layoutParams.height = BaseItemActivity.AVATAR_HEIGHT;
         mAvatarView.setLayoutParams(layoutParams);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+        mAvatarView.setLayoutParams(marginLayoutParams);
+
         mAnnotationView = null;
         mAnnotationAdapter = null;
     }
@@ -58,7 +62,11 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
         relativeLayoutParams.height = BaseItemActivity.AVATAR_HEIGHT;
         mAvatarView.setLayoutParams(relativeLayoutParams);
 
-        mAnnotationAdapter = new AnnotationAdapter(baseItemActivity, new ArrayList<>(), true);
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+        mAvatarView.setLayoutParams(marginLayoutParams);
+
+        mAnnotationAdapter = new AnnotationAdapter(baseItemActivity, true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(baseItemActivity, RecyclerView.HORIZONTAL, false);
         mAnnotationView = view.findViewById(annotationViewId);
@@ -66,6 +74,14 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
         mAnnotationView.setLayoutManager(linearLayoutManager);
         mAnnotationView.setItemAnimator(null);
         mAnnotationView.setAdapter(mAnnotationAdapter);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mAnnotationView.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mAnnotationView.setLayoutParams(marginLayoutParams);
     }
 
     public int getAnnotationViewHeight() {
@@ -82,20 +98,22 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
 
         super.onBind(item);
 
+        final BaseItemActivity baseItemActivity = getBaseItemActivity();
         mAvatarView.setVisibility(View.GONE);
-        if (item.getVisibleAvatar() && !getBaseItemActivity().isSelectItemMode()) {
+        if (item.getVisibleAvatar() && !baseItemActivity.isSelectItemMode() && baseItemActivity.displayPeerItemAvatar()) {
 
             // Get a possible avatar image that depends on the peer twincode.
-            getBaseItemActivity().getContactAvatar(item.getPeerTwincodeOutboundId(), (Bitmap avatar) -> {
-                if (avatar != null) {
+            baseItemActivity.getContactAvatar(item.getPeerTwincodeOutboundId(), (Bitmap avatar) -> {
+                // Make sure the ViewHolder is associated with the same Item instance.
+                if (item == getItem()) {
                     mAvatarView.setImageBitmap(avatar);
+                    mAvatarView.setVisibility(View.VISIBLE);
                 }
-                mAvatarView.setVisibility(View.VISIBLE);
             });
         }
 
         if (item.getState() == Item.ItemState.DELETED) {
-            getBaseItemActivity().deleteItem(item.getDescriptorId());
+            baseItemActivity.deleteItem(item.getDescriptorId());
         }
 
         if (item.getState() == Item.ItemState.READ && item.isEphemeralItem()) {
@@ -115,13 +133,24 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
         }
 
         if (mAnnotationView != null) {
-            if (item.isForwarded() || item.isEdited() || (item.getLikeDescriptorAnnotations() != null && !item.getLikeDescriptorAnnotations().isEmpty())) {
+            if (item.isForwarded() || item.isEdited() || !item.getLikeDescriptorAnnotations().isEmpty()) {
                 mAnnotationAdapter.setAnnotations(item.getLikeDescriptorAnnotations(), item.getDescriptorId());
                 mAnnotationAdapter.setIsForwarded(item.isForwarded());
                 mAnnotationAdapter.setIsUpdated(item.isEdited());
                 mAnnotationView.setVisibility(View.VISIBLE);
             } else {
                 mAnnotationView.setVisibility(View.GONE);
+            }
+
+            if (!getBaseItemActivity().displayPeerItemAvatar()) {
+                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAnnotationView.getLayoutParams();
+                int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+                if (getBaseItemActivity().isSelectItemMode()) {
+                    marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+                } else {
+                    marginLayoutParams.setMarginStart(leftMargin);
+                }
+                mAnnotationView.setLayoutParams(marginLayoutParams);
             }
         }
 
@@ -131,12 +160,12 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
         int topMargin;
         int bottomMargin;
 
-        if ((item.getCorners() & Item.TOP_LARGE_MARGIN) == 0 || getBaseItemActivity().isGroupConversation()) {
+        if ((item.getCorners() & Item.TOP_LARGE_MARGIN) == 0 || baseItemActivity.isGroupConversation()) {
             topMargin = ITEM_TOP_MARGIN1;
         } else {
             topMargin = ITEM_TOP_MARGIN2;
         }
-        if (((item.getCorners() & Item.BOTTOM_LARGE_MARGIN) == 0) || item.isForwarded() || item.getLikeDescriptorAnnotations() != null) {
+        if (((item.getCorners() & Item.BOTTOM_LARGE_MARGIN) == 0) || item.isForwarded() || !item.getLikeDescriptorAnnotations().isEmpty()) {
             bottomMargin = ITEM_BOTTOM_MARGIN1;
         } else {
             bottomMargin = ITEM_BOTTOM_MARGIN2;
@@ -176,6 +205,7 @@ abstract class PeerItemViewHolder extends BaseItemViewHolder {
 
         super.onViewRecycled();
 
+        mAvatarView.setImageBitmap(null);
         if (mEphemeralTimer != null) {
             mEphemeralTimer.cancel();
             mEphemeralTimer = null;

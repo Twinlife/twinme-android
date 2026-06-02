@@ -44,7 +44,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/calls_fragment_all_call_segmented_control" />
+            android:text="@string/calls_view_all_call_segmented_control" />
 
         <RadioButton
             android:id="@+id/calls_tool_bar_missed_radio"
@@ -57,7 +57,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/calls_fragment_missed_call_segmented_control" />
+            android:text="@string/calls_view_missed_call_segmented_control" />
 
     </RadioGroup>
 

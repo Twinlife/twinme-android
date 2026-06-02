@@ -59,11 +59,11 @@ public class OnboardingSpaceSecondPartViewHolder extends RecyclerView.ViewHolder
 
     public void onBind(Context context) {
 
-        String message = context.getString(R.string.create_space_activity_onboarding_message_part_1) +
+        String message = context.getString(R.string.create_space_view_onboarding_message_part_1) +
                 "\n\n" +
-                context.getString(R.string.create_space_activity_onboarding_message_part_2) +
+                context.getString(R.string.create_space_view_onboarding_message_part_2) +
                 "\n\n" +
-                context.getString(R.string.create_space_activity_onboarding_message_part_3);
+                context.getString(R.string.create_space_view_onboarding_message_part_3);
         mMessageTextView.setText(message);
     }
 

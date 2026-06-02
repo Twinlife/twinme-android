@@ -59,11 +59,11 @@ public class MenuCallCapabilitiesAdapter extends RecyclerView.Adapter<RecyclerVi
         boolean isEnabled = true;
 
         if (position == POSITION_ALLOW_AUDIO_CALL) {
-            title = mMenuCallCapabilitiesView.getContext().getString(R.string.conversation_activity_audio_call);
+            title = mMenuCallCapabilitiesView.getContext().getString(R.string.conversation_view_audio_call);
         } else if (position == POSITION_ALLOW_VIDEO_CALL) {
-            title = mMenuCallCapabilitiesView.getContext().getString(R.string.conversation_activity_video_call);
+            title = mMenuCallCapabilitiesView.getContext().getString(R.string.conversation_view_video_call);
         } else {
-            title = mMenuCallCapabilitiesView.getContext().getString(R.string.show_call_activity_settings_group_calls);
+            title = mMenuCallCapabilitiesView.getContext().getString(R.string.show_call_view_settings_group_calls);
         }
 
         capabilityViewHolder.onBind(title, switchTag, isEnabled, isSelected);

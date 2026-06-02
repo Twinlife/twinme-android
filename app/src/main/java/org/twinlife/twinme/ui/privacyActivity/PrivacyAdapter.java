@@ -125,9 +125,9 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             String message = "";
             if (position == POSITION_LOCK_SCREEN_INFORMATION) {
-                message = mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_message);
+                message = mPrivacyActivity.getString(R.string.privacy_view_lock_screen_message);
             } else if (position == POSITION_PREVENT_SCREENSHOT_INFORMATION) {
-                message = mPrivacyActivity.getString(R.string.privacy_activity_hide_last_screen_message);
+                message = mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_message);
             }
             informationViewHolder.onBind(message, false);
 
@@ -139,9 +139,9 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             UISetting<Boolean> uiSetting = null;
             if (position == POSITION_LOCK_SCREEN) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_title), Settings.privacyActivityScreenLock);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mPrivacyActivity.getString(R.string.privacy_view_lock_screen_title), Settings.privacyActivityScreenLock);
             } else if (position == POSITION_PREVENT_SCREENSHOT) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mPrivacyActivity.getString(R.string.privacy_activity_hide_last_screen_title), Settings.privacyHideLastScreen);
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_title), Settings.privacyHideLastScreen);
             }
 
             if (uiSetting != null) {
@@ -158,7 +158,7 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else if (viewType == VALUE) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             Runnable runnable = () -> mPrivacyActivity.onSettingClick(Settings.privacyScreenLockTimeout);
-            settingValueViewHolder.onBind(mPrivacyActivity.getString(R.string.privacy_activity_lock_screen_timeout), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout, runnable);
+            settingValueViewHolder.onBind(mPrivacyActivity.getString(R.string.privacy_view_lock_screen_timeout), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout, runnable);
         }
     }
 

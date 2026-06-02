@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService.Descriptor;
@@ -72,7 +71,8 @@ class ImageItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_image_item_overlay_view,
                 R.id.base_item_activity_image_item_annotation_view,
                 R.id.base_item_activity_image_item_selected_view,
-                R.id.base_item_activity_image_item_selected_image_view);
+                R.id.base_item_activity_image_item_selected_image_view,
+                R.id.base_item_activity_image_item_error_image_view);
 
         mImageView = view.findViewById(R.id.base_item_activity_image_item_image_view);
         mImageView.setClickable(false);
@@ -132,7 +132,7 @@ class ImageItemViewHolder extends ItemViewHolder {
                 ImageItem imageItem = getImageItem();
                 if (imageItem != null) {
                     if (imageItem.isClearLocalItem()) {
-                        Toast.makeText(baseItemActivity, R.string.conversation_activity_local_cleanup, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(baseItemActivity, R.string.conversation_view_local_cleanup, Toast.LENGTH_SHORT).show();
                     } else {
                         baseItemActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                         baseItemActivity.onMediaClick(imageItem.getDescriptorId());
@@ -244,7 +244,7 @@ class ImageItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_image_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case GEOLOCATION_DESCRIPTOR:

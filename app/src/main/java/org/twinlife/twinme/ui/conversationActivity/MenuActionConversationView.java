@@ -84,7 +84,8 @@ public class MenuActionConversationView extends PercentRelativeLayout {
         if (CommonUtils.isGooglePlayServicesAvailable(getContext())) {
             actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.LOCATION, sendAllowed));
         }
-        
+
+        actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.POLL, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.FILE, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.GALLERY, sendAllowed));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.VIDEO, sendAllowed));

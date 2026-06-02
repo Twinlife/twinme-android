@@ -9,6 +9,7 @@
 
 package org.twinlife.twinme.ui.conversationActivity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -30,23 +31,22 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.CancellationTokenSource;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ImageId;
@@ -55,15 +55,15 @@ import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.Arrays;
-import java.util.List;
 
-public class PreviewLocationActivity extends AbstractPreviewActivity implements OnMapReadyCallback {
+public class PreviewLocationActivity extends AbstractPreviewActivity {
     private static final String LOG_TAG = "PreviewLocationActivity";
     private static final boolean DEBUG = false;
 
@@ -81,14 +81,20 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
 
     @Nullable
     private GoogleMap mGoogleMap;
+    @Nullable
+    private MapView mMapView;
+
     private Location mUserLocation;
 
     private CardView mCardView;
     private ImageView mMapTypeImageView;
 
+    @Nullable
     private FusedLocationProviderClient mFusedLocationClient;
-    private LocationRequest mLocationRequest;
-    private LocationCallback mLocationCallback;
+
+    @Nullable
+    private CancellationTokenSource mLocationCancellationToken;
+
     private ImageId mImageId;
 
     private TwinmeContextObserver mObserver;
@@ -128,12 +134,46 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
     }
 
     @Override
+    protected void onStart() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onStart");
+        }
+
+        super.onStart();
+
+        if (mMapView != null) {
+            mMapView.onStart();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onDestroy");
         }
 
         super.onDestroy();
+
+        if (mGoogleMap != null) {
+            mGoogleMap.setOnMapLoadedCallback(null);
+            mGoogleMap.clear();
+            mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+            mGoogleMap = null;
+        }
+
+        if (mMapView != null) {
+            mMapView.onDestroy();
+            mMapView = null;
+        }
+
+        if (mLocationCancellationToken != null) {
+            mLocationCancellationToken.cancel();
+            mLocationCancellationToken = null;
+        }
+
+        if (mFusedLocationClient != null) {
+            mFusedLocationClient = null;
+        }
 
         if (mObserver != null) {
             getTwinmeContext().removeObserver(mObserver);
@@ -147,6 +187,10 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         }
 
         super.onPause();
+
+        if (mMapView != null) {
+            mMapView.onPause();
+        }
     }
 
     @Override
@@ -156,6 +200,10 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         }
 
         super.onResume();
+
+        if (mMapView != null) {
+            mMapView.onResume();
+        }
     }
 
     @Override
@@ -167,6 +215,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         super.finish();
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissions(@NonNull Permission[] grantedPermissions) {
         if (DEBUG) {
@@ -189,17 +238,6 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         } else {
             showLocationSettings();
         }
-    }
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onMapReady: googleMap=" + googleMap);
-        }
-
-        mGoogleMap = googleMap;
-
-        initLocation();
     }
 
     @Override
@@ -230,7 +268,6 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
             setResult(RESULT_OK, data);
 
             mUserLocation = null;
-            mGoogleMap.clear();
             finish();
         }
     }
@@ -274,9 +311,17 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         marginLayoutParams.leftMargin = (int) (DESIGN_MAP_SIDE_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_MAP_SIDE_MARGIN * Design.WIDTH_RATIO);
 
-        MapView mapView = findViewById(R.id.preview_location_activity_map_view);
-        mapView.onCreate(null);
-        mapView.getMapAsync(this);
+        mMapView = findViewById(R.id.preview_location_activity_map_view);
+        mMapView.onCreate(null);
+        mMapView.getMapAsync(googleMap -> {
+            if (isFinishing() || isDestroyed()) {
+                return;
+            }
+
+            mGoogleMap = googleMap;
+
+            initLocation();
+        });
 
         if (mIsCertified) {
             mCertifiedImageView.setVisibility(View.VISIBLE);
@@ -356,41 +401,15 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         if (mContactAvatar == null && mImageId != null) {
             mContactAvatar = getTwinmeContext().getImageService().getImage(mImageId, ImageService.Kind.THUMBNAIL);
 
-            runOnUiThread(() -> {
-                mAvatarView.setImage(this, null,
-                        new CircularImageDescriptor(mContactAvatar, 0.5f, 0.5f, 0.5f));
-            });
+            runOnUiThread(() -> mAvatarView.setImage(this, null,
+                    new CircularImageDescriptor(mContactAvatar, 0.5f, 0.5f, 0.5f)));
         }
     }
 
+    @SuppressLint("MissingPermission") // We're actually checking for the permission but Android Lint can't detect that
     private void initLocation() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initLocation");
-        }
-
-        if (mFusedLocationClient == null) {
-            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-            mLocationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000)
-                    .setWaitForAccurateLocation(false)
-                    .setMinUpdateIntervalMillis(LocationRequest.Builder.IMPLICIT_MIN_UPDATE_INTERVAL)
-                    .setMinUpdateDistanceMeters(1)
-                    .build();
-
-            mLocationCallback = new LocationCallback() {
-                @Override
-                public void onLocationResult(@NonNull LocationResult locationResult) {
-
-                    List<Location> locations = locationResult.getLocations();
-                    if (!locations.isEmpty()) {
-                        mUserLocation = locations.get(0);
-                        addLocation();
-                        stopLocationUpdates();
-                    }
-                }
-            };
-
-            startFusedLocation();
         }
 
         LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
@@ -404,32 +423,41 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
         }
     }
 
+    @RequiresPermission(anyOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     private void startFusedLocation() {
         if (DEBUG) {
             Log.d(LOG_TAG, "startFusedLocation");
         }
 
-        try {
-            mFusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
-                if (location != null) {
-                    mUserLocation = location;
-                    addLocation();
-                }
-            });
-            mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, null);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void stopLocationUpdates() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "stopLocationUpdates");
+        if (mFusedLocationClient == null) {
+            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         }
 
-        if (mFusedLocationClient != null) {
-            mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, location -> {
+                    if (location != null) {
+                        mUserLocation = location;
+                        addLocation();
+                    }
+                });
+
+        if (mLocationCancellationToken != null) {
+            mLocationCancellationToken.cancel();
         }
+
+        CurrentLocationRequest currentLocationRequest = new CurrentLocationRequest.Builder()
+                .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
+                .build();
+
+        mLocationCancellationToken = new CancellationTokenSource();
+
+        mFusedLocationClient.getCurrentLocation(currentLocationRequest, mLocationCancellationToken.getToken())
+                .addOnSuccessListener(this, location -> {
+                    if (location != null) {
+                        mUserLocation = location;
+                        addLocation();
+                    }
+                });
     }
 
     private void addLocation() {
@@ -448,7 +476,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
             markerOptions.title("");
             markerOptions.draggable(false);
 
-            this.getMarkerBitmapFromView((Bitmap avatar) -> {
+            getMarkerBitmapFromView((Bitmap avatar) -> {
                 markerOptions.icon(BitmapDescriptorFactory.fromBitmap(avatar));
                 markerOptions.visible(true);
             });
@@ -468,7 +496,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity implements 
 
         } catch (Throwable ex) {
             // An exception could be raised if the wrong Google play service is used.
-            Log.w(LOG_TAG, "Error: " + ex.getMessage());
+            Log.w(LOG_TAG, "Error while adding location", ex);
         }
     }
 

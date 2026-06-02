@@ -140,7 +140,7 @@ class TypingItemViewHolder extends BaseItemViewHolder {
             mMembersRecyclerView.requestLayout();
         }
 
-        mUIContactListAdapter.notifyDataSetChanged();
+        mUIContactListAdapter.notifyItemRangeChanged(0, mUIContacts.size());
     }
 
     private void animationBubble() {

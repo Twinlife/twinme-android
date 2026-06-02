@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/calls_fragment_call_again_title"
+                    android:text="@string/calls_view_call_again_title"
                     app:layout_marginEndPercent="3.75%" />
 
                 <ImageView

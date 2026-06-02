@@ -25,7 +25,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 
-class DigitsAdapter extends RecyclerView.Adapter {
+class DigitsAdapter extends RecyclerView.Adapter<DigitsAdapter.DigitViewHolder> {
+
+    private static final int[] BACKGROUND_IDS = {
+            R.drawable.digit_background_0,
+            R.drawable.digit_background_1,
+            R.drawable.digit_background_2,
+            R.drawable.digit_background_3,
+            R.drawable.digit_background_4,
+            R.drawable.digit_background_5,
+            R.drawable.digit_background_6,
+            R.drawable.digit_background_7,
+            R.drawable.digit_background_8,
+            R.drawable.digit_background_9
+    };
+
+    private static final int[] BLANK_BACKGROUND_IDS = {
+            R.drawable.digit_blank_background_0,
+            R.drawable.digit_blank_background_1,
+            R.drawable.digit_blank_background_2,
+            R.drawable.digit_blank_background_3,
+            R.drawable.digit_blank_background_4,
+            R.drawable.digit_blank_background_5,
+            R.drawable.digit_blank_background_6,
+            R.drawable.digit_blank_background_7,
+            R.drawable.digit_blank_background_8,
+            R.drawable.digit_blank_background_9
+    };
 
     private final int resId;
     @NonNull
@@ -48,7 +74,7 @@ class DigitsAdapter extends RecyclerView.Adapter {
 
     @Override
     @NonNull
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DigitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         final View convertView = LayoutInflater.from(parent.getContext()).inflate(this.resId, parent, false);
         convertView.setOnClickListener(view -> digitClickListener.onDigitClicked((int) convertView.getTag()));
@@ -58,7 +84,7 @@ class DigitsAdapter extends RecyclerView.Adapter {
 
     @SuppressLint("NewApi")
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DigitViewHolder holder, int position) {
 
         holder.itemView.setTag(position);
 
@@ -73,9 +99,9 @@ class DigitsAdapter extends RecyclerView.Adapter {
         Context context = parent.getContext();
         int id;
         if (code.contains(String.valueOf(position))) {
-            id = context.getResources().getIdentifier("digit_background_" + position, "drawable", context.getPackageName());
+            id = BACKGROUND_IDS[position];
         } else {
-            id = context.getResources().getIdentifier("digit_blank_background_" + position, "drawable", context.getPackageName());
+            id = BLANK_BACKGROUND_IDS[position];
         }
 
         digitTextView.setBackground(ResourcesCompat.getDrawable(context.getResources(), id, null));
@@ -93,7 +119,7 @@ class DigitsAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    private static class DigitViewHolder extends RecyclerView.ViewHolder {
+    static class DigitViewHolder extends RecyclerView.ViewHolder {
 
         DigitViewHolder(View itemView) {
 

@@ -19,6 +19,7 @@ import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -60,6 +61,8 @@ public abstract class Item implements Comparable<Item> {
         PEER_VIDEO,
         FILE,
         PEER_FILE,
+        POLL,
+        PEER_POLL,
         NAME,
         INVITATION,
         PEER_INVITATION,
@@ -121,7 +124,11 @@ public abstract class Item implements Comparable<Item> {
     private boolean mSelected;
     private ItemMode mMode;
 
+    @NonNull
     private List<ConversationService.DescriptorAnnotation> mLikeDescriptorAnnotations;
+
+    @Nullable
+    private ConversationService.DescriptorAnnotation mErrorDescriptorAnnotation;
 
     @Nullable
     private final Descriptor mReplyToDescriptor;
@@ -169,6 +176,7 @@ public abstract class Item implements Comparable<Item> {
         mCanReply = false;
         mSelected = false;
         mForwarded = descriptor.getAnnotation(ConversationService.AnnotationType.FORWARDED) != null;
+        mErrorDescriptorAnnotation = descriptor.getAnnotation(ConversationService.AnnotationType.ERROR);
         mLikeDescriptorAnnotations = descriptor.getAnnotations(ConversationService.AnnotationType.LIKE);
     }
 
@@ -197,6 +205,7 @@ public abstract class Item implements Comparable<Item> {
         mForwarded = false;
         mSelected = false;
         mReplyToDescriptor = null;
+        mLikeDescriptorAnnotations = new ArrayList<>();
     }
 
     public abstract boolean isPeerItem();
@@ -233,7 +242,7 @@ public abstract class Item implements Comparable<Item> {
         return mReadTimestamp;
     }
 
-    long getReceivedTimestamp() {
+    public long getReceivedTimestamp() {
 
         return mReceivedTimestamp;
     }
@@ -360,14 +369,10 @@ public abstract class Item implements Comparable<Item> {
         mSelected = selected;
     }
 
+    @NonNull
     public List<ConversationService.DescriptorAnnotation> getLikeDescriptorAnnotations() {
 
         return mLikeDescriptorAnnotations;
-    }
-
-    void setLikeDescriptorAnnotations(List<ConversationService.DescriptorAnnotation> descriptorAnnotations) {
-
-        mLikeDescriptorAnnotations = descriptorAnnotations;
     }
 
     public String getPath() {
@@ -422,6 +427,12 @@ public abstract class Item implements Comparable<Item> {
         return mReplyToDescriptor.getDescriptorId();
     }
 
+    @Nullable
+    public ConversationService.DescriptorAnnotation getErrorDescriptorAnnotation() {
+
+        return mErrorDescriptorAnnotation;
+    }
+
     public boolean hasLikeAnnotation(int value) {
 
         for (ConversationService.DescriptorAnnotation descriptorAnnotation : mLikeDescriptorAnnotations) {
@@ -435,6 +446,7 @@ public abstract class Item implements Comparable<Item> {
     public void updateAnnotations(Descriptor descriptor) {
 
         mForwarded = descriptor.getAnnotation(ConversationService.AnnotationType.FORWARDED) != null;
+        mErrorDescriptorAnnotation = descriptor.getAnnotation(ConversationService.AnnotationType.ERROR);
         mLikeDescriptorAnnotations = descriptor.getAnnotations(ConversationService.AnnotationType.LIKE);
     }
 

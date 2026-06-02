@@ -87,15 +87,15 @@ public class SettingsGroupAdapter extends RecyclerView.Adapter<RecyclerView.View
             int switchTag = 0;
 
             if (position == POSITION_ALLOW_INVITATION) {
-                title = mActivity.getString(R.string.create_group_activity_member_allow_invitation_title);
+                title = mActivity.getString(R.string.create_group_view_member_allow_invitation_title);
                 switchTag = SettingsGroupActivity.ALLOW_INVITATION_SWITCH;
                 isSelected = mActivity.allowInvitation();
             } else if (position == POSITION_ALLOW_MESSAGE) {
-                title = mActivity.getString(R.string.create_group_activity_member_allow_post_title);
+                title = mActivity.getString(R.string.create_group_view_member_allow_post_title);
                 switchTag = SettingsGroupActivity.ALLOW_MESSAGE_SWITCH;
                 isSelected = mActivity.allowMessage();
             } else if (position == POSITION_INVITE_MEMBER_AS_CONTACT) {
-                title = mActivity.getString(R.string.create_group_activity_member_allow_invite_member_as_contact_title);
+                title = mActivity.getString(R.string.create_group_view_member_allow_invite_member_as_contact_title);
                 switchTag = SettingsGroupActivity.ALLOW_INVITE_MEMBER_AS_CONTACT_SWITCH;
                 isSelected = mActivity.allowInviteMemberAsContact();
             }
@@ -109,11 +109,11 @@ public class SettingsGroupAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             String text = "";
             if (position == POSITION_ALLOW_INVITATION_INFORMATION) {
-                text = mActivity.getString(R.string.create_group_activity_member_allow_invitation_message);
+                text = mActivity.getString(R.string.create_group_view_member_allow_invitation_message);
             } else if (position == POSITION_ALLOW_MESSAGE_INFORMATION) {
-                text = mActivity.getString(R.string.create_group_activity_member_allow_post_message);
+                text = mActivity.getString(R.string.create_group_view_member_allow_post_message);
             } else if (position == POSITION_INVITE_MEMBER_AS_CONTACT_INFORMATION) {
-                text = mActivity.getString(R.string.create_group_activity_member_allow_invite_member_as_contact_message);
+                text = mActivity.getString(R.string.create_group_view_member_allow_invite_member_as_contact_message);
             }
 
             informationViewHolder.onBind(text, false);

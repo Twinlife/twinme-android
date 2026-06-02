@@ -1,9 +1,10 @@
 /*
- *  Copyright (c) 2019 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.baseItemActivity;
@@ -30,6 +31,7 @@ public class PeerLocationItem extends Item {
 
         mGeolocationDescriptor = geolocationDescriptor;
         mPeerTwincodeOutboundId = geolocationDescriptor.getTwincodeOutboundId();
+        setCopyAllowed(mGeolocationDescriptor.isCopyAllowed());
     }
 
     GeolocationDescriptor getGeolocationDescriptor() {
@@ -65,7 +67,7 @@ public class PeerLocationItem extends Item {
     }
 
     @Override
-    String getInformation(Context context) {
+    public String getInformation(Context context) {
 
         return mGeolocationDescriptor.getLatitude() + "," + mGeolocationDescriptor.getLongitude();
     }

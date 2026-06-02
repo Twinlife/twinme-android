@@ -105,6 +105,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -150,6 +151,8 @@ public class NotificationCenterImpl implements NotificationCenter {
     private static final boolean SYSTEM_NOTIFICATION_ON_CONTACT_UPDATE = true;
 
     private static final String DESCRIPTOR_ID_EXTRA = "DESCRIPTOR_ID";
+
+    private static final String ANNOTATION_TYPE_EXTRA = "ANNOTATION_TYPE";
 
     private static class SystemNotification {
 
@@ -304,7 +307,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                 type = NotificationType.NEW_GEOLOCATION;
 
                 if (mTwinmeApplication.getDisplayNotificationSender() && mTwinmeApplication.getDisplayNotificationContent()) {
-                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notifications_fragment_item_geolocation_message));
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notifications_view_item_geolocation_message));
                 } else if (mTwinmeApplication.getDisplayNotificationSender() && !mTwinmeApplication.getDisplayNotificationContent()) {
                     notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                 } else if (!mTwinmeApplication.getDisplayNotificationSender() && mTwinmeApplication.getDisplayNotificationContent()) {
@@ -312,6 +315,10 @@ public class NotificationCenterImpl implements NotificationCenter {
                 } else {
                     notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                 }
+                break;
+
+            case POLL_DESCRIPTOR:
+                type = NotificationType.NEW_POLL_MESSAGE;
                 break;
 
             case INVITATION_DESCRIPTOR:
@@ -323,7 +330,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                     } else if (displayNotificationSender) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     } else if (displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation_received_group));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_invitation_group_received));
                     } else {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     }
@@ -358,7 +365,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             return;
         }
-        messageNotification(contact, sessionId, conversation, notificationMessage, timestamp, type, descriptor, null);
+        messageNotification(contact, sessionId, conversation, notificationMessage, timestamp, type, descriptor, null, null);
     }
 
     /**
@@ -517,8 +524,8 @@ public class NotificationCenterImpl implements NotificationCenter {
     }
 
     @Override
-    public void onUpdateAnnotation(@NonNull Originator contact, @NonNull Conversation conversation, @NonNull Descriptor descriptor,
-                            @NonNull TwincodeOutbound annotatingUser) {
+    public void onUpdateAnnotations(@NonNull Originator contact, @NonNull Conversation conversation, @NonNull Descriptor descriptor,
+                                    @NonNull TwincodeOutbound annotatingUser, @NonNull Set<ConversationService.DescriptorAnnotation> updatedAnnotations) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onUpdateAnnotation: contact=" + contact + " conversation=" + conversation + " descriptor=" + descriptor
                     + " annotatingUser=" + annotatingUser);
@@ -529,8 +536,21 @@ public class NotificationCenterImpl implements NotificationCenter {
         // If we use -1 like before, reactions will be displayed first, sometimes before the message it is reacting to.
         long timestamp = System.currentTimeMillis();
 
-        messageNotification(contact, null, conversation, new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message_received)), timestamp,
-                NotificationType.UPDATED_ANNOTATION, descriptor, annotatingUser);
+        for (ConversationService.DescriptorAnnotation annotation : updatedAnnotations) {
+            int message;
+            switch (annotation.getType()) {
+                case POLL:
+                    message = R.string.notification_center_poll_vote;
+                    break;
+                case LIKE:
+                    message = R.string.notification_center_reaction_message_received;
+                    break;
+                default:
+                    continue;
+            }
+            messageNotification(contact, null, conversation, new SpannableStringBuilder(mApplication.getString(message)), timestamp,
+                    NotificationType.UPDATED_ANNOTATION, descriptor, annotatingUser, annotation);
+        }
     }
 
     @Override
@@ -539,7 +559,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             Log.d(LOG_TAG, "onJoinGroup: group=" + group);
         }
 
-        messageNotification(group, null, conversation, null, -1, NotificationType.NEW_GROUP_JOINED, null, null);
+        messageNotification(group, null, conversation, null, -1, NotificationType.NEW_GROUP_JOINED, null, null, null);
     }
 
     @Override
@@ -576,6 +596,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         }
 
         String descriptorId = message.getExtras().getString(DESCRIPTOR_ID_EXTRA);
+        int annotationType = message.getExtras().getInt(ANNOTATION_TYPE_EXTRA, -1);
 
         for (StatusBarNotification statusBarNotification : mNotificationManager.getActiveNotifications()) {
             if (statusBarNotification.getId() == notificationId) {
@@ -584,13 +605,14 @@ public class NotificationCenterImpl implements NotificationCenter {
 
                     List<NotificationCompat.MessagingStyle.Message> messages = messagingStyle.getMessages();
 
-                    // If there is already a message with the same descriptor ID, the new message is actually and edit =>
+                    // If there is already a message with the same descriptor ID and annotation type, the new message is actually and edit =>
                     // remove the original message and add the edited one.
                     NotificationCompat.MessagingStyle.Message originalMessage = null;
                     for (NotificationCompat.MessagingStyle.Message msg : messages) {
                         String dId = msg.getExtras().getString(DESCRIPTOR_ID_EXTRA);
+                        int aType = msg.getExtras().getInt(ANNOTATION_TYPE_EXTRA, -1);
 
-                        if (descriptorId != null && descriptorId.equals(dId)) {
+                        if (Objects.equals(descriptorId, dId) && annotationType == aType) {
                             originalMessage = msg;
                         }
                     }
@@ -619,10 +641,8 @@ public class NotificationCenterImpl implements NotificationCenter {
                             .setNumber(messages.size())
                             .setStyle(messagingStyle);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (sender != null && sender.getIcon() != null) {
-                            builder.setLargeIcon(sender.getIcon().toIcon(mApplication));
-                        }
+                    if (sender != null && sender.getIcon() != null) {
+                        builder.setLargeIcon(sender.getIcon().toIcon(mApplication));
                     }
 
                     postNotification(statusBarNotification.getId(), builder.build());
@@ -673,7 +693,7 @@ public class NotificationCenterImpl implements NotificationCenter {
     private void messageNotification(@NonNull Originator contact, UUID sessionId, @NonNull Conversation conversation,
                                      SpannableStringBuilder notificationMessage, long timestamp,
                                      NotificationType notificationType, @Nullable Descriptor descriptor,
-                                     @Nullable TwincodeOutbound annotatingUser) {
+                                     @Nullable TwincodeOutbound annotatingUser, @Nullable ConversationService.DescriptorAnnotation annotation) {
         if (DEBUG) {
             Log.d(LOG_TAG, "messageNotification: contact=" + contact + " conversation=" + conversation + " msg=" + notificationMessage + " type=" + notificationType);
         }
@@ -722,7 +742,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         NewMessageNotification newMessageNotification = null;
         synchronized (this) {
             SystemNotification notification = mConversationId2Notifications.get(conversation.getId());
-            if (notification != null) {
+            if (notification instanceof NewMessageNotification) {
                 newMessageNotification = (NewMessageNotification) notification;
             }
         }
@@ -813,6 +833,18 @@ public class NotificationCenterImpl implements NotificationCenter {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     } else if (displayNotificationContent) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_geolocation_message_received));
+                    }  else {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                    }
+                    break;
+
+                case NEW_POLL_MESSAGE:
+                    if (displayNotificationSender && displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_poll_message));
+                    } else if (displayNotificationSender) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                    } else if (displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_poll_message_received));
                     } else {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     }
@@ -837,7 +869,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
                 case RESET_CONVERSATION:
                     if (displayNotificationSender && displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notifications_fragment_item_cleanup_message));
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notifications_view_item_cleanup_message));
                     } else if (displayNotificationSender) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     } else if (displayNotificationContent) {
@@ -848,10 +880,19 @@ public class NotificationCenterImpl implements NotificationCenter {
                     break;
 
                 case UPDATED_ANNOTATION:
-                    if (displayNotificationSender && displayNotificationContent) {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message_received));
-                    } else {
-                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message));
+                    if (annotation != null) {
+                        switch (annotation.getType()) {
+                            case LIKE:
+                                if (displayNotificationSender && displayNotificationContent) {
+                                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message_received));
+                                } else {
+                                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message));
+                                }
+                                break;
+                            case POLL:
+                                notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_poll_vote));
+                                break;
+                        }
                     }
                     break;
 
@@ -876,7 +917,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         Notification notification = null;
         if (notificationType != null) {
             notification = mTwinmeContext.createNotification(notificationType, notificationId, contact,
-                    descriptor == null ? null : descriptor.getDescriptorId(), annotatingUser);
+                    descriptor == null ? null : descriptor.getDescriptorId(), annotatingUser, annotation);
         }
 
         NotificationCompat.MessagingStyle.Message message = null;
@@ -888,9 +929,13 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
 
             if (notificationType == NotificationType.UPDATED_ANNOTATION) {
-                String emoji = emojiFromAnnotationValue(UIReaction.ReactionType.values()[notification.getAnnotationValue()]);
-                if (!emoji.isEmpty() && displayNotificationContent) {
-                    notificationMessage = new SpannableStringBuilder(String.format(mApplication.getString(R.string.notification_center_reaction), emoji));
+                if (notification.getAnnotationType() == ConversationService.AnnotationType.LIKE) {
+                    String emoji = emojiFromAnnotationValue(UIReaction.ReactionType.values()[notification.getAnnotationValue()]);
+                    if (!emoji.isEmpty() && displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(String.format(mApplication.getString(R.string.notification_center_reaction), emoji));
+                    }
+                } else if (notification.getAnnotationType() == ConversationService.AnnotationType.POLL) {
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_poll_vote));
                 }
             }
 
@@ -919,6 +964,10 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             if (descriptor != null) {
                 message.getExtras().putString(DESCRIPTOR_ID_EXTRA, descriptor.getDescriptorId().toString());
+            }
+
+            if (annotation != null) {
+                message.getExtras().putInt(ANNOTATION_TYPE_EXTRA, annotation.getType().ordinal());
             }
 
             if (updateMessageNotification(notificationId, message, sender, false)) {
@@ -1016,7 +1065,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             String youName = displayNotificationSender && !TextUtils.isEmpty(contact.getIdentityName()) ?
                     contact.getIdentityName() :
-                    mApplication.getResources().getString(R.string.conversations_fragment_you);
+                    mApplication.getResources().getString(R.string.conversations_view_you);
 
             Person you = new Person.Builder()
                     .setName(youName)
@@ -1050,7 +1099,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                 // nor direct replies.
 
                 if (allowReply(contact, notificationType) && shortcutInfo != null) {
-                    String replyLabel = mApplication.getResources().getString(R.string.conversation_activity_menu_item_view_reply_title);
+                    String replyLabel = mApplication.getResources().getString(R.string.conversation_view_menu_item_view_reply_title);
                     RemoteInput remoteInput = new RemoteInput.Builder(NotificationReceiver.KEY_TEXT_REPLY)
                             .setLabel(replyLabel)
                             .build();
@@ -1152,7 +1201,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             postNotification(notificationId, notificationBuilder.build());
         }
 
-        mTwinmeContext.createNotification(NotificationType.NEW_CONTACT, notificationId, contact, null, null);
+        mTwinmeContext.createNotification(NotificationType.NEW_CONTACT, notificationId, contact, null, null, null);
     }
 
     @Override
@@ -1201,7 +1250,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             postNotification(notificationId, notificationBuilder.build());
         }
 
-        mTwinmeContext.createNotification(NotificationType.DELETED_CONTACT, notificationId, contact, null, null);
+        mTwinmeContext.createNotification(NotificationType.DELETED_CONTACT, notificationId, contact, null, null, null);
 
         ShortcutManagerCompat.removeLongLivedShortcuts(mApplication, Collections.singletonList(Originator.Type.CONTACT + "_" + contact.getId()));
     }
@@ -1272,7 +1321,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         } else {
             notificationId = Notification.NO_NOTIFICATION_ID;
         }
-        mTwinmeContext.createNotification(type, notificationId, contact, null, null);
+        mTwinmeContext.createNotification(type, notificationId, contact, null, null, null);
 
     }
 
@@ -1482,9 +1531,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mApplication, mDefaultChannel);
         notificationBuilder.setContentTitle(mApplication.getString(R.string.application_name));
         if (video) {
-            notificationBuilder.setContentText(mApplication.getString(R.string.conversation_activity_video_call));
+            notificationBuilder.setContentText(mApplication.getString(R.string.conversation_view_video_call));
         } else {
-            notificationBuilder.setContentText(mApplication.getString(R.string.conversation_activity_audio_call));
+            notificationBuilder.setContentText(mApplication.getString(R.string.conversation_view_audio_call));
         }
 
         notificationBuilder.setSmallIcon(R.drawable.logo_small);
@@ -1541,9 +1590,7 @@ public class NotificationCenterImpl implements NotificationCenter {
     @NonNull
     private PendingIntent createPendingIntent(int requestCode, @NonNull Intent intent, int flags) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            flags |= PendingIntent.FLAG_IMMUTABLE;
-        }
+        flags |= PendingIntent.FLAG_IMMUTABLE;
 
         return PendingIntent.getActivity(mApplication, requestCode, intent, flags);
     }
@@ -1553,10 +1600,8 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return PendingIntent.getForegroundService(mApplication, 0, intent, flags | PendingIntent.FLAG_IMMUTABLE);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return PendingIntent.getService(mApplication, 0, intent, flags | PendingIntent.FLAG_IMMUTABLE);
         } else {
-            return PendingIntent.getService(mApplication, 0, intent, flags);
+            return PendingIntent.getService(mApplication, 0, intent, flags | PendingIntent.FLAG_IMMUTABLE);
         }
     }
 
@@ -1582,7 +1627,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         String callerShortcutId;
 
         if (discreet) {
-            callerName = mApplication.getResources().getString(R.string.calls_fragment_incoming_call);
+            callerName = mApplication.getResources().getString(R.string.calls_view_incoming_call);
             avatar = mTwinmeApplication.getAnonymousAvatar();
             callerShortcutId = null;
         } else {
@@ -1606,9 +1651,9 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         if (calleeName == null) {
             if (video) {
-                notificationBuilder.setContentText(mApplication.getString(R.string.conversation_activity_video_call));
+                notificationBuilder.setContentText(mApplication.getString(R.string.conversation_view_video_call));
             } else {
-                notificationBuilder.setContentText(mApplication.getString(R.string.conversation_activity_audio_call));
+                notificationBuilder.setContentText(mApplication.getString(R.string.conversation_view_audio_call));
             }
         } else {
             if (video) {
@@ -1845,8 +1890,8 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         // Create notification builder.
 
-        notificationBuilder.setContentText(service.getString(R.string.account_activity_migration_title));
-        notificationBuilder.setContentTitle(service.getString(R.string.account_activity_migration_title));
+        notificationBuilder.setContentText(service.getString(R.string.account_view_migration_title));
+        notificationBuilder.setContentTitle(service.getString(R.string.account_view_migration_title));
         notificationBuilder.setWhen(System.currentTimeMillis());
         notificationBuilder.setSmallIcon(R.drawable.logo_small);
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_MAX);
@@ -1924,7 +1969,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         // Create notification builder.
 
-        notificationBuilder.setContentTitle(service.getString(R.string.backup_activity_title));
+        notificationBuilder.setContentTitle(service.getString(R.string.backup_view_title));
         notificationBuilder.setWhen(System.currentTimeMillis());
         notificationBuilder.setSmallIcon(R.drawable.logo_small);
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_MAX);
@@ -2105,7 +2150,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         notificationBuilder.setContentIntent(showContactPendingIntent);
 
         if (calleeName == null) {
-            notificationBuilder.setContentText(mApplication.getString(R.string.calls_fragment_missed_call));
+            notificationBuilder.setContentText(mApplication.getString(R.string.calls_view_missed_call));
         } else {
             if (video) {
                 notificationBuilder.setContentText(String.format(mApplication.getString(R.string.notification_center_missed_video_call_to), calleeName));
@@ -2128,7 +2173,7 @@ public class NotificationCenterImpl implements NotificationCenter {
         }
 
         NotificationType notificationType = video ? NotificationType.MISSED_VIDEO_CALL : NotificationType.MISSED_AUDIO_CALL;
-        mTwinmeContext.createNotification(notificationType, notificationId, originator, null, null);
+        mTwinmeContext.createNotification(notificationType, notificationId, originator, null, null, null);
     }
 
     private void deleteNotificationChannels() {

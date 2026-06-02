@@ -54,6 +54,8 @@ public class Settings {
     public static final IntConfig displayMode = new IntConfig("settings_activity_display_mode", DisplayMode.SYSTEM.ordinal(), "44CE232D-4BA3-4295-8B27-7BD9981AD555");
     public static final IntConfig hapticFeedbackMode = new IntConfig("settings_activity_haptic_feedback_mode", TwinmeApplication.HapticFeedbackMode.SYSTEM.ordinal(), "E9819421-CD71-4C3D-AB6A-0783F0FF4532");
     public static final BooleanConfig visualizationLink = new BooleanConfig("settings_activity_visualization_link", true, "4B143BC6-1590-4889-B46A-2B54BCf5DBA8");
+    public static final BooleanConfig visualizationMap = new BooleanConfig("settings_activity_visualization_map", true, "C7CE54E3-D789-435B-B0F9-C20048C1873D");
+
     public static BooleanConfig hapticFeedbackEnable;
 
     public static final IntConfig emojiSize = new IntConfig("settings_activity_emoji_size", EmojiSize.STANDARD.ordinal(), "5CDAfAE4-FFE8-4754-A178-4f8C5DC834E0");
@@ -131,6 +133,7 @@ public class Settings {
     // Backup
     public static final InternalLongConfig firstInstallationBackupDate = new InternalLongConfig("backup_activity_first_date", 0);
     public static final LongConfig lastBackupDate =new LongConfig("backup_activity_last_date", 0, "E55ECCE5-A709-4C5d-9D7D-09CDDEA8f8C5");
+    public static final LongConfig lastBackupAlertDate = new LongConfig("backup_activity_last_alert_date", 0, "58D0333B-3972-4037-80AF-71775A12116F");
 
     // Coach Mark
     public static final LongConfig lastShowCoachMarkConversationEphemeral = new LongConfig("last_show_coach_mark_conversation_ephemeral", 0, "314464E8-228B-4D0F-A1CF-43EEC8BCA45A");

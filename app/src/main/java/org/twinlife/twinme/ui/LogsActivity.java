@@ -66,7 +66,7 @@ public class LogsActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.feedback_activity_logs));
+        setTitle(getString(R.string.feedback_view_logs));
         setBackgroundColor(Design.WHITE_COLOR);
 
         applyInsets(R.id.logs_activity_layout, R.id.logs_activity_tool_bar, R.id.logs_activity_logs_view, Design.TOOLBAR_COLOR, false);

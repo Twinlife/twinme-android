@@ -36,7 +36,7 @@ public class UITimeout {
      public static String getDelay(Context context, int delay) {
 
         if (delay == 0) {
-            return context.getResources().getString(org.twinlife.device.android.twinme.R.string.privacy_activity_lock_screen_timeout_instant);
+            return context.getResources().getString(org.twinlife.device.android.twinme.R.string.privacy_view_lock_screen_timeout_instant);
         } else if (delay == 10) {
             return String.format(context.getResources().getString(R.string.application_timeout_seconds), 10);
         } else if (delay == 30) {

@@ -32,7 +32,7 @@
             app:layout_widthPercent="89.33%" />
 
         <View
-            android:layout_above="@+id/room_members_activity_menu_invite_view"
+            android:layout_below="@+id/room_members_activity_menu_name_view"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/room_members_activity_menu_remove_view">
+            android:layout_below="@+id/room_members_activity_menu_name_view">
 
             <ImageView
                 android:id="@+id/room_members_activity_menu_invite_image_view"
@@ -67,7 +67,7 @@
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <View
-            android:layout_below="@+id/room_members_activity_menu_admin_view"
+            android:layout_below="@+id/room_members_activity_menu_invite_view"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/room_members_activity_menu_invite_view">
+            android:layout_below="@+id/room_members_activity_menu_invite_view">
 
             <ImageView
                 android:id="@+id/room_members_activity_menu_admin_image_view"
@@ -102,7 +102,7 @@
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <View
-            android:layout_below="@+id/room_members_activity_menu_invite_view"
+            android:layout_below="@+id/room_members_activity_menu_admin_view"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="?attr/separator_color"
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true">
+            android:layout_below="@+id/room_members_activity_menu_admin_view">
 
             <ImageView
                 android:id="@+id/room_members_activity_menu_remove_image_view"

@@ -108,12 +108,12 @@ public class SpaceAppearanceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_activity_header_message), false);
+            informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_view_header_message), false);
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             switch (position) {
                 case SECTION_MODE:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.personalization_activity_mode), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.personalization_view_mode), false);
                     break;
 
                 case SECTION_APPEARANCE:
@@ -130,11 +130,11 @@ public class SpaceAppearanceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnSpaceAppearanceClickListener.onConversationAppearanceClick());
-            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversations_fragment_title), true);
+            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversations_view_title), true);
         } else if (viewType == COLOR) {
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;
             appearanceColorViewHolder.itemView.setOnClickListener(view -> mOnSpaceAppearanceClickListener.onUpdateMainColorClick());
-            appearanceColorViewHolder.onBind(mListActivity.getMainColor(), mListActivity.getString(R.string.space_appearance_activity_theme), null, false);
+            appearanceColorViewHolder.onBind(mListActivity.getMainColor(), mListActivity.getString(R.string.space_appearance_view_theme), null, false);
         }
     }
 

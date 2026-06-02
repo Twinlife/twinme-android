@@ -74,6 +74,6 @@ public class MenuCertifyView extends AbstractMenuSelectActionView {
 
         super.initViews();
 
-        mTitleView.setText(getResources().getString(R.string.authentified_relation_activity_to_be_certified_title));
+        mTitleView.setText(getResources().getString(R.string.authentified_relation_view_to_be_certified_title));
     }
 }

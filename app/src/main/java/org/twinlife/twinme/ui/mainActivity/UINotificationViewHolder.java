@@ -27,6 +27,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -180,38 +181,38 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
         switch (uiNotification.getNotificationType()) {
             case NEW_CONTACT:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_new_contact, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_new_contact);
+                subTitle = context.getString(R.string.notifications_view_item_new_contact);
                 break;
 
             case UPDATED_CONTACT:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_update_contact, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_updated_contact_name);
+                subTitle = context.getString(R.string.notifications_view_item_updated_contact_name);
                 break;
 
             case UPDATED_AVATAR_CONTACT:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_update_contact, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_updated_contact_avatar);
+                subTitle = context.getString(R.string.notifications_view_item_updated_contact_avatar);
                 break;
 
             case DELETED_CONTACT:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_remove_contact, null);
                 mTypeView.setColorFilter(Design.DELETE_COLOR_RED);
-                subTitle = context.getString(R.string.notifications_fragment_item_deleted_contact);
+                subTitle = context.getString(R.string.notifications_view_item_deleted_contact);
                 break;
 
             case MISSED_AUDIO_CALL:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_audio_call, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_audio_call);
+                subTitle = context.getString(R.string.notifications_view_item_audio_call);
                 break;
 
             case MISSED_VIDEO_CALL:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_video_call, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_video_call);
+                subTitle = context.getString(R.string.notifications_view_item_video_call);
                 break;
 
             case RESET_CONVERSATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.toolbar_trash_grey, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_cleanup_message);
+                subTitle = context.getString(R.string.notifications_view_item_cleanup_message);
                 mTypeView.setColorFilter(Design.DELETE_COLOR_RED);
                 break;
 
@@ -220,55 +221,66 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
 
             case NEW_TEXT_MESSAGE:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_text_message, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_text_message);
+                subTitle = context.getString(R.string.notifications_view_item_text_message);
                 break;
 
             case NEW_IMAGE_MESSAGE:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_image_message, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_image_message);
+                subTitle = context.getString(R.string.notifications_view_item_image_message);
                 break;
 
             case NEW_AUDIO_MESSAGE:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_audio_message, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_audio_message);
+                subTitle = context.getString(R.string.notifications_view_item_audio_message);
                 mTypeView.setColorFilter(Design.BLACK_COLOR);
                 break;
 
             case NEW_VIDEO_MESSAGE:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_video_message, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_video_message);
+                subTitle = context.getString(R.string.notifications_view_item_video_message);
                 break;
 
             case NEW_FILE_MESSAGE:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_file_message, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_file_message);
+                subTitle = context.getString(R.string.notifications_view_item_file_message);
                 mTypeView.setColorFilter(Design.BLACK_COLOR);
+                break;
+
+            case NEW_POLL_MESSAGE:
+                drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.poll_icon, null);
+                subTitle = context.getString(R.string.notifications_view_item_poll_message);
                 break;
 
             case NEW_CONTACT_INVITATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_invitation);
+                subTitle = context.getString(R.string.notifications_view_item_invitation);
                 break;
 
             case NEW_GROUP_INVITATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_invitation_group);
+                subTitle = context.getString(R.string.notifications_view_item_invitation_group);
                 break;
 
             case NEW_GROUP_JOINED:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_join_group, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_join_group);
+                subTitle = context.getString(R.string.notifications_view_item_join_group);
                 break;
 
             case UPDATED_ANNOTATION:
-                mTypeView.setImageResource(UIReaction.getNotificationImageReactionWithReactionType(uiNotification.getLastNotification().getAnnotationValue()));
-                mTypeView.setColorFilter(UIReaction.getColorFilterReactionWithReactionType(uiNotification.getLastNotification().getAnnotationValue()));
-                subTitle = context.getString(R.string.notification_center_reaction_message);
+                if (uiNotification.getLastNotification().getAnnotationType() == ConversationService.AnnotationType.POLL) {
+                    drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.poll_icon, null);
+                    subTitle = context.getString(R.string.notification_center_poll_vote);
+                } else {
+                    mTypeView.setImageResource(UIReaction.getNotificationImageReactionWithReactionType(uiNotification.getLastNotification().getAnnotationValue()));
+                    mTypeView.setColorFilter(UIReaction.getColorFilterReactionWithReactionType(uiNotification.getLastNotification().getAnnotationValue()));
+                    subTitle = context.getString(R.string.notification_center_reaction_message);
+                }
+
                 break;
 
             case NEW_GEOLOCATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_location_message, null);
-                subTitle = context.getString(R.string.notifications_fragment_item_geolocation_message);
+                subTitle = context.getString(R.string.notifications_view_item_geolocation_message);
                 break;
         }
         if (drawable != null) {
@@ -315,25 +327,25 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
         long days = TimeUnit.MILLISECONDS.toDays(diff);
 
         if (days > 0) {
-            return String.format(context.getString(R.string.notifications_fragment_item_shortest_day), days);
+            return String.format(context.getString(R.string.notifications_view_item_shortest_day), days);
         }
 
         long hours = TimeUnit.MILLISECONDS.toHours(diff);
 
         if (hours > 0) {
-            return String.format(context.getString(R.string.notifications_fragment_item_shortest_hour), hours);
+            return String.format(context.getString(R.string.notifications_view_item_shortest_hour), hours);
         }
 
         long minutes = TimeUnit.MILLISECONDS.toMinutes(diff);
 
         if (minutes > 0) {
-            return String.format(context.getString(R.string.notifications_fragment_item_shortest_minute), minutes);
+            return String.format(context.getString(R.string.notifications_view_item_shortest_minute), minutes);
         }
 
         long seconds = TimeUnit.MILLISECONDS.toSeconds(diff);
 
         if (seconds >= 0) {
-            return String.format(context.getString(R.string.notifications_fragment_item_shortest_second), seconds);
+            return String.format(context.getString(R.string.notifications_view_item_shortest_second), seconds);
         }
 
         return "";

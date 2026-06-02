@@ -165,23 +165,23 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             boolean isEnabled = true;
 
             if (position == POSITION_ALLOW_AUDIO_CALL) {
-                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_information_audio_call);
+                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_audio_call);
                 switchTag = ContactCapabilitiesActivity.VOICE_CALL_SWITCH;
                 isSelected = mCapabilitiesActivity.allowAudioCall();
             } else if (position == POSITION_ALLOW_VIDEO_CALL) {
-                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_information_video_call);
+                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_video_call);
                 switchTag = ContactCapabilitiesActivity.VIDEO_CALL_SWITCH;
                 isSelected = mCapabilitiesActivity.allowVideoCall();
             } else if (position == POSITION_DISCREET_RELATION) {
-                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_discreet_relation);
+                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_discreet_relation);
                 switchTag = ContactCapabilitiesActivity.DISCREET_RELATION_SWITCH;
                 isSelected = mCapabilitiesActivity.discreetRelation();
             } else if (position == POSITION_ENABLE_SCHEDULE) {
-                title = mCapabilitiesActivity.getString(R.string.show_call_activity_settings_limited);
+                title = mCapabilitiesActivity.getString(R.string.show_call_view_settings_limited);
                 switchTag = ContactCapabilitiesActivity.SCHEDULE_SWITCH;
                 isSelected = mCapabilitiesActivity.scheduleEnable();
             } else if (position == POSITION_ALLOW_ANSWERING_AUTOMATIC) {
-                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_automatic_answering);
+                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_automatic_answering);
                 switchTag = ContactCapabilitiesActivity.ANSWERING_AUTOMATIC_SWITCH;
                 isSelected = mCapabilitiesActivity.allowAnsweringAutomatic();
             }
@@ -216,15 +216,15 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             boolean hideSeparator = false;
             Runnable runnable = null;
             if (position == SECTION_PERMISSION) {
-                title = mCapabilitiesActivity.getString(R.string.settings_activity_authorization_title);
+                title = mCapabilitiesActivity.getString(R.string.settings_view_authorization_title);
             } else if (position == SECTION_CAMERA_CONTROL) {
-                title = mCapabilitiesActivity.getString(R.string.call_activity_camera_control);
+                title = mCapabilitiesActivity.getString(R.string.call_view_camera_control);
                 hideSeparator = true;
                 runnable = () -> mCapabilitiesActivity.showOnboardingView(true);
             } else if (position == SECTION_DISCREET_RELATION) {
-                title = mCapabilitiesActivity.getString(R.string.privacy_activity_title);
+                title = mCapabilitiesActivity.getString(R.string.privacy_view_title);
             } else if (position == SECTION_ENABLE_SCHEDULE) {
-                title = mCapabilitiesActivity.getString(R.string.show_call_activity_schedule_call);
+                title = mCapabilitiesActivity.getString(R.string.show_call_view_schedule_call);
                 hideSeparator = true;
             }
             sectionTitleViewHolder.onBind(title, hideSeparator, null, runnable);
@@ -234,18 +234,18 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             String text = "";
             boolean isSubTitle = false;
             if (position == POSITION_CAMERA_CONTROL_INFORMATION) {
-                text = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_information);
+                text = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_camera_control_information);
                 isSubTitle = true;
             }  else if (position == POSITION_DISCREET_RELATION_INFORMATION) {
-                text = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_information_discreet_relation);
+                text = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_discreet_relation);
             }  else if (position == POSITION_ENABLE_SCHEDULE_INFORMATION) {
-                text = mCapabilitiesActivity.isGroup() ? mCapabilitiesActivity.getString(R.string.group_capabilities_activity_information_programmed_call) : mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_information_programmed_call);
+                text = mCapabilitiesActivity.isGroup() ? mCapabilitiesActivity.getString(R.string.group_capabilities_view_information_programmed_call) : mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_programmed_call);
                 isSubTitle = true;
             } else {
                 SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-                spannableStringBuilder.append(mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_automatic_answering_message));
+                spannableStringBuilder.append(mCapabilitiesActivity.getString(R.string.contact_capabilities_view_automatic_answering_message));
                 spannableStringBuilder.append("\n\n");
-                spannableStringBuilder.append(mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_automatic_answering_restriction));
+                spannableStringBuilder.append(mCapabilitiesActivity.getString(R.string.contact_capabilities_view_automatic_answering_restriction));
                 text = spannableStringBuilder.toString();
             }
 
@@ -256,11 +256,11 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             String value;
             if (mCapabilitiesActivity.getZoomable().equals(Zoomable.NEVER)) {
-                value = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_never);
+                value = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_camera_control_never);
             } else if (mCapabilitiesActivity.getZoomable().equals(Zoomable.ALLOW)) {
-                value = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_allow);
+                value = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_camera_control_allow);
             } else {
-                value = mCapabilitiesActivity.getString(R.string.contact_capabilities_activity_camera_control_ask);
+                value = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_camera_control_ask);
             }
 
             selectValueViewHolder.onBind(null, value, false, Design.WHITE_COLOR);

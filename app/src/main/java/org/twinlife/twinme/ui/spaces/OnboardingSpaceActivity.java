@@ -227,23 +227,23 @@ public class OnboardingSpaceActivity extends AbstractOnboardingActivity {
         float secondPartContentHeight = MIN_CONTENT_SECOND_PART * Design.HEIGHT_RATIO;
         float thirdPartContentHeight = mFromSideMenu ? MIN_CONTENT_FROM_SIDE_MENU_THIRD_PART * Design.HEIGHT_RATIO : MIN_CONTENT_THIRD_PART * Design.HEIGHT_RATIO;
 
-        String messageFirstPart = getString(R.string.spaces_activity_message);
+        String messageFirstPart = getString(R.string.spaces_view_message);
 
-        String messageSecondPart = getString(R.string.create_space_activity_onboarding_message_part_1) +
+        String messageSecondPart = getString(R.string.create_space_view_onboarding_message_part_1) +
                 "\n\n" +
-                getString(R.string.create_space_activity_onboarding_message_part_2) +
+                getString(R.string.create_space_view_onboarding_message_part_2) +
                 "\n\n" +
-                getString(R.string.create_space_activity_onboarding_message_part_3);
+                getString(R.string.create_space_view_onboarding_message_part_3);
 
-        String messageThirdPart = getString(R.string.create_space_activity_onboarding_message_part_4) +
+        String messageThirdPart = getString(R.string.create_space_view_onboarding_message_part_4) +
                 "\n\n" +
-                getString(R.string.create_space_activity_onboarding_message_part_5) +
+                getString(R.string.create_space_view_onboarding_message_part_5) +
                 "\n\n" +
-                getString(R.string.create_space_activity_onboarding_message_part_6) +
+                getString(R.string.create_space_view_onboarding_message_part_6) +
                 "\n\n" +
-                getString(R.string.create_space_activity_onboarding_message_part_7) +
+                getString(R.string.create_space_view_onboarding_message_part_7) +
                 "\n\n" +
-                getString(R.string.create_space_activity_onboarding_message_part_8);
+                getString(R.string.create_space_view_onboarding_message_part_8);
 
         firstPartContentHeight += getMessageHeight(messageFirstPart);
         secondPartContentHeight += getMessageHeight(messageSecondPart);

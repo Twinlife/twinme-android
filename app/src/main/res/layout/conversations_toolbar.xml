@@ -52,7 +52,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/calls_fragment_all_call_segmented_control" />
+            android:text="@string/calls_view_all_call_segmented_control" />
 
         <RadioButton
             android:id="@+id/conversations_tool_bar_groups_radio"
@@ -65,7 +65,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/share_activity_group_list" />
+            android:text="@string/share_view_group_list" />
 
     </RadioGroup>
 

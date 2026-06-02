@@ -127,16 +127,16 @@ public class SettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_activity_header_message), false);
+            informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_view_header_message), false);
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             switch (position) {
                 case SECTION_NOTIFICATION:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_fragment_title), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_view_title), false);
                     break;
 
                 case SECTION_MESSAGE:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_activity_chat_category_title), true);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_view_chat_category_title), true);
                     break;
 
                 case SECTION_APPEARANCE:
@@ -144,7 +144,7 @@ public class SettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerView.View
                     break;
 
                 case SECTION_PERMISSIONS:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_activity_permissions_title), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_view_permissions_title), false);
                     break;
 
                 default:
@@ -163,7 +163,7 @@ public class SettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerView.View
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnSettingsSpaceClickListener.onSettingsNotificationClick());
                 value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_NOTIFICATION_SETTINGS, true);
             }
-            settingSectionViewHolder.onBind(mListActivity.getString(R.string.settings_space_activity_default_value_title), !value);
+            settingSectionViewHolder.onBind(mListActivity.getString(R.string.settings_space_view_default_value_title), !value);
         } else if (viewType == CHECKBOX) {
             SettingSpaceViewHolder settingsViewHolder = (SettingSpaceViewHolder) viewHolder;
 
@@ -174,55 +174,55 @@ public class SettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerView.View
             switch (position) {
                 case POSITION_APPEARANCE_DEFAULT:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS;
-                    title = mListActivity.getString(R.string.navigation_activity_application_settings);
+                    title = mListActivity.getString(R.string.navigation_view_application_settings);
                     value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true);
                     break;
 
                 case POSITION_MESSAGE_DEFAULT:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_DEFAULT_MESSAGE_SETTINGS;
-                    title = mListActivity.getString(R.string.navigation_activity_application_settings);
+                    title = mListActivity.getString(R.string.navigation_view_application_settings);
                     value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_MESSAGE_SETTINGS, true);
                     break;
 
                 case POSITION_NOTIFICATION_DEFAULT:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_DEFAULT_NOTIFICATION_SETTINGS;
-                    title = mListActivity.getString(R.string.navigation_activity_application_settings);
+                    title = mListActivity.getString(R.string.navigation_view_application_settings);
                     value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_NOTIFICATION_SETTINGS, true);
                     break;
 
                 case POSITION_PERMISSION_SHARE_SPACE_CARD:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_PERMISSION_SHARE_SPACE_CARD;
-                    title = mListActivity.getString(R.string.settings_space_activity_permission_share_space_card);
+                    title = mListActivity.getString(R.string.settings_space_view_permission_share_space_card);
                     value = mSpace != null && mSpace.hasPermission(Space.Permission.SHARE_SPACE_CARD);
                     break;
 
                 case POSITION_PERMISSION_CREATE_CONTACT:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_PERMISSION_CREATE_CONTACT;
-                    title = mListActivity.getString(R.string.settings_space_activity_permission_create_contact);
+                    title = mListActivity.getString(R.string.settings_space_view_permission_create_contact);
                     value = mSpace != null && mSpace.hasPermission(Space.Permission.CREATE_CONTACT);
                     break;
 
                 case POSITION_PERMISSION_MOVE_CONTACT:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_PERMISSION_MOVE_CONTACT;
-                    title = mListActivity.getString(R.string.settings_space_activity_permission_move_contact);
+                    title = mListActivity.getString(R.string.settings_space_view_permission_move_contact);
                     value = mSpace != null && mSpace.hasPermission(Space.Permission.MOVE_CONTACT);
                     break;
 
                 case POSITION_PERMISSION_CREATE_GROUP:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_PERMISSION_CREATE_GROUP;
-                    title = mListActivity.getString(R.string.settings_space_activity_permission_create_group);
+                    title = mListActivity.getString(R.string.settings_space_view_permission_create_group);
                     value = mSpace != null && mSpace.hasPermission(Space.Permission.CREATE_GROUP);
                     break;
 
                 case POSITION_PERMISSION_MOVE_GROUP:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_PERMISSION_MOVE_GROUP;
-                    title = mListActivity.getString(R.string.settings_space_activity_permission_move_group);
+                    title = mListActivity.getString(R.string.settings_space_view_permission_move_group);
                     value = mSpace != null && mSpace.hasPermission(Space.Permission.MOVE_GROUP);
                     break;
 
                 case POSITION_PERMISSION_UPDATE_IDENTITY:
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_PERMISSION_UPDATE_IDENTITY;
-                    title = mListActivity.getString(R.string.settings_space_activity_permission_update_identity);
+                    title = mListActivity.getString(R.string.settings_space_view_permission_update_identity);
                     value = mSpace != null && mSpace.hasPermission(Space.Permission.UPDATE_IDENTITY);
                     break;
 

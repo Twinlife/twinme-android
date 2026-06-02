@@ -140,13 +140,13 @@ public class LockScreenActivity extends AbstractTwinmeActivity {
         }
 
         if (!isDeviceSecure()) {
-            showAlertMessageView(R.id.lock_screen_activity_content_view, getString(R.string.deleted_account_activity_warning), getString(R.string.lock_screen_activity_passcode_not_set), false, null);
+            showAlertMessageView(R.id.lock_screen_activity_content_view, getString(R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
             return;
         }
 
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         if (keyguardManager != null) {
-            Intent screenLockIntent = keyguardManager.createConfirmDeviceCredentialIntent(getString(R.string.lock_screen_activity_unlock), getString(R.string.lock_screen_activity_local_authentication));
+            Intent screenLockIntent = keyguardManager.createConfirmDeviceCredentialIntent(getString(R.string.lock_screen_view_unlock), getString(R.string.lock_screen_view_local_authentication));
             startActivityForResult(screenLockIntent, UNLOCK_REQUEST);
         }
     }

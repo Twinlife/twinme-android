@@ -139,9 +139,9 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
         }
 
         if (scheduleType == AbstractCapabilitiesActivity.ScheduleType.START) {
-            mTitleView.setText(context.getString(R.string.show_call_activity_settings_start));
+            mTitleView.setText(context.getString(R.string.show_call_view_settings_start));
         } else {
-            mTitleView.setText(context.getString(R.string.show_call_activity_settings_end));
+            mTitleView.setText(context.getString(R.string.show_call_view_settings_end));
         }
 
         if (scheduleDate != null && scheduleTime != null) {

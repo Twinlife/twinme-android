@@ -93,7 +93,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/add_profile_activity_save_view"
             android:gravity="center"
-            android:text="@string/create_profile_activity_save_message" />
+            android:text="@string/create_profile_view_save_message" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

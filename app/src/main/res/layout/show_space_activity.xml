@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toEndOf="@+id/show_space_activity_twincode_icon_view"
-                        android:text="@string/profile_fragment_twincode_title" />
+                        android:text="@string/profile_view_twincode_title" />
 
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/show_space_activity_twincode_view"
-                    android:text="@string/show_space_fragment_management"
+                    android:text="@string/show_space_view_management"
                     android:textAllCaps="true"
                     android:maxLines="1"
                     app:layout_widthPercent="53.33%"
@@ -146,7 +146,7 @@
                         android:layout_centerVertical="true"
                         android:layout_gravity="start"
                         android:lines="1"
-                        android:text="@string/navigation_activity_settings"
+                        android:text="@string/navigation_view_settings"
                         app:layout_marginStartPercent="12.8%"
                         app:layout_marginEndPercent="16.77%" />
 
@@ -187,7 +187,7 @@
                         android:layout_centerVertical="true"
                         android:layout_gravity="start"
                         android:lines="1"
-                        android:text="@string/create_space_activity_contact_list"
+                        android:text="@string/create_space_view_contact_list"
                         app:layout_marginStartPercent="12.8%"
                         app:layout_marginEndPercent="16.77%" />
 
@@ -232,7 +232,7 @@
                         app:layout_marginStartPercent="12.8%"
                         app:layout_marginTopPercent="2%"
                         app:layout_marginBottomPercent="2%"
-                        android:text="@string/settings_space_activity_secret_title"
+                        android:text="@string/settings_space_view_secret_title"
                         android:textOn=""
                         android:textOff=""
                         android:track="@drawable/switch_track"
@@ -245,7 +245,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/show_space_activity_secret_view"
-                    android:text="@string/conversations_fragment_title"
+                    android:text="@string/conversations_view_title"
                     android:textAllCaps="true"
                     android:maxLines="1"
                     app:layout_widthPercent="53.33%"
@@ -273,7 +273,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/show_contact_activity_export_contents"
+                        android:text="@string/show_contact_view_export_contents"
                         app:layout_marginEndPercent="4.27%"
                         app:layout_marginStartPercent="12.8%" />
 
@@ -310,7 +310,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/show_contact_activity_cleanup"
+                        android:text="@string/show_contact_view_cleanup"
                         app:layout_marginEndPercent="4.27%"
                         app:layout_marginStartPercent="12.8%" />
 

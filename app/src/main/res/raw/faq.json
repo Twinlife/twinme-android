@@ -1,0 +1,161 @@
+[
+  {
+    "title": "Introduction",
+    "articles": [
+      {
+        "id" : 1,
+        "title": "What is Skred",
+        "description": "<p>Skred is a secure and anonymous messaging app available on Android and iOS. Anonymous because you do not have to provide a phone number or email address. Skred uses the available data network, it can be used in Wi-Fi without a SIM card.</p>",
+        "tags": ["Introduction"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Basics",
+    "articles": [
+      {
+        "id" : 2,
+        "title": "How can I be contacted without a phone number?",
+        "description": "<p>Your Skred profile is associated with a &#8220;Skredcode&#8221; that you can share with other people nearby directly by having it scanned as a QR-Code, or send it as an invitation link by email, SMS, etc.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 3,
+        "title": "Can I block someone?",
+        "description": "<p>You can indeed manage your relations and control how you interact with your contacts. If you wish to restrict communication with a specific contact, you can delete the relation you have with them. This action prevents both parties from reaching each other.</p><p>To remove someone from your contacts, click on your contact’s name, then on the “Pencil” icon next to your contact’s name. At the bottom of the Edit screen, press the “Delete” command to suppress this relation.</p><p>Once you have deleted a relation, neither of you can use Skred to reach the other person anymore. You need to invite each other’s again in order to reconnect.</p><p>Furthermore, Skred allows you to customize your relations by specifying how and when your contacts can reach you. For instance, you can prevent a contact from initiating voice and/or video calls, while still allowing messaging. You can also define specific times and days during which someone can call you or set restrictions based on the time of day.</p><p>By utilizing these features, Skred offers you greater control over your connections and the ability to tailor your communication experience to your preferences.<br><br>If you want to prevent a future relation creation, you can reset your invitation code which will invalidate previous invitation link/qrcode sent. To do so, go to your invitation page and tap on the &#8220;reset&#8221; action.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 4,
+        "title": "Are you Open Source?",
+        "description": "<p>Skred uses Open Source technologies for its core functionality (WebRTC, SQLCipher, coturn, etc.). The source code is being progressively published under the AGPL-3.0 license.<br><br>Mobile applications and proxy server source codes are available on our GitHub repository: <a href='https://github.com/France-en-Ligne'>https://github.com/France-en-Ligne</a></p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Messaging",
+    "articles": [
+      {
+        "id" : 5,
+        "title": "I don't see my contacts, how do I add them?",
+        "description": "<p>Skred does not access your contacts. This is why the list is empty on first start. You must therefore send invitations yourself using the main button “Add a contact”. You have control of the invitations sent. The &#8220;Invite via your apps&#8221; option is probably the easiest.</p>",
+        "tags": ["Messaging"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Calling",
+    "articles": [
+      {
+        "id" : 6,
+        "title": "What does Skred communicate when I invite someone?",
+        "description": "<p>When you invite a contact to establish a relationship with you on Skred, only an identifier representing your profile is communicated. Nothing else.</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 7,
+        "title": "Call Screen is not shown on some Android",
+        "description": "<p>It seems that sometimes call screens are not shown on Samsung and Xiaomi devices. Always check that the app is allowed to run in background.</p><p>For Xiaomi/Redmi, you have to manually enable a MIUI permission :<br>&#8211; Settings > Apps > Skred > Other permissions > Open new windows while running in the background</p>",
+        "tags": ["Calling"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Settings and update",
+    "articles": [
+      {
+        "id" : 8,
+        "title": "Are my communications really private?",
+        "description": "<p>Yes. Exchanges are encrypted end-to-end, mobile to mobile. Even Skred&#8217;s servers have no knowledge of the content of your exchanges. Skred relies on open and secure &#8220;WebRTC&#8221; technology to exchange text, image, audio or video data. More information on this technology is available at: https://webrtc.org/.</p>",
+        "tags": ["Settings", "Update"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Security and permissions",
+    "articles": [
+      {
+        "id" : 9,
+        "title": "My messages too? Yet I receive them in notifications!",
+        "description": "<p>Yes, even your messages. When you send a message to someone, this person is notified and your mobiles will connect to each other to send and receive the message. Skred only informs the recipient&#8217;s mobile that a message is available, without sending it through our servers.</p>",
+        "tags": ["Security", "Permissions"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  },
+  {
+    "title": "Help and feedback",
+    "articles": [
+      {
+        "id" : 10,
+        "title": "Why am I not always receiving the messages sent to me?",
+        "description": "<p>Since messages do not pass through our servers, the Skred application must be open or active in the background when you receive a message. You must ensure that the application is not prevented from working in the background on your mobile when one of your contacts requests you.</p><p>On Android:</p><ul><li>Make sure background refresh is enabled for Skred, via Settings &gt; General &gt; Background Refresh &gt; Skred.</li><li>Check that Skred is authorized to receive notifications :<ul><li>Go to &#8220;Settings > Applications > Skred > Permissions > Enable all notifications and background execution permissions.</li></ul></li><li>Check that the application is allowed to use data mobile while in background.<ul><li>Go to &#8220;Settings > Applications > Skred > Data usage&#8221;</li></ul></li><li>If you have a power saving mode, make sure that it does not disable Skred when this mode is active.<ul><li>In &#8220;Settings &gt; Battery&#8221;, check that Skred has not been added to a list of &#8220;Application in standby&#8221; / &#8220;Application in deep standby&#8221;.</li></ul></li></ul><p>On iOS:</p><ul><li>Check that Skred is authorized to receive notifications.<ul><li>Go to &#8220;Settings > Apps > Skred > Notifications&#8221;</li></ul></li><li>Make sure background refresh is enabled for Skred<ul><li>Via &#8220;Settings > Apps > Skred > Mobile data&#8221;</li></ul></li></ul>",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 11,
+        "title": "I'm getting a Fatal error 18, what can I do?",
+        "description": "<p>On iOS, this error usually occurs when Skred is launched after restoring from an unencrypted backup. By default, neither iTunes nor iCloud encrypt backups, so the key needed to decrypt Skred’s database is not included in the restoration. But this is also due to having not enough free space on storage on iOS and Android.</p><ul c><li>Make some free space and restart the phone (Android &amp; iOS)</li><li>If Skred still works on your previous phone, you can use the transfer option via the menu: <strong>Account > Transfer from this device</strong> (Android &amp; iOS)</li><li>Always make sure to select <strong>&#8220;Encrypted backup&#8221;</strong> in iTunes and enable <strong>&#8220;Advanced Data Protection&#8221;</strong> in iCloud (iOS)</li></ul><p>If Skred is no longer available on any device, unfortunately, there is no way to recover your data.</p>",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      }
+    ],
+    "min_version": "",
+    "max_version": ""
+  }
+]

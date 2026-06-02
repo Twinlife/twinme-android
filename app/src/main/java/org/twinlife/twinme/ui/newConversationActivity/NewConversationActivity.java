@@ -302,7 +302,7 @@ public class NewConversationActivity extends AbstractTwinmeActivity implements C
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         applyInsets(R.id.new_conversation_activity_layout, R.id.new_conversation_activity_tool_bar, R.id.new_conversation_activity_contact_list_view, Design.TOOLBAR_COLOR, false);
 
-        setTitle(getString(R.string.conversations_fragment_title));
+        setTitle(getString(R.string.conversations_view_title));
 
         View searchView = findViewById(R.id.new_conversation_activity_search_view);
         searchView.setBackgroundColor(Design.TOOLBAR_COLOR);

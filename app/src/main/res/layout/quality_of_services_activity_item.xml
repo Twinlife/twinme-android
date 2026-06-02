@@ -22,7 +22,7 @@
         android:layout_above="@+id/quality_of_services_activity_item_settings_view"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:text="@string/quality_of_service_activity_step1_message"
+        android:text="@string/quality_of_service_view_step1_message"
         android:scrollbars="vertical"
         app:layout_widthPercent="85.33%" />
 
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/quality_of_service_activity_settings" />
+            android:text="@string/quality_of_service_view_settings" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

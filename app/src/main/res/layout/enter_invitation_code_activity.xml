@@ -156,7 +156,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/enter_invitation_code_activity_confirm_view"
             android:gravity="center"
-            android:text="@string/enter_invitation_code_activity_message" />
+            android:text="@string/enter_invitation_code_view_message" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 

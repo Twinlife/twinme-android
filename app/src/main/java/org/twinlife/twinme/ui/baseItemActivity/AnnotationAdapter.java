@@ -24,12 +24,27 @@ import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.UIReaction;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder> {
 
+    private static class AnnotationWithCount {
+        @NonNull
+        final ConversationService.DescriptorAnnotation descriptorAnnotation;
+        final int count;
+
+        private AnnotationWithCount(@NonNull ConversationService.DescriptorAnnotation descriptorAnnotation, int count) {
+            this.descriptorAnnotation = descriptorAnnotation;
+            this.count = count;
+        }
+    }
+
     private final BaseItemActivity mActivity;
-    private List<ConversationService.DescriptorAnnotation> mDescriptorAnnotations;
+    @NonNull
+    private final List<AnnotationWithCount> mDescriptorAnnotations;
     private boolean mIsForwaded;
     private boolean mIsUpdated;
     private final boolean mIsPeerItem;
@@ -38,19 +53,36 @@ public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder
     private static int POSITION_FORWARDED = -1;
     private static int POSITION_UPDATED = -1;
 
-    AnnotationAdapter(BaseItemActivity activity, List<ConversationService.DescriptorAnnotation> annotations, boolean isPeerItem) {
+    AnnotationAdapter(BaseItemActivity activity, boolean isPeerItem) {
 
         mActivity = activity;
-        mDescriptorAnnotations = annotations;
+        mDescriptorAnnotations = new ArrayList<>();
         mIsForwaded = false;
         mIsUpdated = false;
         mIsPeerItem = isPeerItem;
     }
 
-    public void setAnnotations(List<ConversationService.DescriptorAnnotation> annotations, ConversationService.DescriptorId descriptorId) {
+    public void setAnnotations(@NonNull List<ConversationService.DescriptorAnnotation> annotations, @NonNull ConversationService.DescriptorId descriptorId) {
 
-        mDescriptorAnnotations = annotations;
         mDescriptorId = descriptorId;
+
+        mDescriptorAnnotations.clear();
+
+        Map<ConversationService.DescriptorAnnotation, Integer> counts = new HashMap<>();
+
+        for (ConversationService.DescriptorAnnotation annotation : annotations) {
+            Integer count = counts.get(annotation);
+            if (count == null) {
+                count = 0;
+            }
+
+            counts.put(annotation, ++count);
+        }
+
+        for (Map.Entry<ConversationService.DescriptorAnnotation, Integer> entry : counts.entrySet()) {
+            mDescriptorAnnotations.add(new AnnotationWithCount(entry.getKey(), entry.getValue()));
+        }
+
         synchronized (this) {
             notifyDataSetChanged();
         }
@@ -99,7 +131,10 @@ public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder
                     annotationPosition--;
                 }
             }
-            ConversationService.DescriptorAnnotation descriptorAnnotation = mDescriptorAnnotations.get(annotationPosition);
+
+            AnnotationWithCount annotationWithCount = mDescriptorAnnotations.get(annotationPosition);
+            ConversationService.DescriptorAnnotation descriptorAnnotation = annotationWithCount.descriptorAnnotation;
+
             Drawable drawable;
             int colorFilter = Color.TRANSPARENT;
             if (descriptorAnnotation.getValue() < 0 || descriptorAnnotation.getValue() >= UIReaction.ReactionType.values().length) {
@@ -144,7 +179,7 @@ public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder
                 }
             }
 
-            viewHolder.onBind(mDescriptorId, drawable, descriptorAnnotation.getCount(), colorFilter, mIsPeerItem);
+            viewHolder.onBind(mDescriptorId, drawable, annotationWithCount.count, colorFilter, mIsPeerItem);
         }
     }
 
@@ -162,7 +197,7 @@ public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder
             if (mIsPeerItem) {
                 POSITION_FORWARDED = 0;
             } else {
-                POSITION_FORWARDED = mDescriptorAnnotations != null ? mDescriptorAnnotations.size() : 0;
+                POSITION_FORWARDED = mDescriptorAnnotations.size();
             }
         }
 
@@ -172,13 +207,11 @@ public class AnnotationAdapter extends RecyclerView.Adapter<AnnotationViewHolder
             if (mIsPeerItem) {
                 POSITION_UPDATED = POSITION_FORWARDED != -1 ? POSITION_FORWARDED + 1 : 0;
             } else {
-                POSITION_UPDATED = POSITION_FORWARDED != -1 ? POSITION_FORWARDED + 1 : mDescriptorAnnotations != null ? mDescriptorAnnotations.size() : 0;
+                POSITION_UPDATED = POSITION_FORWARDED != -1 ? POSITION_FORWARDED + 1 : mDescriptorAnnotations.size();
             }
         }
 
-        if (mDescriptorAnnotations != null) {
-            count += mDescriptorAnnotations.size();
-        }
+        count += mDescriptorAnnotations.size();
 
         return count;
     }

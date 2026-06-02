@@ -101,7 +101,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.navigation_activity_about_twinme));
+        setTitle(getString(R.string.navigation_view_about_twinme));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         applyInsets(R.id.about_activity_layout, R.id.about_activity_tool_bar, R.id.about_activity_container_view, Design.TOOLBAR_COLOR, false);
 
@@ -253,7 +253,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
 
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/terms_of_service.html");
-        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_activity_terms_of_use));
+        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_terms_of_use));
         startActivity(intent);
     }
 
@@ -264,7 +264,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
 
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/privacy_policy.html");
-        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_activity_privacy_policy));
+        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_privacy_policy));
         startActivity(intent);
     }
 
@@ -275,7 +275,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
 
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/opensource.html");
-        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_activity_application_code));
+        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_application_code));
         startActivity(intent);
     }
 
@@ -286,7 +286,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
 
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/licenses.html");
-        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_activity_open_sources_licences));
+        intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_open_sources_licences));
         startActivity(intent);
     }
 

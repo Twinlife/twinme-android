@@ -349,13 +349,13 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         if (twincodeURI != null) {
             if (twincodeURI.kind != TwincodeURI.Kind.Invitation) {
 
-                String message = getString(R.string.accept_invitation_activity_incorrect_contact_information);
+                String message = getString(R.string.accept_invitation_view_incorrect_contact_information);
                 if (twincodeURI.kind == TwincodeURI.Kind.Call) {
-                    message = getString(R.string.add_contact_activity_scan_message_call_link);
+                    message = getString(R.string.add_contact_view_scan_message_call_link);
                 } else if (twincodeURI.kind == TwincodeURI.Kind.AccountMigration) {
-                    message = getString(R.string.add_contact_activity_scan_message_migration_link);
+                    message = getString(R.string.add_contact_view_scan_message_migration_link);
                 } else if (twincodeURI.kind == TwincodeURI.Kind.Transfer) {
-                    message = getString(R.string.add_contact_activity_scan_message_transfer_link);
+                    message = getString(R.string.add_contact_view_scan_message_transfer_link);
                 }
 
                 error(message, this::finish);
@@ -375,15 +375,15 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
         }
 
         if (errorCode != ErrorCode.SUCCESS) {
-            String message = getString(R.string.accept_invitation_activity_incorrect_contact_information);
+            String message = getString(R.string.accept_invitation_view_incorrect_contact_information);
             if (errorCode == ErrorCode.BAD_REQUEST) {
-                message = getString(R.string.add_contact_activity_scan_error_incorrect_link);
+                message = getString(R.string.add_contact_view_scan_error_incorrect_link);
             } else if (errorCode == ErrorCode.FEATURE_NOT_IMPLEMENTED) {
-                message = getString(R.string.add_contact_activity_scan_error_not_managed_link);
+                message = getString(R.string.add_contact_view_scan_error_not_managed_link);
             } else if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
-                message = getString(R.string.add_contact_activity_scan_error_corrupt_link);
+                message = getString(R.string.add_contact_view_scan_error_corrupt_link);
             } else if (errorCode == ErrorCode.EXPIRED) {
-                message = getString(R.string.add_contact_activity_scan_error_expired_link);
+                message = getString(R.string.add_contact_view_scan_error_expired_link);
             }
 
             error(message, this::finish);
@@ -414,7 +414,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onGetTwincodeNotFound");
         }
 
-        error(getString(R.string.add_contact_activity_scan_error_revoked_link), this::finish);
+        error(getString(R.string.add_contact_view_scan_error_revoked_link), this::finish);
     }
 
     @Override
@@ -423,7 +423,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onGetTwincodeExpired");
         }
 
-        error(getString(R.string.add_contact_activity_scan_error_revoked_link), this::finish);
+        error(getString(R.string.add_contact_view_scan_error_revoked_link), this::finish);
     }
 
     @Override
@@ -432,7 +432,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "onLocalTwincode");
         }
 
-        error(getString(R.string.accept_invitation_activity_local_twincode), this::finish);
+        error(getString(R.string.accept_invitation_view_local_twincode), this::finish);
     }
 
     @Override
@@ -815,7 +815,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             ViewGroup viewGroup = findViewById(R.id.accept_invitation_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.profile_fragment_add_profile));
+            defaultConfirmView.setTitle(getString(R.string.profile_view_add_profile));
             defaultConfirmView.setMessage(getString(R.string.application_add_contact_no_profile));
 
             boolean darkMode = false;
@@ -826,7 +826,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             }
 
             defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
-            defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
+            defaultConfirmView.setConfirmTitle(getString(R.string.profile_view_create_profile));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -946,9 +946,9 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             mNameView.setText(mContactName);
 
             if (mHasExistingContact) {
-                mMessageView.setText(getString(R.string.accept_invitation_activity_existing_contact_message));
+                mMessageView.setText(getString(R.string.accept_invitation_view_existing_contact_message));
             } else {
-                mMessageView.setText(String.format(getString(R.string.accept_invitation_activity_message), mContactName));
+                mMessageView.setText(String.format(getString(R.string.accept_invitation_view_message), mContactName));
             }
 
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -1002,7 +1002,7 @@ public class AcceptInvitationActivity extends AbstractTwinmeActivity implements 
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
 
-            String message = getString(R.string.accept_invitation_activity_being_transferred) + "\n" + getString(R.string.accept_invitation_activity_check_connection);
+            String message = getString(R.string.accept_invitation_view_being_transferred) + "\n" + getString(R.string.accept_invitation_view_check_connection);
             mMessageView.setText(message);
         }
 

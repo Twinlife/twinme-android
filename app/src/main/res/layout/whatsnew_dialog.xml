@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/whats_new_dialog_slide_mark_view"
             android:gravity="center"
-            android:text="@string/deleted_account_activity_warning"/>
+            android:text="@string/deleted_account_view_warning"/>
 
         <TextView
             android:id="@+id/whats_new_dialog_title"

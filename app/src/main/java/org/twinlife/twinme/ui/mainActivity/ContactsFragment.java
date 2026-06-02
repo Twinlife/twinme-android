@@ -167,7 +167,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
             imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.action_bar_add_contact, null));
             imageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
             imageView.setOnClickListener(view -> onAddContactClick());
-            imageView.setContentDescription(getString(R.string.add_contact_activity_title));
+            imageView.setContentDescription(getString(R.string.add_contact_view_title));
         }
 
         MenuItem searchItem = menu.findItem(R.id.search_action);
@@ -517,8 +517,8 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
             drawerLayout.addView(menuAddContactView);
 
             List<UIMenuSelectAction> actions = new ArrayList<>();
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_scan_contact_title), R.drawable.scan_code));
-            actions.add(new UIMenuSelectAction(getString(R.string.contacts_fragment_invite_contact_title), R.drawable.qrcode));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_scan_contact_title), R.drawable.scan_code));
+            actions.add(new UIMenuSelectAction(getString(R.string.contacts_view_invite_contact_title), R.drawable.qrcode));
             menuAddContactView.setActions(actions, mTwinmeActivity);
             menuAddContactView.openMenu(false);
 
@@ -606,7 +606,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
         }
 
         if (mNoResultFoundTitleView != null) {
-            mNoResultFoundTitleView.setText(String.format(getString(R.string.conversations_fragment_no_result_found), text));
+            mNoResultFoundTitleView.setText(String.format(getString(R.string.conversations_view_no_result_found), text));
         }
 
         mContactsService.findContactsByName(text);
@@ -636,7 +636,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
                     imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.action_bar_add_contact, null));
                     imageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
                     imageView.setOnClickListener(view -> onAddContactClick());
-                    imageView.setContentDescription(getString(R.string.add_contact_activity_title));
+                    imageView.setContentDescription(getString(R.string.add_contact_view_title));
                 }
 
                 MenuItem searchItem = menu.findItem(R.id.search_action);

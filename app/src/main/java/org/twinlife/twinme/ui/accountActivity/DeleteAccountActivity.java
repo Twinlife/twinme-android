@@ -180,7 +180,7 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.account_activity_title));
+        setTitle(getString(R.string.account_view_title));
 
         applyInsets(R.id.delete_account_activity_layout, R.id.delete_account_activity_tool_bar, R.id.delete_account_activity_content_view, Design.TOOLBAR_COLOR, false);
 
@@ -195,9 +195,9 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
         accountTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         Design.updateTextFont(accountTextView, Design.FONT_MEDIUM34);
 
-        String accountText = getResources().getString(R.string.account_activity_message_first_part) +
-                "\n\n" + getResources().getString(R.string.account_activity_message_second_part) +
-                "\n\n" + getResources().getString(R.string.account_activity_message_third_part);
+        String accountText = getResources().getString(R.string.account_view_message_first_part) +
+                "\n\n" + getResources().getString(R.string.account_view_message_second_part) +
+                "\n\n" + getResources().getString(R.string.account_view_message_third_part);
         accountTextView.setText(accountText);
         accountTextView.setMovementMethod(new ScrollingMovementMethod());
 

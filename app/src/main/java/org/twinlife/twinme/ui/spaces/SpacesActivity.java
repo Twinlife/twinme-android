@@ -307,7 +307,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.spaces_activity_title));
+        setTitle(getString(R.string.spaces_view_title));
 
         applyInsets(R.id.spaces_activity_layout, R.id.spaces_activity_tool_bar, R.id.spaces_activity_spaces_list_view, Design.TOOLBAR_COLOR, false);
 
@@ -387,7 +387,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
             Space space = mUISpaces.get(position).getSpace();
             if (mMoveContactMode) {
                 if (!space.hasPermission(Space.Permission.MOVE_CONTACT)) {
-                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), false, null);
+                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), false, null);
                 } else if (space.getProfile() == null) {
 
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
@@ -397,8 +397,8 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setSpaceName(space.getSpaceSettings().getName(), space.getSpaceSettings().getStyle());
                         spaceActionConfirmView.setAvatar(avatar, false);
                         spaceActionConfirmView.setIcon(R.drawable.action_bar_add_contact);
-                        spaceActionConfirmView.setTitle(getString(R.string.create_profile_activity_title));
-                        spaceActionConfirmView.setMessage(getString(R.string.create_space_activity_contacts_no_profile));
+                        spaceActionConfirmView.setTitle(getString(R.string.create_profile_view_title));
+                        spaceActionConfirmView.setMessage(getString(R.string.create_space_view_contacts_no_profile));
                         spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
 
@@ -433,7 +433,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
                     });
                 } else if (mContact.getSpace() != null && mContact.getSpace().getId() == space.getId()) {
-                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_move_contact_already_in_space), false, null);
+                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_move_contact_already_in_space), false, null);
                 } else {
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
                         ViewGroup viewGroup = findViewById(R.id.spaces_activity_layout);
@@ -444,8 +444,8 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setIcon(R.drawable.move_contacts_icon);
                         spaceActionConfirmView.setIconTintColor(Color.WHITE);
                         spaceActionConfirmView.setTitle(space.getSpaceSettings().getName());
-                        spaceActionConfirmView.setMessage(getString(R.string.contact_space_activity_move_message));
-                        spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_activity_move_title));
+                        spaceActionConfirmView.setMessage(getString(R.string.contact_space_view_move_message));
+                        spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_view_move_title));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
                         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -481,7 +481,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                 }
             } else if (mMoveGroupMode) {
                 if (!space.hasPermission(Space.Permission.MOVE_GROUP)) {
-                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), false, null);
+                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), false, null);
                 } else if (space.getProfile() == null) {
 
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
@@ -491,8 +491,8 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setSpaceName(space.getSpaceSettings().getName(), space.getSpaceSettings().getStyle());
                         spaceActionConfirmView.setAvatar(avatar, false);
                         spaceActionConfirmView.setIcon(R.drawable.action_bar_add_contact);
-                        spaceActionConfirmView.setTitle(getString(R.string.create_profile_activity_title));
-                        spaceActionConfirmView.setMessage(getString(R.string.spaces_activity_move_group_no_profile));
+                        spaceActionConfirmView.setTitle(getString(R.string.create_profile_view_title));
+                        spaceActionConfirmView.setMessage(getString(R.string.spaces_view_move_group_no_profile));
                         spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
 
@@ -527,7 +527,7 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
                     });
                 } else if (mGroup.getSpace() != null && mGroup.getSpace().getId() == space.getId()) {
-                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_move_group_already_in_space), false, null);
+                    showAlertMessageView(R.id.spaces_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_move_group_already_in_space), false, null);
                 } else {
                     mSpaceService.getSpaceImage(space, (Bitmap avatar) -> {
                         ViewGroup viewGroup = findViewById(R.id.spaces_activity_layout);
@@ -538,8 +538,8 @@ public class SpacesActivity extends AbstractSpaceActivity {
                         spaceActionConfirmView.setIcon(R.drawable.move_contacts_icon);
                         spaceActionConfirmView.setIconTintColor(Color.WHITE);
                         spaceActionConfirmView.setTitle(space.getSpaceSettings().getName());
-                        spaceActionConfirmView.setMessage(getString(R.string.spaces_activity_move_message));
-                        spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_activity_move_title));
+                        spaceActionConfirmView.setMessage(getString(R.string.spaces_view_move_message));
+                        spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_view_move_title));
                         spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
                         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

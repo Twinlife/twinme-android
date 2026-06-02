@@ -112,7 +112,7 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
 
         setBackgroundColor(Design.GREY_BACKGROUND_COLOR);
 
-        setTitle(getString(R.string.add_contact_activity_title));
+        setTitle(getString(R.string.add_contact_view_title));
 
         applyInsets(R.id.invitation_subscription_activity_layout, R.id.invitation_subscription_activity_tool_bar, R.id.invitation_subscription_activity_background, Design.TOOLBAR_COLOR, false);
 
@@ -305,7 +305,7 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
         } else {
             mInfoScanView.setVisibility(View.GONE);
             mMessageView.setVisibility(View.VISIBLE);
-            mMessageView.setText(getResources().getString(R.string.capture_activity_no_camera));
+            mMessageView.setText(getResources().getString(R.string.capture_view_no_camera));
         }
     }
 
@@ -345,7 +345,7 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
             overridePendingTransition(0, 0);
             finish();
         } else {
-            incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
+            incorrectQRCode(getString(R.string.capture_view_incorrect_qrcode));
         }
     }
 
@@ -355,7 +355,7 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -364,6 +364,6 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 }

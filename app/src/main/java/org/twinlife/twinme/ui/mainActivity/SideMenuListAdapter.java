@@ -57,20 +57,20 @@ public class SideMenuListAdapter implements ListAdapter {
 
     private static final MenuItem[] sMenuItems = {
             new MenuItem(MenuItem.MenuItemLevel.LEVEL0, R.string.application_profile, MenuItem.MenuItemAction.PROFILE),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_activity_application_settings, MenuItem.MenuItemAction.NO_ACTION),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_view_application_settings, MenuItem.MenuItemAction.NO_ACTION),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.application_appearance, MenuItem.MenuItemAction.PERSONALIZATION),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.settings_activity_chat_category_title, MenuItem.MenuItemAction.MESSAGE_SETTINGS),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.notifications_fragment_title, MenuItem.MenuItemAction.SOUND_SETTINGS),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.privacy_activity_title, MenuItem.MenuItemAction.PRIVACY),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.premium_services_activity_transfert_title, MenuItem.MenuItemAction.TRANSFER_CALL),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.settings_advanced_activity_title, MenuItem.MenuItemAction.SETTINGS_ADVANCED),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_activity_support, MenuItem.MenuItemAction.NO_ACTION),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_subscribe, MenuItem.MenuItemAction.SUBSCRIBE),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_help, MenuItem.MenuItemAction.HELP),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_about_twinme, MenuItem.MenuItemAction.ABOUT_TWINME),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_activity_title, MenuItem.MenuItemAction.ACCOUNT),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_activity_sign_out, MenuItem.MenuItemAction.NO_ACTION),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_activity_sign_out, MenuItem.MenuItemAction.SIGN_OUT)
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.settings_view_chat_category_title, MenuItem.MenuItemAction.MESSAGE_SETTINGS),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.notifications_view_title, MenuItem.MenuItemAction.SOUND_SETTINGS),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.privacy_view_title, MenuItem.MenuItemAction.PRIVACY),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.premium_services_view_transfert_title, MenuItem.MenuItemAction.TRANSFER_CALL),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.settings_advanced_view_title, MenuItem.MenuItemAction.SETTINGS_ADVANCED),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_view_support, MenuItem.MenuItemAction.NO_ACTION),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_subscribe, MenuItem.MenuItemAction.SUBSCRIBE),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_help, MenuItem.MenuItemAction.HELP),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_about_twinme, MenuItem.MenuItemAction.ABOUT_TWINME),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_view_title, MenuItem.MenuItemAction.ACCOUNT),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_view_sign_out, MenuItem.MenuItemAction.NO_ACTION),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_sign_out, MenuItem.MenuItemAction.SIGN_OUT)
     };
 
     public interface OnMenuClickListener {
@@ -174,7 +174,7 @@ public class SideMenuListAdapter implements ListAdapter {
             } else {
                 Bitmap avatar = mActivity.getTwinmeApplication().getAnonymousAvatar();
                 avatarView.setImage(mActivity, null, new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
-                nameView.setText(mActivity.getResources().getString(R.string.profile_fragment_add_profile));
+                nameView.setText(mActivity.getResources().getString(R.string.profile_view_add_profile));
             }
         } else {
             TextView textView = null;
@@ -213,7 +213,7 @@ public class SideMenuListAdapter implements ListAdapter {
                     subscribeView.setTypeface(Design.FONT_MEDIUM32.typeface);
                     subscribeView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM32.size);
                     subscribeView.setTextColor(DESIGN_SUBSCRIBE_COLOR);
-                    subscribeView.setText(mActivity.getString(R.string.navigation_activity_subscribe_enable));
+                    subscribeView.setText(mActivity.getString(R.string.navigation_view_subscribe_enable));
 
                     float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
                     float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
@@ -245,6 +245,8 @@ public class SideMenuListAdapter implements ListAdapter {
 
                     if (menuItem.getAction() == MenuItem.MenuItemAction.ABOUT_TWINME && mActivity.getTwinmeApplication().hasNewVersion()) {
                         roundedView.setVisibility(View.VISIBLE);
+                    } else if (menuItem.getAction() == MenuItem.MenuItemAction.ACCOUNT && mActivity.getTwinmeApplication().showBackupWarning()) {
+                        roundedView.setVisibility(View.VISIBLE);
                     } else {
                         roundedView.setVisibility(View.GONE);
                     }
@@ -269,9 +271,9 @@ public class SideMenuListAdapter implements ListAdapter {
 
                 if (menuItem.getAction() == MenuItem.MenuItemAction.SUBSCRIBE) {
                     if (mIsFeatureSubscribed) {
-                        textView.setText(convertView.getResources().getString(R.string.in_app_subscription_activity_title));
+                        textView.setText(convertView.getResources().getString(R.string.in_app_subscription_view_title));
                     } else {
-                        textView.setText(convertView.getResources().getString(R.string.navigation_activity_subscribe));
+                        textView.setText(convertView.getResources().getString(R.string.navigation_view_subscribe));
                     }
                 } else {
                     textView.setText(Utils.capitalizeString(convertView.getResources().getString(menuItem.getText())));

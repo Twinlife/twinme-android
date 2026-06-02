@@ -202,8 +202,8 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
             mDefaultSpaceSettings.setMessageCopyAllowed(value);
         } else if (booleanConfig == Settings.fileCopyAllowed) {
             mDefaultSpaceSettings.setFileCopyAllowed(value);
-        } else if (booleanConfig == Settings.visualizationLink) {
-            booleanConfig.setBoolean(value);
+        } else if (booleanConfig == Settings.visualizationLink || booleanConfig == Settings.visualizationMap) {
+            booleanConfig.setBoolean(value).save();
         }
 
         saveDefaultSpaceSettings();
@@ -269,7 +269,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.settings_activity_chat_category_title));
+        setTitle(getString(R.string.settings_view_chat_category_title));
         applyInsets(R.id.messages_settings_activity_layout, R.id.messages_settings_activity_tool_bar, R.id.messages_settings_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mMessagesSettingsAdapter = new MessagesSettingsAdapter(this);

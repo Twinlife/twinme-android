@@ -157,7 +157,7 @@ public class TemplateSpaceActivity extends AbstractTwinmeActivity implements Edi
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.template_space_activity_template_title));
+        setTitle(getString(R.string.template_space_view_template_title));
 
         applyInsets(R.id.template_space_activity_layout, R.id.template_space_activity_tool_bar, R.id.template_space_activity_list_view, Design.TOOLBAR_COLOR, false);
 

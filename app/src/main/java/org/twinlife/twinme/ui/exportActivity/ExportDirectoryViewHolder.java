@@ -52,7 +52,7 @@ public class ExportDirectoryViewHolder extends RecyclerView.ViewHolder {
         mEditTextView.setText(uiSetting.getTitle());
         mDirectoryView.setText(uiSetting.getTitle());
 
-        if (uiSetting.getTitle().equals(itemView.getContext().getString(R.string.settings_activity_default_directory_title))) {
+        if (uiSetting.getTitle().equals(itemView.getContext().getString(R.string.settings_view_default_directory_title))) {
             mDirectoryView.setTextColor(Design.GREY_COLOR);
         } else {
             mDirectoryView.setTextColor(Design.FONT_COLOR_DEFAULT);

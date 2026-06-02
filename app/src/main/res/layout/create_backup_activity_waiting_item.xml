@@ -17,6 +17,6 @@
         android:layout_centerVertical="true"
         android:textAlignment="center"
         android:layout_below="@+id/create_backup_activity_waiting_item_progress_bar"
-        android:text="@string/backup_activity_wait_message"/>
+        android:text="@string/backup_view_wait_message"/>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

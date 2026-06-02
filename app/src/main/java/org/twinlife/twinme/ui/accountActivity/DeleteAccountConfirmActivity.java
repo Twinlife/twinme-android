@@ -272,7 +272,7 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM36);
 
-        String message = getString(R.string.application_operation_irreversible) + "\n\n" + getString(R.string.account_activity_delete_account);
+        String message = getString(R.string.application_operation_irreversible) + "\n\n" + getString(R.string.account_view_delete_account);
         mMessageView.setText(message);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
@@ -408,7 +408,7 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
             mConfirmDeleteAccount = true;
             mConfirmView.setAlpha(0.5f);
             mDeleteConfirmView.setVisibility(View.VISIBLE);
-            mMessageView.setText(getString(R.string.deleted_account_activity_confirm_message));
+            mMessageView.setText(getString(R.string.deleted_account_view_confirm_message));
             mConfirmTextView.setText(getString(R.string.application_confirm_deletion));
         } else if (mCanDelete) {
             mDeleteAccountOnClose = true;

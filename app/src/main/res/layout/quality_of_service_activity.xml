@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/quality_of_service_activity_slide_mark_view"
-            android:text="@string/about_activity_quality_of_service" />
+            android:text="@string/about_view_quality_of_service" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/quality_of_service_activity_recycler_view"

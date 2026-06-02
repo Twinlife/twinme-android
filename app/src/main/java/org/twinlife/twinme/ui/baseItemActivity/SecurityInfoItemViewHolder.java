@@ -63,7 +63,7 @@ public class SecurityInfoItemViewHolder extends BaseItemViewHolder {
 
             String name = getBaseItemActivity().getContactName();
             if (name != null) {
-                SpannableString spannableString = new SpannableString(getBaseItemActivity().getString(R.string.conversation_activity_info, name));
+                SpannableString spannableString = new SpannableString(getBaseItemActivity().getString(R.string.conversation_view_info, name));
                 spannableString.setSpan(is, 0, 5, 0);
                 mTextView.setText(spannableString);
             }

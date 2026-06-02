@@ -121,12 +121,12 @@ public class LastCallViewHolder extends RecyclerView.ViewHolder {
         String callType = "";
         if (callDescriptor.isIncoming()) {
             if (uiOriginator != null && uiOriginator.getContact().getType() == Originator.Type.CALL_RECEIVER) {
-                callType = context.getString(R.string.premium_services_activity_click_to_call_title);
+                callType = context.getString(R.string.premium_services_view_click_to_call_title);
             } else {
-                callType = context.getString(R.string.calls_fragment_incoming_call);
+                callType = context.getString(R.string.calls_view_incoming_call);
             }
         } else {
-            callType = context.getString(R.string.calls_fragment_outgoing_call);
+            callType = context.getString(R.string.calls_view_outgoing_call);
         }
 
         mDurationView.setText(callDuration);
@@ -134,7 +134,7 @@ public class LastCallViewHolder extends RecyclerView.ViewHolder {
 
         if (!callDescriptor.isAccepted() && callDescriptor.isIncoming() && callDescriptor.getTerminateReason() != null) {
             mDurationView.setTextColor(Design.DELETE_COLOR_RED);
-            mDurationView.setText(Utils.capitalizeString(context.getString(R.string.conversation_activity_call_missed)));
+            mDurationView.setText(Utils.capitalizeString(context.getString(R.string.conversation_view_call_missed)));
         } else {
             mDurationView.setTextColor(TEXT_VIEW_COLOR);
         }

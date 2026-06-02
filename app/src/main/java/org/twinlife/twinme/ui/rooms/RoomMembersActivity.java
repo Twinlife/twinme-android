@@ -368,7 +368,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.room_members_activity_participants_title));
+        setTitle(getString(R.string.room_members_view_participants_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.room_member_activity_layout, R.id.room_member_activity_tool_bar, R.id.room_member_activity_member_list_view, Design.TOOLBAR_COLOR, false);
@@ -439,12 +439,12 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         }
 
         if (isAdmin && mRoomAdmins.size() == 1) {
-            showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.room_members_activity_only_admin_message), false, null);
+            showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.room_members_view_only_admin_message), false, null);
         } else {
             ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
+            defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
             defaultConfirmView.setMessage(getString(R.string.application_delete_message));
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
@@ -498,8 +498,8 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
-        defaultConfirmView.setMessage(getString(R.string.room_members_activity_change_admin_title));
+        defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+        defaultConfirmView.setMessage(getString(R.string.room_members_view_change_admin_title));
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
 
@@ -543,13 +543,13 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         }
 
         if (mRoomAdmins.size() == 1) {
-            showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.room_members_activity_only_admin_message), false, null);
+            showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.room_members_view_only_admin_message), false, null);
         } else {
             ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
-            defaultConfirmView.setMessage(getString(R.string.room_members_activity_remove_admin_title));
+            defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+            defaultConfirmView.setMessage(getString(R.string.room_members_view_remove_admin_title));
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
 
@@ -596,8 +596,8 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.group_member_activity_invitation_title));
-        defaultConfirmView.setMessage(String.format(getString(R.string.group_member_activity_invitation_message), roomMember.getName()));
+        defaultConfirmView.setTitle(getString(R.string.group_member_view_invitation_title));
+        defaultConfirmView.setMessage(String.format(getString(R.string.group_member_view_invitation_message), roomMember.getName()));
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
 

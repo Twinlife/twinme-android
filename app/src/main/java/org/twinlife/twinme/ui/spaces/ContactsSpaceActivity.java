@@ -324,7 +324,7 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
         setToolBar(R.id.contacts_space_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.contacts_fragment_title));
+        setTitle(getString(R.string.contacts_view_title));
 
         applyInsets(R.id.contacts_space_activity_layout, R.id.contacts_space_activity_tool_bar, R.id.contacts_space_activity_layout_save_view, Design.TOOLBAR_COLOR, false);
 
@@ -442,8 +442,8 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
             spaceActionConfirmView.setIconTintColor(Color.WHITE);
             spaceActionConfirmView.setIcon(R.drawable.move_contacts_icon);
             spaceActionConfirmView.setTitle(mSpace.getSpaceSettings().getName());
-            spaceActionConfirmView.setMessage(getString(R.string.contact_space_activity_move_message));
-            spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_activity_move_title));
+            spaceActionConfirmView.setMessage(getString(R.string.contact_space_view_move_message));
+            spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_view_move_title));
             spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/alert_dialog_slide_mark_view"
             android:gravity="center"
-            android:text="@string/deleted_account_activity_warning"/>
+            android:text="@string/deleted_account_view_warning"/>
 
         <TextView
             android:id="@+id/alert_dialog_message"
@@ -32,7 +32,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/alert_dialog_title"
             android:gravity="center"
-            android:text="@string/edit_contact_activity_message" />
+            android:text="@string/edit_contact_view_message" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/alert_dialog_negative_button"

@@ -22,7 +22,7 @@
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="6%"
         app:layout_marginEndPercent="4.53%"
-        android:contentDescription="@string/add_contact_activity_title">
+        android:contentDescription="@string/add_contact_view_title">
 
         <org.twinlife.twinme.utils.RoundedView
             android:id="@+id/show_profile_activity_add_contact_rounded_view"
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/show_profile_activity_twincode_icon_view"
-                    android:text="@string/profile_fragment_twincode_title" />
+                    android:text="@string/profile_view_twincode_title" />
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -125,7 +125,7 @@
                 android:layout_below="@+id/show_profile_activity_twincode_view"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="@string/profile_fragment_message"
+                android:text="@string/profile_view_message"
                 app:layout_widthPercent="90.93%" />
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

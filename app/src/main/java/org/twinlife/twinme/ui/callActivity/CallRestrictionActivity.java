@@ -199,12 +199,10 @@ public class CallRestrictionActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onStartClick");
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Intent intent = new Intent();
-            intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
-            startActivity(intent);
-            finish();
-        }
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+        startActivity(intent);
+        finish();
     }
 
     public void onDoNotShowAgainClick() {

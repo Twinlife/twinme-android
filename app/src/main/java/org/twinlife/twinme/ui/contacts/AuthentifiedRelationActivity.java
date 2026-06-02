@@ -45,6 +45,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractScannerActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.MnemonicCodeUtils;
@@ -186,7 +187,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     //
@@ -281,7 +282,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.authentified_relation_activity_title));
+        setTitle(getString(R.string.authentified_relation_view_title));
 
         applyInsets(R.id.authentified_relation_activity_layout, R.id.authentified_relation_activity_tool_bar, R.id.authentified_relation_activity_content_view, Design.TOOLBAR_COLOR, false);
 
@@ -445,7 +446,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
                     showSuccessAuthentification();
                 }
             } else {
-                incorrectQRCode(getLinkError(errorCode, R.string.capture_activity_incorrect_qrcode));
+                incorrectQRCode(getLinkError(errorCode, R.string.capture_view_incorrect_qrcode));
             }
         }));
     }
@@ -456,7 +457,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -474,7 +475,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         } else {
             mInfoScanView.setVisibility(View.GONE);
             mMessageView.setVisibility(View.VISIBLE);
-            mMessageView.setText(getResources().getString(R.string.capture_activity_no_camera));
+            mMessageView.setText(getResources().getString(R.string.capture_view_no_camera));
         }
     }
 
@@ -526,7 +527,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
 
         if (mCertificationLevel == CertificationLevel.LEVEL_2
                 || (mCertificationLevel == CertificationLevel.LEVEL_1 && mContact.getPublicPeerTwincodeOutboundId() == null)) {
-            setTitle(getString(R.string.authentified_relation_activity_to_be_certified_title));
+            setTitle(getString(R.string.authentified_relation_view_to_be_certified_title));
 
             mScanSelect = true;
             if (mCameraManager == null) {
@@ -545,21 +546,21 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             mFingerPrintView.setVisibility(View.GONE);
             mQRCodeView.setVisibility(View.INVISIBLE);
             mCameraView.setVisibility(View.VISIBLE);
-            mInfoTextView.setText(String.format(getString(R.string.authentified_relation_activity_level_2), mContact.getName()));
+            mInfoTextView.setText(String.format(getString(R.string.authentified_relation_view_level_2), mContact.getName()));
         } else {
             mCameraView.setVisibility(View.GONE);
 
             if (mCertificationLevel != CertificationLevel.LEVEL_4) {
-                setTitle(getString(R.string.authentified_relation_activity_to_be_certified_title));
+                setTitle(getString(R.string.authentified_relation_view_to_be_certified_title));
 
-                mInfoTextView.setText(String.format(getString(R.string.authentified_relation_activity_level_3), mContact.getName()));
+                mInfoTextView.setText(String.format(getString(R.string.authentified_relation_view_level_3), mContact.getName()));
                 mQRCodeView.setVisibility(View.VISIBLE);
                 mCertifiedContainerView.setVisibility(View.VISIBLE);
                 mFingerPrintView.setVisibility(View.GONE);
             } else {
-                setTitle(getString(R.string.authentified_relation_activity_title));
+                setTitle(getString(R.string.authentified_relation_view_title));
 
-                String message = String.format(getString(R.string.authentified_relation_activity_level_4), mContact.getName()) + "\n\n" + getString(R.string.authentified_relation_activity_relation_print_message);
+                String message = String.format(getString(R.string.authentified_relation_view_level_4), mContact.getName()) + "\n\n" + getString(R.string.authentified_relation_view_relation_print_message);
                 mInfoTextView.setText(message);
                 mQRCodeView.setVisibility(View.GONE);
                 mCertifiedContainerView.setVisibility(View.GONE);
@@ -618,11 +619,11 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
 
             OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-            spannableStringBuilder.append(getString(R.string.authentified_relation_activity_to_be_certified_title));
+            spannableStringBuilder.append(getString(R.string.authentified_relation_view_to_be_certified_title));
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.append("\n\n");
             int startSubTitle = spannableStringBuilder.length();
-            spannableStringBuilder.append(getString(R.string.authentified_relation_activity_onboarding_subtitle));
+            spannableStringBuilder.append(getString(R.string.authentified_relation_view_onboarding_subtitle));
             spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
@@ -637,8 +638,8 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
 
             onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_authentified_relation_dark : R.drawable.onboarding_authentified_relation, null));
 
-            onboardingConfirmView.setMessage(getString(R.string.authentified_relation_activity_onboarding_message));
-            onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_activity_start));
+            onboardingConfirmView.setMessage(getString(R.string.authentified_relation_view_onboarding_message));
+            onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_view_start));
             onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -684,7 +685,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         successAuthentifiedRelationView.setAvatar(mContactAvatar, false);
         successAuthentifiedRelationView.setTitle(mContact.getName());
 
-        String message = String.format(getString(R.string.authentified_relation_activity_certified_message), mContact.getName());
+        String message = String.format(getString(R.string.authentified_relation_view_certified_message), mContact.getName());
         successAuthentifiedRelationView.setMessage(message);
         successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
 

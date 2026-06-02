@@ -253,7 +253,7 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
             Log.d(LOG_TAG, "onGetTwincodeNotFound");
         }
 
-        error(getString(R.string.accept_invitation_activity_incorrect_contact_information), this::finish);
+        error(getString(R.string.accept_invitation_view_incorrect_contact_information), this::finish);
     }
 
     @Override
@@ -278,7 +278,7 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
         mTwincodeURI = uri;
         if (errorCode != ErrorCode.SUCCESS || mTwincodeURI == null
                 || mTwincodeURI.twincodeId == null || mTwincodeURI.twincodeOptions == null) {
-            error(getString(R.string.accept_invitation_activity_incorrect_contact_information), this::finish);
+            error(getString(R.string.accept_invitation_view_incorrect_contact_information), this::finish);
         }
     }
 
@@ -288,7 +288,7 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
             Log.d(LOG_TAG, "onSubscribeSuccess");
         }
 
-        Toast toast = Toast.makeText(this, R.string.in_app_subscription_activity_invitation_code_success, Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, R.string.in_app_subscription_view_invitation_code_success, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 0, 0);
         toast.show();
 
@@ -304,11 +304,11 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
 
         String errorMessage;
         if (errorCode == ErrorCode.EXPIRED) {
-            errorMessage = getString(R.string.in_app_subscription_activity_expire_code);
+            errorMessage = getString(R.string.in_app_subscription_view_expire_code);
         } else if (errorCode == ErrorCode.LIMIT_REACHED) {
-            errorMessage = getString(R.string.in_app_subscription_activity_used_code);
+            errorMessage = getString(R.string.in_app_subscription_view_used_code);
         } else {
-            errorMessage = getString(R.string.in_app_subscription_activity_invalid_code);
+            errorMessage = getString(R.string.in_app_subscription_view_invalid_code);
         }
         error(errorMessage, this::animationCloseInvitationView);
     }
@@ -552,7 +552,7 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
             }
             mNameView.setText(spannableStringBuilder);
 
-            mMessageView.setText(String.format(getString(R.string.in_app_subscription_activity_accept_invitation), mContactName));
+            mMessageView.setText(String.format(getString(R.string.in_app_subscription_view_accept_invitation), mContactName));
         }
 
         if (mHasTwincode) {
@@ -585,7 +585,7 @@ public class AcceptInvitationSubscriptionActivity extends AbstractTwinmeActivity
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);
 
-            String message = getString(R.string.accept_invitation_activity_being_transferred) + "\n" + getString(R.string.accept_invitation_activity_check_connection);
+            String message = getString(R.string.accept_invitation_view_being_transferred) + "\n" + getString(R.string.accept_invitation_view_check_connection);
             mMessageView.setText(message);
         }
 

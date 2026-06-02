@@ -32,7 +32,7 @@
             android:layout_below="@+id/delete_account_confirm_activity_slide_mark_view"
             android:gravity="center"
             android:lines="1"
-            android:text="@string/deleted_account_activity_warning"
+            android:text="@string/deleted_account_view_warning"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/delete_account_confirm_activity_title_view"
             android:gravity="center"
-            android:text="@string/account_activity_delete_account"
+            android:text="@string/account_view_delete_account"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/deleted_account_activity_delete" />
+                android:text="@string/deleted_account_view_delete" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

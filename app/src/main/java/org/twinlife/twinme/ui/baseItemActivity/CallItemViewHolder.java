@@ -62,7 +62,8 @@ class CallItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_call_item_state_avatar_view,
                 R.id.base_item_activity_call_item_overlay_view,
                 R.id.base_item_activity_call_item_selected_view,
-                R.id.base_item_activity_call_item_selected_image_view);
+                R.id.base_item_activity_call_item_selected_image_view,
+                -1);
 
         mCallItemContainer = view.findViewById(R.id.base_item_activity_call_item_view);
         mCallItemContainer.setPadding(FILE_ITEM_WIDTH_PADDING, FILE_ITEM_HEIGHT_PADDING, FILE_ITEM_WIDTH_PADDING, FILE_ITEM_HEIGHT_PADDING);
@@ -156,9 +157,9 @@ class CallItemViewHolder extends ItemViewHolder {
         mIsVideo = callDescriptor.isVideo();
 
         if (callDescriptor.isVideo()) {
-            mCallTypeView.setText(getString(R.string.conversation_activity_video_call));
+            mCallTypeView.setText(getString(R.string.conversation_view_video_call));
         } else {
-            mCallTypeView.setText(getString(R.string.conversation_activity_audio_call));
+            mCallTypeView.setText(getString(R.string.conversation_view_audio_call));
         }
 
         if (callDescriptor.getTerminateReason() != null) {

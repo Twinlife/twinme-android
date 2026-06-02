@@ -71,7 +71,7 @@
             android:layout_below="@+id/delete_confirm_view_avatar_view"
             android:gravity="center"
             android:lines="1"
-            android:text="@string/deleted_account_activity_warning"
+            android:text="@string/deleted_account_view_warning"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -80,7 +80,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/delete_confirm_view_title_view"
             android:gravity="center"
-            android:text="@string/edit_contact_activity_message"
+            android:text="@string/edit_contact_view_message"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout

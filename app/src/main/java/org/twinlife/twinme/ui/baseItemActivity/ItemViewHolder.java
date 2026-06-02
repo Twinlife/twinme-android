@@ -31,33 +31,71 @@ import java.util.TimerTask;
 abstract class ItemViewHolder extends BaseItemViewHolder {
 
     private static final float DESIGN_ANNOTATION_VIEW_HEIGHT = 50f;
+    private static final float DESIGN_INFO_VIEW_SIZE = 38f;
+
+    private static final float DESIGN_INFO_VIEW_MARGIN = 20f;
+
+    private static final int DESIGN_ORANGE_COLOR = Color.argb(255, 255, 165, 0);
 
     private final ImageView mStateView;
     private final AvatarView mStateAvatarView;
     private final RecyclerView mAnnotationView;
     private final AnnotationAdapter mAnnotationAdapter;
+    private ImageView mInfoView;
     private boolean mDeleteAnimationStarted;
     private Timer mEphemeralTimer;
 
-    ItemViewHolder(BaseItemActivity baseItemActivity, View view, int containerViewId, int stateViewId, int stateAvatarViewId, int overlayViewId, int selectedViewId, int selectedImageViewId) {
+    ItemViewHolder(BaseItemActivity baseItemActivity, View view, int containerViewId, int stateViewId, int stateAvatarViewId, int overlayViewId, int selectedViewId, int selectedImageViewId, int infoViewId) {
 
         super(baseItemActivity, view, containerViewId, overlayViewId, selectedViewId, selectedImageViewId);
 
         mStateView = view.findViewById(stateViewId);
         mStateAvatarView = view.findViewById(stateAvatarViewId);
+
+        if (infoViewId != -1) {
+            mInfoView = view.findViewById(infoViewId);
+            mInfoView.setVisibility(View.GONE);
+            mInfoView.setColorFilter(DESIGN_ORANGE_COLOR);
+            mInfoView.setOnClickListener(v -> baseItemActivity.onInfoErrorClick(getItem()));
+
+            ViewGroup.LayoutParams layoutParams = mInfoView.getLayoutParams();
+            layoutParams.width = (int) (DESIGN_INFO_VIEW_SIZE * Design.HEIGHT_RATIO);
+            layoutParams.height = (int) (DESIGN_INFO_VIEW_SIZE * Design.HEIGHT_RATIO);
+            mInfoView.setLayoutParams(layoutParams);
+
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInfoView.getLayoutParams();
+            marginLayoutParams.rightMargin = (int) (DESIGN_INFO_VIEW_MARGIN * Design.HEIGHT_RATIO);
+        }
+
         mAnnotationView = null;
         mAnnotationAdapter = null;
         mDeleteAnimationStarted = false;
     }
 
-    ItemViewHolder(BaseItemActivity baseItemActivity, View view, int containerViewId, int stateViewId, int stateAvatarViewId, int overlayViewId, int annotationViewId, int selectedViewId, int selectedImageViewId) {
+    ItemViewHolder(BaseItemActivity baseItemActivity, View view, int containerViewId, int stateViewId, int stateAvatarViewId, int overlayViewId, int annotationViewId, int selectedViewId, int selectedImageViewId, int infoViewId) {
 
         super(baseItemActivity, view, containerViewId, overlayViewId, selectedViewId, selectedImageViewId);
 
         mStateView = view.findViewById(stateViewId);
         mStateAvatarView = view.findViewById(stateAvatarViewId);
 
-        mAnnotationAdapter = new AnnotationAdapter(baseItemActivity, new ArrayList<>(), false);
+        if (infoViewId != -1) {
+            mInfoView = view.findViewById(infoViewId);
+            mInfoView.setVisibility(View.GONE);
+            mInfoView.setColorFilter(DESIGN_ORANGE_COLOR);
+            mInfoView.setOnClickListener(view1 -> baseItemActivity.onInfoErrorClick(getItem()));
+
+            ViewGroup.LayoutParams layoutParams = mInfoView.getLayoutParams();
+            layoutParams.width = (int) (DESIGN_INFO_VIEW_SIZE * Design.HEIGHT_RATIO);
+            layoutParams.height = (int) (DESIGN_INFO_VIEW_SIZE * Design.HEIGHT_RATIO);
+            mInfoView.setLayoutParams(layoutParams);
+
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mInfoView.getLayoutParams();
+            marginLayoutParams.rightMargin = (int) (DESIGN_INFO_VIEW_MARGIN * Design.HEIGHT_RATIO);
+            mInfoView.setLayoutParams(marginLayoutParams);
+        }
+
+        mAnnotationAdapter = new AnnotationAdapter(baseItemActivity, false);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(baseItemActivity, RecyclerView.HORIZONTAL, false);
         mAnnotationView = view.findViewById(annotationViewId);
@@ -84,6 +122,10 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
         super.onBind(item);
         
         mStateAvatarView.setColorFilter(Color.TRANSPARENT);
+
+        if (mInfoView != null) {
+            mInfoView.setVisibility(View.GONE);
+        }
 
         switch (item.getState()) {
             case DEFAULT:
@@ -129,6 +171,10 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
                 mStateView.setBackgroundResource(R.drawable.not_sent_state);
                 mStateView.setVisibility(View.VISIBLE);
                 mStateAvatarView.setVisibility(View.GONE);
+
+                if (!getBaseItemActivity().isSelectItemMode() && mInfoView != null && getItem().getErrorDescriptorAnnotation() != null) {
+                    mInfoView.setVisibility(View.VISIBLE);
+                }
                 break;
 
             case DELETED:
@@ -173,7 +219,7 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
         }
 
         if (mAnnotationView != null) {
-            if (item.isForwarded() || item.isEdited() || (item.getLikeDescriptorAnnotations() != null && !item.getLikeDescriptorAnnotations().isEmpty())) {
+            if (item.isForwarded() || item.isEdited() || !item.getLikeDescriptorAnnotations().isEmpty()) {
                 mAnnotationAdapter.setAnnotations(item.getLikeDescriptorAnnotations(), item.getDescriptorId());
                 mAnnotationAdapter.setIsForwarded(item.isForwarded());
                 mAnnotationAdapter.setIsUpdated(item.isEdited());
@@ -195,7 +241,7 @@ abstract class ItemViewHolder extends BaseItemViewHolder {
         } else {
             topMargin = ITEM_TOP_MARGIN2;
         }
-        if (((corners & Item.BOTTOM_RIGHT) == 0) || item.isForwarded() || item.isEdited() || item.getLikeDescriptorAnnotations() != null) {
+        if (((corners & Item.BOTTOM_RIGHT) == 0) || item.isForwarded() || item.isEdited() || !item.getLikeDescriptorAnnotations().isEmpty()) {
             bottomMargin = ITEM_BOTTOM_MARGIN1;
         } else {
             bottomMargin = ITEM_BOTTOM_MARGIN2;

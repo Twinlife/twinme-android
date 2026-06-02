@@ -104,9 +104,9 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
             mRemoveView.setVisibility(VISIBLE);
 
             if (mRemoveAdmin) {
-                mAdminTextView.setText(mRoomMemberActivity.getString(R.string.room_members_activity_remove_admin_title));
+                mAdminTextView.setText(mRoomMemberActivity.getString(R.string.room_members_view_remove_admin_title));
             } else {
-                mAdminTextView.setText(mRoomMemberActivity.getString(R.string.room_members_activity_change_admin_title));
+                mAdminTextView.setText(mRoomMemberActivity.getString(R.string.room_members_view_change_admin_title));
             }
         } else {
             mAdminView.setVisibility(GONE);
@@ -122,7 +122,7 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
         mAvatarView.setImage(mRoomMemberActivity, null,
                 new CircularImageDescriptor(uiRoomMember.getAvatar(), 0.5f, 0.5f, 0.5f));
         mNameView.setText(uiRoomMember.getName());
-        mInviteTextView.setText(mRoomMemberActivity.getString(R.string.group_member_activity_invite_personnal_relation));
+        mInviteTextView.setText(mRoomMemberActivity.getString(R.string.group_member_view_invite_personnal_relation));
 
         ViewGroup.LayoutParams layoutParams = mActionView.getLayoutParams();
         layoutParams.height = getActionViewHeight();

@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/in_app_subscription_activity_invitation_code"
+        android:text="@string/in_app_subscription_view_invitation_code"
         app:layout_widthPercent="89.06%"
         app:layout_marginTopPercent="3%" />
 
@@ -76,7 +76,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:layout_toEndOf="@+id/invitation_subscription_activity_scan_icon_view"
-                android:text="@string/add_contact_activity_scan_code"/>
+                android:text="@string/add_contact_view_scan_code"/>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/capture_activity_message" />
+            android:text="@string/capture_view_message" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <androidx.percentlayout.widget.PercentRelativeLayout
@@ -112,7 +112,7 @@
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/invitation_subscription_activity_twincode_copy_view"
             android:background="@android:color/transparent"
-            android:hint="@string/scan_activity_paste_code"
+            android:hint="@string/scan_view_paste_code"
             android:imeOptions="actionDone"
             android:inputType="text|textNoSuggestions|textCapSentences"
             app:layout_marginStartPercent="3.76%"
@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/invitation_subscription_activity_import_gallery_icon_view"
-            android:text="@string/add_contact_activity_gallery_title" />
+            android:text="@string/add_contact_view_gallery_title" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <ProgressBar

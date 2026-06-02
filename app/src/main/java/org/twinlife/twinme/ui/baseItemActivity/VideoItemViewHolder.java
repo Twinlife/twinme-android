@@ -71,7 +71,8 @@ class VideoItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_video_item_overlay_view,
                 R.id.base_item_activity_video_item_annotation_view,
                 R.id.base_item_activity_video_item_selected_view,
-                R.id.base_item_activity_video_item_selected_image_view);
+                R.id.base_item_activity_video_item_selected_image_view,
+                R.id.base_item_activity_video_item_error_image_view);
 
         mImageView = view.findViewById(R.id.base_item_activity_video_item_image_view);
         mImageView.setClickable(false);
@@ -137,7 +138,7 @@ class VideoItemViewHolder extends ItemViewHolder {
                 VideoItem videoItem = getVideoItem();
                 if (videoItem != null) {
                     if (videoItem.isClearLocalItem()) {
-                        Toast.makeText(baseItemActivity, R.string.conversation_activity_local_cleanup, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(baseItemActivity, R.string.conversation_view_local_cleanup, Toast.LENGTH_SHORT).show();
                     } else {
                         baseItemActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                         baseItemActivity.onMediaClick(videoItem.getDescriptorId());
@@ -244,7 +245,7 @@ class VideoItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_video_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case GEOLOCATION_DESCRIPTOR:

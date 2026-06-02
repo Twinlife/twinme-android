@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:checked="true"
-            android:text="@string/personalization_activity_system"
+            android:text="@string/personalization_view_system"
             app:layout_marginEndPercent="4.26%"
             app:layout_marginStartPercent="4.53%"
             app:layout_marginTopPercent="2%"
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/personalization_activity_mode_light"
+            android:text="@string/personalization_view_mode_light"
             app:layout_marginTopPercent="6.34%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -174,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/personalization_activity_mode_dark"
+            android:text="@string/personalization_view_mode_dark"
             app:layout_marginTopPercent="6.34%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout

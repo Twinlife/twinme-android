@@ -46,9 +46,10 @@ public class BackupContentAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         mUIRestoreItems.clear();
-        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.contacts_fragment_title), R.drawable.contacts_icon, backupStats.contacts, Design.BLACK_COLOR));
-        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.premium_services_activity_click_to_call_title), R.drawable.add_external_call, backupStats.callReceivers, Design.BLACK_COLOR));
-        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.spaces_activity_title), R.drawable.space_icon, backupStats.spaces, Design.BLACK_COLOR));
+        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.contacts_view_title), R.drawable.contacts_icon, backupStats.contacts, Design.BLACK_COLOR));
+        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.share_view_group_list), R.drawable.groups_icon, backupStats.groups, Design.BLACK_COLOR));
+        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.premium_services_view_click_to_call_title), R.drawable.add_external_call, backupStats.callReceivers, Design.BLACK_COLOR));
+        mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.spaces_view_title), R.drawable.space_icon, backupStats.spaces, Design.BLACK_COLOR));
         notifyItemRangeChanged(0, mUIRestoreItems.size());
     }
 
@@ -63,47 +64,65 @@ public class BackupContentAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             if (!restoreReport.profiles.isStatsUpToDate()) {
                 mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mBackupContentConfirmView.getContext().getString(R.string.application_profile), -1, -1, -1));
-                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.restore_activity_content_profile_reset), R.drawable.generate_code, -1, Design.BLACK_COLOR));
-                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_activity_content_profile_reset_message), -1, -1, -1));
+                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.restore_view_content_profile_reset), R.drawable.generate_code, -1, Design.BLACK_COLOR));
+                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_view_content_profile_reset_message), -1, -1, -1));
             }
 
             if (!restoreReport.contacts.isStatsUpToDate()) {
-                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mBackupContentConfirmView.getContext().getString(R.string.contacts_fragment_title), -1, -1, -1));
+                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mBackupContentConfirmView.getContext().getString(R.string.contacts_view_title), -1, -1, -1));
 
                 if (restoreReport.contacts.added != 0) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_activity_content_diff_added), R.drawable.contacts_icon, restoreReport.contacts.added, Design.BLACK_COLOR));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_added), R.drawable.contacts_icon, restoreReport.contacts.added, Design.BLACK_COLOR));
                 }
 
                 if (restoreReport.contacts.modified != 0) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_activity_content_diff_updated), R.drawable.action_edit, restoreReport.contacts.modified, Design.BLACK_COLOR));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_updated), R.drawable.action_edit, restoreReport.contacts.modified, Design.BLACK_COLOR));
                 }
 
                 if (restoreReport.contacts.deleted != 0) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_activity_content_diff_deleted), R.drawable.delete_item, restoreReport.contacts.deleted, -1));
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_activity_content_contact_deleted_message), -1, -1, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_deleted), R.drawable.delete_item, restoreReport.contacts.deleted, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_view_content_contact_deleted_message), -1, -1, -1));
+                }
+            }
+
+            if (!restoreReport.groups.isStatsUpToDate()) {
+                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mBackupContentConfirmView.getContext().getString(R.string.share_view_group_list), -1, -1, -1));
+
+                if (restoreReport.groups.added != 0) {
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_added), R.drawable.groups_icon, restoreReport.groups.added, Design.BLACK_COLOR));
+                }
+
+                if (restoreReport.groups.modified != 0) {
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_updated), R.drawable.action_edit, restoreReport.groups.modified, Design.BLACK_COLOR));
+                }
+
+                if (restoreReport.groups.deleted != 0) {
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_deleted), R.drawable.delete_item, restoreReport.groups.deleted, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_view_content_contact_deleted_message), -1, -1, -1));
                 }
             }
 
             if (!restoreReport.clickToCall.isStatsUpToDate()) {
-                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mBackupContentConfirmView.getContext().getString(R.string.premium_services_activity_click_to_call_title), -1, -1, -1));
+                mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.SECTION, mBackupContentConfirmView.getContext().getString(R.string.premium_services_view_click_to_call_title), -1, -1, -1));
 
                 if (restoreReport.clickToCall.added != 0) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_activity_content_diff_added), R.drawable.add_external_call, restoreReport.clickToCall.added, Design.BLACK_COLOR));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_added), R.drawable.add_external_call, restoreReport.clickToCall.added, Design.BLACK_COLOR));
                 }
 
                 if (restoreReport.clickToCall.modified != 0) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_activity_content_diff_updated), R.drawable.action_edit, restoreReport.clickToCall.modified, Design.BLACK_COLOR));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_updated), R.drawable.action_edit, restoreReport.clickToCall.modified, Design.BLACK_COLOR));
                 }
 
                 if (restoreReport.clickToCall.deleted != 0) {
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_activity_content_diff_deleted), R.drawable.delete_item, restoreReport.clickToCall.deleted, -1));
-                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_activity_content_contact_deleted_message), -1, -1, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.backup_view_content_diff_deleted), R.drawable.delete_item, restoreReport.clickToCall.deleted, -1));
+                    mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.INFO, mBackupContentConfirmView.getContext().getString(R.string.restore_view_content_contact_deleted_message), -1, -1, -1));
                 }
             }
         } else {
-            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.contacts_fragment_title), R.drawable.contacts_icon, restoreReport.contacts.upToDate, Design.BLACK_COLOR));
-            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.premium_services_activity_click_to_call_title), R.drawable.add_external_call, restoreReport.clickToCall.upToDate, Design.BLACK_COLOR));
-            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.spaces_activity_title), R.drawable.tab_bar_spaces_grey, restoreReport.profiles.upToDate, Design.BLACK_COLOR));
+            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.contacts_view_title), R.drawable.contacts_icon, restoreReport.contacts.upToDate, Design.BLACK_COLOR));
+            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.share_view_group_list), R.drawable.groups_icon, restoreReport.groups.upToDate, Design.BLACK_COLOR));
+            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.premium_services_view_click_to_call_title), R.drawable.add_external_call, restoreReport.clickToCall.upToDate, Design.BLACK_COLOR));
+            mUIRestoreItems.add(new UIRestoreItem(UIRestoreItem.UIRestoreItemType.CONTENT, mBackupContentConfirmView.getContext().getString(R.string.spaces_view_title), R.drawable.tab_bar_spaces_grey, restoreReport.profiles.upToDate, Design.BLACK_COLOR));
         }
 
         notifyItemRangeChanged(0, mUIRestoreItems.size());

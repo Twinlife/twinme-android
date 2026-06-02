@@ -52,6 +52,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.AcceptInvitationActivity;
 import org.twinlife.twinme.ui.AddContactActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.InvitationSubscriptionActivity;
@@ -530,7 +531,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
         if (mNameSpace != null) {
             mAddProfileService.createProfile(mNameSpace, name, null, mUpdatedProfileAvatar, mUpdatedProfileFile, true);
         } else {
-            String nameSpace =  getString(R.string.space_appearance_activity_general_title);
+            String nameSpace =  getString(R.string.space_appearance_view_general_title);
             mAddProfileService.createProfile(nameSpace, name, null, mUpdatedProfileAvatar, mUpdatedProfileFile, false);
         }
     }
@@ -660,12 +661,12 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
 
-        defaultConfirmView.setMessage(getString(R.string.create_profile_activity_incomplete_profile_message));
+        defaultConfirmView.setMessage(getString(R.string.create_profile_view_incomplete_profile_message));
 
         if (incompleteProfile) {
             defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
         } else {
-            defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
+            defaultConfirmView.setConfirmTitle(getString(R.string.profile_view_create_profile));
         }
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -723,13 +724,13 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
 
-        String message = getString(R.string.create_profile_activity_onboarding_message_part_1) +
+        String message = getString(R.string.create_profile_view_onboarding_message_part_1) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_2) +
+                getString(R.string.create_profile_view_onboarding_message_part_2) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_3) +
+                getString(R.string.create_profile_view_onboarding_message_part_3) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_4);
+                getString(R.string.create_profile_view_onboarding_message_part_4);
 
         onboardingConfirmView.setMessage(message);
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));

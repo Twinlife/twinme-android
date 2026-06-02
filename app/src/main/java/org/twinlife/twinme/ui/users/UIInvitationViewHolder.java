@@ -40,25 +40,25 @@ public class UIInvitationViewHolder extends UIContactViewHolder<UIContact> {
         UIInvitation invitation = (UIInvitation) uiContact;
         mInvitationStatus.setVisibility(View.VISIBLE);
         if (invitation.peerFailure()) {
-            mInvitationStatus.setText(context.getString(R.string.conversation_activity_invitation_failed));
+            mInvitationStatus.setText(context.getString(R.string.conversation_view_invitation_failed));
 
         } else {
             switch (invitation.getStatus()) {
                 case PENDING:
-                    mInvitationStatus.setText(context.getString(R.string.conversation_activity_invitation_pending));
+                    mInvitationStatus.setText(context.getString(R.string.conversation_view_invitation_pending));
                     break;
 
                 case ACCEPTED:
-                    mInvitationStatus.setText(context.getString(R.string.conversation_activity_invitation_accepted));
+                    mInvitationStatus.setText(context.getString(R.string.conversation_view_invitation_accepted));
                     break;
 
                 case JOINED:
-                    mInvitationStatus.setText(context.getString(R.string.conversation_activity_invitation_joined));
+                    mInvitationStatus.setText(context.getString(R.string.conversation_view_invitation_joined));
                     break;
 
                 case REFUSED:
                 case WITHDRAWN:
-                    mInvitationStatus.setText(context.getString(R.string.conversation_activity_invitation_refused));
+                    mInvitationStatus.setText(context.getString(R.string.conversation_view_invitation_refused));
                     break;
             }
         }

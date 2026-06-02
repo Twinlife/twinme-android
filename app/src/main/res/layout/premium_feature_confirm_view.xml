@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/premium_feature_confirm_view_message_view"
-            android:text="@string/about_activity_premium_services"
+            android:text="@string/about_view_premium_services"
             android:gravity="center"
             android:lines="1"
             app:layout_widthPercent="94%" />

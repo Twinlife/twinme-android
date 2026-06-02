@@ -23,7 +23,7 @@
             android:layout_height="0dp"
             android:scaleType="fitCenter"
             android:layout_centerInParent="true"
-            android:src="@drawable/add_contact"
+            android:src="@drawable/action_bar_add_contact"
             app:layout_aspectRatio="100%"
             app:tint="#FFFFFF" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -34,8 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/contacts_fragment_add_contact_item_add_view"
-        android:text="@string/main_activity_add_contact"
-        app:layout_marginStartPercent="4.67%" />
+        android:text="@string/main_view_add_contact"
+        app:layout_marginStartPercent="4.67%"
+        app:layout_marginEndPercent="4.67%" />
 
     <View
         android:id="@+id/contacts_fragment_add_contact_item_separator_view"

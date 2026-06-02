@@ -69,7 +69,7 @@ public class InvitationCodeViewHolder extends RecyclerView.ViewHolder {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.getDefault());
         String expirationDate = simpleDateFormat.format(new Date(invitationCode.getExpirationDate() * 1000L));
 
-        String message = itemView.getContext().getString(R.string.invitation_code_activity_expiration) + " " + expirationDate;
+        String message = itemView.getContext().getString(R.string.invitation_code_view_expiration) + " " + expirationDate;
         mExpirationView.setText(message);
         if (hideSeparator) {
             mSeparatorView.setVisibility(View.GONE);

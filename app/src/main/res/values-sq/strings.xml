@@ -1,0 +1,1399 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Prano</string>
+    <string name="application_account_deleted">Llogaria juaj është fshirë, tani duhet ta çinstaloni aplikacionin.</string>
+    <string name="application_account_restored_error">Llogaria e kësaj pajisjeje është rikthyer në një pajisje tjetër. Duhet ta çinstaloni aplikacionin.</string>
+    <string name="application_add_contact_no_profile">Duhet të plotësoni një profil që ju përfaqëson përpara se të ftoni një kontakt. Të vazhdohet?</string>
+    <string name="application_all">Të gjitha</string>
+    <string name="application_appearance">Pamja</string>
+    <string name="application_are_you_sure">A jeni i sigurt?</string>
+    <string name="application_authorization_camera">Lejoni aplikacionin të aksesojë Kamerën në cilësimet e sistemit.</string>
+    <string name="application_authorization_go_settings">Shko te cilësimet e sistemit</string>
+    <string name="application_authorization_location">Lejojini aplikacionit qasje te Vendndodhja në cilësimet e sistemit.</string>
+    <string name="application_authorization_microphone">Lejoni aplikacionin të aksesojë Mikrofonin në cilësimet e sistemit.</string>
+    <string name="application_authorization_microphone_camera">Lejoni aplikacionin të aksesojë Mikrofonin dhe Kamerën në cilësimet e sistemit.</string>
+    <string name="application_authorization_title">Autorizim i munguar</string>
+    <string name="application_back">Kthehu</string>
+    <string name="application_backup_restore">Rivendos kopjen rezervë</string>
+    <string name="application_backup_verify">Verifiko kopjen rezervë</string>
+    <string name="application_camera">Kamera</string>
+    <string name="application_cancel">Anulo</string>
+    <string name="application_canceled_operation">Operacion i anuluar</string>
+    <string name="application_checking_connection">Duke kontrolluar lidhjen</string>
+    <string name="application_color">Ngjyra</string>
+    <string name="application_configuration">Konfigurimi</string>
+    <string name="application_confirm">Konfirmo</string>
+    <string name="application_confirm_deletion">Konfirmo fshirjen</string>
+    <string name="application_connected">Lidhje e sigurt e aktivizuar.</string>
+    <string name="application_connection_status_no_network">Nuk ka qasje në Internet.</string>
+    <string name="application_connection_status_no_network_message">Kontrolloni lidhjen e rrjetit.</string>
+    <string name="application_connection_status_no_services">Nuk ka qasje në shërbim.</string>
+    <string name="application_connection_status_no_services_message">Provoni të përdorni një VPN.</string>
+    <string name="application_contact_not_found">Ky kontakt e ka fshirë këtë marrëdhënie me ju dhe nuk është më i arritshëm.</string>
+    <string name="application_continue_without_premium_services">Vazhdo pa shërbime premium</string>
+    <string name="application_create_group_no_profile">Duhet të plotësoni një profil që ju përfaqëson në këtë grup. Të vazhdohet?</string>
+    <string name="application_database_error">Gabim i bazës së të dhënave</string>
+    <string name="application_decline">Refuzo</string>
+    <string name="application_default">Parazgjedhur</string>
+    <string name="application_delete">Fshi</string>
+    <string name="application_delete_message">A jeni i sigurt që dëshironi ta fshini?</string>
+    <string name="application_denied_permissions">Lejet e kërkuara nuk janë dhënë</string>
+    <string name="application_description">Përshkrimi</string>
+    <string name="application_display_all">Shfaq të gjitha</string>
+    <string name="application_do_not_display">Mos e shfaq më</string>
+    <string name="application_duration_hour">h</string>
+    <string name="application_duration_minute">m</string>
+    <string name="application_duration_second">s</string>
+    <string name="application_edit">Ndrysho</string>
+    <string name="application_error_code">Kodi i gabimit: %1$s</string>
+    <string name="application_error_file_not_found">Skedari nuk u gjet.</string>
+    <string name="application_error_media_not_supported">Ky format imazhi/video nuk mbështetet nga aplikacioni.</string>
+    <string name="application_error_media_unload">Nuk mund të ngarkohet media.</string>
+    <string name="application_error_no_storage_space">Hapësirë e pamjaftueshme ruajtjeje</string>
+    <string name="application_group_limit_reached">Numri maksimal (%1$d) i anëtarëve të grupit është tejkaluar.</string>
+    <string name="application_group_not_found">Jeni hequr nga grupi</string>
+    <string name="application_items_selected">%1$d elemente të zgjedhura</string>
+    <string name="application_later">Më vonë</string>
+    <string name="application_location">Gjeolokacion</string>
+    <string name="application_location_enabled">Aktivizoni shërbimin e Vendndodhjes në pajisjen tuaj.</string>
+    <string name="application_low_usage_message">Paralajmërim, nëse nuk e përdorni aplikacionin mjaftueshëm shpesh, OS mund të mos e zgjojë atë për të shkëmbyer mesazhe!</string>
+    <string name="application_migration_no_storage_space">Nuk ka hapësirë të mjaftueshme në pajisjen tuaj për të përfunduar migrimin. Mbyllni aplikacionin, lironi pak hapësirë dhe rihapeni për të përfunduar përditësimin.</string>
+    <string name="application_migration_no_storage_space_message">Njëra nga dy pajisjet nuk ka hapësirë të mjaftueshme ruajtjeje. Lironi hapësirë në atë pajisje përpara se të rifilloni migrimin.</string>
+    <string name="application_more_info">Më shumë informacion…</string>
+    <string name="application_name_hint">Emri</string>
+    <string name="application_network_connecting">Duke u lidhur me shërbimin skred</string>
+    <string name="application_network_connectivity">Ekziston lidhje rrjeti</string>
+    <string name="application_network_status_airplane_message">Modaliteti i avionit është aktivizuar.</string>
+    <string name="application_network_status_airplane_resolution">Ju lutemi, çaktivizoni modalitetin e avionit dhe lidheni me një rrjet Wi-Fi ose celular.</string>
+    <string name="application_network_status_connected_no_internet">Nuk ka qasje rrjeti në shërbimin skred.</string>
+    <string name="application_network_status_connected_resolution">Provoni të lidheni me një rrjet tjetër.</string>
+    <string name="application_network_status_connection_timeout">Nuk mund të vendoset lidhja me Internetin.</string>
+    <string name="application_network_status_no_internet">Nuk ka lidhje me Internetin.</string>
+    <string name="application_network_status_wifi_disabled">Wi-Fi është i çaktivizuar.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi-Fi është i çaktivizuar dhe nuk ka lidhje celulare me Internetin.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Ju lutemi, aktivizoni Wi-Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Ju lutemi, aktivizoni Wi-Fi ose aktivizoni një lidhje celulare me Internetin.</string>
+    <string name="application_new_feature">E re!</string>
+    <string name="application_no">Jo</string>
+    <string name="application_no_network_connectivity">Nuk ka lidhje rrjeti</string>
+    <string name="application_no_service">Nuk ka shërbim</string>
+    <string name="application_not_authorized_operation">Veprim i paautorizuar</string>
+    <string name="application_not_authorized_operation_by_your_contact">Veprim i paautorizuar nga kontakti juaj.</string>
+    <string name="application_not_connected">Lidhje e sigurt në progres…</string>
+    <string name="application_not_signed_in">Nuk jeni i lidhur me shërbimin skred</string>
+    <string name="application_now">Tani</string>
+    <string name="application_ok">OK</string>
+    <string name="application_one_item_selected">1 element i zgjedhur</string>
+    <string name="application_operation_failure">Dështim i veprimit</string>
+    <string name="application_operation_irreversible">Ky veprim është i pakthyeshëm</string>
+    <string name="application_permission_camera">Leja për të aksesuar kamerën kërkohet për të bërë një foto ose video të re.</string>
+    <string name="application_permission_scan_code">Leja për të aksesuar kamerën është e nevojshme për të skanuar një kod QR.</string>
+    <string name="application_photo_gallery">Albumet e fotove</string>
+    <string name="application_premium_feature_message">Duhet të aktivizoni shërbimet premium për të përdorur këtë veçori.</string>
+    <string name="application_premium_feature_title">Aktivizoni shërbimet premium</string>
+    <string name="application_processing_please_wait">Duke përpunuar… Ju lutemi prisni.</string>
+    <string name="application_profile">Profili</string>
+    <string name="application_profile_avatar_not_defined">Duhet të vendosni imazhin që ju përfaqëson te kontaktet që ftoni me këtë profil.</string>
+    <string name="application_profile_name_not_defined">Duhet të përcaktoni emrin që ju përfaqëson te kontaktet që ftoni me këtë profil.</string>
+    <string name="application_remove">Hiq</string>
+    <string name="application_save">Ruaj</string>
+    <string name="application_search_hint">Kërko</string>
+    <string name="application_select">Zgjidh</string>
+    <string name="application_select_application">Zgjidh aplikacionin</string>
+    <string name="application_select_more">Zgjidh më shumë…</string>
+    <string name="application_server_timeout">Koha e serverit mbaroi</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Tema</string>
+    <string name="application_timeout">Koha mbaroi</string>
+    <string name="application_timeout_day">1 ditë</string>
+    <string name="application_timeout_hour">1 orë</string>
+    <string name="application_timeout_hours">%1$d orë</string>
+    <string name="application_timeout_minute">1 minutë</string>
+    <string name="application_timeout_minutes">%1$d minuta</string>
+    <string name="application_timeout_month">1 muaj</string>
+    <string name="application_timeout_seconds">%1$d sekonda</string>
+    <string name="application_timeout_week">1 javë</string>
+    <string name="application_unknown_name">I panjohur</string>
+    <string name="application_until">Deri më %1$s</string>
+    <string name="application_upgrade">Duke përditësuar  Skred</string>
+    <string name="application_webrtc_failure">Dështim i WebRTC</string>
+    <string name="application_wrong_configuration">Konfigurim i pasaktë</string>
+    <string name="application_yes">Po</string>
+
+    <!-- AboutActivity -->
+    <string name="about_view_application_code">Kodi i aplikacionit</string>
+    <string name="about_view_information">Informacion</string>
+    <string name="about_view_legal">Njoftime ligjore</string>
+    <string name="about_view_libraries">Bibliotekat</string>
+    <string name="about_view_open_source_information">Kodi burimor i aplikacionit është i disponueshëm si Open Source në GitHub, nën licencën AGPL-3.0.</string>
+    <string name="about_view_open_sources_licences">Licencat Open Source</string>
+    <string name="about_view_premium_services">Shërbime premium</string>
+    <string name="about_view_privacy_policy">Politika e privatësisë</string>
+    <string name="about_view_quality_of_service">Cilësia e shërbimit</string>
+    <string name="about_view_terms_of_use">Kushtet e shërbimit</string>
+    <string name="about_view_version">Versioni</string>
+
+    <!-- AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_view_deleted">Kjo ftesë është fshirë</string>
+    <string name="accept_group_invitation_view_in_progress">Anëtarësimi në pritje</string>
+    <string name="accept_group_invitation_view_message">%1$s ju fton të bashkoheni në grup</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_view_being_transferred">Ftesa po transferohet.</string>
+    <string name="accept_invitation_view_check_connection">Kontrolloni lidhjen tuaj me Internetin.</string>
+    <string name="accept_invitation_view_existing_contact_message">Ju tashmë keni një marrëdhënie me këtë kontakt. Dëshironi të krijoni një të re?</string>
+    <string name="accept_invitation_view_incorrect_contact_information">Informacion i pasaktë i kontaktit</string>
+    <string name="accept_invitation_view_local_twincode">Nuk mund të krijoni një marrëdhënie me veten brenda të njëjtës llogari.</string>
+    <string name="accept_invitation_view_message">%1$s dëshiron të lidhet me ju</string>
+
+    <!-- AccountActivity -->
+    <string name="account_view_backup">Kopje rezervë në media të jashtme</string>
+    <string name="account_view_backup_restore">Kopje rezervë / Rikthim</string>
+    <string name="account_view_backup_verify">Verifiko një kopje rezervë</string>
+    <string name="account_view_backup_list">Historiku i kopjeve rezervë</string>
+    <string name="account_view_conversations_content_title">Përmbajtja e bisedave</string>
+    <string name="account_view_delete_account">Llogaria juaj, së bashku me të gjitha të dhënat e lidhura, do të fshihet përgjithmonë. Konfirmoni?</string>
+    <string name="account_view_delete_account_confirmation">A jeni vërtet i sigurt që dëshironi të fshini llogarinë tuaj?</string>
+    <string name="account_view_export_content">Eksporto në media të jashtme</string>
+    <string name="account_view_message_first_part">Një llogari e re krijohet kur instaloni aplikacionin për herë të parë, pas ri-instalimit të aplikacionit, ose rivendosjes së pajisjes, ose fshirjes së llogarisë aktuale.</string>
+    <string name="account_view_message_second_part">Nuk mbetet asnjë gjurmë e llogarisë dhe të dhënave të mëparshme, prandaj do t’ju duhet t’i ftoni sërish kontaktet tuaja.</string>
+    <string name="account_view_message_third_part">Fshirja e një llogarie i bën të pavlefshme edhe të gjitha kopjet rezervë të krijuara për atë llogari, duke e bërë të pamundur rikthimin e një kopjeje rezervë të asaj llogarie në këtë ose në një pajisje tjetër.</string>
+    <string name="account_view_migration_message">Një shërbim migrimi llogarie është i disponueshëm për të transferuar llogarinë tuaj me të gjitha të dhënat e lidhura (kontakte, mesazhe, grupe, etj.) nga një pajisje Android në një tjetër në kohë reale. Kështu mund të kaloni llogarinë nga një pajisje e vjetër në një të re.</string>
+    <string name="account_view_migration_start_from_another_device">Nga një pajisje tjetër</string>
+    <string name="account_view_migration_start_from_current_device">Nga pajisja ime</string>
+    <string name="account_view_migration_title">Migrimi i llogarisë</string>
+    <string name="account_view_restore">Rikthe nga media të jashtme</string>
+    <string name="account_view_title">Llogaria</string>
+    <string name="account_view_transfer_between_devices">Transferim midis pajisjeve</string>
+    <string name="account_view_transfer_from_another_device">Transfero nga një pajisje tjetër</string>
+    <string name="account_view_transfer_from_device">Transfero nga kjo pajisje</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_view_cancel_message">Mbyllni aplikacionin dhe rihapeni për të aksesuar të dhënat tuaja.</string>
+    <string name="account_migration_view_close_message">Mbyllni aplikacionin dhe rihapeni për të aksesuar të dhënat e reja.</string>
+    <string name="account_migration_view_confirm_cancel_message">A jeni i sigurt që dëshironi ta anuloni migrimin?</string>
+    <string name="account_migration_view_network_message">Kontrolloni lidhjen e rrjetit</string>
+    <string name="account_migration_view_not_enough_space_for_files">Nuk ka hapësirë të mjaftueshme për skedarët</string>
+    <string name="account_migration_view_not_enough_space_to_receive">Nuk ka hapësirë të mjaftueshme për të shkarkuar bazën e të dhënave</string>
+    <string name="account_migration_view_not_enough_space_to_upload">Nuk ka hapësirë të mjaftueshme për të ngarkuar bazën e të dhënave</string>
+    <string name="account_migration_view_start">Fillo migrimin</string>
+    <string name="account_migration_view_state_canceled">Migrimi u anulua</string>
+    <string name="account_migration_view_state_list_files">Listimi i skedarëve</string>
+    <string name="account_migration_view_state_negotiate">Në pritje</string>
+    <string name="account_migration_view_state_send_account">Duke dërguar llogarinë</string>
+    <string name="account_migration_view_state_send_database">Duke dërguar bazën e të dhënave</string>
+    <string name="account_migration_view_state_send_files">Duke dërguar skedarët</string>
+    <string name="account_migration_view_state_send_settings">Duke dërguar cilësimet e aplikacionit</string>
+    <string name="account_migration_view_state_terminate">Migrimi pothuajse përfundoi.</string>
+    <string name="account_migration_view_state_wait_account">Në pritje të llogarisë tjetër</string>
+    <string name="account_migration_view_state_wait_connect">Në pritje të rilidhjes</string>
+    <string name="account_migration_view_state_wait_files">Në pritje të marrjes së skedarëve dhe bazës së të dhënave.</string>
+    <string name="account_migration_view_stop">Ndalo migrimin</string>
+    <string name="account_migration_view_success_message">Migrimi përfundoi me sukses</string>
+    <string name="account_migration_view_transfer_in_progress">Transferimi i të dhënave në progres</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_message">Shfaqni këtë ekran në secilën pajisje dhe njëra skanon QR-Code të tjetrës.</string>
+    <string name="account_migration_scanner_view_message_older_version">Kjo pajisje përdor një version të vjetër të papajtueshëm të OS, gjë që do të shkaktojë humbjen e të gjitha marrëdhënieve në pajisjen e synuar gjatë transferimit. Dëshironi ende të vazhdoni me transferimin?</string>
+    <string name="account_migration_scanner_view_message_older_version_target">Pajisja e synuar përdor një version të vjetër të papajtueshëm të OS, gjë që do të shkaktojë humbjen e të gjitha marrëdhënieve tuaja gjatë transferimit. Dëshironi ende të vazhdoni me transferimin?</string>
+    <string name="account_migration_scanner_view_migration_start_from_another_device_message">Për të nisur migrimin, skanoni këtë QR-code nga pajisja tjetër</string>
+    <string name="account_migration_scanner_view_migration_start_from_current_device_message">Skanoni QR-kodin e shfaqur në seksionin \"Llogaria / Transfero nga një pajisje tjetër\" të menusë anësore të pajisjes tjetër.</string>
+    <string name="account_migration_scanner_view_scan_title">Skanim</string>
+    <string name="account_migration_scanner_view_stop_scan_title">Ndalo skanimin</string>
+
+    <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_view_title">Shto një pjesëmarrës në këtë thirrje</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_view_gallery_title">Importo nga galeria</string>
+    <string name="add_contact_view_in_person_subtitle">Fto një person pranë jush</string>
+    <string name="add_contact_view_in_person_title">Ballë për ballë</string>
+    <string name="add_contact_view_invitation_code_title">Mini-Kod</string>
+    <string name="add_contact_view_invite">Fto</string>
+    <string name="add_contact_view_invite_message">Hapni adresën web %1$s me skred në pajisjen tuaj celulare ose skanoni QR-Code për t’u lidhur privatisht me “%2$s”</string>
+    <string name="add_contact_view_invite_subject">Ftesë skred</string>
+    <string name="add_contact_view_message">Kërkojini mikut tuaj pranë jush të skanojë QR-kodin tuaj të ftesës me skred, ose prekni butonin \"Skanim\" për të skanuar kodin e mikut tuaj.</string>
+    <string name="add_contact_view_onboarding_message">skred nuk i njeh miqtë tuaj dhe nuk mund t’i zbulojë ata. Duhet t’i ftoni personalisht, me skred kur janë pranë jush, ose duke u dërguar një ftesë me mjete të tjera.</string>
+    <string name="add_contact_view_scan_code">Skanoni QR-kodin e ftesës</string>
+    <string name="add_contact_view_scan_error_corrupt_link">Kjo lidhje është e dëmtuar.</string>
+    <string name="add_contact_view_scan_error_expired_link">Ky link ftese ka skaduar.</string>
+    <string name="add_contact_view_scan_error_incorrect_link">Ky link është i pasaktë.</string>
+    <string name="add_contact_view_scan_error_not_managed_link">Kjo lidhje nuk menaxhohet nga aplikacioni.</string>
+    <string name="add_contact_view_scan_error_revoked_link">Kjo marrëdhënie është fshirë.</string>
+    <string name="add_contact_view_scan_message_call_link">Kjo lidhje korrespondon me një \"klik për të telefonuar\"</string>
+    <string name="add_contact_view_scan_message_invitation_link">Kjo lidhje korrespondon me një ftesë kontakti</string>
+    <string name="add_contact_view_scan_message_migration_link">Kjo lidhje korrespondon me një migrim llogarie</string>
+    <string name="add_contact_view_scan_message_transfer_link">Kjo lidhje korrespondon me një transferim thirrjeje</string>
+    <string name="add_contact_view_scan_title">Skanim</string>
+    <string name="add_contact_view_share_image_message">Importoni ose skanoni këtë kod QR ftese me Skred për të shtuar \"%1$s\" si kontakt.</string>
+    <string name="add_contact_view_share_message_part_1">%1$s ju fton të hyni në një marrëdhënie private në Skred.</string>
+    <string name="add_contact_view_share_message_part_2">Skred është shërbim mesazhesh peer-to-peer me enkriptim end-to-end dhe thirrje zëri/video HD. Nuk kërkohet regjistrim.</string>
+    <string name="add_contact_view_share_message_part_3">Hapeni këtë URL me Skred në pajisjen tuaj celulare për të shtuar \"%1$s\" si kontakt:</string>
+    <string name="add_contact_view_share_message_part_4">Përndryshe, mund të importoni ose të skanoni kodin QR të ftesës në imazhin e bashkëngjitur me Skred.</string>
+    <string name="add_contact_view_share_title">%1$s ju fton në Skred</string>
+    <string name="add_contact_view_social_subtitle">mesazh, email, rrjet social</string>
+    <string name="add_contact_view_social_title">Dërgo kodin përmes një aplikacioni</string>
+    <string name="add_contact_view_title">Ftesë</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_view_add">Shto</string>
+    <string name="add_group_member_view_title">Shto anëtarë</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_view_welcome_message">Mesazh mirëseardhjeje</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_view_calling">Duke thirrur…</string>
+    <string name="audio_call_view_cannot_call">Nuk mund të kryhet një thirrje zanore</string>
+    <string name="audio_call_view_connecting">Duke u lidhur…</string>
+    <string name="audio_call_view_hangup">Mbyll</string>
+    <string name="audio_call_view_hangup_confirmation">Dëshironi ta mbyllni thirrjen?</string>
+    <string name="audio_call_view_terminate">Thirrja u ndërpre</string>
+    <string name="audio_call_view_terminate_busy">Thirrja u ndërpre: &lt;b&gt;%1$s&lt;/b&gt; është i zënë</string>
+    <string name="audio_call_view_terminate_cancel">Thirrja u anulua nga &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_connectivity_error">Thirrja u ndërpre: gabim rrjeti</string>
+    <string name="audio_call_view_terminate_decline">Thirrja u refuzua nga &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_gone">Thirrja u ndërpre: &lt;b&gt;%1$s&lt;/b&gt; është jashtë linje</string>
+    <string name="audio_call_view_terminate_not_authorized">Kontakti juaj nuk ka dhënë lejet e nevojshme për një thirrje (p.sh., mikrofon, kamerë).</string>
+    <string name="audio_call_view_terminate_revoked">Thirrja përfundoi: &lt;b&gt;%1$s&lt;/b&gt; e ka fshirë këtë marrëdhënie me ju.</string>
+    <string name="audio_call_view_terminate_success">Thirrja u ndërpre nga &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_timeout">Thirrja u ndërpre: &lt;b&gt;%1$s&lt;/b&gt; nuk përgjigjet</string>
+
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_view_certified_message">Marrëdhënia juaj me %1$s tani është e certifikuar.</string>
+    <string name="authentified_relation_view_certify_by_scan">Certifiko duke skanuar një kod QR</string>
+    <string name="authentified_relation_view_certify_by_video_call">Certifiko me një thirrje video</string>
+    <string name="authentified_relation_view_certify_by_video_call_missing_capability">%1$s duhet të lejojë thirrjet video që të mund të certifikojë një marrëdhënie përmes një thirrjeje video.</string>
+    <string name="authentified_relation_view_level_2">Për të certifikuar këtë marrëdhënie, duhet të skanoni QR-Code të shfaqur në pajisjen e %1$s.</string>
+    <string name="authentified_relation_view_level_3">Për të certifikuar këtë marrëdhënie, pajisja e %1$s duhet të skanojë këtë QR-Code.</string>
+    <string name="authentified_relation_view_level_4">Marrëdhënia juaj me %1$s është e certifikuar.</string>
+    <string name="authentified_relation_view_onboarding_message">Një marrëdhënie \"e certifikuar\" siguron që ju gjithmonë po komunikoni me personin e duhur, edhe nëse shërbimi është komprometuar nga një palë e tretë.</string>
+    <string name="authentified_relation_view_onboarding_subtitle">Sigurohuni që gjithmonë po komunikoni me personin e duhur!</string>
+    <string name="authentified_relation_view_relation_print_message">Ky “fingerprint” duhet të jetë identik në të dy pajisjet.</string>
+    <string name="authentified_relation_view_relation_print_title">Gjurmë identifikuese e marrëdhënies</string>
+    <string name="authentified_relation_view_start">Fillo certifikimin</string>
+    <string name="authentified_relation_view_title">Marrëdhënie e certifikuar</string>
+    <string name="authentified_relation_view_to_be_certified_title">Certifiko marrëdhënien</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_view_backup">Kopje rezervë</string>
+    <string name="backup_view_beta_message_part_1">Shërbimi i kopjes rezervë/rikthimit ofrohet në testim BETA për të identifikuar problemet e mundshme përpara publikimit të përgjithshëm.</string>
+    <string name="backup_view_beta_message_part_2">Ky shërbim synon të kopjojë vetëm metadata e llogarisë (profile, kontakte, grupe) në ruajtje të jashtme, në mënyrë që të mund të rikthehet më vonë në një pajisje tjetër nëse origjinali vidhet ose shkatërrohet.</string>
+    <string name="backup_view_beta_message_part_3">Shërbimi i transferimit të llogarisë duhet të përdoret për të transferuar të gjitha të dhënat e llogarisë (përfshirë bisedat) nga një pajisje (e vjetër) në një pajisje tjetër (e re), kur të dyja pajisjet janë të disponueshme.</string>
+    <string name="backup_view_confirm_message">Për të rikthyer kopjen rezervë, do t\'ju duhet të futni 12 fjalët e mësipërme në atë rend për ta dekriptuar atë.</string>
+    <string name="backup_view_content">Përmbajtja</string>
+    <string name="backup_view_content_diff_added">U shtua</string>
+    <string name="backup_view_content_diff_updated">U modifikua</string>
+    <string name="backup_view_content_diff_deleted">U fshi</string>
+    <string name="backup_view_content_diff_message">Ja ndryshimet krahasuar me të dhënat tuaja aktuale:</string>
+    <string name="backup_view_content_info">Kopjet rezervë nuk përfshijnë biseda, njoftime dhe historik.</string>
+    <string name="backup_view_error_words">Fjalët e futura nuk lejojnë dekriptimin e kopjes rezervë.</string>
+    <string name="backup_view_generate_word">Gjenero</string>
+    <string name="backup_view_last_backup">Kopja e fundit rezervë më %1$s</string>
+    <string name="backup_view_new_backup">Kopje e re rezervë</string>
+    <string name="backup_view_onboarding">Bëni një kopje rezervë të enkriptuar të të dhënave të llogarisë (Spaces, profile, kontakte, grupet, click-to-call) që mund të rikthehet në këtë ose një pajisje tjetër.</string>
+    <string name="backup_view_reminder">Kopia juaj e fundit rezervë është krijuar më shumë se 30 ditë më parë.</string>
+    <string name="backup_view_save_file_message">Ruajeni skedarin e kopjes rezervë në pajisjen që zgjidhni dhe mbani fjalëkalimet për rikthim të mëvonshëm.</string>
+    <string name="backup_view_security">Siguria</string>
+    <string name="backup_view_security_info">Çelësi i enkriptimit të kopjes rezervë përfaqësohet nga një seri prej 12 fjalësh që do të kërkohen për rikthim.</string>
+    <string name="backup_view_success">Kopja rezervë përfundoi me sukses!</string>
+    <string name="backup_view_success_info">Mbani këtë listë me 12 fjalë që të mund ta riktheni këtë kopje rezervë.</string>
+    <string name="backup_view_title">Kopje rezervë</string>
+    <string name="backup_view_use_last_backup_words">Përdorni të njëjtën listë fjalësh si për kopjen e fundit rezervë.</string>
+    <string name="backup_view_verify_completed">Verifikimi përfundoi!</string>
+    <string name="backup_view_verify_message">Mund të kontrolloni gjithashtu integritetin e një skedari rezervë dhe nëse të dhënat që përmban janë të përditësuara nga: Llogaria/Verifiko një kopje rezervë.</string>
+    <string name="backup_view_verify_up_to_date">Kopja juaj rezervë është e përditësuar.</string>
+    <string name="backup_view_verify_not_up_to_date">Kopja juaj rezervë nuk është e përditësuar.</string>
+    <string name="backup_view_verify_words">Për të verifikuar një kopje rezervë, duhet të futni sekuencën me 12 fjalë për ta dekriptuar atë.</string>
+    <string name="backup_view_wait_message">Mos e lini këtë ekran ndërsa kopja rezervë është në proces.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_view_invalidate_backup">Pavlefëso kopjet e mia rezervë</string>
+    <string name="backups_view_invalidate_backup_message_part_one">Të gjitha kopjet tuaja të mëparshme rezervë do të bëhen të pavlefshme dhe nuk do të mund të rikthehen më.</string>
+    <string name="backups_view_invalidate_backup_message_part_two">Mos harroni të krijoni një kopje të re rezervë, e cila mund të rikthehet në këtë ose në një pajisje tjetër.</string>
+    <string name="backups_view_no_backup_message">Nuk është bërë asnjë kopje rezervë në këtë pajisje.</string>
+
+    <!-- CallActivity -->
+    <string name="call_view_audio_source_bluetooth">Audio Bluetooth</string>
+    <string name="call_view_audio_source_device">Kufje të pajisjes</string>
+    <string name="call_view_audio_source_earphones">Kufje</string>
+    <string name="call_view_audio_source_headset">Headset audio</string>
+    <string name="call_view_audio_source_loudspeaker">Altoparlant</string>
+    <string name="call_view_battery_restriction_message">Kujdes! Duhet të lejoni përdorimin e baterisë kur aplikacioni funksionon në sfond për të shmangur ndërprerjet e mikrofonit gjatë një thirrjeje.</string>
+    <string name="call_view_camera_control">Kontrolli i kamerës</string>
+    <string name="call_view_camera_control_ask_message">Kërkoji %1$s t’ju lejojë të kontrolloni kamerën e tij/saj gjatë thirrjes video.</string>
+    <string name="call_view_camera_control_confirm_message">%1$s dëshiron të kontrollojë kamerën tuaj gjatë thirrjes. Mund ta rimerrni kontrollin në çdo kohë.</string>
+    <string name="call_view_camera_control_denied">%1$s nuk ju lejon të kontrolloni kamerën e tij/saj.</string>
+    <string name="call_view_camera_control_message">Kontrolli i kamerës së %1$s</string>
+    <string name="call_view_camera_control_needs_help">Keni nevojë për ndihmë?</string>
+    <string name="call_view_camera_control_onboarding">Nëse kontakti juaj e lejon, mund të merrni kontrollin e kamerës së tij/saj gjatë një thirrjeje video dhe të zmadhoni vetë, për shembull. Kjo është veçanërisht e dobishme për të kontrolluar një kamerë vëzhgimi video.</string>
+    <string name="call_view_camera_control_onboarding_part_2">Me lejen e të dashurit tuaj, mund të kontrolloni kamerën e tij/saj gjatë një thirrjeje për ta ndihmuar nga larg, lehtësisht dhe në mënyrë të sigurt.</string>
+    <string name="call_view_camera_control_remotely">%1$s kontrollon kamerën tuaj nga larg.</string>
+    <string name="call_view_camera_control_stop">Ndalo</string>
+    <string name="call_view_certify_error_message">%1$s nuk e vërtetoi fjalën. Certifikimi i marrëdhënies dështoi dhe do t’ju duhet të provoni përsëri.</string>
+    <string name="call_view_certify_onboarding_message">Thirrja video ju lejon të identifikoni njëri-tjetrin dhe të shkëmbeni çelësat e sigurisë të lidhur me një marrëdhënie të certifikuar dhe shkëmbimet e saj.</string>
+    <string name="call_view_certify_onboarding_start_message">Me radhë, shqiptoni fjalën e shfaqur në ekranin tuaj që tjetri mund ta verifikojë. Pasi të jenë verifikuar të gjitha fjalët, marrëdhënia juaj me %1$s do të certifikohet.</string>
+    <string name="call_view_certify_onboarding_title">Certifikoni marrëdhënien tuaj</string>
+    <string name="call_view_certify_video_message">Thirrja duhet të jetë video që të mund të certifikohet marrëdhënia.</string>
+    <string name="call_view_coach_mark">Prekni këtu për të shtuar një pjesëmarrës në këtë thirrje</string>
+    <string name="call_view_confirm_word">A është fjala e thënë nga %1$s identike?</string>
+    <string name="call_view_confirm_word_title">Vërteto fjalën</string>
+    <string name="call_view_connected_bluetooth">Transmetimi audio është ridrejtuar te një pajisje Bluetooth.</string>
+    <string name="call_view_connected_speaker">Transmetimi audio është ridrejtuar te altoparlanti.</string>
+    <string name="call_view_error_call_interrupted">Thirrja u ndërpre, gabim: %1$d.</string>
+    <string name="call_view_error_call_not_go_thru">Thirrja nuk u realizua, gabim: %1$d.</string>
+    <string name="call_view_location_background_warning">Paralajmërim: nëse aplikacioni punon në sfond, vendndodhja juaj nuk do të ndahet më me kontaktin tuaj. Duhet të autorizoni aplikacionin që të ketë gjithmonë qasje në vendndodhjen e kësaj pajisjeje.</string>
+    <string name="call_view_location_exact_warning">Kini parasysh se nuk po ndani vendndodhjen tuaj të saktë. Mund të ndryshoni lejet e nevojshme te cilësimet e aplikacionit.</string>
+    <string name="call_view_location_share">Ndaj vendndodhjen time</string>
+    <string name="call_view_location_share_message">Tani po ndani vendndodhjen tuaj gjatë thirrjes.</string>
+    <string name="call_view_location_stop">Ndalo ndarjen e vendndodhjes sime</string>
+    <string name="call_view_max_participant_message">Është arritur numri maksimal i pjesëmarrësve në një thirrje grupi (%1$d).</string>
+    <string name="call_view_not_supported_group_call_message">Versioni i aplikacionit të %1$s nuk është i përputhshëm me thirrjet në grup dhe ka nevojë për një përditësim.</string>
+    <string name="call_view_quality_message">Si do ta vlerësonit?</string>
+    <string name="call_view_quality_title">Cilësia e thirrjes</string>
+    <string name="call_view_repeat_word">%1$s do të jetë në gjendje ta krahasojë me atë në ekranin e tij/saj.</string>
+    <string name="call_view_repeat_word_title">Shqiptoni fjalën</string>
+    <string name="call_view_tag_add_to_call">Fto një kontakt të bashkohet me thirrjen në vazhdim</string>
+    <string name="call_view_tag_camera">Kamera</string>
+    <string name="call_view_tag_camera_activate">Aktivizo kamerën</string>
+    <string name="call_view_tag_camera_cut">Çaktivizo kamerën</string>
+    <string name="call_view_tag_camera_flip">Ndërro kamerën</string>
+    <string name="call_view_tag_microphone">Mikrofoni</string>
+    <string name="call_view_tag_microphone_activate">Aktivizo mikrofonin</string>
+    <string name="call_view_tag_microphone_mute">Heshto mikrofonin</string>
+    <string name="call_view_tag_pause">Pauzë</string>
+    <string name="call_view_tag_send_message">Dërgo një mesazh</string>
+    <string name="call_view_tag_speaker">Altoparlant</string>
+    <string name="call_view_tag_speaker_activate">Aktivizo altoparlantin</string>
+    <string name="call_view_tag_speaker_mute">Heshto altoparlantin</string>
+    <string name="call_view_transfer_call_message">Thirrja në vazhdim është transferuar.</string>
+    <string name="call_view_try_to_call_back">Provoni të telefononi përsëri.</string>
+    <string name="call_view_waiting_conference_call">"Askush nuk i është bashkuar ende thirrjes. Ju lutemi prisni… "</string>
+
+    <!-- CallsFragment -->
+    <string name="calls_view_all_call_segmented_control">Të gjitha</string>
+    <string name="calls_view_call_again_message">Dëshironi ta telefononi përsëri %1$s?</string>
+    <string name="calls_view_call_again_title">Telefono përsëri</string>
+    <string name="calls_view_create_link">Krijo një lidhje \"klik-për-të-telefonuar\"</string>
+    <string name="calls_view_incoming_call">Thirrje hyrëse</string>
+    <string name="calls_view_missed_call">Thirrje e humbur</string>
+    <string name="calls_view_missed_call_segmented_control">Të humbura</string>
+    <string name="calls_view_no_call_message">Thirrjet e humbura renditen këtu.</string>
+    <string name="calls_view_no_call_title">Nuk keni bërë ende asnjë thirrje.</string>
+    <string name="calls_view_outgoing_call">Thirrje dalëse</string>
+    <string name="calls_view_reset">A jeni i sigurt që dëshironi të rivendosni të gjitha njoftimet e thirrjeve?</string>
+    <string name="calls_view_reset_title">Rivendos njoftimet e thirrjeve</string>
+    <string name="calls_view_title">Thirrjet</string>
+
+    <!-- CaptureActivity -->
+    <string name="capture_view_create_camera_error">Kamera është tashmë në përdorim</string>
+    <string name="capture_view_incorrect_qrcode">Skredcode i pasaktë</string>
+    <string name="capture_view_message">Vendosni kodin QR në këtë drejtkëndësh për ta skanuar.</string>
+    <string name="capture_view_no_camera">Kamera kërkohet për të skanuar një Skredcode</string>
+    <string name="capture_view_qrcode_saved">Kodi i ftesës u ruajt në foto.</string>
+
+    <!-- CleanupActivity -->
+    <string name="cleanup_view_all">Pastro të gjitha</string>
+    <string name="cleanup_view_both_clean">Pastrimi global (lokal dhe në distancë)</string>
+    <string name="cleanup_view_both_clean_title">Pastrimi global</string>
+    <string name="cleanup_view_clean">Fshi</string>
+    <string name="cleanup_view_conversation">Bisedë me %s</string>
+    <string name="cleanup_view_delete_confirmation_message">Fshirja është e pakthyeshme. Eksportoni përmbajtjet e rëndësishme përpara se të vazhdoni. Të vazhdohet?</string>
+    <string name="cleanup_view_error">Ndodhi një gabim gjatë veprimit.</string>
+    <string name="cleanup_view_expiration">Kushtet e skadimit</string>
+    <string name="cleanup_view_free">E disponueshme</string>
+    <string name="cleanup_view_info">Fshirja e mesazheve, mediave dhe skedarëve nga kjo bisedë nuk i heq ato nga pajisja e kontaktit tuaj dhe nuk do të mund ta bëni këtë më vonë.</string>
+    <string name="cleanup_view_info_both">Fshirja e mesazheve, mediave dhe skedarëve nga kjo bisedë i heq ato edhe nga pajisja e kontaktit tuaj.</string>
+    <string name="cleanup_view_local_cleanup">Pastrimi vetëm lokal</string>
+    <string name="cleanup_view_local_cleanup_title">Pastrimi lokal</string>
+    <string name="cleanup_view_medias_and_files">Vetëm media dhe skedarë</string>
+    <string name="cleanup_view_medias_and_files_info">Miniaturat e mediave nuk hiqen nga biseda; fshihen vetëm skedarët origjinalë.</string>
+    <string name="cleanup_view_medias_and_files_info_both">Skedarët, fotot, videot dhe shënimet zanore të shkëmbyera në këtë bisedë do të fshihen nga pajisja juaj dhe nga pajisja e kontaktit tuaj.</string>
+    <string name="cleanup_view_messages">Të gjitha mesazhet &amp; përmbajtje të tjera</string>
+    <string name="cleanup_view_messages_info">Mesazhet e çdo lloji në bisedë (tekst, foto, video, zë, skedarë, etj.) do të fshihen nga aplikacioni.</string>
+    <string name="cleanup_view_month">%1$d muaj</string>
+    <string name="cleanup_view_older_than">Më të vjetra se</string>
+    <string name="cleanup_view_one_year">1 vit</string>
+    <string name="cleanup_view_prior_to">Përpara datës</string>
+    <string name="cleanup_view_reset_conversation_message">Rivendosja e kësaj bisede do të fshijë të gjitha mesazhet, përfshirë ato në pajisjen e kontaktit tuaj.</string>
+    <string name="cleanup_view_select_content">Zgjidhni çfarë dëshironi të fshini.</string>
+    <string name="cleanup_view_storage_title">Hapësira në disk</string>
+    <string name="cleanup_view_success">Veprimi u përfundua me sukses.</string>
+    <string name="cleanup_view_title">Pastrimi i bisedës</string>
+    <string name="cleanup_view_total">Totali</string>
+    <string name="cleanup_view_used">E përdorur</string>
+
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Shenjat udhëzuese</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_view_allow_incoming_calls">Lejo që ky kontakt t’ju telefonojë</string>
+    <string name="contact_capabilities_view_automatic_answering">Përgjigju automatikisht thirrjeve hyrëse</string>
+    <string name="contact_capabilities_view_automatic_answering_message">Kujdes: ky cilësim aktivizon përgjigjen automatike ndaj thirrjeve nga ky kontakt, duke hapur mikrofonin dhe kamerën e pajisjes (për thirrje video).</string>
+    <string name="contact_capabilities_view_automatic_answering_restriction">Disa pajisje mund ta kufizojnë këtë veçori.</string>
+    <string name="contact_capabilities_view_call_settings">Cilësimet e thirrjeve</string>
+    <string name="contact_capabilities_view_camera_control_allow">Gjithmonë</string>
+    <string name="contact_capabilities_view_camera_control_ask">Pyet në çdo thirrje</string>
+    <string name="contact_capabilities_view_camera_control_information">Lejo që ky kontakt të marrë automatikisht kontrollin e kamerës suaj gjatë një thirrjeje video.</string>
+    <string name="contact_capabilities_view_camera_control_never">Kurrë</string>
+    <string name="contact_capabilities_view_camera_control_onboarding">Mund t’i kërkoni kontaktit tuaj me akses në versionin premium të aplikacionit të kontrollojë kamerën tuaj gjatë thirrjeve tuaja video.</string>
+    <string name="contact_capabilities_view_discreet_relation">Marrëdhënie diskrete</string>
+    <string name="contact_capabilities_view_information_audio_call">Lejo që kontakti t’ju telefonojë me zë.</string>
+    <string name="contact_capabilities_view_information_discreet_relation">Nuk shfaq emrin e kontaktit në njoftime dhe nuk regjistron thirrjet në historikun e thirrjeve.</string>
+    <string name="contact_capabilities_view_information_limited_call">Vendos datat/oraret kur nuk dëshironi të telefonoheni.</string>
+    <string name="contact_capabilities_view_information_programmed_call">Planifiko datat/oraret kur dëshironi të telefonoheni.</string>
+    <string name="contact_capabilities_view_information_video_call">Lejo që kontakti t’ju telefonojë me video.</string>
+
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_view_address_book_access_denied_message">Nuk morëm autorizim për të aksesuar kontaktet tuaja</string>
+    <string name="contact_picker_view_address_book_access_denied_title">Leja u refuzua</string>
+    <string name="contact_picker_view_subtitle">FTO ME NUMËR TELEFONI</string>
+    <string name="contact_picker_view_title">Fto një mik nga kontaktet</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_view_move_message">A jeni i sigurt që dëshironi ta lëvizni këtë kontakt?</string>
+    <string name="contact_space_view_move_title">Lëviz</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_view_add_contact_subtitle">Fto dikë të skanojë kodin tënd të ftesës, ose skano të tijin…</string>
+    <string name="contacts_view_invite_contact_title">Fto një kontakt</string>
+    <string name="contacts_view_scan_contact_title">Skanoni ose shkruani një kod ftesë</string>
+    <string name="contacts_view_title">Kontaktet</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_view_audio_call">Thirrje zanore</string>
+    <string name="conversation_view_audio_message">Mesazh zanor</string>
+    <string name="conversation_view_call_missed">e humbur</string>
+    <string name="conversation_view_cannot_send">Nuk mund të dërgohen mesazhe menjëherë:</string>
+    <string name="conversation_view_cleanup_conversation">Keni fshirë disa mesazhe të vjetra.</string>
+    <string name="conversation_view_cleanup_conversation_by_peer">%1$s pastroi disa mesazhe të vjetra.</string>
+    <string name="conversation_view_delete_message">Mesazhi juaj është fshirë.</string>
+    <string name="conversation_view_edit_message">Mesazhi mund të redaktohet në pajisjen e kontaktit tuaj vetëm nëse aplikacioni i tij/saj është i përditësuar.</string>
+    <string name="conversation_view_empty_message">Thuaj diçka të zgjuar … ose qesharake!</string>
+    <string name="conversation_view_ephemeral_coach_mark">Mbani shtypur shigjetën e dërgimit për të fshirë këtë mesazh nga biseda pas një kohe të caktuar.</string>
+    <string name="conversation_view_feature_not_supported_by_peer">Versioni skred i kontaktit tuaj nuk është plotësisht funksional.&lt;br /&gt;
+        Ju lutemi kërkojini atij/asaj të bëjë një përditësim të skred.</string>
+    <string name="conversation_view_group_member_information">%1$d anëtarë</string>
+    <string name="conversation_view_group_not_allowed_post_message">Dërgimi i mesazheve nuk lejohet</string>
+    <string name="conversation_view_group_one_member">1 anëtar</string>
+    <string name="conversation_view_info">:lock Mesazhet e bisedës janë të enkriptuara në telefonin tuaj dhe gjatë transmetimit të tyre. Për të siguruar nivelin më të lartë të mbrojtjes së të dhënave, ato dërgohen drejtpërdrejt në telefonin e %s duke përdorur një lidhje peer-to-peer pa server ndërmjetës.</string>
+    <string name="conversation_view_invitation_accepted">Ftesa u pranua</string>
+    <string name="conversation_view_invitation_failed">Kërkojini kontaktit tuaj të përditësojë skred</string>
+    <string name="conversation_view_invitation_joined">Anëtar i grupit</string>
+    <string name="conversation_view_invitation_pending">Ftesa në progres</string>
+    <string name="conversation_view_invitation_refused">Ftesa u refuzua</string>
+    <string name="conversation_view_invitation_title">Ju ftoj të bashkoheni në grup</string>
+    <string name="conversation_view_local_cleanup">Përmbajtjet kryesore janë fshirë lokalisht.</string>
+    <string name="conversation_view_manage_conversation">Menaxho bisedën</string>
+    <string name="conversation_view_media_quality_original">Definicion origjinal (HD)</string>
+    <string name="conversation_view_media_quality_original_subtitle">Pa ndryshim madhësie - Transferim më i ngadalshëm</string>
+    <string name="conversation_view_media_quality_standard">Definicion standard (SD)</string>
+    <string name="conversation_view_media_quality_standard_subtitle">Më të vogla - Transferim më i shpejtë</string>
+    <string name="conversation_view_media_quality_title">Rezolucioni i medias</string>
+    <string name="conversation_view_menu_item_view_copy_message">Kopjuar në kujtesën e fragmenteve!</string>
+    <string name="conversation_view_menu_item_view_copy_title">Kopjo</string>
+    <string name="conversation_view_menu_item_view_delete_title">Fshi</string>
+    <string name="conversation_view_menu_item_view_forward_title">Përcill</string>
+    <string name="conversation_view_menu_item_view_info_title">Informacion</string>
+    <string name="conversation_view_menu_item_view_operation_not_allowed">Veprimi nuk lejohet nga dërguesi</string>
+    <string name="conversation_view_menu_item_view_reply_title">Përgjigju</string>
+    <string name="conversation_view_menu_item_view_save_message">Ruajtur!</string>
+    <string name="conversation_view_menu_item_view_save_title">Ruaj</string>
+    <string name="conversation_view_menu_item_view_share_title">Ndaj</string>
+    <string name="conversation_view_message">Shkruani një mesazh</string>
+    <string name="conversation_view_photo_camera">Kamera fotografike</string>
+    <string name="conversation_view_record_confirm_send_record">Shtypni sërish për ta dërguar</string>
+    <string name="conversation_view_record_start_record">Shtypni dhe mbani shtypur për të regjistruar</string>
+    <string name="conversation_view_record_title">Regjistro</string>
+    <string name="conversation_view_reduce_menu_lower">Standard</string>
+    <string name="conversation_view_reduce_menu_minimal">Minimum</string>
+    <string name="conversation_view_reduce_menu_original">Origjinal</string>
+    <string name="conversation_view_reduce_menu_original_subtitle">Pa ndryshim madhësie</string>
+    <string name="conversation_view_reject_stream">Refuzo</string>
+    <string name="conversation_view_reply_to">Përgjigju %1$s</string>
+    <string name="conversation_view_reset_conversation">E keni rivendosur bisedën</string>
+    <string name="conversation_view_reset_conversation_by_peer">%1$s e ka rivendosur bisedën</string>
+    <string name="conversation_view_send_file_warning">Paralajmërim: nuk është e mundur të pengohet marrësi të kopjojë/ruajë/ndajë një dokument (pdf, word, ppt, excel, zip, etj.), i cili mund të hapet vetëm jashtë aplikacionit. A dëshironi ende ta dërgoni?</string>
+    <string name="conversation_view_send_large_file_message">Ky skedar është i madh (%1$d MB). Dëshironi të vazhdoni?</string>
+    <string name="conversation_view_send_menu_allow_copy">Lejo marrësin të kopjojë/ruajë/ndajë këtë përmbajtje</string>
+    <string name="conversation_view_send_quality_size">Media e madhe (%1$s).</string>
+    <string name="conversation_view_send_quality_standard">Dërgo në përkufizim standard (SD)</string>
+    <string name="conversation_view_send_quality_warning">Mund ta ndryshoni madhësinë në përkufizim standard (SD) për transferim më të shpejtë.</string>
+    <string name="conversation_view_stream_dialog">Dëshironi ta pranoni?</string>
+    <string name="conversation_view_unsupported_media">Format media i pambështetur.</string>
+    <string name="conversation_view_video_call">Thirrje video</string>
+    <string name="conversation_view_video_camera">Kamera video</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_view_documents">Dok.</string>
+    <string name="conversation_files_view_links">Lidhje</string>
+    <string name="conversation_files_view_month">Këtë muaj</string>
+    <string name="conversation_files_view_no_files">Biseda juaj me %1$s nuk përmban asnjë nga këto elemente.</string>
+    <string name="conversation_files_view_title">Media, lidhje web dhe dokumente</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_view_background_colors">Sfonde &amp; ngjyra</string>
+    <string name="conversation_settings_view_emoji_size">Madhësia e emoji-ve</string>
+    <string name="conversation_settings_view_link_preview">Parapamje</string>
+    <string name="conversation_settings_view_link_preview_message">Shfaq një parapamje të faqes së internetit.</string>
+    <string name="conversation_settings_view_link_title">Lidhje web</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_view_no_conversation_message">Mesazhet e enkriptuara nga skaji në skaj shkëmbehen peer-to-peer, drejtpërdrejt nga pajisja në pajisje, pa server shpërndarës të ndërmjetëm = pa gjurmë në cloud.</string>
+    <string name="conversations_view_no_result_found">Nuk u gjetën rezultate për \'%1$s\'.</string>
+    <string name="conversations_view_start">Fillo një bisedë</string>
+    <string name="conversations_view_title">Biseda</string>
+    <string name="conversations_view_you">Ti</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_view_call_configuration">Konfigurimi i thirrjes</string>
+    <string name="create_external_call_view_call_type">Lloji i thirrjes</string>
+    <string name="create_external_call_view_conference_call_description">Bashkohuni në një thirrje konferencë drejtpërdrejt nga një shfletues. Ideale për takime biznesi ose familjare.</string>
+    <string name="create_external_call_view_conference_call_short_title">Thirrje konferencë</string>
+    <string name="create_external_call_view_conference_call_title">Thirrje konferencë</string>
+    <string name="create_external_call_view_continuous_link_description">Pa kufizime në vlefshmërinë e lidhjes</string>
+    <string name="create_external_call_view_continuous_link_title">Përhershme</string>
+    <string name="create_external_call_view_create_message">Shkruani emrin, imazhin dhe përshkrimin e temës së thirrjes.</string>
+    <string name="create_external_call_view_delete_link_setting">Bëje lidhjen të pavlefshme automatikisht sapo të ketë skaduar intervali kohor</string>
+    <string name="create_external_call_view_direct_call_description">Merrni një thirrje drejtpërdrejt në pajisjen tuaj nga dikush që nuk e ka aplikacionin.</string>
+    <string name="create_external_call_view_direct_call_short_title">Direkt</string>
+    <string name="create_external_call_view_direct_call_title">Thirrje direkte</string>
+    <string name="create_external_call_view_group_call_description">Deri në 8 pjesëmarrës</string>
+    <string name="create_external_call_view_link_validity">Vlefshmëria e lidhjes</string>
+    <string name="create_external_call_view_message">Ky profil shfaqet për mysafirët që do t’ju telefonojnë me këtë \"click-to-call\".</string>
+    <string name="create_external_call_view_name_required">Nevojiten emër dhe imazh për të përfaqësuar këtë \"Click-to-call\".</string>
+    <string name="create_external_call_view_notification_setting">Merrni njoftim sapo pjesëmarrësi i parë t’i bashkohet konferencës.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_1">Click-to-call u lejon mysafirëve t’ju telefonojnë ose të bashkohen në një thirrje konferencë (Click-to-meet) nga një shfletues pa instaluar aplikacionin.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_2">Çdo rast ka një emër, imazh dhe përshkrim, që përfaqësojnë temën e thirrjes, si p.sh.:</string>
+    <string name="create_external_call_view_onboarding_part_1_message_3">shërbimi juaj ndaj klientëve</string>
+    <string name="create_external_call_view_onboarding_part_1_message_4">makina që po shisni</string>
+    <string name="create_external_call_view_onboarding_part_1_message_5">një thirrje grupore profesionale</string>
+    <string name="create_external_call_view_onboarding_part_1_message_6">një zile video për personat e dorëzimit.</string>
+    <string name="create_external_call_view_onboarding_part_2_message_1">Një \"click-to-call\" ka atribute për të përcaktuar nëse është:</string>
+    <string name="create_external_call_view_onboarding_part_2_message_2">një thirrje audio dhe/ose video</string>
+    <string name="create_external_call_view_onboarding_part_2_message_3">një thirrje individuale ose grupore</string>
+    <string name="create_external_call_view_onboarding_part_2_message_4">gjithmonë e hapur ose e kufizuar në një datë dhe orë të caktuar.</string>
+    <string name="create_external_call_view_onboarding_part_3_message_1">Ndajeni lidhjen ose kodin QR të \"click-to-call\" përmes kanaleve që ju lejojnë të arrini personat përkatës, p.sh.:</string>
+    <string name="create_external_call_view_onboarding_part_3_message_2">një \"call-to-action\" në faqen tuaj të internetit</string>
+    <string name="create_external_call_view_onboarding_part_3_message_3">një insert në një platformë njoftimesh të klasifikuara</string>
+    <string name="create_external_call_view_onboarding_part_3_message_4">një email për personat e ftuar në thirrjen grupore</string>
+    <string name="create_external_call_view_onboarding_part_3_message_5">një shenjë në derën e përparme për personat e dorëzimit.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_1">Marrësit skanojnë kodin QR dhe hapin lidhjen në një shfletues në pajisjen e tyre celulare ose në PC. Më pas ata mund të:</string>
+    <string name="create_external_call_view_onboarding_part_4_message_2">Ndryshojnë emrin e parazgjedhur (Guest) që i përfaqëson në thirrje</string>
+    <string name="create_external_call_view_onboarding_part_4_message_3">Ju telefonojnë duke shtypur butonin \"Call\" në faqen web.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_4">Pas thirrjes, ata mund ta lënë faqen web të hapur për t’ju telefonuar mbrapsht.</string>
+    <string name="create_external_call_view_onboarding_title_2">Vendosni një Click-to-call</string>
+    <string name="create_external_call_view_onboarding_title_3">Ndani një Click-to-call</string>
+    <string name="create_external_call_view_onboarding_title_4">Përdorni një Click-to-call</string>
+    <string name="create_external_call_view_placeholder">Tema (Ndihmë, Njoftim, Takim, Zile dere, …)</string>
+    <string name="create_external_call_view_recurrent_link_description">Përshtatni ditët/orët kur lidhja është e vlefshme</string>
+    <string name="create_external_call_view_recurrent_link_title">Periodike</string>
+    <string name="create_external_call_view_unique_link_description">Vendosni datat e fillimit dhe të përfundimit të vlefshmërisë së lidhjes</string>
+    <string name="create_external_call_view_unique_link_title">Përdorim i vetëm</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_view_add_member_hint">Ftoni anëtarë</string>
+    <string name="create_group_view_create">Krijo</string>
+    <string name="create_group_view_member_allow_invitation_message">Lejo anëtarët e grupit të ftojnë kontaktet e tyre</string>
+    <string name="create_group_view_member_allow_invitation_title">Ftesa e anëtarëve</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_message">Lejo anëtarët të ftojnë anëtarë të tjerë si kontakte personale</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_title">Krijo kontakte personale</string>
+    <string name="create_group_view_member_allow_post_message">Lejo anëtarët e grupit të postojnë mesazhe</string>
+    <string name="create_group_view_member_allow_post_title">Postimi i mesazheve</string>
+    <string name="create_group_view_member_list">Lista e anëtarëve (%1$d)</string>
+    <string name="create_group_view_name_hint">Emri i grupit</string>
+    <string name="create_group_view_subtitle">Ftoni kontaktet të bashkohen me një grup bisedash.</string>
+    <string name="create_group_view_title">Grup</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_view_incomplete_profile_message">Si emri ASHTU EDHE imazhi janë thelbësorë që kontaktet tuaja t’ju njohin dhe t’ju dallojnë nga të tjerët.</string>
+    <string name="create_profile_view_message">Ky informacion i profilit përdoret për të ftuar kontakte.</string>
+    <string name="create_profile_view_onboarding_message">Shkruani një profil (emër &amp; imazh) që ju përfaqëson për kontaktet tuaja.</string>
+    <string name="create_profile_view_onboarding_message_part_1">Profilet ju lejojnë të ftoni kontakte për të krijuar marrëdhënie me ju në aplikacion. Mund të keni sa Profile (persona) të dëshironi, secili i lidhur me një \"Space\" të caktuar.</string>
+    <string name="create_profile_view_onboarding_message_part_2">Çdo “Profil” ka një “Emër” dhe një “Imazh” (të domosdoshëm), që shihen nga kontaktet që ftoni dhe përdoren si Profili juaj fillestar i lidhur me marrëdhëniet e sapokrijuara të atij \"Space\".</string>
+    <string name="create_profile_view_onboarding_message_part_3">Pasi të krijohet, çdo marrëdhënie ka çiftin e vet të “Profileve” që ju përfaqësojnë ju dhe kontaktet tuaja për njëri-tjetrin.</string>
+    <string name="create_profile_view_onboarding_message_part_4">Më pas mund të ndryshoni mënyrën se si dëshironi të njiheni nga secili kontakt, për çdo marrëdhënie, në mënyrë të pavarur.</string>
+    <string name="create_profile_view_save_message">Ky emër dhe ky imazh përdoren për të ftuar kontaktet tuaja dhe për të inicializuar marrëdhëniet tuaja. Do të mund t’i ndryshoni dhe përshtatni për secilën marrëdhënie.</string>
+    <string name="create_profile_view_title">Vendosni profilin tuaj</string>
+    <string name="create_profile_view_welcome1">Vendosni foton e profilit tuaj</string>
+    <string name="create_profile_view_welcome2">Mirë se vini %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_view_avatar_profile">Imazh</string>
+    <string name="create_space_view_contact_list">Lëviz kontaktet</string>
+    <string name="create_space_view_contacts_no_profile">Për të lëvizur kontaktet në një Space, duhet të plotësoni profilin që ju përfaqëson ndaj kontakteve tuaja. A dëshironi ta plotësoni?</string>
+    <string name="create_space_view_message">\"Spaces\" janë lokale dhe nuk janë të dukshme për kontaktet.</string>
+    <string name="create_space_view_onboarding_message_part_1">\"Spaces\" ju ndihmojnë t’i organizoni kontaktet tuaja sipas rretheve shoqërore ku bëjnë pjesë, p.sh. Familje, Miq, Biznes, Argëtim, etj.</string>
+    <string name="create_space_view_onboarding_message_part_2">Çdo “Space” lidhet me një “Profil” që përfaqëson personën që dëshironi të përdorni kur ndërveproni me kontaktet e rrethit shoqëror të atij \"Space\", p.sh., Baba, Johny, Dr. John Doe, Batman, etj.</string>
+    <string name="create_space_view_onboarding_message_part_3">\"Spaces\" janë lokale në aplikacionin tuaj në pajisjen tuaj. Ato janë të dukshme vetëm për ju dhe jo për kontaktet tuaja, as për serverët e shërbimit.</string>
+    <string name="create_space_view_onboarding_message_part_4">Një \"Space\" ka:</string>
+    <string name="create_space_view_onboarding_message_part_5">- një “Emër”, që përfaqëson një rreth të caktuar shoqëror me të cilin ndërveproni</string>
+    <string name="create_space_view_onboarding_message_part_6">- një “Imazh” që ju lejon ta identifikoni shpejt në listën tuaj të \"Spaces\"</string>
+    <string name="create_space_view_onboarding_message_part_7">- një “Temë” me ngjyrë, për t’i personalizuar pamjen dhe ndjesinë</string>
+    <string name="create_space_view_onboarding_message_part_8">- “Cilësime” që mund të jenë specifike për secilin \"Space\" të veçantë, duke mbishkruar vlerat e parazgjedhura të përcaktuara te Cilësimet e aplikacionit.</string>
+    <string name="create_space_view_profile_message">Duhet të futni emrin dhe imazhin që ju përfaqësojnë për kontaktet që ftoni me këtë profil.</string>
+    <string name="create_space_view_space_hint">Emri (Familje, Miq, Biznes, etj.)</string>
+    <string name="create_space_view_title">Krijo Space</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_view_message">Ky profil lidhet me kodin e përdorur për të transferuar një thirrje në zhvillim te një shfletues.</string>
+    <string name="create_transfert_call_view_name_placeholder">Transferimet e mia të thirrjeve</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_view_confirm_message">Shkruani më poshtë shkronjat \"OK\" për të konfirmuar fshirjen e llogarisë.</string>
+    <string name="deleted_account_view_delete">Fshi llogarinë</string>
+    <string name="deleted_account_view_message">Llogaria juaj është fshirë dhe të gjitha të dhënat e lidhura janë shkatërruar.&lt;br /&gt;
+            Duhet të mbyllni aplikacionin.</string>
+    <string name="deleted_account_view_warning">Paralajmërim‼️</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_view_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë marrëdhënie?</string>
+    <string name="edit_contact_view_message">Ky kontakt nuk do të mund t’ju kontaktojë më.</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_view_delete_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë kod \"Click-to-Call\"?</string>
+    <string name="edit_external_call_view_delete_message">Kjo lidhje \"Click-to-Call\" nuk do të jetë më e përdorshme.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_view_editing_profile">Ndrysho profilin</string>
+    <string name="edit_profile_view_propagating_all_contacts">për të gjitha kontaktet në këtë Space</string>
+    <string name="edit_profile_view_propagating_ask_message">Përhapni imazhin, emrin ose përshkrimin që sapo modifikuat:</string>
+    <string name="edit_profile_view_propagating_except_contacts">për të gjitha, përveç nëse janë të personalizuara</string>
+    <string name="edit_profile_view_propagating_message">Mund t’i përhapni ose jo ndryshimet e profilit tuaj të ftesës te kontaktet ekzistuese.</string>
+    <string name="edit_profile_view_propagating_no_contact">askujt</string>
+    <string name="edit_profile_view_propagating_profile">Përhap ndryshimet e profilit</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_view_contacts_no_profile">Për të ftuar një kontakt, duhet të plotësoni profilin që ju përfaqëson ndaj këtij kontakti. A dëshironi ta plotësoni?</string>
+    <string name="edit_space_view_delete_confirmation">A jeni vërtet i sigurt që dëshironi ta fshini këtë Space?</string>
+    <string name="edit_space_view_delete_current_space">Nuk mund të fshini Space-in aktualisht aktiv.</string>
+    <string name="edit_space_view_delete_message">Fshirja e një Space-i heq të gjitha kontaktet, grupet dhe bisedat nga ai Space. A jeni i sigurt që dëshironi ta fshini këtë Space?</string>
+    <string name="edit_space_view_delete_only_one_space_message">Nuk mund të fshini të vetmin Space të aplikacionit.</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_view_certified_message">Pasi të jetë krijuar marrëdhënia, rekomandohet fuqimisht ta certifikoni atë për të rritur sigurinë.</string>
+    <string name="enter_invitation_code_view_enter_code">Shkruani një Mini-Code</string>
+    <string name="enter_invitation_code_view_error_message">Ky kod është i pavlefshëm. Mund të jetë përdorur tashmë ose të ketë skaduar.</string>
+    <string name="enter_invitation_code_view_invitation_message">Pasi të jetë krijuar marrëdhënia, mos harroni ta certifikoni atë për të rritur sigurinë.</string>
+    <string name="enter_invitation_code_view_message">Futni Mini-Code-in e dhënë nga kontakti juaj për të krijuar një marrëdhënie.</string>
+    <string name="enter_invitation_code_view_onboarding_message">Një kontakt ju dha një Mini-Code me 6 karaktere për të krijuar një marrëdhënie. Ky Mini-Code me përdorim të vetëm skadon 24 orë pas krijimit të tij.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_view_all_conversations_zip_file">Përmbajtja e bisedave do të eksportohet në një skedar ZIP.</string>
+    <string name="export_view_content_title">Përmbajtja</string>
+    <string name="export_view_content_to_export">Përmbajtja për eksport</string>
+    <string name="export_view_do_not_leave_screen">Mos e lini ekranin gjatë operacionit të eksportit.</string>
+    <string name="export_view_export">Eksporto</string>
+    <string name="export_view_file">skedar</string>
+    <string name="export_view_files">skedarë</string>
+    <string name="export_view_get_all_content">Po merret përmbajtja e bisedës me %1$s.</string>
+    <string name="export_view_get_one_chat">Po merret përmbajtja e bisedave.</string>
+    <string name="export_view_images">Imazhe</string>
+    <string name="export_view_no_content_to_export">Nuk ka përmbajtje për eksport</string>
+    <string name="export_view_one_conversation_zip_file">Përmbajtja e bisedës do të eksportohet në një skedar ZIP.</string>
+    <string name="export_view_save_location">Vendndodhja</string>
+    <string name="export_view_save_location_message">Zgjidhni ku të eksportohet.</string>
+    <string name="export_view_select_content">Zgjidhni përmbajtjen që dëshironi të eksportoni.\nVetëm përmbajtje jo të përkohshme, të autorizuara për kopjim/ruajtje/ndarje, mund të eksportohen.</string>
+    <string name="export_view_success">Eksporti përfundoi me sukses.</string>
+    <string name="export_view_title">Eksporti i bisedave</string>
+    <string name="export_view_videos">Video</string>
+    <string name="export_view_voice_messages">Mesazhe zanore</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_view_error_code_message">Gabim fatal, kodi %1$d.\nJu lutemi rinisni aplikacionin dhe raportoni problemin përmes një mesazhi feedback, nëse mundeni. Na vjen keq për shqetësimin.</string>
+    <string name="fatal_error_view_error_message">Gabim fatal: %1$s&lt;br /&gt;
+            Duhet ta mbyllni aplikacionin.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_view_contact">Kontakt</string>
+    <string name="feedback_view_gdpr_notice">Përdoreni këtë formular për të kërkuar qasje te të dhënat e llogarisë tuaj.</string>
+    <string name="feedback_view_help">E vlerësojmë ndihmën tuaj për të identifikuar problemet dhe për të punuar me ne për t’i zgjidhur ato.</string>
+    <string name="feedback_view_info_logs">Një regjistër debug përmban vetëm të dhëna teknike të nivelit të ulët për aktivitetet dhe sjelljen e aplikacionit, dhe NUK zbulon asnjë nga të dhënat tuaja personale.</string>
+    <string name="feedback_view_logs">Regjistër debug</string>
+    <string name="feedback_view_message">Mesazh</string>
+    <string name="feedback_view_send">Dërgo</string>
+    <string name="feedback_view_send_logs">Dërgo një regjistër debug</string>
+    <string name="feedback_view_send_message">Feedback-u u dërgua. Faleminderit.</string>
+    <string name="feedback_view_subject">Subjekti</string>
+    <string name="feedback_view_subject_placeholder">[Skred] </string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_view_description">Duhet të ftoni miq dhe të lidheni me ta në Skred. Ata do të shfaqen në listën tuaj të kontakteve sapo të pranojnë ftesën tuaj.</string>
+    <string name="first_invite_contact_view_ignore">Injoro</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_view_generate_code_message">Ky veprim e bën të pavlefshëm kodin aktual të ftesës të lidhur me këtë profil. A jeni i sigurt që dëshironi të gjeneroni një kod të ri?</string>
+    <string name="fullscreen_qrcode_view_generate_code_title">Gjenero një kod të ri ftese</string>
+    <string name="fullscreen_qrcode_view_save_message">Importoni ose skanoni këtë QR-Code ftese me Skred për të shtuar këtë kontakt.</string>
+    <string name="fullscreen_qrcode_view_save_title">Ruaj në galerinë e fotove</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_view_information_audio_call">Autorizo thirrjet zanore</string>
+    <string name="group_capabilities_view_information_programmed_call">Programo datën/orën e thirrjeve</string>
+    <string name="group_capabilities_view_information_video_call">Autorizo thirrjet video</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_view_admin_not_authorize">Administratori i grupit nuk e autorizoi këtë veprim.</string>
+    <string name="group_member_view_invitation_message">Ftoni %1$s si kontakt personal</string>
+    <string name="group_member_view_invitation_title">Ftesë</string>
+    <string name="group_member_view_invite_personnal_relation">Fto si kontakt personal</string>
+    <string name="group_member_view_remove_message">A jeni i sigurt që dëshironi t’i hiqni anëtarët nga ky grup?</string>
+    <string name="group_member_view_section_administrator">Administrator</string>
+    <string name="group_member_view_section_invitation">Ftesat</string>
+    <string name="group_member_view_section_member">Anëtarët</string>
+    <string name="group_member_view_title">Anëtarët e grupit</string>
+
+    <!-- HelpActivity -->
+    <string name="help_view_standard_services">Shërbime standarde</string>
+    <string name="help_view_advanced_functions">Funksione të avancuara</string>
+    <string name="help_view_additional_features">Veçori shtesë</string>
+
+    <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_view_accept_invitation">%1$s ju fton të përfitoni nga shërbimet premium që ai mbështet.</string>
+    <string name="in_app_subscription_view_cancel_subscription">Pezullo abonimin</string>
+    <string name="in_app_subscription_view_cancel_subscription_confirmation">Shërbimet premium do të çaktivizohen. Dëshironi të vazhdoni?</string>
+    <string name="in_app_subscription_view_description_step1_subtitle">Thirrje grupore me zë HQ dhe imazh HD</string>
+    <string name="in_app_subscription_view_description_step1_title">Konferencë zanore/video me cilësi të lartë</string>
+    <string name="in_app_subscription_view_description_step2_subtitle">Zero të dhëna / Zero karbon</string>
+    <string name="in_app_subscription_view_description_step2_title">Konferencë zanore/video me përgjegjësi ekologjike</string>
+    <string name="in_app_subscription_view_description_step3_subtitle">Konfidencialitet absolut i shkëmbimeve</string>
+    <string name="in_app_subscription_view_description_step3_title">Konferencë private zanore/video</string>
+    <string name="in_app_subscription_view_description_step4_subtitle">Lidhje e menjëhershme me definicion të lartë</string>
+    <string name="in_app_subscription_view_description_step4_title">Konferencë zanore/video e menjëhershme</string>
+    <string name="in_app_subscription_view_expiration_message">Rinovim: %1$s</string>
+    <string name="in_app_subscription_view_expire_code">Kod ftese i skaduar</string>
+    <string name="in_app_subscription_view_footer_message">Kur blini një abonim, ai faturohet nga Google direkt në llogarinë tuaj të Play Store. Abonimi rinovohet automatikisht me të njëjtat kushte nëse nuk e anuloni të paktën 24 orë para përfundimit të periudhës aktuale. Mund ta anuloni falas në Play Store në çdo kohë, në mënyrë që abonimi të mos rinovohet në fund të periudhës aktuale. Mund ta menaxhoni abonimin nga cilësimet e llogarisë tuaj në Play Store pas blerjes.</string>
+    <string name="in_app_subscription_view_free_trial">Provë falas 14-ditore.\nAbonimi mund të anulohet në çdo kohë.</string>
+    <string name="in_app_subscription_view_invitation_code">Skanoni kodin QR të ftesës ose ngjisni kodin për të hyrë në shërbimet premium.</string>
+    <string name="in_app_subscription_view_invitation_code_success">Shërbimet premium u aktivizuan</string>
+    <string name="in_app_subscription_view_invalid_code">Kod ftese i pavlefshëm.</string>
+    <string name="in_app_subscription_view_later_title">Jo, faleminderit</string>
+    <string name="in_app_subscription_view_manage_subscription">Menaxho abonimin tim</string>
+    <string name="in_app_subscription_view_month">Muaj</string>
+    <string name="in_app_subscription_view_not_available">Shërbimet premium me pagesë nuk janë të disponueshme në pajisjen tuaj ose në vendin tuaj.</string>
+    <string name="in_app_subscription_view_restore_title">Rikthe blerjet</string>
+    <string name="in_app_subscription_view_search">Kërko oferta abonimi</string>
+    <string name="in_app_subscription_view_six_month_title">Më popullorja</string>
+    <string name="in_app_subscription_view_subscription_title">Abonim</string>
+    <string name="in_app_subscription_view_subscribe_in_progress">Abonimi aktual</string>
+    <string name="in_app_subscription_view_subscribe_title">Vazhdo</string>
+    <string name="in_app_subscription_view_used_code">Kod ftese i përdorur nga një pajisje tjetër</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_view_call_terminated_reason_busy">%1$s është i zënë</string>
+    <string name="info_item_view_call_terminated_reason_cancel">Thirrja u anulua nga %1$s</string>
+    <string name="info_item_view_call_terminated_reason_decline">Thirrja u refuzua nga %1$s</string>
+    <string name="info_item_view_call_terminated_reason_gone">%1$s është jashtë linje</string>
+    <string name="info_item_view_call_terminated_reason_not_authorized">Nuk jeni i autorizuar të telefononi</string>
+    <string name="info_item_view_call_terminated_reason_revoked">%1$s e hoqi këtë marrëdhënie</string>
+    <string name="info_item_view_call_terminated_reason_timeout">%1$s nuk përgjigjet</string>
+    <string name="info_item_view_deleted">Fshirë nga marrësi:</string>
+    <string name="info_item_view_location">Vendndodhja</string>
+    <string name="info_item_view_location_map_error">Pajisja juaj nuk mund ta shfaqë hartën me vendndodhjen e %1$s.</string>
+    <string name="info_item_view_may_be_copied">Mund të kopjohet/ruhet/ndahet…</string>
+    <string name="info_item_view_may_not_be_copied">Nuk mund të kopjohet/ruhet/ndahet…</string>
+    <string name="info_item_view_not_delivered">Nuk u dorëzua</string>
+    <string name="info_item_view_not_delivered_expiration">Mesazhi nuk mund të dorëzohej pas 15 ditësh.</string>
+    <string name="info_item_view_not_delivered_storage">Pajisja e marrësit nuk ka hapësirë të mjaftueshme ruajtjeje për të marrë këtë përmbajtje.</string>
+    <string name="info_item_view_not_delivered_update">Aplikacioni i marrësit duhet të përditësohet.</string>
+    <string name="info_item_view_reactions">Reagime</string>
+    <string name="info_item_view_received">Marrë:</string>
+    <string name="info_item_view_seen">Parë:</string>
+    <string name="info_item_view_sent">Dërguar:</string>
+    <string name="info_item_view_updated">E përditësuar</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_view_generate_code_message">Ky veprim e pavlefshmëron kodin aktual të ftesës të lidhur me këtë lidhje \"klik-për-të-telefonuar\". Të konfirmohet?</string>
+    <string name="invitation_call_view_generate_code_title">Gjenero një kod të ri për këtë lidhje</string>
+    <string name="invitation_call_view_invite_meeting_message">Hapni adresën web %1$s ose skanoni QR-Code për t’u bashkuar në takimin “%2$s”.</string>
+    <string name="invitation_call_view_invite_message">Hapni adresën web %1$s ose skanoni QR-Code për të telefonuar “%2$s”.</string>
+    <string name="invitation_call_view_message">Ndajeni këtë kod \"klik-për-të-telefonuar\" me dikë që më pas mund t’ju telefonojë, nga web-i ose aplikacioni celular.</string>
+    <string name="invitation_call_view_save_message">Skanoni këtë QR-Code për të telefonuar “%1$s”.</string>
+    <string name="invitation_call_view_share">Publiko</string>
+    <string name="invitation_call_view_title">Thirrje e jashtme</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_view_create_code">Krijo një Mini-Kod</string>
+    <string name="invitation_code_view_create_code_subtitle">për të ftuar një kontakt kur nuk keni akses te aplikacioni.</string>
+    <string name="invitation_code_view_expiration">Skadimi:</string>
+    <string name="invitation_code_view_history">Mini-Kodet e mia</string>
+    <string name="invitation_code_view_limit_message">Është arritur numri maksimal i Mini-Kodeve aktive të lejuara. Duhet të prisni 24 orë për të gjeneruar të reja.</string>
+    <string name="invitation_code_view_onboarding_message">Mini-Kodet janë njëpërdorimëshe dhe të vlefshme vetëm për 24 orë. Mund t’ua jepni kontakteve tuaja për të krijuar një marrëdhënie kur nuk keni akses te aplikacioni (p.sh., pa telefon).</string>
+    <string name="invitation_code_view_success_message">Rekomandohet fort të certifikohen marrëdhëniet e krijuara me Mini-Kod për të forcuar sigurinë e tyre.</string>
+    
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_view_message">Kërkojini mikut tuaj pranë jush të skanojë QR-kodin e \"dhomës\" me skred, ose prekni kodin e ftesës për ta kopjuar në kujtesën e përkohshme.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_view_audio">Zë</string>
+    <string name="last_calls_view_video">Video</string>
+
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_view_local_authentication">Autentifikohuni për të hyrë në aplikacion</string>
+    <string name="lock_screen_view_passcode_not_set">Cilësimet e autentifikimit të pajisjes nuk janë vendosur. Shkoni te cilësimet e sistemit dhe vendosini ato për të zhbllokuar aplikacionin.</string>
+    <string name="lock_screen_view_unlock">Zhblloko qasjen në aplikacion</string>
+
+    <!-- MainActivity -->
+    <string name="main_view_add_contact">Shto kontakt</string>
+    <string name="main_view_add_group">Krijo një grup</string>
+    <string name="main_view_reset_conversation">Rivendos</string>
+    <string name="main_view_reset_conversation_message">Rivendosja e kësaj bisede do të fshijë të gjitha mesazhet, përfshirë ato në pajisjen e kontaktit tuaj. Të konfirmohet?</string>
+    <string name="main_view_reset_conversation_title">Rivendos bisedën</string>
+    <string name="main_view_reset_group_conversation_admin_message">Rivendosja e kësaj bisede do të fshijë të gjitha mesazhet nga pajisja e secilit anëtar të grupit. Të konfirmohet?</string>
+    <string name="main_view_reset_group_conversation_message">Rivendosja e kësaj bisede do të heqë të gjitha mesazhet nga pajisja juaj. Të konfirmohet?</string>
+    <string name="main_view_skredboard_access_title">Space</string>
+    <string name="main_view_skredboard_create_title">Krijo një Space</string>
+    <string name="main_view_skredboard_delete_title">Fshi një Space</string>
+    <string name="main_view_skredboard_message">Fut kodin tuaj</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_view_about_twinme">Rreth</string>
+    <string name="navigation_view_application_settings">Cilësimet e aplikacionit</string>
+    <string name="navigation_view_feedback">Feedback</string>
+    <string name="navigation_view_getting_started">Fillimi</string>
+    <string name="navigation_view_help">Ndihmë</string>
+    <string name="navigation_view_profile">Profilet</string>
+    <string name="navigation_view_settings">Cilësimet</string>
+    <string name="navigation_view_sign_out">Dil</string>
+    <string name="navigation_view_sounds">Tingujt</string>
+    <string name="navigation_view_subscribe">Zbulo Skred+</string>
+    <string name="navigation_view_subscribe_enable">&#10003; Aktiv</string>
+    <string name="navigation_view_support">Mbështetje</string>
+    <string name="navigation_view_title">Meny</string>
+
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Thirrje zanore drejt %1$s</string>
+    <string name="notification_center_audio_message">Ju dërgoi një mesazh zanor</string>
+    <string name="notification_center_audio_message_received">Mesazh i ri zanor</string>
+    <string name="notification_center_cancel">Hiqe</string>
+    <string name="notification_center_cleanup_conversation">Niektoré staré správy boli odstránené.</string>
+    <string name="notification_center_conference_join_call">Një pjesëmarrës iu bashkua thirrjes.</string>
+    <string name="notification_center_deleted_contact">Kontakti u fshi</string>
+    <string name="notification_center_file_message">Ju dërgoi një skedar</string>
+    <string name="notification_center_file_message_received">Skedar i ri</string>
+    <string name="notification_center_geolocation_message">ju dërgoi një vendndodhje</string>
+    <string name="notification_center_geolocation_message_received">Vendndodhje e re</string>
+    <string name="notification_center_invitation">Ju dërgoi një ftesë</string>
+    <string name="notification_center_invitation_group">ju fton të bashkoheni në një grup.</string>
+    <string name="notification_center_invitation_received">Ftesë e re</string>
+    <string name="notification_center_invitation_group_received">Ftesë e re grupi</string>
+    <string name="notification_center_join_call">%1$s sapo iu bashkua thirrjes</string>
+    <string name="notification_center_join_group">Jeni anëtar i grupit</string>
+    <string name="notification_center_message_received">Mesazh i ri</string>
+    <string name="notification_center_missed_audio_call_to">Thirrje zanore e humbur drejt %1$s</string>
+    <string name="notification_center_missed_video_call_to">Thirrje video e humbur drejt %1$s</string>
+    <string name="notification_center_mute">Heshto</string>
+    <string name="notification_center_new_contact">Kontakt i ri</string>
+    <string name="notification_center_poll_message">Ju dërgoi një anketë</string>
+    <string name="notification_center_poll_message_received">Anketë e re</string>
+    <string name="notification_center_poll_vote">Iu përgjigj një ankete</string>
+    <string name="notification_center_photo_message">Ju dërgoi një foto</string>
+    <string name="notification_center_photo_message_received">Foto e re</string>
+    <string name="notification_center_reaction">reagoi %1$s</string>
+    <string name="notification_center_reaction_message">Reagoi ndaj një mesazhi</string>
+    <string name="notification_center_reaction_message_received">Reagim ndaj një mesazhi</string>
+    <string name="notification_center_reset_message">Biseda u pastrua</string>
+    <string name="notification_center_stop">Ndalo</string>
+    <string name="notification_center_transfering_data">Duke transferuar mesazhe…</string>
+    <string name="notification_center_unmute">Çheshto</string>
+    <string name="notification_center_updated_contact_avatar">Imazhi u përditësua</string>
+    <string name="notification_center_updated_contact_name">Emri u përditësua</string>
+    <string name="notification_center_video_call_to">Thirrje video drejt %1$s</string>
+    <string name="notification_center_video_message">Ju dërgoi një video</string>
+    <string name="notification_center_video_message_received">Video e re</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Thirrje zanore</string>
+    <string name="notification_channel_contact_title">Kontaktet</string>
+    <string name="notification_channel_group_title">Grupet</string>
+    <string name="notification_channel_message_title">Mesazhet</string>
+    <string name="notification_channel_missed_title">Thirrje të humbura</string>
+    <string name="notification_channel_system_title">Të tjera</string>
+    <string name="notification_channel_video_title">Thirrje video</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_view_item_audio_call">U përpoq t’ju telefonojë</string>
+    <string name="notifications_view_item_audio_message">Ju dërgoi një mesazh zanor</string>
+    <string name="notifications_view_item_cleanup_message">pastroi disa mesazhe të vjetra.</string>
+    <string name="notifications_view_item_deleted_contact">Kontakti u fshi</string>
+    <string name="notifications_view_item_file_message">Ju dërgoi një skedar</string>
+    <string name="notifications_view_item_geolocation_message">Ju dërgoi një vendndodhje</string>
+    <string name="notifications_view_item_image_message">Ju dërgoi një foto</string>
+    <string name="notifications_view_item_invitation">Ju dërgoi një ftesë</string>
+    <string name="notifications_view_item_invitation_group">ju fton të bashkoheni në një grup.</string>
+    <string name="notifications_view_item_join_group">Jeni anëtar i grupit</string>
+    <string name="notifications_view_item_new_contact">Kontakt i ri</string>
+    <string name="notifications_view_item_reset_conversation">E ka rivendosur bisedën</string>
+    <string name="notifications_view_item_poll_message">Ju dërgoi një anketë</string>
+    <string name="notifications_view_item_shortest_day">%1$dd</string>
+    <string name="notifications_view_item_shortest_hour">%1$dh</string>
+    <string name="notifications_view_item_shortest_minute">%1$dm</string>
+    <string name="notifications_view_item_shortest_second">%1$ds</string>
+    <string name="notifications_view_item_text_message">Ju dërgoi një mesazh</string>
+    <string name="notifications_view_item_updated_contact_avatar">Imazhi u përditësua</string>
+    <string name="notifications_view_item_updated_contact_name">Emri u përditësua</string>
+    <string name="notifications_view_item_video_call">U përpoq t’ju telefonojë me video</string>
+    <string name="notifications_view_item_video_message">Ju dërgoi një video</string>
+    <string name="notifications_view_no_notification_message">Njoftimet që lidhen me kontaktet, bisedat, thirrjet, etj. renditen këtu.</string>
+    <string name="notifications_view_no_notification_title">Nuk keni njoftime.</string>
+    <string name="notifications_view_reset">A jeni i sigurt që dëshironi të rivendosni të gjitha njoftimet?</string>
+    <string name="notifications_view_reset_title">Rivendos njoftimet</string>
+    <string name="notifications_view_title">Njoftimet</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_view_font">Fontet e shkronjave</string>
+    <string name="personalization_view_font_extra_large">Shumë të mëdha</string>
+    <string name="personalization_view_font_large">Të mëdha</string>
+    <string name="personalization_view_font_small">Të vogla</string>
+    <string name="personalization_view_haptic_feedback">Feedback haptik</string>
+    <string name="personalization_view_haptic_feedback_message">Ndjesi prekëse kur prekni.</string>
+    <string name="personalization_view_menu_choose_color">Ngjyrat e parazgjedhura</string>
+    <string name="personalization_view_menu_enter_color">Kodi i ngjyrës</string>
+    <string name="personalization_view_mode">Modaliteti</string>
+    <string name="personalization_view_mode_dark">I errët</string>
+    <string name="personalization_view_mode_light">I ndritshëm</string>
+    <string name="personalization_view_start_tab_information">Zgjidhni skedën nga e cila dëshironi të nisni aplikacionin.</string>
+    <string name="personalization_view_start_tab_title">Skeda e parazgjedhur</string>
+    <string name="personalization_view_system">Sistemi</string>
+    <string name="personalization_view_title">Personalizimi</string>
+
+    <!-- PollActivity -->
+    <string name="poll_view_add_response">Shto një përgjigje</string>
+    <string name="poll_view_allow_multiple">Lejo përgjigje të shumta</string>
+    <string name="poll_view_ask_question">Bëj një pyetje</string>
+    <string name="poll_view_choice">Zgjedhja %1$d</string>
+    <string name="poll_view_enter_response">Futni një përgjigje</string>
+    <string name="poll_view_title">Sondazh</string>
+    <string name="poll_view_results">Shiko rezultatet</string>
+
+    <!-- PreviewFilesActivity -->
+    <string name="preview_files_view_resize_message">Ridimensionimi para dërgimit…</string>
+    <string name="preview_files_view_retrieving_media_message">Duke marrë median në vazhdim…</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_view_camera_control_description_1">Ndrysho kamerën e përparme/të pasme</string>
+    <string name="premium_services_view_camera_control_description_2">Zmadho/zvogëlo</string>
+    <string name="premium_services_view_camera_control_description_3">Për të ndihmuar nga larg një të afërm ose klient</string>
+    <string name="premium_services_view_camera_control_description_4">Për të menaxhuar një kamerë vëzhgimi</string>
+    <string name="premium_services_view_camera_control_subtitle">Kontrolloni kamerën e kontaktit tuaj gjatë një thirrjeje me lejen e tij/saj</string>
+    <string name="premium_services_view_camera_control_title">Kontroll i kamerës nga larg</string>
+    <string name="premium_services_view_click_to_call_description_1">Krijo një kod \"klik-për-të-më-telefonuar\"</string>
+    <string name="premium_services_view_click_to_call_description_2">Publiko ose shpërndaje me çdo mënyrë</string>
+    <string name="premium_services_view_click_to_call_description_3">Marrësit skanojnë kodin dhe ju telefonojnë</string>
+    <string name="premium_services_view_click_to_call_description_4">Anonim pa gjurmë në cloud</string>
+    <string name="premium_services_view_click_to_call_subtitle">Lejo mysafirët t’ju telefonojnë nga web-i</string>
+    <string name="premium_services_view_click_to_call_title">Klik-për-të-telefonuar</string>
+    <string name="premium_services_view_conversation_description_1">Media, skedarë, shënime zanore, mesazhe</string>
+    <string name="premium_services_view_conversation_description_2">Më të vjetra se një periudhë/datë e caktuar</string>
+    <string name="premium_services_view_conversation_description_3">Për një bisedë ose për të gjitha</string>
+    <string name="premium_services_view_conversation_description_4">Vetëm lokal, pa ndikim te pala tjetër</string>
+    <string name="premium_services_view_conversation_subtitle">Eksporto përmbajtjen dhe liro hapësirë</string>
+    <string name="premium_services_view_conversation_title">Menaxhimi i bisedave</string>
+    <string name="premium_services_view_group_call_description_1">Audio/video me definicion të lartë</string>
+    <string name="premium_services_view_group_call_description_2">Lidhje direkte midis pajisjeve</string>
+    <string name="premium_services_view_group_call_description_3">E sigurt &amp; private</string>
+    <string name="premium_services_view_group_call_description_4">Pa gjurmë në cloud</string>
+    <string name="premium_services_view_group_call_subtitle">Ftoni kontakte të bashkohen në një thirrje grupi zanore/video</string>
+    <string name="premium_services_view_group_call_title">Thirrje në grup</string>
+    <string name="premium_services_view_space_description_1">Profile të shumta me marrëdhënie, biseda, histori të lidhura</string>
+    <string name="premium_services_view_space_description_2">Pamje, njoftime &amp; cilësime të personalizuara</string>
+    <string name="premium_services_view_space_description_3">Për familjen, miqtë, kolegët, biznesin, sportin, etj.</string>
+    <string name="premium_services_view_space_description_4">Hapësira sekrete jo në listë, të aksesueshme me emër</string>
+    <string name="premium_services_view_space_subtitle">Për secilin grup shoqëror me të cilin ndërveproni</string>
+    <string name="premium_services_view_space_title">Hapësirat</string>
+    <string name="premium_services_view_streaming_description_1">Ndani muzikën tuaj live</string>
+    <string name="premium_services_view_streaming_description_2">Çdo pjesëmarrës mund ta kontrollojë luajtësin</string>
+    <string name="premium_services_view_streaming_description_3">Ndërveproni në thirrje njëkohësisht</string>
+    <string name="premium_services_view_streaming_description_4">E njëjta privatësi si në jetën reale</string>
+    <string name="premium_services_view_streaming_subtitle">Transmetoni median tuaj gjatë një thirrjeje</string>
+    <string name="premium_services_view_streaming_title">Ndarje media</string>
+    <string name="premium_services_view_title">Ftoni kontakte të bashkohen në një thirrje zanore/video në vazhdim.</string>
+    <string name="premium_services_view_transfert_description_1">Krijo kodin e transferimit të thirrjes dhe profilin</string>
+    <string name="premium_services_view_transfert_description_2">Ngarko URL-në e tij ose skano kodin në një kompjuter</string>
+    <string name="premium_services_view_transfert_description_3">Ruaj faqen te të preferuarat në një shfletues</string>
+    <string name="premium_services_view_transfert_description_4">\"Thirr\" nga faqja gjatë një thirrjeje celulare</string>
+    <string name="premium_services_view_transfert_subtitle">Transfero një thirrje celulare te një shfletues</string>
+    <string name="premium_services_view_transfert_title">Transferimi i thirrjes</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_view_coach_mark">Bllokoni aplikacionin me shërbime biometrike ose me një kod PIN.</string>
+    <string name="privacy_view_hide_last_screen_message">Dhe fshihni aplikacionin kur kalon në sfond, nëse pajisja e lejon.</string>
+    <string name="privacy_view_hide_last_screen_title">Ndalo pamjet e ekranit</string>
+    <string name="privacy_view_lock_screen_message">Zhbllokoni qasjen në aplikacion duke përdorur shërbimet biometrike të pajisjes suaj ose autentifikimin me kod. Mund të përgjigjeni ende ndaj thirrjeve hyrëse dhe të merrni njoftime ndërkohë që qasja në aplikacion është e bllokuar.</string>
+    <string name="privacy_view_lock_screen_not_available">Ky opsion kërkon një version të Android &gt; 5.0</string>
+    <string name="privacy_view_lock_screen_timeout">Afati i bllokimit të qasjes</string>
+    <string name="privacy_view_lock_screen_timeout_instant">Menjëherë</string>
+    <string name="privacy_view_lock_screen_title">Bllokimi i qasjes</string>
+    <string name="privacy_view_title">Privatësia</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_view_add_profile">Shto profil</string>
+    <string name="profile_view_create_profile">Krijo një profil</string>
+    <string name="profile_view_message">Ky profil ju lejon të ftoni kontaktet tuaja për të krijuar një marrëdhënie private me ju, nën kontrollin tuaj.</string>
+    <string name="profile_view_twincode_title">Kodi i ftesës</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_view_add">Shto një Proxy</string>
+    <string name="proxy_view_add_placeholder">Ngjitni ose shkruani URL-në e një proxy</string>
+    <string name="proxy_view_already_use">Ky proxy është tashmë i konfiguruar në aplikacionin tuaj.</string>
+    <string name="proxy_view_enable">Përdor një Proxy</string>
+    <string name="proxy_view_format">Formatet e vlefshme të URL-së së proxy:</string>
+    <string name="proxy_view_information">Përdorni një proxy vetëm nëse nuk mund të lidheni me shërbimin nga rrjetet standarde Wi-Fi ose celulare.</string>
+    <string name="proxy_view_invalid_format">Format URL-je i pavlefshëm</string>
+    <string name="proxy_view_limit">Keni arritur kufirin e numrit të proxy-ve të lejuar (%1$d). Për të shtuar një të ri, duhet së pari të hiqni një.</string>
+    <string name="proxy_view_list">Proxy-t e mi</string>
+    <string name="proxy_view_list_information">Përdorni një proxy nga lista më poshtë, vetëm nëse aplikacioni nuk mund të lidhet me shërbimin pa proxy.</string>
+    <string name="proxy_view_onboarding">Kur qasja në serverët e sinjalizimit të aplikacionit bllokohet në vendin tuaj, proxy-t mund t’i anashkalojnë këto bllokime në shumë raste dhe t’ju lejojnë të komunikoni privatisht. Përveç proxy-ve brenda aplikacionit, mund të krijoni tuajin ose të përdorni një proxy të krijuar nga dikush tjetër. Proxy-t nuk mund të aksesojnë përmbajtjet që shkëmbehen në asnjë rrethanë.</string>
+    <string name="proxy_view_share">Hapni lidhjen %1$s me skred në pajisjen tuaj për ta konfiguruar automatikisht këtë proxy.</string>
+    <string name="proxy_view_share_message">Ndajeni këtë proxy me ata që nuk mund të lidhen më me shërbimin për shkak të përpjekjeve për bllokim.</string>
+    <string name="proxy_view_title">Proxy</string>
+    <string name="proxy_view_url">Dëshironi të përdorni URL-në e këtij proxy?</string>
+    <string name="proxy_view_warning">Paralajmërim! URL-ja e këtij proxy nuk ju lejon të lidheni me shërbimin e aplikacionit.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_view_change_permissions">Ndrysho lejet</string>
+    <string name="quality_of_service_view_enable_notifications">Aktivizo njoftimet</string>
+    <string name="quality_of_service_view_enable_notifications_warning">Pa këto leje, mesazhet mund të marrin shumë kohë për të arritur në destinacion.</string>
+    <string name="quality_of_service_view_notification_description">Lejo aplikacionin të funksionojë në sfond</string>
+    <string name="quality_of_service_view_notification_title">Shkëmbimi i mesazheve është shumë i ngadaltë?</string>
+    <string name="quality_of_service_view_settings">Ndrysho lejet e aplikacionit te cilësimet e sistemit.</string>
+    <string name="quality_of_service_view_step1_message">Mesazhet e enkriptuara shkëmbehen drejtpërdrejt midis pajisjeve në kohë reale, duke përdorur një qasje \"peer-to-peer\", pa serverë shpërndarjeje të përmbajtjes. Kjo siguron që të mos ketë gjurmë në cloud dhe ofron mbrojtje unike të privatësisë.</string>
+    <string name="quality_of_service_view_step2_message">Për të siguruar një cilësi të mirë shërbimi, konfiguroni pajisjen tuaj që të lejojë aplikacionin të marrë njoftime në sfond dhe përjashtojeni nga optimizimet e baterisë.</string>
+    <string name="quality_of_service_view_step3_message">Përdoreni aplikacionin shpesh që OS ta prioritizojë dhe të mos e ndërpresë papritur. \n\nDhe mos harroni t’i informoni kontaktet tuaja për këtë!</string>
+    <string name="quality_of_service_view_warning_background_data">Lejo aplikacionin të përdorë të dhënat celulare në sfond.</string>
+    <string name="quality_of_service_view_warning_receive_notification">Lejo aplikacionin të marrë njoftime push.</string>
+    <string name="quality_of_service_view_warning_run_background">Lejo aplikacionin të funksionojë në sfond.</string>
+
+    <!-- RestoreActivity -->
+    <string name="restore_view_application_error">Skred+ duhet të jetë i instaluar në këtë pajisje për të rikthyer një kopje rezervë të llogarisë Skred+.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_one">Pajisja që bëri kopjen rezervë është ende e kyçur.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_two">Nëse e riktheni kopjen rezervë në këtë pajisje të re, llogaria e pajisjes në të cilën u bë kopja rezervë do të çaktivizohet automatikisht.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_three">Nëse dëshironi ta transferoni llogarinë tuaj në një pajisje të re dhe ende e keni të vjetrën, është më mirë të përdorni veprimin \\\"migrim llogarie\\\" në vend të rikthimit të një kopjeje rezervë, pasi do të transferojë gjithashtu bisedat, njoftimet dhe historikun.</string>
+    <string name="restore_view_confirm">A jeni i sigurt që dëshironi t\'i zëvendësoni të dhënat aktuale të llogarisë me të dhënat e mëposhtme nga kopja rezervë?</string>
+    <string name="restore_view_confirm_restore">A doni ende ta riktheni këtë kopje rezervë?</string>
+    <string name="restore_view_content_contact_deleted_message">Të dhënat e fshira pas kopjes rezervë nuk mund të rikthehen.</string>
+    <string name="restore_view_content_profile_reset">Kodi i ftesës ndryshoi.</string>
+    <string name="restore_view_content_profile_reset_message">Kodi i ftesës i lidhur me profilin e kopjuar është i pavlefshëm. Një kod i ri ftese do të gjenerohet gjatë procesit të rikthimit.</string>
+    <string name="restore_view_enter_words">Futni serinë prej 12 fjalësh që lejon dekriptimin e kopjes rezervë.</string>
+    <string name="restore_view_error_message">Gabim gjatë rikthimit të kopjes rezervë.</string>
+    <string name="restore_view_error_message_verify_backup">Gabim gjatë verifikimit të kopjes rezervë.</string>
+    <string name="restore_view_file_not_supported">Skedari i kopjes rezervë duhet të jetë në formatin \"skrdbckp\".</string>
+    <string name="restore_view_more_recent_backup">Një kopje rezervë më e fundit u krijua me të njëjtën llogari.</string>
+    <string name="restore_view_onboarding">Rikthimi i një kopjeje rezervë do të zëvendësojë të dhënat aktuale të llogarisë.</string>
+    <string name="restore_view_onboarding_words">Për të rikthyer një kopje rezervë, do t\'ju duhet të futni serinë prej 12 fjalësh që lejon dekriptimin e saj.</string>
+    <string name="restore_view_onboarding_verify">Verifikoni që një kopje rezervë është e vlefshme dhe e përditësuar me të dhënat tuaja aktuale.</string>
+    <string name="restore_view_paste">Ngjit listën e fjalëve nga clipboard-i.</string>
+    <string name="restore_view_paste_error">Listë fjalësh e pavlefshme.</string>
+    <string name="restore_view_restore">Rikthe</string>
+    <string name="restore_view_select_backup">Zgjidhni një kopje rezervë</string>
+    <string name="restore_view_state_restore_account">Po rikthehet llogaria…</string>
+    <string name="restore_view_state_restore_data">Po rikthehen të dhënat…</string>
+    <string name="restore_view_state_restore_starting">Fillimi i rikthimit.</string>
+    <string name="restore_view_state_restore_verify_account">Po verifikohet llogaria…</string>
+    <string name="restore_view_state_restore_verify_data">Po verifikohen të dhënat…</string>
+    <string name="restore_view_state_restore_verify_starting">Fillimi i verifikimit…</string>
+    <string name="restore_view_state_restore_wait_confirm">Duke pritur konfirmimin.</string>
+    <string name="restore_view_success">Rikthimi përfundoi me sukses!</string>
+    <string name="restore_view_success_message">Mbyllni aplikacionin dhe riniseni atë për të hyrë në të dhënat e reja.</string>
+    <string name="restore_view_title">Rikthim</string>
+    <string name="restore_view_verify_same_account">Verifikimi duhet të bëhet në të njëjtën pajisje të përdorur për kopjen rezervë.</string>
+    <string name="restore_view_warning">Rikthimi i kësaj kopjeje rezervë do të zëvendësojë të gjitha të dhënat aktuale të llogarisë me të dhënat nga kopja rezervë.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_view_change_admin_title">Përcakto si administrator</string>
+    <string name="room_members_view_delete_message">Konfirmo heqjen e këtij anëtari</string>
+    <string name="room_members_view_moderators_title">Moderator</string>
+    <string name="room_members_view_only_admin_message">Administratori i vetëm nuk mund të hiqet.</string>
+    <string name="room_members_view_owner_title">Pronari</string>
+    <string name="room_members_view_participants_title">Pjesëmarrësit</string>
+    <string name="room_members_view_remove_admin_title">Hiqe si administrator</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_view_paste_code">Shkruani ose ngjitni një lidhje ftesë</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_view_allow_copy_category_title">Lejo marrësit të kopjojnë/ruajnë/ndajnë përmbajtjet tuaja</string>
+    <string name="settings_view_allow_copy_file_title">Çdo lloj skedari</string>
+    <string name="settings_view_allow_copy_text_title">Mesazhe tekst</string>
+    <string name="settings_view_application_notifications">Njoftimet e aplikacionit</string>
+    <string name="settings_view_audio_call_category_title">Thirrje zanore</string>
+    <string name="settings_view_audio_call_notification_ringtone_title">Emri i ziles</string>
+    <string name="settings_view_audio_call_notification_title">Zile</string>
+    <string name="settings_view_audio_call_vibration_title">Dridhje</string>
+    <string name="settings_view_authorization_title">Lejet</string>
+    <string name="settings_view_call_item_menu_all">Të gjitha thirrjet</string>
+    <string name="settings_view_chat_category_title">Mesazhet</string>
+    <string name="settings_view_chat_ringtone_title">Emri i tingullit</string>
+    <string name="settings_view_chat_title">Tingulli</string>
+    <string name="settings_view_chat_vibration_title">Dridhje</string>
+    <string name="settings_view_content_information">Rezolucioni i mediave të dërguara në një bisedë: definicioni i lartë kërkon më shumë të dhëna dhe, për rrjedhojë, më shumë kohë transmetimi.</string>
+    <string name="settings_view_content_title">Media</string>
+    <string name="settings_view_default_directory_title">Direktoria e parazgjedhur për ruajtjen e skedarëve</string>
+    <string name="settings_view_default_sound">Parazgjedhje</string>
+    <string name="settings_view_default_value_message">Këta parametra përdoren si parazgjedhje në nivel aplikacioni.</string>
+    <string name="settings_view_display_call_menu_missed">Vetëm thirrje të humbura</string>
+    <string name="settings_view_display_call_menu_none">Pa thirrje</string>
+    <string name="settings_view_display_call_none">Asnjë</string>
+    <string name="settings_view_display_call_title">Shfaq njoftimet e thirrjeve në biseda</string>
+    <string name="settings_view_display_notification_content_title">Shfaq përmbajtjen e mesazheve</string>
+    <string name="settings_view_display_notification_like_title">Reagimet ndaj mesazheve</string>
+    <string name="settings_view_display_notification_sender_title">Shfaq dërguesin e mesazhit</string>
+    <string name="settings_view_ephemeral_message">Fshi automatikisht mesazhet e dërguara</string>
+    <string name="settings_view_ephemeral_section_title">JETËGJATËSIA</string>
+    <string name="settings_view_ephemeral_title">Mesazh që zhduket</string>
+    <string name="settings_view_image_title">Foto</string>
+    <string name="settings_view_message_properties_title">Cilësitë e mesazhit</string>
+    <string name="settings_view_message_reactions_notification">Njoftim për reagimet e mesazheve</string>
+    <string name="settings_view_permissions_title">LEJET</string>
+    <string name="settings_view_reset_default_value">Rivendos te cilësimet e parazgjedhura</string>
+    <string name="settings_view_reset_preferences_button_title">Rivendos te parazgjedhjet</string>
+    <string name="settings_view_reset_preferences_message">Rivendos cilësimet e njoftimeve te parazgjedhjet e aplikacionit.</string>
+    <string name="settings_view_reset_preferences_title">Rivendos preferencat</string>
+    <string name="settings_view_silent_sound">Pa zë</string>
+    <string name="settings_view_show_location_on_map">Shfaq vendndodhjen në hartë</string>
+    <string name="settings_view_show_maps">Shfaq hartat</string>
+    <string name="settings_view_silent_mode">Modaliteti i heshtur</string>
+    <string name="settings_view_sound_enabled_title">NJOFTIME ME ZË</string>
+    <string name="settings_view_system_notifications_title">Njoftimet e sistemit</string>
+    <string name="settings_view_system_settings_title">Cilësimet e sistemit</string>
+    <string name="settings_view_turn_off_notification_sounds">Çaktivizo tingujt e njoftimeve</string>
+    <string name="settings_view_video_call_category_title">Thirrje video</string>
+    <string name="settings_view_video_call_notification_ringtone_title">Emri i ziles</string>
+    <string name="settings_view_video_call_notification_title">Zile</string>
+    <string name="settings_view_video_call_vibration_title">Dridhje</string>
+    <string name="settings_view_welcome_screen_category_title">MIRËSEVINI</string>
+    <string name="settings_view_welcome_screen_summary">Shfaq ekranet e mirëseardhjes</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_developer_settings">Cilësimet e zhvilluesit</string>
+    <string name="settings_advanced_view_status_connection_message">Kontrollo statusin e lidhjes suaj me shërbimin</string>
+    <string name="settings_advanced_view_status_connection_title">Statusi i lidhjes</string>
+    <string name="settings_advanced_view_telecom">THIRRJET</string>
+    <string name="settings_advanced_view_telecom_enable">\"Përvoja e thirrjeve në Android\"</string>
+    <string name="settings_advanced_view_telecom_information">Si parazgjedhje, aplikacioni nuk e integron përvojën e thirrjeve në Android, pasi kjo integrim mund të shkaktojë probleme me marrjen e thirrjeve në disa situata dhe në disa pajisje. Mund ta aktivizoni këtë integrim për menaxhim më të mirë të thirrjeve, nëse nuk po përjetoni këto probleme.</string>
+    <string name="settings_advanced_view_title">Cilësime të avancuara</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_view_allow_invite_as_personal_contact">Lejo pjesëmarrësit të ftojnë pjesëmarrës të tjerë si kontakte personale</string>
+    <string name="settings_room_view_allow_invite_contact">Lejo pjesëmarrësit të ftojnë kontaktet e tyre</string>
+    <string name="settings_room_view_conference_notifications_inform">Hyrja e parë/dalja e fundit</string>
+    <string name="settings_room_view_conference_notifications_noisy">Të gjitha hyrjet/daljet</string>
+    <string name="settings_room_view_conference_notifications_quiet">Pa zë</string>
+    <string name="settings_room_view_display_members">Shfaq anëtarët</string>
+    <string name="settings_room_view_room_type_channel">Kanal - vetëm një drejtim</string>
+    <string name="settings_room_view_room_type_channel_information">Vetëm administratorët/moderatorët mund të postojnë mesazhe</string>
+    <string name="settings_room_view_room_type_feedback">Kanal - me feedback</string>
+    <string name="settings_room_view_room_type_feedback_information">Feedback i pjesëmarrësve shihet vetëm nga administratorët/moderatorët</string>
+    <string name="settings_room_view_room_type_forum">Forum</string>
+    <string name="settings_room_view_room_type_forum_information">Pjesëmarrësit mund të postojnë mesazhe që i shohin të gjithë</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_allow_notifications">Lejo njoftime</string>
+    <string name="settings_space_view_allow_notifications_message">Njoftimet do të shfaqen vetëm kur ai Space është aktualisht aktiv.</string>
+    <string name="settings_space_view_default_message">Space-i parazgjedhur është Space-i i shfaqur në fillimin e aplikacionit.</string>
+    <string name="settings_space_view_default_value_message">Këto vlera zëvendësojnë ato të vendosura në cilësimet e parazgjedhura të aplikacionit.</string>
+    <string name="settings_space_view_default_value_title">Ndrysho cilësimet e parazgjedhura</string>
+    <string name="settings_space_view_header_message">Vlerat e këtyre parametrave zëvendësojnë, për këtë Space, vlerat e parazgjedhura të përcaktuara në nivel aplikacioni.</string>
+    <string name="settings_space_view_permission_create_contact">Krijo kontakt</string>
+    <string name="settings_space_view_permission_create_group">Krijo grup</string>
+    <string name="settings_space_view_permission_move_contact">Lëviz kontakt</string>
+    <string name="settings_space_view_permission_move_group">Lëviz grup</string>
+    <string name="settings_space_view_permission_share_space_card">Ndaj kodin e ftesës së Space-it</string>
+    <string name="settings_space_view_permission_update_identity">Përditëso profilin</string>
+    <string name="settings_space_view_permissions_title">Lejet</string>
+    <string name="settings_space_view_reset_application_value">Rivendos në cilësimet e parazgjedhura të aplikacionit</string>
+    <string name="settings_space_view_secret_message">Një Space sekret nuk shfaqet në listën e Space-ve. Mund të aksesohet vetëm duke shtypur emrin e saktë në shiritin e kërkimit. Emri i tij nuk mund të rikuperohet, prandaj mos e harroni!</string>
+    <string name="settings_space_view_secret_title">Space sekret</string>
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareActivity -->
+    <string name="share_view_contact_list">Kontaktet</string>
+    <string name="share_view_group_list">Grupet</string>
+    <string name="share_view_title">Ndaj</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_view_code">\"Klik-për-të-telefonuar\" kod</string>
+    <string name="show_call_view_conference_call_information">Ndajeni këtë lidhje për t’ju telefonuar ose për t’u bashkuar në një konferencë nga një shfletues.</string>
+    <string name="show_call_view_information_code">Ndajeni këtë kod për të marrë thirrje të jashtme.</string>
+    <string name="show_call_view_meeting_organizer">Organizatori i këtij takimi</string>
+    <string name="show_call_view_schedule_call">Thirrje e planifikuar</string>
+    <string name="show_call_view_schedule_from">nga %1$s</string>
+    <string name="show_call_view_schedule_from_to">%1$s nga %2$s deri %3$s</string>
+    <string name="show_call_view_schedule_message">Thirrja është planifikuar për një datë dhe orë të përcaktuar diku tjetër.</string>
+    <string name="show_call_view_schedule_to">për %1$s</string>
+    <string name="show_call_view_settings_call">Lloji i thirrjes</string>
+    <string name="show_call_view_settings_end">Fundi</string>
+    <string name="show_call_view_settings_group_calls">Thirrje në grup</string>
+    <string name="show_call_view_settings_limited">E planifikuar</string>
+    <string name="show_call_view_settings_start">Fillimi</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_view_audio">Zë</string>
+    <string name="show_contact_view_chat">Bisedë</string>
+    <string name="show_contact_view_cleanup">Pastrimi</string>
+    <string name="show_contact_view_export_contents">Eksporto përmbajtjen</string>
+    <string name="show_contact_view_history_title">Historia</string>
+    <string name="show_contact_view_identity_title">Më njeh si</string>
+    <string name="show_contact_view_last_calls">Thirrjet e fundit</string>
+    <string name="show_contact_view_pending">Në pritje</string>
+    <string name="show_contact_view_pending_message">Kjo marrëdhënie po krijohet. Ju lutemi prisni.</string>
+    <string name="show_contact_view_revoked">E fshirë</string>
+    <string name="show_contact_view_settings_coach_mark">Përcaktoni çfarë i lejohet kontaktit tuaj të bëjë në këtë marrëdhënie me ju.</string>
+    <string name="show_contact_view_space">Space:</string>
+    <string name="show_contact_view_video">Video</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_view_add_member">Shto një anëtar</string>
+    <string name="show_group_view_invitation_list">Ftesa në pritje: %1$d</string>
+    <string name="show_group_view_leave">Largohu nga grupi</string>
+    <string name="show_group_view_leave_confirm_message">A jeni i sigurt që dëshironi të largoheni nga ky grup?</string>
+    <string name="show_group_view_leave_message">Do të largoheni nga ky grup dhe nuk do të mund të aksesoni më bisedat e tij.</string>
+    <string name="show_group_view_member_list">Lista e anëtarëve (%1$d)</string>
+    <string name="show_group_view_remove_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë grup?</string>
+    <string name="show_group_view_remove_message">Ky grup do të fshihet për të gjithë anëtarët e tij dhe bisedat e tij do të fshihen.</string>
+    <string name="show_group_view_title">Grupi</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_view_admin_title">Ndërfaqe administrimi</string>
+    <string name="show_room_view_invite_participants">Fto pjesëmarrës</string>
+    <string name="show_room_view_room_title">Dhoma</string>
+
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_view_management">Menaxhimi</string>
+    <string name="show_space_view_move_message">Duhet të keni disa Space-e për të lëvizur kontaktet.</string>
+    <string name="show_space_view_secret_confirm">Konfirmoni modalitetin \"Secret\"</string>
+    <string name="show_space_view_secret_disabled_message">Ky Space i vetëm nuk mund të përcaktohet si \"sekret\". Duhet të krijoni të paktën një \"Space\" tjetër.</string>
+    <string name="show_space_view_secret_message">Space-et sekrete nuk shfaqen në listën e Space-ve dhe mund të hapen vetëm duke shtypur emrin e tyre në shiritin e kërkimit. Mos e harroni kurrë atë emër!</string>
+    <string name="show_space_view_secret_message_confirm">A doni ende ta bëni këtë Space \"Secret\"?</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_view_background_image_title">Imazh</string>
+    <string name="space_appearance_view_background_message">Personalizoni sfondin e bisedave me një ngjyrë ose imazh.</string>
+    <string name="space_appearance_view_background_text_title">Tekst</string>
+    <string name="space_appearance_view_background_title">Sfondi</string>
+    <string name="space_appearance_view_container_background_message">Sfondi i mesazheve të dërguara</string>
+    <string name="space_appearance_view_container_background_peer_message">Sfondi i mesazheve të marra</string>
+    <string name="space_appearance_view_container_border_message">Korniza e mesazheve të dërguara</string>
+    <string name="space_appearance_view_container_border_peer_message">Korniza e mesazheve të marra</string>
+    <string name="space_appearance_view_container_text_message">Teksti i mesazheve të dërguara</string>
+    <string name="space_appearance_view_container_text_peer_message">Teksti i mesazheve të marra</string>
+    <string name="space_appearance_view_container_title">Flluskat</string>
+    <string name="space_appearance_view_default_value">Vlera e parazgjedhur</string>
+    <string name="space_appearance_view_general_title">Të përgjithshme</string>
+    <string name="space_appearance_view_menu_choose_color">Ngjyrat e parazgjedhura</string>
+    <string name="space_appearance_view_menu_enter_color">Kodi i ngjyrës</string>
+    <string name="space_appearance_view_opacity">Opaciteti</string>
+    <string name="space_appearance_view_preview_message">I harrova këpucët e baletit… A mund t’i sjellësh me vete, të lutem?😘</string>
+    <string name="space_appearance_view_preview_peer_message">Përshëndetje zemër!</string>
+    <string name="space_appearance_view_preview_title">Parapamje</string>
+    <string name="space_appearance_view_theme">Tema</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_view_active_space">Space aktiv</string>
+    <string name="spaces_view_add_space">Shto një Space</string>
+    <string name="spaces_view_create_new_space">Krijo një Space</string>
+    <string name="spaces_view_current_space_action">Aktivizo</string>
+    <string name="spaces_view_delete_default_message">Nuk mund ta fshini Space-in e parazgjedhur.</string>
+    <string name="spaces_view_join_space">Importo një Space</string>
+    <string name="spaces_view_message">Një Hapësirë është vendi ku personalitetet tuaja të ndryshme takojnë rrethet tuaja të shumta shoqërore, përfshirë edhe më sekretet.</string>
+    <string name="spaces_view_move_contact_already_in_space">Kontakti është tashmë në këtë Space.</string>
+    <string name="spaces_view_move_group_already_in_space">Grupi është tashmë në këtë Space.</string>
+    <string name="spaces_view_move_group_no_profile">Për të lëvizur një grup në një Space, duhet të plotësoni profilin që ju përfaqëson për atë grup. A dëshironi ta plotësoni?</string>
+    <string name="spaces_view_move_message">A jeni i sigurt që dëshironi ta lëvizni grupin?</string>
+    <string name="spaces_view_permission_not_allowed">Nuk ju lejohet ta kryeni këtë veprim nga administratori i Space-it.</string>
+    <string name="spaces_view_sample_business">Biznes</string>
+    <string name="spaces_view_sample_business_name">Dr. John Doe</string>
+    <string name="spaces_view_sample_family">Familja</string>
+    <string name="spaces_view_sample_family_name">Babi</string>
+    <string name="spaces_view_sample_friends">Miq</string>
+    <string name="spaces_view_sample_friends_name">Johny</string>
+    <string name="spaces_view_title">Hapësirat</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_view_error_message">Ndodhi një gabim. Ju lutemi provoni përsëri.</string>
+    <string name="streaming_audio_view_no_music_message">Ju lutemi transferoni skedarët muzikorë në pajisjen tuaj.</string>
+    <string name="streaming_audio_view_no_music_title">Nuk u gjet muzikë 🙁</string>
+    <string name="streaming_audio_view_title">Ndarje media</string>
+    <string name="streaming_audio_view_unsupported_message">Ky format audio nuk mbështetet nga pajisja e %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_view_template_classified_ad">Shpallje</string>
+    <string name="template_click_to_call_view_template_classified_ad_description">Vendosni një lidhje në një shpallje që u lejon blerësve potencialë t’ju telefonojnë pa instaluar aplikacionin.</string>
+    <string name="template_click_to_call_view_template_classified_ad_placeholder">Shpallje</string>
+    <string name="template_click_to_call_view_template_default_description">Personalizoni një lidhje thirrjeje sipas nevojës.</string>
+    <string name="template_click_to_call_view_template_help">Shërbimi ndaj klientit</string>
+    <string name="template_click_to_call_view_template_help_description">Lidhje për të telefonuar shërbimin tuaj ndaj klientit nga një shfletues.</string>
+    <string name="template_click_to_call_view_template_help_placeholder">Shërbimi ndaj klientit</string>
+    <string name="template_click_to_call_view_template_job">Intervistë pune</string>
+    <string name="template_click_to_call_view_template_job_description">Lidhje që u lejon rekrutuesve të interesuar t’ju telefonojnë për një intervistë.</string>
+    <string name="template_click_to_call_view_template_job_placeholder">Intervistë pune</string>
+    <string name="template_click_to_call_view_template_meeting">Takim</string>
+    <string name="template_click_to_call_view_template_meeting_description">Ndani një lidhje për t’u bashkuar në një konferencë nga një shfletues.</string>
+    <string name="template_click_to_call_view_template_meeting_placeholder">Takim</string>
+    <string name="template_click_to_call_view_template_profile_description">Link për t’ju telefonuar pa instaluar aplikacionin.</string>
+    <string name="template_click_to_call_view_template_video_bell">Zile dere me video</string>
+    <string name="template_click_to_call_view_template_video_bell_description">Lejo shoferin e dërgesës t’ju telefonojë për udhëzime.</string>
+    <string name="template_click_to_call_view_template_video_bell_placeholder">Zile dere</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_view_template_business_placeholder">Emri (Dr John Doe, Ms Smith,…)</string>
+    <string name="template_space_view_template_business_profile">Ms Samantha Smith</string>
+    <string name="template_space_view_template_family_placeholder">Emri (Babi, Mami,…)</string>
+    <string name="template_space_view_template_family_profile">Mami</string>
+    <string name="template_space_view_template_friends_placeholder">Emri (Johny, Sam,…)</string>
+    <string name="template_space_view_template_friends_profile">Sam</string>
+    <string name="template_space_view_template_other">Tjetër</string>
+    <string name="template_space_view_template_other_placeholder">Emri (Babi, Mami, Johny, Dr John Doe,…)</string>
+    <string name="template_space_view_template_title">Modele</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_view_delete_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë kod \"Transferimi i thirrjes\"?</string>
+    <string name="transfert_call_view_delete_message">Kjo lidhje e transferimit të thirrjes do të fshihet. Të konfirmohet?</string>
+    <string name="transfert_call_view_gallery_message">Skanoni këtë QR-Code për të transferuar thirrjet tuaja celulare.</string>
+    <string name="transfert_call_view_message">Përcillni këtë kod dhe ruani URL-në e tij te të preferuarat në shfletuesin ku dëshironi të transferoni thirrjet tuaja celulare.</string>
+    <string name="transfert_call_view_reset_message">Ky veprim e pavlefshmëron kodin aktual të transferimit të thirrjes dhe krijon një të ri. Të konfirmohet?</string>
+    <string name="transfert_call_view_saved_message">Kodi i transferimit të thirrjes u ruajt në galerinë e fotove.</string>
+    <string name="transfert_call_view_share">Transfero</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_view_message">Kërkojini mikut tuaj pranë jush të skanojë QR-kodin e ftesës suaj me skred, ose prekni kodin e ftesës për ta kopjuar në kujtesën e përkohshme.</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_view_update_available">Përditësim i disponueshëm</string>
+    <string name="update_app_view_update_message">Përditësimi më i fundit i aplikacionit përfshiu sa vijon:</string>
+    <string name="update_app_view_update_title">Përditëso tani</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_view_calling">Duke thirrur video…</string>
+    <string name="video_call_view_cannot_call">Nuk mund të kryhet një thirrje video</string>
+    <string name="video_call_view_connecting">Duke u lidhur…</string>
+    <string name="video_call_view_hangup_confirmation">Dëshironi ta mbyllni thirrjen?</string>
+    <string name="video_call_view_terminate">Thirrja u ndërpre</string>
+    <string name="video_call_view_terminate_busy">Thirrja u ndërpre: &lt;b&gt;%1$s&lt;/b&gt; është i zënë</string>
+    <string name="video_call_view_terminate_cancel">Thirrja u anulua nga &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_connectivity_error">Thirrja u shkëput për shkak të një problemi lidhjeje. Ju lutemi kontrolloni lidhjen tuaj të internetit.</string>
+    <string name="video_call_view_terminate_decline">Thirrja u refuzua nga &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_disconnected">Thirrja u shkëput për shkak të një gabimi rrjeti. Ju lutemi provoni përsëri.</string>
+    <string name="video_call_view_terminate_gone">Thirrja u ndërpre: &lt;b&gt;%1$s&lt;/b&gt; është jashtë linje</string>
+    <string name="video_call_view_terminate_revoked">Thirrja përfundoi: &lt;b&gt;%1$s&lt;/b&gt; e ka fshirë këtë marrëdhënie me ju.</string>
+    <string name="video_call_view_terminate_success">Thirrja u ndërpre nga &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_timeout">Thirrja u ndërpre: &lt;b&gt;%1$s&lt;/b&gt; nuk përgjigjet</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_view_accept">Duke shtypur %1$s, konfirmoj që kam lexuar dhe pranoj:</string>
+    <string name="welcome_view_enter">Tjetra</string>
+    <string name="welcome_view_pass">Anashkalo</string>
+    <string name="welcome_view_privacy_policy">Politika e privatësisë</string>
+    <string name="welcome_view_privacy_policy_url">https://skred.mobi/privacy</string>
+    <string name="welcome_view_start">Fillo</string>
+    <string name="welcome_view_step1_message">Mesazhe &amp; thirrje zanore/video me definicion të lartë, që mbrojnë privatësinë që në projektim.</string>
+    <string name="welcome_view_step2_message">Komunikime të sigurta \"peer-to-peer\": pa gjurmë në cloud.</string>
+    <string name="welcome_view_step3_message">Pa numër telefoni, pa libër adresash, pa user-id: ju zgjidhni si dëshironi të identifikoheni bazuar në atë me kë po komunikoni.</string>
+    <string name="welcome_view_terms_of_use">Kushtet e përdorimit</string>
+    <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
+
+
+</resources>

@@ -1,43 +1,43 @@
 [versions]
 # Dependencies
 androidxCore = "1.16.0" # 1.17.0+ requires SDK 36
-annotation = "1.9.1"
+annotation = "1.10.0"
 appcompat = "1.7.1"
 billing = "7.0.0" # careful testing needed to update this
 browser = "1.8.0" # 1.9.0+ requires SDK 36
-collection = "1.5.0"
+collection = "1.6.0"
 constraintlayout = "2.2.1"
 coreSplashscreen = "1.2.0"
+documentfile = "1.1.0"
 exifinterface = "1.4.2"
 firebaseMessaging = "23.2.1" # careful testing needed to update this
-glide = "5.0.5"
+glide = "5.0.7"
 installreferrer = "2.2"
 lottie = "6.7.1"
 media = "1.7.1"
 material = "1.13.0"
-media3 = "1.8.0"
+media3 = "1.9.3" # 1.10.0+ requires SDK 36
 percentlayout = "1.0.0"
-playServicesMaps = "19.2.0"
+playServicesMaps = "20.0.0"
 playServicesLocation = "21.3.0"
 recyclerview = "1.4.0"
 sharetarget = "1.2.0"
-zip4j = "2.11.5"
+zip4j = "2.11.6"
 
 # Tests
-androidTestCore = "1.9.0"
+androidTestCore = "2.0.1"
 junit = "1.3.0"
-junitJupiter = "6.0.1"
+junitJupiter = "6.0.3"
 testCore = "1.7.0"
 
 # SDK
 compile-sdk-version = "android-35"
-min-sdk-version = "21"
+min-sdk-version = "23"
 target-sdk-version = "35"
 
 # Plugins / Build
-androidGradlePlugin = "8.13.2"
-androidJunit5 = "1.14.0.0"
-androidKotlinPlugin = "2.2.21"
+androidGradlePlugin = "9.2.1"
+androidJunit5 = "2.0.1"
 desugarJdkLibs = "2.1.5"
 leakcanaryAndroid = "2.14"
 
@@ -47,6 +47,7 @@ android-test-runner = { module = "de.mannodermaus.junit5:android-test-runner", v
 androidx-core = { module = "androidx.core:core", version.ref = "androidxCore" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
+androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "testCore" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "testCore" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
@@ -87,4 +88,3 @@ zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j" }
 
 [plugins]
 android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "androidKotlinPlugin" }

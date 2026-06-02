@@ -94,22 +94,22 @@ public class NotificationSpaceAdapter extends RecyclerView.Adapter<RecyclerView.
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             switch (position) {
                 case SECTION_INFO:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_activity_header_message), false);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_view_header_message), false);
                     break;
 
                 case POSITION_ALLOW_NOTIFICATIONS_INFO:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_activity_allow_notifications_message), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_view_allow_notifications_message), true);
                     break;
                 default:
                     break;
             }
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_fragment_title), false);
+            sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_view_title), false);
         } else if (viewType == CHECKBOX) {
             SettingSpaceViewHolder settingsViewHolder = (SettingSpaceViewHolder) viewHolder;
             String spaceSettingProperty = SpaceSettingProperty.PROPERTY_DISPLAY_NOTIFICATIONS;
-            String title = mListActivity.getString(R.string.settings_space_activity_allow_notifications);
+            String title = mListActivity.getString(R.string.settings_space_view_allow_notifications);
             boolean value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DISPLAY_NOTIFICATIONS, true);
 
             settingsViewHolder.onBind(spaceSettingProperty, title, value, true);

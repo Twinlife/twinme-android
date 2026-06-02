@@ -198,7 +198,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         MenuItem menuItem = menu.findItem(R.id.add_action);
 
         TextView titleView = (TextView) menuItem.getActionView();
-        String title = menuItem.getTitle().toString();
+        String title = String.valueOf(menuItem.getTitle());
 
         if (titleView != null) {
             Design.updateTextFont(titleView, Design.FONT_BOLD36);
@@ -294,7 +294,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
         setToolBar(R.id.add_call_participant_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.add_call_participant_activity_title));
+        setTitle(getString(R.string.add_call_participant_view_title));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.add_call_participant_activity_layout, R.id.add_call_participant_activity_tool_bar, R.id.add_call_participant_activity_list_view, Design.TOOLBAR_COLOR, false);
@@ -576,7 +576,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
                 int countParticipants = mParticipantsUUID.size() + contactsId.size() + 1;
 
                 if (countParticipants >= mMaxMemberCount && mMaxMemberCount != 0) {
-                    showAlertMessageView(R.id.add_call_participant_activity_layout, getString(R.string.deleted_account_activity_warning), String.format(getString(R.string.call_activity_max_participant_message), mMaxMemberCount), false, null);
+                    showAlertMessageView(R.id.add_call_participant_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), mMaxMemberCount), false, null);
 
                     return false;
                 }

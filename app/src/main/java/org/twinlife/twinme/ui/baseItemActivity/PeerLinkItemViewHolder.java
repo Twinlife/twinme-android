@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022-2025 twinlife SA.
+ *  Copyright (c) 2022-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -123,6 +123,15 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
         mTextView.setTypeface(getMessageFont().typeface);
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getMessageFont().size);
         mTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mTextView.setMaxWidth(BaseItemViewHolder.MESSAGE_MAX_WIDTH);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.leftMargin = Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT;
+        } else {
+            marginLayoutParams.leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+        }
+        mTextView.setLayoutParams(marginLayoutParams);
 
         mGradientDrawable = new GradientDrawable();
         mGradientDrawable.mutate();
@@ -255,7 +264,7 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
 
         // Use an async loader to get url metatda.
         if (mLinkLoader == null) {
-            mLinkLoader = new LinkLoader<>(item, objectDescriptor);
+            mLinkLoader = new LinkLoader<>(getBaseItemActivity().getTwinmeContext(), peerLinkItem, objectDescriptor);
             addLoader(mLinkLoader);
         }
 
@@ -373,7 +382,7 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_peer_link_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case NAMED_FILE_DESCRIPTOR:
@@ -409,6 +418,17 @@ class PeerLinkItemViewHolder extends PeerItemViewHolder {
             if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
                 mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
             }
+        }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTextView.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mTextView.setLayoutParams(marginLayoutParams);
         }
     }
 

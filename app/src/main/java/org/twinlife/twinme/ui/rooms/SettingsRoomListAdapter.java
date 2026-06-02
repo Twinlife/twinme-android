@@ -110,19 +110,19 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             switch (position) {
                 case SECTION_PARTCIPANTS:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.room_members_activity_participants_title), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.room_members_view_participants_title), false);
                     break;
 
                 case SECTION_CHAT:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.conversations_fragment_title), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.conversations_view_title), false);
                     break;
 
                 case SECTION_CALLS:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.calls_fragment_title), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.calls_view_title), false);
                     break;
 
                 case SECTION_NOTIFICATIONS:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_fragment_title), false);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.notifications_view_title), false);
                     break;
 
                 default:
@@ -139,15 +139,15 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
             int callMode = mListActivity.getCallMode().ordinal();
 
             if (position == POSITION_ALLOW_INVITATION) {
-                title = mListActivity.getString(R.string.settings_room_activity_allow_invite_contact);
+                title = mListActivity.getString(R.string.settings_room_view_allow_invite_contact);
                 switchTag = SettingsRoomActivity.ALLOW_INVITATION_SWITCH;
                 isSelected = invitationMode != RoomConfig.InvitationMode.INVITE_ADMIN.ordinal();
             } else if (position == POSITION_VOICE_CALL) {
-                title = mListActivity.getString(R.string.conversation_activity_audio_call);
+                title = mListActivity.getString(R.string.conversation_view_audio_call);
                 switchTag = SettingsRoomActivity.VOICE_CALL_SWITCH;
                 isSelected = callMode == RoomConfig.CallMode.CALL_VIDEO.ordinal() || callMode == RoomConfig.CallMode.CALL_AUDIO.ordinal();
             } else if (position == POSITION_VIDEO_CALL) {
-                title = mListActivity.getString(R.string.conversation_activity_video_call);
+                title = mListActivity.getString(R.string.conversation_view_video_call);
                 switchTag = SettingsRoomActivity.VIDEO_CALL_SWITCH;
                 isSelected = callMode == RoomConfig.CallMode.CALL_VIDEO.ordinal();
             }
@@ -164,37 +164,37 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             switch (position) {
                 case POSITION_CHAT_CHANNEL:
-                    title = mListActivity.getString(R.string.settings_room_activity_room_type_channel);
+                    title = mListActivity.getString(R.string.settings_room_view_room_type_channel);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnSettingsClickListener.onSelectChatMode(RoomConfig.ChatMode.CHAT_CHANNEL));
                     isSelected = chatMode == RoomConfig.ChatMode.CHAT_CHANNEL.ordinal();
                     break;
 
                 case POSITION_CHAT_FEEDBACK:
-                    title = mListActivity.getString(R.string.settings_room_activity_room_type_feedback);
+                    title = mListActivity.getString(R.string.settings_room_view_room_type_feedback);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnSettingsClickListener.onSelectChatMode(RoomConfig.ChatMode.CHAT_FEEDBACK));
                     isSelected = chatMode == RoomConfig.ChatMode.CHAT_FEEDBACK.ordinal();
                     break;
 
                 case POSITION_CHAT_FORUM:
-                    title = mListActivity.getString(R.string.settings_room_activity_room_type_forum);
+                    title = mListActivity.getString(R.string.settings_room_view_room_type_forum);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnSettingsClickListener.onSelectChatMode(RoomConfig.ChatMode.CHAT_PUBLIC));
                     isSelected = chatMode == RoomConfig.ChatMode.CHAT_PUBLIC.ordinal();
                     break;
 
                 case POSITION_NOTIFICATIONS_INFORM:
-                    title = mListActivity.getString(R.string.settings_room_activity_conference_notifications_inform);
+                    title = mListActivity.getString(R.string.settings_room_view_conference_notifications_inform);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnSettingsClickListener.onSelectNotificationMode(RoomConfig.NotificationMode.INFORM));
                     isSelected = notificationMode == RoomConfig.NotificationMode.INFORM.ordinal();
                     break;
 
                 case POSITION_NOTIFICATIONS_QUIET:
-                    title = mListActivity.getString(R.string.settings_room_activity_conference_notifications_quiet);
+                    title = mListActivity.getString(R.string.settings_room_view_conference_notifications_quiet);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnSettingsClickListener.onSelectNotificationMode(RoomConfig.NotificationMode.QUIET));
                     isSelected = notificationMode == RoomConfig.NotificationMode.QUIET.ordinal();
                     break;
 
                 case POSITION_NOTIFICATIONS_NOISY:
-                    title = mListActivity.getString(R.string.settings_room_activity_conference_notifications_noisy);
+                    title = mListActivity.getString(R.string.settings_room_view_conference_notifications_noisy);
                     personalizationViewHolder.itemView.setOnClickListener(view -> mOnSettingsClickListener.onSelectNotificationMode(RoomConfig.NotificationMode.NOISY));
                     isSelected = notificationMode == RoomConfig.NotificationMode.NOISY.ordinal();
                     break;
@@ -208,11 +208,11 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
             if (position == POSITION_CHAT_INFORMATION) {
                 int chatMode = mListActivity.getChatMode().ordinal();
                 if (chatMode == RoomConfig.ChatMode.CHAT_CHANNEL.ordinal()) {
-                    information = mListActivity.getString(R.string.settings_room_activity_room_type_channel_information);
+                    information = mListActivity.getString(R.string.settings_room_view_room_type_channel_information);
                 } else if (chatMode == RoomConfig.ChatMode.CHAT_FEEDBACK.ordinal()) {
-                    information = mListActivity.getString(R.string.settings_room_activity_room_type_feedback_information);
+                    information = mListActivity.getString(R.string.settings_room_view_room_type_feedback_information);
                 } else if (chatMode == RoomConfig.ChatMode.CHAT_PUBLIC.ordinal()) {
-                    information = mListActivity.getString(R.string.settings_room_activity_room_type_forum_information);
+                    information = mListActivity.getString(R.string.settings_room_view_room_type_forum_information);
                 }
             }
             informationViewHolder.onBind(information, false);

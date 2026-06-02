@@ -160,9 +160,9 @@ public class UITemplateExternalCall extends UITemplateItem {
 
         switch (mTemplateType) {
             case CLASSIFIED_AD:
-                mName = context.getString(R.string.template_click_to_call_activity_template_classified_ad);
-                mPlaceholder = context.getString(R.string.template_click_to_call_activity_template_classified_ad_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_classified_ad_description);
+                mName = context.getString(R.string.template_click_to_call_view_template_classified_ad);
+                mPlaceholder = context.getString(R.string.template_click_to_call_view_template_classified_ad_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_classified_ad_description);
                 mAvatarId = R.drawable.click_to_call_sample_classified_ad;
                 mAvatarUrl = "https://twin.me/download/click_to_call_sample_classified_ad_2026.jpg";
                 mTypeCall = ConfigExternalCallTypeCall.CALL_DIRECT;
@@ -176,9 +176,9 @@ public class UITemplateExternalCall extends UITemplateItem {
                 break;
 
             case HELP:
-                mName = context.getString(R.string.template_click_to_call_activity_template_help);
-                mPlaceholder = context.getString(R.string.template_click_to_call_activity_template_help_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_help_description);
+                mName = context.getString(R.string.template_click_to_call_view_template_help);
+                mPlaceholder = context.getString(R.string.template_click_to_call_view_template_help_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_help_description);
                 mAvatarId = R.drawable.click_to_call_sample_help;
                 mAvatarUrl = "https://twin.me/download/click_to_call_sample_help_2026.jpg";
                 mTypeCall = ConfigExternalCallTypeCall.CALL_DIRECT;
@@ -198,9 +198,9 @@ public class UITemplateExternalCall extends UITemplateItem {
                 break;
 
             case JOB:
-                mName = context.getString(R.string.template_click_to_call_activity_template_job);
-                mPlaceholder = context.getString(R.string.template_click_to_call_activity_template_job_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_help_description);
+                mName = context.getString(R.string.template_click_to_call_view_template_job);
+                mPlaceholder = context.getString(R.string.template_click_to_call_view_template_job_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_help_description);
                 mAvatarId = R.drawable.click_to_call_sample_job;
                 mAvatarUrl = "https://twin.me/download/click_to_call_sample_job_2026.jpg";
                 mTypeCall = ConfigExternalCallTypeCall.CALL_DIRECT;
@@ -215,9 +215,9 @@ public class UITemplateExternalCall extends UITemplateItem {
                 break;
 
             case MEETING:
-                mName = context.getString(R.string.template_click_to_call_activity_template_meeting);
-                mPlaceholder = context.getString(R.string.template_click_to_call_activity_template_meeting_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_meeting_description);
+                mName = context.getString(R.string.template_click_to_call_view_template_meeting);
+                mPlaceholder = context.getString(R.string.template_click_to_call_view_template_meeting_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_meeting_description);
                 mAvatarId = R.drawable.click_to_call_sample_meeting;
                 mAvatarUrl = "https://twin.me/download/click_to_call_sample_meeting_2026.jpg";
                 mTypeCall = ConfigExternalCallTypeCall.CALL_CONFERENCE;
@@ -231,9 +231,9 @@ public class UITemplateExternalCall extends UITemplateItem {
                 break;
 
             case VIDEO_BELL:
-                mName = context.getString(R.string.template_click_to_call_activity_template_video_bell);
-                mPlaceholder = context.getString(R.string.template_click_to_call_activity_template_video_bell_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_video_bell_description);
+                mName = context.getString(R.string.template_click_to_call_view_template_video_bell);
+                mPlaceholder = context.getString(R.string.template_click_to_call_view_template_video_bell_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_video_bell_description);
                 mAvatarId = R.drawable.click_to_call_sample_video_bell;
                 mAvatarUrl = "https://twin.me/download/click_to_call_sample_video_bell.jpg";
                 mTypeCall = ConfigExternalCallTypeCall.CALL_DIRECT;
@@ -247,9 +247,9 @@ public class UITemplateExternalCall extends UITemplateItem {
                 break;
 
             case PROFILE:
-                mName = context.getString(R.string.premium_services_activity_click_to_call_title);
-                mPlaceholder = context.getString(R.string.create_external_call_activity_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_profile_description);
+                mName = context.getString(R.string.premium_services_view_click_to_call_title);
+                mPlaceholder = context.getString(R.string.create_external_call_view_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_profile_description);
                 mAvatarId = -1;
                 mAvatarUrl = null;
                 mTypeCall = ConfigExternalCallTypeCall.CALL_DIRECT;
@@ -263,9 +263,9 @@ public class UITemplateExternalCall extends UITemplateItem {
                 break;
 
             case OTHER:
-                mName = context.getString(R.string.premium_services_activity_click_to_call_title);
-                mPlaceholder = context.getString(R.string.create_external_call_activity_placeholder);
-                mMessage = context.getString(R.string.template_click_to_call_activity_template_default_description);
+                mName = context.getString(R.string.premium_services_view_click_to_call_title);
+                mPlaceholder = context.getString(R.string.create_external_call_view_placeholder);
+                mMessage = context.getString(R.string.template_click_to_call_view_template_default_description);
                 mAvatarId = -1;
                 mAvatarUrl = null;
                 mTypeCall = ConfigExternalCallTypeCall.CALL_DIRECT;

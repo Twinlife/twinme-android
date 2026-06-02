@@ -50,6 +50,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.AbstractScannerActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.util.TwinmeAttributes;
@@ -182,7 +183,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         updateQRCode();
 
         if (mAccountMigrationScannerService != null && !mAccountMigrationScannerService.isConnected()) {
-            showNetworkDisconnect(R.string.account_activity_migration_title, this::finish);
+            showNetworkDisconnect(R.string.account_view_migration_title, this::finish);
         }
     }
 
@@ -228,7 +229,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -298,7 +299,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "onGetTwincodeNotFound");
         }
 
-        incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
+        incorrectQRCode(getString(R.string.capture_view_incorrect_qrcode));
     }
 
     @Override
@@ -307,7 +308,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "onGetTwincodeExpired");
         }
 
-        incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
+        incorrectQRCode(getString(R.string.capture_view_incorrect_qrcode));
     }
 
     @Override
@@ -342,7 +343,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.account_activity_migration_title));
+        setTitle(getString(R.string.account_view_migration_title));
 
         applyInsets(R.id.account_migration_scanner_activity_layout, R.id.account_migration_scanner_activity_tool_bar, R.id.account_migration_scanner_activity_content_view, Design.TOOLBAR_COLOR, false);
 
@@ -469,12 +470,12 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             mQrcodeContainerView.setVisibility(View.GONE);
             mQRCodeView.setVisibility(View.INVISIBLE);
             mCameraView.setVisibility(View.VISIBLE);
-            mInfoTextView.setText(getString(R.string.account_migration_scanner_activity_migration_start_from_current_device_message));
+            mInfoTextView.setText(getString(R.string.account_migration_scanner_view_migration_start_from_current_device_message));
         } else {
             mQrcodeContainerView.setVisibility(View.VISIBLE);
             mQRCodeView.setVisibility(View.VISIBLE);
             mCameraView.setVisibility(View.GONE);
-            mInfoTextView.setText(getString(R.string.account_migration_scanner_activity_migration_start_from_another_device_message));
+            mInfoTextView.setText(getString(R.string.account_migration_scanner_view_migration_start_from_another_device_message));
         }
     }
 
@@ -502,10 +503,10 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
                 mAccountMigrationScannerService.getTwincodeOutbound(twincodeURI.twincodeId);
             } else {
                 // The QR-code is correct but corresponds to an invitation or a call.
-                incorrectQRCode(getLinkError(errorCode, R.string.capture_activity_incorrect_qrcode));
+                incorrectQRCode(getLinkError(errorCode, R.string.capture_view_incorrect_qrcode));
             }
         } else {
-            incorrectQRCode(getLinkError(errorCode, R.string.capture_activity_incorrect_qrcode));
+            incorrectQRCode(getLinkError(errorCode, R.string.capture_view_incorrect_qrcode));
         }
     }
 
@@ -515,7 +516,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(R.string.deleted_account_activity_warning), message, false, this::finish);
+        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -533,7 +534,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         } else {
             mInfoScanView.setVisibility(View.GONE);
             mMessageView.setVisibility(View.VISIBLE);
-            mMessageView.setText(getResources().getString(R.string.capture_activity_no_camera));
+            mMessageView.setText(getResources().getString(R.string.capture_view_no_camera));
         }
     }
 
@@ -583,15 +584,15 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.e(LOG_TAG, "AccountMigration is stopped because the peer device is old!");
             String message;
             if (peerVersion.first.major < supportedVersion.major) {
-                message = getString(R.string.account_migration_scanner_activity_message_older_version_target);
+                message = getString(R.string.account_migration_scanner_view_message_older_version_target);
             } else {
-                message = getString(R.string.account_migration_scanner_activity_message_older_version);
+                message = getString(R.string.account_migration_scanner_view_message_older_version);
             }
 
             ViewGroup viewGroup = findViewById(R.id.account_migration_scanner_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
+            defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
             defaultConfirmView.setMessage(message);
 
             boolean darkMode = false;
@@ -602,7 +603,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             }
 
             defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
-            defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_activity_start));
+            defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_view_start));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -688,7 +689,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         ViewGroup viewGroup = findViewById(R.id.account_migration_scanner_activity_layout);
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        onboardingConfirmView.setTitle(getString(R.string.account_activity_migration_title));
+        onboardingConfirmView.setTitle(getString(R.string.account_view_migration_title));
 
         boolean darkMode = false;
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -698,7 +699,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         }
 
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
-        onboardingConfirmView.setMessage(getString(R.string.account_activity_migration_message));
+        onboardingConfirmView.setMessage(getString(R.string.account_view_migration_message));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 

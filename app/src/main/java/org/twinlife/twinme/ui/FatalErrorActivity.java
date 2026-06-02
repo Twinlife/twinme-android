@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2020 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -65,16 +65,19 @@ public class FatalErrorActivity extends Activity {
                 mCustomMessage = true;
                 mMessage = application.getString(R.string.application_migration_no_storage_space);
             } else {
-                mMessage = application.getString(TwinmeApplicationImpl.errorToMessageId(ErrorCode.valueOf(value)));
-
-                if (mMessage.equals(application.getString(R.string.fatal_error_activity_error_code_message))) {
+                int code = TwinmeApplicationImpl.errorToMessageId(ErrorCode.valueOf(value));
+                if (code == R.string.application_operation_failure) {
+                    code = R.string.fatal_error_view_error_code_message;
+                }
+                mMessage = application.getString(code);
+                if (code == R.string.fatal_error_view_error_code_message) {
                     mCustomMessage = true;
                     mMessage = String.format(mMessage, errorCode.ordinal());
                 }
             }
         } else {
             mCustomMessage = true;
-            mMessage = String.format(application.getString(R.string.fatal_error_activity_error_code_message), ErrorCode.LIBRARY_ERROR.ordinal());
+            mMessage = String.format(application.getString(R.string.fatal_error_view_error_code_message), ErrorCode.LIBRARY_ERROR.ordinal());
         }
 
         //TODO BPK: handle ACCOUNT_RESTORED error (and RESTORE_IN_PROGRESS?)
@@ -119,7 +122,7 @@ public class FatalErrorActivity extends Activity {
         if (mCustomMessage) {
             messageView.setText(mMessage);
         } else {
-            messageView.setText(Html.fromHtml(String.format(getString(R.string.fatal_error_activity_error_message), mMessage)));
+            messageView.setText(Html.fromHtml(String.format(getString(R.string.fatal_error_view_error_message), mMessage)));
         }
     }
 }

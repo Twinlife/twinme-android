@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/space_appearance_activity_default_value"
+            android:text="@string/space_appearance_view_default_value"
             app:layout_widthPercent="89.06%" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>

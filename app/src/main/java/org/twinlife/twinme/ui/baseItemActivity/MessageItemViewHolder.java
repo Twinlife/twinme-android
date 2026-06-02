@@ -27,6 +27,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -52,6 +53,7 @@ class MessageItemViewHolder extends ItemViewHolder {
 
     private static final int DESIGN_LINK_COLOR = Color.argb(255, 0, 0, 0);
     private static final int MAX_EMOJI = 5;
+    private static final float DESIGN_ERROR_IMAGE_MARGIN = -60f;
 
     private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
     private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 14f;
@@ -113,12 +115,18 @@ class MessageItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_message_item_overlay_view,
                 R.id.base_item_activity_message_item_annotation_view,
                 R.id.base_item_activity_message_item_selected_view,
-                R.id.base_item_activity_message_item_selected_image_view);
+                R.id.base_item_activity_message_item_selected_image_view,
+                R.id.base_item_activity_message_item_error_image_view);
+
+        ImageView errorImageView = view.findViewById(R.id.base_item_activity_message_item_error_image_view);
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) errorImageView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_ERROR_IMAGE_MARGIN * Design.WIDTH_RATIO);
 
         mTextView = view.findViewById(R.id.base_item_activity_message_item_text);
         mTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
         mTextView.setTypeface(getMessageFont().typeface);
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getMessageFont().size);
+        mTextView.setMaxWidth(BaseItemViewHolder.MESSAGE_MAX_WIDTH);
 
         mTextView.setOnClickListener(v -> {
             if (getBaseItemActivity().isSelectItemMode()) {
@@ -230,7 +238,7 @@ class MessageItemViewHolder extends ItemViewHolder {
         layoutParams = mEphemeralView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_EPHEMERAL_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.setMarginStart((int) (DESIGN_EPHEMERAL_LEFT_MARGIN * Design.WIDTH_RATIO));
@@ -361,7 +369,7 @@ class MessageItemViewHolder extends ItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_message_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case GEOLOCATION_DESCRIPTOR:

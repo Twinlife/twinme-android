@@ -25,7 +25,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/last_calls_activity_audio" />
+            android:text="@string/last_calls_view_audio" />
 
         <RadioButton
             android:id="@+id/last_calls_tool_bar_video_radio"
@@ -37,7 +37,7 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/last_calls_activity_video" />
+            android:text="@string/last_calls_view_video" />
 
     </RadioGroup>
 </androidx.appcompat.widget.Toolbar>

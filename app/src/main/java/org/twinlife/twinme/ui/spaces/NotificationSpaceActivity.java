@@ -176,7 +176,7 @@ public class NotificationSpaceActivity extends AbstractSpaceActivity {
         View contentView = findViewById(R.id.notification_space_activity_content_view);
         contentView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
-        setTitle(getString(R.string.navigation_activity_settings));
+        setTitle(getString(R.string.navigation_view_settings));
 
         SettingSpaceViewHolder.Observer settingSpaceViewHolderObserver = this::onSettingsSpaceChangeValue;
 

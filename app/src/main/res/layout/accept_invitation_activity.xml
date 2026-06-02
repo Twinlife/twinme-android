@@ -81,7 +81,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/accept_invitation_activity_title_view"
             android:gravity="center"
-            android:text="@string/fullscreen_qrcode_activity_generate_code_message"
+            android:text="@string/fullscreen_qrcode_view_generate_code_message"
             app:layout_widthPercent="94%" />
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/accept_invitation_activity_message_view"
-            android:text="@string/settings_space_activity_space_category_title"
+            android:text="@string/settings_space_view_space_category_title"
             android:textAllCaps="true"
             android:maxLines="1"
             app:layout_widthPercent="53.33%"

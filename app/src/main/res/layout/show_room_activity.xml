@@ -105,7 +105,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/show_contact_activity_chat" />
+                        android:text="@string/show_contact_view_chat" />
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
@@ -139,7 +139,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/show_contact_activity_audio" />
+                        android:text="@string/show_contact_view_audio" />
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
                 <androidx.percentlayout.widget.PercentRelativeLayout
@@ -175,7 +175,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/show_contact_activity_video" />
+                        android:text="@string/show_contact_view_video" />
                 </androidx.percentlayout.widget.PercentRelativeLayout>
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -185,7 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/show_room_activity_action_view"
-                android:text="@string/show_room_activity_room_title"
+                android:text="@string/show_room_view_room_title"
                 android:textAllCaps="true"
                 android:maxLines="1"
                 app:layout_widthPercent="53.33%"
@@ -218,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/show_room_activity_admin_title"
+                    android:text="@string/show_room_view_admin_title"
                     app:layout_marginStartPercent="4%" />
 
                 <ImageView
@@ -238,7 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/show_room_activity_admin_view"
-                android:text="@string/show_contact_activity_identity_title"
+                android:text="@string/show_contact_view_identity_title"
                 android:textAllCaps="true"
                 android:maxLines="1"
                 app:layout_widthPercent="53.33%"
@@ -360,7 +360,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/show_room_activity_space_view"
-                android:text="@string/show_contact_activity_history_title"
+                android:text="@string/show_contact_view_history_title"
                 android:textAllCaps="true"
                 android:maxLines="1"
                 app:layout_widthPercent="53.33%"
@@ -388,7 +388,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/show_contact_activity_last_calls"
+                    android:text="@string/show_contact_view_last_calls"
                     app:layout_marginEndPercent="4.27%"
                     app:layout_marginStartPercent="12.8%" />
 
@@ -409,7 +409,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/show_room_activity_last_calls_view"
-                android:text="@string/conversations_fragment_title"
+                android:text="@string/conversations_view_title"
                 android:textAllCaps="true"
                 android:maxLines="1"
                 app:layout_widthPercent="53.33%"
@@ -437,7 +437,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/conversation_files_activity_title"
+                    android:text="@string/conversation_files_view_title"
                     app:layout_marginEndPercent="4.27%"
                     app:layout_marginStartPercent="12.8%" />
 
@@ -474,7 +474,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/show_contact_activity_export_contents"
+                    android:text="@string/show_contact_view_export_contents"
                     app:layout_marginEndPercent="4.27%"
                     app:layout_marginStartPercent="12.8%" />
 
@@ -511,7 +511,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/show_contact_activity_cleanup"
+                    android:text="@string/show_contact_view_cleanup"
                     app:layout_marginEndPercent="4.27%"
                     app:layout_marginStartPercent="12.8%" />
 

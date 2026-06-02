@@ -258,6 +258,12 @@
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
+            android:name="org.twinlife.twinme.ui.conversationActivity.poll.CreatePollActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
             android:name="org.twinlife.twinme.ui.conversationActivity.PreviewFileActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
@@ -590,6 +596,12 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="org.twinlife.twinme.ui.settingsActivity.DebugSettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="org.twinlife.twinme.ui.settingsActivity.FAQActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"

@@ -44,12 +44,13 @@ import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.contacts.ResetInvitationConfirmView;
 import org.twinlife.twinme.ui.conversationActivity.NamedFileProvider;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.ClickToCallView;
-import org.twinlife.twinme.utils.SaveTwincodeAsyncTask;
+import org.twinlife.twinme.utils.SaveTwincodeBackgroundAction;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -169,11 +170,11 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
             mDeferredSaveTwincode = false;
             if (storageWriteAccessGranted && (mCallReceiver != null && mCallReceiver.getTwincodeOutboundId() != null)) {
                 mCallReceiverService.getImage(mCallReceiver, (Bitmap avatar) -> {
-                    String message = String.format(getString(R.string.invitation_call_activity_save_message), mCallReceiver.getName());
+                    String message = String.format(getString(R.string.invitation_call_view_save_message), mCallReceiver.getName());
                     mSaveClickToCallView.setTwincodeInformation(this, mCallReceiver.getName(), avatar, mQRCodeBitmap, mCallReceiver.getTwincodeOutboundId().toString(), message);
                     Bitmap bitmapToSave = getBitmapFromTwincodeView();
                     if (bitmapToSave != null) {
-                        new SaveTwincodeAsyncTask(this, bitmapToSave).execute();
+                        new SaveTwincodeBackgroundAction(this, bitmapToSave, R.string.capture_view_qrcode_saved).start();
                     } else {
                         toast(getString(R.string.application_operation_failure));
                     }
@@ -377,7 +378,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
 
         String subject;
         if (mCallReceiver.isTransfer()) {
-            subject = getString(R.string.premium_services_activity_transfert_title);
+            subject = getString(R.string.premium_services_view_transfert_title);
         } else {
             subject = mCallReceiver.getName();
         }
@@ -414,10 +415,10 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
 
         String message;
         if (mCallReceiver.isConference()) {
-            message = String.format(getString(R.string.invitation_call_activity_invite_meeting_message),
+            message = String.format(getString(R.string.invitation_call_view_invite_meeting_message),
                     mInvitationLink.uri, name);
         } else {
-            message = String.format(getString(R.string.invitation_call_activity_invite_message),
+            message = String.format(getString(R.string.invitation_call_view_invite_message),
                     mInvitationLink.uri, name);
         }
 
@@ -440,7 +441,7 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
 
         if (mInvitationLink != null) {
             org.twinlife.twinme.utils.Utils.setClipboard(this, mInvitationLink.uri);
-            Toast.makeText(this, R.string.conversation_activity_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.conversation_view_menu_item_view_copy_message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -456,15 +457,15 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
             if (mCallReceiver != null && mCallReceiver.getTwincodeOutboundId() != null) {
                 String message;
                 if (mCallReceiver.isTransfer()) {
-                    message = getString(R.string.transfert_call_activity_gallery_message);
+                    message = getString(R.string.transfert_call_view_gallery_message);
                 } else {
-                    message = String.format(getString(R.string.invitation_call_activity_save_message), mCallReceiver.getName());
+                    message = String.format(getString(R.string.invitation_call_view_save_message), mCallReceiver.getName());
                 }
                 mCallReceiverService.getImage(mCallReceiver, (Bitmap avatar) -> {
                     mSaveClickToCallView.setTwincodeInformation(this, mCallReceiver.getName(), avatar, mQRCodeBitmap, mCallReceiver.getTwincodeOutboundId().toString(), message);
                     Bitmap bitmapToSave = getBitmapFromTwincodeView();
                     if (bitmapToSave != null) {
-                        new SaveTwincodeAsyncTask(this, bitmapToSave, mCallReceiver.isTransfer()).execute();
+                        new SaveTwincodeBackgroundAction(this, bitmapToSave, mCallReceiver.isTransfer() ? R.string.transfert_call_view_saved_message : R.string.capture_view_qrcode_saved).start();
                     } else {
                         toast(getString(R.string.application_operation_failure));
                     }
@@ -503,9 +504,9 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
 
         String message;
         if (mCallReceiver.isTransfer()) {
-            message = getString(R.string.transfert_call_activity_reset_message);
+            message = getString(R.string.transfert_call_view_reset_message);
         } else {
-            message = getString(R.string.invitation_call_activity_generate_code_message);
+            message = getString(R.string.invitation_call_view_generate_code_message);
         }
 
         ViewGroup viewGroup = findViewById(R.id.invitation_external_call_activity_layout);
@@ -615,13 +616,13 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
                     formatDate = "YYYY/MM/dd HH:mm";
                     SimpleDateFormat messageDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
                     messageStringBuilder.append("\n\n");
-                    messageStringBuilder.append(getString(R.string.create_external_call_activity_link_validity));
+                    messageStringBuilder.append(getString(R.string.create_external_call_view_link_validity));
                     messageStringBuilder.append("\n");
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_start));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(messageDateFormat.format(startCalendar.getTime()));
                     messageStringBuilder.append("\n");
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_end));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(messageDateFormat.format(endCalendar.getTime()));
 
@@ -651,13 +652,13 @@ public class AbstractInvitationCallReceiverActivity extends AbstractTwinmeActivi
                     Time scheduleEndTime = weeklyTimeRange.end;
                     StringBuilder messageStringBuilder = new StringBuilder();
                     messageStringBuilder.append("\n\n");
-                    messageStringBuilder.append(getString(R.string.create_external_call_activity_link_validity));
+                    messageStringBuilder.append(getString(R.string.create_external_call_view_link_validity));
                     messageStringBuilder.append("\n");
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_start));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_start));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(scheduleStartTime);
                     messageStringBuilder.append("\n");
-                    messageStringBuilder.append(getString(R.string.show_call_activity_settings_end));
+                    messageStringBuilder.append(getString(R.string.show_call_view_settings_end));
                     messageStringBuilder.append(" : ");
                     messageStringBuilder.append(scheduleEndTime);
                     messageStringBuilder.append("\n\n");

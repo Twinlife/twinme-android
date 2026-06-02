@@ -667,7 +667,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
 
         if (mShowAlertOnResume) {
             mShowAlertOnResume = false;
-            incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
+            incorrectQRCode(getString(R.string.capture_view_incorrect_qrcode));
         }
     }
 
@@ -739,6 +739,9 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
     public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surfaceTexture, int width, int height) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSurfaceTextureSizeChanged: surfaceTexture=" + surfaceTexture + " width=" + width + "height=" + height);
+        }
+        if (mCameraManager != null) {
+            mCameraManager.updateTextureSize();
         }
     }
 
@@ -858,7 +861,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
         runOnUiThread(() -> {
             switch (errorCode) {
                 case NO_CAMERA:
-                    onError(getString(R.string.capture_activity_no_camera));
+                    onError(getString(R.string.capture_view_no_camera));
                     break;
 
                 case NO_PERMISSION:
@@ -866,7 +869,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
 
                 case CAMERA_ERROR:
                 case CAMERA_IN_USE:
-                    onError(getString(R.string.capture_activity_create_camera_error));
+                    onError(getString(R.string.capture_view_create_camera_error));
                     break;
             }
         });
@@ -1029,7 +1032,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
                 if (mPaused) {
                     mShowAlertOnResume = true;
                 } else {
-                    incorrectQRCode(getString(R.string.capture_activity_incorrect_qrcode));
+                    incorrectQRCode(getString(R.string.capture_view_incorrect_qrcode));
                 }
             }
         }
@@ -1093,7 +1096,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
         }
 
         if (mCameraGranted) {
-            mMessageView.setText(getResources().getString(R.string.capture_activity_message));
+            mMessageView.setText(getResources().getString(R.string.capture_view_message));
             mMessageView.postDelayed(() -> mMessageView.setVisibility(View.GONE), 5000);
         } else {
             mMessageView.setText(getResources().getString(R.string.application_permission_scan_code));

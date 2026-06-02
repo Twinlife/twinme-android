@@ -1,8 +1,7 @@
 
 plugins {
     id 'com.android.application'
-    alias libs.plugins.kotlin.android
-}        
+}
 
 android {
     if (System.getenv('SIGNING_KEY_ALIAS') != null) {
@@ -23,16 +22,16 @@ android {
         applicationId 'mobi.skred.app'
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 354
-        versionName "23.3"
+        versionCode 360
+        versionName "24.1"
         manifestPlaceholders.domainName = "twin.me"
         manifestPlaceholders.backupExtension = "skrdbckp"
 
-        resourceConfigurations += ["en", "ar", "da", "de", "es", "fa", "fi", "fr", "hi", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
+        resourceConfigurations += ["en", "ar", "bg", "cs", "da", "de", "el", "el", "es", "fa", "fi", "fr", "hi", "hr", "hu", "in", "it", "iw", "ja", "ko", "nb", "nl", "pl", "pt", "ro", "ru", "sk", "sl", "sq", "sr", "sv", "tr", "uk", "vi", "zh-rCN", "zh-rTW"]
     }
-    namespace 'org.twinlife.device.android.twinme'
+    namespace = 'org.twinlife.device.android.twinme'
     compileOptions {
-        coreLibraryDesugaringEnabled true
+        coreLibraryDesugaringEnabled = true
 
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -41,15 +40,16 @@ android {
         // Production settings and build parameters.
         // The APK/AAB must be produced with this build type.
         release {
-            shrinkResources true
+            shrinkResources = true
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             applicationIdSuffix ""
 
             buildConfigField "String", 'APPLICATION_ID_SUFFIX', '""'
             buildConfigField "String", 'SETTINGS_ACTIVITY', '"org.twinlife.twinme.ui.settingsActivity.SettingsActivity"'
             buildConfigField "String", "CHECK_VERSION_URL", "\"https://skred.mobi/download/skred.json\""
+            buildConfigField "String", "FAQ_URL", "\"https://skred.mobi/download/faq-skred.json\""
             buildConfigField "String", "FILE_PROVIDER", '"mobi.skred.app.fileprovider"'
             buildConfigField "String", "FLAVOR", '""'
             buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "false"
@@ -68,11 +68,11 @@ android {
         // Use this build type to test the app on the production environment when making a release.
         staging {
             initWith buildTypes.release
-            shrinkResources false
+            shrinkResources = false
             minifyEnabled false
             debuggable true
 
-            signingConfig signingConfigs.debug
+            signingConfig = signingConfigs.debug
 
             applicationIdSuffix ".staging"
             buildConfigField "String", 'APPLICATION_ID_SUFFIX', '".staging"'
@@ -89,6 +89,7 @@ android {
 
             buildConfigField "String", 'SETTINGS_ACTIVITY', '"org.twinlife.twinme.ui.settingsActivity.DebugSettingsActivity"'
             buildConfigField "String", "CHECK_VERSION_URL", "\"https://skred.mobi/download/skred.json\""
+            buildConfigField "String", "FAQ_URL", "\"https://skred.mobi/download/faq-skred.json\""
             buildConfigField "boolean", "DISPLAY_PREMIUM_FEATURE", "false"
             buildConfigField "String", "FILE_PROVIDER", '"mobi.skred.app.fileprovider"'
             buildConfigField "String", "FLAVOR", '"Development"'
@@ -98,6 +99,8 @@ android {
 
             manifestPlaceholders.domainName = "skred.mobi"
             manifestPlaceholders.twinmePackage = "org.twinlife.device.android.twinme.debug"
+
+            signingConfig = signingConfigs.debug
 
             getIsDefault().set(true)
         }
@@ -115,25 +118,24 @@ android {
         }
     }
 
-    // Only define necessary variants
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-
-        if (names.contains("skred")) {
-            if(names.contains("+") ) {
-                // skred doesn't have a "plus" variant.
-                // we allow the debug build type in the app module for applicationIdSuffix and such.
-                setIgnore(true)
-            }
-        }
-    }
-
     bundle {
         language {
             enableSplit = false
         }
     }
 }
+
+androidComponents {
+    // Only define necessary variants (Skred only has a free tier)
+    beforeVariants(
+            selector()
+                    .withFlavor("product", "skred")
+                    .withFlavor("tier", "+")
+    ) { variantBuilder ->
+        variantBuilder.enable = false
+    }
+}
+
 dependencies {
 
     implementation project(':twinlife-framework')

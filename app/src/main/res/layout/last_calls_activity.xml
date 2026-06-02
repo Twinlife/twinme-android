@@ -35,7 +35,7 @@
         android:layout_below="@+id/last_calls_activity_no_call_image_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/calls_fragment_no_call_title"
+        android:text="@string/calls_view_no_call_title"
         android:visibility="gone"
         app:layout_marginTopPercent="5.55%"
         app:layout_widthPercent="85.33%" />
@@ -47,7 +47,7 @@
         android:layout_below="@+id/last_calls_activity_no_call_title_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/calls_fragment_no_call_message"
+        android:text="@string/calls_view_no_call_message"
         android:visibility="gone"
         app:layout_marginTopPercent="1.34%"
         app:layout_widthPercent="85.33%" />

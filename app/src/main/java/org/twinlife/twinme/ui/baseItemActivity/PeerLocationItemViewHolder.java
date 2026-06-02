@@ -1,9 +1,10 @@
 /*
- *  Copyright (c) 2019-2025 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.baseItemActivity;
@@ -29,6 +30,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -76,6 +80,7 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
     private static final float DESIGN_EPHEMERAL_RIGHT_MARGIN = 20f;
     private static final float DESIGN_EPHEMERAL_BOTTOM_MARGIN = 16f;
 
+    @NonNull
     private final MapView mMapView;
     private final RoundedFrameLayout mLocationItemContainer;
     private final RoundedImageView mImageView;
@@ -89,7 +94,9 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
 
     private CountDownTimer mTimer;
 
+    @Nullable
     private GoogleMap mGoogleMap;
+    private boolean mMapViewCreated = false;
 
     private final boolean mAllowLongClick;
 
@@ -106,9 +113,16 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
         mLocationItemContainer = view.findViewById(R.id.base_item_activity_peer_location_item_map_container);
 
         mMapView = view.findViewById(R.id.base_item_activity_peer_location_item_map_view);
-        mMapView.onCreate(null);
 
         mImageView = view.findViewById(R.id.base_item_activity_peer_location_item_image_view);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mImageView.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.leftMargin = Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT;
+        } else {
+            marginLayoutParams.leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+        }
+        mImageView.setLayoutParams(marginLayoutParams);
 
         if (allowClick) {
             mImageView.setOnClickListener(v -> onMapClick());
@@ -121,7 +135,7 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
             });
         }
 
-        mAllowLongClick = allowClick;
+        mAllowLongClick = allowLongClick;
 
         mReplyTextView = view.findViewById(R.id.base_item_activity_peer_location_item_reply_text);
         mReplyTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
@@ -175,11 +189,36 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
         layoutParams.width = (int) (DESIGN_EPHEMERAL_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_EPHEMERAL_SIZE * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEphemeralView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_EPHEMERAL_RIGHT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.topMargin = (int) (DESIGN_EPHEMERAL_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_EPHEMERAL_RIGHT_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_EPHEMERAL_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+
+        baseItemActivity.getLifecycle().addObserver(new DefaultLifecycleObserver() {
+            @Override
+            public void onDestroy(@NonNull LifecycleOwner owner) {
+
+                owner.getLifecycle().removeObserver(this);
+
+                if (mGoogleMap != null) {
+                    mGoogleMap.setOnMapLoadedCallback(null);
+                    mGoogleMap.setOnMapLongClickListener(null);
+                    mGoogleMap.clear();
+                    mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+                    mGoogleMap = null;
+                }
+
+                if (mMapViewCreated) {
+                    mMapView.onDestroy();
+                }
+
+                if (mTimer != null) {
+                    mTimer.cancel();
+                    mTimer = null;
+                }
+            }
+        });
     }
 
     @Override
@@ -259,7 +298,7 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_peer_location_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case GEOLOCATION_DESCRIPTOR:
@@ -286,31 +325,68 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
         overlayLayoutParams.height = itemView.getHeight();
         getOverlayView().setLayoutParams(overlayLayoutParams);
 
-        final BitmapDrawable bitmapDrawable;
-        if (geolocationDescriptor.isValidLocalMap()) {
-            bitmapDrawable = Utils.getBitmapDrawable(getBaseItemActivity(), geolocationDescriptor.getLocalMapPath(), LOCATION_ITEM_MAX_WIDTH, LOCATION_ITEM_MAX_HEIGHT);
-        } else {
-            bitmapDrawable = null;
-        }
-
-        if (bitmapDrawable != null) {
-            mImageView.setImageBitmap(bitmapDrawable.getBitmap(), cornerRadii);
-            mMapView.setVisibility(View.GONE);
-            mImageView.setVisibility(View.VISIBLE);
-        } else {
-            if (mGoogleMap == null) {
-                mMapView.getMapAsync(this);
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mImageView.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
             }
-            mMapView.setVisibility(View.VISIBLE);
-            mImageView.setVisibility(View.INVISIBLE);
+            mImageView.setLayoutParams(marginLayoutParams);
         }
 
-        if (item.isEphemeralItem()) {
-            mEphemeralView.setVisibility(View.VISIBLE);
-            startEphemeralAnimation();
-        } else {
-            mEphemeralView.setVisibility(View.GONE);
-        }
+        getBaseItemActivity().runOnTwinlifeThread(() -> {
+            final BitmapDrawable bitmapDrawable;
+            if (geolocationDescriptor.isValidLocalMap()) {
+                bitmapDrawable = Utils.getBitmapDrawable(getBaseItemActivity(), geolocationDescriptor.getLocalMapPath(), LOCATION_ITEM_MAX_WIDTH, LOCATION_ITEM_MAX_HEIGHT);
+            } else {
+                bitmapDrawable = null;
+            }
+
+            getBaseItemActivity().runOnUiThread(() -> {
+                if (bitmapDrawable != null) {
+                    mImageView.setImageBitmap(bitmapDrawable.getBitmap(), cornerRadii);
+                    mMapView.setVisibility(View.GONE);
+                    if (mMapViewCreated) {
+                        mMapView.onPause();
+                        mMapView.onStop();
+                    }
+
+                    if (mGoogleMap != null) {
+                        mGoogleMap.setOnMapLoadedCallback(null);
+                        mGoogleMap.setOnMapLongClickListener(null);
+                        mGoogleMap.clear();
+                        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+                    }
+
+                    mImageView.setVisibility(View.VISIBLE);
+                } else {
+                    if (!mMapViewCreated) {
+                        mMapView.onCreate(null);
+                        mMapViewCreated = true;
+                    }
+
+                    mMapView.onStart();
+                    mMapView.onResume();
+
+                    if (mGoogleMap == null) {
+                        mMapView.getMapAsync(this);
+                    } else {
+                        updateMap();
+                    }
+                    mMapView.setVisibility(View.VISIBLE);
+                    mImageView.setVisibility(View.INVISIBLE);
+                }
+
+                if (item.isEphemeralItem()) {
+                    mEphemeralView.setVisibility(View.VISIBLE);
+                    startEphemeralAnimation();
+                } else {
+                    mEphemeralView.setVisibility(View.GONE);
+                }
+            });
+        });
     }
 
     @Override
@@ -319,11 +395,17 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
         super.onViewRecycled();
 
         if (mGoogleMap != null) {
-            mGoogleMap.clear();
-            mGoogleMap = null;
+            mGoogleMap.setOnMapLoadedCallback(null);
+            mGoogleMap.setOnMapLongClickListener(null);
+        }
+
+        if (mMapViewCreated) {
+            mMapView.onPause();
+            mMapView.onStop();
         }
 
         mImageView.setImageBitmap(null, null);
+        mReplyImageView.setImageBitmap(null, null);
 
         if (mTimer != null) {
             mTimer.cancel();
@@ -336,6 +418,7 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
 
         return new ArrayList<View>() {
             {
+                add(getContainer());
                 add(mMapView);
                 add(mImageView);
             }
@@ -345,27 +428,35 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
+        mGoogleMap = googleMap;
+        mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
+        updateMap();
+    }
+
+    private void updateMap() {
+
+        if (mGoogleMap == null) {
+            return;
+        }
+
+        mGoogleMap.clear();
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
         GeolocationDescriptor geolocationDescriptor = getPeerLocationItem().getGeolocationDescriptor();
         LatLng userLocation = new LatLng(geolocationDescriptor.getLatitude(), geolocationDescriptor.getLongitude());
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(userLocation);
         markerOptions.title("");
-
         try {
             this.getMarkerBitmapFromView((Bitmap avatar) -> markerOptions.icon(BitmapDescriptorFactory.fromBitmap(avatar)));
         } catch (Exception e) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker());
         }
-
         markerOptions.draggable(false);
         markerOptions.visible(true);
 
-        mGoogleMap = googleMap;
-        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
         mGoogleMap.addMarker(markerOptions);
-        mGoogleMap.setOnMapLoadedCallback(this::saveMapSnapshot);
 
         double latitudeDelta = geolocationDescriptor.getMapLatitudeDelta();
         double longitudeDelta = geolocationDescriptor.getMapLongitudeDelta();
@@ -375,20 +466,30 @@ class PeerLocationItemViewHolder extends PeerItemViewHolder implements OnMapRead
 
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(displayBuilder.build(), 0));
 
+        mGoogleMap.setOnMapLoadedCallback(this::saveMapSnapshot);
+
         if (mAllowLongClick) {
             mGoogleMap.setOnMapLongClickListener(v -> getBaseItemActivity().onItemLongPress(getItem()));
+        } else {
+            mGoogleMap.setOnMapLongClickListener(null);
         }
     }
 
     @Override
-    public void onSnapshotReady(Bitmap bitmap) {
+    public void onSnapshotReady(@Nullable Bitmap bitmap) {
 
-        GeolocationDescriptor geolocationDescriptor = getPeerLocationItem().getGeolocationDescriptor();
-
-        File tmpFile = CommonUtils.saveBitmap(bitmap);
-        if (tmpFile != null) {
-            getBaseItemActivity().saveGeolocationMap(Uri.fromFile(tmpFile), geolocationDescriptor.getDescriptorId());
+        if (bitmap == null) {
+            return;
         }
+
+        getBaseItemActivity().runOnTwinlifeThread(() -> {
+            GeolocationDescriptor geolocationDescriptor = getPeerLocationItem().getGeolocationDescriptor();
+
+            File tmpFile = CommonUtils.saveBitmap(bitmap);
+            if (tmpFile != null) {
+                getBaseItemActivity().saveGeolocationMap(Uri.fromFile(tmpFile), geolocationDescriptor.getDescriptorId());
+            }
+        });
     }
 
     //

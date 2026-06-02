@@ -46,7 +46,7 @@
             android:layout_below="@+id/backups_activity_no_backups_image_view"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/backups_activity_no_backup_message" />
+            android:text="@string/backups_view_no_backup_message" />
 
         <RelativeLayout
             android:id="@+id/backups_activity_new_backup_view"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/backup_activity_new_backup" />
+                android:text="@string/backup_view_new_backup" />
 
         </RelativeLayout>
 

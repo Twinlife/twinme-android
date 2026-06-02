@@ -104,15 +104,15 @@ public class OnboardingSpaceThirdPartViewHolder extends RecyclerView.ViewHolder 
 
     public void onBind(Context context, boolean fromSideMenu) {
 
-        String message = context.getString(R.string.create_space_activity_onboarding_message_part_4) +
+        String message = context.getString(R.string.create_space_view_onboarding_message_part_4) +
                 "\n\n" +
-                context.getString(R.string.create_space_activity_onboarding_message_part_5) +
+                context.getString(R.string.create_space_view_onboarding_message_part_5) +
                 "\n\n" +
-                context.getString(R.string.create_space_activity_onboarding_message_part_6) +
+                context.getString(R.string.create_space_view_onboarding_message_part_6) +
                 "\n\n" +
-                context.getString(R.string.create_space_activity_onboarding_message_part_7) +
+                context.getString(R.string.create_space_view_onboarding_message_part_7) +
                 "\n\n" +
-                context.getString(R.string.create_space_activity_onboarding_message_part_8);
+                context.getString(R.string.create_space_view_onboarding_message_part_8);
         mMessageTextView.setText(message);
 
         ViewGroup.LayoutParams layoutParams = mDoNotShowView.getLayoutParams();
@@ -122,7 +122,7 @@ public class OnboardingSpaceThirdPartViewHolder extends RecyclerView.ViewHolder 
             mDoNotShowView.setVisibility(View.INVISIBLE);
             layoutParams.height = 1;
         } else {
-            mCreateSpaceTextView.setText(itemView.getContext().getString(R.string.create_space_activity_title));
+            mCreateSpaceTextView.setText(itemView.getContext().getString(R.string.create_space_view_title));
             mDoNotShowView.setVisibility(View.VISIBLE);
             layoutParams.height = (int) (DESIGN_DO_NOT_SHOW_HEIGHT * Design.HEIGHT_RATIO);
         }

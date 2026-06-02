@@ -1,0 +1,1394 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+
+    <!-- Application -->
+    <string name="application_accept">Приеми</string>
+    <string name="application_account_deleted">Вашият акаунт беше изтрит. Трябва да деинсталирате приложението.</string>
+    <string name="application_account_restored_error">Акаунтът на това устройство е възстановен на друго устройство. Трябва да деинсталирате приложението.</string>
+    <string name="application_add_contact_no_profile">Трябва да попълните профил, който ви представя, преди да поканите контакт. Продължавате ли?</string>
+    <string name="application_all">Всички</string>
+    <string name="application_appearance">Външен вид</string>
+    <string name="application_are_you_sure">Сигурни ли сте?</string>
+    <string name="application_authorization_camera">Разрешете достъпа до камерата в системните настройки.</string>
+    <string name="application_authorization_go_settings">Отиди в системните настройки</string>
+    <string name="application_authorization_location">Разрешете на приложението достъп до местоположението в системните настройки.</string>
+    <string name="application_authorization_microphone">Разрешете достъпа до микрофона в системните настройки.</string>
+    <string name="application_authorization_microphone_camera">Разрешете достъп до микрофон и камера в системните настройки.</string>
+    <string name="application_authorization_title">Липсва разрешение за достъп</string>
+    <string name="application_back">Назад</string>
+    <string name="application_backup_restore">Възстановяване на резервното копие</string>
+    <string name="application_backup_verify">Проверка на резервното копие</string>
+    <string name="application_camera">Камера</string>
+    <string name="application_cancel">Отказ</string>
+    <string name="application_canceled_operation">Операцията е отменена</string>
+    <string name="application_checking_connection">Проверка на връзката</string>
+    <string name="application_color">Цвят</string>
+    <string name="application_configuration">Конфигурация</string>
+    <string name="application_confirm">Потвърди</string>
+    <string name="application_confirm_deletion">Потвърдете изтриването</string>
+    <string name="application_connected">Сигурната връзка е активирана.</string>
+    <string name="application_connection_status_no_network">Няма интернет достъп.</string>
+    <string name="application_connection_status_no_network_message">Проверете вашата мрежова връзка.</string>
+    <string name="application_connection_status_no_services">Няма достъп до услугата.</string>
+    <string name="application_connection_status_no_services_message">Опитайте да използвате VPN.</string>
+    <string name="application_contact_not_found">Този контакт е изтрил връзката с вас и вече не е достъпен.</string>
+    <string name="application_continue_without_premium_services">Продължи без премиум услуги</string>
+    <string name="application_create_group_no_profile">Трябва да попълните профил, който ви представя в тази група. Продължавате ли?</string>
+    <string name="application_database_error">Грешка в базата данни</string>
+    <string name="application_decline">Откажи</string>
+    <string name="application_default">По подразбиране</string>
+    <string name="application_delete">Изтриване</string>
+    <string name="application_delete_message">Сигурни ли сте, че искате да го изтриете?</string>
+    <string name="application_denied_permissions">Необходимите разрешения не са предоставени</string>
+    <string name="application_description">Описание</string>
+    <string name="application_display_all">Показване на всички</string>
+    <string name="application_do_not_display">Повече да не се показва</string>
+    <string name="application_duration_hour">ч</string>
+    <string name="application_duration_minute">м</string>
+    <string name="application_duration_second">с</string>
+    <string name="application_edit">Редактиране</string>
+    <string name="application_error_code">Код на грешка: %1$s</string>
+    <string name="application_error_file_not_found">Файлът не беше намерен.</string>
+    <string name="application_error_media_not_supported">Този формат на изображение/видео не се поддържа от приложението.</string>
+    <string name="application_error_media_unload">Неуспешно зареждане на медията.</string>
+    <string name="application_error_no_storage_space">Недостатъчно място за съхранение</string>
+    <string name="application_group_limit_reached">Максималният брой (%1$d) членове на групата е надвишен.</string>
+    <string name="application_group_not_found">Бяхте премахнати от групата</string>
+    <string name="application_items_selected">Избрани са %1$d елемента</string>
+    <string name="application_later">По-късно</string>
+    <string name="application_location">Геолокация</string>
+    <string name="application_location_enabled">Активирайте услугата за местоположение на вашето устройство.</string>
+    <string name="application_low_usage_message">Внимание: ако не използвате приложението достатъчно често, ОС може да не го събуди, за да обменя съобщения!</string>
+    <string name="application_migration_no_storage_space">Няма достатъчно място на устройството, за да завършите миграцията. Затворете приложението, освободете пространство и го стартирайте отново, за да приключите обновяването.</string>
+    <string name="application_migration_no_storage_space_message">Едно от двете устройства няма достатъчно място за съхранение. Освободете място и стартирайте миграцията отново.</string>
+    <string name="application_more_info">Повече информация…</string>
+    <string name="application_name_hint">Име</string>
+    <string name="application_network_connecting">Свързване към услугата Skred</string>
+    <string name="application_network_connectivity">Налична е мрежова свързаност</string>
+    <string name="application_network_status_airplane_message">Режим „Самолет“ е активиран.</string>
+    <string name="application_network_status_airplane_resolution">Моля, изключете режима „Самолет“ и се свържете към Wi‑Fi или мобилна мрежа.</string>
+    <string name="application_network_status_connected_no_internet">Няма достъп до услугата Skred.</string>
+    <string name="application_network_status_connected_resolution">Опитайте да се свържете към друга мрежа.</string>
+    <string name="application_network_status_connection_timeout">Неуспешно установяване на интернет връзката.</string>
+    <string name="application_network_status_no_internet">Няма интернет връзка.</string>
+    <string name="application_network_status_wifi_disabled">Wi‑Fi е изключен.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile">Wi‑Fi е изключен и няма мобилна интернет връзка.</string>
+    <string name="application_network_status_wifi_disabled_no_mobile_resolution">Моля, включете Wi‑Fi.</string>
+    <string name="application_network_status_wifi_disabled_resolution">Моля, включете Wi‑Fi или активирайте мобилен интернет.</string>
+    <string name="application_new_feature">Ново!</string>
+    <string name="application_no">Не</string>
+    <string name="application_no_network_connectivity">Няма мрежова свързаност</string>
+    <string name="application_no_service">Няма услуга</string>
+    <string name="application_not_authorized_operation">Неоторизирана операция</string>
+    <string name="application_not_authorized_operation_by_your_contact">Операцията не е разрешена от вашия контакт.</string>
+    <string name="application_not_connected">Сигурната връзка се установява…</string>
+    <string name="application_not_signed_in">Не сте свързани с услугата Skred</string>
+    <string name="application_now">Сега</string>
+    <string name="application_ok">OK</string>
+    <string name="application_one_item_selected">1 избран елемент</string>
+    <string name="application_operation_failure">Неуспешна операция</string>
+    <string name="application_operation_irreversible">Тази операция е необратима</string>
+    <string name="application_permission_camera">Необходимо е разрешение за достъп до камерата, за да направите нова снимка или видео.</string>
+    <string name="application_permission_scan_code">Необходимо е разрешение за достъп до камерата, за да се сканира QR‑код.</string>
+    <string name="application_photo_gallery">Фотоалбуми</string>
+    <string name="application_premium_feature_message">Трябва да активирате премиум услугите, за да използвате тази функция.</string>
+    <string name="application_premium_feature_title">Активирайте премиум услугите</string>
+    <string name="application_processing_please_wait">Обработка… Моля, изчакайте.</string>
+    <string name="application_profile">Профил</string>
+    <string name="application_profile_avatar_not_defined">Трябва да зададете изображение, което ви представя пред контактите, които каните с този профил.</string>
+    <string name="application_profile_name_not_defined">Трябва да зададете име, което ви представя пред контактите, които каните с този профил.</string>
+    <string name="application_remove">Премахни</string>
+    <string name="application_save">Запази</string>
+    <string name="application_search_hint">Търсене</string>
+    <string name="application_select">Избор</string>
+    <string name="application_select_application">Избор на приложение</string>
+    <string name="application_select_more">Изберете още…</string>
+    <string name="application_server_timeout">Изтичане на времето за отговор от сървъра</string>
+    <string name="application_size_unit">MB</string>
+    <string name="application_theme">Тема</string>
+    <string name="application_timeout">Време на изчакване</string>
+    <string name="application_timeout_day">1 ден</string>
+    <string name="application_timeout_hour">1 час</string>
+    <string name="application_timeout_hours">%1$d часа</string>
+    <string name="application_timeout_minute">1 минута</string>
+    <string name="application_timeout_minutes">%1$d минути</string>
+    <string name="application_timeout_month">1 месец</string>
+    <string name="application_timeout_seconds">%1$d секунди</string>
+    <string name="application_timeout_week">1 седмица</string>
+    <string name="application_until">До %1$s</string>
+    <string name="application_unknown_name">Неизвестно</string>
+    <string name="application_upgrade">Актуализиране на Skred</string>
+    <string name="application_webrtc_failure">Грешка в WebRTC</string>
+    <string name="application_wrong_configuration">Неправилна конфигурация</string>
+    <string name="application_yes">Да</string>
+
+    <!-- AboutActivity -->
+    <string name="about_view_application_code">Код на приложението</string>
+    <string name="about_view_information">Информация</string>
+    <string name="about_view_legal">Правни сведения</string>
+    <string name="about_view_libraries">Библиотеки</string>
+    <string name="about_view_open_source_information">Изходният код на приложението е достъпен като Open Source в GitHub под лиценз AGPL-3.0.</string>
+    <string name="about_view_open_sources_licences">Лицензи за Open Source</string>
+    <string name="about_view_premium_services">Премиум услуги</string>
+    <string name="about_view_privacy_policy">Политика за поверителност</string>
+    <string name="about_view_quality_of_service">Качество на услугата</string>
+    <string name="about_view_terms_of_use">Условия за ползване</string>
+    <string name="about_view_version">Версия</string>
+
+    <!--  AcceptGroupInvitationActivity -->
+    <string name="accept_group_invitation_view_deleted">Тази покана беше изтрита</string>
+    <string name="accept_group_invitation_view_in_progress">Чакащо членство</string>
+    <string name="accept_group_invitation_view_message">%1$s ви кани да се присъедините към групата</string>
+
+    <!-- AcceptInvitationActivity -->
+    <string name="accept_invitation_view_being_transferred">Поканата се прехвърля.</string>
+    <string name="accept_invitation_view_check_connection">Проверете вашата интернет връзка.</string>
+    <string name="accept_invitation_view_existing_contact_message">Вече имате връзка с този контакт. Искате ли да създадете нова?</string>
+    <string name="accept_invitation_view_incorrect_contact_information">Неправилна информация за контакт</string>
+    <string name="accept_invitation_view_local_twincode">Не можете да установите връзка със себе си в рамките на един и същ акаунт.</string>
+    <string name="accept_invitation_view_message">%1$s иска да се свърже с вас</string>
+
+    <!-- AccountActivity -->
+    <string name="account_view_backup">Архивиране на външен носител</string>
+    <string name="account_view_backup_restore">Архивиране / възстановяване</string>
+    <string name="account_view_backup_verify">Проверка на архив</string>
+    <string name="account_view_backup_list">История на архивите</string>
+    <string name="account_view_conversations_content_title">Съдържание на разговорите</string>
+    <string name="account_view_delete_account">Вашият акаунт и всички свързани с него данни ще бъдат изтрити завинаги. Потвърждавате?</string>
+    <string name="account_view_delete_account_confirmation">Наистина ли искате да изтриете акаунта си?</string>
+    <string name="account_view_export_content">Експорт към външен носител</string>
+    <string name="account_view_message_first_part">Нов акаунт се създава при първа инсталация на приложението, след преинсталация, нулиране на устройството или изтриване на текущия акаунт.</string>
+    <string name="account_view_message_second_part">Не остава никаква следа от предишния акаунт и данни, така че ще трябва да поканите отново контактите си.</string>
+    <string name="account_view_message_third_part">Изтриването на акаунт също обезсилва всички архиви, създадени за този акаунт, което прави невъзможно възстановяването на архив от този акаунт на това или друго устройство.</string>
+    <string name="account_view_migration_message">Услугата за миграция на акаунт позволява да прехвърлите вашия акаунт с всички свързани данни (контакти, съобщения, групи и др.) от едно Android устройство на друго в реално време. Така можете да превключвате акаунти между старо и ново устройство.</string>
+    <string name="account_view_migration_start_from_another_device">От друго устройство</string>
+    <string name="account_view_migration_start_from_current_device">От моето устройство</string>
+    <string name="account_view_migration_title">Миграция на акаунт</string>
+    <string name="account_view_restore">Възстановяване от външен носител</string>
+    <string name="account_view_title">Акаунт</string>
+    <string name="account_view_transfer_between_devices">Прехвърляне между устройства</string>
+    <string name="account_view_transfer_from_another_device">Прехвърляне от друго устройство</string>
+    <string name="account_view_transfer_from_device">Прехвърляне от това устройство</string>
+
+    <!-- AccountMigrationActivity -->
+    <string name="account_migration_view_cancel_message">Затворете приложението и го стартирайте отново, за да получите достъп до вашите данни.</string>
+    <string name="account_migration_view_close_message">Затворете приложението и го стартирайте отново, за да получите достъп до новите данни.</string>
+    <string name="account_migration_view_confirm_cancel_message">Сигурни ли сте, че искате да отмените миграцията?</string>
+    <string name="account_migration_view_network_message">Проверете вашата мрежова връзка</string>
+    <string name="account_migration_view_not_enough_space_for_files">Няма достатъчно място за файловете</string>
+    <string name="account_migration_view_not_enough_space_to_receive">Няма достатъчно място, за да изтеглите базата данни</string>
+    <string name="account_migration_view_not_enough_space_to_upload">Няма достатъчно място, за да качите базата данни</string>
+    <string name="account_migration_view_start">Започване на миграция</string>
+    <string name="account_migration_view_state_canceled">Миграцията е отменена</string>
+    <string name="account_migration_view_state_list_files">Списък на файловете</string>
+    <string name="account_migration_view_state_negotiate">Изчакване</string>
+    <string name="account_migration_view_state_send_account">Изпращане на акаунта</string>
+    <string name="account_migration_view_state_send_database">Изпращане на базата данни</string>
+    <string name="account_migration_view_state_send_files">Изпращане на файлове</string>
+    <string name="account_migration_view_state_send_settings">Изпращане на настройките на приложението</string>
+    <string name="account_migration_view_state_terminate">Миграцията е почти завършена.</string>
+    <string name="account_migration_view_state_wait_account">Изчакване на другия акаунт</string>
+    <string name="account_migration_view_state_wait_connect">Изчакване на повторно свързване</string>
+    <string name="account_migration_view_state_wait_files">Изчакване за получаване на файлове и база данни.</string>
+    <string name="account_migration_view_stop">Спиране на миграцията</string>
+    <string name="account_migration_view_success_message">Миграцията приключи успешно</string>
+    <string name="account_migration_view_transfer_in_progress">Прехвърлянето на данни е в ход</string>
+
+    <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_message">Покажете този екран на всяко устройство и едното да сканира QR-кода на другото.</string>
+    <string name="account_migration_scanner_view_message_older_version">Това устройство използва стара, несъвместима версия на ОС, което ще доведе до загуба на всички връзки на целевото устройство по време на прехвърлянето. Искате ли въпреки това да продължите?</string>
+    <string name="account_migration_scanner_view_message_older_version_target">Целевото устройство използва стара, несъвместима версия на ОС, което ще доведе до загуба на всички ваши връзки по време на прехвърлянето. Искате ли въпреки това да продължите?</string>
+    <string name="account_migration_scanner_view_migration_start_from_another_device_message">За да стартирате миграция, сканирайте този QR-код от другото устройство</string>
+    <string name="account_migration_scanner_view_migration_start_from_current_device_message">Сканирайте QR-кода, показан в секцията „Акаунт / Прехвърляне от друго устройство“ в страничното меню на другото устройство.</string>
+    <string name="account_migration_scanner_view_scan_title">Сканиране</string>
+    <string name="account_migration_scanner_view_stop_scan_title">Спиране на сканирането</string>
+
+    <!-- AddCallParticipantActivity -->
+    <string name="add_call_participant_view_title">Добавяне на участник към разговора</string>
+
+    <!-- AddContactActivity -->
+    <string name="add_contact_view_gallery_title">Импорт от галерия</string>
+    <string name="add_contact_view_in_person_subtitle">Поканете човек близо до вас</string>
+    <string name="add_contact_view_in_person_title">На живо</string>
+    <string name="add_contact_view_invitation_code_title">Мини-код</string>
+    <string name="add_contact_view_invite">Покани</string>
+    <string name="add_contact_view_invite_message">Отворете уеб адреса %1$s с Skred на вашето мобилно устройство или сканирайте QR-кода, за да се свържете лично с „%2$s“</string>
+    <string name="add_contact_view_invite_subject">Покана от Skred</string>
+    <string name="add_contact_view_message">Помолете вашия приятел близо до вас да сканира вашия QR-код за покана с Skred или натиснете бутона „Сканиране“, за да сканирате кода на вашия приятел.</string>
+    <string name="add_contact_view_onboarding_message">Skred не познава вашите приятели и не може да ги открие. Трябва лично да ги поканите – с Skred, когато са близо до вас, или като им изпратите покана по друг начин.</string>
+    <string name="add_contact_view_scan_code">Сканиране на QR-код за покана</string>
+    <string name="add_contact_view_scan_error_corrupt_link">Тази връзка е повредена.</string>
+    <string name="add_contact_view_scan_error_expired_link">Тази поканителна връзка е изтекла.</string>
+    <string name="add_contact_view_scan_error_incorrect_link">Тази връзка е неправилна.</string>
+    <string name="add_contact_view_scan_error_not_managed_link">Тази връзка не се управлява от приложението.</string>
+    <string name="add_contact_view_scan_error_revoked_link">Тази връзка е изтрита.</string>
+    <string name="add_contact_view_scan_message_call_link">Тази връзка съответства на „кликни за обаждане“</string>
+    <string name="add_contact_view_scan_message_invitation_link">Тази връзка съответства на покана за контакт</string>
+    <string name="add_contact_view_scan_message_migration_link">Тази връзка съответства на миграция на акаунт</string>
+    <string name="add_contact_view_scan_message_transfer_link">Тази връзка съответства на прехвърляне на разговор</string>
+    <string name="add_contact_view_scan_title">Сканиране</string>
+    <string name="add_contact_view_share_image_message">Импортирайте или сканирайте този QR код за покана със Skred, за да добавите \"%1$s\" като контакт.</string>
+    <string name="add_contact_view_share_message_part_1">%1$s ви кани да влезете в частна връзка в Skred.</string>
+    <string name="add_contact_view_share_message_part_2">Skred е peer-to-peer услуга за съобщения с крайно криптиране и HD гласови/видео разговори. Не е необходима регистрация.</string>
+    <string name="add_contact_view_share_message_part_3">Отворете този URL адрес със Skred на мобилното си устройство, за да добавите \"%1$s\" като контакт:</string>
+    <string name="add_contact_view_share_message_part_4">Като алтернатива можете да импортирате или сканирате QR кода за покана в приложеното изображение със Skred.</string>
+    <string name="add_contact_view_share_title">%1$s ви кани в Skred</string>
+    <string name="add_contact_view_social_subtitle">съобщение, имейл, социална мрежа</string>
+    <string name="add_contact_view_social_title">Изпращане на кода чрез приложение</string>
+    <string name="add_contact_view_title">Покана</string>
+
+    <!-- AddGroupMemberActivity -->
+    <string name="add_group_member_view_add">Добави</string>
+    <string name="add_group_member_view_title">Добавяне на членове</string>
+
+    <!-- AdminRoomActivity -->
+    <string name="admin_room_view_welcome_message">Приветствено съобщение</string>
+
+    <!-- AudioCallActivity -->
+    <string name="audio_call_view_calling">Обаждане…</string>
+    <string name="audio_call_view_cannot_call">Не може да се извърши гласово обаждане</string>
+    <string name="audio_call_view_connecting">Свързване…</string>
+    <string name="audio_call_view_hangup">Затваряне</string>
+    <string name="audio_call_view_hangup_confirmation">Искате ли да затворите разговора?</string>
+    <string name="audio_call_view_terminate">Разговорът беше прекратен</string>
+    <string name="audio_call_view_terminate_busy">Разговорът е прекратен: &lt;b&gt;%1$s&lt;/b&gt; е зает</string>
+    <string name="audio_call_view_terminate_cancel">Разговорът е отменен от &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_connectivity_error">Разговорът е прекратен: мрежова грешка</string>
+    <string name="audio_call_view_terminate_decline">Разговорът е отказан от &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_gone">Разговорът е прекратен: &lt;b&gt;%1$s&lt;/b&gt; е офлайн</string>
+    <string name="audio_call_view_terminate_not_authorized">Вашият контакт не е предоставил необходимите разрешения за разговор (например микрофон, камера).</string>
+    <string name="audio_call_view_terminate_revoked">Разговорът е приключен: &lt;b&gt;%1$s&lt;/b&gt; е изтрил връзката с вас.</string>
+    <string name="audio_call_view_terminate_success">Разговорът е прекратен от &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="audio_call_view_terminate_timeout">Разговорът е прекратен: &lt;b&gt;%1$s&lt;/b&gt; не отговаря</string>
+    
+    <!-- AuthentifiedRelationActivity -->
+    <string name="authentified_relation_view_certified_message">Вашата връзка с %1$s е вече сертифицирана.</string>
+    <string name="authentified_relation_view_certify_by_scan">Сертифициране чрез сканиране на QR‑код</string>
+    <string name="authentified_relation_view_certify_by_video_call">Сертифициране чрез видеоразговор</string>
+    <string name="authentified_relation_view_certify_by_video_call_missing_capability">%1$s трябва да разреши видеоразговори, за да може връзката да бъде сертифицирана чрез видеоразговор.</string>
+    <string name="authentified_relation_view_level_2">За да сертифицирате тази връзка, трябва да сканирате QR‑кода, показан на устройството на %1$s.</string>
+    <string name="authentified_relation_view_level_3">За да сертифицирате тази връзка, устройството на %1$s трябва да сканира този QR‑код.</string>
+    <string name="authentified_relation_view_level_4">Вашата връзка с %1$s е сертифицирана.</string>
+    <string name="authentified_relation_view_onboarding_message">„Сертифицирана“ връзка гарантира, че винаги комуникирате с правилния човек, дори ако услугата е компрометирана от трета страна.</string>
+    <string name="authentified_relation_view_onboarding_subtitle">Уверете се, че винаги разговаряте с правилния човек!</string>
+    <string name="authentified_relation_view_relation_print_message">Този отпечатък трябва да бъде идентичен на двете устройства.</string>
+    <string name="authentified_relation_view_relation_print_title">Отпечатък на връзката</string>
+    <string name="authentified_relation_view_start">Започване на сертифициране</string>
+    <string name="authentified_relation_view_title">Сертифицирана връзка</string>
+    <string name="authentified_relation_view_to_be_certified_title">Сертифициране на връзката</string>
+
+    <!-- BackupActivity -->
+    <string name="backup_view_backup">Архив</string>
+    <string name="backup_view_beta_message_part_1">Услугата за архивиране/възстановяване се предлага в BETA тестване, за да се идентифицират потенциални проблеми преди общото ѝ пускане.</string>
+    <string name="backup_view_beta_message_part_2">Тази услуга е предназначена да архивира само метаданни на акаунта (профили, контакти, групи) във външно хранилище, за да могат по-късно да бъдат възстановени на друго устройство, ако оригиналът бъде откраднат или унищожен.</string>
+    <string name="backup_view_beta_message_part_3">Услугата за прехвърляне на акаунт трябва да се използва за прехвърляне на всички данни на акаунта (включително разговори) от едно (старо) устройство към друго (ново) устройство, когато и двете устройства са налични.</string>
+    <string name="backup_view_confirm_message">За да възстановите архива, трябва да въведете 12-те думи по-горе в този ред, за да може той да бъде декриптиран.</string>
+    <string name="backup_view_content">Съдържание</string>
+    <string name="backup_view_content_diff_added">Добавено</string>
+    <string name="backup_view_content_diff_updated">Променено</string>
+    <string name="backup_view_content_diff_deleted">Изтрито</string>
+    <string name="backup_view_content_diff_message">Ето промените спрямо текущите ви данни:</string>
+    <string name="backup_view_content_info">Резервните копия не включват разговори, известия и история.</string>
+    <string name="backup_view_error_words">Въведените думи не позволяват архивът да бъде декриптиран.</string>
+    <string name="backup_view_generate_word">Генерирай</string>
+    <string name="backup_view_last_backup">Последен архив на %1$s</string>
+    <string name="backup_view_new_backup">Нов архив</string>
+    <string name="backup_view_onboarding">Направете криптирано резервно копие на данните от акаунта (пространства, профили, контакти, групи, click-to-call), което може да бъде възстановено на това или друго устройство.</string>
+    <string name="backup_view_reminder">Последният ви архив е създаден преди повече от 30 дни.</string>
+    <string name="backup_view_save_file_message">Запазете файла с архива на избраното от вас устройство и съхранете паролите за по-късно възстановяване.</string>
+    <string name="backup_view_security">Сигурност</string>
+    <string name="backup_view_security_info">Ключът за криптиране на архива е представен от серия от 12 думи, които ще са необходими за възстановяване.</string>
+    <string name="backup_view_success">Архивирането завърши успешно!</string>
+    <string name="backup_view_success_info">Запазете този списък от 12 думи, за да можете да възстановите този архив.</string>
+    <string name="backup_view_title">Архив</string>
+    <string name="backup_view_use_last_backup_words">Използвайте същия списък с думи като при последния архив.</string>
+    <string name="backup_view_verify_completed">Проверката е завършена!</string>
+    <string name="backup_view_verify_message">Можете също да проверите целостта на архивен файл и дали данните в него са актуални от: Акаунт/Проверка на архив.</string>
+    <string name="backup_view_verify_up_to_date">Вашият архив е актуален.</string>
+    <string name="backup_view_verify_not_up_to_date">Вашият архив не е актуален.</string>
+    <string name="backup_view_verify_words">За да проверите архив, трябва да въведете последователността от 12 думи, за да го декриптирате.</string>
+    <string name="backup_view_wait_message">Не напускайте този екран, докато архивирането е в ход.</string>
+
+    <!-- BackupsActivity -->
+    <string name="backups_view_invalidate_backup">Обезсили моите архиви</string>
+    <string name="backups_view_invalidate_backup_message_part_one">Всички ваши предишни архиви ще станат невалидни и вече няма да могат да бъдат възстановени.</string>
+    <string name="backups_view_invalidate_backup_message_part_two">Не забравяйте да създадете нов архив, който може да бъде възстановен на това или друго устройство.</string>
+    <string name="backups_view_no_backup_message">На това устройство не е направен архив.</string>
+
+    <!-- CallActivity -->
+    <string name="call_view_audio_source_bluetooth">Bluetooth звук</string>
+    <string name="call_view_audio_source_device">Слушалки на устройството</string>
+    <string name="call_view_audio_source_earphones">Слушалки</string>
+    <string name="call_view_audio_source_headset">Аудио слушалки</string>
+    <string name="call_view_audio_source_loudspeaker">Високоговорител</string>
+    <string name="call_view_battery_restriction_message">Внимание! Трябва да разрешите използването на батерия във фонов режим, за да избегнете прекъсвания на микрофона по време на разговор.</string>
+    <string name="call_view_camera_control">Контрол на камерата</string>
+    <string name="call_view_camera_control_ask_message">Помолете %1$s да ви позволи да контролирате камерата му/й по време на видеоразговора.</string>
+    <string name="call_view_camera_control_confirm_message">%1$s би искал/а да контролира вашата камера по време на разговора. Можете да възстановите контрола по всяко време.</string>
+    <string name="call_view_camera_control_denied">%1$s не ви позволява да контролирате камерата му/й.</string>
+    <string name="call_view_camera_control_message">Контрол на камерата на %1$s</string>
+    <string name="call_view_camera_control_needs_help">Нуждаете се от помощ?</string>
+    <string name="call_view_camera_control_onboarding">Ако контактът ви го позволи, можете да поемете контрол над неговата камера по време на видеоразговор и например да увеличите изображението. Това е особено полезно за контрол на камера за видеонаблюдение.</string>
+    <string name="call_view_camera_control_onboarding_part_2">С разрешението на ваш близък можете да контролирате неговата камера по време на разговор, за да му помогнете дистанционно, лесно и сигурно.</string>
+    <string name="call_view_camera_control_remotely">%1$s контролира камерата ви дистанционно.</string>
+    <string name="call_view_camera_control_stop">Спри</string>
+    <string name="call_view_certify_error_message">%1$s не валидира думата. Сертифицирането на връзката се провали и трябва да опитате отново.</string>
+    <string name="call_view_certify_onboarding_message">Видеоразговорът ви позволява да се идентифицирате взаимно и да размените ключовете за сигурност, свързани със сертифицираната връзка и нейните обменни данни.</string>
+    <string name="call_view_certify_onboarding_start_message">На свой ред изговаряйте думата, показана на екрана ви, която другият може да провери. След като всички думи бъдат проверени, връзката ви с %1$s ще бъде сертифицирана.</string>
+    <string name="call_view_certify_onboarding_title">Сертифицирайте вашата връзка</string>
+    <string name="call_view_certify_video_message">Разговорът трябва да бъде във видео режим, за да се сертифицира връзката.</string>
+    <string name="call_view_coach_mark">Докоснете тук, за да добавите участник към този разговор</string>
+    <string name="call_view_confirm_word">Думата, произнесена от %1$s, същата ли е?</string>
+    <string name="call_view_confirm_word_title">Потвърдете думата</string>
+    <string name="call_view_connected_bluetooth">Аудио потокът беше пренасочен към Bluetooth устройство.</string>
+    <string name="call_view_connected_speaker">Аудио потокът беше пренасочен към високоговорителя.</string>
+    <string name="call_view_error_call_interrupted">Разговорът беше прекъснат, грешка: %1$d.</string>
+    <string name="call_view_error_call_not_go_thru">Разговорът не можа да бъде осъществен, грешка: %1$d.</string>
+    <string name="call_view_location_background_warning">Предупреждение: ако приложението работи във фонов режим, позицията ви вече няма да се споделя с контакта ви. Трябва да разрешите на приложението винаги да има достъп до местоположението на това устройство.</string>
+    <string name="call_view_location_exact_warning">Имайте предвид, че не споделяте точното си местоположение. Можете да промените необходимите разрешения в настройките на приложението.</string>
+    <string name="call_view_location_share">Сподели местоположението ми</string>
+    <string name="call_view_location_share_message">Вече споделяте местоположението си по време на разговора.</string>
+    <string name="call_view_location_stop">Спри да споделяш местоположението ми</string>
+    <string name="call_view_max_participant_message">Достигнат е максималният брой участници в групов разговор (%1$d).</string>
+    <string name="call_view_not_supported_group_call_message">Версията на приложението на %1$s не е съвместима с групови разговори и се нуждае от актуализация.</string>
+    <string name="call_view_quality_message">Как бихте го оценили?</string>
+    <string name="call_view_quality_title">Качество на разговора</string>
+    <string name="call_view_repeat_word">%1$s ще може да я сравни с тази на неговия/нейния екран.</string>
+    <string name="call_view_repeat_word_title">Изговорете думата</string>
+    <string name="call_view_tag_add_to_call">Поканете контакт да се присъедини към текущия разговор</string>
+    <string name="call_view_tag_camera">Камера</string>
+    <string name="call_view_tag_camera_activate">Активиране на камерата</string>
+    <string name="call_view_tag_camera_cut">Спиране на камерата</string>
+    <string name="call_view_tag_camera_flip">Смяна на камерата</string>
+    <string name="call_view_tag_microphone">Микрофон</string>
+    <string name="call_view_tag_microphone_activate">Активиране на микрофона</string>
+    <string name="call_view_tag_microphone_mute">Изключване на микрофона</string>
+    <string name="call_view_tag_pause">Пауза</string>
+    <string name="call_view_tag_send_message">Изпрати съобщение</string>
+    <string name="call_view_tag_speaker">Високоговорител</string>
+    <string name="call_view_tag_speaker_activate">Активиране на високоговорителя</string>
+    <string name="call_view_tag_speaker_mute">Без звук</string>
+    <string name="call_view_transfer_call_message">Текущият разговор беше прехвърлен.</string>
+    <string name="call_view_try_to_call_back">Опитайте да се обадите обратно.</string>
+    <string name="call_view_waiting_conference_call">"Все още никой не се е присъединил към разговора. Моля, изчакайте… "</string>
+
+    <!--  CallsFragment -->
+    <string name="calls_view_all_call_segmented_control">Всички</string>
+    <string name="calls_view_call_again_message">Искате ли да се обадите отново на %1$s?</string>
+    <string name="calls_view_call_again_title">Обаждане обратно</string>
+    <string name="calls_view_create_link">Създаване на връзка „кликни за обаждане“</string>
+    <string name="calls_view_incoming_call">Входящо обаждане</string>
+    <string name="calls_view_missed_call">Пропуснато обаждане</string>
+    <string name="calls_view_missed_call_segmented_control">Пропуснати</string>
+    <string name="calls_view_no_call_message">Пропуснатите обаждания се показват тук.</string>
+    <string name="calls_view_no_call_title">Все още не сте провеждали обаждания.</string>
+    <string name="calls_view_outgoing_call">Изходящо обаждане</string>
+    <string name="calls_view_reset">Сигурни ли сте, че искате да нулирате всички известия за обаждания?</string>
+    <string name="calls_view_reset_title">Нулиране на известията за обаждания</string>
+    <string name="calls_view_title">Обаждания</string>
+    
+    <!-- CaptureActivity -->
+    <string name="capture_view_create_camera_error">Камерата вече се използва</string>
+    <string name="capture_view_incorrect_qrcode">Невалиден Skredcode</string>
+    <string name="capture_view_message">Поставете QR кода в този правоъгълник, за да го сканирате.</string>
+    <string name="capture_view_no_camera">Необходима е камера, за да се сканира Skredcode</string>
+    <string name="capture_view_qrcode_saved">Кодът за покана е запазен в снимките.</string>
+    
+    <!-- CleanupActivity -->
+    <string name="cleanup_view_all">Изчисти всичко</string>
+    <string name="cleanup_view_both_clean">Пълно изчистване (локално и отдалечено)</string>
+    <string name="cleanup_view_both_clean_title">Пълно изчистване</string>
+    <string name="cleanup_view_clean">Изтрий</string>
+    <string name="cleanup_view_conversation">Разговор с %s</string>
+    <string name="cleanup_view_delete_confirmation_message">Изтриването е необратимо. Експортирайте важните данни преди да продължите. Продължавате ли?</string>
+    <string name="cleanup_view_error">Възникна грешка по време на операцията.</string>
+    <string name="cleanup_view_expiration">Условия за изтичане</string>
+    <string name="cleanup_view_free">Свободно</string>
+    <string name="cleanup_view_info">Изтриването на съобщения, медии и файлове от този разговор не ги премахва от устройството на вашия контакт и няма да можете да го направите по‑късно.</string>
+    <string name="cleanup_view_info_both">Изтриването на съобщения, медии и файлове от този разговор ги премахва и от устройството на вашия контакт.</string>
+    <string name="cleanup_view_local_cleanup">Само локално изчистване</string>
+    <string name="cleanup_view_local_cleanup_title">Локално изчистване</string>
+    <string name="cleanup_view_medias_and_files">Само медии и файлове</string>
+    <string name="cleanup_view_medias_and_files_info">Миниатюрите на медиите не се премахват от разговора; изтриват се само оригиналните файлове.</string>
+    <string name="cleanup_view_medias_and_files_info_both">Файловете, снимките, видеата и гласовите бележки, обменени в този разговор, ще бъдат изтрити както от вашето устройство, така и от устройството на контакта ви.</string>
+    <string name="cleanup_view_messages">Всички съобщения и друго съдържание</string>
+    <string name="cleanup_view_messages_info">Съобщения от всякакъв тип (текст, снимка, видео, гласови, файлове и др.) ще бъдат изтрити от приложението.</string>
+    <string name="cleanup_view_month">%1$d месеца</string>
+    <string name="cleanup_view_older_than">По‑стари от</string>
+    <string name="cleanup_view_one_year">1 година</string>
+    <string name="cleanup_view_prior_to">Преди</string>
+    <string name="cleanup_view_reset_conversation_message">Нулирането на този разговор ще изтрие всички съобщения, включително тези на устройството на вашия контакт.</string>
+    <string name="cleanup_view_select_content">Изберете какво искате да изтриете.</string>
+    <string name="cleanup_view_storage_title">Дисково пространство</string>
+    <string name="cleanup_view_success">Операцията приключи успешно.</string>
+    <string name="cleanup_view_title">Почистване на разговор</string>
+    <string name="cleanup_view_total">Общо</string>
+    <string name="cleanup_view_used">Използвано</string>
+    
+    <!-- CoachMarkView -->
+    <string name="coach_mark_view_setting_title">Подсказки</string>
+
+    <!-- ContactCapabilitiesActivity -->
+    <string name="contact_capabilities_view_allow_incoming_calls">Разреши на този контакт да се обажда</string>
+    <string name="contact_capabilities_view_automatic_answering">Автоматично отговаряне на входящи обаждания</string>
+    <string name="contact_capabilities_view_automatic_answering_message">Внимание: тази настройка активира автоматичен отговор на обаждания от този контакт, включително отваряне на микрофона и камерата (за видеоразговори).</string>
+    <string name="contact_capabilities_view_automatic_answering_restriction">Някои устройства може да ограничават тази функция.</string>
+    <string name="contact_capabilities_view_call_settings">Настройки на обажданията</string>
+    <string name="contact_capabilities_view_camera_control_allow">Винаги</string>
+    <string name="contact_capabilities_view_camera_control_ask">Питай при всяко обаждане</string>
+    <string name="contact_capabilities_view_camera_control_information">Позволете на този контакт автоматично да поеме контрол над камерата ви по време на видеоразговор.</string>
+    <string name="contact_capabilities_view_camera_control_never">Никога</string>
+    <string name="contact_capabilities_view_camera_control_onboarding">Можете да помолите контакт, който има достъп до премиум версията, да контролира вашата камера по време на видеоразговор.</string>
+    <string name="contact_capabilities_view_discreet_relation">Дискретна връзка</string>
+    <string name="contact_capabilities_view_information_audio_call">Позволи на контакта да се обажда с гласово обаждане.</string>
+    <string name="contact_capabilities_view_information_discreet_relation">Не показва името на контакта в известията и не записва обажданията в историята.</string>
+    <string name="contact_capabilities_view_information_limited_call">Задайте дни/часове, в които не искате да бъдете безпокоени.</string>
+    <string name="contact_capabilities_view_information_programmed_call">Планирайте дните/часовете, в които желаете да бъдете извикани.</string>
+    <string name="contact_capabilities_view_information_video_call">Позволи на контакта да прави видеообаждания.</string>
+
+    <!-- ContactPickerActivity -->
+    <string name="contact_picker_view_address_book_access_denied_message">Не получихме разрешение за достъп до вашите контакти</string>
+    <string name="contact_picker_view_address_book_access_denied_title">Достъпът е отказан</string>
+    <string name="contact_picker_view_subtitle">ПОКАНИ ПО ТЕЛЕФОНЕН НОМЕР</string>
+    <string name="contact_picker_view_title">Поканете приятел от контактите</string>
+
+    <!-- ContactSpaceActivity -->
+    <string name="contact_space_view_move_message">Наистина ли искате да преместите този контакт?</string>
+    <string name="contact_space_view_move_title">Премести</string>
+
+    <!-- ContactsFragment -->
+    <string name="contacts_view_add_contact_subtitle">Поканете някого да сканира вашия код за покана или сканирайте техния…</string>
+    <string name="contacts_view_invite_contact_title">Покани контакт</string>
+    <string name="contacts_view_scan_contact_title">Сканиране или въвеждане на код за покана</string>
+    <string name="contacts_view_title">Контакти</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversation_view_audio_call">Гласово обаждане</string>
+    <string name="conversation_view_audio_message">Гласово съобщение</string>
+    <string name="conversation_view_call_missed">пропуснато</string>
+    <string name="conversation_view_cannot_send">Не може да се изпратят съобщения веднага:</string>
+    <string name="conversation_view_cleanup_conversation">Изтрихте някои стари съобщения.</string>
+    <string name="conversation_view_cleanup_conversation_by_peer">%1$s изтри някои стари съобщения.</string>
+    <string name="conversation_view_delete_message">Вашето съобщение беше изтрито.</string>
+    <string name="conversation_view_edit_message">Съобщението може да бъде редактирано на устройството на вашия контакт само ако тяхната версия на приложението е актуална.</string>
+    <string name="conversation_view_empty_message">Кажете нещо умно… или забавно!</string>
+    <string name="conversation_view_ephemeral_coach_mark">Задръжте изпращащата стрелка, за да зададете изтриване на това съобщение след определено време.</string>
+    <string name="conversation_view_feature_not_supported_by_peer">Версията на вашия контакт не поддържа тази функция.&lt;br /&gt;Моля, помолете го/я да актуализира Skred.</string>
+    <string name="conversation_view_group_member_information">%1$d членове</string>
+    <string name="conversation_view_group_not_allowed_post_message">Изпращането на съобщения не е разрешено</string>
+    <string name="conversation_view_group_one_member">1 член</string>
+    <string name="conversation_view_info">:lock Чат съобщенията са криптирани на телефона ви и по време на предаването им.          За да се осигури най-високо ниво на сигурност на данните, те се изпращат директно до телефона на %s чрез peer-to-peer връзка без посреднически сървър.</string>
+    <string name="conversation_view_invitation_accepted">Поканата е приета</string>
+    <string name="conversation_view_invitation_failed">Помолете контакта да актуализира Skred</string>
+    <string name="conversation_view_invitation_joined">Член на групата</string>
+    <string name="conversation_view_invitation_pending">Покана в процес</string>
+    <string name="conversation_view_invitation_refused">Поканата е отказана</string>
+    <string name="conversation_view_invitation_title">Каня ви да се присъедините към групата</string>
+    <string name="conversation_view_local_cleanup">Основното съдържание е изтрито локално.</string>
+    <string name="conversation_view_manage_conversation">Управление на разговора</string>
+    <string name="conversation_view_media_quality_original">Оригинална резолюция (HD)</string>
+    <string name="conversation_view_media_quality_original_subtitle">Без мащабиране – по-бавно изпращане</string>
+    <string name="conversation_view_media_quality_standard">Стандартна резолюция (SD)</string>
+    <string name="conversation_view_media_quality_standard_subtitle">По-малък размер – по-бързо изпращане</string>
+    <string name="conversation_view_media_quality_title">Резолюция на медията</string>
+    <string name="conversation_view_menu_item_view_copy_message">Копирано в клипборда!</string>
+    <string name="conversation_view_menu_item_view_copy_title">Копирай</string>
+    <string name="conversation_view_menu_item_view_delete_title">Изтрий</string>
+    <string name="conversation_view_menu_item_view_forward_title">Препрати</string>
+    <string name="conversation_view_menu_item_view_info_title">Информация</string>
+    <string name="conversation_view_menu_item_view_operation_not_allowed">Операцията не е разрешена от подателя</string>
+    <string name="conversation_view_menu_item_view_reply_title">Отговори</string>
+    <string name="conversation_view_menu_item_view_save_message">Запазено!</string>
+    <string name="conversation_view_menu_item_view_save_title">Запази</string>
+    <string name="conversation_view_menu_item_view_share_title">Сподели</string>
+    <string name="conversation_view_message">Въведете съобщение</string>
+    <string name="conversation_view_photo_camera">Фотоапарат</string>
+    <string name="conversation_view_record_confirm_send_record">Натиснете отново, за да изпратите</string>
+    <string name="conversation_view_record_start_record">Натиснете и задръжте, за да записвате</string>
+    <string name="conversation_view_record_title">Запис</string>
+    <string name="conversation_view_reduce_menu_lower">Стандартно</string>
+    <string name="conversation_view_reduce_menu_minimal">Минимално</string>
+    <string name="conversation_view_reduce_menu_original">Оригинално</string>
+    <string name="conversation_view_reduce_menu_original_subtitle">Без мащабиране</string>
+    <string name="conversation_view_reject_stream">Откажи</string>
+    <string name="conversation_view_reply_to">Отговор към %1$s</string>
+    <string name="conversation_view_reset_conversation">Нулирахте разговора</string>
+    <string name="conversation_view_reset_conversation_by_peer">%1$s нулира разговора</string>
+    <string name="conversation_view_send_file_warning">Внимание: не е възможно да се попречи на получателя да копира/запази/сподели документ (pdf, word, ppt, excel, zip и др.), тъй като той се отваря извън приложението. Искате ли все пак да го изпратите?</string>
+    <string name="conversation_view_send_large_file_message">Този файл е голям (%1$d MB). Искате ли да продължите?</string>
+    <string name="conversation_view_send_menu_allow_copy">Разреши получателят да копира/запази/сподели това съдържание</string>
+    <string name="conversation_view_send_quality_size">Голям файл (%1$s).</string>
+    <string name="conversation_view_send_quality_standard">Изпрати в стандартна резолюция (SD)</string>
+    <string name="conversation_view_send_quality_warning">Можете да намалите резолюцията до SD за по-бързо изпращане.</string>
+    <string name="conversation_view_stream_dialog">Искате ли да го приемете?</string>
+    <string name="conversation_view_unsupported_media">Неподдържан медиен формат.</string>
+    <string name="conversation_view_video_call">Видеообаждане</string>
+    <string name="conversation_view_video_camera">Видео камера</string>
+
+    <!-- ConversationFilesActivity -->
+    <string name="conversation_files_view_documents">Док.</string>
+    <string name="conversation_files_view_links">Връзки</string>
+    <string name="conversation_files_view_month">Този месец</string>
+    <string name="conversation_files_view_no_files">Вашият разговор с %1$s не съдържа такива елементи.</string>
+    <string name="conversation_files_view_title">Медии, уеб връзки и документи</string>
+
+    <!-- ConversationSettingsActivity -->
+    <string name="conversation_settings_view_background_colors">Фонове и цветове</string>
+    <string name="conversation_settings_view_emoji_size">Размер на емоджитата</string>
+    <string name="conversation_settings_view_link_preview">Преглед</string>
+    <string name="conversation_settings_view_link_preview_message">Показване на предварителен преглед на уебсайта.</string>
+    <string name="conversation_settings_view_link_title">Уеб връзки</string>
+
+    <!-- ConversationsFragment -->
+    <string name="conversations_view_no_conversation_message">Съобщенията с криптиране от край до край се обменят peer‑to‑peer, директно между устройствата, без междинен сървър = без следи в облака.</string>
+    <string name="conversations_view_no_result_found">Няма намерени резултати за „%1$s“.</string>
+    <string name="conversations_view_start">Започнете разговор</string>
+    <string name="conversations_view_title">Разговори</string>
+    <string name="conversations_view_you">Вие</string>
+
+    <!-- CreateExternalCallActivity -->
+    <string name="create_external_call_view_call_configuration">Конфигурация на обаждане</string>
+    <string name="create_external_call_view_call_type">Тип обаждане</string>
+    <string name="create_external_call_view_conference_call_description">Присъединете се към конферентен разговор директно през браузър. Идеално за бизнес или семейни срещи.</string>
+    <string name="create_external_call_view_conference_call_short_title">Конферентен</string>
+    <string name="create_external_call_view_conference_call_title">Конферентно обаждане</string>
+    <string name="create_external_call_view_continuous_link_description">Без ограничения за валидността на връзката</string>
+    <string name="create_external_call_view_continuous_link_title">Постоянна</string>
+    <string name="create_external_call_view_create_message">Въведете името, изображението и описанието на темата на разговора.</string>
+    <string name="create_external_call_view_name_required">За да представите този \"Click-to-call\", са необходими име и изображение.</string>
+    <string name="create_external_call_view_delete_link_setting">Автоматично деактивиране на връзката след изтичане на зададения период</string>
+    <string name="create_external_call_view_direct_call_description">Получавайте обаждания директно от хора, които нямат приложението.</string>
+    <string name="create_external_call_view_direct_call_short_title">Директно</string>
+    <string name="create_external_call_view_direct_call_title">Директно обаждане</string>
+    <string name="create_external_call_view_group_call_description">До 8 участници</string>
+    <string name="create_external_call_view_link_validity">Валидност на връзката</string>
+    <string name="create_external_call_view_message">Този профил се показва на гостите, които ще ви се обаждат чрез този „кликни за обаждане“ линк.</string>
+    <string name="create_external_call_view_notification_setting">Получавайте известие веднага щом първият участник се присъедини.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_1">Click‑to‑call позволява на гости да ви се обаждат или да се присъединят към конферентен разговор (Click‑to‑meet) през браузър, без да инсталират приложението.</string>
+    <string name="create_external_call_view_onboarding_part_1_message_2">Всеки случай има име, изображение и описание, представящи темата на разговора, например:</string>
+    <string name="create_external_call_view_onboarding_part_1_message_3">вашето обслужване на клиенти</string>
+    <string name="create_external_call_view_onboarding_part_1_message_4">колата, която продавате</string>
+    <string name="create_external_call_view_onboarding_part_1_message_5">професионален групов разговор</string>
+    <string name="create_external_call_view_onboarding_part_1_message_6">видео звънец за куриери.</string>
+    <string name="create_external_call_view_onboarding_part_2_message_1">„Click‑to‑call“ има атрибути, които уточняват дали е:</string>
+    <string name="create_external_call_view_onboarding_part_2_message_2">аудио и/или видео обаждане</string>
+    <string name="create_external_call_view_onboarding_part_2_message_3">индивидуално или групово обаждане</string>
+    <string name="create_external_call_view_onboarding_part_2_message_4">винаги активно или ограничено до конкретни дата и час.</string>
+    <string name="create_external_call_view_onboarding_part_3_message_1">Споделете „click‑to‑call“ връзката или QR‑кода чрез канали, достигащи правилната аудитория, например:</string>
+    <string name="create_external_call_view_onboarding_part_3_message_2">„call‑to‑action“ бутон на вашия сайт</string>
+    <string name="create_external_call_view_onboarding_part_3_message_3">обява в платформа за обяви</string>
+    <string name="create_external_call_view_onboarding_part_3_message_4">имейл до хората, поканени в груповия разговор</string>
+    <string name="create_external_call_view_onboarding_part_3_message_5">табела на входната ви врата за куриерите.</string>
+    <string name="create_external_call_view_onboarding_part_4_message_1">Получателите сканират QR‑кода и отварят връзката в браузър на мобилния си телефон или компютър. След това могат да:</string>
+    <string name="create_external_call_view_onboarding_part_4_message_2">Променят името по подразбиране (Guest), което ги представя в разговора</string>
+    <string name="create_external_call_view_onboarding_part_4_message_3">Ви се обадят чрез натискане на бутона „Call“ на страницата</string>
+    <string name="create_external_call_view_onboarding_part_4_message_4">След разговора да оставят страницата отворена, за да ви се обадят отново.</string>
+    <string name="create_external_call_view_onboarding_title_2">Настройване на Click‑to‑call</string>
+    <string name="create_external_call_view_onboarding_title_3">Споделяне на Click‑to‑call</string>
+    <string name="create_external_call_view_onboarding_title_4">Използване на Click‑to‑call</string>
+    <string name="create_external_call_view_placeholder">Тема (Помощ, Обява, Среща, Звънец…)</string>
+    <string name="create_external_call_view_recurrent_link_description">Персонализирайте дните/часовете, когато връзката е валидна</string>
+    <string name="create_external_call_view_recurrent_link_title">Периодична</string>
+    <string name="create_external_call_view_unique_link_description">Задайте начална и крайна дата на валидността</string>
+    <string name="create_external_call_view_unique_link_title">Еднократна</string>
+
+    <!-- CreateGroupActivity -->
+    <string name="create_group_view_add_member_hint">Покани членове</string>
+    <string name="create_group_view_create">Създай</string>
+    <string name="create_group_view_member_allow_invitation_message">Разреши на членовете на групата да канят свои контакти</string>
+    <string name="create_group_view_member_allow_invitation_title">Покани от членове</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_message">Разреши на членовете да канят други членове като лични контакти</string>
+    <string name="create_group_view_member_allow_invite_member_as_contact_title">Създаване на лични контакти</string>
+    <string name="create_group_view_member_allow_post_message">Разреши на членовете на групата да публикуват съобщения</string>
+    <string name="create_group_view_member_allow_post_title">Публикуване на съобщения</string>
+    <string name="create_group_view_member_list">Списък на членовете (%1$d)</string>
+    <string name="create_group_view_name_hint">Име на групата</string>
+    <string name="create_group_view_subtitle">Поканете контакти да се присъединят към чат група.</string>
+    <string name="create_group_view_title">Група</string>
+
+    <!-- CreateProfileActivity -->
+    <string name="create_profile_view_incomplete_profile_message">Името И изображението са задължителни, за да могат контактите ви да ви разпознаят и различават.</string>
+    <string name="create_profile_view_message">Тази профилна информация се използва за поканване на контакти.</string>
+    <string name="create_profile_view_onboarding_message">Въведете профил (име и изображение), който ви представя пред вашите контакти.</string>
+    <string name="create_profile_view_onboarding_message_part_1">Профилите ви позволяват да каните контакти да създават връзки с вас в приложението. Можете да имате толкова профили (персони), колкото желаете, всеки асоцииран с конкретно „Пространство“.</string>
+    <string name="create_profile_view_onboarding_message_part_2">Всеки „Профил“ има „Име“ и „Изображение“ (задължителни), виждани от контактите, които каните, и използвани като началния ви профил за новосъздадените връзки в това Пространство.</string>
+    <string name="create_profile_view_onboarding_message_part_3">След създаване всяка връзка има свой собствен чифт „Профили“, представляващи вас и контакта ви един на друг.</string>
+    <string name="create_profile_view_onboarding_message_part_4">След това можете да персонализирате как бихте искали да бъдете представени пред всеки контакт, за всяка връзка поотделно.</string>
+    <string name="create_profile_view_save_message">Това име и изображение се използват, за да поканите контактите си и да инициализирате връзките си. Можете да ги променяте и персонализирате по-късно.</string>
+    <string name="create_profile_view_title">Задайте своя профил</string>
+    <string name="create_profile_view_welcome1">Въведете вашата профилна снимка</string>
+    <string name="create_profile_view_welcome2">Добре дошли, %1$s!</string>
+
+    <!-- CreateSpaceActivity -->
+    <string name="create_space_view_avatar_profile">Изображение</string>
+    <string name="create_space_view_contact_list">Преместване на контакти</string>
+    <string name="create_space_view_contacts_no_profile">За да преместите контакти в Space, трябва да завършите профила, който ви представя пред контактите ви. Искате ли да го завършите?</string>
+    <string name="create_space_view_message">„Пространствата“ са локални и невидими за вашите контакти.</string>
+    <string name="create_space_view_onboarding_message_part_1">„Пространствата“ ви помагат да организирате контактите си според социалния кръг, към който принадлежат — например семейство, приятели, бизнес, забавление и др.</string>
+    <string name="create_space_view_onboarding_message_part_2">Всяко „Пространство“ е асоциирано с „Профил“, представляващ персоната, която желаете да използвате при общуване с контактите от този социален кръг — например Татко, Джони, Д-р Джон Доу, Батман и др.</string>
+    <string name="create_space_view_onboarding_message_part_3">„Пространствата“ са локални за приложението на вашето устройство. Те са видими само за вас, не за контактите ви, нито за сървърите.</string>
+    <string name="create_space_view_onboarding_message_part_4">„Пространство“ има:</string>
+    <string name="create_space_view_onboarding_message_part_5">– „Име“, което представя конкретен социален кръг</string>
+    <string name="create_space_view_onboarding_message_part_6">– „Изображение“, което ви позволява да го разпознавате лесно</string>
+    <string name="create_space_view_onboarding_message_part_7">– цветова „Тема“, за да го персонализирате</string>
+    <string name="create_space_view_onboarding_message_part_8">– „Настройки“, които могат да бъдат специфични за всяко Пространство, заменяйки стойностите по подразбиране.</string>
+    <string name="create_space_view_profile_message">Трябва да въведете името и изображението, които ви представят пред контактите, които каните с този профил.</string>
+    <string name="create_space_view_space_hint">Име (Семейство, Приятели, Бизнес и т.н.)</string>
+    <string name="create_space_view_title">Създаване на Пространство</string>
+
+    <!-- CreateTransfertCallActivity -->
+    <string name="create_transfert_call_view_message">Този профил е свързан с кода, използван за прехвърляне на текущ разговор към браузър.</string>
+    <string name="create_transfert_call_view_name_placeholder">Моите прехвърляния на разговори</string>
+
+    <!-- DeleteAccountActivity -->
+    <string name="deleted_account_view_confirm_message">Въведете „OK“ по-долу, за да потвърдите изтриването на акаунта.</string>
+    <string name="deleted_account_view_delete">Изтриване на акаунта</string>
+    <!-- DeletedAccountActivity -->
+    <string name="deleted_account_view_message">Вашият акаунт беше изтрит и всички свързани данни бяха унищожени.&lt;br /&gt;Трябва да затворите приложението.</string>
+    <string name="deleted_account_view_warning">Внимание‼️</string>
+
+    <!-- EditContactActivity -->
+    <string name="edit_contact_view_confirm_message">Сигурни ли сте, че искате да изтриете тази връзка?</string>
+    <string name="edit_contact_view_message">Този контакт вече няма да може да ви достигне.</string>
+
+    <!-- EditExternalCallActivity -->
+    <string name="edit_external_call_view_delete_confirm_message">Сигурни ли сте, че искате да изтриете този „Click‑to‑Call“ код?</string>
+    <string name="edit_external_call_view_delete_message">Този „Click‑to‑Call“ линк повече няма да бъде използваем.</string>
+
+    <!-- EditProfileActivity -->
+    <string name="edit_profile_view_editing_profile">Редактиране на профил</string>
+    <string name="edit_profile_view_propagating_all_contacts">към всички контакти в това Пространство</string>
+    <string name="edit_profile_view_propagating_ask_message">Разпространете изображението, името или описанието, което току-що променихте:</string>
+    <string name="edit_profile_view_propagating_except_contacts">към всички, освен персонализираните</string>
+    <string name="edit_profile_view_propagating_message">Можете да разпространите промените в профила към вашите съществуващи контакти или да не го правите.</string>
+    <string name="edit_profile_view_propagating_no_contact">към никого</string>
+    <string name="edit_profile_view_propagating_profile">Разпространяване на промените в профила</string>
+
+    <!-- EnterInvitationCodeActivity-->
+    <string name="enter_invitation_code_view_certified_message">След като връзката бъде създадена, силно се препоръчва да я сертифицирате за по-добра сигурност.</string>
+    <string name="enter_invitation_code_view_enter_code">Въведете Мини-код</string>
+    <string name="enter_invitation_code_view_error_message">Този код е невалиден. Може вече да е използван или да е изтекъл.</string>
+    <string name="enter_invitation_code_view_invitation_message">След като връзката бъде създадена, не забравяйте да я сертифицирате за по-голяма сигурност.</string>
+    <string name="enter_invitation_code_view_message">Въведете Мини-кода, който вашият контакт ви е предоставил, за да създадете връзка.</string>
+    <string name="enter_invitation_code_view_onboarding_message">Контакт ви е дал 6‑знаков Мини‑код за създаване на връзка. Този еднократен код изтича 24 часа след създаването му.</string>
+
+    <!-- EditSpaceActivity -->
+    <string name="edit_space_view_contacts_no_profile">За да поканите контакт, трябва да завършите профила, който ви представя пред този контакт. Искате ли да го завършите?</string>
+    <string name="edit_space_view_delete_confirmation">Наистина ли сте сигурни, че искате да изтриете този Space?</string>
+    <string name="edit_space_view_delete_current_space">Не можете да изтриете текущо активния Space.</string>
+    <string name="edit_space_view_delete_message">Изтриването на Space премахва всички контакти, групи и разговори от този Space. Сигурни ли сте, че искате да изтриете този Space?</string>
+    <string name="edit_space_view_delete_only_one_space_message">Не можете да изтриете единствения Space в приложението.</string>
+
+    <!-- ExportActivity -->
+    <string name="export_view_all_conversations_zip_file">Съдържанието на разговорите ще бъде експортирано в ZIP файл.</string>
+    <string name="export_view_content_title">Съдържание</string>
+    <string name="export_view_content_to_export">Съдържание за експортиране</string>
+    <string name="export_view_do_not_leave_screen">Не напускайте екрана по време на експортирането.</string>
+    <string name="export_view_export">Експорт</string>
+    <string name="export_view_file">файл</string>
+    <string name="export_view_files">файла</string>
+    <string name="export_view_get_all_content">Извличане на съдържанието от разговора с %1$s…</string>
+    <string name="export_view_get_one_chat">Извличането на съдържанието от разговорите е в процес…</string>
+    <string name="export_view_images">Изображения</string>
+    <string name="export_view_no_content_to_export">Няма съдържание за експортиране</string>
+    <string name="export_view_one_conversation_zip_file">Съдържанието на разговора ще бъде експортирано в ZIP файл.</string>
+    <string name="export_view_save_location">Местоположение</string>
+    <string name="export_view_save_location_message">Изберете къде да експортирате.</string>
+    <string name="export_view_select_content">Изберете съдържанието, което искате да експортирате.\nМогат да се експортират само неефимерни съдържания, разрешени за копиране/запазване/споделяне.</string>
+    <string name="export_view_success">Експортирането приключи успешно.</string>
+    <string name="export_view_title">Експорт на разговори</string>
+    <string name="export_view_videos">Видеа</string>
+    <string name="export_view_voice_messages">Гласови съобщения</string>
+
+    <!-- FatalErrorActivity -->
+    <string name="fatal_error_view_error_code_message">Фатална грешка, код %1$d.\nМоля, рестартирайте приложението и сигнализирайте проблема чрез съобщение за обратна връзка, ако е възможно. Съжаляваме за неудобството.</string>
+    <string name="fatal_error_view_error_message">Фатална грешка: %1$s&lt;br /&gt;Трябва да затворите приложението.</string>
+
+    <!-- FeedbackActivity -->
+    <string name="feedback_view_contact">Контакт</string>
+    <string name="feedback_view_gdpr_notice">Използвайте този формуляр, за да заявите достъп до данните от вашия акаунт.</string>
+    <string name="feedback_view_help">Благодарим ви за помощта при откриване и разрешаване на проблеми.</string>
+    <string name="feedback_view_info_logs">Debug логът съдържа само технически данни за дейността и поведението на приложението и НЕ разкрива никаква ваша лична информация.</string>
+    <string name="feedback_view_logs">Debug лог</string>
+    <string name="feedback_view_message">Съобщение</string>
+    <string name="feedback_view_send">Изпрати</string>
+    <string name="feedback_view_send_logs">Изпрати Debug лог</string>
+    <string name="feedback_view_send_message">Обратната връзка беше изпратена. Благодарим.</string>
+    <string name="feedback_view_subject">Тема</string>
+    <string name="feedback_view_subject_placeholder">[Skred] </string>
+
+    <!-- FirstInviteContactActivity -->
+    <string name="first_invite_contact_view_description">Трябва да поканите приятели и да се свържете с тях в Skred. Те ще се появят в списъка ви с контакти, след като приемат поканата ви.</string>
+    <string name="first_invite_contact_view_ignore">Пропусни</string>
+
+    <!-- FullScreenQRCodeActivity -->
+    <string name="fullscreen_qrcode_view_generate_code_message">Това действие анулира текущия код за покана, свързан с този профил. Сигурни ли сте, че искате да генерирате нов код?</string>
+    <string name="fullscreen_qrcode_view_generate_code_title">Генериране на нов код за покана</string>
+    <string name="fullscreen_qrcode_view_save_message">Импортирайте или сканирайте този QR-код за покана с Skred, за да добавите този контакт.</string>
+    <string name="fullscreen_qrcode_view_save_title">Запази в галерията</string>
+
+    <!-- GroupCapabilitiesActivity -->
+    <string name="group_capabilities_view_information_audio_call">Разрешаване на гласови обаждания</string>
+    <string name="group_capabilities_view_information_programmed_call">Планиране на дата/час за обаждания</string>
+    <string name="group_capabilities_view_information_video_call">Разрешаване на видеообаждания</string>
+
+    <!-- GroupMemberActivity -->
+    <string name="group_member_view_admin_not_authorize">Администраторът на групата не е разрешил това действие.</string>
+    <string name="group_member_view_invitation_message">Поканете %1$s като личен контакт</string>
+    <string name="group_member_view_invitation_title">Покана</string>
+    <string name="group_member_view_invite_personnal_relation">Покана като личен контакт</string>
+    <string name="group_member_view_remove_message">Сигурни ли сте, че искате да премахнете членове от тази група?</string>
+    <string name="group_member_view_section_administrator">Администратор</string>
+    <string name="group_member_view_section_invitation">Покани</string>
+    <string name="group_member_view_section_member">Членове</string>
+    <string name="group_member_view_title">Членове на групата</string>
+
+    <!-- HelpActivity -->
+    <string name="help_view_standard_services">Стандартни услуги</string>
+    <string name="help_view_advanced_functions">Разширени функции</string>
+    <string name="help_view_additional_features">Допълнителни функции</string>
+
+    <!-- InAppSubscriptionActivity -->
+    <string name="in_app_subscription_view_accept_invitation">%1$s ви кани да се възползвате от премиум услугите, които поддържа.</string>
+    <string name="in_app_subscription_view_cancel_subscription">Спри абонамента</string>
+    <string name="in_app_subscription_view_cancel_subscription_confirmation">Премиум услугите ще бъдат деактивирани. Искате ли да продължите?</string>
+    <string name="in_app_subscription_view_description_step1_subtitle">Групови разговори с HQ звук и HD изображение</string>
+    <string name="in_app_subscription_view_description_step1_title">Гласова/видео конференция с високо качество</string>
+    <string name="in_app_subscription_view_description_step2_subtitle">Нула данни / Нула въглерод</string>
+    <string name="in_app_subscription_view_description_step2_title">Екологично отговорна гласова/видео конференция</string>
+    <string name="in_app_subscription_view_description_step3_subtitle">Абсолютна поверителност на обмена</string>
+    <string name="in_app_subscription_view_description_step3_title">Частна гласова/видео конференция</string>
+    <string name="in_app_subscription_view_description_step4_subtitle">Връзка с висока разделителна способност мигновено</string>
+    <string name="in_app_subscription_view_description_step4_title">Мигновена гласова/видео конференция</string>
+    <string name="in_app_subscription_view_expiration_message">Подновяване: %1$s</string>
+    <string name="in_app_subscription_view_expire_code">Изтекъл код за покана</string>
+    <string name="in_app_subscription_view_footer_message">Когато закупите абонамент, той се таксува директно от Google към вашия Play Store акаунт. Абонаментът се подновява автоматично при същите условия, освен ако не го отмените поне 24 часа преди края на текущия период. Можете да го отмените безплатно в Play Store по всяко време, така че абонаментът да не се поднови в края на текущия период. Можете да управлявате абонамента си от настройките на акаунта в Play Store след покупката.</string>
+    <string name="in_app_subscription_view_free_trial">14-дневен безплатен пробен период.\nАбонаментът може да бъде отменен по всяко време.</string>
+    <string name="in_app_subscription_view_invitation_code">Сканирайте QR кода на поканата или поставете кода, за да получите достъп до премиум услуги.</string>
+    <string name="in_app_subscription_view_invitation_code_success">Премиум услугите са активирани</string>
+    <string name="in_app_subscription_view_invalid_code">Невалиден код за покана.</string>
+    <string name="in_app_subscription_view_later_title">Не, благодаря</string>
+    <string name="in_app_subscription_view_manage_subscription">Управлявай абонамента ми</string>
+    <string name="in_app_subscription_view_month">Месец</string>
+    <string name="in_app_subscription_view_not_available">Платените премиум услуги не са налични на вашето устройство или във вашата държава.</string>
+    <string name="in_app_subscription_view_restore_title">Възстанови покупки</string>
+    <string name="in_app_subscription_view_search">Търсене на оферти за абонамент</string>
+    <string name="in_app_subscription_view_six_month_title">Най-популярно</string>
+    <string name="in_app_subscription_view_subscription_title">Абонамент</string>
+    <string name="in_app_subscription_view_subscribe_in_progress">Текущ абонамент</string>
+    <string name="in_app_subscription_view_subscribe_title">Продължи</string>
+    <string name="in_app_subscription_view_used_code">Код за покана, използван от друго устройство</string>
+
+    <!-- InfoItemActivity -->
+    <string name="info_item_view_call_terminated_reason_busy">%1$s е зает</string>
+    <string name="info_item_view_call_terminated_reason_cancel">Разговорът е отменен от %1$s</string>
+    <string name="info_item_view_call_terminated_reason_decline">Разговорът е отказан от %1$s</string>
+    <string name="info_item_view_call_terminated_reason_gone">%1$s е офлайн</string>
+    <string name="info_item_view_call_terminated_reason_not_authorized">Няма разрешение за обаждане</string>
+    <string name="info_item_view_call_terminated_reason_revoked">%1$s премахна тази връзка</string>
+    <string name="info_item_view_call_terminated_reason_timeout">%1$s не отговаря</string>
+    <string name="info_item_view_deleted">Изтрито от получателя:</string>
+    <string name="info_item_view_location">Местоположение</string>
+    <string name="info_item_view_location_map_error">Вашето устройство не може да покаже картата с местоположението на %1$s.</string>
+    <string name="info_item_view_may_be_copied">Може да бъде копирано/запазено/споделено…</string>
+    <string name="info_item_view_may_not_be_copied">Не може да бъде копирано/запазено/споделено…</string>
+    <string name="info_item_view_not_delivered">Неполучено</string>
+    <string name="info_item_view_not_delivered_expiration">Съобщението не можа да бъде доставено след 15 дни.</string>
+    <string name="info_item_view_not_delivered_storage">Устройството на получателя няма достатъчно свободно място, за да получи това съдържание.</string>
+    <string name="info_item_view_not_delivered_update">Приложението на получателя трябва да бъде обновено.</string>
+    <string name="info_item_view_reactions">Реакции</string>
+    <string name="info_item_view_received">Получено:</string>
+    <string name="info_item_view_seen">Видяно:</string>
+    <string name="info_item_view_sent">Изпратено:</string>
+    <string name="info_item_view_updated">Редактирано</string>
+
+    <!-- InvitationCallActivity -->
+    <string name="invitation_call_view_generate_code_message">Това действие анулира текущия код за покана, свързан с този „click‑to‑call“ линк. Потвърждавате ли?</string>
+    <string name="invitation_call_view_generate_code_title">Генериране на нов код за този линк</string>
+    <string name="invitation_call_view_invite_meeting_message">Отворете уеб адреса %1$s или сканирайте QR-кода, за да се присъедините към срещата „%2$s“.</string>
+    <string name="invitation_call_view_invite_message">Отворете уеб адреса %1$s или сканирайте QR-кода, за да се обадите на „%2$s“.</string>
+    <string name="invitation_call_view_message">Споделете този „click‑to‑call“ код с някого, който след това може да ви се обади чрез уеб или мобилното приложение.</string>
+    <string name="invitation_call_view_save_message">Сканирайте този QR-код, за да се обадите на „%1$s“.</string>
+    <string name="invitation_call_view_share">Публикуване</string>
+    <string name="invitation_call_view_title">Външно обаждане</string>
+
+    <!-- InvitationCodeActivity -->
+    <string name="invitation_code_view_create_code">Създайте Мини-код</string>
+    <string name="invitation_code_view_create_code_subtitle">за покана на контакт, когато нямате достъп до приложението.</string>
+    <string name="invitation_code_view_expiration">Валидност:</string>
+    <string name="invitation_code_view_history">Моите Мини-кодове</string>
+    <string name="invitation_code_view_limit_message">Достигнат е максималният брой активни Мини-кодове. Трябва да изчакате 24 часа, за да генерирате нови.</string>
+    <string name="invitation_code_view_onboarding_message">Мини-кодовете са еднократни и валидни само 24 часа. Можете да ги дадете на контактите си, за да създадат връзка, когато нямате достъп до приложението (напр. без телефон).</string>
+    <string name="invitation_code_view_success_message">Препоръчително е връзките, създадени с Мини-код, да бъдат сертифицирани за по-голяма сигурност.</string>
+
+    <!-- InvitationRoomActivity -->
+    <string name="invitation_room_view_message">Помолете ваш приятел близо до вас да сканира QR-кода на „стаята“ с Skred или докоснете кода за покана, за да го копирате.</string>
+
+    <!-- LastCallsActivity -->
+    <string name="last_calls_view_audio">Глас</string>
+    <string name="last_calls_view_video">Видео</string>
+
+    <!-- LockScreenViewActivity -->
+    <string name="lock_screen_view_local_authentication">Удостоверете се, за да получите достъп до приложението</string>
+    <string name="lock_screen_view_passcode_not_set">Настройките за удостоверяване на устройството не са зададени. Отидете в системните настройки и ги задайте, за да отключите приложението.</string>
+    <string name="lock_screen_view_unlock">Отключване на достъпа до приложението</string>
+
+    <!-- MainActivity -->
+    <string name="main_view_add_contact">Добави контакт</string>
+    <string name="main_view_add_group">Създаване на група</string>
+    <string name="main_view_reset_conversation">Нулиране</string>
+    <string name="main_view_reset_conversation_message">Нулирането на този разговор ще изтрие всички съобщения, включително тези на устройството на вашия контакт. Потвърждавате ли?</string>
+    <string name="main_view_reset_conversation_title">Нулиране на разговора</string>
+    <string name="main_view_reset_group_conversation_admin_message">Нулирането на този разговор ще изтрие всички съобщения от устройствата на всички членове на групата. Потвърждавате ли?</string>
+    <string name="main_view_reset_group_conversation_message">Нулирането на този разговор ще изтрие всички съобщения от вашето устройство. Потвърждавате ли?</string>
+    <string name="main_view_skredboard_access_title">Space</string>
+    <string name="main_view_skredboard_create_title">Създай Space</string>
+    <string name="main_view_skredboard_delete_title">Изтрий Space</string>
+    <string name="main_view_skredboard_message">Въведете кода си</string>
+
+    <!-- NavigationActivity -->
+    <string name="navigation_view_about_twinme">Относно</string>
+    <string name="navigation_view_application_settings">Настройки на приложението</string>
+    <string name="navigation_view_feedback">Обратна връзка</string>
+    <string name="navigation_view_getting_started">Първи стъпки</string>
+    <string name="navigation_view_help">Помощ</string>
+    <string name="navigation_view_profile">Профили</string>
+    <string name="navigation_view_settings">Настройки</string>
+    <string name="navigation_view_sign_out">Изход</string>
+    <string name="navigation_view_sounds">Звуци</string>
+    <string name="navigation_view_subscribe">Открий Skred+</string>
+    <string name="navigation_view_subscribe_enable">&#10003; Активно</string>
+    <string name="navigation_view_support">Поддръжка</string>
+    <string name="navigation_view_title">Меню</string>
+
+    <!-- NotificationCenter -->
+    <string name="notification_center_audio_call_to">Гласово обаждане към %1$s</string>
+    <string name="notification_center_audio_message">Ви изпрати гласово съобщение</string>
+    <string name="notification_center_audio_message_received">Ново гласово съобщение</string>
+    <string name="notification_center_cancel">Затвори</string>
+    <string name="notification_center_cleanup_conversation">Някои стари съобщения бяха изтрити.</string>
+    <string name="notification_center_conference_join_call">Един участник се присъедини към разговора.</string>
+    <string name="notification_center_deleted_contact">Контактът е изтрит</string>
+    <string name="notification_center_file_message">Ви изпрати файл</string>
+    <string name="notification_center_file_message_received">Нов файл</string>
+    <string name="notification_center_geolocation_message">ви изпрати местоположение</string>
+    <string name="notification_center_geolocation_message_received">Ново местоположение</string>
+    <string name="notification_center_invitation">Ви изпрати покана</string>
+    <string name="notification_center_invitation_group">ви кани да се присъедините към група.</string>
+    <string name="notification_center_invitation_received">Нова покана</string>
+    <string name="notification_center_invitation_group_received">Нова групова покана</string>
+    <string name="notification_center_join_call">%1$s току-що се присъедини към разговора</string>
+    <string name="notification_center_join_group">Вие сте член на групата</string>
+    <string name="notification_center_message_received">Ново съобщение</string>
+    <string name="notification_center_missed_audio_call_to">Пропуснато гласово обаждане към %1$s</string>
+    <string name="notification_center_missed_video_call_to">Пропуснато видеообаждане към %1$s</string>
+    <string name="notification_center_mute">Без звук</string>
+    <string name="notification_center_new_contact">Нов контакт</string>
+    <string name="notification_center_poll_message">ви изпрати анкета</string>
+    <string name="notification_center_poll_message_received">Нова анкета</string>
+    <string name="notification_center_poll_vote">отговори на анкета</string>
+    <string name="notification_center_photo_message">Ви изпрати снимка</string>
+    <string name="notification_center_photo_message_received">Нова снимка</string>
+    <string name="notification_center_reaction">реагира %1$s</string>
+    <string name="notification_center_reaction_message">Реагира на съобщение</string>
+    <string name="notification_center_reaction_message_received">Реакция на съобщение</string>
+    <string name="notification_center_reset_message">Разговорът е изчистен</string>
+    <string name="notification_center_stop">Спри</string>
+    <string name="notification_center_transfering_data">Прехвърляне на съобщения…</string>
+    <string name="notification_center_unmute">Възстанови звука</string>
+    <string name="notification_center_updated_contact_avatar">Изображението е обновено</string>
+    <string name="notification_center_updated_contact_name">Името е обновено</string>
+    <string name="notification_center_video_call_to">Видеообаждане към %1$s</string>
+    <string name="notification_center_video_message">Ви изпрати видео</string>
+    <string name="notification_center_video_message_received">Ново видео</string>
+
+    <!-- Android 8 & 9 notification channel titles -->
+    <string name="notification_channel_audio_title">Гласови обаждания</string>
+    <string name="notification_channel_contact_title">Контакти</string>
+    <string name="notification_channel_group_title">Групи</string>
+    <string name="notification_channel_message_title">Съобщения</string>
+    <string name="notification_channel_missed_title">Пропуснати обаждания</string>
+    <string name="notification_channel_system_title">Други</string>
+    <string name="notification_channel_video_title">Видеообаждания</string>
+
+    <!-- NotificationsFragment -->
+    <string name="notifications_view_item_audio_call">Опита се да ви се обади</string>
+    <string name="notifications_view_item_audio_message">Ви изпрати гласово съобщение</string>
+    <string name="notifications_view_item_cleanup_message">изтри някои стари съобщения.</string>
+    <string name="notifications_view_item_deleted_contact">Контактът е изтрит</string>
+    <string name="notifications_view_item_file_message">Ви изпрати файл</string>
+    <string name="notifications_view_item_geolocation_message">Ви изпрати местоположение</string>
+    <string name="notifications_view_item_image_message">Ви изпрати снимка</string>
+    <string name="notifications_view_item_invitation">Ви изпрати покана</string>
+    <string name="notifications_view_item_invitation_group">ви кани да се присъедините към група.</string>
+    <string name="notifications_view_item_join_group">Вие сте член на групата</string>
+    <string name="notifications_view_item_new_contact">Нов контакт</string>
+    <string name="notifications_view_item_reset_conversation">Нулира разговора</string>
+    <string name="notifications_view_item_poll_message">ви изпрати анкета</string>
+    <string name="notifications_view_item_shortest_day">%1$dд</string>
+    <string name="notifications_view_item_shortest_hour">%1$dч</string>
+    <string name="notifications_view_item_shortest_minute">%1$dм</string>
+    <string name="notifications_view_item_shortest_second">%1$dс</string>
+    <string name="notifications_view_item_text_message">Ви изпрати съобщение</string>
+    <string name="notifications_view_item_updated_contact_avatar">Изображението е обновено</string>
+    <string name="notifications_view_item_updated_contact_name">Името е обновено</string>
+    <string name="notifications_view_item_video_call">Опита се да ви направи видеообаждане</string>
+    <string name="notifications_view_item_video_message">Ви изпрати видео</string>
+    <string name="notifications_view_no_notification_message">Известията, свързани с контакти, разговори, обаждания и др., се показват тук.</string>
+    <string name="notifications_view_no_notification_title">Нямате известия.</string>
+    <string name="notifications_view_reset">Сигурни ли сте, че искате да изтриете всички известия?</string>
+    <string name="notifications_view_reset_title">Нулиране на известията</string>
+    <string name="notifications_view_title">Известия</string>
+
+    <!-- PersonalizationActivity -->
+    <string name="personalization_view_font">Шрифтове</string>
+    <string name="personalization_view_font_extra_large">Много голям</string>
+    <string name="personalization_view_font_large">Голям</string>
+    <string name="personalization_view_font_small">Малък</string>
+    <string name="personalization_view_haptic_feedback">Хаптична обратна връзка</string>
+    <string name="personalization_view_haptic_feedback_message">Тактилно усещане при докосване.</string>
+    <string name="personalization_view_menu_choose_color">Цветове по подразбиране</string>
+    <string name="personalization_view_menu_enter_color">Цветови код</string>
+    <string name="personalization_view_mode">Режим</string>
+    <string name="personalization_view_mode_dark">Тъмен</string>
+    <string name="personalization_view_mode_light">Светъл</string>
+    <string name="personalization_view_start_tab_information">Изберете раздела, с който да се стартира приложението.</string>
+    <string name="personalization_view_start_tab_title">Стартов раздел</string>
+    <string name="personalization_view_system">Система</string>
+    <string name="personalization_view_title">Персонализация</string>
+
+    <!-- PollActivity -->
+    <string name="poll_view_add_response">Добави отговор</string>
+    <string name="poll_view_allow_multiple">Разреши множество отговори</string>
+    <string name="poll_view_ask_question">Задай въпрос</string>
+    <string name="poll_view_choice">Избор %1$d</string>
+    <string name="poll_view_enter_response">Въведете отговор</string>
+    <string name="poll_view_title">Анкета</string>
+    <string name="poll_view_results">Виж резултатите</string>
+
+    <!-- PreviewFilesActivity -->
+    <string name="preview_files_view_resize_message">Преоразмеряване преди изпращане…</string>
+    <string name="preview_files_view_retrieving_media_message">Извличане на медийни файлове в процес…</string>
+
+    <!-- PremiumServicesActivity -->
+    <string name="premium_services_view_camera_control_description_1">Смяна на предна/задна камера</string>
+    <string name="premium_services_view_camera_control_description_2">Увеличаване/намаляване</string>
+    <string name="premium_services_view_camera_control_description_3">За да помогнете дистанционно на близък или клиент</string>
+    <string name="premium_services_view_camera_control_description_4">За управление на камера за видеонаблюдение</string>
+    <string name="premium_services_view_camera_control_subtitle">Контролирайте камерата на контакта си по време на разговор с негово разрешение</string>
+    <string name="premium_services_view_camera_control_title">Дистанционен контрол на камера</string>
+    <string name="premium_services_view_click_to_call_description_1">Създайте „кликни‑за‑обаждане“ код</string>
+    <string name="premium_services_view_click_to_call_description_2">Публикувайте или разпространявайте по всякакъв начин</string>
+    <string name="premium_services_view_click_to_call_description_3">Получателите сканират кода и ви се обаждат</string>
+    <string name="premium_services_view_click_to_call_description_4">Анонимно, без следи в облака</string>
+    <string name="premium_services_view_click_to_call_subtitle">Позволете на гости да ви се обаждат от уеба</string>
+    <string name="premium_services_view_click_to_call_title">Click‑to‑call</string>
+    <string name="premium_services_view_conversation_description_1">Медии, файлове, гласови бележки, съобщения</string>
+    <string name="premium_services_view_conversation_description_2">По‑стари от определен период/дата</string>
+    <string name="premium_services_view_conversation_description_3">За един разговор или всички</string>
+    <string name="premium_services_view_conversation_description_4">Само локално, без влияние върху другата страна</string>
+    <string name="premium_services_view_conversation_subtitle">Експортиране на съдържания и освобождаване на място</string>
+    <string name="premium_services_view_conversation_title">Управление на разговори</string>
+    <string name="premium_services_view_group_call_description_1">Висококачествено аудио/видео</string>
+    <string name="premium_services_view_group_call_description_2">Директна връзка между устройствата</string>
+    <string name="premium_services_view_group_call_description_3">Сигурно и частно</string>
+    <string name="premium_services_view_group_call_description_4">Без следи в облака</string>
+    <string name="premium_services_view_group_call_subtitle">Поканете контакти да се присъединят към групов гласов/видео разговор</string>
+    <string name="premium_services_view_group_call_title">Групови разговори</string>
+    <string name="premium_services_view_space_description_1">Множество профили със свързани връзки, разговори, история</string>
+    <string name="premium_services_view_space_description_2">Персонализиран външен вид, известия и настройки</string>
+    <string name="premium_services_view_space_description_3">За семейство, приятели, колеги, бизнес, спорт и др.</string>
+    <string name="premium_services_view_space_description_4">Тайни Пространства, неотбелязани в списъка, достъпни по име</string>
+    <string name="premium_services_view_space_subtitle">За всеки социален кръг, с който общувате</string>
+    <string name="premium_services_view_space_title">Пространства</string>
+    <string name="premium_services_view_streaming_description_1">Споделяйте музика на живо</string>
+    <string name="premium_services_view_streaming_description_2">Всеки участник може да управлява плеъра</string>
+    <string name="premium_services_view_streaming_description_3">Едновременно взаимодействие в разговора</string>
+    <string name="premium_services_view_streaming_description_4">Същата поверителност, както в реалния живот</string>
+    <string name="premium_services_view_streaming_subtitle">Споделяйте медии по време на разговор</string>
+    <string name="premium_services_view_streaming_title">Споделяне на медии</string>
+    <string name="premium_services_view_title">Поканете контакти да се присъединят към текущ гласов/видео разговор.</string>
+    <string name="premium_services_view_transfert_description_1">Създаване на код и профил за прехвърляне на разговор</string>
+    <string name="premium_services_view_transfert_description_2">Качете неговия URL или сканирайте кода на компютър</string>
+    <string name="premium_services_view_transfert_description_3">Запазете страницата в браузъра</string>
+    <string name="premium_services_view_transfert_description_4">„Обади се“ от страницата по време на мобилен разговор</string>
+    <string name="premium_services_view_transfert_subtitle">Прехвърлете мобилен разговор към браузър</string>
+    <string name="premium_services_view_transfert_title">Прехвърляне на разговор</string>
+
+    <!-- PrivacyActivity -->
+    <string name="privacy_view_coach_mark">Заключете приложението с биометрия или PIN код.</string>
+    <string name="privacy_view_hide_last_screen_message">И скрийте приложението, когато преминава във фонов режим, ако устройството го позволява.</string>
+    <string name="privacy_view_hide_last_screen_title">Забраняване на скрийншотове</string>
+    <string name="privacy_view_lock_screen_message">Отключете достъпа до приложението чрез биометрия или парола на устройството. Все още ще можете да приемате обаждания и известия, докато приложението е заключено.</string>
+    <string name="privacy_view_lock_screen_not_available">Тази опция изисква Android версия &gt; 5.0</string>
+    <string name="privacy_view_lock_screen_timeout">Време за заключване</string>
+    <string name="privacy_view_lock_screen_timeout_instant">Мигновено</string>
+    <string name="privacy_view_lock_screen_title">Заключване на достъпа</string>
+    <string name="privacy_view_title">Поверителност</string>
+
+    <!-- ProfileFragment -->
+    <string name="profile_view_add_profile">Добави профил</string>
+    <string name="profile_view_create_profile">Създай профил</string>
+    <string name="profile_view_message">Този профил ви позволява да каните контакти да установят лична връзка с вас под ваш контрол.</string>
+    <string name="profile_view_twincode_title">Код за покана</string>
+
+    <!-- ProxyActivity -->
+    <string name="proxy_view_add">Добави прокси</string>
+    <string name="proxy_view_add_placeholder">Поставете или въведете URL на прокси</string>
+    <string name="proxy_view_already_use">Този прокси вече е конфигуриран в приложението.</string>
+    <string name="proxy_view_enable">Използване на прокси</string>
+    <string name="proxy_view_format">Валидни формати за прокси URL:</string>
+    <string name="proxy_view_information">Използвайте прокси само ако не можете да се свържете към услугата чрез стандартни Wi‑Fi или мобилни мрежи.</string>
+    <string name="proxy_view_invalid_format">Невалиден формат на URL</string>
+    <string name="proxy_view_limit">Достигнахте лимита на позволените проксита (%1$d). За да добавите ново, първо трябва да премахнете едно.</string>
+    <string name="proxy_view_list">Моите проксита</string>
+    <string name="proxy_view_list_information">Използвайте прокси от списъка само ако приложението не може да се свърже с услугата без него.</string>
+    <string name="proxy_view_onboarding">Когато достъпът до сигналните сървъри е блокиран във вашата страна, прокситата могат да заобиколят блокировките и да ви позволят да общувате частно. Освен вградените проксита, можете да създадете свое или да използвате чуждо. Поскитата никога нямат достъп до съдържанието, което обменяте.</string>
+    <string name="proxy_view_share">Отворете линка %1$s с Skred на вашето устройство, за да конфигурирате автоматично този прокси.</string>
+    <string name="proxy_view_share_message">Споделете този прокси с хора, които вече не могат да се свържат към услугата поради блокиране.</string>
+    <string name="proxy_view_title">Прокси</string>
+    <string name="proxy_view_url">Искате ли да използвате URL адреса на този прокси?</string>
+    <string name="proxy_view_warning">Внимание! Този прокси URL не позволява връзка към услугата на приложението.</string>
+
+    <!-- QualityOfServiceActivity -->
+    <string name="quality_of_service_view_change_permissions">Промяна на разрешенията</string>
+    <string name="quality_of_service_view_enable_notifications">Разрешаване на известия</string>
+    <string name="quality_of_service_view_enable_notifications_warning">Без тези разрешения съобщенията може да пристигат със значително забавяне.</string>
+    <string name="quality_of_service_view_notification_description">Разрешете на приложението да работи във фонов режим</string>
+    <string name="quality_of_service_view_notification_title">Съобщенията пристигат твърде бавно?</string>
+    <string name="quality_of_service_view_settings">Променете разрешенията на приложението в системните настройки.</string>
+    <string name="quality_of_service_view_step1_message">Криптираните съобщения се обменят директно между устройствата в реално време чрез peer‑to‑peer подход, без сървъри за разпространение на съдържанието. Това гарантира липса на следи в облака и уникална поверителност.</string>
+    <string name="quality_of_service_view_step2_message">За да осигурите добро качество на услугата, настройте устройството да позволява на приложението да получава известия във фонов режим и го изключете от оптимизациите за батерия.</string>
+    <string name="quality_of_service_view_step3_message">Използвайте приложението редовно, за да му придаде ОС приоритет и да не го прекъсва неочаквано.\n\nИ не забравяйте да информирате и вашите контакти!</string>
+    <string name="quality_of_service_view_warning_background_data">Разрешете използването на мобилни данни във фонов режим.</string>
+    <string name="quality_of_service_view_warning_receive_notification">Разрешете получаването на push известия.</string>
+    <string name="quality_of_service_view_warning_run_background">Разрешете работа на приложението във фонов режим.</string>
+
+    <!-- RestoreActivity -->
+    <string name="restore_view_application_error">Skred+ трябва да бъде инсталирано на това устройство, за да се възстанови архив на акаунт на Skred+.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_one">Устройството, което е направило архива, все още е влязло в акаунта.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_two">Ако възстановите архива на това ново устройство, акаунтът на устройството, на което е направен архивът, ще бъде автоматично обезсилен.</string>
+    <string name="restore_view_backup_device_always_signed_in_part_three">Ако искате да прехвърлите акаунта си на ново устройство и все още имате стария, за предпочитане е да използвате операцията „миграция на акаунт“, вместо да възстановявате резервно копие, тъй като това ще прехвърли и разговори, известия и история.</string>
+    <string name="restore_view_confirm">Сигурни ли сте, че искате да замените текущите данни на акаунта със следните данни от архива?</string>
+    <string name="restore_view_confirm_restore">Все още ли искате да възстановите този архив?</string>
+    <string name="restore_view_content_contact_deleted_message">Данни, изтрити след архива, не могат да бъдат възстановени.</string>
+    <string name="restore_view_content_profile_reset">Кодът за покана е променен.</string>
+    <string name="restore_view_content_profile_reset_message">Кодът за покана, свързан с архивирания профил, е невалиден. По време на процеса на възстановяване ще бъде генериран нов код за покана.</string>
+    <string name="restore_view_enter_words">Въведете последователността от 12 думи, позволяваща декриптиране на архива.</string>
+    <string name="restore_view_error_message">Грешка при възстановяване на архива.</string>
+    <string name="restore_view_error_message_verify_backup">Грешка при проверка на архива.</string>
+    <string name="restore_view_file_not_supported">Файлът на архива трябва да бъде във формат \"skrdbckp\".</string>
+    <string name="restore_view_more_recent_backup">Със същия акаунт е направен по-нов архив.</string>
+    <string name="restore_view_onboarding">Възстановяването на архив ще замени текущите данни на акаунта.</string>
+    <string name="restore_view_onboarding_words">За да възстановите архив, ще трябва да въведете последователността от 12 думи, позволяваща неговото декриптиране.</string>
+    <string name="restore_view_onboarding_verify">Проверете дали архивът е валиден и актуален спрямо текущите ви данни.</string>
+    <string name="restore_view_paste">Поставете списъка с думи от клипборда.</string>
+    <string name="restore_view_paste_error">Невалиден списък с думи.</string>
+    <string name="restore_view_restore">Възстанови</string>
+    <string name="restore_view_select_backup">Изберете архив</string>
+    <string name="restore_view_state_restore_account">Възстановяване на акаунта…</string>
+    <string name="restore_view_state_restore_data">Възстановяване на данните…</string>
+    <string name="restore_view_state_restore_starting">Стартиране на възстановяването.</string>
+    <string name="restore_view_state_restore_verify_account">Проверка на акаунта…</string>
+    <string name="restore_view_state_restore_verify_data">Проверка на данните…</string>
+    <string name="restore_view_state_restore_verify_starting">Започва проверка…</string>
+    <string name="restore_view_state_restore_wait_confirm">Изчакване на потвърждение.</string>
+    <string name="restore_view_success">Възстановяването завърши успешно!</string>
+    <string name="restore_view_success_message">Затворете приложението и го рестартирайте, за да получите достъп до новите данни.</string>
+    <string name="restore_view_title">Възстановяване</string>
+    <string name="restore_view_verify_same_account">Проверката трябва да бъде извършена на същото устройство, използвано за архива.</string>
+    <string name="restore_view_warning">Възстановяването на този архив ще замени всички текущи данни на акаунта с данните от архива.</string>
+
+    <!-- RoomMembersActivity -->
+    <string name="room_members_view_change_admin_title">Назначи като администратор</string>
+    <string name="room_members_view_delete_message">Потвърдете премахването на този член</string>
+    <string name="room_members_view_moderators_title">Модератор</string>
+    <string name="room_members_view_only_admin_message">Единственият администратор не може да бъде премахнат.</string>
+    <string name="room_members_view_owner_title">Собственик</string>
+    <string name="room_members_view_participants_title">Участници</string>
+    <string name="room_members_view_remove_admin_title">Премахване като администратор</string>
+
+    <!-- ScanActivity -->
+    <string name="scan_view_paste_code">Въведете или поставете линк за покана</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_view_allow_copy_category_title">Разрешаване на получателите да копират/запазват/споделят вашето съдържание</string>
+    <string name="settings_view_allow_copy_file_title">Всеки тип файлове</string>
+    <string name="settings_view_allow_copy_text_title">Текстови съобщения</string>
+    <string name="settings_view_application_notifications">Известия на приложението</string>
+    <string name="settings_view_audio_call_category_title">Гласови обаждания</string>
+    <string name="settings_view_audio_call_notification_ringtone_title">Име на мелодия</string>
+    <string name="settings_view_audio_call_notification_title">Мелодия</string>
+    <string name="settings_view_audio_call_vibration_title">Вибрация</string>
+    <string name="settings_view_authorization_title">Разрешения</string>
+    <string name="settings_view_call_item_menu_all">Всички обаждания</string>
+    <string name="settings_view_chat_category_title">Съобщения</string>
+    <string name="settings_view_chat_ringtone_title">Име на звук</string>
+    <string name="settings_view_chat_title">Звук</string>
+    <string name="settings_view_chat_vibration_title">Вибрация</string>
+    <string name="settings_view_content_information">Резолюцията на медиите, изпращани в разговор: високата резолюция изисква повече данни и повече време за предаване.</string>
+    <string name="settings_view_content_title">Медии</string>
+    <string name="settings_view_default_directory_title">Папка по подразбиране за запазване на файлове</string>
+    <string name="settings_view_default_sound">По подразбиране</string>
+    <string name="settings_view_default_value_message">Тези параметри се използват като стойности по подразбиране на ниво приложение.</string>
+    <string name="settings_view_display_call_menu_missed">Само пропуснати обаждания</string>
+    <string name="settings_view_display_call_menu_none">Без обаждания</string>
+    <string name="settings_view_display_call_none">Няма</string>
+    <string name="settings_view_display_call_title">Показвай известия за обаждания в разговорите</string>
+    <string name="settings_view_display_notification_content_title">Показване на съдържание на съобщенията</string>
+    <string name="settings_view_display_notification_like_title">Реакции към съобщения</string>
+    <string name="settings_view_display_notification_sender_title">Показване на подателя</string>
+    <string name="settings_view_ephemeral_message">Автоматично изтриване на изпратени съобщения</string>
+    <string name="settings_view_ephemeral_section_title">ЖИВОТ</string>
+    <string name="settings_view_ephemeral_title">Изчезващо съобщение</string>
+    <string name="settings_view_image_title">Снимка</string>
+    <string name="settings_view_message_properties_title">Свойства на съобщенията</string>
+    <string name="settings_view_message_reactions_notification">Известие за реакции на съобщения</string>
+    <string name="settings_view_permissions_title">РАЗРЕШЕНИЯ</string>
+    <string name="settings_view_reset_default_value">Възстановяване на настройките по подразбиране</string>
+    <string name="settings_view_reset_preferences_button_title">Възстанови настройките</string>
+    <string name="settings_view_reset_preferences_message">Нулиране на настройки за известия до тези по подразбиране.</string>
+    <string name="settings_view_reset_preferences_title">Нулиране на предпочитанията</string>
+    <string name="settings_view_show_location_on_map">TBD</string>
+    <string name="settings_view_show_maps">TBD</string>
+    <string name="settings_view_silent_mode">Безшумен режим</string>
+    <string name="settings_view_silent_sound">Без звук</string>
+    <string name="settings_view_sound_enabled_title">ЗВУКОВИ ИЗВЕСТИЯ</string>
+    <string name="settings_view_system_notifications_title">Системни известия</string>
+    <string name="settings_view_system_settings_title">Системни настройки</string>
+    <string name="settings_view_turn_off_notification_sounds">Изключи звуците на известията</string>
+    <string name="settings_view_video_call_category_title">Видеообаждания</string>
+    <string name="settings_view_video_call_notification_ringtone_title">Име на мелодия</string>
+    <string name="settings_view_video_call_notification_title">Мелодия</string>
+    <string name="settings_view_video_call_vibration_title">Вибрация</string>
+    <string name="settings_view_welcome_screen_category_title">ПОСРЕЩАНЕ</string>
+    <string name="settings_view_welcome_screen_summary">Показване на началните екрани</string>
+
+    <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_developer_settings">Настройки за разработчици</string>
+    <string name="settings_advanced_view_status_connection_message">Проверете състоянието на вашата връзка към услугата</string>
+    <string name="settings_advanced_view_status_connection_title">Състояние на връзката</string>
+    <string name="settings_advanced_view_telecom">ОБАЖДАНИЯ</string>
+    <string name="settings_advanced_view_telecom_enable">„Android calling experience“</string>
+    <string name="settings_advanced_view_telecom_information">По подразбиране приложението не интегрира Android calling experience, тъй като това може да причини проблеми с приемането на обаждания в определени ситуации и устройства. Можете да я активирате, ако не срещате такива проблеми.</string>
+    <string name="settings_advanced_view_title">Разширени настройки</string>
+
+    <!-- SettingsRoomActivity -->
+    <string name="settings_room_view_allow_invite_as_personal_contact">Разрешава на участниците да канят други като лични контакти</string>
+    <string name="settings_room_view_allow_invite_contact">Разрешава на участниците да канят свои контакти</string>
+    <string name="settings_room_view_conference_notifications_inform">Първо влизане/последно излизане</string>
+    <string name="settings_room_view_conference_notifications_noisy">Всички влизания/излизания</string>
+    <string name="settings_room_view_conference_notifications_quiet">Без звук</string>
+    <string name="settings_room_view_display_members">Показване на участниците</string>
+    <string name="settings_room_view_room_type_channel">Канал – само еднопосочно</string>
+    <string name="settings_room_view_room_type_channel_information">Само администратори/модератори могат да публикуват</string>
+    <string name="settings_room_view_room_type_feedback">Канал – с обратна връзка</string>
+    <string name="settings_room_view_room_type_feedback_information">Обратната връзка се вижда само от администратори/модератори</string>
+    <string name="settings_room_view_room_type_forum">Форум</string>
+    <string name="settings_room_view_room_type_forum_information">Участниците могат да публикуват съобщения, видими от всички</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_allow_notifications">Разреши известия</string>
+    <string name="settings_space_view_allow_notifications_message">Известия ще се показват само когато този Space е текущо активен.</string>
+    <string name="settings_space_view_default_message">По подразбиране Space е Space, показан при стартиране на приложението.</string>
+    <string name="settings_space_view_default_value_message">Тези стойности отменят зададените в стандартните настройки на приложението.</string>
+    <string name="settings_space_view_default_value_title">Промяна на стандартните настройки</string>
+    <string name="settings_space_view_header_message">Стойностите на тези параметри отменят, за този Space, стандартните стойности, дефинирани на ниво приложение.</string>
+    <string name="settings_space_view_permission_create_contact">Създай контакт</string>
+    <string name="settings_space_view_permission_create_group">Създай група</string>
+    <string name="settings_space_view_permission_move_contact">Премести контакт</string>
+    <string name="settings_space_view_permission_move_group">Премести група</string>
+    <string name="settings_space_view_permission_share_space_card">Сподели кода за покана на Space</string>
+    <string name="settings_space_view_permission_update_identity">Актуализирай профил</string>
+    <string name="settings_space_view_permissions_title">Разрешения</string>
+    <string name="settings_space_view_reset_application_value">Нулирай до стандартните настройки на приложението</string>
+    <string name="settings_space_view_secret_message">Тайният Space не се появява в списъка със Spaces. Достъп до него може да се получи само чрез въвеждане на точното му име в лентата за търсене. Името му не може да бъде извлечено, така че не го забравяйте!</string>
+    <string name="settings_space_view_secret_title">Тайен Space</string>
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareActivity -->
+    <string name="share_view_contact_list">Контакти</string>
+    <string name="share_view_group_list">Групи</string>
+    <string name="share_view_title">Споделяне</string>
+
+    <!-- ShowCallActivity -->
+    <string name="show_call_view_code">„Click‑to‑call“ код</string>
+    <string name="show_call_view_conference_call_information">Споделете този линк, за да ви се обадят или да се присъединят към конференция от браузър.</string>
+    <string name="show_call_view_information_code">Споделете този код, за да получавате външни обаждания.</string>
+    <string name="show_call_view_meeting_organizer">Организатор на тази среща</string>
+    <string name="show_call_view_schedule_call">Планирано обаждане</string>
+    <string name="show_call_view_schedule_from">от %1$s</string>
+    <string name="show_call_view_schedule_from_to">%1$s от %2$s до %3$s</string>
+    <string name="show_call_view_schedule_message">Обаждането е планирано за дата и час, зададени другаде.</string>
+    <string name="show_call_view_schedule_to">до %1$s</string>
+    <string name="show_call_view_settings_call">Тип обаждане</string>
+    <string name="show_call_view_settings_end">Край</string>
+    <string name="show_call_view_settings_group_calls">Групово обаждане</string>
+    <string name="show_call_view_settings_limited">Планирано</string>
+    <string name="show_call_view_settings_start">Начало</string>
+
+    <!-- ShowContactActivity -->
+    <string name="show_contact_view_audio">Глас</string>
+    <string name="show_contact_view_chat">Чат</string>
+    <string name="show_contact_view_cleanup">Почистване</string>
+    <string name="show_contact_view_export_contents">Експорт на съдържание</string>
+    <string name="show_contact_view_history_title">История</string>
+    <string name="show_contact_view_identity_title">Знае ме като</string>
+    <string name="show_contact_view_last_calls">Последни обаждания</string>
+    <string name="show_contact_view_pending">В изчакване</string>
+    <string name="show_contact_view_pending_message">Връзката се установява. Моля, изчакайте.</string>
+    <string name="show_contact_view_revoked">Изтрита</string>
+    <string name="show_contact_view_settings_coach_mark">Определете какво е позволено на този контакт във връзката ви.</string>
+    <string name="show_contact_view_space">Space:</string>
+    <string name="show_contact_view_video">Видео</string>
+
+    <!-- ShowGroupActivity -->
+    <string name="show_group_view_add_member">Добавяне на член</string>
+    <string name="show_group_view_invitation_list">Чакащи покани: %1$d</string>
+    <string name="show_group_view_leave">Напускане на групата</string>
+    <string name="show_group_view_leave_confirm_message">Сигурни ли сте, че искате да напуснете тази група?</string>
+    <string name="show_group_view_leave_message">Ще напуснете групата и няма да имате достъп до разговорите й.</string>
+    <string name="show_group_view_member_list">Списък на членовете (%1$d)</string>
+    <string name="show_group_view_remove_confirm_message">Сигурни ли сте, че искате да изтриете тази група?</string>
+    <string name="show_group_view_remove_message">Групата ще бъде изтрита за всички нейни членове и разговорите ще бъдат премахнати.</string>
+    <string name="show_group_view_title">Група</string>
+
+    <!-- ShowRoomActivity -->
+    <string name="show_room_view_admin_title">Административен панел</string>
+    <string name="show_room_view_invite_participants">Покана за участници</string>
+    <string name="show_room_view_room_title">Стая</string>
+
+    <!-- ShowSpaceFragment -->
+    <string name="show_space_view_management">Управление</string>
+    <string name="show_space_view_move_message">Трябва да имате няколко Spaces, за да местите контакти.</string>
+    <string name="show_space_view_secret_confirm">Потвърдете режим \"Тайно\"</string>
+    <string name="show_space_view_secret_disabled_message">Този единствен Space не може да бъде определен като \"тайен\". Трябва да създадете поне още един \"Space\".</string>
+    <string name="show_space_view_secret_message">Тайните Spaces не се появяват в списъка със Spaces и могат да бъдат отворени само чрез въвеждане на името им в лентата за търсене. Никога не забравяйте това име!</string>
+    <string name="show_space_view_secret_message_confirm">Все още ли искате да направите този Space \"Тайен\"?</string>
+
+    <!-- SpaceAppearanceActivity -->
+    <string name="space_appearance_view_background_image_title">Изображение</string>
+    <string name="space_appearance_view_background_message">Персонализирайте фона на разговорите с цвят или изображение.</string>
+    <string name="space_appearance_view_background_text_title">Текст</string>
+    <string name="space_appearance_view_background_title">Фон</string>
+    <string name="space_appearance_view_container_background_message">Фон на изпратените съобщения</string>
+    <string name="space_appearance_view_container_background_peer_message">Фон на получените съобщения</string>
+    <string name="space_appearance_view_container_border_message">Рамка на изпратените съобщения</string>
+    <string name="space_appearance_view_container_border_peer_message">Рамка на получените съобщения</string>
+    <string name="space_appearance_view_container_text_message">Текст на изпратените съобщения</string>
+    <string name="space_appearance_view_container_text_peer_message">Текст на получените съобщения</string>
+    <string name="space_appearance_view_container_title">Балончета</string>
+    <string name="space_appearance_view_default_value">Стойност по подразбиране</string>
+    <string name="space_appearance_view_general_title">Общи</string>
+    <string name="space_appearance_view_menu_choose_color">Цветове по подразбиране</string>
+    <string name="space_appearance_view_menu_enter_color">Цветови код</string>
+    <string name="space_appearance_view_opacity">Прозрачност</string>
+    <string name="space_appearance_view_preview_message">Забравих си балетните обувки… Можеш ли да ми ги донесеш, моля?😘</string>
+    <string name="space_appearance_view_preview_peer_message">Здравей, мила!</string>
+    <string name="space_appearance_view_preview_title">Преглед</string>
+    <string name="space_appearance_view_theme">Тема</string>
+
+    <!-- SpacesActivity -->
+    <string name="spaces_view_active_space">Активен Space</string>
+    <string name="spaces_view_add_space">Добави Space</string>
+    <string name="spaces_view_create_new_space">Създай Space</string>
+    <string name="spaces_view_current_space_action">Активирай</string>
+    <string name="spaces_view_delete_default_message">Не можете да изтриете стандартния Space.</string>
+    <string name="spaces_view_join_space">Импортирай Space</string>
+    <string name="spaces_view_message">Пространството е мястото, където вашите различни личности срещат различните ви социални кръгове, включително най‑тайните.</string>
+    <string name="spaces_view_move_contact_already_in_space">Контактът вече е в този Space.</string>
+    <string name="spaces_view_move_group_already_in_space">Групата вече е в този Space.</string>
+    <string name="spaces_view_move_group_no_profile">За да преместите група в Space, трябва да завършите профила, който ви представя пред тази група. Искате ли да го завършите?</string>
+    <string name="spaces_view_move_message">Сигурни ли сте, че искате да преместите групата?</string>
+    <string name="spaces_view_permission_not_allowed">Не ви е позволено да изпълните това действие от администратора на Space.</string>
+    <string name="spaces_view_sample_business">Бизнес</string>
+    <string name="spaces_view_sample_business_name">Д‑р Джон Доу</string>
+    <string name="spaces_view_sample_family">Семейство</string>
+    <string name="spaces_view_sample_family_name">Татко</string>
+    <string name="spaces_view_sample_friends">Приятели</string>
+    <string name="spaces_view_sample_friends_name">Джони</string>
+    <string name="spaces_view_title">Пространства</string>
+
+    <!-- StreamingAudioActivity -->
+    <string name="streaming_audio_view_error_message">Възникна грешка. Моля, опитайте отново.</string>
+    <string name="streaming_audio_view_no_music_message">Моля, прехвърлете музикални файлове на устройството си.</string>
+    <string name="streaming_audio_view_no_music_title">Не е открита музика 🙁</string>
+    <string name="streaming_audio_view_title">Споделяне на медии</string>
+    <string name="streaming_audio_view_unsupported_message">Този аудио формат не се поддържа от устройството на %1$s.</string>
+
+    <!-- TemplateClickToCallActivity -->
+    <string name="template_click_to_call_view_template_classified_ad">Обява</string>
+    <string name="template_click_to_call_view_template_classified_ad_description">Добавете линк в обява, който позволява на потенциални купувачи да ви се обадят без да инсталират приложението.</string>
+    <string name="template_click_to_call_view_template_classified_ad_placeholder">Обява</string>
+    <string name="template_click_to_call_view_template_default_description">Персонализирайте линка за обаждане според нуждите.</string>
+    <string name="template_click_to_call_view_template_help">Обслужване на клиенти</string>
+    <string name="template_click_to_call_view_template_help_description">Линк за обаждане към вашето обслужване на клиенти през браузър.</string>
+    <string name="template_click_to_call_view_template_help_placeholder">Обслужване на клиенти</string>
+    <string name="template_click_to_call_view_template_job">Работно интервю</string>
+    <string name="template_click_to_call_view_template_job_description">Линк, позволяващ на работодатели да ви се обадят за интервю.</string>
+    <string name="template_click_to_call_view_template_job_placeholder">Работно интервю</string>
+    <string name="template_click_to_call_view_template_meeting">Среща</string>
+    <string name="template_click_to_call_view_template_meeting_description">Споделете линк за присъединяване към конференция през браузър.</string>
+    <string name="template_click_to_call_view_template_meeting_placeholder">Среща</string>
+    <string name="template_click_to_call_view_template_profile_description">Връзка за обаждане без инсталиране на приложението.</string>
+    <string name="template_click_to_call_view_template_video_bell">Видео звънец</string>
+    <string name="template_click_to_call_view_template_video_bell_description">Позволете на куриера да ви се обади за инструкции.</string>
+    <string name="template_click_to_call_view_template_video_bell_placeholder">Звънец</string>
+
+    <!-- TemplateSpaceActivity -->
+    <string name="template_space_view_template_business_placeholder">Име (Д‑р Джон Доу, Г‑жа Смит,…)</string>
+    <string name="template_space_view_template_business_profile">Г‑жа Саманта Смит</string>
+    <string name="template_space_view_template_family_placeholder">Име (Татко, Мама,…)</string>
+    <string name="template_space_view_template_family_profile">Мама</string>
+    <string name="template_space_view_template_friends_placeholder">Име (Джони, Сам,…)</string>
+    <string name="template_space_view_template_friends_profile">Сам</string>
+    <string name="template_space_view_template_other">Друго</string>
+    <string name="template_space_view_template_other_placeholder">Име (Татко, Мама, Джони, Д‑р Джон Доу,…)</string>
+    <string name="template_space_view_template_title">Шаблони</string>
+
+    <!-- TransfertCallActivity -->
+    <string name="transfert_call_view_delete_confirm_message">Сигурни ли сте, че искате да изтриете този „Call Transfer“ код?</string>
+    <string name="transfert_call_view_delete_message">Този линк за прехвърляне на разговор ще бъде изтрит. Потвърждавате ли?</string>
+    <string name="transfert_call_view_gallery_message">Сканирайте този QR-код, за да прехвърлите мобилните си разговори.</string>
+    <string name="transfert_call_view_message">Препратете този код и запазете неговия URL в браузъра, към който искате да прехвърляте мобилните си обаждания.</string>
+    <string name="transfert_call_view_reset_message">Това действие анулира текущия код за прехвърляне и създава нов. Потвърждавате ли?</string>
+    <string name="transfert_call_view_saved_message">Кодът за прехвърляне на разговор е запазен в галерията.</string>
+    <string name="transfert_call_view_share">Прехвърляне</string>
+
+    <!-- TwincodeActivity -->
+    <string name="twincode_view_message">Помолете приятел близо до вас да сканира вашия QR-код за покана с Skred или докоснете кода, за да го копирате.</string>
+
+    <!-- UpdateAppActivity -->
+    <string name="update_app_view_update_available">Налична е актуализация</string>
+    <string name="update_app_view_update_message">Последната актуализация включва следното:</string>
+    <string name="update_app_view_update_title">Актуализирай сега</string>
+
+    <!-- VideoCallActivity -->
+    <string name="video_call_view_calling">Видеообаждане…</string>
+    <string name="video_call_view_cannot_call">Не може да се извърши видеообаждане</string>
+    <string name="video_call_view_connecting">Свързване…</string>
+    <string name="video_call_view_hangup_confirmation">Искате ли да прекратите разговора?</string>
+    <string name="video_call_view_terminate">Разговорът беше прекратен</string>
+    <string name="video_call_view_terminate_busy">Разговорът е прекратен: &lt;b&gt;%1$s&lt;/b&gt; е зает</string>
+    <string name="video_call_view_terminate_cancel">Разговорът е отменен от &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_connectivity_error">Разговорът беше прекъснат поради проблем с връзката. Моля, проверете интернет връзката си.</string>
+    <string name="video_call_view_terminate_decline">Разговорът е отказан от &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_disconnected">Разговорът беше прекъснат поради мрежова грешка. Моля, опитайте отново.</string>
+    <string name="video_call_view_terminate_gone">Разговорът е прекратен: &lt;b&gt;%1$s&lt;/b&gt; е офлайн</string>
+    <string name="video_call_view_terminate_revoked">Разговорът приключи: &lt;b&gt;%1$s&lt;/b&gt; е изтрил връзката с вас.</string>
+    <string name="video_call_view_terminate_success">Разговорът е прекратен от &lt;b&gt;%1$s&lt;/b&gt;</string>
+    <string name="video_call_view_terminate_timeout">Разговорът е прекратен: &lt;b&gt;%1$s&lt;/b&gt; не отговаря</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_view_accept">Натискайки %1$s, потвърждавам, че съм прочел и приемам:</string>
+    <string name="welcome_view_enter">Напред</string>
+    <string name="welcome_view_pass">Пропусни</string>
+    <string name="welcome_view_privacy_policy">Политика за поверителност</string>
+    <string name="welcome_view_start">Старт</string>
+    <string name="welcome_view_privacy_policy_url">https://skred.mobi/privacy</string>
+    <string name="welcome_view_step1_message">Съобщения и висококачествени гласови/видео разговори, които защитават поверителността по дизайн.</string>
+    <string name="welcome_view_step2_message">Сигурни „peer‑to‑peer“ комуникации: без следи в облака.</string>
+    <string name="welcome_view_step3_message">Без телефонен номер, без адресна книга, без потребителско ID: вие избирате как да бъдете идентифицирани спрямо човека, с когото общувате.</string>
+    <string name="welcome_view_terms_of_use">Условия за ползване</string>
+    <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
+</resources>

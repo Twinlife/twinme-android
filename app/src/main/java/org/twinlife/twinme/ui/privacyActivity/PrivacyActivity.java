@@ -99,7 +99,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onDeviceSecureMessage");
         }
 
-        showAlertMessageView(R.id.privacy_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.lock_screen_activity_passcode_not_set), false, null);
+        showAlertMessageView(R.id.privacy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
     }
 
     //
@@ -122,7 +122,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.privacy_activity_title));
+        setTitle(getString(R.string.privacy_view_title));
         applyInsets(R.id.privacy_activity_layout, R.id.privacy_activity_tool_bar,R.id.privacy_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mPrivacyAdapter = new PrivacyAdapter(this);

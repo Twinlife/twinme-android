@@ -172,12 +172,12 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position + ONLY_CONVERSATION_OFFSET == BACKGROUND_APPEARANCE_INFORMATION_POSITION) {
-                informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.space_appearance_activity_background_message), true);
+                informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.space_appearance_view_background_message), true);
             } else {
                 if (mConversationAppearenceActivity.isUpdateDefaultSettings()) {
-                    informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.settings_activity_default_value_message), false);
+                    informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.settings_view_default_value_message), false);
                 } else {
-                    informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.settings_space_activity_default_value_message), false);
+                    informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.settings_space_view_default_value_message), false);
                 }
             }
 
@@ -322,19 +322,19 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
 
         switch (position) {
             case GENERAL_TITLE_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_general_title);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_general_title);
                 break;
 
             case SPACE_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_theme);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_theme);
                 break;
 
             case PREVIEW_APPEARANCE_TITLE_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_preview_title);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_preview_title);
                 break;
 
             case BACKGROUND_APPEARANCE_TITLE_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_background_title);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_background_title);
                 break;
 
             case BACKGROUND_COLOR_POSITION:
@@ -342,35 +342,35 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
                 break;
 
             case BACKGROUND_TEXT_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_background_text_title);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_background_text_title);
                 break;
 
             case ITEM_APPEARANCE_TITLE_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_title);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_title);
                 break;
 
             case ITEM_BACKGROUND_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_background_message);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_background_message);
                 break;
 
             case PEER_ITEM_BACKGROUND_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_background_peer_message);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_background_peer_message);
                 break;
 
             case ITEM_BORDER_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_border_message);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_border_message);
                 break;
 
             case PEER_ITEM_BORDER_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_border_peer_message);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_border_peer_message);
                 break;
 
             case ITEM_TEXT_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_text_message);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_text_message);
                 break;
 
             case PEER_ITEM_TEXT_COLOR_POSITION:
-                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_activity_container_text_peer_message);
+                title = mConversationAppearenceActivity.getResources().getString(R.string.space_appearance_view_container_text_peer_message);
                 break;
 
             default:

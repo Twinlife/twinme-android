@@ -274,7 +274,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "onClearConversation");
         }
 
-        Toast.makeText(this, R.string.cleanup_activity_success, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.cleanup_view_success, Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -298,9 +298,9 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
         applyInsets(R.id.cleanup_activity_layout, R.id.cleanup_activity_tool_bar, R.id.cleanup_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         if (mLocalCleanUpOnly) {
-            setTitle(getString(R.string.cleanup_activity_local_cleanup_title));
+            setTitle(getString(R.string.cleanup_view_local_cleanup_title));
         } else {
-            setTitle(getString(R.string.cleanup_activity_both_clean_title));
+            setTitle(getString(R.string.cleanup_view_both_clean_title));
         }
 
         initExport();
@@ -496,7 +496,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             DeleteSpaceConfirmView deleteSpaceConfirmView = new DeleteSpaceConfirmView(this, null);
             deleteSpaceConfirmView.setSpaceName(mSpace.getSpaceSettings().getName(), mSpace.getSpaceSettings().getStyle());
             deleteSpaceConfirmView.setAvatar(avatar, false);
-            deleteSpaceConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
+            deleteSpaceConfirmView.setMessage(getString(R.string.cleanup_view_delete_confirmation_message));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -536,7 +536,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
                 deleteConfirmView.setAvatar(avatar, avatar == null || avatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
             }
 
-            deleteConfirmView.setMessage(getString(R.string.cleanup_activity_delete_confirmation_message));
+            deleteConfirmView.setMessage(getString(R.string.cleanup_view_delete_confirmation_message));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override

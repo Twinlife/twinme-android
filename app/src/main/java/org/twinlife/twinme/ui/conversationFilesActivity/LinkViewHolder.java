@@ -111,7 +111,7 @@ public class LinkViewHolder extends RecyclerView.ViewHolder {
 
             // Use an async loader to get url metatda.
             if (mLinkLoader == null) {
-                mLinkLoader = new LinkLoader<>(item, objectDescriptor);
+                mLinkLoader = new LinkLoader<>(conversationFilesActivity.getTwinmeContext(), item, objectDescriptor);
                 conversationFilesActivity.addLoadableItem(mLinkLoader);
             }
 

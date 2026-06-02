@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center|top"
         android:ellipsize="end"
-        android:text="@string/conversations_fragment_no_conversation_message"
+        android:text="@string/conversations_view_no_conversation_message"
         android:visibility="gone"
         app:layout_marginTopPercent="4.43%"
         app:layout_widthPercent="85.33%"  />
@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/contacts_fragment_invite_contact_title" />
+            android:text="@string/contacts_view_invite_contact_title" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -62,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/account_activity_transfer_from_another_device"
+            android:text="@string/account_view_transfer_from_another_device"
             app:layout_widthPercent="89.58%"
             app:layout_heightPercent="70%" />
     </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -82,7 +82,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/conversations_fragment_start" />
+            android:text="@string/conversations_view_start" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -135,7 +135,7 @@
             android:layout_below="@+id/conversations_fragment_no_result_found_image_view"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="@string/conversations_fragment_no_result_found"
+            android:text="@string/conversations_view_no_result_found"
             app:layout_marginTopPercent="5.55%"
             app:layout_widthPercent="85.33%" />
 

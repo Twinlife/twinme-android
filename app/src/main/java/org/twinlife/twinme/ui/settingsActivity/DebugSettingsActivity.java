@@ -62,7 +62,7 @@ public class DebugSettingsActivity extends AbstractTwinmeActivity {
         setToolBar(R.id.debug_settings_activity_tool_bar);
         showToolBar(true);
         showBackButton(true);
-        setTitle(getString(R.string.settings_advanced_activity_developer_settings));
+        setTitle(getString(R.string.settings_advanced_view_developer_settings));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.debug_settings_activity_layout, R.id.debug_settings_activity_tool_bar, R.id.debug_settings_activity_list_view, Design.TOOLBAR_COLOR, false);

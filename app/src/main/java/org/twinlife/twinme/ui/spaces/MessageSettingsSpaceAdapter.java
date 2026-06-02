@@ -110,15 +110,15 @@ public class MessageSettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerVi
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             switch (position) {
                 case SECTION_INFO:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_activity_default_value_message), false);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_space_view_default_value_message), false);
                     break;
 
                 case POSITION_ALLOW_COPY_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_allow_copy_category_title), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_allow_copy_category_title), true);
                     break;
 
                 case POSITION_EPHEMERAL_INFORMATION:
-                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_activity_ephemeral_message), true);
+                    informationViewHolder.onBind(mListActivity.getString(R.string.settings_view_ephemeral_message), true);
                     break;
 
                 default:
@@ -128,11 +128,11 @@ public class MessageSettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerVi
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             switch (position) {
                 case SECTION_COPY:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_activity_permissions_title), true);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_view_permissions_title), true);
                     break;
 
                 case SECTION_EPHEMERAL:
-                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_activity_ephemeral_section_title), true);
+                    sectionTitleViewHolder.onBind(mListActivity.getString(R.string.settings_view_ephemeral_section_title), true);
                     break;
 
                 default:
@@ -147,19 +147,19 @@ public class MessageSettingsSpaceAdapter extends RecyclerView.Adapter<RecyclerVi
 
             switch (position) {
                 case POSITION_ALLOW_COPY_TEXT:
-                    title = mListActivity.getString(R.string.settings_activity_allow_copy_text_title);
+                    title = mListActivity.getString(R.string.settings_view_allow_copy_text_title);
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_ALLOW_COPY_TEXT;
                     value = mSpace != null && mSpace.getSpaceSettings().messageCopyAllowed();
                     break;
 
                 case POSITION_ALLOW_COPY_FILE:
-                    title = mListActivity.getString(R.string.settings_activity_allow_copy_file_title);
+                    title = mListActivity.getString(R.string.settings_view_allow_copy_file_title);
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_ALLOW_COPY_FILE;
                     value = mSpace != null && mSpace.getSpaceSettings().fileCopyAllowed();
                     break;
 
                 case POSITION_ALLOW_EPHEMERAL:
-                    title = mListActivity.getString(R.string.settings_activity_ephemeral_title);
+                    title = mListActivity.getString(R.string.settings_view_ephemeral_title);
                     spaceSettingProperty = SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE;
                     value = mSpace != null && mSpace.getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_ALLOW_EPHEMERAL_MESSAGE, false);
                     break;

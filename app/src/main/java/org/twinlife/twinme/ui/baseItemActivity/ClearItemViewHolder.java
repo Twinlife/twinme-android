@@ -27,7 +27,8 @@ public class ClearItemViewHolder extends ItemViewHolder {
                 R.id.base_item_activity_clear_item_state_avatar_view,
                 R.id.base_item_activity_clear_item_overlay_view,
                 R.id.base_item_activity_clear_item_selected_view,
-                R.id.base_item_activity_clear_item_selected_image_view);
+                R.id.base_item_activity_clear_item_selected_image_view,
+                -1);
 
         TextView mResetView = view.findViewById(R.id.base_item_activity_clear_item_reset_view);
         Design.updateTextFont(mResetView, Design.FONT_ITALIC_28);

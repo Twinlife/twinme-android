@@ -242,6 +242,8 @@ public class Design {
     private static final int DESIGN_NAME_TRAILING = 38;
     private static final float DESIGN_DESCRIPTION_CONTENT_VIEW_HEIGHT = 162f;
     private static final int DESIGN_AVATAR_OVER_WIDTH = 120;
+    private static final int DESIGN_PEER_AVATAR_CONVERSATION_MARGIN = 26;
+    private static final int DESIGN_PEER_CONTENT_CONVERSATION_MARGIN = 18;
     private static final int DESIGN_SECTION_HEIGHT = 120;
     private static final int DESIGN_EDIT_CLICKABLE_VIEW_HEIGHT = 80;
     private static final int DESIGN_HEADER_VIEW_TOP_MARGIN = 56;
@@ -308,6 +310,8 @@ public class Design {
     public static int NEW_FEATURE_HEIGHT;
     public static int NEW_FEATURE_MARGIN;
     public static int NEW_FEATURE_PADDING;
+    public static int PEER_AVATAR_CONVERSATION_MARGIN;
+    public static int PEER_CONTENT_CONVERSATION_MARGIN;
 
     //
     // Search view
@@ -471,6 +475,8 @@ public class Design {
         NEW_FEATURE_HEIGHT = (int) (DESIGN_NEW_FEATURE_HEIGHT * HEIGHT_RATIO);
         NEW_FEATURE_MARGIN = (int) (DESIGN_NEW_FEATURE_MARGIN * WIDTH_RATIO);
         NEW_FEATURE_PADDING = (int) (DESIGN_NEW_FEATURE_PADDING * WIDTH_RATIO);
+        PEER_AVATAR_CONVERSATION_MARGIN = (int) (DESIGN_PEER_AVATAR_CONVERSATION_MARGIN * WIDTH_RATIO);
+        PEER_CONTENT_CONVERSATION_MARGIN = (int) (DESIGN_PEER_CONTENT_CONVERSATION_MARGIN * WIDTH_RATIO);
 
         SEARCH_VIEW_HEIGHT = (int) (DESIGN_SEARCH_VIEW_HEIGHT * HEIGHT_RATIO);
 

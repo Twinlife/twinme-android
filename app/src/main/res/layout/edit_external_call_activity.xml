@@ -107,7 +107,7 @@
                         android:id="@+id/edit_external_call_activity_description_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/navigation_activity_about_twinme"
+                        android:hint="@string/navigation_view_about_twinme"
                         android:background="@android:color/transparent"
                         android:gravity="top"
                         android:inputType="textMultiLine|textNoSuggestions|textCapSentences"

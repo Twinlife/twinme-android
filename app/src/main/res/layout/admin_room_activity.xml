@@ -63,7 +63,7 @@
                         android:layout_centerInParent="true"
                         android:gravity="center"
                         android:lines="1"
-                        android:text="@string/show_room_activity_room_title"
+                        android:text="@string/show_room_view_room_title"
                         app:layout_widthPercent="56%" />
 
                 </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -107,7 +107,7 @@
                         android:id="@+id/admin_room_activity_description_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/admin_room_activity_welcome_message"
+                        android:hint="@string/admin_room_view_welcome_message"
                         android:background="@android:color/transparent"
                         android:gravity="top"
                         android:inputType="textMultiLine|textNoSuggestions|textCapSentences"
@@ -191,7 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/show_room_activity_invite_participants"
+                        android:text="@string/show_room_view_invite_participants"
                         app:layout_marginEndPercent="4.27%"
                         app:layout_marginStartPercent="12.8%" />
 
@@ -227,7 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/profile_fragment_twincode_title"
+                        android:text="@string/profile_view_twincode_title"
                         app:layout_marginEndPercent="4.27%"
                         app:layout_marginStartPercent="12.8%" />
 

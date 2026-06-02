@@ -197,7 +197,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.contact_capabilities_activity_call_settings));
+        setTitle(getString(R.string.contact_capabilities_view_call_settings));
         applyInsets(R.id.capabilities_activity_layout, R.id.contact_capabilities_activity_tool_bar, R.id.contact_capabilities_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         mCapabilitiesAdapter = new CapabilitiesAdapter(this);
@@ -553,8 +553,8 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
-        onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
-        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));
+        onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
+        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_view_camera_control_onboarding));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 

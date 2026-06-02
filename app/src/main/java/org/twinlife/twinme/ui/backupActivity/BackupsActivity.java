@@ -44,6 +44,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
 
@@ -205,7 +206,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
         showToolBar(true);
         showBackButton(true);
 
-        setTitle(getString(R.string.account_activity_backup_list));
+        setTitle(getString(R.string.account_view_backup_list));
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         applyInsets(R.id.backups_activity_layout, R.id.backups_activity_tool_bar, R.id.backups_activity_list_view, Design.TOOLBAR_COLOR, false);
@@ -283,15 +284,12 @@ public class BackupsActivity extends AbstractTwinmeActivity {
                 mNoBackupTextView.setText(getString(R.string.application_processing_please_wait));
             } else {
                 mStartBackupView.setVisibility(View.VISIBLE);
-                mNoBackupTextView.setText(getString(R.string.backups_activity_no_backup_message));
+                mNoBackupTextView.setText(getString(R.string.backups_view_no_backup_message));
             }
 
             if (mMenu != null) {
                 MenuItem menuItem = mMenu.findItem(R.id.invalid_backups_action);
-                menuItem.setEnabled(false);
-                if (menuItem.getActionView() != null) {
-                    menuItem.getActionView().setAlpha(0.5f);
-                }
+                CommonUtils.setMenuItem(menuItem, false, 0.5f, 1.0f);
             }
         } else {
             mNoBackupsView.setVisibility(View.GONE);
@@ -299,10 +297,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
 
             if (mMenu != null) {
                 MenuItem menuItem = mMenu.findItem(R.id.invalid_backups_action);
-                menuItem.setEnabled(true);
-                if (menuItem.getActionView() != null) {
-                    menuItem.getActionView().setAlpha(1.0f);
-                }
+                CommonUtils.setMenuItem(menuItem, true, 0.5f, 1.0f);
             }
         }
 
@@ -346,9 +341,9 @@ public class BackupsActivity extends AbstractTwinmeActivity {
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         defaultConfirmView.setLayoutParams(layoutParams);
-        defaultConfirmView.setTitle(getString(R.string.backups_activity_invalidate_backup));
-        String message = getString(R.string.backups_activity_invalidate_backup_message_part_one)
-                + "\n\n" + getString(R.string.backups_activity_invalidate_backup_message_part_two) ;
+        defaultConfirmView.setTitle(getString(R.string.backups_view_invalidate_backup));
+        String message = getString(R.string.backups_view_invalidate_backup_message_part_one)
+                + "\n\n" + getString(R.string.backups_view_invalidate_backup_message_part_two) ;
         defaultConfirmView.setMessage(message);
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_delete));
@@ -427,9 +422,9 @@ public class BackupsActivity extends AbstractTwinmeActivity {
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             onboardingConfirmView.setLayoutParams(layoutParams);
 
-            String title = getString(R.string.account_activity_backup);
-            String message = getString(R.string.backup_activity_onboarding);
-            String action = getString(R.string.backup_activity_backup);
+            String title = getString(R.string.account_view_backup);
+            String message = getString(R.string.backup_view_onboarding);
+            String action = getString(R.string.backup_view_backup);
 
             onboardingConfirmView.setTitle(title);
             onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_backup, null));

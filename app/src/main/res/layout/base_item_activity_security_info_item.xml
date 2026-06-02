@@ -8,7 +8,7 @@
         android:id="@+id/base_item_activity_header_item_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/conversation_activity_info"
+        android:text="@string/conversation_view_info"
         app:layout_marginStartPercent="6.93%"
         app:layout_marginEndPercent="6.93%" />
 

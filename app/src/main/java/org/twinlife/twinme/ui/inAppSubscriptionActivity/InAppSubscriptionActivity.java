@@ -741,7 +741,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
         mFooterTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mFooterTextView.setAlpha(0f);
 
-        String footerText = getResources().getString(R.string.in_app_subscription_activity_footer_message) + "\n\n" + getResources().getString(R.string.welcome_activity_terms_of_use) + " - " + getResources().getString(R.string.welcome_activity_privacy_policy);
+        String footerText = getResources().getString(R.string.in_app_subscription_view_footer_message) + "\n\n" + getResources().getString(R.string.welcome_view_terms_of_use) + " - " + getResources().getString(R.string.welcome_view_privacy_policy);
         mFooterTextView.setText(footerText);
         addLinks();
 
@@ -891,8 +891,8 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             ViewGroup viewGroup = findViewById(R.id.in_app_subscription_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.in_app_subscription_activity_cancel_subscription));
-            defaultConfirmView.setMessage(getString(R.string.in_app_subscription_activity_cancel_subscription_confirmation));
+            defaultConfirmView.setTitle(getString(R.string.in_app_subscription_view_cancel_subscription));
+            defaultConfirmView.setMessage(getString(R.string.in_app_subscription_view_cancel_subscription_confirmation));
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
 
@@ -969,9 +969,9 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                 mSubscribedTextView.setAlpha(0f);
             } else {
                 if (getTwinmeApplication().getInvitationSubscriptionTwincode() != null) {
-                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_activity_cancel_subscription));
+                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_view_cancel_subscription));
                 } else {
-                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_activity_manage_susbcription));
+                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_view_manage_subscription));
                 }
 
                 mSubscribedTextView.setAlpha(1f);
@@ -1055,14 +1055,14 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                 mOneYearSubscriptionView.setAlpha(1f);
                 mSixMonthSubscriptionView.setAlpha(1f);
                 mOneMonthSubscriptionView.setAlpha(1f);
-                mSubscribeTextView.setText(getString(R.string.in_app_subscription_activity_subscribe_title));
+                mSubscribeTextView.setText(getString(R.string.in_app_subscription_view_subscribe_title));
             } else {
                 if (getTwinmeApplication().getInvitationSubscriptionTwincode() == null) {
-                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_activity_manage_susbcription));
-                    mSubscribedTextView.setText(String.format(getString(R.string.in_app_subscription_activity_expiration_message), getRenewalSubscriptionDate()));
+                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_view_manage_subscription));
+                    mSubscribedTextView.setText(String.format(getString(R.string.in_app_subscription_view_expiration_message), getRenewalSubscriptionDate()));
                     mSubscribedTextView.setAlpha(1f);
                 } else {
-                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_activity_cancel_subscription));
+                    mSubscribeTextView.setText(getString(R.string.in_app_subscription_view_cancel_subscription));
                 }
 
                 mFreeTrialTextView.setAlpha(0f);
@@ -1154,24 +1154,24 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
         int imageBottomMargin = (int) (DESIGN_IMAGE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
         if (mDescriptionStep == 1) {
             mProgressBarOneView.startAnimation();
-            title = R.string.in_app_subscription_activity_description_step1_title;
-            description = R.string.in_app_subscription_activity_description_step1_subtitle;
+            title = R.string.in_app_subscription_view_description_step1_title;
+            description = R.string.in_app_subscription_view_description_step1_subtitle;
             drawable = R.drawable.in_app_step_one;
             imageBottomMargin = 0;
         } else if (mDescriptionStep == 2) {
             mProgressBarTwoView.startAnimation();
-            title = R.string.in_app_subscription_activity_description_step2_title;
-            description = R.string.in_app_subscription_activity_description_step2_subtitle;
+            title = R.string.in_app_subscription_view_description_step2_title;
+            description = R.string.in_app_subscription_view_description_step2_subtitle;
             drawable = R.drawable.in_app_step_two;
         } else if (mDescriptionStep == 3) {
             mProgressBarThreeView.startAnimation();
-            title = R.string.in_app_subscription_activity_description_step3_title;
-            description = R.string.in_app_subscription_activity_description_step3_subtitle;
+            title = R.string.in_app_subscription_view_description_step3_title;
+            description = R.string.in_app_subscription_view_description_step3_subtitle;
             drawable = R.drawable.in_app_step_three;
         } else {
             mProgressBarFourView.startAnimation();
-            title = R.string.in_app_subscription_activity_description_step4_title;
-            description = R.string.in_app_subscription_activity_description_step4_subtitle;
+            title = R.string.in_app_subscription_view_description_step4_title;
+            description = R.string.in_app_subscription_view_description_step4_subtitle;
             drawable = R.drawable.in_app_step_four;
         }
 
@@ -1188,8 +1188,8 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             Log.d(LOG_TAG, "addLinks");
         }
 
-        addLinks(mFooterTextView, getString(R.string.welcome_activity_terms_of_use), "file:///android_res/raw/terms_of_service.html");
-        addLinks(mFooterTextView, getString(R.string.welcome_activity_privacy_policy), "file:///android_res/raw/privacy_policy.html");
+        addLinks(mFooterTextView, getString(R.string.welcome_view_terms_of_use), "file:///android_res/raw/terms_of_service.html");
+        addLinks(mFooterTextView, getString(R.string.welcome_view_privacy_policy), "file:///android_res/raw/privacy_policy.html");
         mFooterTextView.setMovementMethod(new TextViewLinkHandler() {
 
         });

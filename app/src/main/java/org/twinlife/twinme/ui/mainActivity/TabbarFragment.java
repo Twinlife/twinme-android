@@ -19,7 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import org.twinlife.twinme.models.Originator;
-import org.twinlife.twinme.ui.TwinmeActivity;
+import org.twinlife.twinme.ui.Permission;
 
 import java.util.UUID;
 
@@ -74,7 +74,7 @@ class TabbarFragment extends Fragment {
         }
     }
 
-    public void onRequestPermissions(@NonNull TwinmeActivity.Permission[] grantedPermissions) {
+    public void onRequestPermissions(@NonNull Permission[] grantedPermissions) {
 
     }
 

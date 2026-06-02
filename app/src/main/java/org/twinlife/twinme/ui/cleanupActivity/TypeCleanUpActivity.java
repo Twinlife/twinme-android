@@ -195,7 +195,7 @@ public class TypeCleanUpActivity extends AbstractTwinmeActivity implements Reset
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        setTitle(getString(R.string.show_contact_activity_cleanup));
+        setTitle(getString(R.string.show_contact_view_cleanup));
         applyInsets(R.id.type_cleanup_activity_layout, R.id.type_cleanup_activity_tool_bar, R.id.type_cleanup_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         TypeCleanUpAdapter.OnTypeCleanupClickListener onTypeCleanupClickListener = new TypeCleanUpAdapter.OnTypeCleanupClickListener() {
@@ -270,12 +270,12 @@ public class TypeCleanUpActivity extends AbstractTwinmeActivity implements Reset
             Log.d(LOG_TAG, "openResetConversationConfirmView: " + avatar);
         }
 
-        Spanned message = Html.fromHtml(getString(R.string.main_activity_reset_conversation_message));
+        Spanned message = Html.fromHtml(getString(R.string.main_view_reset_conversation_message));
         if (mGroup != null) {
             if (mGroup.isOwner()) {
-                message = Html.fromHtml(getString(R.string.main_activity_reset_group_conversation_admin_message));
+                message = Html.fromHtml(getString(R.string.main_view_reset_group_conversation_admin_message));
             } else {
-                message = Html.fromHtml(getString(R.string.main_activity_reset_group_conversation_message));
+                message = Html.fromHtml(getString(R.string.main_view_reset_group_conversation_message));
             }
         }
 

@@ -189,6 +189,14 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
                 convertView = inflater.inflate(R.layout.base_item_activity_peer_file_item, parent, false);
                 return new PeerFileItemViewHolder(mBaseItemActivity, convertView, true, true);
 
+            case POLL:
+                convertView = inflater.inflate(R.layout.base_item_activity_poll_item, parent, false);
+                return new PollItemViewHolder(mBaseItemActivity, convertView);
+
+            case PEER_POLL:
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_poll_item, parent, false);
+                return new PeerPollItemViewHolder(mBaseItemActivity, convertView);
+
             case INVITATION:
                 convertView = inflater.inflate(R.layout.base_item_activity_invitation_item, parent, false);
 
@@ -200,13 +208,17 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
                 return new PeerInvitationItemViewHolder(mBaseItemActivity, convertView, true, true);
 
             case LOCATION:
-                convertView = inflater.inflate(R.layout.base_item_activity_location_item, parent, false);
-
-                return new LocationItemViewHolder(mBaseItemActivity, convertView, true, true);
+                if (mBaseItemActivity.getTwinmeApplication().visualizationMap()) {
+                    convertView = inflater.inflate(R.layout.base_item_activity_location_item, parent, false);
+                    return new LocationItemViewHolder(mBaseItemActivity, convertView, true, true);
+                } else {
+                    convertView = inflater.inflate(R.layout.base_item_activity_location_coordinate_item, parent, false);
+                    return new LocationCoordinateItemViewHolder(mBaseItemActivity, convertView, true, true);
+                }
 
             case PEER_LOCATION:
 
-                if (CommonUtils.isGooglePlayServicesAvailable(mBaseItemActivity)) {
+                if (mBaseItemActivity.getTwinmeApplication().visualizationMap() && CommonUtils.isGooglePlayServicesAvailable(mBaseItemActivity)) {
                     convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
                     return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, true, true);
                 } else {

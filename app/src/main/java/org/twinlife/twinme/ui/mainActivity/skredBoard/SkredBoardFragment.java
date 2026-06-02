@@ -135,7 +135,7 @@ public class SkredBoardFragment extends Fragment {
 
     private void setListeners() {
 
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = recyclerView.getAdapter();
+        RecyclerView.Adapter<DigitsAdapter.DigitViewHolder> adapter = recyclerView.getAdapter();
         if (adapter != null) {
             ((DigitsAdapter) adapter).setDigitClickListener(digit -> {
                 String digitStr = String.valueOf(digit);
@@ -171,17 +171,17 @@ public class SkredBoardFragment extends Fragment {
             case SET_CODE:
                 deleteAccountButton.setVisibility(View.VISIBLE);
                 createAccountButton.setVisibility(View.VISIBLE);
-                skredBoardTitle.setText(R.string.main_activity_skredboard_access_title);
+                skredBoardTitle.setText(R.string.main_view_skredboard_access_title);
                 break;
             case CREATE_CODE:
                 deleteAccountButton.setVisibility(View.VISIBLE);
                 createAccountButton.setVisibility(View.GONE);
-                skredBoardTitle.setText(R.string.main_activity_skredboard_create_title);
+                skredBoardTitle.setText(R.string.main_view_skredboard_create_title);
                 break;
             case DELETE_CODE:
                 deleteAccountButton.setVisibility(View.GONE);
                 createAccountButton.setVisibility(View.VISIBLE);
-                skredBoardTitle.setText(R.string.main_activity_skredboard_delete_title);
+                skredBoardTitle.setText(R.string.main_view_skredboard_delete_title);
                 break;
         }
     }

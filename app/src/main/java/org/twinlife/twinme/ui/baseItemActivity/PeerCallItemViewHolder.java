@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -71,6 +71,14 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         mCallItemContainer.setBackground(mGradientDrawable);
         mCallItemContainer.setClickable(false);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallItemContainer.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mCallItemContainer.setLayoutParams(marginLayoutParams);
+
         mCallTypeView = view.findViewById(R.id.base_item_activity_peer_call_item_type_call_view);
         Design.updateTextFont(mCallTypeView, Design.FONT_MEDIUM30);
         mCallTypeView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
@@ -83,7 +91,7 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         ViewGroup.LayoutParams layoutParams = mCallAvatarImageView.getLayoutParams();
         layoutParams.height = AVATAR_VIEW_HEIGHT;
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallAvatarImageView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallAvatarImageView.getLayoutParams();
         if (CommonUtils.isLayoutDirectionRTL()) {
             marginLayoutParams.leftMargin = TYPE_CALL_VIEW_MARGIN_RIGHT;
             marginLayoutParams.setMarginStart(TYPE_CALL_VIEW_MARGIN_RIGHT);
@@ -147,15 +155,15 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
         mIsVideo = callDescriptor.isVideo();
 
         if (callDescriptor.isVideo()) {
-            mCallTypeView.setText(getString(R.string.conversation_activity_video_call));
+            mCallTypeView.setText(getString(R.string.conversation_view_video_call));
         } else {
-            mCallTypeView.setText(getString(R.string.conversation_activity_audio_call));
+            mCallTypeView.setText(getString(R.string.conversation_view_audio_call));
         }
 
         if (!callDescriptor.isAccepted() && callDescriptor.isIncoming()) {
             if (callDescriptor.getTerminateReason() != null) {
                 mCallDurationView.setTextColor(Design.DELETE_COLOR_RED);
-                mCallDurationView.setText(getString(R.string.conversation_activity_call_missed));
+                mCallDurationView.setText(getString(R.string.conversation_view_call_missed));
             } else {
                 mCallDurationView.setText("");
                 mCallDurationView.setTextColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
@@ -176,6 +184,17 @@ class PeerCallItemViewHolder extends PeerItemViewHolder {
             if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
                 mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
             }
+        }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mCallItemContainer.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mCallItemContainer.setLayoutParams(marginLayoutParams);
         }
     }
 

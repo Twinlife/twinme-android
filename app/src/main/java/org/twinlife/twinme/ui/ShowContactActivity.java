@@ -786,7 +786,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         if (!mContact.hasPrivatePeer()) {
-            Toast.makeText(this, R.string.show_contact_activity_pending_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.show_contact_view_pending_message, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -810,7 +810,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         if (!mContact.getSpace().hasPermission(Space.Permission.MOVE_CONTACT)) {
-            showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+            showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), true, null);
             return;
         }
 
@@ -832,7 +832,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         if (!mContact.hasPrivatePeer()) {
-            Toast.makeText(this, R.string.show_contact_activity_pending_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.show_contact_view_pending_message, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -857,14 +857,14 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         if (mContact != null && mContactId != null) {
 
             if (!mContact.getSpace().hasPermission(Space.Permission.UPDATE_IDENTITY)) {
-                showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+                showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), true, null);
                 return;
             }
 
             if (mContact.hasPrivatePeer()) {
                 startActivity(EditIdentityActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
             } else {
-                Toast.makeText(this, R.string.show_contact_activity_pending_message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.show_contact_view_pending_message, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -886,7 +886,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
                     openMenuCertify();
                 }
             } else {
-                Toast.makeText(this, R.string.show_contact_activity_pending_message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.show_contact_view_pending_message, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -1031,7 +1031,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             } else {
                 mCertifiedView.setVisibility(View.VISIBLE);
                 if (mContact.getCertificationLevel() == CertificationLevel.LEVEL_4) {
-                    mCertifiedTextView.setText(getString(R.string.authentified_relation_activity_title));
+                    mCertifiedTextView.setText(getString(R.string.authentified_relation_view_title));
                     mCertifiedImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.authentified_relation_icon, null));
                     mCertifiedImageView.setColorFilter(Color.TRANSPARENT);
                     mCertifiedHeaderView.setVisibility(View.VISIBLE);
@@ -1040,7 +1040,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
                     marginLayoutParams.leftMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
                     marginLayoutParams.setMarginStart((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
                 } else {
-                    mCertifiedTextView.setText(getString(R.string.authentified_relation_activity_to_be_certified_title));
+                    mCertifiedTextView.setText(getString(R.string.authentified_relation_view_to_be_certified_title));
                     mCertifiedImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.authentified_relation_grey_icon, null));
                     mCertifiedHeaderView.setVisibility(View.GONE);
                     mNameView.setMaxWidth((int) (Design.DISPLAY_WIDTH * DESIGN_NAME_WIDTH_PERCENT));
@@ -1110,7 +1110,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
                 }
 
                 if (!mContact.getCapabilities().hasVideo()) {
-                    Toast.makeText(getApplicationContext(), String.format(getString(R.string.authentified_relation_activity_certify_by_video_call_missing_capability), mContactName), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), String.format(getString(R.string.authentified_relation_view_certify_by_video_call_missing_capability), mContactName), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -1135,8 +1135,8 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         viewGroup.addView(menuCertifyView);
 
         List<UIMenuSelectAction> actions = new ArrayList<>();
-        actions.add(new UIMenuSelectAction(getString(R.string.authentified_relation_activity_certify_by_scan), R.drawable.certify_by_scan_icon));
-        actions.add(new UIMenuSelectAction(getString(R.string.authentified_relation_activity_certify_by_video_call), R.drawable.video_call));
+        actions.add(new UIMenuSelectAction(getString(R.string.authentified_relation_view_certify_by_scan), R.drawable.certify_by_scan_icon));
+        actions.add(new UIMenuSelectAction(getString(R.string.authentified_relation_view_certify_by_video_call), R.drawable.video_call));
         menuCertifyView.setActions(actions, this);
         menuCertifyView.openMenu(false);
 
@@ -1152,7 +1152,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         if (getTwinmeApplication().showCoachMark(CoachMark.CoachMarkTag.CONTACT_CAPABILITIES)) {
             mCoachMarkView.postDelayed(() -> {
                 mCoachMarkView.setVisibility(View.VISIBLE);
-                CoachMark coachMark = new CoachMark(getString(R.string.show_contact_activity_settings_coach_mark), CoachMark.CoachMarkTag.CONTACT_CAPABILITIES, true, true, new Point(0, (int) mContentView.getY() + (int) mSettingsView.getY()),mSettingsView.getWidth(), mSettingsView.getHeight(), 0);
+                CoachMark coachMark = new CoachMark(getString(R.string.show_contact_view_settings_coach_mark), CoachMark.CoachMarkTag.CONTACT_CAPABILITIES, true, true, new Point(0, (int) mContentView.getY() + (int) mSettingsView.getY()),mSettingsView.getWidth(), mSettingsView.getHeight(), 0);
                 mCoachMarkView.openCoachMark(coachMark);
             }, COACH_MARK_DELAY);
         }
@@ -1185,15 +1185,15 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
                 DateTime end = dateTimeRange.end;
 
                 if (start.date.equals(end.date)) {
-                    message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
+                    message = String.format(getString(R.string.show_call_view_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
                 } else {
                     message = String.format("%1$s %2$s", start.formatDateTime(this), end.formatDateTime(this));
                 }
             } else {
-                message = getString(R.string.show_call_activity_schedule_message);
+                message = getString(R.string.show_call_view_schedule_message);
             }
 
-            showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.show_call_activity_schedule_call), message, true, null);
+            showAlertMessageView(R.id.show_contact_activity_layout, getString(R.string.show_call_view_schedule_call), message, true, null);
         }
     }
 
@@ -1252,11 +1252,11 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.authentified_relation_activity_to_be_certified_title));
+        spannableStringBuilder.append(getString(R.string.authentified_relation_view_to_be_certified_title));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n\n");
         int startSubTitle = spannableStringBuilder.length();
-        spannableStringBuilder.append(getString(R.string.authentified_relation_activity_onboarding_subtitle));
+        spannableStringBuilder.append(getString(R.string.authentified_relation_view_onboarding_subtitle));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
@@ -1271,10 +1271,10 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_authentified_relation_dark : R.drawable.onboarding_authentified_relation, null));
 
-        String message = getString(R.string.authentified_relation_activity_onboarding_message) + "\n\n" + getString(R.string.call_activity_certify_onboarding_message);
+        String message = getString(R.string.authentified_relation_view_onboarding_message) + "\n\n" + getString(R.string.call_view_certify_onboarding_message);
 
         onboardingConfirmView.setMessage(message);
-        onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_activity_start));
+        onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_view_start));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -1320,8 +1320,8 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
-        onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
-        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_activity_camera_control_onboarding));
+        onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
+        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_view_camera_control_onboarding));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 

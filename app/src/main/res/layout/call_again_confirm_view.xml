@@ -79,7 +79,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/call_again_confirm_view_title_view"
             android:gravity="center"
-            android:text="@string/conversation_activity_audio_call"
+            android:text="@string/conversation_view_audio_call"
             app:layout_widthPercent="94%" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/calls_fragment_call_again_title" />
+                android:text="@string/calls_view_call_again_title" />
 
         </androidx.percentlayout.widget.PercentRelativeLayout>
 

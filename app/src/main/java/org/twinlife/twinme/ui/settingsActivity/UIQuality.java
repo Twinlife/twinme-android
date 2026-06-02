@@ -63,17 +63,17 @@ public class UIQuality {
 
         switch (mQualityOfServicesStep) {
             case ONE:
-                mMessage = context.getString(R.string.quality_of_service_activity_step1_message);
+                mMessage = context.getString(R.string.quality_of_service_view_step1_message);
                 mImage = darkMode ? R.drawable.onboarding_step2_dark : R.drawable.onboarding_step2;
                 break;
 
             case TWO:
-                mMessage = context.getString(R.string.quality_of_service_activity_step2_message);
+                mMessage = context.getString(R.string.quality_of_service_view_step2_message);
                 mImage = darkMode ? R.drawable.quality_service_step2_dark : R.drawable.quality_service_step2;
                 break;
 
             case THREE:
-                mMessage = context.getString(R.string.quality_of_service_activity_step3_message);
+                mMessage = context.getString(R.string.quality_of_service_view_step3_message);
                 mImage = R.drawable.quality_service_step3;
                 break;
         }

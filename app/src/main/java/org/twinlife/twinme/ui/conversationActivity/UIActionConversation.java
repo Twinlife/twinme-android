@@ -25,6 +25,7 @@ public class UIActionConversation {
         GALLERY,
         LOCATION,
         MANAGE_CONVERSATION,
+        POLL,
         MEDIAS_AND_FILES,
         PHOTO,
         RESET,
@@ -80,7 +81,7 @@ public class UIActionConversation {
 
         switch (mConversationActionType) {
             case FILE:
-                mTitle = Utils.capitalizeString(context.getString(R.string.export_activity_files));
+                mTitle = Utils.capitalizeString(context.getString(R.string.export_view_files));
                 mIcon = R.drawable.toolbar_file_grey;
                 mIconColor = Color.rgb(200, 200, 200);
                 break;
@@ -92,37 +93,43 @@ public class UIActionConversation {
                 break;
 
             case LOCATION:
-                mTitle = context.getString(R.string.call_activity_location_share);
+                mTitle = context.getString(R.string.call_view_location_share);
                 mIcon = R.drawable.toolbar_location_grey;
                 mIconColor = Color.rgb(210, 218, 119);
                 break;
 
             case MANAGE_CONVERSATION:
-                mTitle = context.getString(R.string.conversation_activity_manage_conversation);
+                mTitle = context.getString(R.string.conversation_view_manage_conversation);
                 mIcon = R.drawable.settings_icon;
                 mIconColor = darkMode ? Color.rgb(230, 230, 230) : Color.rgb(110, 110, 110);
                 break;
 
             case MEDIAS_AND_FILES:
-                mTitle = context.getString(R.string.conversation_files_activity_title);
+                mTitle = context.getString(R.string.conversation_files_view_title);
                 mIcon = R.drawable.select_file;
                 mIconColor = Color.rgb(78, 171, 241);
                 break;
 
+            case POLL:
+                mTitle = context.getString(R.string.poll_view_title);
+                mIcon = R.drawable.poll_icon;
+                mIconColor = Color.rgb(0, 89, 255);
+                break;
+
             case PHOTO:
-                mTitle = context.getString(R.string.conversation_activity_photo_camera);
+                mTitle = context.getString(R.string.conversation_view_photo_camera);
                 mIcon = R.drawable.toolbar_camera_grey;
                 mIconColor = Color.rgb(112, 212, 174);
                 break;
 
             case RESET:
-                mTitle = context.getString(R.string.main_activity_reset_conversation_title);
+                mTitle = context.getString(R.string.main_view_reset_conversation_title);
                 mIcon = R.drawable.action_bar_delete;
                 mIconColor = Design.DELETE_COLOR_RED;
                 break;
 
             case VIDEO:
-                mTitle = context.getString(R.string.conversation_activity_video_camera);
+                mTitle = context.getString(R.string.conversation_view_video_camera);
                 mIcon = R.drawable.history_video_call;
                 mIconColor = Color.rgb(179, 104, 216);
                 break;

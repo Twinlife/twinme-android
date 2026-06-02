@@ -29,12 +29,15 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.EphemeralView;
 import org.twinlife.twinme.utils.RoundedImageView;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
 
     private static final float DESIGN_LOCATION_ICON_MARGIN = 14f;
     private static final float DESIGN_LOCATION_ICON_SIZE = 48f;
+    private static final float DESIGN_SHOW_ICON_SIZE = 30f;
     private static final float DESIGN_MESSAGE_MARGIN = 12f;
     private static final float DESIGN_EPHEMERAL_SIZE = 28f;
     private static final float DESIGN_EPHEMERAL_RIGHT_MARGIN = 20f;
@@ -67,6 +70,14 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
 
         mLocationItemContainer = view.findViewById(R.id.base_item_activity_peer_location_item_coordinate_container);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mLocationItemContainer.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.leftMargin = Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT;
+        } else {
+            marginLayoutParams.leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+        }
+        mLocationItemContainer.setLayoutParams(marginLayoutParams);
+
         mLocationItemContainer.setPadding(FILE_ITEM_WIDTH_PADDING, FILE_ITEM_HEIGHT_PADDING, FILE_ITEM_WIDTH_PADDING, FILE_ITEM_HEIGHT_PADDING);
         mGradientDrawable = new GradientDrawable();
         mGradientDrawable.mutate();
@@ -97,7 +108,7 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
         layoutParams.width = (int) (DESIGN_LOCATION_ICON_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_LOCATION_ICON_SIZE * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) locationImageView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) locationImageView.getLayoutParams();
         marginLayoutParams.rightMargin = (int) (DESIGN_LOCATION_ICON_MARGIN * Design.WIDTH_RATIO);
 
         mMessageView = view.findViewById(R.id.base_item_activity_peer_location_item_coordinate_message_view);
@@ -106,6 +117,12 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+
+        ImageView showImageView = view.findViewById(R.id.base_item_activity_peer_location_item_coordinate_show_view);
+        layoutParams = showImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_SHOW_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_SHOW_ICON_SIZE * Design.HEIGHT_RATIO);
+        showImageView.setColorFilter(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         mReplyTextView = view.findViewById(R.id.base_item_activity_peer_location_item_reply_text);
         mReplyTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
@@ -153,7 +170,7 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
         mReplyToImageContentView.setBackground(mReplyToImageContentGradientDrawable);
 
         mEphemeralView = view.findViewById(R.id.base_item_activity_peer_location_item_ephemeral_view);
-        mEphemeralView.setColor(Color.BLACK);
+        mEphemeralView.setColor(getBaseItemActivity().getCustomAppearance().getPeerMessageTextColor());
 
         layoutParams = mEphemeralView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_EPHEMERAL_SIZE * Design.HEIGHT_RATIO);
@@ -187,9 +204,13 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
         String coordinate = peerLocationItem.getGeolocationDescriptor().getLatitude() + "\n" + peerLocationItem.getGeolocationDescriptor().getLongitude();
         mCoordinateTextView.setText(coordinate);
 
-        if (getBaseItemActivity().getContactName() != null) {
-            String errorMessage = String.format(getBaseItemActivity().getString(R.string.info_item_activity_location_map_error), getBaseItemActivity().getPeerName(item.getPeerTwincodeOutboundId()));
-            mMessageView.setText(errorMessage);
+        if (!getBaseItemActivity().getTwinmeApplication().visualizationMap()) {
+            mMessageView.setText(getBaseItemActivity().getString(R.string.settings_view_show_location_on_map));
+        } else {
+            if (getBaseItemActivity().getContactName() != null) {
+                String errorMessage = String.format(getBaseItemActivity().getString(R.string.info_item_view_location_map_error), getBaseItemActivity().getPeerName(item.getPeerTwincodeOutboundId()));
+                mMessageView.setText(errorMessage);
+            }
         }
 
         mReplyGradientDrawable.setCornerRadii(cornerRadii);
@@ -236,7 +257,7 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_peer_location_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case GEOLOCATION_DESCRIPTOR:
@@ -269,6 +290,17 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
         } else {
             mEphemeralView.setVisibility(View.GONE);
         }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mLocationItemContainer.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mLocationItemContainer.setLayoutParams(marginLayoutParams);
+        }
     }
 
     @Override
@@ -280,6 +312,17 @@ public class PeerLocationCoordinateItemViewHolder extends PeerItemViewHolder {
             mTimer.cancel();
             mTimer = null;
         }
+    }
+
+    @Override
+    List<View> clickableViews() {
+
+        return new ArrayList<View>() {
+            {
+                add(getContainer());
+                add(mLocationItemContainer);
+            }
+        };
     }
 
     //

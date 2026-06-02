@@ -92,7 +92,7 @@
             android:layout_centerVertical="true"
             app:layout_marginStartPercent="6.93%"
             app:layout_marginEndPercent="6.93%"
-            android:text="@string/contact_space_activity_move_title" />
+            android:text="@string/contact_space_view_move_title" />
 
         <View
             android:id="@+id/contacts_space_activity_add_title_clickable_view"

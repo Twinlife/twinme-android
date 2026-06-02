@@ -123,6 +123,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeActivity;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.contacts.InvitationCodeConfirmView;
 import org.twinlife.twinme.ui.inAppSubscriptionActivity.InAppSubscriptionActivity;
@@ -835,7 +836,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         mResumed = true;
 
         if (mAudioCallService != null && !mAudioCallService.isConnected()) {
-            showNetworkDisconnect(mVideo ? R.string.video_call_activity_cannot_call : R.string.audio_call_activity_cannot_call, () -> {});
+            showNetworkDisconnect(mVideo ? R.string.video_call_view_cannot_call : R.string.audio_call_view_cannot_call, () -> {});
         } else if (isCallReady()) {
             startCall();
         }
@@ -1163,7 +1164,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             AlertMessageView alertMessageView = new AlertMessageView(this, null);
             alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
             alertMessageView.setForceDarkMode(true);
-            alertMessageView.setTitle(getString(R.string.audio_call_activity_terminate));
+            alertMessageView.setTitle(getString(R.string.audio_call_view_terminate));
             alertMessageView.setMessage(getString(R.string.application_contact_not_found));
 
             AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -1329,9 +1330,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mMode = CallStatus.TERMINATED;
             updateViews();
             if (mOriginator != null && mOriginator.getIdentityCapabilities().hasDiscreet()) {
-                mTerminatedView.setText(getString(R.string.audio_call_activity_terminate));
+                mTerminatedView.setText(getString(R.string.audio_call_view_terminate));
             } else {
-                mTerminatedView.setText(Html.fromHtml(String.format(getString(R.string.audio_call_activity_terminate_success), mOriginatorName)));
+                mTerminatedView.setText(Html.fromHtml(String.format(getString(R.string.audio_call_view_terminate_success), mOriginatorName)));
             }
 
             mContentView.setOnClickListener(view -> onCloseClick());
@@ -1436,11 +1437,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         String updateAudioMessage = "";
         switch (mCurrentAudioDevice) {
             case BLUETOOTH:
-                updateAudioMessage = getString(R.string.call_activity_connected_bluetooth);
+                updateAudioMessage = getString(R.string.call_view_connected_bluetooth);
                 break;
 
             case SPEAKER_PHONE:
-                updateAudioMessage = getString(R.string.call_activity_connected_speaker);
+                updateAudioMessage = getString(R.string.call_view_connected_speaker);
                 break;
 
             default:
@@ -1678,7 +1679,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
             case CAMERA_ERROR:
                 terminateCall(TerminateReason.GENERAL_ERROR, false);
-                error(getString(R.string.capture_activity_create_camera_error), this::finish);
+                error(getString(R.string.capture_view_create_camera_error), this::finish);
                 break;
 
             case CALL_IN_PROGRESS:
@@ -1711,7 +1712,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             AlertMessageView alertMessageView = new AlertMessageView(this, null);
             alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
             alertMessageView.setForceDarkMode(true);
-            alertMessageView.setTitle(getString(R.string.audio_call_activity_terminate));
+            alertMessageView.setTitle(getString(R.string.audio_call_view_terminate));
             alertMessageView.setMessage(getString(R.string.application_contact_not_found));
 
             AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -1915,14 +1916,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mStreamPlayer = null;
                 updateParticipantsView(CallService.getState());
                 mCallStreamingAudioView.stopStreaming();
-                toast(getString(R.string.streaming_audio_activity_error_message));
+                toast(getString(R.string.streaming_audio_view_error_message));
                 break;
 
             case EVENT_UNSUPPORTED:
                 mStreamPlayer = null;
                 updateParticipantsView(CallService.getState());
                 mCallStreamingAudioView.stopStreaming();
-                toast(String.format(getString(R.string.streaming_audio_activity_unsupported_message), mOriginatorName));
+                toast(String.format(getString(R.string.streaming_audio_view_unsupported_message), mOriginatorName));
                 break;
 
             default:
@@ -2726,7 +2727,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             case ACCEPTED_INCOMING_CALL:
             case ACCEPTED_OUTGOING_CALL:
                 mCallMenuView.setVisibility(View.VISIBLE);
-                mMessageView.setText(getString(R.string.audio_call_activity_connecting));
+                mMessageView.setText(getString(R.string.audio_call_view_connecting));
                 mAnswerCallView.setVisibility(View.GONE);
                 mCallInfoView.setVisibility(View.GONE);
                 break;
@@ -2735,9 +2736,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             case INCOMING_VIDEO_CALL:
             case INCOMING_VIDEO_BELL:
                 if (mMode == CallStatus.INCOMING_CALL) {
-                    mMessageView.setText(getString(R.string.audio_call_activity_calling));
+                    mMessageView.setText(getString(R.string.audio_call_view_calling));
                 } else if (mMode == CallStatus.INCOMING_VIDEO_CALL) {
-                    mMessageView.setText(getString(R.string.video_call_activity_calling));
+                    mMessageView.setText(getString(R.string.video_call_view_calling));
                 }
                 mCallMenuView.setVisibility(View.GONE);
                 mMessageView.setVisibility(View.VISIBLE);
@@ -2821,7 +2822,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 Handler callInfoHandler = new Handler();
                 callInfoHandler.postDelayed(this::showCallInfo, CERTIFY_DELAY);
 
-                mCallInfoView.updateMessage(getString(R.string.call_activity_waiting_conference_call));
+                mCallInfoView.updateMessage(getString(R.string.call_view_waiting_conference_call));
                 break;
 
             case TERMINATED:
@@ -3097,18 +3098,18 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             if (isRemoteCameraControl()) {
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
                 defaultConfirmView.setForceDarkMode(true);
-                defaultConfirmView.setTitle(getString(R.string.call_activity_camera_control));
+                defaultConfirmView.setTitle(getString(R.string.call_view_camera_control));
                 String message;
                 if (participant.getRemoteActiveCamera() > 0) {
-                    message = String.format(getString(R.string.call_activity_camera_control_message), mOriginatorName);
+                    message = String.format(getString(R.string.call_view_camera_control_message), mOriginatorName);
                 } else {
-                    message = String.format(getString(R.string.call_activity_camera_control_remotely), mOriginatorName);
+                    message = String.format(getString(R.string.call_view_camera_control_remotely), mOriginatorName);
                 }
 
                 defaultConfirmView.setMessage(message);
                 defaultConfirmView.setImage(null);
                 defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
-                defaultConfirmView.setConfirmTitle(getString(R.string.call_activity_camera_control_stop));
+                defaultConfirmView.setConfirmTitle(getString(R.string.call_view_camera_control_stop));
                 defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
 
                 AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -3151,8 +3152,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
                         defaultConfirmView.setForceDarkMode(true);
-                        defaultConfirmView.setTitle(getString(R.string.call_activity_camera_control));
-                        String message = String.format(getString(R.string.call_activity_camera_control_ask_message), mOriginatorName);
+                        defaultConfirmView.setTitle(getString(R.string.call_view_camera_control));
+                        String message = String.format(getString(R.string.call_view_camera_control_ask_message), mOriginatorName);
                         defaultConfirmView.setMessage(message);
                         defaultConfirmView.setImage(null);
                         defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
@@ -3258,8 +3259,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     ViewGroup viewGroup = findViewById(R.id.call_activity_view);
 
                     AlertMessageView alertMessageView = new AlertMessageView(this, null);
-                    alertMessageView.setTitle(getString(R.string.conversation_activity_menu_item_view_info_title));
-                    alertMessageView.setMessage(String.format(getString(R.string.call_activity_not_supported_group_call_message), callState.getMainParticipant().getName()));
+                    alertMessageView.setTitle(getString(R.string.conversation_view_menu_item_view_info_title));
+                    alertMessageView.setMessage(String.format(getString(R.string.call_view_not_supported_group_call_message), callState.getMainParticipant().getName()));
 
                     AlertMessageView.Observer observer = new AlertMessageView.Observer() {
 
@@ -3294,7 +3295,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 ViewGroup viewGroup = findViewById(R.id.call_activity_view);
 
                 AlertMessageView alertMessageView = new AlertMessageView(this, null);
-                alertMessageView.setMessage(String.format(getString(R.string.call_activity_max_participant_message), callState.getMaxMemberCount()));
+                alertMessageView.setMessage(String.format(getString(R.string.call_view_max_participant_message), callState.getMaxMemberCount()));
 
                 AlertMessageView.Observer observer = new AlertMessageView.Observer() {
 
@@ -3364,8 +3365,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                 invitationCodeConfirmView.setAvatar(avatar, false);
                 invitationCodeConfirmView.setTitle(getTwinmeApplication().getCurrentSpace().getProfile().getName());
-                invitationCodeConfirmView.setConfirmTitle(getString(R.string.add_contact_activity_invite));
-                invitationCodeConfirmView.setMessage(getString(R.string.group_member_activity_invite_personnal_relation));
+                invitationCodeConfirmView.setConfirmTitle(getString(R.string.add_contact_view_invite));
+                invitationCodeConfirmView.setMessage(getString(R.string.group_member_view_invite_personnal_relation));
 
                 AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
@@ -3441,7 +3442,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         CallState call = CallService.getState();
         if (call != null && !call.isVideo()) {
-            toast(getString(R.string.call_activity_certify_video_message));
+            toast(getString(R.string.call_view_certify_video_message));
             return;
         }
 
@@ -3687,11 +3688,12 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (locationManager != null && !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             showLocationSettings();
         } else {
-            TwinmeActivity.Permission[] permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.ACCESS_FINE_LOCATION, TwinmeActivity.Permission.ACCESS_COARSE_LOCATION};
+
+            Permission[] permissions = new Permission[]{Permission.ACCESS_FINE_LOCATION, Permission.ACCESS_COARSE_LOCATION};
             if (checkPermissions(permissions)) {
                 mAccessLocationGranted = true;
 
-                permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.ACCESS_FINE_LOCATION};
+                permissions = new Permission[]{Permission.ACCESS_FINE_LOCATION};
                 if (checkPermissionsWithoutRequest(permissions)) {
                     mAccessFineLocationGranted = true;
                 }
@@ -3699,7 +3701,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 CallService.initShareLocation(this);
 
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                    permissions = new TwinmeActivity.Permission[]{TwinmeActivity.Permission.ACCESS_BACKGROUND_LOCATION};
+                    permissions = new Permission[]{Permission.ACCESS_BACKGROUND_LOCATION};
                     if (checkPermissionsWithoutRequest(permissions)) {
                         mAccessBackgroundLocationGranted = true;
                     }
@@ -3901,7 +3903,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         startService(intent);
 
         if (terminateReason == TerminateReason.SUCCESS) {
-            mTerminatedView.setText(getString(R.string.audio_call_activity_terminate));
+            mTerminatedView.setText(getString(R.string.audio_call_view_terminate));
         } else {
             mTerminatedView.setText("");
         }
@@ -3922,52 +3924,52 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         if (mOriginatorName == null) {
 
-            return getString(R.string.audio_call_activity_terminate);
+            return getString(R.string.audio_call_view_terminate);
         }
 
         switch (terminateReason) {
             case BUSY:
-                return String.format(getString(R.string.audio_call_activity_terminate_busy), mOriginatorName);
+                return String.format(getString(R.string.audio_call_view_terminate_busy), mOriginatorName);
 
             case CANCEL:
-                return String.format(getString(R.string.audio_call_activity_terminate_cancel), mOriginatorName);
+                return String.format(getString(R.string.audio_call_view_terminate_cancel), mOriginatorName);
 
             case CONNECTIVITY_ERROR:
-                return getString(R.string.audio_call_activity_terminate_connectivity_error);
+                return getString(R.string.audio_call_view_terminate_connectivity_error);
 
             case DECLINE:
-                return String.format(getString(R.string.audio_call_activity_terminate_decline), mOriginatorName);
+                return String.format(getString(R.string.audio_call_view_terminate_decline), mOriginatorName);
 
             case DISCONNECTED:
-                return getString(R.string.video_call_activity_terminate_disconnected);
+                return getString(R.string.video_call_view_terminate_disconnected);
 
             case NOT_AUTHORIZED:
-                return getString(R.string.audio_call_activity_terminate_not_authorized);
+                return getString(R.string.audio_call_view_terminate_not_authorized);
 
             case GONE:
                 if (mStartTime > 0) {
-                    return  String.format(getString(R.string.call_activity_error_call_interrupted), terminateReason.ordinal());
+                    return  String.format(getString(R.string.call_view_error_call_interrupted), terminateReason.ordinal());
                 } else {
-                    return String.format(getString(R.string.audio_call_activity_terminate_gone), mOriginatorName);
+                    return String.format(getString(R.string.audio_call_view_terminate_gone), mOriginatorName);
                 }
 
             case REVOKED:
-                return String.format(getString(R.string.audio_call_activity_terminate_revoked), mOriginatorName);
+                return String.format(getString(R.string.audio_call_view_terminate_revoked), mOriginatorName);
 
             case SUCCESS:
-                return String.format(getString(R.string.audio_call_activity_terminate_success), mOriginatorName);
+                return String.format(getString(R.string.audio_call_view_terminate_success), mOriginatorName);
 
             case TIMEOUT:
                 if (mMode == CallStatus.OUTGOING_CALL || mMode == CallStatus.OUTGOING_VIDEO_CALL || mMode == CallStatus.OUTGOING_VIDEO_BELL) {
 
-                    return String.format(getString(R.string.audio_call_activity_terminate_timeout), mOriginatorName);
+                    return String.format(getString(R.string.audio_call_view_terminate_timeout), mOriginatorName);
                 }
 
-                return getString(R.string.audio_call_activity_terminate);
+                return getString(R.string.audio_call_view_terminate);
 
             case SCHEDULE:
 
-                String message = getString(R.string.show_call_activity_schedule_message);
+                String message = getString(R.string.show_call_view_schedule_message);
                 if (mOriginator != null) {
                     Schedule schedule = mOriginator.getCapabilities().getSchedule();
 
@@ -3978,23 +3980,23 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                         DateTime end = dateTimeRange.end;
 
                         if (start.date.equals(end.date)) {
-                            message = String.format(getString(R.string.show_call_activity_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
+                            message = String.format(getString(R.string.show_call_view_schedule_from_to), start.formatDate(), start.formatTime(this), end.formatTime(this));
                         } else {
                             message = String.format("%1$s %2$s", start.formatDateTime(this), end.formatDateTime(this)) ;
                         }
                     }
                 }
-                return  getString(R.string.show_call_activity_schedule_call) + " : " + message;
+                return  getString(R.string.show_call_view_schedule_call) + " : " + message;
 
             default:
                 String reason;
                 if (mStartTime > 0) {
-                    reason = String.format(getString(R.string.call_activity_error_call_interrupted), terminateReason.ordinal());
+                    reason = String.format(getString(R.string.call_view_error_call_interrupted), terminateReason.ordinal());
                 } else {
-                    reason = String.format(getString(R.string.call_activity_error_call_not_go_thru), terminateReason.ordinal());
+                    reason = String.format(getString(R.string.call_view_error_call_not_go_thru), terminateReason.ordinal());
                 }
 
-                return reason + "<br></br>" + getString(R.string.call_activity_try_to_call_back);
+                return reason + "<br></br>" + getString(R.string.call_view_try_to_call_back);
         }
     }
 
@@ -4018,7 +4020,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (getTwinmeApplication().showCoachMark(CoachMark.CoachMarkTag.ADD_PARTICIPANT_TO_CALL)) {
             mCoachMarkView.postDelayed(() -> {
                 mCoachMarkView.setVisibility(View.VISIBLE);
-                CoachMark coachMark = new CoachMark(getString(R.string.call_activity_coach_mark), CoachMark.CoachMarkTag.ADD_PARTICIPANT_TO_CALL, false, false, new Point((int) mAddParticipantView.getX(), (int) mAddParticipantView.getY()), mAddParticipantView.getHeight(), mAddParticipantView.getHeight(), mAddParticipantView.getHeight() * 0.5f);
+                CoachMark coachMark = new CoachMark(getString(R.string.call_view_coach_mark), CoachMark.CoachMarkTag.ADD_PARTICIPANT_TO_CALL, false, false, new Point((int) mAddParticipantView.getX(), (int) mAddParticipantView.getY()), mAddParticipantView.getHeight(), mAddParticipantView.getHeight(), mAddParticipantView.getHeight() * 0.5f);
                 mCoachMarkView.openCoachMark(coachMark);
             }, COACH_MARK_DELAY);
         }
@@ -4872,8 +4874,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 }
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
                 defaultConfirmView.setForceDarkMode(true);
-                defaultConfirmView.setTitle(getString(R.string.call_activity_camera_control));
-                String message = String.format(getString(R.string.call_activity_camera_control_confirm_message), mOriginatorName);
+                defaultConfirmView.setTitle(getString(R.string.call_view_camera_control));
+                String message = String.format(getString(R.string.call_view_camera_control_confirm_message), mOriginatorName);
                 defaultConfirmView.setMessage(message);
                 defaultConfirmView.setImage(null);
                 defaultConfirmView.setConfirmTitle(getString(R.string.application_accept));
@@ -4927,8 +4929,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 AlertMessageView alertMessageView = new AlertMessageView(this, null);
                 alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
                 alertMessageView.setForceDarkMode(true);
-                alertMessageView.setTitle(getString(R.string.call_activity_camera_control));
-                alertMessageView.setMessage(String.format(getString(R.string.call_activity_camera_control_denied), mOriginatorName));
+                alertMessageView.setTitle(getString(R.string.call_view_camera_control));
+                alertMessageView.setMessage(String.format(getString(R.string.call_view_camera_control_denied), mOriginatorName));
 
                 AlertMessageView.Observer observer = new AlertMessageView.Observer() {
 
@@ -4999,7 +5001,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     mStreamPlayer = null;
                     updateParticipantsView(CallService.getState());
-                    toast(getString(R.string.streaming_audio_activity_error_message));
+                    toast(getString(R.string.streaming_audio_view_error_message));
                 } else if (streamingStatus == StreamingStatus.UNSUPPORTED) {
                     Intent intent = new Intent(this, CallService.class);
                     intent.setAction(CallService.ACTION_STOP_STREAMING);
@@ -5007,7 +5009,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     mStreamPlayer = null;
                     updateParticipantsView(CallService.getState());
-                    toast(getString(R.string.streaming_audio_activity_error_message));
+                    toast(getString(R.string.streaming_audio_view_error_message));
                 }
                 break;
 
@@ -5367,7 +5369,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
         alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
         alertMessageView.setForceDarkMode(true);
-        alertMessageView.setMessage(String.format(getString(R.string.call_activity_not_supported_group_call_message), name));
+        alertMessageView.setMessage(String.format(getString(R.string.call_view_not_supported_group_call_message), name));
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
 
@@ -5776,7 +5778,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
         onboardingConfirmView.setForceDarkMode(true);
-        onboardingConfirmView.setTitle(getString(R.string.authentified_relation_activity_to_be_certified_title));
+        onboardingConfirmView.setTitle(getString(R.string.authentified_relation_view_to_be_certified_title));
 
         boolean darkMode = false;
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -5787,8 +5789,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_authentified_relation_dark : R.drawable.onboarding_authentified_relation, null));
 
-        onboardingConfirmView.setMessage(String.format(getString(R.string.call_activity_certify_onboarding_start_message), mOriginatorName));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_activity_start));
+        onboardingConfirmView.setMessage(String.format(getString(R.string.call_view_certify_onboarding_start_message), mOriginatorName));
+        onboardingConfirmView.setConfirmTitle(getString(R.string.authentified_relation_view_start));
         onboardingConfirmView.hideCancelView();
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -5873,8 +5875,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
         onboardingConfirmView.setForceDarkMode(true);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
-        onboardingConfirmView.setTitle(getString(R.string.call_activity_camera_control_needs_help));
-        onboardingConfirmView.setMessage(getString(R.string.call_activity_camera_control_onboarding_part_2));
+        onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
+        onboardingConfirmView.setMessage(getString(R.string.call_view_camera_control_onboarding_part_2));
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 

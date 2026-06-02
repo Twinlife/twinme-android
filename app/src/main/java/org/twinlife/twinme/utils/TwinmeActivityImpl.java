@@ -57,6 +57,7 @@ import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.TwinmeApplication.Feature;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
@@ -698,7 +699,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
             alertMessageView.setForceDarkMode(true);
         }
 
-        alertMessageView.setTitle(getString(R.string.conversation_activity_menu_item_view_info_title));
+        alertMessageView.setTitle(getString(R.string.conversation_view_menu_item_view_info_title));
         alertMessageView.setMessage(Html.fromHtml(message).toString());
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -758,7 +759,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.deleted_account_activity_warning));
+        defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
         defaultConfirmView.setMessage(message);
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_authorization_go_settings));
@@ -844,7 +845,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
             alertMessageView.setForceDarkMode(true);
         }
 
-        alertMessageView.setTitle(getString(R.string.deleted_account_activity_warning));
+        alertMessageView.setTitle(getString(R.string.deleted_account_view_warning));
         alertMessageView.setMessage(message);
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -900,13 +901,13 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
     public String getLinkError(@NonNull ErrorCode errorCode, @StringRes int defaultMessage) {
 
         if (errorCode == ErrorCode.BAD_REQUEST) {
-            return getString(R.string.add_contact_activity_scan_error_incorrect_link);
+            return getString(R.string.add_contact_view_scan_error_incorrect_link);
         } else if (errorCode == ErrorCode.FEATURE_NOT_IMPLEMENTED) {
-            return getString(R.string.add_contact_activity_scan_error_not_managed_link);
+            return getString(R.string.add_contact_view_scan_error_not_managed_link);
         } else if (errorCode == ErrorCode.ITEM_NOT_FOUND) {
-            return getString(R.string.add_contact_activity_scan_error_corrupt_link);
+            return getString(R.string.add_contact_view_scan_error_corrupt_link);
         } else if (errorCode == ErrorCode.EXPIRED) {
-            return getString(R.string.add_contact_activity_scan_error_expired_link);
+            return getString(R.string.add_contact_view_scan_error_expired_link);
         }else {
             return getString(defaultMessage);
         }
@@ -915,11 +916,11 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
     public String getLinkError(@NonNull TwincodeURI.Kind kind, @StringRes int defaultMessage) {
 
         if (kind == TwincodeURI.Kind.Call) {
-            return getString(R.string.add_contact_activity_scan_message_call_link);
+            return getString(R.string.add_contact_view_scan_message_call_link);
         } else if (kind == TwincodeURI.Kind.AccountMigration) {
-            return getString(R.string.add_contact_activity_scan_message_migration_link);
+            return getString(R.string.add_contact_view_scan_message_migration_link);
         } else if (kind == TwincodeURI.Kind.Transfer) {
-            return getString(R.string.add_contact_activity_scan_message_transfer_link);
+            return getString(R.string.add_contact_view_scan_message_transfer_link);
         } else {
             return getString(defaultMessage);
         }

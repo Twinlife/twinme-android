@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -48,6 +48,7 @@ import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.contacts.DeleteConfirmView;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
@@ -172,8 +173,6 @@ public class EditGroupActivity extends AbstractGroupActivity {
     private RemoveListener mRemoveListener;
 
     private boolean mUIInitialized = false;
-    @Nullable
-    private Group mGroup;
     private String mGroupName;
     private String mGroupDescription;
     private Bitmap mGroupAvatar;
@@ -650,10 +649,10 @@ public class EditGroupActivity extends AbstractGroupActivity {
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setConfirmTitle(getString(R.string.application_confirm));
         deleteConfirmView.setAvatar(mGroupAvatar, mGroupAvatar == null || mGroupAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
-        String message = getString(R.string.show_group_activity_leave_message) + "\n\n"  + getString(R.string.show_group_activity_leave_confirm_message);
+        String message = getString(R.string.show_group_view_leave_message) + "\n\n"  + getString(R.string.show_group_view_leave_confirm_message);
 
         if (mGroup.isOwner()){
-            message = getString(R.string.show_group_activity_remove_message) + "\n\n"  + getString(R.string.show_group_activity_remove_confirm_message);
+            message = getString(R.string.show_group_view_remove_message) + "\n\n"  + getString(R.string.show_group_view_remove_confirm_message);
         }
         deleteConfirmView.setMessage(message);
 
@@ -740,7 +739,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
             mRemoveLabelView.setText(getString(R.string.application_remove));
         } else {
             mEditAvatarView.setVisibility(View.GONE);
-            mRemoveLabelView.setText(getString(R.string.show_group_activity_leave));
+            mRemoveLabelView.setText(getString(R.string.show_group_view_leave));
         }
     }
 

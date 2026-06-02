@@ -71,7 +71,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.UUID;
 
 public class EditProfileActivity extends AbstractEditActivity implements EditIdentityService.Observer {
@@ -829,7 +828,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             if (mName.length() > MAX_NAME_LENGTH) {
                 mName = mName.substring(0, MAX_NAME_LENGTH);
             }
-            mTitleView.setText(getString(R.string.edit_profile_activity_editing_profile));
+            mTitleView.setText(getString(R.string.edit_profile_view_editing_profile));
             if (mProfile.getDescription() != null) {
                 mDescription = mProfile.getDescription();
             } else {
@@ -903,15 +902,15 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         String value;
         if (getTwinmeApplication().updateProfileMode() == Profile.UpdateMode.NONE.ordinal()) {
-            value = getString(R.string.edit_profile_activity_propagating_no_contact);
+            value = getString(R.string.edit_profile_view_propagating_no_contact);
         } else if (getTwinmeApplication().updateProfileMode() == Profile.UpdateMode.DEFAULT.ordinal()) {
-            value = getString(R.string.edit_profile_activity_propagating_except_contacts);
+            value = getString(R.string.edit_profile_view_propagating_except_contacts);
         } else {
-            value = getString(R.string.edit_profile_activity_propagating_all_contacts);
+            value = getString(R.string.edit_profile_view_propagating_all_contacts);
         }
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(getString(R.string.edit_profile_activity_propagating_profile));
+        spannableStringBuilder.append(getString(R.string.edit_profile_view_propagating_profile));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         spannableStringBuilder.append("\n");
@@ -980,12 +979,12 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
 
-        defaultConfirmView.setMessage(getString(R.string.create_profile_activity_incomplete_profile_message));
+        defaultConfirmView.setMessage(getString(R.string.create_profile_view_incomplete_profile_message));
 
         if (incompleteProfile) {
             defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
         } else {
-            defaultConfirmView.setConfirmTitle(getString(R.string.profile_fragment_create_profile));
+            defaultConfirmView.setConfirmTitle(getString(R.string.profile_view_create_profile));
         }
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -1045,13 +1044,13 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_add_profile_dark : R.drawable.onboarding_add_profile, null));
 
-        String message = getString(R.string.create_profile_activity_onboarding_message_part_1) +
+        String message = getString(R.string.create_profile_view_onboarding_message_part_1) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_2) +
+                getString(R.string.create_profile_view_onboarding_message_part_2) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_3) +
+                getString(R.string.create_profile_view_onboarding_message_part_3) +
                 "\n\n" +
-                getString(R.string.create_profile_activity_onboarding_message_part_4);
+                getString(R.string.create_profile_view_onboarding_message_part_4);
 
         onboardingConfirmView.setMessage(message);
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));

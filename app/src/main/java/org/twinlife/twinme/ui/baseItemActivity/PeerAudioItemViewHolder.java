@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016-2025 twinlife SA.
+ *  Copyright (c) 2016-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -128,6 +128,14 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         layoutParams.width = (int) (DESIGN_AUDIO_CONTAINER_WIDTH * Design.WIDTH_RATIO);
         layoutParams.height = (int) (DESIGN_AUDIO_CONTAINER_HEIGHT * Design.HEIGHT_RATIO);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAudioItemContainer.getLayoutParams();
+        if (baseItemActivity.displayPeerItemAvatar()) {
+            marginLayoutParams.setMarginStart(Design.PEER_CONTENT_CONVERSATION_MARGIN + Design.PEER_AVATAR_CONVERSATION_MARGIN + BaseItemActivity.AVATAR_HEIGHT);
+        } else {
+            marginLayoutParams.setMarginStart(Design.PEER_AVATAR_CONVERSATION_MARGIN);
+        }
+        mAudioItemContainer.setLayoutParams(marginLayoutParams);
+
         mAudioItemContainer.setOnClickListener(v -> {
             if (getBaseItemActivity().isSelectItemMode()) {
                 onContainerClick();
@@ -244,7 +252,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
         layoutParams.width = (int) (DESIGN_AUDIO_SPEED_WIDTH * Design.WIDTH_RATIO);
         layoutParams.height = (int) (DESIGN_AUDIO_SPEED_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpeedView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSpeedView.getLayoutParams();
         marginLayoutParams.rightMargin = (int) (DESIGN_AUDIO_SPEED_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_AUDIO_SPEED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
 
@@ -412,7 +420,7 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
                     mReplyTextView.setVisibility(View.VISIBLE);
                     relativeLayoutParams.addRule(RelativeLayout.BELOW, R.id.base_item_activity_peer_audio_item_reply_text);
 
-                    mReplyTextView.setText(getString(R.string.conversation_activity_audio_message));
+                    mReplyTextView.setText(getString(R.string.conversation_view_audio_message));
                     break;
 
                 case NAMED_FILE_DESCRIPTOR:
@@ -440,6 +448,17 @@ public class PeerAudioItemViewHolder extends PeerItemViewHolder {
             if (getBaseItemActivity().getCustomAppearance().getPeerMessageBackgroundColor() == Color.WHITE) {
                 mGradientDrawable.setColor(Design.GREY_ITEM_COLOR);
             }
+        }
+
+        if (!getBaseItemActivity().displayPeerItemAvatar()) {
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mAudioItemContainer.getLayoutParams();
+            int leftMargin = Design.PEER_AVATAR_CONVERSATION_MARGIN;
+            if (getBaseItemActivity().isSelectItemMode()) {
+                marginLayoutParams.setMarginStart(leftMargin + BaseItemViewHolder.CHECKBOX_MARGIN + BaseItemViewHolder.CHECKBOX_HEIGHT);
+            } else {
+                marginLayoutParams.setMarginStart(leftMargin);
+            }
+            mAudioItemContainer.setLayoutParams(marginLayoutParams);
         }
     }
 

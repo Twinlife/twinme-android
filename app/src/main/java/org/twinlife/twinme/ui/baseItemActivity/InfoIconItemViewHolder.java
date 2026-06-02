@@ -72,7 +72,7 @@ public class InfoIconItemViewHolder extends BaseItemViewHolder {
             InfoDeleteItem infoDeleteItem = (InfoDeleteItem) item;
             mIconView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.toolbar_trash_grey, null));
             mIconView.setColorFilter(Design.DELETE_COLOR_RED);
-            mTitleView.setText(itemView.getResources().getString(R.string.info_item_activity_deleted));
+            mTitleView.setText(itemView.getResources().getString(R.string.info_item_view_deleted));
 
             long peerDeletedTimestamp = infoDeleteItem.getItem().getPeerDeletedTimestamp();
             if (peerDeletedTimestamp > 0) {

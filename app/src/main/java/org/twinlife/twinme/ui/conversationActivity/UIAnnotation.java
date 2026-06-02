@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -28,9 +28,9 @@ public class UIAnnotation {
     @Nullable
     private final Bitmap mAvatar;
 
-    private final long mTimestamp;
+    private final long mValue;
 
-    public UIAnnotation(@Nullable UIReaction reaction, @NonNull String name, @Nullable Bitmap avatar, long timestamp, ConversationService.AnnotationType annotationType) {
+    public UIAnnotation(@Nullable UIReaction reaction, @NonNull String name, @Nullable Bitmap avatar, long value, ConversationService.AnnotationType annotationType) {
 
         mItemId = sItemId++;
 
@@ -38,7 +38,7 @@ public class UIAnnotation {
         mReaction = reaction;
         mName = name;
         mAvatar = avatar;
-        mTimestamp = timestamp;
+        mValue = value;
     }
 
     public long getItemId() {
@@ -63,23 +63,22 @@ public class UIAnnotation {
 
     public int getOrderPriority() {
 
-        if (mAnnotationType == ConversationService.AnnotationType.LIKE) {
-            return 3;
-        }
-        else if (mAnnotationType == ConversationService.AnnotationType.READ) {
-            return 2;
-        }
-        else if (mAnnotationType == ConversationService.AnnotationType.RECEIVED) {
-            return 1;
-        }
-        else {
+        if (mAnnotationType == ConversationService.AnnotationType.ERROR) {
             return 0;
+        } else if (mAnnotationType == ConversationService.AnnotationType.LIKE) {
+            return 1;
+        } else if (mAnnotationType == ConversationService.AnnotationType.READ) {
+            return 2;
+        } else if (mAnnotationType == ConversationService.AnnotationType.RECEIVED) {
+            return 3;
+        } else {
+            return 4;
         }
     }
 
-    public long getTimestamp() {
+    public long getValue() {
 
-        return mTimestamp;
+        return mValue;
     }
 
     public UIReaction getReaction() {

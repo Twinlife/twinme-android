@@ -93,7 +93,7 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
 
         setBackgroundColor(Color.BLACK);
 
-        setTitle(getString(R.string.premium_services_activity_transfert_title));
+        setTitle(getString(R.string.premium_services_view_transfert_title));
 
         applyInsets(R.id.invitation_external_call_activity_layout, R.id.transfer_call_activity_tool_bar, R.id.transfer_call_activity_background, DESIGN_NAVIGATION_BAR_COLOR, false);
 
@@ -323,7 +323,7 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setAvatar(mAvatar, false);
 
-        String message = getString(R.string.transfert_call_activity_delete_message) + "\n\n"  + getString(R.string.transfert_call_activity_delete_confirm_message);
+        String message = getString(R.string.transfert_call_view_delete_message) + "\n\n"  + getString(R.string.transfert_call_view_delete_confirm_message);
         deleteConfirmView.setMessage(message);
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

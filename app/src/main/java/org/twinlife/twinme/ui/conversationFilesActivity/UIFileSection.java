@@ -67,7 +67,7 @@ public class UIFileSection {
         itemDay.setTimeInMillis(item.getCreatedTimestamp());
 
         if (itemDay.get(Calendar.YEAR) == today.get(Calendar.YEAR) && itemDay.get(Calendar.MONTH) == today.get(Calendar.MONTH)) {
-            return context.getString(R.string.conversation_files_activity_month);
+            return context.getString(R.string.conversation_files_view_month);
         }
 
         final SimpleDateFormat simpleDateFormat;

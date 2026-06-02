@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AndroidDeviceInfo;
-import org.twinlife.twinme.ui.TwinmeActivity;
+import org.twinlife.twinme.ui.Permission;
 
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class QualityOfServiceAdapter extends RecyclerView.Adapter<QualityOfServi
 
         boolean postNotificationEnable = true;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            postNotificationEnable = mQualityOfServiceActivity.checkPermissionsWithoutRequest(new TwinmeActivity.Permission[]{TwinmeActivity.Permission.POST_NOTIFICATIONS});
+            postNotificationEnable = mQualityOfServiceActivity.checkPermissionsWithoutRequest(new Permission[]{Permission.POST_NOTIFICATIONS});
         }
 
         final boolean notificationDisabled = !NotificationManagerCompat.from(mQualityOfServiceActivity).areNotificationsEnabled() || !postNotificationEnable;

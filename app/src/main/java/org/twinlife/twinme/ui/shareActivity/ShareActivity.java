@@ -87,6 +87,7 @@ import org.twinlife.twinme.utils.async.Manager;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -259,7 +260,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         MenuItem menuItem = menu.findItem(R.id.add_action);
 
         TextView titleView = (TextView) menuItem.getActionView();
-        String title = menuItem.getTitle().toString();
+        String title = String.valueOf(menuItem.getTitle());
 
         if (titleView != null) {
             Design.updateTextFont(titleView, Design.FONT_BOLD36);
@@ -597,6 +598,17 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         avatarConsumer.accept(null);
     }
 
+    @Override
+    public void getPollAvatar(@Nullable UUID peerTwincodeOutboundId, TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+
+        avatarConsumer.accept(null);
+    }
+
+    @Override
+    public boolean isUserVote(@Nullable UUID peerTwincodeOutboundId) {
+        return false;
+    }
+
     @Nullable
     @Override
     public Contact getContact() {
@@ -635,6 +647,12 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
     @Override
     public boolean isSelectItemMode() {
+
+        return false;
+    }
+
+    @Override
+    public boolean displayPeerItemAvatar() {
 
         return false;
     }
@@ -683,6 +701,11 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
+    public void onInfoErrorClick(@NonNull Item item) {
+
+    }
+
+    @Override
     public void onMediaClick(@NonNull DescriptorId descriptorId) {
 
     }
@@ -694,6 +717,16 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
     @Override
     public void onAnnotationClick(@Nullable DescriptorId descriptorId) {
+
+    }
+
+    @Override
+    public void onSelectPollChoiceClick(@NonNull ConversationService.PollDescriptor pollDescriptor, @NonNull ConversationService.PollDescriptor.Choice choice, @NonNull Map<UUID, List<ConversationService.PollDescriptor.Choice>> votes) {
+
+    }
+
+    @Override
+    public  void onPollResultClick(@NonNull org.twinlife.twinlife.ConversationService.PollDescriptor pollDescriptor) {
 
     }
 
@@ -800,9 +833,9 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         applyInsets(R.id.share_activity_view, R.id.share_activity_tool_bar, R.id.share_activity_list_view, Design.TOOLBAR_COLOR, false);
 
         if (mForwardDescriptorId != null) {
-            setTitle(getString(R.string.conversation_activity_menu_item_view_forward_title));
+            setTitle(getString(R.string.conversation_view_menu_item_view_forward_title));
         } else {
-            setTitle(getString(R.string.share_activity_title));
+            setTitle(getString(R.string.share_view_title));
         }
 
         View rootView = findViewById(R.id.share_activity_view);
@@ -1005,16 +1038,14 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
                 if (mMenu != null) {
                     MenuItem sendMenuItem = mMenu.findItem(R.id.add_action);
-                    sendMenuItem.getActionView().setAlpha(0.5f);
-                    sendMenuItem.setEnabled(false);
+                    CommonUtils.setMenuItem(sendMenuItem, false, 0.5f, 1.0f);
                 }
             } else {
                 mSelectedUIContactView.setVisibility(View.VISIBLE);
 
                 if (mMenu != null) {
                     MenuItem sendMenuItem = mMenu.findItem(R.id.add_action);
-                    sendMenuItem.getActionView().setAlpha(1f);
-                    sendMenuItem.setEnabled(true);
+                    CommonUtils.setMenuItem(sendMenuItem, true, 0.5f, 1.0f);
                 }
 
                 ViewGroup.LayoutParams layoutParams = mSelectedUIContactRecyclerView.getLayoutParams();

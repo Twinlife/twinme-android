@@ -41,7 +41,7 @@
             android:layout_below="@+id/menu_select_color_view_title_view"
             android:layout_alignStart="@+id/menu_select_color_view_default_color_content_view"
             android:textAllCaps="true"
-            android:text="@string/personalization_activity_menu_choose_color"/>
+            android:text="@string/personalization_view_menu_choose_color"/>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/menu_select_color_view_default_color_content_view"
@@ -64,7 +64,7 @@
             android:layout_below="@+id/menu_select_color_view_default_color_content_view"
             android:layout_alignStart="@+id/menu_select_color_view_enter_color_view"
             android:textAllCaps="true"
-            android:text="@string/personalization_activity_menu_enter_color"/>
+            android:text="@string/personalization_view_menu_enter_color"/>
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/menu_select_color_view_enter_color_view"

@@ -63,7 +63,7 @@
                         android:layout_centerInParent="true"
                         android:gravity="center"
                         android:lines="1"
-                        android:text="@string/premium_services_activity_click_to_call_title"
+                        android:text="@string/premium_services_view_click_to_call_title"
                         app:layout_widthPercent="56%" />
 
                 </androidx.percentlayout.widget.PercentRelativeLayout>
@@ -81,7 +81,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:background="@android:color/transparent"
-                        android:hint="@string/create_external_call_activity_placeholder"
+                        android:hint="@string/create_external_call_view_placeholder"
                         android:imeOptions="actionDone"
                         android:inputType="text|textNoSuggestions|textCapSentences"
                         app:layout_marginStartPercent="5.31%"
@@ -107,7 +107,7 @@
                         android:id="@+id/create_external_call_activity_description_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/navigation_activity_about_twinme"
+                        android:hint="@string/navigation_view_about_twinme"
                         android:background="@android:color/transparent"
                         android:gravity="top"
                         android:inputType="textMultiLine|textNoSuggestions|textCapSentences"
@@ -155,7 +155,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/create_external_call_activity_save_view"
                     android:gravity="center"
-                    android:text="@string/create_external_call_activity_message" />
+                    android:text="@string/create_external_call_view_message" />
 
             </androidx.percentlayout.widget.PercentRelativeLayout>
 

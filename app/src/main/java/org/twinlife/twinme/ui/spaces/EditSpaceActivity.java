@@ -25,7 +25,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -38,7 +37,6 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,16 +57,16 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.EditProfileActivity;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.DownloadImageBackgroundAction;
 import org.twinlife.twinme.utils.EditableView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.UIMenuSelectAction;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -78,39 +76,6 @@ import java.util.UUID;
 public class EditSpaceActivity extends AbstractEditActivity implements EditSpaceService.Observer, OnColorSpaceTouchListener.OnColorObserver {
     private static final String LOG_TAG = "EditSpaceActivity";
     private static final boolean DEBUG = false;
-
-    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-
-        final ImageView mImageView;
-        final File mFile;
-
-        public DownloadImageTask(ImageView imageView, File avatarFile) {
-            mImageView = imageView;
-            mFile = avatarFile;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap bitmap = null;
-            try (InputStream in = new java.net.URL(urldisplay).openStream()) {
-                bitmap = BitmapFactory.decodeStream(in);
-                FileOutputStream outStream = new FileOutputStream(mFile);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-                outStream.flush();
-                outStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        protected void onPostExecute(Bitmap bitmap) {
-
-            if (bitmap != null) {
-                mImageView.setImageBitmap(bitmap);
-            }
-        }
-    }
 
     private static final int DESIGN_HINT_COLOR = Color.parseColor("#bdbdbd");
 
@@ -849,7 +814,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         }
 
         if (mEditSpaceService.numberSpaces(false) <= 1 && !mSpace.isSecret()) {
-            showAlertMessageView(R.id.edit_space_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.edit_space_activity_delete_only_one_space_message), true, null);
+            showAlertMessageView(R.id.edit_space_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.edit_space_view_delete_only_one_space_message), true, null);
             return;
         }
 
@@ -861,7 +826,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
 
         String title = getString(R.string.application_are_you_sure) + "\n"  + getString(R.string.application_operation_irreversible);
         deleteSpaceConfirmView.setTitle(title);
-        deleteSpaceConfirmView.setMessage(getString(R.string.edit_space_activity_delete_message));
+        deleteSpaceConfirmView.setMessage(getString(R.string.edit_space_view_delete_message));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -1069,8 +1034,8 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         try {
             //noinspection ResultOfMethodCallIgnored
             mUpdatedSpaceAvatarFile.createNewFile();
-            DownloadImageTask downloadImageTask = new DownloadImageTask(mAvatarView, mUpdatedSpaceAvatarFile);
-            downloadImageTask.execute(mUITemplateSpace.getAvatarUrl());
+            DownloadImageBackgroundAction downloadImageTask = new DownloadImageBackgroundAction(getTwinmeContext(), mAvatarView, mUpdatedSpaceAvatarFile, mUITemplateSpace.getAvatarUrl());
+            downloadImageTask.start();
         } catch (IOException exception) {
             mUpdatedSpaceAvatarFile = null;
         }

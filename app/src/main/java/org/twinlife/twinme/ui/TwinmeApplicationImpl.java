@@ -66,7 +66,7 @@ import org.twinlife.twinme.utils.TwinmeActivityImpl;
 import org.twinlife.twinme.utils.coachmark.CoachMark;
 import org.twinlife.twinme.utils.coachmark.CoachMarkManager;
 import org.twinlife.twinme.utils.update.LastVersion;
-import org.twinlife.twinme.utils.update.LastVersionAsyncTask;
+import org.twinlife.twinme.utils.update.LastVersionAction;
 import org.twinlife.twinme.utils.update.LastVersionImpl;
 
 import java.io.File;
@@ -238,11 +238,11 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             case FEATURE_NOT_IMPLEMENTED:
             case SERVER_ERROR:
             case LIBRARY_ERROR:
-                message = R.string.fatal_error_activity_error_code_message;
+                message = R.string.fatal_error_view_error_code_message;
                 break;
 
             case FEATURE_NOT_SUPPORTED_BY_PEER:
-                message = R.string.conversation_activity_feature_not_supported_by_peer;
+                message = R.string.conversation_view_feature_not_supported_by_peer;
                 break;
 
             case WRONG_LIBRARY_CONFIGURATION:
@@ -293,9 +293,13 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
-    public void checkLastVersion(LastVersion mLastVersion) {
-        LastVersionAsyncTask lastVersionAsyncTask = new LastVersionAsyncTask(this, mLastVersion, BuildConfig.CHECK_VERSION_URL);
-        lastVersionAsyncTask.execute();
+    public void checkLastVersion(@NonNull LastVersion mLastVersion) {
+
+        final TwinmeContext twinmeContext = getTwinmeContext();
+        if (twinmeContext != null) {
+            LastVersionAction lastVersionAction = new LastVersionAction(twinmeContext, mLastVersion, BuildConfig.CHECK_VERSION_URL);
+            lastVersionAction.start();
+        }
     }
 
     @Override
@@ -550,6 +554,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         return Settings.visualizationLink.getBoolean();
+    }
+
+    @Override
+    public boolean visualizationMap() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "visualizationMap");
+        }
+
+        return Settings.visualizationMap.getBoolean();
     }
 
     @Override
@@ -866,10 +879,28 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     public boolean showBackupWarning() {
 
         long timeInterval = new Date().getTime() / 1000;
-
         long lastBackupDateLong = Settings.lastBackupDate.getLong();
+        long firstInstallationBackupDateLong = Settings.firstInstallationBackupDate.getLong();
         long diffTimeSinceLastBackup = timeInterval - lastBackupDateLong;
-        return diffTimeSinceLastBackup > BACKUP_ASK_FREQUENCY;
+        long diffTimeFirstInstallationBackup = timeInterval - firstInstallationBackupDateLong;
+
+        if ((diffTimeSinceLastBackup > BACKUP_ASK_FREQUENCY && lastBackupDateLong != 0) || (diffTimeFirstInstallationBackup > BACKUP_ASK_FREQUENCY)) {
+            long lastBackupAlertDateLong = Settings.lastBackupAlertDate.getLong();
+            if (lastBackupAlertDateLong == 0) {
+                return true;
+            }
+
+            long diffTimeSinceLastBackupBackupAlert = timeInterval - lastBackupAlertDateLong;
+            return diffTimeSinceLastBackupBackupAlert > BACKUP_ASK_FREQUENCY;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void setLastBackupAlertDate() {
+
+        Settings.lastBackupAlertDate.setLong(new Date().getTime() / 1000).save();
     }
 
     @Override
@@ -1107,6 +1138,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
                     .build());
         }
 
+
         TwinmeContext twinmeContext = getTwinmeContext();
         if (twinmeContext == null) {
             return;
@@ -1115,7 +1147,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         Settings.init(twinmeContext.getConfigurationService());
 
         // Create the default space settings based on the user's current settings.
-        SpaceSettings defaultSettings = new SpaceSettings(getResources().getString(R.string.space_appearance_activity_general_title));
+        SpaceSettings defaultSettings = new SpaceSettings(getResources().getString(R.string.space_appearance_view_general_title));
         defaultSettings.setMessageCopyAllowed(Settings.messageCopyAllowed.getBoolean());
         defaultSettings.setFileCopyAllowed(Settings.fileCopyAllowed.getBoolean());
         twinmeContext.setDefaultSpaceSettings(defaultSettings, getResources().getString(R.string.application_default));

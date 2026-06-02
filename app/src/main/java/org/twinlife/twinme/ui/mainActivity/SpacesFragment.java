@@ -572,11 +572,11 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         friendsSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_friends));
+        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_friends));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n");
         int startName = spannableStringBuilder.length();
-        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_friends_name));
+        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_friends_name));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         friendsSpaceTextView.setText(spannableStringBuilder);
@@ -598,11 +598,11 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         familySpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_family));
+        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_family));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n");
         startName = spannableStringBuilder.length();
-        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_family_name));
+        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_family_name));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         familySpaceTextView.setText(spannableStringBuilder);
@@ -624,11 +624,11 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         businessSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_business));
+        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_business));
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append("\n");
         startName = spannableStringBuilder.length();
-        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_business_name));
+        spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_business_name));
         spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         businessSpaceTextView.setText(spannableStringBuilder);
@@ -784,7 +784,7 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
         if (!text.isEmpty()) {
 
             if (mNoResultFoundTitleView != null) {
-                mNoResultFoundTitleView.setText(String.format(getString(R.string.conversations_fragment_no_result_found), text));
+                mNoResultFoundTitleView.setText(String.format(getString(R.string.conversations_view_no_result_found), text));
             }
 
             mSpaceService.findSpaceByName(text);
@@ -816,11 +816,11 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             friendsSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_friends));
+            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_friends));
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.append("\n");
             int startName = spannableStringBuilder.length();
-            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_friends_name));
+            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_friends_name));
             spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             friendsSpaceTextView.setText(spannableStringBuilder);
@@ -834,11 +834,11 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             familySpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
             spannableStringBuilder = new SpannableStringBuilder();
-            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_family));
+            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_family));
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.append("\n");
             startName = spannableStringBuilder.length();
-            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_family_name));
+            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_family_name));
             spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             familySpaceTextView.setText(spannableStringBuilder);
@@ -852,11 +852,11 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             businessSpaceTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
             spannableStringBuilder = new SpannableStringBuilder();
-            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_business));
+            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_business));
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.append("\n");
             startName = spannableStringBuilder.length();
-            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_activity_sample_business_name));
+            spannableStringBuilder.append(view.getContext().getString(R.string.spaces_view_sample_business_name));
             spannableStringBuilder.setSpan(new RelativeSizeSpan(0.94f), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startName, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             businessSpaceTextView.setText(spannableStringBuilder);

@@ -22,7 +22,7 @@
         android:layout_below="@+id/notifications_fragment_no_notification_image_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/notifications_fragment_no_notification_title"
+        android:text="@string/notifications_view_no_notification_title"
         android:visibility="gone"
         app:layout_marginTopPercent="5.55%"
         app:layout_widthPercent="85.33%" />
@@ -34,7 +34,7 @@
         android:layout_below="@+id/notifications_fragment_no_notification_title_view"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/notifications_fragment_no_notification_message"
+        android:text="@string/notifications_view_no_notification_message"
         android:visibility="gone"
         app:layout_marginTopPercent="1.34%"
         app:layout_widthPercent="85.33%" />

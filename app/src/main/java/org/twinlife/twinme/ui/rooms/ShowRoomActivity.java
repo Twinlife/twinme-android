@@ -722,7 +722,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
         }
 
         if (!mRoom.getSpace().hasPermission(Space.Permission.MOVE_CONTACT)) {
-            showAlertMessageView(R.id.show_room_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+            showAlertMessageView(R.id.show_room_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), true, null);
             return;
         }
 
@@ -768,7 +768,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
         if (mRoom != null && mRoom.hasPrivatePeer()) {
 
             if (!mRoom.getSpace().hasPermission(Space.Permission.UPDATE_IDENTITY)) {
-                showAlertMessageView(R.id.show_room_activity_layout, getString(R.string.deleted_account_activity_warning), getString(R.string.spaces_activity_permission_not_allowed), true, null);
+                showAlertMessageView(R.id.show_room_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), true, null);
                 return;
             }
 

@@ -17,13 +17,13 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -94,7 +94,7 @@ public class LocationActivity extends AbstractTwinmeActivity implements OnMapRea
         if (id != null) {
             final ConversationService service = getTwinmeContext().getConversationService();
             service.getGeolocation(id, (BaseService.ErrorCode errorCode, GeolocationDescriptor geolocationDescriptor) ->
-                    new Handler(getMainLooper()).post(() -> {
+                    runOnUiThread(() -> {
                         if (errorCode != BaseService.ErrorCode.SUCCESS || geolocationDescriptor == null) {
                             if (DEBUG) {
                                 Log.w(LOG_TAG, "Error getting geolocation descriptor with id " + id + ", error: " + errorCode);
@@ -102,7 +102,8 @@ public class LocationActivity extends AbstractTwinmeActivity implements OnMapRea
                         }
                         mGeolocationDescriptor = geolocationDescriptor;
                         initViews();
-                    }));
+                    })
+            );
         } else {
             initViews();
         }
@@ -167,8 +168,12 @@ public class LocationActivity extends AbstractTwinmeActivity implements OnMapRea
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        if (mMapView != null) {
+            mMapView.onSaveInstanceState(outState);
+        }
     }
 
     @Override
@@ -234,6 +239,12 @@ public class LocationActivity extends AbstractTwinmeActivity implements OnMapRea
         if (mMapView != null) {
             mMapView.onDestroy();
         }
+
+        if (mGoogleMap != null) {
+            mGoogleMap.clear();
+            mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+            mGoogleMap = null;
+        }
     }
 
     @Override
@@ -248,7 +259,7 @@ public class LocationActivity extends AbstractTwinmeActivity implements OnMapRea
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onMapReady: googleMap=" + googleMap);
         }
