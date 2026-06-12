@@ -890,9 +890,9 @@
     <string name="notification_center_missed_video_call_to">Chamada de vídeo para %1$s perdida</string>
     <string name="notification_center_mute">Silenciar o microfone</string>
     <string name="notification_center_new_contact">Novo contato</string>
-    <string name="notification_center_poll_message">Enviou-lhe um inquérito</string>
-    <string name="notification_center_poll_message_received">Nova pesquisa</string>
-    <string name="notification_center_poll_vote">Respondeu a um inquérito</string>
+    <string name="notification_center_poll_message">Enviou-lhe uma sondagem</string>
+    <string name="notification_center_poll_message_received">Nova sondagem</string>
+    <string name="notification_center_poll_vote">Respondeu a uma sondagem</string>
     <string name="notification_center_photo_message">Enviou-lhe uma foto</string>
     <string name="notification_center_photo_message_received">Nova foto</string>
     <string name="notification_center_reaction">reagiu %1$s</string>
@@ -930,7 +930,7 @@
     <string name="notifications_view_item_join_group">Você é membro do grupo</string>
     <string name="notifications_view_item_new_contact">Novo contato</string>
     <string name="notifications_view_item_reset_conversation">Redefiniu a conversa</string>
-    <string name="notifications_view_item_poll_message">Enviou-lhe um inquérito</string>
+    <string name="notifications_view_item_poll_message">Enviou-lhe uma sondagem</string>
     <string name="notifications_view_item_shortest_day">%1$d dias</string>
     <string name="notifications_view_item_shortest_hour">%1$d h</string>
     <string name="notifications_view_item_shortest_minute">%1$d min</string>

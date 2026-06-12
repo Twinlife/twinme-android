@@ -29,26 +29,32 @@ public class PollChoiceViewHolder extends RecyclerView.ViewHolder {
     private static final String LOG_TAG = "PollChoiceViewHolder";
     private static final boolean DEBUG = false;
 
+    private static final int DESIGN_TRACK_COLOR = Color.rgb(38, 209, 160);
+
     public static final float DESIGN_ITEM_HEIGHT = 80f;
+    private static final float DESIGN_CHECK_MARGIN = 24f;
     private static final float DESIGN_SELECTED_SIZE = 44f;
     private static final float DESIGN_CHECK_SIZE = 24f;
     private static final float DESIGN_HORIZONTAL_MARGIN = 14f;
     private static final float DESIGN_AVATAR_SIZE = 30f;
-    private static final float DESIGN_SEPARATOR_HEIGHT = 4f;
+    private static final float DESIGN_TRACK_TOP_MARGIN = 8f;
+    private static final float DESIGN_TRACK_BOTTOM_MARGIN = 18f;
+    private static final float DESIGN_TRACK_HEIGHT = 8f;
 
     private final TextView mChoiceView;
     private final TextView mCounterView;
     private final CircularImageView mAvatarOneImageView;
     private final CircularImageView mAvatarTwoImageView;
     private final ImageView mSelectedImageView;
-    private final GradientDrawable mSeparatorDrawable;
+    private final View mTrackView;
+    private final View mResultTrackView;
 
     public PollChoiceViewHolder(@NonNull View view) {
 
         super(view);
 
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_ITEM_HEIGHT * Design.HEIGHT_RATIO);
+        view.setMinimumHeight((int) (DESIGN_ITEM_HEIGHT * Design.HEIGHT_RATIO));
         view.setLayoutParams(layoutParams);
         view.setBackgroundColor(Color.TRANSPARENT);
 
@@ -58,6 +64,11 @@ public class PollChoiceViewHolder extends RecyclerView.ViewHolder {
         layoutParams.width = (int) (DESIGN_SELECTED_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_SELECTED_SIZE * Design.HEIGHT_RATIO);
         selectedView.setLayoutParams(layoutParams);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) selectedView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_CHECK_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_CHECK_MARGIN * Design.HEIGHT_RATIO);
+        selectedView.setLayoutParams(marginLayoutParams);
 
         GradientDrawable selectDrawable = new GradientDrawable();
         selectDrawable.setShape(GradientDrawable.OVAL);
@@ -76,7 +87,7 @@ public class PollChoiceViewHolder extends RecyclerView.ViewHolder {
         Design.updateTextFont(mChoiceView, Design.FONT_MEDIUM32);
         mChoiceView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mChoiceView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mChoiceView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
@@ -103,19 +114,35 @@ public class PollChoiceViewHolder extends RecyclerView.ViewHolder {
         layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
         mAvatarTwoImageView.setLayoutParams(layoutParams);
 
-        View separatorView = view.findViewById(R.id.poll_choice_item_separator_view);
-        layoutParams = separatorView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_SEPARATOR_HEIGHT * Design.HEIGHT_RATIO);
-        separatorView.setLayoutParams(layoutParams);
+        mTrackView = view.findViewById(R.id.poll_choice_item_track_view);
+        layoutParams = mTrackView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_TRACK_HEIGHT * Design.HEIGHT_RATIO);
+        mTrackView.setLayoutParams(layoutParams);
 
-        mSeparatorDrawable = new GradientDrawable();
-        mSeparatorDrawable.setShape(GradientDrawable.RECTANGLE);
-        mSeparatorDrawable.setColor(Design.FONT_COLOR_DEFAULT);
-        mSeparatorDrawable.setCornerRadius(DESIGN_SEPARATOR_HEIGHT * Design.HEIGHT_RATIO * 0.5f);
-        separatorView.setBackground(mSeparatorDrawable);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTrackView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_TRACK_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_TRACK_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        mTrackView.setLayoutParams(marginLayoutParams);
+
+        GradientDrawable trackDrawable = new GradientDrawable();
+        trackDrawable.setShape(GradientDrawable.RECTANGLE);
+        trackDrawable.setColor(Design.SEPARATOR_COLOR);
+        trackDrawable.setCornerRadius(DESIGN_TRACK_HEIGHT * Design.HEIGHT_RATIO * 0.5f);
+        mTrackView.setBackground(trackDrawable);
+
+        mResultTrackView = view.findViewById(R.id.poll_choice_item_result_track_view);
+        layoutParams = mResultTrackView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_TRACK_HEIGHT * Design.HEIGHT_RATIO);
+        mResultTrackView.setLayoutParams(layoutParams);
+
+        GradientDrawable resultTrackDrawable = new GradientDrawable();
+        resultTrackDrawable.setShape(GradientDrawable.RECTANGLE);
+        resultTrackDrawable.setColor(DESIGN_TRACK_COLOR);
+        resultTrackDrawable.setCornerRadius(DESIGN_TRACK_HEIGHT * Design.HEIGHT_RATIO * 0.5f);
+        mResultTrackView.setBackground(resultTrackDrawable);
     }
 
-    public void onBind(@NonNull UIPollResult pollResult, int textColor) {
+    public void onBind(@NonNull UIPollResult pollResult, int textColor, int maxResult) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onBind");
         }
@@ -151,9 +178,18 @@ public class PollChoiceViewHolder extends RecyclerView.ViewHolder {
             }
         }
 
+        mTrackView.post(() -> {
+            ViewGroup.LayoutParams layoutParams = mResultTrackView.getLayoutParams();
+            if (maxResult > 0) {
+                layoutParams.width = (int) ((pollResult.getCount() / (float) maxResult) * mTrackView.getWidth());
+            } else {
+                layoutParams.width = 0;
+            }
+            mResultTrackView.setLayoutParams(layoutParams);
+        });
+
         mChoiceView.setTextColor(textColor);
         mCounterView.setTextColor(textColor);
-        mSeparatorDrawable.setColor(textColor);
     }
 
     public void onViewRecycled() {

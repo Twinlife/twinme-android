@@ -2,13 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/poll_choice_item_selected_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/poll_choice_item_selected_image"
@@ -65,10 +64,17 @@
         android:layout_alignParentEnd="true" />
 
     <View
-        android:id="@+id/poll_choice_item_separator_view"
+        android:id="@+id/poll_choice_item_track_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/separator_color"
         android:layout_alignStart="@+id/poll_choice_item_choice_view"
-        android:layout_alignBottom="@+id/poll_choice_item_selected_view" />
+        android:layout_below="@+id/poll_choice_item_choice_view" />
+
+    <View
+        android:id="@+id/poll_choice_item_result_track_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/poll_choice_item_track_view"
+        android:layout_alignTop="@+id/poll_choice_item_track_view" />
+
 </RelativeLayout>

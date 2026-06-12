@@ -885,9 +885,9 @@
     <string name="notification_center_missed_video_call_to">שיחה קולית ל-%1$s לא נענתה</string>
     <string name="notification_center_mute">השתק</string>
     <string name="notification_center_new_contact">איש קשר חדש</string>
-    <string name="notification_center_poll_message">שלח/ה לך סקר</string>
+    <string name="notification_center_poll_message">שלח/ה לכם סקר</string>
     <string name="notification_center_poll_message_received">סקר חדש</string>
-    <string name="notification_center_poll_vote">הגיב/ה לסקר</string>
+    <string name="notification_center_poll_vote">הגיב/ה לסקר.</string>
     <string name="notification_center_photo_message">שלח לך תמונה</string>
     <string name="notification_center_photo_message_received">תמונה חדשה</string>
     <string name="notification_center_reaction">הגיב %1$s</string>
@@ -925,7 +925,7 @@
     <string name="notifications_view_item_join_group">את/ה חבר/ה בקבוצה</string>
     <string name="notifications_view_item_new_contact">איש קשר חדש</string>
     <string name="notifications_view_item_reset_conversation">איפס את השיחה</string>
-    <string name="notifications_view_item_poll_message">שלח/ה לך סקר</string>
+    <string name="notifications_view_item_poll_message">שלח/ה לכם סקר</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

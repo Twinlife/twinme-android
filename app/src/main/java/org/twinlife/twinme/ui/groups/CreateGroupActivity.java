@@ -383,6 +383,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         showBackButton(true);
 
         setTitle(getString(R.string.application_profile));
+        setupBackPressedCallBack(R.id.create_group_activity_layout);
 
         mEditableView = new EditableView(this);
 

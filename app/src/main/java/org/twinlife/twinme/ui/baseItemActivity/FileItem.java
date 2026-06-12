@@ -33,6 +33,8 @@ public class FileItem extends Item {
             iconRes = R.drawable.file_powerpoint;
         } else if (path.endsWith(".pdf")) {
             iconRes = R.drawable.file_pdf;
+        } else if (path.endsWith(".mp3") || path.endsWith(".wav") || path.endsWith(".ogg") || path.endsWith(".m4a") || path.endsWith(".aac")) {
+            iconRes = R.drawable.music_placeholder;
         }
 
         return iconRes;
@@ -88,6 +90,11 @@ public class FileItem extends Item {
         StringBuilder stringBuilder = new StringBuilder();
         if (mNamedFileDescriptor.getExtension() != null) {
             stringBuilder.append(mNamedFileDescriptor.getExtension().toUpperCase());
+            stringBuilder.append("\n");
+        }
+
+        if (mNamedFileDescriptor.getName() != null) {
+            stringBuilder.append(mNamedFileDescriptor.getName());
             stringBuilder.append("\n");
         }
 

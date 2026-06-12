@@ -409,6 +409,8 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
 
         setTitle(getString(R.string.application_profile));
 
+        setupBackPressedCallBack(R.id.edit_identity_activity_layout);
+
         mEditableView = new EditableView(this);
 
         mAvatarView = findViewById(R.id.edit_identity_activity_avatar_view);

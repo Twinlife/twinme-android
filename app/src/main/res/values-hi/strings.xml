@@ -889,9 +889,9 @@
     <string name="notification_center_missed_video_call_to">%1$s को वीडियो कॉल छूटी</string>
     <string name="notification_center_mute">मूक</string>
     <string name="notification_center_new_contact">नया कॉन्ट्रैक्ट</string>
-    <string name="notification_center_poll_message">ने आपको एक सर्वे भेजा</string>
-    <string name="notification_center_poll_message_received">नया सर्वे</string>
-    <string name="notification_center_poll_vote">ने एक सर्वे का जवाब दिया</string>
+    <string name="notification_center_poll_message">ने आपको एक पोल भेजा</string>
+    <string name="notification_center_poll_message_received">नया पोल</string>
+    <string name="notification_center_poll_vote">ने एक पोल का जवाब दिया</string>
     <string name="notification_center_photo_message">आपको एक फ़ोटो भेजी</string>
     <string name="notification_center_photo_message_received">नया चित्र</string>
     <string name="notification_center_reaction">"प्रतिक्रिया दी %1$s "</string>
@@ -929,7 +929,7 @@
     <string name="notifications_view_item_join_group">आप समूह के सदस्य हैं</string>
     <string name="notifications_view_item_new_contact">नया कॉन्ट्रैक्ट</string>
     <string name="notifications_view_item_reset_conversation">ने बातचीत को रीसेट कर दिया है</string>
-    <string name="notifications_view_item_poll_message">ने आपको एक सर्वे भेजा</string>
+    <string name="notifications_view_item_poll_message">ने आपको एक पोल भेजा</string>
     <string name="notifications_view_item_shortest_day">%1$dदिन</string>
     <string name="notifications_view_item_shortest_hour">%1$dघंटे</string>
     <string name="notifications_view_item_shortest_minute">%1$dमिनट</string>

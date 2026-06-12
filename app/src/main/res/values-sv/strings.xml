@@ -889,9 +889,9 @@
     <string name="notification_center_missed_video_call_to">Missat videosamtal från %1$s</string>
     <string name="notification_center_mute">Stäng av mikrofonen</string>
     <string name="notification_center_new_contact">Ny kontakt</string>
-    <string name="notification_center_poll_message">Skickade dig en undersökning</string>
-    <string name="notification_center_poll_message_received">Ny undersökning</string>
-    <string name="notification_center_poll_vote">Svarade på en undersökning</string>
+    <string name="notification_center_poll_message">Skickade dig en omröstning</string>
+    <string name="notification_center_poll_message_received">Ny omröstning</string>
+    <string name="notification_center_poll_vote">Svarade på en omröstning</string>
     <string name="notification_center_photo_message">Skickat ett foto</string>
     <string name="notification_center_photo_message_received">Nytt foto</string>
     <string name="notification_center_reaction">reagerade %1$s</string>
@@ -929,7 +929,7 @@
     <string name="notifications_view_item_join_group">Du är medlem i gruppen</string>
     <string name="notifications_view_item_new_contact">Ny kontakt</string>
     <string name="notifications_view_item_reset_conversation">Har återställt konversationen</string>
-    <string name="notifications_view_item_poll_message">Skickade dig en undersökning</string>
+    <string name="notifications_view_item_poll_message">Skickade dig en omröstning</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

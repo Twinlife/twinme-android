@@ -100,6 +100,7 @@ import org.twinlife.twinme.ui.ShowContactActivity;
 import org.twinlife.twinme.ui.ShowProfileActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.accountActivity.AccountActivity;
+import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationScannerActivity;
 import org.twinlife.twinme.ui.backupActivity.MenuBackupView;
 import org.twinlife.twinme.ui.backupActivity.RestoreActivity;
 import org.twinlife.twinme.ui.contacts.MenuAddContactView;
@@ -133,6 +134,7 @@ import org.twinlife.twinme.ui.spaces.SpaceSettingProperty;
 import org.twinlife.twinme.ui.spaces.TemplateSpaceActivity;
 import org.twinlife.twinme.ui.spaces.UISpace;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.AbstractMenuSelectActionView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
@@ -662,6 +664,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            TwincodeURI.Kind uriKind = TwincodeURI.Kind.Invitation;
             Uri uri = intent.getData();
             if (uri != null) {
 
@@ -686,11 +689,26 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
+                                if (twincodeId != null) {
+                                    uriKind = TwincodeURI.Kind.Authenticate;
+                                }
                             }
                             if (twincodeId == null) {
                                 twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.proxy");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
+                                }
+                                if (twincodeId != null) {
+                                    uriKind = TwincodeURI.Kind.Proxy;
+                                }
+                            }
+                            if (twincodeId == null) {
+                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.migrationId");
+                                while (twincodeId != null && twincodeId.startsWith("/")) {
+                                    twincodeId = twincodeId.substring(1);
+                                }
+                                if (twincodeId != null) {
+                                    uriKind = TwincodeURI.Kind.AccountMigration;
                                 }
                             }
                         }
@@ -701,9 +719,10 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                     uri = Uri.parse(twincodeId);
                 }
 
+                final TwincodeURI.Kind intentKind = uriKind;
                 mMainService.parseURI(uri, (ErrorCode errorCode, TwincodeURI twincodeURI) -> {
                     if (errorCode == ErrorCode.SUCCESS && twincodeURI != null) {
-                        if (twincodeURI.kind == TwincodeURI.Kind.Invitation) {
+                        if (twincodeURI.kind == TwincodeURI.Kind.Invitation && intentKind == twincodeURI.kind) {
                             Intent lIntent = new Intent(Intent.ACTION_VIEW);
                             if (twincodeURI.twincodeOptions != null) {
                                 lIntent.setClass(this, AcceptInvitationSubscriptionActivity.class);
@@ -725,6 +744,14 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                             }));
                         } else if (twincodeURI.kind == TwincodeURI.Kind.Proxy) {
                             addProxy(twincodeURI.twincodeOptions);
+                        } else if (twincodeURI.kind == TwincodeURI.Kind.AccountMigration || intentKind == TwincodeURI.Kind.AccountMigration) {
+                            // If we enter the application by using the account migration link,
+                            // force the user to scan the QR-code: we must not recognize such account migration
+                            // link because we don't know its origin.
+                            Intent lIntent = new Intent();
+                            lIntent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, true);
+                            lIntent.setClass(this, AccountMigrationScannerActivity.class);
+                            startActivity(lIntent);
                         } else {
                             showAlertMessage(getLinkError(twincodeURI.kind, R.string.add_contact_view_scan_error_incorrect_link));
                         }
@@ -1387,6 +1414,28 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         return mSpaceDrawerListView.getHeight();
+    }
+
+    @Override
+    public boolean dismissBottomSheet(int rootLayout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "dismissBottomSheet");
+        }
+
+        if (mDrawerLayout != null && mDrawerLayout.getChildCount() > 0) {
+            View frontView = mDrawerLayout.getChildAt(mDrawerLayout.getChildCount() - 1);
+            if (frontView instanceof AbstractBottomSheetView) {
+                AbstractBottomSheetView bottomSheetView = (AbstractBottomSheetView) frontView;
+                bottomSheetView.dismiss();
+                return true;
+            } else if (frontView instanceof AbstractMenuSelectActionView) {
+                AbstractMenuSelectActionView menuSelectActionView = (AbstractMenuSelectActionView) frontView;
+                menuSelectActionView.dismiss();
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @SuppressLint({"NonConstantResourceId", "ClickableViewAccessibility"})

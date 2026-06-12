@@ -886,9 +886,9 @@
     <string name="notification_center_missed_video_call_to">Nem fogadott videohívás ide: %1$s</string>
     <string name="notification_center_mute">Némítás</string>
     <string name="notification_center_new_contact">Új kapcsolat</string>
-    <string name="notification_center_poll_message">Küldött neked egy felmérést</string>
-    <string name="notification_center_poll_message_received">Új felmérés</string>
-    <string name="notification_center_poll_vote">Válaszolt egy felmérésre</string>
+    <string name="notification_center_poll_message">Küldött neked egy szavazást</string>
+    <string name="notification_center_poll_message_received">Új szavazás</string>
+    <string name="notification_center_poll_vote">Válaszolt egy szavazásra</string>
     <string name="notification_center_photo_message">Fotót küldött neked</string>
     <string name="notification_center_photo_message_received">Új fotó</string>
     <string name="notification_center_reaction">%1$s reakciót küldött</string>
@@ -926,7 +926,7 @@
     <string name="notifications_view_item_join_group">Csoporttag lettél</string>
     <string name="notifications_view_item_new_contact">Új kapcsolat</string>
     <string name="notifications_view_item_reset_conversation">Visszaállította a beszélgetést</string>
-    <string name="notifications_view_item_poll_message">Küldött neked egy felmérést</string>
+    <string name="notifications_view_item_poll_message">Küldött neked egy szavazást</string>
     <string name="notifications_view_item_shortest_day">%1$dn</string>
     <string name="notifications_view_item_shortest_hour">%1$dó</string>
     <string name="notifications_view_item_shortest_minute">%1$d p</string>

@@ -27,6 +27,9 @@ public class PollChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private static final boolean DEBUG = false;
 
     private final int mTextColor;
+
+    private int mMaxResult = 0;
+
     public interface OnChoiceClickListener {
         void onSelectChoice(ConversationService.PollDescriptor.Choice choice);
     }
@@ -46,10 +49,11 @@ public class PollChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         mOnChoiceClickListener = onChoiceClickListener;
     }
 
-    public void setChoices(List<UIPollResult> results) {
+    public void setChoices(List<UIPollResult> results, int maxResult) {
 
         mResults.clear();
         mResults.addAll(results);
+        mMaxResult = maxResult;
         notifyItemRangeChanged(0, mResults.size());
     }
 
@@ -73,10 +77,10 @@ public class PollChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         pollChoiceViewHolder.itemView.setOnClickListener(view -> {
             if (mOnChoiceClickListener != null) {
                 mOnChoiceClickListener.onSelectChoice(pollResult.getChoice());
-                pollChoiceViewHolder.onBind(pollResult, mTextColor);
+                pollChoiceViewHolder.onBind(pollResult, mTextColor, mMaxResult);
             }
         });
-        pollChoiceViewHolder.onBind(pollResult, mTextColor);
+        pollChoiceViewHolder.onBind(pollResult, mTextColor, mMaxResult);
     }
 
     @Override

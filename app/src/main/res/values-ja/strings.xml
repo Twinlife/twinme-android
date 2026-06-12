@@ -889,7 +889,7 @@
     <string name="notification_center_missed_video_call_to">%1$sへのビデオ通話の不在着信があります</string>
     <string name="notification_center_mute">マイクをミュート</string>
     <string name="notification_center_new_contact">新しい連絡先</string>
-    <string name="notification_center_poll_message">さんからアンケートが送信されました</string>
+    <string name="notification_center_poll_message">さんがアンケートを送信しました</string>
     <string name="notification_center_poll_message_received">新しいアンケート</string>
     <string name="notification_center_poll_vote">さんがアンケートに回答しました</string>
     <string name="notification_center_photo_message">写真を受信しました</string>
@@ -929,7 +929,7 @@
     <string name="notifications_view_item_join_group">あなたはグループのメンバーです</string>
     <string name="notifications_view_item_new_contact">新しい連絡先</string>
     <string name="notifications_view_item_reset_conversation">は会話をリセットしました</string>
-    <string name="notifications_view_item_poll_message">さんからアンケートが送信されました</string>
+    <string name="notifications_view_item_poll_message">さんがアンケートを送信しました</string>
     <string name="notifications_view_item_shortest_day">%1$d日</string>
     <string name="notifications_view_item_shortest_hour">%1$d時間</string>
     <string name="notifications_view_item_shortest_minute">%1$d分</string>

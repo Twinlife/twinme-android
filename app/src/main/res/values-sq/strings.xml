@@ -887,9 +887,9 @@
     <string name="notification_center_missed_video_call_to">Thirrje video e humbur drejt %1$s</string>
     <string name="notification_center_mute">Heshto</string>
     <string name="notification_center_new_contact">Kontakt i ri</string>
-    <string name="notification_center_poll_message">Ju dërgoi një anketë</string>
-    <string name="notification_center_poll_message_received">Anketë e re</string>
-    <string name="notification_center_poll_vote">Iu përgjigj një ankete</string>
+    <string name="notification_center_poll_message">Ju dërgoi një sondazh</string>
+    <string name="notification_center_poll_message_received">Sondazh i ri</string>
+    <string name="notification_center_poll_vote">Iu përgjigj një sondazhi</string>
     <string name="notification_center_photo_message">Ju dërgoi një foto</string>
     <string name="notification_center_photo_message_received">Foto e re</string>
     <string name="notification_center_reaction">reagoi %1$s</string>
@@ -927,7 +927,7 @@
     <string name="notifications_view_item_join_group">Jeni anëtar i grupit</string>
     <string name="notifications_view_item_new_contact">Kontakt i ri</string>
     <string name="notifications_view_item_reset_conversation">E ka rivendosur bisedën</string>
-    <string name="notifications_view_item_poll_message">Ju dërgoi një anketë</string>
+    <string name="notifications_view_item_poll_message">Ju dërgoi një sondazh</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

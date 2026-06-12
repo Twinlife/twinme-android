@@ -125,8 +125,8 @@ public class RestoreActivity extends AbstractTwinmeActivity {
                         onMessageVerifyReport(intent);
                         break;
 
-                    case BackupService.MESSAGE_CHECK_FILE_SIGNATURE_RESULT:
-                        onMessageCheckFileSignatureResult(intent);
+                    case BackupService.MESSAGE_CHECK_FILE_COMPATIBILITY_RESULT:
+                        onMessageCheckFileCompatibilityResult(intent);
                         break;
 
                     default:
@@ -203,7 +203,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             return;
         }
 
-        checkSignature();
+        checkFileCompatibility();
 
         initViews();
     }
@@ -655,6 +655,10 @@ public class RestoreActivity extends AbstractTwinmeActivity {
                     Log.d(LOG_TAG, "handleOnBackPressed");
                 }
 
+                if (dismissBottomSheet(R.id.restore_activity_layout)) {
+                    return;
+                }
+
                 if (mRestoreState == RestoreState.TERMINATED || mRestoreState == RestoreState.CANCEL) {
                     if (mVerifyBackupMode) {
                         finish();
@@ -749,14 +753,14 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         updateRestoreState();
     }
 
-    private void onMessageCheckFileSignatureResult(@NonNull Intent intent) {
+    private void onMessageCheckFileCompatibilityResult(@NonNull Intent intent) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onMessageCheckFileSignatureResult: intent=" + intent);
+            Log.d(LOG_TAG, "onMessageCheckFileCompatibilityResult: intent=" + intent);
         }
 
-        boolean result = intent.getBooleanExtra(BackupService.BACKUP_SERVICE_CHECK_FILE_SIGNATURE_RESULT, false);
+        org.twinlife.twinlife.BackupService.ErrorCode result = (org.twinlife.twinlife.BackupService.ErrorCode) intent.getSerializableExtra(BackupService.BACKUP_SERVICE_CHECK_FILE_COMPATIBILITY_RESULT);
 
-        if (!result) {
+        if (result != org.twinlife.twinlife.BackupService.ErrorCode.SUCCESS) {
             showRestoreError(org.twinlife.twinlife.BackupService.ErrorCode.INVALID_FILE);
         }
     }
@@ -868,12 +872,12 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         return words;
     }
 
-    private void checkSignature() {
+    private void checkFileCompatibility() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "checkSignature");
+            Log.d(LOG_TAG, "checkFileCompatibility");
         }
 
-        Intent intent = new Intent(BackupService.ACTION_CHECK_FILE_SIGNATURE);
+        Intent intent = new Intent(BackupService.ACTION_CHECK_FILE_COMPATIBILITY);
         intent.setClass(this, BackupService.class);
         intent.putExtra(BackupService.PARAM_FILE_PATH, mBackupFilePath);
 

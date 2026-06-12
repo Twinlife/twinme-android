@@ -22,8 +22,8 @@ android {
         applicationId 'mobi.skred.app'
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 360
-        versionName "24.1"
+        versionCode 361
+        versionName "24.2"
         manifestPlaceholders.domainName = "twin.me"
         manifestPlaceholders.backupExtension = "skrdbckp"
 

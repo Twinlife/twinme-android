@@ -38,6 +38,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,6 +65,8 @@ import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
 import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.rooms.ShowRoomActivity;
+import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.AbstractMenuSelectActionView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
 import org.twinlife.twinme.utils.CallFloatingView;
@@ -293,12 +296,35 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
         updateColor();
     }
 
+    public boolean dismissBottomSheet(int rootLayout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "dismissBottomSheet");
+        }
+
+        ViewGroup viewGroup = findViewById(rootLayout);
+        if (viewGroup != null && viewGroup.getChildCount() > 0) {
+            View frontView = viewGroup.getChildAt(viewGroup.getChildCount() - 1);
+            if (frontView instanceof AbstractBottomSheetView) {
+                AbstractBottomSheetView bottomSheetView = (AbstractBottomSheetView) frontView;
+                bottomSheetView.dismiss();
+                return true;
+            } else if (frontView instanceof AbstractMenuSelectActionView) {
+                AbstractMenuSelectActionView menuSelectActionView = (AbstractMenuSelectActionView) frontView;
+                menuSelectActionView.dismiss();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void applyInsets(int rootLayout, int toolBarLayout, int bottomLayout, int backgroundColor, boolean isFullScreen) {
         if (DEBUG) {
             Log.d(LOG_TAG, "applyInsets rootLayout=" + rootLayout + " bottomLayout=" + bottomLayout + " backgroundColor=" + backgroundColor);
         }
 
         View rootView = findViewById(rootLayout);
+        setupBackPressedCallBack(rootLayout);
 
         ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
             Insets bars = insets.getInsets(
@@ -337,6 +363,27 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             onApplyInsetsFinish();
 
             return WindowInsetsCompat.CONSUMED;
+        });
+    }
+
+    public void setupBackPressedCallBack(int rootLayout) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setupBackPressedCallBack");
+        }
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (DEBUG) {
+                    Log.d(LOG_TAG, "handleOnBackPressed");
+                }
+
+                if (dismissBottomSheet(rootLayout)) {
+                    return;
+                }
+
+                finish();
+            }
         });
     }
 

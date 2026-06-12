@@ -888,9 +888,9 @@
     <string name="notification_center_missed_video_call_to">Panggilan video tak terjawab ke %1$s</string>
     <string name="notification_center_mute">Bisukan</string>
     <string name="notification_center_new_contact">Kontak baru</string>
-    <string name="notification_center_poll_message">Mengirimkan survei kepada Anda</string>
-    <string name="notification_center_poll_message_received">Survei baru</string>
-    <string name="notification_center_poll_vote">Menanggapi survei</string>
+    <string name="notification_center_poll_message">Mengirimkan jajak pendapat kepada Anda</string>
+    <string name="notification_center_poll_message_received">Jajak pendapat baru</string>
+    <string name="notification_center_poll_vote">Menanggapi jajak pendapat</string>
     <string name="notification_center_photo_message">Mengirimi Anda foto</string>
     <string name="notification_center_photo_message_received">Foto baru</string>
     <string name="notification_center_reaction">bereaksi %1$s</string>
@@ -928,7 +928,7 @@
     <string name="notifications_view_item_join_group">Anda adalah anggota grup</string>
     <string name="notifications_view_item_new_contact">Kontak baru</string>
     <string name="notifications_view_item_reset_conversation">Telah menyetel ulang percakapan</string>
-    <string name="notifications_view_item_poll_message">Mengirimkan survei kepada Anda</string>
+    <string name="notifications_view_item_poll_message">Mengirimkan jajak pendapat kepada Anda</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

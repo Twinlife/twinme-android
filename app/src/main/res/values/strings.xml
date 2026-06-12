@@ -915,9 +915,9 @@
     <string name="notification_center_missed_video_call_to">Missed video call to %1$s</string>
     <string name="notification_center_mute">Mute</string>
     <string name="notification_center_new_contact">New contact</string>
-    <string name="notification_center_poll_message">Sent you a survey</string>
-    <string name="notification_center_poll_message_received">New survey</string>
-    <string name="notification_center_poll_vote">Responded to a survey</string>
+    <string name="notification_center_poll_message">Sent you a poll</string>
+    <string name="notification_center_poll_message_received">New poll</string>
+    <string name="notification_center_poll_vote">Responded to a poll</string>
     <string name="notification_center_photo_message">Sent you a photo</string>
     <string name="notification_center_photo_message_received">New photo</string>
     <string name="notification_center_reaction">reacted %1$s</string>
@@ -955,7 +955,7 @@
     <string name="notifications_view_item_join_group">You are member of the group</string>
     <string name="notifications_view_item_new_contact">New contact</string>
     <string name="notifications_view_item_reset_conversation">Has reset the conversation</string>
-    <string name="notifications_view_item_poll_message">Sent you a survey</string>
+    <string name="notifications_view_item_poll_message">Sent you a poll</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

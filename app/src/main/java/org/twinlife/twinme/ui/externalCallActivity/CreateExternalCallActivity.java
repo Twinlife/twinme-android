@@ -351,6 +351,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         showBackButton(true);
 
         setTitle(getString(R.string.application_profile));
+        setupBackPressedCallBack(R.id.create_external_call_activity_layout);
 
         mEditableView = new EditableView(this);
 

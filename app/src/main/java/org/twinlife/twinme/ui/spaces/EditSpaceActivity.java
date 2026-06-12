@@ -428,7 +428,8 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         showToolBar(false);
         showBackButton(true);
         setBackgroundColor(Design.WHITE_COLOR);
-
+        setupBackPressedCallBack(R.id.edit_space_activity_layout);
+        
         mEditableView = new EditableView(this);
 
         mAvatarView = findViewById(R.id.edit_space_activity_avatar_view);

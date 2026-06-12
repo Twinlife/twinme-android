@@ -494,6 +494,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         showToolBar(false);
         showBackButton(true);
         setBackgroundColor(Design.WHITE_COLOR);
+        setupBackPressedCallBack(R.id.edit_profile_activity_layout);
 
         mEditableView = new EditableView(this);
 

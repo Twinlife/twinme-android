@@ -889,9 +889,9 @@
     <string name="notification_center_missed_video_call_to">Gemiste video oproep op %1$s</string>
     <string name="notification_center_mute">Dempen</string>
     <string name="notification_center_new_contact">Nieuw contact</string>
-    <string name="notification_center_poll_message">Heeft u een enquête gestuurd</string>
-    <string name="notification_center_poll_message_received">Nieuwe enquête</string>
-    <string name="notification_center_poll_vote">Heeft een enquête beantwoord</string>
+    <string name="notification_center_poll_message">Heeft je een poll gestuurd</string>
+    <string name="notification_center_poll_message_received">Nieuwe poll</string>
+    <string name="notification_center_poll_vote">Heeft op een poll gereageerd</string>
     <string name="notification_center_photo_message">Stuurde u een foto</string>
     <string name="notification_center_photo_message_received">Nieuwe foto</string>
     <string name="notification_center_reaction">reageerde %1$s</string>
@@ -929,7 +929,7 @@
     <string name="notifications_view_item_join_group">Je bent lid van de groep</string>
     <string name="notifications_view_item_new_contact">Nieuw contact</string>
     <string name="notifications_view_item_reset_conversation">Heeft het gesprek gereset</string>
-    <string name="notifications_view_item_poll_message">Heeft u een enquête gestuurd</string>
+    <string name="notifications_view_item_poll_message">Heeft je een poll gestuurd</string>
     <string name="notifications_view_item_shortest_day">%1$d d</string>
     <string name="notifications_view_item_shortest_hour">%1$d u</string>
     <string name="notifications_view_item_shortest_minute">%1$d m</string>

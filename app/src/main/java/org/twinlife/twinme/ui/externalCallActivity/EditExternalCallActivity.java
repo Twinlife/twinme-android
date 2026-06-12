@@ -265,6 +265,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
         showBackButton(true);
 
         setTitle(getString(R.string.application_profile));
+        setupBackPressedCallBack(R.id.edit_external_call_activity_layout);
 
         mAvatarView = findViewById(R.id.edit_external_call_activity_avatar_view);
         mAvatarView.setOnClickListener(v -> openMenuPhoto());

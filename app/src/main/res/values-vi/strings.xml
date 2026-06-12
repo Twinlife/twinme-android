@@ -873,9 +873,9 @@
     <string name="notification_center_missed_video_call_to">Cuộc gọi video nhỡ tới %1$s</string>
     <string name="notification_center_mute">Tắt â</string>
     <string name="notification_center_new_contact">Liên hệ mới</string>
-    <string name="notification_center_poll_message">đã gửi cho bạn một khảo sát</string>
-    <string name="notification_center_poll_message_received">Khảo sát mới</string>
-    <string name="notification_center_poll_vote">đã trả lời một khảo sát</string>
+    <string name="notification_center_poll_message">đã gửi cho bạn một cuộc thăm dò</string>
+    <string name="notification_center_poll_message_received">Cuộc thăm dò mới</string>
+    <string name="notification_center_poll_vote">đã trả lời một cuộc thăm dò</string>
     <string name="notification_center_photo_message">Đã gửi cho bạn một ảnh</string>
     <string name="notification_center_photo_message_received">Ảnh mới</string>
     <string name="notification_center_reaction">đã phản hồi %1$s</string>
@@ -911,7 +911,7 @@
     <string name="notifications_view_item_join_group">Bạn đã tham gia nhóm</string>
     <string name="notifications_view_item_new_contact">Liên hệ mới</string>
     <string name="notifications_view_item_reset_conversation">Đã đặt lại cuộc trò chuyện</string>
-    <string name="notifications_view_item_poll_message">đã gửi cho bạn một khảo sát</string>
+    <string name="notifications_view_item_poll_message">đã gửi cho bạn một cuộc thăm dò</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

@@ -889,9 +889,9 @@
     <string name="notification_center_missed_video_call_to">مكالمة فيديو فائتة مع <span>%1$s</span></string>
     <string name="notification_center_mute">كتم الصوت</string>
     <string name="notification_center_new_contact">ةديدج لاصتا ةهج</string>
-    <string name="notification_center_poll_message">أرسل لك استطلاعًا</string>
-    <string name="notification_center_poll_message_received">استطلاع جديد</string>
-    <string name="notification_center_poll_vote">أجاب على استطلاع</string>
+    <string name="notification_center_poll_message">أرسل لك استطلاع رأي</string>
+    <string name="notification_center_poll_message_received">استطلاع رأي جديد</string>
+    <string name="notification_center_poll_vote">ردّ على استطلاع رأي</string>
     <string name="notification_center_photo_message">أرسل لك صورة</string>
     <string name="notification_center_photo_message_received">صورة جديدة</string>
     <string name="notification_center_reaction">رد %1$s</string>
@@ -929,7 +929,7 @@
     <string name="notifications_view_item_join_group">ةعومجملا يف وضع تنأ</string>
     <string name="notifications_view_item_new_contact">ةديدج لاصتا ةهج</string>
     <string name="notifications_view_item_reset_conversation">قام بإعادة تعيين المحادثة</string>
-    <string name="notifications_view_item_poll_message">أرسل لك استطلاعًا</string>
+    <string name="notifications_view_item_poll_message">أرسل لك استطلاع رأي</string>
     <string name="notifications_view_item_shortest_day"><span>%1$d</span>أيام</string>
     <string name="notifications_view_item_shortest_hour"><span>%1$d</span>ساعات</string>
     <string name="notifications_view_item_shortest_minute"><span>%1$d</span>دقائق</string>
