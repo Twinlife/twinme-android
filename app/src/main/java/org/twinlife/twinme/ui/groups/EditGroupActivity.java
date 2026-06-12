@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
@@ -30,6 +31,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -38,6 +40,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
@@ -67,6 +70,9 @@ import java.util.UUID;
 public class EditGroupActivity extends AbstractGroupActivity {
     private static final String LOG_TAG = "EditGroupActivity";
     private static final boolean DEBUG = false;
+
+    protected static int AVATAR_OVER_SIZE;
+    protected static int AVATAR_MAX_SIZE;
 
     private class RemoveListener implements OnClickListener {
 
@@ -152,10 +158,11 @@ public class EditGroupActivity extends AbstractGroupActivity {
     protected static final float DESIGN_NAME_TOP_MARGIN = 40f;
 
     private EditableView mEditableView;
+    protected NestedScrollView mScrollView;
     private View mContentView;
     private ImageView mAvatarView;
     private ImageView mNoAvatarView;
-    private ImageView mEditAvatarView;
+    private View mEditAvatarView;
     private EditText mNameView;
     private EditText mDescriptionView;
     private TextView mCounterNameView;
@@ -164,6 +171,10 @@ public class EditGroupActivity extends AbstractGroupActivity {
     private TextView mRemoveLabelView;
     private TextView mTitleView;
     private TextView mSaveTextView;
+
+    private float mScrollPosition = -1;
+    private float mAvatarLastSize = -1;
+    private boolean mInitScrollView = false;
 
     @Nullable
     private UUID mGroupId;
@@ -244,6 +255,20 @@ public class EditGroupActivity extends AbstractGroupActivity {
 
         if (mGroupId != null && mGroup == null) {
             mGroupService.getGroup(mGroupId, true);
+        }
+
+        if (mScrollView != null && !mInitScrollView) {
+            mInitScrollView = true;
+            Rect rectangle = new Rect();
+            getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
+            int contentHeight = mContentView.getHeight();
+            if (contentHeight < rectangle.height()) {
+                contentHeight = rectangle.height();
+            }
+
+            ViewGroup.LayoutParams layoutParams = mContentView.getLayoutParams();
+            layoutParams.height = contentHeight + AVATAR_OVER_SIZE;
+            mScrollView.post(() -> mScrollView.scrollBy(0, AVATAR_OVER_SIZE));
         }
     }
 
@@ -374,6 +399,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
         showToolBar(false);
         showBackButton(true);
         setBackgroundColor(Design.WHITE_COLOR);
+        setupBackPressedCallBack(R.id.edit_group_activity_layout);
 
         mAvatarView = findViewById(R.id.edit_group_activity_avatar_view);
 
@@ -383,21 +409,22 @@ public class EditGroupActivity extends AbstractGroupActivity {
         mNoAvatarView = findViewById(R.id.edit_group_activity_no_avatar_view);
         mNoAvatarView.setVisibility(View.GONE);
 
-        mAvatarView.setOnClickListener(view -> openMenuPhoto());
+        View editAvatarClickableView = findViewById(R.id.edit_group_activity_edit_avatar_clickable_view);
+        editAvatarClickableView.setOnClickListener(view -> openMenuPhoto());
+
+        ViewGroup.LayoutParams layoutParams = editAvatarClickableView.getLayoutParams();
+        layoutParams.height = AVATAR_MAX_SIZE - Design.ACTION_VIEW_MIN_MARGIN;
+
+        setBackground(mContentView);
 
         mEditableView = new EditableView(this);
 
-        ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();
+        layoutParams = mAvatarView.getLayoutParams();
         layoutParams.width = Design.AVATAR_MAX_WIDTH;
         layoutParams.height = Design.AVATAR_MAX_HEIGHT;
 
         View backClickableView = findViewById(R.id.edit_group_activity_back_clickable_view);
-        GestureDetector backGestureDetector = new GestureDetector(this, new ViewTapGestureDetector(ACTION_BACK));
-        backClickableView.setOnTouchListener((v, motionEvent) -> {
-            backGestureDetector.onTouchEvent(motionEvent);
-            touchContent(motionEvent);
-            return true;
-        });
+        backClickableView.setOnClickListener(view -> onBackClick());
 
         layoutParams = backClickableView.getLayoutParams();
         layoutParams.height = Design.BACK_CLICKABLE_VIEW_HEIGHT;
@@ -409,8 +436,20 @@ public class EditGroupActivity extends AbstractGroupActivity {
         RoundedView backRoundedView = findViewById(R.id.edit_group_activity_back_rounded_view);
         backRoundedView.setColor(Design.BACK_VIEW_COLOR);
 
+        mScrollView = findViewById(R.id.edit_group_activity_scroll_view);
+        ViewTreeObserver viewTreeObserver = mScrollView.getViewTreeObserver();
+        viewTreeObserver.addOnScrollChangedListener(() -> {
+            if (mScrollPosition == -1) {
+                mScrollPosition = AVATAR_OVER_SIZE;
+            }
+
+            float delta = mScrollPosition - mScrollView.getScrollY();
+            updateAvatarSize(delta);
+            mScrollPosition = mScrollView.getScrollY();
+        });
+
         mContentView = findViewById(R.id.edit_group_activity_content_view);
-        mContentView.setY(Design.CONTENT_VIEW_INITIAL_POSITION);
+        mContentView.setOnClickListener(view -> hideKeyboard());
 
         setBackground(mContentView);
 
@@ -754,7 +793,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
 
             mAvatarView.setImageBitmap(mUpdatedGroupAvatar);
             mAvatarView.setBackgroundColor(Color.TRANSPARENT);
-
+            mNoAvatarView.setVisibility(View.GONE);
             setUpdated();
         });
     }
@@ -960,6 +999,43 @@ public class EditGroupActivity extends AbstractGroupActivity {
         avatarLayoutParams.width = (int) avatarViewWidth;
         avatarLayoutParams.height = (int) avatarViewHeight;
         mAvatarView.requestLayout();
+    }
+
+    protected void updateAvatarSize(float deltaY) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateAvatarSize: " + deltaY);
+        }
+
+        if (mAvatarLastSize == -1) {
+            mAvatarLastSize = AVATAR_MAX_SIZE - AVATAR_OVER_SIZE;
+        }
+
+        float avatarViewSize = mAvatarLastSize + deltaY;
+
+        if (avatarViewSize < Design.DISPLAY_WIDTH) {
+            avatarViewSize = Design.DISPLAY_WIDTH;
+        } else if (avatarViewSize > AVATAR_MAX_SIZE) {
+            avatarViewSize = AVATAR_MAX_SIZE;
+        }
+
+        if (avatarViewSize != mAvatarLastSize) {
+            ViewGroup.LayoutParams avatarLayoutParams = mAvatarView.getLayoutParams();
+            avatarLayoutParams.width = (int) avatarViewSize;
+            avatarLayoutParams.height = (int) avatarViewSize;
+            mAvatarView.requestLayout();
+
+            mAvatarLastSize = avatarViewSize;
+        }
+    }
+
+    @Override
+    public void setupDesign() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "openMenuCapabilities");
+        }
+
+        AVATAR_OVER_SIZE = (int) (Design.AVATAR_OVER_WIDTH * Design.WIDTH_RATIO);
+        AVATAR_MAX_SIZE = Design.DISPLAY_WIDTH + (AVATAR_OVER_SIZE * 2);
     }
 
     @Override

@@ -815,9 +815,9 @@
     <string name="notification_center_missed_video_call_to">Apel video pierdut către %1$s</string>
     <string name="notification_center_mute">Mute</string>
     <string name="notification_center_new_contact">Contact nou</string>
-    <string name="notification_center_poll_message">ți-a trimis un sondaj</string>
+    <string name="notification_center_poll_message">v-a trimis un sondaj</string>
     <string name="notification_center_poll_message_received">Sondaj nou</string>
-    <string name="notification_center_poll_vote">A răspuns la un sondaj</string>
+    <string name="notification_center_poll_vote">a răspuns la un sondaj</string>
     <string name="notification_center_photo_message">V-a trimis o fotografie</string>
     <string name="notification_center_photo_message_received">Fotografie nouă</string>
     <string name="notification_center_reaction">a reacționat %1$s</string>
@@ -854,7 +854,7 @@
     <string name="notifications_view_item_join_group">Sunteți membru al grupului</string>
     <string name="notifications_view_item_new_contact">Contact nou</string>
     <string name="notifications_view_item_reset_conversation">A resetat conversația</string>
-    <string name="notifications_view_item_poll_message">ți-a trimis un sondaj</string>
+    <string name="notifications_view_item_poll_message">v-a trimis un sondaj</string>
     <string name="notifications_view_item_shortest_day">%1$dz</string>
     <string name="notifications_view_item_shortest_hour">%1$d h</string>
     <string name="notifications_view_item_shortest_minute">%1$d m</string>

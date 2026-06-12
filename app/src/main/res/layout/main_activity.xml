@@ -110,10 +110,4 @@
 
     </RelativeLayout>
 
-    <org.twinlife.twinme.ui.contacts.SuccessAuthentifiedRelationView
-        android:id="@+id/main_activity_success_authentification_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -227,6 +227,8 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
         showBackButton(true);
         setBackgroundColor(Design.WHITE_COLOR);
 
+        setupBackPressedCallBack(R.id.edit_contact_activity_layout);
+
         mAvatarView = findViewById(R.id.edit_contact_activity_avatar_view);
 
         ViewGroup.LayoutParams layoutParams = mAvatarView.getLayoutParams();

@@ -97,6 +97,11 @@ public class PeerFileItem extends Item {
             stringBuilder.append("\n");
         }
 
+        if (mNamedFileDescriptor.getName() != null) {
+            stringBuilder.append(mNamedFileDescriptor.getName());
+            stringBuilder.append("\n");
+        }
+
         if (mNamedFileDescriptor.getLength() > 0) {
             stringBuilder.append(Formatter.formatFileSize(context, mNamedFileDescriptor.getLength()));
         }

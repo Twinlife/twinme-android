@@ -815,9 +815,9 @@
     <string name="notification_center_missed_video_call_to">Zmeškaný videohovor pre %1$s</string>
     <string name="notification_center_mute">Stlmiť</string>
     <string name="notification_center_new_contact">Nový kontakt</string>
-    <string name="notification_center_poll_message">Vám poslal(a) prieskum</string>
-    <string name="notification_center_poll_message_received">Nový prieskum</string>
-    <string name="notification_center_poll_vote">Odpovedal(a) na prieskum</string>
+    <string name="notification_center_poll_message">Vám poslal anketu</string>
+    <string name="notification_center_poll_message_received">Nová anketa</string>
+    <string name="notification_center_poll_vote">Odpovedal na anketu</string>
     <string name="notification_center_photo_message">Odoslal vám fotografiu</string>
     <string name="notification_center_photo_message_received">Nová fotografia</string>
     <string name="notification_center_reaction">reagoval %1$s</string>
@@ -854,7 +854,7 @@
     <string name="notifications_view_item_join_group">Ste členom skupiny</string>
     <string name="notifications_view_item_new_contact">Nový kontakt</string>
     <string name="notifications_view_item_reset_conversation">Obnovil konverzáciu</string>
-    <string name="notifications_view_item_poll_message">Vám poslal(a) prieskum</string>
+    <string name="notifications_view_item_poll_message">Vám poslal anketu</string>
     <string name="notifications_view_item_shortest_day">%1$dd</string>
     <string name="notifications_view_item_shortest_hour">%1$dh</string>
     <string name="notifications_view_item_shortest_minute">%1$dm</string>

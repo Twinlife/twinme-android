@@ -186,6 +186,7 @@ import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.shareActivity.ShareActivity;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.AbstractMenuSelectActionView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.ConversationEditText;
@@ -6561,6 +6562,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             Log.d(LOG_TAG, "backPressed");
         }
 
+        if (dismissBottomSheet(R.id.conversation_activity_layout)) {
+            return;
+        }
+
         // When the keyboard is opened, the back button closes the keyboard.
         // When the media selector is opened, close it to have the same behavior.
         if (mSelectedMode != Mode.DEFAULT) {
@@ -6568,8 +6573,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             return;
         }
 
-        if (mMenuActionConversationView != null) {
-            ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
+        ViewGroup viewGroup = findViewById(R.id.conversation_activity_layout);
+        if (mMenuActionConversationView != null && viewGroup != null) {
             viewGroup.removeView(mMenuActionConversationView);
             mMenuActionConversationView = null;
             setStatusBarColor();

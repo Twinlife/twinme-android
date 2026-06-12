@@ -39,7 +39,7 @@ public class CreatePollActivity extends AbstractTwinmeActivity {
     protected static final int DESIGN_MARGIN = 34;
 
     protected static final int MAX_QUESTION_LENGTH = 128;
-    protected static final int MAX_CHOICE_LENGTH = 32;
+    protected static final int MAX_CHOICE_LENGTH = 128;
     protected static final int LIMIT_CHOICE =  10;
 
     private CreatePollAdapter mPollAdapter;

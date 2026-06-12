@@ -27,9 +27,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.percentlayout.widget.PercentRelativeLayout;
@@ -186,6 +189,14 @@ public class AbstractBottomSheetView extends PercentRelativeLayout {
         mForceDarkMode = forceDarkMode;
     }
 
+    public void dismiss() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "dismiss");
+        }
+
+        onDismissClick();
+    }
+    
     public void show() {
         if (DEBUG) {
             Log.d(LOG_TAG, "show");

@@ -8,7 +8,6 @@
 
 package org.twinlife.twinme.ui.settingsActivity;
 
-import android.annotation.SuppressLint;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -56,7 +55,6 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
         mSelectImageView = view.findViewById(R.id.settings_activity_item_image_view);
     }
 
-    @SuppressLint("SetTextI18n")
     public void onBind(@NonNull UISetting<?> uiSetting, boolean visible, Runnable runnable) {
 
         if (runnable != null) {
@@ -117,6 +115,15 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
 
         updateFont();
         updateColor();
+    }
+
+    public void onBind (@NonNull String title, @NonNull String value) {
+
+        mTextView.setText(title);
+        mValueView.setText(value);
+
+        mValueView.setVisibility(View.VISIBLE);
+        mSelectImageView.setVisibility(View.GONE);
     }
 
     private void updateFont() {

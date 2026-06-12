@@ -1,10 +1,11 @@
 /*
- *  Copyright (c) 2018 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Yannis Le Gal (Yannis.LeGal@twin.life)
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.conversationActivity;
@@ -91,7 +92,8 @@ public class NamedFileProvider extends ContentProvider {
         Uri.Builder uriBuilder = new Uri.Builder();
         uriBuilder.scheme("content");
         uriBuilder.authority(mAuthority);
-        uriBuilder.path(Integer.toString(mFiles.size()));
+        uriBuilder.appendPath(Integer.toString(mFiles.size()));
+        uriBuilder.appendPath(name);
 
         return uriBuilder.build();
     }
@@ -219,7 +221,7 @@ public class NamedFileProvider extends ContentProvider {
 
         List<String> segments = uri.getPathSegments();
 
-        return Integer.parseInt(segments.get(segments.size() - 1)) - 1;
+        return Integer.parseInt(segments.get(0)) - 1;
     }
 
     private String[] copyOf(String[] source, int length) {

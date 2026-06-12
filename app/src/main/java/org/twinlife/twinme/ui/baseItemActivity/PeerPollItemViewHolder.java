@@ -22,7 +22,6 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.poll.PollChoiceAdapter;
-import org.twinlife.twinme.ui.conversationActivity.poll.PollChoiceViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.poll.UIPollResult;
 
 import java.util.ArrayList;
@@ -39,7 +38,8 @@ public class PeerPollItemViewHolder extends PeerItemViewHolder {
     private final View mPollContainer;
     private final TextView mQuestionView;
     private final PollChoiceAdapter mChoicesAdapter;
-    private final RecyclerView mChoicesView;
+
+    private int mMaxResult = 0;
 
     private final GradientDrawable mGradientDrawable;
     PeerPollItemViewHolder(BaseItemActivity baseItemActivity, View view) {
@@ -88,19 +88,19 @@ public class PeerPollItemViewHolder extends PeerItemViewHolder {
 
         mChoicesAdapter = new PollChoiceAdapter(Design.FONT_COLOR_DEFAULT);
 
-        mChoicesView = view.findViewById(R.id.base_item_activity_peer_poll_item_choices_view);
+        RecyclerView choicesView = view.findViewById(R.id.base_item_activity_peer_poll_item_choices_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(baseItemActivity, LinearLayoutManager.VERTICAL, false);
-        mChoicesView.setLayoutManager(linearLayoutManager);
-        mChoicesView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
-        mChoicesView.setItemAnimator(null);
-        mChoicesView.setAdapter(mChoicesAdapter);
+        choicesView.setLayoutManager(linearLayoutManager);
+        choicesView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
+        choicesView.setItemAnimator(null);
+        choicesView.setAdapter(mChoicesAdapter);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mChoicesView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) choicesView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.leftMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
-        mChoicesView.setLayoutParams(marginLayoutParams);
+        choicesView.setLayoutParams(marginLayoutParams);
 
         View resultView = view.findViewById(R.id.base_item_activity_peer_poll_item_results_view);
 
@@ -139,16 +139,12 @@ public class PeerPollItemViewHolder extends PeerItemViewHolder {
 
         ConversationService.PollDescriptor pollDescriptor = peerPollItem.getPollDescriptor();
         mQuestionView.setText(pollDescriptor.getQuestion());
-        mChoicesAdapter.setChoices(getPollResults(pollDescriptor, peerPollItem.getVotes()));
+        mChoicesAdapter.setChoices(getPollResults(pollDescriptor, peerPollItem.getVotes()), mMaxResult);
 
         PollChoiceAdapter.OnChoiceClickListener onChoiceClickListener = choice -> {
             getBaseItemActivity().onSelectPollChoiceClick(pollDescriptor, choice, peerPollItem.getVotes());
         };
         mChoicesAdapter.setOnChoiceClickListener(onChoiceClickListener);
-
-        ViewGroup.LayoutParams layoutParams = mChoicesView.getLayoutParams();
-        layoutParams.height = pollDescriptor.getChoices().size() * (int) (PollChoiceViewHolder.DESIGN_ITEM_HEIGHT * Design.HEIGHT_RATIO);
-        mChoicesView.setLayoutParams(layoutParams);
 
         if (!getBaseItemActivity().displayPeerItemAvatar()) {
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mPollContainer.getLayoutParams();
@@ -204,6 +200,13 @@ public class PeerPollItemViewHolder extends PeerItemViewHolder {
                         }
                     }
                 }
+            }
+        }
+
+        mMaxResult = 0;
+        for (UIPollResult pollResult : results) {
+            if (pollResult.getCount() > mMaxResult) {
+                mMaxResult = pollResult.getCount();
             }
         }
 

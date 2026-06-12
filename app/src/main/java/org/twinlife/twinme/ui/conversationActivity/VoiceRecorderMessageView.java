@@ -620,7 +620,7 @@ public class VoiceRecorderMessageView extends PercentRelativeLayout implements A
             Toast.makeText(mConversationActivity, toastMessage, Toast.LENGTH_SHORT).show();
 
             if (assertion) {
-                mConversationActivity.getTwinmeContext().assertion(ApplicationAssertPoint.AUDIO_RECORD_ERROR, AssertPoint.create(errorCode));
+                mConversationActivity.getTwinmeContext().exception(ApplicationAssertPoint.AUDIO_RECORD_ERROR, exception, AssertPoint.create(errorCode));
             }
         }
 

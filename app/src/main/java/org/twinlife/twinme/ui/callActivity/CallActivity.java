@@ -125,6 +125,7 @@ import org.twinlife.twinme.ui.contacts.InvitationCodeConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
+import org.twinlife.twinme.utils.AbstractMenuSelectActionView;
 import org.twinlife.twinme.utils.AlertMessageView;
 import org.twinlife.twinme.utils.AppStateInfo;
 import org.twinlife.twinme.utils.CommonUtils;
@@ -5442,6 +5443,19 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     private void backPressed() {
         if (DEBUG) {
             Log.d(LOG_TAG, "backPressed");
+        }
+
+        if (mRootView != null && mRootView.getChildCount() > 0) {
+            View frontView = mRootView.getChildAt(mRootView.getChildCount() - 1);
+            if (frontView instanceof AbstractBottomSheetView) {
+                AbstractBottomSheetView bottomSheetView = (AbstractBottomSheetView) frontView;
+                bottomSheetView.dismiss();
+                return;
+            } else if (frontView instanceof AbstractMenuSelectActionView) {
+                AbstractMenuSelectActionView menuSelectActionView = (AbstractMenuSelectActionView) frontView;
+                menuSelectActionView.dismiss();
+                return;
+            }
         }
 
         if (mMode == null) {

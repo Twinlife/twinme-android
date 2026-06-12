@@ -29,6 +29,8 @@ import android.view.WindowInsets;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -166,6 +168,14 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
 
             }
         });
+    }
+
+    public void dismiss() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "dismiss");
+        }
+
+        onDismissClick();
     }
 
     public void animationCloseMenu() {

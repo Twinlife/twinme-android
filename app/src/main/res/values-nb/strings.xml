@@ -819,9 +819,9 @@
     <string name="notification_center_missed_video_call_to">Tapt videosamtale med %1$s</string>
     <string name="notification_center_mute">Demp mikrofonen</string>
     <string name="notification_center_new_contact">Ny kontakt</string>
-    <string name="notification_center_poll_message">Sendte deg en undersøkelse</string>
-    <string name="notification_center_poll_message_received">Ny undersøkelse</string>
-    <string name="notification_center_poll_vote">Svarte på en undersøkelse</string>
+    <string name="notification_center_poll_message">Sendte deg en avstemning</string>
+    <string name="notification_center_poll_message_received">Ny avstemning</string>
+    <string name="notification_center_poll_vote">Svarte på en avstemning</string>
     <string name="notification_center_photo_message">Sendte deg et bilde</string>
     <string name="notification_center_photo_message_received">Nytt bilde</string>
     <string name="notification_center_reaction">reagerte %1$s</string>
@@ -858,7 +858,7 @@
     <string name="notifications_view_item_join_group">Du er medlem av gruppen</string>
     <string name="notifications_view_item_new_contact">Ny kontakt</string>
     <string name="notifications_view_item_reset_conversation">Har tilbakestilt samtalen</string>
-    <string name="notifications_view_item_poll_message">Sendte deg en undersøkelse</string>
+    <string name="notifications_view_item_poll_message">Sendte deg en avstemning</string>
     <string name="notifications_view_item_shortest_day">%1$d d</string>
     <string name="notifications_view_item_shortest_hour">%1$d t</string>
     <string name="notifications_view_item_shortest_minute">%1$d m</string>

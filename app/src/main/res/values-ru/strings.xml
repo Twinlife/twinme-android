@@ -315,7 +315,7 @@
     <!-- CallsFragment -->
     <string name="calls_view_all_call_segmented_control">Все</string>
     <string name="calls_view_call_again_message">Хотите перезвонить %1$s?</string>
-    <string name="calls_view_call_again_title">Перезвони</string>
+    <string name="calls_view_call_again_title">Позвонить</string>
     <string name="calls_view_create_link">Создайте ссылку «click-to-call»</string>
     <string name="calls_view_incoming_call">Входящий звонок</string>
     <string name="calls_view_missed_call">Пропущенный звонок</string>
