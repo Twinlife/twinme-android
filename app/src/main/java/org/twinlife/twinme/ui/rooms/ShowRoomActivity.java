@@ -414,6 +414,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
 
         View slideMarkView = findViewById(R.id.show_room_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

@@ -1,7 +1,9 @@
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/web_view_activity_content_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
 
     <include
         android:id="@+id/web_view_activity_tool_bar"
@@ -9,10 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <View
+        android:id="@+id/web_view_activity_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/web_view_activity_tool_bar" />
+
     <WebView
         android:id="@+id/web_view_activity_web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/web_view_activity_tool_bar" />
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

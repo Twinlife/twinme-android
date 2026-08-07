@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/restore_activity_backup_info_container_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true">
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/restore_activity_backup_info_icon_view"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            app:layout_aspectRatio="100%">
+            android:layout_height="0dp"
+            android:layout_centerVertical="true">
 
             <ImageView
                 android:id="@+id/restore_activity_backup_info_image_view"
@@ -24,7 +22,7 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/logo" />
 
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/restore_activity_backup_info_text_view"
@@ -34,6 +32,6 @@
             android:text="@string/backup_view_title"
             android:layout_toEndOf="@+id/restore_activity_backup_info_icon_view" />
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

@@ -249,6 +249,7 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
         mActionView.setBackground(scrollIndicatorBackground);
 
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -268,6 +269,8 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) titleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
 
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM36);
@@ -277,6 +280,8 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
 
         mConfirmView.setOnClickListener(v -> onConfirmClick());
 

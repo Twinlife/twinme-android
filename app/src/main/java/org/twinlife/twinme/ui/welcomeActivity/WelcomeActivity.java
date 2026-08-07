@@ -13,6 +13,10 @@ package org.twinlife.twinme.ui.welcomeActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Layout;
@@ -40,6 +44,7 @@ import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.WebViewActivity;
+import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationScannerActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.utils.DotsAdapter;
 
@@ -52,8 +57,16 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "WelcomeActivity";
     private static final boolean DEBUG = false;
 
+    private static final int DESIGN_RESTORE_HEIGHT = 140;
+    private static final int DESIGN_RESTORE_MARGIN = 80;
+
+    private static final float DESIGN_NEXT_VIEW_HEIGHT = 60f;
+    private static final float DESIGN_NEXT_VIEW_MARGIN = 30f;
+    private static final float DESIGN_DESCRIPTION_MARGIN = 40f;
+
     private final List<UIWelcome> mUIWelcome = new ArrayList<>();
 
+    private View mBackgroundView;
     private DotsAdapter mDotsAdapter;
     private RecyclerView mWelcomeRecyclerView;
     private TextView mMessageView;
@@ -61,6 +74,12 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
     private TextView mNextTextView;
     private View mPrevClickableView;
     private View mNextClickableView;
+    private RecyclerView mDotsRecyclerView;
+    private View mHeaderView;
+    private View mSplashscreenLogoView;
+    private TextView mDescriptionView;
+    private View mStartView;
+    private View mRestoreView;
 
     private int mCurrentPosition = 0;
     private boolean mHasConversations = false;
@@ -85,7 +104,12 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             URLSpan[] links = buffer.getSpans(offset, offset, URLSpan.class);
             if (links.length != 0) {
                 Intent intent = new Intent(WelcomeActivity.this, WebViewActivity.class);
-                intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, links[0].getURL());
+
+                if (links[0].getURL().equals("file:///android_res/raw/terms_of_service.html")) {
+                    intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.terms_of_service);
+                } else if (links[0].getURL().equals("file:///android_res/raw/privacy_policy.html")) {
+                    intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.privacy_policy);
+                }
 
                 startActivity(intent);
             }
@@ -178,9 +202,61 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         Design.setTheme(this, getTwinmeApplication());
         setContentView(R.layout.welcome_activity);
 
-        setStatusBarColor(Design.WHITE_COLOR);
+        setStatusBarColor(Design.SPLASHSCREEN_BACKGROUND_COLOR, Design.SPLASHSCREEN_BACKGROUND_COLOR);
 
-        applyInsets(R.id.welcome_activity_layout, -1, -1, Design.WHITE_COLOR, false);
+        applyInsets(R.id.welcome_activity_layout, -1, -1, Design.SPLASHSCREEN_BACKGROUND_COLOR, true);
+
+        mBackgroundView = findViewById(R.id.welcome_activity_background);
+
+        mHeaderView = findViewById(R.id.welcome_activity_header_view);
+        mHeaderView.setVisibility(View.GONE);
+
+        mSplashscreenLogoView = findViewById(R.id.welcome_activity_logo_container);
+
+        mDescriptionView = findViewById(R.id.welcome_activity_description_view);
+        Design.updateTextFont(mDescriptionView, Design.FONT_REGULAR32);
+        mDescriptionView.setTextColor(Color.WHITE);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mDescriptionView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
+
+        mStartView = findViewById(R.id.welcome_activity_start_view);
+
+        mStartView.setOnClickListener(v -> onStartClick());
+
+        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+        ShapeDrawable saveViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        saveViewBackground.getPaint().setColor(Color.WHITE);
+        mStartView.setBackground(saveViewBackground);
+
+        ViewGroup.LayoutParams layoutParams = mStartView.getLayoutParams();
+        layoutParams.width = Design.BUTTON_WIDTH;
+
+        mStartView.setMinimumHeight(Design.BUTTON_HEIGHT);
+
+        TextView startTextView = findViewById(R.id.welcome_activity_start_text_view);
+        Design.updateTextFont(startTextView, Design.FONT_BOLD36);
+        startTextView.setTextColor(Color.BLACK);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) startTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
+
+        mRestoreView = findViewById(R.id.welcome_activity_restore_view);
+        mRestoreView.setOnClickListener(v -> onRestoreClick());
+
+        layoutParams = mRestoreView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_RESTORE_HEIGHT * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mRestoreView.getLayoutParams();
+        marginLayoutParams.bottomMargin = (int) (DESIGN_RESTORE_MARGIN * Design.HEIGHT_RATIO);
+
+        TextView restoreTextView = findViewById(R.id.welcome_activity_restore_text_view);
+        Design.updateTextFont(restoreTextView, Design.FONT_BOLD36);
+        restoreTextView.setTextColor(Color.WHITE);
 
         WelcomeAdapter welcomeAdapter = new WelcomeAdapter(this, mUIWelcome);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
@@ -189,6 +265,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         mWelcomeRecyclerView.setLayoutManager(linearLayoutManager);
         mWelcomeRecyclerView.setAdapter(welcomeAdapter);
         mWelcomeRecyclerView.setItemAnimator(null);
+        mWelcomeRecyclerView.setVisibility(View.GONE);
 
         SnapHelper pagerSnapHelper = new PagerSnapHelper();
         pagerSnapHelper.attachToRecyclerView(mWelcomeRecyclerView);
@@ -208,16 +285,17 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             }
         });
 
-        RecyclerView dotsRecyclerView = findViewById(R.id.welcome_activity_dots_view);
+        mDotsRecyclerView = findViewById(R.id.welcome_activity_dots_view);
         mDotsAdapter = new DotsAdapter(mUIWelcome.size(), getLayoutInflater());
         LinearLayoutManager dotsLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        dotsRecyclerView.setLayoutManager(dotsLinearLayoutManager);
-        dotsRecyclerView.setAdapter(mDotsAdapter);
-        dotsRecyclerView.setItemAnimator(null);
+        mDotsRecyclerView.setLayoutManager(dotsLinearLayoutManager);
+        mDotsRecyclerView.setAdapter(mDotsAdapter);
+        mDotsRecyclerView.setItemAnimator(null);
+        mDotsRecyclerView.setVisibility(View.GONE);
 
-        ViewGroup.LayoutParams layoutParams = dotsRecyclerView.getLayoutParams();
+        layoutParams = mDotsRecyclerView.getLayoutParams();
         layoutParams.width = mUIWelcome.size() * Design.DOT_SIZE;
-        dotsRecyclerView.setLayoutParams(layoutParams);
+        mDotsRecyclerView.setLayoutParams(layoutParams);
 
         mPrevTextView = findViewById(R.id.welcome_activity_prev_view);
         Design.updateTextFont(mPrevTextView, Design.FONT_REGULAR34);
@@ -231,13 +309,15 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         mNextTextView = findViewById(R.id.welcome_activity_next_view);
         Design.updateTextFont(mNextTextView, Design.FONT_BOLD34);
         mNextTextView.setTextColor(Design.getMainStyle());
+        mNextTextView.setVisibility(View.GONE);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNextTextView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mNextTextView.getLayoutParams();
         marginLayoutParams.leftMargin = Design.BUTTON_MARGIN;
         marginLayoutParams.rightMargin = Design.BUTTON_MARGIN;
 
         mNextClickableView = findViewById(R.id.welcome_activity_next_clickable_view);
         mNextClickableView.setOnClickListener(v -> onNextRecyclerClick());
+        mNextClickableView.setVisibility(View.GONE);
 
         mMessageView = findViewById(R.id.welcome_activity_message_view);
         Design.updateTextFont(mMessageView, Design.FONT_REGULAR28);
@@ -245,6 +325,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         String messageText = String.format(getString(R.string.welcome_view_accept), getString(R.string.welcome_view_pass)) + " " + getResources().getString(R.string.welcome_view_terms_of_use) + " - " + getResources().getString(R.string.welcome_view_privacy_policy);
         mMessageView.setText(messageText);
         addLinks();
+        mMessageView.setVisibility(View.GONE);
 
         setupAction();
 
@@ -279,6 +360,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         // On Android 13, we must ask for the POST_NOTIFICATIONS permission to be able to post notifications.
         // If the permission is not granted, messages and calls are received but notifications are not displayed.
         // It is not possible to answer an incoming call!
+        getTwinmeApplication().setAskPostNotifications(false);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || checkPermissions(new Permission[]{Permission.POST_NOTIFICATIONS})) {
             startMain();
         }
@@ -353,6 +435,10 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "setupAction");
         }
 
+        if (mWelcomeRecyclerView.getVisibility() == View.GONE) {
+            return;
+        }
+
         if (mCurrentPosition == 0) {
             mPrevTextView.setVisibility(View.INVISIBLE);
             mPrevClickableView.setVisibility(View.INVISIBLE);
@@ -385,6 +471,36 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
 
         mDotsAdapter.setCurrentPosition(mCurrentPosition);
         addLinks();
+    }
+
+    private void onStartClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onStartClick");
+        }
+
+        mBackgroundView.setVisibility(View.GONE);
+        mSplashscreenLogoView.setVisibility(View.GONE);
+        mDescriptionView.setVisibility(View.GONE);
+        mStartView.setVisibility(View.GONE);
+        mRestoreView.setVisibility(View.GONE);
+        mHeaderView.setVisibility(View.VISIBLE);
+        mWelcomeRecyclerView.setVisibility(View.VISIBLE);
+        mNextTextView.setVisibility(View.VISIBLE);
+        mNextClickableView.setVisibility(View.VISIBLE);
+        mDotsRecyclerView.setVisibility(View.VISIBLE);
+
+        setStatusBarColor(Design.WHITE_COLOR, Design.WHITE_COLOR);
+        applyInsets(R.id.welcome_activity_layout, -1, -1, Design.WHITE_COLOR, false);
+    }
+
+    private void onRestoreClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onRestoreClick");
+        }
+
+        Intent intent = new Intent(this, AccountMigrationScannerActivity.class);
+        intent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, false);
+        startActivity(intent);
     }
 
     private void backPressed() {

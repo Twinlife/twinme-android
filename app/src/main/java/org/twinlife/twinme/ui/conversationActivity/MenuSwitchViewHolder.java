@@ -22,7 +22,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.SwitchView;
 
-public class MenuSendOptionViewHolder extends RecyclerView.ViewHolder {
+public class MenuSwitchViewHolder extends RecyclerView.ViewHolder {
 
     private static final float DESIGN_ICON_SIZE = 36f;
     private static final float DESIGN_ICON_MARGIN = 34f;
@@ -34,7 +34,7 @@ public class MenuSendOptionViewHolder extends RecyclerView.ViewHolder {
     private boolean mForceDarkMode = false;
     private int mBackgroundColor =  Design.POPUP_BACKGROUND_COLOR;
 
-    public MenuSendOptionViewHolder(@NonNull View view) {
+    public MenuSwitchViewHolder(@NonNull View view) {
 
         super(view);
 

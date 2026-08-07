@@ -37,6 +37,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.GeolocationDescriptor;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
@@ -93,9 +94,9 @@ public class LocationActivity extends AbstractTwinmeActivity implements OnMapRea
 
         if (id != null) {
             final ConversationService service = getTwinmeContext().getConversationService();
-            service.getGeolocation(id, (BaseService.ErrorCode errorCode, GeolocationDescriptor geolocationDescriptor) ->
+            service.getGeolocation(id, (ErrorCode errorCode, GeolocationDescriptor geolocationDescriptor) ->
                     runOnUiThread(() -> {
-                        if (errorCode != BaseService.ErrorCode.SUCCESS || geolocationDescriptor == null) {
+                        if (errorCode != ErrorCode.SUCCESS || geolocationDescriptor == null) {
                             if (DEBUG) {
                                 Log.w(LOG_TAG, "Error getting geolocation descriptor with id " + id + ", error: " + errorCode);
                             }

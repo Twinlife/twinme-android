@@ -105,6 +105,7 @@
     <string name="application_select_more">בחר עוד…</string>
     <string name="application_server_timeout">זמן קצוב בשרת</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">התחל</string>
     <string name="application_theme">נושא</string>
     <string name="application_timeout">עיכוב תפוגה</string>
     <string name="application_timeout_day">יום 1</string>
@@ -115,6 +116,8 @@
     <string name="application_timeout_month">1 חודש</string>
     <string name="application_timeout_seconds"> שניות %1$d </string>
     <string name="application_timeout_week">שבוע 1</string>
+    <string name="application_transfer_from_another_device">העברה ממכשיר אחר</string>
+    <string name="application_transfer_restore">העברה או שחזור</string>
     <string name="application_unknown_name">לא ידוע</string>
     <string name="application_until">עד %1$s</string>
     <string name="application_upgrade">משדרג Skred</string>
@@ -195,12 +198,23 @@
     <string name="account_migration_view_transfer_in_progress">העברת נתונים בעיצומה</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">כדי להתחיל את ההעברה, סרוק את קוד ה-QR של ההעברה המוצג במכשיר השני.</string>
+    <string name="account_migration_scanner_view_header_other_device">כדי להתחיל את ההעברה, סרוק את קוד ה-QR המוצג במכשיר זה מהמכשיר השני.</string>
     <string name="account_migration_scanner_view_message">הצג מסך זה בכל מכשיר, ואחד סורק את קוד ה- QR של השני.</string>
     <string name="account_migration_scanner_view_message_older_version">מכשיר זה משתמש בגרסת מערכת הפעלה ישנה שאינה תואמת, אשר תגרום לאיבוד כל היחסים במכשיר היעד במהלך ההעברה. האם אתה עדיין רוצה להמשיך בהעברה?</string>
     <string name="account_migration_scanner_view_message_older_version_target">מכשיר היעד משתמש בגרסת מערכת הפעלה ישנה שאינה תואמת, מה שיגרום לאיבוד כל הקשרים שלך במהלך ההעברה. האם אתה עדיין רוצה להמשיך בהעברה?</string>
-    <string name="account_migration_scanner_view_scan_title">דיגיטציה</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">כדי להפעיל את ההגירה, סרוק קוד QR זה מהמכשיר השני</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">סרוק את קוד ה-QR המוצג בקטע \"חשבון / העברה ממכשיר אחר\" בתפריט הצד של המכשיר האחר.</string>
+    <string name="account_migration_scanner_view_restore_title">אין לך עוד גישה למכשיר השני?</string>
+    <string name="account_migration_scanner_view_restore_message">אם קיים גיבוי, תוכל לשחזר אותו למכשיר זה.</string>
+    <string name="account_migration_scanner_view_scan_title">דיגיטציה</string>
+    <string name="account_migration_scanner_view_step_1">פתח את האפליקציה במכשיר השני</string>
+    <string name="account_migration_scanner_view_step_2">עבור לתפריט הצדדי</string>
+    <string name="account_migration_scanner_view_step_3">בחר \"חשבון\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">התחל את ההעברה ממכשיר זה</string>
+    <string name="account_migration_scanner_view_step_4_another_device">התחל את ההעברה מהמכשיר השני</string>
+    <string name="account_migration_scanner_view_step_5_my_device">סרוק את קוד ה-QR המוצג במכשיר השני עם מכשיר זה</string>
+    <string name="account_migration_scanner_view_step_5_another_device">סרוק את קוד ה-QR המוצג במכשיר זה עם המכשיר השני</string>
     <string name="account_migration_scanner_view_stop_scan_title">תפסיק לסרוק</string>
 
     <!-- AddCallParticipantActivity -->
@@ -289,13 +303,16 @@
     <string name="backup_view_content_diff_deleted">נמחק</string>
     <string name="backup_view_content_diff_message">להלן השינויים בהשוואה לנתונים הנוכחיים שלך:</string>
     <string name="backup_view_content_info">גיבויים אינם כוללים שיחות, התראות והיסטוריה.</string>
+    <string name="backup_view_copy_clipboard">העתק ללוח</string>
     <string name="backup_view_error_words">המילים שהוזנו אינן מאפשרות פענוח של הגיבוי.</string>
+    <string name="backup_view_generate_key">צור מפתח הצפנה חדש</string>
     <string name="backup_view_generate_word">לִיצוֹר</string>
     <string name="backup_view_last_backup">גיבוי אחרון ב- %1$s</string>
     <string name="backup_view_new_backup">גיבוי חדש</string>
     <string name="backup_view_onboarding">בצע גיבוי מוצפן של נתוני חשבון (\"Spaces\", פרופילים, אנשי קשר, \"click-to-call\") שניתן לשחזר למכשיר זה או למכשיר אחר.</string>
     <string name="backup_view_reminder">הגיבוי האחרון שלך נוצר לפני יותר מ-30 יום.</string>
     <string name="backup_view_save_file_message">שמור את קובץ הגיבוי במכשיר שתבחר ושמור את הסיסמאות לשחזור מאוחר יותר.</string>
+    <string name="backup_view_save_password">שמור במנהל הסיסמאות</string>
     <string name="backup_view_security">בִּטָחוֹן</string>
     <string name="backup_view_security_info">מפתח הצפנת הגיבוי מיוצג על ידי סדרה של 12 מילים שיידרשו לשיקום.</string>
     <string name="backup_view_success">הגיבוי הושלם בהצלחה!</string>
@@ -480,6 +497,8 @@
     <string name="conversation_view_info">:נעילה הודעות הצ\'אט מוצפנות בטלפון הנייד שלך ובמהלך העברתן.\n כדי להבטיח את רמת האבטחה הגבוהה ביותר של הנתונים, הם נשלחים ישירות לטלפון של %s באמצעות חיבור עמית לעמית ללא שרת מתווך.</string>
     <string name="conversation_view_invitation_accepted">ההזמנה התקבלה</string>
     <string name="conversation_view_invitation_failed">בקש/י מאיש הקשר שלך לעדכן את Skred</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s קיבל את ההזמנה</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s דחה את ההזמנה</string>
     <string name="conversation_view_invitation_joined">חבר קבוצה</string>
     <string name="conversation_view_invitation_pending">ההזמנה בתהליך</string>
     <string name="conversation_view_invitation_refused">ההזמנה נדחתה</string>
@@ -520,6 +539,13 @@
     <string name="conversation_view_send_quality_size">מדיה גדולה (%1$s)</string>
     <string name="conversation_view_send_quality_standard">שלח ברזולוציה רגילה (SD)</string>
     <string name="conversation_view_send_quality_warning">ניתן לשנות את הגודל לרזולוציה רגילה (SD) להעברה מהירה יותר.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s אישר את החיבור</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">אינך מקבל היכרות שנעשו על ידי אנשי הקשר שלך.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s דחה את החיבור</string>
+    <string name="conversation_view_share_contact_item_decline_connection">דחית את בקשת החיבור</string>
+    <string name="conversation_view_share_contact_item_local_message">מחבר %1$s עם %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">מחבר אותך עם %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">ממתין לאישור על ידי %1$s</string>
     <string name="conversation_view_stream_dialog">האם ברצונך לקבל זאת?</string>
     <string name="conversation_view_unsupported_media">פורמט מדיה לא נתמך</string>
     <string name="conversation_view_video_call">שיחת וידאו</string>
@@ -869,6 +895,7 @@
     <string name="notification_center_cancel">בטל</string>
     <string name="notification_center_cleanup_conversation">כמה הודעות ישנות נמחקו.</string>
     <string name="notification_center_conference_join_call">משתתף אחד הצטרף לשיחה.</string>
+    <string name="notification_center_connection_request">Verbindungsanfrage</string>
     <string name="notification_center_deleted_contact">איש קשר נמחק</string>
     <string name="notification_center_file_message">שלח לך קובץ</string>
     <string name="notification_center_file_message_received">קובץ חדש</string>
@@ -1017,6 +1044,7 @@
     <string name="premium_services_view_title">הזמן אנשי קשר להצטרף לשיחת קול/וידאו שוטפת.רמזים</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">יישומים פעילים</string>
     <string name="privacy_view_coach_mark">נעל את האפליקציה בשירותים ביומטריים או בקוד PIN.</string>
     <string name="privacy_view_hide_last_screen_message">והסתר את האפליקציה כשהיא פועלת ברקע, אם המכשיר מאפשר זאת.</string>
     <string name="privacy_view_hide_last_screen_title">אסור צילומי מסך</string>
@@ -1025,6 +1053,10 @@
     <string name="privacy_view_lock_screen_timeout">גישה לפסק זמן לנעילה</string>
     <string name="privacy_view_lock_screen_timeout_instant">באופן מיידי</string>
     <string name="privacy_view_lock_screen_title">נעילת גישה</string>
+    <string name="privacy_view_share_invitation_ask">שאל אותי בכל פעם</string>
+    <string name="privacy_view_share_invitation_info">תקבל הודעה בכל פעם שמישהו משתף את איש הקשר שלך.</string>
+    <string name="privacy_view_share_invitation_setting">אפשר לאנשי הקשר שלי לחבר אותי עם אנשי הקשר שלהם</string>
+    <string name="privacy_view_share_invitation_title">חיבורים</string>
     <string name="privacy_view_title">סודיות</string>
 
     <!-- ProfileFragment -->
@@ -1097,6 +1129,7 @@
     <string name="restore_view_success">השיקום הושלם בהצלחה!</string>
     <string name="restore_view_success_message">סגור את האפליקציה והפעל אותה מחדש כדי לגשת לנתונים החדשים.</string>
     <string name="restore_view_title">שִׁחזוּר</string>
+    <string name="restore_view_update_message">עליך לעדכן את האפליקציה כדי לשחזר את הגיבוי.</string>
     <string name="restore_view_verify_same_account">יש לבצע את האימות באותו מכשיר בו נעשה שימוש לגיבוי.</string>
     <string name="restore_view_warning">שחזור גיבוי זה יחליף את כל נתוני החשבון הנוכחי בנתונים מהגיבוי.</string>
 
@@ -1113,7 +1146,18 @@
     <string name="scan_view_paste_code">הזן או הדבק קישור הזמנה</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">תצוגה מקדימה של קישור אינטרנט או מיקום במפה חושפת את כתובת ה-IP.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">מתקדם</string>
+    <string name="settings_advanced_view_security_advanced_info">כתובת ה-IP מוסתרת באופן מקומי (באמצעות TLS עבור STUN).</string>
+    <string name="settings_advanced_view_security_expert">מומחה</string>
+    <string name="settings_advanced_view_security_expert_info">כתובת ה-IP מוסתרת באופן מקומי ולאנשי קשר (שיחות מנותבות דרך שרת TURN).</string>
+    <string name="settings_advanced_view_security_optimized">ממוטב (ברירת מחדל)</string>
+    <string name="settings_advanced_view_security_optimized_info">כתובת ה-IP עשויה להיחשף במהלך חילופי WebRTC, בעת שיתוף מיקום על גבי מפה או בעת תצוגה מקדימה של קישור אינטרנט.</string>
+    <string name="settings_advanced_view_security_level_title">רמת אבטחה</string>
+    <string name="settings_advanced_view_security_info">התאם את האיזון בין אבטחה לביצועים לצרכים ספציפיים.</string>
+    <string name="settings_advanced_view_security_title">אבטחה</string>
+    <string name="settings_advanced_view_security_unauthorized_update">רמת האבטחה מומחה אינה מאפשרת שינוי הגדרה זו.</string>
     <string name="settings_advanced_view_status_connection_message">בדוק את מצב החיבור שלך לשירות</string>
     <string name="settings_advanced_view_status_connection_title">מצב חיבור</string>
     <string name="settings_advanced_view_telecom_enable">חוויית השיחות של אנדרואיד</string>
@@ -1163,7 +1207,10 @@
     <string name="settings_view_show_maps">הצג מפות</string>
     <string name="settings_view_silent_mode">מצב שקט</string>
     <string name="settings_view_silent_sound">שקט</string>
+    <string name="settings_view_sound_effects_info">השמעת צלילים בעת אינטראקציה עם האפליקציה</string>
+    <string name="settings_view_sound_effects_title">אפקטים קוליים</string>
     <string name="settings_view_sound_enabled_title">התראות קוליות</string>
+    <string name="settings_view_sound_vibrations_title">צלילים ורעידות</string>
     <string name="settings_view_system_notifications_title">התראות מערכת</string>
     <string name="settings_view_system_settings_title">הגדרות מערכת</string>
     <string name="settings_view_turn_off_notification_sounds">כבה צלילי התראה</string>
@@ -1207,6 +1254,15 @@
     <string name="settings_space_view_secret_title">Space סודי</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s רוצה לחבר אותך עם %2$s</string>
+    <string name="share_contact_accept_view_invite_message">האם ברצונך להוסיף %1$s כאיש קשר אישי?</string>
+    <string name="share_contact_view_onboarding_part_1">כעת תוכל לאפשר לאנשי הקשר שלך לחבר אותך לאנשי הקשר שלהם.</string>
+    <string name="share_contact_view_onboarding_part_2">כברירת מחדל, עליך לאשר כל הצעת חיבור.</string>
+    <string name="share_contact_view_onboarding_part_3">ניתן לשנות את אופן הפעולה המוגדר כברירת מחדל בקטע \"פרטיות\" בהגדרות האפליקציה.</string>
+    <string name="share_contact_view_share_info">%1$s יקבל הודעת שיתוף</string>
+    <string name="share_contact_view_share_title">שתף את איש הקשר של %1$s</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">אנשי קשר</string>
     <string name="share_view_group_list">קבוצה</string>
@@ -1240,6 +1296,7 @@
     <string name="show_contact_view_pending_message">מערכת היחסים הזו נמצאת בתהליך הקמה. המתן בבקשה.</string>
     <string name="show_contact_view_revoked">נמחק</string>
     <string name="show_contact_view_settings_coach_mark">הגדר מה מותר לאיש הקשר שלך לעשות ביחס זה איתך.</string>
+    <string name="show_contact_view_share_contact">שתף איש קשר זה</string>
     <string name="show_contact_view_space">Space:</string>
     <string name="show_contact_view_video">וידאו</string>
 

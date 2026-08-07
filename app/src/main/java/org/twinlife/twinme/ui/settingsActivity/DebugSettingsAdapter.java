@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2025 twinlife SA.
+ *  Copyright (c) 2025-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -23,6 +23,9 @@ import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.spaces.ResetSettingsViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String LOG_TAG = "SettingsAdvancedAdapter";
     private static final boolean DEBUG = false;
@@ -30,16 +33,17 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
     @NonNull
     private final DebugSettingsActivity mActivity;
 
-    private final int ITEM_COUNT;
     private static final int TITLE = 0;
     private static final int CHECKBOX = 1;
     private static final int RESET = 2;
 
+    private final List<UIDebugItem> mItems = new ArrayList<>();
+
     DebugSettingsAdapter(@NonNull DebugSettingsActivity listActivity) {
 
         mActivity = listActivity;
-        ITEM_COUNT = TwinmeApplication.OnboardingType.values().length + 2;
         setHasStableIds(false);
+        initItems();
     }
 
     @Override
@@ -48,7 +52,7 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        return ITEM_COUNT;
+        return mItems.size();
     }
 
     @Override
@@ -57,12 +61,20 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == 0) {
-            return TITLE;
-        } else if (position == ITEM_COUNT - 1) {
-            return RESET;
-        } else {
-            return CHECKBOX;
+        UIDebugItem item = mItems.get(position);
+
+        switch (item.getType()) {
+            case SECTION:
+                return TITLE;
+
+            case ONBOARDING:
+                return CHECKBOX;
+
+            case RESET:
+                return RESET;
+
+            default:
+                return -1;
         }
     }
 
@@ -73,14 +85,14 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         int viewType = getItemViewType(position);
-
+        UIDebugItem item = mItems.get(position);
         if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(mActivity.getString(R.string.application_do_not_display), false);
+            sectionTitleViewHolder.onBind(item.getText(), false);
         } else if (viewType == CHECKBOX) {
             SettingsAdvancedViewHolder settingsViewHolder = (SettingsAdvancedViewHolder) viewHolder;
-            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.values()[position - 1], value);
-            settingsViewHolder.onBind(getOnboardingTitle(position - 1), isStartOnboarding(position - 1), true, onCheckedChangeListener );
+            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.getTwinmeApplication().setShowOnboardingType(item.getOnboardingType(), value);
+            settingsViewHolder.onBind(item.getText(), mActivity.getTwinmeApplication().startOnboarding(item.getOnboardingType()), true, onCheckedChangeListener );
         } else if (viewType == RESET) {
             ResetSettingsViewHolder resetSettingsViewHolder = (ResetSettingsViewHolder) viewHolder;
             resetSettingsViewHolder.itemView.setOnClickListener(view -> onResetSettings());
@@ -119,66 +131,6 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
     }
 
-    private String getOnboardingTitle(int position) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "getOnboardingTitle: " + position);
-        }
-
-        switch (TwinmeApplication.OnboardingType.values()[position]) {
-            case CERTIFIED_RELATION:
-                return mActivity.getString(R.string.authentified_relation_view_title);
-
-            case EXTERNAL_CALL:
-                return mActivity.getString(R.string.premium_services_view_click_to_call_title);
-
-            case PROFILE:
-                return mActivity.getString(R.string.application_profile);
-
-            case SPACE:
-                return mActivity.getString(R.string.premium_services_view_space_title);
-
-            case TRANSFER:
-                return mActivity.getString(R.string.account_view_transfer_between_devices);
-
-            case TRANSFER_CALL:
-                return mActivity.getString(R.string.premium_services_view_transfert_title);
-
-            case ENTER_MINI_CODE:
-                return mActivity.getString(R.string.enter_invitation_code_view_enter_code);
-
-            case MINI_CODE:
-                return mActivity.getString(R.string.invitation_code_view_create_code);
-
-            case REMOTE_CAMERA:
-                return mActivity.getString(R.string.call_view_camera_control);
-
-            case REMOTE_CAMERA_SETTING:
-                return mActivity.getString(R.string.call_view_camera_control) + " - " + mActivity.getString(R.string.navigation_view_settings);
-
-            case PROXY:
-                return mActivity.getString(R.string.proxy_view_title);
-
-            case BACKUP:
-                return mActivity.getString(R.string.account_view_backup);
-
-            case RESTORE:
-                return mActivity.getString(R.string.account_view_restore);
-
-            case VERIFY_BACKUP:
-                return mActivity.getString(R.string.account_view_backup_verify);
-
-            default:
-                return "";
-        }
-    }
-
-    private boolean isStartOnboarding(int position) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "isStartOnboarding: " + position);
-        }
-
-        return mActivity.getTwinmeApplication().startOnboarding(TwinmeApplication.OnboardingType.values()[position]);
-    }
 
     private void onResetSettings() {
         if (DEBUG) {
@@ -186,6 +138,33 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         mActivity.getTwinmeApplication().resetOnboarding();
-        notifyItemRangeChanged(1, ITEM_COUNT - 2);
+        notifyItemRangeChanged(1, mItems.size() - 1);
+    }
+
+    private void initItems() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "initItems");
+        }
+
+        mItems.clear();
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.SECTION, null, mActivity.getString(R.string.application_do_not_display)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.CERTIFIED_RELATION, mActivity.getString(R.string.authentified_relation_view_title)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.EXTERNAL_CALL, mActivity.getString(R.string.premium_services_view_click_to_call_title)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.PROFILE, mActivity.getString(R.string.application_profile)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.SPACE, mActivity.getString(R.string.premium_services_view_space_title)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.TRANSFER, mActivity.getString(R.string.account_view_transfer_between_devices)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.ENTER_MINI_CODE, mActivity.getString(R.string.enter_invitation_code_view_enter_code)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.MINI_CODE, mActivity.getString(R.string.invitation_code_view_create_code)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.REMOTE_CAMERA, mActivity.getString(R.string.call_view_camera_control)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.REMOTE_CAMERA_SETTING, mActivity.getString(R.string.call_view_camera_control) + " - " + mActivity.getString(R.string.navigation_view_settings)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.TRANSFER_CALL, mActivity.getString(R.string.premium_services_view_transfert_title)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.PROXY, mActivity.getString(R.string.proxy_view_title)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.BACKUP, mActivity.getString(R.string.account_view_backup)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.RESTORE, mActivity.getString(R.string.account_view_restore)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.VERIFY_BACKUP, mActivity.getString(R.string.account_view_backup_verify)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.ONBOARDING, TwinmeApplication.OnboardingType.SHARE_CONTACT, mActivity.getString(R.string.privacy_view_share_invitation_title)));
+        mItems.add(new UIDebugItem(UIDebugItem.DebugItemType.RESET, null, mActivity.getString(R.string.settings_view_reset_preferences_title)));
+
+        notifyItemRangeChanged(0, mItems.size());
     }
 }

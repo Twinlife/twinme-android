@@ -2,12 +2,11 @@
 <resources>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <!-- Set the splash screen background, animated icon, and animation duration. -->
-        <item name="windowSplashScreenBackground">@color/skred_color</item>
-
         <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an
              animated drawable. One of these is required. -->
-        <!-- <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item> -->
+
+        <item name="windowSplashScreenBackground">@color/skred_color</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen_empty</item>
         <!-- <item name="windowSplashScreenAnimatedIcon">@drawable/launcher</item> -->
         <!-- Required for animated icons -->
         <!-- <item name="windowSplashScreenAnimationDuration">2000</item> -->
@@ -16,6 +15,7 @@
         <!-- Required -->
         <!-- We use the SplashScreenActivity specific theme so that the transition looks smooth. -->
         <item name="postSplashScreenTheme">@style/TwinmeThemeWithNoActionBar</item>
+
     </style>
 
 </resources>

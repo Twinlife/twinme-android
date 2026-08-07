@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -54,6 +54,7 @@ import org.twinlife.twinme.services.AccountMigrationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.SplashScreenActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
@@ -265,7 +266,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         super.onResume();
 
         if (!mIsConnected) {
-            showNetworkDisconnect(R.string.audio_call_view_cannot_call, () -> {});
+            showNetworkDisconnect(R.string.account_view_migration_title, () -> {});
         }
     }
 
@@ -328,12 +329,19 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         }
 
         // If the migration is canceled or terminated, we can stop if the cancel button is clicked.
-        if (mState == State.TERMINATED || mState == State.CANCELED || mState == State.STOPPED || mState == State.ERROR) {
+        if (mState == State.TERMINATED || mState == State.CANCELED || mState == State.STOPPED) {
 
             finish();
             return;
         }
 
+        // If the account migration terminated with an error, we must execute the ACTION_CANCEL_MIGRATION
+        // to stop the service and delete the AccountMigration object with its twincode (if we don't do this
+        // leaving and starting again the application will re-open the account migration activity).
+        if (mState == State.ERROR) {
+            onCancelConfirmedClick();
+            return;
+        }
         ViewGroup viewGroup = findViewById(R.id.account_migration_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
@@ -807,7 +815,6 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
         // Make sure we redirect to the main screen only once.
         mInformationView.removeCallbacks(terminateRunnable);
-
         if (mAccountMigrationPeerTwincodeId != null) {
             setResult(mCanceled || mState == State.CANCELED ? Activity.RESULT_CANCELED : Activity.RESULT_OK);
             finish();
@@ -826,6 +833,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             // Otherwise, it will restart the application with the AccountActivity.
             if (mNeedRestart) {
                 TwinmeApplication twinmeApplication = (TwinmeApplication) getApplication();
+                twinmeApplication.hideWelcomeScreen();
                 twinmeApplication.stop();
             }
         }

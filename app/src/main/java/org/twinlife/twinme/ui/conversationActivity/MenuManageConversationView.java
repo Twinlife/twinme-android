@@ -19,7 +19,7 @@ public class MenuManageConversationView extends AbstractMenuSelectActionView {
     private static final String LOG_TAG = "MenuManage...";
     private static final boolean DEBUG = false;
 
-    public interface Observer extends AbstractMenuSelectActionViewObserver {
+    public interface Observer extends AbstractMenuViewObserver {
 
         void onCleanupClick();
 
@@ -45,7 +45,7 @@ public class MenuManageConversationView extends AbstractMenuSelectActionView {
     }
 
     @Override
-    public AbstractMenuSelectActionViewObserver getObserver() {
+    public AbstractMenuViewObserver getObserver() {
         if (DEBUG) {
             Log.d(LOG_TAG, "getObserver");
         }

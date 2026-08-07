@@ -213,7 +213,7 @@ public class FAQView extends AbstractBottomSheetView {
         Design.updateTextFont(mMessageView, Design.FONT_REGULAR32);
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             mMessageView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 
@@ -271,7 +271,7 @@ public class FAQView extends AbstractBottomSheetView {
             switch (url) {
                 case PRIVACY_POLICY_LINK: {
                     Intent intent = new Intent(context, WebViewActivity.class);
-                    intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/privacy_policy.html");
+                    intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.privacy_policy);
                     intent.putExtra(Intents.INTENT_TITLE, context.getString(R.string.about_view_privacy_policy));
                     context.startActivity(intent);
                     break;

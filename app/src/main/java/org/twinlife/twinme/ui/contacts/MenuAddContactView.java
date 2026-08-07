@@ -19,7 +19,7 @@ public class MenuAddContactView  extends AbstractMenuSelectActionView {
     private static final String LOG_TAG = "MenuAddContactView";
     private static final boolean DEBUG = false;
 
-    public interface Observer extends AbstractMenuSelectActionViewObserver {
+    public interface Observer extends AbstractMenuViewObserver {
 
         void onStartAddContactByScan();
 
@@ -45,7 +45,7 @@ public class MenuAddContactView  extends AbstractMenuSelectActionView {
     }
 
     @Override
-    public AbstractMenuSelectActionViewObserver getObserver() {
+    public AbstractMenuViewObserver getObserver() {
         if (DEBUG) {
             Log.d(LOG_TAG, "getObserver");
         }

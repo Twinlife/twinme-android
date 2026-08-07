@@ -30,6 +30,7 @@ import org.twinlife.twinme.models.Capabilities;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.models.schedule.Date;
+import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
@@ -98,7 +99,6 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
             mCapabilities.setCapAudio(mAllowAudioCall);
             mCapabilities.setCapVideo(mAllowVideoCall);
             mCapabilities.setCapAutoAnswerCall(mAllowAnsweringAutomatic);
-            mCapabilities.setCapDiscreet(mDiscreetRelation);
             mCapabilities.setZoomable(mZoomable);
 
             if (mScheduleEnable) {
@@ -143,7 +143,6 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         mAllowVideoCall = mCapabilities.hasVideo();
         mAllowAnsweringAutomatic = mCapabilities.hasAutoAnswerCall();
         mZoomable = mCapabilities.getZoomable();
-        mDiscreetRelation = mCapabilities.hasDiscreet();
 
         if (mCapabilities.getSchedule() != null) {
             Schedule schedule = mCapabilities.getSchedule();
@@ -182,6 +181,20 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         }
 
         finish();
+    }
+
+    @Override
+    public void onGetGroup(@NonNull Group group, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetGroup: group=" + group);
+        }
+    }
+
+    @Override
+    public void onGetGroupNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetGroupNotFound");
+        }
     }
 
     @Override
@@ -245,7 +258,6 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         mCanSave = mCapabilities.hasAudio() != mAllowAudioCall ||
                 mCapabilities.hasVideo() != mAllowVideoCall ||
                 mCapabilities.hasAutoAnswerCall() != mAllowAnsweringAutomatic ||
-                mCapabilities.hasDiscreet() != mDiscreetRelation ||
                 !mCapabilities.getZoomable().equals(mZoomable) ||
                 scheduleUpdated;
     }

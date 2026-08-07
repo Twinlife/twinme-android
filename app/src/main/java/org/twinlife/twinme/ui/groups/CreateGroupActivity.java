@@ -439,6 +439,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
 
         View slideMarkView = findViewById(R.id.create_group_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -881,7 +882,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

@@ -15,19 +15,20 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
 
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.PlatformSpecificUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuActionConversationView extends PercentRelativeLayout {
+public class MenuActionConversationView extends RelativeLayout {
     private static final String LOG_TAG = "MenuActionConver...";
     private static final boolean DEBUG = false;
 
@@ -81,7 +82,7 @@ public class MenuActionConversationView extends PercentRelativeLayout {
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MANAGE_CONVERSATION, true));
         actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.MEDIAS_AND_FILES, true));
 
-        if (CommonUtils.isGooglePlayServicesAvailable(getContext())) {
+        if (PlatformSpecificUtils.isGooglePlayServicesAvailable(getContext())) {
             actions.add(new UIActionConversation(getContext(), UIActionConversation.ConversationActionType.LOCATION, sendAllowed));
         }
 

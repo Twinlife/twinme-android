@@ -21,8 +21,7 @@
             android:id="@+id/default_confirm_view_slide_mark_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:layout_widthPercent="12%" />
+            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/default_confirm_view_feature_image_view"
@@ -49,19 +48,19 @@
 
         <TextView
             android:id="@+id/default_confirm_view_title_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/default_confirm_view_feature_image_view"
-            android:gravity="center"
-            app:layout_widthPercent="94%" />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/default_confirm_view_message_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/default_confirm_view_title_view"
-            android:gravity="center"
-            app:layout_widthPercent="94%" />
+            android:gravity="center" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/default_confirm_view_confirm_view"

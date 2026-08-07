@@ -34,6 +34,7 @@ public class MenuActionConversationViewHolder extends RecyclerView.ViewHolder {
     private static final float DESIGN_ROUNDED_VIEW_SIZE = 80f;
     private static final float DESIGN_ICON_SIZE = 40f;
     private static final float DESIGN_ICON_MARGIN = 30f;
+    private static final float DESIGN_TEXT_MARGIN = 34f;
     private static final int ITEM_VIEW_HEIGHT;
 
     static {
@@ -59,6 +60,9 @@ public class MenuActionConversationViewHolder extends RecyclerView.ViewHolder {
         mTitleView.setTextColor(Design.BLACK_COLOR);
         mTitleView.setAlpha(0.f);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_TEXT_MARGIN * Design.WIDTH_RATIO);
+
         mContainerIconView = view.findViewById(R.id.menu_action_conversation_item_icon_container_view);
         mContainerIconView.setAlpha(0.f);
 
@@ -66,7 +70,7 @@ public class MenuActionConversationViewHolder extends RecyclerView.ViewHolder {
         layoutParams.width = (int) (DESIGN_ROUNDED_VIEW_SIZE * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_ROUNDED_VIEW_SIZE * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mContainerIconView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mContainerIconView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_ICON_MARGIN * Design.WIDTH_RATIO);
 

@@ -106,6 +106,7 @@
     <string name="application_select_more">Továbbiak kiválasztása…</string>
     <string name="application_server_timeout">Szerveridőtúllépés</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Indítás</string>
     <string name="application_theme">Téma</string>
     <string name="application_timeout">Időtúllépés</string>
     <string name="application_timeout_day">1 nap</string>
@@ -116,6 +117,8 @@
     <string name="application_timeout_month">1 hónap</string>
     <string name="application_timeout_seconds">%1$d másodperc</string>
     <string name="application_timeout_week">1 hét</string>
+    <string name="application_transfer_from_another_device">Átvitel másik eszközről</string>
+    <string name="application_transfer_restore">Átvitel vagy visszaállítás</string>
     <string name="application_unknown_name">Ismeretlen</string>
     <string name="application_until">Eddig: %1$s</string>
     <string name="application_upgrade">A Skred frissítése</string>
@@ -196,12 +199,23 @@
     <string name="account_migration_view_transfer_in_progress">Adatátvitel folyamatban</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Az átvitel megkezdéséhez olvassa be a másik eszközön megjelenített átviteli QR-kódot.</string>
+    <string name="account_migration_scanner_view_header_other_device">Az átvitel megkezdéséhez olvassa be az ezen az eszközön megjelenített QR-kódot a másik eszközről.</string>
     <string name="account_migration_scanner_view_message">Jelenítsd meg ezt a képernyőt mindkét eszközön, és az egyik olvassa be a másik QR-kódját.</string>
     <string name="account_migration_scanner_view_message_older_version">Ez az eszköz egy régi, inkompatibilis OS-verziót használ, amely miatt az összes kapcsolat elveszik az átvitel során. Folytatod?</string>
     <string name="account_migration_scanner_view_message_older_version_target">A cél eszköz régi, inkompatibilis OS-t használ, ami minden kapcsolat elvesztését okozza. Folytatod?</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">A migráció indításához olvasd be ezt a QR-kódot a másik eszközről</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Olvasd be a másik eszközön a „Fiók / Átvitel másik eszközről” menüpontban megjelenő QR-kódot.</string>
+    <string name="account_migration_scanner_view_restore_title">Már nincs hozzáférésed a másik eszközhöz?</string>
+    <string name="account_migration_scanner_view_restore_message">Ha van biztonsági mentés, visszaállíthatod erre az eszközre.</string>
     <string name="account_migration_scanner_view_scan_title">Beolvasás</string>
+    <string name="account_migration_scanner_view_step_1">Nyisd meg az alkalmazást a másik eszközön</string>
+    <string name="account_migration_scanner_view_step_2">Menj az oldalsó menübe</string>
+    <string name="account_migration_scanner_view_step_3">Válaszd a \"Fiók\" lehetőséget</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Indítsd el az átvitelt erről az eszközről</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Indítsd el az átvitelt a másik eszközről</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Olvasd be a másik eszközön megjelenő QR-kódot ezzel az eszközzel</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Olvasd be a másik eszközön megjelenő QR-kódot a másik eszközzel</string>
     <string name="account_migration_scanner_view_stop_scan_title">Beolvasás leállítása</string>
 
     <!-- AddCallParticipantActivity -->
@@ -290,13 +304,16 @@
     <string name="backup_view_content_diff_deleted">Törölve</string>
     <string name="backup_view_content_diff_message">Íme a jelenlegi adataihoz képesti változások:</string>
     <string name="backup_view_content_info">A biztonsági mentések nem tartalmaznak beszélgetéseket, értesítéseket és előzményeket.</string>
+    <string name="backup_view_copy_clipboard">Másolás a vágólapra</string>
     <string name="backup_view_error_words">A megadott szavak nem teszik lehetővé a biztonsági mentés visszafejtését.</string>
+    <string name="backup_view_generate_key">Új titkosítási kulcs létrehozása</string>
     <string name="backup_view_generate_word">Generálás</string>
     <string name="backup_view_last_backup">Legutóbbi mentés: %1$s</string>
     <string name="backup_view_new_backup">Új biztonsági mentés</string>
     <string name="backup_view_onboarding">Készítsen titkosított biztonsági mentést a fiókadatairól (Spaces, profilok, névjegyek, csoportok, click-to-call), amely visszaállítható erre vagy egy másik eszközre.</string>
     <string name="backup_view_reminder">Az utolsó biztonsági mentése több mint 30 napja készült.</string>
     <string name="backup_view_save_file_message">Mentse a biztonsági mentés fájlját a választott eszközre, és őrizze meg a jelszavakat a későbbi visszaállításhoz.</string>
+    <string name="backup_view_save_password">Mentés a jelszókezelőbe</string>
     <string name="backup_view_security">Biztonság</string>
     <string name="backup_view_security_info">A biztonsági mentés titkosítási kulcsát 12 szó sorozata jelenti, amelyre a visszaállításhoz szükség lesz.</string>
     <string name="backup_view_success">A biztonsági mentés sikeresen elkészült!</string>
@@ -481,6 +498,8 @@
     <string name="conversation_view_info">:lock A csevegés üzenetei titkosítva vannak a telefonján és az átvitel során is. A legmagasabb szintű adatbiztonság érdekében közvetlenül a %s telefonjára küldik őket peer-to-peer kapcsolaton keresztül, köztes szerver nélkül.</string>
     <string name="conversation_view_invitation_accepted">Meghívás elfogadva</string>
     <string name="conversation_view_invitation_failed">Kérd meg a kapcsolatodat, hogy frissítse a Skred alkalmazást</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s elfogadta a meghívást</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s elutasította a meghívást</string>
     <string name="conversation_view_invitation_joined">Csoporttag</string>
     <string name="conversation_view_invitation_pending">Meghívás folyamatban</string>
     <string name="conversation_view_invitation_refused">Meghívás elutasítva</string>
@@ -521,6 +540,13 @@
     <string name="conversation_view_send_quality_size">Nagy média (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Küldés normál felbontásban (SD)</string>
     <string name="conversation_view_send_quality_warning">Gyorsabb átvitelhez átméretezheted normál felbontásra (SD).</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s elfogadta a kapcsolatot</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Nem fogadsz el bemutatkozásokat a kapcsolataidtól.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s elutasította a kapcsolatot</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Elutasította a csatlakozási kérelmet</string>
+    <string name="conversation_view_share_contact_item_local_message">Kapcsolódás ehhez: %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Kapcsolódás ehhez: %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">%1$s jóváhagyása függőben</string>
     <string name="conversation_view_stream_dialog">Elfogadod?</string>
     <string name="conversation_view_unsupported_media">Nem támogatott médiaformátum.</string>
     <string name="conversation_view_video_call">Videohívás</string>
@@ -870,6 +896,7 @@
     <string name="notification_center_cancel">Bezárás</string>
     <string name="notification_center_conference_join_call">Egy résztvevő csatlakozott a híváshoz.</string>
     <string name="notification_center_cleanup_conversation">Néhány régi üzenet törölve lett.</string>
+    <string name="notification_center_connection_request">בקשת חיבור</string>
     <string name="notification_center_deleted_contact">Kapcsolat törölve</string>
     <string name="notification_center_file_message">Fájlt küldött neked</string>
     <string name="notification_center_file_message_received">Új fájl</string>
@@ -1018,6 +1045,7 @@
     <string name="premium_services_view_transfert_title">Hívásátvitel</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aktív alkalmazások</string>
     <string name="privacy_view_coach_mark">Zárold az alkalmazást biometrikus azonosítással vagy PIN-kóddal.</string>
     <string name="privacy_view_hide_last_screen_message">És rejtsd el az alkalmazást háttérbe lépéskor, ha az eszköz támogatja.</string>
     <string name="privacy_view_hide_last_screen_title">Képernyőkép tiltása</string>
@@ -1026,6 +1054,10 @@
     <string name="privacy_view_lock_screen_timeout">Hozzáférés-zárolás időtúllépése</string>
     <string name="privacy_view_lock_screen_timeout_instant">Azonnal</string>
     <string name="privacy_view_lock_screen_title">Hozzáférés-zárolás</string>
+    <string name="privacy_view_share_invitation_ask">Kérdezzen rá minden alkalommal</string>
+    <string name="privacy_view_share_invitation_info">Értesítést kapsz, valahányszor valaki megosztja a kapcsolatodat.</string>
+    <string name="privacy_view_share_invitation_setting">Engedélyezem a kapcsolattartóimnak, hogy összekapcsoljanak az ő kapcsolataikkal</string>
+    <string name="privacy_view_share_invitation_title">Kapcsolatok</string>
     <string name="privacy_view_title">Adatvédelem</string>
 
     <!-- ProfileFragment -->
@@ -1098,6 +1130,7 @@
     <string name="restore_view_success">A visszaállítás sikeresen befejeződött!</string>
     <string name="restore_view_success_message">Zárja be az alkalmazást, és indítsa újra az új adatok eléréséhez.</string>
     <string name="restore_view_title">Visszaállítás</string>
+    <string name="restore_view_update_message">A biztonsági mentés visszaállításához frissítenie kell az alkalmazást.</string>
     <string name="restore_view_verify_same_account">Az ellenőrzést ugyanazon az eszközön kell végrehajtani, amelyet a biztonsági mentéshez használt.</string>
     <string name="restore_view_warning">Ennek a biztonsági mentésnek a visszaállítása a jelenlegi összes fiókadatot lecseréli a mentésből származó adatokra.</string>
 
@@ -1155,7 +1188,10 @@
     <string name="settings_view_show_maps">Térképek megjelenítése</string>
     <string name="settings_view_silent_mode">Néma mód</string>
     <string name="settings_view_silent_sound">Néma</string>
+    <string name="settings_view_sound_effects_info">Hangok lejátszása az alkalmazással való interakció során</string>
+    <string name="settings_view_sound_effects_title">Hangeffektusok</string>
     <string name="settings_view_sound_enabled_title">HANGÉRTESÍTÉSEK</string>
+    <string name="settings_view_sound_vibrations_title">Hangok és rezgések</string>
     <string name="settings_view_system_notifications_title">Rendszerértesítések</string>
     <string name="settings_view_system_settings_title">Rendszerbeállítások</string>
     <string name="settings_view_turn_off_notification_sounds">Értesítési hangok kikapcsolása</string>
@@ -1167,7 +1203,18 @@
     <string name="settings_view_welcome_screen_summary">Üdvözlőképernyők megjelenítése</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Egy webes hivatkozás vagy egy térképen látható hely előnézete felfedi az IP-címet.</string>
     <string name="settings_advanced_view_developer_settings">Fejlesztői beállítások</string>
+    <string name="settings_advanced_view_security_advanced">Speciális</string>
+    <string name="settings_advanced_view_security_advanced_info">Az IP-cím helyileg rejtve van (TLS használatával STUN-hoz).</string>
+    <string name="settings_advanced_view_security_expert">Szakértő</string>
+    <string name="settings_advanced_view_security_expert_info">Az IP-cím helyileg és a névjegyek számára rejtve van (a hívások egy TURN szerveren keresztül kerülnek továbbításra).</string>
+    <string name="settings_advanced_view_security_optimized">Optimalizált (alapértelmezett)</string>
+    <string name="settings_advanced_view_security_optimized_info">Az IP-cím nyilvánosságra kerülhet WebRTC-csere során, egy térképen lévő hely megosztásakor vagy egy webhivatkozás előnézetekor.</string>
+    <string name="settings_advanced_view_security_level_title">Biztonsági szint</string>
+    <string name="settings_advanced_view_security_info">Állítsa be a biztonság és a teljesítmény közötti egyensúlyt az adott igényeknek megfelelően.</string>
+    <string name="settings_advanced_view_security_title">Biztonság</string>
+    <string name="settings_advanced_view_security_unauthorized_update">A Szakértő biztonsági szint nem teszi lehetővé ennek a beállításnak a módosítását.</string>
     <string name="settings_advanced_view_status_connection_message">Ellenőrizze a szolgáltatáshoz való kapcsolódás állapotát</string>
     <string name="settings_advanced_view_status_connection_title">Kapcsolat állapota</string>
     <string name="settings_advanced_view_telecom">HÍVÁSOK</string>
@@ -1208,6 +1255,15 @@
     <string name="settings_space_view_secret_title">Titkos Space</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s össze akarja kapcsolni Önt ezzel: %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Szeretnéd hozzáadni %1$s felhasználót személyes kapcsolattartóként?</string>
+    <string name="share_contact_view_onboarding_part_1">Mostantól engedélyezheted a kapcsolataidnak, hogy összekapcsoljanak a saját kapcsolataikkal.</string>
+    <string name="share_contact_view_onboarding_part_2">Alapértelmezés szerint minden csatlakozási javaslatot jóvá kell hagynod.</string>
+    <string name="share_contact_view_onboarding_part_3">Az alapértelmezett viselkedés az alkalmazásbeállítások „Adatvédelem” részében módosítható.</string>
+    <string name="share_contact_view_share_info">%1$s megosztási értesítést kap</string>
+    <string name="share_contact_view_share_title">%1$s kapcsolatának megosztása</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Kontaktok</string>
     <string name="share_view_group_list">Csoportok</string>
@@ -1241,6 +1297,7 @@
     <string name="show_contact_view_pending_message">Ez a kapcsolat létrehozása folyamatban van. Kérjük, várjon.</string>
     <string name="show_contact_view_revoked">Törölve</string>
     <string name="show_contact_view_settings_coach_mark">Határozza meg, hogy a kontaktja mit tehet ebben a kapcsolatban Önnel.</string>
+    <string name="show_contact_view_share_contact">Kapcsolat megosztása</string>
     <string name="show_contact_view_space">Space:</string>
     <string name="show_contact_view_video">Videó</string>
 

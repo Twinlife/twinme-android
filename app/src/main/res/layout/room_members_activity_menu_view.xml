@@ -14,8 +14,7 @@
             android:id="@+id/room_members_activity_menu_slide_mark_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:layout_widthPercent="12%" />
+            android:layout_centerHorizontal="true" />
 
         <org.twinlife.twinme.utils.CircularImageView
             android:id="@+id/room_members_activity_menu_avatar_view"

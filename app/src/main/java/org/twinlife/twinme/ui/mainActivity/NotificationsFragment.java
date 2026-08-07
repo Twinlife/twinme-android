@@ -474,6 +474,7 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
             case NEW_FILE_MESSAGE:
             case NEW_GEOLOCATION:
             case NEW_POLL_MESSAGE:
+            case NEW_CONTACT_SHARE:
             case UPDATED_ANNOTATION:
                 intent = new Intent();
                 clazz = ConversationActivity.class;
@@ -481,6 +482,10 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
                     intent.putExtra(Intents.INTENT_GROUP_ID, notification.getOriginatorId().toString());
                 } else {
                     intent.putExtra(Intents.INTENT_CONTACT_ID, notification.getOriginatorId().toString());
+                }
+                
+                if (notification.getDescriptorId() != null) {
+                    intent.putExtra(Intents.INTENT_DESCRIPTOR_ID, notification.getDescriptorId().toString());
                 }
                 break;
 

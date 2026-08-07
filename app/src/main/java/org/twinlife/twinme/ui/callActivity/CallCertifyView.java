@@ -19,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -215,7 +216,7 @@ public class CallCertifyView extends PercentRelativeLayout  {
 
         startSuccessAnimation();
 
-        Handler handler = new Handler();
+        Handler handler = new Handler(Looper.getMainLooper());
         Runnable runnable = () -> mCallCertifyListener.onCertifyViewFinish();
         handler.postDelayed(runnable, 5000);
     }
@@ -231,7 +232,7 @@ public class CallCertifyView extends PercentRelativeLayout  {
         mMessageView.setText(String.format(getResources().getString(R.string.call_view_certify_error_message), mName));
         mWordCheckChallenge = null;
         resetBulletsView();
-        Handler handler = new Handler();
+        Handler handler = new Handler(Looper.getMainLooper());
         Runnable runnable = () -> mCallCertifyListener.onCertifyViewFinish();
         handler.postDelayed(runnable, 5000);
     }

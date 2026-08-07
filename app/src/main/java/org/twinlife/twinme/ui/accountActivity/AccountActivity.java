@@ -337,11 +337,7 @@ public class AccountActivity extends AbstractTwinmeActivity {
                 action = getString(R.string.restore_view_select_backup);
             } else {
                 title = getString(R.string.account_view_backup_restore);
-                message = getString(R.string.backup_view_beta_message_part_1) +
-                        "\n\n" +
-                        getString(R.string.backup_view_beta_message_part_2) +
-                        "\n\n" +
-                        getString(R.string.backup_view_beta_message_part_3);
+                message = getString(R.string.backup_view_onboarding);
                 action = getString(R.string.application_ok);
             }
 

@@ -313,6 +313,7 @@ public class AlertMessageView extends PercentRelativeLayout {
         }
 
         ViewGroup.LayoutParams layoutParams = mSlideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -332,12 +333,16 @@ public class AlertMessageView extends PercentRelativeLayout {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM40);
         mMessageView.setTextColor(Design.FONT_COLOR_GREY);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         mConfirmView.setOnClickListener(v -> onConfirmClick());
 

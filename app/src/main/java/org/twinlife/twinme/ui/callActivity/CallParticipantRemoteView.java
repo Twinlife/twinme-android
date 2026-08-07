@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022 twinlife SA.
+ *  Copyright (c) 202-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -684,21 +685,23 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
 
             SurfaceViewRenderer remoteRenderer = mParticipant.getRemoteRenderer();
             if (remoteRenderer != null) {
-                if (remoteRenderer.getParent() != null) {
-                    ((ViewGroup) remoteRenderer.getParent()).removeView(remoteRenderer);
+                // Avoid removing the view from its parent when it is the good parent (otherwise, some flickering appears on slow devices).
+                final ViewParent parent = remoteRenderer.getParent();
+                if (parent != null && parent != mRemoteRenderLayout) {
+                    ((ViewGroup) parent).removeView(remoteRenderer);
                 }
-                mRemoteRenderLayout.setPosition(0, 0, 100, 100);
+                if (parent == null || parent != mRemoteRenderLayout) {
+                    mRemoteRenderLayout.setPosition(0, 0, 100, 100);
 
-                remoteRenderer.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT));
-                remoteRenderer.setClipToOutline(true);
-                mRemoteRenderLayout.addView(remoteRenderer);
+                    remoteRenderer.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT));
+                    remoteRenderer.setClipToOutline(true);
+                    mRemoteRenderLayout.addView(remoteRenderer);
 
-                remoteRenderer.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FILL);
-                remoteRenderer.setEnableHardwareScaler(true);
-
-                remoteRenderer.setMirror(false);
-                remoteRenderer.requestLayout();
+                    remoteRenderer.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FILL);
+                    remoteRenderer.setEnableHardwareScaler(true);
+                    remoteRenderer.setMirror(false);
+                }
             }
 
             bringVideoToFront();
@@ -809,8 +812,6 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
             ShapeDrawable backgroundViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
             backgroundViewBackground.getPaint().setColor(DESIGN_BACKGROUND_COLOR);
             mBackgroundView.setBackground(backgroundViewBackground);
-
-            mRemoteRenderLayout.requestLayout();
         }
     }
 

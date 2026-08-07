@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2021 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -10,6 +10,7 @@
 package org.twinlife.twinme.ui.settingsActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.twinlife.twinme.ui.Settings;
 
@@ -27,12 +28,24 @@ public class UISetting<T> {
 
     private final TypeSetting mTypeSetting;
     private final String mTitle;
+
+    @Nullable
+    private final String mSubTitle;
     private final Settings.Config<T> mSetting;
 
     public UISetting(@NonNull TypeSetting typeSetting, @NonNull String title, @NonNull Settings.Config<T> setting) {
 
         mTypeSetting = typeSetting;
         mTitle = title;
+        mSubTitle = null;
+        mSetting = setting;
+    }
+
+    public UISetting(@NonNull TypeSetting typeSetting, @NonNull String title, @Nullable String subTitle, @NonNull Settings.Config<T> setting) {
+
+        mTypeSetting = typeSetting;
+        mTitle = title;
+        mSubTitle = subTitle;
         mSetting = setting;
     }
 
@@ -40,6 +53,7 @@ public class UISetting<T> {
 
         mTypeSetting = typeSetting;
         mTitle = title;
+        mSubTitle = null;
         mSetting = null;
     }
 
@@ -53,9 +67,20 @@ public class UISetting<T> {
         return mSetting == setting;
     }
 
+    public boolean isSetting(@NonNull Settings.BooleanConfig setting) {
+
+        return mSetting == setting;
+    }
+
     public String getTitle() {
 
         return mTitle;
+    }
+
+    @Nullable
+    public String getSubTitle() {
+
+        return mSubTitle;
     }
 
     public TypeSetting getTypeSetting() {

@@ -106,6 +106,7 @@
     <string name="application_select_more">Vælg mere…</string>
     <string name="application_server_timeout">Server-timeout</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Start</string>
     <string name="application_theme">Tema</string>
     <string name="application_timeout">Udløbsforsinkelse</string>
     <string name="application_timeout_day">1 dag</string>
@@ -116,6 +117,8 @@
     <string name="application_timeout_month">1 måned</string>
     <string name="application_timeout_seconds">%1$d sekunder</string>
     <string name="application_timeout_week">1 uge</string>
+    <string name="application_transfer_from_another_device">Overførsel fra en anden enhed</string>
+    <string name="application_transfer_restore">Overfør eller gendan</string>
     <string name="application_unknown_name">Ukendt</string>
     <string name="application_until">Indtil %1$s</string>
     <string name="application_upgrade">Skred-opgradering</string>
@@ -196,12 +199,23 @@
     <string name="account_migration_view_transfer_in_progress">Dataoverførsel er i gang</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">For at starte overførslen skal du scanne QR-koden, der vises på den anden enhed.</string>
+    <string name="account_migration_scanner_view_header_other_device">For at starte overførslen skal du scanne QR-koden, der vises på denne enhed, fra den anden enhed.</string>
     <string name="account_migration_scanner_view_message">Vis denne skærm på hver enhed, og den ene scanner den andens QR-kode.</string>
     <string name="account_migration_scanner_view_message_older_version">Denne enhed bruger en gammel inkompatibel OS-version, som vil medføre, at alle relationer på målenheden går tabt under overførslen. Vil du stadig fortsætte med overførslen?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Målenheden bruger en gammel inkompatibel OS-version, som vil medføre, at alle dine relationer går tabt under overførslen. Vil du stadig fortsætte med overførslen?</string>
     <string name="account_migration_scanner_view_scan_title">Scanning</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">For at starte migreringen skal du scanne denne QR-kode fra den anden enhed</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Scan QR-koden, der vises i afsnittet \"Konto / Overfør fra en anden enhed\" i sidemenuen på den anden enhed.</string>
+    <string name="account_migration_scanner_view_restore_title">Har du ikke længere adgang til den anden enhed?</string>
+    <string name="account_migration_scanner_view_restore_message">Hvis der findes en sikkerhedskopi, kan du gendanne den til denne enhed.</string>
+    <string name="account_migration_scanner_view_step_1">Åbn appen på den anden enhed</string>
+    <string name="account_migration_scanner_view_step_2">Gå til sidemenuen</string>
+    <string name="account_migration_scanner_view_step_3">Vælg \"Konto\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Start overførslen fra denne enhed</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Start overførslen fra den anden enhed</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Scan QR-koden, der vises på den anden enhed, med denne enhed</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Scan QR-koden, der vises på denne enhed, med den anden enhed</string>
     <string name="account_migration_scanner_view_stop_scan_title">Stop scanningen</string>
 
     <!-- AddCallParticipantActivity -->
@@ -290,13 +304,16 @@
     <string name="backup_view_content_diff_deleted">Slettet</string>
     <string name="backup_view_content_diff_message">Her er ændringerne i forhold til dine nuværende data:</string>
     <string name="backup_view_content_info">Sikkerhedskopier inkluderer ikke samtaler, notifikationer og historik.</string>
+    <string name="backup_view_copy_clipboard">Kopier til udklipsholder</string>
     <string name="backup_view_error_words">De indtastede ord tillader ikke, at sikkerhedskopien dekrypteres.</string>
+    <string name="backup_view_generate_key">Generer en ny krypteringsnøgle</string>
     <string name="backup_view_generate_word">Frembringe</string>
     <string name="backup_view_last_backup">Sidste backup %1$s</string>
     <string name="backup_view_new_backup">Ny sikkerhedskopi</string>
     <string name="backup_view_onboarding">Lav en krypteret sikkerhedskopi af kontodata (\"Spaces\", profiler, kontakter, grupper, \"click-to-call\"), der kan gendannes til denne enhed eller en anden.</string>
     <string name="backup_view_reminder">Din sidste sikkerhedskopi blev oprettet for mere end 30 dage siden.</string>
     <string name="backup_view_save_file_message">Gem sikkerhedskopifilen på den valgte enhed, og gem adgangskoderne til senere gendannelse.</string>
+    <string name="backup_view_save_password">Gem i adgangskodeadministrator</string>
     <string name="backup_view_security">Sikkerhed</string>
     <string name="backup_view_security_info">Backup -krypteringsnøglen er repræsenteret af en serie på 12 ord, der kræves til restaurering.</string>
     <string name="backup_view_success">Backup afsluttet med succes!</string>
@@ -481,6 +498,8 @@
     <string name="conversation_view_info">:lock Chatbeskederne er krypteret på din mobiltelefon og under deres transmission. For at sikre det højeste niveau af datasikkerhed sendes de direkte til %s telefon ved at bruge en peer-to-peer-forbindelse uden nogen mellemliggende server.</string>
     <string name="conversation_view_invitation_accepted">Invitation accepteret</string>
     <string name="conversation_view_invitation_failed">Spørg din kontakt for at opdatere Skred</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s accepterede invitationen</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s afslog invitationen</string>
     <string name="conversation_view_invitation_joined">Medlem af gruppen</string>
     <string name="conversation_view_invitation_pending">Invitation på vej</string>
     <string name="conversation_view_invitation_refused">Invitation nægte</string>
@@ -521,6 +540,13 @@
     <string name="conversation_view_send_quality_size">Stort medie (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Send i standard definition (SD)</string>
     <string name="conversation_view_send_quality_warning">Du kan ændre størrelsen til standard definition (SD) for hurtigere overførsel.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s accepterede forbindelsen</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Du accepterer ikke introduktioner foretaget af dine kontakter.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s afviste forbindelsen</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Du afviste forbindelsesanmodningen</string>
+    <string name="conversation_view_share_contact_item_local_message">Forbinder %1$s med %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Forbinder dig med %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Afventer accept fra %1$s</string>
     <string name="conversation_view_stream_dialog">Vil du acceptere det?</string>
     <string name="conversation_view_unsupported_media">Ikke-understøttet medieformat.</string>
     <string name="conversation_view_video_call">Video opkald</string>
@@ -872,6 +898,7 @@
     <string name="notification_center_cancel">Afvis</string>
     <string name="notification_center_cleanup_conversation">Nogle gamle beskeder er blevet slettet.</string>
     <string name="notification_center_conference_join_call">Én deltager deltog i opkaldet.</string>
+    <string name="notification_center_connection_request">Forbindelsesanmodning</string>
     <string name="notification_center_deleted_contact">Kontakt slettet</string>
     <string name="notification_center_file_message">Sendte dig en fil</string>
     <string name="notification_center_file_message_received">Ny fil modtaget</string>
@@ -1020,6 +1047,7 @@
     <string name="premium_services_view_title">Inviter kontakter til at deltage i et igangværende tale-/videoopkald.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aktive applikationer</string>
     <string name="privacy_view_coach_mark">Lås applikationen med biometriske tjenester eller med en PIN-kode.</string>
     <string name="privacy_view_hide_last_screen_message">Og skjul appen, når den kører i baggrunden, hvis enheden tillader det.</string>
     <string name="privacy_view_hide_last_screen_title">Forbyd skærmbilleder</string>
@@ -1028,6 +1056,10 @@
     <string name="privacy_view_lock_screen_timeout">Adgang til låsetimeout</string>
     <string name="privacy_view_lock_screen_timeout_instant">Øjeblikkelig</string>
     <string name="privacy_view_lock_screen_title">Adgangslås</string>
+    <string name="privacy_view_share_invitation_ask">Spørg mig hver gang</string>
+    <string name="privacy_view_share_invitation_info">Du vil blive underrettet, når nogen deler din kontakt.</string>
+    <string name="privacy_view_share_invitation_setting">Tillad mine kontakter at forbinde mig med deres kontakter</string>
+    <string name="privacy_view_share_invitation_title">Forbindelser</string>
     <string name="privacy_view_title">Privatliv</string>
 
     <!-- ProfileFragment -->
@@ -1100,6 +1132,7 @@
     <string name="restore_view_success">Restaurering afsluttet med succes!</string>
     <string name="restore_view_success_message">Luk appen og genstart den for at få adgang til de nye data.</string>
     <string name="restore_view_title">Restaurering</string>
+    <string name="restore_view_update_message">Du skal opdatere applikationen for at gendanne sikkerhedskopien.</string>
     <string name="restore_view_verify_same_account">Bekræftelsen skal udføres på den samme enhed, der bruges til sikkerhedskopieringen.</string>
     <string name="restore_view_warning">Gendannelse af denne sikkerhedskopi vil erstatte alle data om aktuelle konto med dataene fra sikkerhedskopien.</string>
 
@@ -1116,7 +1149,18 @@
     <string name="scan_view_paste_code">Indtast eller indsæt et invitationslink</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Forhåndsvisning af et weblink eller en placering på et kort viser IP-adressen.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Avanceret</string>
+    <string name="settings_advanced_view_security_advanced_info">IP-adressen er skjult lokalt (bruger TLS til STUN).</string>
+    <string name="settings_advanced_view_security_expert">Ekspert</string>
+    <string name="settings_advanced_view_security_expert_info">IP-adressen er skjult lokalt og for kontakter (opkald dirigeres via en TURN-server).</string>
+    <string name="settings_advanced_view_security_optimized">Optimeret (standard)</string>
+    <string name="settings_advanced_view_security_optimized_info">IP-adressen kan blive eksponeret under WebRTC-udvekslinger, når en placering deles på et kort, eller når et weblink forhåndsvises.</string>
+    <string name="settings_advanced_view_security_level_title">Sikkerhedsniveau</string>
+    <string name="settings_advanced_view_security_info">Juster balancen mellem sikkerhed og ydeevne til specifikke behov.</string>
+    <string name="settings_advanced_view_security_title">Sikkerhed</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Sikkerhedsniveauet Ekspert tillader ikke ændring af denne indstilling.</string>
     <string name="settings_advanced_view_status_connection_message">Kontroller status for din forbindelse til tjenesten</string>
     <string name="settings_advanced_view_status_connection_title">Forbindelsesstatus</string>
     <string name="settings_advanced_view_telecom_enable">Android-opkaldsoplevelse</string>
@@ -1166,7 +1210,10 @@
     <string name="settings_view_show_maps">Vis kort</string>
     <string name="settings_view_silent_mode">Lydløs tilstand</string>
     <string name="settings_view_silent_sound">Tavs</string>
+    <string name="settings_view_sound_effects_info">Afspil lyde, når du interagerer med appen</string>
+    <string name="settings_view_sound_effects_title">Lydeffekter</string>
     <string name="settings_view_sound_enabled_title">SOUND NOTIFICATIONS</string>
+    <string name="settings_view_sound_vibrations_title">Lyde og vibrationer</string>
     <string name="settings_view_system_notifications_title">Systemmeddelelser</string>
     <string name="settings_view_system_settings_title">Systemindstillinger</string>
     <string name="settings_view_turn_off_notification_sounds">Sluk notifikationslyde</string>
@@ -1210,6 +1257,15 @@
     <string name="settings_space_view_secret_title">Hemmeligt Space</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s ønsker at forbinde dig med %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Vil du tilføje %1$s som en personlig kontakt?</string>
+    <string name="share_contact_view_onboarding_part_1">Du kan nu tillade dine kontakter at forbinde dig med deres egne kontakter.</string>
+    <string name="share_contact_view_onboarding_part_2">Som standard skal du godkende hvert forbindelsesforslag.</string>
+    <string name="share_contact_view_onboarding_part_3">Standardadfærden kan ændres i afsnittet \"Privatliv\" i appindstillingerne.</string>
+    <string name="share_contact_view_share_info">%1$s vil modtage en delingsbesked</string>
+    <string name="share_contact_view_share_title">Del %1$ss kontakt</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Kontakter</string>
     <string name="share_view_group_list">Grupper</string>
@@ -1243,6 +1299,7 @@
     <string name="show_contact_view_pending_message">Dette forhold er ved at blive etableret. Vent venligst.</string>
     <string name="show_contact_view_revoked">Slettet</string>
     <string name="show_contact_view_settings_coach_mark">Definer, hvad din kontakt må gøre i denne relation med dig.</string>
+    <string name="show_contact_view_share_contact">Del denne kontakt</string>
     <string name="show_contact_view_space"> Space:</string>
     <string name="show_contact_view_video">Video</string>
 

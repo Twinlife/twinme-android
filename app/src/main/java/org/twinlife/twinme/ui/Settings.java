@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021-2024 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -16,6 +16,8 @@ import org.twinlife.twinlife.ConfigIdentifier;
 import org.twinlife.twinlife.ConfigurationService;
 import org.twinlife.twinlife.ConfigurationService.Configuration;
 import org.twinlife.twinlife.DisplayCallsMode;
+import org.twinlife.twinlife.PeerConnectionService.IceTransportMode;
+import org.twinlife.twinlife.ShareInvitationMode;
 import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
@@ -57,6 +59,7 @@ public class Settings {
     public static final BooleanConfig visualizationMap = new BooleanConfig("settings_activity_visualization_map", true, "C7CE54E3-D789-435B-B0F9-C20048C1873D");
 
     public static BooleanConfig hapticFeedbackEnable;
+    public static final BooleanConfig soundEffectsEnable = new BooleanConfig("settings_activity_sound_effects", true, "94DAC351-DE6C-4219-B35E-BA409078089B");
 
     public static final IntConfig emojiSize = new IntConfig("settings_activity_emoji_size", EmojiSize.STANDARD.ordinal(), "5CDAfAE4-FFE8-4754-A178-4f8C5DC834E0");
     public static final IntConfig displayCallsMode = new IntConfig("settings_activity_display_calls_mode", DisplayCallsMode.MISSED.ordinal(), "FA50C4AC-C196-4F3F-BD68-3DE18D27F44E");
@@ -89,7 +92,7 @@ public class Settings {
     public static final BooleanConfig ephemeralMessageAllowed = new BooleanConfig("settings_activity_ephemeral_message_allowed", false, "7837F336-8422-11EC-A8A3-0242AC120002");
     public static final IntConfig ephemeralMessageExpireTimeout = new IntConfig("settings_activity_ephemeral_message_expire_timeout", DEFAULT_TIMEOUT_MESSAGE, "585BA89F-86F3-48e0-A07C-C924C50f7C6D");
 
-    // Internal settings (they are not transfered by account migration).
+    // Internal settings (they are not transferred by account migration).
     public static final InternalLongConfig firstInstallation = new InternalLongConfig("settings_activity_first_first_installation", 0);
     public static final InternalLongConfig firstShowUpgradeScreen = new InternalLongConfig("settings_activity_first_show_upgrade_screen", 0);
     public static final InternalLongConfig lastShowUpgradeScreen = new InternalLongConfig("settings_activity_last_show_upgrade_screen", 0);
@@ -111,12 +114,14 @@ public class Settings {
     public static final InternalBooleanConfig showRestoreOnboarding = new InternalBooleanConfig("settings_activity_show_restore_onboarding", true);
     public static final InternalBooleanConfig showVerifyBackupOnboarding = new InternalBooleanConfig("settings_activity_show_verify_backup_onboarding", true);
     public static final InternalBooleanConfig showBetaBackupOnboarding = new InternalBooleanConfig("settings_activity_show_beta_backup_onboarding", true);
+    public static final InternalBooleanConfig showShareContactOnboarding = new InternalBooleanConfig("settings_activity_show_share_contact_onboarding", true);
 
     public static final InternalBooleanConfig showWarningBackgroundLocation = new InternalBooleanConfig("settings_activity_show_warning_location_background", true);
     public static final InternalBooleanConfig showWarningExactLocation = new InternalBooleanConfig("settings_activity_show_warning_exact_location", true);
 
     public static final InternalBooleanConfig showWarningEditMessage = new InternalBooleanConfig("settings_activity_show_warning_edit_message", true);
     public static final InternalLongConfig lastShowEnableNotificationScreen = new InternalLongConfig("settings_activity_last_show_enable_notifications_screen", 0);
+    public static final InternalBooleanConfig askPostNotificationsPermissions = new InternalBooleanConfig("main_activity_ask_post_notifications_permissions", true);
 
     // Call
     public static final BooleanConfig videoCallInFitMode = new BooleanConfig("call_activity_video_call_in_fit_mode", false, "D36D6D8A-2DFF-11ED-A261-0242AC120002");
@@ -151,6 +156,13 @@ public class Settings {
 
     // Audio Item
     public static final FloatConfig audioItemPlaybackSpeed = new FloatConfig("conversation_activity_play_back_speed", 1.0f, "D3240A58-3BC0-494C-9D15-CDDCC7543AEA");
+
+    // WebRTC configuration
+    public static final EnumConfig<IceTransportMode> iceTransportMode = new EnumConfig<>("ice_transport_mode", IceTransportMode.ALL, "4B83AA59-303A-4585-9A5E-DF55CE5CC7F5");
+
+    // Share Invitation
+    public static final EnumConfig<ShareInvitationMode> shareInvitationMode = new EnumConfig<>("share_invitation_mode", ShareInvitationMode.ASK, "84214DEC-3392-4880-BC3A-7F8203C2BD2E");
+
 
     private static Configuration sConfiguration;
 
@@ -309,6 +321,58 @@ public class Settings {
 
             mValue = value;
             sConfiguration.setLong(getParameterName(), mValue);
+            return this;
+        }
+    }
+
+    /**
+     * Save/restore a configuration represented as an Enum. The Enum must implement the ConfigIdentifier.Enum
+     * interface to ensure correct saving and restore of the value with a compatible implementation for iOS.
+     * @param <E> the Enum type.
+     */
+    public static class EnumConfig<E extends ConfigIdentifier.Enum<E>> extends ConfigIdentifier {
+        protected final E mDefault;
+        protected E mValue;
+
+        EnumConfig(String name, E defaultValue, String uuid) {
+            super("", name, uuid, Integer.class);
+            mDefault = defaultValue;
+        }
+
+        public EnumConfig<E> reset() {
+
+            if (sConfiguration != null) {
+                sConfiguration.removeConfig(this);
+            }
+            mValue = null;
+            return this;
+        }
+
+        public void save() {
+
+            if (sConfiguration != null) {
+                sConfiguration.save();
+            }
+        }
+
+        public E getEnum() {
+
+            if (mValue != null) {
+
+                return mValue;
+            }
+            if (sConfiguration == null) {
+
+                return mDefault;
+            }
+            mValue = mDefault.fromInteger(sConfiguration.getInt(getParameterName(), mDefault.toInteger()));
+            return mValue;
+        }
+
+        public EnumConfig<E> setEnum(E value) {
+
+            mValue = value;
+            sConfiguration.setInt(getParameterName(), mValue.toInteger());
             return this;
         }
     }

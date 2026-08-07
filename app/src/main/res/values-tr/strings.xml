@@ -106,6 +106,7 @@
     <string name="application_select_more">Daha fazla seç…</string>
     <string name="application_server_timeout">Sunucu zaman aşımı</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Başlat</string>
     <string name="application_theme">Tema</string>
     <string name="application_timeout">Son kullanma gecikmesi</string>
     <string name="application_timeout_day">1 gün</string>
@@ -116,6 +117,8 @@
     <string name="application_timeout_month">1 ay</string>
     <string name="application_timeout_seconds">%1$d saniye</string>
     <string name="application_timeout_week">1 hafta</string>
+    <string name="application_transfer_from_another_device">Başka bir cihazdan aktarma</string>
+    <string name="application_transfer_restore">Aktar veya geri yükle</string>
     <string name="application_unknown_name">Bilinmeyen</string>
     <string name="application_until">%1$s\'ye kadar</string>
     <string name="application_upgrade">Yükseltme Skred</string>
@@ -196,12 +199,23 @@
     <string name="account_migration_view_transfer_in_progress">Veri aktarımı devam ediyor</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Aktarımı başlatmak için, diğer cihazda görüntülenen aktarma QR kodunu tarayın.</string>
+    <string name="account_migration_scanner_view_header_other_device">Aktarımı başlatmak için, bu cihazda görüntülenen QR kodunu diğer cihazdan tarayın.</string>
     <string name="account_migration_scanner_view_message">Bu ekranı her cihazda görüntüleyin ve biri diğerinin QR Kodunu tarar.</string>
     <string name="account_migration_scanner_view_message_older_version">Bu cihaz eski, uyumsuz bir işletim sistemi sürümünü kullanıyor ve bu da aktarım sırasında hedef cihazdaki tüm ilişkilerin kaybolmasına neden olacak. Hala aktarıma devam etmek istiyor musunuz?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Hedef cihaz eski, uyumsuz bir işletim sistemi sürümü kullanıyor ve bu da aktarım sırasında tüm ilişkilerinizin kaybolmasına neden olacak. Hala aktarıma devam etmek istiyor musunuz?</string>
-    <string name="account_migration_scanner_view_scan_title">Tarama</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Geçişi başlatmak için bu QR kodunu diğer cihazdan tarayın</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Diğer cihazın yan menüsünün \"Hesap / Başka bir cihazdan transfer\" bölümünde görüntülenen QR kodunu tarayın.</string>
+    <string name="account_migration_scanner_view_restore_title">Diğer cihaza artık erişiminiz yok mu?</string>
+    <string name="account_migration_scanner_view_restore_message">Yedekleme varsa, bu cihaza geri yükleyebilirsiniz.</string>
+    <string name="account_migration_scanner_view_scan_title">Tarama</string>
+    <string name="account_migration_scanner_view_step_1">Diğer cihazda uygulamayı açın</string>
+    <string name="account_migration_scanner_view_step_2">Yan menüye gidin</string>
+    <string name="account_migration_scanner_view_step_3">Hesapı seçin</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Bu cihazdan aktarımı başlatın</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Diğer cihazdan aktarımı başlatın</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Diğer cihazda görüntülenen QR kodunu bu cihazla tarayın</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Bu cihazda görüntülenen QR kodunu diğer cihazla tarayın</string>
     <string name="account_migration_scanner_view_stop_scan_title">Taramayı durdur</string>
 
     <!-- AddCallParticipantActivity -->
@@ -290,13 +304,16 @@
     <string name="backup_view_content_diff_deleted">Silindi</string>
     <string name="backup_view_content_diff_message">Mevcut verilerinizle karşılaştırıldığında değişiklikler şunlardır:</string>
     <string name="backup_view_content_info">Yedeklemeler, konuşmaları, bildirimleri ve geçmişi içermez.</string>
+    <string name="backup_view_copy_clipboard">Panoya kopyala</string>
     <string name="backup_view_error_words">Girilen kelimeler yedeklemenin şifresinin çözülmesine izin vermiyor.</string>
+    <string name="backup_view_generate_key">Yeni bir şifreleme anahtarı oluştur</string>
     <string name="backup_view_generate_word">Üretmek</string>
     <string name="backup_view_last_backup">%1$s Son yedekleme</string>
     <string name="backup_view_new_backup">Yeni yedekleme</string>
     <string name="backup_view_onboarding">Hesap verilerinizin (\"Spaces\", profiller, kişiler, gruplar, « click-to-call ») şifreli bir yedeğini oluşturun ve bu yedek bu cihaza veya başka bir cihaza geri yüklenebilir.</string>
     <string name="backup_view_reminder">Son yedeklemeniz 30 günden daha önce oluşturuldu.</string>
     <string name="backup_view_save_file_message">Yedekleme dosyasını istediğiniz cihaza kaydedin ve parolaları daha sonra geri yüklemek üzere saklayın.</string>
+    <string name="backup_view_save_password">Parola yöneticisine kaydet</string>
     <string name="backup_view_security">Güvenlik</string>
     <string name="backup_view_security_info">Yedekleme şifreleme anahtarı, restorasyon için gerekli olacak 12 kelimelik bir dizi ile temsil edilir.</string>
     <string name="backup_view_success">Yedekleme başarıyla tamamlandı!</string>
@@ -482,6 +499,8 @@
     <string name="conversation_view_info">:lock Sohbet mesajları cep telefonunuzda ve iletim sırasında şifrelenir.  \tEn yüksek düzeyde veri güvenliği sağlamak için, ara sunucu olmadan eşler arası bir bağlantı kullanarak doğrudan %s kişisinin telefonuna gönderilir.</string>
     <string name="conversation_view_invitation_accepted">Davetiye kabul edildi</string>
     <string name="conversation_view_invitation_failed">Skred güncellemesi için kişinize danışın</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s daveti kabul etti</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s daveti reddetti</string>
     <string name="conversation_view_invitation_joined">Grubun üyesi</string>
     <string name="conversation_view_invitation_pending">Davetiye devam ediyor</string>
     <string name="conversation_view_invitation_refused">Davet reddedildi</string>
@@ -522,6 +541,13 @@
     <string name="conversation_view_send_quality_size">Büyük medya (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Standart çözünürlükte (SD) gönderin</string>
     <string name="conversation_view_send_quality_warning">Daha hızlı aktarım için standart çözünürlüğe (SD) yeniden boyutlandırabilirsiniz.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s bağlantıyı kabul etti</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Bağlantılarınız tarafından yapılan tanıştırmaları kabul etmiyorsunuz.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s bağlantıyı reddetti</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Bağlantı isteğini reddettiniz</string>
+    <string name="conversation_view_share_contact_item_local_message">%1$s ile %2$s kişisini bağlıyoruz</string>
+    <string name="conversation_view_share_contact_item_peer_message">Sizi %1$s ile bağlıyoruz</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">%1$s tarafından kabul edilmesi bekleniyor</string>
     <string name="conversation_view_stream_dialog">Kabul etmek istiyor musunuz?</string>
     <string name="conversation_view_unsupported_media">Desteklenmeyen medya biçimi</string>
     <string name="conversation_view_video_call">Görüntülü arama</string>
@@ -873,6 +899,7 @@
     <string name="notification_center_cancel">Reddet</string>
     <string name="notification_center_cleanup_conversation">Bazı eski mesajlar silindi.</string>
     <string name="notification_center_conference_join_call">Bir katılımcı aramaya katıldı.</string>
+    <string name="notification_center_connection_request">Solicitud de conexión</string>
     <string name="notification_center_deleted_contact">Kişi Silindi</string>
     <string name="notification_center_file_message">sana bir dosya yolladı</string>
     <string name="notification_center_file_message_received">Yeni dosya</string>
@@ -1021,6 +1048,7 @@
     <string name="premium_services_view_title">Kişileri devam eden bir sesli/görüntülü aramaya katılmaya davet edin.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Etkin uygulamalar</string>
     <string name="privacy_view_coach_mark">Uygulamayı biyometrik servislerle veya bir PIN koduyla kilitleyin.</string>
     <string name="privacy_view_hide_last_screen_message">Ve cihaz izin veriyorsa, uygulama arka planda çalışırken gizle.</string>
     <string name="privacy_view_hide_last_screen_title">Ekran görüntüsü almayı yasakla</string>
@@ -1029,6 +1057,10 @@
     <string name="privacy_view_lock_screen_timeout">Erişim kilidi zaman aşımı</string>
     <string name="privacy_view_lock_screen_timeout_instant">Anında</string>
     <string name="privacy_view_lock_screen_title">Erişim kilidi</string>
+    <string name="privacy_view_share_invitation_ask">Her seferinde sor</string>
+    <string name="privacy_view_share_invitation_info">Birisi iletişim bilgilerinizi paylaştığında bildirim alırsınız.</string>
+    <string name="privacy_view_share_invitation_setting">Rehberimdeki kişilerin, beni kendi rehberlerindeki kişilerle bağlamasına izin ver</string>
+    <string name="privacy_view_share_invitation_title">Bağlantılar</string>
     <string name="privacy_view_title">Gizlilik</string>
 
     <!-- ProfileFragment -->
@@ -1101,6 +1133,7 @@
     <string name="restore_view_success">Restorasyon başarıyla tamamlandı!</string>
     <string name="restore_view_success_message">Uygulamayı kapatın ve yeni verilere erişmek için yeniden başlatın.</string>
     <string name="restore_view_title">Restorasyon</string>
+    <string name="restore_view_update_message">Yedeklemeyi geri yüklemek için uygulamayı güncellemeniz gerekiyor.</string>
     <string name="restore_view_verify_same_account">Doğrulama işlemi, yedekleme için kullanılan aynı cihazda gerçekleştirilmelidir.</string>
     <string name="restore_view_warning">Bu yedeklemenin geri yüklenmesi, tüm geçerli hesap verilerinin yedekten verilerle değiştirilir.</string>
 
@@ -1117,7 +1150,18 @@
     <string name="scan_view_paste_code">Bir davet bağlantısı girin veya yapıştırın</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Bir web bağlantısı veya haritadaki bir konum önizlenirken IP adresi ifşa edilir.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Gelişmiş</string>
+    <string name="settings_advanced_view_security_advanced_info">IP adresi yerel olarak gizlenir (STUN için TLS kullanılarak).</string>
+    <string name="settings_advanced_view_security_expert">Uzman</string>
+    <string name="settings_advanced_view_security_expert_info">IP adresi yerel olarak ve kişilere gizlenir (aramalar bir TURN sunucusu üzerinden yönlendirilir).</string>
+    <string name="settings_advanced_view_security_optimized">Optimize Edilmiş (varsayılan)</string>
+    <string name="settings_advanced_view_security_optimized_info">IP adresi; WebRTC alışverişleri sırasında, harita üzerinde konum paylaşılırken veya bir web bağlantısının önizlemesi görüntülenirken açığa çıkabilir.</string>
+    <string name="settings_advanced_view_security_level_title">Güvenlik Seviyesi</string>
+    <string name="settings_advanced_view_security_info">Belirli ihtiyaçlar için güvenlik ve performans arasındaki dengeyi ayarlayın.</string>
+    <string name="settings_advanced_view_security_title">Güvenlik</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Uzman güvenlik seviyesi bu ayarı değiştirmeye izin vermez.</string>
     <string name="settings_advanced_view_status_connection_message">Hizmet bağlantınızın durumunu kontrol edin</string>
     <string name="settings_advanced_view_status_connection_title">Bağlantı Durumu</string>
     <string name="settings_advanced_view_telecom_enable">Android arama deneyimi</string>
@@ -1167,7 +1211,10 @@
     <string name="settings_view_show_maps">Haritaları göster</string>
     <string name="settings_view_silent_mode">Sessiz mod</string>
     <string name="settings_view_silent_sound">Sessiz</string>
+    <string name="settings_view_sound_effects_info">Uygulamayla etkileşim kurarken sesler çalınır.</string>
+    <string name="settings_view_sound_effects_title">Ses efektleri</string>
     <string name="settings_view_sound_enabled_title">SES BİLDİRİMLERİ</string>
+    <string name="settings_view_sound_vibrations_title">Sesler ve Titreşimler</string>
     <string name="settings_view_system_notifications_title">Sistem bildirimleri</string>
     <string name="settings_view_system_settings_title">Sistem ayarları</string>
     <string name="settings_view_turn_off_notification_sounds">Bildirim seslerini kapat</string>
@@ -1211,6 +1258,15 @@
     <string name="settings_space_view_secret_title">Gizli Space</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s sizi %2$s ile bağlamak istiyor</string>
+    <string name="share_contact_accept_view_invite_message">%1$s kişisini kişisel rehberinize eklemek ister misiniz?</string>
+    <string name="share_contact_view_onboarding_part_1">Artık kişilerinizin sizi kendi kişileriyle bağlantı kurmasına izin verebilirsiniz.</string>
+    <string name="share_contact_view_onboarding_part_2">Varsayılan olarak, her bağlantı teklifini onaylamanız gerekir.</string>
+    <string name="share_contact_view_onboarding_part_3">Varsayılan davranış, uygulama ayarlarının \"Gizlilik\" bölümünde değiştirilebilir.</string>
+    <string name="share_contact_view_share_info">%1$s bir paylaşım bildirimi alacak</string>
+    <string name="share_contact_view_share_title">%1$s kişisinin bilgilerini paylaş</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Kişiler</string>
     <string name="share_view_group_list">Gruplar</string>
@@ -1244,6 +1300,7 @@
     <string name="show_contact_view_pending_message">Bu ilişki kurulma aşamasındadır. Lütfen bekleyin.</string>
     <string name="show_contact_view_revoked">Silindi</string>
     <string name="show_contact_view_settings_coach_mark">Sizinle bu ilişkide irtibat kişinizin ne yapmasına izin verildiğini tanımlayın.</string>
+    <string name="show_contact_view_share_contact">Bu kişiyi paylaş</string>
     <string name="show_contact_view_space">Space:</string>
     <string name="show_contact_view_video">Video</string>
 

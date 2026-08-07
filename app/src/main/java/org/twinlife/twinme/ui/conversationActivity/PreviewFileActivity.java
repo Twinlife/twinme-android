@@ -40,7 +40,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ImageService;
 import org.twinlife.twinlife.Twinlife;
 import org.twinlife.twinme.models.CertificationLevel;

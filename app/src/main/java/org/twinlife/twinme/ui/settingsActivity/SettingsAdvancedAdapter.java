@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2025 twinlife SA.
+ *  Copyright (c) 2025-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -20,11 +20,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.libwebsockets.ErrorCategory;
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.PeerConnectionService;
 import org.twinlife.twinlife.ProxyDescriptor;
 import org.twinlife.twinme.FeatureUtils;
+import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.ui.conversationActivity.SelectValueViewHolder;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -34,29 +39,16 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
     @NonNull
     private final SettingsAdvancedActivity mActivity;
 
-    private int ITEM_COUNT = 7;
-
-    private static final int SECTION_CONNEXION = 0;
-    private static final int SECTION_PROXY = 3;
-    private int SECTION_TELECOM = -1;
-    private int SECTION_DEBUG = -1;
-    private static final int POSITION_CONNEXION_INFO = 1;
-    private static final int POSITION_CONNEXION_STATUS = 2;
-    private static final int POSITION_PROXY_INFO = 4;
-    private static final int POSITION_PROXY_ENABLE = 5;
-    private static int POSITION_PROXY_ADD = 6;
-
-    private int POSITION_TELECOM_INFO = -1;
-    private int POSITION_TELECOM_ENABLE = -1;
-
-    private int POSITION_DEVELOPER_SETTINGS = -1;
+    private final List<UIAdvancedSettingItem> mItems = new ArrayList<>();
 
     private static final int TITLE = 0;
     private static final int INFO = 1;
     private static final int STATUS = 2;
-    private static final int CHECKBOX = 3;
-    private static final int SUBSECTION = 4;
-    private static final int PROXY = 5;
+    private static final int CHECKBOX_SETTINGS = 3;
+    private static final int CHECKBOX_ADVANCED_SETTINGS = 4;
+    private static final int SUBSECTION = 5;
+    private static final int PROXY = 6;
+    private static final int VALUE = 7;
 
     private List<ProxyDescriptor> mProxies;
 
@@ -66,16 +58,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         mProxies = proxies;
         setHasStableIds(false);
 
-        if (BuildConfig.DEBUG) {
-            ITEM_COUNT = 9;
-        }
-
-        if (FeatureUtils.isTelecomSupported(mActivity)) {
-            ITEM_COUNT += 3;
-            SECTION_TELECOM = 7;
-            POSITION_TELECOM_INFO = 8;
-            POSITION_TELECOM_ENABLE = 9;
-        }
+        loadItems();
     }
 
     @Override
@@ -84,24 +67,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        int count = ITEM_COUNT + mProxies.size();
-        if (BuildConfig.DEBUG) {
-            SECTION_DEBUG = count - 2;
-            POSITION_DEVELOPER_SETTINGS = count - 1;
-        } else {
-            SECTION_DEBUG = -1;
-            POSITION_DEVELOPER_SETTINGS = -1;
-        }
-
-        POSITION_PROXY_ADD = POSITION_PROXY_ENABLE + mProxies.size() + 1;
-
-        if (SECTION_TELECOM != -1) {
-            SECTION_TELECOM = POSITION_PROXY_ADD + 1;
-            POSITION_TELECOM_INFO = SECTION_TELECOM + 1;
-            POSITION_TELECOM_ENABLE = POSITION_TELECOM_INFO + 1;
-        }
-
-        return count;
+        return mItems.size();
     }
 
     public void updateProxies(List<ProxyDescriptor> proxies) {
@@ -118,7 +84,24 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "updateConnexionStatus");
         }
 
-        notifyItemChanged(POSITION_CONNEXION_STATUS);
+        for (UIAdvancedSettingItem item : mItems) {
+            if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_STATUS) {
+                notifyItemChanged(mItems.indexOf(item));
+                break;
+            }
+        }
+    }
+
+    public void updateSecurityLevel() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateSecurityLevel");
+        }
+
+        for (UIAdvancedSettingItem item : mItems) {
+            if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.SECURITY_LEVEL || item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.LINK_PREVIEW || item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.MAP_PREVIEW) {
+                notifyItemChanged(mItems.indexOf(item));
+            }
+        }
     }
 
     @Override
@@ -127,18 +110,44 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == POSITION_CONNEXION_INFO || position == POSITION_PROXY_INFO || position == POSITION_TELECOM_INFO) {
-            return INFO;
-        } else if (position == SECTION_CONNEXION || position == SECTION_PROXY || position == SECTION_TELECOM || position == SECTION_DEBUG) {
-            return TITLE;
-        } else if (position == POSITION_CONNEXION_STATUS) {
-            return STATUS;
-        } else if (position == POSITION_PROXY_ENABLE ||position == POSITION_TELECOM_ENABLE) {
-            return CHECKBOX;
-        } else if (position == POSITION_PROXY_ADD || position == POSITION_DEVELOPER_SETTINGS) {
-            return SUBSECTION;
-        } else {
-            return PROXY;
+        UIAdvancedSettingItem item = mItems.get(position);
+
+        switch (item.getType()) {
+            case CONNEXION_INFO:
+            case PROXY_INFO:
+            case TELECOM_INFO:
+            case SECURITY_INFO:
+            case CONVERSATION_INFO:
+                return INFO;
+
+            case CONNEXION_SECTION:
+            case PROXY_SECTION:
+            case TELECOM_SECTION:
+            case SECURITY_SECTION:
+            case CONVERSATION_SECTION:
+            case DEBUG_SECTION:
+                return TITLE;
+
+            case CONNEXION_STATUS:
+                return STATUS;
+
+            case PROXY_ENABLE:
+            case TELECOM_ENABLE:
+                return CHECKBOX_ADVANCED_SETTINGS;
+
+            case LINK_PREVIEW:
+            case MAP_PREVIEW:
+                return CHECKBOX_SETTINGS;
+
+            case PROXY_ADD:
+            case DEVELOPER_SETTINGS:
+                return SUBSECTION;
+
+            case SECURITY_LEVEL:
+                return VALUE;
+
+            default:
+                return PROXY;
         }
     }
 
@@ -149,53 +158,78 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         int viewType = getItemViewType(position);
+        UIAdvancedSettingItem item = mItems.get(position);
 
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            if (position == POSITION_CONNEXION_INFO) {
-                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_status_connection_message), true);
-            } else if (position == POSITION_PROXY_INFO) {
-                if (mProxies.isEmpty()) {
-                    informationViewHolder.onBind(mActivity.getString(R.string.proxy_view_information), true);
-                } else {
-                    informationViewHolder.onBind(mActivity.getString(R.string.proxy_view_list_information), true);
-                }
-            }  else if (position == POSITION_TELECOM_INFO) {
-                informationViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_telecom_information), true);
-            }
+            informationViewHolder.onBind(item.getText(), true);
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            String title = getSectionTitle(position);
-            sectionTitleViewHolder.onBind(title, true);
+            sectionTitleViewHolder.onBind(item.getText(), true);
         } else if (viewType == STATUS) {
             ConnexionStatusViewHolder connexionStatusViewHolder = (ConnexionStatusViewHolder) viewHolder;
             connexionStatusViewHolder.onBind(mActivity.getAppInfo());
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX_ADVANCED_SETTINGS) {
             SettingsAdvancedViewHolder settingsViewHolder = (SettingsAdvancedViewHolder) viewHolder;
-
-            if (position == POSITION_TELECOM_ENABLE) {
-                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onTelecomSettingChangeValue(value);
-                settingsViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_telecom_enable), mActivity.isTelecomEnable(), true, onCheckedChangeListener);
+            boolean isSelected;
+            CompoundButton.OnCheckedChangeListener onCheckedChangeListener;
+            if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.TELECOM_ENABLE) {
+                onCheckedChangeListener = (compoundButton, value) -> mActivity.onTelecomSettingChangeValue(value);
+                isSelected = mActivity.isTelecomEnable();
             } else {
-                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.onProxySettingChangeValue(value);
-                settingsViewHolder.onBind(mActivity.getString(R.string.proxy_view_enable), mActivity.isProxyEnable(), !mProxies.isEmpty(), onCheckedChangeListener);
+                onCheckedChangeListener = (compoundButton, value) -> mActivity.onProxySettingChangeValue(value);
+                isSelected = mActivity.isProxyEnable();
+            }
+            settingsViewHolder.onBind(item.getText(), isSelected, true, onCheckedChangeListener);
+        } else if (viewType == CHECKBOX_SETTINGS) {
+            SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
+
+            UISetting<Boolean> uiSetting;
+
+            if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.MAP_PREVIEW) {
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mActivity.getString(R.string.settings_view_show_maps), mActivity.getString(R.string.settings_view_show_location_on_map), Settings.visualizationMap);
+            } else {
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mActivity.getString(R.string.conversation_settings_view_link_title), mActivity.getString(R.string.conversation_settings_view_link_preview_message), Settings.visualizationLink);
+            }
+
+            if (PeerConnectionService.IceTransportMode.RELAY != mActivity.getTwinmeApplication().getIceTransportMode()) {
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mActivity.onSettingChangeValue(uiSetting, isChecked);
+                settingsViewHolder.itemView.setOnClickListener(null);
+                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
+            } else {
+                settingsViewHolder.itemView.setOnClickListener(view -> mActivity.onSettingsClick());
+                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), false, null);
             }
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
-            if (position == POSITION_PROXY_ADD) {
+            if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_ADD) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAddProxyClick());
                 settingSectionViewHolder.onBind(mActivity.getString(R.string.proxy_view_add), true);
             } else {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onDevelopersSettingsClick());
                 settingSectionViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_developer_settings), true);
             }
+            settingSectionViewHolder.onBind(item.getText(), false);
         } else if (viewType == PROXY) {
             ProxyViewHolder proxyViewHolder = (ProxyViewHolder) viewHolder;
-            int proxyPosition = position - POSITION_PROXY_ENABLE - 1;
-            proxyViewHolder.itemView.setOnClickListener(view -> mActivity.onProxyClick(proxyPosition));
-            ProxyDescriptor proxyDescriptor = mProxies.get(proxyPosition);
+            proxyViewHolder.itemView.setOnClickListener(view -> mActivity.onProxyClick(item.getProxyPosition()));
+            ProxyDescriptor proxyDescriptor = mProxies.get(item.getProxyPosition());
             boolean hasError = proxyDescriptor.getLastError() == null || proxyDescriptor.getLastError() != ErrorCategory.ERR_NONE;
             proxyViewHolder.onBind(proxyDescriptor.getDescriptor(), hasError, false);
+        } else if (viewType == VALUE) {
+            SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
+
+            String value;
+            if (PeerConnectionService.IceTransportMode.ALL == mActivity.getTwinmeApplication().getIceTransportMode()) {
+                value = mActivity.getString(R.string.settings_advanced_view_security_optimized);
+            } else if (PeerConnectionService.IceTransportMode.TURNS == mActivity.getTwinmeApplication().getIceTransportMode()) {
+                value = mActivity.getString(R.string.settings_advanced_view_security_advanced);
+            } else {
+                value = mActivity.getString(R.string.settings_advanced_view_security_expert);
+            }
+
+            selectValueViewHolder.itemView.setOnClickListener(view -> mActivity.onSecurityLevelClick());
+            selectValueViewHolder.onBind(item.getText(), value, false, Design.WHITE_COLOR);
         }
     }
 
@@ -221,9 +255,15 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         } else if (viewType == STATUS) {
             convertView = inflater.inflate(R.layout.connexion_status_item, parent, false);
             return new ConnexionStatusViewHolder(convertView);
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX_SETTINGS) {
+            convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
+            return new SettingSwitchViewHolder(convertView);
+        } else if (viewType == CHECKBOX_ADVANCED_SETTINGS) {
             convertView = inflater.inflate(R.layout.settings_advanced_item, parent, false);
             return new SettingsAdvancedViewHolder(convertView);
+        } else if (viewType == VALUE) {
+            convertView = inflater.inflate(R.layout.select_value_item, parent, false);
+            return new SelectValueViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.proxy_item, parent, false);
             return new ProxyViewHolder(convertView);
@@ -237,21 +277,43 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
 
-    private String getSectionTitle(int position) {
+    private void loadItems() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "getSectionTitle: " + position);
+            Log.d(LOG_TAG, "loadItems");
         }
 
-        if (position == SECTION_CONNEXION) {
-            return mActivity.getString(R.string.settings_advanced_view_status_connection_title);
-        } else if (position == SECTION_PROXY) {
-            return mActivity.getString(R.string.proxy_view_title);
-        } else if (position == SECTION_TELECOM) {
-            return mActivity.getString(R.string.settings_advanced_view_telecom);
-        } else if (position == SECTION_DEBUG) {
-            return mActivity.getString(R.string.settings_advanced_view_debug);
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_SECTION, mActivity.getString(R.string.settings_advanced_view_status_connection_title), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_INFO, mActivity.getString(R.string.settings_advanced_view_status_connection_message), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_STATUS, "", -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_SECTION, mActivity.getString(R.string.proxy_view_title), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_INFO, mProxies.isEmpty() ? mActivity.getString(R.string.proxy_view_information) : mActivity.getString(R.string.proxy_view_list_information), -1));
+
+        int proxyPosition = 0;
+        for (ProxyDescriptor proxyDescriptor : mProxies) {
+            mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY, proxyDescriptor.getDescriptor(), proxyPosition));
+            proxyPosition++;
         }
 
-        return "";
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_ADD, mActivity.getString(R.string.proxy_view_add), -1));
+
+        if (FeatureUtils.isTelecomSupported(mActivity)) {
+            mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.TELECOM_SECTION, mActivity.getString(R.string.settings_advanced_view_telecom), -1));
+            mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.TELECOM_INFO, mActivity.getString(R.string.settings_advanced_view_telecom_information), -1));
+            mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.TELECOM_ENABLE, mActivity.getString(R.string.settings_advanced_view_telecom_enable), -1));
+        }
+
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.SECURITY_SECTION, mActivity.getString(R.string.settings_advanced_view_security_title), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.SECURITY_INFO, mActivity.getString(R.string.settings_advanced_view_security_info), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.SECURITY_LEVEL, mActivity.getString(R.string.settings_advanced_view_security_level_title), -1));
+
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONVERSATION_SECTION, mActivity.getString(R.string.conversations_view_title), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONVERSATION_INFO, mActivity.getString(R.string.settings_advanced_view_conversation_info), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.LINK_PREVIEW, mActivity.getString(R.string.conversation_settings_view_link_preview_message), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.MAP_PREVIEW, mActivity.getString(R.string.settings_view_show_maps), -1));
+
+        if (BuildConfig.DEBUG) {
+            mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.DEBUG_SECTION, mActivity.getString(R.string.settings_advanced_view_debug), -1));
+            mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.DEVELOPER_SETTINGS, mActivity.getString(R.string.settings_advanced_view_developer_settings), -1));
+        }
     }
 }

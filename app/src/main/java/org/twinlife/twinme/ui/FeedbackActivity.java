@@ -36,7 +36,7 @@ import androidx.annotation.NonNull;
 
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.actions.FeedbackAction;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.SwitchView;
@@ -197,7 +197,7 @@ public class FeedbackActivity extends AbstractTwinmeActivity implements Feedback
         Design.updateTextFont(mInfoLogsView, Design.FONT_REGULAR24);
         mInfoLogsView.setTextColor(Design.FONT_COLOR_GREY);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             mInfoLogsView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 
@@ -336,13 +336,13 @@ public class FeedbackActivity extends AbstractTwinmeActivity implements Feedback
     }
 
     @Override
-    public void onSendFeedbackAction(@NonNull BaseService.ErrorCode errorCode) {
+    public void onSendFeedbackAction(@NonNull ErrorCode errorCode) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSendFeedbackAction errorCode=" + errorCode);
         }
 
         runOnUiThread(() -> {
-            if (errorCode == BaseService.ErrorCode.SUCCESS) {
+            if (errorCode == ErrorCode.SUCCESS) {
                 Toast.makeText(this, R.string.feedback_view_send_message, Toast.LENGTH_SHORT).show();
                 finish();
             } else {

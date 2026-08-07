@@ -35,7 +35,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.CertificationLevel;
@@ -413,8 +413,8 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
         }
 
         if (mShowContactService != null && mCertificationLink == null) {
-            mShowContactService.createAuthenticateURI((BaseService.ErrorCode errorCode, TwincodeURI twincodeURI) -> {
-                if (errorCode == BaseService.ErrorCode.SUCCESS && twincodeURI != null) {
+            mShowContactService.createAuthenticateURI((ErrorCode errorCode, TwincodeURI twincodeURI) -> {
+                if (errorCode == ErrorCode.SUCCESS && twincodeURI != null) {
                     mCertificationLink = twincodeURI;
                     updateQRCode(mCertificationLink.uri);
                     updateContact();
@@ -435,8 +435,8 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             return;
         }
 
-        mShowContactService.verifyAuthenticateURI(uri, ((BaseService.ErrorCode errorCode, Contact contact) -> {
-            if (errorCode == BaseService.ErrorCode.SUCCESS && contact != null) {
+        mShowContactService.verifyAuthenticateURI(uri, ((ErrorCode errorCode, Contact contact) -> {
+            if (errorCode == ErrorCode.SUCCESS && contact != null) {
                 mContact = contact;
                 mCertificationLevel = mContact.getCertificationLevel();
                 stopScan();

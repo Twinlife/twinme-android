@@ -135,6 +135,16 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
         }
     }
 
+    @Override
+    public void onGetGroup(@NonNull Group contact, @Nullable Bitmap avatar) {
+
+    }
+
+    @Override
+    public void onGetGroupNotFound() {
+        super.onGetGroupNotFound();
+    }
+
     //
     // Override Activity methods
     //

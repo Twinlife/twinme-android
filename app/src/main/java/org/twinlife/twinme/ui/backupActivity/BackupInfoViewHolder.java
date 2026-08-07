@@ -69,6 +69,7 @@ public class BackupInfoViewHolder extends RecyclerView.ViewHolder {
         View iconView = view.findViewById(R.id.restore_activity_backup_info_icon_view);
 
         layoutParams = iconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_VIEW_HEIGHT * Design.HEIGHT_RATIO);
         layoutParams.height = (int) (DESIGN_ICON_VIEW_HEIGHT * Design.HEIGHT_RATIO);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) iconView.getLayoutParams();

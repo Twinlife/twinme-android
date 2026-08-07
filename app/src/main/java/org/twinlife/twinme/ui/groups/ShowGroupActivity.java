@@ -53,6 +53,7 @@ import org.twinlife.twinme.ui.LastCallsActivity;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.cleanupActivity.TypeCleanUpActivity;
+import org.twinlife.twinme.ui.contacts.ConversationNotificationsActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
@@ -116,6 +117,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private View mVideoClickableView;
     private TextView mConfigurationTitleView;
     private View mPermissionsView;
+    private View mNotificationsView;
     private View mCallSettingsView;
     private View mFallbackView;
     private TextView mFallbackTextView;
@@ -129,6 +131,8 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private TextView mIdentityTitleView;
     private TextView mPermissionsTextView;
     private ImageView mPermissionsImageView;
+    private TextView mNotificationsTextView;
+    private ImageView mNotificationsImageView;
     private TextView mCallSettingsTextView;
     private ImageView mCallSettingsImageView;
     private TextView mLastCallsTitleView;
@@ -486,6 +490,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
         View slideMarkView = findViewById(R.id.show_group_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -648,6 +653,15 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         mPermissionsTextView = findViewById(R.id.show_group_activity_permissions_text_view);
         mPermissionsImageView = findViewById(R.id.show_group_activity_permissions_image_view);
 
+        mNotificationsView= findViewById(R.id.show_group_activity_notifications_view);
+        layoutParams = mNotificationsView.getLayoutParams();
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        mNotificationsView.setOnClickListener(view -> onNotificationsClick());
+
+        mNotificationsTextView = findViewById(R.id.show_group_activity_notifications_text_view);
+        mNotificationsImageView = findViewById(R.id.show_group_activity_notifications_image_view);
+
         mCallSettingsView = findViewById(R.id.show_group_activity_call_settings_view);
         layoutParams = mCallSettingsView.getLayoutParams();
         layoutParams.height = Design.ITEM_VIEW_HEIGHT;
@@ -798,13 +812,15 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             }
 
             if (mGroup.isOwner()) {
-                mConfigurationTitleView.setVisibility(View.VISIBLE);
                 mPermissionsView.setVisibility(View.VISIBLE);
                 mCallSettingsView.setVisibility(View.VISIBLE);
             } else {
-                mConfigurationTitleView.setVisibility(View.GONE);
                 mPermissionsView.setVisibility(View.GONE);
                 mCallSettingsView.setVisibility(View.GONE);
+
+                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNotificationsView.getLayoutParams();
+                marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
+                mNotificationsView.setLayoutParams(marginLayoutParams);
             }
 
             ViewTreeObserver contentViewTreeObserver = mContentView.getViewTreeObserver();
@@ -961,6 +977,14 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         }
 
         startActivity(SettingsGroupActivity.class, Intents.INTENT_GROUP_ID, mGroupId);
+    }
+
+    private void onNotificationsClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onNotificationsClick");
+        }
+
+        startActivity(ConversationNotificationsActivity.class, Intents.INTENT_CONTACT_ID, mGroupId);
     }
 
     private void onCallSettingsClick() {
@@ -1126,6 +1150,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         Design.updateTextFont(mIdentityTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mConfigurationTitleView, Design.FONT_BOLD26);
         Design.updateTextFont(mPermissionsTextView, Design.FONT_REGULAR34);
+        Design.updateTextFont(mNotificationsTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mCallSettingsTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mLastCallsTitleView, Design.FONT_BOLD26);
         Design.updateTextFont(mLastCallsTextView, Design.FONT_REGULAR34);
@@ -1163,6 +1188,8 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         mConfigurationTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mPermissionsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mPermissionsImageView.setColorFilter(Design.SHOW_ICON_COLOR);
+        mNotificationsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mNotificationsImageView.setColorFilter(Design.SHOW_ICON_COLOR);
         mCallSettingsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mCallSettingsImageView.setColorFilter(Design.SHOW_ICON_COLOR);
         mLastCallsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);

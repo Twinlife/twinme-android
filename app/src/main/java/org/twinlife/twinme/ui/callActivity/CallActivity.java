@@ -82,8 +82,7 @@ import androidx.percentlayout.widget.PercentRelativeLayout;
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AndroidDeviceInfo;
-import org.twinlife.twinlife.BaseService;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConnectionStatus;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.PeerConnectionService;
@@ -138,6 +137,8 @@ import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.DefaultConfirmView;
 import org.twinlife.twinme.utils.InfoFloatingView;
 import org.twinlife.twinme.utils.OnboardingConfirmView;
+import org.twinlife.twinme.utils.PlatformSpecificUtils;
+import org.twinlife.twinme.utils.SoundEffect;
 import org.twinlife.twinme.utils.TwinmeImmersiveActivityImpl;
 import org.twinlife.twinme.utils.coachmark.CoachMark;
 import org.twinlife.twinme.utils.coachmark.CoachMarkView;
@@ -854,6 +855,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             hideInfoFloatingView();
         }
 
+        if (getTwinmeApplication().soundEffectsEnable()) {
+            SoundEffect.initialize();
+        }
+
         // Notify CallService that the app is in foreground, after a delay to try to prevent race conditions
         // where Android considers the app is still in the background and refuses the "microphone" foreground service type.
         mUiThreadHandler.postDelayed(() -> {
@@ -1278,13 +1283,13 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mChronometerView.start();
 
                 if (mShowCertifyView && mCallCertifyView == null) {
-                    Handler certifyHandler = new Handler();
+                    Handler certifyHandler = new Handler(Looper.getMainLooper());
                     certifyHandler.postDelayed(this::startCertifyVideoCall, CERTIFY_DELAY);
                 }
 
                 if (mIsCallStartedInVideo && !mHideMenuOnVideoCall) {
                     mHideMenuOnVideoCall = true;
-                    Handler hideMenuHandler = new Handler();
+                    Handler hideMenuHandler = new Handler(Looper.getMainLooper());
                     hideMenuHandler.postDelayed(() -> setMenuVisibility(false), HIDE_MENU_VIDEO_CALL_DELAY);
                 }
 
@@ -1346,11 +1351,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 if (mShowCallQuality) {
                     showCallQualityView();
                 } else {
-                    mCloseHandler = new Handler();
+                    mCloseHandler = new Handler(Looper.getMainLooper());
                     mCloseHandler.postDelayed(this::closeTimeout, CLOSE_ACTIVITY_TIMEOUT);
                 }
             } else {
-                mCloseHandler = new Handler();
+                mCloseHandler = new Handler(Looper.getMainLooper());
                 mCloseHandler.postDelayed(this::closeTimeout, CLOSE_ACTIVITY_TIMEOUT);
             }
 
@@ -1370,7 +1375,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         if(terminateReason == TerminateReason.TRANSFER_DONE){
             callIsTransfered();
-            mCloseHandler = new Handler();
+            mCloseHandler = new Handler(Looper.getMainLooper());
             mCloseHandler.postDelayed(this::closeTimeout, CLOSE_ACTIVITY_TIMEOUT);
             return;
         }
@@ -1817,6 +1822,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
 
         if (event == CallParticipantEvent.EVENT_CONNECTED) {
+
+            if (mCallParticipantViewList.size() > 2) {
+                SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.JOIN_CALL, this, getTwinmeApplication());
+            }
+
             updateViews();
             return;
         }
@@ -1953,7 +1963,6 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         if (descriptor.getType() == ConversationService.Descriptor.Type.GEOLOCATION_DESCRIPTOR) {
             mSharedLocationView.setVisibility(View.VISIBLE);
-
             hapticFeedback();
 
             if (mCallMapView != null) {
@@ -1973,6 +1982,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         } else {
             mUnreadMessageView.setVisibility(View.VISIBLE);
+            SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.NEW_MESSAGE, this, getTwinmeApplication());
             if (mCallConversationView.getVisibility() == View.GONE) {
                 hapticFeedback();
                 mUnreadMessageImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_new_message_icon, null));
@@ -2507,7 +2517,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             }
         });
 
-        mRotationObserver = new ContentObserver(new Handler()) {
+        mRotationObserver = new ContentObserver(new Handler(Looper.getMainLooper())) {
             @Override
             public void onChange(boolean selfChange) {
                 super.onChange(selfChange);
@@ -2820,7 +2830,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             case CALL_WAITING:
                 mAnswerCallView.setVisibility(View.GONE);
 
-                Handler callInfoHandler = new Handler();
+                Handler callInfoHandler = new Handler(Looper.getMainLooper());
                 callInfoHandler.postDelayed(this::showCallInfo, CERTIFY_DELAY);
 
                 mCallInfoView.updateMessage(getString(R.string.call_view_waiting_conference_call));
@@ -4847,7 +4857,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "isLocationSupported");
         }
 
-        if (!CommonUtils.isGooglePlayServicesAvailable(getApplicationContext())) {
+        if (!PlatformSpecificUtils.isGooglePlayServicesAvailable(getApplicationContext())) {
             return false;
         }
 
@@ -5095,7 +5105,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (callState != null && getTwinmeApplication().getCurrentSpace().getProfile() != null) {
             Profile profile = getTwinmeApplication().getCurrentSpace().getProfile();
             if (profile.getTwincodeOutbound() != null && mAudioCallService != null) {
-                mAudioCallService.createURI(TwincodeURI.Kind.Invitation, profile.getTwincodeOutbound(), (BaseService.ErrorCode errorCode, TwincodeURI twincodeURI) -> {
+                mAudioCallService.createURI(TwincodeURI.Kind.Invitation, profile.getTwincodeOutbound(), (ErrorCode errorCode, TwincodeURI twincodeURI) -> {
                     if (twincodeURI != null) {
                         ConversationService.Descriptor descriptor = callState.createTwincodeDescriptor(twincodeURI.twincodeId, Profile.SCHEMA_ID, twincodeURI.pubKey, null, true);
                         if (!callState.sendDescriptor(descriptor)) {
@@ -5120,6 +5130,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 if (mOriginator != null) {
                     name = mOriginator.getIdentityName();
                 }
+
+                SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.SEND_MESSAGE, this, getTwinmeApplication());
                 mUnreadMessageView.setVisibility(View.VISIBLE);
                 mUnreadMessageImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.call_message_icon, null));
                 mCallConversationView.addDescriptor(descriptor, true, true, name);
@@ -5325,7 +5337,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         if (mProximmityHandler != null) {
             mProximmityHandler.removeCallbacksAndMessages(null);
         } else {
-            mProximmityHandler = new Handler();
+            mProximmityHandler = new Handler(Looper.getMainLooper());
         }
 
         if (mProximitySensor != null) {

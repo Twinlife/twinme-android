@@ -407,6 +407,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         View slideMarkView = findViewById(R.id.create_external_call_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -1056,7 +1057,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

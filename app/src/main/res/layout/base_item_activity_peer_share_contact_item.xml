@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:id="@+id/base_item_activity_peer_share_contact_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_share_contact_item_selected_view"
+            android:background="@drawable/checkbox_background"
+            android:layout_centerVertical="true"
+            app:layout_aspectRatio="100%">
+
+            <ImageView
+                android:id="@+id/base_item_activity_peer_share_contact_item_selected_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:cropToPadding="true"
+                android:background="@drawable/circle_grey"
+                android:src="@drawable/check_mark_grey"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="100%" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <org.twinlife.twinme.utils.AvatarView
+            android:id="@+id/base_item_activity_peer_share_contact_item_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            app:layout_aspectRatio="100%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/base_item_activity_peer_share_contact_item_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="77.33%">
+
+            <RelativeLayout
+                android:id="@+id/base_item_activity_peer_share_contact_item_avatar_container_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/base_item_activity_peer_share_contact_item_left_avatar_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:elevation="0dp"
+                    android:padding="2dp"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@android:color/white"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"/>
+
+                <View
+                    android:id="@+id/base_item_activity_peer_share_contact_item_line_left_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/base_item_activity_peer_share_contact_item_left_avatar_view"
+                    android:layout_toStartOf="@+id/base_item_activity_peer_share_contact_item_icon_view"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/base_item_activity_peer_share_contact_item_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/base_item_activity_peer_share_contact_item_icon_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/action_bar_add_contact"
+                        app:layout_aspectRatio="100%"/>
+
+                    <ImageView
+                        android:id="@+id/base_item_activity_peer_share_contact_item_status_image_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/invitation_state_accepted" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <View
+                    android:id="@+id/base_item_activity_peer_share_contact_item_line_right_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/base_item_activity_peer_share_contact_item_icon_view"
+                    android:layout_toStartOf="@+id/base_item_activity_peer_share_contact_item_right_avatar_view" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/base_item_activity_peer_share_contact_item_right_avatar_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:elevation="0dp"
+                    android:padding="2dp"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@android:color/white"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/base_item_activity_peer_share_contact_item_message_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@+id/base_item_activity_peer_share_contact_item_avatar_container_view"
+                android:textColor="@android:color/white" />
+
+            <RelativeLayout
+                android:id="@+id/base_item_activity_peer_share_contact_item_action_view"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/base_item_activity_peer_share_contact_item_message_view">
+
+                <TextView
+                    android:id="@+id/base_item_activity_peer_share_contact_item_action_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/conversation_view_menu_item_view_reply_title"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/base_item_activity_peer_share_contact_item_annotation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/base_item_activity_peer_share_contact_item_container"
+        android:choiceMode="singleChoice" />
+
+    <View
+        android:id="@+id/base_item_activity_peer_share_contact_item_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

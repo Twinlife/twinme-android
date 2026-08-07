@@ -105,6 +105,7 @@
     <string name="application_select_more">Selectați mai multe…</string>
     <string name="application_server_timeout">Timp de răspuns server expirat</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Începeți</string>
     <string name="application_theme">Temă</string>
     <string name="application_timeout">Timeout</string>
     <string name="application_timeout_day">1 zi</string>
@@ -115,6 +116,8 @@
     <string name="application_timeout_month">1 lună</string>
     <string name="application_timeout_seconds">%1$d secunde</string>
     <string name="application_timeout_week">1 săptămână</string>
+    <string name="application_transfer_from_another_device">Transfer de pe un alt dispozitiv</string>
+    <string name="application_transfer_restore">Transfer sau restaurare</string>
     <string name="application_unknown_name">Necunoscut</string>
     <string name="application_until">Până la %1$s</string>
     <string name="application_upgrade">Actualizare Skred</string>
@@ -195,12 +198,23 @@
     <string name="account_migration_view_transfer_in_progress">Transfer de date în curs</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Pentru a începe transferul, scanați codul QR de transfer afișat pe celălalt dispozitiv.</string>
+    <string name="account_migration_scanner_view_header_other_device">Pentru a începe transferul, scanați codul QR afișat pe acest dispozitiv de pe celălalt dispozitiv.</string>
     <string name="account_migration_scanner_view_message">Afișați acest ecran pe fiecare dispozitiv, iar unul va scana codul QR al celuilalt.</string>
     <string name="account_migration_scanner_view_message_older_version">Acest dispozitiv folosește o versiune mai veche de OS incompatibilă, ceea ce va duce la pierderea tuturor relațiilor de pe dispozitivul țintă în timpul transferului. Doriți totuși să continuați?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Dispozitivul țintă folosește o versiune veche de OS incompatibilă, ceea ce va duce la pierderea tuturor relațiilor dvs. în timpul transferului. Doriți totuși să continuați?</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Pentru a lansa migrarea, scanați acest cod QR de pe celălalt dispozitiv</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Scanați codul QR afișat în secțiunea „Cont / Transfer de pe alt dispozitiv” din meniul lateral al celuilalt dispozitiv.</string>
+    <string name="account_migration_scanner_view_restore_title">Nu mai ai acces la celălalt dispozitiv?</string>
+    <string name="account_migration_scanner_view_restore_message">Dacă există o copie de rezervă, o poți restaura pe acest dispozitiv.</string>
     <string name="account_migration_scanner_view_scan_title">Scanare</string>
+    <string name="account_migration_scanner_view_step_1">Deschide aplicația pe celălalt dispozitiv</string>
+    <string name="account_migration_scanner_view_step_2">Accesează meniul lateral</string>
+    <string name="account_migration_scanner_view_step_3">Selectează „Cont”</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Începe transferul de pe acest dispozitiv</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Începe transferul de pe celălalt dispozitiv</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Scanează codul QR afișat pe celălalt dispozitiv cu acest dispozitiv</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Scanează codul QR afișat pe acest dispozitiv cu celălalt dispozitiv</string>
     <string name="account_migration_scanner_view_stop_scan_title">Opriți scanarea</string>
 
     <!-- AddCallParticipantActivity -->
@@ -289,13 +303,16 @@
     <string name="backup_view_content_diff_deleted">Șters</string>
     <string name="backup_view_content_diff_message">Iată modificările față de datele dvs. curente:</string>
     <string name="backup_view_content_info">Copiile de rezervă nu includ conversații, notificări și istoric.</string>
+    <string name="backup_view_copy_clipboard">Copiați în clipboard</string>
     <string name="backup_view_error_words">Cuvintele introduse nu permit decriptarea copiei de rezervă.</string>
+    <string name="backup_view_generate_key">Generați o nouă cheie de criptare</string>
     <string name="backup_view_generate_word">Generează</string>
     <string name="backup_view_last_backup">Ultima copie de rezervă la %1$s</string>
     <string name="backup_view_new_backup">Copie de rezervă nouă</string>
     <string name="backup_view_onboarding">Creați o copie de rezervă criptată a datelor contului (Space-uri, profiluri, contacte, grupuri, click-to-call) care poate fi restaurată pe acest dispozitiv sau pe altul.</string>
     <string name="backup_view_reminder">Ultima dvs. copie de rezervă a fost creată cu mai mult de 30 de zile în urmă.</string>
     <string name="backup_view_save_file_message">Salvați fișierul de backup pe dispozitivul dorit și păstrați parolele pentru restaurarea ulterioară.</string>
+    <string name="backup_view_save_password">Salvați în managerul de parole</string>
     <string name="backup_view_security">Securitate</string>
     <string name="backup_view_security_info">Cheia de criptare a copiei de rezervă este reprezentată de o serie de 12 cuvinte care vor fi necesare pentru restaurare.</string>
     <string name="backup_view_success">Copie de rezervă finalizată cu succes!</string>
@@ -480,6 +497,8 @@
     <string name="conversation_view_info">:lock Mesajele de chat sunt criptate pe telefonul dvs. și în timpul transmiterii lor. Pentru a asigura cel mai înalt nivel de securitate a datelor, acestea sunt trimise direct pe telefonul lui %s folosind o conexiune peer-to-peer fără server intermediar.</string>
     <string name="conversation_view_invitation_accepted">Invitație acceptată</string>
     <string name="conversation_view_invitation_failed">Rugați contactul să actualizeze Skred</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s a acceptat invitația</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s a refuzat invitația</string>
     <string name="conversation_view_invitation_joined">Membru al grupului</string>
     <string name="conversation_view_invitation_pending">Invitație în curs</string>
     <string name="conversation_view_invitation_refused">Invitație refuzată</string>
@@ -520,6 +539,13 @@
     <string name="conversation_view_send_quality_size">Media de dimensiuni mari (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Trimiteți în definiție standard (SD)</string>
     <string name="conversation_view_send_quality_warning">Puteți redimensiona la definiție standard (SD) pentru un transfer mai rapid.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s a acceptat conexiunea</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Nu accepți prezentări făcute de contactele tale.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s a refuzat conexiunea</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Ați refuzat cererea de conectare</string>
+    <string name="conversation_view_share_contact_item_local_message">Se conectează %1$s cu %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Te conectez cu %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">În așteptarea acceptării de către %1$s</string>
     <string name="conversation_view_stream_dialog">Doriți să îl acceptați?</string>
     <string name="conversation_view_unsupported_media">Format media nesuportat.</string>
     <string name="conversation_view_video_call">Apel video</string>
@@ -869,6 +895,7 @@
     <string name="notification_center_cancel">Închide</string>
     <string name="notification_center_cleanup_conversation">Unele mesaje vechi au fost șterse.</string>
     <string name="notification_center_conference_join_call">Un participant s-a alăturat apelului.</string>
+    <string name="notification_center_connection_request">Żądanie połączenia</string>
     <string name="notification_center_deleted_contact">Contact șters</string>
     <string name="notification_center_file_message">V-a trimis un fișier</string>
     <string name="notification_center_file_message_received">Fișier nou</string>
@@ -1017,6 +1044,7 @@
     <string name="premium_services_view_transfert_title">Transfer apel</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aplicații active</string>
     <string name="privacy_view_coach_mark">Blocați aplicația cu servicii biometrice sau un cod PIN.</string>
     <string name="privacy_view_hide_last_screen_message">Și ascundeți aplicația când merge în fundal, dacă dispozitivul permite.</string>
     <string name="privacy_view_hide_last_screen_title">Interziceți capturile de ecran</string>
@@ -1025,6 +1053,10 @@
     <string name="privacy_view_lock_screen_timeout">Timeout blocare acces</string>
     <string name="privacy_view_lock_screen_timeout_instant">Instantaneu</string>
     <string name="privacy_view_lock_screen_title">Blocare acces</string>
+    <string name="privacy_view_share_invitation_ask">Întreabă-mă de fiecare dată</string>
+    <string name="privacy_view_share_invitation_info">Vei fi notificat de fiecare dată când cineva distribuie contactul tău.</string>
+    <string name="privacy_view_share_invitation_setting">Permite contactelor mele să mă conecteze cu contactele lor</string>
+    <string name="privacy_view_share_invitation_title">Conexiuni</string>
     <string name="privacy_view_title">Confidențialitate</string>
 
     <!-- ProfileFragment -->
@@ -1097,6 +1129,7 @@
     <string name="restore_view_success">Restaurarea s-a finalizat cu succes!</string>
     <string name="restore_view_success_message">Închideți aplicația și reporniți-o pentru a accesa noile date.</string>
     <string name="restore_view_title">Restaurare</string>
+    <string name="restore_view_update_message">Trebuie să actualizați aplicația pentru a restaura copia de rezervă.</string>
     <string name="restore_view_verify_same_account">Verificarea trebuie efectuată pe același dispozitiv folosit pentru copie de rezervă.</string>
     <string name="restore_view_warning">Restaurarea acestei copii de rezervă va înlocui toate datele curente ale contului cu datele din copie.</string>
 
@@ -1154,7 +1187,10 @@
     <string name="settings_view_show_maps">Afișează hărți</string>
     <string name="settings_view_silent_mode">Mod silențios</string>
     <string name="settings_view_silent_sound">Mut</string>
+    <string name="settings_view_sound_effects_info">Redați sunete la interacțiunea cu aplicația</string>
+    <string name="settings_view_sound_effects_title">Efecte sonore</string>
     <string name="settings_view_sound_enabled_title">NOTIFICĂRI SONORE</string>
+    <string name="settings_view_sound_vibrations_title">Sunete și vibrații</string>
     <string name="settings_view_system_notifications_title">Notificări sistem</string>
     <string name="settings_view_system_settings_title">Setări sistem</string>
     <string name="settings_view_turn_off_notification_sounds">Oprește sunetele notificărilor</string>
@@ -1166,7 +1202,18 @@
     <string name="settings_view_welcome_screen_summary">Afișați ecranele de bun venit</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Previzualizarea unui link web sau a unei locații pe o hartă expune adresa IP.</string>
     <string name="settings_advanced_view_developer_settings">Setări dezvoltator</string>
+    <string name="settings_advanced_view_security_advanced">Avansat</string>
+    <string name="settings_advanced_view_security_advanced_info">Adresa IP este ascunsă local (folosind TLS pentru STUN).</string>
+    <string name="settings_advanced_view_security_expert">Expert</string>
+    <string name="settings_advanced_view_security_expert_info">Adresa IP este ascunsă local și pentru contacte (apelurile sunt direcționate printr-un server TURN).</string>
+    <string name="settings_advanced_view_security_optimized">Optimizat (implicit)</string>
+    <string name="settings_advanced_view_security_optimized_info">Adresa IP poate fi expusă în timpul schimburilor WebRTC, la partajarea unei locații pe o hartă sau la previzualizarea unui link web.</string>
+    <string name="settings_advanced_view_security_level_title">Nivel de securitate</string>
+    <string name="settings_advanced_view_security_info">Ajustați echilibrul dintre securitate și performanță pentru nevoi specifice.</string>
+    <string name="settings_advanced_view_security_title">Securitate</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Nivelul de securitate Expert nu permite modificarea acestei setări.</string>
     <string name="settings_advanced_view_status_connection_message">Verificați starea conexiunii la serviciu</string>
     <string name="settings_advanced_view_status_connection_title">Stare conexiune</string>
     <string name="settings_advanced_view_telecom">APELURI</string>
@@ -1207,6 +1254,15 @@
     <string name="settings_space_view_secret_title">Space secret</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s dorește să te conecteze cu %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Dorești să adaugi %1$s ca persoană de contact personală?</string>
+    <string name="share_contact_view_onboarding_part_1">Acum le puteți permite contactelor dvs. să vă conecteze cu propriile lor contacte.</string>
+    <string name="share_contact_view_onboarding_part_2">În mod implicit, trebuie să aprobați fiecare propunere de conectare.</string>
+    <string name="share_contact_view_onboarding_part_3">Comportamentul implicit poate fi modificat în secțiunea «Confidențialitate» din setările aplicației.</string>
+    <string name="share_contact_view_share_info">%1$s va primi o notificare de distribuire</string>
+    <string name="share_contact_view_share_title">Distribuie contactul lui %1$s</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Contacte</string>
     <string name="share_view_group_list">Grupuri</string>
@@ -1240,6 +1296,7 @@
     <string name="show_contact_view_pending_message">Această relație este în curs de stabilire. Vă rugăm să așteptați.</string>
     <string name="show_contact_view_revoked">Șters</string>
     <string name="show_contact_view_settings_coach_mark">Definește ce are voie să facă acest contact în relația cu dvs.</string>
+    <string name="show_contact_view_share_contact">Distribuie acest contact</string>
     <string name="show_contact_view_space">Space:</string>
     <string name="show_contact_view_video">Video</string>
 

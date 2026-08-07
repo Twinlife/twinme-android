@@ -2,3 +2,13 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 include ':app', ':webrtc-framework', ':twinlife-framework', ':twinme-framework', ':twinme-android-common', ':zxing', ':image-cropper'
+
+// Huawei's gradle plugin v1.9.5.301 has a transitive dependency to com.sun.activation:javax.activation.
+// We can try removing this when we upgrade the plugin.
+gradle.allprojects {
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute module("com.sun.activation:javax.activation") using module("javax.activation:javax.activation-api:1.2.0") because "Duplicate class conflict between sun implementation and javax api"
+        }
+    }
+}

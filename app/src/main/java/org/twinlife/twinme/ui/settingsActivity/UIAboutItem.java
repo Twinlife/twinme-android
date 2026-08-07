@@ -32,7 +32,7 @@ public class UIAboutItem {
         mText = text;
     }
 
-    public String geText() {
+    public String getText() {
 
         return mText;
     }

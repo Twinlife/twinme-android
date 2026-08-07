@@ -15,11 +15,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ShareInvitationMode;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.settingsActivity.AbstractSettingsActivity;
@@ -67,6 +69,14 @@ public class PrivacyActivity extends AbstractSettingsActivity {
     }
 
     @Override
+    public void onSettingChangeValue(@NonNull UISetting<Boolean> setting, boolean value) {
+
+        super.onSettingChangeValue(setting, value);
+
+        mPrivacyAdapter.updateSettings();
+    }
+
+    @Override
     public void onSettingChangeValue(Settings.BooleanConfig booleanConfig, boolean value) {
 
         if (booleanConfig == Settings.privacyHideLastScreen) {
@@ -100,6 +110,14 @@ public class PrivacyActivity extends AbstractSettingsActivity {
         }
 
         showAlertMessageView(R.id.privacy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
+    }
+
+    public void onSelectShareInvitationModeClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectShareInvitationModeClick");
+        }
+
+        selectShareInvitationMode();
     }
 
     //
@@ -171,6 +189,56 @@ public class PrivacyActivity extends AbstractSettingsActivity {
 
         viewGroup.addView(menuSelectValueView);
         menuSelectValueView.openMenu(MenuSelectValueView.MenuType.LOCKSCREEN, getTwinmeApplication().screenLockTimeout());
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
+    }
+
+    private void selectShareInvitationMode() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "selectShareInvitationMode");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.privacy_activity_layout);
+
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+        menuSelectValueView.setActivity(this);
+
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+                viewGroup.removeView(menuSelectValueView);
+                setStatusBarColor();
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (value == ShareInvitationMode.NEVER.toInteger()) {
+                    getTwinmeApplication().setShareInvitationMode(ShareInvitationMode.NEVER);
+                } else if (value == ShareInvitationMode.ASK.toInteger()) {
+                    getTwinmeApplication().setShareInvitationMode(ShareInvitationMode.ASK);
+                } else {
+                    getTwinmeApplication().setShareInvitationMode(ShareInvitationMode.AUTOMATIC);
+                }
+
+                mPrivacyAdapter.updateShareInvitationMode();
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+                if (DEBUG) {
+                    Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+                }
+
+                menuSelectValueView.animationCloseMenu();
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.SHARE_INVITATION_MODE, getTwinmeApplication().getShareInvitationMode().toInteger());
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

@@ -27,10 +27,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class MenuCleanUpExpirationView extends PercentRelativeLayout implements CustomTabView.Observer {
+public class MenuCleanUpExpirationView extends RelativeLayout implements CustomTabView.Observer {
     private static final String LOG_TAG = "MenuCleanUpExpi...";
     private static final boolean DEBUG = false;
 
@@ -335,6 +335,7 @@ public class MenuCleanUpExpirationView extends PercentRelativeLayout implements 
 
         View slideMarkView = findViewById(R.id.menu_expiration_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -355,6 +356,8 @@ public class MenuCleanUpExpirationView extends PercentRelativeLayout implements 
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         List<UICustomTab> customTabs = new ArrayList<>();
         customTabs.add(new UICustomTab(getContext().getString(R.string.cleanup_view_older_than), UICustomTab.CustomTabType.PERIOD, true));

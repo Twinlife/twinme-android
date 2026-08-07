@@ -42,7 +42,7 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Logger;

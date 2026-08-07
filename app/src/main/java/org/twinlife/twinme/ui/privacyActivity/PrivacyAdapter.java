@@ -20,38 +20,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinlife.ShareInvitationMode;
+import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.conversationActivity.SelectValueViewHolder;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.ui.settingsActivity.SettingSwitchViewHolder;
 import org.twinlife.twinme.ui.settingsActivity.SettingValueViewHolder;
 import org.twinlife.twinme.ui.settingsActivity.UISetting;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final String LOG_TAG = "MessagesSettingsAdapter";
+    private static final String LOG_TAG = "PrivacyAdapter";
     private static final boolean DEBUG = false;
 
     @NonNull
     private final PrivacyActivity mPrivacyActivity;
 
-    private final static int ITEM_COUNT = 5;
-
-    private static final int POSITION_LOCK_SCREEN = 0;
-    private static final int POSITION_LOCK_SCREEN_INFORMATION = 1;
-    private static int SECTION_TIMEOUT = 2;
-    private static int POSITION_TIMEOUT = 3;
-    private static int SECTION_PREVENT_SCREENSHOT = 4;
-    private static int POSITION_PREVENT_SCREENSHOT = 5;
-    private static int POSITION_PREVENT_SCREENSHOT_INFORMATION = 6;
+    private final List<UIPrivacyItem> mPrivacyItems =  new ArrayList<>();
 
     private static final int TITLE = 0;
     private static final int CHECKBOX = 1;
     private static final int VALUE = 2;
     private static final int INFO = 3;
+    private static final int TIMEOUT = 4;
 
     PrivacyAdapter(@NonNull PrivacyActivity listActivity) {
 
         mPrivacyActivity = listActivity;
         setHasStableIds(false);
+        loadItems();
     }
 
     public void updateTimeout() {
@@ -59,16 +59,32 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Log.d(LOG_TAG, "updateTimeout");
         }
 
-        notifyItemChanged(POSITION_TIMEOUT);
+        for (UIPrivacyItem item : mPrivacyItems) {
+            if (item.getType() == UIPrivacyItem.PrivacyItemType.LOCKSCREEN_TIMEOUT) {
+                notifyItemChanged(mPrivacyItems.indexOf(item));
+                break;
+            }
+        }
     }
 
     public void updateSettings() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "updateTimeout");
+            Log.d(LOG_TAG, "updateSettings");
         }
 
-        if (mPrivacyActivity.getTwinmeApplication().screenLocked()) {
-            notifyItemRangeChanged(2, ITEM_COUNT);
+        loadItems();
+        notifyItemChanged(0, mPrivacyItems.size());
+    }
+
+    public void updateShareInvitationMode() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateShareInvitationMode");
+        }
+
+        for (UIPrivacyItem item : mPrivacyItems) {
+            if (item.getType() == UIPrivacyItem.PrivacyItemType.SHARE_INVITATION_MODE) {
+                notifyItemChanged(mPrivacyItems.indexOf(item));
+            }
         }
     }
 
@@ -78,22 +94,7 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        if (mPrivacyActivity.getTwinmeApplication().screenLocked()) {
-            SECTION_TIMEOUT = 2;
-            POSITION_TIMEOUT = 3;
-            SECTION_PREVENT_SCREENSHOT = 4;
-            POSITION_PREVENT_SCREENSHOT = 5;
-            POSITION_PREVENT_SCREENSHOT_INFORMATION = 6;
-            return ITEM_COUNT + 2;
-        }
-
-        SECTION_TIMEOUT = -1;
-        POSITION_TIMEOUT = -1;
-        SECTION_PREVENT_SCREENSHOT = 2;
-        POSITION_PREVENT_SCREENSHOT = 3;
-        POSITION_PREVENT_SCREENSHOT_INFORMATION = 4;
-
-        return ITEM_COUNT;
+        return mPrivacyItems.size();
     }
 
     @Override
@@ -102,14 +103,23 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == POSITION_LOCK_SCREEN_INFORMATION || position == POSITION_PREVENT_SCREENSHOT_INFORMATION ) {
-            return INFO;
-        } else if (position == SECTION_PREVENT_SCREENSHOT || position == SECTION_TIMEOUT) {
-            return TITLE;
-        } else if (position == POSITION_TIMEOUT) {
-            return VALUE;
-        } else {
-            return CHECKBOX;
+        UIPrivacyItem item = mPrivacyItems.get(position);
+        switch (item.getType()) {
+            case SECTION:
+                return TITLE;
+
+            case ALLOW_SCREENSHOT:
+            case LOCKSCREEN_ENABLE:
+                return CHECKBOX;
+
+            case LOCKSCREEN_TIMEOUT:
+                return TIMEOUT;
+
+            case SHARE_INVITATION_MODE:
+                return VALUE;
+
+            default:
+                return INFO;
         }
     }
 
@@ -120,28 +130,21 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         int viewType = getItemViewType(position);
+        UIPrivacyItem item = mPrivacyItems.get(position);
 
         if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            String message = "";
-            if (position == POSITION_LOCK_SCREEN_INFORMATION) {
-                message = mPrivacyActivity.getString(R.string.privacy_view_lock_screen_message);
-            } else if (position == POSITION_PREVENT_SCREENSHOT_INFORMATION) {
-                message = mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_message);
-            }
-            informationViewHolder.onBind(message, false);
-
+            informationViewHolder.onBind(item.getText(), false);
         } else if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind("", false);
+            sectionTitleViewHolder.onBind(item.getText(), false);
         } else if (viewType == CHECKBOX) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
-
             UISetting<Boolean> uiSetting = null;
-            if (position == POSITION_LOCK_SCREEN) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mPrivacyActivity.getString(R.string.privacy_view_lock_screen_title), Settings.privacyActivityScreenLock);
-            } else if (position == POSITION_PREVENT_SCREENSHOT) {
-                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_title), Settings.privacyHideLastScreen);
+            if (item.getType() == UIPrivacyItem.PrivacyItemType.LOCKSCREEN_ENABLE) {
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, item.getText(), Settings.privacyActivityScreenLock);
+            } else if (item.getType() == UIPrivacyItem.PrivacyItemType.ALLOW_SCREENSHOT) {
+                uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, item.getText(), Settings.privacyHideLastScreen);
             }
 
             if (uiSetting != null) {
@@ -154,11 +157,24 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
                 }
             }
-
-        } else if (viewType == VALUE) {
+        } else if (viewType == TIMEOUT) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             Runnable runnable = () -> mPrivacyActivity.onSettingClick(Settings.privacyScreenLockTimeout);
-            settingValueViewHolder.onBind(mPrivacyActivity.getString(R.string.privacy_view_lock_screen_timeout), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout, runnable);
+            settingValueViewHolder.onBind(item.getText(), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout, runnable);
+        } else if (viewType == VALUE) {
+            SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
+            selectValueViewHolder.itemView.setOnClickListener(v -> mPrivacyActivity.onSelectShareInvitationModeClick());
+
+            String value = "";
+            if (mPrivacyActivity.getTwinmeApplication().getShareInvitationMode() == ShareInvitationMode.NEVER) {
+                value = mPrivacyActivity.getString(R.string.contact_capabilities_view_camera_control_never);
+            } else if (mPrivacyActivity.getTwinmeApplication().getShareInvitationMode() == ShareInvitationMode.ASK) {
+                value = mPrivacyActivity.getString(R.string.privacy_view_share_invitation_ask);
+            } else if (mPrivacyActivity.getTwinmeApplication().getShareInvitationMode() == ShareInvitationMode.AUTOMATIC) {
+                value = mPrivacyActivity.getString(R.string.contact_capabilities_view_camera_control_allow);
+            }
+
+            selectValueViewHolder.onBind(item.getText(), value, false, Design.WHITE_COLOR);
         }
     }
 
@@ -181,9 +197,35 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else if (viewType == CHECKBOX) {
             convertView = inflater.inflate(R.layout.settings_activity_item_switch, parent, false);
             return new SettingSwitchViewHolder(convertView);
-        } else {
+        } else if (viewType == TIMEOUT) {
             convertView = inflater.inflate(R.layout.settings_activity_item_value, parent, false);
             return new SettingValueViewHolder(convertView);
+        } else {
+            convertView = inflater.inflate(R.layout.select_value_item, parent, false);
+            return new SelectValueViewHolder(convertView);
         }
+    }
+
+    private void loadItems() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "loadItems");
+        }
+
+        mPrivacyItems.clear();
+
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.SECTION, mPrivacyActivity.getString(R.string.settings_advanced_view_security_title)));
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.LOCKSCREEN_ENABLE, mPrivacyActivity.getString(R.string.privacy_view_lock_screen_title)));
+        if (mPrivacyActivity.getTwinmeApplication().screenLocked()) {
+            mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.LOCKSCREEN_TIMEOUT, mPrivacyActivity.getString(R.string.privacy_view_lock_screen_timeout)));
+        }
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.INFO, mPrivacyActivity.getString(R.string.privacy_view_lock_screen_message)));
+
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.SECTION, mPrivacyActivity.getString(R.string.privacy_view_app_switcher)));
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.ALLOW_SCREENSHOT, mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_title)));
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.INFO, mPrivacyActivity.getString(R.string.privacy_view_hide_last_screen_message)));
+
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.SECTION, mPrivacyActivity.getString(R.string.privacy_view_share_invitation_title)));
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.SHARE_INVITATION_MODE, mPrivacyActivity.getString(R.string.privacy_view_share_invitation_setting)));
+        mPrivacyItems.add(new UIPrivacyItem(UIPrivacyItem.PrivacyItemType.INFO, mPrivacyActivity.getString(R.string.privacy_view_share_invitation_info)));
     }
 }

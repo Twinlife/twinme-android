@@ -164,7 +164,7 @@ public class OnboardingDetailView extends AbstractBottomSheetView {
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM32);
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             mMessageView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 

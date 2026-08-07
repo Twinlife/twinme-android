@@ -38,7 +38,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BackupInfo;
-import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.services.BackupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
@@ -89,7 +89,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
             mBound = true;
 
             mService.getAllBackups((errorCode, backupInfos) -> {
-                if (errorCode == BaseService.ErrorCode.SUCCESS && backupInfos != null && !isDestroyed()) {
+                if (errorCode == ErrorCode.SUCCESS && backupInfos != null && !isDestroyed()) {
                     mIsGetBackupsDone = true;
                     for (BackupInfo backupInfo : backupInfos) {
                         addBackupInfo(backupInfo);
@@ -402,7 +402,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
         }
 
         mService.deleteBackups((errorCode, ignored) -> {
-            if (errorCode == BaseService.ErrorCode.SUCCESS && !isDestroyed()) {
+            if (errorCode == ErrorCode.SUCCESS && !isDestroyed()) {
                 mBackupInfos.clear();
                 getTwinmeApplication().clearLastBackupDate();
                 runOnUiThread(this::updateViews);

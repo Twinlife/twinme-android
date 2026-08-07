@@ -104,19 +104,19 @@ public class AboutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         UIAboutItem item = mItems.get(position);
         if (viewType == SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(item.geText(), false);
+            sectionTitleViewHolder.onBind(item.getText(), false);
         } else if (viewType == VALUE) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             settingValueViewHolder.itemView.setOnClickListener(view -> mActivity.onAboutItemClick(item.getType()));
             if (mActivity.getTwinmeApplication().getLastVersion() != null) {
-                settingValueViewHolder.onBind(item.geText(), BuildConfig.VERSION_NAME);
+                settingValueViewHolder.onBind(item.getText(), BuildConfig.VERSION_NAME);
             } else {
-                settingValueViewHolder.onBind(item.geText(), "");
+                settingValueViewHolder.onBind(item.getText(), "");
             }
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAboutItemClick(item.getType()));
-            settingSectionViewHolder.onBind(item.geText(), Design.FONT_COLOR_DEFAULT, false);
+            settingSectionViewHolder.onBind(item.getText(), Design.FONT_COLOR_DEFAULT, false);
         } else if (viewType == UPDATE) {
             UpdateAvailableViewHolder updateAvailableViewHolder = (UpdateAvailableViewHolder) viewHolder;
             updateAvailableViewHolder.itemView.setOnClickListener(view -> mActivity.onAboutItemClick(item.getType()));
@@ -127,7 +127,7 @@ public class AboutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             }
         } else if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            informationViewHolder.onBind(item.geText(), false);
+            informationViewHolder.onBind(item.getText(), false);
         } else if (viewType == ABOUT) {
             AboutItemViewHolder aboutItemViewHolder = (AboutItemViewHolder) viewHolder;
             aboutItemViewHolder.onBind(item.getType() == UIAboutItem.AboutItemType.COPYRIGHT);

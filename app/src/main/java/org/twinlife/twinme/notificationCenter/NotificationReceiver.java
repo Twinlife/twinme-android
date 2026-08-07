@@ -17,8 +17,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.RemoteInput;
 
-import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConversationService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.services.PeerService;
 import org.twinlife.twinme.ui.Intents;
@@ -105,7 +105,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         PeerService.startService(context, 0, System.currentTimeMillis());
 
         twinmeContext.getOriginator(contactUUID, (status, originator) -> {
-            if (status != BaseService.ErrorCode.SUCCESS || originator == null) {
+            if (status != ErrorCode.SUCCESS || originator == null) {
                 Log.e(LOG_TAG, "Could not get originator with id=" + contactId);
                 twinmeContext.getNotificationCenter().acknowledgeReply(conversationId, null);
                 return;
@@ -124,7 +124,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             UUID notificationId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_NOTIFICATION_ID));
             if (notificationId != null) {
                 twinmeContext.getNotification(notificationId, (status1, notification) -> {
-                    if (status1 == BaseService.ErrorCode.SUCCESS && notification != null) {
+                    if (status1 == ErrorCode.SUCCESS && notification != null) {
                         ConversationService.DescriptorId descriptorId = notification.getDescriptorId();
 
                         if (descriptorId != null) {

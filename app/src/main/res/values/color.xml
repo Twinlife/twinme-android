@@ -73,5 +73,5 @@
     <color name="qrcode_result_points">#c099cc00</color>
 
     <!-- Color for Android 12 imposed splash screen -->
-    <color name="skred_color">#fe4544</color>
+    <color name="skred_color">#fe4764</color>
 </resources>

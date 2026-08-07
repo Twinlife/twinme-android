@@ -905,7 +905,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

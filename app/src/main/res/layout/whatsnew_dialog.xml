@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/whats_new_dialog_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:layout_below="@+id/whats_new_dialog_title"
             android:gravity="center" />
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/whats_new_dialog_negative_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,9 +68,9 @@
                 android:gravity="center"
                 android:text="@string/application_ok" />
 
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/whats_new_dialog_cancel_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -82,8 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/application_later" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

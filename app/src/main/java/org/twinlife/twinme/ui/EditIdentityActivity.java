@@ -458,6 +458,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
 
         View slideMarkView = findViewById(R.id.edit_identity_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -793,7 +794,7 @@ public class EditIdentityActivity extends AbstractEditActivity implements EditId
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

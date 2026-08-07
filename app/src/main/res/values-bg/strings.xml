@@ -105,6 +105,7 @@
     <string name="application_select_more">Изберете още…</string>
     <string name="application_server_timeout">Изтичане на времето за отговор от сървъра</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Старт</string>
     <string name="application_theme">Тема</string>
     <string name="application_timeout">Време на изчакване</string>
     <string name="application_timeout_day">1 ден</string>
@@ -116,6 +117,8 @@
     <string name="application_timeout_seconds">%1$d секунди</string>
     <string name="application_timeout_week">1 седмица</string>
     <string name="application_until">До %1$s</string>
+    <string name="application_transfer_from_another_device">Прехвърляне от друго устройство</string>
+    <string name="application_transfer_restore">Прехвърляне или възстановяване</string>
     <string name="application_unknown_name">Неизвестно</string>
     <string name="application_upgrade">Актуализиране на Skred</string>
     <string name="application_webrtc_failure">Грешка в WebRTC</string>
@@ -195,12 +198,23 @@
     <string name="account_migration_view_transfer_in_progress">Прехвърлянето на данни е в ход</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">За да започнете прехвърлянето, сканирайте QR кода за прехвърляне, показан на другото устройство.</string>
+    <string name="account_migration_scanner_view_header_other_device">За да започнете прехвърлянето, сканирайте QR кода, показан на това устройство, от другото устройство.</string>
     <string name="account_migration_scanner_view_message">Покажете този екран на всяко устройство и едното да сканира QR-кода на другото.</string>
     <string name="account_migration_scanner_view_message_older_version">Това устройство използва стара, несъвместима версия на ОС, което ще доведе до загуба на всички връзки на целевото устройство по време на прехвърлянето. Искате ли въпреки това да продължите?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Целевото устройство използва стара, несъвместима версия на ОС, което ще доведе до загуба на всички ваши връзки по време на прехвърлянето. Искате ли въпреки това да продължите?</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">За да стартирате миграция, сканирайте този QR-код от другото устройство</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Сканирайте QR-кода, показан в секцията „Акаунт / Прехвърляне от друго устройство“ в страничното меню на другото устройство.</string>
+    <string name="account_migration_scanner_view_restore_title">Вече нямате достъп до другото устройство?</string>
+    <string name="account_migration_scanner_view_restore_message">Ако съществува резервно копие, можете да го възстановите на това устройство.</string>
     <string name="account_migration_scanner_view_scan_title">Сканиране</string>
+    <string name="account_migration_scanner_view_step_1">Отворете приложението на другото устройство</string>
+    <string name="account_migration_scanner_view_step_2">Отидете в страничното меню</string>
+    <string name="account_migration_scanner_view_step_3">Изберете „Акаунт“</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Стартирайте прехвърлянето от това устройство</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Стартирайте прехвърлянето от другото устройство</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Сканирайте QR кода, показан на другото устройство, с това устройство</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Сканирайте QR кода, показан на това устройство, с другото устройство</string>
     <string name="account_migration_scanner_view_stop_scan_title">Спиране на сканирането</string>
 
     <!-- AddCallParticipantActivity -->
@@ -289,13 +303,16 @@
     <string name="backup_view_content_diff_deleted">Изтрито</string>
     <string name="backup_view_content_diff_message">Ето промените спрямо текущите ви данни:</string>
     <string name="backup_view_content_info">Резервните копия не включват разговори, известия и история.</string>
+    <string name="backup_view_copy_clipboard">Копиране в клипборда</string>
     <string name="backup_view_error_words">Въведените думи не позволяват архивът да бъде декриптиран.</string>
+    <string name="backup_view_generate_key">Генериране на нов ключ за криптиране</string>
     <string name="backup_view_generate_word">Генерирай</string>
     <string name="backup_view_last_backup">Последен архив на %1$s</string>
     <string name="backup_view_new_backup">Нов архив</string>
     <string name="backup_view_onboarding">Направете криптирано резервно копие на данните от акаунта (пространства, профили, контакти, групи, click-to-call), което може да бъде възстановено на това или друго устройство.</string>
     <string name="backup_view_reminder">Последният ви архив е създаден преди повече от 30 дни.</string>
     <string name="backup_view_save_file_message">Запазете файла с архива на избраното от вас устройство и съхранете паролите за по-късно възстановяване.</string>
+    <string name="backup_view_save_password">Запазване в мениджъра на пароли</string>
     <string name="backup_view_security">Сигурност</string>
     <string name="backup_view_security_info">Ключът за криптиране на архива е представен от серия от 12 думи, които ще са необходими за възстановяване.</string>
     <string name="backup_view_success">Архивирането завърши успешно!</string>
@@ -480,6 +497,8 @@
     <string name="conversation_view_info">:lock Чат съобщенията са криптирани на телефона ви и по време на предаването им.          За да се осигури най-високо ниво на сигурност на данните, те се изпращат директно до телефона на %s чрез peer-to-peer връзка без посреднически сървър.</string>
     <string name="conversation_view_invitation_accepted">Поканата е приета</string>
     <string name="conversation_view_invitation_failed">Помолете контакта да актуализира Skred</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s прие поканата</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s отказа поканата</string>
     <string name="conversation_view_invitation_joined">Член на групата</string>
     <string name="conversation_view_invitation_pending">Покана в процес</string>
     <string name="conversation_view_invitation_refused">Поканата е отказана</string>
@@ -520,6 +539,13 @@
     <string name="conversation_view_send_quality_size">Голям файл (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Изпрати в стандартна резолюция (SD)</string>
     <string name="conversation_view_send_quality_warning">Можете да намалите резолюцията до SD за по-бързо изпращане.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s прие връзката</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Не приемате препоръки, направени от вашите контакти.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s отказа връзката</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Отказахте заявката за връзка</string>
+    <string name="conversation_view_share_contact_item_local_message">Свързване на %1$s с %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Свързване с %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Очакване на приемане от %1$s</string>
     <string name="conversation_view_stream_dialog">Искате ли да го приемете?</string>
     <string name="conversation_view_unsupported_media">Неподдържан медиен формат.</string>
     <string name="conversation_view_video_call">Видеообаждане</string>
@@ -868,6 +894,7 @@
     <string name="notification_center_cancel">Затвори</string>
     <string name="notification_center_cleanup_conversation">Някои стари съобщения бяха изтрити.</string>
     <string name="notification_center_conference_join_call">Един участник се присъедини към разговора.</string>
+    <string name="notification_center_connection_request">Заявка за връзка</string>
     <string name="notification_center_deleted_contact">Контактът е изтрит</string>
     <string name="notification_center_file_message">Ви изпрати файл</string>
     <string name="notification_center_file_message_received">Нов файл</string>
@@ -1016,6 +1043,7 @@
     <string name="premium_services_view_transfert_title">Прехвърляне на разговор</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Активни приложения</string>
     <string name="privacy_view_coach_mark">Заключете приложението с биометрия или PIN код.</string>
     <string name="privacy_view_hide_last_screen_message">И скрийте приложението, когато преминава във фонов режим, ако устройството го позволява.</string>
     <string name="privacy_view_hide_last_screen_title">Забраняване на скрийншотове</string>
@@ -1024,6 +1052,10 @@
     <string name="privacy_view_lock_screen_timeout">Време за заключване</string>
     <string name="privacy_view_lock_screen_timeout_instant">Мигновено</string>
     <string name="privacy_view_lock_screen_title">Заключване на достъпа</string>
+    <string name="privacy_view_share_invitation_ask">Питай ме всеки път</string>
+    <string name="privacy_view_share_invitation_info">Ще бъдете уведомявани, когато някой сподели вашия контакт.</string>
+    <string name="privacy_view_share_invitation_setting">Разрешаване на моите контакти да ме свързват със своите контакти</string>
+    <string name="privacy_view_share_invitation_title">Връзки</string>
     <string name="privacy_view_title">Поверителност</string>
 
     <!-- ProfileFragment -->
@@ -1096,6 +1128,7 @@
     <string name="restore_view_success">Възстановяването завърши успешно!</string>
     <string name="restore_view_success_message">Затворете приложението и го рестартирайте, за да получите достъп до новите данни.</string>
     <string name="restore_view_title">Възстановяване</string>
+    <string name="restore_view_update_message">Трябва да актуализирате приложението, за да възстановите резервното копие.</string>
     <string name="restore_view_verify_same_account">Проверката трябва да бъде извършена на същото устройство, използвано за архива.</string>
     <string name="restore_view_warning">Възстановяването на този архив ще замени всички текущи данни на акаунта с данните от архива.</string>
 
@@ -1153,7 +1186,10 @@
     <string name="settings_view_show_maps">TBD</string>
     <string name="settings_view_silent_mode">Безшумен режим</string>
     <string name="settings_view_silent_sound">Без звук</string>
+    <string name="settings_view_sound_effects_info">Възпроизвеждане на звуци при взаимодействие с приложението</string>
+    <string name="settings_view_sound_effects_title">Звукови ефекти</string>
     <string name="settings_view_sound_enabled_title">ЗВУКОВИ ИЗВЕСТИЯ</string>
+    <string name="settings_view_sound_vibrations_title">Звуци и вибрации</string>
     <string name="settings_view_system_notifications_title">Системни известия</string>
     <string name="settings_view_system_settings_title">Системни настройки</string>
     <string name="settings_view_turn_off_notification_sounds">Изключи звуците на известията</string>
@@ -1165,7 +1201,18 @@
     <string name="settings_view_welcome_screen_summary">Показване на началните екрани</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Визуализацията на уеб връзка или местоположение на карта разкрива IP адреса.</string>
     <string name="settings_advanced_view_developer_settings">Настройки за разработчици</string>
+    <string name="settings_advanced_view_security_advanced">Разширено</string>
+    <string name="settings_advanced_view_security_advanced_info">IP адресът е скрит локално (използвайки TLS за STUN).</string>
+    <string name="settings_advanced_view_security_expert">Експертно</string>
+    <string name="settings_advanced_view_security_expert_info">IP адресът е скрит локално и за контакти (разговорите се пренасочват през TURN сървър).</string>
+    <string name="settings_advanced_view_security_optimized">Оптимизирано (по подразбиране)</string>
+    <string name="settings_advanced_view_security_optimized_info">IP адресът може да бъде разкрит по време на WebRTC обмен, при споделяне на местоположение на карта или при визуализация на уеб връзка.</string>
+    <string name="settings_advanced_view_security_level_title">Ниво на сигурност</string>
+    <string name="settings_advanced_view_security_info">Регулирайте баланса между сигурност и производителност за специфични нужди.</string>
+    <string name="settings_advanced_view_security_title">Сигурност</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Нивото на сигурност „Експерт“ не позволява промяна на тази настройка.</string>
     <string name="settings_advanced_view_status_connection_message">Проверете състоянието на вашата връзка към услугата</string>
     <string name="settings_advanced_view_status_connection_title">Състояние на връзката</string>
     <string name="settings_advanced_view_telecom">ОБАЖДАНИЯ</string>
@@ -1206,6 +1253,15 @@
     <string name="settings_space_view_secret_title">Тайен Space</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s иска да ви свърже с %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Искате ли да добавите %1$s като личен контакт?</string>
+    <string name="share_contact_view_onboarding_part_1">Вече можете да разрешите на контактите си да ви свързват със собствените си контакти.</string>
+    <string name="share_contact_view_onboarding_part_2">По подразбиране трябва да одобрите всяко предложение за връзка.</string>
+    <string name="share_contact_view_onboarding_part_3">Поведението по подразбиране може да се промени в секцията „Поверителност“ в настройките на приложението.</string>
+    <string name="share_contact_view_share_info">%1$s ще получи известие за споделяне</string>
+    <string name="share_contact_view_share_title">Споделяне на контакта на %1$s</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Контакти</string>
     <string name="share_view_group_list">Групи</string>
@@ -1239,6 +1295,7 @@
     <string name="show_contact_view_pending_message">Връзката се установява. Моля, изчакайте.</string>
     <string name="show_contact_view_revoked">Изтрита</string>
     <string name="show_contact_view_settings_coach_mark">Определете какво е позволено на този контакт във връзката ви.</string>
+    <string name="show_contact_view_share_contact">Споделяне на този контакт</string>
     <string name="show_contact_view_space">Space:</string>
     <string name="show_contact_view_video">Видео</string>
 

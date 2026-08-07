@@ -261,6 +261,7 @@ public class MenuGroupMemberView extends PercentRelativeLayout {
         View sliderMarkView = findViewById(R.id.group_member_activity_menu_slide_mark_view);
 
         ViewGroup.LayoutParams layoutParams = sliderMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

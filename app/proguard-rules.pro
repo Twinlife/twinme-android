@@ -120,6 +120,17 @@
     *;
 }
 
+# Huawei Push Kit
+-keepattributes *Annotation*
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes Signature
+
+-keep class com.huawei.hianalytics.**{*;}
+-keep class com.huawei.updatesdk.**{*;}
+-keep class com.huawei.hms.**{*;}
+
+
 # Fix for twinme-android issue 1612  (upstream: https://github.com/androidx/media/issues/2535)
 
 # Keep LogSessionId class and related classes

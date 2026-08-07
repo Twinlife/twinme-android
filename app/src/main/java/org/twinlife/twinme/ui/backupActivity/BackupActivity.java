@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.BackupService.BackupState;
-import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.services.BackupService;
 import org.twinlife.twinme.skin.Design;
@@ -250,7 +250,7 @@ public class BackupActivity extends AbstractTwinmeActivity {
         }
 
         org.twinlife.twinlife.BackupService.ErrorCode errorCode = (org.twinlife.twinlife.BackupService.ErrorCode) intent.getSerializableExtra(BackupService.BACKUP_SERVICE_ERROR_CODE);
-        BaseService.ErrorCode baseErrorCode = (BaseService.ErrorCode) intent.getSerializableExtra(BackupService.BACKUP_SERVICE_BASE_ERROR_CODE);
+        ErrorCode baseErrorCode = (ErrorCode) intent.getSerializableExtra(BackupService.BACKUP_SERVICE_BASE_ERROR_CODE);
 
         mOverlayView.setVisibility(View.GONE);
         mProgressBarView.setVisibility(View.GONE);
@@ -397,7 +397,7 @@ public class BackupActivity extends AbstractTwinmeActivity {
         return stringBuilder.toString();
     }
 
-    private void showErrorMessage(org.twinlife.twinlife.BackupService.ErrorCode errorCode, BaseService.ErrorCode baseErrorCode) {
+    private void showErrorMessage(org.twinlife.twinlife.BackupService.ErrorCode errorCode, ErrorCode baseErrorCode) {
         if (DEBUG) {
             Log.d(LOG_TAG, "showErrorMessage");
         }
@@ -405,7 +405,7 @@ public class BackupActivity extends AbstractTwinmeActivity {
         String message;
         if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.NO_SPACE_LEFT) {
             message = getString(R.string.application_error_no_storage_space);
-        } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.KEY_GEN_FAILED && baseErrorCode == BaseService.ErrorCode.TWINLIFE_OFFLINE) {
+        } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.KEY_GEN_FAILED && baseErrorCode == ErrorCode.TWINLIFE_OFFLINE) {
             message = getString(R.string.application_connection_status_no_network_message);
         } else {
             message = getString(R.string.cleanup_view_error);

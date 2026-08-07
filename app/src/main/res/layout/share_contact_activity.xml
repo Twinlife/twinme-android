@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/share_contact_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/share_contact_activity_tool_bar"
+        layout="@layout/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/share_contact_activity_list_view"
+        android:layout_below="@+id/share_contact_activity_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/share_contact_activity_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/share_contact_activity_bottom_header_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <org.twinlife.twinme.utils.CircularImageView
+            android:id="@+id/share_contact_activity_avatar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/share_contact_activity_share_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/share_contact_activity_send_clickable_view"
+            android:layout_toEndOf="@id/share_contact_activity_avatar_view" />
+
+        <RelativeLayout
+            android:id="@+id/share_contact_activity_send_clickable_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+
+            <View
+                android:id="@+id/share_contact_activity_send_rounded_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/share_contact_activity_send_image_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/send_icon"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

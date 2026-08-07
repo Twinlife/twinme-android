@@ -21,8 +21,7 @@
             android:id="@+id/premium_feature_confirm_view_slide_mark_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:layout_widthPercent="12%" />
+            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/premium_feature_confirm_view_feature_image_view"
@@ -36,15 +35,16 @@
 
         <TextView
             android:id="@+id/premium_feature_confirm_view_title_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/premium_feature_confirm_view_feature_image_view"
             android:gravity="center"
-            android:lines="1"
-            app:layout_widthPercent="94%" />
+            android:lines="1" />
 
         <TextView
             android:id="@+id/premium_feature_confirm_view_message_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/premium_feature_confirm_view_title_view"
@@ -54,13 +54,13 @@
 
         <TextView
             android:id="@+id/premium_feature_confirm_view_link_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/premium_feature_confirm_view_message_view"
             android:text="@string/about_view_premium_services"
             android:gravity="center"
-            android:lines="1"
-            app:layout_widthPercent="94%" />
+            android:lines="1" />
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/premium_feature_confirm_view_confirm_view"

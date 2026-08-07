@@ -175,6 +175,7 @@ public class QualityOfServiceActivity extends AbstractOnboardingActivity {
         mActionView.setBackground(scrollIndicatorBackground);
 
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

@@ -120,7 +120,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         int viewType = getItemViewType(position);
 
         if (viewType == CHECKBOX) {
-            MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
+            MenuSwitchViewHolder menuSwitchViewHolder = (MenuSwitchViewHolder) viewHolder;
 
             boolean isOn = mAllowCopy;
             boolean hideSeparator = true;
@@ -137,8 +137,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             int finalTag = tag;
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mMenuSendOptionView.onOptionChangeValue(finalTag, value);
-            ((MenuSendOptionViewHolder) viewHolder).onBind(title, icon, tag, isOn, true, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
-
+            ((MenuSwitchViewHolder) viewHolder).onBind(title, icon, tag, isOn, true, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
         } else if (viewType == VALUE) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(v -> mMenuSendOptionView.onAllowEphemeralClick());
@@ -158,7 +157,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         if (viewType == CHECKBOX) {
             convertView = inflater.inflate(R.layout.menu_send_option_item, parent, false);
-            return new MenuSendOptionViewHolder(convertView);
+            return new MenuSwitchViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.select_value_item, parent, false);
             return new SelectValueViewHolder(convertView);

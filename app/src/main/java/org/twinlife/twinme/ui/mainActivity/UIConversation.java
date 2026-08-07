@@ -18,10 +18,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.CallDescriptor;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
+import org.twinlife.twinme.models.Contact;
+import org.twinlife.twinme.models.Group;
+import org.twinlife.twinme.models.Invitation;
 import org.twinlife.twinme.models.Originator;
+import org.twinlife.twinme.ui.conversations.MenuConversationShortcutView;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.utils.Utils;
 
@@ -120,12 +125,27 @@ public class UIConversation {
                     lastMessage = context.getResources().getString(R.string.notification_center_poll_message_received);
                     break;
 
+                case CONTACT_SHARE_DESCRIPTOR:
+                    ConversationService.ContactShareDescriptor contactShareDescriptor = (ConversationService.ContactShareDescriptor) mLastDescriptor;
+                    if (isLocalDescriptor()){
+                        lastMessage = String.format(context.getResources().getString(R.string.conversation_view_share_contact_item_local_message), getUIContact().getName(), contactShareDescriptor.getName());
+                    } else {
+                        lastMessage = String.format(context.getResources().getString(R.string.conversation_view_share_contact_item_peer_message), contactShareDescriptor.getName());
+                    }
+
+                    break;
+
                 case INVITATION_DESCRIPTOR:
                     lastMessage = context.getResources().getString(R.string.notification_center_invitation_group_received);
                     break;
 
                 case TWINCODE_DESCRIPTOR:
-                    lastMessage = context.getResources().getString(R.string.notification_center_invitation_received);
+                    ConversationService.TwincodeDescriptor twincodeDescriptor = (ConversationService.TwincodeDescriptor) mLastDescriptor;
+                    if (twincodeDescriptor.getSchemaId().equals(Invitation.CONTACT_SHARE_SCHEMA_ID)) {
+                        lastMessage = context.getResources().getString(R.string.notification_center_connection_request);
+                    } else {
+                        lastMessage = context.getResources().getString(R.string.notification_center_invitation_received);
+                    }
                     break;
 
                 case GEOLOCATION_DESCRIPTOR:
@@ -216,5 +236,28 @@ public class UIConversation {
     public boolean isLocalDescriptor() {
 
         return mLastDescriptor.getTwincodeOutboundId().equals(mUIContact.getContact().getTwincodeOutboundId());
+    }
+
+    public boolean isSilentMode() {
+
+        boolean silentMode;
+        long silentExpiration;
+
+        if (getContact().isGroup()) {
+            Group group = (Group) getContact();
+            silentMode = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        } else {
+            Contact contact = (Contact) getContact();
+            silentMode = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        }
+
+        long currentTimeMillis = System.currentTimeMillis() / 1000;
+        if (silentExpiration > 0 && silentExpiration < currentTimeMillis) {
+            silentMode = false;
+        }
+
+        return silentMode;
     }
 }

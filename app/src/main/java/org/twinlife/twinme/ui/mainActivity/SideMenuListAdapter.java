@@ -41,7 +41,6 @@ public class SideMenuListAdapter implements ListAdapter {
     private static final float DESIGN_LAYER2_HEIGHT = 110;
     private static final float DESIGN_NOTIFICATION_HEIGHT = 16;
     private static final float DESIGN_TOOLBAR_AVATAR_HEIGHT = 32;
-    public static final int NUMBER_TAP_HIDDEN_MODE = 8;
 
     public static final int DESIGN_SUBSCRIBE_BACKGROUND_COLOR = Color.rgb(186, 241, 215);
     public static final int DESIGN_SUBSCRIBE_COLOR = Color.rgb(10, 169, 141);
@@ -49,8 +48,6 @@ public class SideMenuListAdapter implements ListAdapter {
     final MainActivity mActivity;
     final List<MenuItem> mMenuItems = new ArrayList<>();
     private final OnMenuClickListener mOnMenuClickListener;
-
-    private boolean mHiddenMode = true;
     private boolean mIsFeatureSubscribed = false;
 
     private UISpace mUISpace;
@@ -68,9 +65,7 @@ public class SideMenuListAdapter implements ListAdapter {
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_subscribe, MenuItem.MenuItemAction.SUBSCRIBE),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_help, MenuItem.MenuItemAction.HELP),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_about_twinme, MenuItem.MenuItemAction.ABOUT_TWINME),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_view_title, MenuItem.MenuItemAction.ACCOUNT),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_view_sign_out, MenuItem.MenuItemAction.NO_ACTION),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_sign_out, MenuItem.MenuItemAction.SIGN_OUT)
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_view_title, MenuItem.MenuItemAction.ACCOUNT)
     };
 
     public interface OnMenuClickListener {
@@ -87,11 +82,6 @@ public class SideMenuListAdapter implements ListAdapter {
         mMenuItems.addAll(Arrays.asList(sMenuItems));
     }
 
-    public void setHiddenMode(boolean hiddenMode) {
-
-        mHiddenMode = hiddenMode;
-    }
-
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
     }
@@ -102,11 +92,6 @@ public class SideMenuListAdapter implements ListAdapter {
 
     @Override
     public int getCount() {
-
-        if (mHiddenMode) {
-
-            return mMenuItems.size() - 2;
-        }
 
         return mMenuItems.size();
     }

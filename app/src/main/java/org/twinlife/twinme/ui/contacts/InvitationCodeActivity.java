@@ -30,8 +30,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AssertPoint;
-import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.CryptoService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Invitation;
@@ -279,7 +279,7 @@ public class InvitationCodeActivity extends AbstractTwinmeActivity implements In
     }
 
     @Override
-    public void onError(BaseService.ErrorCode errorCode, @Nullable String message, @Nullable Runnable errorCallback) {
+    public void onError(ErrorCode errorCode, @Nullable String message, @Nullable Runnable errorCallback) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onError errorCode=" + errorCode);
         }

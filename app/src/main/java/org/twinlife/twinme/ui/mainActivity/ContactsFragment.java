@@ -503,7 +503,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
                 }
 
                 @Override
-                public void onCloseMenuSelectActionAnimationEnd() {
+                public void onCloseAbstractMenuViewAnimationEnd() {
 
                     drawerLayout.removeView(menuAddContactView);
                     if (mTwinmeActivity != null) {

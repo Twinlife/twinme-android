@@ -270,6 +270,7 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
 
         View slideMarkView = findViewById(R.id.edit_contact_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

@@ -43,7 +43,7 @@ import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.Purchase;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.twinme.models.Profile;

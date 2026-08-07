@@ -642,7 +642,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

@@ -15,6 +15,7 @@ import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -60,7 +61,7 @@ public class PreviewFullScreenVideoViewHolder extends RecyclerView.ViewHolder im
     private double mStartTime = 0;
     private double mTotalTime = 0;
 
-    private final Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
 
     private final Runnable mUpdateSongTime = new Runnable() {
 

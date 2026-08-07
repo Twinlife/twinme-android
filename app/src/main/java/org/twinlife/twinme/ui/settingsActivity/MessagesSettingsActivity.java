@@ -41,9 +41,9 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
     private static final int REQUEST_PICK_DIRECTORY = 1;
 
     private MessagesSettingsAdapter mMessagesSettingsAdapter;
+
     private SpaceSettingsService mSpaceSettingsService;
     private SpaceSettings mDefaultSpaceSettings;
-
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
     private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
@@ -155,7 +155,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         }
 
         mDefaultSpaceSettings = spaceSettings;
-        mMessagesSettingsAdapter.notifyDataSetChanged();
+        mMessagesSettingsAdapter.loadItems();
     }
 
     @Override
@@ -202,8 +202,6 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
             mDefaultSpaceSettings.setMessageCopyAllowed(value);
         } else if (booleanConfig == Settings.fileCopyAllowed) {
             mDefaultSpaceSettings.setFileCopyAllowed(value);
-        } else if (booleanConfig == Settings.visualizationLink || booleanConfig == Settings.visualizationMap) {
-            booleanConfig.setBoolean(value).save();
         }
 
         saveDefaultSpaceSettings();
@@ -320,7 +318,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
         MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
         menuSelectValueView.setActivity(this);
 
-        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
+        if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE) {
             long timeout = Long.parseLong(mDefaultSpaceSettings.getString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, SpaceSettingProperty.DEFAULT_TIMEOUT_MESSAGE + ""));
             menuSelectValueView.setSelectedValue((int) timeout);
         }
@@ -339,15 +337,18 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
 
                 if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
                     Settings.qualityMedia.setInt(value).save();
+                    mMessagesSettingsAdapter.updateMediaQuality();
                 } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
                     Settings.displayCallsMode.setInt(value).save();
+                    mMessagesSettingsAdapter.updateDisplayCalls();
                 }
-
-                mMessagesSettingsAdapter.updateMediaQuality();
             }
 
             @Override
             public void onSelectTimeout(UITimeout timeout) {
+                if (DEBUG) {
+                    Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+                }
 
                 menuSelectValueView.animationCloseMenu();
                 mDefaultSpaceSettings.setString(SpaceSettingProperty.PROPERTY_TIMEOUT_EPHEMERAL_MESSAGE, timeout.getDelay() + "");

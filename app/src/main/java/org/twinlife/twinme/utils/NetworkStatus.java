@@ -1,10 +1,11 @@
 /*
- *  Copyright (c) 2018-2020 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Christian Jacquemot (Christian.Jacquemot@twinlife-systems.com)
  *   Stephane Carrez (Stephane.Carrez@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.utils;
@@ -12,212 +13,174 @@ package org.twinlife.twinme.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
-import android.net.NetworkInfo;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.util.Log;
 
-import org.twinlife.device.android.twinme.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.twinlife.device.android.twinme.R;
 
 public class NetworkStatus {
     private static final String LOG_TAG = "NetworkStatus";
     private static final boolean DEBUG = false;
 
-    private static final int OFFLINE_ERROR_DELAY = 0; // 0s, immediate error
-    private static final int CONNECTED_ERROR_DELAY = 10; // 10s
-    private static final int CONNECTING_ERROR_DELAY = 15; // 15s, give more time for the network to scan and setup.
+    public interface NetworkStatusListener {
+        void onNetworkStatusChanged(boolean connected, boolean connecting);
+    }
 
-    private NetworkInfo.State mMobileNetworkStatus;
-    private NetworkInfo.State mWifiNetworkStatus;
-    private int mPersistDelay;
+    private boolean mIsWifiConnected = false;
+    private boolean mIsMobileConnected = false;
+    private boolean mIsConnecting = false;
+
     private int mMessage;
     private int mResolution;
-    private long mDeadline;
 
-    public NetworkStatus() {
+    @Nullable
+    private ConnectivityManager.NetworkCallback mNetworkCallback = null;
 
-    }
-
-    /**
-     * Check if we are trying to connect to at least one network.
-     *
-     * @return True if we are trying to connect to a network.
-     */
-    private boolean isConnecting() {
-
-        return mMobileNetworkStatus == NetworkInfo.State.CONNECTING || mWifiNetworkStatus == NetworkInfo.State.CONNECTING;
-    }
-
-    /**
-     * Check if we are connected to at least one network.
-     *
-     * @return True if we are connected to at least one network.
-     */
-    private boolean isConnected() {
-
-        return mMobileNetworkStatus == NetworkInfo.State.CONNECTED || mWifiNetworkStatus == NetworkInfo.State.CONNECTED;
-    }
-
-    /**
-     * Get the main diagnostic message.
-     *
-     * @return the network diagnostic message.
-     */
-    public int getMessage() {
-        return mMessage;
-    }
-
-    /**
-     * Get the possible resolution advice to the network connectivity issue.
-     *
-     * @return the resolution message.
-     */
-    public int getResolution() {
-
-        return mResolution;
-    }
-
-    /**
-     * Get the delay in seconds after which we can consider there is a persistent network issue.
-     *
-     * @return the delay in seconds.
-     */
-    public int getPersistentDelay() {
-
-        return mPersistDelay;
-    }
-
-    /**
-     * Get the deadline after which we can report an alert.
-     *
-     * @return the deadline.
-     */
-    public long getProbeDeadline() {
-
-        return mDeadline;
-    }
-
-    /**
-     * Get the network diagnostic messages to explain why there is no network connectivity.
-     */
-    public void getNetworkDiagnostic(Context context) {
+    public void startMonitoring(@NonNull Context context, @NonNull NetworkStatusListener listener) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "getNetworkDiagnostic");
+            Log.d(LOG_TAG, "startMonitoring: context=" + context + " listener=" + listener);
         }
 
-        boolean isAirplane = isAirplaneOn(context);
-        if (isAirplane) {
-            mMobileNetworkStatus = NetworkInfo.State.DISCONNECTED;
-            mWifiNetworkStatus = NetworkInfo.State.DISCONNECTED;
-            // "Airplane mode is activated."
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) return;
+
+        NetworkRequest request = new NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .build();
+
+        mNetworkCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onAvailable(@NonNull Network network) {
+                updateAndNotify(context, listener);
+            }
+
+            @Override
+            public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities cap) {
+                updateAndNotify(context, listener);
+            }
+
+            @Override
+            public void onLost(@NonNull Network network) {
+                updateAndNotify(context, listener);
+            }
+        };
+
+        cm.registerNetworkCallback(request, mNetworkCallback);
+
+        updateAndNotify(context, listener);
+    }
+
+    private void updateAndNotify(Context context, NetworkStatusListener listener) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateAndNotify: context=" + context + " listener=" + listener);
+        }
+
+        computeStatus(context);
+        listener.onNetworkStatusChanged(isConnected(), mIsConnecting);
+    }
+
+    private void computeStatus(Context context) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "computeStatus: context=" + context);
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        mIsWifiConnected = false;
+        mIsMobileConnected = false;
+        mIsConnecting = false;
+
+        if (isAirplaneOn(context)) {
             mMessage = R.string.application_network_status_airplane_message;
             mResolution = R.string.application_network_status_airplane_resolution;
-            mPersistDelay = OFFLINE_ERROR_DELAY;
             return;
         }
-        boolean isWifiEnabled = isWifiEnabled(context);
 
-        // Get the available networks.
-        final List<NetworkInfo> result = getNetworks(context);
+        if (cm != null) {
+            Network activeNetwork = cm.getActiveNetwork();
+            NetworkCapabilities caps = cm.getNetworkCapabilities(activeNetwork);
 
-        // Analyze what networks are available and look at their state.
-        mMobileNetworkStatus = NetworkInfo.State.UNKNOWN;
-        mWifiNetworkStatus = NetworkInfo.State.UNKNOWN;
-        for (NetworkInfo net : result) {
-            switch (net.getType()) {
-                case ConnectivityManager.TYPE_MOBILE:
-                    mMobileNetworkStatus = net.getState();
-                    break;
+            if (caps != null) {
+                boolean validated = caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);
 
-                case ConnectivityManager.TYPE_WIFI:
-                case ConnectivityManager.TYPE_ETHERNET:
-                    mWifiNetworkStatus = net.getState();
-                    break;
-
-                default:
-                    // Other network types are not meaningful because they concern VPNs, Bluetooth
-                    break;
+                if (caps.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || caps.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                    if (validated) {
+                        mIsWifiConnected = true;
+                    } else {
+                        mIsConnecting = true;
+                    }
+                } else if (caps.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                    if (validated) {
+                        mIsMobileConnected = true;
+                    } else {
+                        mIsConnecting = true;
+                    }
+                }
             }
         }
+
         if (isConnected()) {
-            mPersistDelay = CONNECTED_ERROR_DELAY;
-            // "The network is connected but the Internet connectivity is not available.";
             mMessage = R.string.application_network_status_connected_no_internet;
             mResolution = R.string.application_network_status_connected_resolution;
-
-        } else if (isConnecting()) {
-            mPersistDelay = CONNECTING_ERROR_DELAY;
+        } else if (mIsConnecting) {
             mMessage = R.string.application_network_status_connection_timeout;
             mResolution = 0;
-
         } else {
-            mPersistDelay = OFFLINE_ERROR_DELAY;
             mResolution = 0;
-            if (!isWifiEnabled) {
-                // mResolution = "Please, turn on the Wi-Fi to get an Internet connection.";
-                if (mMobileNetworkStatus == NetworkInfo.State.UNKNOWN) {
-                    // mMessage = "Wi-Fi is disabled.";
+            if (!isWifiEnabled(context)) {
+                // Mobile is down or we don't have the info
+                if (!mIsMobileConnected) {
                     mMessage = R.string.application_network_status_wifi_disabled_no_mobile;
                     mResolution = R.string.application_network_status_wifi_disabled_no_mobile_resolution;
                 } else {
-                    // mMessage = "Wi-Fi is disabled and there is no mobile Internet connection";
                     mMessage = R.string.application_network_status_wifi_disabled;
                     mResolution = R.string.application_network_status_wifi_disabled_resolution;
                 }
             } else {
-                // mMessage = "There is no Internet connection";
                 mMessage = R.string.application_network_status_no_internet;
             }
         }
-        if (mDeadline == 0) {
-            mDeadline = System.currentTimeMillis() + mPersistDelay * 1000L;
+    }
+
+    public void stopMonitoring(@NonNull Context context) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "stopMonitoring: context=" + context);
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm != null && mNetworkCallback != null) {
+            cm.unregisterNetworkCallback(mNetworkCallback);
+            mNetworkCallback = null;
         }
     }
 
-    private static boolean isWifiEnabled(final Context context) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "isWifiEnabled");
-        }
-
-        final WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        return wifiManager != null && wifiManager.isWifiEnabled();
+    public int getMessage() {
+        return mMessage;
     }
 
-    /**
-     * Get a network diagnostic message to explain why there is no network connectivity.
-     *
-     * @return the network diagnostic message.
-     */
-    private static List<NetworkInfo> getNetworks(Context context) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "getNetworkDiagnostic");
-        }
-
-        // Get the available networks.
-        final ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        final List<NetworkInfo> result = new ArrayList<>();
-
-        if (connectivityManager != null) {
-            final Network[] networks = connectivityManager.getAllNetworks();
-            for (Network net : networks) {
-                final NetworkInfo network = connectivityManager.getNetworkInfo(net);
-
-                if (network != null) {
-                    result.add(network);
-                }
-            }
-        }
-        return result;
+    public int getResolution() {
+        return mResolution;
     }
 
-    private static boolean isAirplaneOn(final Context context) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "isAirplaneOn");
-        }
+    public boolean isMonitoring() {
+        return mNetworkCallback != null;
+    }
 
+    private boolean isConnected() {
+        return mIsWifiConnected || mIsMobileConnected;
+    }
+
+    private boolean isWifiEnabled(Context context) {
+        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        return wm != null && wm.isWifiEnabled();
+    }
+
+    private boolean isAirplaneOn(Context context) {
         return Settings.Global.getInt(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
     }
 }

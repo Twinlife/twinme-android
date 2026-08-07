@@ -72,6 +72,8 @@ public abstract class Item implements Comparable<Item> {
         PEER_INVITATION_CONTACT,
         LOCATION,
         PEER_LOCATION,
+        SHARE_CONTACT,
+        PEER_SHARE_CONTACT,
         CLEAR,
         PEER_CLEAR,
         INFO_SECTION,

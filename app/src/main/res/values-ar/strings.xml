@@ -106,6 +106,7 @@
     <string name="application_select_more">حدد المزيد …</string>
     <string name="application_server_timeout">نفذت مهلة الخادم</string>
     <string name="application_size_unit">ميغابايت</string>
+    <string name="application_start">البدء</string>
     <string name="application_theme">موضوع</string>
     <string name="application_timeout">تأخير انتهاء الصلاحية</string>
     <string name="application_timeout_day">يوم 1</string>
@@ -116,6 +117,8 @@
     <string name="application_timeout_month">شهر 1</string>
     <string name="application_timeout_seconds">ثانية %1$d</string>
     <string name="application_timeout_week">أسبوع 1</string>
+    <string name="application_transfer_from_another_device">النقل من جهاز آخر</string>
+    <string name="application_transfer_restore">النقل أو الاستعادة</string>
     <string name="application_unknown_name">غير معروف</string>
     <string name="application_until">حتى %1$s</string>
     <string name="application_upgrade">ترقية Skred</string>
@@ -196,12 +199,23 @@
     <string name="account_migration_view_transfer_in_progress">نقل البيانات قيد التقدم</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">لبدء النقل، امسح رمز الاستجابة السريعة (QR) الخاص بالنقل المعروض على الجهاز الآخر.</string>
+    <string name="account_migration_scanner_view_header_other_device">"لبدء النقل، امسح رمز الاستجابة السريعة (QR) المعروض على هذا الجهاز من الجهاز الآخر. "</string>
     <string name="account_migration_scanner_view_message">اعرض هذه الشاشة على كل جهاز ويقوم أحدهم بمسح رمز الاستجابة السريعة الخاص بالآخر.</string>
     <string name="account_migration_scanner_view_message_older_version">يستخدم هذا الجهاز إصدارًا قديمًا غير متوافق من نظام التشغيل، مما سيؤدي إلى فقدان جميع العلاقات الموجودة على الجهاز المستهدف أثناء عملية النقل. هل مازلت تريد متابعة عملية النقل؟</string>
     <string name="account_migration_scanner_view_message_older_version_target">يستخدم الجهاز المستهدف إصدارًا قديمًا غير متوافق من نظام التشغيل، مما سيؤدي إلى فقدان جميع علاقاتك أثناء عملية النقل. هل مازلت تريد متابعة عملية النقل؟</string>
-    <string name="account_migration_scanner_view_scan_title">الرقمنة</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">لبدء الترحيل، قم بمسح رمز QR هذا ضوئيًا من الجهاز الآخر</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">امسح رمز الاستجابة السريعة المعروض في قسم \"الحساب / النقل من جهاز آخر\" في القائمة الجانبية للجهاز الآخر.</string>
+    <string name="account_migration_scanner_view_restore_title">هل فقدت الوصول إلى الجهاز الآخر؟</string>
+    <string name="account_migration_scanner_view_restore_message">إذا كانت هناك نسخة احتياطية، يمكنك استعادتها إلى هذا الجهاز.</string>
+    <string name="account_migration_scanner_view_scan_title">الرقمنة</string>
+    <string name="account_migration_scanner_view_step_1">افتح التطبيق على الجهاز الآخر.</string>
+    <string name="account_migration_scanner_view_step_2">انتقل إلى القائمة الجانبية.</string>
+    <string name="account_migration_scanner_view_step_3">اختر \"الحساب\".</string>
+    <string name="account_migration_scanner_view_step_4_my_device">ابدأ النقل من هذا الجهاز.</string>
+    <string name="account_migration_scanner_view_step_4_another_device">ابدأ النقل من الجهاز الآخر.</string>
+    <string name="account_migration_scanner_view_step_5_my_device">امسح رمز الاستجابة السريعة (QR) المعروض على الجهاز الآخر باستخدام هذا الجهاز.</string>
+    <string name="account_migration_scanner_view_step_5_another_device">امسح رمز الاستجابة السريعة (QR) المعروض على هذا الجهاز باستخدام الجهاز الآخر.</string>
     <string name="account_migration_scanner_view_stop_scan_title">وقف المسح الضوئي</string>
 
     <!-- AddCallParticipantActivity -->
@@ -290,13 +304,16 @@
     <string name="backup_view_content_diff_deleted">تم الحذف</string>
     <string name="backup_view_content_diff_message">إليك التغييرات المُقارنة ببياناتك الحالية:</string>
     <string name="backup_view_content_info">لا تشمل النسخ الاحتياطية المحادثات والإشعارات وسجل التصفح.</string>
+    <string name="backup_view_copy_clipboard">النسخ إلى الحافظة</string>
     <string name="backup_view_error_words">الكلمات المدخلة لا تسمح بفك تشفير النسخة الاحتياطية.</string>
+    <string name="backup_view_generate_key">إنشاء مفتاح تشفير جديد</string>
     <string name="backup_view_generate_word">يولد</string>
     <string name="backup_view_last_backup">آخر نسخة احتياطية على %1$s</string>
     <string name="backup_view_new_backup">نسخة احتياطية جديدة</string>
     <string name="backup_view_onboarding">شئ نسخة احتياطية مشفرة لبيانات حسابك (\"Spaces\"، الملفات الشخصية، جهات الاتصال، \"click-to-call\") التي يمكن استعادتها إلى هذا الجهاز أو جهاز آخر.</string>
     <string name="backup_view_reminder">تم إنشاء آخر نسخة احتياطية لك منذ أكثر من ٣٠ يومًا.</string>
     <string name="backup_view_save_file_message">احفظ ملف النسخة الاحتياطية على الجهاز الذي تختاره، واحتفظ بكلمات المرور لاستعادتها لاحقًا.</string>
+    <string name="backup_view_save_password">الحفظ في مدير كلمات المرور</string>
     <string name="backup_view_security">حماية</string>
     <string name="backup_view_security_info">يتم تمثيل مفتاح التشفير الاحتياطي بسلسلة من 12 كلمة ستكون ضرورية للاستعادة.</string>
     <string name="backup_view_success">اكتمل النسخ الاحتياطي بنجاح!</string>
@@ -482,6 +499,8 @@
     <string name="conversation_view_info">:lock إ رسائل الدردشة مُشفر على هاتفك الجوال وأثناء نقلها.\nلضمان أعلى مستوى من أمان البيانات، يتم إرسالها مباشرةً إلى هاتف %s باستخدام اتصال نظير إلى نظير بدون خادم وسيط.</string>
     <string name="conversation_view_invitation_accepted">تم قبول الدعوة</string>
     <string name="conversation_view_invitation_failed">اطلب من جهة الاتصال الخاصة بك لتحديث Skred</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">قبل %1$s الدعوة</string>
+    <string name="conversation_view_invitation_item_declined_invitation">رفض %1$s الدعوة</string>
     <string name="conversation_view_invitation_joined">عضو في المجموعة</string>
     <string name="conversation_view_invitation_pending">دعوة في التقدم</string>
     <string name="conversation_view_invitation_refused">تم رفض الدعوة</string>
@@ -522,6 +541,13 @@
     <string name="conversation_view_send_quality_size">وسائط كبيرة (%1$s)</string>
     <string name="conversation_view_send_quality_standard">إرسال بدقة قياسية (SD)</string>
     <string name="conversation_view_send_quality_warning">يمكنك تغيير الحجم إلى الدقة القياسية (SD) لنقل أسرع.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">قبل %1$s الاتصال</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">أنت لا تقبل عمليات التقديم التي يجريها جهات اتصالك.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">رفض %1$s الاتصال</string>
+    <string name="conversation_view_share_contact_item_decline_connection">لقد رفضت طلب الاتصال</string>
+    <string name="conversation_view_share_contact_item_local_message">جاري الربط بين %1$s و %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">جاري ربطك بـ %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">في انتظار القبول من قِبل %1$s</string>
     <string name="conversation_view_stream_dialog">هل تريد القبول؟</string>
     <string name="conversation_view_unsupported_media">تنسيق الوسائط غير مدعوم</string>
     <string name="conversation_view_video_call">مكالمة فيديو</string>
@@ -873,6 +899,7 @@
     <string name="notification_center_cancel">رفض</string>
     <string name="notification_center_cleanup_conversation">تم حذف بعض الرسائل القديمة.</string>
     <string name="notification_center_conference_join_call">انضم مشارك واحد إلى المكالمة.</string>
+    <string name="notification_center_connection_request">طلب اتصال</string>
     <string name="notification_center_deleted_contact">تم حذف جهة الاتصال</string>
     <string name="notification_center_file_message">ارسل لك ملف</string>
     <string name="notification_center_file_message_received">ملف جديد</string>
@@ -1021,6 +1048,7 @@
     <string name="premium_services_view_title">قم بدعوة جهات الاتصال للانضمام إلى مكالمة صوتية / مكالمة فيديو جارية.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">التطبيقات النشطة</string>
     <string name="privacy_view_coach_mark">قفل التطبيق بخدمات المقاييس الحيوية أو برمز PIN.</string>
     <string name="privacy_view_hide_last_screen_message">وإخفاء التطبيق عند تشغيله في الخلفية، إذا كان الجهاز يسمح بذلك.</string>
     <string name="privacy_view_hide_last_screen_title">منع التقاط لقطات الشاشة</string>
@@ -1029,6 +1057,10 @@
     <string name="privacy_view_lock_screen_timeout">مهلة قفل الوصول</string>
     <string name="privacy_view_lock_screen_timeout_instant">فوري</string>
     <string name="privacy_view_lock_screen_title">قفل الوصول</string>
+    <string name="privacy_view_share_invitation_ask">اسألني في كل مرة</string>
+    <string name="privacy_view_share_invitation_info">سيتم إشعارك في كل مرة يقوم فيها شخص ما بمشاركة جهة اتصالك.</string>
+    <string name="privacy_view_share_invitation_setting">السماح لجهات اتصالي بربطي بجهات اتصالهم</string>
+    <string name="privacy_view_share_invitation_title">جهات الاتصال</string>
     <string name="privacy_view_title">خصوصية</string>
 
     <!-- ProfileFragment -->
@@ -1101,6 +1133,7 @@
     <string name="restore_view_success">تمت عملية الاستعادة بنجاح!</string>
     <string name="restore_view_success_message">أغلق التطبيق وأعد تشغيله للوصول إلى البيانات الجديدة.</string>
     <string name="restore_view_title">استعادة</string>
+    <string name="restore_view_update_message">يجب تحديث التطبيق لاستعادة النسخة الاحتياطية.</string>
     <string name="restore_view_verify_same_account">يجب إجراء التحقق على نفس الجهاز المستخدم في النسخ الاحتياطي.</string>
     <string name="restore_view_warning">ستؤدي استعادة هذه النسخة الاحتياطية إلى استبدال كافة بيانات الحساب الحالي بالبيانات الموجودة في النسخة الاحتياطية.</string>
 
@@ -1117,7 +1150,18 @@
     <string name="scan_view_paste_code">أدخل رابط دعوة أو ألصقه</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">تؤدي معاينة رابط ويب أو موقع على الخريطة إلى كشف عنوان IP.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">متقدم</string>
+    <string name="settings_advanced_view_security_advanced_info">يتم إخفاء عنوان IP محليًا (باستخدام TLS لبروتوكول STUN).</string>
+    <string name="settings_advanced_view_security_expert">خبير</string>
+    <string name="settings_advanced_view_security_expert_info">يتم إخفاء عنوان IP محليًا وعن جهات الاتصال (يتم توجيه المكالمات عبر خادم TURN).</string>
+    <string name="settings_advanced_view_security_optimized">مُحسَّن (افتراضي)</string>
+    <string name="settings_advanced_view_security_optimized_info">قد يتم كشف عنوان IP أثناء تبادلات WebRTC، أو عند مشاركة الموقع على الخريطة، أو عند معاينة رابط ويب.</string>
+    <string name="settings_advanced_view_security_level_title">مستوى الأمان</string>
+    <string name="settings_advanced_view_security_info">ضبط التوازن بين الأمان والأداء وفقًا لاحتياجاتك.</string>
+    <string name="settings_advanced_view_security_title">الأمان</string>
+    <string name="settings_advanced_view_security_unauthorized_update">لا يسمح مستوى الأمان الخبير بتغيير هذا الإعداد.</string>
     <string name="settings_advanced_view_status_connection_message">تحقق من حالة اتصالك بالخدمة</string>
     <string name="settings_advanced_view_status_connection_title">حالة الاتصال</string>
     <string name="settings_advanced_view_telecom_enable">تجربة مكالمات أندرويد</string>
@@ -1167,7 +1211,10 @@
     <string name="settings_view_show_maps">عرض الخرائط</string>
     <string name="settings_view_silent_mode">الوضع الصامت</string>
     <string name="settings_view_silent_sound">صامت</string>
+    <string name="settings_view_sound_effects_info">تشغيل الأصوات عند التفاعل مع التطبيق</string>
+    <string name="settings_view_sound_effects_title">المؤثرات الصوتية</string>
     <string name="settings_view_sound_enabled_title">أصوات الإخطار</string>
+    <string name="settings_view_sound_vibrations_title">الأصوات والاهتزازات</string>
     <string name="settings_view_system_notifications_title">إخطارات النظام</string>
     <string name="settings_view_system_settings_title">اعدادات النظام</string>
     <string name="settings_view_turn_off_notification_sounds">إيقاف أصوات الإشعارات</string>
@@ -1211,6 +1258,15 @@
     <string name="settings_space_view_secret_title">سر Space</string>
     <string name="settings_space_view_space_category_title">Space</string>
 
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">يرغب %1$s في ربطك بـ %2$s</string>
+    <string name="share_contact_accept_view_invite_message">هل تريد إضافة %1$s كجهة اتصال شخصية؟</string>
+    <string name="share_contact_view_onboarding_part_1">يمكنك الآن السماح لجهات اتصالك بربطك بجهات اتصالهم.</string>
+    <string name="share_contact_view_onboarding_part_2">افتراضيًا، يجب عليك الموافقة على كل اقتراح ربط.</string>
+    <string name="share_contact_view_onboarding_part_3">يمكنك تغيير هذا الإعداد الافتراضي من قسم \"الخصوصية\" في إعدادات التطبيق.</string>
+    <string name="share_contact_view_share_info">سيتلقى %1$s إشعاراً بالمشاركة</string>
+    <string name="share_contact_view_share_title">مشاركة جهة اتصال %1$s</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">جهات الاتصال</string>
     <string name="share_view_group_list">المجموعات</string>
@@ -1244,6 +1300,7 @@
     <string name="show_contact_view_pending_message">يتم تأسيس هذه العلاقة. انتظر من فضلك.</string>
     <string name="show_contact_view_revoked">تم الحذف</string>
     <string name="show_contact_view_settings_coach_mark">حدد ما هو مسموح لجهة الاتصال الخاصة بك القيام به في هذه العلاقة معك.</string>
+    <string name="show_contact_view_share_contact">مشاركة جهة الاتصال هذه</string>
     <string name="show_contact_view_space">Space:</string>
     <string name="show_contact_view_video">فيديو</string>
 

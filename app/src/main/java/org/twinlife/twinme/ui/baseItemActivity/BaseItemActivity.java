@@ -21,6 +21,7 @@ import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
 import org.twinlife.twinlife.ConversationService.FileDescriptor;
 import org.twinlife.twinlife.ConversationService.UpdateType;
+import org.twinlife.twinlife.ImageId;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.actions.GetTwincodeAction;
 import org.twinlife.twinme.models.Contact;
@@ -58,6 +59,8 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
     public interface InvitationItemObserver {
 
         void onUpdateDescriptor(@NonNull Descriptor descriptor, UpdateType updateType);
+
+        void onDeleteInvitationItem(@NonNull Item item);
     }
 
     public abstract
@@ -95,8 +98,15 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
 
     public abstract boolean isUserVote(@Nullable UUID twincodeOutboundId);
 
+    public abstract void getShareContactAvatar(@NonNull ConversationService.ContactShareDescriptor contactShareDescriptor, TwinmeContext.Consumer<Bitmap> avatarConsumer);
+
+    public abstract void getShareContactIdentityAvatar(TwinmeContext.Consumer<Bitmap> avatarConsumer);
+
     public abstract @Nullable
     Group getGroup();
+
+    public abstract @Nullable Bitmap getContactAvatar();
+    public abstract @Nullable Bitmap getIdentityAvatar();
 
     public abstract boolean isGroupConversation();
 
@@ -139,6 +149,10 @@ public abstract class BaseItemActivity extends AbstractTwinmeActivity {
     public abstract void onSelectPollChoiceClick(@NonNull ConversationService.PollDescriptor pollDescriptor, ConversationService.PollDescriptor.Choice choice, @NonNull Map<UUID, List<ConversationService.PollDescriptor.Choice>> votes);
 
     public abstract void onPollResultClick(@NonNull ConversationService.PollDescriptor pollDescriptor);
+
+    public abstract void onShareContactClick(@NonNull ConversationService.ContactShareDescriptor contactShareDescriptor);
+
+    public abstract void onShareContactInvitationClick(@NonNull ConversationService.TwincodeDescriptor twincodeDescriptor);
 
     public abstract void audioCall();
 

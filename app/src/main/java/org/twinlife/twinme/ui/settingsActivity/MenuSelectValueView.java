@@ -46,16 +46,19 @@ public class MenuSelectValueView extends RelativeLayout {
 
     public enum MenuType {
         DISPLAY_CALLS,
-        QUALITY_MEDIA,
         EDIT_SPACE,
+        QUALITY_MEDIA,
         IMAGE,
         VIDEO,
         EPHEMERAL_MESSAGE,
         LOCKSCREEN,
         PROFILE_UPDATE_MODE,
+        CAMERA_CONTROL,
         EXTERNAL_CALL_EXPIRATION,
         EXTERNAL_CALL_TYPE,
-        CAMERA_CONTROL
+        SECURITY_LEVEL,
+        SILENT_MODE_DURATION,
+        SHARE_INVITATION_MODE
     }
 
     public interface Observer {
@@ -164,6 +167,7 @@ public class MenuSelectValueView extends RelativeLayout {
 
         float radius = Design.ACTION_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
+
         ShapeDrawable actionBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
 
         if (mForceDarkMode) {
@@ -322,6 +326,7 @@ public class MenuSelectValueView extends RelativeLayout {
 
         View slideMarkView = findViewById(R.id.menu_select_value_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -343,6 +348,8 @@ public class MenuSelectValueView extends RelativeLayout {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
     }
 
     private void setupTitle() {
@@ -388,6 +395,19 @@ public class MenuSelectValueView extends RelativeLayout {
                 mTitleView.setText(mActivity.getString(R.string.create_external_call_view_link_validity));
                 break;
 
+            case SECURITY_LEVEL:
+                mTitleView.setText(mActivity.getString(R.string.settings_advanced_view_security_level_title));
+                break;
+
+            case SILENT_MODE_DURATION:
+                mTitleView.setText(mActivity.getString(R.string.settings_view_turn_off_notification_sounds));
+                break;
+
+            case SHARE_INVITATION_MODE:
+                mTitleView.setText(mActivity.getString(R.string.privacy_view_share_invitation_setting));
+                break;
+
+
             default:
                 break;
         }
@@ -399,13 +419,16 @@ public class MenuSelectValueView extends RelativeLayout {
         }
 
         int slideMarkHeight = Design.SLIDE_MARK_HEIGHT + Design.SLIDE_MARK_TOP_MARGIN;
-        int actionViewHeight = Design.SECTION_HEIGHT * mMenuSelectValueAdapter.getCount();
+
+        int actionViewHeight = 0;
+        actionViewHeight += mListView.getHeight();;
 
         int titleHeight = mTitleView.getHeight();
         int titleMargin = (int) (DESIGN_TITLE_MARGIN * 2 * Design.HEIGHT_RATIO);
         if (mTitleView.getVisibility() == INVISIBLE) {
             titleHeight = 0;
         }
+
 
         int bottomInset = 0;
         View rootView = ((Activity) getContext()).getWindow().getDecorView();

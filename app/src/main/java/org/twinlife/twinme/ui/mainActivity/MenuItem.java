@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2021 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -12,7 +12,7 @@ public class MenuItem {
 
     public enum MenuItemAction {
 
-        NO_ACTION, HELP, ABOUT_TWINME, ACCOUNT, SIGN_OUT, PERSONALIZATION, SOUND_SETTINGS, PRIVACY, TRANSFER_CALL, SETTINGS_ADVANCED ,MESSAGE_SETTINGS, PROFILE, SUBSCRIBE
+        NO_ACTION, HELP, ABOUT_TWINME, ACCOUNT, PERSONALIZATION, SOUND_SETTINGS, PRIVACY, TRANSFER_CALL, SETTINGS_ADVANCED ,MESSAGE_SETTINGS, PROFILE, SUBSCRIBE
     }
 
     public enum MenuItemLevel {

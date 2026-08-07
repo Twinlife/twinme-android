@@ -61,6 +61,7 @@ public class InformationViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(String information, boolean isSubTitle) {
 
+        mBackgroundColor = Design.LIGHT_GREY_BACKGROUND_COLOR;
         updateViews(information, isSubTitle);
     }
 

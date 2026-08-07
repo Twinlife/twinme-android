@@ -529,6 +529,7 @@ public class CallMenuView extends PercentRelativeLayout {
 
         View slideMarkView = findViewById(R.id.call_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

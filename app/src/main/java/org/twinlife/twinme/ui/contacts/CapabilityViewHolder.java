@@ -29,10 +29,7 @@ public class CapabilityViewHolder extends RecyclerView.ViewHolder {
 
     private final SwitchView mSwitchView;
 
-    private int mSwitchTag;
-    private final CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener;
-
-    public CapabilityViewHolder(@NonNull View view, AbstractCapabilitiesActivity activity) {
+    public CapabilityViewHolder(@NonNull View view) {
 
         super(view);
 
@@ -44,14 +41,9 @@ public class CapabilityViewHolder extends RecyclerView.ViewHolder {
         mSwitchView = view.findViewById(R.id.contact_capabilities_activity_item_checkbox);
         Design.updateTextFont(mSwitchView, Design.FONT_REGULAR32);
         mSwitchView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        mOnCheckedChangeListener = (compoundButton, value) -> activity.onSettingChangeValue(mSwitchTag, value);
-        mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
     }
 
-    public void onBind(String title, int switchTag, boolean isEnable, boolean isSelected) {
-
-        mSwitchTag = switchTag;
+    public void onBind(String title, int switchTag, boolean isEnable, boolean isSelected, CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
 
         mSwitchView.setText(title);
 
@@ -60,7 +52,7 @@ public class CapabilityViewHolder extends RecyclerView.ViewHolder {
 
         if (isEnable) {
             mSwitchView.setClickable(true);
-            mSwitchView.setOnCheckedChangeListener(mOnCheckedChangeListener);
+            mSwitchView.setOnCheckedChangeListener(onCheckedChangeListener);
         } else {
             mSwitchView.setClickable(false);
         }

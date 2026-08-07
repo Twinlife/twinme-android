@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.PlatformSpecificUtils;
 
 import java.util.List;
 
@@ -218,13 +219,23 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
 
             case PEER_LOCATION:
 
-                if (mBaseItemActivity.getTwinmeApplication().visualizationMap() && CommonUtils.isGooglePlayServicesAvailable(mBaseItemActivity)) {
+                if (mBaseItemActivity.getTwinmeApplication().visualizationMap() && PlatformSpecificUtils.isGooglePlayServicesAvailable(mBaseItemActivity)) {
                     convertView = inflater.inflate(R.layout.base_item_activity_peer_location_item, parent, false);
                     return new PeerLocationItemViewHolder(mBaseItemActivity, convertView, true, true);
                 } else {
                     convertView = inflater.inflate(R.layout.base_item_activity_peer_location_coordinate_item, parent, false);
                     return new PeerLocationCoordinateItemViewHolder(mBaseItemActivity, convertView, true, true);
                 }
+
+            case SHARE_CONTACT:
+                convertView = inflater.inflate(R.layout.base_item_activity_share_contact_item, parent, false);
+
+                return new ShareContactItemViewHolder(mBaseItemActivity, convertView);
+
+            case PEER_SHARE_CONTACT:
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_share_contact_item, parent, false);
+
+                return new PeerShareContactItemViewHolder(mBaseItemActivity, convertView);
 
             case CALL:
                 convertView = inflater.inflate(R.layout.base_item_activity_call_item, parent, false);

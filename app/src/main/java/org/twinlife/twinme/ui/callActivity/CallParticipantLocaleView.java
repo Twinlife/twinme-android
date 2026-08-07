@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022 twinlife SA.
+ *  Copyright (c) 2022-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -382,8 +382,6 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
 
                 bringVideoToFront();
 
-                localRenderer.requestLayout();
-
                 Handler handler = new Handler(Looper.getMainLooper());
                 handler.postDelayed(() -> localRenderer.setBackgroundColor(Color.TRANSPARENT), 500);
             } else {
@@ -490,7 +488,5 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
         ShapeDrawable backgroundViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         backgroundViewBackground.getPaint().setColor(DESIGN_BACKGROUND_COLOR);
         mBackgroundView.setBackground(backgroundViewBackground);
-
-        mRemoteRenderLayout.requestLayout();
     }
 }

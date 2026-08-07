@@ -3,6 +3,16 @@ plugins {
     id 'com.android.application'
 }
 
+// Only apply the AGCP when dealing with Huawei builds.
+def isHuaweiTask = gradle.startParameter.taskNames.any { it.toLowerCase().contains("huawei") || it.toLowerCase().contains("universal") }
+if (isHuaweiTask) {
+    apply plugin: 'com.huawei.agconnect'
+
+    agcp {
+        manifest false
+    }
+}
+
 android {
     if (System.getenv('SIGNING_KEY_ALIAS') != null) {
         signingConfigs {
@@ -22,8 +32,8 @@ android {
         applicationId 'mobi.skred.app'
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 361
-        versionName "24.2"
+        versionCode 365
+        versionName "25.1"
         manifestPlaceholders.domainName = "twin.me"
         manifestPlaceholders.backupExtension = "skrdbckp"
 
@@ -68,6 +78,7 @@ android {
         // Use this build type to test the app on the production environment when making a release.
         staging {
             initWith buildTypes.release
+            //noinspection NotShrinkingResources
             shrinkResources = false
             minifyEnabled false
             debuggable true
@@ -106,7 +117,7 @@ android {
         }
     }
 
-    flavorDimensions = ["product", "tier"]
+    flavorDimensions = ["product", "tier", "distribution"]
 
     productFlavors {
         skred {
@@ -116,11 +127,37 @@ android {
         free {
             dimension "tier"
         }
+
+        google {
+            dimension "distribution"
+            getIsDefault().set(true)
+        }
+        huawei {
+            dimension "distribution"
+        }
+        // universal => both google (firebase) and huawei push services are available.
+        // If firebase token creation fails, huawei will be tried as a fallback.
+        universal {
+            dimension "distribution"
+        }
     }
 
     bundle {
         language {
             enableSplit = false
+        }
+    }
+
+    packaging {
+        resources {
+            // Since the inclusion of Huawei's gradle plugin, these files trigger a duplicate resources conflict during build.
+            excludes += [
+                    "META-INF/DEPENDENCIES",
+                    "migrateToAndroidx/migration.xml",
+                    "META-INF/INDEX.LIST",
+                    "META-INF/io.netty.versions.properties",
+                    "r8-version.properties"
+            ]
         }
     }
 }
@@ -133,6 +170,27 @@ androidComponents {
                     .withFlavor("tier", "+")
     ) { variantBuilder ->
         variantBuilder.enable = false
+    }
+
+    onVariants(
+            selector().all()
+    ) { variant ->
+        def distro = variant.productFlavors.find { it.first == "distribution" }?.second ?: ""
+        def buildType = variant.buildType
+
+        def addTwinmeSources = { dirName ->
+            variant.sources.java.addStaticSourceDirectory("src/${dirName}/java")
+            variant.sources.res.addStaticSourceDirectory("src/${dirName}/res")
+            variant.sources.resources.addStaticSourceDirectory("src/${dirName}/resources")
+        }
+
+        // Setup common distribution source sets (e.g. src/huaweiDebug/res)
+        addTwinmeSources("${distro}${buildType.capitalize()}")
+
+        if (distro == "universal") {
+            variant.sources.java.addStaticSourceDirectory("src/google/java")
+            variant.sources.java.addStaticSourceDirectory("src/huawei/java")
+        }
     }
 }
 
@@ -170,4 +228,15 @@ dependencies {
 
     // debugImplementation because LeakCanary should only run in debug builds.
     debugImplementation libs.leakcanary.android
+}
+
+// Huawei's gradle plugin v1.9.5.301 has a transitive dependency to protobuf-java.
+// We can try removing this when we upgrade the plugin.
+configurations.configureEach {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.group == 'com.google.protobuf' && details.requested.name == 'protobuf-java') {
+            // Force the use of the lite version which is compatible with min-api < 26, and generally recommended for Android.
+            details.useTarget 'com.google.protobuf:protobuf-javalite:3.21.12'
+        }
+    }
 }

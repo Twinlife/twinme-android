@@ -258,6 +258,7 @@ public class MenuBackupView extends RelativeLayout {
 
         View slideMarkView = findViewById(R.id.menu_backup_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
