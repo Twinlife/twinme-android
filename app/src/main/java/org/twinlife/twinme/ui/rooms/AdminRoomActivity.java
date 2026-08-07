@@ -385,6 +385,7 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
 
         View slideMarkView = findViewById(R.id.admin_room_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -855,7 +856,7 @@ public class AdminRoomActivity extends AbstractEditActivity implements EditRoomS
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

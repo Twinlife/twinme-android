@@ -25,6 +25,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
@@ -50,7 +51,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.calls.CallService;
 import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.models.Contact;
@@ -327,7 +328,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             mBarTopInset = bars.top;
             mBarBottomInset = bars.bottom;
-            
+
             v.setBackgroundColor(backgroundColor);
 
             int topPadding = isFullScreen ? 0 : bars.top;
@@ -356,6 +357,8 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             return WindowInsetsCompat.CONSUMED;
         });
+
+        ViewCompat.requestApplyInsets(rootView);
     }
 
     public void setupBackPressedCallBack(int rootLayout) {
@@ -410,6 +413,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
         ViewGroup viewGroup = findViewById(layout);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
+        alertMessageView.setElevation(2);
         alertMessageView.setTitle(title);
         alertMessageView.setMessage(message);
 
@@ -478,17 +482,17 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
         }
     }
 
-    public void onExecutionError(BaseService.ErrorCode errorCode) {
+    public void onExecutionError(ErrorCode errorCode) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onExecutionError: errorCode=" + errorCode);
         }
 
         String messageError = "";
-        if (errorCode == BaseService.ErrorCode.NO_STORAGE_SPACE) {
+        if (errorCode == ErrorCode.NO_STORAGE_SPACE) {
             messageError = getString(R.string.application_error_no_storage_space);
-        } else if (errorCode == BaseService.ErrorCode.NO_PERMISSION) {
+        } else if (errorCode == ErrorCode.NO_PERMISSION) {
             messageError = getString(R.string.application_denied_permissions);
-        } else if (errorCode == BaseService.ErrorCode.FILE_NOT_FOUND) {
+        } else if (errorCode == ErrorCode.FILE_NOT_FOUND) {
             messageError = getString(R.string.application_error_file_not_found);
         }
 
@@ -611,7 +615,7 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             // The external activity operation does not exist.  This happens frequently on some Android devices.
             // Raise a toast but not immediately because it will not be displayed: we must schedule the toast in some post().
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> toast(getString(R.string.application_operation_failure)));
             return false;
         }
@@ -631,14 +635,14 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             // The external activity operation does not exist.  This happens frequently on some Android devices.
             // Raise a toast but not immediately because it will not be displayed: we must schedule the toast in some post().
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> toast(getString(R.string.application_operation_failure)));
         } catch (SecurityException exception) {
 
             // Execution of external activity is forbidden due to some security constraints.
             // This happens from time to time on some Android devices.
             // Raise a toast but not immediately because it will not be displayed: we must schedule the toast in some post().
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> toast(getString(R.string.application_not_authorized_operation)));
         }
     }
@@ -656,14 +660,14 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
 
             // The external activity operation does not exist.  This happens frequently on some Android devices.
             // Raise a toast but not immediately because it will not be displayed: we must schedule the toast in some post().
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> toast(getString(R.string.application_operation_failure)));
         } catch (SecurityException exception) {
 
             // Execution of external activity is forbidden due to some security constraints.
             // This happens from time to time on some Android devices.
             // Raise a toast but not immediately because it will not be displayed: we must schedule the toast in some post().
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> toast(getString(R.string.application_not_authorized_operation)));
         }
     }

@@ -93,6 +93,7 @@ public class SectionTitleViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(String title, boolean hideSeparator) {
 
+        mBackgroundColor = Design.LIGHT_GREY_BACKGROUND_COLOR;
         updateViews(title, hideSeparator, null);
     }
 

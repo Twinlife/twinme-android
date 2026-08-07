@@ -8,6 +8,10 @@
 
 package org.twinlife.twinme.ui.settingsActivity;
 
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -57,17 +61,34 @@ public class SettingSwitchViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(@NonNull UISetting<Boolean> uiSetting, boolean isSelected, boolean isEnable, CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
 
-        mSwitchView.setText(uiSetting.getTitle());
+        if (uiSetting.getSubTitle() == null) {
+            mSwitchView.setText(uiSetting.getTitle());
+        } else {
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+            spannableStringBuilder.append(uiSetting.getTitle());
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.append("\n");
+
+            int startSubTitle = spannableStringBuilder.length();
+            spannableStringBuilder.append(uiSetting.getSubTitle());
+            spannableStringBuilder.setSpan(new RelativeSizeSpan(0.9f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            mSwitchView.setText(spannableStringBuilder);
+        }
 
         mSwitchView.setOnCheckedChangeListener(null);
         mSwitchView.setChecked(isSelected);
 
         if (isEnable) {
             mSwitchView.setEnabled(true);
+            mSwitchView.setClickable(true);
             mSwitchView.setOnCheckedChangeListener(onCheckedChangeListener);
+            mSwitchView.setAlpha(1.0f);
         } else {
             mSwitchView.setEnabled(false);
             mSwitchView.setClickable(false);
+            mSwitchView.setAlpha(0.5f);
         }
 
         updateFont();

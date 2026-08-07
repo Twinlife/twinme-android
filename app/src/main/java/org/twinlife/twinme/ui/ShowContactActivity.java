@@ -56,7 +56,9 @@ import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.cleanupActivity.TypeCleanUpActivity;
 import org.twinlife.twinme.ui.contacts.AuthentifiedRelationActivity;
 import org.twinlife.twinme.ui.contacts.ContactCapabilitiesActivity;
+import org.twinlife.twinme.ui.contacts.ConversationNotificationsActivity;
 import org.twinlife.twinme.ui.contacts.MenuCertifyView;
+import org.twinlife.twinme.ui.contacts.ShareContactActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
@@ -75,6 +77,8 @@ import java.util.UUID;
 public class ShowContactActivity extends AbstractTwinmeActivity implements ShowContactService.Observer {
     private static final String LOG_TAG = "ShowContactActivity";
     private static final boolean DEBUG = false;
+
+    private static final int REQUEST_SHARE_CONTACT = 1000;
 
     private static final int COACH_MARK_DELAY = 500;
 
@@ -113,6 +117,10 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
     private TextView mIdentityTitleView;
     private TextView mSettingsTitleView;
     private TextView mSettingsTextView;
+    private TextView mNotificationsTextView;
+    private ImageView mNotificationsImageView;
+    private TextView mShareContactTextView;
+    private ImageView mShareContactImageView;
     private TextView mLastCallsTitleView;
     private TextView mLastCallsTextView;
     private TextView mConversationsTitleView;
@@ -210,6 +218,28 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_SHARE_CONTACT) {
+            String contactId = data != null ? data.getStringExtra(Intents.INTENT_SHARE_CONTACT_ID) : null;
+            if (contactId != null) {
+                UUID contactUUID = Utils.UUIDFromString(contactId);
+                if (contactUUID != null && mContactId != null) {
+                    Intent intent = new Intent(this, ConversationActivity.class);
+                    intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
+                    intent.putExtra(Intents.INTENT_SHARE_CONTACT_ID, contactUUID.toString());
+                    startActivity(intent);
+                }
+            }
+        }
     }
 
     //
@@ -440,6 +470,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         View slideMarkView = findViewById(R.id.show_contact_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -550,19 +581,37 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         mCertifiedImageView = findViewById(R.id.show_contact_activity_certified_image_view);
 
+        View shareContactView = findViewById(R.id.show_contact_activity_share_contact_view);
+        layoutParams = shareContactView.getLayoutParams();
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        shareContactView.setOnClickListener(view -> onShareContactClick());
+
+        mShareContactTextView = findViewById(R.id.show_contact_activity_share_contact_text_view);
+        mShareContactImageView = findViewById(R.id.show_contact_activity_share_contact_image_view);
+
         mSettingsTitleView = findViewById(R.id.show_contact_activity_settings_title_view);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mSettingsTitleView.getLayoutParams();
         marginLayoutParams.topMargin = Design.TITLE_IDENTITY_TOP_MARGIN;
+
+        View notificationsView = findViewById(R.id.show_contact_activity_notifications_view);
+        layoutParams = notificationsView.getLayoutParams();
+        layoutParams.height = Design.SECTION_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) notificationsView.getLayoutParams();
+        marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
+
+        notificationsView.setOnClickListener(view -> onNotificationsClick());
+
+        mNotificationsTextView = findViewById(R.id.show_contact_activity_notifications_text_view);
+        mNotificationsImageView = findViewById(R.id.show_contact_activity_notifications_image_view);
 
         mSettingsView = findViewById(R.id.show_contact_activity_settings_view);
         mSettingsView.setOnClickListener(view -> onSettingsClick());
 
         layoutParams = mSettingsView.getLayoutParams();
         layoutParams.height = Design.SECTION_HEIGHT;
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSettingsView.getLayoutParams();
-        marginLayoutParams.topMargin = Design.IDENTITY_VIEW_TOP_MARGIN;
 
         mSettingsTextView = findViewById(R.id.show_contact_activity_settings_text_view);
 
@@ -573,8 +622,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         Design.updateTextFont(newFeatureTitleView, Design.FONT_MEDIUM30);
         newFeatureTitleView.setTextColor(Color.WHITE);
         newFeatureTitleView.setPadding(Design.NEW_FEATURE_PADDING, 0, Design.NEW_FEATURE_PADDING, 0);
-        newFeatureTitleView.setOnClickListener(view -> showControlCameraOnboarding());
-        newFeatureTitleView.setVisibility(View.GONE);
+        newFeatureTitleView.setOnClickListener(view -> showShareContactOnboarding());
 
         layoutParams = newFeatureTitleView.getLayoutParams();
         layoutParams.height = Design.NEW_FEATURE_HEIGHT;
@@ -814,6 +862,18 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         }
     }
 
+    private void onShareContactClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onShareContactClick");
+        }
+
+        if (mContact != null && mContactId != null) {
+            Intent intent = new Intent(this, ShareContactActivity.class);
+            intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
+            startActivityForResult(intent, REQUEST_SHARE_CONTACT);
+        }
+    }
+
     private void onLastCallsClick() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onLastCallsClick");
@@ -841,6 +901,16 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         if (mContactId != null) {
             startActivity(ContactCapabilitiesActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
+        }
+    }
+
+    private void onNotificationsClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onNotificationsClick");
+        }
+
+        if (mContactId != null) {
+            startActivity(ConversationNotificationsActivity.class, Intents.INTENT_CONTACT_ID, mContactId);
         }
     }
 
@@ -989,7 +1059,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuCertifyView);
 
@@ -1178,17 +1248,21 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
     }
 
-    public void showControlCameraOnboarding() {
+    public void showShareContactOnboarding() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "showControlCameraOnboarding");
+            Log.d(LOG_TAG, "showShareContactOnboarding");
         }
 
         ViewGroup viewGroup = findViewById(R.id.show_contact_activity_layout);
 
+        String message = getString(R.string.share_contact_view_onboarding_part_1)
+                + "\n\n" + getString(R.string.share_contact_view_onboarding_part_2)
+                + "\n\n" + getString(R.string.share_contact_view_onboarding_part_3);
+
         OnboardingConfirmView onboardingConfirmView = new OnboardingConfirmView(this, null);
-        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
-        onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
-        onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_view_camera_control_onboarding));
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_share_contact, null));
+        onboardingConfirmView.setTitle(getString(R.string.privacy_view_share_invitation_title));
+        onboardingConfirmView.setMessage(message);
         onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
@@ -1201,7 +1275,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             @Override
             public void onCancelClick() {
                 onboardingConfirmView.animationCloseConfirmView();
-                getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.REMOTE_CAMERA_SETTING, false);
+                getTwinmeApplication().setShowOnboardingType(TwinmeApplication.OnboardingType.SHARE_CONTACT, false);
             }
 
             @Override
@@ -1255,7 +1329,9 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         Design.updateTextFont(mIdentityTitleView, Design.FONT_BOLD26);
         Design.updateTextFont(mIdentityTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mCertifiedTextView, Design.FONT_REGULAR34);
+        Design.updateTextFont(mShareContactTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mSettingsTitleView, Design.FONT_BOLD26);
+        Design.updateTextFont(mNotificationsTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mSettingsTextView, Design.FONT_REGULAR34);
         Design.updateTextFont(mLastCallsTitleView, Design.FONT_BOLD26);
         Design.updateTextFont(mLastCallsTextView, Design.FONT_REGULAR34);
@@ -1291,8 +1367,12 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         mIdentityTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mCertifiedTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mCertifiedImageView.setColorFilter(Design.SHOW_ICON_COLOR);
+        mShareContactTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mShareContactImageView.setColorFilter(Design.SHOW_ICON_COLOR);
         mSettingsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mSettingsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mNotificationsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mNotificationsImageView.setColorFilter(Design.SHOW_ICON_COLOR);
         mLastCallsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mLastCallsTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mConversationsTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);

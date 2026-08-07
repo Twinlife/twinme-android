@@ -26,8 +26,8 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConversationService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.CircularImageView;
@@ -128,12 +128,12 @@ public class AnnotationInfoViewHolder extends RecyclerView.ViewHolder {
 
             String message = "";
 
-            BaseService.ErrorCode errorCode = BaseService.ErrorCode.toErrorCode((int)annotation.getValue());
-            if (errorCode == BaseService.ErrorCode.FEATURE_NOT_SUPPORTED_BY_PEER) {
+            ErrorCode errorCode = ErrorCode.toErrorCode((int)annotation.getValue());
+            if (errorCode == ErrorCode.FEATURE_NOT_SUPPORTED_BY_PEER) {
                 message = context.getString(R.string.info_item_view_not_delivered_update);
-            } else if (errorCode == BaseService.ErrorCode.EXPIRED) {
+            } else if (errorCode == ErrorCode.EXPIRED) {
                 message = context.getString(R.string.info_item_view_not_delivered_expiration);
-            } else if (errorCode == BaseService.ErrorCode.NO_STORAGE_SPACE) {
+            } else if (errorCode == ErrorCode.NO_STORAGE_SPACE) {
                 message = context.getString(R.string.info_item_view_not_delivered_storage);
             }
 

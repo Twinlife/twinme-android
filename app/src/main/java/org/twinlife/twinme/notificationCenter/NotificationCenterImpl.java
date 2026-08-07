@@ -59,6 +59,7 @@ import org.twinlife.twinlife.ImageService;
 import org.twinlife.twinlife.Notification;
 import org.twinlife.twinlife.NotificationService.NotificationType;
 import org.twinlife.twinlife.Offer;
+import org.twinlife.twinlife.ShareInvitationMode;
 import org.twinlife.twinlife.TerminateReason;
 import org.twinlife.twinlife.Twincode;
 import org.twinlife.twinlife.TwincodeOutbound;
@@ -89,6 +90,7 @@ import org.twinlife.twinme.ui.backupActivity.BackupActivity;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationActivity.UIReaction;
+import org.twinlife.twinme.ui.conversations.MenuConversationShortcutView;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
 import org.twinlife.twinme.ui.groups.ShowGroupActivity;
@@ -169,9 +171,9 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         final AtomicInteger count = new AtomicInteger(0);
 
-        NewMessageNotification(int id, UUID sessionId) {
+        NewMessageNotification(int id) {
 
-            super(id, sessionId);
+            super(id, null);
         }
     }
 
@@ -212,12 +214,11 @@ public class NotificationCenterImpl implements NotificationCenter {
         // Allocate them in sequences of 10 and save in the preference the last sequence allocated.
         // The first available ID when we restart is the last sequence number.
         mSharedPreferences = mApplication.getSharedPreferences(NOTIFICATION_CENTER_PREFERENCES, android.content.Context.MODE_PRIVATE);
-        mLastNotificationId = mSharedPreferences.getInt(NOTIFICATION_SEQUENCE, 10);
-        mNotificationId = mLastNotificationId;
 
         mNotificationManager = NotificationManagerCompat.from(mApplication);
 
-        createNotificationChannels();
+        // Setup the network channels from the twinlife executor's thread to avoid blocking the main UI thread.
+        twinmeContext.execute(this::createNotificationChannels);
 
         mBadger = Badger.getBadger(mApplication, new ComponentName(mApplication.getPackageName(), MainActivity.class.getName()));
     }
@@ -260,7 +261,7 @@ public class NotificationCenterImpl implements NotificationCenter {
     }
 
     @Override
-    public void onPopDescriptor(@NonNull Originator contact, @NonNull Conversation conversation, @NonNull UUID sessionId, @NonNull Descriptor descriptor) {
+    public void onPopDescriptor(@NonNull Originator contact, @NonNull Conversation conversation, @NonNull Descriptor descriptor) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onPopDescriptor: contact=" + contact + " conversation=" + conversation + " descriptor=" + descriptor);
         }
@@ -306,6 +307,10 @@ public class NotificationCenterImpl implements NotificationCenter {
                 type = NotificationType.NEW_POLL_MESSAGE;
                 break;
 
+            case CONTACT_SHARE_DESCRIPTOR:
+                type = NotificationType.NEW_CONTACT_SHARE;
+                break;
+
             case INVITATION_DESCRIPTOR:
                 InvitationDescriptor invitation = (InvitationDescriptor) descriptor;
                 if (invitation.getStatus() == InvitationDescriptor.Status.PENDING) {
@@ -335,6 +340,17 @@ public class NotificationCenterImpl implements NotificationCenter {
                     } else {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
                     }
+                } else if (twincodeDescriptor.getSchemaId().equals(Invitation.CONTACT_SHARE_SCHEMA_ID)) {
+                    type = NotificationType.NEW_CONTACT_INVITATION;
+                    if (displayNotificationSender && displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_connection_request));
+                    } else if (displayNotificationSender) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                    } else if (displayNotificationContent) {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_connection_request));
+                    } else {
+                        notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_message_received));
+                    }
                 }
                 break;
 
@@ -350,7 +366,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             return;
         }
-        messageNotification(contact, sessionId, conversation, notificationMessage, timestamp, type, descriptor, null, null);
+        messageNotification(contact, conversation, notificationMessage, timestamp, type, descriptor, null, null);
     }
 
     /**
@@ -498,14 +514,26 @@ public class NotificationCenterImpl implements NotificationCenter {
             Log.d(LOG_TAG, "onUpdateDescriptor: contact=" + contact + " conversation=" + conversation + " descriptor=" + descriptor + " updateType=" + updateType);
         }
 
-        if (descriptor instanceof ConversationService.FileDescriptor && !((ConversationService.FileDescriptor) descriptor).isAvailable()) {
-            // New file chunk received: don't post a new notification unless the transfer is finished.
+        if (isNewFileChunkReceived(descriptor) || isAutoRefusedContactShare(descriptor, contact)) {
+
             return;
         }
 
         if (updateType == UpdateType.CONTENT) {
-            onPopDescriptor(contact, conversation, conversation.getPeerConnectionId(), descriptor);
+            onPopDescriptor(contact, conversation, descriptor);
         }
+    }
+
+    private boolean isNewFileChunkReceived(@NonNull Descriptor descriptor) {
+        // New file chunk received: don't post a new notification unless the transfer is finished.
+        return descriptor instanceof ConversationService.FileDescriptor && !((ConversationService.FileDescriptor) descriptor).isAvailable();
+    }
+
+    private boolean isAutoRefusedContactShare(@NonNull Descriptor descriptor, @NonNull Originator contact) {
+        // Don't notify when we refuse a contact share automatically.
+        return (mTwinmeApplication.getShareInvitationMode() == ShareInvitationMode.NEVER) &&
+                (descriptor instanceof ConversationService.ContactShareDescriptor && ((ConversationService.ContactShareDescriptor) descriptor).getStatus() == InvitationDescriptor.Status.REFUSED) &&
+                (descriptor.getTwincodeOutboundId().equals(contact.getPeerTwincodeOutboundId()));
     }
 
     @Override
@@ -533,7 +561,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                 default:
                     continue;
             }
-            messageNotification(contact, null, conversation, new SpannableStringBuilder(mApplication.getString(message)), timestamp,
+            messageNotification(contact, conversation, new SpannableStringBuilder(mApplication.getString(message)), timestamp,
                     NotificationType.UPDATED_ANNOTATION, descriptor, annotatingUser, annotation);
         }
     }
@@ -544,7 +572,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             Log.d(LOG_TAG, "onJoinGroup: group=" + group);
         }
 
-        messageNotification(group, null, conversation, null, -1, NotificationType.NEW_GROUP_JOINED, null, null, null);
+        messageNotification(group, conversation, null, -1, NotificationType.NEW_GROUP_JOINED, null, null, null);
     }
 
     @Override
@@ -675,12 +703,12 @@ public class NotificationCenterImpl implements NotificationCenter {
         }
     }
 
-    private void messageNotification(@NonNull Originator contact, UUID sessionId, @NonNull Conversation conversation,
+    private void messageNotification(@NonNull Originator originator, @NonNull Conversation conversation,
                                      SpannableStringBuilder notificationMessage, long timestamp,
                                      NotificationType notificationType, @Nullable Descriptor descriptor,
                                      @Nullable TwincodeOutbound annotatingUser, @Nullable ConversationService.DescriptorAnnotation annotation) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "messageNotification: contact=" + contact + " conversation=" + conversation + " msg=" + notificationMessage + " type=" + notificationType);
+            Log.d(LOG_TAG, "messageNotification: contact=" + originator + " conversation=" + conversation + " msg=" + notificationMessage + " type=" + notificationType);
         }
 
         String channelId = mMessageChannel;
@@ -692,7 +720,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             conversation = groupMemberConversation.getGroupConversation();
 
             channelId = mGroupChannel;
-        } else if (contact instanceof Group) {
+        } else if (originator instanceof Group) {
             channelId = mGroupChannel;
         }
 
@@ -700,9 +728,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         String groupName = null;
         Bitmap senderAvatar;
         Bitmap groupAvatar = null;
-        if (contact instanceof GroupMember) {
+        if (originator instanceof GroupMember) {
             channelId = mGroupChannel;
-            GroupMember groupMember = (GroupMember) contact;
+            GroupMember groupMember = (GroupMember) originator;
 
             senderName = groupMember.getName();
             if (notificationType == NotificationType.UPDATED_ANNOTATION && annotatingUser != null) {
@@ -719,8 +747,8 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             groupAvatar = getAvatar(groupMember.getGroup());
         } else {
-            senderName = contact.getName();
-            senderAvatar = getAvatar(contact);
+            senderName = originator.getName();
+            senderAvatar = getAvatar(originator);
         }
 
         int notificationId;
@@ -731,30 +759,19 @@ public class NotificationCenterImpl implements NotificationCenter {
                 newMessageNotification = (NewMessageNotification) notification;
             }
         }
-        boolean wasNotified = false;
         if (newMessageNotification == null) {
             notificationId = newNotificationId();
-            newMessageNotification = new NewMessageNotification(notificationId, sessionId);
+            newMessageNotification = new NewMessageNotification(notificationId);
             synchronized (this) {
                 mConversationId2Notifications.put(conversation.getId(), newMessageNotification);
             }
         } else {
             notificationId = newMessageNotification.id;
-            if (sessionId != null && sessionId.equals(newMessageNotification.sessionId)) {
-                wasNotified = true;
-            } else if (sessionId != null) {
-                newMessageNotification.sessionId = sessionId;
-            }
-        }
-        int count;
-
-        // System push notification that was already notified, we can ignore.
-        if (wasNotified && notificationMessage == null) {
-            return;
         }
 
-        boolean displayNotificationSender = mTwinmeApplication.getDisplayNotificationSender() && !contact.getIdentityCapabilities().hasDiscreet();
-        boolean displayNotificationContent = mTwinmeApplication.getDisplayNotificationContent() && !contact.getIdentityCapabilities().hasDiscreet();
+        boolean displayNotificationSender = mTwinmeApplication.getDisplayNotificationSender() && !originator.getIdentityCapabilities().hasDiscreet();
+        boolean displayNotificationContent = mTwinmeApplication.getDisplayNotificationContent() && !originator.getIdentityCapabilities().hasDiscreet();
+        boolean isUpdatedAnnotationNotification = false;
 
         // Get a default message for some notifications.
         if (notificationMessage == null && notificationType != null) {
@@ -840,6 +857,10 @@ public class NotificationCenterImpl implements NotificationCenter {
                     notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_join_group));
                     break;
 
+                case NEW_CONTACT_SHARE:
+                    notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_connection_request));
+                    break;
+
                 case RESET_CONVERSATION:
                     if (displayNotificationSender && displayNotificationContent) {
                         notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notifications_view_item_cleanup_message));
@@ -856,6 +877,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                     if (annotation != null) {
                         switch (annotation.getType()) {
                             case LIKE:
+                                isUpdatedAnnotationNotification = true;
                                 if (displayNotificationSender && displayNotificationContent) {
                                     notificationMessage = new SpannableStringBuilder(mApplication.getString(R.string.notification_center_reaction_message_received));
                                 } else {
@@ -876,20 +898,13 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
         }
 
-        // Increment only new notifications.
-        if (!wasNotified) {
-            count = newMessageNotification.count.getAndIncrement();
-        } else {
-            count = newMessageNotification.count.get();
-        }
-
-        if (notificationType == NotificationType.UPDATED_ANNOTATION && (descriptor != null && !descriptor.getTwincodeOutboundId().equals(contact.getTwincodeOutboundId()))) {
+        if (notificationType == NotificationType.UPDATED_ANNOTATION && (descriptor != null && !descriptor.getTwincodeOutboundId().equals(originator.getTwincodeOutboundId()))) {
             return;
         }
 
         Notification notification = null;
         if (notificationType != null) {
-            notification = mTwinmeContext.createNotification(notificationType, notificationId, contact,
+            notification = mTwinmeContext.createNotification(notificationType, notificationId, originator,
                     descriptor == null ? null : descriptor.getDescriptorId(), annotatingUser, annotation);
         }
 
@@ -913,7 +928,7 @@ public class NotificationCenterImpl implements NotificationCenter {
             }
 
             Person sender = new Person.Builder()
-                    .setKey(contact.getShortcutId())
+                    .setKey(originator.getShortcutId())
                     .setIcon(CommonUtils.bitmapToAdaptiveIcon(displayNotificationSender ? senderAvatar : mTwinmeApplication.getAnonymousAvatar()))
                     .setName(displayNotificationSender && !TextUtils.isEmpty(senderName) ? senderName : mTwinmeApplication.getAnonymousName())
                     .build();
@@ -956,10 +971,10 @@ public class NotificationCenterImpl implements NotificationCenter {
             conversationIntent.putExtra(Intents.INTENT_INVITATION_ID, descriptor.getDescriptorId().toString());
         } else if (notificationType == NotificationType.NEW_CONTACT_INVITATION && descriptor != null) {
             conversationIntent.putExtra(Intents.INTENT_NEW_CONTACT_INVITATION, true);
-            if (contact.isGroup()) {
-                conversationIntent.putExtra(Intents.INTENT_GROUP_ID, contact.getId().toString());
+            if (originator.isGroup()) {
+                conversationIntent.putExtra(Intents.INTENT_GROUP_ID, originator.getId().toString());
             } else {
-                conversationIntent.putExtra(Intents.INTENT_CONTACT_ID, contact.getId().toString());
+                conversationIntent.putExtra(Intents.INTENT_CONTACT_ID, originator.getId().toString());
             }
             if (notification != null) {
                 conversationIntent.putExtra(Intents.INTENT_NOTIFICATION_ID, notification.getId().toString());
@@ -967,9 +982,57 @@ public class NotificationCenterImpl implements NotificationCenter {
             conversationIntent.putExtra(Intents.INTENT_DESCRIPTOR_ID, descriptor.getDescriptorId().toString());
         } else {
             conversationIntent.putExtra(Intents.INTENT_NEW_MESSAGE, true);
+
+            if (notification != null && notification.getDescriptorId() != null) {
+                conversationIntent.putExtra(Intents.INTENT_DESCRIPTOR_ID, notification.getDescriptorId().toString());
+            }
         }
-        if (contact instanceof GroupMember) {
-            GroupMember groupMember = (GroupMember) contact;
+
+        boolean isSilentNotification = false;
+        boolean notificationReaction = true;
+        long silentExpiration = 0;
+        if (originator instanceof GroupMember) {
+            GroupMember groupMember = (GroupMember) originator;
+            Originator owner = groupMember.getGroup();
+
+            if (owner instanceof Contact) {
+                Contact contact = (Contact) owner;
+                isSilentNotification = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+                notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+                silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+            } else if (owner instanceof Group) {
+                Group group = (Group) owner;
+                isSilentNotification = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+                notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+                silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+            }
+        } else if (originator instanceof Group) {
+            Group group = (Group) originator;
+            isSilentNotification = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+            silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        } else if (originator instanceof Contact) {
+            Contact contact = (Contact) originator;
+            isSilentNotification = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+            silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        }
+
+        long currentTimeMillis = System.currentTimeMillis() / 1000;
+        if (silentExpiration > 0 && silentExpiration < currentTimeMillis) {
+            isSilentNotification = false;
+        }
+
+        if (isUpdatedAnnotationNotification && !notificationReaction) {
+            isSilentNotification = true;
+        }
+
+        if (isSilentNotification) {
+            return;
+        }
+
+        if (originator instanceof GroupMember) {
+            GroupMember groupMember = (GroupMember) originator;
             Originator owner = groupMember.getGroup();
 
             if (owner instanceof Contact) {
@@ -977,29 +1040,33 @@ public class NotificationCenterImpl implements NotificationCenter {
             } else {
                 conversationIntent.putExtra(Intents.INTENT_GROUP_ID, owner.getId().toString());
             }
-        } else if (contact.isGroup()) {
+        } else if (originator.isGroup()) {
             // The NEW_GROUP_JOINED notification is received on the Group object so we have a group id.
-            conversationIntent.putExtra(Intents.INTENT_GROUP_ID, contact.getId().toString());
+            conversationIntent.putExtra(Intents.INTENT_GROUP_ID, originator.getId().toString());
 
         } else {
-            conversationIntent.putExtra(Intents.INTENT_CONTACT_ID, contact.getId().toString());
+            conversationIntent.putExtra(Intents.INTENT_CONTACT_ID, originator.getId().toString());
         }
         PendingIntent conversationPendingIntent = createPendingIntent(notificationId, conversationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mApplication, channelId);
+
+        notificationBuilder.setCategory(NotificationCompat.CATEGORY_MESSAGE);
+        notificationBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        notificationBuilder.setSmallIcon(R.drawable.logo_small);
+
         if (displayNotificationSender) {
             notificationBuilder.setContentTitle(senderName);
             notificationBuilder.setLargeIcon(senderAvatar);
         }
-
         notificationBuilder.setContentIntent(conversationPendingIntent);
         notificationBuilder.setContentText(notificationMessage);
         notificationBuilder.setLights(Design.BLUE_NORMAL, 1000, 500);
-        notificationBuilder.setSmallIcon(R.drawable.logo_small);
-        notificationBuilder.setCategory(NotificationCompat.CATEGORY_MESSAGE);
-        notificationBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
-        notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+
+        int count = newMessageNotification.count.getAndIncrement();
         notificationBuilder.setNumber(count);
+
         if (notificationType == NotificationType.NEW_GROUP_INVITATION) {
             notificationBuilder.setAutoCancel(true);
         }
@@ -1015,19 +1082,19 @@ public class NotificationCenterImpl implements NotificationCenter {
         }
 
         if (message != null) {
-            boolean isGroup = contact.isGroup() || contact instanceof GroupMember;
+            boolean isGroup = originator.isGroup() || originator instanceof GroupMember;
 
             IconCompat youAvatar = null;
 
-            if (displayNotificationSender && contact.getIdentityAvatarId() != null) {
-                Bitmap avatar = mTwinmeContext.getImageService().getImage(contact.getIdentityAvatarId(), ImageService.Kind.THUMBNAIL);
+            if (displayNotificationSender && originator.getIdentityAvatarId() != null) {
+                Bitmap avatar = mTwinmeContext.getImageService().getImage(originator.getIdentityAvatarId(), ImageService.Kind.THUMBNAIL);
                 if (avatar != null) {
                     youAvatar = CommonUtils.bitmapToAdaptiveIcon(avatar);
                 }
             }
 
-            String youName = displayNotificationSender && !TextUtils.isEmpty(contact.getIdentityName()) ?
-                    contact.getIdentityName() :
+            String youName = displayNotificationSender && !TextUtils.isEmpty(originator.getIdentityName()) ?
+                    originator.getIdentityName() :
                     mApplication.getResources().getString(R.string.conversations_view_you);
 
             Person you = new Person.Builder()
@@ -1044,7 +1111,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
             ShortcutInfoCompat shortcutInfo = null;
             if (displayNotificationSender) {
-                shortcutInfo = CommonUtils.buildShortcutInfo(mApplication, contact, contact instanceof GroupMember ? groupAvatar : senderAvatar, ConversationActivity.class, true);
+                shortcutInfo = CommonUtils.buildShortcutInfo(mApplication, originator, originator instanceof GroupMember ? groupAvatar : senderAvatar, ConversationActivity.class, true);
             }
             notificationBuilder.setShortcutInfo(shortcutInfo);
 
@@ -1061,7 +1128,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                 // Android < 7 doesn't support notification groups (only the summary will be displayed),
                 // nor direct replies.
 
-                if (allowReply(contact, notificationType) && shortcutInfo != null) {
+                if (allowReply(originator, notificationType) && shortcutInfo != null) {
                     String replyLabel = mApplication.getResources().getString(R.string.conversation_view_menu_item_view_reply_title);
                     RemoteInput remoteInput = new RemoteInput.Builder(NotificationReceiver.KEY_TEXT_REPLY)
                             .setLabel(replyLabel)
@@ -1538,9 +1605,7 @@ public class NotificationCenterImpl implements NotificationCenter {
     @NonNull
     private PendingIntent createPendingIntent(int requestCode, @NonNull Intent intent, int flags) {
 
-        flags |= PendingIntent.FLAG_IMMUTABLE;
-
-        return PendingIntent.getActivity(mApplication, requestCode, intent, flags);
+        return PendingIntent.getActivity(mApplication, requestCode, intent, flags | PendingIntent.FLAG_IMMUTABLE);
     }
 
     @NonNull
@@ -1775,9 +1840,9 @@ public class NotificationCenterImpl implements NotificationCenter {
     }
 
     @Override
-    public void startForegroundService(@NonNull Service service, boolean transferring) {
+    public android.app.Notification createPeerServiceNotification(boolean transferring) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "startForegroundService transferring: " + transferring);
+            Log.d(LOG_TAG, "createPeerServiceNotification transferring=" + transferring);
         }
 
         // Create notification builder.
@@ -1795,14 +1860,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         // SCz: To display a data transfer progress bar, uncomment the following line.
         // builder.setProgress(1, 100, true);
 
-        try {
-            // Start foreground service with the notification.  The notification is removed when the service is stopped.
-            service.startForeground(FOREGROUND_SERVICE_NOTIFICATION_ID, notificationBuilder.build());
-        } catch (RuntimeException ex) {
-            if (Logger.ERROR) {
-                Log.e(LOG_TAG, "startForeground failed", ex);
-            }
-        }
+        android.app.Notification notification = notificationBuilder.build();
+        notification.flags |= NotificationCompat.FLAG_INSISTENT | NotificationCompat.FLAG_NO_CLEAR | NotificationCompat.FLAG_ONGOING_EVENT;
+        return notification;
     }
 
     public int startMigrationService(@NonNull Service service, boolean fullScreenActivity) {
@@ -1927,7 +1987,7 @@ public class NotificationCenterImpl implements NotificationCenter {
 
         // Start foreground service with the notification.  The notification is removed when the service is stopped.
         android.app.Notification notification = notificationBuilder.build();
-        mNotificationManager.notify(BACKUP_NOTIFICATION_ID, notification);
+        postNotification(BACKUP_NOTIFICATION_ID, notification);
         service.startForeground(BACKUP_NOTIFICATION_ID, notification);
 
         return BACKUP_NOTIFICATION_ID;
@@ -2266,6 +2326,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         if (DEBUG) {
             Log.d(LOG_TAG, "createNotificationChannels");
         }
+
+        mLastNotificationId = mSharedPreferences.getInt(NOTIFICATION_SEQUENCE, 10);
+        mNotificationId = mLastNotificationId;
 
         // Setup default notification channel names.
         mAudioChannel = CHANNEL_AUDIO;

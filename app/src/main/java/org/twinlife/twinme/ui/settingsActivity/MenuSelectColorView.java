@@ -30,10 +30,10 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,8 +47,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("deprecation")
-public class MenuSelectColorView extends PercentRelativeLayout implements OnColorTouchListener.OnColorObserver {
+public class MenuSelectColorView extends RelativeLayout implements OnColorTouchListener.OnColorObserver {
     private static final String LOG_TAG = "MenuSelectColorView";
     private static final boolean DEBUG = false;
 
@@ -373,6 +372,7 @@ public class MenuSelectColorView extends PercentRelativeLayout implements OnColo
 
         View slideMarkView = findViewById(R.id.menu_select_color_view_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

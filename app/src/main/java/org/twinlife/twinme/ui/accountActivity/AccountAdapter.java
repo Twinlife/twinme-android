@@ -22,6 +22,9 @@ import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 import org.twinlife.twinme.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String LOG_TAG = "AccountAdapter";
     private static final boolean DEBUG = false;
@@ -29,22 +32,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     private final AccountActivity mAccountActivity;
 
-    private static final int ITEM_COUNT = 14;
-
-    private static final int SECTION_TRANSFER = 0;
-    private static final int SECTION_BACKUP = 3;
-    private static final int SECTION_CONVERSATIONS = 9;
-    private static final int SECTION_DELETE_ACCOUNT = 12;
-
-    private static final int POSITION_TRANSFER_FROM_CURRENT_DEVICE = 1;
-    private static final int POSITION_TRANSFER_FROM_ANOTHER_DEVICE = 2;
-    private static final int POSITION_BACKUP = 4;
-    private static final int POSITION_RESTORE = 5;
-    private static final int POSITION_VERIFY_BACKUP = 6;
-    private static final int POSITION_BACKUS = 7;
-    private static final int POSITION_LAST_BACKUP = 8;
-    private static final int POSITION_EXPORT_CONVERSATIONS = 10;
-    private static final int POSITION_CLEANUP = 11;
+    private final List<UIAccountItem> mItems = new ArrayList<>();
 
     private static final int TITLE = 0;
     private static final int SUBSECTION = 1;
@@ -54,6 +42,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         mAccountActivity = listActivity;
         setHasStableIds(false);
+        loadItems();
     }
 
     @Override
@@ -62,7 +51,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        return ITEM_COUNT;
+        return mItems.size();
     }
 
     @Override
@@ -71,12 +60,19 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == SECTION_TRANSFER || position == SECTION_BACKUP || position == SECTION_CONVERSATIONS  || position == SECTION_DELETE_ACCOUNT) {
-            return TITLE;
-        } else if (position == POSITION_LAST_BACKUP) {
-            return INFO;
-        } else {
-            return SUBSECTION;
+        UIAccountItem item = mItems.get(position);
+        switch (item.getType()) {
+            case SECTION_ACCOUNT:
+            case SECTION_BACKUP:
+            case SECTION_CONVERSATIONS:
+            case SECTION_TRANSFER:
+                return TITLE;
+
+            case LAST_BACKUP:
+                return INFO;
+
+            default:
+                return SUBSECTION;
         }
     }
 
@@ -87,63 +83,22 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         int viewType = getItemViewType(position);
-
+        UIAccountItem item = mItems.get(position);
         if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            String title = getSectionTitle(position);
-
-            if (position == SECTION_BACKUP) {
-                sectionTitleViewHolder.onBind(title, false, mAccountActivity.getString(R.string.application_beta), mAccountActivity::onBetaInfoClick);
+            if (item.getType() == UIAccountItem.AccountItemType.SECTION_BACKUP) {
+                sectionTitleViewHolder.onBind(item.getText(), false, mAccountActivity.getString(R.string.application_new), mAccountActivity::onBetaInfoClick);
             } else {
-                sectionTitleViewHolder.onBind(title, false);
+                sectionTitleViewHolder.onBind(item.getText(), false);
             }
-
         } else if (viewType == SUBSECTION) {
             SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
-            String title;
-            int textColor = Design.FONT_COLOR_DEFAULT;
-            int iconId;
-            int iconColor = Design.SHOW_ICON_COLOR;
-            if (position == POSITION_TRANSFER_FROM_CURRENT_DEVICE) {
-                title = mAccountActivity.getString(R.string.account_view_transfer_from_device);
-                iconId = R.drawable.migration_my_device_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(true));
-            } else if (position == POSITION_TRANSFER_FROM_ANOTHER_DEVICE) {
-                title = mAccountActivity.getString(R.string.account_view_transfer_from_another_device);
-                iconId = R.drawable.migration_another_device_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(false));
-            } else if (position == POSITION_BACKUP) {
-                title = mAccountActivity.getString(R.string.account_view_backup);
-                iconId = R.drawable.backup_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onBackupClick());
-            } else if (position == POSITION_RESTORE) {
-                title = mAccountActivity.getString(R.string.account_view_restore);
-                iconId = R.drawable.restore_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onRestoreClick());
-            } else if (position == POSITION_VERIFY_BACKUP) {
-                title = mAccountActivity.getString(R.string.account_view_backup_verify);
-                iconId = R.drawable.backup_verify_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onVerifyBackupClick());
-            } else if (position == POSITION_BACKUS) {
-                title = mAccountActivity.getString(R.string.account_view_backup_list);
-                iconId = R.drawable.backup_list_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onBackupsClick());
-            } else if (position == POSITION_EXPORT_CONVERSATIONS) {
-                title = mAccountActivity.getString(R.string.show_contact_view_export_contents);
-                iconId = R.drawable.share_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onExportClick());
-            } else if (position == POSITION_CLEANUP) {
-                title = mAccountActivity.getString(R.string.show_contact_view_cleanup);
-                iconId = R.drawable.cleanup_icon;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onCleanupClick());
-            } else {
-                title = mAccountActivity.getString(R.string.deleted_account_view_delete);
-                textColor = Design.DELETE_COLOR_RED;
-                iconId = R.drawable.delete_icon;
-                iconColor = Design.DELETE_COLOR_RED;
-                settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onDeleteAccountClick());
-            }
-            settingIconViewHolder.onBind(title, textColor, iconId, iconColor, false);
+            settingIconViewHolder.itemView.setOnClickListener(view -> {
+                if (item.getOnClickListener() != null) {
+                    item.getOnClickListener().run();
+                }
+            });
+            settingIconViewHolder.onBind(item.getText(), item.getTextColor(), item.getIcon(), item.getIconColor(), false);
         } else if (viewType == INFO) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (mAccountActivity.getTwinmeApplication().getLastBackupDate() > 0) {
@@ -187,65 +142,46 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
         if (position != -1) {
+            UIAccountItem item = mItems.get(position);
             if (viewType == TITLE) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-                String title = getSectionTitle(position);
-                sectionTitleViewHolder.onBind(title, false);
+                if (item.getType() == UIAccountItem.AccountItemType.SECTION_BACKUP) {
+                    sectionTitleViewHolder.onBind(item.getText(), false, mAccountActivity.getString(R.string.application_new), mAccountActivity::onBetaInfoClick);
+                } else {
+                    sectionTitleViewHolder.onBind(item.getText(), false);
+                }
             }
             if (viewType == SUBSECTION) {
                 SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
-                String title;
-                int textColor = Design.FONT_COLOR_DEFAULT;
-                int iconId;
-                int iconColor = Design.SHOW_ICON_COLOR;
-                if (position == POSITION_TRANSFER_FROM_CURRENT_DEVICE) {
-                    title = mAccountActivity.getString(R.string.account_view_transfer_from_device);
-                    iconId = R.drawable.migration_my_device_icon;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(true));
-                } else if (position == POSITION_TRANSFER_FROM_ANOTHER_DEVICE) {
-                    title = mAccountActivity.getString(R.string.account_view_transfer_from_another_device);
-                    iconId = R.drawable.migration_another_device_icon;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onTransferClick(false));
-                } else if (position == POSITION_BACKUP) {
-                    title = mAccountActivity.getString(R.string.account_view_backup);
-                    iconId = R.drawable.backup_icon;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onBackupClick());
-                } else if (position == POSITION_RESTORE) {
-                    title = mAccountActivity.getString(R.string.account_view_restore);
-                    iconId = R.drawable.restore_icon;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onRestoreClick());
-                } else if (position == POSITION_EXPORT_CONVERSATIONS) {
-                    title = mAccountActivity.getString(R.string.show_contact_view_export_contents);
-                    iconId = R.drawable.share_icon;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onExportClick());
-                } else if (position == POSITION_CLEANUP) {
-                    title = mAccountActivity.getString(R.string.show_contact_view_cleanup);
-                    iconId = R.drawable.cleanup_icon;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onCleanupClick());
-                } else {
-                    title = mAccountActivity.getString(R.string.deleted_account_view_delete);
-                    textColor = Design.DELETE_COLOR_RED;
-                    iconId = R.drawable.delete_icon;
-                    iconColor = Design.DELETE_COLOR_RED;
-                    settingIconViewHolder.itemView.setOnClickListener(view -> mAccountActivity.onDeleteAccountClick());
-                }
-                settingIconViewHolder.onBind(title, textColor, iconId, iconColor, false);
+                settingIconViewHolder.itemView.setOnClickListener(view -> {
+                    if (item.getOnClickListener() != null) {
+                        item.getOnClickListener().run();
+                    }
+                });
+                settingIconViewHolder.onBind(item.getText(), item.getTextColor(), item.getIcon(), item.getIconColor(), false);
             }
         }
     }
 
-    private String getSectionTitle(int position) {
-
-        String title = "";
-
-        if (position == SECTION_TRANSFER) {
-            title = mAccountActivity.getString(R.string.account_view_transfer_between_devices);
-        } else if (position == SECTION_BACKUP) {
-            title = mAccountActivity.getString(R.string.account_view_backup_restore);
-        } else if (position == SECTION_CONVERSATIONS) {
-            title = mAccountActivity.getString(R.string.account_view_conversations_content_title);
+    private void loadItems() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "loadItems");
         }
 
-        return title;
+        mItems.clear();
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.SECTION_TRANSFER, mAccountActivity.getString(R.string.account_view_transfer_between_devices), -1, -1, -1, null));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.TRANSFER_FROM_DEVICE, mAccountActivity.getString(R.string.account_view_transfer_from_device), R.drawable.migration_my_device_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, () -> mAccountActivity.onTransferClick(true)));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.TRANSFER_FROM_OTHER_DEVICE, mAccountActivity.getString(R.string.account_view_transfer_from_another_device), R.drawable.migration_another_device_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR,() -> mAccountActivity.onTransferClick(false)));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.SECTION_BACKUP, mAccountActivity.getString(R.string.account_view_backup_restore), -1, -1, -1, null));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.BACKUP, mAccountActivity.getString(R.string.account_view_backup), R.drawable.backup_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onBackupClick));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.RESTORE, mAccountActivity.getString(R.string.account_view_restore), R.drawable.restore_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onRestoreClick));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.VERIFY_BACKUP, mAccountActivity.getString(R.string.account_view_backup_verify), R.drawable.backup_verify_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onVerifyBackupClick));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.BACKUPS, mAccountActivity.getString(R.string.account_view_backup_list), R.drawable.backup_list_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onBackupsClick));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.LAST_BACKUP, "", -1, -1, -1, null));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.SECTION_CONVERSATIONS, mAccountActivity.getString(R.string.account_view_conversations_content_title), -1, -1, -1, null));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.EXPORT, mAccountActivity.getString(R.string.show_contact_view_export_contents), R.drawable.share_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onExportClick));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.CLEANUP, mAccountActivity.getString(R.string.show_contact_view_cleanup), R.drawable.cleanup_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onCleanupClick));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.SECTION_ACCOUNT, "", -1, -1, -1, null));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.DELETE, mAccountActivity.getString(R.string.deleted_account_view_delete), R.drawable.delete_icon, Design.DELETE_COLOR_RED, Design.DELETE_COLOR_RED, mAccountActivity::onDeleteAccountClick));
     }
 }

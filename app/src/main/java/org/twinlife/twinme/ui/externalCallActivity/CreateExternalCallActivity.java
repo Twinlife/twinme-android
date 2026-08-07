@@ -60,6 +60,7 @@ import org.twinlife.twinme.ui.externalCallActivity.UIConfigExternalCall.ConfigEx
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
@@ -406,6 +407,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         View slideMarkView = findViewById(R.id.create_external_call_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -1014,6 +1016,11 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
                  updateConfig();
             }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
+            }
         });
 
         viewGroup.addView(menuSelectValueView);
@@ -1050,7 +1057,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

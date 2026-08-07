@@ -18,16 +18,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ShareInvitationMode;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
 import org.twinlife.twinme.ui.settingsActivity.AbstractSettingsActivity;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.ui.settingsActivity.UISetting;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 
 public class PrivacyActivity extends AbstractSettingsActivity {
     private static final String LOG_TAG = "PrivacyActivity";
     private static final boolean DEBUG = false;
+
+    private PrivacyAdapter mPrivacyAdapter;
 
     //
     // Override TwinmeActivityImpl methods
@@ -52,6 +56,14 @@ public class PrivacyActivity extends AbstractSettingsActivity {
     @Override
     public void onRingToneClick(UISetting<String> setting) {
 
+    }
+
+    public void onSelectShareInvitationModeClick() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectShareInvitationModeClick");
+        }
+
+        selectShareInvitationMode();
     }
 
     public void onPremiumFeatureClick() {
@@ -117,12 +129,62 @@ public class PrivacyActivity extends AbstractSettingsActivity {
         setTitle(getString(R.string.privacy_view_title));
         applyInsets(R.id.privacy_activity_layout, R.id.privacy_activity_tool_bar,R.id.privacy_activity_list_view, Design.TOOLBAR_COLOR, false);
 
-        PrivacyAdapter privacyAdapter = new PrivacyAdapter(this);
+        mPrivacyAdapter = new PrivacyAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView settingsRecyclerView = findViewById(R.id.privacy_activity_list_view);
         settingsRecyclerView.setLayoutManager(linearLayoutManager);
-        settingsRecyclerView.setAdapter(privacyAdapter);
+        settingsRecyclerView.setAdapter(mPrivacyAdapter);
         settingsRecyclerView.setItemAnimator(null);
         settingsRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
+    }
+
+    private void selectShareInvitationMode() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "selectShareInvitationMode");
+        }
+
+        ViewGroup viewGroup = findViewById(R.id.privacy_activity_layout);
+
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(this, null);
+        menuSelectValueView.setActivity(this);
+
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+                viewGroup.removeView(menuSelectValueView);
+                setStatusBarColor();
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (value == ShareInvitationMode.NEVER.toInteger()) {
+                    getTwinmeApplication().setShareInvitationMode(ShareInvitationMode.NEVER);
+                } else if (value == ShareInvitationMode.ASK.toInteger()) {
+                    getTwinmeApplication().setShareInvitationMode(ShareInvitationMode.ASK);
+                } else {
+                    getTwinmeApplication().setShareInvitationMode(ShareInvitationMode.AUTOMATIC);
+                }
+
+                mPrivacyAdapter.updateShareInvitationMode();
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+                if (DEBUG) {
+                    Log.d(LOG_TAG, "onSelectTimeout: " + timeout);
+                }
+
+                menuSelectValueView.animationCloseMenu();
+            }
+        });
+
+        viewGroup.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.SHARE_INVITATION_MODE, getTwinmeApplication().getShareInvitationMode().toInteger());
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 }

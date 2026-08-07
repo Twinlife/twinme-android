@@ -14,6 +14,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.ui.Settings;
+import org.twinlife.twinme.utils.SoundEffect;
 
 public abstract class AbstractSettingsActivity extends AbstractTwinmeActivity {
     private static final String LOG_TAG = "AbstractSettingsActi..";
@@ -30,6 +32,14 @@ public abstract class AbstractSettingsActivity extends AbstractTwinmeActivity {
 
         if (setting.getTypeSetting() == UISetting.TypeSetting.CHECKBOX) {
             setting.setBoolean(value);
+
+            if (setting.isSetting(Settings.soundEffectsEnable)) {
+                if (getTwinmeApplication().soundEffectsEnable()) {
+                    SoundEffect.initialize();
+                } else {
+                    SoundEffect.disposeSounds();
+                }
+            }
         }
     }
 

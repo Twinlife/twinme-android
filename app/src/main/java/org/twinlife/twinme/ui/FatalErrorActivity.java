@@ -23,8 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.skin.Design;
 
 /**
@@ -62,7 +61,7 @@ public class FatalErrorActivity extends Activity {
         String value = intent.getStringExtra(Intents.INTENT_ERROR_ID);
         boolean databaseUpgraded = intent.getBooleanExtra(Intents.INTENT_DATABASE_UPGRADED, false);
         if (value != null) {
-            BaseService.ErrorCode errorCode = ErrorCode.valueOf(value);
+            ErrorCode errorCode = ErrorCode.valueOf(value);
             if (errorCode == ErrorCode.NO_STORAGE_SPACE && !databaseUpgraded) {
                 mCustomMessage = true;
                 mMessage = application.getString(R.string.application_migration_no_storage_space);

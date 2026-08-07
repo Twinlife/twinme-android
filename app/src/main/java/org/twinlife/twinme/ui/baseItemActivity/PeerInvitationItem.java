@@ -15,7 +15,7 @@ import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
 import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
@@ -116,9 +116,13 @@ public class PeerInvitationItem extends Item implements GetTwincodeAction.Consum
         }
 
         if (mInvitationItemObserver != null) {
-            mBaseItemActivity.runOnUiThread(() -> {
-                mInvitationItemObserver.onUpdateDescriptor(mInvitation, ConversationService.UpdateType.TIMESTAMPS);
-            });
+            if (errorCode == ErrorCode.EXPIRED) {
+                mBaseItemActivity.runOnUiThread(() -> mInvitationItemObserver.onDeleteInvitationItem(this));
+            } else {
+                mBaseItemActivity.runOnUiThread(() -> {
+                    mInvitationItemObserver.onUpdateDescriptor(mInvitation, ConversationService.UpdateType.TIMESTAMPS);
+                });
+            }
         }
     }
 

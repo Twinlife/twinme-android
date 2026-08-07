@@ -43,6 +43,7 @@ import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.EditIdentityService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.profiles.MenuPhotoView;
 import org.twinlife.twinme.ui.profiles.MenuPropagatingProfileView;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
@@ -404,6 +405,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
 
         View slideMarkView = findViewById(R.id.edit_profile_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -781,6 +783,11 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
                 Settings.profileUpdateMode.setInt(value).save();
                 updateProfileUpdateMode();
             }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
+            }
         });
 
         viewGroup.addView(menuSelectValueView);
@@ -865,7 +872,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

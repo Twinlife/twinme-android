@@ -16,6 +16,7 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -137,7 +138,7 @@ public class CallFloatingView extends PercentRelativeLayout implements View.OnTo
 
     public void moveToTopRight() {
 
-        Handler handler = new Handler();
+        Handler handler = new Handler(Looper.getMainLooper());
         Runnable runnable = () -> moveToCornerUnit(new Point(1, -1), this, false);
         handler.postDelayed(runnable, 100);
     }

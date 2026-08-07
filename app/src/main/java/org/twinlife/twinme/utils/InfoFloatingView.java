@@ -24,6 +24,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -123,7 +124,7 @@ public class InfoFloatingView extends PercentRelativeLayout implements View.OnTo
     @Nullable
     private UIAppInfo mUIAppInfo;
 
-    private final Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
     private final Runnable mHideFloatingView = this::checkFloatingView;
     private final Runnable mUpdateMessage = this::updateMessage;
 

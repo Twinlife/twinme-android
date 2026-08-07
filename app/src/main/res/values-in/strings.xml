@@ -100,6 +100,7 @@
     <string name="application_select_more">Pilih lainnya…</string>
     <string name="application_server_timeout">Batas waktu server</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Mulai</string>
     <string name="application_theme">Tema</string>
     <string name="application_timeout">Keterlambatan kadaluarsa</string>
     <string name="application_timeout_day">1 hari</string>
@@ -110,6 +111,8 @@
     <string name="application_timeout_month">1 bulan</string>
     <string name="application_timeout_seconds">%1$d detik</string>
     <string name="application_timeout_week">1 minggu</string>
+    <string name="application_transfer_from_another_device">Transfer dari perangkat lain</string>
+    <string name="application_transfer_restore">Transfer atau pulihkan</string>
     <string name="application_unknown_name">Tidak dikenal</string>
     <string name="application_until">Hingga %1$s</string>
     <string name="application_upgrade">Meng-upgrade twinme</string>
@@ -191,12 +194,23 @@
     <string name="account_migration_view_transfer_in_progress">Transfer data sedang berlangsung</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Untuk memulai transfer, pindai kode QR transfer yang ditampilkan di perangkat lain.</string>
+    <string name="account_migration_scanner_view_header_other_device">Untuk memulai transfer, pindai kode QR yang ditampilkan di perangkat ini dari perangkat lain.</string>
     <string name="account_migration_scanner_view_message">Tampilkan layar ini di setiap perangkat, dan yang satu memindai Kode QR lainnya.</string>
     <string name="account_migration_scanner_view_message_older_version">Perangkat ini menggunakan versi OS lama yang tidak kompatibel, yang akan menyebabkan semua hubungan pada perangkat target hilang selama transfer. Apakah Anda masih ingin melanjutkan transfer?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Perangkat target menggunakan versi OS lama yang tidak kompatibel, yang akan menyebabkan semua hubungan Anda hilang selama transfer. Apakah Anda masih ingin melanjutkan transfer?</string>
-    <string name="account_migration_scanner_view_scan_title">Memindai</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Untuk meluncurkan migrasi, pindai kode QR ini dari perangkat lain</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Pindai kode QR yang ditampilkan di bagian \"Akun/Transfer dari perangkat lain\" pada menu samping perangkat lain.</string>
+    <string name="account_migration_scanner_view_restore_title">Tidak lagi memiliki akses ke perangkat lain?</string>
+    <string name="account_migration_scanner_view_restore_message">Jika ada cadangan, Anda dapat memulihkannya ke perangkat ini.</string>
+    <string name="account_migration_scanner_view_scan_title">Memindai</string>
+    <string name="account_migration_scanner_view_step_1">Buka aplikasi di perangkat lain</string>
+    <string name="account_migration_scanner_view_step_2">Buka menu samping</string>
+    <string name="account_migration_scanner_view_step_3">Pilih \"Akun\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Mulai transfer dari perangkat ini</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Mulai transfer dari perangkat lain</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Pindai kode QR yang ditampilkan di perangkat lain dengan perangkat ini</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Pindai kode QR yang ditampilkan di perangkat ini dengan perangkat lain</string>
     <string name="account_migration_scanner_view_stop_scan_title">Hentikan pemindaian</string>
 
    <!-- AddCallParticipantActivity -->
@@ -285,13 +299,16 @@
     <string name="backup_view_content_diff_deleted">Dihapus</string>
     <string name="backup_view_content_diff_message">Berikut adalah perubahan dibandingkan dengan data Anda saat ini:</string>
     <string name="backup_view_content_info">Cadangan tidak mencakup percakapan, notifikasi, dan riwayat.</string>
+    <string name="backup_view_copy_clipboard">Salin ke papan klip</string>
     <string name="backup_view_error_words">Kata-kata yang dimasukkan tidak memungkinkan cadangan didekripsi.</string>
+    <string name="backup_view_generate_key">Buat kunci enkripsi baru</string>
     <string name="backup_view_generate_word">Menghasilkan</string>
     <string name="backup_view_last_backup">Cadangan terakhir di %1$s</string>
     <string name="backup_view_new_backup">Cadangan baru</string>
     <string name="backup_view_onboarding">Buat cadangan terenkripsi untuk data akun (\"Spaces\", profil, kontak, kelompok, « click-to-call ») yang dapat dipulihkan ke perangkat ini atau perangkat lain.</string>
     <string name="backup_view_reminder">Cadangan terakhir Anda dibuat lebih dari 30 hari yang lalu.</string>
     <string name="backup_view_save_file_message">Simpan berkas cadangan ke perangkat pilihan Anda dan simpan kata sandinya untuk pemulihan nanti.</string>
+    <string name="backup_view_save_password">Simpan ke pengelola kata sandi</string>
     <string name="backup_view_security">Keamanan</string>
     <string name="backup_view_security_info">Kunci enkripsi cadangan diwakili oleh serangkaian 12 kata yang akan diperlukan untuk pemulihan.</string>
     <string name="backup_view_success">Cadangan selesai dengan sukses!</string>
@@ -461,6 +478,8 @@
     <string name="conversation_view_group_one_member">1 anggota</string>
     <string name="conversation_view_invitation_accepted">Undangan diterima</string>
     <string name="conversation_view_invitation_failed">Minta kontak Anda untuk memperbarui twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s menerima undangan</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s menolak undangan</string>
     <string name="conversation_view_invitation_joined">Anggota grup</string>
     <string name="conversation_view_invitation_pending">Undangan sedang diproses</string>
     <string name="conversation_view_invitation_refused">Undangan ditolak</string>
@@ -501,6 +520,13 @@
     <string name="conversation_view_send_quality_size">Media besar (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Kirim dalam resolusi standar (SD)</string>
     <string name="conversation_view_send_quality_warning">Anda dapat mengubah ukuran ke resolusi standar (SD) untuk transfer yang lebih cepat.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s menerima koneksi</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Anda tidak menerima perkenalan yang dilakukan oleh kontak Anda.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s menolak koneksi</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Anda menolak permintaan koneksi</string>
+    <string name="conversation_view_share_contact_item_local_message">Menghubungkan %1$s dengan %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Menghubungkan Anda dengan %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Menunggu penerimaan oleh %1$s</string>
     <string name="conversation_view_stream_dialog">Apakah Anda ingin menerimanya?</string>
     <string name="conversation_view_unsupported_media">Format media tidak didukung</string>
     <string name="conversation_view_video_call">Panggilan video</string>
@@ -804,6 +830,7 @@
     <string name="notification_center_cancel">Tolak</string>
     <string name="notification_center_cleanup_conversation">Beberapa pesan lama telah dihapus.</string>
     <string name="notification_center_conference_join_call">Satu peserta bergabung dalam panggilan.</string>
+    <string name="notification_center_connection_request">कनेक्शन रिक्वेस्ट</string>
     <string name="notification_center_deleted_contact">Kontak Dihapus</string>
     <string name="notification_center_file_message">Mengirimi Anda file</string>
     <string name="notification_center_file_message_received">File baru</string>
@@ -961,6 +988,7 @@
     <string name="premium_services_view_title">Undang kontak untuk bergabung dengan panggilan suara/video yang sedang berlangsung.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aplikasi aktif</string>
     <string name="privacy_view_coach_mark">Kunci aplikasi dengan layanan biometrik atau dengan kode PIN.</string>
     <string name="privacy_view_hide_last_screen_message">Dan menyembunyikan aplikasi saat berjalan di latar belakang, jika perangkat mengizinkannya.</string>
     <string name="privacy_view_hide_last_screen_title">Melarang tangkapan layar</string>
@@ -969,6 +997,10 @@
     <string name="privacy_view_lock_screen_timeout">Akses penguncian waktu tunggu</string>
     <string name="privacy_view_lock_screen_timeout_instant">Instan</string>
     <string name="privacy_view_lock_screen_title">Kunci akses</string>
+    <string name="privacy_view_share_invitation_ask">Tanya saya setiap saat</string>
+    <string name="privacy_view_share_invitation_info">Anda akan diberi tahu setiap kali seseorang membagikan kontak Anda.</string>
+    <string name="privacy_view_share_invitation_setting">Izinkan kontak saya menghubungkan saya dengan kontak mereka</string>
+    <string name="privacy_view_share_invitation_title">Koneksi</string>
     <string name="privacy_view_title">Kerahasiaan</string>
 
     <!-- ProfileFragment -->
@@ -1044,6 +1076,7 @@
     <string name="restore_view_success">Restorasi selesai dengan sukses!</string>
     <string name="restore_view_success_message">Tutup aplikasi dan restart untuk mengakses data baru.</string>
     <string name="restore_view_title">Memulihkan</string>
+    <string name="restore_view_update_message">Anda perlu memperbarui aplikasi untuk memulihkan cadangan.</string>
     <string name="restore_view_verify_same_account">Verifikasi harus dilakukan pada perangkat yang sama yang digunakan untuk pencadangan.</string>
     <string name="restore_view_warning">Memulihkan cadangan ini akan menggantikan semua data akun saat ini dengan data dari cadangan.</string>
 
@@ -1060,7 +1093,18 @@
     <string name="scan_view_paste_code">Masukkan atau tempel tautan undangan</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Melihat pratinjau tautan web akan mengekspos alamat IP ke situs web.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Lanjutan</string>
+    <string name="settings_advanced_view_security_advanced_info">Alamat IP disembunyikan secara lokal (menggunakan TLS untuk STUN).</string>
+    <string name="settings_advanced_view_security_expert">Pakar</string>
+    <string name="settings_advanced_view_security_expert_info">Alamat IP disembunyikan secara lokal dan ke kontak (panggilan dialihkan melalui server TURN).</string>
+    <string name="settings_advanced_view_security_optimized">Dioptimalkan (default)</string>
+    <string name="settings_advanced_view_security_optimized_info">Alamat IP dapat terekspos selama pertukaran WebRTC atau pratinjau tautan web.</string>
+    <string name="settings_advanced_view_security_level_title">Tingkat Keamanan</string>
+    <string name="settings_advanced_view_security_info">Sesuaikan keseimbangan antara keamanan dan kinerja untuk kebutuhan spesifik.</string>
+    <string name="settings_advanced_view_security_title">Keamanan</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Tingkat keamanan Pakar tidak memungkinkan perubahan pengaturan ini.</string>
     <string name="settings_advanced_view_status_connection_message">Periksa status koneksi Anda ke layanan</string>
     <string name="settings_advanced_view_status_connection_title">Status koneksi</string>
     <string name="settings_advanced_view_telecom_enable">Pengalaman panggilan Android</string>
@@ -1108,7 +1152,10 @@
     <string name="settings_view_permissions_title">IZIN</string>
     <string name="settings_view_silent_mode">Mode senyap</string>
     <string name="settings_view_silent_sound">Diam</string>
+    <string name="settings_view_sound_effects_info">Putar suara saat berinteraksi dengan aplikasi</string>
+    <string name="settings_view_sound_effects_title">Efek suara</string>
     <string name="settings_view_sound_enabled_title">NOTIFIKASI BUNYI</string>
+    <string name="settings_view_sound_vibrations_title">Suara dan Getaran</string>
     <string name="settings_view_system_notifications_title">Notifikasi sistem</string>
     <string name="settings_view_system_settings_title">Pengaturan sistem</string>
     <string name="settings_view_turn_off_notification_sounds">Matikan suara notifikasi</string>
@@ -1132,6 +1179,18 @@
     <string name="settings_room_view_room_type_feedback_information">Umpan balik peserta hanya dilihat oleh administrator/moderator</string>
     <string name="settings_room_view_room_type_forum">Forum</string>
     <string name="settings_room_view_room_type_forum_information">Peserta dapat memposting pesan yang dilihat oleh semua orang</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s ingin menghubungkan Anda dengan %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Apakah Anda ingin menambahkan %1$s sebagai kontak pribadi?</string>
+    <string name="share_contact_view_onboarding_part_1">Anda sekarang dapat mengizinkan kontak Anda untuk menghubungkan Anda dengan kontak mereka sendiri.</string>
+    <string name="share_contact_view_onboarding_part_2">Secara default, Anda harus menyetujui setiap proposal koneksi.</string>
+    <string name="share_contact_view_onboarding_part_3">Perilaku default dapat diubah di bagian \"Privasi\" pada pengaturan aplikasi.</string>
+    <string name="share_contact_view_share_info">%1$s akan menerima notifikasi pembagian kontak</string>
+    <string name="share_contact_view_share_title">Bagikan kontak %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Kontak</string>
@@ -1166,6 +1225,7 @@
     <string name="show_contact_view_pending_message">Hubungan ini sedang dalam proses untuk dibangun. Harap tunggu.</string>
     <string name="show_contact_view_revoked">Dihapus</string>
     <string name="show_contact_view_settings_coach_mark">Tentukan apa yang boleh dilakukan kontak Anda dalam hubungan ini dengan Anda.</string>
+    <string name="show_contact_view_share_contact">Bagikan kontak ini</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->

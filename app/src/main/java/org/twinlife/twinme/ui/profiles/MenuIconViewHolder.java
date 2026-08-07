@@ -61,6 +61,25 @@ public class MenuIconViewHolder extends RecyclerView.ViewHolder {
             Log.d(LOG_TAG, "onBind: title=" + uiMenuSelectAction.getTitle());
         }
 
+        mIconView.setColorFilter(Design.BLACK_COLOR);
+        updateViews(uiMenuSelectAction, hideSeparator);
+    }
+
+    public void onBind(UIMenuSelectAction uiMenuSelectAction, int iconColor, boolean hideSeparator) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onBind: title=" + uiMenuSelectAction.getTitle());
+        }
+
+        mIconView.setColorFilter(iconColor);
+        updateViews(uiMenuSelectAction, hideSeparator);
+    }
+
+    private void updateViews(UIMenuSelectAction uiMenuSelectAction, boolean hideSeparator) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateViews: title=" + mTitleView.getText());
+        }
+
+
         itemView.setBackgroundColor(Design.POPUP_BACKGROUND_COLOR);
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
         mTitleView.setText(uiMenuSelectAction.getTitle());

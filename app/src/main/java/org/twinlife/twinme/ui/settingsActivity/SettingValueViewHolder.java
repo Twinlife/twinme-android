@@ -34,7 +34,6 @@ public class SettingValueViewHolder extends RecyclerView.ViewHolder {
     private final TextView mValueView;
 
     private final ImageView mSelectImageView;
-
     public SettingValueViewHolder(@NonNull View view) {
 
         super(view);

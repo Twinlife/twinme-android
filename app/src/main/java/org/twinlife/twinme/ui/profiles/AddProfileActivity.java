@@ -558,7 +558,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

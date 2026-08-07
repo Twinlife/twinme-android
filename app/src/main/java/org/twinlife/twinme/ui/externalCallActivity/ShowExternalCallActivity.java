@@ -53,6 +53,7 @@ import org.twinlife.twinme.ui.EditIdentityActivity;
 import org.twinlife.twinme.ui.Intents;
 import org.twinlife.twinme.ui.LastCallsActivity;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.CircularImageView;
 import org.twinlife.twinme.utils.RoundedView;
@@ -321,6 +322,7 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
 
         View slideMarkView = findViewById(R.id.show_external_call_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -897,6 +899,11 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
 
                 mExternalCallConfigAdapter.updateConfigItems(mConfigExternalCall);
                 saveCapabilities();
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
             }
         });
 

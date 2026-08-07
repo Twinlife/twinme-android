@@ -201,6 +201,16 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
 
                 return new PeerInvitationItemViewHolder(mBaseItemActivity, convertView, true, true);
 
+            case SHARE_CONTACT:
+                convertView = inflater.inflate(R.layout.base_item_activity_share_contact_item, parent, false);
+
+                return new ShareContactItemViewHolder(mBaseItemActivity, convertView);
+
+            case PEER_SHARE_CONTACT:
+                convertView = inflater.inflate(R.layout.base_item_activity_peer_share_contact_item, parent, false);
+
+                return new PeerShareContactItemViewHolder(mBaseItemActivity, convertView);
+
             case CALL:
                 convertView = inflater.inflate(R.layout.base_item_activity_call_item, parent, false);
 

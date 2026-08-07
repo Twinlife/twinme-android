@@ -15,8 +15,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
 
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +26,7 @@ import org.twinlife.twinme.skin.Design;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuActionConversationView extends PercentRelativeLayout {
+public class MenuActionConversationView extends RelativeLayout {
     private static final String LOG_TAG = "MenuActionConver...";
     private static final boolean DEBUG = false;
 

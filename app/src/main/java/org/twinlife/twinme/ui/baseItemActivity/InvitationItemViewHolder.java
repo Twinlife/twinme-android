@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2025 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -9,28 +9,53 @@
 
 package org.twinlife.twinme.ui.baseItemActivity;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
+import com.google.android.material.imageview.ShapeableImageView;
+
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.utils.CircularImageView;
-import org.twinlife.twinme.utils.RoundedView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class InvitationItemViewHolder extends ItemViewHolder {
 
-    private final TextView mGroupNameView;
+    private static final float DESIGN_AVATAR_SIZE = 80f;
+    private static final float DESIGN_LINE_HEIGHT = 4f;
+    private static final float DESIGN_ICON_CONTAINER_SIZE = 60f;
+    private static final float DESIGN_ICON_SIZE = 32f;
+    private static final float DESIGN_AVATAR_MARGIN = 24f;
+    private static final float DESIGN_AVATAR_TOP_MARGIN = 20f;
+    private static final float DESIGN_MESSAGE_MARGIN = 20f;
+
+    private static final int DESIGN_LINE_DASH_LONG_LENGTH = 8;
+    private static final int DESIGN_LINE_DASH_SHORT_LENGTH = 4;
+    private static final int DESIGN_LINE_DASH_SPACING = 6;
+    private static final int DESIGN_LINE_DASH_WIDTH = 3;
+
     private final TextView mInvitationView;
     private final GradientDrawable mGradientDrawable;
-    private final RoundedView mNoAvatarView;
-    private final CircularImageView mInvitationAvatarView;
+    private final ShapeableImageView mLeftAvatarView;
+    private final ShapeableImageView mRightAvatarView;
+    private final ImageView mStatusImageView;
     private final DeleteProgressView mDeleteView;
     private final View mInvitationContainer;
 
@@ -54,16 +79,101 @@ class InvitationItemViewHolder extends ItemViewHolder {
         mInvitationContainer.setBackground(mGradientDrawable);
         mInvitationContainer.setClickable(false);
 
-        mInvitationView = view.findViewById(R.id.base_item_activity_invitation_item_invitation_view);
-        Design.updateTextFont(mInvitationView, Design.FONT_REGULAR26);
+        View avatarContainerView = view.findViewById(R.id.base_item_activity_invitation_item_avatar_container_view);
 
-        mGroupNameView = view.findViewById(R.id.base_item_activity_invitation_item_group_name);
-        Design.updateTextFont(mGroupNameView, Design.FONT_MEDIUM26);
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) avatarContainerView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_AVATAR_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_AVATAR_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_AVATAR_MARGIN * Design.WIDTH_RATIO);
+        avatarContainerView.setLayoutParams(marginLayoutParams);
 
-        mInvitationAvatarView = view.findViewById(R.id.base_item_activity_invitation_avatar_view);
+        mLeftAvatarView = view.findViewById(R.id.base_item_activity_invitation_item_left_avatar_view);
 
-        mNoAvatarView = view.findViewById(R.id.base_item_activity_invitation_no_avatar_view);
-        mNoAvatarView.setColor(Design.GREY_ITEM_COLOR);
+        ViewGroup.LayoutParams layoutParams = mLeftAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        mLeftAvatarView.setLayoutParams(layoutParams);
+
+        mRightAvatarView = view.findViewById(R.id.base_item_activity_invitation_item_right_avatar_view);
+        layoutParams = mRightAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        mRightAvatarView.setLayoutParams(layoutParams);
+
+        View lineLeftView = view.findViewById(R.id.base_item_activity_invitation_item_line_left_view);
+
+        layoutParams = lineLeftView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_LINE_HEIGHT * Design.HEIGHT_RATIO);
+        lineLeftView.setLayoutParams(layoutParams);
+
+        View lineRightView = view.findViewById(R.id.base_item_activity_invitation_item_line_right_view);
+
+        layoutParams = lineRightView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_LINE_HEIGHT * Design.HEIGHT_RATIO);
+        lineRightView.setLayoutParams(layoutParams);
+
+        float dp = Resources.getSystem().getDisplayMetrics().density;
+
+        Paint dashPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        dashPaint.setColor(Color.WHITE);
+        dashPaint.setStyle(Paint.Style.STROKE);
+        dashPaint.setStrokeWidth(dp * DESIGN_LINE_DASH_WIDTH);
+        dashPaint.setStrokeCap(Paint.Cap.ROUND);
+        dashPaint.setPathEffect(new DashPathEffect(new float[]{dp * DESIGN_LINE_DASH_LONG_LENGTH, dp * DESIGN_LINE_DASH_SPACING, dp * DESIGN_LINE_DASH_SHORT_LENGTH, dp * DESIGN_LINE_DASH_SPACING}, 0));
+        ShapeDrawable lineLeftDrawable = new ShapeDrawable() {
+            @Override
+            public void draw(Canvas canvas) {
+                float startY = getBounds().height() * 0.5f;
+                canvas.drawLine(0, startY, getBounds().width(), startY, dashPaint);
+            }
+        };
+        lineLeftView.setBackground(lineLeftDrawable);
+
+        ShapeDrawable lineRightDrawable = new ShapeDrawable() {
+            @Override
+            public void draw(Canvas canvas) {
+                float startY = getBounds().height() * 0.5f;
+                canvas.drawLine(getBounds().width(), startY, 0, startY, dashPaint);
+            }
+        };
+        lineRightView.setBackground(lineRightDrawable);
+
+        View iconContainerView = view.findViewById(R.id.base_item_activity_invitation_item_icon_view);
+
+        layoutParams = iconContainerView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_CONTAINER_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_CONTAINER_SIZE * Design.HEIGHT_RATIO);
+        iconContainerView.setLayoutParams(layoutParams);
+
+        ImageView iconView = view.findViewById(R.id.base_item_activity_invitation_item_icon_image_view);
+
+        layoutParams = iconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_SIZE * Design.HEIGHT_RATIO);
+        iconView.setLayoutParams(layoutParams);
+        iconView.setColorFilter(Design.GREY_COLOR);
+
+        GradientDrawable iconContainerBackground = new GradientDrawable();
+        iconContainerBackground.mutate();
+        iconContainerBackground.setColor(Design.GREY_ITEM_COLOR);
+        iconContainerBackground.setShape(GradientDrawable.OVAL);
+        iconContainerBackground.setStroke(Design.BORDER_WIDTH, Color.WHITE);
+        iconContainerView.setBackground(iconContainerBackground);
+
+        mStatusImageView = view.findViewById(R.id.base_item_activity_invitation_item_status_image_view);
+        mStatusImageView.setPadding(Design.BORDER_WIDTH, Design.BORDER_WIDTH, Design.BORDER_WIDTH, Design.BORDER_WIDTH);
+        mStatusImageView.setVisibility(View.GONE);
+
+        mInvitationView = view.findViewById(R.id.base_item_activity_invitation_item_message_view);
+        Design.updateTextFont(mInvitationView, Design.FONT_MEDIUM32);
+        mInvitationView.setTextColor(Color.WHITE);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mInvitationView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_AVATAR_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_AVATAR_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+        mInvitationView.setLayoutParams(marginLayoutParams);
 
         mDeleteView = view.findViewById(R.id.base_item_activity_invitation_item_delete_view);
 
@@ -97,44 +207,77 @@ class InvitationItemViewHolder extends ItemViewHolder {
         }
         super.onBind(item);
 
-        mNoAvatarView.setVisibility(View.GONE);
         InvitationItem invitation = (InvitationItem) item;
 
         // Get a possible avatar image that depends on the peer twincode.
         Bitmap avatar = invitation.getGroupAvatar();
         if (avatar != null) {
             if (avatar.equals(getBaseItemActivity().getTwinmeApplication().getDefaultGroupAvatar())) {
-                mNoAvatarView.setVisibility(View.VISIBLE);
+                mRightAvatarView.setBackgroundColor(Design.GREY_ITEM_COLOR);
             }
-            mInvitationAvatarView.setImage(mInvitationAvatarView.getContext(), null,
-                    new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
+
+            mRightAvatarView.setImageBitmap(avatar);
         }
+
+        mLeftAvatarView.setImageBitmap(getBaseItemActivity().getContactAvatar());
 
         mGradientDrawable.setCornerRadii(getCornerRadii());
 
-        mGroupNameView.setText(invitation.getGroupName());
-
         if (invitation.getState() == Item.ItemState.NOT_SENT) {
             mInvitationView.setText(getString(R.string.conversation_view_invitation_failed));
+            mStatusImageView.setVisibility(View.GONE);
         } else if (invitation.getState() != Item.ItemState.PEER_DELETED && invitation.getState() != Item.ItemState.BOTH_DELETED) {
-            switch (invitation.getStatus()) {
+
+            String message = "";
+            switch (invitation.getStatus() ) {
                 case PENDING:
-                    mInvitationView.setText(getString(R.string.conversation_view_invitation_pending));
+                    message = getString(R.string.conversation_view_invitation_pending);
+                    mStatusImageView.setVisibility(View.GONE);
                     break;
 
                 case ACCEPTED:
-                    mInvitationView.setText(getString(R.string.conversation_view_invitation_accepted));
+                    if (getBaseItemActivity().getContact() != null) {
+                        message = String.format(getString(R.string.conversation_view_invitation_item_accepted_invitation), getBaseItemActivity().getContact().getName());
+                    } else {
+                        message = getString(R.string.conversation_view_invitation_accepted);
+                    }
+                    mStatusImageView.setVisibility(View.VISIBLE);
+                    mStatusImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.invitation_state_accepted, null));
                     break;
 
                 case JOINED:
-                    mInvitationView.setText(getString(R.string.conversation_view_invitation_joined));
+                    message = getString(R.string.conversation_view_invitation_joined);
+                    mStatusImageView.setVisibility(View.VISIBLE);
+                    mStatusImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.invitation_state_joined, null));
                     break;
 
                 case REFUSED:
+                    if (getBaseItemActivity().getContact() != null) {
+                        message = String.format(getString(R.string.conversation_view_invitation_item_declined_invitation), getBaseItemActivity().getContact().getName());
+                    } else {
+                        message = getString(R.string.conversation_view_invitation_accepted);
+                    }
+                    mStatusImageView.setVisibility(View.VISIBLE);
+                    mStatusImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.invitation_state_refused, null));
+                    break;
+
                 case WITHDRAWN:
-                    mInvitationView.setText(getString(R.string.conversation_view_invitation_refused));
+                    message = getString(R.string.conversation_view_invitation_refused);
+                    mStatusImageView.setVisibility(View.VISIBLE);
+                    mStatusImageView.setImageDrawable(ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.invitation_state_refused, null));
                     break;
             }
+
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+            spannableStringBuilder.append(invitation.getGroupName());
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            spannableStringBuilder.append("\n");
+            int startSubTitle = spannableStringBuilder.length();
+            spannableStringBuilder.append(message);
+            spannableStringBuilder.setSpan(new RelativeSizeSpan(0.9f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.WHITE), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mInvitationView.setText(spannableStringBuilder);
         }
     }
 
@@ -143,7 +286,6 @@ class InvitationItemViewHolder extends ItemViewHolder {
 
         super.onViewRecycled();
 
-        mGroupNameView.setText(null);
         mInvitationView.setText(null);
         mDeleteView.setVisibility(View.GONE);
         mDeleteView.setOnDeleteProgressListener(null);

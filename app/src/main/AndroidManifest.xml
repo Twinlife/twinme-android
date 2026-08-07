@@ -115,13 +115,6 @@
             android:name="com.google.android.wearable.notificationBridgeMode"
             android:value="NO_BRIDGING" />
 
-        <meta-data
-            android:name="firebase_messaging_auto_init_enabled"
-            android:value="false" />
-        <meta-data
-            android:name="firebase_analytics_collection_enabled"
-            android:value="false" />
-
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
@@ -249,6 +242,16 @@
             android:theme="@style/TwinmeThemeWithNoActionBar" />
         <activity
             android:name="org.twinlife.twinme.ui.contacts.InvitationCodeActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.contacts.ConversationNotificationsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar" />
+        <activity
+            android:name="org.twinlife.twinme.ui.contacts.ShareContactActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar" />
@@ -530,10 +533,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="org.twinlife.twinme.ui.settingsActivity.PersonalizationActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TwinmeThemeWithNoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity"
             android:configChanges="orientation|screenSize"
@@ -608,9 +611,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="org.twinlife.twinme.ui.spaces.ConversationAppearanceActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/TwinmeThemeWithNoActionBar" />
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity"
             android:theme="@style/TwinmeThemeTranslucentWithNoActionBar" />
@@ -766,8 +770,6 @@
                 <action android:name="org.twinlife.twinme.NOTIFICATION_DELETE_ACTION" />
             </intent-filter>
         </receiver>
-        <service android:name="org.twinlife.twinlife.TwinlifeService"
-            android:foregroundServiceType="remoteMessaging"/>
         <service
             android:name="org.twinlife.twinme.services.AccountMigrationService"
             android:exported="false"
@@ -785,21 +787,11 @@
         <service
             android:name="org.twinlife.twinme.services.PeerService"
             android:exported="false"
-            android:foregroundServiceType="dataSync" />
+            android:foregroundServiceType="dataSync|remoteMessaging" />
         <service
             android:name="org.twinlife.twinme.services.BackupService"
             android:exported="false"
             android:foregroundServiceType="dataSync" >
-        </service>
-        <!-- Google Firebase Services -->
-        <service
-            android:name="org.twinlife.twinme.services.TwinmeFirebaseMessagingService"
-            android:exported="false"
-            tools:ignore="Instantiatable"
-            android:foregroundServiceType="remoteMessaging">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
         </service>
 
         <service

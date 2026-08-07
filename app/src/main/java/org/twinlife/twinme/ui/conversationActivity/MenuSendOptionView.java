@@ -27,10 +27,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,8 +41,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("deprecation")
-public class MenuSendOptionView extends PercentRelativeLayout {
+public class MenuSendOptionView extends RelativeLayout {
     private static final String LOG_TAG = "MenuSendOptionView";
     private static final boolean DEBUG = false;
 
@@ -303,6 +302,7 @@ public class MenuSendOptionView extends PercentRelativeLayout {
 
         View slideMarkView = findViewById(R.id.menu_send_option_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

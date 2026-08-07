@@ -101,6 +101,7 @@
     <string name="application_select_more">انتخاب بیشتر…</string>
     <string name="application_server_timeout">تایماوت سرور</string>
     <string name="application_size_unit">مگابایت</string>
+    <string name="application_start">شروع</string>
     <string name="application_theme">موضوع</string>
     <string name="application_timeout">تاخیر انقضا</string>
     <string name="application_timeout_day">1 روز</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 ماه</string>
     <string name="application_timeout_seconds">ثانیه  %1$d</string>
     <string name="application_timeout_week">1 هفته</string>
+    <string name="application_transfer_from_another_device">انتقال از دستگاه دیگر</string>
+    <string name="application_transfer_restore">انتقال یا بازیابی</string>
     <string name="application_unknown_name">ناشناخته</string>
     <string name="application_until">تا %1$s</string>
     <string name="application_upgrade">ارتقاء twinme</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">انتقال داده در حال انجام است</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">برای شروع انتقال، کد QR نمایش داده شده در دستگاه دیگر را اسکن کنید.</string>
+    <string name="account_migration_scanner_view_header_other_device">برای شروع انتقال، کد QR نمایش داده شده در این دستگاه را از دستگاه دیگر اسکن کنید.</string>
     <string name="account_migration_scanner_view_message">این صفحه را روی هر دستگاه نمایش دهید و یکی QR-Code دیگری را اسکن کند.</string>
     <string name="account_migration_scanner_view_message_older_version">این دستگاه از یک نسخه قدیمی سیستم عامل ناسازگار استفاده می کند که باعث می شود تمام روابط روی دستگاه مورد نظر در حین انتقال از بین برود. آیا هنوز می خواهید به انتقال ادامه دهید؟</string>
     <string name="account_migration_scanner_view_message_older_version_target">دستگاه مورد نظر از یک نسخه قدیمی سیستم عامل ناسازگار استفاده می کند که باعث می شود تمام روابط شما در حین انتقال از بین برود. آیا هنوز می خواهید به انتقال ادامه دهید؟</string>
-    <string name="account_migration_scanner_view_scan_title">اسکن کردن</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">برای راه</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">کد QR نمایش داده شده در بخش «حساب / انتقال از دستگاه دیگر» در منوی کناری دستگاه دیگر را اسکن کنید.</string>
+    <string name="account_migration_scanner_view_restore_title">دیگر به دستگاه دیگر دسترسی ندارید؟</string>
+    <string name="account_migration_scanner_view_restore_message">اگر نسخه پشتیبان وجود دارد، می‌توانید آن را در این دستگاه بازیابی کنید.</string>
+    <string name="account_migration_scanner_view_scan_title">اسکن کردن</string>
+    <string name="account_migration_scanner_view_step_1">برنامه را در دستگاه دیگر باز کنید</string>
+    <string name="account_migration_scanner_view_step_2">به منوی کناری بروید</string>
+    <string name="account_migration_scanner_view_step_3">حساب را انتخاب کنید</string>
+    <string name="account_migration_scanner_view_step_4_my_device">انتقال را از این دستگاه شروع کنید</string>
+    <string name="account_migration_scanner_view_step_4_another_device">انتقال را از دستگاه دیگر شروع کنید</string>
+    <string name="account_migration_scanner_view_step_5_my_device">کد QR نمایش داده شده در دستگاه دیگر را با این دستگاه اسکن کنید</string>
+    <string name="account_migration_scanner_view_step_5_another_device">کد QR نمایش داده شده در این دستگاه را با دستگاه دیگر اسکن کنید</string>
     <string name="account_migration_scanner_view_stop_scan_title">اسکن را متوقف کنید</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">حذف شده</string>
     <string name="backup_view_content_diff_message">در اینجا تغییرات در مقایسه با داده</string>
     <string name="backup_view_content_info">پشتیبان‌گیری شامل مکالمات، اعلان‌ها و تاریخچه نمی‌شود.</string>
+    <string name="backup_view_copy_clipboard">کپی در کلیپ بورد</string>
     <string name="backup_view_error_words">کلمات وارد شده اجازه رمزگشایی نسخه پشتیبان را نمی</string>
+    <string name="backup_view_generate_key">ایجاد یک کلید رمزگذاری جدید</string>
     <string name="backup_view_generate_word">تولید کردن</string>
     <string name="backup_view_last_backup">آخرین نسخه پشتیبان از %1$s</string>
     <string name="backup_view_new_backup">نسخه پشتیبان جدید</string>
     <string name="backup_view_onboarding">از اطلاعات حساب (فضاها، پروفایل‌ها، مخاطبین، گروه‌ها، کلیک برای تماس) یک نسخه پشتیبان رمزگذاری شده تهیه کنید که بتوان آن را در این دستگاه یا دستگاه دیگری بازیابی کرد.</string>
     <string name="backup_view_reminder">آخرین نسخه پشتیبان شما بیش از ۳۰ روز پیش ایجاد شده است.</string>
     <string name="backup_view_save_file_message">فایل پشتیبان را در دستگاه مورد نظر خود ذخیره کنید و رمزهای عبور را برای بازیابی بعدی نگه دارید.</string>
+    <string name="backup_view_save_password">ذخیره در مدیریت رمز عبور</string>
     <string name="backup_view_security">امنیت</string>
     <string name="backup_view_security_info">کلید رمزگذاری پشتیبان توسط یک سری از 12 کلمه نشان داده شده است که برای ترمیم مورد نیاز است.</string>
     <string name="backup_view_success">پشتیبان گیری با موفقیت انجام شد!</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">۱ عضو</string>
     <string name="conversation_view_invitation_accepted">دعوت پذیرفته شد</string>
     <string name="conversation_view_invitation_failed">تماس خود را برای به روز رسانی twinme بپرسید</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s دعوت را پذیرفت</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s دعوت را رد کرد</string>
     <string name="conversation_view_invitation_joined">عضو گروه</string>
     <string name="conversation_view_invitation_pending">دعوت در حال انجام است</string>
     <string name="conversation_view_invitation_refused">دعوتنامه لغو شد</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">رسانه بزرگ (%1$s)</string>
     <string name="conversation_view_send_quality_standard">کیفیت استاندارد (SD) را ارسال کنید.</string>
     <string name="conversation_view_send_quality_warning">برای انتقال سریع‌تر، می‌توانید اندازه را به کیفیت استاندارد (SD) تغییر دهید.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s اتصال را پذیرفت</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">شما معرفی‌هایی که توسط آشنایانتان انجام می‌شود را نمی‌پذیرید.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s اتصال را رد کرد</string>
+    <string name="conversation_view_share_contact_item_decline_connection">شما درخواست اتصال را رد کردید</string>
+    <string name="conversation_view_share_contact_item_local_message">در حال اتصال %1$s با %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">در حال اتصال شما با %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">در انتظار پذیرش توسط %1$s</string>
     <string name="conversation_view_stream_dialog">میخواهید آن را بپذیرید؟</string>
     <string name="conversation_view_unsupported_media">قالب رسانه پشتیبانی نشده</string>
     <string name="conversation_view_video_call">تماس تصویری</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">رد</string>
     <string name="notification_center_cleanup_conversation">تعدادی از پیام‌های قدیمی حذف شده‌اند.</string>
     <string name="notification_center_conference_join_call">یکی از شرکت‌کنندگان به این فراخوان پیوست.</string>
+    <string name="notification_center_connection_request">연결 요청</string>
     <string name="notification_center_deleted_contact">مخاطب حذف شد</string>
     <string name="notification_center_file_message">درک لاسرا لیاف کی</string>
     <string name="notification_center_file_message_received">فایل جدید</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">از مخاطبین دعوت کنید تا به تماس صوتی/تصویری جاری بپیوندند.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">برنامه‌های فعال</string>
     <string name="privacy_view_coach_mark">برنامه را با خدمات بیومتریک یا با کد پین قفل کنید.</string>
     <string name="privacy_view_hide_last_screen_message">و در صورت اجازه دستگاه، برنامه را هنگام اجرا در پس</string>
     <string name="privacy_view_hide_last_screen_title">اسکرین شات ممنوع</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">مهلت زمانی قفل دسترسی</string>
     <string name="privacy_view_lock_screen_timeout_instant">فوری</string>
     <string name="privacy_view_lock_screen_title">قفل دسترسی</string>
+    <string name="privacy_view_share_invitation_ask">هر بار از من بپرسید</string>
+    <string name="privacy_view_share_invitation_info">هر زمان که کسی مخاطب شما را به اشتراک بگذارد، به شما اطلاع داده خواهد شد.</string>
+    <string name="privacy_view_share_invitation_setting">به مخاطبین من اجازه دهید من را با مخاطبین خود متصل کنند</string>
+    <string name="privacy_view_share_invitation_title">اتصالات</string>
     <string name="privacy_view_title">حریم خصوصی</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">ترمیم با موفقیت به پایان رسید!</string>
     <string name="restore_view_success_message">برنامه را ببندید و آن را مجدداً راه اندازی کنید تا به داده های جدید دسترسی پیدا کنید.</string>
     <string name="restore_view_title">ترمیم</string>
+    <string name="restore_view_update_message">برای بازیابی نسخه پشتیبان، باید برنامه را به‌روزرسانی کنید.</string>
     <string name="restore_view_verify_same_account">تأیید باید روی همان دستگاهی که برای پشتیبان‌گیری استفاده شده است، انجام شود.</string>
     <string name="restore_view_warning">بازیابی این نسخه پشتیبان ، تمام داده های حساب جاری را با داده های پشتیبان جایگزین می کند.</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">لینک دعوت را وارد یا جای</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">پیش‌نمایش یک لینک وب، آدرس IP را در معرض دید وب‌سایت قرار می‌دهد.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">پیش</string>
+    <string name="settings_advanced_view_security_advanced_info">آدرس IP به صورت محلی پنهان است (با استفاده از TLS برای STUN).</string>
+    <string name="settings_advanced_view_security_expert">کارشناس</string>
+    <string name="settings_advanced_view_security_expert_info">آدرس IP به صورت محلی و برای مخاطبین پنهان است (تماس</string>
+    <string name="settings_advanced_view_security_optimized">بهینه شده (پیش فرض)</string>
+    <string name="settings_advanced_view_security_optimized_info">آدرس IP ممکن است در طول تبادلات WebRTC یا پیش</string>
+    <string name="settings_advanced_view_security_level_title">سطح امنیتی</string>
+    <string name="settings_advanced_view_security_info">تعادل بین امنیت و عملکرد را برای نیازهای خاص تنظیم کنید.</string>
+    <string name="settings_advanced_view_security_title">امنیت</string>
+    <string name="settings_advanced_view_security_unauthorized_update">سطح امنیتی کارشناس اجازه تغییر این تنظیم را نمی</string>
     <string name="settings_advanced_view_status_connection_message">وضعیت اتصال خود را به سرویس بررسی کنید</string>
     <string name="settings_advanced_view_status_connection_title">وضعیت اتصال</string>
     <string name="settings_advanced_view_telecom_enable">تجربه تماس اندروید</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">مجوزها</string>
     <string name="settings_view_silent_mode">حالت بی</string>
     <string name="settings_view_silent_sound">بیصدا</string>
+    <string name="settings_view_sound_effects_info">هنگام تعامل با برنامه، صدا پخش کنید</string>
+    <string name="settings_view_sound_effects_title">جلوه‌های صوتی</string>
     <string name="settings_view_sound_enabled_title">اعلانهای صوتی</string>
+    <string name="settings_view_sound_vibrations_title">صداها و لرزش</string>
     <string name="settings_view_system_notifications_title">اطلاعیه های سیستم</string>
     <string name="settings_view_system_settings_title">تنظیمات سیستم</string>
     <string name="settings_view_turn_off_notification_sounds">صداهای اعلان را خاموش کنید</string>
@@ -1133,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">بازخورد شرکت کنندگان فقط توسط مدیران / ناظران مشاهده می شود</string>
     <string name="settings_room_view_room_type_forum">انجمن</string>
     <string name="settings_room_view_room_type_forum_information">شرکت کنندگان می توانند پیام های مشاهده شده توسط همه را ارسال کنند</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s می‌خواهد شما را به %2$s متصل کند</string>
+    <string name="share_contact_accept_view_invite_message">آیا می‌خواهید %1$s را به عنوان یک مخاطب شخصی اضافه کنید؟</string>
+    <string name="share_contact_view_onboarding_part_1">اکنون می‌توانید به مخاطبین خود اجازه دهید تا شما را با مخاطبین خودشان مرتبط کنند.</string>
+    <string name="share_contact_view_onboarding_part_2">به طور پیش‌فرض، شما باید هر پیشنهاد اتصال را تأیید کنید.</string>
+    <string name="share_contact_view_onboarding_part_3">رفتار پیش‌فرض را می‌توان در بخش «حریم خصوصی» تنظیمات برنامه تغییر داد.</string>
+    <string name="share_contact_view_share_info">%1$s یک اعلان اشتراک‌گذاری دریافت خواهد کرد</string>
+    <string name="share_contact_view_share_title">مخاطب %1$s را به اشتراک بگذارید</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">مخاطبین</string>
@@ -1167,6 +1226,7 @@
     <string name="show_contact_view_pending_message">این رابطه در حال ایجاد است. لطفا صبر کنید.</string>
     <string name="show_contact_view_revoked">حذف شد</string>
     <string name="show_contact_view_settings_coach_mark">تعریف کنید که مخاطب شما مجاز است در این رابطه با شما چه کاری انجام دهد.</string>
+    <string name="show_contact_view_share_contact">این مخاطب را به اشتراک بگذارید</string>
     <string name="show_contact_view_video">ویدئو</string>
 
     <!-- ShowGroupActivity -->

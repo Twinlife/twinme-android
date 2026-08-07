@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017-2025 twinlife SA.
+ *  Copyright (c) 2017-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -17,6 +17,8 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,9 +44,14 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
     private static final int DESIGN_TAG_MARGIN = 38;
     private static final int DESIGN_TAG_BORDER_WIDTH = 2;
     private static final int DESIGN_CERTIFIED_MARGIN = 20;
-    private static final float DESIGN_MARGIN_PERCENT = 0.4169f;
-    private static final float DESIGN_DATE_PERCENT = 0.3114f;
-    private static final int DESIGN_AVATAR_HEIGHT = 86;
+    private static final int DESIGN_DATE_WIDTH = 200;
+    private static final int DESIGN_AVATAR_MEMBER_SIZE = 38;
+    private static final int DESIGN_UNREAD_SIZE=  20;
+    private static final int DESIGN_UNREAD_MARGIN = 10;
+    private static final int DESIGN_START_TEXT_MARGIN = 34;
+    private static final int DESIGN_END_TEXT_MARGIN = 44;
+    private static final int DESIGN_ICON_WIDTH = 24;
+    private static final int DESIGN_ICON_HEIGHT = 28;
 
     private final AbstractTwinmeService mService;
     private final View mAvatarContainerView;
@@ -54,6 +61,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
     private final CircularImageView mMemberTwoAvatarView;
     private final CircularImageView mMemberThreeAvatarView;
     private final CircularImageView mMemberFourAvatarView;
+    private final ViewGroup mNameContainerView;
     private final TextView mNameView;
     private final TextView mInformationView;
     private final TextView mDateView;
@@ -62,6 +70,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
     private final RoundedView mUnreadView;
     private final View mTagView;
     private final View mCertifiedView;
+    private final ImageView mIconView;
     private final View mSeparatorView;
 
     UIConversationViewHolder(@NonNull AbstractTwinmeService service, View view, int infoTopMargin) {
@@ -78,7 +87,11 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         mAvatarContainerView = view.findViewById(R.id.conversations_fragment_conversation_item_avatar_container_view);
 
         ViewGroup.LayoutParams layoutParams = mAvatarContainerView.getLayoutParams();
+        layoutParams.width = Design.AVATAR_HEIGHT;
         layoutParams.height = Design.AVATAR_HEIGHT;
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarContainerView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.AVATAR_MARGIN;
 
         mAvatarView = view.findViewById(R.id.conversations_fragment_conversation_item_avatar_view);
 
@@ -87,7 +100,27 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         mMemberThreeAvatarView = view.findViewById(R.id.conversations_fragment_conversation_item_member_three_avatar_view);
         mMemberFourAvatarView = view.findViewById(R.id.conversations_fragment_conversation_item_member_four_avatar_view);
 
+        layoutParams = mMemberOneAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = mMemberTwoAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = mMemberThreeAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = mMemberFourAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+
         mMoreView = view.findViewById(R.id.conversations_fragment_conversation_item_more_view);
+
+        layoutParams = mMoreView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_MEMBER_SIZE * Design.HEIGHT_RATIO);
 
         RoundedView moreRoundedView = view.findViewById(R.id.conversations_fragment_conversation_item_more_rounded_view);
         moreRoundedView.setColor(Design.BLUE_NORMAL);
@@ -97,14 +130,25 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         mMoreTextView.setTextColor(Color.WHITE);
 
         View infoView = view.findViewById(R.id.conversations_fragment_conversation_item_text_view);
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) infoView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) infoView.getLayoutParams();
         marginLayoutParams.topMargin = infoTopMargin;
+        marginLayoutParams.leftMargin = (int) (DESIGN_START_TEXT_MARGIN * Design.WIDTH_RATIO);
+
+        View topView = view.findViewById(R.id.conversations_fragment_conversation_item_top_view);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) topView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_END_TEXT_MARGIN * Design.WIDTH_RATIO);
+
+        mNameContainerView = view.findViewById(R.id.conversations_fragment_conversation_item_name_container_view);
 
         mNameView = view.findViewById(R.id.conversations_fragment_conversation_item_name_view);
         Design.updateTextFont(mNameView, Design.FONT_MEDIUM34);
         mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
         mInformationView = view.findViewById(R.id.conversations_fragment_conversation_item_information_view);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mInformationView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_END_TEXT_MARGIN * Design.WIDTH_RATIO);
+
         Design.updateTextFont(mInformationView, Design.FONT_REGULAR30);
         mInformationView.setTextColor(DESIGN_INFORMATION_COLOR);
 
@@ -112,10 +156,17 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         Design.updateTextFont(mDateView, Design.FONT_REGULAR30);
         mDateView.setTextColor(DESIGN_INFORMATION_COLOR);
 
-        mDateView.setMaxWidth((int) (Design.DISPLAY_WIDTH * DESIGN_DATE_PERCENT));
+        mDateView.setMaxWidth((int)(Design.WIDTH_RATIO * DESIGN_DATE_WIDTH));
 
         mUnreadView = view.findViewById(R.id.conversations_fragment_conversation_unread_view);
         mUnreadView.setColor(Design.getMainStyle());
+
+        layoutParams = mUnreadView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_UNREAD_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_UNREAD_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mUnreadView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_UNREAD_MARGIN * Design.WIDTH_RATIO);
 
         mTagView = view.findViewById(R.id.conversations_fragment_conversation_item_tag_view);
         mTagView.setVisibility(View.GONE);
@@ -145,11 +196,25 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         mCertifiedView = view.findViewById(R.id.conversations_fragment_conversation_item_certified_image_view);
 
         layoutParams = mCertifiedView.getLayoutParams();
+        layoutParams.width = Design.CERTIFIED_HEIGHT;
         layoutParams.height = Design.CERTIFIED_HEIGHT;
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mCertifiedView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.setMarginStart((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
         marginLayoutParams.rightMargin = (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.setMarginEnd((int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
+
+        mIconView = view.findViewById(R.id.conversations_fragment_conversation_item_icon_view);
+        mIconView.setColorFilter(DESIGN_INFORMATION_COLOR);
+        mIconView.setVisibility(View.GONE);
+
+        layoutParams = mIconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height =(int) (DESIGN_ICON_HEIGHT * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mIconView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_END_TEXT_MARGIN * Design.WIDTH_RATIO);
 
         mSeparatorView = view.findViewById(R.id.conversations_fragment_conversation_item_separator_view);
         mSeparatorView.setBackgroundColor(Design.SEPARATOR_COLOR);
@@ -163,8 +228,9 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         mDateView.setVisibility(View.VISIBLE);
         mCertifiedView.setVisibility(View.GONE);
 
-        float maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO);
-        mNameView.setMaxWidth((int) maxWidth);
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameContainerView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_END_TEXT_MARGIN * Design.WIDTH_RATIO);
+        mNameContainerView.setLayoutParams(marginLayoutParams);
 
         final Originator subject = uiConversation.getContact();
         if (subject.isGroup()) {
@@ -198,7 +264,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
                     mMemberOneAvatarView.setImage(context, null, new CircularImageDescriptor(memberOne, 0.5f, 0.5f, 0.5f));
                     mMemberOneAvatarView.setVisibility(View.VISIBLE);
 
-                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMemberOneAvatarView.getLayoutParams();
+                    marginLayoutParams = (ViewGroup.MarginLayoutParams) mMemberOneAvatarView.getLayoutParams();
                     marginLayoutParams.topMargin = (int) (mAvatarContainerView.getHeight() * 0.5 - mMemberOneAvatarView.getHeight() * 0.5);
 
                     Bitmap memberTwo = groupConversation.getGroupAvatars().get(1);
@@ -213,7 +279,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
                     mMemberOneAvatarView.setImage(context, null, new CircularImageDescriptor(memberOne, 0.5f, 0.5f, 0.5f));
                     mMemberOneAvatarView.setVisibility(View.VISIBLE);
 
-                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMemberOneAvatarView.getLayoutParams();
+                    marginLayoutParams = (ViewGroup.MarginLayoutParams) mMemberOneAvatarView.getLayoutParams();
                     marginLayoutParams.topMargin = 0;
 
                     Bitmap memberTwo = groupConversation.getGroupAvatars().get(1);
@@ -232,7 +298,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
                     Bitmap memberOne = groupConversation.getGroupAvatars().get(0);
                     mMemberOneAvatarView.setImage(context, null, new CircularImageDescriptor(memberOne, 0.5f, 0.5f, 0.5f));
                     mMemberOneAvatarView.setVisibility(View.VISIBLE);
-                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMemberOneAvatarView.getLayoutParams();
+                    marginLayoutParams = (ViewGroup.MarginLayoutParams) mMemberOneAvatarView.getLayoutParams();
                     marginLayoutParams.topMargin = 0;
 
                     Bitmap memberTwo = groupConversation.getGroupAvatars().get(1);
@@ -277,12 +343,11 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
                 mAvatarView.setImage(context, null,
                         new CircularImageDescriptor(avatar, 0.5f, 0.5f, 0.5f));
                 mAvatarView.setVisibility(View.VISIBLE);
+                uiConversation.getUIContact().setAvatar(avatar);
             });
 
             if (uiConversation.isCertified()) {
                 mCertifiedView.setVisibility(View.VISIBLE);
-                maxWidth = Design.DISPLAY_WIDTH - (Design.DISPLAY_WIDTH * DESIGN_MARGIN_PERCENT) - (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO) - (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO) - Design.CERTIFIED_HEIGHT;
-                mNameView.setMaxWidth((int) maxWidth);
             }
         }
 
@@ -297,11 +362,36 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
             mUnreadView.setVisibility(View.GONE);
         }
 
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mInformationView.getLayoutParams();
+        if (uiConversation.isSilentMode()) {
+            mIconView.setVisibility(View.VISIBLE);
+            marginLayoutParams.rightMargin = (int) (DESIGN_END_TEXT_MARGIN * 2 * Design.WIDTH_RATIO + DESIGN_ICON_WIDTH * Design.WIDTH_RATIO);
+        } else {
+            mIconView.setVisibility(View.GONE);
+            marginLayoutParams.rightMargin = (int) (DESIGN_END_TEXT_MARGIN * Design.WIDTH_RATIO);
+        }
+
         if (hideSeparator) {
             mSeparatorView.setVisibility(View.GONE);
         } else {
             mSeparatorView.setVisibility(View.VISIBLE);
         }
+
+        ViewTreeObserver viewTreeObserver = mNameContainerView.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                ViewTreeObserver viewTreeObserver = mNameContainerView.getViewTreeObserver();
+                viewTreeObserver.removeOnGlobalLayoutListener(this);
+
+                int nameContainerWidth = mNameContainerView.getWidth();
+                if (uiConversation.isCertified()) {
+                    mNameView.setMaxWidth(nameContainerWidth - Design.CERTIFIED_HEIGHT - (int) (DESIGN_CERTIFIED_MARGIN * Design.WIDTH_RATIO));
+                } else {
+                    mNameView.setMaxWidth(nameContainerWidth);
+                }
+            }
+        });
 
         updateColor();
         updateFont();

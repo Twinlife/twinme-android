@@ -22,9 +22,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +34,7 @@ import org.twinlife.twinme.skin.Design;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuReactionView extends PercentRelativeLayout {
+public class MenuReactionView extends RelativeLayout {
     private static final String LOG_TAG = "MenuReactionView";
     private static final boolean DEBUG = false;
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2024 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -19,7 +19,10 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
@@ -46,6 +49,7 @@ import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.Originator;
+import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.GroupInvitationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
@@ -64,12 +68,14 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
 
     private static final int BULLET_COLOR = Color.rgb(213, 213, 213);
     private static final int DESIGN_AVATAR_MARGIN = 60;
-    private static final int DESIGN_AVATAR_HEIGHT = 148;
-    protected static final int DESIGN_ICON_VIEW_SIZE = 72;
+    private static final int DESIGN_AVATAR_SIZE = 148;
+    private static final int DESIGN_ICON_VIEW_SIZE = 72;
+    private static final int DESIGN_ICON_IMAGE_VIEW_SIZE = 42;
     private static final int DESIGN_ICON_IMAGE_VIEW_HEIGHT = 36;
     protected static final int DESIGN_BULLET_VIEW_SIZE = 26;
     private static final int DESIGN_BULLET_VIEW_MARGIN = 20;
     protected static final int DESIGN_TITLE_MARGIN = 40;
+    private static final int DESIGN_NAME_MARGIN = 6;
     private static final int DESIGN_MESSAGE_MARGIN = 30;
     private static final int DESIGN_CONFIRM_MARGIN = 80;
     private static final int DESIGN_CONFIRM_VERTICAL_MARGIN = 10;
@@ -77,12 +83,20 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
     private static final int DESIGN_CANCEL_HEIGHT = 140;
     private static final int DESIGN_CANCEL_MARGIN = 80;
 
+    private static final int DESIGN_LINE_DASH_LONG_LENGTH = 8;
+    private static final int DESIGN_LINE_DASH_SHORT_LENGTH = 4;
+    private static final int DESIGN_LINE_DASH_SPACING = 6;
+    private static final int DESIGN_LINE_DASH_WIDTH = 3;
+
     private View mOverlayView;
     private View mActionView;
-    private TextView mNameView;
     private TextView mMessageView;
-    private ShapeableImageView mAvatarView;
-    private View mIconView;
+    private TextView mLeftNameView;
+    private TextView mRightNameView;
+    private ShapeableImageView mLeftAvatarView;
+    private ShapeableImageView mRightAvatarView;
+    private View mGroupIconView;
+
     private View mBulletView;
     private ImageView mInvitationStatusImageView;
     private ShapeableImageView mContactImageView;
@@ -146,6 +160,8 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
     private boolean mAccepting = false;
     @Nullable
     private GroupInvitationService mGroupInvitationService;
+
+    private Space mSpace;
 
     //
     // Override TwinlifeActivityImpl methods
@@ -220,6 +236,30 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         }
 
         return false;
+    }
+
+    @Override
+    public void onGetCurrentSpace(@NonNull Space space) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetCurrentSpace");
+        }
+
+        super.onGetCurrentSpace(space);
+
+        mSpace = space;
+        updateViews();
+    }
+
+    @Override
+    public void onGetSpace(@NonNull Space space, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetSpace: space=" + space);
+        }
+
+        super.onGetSpace(space, avatar);
+
+        mSpace = space;
+        updateViews();
     }
 
     @Override
@@ -404,12 +444,26 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         mOverlayView = findViewById(R.id.accept_group_invitation_activity_overlay_view);
         mActionView = findViewById(R.id.accept_group_invitation_activity_action_view);
         View slideMarkView = findViewById(R.id.accept_group_invitation_activity_slide_mark_view);
-        mAvatarView = findViewById(R.id.accept_group_invitation_activity_avatar_view);
+
+        View identityView = findViewById(R.id.accept_group_invitation_activity_identity_view);
+        View leftIdentityView = findViewById(R.id.accept_group_invitation_activity_identity_left_view);
+        View rightIdentityView = findViewById(R.id.accept_group_invitation_activity_identity_right_view);
+        View middleIdentityView = findViewById(R.id.accept_group_invitation_activity_identity_middle_view);
+        mLeftAvatarView = findViewById(R.id.accept_group_invitation_activity_left_avatar_view);
+
+        View leftLineContainerView = findViewById(R.id.accept_group_invitation_activity_left_line_container_view);
+        View leftLineView = findViewById(R.id.accept_group_invitation_activity_left_line_view);
+        mLeftNameView = findViewById(R.id.accept_group_invitation_activity_left_name_view);
+
+        View rightLineContainerView = findViewById(R.id.accept_group_invitation_activity_right_line_container_view);
+        View rightLineView = findViewById(R.id.accept_group_invitation_activity_right_line_view);
+        mRightAvatarView = findViewById(R.id.accept_group_invitation_activity_right_avatar_view);
+        mRightNameView = findViewById(R.id.accept_group_invitation_activity_right_name_view);
         mContactImageView = findViewById(R.id.accept_group_invitation_activity_contact_avatar_view);
-        mIconView = findViewById(R.id.accept_group_invitation_activity_icon_view);
-        mInvitationStatusImageView = findViewById(R.id.accept_group_invitation_activity_icon_image_view);
+        mGroupIconView = findViewById(R.id.accept_group_invitation_activity_icon_group_view);
+        ImageView iconGroupImageView = findViewById(R.id.accept_group_invitation_activity_icon_group_image_view);
+        mInvitationStatusImageView = findViewById(R.id.accept_group_invitation_activity_status_image_view);
         mBulletView = findViewById(R.id.accept_group_invitation_activity_bullet_view);
-        mNameView = findViewById(R.id.accept_group_invitation_activity_title_view);
         mMessageView = findViewById(R.id.accept_group_invitation_activity_message_view);
         mConfirmView = findViewById(R.id.accept_group_invitation_activity_confirm_view);
         mConfirmTextView = findViewById(R.id.accept_group_invitation_activity_confirm_text_view);
@@ -430,6 +484,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         mActionView.setBackground(scrollIndicatorBackground);
 
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -444,12 +499,108 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) slideMarkView.getLayoutParams();
         marginLayoutParams.topMargin = Design.SLIDE_MARK_TOP_MARGIN;
 
-        layoutParams = mAvatarView.getLayoutParams();
-        mAvatarView.setBackgroundColor(Design.WHITE_COLOR);
-        layoutParams.height = (int) (DESIGN_AVATAR_HEIGHT * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) identityView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_AVATAR_MARGIN * Design.HEIGHT_RATIO);
+
+        layoutParams = leftIdentityView.getLayoutParams();
+        layoutParams.width = (int) (Design.DISPLAY_WIDTH * 0.5f);
+
+        layoutParams = middleIdentityView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = leftLineContainerView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = rightLineContainerView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = mLeftAvatarView.getLayoutParams();
+        mLeftAvatarView.setBackgroundColor(Design.WHITE_COLOR);
+        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) leftIdentityView.getLayoutParams();
+        marginLayoutParams.leftMargin = - (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO * 0.5);
+
+        Design.updateTextFont(mLeftNameView, Design.FONT_BOLD36);
+        mLeftNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        int nameMargin = (int) (DESIGN_NAME_MARGIN * Design.WIDTH_RATIO) + (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO * 0.5);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mLeftNameView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = nameMargin;
+        marginLayoutParams.rightMargin = nameMargin;
+
+        float dp = Resources.getSystem().getDisplayMetrics().density;
+
+        Paint dashPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        dashPaint.setColor(BULLET_COLOR);
+        dashPaint.setStyle(Paint.Style.STROKE);
+        dashPaint.setStrokeWidth(dp * DESIGN_LINE_DASH_WIDTH);
+        dashPaint.setStrokeCap(Paint.Cap.ROUND);
+        dashPaint.setPathEffect(new DashPathEffect(new float[]{dp * DESIGN_LINE_DASH_LONG_LENGTH, dp * DESIGN_LINE_DASH_SPACING, dp * DESIGN_LINE_DASH_SHORT_LENGTH, dp * DESIGN_LINE_DASH_SPACING}, 0));
+        ShapeDrawable lineLeftDrawable = new ShapeDrawable() {
+            @Override
+            public void draw(Canvas canvas) {
+                float startY = getBounds().height() * 0.5f;
+                canvas.drawLine(0, startY, getBounds().width(), startY, dashPaint);
+            }
+        };
+        leftLineView.setBackground(lineLeftDrawable);
+
+        ShapeDrawable lineRightDrawable = new ShapeDrawable() {
+            @Override
+            public void draw(Canvas canvas) {
+                float startY = getBounds().height() * 0.5f;
+                canvas.drawLine(getBounds().width(), startY, 0, startY, dashPaint);
+            }
+        };
+        rightLineView.setBackground(lineRightDrawable);
+
+        layoutParams = rightIdentityView.getLayoutParams();
+        layoutParams.width = (int) (Design.DISPLAY_WIDTH * 0.5f);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) rightIdentityView.getLayoutParams();
+        marginLayoutParams.rightMargin = - (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO * 0.5);
+
+        layoutParams = mRightAvatarView.getLayoutParams();
+        mRightAvatarView.setBackgroundColor(Design.WHITE_COLOR);
+        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
+        layoutParams = mGroupIconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mGroupIconView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (-DESIGN_BULLET_VIEW_MARGIN * Design.WIDTH_RATIO);
+
+        GradientDrawable iconBackgroundDrawable = new GradientDrawable();
+        iconBackgroundDrawable.setColor(BULLET_COLOR);
+        iconBackgroundDrawable.setCornerRadius((int) ((DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO) * 0.5));
+        iconBackgroundDrawable.setStroke(8, Color.WHITE);
+        mGroupIconView.setBackground(iconBackgroundDrawable);
+
+        iconGroupImageView.setColorFilter(Color.WHITE);
+
+        layoutParams = iconGroupImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_ICON_IMAGE_VIEW_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_ICON_IMAGE_VIEW_SIZE * Design.HEIGHT_RATIO);
+
+        mInvitationStatusImageView.setPadding(Design.BORDER_WIDTH, Design.BORDER_WIDTH, Design.BORDER_WIDTH, Design.BORDER_WIDTH);
+        mInvitationStatusImageView.setVisibility(View.GONE);
+
+        layoutParams = mRightNameView.getLayoutParams();
+        layoutParams.width = (int) (Design.DISPLAY_WIDTH * 0.5f);
+
+        Design.updateTextFont(mRightNameView, Design.FONT_BOLD36);
+        mRightNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mRightNameView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = nameMargin;
+        marginLayoutParams.rightMargin = nameMargin;
 
         layoutParams = mContactImageView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO);
@@ -457,22 +608,6 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mContactImageView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (-DESIGN_BULLET_VIEW_MARGIN * Design.WIDTH_RATIO);
-
-        layoutParams = mIconView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO);
-        layoutParams.height = (int) (DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mIconView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (-DESIGN_BULLET_VIEW_MARGIN * Design.WIDTH_RATIO);
-
-        GradientDrawable iconBackgroundDrawable = new GradientDrawable();
-        iconBackgroundDrawable.setColor(BULLET_COLOR);
-        iconBackgroundDrawable.setCornerRadius((int) ((DESIGN_ICON_VIEW_SIZE * Design.HEIGHT_RATIO) * 0.5));
-        iconBackgroundDrawable.setStroke(8, Color.WHITE);
-        mIconView.setBackground(iconBackgroundDrawable);
-
-        layoutParams = mInvitationStatusImageView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_ICON_IMAGE_VIEW_HEIGHT * Design.HEIGHT_RATIO);
 
         layoutParams = mBulletView.getLayoutParams();
         layoutParams.width = (int) (DESIGN_BULLET_VIEW_SIZE * Design.HEIGHT_RATIO);
@@ -488,17 +623,13 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         bulletBackgroundDrawable.setStroke(8, Color.WHITE);
         mBulletView.setBackground(bulletBackgroundDrawable);
 
-        Design.updateTextFont(mNameView, Design.FONT_BOLD44);
-        mNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mNameView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
-
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM40);
         mMessageView.setTextColor(Design.FONT_COLOR_GREY);
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         mConfirmView.setOnClickListener(v -> onAcceptClick());
 
@@ -616,13 +747,13 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             Log.d(LOG_TAG, "updateViews");
         }
 
-        if (!mUIInitialized) {
+        if (!mUIInitialized || mSpace == null) {
 
             return;
         }
 
         if (mInvitation != null) {
-            mNameView.setText(mInvitation.getName());
+            mRightNameView.setText(mInvitation.getName());
         }
 
         if (mContact != null) {
@@ -633,12 +764,20 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
             mContactImageView.setImageBitmap(mContactAvatar);
         }
 
+        if (mSpace.getProfile() != null && mGroupInvitationService != null) {
+            mLeftNameView.setText(mSpace.getProfile().getName());
+
+            mGroupInvitationService.getImage(mSpace.getProfile().getAvatarId(), (Bitmap avatar) -> {
+                mLeftAvatarView.setImageBitmap(avatar);
+            });
+        }
+
         if (mGroupAvatar == null || mGroupAvatar == getTwinmeApplication().getDefaultGroupAvatar()) {
-            mAvatarView.setImageBitmap(getTwinmeApplication().getDefaultGroupAvatar());
-            mAvatarView.setBackgroundColor(Design.GREY_ITEM_COLOR);
+            mRightAvatarView.setImageBitmap(getTwinmeApplication().getDefaultGroupAvatar());
+            mRightAvatarView.setBackgroundColor(Design.GREY_ITEM_COLOR);
         } else {
-            mAvatarView.setImageBitmap(mGroupAvatar);
-            mAvatarView.setBackgroundColor(Color.TRANSPARENT);
+            mRightAvatarView.setImageBitmap(mGroupAvatar);
+            mRightAvatarView.setBackgroundColor(Color.TRANSPARENT);
         }
 
         if (mInvitation != null && mContact != null) {
@@ -647,15 +786,15 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
 
             mConfirmView.setVisibility(View.VISIBLE);
             mCancelView.setVisibility(View.VISIBLE);
-            mAvatarView.setVisibility(View.VISIBLE);
+            mGroupIconView.setVisibility(View.VISIBLE);
+            mRightAvatarView.setVisibility(View.VISIBLE);
             mContactImageView.setVisibility(View.VISIBLE);
             mBulletView.setVisibility(View.VISIBLE);
-            mIconView.setVisibility(View.VISIBLE);
-
+            mInvitationStatusImageView.setVisibility(View.GONE);
+            
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mConfirmView.getLayoutParams();
             switch (mInvitation.getStatus()) {
                 case PENDING:
-                    mIconView.setVisibility(View.GONE);
                     mContactImageView.setVisibility(View.VISIBLE);
                     mCancelView.setVisibility(View.VISIBLE);
                     mCancelView.setAlpha(1);
@@ -663,6 +802,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmView.setVisibility(View.VISIBLE);
                     mConfirmView.setAlpha(1);
                     mConfirmView.setOnClickListener(new AcceptListener());
+                    mInvitationStatusImageView.setVisibility(View.GONE);
                     marginLayoutParams.bottomMargin = 0;
                     break;
 
@@ -674,9 +814,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
-                    mIconView.setVisibility(View.VISIBLE);
-                    mInvitationStatusImageView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.conversation_view_invitation_accepted));
+                    mBulletView.setVisibility(View.GONE);
+                    mInvitationStatusImageView.setVisibility(View.VISIBLE);
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_accepted);
                     break;
 
@@ -688,8 +828,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
-                    mIconView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.conversation_view_invitation_joined));
+                    mBulletView.setVisibility(View.GONE);
+                    mInvitationStatusImageView.setVisibility(View.VISIBLE);
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_joined);
                     break;
 
@@ -701,8 +842,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
-                    mIconView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.accept_group_invitation_view_deleted));
+                    mBulletView.setVisibility(View.GONE);
+                    mInvitationStatusImageView.setVisibility(View.VISIBLE);
                     mInvitationStatusImageView.setImageResource(R.drawable.action_delete);
                     break;
 
@@ -714,8 +856,9 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
                     mConfirmTextView.setText(getString(R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
-                    mIconView.setVisibility(View.VISIBLE);
                     mMessageView.setText(getString(R.string.conversation_view_invitation_refused));
+                    mBulletView.setVisibility(View.GONE);
+                    mInvitationStatusImageView.setVisibility(View.VISIBLE);
                     mInvitationStatusImageView.setImageResource(R.drawable.invitation_state_refused);
                     break;
 
@@ -723,10 +866,11 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
         } else {
             mConfirmView.setVisibility(View.GONE);
             mCancelView.setVisibility(View.GONE);
-            mAvatarView.setVisibility(View.GONE);
+            mRightAvatarView.setVisibility(View.GONE);
             mContactImageView.setVisibility(View.GONE);
             mBulletView.setVisibility(View.GONE);
-            mIconView.setVisibility(View.GONE);
+            mGroupIconView.setVisibility(View.GONE);
+            mInvitationStatusImageView.setVisibility(View.GONE);
 
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.bottomMargin = (int) (DESIGN_CONFIRM_MARGIN * Design.HEIGHT_RATIO);

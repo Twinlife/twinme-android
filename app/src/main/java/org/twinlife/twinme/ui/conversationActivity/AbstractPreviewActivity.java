@@ -37,6 +37,7 @@ import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.CircularImageView;
@@ -488,6 +489,11 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
                     mIsQualityMediaOriginal = true;
                     mQualityImageView.setImageResource(R.drawable.media_hd_icon);
                 }
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
             }
         });
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/menu_send_option_action_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,8 +13,7 @@
             android:id="@+id/menu_send_option_slide_mark_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:layout_widthPercent="12%" />
+            android:layout_centerHorizontal="true" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_send_option_list_view"
@@ -23,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/menu_send_option_slide_mark_view" />
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/menu_send_option_send_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,8 +36,8 @@
                 android:gravity="center"
                 android:text="@string/feedback_view_send" />
 
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

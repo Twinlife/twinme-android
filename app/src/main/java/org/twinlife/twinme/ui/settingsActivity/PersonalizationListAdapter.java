@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2021 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -18,7 +18,6 @@ import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
@@ -27,7 +26,10 @@ import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.rooms.InformationViewHolder;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
-public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class  PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String LOG_TAG = "PersonalizationList...";
     private static final boolean DEBUG = false;
 
@@ -43,30 +45,8 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     private final PersonalizationActivity mListActivity;
-
     private final OnPersonalizationClickListener mOnPersonalizationClickListener;
-
-    private final int ITEM_COUNT;
-
-    private static final int SECTION_DEFAULT_TAB = 0;
-    private static final int SECTION_MODE = 3;
-    private static final int SECTION_COLOR = 5;
-    private final int SECTION_FONT;
-    private final int SECTION_HAPTIC_FEEDBACK;
-
-    private static final int POSITION_DEFAULT_TAB_INFORMATION = 1;
-    private static final int POSITION_SELECT_DEFAULT_TAB = 2;
-
-    private static final int POSITION_DISPLAY_MODE = 4;
-
-    private static final int POSITION_MAIN_COLOR = 6;
-    private final int POSITION_CONVERSATION_APPEARANCE;
-    private final int POSITION_FONT_SYSTEM;
-    private final int POSITION_FONT_SMALL;
-    private final int POSITION_FONT_LARGE;
-    private final int POSITION_FONT_EXTRA_LARGE;
-
-    private final int POSITION_HAPTIC_FEEDBACK;
+    private final List<UIPersonalizationItem> mItems = new ArrayList<>();
 
     private static final int TITLE = 0;
     private static final int COLOR = 1;
@@ -81,29 +61,8 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
 
         mListActivity = listActivity;
         mOnPersonalizationClickListener = onPersonalizationClickListener;
-        setHasStableIds(true);
-
-        if (!BuildConfig.DISPLAY_PREMIUM_FEATURE) {
-            SECTION_FONT = 7;
-            SECTION_HAPTIC_FEEDBACK = 12;
-            POSITION_CONVERSATION_APPEARANCE = -1;
-            POSITION_FONT_SYSTEM = 8;
-            POSITION_FONT_SMALL = 9;
-            POSITION_FONT_LARGE = 10;
-            POSITION_FONT_EXTRA_LARGE = 11;
-            POSITION_HAPTIC_FEEDBACK = 13;
-            ITEM_COUNT = 14;
-        } else {
-            SECTION_FONT = 8;
-            SECTION_HAPTIC_FEEDBACK = 13;
-            POSITION_CONVERSATION_APPEARANCE = 7;
-            POSITION_FONT_SYSTEM = 9;
-            POSITION_FONT_SMALL = 10;
-            POSITION_FONT_LARGE = 11;
-            POSITION_FONT_EXTRA_LARGE = 12;
-            POSITION_HAPTIC_FEEDBACK = 14;
-            ITEM_COUNT = 15;
-        }
+        setHasStableIds(false);
+        initItems();
     }
 
     public void updateColor() {
@@ -111,7 +70,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             Log.d(LOG_TAG, "updateColor");
         }
 
-        notifyItemRangeChanged(0, ITEM_COUNT);
+        notifyItemRangeChanged(0, mItems.size());
     }
 
     @Override
@@ -120,7 +79,7 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        return ITEM_COUNT;
+        return mItems.size();
     }
 
     @Override
@@ -129,22 +88,43 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == SECTION_COLOR || position == SECTION_DEFAULT_TAB || position == SECTION_MODE || position == SECTION_HAPTIC_FEEDBACK || position == SECTION_FONT) {
-            return TITLE;
-        } else if (position == POSITION_MAIN_COLOR) {
-            return COLOR;
-        } else if (position == POSITION_SELECT_DEFAULT_TAB) {
-            return DEFAULT_TAB;
-        } else if (position == POSITION_DEFAULT_TAB_INFORMATION) {
-            return INFORMATION;
-        } else if (position == POSITION_DISPLAY_MODE) {
-            return DISPLAY_MODE;
-        } else if (position == POSITION_CONVERSATION_APPEARANCE) {
-            return SUBSECTION;
-        } else if (position == POSITION_HAPTIC_FEEDBACK) {
-            return CHECKBOX;
-        } else {
-            return PERSONALIZATION;
+        UIPersonalizationItem item = mItems.get(position);
+
+        switch (item.getType()) {
+            case TAB_SECTION:
+            case DISPLAY_SECTION:
+            case APPEARANCE_SECTION:
+            case FONT_SECTION:
+            case SOUND_VIBRATION_SECTION:
+                return TITLE;
+
+            case THEME:
+                return COLOR;
+
+            case TAB:
+                return DEFAULT_TAB;
+
+            case TAB_INFO:
+                return INFORMATION;
+
+            case DISPLAY_MODE:
+                return DISPLAY_MODE;
+
+            case CONVERSATION_APPEARANCE:
+                return SUBSECTION;
+
+            case HAPTIC_FEEDBACK:
+            case SOUND_EFFECTS:
+                return CHECKBOX;
+
+            case FONT_SYSTEM:
+            case FONT_SMALL:
+            case FONT_MEDIUM:
+            case FONT_LARGE:
+                return PERSONALIZATION;
+
+            default:
+                return -1;
         }
     }
 
@@ -155,15 +135,15 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         }
 
         int viewType = getItemViewType(position);
-
+        UIPersonalizationItem item = mItems.get(position);
         if (viewType == TITLE) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            boolean hideSeparator = position == SECTION_DEFAULT_TAB || position == SECTION_HAPTIC_FEEDBACK;
-            sectionTitleViewHolder.onBind(getSectionTitle(position), hideSeparator);
+            boolean hideSeparator = item.getType() == UIPersonalizationItem.PersonalizationType.TAB_SECTION || item.getType() == UIPersonalizationItem.PersonalizationType.SOUND_VIBRATION_SECTION;
+            sectionTitleViewHolder.onBind(item.getTitle(), hideSeparator);
         } else if (viewType == SUBSECTION) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateConversationColor());
-            settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversations_view_title), false);
+            settingSectionViewHolder.onBind(item.getTitle(), false);
         } else if (viewType == COLOR) {
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;
             appearanceColorViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateMainColor());
@@ -174,44 +154,46 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
             displayModeViewHolder.onBind(displayMode);
         } else if (viewType == PERSONALIZATION) {
             PersonalizationViewHolder personalizationViewHolder = (PersonalizationViewHolder) viewHolder;
-
             boolean isSelected = false;
-            String title = "";
-
-            int fontSize = mListActivity.getTwinmeApplication().fontSize();
-            if (position == POSITION_FONT_SYSTEM) {
-                title = mListActivity.getString(R.string.personalization_view_system);
-                personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.SYSTEM));
-                isSelected = fontSize == FontSize.SYSTEM.ordinal();
-            } else if (position == POSITION_FONT_SMALL) {
-                title = mListActivity.getString(R.string.personalization_view_font_small);
+            String title = item.getTitle();
+            int defaultFontSize = mListActivity.getTwinmeApplication().fontSize();
+            FontSize fontSize;
+            if (item.getType() == UIPersonalizationItem.PersonalizationType.FONT_SMALL) {
+                fontSize = FontSize.SMALL;
                 personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.SMALL));
-                isSelected = fontSize == FontSize.SMALL.ordinal();
-            } else if (position == POSITION_FONT_LARGE) {
-                title = mListActivity.getString(R.string.personalization_view_font_large);
-                personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.LARGE));
-                isSelected = fontSize == FontSize.LARGE.ordinal();
-            } else if (position == POSITION_FONT_EXTRA_LARGE) {
-                title = mListActivity.getString(R.string.personalization_view_font_extra_large);
-                personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(FontSize.EXTRA_LARGE));
-                isSelected = fontSize == FontSize.EXTRA_LARGE.ordinal();
+            } else if (item.getType() == UIPersonalizationItem.PersonalizationType.FONT_MEDIUM) {
+                fontSize = FontSize.LARGE;
+            } else if (item.getType() == UIPersonalizationItem.PersonalizationType.FONT_LARGE) {
+                fontSize = FontSize.EXTRA_LARGE;
+            } else {
+                fontSize = FontSize.SYSTEM;
             }
+
+            isSelected = defaultFontSize == fontSize.ordinal();
+            personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(fontSize));
             personalizationViewHolder.onBind(title, isSelected, Design.WHITE_COLOR);
         } else if (viewType == DEFAULT_TAB) {
             DefaultTabViewHolder defaultTabViewHolder = (DefaultTabViewHolder) viewHolder;
             defaultTabViewHolder.onBind();
         } else if (viewType == INFORMATION) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
-            if (position == POSITION_DEFAULT_TAB_INFORMATION) {
-                informationViewHolder.onBind(mListActivity.getString(R.string.personalization_view_start_tab_information), true);
-            } else {
-                informationViewHolder.onBind(mListActivity.getString(R.string.personalization_view_haptic_feedback_message), true);
-            }
+            informationViewHolder.onBind(item.getTitle(), true);
         } else if (viewType == CHECKBOX) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
-            UISetting<Boolean> uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, mListActivity.getString(R.string.personalization_view_haptic_feedback_message), Settings.hapticFeedbackEnable);
-            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(uiSetting, isChecked);
-            settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
+
+            String title = item.getTitle();
+            String subtitle = item.getSubtitle();
+            Settings.BooleanConfig config = Settings.hapticFeedbackEnable;
+
+            if (item.getType() == UIPersonalizationItem.PersonalizationType.SOUND_EFFECTS) {
+                config = Settings.soundEffectsEnable;
+            }
+
+            if (title != null) {
+                UISetting<Boolean> uiSetting = new UISetting<>(UISetting.TypeSetting.CHECKBOX, title, subtitle, config);
+                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(uiSetting, isChecked);
+                settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
+            }
         }
     }
 
@@ -260,10 +242,13 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         }
 
         int position = viewHolder.getBindingAdapterPosition();
-        int viewType = getItemViewType(position);
-        if (viewType == TITLE && position != -1) {
-            SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            sectionTitleViewHolder.onBind(getSectionTitle(position), false);
+        if (position >= 0 && position < mItems.size()) {
+            UIPersonalizationItem item = mItems.get(position);
+            int viewType = getItemViewType(position);
+            if (viewType == TITLE) {
+                SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
+                sectionTitleViewHolder.onBind(item.getTitle(), false);
+            }
         }
     }
 
@@ -285,33 +270,37 @@ public class PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVie
         super.onViewAttachedToWindow(viewHolder);
 
         int position = viewHolder.getBindingAdapterPosition();
-        int viewType = getItemViewType(position);
-        if (viewType == TITLE && position != -1) {
-            SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
-            boolean hideSeparator = position == SECTION_DEFAULT_TAB || position == SECTION_HAPTIC_FEEDBACK;
-            sectionTitleViewHolder.onBind(getSectionTitle(position), hideSeparator);
+        if (position >= 0 && position < mItems.size()) {
+            int viewType = getItemViewType(position);
+            UIPersonalizationItem item = mItems.get(position);
+            if (viewType == TITLE) {
+                SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
+                boolean hideSeparator = item.getType() == UIPersonalizationItem.PersonalizationType.TAB_SECTION || item.getType() == UIPersonalizationItem.PersonalizationType.SOUND_VIBRATION_SECTION;
+                sectionTitleViewHolder.onBind(item.getTitle(), hideSeparator);
+            }
         }
     }
 
-    private String getSectionTitle(int position) {
+    private void initItems() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "getSectionTitle: " + position);
+            Log.d(LOG_TAG, "initItems");
         }
 
-        String title = "";
-
-        if (position == SECTION_COLOR) {
-            title = mListActivity.getString(R.string.application_color);
-        } else if (position == SECTION_DEFAULT_TAB) {
-            title = mListActivity.getString(R.string.personalization_view_start_tab_title);
-        } else if (position == SECTION_MODE) {
-            title = mListActivity.getString(R.string.personalization_view_mode);
-        } else if (position == SECTION_HAPTIC_FEEDBACK) {
-            title = mListActivity.getString(R.string.personalization_view_haptic_feedback);
-        } else if (position == SECTION_FONT) {
-            title = mListActivity.getString(R.string.personalization_view_font);
-        }
-
-        return title;
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.TAB_SECTION, mListActivity.getString(R.string.personalization_view_start_tab_title), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.TAB_INFO, mListActivity.getString(R.string.personalization_view_start_tab_information), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.TAB, null, null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.DISPLAY_SECTION, mListActivity.getString(R.string.personalization_view_mode), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.DISPLAY_MODE, null, null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.APPEARANCE_SECTION, mListActivity.getString(R.string.application_color), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.THEME, mListActivity.getString(R.string.application_theme), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.CONVERSATION_APPEARANCE, mListActivity.getString(R.string.conversations_view_title), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.FONT_SECTION, mListActivity.getString(R.string.personalization_view_font), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.FONT_SYSTEM, mListActivity.getString(R.string.personalization_view_system), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.FONT_SMALL, mListActivity.getString(R.string.personalization_view_font_small), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.FONT_MEDIUM, mListActivity.getString(R.string.personalization_view_font_large), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.FONT_LARGE, mListActivity.getString(R.string.personalization_view_font_extra_large), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.SOUND_VIBRATION_SECTION, mListActivity.getString(R.string.settings_view_sound_vibrations_title), null));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.HAPTIC_FEEDBACK, mListActivity.getString(R.string.personalization_view_haptic_feedback), mListActivity.getString(R.string.personalization_view_haptic_feedback_message)));
+        mItems.add(new UIPersonalizationItem(UIPersonalizationItem.PersonalizationType.SOUND_EFFECTS, mListActivity.getString(R.string.settings_view_sound_effects_title), mListActivity.getString(R.string.settings_view_sound_effects_info)));
     }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2024 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -10,16 +10,17 @@
 package org.twinlife.twinme.ui;
 
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,9 +29,10 @@ import androidx.core.splashscreen.SplashScreen;
 import androidx.core.splashscreen.SplashScreenViewProvider;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinme.services.SplashService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
 import org.twinlife.twinme.ui.mainActivity.MainActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumServicesActivity;
@@ -45,6 +47,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
     private static final String LOG_TAG = "SplashScreenActivity";
     private static final boolean DEBUG = false;
 
+    private static final int DESIGN_MESSAGE_MARGIN = 100;
     private static final long MIN_ANIMATION_DURATION = 500;
     private static final long ANIMATION_DURATION = 1000;
 
@@ -56,8 +59,10 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
     private boolean mReady = false;
     private boolean mStarted = false;
     private boolean mHasConversations = false;
+    private boolean mAnimationEnded = false;
     private TwinmeApplication.State mState;
     private ScheduledFuture<?> mSplashTimer = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,6 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         // It also has some weird behavior on SDK < 32
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S_V2) {
             SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-
             splashScreen.setOnExitAnimationListener((SplashScreenViewProvider splashScreenView) -> {
                 if (DEBUG) {
                     Log.d(LOG_TAG, "Android splashScreen terminated, starting alpha animation");
@@ -79,20 +83,10 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
                 // Still a double splash screen effect due to the Android imposed and fixed Splashscreen
                 // and our own splash screen which displays application name and bottom logo for Skred.
                 // Use some fading to switch between the two.
-                View view = splashScreenView.getView();
-                PropertyValuesHolder propertyValuesHolderAlpha = PropertyValuesHolder.ofFloat(View.ALPHA, 1.0f, 0.0f);
-                ObjectAnimator alphaViewAnimator = ObjectAnimator.ofPropertyValuesHolder(view, propertyValuesHolderAlpha);
-                alphaViewAnimator.setDuration(500L);
+                splashScreenView.remove();
 
-                // Call SplashScreenView.remove at the end of your custom animation.
-                alphaViewAnimator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        splashScreenView.remove();
-                    }
-                });
-
-                alphaViewAnimator.start();
+                long delay = System.currentTimeMillis() - mStartTime;
+                animate(delay > ANIMATION_DURATION ? MIN_ANIMATION_DURATION : ANIMATION_DURATION);
             });
         }
 
@@ -103,7 +97,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         // If there is no TwinmeApplication instance, redirect to the fatal error activity.
         // We avoid a crash later on.
         if (twinmeApplication == null) {
-            onFatalError(BaseService.ErrorCode.LIBRARY_ERROR);
+            onFatalError(ErrorCode.LIBRARY_ERROR);
             return;
         }
 
@@ -140,7 +134,23 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
 
         super.onResume();
 
-        animate();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S_V2) {
+            animate(ANIMATION_DURATION);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onDestroy");
+        }
+
+        super.onDestroy();
+
+        if (mSplashService != null) {
+            mSplashService.dispose();
+            mSplashService = null;
+        }
     }
 
     @Override
@@ -162,13 +172,13 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         mHasConversations = hasConversations;
         long delay = System.currentTimeMillis() - mStartTime;
         mReady = true;
-        if (delay >= MIN_ANIMATION_DURATION) {
+        if (delay >= MIN_ANIMATION_DURATION && mAnimationEnded) {
             startMain();
         }
     }
 
     @Override
-    public void onFatalError(BaseService.ErrorCode errorCode) {
+    public void onFatalError(ErrorCode errorCode) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onFatalError: errorCode=" + errorCode);
         }
@@ -195,6 +205,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         }
         if (mSplashService != null) {
             mSplashService.dispose();
+            mSplashService = null;
         }
         super.finish();
     }
@@ -256,25 +267,39 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
         setBackgroundColor(Design.WHITE_COLOR);
 
         ImageView logoView = findViewById(R.id.splashscreen_activity_logo_view);
-        ImageView twinmeView = findViewById(R.id.splashscreen_activity_twinme_view);
+
+        boolean darkMode = false;
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int displayMode = Settings.displayMode.getInt();
+        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
+            darkMode = true;
+        }
+
+        if (darkMode) {
+            logoView.setImageResource(R.drawable.splashscreen_icon_dark);
+        } else {
+            logoView.setImageResource(R.drawable.splashscreen_icon_light);
+        }
 
         mUpgradeMessage = findViewById(R.id.splashscreen_activity_twinme_upgrading);
         Design.updateTextFont(mUpgradeMessage, Design.FONT_REGULAR34);
         mUpgradeMessage.setTextColor(Design.FONT_COLOR_DEFAULT);
 
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mUpgradeMessage.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.bottomMargin = (int) (Design.HEIGHT_RATIO * DESIGN_MESSAGE_MARGIN);
+
         logoView.setAlpha((float) 0.0);
-        twinmeView.setAlpha((float) 0.0);
-        twinmeView.setColorFilter(Design.BLACK_COLOR);
 
         animationList.clear();
 
         animationList.add(logoView);
-        animationList.add(twinmeView);
 
         setStatusBarColor(Design.WHITE_COLOR);
     }
 
-    private void animate() {
+    private void animate(long duration) {
         if (DEBUG) {
             Log.d(LOG_TAG, "animate");
         }
@@ -285,7 +310,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
 
         for (View view : animationList) {
             ObjectAnimator alphaViewAnimator = ObjectAnimator.ofPropertyValuesHolder(view, propertyValuesHolderAlpha);
-            alphaViewAnimator.setDuration(ANIMATION_DURATION);
+            alphaViewAnimator.setDuration(duration);
             animators.add(alphaViewAnimator);
         }
 
@@ -300,11 +325,13 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
             public void onAnimationEnd(@NonNull Animator animator) {
 
                 mAnimatorSet = null;
+                mAnimationEnded = true;
             }
 
             @Override
             public void onAnimationCancel(@NonNull Animator animator) {
 
+                mAnimationEnded = true;
             }
 
             @Override
@@ -317,7 +344,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
 
         // We cannot rely on the animation to terminate and move to the main activity because animations can
         // be disabled by the user on Android 12.  Use a specific timer to check and start the main activity.
-        mSplashTimer = getTwinmeContext().getJobService().schedule(this::checkStart, ANIMATION_DURATION);
+        mSplashTimer = getTwinmeContext().getJobService().schedule(this::checkStart, duration);
     }
 
     private void checkStart() {

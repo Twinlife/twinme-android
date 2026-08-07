@@ -55,7 +55,7 @@
       {
         "id" : 6,
         "title": "Which languages does twinme support?",
-        "description": "<p>twinme supports 24 languages including English, French, Arabic, Chinese (simplified and traditional), Danish, Dutch, Finish, German, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Norwegian, Persian, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian. Other languages can be supported on demand.</p>",
+        "description": "<p>twinme supports 35 languages including English, Albanian, Arabic, Bulgarian, Chinese (simplified and traditional), Croatian, Czech, Danish, Dutch, Finish, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Turkish, Ukrainian, Vietnamese. Other languages can be supported on demand.</p>",
         "tags": ["Introduction"],
         "image": "",
         "video": "",
@@ -287,29 +287,9 @@
         "max_version": ""
       },
       {
-        "id" : 28,
-        "title": "How can I tell if a message I've sent has been delivered?",
-        "description": "<p>Indications of a message being sent, delivered &amp; read will be available in a forthcoming twinme release.</p>",
-        "tags": ["Messaging"],
-        "image": "",
-        "video": "",
-        "min_version": "",
-        "max_version": ""
-      },
-      {
         "id" : 29,
         "title": "Can anyone read the messages I send on twinme?",
         "description": "<p>Message exchanged are end-to-end encrypted and happen in peer-to-peer directly from device to device, with no staging server storing contents in between.</p><p>Contents remain on the end devices and can be wiped out on both ends simultaneously by a simple tap from either end. Encryption works transparently in the background and doesn’t need to be activated first.</p><p>Check twinme <a href='https://twin.me/privacy-policy/'>Privacy Policy</a> for more details.</p>",
-        "tags": ["Messaging"],
-        "image": "",
-        "video": "",
-        "min_version": "",
-        "max_version": ""
-      },
-      {
-        "id" : 30,
-        "title": "How can I share a YouTube, Vimeo video, or SoundCloud audio links?",
-        "description": "<p><em>The ability to send and play audio and video links will be available in a forthcoming twinme release.</em></p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",

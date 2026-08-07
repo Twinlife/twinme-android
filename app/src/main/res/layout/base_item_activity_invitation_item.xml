@@ -46,49 +46,89 @@
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/base_item_activity_invitation_item_view"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            app:layout_aspectRatio="483.33%"
             app:layout_marginEndPercent="6.93%"
             app:layout_widthPercent="77.33%">
 
-            <org.twinlife.twinme.utils.RoundedView
-                android:id="@+id/base_item_activity_invitation_no_avatar_view"
-                android:layout_centerVertical="true"
-                app:layout_aspectRatio="100%"
-                app:layout_marginStartPercent="6.20%"
-                app:layout_widthPercent="13.79%" />
+            <RelativeLayout
+                android:id="@+id/base_item_activity_invitation_item_avatar_container_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-            <org.twinlife.twinme.utils.CircularImageView
-                android:id="@+id/base_item_activity_invitation_avatar_view"
-                android:layout_centerVertical="true"
-                app:layout_aspectRatio="100%"
-                app:layout_marginStartPercent="6.20%"
-                app:layout_widthPercent="13.79%" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/base_item_activity_invitation_item_left_avatar_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:elevation="0dp"
+                    android:padding="2dp"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@android:color/white"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"/>
 
-            <androidx.percentlayout.widget.PercentRelativeLayout
+                <View
+                    android:id="@+id/base_item_activity_invitation_item_line_left_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/base_item_activity_invitation_item_left_avatar_view"
+                    android:layout_toStartOf="@+id/base_item_activity_invitation_item_icon_view"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.percentlayout.widget.PercentRelativeLayout
+                    android:id="@+id/base_item_activity_invitation_item_icon_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/base_item_activity_invitation_item_icon_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/action_bar_add_contact"
+                        app:layout_aspectRatio="100%"/>
+
+                    <ImageView
+                        android:id="@+id/base_item_activity_invitation_item_status_image_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/invitation_state_accepted" />
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                <View
+                    android:id="@+id/base_item_activity_invitation_item_line_right_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/base_item_activity_invitation_item_icon_view"
+                    android:layout_toStartOf="@+id/base_item_activity_invitation_item_right_avatar_view" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/base_item_activity_invitation_item_right_avatar_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:elevation="0dp"
+                    android:padding="2dp"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@android:color/white"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/base_item_activity_invitation_item_message_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/base_item_activity_invitation_avatar_view"
-                app:layout_marginStartPercent="3.79%"
-                app:layout_marginEndPercent="3.79%">
+                android:gravity="center"
+                android:layout_below="@+id/base_item_activity_invitation_item_avatar_container_view"
+                android:textColor="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/base_item_activity_invitation_item_group_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:lines="1" />
-
-                <TextView
-                    android:id="@+id/base_item_activity_invitation_item_invitation_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:layout_below="@+id/base_item_activity_invitation_item_group_name"
-                    android:maxLines="2" />
-            </androidx.percentlayout.widget.PercentRelativeLayout>
         </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <org.twinlife.twinme.ui.baseItemActivity.DeleteProgressView

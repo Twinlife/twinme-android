@@ -27,15 +27,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
-import android.view.KeyEvent;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.activity.ComponentActivity;
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -44,7 +41,7 @@ import org.twinlife.twinme.skin.Design;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractBottomSheetView extends PercentRelativeLayout {
+public class AbstractBottomSheetView extends RelativeLayout {
     private static final String LOG_TAG = "AbstractBottomSheetView";
     private static final boolean DEBUG = false;
 
@@ -354,6 +351,7 @@ public class AbstractBottomSheetView extends PercentRelativeLayout {
         mActionView.setBackground(scrollIndicatorBackground);
 
         ViewGroup.LayoutParams layoutParams = mSlideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -419,6 +417,8 @@ public class AbstractBottomSheetView extends PercentRelativeLayout {
 
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
             marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+            marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+            marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
         }
 
         if (mMessageView != null) {
@@ -427,6 +427,8 @@ public class AbstractBottomSheetView extends PercentRelativeLayout {
 
             marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
             marginLayoutParams.topMargin = (int) (DESIGN_MESSAGE_MARGIN * Design.HEIGHT_RATIO);
+            marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+            marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
         }
 
         if (mConfirmView != null) {

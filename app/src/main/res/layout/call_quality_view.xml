@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +10,7 @@
         android:clickable="true"
         android:visibility="visible" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/call_quality_view_action_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,10 +20,9 @@
             android:id="@+id/call_quality_view_slide_mark_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:layout_widthPercent="12%" />
+            android:layout_centerHorizontal="true" />
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/call_quality_view_stars_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,27 +59,27 @@
                 android:scaleType="fitCenter"
                 android:layout_toEndOf="@+id/call_quality_view_star_three_image_view"
                 android:src="@drawable/star_grey"/>
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/call_quality_view_title_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/call_quality_view_stars_view"
             android:gravity="center"
-            android:text="@string/call_view_quality_title"
-            app:layout_widthPercent="94%" />
+            android:text="@string/call_view_quality_title" />
 
         <TextView
             android:id="@+id/call_quality_view_message_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/call_quality_view_title_view"
             android:gravity="center"
-            android:text="@string/call_view_quality_message"
-            app:layout_widthPercent="94%" />
+            android:text="@string/call_view_quality_message" />
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/call_quality_view_confirm_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,9 +94,9 @@
                 android:gravity="center"
                 android:text="@string/feedback_view_send" />
 
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/call_quality_view_cancel_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -110,8 +108,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/application_cancel" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

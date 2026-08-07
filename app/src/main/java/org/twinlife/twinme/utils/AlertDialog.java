@@ -37,7 +37,6 @@ public class AlertDialog extends Dialog {
 
     private static final int DESIGN_MESSAGE_COLOR = Color.argb(255, 178, 178, 178);
 
-    private static final int DESIGN_SLIDE_MARK_WIDTH = 90;
     private static final int DESIGN_TITLE_MARGIN = 60;
     private static final int DESIGN_MESSAGE_MARGIN = 30;
     private static final int DESIGN_TEXT_MARGIN = 52;
@@ -52,8 +51,6 @@ public class AlertDialog extends Dialog {
     private static final float DESIGN_TEXT_TOP_MARGIN = 40;
     private static final float DESIGN_TEXT_BOTTOM_MARGIN = 40;
     private static final float DESIGN_BUTTON_BOTTOM_MARGIN = 17;
-    private static final float DESIGN_LEFT_MARGIN = 22;
-    private static final float DESIGN_RIGHT_MARGIN = 22;
     private static final float DESIGN_CLOSE_VIEW_SIZE = 52;
     private static final float DESIGN_CLOSE_VIEW_MARGIN = 18;
     private static final float DESIGN_CONTAINER_RADIUS = 6;
@@ -110,10 +107,10 @@ public class AlertDialog extends Dialog {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) titleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_TOP_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.leftMargin = (int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.setMarginStart((int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO));
-        marginLayoutParams.setMarginEnd((int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO));
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin =  Design.TEXT_MARGIN;
+        marginLayoutParams.setMarginStart(Design.TEXT_MARGIN);
+        marginLayoutParams.setMarginEnd(Design.TEXT_MARGIN);
 
         titleView.setLayoutParams(marginLayoutParams);
 
@@ -121,10 +118,10 @@ public class AlertDialog extends Dialog {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) messageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TEXT_TOP_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_TEXT_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.leftMargin = (int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.setMarginStart((int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO));
-        marginLayoutParams.setMarginEnd((int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO));
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin =  Design.TEXT_MARGIN;
+        marginLayoutParams.setMarginStart(Design.TEXT_MARGIN);
+        marginLayoutParams.setMarginEnd(Design.TEXT_MARGIN);
 
         messageView.setLayoutParams(marginLayoutParams);
 
@@ -146,8 +143,8 @@ public class AlertDialog extends Dialog {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) leftButton.getLayoutParams();
         marginLayoutParams.bottomMargin = (int) (DESIGN_BUTTON_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.leftMargin = (int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.setMarginStart((int) (DESIGN_LEFT_MARGIN * Design.WIDTH_RATIO));
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.setMarginStart(Design.TEXT_MARGIN);
 
         leftButton.setLayoutParams(marginLayoutParams);
 
@@ -174,8 +171,8 @@ public class AlertDialog extends Dialog {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) rightButton.getLayoutParams();
         marginLayoutParams.bottomMargin = (int) (DESIGN_BUTTON_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.setMarginEnd((int) (DESIGN_RIGHT_MARGIN * Design.WIDTH_RATIO));
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.setMarginEnd(Design.TEXT_MARGIN);
 
         rightButton.setLayoutParams(marginLayoutParams);
 
@@ -225,7 +222,7 @@ public class AlertDialog extends Dialog {
         View slideMarkView = findViewById(R.id.alert_dialog_slide_mark_view);
 
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_SLIDE_MARK_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

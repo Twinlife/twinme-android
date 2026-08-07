@@ -25,10 +25,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,7 +39,7 @@ import org.twinlife.twinme.skin.Design;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuPropagatingProfileView extends PercentRelativeLayout {
+public class MenuPropagatingProfileView extends RelativeLayout {
     private static final String LOG_TAG = "MenuPropagating...";
     private static final boolean DEBUG = false;
 
@@ -253,6 +253,7 @@ public class MenuPropagatingProfileView extends PercentRelativeLayout {
 
         View slideMarkView = findViewById(R.id.menu_propagating_profile_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -275,6 +276,8 @@ public class MenuPropagatingProfileView extends PercentRelativeLayout {
         marginLayoutParams = (MarginLayoutParams) titleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
 
         TextView subTitleView = findViewById(R.id.menu_propagating_profile_view_subtitle_view);
         subTitleView.setTypeface(Design.FONT_MEDIUM34.typeface);

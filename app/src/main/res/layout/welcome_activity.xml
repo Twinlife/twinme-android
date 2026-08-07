@@ -4,6 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/welcome_activity_logo_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/welcome_activity_logo_view"
+            android:layout_width="288dp"
+            android:layout_height="288dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/splashscreen_icon" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/welcome_activity_description_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_contact_view_share_message_part_2"
+        android:layout_centerHorizontal="true"
+        android:gravity="top|center"
+        android:layout_marginTop="-44dp"
+        android:layout_above="@+id/welcome_activity_start_view"
+        android:layout_below="@+id/welcome_activity_logo_container" />
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/welcome_activity_header_view"
         android:layout_width="match_parent"
@@ -97,5 +123,36 @@
         android:gravity="center_horizontal"
         android:textColorHighlight="#00FFFFFF"
         app:layout_widthPercent="94.67%" />
+
+    <RelativeLayout
+        android:id="@+id/welcome_activity_start_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/welcome_activity_restore_view">
+
+        <TextView
+            android:id="@+id/welcome_activity_start_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/application_start" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/welcome_activity_restore_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/welcome_activity_restore_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/application_transfer_restore" />
+    </RelativeLayout>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

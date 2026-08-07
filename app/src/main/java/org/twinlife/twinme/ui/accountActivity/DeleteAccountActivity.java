@@ -182,7 +182,7 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
         accountTextView.setText(accountText);
         accountTextView.setMovementMethod(new ScrollingMovementMethod());
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             accountTextView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 

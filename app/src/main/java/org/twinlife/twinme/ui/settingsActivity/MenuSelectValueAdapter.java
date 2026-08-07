@@ -22,18 +22,26 @@ import android.widget.TextView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.DisplayCallsMode;
+import org.twinlife.twinlife.PeerConnectionService;
+import org.twinlife.twinlife.ShareInvitationMode;
 import org.twinlife.twinme.models.LinkValidity;
 import org.twinlife.twinme.models.Profile;
+import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
-import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.externalCallActivity.UIConfigExternalCall;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
+import org.twinlife.twinme.ui.TwinmeApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuSelectValueAdapter implements ListAdapter {
 
     protected static final float DESIGN_VALUE_HEIGHT = 120;
     protected static final float DESIGN_CHECKMARK_HEIGHT = 44;
     protected static final float DESIGN_MARGIN = 32;
+    private static final float DESIGN_VALUE_MARGIN = 14;
 
     private final AbstractTwinmeActivity mActivity;
     private final OnValueClickListener mOnValueClickListener;
@@ -41,12 +49,15 @@ public class MenuSelectValueAdapter implements ListAdapter {
     private MenuSelectValueView.MenuType mMenuType = MenuSelectValueView.MenuType.QUALITY_MEDIA;
 
     private int mSelectedValue = -1;
-
     private boolean mForceDarkMode = false;
+
+    private final List<UITimeout> mTimeouts = new ArrayList<>();
 
     public interface OnValueClickListener {
 
         void onValueClick(int value);
+
+        void onTimeoutClick(UITimeout UITimeout);
     }
 
     MenuSelectValueAdapter(AbstractTwinmeActivity activity, OnValueClickListener onValueClickListener) {
@@ -55,10 +66,45 @@ public class MenuSelectValueAdapter implements ListAdapter {
         mOnValueClickListener = onValueClickListener;
     }
 
+    public void setSelectedValue(int selectedValue) {
+
+        mSelectedValue = selectedValue;
+    }
+
     public void setMenuType(MenuSelectValueView.MenuType menuType, int defaultValue) {
 
         mMenuType = menuType;
         mSelectedValue = defaultValue;
+
+        if (mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN) {
+            mTimeouts.clear();
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.privacy_view_lock_screen_timeout_instant), 0));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_minute), 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 5), 5 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 15), 15 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 30), 30 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_hour), 60 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_hours), 4), 4 * 60 * 60));
+        } else if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE) {
+            mTimeouts.clear();
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_seconds), 5), 5));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_seconds), 10), 10));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_seconds), 30), 30));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_minute), 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 5), 5 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_minutes), 30), 30 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_hour), 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_day), 24 * 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_week), 7 * 24 * 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_month), 30 * 24 * 60 * 60));
+        } else if (mMenuType == MenuSelectValueView.MenuType.SILENT_MODE_DURATION) {
+            mTimeouts.clear();
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_hour), 60 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_hours), 8), 8 * 60 * 60));
+            mTimeouts.add(new UITimeout(String.format(mActivity.getString(R.string.application_timeout_hours), 24), 24 * 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.application_timeout_week), 7 * 24 * 60 * 60));
+            mTimeouts.add(new UITimeout(mActivity.getString(R.string.contact_capabilities_view_camera_control_allow), -1));
+        }
     }
 
     public void setForceDarkMode(boolean forceDarkMode) {
@@ -79,10 +125,20 @@ public class MenuSelectValueAdapter implements ListAdapter {
     @Override
     public int getCount() {
 
-        if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA || mMenuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE) {
-            return 2;
+        switch (mMenuType) {
+            case QUALITY_MEDIA:
+            case EDIT_SPACE:
+            case EXTERNAL_CALL_TYPE:
+                return 2;
+
+            case EPHEMERAL_MESSAGE:
+            case LOCKSCREEN:
+            case SILENT_MODE_DURATION:
+                return mTimeouts.size();
+
+            default:
+                return 3;
         }
-        return 3;
     }
 
     @Override
@@ -122,6 +178,12 @@ public class MenuSelectValueAdapter implements ListAdapter {
                 title = mActivity.getString(R.string.conversation_view_media_quality_original);
                 subTitle = mActivity.getString(R.string.conversation_view_media_quality_original_subtitle);
             }
+        } else if (mMenuType == MenuSelectValueView.MenuType.EDIT_SPACE) {
+            if (position == 0) {
+                title = mActivity.getString(R.string.settings_space_view_space_category_title);
+            } else {
+                title = mActivity.getString(R.string.application_profile);
+            }
         } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
             if (position == DisplayCallsMode.NONE.ordinal()) {
                 title = mActivity.getString(R.string.settings_view_display_call_menu_none);
@@ -129,6 +191,18 @@ public class MenuSelectValueAdapter implements ListAdapter {
                 title = mActivity.getString(R.string.settings_view_display_call_menu_missed);
             } else {
                 title = mActivity.getString(R.string.settings_view_call_item_menu_all);
+            }
+        } else if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE || mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN || mMenuType == MenuSelectValueView.MenuType.SILENT_MODE_DURATION) {
+            UITimeout uiTimeout = mTimeouts.get(position);
+            title = uiTimeout.getText();
+            isChecked = uiTimeout.getDelay() == mSelectedValue;
+        } else if (mMenuType == MenuSelectValueView.MenuType.CAMERA_CONTROL) {
+            if (position == Zoomable.NEVER.ordinal()) {
+                title = mActivity.getString(R.string.contact_capabilities_view_camera_control_never);
+            } else if (position == Zoomable.ASK.ordinal()) {
+                title = mActivity.getString(R.string.contact_capabilities_view_camera_control_ask);
+            } else {
+                title = mActivity.getString(R.string.contact_capabilities_view_camera_control_allow);
             }
         } else if (mMenuType == MenuSelectValueView.MenuType.PROFILE_UPDATE_MODE) {
             if (position == Profile.UpdateMode.NONE.ordinal()) {
@@ -146,7 +220,7 @@ public class MenuSelectValueAdapter implements ListAdapter {
                 title = mActivity.getString(R.string.create_external_call_view_conference_call_title);
                 subTitle = mActivity.getString(R.string.create_external_call_view_conference_call_description);
             }
-        } else {
+        } else if (mMenuType == MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION) {
             if (position == LinkValidity.PERMANENT.ordinal()) {
                 title = mActivity.getString(R.string.create_external_call_view_continuous_link_title);
                 subTitle = mActivity.getString(R.string.create_external_call_view_continuous_link_description);
@@ -157,11 +231,29 @@ public class MenuSelectValueAdapter implements ListAdapter {
                 title = mActivity.getString(R.string.create_external_call_view_recurrent_link_title);
                 subTitle = mActivity.getString(R.string.create_external_call_view_recurrent_link_description);
             }
+        } else if (mMenuType == MenuSelectValueView.MenuType.SECURITY_LEVEL) {
+            if (position == PeerConnectionService.IceTransportMode.ALL.toInteger()) {
+                title = mActivity.getString(R.string.settings_advanced_view_security_optimized);
+                subTitle = mActivity.getString(R.string.settings_advanced_view_security_optimized_info);
+            } else if (position == PeerConnectionService.IceTransportMode.TURNS.toInteger()) {
+                title = mActivity.getString(R.string.settings_advanced_view_security_advanced);
+                subTitle = mActivity.getString(R.string.settings_advanced_view_security_advanced_info);
+            } else {
+                title = mActivity.getString(R.string.settings_advanced_view_security_expert);
+                subTitle = mActivity.getString(R.string.settings_advanced_view_security_expert_info);
+            }
+        } else {
+            if (position == ShareInvitationMode.NEVER.toInteger()) {
+                title = mActivity.getString(R.string.contact_capabilities_view_camera_control_never);
+            } else if (position == ShareInvitationMode.ASK.toInteger()) {
+                title = mActivity.getString(R.string.privacy_view_share_invitation_ask);
+            } else {
+                title = mActivity.getString(R.string.contact_capabilities_view_camera_control_allow);
+            }
         }
 
-        ViewGroup.LayoutParams layoutParams = convertView.getLayoutParams();
         convertView.setBackgroundColor(Color.TRANSPARENT);
-        layoutParams.height = (int) (DESIGN_VALUE_HEIGHT * Design.HEIGHT_RATIO);
+        convertView.setMinimumHeight((int) (DESIGN_VALUE_HEIGHT * Design.HEIGHT_RATIO));
 
         TextView nameView = convertView.findViewById(R.id.menu_select_value_child_title);
         Design.updateTextFont(nameView, Design.FONT_REGULAR34);
@@ -169,10 +261,18 @@ public class MenuSelectValueAdapter implements ListAdapter {
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) nameView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_MARGIN * 2 * Design.WIDTH_RATIO) + (int) (DESIGN_CHECKMARK_HEIGHT * Design.HEIGHT_RATIO);
+        marginLayoutParams.topMargin = (int) (DESIGN_VALUE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_VALUE_MARGIN * Design.HEIGHT_RATIO);
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         spannableStringBuilder.append(title);
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(mForceDarkMode ? Color.WHITE : Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        int textColor = Design.FONT_COLOR_DEFAULT;
+        if (mForceDarkMode) {
+            textColor = Color.WHITE;
+        }
+
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(textColor), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if (!subTitle.isEmpty()) {
             spannableStringBuilder.append("\n");
@@ -186,7 +286,7 @@ public class MenuSelectValueAdapter implements ListAdapter {
 
         View checkMarkView = convertView.findViewById(R.id.menu_select_value_child_title_checkmark_view);
 
-        layoutParams = checkMarkView.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = checkMarkView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_CHECKMARK_HEIGHT * Design.HEIGHT_RATIO);
         layoutParams.width = (int) (DESIGN_CHECKMARK_HEIGHT * Design.HEIGHT_RATIO);
 
@@ -210,7 +310,12 @@ public class MenuSelectValueAdapter implements ListAdapter {
             separatorView.setVisibility(View.VISIBLE);
         }
 
-        convertView.setOnClickListener(view -> mOnValueClickListener.onValueClick(position));
+        if (mMenuType == MenuSelectValueView.MenuType.EPHEMERAL_MESSAGE || mMenuType == MenuSelectValueView.MenuType.LOCKSCREEN || mMenuType == MenuSelectValueView.MenuType.SILENT_MODE_DURATION) {
+            UITimeout uiTimeout = mTimeouts.get(position);
+            convertView.setOnClickListener(view -> mOnValueClickListener.onTimeoutClick(uiTimeout));
+        } else {
+            convertView.setOnClickListener(view -> mOnValueClickListener.onValueClick(position));
+        }
 
         return convertView;
     }

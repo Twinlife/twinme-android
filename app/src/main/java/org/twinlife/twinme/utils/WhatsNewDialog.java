@@ -23,6 +23,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -54,7 +55,6 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
     private static final float DESIGN_IMAGE_TOP_MARGIN = 60;
     private static final float DESIGN_IMAGE_WIDTH = 410;
     private static final float DESIGN_IMAGE_HEIGHT = 360;
-    private static final int DESIGN_SLIDE_MARK_WIDTH = 90;
     private static final int DESIGN_TITLE_MARGIN = 60;
     private static final int DESIGN_MESSAGE_MARGIN = 30;
     private static final int DESIGN_TEXT_MARGIN = 52;
@@ -128,7 +128,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
         View slideMarkView = findViewById(R.id.whats_new_dialog_slide_mark_view);
 
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
-        layoutParams.width = (int) (DESIGN_SLIDE_MARK_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -341,7 +341,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
 
         if (messages == null) {
             mShowAllWhatsNew = true;
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(mRunnable, 100);
             return;
         }

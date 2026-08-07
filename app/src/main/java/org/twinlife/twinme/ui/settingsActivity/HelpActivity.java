@@ -168,7 +168,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
         }
 
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/help.html");
+        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.help);
         intent.putExtra(Intents.INTENT_TITLE, getString(R.string.navigation_view_help));
         startActivity(intent);
     }

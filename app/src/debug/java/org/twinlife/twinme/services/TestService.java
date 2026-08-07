@@ -14,8 +14,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.twinlife.twinlife.BaseService;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
@@ -507,7 +506,7 @@ public class TestService extends AbstractTwinmeService {
             if (DEBUG) {
                 Log.d(LOG_TAG, "TwinmeContext.getPendingNotifications");
             }
-            mTwinmeContext.getSpaceNotificationStats((BaseService.ErrorCode errorCode, NotificationStat stat) -> {
+            mTwinmeContext.getSpaceNotificationStats((ErrorCode errorCode, NotificationStat stat) -> {
                 onGetSpaceNotificationStats(stat);
                 onOperation();
             });

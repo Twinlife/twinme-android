@@ -20,9 +20,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +32,7 @@ import org.twinlife.twinme.ui.baseItemActivity.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("deprecation")
-public class MenuItemView extends PercentRelativeLayout {
+public class MenuItemView extends RelativeLayout {
     private static final String LOG_TAG = "MenuItemView";
     private static final boolean DEBUG = false;
 
@@ -152,6 +151,8 @@ public class MenuItemView extends PercentRelativeLayout {
                 case PEER_INVITATION_CONTACT:
                 case CALL:
                 case PEER_CALL:
+                case SHARE_CONTACT:
+                case PEER_SHARE_CONTACT:
                     menuType = MenuType.INVITATION;
                     break;
 

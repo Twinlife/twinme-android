@@ -12,8 +12,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.RelativeLayout;
 
-import androidx.percentlayout.widget.PercentRelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +24,7 @@ import org.twinlife.twinme.skin.Design;
 
 import java.util.List;
 
-public class WordCompletionView extends PercentRelativeLayout {
+public class WordCompletionView extends RelativeLayout {
     private static final String LOG_TAG = "WordCompletionView";
     private static final boolean DEBUG = false;
 

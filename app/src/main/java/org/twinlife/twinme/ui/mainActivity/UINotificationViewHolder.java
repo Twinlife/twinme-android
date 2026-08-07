@@ -249,6 +249,11 @@ public class UINotificationViewHolder extends RecyclerView.ViewHolder {
                 subTitle = context.getString(R.string.notifications_view_item_poll_message);
                 break;
 
+            case NEW_CONTACT_SHARE:
+                drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
+                subTitle = context.getString(R.string.notification_center_connection_request);
+                break;
+
             case NEW_CONTACT_INVITATION:
                 drawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.notification_invitation_group, null);
                 subTitle = context.getString(R.string.notifications_view_item_invitation);

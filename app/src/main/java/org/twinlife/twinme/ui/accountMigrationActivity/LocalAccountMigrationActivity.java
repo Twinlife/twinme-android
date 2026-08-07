@@ -61,7 +61,8 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
 
     private static final float DESIGN_IMAGE_TOP_MARGIN = 40;
     private static final float DESIGN_IMAGE_BOTTOM_MARGIN = 20;
-    private static final float DESIGN_IMAGE_HEIGHT = 520;
+    private static final float DESIGN_IMAGE_SIZE = 520;
+    private static final float DESIGN_ACTION_MARGIN = 60;
 
     private static final String TWINME_PLUS_ACTIVITY = "org.twinlife.device.android.twinme.plus" + BuildConfig.APPLICATION_ID_SUFFIX;
 
@@ -145,6 +146,18 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
         }
 
         super.onDestroy();
+    }
+
+    @Override
+    public void onApplyInsetsFinish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
+        }
+
+        if (mAcceptButton != null) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mAcceptButton.getLayoutParams();
+            marginLayoutParams.bottomMargin = (int) (getBarBottomInset() + DESIGN_ACTION_MARGIN * Design.HEIGHT_RATIO);
+        }
     }
 
     //
@@ -290,7 +303,8 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
         ImageView imageView = findViewById(R.id.local_account_migration_activity_image_view);
 
         ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
+        layoutParams.width = (int) (DESIGN_IMAGE_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_IMAGE_SIZE * Design.HEIGHT_RATIO);
 
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) imageView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_IMAGE_TOP_MARGIN * Design.HEIGHT_RATIO);
@@ -309,13 +323,21 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
         Design.updateTextFont(mInformationTextView, Design.FONT_BOLD28);
         mInformationTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mInformationTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
+
         AcceptListener acceptListener = new AcceptListener();
         mAcceptButton = findViewById(R.id.local_account_migration_activity_accept_view);
         mAcceptButton.setOnClickListener(acceptListener);
         mAcceptButton.setVisibility(View.GONE);
 
         layoutParams = mAcceptButton.getLayoutParams();
+        layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.BUTTON_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mAcceptButton.getLayoutParams();
+        marginLayoutParams.bottomMargin = (int) (DESIGN_ACTION_MARGIN * Design.HEIGHT_RATIO);
 
         float radius = 7f * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
@@ -326,6 +348,10 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
         TextView acceptTextView = findViewById(R.id.local_account_migration_activity_accept_title_view);
         Design.updateTextFont(acceptTextView, Design.FONT_BOLD28);
         acceptTextView.setTextColor(Color.WHITE);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) acceptTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         mProgressBarView = findViewById(R.id.local_account_migration_activity_progress_bar);
     }

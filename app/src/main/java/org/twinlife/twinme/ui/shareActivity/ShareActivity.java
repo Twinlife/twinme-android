@@ -41,11 +41,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
+import org.twinlife.twinlife.ErrorCode;
+import org.twinlife.twinlife.ImageId;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
@@ -506,12 +507,12 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
-    public void onError(BaseService.ErrorCode errorCode, @Nullable String message, @Nullable Runnable errorCallback) {
+    public void onError(ErrorCode errorCode, @Nullable String message, @Nullable Runnable errorCallback) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onError " + errorCode);
         }
 
-        if (errorCode == BaseService.ErrorCode.FILE_NOT_FOUND || errorCode == BaseService.ErrorCode.FILE_NOT_SUPPORTED) {
+        if (errorCode == ErrorCode.FILE_NOT_FOUND || errorCode == ErrorCode.FILE_NOT_SUPPORTED) {
             mSendFileError = true;
         }
 
@@ -539,6 +540,18 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
+    public void getShareContactAvatar(@NonNull ConversationService.ContactShareDescriptor contactShareDescriptor, TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+
+        mShareService.getContactShareAvatar(contactShareDescriptor, avatarConsumer);
+    }
+
+    @Override
+    public void getShareContactIdentityAvatar(TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+
+        avatarConsumer.accept(null);
+    }
+
+    @Override
     public boolean isUserVote(@Nullable UUID peerTwincodeOutboundId) {
         return false;
     }
@@ -553,6 +566,18 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     @Nullable
     @Override
     public Group getGroup() {
+
+        return null;
+    }
+
+    @Override
+    public @Nullable Bitmap getContactAvatar() {
+
+        return null;
+    }
+
+    @Override
+    public @Nullable Bitmap getIdentityAvatar() {
 
         return null;
     }
@@ -661,6 +686,16 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
     @Override
     public  void onPollResultClick(@NonNull org.twinlife.twinlife.ConversationService.PollDescriptor pollDescriptor) {
+
+    }
+
+    @Override
+    public void onShareContactClick(@NonNull ConversationService.ContactShareDescriptor contactShareDescriptor) {
+
+    }
+
+    @Override
+    public void onShareContactInvitationClick(@NonNull ConversationService.TwincodeDescriptor twincodeDescriptor) {
 
     }
 

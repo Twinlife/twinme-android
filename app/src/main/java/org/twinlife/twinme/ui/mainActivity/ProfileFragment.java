@@ -363,6 +363,7 @@ public class ProfileFragment extends TabbarFragment implements ProfileService.Ob
 
         View slideMarkView = view.findViewById(R.id.profile_fragment_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -552,7 +553,7 @@ public class ProfileFragment extends TabbarFragment implements ProfileService.Ob
                 }
 
                 @Override
-                public void onCloseMenuSelectActionAnimationEnd() {
+                public void onCloseAbstractMenuViewAnimationEnd() {
 
                     drawerLayout.removeView(menuAddContactView);
                 }

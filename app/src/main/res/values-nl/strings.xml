@@ -101,6 +101,7 @@
     <string name="application_select_more">Selecteer meer...</string>
     <string name="application_server_timeout">Server time-out</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Start</string>
     <string name="application_theme">Thema</string>
     <string name="application_timeout">Vervalvertraging</string>
     <string name="application_timeout_day">1 dag</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 maand</string>
     <string name="application_timeout_seconds">%1$d seconden</string>
     <string name="application_timeout_week">1 week</string>
+    <string name="application_transfer_from_another_device">Overdracht vanaf een ander apparaat</string>
+    <string name="application_transfer_restore">Overzetten of herstellen</string>
     <string name="application_unknown_name">Onbekend</string>
     <string name="application_until">Tot %1$s</string>
     <string name="application_upgrade">twinme upgraden</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">Gegevensoverdracht bezig</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Om de overdracht te starten, scant u de overdrachts-QR-code die op het andere apparaat wordt weergegeven.</string>
+    <string name="account_migration_scanner_view_header_other_device">Om de overdracht te starten, scant u de QR-code die op dit apparaat wordt weergegeven vanaf het andere apparaat.</string>
     <string name="account_migration_scanner_view_message">Geef dit scherm weer op elk apparaat en de een scant de QR-code van de ander.</string>
     <string name="account_migration_scanner_view_message_older_version">Dit apparaat gebruikt een oude, incompatibele besturingssysteemversie, waardoor alle relaties op het doelapparaat verloren gaan tijdens de overdracht. Wilt u toch doorgaan met de overdracht?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Het doelapparaat gebruikt een oude, incompatibele versie van het besturingssysteem, waardoor al uw relaties tijdens de overdracht verloren gaan. Wilt u toch doorgaan met de overdracht?</string>
-    <string name="account_migration_scanner_view_scan_title">Scannen</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Om de migratie te starten, scant u deze QR-code vanaf het andere apparaat</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Scan de QR-code die wordt weergegeven in het gedeelte ’Account / Overdracht vanaf een ander apparaat’ van het zijmenu van het andere apparaat.</string>
+    <string name="account_migration_scanner_view_restore_title">Geen toegang meer tot het andere apparaat?</string>
+    <string name="account_migration_scanner_view_restore_message">Als er een back-up bestaat, kunt u deze herstellen naar dit apparaat.</string>
+    <string name="account_migration_scanner_view_scan_title">Scannen</string>
+    <string name="account_migration_scanner_view_step_1">Open de app op het andere apparaat</string>
+    <string name="account_migration_scanner_view_step_2">Ga naar het zijmenu</string>
+    <string name="account_migration_scanner_view_step_3">Selecteer \'Account\'</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Start de overdracht vanaf dit apparaat</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Start de overdracht vanaf het andere apparaat</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Scan de QR-code die op het andere apparaat wordt weergegeven met dit apparaat</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Scan de QR-code die op dit apparaat wordt weergegeven met het andere apparaat</string>
     <string name="account_migration_scanner_view_stop_scan_title">Stop scan</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">Verwijderd</string>
     <string name="backup_view_content_diff_message">Dit zijn de wijzigingen ten opzichte van uw huidige gegevens:</string>
     <string name="backup_view_content_info">Back-ups bevatten geen gesprekken, meldingen en geschiedenis.</string>
+    <string name="backup_view_copy_clipboard">Kopiëren naar klembord</string>
     <string name="backup_view_error_words">De ingevoerde woorden zorgen er niet voor dat de back-up kan worden gedecodeerd.</string>
+    <string name="backup_view_generate_key">Een nieuwe versleutelingssleutel genereren</string>
     <string name="backup_view_generate_word">Genereren</string>
     <string name="backup_view_last_backup">Laatste back -up op %1$s</string>
     <string name="backup_view_new_backup">Nieuwe back-up</string>
     <string name="backup_view_onboarding">Maak een versleutelde back-up van accountgegevens (\"Spaces\", profielen, contacten, groepen, « click-to-call ») die kan worden hersteld naar dit apparaat of een ander apparaat.</string>
     <string name="backup_view_reminder">Uw laatste back-up is meer dan 30 dagen geleden gemaakt.</string>
     <string name="backup_view_save_file_message">Sla het back-upbestand op het apparaat van uw keuze op en bewaar de wachtwoorden voor later herstel.</string>
+    <string name="backup_view_save_password">Opslaan in wachtwoordbeheerder</string>
     <string name="backup_view_security">Beveiliging</string>
     <string name="backup_view_security_info">De back-up-encryptiesleutel wordt weergegeven door een reeks van 12 woorden die nodig zijn voor herstel.</string>
     <string name="backup_view_success">Back -up is met succes voltooid!</string>
@@ -463,6 +480,8 @@
     <string name="conversation_view_group_one_member">1 lid</string>
     <string name="conversation_view_invitation_accepted">Uitnodiging geaccepteerd</string>
     <string name="conversation_view_invitation_failed">Vraag uw contactpersoon om twinme bij te werken</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s heeft de uitnodiging geaccepteerd</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s heeft de uitnodiging afgewezen</string>
     <string name="conversation_view_invitation_joined">Lid van de groep</string>
     <string name="conversation_view_invitation_pending">Uitnodiging in vooruitgang</string>
     <string name="conversation_view_invitation_refused">Uitnodiging geweigerd</string>
@@ -503,6 +522,13 @@
     <string name="conversation_view_send_quality_size">Grote media (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Verzenden in standaarddefinitie (SD)</string>
     <string name="conversation_view_send_quality_warning">U kunt het formaat wijzigen naar standaarddefinitie (SD) voor een snellere overdracht.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s heeft de verbinding geaccepteerd</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">U accepteert geen introducties van uw contacten.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s heeft de verbinding afgewezen</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Je hebt het verbindingsverzoek afgewezen</string>
+    <string name="conversation_view_share_contact_item_local_message">Verbinden van %1$s met %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Verbinden met %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Wacht op acceptatie door %1$s</string>
     <string name="conversation_view_stream_dialog">Wilt u het accepteren?</string>
     <string name="conversation_view_unsupported_media">Niet-ondersteund mediaformaat</string>
     <string name="conversation_view_video_call">Video-oproep</string>
@@ -806,6 +832,7 @@
     <string name="notification_center_cancel">Wijs af</string>
     <string name="notification_center_cleanup_conversation">Een aantal oude berichten zijn verwijderd.</string>
     <string name="notification_center_conference_join_call">Eén deelnemer nam deel aan het gesprek.</string>
+    <string name="notification_center_connection_request">Verbindingsverzoek</string>
     <string name="notification_center_deleted_contact">Contactpersoon verwijderd</string>
     <string name="notification_center_file_message">Stuurde u een bestand</string>
     <string name="notification_center_file_message_received">Nieuw bestand</string>
@@ -963,6 +990,7 @@
     <string name="premium_services_view_title">Nodig contacten uit om deel te nemen aan een lopend spraak-/videogesprek.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Actieve toepassingen</string>
     <string name="privacy_view_coach_mark">Vergrendel de applicatie met biometrische diensten of met een pincode.</string>
     <string name="privacy_view_hide_last_screen_message">En de app verbergen wanneer deze op de achtergrond draait, indien het apparaat dit toestaat.</string>
     <string name="privacy_view_hide_last_screen_title">Schermafbeeldingen verbieden</string>
@@ -971,6 +999,10 @@
     <string name="privacy_view_lock_screen_timeout">Time-out voor toegangsvergrendeling</string>
     <string name="privacy_view_lock_screen_timeout_instant">Onmiddellijk</string>
     <string name="privacy_view_lock_screen_title">Toegangsslot</string>
+    <string name="privacy_view_share_invitation_ask">Elke keer vragen</string>
+    <string name="privacy_view_share_invitation_info">Je krijgt een melding wanneer iemand jouw contactgegevens deelt.</string>
+    <string name="privacy_view_share_invitation_setting">Sta toe dat mijn contacten mij verbinden met hun contacten</string>
+    <string name="privacy_view_share_invitation_title">Connecties</string>
     <string name="privacy_view_title">Privacy</string>
 
     <!-- ProfileFragment -->
@@ -1046,6 +1078,7 @@
     <string name="restore_view_success">Restauratie is met succes voltooid!</string>
     <string name="restore_view_success_message">Sluit de applicatie en start deze opnieuw op om toegang te krijgen tot de nieuwe gegevens.</string>
     <string name="restore_view_title">Herstel</string>
+    <string name="restore_view_update_message">U moet de applicatie bijwerken om de back-up te herstellen.</string>
     <string name="restore_view_verify_same_account">De verificatie moet worden uitgevoerd op hetzelfde apparaat dat voor de back-up is gebruikt.</string>
     <string name="restore_view_warning">Het herstellen van deze back -up vervangt alle huidige accountgegevens door de gegevens van de back -up.</string>
 
@@ -1062,7 +1095,18 @@
     <string name="scan_view_paste_code">Voer een uitnodigingslink in of plak deze.</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Bij het bekijken van een weblink wordt het IP-adres aan de website getoond.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Geavanceerd</string>
+    <string name="settings_advanced_view_security_advanced_info">Het IP-adres is lokaal verborgen (met behulp van TLS voor STUN).</string>
+    <string name="settings_advanced_view_security_expert">Expert</string>
+    <string name="settings_advanced_view_security_expert_info">Het IP-adres is lokaal en voor contacten verborgen (oproepen worden via een TURN-server gerouteerd).</string>
+    <string name="settings_advanced_view_security_optimized">Geoptimaliseerd (standaard)</string>
+    <string name="settings_advanced_view_security_optimized_info">Het IP-adres kan worden blootgesteld tijdens WebRTC-uitwisselingen of bij het weergeven van voorbeelden van weblinks.</string>
+    <string name="settings_advanced_view_security_level_title">Beveiligingsniveau</string>
+    <string name="settings_advanced_view_security_info">Pas de balans tussen beveiliging en prestaties aan uw specifieke behoeften aan.</string>
+    <string name="settings_advanced_view_security_title">Beveiliging</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Het beveiligingsniveau Expert staat het wijzigen van deze instelling niet toe.</string>
     <string name="settings_advanced_view_status_connection_message">Controleer de status van je verbinding met de service</string>
     <string name="settings_advanced_view_status_connection_title">Verbindingsstatus</string>
     <string name="settings_advanced_view_telecom_enable">Android-belervaring</string>
@@ -1110,7 +1154,10 @@
     <string name="settings_view_permissions_title">TOESTEMMINGEN</string>
     <string name="settings_view_silent_mode">Stille modus</string>
     <string name="settings_view_silent_sound">Stil</string>
+    <string name="settings_view_sound_effects_info">Speel geluiden af ​​tijdens interactie met de app.</string>
+    <string name="settings_view_sound_effects_title">Geluidseffecten</string>
     <string name="settings_view_sound_enabled_title">GELUIDSMELDINGEN</string>
+    <string name="settings_view_sound_vibrations_title">Geluiden en trillingen</string>
     <string name="settings_view_system_notifications_title">Systeemmeldingen</string>
     <string name="settings_view_system_settings_title">Systeeminstellingen</string>
     <string name="settings_view_turn_off_notification_sounds">Meldingsgeluiden uitschakelen</string>
@@ -1134,6 +1181,18 @@
     <string name="settings_room_view_room_type_feedback_information">Feedback van deelnemers wordt alleen gezien door beheerders/moderators</string>
     <string name="settings_room_view_room_type_forum">Forum</string>
     <string name="settings_room_view_room_type_forum_information">Deelnemers kunnen berichten plaatsen die voor iedereen zichtbaar zijn</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s wil je in contact brengen met %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Wil je %1$s toevoegen als persoonlijk contact?</string>
+    <string name="share_contact_view_onboarding_part_1">Je kunt je contacten nu toestaan ​​om je in contact te brengen met hun eigen contacten.</string>
+    <string name="share_contact_view_onboarding_part_2">Standaard moet je elk verbindingsvoorstel goedkeuren.</string>
+    <string name="share_contact_view_onboarding_part_3">Dit standaardgedrag kan worden gewijzigd in het gedeelte \'Privacy\' van de app-instellingen.</string>
+    <string name="share_contact_view_share_info">%1$s ontvangt een melding van het delen</string>
+    <string name="share_contact_view_share_title">Deel het contact van %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Contacten</string>
@@ -1168,6 +1227,7 @@
     <string name="show_contact_view_pending_message">Deze relatie is in oprichting. Even geduld aub.</string>
     <string name="show_contact_view_revoked">Verwijderd</string>
     <string name="show_contact_view_settings_coach_mark">Bepaal wat uw contactpersoon in deze relatie met u mag doen.</string>
+    <string name="show_contact_view_share_contact">Deel dit contact</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->

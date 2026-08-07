@@ -109,7 +109,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         int viewType = getItemViewType(position);
 
         if (viewType == CHECKBOX) {
-            MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
+            MenuSwitchViewHolder menuSwitchViewHolder = (MenuSwitchViewHolder) viewHolder;
 
             boolean isOn = mAllowCopy;
             boolean isEnabled = true;
@@ -118,7 +118,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             int icon = mAllowCopy ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon;
             String title = mActivity.getString(R.string.conversation_view_send_menu_allow_copy);
             if (position == POSITION_ALLOW_EPHEMERAL) {
-                menuSendOptionViewHolder.itemView.setOnClickListener(v -> mMenuSendOptionView.onAllowEphemeralClick());
+                menuSwitchViewHolder.itemView.setOnClickListener(v -> mMenuSendOptionView.onAllowEphemeralClick());
                 isOn = mAllowEphemeral;
                 isEnabled = false;
                 tag = MenuSendOptionView.ALLOW_EPHEMERAL_TAG;
@@ -129,7 +129,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             int finalTag = tag;
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mMenuSendOptionView.onOptionChangeValue(finalTag, value);
-            ((MenuSendOptionViewHolder) viewHolder).onBind(title, icon, tag, isOn, isEnabled, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
+            ((MenuSwitchViewHolder) viewHolder).onBind(title, icon, tag, isOn, isEnabled, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
 
         } else if (viewType == VALUE) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
@@ -149,7 +149,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         if (viewType == CHECKBOX) {
             convertView = inflater.inflate(R.layout.menu_send_option_item, parent, false);
-            return new MenuSendOptionViewHolder(convertView);
+            return new MenuSwitchViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.select_value_item, parent, false);
             return new SelectValueViewHolder(convertView);

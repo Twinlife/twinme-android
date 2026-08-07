@@ -142,6 +142,10 @@ public class PremiumFeatureConfirmView extends AbstractBottomSheetView {
         linkTextView.setPaintFlags(linkTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         linkTextView.setOnClickListener(view -> onPremiumServicesClick());
 
+        marginLayoutParams = (MarginLayoutParams) linkTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (Design.TEXT_MARGIN * Design.WIDTH_RATIO);
+
         ViewGroup.LayoutParams layoutParams = linkTextView.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.BUTTON_HEIGHT;

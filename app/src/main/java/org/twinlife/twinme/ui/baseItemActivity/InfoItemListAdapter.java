@@ -23,7 +23,7 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.conversationActivity.AnnotationInfoViewHolder;
-import org.twinlife.twinme.ui.conversationActivity.MenuSendOptionViewHolder;
+import org.twinlife.twinme.ui.conversationActivity.MenuSwitchViewHolder;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
@@ -126,8 +126,8 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 || mItem.getType() == Item.ItemType.FILE)) {
 
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
-            MenuSendOptionViewHolder menuSendOptionViewHolder = (MenuSendOptionViewHolder) viewHolder;
-            menuSendOptionViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_view_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
+            MenuSwitchViewHolder menuSwitchViewHolder = (MenuSwitchViewHolder) viewHolder;
+            menuSwitchViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_view_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
         } else if (item.getType() == Item.ItemType.INFO_SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             InfoSectionItem infoSectionItem = (InfoSectionItem) item;
@@ -183,7 +183,7 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     || mItem.getType() == Item.ItemType.FILE)) {
                 convertView = inflater.inflate(R.layout.menu_send_option_item, parent, false);
 
-                return new MenuSendOptionViewHolder(convertView);
+                return new MenuSwitchViewHolder(convertView);
             } else {
                 convertView = inflater.inflate(R.layout.base_item_activity_info_copy_item, parent, false);
                 return new InfoCopyItemViewHolder(mBaseItemActivity, convertView);
@@ -242,6 +242,12 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (viewType == Item.ItemType.PEER_INVITATION.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_peer_invitation_item, parent, false);
             return new PeerInvitationItemViewHolder(mBaseItemActivity, convertView, false, false);
+        } else if (viewType == Item.ItemType.SHARE_CONTACT.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_share_contact_item, parent, false);
+            return new ShareContactItemViewHolder(mBaseItemActivity, convertView);
+        } else if (viewType == Item.ItemType.PEER_SHARE_CONTACT.ordinal()) {
+            convertView = inflater.inflate(R.layout.base_item_activity_peer_share_contact_item, parent, false);
+            return new PeerShareContactItemViewHolder(mBaseItemActivity, convertView);
         } else if (viewType == Item.ItemType.CALL.ordinal()) {
             convertView = inflater.inflate(R.layout.base_item_activity_call_item, parent, false);
             return new CallItemViewHolder(mBaseItemActivity, convertView, false, false);

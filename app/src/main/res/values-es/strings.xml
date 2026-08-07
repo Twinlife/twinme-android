@@ -101,6 +101,7 @@
     <string name="application_select_more">Selecciona más…</string>
     <string name="application_server_timeout">Se acabó el tiempo de espera del servidor</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Inicio</string>
     <string name="application_theme">Tema</string>
     <string name="application_timeout">Retraso de expiración</string>
     <string name="application_timeout_day">1 día</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 mes</string>
     <string name="application_timeout_seconds">%1$d segundos</string>
     <string name="application_timeout_week">1 semana</string>
+    <string name="application_transfer_from_another_device">Transferencia desde otro dispositivo</string>
+    <string name="application_transfer_restore">Transferir o restaurar</string>
     <string name="application_unknown_name">Desconocido</string>
     <string name="application_until">Hasta %1$s</string>
     <string name="application_upgrade">Actualización de twinme</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">Transferencia de datos en curso</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Para iniciar la transferencia, escanea el código QR de transferencia que se muestra en el otro dispositivo.</string>
+    <string name="account_migration_scanner_view_header_other_device">Para iniciar la transferencia, escanea el código QR que se muestra en este dispositivo desde el otro dispositivo.</string>
     <string name="account_migration_scanner_view_message">Muestre esta pantalla en cada dispositivo y uno escanea el código QR del otro.</string>
     <string name="account_migration_scanner_view_message_older_version">Este dispositivo utiliza una versión antigua del sistema operativo incompatible, lo que provocará que todas las relaciones en el dispositivo de destino se pierdan durante la transferencia. ¿Aún deseas continuar con la transferencia?</string>
     <string name="account_migration_scanner_view_message_older_version_target">El dispositivo de destino utiliza una versión antigua del sistema operativo incompatible, lo que provocará que se pierdan todas sus relaciones durante la transferencia. ¿Aún deseas continuar con la transferencia?</string>
-    <string name="account_migration_scanner_view_scan_title">Escanear</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Para iniciar la migración, escanee este código QR desde el otro dispositivo</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Escanea el código QR que se muestra en la sección \"Cuenta / Transferencia desde otro dispositivo\" del menú lateral del otro dispositivo.</string>
+    <string name="account_migration_scanner_view_restore_title">¿Ya no tienes acceso al otro dispositivo?</string>
+    <string name="account_migration_scanner_view_restore_message">Si existe una copia de seguridad, puedes restaurarla en este dispositivo.</string>
+    <string name="account_migration_scanner_view_scan_title">Escanear</string>
+    <string name="account_migration_scanner_view_step_1">Abre la aplicación en el otro dispositivo.</string>
+    <string name="account_migration_scanner_view_step_2">Ve al menú lateral.</string>
+    <string name="account_migration_scanner_view_step_3">Selecciona \"Cuenta\".</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Inicia la transferencia desde este dispositivo.</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Inicia la transferencia desde el otro dispositivo.</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Escanea el código QR que aparece en el otro dispositivo con este dispositivo.</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Escanea el código QR que aparece en este dispositivo con el otro dispositivo.</string>
     <string name="account_migration_scanner_view_stop_scan_title">Parar escaneo</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">Eliminado</string>
     <string name="backup_view_content_diff_message">Estos son los cambios en comparación con sus datos actuales:</string>
     <string name="backup_view_content_info">Las copias de seguridad no incluyen conversaciones, notificaciones ni historial.</string>
+    <string name="backup_view_copy_clipboard">Copiar al portapapeles</string>
     <string name="backup_view_error_words">Las palabras ingresadas no permiten descifrar la copia de seguridad.</string>
+    <string name="backup_view_generate_key">Generar una nueva clave de cifrado</string>
     <string name="backup_view_generate_word">Generar</string>
     <string name="backup_view_last_backup">Última copia de seguridad en %1$s</string>
     <string name="backup_view_new_backup">Nueva copia de seguridad</string>
     <string name="backup_view_onboarding">Crea una copia de seguridad cifrada de los datos de la cuenta (\"Spaces\", perfiles, contactos, grupos, « click-to-call ») que se pueda restaurar en este dispositivo o en otro.</string>
     <string name="backup_view_reminder">Su última copia de seguridad se creó hace más de 30 días.</string>
     <string name="backup_view_save_file_message">Guarda la copia de seguridad en el dispositivo que prefieras y conserva las contraseñas para restaurarlas posteriormente.</string>
+    <string name="backup_view_save_password">Guardar en el gestor de contraseñas</string>
     <string name="backup_view_security">Seguridad</string>
     <string name="backup_view_security_info">La clave de cifrado de respaldo está representada por una serie de 12 palabras que se requerirán para la restauración.</string>
     <string name="backup_view_success">¡Copia de seguridad completada con éxito!</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">1 miembro</string>
     <string name="conversation_view_invitation_accepted">Invitación aceptada</string>
     <string name="conversation_view_invitation_failed">Pídale a su contacto para actualizar twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s aceptó la invitación</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s rechazó la invitación</string>
     <string name="conversation_view_invitation_joined">Miembro del grupo</string>
     <string name="conversation_view_invitation_pending">Invitación en curso</string>
     <string name="conversation_view_invitation_refused">Invitación rechazada</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">Medios grandes (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Enviar en definición estándar (SD)</string>
     <string name="conversation_view_send_quality_warning">Puedes redimensionar a definición estándar (SD) para una transferencia más rápida.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s aceptó la conexión</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">No aceptas presentaciones realizadas por tus contactos.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s rechazó la conexión</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Rechazaste la solicitud de conexión</string>
+    <string name="conversation_view_share_contact_item_local_message">Conectando a %1$s con %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Conectándote con %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Pendiente de aceptación por parte de %1$s</string>
     <string name="conversation_view_stream_dialog">¿Quieres aceptarla?</string>
     <string name="conversation_view_unsupported_media">Formato multimedia no compatible</string>
     <string name="conversation_view_video_call">Videollamada</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">Desechar</string>
     <string name="notification_center_cleanup_conversation">Se eliminaron algunos mensajes antiguos.</string>
     <string name="notification_center_conference_join_call">Un participante se unió a la llamada.</string>
+    <string name="notification_center_connection_request">Žiadosť o pripojenie</string>
     <string name="notification_center_deleted_contact">Contacto eliminado</string>
     <string name="notification_center_file_message">Te ha enviado un archivo</string>
     <string name="notification_center_file_message_received">Archivo nuevo</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">Invite a los contactos a unirse a una llamada de voz/video en curso.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aplicaciones activas</string>
     <string name="privacy_view_coach_mark">Bloquea la aplicación con servicios biométricos o con un código PIN.</string>
     <string name="privacy_view_hide_last_screen_message">Y ocultar la aplicación cuando se ejecuta en segundo plano, si el dispositivo lo permite.</string>
     <string name="privacy_view_hide_last_screen_title">Prohibir capturas de pantalla</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">Tiempo de espera de bloqueo de acceso</string>
     <string name="privacy_view_lock_screen_timeout_instant">Instante</string>
     <string name="privacy_view_lock_screen_title">Bloqueo de acceso</string>
+    <string name="privacy_view_share_invitation_ask">Preguntarme siempre</string>
+    <string name="privacy_view_share_invitation_info">Recibirás una notificación cada vez que alguien comparta tu contacto.</string>
+    <string name="privacy_view_share_invitation_setting">Permitir que mis contactos me conecten con los suyos</string>
+    <string name="privacy_view_share_invitation_title">Conexiones</string>
     <string name="privacy_view_title">Intimidad</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">Restauración completada con éxito!</string>
     <string name="restore_view_success_message">Cierre la aplicación y reinicie para acceder a los nuevos datos.</string>
     <string name="restore_view_title">Restauración</string>
+    <string name="restore_view_update_message">Necesitas actualizar la aplicación para restaurar la copia de seguridad.</string>
     <string name="restore_view_verify_same_account">La verificación debe realizarse en el mismo dispositivo utilizado para la copia de seguridad.</string>
     <string name="restore_view_warning">Restaurar esta copia de seguridad reemplazará todos los datos de la cuenta corriente con los datos de la copia de seguridad.</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">Introduce o pega un enlace de invitación.</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Al previsualizar un enlace web, la dirección IP queda expuesta en el sitio web.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Avanzado</string>
+    <string name="settings_advanced_view_security_advanced_info">La dirección IP se oculta localmente (mediante TLS para STUN).</string>
+    <string name="settings_advanced_view_security_expert">Experto</string>
+    <string name="settings_advanced_view_security_expert_info">La dirección IP se oculta localmente y para los contactos (las llamadas se enrutan a través de un servidor TURN).</string>
+    <string name="settings_advanced_view_security_optimized">Optimizado (predeterminado)</string>
+    <string name="settings_advanced_view_security_optimized_info">La dirección IP puede quedar expuesta durante los intercambios de WebRTC o las vistas previas de enlaces web.</string>
+    <string name="settings_advanced_view_security_level_title">Nivel de seguridad</string>
+    <string name="settings_advanced_view_security_info">Ajusta el equilibrio entre seguridad y rendimiento según tus necesidades.</string>
+    <string name="settings_advanced_view_security_title">Seguridad</string>
+    <string name="settings_advanced_view_security_unauthorized_update">El nivel de seguridad Experto no permite cambiar esta configuración.</string>
     <string name="settings_advanced_view_status_connection_message">Comprueba el estado de tu conexión al servicio</string>
     <string name="settings_advanced_view_status_connection_title">Estado de la conexión</string>
     <string name="settings_advanced_view_telecom_enable">Experiencia de llamadas de Android</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">PERMISOS</string>
     <string name="settings_view_silent_mode">Modo silencioso</string>
     <string name="settings_view_silent_sound">Silencioso</string>
+    <string name="settings_view_sound_effects_info">Reproduce sonidos al interactuar con la aplicación.</string>
+    <string name="settings_view_sound_effects_title">Efectos de sonido</string>
     <string name="settings_view_sound_enabled_title">SONIDOS DE NOTIFICACIÓN</string>
+    <string name="settings_view_sound_vibrations_title">Sonidos y vibraciones</string>
     <string name="settings_view_system_notifications_title">Notificaciones del sistema</string>
     <string name="settings_view_system_settings_title">Ajustes del sistema</string>
     <string name="settings_view_turn_off_notification_sounds">Desactivar sonidos de notificación</string>
@@ -1119,7 +1166,6 @@
     <string name="settings_view_video_call_vibration_title">Vibrador</string>
     <string name="settings_view_welcome_screen_category_title">BIENVENIDO</string>
     <string name="settings_view_welcome_screen_summary">Mostrar las pantallas de bienvenida</string>
->>>>>>> twinlife-2.0/main
 
     <!-- SettingsRoomActivity -->
     <string name="settings_room_view_allow_invite_as_personal_contact">Permitir que los participantes inviten a otros participantes como contactos personales</string>
@@ -1134,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">Los comentarios de los participantes solo los ven los administradores/moderadores</string>
     <string name="settings_room_view_room_type_forum">Foro</string>
     <string name="settings_room_view_room_type_forum_information">Los participantes pueden publicar mensajes vistos por todos</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s quiere conectarte con %2$s</string>
+    <string name="share_contact_accept_view_invite_message">¿Quieres añadir a %1$s como contacto personal?</string>
+    <string name="share_contact_view_onboarding_part_1">Ahora puedes permitir que tus contactos te conecten con sus propios contactos.</string>
+    <string name="share_contact_view_onboarding_part_2">Por defecto, debes aprobar cada propuesta de conexión.</string>
+    <string name="share_contact_view_onboarding_part_3">Puedes cambiar este comportamiento predeterminado en la sección \"Privacidad\" de la configuración de la aplicación.</string>
+    <string name="share_contact_view_share_info">%1$s recibirá una notificación de que has compartido su contacto</string>
+    <string name="share_contact_view_share_title">Compartir el contacto de %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Contactos</string>
@@ -1168,6 +1226,7 @@
     <string name="show_contact_view_pending_message">Esta relación está en proceso de ser establecida. Espere por favor.</string>
     <string name="show_contact_view_revoked">Eliminado</string>
     <string name="show_contact_view_settings_coach_mark">Defina lo que su contacto puede hacer en esta relación con usted.</string>
+    <string name="show_contact_view_share_contact">Compartir este contacto</string>
     <string name="show_contact_view_video">Vídeo</string>
 
     <!-- ShowGroupActivity -->

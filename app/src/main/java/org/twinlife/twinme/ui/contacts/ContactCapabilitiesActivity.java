@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.models.Capabilities;
 import org.twinlife.twinme.models.Contact;
+import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
@@ -123,7 +124,6 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         mAllowAudioCall = mCapabilities.hasAudio();
         mAllowVideoCall = mCapabilities.hasVideo();
         mZoomable = mCapabilities.getZoomable();
-        mDiscreetRelation = mCapabilities.hasDiscreet();
 
         if (mUIInitialized) {
             mCapabilitiesAdapter.notifyDataSetChanged();
@@ -146,6 +146,20 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         }
 
         finish();
+    }
+
+    @Override
+    public void onGetGroup(@NonNull Group group, @Nullable Bitmap avatar) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetGroup: group=" + group);
+        }
+    }
+
+    @Override
+    public void onGetGroupNotFound() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onGetGroupNotFound");
+        }
     }
 
     @Override

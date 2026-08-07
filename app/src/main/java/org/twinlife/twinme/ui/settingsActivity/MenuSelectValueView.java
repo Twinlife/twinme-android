@@ -35,6 +35,7 @@ import androidx.annotation.NonNull;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +46,17 @@ public class MenuSelectValueView extends RelativeLayout {
 
     public enum MenuType {
         DISPLAY_CALLS,
+        EDIT_SPACE,
         QUALITY_MEDIA,
+        EPHEMERAL_MESSAGE,
+        LOCKSCREEN,
         PROFILE_UPDATE_MODE,
+        CAMERA_CONTROL,
         EXTERNAL_CALL_EXPIRATION,
-        EXTERNAL_CALL_TYPE
+        EXTERNAL_CALL_TYPE,
+        SECURITY_LEVEL,
+        SILENT_MODE_DURATION,
+        SHARE_INVITATION_MODE
     }
 
     public interface Observer {
@@ -56,6 +64,8 @@ public class MenuSelectValueView extends RelativeLayout {
         void onCloseMenuAnimationEnd();
 
         void onSelectValue(int value);
+
+        void onSelectTimeout(UITimeout timeout);
     }
 
     private static final int DESIGN_TITLE_MARGIN = 40;
@@ -155,6 +165,7 @@ public class MenuSelectValueView extends RelativeLayout {
 
         float radius = Design.ACTION_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
+
         ShapeDrawable actionBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
 
         if (mForceDarkMode) {
@@ -255,18 +266,40 @@ public class MenuSelectValueView extends RelativeLayout {
     }
 
     public void setActivity(AbstractTwinmeActivity activity) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setActivity: " + activity);
+        }
 
         mActivity = activity;
 
-        MenuSelectValueAdapter.OnValueClickListener valueClickListener = value -> mObserver.onSelectValue(value);
+        MenuSelectValueAdapter.OnValueClickListener valueClickListener = new MenuSelectValueAdapter.OnValueClickListener() {
+            @Override
+            public void onValueClick(int value) {
+                mObserver.onSelectValue(value);
+            }
+
+            @Override
+            public void onTimeoutClick(UITimeout timeout) {
+                mObserver.onSelectTimeout(timeout);
+            }
+        };
 
         mMenuSelectValueAdapter = new MenuSelectValueAdapter(activity, valueClickListener);
+        mMenuSelectValueAdapter.setForceDarkMode(mForceDarkMode);
 
         mListView = findViewById(R.id.menu_select_value_view_list_view);
         mListView.setBackgroundColor(Color.TRANSPARENT);
         mListView.setDivider(null);
         mListView.setDividerHeight(0);
         mListView.setAdapter(mMenuSelectValueAdapter);
+    }
+
+    public void setSelectedValue(int value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setSelectedValue: " + value);
+        }
+
+        mMenuSelectValueAdapter.setSelectedValue(value);
     }
 
     private void initViews() {
@@ -291,6 +324,7 @@ public class MenuSelectValueView extends RelativeLayout {
 
         View slideMarkView = findViewById(R.id.menu_select_value_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -312,6 +346,8 @@ public class MenuSelectValueView extends RelativeLayout {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
     }
 
     private void setupTitle() {
@@ -325,12 +361,28 @@ public class MenuSelectValueView extends RelativeLayout {
                 break;
             }
 
+            case EDIT_SPACE:
+                mTitleView.setText(mActivity.getString(R.string.application_edit));
+                break;
+
             case DISPLAY_CALLS:
                 mTitleView.setText(mActivity.getString(R.string.settings_view_display_call_title));
                 break;
 
+            case EPHEMERAL_MESSAGE:
+                mTitleView.setText(mActivity.getString(R.string.application_timeout));
+                break;
+
+            case LOCKSCREEN:
+                mTitleView.setText(mActivity.getString(R.string.privacy_view_lock_screen_timeout));
+                break;
+
             case PROFILE_UPDATE_MODE:
                 mTitleView.setText(mActivity.getString(R.string.edit_profile_view_propagating_profile));
+                break;
+
+            case CAMERA_CONTROL:
+                mTitleView.setText(mActivity.getString(R.string.contact_capabilities_view_camera_control_information));
                 break;
 
             case EXTERNAL_CALL_TYPE:
@@ -340,6 +392,19 @@ public class MenuSelectValueView extends RelativeLayout {
             case EXTERNAL_CALL_EXPIRATION:
                 mTitleView.setText(mActivity.getString(R.string.create_external_call_view_link_validity));
                 break;
+
+            case SECURITY_LEVEL:
+                mTitleView.setText(mActivity.getString(R.string.settings_advanced_view_security_level_title));
+                break;
+
+            case SILENT_MODE_DURATION:
+                mTitleView.setText(mActivity.getString(R.string.settings_view_turn_off_notification_sounds));
+                break;
+
+            case SHARE_INVITATION_MODE:
+                mTitleView.setText(mActivity.getString(R.string.privacy_view_share_invitation_setting));
+                break;
+
 
             default:
                 break;
@@ -352,7 +417,7 @@ public class MenuSelectValueView extends RelativeLayout {
         }
 
         int slideMarkHeight = Design.SLIDE_MARK_HEIGHT + Design.SLIDE_MARK_TOP_MARGIN;
-        int actionViewHeight = Design.SECTION_HEIGHT * mMenuSelectValueAdapter.getCount();
+        int actionViewHeight = mListView.getHeight();
 
         int titleHeight = mTitleView.getHeight();
         int titleMargin = (int) (DESIGN_TITLE_MARGIN * 2 * Design.HEIGHT_RATIO);

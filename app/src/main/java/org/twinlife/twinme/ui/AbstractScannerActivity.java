@@ -573,6 +573,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
 
     protected boolean mDeferedOnCreateInternal = false;
     private boolean mDeferredReadTwincode = false;
+    protected boolean mDeferredSelectBackup = false;
     private boolean mQRCodeScanned = false;
     protected boolean mCameraGranted = false;
     private boolean mProblemSent = false;
@@ -658,7 +659,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
         }
 
         // Activate the camera if the scan is enabled.
-        if (mScanSelect) {
+        if (mScanSelect && mCameraManager == null && mTextureView != null) {
             mCameraManager = createCameraManager(mTextureView, this, CameraManager.Mode.QRCODE);
 
             mAmbientLightManager = new AmbientLightManager();
@@ -725,6 +726,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
         if (mCameraManager == null && mTextureView != null) {
             mCameraManager = createCameraManager(mTextureView, this, CameraManager.Mode.QRCODE);
         }
+
         setupCamera();
     }
 
@@ -917,7 +919,19 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
                 message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
                 });
             }
+        } else if (mDeferredSelectBackup) {
+            mDeferredSelectBackup = false;
+            if (storageReadAccessGranted) {
+                selectBackup();
+            } else {
+                message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+                });
+            }
         }
+    }
+
+    protected void selectBackup() {
+
     }
 
     @Override

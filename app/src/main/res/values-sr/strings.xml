@@ -100,6 +100,7 @@
     <string name="application_select_more">Izaberi još…</string>
     <string name="application_server_timeout">Istek vremena na serveru</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Pokreni</string>
     <string name="application_theme">Tema</string>
     <string name="application_timeout">Istek vremena</string>
     <string name="application_timeout_day">1 dan</string>
@@ -110,6 +111,8 @@
     <string name="application_timeout_month">1 mesec</string>
     <string name="application_timeout_seconds">%1$d sekundi</string>
     <string name="application_timeout_week">1 nedelja</string>
+    <string name="application_transfer_from_another_device">Prenos sa drugog uređaja</string>
+    <string name="application_transfer_restore">Prenesi ili vrati</string>
     <string name="application_unknown_name">Nepoznato</string>
     <string name="application_until">Do %1$s</string>
     <string name="application_upgrade">Nadogradnja twinme-a</string>
@@ -191,12 +194,23 @@
     <string name="account_migration_view_transfer_in_progress">Prenos podataka je u toku</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Da biste započeli prenos, skenirajte KR kod za prenos prikazan na drugom uređaju.</string>
+    <string name="account_migration_scanner_view_header_other_device">Da biste započeli prenos, skenirajte KR kod prikazan na ovom uređaju sa drugog uređaja.</string>
     <string name="account_migration_scanner_view_message">Prikažite ovaj ekran na oba uređaja, a jedan skenira QR-kod drugog.</string>
     <string name="account_migration_scanner_view_message_older_version">Ovaj uređaj koristi staru nekompatibilnu verziju operativnog sistema, što će dovesti do gubitka svih odnosa na ciljnom uređaju tokom prenosa. Da li i dalje želite da nastavite sa prenosom?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Ciljni uređaj koristi staru nekompatibilnu verziju operativnog sistema, što će dovesti do gubitka svih vaših odnosa tokom prenosa. Da li i dalje želite da nastavite sa prenosom?</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Da biste pokrenuli migraciju, skenirajte ovaj QR-kod sa drugog uređaja</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Skenirajte QR kod prikazan u odeljku \"Nalog / Prenos sa drugog uređaja\" u bočnom meniju drugog uređaja.</string>
+    <string name="account_migration_scanner_view_restore_title">Više nemate pristup drugom uređaju?</string>
+    <string name="account_migration_scanner_view_restore_message">Ako postoji rezervna kopija, možete je vratiti na ovaj uređaj.</string>
     <string name="account_migration_scanner_view_scan_title">Skeniraj</string>
+    <string name="account_migration_scanner_view_step_1">Otvorite aplikaciju na drugom uređaju</string>
+    <string name="account_migration_scanner_view_step_2">Idite u bočni meni</string>
+    <string name="account_migration_scanner_view_step_3">Izaberite „Nalog“</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Pokrenite prenos sa ovog uređaja</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Pokrenite prenos sa drugog uređaja</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Skenirajte QR kod prikazan na drugom uređaju ovim uređajem</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Skenirajte QR kod prikazan na ovom uređaju drugim uređajem</string>
     <string name="account_migration_scanner_view_stop_scan_title">Zaustavi skeniranje</string>
 
     <!-- AddCallParticipantActivity -->
@@ -285,13 +299,16 @@
     <string name="backup_view_content_diff_deleted">Obrisano</string>
     <string name="backup_view_content_diff_message">Evo promena u odnosu na vaše trenutne podatke:</string>
     <string name="backup_view_content_info">Bekapi ne uključuju razgovore, obaveštenja i istoriju.</string>
+    <string name="backup_view_copy_clipboard">Kopiraj u međuspremnik</string>
     <string name="backup_view_error_words">Unete reči ne omogućavaju dekriptovanje bekapa.</string>
+    <string name="backup_view_generate_key">Generiši novi ključ za šifrovanje</string>
     <string name="backup_view_generate_word">Generiši</string>
     <string name="backup_view_last_backup">Poslednji bekap %1$s</string>
     <string name="backup_view_new_backup">Novi bekap</string>
     <string name="backup_view_onboarding">Napravite šifrovani bekap podataka naloga (prostori, profili, kontakti, grupe, click-to-call) koji može da se vrati na ovaj ili drugi uređaj.</string>
     <string name="backup_view_reminder">Vaš poslednji bekap je napravljen pre više od 30 dana.</string>
     <string name="backup_view_save_file_message">Sačuvajte fajl bekapa na uređaj po izboru i zadržite lozinke za kasnije vraćanje.</string>
+    <string name="backup_view_save_password">Sačuvaj u menadžer lozinki</string>
     <string name="backup_view_security">Bezbednost</string>
     <string name="backup_view_security_info">Ključ za enkripciju bekapa predstavljen je nizom od 12 reči koje će biti potrebne za vraćanje.</string>
     <string name="backup_view_success">Bekap je uspešno završen!</string>
@@ -461,6 +478,8 @@
     <string name="conversation_view_group_one_member">1 član</string>
     <string name="conversation_view_invitation_accepted">Pozivnica je prihvaćena</string>
     <string name="conversation_view_invitation_failed">Zamolite kontakt da ažurira twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s je prihvatio/la pozivnicu</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s je odbio/la pozivnicu</string>
     <string name="conversation_view_invitation_joined">Član grupe</string>
     <string name="conversation_view_invitation_pending">Pozivnica je u toku</string>
     <string name="conversation_view_invitation_refused">Pozivnica je odbijena</string>
@@ -501,6 +520,13 @@
     <string name="conversation_view_send_quality_size">Veliki medij (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Pošalji u standardnoj rezoluciji (SD)</string>
     <string name="conversation_view_send_quality_warning">Možete smanjiti na standardnu rezoluciju (SD) radi bržeg prenosa.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s je prihvatio/la vezu</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Ne prihvatate predstavljanja od strane vaših kontakata.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s je odbio/la vezu</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Odbili ste zahtev za povezivanje</string>
+    <string name="conversation_view_share_contact_item_local_message">Povezujem %1$s sa %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Povezujem vas sa %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Čeka se prihvatanje od strane %1$s</string>
     <string name="conversation_view_stream_dialog">Da li želite da prihvatite?</string>
     <string name="conversation_view_unsupported_media">Nepodržan format medija.</string>
     <string name="conversation_view_video_call">Video poziv</string>
@@ -804,6 +830,7 @@
     <string name="notification_center_cancel">Odbaci</string>
     <string name="notification_center_cleanup_conversation">Neke stare poruke su obrisane.</string>
     <string name="notification_center_conference_join_call">Jedan učesnik se pridružio pozivu.</string>
+    <string name="notification_center_connection_request">Cerere de conectare</string>
     <string name="notification_center_deleted_contact">Kontakt je obrisan</string>
     <string name="notification_center_file_message">Poslao/la vam je fajl</string>
     <string name="notification_center_file_message_received">Novi fajl</string>
@@ -961,6 +988,7 @@
     <string name="premium_services_view_transfert_title">Prenos poziva</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aktivne aplikacije</string>
     <string name="privacy_view_coach_mark">Zaključajte aplikaciju biometrijskim uslugama ili PIN kodom.</string>
     <string name="privacy_view_hide_last_screen_message">I sakrijte aplikaciju kada pređe u pozadinu, ako uređaj to dozvoljava.</string>
     <string name="privacy_view_hide_last_screen_title">Zabrani snimke ekrana</string>
@@ -969,6 +997,10 @@
     <string name="privacy_view_lock_screen_timeout">Vreme isteka zaključavanja pristupa</string>
     <string name="privacy_view_lock_screen_timeout_instant">Odmah</string>
     <string name="privacy_view_lock_screen_title">Zaključavanje pristupa</string>
+    <string name="privacy_view_share_invitation_ask">Pitaj me svaki put</string>
+    <string name="privacy_view_share_invitation_info">Bićete obavešteni kad god neko podeli vaš kontakt.</string>
+    <string name="privacy_view_share_invitation_setting">Dozvoli mojim kontaktima da me povežu sa svojim kontaktima</string>
+    <string name="privacy_view_share_invitation_title">Veze</string>
     <string name="privacy_view_title">Privatnost</string>
 
     <!-- ProfileFragment -->
@@ -1044,6 +1076,7 @@
     <string name="restore_view_success">Vraćanje je uspešno završeno!</string>
     <string name="restore_view_success_message">Zatvorite aplikaciju i ponovo je pokrenite da biste pristupili novim podacima.</string>
     <string name="restore_view_title">Vraćanje</string>
+    <string name="restore_view_update_message">Potrebno je da ažurirate aplikaciju da biste vratili rezervnu kopiju.</string>
     <string name="restore_view_verify_same_account">Proveru treba izvršiti na istom uređaju koji je korišćen za bekap.</string>
     <string name="restore_view_warning">Vraćanje ovog bekapa zameniće sve trenutne podatke naloga podacima iz bekapa.</string>
 
@@ -1099,7 +1132,10 @@
     <string name="settings_view_reset_preferences_title">Resetuj podešavanja</string>
     <string name="settings_view_silent_mode">Tihi režim</string>
     <string name="settings_view_silent_sound">Bez zvuka</string>
+    <string name="settings_view_sound_effects_info">Reprodukujte zvukove prilikom interakcije sa aplikacijom</string>
+    <string name="settings_view_sound_effects_title">Zvučni efekti</string>
     <string name="settings_view_sound_enabled_title">ZVUČNA OBAVEŠTENJA</string>
+    <string name="settings_view_sound_vibrations_title">Zvuci i vibracije</string>
     <string name="settings_view_system_notifications_title">Sistemska obaveštenja</string>
     <string name="settings_view_system_settings_title">Sistemska podešavanja</string>
     <string name="settings_view_turn_off_notification_sounds">Isključi zvuke obaveštenja</string>
@@ -1111,7 +1147,18 @@
     <string name="settings_view_welcome_screen_summary">Prikaži ekrane dobrodošlice</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Pregled veb linka otkriva IP adresu veb lokaciji.</string>
     <string name="settings_advanced_view_developer_settings">Podešavanja za programere</string>
+    <string name="settings_advanced_view_security_advanced">Napredno</string>
+    <string name="settings_advanced_view_security_advanced_info">IP adresa je skrivena lokalno (koristeći TLS za STUN).</string>
+    <string name="settings_advanced_view_security_expert">Ekspert</string>
+    <string name="settings_advanced_view_security_expert_info">IP adresa je skrivena lokalno i za kontakte (pozivi se usmeravaju preko TURN servera).</string>
+    <string name="settings_advanced_view_security_optimized">Optimizovano (podrazumevano)</string>
+    <string name="settings_advanced_view_security_optimized_info">IP adresa može biti otkrivena tokom WebRTC razmena ili pregleda veb linkova.</string>
+    <string name="settings_advanced_view_security_level_title">Nivo bezbednosti</string>
+    <string name="settings_advanced_view_security_info">Podesite ravnotežu između bezbednosti i performansi za specifične potrebe.</string>
+    <string name="settings_advanced_view_security_title">Bezbednost</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Ekspertski nivo bezbednosti ne dozvoljava promenu ovog podešavanja.</string>
     <string name="settings_advanced_view_status_connection_message">Proverite status veze sa uslugom</string>
     <string name="settings_advanced_view_status_connection_title">Status veze</string>
     <string name="settings_advanced_view_telecom">POZIVI</string>
@@ -1132,6 +1179,18 @@
     <string name="settings_room_view_room_type_feedback_information">Povratne informacije učesnika vide samo administratori/moderatori</string>
     <string name="settings_room_view_room_type_forum">Forum</string>
     <string name="settings_room_view_room_type_forum_information">Učesnici mogu slati poruke koje svi vide</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Priestor</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s želi da vas poveže sa %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Da li želite da dodate %1$s kao lični kontakt?</string>
+    <string name="share_contact_view_onboarding_part_1">Sada možete dozvoliti svojim kontaktima da vas povežu sa svojim kontaktima.</string>
+    <string name="share_contact_view_onboarding_part_2">Podrazumevano, morate odobriti svaki predlog za povezivanje.</string>
+    <string name="share_contact_view_onboarding_part_3">Podrazumevano ponašanje se može promeniti u odeljku „Privatnost“ u podešavanjima aplikacije.</string>
+    <string name="share_contact_view_share_info">%1$s će dobiti obaveštenje o deljenju</string>
+    <string name="share_contact_view_share_title">Podelite kontakt korisnika %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Kontakti</string>
@@ -1166,6 +1225,7 @@
     <string name="show_contact_view_pending_message">Ovaj odnos se uspostavlja. Molimo sačekajte.</string>
     <string name="show_contact_view_revoked">Obrisano</string>
     <string name="show_contact_view_settings_coach_mark">Definišite šta je vašem kontaktu dozvoljeno da radi u ovom odnosu sa vama.</string>
+    <string name="show_contact_view_share_contact">Podelite ovaj kontakt</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/accept_invitation_activity_layout"
     android:layout_width="match_parent"
@@ -14,7 +15,7 @@
         android:clickable="true"
         android:visibility="visible" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/accept_invitation_activity_action_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,67 +25,137 @@
             android:id="@+id/accept_invitation_activity_slide_mark_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:layout_widthPercent="12%" />
+            android:layout_centerHorizontal="true" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/accept_invitation_activity_avatar_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:elevation="8dp"
-            android:padding="3dp"
-            app:strokeWidth="3dp"
-            app:strokeColor="@android:color/white"
-            app:shapeAppearanceOverlay="@style/CircleImageView"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/accept_invitation_activity_slide_mark_view"
-            app:layout_aspectRatio="100%"/>
-
-        <View
-            android:id="@+id/accept_invitation_activity_bullet_view"
-            android:layout_alignEnd="@+id/accept_invitation_activity_avatar_view"
-            android:layout_alignTop="@+id/accept_invitation_activity_avatar_view"
-            android:elevation="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <androidx.percentlayout.widget.PercentRelativeLayout
-            android:id="@+id/accept_invitation_activity_icon_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:elevation="8dp"
-            android:layout_alignTop="@+id/accept_invitation_activity_avatar_view"
-            android:layout_toEndOf="@+id/accept_invitation_activity_bullet_view">
-
-            <ImageView
-                android:id="@+id/accept_invitation_activity_icon_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/action_bar_add_contact"
-                app:layout_aspectRatio="100%"/>
-
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-
-        <TextView
-            android:id="@+id/accept_invitation_activity_title_view"
+        <RelativeLayout
+            android:id="@+id/accept_invitation_activity_identity_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/accept_invitation_activity_avatar_view"
-            android:gravity="center"
-            app:layout_widthPercent="94%" />
+            android:layout_below="@+id/accept_invitation_activity_slide_mark_view">
+
+            <RelativeLayout
+                android:id="@+id/accept_invitation_activity_identity_avatar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/accept_invitation_activity_identity_left_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/accept_invitation_activity_left_avatar_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:elevation="8dp"
+                        android:padding="3dp"
+                        app:strokeWidth="3dp"
+                        app:strokeColor="@android:color/white"
+                        app:shapeAppearanceOverlay="@style/CircleImageView"
+                        android:layout_centerHorizontal="true"/>
+
+                    <RelativeLayout
+                        android:id="@+id/accept_invitation_activity_left_line_container_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/accept_invitation_activity_left_avatar_view">
+
+                        <View
+                            android:id="@+id/accept_invitation_activity_left_line_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/accept_invitation_activity_left_name_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_below="@+id/accept_invitation_activity_left_avatar_view" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/accept_invitation_activity_identity_right_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/accept_invitation_activity_right_avatar_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:elevation="8dp"
+                        android:padding="3dp"
+                        app:strokeWidth="3dp"
+                        app:strokeColor="@android:color/white"
+                        app:shapeAppearanceOverlay="@style/CircleImageView"
+                        android:layout_centerHorizontal="true" />
+
+                    <RelativeLayout
+                        android:id="@+id/accept_invitation_activity_right_line_container_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/accept_invitation_activity_right_avatar_view">
+
+                        <View
+                            android:id="@+id/accept_invitation_activity_right_line_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/accept_invitation_activity_right_name_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/accept_invitation_activity_right_avatar_view"
+                        android:gravity="center" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/accept_invitation_activity_identity_middle_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <RelativeLayout
+                        android:id="@+id/accept_invitation_activity_icon_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:elevation="8dp"
+                        android:layout_centerInParent="true">
+
+                        <ImageView
+                            android:id="@+id/accept_invitation_activity_icon_image_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/action_bar_add_contact"/>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/accept_invitation_activity_message_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/accept_invitation_activity_title_view"
+            android:layout_below="@+id/accept_invitation_activity_identity_view"
             android:gravity="center"
-            android:text="@string/fullscreen_qrcode_view_generate_code_message"
-            app:layout_widthPercent="94%" />
+            android:text="@string/fullscreen_qrcode_view_generate_code_message" />
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/accept_invitation_activity_confirm_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,9 +170,9 @@
                 android:gravity="center"
                 android:text="@string/application_accept" />
 
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        <RelativeLayout
             android:id="@+id/accept_invitation_activity_cancel_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -113,9 +184,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/application_cancel" />
-        </androidx.percentlayout.widget.PercentRelativeLayout>
+        </RelativeLayout>
 
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/accept_invitation_activity_progress_bar"
@@ -125,4 +196,4 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

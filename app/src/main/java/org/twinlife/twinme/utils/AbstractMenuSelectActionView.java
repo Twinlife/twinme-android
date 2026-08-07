@@ -8,10 +8,6 @@
 
 package org.twinlife.twinme.utils;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -24,14 +20,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.activity.ComponentActivity;
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,31 +30,17 @@ import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractMenuSelectActionView extends RelativeLayout {
-    private static final String LOG_TAG = "MenuAddContactView";
+public abstract class AbstractMenuSelectActionView extends AbstractMenuView {
+    private static final String LOG_TAG = "AbstractMenuSelectActionView";
     private static final boolean DEBUG = false;
-
-    public interface AbstractMenuSelectActionViewObserver  {
-
-        void onCloseMenuSelectActionAnimationEnd();
-    }
 
     private static final int DESIGN_TITLE_MARGIN = 40;
 
-    private View mOverlayView;
-    private View mActionView;
     protected TextView mTitleView;
 
-    private int mRootHeight = 0;
-    private int mActionHeight = 0;
-
     private MenuSelectActionAdapter mMenuSelectActionAdapter;
-
-    private boolean isOpenAnimationEnded = false;
-    private boolean isCloseAnimationEnded = false;
 
     public AbstractMenuSelectActionView(Context context) {
         super(context);
@@ -81,21 +58,10 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
         initViews();
     }
 
-    public void updateHeight(int height) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "updateHeight");
-        }
-
-        mActionHeight = height;
-    }
-
     public void openMenu(boolean hideTitle) {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenu");
         }
-
-        isOpenAnimationEnded = false;
-        isCloseAnimationEnded = false;
 
         if (hideTitle) {
             ViewGroup.LayoutParams layoutParams = mTitleView.getLayoutParams();
@@ -105,131 +71,10 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
             mTitleView.setVisibility(VISIBLE);
         }
 
-        ViewTreeObserver viewTreeObserver = mActionView.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                ViewTreeObserver viewTreeObserver = mActionView.getViewTreeObserver();
-                viewTreeObserver.removeOnGlobalLayoutListener(this);
-
-                mRootHeight = mOverlayView.getHeight();
-                mActionHeight = getActionViewHeight();
-
-                mActionView.setY(Design.DISPLAY_HEIGHT);
-                mActionView.invalidate();
-                animationOpenMenu();
-            }
-        });
-    }
-
-    public void animationOpenMenu() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "animationOpenMenu");
-        }
-
-        if (isOpenAnimationEnded) {
-            return;
-        }
-
-        mOverlayView.setAlpha(1.0f);
-
-        int startValue = mRootHeight;
-        int endValue = mRootHeight - mActionHeight;
-
-        PropertyValuesHolder propertyValuesHolder = PropertyValuesHolder.ofFloat(View.Y, startValue, endValue);
-
-        List<Animator> animators = new ArrayList<>();
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mActionView, propertyValuesHolder);
-        objectAnimator.setDuration(Design.ANIMATION_VIEW_DURATION);
-        animators.add(objectAnimator);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playSequentially(animators);
-        animatorSet.start();
-        animatorSet.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(@NonNull Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(@NonNull Animator animator) {
-
-                isOpenAnimationEnded = true;
-            }
-
-            @Override
-            public void onAnimationCancel(@NonNull Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(@NonNull Animator animator) {
-
-            }
-        });
-    }
-
-    public void dismiss() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "dismiss");
-        }
-
-        onDismissClick();
-    }
-
-    public void animationCloseMenu() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "animationCloseMenu");
-        }
-
-        if (isCloseAnimationEnded) {
-            return;
-        }
-
-        int startValue = mRootHeight - mActionHeight;
-        int endValue = mRootHeight;
-
-        PropertyValuesHolder propertyValuesHolder = PropertyValuesHolder.ofFloat(View.Y, startValue, endValue);
-
-        List<Animator> animators = new ArrayList<>();
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mActionView, propertyValuesHolder);
-        objectAnimator.setDuration(Design.ANIMATION_VIEW_DURATION);
-        animators.add(objectAnimator);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playSequentially(animators);
-        animatorSet.start();
-        animatorSet.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(@NonNull Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(@NonNull Animator animator) {
-
-                mOverlayView.setAlpha(0f);
-
-                isCloseAnimationEnded = true;
-                getObserver().onCloseMenuSelectActionAnimationEnd();
-            }
-
-            @Override
-            public void onAnimationCancel(@NonNull Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(@NonNull Animator animator) {
-
-            }
-        });
+        super.openMenu();
     }
 
     public abstract void startAction(int position);
-
-    public abstract AbstractMenuSelectActionViewObserver getObserver();
 
     public void setActions(List<UIMenuSelectAction> actions, AbstractTwinmeActivity activity) {
 
@@ -243,6 +88,7 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
         menuRecyclerView.setItemAnimator(null);
     }
 
+    @Override
     protected void initViews() {
         if (DEBUG) {
             Log.d(LOG_TAG, "initViews");
@@ -265,6 +111,7 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
 
         View slideMarkView = findViewById(R.id.menu_icon_view_view_slide_mark_view);
         ViewGroup.LayoutParams layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -286,9 +133,12 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_TITLE_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
     }
 
-    private int getActionViewHeight() {
+    @Override
+    public int getActionViewHeight() {
         if (DEBUG) {
             Log.d(LOG_TAG, "getActionViewHeight");
         }
@@ -313,13 +163,5 @@ public abstract class AbstractMenuSelectActionView extends RelativeLayout {
 
         mActionView.setPadding(0, 0, 0, bottomInset);
         return (slideMarkHeight + actionViewHeight + titleMargin + titleHeight + bottomInset);
-    }
-
-    private void onDismissClick() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "onDismissClick");
-        }
-
-        animationCloseMenu();
     }
 }

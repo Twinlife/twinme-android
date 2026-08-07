@@ -455,6 +455,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
 
         View slideMarkView = findViewById(R.id.edit_group_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -885,7 +886,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

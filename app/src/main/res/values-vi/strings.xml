@@ -110,7 +110,10 @@
     <string name="application_select_more">Chọn thêm…</string>
     <string name="application_server_timeout">Máy chủ phản hồi quá lâu</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Bắt đầu</string>
     <string name="application_theme">Chủ đề</string>
+    <string name="application_transfer_from_another_device">Chuyển dữ liệu từ thiết bị khác</string>
+    <string name="application_transfer_restore">Chuyển hoặc khôi phục</string>
     <string name="application_unknown_name">Không rõ</string>
     <string name="application_until">Cho đến khi %1$s</string>
     <string name="application_upgrade">Đang nâng cấp twinme</string>
@@ -170,12 +173,23 @@
     <string name="account_migration_view_transfer_in_progress">Đang chuyển dữ liệu</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Để bắt đầu chuyển dữ liệu, hãy quét mã QR chuyển dữ liệu được hiển thị trên thiết bị khác.</string>
+    <string name="account_migration_scanner_view_header_other_device">Để bắt đầu chuyển dữ liệu, hãy quét mã QR được hiển thị trên thiết bị này từ thiết bị khác.</string>
     <string name="account_migration_scanner_view_message">Hiển thị màn hình này trên mỗi thiết bị, và một thiết bị sẽ quét mã QR của thiết bị kia.</string>
     <string name="account_migration_scanner_view_message_older_version">Thiết bị này đang sử dụng phiên bản hệ điều hành cũ không tương thích, điều này sẽ khiến tất cả các liên hệ bị mất trên thiết bị đích khi chuyển. Bạn vẫn muốn tiếp tục?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Thiết bị đích đang sử dụng phiên bản hệ điều hành cũ không tương thích, điều này sẽ khiến tất cả các liên hệ của bạn bị mất khi chuyển. Bạn vẫn muốn tiếp tục?</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Để bắt đầu di chuyển, hãy quét mã QR này từ thiết bị khác</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Quét mã QR hiển thị trong phần \"Tài khoản / Chuyển từ thiết bị khác\" trên menu bên của thiết bị kia.</string>
+    <string name="account_migration_scanner_view_restore_title">Không còn truy cập được vào thiết bị khác?</string>
+    <string name="account_migration_scanner_view_restore_message">Nếu có bản sao lưu, bạn có thể khôi phục nó vào thiết bị này.</string>
     <string name="account_migration_scanner_view_scan_title">Quét</string>
+    <string name="account_migration_scanner_view_step_1">Mở ứng dụng trên thiết bị khác</string>
+    <string name="account_migration_scanner_view_step_2">Vào menu bên cạnh</string>
+    <string name="account_migration_scanner_view_step_3">Chọn \"Tài khoản\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Bắt đầu chuyển dữ liệu từ thiết bị này</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Bắt đầu chuyển dữ liệu từ thiết bị khác</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Quét mã QR hiển thị trên thiết bị khác bằng thiết bị này</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Quét mã QR hiển thị trên thiết bị này bằng thiết bị khác</string>
     <string name="account_migration_scanner_view_stop_scan_title">Dừng quét</string>
 
     <!--  AccountActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">Đã xóa</string>
     <string name="backup_view_content_diff_message">Dưới đây là những thay đổi so với dữ liệu hiện tại của bạn:</string>
     <string name="backup_view_content_info">Bản sao lưu không bao gồm các cuộc trò chuyện, thông báo và lịch sử.</string>
+    <string name="backup_view_copy_clipboard">Sao chép vào bộ nhớ tạm</string>
     <string name="backup_view_error_words">Các từ đã nhập không cho phép giải mã bản sao lưu.</string>
+    <string name="backup_view_generate_key">Tạo khóa mã hóa mới</string>
     <string name="backup_view_generate_word">Tạo</string>
     <string name="backup_view_last_backup">Sao lưu lần cuối vào ngày %1$s</string>
     <string name="backup_view_new_backup">Bản sao lưu mới</string>
     <string name="backup_view_onboarding">Tạo bản sao lưu được mã hóa dữ liệu tài khoản (\"Spaces\", hồ sơ, danh bạ, các nhóm, \"click-to-call\") để có thể khôi phục sang thiết bị này hoặc thiết bị khác.</string>
     <string name="backup_view_reminder">Bản sao lưu gần nhất của bạn được tạo cách đây hơn 30 ngày.</string>
     <string name="backup_view_save_file_message">Lưu tệp sao lưu vào thiết bị bạn chọn và giữ lại mật khẩu để khôi phục sau.</string>
+    <string name="backup_view_save_password">Lưu vào trình quản lý mật khẩu</string>
     <string name="backup_view_security">Bảo mật</string>
     <string name="backup_view_security_info">Khóa mã hóa sao lưu được biểu thị bằng một chuỗi 12 từ cần thiết cho quá trình khôi phục.</string>
     <string name="backup_view_success">Quá trình sao lưu đã hoàn tất!</string>
@@ -474,6 +491,8 @@
     <string name="conversation_view_group_one_member">1 thành viên</string>
     <string name="conversation_view_invitation_accepted">Lời mời đã được chấp nhận</string>
     <string name="conversation_view_invitation_failed">Yêu cầu liên hệ của bạn cập nhật twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s đã chấp nhận lời mời</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s đã từ chối lời mời</string>
     <string name="conversation_view_invitation_joined">Đã tham gia nhóm</string>
     <string name="conversation_view_invitation_pending">Đang mời</string>
     <string name="conversation_view_invitation_refused">Lời mời bị từ chối</string>
@@ -514,6 +533,13 @@
     <string name="conversation_view_send_quality_size">Phương tiện lớn (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Gửi ở độ phân giải tiêu chuẩn (SD)</string>
     <string name="conversation_view_send_quality_warning">Bạn có thể thay đổi kích thước thành độ phân giải tiêu chuẩn (SD) để truyền nhanh hơn.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s đã chấp nhận kết nối</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Bạn không chấp nhận các lời giới thiệu từ những người trong danh sách liên hệ của mình.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s đã từ chối kết nối</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Bạn đã từ chối yêu cầu kết nối</string>
+    <string name="conversation_view_share_contact_item_local_message">Đang kết nối %1$s với %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Đang kết nối bạn với %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Đang chờ %1$s chấp nhận</string>
     <string name="conversation_view_stream_dialog">Bạn có muốn chấp nhận không?</string>
     <string name="conversation_view_unsupported_media">Định dạng phương tiện không được hỗ trợ.</string>
     <string name="conversation_view_video_call">Gọi video</string>
@@ -796,6 +822,7 @@
     <string name="notification_center_cancel">Đóng</string>
     <string name="notification_center_cleanup_conversation">Một số tin nhắn cũ đã bị xóa.</string>
     <string name="notification_center_conference_join_call">Một người tham gia đã kết nối vào cuộc gọi.</string>
+    <string name="notification_center_connection_request">Bağlantı isteği</string>
     <string name="notification_center_deleted_contact">Liên hệ đã xóa</string>
     <string name="notification_center_file_message">Đã gửi cho bạn một tệp</string>
     <string name="notification_center_file_message_received">Tệp mới</string>
@@ -951,6 +978,7 @@
     <string name="premium_services_view_title">Mời liên hệ tham gia cuộc gọi thoại/video đang diễn ra.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Các ứng dụng đang hoạt động</string>
     <string name="privacy_view_coach_mark">Khóa ứng dụng bằng sinh trắc học hoặc mã PIN.</string>
     <string name="privacy_view_hide_last_screen_message">Và ẩn ứng dụng khi chạy ngầm, nếu thiết bị cho phép.</string>
     <string name="privacy_view_hide_last_screen_title">Cấm chụp ảnh màn hình</string>
@@ -959,6 +987,10 @@
     <string name="privacy_view_lock_screen_timeout">Thời gian chờ khóa truy cập</string>
     <string name="privacy_view_lock_screen_timeout_instant">Ngay lập tức</string>
     <string name="privacy_view_lock_screen_title">Khóa truy cập</string>
+    <string name="privacy_view_share_invitation_ask">Hỏi tôi mỗi lần</string>
+    <string name="privacy_view_share_invitation_info">Bạn sẽ nhận được thông báo bất cứ khi nào có người chia sẻ thông tin liên hệ của bạn.</string>
+    <string name="privacy_view_share_invitation_setting">Cho phép người trong danh bạ kết nối tôi với các liên hệ của họ</string>
+    <string name="privacy_view_share_invitation_title">Kết nối</string>
     <string name="privacy_view_title">Quyền riêng tư</string>
 
     <!-- ProfileFragment -->
@@ -1031,6 +1063,7 @@
     <string name="restore_view_success">Khôi phục đã hoàn tất thành công!</string>
     <string name="restore_view_success_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu mới.</string>
     <string name="restore_view_title">Khôi phục</string>
+    <string name="restore_view_update_message">Bạn cần cập nhật ứng dụng để khôi phục bản sao lưu.</string>
     <string name="restore_view_verify_same_account">Việc xác minh phải được thực hiện trên cùng thiết bị đã được sử dụng để sao lưu.</string>
     <string name="restore_view_warning">Khôi phục bản sao lưu này sẽ thay thế tất cả dữ liệu tài khoản hiện tại bằng dữ liệu từ bản sao lưu.</string>
 
@@ -1050,7 +1083,18 @@
     <string name="scan_view_paste_code">Nhập hoặc dán liên kết mời</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Xem trước liên kết web sẽ hiển thị địa chỉ IP cho trang web.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Nâng cao</string>
+    <string name="settings_advanced_view_security_advanced_info">Địa chỉ IP được ẩn cục bộ (sử dụng TLS cho STUN).</string>
+    <string name="settings_advanced_view_security_expert">Chuyên gia</string>
+    <string name="settings_advanced_view_security_expert_info">Địa chỉ IP được ẩn cục bộ và đối với danh bạ (cuộc gọi được định tuyến qua máy chủ TURN).</string>
+    <string name="settings_advanced_view_security_optimized">Tối ưu (mặc định)</string>
+    <string name="settings_advanced_view_security_optimized_info">Địa chỉ IP có thể bị lộ trong quá trình trao đổi WebRTC hoặc khi xem trước liên kết web.</string>
+    <string name="settings_advanced_view_security_level_title">Mức độ bảo mật</string>
+    <string name="settings_advanced_view_security_info">Điều chỉnh sự cân bằng giữa bảo mật và hiệu suất cho các nhu cầu cụ thể.</string>
+    <string name="settings_advanced_view_security_title">Bảo mật</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Mức độ bảo mật Chuyên gia không cho phép thay đổi cài đặt này.</string>
     <string name="settings_advanced_view_status_connection_message">Kiểm tra trạng thái kết nối của bạn với dịch vụ</string>
     <string name="settings_advanced_view_status_connection_title">Trạng thái kết nối</string>
     <string name="settings_advanced_view_telecom_enable">Trải nghiệm gọi điện Android</string>
@@ -1112,7 +1156,10 @@
     <string name="settings_view_reset_default_value">Khôi phục cài đặt mặc định</string>
     <string name="settings_view_silent_mode">Chế độ im lặng</string>
     <string name="settings_view_silent_sound">Im lặng</string>
+    <string name="settings_view_sound_effects_info">Phát âm thanh khi tương tác với ứng dụng</string>
+    <string name="settings_view_sound_effects_title">Hiệu ứng âm thanh</string>
     <string name="settings_view_sound_enabled_title">THÔNG BÁO ÂM THANH</string>
+    <string name="settings_view_sound_vibrations_title">Âm thanh và Rung</string>
     <string name="settings_view_system_notifications_title">Thông báo hệ thống</string>
     <string name="settings_view_system_settings_title">Cài đặt hệ thống</string>
     <string name="settings_view_turn_off_notification_sounds">Tắt âm thanh thông báo</string>
@@ -1122,6 +1169,18 @@
     <string name="settings_view_video_call_vibration_title">Rung</string>
     <string name="settings_view_welcome_screen_category_title">CHÀO MỪNG</string>
     <string name="settings_view_welcome_screen_summary">Hiển thị màn hình chào mừng</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">SPACES</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s muốn kết nối bạn với %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Bạn có muốn thêm %1$s vào danh bạ cá nhân không?</string>
+    <string name="share_contact_view_onboarding_part_1">Giờ đây, bạn có thể cho phép danh bạ của mình kết nối bạn với danh bạ của họ.</string>
+    <string name="share_contact_view_onboarding_part_2">Theo mặc định, bạn phải chấp nhận mỗi đề xuất kết nối.</string>
+    <string name="share_contact_view_onboarding_part_3">Bạn có thể thay đổi hành vi mặc định trong mục \"Quyền riêng tư\" của cài đặt ứng dụng.</string>
+    <string name="share_contact_view_share_info">%1$s sẽ nhận được thông báo chia sẻ</string>
+    <string name="share_contact_view_share_title">Chia sẻ liên hệ của %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Liên hệ</string>
@@ -1156,6 +1215,7 @@
     <string name="show_contact_view_pending_message">Mối quan hệ này đang được thiết lập. Vui lòng đợi.</string>
     <string name="show_contact_view_revoked">Đã xóa</string>
     <string name="show_contact_view_settings_coach_mark">Xác định quyền của liên hệ này trong mối quan hệ với bạn.</string>
+    <string name="show_contact_view_share_contact">Chia sẻ liên hệ này</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->

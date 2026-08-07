@@ -58,7 +58,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AndroidDeviceInfo;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.ClearMode;
 import org.twinlife.twinlife.ConversationService.Conversation;
@@ -85,8 +85,11 @@ import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView;
 import org.twinlife.twinme.ui.conversationFilesActivity.UICustomTab;
 import org.twinlife.twinme.ui.conversations.ConversationsSearchAdapter;
+import org.twinlife.twinme.ui.conversations.MenuConversationShortcutView;
 import org.twinlife.twinme.ui.newConversationActivity.NewConversationActivity;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
+import org.twinlife.twinme.ui.settingsActivity.MenuSelectValueView;
 import org.twinlife.twinme.ui.settingsActivity.QualityOfServiceActivity;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
@@ -155,6 +158,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
     private final ArrayList<UIConversation> mSearchContacts = new ArrayList<>();
     private final ArrayList<UIGroupConversation> mSearchGroups = new ArrayList<>();
     private final ArrayList<UIConversation> mSearchConversations = new ArrayList<>();
+
 
     private boolean mUIInitialized = false;
 
@@ -248,6 +252,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                 int position = uiConversationViewHolder.getBindingAdapterPosition();
                 if (position >= 0) {
                     mOnConversationLongClickListener.onConversationLongClick(position);
+                    return true;
                 }
                 return false;
             });
@@ -1002,7 +1007,87 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         mTwinmeActivity.hapticFeedback();
-        showContactActivity(uiConversation.getContact());
+
+        DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
+
+        MenuConversationShortcutView menuConversationShortcutView = new MenuConversationShortcutView(mTwinmeActivity, null);
+        MenuConversationShortcutView.Observer observer = new MenuConversationShortcutView.Observer() {
+            @Override
+            public void onResetConversationClick() {
+
+                onUIConversationResetClick(uiConversation);
+                menuConversationShortcutView.dismiss();
+            }
+
+            @Override
+            public void onOriginatorClick() {
+
+                showContactActivity(uiConversation.getContact());
+                menuConversationShortcutView.dismiss();
+            }
+
+            @Override
+            public void onSilentModeDurationClick() {
+
+                showSilentModeDuration(uiConversation);
+
+                menuConversationShortcutView.dismiss();
+            }
+
+            @Override
+            public void onSettingChange(String property, boolean value) {
+
+                if (mTwinmeActivity == null) {
+                    return;
+                }
+
+                if (uiConversation.getContact().isGroup()) {
+                    Group group = (Group) uiConversation.getContact();
+                    group.putBoolean(property, value, mTwinmeActivity.getTwinmeContext());
+                } else {
+                    Contact contact = (Contact) uiConversation.getContact();
+                    contact.putBoolean(property, value, mTwinmeActivity.getTwinmeContext());
+                }
+            }
+
+            @Override
+            public void onCloseAbstractMenuViewAnimationEnd() {
+
+                drawerLayout.removeView(menuConversationShortcutView);
+                notifyConversationListChanged();
+                if (mTwinmeActivity != null) {
+                    mTwinmeActivity.setStatusBarColor();
+                }
+            }
+        };
+        menuConversationShortcutView.setObserver(observer);
+        drawerLayout.addView(menuConversationShortcutView);
+
+        boolean silentMode;
+        boolean notificationReaction;
+        long silentExpiration;
+
+        if (uiConversation.getContact().isGroup()) {
+            Group group = (Group) uiConversation.getContact();
+            silentMode = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+            silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        } else {
+            Contact contact = (Contact) uiConversation.getContact();
+            silentMode = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+            silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        }
+
+        long currentTimeMillis = System.currentTimeMillis() / 1000;
+        if (silentExpiration > 0 && silentExpiration < currentTimeMillis) {
+            silentMode = false;
+        }
+
+        menuConversationShortcutView.openMenu(uiConversation, silentMode, notificationReaction, silentExpiration);
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        mTwinmeActivity.setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
     //
@@ -1633,7 +1718,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         if (uiConversation.getContact().isGroup()) {
             UIGroupConversation groupConversation = (UIGroupConversation) uiConversation;
             if (groupConversation.getGroupMemberCount() == 0) {
-                onUIConversationLongPress(uiConversation);
+                showContactActivity(uiConversation.getContact());
                 return;
             }
         }
@@ -1718,6 +1803,73 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
             mTwinmeActivity.setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
         });
+    }
+
+    private void showSilentModeDuration(UIConversation uiConversation) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showSilentModeDuration: uiConversation=" + uiConversation);
+        }
+
+        // This fragment is detached and has no activity: ignore the action.
+        if (!isAdded() || mTwinmeActivity == null) {
+            return;
+        }
+
+        DrawerLayout drawerLayout = mTwinmeActivity.findViewById(R.id.main_activity_drawer_layout);
+
+        MenuSelectValueView menuSelectValueView = new MenuSelectValueView(mTwinmeActivity, null);
+        menuSelectValueView.setActivity(mTwinmeActivity);
+        menuSelectValueView.setObserver(new MenuSelectValueView.Observer() {
+            @Override
+            public void onCloseMenuAnimationEnd() {
+                drawerLayout.removeView(menuSelectValueView);
+
+                if (mTwinmeActivity != null) {
+                    mTwinmeActivity.setStatusBarColor();
+                }
+            }
+
+            @Override
+            public void onSelectValue(int value) {
+
+            }
+
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
+                menuSelectValueView.animationCloseMenu();
+
+                if (mTwinmeActivity == null) {
+                    return;
+                }
+
+                long expiration;
+                if (timeout.getDelay() > 0) {
+                    long expirationDate = System.currentTimeMillis() + (timeout.getDelay() * 1000L);
+                    expiration = expirationDate / 1000;
+                } else {
+                    expiration = timeout.getDelay();
+                }
+
+                if (uiConversation.getContact().isGroup()) {
+                    Group group = (Group) uiConversation.getContact();
+                    group.putBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, true, mTwinmeActivity.getTwinmeContext());
+                    group.putLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, expiration, mTwinmeActivity.getTwinmeContext());
+                } else {
+                    Contact contact = (Contact) uiConversation.getContact();
+                    contact.putBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, true, mTwinmeActivity.getTwinmeContext());
+                    contact.putLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, expiration, mTwinmeActivity.getTwinmeContext());
+                }
+
+                notifyConversationListChanged();
+            }
+        });
+
+        drawerLayout.addView(menuSelectValueView);
+        menuSelectValueView.openMenu(MenuSelectValueView.MenuType.SILENT_MODE_DURATION, 0);
+
+        int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
+        mTwinmeActivity.setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
     }
 
     private void updateConversations(boolean scrollToTop) {

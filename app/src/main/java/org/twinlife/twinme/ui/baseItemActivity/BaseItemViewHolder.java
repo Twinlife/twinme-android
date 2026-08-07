@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -154,7 +155,7 @@ public class BaseItemViewHolder extends RecyclerView.ViewHolder {
 
         private long startTime = 0;
         private boolean mayBeLongPress = false;
-        private final Handler handler = new Handler();
+        private final Handler handler = new Handler(Looper.getMainLooper());
         private Runnable currentLongPressRunnable;
 
         @SuppressLint({"ClickableViewAccessibility"})

@@ -27,8 +27,7 @@
                 android:id="@+id/show_external_call_activity_slide_mark_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                app:layout_widthPercent="12%" />
+                android:layout_centerHorizontal="true" />
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/show_external_call_activity_content_header_view"

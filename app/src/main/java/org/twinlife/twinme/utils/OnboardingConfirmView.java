@@ -16,6 +16,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.graphics.text.LineBreaker;
 import android.os.Build;
+import android.text.Layout;
 import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -39,7 +40,6 @@ public class OnboardingConfirmView extends AbstractBottomSheetView {
     private static final int DESIGN_IMAGE_HEIGHT = 240;
     private static final int DESIGN_TITLE_TOP_MARGIN = 40;
     private static final int DESIGN_TITLE_BOTTOM_MARGIN = 40;
-    private static final int DESIGN_MESSAGE_HORIZONTAL_MARGIN = 52;
     private static final int DESIGN_MIN_HEIGHT = 618;
 
     protected View mRootView;
@@ -153,21 +153,19 @@ public class OnboardingConfirmView extends AbstractBottomSheetView {
 
         marginLayoutParams = (MarginLayoutParams) mTitleView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_TOP_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.leftMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
         mMessageView.setMovementMethod(new ScrollingMovementMethod());
 
         Design.updateTextFont(mMessageView, Design.FONT_MEDIUM32);
         mMessageView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        marginLayoutParams = (MarginLayoutParams) mMessageView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.ONBOARDING_TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.ONBOARDING_TEXT_MARGIN;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             mMessageView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mMessageView.getLayoutParams();
-        marginLayoutParams.leftMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
-        marginLayoutParams.rightMargin = (int) (DESIGN_MESSAGE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
         float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};

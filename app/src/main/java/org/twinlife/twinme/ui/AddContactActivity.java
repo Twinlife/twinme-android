@@ -57,8 +57,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConnectivityService;
 import org.twinlife.twinlife.ProxyDescriptor;
 import org.twinlife.twinlife.SNIProxyDescriptor;
@@ -773,6 +772,8 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
         if (mInvitationMode == InvitationMode.SCAN) {
 
+            mScanSelect = true;
+
             if (mCameraManager == null) {
                 mCameraManager = createCameraManager(mTextureView, this, CameraManager.Mode.QRCODE);
             }
@@ -794,6 +795,8 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             mShareView.setVisibility(View.GONE);
             mShareSubTitleView.setVisibility(View.INVISIBLE);
         } else {
+
+            mScanSelect = false;
 
             // Release the camera and any resource while we are not active.
             if (mCameraManager != null) {
@@ -1221,8 +1224,8 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                 overridePendingTransition(0, 0);
                 finish();
             } else if (twincodeURI.kind == TwincodeURI.Kind.Authenticate) {
-                mProfileService.verifyAuthenticateURI(Uri.parse(twincodeURI.uri), ((BaseService.ErrorCode error, Contact contact) -> {
-                    if (error == BaseService.ErrorCode.SUCCESS && contact != null) {
+                mProfileService.verifyAuthenticateURI(Uri.parse(twincodeURI.uri), ((ErrorCode error, Contact contact) -> {
+                    if (error == ErrorCode.SUCCESS && contact != null) {
                         mProfileService.getImage(contact, (Bitmap avatar) -> showSuccessAuthentification(contact.getName(), avatar));
                     } else {
                         incorrectQRCode(getLinkError(errorCode, R.string.add_contact_view_scan_error_incorrect_link));

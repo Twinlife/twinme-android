@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/local_account_migration_activity_layout"
     android:layout_width="match_parent"
@@ -20,6 +20,7 @@
     <ImageView
         android:id="@+id/local_account_migration_activity_image_view"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
         android:src="@drawable/onboarding_migration"
@@ -33,16 +34,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/local_account_migration_view_message"
-        app:layout_widthPercent="89.06%" />
+        android:text="@string/local_account_migration_view_message" />
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <RelativeLayout
         android:id="@+id/local_account_migration_activity_accept_view"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        app:layout_marginBottomPercent="4.3%"
-        app:layout_widthPercent="88.04%">
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:id="@+id/local_account_migration_activity_accept_title_view"
@@ -50,9 +49,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/application_ok"
-            app:layout_widthPercent="89.06%" />
-    </androidx.percentlayout.widget.PercentRelativeLayout>
+            android:text="@string/application_ok" />
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/local_account_migration_activity_progress_bar"
@@ -62,4 +60,4 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

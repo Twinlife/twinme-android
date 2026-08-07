@@ -266,6 +266,7 @@ public class MenuRoomMemberView extends PercentRelativeLayout implements ViewTre
         View sliderMarkView = findViewById(R.id.room_members_activity_menu_slide_mark_view);
 
         ViewGroup.LayoutParams layoutParams = sliderMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();

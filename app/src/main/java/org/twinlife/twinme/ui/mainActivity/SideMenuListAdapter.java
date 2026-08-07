@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2021 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -40,14 +40,10 @@ public class SideMenuListAdapter implements ListAdapter {
     private static final float DESIGN_LAYER2_HEIGHT = 110;
     private static final float DESIGN_NOTIFICATION_HEIGHT = 16;
     private static final float DESIGN_TOOLBAR_AVATAR_HEIGHT = 32;
-    public static final int NUMBER_TAP_HIDDEN_MODE = 8;
 
     final MainActivity mActivity;
     final List<MenuItem> mMenuItems = new ArrayList<>();
     private final OnMenuClickListener mOnMenuClickListener;
-
-    private boolean mHiddenMode = true;
-
     private UIProfile mUIProfile;
 
     private static final MenuItem[] sMenuItems = {
@@ -63,9 +59,7 @@ public class SideMenuListAdapter implements ListAdapter {
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_help, MenuItem.MenuItemAction.HELP),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_about_twinme, MenuItem.MenuItemAction.ABOUT_TWINME),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_view_title, MenuItem.MenuItemAction.ACCOUNT),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.migration_twinme_plus_view_premium_title, MenuItem.MenuItemAction.UPGRADE),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_view_sign_out, MenuItem.MenuItemAction.NO_ACTION),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_sign_out, MenuItem.MenuItemAction.SIGN_OUT)
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.migration_twinme_plus_view_premium_title, MenuItem.MenuItemAction.UPGRADE)
     };
 
     public interface OnMenuClickListener {
@@ -92,11 +86,6 @@ public class SideMenuListAdapter implements ListAdapter {
         }
     }
 
-    public void setHiddenMode(boolean hiddenMode) {
-
-        mHiddenMode = hiddenMode;
-    }
-
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
     }
@@ -107,11 +96,6 @@ public class SideMenuListAdapter implements ListAdapter {
 
     @Override
     public int getCount() {
-
-        if (mHiddenMode) {
-
-            return mMenuItems.size() - 2;
-        }
 
         return mMenuItems.size();
     }

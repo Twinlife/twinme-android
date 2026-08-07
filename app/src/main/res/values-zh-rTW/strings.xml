@@ -101,6 +101,7 @@
     <string name="application_select_more">选择更多...</string>
     <string name="application_server_timeout">伺服器超時</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">開始使用</string>
     <string name="application_theme">主題</string>
     <string name="application_timeout">到期延遲</string>
     <string name="application_timeout_day">1天</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1個月</string>
     <string name="application_timeout_seconds">%1$d 秒</string>
     <string name="application_timeout_week">1週</string>
+    <string name="application_transfer_from_another_device">從其他裝置傳輸</string>
+    <string name="application_transfer_restore">傳輸或還原</string>
     <string name="application_unknown_name">未知</string>
     <string name="application_until">直到 %1$s</string>
     <string name="application_upgrade">升級twinme</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">正在進行數據傳輸</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">若要開始傳輸，請掃描其他裝置上顯示的傳輸二維碼。</string>
+    <string name="account_migration_scanner_view_header_other_device">若要開始傳輸，請從其他裝置掃描此裝置上顯示的二維碼。</string>
     <string name="account_migration_scanner_view_message">在每台設備上顯示此屏幕，一個掃描另一台的QR碼。</string>
     <string name="account_migration_scanner_view_message_older_version">該設備使用舊的不相容的作業系統版本，這將導致目標設備上的所有關係在傳輸過程中遺失。 您還想繼續進行轉移嗎？</string>
     <string name="account_migration_scanner_view_message_older_version_target">目標裝置使用舊的不相容的作業系統版本，這將導致您的所有關係在傳輸過程中遺失。 您還想繼續進行轉移嗎？</string>
-    <string name="account_migration_scanner_view_scan_title">掃描</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">若要啟動遷移，請從其他裝置掃描此二維碼</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">掃描另一個裝置側面選單「帳戶/從另一個裝置傳輸」一節中顯示的二維碼。</string>
+    <string name="account_migration_scanner_view_restore_title">無法存取另一台設備？</string>
+    <string name="account_migration_scanner_view_restore_message">如果存在備份，您可以將其還原到此裝置。</string>
+    <string name="account_migration_scanner_view_scan_title">掃描</string>
+    <string name="account_migration_scanner_view_step_1">在另一台裝置上開啟應用</string>
+    <string name="account_migration_scanner_view_step_2">前往側邊菜單</string>
+    <string name="account_migration_scanner_view_step_3">選擇“帳號”</string>
+    <string name="account_migration_scanner_view_step_4_my_device">從此裝置開始傳輸</string>
+    <string name="account_migration_scanner_view_step_4_another_device">從另一台裝置開始傳輸</string>
+    <string name="account_migration_scanner_view_step_5_my_device">使用此裝置掃描另一台裝置上顯示的二維碼</string>
+    <string name="account_migration_scanner_view_step_5_another_device">使用另一台裝置掃描此裝置上顯示的二維碼</string>
     <string name="account_migration_scanner_view_stop_scan_title">停止掃描</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">已刪除</string>
     <string name="backup_view_content_diff_message">以下是與當前數據相比的更改：</string>
     <string name="backup_view_content_info">備份不包含對話、通知和歷史記錄。</string>
+    <string name="backup_view_copy_clipboard">複製到剪貼簿</string>
     <string name="backup_view_error_words">輸入的單字不允許解密備份。</string>
+    <string name="backup_view_generate_key">產生新的加密金鑰</string>
     <string name="backup_view_generate_word">生成</string>
     <string name="backup_view_last_backup">上的最後備份%1$s</string>
     <string name="backup_view_new_backup">新備份</string>
     <string name="backup_view_onboarding">請對帳戶資料（「Spaces」、個人資料、團體、 聯絡人、「click-to-call」）進行加密備份，以便將其還原至此裝置或其他裝置。</string>
     <string name="backup_view_reminder">您上次備份的建立時間已超過 30 天。</string>
     <string name="backup_view_save_file_message">將備份檔案儲存到您選擇的設備，並保留密碼以便日後復原。</string>
+    <string name="backup_view_save_password">儲存到密碼管理器</string>
     <string name="backup_view_security">安全</string>
     <string name="backup_view_security_info">備份加密密鑰由恢復所需的一系列 12 個字表示。</string>
     <string name="backup_view_success">備份成功完成！</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">1名成員</string>
     <string name="conversation_view_invitation_accepted">邀請被接受</string>
     <string name="conversation_view_invitation_failed">請您的聯繫人更新twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s 接受了邀請</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s 拒絕了邀請</string>
     <string name="conversation_view_invitation_joined">該小組成員</string>
     <string name="conversation_view_invitation_pending">邀請正在進行中</string>
     <string name="conversation_view_invitation_refused">邀請被拒絕</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">大尺寸媒體 (%1$s)。</string>
     <string name="conversation_view_send_quality_standard">以標清 (SD) 格式發送。</string>
     <string name="conversation_view_send_quality_warning">您可以調整為標清 (SD) 以加快傳輸速度。</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s 接受了連接</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Ne prihvaćate preporuke koje vam daju vaši kontakti.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s 拒絕了連接</string>
+    <string name="conversation_view_share_contact_item_decline_connection">您拒絕了連線請求</string>
+    <string name="conversation_view_share_contact_item_local_message">正在連接 %1$s 與 %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">正在為您與 %1$s 建立連接</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">等待 %1$s 接受</string>
     <string name="conversation_view_stream_dialog">您要接受嗎？</string>
     <string name="conversation_view_unsupported_media">不支援的媒體格式</string>
     <string name="conversation_view_video_call">視頻電話</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">解除</string>
     <string name="notification_center_cleanup_conversation">一些舊消息已被刪除。</string>
     <string name="notification_center_conference_join_call">一名參與者加入了通話。</string>
+    <string name="notification_center_connection_request">連線請求</string>
     <string name="notification_center_deleted_contact">聯絡人已刪除</string>
     <string name="notification_center_file_message">發給你一個文件</string>
     <string name="notification_center_file_message_received">新文件</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">邀請聯繫人加入正在進行的語音/視頻通話。</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">活動應用程式</string>
     <string name="privacy_view_coach_mark">使用生物識別服務或 PIN 碼鎖定應用程序。</string>
     <string name="privacy_view_hide_last_screen_message">如果裝置允許，請在應用程式後台運行時將其隱藏。</string>
     <string name="privacy_view_hide_last_screen_title">禁止螢幕截圖</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">訪問鎖定超時</string>
     <string name="privacy_view_lock_screen_timeout_instant">即刻</string>
     <string name="privacy_view_lock_screen_title">訪問鎖</string>
+    <string name="privacy_view_share_invitation_ask">每次都詢問</string>
+    <string name="privacy_view_share_invitation_info">每當有人分享您的聯絡人資訊時，您都會收到通知。</string>
+    <string name="privacy_view_share_invitation_setting">允許我的聯絡人將我介紹給他們的聯絡人</string>
+    <string name="privacy_view_share_invitation_title">連接</string>
     <string name="privacy_view_title">隱私</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">修復成功完成！</string>
     <string name="restore_view_success_message">關閉應用程序並重新啟動以訪問新數據。</string>
     <string name="restore_view_title">復原</string>
+    <string name="restore_view_update_message">您需要更新應用程式才能恢復備份。</string>
     <string name="restore_view_verify_same_account">驗證必須在用於備份的相同裝置上執行。</string>
     <string name="restore_view_warning">恢復此備份將用備份中的數據替換所有頻道數據。</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">輸入或貼上邀請鏈接</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">預覽網頁連結會將 IP 位址暴露給網站。</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">進階</string>
+    <string name="settings_advanced_view_security_advanced_info">IP 位址在本機隱藏（使用 TLS 進行 STUN 通訊）。</string>
+    <string name="settings_advanced_view_security_expert">專家</string>
+    <string name="settings_advanced_view_security_expert_info">IP 位址在本機和聯絡人中均隱藏（通話透過 TURN 伺服器路由）。</string>
+    <string name="settings_advanced_view_security_optimized">優化（預設）</string>
+    <string name="settings_advanced_view_security_optimized_info">IP 位址可能會在 WebRTC 互動或網頁連結預覽期間外洩。</string>
+    <string name="settings_advanced_view_security_level_title">安全等級</string>
+    <string name="settings_advanced_view_security_info">根據具體需求調整安全性和性能之間的平衡。</string>
+    <string name="settings_advanced_view_security_title">安全性</string>
+    <string name="settings_advanced_view_security_unauthorized_update">專家安全等級不允許更改此設定。</string>
     <string name="settings_advanced_view_status_connection_message">檢查您與服務的連線狀態</string>
     <string name="settings_advanced_view_status_connection_title">連線狀態</string>
     <string name="settings_advanced_view_telecom_enable">Android 通話體驗</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">權限</string>
     <string name="settings_view_silent_mode">靜音模式</string>
     <string name="settings_view_silent_sound">無聲</string>
+    <string name="settings_view_sound_effects_info">與應用程式互動時播放聲音</string>
+    <string name="settings_view_sound_effects_title">音效</string>
     <string name="settings_view_sound_enabled_title">聲音通知</string>
+    <string name="settings_view_sound_vibrations_title">聲音和振動</string>
     <string name="settings_view_system_notifications_title">系統通知</string>
     <string name="settings_view_system_settings_title">系統設置</string>
     <string name="settings_view_turn_off_notification_sounds">關閉通知聲音</string>
@@ -1133,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">參與者的反饋只有管理員/版主才能看到</string>
     <string name="settings_room_view_room_type_forum">論壇</string>
     <string name="settings_room_view_room_type_forum_information">參與者可以發布所有人都看到的消息</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Prostor</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s 想要為您與 %2$s 建立連接</string>
+    <string name="share_contact_accept_view_invite_message">您想將 %1$s 新增為個人聯絡人嗎？</string>
+    <string name="share_contact_view_onboarding_part_1">現在您可以允許您的聯絡人將您與他們自己的聯絡人連接起來。</string>
+    <string name="share_contact_view_onboarding_part_2">預設情況下，您必須批准每個連線提議。</string>
+    <string name="share_contact_view_onboarding_part_3">您可以在應用程式設定的「隱私權」部分變更此預設行為。</string>
+    <string name="share_contact_view_share_info">%1$s 將收到分享通知</string>
+    <string name="share_contact_view_share_title">分享 %1$s 的聯絡人訊息</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">連絡人</string>
@@ -1167,6 +1226,7 @@
     <string name="show_contact_view_pending_message">这种关系正在建立。 请稍等。</string>
     <string name="show_contact_view_revoked">已刪除</string>
     <string name="show_contact_view_settings_coach_mark">定義您的聯繫人在與您的關係中可以做什麼。</string>
+    <string name="show_contact_view_share_contact">分享此聯絡人</string>
     <string name="show_contact_view_video">視訊</string>
 
     <!-- ShowGroupActivity -->

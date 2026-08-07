@@ -116,6 +116,7 @@
     <string name="application_select_more">Select more…</string>
     <string name="application_server_timeout">Server timeout</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Start</string>
     <string name="application_theme">Theme</string>
     <string name="application_timeout">Timeout</string>
     <string name="application_timeout_day">1 day</string>
@@ -126,6 +127,8 @@
     <string name="application_timeout_month">1 month</string>
     <string name="application_timeout_seconds">%1$d seconds</string>
     <string name="application_timeout_week">1 week</string>
+    <string name="application_transfer_from_another_device">Transfer from another device</string>
+    <string name="application_transfer_restore">Transfer or restore</string>
     <string name="application_unknown_name">Unknown</string>
     <string name="application_until">Until %1$s</string>
     <string name="application_upgrade">Upgrading twinme</string>
@@ -209,12 +212,23 @@
     <string name="account_migration_view_transfer_in_progress">Data transfer in progress</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">To start the transfer, scan the transfer QR-code displayed on the other device.</string>
+    <string name="account_migration_scanner_view_header_other_device">To start the transfer, scan the QR-code displayed on this device from the other device.</string>
     <string name="account_migration_scanner_view_message">Display this screen on each device, and one scans the other’s QR-Code.</string>
     <string name="account_migration_scanner_view_message_older_version">This device is using an old incompatible OS version, which will cause all the relations on the target device to be lost during the transfer. Do you still want to proceed with the transfer?</string>
     <string name="account_migration_scanner_view_message_older_version_target">The target device is using an old incompatible OS version, which will cause all your relations to be lost during the transfer. Do you still want to proceed with the transfer?</string>
-    <string name="account_migration_scanner_view_scan_title">Scan</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">To launch migration, scan this QR-code from the other device</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Scan the QR code displayed in the \"Account / Transfer from another device\" section of the side menu of the other device.</string>
+    <string name="account_migration_scanner_view_restore_title">No longer have access to the other device?</string>
+    <string name="account_migration_scanner_view_restore_message">If a backup exists, you can restore it to this device.</string>
+    <string name="account_migration_scanner_view_scan_title">Scan</string>
+    <string name="account_migration_scanner_view_step_1">Open the app on the other device</string>
+    <string name="account_migration_scanner_view_step_2">Go to the side menu</string>
+    <string name="account_migration_scanner_view_step_3">Select \"Account\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Start the transfer from this device</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Start the transfer from the other device</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Scan the QR code displayed on the other device with this device</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Scan the QR code displayed on this device with the other device</string>
     <string name="account_migration_scanner_view_stop_scan_title">Stop scan</string>
 
    <!-- AddCallParticipantActivity -->
@@ -303,13 +317,16 @@
     <string name="backup_view_content_diff_deleted">Deleted</string>
     <string name="backup_view_content_diff_message">Here are the changes compared to your current data:</string>
     <string name="backup_view_content_info">Backups do not include conversations, notifications, and history.</string>
+    <string name="backup_view_copy_clipboard">Copy to clipboard</string>
     <string name="backup_view_error_words">The words entered do not allow the backup to be decrypted.</string>
+    <string name="backup_view_generate_key">Generate a new encryption key</string>
     <string name="backup_view_generate_word">Generate</string>
     <string name="backup_view_last_backup">Last backup on %1$s</string>
     <string name="backup_view_new_backup">New backup</string>
     <string name="backup_view_onboarding">Make an encrypted backup of account data (Spaces, profiles, contacts, groups, click-to-call) that can be restored to this device or another one.</string>
     <string name="backup_view_reminder">Your last backup was created more than 30 days ago.</string>
     <string name="backup_view_save_file_message">Save the backup file to the device of your choice and keep the passwords for later restoration.</string>
+    <string name="backup_view_save_password">Save to password manager</string>
     <string name="backup_view_security">Security</string>
     <string name="backup_view_security_info">The backup encryption key is represented by a series of 12 words that will be required for the restoration.</string>
     <string name="backup_view_success">Backup completed successfully!</string>
@@ -479,6 +496,8 @@
     <string name="conversation_view_group_one_member">1 member</string>
     <string name="conversation_view_invitation_accepted">Invitation accepted</string>
     <string name="conversation_view_invitation_failed">Ask your contact to update twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s accepted the invitation</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s declined the invitation</string>
     <string name="conversation_view_invitation_joined">Member of the group</string>
     <string name="conversation_view_invitation_pending">Invitation in progress</string>
     <string name="conversation_view_invitation_refused">Invitation declined</string>
@@ -521,6 +540,13 @@
     <string name="conversation_view_send_quality_size">Large media (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Send in standard definition (SD)</string>
     <string name="conversation_view_send_quality_warning">You can resize to standard definition (SD) for faster transfer.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s accepted the connection</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">You do not accept introductions made by your contacts.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s declined the connection</string>
+    <string name="conversation_view_share_contact_item_decline_connection">You declined the connection request</string>
+    <string name="conversation_view_share_contact_item_local_message">Connecting %1$s with %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Connecting you with %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Pending acceptance by %1$s</string>
     <string name="conversation_view_stream_dialog">Do you want to accept it?</string>
     <string name="conversation_view_unsupported_media">Unsupported media format.</string>
     <string name="conversation_view_video_call">Video call</string>
@@ -826,6 +852,7 @@
     <string name="notification_center_cancel">Dismiss</string>
     <string name="notification_center_cleanup_conversation">Some old messages have been deleted.</string>
     <string name="notification_center_conference_join_call">One participant joined the call.</string>
+    <string name="notification_center_connection_request">Connection request</string>
     <string name="notification_center_deleted_contact">Contact Deleted</string>
     <string name="notification_center_file_message">Sent you a file</string>
     <string name="notification_center_file_message_received">New file</string>
@@ -983,6 +1010,7 @@
     <string name="premium_services_view_title">Invite contacts to join an ongoing voice/video call.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Active applications</string>
     <string name="privacy_view_coach_mark">Lock the application with biometric services or with a PIN code.</string>
     <string name="privacy_view_hide_last_screen_message">And hide the application when it goes into the background, if the device allows it.</string>
     <string name="privacy_view_hide_last_screen_title">Forbid screenshots</string>
@@ -991,6 +1019,10 @@
     <string name="privacy_view_lock_screen_timeout">Access lock timeout</string>
     <string name="privacy_view_lock_screen_timeout_instant">Instant</string>
     <string name="privacy_view_lock_screen_title">Access lock</string>
+    <string name="privacy_view_share_invitation_ask">Ask me every time</string>
+    <string name="privacy_view_share_invitation_info">You will be notified whenever someone shares your contact.</string>
+    <string name="privacy_view_share_invitation_setting">Allow my contacts to connect me with their contacts</string>
+    <string name="privacy_view_share_invitation_title">Connections</string>
     <string name="privacy_view_title">Privacy</string>
 
     <!-- ProfileFragment -->
@@ -1067,6 +1099,7 @@
     <string name="restore_view_success">Restoration completed successfully!</string>
     <string name="restore_view_success_message">Close the app and restart it to access the new data.</string>
     <string name="restore_view_title">Restoration</string>
+    <string name="restore_view_update_message">You need to update the application in order to restore the backup.</string>
     <string name="restore_view_verify_same_account">The verification must be performed on the same device used for the backup.</string>
     <string name="restore_view_warning">Restoring this backup will replace all current account data with the data from the backup.</string>
 
@@ -1083,8 +1116,19 @@
     <string name="scan_view_paste_code">Enter or paste an invitation link</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Previewing a web link exposes the IP address to the website.</string>
     <string name="settings_advanced_view_debug" translatable="false">Debug</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Advanced</string>
+    <string name="settings_advanced_view_security_advanced_info">IP address is hidden locally (using TLS for STUN).</string>
+    <string name="settings_advanced_view_security_expert">Expert</string>
+    <string name="settings_advanced_view_security_expert_info">IP address is hidden locally and to contacts (calls are routed thru a TURN server).</string>
+    <string name="settings_advanced_view_security_optimized">Optimized (default)</string>
+    <string name="settings_advanced_view_security_optimized_info">The IP address may be exposed during WebRTC exchanges or web link previews.</string>
+    <string name="settings_advanced_view_security_level_title">Security Level</string>
+    <string name="settings_advanced_view_security_info">Adjust the balance between security and performance for specific needs.</string>
+    <string name="settings_advanced_view_security_title">Security</string>
+    <string name="settings_advanced_view_security_unauthorized_update">The Expert security level does not allow changing this setting.</string>
     <string name="settings_advanced_view_status_connection_message">Check the status of your connection to the service</string>
     <string name="settings_advanced_view_status_connection_title">Connection status</string>
     <string name="settings_advanced_view_telecom_enable">"Android calling experience"</string>
@@ -1132,7 +1176,10 @@
     <string name="settings_view_permissions_title">PERMISSIONS</string>
     <string name="settings_view_silent_mode">Silent mode</string>
     <string name="settings_view_silent_sound">Silent</string>
+    <string name="settings_view_sound_effects_info">Play sounds when interacting with the app</string>
+    <string name="settings_view_sound_effects_title">Sound effects</string>
     <string name="settings_view_sound_enabled_title">SOUND NOTIFICATIONS</string>
+    <string name="settings_view_sound_vibrations_title">Sounds and Vibrations</string>
     <string name="settings_view_system_notifications_title">System notifications</string>
     <string name="settings_view_system_settings_title">System settings</string>
     <string name="settings_view_turn_off_notification_sounds">Turn off notification sounds</string>
@@ -1157,11 +1204,23 @@
     <string name="settings_room_view_room_type_forum">Forum</string>
     <string name="settings_room_view_room_type_forum_information">Participants can post messages seen by everyone</string>
 
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s wants to connect you with %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Do you want to add %1$s as a personal contact?</string>
+    <string name="share_contact_view_onboarding_part_1">You can now allow your contacts to connect you with their own contacts.</string>
+    <string name="share_contact_view_onboarding_part_2">By default, you must approve each connection proposal.</string>
+    <string name="share_contact_view_onboarding_part_3">The default behavior can be changed in the \"Privacy\" section of the app settings.</string>
+    <string name="share_contact_view_share_info">%1$s will receive a sharing notification</string>
+    <string name="share_contact_view_share_title">Share %1$s\'s contact</string>
+
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Contacts</string>
     <string name="share_view_group_list">Groups</string>
     <string name="share_view_title">Share</string>
-    
+
     <!-- ShowCallActivity -->
     <string name="show_call_view_code">\"Click-to-call\" code</string>
     <string name="show_call_view_conference_call_information">Share this link to call you or join a conference from a browser.</string>
@@ -1190,6 +1249,7 @@
     <string name="show_contact_view_pending_message">This relation is being established. Please wait.</string>
     <string name="show_contact_view_revoked">Deleted</string>
     <string name="show_contact_view_settings_coach_mark">Define what your contact is allowed to do in this relation with you.</string>
+    <string name="show_contact_view_share_contact">Share this contact</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->

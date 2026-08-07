@@ -218,6 +218,7 @@ public class Design {
     //  Common size and margin
     //
 
+    private static final int DESIGN_SLIDE_MARK_WIDTH = 90;
     private static final int DESIGN_SLIDE_MARK_HEIGHT = 12;
     private static final int DESIGN_SLIDE_MARK_TOP_MARGIN = 16;
     private static final float DESIGN_CONTENT_VIEW_INITIAL_POSITION = 664f;
@@ -261,7 +262,9 @@ public class Design {
     private static final int DESIGN_DOT_SIZE = 40;
     private static final int DESIGN_DOT_MARGIN = 20;
     private static final int DESIGN_ONBOARDING_TEXT_MARGIN = 44;
+    private static final int DESIGN_TEXT_MARGIN = 22;
 
+    public static int SLIDE_MARK_WIDTH;
     public static int SLIDE_MARK_HEIGHT;
     public static int SLIDE_MARK_TOP_MARGIN;
     public static float CONTENT_VIEW_INITIAL_POSITION;
@@ -305,6 +308,7 @@ public class Design {
     public static int NEW_FEATURE_PADDING;
     public static int PEER_AVATAR_CONVERSATION_MARGIN;
     public static int PEER_CONTENT_CONVERSATION_MARGIN;
+    public static int TEXT_MARGIN;
 
     //
     // Search view
@@ -427,6 +431,7 @@ public class Design {
         MENU_CANCEL_MARGIN = (int) (DESIGN_MENU_CANCEL_MARGIN * HEIGHT_RATIO);
         MENU_ACTION_MARGIN = (int) (DESIGN_MENU_ACTION_MARGIN * HEIGHT_RATIO);
 
+        SLIDE_MARK_WIDTH = (int) (DESIGN_SLIDE_MARK_WIDTH * WIDTH_RATIO);
         SLIDE_MARK_HEIGHT = (int) (DESIGN_SLIDE_MARK_HEIGHT * HEIGHT_RATIO);
         SLIDE_MARK_TOP_MARGIN = (int) (DESIGN_SLIDE_MARK_TOP_MARGIN * HEIGHT_RATIO);
         CONTENT_VIEW_INITIAL_POSITION = (int) (DESIGN_CONTENT_VIEW_INITIAL_POSITION * HEIGHT_RATIO);
@@ -472,6 +477,7 @@ public class Design {
         PEER_CONTENT_CONVERSATION_MARGIN = (int) (DESIGN_PEER_CONTENT_CONVERSATION_MARGIN * WIDTH_RATIO);
 
         SEARCH_VIEW_HEIGHT = (int) (DESIGN_SEARCH_VIEW_HEIGHT * HEIGHT_RATIO);
+        TEXT_MARGIN = (int) (DESIGN_TEXT_MARGIN * WIDTH_RATIO);
 
         setupFont(context, application);
         setupColor(context, application);

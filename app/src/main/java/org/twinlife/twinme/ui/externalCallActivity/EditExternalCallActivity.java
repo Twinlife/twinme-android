@@ -313,6 +313,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
 
         View slideMarkView = findViewById(R.id.edit_external_call_activity_slide_mark_view);
         layoutParams = slideMarkView.getLayoutParams();
+        layoutParams.width = Design.SLIDE_MARK_WIDTH;
         layoutParams.height = Design.SLIDE_MARK_HEIGHT;
 
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -694,7 +695,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
             }
 
             @Override
-            public void onCloseMenuSelectActionAnimationEnd() {
+            public void onCloseAbstractMenuViewAnimationEnd() {
 
                 viewGroup.removeView(menuPhotoView);
 

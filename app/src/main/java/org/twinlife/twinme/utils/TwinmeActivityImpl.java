@@ -49,9 +49,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConnectionStatus;
-import org.twinlife.twinlife.JobService;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.skin.Design;
@@ -251,6 +250,11 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         if (mInfoFloatingView != null) {
             mInfoFloatingView.hideView();
             mInfoFloatingView = null;
+        }
+
+        if (mNetworkStatus != null) {
+            mNetworkStatus.stopMonitoring(this);
+            mNetworkStatus = null;
         }
 
         super.onDestroy();
@@ -654,7 +658,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
-
+        alertMessageView.setElevation(2);
         if (isFullScreen()) {
             alertMessageView.setWindowHeight(getWindow().getDecorView().getHeight());
         }
@@ -1003,24 +1007,15 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
             return;
         }
 
-        synchronized (mDialogLock) {
-            if (mAlertDialog != null) {
-                mAlertDialog.dismiss();
-                mAlertDialog = null;
-            }
-        }
-
         // Protect concurrent access with onPause()/showNetworkDisconnect()/probeNetwork().
         synchronized (this) {
-            // If a connectivity monitor is running, stop it.
-            if (mProbeTimer != null) {
-                mProbeTimer.cancel(false);
-                mProbeTimer = null;
-            }
             if (mNetworkStatus != null) {
+                mNetworkStatus.stopMonitoring(this);
                 mNetworkStatus = null;
             }
         }
+
+        dismissNetworkProblem();
     }
 
     public void showNetworkDisconnect(int actionMessage, @NonNull Runnable errorCallback) {
@@ -1030,29 +1025,36 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
 
         NetworkStatus status;
         synchronized (this) {
-            // A network status is already monitoring the connection, nothing to do.
             if (mNetworkStatus != null) {
-
-                return;
+                if (mNetworkStatus.isMonitoring()) {
+                    // A network status is already monitoring the connection, nothing to do.
+                    return;
+                }
+            } else {
+                mNetworkStatus = new NetworkStatus();
             }
 
-            mNetworkStatus = new NetworkStatus();
             status = mNetworkStatus;
 
-            // Launch a probe network task to check the network status periodically.
-            final TwinmeActivityImpl activity = this;
-            final JobService jobService = getTwinmeContext().getJobService();
-            mProbeTimer = jobService.scheduleAtFixedRate(() -> runOnUiThread(() -> activity.probeNetwork(actionMessage, errorCallback)), 1, 1);
-        }
-        status.getNetworkDiagnostic(getApplicationContext());
+            status.startMonitoring(this, (connected, connecting) ->
+                runOnUiThread(() -> {
+                    if (isDestroyed()) {
+                        return;
+                    }
 
-        final int delay = status.getPersistentDelay();
-        if (delay > 0) {
-            toast(getString(R.string.application_network_connecting));
+                    if (connected && mTwinmeContext.isConnected()) {
+                        dismissNetworkProblem();
+                        return;
+                    }
 
-            return;
+                    if (connecting) {
+                        toast(getString(R.string.application_network_connecting));
+                    } else {
+                        reportNetworkProblem(status, actionMessage, errorCallback);
+                    }
+                })
+            );
         }
-        reportNetworkProblem(status, actionMessage, errorCallback);
     }
 
     //
@@ -1167,32 +1169,6 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         }
     }
 
-    private void probeNetwork(int actionMessage, @NonNull Runnable errorCallback) {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "probeNetwork: actionMessage=" + actionMessage + " errorCallback=" + errorCallback);
-        }
-
-        final NetworkStatus status;
-        synchronized (this) {
-            if (mNetworkStatus == null || isNotRunning()) {
-                return;
-            }
-            status = mNetworkStatus;
-        }
-        status.getNetworkDiagnostic(getApplicationContext());
-        synchronized (mDialogLock) {
-            if (mToast != null) {
-                mToast.show();
-            }
-        }
-
-        // If the probe deadline has passed, raise the alert message to the user.
-        final long deadline = status.getProbeDeadline();
-        if (deadline < System.currentTimeMillis()) {
-            reportNetworkProblem(status, actionMessage, errorCallback);
-        }
-    }
-
     private void reportNetworkProblem(NetworkStatus status, int actionMessage, @NonNull Runnable errorCallback) {
         if (DEBUG) {
             Log.d(LOG_TAG, "reportNetworkProblem: actionMessage=" + actionMessage + " errorCallback=" + errorCallback);
@@ -1240,6 +1216,23 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
             resolutionText.setVisibility(View.VISIBLE);
         } else {
             resolutionText.setVisibility(View.GONE);
+        }
+    }
+
+    private void dismissNetworkProblem() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "dismissNetworkProblem");
+        }
+        synchronized (mDialogLock) {
+            if (mToast != null) {
+                mToast.cancel();
+                mToast = null;
+            }
+
+            if (mAlertDialog != null) {
+                mAlertDialog.dismiss();
+                mAlertDialog = null;
+            }
         }
     }
 

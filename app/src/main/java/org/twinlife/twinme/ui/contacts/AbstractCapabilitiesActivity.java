@@ -44,7 +44,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
 
     public static final int VOICE_CALL_SWITCH = 1;
     public static final int VIDEO_CALL_SWITCH = 2;
-    public static final int DISCREET_RELATION_SWITCH = 3;
     public static final int SCHEDULE_SWITCH = 4;
     public static final int ANSWERING_AUTOMATIC_SWITCH = 5;
 
@@ -54,7 +53,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
 
     protected boolean mAllowAudioCall = true;
     protected boolean mAllowVideoCall = true;
-    protected boolean mDiscreetRelation = false;
     protected boolean mScheduleEnable = false;
     protected Zoomable mZoomable = Zoomable.ASK;
     protected boolean mAllowAnsweringAutomatic = false;
@@ -92,11 +90,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
     public boolean allowVideoCall() {
 
         return mAllowVideoCall;
-    }
-
-    public boolean discreetRelation() {
-
-        return mDiscreetRelation;
     }
 
     public boolean scheduleEnable() {
@@ -275,10 +268,6 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
 
             case VIDEO_CALL_SWITCH:
                 mAllowVideoCall = value;
-                break;
-
-            case DISCREET_RELATION_SWITCH:
-                mDiscreetRelation = value;
                 break;
 
             case SCHEDULE_SWITCH:

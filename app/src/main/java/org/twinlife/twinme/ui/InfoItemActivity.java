@@ -31,6 +31,7 @@ import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
+import org.twinlife.twinme.models.Invitation;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.services.InfoItemService;
 import org.twinlife.twinme.skin.Design;
@@ -61,8 +62,10 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerInvitationItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerMessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerPollItem;
+import org.twinlife.twinme.ui.baseItemActivity.PeerShareContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
 import org.twinlife.twinme.ui.baseItemActivity.PollItem;
+import org.twinlife.twinme.ui.baseItemActivity.ShareContactItem;
 import org.twinlife.twinme.ui.baseItemActivity.TimeItem;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
 import org.twinlife.twinme.ui.conversationActivity.UIAnnotation;
@@ -227,6 +230,14 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                     }
                     break;
 
+                case CONTACT_SHARE_DESCRIPTOR:
+                    if (mIsPeerItem) {
+                        mItem = new PeerShareContactItem((ConversationService.ContactShareDescriptor) descriptor);
+                    } else {
+                        mItem = new ShareContactItem((ConversationService.ContactShareDescriptor) descriptor);
+                    }
+                    break;
+
                 case CALL_DESCRIPTOR:
                     if (mIsPeerItem) {
                         mItem = new PeerCallItem((ConversationService.CallDescriptor) descriptor);
@@ -236,10 +247,20 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                     break;
 
                 case TWINCODE_DESCRIPTOR:
+                    ConversationService.TwincodeDescriptor twincodeDescriptor = (ConversationService.TwincodeDescriptor) descriptor;
                     if (mIsPeerItem) {
-                        mItem = new PeerInvitationContactItem(this, this, (ConversationService.TwincodeDescriptor) descriptor);
+                        if (twincodeDescriptor.getSchemaId().equals(Invitation.CONTACT_SHARE_SCHEMA_ID)) {
+                            mItem = new PeerShareContactItem(this, this, twincodeDescriptor);
+                        } else {
+                            mItem = new PeerInvitationContactItem(this, this, twincodeDescriptor);
+                        }
+                        mItem = new PeerInvitationContactItem(this, this, twincodeDescriptor);
                     } else {
-                        mItem = new InvitationContactItem(this, this, (ConversationService.TwincodeDescriptor) descriptor);
+                        if (twincodeDescriptor.getSchemaId().equals(Invitation.CONTACT_SHARE_SCHEMA_ID)) {
+                            mItem = new ShareContactItem(this, this, twincodeDescriptor);
+                        } else {
+                            mItem = new InvitationContactItem(this, this, twincodeDescriptor);
+                        }
                     }
                     break;
 
@@ -391,6 +412,11 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public void onDeleteInvitationItem(@NonNull Item item) {
+
+    }
+
+    @Override
     public void getContactAvatar(@Nullable UUID peerTwincodeOutboundId, TwinmeContext.Consumer<Bitmap> avatarConsumer) {
 
         if (peerTwincodeOutboundId == null) {
@@ -454,6 +480,29 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     }
 
     @Override
+    public void getShareContactAvatar(@NonNull ConversationService.ContactShareDescriptor contactShareDescriptor, @NonNull TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+
+        mInfoItemService.getContactShareAvatar(contactShareDescriptor, avatarConsumer);
+    }
+
+    @Override
+    public void getShareContactIdentityAvatar(TwinmeContext.Consumer<Bitmap> avatarConsumer) {
+
+        if (mIdentityAvatar != null) {
+            avatarConsumer.accept(mIdentityAvatar);
+        } else {
+            mInfoItemService.getIdentityImage(getContact(), (Bitmap identityAvatar) -> {
+                mIdentityAvatar = identityAvatar;
+
+                if (mIdentityAvatar == null) {
+                    mIdentityAvatar = getTwinmeApplication().getAnonymousAvatar();
+                }
+                avatarConsumer.accept(mIdentityAvatar);
+            });
+        }
+    }
+
+    @Override
     public void onGetGroup(@NonNull Group group, @NonNull List<GroupMember> groupMembers,
                            @NonNull ConversationService.GroupConversation conversation, @Nullable Bitmap avatar) {
         if (DEBUG) {
@@ -512,6 +561,18 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
     public Group getGroup() {
 
         return mGroup;
+    }
+
+    @Override
+    public @Nullable Bitmap getContactAvatar() {
+
+        return mContactAvatar;
+    }
+
+    @Override
+    public @Nullable Bitmap getIdentityAvatar() {
+
+        return mIdentityAvatar;
     }
 
     @Override
@@ -616,6 +677,16 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
     @Override
     public  void onPollResultClick(@NonNull org.twinlife.twinlife.ConversationService.PollDescriptor pollDescriptor) {
+
+    }
+
+    @Override
+    public void onShareContactClick(@NonNull ConversationService.ContactShareDescriptor contactShareDescriptor) {
+
+    }
+
+    @Override
+    public void onShareContactInvitationClick(@NonNull ConversationService.TwincodeDescriptor twincodeDescriptor) {
 
     }
 
@@ -734,7 +805,9 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                     if (mItem.getReadTimestamp() > 0) {
                         items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_seen)));
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
-                    } else if (mItem.getReceivedTimestamp() > 0) {
+                    }
+
+                    if (mItem.getReceivedTimestamp() > 0) {
                         items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_received)));
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
                     }
@@ -752,7 +825,9 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                         if (mItem.getReadTimestamp() > 0) {
                             items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_seen)));
                             items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mGroup.getIdentityName(), mIdentityAvatar));
-                        } else {
+                        }
+
+                        if (mItem.getReceivedTimestamp() > 0) {
                             items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_received)));
                             items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mGroup.getIdentityName(), mIdentityAvatar));
                         }

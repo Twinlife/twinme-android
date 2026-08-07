@@ -16,8 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.twinlife.twinlife.AssertPoint;
-import org.twinlife.twinlife.BaseService;
-import org.twinlife.twinlife.BaseService.ErrorCode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.BuildConfig;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.DisplayCallsMode;
@@ -124,7 +123,7 @@ public class MainService extends AbstractTwinmeService {
         }
 
         @Override
-        public void onFatalError(BaseService.ErrorCode errorCode) {
+        public void onFatalError(ErrorCode errorCode) {
             if (DEBUG) {
                 Log.d(LOG_TAG, "TwinmeContextObserver.onFatalError: errorCode=" + errorCode);
             }
@@ -240,21 +239,12 @@ public class MainService extends AbstractTwinmeService {
         startOperation();
     }
 
-    public void getContacts() {
+    public void refresh() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "getContacts");
+            Log.d(LOG_TAG, "refresh");
         }
 
-        mState &= ~(GET_CONTACTS | GET_CONTACTS_DONE);
-        startOperation();
-    }
-
-    public void getConversations() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "getConversations");
-        }
-
-        mState &= ~(GET_CONVERSATIONS | GET_CONVERSATIONS_DONE);
+        mState &= ~(GET_CONTACTS | GET_CONTACTS_DONE | GET_CONVERSATIONS | GET_CONVERSATIONS_DONE);
         startOperation();
     }
 
@@ -372,7 +362,7 @@ public class MainService extends AbstractTwinmeService {
                 Log.d(LOG_TAG, "TwinmeContext.getPendingNotifications");
             }
 
-            mTwinmeContext.getSpaceNotificationStats((BaseService.ErrorCode errorCode, NotificationStat stat) -> {
+            mTwinmeContext.getSpaceNotificationStats((ErrorCode errorCode, NotificationStat stat) -> {
                 onGetSpaceNotificationStats(stat);
                 onOperation();
             });

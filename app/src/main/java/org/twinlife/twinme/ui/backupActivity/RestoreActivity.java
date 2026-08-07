@@ -761,7 +761,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         org.twinlife.twinlife.BackupService.ErrorCode result = (org.twinlife.twinlife.BackupService.ErrorCode) intent.getSerializableExtra(BackupService.BACKUP_SERVICE_CHECK_FILE_COMPATIBILITY_RESULT);
 
         if (result != org.twinlife.twinlife.BackupService.ErrorCode.SUCCESS) {
-            showRestoreError(org.twinlife.twinlife.BackupService.ErrorCode.INVALID_FILE);
+            showRestoreError(result);
         }
     }
 
@@ -830,8 +830,11 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             message = getString(R.string.backup_view_error_words);
         } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.DIFFERENT_ACCOUNT) {
             message = getString(R.string.restore_view_verify_same_account);
-        } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.INVALID_FILE && !mIsBackupHeaderInfoOK) {
+        } else if ((errorCode == org.twinlife.twinlife.BackupService.ErrorCode.INVALID_FILE || errorCode == org.twinlife.twinlife.BackupService.ErrorCode.WRONG_APP) && !mIsBackupHeaderInfoOK) {
             message = getString(R.string.restore_view_file_not_supported);
+            runnable = this::finish;
+        } else if (errorCode == org.twinlife.twinlife.BackupService.ErrorCode.WRONG_VERSION && !mIsBackupHeaderInfoOK) {
+            message = getString(R.string.restore_view_update_message);
             runnable = this::finish;
         } else {
             message = mVerifyBackupMode ? getString(R.string.restore_view_error_message_verify_backup) : getString(R.string.restore_view_error_message);

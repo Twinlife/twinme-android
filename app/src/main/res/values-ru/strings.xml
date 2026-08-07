@@ -101,6 +101,7 @@
     <string name="application_select_more">Выберите больше…</string>
     <string name="application_server_timeout">Время ожидания ответа от сервера истекло</string>
     <string name="application_size_unit">МБ</string>
+    <string name="application_start">Начать</string>
     <string name="application_theme">Тема</string>
     <string name="application_timeout">Задержка истечения срока</string>
     <string name="application_timeout_day">1 день</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 месяц</string>
     <string name="application_timeout_seconds">%1$d секунд</string>
     <string name="application_timeout_week">1 неделя</string>
+    <string name="application_transfer_from_another_device">Передача с другого устройства</string>
+    <string name="application_transfer_restore">Перенос или восстановление</string>
     <string name="application_unknown_name">Неизвестно</string>
     <string name="application_until">До %1$s</string>
     <string name="application_upgrade">Обновление twinme</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">Идет передача данных</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Для начала передачи отсканируйте QR-код передачи, отображаемый на другом устройстве.</string>
+    <string name="account_migration_scanner_view_header_other_device">Для начала передачи отсканируйте QR-код, отображаемый на этом устройстве, с другого устройства.</string>
     <string name="account_migration_scanner_view_message">Отобразите этот экран на каждом устройстве, и одно будет сканировать QR-код другого.</string>
     <string name="account_migration_scanner_view_message_older_version">На этом устройстве используется старая несовместимая версия ОС, что приведет к потере всех связей на целевом устройстве во время передачи. Вы все еще хотите продолжить перенос?</string>
     <string name="account_migration_scanner_view_message_older_version_target">На целевом устройстве используется старая несовместимая версия ОС, что приведет к потере всех ваших связей во время передачи. Вы все еще хотите продолжить перенос?</string>
-    <string name="account_migration_scanner_view_scan_title">Сканирование</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Чтобы запустить миграцию, отсканируйте этот QR-код с другого устройства.</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Сканируйте QR-код, отображаемый в разделе «Учетная запись / Передача с другого устройства» бокового меню другого устройства.</string>
+    <string name="account_migration_scanner_view_restore_title">У вас больше нет доступа к другому устройству?</string>
+    <string name="account_migration_scanner_view_restore_message">Если существует резервная копия, вы можете восстановить ее на этом устройстве.</string>
+    <string name="account_migration_scanner_view_step_1">Откройте приложение на другом устройстве</string>
+    <string name="account_migration_scanner_view_step_2">Перейдите в боковое меню</string>
+    <string name="account_migration_scanner_view_step_3">Выберите «Учетная запись»</string>
+    <string name="account_migration_scanner_view_scan_title">Сканирование</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Начните передачу с этого устройства</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Начните передачу с другого устройства</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Отсканируйте QR-код, отображаемый на другом устройстве, этим устройством</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Отсканируйте QR-код, отображаемый на этом устройстве, другим устройством</string>
     <string name="account_migration_scanner_view_stop_scan_title">Остановить сканирование</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">Удалено</string>
     <string name="backup_view_content_diff_message">Вот изменения по сравнению с вашими текущими данными:</string>
     <string name="backup_view_content_info">Резервные копии не включают разговоры, уведомления и историю.</string>
+    <string name="backup_view_copy_clipboard">Скопировать в буфер обмена</string>
     <string name="backup_view_error_words">Введённые слова не позволяют расшифровать резервную копию.</string>
+    <string name="backup_view_generate_key">Создать новый ключ шифрования</string>
     <string name="backup_view_generate_word">Генерировать</string>
     <string name="backup_view_last_backup">Последнее резервное копирование %1$s</string>
     <string name="backup_view_new_backup">Новая резервная копия</string>
     <string name="backup_view_onboarding">Создайте зашифрованную резервную копию данных учётной записи («Spaces», профили, контакты, группы, «Click-to-call»), которую можно будет восстановить на этом или другом устройстве.</string>
     <string name="backup_view_reminder">Ваша последняя резервная копия была создана более 30 дней назад.</string>
     <string name="backup_view_save_file_message">Сохраните файл резервной копии на выбранном вами устройстве и сохраните пароли для последующего восстановления.</string>
+    <string name="backup_view_save_password">Сохранить в менеджер паролей</string>
     <string name="backup_view_security">Безопасность</string>
     <string name="backup_view_security_info">Резервный ключ шифрования представлен серией из 12 слов, которые понадобятся для восстановления.</string>
     <string name="backup_view_success">Резервное копирование завершено успешно!</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">1 участник</string>
     <string name="conversation_view_invitation_accepted">Приглашение принято</string>
     <string name="conversation_view_invitation_failed">Попросите вашего клиента обновить twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s принял(а) приглашение</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s отклонил(а) приглашение</string>
     <string name="conversation_view_invitation_joined">Член группы</string>
     <string name="conversation_view_invitation_pending">Приглашение в процессе</string>
     <string name="conversation_view_invitation_refused">Приглашение отклонено</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">Большой размер медиафайлов (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Отправьте в стандартном разрешении (SD)</string>
     <string name="conversation_view_send_quality_warning">Вы можете изменить размер до стандартного разрешения (SD) для более быстрой передачи.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s принял(а) запрос на подключение</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Вы не принимаете рекомендации, сделанные вашими контактами.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s отклонил(а) запрос на подключение</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Вы отклонили запрос на подключение</string>
+    <string name="conversation_view_share_contact_item_local_message">Соединяем %1$s с %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Соединяем вас с %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Ожидается подтверждение от %1$s</string>
     <string name="conversation_view_stream_dialog">Вы хотите принять?</string>
     <string name="conversation_view_unsupported_media">Неподдерживаемый формат мультимедиа</string>
     <string name="conversation_view_video_call">Видеозвонок</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">Отклонить</string>
     <string name="notification_center_cleanup_conversation">Некоторые старые сообщения были удалены.</string>
     <string name="notification_center_conference_join_call">К звонку подключился один участник.</string>
+    <string name="notification_center_connection_request">Pedido de conexão</string>
     <string name="notification_center_deleted_contact">Контакт удалён</string>
     <string name="notification_center_file_message">отправил вам файл</string>
     <string name="notification_center_file_message_received">Новый файл</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">Пригласите контакты присоединиться к текущему голосовому/видеозвонку.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Активные приложения</string>
     <string name="privacy_view_coach_mark">Заблокируйте приложение с помощью биометрических сервисов или PIN-кода.</string>
     <string name="privacy_view_hide_last_screen_message">И скрыть приложение, когда оно работает в фоновом режиме, если устройство это позволяет.</string>
     <string name="privacy_view_hide_last_screen_title">Запретить создание скриншотов</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">Тайм-аут блокировки доступа</string>
     <string name="privacy_view_lock_screen_timeout_instant">Мгновенный</string>
     <string name="privacy_view_lock_screen_title">Блокировка доступа</string>
+    <string name="privacy_view_share_invitation_ask">Спрашивать каждый раз</string>
+    <string name="privacy_view_share_invitation_info">Вы будете получать уведомление каждый раз, когда кто-то делится вашим контактом.</string>
+    <string name="privacy_view_share_invitation_setting">Разрешить моим контактам соединять меня со своими контактами</string>
+    <string name="privacy_view_share_invitation_title">Контакты</string>
     <string name="privacy_view_title">Конфиденциальность</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">Восстановление завершено успешно!</string>
     <string name="restore_view_success_message">Закройте приложение и перезапустите его для доступа к новым данным.</string>
     <string name="restore_view_title">Восстановление</string>
+    <string name="restore_view_update_message">Для восстановления резервной копии необходимо обновить приложение.</string>
     <string name="restore_view_verify_same_account">Проверка должна быть выполнена на том же устройстве, которое использовалось для резервного копирования.</string>
     <string name="restore_view_warning">Восстановление этой резервной копии заменит все текущие данные учетной записи на данные из резервной копии.</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">Введите или вставьте ссылку-приглашение</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Предварительный просмотр веб-ссылки раскрывает IP-адрес веб-сайту.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Расширенный</string>
+    <string name="settings_advanced_view_security_advanced_info">IP-адрес скрыт локально (с использованием TLS для STUN).</string>
+    <string name="settings_advanced_view_security_expert">Экспертный</string>
+    <string name="settings_advanced_view_security_expert_info">IP-адрес скрыт локально и для контактов (вызовы маршрутизируются через TURN-сервер).</string>
+    <string name="settings_advanced_view_security_optimized">Оптимизированный (по умолчанию)</string>
+    <string name="settings_advanced_view_security_optimized_info">IP-адрес может быть раскрыт во время обмена данными через WebRTC или при предварительном просмотре веб-ссылок.</string>
+    <string name="settings_advanced_view_security_level_title">Уровень безопасности</string>
+    <string name="settings_advanced_view_security_info">Настройте баланс между безопасностью и производительностью в соответствии с вашими потребностями.</string>
+    <string name="settings_advanced_view_security_title">Безопасность</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Уровень безопасности «Эксперт» не позволяет изменять этот параметр.</string>
     <string name="settings_advanced_view_status_connection_message">Проверьте состояние вашего подключения к сервису</string>
     <string name="settings_advanced_view_status_connection_title">Состояние подключения</string>
     <string name="settings_advanced_view_telecom_enable">Опыт звонков на Android</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">РАЗРЕШЕНИЯ</string>
     <string name="settings_view_silent_mode">Беззвучный режим</string>
     <string name="settings_view_silent_sound">бесшумный</string>
+    <string name="settings_view_sound_effects_info">Воспроизведение звуков при взаимодействии с приложением</string>
+    <string name="settings_view_sound_effects_title">Звуковые эффекты</string>
     <string name="settings_view_sound_enabled_title">ЗВУКОВЫЕ УВЕДОМЛЕНИЯ</string>
+    <string name="settings_view_sound_vibrations_title">Звуки и вибрация</string>
     <string name="settings_view_system_notifications_title">Системные уведомления</string>
     <string name="settings_view_system_settings_title">Настройки системы</string>
     <string name="settings_view_turn_off_notification_sounds">Отключить звуковые уведомления</string>
@@ -1133,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">Отзывы участников видны только администраторам/модераторам</string>
     <string name="settings_room_view_room_type_forum">Форум</string>
     <string name="settings_room_view_room_type_forum_information">Участники могут публиковать сообщения, которые видит каждый</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s хочет соединить вас с %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Добавить %1$s в личные контакты?</string>
+    <string name="share_contact_view_onboarding_part_1">Теперь вы можете разрешить своим контактам связывать вас со своими контактами.</string>
+    <string name="share_contact_view_onboarding_part_2">По умолчанию каждое предложение о подключении должно быть одобрено.</string>
+    <string name="share_contact_view_onboarding_part_3">Поведение по умолчанию можно изменить в разделе «Конфиденциальность» в настройках приложения.</string>
+    <string name="share_contact_view_share_info">%1$s получит уведомление о том, что вы поделились контактом</string>
+    <string name="share_contact_view_share_title">Поделиться контактом %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Контакты</string>
@@ -1167,6 +1226,7 @@
     <string name="show_contact_view_pending_message">Эти отношения находятся в процессе установления. Пожалуйста, подождите.подождите.</string>
     <string name="show_contact_view_revoked">Удалён</string>
     <string name="show_contact_view_settings_coach_mark">Определите, что вашему контактному лицу разрешено делать в этих отношениях с вами.</string>
+    <string name="show_contact_view_share_contact">Поделиться контактом</string>
     <string name="show_contact_view_video">Видео</string>
 
     <!-- ShowGroupActivity -->

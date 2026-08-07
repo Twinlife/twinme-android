@@ -101,6 +101,7 @@
     <string name="application_select_more">더 선택…</string>
     <string name="application_server_timeout">서버 시간 초과</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">시작</string>
     <string name="application_theme">테마</string>
     <string name="application_timeout">만료 지연</string>
     <string name="application_timeout_day">1 일</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 개월</string>
     <string name="application_timeout_seconds">%1$d 초</string>
     <string name="application_timeout_week">1 일주</string>
+    <string name="application_transfer_from_another_device">다른 기기에서 전송</string>
+    <string name="application_transfer_restore">전송 또는 복원</string>
     <string name="application_unknown_name">알 수 없음</string>
     <string name="application_until">%1$s까지</string>
     <string name="application_upgrade">twinme 업그레이드</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">데이터 전송 중</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">전송을 시작하려면 다른 기기에 표시된 전송 QR 코드를 스캔하세요.</string>
+    <string name="account_migration_scanner_view_header_other_device">전송을 시작하려면 다른 기기에서 이 기기에 표시된 QR 코드를 스캔하세요.</string>
     <string name="account_migration_scanner_view_message">이 화면을 각 장치에 표시하고 하나는 다른 장치의 QR 코드를 스캔합니다.</string>
     <string name="account_migration_scanner_view_message_older_version">이 장치는 호환되지 않는 이전 OS 버전을 사용하고 있어 전송 중에 대상 장치의 모든 관계가 손실됩니다. 그래도 이전을 진행하시겠습니까?</string>
     <string name="account_migration_scanner_view_message_older_version_target">대상 장치가 호환되지 않는 오래된 OS 버전을 사용하고 있어 전송 중에 모든 관계가 손실됩니다. 그래도 이전을 진행하시겠습니까?</string>
-    <string name="account_migration_scanner_view_scan_title">스캐닝</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">이전을 시작하려면 다른 기기에서 이 QR 코드를 스캔하세요.</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">다른 기기의 사이드 메뉴에 있는 \"계정/다른 기기에서 전송\" 섹션에 표시된 QR 코드를 스캔합니다.</string>
+    <string name="account_migration_scanner_view_restore_title">다른 기기에 더 이상 접근할 수 없습니까?</string>
+    <string name="account_migration_scanner_view_restore_message">백업이 있는 경우 이 기기로 복원할 수 있습니다.</string>
+    <string name="account_migration_scanner_view_scan_title">스캐닝</string>
+    <string name="account_migration_scanner_view_step_1">다른 기기에서 앱을 엽니다.</string>
+    <string name="account_migration_scanner_view_step_2">측면 메뉴로 이동합니다.</string>
+    <string name="account_migration_scanner_view_step_3">계정을 선택합니다.</string>
+    <string name="account_migration_scanner_view_step_4_my_device">이 기기에서 전송을 시작합니다.</string>
+    <string name="account_migration_scanner_view_step_4_another_device">다른 기기에서 전송을 시작합니다.</string>
+    <string name="account_migration_scanner_view_step_5_my_device">이 기기로 다른 기기에 표시된 QR 코드를 스캔합니다.</string>
+    <string name="account_migration_scanner_view_step_5_another_device">이 기기로 다른 기기에 표시된 QR 코드를 스캔합니다.</string>
     <string name="account_migration_scanner_view_stop_scan_title">스캔 중지</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">삭제됨</string>
     <string name="backup_view_content_diff_message">현재 데이터와 비교한 변경 사항은 다음과 같습니다.</string>
     <string name="backup_view_content_info">백업에는 대화 내용, 알림 및 기록이 포함되지 않습니다.</string>
+    <string name="backup_view_copy_clipboard">클립보드에 복사</string>
     <string name="backup_view_error_words">입력한 단어로는 백업을 해독할 수 없습니다.</string>
+    <string name="backup_view_generate_key">새 암호화 키 생성</string>
     <string name="backup_view_generate_word">생성하다</string>
     <string name="backup_view_last_backup">%1$s에 마지막 백업</string>
     <string name="backup_view_new_backup">새 백업</string>
     <string name="backup_view_onboarding">계정 데이터(\"Spaces\", 프로필, 연락처, 여러 떼, « click-to-call »)를 암호화하여 이 기기 또는 다른 기기에 복원할 수 있는 백업을 만드세요.</string>
     <string name="backup_view_reminder">마지막 백업이 생성된 지 30일이 지났습니다.</string>
     <string name="backup_view_save_file_message">백업 파일을 원하는 기기에 저장하고 나중에 복원할 수 있도록 비밀번호를 보관하세요.</string>
+    <string name="backup_view_save_password">비밀번호 관리자에 저장</string>
     <string name="backup_view_security">보안</string>
     <string name="backup_view_security_info">백업 암호화 키는 복원에 필요한 일련의 12 단어로 표시됩니다.</string>
     <string name="backup_view_success">백업이 성공적으로 완료되었습니다!</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">1 명</string>
     <string name="conversation_view_invitation_accepted">초대장이 수락되었습니다</string>
     <string name="conversation_view_invitation_failed">연락처에 twinme 업데이트를 요청하십시오</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s 님이 초대를 수락했습니다</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s 님이 초대를 거절했습니다</string>
     <string name="conversation_view_invitation_joined">그룹 회원</string>
     <string name="conversation_view_invitation_pending">초대장이 진행 중입니다</string>
     <string name="conversation_view_invitation_refused">초대장이 거부되었습니다</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">대용량 미디어(%1$s).</string>
     <string name="conversation_view_send_quality_standard">표준 해상도(SD)로 전송하세요.</string>
     <string name="conversation_view_send_quality_warning">더 빠른 전송을 위해 표준 해상도(SD)로 크기를 조정할 수 있습니다.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s 님이 연결을 수락했습니다</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">귀하는 지인들이 주선하는 소개를 받아들이지 않습니다.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s 님이 연결을 거절했습니다</string>
+    <string name="conversation_view_share_contact_item_decline_connection">연결 요청을 거절했습니다</string>
+    <string name="conversation_view_share_contact_item_local_message">%1$s 님과 %2$s 님을 연결하는 중</string>
+    <string name="conversation_view_share_contact_item_peer_message">%1$s 님과 연결 중</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">%1$s 님의 수락 대기 중</string>
     <string name="conversation_view_stream_dialog">수락하시겠습니까?</string>
     <string name="conversation_view_unsupported_media">지원되지 않는 미디어 형식</string>
     <string name="conversation_view_video_call">영상 통화</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">거부</string>
     <string name="notification_center_cleanup_conversation">이전 메시지가 삭제되었습니다.</string>
     <string name="notification_center_conference_join_call">참가자 한 명이 통화에 참여했습니다.</string>
+    <string name="notification_center_connection_request">Richiesta di connessione</string>
     <string name="notification_center_deleted_contact">연락처 삭제됨</string>
     <string name="notification_center_file_message">당신에게 파일을 보냈습니다</string>
     <string name="notification_center_file_message_received">새로운 파일</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">진행 중인 음성/영상 통화에 참여하도록 연락처를 초대합니다.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">활성 애플리케이션</string>
     <string name="privacy_view_coach_mark">생체 인식 서비스 또는 PIN 코드로 애플리케이션을 잠급니다.</string>
     <string name="privacy_view_hide_last_screen_message">기기에서 허용하는 경우, 백그라운드에서 실행 중인 앱을 숨깁니다.</string>
     <string name="privacy_view_hide_last_screen_title">스크린샷 금지</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">액세스 잠금 시간 초과</string>
     <string name="privacy_view_lock_screen_timeout_instant">즉시</string>
     <string name="privacy_view_lock_screen_title">액세스 잠금</string>
+    <string name="privacy_view_share_invitation_ask">매번 확인</string>
+    <string name="privacy_view_share_invitation_info">누군가 내 연락처를 공유할 때마다 알림을 받게 됩니다.</string>
+    <string name="privacy_view_share_invitation_setting">내 연락처에 있는 사람들이 자신의 연락처와 나를 연결하도록 허용</string>
+    <string name="privacy_view_share_invitation_title">연결</string>
     <string name="privacy_view_title">기밀성</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">복원이 성공적으로 완료되었습니다!</string>
     <string name="restore_view_success_message">앱을 닫고 다시 시작하여 새 데이터에 액세스하십시오.</string>
     <string name="restore_view_title">복구</string>
+    <string name="restore_view_update_message">백업을 복원하려면 애플리케이션을 업데이트해야 합니다.</string>
     <string name="restore_view_verify_same_account">검증은 백업에 사용된 동일한 기기에서 수행해야 합니다.</string>
     <string name="restore_view_warning">이 백업을 복원하면 모든 현재 계정 데이터를 백업의 데이터로 바꿉니다.</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">초대 링크를 입력하거나 붙여넣으세요</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">웹 링크 미리보기 시 웹사이트에 IP 주소가 노출됩니다.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">고급</string>
+    <string name="settings_advanced_view_security_advanced_info">IP 주소가 로컬에서 숨겨집니다(STUN에 TLS 사용).</string>
+    <string name="settings_advanced_view_security_expert">전문가</string>
+    <string name="settings_advanced_view_security_expert_info">IP 주소가 로컬 및 연락처에 숨겨집니다(통화는 TURN 서버를 통해 연결됨).</string>
+    <string name="settings_advanced_view_security_optimized">최적화(기본값)</string>
+    <string name="settings_advanced_view_security_optimized_info">WebRTC 교환 또는 웹 링크 미리보기 중에 IP 주소가 노출될 수 있습니다.</string>
+    <string name="settings_advanced_view_security_level_title">보안 수준</string>
+    <string name="settings_advanced_view_security_info">특정 요구 사항에 맞게 보안과 성능 간의 균형을 조정합니다.</string>
+    <string name="settings_advanced_view_security_title">보안</string>
+    <string name="settings_advanced_view_security_unauthorized_update">전문가 보안 수준에서는 이 설정을 변경할 수 없습니다.</string>
     <string name="settings_advanced_view_status_connection_message">서비스 연결 상태를 확인하세요.</string>
     <string name="settings_advanced_view_status_connection_title">연결 상태</string>
     <string name="settings_advanced_view_telecom_enable">Android 통화 환경</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">퍼미션</string>
     <string name="settings_view_silent_mode">무음 모드</string>
     <string name="settings_view_silent_sound">무음</string>
+    <string name="settings_view_sound_effects_info">앱과 상호 작용할 때 소리를 재생합니다.</string>
+    <string name="settings_view_sound_effects_title">효과음</string>
     <string name="settings_view_sound_enabled_title">알림음</string>
+    <string name="settings_view_sound_vibrations_title">소리 및 진동</string>
     <string name="settings_view_system_notifications_title">시스템 설정</string>
     <string name="settings_view_system_settings_title">시스템 알림</string>
     <string name="settings_view_turn_off_notification_sounds">알림 소리 끄기</string>
@@ -1133,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">참가자 피드백은 관리자/조정자만 볼 수 있습니다.</string>
     <string name="settings_room_view_room_type_forum">법정</string>
     <string name="settings_room_view_room_type_forum_information">참가자는 모든 사람이 본 메시지를 게시할 수 있습니다.</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s 님이 귀하를 %2$s 님과 연결하려 합니다</string>
+    <string name="share_contact_accept_view_invite_message">%1$s 님을 개인 연락처에 추가하시겠습니까?</string>
+    <string name="share_contact_view_onboarding_part_1">이제 연락처에 있는 사람들이 자신의 연락처와 나를 연결할 수 있도록 허용할 수 있습니다.</string>
+    <string name="share_contact_view_onboarding_part_2">기본적으로는 각 연결 제안을 승인해야 합니다.</string>
+    <string name="share_contact_view_onboarding_part_3">이 기본 동작은 앱 설정의 \"개인 정보\" 섹션에서 변경할 수 있습니다.</string>
+    <string name="share_contact_view_share_info">%1$s 님에게 공유 알림이 전송됩니다</string>
+    <string name="share_contact_view_share_title">%1$s 님의 연락처 공유하기</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">연락처</string>
@@ -1167,6 +1226,7 @@
     <string name="show_contact_view_pending_message">이 관계가 설정되고 있습니다. 기다려 주십시오.</string>
     <string name="show_contact_view_revoked">삭제됨</string>
     <string name="show_contact_view_settings_coach_mark">귀하의 연락처가 귀하와 관련하여 수행할 수 있는 작업을 정의합니다.</string>
+    <string name="show_contact_view_share_contact">연락처 공유하기</string>
     <string name="show_contact_view_video">동영상</string>
 
     <!-- ShowGroupActivity -->

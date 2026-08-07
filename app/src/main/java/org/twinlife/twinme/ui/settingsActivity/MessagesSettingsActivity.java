@@ -29,6 +29,7 @@ import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
+import org.twinlife.twinme.ui.privacyActivity.UITimeout;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.FileInfo;
 
@@ -262,11 +263,16 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity {
 
                 if (mMenuType == MenuSelectValueView.MenuType.QUALITY_MEDIA) {
                     Settings.qualityMedia.setInt(value).save();
+                    mMessagesSettingsAdapter.updateMediaQuality();
                 } else if (mMenuType == MenuSelectValueView.MenuType.DISPLAY_CALLS) {
                     Settings.displayCallsMode.setInt(value).save();
+                    mMessagesSettingsAdapter.updateDisplayCalls();
                 }
+            }
 
-                mMessagesSettingsAdapter.updateMediaQuality();
+            @Override
+            public void onSelectTimeout(UITimeout timeout) {
+
             }
         });
 

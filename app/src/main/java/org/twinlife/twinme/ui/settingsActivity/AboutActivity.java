@@ -123,7 +123,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
         }
 
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/terms_of_service.html");
+        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.terms_of_service);
         intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_terms_of_use));
         startActivity(intent);
     }
@@ -134,7 +134,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
         }
 
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/privacy_policy.html");
+        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.privacy_policy);
         intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_privacy_policy));
         startActivity(intent);
     }
@@ -145,7 +145,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
         }
 
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/opensource.html");
+        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID, R.raw.opensource);
         intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_application_code));
         startActivity(intent);
     }
@@ -156,7 +156,7 @@ public class AboutActivity extends AbstractTwinmeActivity {
         }
 
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_ACTIVITY_URL, "file:///android_res/raw/licenses.html");
+        intent.putExtra(WebViewActivity.INTENT_WEB_VIEW_RESOURCE_ID,  R.raw.licenses);
         intent.putExtra(Intents.INTENT_TITLE, getString(R.string.about_view_open_sources_licences));
         startActivity(intent);
     }

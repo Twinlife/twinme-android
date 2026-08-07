@@ -101,6 +101,7 @@
     <string name="application_select_more">और चुनें...</string>
     <string name="application_server_timeout">सर्वर समय समाप्ति</string>
     <string name="application_size_unit">एमबी</string>
+    <string name="application_start">शुरू करें</string>
     <string name="application_theme">विषय</string>
     <string name="application_timeout">समाप्ति देरी</string>
     <string name="application_timeout_day">1 दिन</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 महीना</string>
     <string name="application_timeout_seconds">%1$d सेकंड</string>
     <string name="application_timeout_week">1 सप्ताह</string>
+    <string name="application_transfer_from_another_device">दूसरे डिवाइस से ट्रांसफ़र करें</string>
+    <string name="application_transfer_restore">ट्रांसफ़र या रिस्टोर करें</string>
     <string name="application_unknown_name">अज्ञात</string>
     <string name="application_until">%1$s तक</string>
     <string name="application_upgrade">twinme को अपग्रेड करना</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">डेटा ट्रांसफर प्रगति पर है</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">ट्रांसफ़र शुरू करने के लिए, दूसरे डिवाइस पर दिख रहे ट्रांसफ़र QR-कोड को स्कैन करें।</string>
+    <string name="account_migration_scanner_view_header_other_device">ट्रांसफ़र शुरू करने के लिए, इस डिवाइस पर दिख रहे QR-कोड को दूसरे डिवाइस से स्कैन करें।</string>
     <string name="account_migration_scanner_view_message">प्रत्येक डिवाइस पर इस स्क्रीन को प्रदर्शित करें, और एक दूसरे के QR- कोड को स्कैन करता है।</string>
     <string name="account_migration_scanner_view_message_older_version">यह डिवाइस एक पुराने असंगत ओएस संस्करण का उपयोग कर रहा है, जिसके कारण स्थानांतरण के दौरान लक्ष्य डिवाइस पर सभी संबंध नष्ट हो जाएंगे। क्या आप अब भी स्थानांतरण के साथ आगे बढ़ना चाहते हैं?</string>
     <string name="account_migration_scanner_view_message_older_version_target">लक्ष्य डिवाइस पुराने असंगत OS संस्करण का उपयोग कर रहा है, जिसके कारण स्थानांतरण के दौरान आपके सभी संबंध नष्ट हो जाएंगे। क्या आप अब भी स्थानांतरण के साथ आगे बढ़ना चाहते हैं?</string>
-    <string name="account_migration_scanner_view_scan_title">स्कैनिंग</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">माइग्रेशन शुरू करने के लिए, दूसरे डिवाइस से इस क्यूआर-कोड को स्कैन करें</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">अन्य डिवाइस के साइड मेनू के \"खाता / किसी अन्य डिवाइस से स्थानांतरण\" अनुभाग में प्रदर्शित क्यूआर कोड को स्कैन करें।</string>
+    <string name="account_migration_scanner_view_restore_title">क्या अब आपके पास दूसरे डिवाइस का एक्सेस नहीं है?</string>
+    <string name="account_migration_scanner_view_restore_message">अगर बैकअप मौजूद है, तो आप उसे इस डिवाइस पर रीस्टोर कर सकते हैं।</string>
+    <string name="account_migration_scanner_view_scan_title">स्कैनिंग</string>
+    <string name="account_migration_scanner_view_step_1">दूसरे डिवाइस पर ऐप खोलें</string>
+    <string name="account_migration_scanner_view_step_2">साइड मेन्यू पर जाएं</string>
+    <string name="account_migration_scanner_view_step_3">अकाउंट चुनें</string>
+    <string name="account_migration_scanner_view_step_4_my_device">इस डिवाइस से ट्रांसफर शुरू करें</string>
+    <string name="account_migration_scanner_view_step_4_another_device">दूसरे डिवाइस से ट्रांसफर शुरू करें</string>
+    <string name="account_migration_scanner_view_step_5_my_device">दूसरे डिवाइस पर दिख रहे QR कोड को इस डिवाइस से स्कैन करें</string>
+    <string name="account_migration_scanner_view_step_5_another_device">इस डिवाइस पर दिख रहे QR कोड को दूसरे डिवाइस से स्कैन करें</string>
     <string name="account_migration_scanner_view_stop_scan_title">स्कैन बंद करो</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">हटाया गया</string>
     <string name="backup_view_content_diff_message">आपके वर्तमान डेटा की तुलना में ये परिवर्तन इस प्रकार हैं:</string>
     <string name="backup_view_content_info">बैकअप में बातचीत, नोटिफ़िकेशन और हिस्ट्री शामिल नहीं होती हैं।</string>
+    <string name="backup_view_copy_clipboard">क्लिपबोर्ड पर कॉपी करें</string>
     <string name="backup_view_error_words">दर्ज किए गए शब्द बैकअप को डिक्रिप्ट करने की अनुमति नहीं देते हैं।</string>
+    <string name="backup_view_generate_key">नई एन्क्रिप्शन की (key) बनाएँ</string>
     <string name="backup_view_generate_word">उत्पन्न करें</string>
     <string name="backup_view_last_backup">अंतिम बैकअप %1$s</string>
     <string name="backup_view_new_backup">नया बैकअप</string>
     <string name="backup_view_onboarding">खाता डेटा (\"Spaces\", प्रोफ़ाइल, संपर्क, \"click-to-call\") का एक एन्क्रिप्टेड बैकअप बनाएँ जिसे इस डिवाइस या किसी अन्य डिवाइस पर पुनर्स्थापित किया जा सके।</string>
     <string name="backup_view_reminder">आपका पिछला बैकअप 30 दिन से ज़्यादा पहले बनाया गया था।</string>
     <string name="backup_view_save_file_message">बैकअप फ़ाइल को अपनी पसंद के डिवाइस पर सेव करें और बाद में पुनर्स्थापित करने के लिए पासवर्ड सुरक्षित रखें।</string>
+    <string name="backup_view_save_password">पासवर्ड मैनेजर में सेव करें</string>
     <string name="backup_view_security">सुरक्षा</string>
     <string name="backup_view_security_info">बैकअप एन्क्रिप्शन कुंजी को 12 शब्दों की एक श्रृंखला द्वारा दर्शाया गया है जो बहाली के लिए आवश्यक होगा।</string>
     <string name="backup_view_success">बैकअप सफलतापूर्वक पूरा हुआ!</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">1 सदस्य</string>
     <string name="conversation_view_invitation_accepted">आमंत्रण स्वीकार किया गया</string>
     <string name="conversation_view_invitation_failed">अपने संपर्क से twinme अपडेट करने के लिए कहें</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s ने निमंत्रण स्वीकार किया</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s ने निमंत्रण अस्वीकार किया</string>
     <string name="conversation_view_invitation_joined">समूह के सदस्य</string>
     <string name="conversation_view_invitation_pending">प्रगति पर आमंत्रण</string>
     <string name="conversation_view_invitation_refused">आमंत्रण में कमी आई</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">बड़ा मीडिया (%1$s).</string>
     <string name="conversation_view_send_quality_standard">स्टैंडर्ड डेफ़िनिशन (SD) में भेजें</string>
     <string name="conversation_view_send_quality_warning">तेज़ ट्रांसफ़र के लिए आप स्टैंडर्ड डेफ़िनिशन (SD) में साइज़ बदल सकते हैं.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s ने कनेक्शन स्वीकार किया</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">आप अपने कॉन्टैक्ट्स द्वारा कराए गए परिचय स्वीकार नहीं करते हैं।</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s ने कनेक्शन अस्वीकार किया</string>
+    <string name="conversation_view_share_contact_item_decline_connection">आपने कनेक्शन का अनुरोध अस्वीकार कर दिया</string>
+    <string name="conversation_view_share_contact_item_local_message">%1$s को %2$s से कनेक्ट किया जा रहा है</string>
+    <string name="conversation_view_share_contact_item_peer_message">आपको %1$s से कनेक्ट किया जा रहा है</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">%1$s द्वारा स्वीकार किए जाने का इंतज़ार है</string>
     <string name="conversation_view_stream_dialog">आप इसे स्वीकार करना चाहते हैं?</string>
     <string name="conversation_view_unsupported_media">असमर्थित मीडिया प्रारूप</string>
     <string name="conversation_view_video_call">वीडियो कॉल</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">खारिज करें</string>
     <string name="notification_center_cleanup_conversation">कुछ पुराने संदेश हटा दिए गए हैं।</string>
     <string name="notification_center_conference_join_call">एक पार्टिसिपेंट कॉल में शामिल हुआ।</string>
+    <string name="notification_center_connection_request">Αίτημα σύνδεσης</string>
     <string name="notification_center_deleted_contact">संपर्क हटा दिया गया</string>
     <string name="notification_center_file_message">आपको एक फाइल भेजी</string>
     <string name="notification_center_file_message_received">नई फ़ाइल</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">चल रहे ध्वनि/वीडियो कॉल में शामिल होने के लिए संपर्कों को आमंत्रित करें।</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">एक्टिव एप्लीकेशन</string>
     <string name="privacy_view_coach_mark">एप्लिकेशन को बायोमेट्रिक सेवाओं या पिन कोड के साथ लॉक करें।</string>
     <string name="privacy_view_hide_last_screen_message">और अगर डिवाइस इजाज़त दे, तो ऐप को बैकग्राउंड में चलने पर छिपा दें।</string>
     <string name="privacy_view_hide_last_screen_title">स्क्रीनशॉट लेने से मना करें</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">एक्सेस लॉक टाइम आउट</string>
     <string name="privacy_view_lock_screen_timeout_instant">तुरंत</string>
     <string name="privacy_view_lock_screen_title">पहुंच लॉक</string>
+    <string name="privacy_view_share_invitation_ask">हर बार मुझसे पूछें</string>
+    <string name="privacy_view_share_invitation_info">जब भी कोई आपका कॉन्टैक्ट शेयर करेगा, तो आपको नोटिफ़िकेशन मिलेगा।</string>
+    <string name="privacy_view_share_invitation_setting">मेरे कॉन्टैक्ट्स को मुझे अपने कॉन्टैक्ट्स से कनेक्ट करने दें</string>
+    <string name="privacy_view_share_invitation_title">कनेक्शन</string>
     <string name="privacy_view_title">गोपनीयता</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">पुनर्स्थापना सफलतापूर्वक पूरी हुई!</string>
     <string name="restore_view_success_message">ऐप को बंद करें और नए डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
     <string name="restore_view_title">बहाली</string>
+    <string name="restore_view_update_message">बैकअप को रिस्टोर करने के लिए आपको एप्लिकेशन को अपडेट करना होगा।</string>
     <string name="restore_view_verify_same_account">वेरिफिकेशन उसी डिवाइस पर किया जाना चाहिए जिसका इस्तेमाल बैकअप के लिए किया गया था।</string>
     <string name="restore_view_warning">इस बैकअप को पुनर्स्थापित करने से सभी चालू खाता डेटा को बैकअप से डेटा के साथ बदल दिया जाएगा।</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">आमंत्रण लिंक डालें या चिपकाएँ</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">वेब लिंक का प्रीव्यू करने से IP एड्रेस वेबसाइट पर दिख जाता है।</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">एडवांस्ड</string>
+    <string name="settings_advanced_view_security_advanced_info">IP एड्रेस लोकली छिपा होता है (STUN के लिए TLS का इस्तेमाल करके)।</string>
+    <string name="settings_advanced_view_security_expert">एक्सपर्ट</string>
+    <string name="settings_advanced_view_security_expert_info">IP एड्रेस लोकली और कॉन्टैक्ट्स से छिपा होता है (कॉल TURN सर्वर के ज़रिए रूट की जाती हैं)।</string>
+    <string name="settings_advanced_view_security_optimized">ऑप्टिमाइज़्ड (डिफ़ॉल्ट)</string>
+    <string name="settings_advanced_view_security_optimized_info">WebRTC एक्सचेंज या वेब लिंक प्रीव्यू के दौरान IP एड्रेस का पता चल सकता है।</string>
+    <string name="settings_advanced_view_security_level_title">सिक्योरिटी लेवल</string>
+    <string name="settings_advanced_view_security_info">खास ज़रूरतों के लिए सिक्योरिटी और परफॉर्मेंस के बीच बैलेंस एडजस्ट करें।</string>
+    <string name="settings_advanced_view_security_title">सिक्योरिटी</string>
+    <string name="settings_advanced_view_security_unauthorized_update">एक्सपर्ट सिक्योरिटी लेवल इस सेटिंग को बदलने की इजाज़त नहीं देता है।</string>
     <string name="settings_advanced_view_status_connection_message">सेवा से अपने कनेक्शन की स्थिति देखें</string>
     <string name="settings_advanced_view_status_connection_title">कनेक्शन स्थिति</string>
     <string name="settings_advanced_view_telecom_enable">Android कॉलिंग अनुभव</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">अनुमति</string>
     <string name="settings_view_silent_mode">साइलेंट मोड</string>
     <string name="settings_view_silent_sound">मूक</string>
+    <string name="settings_view_sound_effects_info">ऐप के साथ इंटरैक्ट करते समय साउंड बजाएँ</string>
+    <string name="settings_view_sound_effects_title">साउंड इफ़ेक्ट</string>
     <string name="settings_view_sound_enabled_title">ध्वनि सूचनाएं</string>
+    <string name="settings_view_sound_vibrations_title">साउंड और वाइब्रेशन</string>
     <string name="settings_view_system_notifications_title">सिस्टम सूचनाएं</string>
     <string name="settings_view_system_settings_title">सिस्टम सेटिंग्स</string>
     <string name="settings_view_turn_off_notification_sounds">नोटिफ़िकेशन साउंड बंद करें</string>
@@ -1133,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">प्रतिभागियों की प्रतिक्रिया केवल प्रशासकों/मॉडरेटरों द्वारा देखी जाती है</string>
     <string name="settings_room_view_room_type_forum">मंच</string>
     <string name="settings_room_view_room_type_forum_information">प्रतिभागी सभी के द्वारा देखे गए संदेशों को पोस्ट कर सकते हैं</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s आपको %2$s से कनेक्ट करना चाहते हैं</string>
+    <string name="share_contact_accept_view_invite_message">क्या आप %1$s को पर्सनल कॉन्टैक्ट के तौर पर जोड़ना चाहते हैं?</string>
+    <string name="share_contact_view_onboarding_part_1">अब आप अपने कॉन्टैक्ट्स को अपने कॉन्टैक्ट्स से कनेक्ट करने की इजाज़त दे सकते हैं।</string>
+    <string name="share_contact_view_onboarding_part_2">डिफ़ॉल्ट रूप से, आपको हर कनेक्शन प्रपोज़ल को मंज़ूरी देनी होगी।</string>
+    <string name="share_contact_view_onboarding_part_3">डिफ़ॉल्ट बिहेवियर को ऐप सेटिंग्स के \"\"प्राइवेसी\"\" सेक्शन में बदला जा सकता है।</string>
+    <string name="share_contact_view_share_info">%1$s को शेयरिंग का नोटिफ़िकेशन मिलेगा</string>
+    <string name="share_contact_view_share_title">%1$s का कॉन्टैक्ट शेयर करें</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">संपर्क</string>
@@ -1167,6 +1226,7 @@
     <string name="show_contact_view_pending_message">यह सम्बन्ध स्थापित हो रहा है। कृपया प्रतीक्षा करें।</string>
     <string name="show_contact_view_revoked">हटाया गया</string>
     <string name="show_contact_view_settings_coach_mark">परिभाषित करें कि आपके संपर्क को आपके साथ इस संबंध में क्या करने की अनुमति है।</string>
+    <string name="show_contact_view_share_contact">यह कॉन्टैक्ट शेयर करें</string>
     <string name="show_contact_view_video">वीडियो</string>
 
     <!-- ShowGroupActivity -->

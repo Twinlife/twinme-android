@@ -17,7 +17,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import org.twinlife.twinlife.AndroidTwinlifeImpl;
-import org.twinlife.twinlife.TwinlifeService;
 
 public class BootReceiver extends BroadcastReceiver {
     private static final String LOG_TAG = "BootReceiver";
@@ -27,11 +26,9 @@ public class BootReceiver extends BroadcastReceiver {
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             if (!AndroidTwinlifeImpl.isStarted()) {
-                try {
-                    context.startService(new Intent(context, TwinlifeService.class));
-                } catch (IllegalStateException exception) {
-                    Log.e(LOG_TAG, "startService failed");
-                }
+                Log.e(LOG_TAG, "AndroidTwinlifeImpl is not started");
+            } else {
+                Log.e(LOG_TAG, "AndroidTwinlifeImpl is started");
             }
         }
     }

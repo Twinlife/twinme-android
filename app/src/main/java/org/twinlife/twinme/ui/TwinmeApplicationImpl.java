@@ -33,12 +33,14 @@ import com.bumptech.glide.Glide;
 
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
-import org.twinlife.twinlife.BaseService;
 import org.twinlife.twinlife.ConnectionStatus;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.DisplayCallsMode;
+import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ImageId;
 import org.twinlife.twinlife.JobService;
+import org.twinlife.twinlife.PeerConnectionService;
+import org.twinlife.twinlife.ShareInvitationMode;
 import org.twinlife.twinlife.Twincode;
 import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.NotificationCenter;
@@ -71,8 +73,6 @@ import java.io.File;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.Date;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplicationImpl implements TwinmeApplication, JobService.Observer {
     private static final String LOG_TAG = "TwinmeApplicationImpl";
@@ -227,7 +227,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         mNotificationCenter.resetNotificationChannels();
     }
 
-    public static int errorToMessageId(BaseService.ErrorCode errorCode) {
+    public static int errorToMessageId(ErrorCode errorCode) {
 
         int message;
         switch (errorCode) {
@@ -301,7 +301,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
 
     @Override
     @NonNull
-    public String errorToString(BaseService.ErrorCode errorCode) {
+    public String errorToString(ErrorCode errorCode) {
 
         int message;
         switch (errorCode) {
@@ -385,7 +385,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
-    public void onError(@NonNull final Activity activity, BaseService.ErrorCode errorCode, @Nullable String message, @Nullable Runnable errorCallback) {
+    public void onError(@NonNull final Activity activity, ErrorCode errorCode, @Nullable String message, @Nullable Runnable errorCallback) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onError: activity=" + activity + " errorCode=" + errorCode + " message=" + message + " errorCallback=" + errorCallback);
         }
@@ -529,6 +529,24 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     }
 
     @Override
+    public boolean askPostNotifications() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "showWelcomeScreen");
+        }
+
+        return Settings.askPostNotificationsPermissions.getBoolean();
+    }
+
+    @Override
+    public void setAskPostNotifications(boolean value) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setAskPostNotifications");
+        }
+
+        Settings.askPostNotificationsPermissions.setBoolean(value).save();
+    }
+
+    @Override
     public int fontSize() {
         if (DEBUG) {
             Log.d(LOG_TAG, "fontSize");
@@ -580,6 +598,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         return Settings.hapticFeedbackEnable.getBoolean();
+    }
+
+    @Override
+    public boolean soundEffectsEnable() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "soundEffectsEnable");
+        }
+
+        return Settings.soundEffectsEnable.getBoolean();
     }
 
     @Override
@@ -684,6 +711,30 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     public void setDisplayCallsMode(DisplayCallsMode displayCallsMode) {
 
         Settings.displayCallsMode.setInt(DisplayCallsMode.toInteger(displayCallsMode)).save();
+    }
+
+    @NonNull
+    public PeerConnectionService.IceTransportMode getIceTransportMode() {
+
+        return Settings.iceTransportMode.getEnum();
+    }
+
+    @Override
+    public void setIceTransportMode(@NonNull PeerConnectionService.IceTransportMode iceTransportMode) {
+
+        Settings.iceTransportMode.setEnum(iceTransportMode).save();
+    }
+
+    @NonNull
+    public ShareInvitationMode getShareInvitationMode() {
+
+        return Settings.shareInvitationMode.getEnum();
+    }
+
+    @Override
+    public void setShareInvitationMode(@NonNull ShareInvitationMode shareInvitationMode) {
+
+        Settings.shareInvitationMode.setEnum(shareInvitationMode).save();
     }
 
     @Override
@@ -1037,27 +1088,38 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
                     .build());
         }
 
+        initialize(this::setup);
 
-        TwinmeContext twinmeContext = getTwinmeContext();
-        if (twinmeContext == null) {
-            return;
+        mCoachMarkManager = new CoachMarkManager();
+    }
+
+    /**
+     * Deferred setup executed from the twinlife executor thread, BEFORE the library is
+     * configured.
+     * @param twinmeContext the twinme context.
+     */
+    private void setup(@NonNull TwinmeContext twinmeContext) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "setup");
         }
 
-        Settings.init(twinmeContext.getConfigurationService());
+        mJobService = twinmeContext.getJobService();
+        mJobService.setObserver(this);
 
-        // Create the default space settings based on the user's current settings.
-        SpaceSettings defaultSettings = new SpaceSettings(getResources().getString(R.string.space_appearance_view_general_title));
-        defaultSettings.setMessageCopyAllowed(Settings.messageCopyAllowed.getBoolean());
-        defaultSettings.setFileCopyAllowed(Settings.fileCopyAllowed.getBoolean());
-        twinmeContext.setDefaultSpaceSettings(defaultSettings, getResources().getString(R.string.application_default));
+        Settings.init(twinmeContext.getConfigurationService());
+        setFirstInstallationBackupDate();
 
         // Setup so that the 'description' and 'capabilities' attributes are copied from the Profile
         // when a new relation is created.
         twinmeContext.registerSharedTwincodeAttribute(Twincode.DESCRIPTION, Twincode.DESCRIPTION);
         twinmeContext.registerSharedTwincodeAttribute(Twincode.CAPABILITIES, Twincode.CAPABILITIES);
         mAdminService = new AdminService(twinmeContext, this);
-        mJobService = twinmeContext.getJobService();
-        mJobService.setObserver(this);
+
+        // Create the default space settings based on the user's current settings.
+        SpaceSettings defaultSettings = new SpaceSettings(getResources().getString(R.string.space_appearance_view_general_title));
+        defaultSettings.setMessageCopyAllowed(Settings.messageCopyAllowed.getBoolean());
+        defaultSettings.setFileCopyAllowed(Settings.fileCopyAllowed.getBoolean());
+        twinmeContext.setDefaultSpaceSettings(defaultSettings, getResources().getString(R.string.application_default));
 
         Glide glide = Glide.get(this);
         glide.getRegistry()
@@ -1066,13 +1128,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
                 .append(FileInfo.class, InputStream.class, MediaInfoImageLoader.Factory.create())
                 .append(FileInfo.class, Bitmap.class, MediaInfoVideoThumbnailLoader.Factory.create(this));
 
-        ExecutorService glideCacheExecutor = Executors.newSingleThreadExecutor();
-        glideCacheExecutor.execute(glide::clearDiskCache);
-        glideCacheExecutor.shutdown();
-
-        mCoachMarkManager = new CoachMarkManager();
-
-        setFirstInstallationBackupDate();
+        twinmeContext.executeImage(glide::clearDiskCache);
     }
 
     @Override
@@ -1096,9 +1152,6 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         mIsInBackground = false;
-
-        // We are now in foreground: we can stop the peer service since we don't need it anymore.
-        PeerService.forceStop(this);
     }
 
     @Override
@@ -1106,46 +1159,12 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         if (DEBUG) {
             Log.d(LOG_TAG, "onBackgroundNetworkStart");
         }
-
-        final boolean isIdle = mJobService.isIdle();
-        if (!isIdle && !CallService.isRunning()) {
-            // Delay by 1s the possible start of the PeerService: it is best if we are started
-            // as a result of a Firebase Push message because the application will have higher priority.
-            // BUT, we cannot wait for the Firebase Push to be received.
-            mJobService.schedule(this::startPeerService, 1000);
-        }
-    }
-
-    private void startPeerService() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "startPeerService");
-        }
-
-        final boolean isIdle = mJobService.isIdle();
-        if (!isIdle && !CallService.isRunning()) {
-            PeerService.startService(this, 0, System.currentTimeMillis());
-        }
     }
 
     @Override
     public void onBackgroundNetworkStop() {
         if (DEBUG) {
             Log.d(LOG_TAG, "onBackgroundNetworkStop");
-        }
-
-        // Wait 1s before asking the service to stop because sometimes a new P2P connection
-        // is started 100 to 500ms after and we won't be able to start it again.
-        mJobService.schedule(this::stopPeerService, 1000);
-    }
-
-    private void stopPeerService() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "stopPeerService");
-        }
-
-        final boolean isIdle = mJobService.isIdle();
-        if (isIdle) {
-            PeerService.forceStop(this);
         }
     }
 
@@ -1526,6 +1545,9 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             case BACKUP_BETA:
                 return Settings.showBetaBackupOnboarding.getBoolean();
 
+            case SHARE_CONTACT:
+                return Settings.showShareContactOnboarding.getBoolean();
+
             default:
                 return false;
         }
@@ -1594,6 +1616,10 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
                 Settings.showBetaBackupOnboarding.setBoolean(state).save();
                 break;
 
+            case SHARE_CONTACT:
+                Settings.showShareContactOnboarding.setBoolean(state).save();
+                break;
+
             default:
                 break;
         }
@@ -1617,6 +1643,7 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         Settings.showRestoreOnboarding.setBoolean(true).save();
         Settings.showVerifyBackupOnboarding.setBoolean(true).save();
         Settings.showBetaBackupOnboarding.setBoolean(true).save();
+        Settings.showShareContactOnboarding.setBoolean(true).save();
     }
 
     @Override

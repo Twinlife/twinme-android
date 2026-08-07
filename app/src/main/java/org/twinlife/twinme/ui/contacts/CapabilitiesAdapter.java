@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private final AbstractCapabilitiesActivity mCapabilitiesActivity;
 
-    private static int ITEM_COUNT = 15;
+    private static int ITEM_COUNT = 12;
 
     private static final int SECTION_PERMISSION = 0;
     private static final int POSITION_ALLOW_AUDIO_CALL = 1;
@@ -41,17 +42,13 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static int POSITION_CAMERA_CONTROL_INFORMATION = 4;
     private static int POSITION_SELECT_CAMERA_CONTROL = 5;
 
-    private static int SECTION_DISCREET_RELATION = 6;
-    private static int POSITION_DISCREET_RELATION = 7;
-    private static int POSITION_DISCREET_RELATION_INFORMATION = 8;
+    private static int SECTION_ENABLE_SCHEDULE = 6;
+    private static int POSITION_ENABLE_SCHEDULE_INFORMATION = 7;
+    private static int POSITION_ENABLE_SCHEDULE = 8;
 
-    private static int SECTION_ENABLE_SCHEDULE = 9;
-    private static int POSITION_ENABLE_SCHEDULE_INFORMATION = 10;
-    private static int POSITION_ENABLE_SCHEDULE = 11;
-
-    private static int SECTION_ANSWERING_AUTOMATIC = 12;
-    private static int POSITION_ALLOW_ANSWERING_AUTOMATIC = 13;
-    private static int POSITION_INFO_ANSWERING_AUTOMATIC = 14;
+    private static int SECTION_ANSWERING_AUTOMATIC = 9;
+    private static int POSITION_ALLOW_ANSWERING_AUTOMATIC = 10;
+    private static int POSITION_INFO_ANSWERING_AUTOMATIC = 11;
 
     private static final int SWITCH = 1;
     private static final int SECTION = 2;
@@ -68,9 +65,6 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             SECTION_ANSWERING_AUTOMATIC = -1;
             POSITION_ALLOW_ANSWERING_AUTOMATIC = -1;
             POSITION_INFO_ANSWERING_AUTOMATIC = -1;
-            SECTION_DISCREET_RELATION = -1;
-            POSITION_DISCREET_RELATION_INFORMATION = -1;
-            POSITION_DISCREET_RELATION = -1;
             SECTION_CAMERA_CONTROL = -1;
             POSITION_CAMERA_CONTROL_INFORMATION = -1;
             POSITION_SELECT_CAMERA_CONTROL = -1;
@@ -95,9 +89,9 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Log.d(LOG_TAG, "getItemViewType: " + position);
         }
 
-        if (position == SECTION_PERMISSION || position == SECTION_DISCREET_RELATION || position == SECTION_ENABLE_SCHEDULE || position == SECTION_ANSWERING_AUTOMATIC || position == SECTION_CAMERA_CONTROL) {
+        if (position == SECTION_PERMISSION || position == SECTION_ENABLE_SCHEDULE || position == SECTION_ANSWERING_AUTOMATIC || position == SECTION_CAMERA_CONTROL) {
             return SECTION;
-        } else if (position == POSITION_CAMERA_CONTROL_INFORMATION || position == POSITION_DISCREET_RELATION_INFORMATION || position == POSITION_ENABLE_SCHEDULE_INFORMATION || position == POSITION_INFO_ANSWERING_AUTOMATIC) {
+        } else if (position == POSITION_CAMERA_CONTROL_INFORMATION || position == POSITION_ENABLE_SCHEDULE_INFORMATION || position == POSITION_INFO_ANSWERING_AUTOMATIC) {
             return INFO;
         } else if (position == POSITION_SELECT_CAMERA_CONTROL) {
             return VALUE;
@@ -119,7 +113,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             boolean isSelected = false;
             String title = "";
-            int switchTag = 0;
+            int switchTag;
             boolean isEnabled = false;
 
             if (position == POSITION_ALLOW_AUDIO_CALL) {
@@ -130,10 +124,6 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_video_call);
                 switchTag = ContactCapabilitiesActivity.VIDEO_CALL_SWITCH;
                 isSelected = mCapabilitiesActivity.allowVideoCall();
-            } else if (position == POSITION_DISCREET_RELATION) {
-                title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_discreet_relation);
-                switchTag = ContactCapabilitiesActivity.SCHEDULE_SWITCH;
-                isSelected = mCapabilitiesActivity.scheduleEnable();
             } else if (position == POSITION_ENABLE_SCHEDULE) {
                 title = mCapabilitiesActivity.getString(R.string.show_call_view_settings_limited);
                 switchTag = ContactCapabilitiesActivity.SCHEDULE_SWITCH;
@@ -142,10 +132,13 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 title = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_automatic_answering);
                 switchTag = ContactCapabilitiesActivity.ANSWERING_AUTOMATIC_SWITCH;
                 isSelected = mCapabilitiesActivity.allowAnsweringAutomatic();
+            } else {
+                switchTag = 0;
             }
 
+            CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mCapabilitiesActivity.onSettingChangeValue(switchTag, value);
             capabilityViewHolder.itemView.setOnClickListener(view -> mCapabilitiesActivity.showPremiumFeatureAlert(UIPremiumFeature.FeatureType.PRIVACY));
-            capabilityViewHolder.onBind(title, switchTag, isEnabled, isSelected);
+            capabilityViewHolder.onBind(title, switchTag, isEnabled, isSelected, onCheckedChangeListener);
         } else if (viewType == SECTION) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
 
@@ -158,8 +151,6 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 title = mCapabilitiesActivity.getString(R.string.call_view_camera_control);
                 hideSeparator = true;
                 runnable = () -> mCapabilitiesActivity.showOnboardingView(true);
-            } else if (position == SECTION_DISCREET_RELATION) {
-                title = mCapabilitiesActivity.getString(R.string.privacy_view_title);
             } else if (position == SECTION_ENABLE_SCHEDULE) {
                 title = mCapabilitiesActivity.getString(R.string.show_call_view_schedule_call);
                 hideSeparator = true;
@@ -173,8 +164,6 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             if (position == POSITION_CAMERA_CONTROL_INFORMATION) {
                 text = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_camera_control_information);
                 isSubTitle = true;
-            }  else if (position == POSITION_DISCREET_RELATION_INFORMATION) {
-                text = mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_discreet_relation);
             }  else if (position == POSITION_ENABLE_SCHEDULE_INFORMATION) {
                 text = mCapabilitiesActivity.isGroup() ? mCapabilitiesActivity.getString(R.string.group_capabilities_view_information_programmed_call) : mCapabilitiesActivity.getString(R.string.contact_capabilities_view_information_programmed_call);
                 isSubTitle = true;
@@ -222,7 +211,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return new InformationViewHolder(convertView);
         } else if (viewType == SWITCH) {
             convertView = inflater.inflate(R.layout.contact_capabilities_activity_item, parent, false);
-            return new CapabilityViewHolder(convertView, mCapabilitiesActivity);
+            return new CapabilityViewHolder(convertView);
         } else {
             convertView = inflater.inflate(R.layout.select_value_item, parent, false);
             return new SelectValueViewHolder(convertView);

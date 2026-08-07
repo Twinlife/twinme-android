@@ -100,6 +100,7 @@
     <string name="application_select_more">Zgjidh më shumë…</string>
     <string name="application_server_timeout">Koha e serverit mbaroi</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Filloni</string>
     <string name="application_theme">Tema</string>
     <string name="application_timeout">Koha mbaroi</string>
     <string name="application_timeout_day">1 ditë</string>
@@ -110,6 +111,8 @@
     <string name="application_timeout_month">1 muaj</string>
     <string name="application_timeout_seconds">%1$d sekonda</string>
     <string name="application_timeout_week">1 javë</string>
+    <string name="application_transfer_from_another_device">Transferimi nga një pajisje tjetër</string>
+    <string name="application_transfer_restore">Transferoni ose rivendosni</string>
     <string name="application_unknown_name">I panjohur</string>
     <string name="application_until">Deri më %1$s</string>
     <string name="application_upgrade">Duke përditësuar twinme</string>
@@ -191,12 +194,23 @@
     <string name="account_migration_view_transfer_in_progress">Transferimi i të dhënave në progres</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Për të filluar transferimin, skanoni kodin QR të transferimit të shfaqur në pajisjen tjetër.</string>
+    <string name="account_migration_scanner_view_header_other_device">Për të filluar transferimin, skanoni kodin QR të shfaqur në këtë pajisje nga pajisja tjetër.</string>
     <string name="account_migration_scanner_view_message">Shfaqni këtë ekran në secilën pajisje dhe njëra skanon QR-Code të tjetrës.</string>
     <string name="account_migration_scanner_view_message_older_version">Kjo pajisje përdor një version të vjetër të papajtueshëm të OS, gjë që do të shkaktojë humbjen e të gjitha marrëdhënieve në pajisjen e synuar gjatë transferimit. Dëshironi ende të vazhdoni me transferimin?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Pajisja e synuar përdor një version të vjetër të papajtueshëm të OS, gjë që do të shkaktojë humbjen e të gjitha marrëdhënieve tuaja gjatë transferimit. Dëshironi ende të vazhdoni me transferimin?</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Për të nisur migrimin, skanoni këtë QR-code nga pajisja tjetër</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Skanoni QR-kodin e shfaqur në seksionin \"Llogaria / Transfero nga një pajisje tjetër\" të menusë anësore të pajisjes tjetër.</string>
+    <string name="account_migration_scanner_view_restore_title">Nuk ke më qasje në pajisjen tjetër?</string>
+    <string name="account_migration_scanner_view_restore_message">Nëse ekziston një kopje rezervë, mund ta rikthesh atë në këtë pajisje.</string>
     <string name="account_migration_scanner_view_scan_title">Skanim</string>
+    <string name="account_migration_scanner_view_step_1">Hap aplikacionin në pajisjen tjetër</string>
+    <string name="account_migration_scanner_view_step_2">Shko te menyja anësore</string>
+    <string name="account_migration_scanner_view_step_3">Zgjidh \"Llogaria\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Fillo transferimin nga kjo pajisje</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Fillo transferimin nga pajisja tjetër</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Skano kodin QR të shfaqur në pajisjen tjetër me këtë pajisje</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Skano kodin QR të shfaqur në këtë pajisje me pajisjen tjetër</string>
     <string name="account_migration_scanner_view_stop_scan_title">Ndalo skanimin</string>
 
     <!-- AddCallParticipantActivity -->
@@ -285,13 +299,16 @@
     <string name="backup_view_content_diff_deleted">U fshi</string>
     <string name="backup_view_content_diff_message">Ja ndryshimet krahasuar me të dhënat tuaja aktuale:</string>
     <string name="backup_view_content_info">Kopjet rezervë nuk përfshijnë biseda, njoftime dhe historik.</string>
+    <string name="backup_view_copy_clipboard">Kopjo në kujtesën e përkohshme</string>
     <string name="backup_view_error_words">Fjalët e futura nuk lejojnë dekriptimin e kopjes rezervë.</string>
+    <string name="backup_view_generate_key">Gjenero një çelës të ri enkriptimi</string>
     <string name="backup_view_generate_word">Gjenero</string>
     <string name="backup_view_last_backup">Kopja e fundit rezervë më %1$s</string>
     <string name="backup_view_new_backup">Kopje e re rezervë</string>
     <string name="backup_view_onboarding">Bëni një kopje rezervë të enkriptuar të të dhënave të llogarisë (Spaces, profile, kontakte, grupet, click-to-call) që mund të rikthehet në këtë ose një pajisje tjetër.</string>
     <string name="backup_view_reminder">Kopia juaj e fundit rezervë është krijuar më shumë se 30 ditë më parë.</string>
     <string name="backup_view_save_file_message">Ruajeni skedarin e kopjes rezervë në pajisjen që zgjidhni dhe mbani fjalëkalimet për rikthim të mëvonshëm.</string>
+    <string name="backup_view_save_password">Ruaje në menaxherin e fjalëkalimeve</string>
     <string name="backup_view_security">Siguria</string>
     <string name="backup_view_security_info">Çelësi i enkriptimit të kopjes rezervë përfaqësohet nga një seri prej 12 fjalësh që do të kërkohen për rikthim.</string>
     <string name="backup_view_success">Kopja rezervë përfundoi me sukses!</string>
@@ -461,6 +478,8 @@
     <string name="conversation_view_group_one_member">1 anëtar</string>
     <string name="conversation_view_invitation_accepted">Ftesa u pranua</string>
     <string name="conversation_view_invitation_failed">Kërkojini kontaktit tuaj të përditësojë twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s e pranoi ftesën</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s e refuzoi ftesën</string>
     <string name="conversation_view_invitation_joined">Anëtar i grupit</string>
     <string name="conversation_view_invitation_pending">Ftesa në progres</string>
     <string name="conversation_view_invitation_refused">Ftesa u refuzua</string>
@@ -501,6 +520,13 @@
     <string name="conversation_view_send_quality_size">Media e madhe (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Dërgo në përkufizim standard (SD)</string>
     <string name="conversation_view_send_quality_warning">Mund ta ndryshoni madhësinë në përkufizim standard (SD) për transferim më të shpejtë.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s pranoi lidhjen</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Ju nuk pranoni prezantime të bëra nga kontaktet tuaja.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s refuzoi lidhjen</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Ju e refuzuat kërkesën për lidhje</string>
+    <string name="conversation_view_share_contact_item_local_message">Po ju lidh %1$s me %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Po ju lidh me %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Në pritje të pranimit nga %1$s</string>
     <string name="conversation_view_stream_dialog">Dëshironi ta pranoni?</string>
     <string name="conversation_view_unsupported_media">Format media i pambështetur.</string>
     <string name="conversation_view_video_call">Thirrje video</string>
@@ -802,6 +828,7 @@
     <string name="notification_center_cancel">Hiqe</string>
     <string name="notification_center_cleanup_conversation">Disa mesazhe të vjetra janë fshirë.</string>
     <string name="notification_center_conference_join_call">Një pjesëmarrës iu bashkua thirrjes.</string>
+    <string name="notification_center_connection_request">Kërkesë për lidhje</string>
     <string name="notification_center_deleted_contact">Kontakti u fshi</string>
     <string name="notification_center_file_message">Ju dërgoi një skedar</string>
     <string name="notification_center_file_message_received">Skedar i ri</string>
@@ -959,6 +986,7 @@
     <string name="premium_services_view_transfert_title">Transferimi i thirrjes</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aplikacionet aktive</string>
     <string name="privacy_view_coach_mark">Bllokoni aplikacionin me shërbime biometrike ose me një kod PIN.</string>
     <string name="privacy_view_hide_last_screen_message">Dhe fshihni aplikacionin kur kalon në sfond, nëse pajisja e lejon.</string>
     <string name="privacy_view_hide_last_screen_title">Ndalo pamjet e ekranit</string>
@@ -967,6 +995,10 @@
     <string name="privacy_view_lock_screen_timeout">Afati i bllokimit të qasjes</string>
     <string name="privacy_view_lock_screen_timeout_instant">Menjëherë</string>
     <string name="privacy_view_lock_screen_title">Bllokimi i qasjes</string>
+    <string name="privacy_view_share_invitation_ask">Më pyet çdo herë</string>
+    <string name="privacy_view_share_invitation_info">Do të njoftoheni sa herë që dikush ndan kontaktin tuaj.</string>
+    <string name="privacy_view_share_invitation_setting">Lejo kontaktet e mia të më lidhin me kontaktet e tyre</string>
+    <string name="privacy_view_share_invitation_title">Lidhjet</string>
     <string name="privacy_view_title">Privatësia</string>
 
     <!-- ProfileFragment -->
@@ -1042,6 +1074,7 @@
     <string name="restore_view_success">Rikthimi përfundoi me sukses!</string>
     <string name="restore_view_success_message">Mbyllni aplikacionin dhe riniseni atë për të hyrë në të dhënat e reja.</string>
     <string name="restore_view_title">Rikthim</string>
+    <string name="restore_view_update_message">Duhet ta përditësoni aplikacionin për të rivendosur kopjen rezervë.</string>
     <string name="restore_view_verify_same_account">Verifikimi duhet të bëhet në të njëjtën pajisje të përdorur për kopjen rezervë.</string>
     <string name="restore_view_warning">Rikthimi i kësaj kopjeje rezervë do të zëvendësojë të gjitha të dhënat aktuale të llogarisë me të dhënat nga kopja rezervë.</string>
 
@@ -1097,7 +1130,10 @@
     <string name="settings_view_reset_preferences_title">Rivendos preferencat</string>
     <string name="settings_view_silent_sound">Pa zë</string>
     <string name="settings_view_silent_mode">Modaliteti i heshtur</string>
+    <string name="settings_view_sound_effects_info">Luaj tinguj kur bashkëveproni me aplikacionin</string>
+    <string name="settings_view_sound_effects_title">Efekte zanore</string>
     <string name="settings_view_sound_enabled_title">NJOFTIME ME ZË</string>
+    <string name="settings_view_sound_vibrations_title">Tinguj dhe Dridhje</string>
     <string name="settings_view_system_notifications_title">Njoftimet e sistemit</string>
     <string name="settings_view_system_settings_title">Cilësimet e sistemit</string>
     <string name="settings_view_turn_off_notification_sounds">Çaktivizo tingujt e njoftimeve</string>
@@ -1109,7 +1145,18 @@
     <string name="settings_view_welcome_screen_summary">Shfaq ekranet e mirëseardhjes</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Shikimi paraprak i një lidhjeje interneti ekspozon adresën IP në faqen e internetit.</string>
     <string name="settings_advanced_view_developer_settings">Cilësimet e zhvilluesit</string>
+    <string name="settings_advanced_view_security_advanced">I Avancuar</string>
+    <string name="settings_advanced_view_security_advanced_info">Adresa IP fshihet lokalisht (duke përdorur TLS për STUN).</string>
+    <string name="settings_advanced_view_security_expert">Ekspert</string>
+    <string name="settings_advanced_view_security_expert_info">Adresa IP fshihet lokalisht dhe për kontaktet (thirrjet drejtohen përmes një serveri TURN).</string>
+    <string name="settings_advanced_view_security_optimized">I Optimizuar (parazgjedhur)</string>
+    <string name="settings_advanced_view_security_optimized_info">Adresa IP mund të ekspozohet gjatë shkëmbimeve WebRTC ose shikimeve paraprake të lidhjeve në web.</string>
+    <string name="settings_advanced_view_security_level_title">Niveli i Sigurisë</string>
+    <string name="settings_advanced_view_security_info">Rregulloni ekuilibrin midis sigurisë dhe performancës për nevoja specifike.</string>
+    <string name="settings_advanced_view_security_title">Siguria</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Niveli i sigurisë Ekspert nuk lejon ndryshimin e këtij cilësimi.</string>
     <string name="settings_advanced_view_status_connection_message">Kontrollo statusin e lidhjes suaj me shërbimin</string>
     <string name="settings_advanced_view_status_connection_title">Statusi i lidhjes</string>
     <string name="settings_advanced_view_telecom">THIRRJET</string>
@@ -1130,6 +1177,18 @@
     <string name="settings_room_view_room_type_feedback_information">Feedback i pjesëmarrësve shihet vetëm nga administratorët/moderatorët</string>
     <string name="settings_room_view_room_type_forum">Forum</string>
     <string name="settings_room_view_room_type_forum_information">Pjesëmarrësit mund të postojnë mesazhe që i shohin të gjithë</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s dëshiron t\'ju lidhë me %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Dëshironi të shtoni %1$s si një kontakt personal?</string>
+    <string name="share_contact_view_onboarding_part_1">Tani mund t\'u lejoni kontakteve tuaja t\'ju lidhin me kontaktet e tyre.</string>
+    <string name="share_contact_view_onboarding_part_2">Si parazgjedhje, duhet të miratoni çdo propozim lidhjeje.</string>
+    <string name="share_contact_view_onboarding_part_3">Sjellja e parazgjedhur mund të ndryshohet në seksionin \"Privatësia\" të cilësimeve të aplikacionit.</string>
+    <string name="share_contact_view_share_info">%1$s do të marrë një njoftim ndarjeje</string>
+    <string name="share_contact_view_share_title">Ndajeni kontaktin e %1$s</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Kontaktet</string>
@@ -1164,6 +1223,7 @@
     <string name="show_contact_view_pending_message">Kjo marrëdhënie po krijohet. Ju lutemi prisni.</string>
     <string name="show_contact_view_revoked">E fshirë</string>
     <string name="show_contact_view_settings_coach_mark">Përcaktoni çfarë i lejohet kontaktit tuaj të bëjë në këtë marrëdhënie me ju.</string>
+    <string name="show_contact_view_share_contact">Ndajeni këtë kontakt</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->

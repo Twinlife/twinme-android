@@ -101,6 +101,7 @@
     <string name="application_select_more">Valitse lisää…</string>
     <string name="application_server_timeout">Palvelimen aikakatkaisu</string>
     <string name="application_size_unit">MB</string>
+    <string name="application_start">Start</string>
     <string name="application_theme">Teema</string>
     <string name="application_timeout">Vanhenemisviive</string>
     <string name="application_timeout_day">1 päivä</string>
@@ -111,6 +112,8 @@
     <string name="application_timeout_month">1 kuukausi</string>
     <string name="application_timeout_seconds">%1$d sekuntia</string>
     <string name="application_timeout_week">1 viikko</string>
+    <string name="application_transfer_from_another_device">Siirto toisesta laitteesta</string>
+    <string name="application_transfer_restore">Siirrä tai palauta</string>
     <string name="application_unknown_name">Tuntematon</string>
     <string name="application_until">Kunnes %1$s</string>
     <string name="application_upgrade">twinme päivittäminen</string>
@@ -192,12 +195,23 @@
     <string name="account_migration_view_transfer_in_progress">Tiedonsiirto käynnissä</string>
 
     <!-- AccountMigrationScannerActivity -->
+    <string name="account_migration_scanner_view_header_my_device">Aloita siirto skannaamalla toisessa laitteessa näkyvä siirron QR-koodi.</string>
+    <string name="account_migration_scanner_view_header_other_device">Aloita siirto skannaamalla tässä laitteessa näkyvä QR-koodi toisesta laitteesta.</string>
     <string name="account_migration_scanner_view_message">Näytä tämä näyttö jokaisessa laitteessa ja toinen skannaa toisen QR-koodin.</string>
     <string name="account_migration_scanner_view_message_older_version">Tämä laite käyttää vanhaa yhteensopimatonta käyttöjärjestelmäversiota, minkä vuoksi kaikki kohdelaitteen suhteet menetetään siirron aikana. Haluatko silti jatkaa siirtoa?</string>
     <string name="account_migration_scanner_view_message_older_version_target">Kohdelaite käyttää vanhaa yhteensopimatonta käyttöjärjestelmäversiota, minkä vuoksi kaikki suhteesi menetetään siirron aikana. Haluatko silti jatkaa siirtoa?</string>
-    <string name="account_migration_scanner_view_scan_title">Skannaus</string>
     <string name="account_migration_scanner_view_migration_start_from_another_device_message">Aloita siirto skannaamalla tämä QR-koodi toisesta laitteesta</string>
     <string name="account_migration_scanner_view_migration_start_from_current_device_message">Skannaa QR-koodi, joka näkyy toisen laitteen sivuvalikon \"Tili / siirto toisesta laitteesta\" -osiossa.</string>
+    <string name="account_migration_scanner_view_restore_title">Eikö sinulla ole enää pääsyä toiseen laitteeseen?</string>
+    <string name="account_migration_scanner_view_restore_message">Jos varmuuskopio on olemassa, voit palauttaa sen tähän laitteeseen.</string>
+    <string name="account_migration_scanner_view_scan_title">Skannaus</string>
+    <string name="account_migration_scanner_view_step_1">Avaa sovellus toisella laitteella</string>
+    <string name="account_migration_scanner_view_step_2">Siirry sivuvalikkoon</string>
+    <string name="account_migration_scanner_view_step_3">Valitse \"Tili\"</string>
+    <string name="account_migration_scanner_view_step_4_my_device">Aloita siirto tästä laitteesta</string>
+    <string name="account_migration_scanner_view_step_4_another_device">Aloita siirto toisesta laitteesta</string>
+    <string name="account_migration_scanner_view_step_5_my_device">Skannaa toisella laitteella näkyvä QR-koodi tällä laitteella</string>
+    <string name="account_migration_scanner_view_step_5_another_device">Skannaa tällä laitteella näkyvä QR-koodi toisella laitteella</string>
     <string name="account_migration_scanner_view_stop_scan_title">Lopeta skannaus</string>
 
    <!-- AddCallParticipantActivity -->
@@ -286,13 +300,16 @@
     <string name="backup_view_content_diff_deleted">Poistettu</string>
     <string name="backup_view_content_diff_message">Tässä ovat muutokset nykyisiin tietoihisi verrattuna:</string>
     <string name="backup_view_content_info">Varmuuskopiot eivät sisällä keskusteluja, ilmoituksia ja historiaa.</string>
+    <string name="backup_view_copy_clipboard">Kopioi leikepöydälle</string>
     <string name="backup_view_error_words">Annetut sanat eivät salli varmuuskopion salauksen purkamista.</string>
+    <string name="backup_view_generate_key">Luo uusi salausavain</string>
     <string name="backup_view_generate_word">Luoda</string>
     <string name="backup_view_last_backup">Viimeinen varmuuskopio %1$s</string>
     <string name="backup_view_new_backup">Uusi varmuuskopio</string>
     <string name="backup_view_onboarding">Tee salattu varmuuskopio tilitiedoista (\"Spaces\", profiilit, ryhmät, yhteystiedot, \"click-to-call\"), joka voidaan palauttaa tähän tai toiseen laitteeseen.</string>
     <string name="backup_view_reminder">Viimeisin varmuuskopiosi luotiin yli 30 päivää sitten.</string>
     <string name="backup_view_save_file_message">Tallenna varmuuskopiotiedosto haluamallesi laitteelle ja säilytä salasanat myöhempää palautusta varten.</string>
+    <string name="backup_view_save_password">Tallenna salasananhallintaan</string>
     <string name="backup_view_security">Turvallisuus</string>
     <string name="backup_view_security_info">Varmuuskopiointiavainta edustaa 12 sanan sarja, jota vaaditaan palauttamiseen.</string>
     <string name="backup_view_success">Varmuuskopio valmistui onnistuneesti!</string>
@@ -462,6 +479,8 @@
     <string name="conversation_view_group_one_member">1 jäsen</string>
     <string name="conversation_view_invitation_accepted">Kutsu hyväksytty</string>
     <string name="conversation_view_invitation_failed">Pyydä yhteystietojasi päivittämään twinme</string>
+    <string name="conversation_view_invitation_item_accepted_invitation">%1$s hyväksyi kutsun</string>
+    <string name="conversation_view_invitation_item_declined_invitation">%1$s hylkäsi kutsun</string>
     <string name="conversation_view_invitation_joined">Ryhmän jäsen</string>
     <string name="conversation_view_invitation_pending">Kutsu käynnissä</string>
     <string name="conversation_view_invitation_refused">Kutsu hylättiin</string>
@@ -502,6 +521,13 @@
     <string name="conversation_view_send_quality_size">Suuri media (%1$s).</string>
     <string name="conversation_view_send_quality_standard">Lähetä normaalitarkkuudella (SD)</string>
     <string name="conversation_view_send_quality_warning">Voit muuttaa koon normaalitarkkuuteen (SD) nopeampaa siirtoa varten.</string>
+    <string name="conversation_view_share_contact_item_accept_connection">%1$s hyväksyi yhteyden</string>
+    <string name="conversation_view_share_contact_item_automatic_decline">Sie akzeptieren keine Vorstellungen durch Ihre Kontakte.</string>
+    <string name="conversation_view_share_contact_item_decline_connection_by_peer">%1$s hylkäsi yhteyden</string>
+    <string name="conversation_view_share_contact_item_decline_connection">Hylkäsit yhteyspyynnön</string>
+    <string name="conversation_view_share_contact_item_local_message">Yhdistetään %1$s käyttäjälle %2$s</string>
+    <string name="conversation_view_share_contact_item_peer_message">Yhdistetään sinut käyttäjälle %1$s</string>
+    <string name="conversation_view_share_contact_item_pending_acceptance">Odottaa hyväksyntää käyttäjältä %1$s</string>
     <string name="conversation_view_stream_dialog">Haluatko hyväksyä sen?</string>
     <string name="conversation_view_unsupported_media">Mediamuotoa ei tueta.</string>
     <string name="conversation_view_video_call">Videopuhelu</string>
@@ -805,6 +831,7 @@
     <string name="notification_center_cancel">Hylkää</string>
     <string name="notification_center_cleanup_conversation">Joitakin vanhoja viestejä on poistettu.</string>
     <string name="notification_center_conference_join_call">Yksi osallistuja liittyi puheluun.</string>
+    <string name="notification_center_connection_request">Yhteyspyyntö</string>
     <string name="notification_center_deleted_contact">Yhteyshenkilö poistettu</string>
     <string name="notification_center_file_message">Lähetti sinulle tiedoston</string>
     <string name="notification_center_file_message_received">Uusi tiedosto</string>
@@ -962,6 +989,7 @@
     <string name="premium_services_view_title">Kutsu kontakteja liittymään meneillään olevaan ääni-/videopuheluun.</string>
 
     <!-- PrivacyActivity -->
+    <string name="privacy_view_app_switcher">Aktiiviset sovellukset</string>
     <string name="privacy_view_coach_mark">Lukitse sovellus biometrisilla palveluilla tai PIN-koodilla.</string>
     <string name="privacy_view_hide_last_screen_message">Ja piilota sovellus, kun se toimii taustalla, jos laite sallii sen.</string>
     <string name="privacy_view_hide_last_screen_title">Estä kuvakaappaukset</string>
@@ -970,6 +998,10 @@
     <string name="privacy_view_lock_screen_timeout">Pääsee lukituksen aikakatkaisuun</string>
     <string name="privacy_view_lock_screen_timeout_instant">Välitön</string>
     <string name="privacy_view_lock_screen_title">Pääsylukko</string>
+    <string name="privacy_view_share_invitation_ask">Kysy aina</string>
+    <string name="privacy_view_share_invitation_info">Saat ilmoituksen aina, kun joku jakaa yhteystietosi.</string>
+    <string name="privacy_view_share_invitation_setting">Salli yhteystietojeni yhdistää minut yhteystietoihinsa</string>
+    <string name="privacy_view_share_invitation_title">Yhteydet</string>
     <string name="privacy_view_title">Yksityisyys</string>
 
     <!-- ProfileFragment -->
@@ -1045,6 +1077,7 @@
     <string name="restore_view_success">Restaurointi suoritettu onnistuneesti!</string>
     <string name="restore_view_success_message">Sulje sovellus ja käynnistä se uudelleen käyttääksesi uutta tietoa.</string>
     <string name="restore_view_title">Palautus</string>
+    <string name="restore_view_update_message">Sinun on päivitettävä sovellus, jotta voit palauttaa varmuuskopion.</string>
     <string name="restore_view_verify_same_account">Vahvistus on suoritettava samalla laitteella, jota käytettiin varmuuskopiointiin.</string>
     <string name="restore_view_warning">Tämän varmuuskopion palauttaminen korvaa kaikki nykyiset tilitiedot varmuuskopion tiedoilla.</string>
 
@@ -1061,7 +1094,18 @@
     <string name="scan_view_paste_code">Syötä tai liitä kutsulinkki</string>
 
     <!-- SettingsAdvancedActivity -->
+    <string name="settings_advanced_view_conversation_info">Verkkolinkin esikatselu paljastaa IP-osoitteen verkkosivustolle.</string>
     <string name="settings_advanced_view_developer_settings">Developer settings</string>
+    <string name="settings_advanced_view_security_advanced">Lisäasetukset</string>
+    <string name="settings_advanced_view_security_advanced_info">IP-osoite piilotetaan paikallisesti (käytetään TLS:ää STUN-suojaukseen).</string>
+    <string name="settings_advanced_view_security_expert">Asiantunteva</string>
+    <string name="settings_advanced_view_security_expert_info">IP-osoite piilotetaan paikallisesti ja yhteystiedoille (puhelut reititetään TURN-palvelimen kautta).</string>
+    <string name="settings_advanced_view_security_optimized">Optimoitu (oletus)</string>
+    <string name="settings_advanced_view_security_optimized_info">IP-osoite saattaa paljastua WebRTC-vaihdon tai verkkolinkkien esikatselun aikana.</string>
+    <string name="settings_advanced_view_security_level_title">Suojaustaso</string>
+    <string name="settings_advanced_view_security_info">Säädä turvallisuuden ja suorituskyvyn tasapainoa tiettyjen tarpeiden mukaan.</string>
+    <string name="settings_advanced_view_security_title">Suojaus</string>
+    <string name="settings_advanced_view_security_unauthorized_update">Asiantunteva-suojaustaso ei salli tämän asetuksen muuttamista.</string>
     <string name="settings_advanced_view_status_connection_message">Tarkista yhteytesi tila palveluun</string>
     <string name="settings_advanced_view_status_connection_title">Yhteyden tila</string>
     <string name="settings_advanced_view_telecom_enable">Android-puhelukokemus</string>
@@ -1109,7 +1153,10 @@
     <string name="settings_view_permissions_title">LUVAT</string>
     <string name="settings_view_silent_mode">Hiljainen tila</string>
     <string name="settings_view_silent_sound">Hiljainen</string>
+    <string name="settings_view_sound_effects_info">Toista ääniä sovelluksen kanssa toimittaessa</string>
+    <string name="settings_view_sound_effects_title">Äänitehosteet</string>
     <string name="settings_view_sound_enabled_title">ÄÄNEN ILMOITUKSET</string>
+    <string name="settings_view_sound_vibrations_title">Äänet ja värinät</string>
     <string name="settings_view_system_notifications_title">Järjestelmän ilmoitukset</string>
     <string name="settings_view_system_settings_title">Järjestelmäasetukset</string>
     <string name="settings_view_turn_off_notification_sounds">Poista ilmoitusäänet käytöstä</string>
@@ -1133,6 +1180,18 @@
     <string name="settings_room_view_room_type_feedback_information">Osallistujien palautetta näkevät vain järjestelmänvalvojat/valvojat</string>
     <string name="settings_room_view_room_type_forum">Forum</string>
     <string name="settings_room_view_room_type_forum_information">Osallistujat voivat lähettää kaikkien näkemiä viestejä</string>
+
+    <!-- SettingsSpaceActivity -->
+    <string name="settings_space_view_space_category_title">Space</string>
+
+    <!-- ShareContactActivity -->
+    <string name="share_contact_accept_view_message">%1$s haluaa yhdistää sinut käyttäjälle %2$s</string>
+    <string name="share_contact_accept_view_invite_message">Haluatko lisätä %1$s henkilökohtaiseksi yhteystiedoksi?</string>
+    <string name="share_contact_view_onboarding_part_1">Voit nyt sallia yhteystietojesi yhdistää sinut omiin yhteystietoihinsa.</string>
+    <string name="share_contact_view_onboarding_part_2">Oletusarvoisesti sinun on hyväksyttävä jokainen yhteysehdotus.</string>
+    <string name="share_contact_view_onboarding_part_3">Oletustoimintoa voi muuttaa sovellusasetusten \"Tietosuoja\"-osiossa.</string>
+    <string name="share_contact_view_share_info">%1$s saa jakamisilmoituksen</string>
+    <string name="share_contact_view_share_title">Jaa %1$s:n yhteystieto</string>
 
     <!-- ShareActivity -->
     <string name="share_view_contact_list">Yhteystiedot</string>
@@ -1167,6 +1226,7 @@
     <string name="show_contact_view_pending_message">Tätä suhdetta ollaan luomassa. Ole hyvä ja odota.</string>
     <string name="show_contact_view_revoked">Poistettu</string>
     <string name="show_contact_view_settings_coach_mark">Määritä, mitä kontaktisi saa tehdä tässä suhteessa kanssasi.</string>
+    <string name="show_contact_view_share_contact">Jaa tämä yhteystieto</string>
     <string name="show_contact_view_video">Video</string>
 
     <!-- ShowGroupActivity -->
