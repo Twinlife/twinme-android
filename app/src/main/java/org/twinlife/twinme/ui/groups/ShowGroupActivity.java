@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService.GroupConversation;
+import org.twinlife.twinlife.Permission;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
@@ -71,12 +72,11 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private static final boolean DEBUG = false;
 
     private static final int ADD_MEMBERS = 1;
+    private static final int SETTINGS = 2;
 
     private static final int DESIGN_MEMBER_VIEW_TOP_MARGIN = 40;
-    private static final int DESIGN_DESCRIPTION_VIEW_TOP_MARGIN = 180;
     private static int AVATAR_OVER_SIZE;
     private static int AVATAR_MAX_SIZE;
-
 
     private UUID mGroupId;
     private View mBackClickableView;
@@ -128,6 +128,8 @@ public class ShowGroupActivity extends AbstractGroupActivity {
     private boolean mUIPostInitialized = false;
     private GroupService mGroupService;
     private GroupConversation mGroupConversation;
+    @Nullable
+    private Permission mMemberPermission;
     private List<UIContact> mGroupMembers = new ArrayList<>();
     private Bitmap mGroupAvatar;
     private String mIdentityName;
@@ -229,6 +231,11 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             if (mContactsToAdd != null) {
                 mGroupService.getContacts();
             }
+        } else if (requestCode == SETTINGS) {
+            boolean allowInvitation = data == null || data.getBooleanExtra(Intents.INTENT_GROUP_ALLOW_INVITATION, true);
+            boolean allowPostMessage = data == null || data.getBooleanExtra(Intents.INTENT_GROUP_ALLOW_MESSAGE, true);
+            boolean allowInviteMemberAsContact = data == null || data.getBooleanExtra(Intents.INTENT_GROUP_INVITE_MEMBER_AS_CONTACT, true);
+            updatePermissions(allowInvitation, allowPostMessage, allowInviteMemberAsContact);
         }
     }
 
@@ -244,6 +251,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
         mGroup = group;
         mGroupConversation = conversation;
+        mMemberPermission = conversation.getJoinPermissions();
         if (group.hasPeer()) {
             mMemberTextView.setVisibility(View.VISIBLE);
             mMemberListSummaryView.setVisibility(View.VISIBLE);
@@ -835,7 +843,9 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "onPermissionsClick");
         }
 
-        startActivity(SettingsGroupActivity.class, Intents.INTENT_GROUP_ID, mGroupId);
+        Intent intent = new Intent(this, SettingsGroupActivity.class);
+        intent.putExtra(Intents.INTENT_GROUP_ID, mGroupId.toString());
+        startActivityForResult(intent, SETTINGS);
     }
 
     private void onNotificationsClick() {
@@ -843,7 +853,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "onNotificationsClick");
         }
 
-        startActivity(ConversationNotificationsActivity.class, Intents.INTENT_CONTACT_ID, mGroupId);
+        startActivity(ConversationNotificationsActivity.class, Intents.INTENT_GROUP_ID, mGroupId);
     }
 
     private void onCallSettingsClick() {
@@ -968,6 +978,33 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             mAvatarView.requestLayout();
 
             mAvatarLastSize = avatarViewSize;
+        }
+    }
+
+    private void updatePermissions(boolean allowInvitation, boolean allowPostMessage, boolean allowInviteMemberAsContact) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updatePermissions allowInvitation=" + allowInvitation + " allowPostMessage=" + allowPostMessage + " allowInviteMemberAsContact=" + allowInviteMemberAsContact);
+        }
+
+        if (mGroup == null) {
+            return;
+        }
+
+        List<Permission> permissions = new ArrayList<>();
+        permissions.add(Permission.RECEIVE_MESSAGE);
+        if (allowInvitation) {
+            permissions.add(Permission.MANAGE_MEMBER);
+        }
+        if (allowPostMessage) {
+            permissions.add(Permission.ALLOW_POST);
+        }
+        if (allowInviteMemberAsContact) {
+            permissions.add(Permission.SEND_TWINCODE);
+        }
+
+        final Permission newPermission = new Permission(permissions);
+        if (mMemberPermission == null || mMemberPermission.value != newPermission.value) {
+            mGroupService.updateGroupPermissions(newPermission);
         }
     }
 

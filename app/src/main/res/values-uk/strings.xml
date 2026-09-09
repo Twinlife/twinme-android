@@ -172,10 +172,18 @@
     <string name="account_migration_view_cancel_message">Закрийте додаток і перезапустіть його, щоб отримати доступ до своїх даних.</string>
     <string name="account_migration_view_close_message">Закрийте додаток і перезапустіть його, щоб отримати доступ до нових даних.</string>
     <string name="account_migration_view_confirm_cancel_message">Ви впевнені, що хочете скасувати перенос даних?</string>
+    <string name="account_migration_view_database">База даних</string>
+    <string name="account_migration_view_finalizing">Фіналізація</string>
+    <string name="account_migration_view_initializing">Ініціалізація</string>
+    <string name="account_migration_view_my_device">Мій пристрій</string>
     <string name="account_migration_view_network_message">Перевірте мережеве підключення</string>
     <string name="account_migration_view_not_enough_space_for_files">Недостатньо місця для файлів</string>
     <string name="account_migration_view_not_enough_space_to_receive">Недостатньо місця для завантаження бази даних</string>
     <string name="account_migration_view_not_enough_space_to_upload">Недостатньо місця для завантаження бази даних</string>
+    <string name="account_migration_view_other_device">Інший пристрій</string>
+    <string name="account_migration_view_ready_to_start">Готово до початку</string>
+    <string name="account_migration_view_receiving">Отримання</string>
+    <string name="account_migration_view_sending">Надсилання</string>
     <string name="account_migration_view_state_canceled">Перенос даних скасовано</string>
     <string name="account_migration_view_state_negotiate">Очікування</string>
     <string name="account_migration_view_state_list_files">Список файлів</string>
@@ -190,6 +198,8 @@
     <string name="account_migration_view_start">Розпочати міграцію</string>
     <string name="account_migration_view_stop">Зупинити міграцію</string>
     <string name="account_migration_view_success_message">Перенос даних успішно завершено</string>
+    <string name="account_migration_view_transfer">Передача триває</string>
+    <string name="account_migration_view_transfer_complete">Передача завершена</string>
     <string name="account_migration_view_transfer_in_progress">Триває передача даних</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -645,6 +655,17 @@
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Ваш обліковий запис видалено, а всі пов’язані дані знищено.&lt;br /&gt;Ви повинні закрити додаток.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Доступно</string>
+    <string name="diagnostics_view_background_execution">Фонове виконання</string>
+    <string name="diagnostics_view_cellular_network">Стільникова мережа</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push-токен</string>
+    <string name="diagnostics_view_secure_storage">Метод безпечного зберігання</string>
+    <string name="diagnostics_view_title">Діагностика</string>
+    <string name="diagnostics_view_unavailable">Недоступно</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Ви впевнені, що бажаєте видалити цей зв’язок?</string>

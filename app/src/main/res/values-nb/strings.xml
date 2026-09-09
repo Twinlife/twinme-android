@@ -174,10 +174,18 @@
     <string name="account_migration_view_cancel_message">Lukk applikasjonen og start den på nytt for å få tilgang til dataene dine.</string>
     <string name="account_migration_view_close_message">Lukk applikasjonen og start den på nytt for å få tilgang til de nye dataene.</string>
     <string name="account_migration_view_confirm_cancel_message">Er du sikker på at du vil avbryte overføringen?</string>
+    <string name="account_migration_view_database">Database</string>
+    <string name="account_migration_view_finalizing">Fullfører</string>
+    <string name="account_migration_view_initializing">Initialiserer</string>
+    <string name="account_migration_view_my_device">Min enhet</string>
     <string name="account_migration_view_network_message">Kontroller nettverkstilkoblingen</string>
     <string name="account_migration_view_not_enough_space_for_files">Ikke nok plass til filer</string>
     <string name="account_migration_view_not_enough_space_to_receive">Ikke nok plass til å laste ned databasen</string>
     <string name="account_migration_view_not_enough_space_to_upload">Ikke nok plass til å laste opp databasen</string>
+    <string name="account_migration_view_other_device">Annen enhet</string>
+    <string name="account_migration_view_ready_to_start">Klar til å starte</string>
+    <string name="account_migration_view_receiving">Mottar</string>
+    <string name="account_migration_view_sending">Sender</string>
     <string name="account_migration_view_state_canceled">Migrering avbrutt</string>
     <string name="account_migration_view_state_negotiate">Venter</string>
     <string name="account_migration_view_state_list_files">Listing filer</string>
@@ -192,6 +200,8 @@
     <string name="account_migration_view_start">Start migrering</string>
     <string name="account_migration_view_stop">Stopp migrasjon</string>
     <string name="account_migration_view_success_message">Overføringen fullført</string>
+    <string name="account_migration_view_transfer">Overføring pågår</string>
+    <string name="account_migration_view_transfer_complete">Overføring fullført</string>
     <string name="account_migration_view_transfer_in_progress">Dataoverføring pågår</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -649,6 +659,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Kontoen din er slettet og alle tilknyttede data er eliminert.&lt;br /&gt;
         Du må stenge programmet.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Tilgjengelig</string>
+    <string name="diagnostics_view_background_execution">Bakgrunnskjøring</string>
+    <string name="diagnostics_view_cellular_network">Mobilnettverk</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push-token</string>
+    <string name="diagnostics_view_secure_storage">Sikker lagringsmetode</string>
+    <string name="diagnostics_view_title">Diagnostikk</string>
+    <string name="diagnostics_view_unavailable">Ikke tilgjengelig</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Er du sikker på at du vil slette denne relasjonen?</string>

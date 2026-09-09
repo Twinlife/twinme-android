@@ -1,9 +1,10 @@
 /*
- *  Copyright (c) 2024-2025 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Stephane Carrez (Stephane.Carrez@twin.life)
  */
 
 package org.twinlife.twinme.ui.groups;
@@ -28,7 +29,6 @@ import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,6 +48,8 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
     private boolean mAllowInvitation = true;
     private boolean mAllowPostMessage = true;
     private boolean mAllowInviteMemberAsContact = true;
+    @Nullable
+    private Permission mMemberPermission;
 
     //
     // Override TwinmeActivityImpl methods
@@ -100,39 +102,6 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
         }
 
         super.onPause();
-
-        if (mGroup != null) {
-            List<Permission> permissions = new ArrayList<>();
-            permissions.add(Permission.RECEIVE_MESSAGE);
-            // long permissions = ~0;
-            if (mAllowInvitation) {
-                permissions.add(Permission.MANAGE_MEMBER);
-            }
-            //permissions &= ~(1L << Permission.UPDATE_MEMBER.ordinal());
-            //permissions &= ~(1L << Permission.REMOVE_MEMBER.ordinal());
-            //permissions &= ~(1L << Permission.RESET_CONVERSATION.ordinal());
-            // if (!mAllowInvitation) {
-            //    permissions &= ~(1L << Permission.INVITE_MEMBER.ordinal());
-            //}
-            //if (!mAllowPostMessage) {
-            //    permissions &= ~(1L << ConversationService.Permission.SEND_MESSAGE.ordinal());
-            //    permissions &= ~(1L << ConversationService.Permission.SEND_AUDIO.ordinal());
-            //    permissions &= ~(1L << ConversationService.Permission.SEND_VIDEO.ordinal());
-            //    permissions &= ~(1L << ConversationService.Permission.SEND_IMAGE.ordinal());
-            //    permissions &= ~(1L << ConversationService.Permission.SEND_FILE.ordinal());
-            //}
-            if (mAllowPostMessage) {
-                permissions.add(Permission.ALLOW_POST);
-            }
-            //if (!mAllowInviteMemberAsContact) {
-            //    permissions &= ~(1L << ConversationService.Permission.SEND_TWINCODE.ordinal());
-            //}
-            if (mAllowInviteMemberAsContact) {
-                permissions.add(Permission.SEND_TWINCODE);
-            }
-
-            mGroupService.updateGroupPermissions(permissions);
-        }
     }
 
     @Override
@@ -203,11 +172,18 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
                 break;
         }
 
-        if (mGroup == null) {
-            updateSettings();
+        mSettingsGroupAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void finish() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "finish");
         }
 
-        mSettingsGroupAdapter.notifyDataSetChanged();
+        updateSettings();
+
+        super.finish();
     }
 
     //
@@ -222,10 +198,10 @@ public class SettingsGroupActivity extends AbstractGroupActivity implements Edit
 
         mGroup = group;
 
-        final Permission joinPermissions = conversation.getJoinPermissions();
-        mAllowInvitation = joinPermissions.hasPermission(Permission.INVITE_MEMBER);
-        mAllowInviteMemberAsContact = joinPermissions.hasPermission(Permission.SEND_TWINCODE);
-        mAllowPostMessage = joinPermissions.hasPermission(Permission.ALLOW_POST);
+        mMemberPermission = conversation.getJoinPermissions();
+        mAllowInvitation = mMemberPermission.hasPermission(Permission.INVITE_MEMBER);
+        mAllowInviteMemberAsContact = mMemberPermission.hasPermission(Permission.SEND_TWINCODE);
+        mAllowPostMessage = mMemberPermission.hasPermission(Permission.ALLOW_POST);
 
         mSettingsGroupAdapter.notifyDataSetChanged();
     }

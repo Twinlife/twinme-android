@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2021 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -24,8 +24,11 @@ public class InvitationContactItem extends Item implements GetTwincodeAction.Con
     private final BaseItemActivity mBaseItemActivity;
     private final BaseItemActivity.InvitationItemObserver mInvitationItemObserver;
     private final ConversationService.TwincodeDescriptor mTwincodeDescriptor;
-    private Bitmap mAvatar;
-    private String mName;
+    // Note: mAvatar and mName are updated asynchronously by twinlife executor's thread.
+    @Nullable
+    private volatile Bitmap mAvatar;
+    @Nullable
+    private volatile String mName;
 
     public InvitationContactItem(BaseItemActivity baseItemActivity, BaseItemActivity.InvitationItemObserver invitationItemObserver, TwincodeDescriptor twincodeDescriptor) {
 
@@ -56,11 +59,13 @@ public class InvitationContactItem extends Item implements GetTwincodeAction.Con
         }
     }
 
+    @Nullable
     String getName() {
 
         return mName;
     }
 
+    @Nullable
     Bitmap getAvatar() {
 
         return mAvatar;

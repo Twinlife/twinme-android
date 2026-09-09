@@ -174,10 +174,18 @@
     <string name="account_migration_view_cancel_message">Verilerinize erişmek için uygulamayı kapatın ve yeniden başlatın.</string>
     <string name="account_migration_view_close_message">Yeni verilere erişmek için uygulamayı kapatın ve yeniden başlatın.</string>
     <string name="account_migration_view_confirm_cancel_message">Taşımayı iptal etmek istediğinizden emin misiniz?</string>
+    <string name="account_migration_view_database">Veritabanı</string>
+    <string name="account_migration_view_finalizing">Tamamlanıyor</string>
+    <string name="account_migration_view_initializing">Başlatılıyor</string>
+    <string name="account_migration_view_my_device">Cihazım</string>
     <string name="account_migration_view_network_message">Ağ bağlantınızı kontrol edin</string>
     <string name="account_migration_view_not_enough_space_for_files">Dosyalar için yeterli alan yok</string>
     <string name="account_migration_view_not_enough_space_to_receive">Veritabanını indirmek için yeterli alan yok</string>
     <string name="account_migration_view_not_enough_space_to_upload">Veritabanını yüklemek için yeterli alan yok</string>
+    <string name="account_migration_view_other_device">Diğer cihaz</string>
+    <string name="account_migration_view_ready_to_start">Başlamaya hazır</string>
+    <string name="account_migration_view_receiving">Alınıyor</string>
+    <string name="account_migration_view_sending">Gönderiliyor</string>
     <string name="account_migration_view_state_canceled">Taşıma iptal edildi</string>
     <string name="account_migration_view_state_negotiate">Bekliyorum</string>
     <string name="account_migration_view_state_list_files">Dosyaları listeleme</string>
@@ -192,6 +200,8 @@
     <string name="account_migration_view_start">Taşımayı başlat</string>
     <string name="account_migration_view_stop">Taşımayı durdur</string>
     <string name="account_migration_view_success_message">Taşıma başarıyla tamamlandı</string>
+    <string name="account_migration_view_transfer">Aktarım sürüyor</string>
+    <string name="account_migration_view_transfer_complete">Aktarım tamamlandı</string>
     <string name="account_migration_view_transfer_in_progress">Veri aktarımı devam ediyor</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -649,6 +659,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Hesabınız silindi ve ilişkili tüm veriler yok edildi.&lt;br /&gt;
         Uygulamayı kapatmanız gerekiyor.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Kullanılabilir</string>
+    <string name="diagnostics_view_background_execution">Arka planda çalıştırma</string>
+    <string name="diagnostics_view_cellular_network">Hücresel ağ</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push belirteci</string>
+    <string name="diagnostics_view_secure_storage">Güvenli depolama yöntemi</string>
+    <string name="diagnostics_view_title">Tanılama</string>
+    <string name="diagnostics_view_unavailable">Kullanılamaz</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Bu ilişkiyi silmek istediğinizden emin misiniz?</string>

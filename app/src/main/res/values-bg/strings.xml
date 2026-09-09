@@ -173,11 +173,19 @@
     <string name="account_migration_view_cancel_message">Затворете приложението и го стартирайте отново, за да получите достъп до вашите данни.</string>
     <string name="account_migration_view_close_message">Затворете приложението и го стартирайте отново, за да получите достъп до новите данни.</string>
     <string name="account_migration_view_confirm_cancel_message">Сигурни ли сте, че искате да отмените миграцията?</string>
+    <string name="account_migration_view_database">База данни</string>
+    <string name="account_migration_view_finalizing">Финализиране</string>
+    <string name="account_migration_view_initializing">Инициализиране</string>
+    <string name="account_migration_view_my_device">Моето устройство</string>
     <string name="account_migration_view_network_message">Проверете вашата мрежова връзка</string>
     <string name="account_migration_view_not_enough_space_for_files">Няма достатъчно място за файловете</string>
     <string name="account_migration_view_not_enough_space_to_receive">Няма достатъчно място, за да изтеглите базата данни</string>
     <string name="account_migration_view_not_enough_space_to_upload">Няма достатъчно място, за да качите базата данни</string>
     <string name="account_migration_view_start">Започване на миграция</string>
+    <string name="account_migration_view_other_device">Друго устройство</string>
+    <string name="account_migration_view_ready_to_start">Готово за стартиране</string>
+    <string name="account_migration_view_receiving">Получаване</string>
+    <string name="account_migration_view_sending">Изпращане</string>
     <string name="account_migration_view_state_canceled">Миграцията е отменена</string>
     <string name="account_migration_view_state_list_files">Списък на файловете</string>
     <string name="account_migration_view_state_negotiate">Изчакване</string>
@@ -191,6 +199,8 @@
     <string name="account_migration_view_state_wait_files">Изчакване за получаване на файлове и база данни.</string>
     <string name="account_migration_view_stop">Спиране на миграцията</string>
     <string name="account_migration_view_success_message">Миграцията приключи успешно</string>
+    <string name="account_migration_view_transfer">Прехвърлянето е в ход</string>
+    <string name="account_migration_view_transfer_complete">Прехвърлянето е завършено</string>
     <string name="account_migration_view_transfer_in_progress">Прехвърлянето на данни е в ход</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -638,9 +648,21 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Въведете „OK“ по-долу, за да потвърдите изтриването на акаунта.</string>
     <string name="deleted_account_view_delete">Изтриване на акаунта</string>
+
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Вашият акаунт беше изтрит и всички свързани данни бяха унищожени.&lt;br /&gt;Трябва да затворите приложението.</string>
     <string name="deleted_account_view_warning">Внимание‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Наличен</string>
+    <string name="diagnostics_view_background_execution">Изпълнение във фонов режим</string>
+    <string name="diagnostics_view_cellular_network">Клетъчна мрежа</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push token</string>
+    <string name="diagnostics_view_secure_storage">Метод за сигурно съхранение</string>
+    <string name="diagnostics_view_title">Диагностика</string>
+    <string name="diagnostics_view_unavailable">Неналичен</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Сигурни ли сте, че искате да изтриете тази връзка?</string>

@@ -152,12 +152,20 @@
     <string name="account_migration_view_cancel_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu của bạn.</string>
     <string name="account_migration_view_close_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu mới.</string>
     <string name="account_migration_view_confirm_cancel_message">Bạn có chắc muốn hủy quá trình di chuyển không?</string>
+    <string name="account_migration_view_database">Cơ sở dữ liệu</string>
+    <string name="account_migration_view_finalizing">Đang hoàn tất</string>
+    <string name="account_migration_view_initializing">Đang khởi tạo</string>
+    <string name="account_migration_view_my_device">Thiết bị của tôi</string>
     <string name="account_migration_view_network_message">Kiểm tra kết nối mạng của bạn</string>
     <string name="account_migration_view_not_enough_space_for_files">Không đủ dung lượng cho các tệp</string>
     <string name="account_migration_view_not_enough_space_to_receive">Không đủ dung lượng để tải cơ sở dữ liệu về</string>
     <string name="account_migration_view_not_enough_space_to_upload">Không đủ dung lượng để tải cơ sở dữ liệu lên</string>
     <string name="account_migration_view_start">Bắt đầu di chuyển</string>
     <string name="account_migration_view_stop">Dừng di chuyển</string>
+    <string name="account_migration_view_other_device">Thiết bị khác</string>
+    <string name="account_migration_view_ready_to_start">Sẵn sàng bắt đầu</string>
+    <string name="account_migration_view_receiving">Đang nhận</string>
+    <string name="account_migration_view_sending">Đang gửi</string>
     <string name="account_migration_view_state_canceled">Đã hủy di chuyển</string>
     <string name="account_migration_view_state_list_files">Đang liệt kê tệp</string>
     <string name="account_migration_view_state_negotiate">Đang chờ</string>
@@ -170,6 +178,8 @@
     <string name="account_migration_view_state_wait_connect">Đang chờ kết nối lại</string>
     <string name="account_migration_view_state_wait_files">Đang chờ nhận tệp và cơ sở dữ liệu.</string>
     <string name="account_migration_view_success_message">Di chuyển hoàn tất thành công</string>
+    <string name="account_migration_view_transfer">Đang truyền dữ liệu</string>
+    <string name="account_migration_view_transfer_complete">Hoàn tất truyền dữ liệu</string>
     <string name="account_migration_view_transfer_in_progress">Đang chuyển dữ liệu</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -643,6 +653,17 @@
     <string name="deleted_account_view_delete">Xóa tài khoản</string>
     <string name="deleted_account_view_warning">Cảnh báo‼️</string>
     <string name="deleted_account_view_message">Tài khoản của bạn đã bị xóa và toàn bộ dữ liệu liên quan đã được gỡ khỏi thiết bị và máy chủ.\nBạn phải đóng ứng dụng.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Khả dụng</string>
+    <string name="diagnostics_view_background_execution">Hoạt động ngầm</string>
+    <string name="diagnostics_view_cellular_network">Mạng di động</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Mã thông báo đẩy (Push token)</string>
+    <string name="diagnostics_view_secure_storage">Phương thức lưu trữ bảo mật</string>
+    <string name="diagnostics_view_title">Chẩn đoán</string>
+    <string name="diagnostics_view_unavailable">Không khả dụng</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!--EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Bạn có chắc muốn xóa mối quan hệ này không?</string>

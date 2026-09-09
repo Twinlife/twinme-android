@@ -902,6 +902,45 @@ public class NotificationCenterImpl implements NotificationCenter {
             return;
         }
 
+        boolean isSilentNotification = false;
+        boolean notificationReaction = true;
+        long silentExpiration = 0;
+        if (originator instanceof GroupMember) {
+            GroupMember groupMember = (GroupMember) originator;
+            Originator owner = groupMember.getGroup();
+
+            if (owner instanceof Contact) {
+                Contact contact = (Contact) owner;
+                isSilentNotification = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+                notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+                silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+            } else if (owner instanceof Group) {
+                Group group = (Group) owner;
+                isSilentNotification = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+                notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+                silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+            }
+        } else if (originator instanceof Group) {
+            Group group = (Group) originator;
+            isSilentNotification = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+            silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        } else if (originator instanceof Contact) {
+            Contact contact = (Contact) originator;
+            isSilentNotification = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
+            silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        }
+
+        long currentTimeMillis = System.currentTimeMillis() / 1000;
+        if (silentExpiration > 0 && silentExpiration < currentTimeMillis) {
+            isSilentNotification = false;
+        }
+
+        if (isUpdatedAnnotationNotification && !notificationReaction) {
+            isSilentNotification = true;
+        }
+
         Notification notification = null;
         if (notificationType != null) {
             notification = mTwinmeContext.createNotification(notificationType, notificationId, originator,
@@ -958,7 +997,7 @@ public class NotificationCenterImpl implements NotificationCenter {
                 message.getExtras().putInt(ANNOTATION_TYPE_EXTRA, annotation.getType().ordinal());
             }
 
-            if (updateMessageNotification(notificationId, message, sender, false)) {
+            if (updateMessageNotification(notificationId, message, sender, isSilentNotification)) {
                 // There was an existing notification for this conversation and we updated it, nothing left to do.
                 return;
             }
@@ -986,45 +1025,6 @@ public class NotificationCenterImpl implements NotificationCenter {
             if (notification != null && notification.getDescriptorId() != null) {
                 conversationIntent.putExtra(Intents.INTENT_DESCRIPTOR_ID, notification.getDescriptorId().toString());
             }
-        }
-
-        boolean isSilentNotification = false;
-        boolean notificationReaction = true;
-        long silentExpiration = 0;
-        if (originator instanceof GroupMember) {
-            GroupMember groupMember = (GroupMember) originator;
-            Originator owner = groupMember.getGroup();
-
-            if (owner instanceof Contact) {
-                Contact contact = (Contact) owner;
-                isSilentNotification = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
-                notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
-                silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
-            } else if (owner instanceof Group) {
-                Group group = (Group) owner;
-                isSilentNotification = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
-                notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
-                silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
-            }
-        } else if (originator instanceof Group) {
-            Group group = (Group) originator;
-            isSilentNotification = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
-            notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
-            silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
-        } else if (originator instanceof Contact) {
-            Contact contact = (Contact) originator;
-            isSilentNotification = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
-            notificationReaction = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
-            silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
-        }
-
-        long currentTimeMillis = System.currentTimeMillis() / 1000;
-        if (silentExpiration > 0 && silentExpiration < currentTimeMillis) {
-            isSilentNotification = false;
-        }
-
-        if (isUpdatedAnnotationNotification && !notificationReaction) {
-            isSilentNotification = true;
         }
 
         if (isSilentNotification) {

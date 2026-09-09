@@ -104,6 +104,7 @@ import org.twinlife.twinme.ui.privacyActivity.PrivacyActivity;
 import org.twinlife.twinme.ui.profiles.AddProfileActivity;
 import org.twinlife.twinme.ui.profiles.UIProfile;
 import org.twinlife.twinme.ui.settingsActivity.AboutActivity;
+import org.twinlife.twinme.ui.settingsActivity.DiagnosticsActivity;
 import org.twinlife.twinme.ui.settingsActivity.HelpActivity;
 import org.twinlife.twinme.ui.settingsActivity.MessagesSettingsActivity;
 import org.twinlife.twinme.ui.settingsActivity.PersonalizationActivity;
@@ -1433,6 +1434,10 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
             case ACCOUNT:
                 startActivity(AccountActivity.class);
+                break;
+
+            case DIAGNOSTICS:
+                startActivity(DiagnosticsActivity.class);
                 break;
 
             case UPGRADE:

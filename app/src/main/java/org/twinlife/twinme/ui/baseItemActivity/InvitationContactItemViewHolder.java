@@ -205,7 +205,12 @@ class InvitationContactItemViewHolder extends ItemViewHolder {
         mLeftAvatarView.setImageBitmap(getBaseItemActivity().getIdentityAvatar());
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append(invitation.getName());
+
+        // Be careful that name is retrieve asynchronously and can be null.
+        final String name = invitation.getName();
+        if (name != null) {
+            spannableStringBuilder.append(name);
+        }
         spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         spannableStringBuilder.append("\n");

@@ -208,6 +208,36 @@
         "video": "",
         "min_version": "",
         "max_version": ""
+      },
+      {
+        "id" : 57,
+        "title": "Is the code Open Source?",
+        "description": "<p>twinme uses Open Source technologies for its core functionality (WebRTC, SQLCipher, STUN/TURN, etc.).</p><p>The application and proxy server source code is published under the AGPL-3.0 license, and is available on the GitHub repository : <a href='https://github.com/twinlife'>https://github.com/twinlife</a></p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 59,
+        "title": "Mini-Codes",
+        "description": "<p>Mini-Codes are automatically generated 6-character codes that you can give to friends you want to invite on twinme when you don&#8217;t have access to the application (e.g., without a phone). Your friends can enter them on their twinme application instead of scanning your invitation QR-Code with their device. Mini-Codes are single-use and valid 24 hours only.</p><p>It is strongly recommended to certify relations established with a Mini-Code to reinforce their security.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 60,
+        "title": "Certified relations",
+        "description": "<p>A &#8220;certified&#8221; relation ensures that you are always communicating with the right person, even if the service has been compromised by a malicious third party.</p><p>It adds another level of security by exchanging additional keys between both ends of a relation, which are then verified for all exchanges on this relation.</p><p>To certify a relation when both devices are next to each other&#8217;s, one end asks the other end to scan a QR-Code. Alternatively, a relation can be certified over a video call allowing each end to verify it is interacting with the right person. During the call, codes displayed from one terminal are checked by the other person, thus allowing the exchange of certification keys.</p>",
+        "tags": ["Basics"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
       }
     ],
     "min_version": "",
@@ -229,7 +259,7 @@
       {
         "id" : 22,
         "title": "How are my conversations organized?",
-        "description": "<p>Conversations are listed by contact alphabetically.</p>",
+        "description": "<p>Conversations are listed in chronological order, with the most recent first. Group conversations can be listed separately from other 1to1 conversations by pressing the “group” selector.</p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",
@@ -239,7 +269,7 @@
       {
         "id" : 23,
         "title": "How can I delete a conversation history?",
-        "description": "<p>In the “Conversation” screen with your contact, click on “Trash” [[Trash]].</p><p>A message appears asking you to confirm the operation. By tapping “OK” all contents exchanged in this conversation with this contact are removed from both your and your contact’s device simultaneously.</p>",
+        "description": "<p>On the “Conversation” screen with a contact, click on the “+” icon, then &#8220;Reset Conversation&#8221;.</p><p>A pop-up message appears asking you to confirm the operation. By pressing the “Reset Conversation” button, all messages and other contents exchanged in this conversation with this contact are removed from both ends: yours and your contact’s device simultaneously.</p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",
@@ -249,7 +279,7 @@
       {
         "id" : 24,
         "title": "How can I share a picture?",
-        "description": "<p>Click on the contact you want to share a picture with and on “Chat” [[Chat]] or “Conversation with”.</p><p>Under “Type a message”, click on the “Camera” [[Camera]]. You can either take a picture on the spot with the shutter button [[Camera]], or pick one from your photo album [[Gallery]].<br/>A check mark appears on the top right of each selected picture, and a small figure next to the “Camera” icon indicates the number of pictures selected.</p><p>Click on &#8220;Send&#8221; [[Send]] to send.</p>",
+        "description": "<p>On the conversation screen with a contact, tap the &#8220;+&#8221; icon to display a menu allowing to retrieve a photo or a video from your device&#8217;s photo album, or activate the device&#8217;s camera to take a live photo or video, and send it with an accompanying message.<br/><br/>A check mark [[Check]] appears at the top left of each selected picture, with the number selected indicated at the bottom.<br/><br/>Alternatively, you can tap the “Camera” icon [[Camera]] in the &#8220;Type a message&#8221; field to take a live picture on the spot.<br/><br/>Another method is to open your photo album, select photos or videos, tap the &#8220;Share&#8221; icon, and select the twinme application. Choose the contact(s) you want to share your contents with, type an accompanying message and send.</p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",
@@ -259,7 +289,7 @@
       {
         "id" : 25,
         "title": "How can I store a received photo on my device?",
-        "description": "<p>From twinme standpoint, message contents like photos remain under control of the sender. By default, you cannot copy, store, or share received content.</p><p>The ability to allow senders to authorize individual contacts to copy, store or share their content will be available in a forthcoming twinme release.</p>",
+        "description": "<p>If the sender allows it, you can save contents exchanged in a conversation on your device by taping the &#8220;+&#8221; icon, then &#8220;Save&#8221;.</p><p>However, senders may not authorize individual contacts to copy, store or share their contents exchanged in their conversations with those contacts.</p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",
@@ -269,7 +299,7 @@
       {
         "id" : 26,
         "title": "How can I send a file?",
-        "description": "<p>The ability to send any type of file in conversations will be available in a forthcoming twinme release.</p>",
+        "description": "<p>On the conversation screen with a contact, tap the &#8220;+&#8221; icon to display a menu allowing to retrieve &#8220;Media, web links and documents&#8221; from your device&#8217;s storage, &#8220;Select&#8221; one or several items, and &#8220;Share&#8221; them via the twinme application.</p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",
@@ -279,7 +309,7 @@
       {
         "id" : 27,
         "title": "How can I forward a message?",
-        "description": "<p>From twinme standpoint, message contents remain under the control of the sender. By default, you cannot copy, store, or share received content.</p><p>The ability to allow senders to authorize individual contacts to copy, store or share their content will be available in a forthcoming twinme release.</p>",
+        "description": "<p>If the sender allows it, you can forward contents exchanged in a conversation on your device by taping the &#8220;+&#8221; icon, then &#8220;Forward&#8221;.</p><p>However, senders may not authorize individual contacts to copy, store or share their contents exchanged in their conversations with those contacts.</p>",
         "tags": ["Messaging"],
         "image": "",
         "video": "",
@@ -462,8 +492,8 @@
     "articles": [
       {
         "id" : 46,
-        "title": "How do I access the Menu?",
-        "description": "<p><em>Tap on [[Menu]] at the top left of the twinme home screen to enter “Edit Profile”.</em></p><p><em>Tap on [[Menu]] at the bottom right corner of your screen to access the Menu.</em></p>",
+        "title": "How do I access the Application Settings and Support menus?",
+        "description": "<p>Tap on your profile picture at the top left of the screen to display the &#8220;APPLICATION SETTINGS&#8221; and &#8220;SUPPORT&#8221; menus.</p>",
         "tags": ["Settings", "Update"],
         "image": "",
         "video": "",
@@ -567,7 +597,7 @@
       {
         "id" : 55,
         "title": "How can I get help?",
-        "description": "<p>Tap on [[Menu]] at the top left of the twinme home screen to enter “Edit Profile”. At the bottom right corner, tap on [[Menu]]  and then on “Help”.</p><p>You can also ask for specific help directly to the twinme support team using the <a href='https://twin.me/en/contact/'>contact form</a>, and providing an email address where to get an answer.</p>",
+        "description": "<p>Tap on your profile image  at the top left of the screen to display the &#8220;SUPPORT&#8221; menu, then “Help”.</p><p>You can ask specific questions directly to the support team using &#8220;Feedback&#8221; in the app, or the  <a href='https://twin.me/en/contact/'>contact form</a> on the website, as long as you provide an email address to get an answer.</p>",
         "tags": ["Help", "Feedback"],
         "image": "",
         "video": "",
@@ -577,7 +607,27 @@
       {
         "id" : 56,
         "title": "How can I give feedback?",
-        "description": "<p>Tap on [[Menu]]  at the top left of the twinme home screen to enter “Edit Profile”. At the bottom right corner, tap on [[Menu]] and then on “Send feedback”.</p><p>Enter your email address so we can follow up with you regarding your feedback, type your message in the “Description” box and then “Accept”.</p><p>You can also send your feedback from the twinme website using its <a href='https://twin.me/en/contact/'>contact form</a>.</p>",
+        "description": "<p>Tap on your profile image  at the top left of the screen to display the &#8220;SUPPORT&#8221; menu, then &#8220;Help” and &#8220;Feedback&#8221;.</p><p>Enter your email address in the &#8220;Contact&#8221; field, if you want to get a reply from the support team, type your feedback in the &#8220;Message&#8221; field, then “Send”.</p><p>You can also send your feedback from the website using its <a href='https://twin.me/en/contact/'>contact form</a>.</p>",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 58,
+        "title": "Fatal error 18, what can I do?",
+        "description": "<p>This error may happen when there is not enough free space on your device. After freeing some space, restart the device, and launch the application.</p><p>On iOS, this error occurs when the application is launched after restoring from an unencrypted backup. By default, neither iTunes nor iCloud encrypt backups, so the key needed to decrypt the app database is not included in the restoration process. Make sure you always make encrypted back-ups on Apple devices.</p><p>If the application is still available on your &#8220;old&#8221; device, you can transfer your account from the &#8220;old&#8221; device to the &#8220;new&#8221; one : </p><ul><li>install the app on the new device,</li><li>on both devices, tap the profile image at the top left of the screen to display the &#8220;SUPPORT&#8221; menu, then &#8220;Account&#8221;,</li><li>follow the instructions.</li></ul>",
+        "tags": ["Help", "Feedback"],
+        "image": "",
+        "video": "",
+        "min_version": "",
+        "max_version": ""
+      },
+      {
+        "id" : 61,
+        "title": "Call screen not displayed",
+        "description": "<p>On some Samsung and Xiaomi devices, it may happen that call screens are not displayed, when the application is not allowed to run in the background. Make sure this is not the case and that the app is indeed allowed to run in the background.</p><p>On Xiaomi/Redmi devices, enable the MIUI permission by going to the device Settings / Apps / twinme / Other permissions / Open new windows while running in the background.</p>",
         "tags": ["Help", "Feedback"],
         "image": "",
         "video": "",

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -46,8 +46,6 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
     private UUID mGroupId;
 
     private GroupService mGroupService;
-
-    private final boolean mUIPostInitialized = false;
 
     //
     // Override TwinmeActivityImpl methods
@@ -108,7 +106,7 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
                 mCapabilities.setSchedule(schedule);
             }
 
-            mGroupService.updateGroup(null, null, null, null, null, mCapabilities);
+            mGroupService.updateGroup(null, null, null, null, mCapabilities);
         }
 
         super.onPause();
@@ -237,8 +235,6 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
         settingsRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
 
         mProgressBarView = findViewById(R.id.group_capabilities_activity_progress_bar);
-
-        boolean mUIInitialized = true;
     }
 
 }

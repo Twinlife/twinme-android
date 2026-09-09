@@ -7,10 +7,6 @@ plugins {
 def isHuaweiTask = gradle.startParameter.taskNames.any { it.toLowerCase().contains("huawei") || it.toLowerCase().contains("universal") }
 if (isHuaweiTask) {
     apply plugin: 'com.huawei.agconnect'
-
-    agcp {
-        manifest false
-    }
 }
 
 android {
@@ -32,8 +28,8 @@ android {
         applicationId "org.twinlife.device.android.twinme"
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 524
-        versionName "35.1"
+        versionCode 526
+        versionName "35.2.1"
         manifestPlaceholders.domainName = "twin.me"
         manifestPlaceholders.backupExtension = "twmbckp"
 
@@ -186,6 +182,11 @@ androidComponents {
     ) { variant ->
         def distro = variant.productFlavors.find { it.first == "distribution" }?.second ?: ""
         def buildType = variant.buildType
+
+        if (buildType == "staging") {
+            // Use release source sets for staging builds.
+            buildType = "release"
+        }
 
         def addTwinmeSources = { dirName ->
             variant.sources.java.addStaticSourceDirectory("src/${dirName}/java")

@@ -74,6 +74,7 @@ public class FAQView extends AbstractBottomSheetView {
     protected static final String KURIO_LINK = "https://www.youtube.com/embed/BZCIT-g5tBo/";
     protected static final String DONT_KILL_MY_APP_LINK = "https://dontkillmyapp.com/";
     protected static final String CONNECT_PEOPLE_LINK = "https://twin.me/support/connect-people";
+    protected static final String OPEN_SOURCE_LINK = "https://github.com/twinlife";
 
     //Images
     protected static final String ADD_CONTACT_IMAGE = "AddContact";
@@ -92,6 +93,7 @@ public class FAQView extends AbstractBottomSheetView {
     protected static final String SWITCH_CAMERA_IMAGE = "SwitchCamera";
     protected static final String VIDEO_MUTE_IMAGE = "VideoMute";
     protected static final String MENU_IMAGE = "Menu";
+    protected static final String CHECK_IMAGE = "Check";
 
     protected View mRootView;
     private final Map<String, Integer> mImagesMap = new HashMap<>();
@@ -249,6 +251,7 @@ public class FAQView extends AbstractBottomSheetView {
         mImagesMap.put(SWITCH_CAMERA_IMAGE, R.drawable.turn_action_call);
         mImagesMap.put(VIDEO_MUTE_IMAGE, R.drawable.video_mute_action_on);
         mImagesMap.put(MENU_IMAGE, R.drawable.side_menu);
+        mImagesMap.put(CHECK_IMAGE, R.drawable.check_mark_grey);
     }
 
     private void interactWithURL(String url) {
@@ -256,7 +259,7 @@ public class FAQView extends AbstractBottomSheetView {
             Log.d(LOG_TAG, "interactWithURL: " + url);
         }
 
-        if (url.equals(VIDEO_PRESENTATION_LINK) || url.equals(KURIO_LINK) || url.equals(DONT_KILL_MY_APP_LINK)) {
+        if (url.equals(VIDEO_PRESENTATION_LINK) || url.equals(KURIO_LINK) || url.equals(DONT_KILL_MY_APP_LINK) || url.equals(OPEN_SOURCE_LINK)) {
             Context context = getContext();
             if (context != null) {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));

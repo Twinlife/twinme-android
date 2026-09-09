@@ -173,11 +173,19 @@
     <string name="account_migration_view_cancel_message">Închideți aplicația și reporniți-o pentru a accesa datele.</string>
     <string name="account_migration_view_close_message">Închideți aplicația și reporniți-o pentru a accesa noile date.</string>
     <string name="account_migration_view_confirm_cancel_message">Sigur doriți să anulați migrarea?</string>
+    <string name="account_migration_view_database">Bază de date</string>
+    <string name="account_migration_view_finalizing">Finalizare</string>
+    <string name="account_migration_view_initializing">Inițializare</string>
+    <string name="account_migration_view_my_device">Dispozitivul meu</string>
     <string name="account_migration_view_network_message">Verificați conexiunea la rețea</string>
     <string name="account_migration_view_not_enough_space_for_files">Spațiu insuficient pentru fișiere</string>
     <string name="account_migration_view_not_enough_space_to_receive">Spațiu insuficient pentru descărcarea bazei de date</string>
     <string name="account_migration_view_not_enough_space_to_upload">Spațiu insuficient pentru încărcarea bazei de date</string>
     <string name="account_migration_view_start">Porniți migrarea</string>
+    <string name="account_migration_view_other_device">Alt dispozitiv</string>
+    <string name="account_migration_view_ready_to_start">Gata de pornire</string>
+    <string name="account_migration_view_receiving">Primire</string>
+    <string name="account_migration_view_sending">Trimitere</string>
     <string name="account_migration_view_state_canceled">Migrare anulată</string>
     <string name="account_migration_view_state_list_files">Listare fișiere</string>
     <string name="account_migration_view_state_negotiate">Așteptare</string>
@@ -191,6 +199,8 @@
     <string name="account_migration_view_state_wait_files">Așteptare primire fișiere și bază de date.</string>
     <string name="account_migration_view_stop">Oprire migrare</string>
     <string name="account_migration_view_success_message">Migrare finalizată cu succes</string>
+    <string name="account_migration_view_transfer">Transfer în curs</string>
+    <string name="account_migration_view_transfer_complete">Transfer finalizat</string>
     <string name="account_migration_view_transfer_in_progress">Transfer de date în curs</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -646,6 +656,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Contul dvs. a fost șters, iar toate datele asociate au fost distruse.<br /> Trebuie să închideți aplicația.</string>
     <string name="deleted_account_view_warning">Atenție‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Disponibil</string>
+    <string name="diagnostics_view_background_execution">Execuție în fundal</string>
+    <string name="diagnostics_view_cellular_network">Rețea celulară</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Jeton push</string>
+    <string name="diagnostics_view_secure_storage">Metodă de stocare securizată</string>
+    <string name="diagnostics_view_title">Diagnosticare</string>
+    <string name="diagnostics_view_unavailable">Indisponibil</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Sigur doriți să ștergeți această relație?</string>

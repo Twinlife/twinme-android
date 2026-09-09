@@ -174,10 +174,18 @@
     <string name="account_migration_view_cancel_message">Schließen Sie die Anwendung und starten Sie sie neu, um auf Ihre Daten zuzugreifen.</string>
     <string name="account_migration_view_close_message">Schließen Sie die Anwendung und starten Sie sie neu, um auf die neuen Daten zuzugreifen.</string>
     <string name="account_migration_view_confirm_cancel_message">Sind Sie sicher, dass Sie die Migration abbrechen möchten?</string>
+    <string name="account_migration_view_database">Datenbank</string>
+    <string name="account_migration_view_finalizing">Abschluss</string>
+    <string name="account_migration_view_initializing">Initialisierung</string>
+    <string name="account_migration_view_my_device">Mein Gerät</string>
     <string name="account_migration_view_network_message">Überprüfen Sie Ihre Netzwerkverbindung</string>
     <string name="account_migration_view_not_enough_space_for_files">Nicht genügend Platz für Dateien</string>
     <string name="account_migration_view_not_enough_space_to_receive">Nicht genügend Platz zum Herunterladen der Datenbank</string>
     <string name="account_migration_view_not_enough_space_to_upload">Nicht genügend Platz zum Hochladen der Datenbank</string>
+    <string name="account_migration_view_other_device">Anderes Gerät</string>
+    <string name="account_migration_view_ready_to_start">Bereit zum Starten</string>
+    <string name="account_migration_view_receiving">Empfangen</string>
+    <string name="account_migration_view_sending">Senden</string>
     <string name="account_migration_view_state_canceled">Migration abgebrochen</string>
     <string name="account_migration_view_state_negotiate">Warten</string>
     <string name="account_migration_view_state_list_files">Dateien werden aufgelistet</string>
@@ -192,6 +200,8 @@
     <string name="account_migration_view_start">Migration starten</string>
     <string name="account_migration_view_stop">Migration stoppen</string>
     <string name="account_migration_view_success_message">Migration erfolgreich abgeschlossen</string>
+    <string name="account_migration_view_transfer">Übertragung läuft</string>
+    <string name="account_migration_view_transfer_complete">Übertragung abgeschlossen</string>
     <string name="account_migration_view_transfer_in_progress">Datenübertragung läuft</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -650,6 +660,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Ihr Konto wurde gelöscht und alle zugehörigen Daten wurden vernichtet.&lt;br /&gt;
         Sie müssen die Anwendung nun schließen.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Verfügbar</string>
+    <string name="diagnostics_view_background_execution">Ausführung im Hintergrund</string>
+    <string name="diagnostics_view_cellular_network">Mobilfunknetz</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push-Token</string>
+    <string name="diagnostics_view_secure_storage">Sichere Speichermethode</string>
+    <string name="diagnostics_view_title">Diagnose</string>
+    <string name="diagnostics_view_unavailable">Nicht verfügbar</string>
+    <string name="diagnostics_view_wifi">WLAN</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Sind Sie sicher, dass Sie diese Verbindung löschen möchten?</string>

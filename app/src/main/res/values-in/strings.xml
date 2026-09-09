@@ -173,10 +173,18 @@
     <string name="account_migration_view_cancel_message">Tutup aplikasi dan mulai ulang untuk mengakses data Anda.</string>
     <string name="account_migration_view_close_message">Tutup aplikasi dan mulai ulang untuk mengakses data baru.</string>
     <string name="account_migration_view_confirm_cancel_message">Anda yakin ingin membatalkan migrasi?</string>
+    <string name="account_migration_view_database">Basis data</string>
+    <string name="account_migration_view_finalizing">Menyelesaikan</string>
+    <string name="account_migration_view_initializing">Menginisialisasi</string>
+    <string name="account_migration_view_my_device">Perangkat saya</string>
     <string name="account_migration_view_network_message">Periksa koneksi jaringan Anda</string>
     <string name="account_migration_view_not_enough_space_for_files">Tidak cukup ruang untuk file</string>
     <string name="account_migration_view_not_enough_space_to_receive">Tidak cukup ruang untuk mengunduh database</string>
     <string name="account_migration_view_not_enough_space_to_upload">Tidak cukup ruang untuk mengunggah database</string>
+    <string name="account_migration_view_other_device">Perangkat lain</string>
+    <string name="account_migration_view_ready_to_start">Siap memulai</string>
+    <string name="account_migration_view_receiving">Menerima</string>
+    <string name="account_migration_view_sending">Mengirim</string>
     <string name="account_migration_view_state_canceled">Migrasi dibatalkan</string>
     <string name="account_migration_view_state_negotiate">Menunggu</string>
     <string name="account_migration_view_state_list_files">Daftar file</string>
@@ -191,6 +199,8 @@
     <string name="account_migration_view_start">Mulai migrasi</string>
     <string name="account_migration_view_stop">Hentikan migrasi</string>
     <string name="account_migration_view_success_message">Migrasi berhasil diselesaikan</string>
+    <string name="account_migration_view_transfer">Transfer sedang berlangsung</string>
+    <string name="account_migration_view_transfer_complete">Transfer selesai</string>
     <string name="account_migration_view_transfer_in_progress">Transfer data sedang berlangsung</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -648,6 +658,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Akun Anda telah dihapus dan semua data terkait telah dihancurkan.&lt;br/&gt;
         Anda harus menutup aplikasi.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Tersedia</string>
+    <string name="diagnostics_view_background_execution">Eksekusi latar belakang</string>
+    <string name="diagnostics_view_cellular_network">Jaringan seluler</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Token push</string>
+    <string name="diagnostics_view_secure_storage">Metode penyimpanan aman</string>
+    <string name="diagnostics_view_title">Diagnostik</string>
+    <string name="diagnostics_view_unavailable">Tidak tersedia</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Apakah Anda yakin ingin menghapus hubungan ini?</string>

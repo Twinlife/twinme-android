@@ -174,10 +174,18 @@
     <string name="account_migration_view_cancel_message">Feche o aplicativo e reinicie-o para acessar seus dados.</string>
     <string name="account_migration_view_close_message">Feche o aplicativo e reinicie-o para acessar os novos dados.</string>
     <string name="account_migration_view_confirm_cancel_message">Tem certeza de que deseja cancelar a migração?</string>
+    <string name="account_migration_view_database">Banco de dados</string>
+    <string name="account_migration_view_finalizing">Finalizando</string>
+    <string name="account_migration_view_initializing">Inicializando</string>
+    <string name="account_migration_view_my_device">O meu dispositivo</string>
     <string name="account_migration_view_network_message">Verifique sua conexão de rede</string>
     <string name="account_migration_view_not_enough_space_for_files">Espaço insuficiente para arquivos</string>
     <string name="account_migration_view_not_enough_space_to_receive">Não há espaço suficiente para baixar o banco de dados</string>
     <string name="account_migration_view_not_enough_space_to_upload">Não há espaço suficiente para fazer upload do banco de dados</string>
+    <string name="account_migration_view_other_device">Outro dispositivo</string>
+    <string name="account_migration_view_ready_to_start">Pronto para começar</string>
+    <string name="account_migration_view_receiving">Recebendo</string>
+    <string name="account_migration_view_sending">Enviando</string>
     <string name="account_migration_view_state_canceled">Migração cancelada</string>
     <string name="account_migration_view_state_negotiate">Esperando</string>
     <string name="account_migration_view_state_list_files">Listando arquivos</string>
@@ -192,6 +200,8 @@
     <string name="account_migration_view_start">Iniciar migração</string>
     <string name="account_migration_view_stop">Interromper a migração</string>
     <string name="account_migration_view_success_message">Migração concluída com sucesso</string>
+    <string name="account_migration_view_transfer">Transferência em curso</string>
+    <string name="account_migration_view_transfer_complete">Transferência concluída</string>
     <string name="account_migration_view_transfer_in_progress">Transferência de dados em andamento</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -649,6 +659,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Sua conta foi excluída e todos os dados associados foram destruídos.&lt;br /&gt;
         Você deve fechar o aplicativo.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Disponível</string>
+    <string name="diagnostics_view_background_execution">Execução em segundo plano</string>
+    <string name="diagnostics_view_cellular_network">Rede celular</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Token de push</string>
+    <string name="diagnostics_view_secure_storage">Método de armazenamento seguro</string>
+    <string name="diagnostics_view_title">Diagnóstico</string>
+    <string name="diagnostics_view_unavailable">Indisponível</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Tem a certeza de que pretende eliminar esta relação?</string>

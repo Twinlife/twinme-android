@@ -171,6 +171,16 @@ public class NetworkStatus {
         return mNetworkCallback != null;
     }
 
+    public boolean isWifiConnected() {
+
+        return mIsWifiConnected;
+    }
+
+    public boolean isMobileConnected() {
+
+        return mIsMobileConnected;
+    }
+
     private boolean isConnected() {
         return mIsWifiConnected || mIsMobileConnected;
     }

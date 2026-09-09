@@ -52,9 +52,8 @@ public class Settings {
     public static final IntConfig fontSize = new IntConfig("settings_activity_font_size", FontSize.SYSTEM.ordinal(), "8961B734-1D70-407B-A02B-0F673FB2F8BC");
     public static final IntConfig defaultTab = new IntConfig("settings_activity_default_tab", TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal(), "AD11179C-1510-4F1A-A4C2-0F29DC989997");
     public static final IntConfig displayMode = new IntConfig("settings_activity_display_mode", DisplayMode.SYSTEM.ordinal(), "44CE232D-4BA3-4295-8B27-7BD9981AD555");
-    public static final IntConfig hapticFeedbackMode = new IntConfig("settings_activity_haptic_feedback_mode", TwinmeApplication.HapticFeedbackMode.SYSTEM.ordinal(), "E9819421-CD71-4C3D-AB6A-0783F0FF4532");
     public static final BooleanConfig visualizationLink = new BooleanConfig("settings_activity_visualization_link", true, "4B143BC6-1590-4889-B46A-2B54BCf5DBA8");
-    public static BooleanConfig hapticFeedbackEnable;
+    public static final BooleanConfig hapticFeedbackEnable = new BooleanConfig("settings_activity_haptic_feedback_enable", true, "A33B5A34-1C22-4FFA-B1DB-DFB8E2338DD6");
     public static final BooleanConfig soundEffectsEnable = new BooleanConfig("settings_activity_sound_effects", true, "94DAC351-DE6C-4219-B35E-BA409078089B");
 
     public static final IntConfig emojiSize = new IntConfig("settings_activity_emoji_size", EmojiSize.STANDARD.ordinal(), "5CDAfAE4-FFE8-4754-A178-4f8C5DC834E0");
@@ -154,8 +153,6 @@ public class Settings {
     public static void init(@NonNull ConfigurationService configurationService) {
 
         sConfiguration = configurationService.getConfiguration("");
-
-        hapticFeedbackEnable = new BooleanConfig("settings_activity_haptic_feedback_enable", hapticFeedbackMode.getInt() != TwinmeApplication.HapticFeedbackMode.OFF.ordinal(), "A33B5A34-1C22-4FFA-B1DB-DFB8E2338DD6");
     }
 
     /**

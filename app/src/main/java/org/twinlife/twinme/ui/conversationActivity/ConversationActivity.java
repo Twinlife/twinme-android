@@ -187,6 +187,7 @@ import org.twinlife.twinme.ui.conversationActivity.poll.UIPollResult;
 import org.twinlife.twinme.ui.conversationFilesActivity.ConversationFilesActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.FullscreenMediaActivity;
 import org.twinlife.twinme.ui.conversationFilesActivity.ItemSelectedActionView;
+import org.twinlife.twinme.ui.conversations.MenuConversationShortcutView;
 import org.twinlife.twinme.ui.exportActivity.ExportActivity;
 import org.twinlife.twinme.ui.premiumServicesActivity.PremiumFeatureConfirmView;
 import org.twinlife.twinme.ui.premiumServicesActivity.UIPremiumFeature;
@@ -1313,7 +1314,8 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             mReplyToDescriptorId = null;
         } else {
             long firstSequenceId = mItems.size() < 2 ? -1 : mItems.get(1).getDescriptorId().sequenceId;
-            if (descriptorId.sequenceId < firstSequenceId) {
+            // Load more descriptors unless we have loaded everything.
+            if (descriptorId.sequenceId < firstSequenceId && !mAllDescriptorsLoaded) {
                 mReplyToDescriptorId = descriptorId;
                 mConversationService.getPreviousObjectDescriptors();
             } else {
@@ -2727,7 +2729,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                 scrollToBottom();
             }
 
-            if (playSound) {
+            if (playSound && !isSilentModeEnable()) {
                 SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.NEW_MESSAGE, this, getTwinmeApplication());
             }
         }
@@ -2817,7 +2819,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         if (audioDescriptor.isAvailable()) {
                             addAudioDescriptor(audioDescriptor);
                             scrollToBottom();
-                            SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.NEW_MESSAGE, this, getTwinmeApplication());
+                            if (!isSilentModeEnable()) {
+                                SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.NEW_MESSAGE, this, getTwinmeApplication());
+                            }
                         }
                         break;
 
@@ -3061,7 +3065,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
                         peerPollItem.updateVotes((PollDescriptor) descriptor);
                     }
 
-                    if (updateType == UpdateType.PEER_ANNOTATIONS && !updatedItem.isPeerItem()) {
+                    if (updateType == UpdateType.PEER_ANNOTATIONS && !updatedItem.isPeerItem() && !isSilentModeEnable()) {
                         SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.EMOJI, this, getTwinmeApplication());
                     }
 
@@ -3242,7 +3246,9 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             mMenuItemView.post(this::closeMenu);
         }
 
-        SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.DELETE_MESSAGE, this, getTwinmeApplication());
+        if (!isSilentModeEnable()) {
+            SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.DELETE_MESSAGE, this, getTwinmeApplication());
+        }
 
         for (int index = mItems.size() - 1; index >= 0; index--) {
             Item lItem = mItems.get(index);
@@ -3337,7 +3343,11 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
         }
 
         sendFile(Uri.fromFile(recording), recording.getName(), Descriptor.Type.AUDIO_DESCRIPTOR, true, getTwinmeApplication().fileCopyAllowed(), 0);
-        SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.SEND_MESSAGE, this, getTwinmeApplication());
+
+        if (!isSilentModeEnable()) {
+            SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.SEND_MESSAGE, this, getTwinmeApplication());
+        }
+
         setSelectedMode(Mode.DEFAULT);
     }
 
@@ -4364,7 +4374,7 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             mDeferredAllowCopyText = false;
             mDeferredTimeout = 0;
             mDeferredReplyTo = null;
-        } else {
+        } else if (!isSilentModeEnable()) {
             SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.SEND_MESSAGE, this, getTwinmeApplication());
         }
     }
@@ -4417,7 +4427,10 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             });
         }
 
-        SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.SEND_MESSAGE, this, getTwinmeApplication());
+        if (!isSilentModeEnable()) {
+            SoundEffect.playSoundWithType(SoundEffect.SoundEffectType.SEND_MESSAGE, this, getTwinmeApplication());
+        }
+
         mSendButtonListener.reset();
         closeMenu();
         closeReplyView();
@@ -6859,6 +6872,36 @@ public class ConversationActivity extends BaseItemActivity implements Conversati
             });
 
         });
+    }
+
+    private boolean isSilentModeEnable() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "isSilentModeEnable");
+        }
+
+        if (mSubject == null) {
+            return false;
+        }
+
+        boolean silentMode = false;
+        long silentExpiration = -1;
+
+        if (getGroup() != null) {
+            Group group = getGroup();
+            silentMode = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        } else if (getContact() != null) {
+            Contact contact = getContact();
+            silentMode = contact.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
+            silentExpiration = contact.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);
+        }
+
+        long currentTimeMillis = System.currentTimeMillis() / 1000;
+        if (silentExpiration > 0 && silentExpiration < currentTimeMillis) {
+            silentMode = false;
+        }
+
+        return silentMode;
     }
 
     private void backPressed() {
