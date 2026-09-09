@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2024 twinlife SA.
+ *  Copyright (c) 2024-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -109,7 +109,7 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
                 mCapabilities.updateSchedule(s -> s.setEnabled(false));
             }
 
-            mGroupService.updateGroup(mGroup.getName(), null, null, null, null, mCapabilities);
+            mGroupService.updateGroup(mGroup.getName(), null, null, null, mCapabilities);
         }
 
         super.onPause();

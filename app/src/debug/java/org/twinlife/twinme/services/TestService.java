@@ -21,6 +21,7 @@ import org.twinlife.twinlife.ConversationService.GroupConversation;
 import org.twinlife.twinlife.ConversationService.InvitationDescriptor;
 import org.twinlife.twinlife.Filter;
 import org.twinlife.twinlife.NotificationService.NotificationStat;
+import org.twinlife.twinlife.Permission;
 import org.twinlife.twinlife.RepositoryObject;
 import org.twinlife.twinlife.TwincodeFactory;
 import org.twinlife.twinlife.TwincodeOutboundService;
@@ -343,14 +344,14 @@ public class TestService extends AbstractTwinmeService {
 
 
         mGroupName = name;
-        mTwinmeContext.createGroup(requestId, name, null, null, null);
+        mTwinmeContext.createGroup(requestId, name, null, null, null, Permission.ALL_PERMISSIONS, Permission.ALL_PERMISSIONS);
     }
 
     public void createGroupMember(@NonNull UUID conversationId, String name, @NonNull UUID groupId) {
         long requestId = newOperation(CREATE_GROUP_MEMBER);
 
         mPendingJoins.put(requestId, new GroupInviteMember(requestId, conversationId, groupId, name));
-        mTwinmeContext.createGroup(requestId, name, null, null, null);
+        mTwinmeContext.createGroup(requestId, name, null, null, null, Permission.ALL_PERMISSIONS, Permission.ALL_PERMISSIONS);
     }
 
     private void onCreateGroup(long requestId, long operationId, @NonNull Group group, @NonNull GroupConversation conversation) {

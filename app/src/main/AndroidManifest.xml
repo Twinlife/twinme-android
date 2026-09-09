@@ -95,7 +95,7 @@
         </intent>
     </queries>
 
-    <!-- Use tools:ignore="LockedOrientationActivity" to turn OFF Android studio warning on android:screenOrientation="portrait" -->
+    <!-- Use tools:ignore="LockedOrientationActivity" to turn OFF Android Studio warning on android:screenOrientation="portrait" -->
     <application
         android:name="org.twinlife.twinme.ui.TwinmeApplicationImpl"
         tools:ignore="LockedOrientationActivity"
@@ -604,6 +604,12 @@
             android:theme="@style/TwinmeThemeWithNoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name="org.twinlife.twinme.ui.settingsActivity.DiagnosticsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/TwinmeThemeWithNoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name="org.twinlife.twinme.ui.settingsActivity.FAQActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
@@ -712,8 +718,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
             </intent-filter>
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -723,8 +728,7 @@
                     android:host="invite.${domainName}"
                     android:scheme="https" />
             </intent-filter>
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -734,8 +738,7 @@
                     android:host="invite.${domainName}"
                     android:scheme="skred" />
             </intent-filter>
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -745,8 +748,7 @@
                     android:host="authenticate.${domainName}"
                     android:scheme="https" />
             </intent-filter>
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -757,8 +759,7 @@
                     android:scheme="skred" />
             </intent-filter>
 
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -769,8 +770,7 @@
                     android:scheme="https" />
             </intent-filter>
 
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -781,8 +781,7 @@
                     android:scheme="twinme" />
             </intent-filter>
 
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -793,8 +792,7 @@
                     android:scheme="https" />
             </intent-filter>
 
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -812,8 +810,9 @@
 
                 <data android:scheme="file" />
                 <data android:scheme="content" />
-                <data android:mimeType="application/octet-stream" />
-                <data android:pathPattern=".*\\.${backupExtension}" />
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern="/.*\\.${backupExtension}" />
 
             </intent-filter>
 

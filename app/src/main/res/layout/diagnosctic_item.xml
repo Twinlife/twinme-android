@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="128dp">
+
+    <ImageView
+        android:id="@+id/diagnostic_item_image_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/diagnostic_item_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/diagnostic_item_image_view" />
+
+    <ImageView
+        android:id="@+id/diagnostic_item_state_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitCenter" />
+
+    <View
+        android:id="@+id/diagnostic_item_separator_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separator_color"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

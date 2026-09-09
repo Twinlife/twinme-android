@@ -33,6 +33,7 @@ import com.bumptech.glide.Glide;
 
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ConfigurationService;
 import org.twinlife.twinlife.ConnectionStatus;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.DisplayCallsMode;
@@ -104,8 +105,10 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     @Nullable
     private volatile AppStateInfo mAppInfo;
 
-    private AdminService mAdminService;
-    private JobService mJobService;
+    @Nullable
+    private volatile AdminService mAdminService;
+    @Nullable
+    private volatile JobService mJobService;
     private CoachMarkManager mCoachMarkManager;
     private boolean mShowConnectedMessage = true;
     private Date mAppBackgroundDate;
@@ -620,21 +623,6 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     public void updateDisplayMode(DisplayMode displayMode) {
 
         Settings.displayMode.setInt(displayMode.ordinal()).save();
-    }
-
-    @Override
-    public int hapticFeedbackMode() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "hapticFeedbackMode");
-        }
-
-        return Settings.hapticFeedbackMode.getInt();
-    }
-
-    @Override
-    public void updateHapticFeedbackMode(HapticFeedbackMode hapticFeedbackMode) {
-
-        Settings.hapticFeedbackMode.setInt(hapticFeedbackMode.ordinal()).save();
     }
 
     @Override
@@ -1189,7 +1177,8 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
                     .build());
         }
 
-        initialize(this::setup);
+        final ConfigurationService configurationService = initialize(this::setup);
+        Settings.init(configurationService);
 
         mCoachMarkManager = new CoachMarkManager();
     }
@@ -1204,10 +1193,10 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             Log.d(LOG_TAG, "setup");
         }
 
-        mJobService = twinmeContext.getJobService();
-        mJobService.setObserver(this);
+        final JobService jobService = twinmeContext.getJobService();
+        mJobService = jobService;
+        jobService.setObserver(this);
 
-        Settings.init(twinmeContext.getConfigurationService());
         setFirstInstallationBackupDate();
 
         // Setup so that the 'description' and 'capabilities' attributes are copied from the Profile
@@ -1238,9 +1227,11 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
             Log.d(LOG_TAG, "onEnterBackground");
         }
 
+        final JobService jobService = mJobService;
         mIsInBackground = true;
         mAppBackgroundDate = new Date();
-        boolean isIdle = mJobService.isIdle();
+        boolean isIdle = jobService == null || jobService.isIdle();
+        Date mAppBackgroundDate = new Date();
         if (!isIdle && !CallService.isRunning()) {
             PeerService.startService(this, 0, System.currentTimeMillis());
         }
@@ -1457,10 +1448,15 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
     @Override
     @Nullable
     public synchronized LastVersion getLastVersion() {
-        LastVersion lastVersion = mAdminService.getLastVersion();
+        final AdminService adminService = mAdminService;
+        if (adminService == null) {
+            return null;
+        }
+
+        LastVersion lastVersion = adminService.getLastVersion();
         if (lastVersion == null) {
             lastVersion = loadLastVersion();
-            mAdminService.setLastVersion(lastVersion);
+            adminService.setLastVersion(lastVersion);
         }
 
         return lastVersion;

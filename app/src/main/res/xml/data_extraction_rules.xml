@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-   Sample data extraction rules file; uncomment and customize as necessary.
-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
-   for details.
+  Full opt-out. Every domain is excluded from every extraction mode.
+  Fail-open is the default: a missing section means that mode is fully
+  enabled for everything except cache/ and no_backup/. So both sections
+  must be present, even though they look redundant next to
+  android:allowBackup="false".
 -->
 <data-extraction-rules>
-    <cloud-backup>
-        <!--
-        TODO: Use <include> and <exclude> to control what is backed up.
-        The domain can be file, database, sharedpref, external or root.
-        Examples:
 
-        <include domain="file" path="file_to_include"/>
-        <exclude domain="file" path="file_to_exclude"/>
-        <include domain="file" path="include_folder"/>
-        <exclude domain="file" path="include_folder/file_to_exclude"/>
-        <exclude domain="file" path="exclude_folder"/>
-        <include domain="file" path="exclude_folder/file_to_include"/>
-
-        <include domain="sharedpref" path="include_shared_pref1.xml"/>
-        <include domain="database" path="db_name/file_to_include"/>
-        <exclude domain="database" path="db_name/include_folder/file_to_exclude"/>
-        <include domain="external" path="file_to_include"/>
-        <exclude domain="external" path="file_to_exclude"/>
-        <include domain="root" path="file_to_include"/>
-        <exclude domain="root" path="file_to_exclude"/>
-        -->
+    <!-- Google Drive Auto Backup -->
+    <cloud-backup disableIfNoEncryptionCapabilities="true">
+        <exclude domain="root"              path="." />
+        <exclude domain="file"              path="." />
+        <exclude domain="database"          path="." />
+        <exclude domain="sharedpref"        path="." />
+        <exclude domain="external"          path="." />
+        <exclude domain="device_root"       path="." />
+        <exclude domain="device_file"       path="." />
+        <exclude domain="device_database"   path="." />
+        <exclude domain="device_sharedpref" path="." />
     </cloud-backup>
-    <!--
+
+    <!-- Device-to-device transfer ("copy apps & data" during setup).
+         NOT covered by allowBackup="false" on all OEM devices. -->
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <exclude domain="root"              path="." />
+        <exclude domain="file"              path="." />
+        <exclude domain="database"          path="." />
+        <exclude domain="sharedpref"        path="." />
+        <exclude domain="external"          path="." />
+        <exclude domain="device_root"       path="." />
+        <exclude domain="device_file"       path="." />
+        <exclude domain="device_database"   path="." />
+        <exclude domain="device_sharedpref" path="." />
     </device-transfer>
-    -->
+
 </data-extraction-rules>

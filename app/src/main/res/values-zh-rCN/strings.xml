@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">关闭应用程序，然后重新启动它以访问您的数据。</string>
     <string name="account_migration_view_close_message">关闭应用程序，然后重新启动它以访问新数据。</string>
     <string name="account_migration_view_confirm_cancel_message">您确定要取消迁移吗？</string>
+    <string name="account_migration_view_database">数据库</string>
+    <string name="account_migration_view_finalizing">正在完成</string>
+    <string name="account_migration_view_initializing">正在初始化</string>
+    <string name="account_migration_view_my_device">我的设备</string>
     <string name="account_migration_view_network_message">检查您的网络连接</string>
     <string name="account_migration_view_not_enough_space_for_files">文件空间不足</string>
     <string name="account_migration_view_not_enough_space_to_receive">空间不足，无法接收数据库</string>
     <string name="account_migration_view_not_enough_space_to_upload">空间不足，无法转移数据库</string>
+    <string name="account_migration_view_other_device">其他设备</string>
+    <string name="account_migration_view_ready_to_start">准备就绪</string>
+    <string name="account_migration_view_receiving">正在接收</string>
+    <string name="account_migration_view_sending">正在发送</string>
     <string name="account_migration_view_state_canceled">迁移已取消</string>
     <string name="account_migration_view_state_negotiate">等候</string>
     <string name="account_migration_view_state_list_files">文件清单</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">开始迁移</string>
     <string name="account_migration_view_stop">停止迁移</string>
     <string name="account_migration_view_success_message">迁移成功完成</string>
+    <string name="account_migration_view_transfer">正在传输</string>
+    <string name="account_migration_view_transfer_complete">传输完成</string>
     <string name="account_migration_view_transfer_in_progress">正在进行数据传输</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">您的帐户已被删除，所有相关数据已被销毁。&lt;br /&gt;
         您必须关闭该应用程序。</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">可用</string>
+    <string name="diagnostics_view_background_execution">后台运行</string>
+    <string name="diagnostics_view_cellular_network">蜂窝网络</string>
+    <string name="diagnostics_view_keystore">密钥库 (Keystore)</string>
+    <string name="diagnostics_view_push_token">推送令牌</string>
+    <string name="diagnostics_view_secure_storage">安全存储方式</string>
+    <string name="diagnostics_view_title">诊断信息</string>
+    <string name="diagnostics_view_unavailable">不可用</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">您确定要删除此关系吗？</string>

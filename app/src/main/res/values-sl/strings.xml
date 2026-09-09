@@ -177,11 +177,19 @@
     <string name="account_migration_view_cancel_message">Zaprite aplikacijo in jo znova zaženite za dostop do svojih podatkov.</string>
     <string name="account_migration_view_close_message">Zaprite aplikacijo in jo znova zaženite za dostop do novih podatkov.</string>
     <string name="account_migration_view_confirm_cancel_message">Ali ste prepričani, da želite preklicati migracijo?</string>
+    <string name="account_migration_view_database">Zbirka podatkov</string>
+    <string name="account_migration_view_finalizing">Zaključevanje</string>
+    <string name="account_migration_view_initializing">Inicializacija</string>
+    <string name="account_migration_view_my_device">Moja naprava</string>
     <string name="account_migration_view_network_message">Preverite svojo omrežno povezavo</string>
     <string name="account_migration_view_not_enough_space_for_files">Ni dovolj prostora za datoteke</string>
     <string name="account_migration_view_not_enough_space_to_receive">Ni dovolj prostora za prenos podatkovne baze</string>
     <string name="account_migration_view_not_enough_space_to_upload">Ni dovolj prostora za nalaganje podatkovne baze</string>
     <string name="account_migration_view_start">Začni migracijo</string>
+    <string name="account_migration_view_other_device">Druga naprava</string>
+    <string name="account_migration_view_ready_to_start">Pripravljeno za začetek</string>
+    <string name="account_migration_view_receiving">Prejemanje</string>
+    <string name="account_migration_view_sending">Pošiljanje</string>
     <string name="account_migration_view_state_canceled">Migracija preklicana</string>
     <string name="account_migration_view_state_list_files">Pridobivanje seznama datotek</string>
     <string name="account_migration_view_state_negotiate">Čakanje</string>
@@ -195,6 +203,8 @@
     <string name="account_migration_view_state_wait_files">Čakanje na prejem datotek in podatkovne baze.</string>
     <string name="account_migration_view_stop">Ustavi migracijo</string>
     <string name="account_migration_view_success_message">Migracija je bila uspešno zaključena</string>
+    <string name="account_migration_view_transfer">Prenos v teku</string>
+    <string name="account_migration_view_transfer_complete">Prenos končan</string>
     <string name="account_migration_view_transfer_in_progress">Prenos podatkov v teku</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -675,6 +685,17 @@
     <string name="deleted_account_view_message">Vaš račun je bil izbrisan in vsi povezani podatki so bili uničeni.&lt;br /&gt;
         Zapreti morate aplikacijo.</string>
     <string name="deleted_account_view_warning">Opozorilo‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Na voljo</string>
+    <string name="diagnostics_view_background_execution">Izvajanje v ozadju</string>
+    <string name="diagnostics_view_cellular_network">Mobilno omrežje</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Žeton za pošiljanje</string>
+    <string name="diagnostics_view_secure_storage">Varna metoda shranjevanja</string>
+    <string name="diagnostics_view_title">Diagnostika</string>
+    <string name="diagnostics_view_unavailable">Ni na voljo</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Ali ste prepričani, da želite izbrisati ta odnos?</string>

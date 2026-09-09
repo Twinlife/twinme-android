@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">アプリケーションを閉じて再起動し、データにアクセスします。</string>
     <string name="account_migration_view_close_message">アプリケーションを閉じて再起動し、新しいデータにアクセスします。</string>
     <string name="account_migration_view_confirm_cancel_message">移行をキャンセルしてもよろしいですか？</string>
+    <string name="account_migration_view_database">データベース</string>
+    <string name="account_migration_view_finalizing">完了処理中</string>
+    <string name="account_migration_view_initializing">初期化中</string>
+    <string name="account_migration_view_my_device">自分のデバイス</string>
     <string name="account_migration_view_network_message">ネットワーク接続を確認してください</string>
     <string name="account_migration_view_not_enough_space_for_files">ファイル用の十分なスペースがありません</string>
     <string name="account_migration_view_not_enough_space_to_receive">データベースをダウンロードするのに十分なスペースがありません</string>
     <string name="account_migration_view_not_enough_space_to_upload">データベースをアップロードするのに十分なスペースがありません</string>
+    <string name="account_migration_view_other_device">他のデバイス</string>
+    <string name="account_migration_view_ready_to_start">開始の準備完了</string>
+    <string name="account_migration_view_receiving">受信中</string>
+    <string name="account_migration_view_sending">送信中</string>
     <string name="account_migration_view_state_canceled">移行がキャンセルされました</string>
     <string name="account_migration_view_state_negotiate">待っています</string>
     <string name="account_migration_view_state_list_files">ファイルの一覧表示</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">移行を開始</string>
     <string name="account_migration_view_stop">移行を停止</string>
     <string name="account_migration_view_success_message">移行が正常に完了しました</string>
+    <string name="account_migration_view_transfer">転送中</string>
+    <string name="account_migration_view_transfer_complete">転送完了</string>
     <string name="account_migration_view_transfer_in_progress">進行中のデータ転送</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">アカウントが削除され、関連するすべてのデータが破棄されました。&lt;br /&gt;
         アプリケーションを終了する必要があります。</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">利用可能</string>
+    <string name="diagnostics_view_background_execution">バックグラウンド実行</string>
+    <string name="diagnostics_view_cellular_network">モバイルネットワーク</string>
+    <string name="diagnostics_view_keystore">キーストア (Keystore)</string>
+    <string name="diagnostics_view_push_token">プッシュトークン</string>
+    <string name="diagnostics_view_secure_storage">セキュアな保存方法</string>
+    <string name="diagnostics_view_title">診断情報</string>
+    <string name="diagnostics_view_unavailable">利用不可</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">この関係を削除してもよろしいですか?</string>

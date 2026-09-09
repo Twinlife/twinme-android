@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">Sluit de applicatie en start deze opnieuw om toegang te krijgen tot uw gegevens.</string>
     <string name="account_migration_view_close_message">Sluit de applicatie en start deze opnieuw om toegang te krijgen tot de nieuwe gegevens.</string>
     <string name="account_migration_view_confirm_cancel_message">Weet u zeker dat u de migratie wilt annuleren?</string>
+    <string name="account_migration_view_database">Database</string>
+    <string name="account_migration_view_finalizing">Afronden</string>
+    <string name="account_migration_view_initializing">Initialiseren</string>
+    <string name="account_migration_view_my_device">Mijn apparaat</string>
     <string name="account_migration_view_network_message">Controleer uw netwerkverbinding</string>
     <string name="account_migration_view_not_enough_space_for_files">Onvoldoende ruimte voor bestanden</string>
     <string name="account_migration_view_not_enough_space_to_receive">Onvoldoende ruimte om de database te ontvangen</string>
     <string name="account_migration_view_not_enough_space_to_upload">Onvoldoende ruimte om de database over te dragen</string>
+    <string name="account_migration_view_other_device">Ander apparaat</string>
+    <string name="account_migration_view_ready_to_start">Klaar om te starten</string>
+    <string name="account_migration_view_receiving">Ontvangen</string>
+    <string name="account_migration_view_sending">Verzenden</string>
     <string name="account_migration_view_state_canceled">Migratie geannuleerd</string>
     <string name="account_migration_view_state_negotiate">Aan het wachten</string>
     <string name="account_migration_view_state_list_files">Lijst met bestanden</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">Start de migratie</string>
     <string name="account_migration_view_stop">Stop de migratie</string>
     <string name="account_migration_view_success_message">De migratie is succesvol voltooid</string>
+    <string name="account_migration_view_transfer">Overdracht bezig</string>
+    <string name="account_migration_view_transfer_complete">Overdracht voltooid</string>
     <string name="account_migration_view_transfer_in_progress">Gegevensoverdracht bezig</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Uw account is verwijderd en alle bijbehorende gegevens zijn vernietigd.&lt;br /&gt;
         U moet de toepassing sluiten.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Beschikbaar</string>
+    <string name="diagnostics_view_background_execution">Uitvoering op de achtergrond</string>
+    <string name="diagnostics_view_cellular_network">Mobiel netwerk</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push-token</string>
+    <string name="diagnostics_view_secure_storage">Methode voor beveiligde opslag</string>
+    <string name="diagnostics_view_title">Diagnostiek</string>
+    <string name="diagnostics_view_unavailable">Niet beschikbaar</string>
+    <string name="diagnostics_view_wifi">Wifi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Weet u zeker dat u deze relatie wilt verwijderen?</string>

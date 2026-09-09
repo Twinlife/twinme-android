@@ -177,11 +177,19 @@
     <string name="account_migration_view_cancel_message">Κλείστε την εφαρμογή και επανεκκινήστε την για πρόσβαση στα δεδομένα σας.</string>
     <string name="account_migration_view_close_message">Κλείστε την εφαρμογή και επανεκκινήστε την για πρόσβαση στα νέα δεδομένα.</string>
     <string name="account_migration_view_confirm_cancel_message">Είστε βέβαιοι ότι θέλετε να ακυρώσετε τη μεταφορά;</string>
+    <string name="account_migration_view_database">Βάση δεδομένων</string>
+    <string name="account_migration_view_finalizing">Οριστικοποίηση</string>
+    <string name="account_migration_view_initializing">Αρχικοποίηση</string>
+    <string name="account_migration_view_my_device">Η συσκευή μου</string>
     <string name="account_migration_view_network_message">Ελέγξτε τη σύνδεση δικτύου</string>
     <string name="account_migration_view_not_enough_space_for_files">Μη επαρκής χώρος για αρχεία</string>
     <string name="account_migration_view_not_enough_space_to_receive">Μη επαρκής χώρος για λήψη της βάσης δεδομένων</string>
     <string name="account_migration_view_not_enough_space_to_upload">Μη επαρκής χώρος για αποστολή της βάσης δεδομένων</string>
     <string name="account_migration_view_start">Έναρξη μεταφοράς</string>
+    <string name="account_migration_view_other_device">Άλλη συσκευή</string>
+    <string name="account_migration_view_ready_to_start">Έτοιμο για έναρξη</string>
+    <string name="account_migration_view_receiving">Λήψη</string>
+    <string name="account_migration_view_sending">Αποστολή</string>
     <string name="account_migration_view_state_canceled">Η μεταφορά ακυρώθηκε</string>
     <string name="account_migration_view_state_list_files">Λίστα αρχείων</string>
     <string name="account_migration_view_state_negotiate">Αναμονή</string>
@@ -195,6 +203,8 @@
     <string name="account_migration_view_state_wait_files">Αναμονή για λήψη αρχείων και βάσης δεδομένων.</string>
     <string name="account_migration_view_stop">Διακοπή μεταφοράς</string>
     <string name="account_migration_view_success_message">Η μεταφορά ολοκληρώθηκε επιτυχώς</string>
+    <string name="account_migration_view_transfer">Μεταφορά σε εξέλιξη</string>
+    <string name="account_migration_view_transfer_complete">Η μεταφορά ολοκληρώθηκε</string>
     <string name="account_migration_view_transfer_in_progress">Η μεταφορά δεδομένων βρίσκεται σε εξέλιξη</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -675,6 +685,17 @@
     <string name="deleted_account_view_message">Ο λογαριασμός σας έχει διαγραφεί και όλα τα συσχετισμένα δεδομένα έχουν καταστραφεί.&amp;lt;br /&amp;gt;
             Πρέπει να κλείσετε την εφαρμογή.</string>
     <string name="deleted_account_view_warning">Προειδοποίηση‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Διαθέσιμο</string>
+    <string name="diagnostics_view_background_execution">Εκτέλεση στο παρασκήνιο</string>
+    <string name="diagnostics_view_cellular_network">Κινητό δίκτυο</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push token</string>
+    <string name="diagnostics_view_secure_storage">Μέθοδος ασφαλούς αποθήκευσης</string>
+    <string name="diagnostics_view_title">Διαγνωστικά</string>
+    <string name="diagnostics_view_unavailable">Μη διαθέσιμο</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτή τη σχέση;</string>

@@ -691,25 +691,9 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
             permissions.add(org.twinlife.twinlife.Permission.SEND_TWINCODE);
         }
 
-        /*long permissions = ~0;
-        permissions &= ~(1L << ConversationService.Permission.UPDATE_MEMBER.ordinal());
-        permissions &= ~(1L << ConversationService.Permission.REMOVE_MEMBER.ordinal());
-        permissions &= ~(1L << ConversationService.Permission.RESET_CONVERSATION.ordinal());
-        if (!mAllowInvitation) {
-            permissions &= ~(1L << ConversationService.Permission.INVITE_MEMBER.ordinal());
-        }
-        if (!mAllowPostMessage) {
-            permissions &= ~(1L << ConversationService.Permission.SEND_MESSAGE.ordinal());
-            permissions &= ~(1L << ConversationService.Permission.SEND_AUDIO.ordinal());
-            permissions &= ~(1L << ConversationService.Permission.SEND_VIDEO.ordinal());
-            permissions &= ~(1L << ConversationService.Permission.SEND_IMAGE.ordinal());
-            permissions &= ~(1L << ConversationService.Permission.SEND_FILE.ordinal());
-        }
-        if (!mAllowInviteMemberAsContact) {
-            permissions &= ~(1L << ConversationService.Permission.SEND_TWINCODE.ordinal());
-        }*/
+        org.twinlife.twinlife.Permission joinPermissions = new org.twinlife.twinlife.Permission(permissions);
         List<Contact> selectedMembers = AddGroupMemberActivity.fromIntentString(mContacts, mSelectedMembers);
-        mGroupService.createGroup(mName, groupDescription, mAvatar, mAvatarFile, selectedMembers, permissions);
+        mGroupService.createGroup(mName, groupDescription, mAvatar, mAvatarFile, selectedMembers, joinPermissions);
     }
 
     private void updateSelectedImage() {

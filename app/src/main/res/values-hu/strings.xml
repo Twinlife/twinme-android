@@ -178,11 +178,19 @@
     <string name="account_migration_view_cancel_message">Zárd be az alkalmazást, majd indítsd újra az adatok eléréséhez.</string>
     <string name="account_migration_view_close_message">Zárd be az alkalmazást, majd indítsd újra az új adatok eléréséhez.</string>
     <string name="account_migration_view_confirm_cancel_message">Biztosan megszakítod a migrációt?</string>
+    <string name="account_migration_view_database">Adatbázis</string>
+    <string name="account_migration_view_finalizing">Lezárás</string>
+    <string name="account_migration_view_initializing">Inicializálás</string>
+    <string name="account_migration_view_my_device">Saját eszköz</string>
     <string name="account_migration_view_network_message">Ellenőrizd a hálózati kapcsolatot</string>
     <string name="account_migration_view_not_enough_space_for_files">Nincs elég hely a fájlokhoz</string>
     <string name="account_migration_view_not_enough_space_to_receive">Nincs elég hely az adatbázis letöltéséhez</string>
     <string name="account_migration_view_not_enough_space_to_upload">Nincs elég hely az adatbázis feltöltéséhez</string>
     <string name="account_migration_view_start">Migráció indítása</string>
+    <string name="account_migration_view_other_device">Másik eszköz</string>
+    <string name="account_migration_view_ready_to_start">Indításra kész</string>
+    <string name="account_migration_view_receiving">Fogadás</string>
+    <string name="account_migration_view_sending">Küldés</string>
     <string name="account_migration_view_state_canceled">Migráció megszakítva</string>
     <string name="account_migration_view_state_list_files">Fájlok listázása</string>
     <string name="account_migration_view_state_negotiate">Várakozás</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_state_wait_files">Várakozás fájlok és adatbázis fogadására.</string>
     <string name="account_migration_view_stop">Migráció leállítása</string>
     <string name="account_migration_view_success_message">A migráció sikeresen befejeződött</string>
+    <string name="account_migration_view_transfer">Átvitel folyamatban</string>
+    <string name="account_migration_view_transfer_complete">Átvitel befejezve</string>
     <string name="account_migration_view_transfer_in_progress">Adatátvitel folyamatban</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -674,6 +684,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">A fiókod törlésre került, és minden kapcsolódó adat megsemmisült.<br />Be kell zárnod az alkalmazást.</string>
     <string name="deleted_account_view_warning">Figyelmeztetés‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Elérhető</string>
+    <string name="diagnostics_view_background_execution">Háttérbeli végrehajtás</string>
+    <string name="diagnostics_view_cellular_network">Mobilhálózat</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push token</string>
+    <string name="diagnostics_view_secure_storage">Biztonságos tárolási módszer</string>
+    <string name="diagnostics_view_title">Diagnosztika</string>
+    <string name="diagnostics_view_unavailable">Nem érhető el</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Biztosan törölni szeretnéd ezt a kapcsolatot?</string>

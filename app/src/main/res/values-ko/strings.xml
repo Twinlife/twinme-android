@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">응용 프로그램을 닫고 다시 시작하여 데이터에 액세스하십시오.</string>
     <string name="account_migration_view_close_message">응용 프로그램을 닫고 다시 시작하여 새 데이터에 액세스합니다.</string>
     <string name="account_migration_view_confirm_cancel_message">마이그레이션을 취소 하시겠습니까?</string>
+    <string name="account_migration_view_database">데이터베이스</string>
+    <string name="account_migration_view_finalizing">마무리 중</string>
+    <string name="account_migration_view_initializing">초기화 중</string>
+    <string name="account_migration_view_my_device">내 기기</string>
     <string name="account_migration_view_network_message">네트워크 연결 확인</string>
     <string name="account_migration_view_not_enough_space_for_files">파일을위한 공간이 충분하지 않습니다.</string>
     <string name="account_migration_view_not_enough_space_to_receive">데이터베이스를 다운로드 할 공간이 충분하지 않습니다.</string>
     <string name="account_migration_view_not_enough_space_to_upload">데이터베이스를 업로드 할 공간이 충분하지 않습니다.</string>
+    <string name="account_migration_view_other_device">다른 기기</string>
+    <string name="account_migration_view_ready_to_start">시작할 준비 완료</string>
+    <string name="account_migration_view_receiving">수신 중</string>
+    <string name="account_migration_view_sending">전송 중</string>
     <string name="account_migration_view_state_canceled">마이그레이션이 취소되었습니다.</string>
     <string name="account_migration_view_state_negotiate">기다리는</string>
     <string name="account_migration_view_state_list_files">파일 나열</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">마이그레이션 시작</string>
     <string name="account_migration_view_stop">마이그레이션 중지</string>
     <string name="account_migration_view_success_message">마이그레이션이 성공적으로 완료되었습니다.</string>
+    <string name="account_migration_view_transfer">전송 진행 중</string>
+    <string name="account_migration_view_transfer_complete">전송 완료</string>
     <string name="account_migration_view_transfer_in_progress">데이터 전송 중</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">귀하의 계정이 삭제되었으며 관련 데이터가 모두 삭제되었습니다.&lt;br /&gt;
         응용 프로그램을 닫아야합니다.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">사용 가능</string>
+    <string name="diagnostics_view_background_execution">백그라운드 실행</string>
+    <string name="diagnostics_view_cellular_network">셀룰러 네트워크</string>
+    <string name="diagnostics_view_keystore">키스토어 (Keystore)</string>
+    <string name="diagnostics_view_push_token">푸시 토큰</string>
+    <string name="diagnostics_view_secure_storage">보안 저장 방식</string>
+    <string name="diagnostics_view_title">진단</string>
+    <string name="diagnostics_view_unavailable">사용 불가</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">이 관계를 삭제하시겠습니까?</string>

@@ -177,11 +177,19 @@
     <string name="account_migration_view_cancel_message">Mbyllni aplikacionin dhe rihapeni për të aksesuar të dhënat tuaja.</string>
     <string name="account_migration_view_close_message">Mbyllni aplikacionin dhe rihapeni për të aksesuar të dhënat e reja.</string>
     <string name="account_migration_view_confirm_cancel_message">A jeni i sigurt që dëshironi ta anuloni migrimin?</string>
+    <string name="account_migration_view_database">Baza e të dhënave</string>
+    <string name="account_migration_view_finalizing">Duke finalizuar</string>
+    <string name="account_migration_view_initializing">Inicializimi</string>
+    <string name="account_migration_view_my_device">Pajisja ime</string>
     <string name="account_migration_view_network_message">Kontrolloni lidhjen e rrjetit</string>
     <string name="account_migration_view_not_enough_space_for_files">Nuk ka hapësirë të mjaftueshme për skedarët</string>
     <string name="account_migration_view_not_enough_space_to_receive">Nuk ka hapësirë të mjaftueshme për të shkarkuar bazën e të dhënave</string>
     <string name="account_migration_view_not_enough_space_to_upload">Nuk ka hapësirë të mjaftueshme për të ngarkuar bazën e të dhënave</string>
     <string name="account_migration_view_start">Fillo migrimin</string>
+    <string name="account_migration_view_other_device">Pajisje tjetër</string>
+    <string name="account_migration_view_ready_to_start">Gati për të filluar</string>
+    <string name="account_migration_view_receiving">Marrja</string>
+    <string name="account_migration_view_sending">Dërgimi</string>
     <string name="account_migration_view_state_canceled">Migrimi u anulua</string>
     <string name="account_migration_view_state_list_files">Listimi i skedarëve</string>
     <string name="account_migration_view_state_negotiate">Në pritje</string>
@@ -195,6 +203,8 @@
     <string name="account_migration_view_state_wait_files">Në pritje të marrjes së skedarëve dhe bazës së të dhënave.</string>
     <string name="account_migration_view_stop">Ndalo migrimin</string>
     <string name="account_migration_view_success_message">Migrimi përfundoi me sukses</string>
+    <string name="account_migration_view_transfer">Transferimi në vazhdim</string>
+    <string name="account_migration_view_transfer_complete">Transferimi përfundoi</string>
     <string name="account_migration_view_transfer_in_progress">Transferimi i të dhënave në progres</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -673,6 +683,17 @@
     <string name="deleted_account_view_message">Llogaria juaj është fshirë dhe të gjitha të dhënat e lidhura janë shkatërruar.&lt;br /&gt;
             Duhet të mbyllni aplikacionin.</string>
     <string name="deleted_account_view_warning">Paralajmërim‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">I disponueshëm</string>
+    <string name="diagnostics_view_background_execution">Ekzekutim në sfond</string>
+    <string name="diagnostics_view_cellular_network">Rrjet celular</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Shtypje tokeni</string>
+    <string name="diagnostics_view_secure_storage">Metodë e sigurt ruajtjeje</string>
+    <string name="diagnostics_view_title">Diagnostika</string>
+    <string name="diagnostics_view_unavailable">I padisponueshëm</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë marrëdhënie?</string>

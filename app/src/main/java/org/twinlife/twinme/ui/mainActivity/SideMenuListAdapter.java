@@ -64,8 +64,9 @@ public class SideMenuListAdapter implements ListAdapter {
             new MenuItem(MenuItem.MenuItemLevel.LEVEL1, R.string.navigation_view_support, MenuItem.MenuItemAction.NO_ACTION),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_subscribe, MenuItem.MenuItemAction.SUBSCRIBE),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_help, MenuItem.MenuItemAction.HELP),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_view_title, MenuItem.MenuItemAction.ACCOUNT),
+            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.diagnostics_view_title, MenuItem.MenuItemAction.DIAGNOSTICS),
             new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.navigation_view_about_twinme, MenuItem.MenuItemAction.ABOUT_TWINME),
-            new MenuItem(MenuItem.MenuItemLevel.LEVEL2, R.string.account_view_title, MenuItem.MenuItemAction.ACCOUNT)
     };
 
     public interface OnMenuClickListener {

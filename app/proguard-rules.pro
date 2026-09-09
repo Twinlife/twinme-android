@@ -126,9 +126,14 @@
 -keepattributes InnerClasses
 -keepattributes Signature
 
+-keep class com.huawei.agconnect.**{*;}
 -keep class com.huawei.hianalytics.**{*;}
 -keep class com.huawei.updatesdk.**{*;}
 -keep class com.huawei.hms.**{*;}
+
+-dontwarn com.huawei.**
+-dontwarn android.telephony.HwTelephonyManager
+-dontwarn org.bouncycastle.**
 
 
 # Fix for twinme-android issue 1612  (upstream: https://github.com/androidx/media/issues/2535)

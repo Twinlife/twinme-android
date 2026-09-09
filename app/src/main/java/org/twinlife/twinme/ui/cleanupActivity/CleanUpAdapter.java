@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2023-2025 twinlife SA.
+ *  Copyright (c) 2023-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -264,7 +264,7 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
 
-        if (viewType == ACTION && position != -1) {
+        if (viewType == ACTION && position != -1 && viewHolder instanceof CleanUpActionViewHolder) {
             CleanUpActionViewHolder cleanUpActionViewHolder = (CleanUpActionViewHolder) viewHolder;
             cleanUpActionViewHolder.onBind(mCleanupActivity.canCleanup());
         }

@@ -177,10 +177,18 @@
     <string name="account_migration_view_cancel_message">סגור את היישום והפעל אותו מחדש כדי לגשת לנתונים שלך.</string>
     <string name="account_migration_view_close_message">סגור את היישום והפעל אותו מחדש כדי לגשת לנתונים החדשים.</string>
     <string name="account_migration_view_confirm_cancel_message">האם אתה בטוח שברצונך לבטל את ההעברה?</string>
+    <string name="account_migration_view_database">מסד נתונים</string>
+    <string name="account_migration_view_finalizing">מסיים</string>
+    <string name="account_migration_view_initializing">אתחול</string>
+    <string name="account_migration_view_my_device">המכשיר שלי</string>
     <string name="account_migration_view_network_message">בדוק את חיבור הרשת שלך</string>
     <string name="account_migration_view_not_enough_space_for_files">אין מספיק מקום לקבצים</string>
     <string name="account_migration_view_not_enough_space_to_receive">אין מספיק מקום להורדת מסד הנתונים</string>
     <string name="account_migration_view_not_enough_space_to_upload">אין מספיק מקום להעלאת מסד הנתונים</string>
+    <string name="account_migration_view_other_device">מכשיר אחר</string>
+    <string name="account_migration_view_ready_to_start">מוכן להתחיל</string>
+    <string name="account_migration_view_receiving">קבלה</string>
+    <string name="account_migration_view_sending">שליחה</string>
     <string name="account_migration_view_state_canceled">ההגירה בוטלה</string>
     <string name="account_migration_view_state_negotiate">הַמתָנָה</string>
     <string name="account_migration_view_state_list_files">רשימת קבצים</string>
@@ -195,6 +203,8 @@
     <string name="account_migration_view_start">התחל הגירה</string>
     <string name="account_migration_view_stop">עצור את ההגירה</string>
     <string name="account_migration_view_success_message">ההגירה הושלמה בהצלחה</string>
+    <string name="account_migration_view_transfer">העברה בתהליך</string>
+    <string name="account_migration_view_transfer_complete">העברה הושלמה</string>
     <string name="account_migration_view_transfer_in_progress">העברת נתונים בעיצומה</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -673,6 +683,17 @@
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">חשבונך נמחק וכל המידע המשויך לו הושמד.&lt;br /&gt; אנא סגור את האפליקציה.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">זמין</string>
+    <string name="diagnostics_view_background_execution">ביצוע ברקע</string>
+    <string name="diagnostics_view_cellular_network">רשת סלולרית</string>
+    <string name="diagnostics_view_keystore">אחסון מפתחות (Keystore)</string>
+    <string name="diagnostics_view_push_token">אסימון דחיפה</string>
+    <string name="diagnostics_view_secure_storage">שיטת אחסון מאובטחת</string>
+    <string name="diagnostics_view_title">אבחון</string>
+    <string name="diagnostics_view_unavailable">לא זמין</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">האם אתה בטוח שברצונך למחוק את הקשר הזה?</string>

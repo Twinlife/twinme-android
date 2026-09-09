@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">برنامه را ببندید و دوباره راه اندازی کنید تا به داده های خود دسترسی پیدا کنید.</string>
     <string name="account_migration_view_close_message">برنامه را ببندید و دوباره راه اندازی کنید تا به داده های جدید دسترسی پیدا کنید.</string>
     <string name="account_migration_view_confirm_cancel_message">آیا مطمئن هستید که می خواهید انتقال را لغو کنید؟</string>
+    <string name="account_migration_view_database">پایگاه داده</string>
+    <string name="account_migration_view_finalizing">نهایی کردن</string>
+    <string name="account_migration_view_initializing">مقداردهی اولیه</string>
+    <string name="account_migration_view_my_device">دستگاه من</string>
     <string name="account_migration_view_network_message">اتصال شبکه خود را بررسی کنید</string>
     <string name="account_migration_view_not_enough_space_for_files">فضای کافی برای پرونده ها نیست</string>
     <string name="account_migration_view_not_enough_space_to_receive">فضای کافی برای دریافت پایگاه داده نیست</string>
     <string name="account_migration_view_not_enough_space_to_upload">فضای کافی برای انتقال پایگاه داده نیست</string>
+    <string name="account_migration_view_other_device">دستگاه دیگر</string>
+    <string name="account_migration_view_ready_to_start">آماده شروع</string>
+    <string name="account_migration_view_receiving">دریافت</string>
+    <string name="account_migration_view_sending">ارسال</string>
     <string name="account_migration_view_state_canceled">مهاجرت لغو شد</string>
     <string name="account_migration_view_state_negotiate">در انتظار</string>
     <string name="account_migration_view_state_list_files">لیست پرونده ها</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">مهاجرت را شروع کنید</string>
     <string name="account_migration_view_stop">مهاجرت را متوقف کنید</string>
     <string name="account_migration_view_success_message">مهاجرت با موفقیت انجام شد</string>
+    <string name="account_migration_view_transfer">انتقال در حال انجام</string>
+    <string name="account_migration_view_transfer_complete">انتقال کامل شد</string>
     <string name="account_migration_view_transfer_in_progress">انتقال داده در حال انجام است</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">حساب کاربری شما حذف شده است و تمام داده های مربوطه نابود شده اند.&lt;br /&gt;
         شما باید برنامه را ببندید.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">موجود</string>
+    <string name="diagnostics_view_background_execution">اجرای پس‌زمینه</string>
+    <string name="diagnostics_view_cellular_network">شبکه تلفن همراه</string>
+    <string name="diagnostics_view_keystore">ذخیره کلید (Keystore)</string>
+    <string name="diagnostics_view_push_token">توکن فشاری</string>
+    <string name="diagnostics_view_secure_storage">روش ذخیره</string>
+    <string name="diagnostics_view_title">تشخیص</string>
+    <string name="diagnostics_view_unavailable">ناموجود</string>
+    <string name="diagnostics_view_wifi">وای‌فای</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">آیا مطمئن هستید که می خواهید این رابطه را حذف کنید؟</string>

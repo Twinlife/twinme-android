@@ -177,11 +177,19 @@
     <string name="account_migration_view_cancel_message">Zavřete aplikaci a restartujte ji pro přístup k vašim datům.</string>
     <string name="account_migration_view_close_message">Zavřete aplikaci a restartujte ji pro přístup k novým datům.</string>
     <string name="account_migration_view_confirm_cancel_message">Opravdu chcete zrušit migraci?</string>
+    <string name="account_migration_view_database">Databáze</string>
+    <string name="account_migration_view_finalizing">Dokončování</string>
+    <string name="account_migration_view_initializing">Inicializace</string>
+    <string name="account_migration_view_my_device">Moje zařízení</string>
     <string name="account_migration_view_network_message">Zkontrolujte připojení k síti</string>
     <string name="account_migration_view_not_enough_space_for_files">Nedostatek místa pro soubory</string>
     <string name="account_migration_view_not_enough_space_to_receive">Nedostatek místa pro stažení databáze</string>
     <string name="account_migration_view_not_enough_space_to_upload">Nedostatek místa pro nahrání databáze</string>
     <string name="account_migration_view_start">Spustit migraci</string>
+    <string name="account_migration_view_other_device">Další zařízení</string>
+    <string name="account_migration_view_ready_to_start">Připraveno ke spuštění</string>
+    <string name="account_migration_view_receiving">Příjem</string>
+    <string name="account_migration_view_sending">Odesílání</string>
     <string name="account_migration_view_state_canceled">Migrace zrušena</string>
     <string name="account_migration_view_state_list_files">Vypisování souborů</string>
     <string name="account_migration_view_state_negotiate">Čekání</string>
@@ -195,6 +203,8 @@
     <string name="account_migration_view_state_wait_files">Čekání na příjem souborů a databáze.</string>
     <string name="account_migration_view_stop">Zastavit migraci</string>
     <string name="account_migration_view_success_message">Migrace úspěšně dokončena</string>
+    <string name="account_migration_view_transfer">Probíhá přenos</string>
+    <string name="account_migration_view_transfer_complete">Přenos dokončen</string>
     <string name="account_migration_view_transfer_in_progress">Probíhá přenos dat</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -673,6 +683,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Váš účet byl smazán a všechna související data byla zničena.<br /> Musíte aplikaci zavřít.</string>
     <string name="deleted_account_view_warning">Pozor‼️</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Dostupné</string>
+    <string name="diagnostics_view_background_execution">Spuštění na pozadí</string>
+    <string name="diagnostics_view_cellular_network">Mobilní síť</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push token</string>
+    <string name="diagnostics_view_secure_storage">Způsob zabezpečeného úložiště</string>
+    <string name="diagnostics_view_title">Diagnostika</string>
+    <string name="diagnostics_view_unavailable">Nedostupné</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Opravdu chcete tento vztah odstranit?</string>

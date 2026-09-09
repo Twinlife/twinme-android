@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">एप्लिकेशन को बंद करें और अपने डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
     <string name="account_migration_view_close_message">एप्लिकेशन को बंद करें और नए डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
     <string name="account_migration_view_confirm_cancel_message">क्या आप वाकई प्रवास को रद्द करना चाहते हैं?</string>
+    <string name="account_migration_view_database">डेटाबेस</string>
+    <string name="account_migration_view_finalizing">अंतिम रूप दिया जा रहा है</string>
+    <string name="account_migration_view_initializing">आरंभ हो रहा है</string>
+    <string name="account_migration_view_my_device">मेरा डिवाइस</string>
     <string name="account_migration_view_network_message">अपना नेटवर्क कनेक्शन जांचें</string>
     <string name="account_migration_view_not_enough_space_for_files">फाइलों के लिए पर्याप्त जगह नहीं</string>
     <string name="account_migration_view_not_enough_space_to_receive">डेटाबेस डाउनलोड करने के लिए पर्याप्त जगह नहीं है</string>
     <string name="account_migration_view_not_enough_space_to_upload">डेटाबेस अपलोड करने के लिए पर्याप्त जगह नहीं है</string>
+    <string name="account_migration_view_other_device">अन्य डिवाइस</string>
+    <string name="account_migration_view_ready_to_start">शुरू करने के लिए तैयार</string>
+    <string name="account_migration_view_receiving">प्राप्त किया जा रहा है</string>
+    <string name="account_migration_view_sending">भेजा जा रहा है</string>
     <string name="account_migration_view_state_canceled">प्रवास रद्द</string>
     <string name="account_migration_view_state_negotiate">इंतज़ार कर रही</string>
     <string name="account_migration_view_state_list_files">फाइलों की सूची बनाना</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">माइग्रेशन शुरू करें</string>
     <string name="account_migration_view_stop">माइग्रेशन रोकें</string>
     <string name="account_migration_view_success_message">प्रवासन सफलतापूर्वक पूरा हुआ</string>
+    <string name="account_migration_view_transfer">स्थानांतरण जारी है</string>
+    <string name="account_migration_view_transfer_complete">स्थानांतरण पूर्ण हुआ</string>
     <string name="account_migration_view_transfer_in_progress">डेटा ट्रांसफर प्रगति पर है</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">आपका खाता हटा दिया गया है और सभी संबंधित डेटा नष्ट कर दिए गए हैं।&lt;br /&gt;
         आपको एप्लिकेशन को बंद करना होगा।</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">उपलब्ध</string>
+    <string name="diagnostics_view_background_execution">बैकग्राउंड में चलना</string>
+    <string name="diagnostics_view_cellular_network">सेल्युलर नेटवर्क</string>
+    <string name="diagnostics_view_keystore">की-स्टोर (Keystore)</string>
+    <string name="diagnostics_view_push_token">पुश टोकन</string>
+    <string name="diagnostics_view_secure_storage">सुरक्षित स्टोरेज का तरीका</string>
+    <string name="diagnostics_view_title">डायग्नोस्टिक्स</string>
+    <string name="diagnostics_view_unavailable">उपलब्ध नहीं</string>
+    <string name="diagnostics_view_wifi">वाई-फ़ाई</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">क्या आप वाकई इस संबंध को हटाना चाहते हैं?</string>

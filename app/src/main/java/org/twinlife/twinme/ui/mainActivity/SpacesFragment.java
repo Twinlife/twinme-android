@@ -51,7 +51,6 @@ import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.SpaceService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.spaces.OnboardingSpaceActivity;
 import org.twinlife.twinme.ui.spaces.ShowSpaceActivity;
 import org.twinlife.twinme.ui.spaces.SpacesAdapter;
@@ -701,10 +700,8 @@ public class SpacesFragment extends TabbarFragment implements SpaceService.Obser
             return;
         }
 
-        if (mTwinmeActivity.getTwinmeApplication().hapticFeedbackMode() == TwinmeApplication.HapticFeedbackMode.SYSTEM.ordinal()) {
+        if (mTwinmeActivity.getTwinmeApplication().hapticFeedbackModeEnable()) {
             mTwinmeActivity.getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        } else if (mTwinmeActivity.getTwinmeApplication().hapticFeedbackMode() == TwinmeApplication.HapticFeedbackMode.ON.ordinal()) {
-            mTwinmeActivity.getWindow().getDecorView().performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
 
         if (position >= 0 && position < mUISpaces.size()) {

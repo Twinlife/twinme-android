@@ -178,10 +178,18 @@
     <string name="account_migration_view_cancel_message">Sulje sovellus ja käynnistä se uudelleen päästäksesi tietoihisi.</string>
     <string name="account_migration_view_close_message">Sulje sovellus ja käynnistä se uudelleen päästäksesi uusiin tietoihin.</string>
     <string name="account_migration_view_confirm_cancel_message">Haluatko varmasti peruuttaa siirron?</string>
+    <string name="account_migration_view_database">Tietokanta</string>
+    <string name="account_migration_view_finalizing">Viimeistellään</string>
+    <string name="account_migration_view_initializing">Alustaa</string>
+    <string name="account_migration_view_my_device">Laitteeni</string>
     <string name="account_migration_view_network_message">Tarkista verkkoyhteys</string>
     <string name="account_migration_view_not_enough_space_for_files">Tiedostoille ei ole riittävästi tilaa</string>
     <string name="account_migration_view_not_enough_space_to_receive">Tilaa ei ole riittävästi tietokannan vastaanottamiseen</string>
     <string name="account_migration_view_not_enough_space_to_upload">Tilaa ei ole riittävästi tietokannan siirtämiseen</string>
+    <string name="account_migration_view_other_device">Toinen laite</string>
+    <string name="account_migration_view_ready_to_start">Valmis aloittamaan</string>
+    <string name="account_migration_view_receiving">Vastaanotetaan</string>
+    <string name="account_migration_view_sending">Lähetetään</string>
     <string name="account_migration_view_state_canceled">Siirto peruutettu</string>
     <string name="account_migration_view_state_negotiate">Odottaa</string>
     <string name="account_migration_view_state_list_files">Luettelo tiedostoista</string>
@@ -196,6 +204,8 @@
     <string name="account_migration_view_start">Aloita siirto</string>
     <string name="account_migration_view_stop">Pysäytä siirto</string>
     <string name="account_migration_view_success_message">Siirtäminen onnistui</string>
+    <string name="account_migration_view_transfer">Siirto käynnissä</string>
+    <string name="account_migration_view_transfer_complete">Siirto valmis</string>
     <string name="account_migration_view_transfer_in_progress">Tiedonsiirto käynnissä</string>
 
     <!-- AccountMigrationScannerActivity -->
@@ -676,6 +686,17 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Tilisi on poistettu ja kaikki siihen liittyvät tiedot on tuhottu.&lt;br /&gt;
         You sulkee sovelluksen.</string>
+
+    <!-- DiagnosticsActivity -->
+    <string name="diagnostics_view_available">Saatavilla</string>
+    <string name="diagnostics_view_background_execution">Taustasuoritus</string>
+    <string name="diagnostics_view_cellular_network">Matkapuhelinverkko</string>
+    <string name="diagnostics_view_keystore">Keystore</string>
+    <string name="diagnostics_view_push_token">Push-tunnus</string>
+    <string name="diagnostics_view_secure_storage">Suojattu tallennusmenetelmä</string>
+    <string name="diagnostics_view_title">Diagnostiikka</string>
+    <string name="diagnostics_view_unavailable">Ei saatavilla</string>
+    <string name="diagnostics_view_wifi">Wi-Fi</string>
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Haluatko varmasti poistaa tämän suhteen?</string>

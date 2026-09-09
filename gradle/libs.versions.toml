@@ -2,15 +2,13 @@
 # Dependencies
 androidxCore = "1.16.0" # 1.17.0+ requires SDK 36
 annotation = "1.10.0"
-appcompat = "1.7.1"
-billing = "7.0.0" # careful testing needed to update this
+appcompat = "1.8.0"
 browser = "1.8.0" # 1.9.0+ requires SDK 36
 collection = "1.6.0"
-constraintlayout = "2.2.1"
+constraintlayout = "2.2.2"
 coreSplashscreen = "1.2.0"
 documentfile = "1.1.0"
 exifinterface = "1.4.2"
-firebaseMessaging = "23.2.1" # careful testing needed to update this
 glide = "5.0.7" # 5.0.9 requires SDK 37
 installreferrer = "2.2"
 lottie = "6.7.1"
@@ -18,20 +16,25 @@ media = "1.8.0"
 material = "1.14.0"
 media3 = "1.9.3" # 1.10.0+ requires SDK 36
 percentlayout = "1.0.0"
-playServicesMaps = "20.0.0"
-playServicesLocation = "21.3.0"
 recyclerview = "1.4.0"
 sharetarget = "1.2.0"
 zip4j = "2.11.6"
 
+#Google
+firebaseMessaging = "23.2.1" # careful testing needed to update this
+playServicesBilling = "7.0.0" # careful testing needed to update this
+playServicesMaps = "20.0.0"
+playServicesLocation = "21.4.0"
+
 # Huawei
 huaweiPush = "6.13.0.301"
-huaweiAgconnect = "1.9.5.301"
+huaweiAgconnect = "1.9.6.300"
+huaweiIap = "6.16.6.305"
 
 # Tests
 androidTestCore = "2.0.1"
 junit = "1.3.0"
-junitJupiter = "6.1.2"
+junitJupiter = "6.1.3"
 testCore = "1.7.0"
 
 # SDK
@@ -46,8 +49,6 @@ desugarJdkLibs = "2.1.5"
 leakcanaryAndroid = "2.14"
 
 [libraries]
-android-test-core = { module = "de.mannodermaus.junit5:android-test-core", version.ref = "androidTestCore" }
-android-test-runner = { module = "de.mannodermaus.junit5:android-test-runner", version.ref = "androidTestCore" }
 androidx-core = { module = "androidx.core:core", version.ref = "androidxCore" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
@@ -70,27 +71,38 @@ androidx-media3-muxer = { module = "androidx.media3:media3-muxer", version.ref =
 androidx-media3-transformer = { module = "androidx.media3:media3-transformer", version.ref = "media3" }
 androidx-percentlayout = { module = "androidx.percentlayout:percentlayout", version.ref = "percentlayout" }
 androidx-sharetarget = { module = "androidx.sharetarget:sharetarget", version.ref = "sharetarget" }
-billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
-desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-recyclerview = { module = "com.github.bumptech.glide:recyclerview-integration", version.ref = "glide" }
-firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }
-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junitJupiter" }
-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
-leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 installreferrer = { module = "com.android.installreferrer:installreferrer", version.ref = "installreferrer" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
+zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j" }
+
+# Google
+firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }
+play-services-billing = { module = "com.android.billingclient:billing", version.ref = "playServicesBilling" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
-zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j" }
+
+# Huawei
 huawei-push = { module = "com.huawei.hms:push", version.ref = "huaweiPush" }
 huawei-agconnect = { module = "com.huawei.agconnect:agcp", version.ref = "huaweiAgconnect" }
+huawei-iap = { module = "com.huawei.hms:iap", version.ref = "huaweiIap" }
+
+# Build / Debug
+gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+
+# Tests
+android-test-core = { module = "de.mannodermaus.junit5:android-test-core", version.ref = "androidTestCore" }
+android-test-runner = { module = "de.mannodermaus.junit5:android-test-runner", version.ref = "androidTestCore" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junitJupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
 
 [plugins]
 android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5" }

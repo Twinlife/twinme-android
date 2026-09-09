@@ -76,7 +76,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         mProxies = proxies;
-        notifyItemRangeChanged(0, getItemCount());
+        loadItems();
     }
 
     public void updateConnexionStatus() {
@@ -172,6 +172,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         } else if (viewType == CHECKBOX_ADVANCED_SETTINGS) {
             SettingsAdvancedViewHolder settingsViewHolder = (SettingsAdvancedViewHolder) viewHolder;
             boolean isSelected;
+            boolean isEnabled = true;
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener;
             if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.TELECOM_ENABLE) {
                 onCheckedChangeListener = (compoundButton, value) -> mActivity.onTelecomSettingChangeValue(value);
@@ -179,8 +180,9 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             } else {
                 onCheckedChangeListener = (compoundButton, value) -> mActivity.onProxySettingChangeValue(value);
                 isSelected = mActivity.isProxyEnable();
+                isEnabled = !mProxies.isEmpty();
             }
-            settingsViewHolder.onBind(item.getText(), isSelected, true, onCheckedChangeListener);
+            settingsViewHolder.onBind(item.getText(), isSelected, isEnabled, onCheckedChangeListener);
         } else if (viewType == CHECKBOX_SETTINGS) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
 
@@ -204,12 +206,10 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_ADD) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAddProxyClick());
-                settingSectionViewHolder.onBind(mActivity.getString(R.string.proxy_view_add), true);
             } else {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onDevelopersSettingsClick());
-                settingSectionViewHolder.onBind(mActivity.getString(R.string.settings_advanced_view_developer_settings), true);
             }
-            settingSectionViewHolder.onBind(item.getText(), false);
+            settingSectionViewHolder.onBind(item.getText(), true);
         } else if (viewType == PROXY) {
             ProxyViewHolder proxyViewHolder = (ProxyViewHolder) viewHolder;
             proxyViewHolder.itemView.setOnClickListener(view -> mActivity.onProxyClick(item.getProxyPosition()));
@@ -282,11 +282,14 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             Log.d(LOG_TAG, "loadItems");
         }
 
+        mItems.clear();
+
         mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_SECTION, mActivity.getString(R.string.settings_advanced_view_status_connection_title), -1));
         mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_INFO, mActivity.getString(R.string.settings_advanced_view_status_connection_message), -1));
         mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.CONNEXION_STATUS, "", -1));
         mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_SECTION, mActivity.getString(R.string.proxy_view_title), -1));
         mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_INFO, mProxies.isEmpty() ? mActivity.getString(R.string.proxy_view_information) : mActivity.getString(R.string.proxy_view_list_information), -1));
+        mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_ENABLE, mActivity.getString(R.string.proxy_view_enable), -1));
 
         int proxyPosition = 0;
         for (ProxyDescriptor proxyDescriptor : mProxies) {
@@ -315,5 +318,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
             mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.DEBUG_SECTION, mActivity.getString(R.string.settings_advanced_view_debug), -1));
             mItems.add(new UIAdvancedSettingItem(UIAdvancedSettingItem.AdvancedSettingItemType.DEVELOPER_SETTINGS, mActivity.getString(R.string.settings_advanced_view_developer_settings), -1));
         }
+
+        notifyItemRangeChanged(0, mItems.size());
     }
 }
