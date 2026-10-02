@@ -108,7 +108,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         int viewType = getItemViewType(position);
 
-        if (viewType == CHECKBOX) {
+        if (viewType == CHECKBOX && viewHolder instanceof MenuSwitchViewHolder) {
             MenuSwitchViewHolder menuSwitchViewHolder = (MenuSwitchViewHolder) viewHolder;
 
             boolean isOn = mAllowCopy;
@@ -131,7 +131,7 @@ public class MenuSendOptionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mMenuSendOptionView.onOptionChangeValue(finalTag, value);
             ((MenuSwitchViewHolder) viewHolder).onBind(title, icon, tag, isOn, isEnabled, mForceDarkMode, Design.POPUP_BACKGROUND_COLOR, hideSeparator, onCheckedChangeListener);
 
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE && viewHolder instanceof SelectValueViewHolder) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(v -> mMenuSendOptionView.onAllowEphemeralClick());
         }

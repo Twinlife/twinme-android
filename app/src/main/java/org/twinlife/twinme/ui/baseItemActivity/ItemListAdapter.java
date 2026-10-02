@@ -82,7 +82,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<BaseItemViewHolder> {
 
         Item item = getItem(position);
         if (item.isPeerItem()) {
-            if (item.needsUpdateReadTimestamp() && item.getType() != Item.ItemType.PEER_CALL && item.getType() != Item.ItemType.PEER_FILE && item.getType() != Item.ItemType.PEER_AUDIO && item.getType() != Item.ItemType.PEER_VIDEO) {
+            final Item.ItemType itemType = item.getType();
+            if (item.needsUpdateReadTimestamp() && itemType != Item.ItemType.PEER_CALL && itemType != Item.ItemType.PEER_FILE && itemType != Item.ItemType.PEER_AUDIO && itemType != Item.ItemType.PEER_VIDEO) {
                 mBaseItemActivity.markDescriptorRead(item.getDescriptorId());
             }
         }

@@ -285,7 +285,7 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.local_account_migration_activity);
 
         setStatusBarColor();
@@ -317,7 +317,7 @@ public class LocalAccountMigrationActivity extends AbstractTwinmeActivity implem
             darkMode = true;
         }
 
-        imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
+        imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.account_migration, null));
 
         mInformationTextView = findViewById(R.id.local_account_migration_activity_information_view);
         Design.updateTextFont(mInformationTextView, Design.FONT_BOLD28);

@@ -153,7 +153,7 @@ public class DeleteAccountActivity extends AbstractTwinmeActivity implements Del
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.delete_account_activity);
 
         setStatusBarColor();

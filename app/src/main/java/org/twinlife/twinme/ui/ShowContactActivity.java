@@ -48,6 +48,7 @@ import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.services.ShowContactService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -433,7 +434,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_contact_activity);
 
         setToolBar(R.id.show_contact_activity_tool_bar);
@@ -812,13 +813,14 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
             return;
         }
 
-        if (getTwinmeApplication().inCallInfo() == null && mContact.getCapabilities().hasAudio() && !hasSchedule()) {
+        final boolean hasAudio = mContact.getCapabilities().hasAudio();
+        if (getTwinmeApplication().inCallInfo() == null && hasAudio && !hasSchedule()) {
             Intent intent = new Intent();
             intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
             intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_CALL);
 
             startActivity(CallActivity.class, intent);
-        } else if (!mContact.getCapabilities().hasAudio()) {
+        } else if (!hasAudio) {
             Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
         } else if (hasSchedule()) {
             showSchedule();
@@ -1114,10 +1116,11 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
 
         String message;
 
-        if (mContact != null && mContact.getCapabilities().getSchedule() != null) {
-            Schedule schedule = mContact.getCapabilities().getSchedule();
-            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
-                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+        final Schedule schedule = mContact != null ? mContact.getCapabilities().getSchedule() : null;
+        if (schedule != null) {
+            final TimeRange timeRange = schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange instanceof DateTimeRange) {
+                DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                 DateTime start = dateTimeRange.start;
                 DateTime end = dateTimeRange.end;
 
@@ -1263,7 +1266,7 @@ public class ShowContactActivity extends AbstractTwinmeActivity implements ShowC
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_share_contact, null));
         onboardingConfirmView.setTitle(getString(R.string.privacy_view_share_invitation_title));
         onboardingConfirmView.setMessage(message);
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

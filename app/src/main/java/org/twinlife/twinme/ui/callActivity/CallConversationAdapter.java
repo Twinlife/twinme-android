@@ -70,10 +70,10 @@ public class CallConversationAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         Item item = getItem(position);
 
-        if (item.getType() == Item.ItemType.NAME) {
+        if (item.getType() == Item.ItemType.NAME && viewHolder instanceof CallNameViewHolder) {
             CallNameViewHolder callNameViewHolder = (CallNameViewHolder) viewHolder;
             callNameViewHolder.onBind(item);
-        } else if (item.getType() == Item.ItemType.MESSAGE) {
+        } else if (item.getType() == Item.ItemType.MESSAGE && viewHolder instanceof CallMessageViewHolder) {
             CallMessageViewHolder callMessageViewHolder = (CallMessageViewHolder) viewHolder;
             callMessageViewHolder.onBind(item);
         } else {

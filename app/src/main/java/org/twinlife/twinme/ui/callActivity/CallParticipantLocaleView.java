@@ -327,7 +327,7 @@ class CallParticipantLocaleView extends AbstractCallParticipantView {
             localRenderer.setMirror(callState.isFrontCamera());
             ViewParent parent = localRenderer.getParent();
             if (parent != mRemoteRenderLayout) {
-                if (parent != null) {
+                if (parent instanceof ViewGroup) {
                     ((ViewGroup) parent).removeView(localRenderer);
                 }
 

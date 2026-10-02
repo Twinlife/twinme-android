@@ -102,22 +102,22 @@ public class MenuConversationShortcutAdapter extends RecyclerView.Adapter<Recycl
 
         int viewType = getItemViewType(position);
         MenuConversationShortcutItem item = mItems.get(position);
-        if (viewType == HEADER) {
+        if (viewType == HEADER && viewHolder instanceof MenuHeaderViewHolder) {
             MenuHeaderViewHolder menuHeaderViewHolder = (MenuHeaderViewHolder) viewHolder;
             menuHeaderViewHolder.itemView.setOnClickListener(view -> mMenuConversationShortcutView.onHeaderClick());
             menuHeaderViewHolder.onBind(mMenuConversationShortcutView.getConversation());
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX && viewHolder instanceof MenuSwitchViewHolder) {
             MenuSwitchViewHolder menuSwitchViewHolder = (MenuSwitchViewHolder) viewHolder;
             int icon = item.getType() == MenuConversationShortcutItem.ConversationShortcutItemType.NOTIFICATIONS_REACTIONS ? R.drawable.notification_reaction_icon : R.drawable.notifications_icon;
             boolean isSelected = item.getType() == MenuConversationShortcutItem.ConversationShortcutItemType.NOTIFICATIONS_REACTIONS ? mMenuConversationShortcutView.isNotificationReactionEnabled() : mMenuConversationShortcutView.isSilentModeEnabled();
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mMenuConversationShortcutView.onSettingCheckedChange(item, value);
             menuSwitchViewHolder.onBind(item.geText(), icon, 0, isSelected, true, false, Design.POPUP_BACKGROUND_COLOR, false, onCheckedChangeListener);
-        } else if (viewType == ACTION) {
+        } else if (viewType == ACTION && viewHolder instanceof MenuIconViewHolder) {
             MenuIconViewHolder menuIconViewHolder = (MenuIconViewHolder) viewHolder;
             menuIconViewHolder.itemView.setOnClickListener(view -> mMenuConversationShortcutView.onResetConversationClick());
             UIMenuSelectAction action = new UIMenuSelectAction(item.geText(), R.drawable.toolbar_trash_grey);
             menuIconViewHolder.onBind(action, Design.DELETE_COLOR_RED, true);
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE && viewHolder instanceof SelectValueViewHolder) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(view -> mMenuConversationShortcutView.onSilentModeDurationClick());
 

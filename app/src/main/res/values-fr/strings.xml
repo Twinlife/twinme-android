@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Autoriser l’application à accéder au Microphone dans les paramètres système.</string>
     <string name="application_authorization_microphone_camera">Autoriser l’application à accéder au Microphone et à la Caméra dans les paramètres du système.</string>
     <string name="application_authorization_title">Autorisation d’accès manquante</string>
-    <string name="application_back">Retour</string>
     <string name="application_backup_restore">Restaurer la sauvegarde</string>
     <string name="application_backup_verify">Vérifier la sauvegarde</string>
     <string name="application_camera">Caméra</string>
-    <string name="application_cancel">Annuler</string>
     <string name="application_canceled_operation">Opération annulée</string>
     <string name="application_checking_connection">Vérification de la connexion</string>
     <string name="application_color">Couleur</string>
     <string name="application_configuration">Configuration</string>
-    <string name="application_confirm">Confirmer</string>
     <string name="application_confirm_deletion">Confirmer la suppression</string>
     <string name="application_connected">Connexion sécurisée activée.</string>
     <string name="application_connection_status_no_network">Pas d’accès Internet.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Nombre maximum (%1$d) de membres d’un groupe dépassé.</string>
     <string name="application_group_not_found">Vous avez été supprimé du groupe.</string>
     <string name="application_items_selected">%1$d éléments sélectionnés</string>
-    <string name="application_later">Plus tard</string>
     <string name="application_low_usage_message">Attention, si vous n’utilisez pas l’application assez souvent, l’OS risque de ne pas la réveiller pour échanger des messages !</string>
     <string name="application_one_item_selected">1 élément sélectionné</string>
     <string name="application_migration_no_storage_space">Il n’y a pas assez d’espace sur votre appareil pour terminer la migration. Fermez l’application, libérez de l’espace et relancez l’application pour terminer la mise à jour.</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">Connexion sécurisée en cours…</string>
     <string name="application_not_signed_in">Pas connecté au service twinme</string>
     <string name="application_now">Maintenant</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Echec de l’opération</string>
     <string name="application_operation_irreversible">Cette opération est irréversible</string>
     <string name="application_permission_camera">La permission d’accéder à la caméra est nécessaire pour prendre une nouvelle photo ou vidéo.</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">Fermez l’application et redémarrez la pour accéder aux nouvelles données.</string>
     <string name="account_migration_view_confirm_cancel_message">Êtes-vous sûr de vouloir annuler la migration ?</string>
     <string name="account_migration_view_database">Base de donnée</string>
+    <string name="account_migration_view_display">Afficher</string>
     <string name="account_migration_view_finalizing">Finalisation</string>
     <string name="account_migration_view_initializing">Initialisation</string>
     <string name="account_migration_view_my_device">Mon appareil</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">Ouvrir l\'application sur l\'autre appareil</string>
     <string name="account_migration_scanner_view_step_2">Aller dans le menu latéral</string>
     <string name="account_migration_scanner_view_step_3">Sélectionner \"Compte\"</string>
+    <string name="account_migration_scanner_view_step_4">Lancer la migration du compte</string>
     <string name="account_migration_scanner_view_step_4_my_device">Lancer le transfert depuis cet appareil</string>
     <string name="account_migration_scanner_view_step_4_another_device">Lancer le transfert depuis l\'autre appareil</string>
     <string name="account_migration_scanner_view_step_5_my_device">Scanner le QR-Code affiché sur l\'autre appareil avec cet appareil</string>
@@ -654,7 +651,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Taper les lettres \"OK\" ci-dessous pour confirmer la suppression du compte.</string>
     <string name="deleted_account_view_delete">Supprimer le compte</string>
-    <string name="deleted_account_view_warning">Attention ‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Votre compte a été supprimé et toutes les données associées ont été détruites.&lt;br /&gt;
@@ -673,7 +669,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Etes-vous sûr de vouloir supprimer cette relation ?</string>
-    <string name="edit_contact_view_message">Ce contact ne pourra plus vous joindre.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">Cette action invalide le code d’invitation actuel associé à ce profil. Confirmer la suppression ?</string>
@@ -1299,7 +1294,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Une erreur est survenue. Veuillez réessayer.</string>
     <string name="streaming_audio_view_no_music_message">Veuillez transférer des fichiers de musique sur votre appareil.</string>
     <string name="streaming_audio_view_no_music_title">Aucune musique trouvée 🙁</string>
     <string name="streaming_audio_view_title">Partage de médias</string>
@@ -1378,5 +1372,4 @@
     <string name="welcome_view_step2_message">Communications en "peer-to-peer" sécurisées : pas de traces dans le cloud.</string>
     <string name="welcome_view_step3_message">Pas de numéro de téléphone, pas de carnet d’adresses, pas d’identifiant : vous choisissez comment vous voulez être identifié en fonction de la personne avec qui vous communiquez.</string>
     <string name="welcome_view_terms_of_use">Conditions d’utilisation</string>
-
 </resources>

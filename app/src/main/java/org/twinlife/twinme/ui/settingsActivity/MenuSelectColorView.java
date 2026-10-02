@@ -76,7 +76,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorTouchL
     private View mConfirmView;
     private RecyclerView mUIColorRecyclerView;
     private ColorsAdapter mUIColorSpaceListAdapter;
-    private List<UICustomColor> mUIColors;
+    private List<org.twinlife.twinme.skin.UICustomColor> mUIColors;
 
     public interface OnMenuColorListener {
 
@@ -139,7 +139,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorTouchL
 
         boolean findColor = false;
 
-        for (UICustomColor customColor : mUIColors) {
+        for (org.twinlife.twinme.skin.UICustomColor customColor : mUIColors) {
             if (customColor.getColor() != null && customColor.getColor().equals(color)) {
                 customColor.setSelected(true);
                 findColor = true;
@@ -150,7 +150,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorTouchL
 
         if (!findColor) {
             if (!mUIColors.isEmpty() && defaultColor.equals(color)) {
-                UICustomColor customColor = mUIColors.get(0);
+                org.twinlife.twinme.skin.UICustomColor customColor = mUIColors.get(0);
                 customColor.setSelected(true);
                 mUIColorSpaceListAdapter.setSelectedColor(color);
             } else if (color != null) {
@@ -302,7 +302,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorTouchL
 
             ColorsAdapter.OnColorClickListener onColorClickListener = new ColorsAdapter.OnColorClickListener() {
                 @Override
-                public void onUpdateMainColor(UICustomColor color) {
+                public void onUpdateMainColor(org.twinlife.twinme.skin.UICustomColor color) {
 
                     onSelectColorClick(color);
                 }
@@ -531,14 +531,14 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorTouchL
 
         mUIColors = Design.mainColors();
 
-        UICustomColor colorSpace = mUIColors.get(0);
+        org.twinlife.twinme.skin.UICustomColor colorSpace = mUIColors.get(0);
         colorSpace.setSelected(true);
 
         if (mAppearanceActivity != null) {
 
             ColorsAdapter.OnColorClickListener onColorClickListener = new ColorsAdapter.OnColorClickListener() {
                 @Override
-                public void onUpdateMainColor(UICustomColor color) {
+                public void onUpdateMainColor(org.twinlife.twinme.skin.UICustomColor color) {
 
                     onSelectColorClick(color);
                 }
@@ -575,7 +575,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorTouchL
         mOnMenuColorListener.onCustomColor();
     }
 
-    private void onSelectColorClick(UICustomColor color) {
+    private void onSelectColorClick(org.twinlife.twinme.skin.UICustomColor color) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSelectColorClick");
         }

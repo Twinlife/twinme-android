@@ -57,6 +57,7 @@ import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.notificationCenter.NotificationCenterImpl;
 import org.twinlife.twinme.services.AdminService;
 import org.twinlife.twinme.services.PeerService;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.EmojiSize;
 import org.twinlife.twinme.skin.FontSize;
@@ -565,6 +566,33 @@ public class TwinmeApplicationImpl extends org.twinlife.twinme.TwinmeApplication
         }
 
         Settings.fontSize.setInt(fontSize.ordinal()).save();
+    }
+
+    @Override
+    public int mainStyle() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "mainStyle");
+        }
+
+        return Settings.mainStyle.getColor();
+    }
+
+    @Override
+    public String mainStyleString() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "mainStyleString");
+        }
+
+        return Settings.mainStyle.getString();
+    }
+
+    @Override
+    public void updateMainStyle(String color) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateMainStyle: color=" + color);
+        }
+
+        Settings.mainStyle.setString(color).save();
     }
 
     @Override

@@ -79,6 +79,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
     }
 
     protected CircularImageView mAvatarView;
+    protected ImageView mShareMultipleAvatarView;
     protected TextView mNameView;
     protected ImageView mCertifiedImageView;
     protected View mQualityView;
@@ -99,6 +100,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
     @Nullable
     protected Originator mOriginator;
     protected String mContactName;
+    protected String mShareMultipleName;
     protected Bitmap mContactAvatar;
     protected boolean mIsCertified = false;
     protected String mInitMessage;
@@ -204,6 +206,14 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mAvatarView.getLayoutParams();
         marginLayoutParams.leftMargin = (int) (DESIGN_HEADER_MARGIN * Design.WIDTH_RATIO);
+
+        mShareMultipleAvatarView = findViewById(R.id.preview_activity_multiple_contact_icon);
+        mShareMultipleAvatarView.setColorFilter(Color.WHITE);
+
+        layoutParams = mShareMultipleAvatarView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_AVATAR_SIZE * Design.HEIGHT_RATIO);
+
 
         mCertifiedImageView = findViewById(R.id.preview_activity_certified_view);
 
@@ -351,8 +361,8 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
             defaultConfirmView.setImage(null);
             defaultConfirmView.setTitle(getString(R.string.account_migration_view_state_send_files));
             defaultConfirmView.setMessage(getString(R.string.conversation_view_send_file_warning));
-            defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
-            defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+            defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_confirm));
+            defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -392,7 +402,7 @@ public abstract class AbstractPreviewActivity extends AbstractTwinmeActivity {
                 DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
                 defaultConfirmView.setForceDarkMode(true);
                 defaultConfirmView.setImage(null);
-                defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+                defaultConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
 
                 String message = String.format(getString(R.string.conversation_view_send_quality_size), Formatter.formatFileSize(this, totalSize)) + "\n\n"  + getString(R.string.conversation_view_send_quality_warning);
                 defaultConfirmView.setMessage(message);

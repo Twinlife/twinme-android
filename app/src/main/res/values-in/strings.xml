@@ -14,16 +14,13 @@
     <string name="application_authorization_microphone">Izinkan aplikasi mengakses Mikrofon pada pengaturan sistem.</string>
     <string name="application_authorization_microphone_camera">Izinkan aplikasi mengakses Mikrofon dan Kamera pada pengaturan sistem.</string>
     <string name="application_authorization_title">Izin akses tidak ada</string>
-    <string name="application_back">Kembali</string>
     <string name="application_backup_restore">Pulihkan cadangan</string>
     <string name="application_backup_verify">Verifikasi cadangan</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Batal</string>
     <string name="application_canceled_operation">Tindakan dibatalkan</string>
     <string name="application_checking_connection">Memeriksa koneksi</string>
     <string name="application_color">Warna</string>
     <string name="application_configuration">Konfigurasi</string>
-    <string name="application_confirm">Konfirmasi</string>
     <string name="application_confirm_deletion">Konfirmasikan penghapusan</string>
     <string name="application_connected">Koneksi aman diaktifkan.</string>
     <string name="application_connection_status_no_network">Tidak ada akses internet.</string>
@@ -54,7 +51,6 @@
     <string name="application_group_limit_reached">Jumlah maksimal (%1$d) anggota grup terlampaui.</string>
     <string name="application_group_not_found">Anda telah dikeluarkan dari grup</string>
     <string name="application_items_selected">%1$d item dipilih</string>
-    <string name="application_later">Nanti</string>
     <string name="application_low_usage_message">Peringatan, jika Anda tidak cukup sering menggunakan aplikasi, OS mungkin tidak membangunkannya untuk bertukar pesan!</string>
     <string name="application_one_item_selected">1 item dipilih</string>
     <string name="application_migration_no_storage_space">Ruang di perangkat Anda tidak cukup untuk menyelesaikan migrasi. Tutup aplikasi, kosongkan sebagian ruang, dan luncurkan kembali aplikasi untuk menyelesaikan pembaruan.</string>
@@ -82,7 +78,6 @@
     <string name="application_not_connected">Sambungan aman sedang berlangsung…</string>
     <string name="application_not_signed_in">Tidak tersambung ke layanan twinme</string>
     <string name="application_now">Sekarang</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Tindakan gagal</string>
     <string name="application_operation_irreversible">Operasi ini tidak dapat dibatalkan</string>
     <string name="application_permission_camera">Izin untuk mengakses kamera diperlukan untuk mengambil foto atau video baru.</string>
@@ -174,6 +169,7 @@
     <string name="account_migration_view_close_message">Tutup aplikasi dan mulai ulang untuk mengakses data baru.</string>
     <string name="account_migration_view_confirm_cancel_message">Anda yakin ingin membatalkan migrasi?</string>
     <string name="account_migration_view_database">Basis data</string>
+    <string name="account_migration_view_display">Tampilan</string>
     <string name="account_migration_view_finalizing">Menyelesaikan</string>
     <string name="account_migration_view_initializing">Menginisialisasi</string>
     <string name="account_migration_view_my_device">Perangkat saya</string>
@@ -217,6 +213,7 @@
     <string name="account_migration_scanner_view_step_1">Buka aplikasi di perangkat lain</string>
     <string name="account_migration_scanner_view_step_2">Buka menu samping</string>
     <string name="account_migration_scanner_view_step_3">Pilih \"Akun\"</string>
+    <string name="account_migration_scanner_view_step_4">Mulai migrasi akun</string>
     <string name="account_migration_scanner_view_step_4_my_device">Mulai transfer dari perangkat ini</string>
     <string name="account_migration_scanner_view_step_4_another_device">Mulai transfer dari perangkat lain</string>
     <string name="account_migration_scanner_view_step_5_my_device">Pindai kode QR yang ditampilkan di perangkat lain dengan perangkat ini</string>
@@ -653,7 +650,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Ketik huruf \"OK\" di bawah ini untuk mengonfirmasi penghapusan akun.</string>
     <string name="deleted_account_view_delete">Hapus akun</string>
-    <string name="deleted_account_view_warning">Perhatian‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Akun Anda telah dihapus dan semua data terkait telah dihancurkan.&lt;br/&gt;
@@ -672,7 +668,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Apakah Anda yakin ingin menghapus hubungan ini?</string>
-    <string name="edit_contact_view_message">Kontak ini tidak akan dapat menghubungi Anda lagi.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">Menghapus profil ini akan membatalkan kode undangan terkait. Konfirmasi penghapusan?</string>
@@ -1298,7 +1293,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Sebuah kesalahan telah terjadi. Silakan coba lagi.</string>
     <string name="streaming_audio_view_no_music_message">Berbagi media</string>
     <string name="streaming_audio_view_no_music_title">Tidak ada musik yang ditemukan 🙁</string>
     <string name="streaming_audio_view_title">Berbagi media</string>
@@ -1377,5 +1371,4 @@
     <string name="welcome_view_step2_message">Komunikasi "peer-to-peer" yang aman: tanpa jejak di cloud.</string>
     <string name="welcome_view_step3_message">Tidak ada nomor telepon, tidak ada buku alamat, tidak ada user-id: Anda memilih bagaimana Anda ingin diidentifikasi berdasarkan dengan siapa Anda berkomunikasi.</string>
     <string name="welcome_view_terms_of_use">Ketentuan penggunaan</string>
-
 </resources>

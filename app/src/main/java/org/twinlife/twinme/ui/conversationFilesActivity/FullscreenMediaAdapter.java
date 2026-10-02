@@ -149,7 +149,7 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         int viewType = getItemViewType(position);
 
-        if (viewType == IMAGE) {
+        if (viewType == IMAGE && viewHolder instanceof FullscreenImageViewHolder) {
             FullscreenImageViewHolder fullscreenImageViewHolder = (FullscreenImageViewHolder) viewHolder;
             Item item = mItems.get(position);
             fullscreenImageViewHolder.onBind(item);
@@ -172,7 +172,7 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         pausePlayer();
 
-        if (viewHolder.getItemViewType() == VIDEO) {
+        if (viewHolder.getItemViewType() == VIDEO && viewHolder instanceof FullscreenVideoViewHolder) {
             FullscreenVideoViewHolder fullscreenVideoViewHolder = (FullscreenVideoViewHolder) viewHolder;
             Item item = mItems.get(fullscreenVideoViewHolder.getBindingAdapterPosition());
             fullscreenVideoViewHolder.onBind(item, mFullscreenMediaActivity, true, mFullscreenMediaActivity.isMuted());
@@ -184,7 +184,7 @@ public class FullscreenMediaAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void onViewDetachedFromWindow(@NonNull RecyclerView.ViewHolder viewHolder) {
         super.onViewDetachedFromWindow(viewHolder);
 
-        if (viewHolder.getItemViewType() == VIDEO) {
+        if (viewHolder.getItemViewType() == VIDEO && viewHolder instanceof FullscreenVideoViewHolder) {
             FullscreenVideoViewHolder fullscreenVideoViewHolder = (FullscreenVideoViewHolder) viewHolder;
             fullscreenVideoViewHolder.stopPlayer();
         } else {

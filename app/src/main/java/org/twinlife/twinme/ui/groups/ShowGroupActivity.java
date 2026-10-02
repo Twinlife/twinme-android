@@ -423,7 +423,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_group_activity);
 
         setToolBar(R.id.show_group_activity_tool_bar);
@@ -825,7 +825,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
                 intent.setClass(this, AddGroupMemberActivity.class);
                 startActivityForResult(intent, ADD_MEMBERS);
             } else {
-                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), true, null);
+                showAlertMessageView(R.id.show_group_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), true, null);
             }
         }
     }
@@ -1090,19 +1090,21 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "updateInCall");
         }
 
-        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasAudio() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS))) {
+        final int memberCount = mGroupMembers.size();
+        final boolean inCall = getTwinmeApplication().inCallInfo() != null;
+        if (inCall || (mGroup != null && (!mGroup.getCapabilities().hasAudio() || memberCount == 1 || memberCount > Settings.MAX_CALL_GROUP_PARTICIPANTS))) {
             mAudioClickableView.setAlpha(0.5f);
         } else {
             mAudioClickableView.setAlpha(1f);
         }
 
-        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasVideo() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS))) {
+        if (inCall || (mGroup != null && (!mGroup.getCapabilities().hasVideo() || memberCount == 1 || memberCount > Settings.MAX_CALL_GROUP_PARTICIPANTS))) {
             mVideoClickableView.setAlpha(0.5f);
         } else {
             mVideoClickableView.setAlpha(1f);
         }
 
-        if (mGroup != null && mGroupMembers.size() == 1) {
+        if (mGroup != null && memberCount == 1) {
             mChatClickableView.setAlpha(0.5f);
         } else {
             mChatClickableView.setAlpha(1f);

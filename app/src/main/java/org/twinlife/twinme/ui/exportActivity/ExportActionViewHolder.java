@@ -64,7 +64,7 @@ public class ExportActionViewHolder extends RecyclerView.ViewHolder {
             mTitleView.setText(mActionView.getContext().getString(R.string.export_view_export));
         } else {
             actionViewBackground.getPaint().setColor(Design.DELETE_COLOR_RED);
-            mTitleView.setText(mActionView.getContext().getString(R.string.application_cancel));
+            mTitleView.setText(mActionView.getContext().getString(org.twinlife.twinme.android.R.string.application_ok));
         }
         mActionView.setBackground(actionViewBackground);
 

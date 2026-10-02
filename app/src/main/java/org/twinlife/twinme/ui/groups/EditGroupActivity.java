@@ -44,6 +44,7 @@ import androidx.core.widget.NestedScrollView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
+import org.twinlife.twinlife.TwincodeOutbound;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.GroupMember;
@@ -320,7 +321,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -392,7 +393,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.edit_group_activity);
 
         setTitle(getString(R.string.application_name));
@@ -506,11 +507,13 @@ public class EditGroupActivity extends AbstractGroupActivity {
             public void afterTextChanged(Editable s) {
 
                 mCounterNameView.setText(String.format(Locale.getDefault(), "%d/%d", s.length(), AbstractEditActivity.MAX_NAME_LENGTH));
-                if (!s.toString().isEmpty() && !s.toString().equals(mGroupName)) {
+                final String name = s.toString();
+                final TwincodeOutbound peerTwincodeOutbound = mGroup != null ? mGroup.getPeerTwincodeOutbound() : null;
+                if (!name.isEmpty() && !name.equals(mGroupName)) {
                     setUpdated();
-                } else if (s.toString().isEmpty() && !mHasClearedName && mGroup != null  && mGroup.getPeerTwincodeOutbound() != null && !mGroupName.equals(mGroup.getPeerTwincodeOutbound().getName())) {
+                } else if (name.isEmpty() && !mHasClearedName && peerTwincodeOutbound != null && !mGroupName.equals(peerTwincodeOutbound.getName())) {
                     mHasClearedName = true;
-                    String peerName = mGroup.getPeerTwincodeOutbound().getName();
+                    String peerName = peerTwincodeOutbound.getName();
                     if (peerName != null) {
                         mNameView.setText(peerName);
                         mNameView.setSelection(peerName.length());
@@ -687,7 +690,7 @@ public class EditGroupActivity extends AbstractGroupActivity {
         ViewGroup viewGroup = findViewById(R.id.edit_group_activity_layout);
 
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
-        deleteConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+        deleteConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_confirm));
         deleteConfirmView.setAvatar(mGroupAvatar, mGroupAvatar == null || mGroupAvatar.equals(getTwinmeApplication().getDefaultGroupAvatar()));
         String message = getString(R.string.show_group_view_leave_message) + "\n\n"  + getString(R.string.show_group_view_leave_confirm_message);
 

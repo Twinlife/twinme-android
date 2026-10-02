@@ -15,14 +15,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
@@ -37,11 +41,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.AccountMigrationService.QueryInfo;
@@ -52,10 +57,7 @@ import org.twinlife.twinlife.util.Logger;
 import org.twinlife.twinme.TwinmeContext;
 import org.twinlife.twinme.services.AccountMigrationService;
 import org.twinlife.twinme.skin.Design;
-import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.Intents;
-import org.twinlife.twinme.ui.Permission;
-import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.SplashScreenActivity;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
@@ -71,14 +73,16 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
     private static final long CLOSE_ACTIVITY_TIMEOUT = 5 * 1000; // 5s
 
+    private static final float DESIGN_GRADIENT_HEIGHT = 40;
+    private static final float DESIGN_TITLE_TOP_MARGIN = 100;
     private static final float DESIGN_IMAGE_TOP_MARGIN = 40;
     private static final float DESIGN_IMAGE_BOTTOM_MARGIN = 20;
-    private static final float DESIGN_IMAGE_HEIGHT = 520;
-    private static final float DESIGN_PROGRESS_MARGIN = 60;
-    private static final float DESIGN_PROGRESS_TEXT_MARGIN = 26;
-    private static final float DESIGN_PROGRESS_BAR_MARGIN = 32;
-    private static final float DESIGN_PROGRESS_BAR_HEIGHT = 14;
-    private static final float DESIGN_PROGRESS_STATE_MARGIN = 40;
+    private static final float DESIGN_IMAGE_HEIGHT = 320;
+    private static final float DESIGN_CONTAINER_WIDTH = 640f;
+    private static final float DESIGN_VERTICAL_MARGIN = 40f;
+    private static final float DESIGN_CANCEL_MARGIN = 60f;
+    private static final float DESIGN_DECLINE_HEIGHT = 120f;
+    private static final float DESIGN_DECLINE_MARGIN = 30f;
 
     protected class CancelListener implements View.OnClickListener {
 
@@ -182,10 +186,13 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
     private View mStartView;
     private View mDeclineView;
     private View mContentView;
-    private TextView mInformationView;
-    private TextView mProgressTransferTextView;
-    private TextView mStatusTransferTextView;
-    private ProgressBar mTransferBar;
+    private View mContainerRecyclerView;
+    private TextView mInfoView;
+    private TextView mCancelTextView;
+    private RecyclerView mMigrationRecyclerView;
+    private DefaultConfirmView mMigrationCancelView;
+    private AccountMigrationAdapter mMigrationAdapter;
+
     protected ProgressBar mProgressBarView;
 
     private MigrationServiceReceiver mMigrationReceiver;
@@ -202,6 +209,8 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
     private boolean mCanceled = false;
     private boolean mIsConnected = false;
     private boolean mIsAlertMessage = false;
+
+    private UIMigrationStateItem mHeaderItem;
 
     private final Runnable terminateRunnable = this::terminateActivity;
 
@@ -228,6 +237,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         // Register and avoid exporting the export receiver.
         ContextCompat.registerReceiver(getBaseContext(), mMigrationReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
 
+        mHeaderItem = new UIMigrationStateItem(this, UIMigrationStateItem.MigrationStateItemType.HEADER);
         initViews();
 
         intent = new Intent(this, AccountMigrationService.class);
@@ -297,6 +307,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
         mStartView.setVisibility(View.GONE);
         mDeclineView.setVisibility(View.GONE);
+        updateRecyclerViewLayout();
 
         Intent intent = new Intent(this, AccountMigrationService.class);
         intent.setAction(AccountMigrationService.ACTION_START_MIGRATION);
@@ -315,6 +326,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
         mStartView.setVisibility(View.GONE);
         mDeclineView.setVisibility(View.GONE);
+        updateRecyclerViewLayout();
 
         Intent intent = new Intent(this, AccountMigrationService.class);
         intent.setAction(AccountMigrationService.ACTION_CANCEL_MIGRATION);
@@ -342,42 +354,34 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             onCancelConfirmedClick();
             return;
         }
+
         ViewGroup viewGroup = findViewById(R.id.account_migration_activity_layout);
 
-        DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
-        defaultConfirmView.setMessage(getString(R.string.account_migration_view_confirm_cancel_message));
-
-        boolean darkMode = false;
-        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        int displayMode = Settings.displayMode.getInt();
-        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
-            darkMode = true;
-        }
-
-        defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
-        defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
-        defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_view_stop));
+        mMigrationCancelView = new DefaultConfirmView(this, null);
+        mMigrationCancelView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
+        mMigrationCancelView.setMessage(getString(R.string.account_migration_view_confirm_cancel_message));
+        mMigrationCancelView.setConfirmColor(Design.DELETE_COLOR_RED);
+        mMigrationCancelView.setConfirmTitle(getString(R.string.account_migration_view_stop));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
             public void onConfirmClick() {
-                defaultConfirmView.animationCloseConfirmView();
+                mMigrationCancelView.animationCloseConfirmView();
             }
 
             @Override
             public void onCancelClick() {
-                defaultConfirmView.animationCloseConfirmView();
+                mMigrationCancelView.animationCloseConfirmView();
             }
 
             @Override
             public void onDismissClick() {
-                defaultConfirmView.animationCloseConfirmView();
+                mMigrationCancelView.animationCloseConfirmView();
             }
 
             @Override
             public void onCloseViewAnimationEnd(boolean fromConfirmAction) {
-                viewGroup.removeView(defaultConfirmView);
+                viewGroup.removeView(mMigrationCancelView);
                 setStatusBarColor();
 
                 if (fromConfirmAction) {
@@ -387,9 +391,10 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
                 }
             }
         };
-        defaultConfirmView.setObserver(observer);
-        viewGroup.addView(defaultConfirmView);
-        defaultConfirmView.show();
+
+        mMigrationCancelView.setObserver(observer);
+        viewGroup.addView(mMigrationCancelView);
+        mMigrationCancelView.show();
 
         Window window = getWindow();
         window.setNavigationBarColor(Design.POPUP_BACKGROUND_COLOR);
@@ -441,36 +446,21 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
                 updateViews(migrationStatus);
                 return;
             }
-
-            String status = "";
-            if (mState == State.NEGOTIATE) {
-                status = getResources().getString(R.string.account_migration_view_state_negotiate);
-            } else if (mState == State.LIST_FILES) {
-                status = getResources().getString(R.string.account_migration_view_state_list_files);
-            } else if (mState == State.SEND_FILES) {
-                status = getResources().getString(R.string.account_migration_view_state_send_files);
-            } else if (mState == State.SEND_SETTINGS) {
-                status = getResources().getString(R.string.account_migration_view_state_send_settings);
-            } else if (mState == State.SEND_DATABASE) {
-                status = getResources().getString(R.string.account_migration_view_state_send_database);
-            } else if (mState == State.WAIT_FILES) {
-                status = getResources().getString(R.string.account_migration_view_state_wait_files);
-            } else if (mState == State.SEND_ACCOUNT) {
-                status = getResources().getString(R.string.account_migration_view_state_send_account);
-            } else if (mState == State.WAIT_ACCOUNT) {
-                status = getResources().getString(R.string.account_migration_view_state_wait_account);
-            } else if (mState == State.TERMINATE) {
-                status = getResources().getString(R.string.account_migration_view_state_terminate);
-            }
-
-            mStatusTransferTextView.setText(status);
         }
+
+        if (mHeaderItem != null) {
+            mHeaderItem.update(this, mState, migrationStatus);
+            updateInfo();
+        }
+
+        mMigrationAdapter.updateItems(mState, migrationStatus);
 
         if (mStartTime == 0 && startTime != 0) {
             mStartTime = startTime;
             mStartView.setVisibility(View.GONE);
             mDeclineView.setVisibility(View.GONE);
             mCancelButton.setVisibility(View.VISIBLE);
+            updateRecyclerViewLayout();
         }
 
         QueryInfo peerQueryStats = (QueryInfo) intent.getSerializableExtra(AccountMigrationService.MIGRATION_PEER_QUERY_INFO);
@@ -492,14 +482,6 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             }
         }
 
-        if (!migrationStatus.isConnected()) {
-            mInformationView.setText(getResources().getString(R.string.account_migration_view_state_wait_connect));
-        } else if (mState == State.STARTING) {
-            mInformationView.setText(getResources().getString(R.string.account_migration_view_network_message));
-        } else {
-            mInformationView.setText("");
-        }
-
         // Check there is enough space on both devices.
         if (peerQueryStats != null && localQueryStats != null) {
             String message = null;
@@ -519,7 +501,6 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
             if (message != null && !mIsAlertMessage) {
                 mIsAlertMessage = true;
-                mStatusTransferTextView.setText(message);
 
                 ViewGroup viewGroup = findViewById(R.id.account_migration_activity_layout);
 
@@ -558,19 +539,8 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
 
         long sent = migrationStatus.getBytesSent();
         long sentRemain = migrationStatus.getEstimatedBytesRemainSend();
-
         long received = migrationStatus.getBytesReceived();
 
-        double progressPercent = migrationStatus.getProgress();
-        if (progressPercent >= 0.0 && progressPercent <= 100.0) {
-            int progress = (int) (progressPercent);
-            mTransferBar.setProgress(progress);
-            mProgressTransferTextView.setText(String.format("%d%%", progress));
-        } else if (progressPercent <= 0.0) {
-            mProgressTransferTextView.setText("0%");
-        } else {
-            mProgressTransferTextView.setText("100%");
-        }
         if (sentRemain != mRemain) {
             mRemain = sentRemain;
         }
@@ -667,82 +637,82 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.account_migration_activity);
 
         setStatusBarColor();
-        setToolBar(R.id.account_migration_activity_tool_bar);
         showToolBar(true);
         setTitle(getString(R.string.account_view_migration_title));
         setBackgroundColor(Design.WHITE_COLOR);
 
-        applyInsets(R.id.account_migration_activity_layout, R.id.account_migration_activity_tool_bar, R.id.account_migration_activity_container_view, Design.TOOLBAR_COLOR, false);
+        applyInsets(R.id.account_migration_activity_layout, -1, R.id.account_migration_activity_container_view, Design.TOOLBAR_COLOR, true);
 
         View containerView = findViewById(R.id.account_migration_activity_container_view);
         containerView.setBackgroundColor(Design.WHITE_COLOR);
 
         mContentView = findViewById(android.R.id.content).getRootView();
 
+        TextView titleView = findViewById(R.id.account_migration_activity_title_view);
+        Design.updateTextFont(titleView, Design.FONT_BOLD34);
+        titleView.setTextColor(Design.BLACK_COLOR);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) titleView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_TITLE_TOP_MARGIN * Design.HEIGHT_RATIO);
 
         ImageView imageView = findViewById(R.id.account_migration_activity_image_view);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) imageView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_IMAGE_TOP_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_IMAGE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
 
         ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_IMAGE_HEIGHT * Design.HEIGHT_RATIO);
 
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) imageView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_IMAGE_TOP_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.bottomMargin = (int) (DESIGN_IMAGE_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+        mInfoView = findViewById(R.id.account_migration_activity_info_view);
+        Design.updateTextFont(mInfoView, Design.FONT_MEDIUM32);
+        mInfoView.setTextColor(Design.BLACK_COLOR);
 
-        boolean darkMode = false;
-        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        int displayMode = Settings.displayMode.getInt();
-        if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal())  || displayMode == DisplayMode.DARK.ordinal()) {
-            darkMode = true;
-        }
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mInfoView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
-        imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
+        View containerStateView = findViewById(R.id.account_migration_activity_container_recycler_view);
+        mContainerRecyclerView = containerStateView;
+        containerStateView.setBackgroundColor(Design.WHITE_COLOR);
 
-        mInformationView = findViewById(R.id.account_migration_activity_information_view);
-        Design.updateTextFont(mInformationView, Design.FONT_BOLD28);
-        mInformationView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        ViewGroup.LayoutParams containerLayoutParams = containerStateView.getLayoutParams();
+        containerLayoutParams.width = (int) (DESIGN_CONTAINER_WIDTH * Design.WIDTH_RATIO);
 
-        View progressView = findViewById(R.id.account_migration_activity_progress_view);
-        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) containerStateView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
 
-        ShapeDrawable accountViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        accountViewBackground.getPaint().setColor(Design.MIGRATION_BACKGROUND_COLOR);
-        progressView.setBackground(accountViewBackground);
+        View fadeTopView = findViewById(R.id.account_migration_activity_recycler_header_view);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) progressView.getLayoutParams();
-        marginLayoutParams.bottomMargin = (int) (DESIGN_PROGRESS_MARGIN * Design.HEIGHT_RATIO);
+        layoutParams = fadeTopView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_GRADIENT_HEIGHT * Design.HEIGHT_RATIO);
 
-        mTransferBar = findViewById(R.id.account_migration_activity_transfer_bar);
-        mTransferBar.setProgressTintList(ColorStateList.valueOf(Design.getMainStyle()));
+        GradientDrawable topGradient = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[]{Design.WHITE_COLOR, Color.TRANSPARENT});
+        fadeTopView.setBackground(topGradient);
 
-        int backgroundColor = Color.argb(102, 255, 255, 255);
-        mTransferBar.setProgressBackgroundTintList(ColorStateList.valueOf(backgroundColor));
+        View fadeBottomView = findViewById(R.id.account_migration_activity_recycler_footer_view);
+        layoutParams = fadeBottomView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_GRADIENT_HEIGHT * Design.HEIGHT_RATIO);
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mTransferBar.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_PROGRESS_BAR_MARGIN * Design.HEIGHT_RATIO);
+        GradientDrawable bottomGradient = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[]{Color.TRANSPARENT, Design.WHITE_COLOR});
+        fadeBottomView.setBackground(bottomGradient);
 
-        layoutParams = mTransferBar.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_PROGRESS_BAR_HEIGHT * Design.HEIGHT_RATIO);
-
-        mProgressTransferTextView = findViewById(R.id.account_migration_activity_progress_text_view);
-        Design.updateTextFont(mProgressTransferTextView, Design.FONT_BOLD28);
-        mProgressTransferTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mProgressTransferTextView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_PROGRESS_TEXT_MARGIN * Design.HEIGHT_RATIO);
-
-        mStatusTransferTextView = findViewById(R.id.account_migration_activity_progress_message_view);
-        Design.updateTextFont(mStatusTransferTextView, Design.FONT_BOLD28);
-        mStatusTransferTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
-
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) mStatusTransferTextView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_PROGRESS_STATE_MARGIN * Design.HEIGHT_RATIO);
-        marginLayoutParams.bottomMargin = (int) (DESIGN_PROGRESS_STATE_MARGIN * Design.HEIGHT_RATIO);
+        mMigrationAdapter = new AccountMigrationAdapter(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        mMigrationRecyclerView = findViewById(R.id.account_migration_activity_recycler_view);
+        mMigrationRecyclerView.setLayoutManager(linearLayoutManager);
+        mMigrationRecyclerView.setAdapter(mMigrationAdapter);
+        mMigrationRecyclerView.setItemAnimator(null);
+        mMigrationRecyclerView.setBackgroundColor(Color.TRANSPARENT);
 
         // Accept button cannot be selected until we are connected.
         mAcceptListener = new AcceptListener();
@@ -750,11 +720,15 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         mStartView.setOnClickListener(mAcceptListener);
         mStartView.setAlpha(0.5f);
 
+        float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
         ShapeDrawable migrateViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
         migrateViewBackground.getPaint().setColor(Design.getMainStyle());
         mStartView.setBackground(migrateViewBackground);
 
         layoutParams = mStartView.getLayoutParams();
+        layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.BUTTON_HEIGHT;
 
         TextView startTextView = findViewById(R.id.account_migration_activity_accept_title_view);
@@ -766,8 +740,12 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         marginLayoutParams.rightMargin = Design.BUTTON_MARGIN;
 
         mDeclineView = findViewById(R.id.account_migration_activity_decline_view);
+
         layoutParams = mDeclineView.getLayoutParams();
-        layoutParams.height = Design.BUTTON_HEIGHT;
+        layoutParams.height = (int) (DESIGN_DECLINE_HEIGHT * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDeclineView.getLayoutParams();
+        marginLayoutParams.bottomMargin = (int) (DESIGN_DECLINE_MARGIN * Design.HEIGHT_RATIO);
 
         mCancelListener = new CancelListener();
         mDeclineView.setOnClickListener(mCancelListener);
@@ -781,21 +759,29 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         mCancelButton.setOnClickListener(v -> onCancelClick());
 
         ShapeDrawable cancelViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        cancelViewBackground.getPaint().setColor(Design.BUTTON_RED_COLOR);
+        cancelViewBackground.getPaint().setColor(Design.BLACK_COLOR);
         mCancelButton.setBackground(cancelViewBackground);
 
         layoutParams = mCancelButton.getLayoutParams();
         layoutParams.width = Design.BUTTON_WIDTH;
         layoutParams.height = Design.BUTTON_HEIGHT;
 
-        TextView cancelTextView = findViewById(R.id.account_migration_activity_cancel_title_view);
-        Design.updateTextFont(cancelTextView, Design.FONT_BOLD28);
-        cancelTextView.setTextColor(Color.WHITE);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mCancelButton.getLayoutParams();
+        marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
+
+        mCancelTextView = findViewById(R.id.account_migration_activity_cancel_title_view);
+        Design.updateTextFont(mCancelTextView, Design.FONT_BOLD28);
+        mCancelTextView.setTextColor(Design.WHITE_COLOR);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mCancelTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         if (mAccountMigrationPeerTwincodeId != null) {
             mStartView.setVisibility(View.GONE);
             mDeclineView.setVisibility(View.GONE);
         }
+        updateRecyclerViewLayout();
 
         mProgressBarView = findViewById(R.id.account_migration_activity_progress_bar);
 
@@ -814,7 +800,7 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
         }
 
         // Make sure we redirect to the main screen only once.
-        mInformationView.removeCallbacks(terminateRunnable);
+        mMigrationRecyclerView.removeCallbacks(terminateRunnable);
         if (mAccountMigrationPeerTwincodeId != null) {
             setResult(mCanceled || mState == State.CANCELED ? Activity.RESULT_CANCELED : Activity.RESULT_OK);
             finish();
@@ -844,20 +830,21 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             Log.d(LOG_TAG, "updateViews");
         }
 
+        if (mMigrationCancelView != null && (mState == State.CANCELED || mState == State.STOPPED || mState == State.TERMINATED || mState == State.ERROR)) {
+            mMigrationCancelView.animationCloseConfirmView();
+        }
+
         if (mState == null || mState == State.CANCELED) {
             mStartView.setVisibility(View.GONE);
             mDeclineView.setVisibility(View.GONE);
             if (mState == State.CANCELED) {
-                mCancelButton.setVisibility(View.VISIBLE);
-                TextView cancelTextView = findViewById(R.id.account_migration_activity_cancel_title_view);
-                cancelTextView.setText(getString(R.string.application_cancel));
-                mInformationView.postDelayed(terminateRunnable, CLOSE_ACTIVITY_TIMEOUT);
+                mCancelButton.setVisibility(View.GONE);
+                mCancelTextView.setText(getString(org.twinlife.twinme.android.R.string.application_cancel));
+                mMigrationRecyclerView.postDelayed(terminateRunnable, CLOSE_ACTIVITY_TIMEOUT);
                 mContentView.setOnClickListener(view -> terminateActivity());
             } else {
                 mCancelButton.setVisibility(View.VISIBLE);
             }
-            mInformationView.setText(getResources().getString(R.string.account_migration_view_cancel_message));
-            mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_state_canceled));
             if (mCanceled) {
                 terminateActivity();
             }
@@ -865,29 +852,58 @@ public class AccountMigrationActivity extends TwinmeImmersiveActivityImpl {
             mStartView.setVisibility(View.GONE);
             mDeclineView.setVisibility(View.GONE);
             mCancelButton.setVisibility(View.VISIBLE);
-
-            if (migrationStatus != null && migrationStatus.getErrorCode() == org.twinlife.twinlife.AccountMigrationService.ErrorCode.NO_SPACE_LEFT) {
-                mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_not_enough_space_for_files));
-                mInformationView.setText(getResources().getString(R.string.application_migration_no_storage_space_message));
-            } else {
-                mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_state_canceled));
-                String info = getResources().getString(R.string.cleanup_view_error);
-                if (migrationStatus != null && migrationStatus.getErrorCode() != null) {
-                    info += "\n" + migrationStatus.getErrorCode();
-                }
-
-                mInformationView.setText(info);
-            }
-        }
-
-        if (mState == State.STOPPED) {
+        } else if (mState == State.STOPPED || mState == State.TERMINATED) {
             mStartView.setVisibility(View.GONE);
             mDeclineView.setVisibility(View.GONE);
             mCancelButton.setVisibility(View.GONE);
-            mInformationView.setText(getResources().getString(R.string.account_migration_view_close_message));
-            mStatusTransferTextView.setText(getResources().getString(R.string.account_migration_view_success_message));
-            mContentView.setOnClickListener(view -> terminateActivity());
-            mInformationView.postDelayed(terminateRunnable, CLOSE_ACTIVITY_TIMEOUT);
+            if (mState == State.STOPPED) {
+                mContentView.setOnClickListener(view -> terminateActivity());
+                mMigrationRecyclerView.postDelayed(terminateRunnable, CLOSE_ACTIVITY_TIMEOUT);
+            }
+        }
+        updateRecyclerViewLayout();
+    }
+
+    private void updateRecyclerViewLayout() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateRecyclerViewLayout");
+        }
+
+        final RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mContainerRecyclerView.getLayoutParams();
+        if (mStartView.getVisibility() == View.VISIBLE) {
+            layoutParams.addRule(RelativeLayout.ABOVE, R.id.account_migration_activity_accept_view);
+        } else if (mCancelButton.getVisibility() == View.VISIBLE) {
+            layoutParams.addRule(RelativeLayout.ABOVE, R.id.account_migration_activity_cancel_view);
+        } else {
+            layoutParams.removeRule(RelativeLayout.ABOVE);
+        }
+        mContainerRecyclerView.setLayoutParams(layoutParams);
+    }
+
+    private void updateInfo() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateInfo");
+        }
+
+        if (mHeaderItem == null) {
+            return;
+        }
+
+        if (mHeaderItem.getInfo() != null && !mHeaderItem.getInfo().isEmpty()) {
+            Design.updateTextFont(mInfoView, Design.FONT_MEDIUM32);
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+            spannableStringBuilder.append(mHeaderItem.getTitle());
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_DEFAULT), 0, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.append("\n");
+            int startSubTitle = spannableStringBuilder.length();
+            spannableStringBuilder.append(mHeaderItem.getInfo());
+            spannableStringBuilder.setSpan(new RelativeSizeSpan(0.8f), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(Design.FONT_COLOR_GREY), startSubTitle, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mInfoView.setText(spannableStringBuilder);
+        } else {
+            Design.updateTextFont(mInfoView, Design.FONT_MEDIUM36);
+            mInfoView.setTextColor(Design.FONT_COLOR_DEFAULT);
+            mInfoView.setText(mHeaderItem.getTitle());
         }
     }
 

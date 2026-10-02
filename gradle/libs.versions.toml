@@ -22,7 +22,7 @@ zip4j = "2.11.6"
 
 #Google
 firebaseMessaging = "23.2.1" # careful testing needed to update this
-playServicesBilling = "7.0.0" # careful testing needed to update this
+playServicesBilling = "9.1.0" # careful testing needed to update this
 playServicesMaps = "20.0.0"
 playServicesLocation = "21.4.0"
 

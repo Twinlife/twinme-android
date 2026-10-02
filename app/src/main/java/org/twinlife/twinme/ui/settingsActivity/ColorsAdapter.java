@@ -27,13 +27,13 @@ public class ColorsAdapter extends Adapter<ColorViewHolder> {
 
     public interface OnColorClickListener {
 
-        void onUpdateMainColor(UICustomColor color);
+        void onUpdateMainColor(org.twinlife.twinme.skin.UICustomColor color);
 
         void onEnterCustomColor();
     }
 
     private final AbstractTwinmeActivity mListActivity;
-    private final List<UICustomColor> mUIColor;
+    private final List<org.twinlife.twinme.skin.UICustomColor> mUIColor;
     private final int mColorWidth;
     private final OnColorClickListener mOnColorClickListener;
 
@@ -41,7 +41,7 @@ public class ColorsAdapter extends Adapter<ColorViewHolder> {
     private String mSelectedColor;
     private boolean mEnterColorEnable;
 
-    ColorsAdapter(AbstractTwinmeActivity listActivity, List<UICustomColor> colors, OnColorClickListener onColorClickListener, int colorWidth) {
+    ColorsAdapter(AbstractTwinmeActivity listActivity, List<org.twinlife.twinme.skin.UICustomColor> colors, OnColorClickListener onColorClickListener, int colorWidth) {
         mListActivity = listActivity;
         mUIColor = colors;
         mOnColorClickListener = onColorClickListener;
@@ -94,7 +94,7 @@ public class ColorsAdapter extends Adapter<ColorViewHolder> {
             viewHolder.onBindEditStyle(mEnterColorEnable);
             viewHolder.itemView.setOnClickListener(view -> mOnColorClickListener.onEnterCustomColor());
         } else {
-            UICustomColor customColor = mUIColor.get(position);
+            org.twinlife.twinme.skin.UICustomColor customColor = mUIColor.get(position);
             boolean isSelected = false;
 
             if (!mEnterColorEnable) {

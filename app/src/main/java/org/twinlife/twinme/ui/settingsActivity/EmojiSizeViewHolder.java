@@ -51,12 +51,7 @@ public class EmojiSizeViewHolder extends RecyclerView.ViewHolder {
 
         mEmojiView = view.findViewById(R.id.conversation_settings_activity_emoji_size_item_emoji_view);
         mEmojiView.setText(new String(Character.toChars(EMOJI_CODE)));
-
-        TextStyle textStyle = Design.getSampleEmojiFont(view.getContext(), EmojiSize.LARGE);
-        layoutParams = mEmojiView.getLayoutParams();
-        layoutParams.width = getEmojiWidth(textStyle);
-        mEmojiView.setLayoutParams(layoutParams);
-
+        
         mTitleView = view.findViewById(R.id.conversation_settings_activity_emoji_size_item_name_view);
         Design.updateTextFont(mTitleView, Design.FONT_REGULAR32);
         mTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
@@ -70,9 +65,7 @@ public class EmojiSizeViewHolder extends RecyclerView.ViewHolder {
         mSelectedView.setColorFilter(Design.getMainStyle());
     }
 
-    public void onBind(String title, EmojiSize emojiSize, boolean isSelected) {
-
-        TextStyle textStyle = Design.getSampleEmojiFont(mEmojiView.getContext(), emojiSize);
+    public void onBind(String title, TextStyle textStyle, boolean isSelected) {
 
         ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
         layoutParams.height = getEmojiHeight(textStyle);

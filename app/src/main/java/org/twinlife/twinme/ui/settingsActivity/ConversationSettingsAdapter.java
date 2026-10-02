@@ -17,7 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.skin.EmojiSize;
+import org.twinlife.twinme.skin.TextStyle;
 import org.twinlife.twinme.utils.SectionTitleViewHolder;
 
 public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -95,14 +97,14 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(getSectionTitle(position), false);
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && viewHolder instanceof SettingSectionViewHolder) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnConversationSettingsClickListener.onColorsAndBackgroundClick());
             settingSectionViewHolder.onBind(mListActivity.getString(R.string.conversation_settings_view_background_colors), false);
-        } else if (viewType == PERSONNALIZATION) {
+        } else if (viewType == PERSONNALIZATION && viewHolder instanceof EmojiSizeViewHolder) {
             EmojiSizeViewHolder emojiSizeViewHolder = (EmojiSizeViewHolder) viewHolder;
 
             boolean isSelected = false;
@@ -125,8 +127,8 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
                 isSelected = emojiFontSize == EmojiSize.LARGE.ordinal();
                 emojiSize = EmojiSize.LARGE;
             }
-
-            emojiSizeViewHolder.onBind(title, emojiSize, isSelected);
+            TextStyle textStyle = Design.getSampleEmojiFont(mListActivity, mListActivity.getTwinmeApplication(), emojiSize);
+            emojiSizeViewHolder.onBind(title, textStyle, isSelected);
         }
     }
 
@@ -160,7 +162,7 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
 
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
-        if (viewType == TITLE && position != -1) {
+        if (viewType == TITLE && position != -1 && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(getSectionTitle(position), false);
         }
@@ -185,7 +187,7 @@ public class ConversationSettingsAdapter extends RecyclerView.Adapter<RecyclerVi
 
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
-        if (viewType == TITLE && position != -1) {
+        if (viewType == TITLE && position != -1 && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(getSectionTitle(position), false);
         }

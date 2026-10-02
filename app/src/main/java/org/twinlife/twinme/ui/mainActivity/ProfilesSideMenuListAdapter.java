@@ -87,7 +87,7 @@ public class ProfilesSideMenuListAdapter extends RecyclerView.Adapter<RecyclerVi
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TYPE_PROFILE) {
+        if (viewType == TYPE_PROFILE && viewHolder instanceof ProfileSideMenuViewHolder) {
             ProfileSideMenuViewHolder profileSideMenuViewHolder = (ProfileSideMenuViewHolder) viewHolder;
             UIProfile uiProfile = mUIProfiles.get(position);
             boolean isActiveProfile = mListActivity.getProfile() != null && mListActivity.getProfile().getId() == uiProfile.getProfile().getId();

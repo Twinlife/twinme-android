@@ -73,6 +73,11 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
     private static final float DESIGN_SELECTED_VIEW_HEIGHT = 128f;
     private static final float DESIGN_CUSTOM_TAB_VIEW_HEIGHT = 148f;
 
+    private static final float DESIGN_NO_RESULT_VIEW_HEIGHT = 320f;
+    private static final float DESIGN_NO_RESULT_VIEW_WIDTH = 620f;
+    private static final float DESIGN_NO_RESULT_VIEW_MARGIN = 160f;
+    private static final float DESIGN_NO_RESULT_TEXT_VIEW_MARGIN = 74f;
+
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
 
@@ -602,7 +607,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.conversation_files_activity);
 
         setStatusBarColor();
@@ -615,9 +620,21 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
 
         mNoItemFoundImageView = findViewById(R.id.conversation_files_activity_no_item_found_image_view);
 
+        ViewGroup.LayoutParams layoutParams = mNoItemFoundImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_NO_RESULT_VIEW_WIDTH * Design.WIDTH_RATIO);
+        layoutParams.height = (int) (DESIGN_NO_RESULT_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mNoItemFoundImageView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_NO_RESULT_VIEW_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_NO_RESULT_TEXT_VIEW_MARGIN * Design.WIDTH_RATIO);
+
         mNoItemTitleView = findViewById(R.id.conversation_files_activity_no_item_title_view);
         Design.updateTextFont(mNoItemTitleView, Design.FONT_MEDIUM34);
         mNoItemTitleView.setTextColor(Design.FONT_COLOR_DEFAULT);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mNoItemTitleView.getLayoutParams();
+        marginLayoutParams.leftMargin = Design.TEXT_MARGIN;
+        marginLayoutParams.rightMargin = Design.TEXT_MARGIN;
 
         mConversationFilesAdapter = new ConversationFilesAdapter(this, mFileSections);
 
@@ -646,7 +663,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
         mItemSelectedActionView.setVisibility(View.GONE);
         mItemSelectedActionView.setObserver(this);
 
-        ViewGroup.LayoutParams layoutParams = mItemSelectedActionView.getLayoutParams();
+        layoutParams = mItemSelectedActionView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_SELECTED_VIEW_HEIGHT * Design.HEIGHT_RATIO) + getBarBottomInset();
 
         mUIInitialized = true;
@@ -758,7 +775,7 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
             if (mMenu != null) {
                 MenuItem selectMenuItem = mMenu.findItem(R.id.select_action);
                 TextView titleView = (TextView) selectMenuItem.getActionView();
-                titleView.setText(getString(R.string.application_cancel));
+                titleView.setText(getString(org.twinlife.twinme.android.R.string.application_ok));
             }
 
             mItemSelectedActionView.updateSelectedItems(mSelectedItems.size());
@@ -772,15 +789,16 @@ public class ConversationFilesActivity extends AbstractFilesActivity implements 
             Log.d(LOG_TAG, "isSelectedType");
         }
 
-        if (mCustomTabTypeSelect == UICustomTab.CustomTabType.IMAGE && (item.getType() == Item.ItemType.IMAGE || item.getType() == Item.ItemType.PEER_IMAGE)) {
+        final Item.ItemType itemType = item.getType();
+        if (mCustomTabTypeSelect == UICustomTab.CustomTabType.IMAGE && (itemType == Item.ItemType.IMAGE || itemType == Item.ItemType.PEER_IMAGE)) {
             return true;
-        } else if (mCustomTabTypeSelect == UICustomTab.CustomTabType.VIDEO && (item.getType() == Item.ItemType.VIDEO || item.getType() == Item.ItemType.PEER_VIDEO)) {
+        } else if (mCustomTabTypeSelect == UICustomTab.CustomTabType.VIDEO && (itemType == Item.ItemType.VIDEO || itemType == Item.ItemType.PEER_VIDEO)) {
             return true;
-        } else if (mCustomTabTypeSelect == UICustomTab.CustomTabType.LINK && (item.getType() == Item.ItemType.LINK || item.getType() == Item.ItemType.PEER_LINK)) {
+        } else if (mCustomTabTypeSelect == UICustomTab.CustomTabType.LINK && (itemType == Item.ItemType.LINK || itemType == Item.ItemType.PEER_LINK)) {
             return true;
         }
 
-        return mCustomTabTypeSelect == UICustomTab.CustomTabType.DOCUMENT && (item.getType() == Item.ItemType.FILE || item.getType() == Item.ItemType.PEER_FILE);
+        return mCustomTabTypeSelect == UICustomTab.CustomTabType.DOCUMENT && (itemType == Item.ItemType.FILE || itemType == Item.ItemType.PEER_FILE);
     }
 
     private void reloadData() {

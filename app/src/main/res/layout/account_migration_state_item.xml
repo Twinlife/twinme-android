@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/account_migration_state_item_join_top_view"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"/>
+
+    <View
+        android:id="@+id/account_migration_state_item_join_bottom_view"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/account_migration_state_item_container_view"
+        android:layout_alignParentBottom="true"/>
+
+    <RelativeLayout
+        android:id="@+id/account_migration_state_item_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:id="@+id/account_migration_state_item_rounded_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/account_migration_state_item_check_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_icon"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/account_migration_state_item_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/account_migration_state_item_container_view" />
+
+</RelativeLayout>

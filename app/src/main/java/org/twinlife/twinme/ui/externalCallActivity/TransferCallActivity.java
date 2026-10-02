@@ -83,7 +83,7 @@ public class TransferCallActivity extends AbstractInvitationCallReceiverActivity
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.transfer_call_activity);
 
         setStatusBarColor(DESIGN_NAVIGATION_BAR_COLOR);

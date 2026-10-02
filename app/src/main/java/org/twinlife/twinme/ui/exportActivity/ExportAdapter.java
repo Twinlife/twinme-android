@@ -162,14 +162,14 @@ public class ExportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             if (position == SECTION_CONTENT) {
                 sectionTitleViewHolder.onBind(mExportActivity.getString(R.string.export_view_content_title), true);
             } else {
                 sectionTitleViewHolder.onBind(mExportActivity.getString(R.string.export_view_save_location), true);
             }
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_CONTENT_INFORMATION) {
                 informationViewHolder.onBind(mExportActivity.getString(R.string.export_view_select_content), true);
@@ -178,19 +178,19 @@ public class ExportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             } else {
                 informationViewHolder.onBind(mExportActivity.getString(R.string.export_view_save_location_message), true);
             }
-        } else if (viewType == EXPORT_CONTENT) {
+        } else if (viewType == EXPORT_CONTENT && viewHolder instanceof ExportContentViewHolder) {
             ExportContentViewHolder exportContentViewHolder = (ExportContentViewHolder) viewHolder;
             UIExport export = mExports.get(position - 2);
             Drawable drawable = ResourcesCompat.getDrawable(mExportActivity.getResources(), export.getImage(), mExportActivity.getTheme());
             exportContentViewHolder.itemView.setOnClickListener(view -> mOnExportClickListener.onExportContentClick(export));
             exportContentViewHolder.onBind(export, drawable);
-        } else if (viewType == EXPORT_ACTION) {
+        } else if (viewType == EXPORT_ACTION && viewHolder instanceof ExportActionViewHolder) {
             ExportActionViewHolder exportActionViewHolder = (ExportActionViewHolder) viewHolder;
             exportActionViewHolder.onBind(mExportActivity.canExport(), mExportActivity.isExportInProgress());
-        } else if (viewType == EXPORT_PROGRESS) {
+        } else if (viewType == EXPORT_PROGRESS && viewHolder instanceof ExportProgressViewHolder) {
             ExportProgressViewHolder exportProgressViewHolder = (ExportProgressViewHolder) viewHolder;
             exportProgressViewHolder.onBind(mProgress, mExportActivity.getString(R.string.export_view_do_not_leave_screen));
-        } else if (viewType == EXPORT_LOCATION) {
+        } else if (viewType == EXPORT_LOCATION && viewHolder instanceof ExportDirectoryViewHolder) {
             if (mExportDirectory == null) {
                 mExportDirectory = mExportActivity.getString(R.string.settings_view_default_directory_title);
             }

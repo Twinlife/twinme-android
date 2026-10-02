@@ -250,7 +250,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -376,7 +376,7 @@ public class CreateGroupActivity extends AbstractEditActivity implements GroupSe
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.create_group_activity);
 
         showToolBar(true);

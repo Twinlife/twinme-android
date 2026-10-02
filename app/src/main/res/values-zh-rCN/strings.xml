@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">允许应用在系统设置中访问麦克风。</string>
     <string name="application_authorization_microphone_camera">允许应用在系统设置中访问麦克风和相机。</string>
     <string name="application_authorization_title">缺少访问权限</string>
-    <string name="application_back">返回</string>
     <string name="application_backup_restore">恢复备份</string>
     <string name="application_backup_verify">验证备份</string>
     <string name="application_camera">摄像头</string>
-    <string name="application_cancel">取消</string>
     <string name="application_canceled_operation">已取消操作</string>
     <string name="application_checking_connection">检查连接</string>
     <string name="application_color">颜色</string>
     <string name="application_configuration">组态</string>
-    <string name="application_confirm">确认</string>
     <string name="application_confirm_deletion">确认删除</string>
     <string name="application_connected">安全连接已启用。</string>
     <string name="application_connection_status_no_network">无法访问互联网。</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">超出组成员的最大数量（%1$d)</string>
     <string name="application_group_not_found">您已从群组中删除</string>
     <string name="application_items_selected">已选择 %1$d 个项目</string>
-    <string name="application_later">后来</string>
     <string name="application_low_usage_message">警告，如果您不经常使用该应用程序，操作系统可能不会唤醒它来交换消息！</string>
     <string name="application_one_item_selected">已选择 1 项</string>
     <string name="application_migration_no_storage_space">您的设备上没有足够的空间来完成迁移。 关闭应用程序，释放一些空间，然后重新启动应用程序以完成更新。</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">正在进行安全连接......</string>
     <string name="application_not_signed_in">没有连接到twinme服务</string>
     <string name="application_now">现在</string>
-    <string name="application_ok">确定</string>
     <string name="application_operation_failure">操作失败</string>
     <string name="application_operation_irreversible">此操作不可逆</string>
     <string name="application_permission_camera">需要使用相机的权限才能拍摄新照片或视频。</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">关闭应用程序，然后重新启动它以访问新数据。</string>
     <string name="account_migration_view_confirm_cancel_message">您确定要取消迁移吗？</string>
     <string name="account_migration_view_database">数据库</string>
+    <string name="account_migration_view_display">显示</string>
     <string name="account_migration_view_finalizing">正在完成</string>
     <string name="account_migration_view_initializing">正在初始化</string>
     <string name="account_migration_view_my_device">我的设备</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">在另一台设备上打开应用</string>
     <string name="account_migration_scanner_view_step_2">前往侧边菜单</string>
     <string name="account_migration_scanner_view_step_3">选择“账号”</string>
+    <string name="account_migration_scanner_view_step_4">启动账户迁移</string>
     <string name="account_migration_scanner_view_step_4_my_device">从此设备开始传输</string>
     <string name="account_migration_scanner_view_step_4_another_device">从另一台设备开始传输</string>
     <string name="account_migration_scanner_view_step_5_my_device">使用此设备扫描另一台设备上显示的二维码</string>
@@ -654,7 +651,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">在下面输入字母“OK”以确认删除帐户。</string>
     <string name="deleted_account_view_delete">删除帐户</string>
-    <string name="deleted_account_view_warning">注意力！</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">您的帐户已被删除，所有相关数据已被销毁。&lt;br /&gt;
@@ -673,7 +669,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">您确定要删除此关系吗？</string>
-    <string name="edit_contact_view_message">此联系人将无法再联系到您。</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">删除此配置文件将使其关联的邀请代码失效。 确认删除？</string>
@@ -1299,7 +1294,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">发生了错误。 请再试一次。</string>
     <string name="streaming_audio_view_no_music_message">媒体分享</string>
     <string name="streaming_audio_view_no_music_title">找不到音乐🙁</string>
     <string name="streaming_audio_view_title">媒体分享</string>
@@ -1378,5 +1372,4 @@
     <string name="welcome_view_step2_message">安全的“点对点”通信：云中无踪迹。</string>
     <string name="welcome_view_step3_message">没有电话号码、没有地址簿、没有用户 ID：您可以根据与谁通信来选择您希望被识别的方式。</string>
     <string name="welcome_view_terms_of_use">使用条款</string>
-
 </resources>

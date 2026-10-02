@@ -93,11 +93,11 @@ public class MenuCleanUpExpirationAdapter extends RecyclerView.Adapter<RecyclerV
 
         int viewType = getItemViewType(position);
 
-        if (viewType == DATE) {
+        if (viewType == DATE && viewHolder instanceof ExpirationDateViewHolder) {
             ExpirationDateViewHolder expirationDateViewHolder = (ExpirationDateViewHolder) viewHolder;
             expirationDateViewHolder.itemView.setOnClickListener(view -> mOnMenuExpirationClickListener.onSelectDate());
             expirationDateViewHolder.onBind(mMenuCleanUpExpirationView.getCleanupExpiration().getValue(mMenuCleanUpExpirationView.getContext()));
-        } else if (viewType == PERIOD) {
+        } else if (viewType == PERIOD && viewHolder instanceof ExpirationPeriodViewHolder) {
             ExpirationPeriodViewHolder expirationPeriodViewHolder = (ExpirationPeriodViewHolder) viewHolder;
             UICleanUpExpiration cleanUpExpiration = mExpirationsPeriod.get(position);
             expirationPeriodViewHolder.itemView.setOnClickListener(view -> mOnMenuExpirationClickListener.onSelectPeriod(cleanUpExpiration.getExpirationPeriod()));

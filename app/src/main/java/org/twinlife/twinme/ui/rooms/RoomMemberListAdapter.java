@@ -149,13 +149,13 @@ public class RoomMemberListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         int viewType = getItemViewType(position);
 
-        if (viewType == ADMIN_TITLE) {
+        if (viewType == ADMIN_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.group_member_view_section_administrator), false);
-        } else if (viewType == MEMBERS_TITLE) {
+        } else if (viewType == MEMBERS_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.room_members_view_participants_title), false);
-        } else if (viewType == ADMIN) {
+        } else if (viewType == ADMIN && viewHolder instanceof RoomMemberViewHolder) {
             boolean hideSeparator = mUIAdmins.size() == position;
             RoomMemberViewHolder roomMemberViewHolder = (RoomMemberViewHolder) viewHolder;
             UIRoomMember uiAdmin = mUIAdmins.get(position - 1);
@@ -163,7 +163,7 @@ public class RoomMemberListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 roomMemberViewHolder.itemView.setOnClickListener(view -> mOnRoomMemberClickListener.onMemberClick(uiAdmin));
             }
             roomMemberViewHolder.onBind(mListActivity, uiAdmin, hideSeparator);
-        } else if (viewType == MEMBERS) {
+        } else if (viewType == MEMBERS && viewHolder instanceof RoomMemberViewHolder) {
             boolean hideSeparator = mMinMemberPosition + mUIMembers.size() - 1 == position;
             RoomMemberViewHolder roomMemberViewHolder = (RoomMemberViewHolder) viewHolder;
             UIRoomMember uiMember = mUIMembers.get(position - mMinMemberPosition);

@@ -114,7 +114,7 @@ public class ConversationFilesAdapter extends RecyclerView.Adapter<RecyclerView.
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TYPE.MEDIA.ordinal()) {
+        if (viewType == TYPE.MEDIA.ordinal() && viewHolder instanceof SectionMediaViewHolder) {
             SectionMediaViewHolder sectionMediaViewHolder = (SectionMediaViewHolder) viewHolder;
             sectionMediaViewHolder.onBind(mFileSections.get(position));
         } else {
@@ -141,7 +141,7 @@ public class ConversationFilesAdapter extends RecyclerView.Adapter<RecyclerView.
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
         if (position != -1) {
-            if (viewType == TYPE.MEDIA.ordinal()) {
+            if (viewType == TYPE.MEDIA.ordinal() && viewHolder instanceof SectionMediaViewHolder) {
                 SectionMediaViewHolder sectionMediaViewHolder = (SectionMediaViewHolder) viewHolder;
                 sectionMediaViewHolder.onBind(mFileSections.get(position));
             } else {

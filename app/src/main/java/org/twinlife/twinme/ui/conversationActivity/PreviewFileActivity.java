@@ -117,6 +117,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
         mPreviewStartWithMedia = intent.getBooleanExtra(Intents.INTENT_PREVIEW_START_WITH_MEDIA, false);
 
         mOriginatorId = Utils.UUIDFromString(intent.getStringExtra(Intents.INTENT_CONTACT_ID));
+        mShareMultipleName = intent.getStringExtra(Intents.INTENT_CONTACT_NAME);
         mInitMessage = intent.getStringExtra(Intents.INTENT_TEXT_MESSAGE);
 
         mIsQualityMediaOriginal = getTwinmeApplication().qualityMedia() == TwinmeApplication.QualityMedia.ORIGINAL.ordinal();
@@ -294,7 +295,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         setContentView(R.layout.preview_media_activity);
 
@@ -451,6 +452,12 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
                     }
                 });
             });
+        } else if (mShareMultipleName != null) {
+            runOnUiThread(() -> {
+                mShareMultipleAvatarView.setVisibility(View.VISIBLE);
+                mNameView.setText(mShareMultipleName);
+                mCertifiedImageView.setVisibility(View.GONE);
+            });
         }
     }
 
@@ -573,7 +580,7 @@ public class PreviewFileActivity extends AbstractPreviewActivity {
 
         AlertMessageView alertMessageView = new AlertMessageView(this, null);
         alertMessageView.setForceDarkMode(true);
-        alertMessageView.setTitle(getString(R.string.deleted_account_view_warning));
+        alertMessageView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
         alertMessageView.setMessage(getString(R.string.application_error_file_not_found));
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {

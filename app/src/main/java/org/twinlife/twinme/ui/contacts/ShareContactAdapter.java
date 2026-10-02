@@ -158,10 +158,10 @@ public class ShareContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         ShareContactItem item = mItems.get(position);
 
-        if (item.getType() == ShareContactItem.ShareContactType.SHARE_CONTACT) {
+        if (item.getType() == ShareContactItem.ShareContactType.SHARE_CONTACT && viewHolder instanceof ShareContactViewHolder) {
             ShareContactViewHolder shareContactViewHolder = (ShareContactViewHolder) viewHolder;
             shareContactViewHolder.onBind(mShareContactName, mShareContactAvatar);
-        } else if (item.getType() == ShareContactItem.ShareContactType.SECTION) {
+        } else if (item.getType() == ShareContactItem.ShareContactType.SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_view_contact_list), true);
         } else {

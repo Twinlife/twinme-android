@@ -95,7 +95,7 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         int position = viewHolder.getBindingAdapterPosition();
-        if (position != -1) {
+        if (position != -1 && viewHolder instanceof MediaViewHolder) {
             MediaViewHolder mediaViewHolder = (MediaViewHolder) viewHolder;
             mediaViewHolder.onViewRecycled();
             mediaViewHolder.onBind(mFileSection.getItems().get(position), mConversationFilesActivity);

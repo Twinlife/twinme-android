@@ -261,7 +261,7 @@ public class CleanUpActivity extends AbstractTwinmeActivity implements CleanUpSe
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.cleanup_activity);
 
         setStatusBarColor();

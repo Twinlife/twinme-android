@@ -166,17 +166,17 @@ public class ShareListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         int viewType = getItemViewType(position);
 
-        if (viewType == CONTACTS_TITLE) {
+        if (viewType == CONTACTS_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_view_contact_list), false);
-        } else if (viewType == GROUPS_TITLE) {
+        } else if (viewType == GROUPS_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.share_view_group_list), false);
-        } else if (viewType == CONTACTS && position >= mMinContactPosition && position - mMinContactPosition < mUIContacts.size()) {
-            boolean hideSeparator = position - 1 == mUIContacts.size();
+        } else if (viewType == CONTACTS && position >= mMinContactPosition && position - mMinContactPosition < mUIContacts.size() && viewHolder instanceof UISelectableContactViewHolder) {
+            boolean hideSeparator = position == mUIContacts.size();
             ((UISelectableContactViewHolder) viewHolder).onBind(mListActivity, mUIContacts.get(position - mMinContactPosition), hideSeparator, true, false);
-        } else if (viewType == GROUPS && position >= mMinGroupPosition && position - mMinGroupPosition < mUIGroups.size()) {
-            boolean hideSeparator = position - 1 == mUIGroups.size();
+        } else if (viewType == GROUPS && position >= mMinGroupPosition && position - mMinGroupPosition < mUIGroups.size() && viewHolder instanceof UISelectableContactViewHolder) {
+            boolean hideSeparator = position == getItemCount() - 1;
             ((UISelectableContactViewHolder) viewHolder).onBind(mListActivity, mUIGroups.get(position - mMinGroupPosition), hideSeparator, true, false);
         }
     }

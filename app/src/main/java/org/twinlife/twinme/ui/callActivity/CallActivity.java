@@ -101,6 +101,7 @@ import org.twinlife.twinme.calls.CallStatus;
 import org.twinlife.twinme.calls.ErrorType;
 import org.twinlife.twinme.calls.keycheck.WordCheckChallenge;
 import org.twinlife.twinme.calls.streaming.StreamPlayer;
+import org.twinlife.twinme.calls.streaming.Streamer;
 import org.twinlife.twinme.calls.streaming.StreamingEvent;
 import org.twinlife.twinme.calls.streaming.StreamingStatus;
 import org.twinlife.twinme.models.CallReceiver;
@@ -113,6 +114,7 @@ import org.twinlife.twinme.models.Zoomable;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.services.AudioCallService;
 import org.twinlife.twinme.skin.Design;
@@ -486,7 +488,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
     @Nullable
     private PowerManager.WakeLock mScreenOffWakeLock;
     @Nullable
-    private Handler mProximmityHandler;
+    private Handler mProximityHandler;
 
     private GestureDetector mGestureDetector;
 
@@ -746,9 +748,9 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             mProximitySensor = null;
         }
 
-        if (mProximmityHandler != null) {
-            mProximmityHandler.removeCallbacksAndMessages(null);
-            mProximmityHandler = null;
+        if (mProximityHandler != null) {
+            mProximityHandler.removeCallbacksAndMessages(null);
+            mProximityHandler = null;
         }
 
         final CallState call = CallService.getState();
@@ -856,20 +858,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onDestroy");
         }
 
-        if (mProximitySensor != null) {
-            mProximitySensor.stop();
-            mProximitySensor = null;
-        }
-
-        if (mProximmityHandler != null) {
-            mProximmityHandler.removeCallbacksAndMessages(null);
-            mProximmityHandler = null;
-        }
-
-        if (mScreenOffWakeLock != null && mScreenOffWakeLock.isHeld()) {
-            mScreenOffWakeLock.release();
-            mScreenOffWakeLock = null;
-        }
+        releaseProximity();
 
         if (mAudioCallService != null) {
             mAudioCallService.dispose();
@@ -1269,6 +1258,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             return;
         }
 
+        releaseProximity();
+
         mChronometerView.stop();
 
         if (mAvatarAnimatorSet != null) {
@@ -1330,7 +1321,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             return;
         }
 
-        message(terminateReason(terminateReason), MESSAGE_TIMEOUT, new DefaultMessageCallback(R.string.application_ok) {
+        message(terminateReason(terminateReason), MESSAGE_TIMEOUT, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
 
             @Override
             public void onClick() {
@@ -1603,7 +1594,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 break;
 
             case CONNECTION_NOT_FOUND:
-                message(terminateReason(TerminateReason.CANCEL), MESSAGE_TIMEOUT, new DefaultMessageCallback(R.string.application_ok) {
+                message(terminateReason(TerminateReason.CANCEL), MESSAGE_TIMEOUT, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
 
                     @Override
                     public void onClick() {
@@ -1793,7 +1784,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             return;
         }
 
-        if (callParticipantView.isRemoteParticipant()) {
+        if (callParticipantView.isRemoteParticipant() && callParticipantView instanceof CallParticipantRemoteView) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             callParticipantRemoteView.setParticipant(participant);
             if (mIsCallReceiver) {
@@ -1823,7 +1814,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             }
         }
 
-        if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_ON) {
+        if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_ON && callParticipantView instanceof CallParticipantRemoteView) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             onFullScreenTapCallParticipantView(callParticipantRemoteView);
             if (!CommonUtils.isRotationLocked(this)) {
@@ -1831,7 +1822,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
             }
-        } else if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_OFF) {
+        } else if (event == CallParticipantEvent.EVENT_SCREEN_SHARING_OFF && callParticipantView instanceof CallParticipantRemoteView) {
             CallParticipantRemoteView callParticipantRemoteView = (CallParticipantRemoteView)callParticipantView;
             onMinimizeTapCallParticipantView(callParticipantRemoteView);
         }
@@ -1864,7 +1855,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 mStreamPlayer = null;
                 updateParticipantsView(CallService.getState());
                 mCallStreamingAudioView.stopStreaming();
-                toast(getString(R.string.streaming_audio_view_error_message));
+                toast(getString(org.twinlife.twinme.android.R.string.streaming_audio_view_error_message));
                 break;
 
             case EVENT_UNSUPPORTED:
@@ -2009,7 +2000,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
         window.setAttributes(layoutParams);
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.call_activity);
 
         setBackgroundColor(Color.BLACK);
@@ -2870,8 +2861,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     if (isLocal && mOriginator != null) {
                         name = mOriginator.getIdentityName();
-                    } else if (participantsName.get(descriptor.getDescriptorId().twincodeOutboundId) != null) {
-                        name = participantsName.get(descriptor.getDescriptorId().twincodeOutboundId);
+                    } else {
+                        final String participantName = participantsName.get(descriptor.getDescriptorId().twincodeOutboundId);
+                        if (participantName != null) {
+                            name = participantName;
+                        }
                     }
 
                     if (!isLocal && descriptor.getReadTimestamp() == 0) {
@@ -2979,7 +2973,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 defaultConfirmView.setImage(null);
                 defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
                 defaultConfirmView.setConfirmTitle(getString(R.string.call_view_camera_control_stop));
-                defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+                defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
                 AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
@@ -3019,7 +3013,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                     onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
                     onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
                     onboardingConfirmView.setMessage(getString(R.string.call_view_camera_control_onboarding_part_2));
-                    onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+                    onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
                     onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
                     AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -3069,10 +3063,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             Log.d(LOG_TAG, "onCameraMuteClick");
         }
 
-        boolean isVideoAllowed = mCameraGranted && (mIsCallStartedInVideo || (mOriginator != null && mOriginator.getCapabilities().hasVideo() && mOriginator.getIdentityCapabilities().hasVideo()));
+        final boolean hasVideo = mOriginator != null && mOriginator.getCapabilities().hasVideo();
+        boolean isVideoAllowed = mCameraGranted && (mIsCallStartedInVideo || (hasVideo && mOriginator.getIdentityCapabilities().hasVideo()));
         if (!isVideoAllowed) {
             String message = getString(R.string.application_not_authorized_operation);
-            if (mOriginator != null && !mOriginator.getCapabilities().hasVideo()) {
+            if (mOriginator != null && !hasVideo) {
                 message = getString(R.string.application_not_authorized_operation_by_your_contact);
             }
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -3361,6 +3356,8 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
         }
         mTerminated = true;
 
+        releaseProximity();
+
         if (mAvatarAnimatorSet != null) {
             mAvatarAnimatorSet.cancel();
         }
@@ -3455,10 +3452,11 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 String message = getString(R.string.show_call_view_schedule_message);
                 if (mOriginator != null) {
                     Schedule schedule = mOriginator.getCapabilities().getSchedule();
+                    final TimeRange timeRange = schedule == null || schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
 
-                    if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
+                    if (timeRange instanceof DateTimeRange) {
 
-                        DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                        DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                         DateTime start = dateTimeRange.start;
                         DateTime end = dateTimeRange.end;
 
@@ -4319,7 +4317,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 defaultConfirmView.setMessage(message);
                 defaultConfirmView.setImage(null);
                 defaultConfirmView.setConfirmTitle(getString(R.string.application_accept));
-                defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+                defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
                 AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                     @Override
@@ -4425,8 +4423,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             case EVENT_STREAM_STATUS:
                 CallState callState = CallService.getState();
                 StreamingStatus streamingStatus = participant.getStreamingStatus();
-                if (streamingStatus == StreamingStatus.PLAYING && callState != null && callState.getCurrentStreamer() != null && callState.getCurrentStreamer().getPlayer() != null) {
-                    mStreamPlayer = callState.getCurrentStreamer().getPlayer();
+                final Streamer currentStreamer = callState != null ? callState.getCurrentStreamer() : null;
+                final StreamPlayer currentPlayer = currentStreamer != null ? currentStreamer.getPlayer() : null;
+                if (streamingStatus == StreamingStatus.PLAYING && currentPlayer != null) {
+                    mStreamPlayer = currentPlayer;
                     updateParticipantsView(CallService.getState());
                 } else if (participant.getStreamPlayer() != null) {
                     mStreamPlayer = participant.getStreamPlayer();
@@ -4441,7 +4441,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     mStreamPlayer = null;
                     updateParticipantsView(CallService.getState());
-                    toast(getString(R.string.streaming_audio_view_error_message));
+                    toast(getString(org.twinlife.twinme.android.R.string.streaming_audio_view_error_message));
                 } else if (streamingStatus == StreamingStatus.UNSUPPORTED) {
                     Intent intent = new Intent(this, CallService.class);
                     intent.setAction(CallService.ACTION_STOP_STREAMING);
@@ -4449,7 +4449,7 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
                     mStreamPlayer = null;
                     updateParticipantsView(CallService.getState());
-                    toast(getString(R.string.streaming_audio_view_error_message));
+                    toast(getString(org.twinlife.twinme.android.R.string.streaming_audio_view_error_message));
                 }
                 break;
 
@@ -4763,14 +4763,14 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
 
         // Don't take into account the proximity change immediately but leave 750ms
         // to make sure it stabilized: cancel a previous post and schedule a new one.
-        if (mProximmityHandler != null) {
-            mProximmityHandler.removeCallbacksAndMessages(null);
+        if (mProximityHandler != null) {
+            mProximityHandler.removeCallbacksAndMessages(null);
         } else {
-            mProximmityHandler = new Handler(Looper.getMainLooper());
+            mProximityHandler = new Handler(Looper.getMainLooper());
         }
 
         if (mProximitySensor != null) {
-            mProximmityHandler.postDelayed(this::updateProximityLock, PROXIMITY_DELAY);
+            mProximityHandler.postDelayed(this::updateProximityLock, PROXIMITY_DELAY);
         }
     }
 
@@ -4793,9 +4793,10 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
             PowerManager powerManager = (PowerManager) this.getSystemService(POWER_SERVICE);
             if (powerManager != null && powerManager.isWakeLockLevelSupported(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK)) {
                 mScreenOffWakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, WAKELOCK_TAG);
+                mScreenOffWakeLock.setReferenceCounted(false);
             }
         }
-        if (mScreenOffWakeLock != null) {
+        if (mScreenOffWakeLock != null && !mScreenOffWakeLock.isHeld()) {
             mScreenOffWakeLock.acquire(DateUtils.HOUR_IN_MILLIS * 2);
             mTurnOffTime = System.currentTimeMillis();
         }
@@ -5511,5 +5512,20 @@ public class CallActivity extends TwinmeImmersiveActivityImpl implements AudioCa
                 return;
             }
         }
+    }
+
+    private void releaseProximity() {
+        if (mProximityHandler != null) {
+            mProximityHandler.removeCallbacksAndMessages(null);
+        }
+        mProximityHandler = null;
+        if (mProximitySensor != null) {
+            mProximitySensor.stop();
+        }
+        mProximitySensor = null;
+        if (mScreenOffWakeLock != null && mScreenOffWakeLock.isHeld()) {
+            mScreenOffWakeLock.release();
+        }
+        mScreenOffWakeLock = null;
     }
 }

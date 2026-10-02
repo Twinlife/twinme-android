@@ -91,13 +91,14 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
         mNotificationsImageView.setColorFilter(TAB_GREY_COLOR);
 
         float tabWidth = (float) (Design.DISPLAY_WIDTH / 4.0);
-        if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
+        final int defaultTab = mListActivity.getTwinmeApplication().defaultTab();
+        if (defaultTab == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
             mCallsImageView.setColorFilter(Design.getMainStyle());
             mSelectedView.setX(0);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
+        } else if (defaultTab == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
             mContactsImageView.setColorFilter(Design.getMainStyle());
             mSelectedView.setX(tabWidth);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal()) {
+        } else if (defaultTab == TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal()) {
             mConversationsImageView.setColorFilter(Design.getMainStyle());
             mSelectedView.setX(tabWidth * 2);
         } else {

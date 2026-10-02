@@ -81,7 +81,7 @@ public class WebViewActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.web_view_activity);
 
         setStatusBarColor();

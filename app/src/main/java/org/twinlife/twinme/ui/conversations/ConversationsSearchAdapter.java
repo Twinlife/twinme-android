@@ -164,7 +164,7 @@ public class ConversationsSearchAdapter extends ListAdapter<SearchResultItem, Re
 
         SearchResultItem item = getItem(position);
 
-        if (item instanceof SearchResultItem.Header) {
+        if (item instanceof SearchResultItem.Header && viewHolder instanceof SearchSectionViewHolder) {
             SearchResultItem.Header header = (SearchResultItem.Header) item;
             SearchSectionViewHolder searchSectionViewHolder = (SearchSectionViewHolder) viewHolder;
             boolean showAction = false;
@@ -179,12 +179,12 @@ public class ConversationsSearchAdapter extends ListAdapter<SearchResultItem, Re
             }
 
             searchSectionViewHolder.onBind(header.title, showAction, runnable);
-        } else if (item instanceof SearchResultItem.Footer) {
+        } else if (item instanceof SearchResultItem.Footer && viewHolder instanceof SearchSectionFooterViewHolder) {
             SearchSectionFooterViewHolder searchSectionFooterViewHolder = (SearchSectionFooterViewHolder) viewHolder;
             searchSectionFooterViewHolder.onBind();
         } else if (item instanceof SearchResultItem.Conversation) {
             SearchResultItem.Conversation convItem = (SearchResultItem.Conversation) item;
-            if (item.type == SearchResultItem.Type.GROUP || item.type == SearchResultItem.Type.CONTACT) {
+            if ((item.type == SearchResultItem.Type.GROUP || item.type == SearchResultItem.Type.CONTACT) && viewHolder instanceof UIContactViewHolder) {
                 //noinspection unchecked
                 UIContactViewHolder<UIContact> contactViewHolder = (UIContactViewHolder<UIContact>) viewHolder;
                 contactViewHolder.itemView.setOnClickListener(view -> mOnSearchClickListener.onConversationClick(convItem.uiConversation));

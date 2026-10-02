@@ -44,6 +44,7 @@ import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallReceiverService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
@@ -288,7 +289,7 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_external_call_activity);
 
         setTitle(getString(R.string.application_name));
@@ -444,11 +445,12 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             @Override
             public void onExternalCallConfigClick(UIConfigExternalCallItem configExternalCall) {
 
-                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configExternalCall.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
                     openMenuCapabilities();
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
                     openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE, mConfigExternalCall.getConfigCallType().ordinal());
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
                     openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION, mConfigExternalCall.getLinkValidity().ordinal());
                 }
             }
@@ -456,9 +458,10 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             @Override
             public void onDateViewClick(UIConfigExternalCallItem configExternalCall) {
 
-                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configExternalCall.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
                     onStartDateViewClick();
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
                     onEndDateViewClick();
                 }
             }
@@ -466,9 +469,10 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             @Override
             public void onTimeViewClick(UIConfigExternalCallItem configExternalCall) {
 
-                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configExternalCall.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
                     onStartTimeViewClick();
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
                     onEndTimeViewClick();
                 }
             }
@@ -693,9 +697,10 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
 
         int hour;
         int minute;
-        if (mConfigExternalCall.getScheduleEndTime() != null) {
-            hour = mConfigExternalCall.getScheduleEndTime() .hour;
-            minute = mConfigExternalCall.getScheduleEndTime() .minute;
+        final Time scheduleEndTime = mConfigExternalCall.getScheduleEndTime();
+        if (scheduleEndTime != null) {
+            hour = scheduleEndTime.hour;
+            minute = scheduleEndTime.minute;
         } else {
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -751,13 +756,14 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             return;
         }
 
-        if (getTwinmeApplication().inCallInfo() == null && mCallReceiver.getCapabilities().hasAudio() && !hasSchedule()) {
+        final boolean hasAudio = mCallReceiver.getCapabilities().hasAudio();
+        if (getTwinmeApplication().inCallInfo() == null && hasAudio && !hasSchedule()) {
             Intent intent = new Intent();
             intent.putExtra(Intents.INTENT_CONTACT_ID, mCallReceiver.getId().toString());
             intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_CALL);
 
             startActivity(CallActivity.class, intent);
-        } else if (!mCallReceiver.getCapabilities().hasAudio()) {
+        } else if (!hasAudio) {
             Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
         } else if (hasSchedule()) {
             showSchedule();
@@ -773,13 +779,14 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
             return;
         }
 
-        if (getTwinmeApplication().inCallInfo() == null && mCallReceiver.getCapabilities().hasVideo() && !hasSchedule()) {
+        final boolean hasVideo = mCallReceiver.getCapabilities().hasVideo();
+        if (getTwinmeApplication().inCallInfo() == null && hasVideo && !hasSchedule()) {
             Intent intent = new Intent();
             intent.putExtra(Intents.INTENT_CONTACT_ID, mCallReceiver.getId().toString());
             intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_VIDEO_CALL);
 
             startActivity(CallActivity.class, intent);
-        } else if (!mCallReceiver.getCapabilities().hasVideo()) {
+        } else if (!hasVideo) {
             Toast.makeText(this, R.string.application_not_authorized_operation_by_your_contact, Toast.LENGTH_SHORT).show();
         } else if (hasSchedule()) {
             showSchedule();
@@ -972,12 +979,13 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
         }
 
         String message = "";
-        if (mCallReceiver != null && mCallReceiver.getCapabilities().getSchedule() != null) {
-            Schedule schedule = mCallReceiver.getCapabilities().getSchedule();
-            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
+        final Schedule schedule = mCallReceiver != null ? mCallReceiver.getCapabilities().getSchedule() : null;
+        if (schedule != null) {
+            final TimeRange timeRange = schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange != null) {
 
-                if (schedule.getTimeRanges().get(0) instanceof WeeklyTimeRange) {
-                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) schedule.getTimeRanges().get(0);
+                if (timeRange instanceof WeeklyTimeRange) {
+                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) timeRange;
                     Time scheduleStartTime = weeklyTimeRange.start;
                     Time scheduleEndTime = weeklyTimeRange.end;
                     StringBuilder messageStringBuilder = new StringBuilder();
@@ -1026,8 +1034,8 @@ public class ShowExternalCallActivity extends AbstractTwinmeActivity implements 
 
                         message = messageStringBuilder.toString();
                     }
-                } else {
-                    DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                } else if (timeRange instanceof DateTimeRange) {
+                    DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                     DateTime start = dateTimeRange.start;
                     DateTime end = dateTimeRange.end;
 

@@ -14,16 +14,13 @@
     <string name="application_authorization_microphone">Dozvolite aplikaciji pristup mikrofonu u sistemskim podešavanjima.</string>
     <string name="application_authorization_microphone_camera">Dozvolite aplikaciji pristup mikrofonu i kameri u sistemskim podešavanjima.</string>
     <string name="application_authorization_title">Nedostaje dozvola za pristup</string>
-    <string name="application_back">Nazad</string>
     <string name="application_backup_restore">Vrati rezervnu kopiju</string>
     <string name="application_backup_verify">Proveri rezervnu kopiju</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Otkaži</string>
     <string name="application_canceled_operation">Operacija otkazana</string>
     <string name="application_checking_connection">Provera veze</string>
     <string name="application_color">Boja</string>
     <string name="application_configuration">Konfiguracija</string>
-    <string name="application_confirm">Potvrdi</string>
     <string name="application_confirm_deletion">Potvrdite brisanje</string>
     <string name="application_connected">Bezbedna veza je omogućena.</string>
     <string name="application_connection_status_no_network">Nema pristupa internetu.</string>
@@ -54,7 +51,6 @@
     <string name="application_group_limit_reached">Prekoračen je maksimalan broj (%1$d) članova grupe.</string>
     <string name="application_group_not_found">Uklonjeni ste iz grupe</string>
     <string name="application_items_selected">Izabrano stavki: %1$d</string>
-    <string name="application_later">Kasnije</string>
     <string name="application_low_usage_message">Upozorenje: ako ne koristite aplikaciju dovoljno često, OS je možda neće probuditi da razmenjuje poruke!</string>
     <string name="application_migration_no_storage_space">Nema dovoljno prostora na uređaju da se migracija završi. Zatvorite aplikaciju, oslobodite prostor i ponovo pokrenite aplikaciju da biste završili ažuriranje.</string>
     <string name="application_migration_no_storage_space_message">Jedan od dva uređaja nema dovoljno prostora za skladištenje. Oslobodite prostor na tom uređaju pre nego što ponovo pokrenete migraciju.</string>
@@ -81,7 +77,6 @@
     <string name="application_not_connected">Uspostavljanje bezbedne veze…</string>
     <string name="application_not_signed_in">Niste povezani sa twinme uslugom</string>
     <string name="application_now">Sada</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">Izabrana je 1 stavka</string>
     <string name="application_operation_failure">Neuspešna radnja</string>
     <string name="application_operation_irreversible">Ova radnja je nepovratna</string>
@@ -174,6 +169,7 @@
     <string name="account_migration_view_close_message">Zatvorite aplikaciju i ponovo je pokrenite da biste pristupili novim podacima.</string>
     <string name="account_migration_view_confirm_cancel_message">Da li ste sigurni da želite da otkažete migraciju?</string>
     <string name="account_migration_view_database">Baza podataka</string>
+    <string name="account_migration_view_display">Prikaz</string>
     <string name="account_migration_view_finalizing">Završavanje</string>
     <string name="account_migration_view_initializing">Inicijalizacija</string>
     <string name="account_migration_view_my_device">Moj uređaj</string>
@@ -217,6 +213,7 @@
     <string name="account_migration_scanner_view_step_1">Otvorite aplikaciju na drugom uređaju</string>
     <string name="account_migration_scanner_view_step_2">Idite u bočni meni</string>
     <string name="account_migration_scanner_view_step_3">Izaberite „Nalog“</string>
+    <string name="account_migration_scanner_view_step_4">Pokreni migraciju naloga</string>
     <string name="account_migration_scanner_view_step_4_my_device">Pokrenite prenos sa ovog uređaja</string>
     <string name="account_migration_scanner_view_step_4_another_device">Pokrenite prenos sa drugog uređaja</string>
     <string name="account_migration_scanner_view_step_5_my_device">Skenirajte QR kod prikazan na drugom uređaju ovim uređajem</string>
@@ -657,7 +654,6 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Vaš nalog je obrisan i svi povezani podaci su uništeni.&lt;br /&gt;
         Morate zatvoriti aplikaciju.</string>
-    <string name="deleted_account_view_warning">Upozorenje‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Dostupno</string>
@@ -672,7 +668,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Da li ste sigurni da želite da obrišete ovaj odnos?</string>
-    <string name="edit_contact_view_message">Ovaj kontakt više neće moći da vas kontaktira.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Da li ste sigurni da želite da obrišete ovaj \"Klik-za-poziv\" kod?</string>
@@ -1298,7 +1293,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Došlo je do greške. Pokušajte ponovo.</string>
     <string name="streaming_audio_view_no_music_message">Prebacite muzičke fajlove na svoj uređaj.</string>
     <string name="streaming_audio_view_no_music_title">Nije pronađena muzika 🙁</string>
     <string name="streaming_audio_view_title">Deljenje medija</string>

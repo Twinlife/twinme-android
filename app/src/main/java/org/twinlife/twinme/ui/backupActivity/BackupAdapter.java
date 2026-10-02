@@ -119,16 +119,16 @@ public class BackupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         int viewType = getItemViewType(position);
 
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(mBackupActivity.getString(R.string.backup_view_security_info), true);
-        } else if (viewType == SECTION) {
+        } else if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mBackupActivity.getString(R.string.backup_view_security), true);
-        } else if (viewType == WORDS) {
+        } else if (viewType == WORDS && viewHolder instanceof BackupWordsViewHolder) {
             BackupWordsViewHolder backupWordsViewHolder = (BackupWordsViewHolder) viewHolder;
             backupWordsViewHolder.onBind(mBackupWords);
-        } else if (viewType == ACTION) {
+        } else if (viewType == ACTION && viewHolder instanceof BackupActionViewHolder) {
             BackupActionViewHolder backupActionViewHolder = (BackupActionViewHolder) viewHolder;
 
             String copyActionTitle = mBackupActivity.getString(R.string.conversation_view_menu_item_view_copy_title);
@@ -140,10 +140,10 @@ public class BackupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             Runnable generateRunnable = mBackupActivity::onGenerateWordsClick;
 
             backupActionViewHolder.onBind(copyActionIcon, generateActionIcon, copyActionTitle, generateActionTitle, copyRunnable, generateRunnable);
-        } else if (viewType == CONFIRM) {
+        } else if (viewType == CONFIRM && viewHolder instanceof BackupConfirmViewHolder) {
             BackupConfirmViewHolder backupConfirmViewHolder = (BackupConfirmViewHolder) viewHolder;
             backupConfirmViewHolder.onBind(mBackupActivity.isConfirmBackup());
-        } else if (viewType == FOOTER) {
+        } else if (viewType == FOOTER && viewHolder instanceof BackupFooterViewHolder) {
             BackupFooterViewHolder backupFooterViewHolder = (BackupFooterViewHolder) viewHolder;
             backupFooterViewHolder.onBind(mBackupActivity.getString(R.string.backup_view_backup), mBackupActivity.isConfirmBackup());
         }

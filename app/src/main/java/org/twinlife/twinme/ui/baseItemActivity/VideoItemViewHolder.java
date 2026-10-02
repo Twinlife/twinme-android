@@ -9,6 +9,7 @@
 
 package org.twinlife.twinme.ui.baseItemActivity;
 
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -30,14 +31,23 @@ import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
 import org.twinlife.twinlife.ConversationService.VideoDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.RoundedImageView;
+import org.twinlife.twinme.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class VideoItemViewHolder extends ItemViewHolder {
 
+    private static final int DURATION_VIEW_COLOR = Color.argb(127, 0, 0, 0);
+    private static final int DESIGN_DURATION_HEIGHT = 36;
+    private static final int DESIGN_DURATION_LEFT_MARGIN = 18;
+    private static final int DESIGN_DURATION_BOTTOM_MARGIN = 16;
+    private static final int DESIGN_DURATION_TEXT_MARGIN = 12;
+
     private final RoundedImageView mImageView;
     private final ImageView mPlayView;
+    private final View mDurationView;
+    private final TextView mDurationTextView;
     private final View mReplyView;
     private final TextView mReplyTextView;
     private final View mReplyToImageContentView;
@@ -63,6 +73,29 @@ class VideoItemViewHolder extends ItemViewHolder {
 
         mPlayView = view.findViewById(R.id.base_item_activity_video_item_play_view);
 
+        mDurationView = view.findViewById(R.id.base_item_activity_video_item_duration_view);
+
+        ViewGroup.LayoutParams layoutParams = mDurationView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_DURATION_HEIGHT * Design.HEIGHT_RATIO);
+
+        GradientDrawable durationDrawable = new GradientDrawable();
+        durationDrawable.setShape(GradientDrawable.RECTANGLE);
+        durationDrawable.setColor(DURATION_VIEW_COLOR);
+        durationDrawable.setCornerRadius((int) (DESIGN_DURATION_HEIGHT * Design.HEIGHT_RATIO * 0.5));
+        mDurationView.setBackground(durationDrawable);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mDurationView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_DURATION_LEFT_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_DURATION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+
+        mDurationTextView = view.findViewById(R.id.base_item_activity_video_item_duration_text_view);
+        mDurationTextView.setTextColor(Color.WHITE);
+        Design.updateTextFont(mDurationTextView, Design.FONT_REGULAR24);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDurationTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_DURATION_TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_DURATION_TEXT_MARGIN * Design.WIDTH_RATIO);
+
         mReplyTextView = view.findViewById(R.id.base_item_activity_video_item_reply_text);
         mReplyTextView.setPadding(MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING, MESSAGE_ITEM_TEXT_WIDTH_PADDING, MESSAGE_ITEM_TEXT_DEFAULT_PADDING);
         mReplyTextView.setTypeface(getMessageFont().typeface);
@@ -87,7 +120,7 @@ class VideoItemViewHolder extends ItemViewHolder {
         mReplyView.setBackground(mReplyGradientDrawable);
 
         mReplyImageView = view.findViewById(R.id.base_item_activity_video_item_reply_image_view);
-        ViewGroup.LayoutParams layoutParams = mReplyImageView.getLayoutParams();
+        layoutParams = mReplyImageView.getLayoutParams();
         layoutParams.width = REPLY_IMAGE_ITEM_MAX_WIDTH;
         layoutParams.height = REPLY_IMAGE_ITEM_MAX_HEIGHT;
 
@@ -152,6 +185,7 @@ class VideoItemViewHolder extends ItemViewHolder {
         final VideoDescriptor videoDescriptor = videoItem.getVideoDescriptor();
 
         setImage(mImageView, videoDescriptor);
+        mDurationTextView.setText(Utils.formatInterval((int) videoDescriptor.getDuration(), "mm:ss"));
 
         // Compute the corner radii only once!
         final float[] cornerRadii = getCornerRadii();
@@ -280,9 +314,10 @@ class VideoItemViewHolder extends ItemViewHolder {
         float progress = 0;
         int animationDuration = DESIGN_DELETE_ANIMATION_DURATION;
         final Item item = getItem();
-        if (item.getDeleteProgress() > 0) {
-            progress = item.getDeleteProgress() / 100.0f;
-            animationDuration = (int) (BaseItemViewHolder.DESIGN_DELETE_ANIMATION_DURATION - ((item.getDeleteProgress() * BaseItemViewHolder.DESIGN_DELETE_ANIMATION_DURATION) / 100.0));
+        final float deleteProgress = item.getDeleteProgress();
+        if (deleteProgress > 0) {
+            progress = deleteProgress / 100.0f;
+            animationDuration = (int) (BaseItemViewHolder.DESIGN_DELETE_ANIMATION_DURATION - ((deleteProgress * BaseItemViewHolder.DESIGN_DELETE_ANIMATION_DURATION) / 100.0));
         }
 
         mDeleteView.startAnimation(animationDuration, progress);

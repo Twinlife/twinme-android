@@ -141,23 +141,23 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
 
         int viewType = getItemViewType(position);
 
-        if (viewType == MODE_TITLE || viewType == SUBSECTION_TITLE) {
+        if (viewType == MODE_TITLE || viewType == SUBSECTION_TITLE && viewHolder instanceof SubSectionViewHolder) {
             SubSectionViewHolder subSectionViewHolder = (SubSectionViewHolder) viewHolder;
             boolean hideSeparator = position == BACKGROUND_APPEARANCE_TITLE_POSITION;
             subSectionViewHolder.onBind(getTitle(position), hideSeparator);
-        } else if (viewType == PREVIEW_APPEARANCE) {
+        } else if (viewType == PREVIEW_APPEARANCE && viewHolder instanceof PreviewAppearanceViewHolder) {
             PreviewAppearanceViewHolder previewAppearanceViewHolder = (PreviewAppearanceViewHolder) viewHolder;
             previewAppearanceViewHolder.onBind();
-        } else if (viewType == INFORMATION) {
+        } else if (viewType == INFORMATION && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(mConversationAppearanceActivity.getString(R.string.space_appearance_view_background_message), true);
-        } else if (viewType == COLOR) {
+        } else if (viewType == COLOR && viewHolder instanceof AppearanceColorViewHolder) {
             int color = getColor(position);
             String colorName = getTitle(position);
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;
             appearanceColorViewHolder.itemView.setOnClickListener(view -> mOnAppearanceClickListener.onColorClick(position, colorName));
             appearanceColorViewHolder.onBind(color, colorName, null, false);
-        } else if (viewType == RESET_APPEARANCE) {
+        } else if (viewType == RESET_APPEARANCE && viewHolder instanceof ResetSettingsViewHolder) {
             ResetSettingsViewHolder resetSettingsViewHolder = (ResetSettingsViewHolder) viewHolder;
             resetSettingsViewHolder.itemView.setOnClickListener(view -> mOnAppearanceClickListener.onResetAppearanceClick());
         }
@@ -200,7 +200,7 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
 
-        if (viewType == COLOR && position != -1) {
+        if (viewType == COLOR && position != -1 && viewHolder instanceof AppearanceColorViewHolder) {
             int color = getColor(position);
             String colorName = getTitle(position);
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;
@@ -229,7 +229,7 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
 
-        if (viewType == COLOR && position != -1) {
+        if (viewType == COLOR && position != -1 && viewHolder instanceof AppearanceColorViewHolder) {
             int color = getColor(position);
             String colorName = getTitle(position);
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;

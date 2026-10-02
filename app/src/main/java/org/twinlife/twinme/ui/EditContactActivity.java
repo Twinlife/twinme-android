@@ -218,7 +218,7 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.edit_contact_activity);
 
         setTitle(getString(R.string.application_name));
@@ -445,7 +445,7 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
         DeleteConfirmView deleteConfirmView = new DeleteConfirmView(this, null);
         deleteConfirmView.setAvatar(mContactAvatar, false);
 
-        String message = getString(R.string.edit_contact_view_message) + "\n\n"  + getString(R.string.edit_contact_view_confirm_message);
+        String message = getString(org.twinlife.twinme.android.R.string.edit_contact_view_message) + "\n\n"  + getString(R.string.edit_contact_view_confirm_message);
         deleteConfirmView.setMessage(message);
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -524,9 +524,10 @@ public class EditContactActivity extends AbstractEditActivity implements EditCon
 
                 mCounterNameView.setText(String.format(Locale.getDefault(), "%d/%d", s.length(), MAX_NAME_LENGTH));
 
-                if (!s.toString().isEmpty() && !s.toString().equals(mContactName)) {
+                final String name = s.toString();
+                if (!name.isEmpty() && !name.equals(mContactName)) {
                     setUpdated();
-                } else if (s.toString().isEmpty() && !mHasClearedName && !mContactName.equals(mContact.getPeerName())) {
+                } else if (name.isEmpty() && !mHasClearedName && !mContactName.equals(mContact.getPeerName())) {
                     mHasClearedName = true;
                     String peerName = mContact.getPeerName();
                     if (peerName != null) {

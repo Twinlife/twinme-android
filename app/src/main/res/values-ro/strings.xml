@@ -14,16 +14,13 @@
     <string name="application_authorization_microphone">Permiteți aplicației accesul la Microfon în setările sistemului.</string>
     <string name="application_authorization_microphone_camera">Permiteți aplicației accesul la Microfon și Cameră în setările sistemului.</string>
     <string name="application_authorization_title">Lipsă autorizare de acces</string>
-    <string name="application_back">Înapoi</string>
     <string name="application_backup_restore">Restaurarea copiei de rezervă</string>
     <string name="application_backup_verify">Verificarea copiei de rezervă</string>
     <string name="application_camera">Cameră</string>
-    <string name="application_cancel">Anulați</string>
     <string name="application_canceled_operation">Operațiune anulată</string>
     <string name="application_checking_connection">Verificare conexiune</string>
     <string name="application_color">Culoare</string>
     <string name="application_configuration">Configurație</string>
-    <string name="application_confirm">Confirmați</string>
     <string name="application_confirm_deletion">Confirmați ștergerea</string>
     <string name="application_connected">Conexiune securizată activată.</string>
     <string name="application_connection_status_no_network">Fără acces la Internet.</string>
@@ -54,7 +51,6 @@
     <string name="application_group_limit_reached">Numărul maxim (%1$d) de membri ai grupului a fost depășit.</string>
     <string name="application_group_not_found">Ați fost eliminat din grup</string>
     <string name="application_items_selected">%1$d elemente selectate</string>
-    <string name="application_later">Mai târziu</string>
     <string name="application_low_usage_message">Atenție, dacă nu utilizați aplicația suficient de des, sistemul de operare poate să nu o activeze pentru schimbul de mesaje!</string>
     <string name="application_migration_no_storage_space">Nu există suficient spațiu pe dispozitivul dvs. pentru a finaliza migrarea. Închideți aplicația, eliberați spațiu și relansați aplicația pentru a finaliza actualizarea.</string>
     <string name="application_migration_no_storage_space_message">Unul dintre cele două dispozitive nu are suficient spațiu de stocare. Eliberați spațiu pe acel dispozitiv înainte de a relua migrarea.</string>
@@ -81,7 +77,6 @@
     <string name="application_not_connected">Conexiune securizată în curs…</string>
     <string name="application_not_signed_in">Neconectat la serviciul twinme</string>
     <string name="application_now">Acum</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">1 element selectat</string>
     <string name="application_operation_failure">Eroare operațiune</string>
     <string name="application_operation_irreversible">Această operațiune este ireversibilă</string>
@@ -174,6 +169,7 @@
     <string name="account_migration_view_close_message">Închideți aplicația și reporniți-o pentru a accesa noile date.</string>
     <string name="account_migration_view_confirm_cancel_message">Sigur doriți să anulați migrarea?</string>
     <string name="account_migration_view_database">Bază de date</string>
+    <string name="account_migration_view_display">Afișare</string>
     <string name="account_migration_view_finalizing">Finalizare</string>
     <string name="account_migration_view_initializing">Inițializare</string>
     <string name="account_migration_view_my_device">Dispozitivul meu</string>
@@ -217,6 +213,7 @@
     <string name="account_migration_scanner_view_step_1">Deschide aplicația pe celălalt dispozitiv</string>
     <string name="account_migration_scanner_view_step_2">Accesează meniul lateral</string>
     <string name="account_migration_scanner_view_step_3">Selectează „Cont”</string>
+    <string name="account_migration_scanner_view_step_4">Inițiază migrarea contului</string>
     <string name="account_migration_scanner_view_step_4_my_device">Începe transferul de pe acest dispozitiv</string>
     <string name="account_migration_scanner_view_step_4_another_device">Începe transferul de pe celălalt dispozitiv</string>
     <string name="account_migration_scanner_view_step_5_my_device">Scanează codul QR afișat pe celălalt dispozitiv cu acest dispozitiv</string>
@@ -655,7 +652,6 @@
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Contul dvs. a fost șters, iar toate datele asociate au fost distruse.<br /> Trebuie să închideți aplicația.</string>
-    <string name="deleted_account_view_warning">Atenție‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Disponibil</string>
@@ -670,7 +666,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Sigur doriți să ștergeți această relație?</string>
-    <string name="edit_contact_view_message">Acest contact nu va mai putea să vă contacteze.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Sigur doriți să ștergeți acest cod „Click-to-Call”?</string>
@@ -1295,7 +1290,6 @@
     <string name="spaces_view_title">Spații</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">A apărut o eroare. Vă rugăm să încercați din nou.</string>
     <string name="streaming_audio_view_no_music_message">Vă rugăm să transferați fișiere muzicale pe dispozitiv.</string>
     <string name="streaming_audio_view_no_music_title">Nu a fost găsită muzică 🙁</string>
     <string name="streaming_audio_view_title">Partajare media</string>

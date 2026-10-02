@@ -165,7 +165,7 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             if (position == SECTION_STORAGE) {
                 sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_storage_title), true);
@@ -174,7 +174,7 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             } else {
                 sectionTitleViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_expiration), true);
             }
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_CONTENT_INFORMATION) {
                 informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_select_content), true);
@@ -187,7 +187,7 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             } else {
                 informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_messages_info), true);
             }
-        } else if (viewType == CONTENT) {
+        } else if (viewType == CONTENT && viewHolder instanceof ExportContentViewHolder) {
             ExportContentViewHolder exportContentViewHolder = (ExportContentViewHolder) viewHolder;
             UIExport export;
             if (position == POSITION_CONTENT_FILE) {
@@ -198,21 +198,21 @@ public class CleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Drawable drawable = ResourcesCompat.getDrawable(mCleanupActivity.getResources(), export.getImage(), mCleanupActivity.getTheme());
             exportContentViewHolder.itemView.setOnClickListener(view -> mOnCleanupClickListener.onContentClick(export));
             exportContentViewHolder.onBind(export, drawable);
-        } else if (viewType == STORAGE) {
+        } else if (viewType == STORAGE && viewHolder instanceof StorageViewHolder) {
             StorageViewHolder storageViewHolder = (StorageViewHolder) viewHolder;
             UIStorage storage = mStorages.get(position - POSITION_STORAGE_CHART - 1);
             storageViewHolder.onBind(storage);
-        } else if (viewType == STORAGE_CHART) {
+        } else if (viewType == STORAGE_CHART && viewHolder instanceof StorageChartViewHolder) {
             StorageChartViewHolder storageChartViewHolder = (StorageChartViewHolder) viewHolder;
             storageChartViewHolder.onBind(mStorages);
-        } else if (viewType == SWITCH) {
+        } else if (viewType == SWITCH && viewHolder instanceof CleanupSwitchViewHolder) {
             CleanupSwitchViewHolder cleanupSwitchViewHolder = (CleanupSwitchViewHolder) viewHolder;
             cleanupSwitchViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_all), mUICleanUpExpiration.getExpirationType() == UICleanUpExpiration.ExpirationType.ALL);
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE && viewHolder instanceof ExpirationViewHolder) {
             ExpirationViewHolder expirationViewHolder = (ExpirationViewHolder) viewHolder;
             expirationViewHolder.itemView.setOnClickListener(view -> mOnCleanupClickListener.onSelectExpiration());
             expirationViewHolder.onBind(mUICleanUpExpiration.getTitle(mCleanupActivity), mUICleanUpExpiration.getValue(mCleanupActivity));
-        } else if (viewType == ACTION) {
+        } else if (viewType == ACTION && viewHolder instanceof CleanUpActionViewHolder) {
             CleanUpActionViewHolder cleanUpActionViewHolder = (CleanUpActionViewHolder) viewHolder;
             cleanUpActionViewHolder.onBind(mCleanupActivity.canCleanup());
         }

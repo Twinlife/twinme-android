@@ -115,7 +115,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.privacy_activity);
 
         View contentView = findViewById(R.id.privacy_activity_layout);

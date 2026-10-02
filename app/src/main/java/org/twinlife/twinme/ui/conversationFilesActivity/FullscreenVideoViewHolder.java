@@ -276,7 +276,7 @@ public class FullscreenVideoViewHolder extends RecyclerView.ViewHolder implement
         File filesDir = fullscreenMediaActivity.getTwinmeContext().getFilesDir();
 
         ConversationService.VideoDescriptor videoDescriptor;
-        if (item.isPeerItem()) {
+        if (item.isPeerItem() && item instanceof PeerVideoItem) {
             final PeerVideoItem peerVideoItem = (PeerVideoItem) item;
             videoDescriptor = peerVideoItem.getVideoDescriptor();
         } else {

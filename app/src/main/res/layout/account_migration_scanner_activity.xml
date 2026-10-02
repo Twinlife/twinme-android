@@ -26,12 +26,19 @@
         android:gravity="center"
         android:text="@string/account_migration_scanner_view_message" />
 
+    <org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView
+        android:id="@+id/account_migration_scanner_activity_tab_view"
+        android:layout_below="@+id/account_migration_scanner_activity_message_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/account_migration_scanner_activity_container_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/account_migration_scanner_activity_message_view">
+        android:layout_below="@+id/account_migration_scanner_activity_tab_view"
+        android:layout_above="@+id/account_migration_scanner_activity_container_recycler_view">
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/account_migration_scanner_activity_qrcode_container_view"
@@ -43,7 +50,7 @@
                 android:scaleType="fitCenter"
                 android:layout_centerInParent="true"
                 app:layout_aspectRatio="100%"
-                app:layout_heightPercent="67.65%" />
+                app:layout_heightPercent="77.65%" />
 
             <androidx.percentlayout.widget.PercentRelativeLayout
                 android:id="@+id/account_migration_scanner_activity_zoom_view"
@@ -137,7 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:cardCornerRadius="14dp"
-        android:layout_below="@+id/account_migration_scanner_activity_container_view"
+        android:layout_above="@+id/account_migration_scanner_activity_restore_view"
         android:isScrollContainer="true">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -151,8 +158,7 @@
         android:id="@+id/account_migration_scanner_activity_restore_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/account_migration_scanner_activity_container_recycler_view">
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:id="@+id/account_migration_scanner_activity_restore_text_view"

@@ -291,7 +291,7 @@ public class SettingsRoomActivity extends AbstractTwinmeActivity implements Edit
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.settings_room_activity);
 
         setStatusBarColor();

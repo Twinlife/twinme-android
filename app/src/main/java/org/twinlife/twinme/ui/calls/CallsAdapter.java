@@ -169,7 +169,7 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionCallViewHolder) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
             if (position == SECTION_EXTERNAL_CALLS) {
                 boolean showRightView = !mDisplayAllCallReceiver && mUICallReceivers.size() > NB_CALL_RECEIVER;
@@ -182,11 +182,11 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             } else {
                 sectionCallViewHolder.onBind(mListActivity.getString(R.string.show_contact_view_history_title), false, false);
             }
-        } else if (viewType == ADD_EXTERNAL_CALL) {
+        } else if (viewType == ADD_EXTERNAL_CALL && viewHolder instanceof AddExternalCallViewHolder) {
             AddExternalCallViewHolder addExternalCallViewHolder = (AddExternalCallViewHolder) viewHolder;
             addExternalCallViewHolder.itemView.setOnClickListener(view -> mOnCallClickListener.onAddExternalCallClick());
             addExternalCallViewHolder.onBind(mListActivity.getString(R.string.calls_view_create_link), mListActivity.getString(R.string.show_call_view_information_code));
-        } else if (viewType == EXTERNAL_CALL) {
+        } else if (viewType == EXTERNAL_CALL && viewHolder instanceof UIContactViewHolder) {
             UIContactViewHolder<UIOriginator> externalCallViewHolder = (UIContactViewHolder<UIOriginator>) viewHolder;
             externalCallViewHolder.itemView.setOnClickListener(v -> {
                 if (position >= 0) {
@@ -216,7 +216,7 @@ public class CallsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
-        if (viewType == CALL && position != -1) {
+        if (viewType == CALL && position != -1 && viewHolder instanceof CallViewHolder) {
             CallViewHolder callViewHolder = (CallViewHolder) viewHolder;
             boolean hideSeparator = position + 1 == mUICalls.size() + 3;
             callViewHolder.itemView.setOnClickListener(v -> {

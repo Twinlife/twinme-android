@@ -96,7 +96,7 @@ public class DiagnosticsActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.diagnostics_activity);
 
         setStatusBarColor();

@@ -255,7 +255,7 @@ public class ShareContactActivity extends AbstractTwinmeActivity implements Cont
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.share_contact_activity);
 
         setStatusBarColor();
@@ -367,7 +367,7 @@ public class ShareContactActivity extends AbstractTwinmeActivity implements Cont
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_share_contact, null));
         onboardingConfirmView.setTitle(getString(R.string.privacy_view_share_invitation_title));
         onboardingConfirmView.setMessage(message);
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

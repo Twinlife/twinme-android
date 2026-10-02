@@ -216,7 +216,7 @@ public class AbstractCapabilitiesActivity extends AbstractTwinmeActivity {
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
         onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
         onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_view_camera_control_onboarding));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
         if (hideCancelAction) {

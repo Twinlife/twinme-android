@@ -13,16 +13,13 @@
     <string name="application_authorization_microphone">Дозволити програмі отримати доступ до мікрофона в налаштуваннях системи.</string>
     <string name="application_authorization_microphone_camera">Дозволити програмі отримати доступ до мікрофона та камери в налаштуваннях системи.</string>
     <string name="application_authorization_title">Відсутня авторизація доступу</string>
-    <string name="application_back">Назад</string>
     <string name="application_backup_restore">Відновлення резервної копії</string>
     <string name="application_backup_verify">Перевірка резервної копії</string>
     <string name="application_camera">Фотоапарат</string>
-    <string name="application_cancel">Скасувати</string>
     <string name="application_canceled_operation">Операцію скасовано</string>
     <string name="application_checking_connection">Перевірка підключення</string>
     <string name="application_color">Колір</string>
     <string name="application_configuration">Конфігурація</string>
-    <string name="application_confirm">Підтвердьте</string>
     <string name="application_confirm_deletion">Підтвердьте видалення</string>
     <string name="application_connected">Безпечне з’єднання увімкнено.</string>
     <string name="application_connection_status_no_network">Немає доступу до Інтернету.</string>
@@ -53,7 +50,6 @@
     <string name="application_group_limit_reached">Перевищено максимальну кількість (%1$d) учасників групи.</string>
     <string name="application_group_not_found">Вас вилучили з групи</string>
     <string name="application_items_selected">Вибрано елементів: %1$d</string>
-    <string name="application_later">Пізніше</string>
     <string name="application_low_usage_message">Увага! Якщо ви не використовуєте програму досить часто, ОС може не вивести її з режиму сну для обміну повідомленнями!</string>
     <string name="application_one_item_selected">Вибрано 1 елемент</string>
     <string name="application_migration_no_storage_space">На вашому пристрої недостатньо місця для завершення міграції. Закрийте програму, звільніть місце та перезапустіть програму, щоб завершити оновлення.</string>
@@ -81,7 +77,6 @@
     <string name="application_not_connected">Виконується безпечне з’єднання…</string>
     <string name="application_not_signed_in">Підключення до сервісу Twinme відсутнє</string>
     <string name="application_now">Зараз</string>
-    <string name="application_ok">ОК</string>
     <string name="application_operation_failure">Збій операції</string>
     <string name="application_operation_irreversible">Ця операція необоротна</string>
     <string name="application_permission_camera">Дозвіл на доступ до камери потрібен для зйомки нового фото чи відео.</string>
@@ -173,6 +168,7 @@
     <string name="account_migration_view_close_message">Закрийте додаток і перезапустіть його, щоб отримати доступ до нових даних.</string>
     <string name="account_migration_view_confirm_cancel_message">Ви впевнені, що хочете скасувати перенос даних?</string>
     <string name="account_migration_view_database">База даних</string>
+    <string name="account_migration_view_display">Дисплей</string>
     <string name="account_migration_view_finalizing">Фіналізація</string>
     <string name="account_migration_view_initializing">Ініціалізація</string>
     <string name="account_migration_view_my_device">Мій пристрій</string>
@@ -216,6 +212,7 @@
     <string name="account_migration_scanner_view_step_1">Відкрийте програму на іншому пристрої</string>
     <string name="account_migration_scanner_view_step_2">Перейдіть до бічного меню</string>
     <string name="account_migration_scanner_view_step_3">Виберіть \"Обліковий запис\"</string>
+    <string name="account_migration_scanner_view_step_4">Запустити міграції облікового запису</string>
     <string name="account_migration_scanner_view_step_4_my_device">Почніть передачу з цього пристрою</string>
     <string name="account_migration_scanner_view_step_4_another_device">Почніть передачу з іншого пристрою</string>
     <string name="account_migration_scanner_view_step_5_my_device">Відскануйте QR-код, що відображається на іншому пристрої, за допомогою цього пристрою</string>
@@ -651,7 +648,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Введіть літери «ОК» нижче, щоб підтвердити видалення облікового запису.</string>
     <string name="deleted_account_view_delete">Видалити акаунт</string>
-    <string name="deleted_account_view_warning">Увага‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Ваш обліковий запис видалено, а всі пов’язані дані знищено.&lt;br /&gt;Ви повинні закрити додаток.</string>
@@ -669,7 +665,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Ви впевнені, що бажаєте видалити цей зв’язок?</string>
-    <string name="edit_contact_view_message">Цей контакт більше не зможе зв’язатися з вами.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">Видалення цього профілю призведе до втрати пов’язаного з ним коду запрошення. Підтвердити видалення?</string>
@@ -1294,7 +1289,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Сталася помилка. Будь ласка спробуйте ще раз.</string>
     <string name="streaming_audio_view_no_music_message">Обмін медіафайлами</string>
     <string name="streaming_audio_view_no_music_title">Музику не знайдено 🙁</string>
     <string name="streaming_audio_view_title">Обмін медіафайлами</string>
@@ -1373,5 +1367,4 @@
     <string name="welcome_view_step2_message">Безпечний "peer-to-peer" зв’язок: жодних слідів у хмарі.</string>
     <string name="welcome_view_step3_message">Ні номера телефону, ні адресної книги, ні ідентифікатора користувача: ви вибираєте, як вас ідентифікують на основі того, з ким ви спілкуєтеся.</string>
     <string name="welcome_view_terms_of_use">Умови користування</string>
-
 </resources>

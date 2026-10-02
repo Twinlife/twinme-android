@@ -110,7 +110,7 @@ public class SettingsAdvancedActivity extends AbstractTwinmeActivity {
         }
 
         if (getTwinmeContext().getConnectivityService().getUserProxies().size() >= ConnectivityService.MAX_PROXIES) {
-            showAlertMessageView(R.id.settings_advanced_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, null);
+            showAlertMessageView(R.id.settings_advanced_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, null);
             return;
         }
         startActivity(AddProxyActivity.class);

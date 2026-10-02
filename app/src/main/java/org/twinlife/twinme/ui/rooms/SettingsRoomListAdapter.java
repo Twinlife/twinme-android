@@ -106,7 +106,7 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             switch (position) {
                 case SECTION_PARTCIPANTS:
@@ -128,7 +128,7 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
                 default:
                     break;
             }
-        } else if (viewType == SWITCH) {
+        } else if (viewType == SWITCH && viewHolder instanceof RoomSettingsViewHolder) {
             RoomSettingsViewHolder settingsViewHolder = (RoomSettingsViewHolder) viewHolder;
 
             boolean isSelected = false;
@@ -153,7 +153,7 @@ public class SettingsRoomListAdapter extends RecyclerView.Adapter<RecyclerView.V
             }
 
             settingsViewHolder.onBind(title, switchTag, isSelected);
-        } else if (viewType == SELECT) {
+        } else if (viewType == SELECT && viewHolder instanceof PersonalizationViewHolder) {
             PersonalizationViewHolder personalizationViewHolder = (PersonalizationViewHolder) viewHolder;
 
             boolean isSelected = false;

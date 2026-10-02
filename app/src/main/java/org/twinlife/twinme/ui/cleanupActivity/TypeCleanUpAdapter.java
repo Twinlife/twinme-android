@@ -91,7 +91,7 @@ public class TypeCleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         int viewType = getItemViewType(position);
 
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position == POSITION_LOCAL_CLEANUP_INFORMATION) {
                 informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_info), true);
@@ -100,7 +100,7 @@ public class TypeCleanUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             } else if (position == POSITION_RESET_CONVERSATION_INFORMATION) {
                 informationViewHolder.onBind(mCleanupActivity.getString(R.string.cleanup_view_reset_conversation_message), true);
             }
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && viewHolder instanceof SettingSectionViewHolder) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (position == POSITION_LOCAL_CLEANUP) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mOnTypeCleanupClickListener.onLocalCleanUpClick());

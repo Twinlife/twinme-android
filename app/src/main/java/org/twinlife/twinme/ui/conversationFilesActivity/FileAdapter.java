@@ -98,7 +98,7 @@ public class FileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         int viewType = getItemViewType(position);
-        if (viewType == TYPE.LINK.ordinal()) {
+        if (viewType == TYPE.LINK.ordinal() && viewHolder instanceof LinkViewHolder) {
             LinkViewHolder linkViewHolder = (LinkViewHolder) viewHolder;
             linkViewHolder.onBind(mFileSection.getItems().get(position), mConversationFilesActivity);
         } else {
@@ -139,7 +139,7 @@ public class FileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         int position = viewHolder.getBindingAdapterPosition();
         if (position != -1) {
             int viewType = getItemViewType(position);
-            if (viewType == TYPE.LINK.ordinal()) {
+            if (viewType == TYPE.LINK.ordinal() && viewHolder instanceof LinkViewHolder) {
                 LinkViewHolder linkViewHolder = (LinkViewHolder) viewHolder;
                 linkViewHolder.onBind(mFileSection.getItems().get(position), mConversationFilesActivity);
             } else {

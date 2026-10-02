@@ -14,16 +14,13 @@
     <string name="application_authorization_microphone">Επιτρέψτε πρόσβαση στο μικρόφωνο από τις ρυθμίσεις συστήματος.</string>
     <string name="application_authorization_microphone_camera">Επιτρέψτε πρόσβαση στο μικρόφωνο και την κάμερα από τις ρυθμίσεις συστήματος.</string>
     <string name="application_authorization_title">Απουσία αναγκαίας άδειας πρόσβασης</string>
-    <string name="application_back">Πίσω</string>
     <string name="application_backup_restore">Επαναφορά του αντιγράφου ασφαλείας</string>
     <string name="application_backup_verify">Επαλήθευση του αντιγράφου ασφαλείας</string>
     <string name="application_camera">Κάμερα</string>
-    <string name="application_cancel">Ακύρωση</string>
     <string name="application_canceled_operation">Η ενέργεια ακυρώθηκε</string>
     <string name="application_checking_connection">Έλεγχος σύνδεσης</string>
     <string name="application_color">Χρώμα</string>
     <string name="application_configuration">Ρύθμιση</string>
-    <string name="application_confirm">Επιβεβαίωση</string>
     <string name="application_confirm_deletion">Επιβεβαίωση διαγραφής</string>
     <string name="application_connected">Η ασφαλής σύνδεση ενεργοποιήθηκε.</string>
     <string name="application_connection_status_no_network">Χωρίς πρόσβαση στο Internet.</string>
@@ -54,7 +51,6 @@
     <string name="application_group_limit_reached">Υπέρβαση μέγιστου αριθμού (%1$d) μελών ομάδας.</string>
     <string name="application_group_not_found">Έχετε αφαιρεθεί από την ομάδα</string>
     <string name="application_items_selected">Επιλέχθηκαν %1$d στοιχεία</string>
-    <string name="application_later">Αργότερα</string>
     <string name="application_low_usage_message">Προσοχή: αν δεν χρησιμοποιείτε συχνά την εφαρμογή, το λειτουργικό σύστημα μπορεί να μην την ενεργοποιήσει για ανταλλαγή μηνυμάτων!</string>
     <string name="application_migration_no_storage_space">Δεν υπάρχει αρκετός χώρος στη συσκευή για να ολοκληρωθεί η μεταφορά. Κλείστε την εφαρμογή, ελευθερώστε χώρο και επανεκκινήστε την για να ολοκληρωθεί η ενημέρωση.</string>
     <string name="application_migration_no_storage_space_message">Μία από τις δύο συσκευές δεν έχει αρκετό χώρο αποθήκευσης. Ελευθερώστε χώρο πριν επανεκκινήσετε τη μεταφορά.</string>
@@ -81,7 +77,6 @@
     <string name="application_not_connected">Ασφαλής σύνδεση σε εξέλιξη…</string>
     <string name="application_not_signed_in">Δεν υπάρχει σύνδεση με την υπηρεσία twinme</string>
     <string name="application_now">Τώρα</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">1 στοιχείο επιλέχθηκε</string>
     <string name="application_operation_failure">Αποτυχία ενέργειας</string>
     <string name="application_operation_irreversible">Αυτή η ενέργεια είναι μη αναστρέψιμη</string>
@@ -174,6 +169,7 @@
     <string name="account_migration_view_close_message">Κλείστε την εφαρμογή και επανεκκινήστε την για πρόσβαση στα νέα δεδομένα.</string>
     <string name="account_migration_view_confirm_cancel_message">Είστε βέβαιοι ότι θέλετε να ακυρώσετε τη μεταφορά;</string>
     <string name="account_migration_view_database">Βάση δεδομένων</string>
+    <string name="account_migration_view_display">Εμφάνιση</string>
     <string name="account_migration_view_finalizing">Οριστικοποίηση</string>
     <string name="account_migration_view_initializing">Αρχικοποίηση</string>
     <string name="account_migration_view_my_device">Η συσκευή μου</string>
@@ -217,6 +213,7 @@
     <string name="account_migration_scanner_view_step_1">Ανοίξτε την εφαρμογή στην άλλη συσκευή</string>
     <string name="account_migration_scanner_view_step_2">Μεταβείτε στο πλευρικό μενού</string>
     <string name="account_migration_scanner_view_step_3">Επιλέξτε \"Λογαριασμός\"</string>
+    <string name="account_migration_scanner_view_step_4">Έναρξη μεταφοράς λογαριασμού</string>
     <string name="account_migration_scanner_view_step_4_my_device">Ξεκινήστε τη μεταφορά από αυτήν τη συσκευή</string>
     <string name="account_migration_scanner_view_step_4_another_device">Ξεκινήστε τη μεταφορά από την άλλη συσκευή</string>
     <string name="account_migration_scanner_view_step_5_my_device">Σαρώστε τον κωδικό QR που εμφανίζεται στην άλλη συσκευή με αυτήν τη συσκευή</string>
@@ -657,7 +654,6 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Ο λογαριασμός σας έχει διαγραφεί και όλα τα συσχετισμένα δεδομένα έχουν καταστραφεί.&amp;lt;br /&amp;gt;
             Πρέπει να κλείσετε την εφαρμογή.</string>
-    <string name="deleted_account_view_warning">Προειδοποίηση‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Διαθέσιμο</string>
@@ -672,7 +668,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτή τη σχέση;</string>
-    <string name="edit_contact_view_message">Αυτή η επαφή δεν θα μπορεί πλέον να σας προσεγγίσει.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτόν τον κωδικό «Click‑to‑Call»;</string>
@@ -1298,7 +1293,6 @@
     <string name="spaces_view_title">Χώροι</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.</string>
     <string name="streaming_audio_view_no_music_message">Παρακαλώ μεταφέρετε αρχεία μουσικής στη συσκευή σας.</string>
     <string name="streaming_audio_view_no_music_title">Δεν βρέθηκε μουσική 🙁</string>
     <string name="streaming_audio_view_title">Κοινοποίηση πολυμέσων</string>

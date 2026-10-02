@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Permitir que la aplicación acceda al Micrófono en la configuración del sistema.</string>
     <string name="application_authorization_microphone_camera">Permitir que la aplicación acceda al Micrófono y la Cámara en la configuración del sistema.</string>
     <string name="application_authorization_title">Falta autorización de acceso</string>
-    <string name="application_back">Atrás</string>
     <string name="application_backup_restore">Restaurar la copia de seguridad</string>
     <string name="application_backup_verify">Verificar la copia de seguridad</string>
     <string name="application_camera">Cámara</string>
-    <string name="application_cancel">Cancelar</string>
     <string name="application_canceled_operation">Operación cancelada</string>
     <string name="application_checking_connection">Comprobando la conexión</string>
     <string name="application_color">Color</string>
     <string name="application_configuration">Configuración</string>
-    <string name="application_confirm">Confirmar</string>
     <string name="application_confirm_deletion">Confirme la eliminación</string>
     <string name="application_connected">Conexión segura habilitada.</string>
     <string name="application_connection_status_no_network">Sin acceso a Internet.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Número máximo (%1$d) de miembros del grupo superado.</string>
     <string name="application_group_not_found">Has sido eliminado del grupo.</string>
     <string name="application_items_selected">%1$d elementos seleccionados</string>
-    <string name="application_later">Más tarde</string>
     <string name="application_low_usage_message">Advertencia, si no usa la aplicación con la suficiente frecuencia, es posible que el sistema operativo no la active para intercambiar mensajes.</string>
     <string name="application_one_item_selected">1 elemento seleccionado</string>
     <string name="application_migration_no_storage_space">No hay suficiente espacio en su dispositivo para completar la migración. Cierre la aplicación, libere algo de espacio y reiníciela para completar la actualización.</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">Conexión segura en curso…</string>
     <string name="application_not_signed_in">No conectado al servicio twinme</string>
     <string name="application_now">Ahora</string>
-    <string name="application_ok">De acuerdo</string>
     <string name="application_operation_failure">Error en la operación</string>
     <string name="application_operation_irreversible">Esta operación es irreversible</string>
     <string name="application_permission_camera">Se requiere permiso para acceder a la cámara para tomar una nueva foto o video.</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">Cierre la aplicación y reiníciela para acceder a los nuevos datos.</string>
     <string name="account_migration_view_confirm_cancel_message">¿Estás seguro de que deseas cancelar la migración?</string>
     <string name="account_migration_view_database">Base de datos</string>
+    <string name="account_migration_view_display">Mostrar</string>
     <string name="account_migration_view_finalizing">Finalizando</string>
     <string name="account_migration_view_initializing">Inicializando</string>
     <string name="account_migration_view_my_device">Mi dispositivo</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">Abre la aplicación en el otro dispositivo.</string>
     <string name="account_migration_scanner_view_step_2">Ve al menú lateral.</string>
     <string name="account_migration_scanner_view_step_3">Selecciona \"Cuenta\".</string>
+    <string name="account_migration_scanner_view_step_4">Iniciar migración de cuenta</string>
     <string name="account_migration_scanner_view_step_4_my_device">Inicia la transferencia desde este dispositivo.</string>
     <string name="account_migration_scanner_view_step_4_another_device">Inicia la transferencia desde el otro dispositivo.</string>
     <string name="account_migration_scanner_view_step_5_my_device">Escanea el código QR que aparece en el otro dispositivo con este dispositivo.</string>
@@ -654,7 +651,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Escribe las letras \"OK\" a continuación para confirmar la eliminación de la cuenta.</string>
     <string name="deleted_account_view_delete">Eliminar cuenta</string>
-    <string name="deleted_account_view_warning">¡Atención‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Su cuenta ha sido eliminada y todos los datos asociados han sido destruidos.&lt;br /&gt;
@@ -673,7 +669,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">¿Estás seguro de que deseas eliminar esta relación?</string>
-    <string name="edit_contact_view_message">Este contacto ya no podrá comunicarse contigo.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">Eliminar este perfil anulará su código de invitación asociado. ¿Confirmar la eliminación?</string>
@@ -1299,7 +1294,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Se ha producido un error. Por favor inténtelo de nuevo.</string>
     <string name="streaming_audio_view_no_music_message">Compartir medios</string>
     <string name="streaming_audio_view_no_music_title">No se encontró música 🙁</string>
     <string name="streaming_audio_view_title">Compartir medios</string>
@@ -1378,5 +1372,4 @@
     <string name="welcome_view_step2_message">Comunicaciones "peer-to-peer" seguras: sin rastros en la nube.</string>
     <string name="welcome_view_step3_message">Sin número de teléfono, sin libreta de direcciones, sin identificación de usuario: usted elige cómo desea ser identificado en función de con quién se está comunicando.</string>
     <string name="welcome_view_terms_of_use">Condiciones de uso</string>
-
 </resources>

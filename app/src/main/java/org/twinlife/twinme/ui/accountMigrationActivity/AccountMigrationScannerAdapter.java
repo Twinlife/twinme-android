@@ -37,6 +37,14 @@ public class AccountMigrationScannerAdapter extends RecyclerView.Adapter<Recycle
         loadItems();
     }
 
+    public void reloadItems() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "reloadItems");
+        }
+
+        loadItems();
+        notifyItemRangeChanged(0, mItems.size());
+    }
 
     @Override
     public int getItemCount() {
@@ -80,12 +88,11 @@ public class AccountMigrationScannerAdapter extends RecyclerView.Adapter<Recycle
         mItems.add(new UIAccountMigrationItem(1, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_1)));
         mItems.add(new UIAccountMigrationItem(2, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_2)));
         mItems.add(new UIAccountMigrationItem(3, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_3)));
+        mItems.add(new UIAccountMigrationItem(4, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_4)));
 
-        if (!mAccountMigrationScannerActivity.isFromCurrentDevice()) {
-            mItems.add(new UIAccountMigrationItem(4, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_4_my_device)));
+        if (mAccountMigrationScannerActivity.getAccountMigrationScannerMode() == AccountMigrationScannerActivity.AccountMigrationScannerMode.CODE) {
             mItems.add(new UIAccountMigrationItem(5, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_5_another_device)));
         } else {
-            mItems.add(new UIAccountMigrationItem(4, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_4_another_device)));
             mItems.add(new UIAccountMigrationItem(5, mAccountMigrationScannerActivity.getString(R.string.account_migration_scanner_view_step_5_my_device)));
         }
     }

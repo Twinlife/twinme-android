@@ -66,7 +66,7 @@ public class FullscreenImageViewHolder extends RecyclerView.ViewHolder {
     public void onBind(@NonNull Item item) {
 
         final ConversationService.ImageDescriptor imageDescriptor;
-        if (item.isPeerItem()) {
+        if (item.isPeerItem() && item instanceof PeerImageItem) {
             final PeerImageItem peerImageItem = (PeerImageItem) item;
             imageDescriptor = peerImageItem.getImageDescriptor();
         } else {

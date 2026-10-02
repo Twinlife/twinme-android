@@ -14,16 +14,13 @@
     <string name="application_authorization_microphone">Разрешете достъпа до микрофона в системните настройки.</string>
     <string name="application_authorization_microphone_camera">Разрешете достъп до микрофон и камера в системните настройки.</string>
     <string name="application_authorization_title">Липсва разрешение за достъп</string>
-    <string name="application_back">Назад</string>
     <string name="application_backup_restore">Възстановяване на резервното копие</string>
     <string name="application_backup_verify">Проверка на резервното копие</string>
     <string name="application_camera">Камера</string>
-    <string name="application_cancel">Отказ</string>
     <string name="application_canceled_operation">Операцията е отменена</string>
     <string name="application_checking_connection">Проверка на връзката</string>
     <string name="application_color">Цвят</string>
     <string name="application_configuration">Конфигурация</string>
-    <string name="application_confirm">Потвърди</string>
     <string name="application_confirm_deletion">Потвърдете изтриването</string>
     <string name="application_connected">Сигурната връзка е активирана.</string>
     <string name="application_connection_status_no_network">Няма интернет достъп.</string>
@@ -54,7 +51,6 @@
     <string name="application_group_limit_reached">Максималният брой (%1$d) членове на групата е надвишен.</string>
     <string name="application_group_not_found">Бяхте премахнати от групата</string>
     <string name="application_items_selected">Избрани са %1$d елемента</string>
-    <string name="application_later">По-късно</string>
     <string name="application_low_usage_message">Внимание: ако не използвате приложението достатъчно често, ОС може да не го събуди, за да обменя съобщения!</string>
     <string name="application_migration_no_storage_space">Няма достатъчно място на устройството, за да завършите миграцията. Затворете приложението, освободете пространство и го стартирайте отново, за да приключите обновяването.</string>
     <string name="application_migration_no_storage_space_message">Едно от двете устройства няма достатъчно място за съхранение. Освободете място и стартирайте миграцията отново.</string>
@@ -81,7 +77,6 @@
     <string name="application_not_connected">Сигурната връзка се установява…</string>
     <string name="application_not_signed_in">Не сте свързани с услугата twinme</string>
     <string name="application_now">Сега</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">1 избран елемент</string>
     <string name="application_operation_failure">Неуспешна операция</string>
     <string name="application_operation_irreversible">Тази операция е необратима</string>
@@ -174,6 +169,7 @@
     <string name="account_migration_view_close_message">Затворете приложението и го стартирайте отново, за да получите достъп до новите данни.</string>
     <string name="account_migration_view_confirm_cancel_message">Сигурни ли сте, че искате да отмените миграцията?</string>
     <string name="account_migration_view_database">База данни</string>
+    <string name="account_migration_view_display">Дисплей</string>
     <string name="account_migration_view_finalizing">Финализиране</string>
     <string name="account_migration_view_initializing">Инициализиране</string>
     <string name="account_migration_view_my_device">Моето устройство</string>
@@ -217,6 +213,7 @@
     <string name="account_migration_scanner_view_step_1">Отворете приложението на другото устройство</string>
     <string name="account_migration_scanner_view_step_2">Отидете в страничното меню</string>
     <string name="account_migration_scanner_view_step_3">Изберете „Акаунт“</string>
+    <string name="account_migration_scanner_view_step_4">Стартиране на миграцията на акаунта</string>
     <string name="account_migration_scanner_view_step_4_my_device">Стартирайте прехвърлянето от това устройство</string>
     <string name="account_migration_scanner_view_step_4_another_device">Стартирайте прехвърлянето от другото устройство</string>
     <string name="account_migration_scanner_view_step_5_my_device">Сканирайте QR кода, показан на другото устройство, с това устройство</string>
@@ -651,7 +648,6 @@
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Вашият акаунт беше изтрит и всички свързани данни бяха унищожени.&lt;br /&gt;Трябва да затворите приложението.</string>
-    <string name="deleted_account_view_warning">Внимание‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Наличен</string>
@@ -666,7 +662,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Сигурни ли сте, че искате да изтриете тази връзка?</string>
-    <string name="edit_contact_view_message">Този контакт вече няма да може да ви достигне.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Сигурни ли сте, че искате да изтриете този „Click‑to‑Call“ код?</string>
@@ -1289,8 +1284,8 @@
     <string name="spaces_view_sample_friends">Приятели</string>
     <string name="spaces_view_sample_friends_name">Джони</string>
     <string name="spaces_view_title">Пространства</string>
+
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Възникна грешка. Моля, опитайте отново.</string>
     <string name="streaming_audio_view_no_music_message">Моля, прехвърлете музикални файлове на устройството си.</string>
     <string name="streaming_audio_view_no_music_title">Не е открита музика 🙁</string>
     <string name="streaming_audio_view_title">Споделяне на медии</string>

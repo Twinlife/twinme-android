@@ -108,7 +108,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         int viewType = getItemViewType(position);
 
-        if (viewType == SWITCH) {
+        if (viewType == SWITCH && viewHolder instanceof CapabilityViewHolder) {
             CapabilityViewHolder capabilityViewHolder = (CapabilityViewHolder) viewHolder;
 
             boolean isSelected = false;
@@ -139,7 +139,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mCapabilitiesActivity.onSettingChangeValue(switchTag, value);
             capabilityViewHolder.itemView.setOnClickListener(view -> mCapabilitiesActivity.showPremiumFeatureAlert(UIPremiumFeature.FeatureType.PRIVACY));
             capabilityViewHolder.onBind(title, switchTag, isEnabled, isSelected, onCheckedChangeListener);
-        } else if (viewType == SECTION) {
+        } else if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
 
             String title = "";
@@ -156,7 +156,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 hideSeparator = true;
             }
             sectionTitleViewHolder.onBind(title, hideSeparator, null, runnable);
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
 
             String text = "";
@@ -176,7 +176,7 @@ public class CapabilitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
             informationViewHolder.onBind(text, isSubTitle);
-        }  else if (viewType == VALUE) {
+        }  else if (viewType == VALUE && viewHolder instanceof SelectValueViewHolder) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(v -> mCapabilitiesActivity.onSelectControlCamera());
 

@@ -186,7 +186,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -348,7 +348,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.edit_profile_activity);
 
         setTitle(getString(R.string.application_name));

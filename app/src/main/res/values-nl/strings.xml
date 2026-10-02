@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Toestaan dat app toegang heeft tot Microfoon in systeeminstellingen.</string>
     <string name="application_authorization_microphone_camera">Toestaan dat app toegang heeft tot Microfoon en Camera in systeeminstellingen.</string>
     <string name="application_authorization_title">Ontbrekende toegangsautorisatie</string>
-    <string name="application_back">Terug</string>
     <string name="application_backup_restore">De back-up herstellen</string>
     <string name="application_backup_verify">De back-up controleren</string>
     <string name="application_camera">Camera</string>
-    <string name="application_cancel">Annuleren</string>
     <string name="application_canceled_operation">Geannuleerde werking</string>
     <string name="application_checking_connection">Verbinding controleren</string>
     <string name="application_color">Kleur</string>
     <string name="application_configuration">Configuratie</string>
-    <string name="application_confirm">Bevestigen</string>
     <string name="application_confirm_deletion">Bevestig het verwijderen</string>
     <string name="application_connected">Beveiligde verbinding ingeschakeld.</string>
     <string name="application_connection_status_no_network">Geen toegang tot het internet.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Maximum aantal (%1$d) van groepsleden overschreden.</string>
     <string name="application_group_not_found">Je bent verwijderd uit de groep</string>
     <string name="application_items_selected">%1$d items geselecteerd</string>
-    <string name="application_later">Later</string>
     <string name="application_low_usage_message">Waarschuwing, als je de applicatie niet vaak genoeg gebruikt, kan het zijn dat het besturingssysteem hem niet wakker maakt om berichten uit te wisselen!</string>
     <string name="application_one_item_selected">1 item geselecteerd</string>
     <string name="application_migration_no_storage_space">Er is onvoldoende ruimte op uw apparaat om de migratie te voltooien. Sluit de applicatie, maak wat ruimte vrij en start de app opnieuw om de update te voltooien.</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">Beveiligde verbinding bezig…</string>
     <string name="application_not_signed_in">Geen verbinding met de twinme dienst</string>
     <string name="application_now">Nu</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Werking mislukt</string>
     <string name="application_operation_irreversible">Deze bewerking is onomkeerbaar</string>
     <string name="application_permission_camera">Toestemming voor toegang tot de camera is vereist om een nieuwe foto of video te maken.</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">Sluit de applicatie en start deze opnieuw om toegang te krijgen tot de nieuwe gegevens.</string>
     <string name="account_migration_view_confirm_cancel_message">Weet u zeker dat u de migratie wilt annuleren?</string>
     <string name="account_migration_view_database">Database</string>
+    <string name="account_migration_view_display">Weergave</string>
     <string name="account_migration_view_finalizing">Afronden</string>
     <string name="account_migration_view_initializing">Initialiseren</string>
     <string name="account_migration_view_my_device">Mijn apparaat</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">Open de app op het andere apparaat</string>
     <string name="account_migration_scanner_view_step_2">Ga naar het zijmenu</string>
     <string name="account_migration_scanner_view_step_3">Selecteer \'Account\'</string>
+    <string name="account_migration_scanner_view_step_4">Accountmigratie starten</string>
     <string name="account_migration_scanner_view_step_4_my_device">Start de overdracht vanaf dit apparaat</string>
     <string name="account_migration_scanner_view_step_4_another_device">Start de overdracht vanaf het andere apparaat</string>
     <string name="account_migration_scanner_view_step_5_my_device">Scan de QR-code die op het andere apparaat wordt weergegeven met dit apparaat</string>
@@ -655,7 +652,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Typ de letters ’OK’ hieronder om het verwijderen van het account te bevestigen.</string>
     <string name="deleted_account_view_delete">Account verwijderen</string>
-    <string name="deleted_account_view_warning">Aandacht‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Uw account is verwijderd en alle bijbehorende gegevens zijn vernietigd.&lt;br /&gt;
@@ -674,7 +670,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Weet u zeker dat u deze relatie wilt verwijderen?</string>
-    <string name="edit_contact_view_message">Dit contact kan u niet meer bereiken.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">Als u dit profiel verwijdert, wordt de bijbehorende uitnodigingscode ongeldig. Bevestig verwijdering?</string>
@@ -1300,7 +1295,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Er is een fout opgetreden. Probeer het alstublieft nog een keer.</string>
     <string name="streaming_audio_view_no_music_message">Media delen</string>
     <string name="streaming_audio_view_no_music_title">Geen muziek gevonden 🙁</string>
     <string name="streaming_audio_view_title">Media delen</string>
@@ -1379,5 +1373,4 @@
     <string name="welcome_view_step2_message">Veilige "peer-to-peer"-communicatie: geen sporen in de cloud.</string>
     <string name="welcome_view_step3_message">Geen telefoonnummer, geen adresboek, geen user-id: u kiest zelf hoe u geïdentificeerd wilt worden op basis van met wie u communiceert.</string>
     <string name="welcome_view_terms_of_use">Gebruiksvoorwaarden</string>
-
 </resources>

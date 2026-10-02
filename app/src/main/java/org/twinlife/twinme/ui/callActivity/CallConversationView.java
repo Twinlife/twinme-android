@@ -326,7 +326,6 @@ public class CallConversationView extends PercentRelativeLayout {
         InputMethodManager inputMethodManager = (InputMethodManager) mEditText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
-            inputMethodManager.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
         }
     }
 

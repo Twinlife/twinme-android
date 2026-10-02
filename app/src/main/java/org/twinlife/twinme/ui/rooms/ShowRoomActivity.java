@@ -347,7 +347,7 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_room_activity);
 
         setToolBar(R.id.show_room_activity_tool_bar);
@@ -657,13 +657,14 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             Log.d(LOG_TAG, "onVideoClick");
         }
 
-        if (getTwinmeApplication().inCallInfo() == null && mRoom != null && mRoom.getCapabilities().hasVideo()) {
+        final boolean hasVideo = mRoom != null && mRoom.getCapabilities().hasVideo();
+        if (getTwinmeApplication().inCallInfo() == null && hasVideo) {
             Intent intent = new Intent(this, CallActivity.class);
             intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
             intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_VIDEO_CALL);
 
             startActivity(intent);
-        } else if (mRoom != null && !mRoom.getCapabilities().hasVideo()) {
+        } else if (mRoom != null && !hasVideo) {
             Toast.makeText(this, R.string.application_not_authorized_operation, Toast.LENGTH_SHORT).show();
         }
     }
@@ -673,13 +674,14 @@ public class ShowRoomActivity extends AbstractTwinmeActivity implements ShowRoom
             Log.d(LOG_TAG, "onAudioClick");
         }
 
-        if (getTwinmeApplication().inCallInfo() == null && mRoom != null && mRoom.getCapabilities().hasAudio()) {
+        final boolean hasAudio = mRoom != null && mRoom.getCapabilities().hasAudio();
+        if (getTwinmeApplication().inCallInfo() == null && hasAudio) {
             Intent intent = new Intent(this, CallActivity.class);
             intent.putExtra(Intents.INTENT_CONTACT_ID, mContactId.toString());
             intent.putExtra(Intents.INTENT_CALL_MODE, CallStatus.OUTGOING_CALL);
 
             startActivity(intent);
-        } else if (mRoom != null && !mRoom.getCapabilities().hasAudio()) {
+        } else if (mRoom != null && !hasAudio) {
             Toast.makeText(this, R.string.application_not_authorized_operation, Toast.LENGTH_SHORT).show();
         }
     }

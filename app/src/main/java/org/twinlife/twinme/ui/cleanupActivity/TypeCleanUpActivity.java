@@ -187,7 +187,7 @@ public class TypeCleanUpActivity extends AbstractTwinmeActivity implements Reset
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.type_cleanup_activity);
 
         setStatusBarColor();

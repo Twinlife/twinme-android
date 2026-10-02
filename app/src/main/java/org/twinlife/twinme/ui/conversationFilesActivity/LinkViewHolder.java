@@ -91,7 +91,7 @@ public class LinkViewHolder extends RecyclerView.ViewHolder {
 
         ConversationService.ObjectDescriptor objectDescriptor;
         String url;
-        if (item.isPeerItem()) {
+        if (item.isPeerItem() && item instanceof PeerLinkItem) {
             final PeerLinkItem peerLinkItem = (PeerLinkItem) item;
             objectDescriptor = peerLinkItem.getObjectDescriptor();
             url = peerLinkItem.getUrl().toString();

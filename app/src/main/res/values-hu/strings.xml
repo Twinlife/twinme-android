@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Engedélyezd a Mikrofon hozzáférést a rendszerbeállításokban.</string>
     <string name="application_authorization_microphone_camera">Engedélyezd a Mikrofon és a Kamera hozzáférését a rendszerbeállításokban.</string>
     <string name="application_authorization_title">Hiányzó hozzáférési engedély</string>
-    <string name="application_back">Vissza</string>
     <string name="application_backup_restore">A biztonsági mentés visszaállítása</string>
     <string name="application_backup_verify">A biztonsági mentés ellenőrzése</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Mégse</string>
     <string name="application_canceled_operation">Művelet megszakítva</string>
     <string name="application_checking_connection">Kapcsolat ellenőrzése</string>
     <string name="application_color">Szín</string>
     <string name="application_configuration">Konfiguráció</string>
-    <string name="application_confirm">Megerősítés</string>
     <string name="application_confirm_deletion">Törlés megerősítése</string>
     <string name="application_connected">Biztonságos kapcsolat engedélyezve.</string>
     <string name="application_connection_status_no_network">Nincs internetkapcsolat.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">A csoporttagok maximális száma (%1$d) túllépve.</string>
     <string name="application_group_not_found">Eltávolítottak a csoportból</string>
     <string name="application_items_selected">%1$d elem kiválasztva</string>
-    <string name="application_later">Később</string>
     <string name="application_low_usage_message">Figyelem, ha nem használod elég gyakran az alkalmazást, az operációs rendszer esetleg nem ébreszti fel üzenetküldéshez!</string>
     <string name="application_migration_no_storage_space">Nincs elegendő hely az eszközön a migráció befejezéséhez. Zárd be az alkalmazást, szabadíts fel helyet, majd indítsd újra az alkalmazást a frissítés befejezéséhez.</string>
     <string name="application_migration_no_storage_space_message">A két eszköz egyike nem rendelkezik elegendő tárhellyel. Szabadíts fel helyet azon az eszközön, mielőtt újraindítod a migrációt.</string>
@@ -82,7 +78,6 @@
     <string name="application_not_connected">Biztonságos kapcsolat létrehozása folyamatban…</string>
     <string name="application_not_signed_in">Nincs csatlakozva a twinme szolgáltatáshoz</string>
     <string name="application_now">Most</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">1 elem kiválasztva</string>
     <string name="application_operation_failure">Művelet sikertelen</string>
     <string name="application_operation_irreversible">Ez a művelet visszavonhatatlan</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">Zárd be az alkalmazást, majd indítsd újra az új adatok eléréséhez.</string>
     <string name="account_migration_view_confirm_cancel_message">Biztosan megszakítod a migrációt?</string>
     <string name="account_migration_view_database">Adatbázis</string>
+    <string name="account_migration_view_display">Megjelenítés</string>
     <string name="account_migration_view_finalizing">Lezárás</string>
     <string name="account_migration_view_initializing">Inicializálás</string>
     <string name="account_migration_view_my_device">Saját eszköz</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">Nyisd meg az alkalmazást a másik eszközön</string>
     <string name="account_migration_scanner_view_step_2">Menj az oldalsó menübe</string>
     <string name="account_migration_scanner_view_step_3">Válaszd a \"Fiók\" lehetőséget</string>
+    <string name="account_migration_scanner_view_step_4">Fiókmigrálás indítása</string>
     <string name="account_migration_scanner_view_step_4_my_device">Indítsd el az átvitelt erről az eszközről</string>
     <string name="account_migration_scanner_view_step_4_another_device">Indítsd el az átvitelt a másik eszközről</string>
     <string name="account_migration_scanner_view_step_5_my_device">Olvasd be a másik eszközön megjelenő QR-kódot ezzel az eszközzel</string>
@@ -656,7 +653,6 @@
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">A fiókod törlésre került, és minden kapcsolódó adat megsemmisült.<br />Be kell zárnod az alkalmazást.</string>
-    <string name="deleted_account_view_warning">Figyelmeztetés‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Elérhető</string>
@@ -671,7 +667,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Biztosan törölni szeretnéd ezt a kapcsolatot?</string>
-    <string name="edit_contact_view_message">Ez a kapcsolat többé nem fog tudni elérni téged.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Biztosan törlöd ezt a „Click-to-Call” kódot?</string>
@@ -1296,7 +1291,6 @@
     <string name="spaces_view_title">Space-ek</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Hiba történt. Kérjük, próbálja újra.</string>
     <string name="streaming_audio_view_no_music_message">Kérjük, másolja át a zenei fájlokat a készülékére.</string>
     <string name="streaming_audio_view_no_music_title">Nem található zene 🙁</string>
     <string name="streaming_audio_view_title">Média megosztása</string>

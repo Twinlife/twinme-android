@@ -64,11 +64,12 @@ public class StorageChartViewHolder extends RecyclerView.ViewHolder {
         UIStorage appStorage = null;
 
         for (UIStorage storage : storages) {
-            if (storage.getStorageType() == UIStorage.StorageType.USED) {
+            final UIStorage.StorageType storageType = storage.getStorageType();
+            if (storageType == UIStorage.StorageType.USED) {
                 usedStorage = storage;
-            } else if (storage.getStorageType() == UIStorage.StorageType.APP) {
+            } else if (storageType == UIStorage.StorageType.APP) {
                 appStorage = storage;
-            } else if (storage.getStorageType() == UIStorage.StorageType.TOTAL) {
+            } else if (storageType == UIStorage.StorageType.TOTAL) {
                 totalStorage = storage;
             }
         }

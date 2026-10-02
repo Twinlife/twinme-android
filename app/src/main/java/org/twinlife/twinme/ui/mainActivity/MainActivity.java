@@ -589,9 +589,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                         if (bundle != null) {
                             // Intent redirection from https://invite.<host> web site or from https://authenticate.<host>
                             // (this could contain a public key).
-                            twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.twincodeId");
+                            twincodeId = bundle.getString("org.twinlife.device.android.twinme.twincodeId");
                             if (twincodeId == null) {
-                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.authenticate");
+                                twincodeId = bundle.getString("org.twinlife.device.android.twinme.authenticate");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
@@ -600,7 +600,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 }
                             }
                             if (twincodeId == null) {
-                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.proxy");
+                                twincodeId = bundle.getString("org.twinlife.device.android.twinme.proxy");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
@@ -609,7 +609,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 }
                             }
                             if (twincodeId == null) {
-                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.migrationId");
+                                twincodeId = bundle.getString("org.twinlife.device.android.twinme.migrationId");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
@@ -651,7 +651,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                             // force the user to scan the QR-code: we must not recognize such account migration
                             // link because we don't know its origin.
                             Intent lIntent = new Intent();
-                            lIntent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, true);
+                            lIntent.putExtra(Intents.INTENT_MIGRATION_SCANNER_MODE, AccountMigrationScannerActivity.AccountMigrationScannerMode.SCAN);
                             lIntent.setClass(this, AccountMigrationScannerActivity.class);
                             startActivity(lIntent);
                         } else {
@@ -1038,7 +1038,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         super.updateColor();
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         if (!mShowWhatsNew && mUpdateStatusColor) {
             setStatusBarColor(Design.WHITE_COLOR);
@@ -1089,7 +1089,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         setContentView(R.layout.main_activity);
         setStatusBarColor(Design.WHITE_COLOR);
@@ -1477,7 +1477,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         int mainColor = Design.getMainStyle();
-        int itemColor = getResources().getColor(R.color.bottom_navigation_item_color);
+        int itemColor = Design.BOTTOM_NAVIGATION_ITEM_COLOR;
         ColorStateList colorStateList = new ColorStateList(
                 new int[][]{
                         new int[]{android.R.attr.state_checked},
@@ -1696,7 +1696,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         String message = String.format(getString(R.string.authentified_relation_view_certified_message), name);
         successAuthentifiedRelationView.setMessage(message);
-        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+        successAuthentifiedRelationView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -1930,7 +1930,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         defaultConfirmView.setMessage(getString(R.string.proxy_view_url));
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
         defaultConfirmView.setConfirmTitle(getString(R.string.proxy_view_enable));
-        defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+        defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -2068,7 +2068,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
             UIPremiumFeature uiPremiumFeature = new UIPremiumFeature(this, UIPremiumFeature.FeatureType.TRANSFER_CALL);
             onboardingDetailView.setPremiumFeature(uiPremiumFeature);
-            onboardingDetailView.setConfirmTitle(getString(R.string.application_ok));
+            onboardingDetailView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
             onboardingDetailView.setCancelTitle(getString(R.string.application_do_not_display));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

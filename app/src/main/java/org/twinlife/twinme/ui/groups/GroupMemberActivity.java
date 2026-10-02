@@ -421,7 +421,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             if (canInvite) {
                 inviteMember(mSelectedContact);
             } else {
-                showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
+                showAlertMessageView(R.id.group_member_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
             }
         }
 
@@ -439,7 +439,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
 
                 closeMenu(false);
             } else {
-                showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
+                showAlertMessageView(R.id.group_member_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
             }
         }
 
@@ -499,7 +499,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.group_member_activity);
 
         setStatusBarColor();
@@ -642,7 +642,7 @@ public class GroupMemberActivity extends AbstractGroupActivity implements Pendin
         }
 
         if (!mCanInvite) {
-            showAlertMessageView(R.id.group_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
+            showAlertMessageView(R.id.group_member_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), false, null);
         } else if (mGroupId != null) {
             Intent intent = new Intent();
             intent.setClass(this, AddGroupMemberActivity.class);

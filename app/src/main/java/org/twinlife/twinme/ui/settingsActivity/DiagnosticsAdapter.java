@@ -72,10 +72,10 @@ public class DiagnosticsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         int viewType = getItemViewType(position);
         UIDiagnosticItem item = mItems.get(position);
-        if (viewType == SECTION) {
+        if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getTitle(), false);
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && item instanceof UIDiagnosticSubsection && viewHolder instanceof DiagnosticViewHolder) {
             UIDiagnosticSubsection subSection = (UIDiagnosticSubsection) item;
             DiagnosticViewHolder diagnosticViewHolder = (DiagnosticViewHolder) viewHolder;
             diagnosticViewHolder.onBind(subSection, false);
@@ -112,10 +112,10 @@ public class DiagnosticsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (position != -1) {
             int viewType = getItemViewType(position);
             UIDiagnosticItem item = mItems.get(position);
-            if (viewType == SECTION) {
+            if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 sectionTitleViewHolder.onBind(item.getTitle(), false);
-            } else if (viewType == SUBSECTION) {
+            } else if (viewType == SUBSECTION && item instanceof UIDiagnosticSubsection && viewHolder instanceof DiagnosticViewHolder) {
                 UIDiagnosticSubsection subSection = (UIDiagnosticSubsection) item;
                 DiagnosticViewHolder diagnosticViewHolder = (DiagnosticViewHolder) viewHolder;
                 diagnosticViewHolder.onBind(subSection, false);
@@ -145,10 +145,10 @@ public class DiagnosticsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (position != -1) {
             int viewType = getItemViewType(position);
             UIDiagnosticItem item = mItems.get(position);
-            if (viewType == SECTION) {
+            if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 sectionTitleViewHolder.onBind(item.getTitle(), false);
-            } else if (viewType == SUBSECTION) {
+            } else if (viewType == SUBSECTION && item instanceof UIDiagnosticSubsection && viewHolder instanceof DiagnosticViewHolder) {
                 UIDiagnosticSubsection subSection = (UIDiagnosticSubsection) item;
                 DiagnosticViewHolder diagnosticViewHolder = (DiagnosticViewHolder) viewHolder;
                 diagnosticViewHolder.onBind(subSection, false);

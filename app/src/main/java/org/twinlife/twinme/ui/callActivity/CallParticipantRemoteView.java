@@ -666,7 +666,7 @@ class CallParticipantRemoteView extends AbstractCallParticipantView  {
             if (remoteRenderer != null) {
                 // Avoid removing the view from its parent when it is the good parent (otherwise, some flickering appears on slow devices).
                 final ViewParent parent = remoteRenderer.getParent();
-                if (parent != null && parent != mRemoteRenderLayout) {
+                if (parent instanceof ViewGroup && parent != mRemoteRenderLayout) {
                     ((ViewGroup) parent).removeView(remoteRenderer);
                 }
                 if (parent == null || parent != mRemoteRenderLayout) {

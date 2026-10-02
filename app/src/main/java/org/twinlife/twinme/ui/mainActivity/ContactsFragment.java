@@ -542,7 +542,7 @@ public class ContactsFragment extends TabbarFragment implements OnContactTouchLi
         }
 
         Intent intent = new Intent();
-        intent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, false);
+        intent.putExtra(Intents.INTENT_MIGRATION_SCANNER_MODE, AccountMigrationScannerActivity.AccountMigrationScannerMode.CODE);
         intent.setClass(mTwinmeActivity, AccountMigrationScannerActivity.class);
         startActivity(intent);
     }

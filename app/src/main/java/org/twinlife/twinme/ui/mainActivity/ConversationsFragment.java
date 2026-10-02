@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2025 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -694,13 +694,17 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                 if (uiContact != null) {
                     UIConversation uiConversation = uiContact.getUIConversation();
                     if (uiConversation == null || !uiConversation.getConversationId().equals(conversation.getId())) {
-                        if (!conversation.isGroup()) {
+                        if (conversation instanceof ConversationService.GroupConversation) {
+                            final ConversationService.GroupConversation group = (ConversationService.GroupConversation) conversation;
+                            final UIGroupConversation uiGroupConversation = new UIGroupConversation(conversation.getId(), uiContact, group.getState());
+
+                            updateGroupConversation(group, uiGroupConversation);
+                            uiConversation = uiGroupConversation;
+                        } else if (!conversation.isGroup()) {
                             uiConversation = new UIConversation(conversation.getId(), uiContact);
                         } else {
-                            ConversationService.GroupConversation group = (ConversationService.GroupConversation) conversation;
-
-                            uiConversation = new UIGroupConversation(conversation.getId(), uiContact, group.getState());
-                            updateGroupConversation(group, (UIGroupConversation) uiConversation);
+                            // A group member conversation also reports isGroup() but it is not displayed.
+                            continue;
                         }
                         uiContact.setUIConversation(uiConversation);
                     }
@@ -726,7 +730,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             UIContact uiContact = contacts.get(conversation.getContactId());
             if (conversation.isActive() && uiContact != null) {
                 UIConversation uiConversation = new UIConversation(conversation.getId(), uiContact);
-                if (conversation.isGroup()) {
+                if (conversation.isGroup() && conversation instanceof ConversationService.GroupConversation) {
                     ConversationService.GroupConversation group = (ConversationService.GroupConversation) conversation;
                     UIGroupConversation uiGroupConversation = new UIGroupConversation(conversation.getId(), uiContact, group.getState());
                     List<ConversationService.GroupMemberConversation> members = group.getGroupMembers(ConversationService.MemberFilter.JOINED_MEMBERS);
@@ -763,7 +767,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             UIContact uiContact = contacts.get(conversation.getContactId());
             if (conversation.isActive() && uiContact != null) {
                 UIConversation uiConversation = new UIConversation(conversation.getId(), uiContact);
-                if (conversation.isGroup()) {
+                if (conversation.isGroup() && conversation instanceof ConversationService.GroupConversation) {
                     ConversationService.GroupConversation group = (ConversationService.GroupConversation) conversation;
                     UIGroupConversation uiGroupConversation = new UIGroupConversation(conversation.getId(), uiContact, group.getState());
                     List<ConversationService.GroupMemberConversation> members = group.getGroupMembers(ConversationService.MemberFilter.JOINED_MEMBERS);
@@ -945,7 +949,8 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
 
         UIConversation uiConversation = mUIConversationsMap.get(conversation.getId());
         if (uiConversation != null) {
-            if ((uiConversation.getLastDescriptor() != null && uiConversation.getLastDescriptor().getDescriptorId().equals(descriptor.getDescriptorId())) || uiConversation.getLastDescriptor() == null || (uiConversation.getLastDescriptor() != null && uiConversation.getLastDescriptor().getCreatedTimestamp() < descriptor.getCreatedTimestamp() && descriptor.getType() == ConversationService.Descriptor.Type.CALL_DESCRIPTOR)) {
+            final Descriptor lastDescriptor = uiConversation.getLastDescriptor();
+            if (lastDescriptor == null || lastDescriptor.getDescriptorId().equals(descriptor.getDescriptorId()) || (lastDescriptor.getCreatedTimestamp() < descriptor.getCreatedTimestamp() && descriptor.getType() == ConversationService.Descriptor.Type.CALL_DESCRIPTOR)) {
                 uiConversation.setLastDescriptor(getContext(), descriptor);
                 updateUIConversation(uiConversation);
                 if (mMessagesSearchView != null && mMessagesSearchView.getQuery().toString().isEmpty()) {
@@ -993,6 +998,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
 
         mOnlyGroups = false;
         mConversationsRadioGroup.check(R.id.conversations_tool_bar_all_radio);
+        mUIConversationRecyclerView.scrollToPosition(0);
         updateColor();
     }
 
@@ -1041,7 +1047,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                     return;
                 }
 
-                if (uiConversation.getContact().isGroup()) {
+                if (uiConversation.getContact().isGroup() && uiConversation.getContact() instanceof Group) {
                     Group group = (Group) uiConversation.getContact();
                     group.putBoolean(property, value, mTwinmeActivity.getTwinmeContext());
                 } else {
@@ -1067,7 +1073,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         boolean notificationReaction;
         long silentExpiration;
 
-        if (uiConversation.getContact().isGroup()) {
+        if (uiConversation.getContact().isGroup() && uiConversation.getContact() instanceof Group) {
             Group group = (Group) uiConversation.getContact();
             silentMode = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
             notificationReaction = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_NOTIFICATION_REACTION, true);
@@ -1106,11 +1112,12 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
 
         mTwinmeActivity.hapticFeedback();
 
-        if (customTab.getCustomTabType() == UICustomTab.CustomTabType.ALL) {
+        final UICustomTab.CustomTabType customTabType = customTab.getCustomTabType();
+        if (customTabType == UICustomTab.CustomTabType.ALL) {
             mSearchFilter = SearchFilter.ALL;
-        } else if (customTab.getCustomTabType() == UICustomTab.CustomTabType.CONTACTS) {
+        } else if (customTabType == UICustomTab.CustomTabType.CONTACTS) {
             mSearchFilter = SearchFilter.CONTACTS;
-        } else if (customTab.getCustomTabType() == UICustomTab.CustomTabType.GROUPS) {
+        } else if (customTabType == UICustomTab.CustomTabType.GROUPS) {
             mSearchFilter = SearchFilter.GROUPS;
         } else {
             mSearchFilter = SearchFilter.MESSAGES;
@@ -1402,7 +1409,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         }
 
         Intent intent = new Intent();
-        intent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, false);
+        intent.putExtra(Intents.INTENT_MIGRATION_SCANNER_MODE, AccountMigrationScannerActivity.AccountMigrationScannerMode.CODE);
         intent.setClass(mTwinmeActivity, AccountMigrationScannerActivity.class);
         startActivity(intent);
     }
@@ -1641,13 +1648,17 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         if (uiContact != null) {
             UIConversation uiConversation = uiContact.getUIConversation();
             if (uiConversation == null || !uiConversation.getConversationId().equals(conversation.getId())) {
-                if (!conversation.isGroup()) {
+                if (conversation instanceof ConversationService.GroupConversation) {
+                    final ConversationService.GroupConversation group = (ConversationService.GroupConversation) conversation;
+                    final UIGroupConversation uiGroupConversation = new UIGroupConversation(conversation.getId(), uiContact, group.getState());
+
+                    updateGroupConversation(group, uiGroupConversation);
+                    uiConversation = uiGroupConversation;
+                } else if (!conversation.isGroup()) {
                     uiConversation = new UIConversation(conversation.getId(), uiContact);
                 } else {
-                    ConversationService.GroupConversation group = (ConversationService.GroupConversation) conversation;
-
-                    uiConversation = new UIGroupConversation(conversation.getId(), uiContact, group.getState());
-                    updateGroupConversation(group, (UIGroupConversation) uiConversation);
+                    // A group member conversation also reports isGroup() but it is not displayed.
+                    return;
                 }
                 uiContact.setUIConversation(uiConversation);
             }
@@ -1684,9 +1695,10 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
         // Put the conversation according to the highest access time.
         for (int i = 0; i < size; i++) {
             UIConversation c = mUIConversations.get(i);
-            if (lastMessageDate > c.getLastMessageDate()
-                    || (lastMessageDate == 0 && c.getLastMessageDate() == 0 && score > c.getUsageScore())
-                    || (lastMessageDate == 0 && c.getLastMessageDate() == 0 && score == c.getUsageScore() && mUIConversations.get(i).getName().compareToIgnoreCase(uiConversation.getName()) > 0)) {
+            final long cLastMessageDate = c.getLastMessageDate();
+            if (lastMessageDate > cLastMessageDate
+                    || (lastMessageDate == 0 && cLastMessageDate == 0 && score > c.getUsageScore())
+                    || (lastMessageDate == 0 && cLastMessageDate == 0 && score == c.getUsageScore() && c.getName().compareToIgnoreCase(uiConversation.getName()) > 0)) {
                 mUIConversations.add(i, uiConversation);
                 added = true;
                 break;
@@ -1715,7 +1727,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             inputMethodManager.hideSoftInputFromWindow(mMessagesSearchView.getWindowToken(), 0);
         }
 
-        if (uiConversation.getContact().isGroup()) {
+        if (uiConversation.getContact().isGroup() && uiConversation instanceof UIGroupConversation) {
             UIGroupConversation groupConversation = (UIGroupConversation) uiConversation;
             if (groupConversation.getGroupMemberCount() == 0) {
                 showContactActivity(uiConversation.getContact());
@@ -1756,7 +1768,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             }
 
             Spanned message = Html.fromHtml(getString(R.string.main_view_reset_conversation_message));
-            if (uiConversation.getContact().isGroup()) {
+            if (uiConversation.getContact().isGroup() && uiConversation.getContact() instanceof Group) {
                 Group group = (Group) uiConversation.getContact();
                 if (group.isOwner()) {
                     message = Html.fromHtml(getString(R.string.main_view_reset_group_conversation_admin_message));
@@ -1851,7 +1863,7 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
                     expiration = timeout.getDelay();
                 }
 
-                if (uiConversation.getContact().isGroup()) {
+                if (uiConversation.getContact().isGroup() && uiConversation.getContact() instanceof Group) {
                     Group group = (Group) uiConversation.getContact();
                     group.putBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, true, mTwinmeActivity.getTwinmeContext());
                     group.putLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, expiration, mTwinmeActivity.getTwinmeContext());
@@ -2095,11 +2107,13 @@ public class ConversationsFragment extends TabbarFragment implements ChatService
             paint.setTypeface(Design.FONT_MEDIUM34.typeface);
             paint.setTextSize(Design.FONT_MEDIUM34.size);
 
-            float nameHeight = Math.abs(paint.getFontMetrics().ascent - paint.getFontMetrics().descent);
+            Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+            float nameHeight = Math.abs(fontMetrics.ascent - fontMetrics.descent);
             paint.setTypeface(Design.FONT_REGULAR30.typeface);
             paint.setTextSize(Design.FONT_REGULAR30.size);
 
-            float messageHeight = Math.abs(paint.getFontMetrics().ascent - paint.getFontMetrics().descent);
+            fontMetrics = paint.getFontMetrics();
+            float messageHeight = Math.abs(fontMetrics.ascent - fontMetrics.descent);
 
             float textHeight = nameHeight + messageHeight * 2 + (DESIGN_CELL_MARGIN_LINE * Design.HEIGHT_RATIO);
             float avatarHeight = Design.AVATAR_HEIGHT;

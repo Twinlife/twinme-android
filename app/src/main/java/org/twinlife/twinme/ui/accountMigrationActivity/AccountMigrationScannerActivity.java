@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -28,7 +28,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,6 +62,8 @@ import org.twinlife.twinme.ui.Permission;
 import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.TwinmeApplication;
 import org.twinlife.twinme.ui.backupActivity.RestoreActivity;
+import org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView;
+import org.twinlife.twinme.ui.conversationFilesActivity.UICustomTab;
 import org.twinlife.twinme.util.TwinmeAttributes;
 import org.twinlife.twinme.utils.AbstractBottomSheetView;
 import org.twinlife.twinme.utils.DefaultConfirmView;
@@ -71,17 +72,25 @@ import org.twinlife.twinme.utils.OnboardingConfirmView;
 import org.twinlife.twinme.utils.RoundedView;
 import org.twinlife.twinme.utils.camera.CameraManager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
-public class AccountMigrationScannerActivity extends AbstractScannerActivity implements AccountMigrationScannerService.Observer {
+public class AccountMigrationScannerActivity extends AbstractScannerActivity implements AccountMigrationScannerService.Observer, CustomTabView.Observer {
     private static final String LOG_TAG = "AccountMigrationScan...";
     private static final boolean DEBUG = false;
+
+    public enum AccountMigrationScannerMode {
+        CODE,
+        SCAN
+    }
 
     private static final int SHOW_ONBOARDING = 3;
 
     private static final int REQUEST_GET_FILE = 1;
 
+    private static final float DESIGN_CUSTOM_TAB_VIEW_HEIGHT = 148f;
     private static final float DESIGN_ZOOM_MARGIN = 21f;
     private static final float DESIGN_SHARE_PADDING = 20f;
     private static final float DESIGN_SHARE_ICON_SIZE = 42f;
@@ -139,13 +148,16 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         }
     }
 
+    private View mRestoreView;
     private View mQrcodeContainerView;
     protected View mInfoScanView;
     protected TextView mInfoTextView;
     protected TextView mScanTitleView;
 
+    private AccountMigrationScannerAdapter mAccountMigrationScannerAdapter;
+    private AccountMigrationScannerMode mAccountMigrationScannerMode = AccountMigrationScannerMode.CODE;
+
     private boolean mHasRelations;
-    private boolean mFromCurrentDevice = false;
     private boolean mShowOnboarding = false;
 
     @Nullable
@@ -167,10 +179,9 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "onCreate: savedInstanceState=" + savedInstanceState);
         }
 
-        mFromCurrentDevice = getIntent().getBooleanExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, false);
-
         super.onCreate(savedInstanceState);
 
+        mAccountMigrationScannerMode = (AccountMigrationScannerMode) getIntent().getSerializableExtra(Intents.INTENT_MIGRATION_SCANNER_MODE);
         mAccountMigrationScannerService = new AccountMigrationScannerService(this, getTwinmeContext(), this);
         mHasRelations = false;
 
@@ -215,6 +226,11 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         }
 
         super.onApplyInsetsFinish();
+
+        if (mRestoreView != null) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mRestoreView.getLayoutParams();
+            marginLayoutParams.bottomMargin = getBarBottomInset();
+        }
 
         showFirstOnboarding();
     }
@@ -265,7 +281,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -284,6 +300,26 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         }
 
         openFileIntent();
+    }
+
+    //
+    // CustomTabView.Observer implements methods
+    //
+
+    @Override
+    public void onSelectCustomTab(UICustomTab customTab) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onSelectCustomTab: " + customTab);
+        }
+
+        if (customTab.getCustomTabType() == UICustomTab.CustomTabType.INVITE) {
+            mAccountMigrationScannerMode = AccountMigrationScannerMode.CODE;
+        } else if (customTab.getCustomTabType() == UICustomTab.CustomTabType.SCAN) {
+            mAccountMigrationScannerMode = AccountMigrationScannerMode.SCAN;
+        }
+
+        mAccountMigrationScannerAdapter.reloadItems();
+        updateViews();
     }
 
     //
@@ -371,12 +407,12 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         finish();
     }
 
-    public boolean isFromCurrentDevice() {
+    public AccountMigrationScannerMode getAccountMigrationScannerMode() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "isFromCurrentDevice: mFromCurrentDevice=" + mFromCurrentDevice);
+            Log.d(LOG_TAG, "getAccountMigrationScannerMode: mAccountMigrationScannerMode=" + mAccountMigrationScannerMode);
         }
 
-        return mFromCurrentDevice;
+        return mAccountMigrationScannerMode;
     }
 
     //
@@ -389,7 +425,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.account_migration_scanner_activity);
 
         setStatusBarColor();
@@ -404,14 +440,12 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         View backgroundView = findViewById(R.id.account_migration_scanner_activity_background);
         backgroundView.setBackgroundColor(Design.GREY_BACKGROUND_COLOR);
 
-        View containerView = findViewById(R.id.account_migration_scanner_activity_container_view);
+        initTabs();
 
-        ViewGroup.LayoutParams containerLayoutParams = containerView.getLayoutParams();
+        View containierView = findViewById(R.id.account_migration_scanner_activity_container_view);
+        ViewGroup.LayoutParams containerLayoutParams = containierView.getLayoutParams();
         containerLayoutParams.width = (int) (DESIGN_CONTAINER_WIDTH * Design.WIDTH_RATIO);
         containerLayoutParams.height = (int) (DESIGN_CONTAINER_HEIGHT * Design.HEIGHT_RATIO);
-
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) containerView.getLayoutParams();
-        marginLayoutParams.topMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
 
         mQrcodeContainerView = findViewById(R.id.account_migration_scanner_activity_qrcode_container_view);
         float radius = Design.POPUP_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -428,7 +462,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         zoomView.setVisibility(View.GONE);
         zoomView.setOnClickListener(v -> onQRCodeClick());
 
-        marginLayoutParams = (ViewGroup.MarginLayoutParams) zoomView.getLayoutParams();
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) zoomView.getLayoutParams();
         marginLayoutParams.topMargin = - (int) (DESIGN_ZOOM_MARGIN * Design.HEIGHT_RATIO);
 
         RoundedView zoomRoundedView = findViewById(R.id.account_migration_scanner_activity_zoom_rounded_view);
@@ -512,18 +546,18 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         marginLayoutParams.topMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.bottomMargin = (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
 
-        AccountMigrationScannerAdapter accountMigrationScannerAdapter = new AccountMigrationScannerAdapter(this);
+        mAccountMigrationScannerAdapter = new AccountMigrationScannerAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView recyclerView = findViewById(R.id.account_migration_scanner_activity_recycler_view);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(accountMigrationScannerAdapter);
+        recyclerView.setAdapter(mAccountMigrationScannerAdapter);
         recyclerView.setItemAnimator(null);
         recyclerView.setBackgroundColor(Color.TRANSPARENT);
 
-        View restoreView = findViewById(R.id.account_migration_scanner_activity_restore_view);
-        restoreView.setOnClickListener(v -> onRestoreClick());
+        mRestoreView = findViewById(R.id.account_migration_scanner_activity_restore_view);
+        mRestoreView.setOnClickListener(v -> onRestoreClick());
 
-        layoutParams = restoreView.getLayoutParams();
+        layoutParams = mRestoreView.getLayoutParams();
         layoutParams.height = Design.BUTTON_HEIGHT;
 
         TextView restoreTextView = findViewById(R.id.account_migration_scanner_activity_restore_text_view);
@@ -532,28 +566,24 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         restoreTextView.setTextColor(Design.getMainStyle());
         restoreTextView.setPaintFlags(restoreTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-        ViewTreeObserver viewTreeObserver = cardView.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if (DEBUG) {
-                    Log.d(LOG_TAG, "onGlobalLayout");
-                }
-
-                ViewTreeObserver viewTreeObserver = cardView.getViewTreeObserver();
-                viewTreeObserver.removeOnGlobalLayoutListener(this);
-
-                int bottom = cardView.getBottom() + (int) (DESIGN_VERTICAL_MARGIN * Design.HEIGHT_RATIO * 2) + Design.BUTTON_HEIGHT;
-                ViewGroup rootView = findViewById(R.id.account_migration_scanner_activity_layout);
-                if (bottom > rootView.getHeight()) {
-                    int diff = bottom - rootView.getHeight();
-                    ViewGroup.LayoutParams layoutParams = containerView.getLayoutParams();
-                    layoutParams.height = (int) (DESIGN_CONTAINER_HEIGHT * Design.HEIGHT_RATIO) - diff;
-                }
-            }
-        });
-
         updateQRCode();
+    }
+
+    private void initTabs() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "initTabs");
+        }
+
+        List<UICustomTab> customTabs = new ArrayList<>();
+        customTabs.add(new UICustomTab(getString(R.string.account_migration_view_display), UICustomTab.CustomTabType.INVITE, mAccountMigrationScannerMode == AccountMigrationScannerMode.CODE));
+        customTabs.add(new UICustomTab(getString(R.string.add_contact_view_scan_title), UICustomTab.CustomTabType.SCAN, mAccountMigrationScannerMode == AccountMigrationScannerMode.SCAN));
+
+        org.twinlife.twinme.ui.conversationFilesActivity.CustomTabView customTabView = findViewById(R.id.account_migration_scanner_activity_tab_view);
+
+        ViewGroup.LayoutParams layoutParams = customTabView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_CUSTOM_TAB_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        customTabView.initTabs(customTabs, this);
+        customTabView.updateColor(Design.GREY_BACKGROUND_COLOR, Design.CUSTOM_TAB_GREY_COLOR, Design.BLACK_COLOR, -1);
     }
 
     private void updateQRCode() {
@@ -573,7 +603,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "updateViews");
         }
 
-        if (mFromCurrentDevice) {
+        if (mAccountMigrationScannerMode == AccountMigrationScannerMode.SCAN) {
             mScanSelect = true;
             if (mCameraManager == null) {
                 mCameraManager = createCameraManager(mTextureView, this, CameraManager.Mode.QRCODE);
@@ -637,7 +667,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.account_migration_scanner_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -714,7 +744,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
             defaultConfirmView.setElevation(2);
-            defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+            defaultConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
             defaultConfirmView.setMessage(message);
 
             boolean darkMode = false;
@@ -724,7 +754,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
                 darkMode = true;
             }
 
-            defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
+            defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.account_migration, null));
             defaultConfirmView.setConfirmTitle(getString(R.string.account_migration_view_start));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -821,9 +851,9 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
             darkMode = true;
         }
 
-        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), darkMode ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration, null));
+        onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.account_migration, null));
         onboardingConfirmView.setMessage(getString(R.string.account_view_migration_message));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -885,7 +915,7 @@ public class AccountMigrationScannerActivity extends AbstractScannerActivity imp
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_backup, null));
         onboardingConfirmView.setMessage(message);
         onboardingConfirmView.setConfirmTitle(action);
-        onboardingConfirmView.setCancelTitle(getString(R.string.application_cancel));
+        onboardingConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

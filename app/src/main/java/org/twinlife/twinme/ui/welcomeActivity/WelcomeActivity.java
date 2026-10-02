@@ -199,7 +199,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.welcome_activity);
 
         setStatusBarColor(Design.WHITE_COLOR);
@@ -523,7 +523,7 @@ public class WelcomeActivity extends AbstractTwinmeActivity {
         }
 
         Intent intent = new Intent(this, AccountMigrationScannerActivity.class);
-        intent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, false);
+        intent.putExtra(Intents.INTENT_MIGRATION_SCANNER_MODE, AccountMigrationScannerActivity.AccountMigrationScannerMode.CODE);
         startActivity(intent);
     }
 

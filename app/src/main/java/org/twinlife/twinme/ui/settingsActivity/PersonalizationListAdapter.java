@@ -136,23 +136,23 @@ public class  PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVi
 
         int viewType = getItemViewType(position);
         UIPersonalizationItem item = mItems.get(position);
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             boolean hideSeparator = item.getType() == UIPersonalizationItem.PersonalizationType.TAB_SECTION || item.getType() == UIPersonalizationItem.PersonalizationType.SOUND_VIBRATION_SECTION;
             sectionTitleViewHolder.onBind(item.getTitle(), hideSeparator);
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && viewHolder instanceof SettingSectionViewHolder) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateConversationColor());
             settingSectionViewHolder.onBind(item.getTitle(), false);
-        } else if (viewType == COLOR) {
+        } else if (viewType == COLOR && viewHolder instanceof AppearanceColorViewHolder) {
             AppearanceColorViewHolder appearanceColorViewHolder = (AppearanceColorViewHolder) viewHolder;
             appearanceColorViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateMainColor());
             appearanceColorViewHolder.onBind(Design.getMainStyle(), mListActivity.getString(R.string.application_theme), null, false);
-        } else if (viewType == DISPLAY_MODE) {
+        } else if (viewType == DISPLAY_MODE && viewHolder instanceof DisplayModeViewHolder) {
             DisplayModeViewHolder displayModeViewHolder = (DisplayModeViewHolder) viewHolder;
             int displayMode = mListActivity.getTwinmeApplication().displayMode();
             displayModeViewHolder.onBind(displayMode);
-        } else if (viewType == PERSONALIZATION) {
+        } else if (viewType == PERSONALIZATION && viewHolder instanceof PersonalizationViewHolder) {
             PersonalizationViewHolder personalizationViewHolder = (PersonalizationViewHolder) viewHolder;
             boolean isSelected = false;
             String title = item.getTitle();
@@ -172,13 +172,13 @@ public class  PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVi
             isSelected = defaultFontSize == fontSize.ordinal();
             personalizationViewHolder.itemView.setOnClickListener(view -> mOnPersonalizationClickListener.onUpdateFontSize(fontSize));
             personalizationViewHolder.onBind(title, isSelected, Design.WHITE_COLOR);
-        } else if (viewType == DEFAULT_TAB) {
+        } else if (viewType == DEFAULT_TAB && viewHolder instanceof DefaultTabViewHolder) {
             DefaultTabViewHolder defaultTabViewHolder = (DefaultTabViewHolder) viewHolder;
             defaultTabViewHolder.onBind();
-        } else if (viewType == INFORMATION) {
+        } else if (viewType == INFORMATION && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(item.getTitle(), true);
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX && viewHolder instanceof SettingSwitchViewHolder) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
 
             String title = item.getTitle();
@@ -245,7 +245,7 @@ public class  PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVi
         if (position >= 0 && position < mItems.size()) {
             UIPersonalizationItem item = mItems.get(position);
             int viewType = getItemViewType(position);
-            if (viewType == TITLE) {
+            if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 sectionTitleViewHolder.onBind(item.getTitle(), false);
             }
@@ -273,7 +273,7 @@ public class  PersonalizationListAdapter extends RecyclerView.Adapter<RecyclerVi
         if (position >= 0 && position < mItems.size()) {
             int viewType = getItemViewType(position);
             UIPersonalizationItem item = mItems.get(position);
-            if (viewType == TITLE) {
+            if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 boolean hideSeparator = item.getType() == UIPersonalizationItem.PersonalizationType.TAB_SECTION || item.getType() == UIPersonalizationItem.PersonalizationType.SOUND_VIBRATION_SECTION;
                 sectionTitleViewHolder.onBind(item.getTitle(), hideSeparator);

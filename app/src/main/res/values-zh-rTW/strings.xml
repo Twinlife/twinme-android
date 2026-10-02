@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">允許應用在系統設置中訪問麥克風。</string>
     <string name="application_authorization_microphone_camera">允許應用在系統設置中訪問麥克風和相機。</string>
     <string name="application_authorization_title">缺少訪問權限</string>
-    <string name="application_back">返回</string>
     <string name="application_backup_restore">恢復備份</string>
     <string name="application_backup_verify">驗證備份</string>
     <string name="application_camera">相機</string>
-    <string name="application_cancel">取消</string>
     <string name="application_canceled_operation">已取消動作</string>
     <string name="application_checking_connection">檢查連接</string>
     <string name="application_color">顏色</string>
     <string name="application_configuration">组态</string>
-    <string name="application_confirm">確認</string>
     <string name="application_confirm_deletion">確認刪除</string>
     <string name="application_connected">安全連接已啟用。</string>
     <string name="application_connection_status_no_network">不能存取網路。</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">超出組成員的最大數量（%1$d）。</string>
     <string name="application_group_not_found">您已從群組中刪除</string>
     <string name="application_items_selected">已選擇 %1$d 個項目</string>
-    <string name="application_later">後來</string>
     <string name="application_low_usage_message">警告，如果您不經常使用該應用程序，操作系統可能不會喚醒它來交換消息！</string>
     <string name="application_one_item_selected">已選擇 1 項</string>
     <string name="application_migration_no_storage_space">您的裝置上沒有足夠的空間來完成遷移。 關閉應用程序，釋放一些空間，然後重新啟動應用程式以完成更新。</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">正在進行安全連接......</string>
     <string name="application_not_signed_in">沒有連線到twinme服務</string>
     <string name="application_now">現在</string>
-    <string name="application_ok">確定</string>
     <string name="application_operation_failure">動作失敗</string>
     <string name="application_operation_irreversible">此操作不可逆</string>
     <string name="application_permission_camera">需要使用相機的權限才能拍攝新照片或視頻。</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">關閉應用程序，然後重新啟動它以訪問新數據。</string>
     <string name="account_migration_view_confirm_cancel_message">您確定要取消遷移嗎？</string>
     <string name="account_migration_view_database">資料庫</string>
+    <string name="account_migration_view_display">顯示</string>
     <string name="account_migration_view_finalizing">正在完成</string>
     <string name="account_migration_view_initializing">正在初始化</string>
     <string name="account_migration_view_my_device">我的設備</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">在另一台裝置上開啟應用</string>
     <string name="account_migration_scanner_view_step_2">前往側邊菜單</string>
     <string name="account_migration_scanner_view_step_3">選擇“帳號”</string>
+    <string name="account_migration_scanner_view_step_4">啟動帳戶遷移</string>
     <string name="account_migration_scanner_view_step_4_my_device">從此裝置開始傳輸</string>
     <string name="account_migration_scanner_view_step_4_another_device">從另一台裝置開始傳輸</string>
     <string name="account_migration_scanner_view_step_5_my_device">使用此裝置掃描另一台裝置上顯示的二維碼</string>
@@ -654,7 +651,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">在下面輸入字母“OK”以確認刪除帳戶。</string>
     <string name="deleted_account_view_delete">刪除帳戶</string>
-    <string name="deleted_account_view_warning">注意力！</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">您的帳戶已被刪除，所有相關數據已被銷毀。&lt;br /&gt;
@@ -673,7 +669,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">您確定要刪除此關係嗎？</string>
-    <string name="edit_contact_view_message">此聯絡人將無法再聯絡您。</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">刪除此配置文件將使其關聯的邀請代碼失效。 確認刪除？</string>
@@ -1299,7 +1294,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">發生了錯誤。請再試一次。</string>
     <string name="streaming_audio_view_no_music_message">媒體分享</string>
     <string name="streaming_audio_view_no_music_title">找不到音樂🙁</string>
     <string name="streaming_audio_view_title">媒體分享</string>
@@ -1378,5 +1372,4 @@
     <string name="welcome_view_step2_message">安全的“點對點”通信：雲中無踪跡。</string>
     <string name="welcome_view_step3_message">沒有電話號碼、沒有地址簿、沒有用戶 ID：您可以根據與誰通信來選擇您希望被識別的方式。</string>
     <string name="welcome_view_terms_of_use">使用條款</string>
-
 </resources>

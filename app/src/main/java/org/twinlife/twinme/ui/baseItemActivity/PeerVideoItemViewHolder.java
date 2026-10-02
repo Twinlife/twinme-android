@@ -34,6 +34,7 @@ import org.twinlife.twinlife.ConversationService.VideoDescriptor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.EphemeralView;
 import org.twinlife.twinme.utils.RoundedImageView;
+import org.twinlife.twinme.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,13 +42,20 @@ import java.util.List;
 
 class PeerVideoItemViewHolder extends PeerItemViewHolder {
 
+    private static final int DURATION_VIEW_COLOR = Color.argb(127, 0, 0, 0);
     private static final float DESIGN_EPHEMERAL_HEIGHT = 28f;
     private static final float DESIGN_EPHEMERAL_LEFT_MARGIN = 4f;
     private static final float DESIGN_EPHEMERAL_TOP_MARGIN = 4f;
     private static final float DESIGN_EPHEMERAL_BOTTOM_MARGIN = 4f;
     private static final float DESIGN_BOTTOM_VIEW_HEIGHT = 60f;
+    private static final int DESIGN_DURATION_HEIGHT = 36;
+    private static final int DESIGN_DURATION_LEFT_MARGIN = 18;
+    private static final int DESIGN_DURATION_BOTTOM_MARGIN = 16;
+    private static final int DESIGN_DURATION_TEXT_MARGIN = 12;
 
     private final RoundedImageView mImageView;
+    private final View mDurationView;
+    private final TextView mDurationTextView;
     private final View mReplyView;
     private final TextView mReplyTextView;
     private final View mReplyToImageContentView;
@@ -83,9 +91,32 @@ class PeerVideoItemViewHolder extends PeerItemViewHolder {
         }
         mImageView.setLayoutParams(marginLayoutParams);
 
+        mDurationView = view.findViewById(R.id.base_item_activity_peer_video_item_duration_view);
+
+        ViewGroup.LayoutParams layoutParams = mDurationView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_DURATION_HEIGHT * Design.HEIGHT_RATIO);
+
+        GradientDrawable durationDrawable = new GradientDrawable();
+        durationDrawable.setShape(GradientDrawable.RECTANGLE);
+        durationDrawable.setColor(DURATION_VIEW_COLOR);
+        durationDrawable.setCornerRadius((int) (DESIGN_DURATION_HEIGHT * Design.HEIGHT_RATIO * 0.5));
+        mDurationView.setBackground(durationDrawable);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDurationView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_DURATION_LEFT_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_DURATION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+
+        mDurationTextView = view.findViewById(R.id.base_item_activity_peer_video_item_duration_text_view);
+        mDurationTextView.setTextColor(Color.WHITE);
+        Design.updateTextFont(mDurationTextView, Design.FONT_REGULAR24);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDurationTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_DURATION_TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_DURATION_TEXT_MARGIN * Design.WIDTH_RATIO);
+
         mBottomView = view.findViewById(R.id.base_item_activity_peer_video_item_bottom_view);
 
-        ViewGroup.LayoutParams layoutParams = mBottomView.getLayoutParams();
+        layoutParams = mBottomView.getLayoutParams();
         layoutParams.height = (int) (DESIGN_BOTTOM_VIEW_HEIGHT * Design.HEIGHT_RATIO);
 
         mBottomGradientDrawable = new GradientDrawable();
@@ -203,6 +234,8 @@ class PeerVideoItemViewHolder extends PeerItemViewHolder {
 
         setImage(mImageView, videoDescriptor);
 
+        mDurationTextView.setText(Utils.formatInterval((int) videoDescriptor.getDuration(), "mm:ss"));
+
         // Compute the corner radii only once!
         final float[] cornerRadii = getCornerRadii();
 
@@ -217,6 +250,7 @@ class PeerVideoItemViewHolder extends PeerItemViewHolder {
             mBottomView.setVisibility(View.VISIBLE);
             mProgressBar.setVisibility(View.VISIBLE);
             mProgressTextView.setVisibility(View.VISIBLE);
+            mDurationTextView.setVisibility(View.GONE);
             mEphemeralView.setVisibility(View.GONE);
             int progress = (int) (videoDescriptor.getEnd() * 100 / videoDescriptor.getLength());
             mProgressBar.setProgress(progress);
@@ -224,6 +258,7 @@ class PeerVideoItemViewHolder extends PeerItemViewHolder {
             mProgressTextView.setText(progessValue);
         } else {
             mBottomView.setVisibility(View.GONE);
+            mDurationTextView.setVisibility(View.VISIBLE);
         }
 
         mReplyGradientDrawable.setCornerRadii(cornerRadii);
@@ -289,6 +324,7 @@ class PeerVideoItemViewHolder extends PeerItemViewHolder {
             mProgressBar.setVisibility(View.GONE);
             mProgressTextView.setVisibility(View.GONE);
             mEphemeralView.setVisibility(View.VISIBLE);
+            mDurationView.setVisibility(View.GONE);
             startEphemeralAnimation();
         }
 

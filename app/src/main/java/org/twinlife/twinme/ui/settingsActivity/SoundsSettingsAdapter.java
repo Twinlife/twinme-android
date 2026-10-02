@@ -101,7 +101,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             String title;
             if (position == SECTION_NOTIFICATION_SOUND) {
@@ -114,7 +114,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 title = mListActivity.getString(R.string.settings_view_video_call_category_title);
             }
             sectionTitleViewHolder.onBind(title, false);
-        } else if (viewType == SETTING) {
+        } else if (viewType == SETTING && viewHolder instanceof SettingViewHolder) {
             SettingViewHolder settingsViewHolder = (SettingViewHolder) viewHolder;
 
             UISetting<?> uiSetting = null;
@@ -130,7 +130,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             if (uiSetting != null) {
                 settingsViewHolder.onBind(uiSetting);
             }
-        } else if (viewType == RINGTONE) {
+        } else if (viewType == RINGTONE && viewHolder instanceof RingtoneViewHolder) {
             RingtoneViewHolder ringtoneViewHolder = (RingtoneViewHolder) viewHolder;
 
             UISetting<String> uiSetting = null;
@@ -145,7 +145,7 @@ public class SoundsSettingsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             if (uiSetting != null) {
                 ringtoneViewHolder.onBind(uiSetting, getRingtoneName(uiSetting));
             }
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX && viewHolder instanceof SettingSwitchViewHolder) {
             SettingSwitchViewHolder settingsSwitchViewHolder = (SettingSwitchViewHolder) viewHolder;
 
             UISetting<Boolean> uiSetting;

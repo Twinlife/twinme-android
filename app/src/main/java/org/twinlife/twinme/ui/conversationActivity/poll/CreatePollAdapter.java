@@ -89,10 +89,11 @@ public class CreatePollAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             Log.d(LOG_TAG, "getItemCount");
         }
 
-        if (mCreatePollActivity.getPollChoices().size() < CreatePollActivity.LIMIT_CHOICE) {
-            ITEM_COUNT =  mCreatePollActivity.getPollChoices().size() + 2;
+        final int choiceCount = mCreatePollActivity.getPollChoices().size();
+        if (choiceCount < CreatePollActivity.LIMIT_CHOICE) {
+            ITEM_COUNT =  choiceCount + 2;
         } else {
-            ITEM_COUNT =  mCreatePollActivity.getPollChoices().size() + 1;
+            ITEM_COUNT =  choiceCount + 1;
         }
 
         return ITEM_COUNT;
@@ -121,16 +122,17 @@ public class CreatePollAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         int viewType = getItemViewType(position);
 
-        if (viewType == HEADER) {
+        if (viewType == HEADER && viewHolder instanceof PollHeaderViewHolder) {
             PollHeaderViewHolder headerViewHolder = (PollHeaderViewHolder) viewHolder;
             headerViewHolder.onBind(mCreatePollActivity.getPollQuestion(), mCreatePollActivity.allowMultipleChoice());
-        } else if (viewType == CHOICE) {
+        } else if (viewType == CHOICE && viewHolder instanceof PollAddChoiceViewHolder) {
             PollAddChoiceViewHolder addChoiceViewHolder = (PollAddChoiceViewHolder) viewHolder;
             UIPollChoice pollChoice = mCreatePollActivity.getPollChoices().get(position - 1);
             addChoiceViewHolder.onBind(pollChoice);
-        } else if (viewType == FOOTER) {
+        } else if (viewType == FOOTER && viewHolder instanceof PollFooterViewHolder) {
             PollFooterViewHolder footerViewHolder = (PollFooterViewHolder) viewHolder;
-            boolean canAddChoice = mCreatePollActivity.getPollChoices().size() < CreatePollActivity.LIMIT_CHOICE && mCreatePollActivity.countValidChoices() == mCreatePollActivity.getPollChoices().size();
+            final int choiceCount = mCreatePollActivity.getPollChoices().size();
+            boolean canAddChoice = choiceCount < CreatePollActivity.LIMIT_CHOICE && mCreatePollActivity.countValidChoices() == choiceCount;
             footerViewHolder.onBind(canAddChoice);
         }
     }

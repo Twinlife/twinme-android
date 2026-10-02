@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">السماح للتطبيق بالدخول إلى الميكروفون في إعدادات النظام.</string>
     <string name="application_authorization_microphone_camera">السماح للتطبيق بالوصول إلى الميكروفون والكاميرا في إعدادات النظام.</string>
     <string name="application_authorization_title">إذن الوصول المفقود</string>
-    <string name="application_back">عودة</string>
     <string name="application_backup_restore">استعادة النسخة الاحتياطية</string>
     <string name="application_backup_verify">التحقق من النسخة الاحتياطية</string>
     <string name="application_camera">الكاميرا</string>
-    <string name="application_cancel">إلغاء</string>
     <string name="application_canceled_operation">عملية إلغاء</string>
     <string name="application_checking_connection">التحقق من الاتصال</string>
     <string name="application_color">اللون</string>
     <string name="application_configuration">ترتيب</string>
-    <string name="application_confirm">يتأكد</string>
     <string name="application_confirm_deletion">أكِّد الحذف</string>
     <string name="application_connected">تم تفعيل الاتصال الآمن.</string>
     <string name="application_connection_status_no_network">لا يوجد اتصال بالإنترنت.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">تم تجاوز العدد الأقصى (%1$d) من أعضاء المجموعة.</string>
     <string name="application_group_not_found">لقد تمت إزالتك من المجموعة</string>
     <string name="application_items_selected">تم تحديد%1$d من العناصر</string>
-    <string name="application_later">فيما بعد</string>
     <string name="application_low_usage_message">تحذير ، إذا كنت لا تستخدم التطبيق كثيرًا بما يكفي ، فقد لا يقوم نظام التشغيل بتنبيهه لتبادل الرسائل!</string>
     <string name="application_one_item_selected">تم تحديد عنصر واحد</string>
     <string name="application_migration_no_storage_space">لا توجد مساحة كافية على جهازك لإكمال عملية الترحيل. أغلق التطبيق، وقم بتحرير بعض المساحة، ثم أعد تشغيل التطبيق لإكمال التحديث.</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">الاتصال الآمن قيد التقدم…</string>
     <string name="application_not_signed_in">غير متصل بخدمات twinme</string>
     <string name="application_now">الآن</string>
-    <string name="application_ok">حسنا</string>
     <string name="application_operation_failure">فشلت العملية</string>
     <string name="application_operation_irreversible">هذه العملية لا رجعة فيها</string>
     <string name="application_permission_camera">مطلوب إذن للوصول إلى الكاميرا لالتقاط صورة جديدة أو مقطع فيديو.</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">أغلق التطبيق وأعد تشغيله للوصول إلى البيانات الجديدة.</string>
     <string name="account_migration_view_confirm_cancel_message">هل أنت متأكد أنك تريد إلغاء الترحيل؟</string>
     <string name="account_migration_view_database">قاعدة البيانات</string>
+    <string name="account_migration_view_display">عرض</string>
     <string name="account_migration_view_finalizing">جارٍ الإنهاء</string>
     <string name="account_migration_view_initializing">جارٍ التهيئة</string>
     <string name="account_migration_view_my_device">جهازي</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">افتح التطبيق على الجهاز الآخر.</string>
     <string name="account_migration_scanner_view_step_2">انتقل إلى القائمة الجانبية.</string>
     <string name="account_migration_scanner_view_step_3">اختر \"الحساب\".</string>
+    <string name="account_migration_scanner_view_step_4">إطلاق عملية نقل الحساب</string>
     <string name="account_migration_scanner_view_step_4_my_device">ابدأ النقل من هذا الجهاز.</string>
     <string name="account_migration_scanner_view_step_4_another_device">ابدأ النقل من الجهاز الآخر.</string>
     <string name="account_migration_scanner_view_step_5_my_device">امسح رمز الاستجابة السريعة (QR) المعروض على الجهاز الآخر باستخدام هذا الجهاز.</string>
@@ -654,7 +651,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">اكتب الأحرف \"OK\" أدناه لتأكيد حذف الحساب.</string>
     <string name="deleted_account_view_delete">حذف الحساب</string>
-    <string name="deleted_account_view_warning">انتباه ‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">تم حذف حسابك وتم إتلاف جميع البيانات المرتبطة به.&lt;br /&gt;
@@ -673,7 +669,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">هل أنت متأكد من أنك تريد حذف هذه العلاقة؟</string>
-    <string name="edit_contact_view_message">لن تتمكن جهة الاتصال هذه من الوصول إليك بعد الآن.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">سيؤدي حذف ملف التعريف هذا إلى إبطال رمز الدعوة المرتبط به. هل تريد تأكيد الحذف؟</string>
@@ -1299,7 +1294,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">حدث خطأ. يرجى المحاولة مرة أخرى.</string>
     <string name="streaming_audio_view_no_music_message">تقاسم وسائل الاعلام</string>
     <string name="streaming_audio_view_no_music_title">لم يتم العثور على موسيقى 🙁</string>
     <string name="streaming_audio_view_title">تقاسم وسائل الاعلام</string>
@@ -1378,5 +1372,4 @@
     <string name="welcome_view_step2_message">اتصالات آمنة "من نظير إلى نظير ": لا توجد آثار في السحابة.</string>
     <string name="welcome_view_step3_message">لا يوجد رقم هاتف أو دفتر عناوين أو معرف مستخدم: يمكنك اختيار الطريقة التي تريد التعرف عليها بناءً على من تتواصل معه.</string>
     <string name="welcome_view_terms_of_use">شروط الاستعمال</string>
-
 </resources>

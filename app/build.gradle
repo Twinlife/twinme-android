@@ -28,8 +28,8 @@ android {
         applicationId "org.twinlife.device.android.twinme"
         minSdkVersion libs.versions.min.sdk.version.get() as int
         targetSdkVersion libs.versions.target.sdk.version.get() as int
-        versionCode 526
-        versionName "35.2.1"
+        versionCode 527
+        versionName "35.3"
         manifestPlaceholders.domainName = "twin.me"
         manifestPlaceholders.backupExtension = "twmbckp"
 

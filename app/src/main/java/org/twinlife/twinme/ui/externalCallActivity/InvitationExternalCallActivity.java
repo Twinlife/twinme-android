@@ -53,7 +53,7 @@ public class InvitationExternalCallActivity extends AbstractInvitationCallReceiv
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.invitation_external_call_activity);
 
         setStatusBarColor(DESIGN_NAVIGATION_BAR_COLOR);

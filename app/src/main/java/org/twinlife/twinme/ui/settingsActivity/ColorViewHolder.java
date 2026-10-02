@@ -54,7 +54,7 @@ public class ColorViewHolder extends RecyclerView.ViewHolder {
         mSeparatorView.setBackgroundColor(Color.argb(255, 35, 42, 69));
     }
 
-    public void onBind(UICustomColor customColor) {
+    public void onBind(org.twinlife.twinme.skin.UICustomColor customColor) {
 
         if (customColor.getColor() != null) {
             mContentColorView.setColor(Color.parseColor(customColor.getColor()));

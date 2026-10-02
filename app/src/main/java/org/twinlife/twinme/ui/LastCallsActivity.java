@@ -661,15 +661,17 @@ public class LastCallsActivity extends AbstractTwinmeActivity implements CallsSe
             Log.d(LOG_TAG, "onUICallClick: uiCall=" + uiCall);
         }
 
-        if (uiCall != null && (mUIContact.getContact().getType() == Originator.Type.CONTACT || mUIContact.getContact().getType() == Originator.Type.GROUP)) {
+        final Originator originator = mUIContact.getContact();
+        if (uiCall != null && (originator.getType() == Originator.Type.CONTACT || originator.getType() == Originator.Type.GROUP)) {
             CallDescriptor callDescriptor = uiCall.getLastCallDescriptor();
+            final boolean isVideo = callDescriptor.isVideo();
 
-            if (mUIContact.getContact().getType() == Originator.Type.CONTACT) {
-                Contact contact = (Contact) mUIContact.getContact();
-                if ((callDescriptor.isVideo() && contact.getCapabilities().hasVideo()) || (!callDescriptor.isVideo() && contact.getCapabilities().hasAudio())) {
-                    showCallAgainConfirmView(mUIContact, false, callDescriptor.isVideo());
+            if (originator.getType() == Originator.Type.CONTACT && originator instanceof Contact) {
+                Contact contact = (Contact) originator;
+                if ((isVideo && contact.getCapabilities().hasVideo()) || (!isVideo && contact.getCapabilities().hasAudio())) {
+                    showCallAgainConfirmView(mUIContact, false, isVideo);
                 }
-            } else if (mUIContact.getContact().getType() == Originator.Type.GROUP) {
+            } else if (originator.getType() == Originator.Type.GROUP) {
                 ViewGroup viewGroup = findViewById(R.id.last_calls_activity_layout);
 
                 PremiumFeatureConfirmView premiumFeatureConfirmView = new PremiumFeatureConfirmView(this, null);

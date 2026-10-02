@@ -160,9 +160,8 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
             scannerAlpha = 0;
             mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-            Resources resources = getResources();
-            mLaserColor = resources.getColor(R.color.qrcode_laser);
-            mResultPointColor = resources.getColor(R.color.qrcode_result_points);
+            mLaserColor = Design.SCAN_LASER_COLOR;
+            mResultPointColor = Design.SCAN_RESULT_POINT_COLOR;
         }
 
         public void setDrawCorner(boolean drawCorner) {
@@ -916,7 +915,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
             if (storageReadAccessGranted) {
                 openGallery();
             } else {
-                message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+                message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
                 });
             }
         } else if (mDeferredSelectBackup) {
@@ -924,7 +923,7 @@ public abstract class AbstractScannerActivity extends AbstractTwinmeActivity imp
             if (storageReadAccessGranted) {
                 selectBackup();
             } else {
-                message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+                message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
                 });
             }
         }

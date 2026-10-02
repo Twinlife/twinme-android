@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Erlauben Sie der App den Zugriff auf das Mikrofon in den Systemeinstellungen.</string>
     <string name="application_authorization_microphone_camera">Erlauben Sie der App den Zugriff auf Mikrofon und Kamera in den Systemeinstellungen.</string>
     <string name="application_authorization_title">Fehlende Zugriffsberechtigung</string>
-    <string name="application_back">Zurück</string>
     <string name="application_backup_restore">Sicherung wiederherstellen</string>
     <string name="application_backup_verify">Sicherung überprüfen</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Abbrechen</string>
     <string name="application_canceled_operation">Abgebrochener Vorgang</string>
     <string name="application_checking_connection">Verbindung wird geprüft</string>
     <string name="application_color">Farbe</string>
     <string name="application_configuration">Konfiguration</string>
-    <string name="application_confirm">Bestätigen</string>
     <string name="application_confirm_deletion">Löschung bestätigen</string>
     <string name="application_connected">Sichere Verbindung aktiviert.</string>
     <string name="application_connection_status_no_network">Kein Internetzugang.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Maximale Anzahl (%1$d) der Gruppenmitglieder überschritten.</string>
     <string name="application_group_not_found">Sie wurden aus der Gruppe entfernt</string>
     <string name="application_items_selected">%1$d Elemente ausgewählt</string>
-    <string name="application_later">Später</string>
     <string name="application_low_usage_message">Warnung: Wenn Sie die Anwendung nicht oft genug nutzen, weckt das Betriebssystem sie möglicherweise nicht auf, um Nachrichten auszutauschen!</string>
     <string name="application_one_item_selected">1 Element ausgewählt</string>
     <string name="application_migration_no_storage_space">Es ist nicht genügend Speicherplatz auf Ihrem Gerät vorhanden, um die Migration abzuschließen. Schließen Sie die Anwendung, geben Sie Speicherplatz frei und starten Sie die App erneut, um das Update abzuschließen.</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">Sichere Verbindung wird hergestellt…</string>
     <string name="application_not_signed_in">Nicht mit dem Twinme-Dienst verbunden</string>
     <string name="application_now">Jetzt</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Vorgang fehlgeschlagen</string>
     <string name="application_operation_irreversible">Dieser Vorgang ist unumkehrbar</string>
     <string name="application_permission_camera">Die Erlaubnis zum Zugriff auf die Kamera ist erforderlich, um ein neues Foto oder Video aufzunehmen.</string>
@@ -175,6 +170,7 @@
     <string name="account_migration_view_close_message">Schließen Sie die Anwendung und starten Sie sie neu, um auf die neuen Daten zuzugreifen.</string>
     <string name="account_migration_view_confirm_cancel_message">Sind Sie sicher, dass Sie die Migration abbrechen möchten?</string>
     <string name="account_migration_view_database">Datenbank</string>
+    <string name="account_migration_view_display">Anzeige</string>
     <string name="account_migration_view_finalizing">Abschluss</string>
     <string name="account_migration_view_initializing">Initialisierung</string>
     <string name="account_migration_view_my_device">Mein Gerät</string>
@@ -218,6 +214,7 @@
     <string name="account_migration_scanner_view_step_1">Öffnen Sie die App auf dem anderen Gerät.</string>
     <string name="account_migration_scanner_view_step_2">Gehen Sie zum Seitenmenü.</string>
     <string name="account_migration_scanner_view_step_3">Wählen Sie „Konto“.</string>
+    <string name="account_migration_scanner_view_step_4">Kontomigration starten</string>
     <string name="account_migration_scanner_view_step_4_my_device">Starten Sie die Übertragung von diesem Gerät.</string>
     <string name="account_migration_scanner_view_step_4_another_device">Starten Sie die Übertragung vom anderen Gerät.</string>
     <string name="account_migration_scanner_view_step_5_my_device">Scannen Sie den auf dem anderen Gerät angezeigten QR-Code mit diesem Gerät.</string>
@@ -655,7 +652,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Geben Sie unten die Buchstaben „OK“ ein, um die Löschung des Kontos zu bestätigen.</string>
     <string name="deleted_account_view_delete">Konto löschen</string>
-    <string name="deleted_account_view_warning">Warnung‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Ihr Konto wurde gelöscht und alle zugehörigen Daten wurden vernichtet.&lt;br /&gt;
@@ -674,7 +670,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Sind Sie sicher, dass Sie diese Verbindung löschen möchten?</string>
-    <string name="edit_contact_view_message">Diese Kontaktperson wird Sie nicht mehr erreichen können.</string>
 
     <!-- EditIdentityActivity -->
     <string name="edit_identity_view_delete_message">Das Löschen dieses Profils macht den zugehörigen Einladungscode ungültig. Löschung bestätigen?</string>
@@ -1302,7 +1297,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</string>
     <string name="streaming_audio_view_no_music_message">Bitte übertragen Sie Musikdateien auf Ihr Gerät.</string>
     <string name="streaming_audio_view_no_music_title">Keine Musik gefunden 🙁</string>
     <string name="streaming_audio_view_title">Medienfreigabe</string>
@@ -1381,5 +1375,4 @@
     <string name="welcome_view_step2_message">Sichere „Peer-to-Peer“-Kommunikation: Keine Spuren in der Cloud.</string>
     <string name="welcome_view_step3_message">Keine Telefonnummer, kein Adressbuch, keine User-ID: Sie entscheiden, wie Sie identifiziert werden möchten – je nachdem, mit wem Sie kommunizieren.</string>
     <string name="welcome_view_terms_of_use">Nutzungsbedingungen</string>
-
 </resources>

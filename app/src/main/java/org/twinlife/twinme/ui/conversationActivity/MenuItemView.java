@@ -97,6 +97,14 @@ public class MenuItemView extends RelativeLayout {
         mCanEditMessage = canEditMessage;
     }
 
+    public boolean canEditMessage() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "canEditMessage");
+        }
+
+        return mCanEditMessage;
+    }
+
     public void openMenu() {
         if (DEBUG) {
             Log.d(LOG_TAG, "openMenu");
@@ -274,23 +282,24 @@ public class MenuItemView extends RelativeLayout {
         mMenuView = findViewById(R.id.menu_item_content_view);
 
         MenuItemAdapter.OnActionClickListener actionClickListener = menuAction -> {
-            if (menuAction.getActionType() == UIMenuAction.ActionType.COPY) {
+            final UIMenuAction.ActionType actionType = menuAction.getActionType();
+            if (actionType == UIMenuAction.ActionType.COPY) {
                 mConversationActivity.onCopyItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.EDIT) {
+            } else if (actionType == UIMenuAction.ActionType.EDIT) {
                 mConversationActivity.onEditItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.DELETE) {
+            } else if (actionType == UIMenuAction.ActionType.DELETE) {
                 mConversationActivity.onDeleteItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.FORWARD) {
+            } else if (actionType == UIMenuAction.ActionType.FORWARD) {
                 mConversationActivity.onForwardItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.INFO) {
+            } else if (actionType == UIMenuAction.ActionType.INFO) {
                 mConversationActivity.onInfoItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.REPLY) {
+            } else if (actionType == UIMenuAction.ActionType.REPLY) {
                 mConversationActivity.onReplyItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.SAVE) {
+            } else if (actionType == UIMenuAction.ActionType.SAVE) {
                 mConversationActivity.onSaveItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.SHARE) {
+            } else if (actionType == UIMenuAction.ActionType.SHARE) {
                 mConversationActivity.onShareItemClick();
-            } else if (menuAction.getActionType() == UIMenuAction.ActionType.SELECT_MORE) {
+            } else if (actionType == UIMenuAction.ActionType.SELECT_MORE) {
                 mConversationActivity.onSelectMoreItemClick();
             }
         };

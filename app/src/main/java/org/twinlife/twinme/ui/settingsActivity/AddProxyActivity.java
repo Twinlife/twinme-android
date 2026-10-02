@@ -153,13 +153,13 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         super.onCreateOptionsMenu(menu);
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.onboarding_menu, menu);
+        inflater.inflate(org.twinlife.twinme.android.R.menu.onboarding_menu, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.info_action);
+        MenuItem menuItem = menu.findItem(org.twinlife.twinme.android.R.id.info_action);
         ImageView imageView = (ImageView) menuItem.getActionView();
 
         if (imageView != null) {
-            imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_info_icon, null));
+            imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), org.twinlife.twinme.android.R.drawable.onboarding_info_icon, null));
             imageView.setOnClickListener(view -> onOnboardingClick());
 
             imageView.setColorFilter(Color.WHITE);
@@ -202,7 +202,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             Log.d(LOG_TAG, "onErrorAddProxy");
         }
 
-        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_invalid_format), false, null);
+        showAlertMessageView(R.id.add_proxy_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.proxy_view_invalid_format), false, null);
     }
 
     @Override
@@ -211,7 +211,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             Log.d(LOG_TAG, "onErrorAlreadyUsed");
         }
 
-        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_already_use), false, null);
+        showAlertMessageView(R.id.add_proxy_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.proxy_view_already_use), false, null);
     }
 
     @Override
@@ -220,7 +220,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
             Log.d(LOG_TAG, "onErrorLimitReached");
         }
 
-        showAlertMessageView(R.id.add_proxy_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, null);
+        showAlertMessageView(R.id.add_proxy_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, null);
     }
 
     //
@@ -394,7 +394,7 @@ public class AddProxyActivity extends AbstractTwinmeActivity implements ProxySer
         onboardingConfirmView.setTitle(getString(R.string.proxy_view_title));
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
         onboardingConfirmView.setMessage(getString(R.string.proxy_view_onboarding));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
         if (!cancelAction) {

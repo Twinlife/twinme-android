@@ -264,7 +264,7 @@ public class AddParticipantsRoomActivity extends AbstractTwinmeActivity implemen
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.add_participants_room_activity);
 
         setStatusBarColor();

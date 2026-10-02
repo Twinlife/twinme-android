@@ -100,7 +100,7 @@ public class MenuBackupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         int viewType = getItemViewType(position);
 
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof BackupInfoViewHolder) {
             BackupInfoViewHolder backupInfoViewHolder = (BackupInfoViewHolder) viewHolder;
             backupInfoViewHolder.onBind(mBackupName, Design.POPUP_BACKGROUND_COLOR);
         } else {

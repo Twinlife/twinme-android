@@ -300,7 +300,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new TwinmeActivity.DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new TwinmeActivity.DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -388,7 +388,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             OnboardingDialog onboardingDialog = new OnboardingDialog(this);
             onboardingDialog.setOnCancelListener(dialogCancelListener);
             onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_view_onboarding_message)), bitmap,
-                    getString(R.string.application_ok),
+                    getString(org.twinlife.twinme.android.R.string.application_ok),
                     onboardingDialog::dismiss
             );
             onboardingDialog.show();
@@ -540,7 +540,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_profile_activity);
 
         setTitle(getString(R.string.application_name));
@@ -855,7 +855,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             OnboardingDialog onboardingDialog = new OnboardingDialog(this);
             onboardingDialog.setOnCancelListener(dialogCancelListener);
             onboardingDialog.setup(Html.fromHtml(getString(R.string.create_profile_view_incomplete_profile_message)), bitmap,
-                    getString(R.string.application_ok),
+                    getString(org.twinlife.twinme.android.R.string.application_ok),
                     onboardingDialog::dismiss
             );
             onboardingDialog.show();

@@ -404,7 +404,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
 
             mProgressContainerView.setVisibility(View.GONE);
 
-            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_view_update_title) : getContext().getString(R.string.application_ok));
+            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_view_update_title) : getContext().getString(org.twinlife.twinme.android.R.string.application_ok));
 
             layoutParams.height = getMessageHeight(uiWhatsNew.getMessage(), textWidth);
         } else {
@@ -513,7 +513,7 @@ public class WhatsNewDialog extends Dialog implements CustomProgressBarView.Obse
         }
 
         if (mCurrentWhatsNew + 1 == mUIWhatsNew.size()) {
-            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_view_update_title) : getContext().getString(R.string.application_ok));
+            mConfirmTextView.setText(mUpdateMode ? getContext().getString(R.string.update_app_view_update_title) : getContext().getString(org.twinlife.twinme.android.R.string.application_ok));
             mShowAllWhatsNew = true;
         }
     }

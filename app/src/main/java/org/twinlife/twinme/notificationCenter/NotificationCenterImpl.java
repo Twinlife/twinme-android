@@ -269,8 +269,9 @@ public class NotificationCenterImpl implements NotificationCenter {
         SpannableStringBuilder notificationMessage = null;
         NotificationType type = null;
 
-        boolean displayNotificationSender = mTwinmeApplication.getDisplayNotificationSender() && !contact.getIdentityCapabilities().hasDiscreet();
-        boolean displayNotificationContent = mTwinmeApplication.getDisplayNotificationContent() && !contact.getIdentityCapabilities().hasDiscreet();
+        final boolean hasDiscreet = contact.getIdentityCapabilities().hasDiscreet();
+        boolean displayNotificationSender = mTwinmeApplication.getDisplayNotificationSender() && !hasDiscreet;
+        boolean displayNotificationContent = mTwinmeApplication.getDisplayNotificationContent() && !hasDiscreet;
 
         long timestamp = -1;
 
@@ -769,8 +770,9 @@ public class NotificationCenterImpl implements NotificationCenter {
             notificationId = newMessageNotification.id;
         }
 
-        boolean displayNotificationSender = mTwinmeApplication.getDisplayNotificationSender() && !originator.getIdentityCapabilities().hasDiscreet();
-        boolean displayNotificationContent = mTwinmeApplication.getDisplayNotificationContent() && !originator.getIdentityCapabilities().hasDiscreet();
+        final boolean hasDiscreet = originator.getIdentityCapabilities().hasDiscreet();
+        boolean displayNotificationSender = mTwinmeApplication.getDisplayNotificationSender() && !hasDiscreet;
+        boolean displayNotificationContent = mTwinmeApplication.getDisplayNotificationContent() && !hasDiscreet;
         boolean isUpdatedAnnotationNotification = false;
 
         // Get a default message for some notifications.

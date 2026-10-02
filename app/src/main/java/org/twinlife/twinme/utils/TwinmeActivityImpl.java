@@ -363,6 +363,19 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         }
     }
 
+    public void setActivityTheme(@NonNull TwinmeApplication application) {
+
+        int displayMode = application.displayMode();
+
+        if (displayMode == DisplayMode.SYSTEM.ordinal()) {
+            setTheme(R.style.TwinmeThemeWithNoActionBar);
+        } else if (displayMode == DisplayMode.LIGHT.ordinal()) {
+            setTheme(R.style.TwinmeThemeLight);
+        } else if (displayMode == DisplayMode.DARK.ordinal()) {
+            setTheme(R.style.TwinmeThemeDark);
+        }
+    }
+
     @Override
     public void setTitle(CharSequence title) {
         if (DEBUG) {
@@ -427,7 +440,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(show);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
-            getSupportActionBar().setHomeActionContentDescription(getString(R.string.application_back));
+            getSupportActionBar().setHomeActionContentDescription(getString(org.twinlife.twinme.android.R.string.application_back));
         }
     }
 
@@ -727,7 +740,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
         ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+        defaultConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
         defaultConfirmView.setMessage(message);
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_authorization_go_settings));
@@ -813,7 +826,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
             alertMessageView.setForceDarkMode(true);
         }
 
-        alertMessageView.setTitle(getString(R.string.deleted_account_view_warning));
+        alertMessageView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
         alertMessageView.setMessage(message);
 
         AlertMessageView.Observer observer = new AlertMessageView.Observer() {
@@ -1185,7 +1198,7 @@ public class TwinmeActivityImpl extends AppCompatActivity implements TwinmeActiv
                 AlertDialog alertDialog = new AlertDialog(this);
                 alertDialog.setCancelable(false);
                 alertDialog.setup("", Html.fromHtml("???"),
-                        getString(R.string.application_ok),
+                        getString(org.twinlife.twinme.android.R.string.application_ok),
                         () -> {
                             alertDialog.dismiss();
                             synchronized (mDialogLock) {

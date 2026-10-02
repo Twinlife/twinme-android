@@ -74,7 +74,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.conversation_appearance_activity);
 
         setStatusBarColor();

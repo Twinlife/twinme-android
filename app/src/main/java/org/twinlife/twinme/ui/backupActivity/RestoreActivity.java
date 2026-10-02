@@ -511,9 +511,9 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             if (mVerifyBackupMode) {
                 title = getString(R.string.account_view_backup_verify);
                 message = getString(R.string.restore_view_onboarding_verify);
-                actionTitle = getString(R.string.application_confirm);
+                actionTitle = getString(org.twinlife.twinme.android.R.string.application_confirm);
             } else {
-                title = getString(R.string.deleted_account_view_warning);
+                title = getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning);
                 message = getString(R.string.restore_view_warning);
                 actionTitle = getString(R.string.restore_view_restore);
             }
@@ -594,7 +594,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.restore_activity);
 
         setStatusBarColor();
@@ -840,7 +840,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
             message = mVerifyBackupMode ? getString(R.string.restore_view_error_message_verify_backup) : getString(R.string.restore_view_error_message);
         }
 
-        showAlertMessageView(R.id.restore_activity_layout, getString(R.string.deleted_account_view_warning), message, false, runnable);
+        showAlertMessageView(R.id.restore_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, runnable);
     }
 
     private boolean isAllWordsCompleted() {
@@ -947,8 +947,8 @@ public class RestoreActivity extends AbstractTwinmeActivity {
         BackupContentConfirmView backupContentConfirmView = new BackupContentConfirmView(this, null);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         backupContentConfirmView.setLayoutParams(layoutParams);
-        backupContentConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
-        backupContentConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+        backupContentConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
+        backupContentConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_confirm));
         backupContentConfirmView.initRestoreReport(mRestoreReport, mIsLastBackup);
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -993,7 +993,7 @@ public class RestoreActivity extends AbstractTwinmeActivity {
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);
-        showAlertMessageView(R.id.restore_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.restore_view_application_error), false, this::rollbackRestore);
+        showAlertMessageView(R.id.restore_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.restore_view_application_error), false, this::rollbackRestore);
     }
 
     private void terminateActivity() {
