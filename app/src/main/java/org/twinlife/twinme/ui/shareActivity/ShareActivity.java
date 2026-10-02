@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2025 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -13,6 +13,7 @@ package org.twinlife.twinme.ui.shareActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -21,6 +22,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,10 +32,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,22 +46,27 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.imageview.ShapeableImageView;
+import com.bumptech.glide.Glide;
+
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.Conversation;
 import org.twinlife.twinlife.ConversationService.Descriptor;
 import org.twinlife.twinlife.ConversationService.DescriptorId;
 import org.twinlife.twinlife.ErrorCode;
-import org.twinlife.twinlife.ImageId;
 import org.twinlife.twinme.TwinmeContext;
+import org.twinlife.twinme.glide.Modes;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Group;
 import org.twinlife.twinme.models.Originator;
 import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.ShareService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.skin.TextStyle;
 import org.twinlife.twinme.ui.Intents;
+import org.twinlife.twinme.ui.Settings;
 import org.twinlife.twinme.ui.baseItemActivity.AudioItem;
 import org.twinlife.twinme.ui.baseItemActivity.BaseItemActivity;
 import org.twinlife.twinme.ui.baseItemActivity.ImageItem;
@@ -67,24 +76,24 @@ import org.twinlife.twinme.ui.baseItemActivity.PeerAudioItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerImageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerMessageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
-import org.twinlife.twinme.ui.baseItemActivity.PreviewItemListAdapter;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
 import org.twinlife.twinme.ui.conversationActivity.ConversationActivity;
 import org.twinlife.twinme.ui.privacyActivity.LockScreenActivity;
 import org.twinlife.twinme.ui.spaces.CustomAppearance;
 import org.twinlife.twinme.ui.spaces.SpacesActivity;
+import org.twinlife.twinme.ui.conversationActivity.PreviewFileActivity;
+import org.twinlife.twinme.ui.conversationActivity.UIPreviewFile;
 import org.twinlife.twinme.ui.users.OnContactTouchListener;
 import org.twinlife.twinme.ui.users.UIContact;
 import org.twinlife.twinme.ui.users.UIContactListAdapter;
 import org.twinlife.twinme.ui.users.UISelectableContact;
-import org.twinlife.twinme.utils.CommonUtils;
 import org.twinlife.twinme.utils.FileInfo;
-import org.twinlife.twinme.utils.RoundedImageView;
 import org.twinlife.twinme.utils.ShareUtils;
 import org.twinlife.twinme.utils.async.Loader;
 import org.twinlife.twinme.utils.async.LoaderListener;
 import org.twinlife.twinme.utils.async.Manager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -100,41 +109,42 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private static final String LOG_TAG = "ShareActivity";
     private static final boolean DEBUG = false;
 
-    private static final int PROFILE_VIEW_COLOR = Color.argb(255, 143, 150, 164);
-
-    private static final float DESIGN_SELECTED_BOTTOM_MARGIN = 40f;
-    private static final float DESIGN_SPACE_VIEW_HEIGHT = 144f;
+    private static final int CHANGE_SPACE = 1;
+    private static final int REQUEST_PREVIEW_FILE = 4;
+    private static final int EDIT_TEXT_BORDER_COLOR = Color.rgb(78, 78, 78);
+    private static final float DESIGN_SEARCH_CONTENT_MARGIN = 32f;
+    private static final float DESIGN_SEARCH_CONTENT_HEIGHT = 58f;
+    private static final float DESIGN_SEARCH_GLASS_ICON_SIZE = 22f;
+    private static final float DESIGN_SEARCH_GLASS_ICON_MARGIN = 14f;
+    private static final float DESIGN_SEARCH_CLEAR_ICON_SIZE = 38f;
     private static final float DESIGN_EDIT_TEXT_WIDTH_INSET = 32f;
     private static final float DESIGN_EDIT_TEXT_HEIGHT_INSET = 20f;
-    private static final float DESIGN_EDIT_TEXT_RADIUS = 18f;
-    private static final float DESIGN_COMMENT_VIEW_HEIGHT = 140f;
-    private static int SELECTED_BOTTOM_MARGIN;
-    private static int SPACE_VIEW_HEIGHT;
+    private static final float DESIGN_EDIT_TEXT_HEIGHT = 90f;
+    private static final float DESIGN_EDIT_TEXT_MARGIN = 24f;
+    private static final float DESIGN_SEND_VIEW_SIZE = 72f;
+    private static final float DESIGN_SEND_ICON_SIZE = 30f;
+    private static final float DESIGN_HORIZONTAL_MARGIN = 32f;
+    private static final float DESIGN_PREVIEW_SIZE = 100f;
 
-    private static final float DESIGN_ITEM_ROUND_CORNER_RADIUS_DP = 8f;
-
-    private static final int CHANGE_SPACE = 1;
-
+    private static final float DESIGN_ITEM_ROUND_CORNER_RADIUS_DP = 9;
 
     private boolean mUIInitialized = false;
     private boolean mUIPostInitialized = false;
-    private View mSpaceView;
-    private TextView mSpaceNameView;
-    private TextView mProfileView;
-    private RoundedImageView mAvatarView;
-    private GradientDrawable mGradientDrawable;
-    private View mNoSpaceAvatarView;
-    private GradientDrawable mNoSpaceAvatarGradientDrawable;
-    private View mSelectedUIContactView;
+    private View mBottomView;
     private UIContactListAdapter mSelectedUIContactListAdapter;
     private RecyclerView mSelectedUIContactRecyclerView;
     private RecyclerView mUIContactRecyclerView;
+    private ImageView mPreviewView;
     private ShareListAdapter mShareListAdapter;
     private EditText mSearchEditText;
     private View mClearSearchView;
-    @Nullable
-    private PreviewItemListAdapter mPreviewListAdapter;
     private EditText mEditText;
+
+    private ShapeableImageView mSpaceAvatarView;
+    private GradientDrawable mNoAvatarGradientDrawable;
+    private View mNoAvatarView;
+    private TextView mSpaceNameView;
+
     private final List<UISelectableContact> mUIContacts = new ArrayList<>();
     private final List<UISelectableContact> mUIGroups = new ArrayList<>();
     private final List<FileInfo> mSharedFiles = new ArrayList<>();
@@ -143,11 +153,12 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private CharSequence mMessageFromIntent;
     private String mDeferredMessage;
     private boolean mDeferredAllowCopyText;
+    private boolean mDeferredAllowCopyFile;
+    private long mDeferredTimeout;
     private boolean mSendFileError = false;
 
     private ShareService mShareService;
 
-    private Menu mMenu;
     private Space mSpace;
 
     @Nullable
@@ -161,8 +172,6 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     private UUID mCurrentConversationId;
 
     private Manager<Item> mAsyncItemLoader;
-
-    private int maxRootViewHeight = 0;
 
     private boolean mShareExternalContent = false;
 
@@ -182,7 +191,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
         if (incomingIntent.hasExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID)) {
             // set up the view and display the progress indicator, as copying large files might take a few seconds.
-            Design.setTheme(this, getTwinmeApplication());
+            setActivityTheme(getTwinmeApplication());
             setContentView(R.layout.share_activity);
             mProgressBarView = findViewById(R.id.share_activity_progress_bar);
             mProgressBarView.setIndeterminate(true);
@@ -207,10 +216,14 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         }
 
         mForwardDescriptorId = DescriptorId.fromString(incomingIntent.getStringExtra(Intents.INTENT_DESCRIPTOR_ID));
-        mForwardDescriptorType = (Descriptor.Type) incomingIntent.getSerializableExtra(Intents.INTENT_DESCRIPTOR_TYPE);
+        // The activity is exported: the extra can come from another application.
+        final Serializable descriptorType = incomingIntent.getSerializableExtra(Intents.INTENT_DESCRIPTOR_TYPE);
+        mForwardDescriptorType = descriptorType instanceof Descriptor.Type ? (Descriptor.Type) descriptorType : null;
         mIsPeerItem = incomingIntent.getBooleanExtra(Intents.INTENT_IS_PEER_ITEM, false);
-
         mMessageFromIntent = ShareUtils.getSharedText(incomingIntent);
+        mDeferredAllowCopyFile = getTwinmeApplication().fileCopyAllowed();
+        mDeferredAllowCopyText = getTwinmeApplication().messageCopyAllowed();
+        mDeferredTimeout = 0;
 
         initViews();
     }
@@ -253,22 +266,55 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
         super.onCreateOptionsMenu(menu);
 
-        mMenu = menu;
-
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.forward_menu, menu);
+        inflater.inflate(R.menu.share_contact_menu, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.add_action);
+        MenuItem menuItem = menu.findItem(R.id.space_action);
 
-        TextView titleView = (TextView) menuItem.getActionView();
-        String title = String.valueOf(menuItem.getTitle());
+        android.view.View actionView = menuItem.getActionView();
+        if (actionView == null) {
+            return true;
+        }
 
-        if (titleView != null) {
-            Design.updateTextFont(titleView, Design.FONT_BOLD36);
-            titleView.setTextColor(Color.WHITE);
-            titleView.setText(title);
-            titleView.setPadding(0, 0, Design.TOOLBAR_TEXT_ITEM_PADDING, 0);
-            titleView.setOnClickListener(view -> onSendClicked());
+        if (mShareService.numberSpaces(false) <= 1) {
+            actionView.setVisibility(View.GONE);
+            return false;
+        }
+
+        actionView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
+
+        mSpaceAvatarView = actionView.findViewById(R.id.toolbar_space_item_avatar_view);
+        if (mSpaceAvatarView != null) {
+            float corner = DESIGN_ITEM_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
+            mSpaceAvatarView.setShapeAppearanceModel(
+                    mSpaceAvatarView.getShapeAppearanceModel()
+                            .toBuilder()
+                            .setAllCornerSizes(corner)
+                            .build());
+
+            mSpaceAvatarView.setOnClickListener(view -> onSpaceClick());
+        }
+
+        mNoAvatarView = actionView.findViewById(R.id.toolbar_space_item_no_avatar_view);
+        if (mNoAvatarView != null) {
+            mNoAvatarGradientDrawable = new GradientDrawable();
+            mNoAvatarGradientDrawable.mutate();
+            mNoAvatarGradientDrawable.setStroke((int) (2 * Resources.getSystem().getDisplayMetrics().density), Color.WHITE);
+            mNoAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
+            mNoAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
+            mNoAvatarView.setBackground(mNoAvatarGradientDrawable);
+            mNoAvatarView.setOnClickListener(view -> onSpaceClick());
+        }
+
+        mSpaceNameView = actionView.findViewById(R.id.toolbar_space_item_no_avatar_text_view);
+        if (mSpaceNameView != null) {
+            mSpaceNameView.setTypeface(Design.FONT_BOLD36.typeface);
+            mSpaceNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_BOLD36.size);
+            mSpaceNameView.setTextColor(Color.WHITE);
+        }
+
+        if (mSpace != null) {
+            updateSpace(mSpace);
         }
 
         return true;
@@ -307,17 +353,99 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onApplyInsetsFinish() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onActivityResult requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+            Log.d(LOG_TAG, "onApplyInsetsFinish");
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onApplyInsetsFinish();
+
+        if (mBottomView != null) {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mBottomView.getLayoutParams();
+            int bottomMargin = getBarBottomInset();
+            if (marginLayoutParams.bottomMargin != bottomMargin) {
+                marginLayoutParams.bottomMargin = bottomMargin;
+                mBottomView.requestLayout();
+            }
+
+            marginLayoutParams = (ViewGroup.MarginLayoutParams) mUIContactRecyclerView.getLayoutParams();
+            if (mSelectedUIContact.isEmpty()) {
+                marginLayoutParams.bottomMargin = bottomMargin;
+            } else {
+                marginLayoutParams.bottomMargin = 0;
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult: requestCode=" + requestCode + " resultCode=" + resultCode + " intent=" + intent);
+        }
+
+        super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == CHANGE_SPACE) {
-            String value = data != null ? data.getStringExtra(Intents.INTENT_SPACE_SELECTION) : null;
+            String value = intent != null ? intent.getStringExtra(Intents.INTENT_SPACE_SELECTION) : null;
             if (value != null) {
                 mShareService.getSpace(UUID.fromString(value));
+            }
+        } else if (requestCode == REQUEST_PREVIEW_FILE) {
+            List<FileInfo> fileInfos;
+            if (resultCode == RESULT_OK) {
+                mSharedFiles.clear();
+
+                String textMessage = intent.getStringExtra(Intents.INTENT_TEXT_MESSAGE);
+                boolean allowCopyFile = intent.getBooleanExtra(Intents.INTENT_ALLOW_COPY_FILE, true);
+                boolean allowCopyText = intent.getBooleanExtra(Intents.INTENT_ALLOW_COPY_TEXT, true);
+                long expireTimeout = intent.getIntExtra(Intents.INTENT_EXPIRE_TIMEOUT, 0);
+
+                try {
+                    if (intent.hasExtra(Intents.INTENT_SELECTED_FILES)) {
+                        fileInfos = intent.getParcelableArrayListExtra(Intents.INTENT_SELECTED_FILES);
+
+                        if (fileInfos != null) {
+                            for (FileInfo fileInfo : fileInfos) {
+                                final String filename = fileInfo.getFilename();
+                                if (filename != null) {
+                                    mSharedFiles.add(fileInfo);
+                                }
+                            }
+                        }
+                    }
+
+                    if (intent.hasExtra(Intents.INTENT_CAPTURED_FILE)) {
+                        ArrayList<Parcelable> captureFiles = intent.getParcelableArrayListExtra(Intents.INTENT_CAPTURED_FILE);
+
+                        if (captureFiles != null) {
+                            for (Parcelable parcelable : captureFiles) {
+
+                                if (parcelable instanceof FileInfo) {
+                                    FileInfo fileInfo = (FileInfo) parcelable;
+                                    final String filename = fileInfo.getFilename();
+                                    if (filename != null) {
+                                        mSharedFiles.add(fileInfo);
+                                    }
+                                } else if (parcelable instanceof UIPreviewFile) {
+                                    UIPreviewFile previewFile = (UIPreviewFile) parcelable;
+                                    FileInfo fileInfo = new FileInfo(getApplicationContext(), previewFile.getUri());
+                                    mSharedFiles.add(fileInfo);
+                                }
+                            }
+                        }
+                    }
+
+                    if (textMessage != null && !textMessage.isEmpty()) {
+                        mDeferredMessage = textMessage;
+                    }
+
+                    mDeferredAllowCopyText = allowCopyText;
+                    mDeferredAllowCopyFile = allowCopyFile;
+                    mDeferredTimeout = expireTimeout;
+                    sendFilesFromPreview();
+                } catch (Exception exception) {
+                    Log.d(LOG_TAG, "exception=" + exception.getMessage());
+                }
             }
         }
     }
@@ -335,7 +463,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
         mSpace = space;
 
-        updateSpace();
+        updateSpace(mSpace);
     }
 
     @Override
@@ -346,7 +474,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
 
         mSpace = space;
 
-        updateSpace();
+        updateSpace(mSpace);
     }
 
     @Override
@@ -443,14 +571,15 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
                     filename += ".tmp";
                 }
             }
+            final Uri uri = media.getUri();
             if (media.isImage()) {
-                sendFile(media.getUri(), filename, Descriptor.Type.IMAGE_DESCRIPTOR, getTwinmeApplication().fileCopyAllowed());
+                sendFile(uri, filename, Descriptor.Type.IMAGE_DESCRIPTOR, mDeferredAllowCopyFile, mDeferredTimeout);
             } else if (media.isVideo()) {
-                sendFile(media.getUri(), filename, Descriptor.Type.VIDEO_DESCRIPTOR, getTwinmeApplication().fileCopyAllowed());
+                sendFile(uri, filename, Descriptor.Type.VIDEO_DESCRIPTOR, mDeferredAllowCopyFile, mDeferredTimeout);
             } else if (media.isAudio()) {
-                sendFile(media.getUri(), filename, Descriptor.Type.AUDIO_DESCRIPTOR, getTwinmeApplication().fileCopyAllowed());
+                sendFile(uri, filename, Descriptor.Type.AUDIO_DESCRIPTOR, mDeferredAllowCopyFile, mDeferredTimeout);
             } else {
-                sendFile(media.getUri(), filename, Descriptor.Type.NAMED_FILE_DESCRIPTOR, getTwinmeApplication().fileCopyAllowed());
+                sendFile(uri, filename, Descriptor.Type.NAMED_FILE_DESCRIPTOR, mDeferredAllowCopyFile, mDeferredTimeout);
             }
         }
 
@@ -464,12 +593,9 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             mShareService.forwardDescriptor(mForwardDescriptorId, copyAllowed);
         }
 
-        if (!mEditText.getText().toString().isEmpty()) {
-            if (mShareService.isSendingFiles()) {
-                mDeferredMessage = mEditText.getText().toString();
-                mDeferredAllowCopyText = getTwinmeApplication().messageCopyAllowed();
-            } else {
-                mShareService.pushMessage(mEditText.getText().toString(), getTwinmeApplication().messageCopyAllowed());
+        if (mDeferredMessage != null && !mDeferredMessage.isEmpty()) {
+            if (!mShareService.isSendingFiles()) {
+                mShareService.pushMessage(mDeferredMessage, mDeferredAllowCopyFile, mDeferredTimeout);
             }
         }
 
@@ -528,19 +654,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
                     break;
             }
 
-            if (mItem != null) {
-                mItem.setMode(Item.ItemMode.PREVIEW);
-
-                LinearLayoutManager previewLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-                RecyclerView previewRecyclerView = findViewById(R.id.share_activity_preview_view);
-                previewRecyclerView.setLayoutManager(previewLinearLayoutManager);
-                previewRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
-                previewRecyclerView.setItemAnimator(null);
-                previewRecyclerView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-
-                mPreviewListAdapter = new PreviewItemListAdapter(this, mItem);
-                previewRecyclerView.setAdapter(mPreviewListAdapter);
-            }
+            updateViews();
         } else {
             // Forwarding a descriptor that does not exist anymore: stop the activity.
             finish();
@@ -558,9 +672,11 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         }
 
         if (mDeferredMessage != null) {
-            mShareService.pushMessage(mDeferredMessage, mDeferredAllowCopyText);
-            mDeferredMessage = null;
-            mDeferredAllowCopyText = false;
+            mShareService.pushMessage(mDeferredMessage, mDeferredAllowCopyText, 0);
+            if (mSelectedUIContact.isEmpty()) {
+                mDeferredMessage = null;
+                mDeferredAllowCopyText = false;
+            }
         }
 
         if (!mSendFileError && mSelectedUIContact.isEmpty()) {
@@ -751,7 +867,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
     }
 
     @Override
-    public  void onPollResultClick(@NonNull org.twinlife.twinlife.ConversationService.PollDescriptor pollDescriptor) {
+    public void onPollResultClick(@NonNull org.twinlife.twinlife.ConversationService.PollDescriptor pollDescriptor) {
 
     }
 
@@ -843,9 +959,6 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             Log.d(LOG_TAG, "onLoaded");
         }
 
-        if (mPreviewListAdapter != null) {
-            mPreviewListAdapter.notifyDataSetChanged();
-        }
     }
 
     //
@@ -857,7 +970,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.share_activity);
 
         setStatusBarColor();
@@ -865,7 +978,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         showToolBar(true);
         showBackButton(true);
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-        applyInsets(R.id.share_activity_view, R.id.share_activity_tool_bar, R.id.share_activity_list_view, Design.TOOLBAR_COLOR, false);
+        applyInsets(R.id.share_activity_view, R.id.share_activity_tool_bar, R.id.share_activity_background, Design.TOOLBAR_COLOR, false);
 
         if (mForwardDescriptorId != null) {
             setTitle(getString(R.string.conversation_view_menu_item_view_forward_title));
@@ -873,26 +986,8 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             setTitle(getString(R.string.share_view_title));
         }
 
-        View rootView = findViewById(R.id.share_activity_view);
-        rootView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-                    int currentRootViewHeight = rootView.getHeight();
-                    if (currentRootViewHeight > maxRootViewHeight) {
-                        maxRootViewHeight = currentRootViewHeight;
-                    }
-
-                    if (mItem != null) {
-                        Item.ItemMode mode = mItem.getMode();
-                        if (currentRootViewHeight >= maxRootViewHeight) {
-                            mItem.setMode(Item.ItemMode.PREVIEW);
-                        } else {
-                            mItem.setMode(Item.ItemMode.SMALL_PREVIEW);
-                        }
-
-                        if (mode != mItem.getMode() && mPreviewListAdapter != null) {
-                            mPreviewListAdapter.notifyDataSetChanged();
-                        }
-                    }
-        });
+        View backgroundView = findViewById(R.id.share_activity_background);
+        backgroundView.setBackgroundColor(Design.WHITE_COLOR);
 
         View searchView = findViewById(R.id.share_activity_search_view);
         searchView.setBackgroundColor(Design.TOOLBAR_COLOR);
@@ -900,12 +995,39 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         ViewGroup.LayoutParams layoutParams = searchView.getLayoutParams();
         layoutParams.height = Design.SEARCH_VIEW_HEIGHT;
 
+        View searchContentView = findViewById(R.id.share_activity_search_content_view);
+
+        layoutParams = searchContentView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_SEARCH_CONTENT_HEIGHT * Design.HEIGHT_RATIO);
+
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) searchContentView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_SEARCH_CONTENT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_SEARCH_CONTENT_MARGIN * Design.WIDTH_RATIO);
+
+        ImageView searchIconView = findViewById(R.id.share_activity_search_image_view);
+
+        layoutParams = searchIconView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_SEARCH_GLASS_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_SEARCH_GLASS_ICON_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) searchIconView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) ((DESIGN_SEARCH_GLASS_ICON_MARGIN + DESIGN_SEARCH_CONTENT_MARGIN) * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_SEARCH_GLASS_ICON_MARGIN * Design.WIDTH_RATIO);
+
         mClearSearchView = findViewById(R.id.share_activity_clear_image_view);
         mClearSearchView.setVisibility(View.GONE);
         mClearSearchView.setOnClickListener(v -> {
             mSearchEditText.setText("");
             mClearSearchView.setVisibility(View.GONE);
         });
+
+        layoutParams = mClearSearchView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_SEARCH_CLEAR_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_SEARCH_CLEAR_ICON_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mClearSearchView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) ((DESIGN_SEARCH_GLASS_ICON_MARGIN + DESIGN_SEARCH_CONTENT_MARGIN) * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_SEARCH_GLASS_ICON_MARGIN * Design.WIDTH_RATIO);
 
         mSearchEditText = findViewById(R.id.share_activity_search_edit_text_view);
         Design.updateTextFont(mSearchEditText, Design.FONT_REGULAR34);
@@ -947,66 +1069,35 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             return false;
         });
 
-        mSpaceNameView = findViewById(R.id.share_activity_space_name_view);
-        mSpaceNameView.setTypeface(Design.FONT_MEDIUM44.typeface);
-        mSpaceNameView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_MEDIUM44.size);
-        mSpaceNameView.setTextColor(Design.FONT_COLOR_DEFAULT);
+        mBottomView = findViewById(R.id.share_activity_bottom_view);
+        mBottomView.setBackgroundColor(Design.WHITE_COLOR);
+        mBottomView.setVisibility(View.GONE);
 
-        mProfileView = findViewById(R.id.share_activity_profile_name_view);
-        mProfileView.setTypeface(Design.FONT_REGULAR32.typeface);
-        mProfileView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Design.FONT_REGULAR32.size);
-        mProfileView.setTextColor(PROFILE_VIEW_COLOR);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mBottomView.getLayoutParams();
+        marginLayoutParams.bottomMargin = getBarBottomInset();
 
-        mAvatarView = findViewById(R.id.share_activity_space_avatar_view);
+        View separatorView = findViewById(R.id.share_activity_bottom_header_view);
+        separatorView.setBackgroundColor(Design.SEPARATOR_COLOR);
 
-        mSpaceView = findViewById(R.id.share_activity_space_view);
-        mSpaceView.setOnClickListener(v -> onSpaceClick());
+        mPreviewView = findViewById(R.id.share_activity_bottom_preview_view);
+        mPreviewView.setClipToOutline(true);
 
-        layoutParams = mSpaceView.getLayoutParams();
-        layoutParams.height = SPACE_VIEW_HEIGHT;
+        layoutParams = mPreviewView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_PREVIEW_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_PREVIEW_SIZE * Design.HEIGHT_RATIO);
 
-        View currentSpaceView = findViewById(R.id.share_activity_current_space_view);
-
-        mGradientDrawable = new GradientDrawable();
-        mGradientDrawable.mutate();
-        mGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
-        mGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        currentSpaceView.setBackground(mGradientDrawable);
-
-        mNoSpaceAvatarView = findViewById(R.id.share_activity_no_space_avatar_view);
-
-        mNoSpaceAvatarGradientDrawable = new GradientDrawable();
-        mNoSpaceAvatarGradientDrawable.mutate();
-        mNoSpaceAvatarGradientDrawable.setColor(Design.BACKGROUND_COLOR_GREY);
-        mNoSpaceAvatarGradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        mNoSpaceAvatarView.setBackground(mNoSpaceAvatarGradientDrawable);
-
-        mSelectedUIContactView = findViewById(R.id.share_activity_layout_selected_view);
-        mSelectedUIContactView.setBackgroundColor(Design.WHITE_COLOR);
-
-        layoutParams = mSelectedUIContactView.getLayoutParams();
-        layoutParams.height = Design.SELECTED_ITEM_VIEW_HEIGHT;
-        mSelectedUIContactView.setLayoutParams(layoutParams);
-
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mSelectedUIContactView.getLayoutParams();
-        marginLayoutParams.bottomMargin = SELECTED_BOTTOM_MARGIN;
-
-        View commentView = findViewById(R.id.share_activity_comment_view);
-        commentView.setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
-
-        layoutParams = commentView.getLayoutParams();
-        layoutParams.height = (int) (DESIGN_COMMENT_VIEW_HEIGHT * Design.HEIGHT_RATIO);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mPreviewView.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_EDIT_TEXT_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.leftMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
         mEditText = findViewById(R.id.share_activity_comment_edit_text);
         Design.updateTextFont(mEditText, Design.FONT_REGULAR30);
         mEditText.setTextColor(Design.FONT_COLOR_DEFAULT);
         mEditText.setHintTextColor(Design.PLACEHOLDER_COLOR);
 
-        float radius = DESIGN_EDIT_TEXT_RADIUS * Resources.getSystem().getDisplayMetrics().density;
-        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-        ShapeDrawable editTextBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        editTextBackground.getPaint().setColor(Design.FORWARD_COMMENT_COLOR);
-        mEditText.setBackground(editTextBackground);
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEditText.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
 
         mEditText.setPadding((int) (DESIGN_EDIT_TEXT_WIDTH_INSET * Design.WIDTH_RATIO), (int) (DESIGN_EDIT_TEXT_HEIGHT_INSET * Design.HEIGHT_RATIO), (int) (DESIGN_EDIT_TEXT_WIDTH_INSET * Design.WIDTH_RATIO), (int) (DESIGN_EDIT_TEXT_HEIGHT_INSET * Design.HEIGHT_RATIO));
 
@@ -1014,8 +1105,69 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             mEditText.setText(mMessageFromIntent);
         }
 
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mEditText.getLayoutParams();
+        marginLayoutParams.topMargin = (int) (DESIGN_EDIT_TEXT_MARGIN * Design.HEIGHT_RATIO);
+
+        ViewTreeObserver viewTreeObserver = mEditText.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                ViewTreeObserver viewTreeObserver = mEditText.getViewTreeObserver();
+                viewTreeObserver.removeOnGlobalLayoutListener(this);
+
+                int defaultHeight = (int) (DESIGN_EDIT_TEXT_HEIGHT * Design.HEIGHT_RATIO);
+                float radius = defaultHeight * 0.5f;
+                boolean darkMode = false;
+                int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                int displayMode = Settings.displayMode.getInt();
+                if ((currentNightMode == Configuration.UI_MODE_NIGHT_YES && displayMode == DisplayMode.SYSTEM.ordinal()) || displayMode == DisplayMode.DARK.ordinal()) {
+                    darkMode = true;
+                }
+
+                GradientDrawable gradientDrawable = new GradientDrawable();
+                gradientDrawable.setColor(Design.EDIT_TEXT_CONVERSATION_BACKGROUND_COLOR);
+                gradientDrawable.setCornerRadius(radius);
+                if (darkMode) {
+                    gradientDrawable.setStroke(3, EDIT_TEXT_BORDER_COLOR);
+                }
+
+                mEditText.setBackground(gradientDrawable);
+            }
+        });
+
+        List<FileInfo> sharedFiles = ShareUtils.getSharedFiles(getApplicationContext(), getIntent());
+        if (!sharedFiles.isEmpty()) {
+            mEditText.setVisibility(View.GONE);
+        }
+
+        View sendView = findViewById(R.id.share_activity_send_clickable_view);
+        sendView.setOnClickListener(v -> onSendClick());
+
+        layoutParams = sendView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_SEND_VIEW_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_SEND_VIEW_SIZE * Design.HEIGHT_RATIO);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) sendView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
+
+        View sendRoundedView = findViewById(R.id.share_activity_send_rounded_view);
+
+        float radius = (DESIGN_SEND_VIEW_SIZE * Design.HEIGHT_RATIO) * 0.5f;
+        float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+        ShapeDrawable sendBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
+        sendBackground.getPaint().setColor(Design.getMainStyle());
+        sendRoundedView.setBackground(sendBackground);
+
+        ImageView sendImageView = findViewById(R.id.share_activity_send_image_view);
+        sendImageView.setColorFilter(Color.WHITE);
+
+        layoutParams = sendImageView.getLayoutParams();
+        layoutParams.width = (int) (DESIGN_SEND_ICON_SIZE * Design.HEIGHT_RATIO);
+        layoutParams.height = (int) (DESIGN_SEND_ICON_SIZE * Design.HEIGHT_RATIO);
+
         LinearLayoutManager uiContactLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        mUIContactRecyclerView= findViewById(R.id.share_activity_list_view);
+        mUIContactRecyclerView = findViewById(R.id.share_activity_list_view);
         mUIContactRecyclerView.setLayoutManager(uiContactLinearLayoutManager);
         mUIContactRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         mUIContactRecyclerView.setItemAnimator(null);
@@ -1030,6 +1182,12 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         mSelectedUIContactRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         mSelectedUIContactRecyclerView.setItemAnimator(null);
 
+        layoutParams = mSelectedUIContactRecyclerView.getLayoutParams();
+        layoutParams.height = Design.SELECTED_ITEM_VIEW_HEIGHT;
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mSelectedUIContactRecyclerView.getLayoutParams();
+        marginLayoutParams.rightMargin = (int) (DESIGN_SEND_VIEW_SIZE * Design.HEIGHT_RATIO) + (int) (DESIGN_HORIZONTAL_MARGIN * Design.WIDTH_RATIO * 2);
+
         mProgressBarView = findViewById(R.id.share_activity_progress_bar);
 
         // Setup the service after the view is initialized but before the adapter!
@@ -1038,7 +1196,7 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         mAsyncItemLoader = new Manager<>(this, getTwinmeContext(), this);
 
         mShareListAdapter = new ShareListAdapter(this, mShareService, Design.ITEM_VIEW_HEIGHT, mUIContacts, mUIGroups, R.layout.add_group_member_contact_item, R.id.add_group_member_activity_contact_item_name_view,
-                R.id.add_group_member_activity_contact_item_avatar_view,  R.id.add_group_member_activity_contact_item_certified_image_view, R.id.add_group_member_activity_contact_item_separator_view);
+                R.id.add_group_member_activity_contact_item_avatar_view, R.id.add_group_member_activity_contact_item_certified_image_view, R.id.add_group_member_activity_contact_item_separator_view);
         mUIContactRecyclerView.setAdapter(mShareListAdapter);
 
         mSelectedUIContactListAdapter = new UIContactListAdapter(this, mShareService, Design.SELECTED_ITEM_VIEW_HEIGHT, mSelectedUIContact,
@@ -1048,13 +1206,38 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         mUIInitialized = true;
     }
 
-    private void sendFile(Uri file, String filename, Descriptor.Type type, boolean allowCopy) {
+    private void updateViews() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "updateViews");
+        }
+
+        if (!mUIInitialized) {
+            return;
+        }
+
+        if (mItem != null && isMediaItem()) {
+            mPreviewView.setVisibility(View.VISIBLE);
+            mPreviewView.setImageBitmap(null);
+            ConversationService.FileDescriptor descriptor = getFileDescriptor(mItem);
+
+            Glide.with(this)
+                    .asBitmap()
+                    .load(descriptor)
+                    .apply(Modes.AS_THUMBNAIL)
+                    .centerInside()
+                    .into(mPreviewView);
+        }  else {
+            mPreviewView.setVisibility(View.GONE);
+        }
+    }
+
+    private void sendFile(Uri file, String filename, Descriptor.Type type, boolean allowCopy, long expireTimeout) {
         if (DEBUG) {
             Log.d(LOG_TAG, "sendFile");
         }
 
         // Send the file asynchronously to avoid blocking the UI thread.
-        mShareService.pushFile(file, filename, type, false, allowCopy, null, null, 0);
+        mShareService.pushFile(file, filename, type, false, allowCopy, null, null, expireTimeout);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -1064,38 +1247,25 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         }
 
         if (mUIInitialized) {
-
             mShareListAdapter.notifyDataSetChanged();
 
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) mUIContactRecyclerView.getLayoutParams();
+            int bottomMargin = getBarBottomInset();
             if (mSelectedUIContact.isEmpty()) {
                 mUIContactRecyclerView.requestLayout();
-                mSelectedUIContactView.setVisibility(View.GONE);
-
-                if (mMenu != null) {
-                    MenuItem sendMenuItem = mMenu.findItem(R.id.add_action);
-                    CommonUtils.setMenuItem(sendMenuItem, false, 0.5f, 1.0f);
-                }
+                mBottomView.setVisibility(View.GONE);
+                marginLayoutParams.bottomMargin = bottomMargin;
             } else {
-                mSelectedUIContactView.setVisibility(View.VISIBLE);
-
-                if (mMenu != null) {
-                    MenuItem sendMenuItem = mMenu.findItem(R.id.add_action);
-                    CommonUtils.setMenuItem(sendMenuItem, true, 0.5f, 1.0f);
-                }
-
-                ViewGroup.LayoutParams layoutParams = mSelectedUIContactRecyclerView.getLayoutParams();
-                layoutParams.height = Design.SELECTED_ITEM_VIEW_HEIGHT;
-                layoutParams.width = (mSelectedUIContact.size() + 1) * Design.SELECTED_ITEM_VIEW_HEIGHT;
-                mSelectedUIContactRecyclerView.setLayoutParams(layoutParams);
-                mSelectedUIContactRecyclerView.requestLayout();
+                mBottomView.setVisibility(View.VISIBLE);
                 mSelectedUIContactListAdapter.notifyDataSetChanged();
+                marginLayoutParams.bottomMargin = 0;
             }
         }
     }
 
-    private void onSendClicked() {
+    private void onSendClick() {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onSendClicked");
+            Log.d(LOG_TAG, "onSendClick");
         }
 
         if (mSelectedUIContact.isEmpty()) {
@@ -1104,32 +1274,63 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
             return;
         }
 
-        List<FileInfo> sharedFiles = ShareUtils.getSharedFiles(getApplicationContext(), getIntent());
+        if (mEditText.getVisibility() == View.VISIBLE && mEditText.getText() != null && !mEditText.getText().toString().isEmpty()) {
+            mDeferredMessage = mEditText.getText().toString();
+        }
 
+        List<FileInfo> sharedFiles = ShareUtils.getSharedFiles(getApplicationContext(), getIntent());
         if (sharedFiles.isEmpty()) {
             // Get the first selected contact and remove it from the list immediately.
             UIContact uiContact = mSelectedUIContact.remove(0);
             mShareService.getConversation(uiContact.getContact());
-
         } else {
-            getTwinmeContext().execute(() -> {
-
-                for (FileInfo media: sharedFiles) {
-                    if (media.getFilename() != null) {
-                        // The file can be sent only when it has a filename.
-                        mSharedFiles.add(media);
-                    }
-                }
-
-                runOnUiThread(() -> {
-                    if (!mSelectedUIContact.isEmpty()) {
-                        // Get the first selected contact and remove it from the list immediately.
-                        UIContact uiContact = mSelectedUIContact.remove(0);
-                        mShareService.getConversation(uiContact.getContact());
-                    }
-                });
-            });
+            startPreview();
         }
+    }
+
+    private void startPreview() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "startPreview");
+        }
+
+        List<FileInfo> sharedFiles = ShareUtils.getSharedFiles(getApplicationContext(), getIntent());
+
+        for (FileInfo media : sharedFiles) {
+            if (media.getFilename() != null) {
+                // The file can be sent only when it has a filename.
+                mSharedFiles.add(media);
+            }
+        }
+
+        Intent intent = new Intent(this, PreviewFileActivity.class);
+        if (mSelectedUIContact.size() == 1) {
+            UUID contactId = mSelectedUIContact.get(0).getId();
+            intent.putExtra(Intents.INTENT_CONTACT_ID, contactId.toString());
+        } else {
+            StringBuilder contactName = new StringBuilder();
+            for (UIContact uiContact : mSelectedUIContact) {
+                if (contactName.length() != 0) {
+                    contactName.append(", ");
+                }
+                contactName.append(uiContact.getName());
+            }
+            intent.putExtra(Intents.INTENT_CONTACT_NAME, contactName.toString());
+        }
+
+        intent.putExtra(Intents.INTENT_PREVIEW_START_WITH_MEDIA, true);
+        intent.putExtra(Intents.INTENT_SELECTED_FILES, new ArrayList<>(mSharedFiles));
+        intent.putExtra(Intents.INTENT_ALLOW_COPY_FILE, getTwinmeApplication().fileCopyAllowed());
+        startActivityForResult(intent, REQUEST_PREVIEW_FILE);
+    }
+
+    private void sendFilesFromPreview() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "sendFilesFromPreview");
+        }
+
+        // Get the first selected contact and remove it from the list immediately.
+        UIContact uiContact = mSelectedUIContact.remove(0);
+        mShareService.getConversation(uiContact.getContact());
     }
 
     private void postInitViews() {
@@ -1196,51 +1397,73 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         startActivityForResult(intent, CHANGE_SPACE);
     }
 
-    private void updateSpace() {
+    private void updateSpace(Space space) {
         if (DEBUG) {
             Log.d(LOG_TAG, "updateSpace");
         }
 
-        if (!mUIInitialized || mSpace == null) {
-
+        if (space == null || mSpaceAvatarView == null || mNoAvatarView == null || mSpaceNameView == null) {
             return;
-        }
-
-        if (mShareService.numberSpaces(false) == 1) {
-            mSpaceView.setVisibility(View.GONE);
-        } else {
-            mSpaceView.setVisibility(View.VISIBLE);
-        }
-
-        mSpaceNameView.setText(mSpace.getName());
-        if (mSpace.getProfile() != null) {
-            mProfileView.setText(mSpace.getProfile().getName());
         }
 
         float corner = DESIGN_ITEM_ROUND_CORNER_RADIUS_DP * Resources.getSystem().getDisplayMetrics().density;
         float[] radii = new float[8];
         Arrays.fill(radii, corner);
-
-        if (mSpace.hasSpaceAvatar()) {
-            mAvatarView.setVisibility(View.VISIBLE);
-            mNoSpaceAvatarView.setVisibility(View.GONE);
-            mShareService.getSpaceImage(mSpace, (Bitmap spaceAvatar) ->
-                    mAvatarView.setImageBitmap(spaceAvatar, radii));
-
+        if (space.getSpaceAvatarId() != null) {
+            mSpaceAvatarView.setVisibility(View.VISIBLE);
+            mNoAvatarView.setVisibility(View.GONE);
+            mShareService.getSpaceImage(space, (Bitmap avatar) -> {
+                mSpaceAvatarView.setImageBitmap(avatar);
+            });
+            mSpaceNameView.setVisibility(View.GONE);
         } else {
-            mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
-            mAvatarView.setVisibility(View.GONE);
-            mNoSpaceAvatarView.setVisibility(View.VISIBLE);
+            mNoAvatarGradientDrawable.setCornerRadii(radii);
+            mSpaceAvatarView.setVisibility(View.GONE);
+            mNoAvatarView.setVisibility(View.VISIBLE);
+            mSpaceNameView.setVisibility(View.VISIBLE);
+
+            String name = space.getName();
+            if (!name.isEmpty()) {
+                mSpaceNameView.setText(name.substring(0, 1).toUpperCase());
+            }
+            mNoAvatarGradientDrawable.setColor(Design.getDefaultColor(space.getSpaceSettings().getStyle()));
+        }
+    }
+
+    private boolean isMediaItem() {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "postInitViews");
         }
 
-        if (CommonUtils.isLayoutDirectionRTL()) {
-            mGradientDrawable.setCornerRadii(new float[]{corner, corner, 0, 0, 0, 0, corner, corner});
-        } else {
-            mGradientDrawable.setCornerRadii(new float[]{0, 0, corner, corner, corner, corner, 0, 0});
-        }
+        return mItem != null
+                && (mItem.getType() == Item.ItemType.IMAGE
+                || mItem.getType() == Item.ItemType.PEER_IMAGE
+                || mItem.getType() == Item.ItemType.VIDEO
+                || mItem.getType() == Item.ItemType.PEER_VIDEO);
+    }
 
-        mGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_GREY));
-        mNoSpaceAvatarGradientDrawable.setColor(CommonUtils.parseColor(mSpace.getStyle(), Design.BACKGROUND_COLOR_GREY));
+    @NonNull
+    private static ConversationService.FileDescriptor getFileDescriptor(Item item) {
+        ConversationService.FileDescriptor descriptor;
+
+        if (item.getType() == Item.ItemType.IMAGE || item.getType() == Item.ItemType.PEER_IMAGE) {
+            if (item.isPeerItem()) {
+                final PeerImageItem peerImageItem = (PeerImageItem) item;
+                descriptor = peerImageItem.getImageDescriptor();
+            } else {
+                final ImageItem imageItem = (ImageItem) item;
+                descriptor = imageItem.getImageDescriptor();
+            }
+        } else {
+            if (item.isPeerItem()) {
+                final PeerVideoItem peerVideoItem = (PeerVideoItem) item;
+                descriptor = peerVideoItem.getVideoDescriptor();
+            } else {
+                final VideoItem videoItem = (VideoItem) item;
+                descriptor = videoItem.getVideoDescriptor();
+            }
+        }
+        return descriptor;
     }
 
     @NonNull
@@ -1263,15 +1486,5 @@ public class ShareActivity extends BaseItemActivity implements ShareService.Obse
         }
 
         return res;
-    }
-
-    @Override
-    public void setupDesign() {
-        if (DEBUG) {
-            Log.d(LOG_TAG, "setupDesign");
-        }
-
-        SELECTED_BOTTOM_MARGIN = (int) (DESIGN_SELECTED_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
-        SPACE_VIEW_HEIGHT = (int) (DESIGN_SPACE_VIEW_HEIGHT * Design.HEIGHT_RATIO);
     }
 }

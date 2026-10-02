@@ -132,13 +132,13 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         int viewType = getItemViewType(position);
         UIPrivacyItem item = mPrivacyItems.get(position);
 
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(item.getText(), false);
-        } else if (viewType == TITLE) {
+        } else if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getText(), false);
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX && viewHolder instanceof SettingSwitchViewHolder) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
             UISetting<Boolean> uiSetting = null;
             if (item.getType() == UIPrivacyItem.PrivacyItemType.LOCKSCREEN_ENABLE) {
@@ -157,20 +157,21 @@ public class PrivacyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), true, onCheckedChangeListener);
                 }
             }
-        } else if (viewType == TIMEOUT) {
+        } else if (viewType == TIMEOUT  && viewHolder instanceof SettingValueViewHolder) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             Runnable runnable = () -> mPrivacyActivity.onSettingClick(Settings.privacyScreenLockTimeout);
             settingValueViewHolder.onBind(item.getText(), mPrivacyActivity.getTwinmeApplication().screenLockTimeout(), true, Settings.privacyScreenLockTimeout, runnable);
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE  && viewHolder instanceof SelectValueViewHolder) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(v -> mPrivacyActivity.onSelectShareInvitationModeClick());
 
+            final ShareInvitationMode shareInvitationMode = mPrivacyActivity.getTwinmeApplication().getShareInvitationMode();
             String value = "";
-            if (mPrivacyActivity.getTwinmeApplication().getShareInvitationMode() == ShareInvitationMode.NEVER) {
+            if (shareInvitationMode == ShareInvitationMode.NEVER) {
                 value = mPrivacyActivity.getString(R.string.contact_capabilities_view_camera_control_never);
-            } else if (mPrivacyActivity.getTwinmeApplication().getShareInvitationMode() == ShareInvitationMode.ASK) {
+            } else if (shareInvitationMode == ShareInvitationMode.ASK) {
                 value = mPrivacyActivity.getString(R.string.privacy_view_share_invitation_ask);
-            } else if (mPrivacyActivity.getTwinmeApplication().getShareInvitationMode() == ShareInvitationMode.AUTOMATIC) {
+            } else if (shareInvitationMode == ShareInvitationMode.AUTOMATIC) {
                 value = mPrivacyActivity.getString(R.string.contact_capabilities_view_camera_control_allow);
             }
 

@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">Salli sovelluksen käyttää Valokuvia järjestelmän asetuksissa.</string>
     <string name="application_authorization_microphone_camera">Salli sovelluksen käyttää Valokuvia ja Kameraa järjestelmän asetuksissa.</string>
     <string name="application_authorization_title">Puuttuva käyttöoikeus</string>
-    <string name="application_back">Takaisin</string>
     <string name="application_backup_restore">Varmuuskopion palautus</string>
     <string name="application_backup_verify">Varmuuskopion varmistus</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Peruuta</string>
     <string name="application_canceled_operation">Peruutettu toiminta</string>
     <string name="application_checking_connection">Tarkistaa yhteyttä</string>
     <string name="application_color">Väri</string>
     <string name="application_configuration">Kokoonpano</string>
-    <string name="application_confirm">Vahvistaa</string>
     <string name="application_confirm_deletion">Vahvista poisto</string>
     <string name="application_connected">Suojattu yhteys käytössä.</string>
     <string name="application_connection_status_no_network">Ei Internet-yhteyttä.</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">Ryhmän jäsenten enimmäismäärä (%1$d) ylittyi.</string>
     <string name="application_group_not_found">Olet poistettu ryhmästä</string>
     <string name="application_items_selected">%1$d kohdetta valittu</string>
-    <string name="application_later">Myöhemmin</string>
     <string name="application_location">Geolocation</string>
     <string name="application_location_enabled">Salli sovelluksen käyttää sijaintia järjestelmäasetuksissa.</string>
     <string name="application_low_usage_message">Varoitus, jos et käytä sovellusta tarpeeksi usein, käyttöjärjestelmä ei ehkä herätä sitä viestien vaihtamiseen!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">Suojattu yhteys käynnissä…</string>
     <string name="application_not_signed_in">Ei yhteydessä Skred-palveluun</string>
     <string name="application_now">Nyt</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Toimintahäiriö</string>
     <string name="application_operation_irreversible">Tämä toimenpide on peruuttamaton</string>
     <string name="application_permission_camera">Uuden valokuvan tai videon ottaminen edellyttää lupaa käyttää kameraa.</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">Sulje sovellus ja käynnistä se uudelleen päästäksesi uusiin tietoihin.</string>
     <string name="account_migration_view_confirm_cancel_message">Haluatko varmasti peruuttaa siirron?</string>
     <string name="account_migration_view_database">Tietokanta</string>
+    <string name="account_migration_view_display">Näyttö</string>
     <string name="account_migration_view_finalizing">Viimeistellään</string>
     <string name="account_migration_view_initializing">Alustaa</string>
     <string name="account_migration_view_my_device">Laitteeni</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">Avaa sovellus toisella laitteella</string>
     <string name="account_migration_scanner_view_step_2">Siirry sivuvalikkoon</string>
     <string name="account_migration_scanner_view_step_3">Valitse \"Tili\"</string>
+    <string name="account_migration_scanner_view_step_4">Käynnistä tilin siirto</string>
     <string name="account_migration_scanner_view_step_4_my_device">Aloita siirto tästä laitteesta</string>
     <string name="account_migration_scanner_view_step_4_another_device">Aloita siirto toisesta laitteesta</string>
     <string name="account_migration_scanner_view_step_5_my_device">Skannaa toisella laitteella näkyvä QR-koodi tällä laitteella</string>
@@ -681,7 +678,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Vahvista tilin poistaminen kirjoittamalla alla olevat kirjaimet \"OK\".</string>
     <string name="deleted_account_view_delete">Poista tili</string>
-    <string name="deleted_account_view_warning">Huomio‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Tilisi on poistettu ja kaikki siihen liittyvät tiedot on tuhottu.&lt;br /&gt;
@@ -700,7 +696,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Haluatko varmasti poistaa tämän suhteen?</string>
-    <string name="edit_contact_view_message">Tämä yhteyshenkilö ei voi enää tavoittaa sinua.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Haluatko varmasti poistaa tämän \"Click-to-Call\" -koodin?</string>
@@ -1393,7 +1388,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Tapahtui virhe. Ole hyvä ja yritä uudelleen.</string>
     <string name="streaming_audio_view_no_music_message">Median jakaminen</string>
     <string name="streaming_audio_view_no_music_title">Musiikkia ei löytynyt 🙁</string>
     <string name="streaming_audio_view_title">Median jakaminen</string>
@@ -1474,5 +1468,4 @@
     <string name="welcome_view_step3_message">Ei puhelinnumeroa, osoitekirjaa, ei käyttäjätunnusta: voit valita, miten haluat tulla tunnistetuksi sen perusteella, kenen kanssa olet yhteydessä.</string>
     <string name="welcome_view_terms_of_use">Käyttöehdot</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

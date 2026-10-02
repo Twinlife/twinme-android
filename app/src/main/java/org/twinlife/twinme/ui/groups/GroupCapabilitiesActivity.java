@@ -32,6 +32,7 @@ import org.twinlife.twinme.models.schedule.Date;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
@@ -157,8 +158,9 @@ public class GroupCapabilitiesActivity extends AbstractCapabilitiesActivity impl
         if (mCapabilities.getSchedule() != null) {
             Schedule schedule = mCapabilities.getSchedule();
             mScheduleEnable = schedule.isEnabled();
-            if (!schedule.getTimeRanges().isEmpty()) {
-                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+            final TimeRange timeRange = schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange instanceof DateTimeRange) {
+                DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                 mScheduleStartDate = dateTimeRange.start.date;
                 mScheduleStartTime = dateTimeRange.start.time;
                 mScheduleEndDate = dateTimeRange.end.date;

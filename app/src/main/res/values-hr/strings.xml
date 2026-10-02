@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Dopustite aplikaciji pristup mikrofonu u postavkama sustava.</string>
     <string name="application_authorization_microphone_camera">Dopustite aplikaciji pristup mikrofonu i kameri u postavkama sustava.</string>
     <string name="application_authorization_title">Nedostaje odobrenje pristupa</string>
-    <string name="application_back">Natrag</string>
     <string name="application_backup_restore">Vrati sigurnosnu kopiju</string>
     <string name="application_backup_verify">Provjeri sigurnosnu kopiju</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Odustani</string>
     <string name="application_canceled_operation">Radnja je otkazana</string>
     <string name="application_checking_connection">Provjera veze</string>
     <string name="application_color">Boja</string>
     <string name="application_configuration">Konfiguracija</string>
-    <string name="application_confirm">Potvrdi</string>
     <string name="application_confirm_deletion">Potvrdite brisanje</string>
     <string name="application_connected">Sigurna veza je omogućena.</string>
     <string name="application_connection_status_no_network">Nema pristupa internetu.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Prekoračen je maksimalan broj (%1$d) članova grupe.</string>
     <string name="application_group_not_found">Uklonjeni ste iz grupe</string>
     <string name="application_items_selected">Odabrano stavki: %1$d</string>
-    <string name="application_later">Kasnije</string>
     <string name="application_location">Geolokacija</string>
     <string name="application_location_enabled">Aktivirajte uslugu Lokacije na svom uređaju.</string>
     <string name="application_low_usage_message">Upozorenje: ako aplikaciju ne koristite dovoljno često, OS je možda neće probuditi za razmjenu poruka!</string>
@@ -84,7 +80,6 @@
     <string name="application_not_connected">Sigurna veza u tijeku…</string>
     <string name="application_not_signed_in">Niste povezani s uslugom Skred</string>
     <string name="application_now">Sada</string>
-    <string name="application_ok">U redu</string>
     <string name="application_one_item_selected">Odabrana je 1 stavka</string>
     <string name="application_operation_failure">Neuspjela radnja</string>
     <string name="application_operation_irreversible">Ova je radnja nepovratna</string>
@@ -178,6 +173,7 @@
     <string name="account_migration_view_close_message">Zatvorite aplikaciju i ponovno je pokrenite kako biste pristupili novim podacima.</string>
     <string name="account_migration_view_confirm_cancel_message">Jeste li sigurni da želite otkazati migraciju?</string>
     <string name="account_migration_view_database">Baza podataka</string>
+    <string name="account_migration_view_display">Prikaz</string>
     <string name="account_migration_view_finalizing">Završavanje</string>
     <string name="account_migration_view_initializing">Inicijalizacija</string>
     <string name="account_migration_view_my_device">Moj uređaj</string>
@@ -221,6 +217,7 @@
     <string name="account_migration_scanner_view_step_1">Otvorite aplikaciju na drugom uređaju</string>
     <string name="account_migration_scanner_view_step_2">Idite na bočni izbornik</string>
     <string name="account_migration_scanner_view_step_3">Odaberite \"Račun\"</string>
+    <string name="account_migration_scanner_view_step_4">Pokreni migraciju računa</string>
     <string name="account_migration_scanner_view_step_4_my_device">Pokrenite prijenos s ovog uređaja</string>
     <string name="account_migration_scanner_view_step_4_another_device">Pokrenite prijenos s drugog uređaja</string>
     <string name="account_migration_scanner_view_step_5_my_device">Skenirajte QR kôd prikazan na drugom uređaju ovim uređajem</string>
@@ -684,7 +681,6 @@
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Vaš je račun izbrisan i svi povezani podaci su uništeni.&lt;br /&gt;
         Morate zatvoriti aplikaciju.</string>
-    <string name="deleted_account_view_warning">Upozorenje‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Dostupno</string>
@@ -699,7 +695,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Jeste li sigurni da želite izbrisati ovaj odnos?</string>
-    <string name="edit_contact_view_message">Ovaj vas kontakt više neće moći kontaktirati.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Jeste li sigurni da želite izbrisati ovaj kôd „Klikni za poziv”?</string>
@@ -1392,7 +1387,6 @@
     <string name="spaces_view_title">Prostori</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Došlo je do pogreške. Pokušajte ponovno.</string>
     <string name="streaming_audio_view_no_music_message">Prenesite glazbene datoteke na svoj uređaj.</string>
     <string name="streaming_audio_view_no_music_title">Nije pronađena glazba 🙁</string>
     <string name="streaming_audio_view_title">Dijeljenje medija</string>

@@ -180,44 +180,45 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
         if (descriptor != null) {
             mAnnotations = annotations;
 
+            final Descriptor replyToDescriptor = descriptor.getReplyToDescriptor();
             switch (descriptor.getType()) {
                 case OBJECT_DESCRIPTOR:
                     if (mIsPeerItem) {
-                        mItem = new PeerMessageItem((ConversationService.ObjectDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new PeerMessageItem((ConversationService.ObjectDescriptor) descriptor, replyToDescriptor);
                     } else {
-                        mItem = new MessageItem((ConversationService.ObjectDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new MessageItem((ConversationService.ObjectDescriptor) descriptor, replyToDescriptor);
                     }
                     break;
 
                 case NAMED_FILE_DESCRIPTOR:
                     if (mIsPeerItem) {
-                        mItem = new PeerFileItem((ConversationService.NamedFileDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new PeerFileItem((ConversationService.NamedFileDescriptor) descriptor, replyToDescriptor);
                     } else {
-                        mItem = new FileItem((ConversationService.NamedFileDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new FileItem((ConversationService.NamedFileDescriptor) descriptor, replyToDescriptor);
                     }
                     break;
 
                 case IMAGE_DESCRIPTOR:
                     if (mIsPeerItem) {
-                        mItem = new PeerImageItem((ConversationService.ImageDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new PeerImageItem((ConversationService.ImageDescriptor) descriptor, replyToDescriptor);
                     } else {
-                        mItem = new ImageItem((ConversationService.ImageDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new ImageItem((ConversationService.ImageDescriptor) descriptor, replyToDescriptor);
                     }
                     break;
 
                 case AUDIO_DESCRIPTOR:
                     if (mIsPeerItem) {
-                        mItem = new PeerAudioItem((ConversationService.AudioDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new PeerAudioItem((ConversationService.AudioDescriptor) descriptor, replyToDescriptor);
                     } else {
-                        mItem = new AudioItem((ConversationService.AudioDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new AudioItem((ConversationService.AudioDescriptor) descriptor, replyToDescriptor);
                     }
                     break;
 
                 case VIDEO_DESCRIPTOR:
                     if (mIsPeerItem) {
-                        mItem = new PeerVideoItem((ConversationService.VideoDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new PeerVideoItem((ConversationService.VideoDescriptor) descriptor, replyToDescriptor);
                     } else {
-                        mItem = new VideoItem((ConversationService.VideoDescriptor) descriptor, descriptor.getReplyToDescriptor());
+                        mItem = new VideoItem((ConversationService.VideoDescriptor) descriptor, replyToDescriptor);
                     }
                     break;
 
@@ -845,7 +846,7 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.info_item_activity);
 
         setStatusBarColor();
@@ -907,26 +908,29 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
             mStartAnnotationIndex = items.size();
 
-            if (mItem.getType() != Item.ItemType.CALL && mItem.getType() != Item.ItemType.PEER_CALL) {
+            final Item.ItemType itemType = mItem.getType();
+            final boolean isPeerItem = mItem.isPeerItem();
+            if (itemType != Item.ItemType.CALL && itemType != Item.ItemType.PEER_CALL) {
 
                 if (mContact != null) {
+                    final String contactName = isPeerItem ? mContact.getIdentityName() : mContact.getPeerName();
                     if (mItem.getReadTimestamp() > 0) {
                         items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_seen)));
-                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
+                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SEEN, mItem, contactName, isPeerItem ? mIdentityAvatar : mAvatar));
                     }
 
                     if (mItem.getReceivedTimestamp() > 0) {
                         items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_received)));
-                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mIdentityAvatar : mAvatar));
+                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.RECEIVED, mItem, contactName, isPeerItem ? mIdentityAvatar : mAvatar));
                     }
 
                     if (mItem.isEdited()) {
                         items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_updated) + " : "));
-                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, mItem.isPeerItem() ? mContact.getIdentityName() : mContact.getPeerName(), mItem.isPeerItem() ? mAvatar : mIdentityAvatar));
+                        items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.UPDATED, mItem, contactName, isPeerItem ? mAvatar : mIdentityAvatar));
                     }
 
                 } else if (mGroup != null) {
-                    if (mItem.isPeerItem()) {
+                    if (isPeerItem) {
                         Originator member = mGroupMembers.get(mItem.getPeerTwincodeOutboundId());
                         String memberName = member != null ? member.getName() : "";
 
@@ -954,10 +958,10 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
                 if (mContact != null) {
                     items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_sent)));
-                    items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, mItem.isPeerItem() ? mContact.getPeerName() : mContact.getIdentityName(), mItem.isPeerItem() ? mAvatar : mIdentityAvatar));
+                    items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, isPeerItem ? mContact.getPeerName() : mContact.getIdentityName(), isPeerItem ? mAvatar : mIdentityAvatar));
                 } else if (mGroup != null) {
                     items.add(new InfoSectionItem(mItem, getString(R.string.info_item_view_sent)));
-                    if (mItem.isPeerItem()) {
+                    if (isPeerItem) {
                         Originator member = mGroupMembers.get(mItem.getPeerTwincodeOutboundId());
                         String memberName = member != null ? member.getName() : "";
                         items.add(new InfoDateItem(InfoDateItem.InfoDateItemType.SENT, mItem, memberName, mAvatar));
@@ -995,7 +999,8 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
 
                 List<DescriptorAnnotation> descriptorAnnotations = annotation.getValue();
                 for (DescriptorAnnotation descriptorAnnotation : descriptorAnnotations) {
-                    if (descriptorAnnotation.getType() == ConversationService.AnnotationType.LIKE) {
+                    final ConversationService.AnnotationType annotationType = descriptorAnnotation.getType();
+                    if (annotationType == ConversationService.AnnotationType.LIKE) {
                         Bitmap avatar = mInfoItemService.getTwincodeImage(twincodeOutbound);
                         UIReaction uiReaction = new UIReaction((int) descriptorAnnotation.getValue());
 
@@ -1003,12 +1008,12 @@ public class InfoItemActivity extends BaseItemActivity implements InfoItemServic
                             UIAnnotation uiAnnotation = new UIAnnotation(uiReaction, name, avatar, -1, ConversationService.AnnotationType.LIKE);
                             uiAnnotations.add(uiAnnotation);
                         }
-                    } else if (descriptorAnnotation.getType() == ConversationService.AnnotationType.RECEIVED || descriptorAnnotation.getType() == ConversationService.AnnotationType.READ || descriptorAnnotation.getType() == ConversationService.AnnotationType.ERROR) {
+                    } else if (annotationType == ConversationService.AnnotationType.RECEIVED || annotationType == ConversationService.AnnotationType.READ || annotationType == ConversationService.AnnotationType.ERROR) {
                         Bitmap avatar = mInfoItemService.getTwincodeImage(twincodeOutbound);
                         long value = descriptorAnnotation.getValue();
 
                         if (name != null && avatar != null) {
-                            UIAnnotation uiAnnotation = new UIAnnotation(null, name, avatar, value, descriptorAnnotation.getType());
+                            UIAnnotation uiAnnotation = new UIAnnotation(null, name, avatar, value, annotationType);
                             uiAnnotations.add(uiAnnotation);
                         }
                     }

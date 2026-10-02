@@ -118,7 +118,7 @@ public class OnboardingExternalCallViewHolder extends RecyclerView.ViewHolder {
         } else {
             mCreateView.setVisibility(View.VISIBLE);
             if (fromSideMenu) {
-                mCreateTextView.setText(itemView.getContext().getString(R.string.application_ok));
+                mCreateTextView.setText(itemView.getContext().getString(org.twinlife.twinme.android.R.string.application_ok));
                 mDoNotShowView.setVisibility(View.INVISIBLE);
                 layoutParams.height = 0;
             } else {

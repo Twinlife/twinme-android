@@ -101,7 +101,7 @@ public class FAQActivity extends AbstractTwinmeActivity {
 
         FAQView faqView = new FAQView(this, null);
         faqView.setArticle((UIFAQArticle) uifaqItem);
-        faqView.setConfirmTitle(getString(R.string.application_ok));
+        faqView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

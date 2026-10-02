@@ -287,7 +287,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.add_call_participant_activity);
 
         setStatusBarColor();
@@ -576,7 +576,7 @@ public class AddCallParticipantActivity extends AbstractTwinmeActivity implement
                 int countParticipants = mParticipantsUUID.size() + contactsId.size() + 1;
 
                 if (countParticipants >= mMaxMemberCount && mMaxMemberCount != 0) {
-                    showAlertMessageView(R.id.add_call_participant_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), mMaxMemberCount), false, null);
+                    showAlertMessageView(R.id.add_call_participant_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), mMaxMemberCount), false, null);
 
                     return false;
                 }

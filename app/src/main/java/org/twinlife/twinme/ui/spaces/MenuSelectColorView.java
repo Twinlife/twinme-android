@@ -39,6 +39,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.UICustomColor;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 import org.twinlife.twinme.utils.RoundedView;
 
@@ -76,8 +77,8 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
     private RoundedView mPreviewView;
     private View mConfirmView;
     private RecyclerView mUIColorRecyclerView;
-    private ColorSpaceAdapter mUIColorSpaceListAdapter;
-    private List<UIColorSpace> mUIColors;
+    private ColorSpaceAdapter mUICustomColorListAdapter;
+    private List<UICustomColor> mUIColors;
 
     public interface OnMenuColorListener {
 
@@ -132,13 +133,13 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
         }
 
         mDefaultColor = defaultColor;
-        mUIColorSpaceListAdapter.setDefaultColor(defaultColor);
+        mUICustomColorListAdapter.setDefaultColor(defaultColor);
 
         mTitleView.setText(title);
 
         boolean findColor = false;
 
-        for (UIColorSpace customColor : mUIColors) {
+        for (UICustomColor customColor : mUIColors) {
             if (customColor.getStringColor() != null && customColor.getStringColor().equals(color)) {
                 customColor.setSelected(true);
                 findColor = true;
@@ -149,18 +150,18 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
 
         if (!findColor) {
             if (!mUIColors.isEmpty() && defaultColor.equals(color)) {
-                UIColorSpace customColor = mUIColors.get(0);
+                UICustomColor customColor = mUIColors.get(0);
                 customColor.setSelected(true);
-                mUIColorSpaceListAdapter.setSelectedColor(color);
+                mUICustomColorListAdapter.setSelectedColor(color);
             } else if (color != null) {
                 mEnterColorEnable = true;
-                mUIColorSpaceListAdapter.setEnterColorEnable(true);
+                mUICustomColorListAdapter.setEnterColorEnable(true);
                 Pattern colorPattern = Pattern.compile("^#([A-Fa-f0-9]{6})$");
                 Matcher matcher = colorPattern.matcher(color);
                 boolean isColor = matcher.matches();
                 if (isColor) {
                     mPreviewView.setColor(Color.parseColor(color));
-                    mUIColorSpaceListAdapter.setSelectedColor(color);
+                    mUICustomColorListAdapter.setSelectedColor(color);
                     mEnterColorEditText.setText(color.substring(1));
                 } else {
                     mPreviewView.setColor(Design.EDIT_TEXT_BACKGROUND_COLOR);
@@ -169,7 +170,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
                 mPreviewView.invalidate();
             }
         } else {
-            mUIColorSpaceListAdapter.setSelectedColor(color);
+            mUICustomColorListAdapter.setSelectedColor(color);
         }
 
         InputFilter alphaNumericFilter = (charSequence, i, i1, spanned, i2, i3) -> {
@@ -311,11 +312,11 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
 
         mAppearanceActivity = activity;
 
-        if (mUIColorSpaceListAdapter == null) {
+        if (mUICustomColorListAdapter == null) {
 
             ColorSpaceAdapter.OnColorClickListener onColorClickListener = new ColorSpaceAdapter.OnColorClickListener() {
                 @Override
-                public void onUpdateColor(UIColorSpace color) {
+                public void onUpdateColor(UICustomColor color) {
 
                     onSelectColorClick(color);
                 }
@@ -329,11 +330,11 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
 
             int colorWidth = (int) (Design.BUTTON_WIDTH - (DESIGN_COLOR_MARGIN * 2 * Design.HEIGHT_RATIO)) / (mUIColors.size() + 1);
 
-            mUIColorSpaceListAdapter = new ColorSpaceAdapter(activity, mUIColors, onColorClickListener, colorWidth);
+            mUICustomColorListAdapter = new ColorSpaceAdapter(activity, mUIColors, onColorClickListener, colorWidth);
             LinearLayoutManager uiColorsLinearLayoutManager = new LinearLayoutManager(mAppearanceActivity, RecyclerView.HORIZONTAL, false);
             mUIColorRecyclerView = findViewById(R.id.menu_select_color_view_color_list_view);
             mUIColorRecyclerView.setLayoutManager(uiColorsLinearLayoutManager);
-            mUIColorRecyclerView.setAdapter(mUIColorSpaceListAdapter);
+            mUIColorRecyclerView.setAdapter(mUICustomColorListAdapter);
             mUIColorRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
             mUIColorRecyclerView.setItemAnimator(null);
             OnColorSpaceTouchListener onTouchListener = new OnColorSpaceTouchListener(mAppearanceActivity, mUIColorRecyclerView, this);
@@ -350,9 +351,9 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
     //
 
     @Override
-    public boolean onUIColorSpaceClick(RecyclerView recyclerView, int position) {
+    public boolean onUICustomColorClick(RecyclerView recyclerView, int position) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onUIColorSpaceClick position=" + position);
+            Log.d(LOG_TAG, "onUICustomColorClick position=" + position);
         }
 
         if (recyclerView == mUIColorRecyclerView && position >= 0 && position < mUIColors.size()) {
@@ -527,16 +528,16 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
         Design.updateTextFont(cancelTextView, Design.FONT_BOLD36);
         cancelTextView.setTextColor(Design.FONT_COLOR_DEFAULT);
 
-        mUIColors = Design.spaceColors();
+        mUIColors = Design.mainColors();
 
-        UIColorSpace colorSpace = mUIColors.get(0);
+        UICustomColor colorSpace = mUIColors.get(0);
         colorSpace.setSelected(true);
 
         if (mAppearanceActivity != null) {
 
             ColorSpaceAdapter.OnColorClickListener onColorClickListener = new ColorSpaceAdapter.OnColorClickListener() {
                 @Override
-                public void onUpdateColor(UIColorSpace color) {
+                public void onUpdateColor(UICustomColor color) {
 
                     onSelectColorClick(color);
                 }
@@ -549,11 +550,11 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
 
             int colorWidth = (int) (Design.BUTTON_WIDTH - (DESIGN_COLOR_MARGIN * 2 * Design.HEIGHT_RATIO)) / (mUIColors.size() + 1);
 
-            mUIColorSpaceListAdapter = new ColorSpaceAdapter(mAppearanceActivity, mUIColors, onColorClickListener, colorWidth);
+            mUICustomColorListAdapter = new ColorSpaceAdapter(mAppearanceActivity, mUIColors, onColorClickListener, colorWidth);
             LinearLayoutManager uiColorsLinearLayoutManager = new LinearLayoutManager(mAppearanceActivity, RecyclerView.HORIZONTAL, false);
             mUIColorRecyclerView = findViewById(R.id.menu_select_color_view_color_list_view);
             mUIColorRecyclerView.setLayoutManager(uiColorsLinearLayoutManager);
-            mUIColorRecyclerView.setAdapter(mUIColorSpaceListAdapter);
+            mUIColorRecyclerView.setAdapter(mUICustomColorListAdapter);
             mUIColorRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
             mUIColorRecyclerView.setItemAnimator(null);
 
@@ -575,7 +576,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
         enterColor();
     }
 
-    private void onSelectColorClick(UIColorSpace color) {
+    private void onSelectColorClick(UICustomColor color) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSelectColorClick");
         }
@@ -590,7 +591,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
         }
 
         mConfirmView.setAlpha(1.0f);
-        mUIColorSpaceListAdapter.setSelectedColor(mHexColor);
+        mUICustomColorListAdapter.setSelectedColor(mHexColor);
     }
 
     private void onCloseMenuClick() {
@@ -620,7 +621,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
             Log.d(LOG_TAG, "enterColor");
         }
 
-        mUIColorSpaceListAdapter.setEnterColorEnable(mEnterColorEnable);
+        mUICustomColorListAdapter.setEnterColorEnable(mEnterColorEnable);
 
         if (mEnterColorEnable) {
             mEnterColorTextView.setVisibility(VISIBLE);
@@ -652,7 +653,7 @@ public class MenuSelectColorView extends RelativeLayout implements OnColorSpaceT
         }
 
         mPreviewView.invalidate();
-        mUIColorSpaceListAdapter.setSelectedColor(mHexColor);
+        mUICustomColorListAdapter.setSelectedColor(mHexColor);
     }
 
     private void hideKeyboard() {

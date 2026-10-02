@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020-2025 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -417,7 +417,8 @@ public class NotificationsFragment extends TabbarFragment implements Notificatio
 
     private void getAvatar(@NonNull Notification notification, @Nullable GroupMember groupMember, TwinmeContext.Consumer<Bitmap> uiConsumer) {
 
-        Originator originator = (Originator) notification.getSubject();
+        final RepositoryObject subject = notification.getSubject();
+        final Originator originator = subject instanceof Originator ? (Originator) subject : null;
         if (groupMember != null && notification.getNotificationType() != org.twinlife.twinlife.NotificationService.NotificationType.NEW_CONTACT_INVITATION) {
 
             mNotificationService.getGroupMemberImage(groupMember, uiConsumer);

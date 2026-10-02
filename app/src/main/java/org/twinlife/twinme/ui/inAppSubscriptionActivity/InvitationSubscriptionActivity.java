@@ -102,7 +102,7 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.invitation_subscription_activity);
 
         setStatusBarColor();
@@ -355,7 +355,7 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -364,6 +364,6 @@ public class InvitationSubscriptionActivity extends AbstractScannerActivity {
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.invitation_subscription_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 }

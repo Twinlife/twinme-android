@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.media.AudioManager;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
@@ -34,6 +35,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.media3.common.AudioAttributes;
+import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
@@ -45,6 +48,9 @@ import org.twinlife.twinlife.ConversationService.ImageDescriptor;
 import org.twinlife.twinlife.ConversationService.NamedFileDescriptor;
 import org.twinlife.twinlife.ConversationService.ObjectDescriptor;
 import org.twinlife.twinlife.ConversationService.VideoDescriptor;
+import org.twinlife.twinme.audio.AudioDevice;
+import org.twinlife.twinme.audio.ProximitySensor;
+import org.twinlife.twinme.audio.TwinmeAudioManager;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.utils.AudioTrack;
 import org.twinlife.twinme.utils.AudioTrackView;
@@ -95,6 +101,11 @@ public class AudioItemViewHolder extends ItemViewHolder {
     private final EphemeralView mEphemeralView;
 
     private CountDownTimer mTimer;
+
+    @Nullable
+    private ProximitySensor mProximitySensor = null;
+    @Nullable
+    private TwinmeAudioManager mTwinmeAudioManager = null;
 
     @Nullable
     ExoPlayer mExoPlayer = null;
@@ -443,6 +454,8 @@ public class AudioItemViewHolder extends ItemViewHolder {
 
         super.onViewRecycled();
 
+        resetView();
+
         mAudioTrackView.initTrack(null, Design.AUDIO_TRACK_COLOR, Color.WHITE);
         mSpeedView.setVisibility(View.GONE);
         mReplyImageView.setImageBitmap(null, null);
@@ -462,6 +475,8 @@ public class AudioItemViewHolder extends ItemViewHolder {
         mStopButton.setVisibility(View.INVISIBLE);
         mPlayButton.setVisibility(View.VISIBLE);
         mSpeedView.setVisibility(View.GONE);
+
+        stopProximitySensor();
 
         if (mExoPlayer != null) {
             if (mCounterDown != null) {
@@ -537,6 +552,7 @@ public class AudioItemViewHolder extends ItemViewHolder {
             mExoPlayer.setPlaybackSpeed(getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed());
             mExoPlayer.play();
             startCountdown();
+            startProximitySensor();
             mPlayButton.setVisibility(View.INVISIBLE);
             mStopButton.setVisibility(View.VISIBLE);
             mSpeedView.setVisibility(View.VISIBLE);
@@ -544,6 +560,11 @@ public class AudioItemViewHolder extends ItemViewHolder {
         }
 
         mExoPlayer = new ExoPlayer.Builder(getBaseItemActivity()).build();
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setContentType(C.AUDIO_CONTENT_TYPE_SPEECH)
+                .setUsage(C.USAGE_VOICE_COMMUNICATION)
+                .build();
+        mExoPlayer.setAudioAttributes(audioAttributes, false);
         mExoPlayer.setPlaybackSpeed(getBaseItemActivity().getTwinmeApplication().audioItemPlaybackSpeed());
 
         mExoPlayer.setMediaItem(MediaItem.fromUri(AudioItemViewHolder.this.getPath(AudioItemViewHolder.this.getAudioItem().getAudioDescriptor())));
@@ -567,6 +588,7 @@ public class AudioItemViewHolder extends ItemViewHolder {
                     mExoPlayer.play();
 
                     startCountdown();
+                    startProximitySensor();
 
                     mPlayButton.setVisibility(View.INVISIBLE);
                     mStopButton.setVisibility(View.VISIBLE);
@@ -582,6 +604,7 @@ public class AudioItemViewHolder extends ItemViewHolder {
                     mExoPlayer.release();
                     mExoPlayer = null;
                 }
+                stopProximitySensor();
             }
         });
 
@@ -603,6 +626,7 @@ public class AudioItemViewHolder extends ItemViewHolder {
             mExoPlayer.pause();
             mPlayerPosition = mExoPlayer.getCurrentPosition();
         }
+        stopProximitySensor();
         mStopButton.setVisibility(View.INVISIBLE);
         mPlayButton.setVisibility(View.VISIBLE);
         mSpeedView.setVisibility(View.GONE);
@@ -654,6 +678,8 @@ public class AudioItemViewHolder extends ItemViewHolder {
             }
 
             public void onFinish() {
+
+                stopProximitySensor();
 
                 mPlayerPosition = 0;
                 mCounter.setText(mDuration);
@@ -744,6 +770,42 @@ public class AudioItemViewHolder extends ItemViewHolder {
             mTimer.start();
         } else {
             mEphemeralView.updateWithProgress(1);
+        }
+    }
+
+    private void startProximitySensor() {
+        if (mTwinmeAudioManager == null) {
+            mTwinmeAudioManager = TwinmeAudioManager.create(getBaseItemActivity(), getBaseItemActivity().getTwinmeContext());
+        }
+        if (mProximitySensor == null) {
+            mProximitySensor = ProximitySensor.create(getBaseItemActivity(), this::onProximitySensorChangedState);
+        }
+        mProximitySensor.start();
+    }
+
+    private void stopProximitySensor() {
+        if (mProximitySensor != null) {
+            mProximitySensor.stop();
+            mProximitySensor = null;
+        }
+        if (mTwinmeAudioManager != null) {
+            mTwinmeAudioManager.setCommunicationDevice(AudioDevice.SPEAKER_PHONE);
+            mTwinmeAudioManager.setMode(AudioManager.MODE_NORMAL);
+            mTwinmeAudioManager = null;
+        }
+    }
+
+    private void onProximitySensorChangedState() {
+        if (mProximitySensor == null || mTwinmeAudioManager == null) {
+            return;
+        }
+
+        if (mProximitySensor.sensorReportsNearState()) {
+            mTwinmeAudioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+            mTwinmeAudioManager.setCommunicationDevice(AudioDevice.EARPIECE);
+        } else {
+            mTwinmeAudioManager.setCommunicationDevice(AudioDevice.SPEAKER_PHONE);
+            mTwinmeAudioManager.setMode(AudioManager.MODE_NORMAL);
         }
     }
 }

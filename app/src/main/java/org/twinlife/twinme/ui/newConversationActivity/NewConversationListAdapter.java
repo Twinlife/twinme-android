@@ -131,7 +131,7 @@ public class NewConversationListAdapter extends RecyclerView.Adapter<RecyclerVie
         }
 
         if (position < 2) {
-            if (position == 0) {
+            if (position == 0 && viewHolder instanceof AddContactViewHolder) {
                 AddContactViewHolder addContactViewHolder = (AddContactViewHolder) viewHolder;
                 addContactViewHolder.onBind(mListActivity.getString(R.string.main_view_add_group), mListActivity.getString(R.string.create_group_view_subtitle), R.drawable.groups_icon, (int) (DESIGN_ADD_ICON_SIZE * Design.HEIGHT_RATIO));
             }

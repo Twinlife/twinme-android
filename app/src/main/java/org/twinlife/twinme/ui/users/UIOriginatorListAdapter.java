@@ -152,7 +152,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
 
         int viewType = getItemViewType(position);
 
-        if (viewType == CONTACT) {
+        if (viewType == CONTACT && viewHolder instanceof UIContactViewHolder) {
             //noinspection rawtypes
             UIContactViewHolder contactViewHolder = (UIContactViewHolder) viewHolder;
             if (mAddContact) {
@@ -160,10 +160,10 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
             }
             boolean hideSeparator = position + 1 == mUIContacts.size();
             contactViewHolder.onBind(mListActivity, mUIContacts.get(position), hideSeparator);
-        } else if (viewType == TITLE) {
+        } else if (viewType == TITLE && viewHolder instanceof SectionCallViewHolder) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
             sectionCallViewHolder.onBind(mListActivity.getString(R.string.contacts_view_title), false, false);
-        } else if (viewType == ADD_CONTACT) {
+        } else if (viewType == ADD_CONTACT && viewHolder instanceof AddContactViewHolder) {
             AddContactViewHolder addContactViewHolder = (AddContactViewHolder) viewHolder;
             addContactViewHolder.onBind(mListActivity.getString(R.string.main_view_add_contact), mListActivity.getString(R.string.contacts_view_add_contact_subtitle), R.drawable.add_contact, 0);
         }
@@ -205,7 +205,7 @@ public abstract class UIOriginatorListAdapter<E extends UIOriginator, C extends 
 
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
-        if (viewType == CONTACT && position != -1) {
+        if (viewType == CONTACT && position != -1 && viewHolder instanceof UIContactViewHolder) {
             //noinspection rawtypes
             UIContactViewHolder uiContactViewHolder = (UIContactViewHolder)viewHolder;
             uiContactViewHolder.onViewRecycled();

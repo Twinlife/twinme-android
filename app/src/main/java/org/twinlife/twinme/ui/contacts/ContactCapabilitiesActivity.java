@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021-2023 twinlife SA.
+ *  Copyright (c) 2021-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -35,6 +35,7 @@ import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.services.EditContactCapabilitiesService;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.Intents;
@@ -147,8 +148,9 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         if (mCapabilities.getSchedule() != null) {
             Schedule schedule = mCapabilities.getSchedule();
             mScheduleEnable = schedule.isEnabled();
-            if (!schedule.getTimeRanges().isEmpty()) {
-                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+            final TimeRange timeRange = schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange instanceof DateTimeRange) {
+                DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                 mScheduleStartDate = dateTimeRange.start.date;
                 mScheduleStartTime = dateTimeRange.start.time;
                 mScheduleEndDate = dateTimeRange.end.date;
@@ -567,7 +569,7 @@ public class ContactCapabilitiesActivity extends AbstractCapabilitiesActivity im
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_control_camera, null));
         onboardingConfirmView.setTitle(getString(R.string.call_view_camera_control_needs_help));
         onboardingConfirmView.setMessage(getString(R.string.contact_capabilities_view_camera_control_onboarding));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.setCancelTitle(getString(R.string.application_do_not_display));
 
         if (hideCancelAction) {

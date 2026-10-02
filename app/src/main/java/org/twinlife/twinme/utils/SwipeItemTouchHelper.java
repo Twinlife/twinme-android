@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2020 twinlife SA.
+ *  Copyright (c) 2020-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -243,6 +243,7 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
                                 int buttonWidth = (int) (viewHolder.itemView.getWidth() * DESIGN_BUTTON_WIDTH_PERCENT);
                                 RectF firstButton = new RectF(mButtonInstance.left, mButtonInstance.top, mButtonInstance.right - buttonWidth, mButtonInstance.bottom);
                                 RectF secondButton = new RectF(mButtonInstance.left - buttonWidth, mButtonInstance.top, mButtonInstance.right, mButtonInstance.bottom);
+
                                 if (firstButton.contains(event.getX(), event.getY())) {
                                     mOnSwipeItemClickListener.onRightActionClick(viewHolder.getBindingAdapterPosition());
                                 } else if (secondButton.contains(event.getX(), event.getY())) {
@@ -413,7 +414,7 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
             int buttonWidth = (int) (itemView.getWidth() * DESIGN_BUTTON_WIDTH_PERCENT);
 
             Resources resources = itemView.getContext().getResources();
-            String text = (String) resources.getText(mStringLink);
+            String text = resources.getString(mStringLink);
 
             int leftAbscissa = mSide == ButtonSide.LEFT ? itemView.getLeft() : itemView.getRight() - buttonWidth;
             int rightAbscissa = mSide == ButtonSide.LEFT ? itemView.getLeft() + buttonWidth : itemView.getRight();
@@ -470,17 +471,19 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
             int buttonWidth = (int) (itemView.getWidth() * DESIGN_BUTTON_WIDTH_PERCENT);
 
             Resources resources = itemView.getContext().getResources();
-            String text = (String) resources.getText(mStringLink);
+            String text = resources.getString(mStringLink);
 
             int leftAbscissa = mSide == ButtonSide.LEFT ? itemView.getLeft() : itemView.getRight() - buttonWidth;
             int rightAbscissa = mSide == ButtonSide.LEFT ? itemView.getLeft() + buttonWidth : itemView.getRight();
 
-            RectF swipeButton = new RectF(leftAbscissa - buttonWidth, itemView.getTop(), rightAbscissa, itemView.getBottom());
-            RectF firstButton = new RectF(leftAbscissa - buttonWidth, itemView.getTop(), rightAbscissa - buttonWidth, itemView.getBottom());
+            final int itemTop = itemView.getTop();
+            final int itemBottom = itemView.getBottom();
+            RectF swipeButton = new RectF(leftAbscissa - buttonWidth, itemTop, rightAbscissa, itemBottom);
+            RectF firstButton = new RectF(leftAbscissa - buttonWidth, itemTop, rightAbscissa - buttonWidth, itemBottom);
 
             if (mIsRTL) {
-                swipeButton = new RectF(leftAbscissa, itemView.getTop(), rightAbscissa + buttonWidth, itemView.getBottom());
-                firstButton = new RectF(leftAbscissa + buttonWidth, itemView.getTop(), rightAbscissa + buttonWidth, itemView.getBottom());
+                swipeButton = new RectF(leftAbscissa, itemTop, rightAbscissa + buttonWidth, itemBottom);
+                firstButton = new RectF(leftAbscissa + buttonWidth, itemTop, rightAbscissa + buttonWidth, itemBottom);
             }
 
             colorPaint.setColor(Design.DELETE_COLOR_RED);
@@ -514,7 +517,7 @@ public class SwipeItemTouchHelper extends ItemTouchHelper.Callback {
             deleteDrawable.setBounds(actionDrawableLeft, actionDrawableTop, actionDrawableRight, actionDrawableBottom);
             deleteDrawable.draw(canvas);
 
-            text = (String) resources.getText(R.string.share_view_title);
+            text = resources.getString(R.string.share_view_title);
             textWidth = textPaint.measureText(text);
 
             RectF secondButton = new RectF(leftAbscissa, itemView.getTop(), rightAbscissa, itemView.getBottom());

@@ -211,7 +211,7 @@ public class StreamingAudioActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.streaming_audio_activity);
 
         setStatusBarColor();

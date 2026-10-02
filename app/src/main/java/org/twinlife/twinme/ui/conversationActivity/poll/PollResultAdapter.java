@@ -71,10 +71,10 @@ public class PollResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         PollResultItem item = mItems.get(position);
 
-        if (item.getPollResultItemType() == PollResultItem.PollResultItemType.POLL_RESULT_CHOICE) {
+        if (item.getPollResultItemType() == PollResultItem.PollResultItemType.POLL_RESULT_CHOICE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getTitle(), Design.POPUP_BACKGROUND_COLOR, true);
-        }  else if (item.getPollResultItemType() == PollResultItem.PollResultItemType.POLL_RESULT_VOTER) {
+        }  else if (item.getPollResultItemType() == PollResultItem.PollResultItemType.POLL_RESULT_VOTER && viewHolder instanceof AnnotationInfoViewHolder) {
             boolean hideSeparator = false;
             if (position + 1 < mItems.size() && mItems.get(position + 1).getPollResultItemType() != PollResultItem.PollResultItemType.POLL_RESULT_CHOICE) {
                 hideSeparator = true;

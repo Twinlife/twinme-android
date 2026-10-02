@@ -193,7 +193,7 @@ public class MessageSettingsSpaceActivity extends AbstractSpaceActivity implemen
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.message_settings_space_activity);
 
         setStatusBarColor();

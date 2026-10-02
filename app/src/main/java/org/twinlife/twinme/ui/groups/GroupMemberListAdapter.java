@@ -207,28 +207,28 @@ public class GroupMemberListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         int viewType = getItemViewType(position);
 
-        if (viewType == ADMIN_TITLE) {
+        if (viewType == ADMIN_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.group_member_view_section_administrator), false);
-        } else if (viewType == MEMBERS_TITLE) {
+        } else if (viewType == MEMBERS_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.group_member_view_section_member), false);
-        } else if (viewType == INVITATION_TITLE) {
+        } else if (viewType == INVITATION_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mListActivity.getString(R.string.group_member_view_section_invitation), false);
-        } else if (viewType == ADMIN) {
+        } else if (viewType == ADMIN && viewHolder instanceof UIContactViewHolder) {
             UIContactViewHolder<UIContact> contactViewHolder = (UIContactViewHolder<UIContact>) viewHolder;
             if (mAdmin != null) {
                 contactViewHolder.itemView.setOnClickListener(view -> mOnGroupMemberClickListener.onAdminClick(mAdmin));
             }
             contactViewHolder.onBind(mListActivity, mAdmin, true);
-        } else if (viewType == MEMBERS) {
+        } else if (viewType == MEMBERS && viewHolder instanceof UIContactViewHolder) {
             boolean hideSeparator = mMinMemberPosition + mUIMembers.size() - 1 == position;
             UIContactViewHolder<UIContact> contactViewHolder = (UIContactViewHolder<UIContact>) viewHolder;
             UIContact uiMember = mUIMembers.get(position - mMinMemberPosition);
             contactViewHolder.itemView.setOnClickListener(view -> mOnGroupMemberClickListener.onMemberClick(uiMember));
             contactViewHolder.onBind(mListActivity, uiMember, hideSeparator);
-        } else if (viewType == INVITATION) {
+        } else if (viewType == INVITATION && viewHolder instanceof UIInvitationViewHolder) {
             boolean hideSeparator = mMinInvitationPosition + mUIInvitations.size() - 1 == position;
             UIInvitationViewHolder invitationViewHolder = (UIInvitationViewHolder) viewHolder;
             UIInvitation uiInvitation = mUIInvitations.get(invitationViewHolder.getBindingAdapterPosition() - mMinInvitationPosition);

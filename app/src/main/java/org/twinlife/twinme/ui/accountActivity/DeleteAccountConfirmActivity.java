@@ -440,7 +440,7 @@ public class DeleteAccountConfirmActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "canDeleteAccount: " + text);
         }
 
-        if (text.equalsIgnoreCase("OK") || text.equalsIgnoreCase(getString(R.string.application_ok)) || text.equalsIgnoreCase("ОК")) {
+        if (text.equalsIgnoreCase("OK") || text.equalsIgnoreCase(getString(org.twinlife.twinme.android.R.string.application_ok)) || text.equalsIgnoreCase("ОК")) {
             return true;
         }
 

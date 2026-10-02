@@ -10,9 +10,11 @@
 package org.twinlife.twinme.ui.conversationFilesActivity;
 
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.ConversationService;
 import org.twinlife.twinlife.ConversationService.FileDescriptor;
 import org.twinlife.twinme.glide.Modes;
 import org.twinlife.twinme.skin.Design;
@@ -28,12 +31,20 @@ import org.twinlife.twinme.ui.baseItemActivity.Item;
 import org.twinlife.twinme.ui.baseItemActivity.PeerImageItem;
 import org.twinlife.twinme.ui.baseItemActivity.PeerVideoItem;
 import org.twinlife.twinme.ui.baseItemActivity.VideoItem;
+import org.twinlife.twinme.utils.CommonUtils;
+import org.twinlife.twinme.utils.Utils;
 
 public class MediaViewHolder extends RecyclerView.ViewHolder {
 
+    private static final int DURATION_VIEW_COLOR = Color.argb(127, 0, 0, 0);
     private static final int DESIGN_IMAGE_MARGIN = 6;
     private static final int DESIGN_CHECKBOX_MARGIN = 12;
     private static final int DESIGN_CHECKBOX_HEIGHT = 44;
+
+    private static final int DESIGN_DURATION_HEIGHT = 36;
+    private static final int DESIGN_DURATION_LEFT_MARGIN = 4;
+    private static final int DESIGN_DURATION_BOTTOM_MARGIN = 8;
+    private static final int DESIGN_DURATION_TEXT_MARGIN = 14;
 
     private static final int IMAGE_MARGIN;
     private static final int CHECKBOX_MARGIN;
@@ -49,6 +60,8 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
 
     private final View mSelectedView;
     private final ImageView mSelectedImageView;
+    private final View mDurationView;
+    private final TextView mDurationTextView;
 
     MediaViewHolder(@NonNull View view) {
 
@@ -75,9 +88,33 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
         marginLayoutParams.topMargin = IMAGE_MARGIN;
         marginLayoutParams.bottomMargin = IMAGE_MARGIN;
 
+        mDurationView = view.findViewById(R.id.conversation_files_activity_media_item_duration_view);
+
+        layoutParams = mDurationView.getLayoutParams();
+        layoutParams.height = (int) (DESIGN_DURATION_HEIGHT * Design.HEIGHT_RATIO);
+
+        GradientDrawable durationDrawable = new GradientDrawable();
+        durationDrawable.setShape(GradientDrawable.RECTANGLE);
+        durationDrawable.setColor(DURATION_VIEW_COLOR);
+        durationDrawable.setCornerRadius((int) (DESIGN_DURATION_HEIGHT * Design.HEIGHT_RATIO * 0.5));
+        mDurationView.setBackground(durationDrawable);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDurationView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_DURATION_LEFT_MARGIN * Design.HEIGHT_RATIO);
+        marginLayoutParams.bottomMargin = (int) (DESIGN_DURATION_BOTTOM_MARGIN * Design.HEIGHT_RATIO);
+
+        mDurationTextView = view.findViewById(R.id.conversation_files_activity_media_item_duration_text_view);
+        mDurationTextView.setTextColor(Color.WHITE);
+        Design.updateTextFont(mDurationTextView, Design.FONT_REGULAR24);
+
+        marginLayoutParams = (ViewGroup.MarginLayoutParams) mDurationTextView.getLayoutParams();
+        marginLayoutParams.leftMargin = (int) (DESIGN_DURATION_TEXT_MARGIN * Design.WIDTH_RATIO);
+        marginLayoutParams.rightMargin = (int) (DESIGN_DURATION_TEXT_MARGIN * Design.WIDTH_RATIO);
+
         mSelectedView = view.findViewById(R.id.conversation_files_activity_media_item_selected_view);
 
         layoutParams = mSelectedView.getLayoutParams();
+        layoutParams.width = CHECKBOX_HEIGHT;
         layoutParams.height = CHECKBOX_HEIGHT;
 
         marginLayoutParams = (ViewGroup.MarginLayoutParams) mSelectedView.getLayoutParams();
@@ -91,7 +128,6 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
     public void onBind(Item item, ConversationFilesActivity conversationFilesActivity) {
 
         mImageView.setImageBitmap(null);
-
         FileDescriptor descriptor = getFileDescriptor(item);
 
         Glide.with(conversationFilesActivity)
@@ -100,6 +136,14 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
                 .apply(Modes.AS_THUMBNAIL)
                 .centerInside()
                 .into(mImageView);
+
+        if (item.getType() == Item.ItemType.VIDEO || item.getType() == Item.ItemType.PEER_VIDEO) {
+            mDurationView.setVisibility(View.VISIBLE);
+            ConversationService.VideoDescriptor videoDescriptor = (ConversationService.VideoDescriptor) descriptor;
+            mDurationTextView.setText(Utils.formatInterval((int) videoDescriptor.getDuration(), "mm:ss"));
+        } else {
+            mDurationView.setVisibility(View.GONE);
+        }
 
         if (conversationFilesActivity.isSelectMode()) {
             mSelectedView.setVisibility(View.VISIBLE);

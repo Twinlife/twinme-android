@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">एप्लिकेशन को सिस्टम सेटिंग में माइक्रोफ़ोन तक पहुंचने दें।</string>
     <string name="application_authorization_microphone_camera">एप्लिकेशन को सिस्टम सेटिंग में माइक्रोफ़ोन और कैमरा एक्सेस करने की अनुमति दें।</string>
     <string name="application_authorization_title">अनुपलब्ध प्राधिकरण</string>
-    <string name="application_back">वापस जाएँ</string>
     <string name="application_backup_restore">बैकअप रिस्टोर करें</string>
     <string name="application_backup_verify">बैकअप वेरिफ़ाई करें</string>
     <string name="application_camera">कैमरा</string>
-    <string name="application_cancel">रद्द करें</string>
     <string name="application_canceled_operation"> आपरेशन रद्द करें</string>
     <string name="application_checking_connection">कनेक्शन की जाँच</string>
     <string name="application_color">रंग</string>
     <string name="application_configuration">विन्यास</string>
-    <string name="application_confirm">पुष्टि करें</string>
     <string name="application_confirm_deletion">हटाने की पुष्टि करें</string>
     <string name="application_connected">सुरक्षित कनेक्शन सक्षम है।</string>
     <string name="application_connection_status_no_network">इंटरनेट एक्सेस नहीं है।</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">समूह के सदस्यों की अधिकतम संख्या (%1$d) पार हो गई।</string>
     <string name="application_group_not_found">आपको समूह से हटा दिया गया है</string>
     <string name="application_items_selected">%1$d आइटम चुने गए</string>
-    <string name="application_later">बाद में</string>
     <string name="application_location">जियोलोकेशन</string>
     <string name="application_location_enabled">अपने डिवाइस पर स्थान सेवा को सक्रिय करें.</string>
     <string name="application_low_usage_message">चेतावनी, यदि आप अक्सर एप्लिकेशन का पर्याप्त उपयोग नहीं करते हैं, तो ओएस संदेशों का आदान-प्रदान करने के लिए इसे नहीं जगा सकता है!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">सुरक्षित कनेक्शन प्रगति पर है…</string>
     <string name="application_not_signed_in">सेवा Skred से कनेक्ट नहीं</string>
     <string name="application_now">अभी</string>
-    <string name="application_ok">ठीक है</string>
     <string name="application_operation_failure">कार्रवाई विफल रही</string>
     <string name="application_operation_irreversible">यह ऑपरेशन अपरिवर्तनीय है</string>
     <string name="application_permission_camera">नई फ़ोटो या वीडियो लेने के लिए कैमरे को एक्सेस करने की अनुमति आवश्यक है।</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">एप्लिकेशन को बंद करें और नए डेटा तक पहुंचने के लिए इसे पुनरारंभ करें।</string>
     <string name="account_migration_view_confirm_cancel_message">क्या आप वाकई प्रवास को रद्द करना चाहते हैं?</string>
     <string name="account_migration_view_database">डेटाबेस</string>
+    <string name="account_migration_view_display">डिस्प्ले</string>
     <string name="account_migration_view_finalizing">अंतिम रूप दिया जा रहा है</string>
     <string name="account_migration_view_initializing">आरंभ हो रहा है</string>
     <string name="account_migration_view_my_device">मेरा डिवाइस</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">दूसरे डिवाइस पर ऐप खोलें</string>
     <string name="account_migration_scanner_view_step_2">साइड मेन्यू पर जाएं</string>
     <string name="account_migration_scanner_view_step_3">अकाउंट चुनें</string>
+    <string name="account_migration_scanner_view_step_4">अकाउंट माइग्रेशन शुरू करें</string>
     <string name="account_migration_scanner_view_step_4_my_device">इस डिवाइस से ट्रांसफर शुरू करें</string>
     <string name="account_migration_scanner_view_step_4_another_device">दूसरे डिवाइस से ट्रांसफर शुरू करें</string>
     <string name="account_migration_scanner_view_step_5_my_device">दूसरे डिवाइस पर दिख रहे QR कोड को इस डिवाइस से स्कैन करें</string>
@@ -681,7 +678,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">खाता हटाने की पुष्टि करने के लिए नीचे \"OK\" अक्षर टाइप करें।</string>
     <string name="deleted_account_view_delete">खाता हटाएं</string>
-    <string name="deleted_account_view_warning">ध्यान‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">आपका खाता हटा दिया गया है और सभी संबंधित डेटा नष्ट कर दिए गए हैं।&lt;br /&gt;
@@ -700,7 +696,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">क्या आप वाकई इस संबंध को हटाना चाहते हैं?</string>
-    <string name="edit_contact_view_message">यह संपर्क अब आप तक नहीं पहुँच पाएगा।</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">क्या आप वाकई इस \"Click-to-Call\" कोड को हटाना चाहते हैं?</string>
@@ -1393,7 +1388,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">एक गलती हुई है। कृपया पुन: प्रयास करें।</string>
     <string name="streaming_audio_view_no_music_message">मीडिया साझेदारी</string>
     <string name="streaming_audio_view_no_music_title">कोई संगीत नहीं मिला 🙁</string>
     <string name="streaming_audio_view_title">मीडिया साझेदारी</string>
@@ -1474,5 +1468,4 @@
     <string name="welcome_view_step3_message">कोई फ़ोन नंबर नहीं, कोई पता पुस्तिका नहीं, कोई उपयोगकर्ता-आईडी नहीं: आप चुनते हैं कि आप किसके साथ संवाद कर रहे हैं, इसके आधार पर आप कैसे पहचाने जाना चाहते हैं।</string>
     <string name="welcome_view_terms_of_use">नियम और शर्तें</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

@@ -128,7 +128,7 @@ public class StreamingAudioAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
 
         int position = viewHolder.getBindingAdapterPosition();
 
-        if (position != -1) {
+        if (position != -1 && viewHolder instanceof StreamingMusicViewHolder) {
             StreamingMusicViewHolder streamingMusicViewHolder = (StreamingMusicViewHolder) viewHolder;
             streamingMusicViewHolder.itemView.setOnClickListener(view -> mOnSongClickListener.onSongClick(position));
             MusicItem musicItem = mMusicItems.get(position);

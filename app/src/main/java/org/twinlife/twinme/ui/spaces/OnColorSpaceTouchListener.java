@@ -34,7 +34,7 @@ public class OnColorSpaceTouchListener implements RecyclerView.OnItemTouchListen
          * @param position     the contact position.
          * @return True if the event was handled.
          */
-        boolean onUIColorSpaceClick(RecyclerView recyclerView, int position);
+        boolean onUICustomColorClick(RecyclerView recyclerView, int position);
     }
 
     OnColorSpaceTouchListener(AbstractTwinmeActivity listActivity, RecyclerView recyclerView, OnColorObserver observer) {
@@ -70,7 +70,7 @@ public class OnColorSpaceTouchListener implements RecyclerView.OnItemTouchListen
                         RecyclerView.ViewHolder viewHolder = recyclerView.findContainingViewHolder(view);
                         int position = recyclerView.getChildAdapterPosition(view);
                         if (viewHolder instanceof ColorSpaceViewHolder) {
-                            return mObserver.onUIColorSpaceClick(recyclerView, position);
+                            return mObserver.onUICustomColorClick(recyclerView, position);
                         }
                     }
                 }

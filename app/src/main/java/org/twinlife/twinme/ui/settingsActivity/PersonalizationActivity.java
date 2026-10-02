@@ -168,7 +168,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
             Log.d(LOG_TAG, "updateColor");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
         setStatusBarColor();
         setToolBar(R.id.personalization_activity_tool_bar);
@@ -189,7 +189,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
         mDefaultSpaceSettings.setStyle(color);
 
         if (!getTwinmeApplication().hasCurrentSpace() || getTwinmeApplication().getCurrentSpace().getSpaceSettings().getBoolean(SpaceSettingProperty.PROPERTY_DEFAULT_APPEARANCE_SETTINGS, true)) {
-            Design.setMainStyle(color);
+            Design.setMainStyle(color, getTwinmeApplication());
         }
 
         saveDefaultSpaceSettings();
@@ -207,7 +207,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.personalization_activity);
 
         setStatusBarColor();
@@ -326,7 +326,7 @@ public class PersonalizationActivity extends AbstractSettingsActivity implements
         menuSelectColorView.setAppearanceActivity(this);
         viewGroup.addView(menuSelectColorView);
 
-        menuSelectColorView.openMenu(getString(R.string.space_appearance_view_theme), Design.getMainStyleString(), Design.DEFAULT_COLOR);
+        menuSelectColorView.openMenu(getString(R.string.space_appearance_view_theme), Design.getMainStyleString(getTwinmeApplication()), Design.DEFAULT_COLOR);
 
         int color = ColorUtils.compositeColors(Design.OVERLAY_VIEW_COLOR, Design.TOOLBAR_COLOR);
         setStatusBarColor(color, Design.POPUP_BACKGROUND_COLOR);

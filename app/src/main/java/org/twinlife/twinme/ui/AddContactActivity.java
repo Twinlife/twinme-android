@@ -69,6 +69,7 @@ import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.services.ShareProfileService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationScannerActivity;
 import org.twinlife.twinme.ui.contacts.EnterInvitationCodeActivity;
 import org.twinlife.twinme.ui.contacts.InvitationCodeActivity;
 import org.twinlife.twinme.ui.contacts.ResetInvitationConfirmView;
@@ -262,7 +263,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.add_contact_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -369,7 +370,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.add_contact_activity);
 
         setStatusBarColor();
@@ -1239,6 +1240,14 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                 }));
             } else if (twincodeURI.kind == TwincodeURI.Kind.Proxy) {
                 addProxy(twincodeURI.twincodeOptions);
+            } else if (twincodeURI.kind == TwincodeURI.Kind.AccountMigration) {
+                // If we enter the application by using the account migration link,
+                // force the user to scan the QR-code: we must not recognize such account migration
+                // link because we don't know its origin.
+                Intent lIntent = new Intent();
+                lIntent.putExtra(Intents.INTENT_MIGRATION_SCANNER_MODE, AccountMigrationScannerActivity.AccountMigrationScannerMode.SCAN);
+                lIntent.setClass(this, AccountMigrationScannerActivity.class);
+                startActivity(lIntent);
             } else {
                 incorrectQRCode(getLinkError(twincodeURI.kind, R.string.capture_view_incorrect_qrcode));
             }
@@ -1253,7 +1262,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.add_contact_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     private void showSuccessAuthentification(String name, Bitmap avatar) {
@@ -1269,7 +1278,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
         String message = String.format(getString(R.string.authentified_relation_view_certified_message), name);
         successAuthentifiedRelationView.setMessage(message);
-        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+        successAuthentifiedRelationView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -1410,13 +1419,13 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
 
         final List<ProxyDescriptor> proxies = getTwinmeContext().getConnectivityService().getUserProxies();
         if (proxies.size() >= ConnectivityService.MAX_PROXIES) {
-            showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, this::finish);
+            showAlertMessageView(R.id.add_contact_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.proxy_view_limit), ConnectivityService.MAX_PROXIES), false, this::finish);
             return;
         }
 
         for (ProxyDescriptor proxyDescriptor : proxies) {
             if (proxyDescriptor.getDescriptor().equalsIgnoreCase(proxy)) {
-                showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_already_use), false, null);
+                showAlertMessageView(R.id.add_contact_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.proxy_view_already_use), false, null);
                 return;
             }
         }
@@ -1437,7 +1446,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
         defaultConfirmView.setMessage(getString(R.string.proxy_view_url));
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
         defaultConfirmView.setConfirmTitle(getString(R.string.proxy_view_enable));
-        defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+        defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -1463,7 +1472,7 @@ public class AddContactActivity extends AbstractScannerActivity implements Share
                 if (fromConfirmAction) {
                     SNIProxyDescriptor proxyDescriptor = SNIProxyDescriptor.create(proxy);
                     if (proxyDescriptor == null) {
-                        showAlertMessageView(R.id.add_contact_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.proxy_view_invalid_format), false, null);
+                        showAlertMessageView(R.id.add_contact_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.proxy_view_invalid_format), false, null);
                         return;
                     }
                     proxies.add(proxyDescriptor);

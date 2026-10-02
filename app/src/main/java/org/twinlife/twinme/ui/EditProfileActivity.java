@@ -298,7 +298,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new TwinmeActivity.DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new TwinmeActivity.DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -487,7 +487,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.edit_profile_activity);
 
         setTitle(getString(R.string.application_name));
@@ -984,7 +984,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
         defaultConfirmView.setMessage(getString(R.string.create_profile_view_incomplete_profile_message));
 
         if (incompleteProfile) {
-            defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
+            defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         } else {
             defaultConfirmView.setConfirmTitle(getString(R.string.profile_view_create_profile));
         }
@@ -1055,7 +1055,7 @@ public class EditProfileActivity extends AbstractEditActivity implements EditIde
                 getString(R.string.create_profile_view_onboarding_message_part_4);
 
         onboardingConfirmView.setMessage(message);
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

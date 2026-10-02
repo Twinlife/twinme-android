@@ -108,7 +108,7 @@ public class PreviewThumbnailAdapter extends RecyclerView.Adapter<RecyclerView.V
         int viewType = getItemViewType(position);
 
         if (position >= 0) {
-            if (viewType == PREVIEW_FILE) {
+            if (viewType == PREVIEW_FILE && viewHolder instanceof PreviewThumbnailViewHolder) {
                 FileInfo fileInfo = mFiles.get(position);
                 PreviewThumbnailViewHolder previewThumbnailViewHolder = (PreviewThumbnailViewHolder) viewHolder;
                 previewThumbnailViewHolder.onBind(mActivity, fileInfo, position == mActivity.getCurrentPosition(), mFiles.size() > 1);

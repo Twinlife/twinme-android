@@ -169,7 +169,7 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
 
         int viewType = getItemViewType(position);
 
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (position + ONLY_CONVERSATION_OFFSET == BACKGROUND_APPEARANCE_INFORMATION_POSITION) {
                 informationViewHolder.onBind(mConversationAppearenceActivity.getString(R.string.space_appearance_view_background_message), true);
@@ -181,18 +181,18 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
                 }
             }
 
-        } else if (viewType == GENERAL_TITLE) {
+        } else if (viewType == GENERAL_TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             boolean hideSeparator = false;
             sectionTitleViewHolder.onBind(getTitle(position), hideSeparator);
-        } else if (viewType == SUBSECTION_TITLE) {
+        } else if (viewType == SUBSECTION_TITLE && viewHolder instanceof SubSectionViewHolder) {
             SubSectionViewHolder subSectionViewHolder = (SubSectionViewHolder) viewHolder;
             boolean hideSeparator = position + ONLY_CONVERSATION_OFFSET == BACKGROUND_APPEARANCE_TITLE_POSITION;
             subSectionViewHolder.onBind(getTitle(position), hideSeparator);
-        } else if (viewType == PREVIEW_APPEARANCE) {
+        } else if (viewType == PREVIEW_APPEARANCE && viewHolder instanceof PreviewAppearanceViewHolder) {
             PreviewAppearanceViewHolder previewAppearanceViewHolder = (PreviewAppearanceViewHolder) viewHolder;
             previewAppearanceViewHolder.onBind(mCustomAppearance, mConversationBackground);
-        } else if (viewType == COLOR) {
+        } else if (viewType == COLOR  && viewHolder instanceof AppearanceColorViewHolder) {
             int color = getColor(position);
             int defaultColor = getDefaultColor(position);
             String colorName = getTitle(position);
@@ -203,7 +203,7 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
             } else {
                 appearanceColorViewHolder.onBind(color, colorName, null, false);
             }
-        } else if (viewType == RESET_APPEARANCE) {
+        } else if (viewType == RESET_APPEARANCE && viewHolder instanceof ResetSettingsViewHolder) {
             ResetSettingsViewHolder resetSettingsViewHolder = (ResetSettingsViewHolder) viewHolder;
             resetSettingsViewHolder.itemView.setOnClickListener(view -> mOnAppearanceClickListener.onResetAppearanceClick());
         }
@@ -260,7 +260,7 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
 
-        if (viewType == COLOR && position != -1) {
+        if (viewType == COLOR && position != -1 && viewHolder instanceof AppearanceColorViewHolder) {
             int color = getColor(position);
             int defaultColor = getDefaultColor(position);
             String colorName = getTitle(position);
@@ -294,7 +294,7 @@ public class ConversationAppearanceAdapter extends RecyclerView.Adapter<Recycler
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
 
-        if (viewType == COLOR && position != -1) {
+        if (viewType == COLOR && position != -1 && viewHolder instanceof AppearanceColorViewHolder) {
             int color = getColor(position);
             int defaultColor = getDefaultColor(position);
             String colorName = getTitle(position);

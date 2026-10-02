@@ -118,7 +118,7 @@ public class OnboardingSpaceThirdPartViewHolder extends RecyclerView.ViewHolder 
         ViewGroup.LayoutParams layoutParams = mDoNotShowView.getLayoutParams();
 
         if (fromSideMenu) {
-            mCreateSpaceTextView.setText(itemView.getContext().getString(R.string.application_ok));
+            mCreateSpaceTextView.setText(itemView.getContext().getString(org.twinlife.twinme.android.R.string.application_ok));
             mDoNotShowView.setVisibility(View.INVISIBLE);
             layoutParams.height = 1;
         } else {

@@ -137,7 +137,7 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
                 if (mCustomAppearance != null && mSpace != null) {
                     if (getTwinmeApplication().isCurrentSpace(mSpace.getId())) {
                         getTwinmeApplication().updateDisplayMode(Design.getDisplayMode(Integer.parseInt(mCustomAppearance.getSpaceSettings().getString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, DisplayMode.SYSTEM.ordinal() + ""))));
-                        Design.setMainStyle(color);
+                        Design.setMainStyle(color, getTwinmeApplication());
                     }
 
                     mCustomAppearance.setMainColor(color);
@@ -222,7 +222,7 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
 
         if (mSpace != null && getTwinmeApplication().isCurrentSpace(mSpace.getId())) {
             Design.setupColor(this, getTwinmeApplication());
-            Design.setTheme(this, getTwinmeApplication());
+            setActivityTheme(getTwinmeApplication());
             setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
             setStatusBarColor();
             setToolBar(R.id.space_appearance_activity_tool_bar);
@@ -235,7 +235,7 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.space_appearance_activity);
 
         setStatusBarColor();
@@ -333,7 +333,7 @@ public class SpaceAppearanceActivity extends AbstractSpaceActivity {
 
                 if (mSpace != null && getTwinmeApplication().isCurrentSpace(mSpace.getId())) {
                     getTwinmeApplication().updateDisplayMode(mDisplayMode);
-                    Design.setMainStyle(color);
+                    Design.setMainStyle(color, getTwinmeApplication());
                 }
 
                 if (mCustomAppearance != null) {

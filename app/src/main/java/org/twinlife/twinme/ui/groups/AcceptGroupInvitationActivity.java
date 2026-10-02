@@ -914,7 +914,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmView.setAlpha(1);
                     mConfirmView.setOnClickListener(v -> onDismissClick());
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
-                    mConfirmTextView.setText(getString(R.string.application_ok));
+                    mConfirmTextView.setText(getString(org.twinlife.twinme.android.R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mMessageView.setText(getString(R.string.conversation_view_invitation_accepted));
                     mBulletView.setVisibility(View.GONE);
@@ -929,7 +929,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmView.setAlpha(1);
                     mConfirmView.setOnClickListener(v -> onDismissClick());
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
-                    mConfirmTextView.setText(getString(R.string.application_ok));
+                    mConfirmTextView.setText(getString(org.twinlife.twinme.android.R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mMessageView.setText(getString(R.string.conversation_view_invitation_joined));
                     mBulletView.setVisibility(View.GONE);
@@ -944,7 +944,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmView.setAlpha(1);
                     mConfirmView.setOnClickListener(v -> onDismissClick());
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
-                    mConfirmTextView.setText(getString(R.string.application_ok));
+                    mConfirmTextView.setText(getString(org.twinlife.twinme.android.R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mMessageView.setText(getString(R.string.accept_group_invitation_view_deleted));
                     mBulletView.setVisibility(View.GONE);
@@ -959,7 +959,7 @@ public class AcceptGroupInvitationActivity extends AbstractGroupActivity impleme
                     mConfirmView.setAlpha(1);
                     mConfirmView.setOnClickListener(v -> onDismissClick());
                     marginLayoutParams.bottomMargin = (int) (DESIGN_CANCEL_MARGIN * Design.HEIGHT_RATIO);
-                    mConfirmTextView.setText(getString(R.string.application_ok));
+                    mConfirmTextView.setText(getString(org.twinlife.twinme.android.R.string.application_ok));
                     mContactImageView.setVisibility(View.GONE);
                     mMessageView.setText(getString(R.string.conversation_view_invitation_refused));
                     mBulletView.setVisibility(View.GONE);

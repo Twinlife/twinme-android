@@ -151,7 +151,7 @@ public class NotificationSpaceActivity extends AbstractSpaceActivity {
 
         if (mSpace != null && getTwinmeApplication().isCurrentSpace(mSpace.getId())) {
             Design.setupColor(this, getTwinmeApplication());
-            Design.setTheme(this, getTwinmeApplication());
+            setActivityTheme(getTwinmeApplication());
             setBackgroundColor(Design.LIGHT_GREY_BACKGROUND_COLOR);
             setStatusBarColor();
             setToolBar(R.id.notification_space_activity_tool_bar);
@@ -163,7 +163,7 @@ public class NotificationSpaceActivity extends AbstractSpaceActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.notification_space_activity);
 
         setStatusBarColor();

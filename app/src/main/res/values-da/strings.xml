@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">Tillad, at appen får adgang til Mikrofon i systemindstillingerne.</string>
     <string name="application_authorization_microphone_camera">Tillad, at appen får adgang til Mikrofon og Kamera i systemindstillingerne.</string>
     <string name="application_authorization_title">Manglende adgangstilladelse</string>
-    <string name="application_back">Tilbage</string>
     <string name="application_backup_restore">Gendan sikkerhedskopien</string>
     <string name="application_backup_verify">Verificer sikkerhedskopien</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Annullér</string>
     <string name="application_canceled_operation">Afbrudt handling</string>
     <string name="application_checking_connection">Kontrol af forbindelse</string>
     <string name="application_color">Farve</string>
     <string name="application_configuration">Konfiguration</string>
-    <string name="application_confirm">Bekræft</string>
     <string name="application_confirm_deletion">Bekræft sletningen</string>
     <string name="application_connected">Sikker forbindelse aktiveret.</string>
     <string name="application_connection_status_no_network">Ingen internetadgang.</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">Maksimum antal (%1$d) af gruppemedlemmer overskredet.</string>
     <string name="application_group_not_found">Du er blevet fjernet fra gruppen</string>
     <string name="application_items_selected">%1$d elementer er valgt</string>
-    <string name="application_later">Senere</string>
     <string name="application_location">Geolokalisering</string>
     <string name="application_location_enabled">Giv appen adgang til placering i systemindstillinger.</string>
     <string name="application_low_usage_message">Advarsel, hvis du ikke bruger programmet ofte nok, vil OS muligvis ikke vække det til at udveksle beskeder!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">Sikker forbindelse er i gang…</string>
     <string name="application_not_signed_in">Ikke forbundet til Skred tjenesten</string>
     <string name="application_now">Nu</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Handlingen mislykkedes</string>
     <string name="application_operation_irreversible">Denne operation er irreversibel</string>
     <string name="application_permission_camera">Adgang til kameraet kræver tilladelse</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">Luk applikationen, og genstart den for at få adgang til de nye data.</string>
     <string name="account_migration_view_confirm_cancel_message">Er du sikker på, at du vil annullere migrationen?</string>
     <string name="account_migration_view_database">Database</string>
+    <string name="account_migration_view_display">Vis</string>
     <string name="account_migration_view_finalizing">Afslutter</string>
     <string name="account_migration_view_initializing">Initialiserer</string>
     <string name="account_migration_view_my_device">Min enhed</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">Åbn appen på den anden enhed</string>
     <string name="account_migration_scanner_view_step_2">Gå til sidemenuen</string>
     <string name="account_migration_scanner_view_step_3">Vælg \"Konto\"</string>
+    <string name="account_migration_scanner_view_step_4">Start kontomigrering</string>
     <string name="account_migration_scanner_view_step_4_my_device">Start overførslen fra denne enhed</string>
     <string name="account_migration_scanner_view_step_4_another_device">Start overførslen fra den anden enhed</string>
     <string name="account_migration_scanner_view_step_5_my_device">Scan QR-koden, der vises på den anden enhed, med denne enhed</string>
@@ -680,7 +677,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Indtast bogstaverne \"OK\" nedenfor for at bekræfte sletningen af</string>
     <string name="deleted_account_view_delete">Slet konto</string>
-    <string name="deleted_account_view_warning">Advare‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Din konto er blevet slettet, og alle tilknyttede data er blevet elimineret.&lt;br /&gt;
@@ -699,7 +695,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Er du sikker på, at du vil slette denne relation?</string>
-    <string name="edit_contact_view_message">Denne kontakt vil ikke længere kunne nå dig.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Er du sikker på, at du vil slette denne \"Click-to-Call\"-kode?</string>
@@ -1392,7 +1387,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">En fejl er opstået. Prøv venligst igen.</string>
     <string name="streaming_audio_view_no_music_message">Deling af medier</string>
     <string name="streaming_audio_view_no_music_title">Ingen musik fundet 🙁</string>
     <string name="streaming_audio_view_title">Deling af medier</string>
@@ -1473,5 +1467,4 @@
     <string name="welcome_view_step3_message">Intet telefonnummer, ingen adressebog, ingen bruger-id: du vælger, hvordan du vil identificeres baseret på, hvem du kommunikerer med.</string>
     <string name="welcome_view_terms_of_use">Vilkår for brug</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

@@ -118,10 +118,10 @@ public class PreviewFileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         int viewType = getItemViewType(position);
 
         FileInfo fileInfo = mFiles.get(position);
-        if (viewType == IMAGE) {
+        if (viewType == IMAGE && viewHolder instanceof PreviewFullScreenImageViewHolder) {
             PreviewFullScreenImageViewHolder previewFullScreenImageViewHolder = (PreviewFullScreenImageViewHolder) viewHolder;
             previewFullScreenImageViewHolder.onBind(fileInfo, mPreviewFileActivity);
-        } else if (viewType == VIDEO) {
+        } else if (viewType == VIDEO && viewHolder instanceof PreviewFullScreenVideoViewHolder) {
             PreviewFullScreenVideoViewHolder previewFullScreenVideoViewHolder = (PreviewFullScreenVideoViewHolder) viewHolder;
             previewFullScreenVideoViewHolder.onBind(fileInfo, mPreviewFileActivity, mPreviewFileActivity.getCurrentPosition() == position);
         } else {
@@ -140,7 +140,7 @@ public class PreviewFileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onViewAttachedToWindow(@NonNull RecyclerView.ViewHolder viewHolder) {
         super.onViewAttachedToWindow(viewHolder);
 
-        if (viewHolder.getItemViewType() == VIDEO) {
+        if (viewHolder.getItemViewType() == VIDEO && viewHolder instanceof PreviewFullScreenVideoViewHolder) {
             PreviewFullScreenVideoViewHolder previewFullScreenVideoViewHolder = (PreviewFullScreenVideoViewHolder) viewHolder;
             FileInfo fileInfo = mFiles.get(previewFullScreenVideoViewHolder.getBindingAdapterPosition());
             previewFullScreenVideoViewHolder.onBind(fileInfo, mPreviewFileActivity, true);
@@ -154,10 +154,10 @@ public class PreviewFileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onViewDetachedFromWindow(@NonNull RecyclerView.ViewHolder viewHolder) {
         super.onViewDetachedFromWindow(viewHolder);
 
-        if (viewHolder.getItemViewType() == VIDEO) {
+        if (viewHolder.getItemViewType() == VIDEO && viewHolder instanceof PreviewFullScreenVideoViewHolder) {
             PreviewFullScreenVideoViewHolder previewFullScreenVideoViewHolder = (PreviewFullScreenVideoViewHolder) viewHolder;
             previewFullScreenVideoViewHolder.stopPlayer();
-        } else if (viewHolder.getItemViewType() == IMAGE) {
+        } else if (viewHolder.getItemViewType() == IMAGE && viewHolder instanceof PreviewFullScreenImageViewHolder) {
             PreviewFullScreenImageViewHolder previewFullScreenImageViewHolder = (PreviewFullScreenImageViewHolder) viewHolder;
             previewFullScreenImageViewHolder.resetZoom();
         }

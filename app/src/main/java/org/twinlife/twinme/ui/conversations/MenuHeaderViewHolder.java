@@ -8,6 +8,7 @@
 
 package org.twinlife.twinme.ui.conversations;
 
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.configuration.AppFlavor;
 import org.twinlife.twinme.skin.Design;
 import org.twinlife.twinme.ui.mainActivity.UIConversation;
 
@@ -56,13 +58,22 @@ public class MenuHeaderViewHolder extends RecyclerView.ViewHolder {
         marginLayoutParams.topMargin = (int) (DESIGN_TITLE_VERTICAL_MARGIN * Design.HEIGHT_RATIO);
         marginLayoutParams.leftMargin = (int) (DESIGN_TITLE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
         marginLayoutParams.rightMargin = (int) (DESIGN_TITLE_HORIZONTAL_MARGIN * Design.WIDTH_RATIO);
-
     }
 
     public void onBind(UIConversation conversation) {
 
         mAvatarView.setImageBitmap(conversation.getAvatar());
         mTitleView.setText(conversation.getName());
+
+        if (AppFlavor.SKRED) {
+            if (conversation.getContact().isGroup() && conversation.getContact().getAvatarId() == null) {
+                mAvatarView.setColorFilter(Color.WHITE);
+                mAvatarView.setBackgroundColor(Color.parseColor(Design.DEFAULT_COLOR));
+            } else {
+                mAvatarView.setColorFilter(Color.TRANSPARENT);
+                mAvatarView.setBackgroundColor(Design.WHITE_COLOR);
+            }
+        }
     }
 
     public void onViewRecycled() {

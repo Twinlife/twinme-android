@@ -265,7 +265,7 @@ public class InvitationRoomActivity extends AbstractTwinmeActivity implements In
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.invitation_room_activity);
 
         setStatusBarColor();

@@ -267,7 +267,7 @@ public class BackupActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.backup_activity);
 
         setStatusBarColor();
@@ -411,6 +411,6 @@ public class BackupActivity extends AbstractTwinmeActivity {
             message = getString(R.string.cleanup_view_error);
         }
 
-        showAlertMessageView(R.id.backup_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.backup_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 }

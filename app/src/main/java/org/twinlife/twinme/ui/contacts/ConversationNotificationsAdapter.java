@@ -94,7 +94,7 @@ public class ConversationNotificationsAdapter extends RecyclerView.Adapter<Recyc
         int viewType = getItemViewType(position);
         UIConversationNotificationsItem item = mItems.get(position);
 
-        if (viewType == SWITCH) {
+        if (viewType == SWITCH && viewHolder instanceof CapabilityViewHolder) {
             CapabilityViewHolder capabilityViewHolder = (CapabilityViewHolder) viewHolder;
 
             boolean isSelected = false;
@@ -119,13 +119,13 @@ public class ConversationNotificationsAdapter extends RecyclerView.Adapter<Recyc
 
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mNotificationsActivity.onSettingChangeValue(item, value);
             capabilityViewHolder.onBind(item.geText(), item.getType().ordinal(), isEnabled, isSelected, onCheckedChangeListener);
-        } else if (viewType == SECTION) {
+        } else if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.geText(), false, null, null);
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(item.geText(), false);
-        }  else if (viewType == VALUE) {
+        }  else if (viewType == VALUE && viewHolder instanceof SelectValueViewHolder) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
             selectValueViewHolder.itemView.setOnClickListener(v -> mNotificationsActivity.onSelectSilentDuration());
 

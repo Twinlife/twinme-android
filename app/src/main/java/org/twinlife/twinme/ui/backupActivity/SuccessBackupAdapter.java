@@ -89,10 +89,10 @@ public class SuccessBackupAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         int viewType = getItemViewType(position);
 
-        if (viewType == BACKUP) {
+        if (viewType == BACKUP && viewHolder instanceof BackupInfoViewHolder) {
             BackupInfoViewHolder backupInfoViewHolder = (BackupInfoViewHolder) viewHolder;
             backupInfoViewHolder.onBind(mSuccessBackupActivity.getBackupFileName(), Design.WHITE_COLOR);
-        } else if (viewType == ACTION) {
+        } else if (viewType == ACTION && viewHolder instanceof BackupActionViewHolder) {
             BackupActionViewHolder backupActionViewHolder = (BackupActionViewHolder) viewHolder;
 
             if (position == POSITION_BACKUP_ACTION) {
@@ -111,13 +111,13 @@ public class SuccessBackupAdapter extends RecyclerView.Adapter<RecyclerView.View
                 Runnable copyRunnable = mSuccessBackupActivity::onCopyClick;
                 backupActionViewHolder.onBind(copyActionIcon, -1, copyActionTitle, null, copyRunnable, null);
             }
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(mSuccessBackupActivity.getString(R.string.backup_view_security_info), true);
-        } else if (viewType == SECTION) {
+        } else if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(mSuccessBackupActivity.getString(R.string.backup_view_security), true);
-        } else if (viewType == WORDS) {
+        } else if (viewType == WORDS && viewHolder instanceof BackupWordsViewHolder) {
             BackupWordsViewHolder backupWordsViewHolder = (BackupWordsViewHolder) viewHolder;
             backupWordsViewHolder.onBind(mBackupWords);
         }

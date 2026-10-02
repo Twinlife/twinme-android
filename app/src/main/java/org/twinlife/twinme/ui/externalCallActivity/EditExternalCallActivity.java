@@ -258,7 +258,7 @@ public class EditExternalCallActivity extends AbstractEditActivity implements Ca
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.edit_external_call_activity);
 
         showToolBar(true);

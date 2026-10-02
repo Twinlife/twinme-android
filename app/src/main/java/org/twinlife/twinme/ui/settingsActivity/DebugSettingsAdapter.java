@@ -86,14 +86,14 @@ public class DebugSettingsAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         int viewType = getItemViewType(position);
         UIDebugItem item = mItems.get(position);
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getText(), false);
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX && viewHolder instanceof SettingsAdvancedViewHolder) {
             SettingsAdvancedViewHolder settingsViewHolder = (SettingsAdvancedViewHolder) viewHolder;
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mActivity.getTwinmeApplication().setShowOnboardingType(item.getOnboardingType(), value);
             settingsViewHolder.onBind(item.getText(), mActivity.getTwinmeApplication().startOnboarding(item.getOnboardingType()), true, onCheckedChangeListener );
-        } else if (viewType == RESET) {
+        } else if (viewType == RESET && viewHolder instanceof ResetSettingsViewHolder) {
             ResetSettingsViewHolder resetSettingsViewHolder = (ResetSettingsViewHolder) viewHolder;
             resetSettingsViewHolder.itemView.setOnClickListener(view -> onResetSettings());
         }

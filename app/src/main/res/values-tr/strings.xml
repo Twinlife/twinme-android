@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">Uygulamanın sistem ayarlarında Mikrofona erişmesine izin ver.</string>
     <string name="application_authorization_microphone_camera">Uygulamanın sistem ayarlarında Mikrofon ve Kameraya erişmesine izin ver.</string>
     <string name="application_authorization_title">Eksik erişim yetkisi</string>
-    <string name="application_back">Geri</string>
     <string name="application_backup_restore">Yedeklemeyi geri yükle</string>
     <string name="application_backup_verify">Yedeklemeyi doğrula</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">İptal et</string>
     <string name="application_canceled_operation">İşlem iptal edildi</string>
     <string name="application_checking_connection">Bağlantı kontrol ediliyor</string>
     <string name="application_color">Renk</string>
     <string name="application_configuration">Yapılandırma</string>
-    <string name="application_confirm">Onaylamak</string>
     <string name="application_confirm_deletion">Silmeyi onaylayın</string>
     <string name="application_connected">Güvenli bağlantı etkinleştirildi.</string>
     <string name="application_connection_status_no_network">İnternet erişimi yok.</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">Grup üyelerinin maksimum sayısı (%1$d) aşıldı.</string>
     <string name="application_group_not_found">Gruptan kaldırıldınız</string>
     <string name="application_items_selected">%1$d öğe seçildi</string>
-    <string name="application_later">Sonra</string>
     <string name="application_location">Coğrafi Konum</string>
     <string name="application_location_enabled">Cihazınızın konum servisini etkinleştirin.</string>
     <string name="application_low_usage_message">Uyarı, uygulamayı yeterince sık kullanmazsanız, işletim sistemi mesaj alışverişi yapmak için onu uyandırmayabilir!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">Güvenli bağlantı devam ediyor…</string>
     <string name="application_not_signed_in">Skred servisine bağlı değil.</string>
     <string name="application_now">Şimdi</string>
-    <string name="application_ok">Tamam</string>
     <string name="application_operation_failure">İşlem hatası</string>
     <string name="application_operation_irreversible">Bu işlem geri alınamaz</string>
     <string name="application_permission_camera">Yeni bir fotoğraf veya video çekmek için kameraya erişim izni gerekir.</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">Yeni verilere erişmek için uygulamayı kapatın ve yeniden başlatın.</string>
     <string name="account_migration_view_confirm_cancel_message">Taşımayı iptal etmek istediğinizden emin misiniz?</string>
     <string name="account_migration_view_database">Veritabanı</string>
+    <string name="account_migration_view_display">Görüntüle</string>
     <string name="account_migration_view_finalizing">Tamamlanıyor</string>
     <string name="account_migration_view_initializing">Başlatılıyor</string>
     <string name="account_migration_view_my_device">Cihazım</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">Diğer cihazda uygulamayı açın</string>
     <string name="account_migration_scanner_view_step_2">Yan menüye gidin</string>
     <string name="account_migration_scanner_view_step_3">Hesapı seçin</string>
+    <string name="account_migration_scanner_view_step_4">Hesap taşıma işlemini başlat</string>
     <string name="account_migration_scanner_view_step_4_my_device">Bu cihazdan aktarımı başlatın</string>
     <string name="account_migration_scanner_view_step_4_another_device">Diğer cihazdan aktarımı başlatın</string>
     <string name="account_migration_scanner_view_step_5_my_device">Diğer cihazda görüntülenen QR kodunu bu cihazla tarayın</string>
@@ -681,7 +678,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Hesabın silinmesini onaylamak için aşağıdaki \"Tamam\" harflerini yazın.</string>
     <string name="deleted_account_view_delete">Hesabı sil</string>
-    <string name="deleted_account_view_warning">Dikkat‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Hesabınız silindi ve ilişkili tüm veriler yok edildi.&lt;br /&gt;
@@ -700,7 +696,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Bu ilişkiyi silmek istediğinizden emin misiniz?</string>
-    <string name="edit_contact_view_message">Bu kişi artık size ulaşamayacak.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Bu \"Click-to-Call\" kodunu silmek istediğinizden emin misiniz?</string>
@@ -1393,7 +1388,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Bir hata meydana geldi. Lütfen tekrar deneyin.</string>
     <string name="streaming_audio_view_no_music_message">Medya paylaşımı</string>
     <string name="streaming_audio_view_no_music_title">Müzik bulunamadı 🙁</string>
     <string name="streaming_audio_view_title">Medya paylaşımı</string>
@@ -1474,5 +1468,4 @@
     <string name="welcome_view_step3_message">Telefon numarası yok, adres defteri yok, kullanıcı kimliği yok: kiminle iletişim kurduğunuza bağlı olarak nasıl tanımlanmak istediğinizi siz seçersiniz.</string>
     <string name="welcome_view_terms_of_use">Şartları ve koşulları</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

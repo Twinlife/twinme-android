@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">앱이 시스템 설정에서 마이크에 액세스하도록 허용합니다.</string>
     <string name="application_authorization_microphone_camera">앱이 시스템 설정에서 마이크와 카메라에 액세스하도록 허용합니다.</string>
     <string name="application_authorization_title">누락 된 액세스 권한</string>
-    <string name="application_back">뒤로</string>
     <string name="application_backup_restore">백업 복원</string>
     <string name="application_backup_verify">백업 확인</string>
     <string name="application_camera">카메라</string>
-    <string name="application_cancel">취소</string>
     <string name="application_canceled_operation">취소된 작업</string>
     <string name="application_checking_connection">연결 확인 중</string>
     <string name="application_color">색깔</string>
     <string name="application_configuration">구성</string>
-    <string name="application_confirm">확인</string>
     <string name="application_confirm_deletion">삭제 확인</string>
     <string name="application_connected">보안 연결이 활성화되었습니다.</string>
     <string name="application_connection_status_no_network">인터넷 접속 불가.</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">그룹 구성원의 최대 수 (%1$d)를 초과했습니다.</string>
     <string name="application_group_not_found">그룹에서 삭제되었습니다.</string>
     <string name="application_items_selected">%1$d개 항목 선택됨</string>
-    <string name="application_later">나중</string>
     <string name="application_location">지리적 위치</string>
     <string name="application_location_enabled">장치에서 위치 서비스를 활성화하십시오.</string>
     <string name="application_low_usage_message">경고, 응용 프로그램을 충분히 자주 사용하지 않으면 OS가 메시지를 교환하기 위해 절전 모드를 해제하지 못할 수 있습니다!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">보안 연결 진행 중…</string>
     <string name="application_not_signed_in">Skred 서비스에 연결되지 않았습니다</string>
     <string name="application_now">지금</string>
-    <string name="application_ok">확인</string>
     <string name="application_operation_failure">작업 실패</string>
     <string name="application_operation_irreversible">이 작업은 되돌릴 수 없습니다.</string>
     <string name="application_permission_camera">새로운 사진이나 동영상을 찍으려면 카메라 접근 권한이 필요합니다.</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">응용 프로그램을 닫고 다시 시작하여 새 데이터에 액세스합니다.</string>
     <string name="account_migration_view_confirm_cancel_message">마이그레이션을 취소 하시겠습니까?</string>
     <string name="account_migration_view_database">데이터베이스</string>
+    <string name="account_migration_view_display">디스플레이</string>
     <string name="account_migration_view_finalizing">마무리 중</string>
     <string name="account_migration_view_initializing">초기화 중</string>
     <string name="account_migration_view_my_device">내 기기</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">다른 기기에서 앱을 엽니다.</string>
     <string name="account_migration_scanner_view_step_2">측면 메뉴로 이동합니다.</string>
     <string name="account_migration_scanner_view_step_3">계정을 선택합니다.</string>
+    <string name="account_migration_scanner_view_step_4">계정 이전 시작</string>
     <string name="account_migration_scanner_view_step_4_my_device">이 기기에서 전송을 시작합니다.</string>
     <string name="account_migration_scanner_view_step_4_another_device">다른 기기에서 전송을 시작합니다.</string>
     <string name="account_migration_scanner_view_step_5_my_device">이 기기로 다른 기기에 표시된 QR 코드를 스캔합니다.</string>
@@ -681,7 +678,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">아래의 \"OK\" 문자를 입력하여 계정 삭제를 확인합니다.</string>
     <string name="deleted_account_view_delete">계정 삭제</string>
-    <string name="deleted_account_view_warning">주목‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">귀하의 계정이 삭제되었으며 관련 데이터가 모두 삭제되었습니다.&lt;br /&gt;
@@ -700,7 +696,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">이 관계를 삭제하시겠습니까?</string>
-    <string name="edit_contact_view_message">이 연락처는 더 이상 귀하에게 연락할 수 없습니다.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">이 \"Click-to-Call\" 코드를 삭제하시겠습니까?</string>
@@ -1393,7 +1388,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">오류가 발생했습니다. 다시 시도해 주세요.</string>
     <string name="streaming_audio_view_no_music_message">미디어 공유</string>
     <string name="streaming_audio_view_no_music_title">음악을 찾을 수 없습니다 🙁</string>
     <string name="streaming_audio_view_title">미디어 공유</string>
@@ -1474,5 +1468,4 @@
     <string name="welcome_view_step3_message">전화번호, 주소록, 사용자 ID 없음: 누구와 통신하는지에 따라 식별 방법을 선택합니다.</string>
     <string name="welcome_view_terms_of_use">약관</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

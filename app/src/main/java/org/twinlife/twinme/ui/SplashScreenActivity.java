@@ -287,7 +287,7 @@ public class SplashScreenActivity extends AbstractTwinmeActivity implements Spla
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         setContentView(R.layout.splashscreen_activity);
 

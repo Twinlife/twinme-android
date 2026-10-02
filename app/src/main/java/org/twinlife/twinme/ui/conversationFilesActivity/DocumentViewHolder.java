@@ -86,7 +86,7 @@ public class DocumentViewHolder extends RecyclerView.ViewHolder {
     public void onBind(Item item, ConversationFilesActivity conversationFilesActivity) {
 
         ConversationService.NamedFileDescriptor namedFileDescriptor;
-        if (item.isPeerItem()) {
+        if (item.isPeerItem() && item instanceof PeerFileItem) {
             final PeerFileItem peerFileItem = (PeerFileItem) item;
             namedFileDescriptor = peerFileItem.getNamedFileDescriptor();
         } else {

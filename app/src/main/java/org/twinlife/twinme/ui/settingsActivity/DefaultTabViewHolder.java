@@ -105,20 +105,21 @@ public class DefaultTabViewHolder extends RecyclerView.ViewHolder {
         mNotificationsImageView.setColorFilter(TAB_GREY_COLOR);
 
         float tabWidth = (float) (Design.DISPLAY_WIDTH / 5.0);
+        final int defaultTab = mListActivity.getTwinmeApplication().defaultTab();
 
-        if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.SPACES.ordinal()) {
+        if (defaultTab == TwinmeApplication.DefaultTab.SPACES.ordinal()) {
             mSpacesImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(0);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
+        } else if (defaultTab == TwinmeApplication.DefaultTab.CALLS.ordinal()) {
             mCallsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
+        } else if (defaultTab == TwinmeApplication.DefaultTab.CONTACTS.ordinal()) {
             mContactsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth * 2);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal()) {
+        } else if (defaultTab == TwinmeApplication.DefaultTab.CONVERSATIONS.ordinal()) {
             mConversationsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth * 3);
-        } else if (mListActivity.getTwinmeApplication().defaultTab() == TwinmeApplication.DefaultTab.NOTIFICATIONS.ordinal()) {
+        } else if (defaultTab == TwinmeApplication.DefaultTab.NOTIFICATIONS.ordinal()) {
             mNotificationsImageView.setColorFilter(mDefaultColor);
             mSelectedView.setX(tabWidth * 4);
         }

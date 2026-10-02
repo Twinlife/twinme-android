@@ -116,7 +116,8 @@ public class RestoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             case STATE: {
                 RestoreStateViewHolder restoreStateViewHolder = (RestoreStateViewHolder) viewHolder;
-                boolean isRestoreInProgress = mRestoreActivity.getRestoreState() != null && mRestoreActivity.getRestoreState() != BackupService.RestoreState.TERMINATED && mRestoreActivity.getRestoreState() != BackupService.RestoreState.CANCEL;
+                final BackupService.RestoreState restoreState = mRestoreActivity.getRestoreState();
+                boolean isRestoreInProgress = restoreState != null && restoreState != BackupService.RestoreState.TERMINATED && restoreState != BackupService.RestoreState.CANCEL;
                 restoreStateViewHolder.onBind(mRestoreActivity.getRestoreMessage(), isRestoreInProgress);
                 break;
             }

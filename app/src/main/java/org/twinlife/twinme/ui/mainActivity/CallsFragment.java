@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019-2025 twinlife SA.
+ *  Copyright (c) 2019-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -63,6 +63,7 @@ import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 import org.twinlife.twinme.services.CallsService;
 import org.twinlife.twinme.skin.Design;
@@ -645,7 +646,7 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         }
 
         if (groupMembers.size() + 1 > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
-            mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), false, null);
+            mTwinmeActivity.showAlertMessageView(R.id.main_activity_drawer_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), false, null);
         } else {
             callAgain();
         }
@@ -1278,9 +1279,11 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         }
 
         if (callReceiver.getCapabilities().getLinkValidity() == LinkValidity.SINGLE_USE) {
-            if (callReceiver.getCapabilities().getSchedule() != null && callReceiver.getCapabilities().getSchedule().getTimeRanges() != null && !callReceiver.getCapabilities().getSchedule().getTimeRanges().isEmpty()) {
-                if (callReceiver.getCapabilities().getSchedule().getTimeRanges().get(0) instanceof DateTimeRange) {
-                    DateTimeRange dateTimeRange = (DateTimeRange) callReceiver.getCapabilities().getSchedule().getTimeRanges().get(0);
+            final Schedule schedule = callReceiver.getCapabilities().getSchedule();
+            final List<TimeRange> timeRanges = schedule != null ? schedule.getTimeRanges() : null;
+            if (timeRanges != null && !timeRanges.isEmpty()) {
+                if (timeRanges.get(0) instanceof DateTimeRange) {
+                    DateTimeRange dateTimeRange = (DateTimeRange) timeRanges.get(0);
                     DateTime endDateTime = dateTimeRange.end;
                     Calendar calendar = endDateTime.toCalendar(TimeZone.getDefault());
                     calendar.add(Calendar.DATE, 1);
@@ -1359,12 +1362,13 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
         }
 
         String message = "";
-        if (originator != null && originator.getCapabilities().getSchedule() != null) {
-            Schedule schedule = originator.getCapabilities().getSchedule();
-            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
+        final Schedule schedule = originator != null ? originator.getCapabilities().getSchedule() : null;
+        if (schedule != null) {
+            final TimeRange timeRange = schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange != null) {
 
-                if (schedule.getTimeRanges().get(0) instanceof WeeklyTimeRange) {
-                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) schedule.getTimeRanges().get(0);
+                if (timeRange instanceof WeeklyTimeRange) {
+                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) timeRange;
                     Time scheduleStartTime = weeklyTimeRange.start;
                     Time scheduleEndTime = weeklyTimeRange.end;
                     StringBuilder messageStringBuilder = new StringBuilder();
@@ -1413,8 +1417,8 @@ public class CallsFragment extends TabbarFragment implements CallsService.Observ
 
                         message = messageStringBuilder.toString();
                     }
-                } else {
-                    DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+                } else if (timeRange instanceof DateTimeRange) {
+                    DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                     DateTime start = dateTimeRange.start;
                     DateTime end = dateTimeRange.end;
 

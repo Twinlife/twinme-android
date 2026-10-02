@@ -234,7 +234,7 @@ class UIConversationViewHolder extends RecyclerView.ViewHolder {
         mNameContainerView.setLayoutParams(marginLayoutParams);
 
         final Originator subject = uiConversation.getContact();
-        if (subject.isGroup()) {
+        if (subject.isGroup() && uiConversation instanceof UIGroupConversation) {
             final UIGroupConversation groupConversation = (UIGroupConversation) uiConversation;
 
             if (subject.getAvatarId() != null || groupConversation.getGroupAvatars().size() < 2) {

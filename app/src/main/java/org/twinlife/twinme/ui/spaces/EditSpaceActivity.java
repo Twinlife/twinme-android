@@ -54,6 +54,7 @@ import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.SpaceSettings;
 import org.twinlife.twinme.services.EditSpaceService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.UICustomColor;
 import org.twinlife.twinme.ui.AbstractEditActivity;
 import org.twinlife.twinme.ui.EditProfileActivity;
 import org.twinlife.twinme.ui.Intents;
@@ -96,9 +97,9 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
     private File mUpdatedSpaceAvatarFile;
     private boolean mPickSpaceAvatar;
 
-    protected ColorSpaceAdapter mUIColorSpaceListAdapter;
-    protected List<UIColorSpace> mUIColors;
-    protected UIColorSpace mSelectedColor;
+    protected ColorSpaceAdapter mUICustomColorListAdapter;
+    protected List<UICustomColor> mUIColors;
+    protected UICustomColor mSelectedColor;
 
     private EditSpaceService mEditSpaceService;
 
@@ -385,7 +386,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -395,9 +396,9 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
     //
 
     @Override
-    public boolean onUIColorSpaceClick(RecyclerView recyclerView, int position) {
+    public boolean onUICustomColorClick(RecyclerView recyclerView, int position) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onUIColorSpaceClick position=" + position);
+            Log.d(LOG_TAG, "onUICustomColorClick position=" + position);
         }
 
         if (position >= 0 && position < mUIColors.size()) {
@@ -421,7 +422,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.edit_space_activity);
 
         setTitle(getString(R.string.application_name));
@@ -625,25 +626,25 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         marginLayoutParams = (ViewGroup.MarginLayoutParams) colorContentView.getLayoutParams();
         marginLayoutParams.topMargin = (int) (DESIGN_DESCRIPTION_TOP_MARGIN * Design.HEIGHT_RATIO);
 
-        mUIColors = Design.spaceColors();
+        mUIColors = Design.mainColors();
 
         if (mCreateSpace) {
-            UIColorSpace colorSpace = mUIColors.get(0);
+            UICustomColor colorSpace = mUIColors.get(0);
             colorSpace.setSelected(true);
             mSelectedColor = colorSpace;
         }
 
-        mUIColorSpaceListAdapter = new ColorSpaceAdapter(this, mUIColors, null, 0);
+        mUICustomColorListAdapter = new ColorSpaceAdapter(this, mUIColors, null, 0);
 
         if (mSelectedColor != null) {
-            mUIColorSpaceListAdapter.setDefaultColor(Design.DEFAULT_COLOR);
-            mUIColorSpaceListAdapter.setSelectedColor(mSelectedColor.getStringColor());
+            mUICustomColorListAdapter.setDefaultColor(Design.DEFAULT_COLOR);
+            mUICustomColorListAdapter.setSelectedColor(mSelectedColor.getStringColor());
         }
 
         LinearLayoutManager uiColorsLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         RecyclerView colorRecyclerView = findViewById(R.id.edit_space_activity_color_list_view);
         colorRecyclerView.setLayoutManager(uiColorsLinearLayoutManager);
-        colorRecyclerView.setAdapter(mUIColorSpaceListAdapter);
+        colorRecyclerView.setAdapter(mUICustomColorListAdapter);
         colorRecyclerView.setItemViewCacheSize(Design.ITEM_LIST_CACHE_SIZE);
         colorRecyclerView.setItemAnimator(null);
         OnColorSpaceTouchListener onTouchListener = new OnColorSpaceTouchListener(this, colorRecyclerView, this);
@@ -787,9 +788,9 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             }
 
             if (mUITemplateSpace.getColor() != null) {
-                mSelectedColor = new UIColorSpace(mUITemplateSpace.getColor());
+                mSelectedColor = new UICustomColor(mUITemplateSpace.getColor());
                 mSelectedColor.setSelected(true);
-                mUIColorSpaceListAdapter.setSelectedColor(mSelectedColor.getStringColor());
+                mUICustomColorListAdapter.setSelectedColor(mSelectedColor.getStringColor());
                 int color = Color.parseColor(mUITemplateSpace.getColor());
                 mAvatarView.setBackgroundColor(color);
                 float radius = Design.CONTAINER_RADIUS * Resources.getSystem().getDisplayMetrics().density;
@@ -815,7 +816,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         }
 
         if (mEditSpaceService.numberSpaces(false) <= 1 && !mSpace.isSecret()) {
-            showAlertMessageView(R.id.edit_space_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.edit_space_view_delete_only_one_space_message), true, null);
+            showAlertMessageView(R.id.edit_space_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.edit_space_view_delete_only_one_space_message), true, null);
             return;
         }
 
@@ -996,7 +997,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
             return;
         }
 
-        for (UIColorSpace colorSpace : mUIColors) {
+        for (UICustomColor colorSpace : mUIColors) {
             colorSpace.setSelected(colorSpace.getColor().equals(mSelectedColor.getColor()));
         }
 
@@ -1016,7 +1017,7 @@ public class EditSpaceActivity extends AbstractEditActivity implements EditSpace
         saveViewBackground.getPaint().setColor(saveColor);
         mSaveClickableView.setBackground(saveViewBackground);
 
-        mUIColorSpaceListAdapter.setSelectedColor(mSelectedColor.getStringColor());
+        mUICustomColorListAdapter.setSelectedColor(mSelectedColor.getStringColor());
     }
 
     private void createFileFromTemplate() {

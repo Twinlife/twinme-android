@@ -112,7 +112,7 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_click_to_call, null));
         onboardingConfirmView.setTitle(getString(R.string.premium_services_view_click_to_call_title));
         onboardingConfirmView.setMessage(getString(R.string.create_external_call_view_onboarding_part_1_message_1));
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
@@ -150,7 +150,7 @@ public class TemplateExternalCallActivity extends AbstractTwinmeActivity impleme
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.template_external_call_activity);
 
         setStatusBarColor();

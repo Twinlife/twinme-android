@@ -243,7 +243,7 @@ public class UIConversation {
         boolean silentMode;
         long silentExpiration;
 
-        if (getContact().isGroup()) {
+        if (getContact().isGroup() && getContact() instanceof Group) {
             Group group = (Group) getContact();
             silentMode = group.getBoolean(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE, false);
             silentExpiration = group.getLong(MenuConversationShortcutView.PROPERTY_CONVERSATION_SILENT_MODE_EXPIRATION, 0);

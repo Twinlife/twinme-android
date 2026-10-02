@@ -138,11 +138,12 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onSettingClick");
         }
 
-        if (setting.getTypeSetting() == UISetting.TypeSetting.SYSTEM) {
+        final UISetting.TypeSetting typeSetting = setting.getTypeSetting();
+        if (typeSetting == UISetting.TypeSetting.SYSTEM) {
             onSystemPreferencesClick();
-        } else if (setting.getTypeSetting() == UISetting.TypeSetting.SYSTEM_MESSAGE) {
+        } else if (typeSetting == UISetting.TypeSetting.SYSTEM_MESSAGE) {
             onSystemMessagePreferencesClick();
-        } else if (setting.getTypeSetting() == UISetting.TypeSetting.RESET) {
+        } else if (typeSetting == UISetting.TypeSetting.RESET) {
             onResetPreferencesClick();
         }
     }
@@ -352,7 +353,7 @@ public class SoundsSettingsActivity extends AbstractSettingsActivity {
         defaultConfirmView.setTitle(getString(R.string.settings_view_reset_preferences_title));
         defaultConfirmView.setMessage(getString(R.string.settings_view_reset_preferences_message));
         defaultConfirmView.setImage(null);
-        defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

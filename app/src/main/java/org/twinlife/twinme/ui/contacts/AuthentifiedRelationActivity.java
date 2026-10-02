@@ -187,7 +187,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             Log.d(LOG_TAG, "onError: message=" + message);
         }
 
-        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     //
@@ -274,7 +274,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.authentified_relation_activity);
 
         setStatusBarColor();
@@ -457,7 +457,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
             Log.d(LOG_TAG, "incorrectQRCode");
         }
 
-        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(R.string.deleted_account_view_warning), message, false, this::finish);
+        showAlertMessageView(R.id.authentified_relation_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), message, false, this::finish);
     }
 
     @Override
@@ -687,7 +687,7 @@ public class AuthentifiedRelationActivity extends AbstractScannerActivity implem
 
         String message = String.format(getString(R.string.authentified_relation_view_certified_message), mContact.getName());
         successAuthentifiedRelationView.setMessage(message);
-        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+        successAuthentifiedRelationView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

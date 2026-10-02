@@ -381,7 +381,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.add_group_member_activity);
 
         setStatusBarColor();
@@ -606,7 +606,7 @@ public class AddGroupMemberActivity extends AbstractGroupActivity implements OnC
                 }
 
                 if (isMaxGroupMembers) {
-                    showAlertMessageView(R.id.add_group_member_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.application_group_limit_reached), maxMemberCount), false, null);
+                    showAlertMessageView(R.id.add_group_member_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.application_group_limit_reached), maxMemberCount), false, null);
                     return false;
                 }
 

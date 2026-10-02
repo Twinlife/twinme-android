@@ -266,7 +266,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -281,13 +281,13 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
 
         if (mFirstProfile) {
             MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.onboarding_menu, menu);
+            inflater.inflate(org.twinlife.twinme.android.R.menu.onboarding_menu, menu);
 
-            MenuItem menuItem = menu.findItem(R.id.info_action);
+            MenuItem menuItem = menu.findItem(org.twinlife.twinme.android.R.id.info_action);
             ImageView imageView = (ImageView) menuItem.getActionView();
 
             if (imageView != null) {
-                imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_info_icon, null));
+                imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), org.twinlife.twinme.android.R.drawable.onboarding_info_icon, null));
                 imageView.setColorFilter(Color.WHITE);
                 imageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
                 imageView.setOnClickListener(view -> onOnboardingClick());
@@ -356,7 +356,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.add_profile_activity);
 
         setStatusBarColor();
@@ -664,7 +664,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
         defaultConfirmView.setMessage(getString(R.string.create_profile_view_incomplete_profile_message));
 
         if (incompleteProfile) {
-            defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
+            defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         } else {
             defaultConfirmView.setConfirmTitle(getString(R.string.profile_view_create_profile));
         }
@@ -733,7 +733,7 @@ public class AddProfileActivity extends AbstractTwinmeActivity implements Create
                 getString(R.string.create_profile_view_onboarding_message_part_4);
 
         onboardingConfirmView.setMessage(message);
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

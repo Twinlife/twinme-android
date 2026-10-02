@@ -341,7 +341,7 @@ public class ShowProfileActivity extends AbstractTwinmeActivity implements EditI
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_profile_activity);
 
         setTitle(getString(R.string.application_name));

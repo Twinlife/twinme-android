@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.twinlife.device.android.twinme.R;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.UICustomColor;
 import org.twinlife.twinme.utils.RoundedView;
 
 public class ColorSpaceViewHolder extends RecyclerView.ViewHolder {
@@ -61,7 +62,7 @@ public class ColorSpaceViewHolder extends RecyclerView.ViewHolder {
         mSeparatorView.setBackgroundColor(Color.argb(255, 35, 42, 69));
     }
 
-    public void onBind(UIColorSpace colorSpace) {
+    public void onBind(UICustomColor colorSpace) {
 
         if (!colorSpace.useDefaultColor()) {
             mContentColorView.setColor(Color.parseColor(colorSpace.getColor()));

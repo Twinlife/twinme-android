@@ -140,7 +140,7 @@ public class LockScreenActivity extends AbstractTwinmeActivity {
         }
 
         if (!isDeviceSecure()) {
-            showAlertMessageView(R.id.lock_screen_activity_content_view, getString(R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
+            showAlertMessageView(R.id.lock_screen_activity_content_view, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
             return;
         }
 

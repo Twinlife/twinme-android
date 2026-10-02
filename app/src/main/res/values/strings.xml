@@ -32,16 +32,13 @@
     <string name="application_authorization_microphone_camera">Allow app to access Microphone and Camera in system settings.</string>
     <string name="application_authorization_title">Missing access authorization</string>
     <string name="application_beta" translatable="false">BETA</string>
-    <string name="application_back">Back</string>
     <string name="application_backup_restore">Restore the backup</string>
     <string name="application_backup_verify">Verify the backup</string>
     <string name="application_camera">Camera</string>
-    <string name="application_cancel">Cancel</string>
     <string name="application_canceled_operation">Canceled operation</string>
     <string name="application_checking_connection">Checking connection</string>
     <string name="application_color">Color</string>
     <string name="application_configuration">Configuration</string>
-    <string name="application_confirm">Confirm</string>
     <string name="application_confirm_deletion">Confirm the deletion</string>
     <string name="application_connected">Secure connection enabled.</string>
     <string name="application_connection_status_no_network">No Internet access.</string>
@@ -71,7 +68,6 @@
     <string name="application_error_no_storage_space">Insufficient storage space</string>
     <string name="application_group_limit_reached">Maximum number (%1$d) of group members exceeded.</string>
     <string name="application_group_not_found">You have been removed from the group</string>
-    <string name="application_later">Later</string>
     <string name="application_location">Geolocation</string>
     <string name="application_location_enabled">Activate Location service on your device.</string>
     <string name="application_items_selected">%1$d items selected</string>
@@ -104,7 +100,6 @@
     <string name="application_not_signed_in">Not connected to Skred service</string>
     <string name="application_now">Now</string>
     <string name="application_off" translatable="false">Off</string>
-    <string name="application_ok">OK</string>
     <string name="application_on" translatable="false">On</string>
     <string name="application_operation_failure">Operation failure</string>
     <string name="application_operation_irreversible">This operation is irreversible</string>
@@ -200,6 +195,7 @@
     <string name="account_migration_view_close_message">Close the application and restart it to access the new data.</string>
     <string name="account_migration_view_confirm_cancel_message">Are you sure you want to cancel the migration?</string>
     <string name="account_migration_view_database">Database</string>
+    <string name="account_migration_view_display">Display</string>
     <string name="account_migration_view_finalizing">Finalizing</string>
     <string name="account_migration_view_initializing">Initializing</string>
     <string name="account_migration_view_my_device">My device</string>
@@ -243,6 +239,7 @@
     <string name="account_migration_scanner_view_step_1">Open the app on the other device</string>
     <string name="account_migration_scanner_view_step_2">Go to the side menu</string>
     <string name="account_migration_scanner_view_step_3">Select \"Account\"</string>
+    <string name="account_migration_scanner_view_step_4">Launch account migration</string>
     <string name="account_migration_scanner_view_step_4_my_device">Start the transfer from this device</string>
     <string name="account_migration_scanner_view_step_4_another_device">Start the transfer from the other device</string>
     <string name="account_migration_scanner_view_step_5_my_device">Scan the QR code displayed on the other device with this device</string>
@@ -704,7 +701,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Type the letters \"OK\" below to confirm the deletion of the account.</string>
     <string name="deleted_account_view_delete">Delete account</string>
-    <string name="deleted_account_view_warning">Warning‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Your account has been deleted and all associated data have been destroyed.&lt;br /&gt;
@@ -723,7 +719,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Are you sure you want to delete this relation?</string>
-    <string name="edit_contact_view_message">This contact will no longer be able to reach you.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Are you sure you want to delete this \"Click-to-Call\" code?</string>
@@ -1426,7 +1421,6 @@
 
     <!-- StreamingAudioActivity -->
     <string name="streaming_audio_view_unknown_artist" translatable="false">&lt;unknown&gt;</string>
-    <string name="streaming_audio_view_error_message">An error has occured. Please try again.</string>
     <string name="streaming_audio_view_no_music_message">Please transfer music files to your device.</string>
     <string name="streaming_audio_view_no_music_title">No music found 🙁</string>
     <string name="streaming_audio_view_title">Media sharing</string>
@@ -1507,5 +1501,4 @@
     <string name="welcome_view_step3_message">No phone number, no address book, no user-id: you choose how you want to be identified based on who you are communicating with.</string>
     <string name="welcome_view_terms_of_use">terms and conditions</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

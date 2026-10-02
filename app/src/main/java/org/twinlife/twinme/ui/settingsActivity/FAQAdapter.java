@@ -82,10 +82,10 @@ public class FAQAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         int viewType = getItemViewType(position);
 
         UIFAQItem item = mItems.get(position);
-        if (viewType == SECTION) {
+        if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getTitle(), false);
-        } else if (viewType == FAQ) {
+        } else if (viewType == FAQ && viewHolder instanceof FAQViewHolder) {
             FAQViewHolder faqViewHolder = (FAQViewHolder) viewHolder;
             faqViewHolder.itemView.setOnClickListener(view -> mFAQActivity.onFAQClick(item));
             faqViewHolder.onBind(item, false);

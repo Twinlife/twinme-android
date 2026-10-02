@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">Permitir que o aplicativo acesse o Microfone nas configurações do sistema.</string>
     <string name="application_authorization_microphone_camera">Permitir que o aplicativo acesse o Microfone e a Câmera nas configurações do sistema.</string>
     <string name="application_authorization_title">Autorização de acesso ausente</string>
-    <string name="application_back">Retroceder</string>
     <string name="application_backup_restore">Restaurar o backup</string>
     <string name="application_backup_verify">Verificar o backup</string>
     <string name="application_camera">Câmara</string>
-    <string name="application_cancel">Cancelar</string>
     <string name="application_canceled_operation">Operação cancelada</string>
     <string name="application_checking_connection">Verificando a conexão</string>
     <string name="application_color">Cor</string>
     <string name="application_configuration">Configuração</string>
-    <string name="application_confirm">Confirme</string>
     <string name="application_confirm_deletion">Confirme a eliminação</string>
     <string name="application_connected">Conexão segura ativada.</string>
     <string name="application_connection_status_no_network">Sem acesso à Internet.</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">Número máximo (%1$d) de membros do grupo excedido.</string>
     <string name="application_group_not_found">Você foi removido do grupo</string>
     <string name="application_items_selected">%1$d itens selecionados</string>
-    <string name="application_later">Mais tarde</string>
     <string name="application_location">Geolocalização</string>
     <string name="application_location_enabled">Ative o serviço de localização do seu dispositivo.</string>
     <string name="application_low_usage_message">Atenção, se você não usar o aplicativo com frequência suficiente, o SO pode não ativá-lo para trocar mensagens!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">Conexão segura em andamento…</string>
     <string name="application_not_signed_in">Não está ligado ao serviço Skred</string>
     <string name="application_now">Agora</string>
-    <string name="application_ok">OK</string>
     <string name="application_operation_failure">Falha na operação</string>
     <string name="application_operation_irreversible">Esta operação é irreversível</string>
     <string name="application_permission_camera">A permissão para acessar a câmera é necessária para tirar uma nova foto ou vídeo.</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">Feche o aplicativo e reinicie-o para acessar os novos dados.</string>
     <string name="account_migration_view_confirm_cancel_message">Tem certeza de que deseja cancelar a migração?</string>
     <string name="account_migration_view_database">Banco de dados</string>
+    <string name="account_migration_view_display">Exibir</string>
     <string name="account_migration_view_finalizing">Finalizando</string>
     <string name="account_migration_view_initializing">Inicializando</string>
     <string name="account_migration_view_my_device">O meu dispositivo</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">Abra a aplicação no outro dispositivo</string>
     <string name="account_migration_scanner_view_step_2">Aceda ao menu lateral</string>
     <string name="account_migration_scanner_view_step_3">Selecione \"Conta\"</string>
+    <string name="account_migration_scanner_view_step_4">Iniciar migração de conta</string>
     <string name="account_migration_scanner_view_step_4_my_device">Inicie a transferência a partir deste dispositivo</string>
     <string name="account_migration_scanner_view_step_4_another_device">Inicie a transferência a partir do outro dispositivo</string>
     <string name="account_migration_scanner_view_step_5_my_device">Digitalize o código QR apresentado no outro dispositivo com este dispositivo</string>
@@ -682,7 +679,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Introduza as letras “OK” abaixo para confirmar a eliminação da conta.</string>
     <string name="deleted_account_view_delete">Apagar conta</string>
-    <string name="deleted_account_view_warning">Atenção‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Sua conta foi excluída e todos os dados associados foram destruídos.&lt;br /&gt;
@@ -701,7 +697,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Tem a certeza de que pretende eliminar esta relação?</string>
-    <string name="edit_contact_view_message">Este contacto não poderá mais entrar em contacto consigo.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Tem a certeza que pretende eliminar este código \"Click-to-Call\"?</string>
@@ -1394,7 +1389,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Ocorreu um erro. Por favor, tente novamente.</string>
     <string name="streaming_audio_view_no_music_message">Compartilhamento de mídia</string>
     <string name="streaming_audio_view_no_music_title">Nenhuma música encontrada 🙁</string>
     <string name="streaming_audio_view_title">Compartilhamento de mídia</string>
@@ -1475,5 +1469,4 @@
     <string name="welcome_view_step3_message">Sem número de telefone, sem catálogo de endereços, sem identificação de usuário: você escolhe como deseja ser identificado com base em quem está se comunicando.</string>
     <string name="welcome_view_terms_of_use">termos e condições</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

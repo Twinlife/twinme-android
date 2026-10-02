@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Povolte aplikaci přístup k mikrofonu v systémovém nastavení.</string>
     <string name="application_authorization_microphone_camera">Povolte aplikaci přístup k mikrofonu a kameře v systémovém nastavení.</string>
     <string name="application_authorization_title">Chybějící oprávnění přístupu</string>
-    <string name="application_back">Zpět</string>
     <string name="application_backup_restore">Obnovit zálohu</string>
     <string name="application_backup_verify">Ověřit zálohu</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Zrušit</string>
     <string name="application_canceled_operation">Operace zrušena</string>
     <string name="application_checking_connection">Kontrola připojení</string>
     <string name="application_color">Barva</string>
     <string name="application_configuration">Konfigurace</string>
-    <string name="application_confirm">Potvrdit</string>
     <string name="application_confirm_deletion">Potvrdit odstranění</string>
     <string name="application_connected">Zabezpečené připojení aktivní.</string>
     <string name="application_connection_status_no_network">Bez přístupu k internetu.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Překročen maximální počet (%1$d) členů skupiny.</string>
     <string name="application_group_not_found">Byli jste odstraněni ze skupiny</string>
     <string name="application_items_selected">Vybráno %1$d položek</string>
-    <string name="application_later">Později</string>
     <string name="application_location">Geolokace</string>
     <string name="application_location_enabled">Aktivujte ve svém zařízení službu Poloha.</string>
     <string name="application_low_usage_message">Upozornění, pokud aplikaci nepoužíváte dostatečně často, systém ji nemusí probudit pro výměnu zpráv!</string>
@@ -84,7 +80,6 @@
     <string name="application_not_connected">Probíhá zabezpečené připojení…</string>
     <string name="application_not_signed_in">Nepřipojeno ke službě Skred</string>
     <string name="application_now">Nyní</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">1 položka vybrána</string>
     <string name="application_operation_failure">Operace selhala</string>
     <string name="application_operation_irreversible">Tato operace je nevratná</string>
@@ -178,6 +173,7 @@
     <string name="account_migration_view_close_message">Zavřete aplikaci a restartujte ji pro přístup k novým datům.</string>
     <string name="account_migration_view_confirm_cancel_message">Opravdu chcete zrušit migraci?</string>
     <string name="account_migration_view_database">Databáze</string>
+    <string name="account_migration_view_display">Zobrazení</string>
     <string name="account_migration_view_finalizing">Dokončování</string>
     <string name="account_migration_view_initializing">Inicializace</string>
     <string name="account_migration_view_my_device">Moje zařízení</string>
@@ -221,6 +217,7 @@
     <string name="account_migration_scanner_view_step_1">Otevřete aplikaci na druhém zařízení</string>
     <string name="account_migration_scanner_view_step_2">Přejděte do boční nabídky</string>
     <string name="account_migration_scanner_view_step_3">Vyberte „Účet“</string>
+    <string name="account_migration_scanner_view_step_4">Spustit migraci účtu</string>
     <string name="account_migration_scanner_view_step_4_my_device">Spusťte přenos z tohoto zařízení</string>
     <string name="account_migration_scanner_view_step_4_another_device">Spusťte přenos z druhého zařízení</string>
     <string name="account_migration_scanner_view_step_5_my_device">Naskenujte QR kód zobrazený na druhém zařízení pomocí tohoto zařízení</string>
@@ -682,7 +679,6 @@
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">Váš účet byl smazán a všechna související data byla zničena.<br /> Musíte aplikaci zavřít.</string>
-    <string name="deleted_account_view_warning">Pozor‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">Dostupné</string>
@@ -697,7 +693,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Opravdu chcete tento vztah odstranit?</string>
-    <string name="edit_contact_view_message">Tento kontakt vás již nebude moci kontaktovat.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">Opravdu chcete smazat tento „Click‑to‑Call“ kód?</string>
@@ -1389,7 +1384,6 @@
     <string name="spaces_view_title">Prostory</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Došlo k chybě. Zkuste to prosím znovu.</string>
     <string name="streaming_audio_view_no_music_message">Přesuňte prosím hudební soubory do svého zařízení.</string>
     <string name="streaming_audio_view_no_music_title">Žádná hudba nenalezena 🙁</string>
     <string name="streaming_audio_view_title">Sdílení médií</string>

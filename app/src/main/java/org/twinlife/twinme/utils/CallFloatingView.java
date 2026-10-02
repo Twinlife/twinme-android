@@ -153,7 +153,7 @@ public class CallFloatingView extends PercentRelativeLayout implements View.OnTo
 
         SurfaceViewRenderer remoteRenderer = callState.getRemoteRenderer();
         if (remoteRenderer != null) {
-            if (remoteRenderer.getParent() != null) {
+            if (remoteRenderer.getParent() instanceof ViewGroup) {
                 ((ViewGroup) remoteRenderer.getParent()).removeView(remoteRenderer);
             }
             mRemoteRenderLayout.setPosition(0, 0, 100, 100);

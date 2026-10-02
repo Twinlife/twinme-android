@@ -198,7 +198,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.backups_activity);
 
         setStatusBarColor();
@@ -348,7 +348,7 @@ public class BackupsActivity extends AbstractTwinmeActivity {
         defaultConfirmView.setImage(null);
         defaultConfirmView.setConfirmTitle(getString(R.string.application_delete));
         defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
-        defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+        defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

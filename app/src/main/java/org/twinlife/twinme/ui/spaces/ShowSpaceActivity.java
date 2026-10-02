@@ -368,7 +368,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_space_activity);
 
         showToolBar(false);
@@ -773,7 +773,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
         }
 
         if (mSpace != null && mSpace.getProfile() != null && mSpaceService.numberSpaces(true) <= 1) {
-            showAlertMessageView(R.id.show_space_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.show_space_view_move_message), true, null);
+            showAlertMessageView(R.id.show_space_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.show_space_view_move_message), true, null);
         } else if (mSpace != null && mSpace.getProfile() == null) {
             ViewGroup viewGroup = findViewById(R.id.show_space_activity_layout);
 
@@ -784,7 +784,7 @@ public class ShowSpaceActivity extends AbstractTwinmeActivity implements ShowSpa
             spaceActionConfirmView.setTitle(getString(R.string.create_profile_view_title));
             spaceActionConfirmView.setMessage(getString(R.string.create_space_view_contacts_no_profile));
             spaceActionConfirmView.setConfirmTitle(getString(R.string.application_now));
-            spaceActionConfirmView.setCancelTitle(getString(R.string.application_later));
+            spaceActionConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_later));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override

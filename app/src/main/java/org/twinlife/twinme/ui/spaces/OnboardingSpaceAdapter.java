@@ -81,10 +81,10 @@ public class OnboardingSpaceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             position += 1;
         }
 
-        if (position == 0) {
+        if (position == 0 && viewHolder instanceof OnboardingSpaceFirstPartViewHolder) {
             OnboardingSpaceFirstPartViewHolder onboardingSpaceFirstPartViewHolder = (OnboardingSpaceFirstPartViewHolder) viewHolder;
             onboardingSpaceFirstPartViewHolder.onBind(mOnboardingSpaceActivity);
-        } else if (position == 1) {
+        } else if (position == 1 && viewHolder instanceof OnboardingSpaceSecondPartViewHolder) {
             OnboardingSpaceSecondPartViewHolder onboardingSpaceSecondPartViewHolder = (OnboardingSpaceSecondPartViewHolder) viewHolder;
             onboardingSpaceSecondPartViewHolder.onBind(mOnboardingSpaceActivity);
         } else {

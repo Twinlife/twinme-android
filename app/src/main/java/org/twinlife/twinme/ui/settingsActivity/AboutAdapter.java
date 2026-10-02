@@ -102,10 +102,10 @@ public class AboutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         int viewType = getItemViewType(position);
 
         UIAboutItem item = mItems.get(position);
-        if (viewType == SECTION) {
+        if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getText(), false);
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE && viewHolder instanceof SettingValueViewHolder) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             settingValueViewHolder.itemView.setOnClickListener(view -> mActivity.onAboutItemClick(item.getType()));
             if (mActivity.getTwinmeApplication().getLastVersion() != null) {
@@ -113,11 +113,11 @@ public class AboutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             } else {
                 settingValueViewHolder.onBind(item.getText(), "");
             }
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && viewHolder instanceof SettingSectionViewHolder) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAboutItemClick(item.getType()));
             settingSectionViewHolder.onBind(item.getText(), Design.FONT_COLOR_DEFAULT, false);
-        } else if (viewType == UPDATE) {
+        } else if (viewType == UPDATE && viewHolder instanceof UpdateAvailableViewHolder) {
             UpdateAvailableViewHolder updateAvailableViewHolder = (UpdateAvailableViewHolder) viewHolder;
             updateAvailableViewHolder.itemView.setOnClickListener(view -> mActivity.onAboutItemClick(item.getType()));
             if (mActivity.getTwinmeApplication().getLastVersion() != null) {
@@ -125,10 +125,10 @@ public class AboutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             } else {
                 updateAvailableViewHolder.onBind("");
             }
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(item.getText(), false);
-        } else if (viewType == ABOUT) {
+        } else if (viewType == ABOUT && viewHolder instanceof AboutItemViewHolder) {
             AboutItemViewHolder aboutItemViewHolder = (AboutItemViewHolder) viewHolder;
             aboutItemViewHolder.onBind(item.getType() == UIAboutItem.AboutItemType.COPYRIGHT);
         }

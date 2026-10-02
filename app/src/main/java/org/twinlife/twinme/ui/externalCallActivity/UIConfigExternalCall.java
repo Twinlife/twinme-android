@@ -17,6 +17,7 @@ import org.twinlife.twinme.models.schedule.Date;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
 import org.twinlife.twinme.models.schedule.Time;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.models.schedule.WeeklyTimeRange;
 
 import java.text.DateFormatSymbols;
@@ -124,9 +125,10 @@ public class UIConfigExternalCall {
         if (capabilities.getSchedule() != null) {
             Schedule schedule = capabilities.getSchedule();
 
-            if (!schedule.getTimeRanges().isEmpty()) {
-                if (schedule.getTimeRanges().get(0) instanceof DateTimeRange) {
-                    DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+            final TimeRange timeRange = schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange != null) {
+                if (timeRange instanceof DateTimeRange) {
+                    DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                     setScheduleStartDate(dateTimeRange.start.date);
                     setScheduleStartTime(dateTimeRange.start.time);
                     setScheduleEndDate(dateTimeRange.end.date);
@@ -137,8 +139,8 @@ public class UIConfigExternalCall {
                     } else {
                         setLinkValidity(LinkValidity.PERMANENT);
                     }
-                } else if (schedule.getTimeRanges().get(0) instanceof WeeklyTimeRange) {
-                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) schedule.getTimeRanges().get(0);
+                } else if (timeRange instanceof WeeklyTimeRange) {
+                    WeeklyTimeRange weeklyTimeRange = (WeeklyTimeRange) timeRange;
                     setScheduleStartTime(weeklyTimeRange.start);
                     setScheduleEndTime(weeklyTimeRange.end);
                     for (WeeklyTimeRange.DayOfWeek dayOfWeek : weeklyTimeRange.days) {
@@ -432,19 +434,20 @@ public class UIConfigExternalCall {
 
     private void setupDays() {
 
-        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(Locale.getDefault());
+        final Locale locale = Locale.getDefault();
+        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(locale);
         String[] weekDays = dateFormatSymbols.getShortWeekdays();
 
         if (weekDays.length != 8) {
             return;
         }
 
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[2].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.MONDAY, false));
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[3].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.TUESDAY, false));
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[4].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.WEDNESDAY, false));
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[5].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.THURSDAY, false));
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[6].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.FRIDAY, false));
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[7].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.SATURDAY, false));
-        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[1].substring(0, 1).toUpperCase(Locale.getDefault()), WeeklyTimeRange.DayOfWeek.SUNDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[2].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.MONDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[3].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.TUESDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[4].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.WEDNESDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[5].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.THURSDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[6].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.FRIDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[7].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.SATURDAY, false));
+        mScheduleRecurrentDays.add(new UIScheduleDay(weekDays[1].substring(0, 1).toUpperCase(locale), WeeklyTimeRange.DayOfWeek.SUNDAY, false));
     }
 }

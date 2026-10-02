@@ -317,7 +317,7 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.contacts_space_activity);
 
         setStatusBarColor();
@@ -444,7 +444,7 @@ public class ContactsSpaceActivity extends AbstractSpaceActivity implements OnCo
             spaceActionConfirmView.setTitle(mSpace.getSpaceSettings().getName());
             spaceActionConfirmView.setMessage(getString(R.string.contact_space_view_move_message));
             spaceActionConfirmView.setConfirmTitle(getString(R.string.contact_space_view_move_title));
-            spaceActionConfirmView.setCancelTitle(getString(R.string.application_cancel));
+            spaceActionConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override

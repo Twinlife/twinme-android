@@ -109,7 +109,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "onDeviceSecureMessage");
         }
 
-        showAlertMessageView(R.id.privacy_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
+        showAlertMessageView(R.id.privacy_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.lock_screen_view_passcode_not_set), false, null);
     }
 
     public void onSelectShareInvitationModeClick() {
@@ -129,7 +129,7 @@ public class PrivacyActivity extends AbstractSettingsActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.privacy_activity);
 
         View contentView = findViewById(R.id.privacy_activity_layout);

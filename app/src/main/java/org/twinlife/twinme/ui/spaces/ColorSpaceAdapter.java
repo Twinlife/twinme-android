@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.skin.UICustomColor;
 import org.twinlife.twinme.ui.AbstractTwinmeActivity;
 
 import java.util.List;
@@ -28,13 +29,13 @@ public class ColorSpaceAdapter extends Adapter<ColorSpaceViewHolder> {
 
     public interface OnColorClickListener {
 
-        void onUpdateColor(UIColorSpace color);
+        void onUpdateColor(UICustomColor color);
 
         void onEnterCustomColor();
     }
 
     private final AbstractTwinmeActivity mListActivity;
-    private final List<UIColorSpace> mUIColor;
+    private final List<UICustomColor> mUIColor;
     private final int mColorWidth;
     @Nullable
     private final OnColorClickListener mOnColorClickListener;
@@ -43,7 +44,7 @@ public class ColorSpaceAdapter extends Adapter<ColorSpaceViewHolder> {
     private String mSelectedColor;
     private boolean mEnterColorEnable;
 
-    ColorSpaceAdapter(@NonNull AbstractTwinmeActivity listActivity, @NonNull List<UIColorSpace> colors,
+    ColorSpaceAdapter(@NonNull AbstractTwinmeActivity listActivity, @NonNull List<UICustomColor> colors,
                       @Nullable OnColorClickListener onColorClickListener, int colorWidth) {
         mListActivity = listActivity;
         mUIColor = colors;
@@ -99,7 +100,7 @@ public class ColorSpaceAdapter extends Adapter<ColorSpaceViewHolder> {
                 viewHolder.itemView.setOnClickListener(view -> mOnColorClickListener.onEnterCustomColor());
             }
         } else {
-            UIColorSpace customColor = mUIColor.get(position);
+            UICustomColor customColor = mUIColor.get(position);
             boolean isSelected = false;
 
             if (!mEnterColorEnable) {

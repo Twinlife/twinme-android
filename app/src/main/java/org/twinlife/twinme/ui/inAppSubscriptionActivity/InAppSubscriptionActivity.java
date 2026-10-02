@@ -1,9 +1,10 @@
 /*
- *  Copyright (c) 2022-2025 twinlife SA.
+ *  Copyright (c) 2022-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
  *   Fabrice Trescartes (Fabrice.Trescartes@twin.life)
+ *   Romain Kolb (romain.kolb@skyrock.com)
  */
 
 package org.twinlife.twinme.ui.inAppSubscriptionActivity;
@@ -16,7 +17,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
 import android.text.Spannable;
@@ -34,18 +34,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.TextViewCompat;
 
-import com.android.billingclient.api.BillingClient;
-import com.android.billingclient.api.ProductDetails;
-import com.android.billingclient.api.Purchase;
-
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.AccountService;
 import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.util.Utils;
 import org.twinlife.twinme.TwinmeApplication;
+import org.twinlife.twinme.iap.BillingProvider;
+import org.twinlife.twinme.iap.ProductDetails;
+import org.twinlife.twinme.iap.Purchase;
 import org.twinlife.twinme.models.Profile;
 import org.twinlife.twinme.services.InAppSubscriptionService;
 import org.twinlife.twinme.skin.Design;
@@ -261,6 +262,30 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
         }
     }
 
+    /**
+     * Huawei Billing API sends activity results after login and purchase attempts.
+     * Huawei activities are launched in {@link org.twinlife.twinme.iap.AppGalleryBillingProvider}.
+     *
+     * @param requestCode The integer request code originally supplied to
+     *                    startActivityForResult(), allowing you to identify who this
+     *                    result came from.
+     * @param resultCode The integer result code returned by the child activity
+     *                   through its setResult().
+     * @param data An Intent, which can return result data to the caller
+     *               (various data can be attached to Intent "extras").
+     *
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (DEBUG) {
+            Log.d(LOG_TAG, "onActivityResult: requestCode=" + requestCode + " resultCode=" + resultCode + " data=" + data);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mBillingManager.handleActivityResult(requestCode, resultCode, data);
+    }
+
     //
     // Implement InAppSubscriptionService.Observer methods
     //
@@ -338,9 +363,9 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
     }
 
     @Override
-    public void onGetCurrentSubscription(Purchase purchase) {
+    public void onGetCurrentSubscription(Purchase purchase, AccountService.MerchantIdentification merchantIdentification) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onGetCurrentSubscription: " + purchase);
+            Log.d(LOG_TAG, "onGetCurrentSubscription: purchase=" + purchase + " merchantIdentification=" + merchantIdentification);
         }
 
         if (!purchase.getProducts().isEmpty()) {
@@ -352,7 +377,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                     final String orderId = purchase.getOrderId();
                     if (!mIsSubscribed && orderId != null) {
                         mIsSubscribed = true;
-                        mInAppSubscriptionService.subscribeFeature(mProductDetailsSelected.getProductId(), purchase.getPurchaseToken(), orderId);
+                        mInAppSubscriptionService.subscribeFeature(mProductDetailsSelected.getProductId(), purchase.getPurchaseToken(), orderId, merchantIdentification);
                     }
 
                     updateViews();
@@ -378,11 +403,11 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             mIsSubscribed = false;
             Log.w(LOG_TAG, "Google subscription is canceled but skred server still grants access to the subscription! You are lucky!");
         }
-        onSubscriptionClick(BillingManager.SIX_MONTHS_SUBSCRIPTION_ID);
+        onSubscriptionClick(BillingProvider.SIX_MONTHS_SUBSCRIPTION_ID);
     }
 
     @Override
-    public void onPurchaseSuccess(Purchase purchase) {
+    public void onPurchaseSuccess(Purchase purchase, AccountService.MerchantIdentification merchantIdentification) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onPurchaseSuccess");
         }
@@ -392,7 +417,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             mPurchase = purchase;
             updateViews();
 
-            mInAppSubscriptionService.subscribeFeature(mProductDetailsSelected.getProductId(), purchase.getPurchaseToken(), orderId);
+            mInAppSubscriptionService.subscribeFeature(mProductDetailsSelected.getProductId(), purchase.getPurchaseToken(), orderId, merchantIdentification);
         }
     }
 
@@ -404,17 +429,17 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
     }
 
     @Override
-    public void onSetupFinishedInError(int errorCode) {
+    public void onSetupFinishedInError(@NonNull ErrorCode errorCode) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSetupFinishedInError " + errorCode);
         }
 
         switch (errorCode) {
             // These errors are not recoverable (no Google services, Billing API too old, Billing item deleted).
-            case BillingClient.BillingResponseCode.BILLING_UNAVAILABLE:
-            case BillingClient.BillingResponseCode.FEATURE_NOT_SUPPORTED:
-            case BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE:
-            case BillingClient.BillingResponseCode.ITEM_UNAVAILABLE:
+            case SERVICE_UNAVAILABLE:
+            case FEATURE_NOT_IMPLEMENTED:
+            case ITEM_NOT_FOUND:
+            case NOT_AUTHORIZED_OPERATION:
                 if (mUIInitialized) {
                     if (getTwinmeApplication().getInvitationSubscriptionTwincode() == null) {
                         mErrorTextView.setVisibility(View.VISIBLE);
@@ -488,7 +513,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
         offerViewBackground.setShape(GradientDrawable.RECTANGLE);
         offerViewBackground.setCornerRadii(outerRadii);
 
-        boolean darkMode = Design.isDarkMode(this);
+        boolean darkMode = Design.isDarkMode(this, getTwinmeApplication());
         if (darkMode) {
             offerViewBackground.setColor(DESIGN_DARK_BACKGROUND_COLOR);
         } else {
@@ -546,7 +571,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
 
         mOneYearSubscriptionView = findViewById(R.id.in_app_subscription_activity_one_year_subscription_view);
         mOneYearSubscriptionView.setAlpha(0f);
-        mOneYearSubscriptionView.setOnClickListener(view -> onSubscriptionClick(BillingManager.ONE_YEAR_SUBSCRIPTION_ID));
+        mOneYearSubscriptionView.setOnClickListener(view -> onSubscriptionClick(BillingProvider.ONE_YEAR_SUBSCRIPTION_ID));
 
         mOneYearCardView = findViewById(R.id.in_app_subscription_activity_one_year_subscription_card_view);
         mOneYearCardView.setAlpha(0f);
@@ -599,7 +624,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
 
         mSixMonthSubscriptionView = findViewById(R.id.in_app_subscription_activity_six_month_subscription_view);
         mSixMonthSubscriptionView.setAlpha(0f);
-        mSixMonthSubscriptionView.setOnClickListener(view -> onSubscriptionClick(BillingManager.SIX_MONTHS_SUBSCRIPTION_ID));
+        mSixMonthSubscriptionView.setOnClickListener(view -> onSubscriptionClick(BillingProvider.SIX_MONTHS_SUBSCRIPTION_ID));
 
         mSixMonthCardView = findViewById(R.id.in_app_subscription_activity_six_month_subscription_card_view);
         mSixMonthCardView.setRadius(radius);
@@ -655,7 +680,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
 
         mOneMonthSubscriptionView = findViewById(R.id.in_app_subscription_activity_one_month_subscription_view);
         mOneMonthSubscriptionView.setAlpha(0f);
-        mOneMonthSubscriptionView.setOnClickListener(view -> onSubscriptionClick(BillingManager.ONE_MONTH_SUBSCRIPTION_ID));
+        mOneMonthSubscriptionView.setOnClickListener(view -> onSubscriptionClick(BillingProvider.ONE_MONTH_SUBSCRIPTION_ID));
 
         mOneMonthCardView = findViewById(R.id.in_app_subscription_activity_one_month_subscription_card_view);
         mOneMonthCardView.setAlpha(0f);
@@ -808,7 +833,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
 
         if (mProductList != null) {
             updateProducts(true);
-            onSubscriptionClick(BillingManager.SIX_MONTHS_SUBSCRIPTION_ID);
+            onSubscriptionClick(BillingProvider.SIX_MONTHS_SUBSCRIPTION_ID);
         }
     }
 
@@ -885,7 +910,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             if (!mIsSubscribed) {
                 mBillingManager.subscribeToProductId(mProductDetailsSelected.getProductId());
             } else {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/account/subscriptions?sku=" + mProductDetailsSelected.getProductId() + "&package=" + getString(R.string.skred_app_id))));
+                mBillingManager.manageSubscription(mProductDetailsSelected.getProductId(), getString(R.string.skred_app_id));
             }
         } else if (getTwinmeApplication().getInvitationSubscriptionTwincode() != null) {
             ViewGroup viewGroup = findViewById(R.id.in_app_subscription_activity_layout);
@@ -894,7 +919,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             defaultConfirmView.setTitle(getString(R.string.in_app_subscription_view_cancel_subscription));
             defaultConfirmView.setMessage(getString(R.string.in_app_subscription_view_cancel_subscription_confirmation));
             defaultConfirmView.setImage(null);
-            defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+            defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_confirm));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -994,7 +1019,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                     long priceAmountMicros = 0;
                     if (productDetails.getSubscriptionOfferDetails() != null) {
                         for (ProductDetails.SubscriptionOfferDetails subscriptionOfferDetails : productDetails.getSubscriptionOfferDetails()) {
-                            for (ProductDetails.PricingPhase pricingPhase : subscriptionOfferDetails.getPricingPhases().getPricingPhaseList()) {
+                            for (ProductDetails.PricingPhase pricingPhase : subscriptionOfferDetails.getPricingPhases()) {
                                 price = pricingPhase.getFormattedPrice();
                                 priceAmountMicros = pricingPhase.getPriceAmountMicros();
                             }
@@ -1002,17 +1027,17 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                     }
 
                     switch (productDetails.getProductId()) {
-                        case BillingManager.ONE_MONTH_SUBSCRIPTION_ID:
+                        case BillingProvider.ONE_MONTH_SUBSCRIPTION_ID:
                             mOneMonthSubscriptionView.setAlpha(subscribeViewAlpha);
                             mPriceOneMonthTextView.setText(price);
                             oneMonthPrice = priceAmountMicros;
                             break;
-                        case BillingManager.SIX_MONTHS_SUBSCRIPTION_ID:
+                        case BillingProvider.SIX_MONTHS_SUBSCRIPTION_ID:
                             mSixMonthSubscriptionView.setAlpha(subscribeViewAlpha);
                             mPriceSixMonthTextView.setText(price);
                             sixMonthPrice = priceAmountMicros;
                             break;
-                        case BillingManager.ONE_YEAR_SUBSCRIPTION_ID:
+                        case BillingProvider.ONE_YEAR_SUBSCRIPTION_ID:
                             mOneYearSubscriptionView.setAlpha(subscribeViewAlpha);
                             mPriceOneYearTextView.setText(price);
                             oneYearPrice = priceAmountMicros;
@@ -1089,33 +1114,33 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             mPriceOneYearTextView.setTextColor(Design.BLACK_COLOR);
 
             switch (mProductDetailsSelected.getProductId()) {
-                case BillingManager.ONE_MONTH_SUBSCRIPTION_ID:
+                case BillingProvider.ONE_MONTH_SUBSCRIPTION_ID:
                     mOneMonthCardView.setAlpha(1.f);
                     if (mIsSubscribed) {
                         mOneMonthSubscriptionView.setAlpha(1f);
                         mOneYearSubscriptionView.setAlpha(0.5f);
                         mSixMonthSubscriptionView.setAlpha(0.5f);
                     }
-                    if (Design.isDarkMode(this)) {
+                    if (Design.isDarkMode(this, getTwinmeApplication())) {
                         mPriceOneMonthTextView.setTextColor(Color.BLACK);
                         mOneMonthDurationView.setTextColor(Color.BLACK);
                         mOneMonthUnitView.setTextColor(Color.BLACK);
                     }
                     break;
-                case BillingManager.SIX_MONTHS_SUBSCRIPTION_ID:
+                case BillingProvider.SIX_MONTHS_SUBSCRIPTION_ID:
                     mSixMonthCardView.setAlpha(1.f);
                     if (mIsSubscribed) {
                         mSixMonthSubscriptionView.setAlpha(1f);
                         mOneYearSubscriptionView.setAlpha(0.5f);
                         mOneMonthSubscriptionView.setAlpha(0.5f);
                     }
-                    if (Design.isDarkMode(this)) {
+                    if (Design.isDarkMode(this, getTwinmeApplication())) {
                         mPriceSixMonthTextView.setTextColor(Color.BLACK);
                         mSixMonthDurationView.setTextColor(Color.BLACK);
                         mSixMonthUnitView.setTextColor(Color.BLACK);
                     }
                     break;
-                case BillingManager.ONE_YEAR_SUBSCRIPTION_ID:
+                case BillingProvider.ONE_YEAR_SUBSCRIPTION_ID:
                     mOneYearCardView.setAlpha(1.f);
                     if (mIsSubscribed) {
                         mOneYearSubscriptionView.setAlpha(1f);
@@ -1123,7 +1148,7 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
                         mSixMonthSubscriptionView.setAlpha(0.5f);
                     }
 
-                    if (Design.isDarkMode(this)) {
+                    if (Design.isDarkMode(this, getTwinmeApplication())) {
                         mPriceOneYearTextView.setTextColor(Color.BLACK);
                         mOneYearDurationView.setTextColor(Color.BLACK);
                         mOneYearUnitView.setTextColor(Color.BLACK);
@@ -1220,9 +1245,9 @@ public class InAppSubscriptionActivity extends AbstractTwinmeActivity implements
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
 
-            if (productId.equals(BillingManager.ONE_MONTH_SUBSCRIPTION_ID)) {
+            if (productId.equals(BillingProvider.ONE_MONTH_SUBSCRIPTION_ID)) {
                 calendar.add(Calendar.MONTH, 1);
-            } else if (productId.equals(BillingManager.SIX_MONTHS_SUBSCRIPTION_ID)) {
+            } else if (productId.equals(BillingProvider.SIX_MONTHS_SUBSCRIPTION_ID)) {
                 calendar.add(Calendar.MONTH, 6);
             } else {
                 calendar.add(Calendar.YEAR, 1);

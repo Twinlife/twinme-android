@@ -12,6 +12,7 @@
 package org.twinlife.twinme.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -60,6 +61,7 @@ import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.services.AbstractTwinmeService;
 import org.twinlife.twinme.services.AccountMigrationService;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.skin.DisplayMode;
 import org.twinlife.twinme.ui.accountMigrationActivity.AccountMigrationActivity;
 import org.twinlife.twinme.ui.callActivity.CallActivity;
 import org.twinlife.twinme.ui.externalCallActivity.ShowExternalCallActivity;
@@ -613,7 +615,6 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
         }
     }
 
-
     public <I> boolean launch(@NonNull ActivityResultLauncher<I> launcher, I input) {
         if (DEBUG) {
             Log.d(LOG_TAG, "launch launcher=" + launcher + " input=" + input);
@@ -718,21 +719,22 @@ public class AbstractTwinmeActivity extends TwinmeActivityImpl implements Abstra
             Log.d(LOG_TAG, "showContactActivity subject=" + subject);
         }
 
+        final UUID subjectId = subject.getId();
         switch (subject.getType()) {
             case GROUP:
-                startActivity(ShowGroupActivity.class, Intents.INTENT_GROUP_ID, subject.getId());
+                startActivity(ShowGroupActivity.class, Intents.INTENT_GROUP_ID, subjectId);
                 break;
 
             case CONTACT:
-                if (((Contact) subject).isTwinroom()) {
-                    startActivity(ShowRoomActivity.class, Intents.INTENT_CONTACT_ID, subject.getId());
+                if (subject instanceof Contact && ((Contact) subject).isTwinroom()) {
+                    startActivity(ShowRoomActivity.class, Intents.INTENT_CONTACT_ID, subjectId);
                 } else {
-                    startActivity(ShowContactActivity.class, Intents.INTENT_CONTACT_ID, subject.getId());
+                    startActivity(ShowContactActivity.class, Intents.INTENT_CONTACT_ID, subjectId);
                 }
                 break;
 
             case CALL_RECEIVER:
-                startActivity(ShowExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, subject.getId());
+                startActivity(ShowExternalCallActivity.class, Intents.INTENT_CALL_RECEIVER_ID, subjectId);
                 break;
 
             default:

@@ -135,7 +135,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.help_activity);
 
         setStatusBarColor();
@@ -247,7 +247,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "onTransferClick");
         }
 
-        showOnboardingView(getString(R.string.account_view_migration_title), getString(R.string.account_view_migration_message), isDarkMode() ? R.drawable.onboarding_migration_dark : R.drawable.onboarding_migration);
+        showOnboardingView(getString(R.string.account_view_migration_title), getString(R.string.account_view_migration_message), R.drawable.account_migration);
     }
 
     private void onCertifiedRelationClick() {
@@ -299,7 +299,7 @@ public class HelpActivity extends AbstractTwinmeActivity {
         onboardingConfirmView.setTitle(title);
         onboardingConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),image, null));
         onboardingConfirmView.setMessage(message);
-        onboardingConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingConfirmView.hideCancelView();
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

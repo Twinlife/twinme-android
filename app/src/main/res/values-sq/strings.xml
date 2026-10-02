@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">Lejoni aplikacionin të aksesojë Mikrofonin në cilësimet e sistemit.</string>
     <string name="application_authorization_microphone_camera">Lejoni aplikacionin të aksesojë Mikrofonin dhe Kamerën në cilësimet e sistemit.</string>
     <string name="application_authorization_title">Autorizim i munguar</string>
-    <string name="application_back">Kthehu</string>
     <string name="application_backup_restore">Rivendos kopjen rezervë</string>
     <string name="application_backup_verify">Verifiko kopjen rezervë</string>
     <string name="application_camera">Kamera</string>
-    <string name="application_cancel">Anulo</string>
     <string name="application_canceled_operation">Operacion i anuluar</string>
     <string name="application_checking_connection">Duke kontrolluar lidhjen</string>
     <string name="application_color">Ngjyra</string>
     <string name="application_configuration">Konfigurimi</string>
-    <string name="application_confirm">Konfirmo</string>
     <string name="application_confirm_deletion">Konfirmo fshirjen</string>
     <string name="application_connected">Lidhje e sigurt e aktivizuar.</string>
     <string name="application_connection_status_no_network">Nuk ka qasje në Internet.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">Numri maksimal (%1$d) i anëtarëve të grupit është tejkaluar.</string>
     <string name="application_group_not_found">Jeni hequr nga grupi</string>
     <string name="application_items_selected">%1$d elemente të zgjedhura</string>
-    <string name="application_later">Më vonë</string>
     <string name="application_location">Gjeolokacion</string>
     <string name="application_location_enabled">Aktivizoni shërbimin e Vendndodhjes në pajisjen tuaj.</string>
     <string name="application_low_usage_message">Paralajmërim, nëse nuk e përdorni aplikacionin mjaftueshëm shpesh, OS mund të mos e zgjojë atë për të shkëmbyer mesazhe!</string>
@@ -84,7 +80,6 @@
     <string name="application_not_connected">Lidhje e sigurt në progres…</string>
     <string name="application_not_signed_in">Nuk jeni i lidhur me shërbimin skred</string>
     <string name="application_now">Tani</string>
-    <string name="application_ok">OK</string>
     <string name="application_one_item_selected">1 element i zgjedhur</string>
     <string name="application_operation_failure">Dështim i veprimit</string>
     <string name="application_operation_irreversible">Ky veprim është i pakthyeshëm</string>
@@ -178,6 +173,7 @@
     <string name="account_migration_view_close_message">Mbyllni aplikacionin dhe rihapeni për të aksesuar të dhënat e reja.</string>
     <string name="account_migration_view_confirm_cancel_message">A jeni i sigurt që dëshironi ta anuloni migrimin?</string>
     <string name="account_migration_view_database">Baza e të dhënave</string>
+    <string name="account_migration_view_display">Shfaq</string>
     <string name="account_migration_view_finalizing">Duke finalizuar</string>
     <string name="account_migration_view_initializing">Inicializimi</string>
     <string name="account_migration_view_my_device">Pajisja ime</string>
@@ -221,6 +217,7 @@
     <string name="account_migration_scanner_view_step_1">Hap aplikacionin në pajisjen tjetër</string>
     <string name="account_migration_scanner_view_step_2">Shko te menyja anësore</string>
     <string name="account_migration_scanner_view_step_3">Zgjidh \"Llogaria\"</string>
+    <string name="account_migration_scanner_view_step_4">Inicioj migrimin e llogarisë</string>
     <string name="account_migration_scanner_view_step_4_my_device">Fillo transferimin nga kjo pajisje</string>
     <string name="account_migration_scanner_view_step_4_another_device">Fillo transferimin nga pajisja tjetër</string>
     <string name="account_migration_scanner_view_step_5_my_device">Skano kodin QR të shfaqur në pajisjen tjetër me këtë pajisje</string>
@@ -682,7 +679,6 @@
     <string name="deleted_account_view_delete">Fshi llogarinë</string>
     <string name="deleted_account_view_message">Llogaria juaj është fshirë dhe të gjitha të dhënat e lidhura janë shkatërruar.&lt;br /&gt;
             Duhet të mbyllni aplikacionin.</string>
-    <string name="deleted_account_view_warning">Paralajmërim‼️</string>
 
     <!-- DiagnosticsActivity -->
     <string name="diagnostics_view_available">I disponueshëm</string>
@@ -697,7 +693,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë marrëdhënie?</string>
-    <string name="edit_contact_view_message">Ky kontakt nuk do të mund t’ju kontaktojë më.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">A jeni i sigurt që dëshironi ta fshini këtë kod \"Click-to-Call\"?</string>
@@ -1391,7 +1386,6 @@
     <string name="spaces_view_title">Hapësirat</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Ndodhi një gabim. Ju lutemi provoni përsëri.</string>
     <string name="streaming_audio_view_no_music_message">Ju lutemi transferoni skedarët muzikorë në pajisjen tuaj.</string>
     <string name="streaming_audio_view_no_music_title">Nuk u gjet muzikë 🙁</string>
     <string name="streaming_audio_view_title">Ndarje media</string>
@@ -1472,6 +1466,4 @@
     <string name="welcome_view_step3_message">Pa numër telefoni, pa libër adresash, pa user-id: ju zgjidhni si dëshironi të identifikoheni bazuar në atë me kë po komunikoni.</string>
     <string name="welcome_view_terms_of_use">Kushtet e përdorimit</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
-
 </resources>

@@ -292,7 +292,7 @@ public class NewConversationActivity extends AbstractTwinmeActivity implements C
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.new_conversation_activity);
 
         setStatusBarColor();

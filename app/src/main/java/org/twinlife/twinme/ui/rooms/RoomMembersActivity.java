@@ -360,7 +360,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.room_members_activity);
 
         setStatusBarColor();
@@ -439,12 +439,12 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         }
 
         if (isAdmin && mRoomAdmins.size() == 1) {
-            showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.room_members_view_only_admin_message), false, null);
+            showAlertMessageView(R.id.room_member_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.room_members_view_only_admin_message), false, null);
         } else {
             ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+            defaultConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
             defaultConfirmView.setMessage(getString(R.string.application_delete_message));
             defaultConfirmView.setImage(null);
             defaultConfirmView.setConfirmColor(Design.DELETE_COLOR_RED);
@@ -498,10 +498,10 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
         DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-        defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+        defaultConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
         defaultConfirmView.setMessage(getString(R.string.room_members_view_change_admin_title));
         defaultConfirmView.setImage(null);
-        defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+        defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_confirm));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -543,15 +543,15 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         }
 
         if (mRoomAdmins.size() == 1) {
-            showAlertMessageView(R.id.room_member_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.room_members_view_only_admin_message), false, null);
+            showAlertMessageView(R.id.room_member_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.room_members_view_only_admin_message), false, null);
         } else {
             ViewGroup viewGroup = findViewById(R.id.room_member_activity_layout);
 
             DefaultConfirmView defaultConfirmView = new DefaultConfirmView(this, null);
-            defaultConfirmView.setTitle(getString(R.string.deleted_account_view_warning));
+            defaultConfirmView.setTitle(getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning));
             defaultConfirmView.setMessage(getString(R.string.room_members_view_remove_admin_title));
             defaultConfirmView.setImage(null);
-            defaultConfirmView.setConfirmTitle(getString(R.string.application_confirm));
+            defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_confirm));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
                 @Override
@@ -599,7 +599,7 @@ public class RoomMembersActivity extends AbstractTwinmeActivity implements RoomM
         defaultConfirmView.setTitle(getString(R.string.group_member_view_invitation_title));
         defaultConfirmView.setMessage(String.format(getString(R.string.group_member_view_invitation_message), roomMember.getName()));
         defaultConfirmView.setImage(null);
-        defaultConfirmView.setConfirmTitle(getString(R.string.application_ok));
+        defaultConfirmView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override

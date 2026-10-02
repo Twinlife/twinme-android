@@ -17,16 +17,13 @@
     <string name="application_authorization_microphone">Cho phép ứng dụng truy cập Micro trong cài đặt hệ thống.</string>
     <string name="application_authorization_microphone_camera">Cho phép ứng dụng truy cập Micro và Máy ảnh trong cài đặt hệ thống.</string>
     <string name="application_authorization_title">Thiếu quyền truy cập</string>
-    <string name="application_back">Quay lại</string>
     <string name="application_backup_restore">Khôi phục bản sao lưu</string>
     <string name="application_backup_verify">Xác minh bản sao lưu</string>
     <string name="application_camera">Máy ảnh</string>
-    <string name="application_cancel">Hủy</string>
     <string name="application_canceled_operation">Đã hủy thao tác</string>
     <string name="application_checking_connection">Đang kiểm tra kết nối</string>
     <string name="application_color">Màu sắc</string>
     <string name="application_configuration">Cấu hình</string>
-    <string name="application_confirm">Xác nhận</string>
     <string name="application_confirm_deletion">Xác nhận xóa</string>
     <string name="application_connected">Kết nối bảo mật đã được kích hoạt.</string>
     <string name="application_connection_status_no_network">Không có kết nối Internet.</string>
@@ -57,7 +54,6 @@
     <string name="application_group_limit_reached">Đã vượt quá số thành viên tối đa trong nhóm (%1$d).</string>
     <string name="application_group_not_found">Bạn đã bị xóa khỏi nhóm</string>
     <string name="application_items_selected">Đã chọn %1$d mục</string>
-    <string name="application_later">Để sau</string>
     <string name="application_migration_no_storage_space">Thiết bị của bạn không đủ dung lượng để hoàn tất việc di chuyển. Hãy đóng ứng dụng, giải phóng một phần bộ nhớ, và khởi động lại ứng dụng để hoàn tất cập nhật.</string>
     <string name="application_migration_no_storage_space_message">Một trong hai thiết bị không có đủ dung lượng lưu trữ. Giải phóng dung lượng trên thiết bị đó trước khi khởi động lại quá trình di chuyển.</string>
     <string name="application_more_info">Thông tin thêm…</string>
@@ -83,7 +79,6 @@
     <string name="application_not_connected">Đang thiết lập kết nối bảo mật…</string>
     <string name="application_not_signed_in">Không kết nối với dịch vụ Skred</string>
     <string name="application_now">Bây giờ</string>
-    <string name="application_ok">OK</string>
     <string name="application_location">Định vị</string>
     <string name="application_location_enabled">Kích hoạt dịch vụ Vị trí trên thiết bị của bạn.</string>
     <string name="application_low_usage_message">Cảnh báo, nếu bạn không sử dụng ứng dụng thường xuyên, hệ điều hành có thể không đánh thức nó để trao đổi tin nhắn!</string>
@@ -158,6 +153,7 @@
     <string name="account_migration_view_close_message">Đóng ứng dụng và khởi động lại để truy cập dữ liệu mới.</string>
     <string name="account_migration_view_confirm_cancel_message">Bạn có chắc muốn hủy quá trình di chuyển không?</string>
     <string name="account_migration_view_database">Cơ sở dữ liệu</string>
+    <string name="account_migration_view_display">Hiển thị</string>
     <string name="account_migration_view_finalizing">Đang hoàn tất</string>
     <string name="account_migration_view_initializing">Đang khởi tạo</string>
     <string name="account_migration_view_my_device">Thiết bị của tôi</string>
@@ -201,6 +197,7 @@
     <string name="account_migration_scanner_view_step_1">Mở ứng dụng trên thiết bị khác</string>
     <string name="account_migration_scanner_view_step_2">Vào menu bên cạnh</string>
     <string name="account_migration_scanner_view_step_3">Chọn \"Tài khoản\"</string>
+    <string name="account_migration_scanner_view_step_4">Khởi động quá trình di chuyển tài khoản</string>
     <string name="account_migration_scanner_view_step_4_my_device">Bắt đầu chuyển dữ liệu từ thiết bị này</string>
     <string name="account_migration_scanner_view_step_4_another_device">Bắt đầu chuyển dữ liệu từ thiết bị khác</string>
     <string name="account_migration_scanner_view_step_5_my_device">Quét mã QR hiển thị trên thiết bị khác bằng thiết bị này</string>
@@ -673,7 +670,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">Nhập chữ \"OK\" bên dưới để xác nhận xóa tài khoản.</string>
     <string name="deleted_account_view_delete">Xóa tài khoản</string>
-    <string name="deleted_account_view_warning">Cảnh báo‼️</string>
     <string name="deleted_account_view_message">Tài khoản của bạn đã bị xóa và toàn bộ dữ liệu liên quan đã được gỡ khỏi thiết bị và máy chủ.\nBạn phải đóng ứng dụng.</string>
 
     <!-- DiagnosticsActivity -->
@@ -689,7 +685,6 @@
 
     <!--EditContactActivity -->
     <string name="edit_contact_view_confirm_message">Bạn có chắc muốn xóa mối quan hệ này không?</string>
-    <string name="edit_contact_view_message">Liên hệ này sẽ không thể liên lạc với bạn nữa.</string>
 
     <!-- EditIdentityActivity -->
 
@@ -1371,7 +1366,6 @@
     <string name="spaces_view_title">Không gian</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">Đã xảy ra lỗi. Vui lòng thử lại.</string>
     <string name="streaming_audio_view_no_music_message">Vui lòng chuyển các tệp nhạc vào thiết bị của bạn.</string>
     <string name="streaming_audio_view_no_music_title">Không tìm thấy nhạc 🙁</string>
     <string name="streaming_audio_view_title">Chia sẻ phương tiện</string>
@@ -1447,5 +1441,4 @@
     <string name="welcome_view_step2_message">Giao tiếp \"peer-to-peer\" bảo mật: không lưu dấu vết trên đám mây.</string>
     <string name="welcome_view_step3_message">Không cần số điện thoại, danh bạ hay tài khoản người dùng: bạn chọn cách được nhận diện theo người bạn đang giao tiếp.</string>
     <string name="welcome_view_terms_of_use">Điều khoản sử dụng</string>
-
 </resources>

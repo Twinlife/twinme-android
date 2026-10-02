@@ -139,13 +139,13 @@ public class SuccessBackupActivity extends AbstractTwinmeActivity {
         super.onCreateOptionsMenu(menu);
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.onboarding_menu, menu);
+        inflater.inflate(org.twinlife.twinme.android.R.menu.onboarding_menu, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.info_action);
+        MenuItem menuItem = menu.findItem(org.twinlife.twinme.android.R.id.info_action);
         ImageView imageView = (ImageView) menuItem.getActionView();
 
         if (imageView != null) {
-            imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.onboarding_info_icon, null));
+            imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), org.twinlife.twinme.android.R.drawable.onboarding_info_icon, null));
             imageView.setColorFilter(Color.WHITE);
             imageView.setPadding(Design.TOOLBAR_IMAGE_ITEM_PADDING, 0, Design.TOOLBAR_IMAGE_ITEM_PADDING, 0);
             imageView.setOnClickListener(view -> showSuccessView());
@@ -235,7 +235,7 @@ public class SuccessBackupActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.success_backup_activity);
 
         setStatusBarColor();

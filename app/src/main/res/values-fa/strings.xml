@@ -16,16 +16,13 @@
     <string name="application_authorization_microphone">السماح للتطبيق بالدخول إلى الكاميرا في إعدادات النظام.</string>
     <string name="application_authorization_microphone_camera">اجازه برنامه را برای دسترسی به میکروفون و دوربین در تنظیمات سیستم.</string>
     <string name="application_authorization_title">گم شدن مجوز دسترسی</string>
-    <string name="application_back">بازگشت</string>
     <string name="application_backup_restore">بازیابی نسخه پشتیبان</string>
     <string name="application_backup_verify">تایید نسخه پشتیبان</string>
     <string name="application_camera">دوربین</string>
-    <string name="application_cancel">لغو</string>
     <string name="application_canceled_operation">عملیات لغو شده</string>
     <string name="application_checking_connection">در حال بررسی اتصال</string>
     <string name="application_color">رنگ</string>
     <string name="application_configuration">پیکربندی</string>
-    <string name="application_confirm">تایید</string>
     <string name="application_confirm_deletion">حذف را تایید کنید</string>
     <string name="application_connected">اتصال ایمن فعال است.</string>
     <string name="application_connection_status_no_network">بدون دسترسی به اینترنت</string>
@@ -56,7 +53,6 @@
     <string name="application_group_limit_reached">"حداکثر تعداد (%1$d) از اعضای گروه بیش از."</string>
     <string name="application_group_not_found">شما از گروه حذف شده اید</string>
     <string name="application_items_selected">%1$d مورد انتخاب شد</string>
-    <string name="application_later">بعد</string>
     <string name="application_location">موقعیت جغرافیایی</string>
     <string name="application_location_enabled">سرویس موقعیت مکانی دستگاه خود را فعال کنید</string>
     <string name="application_low_usage_message">هشدار، اگر به اندازه کافی از برنامه استفاده نکنید، ممکن است سیستم عامل آن را برای تبادل پیام بیدار نکند!</string>
@@ -86,7 +82,6 @@
     <string name="application_not_connected">اتصال ایمن در حال انجام است…</string>
     <string name="application_not_signed_in">به سرویس Skred متصل نیست</string>
     <string name="application_now">اکنون</string>
-    <string name="application_ok">خوب</string>
     <string name="application_operation_failure">عدم انجام عملیات</string>
     <string name="application_operation_irreversible">این عمل غیر قابل برگشت است</string>
     <string name="application_permission_camera">اجازه دسترسی به دوربین برای گرفتن عکس یا فیلم جدید لازم است.</string>
@@ -179,6 +174,7 @@
     <string name="account_migration_view_close_message">برنامه را ببندید و دوباره راه اندازی کنید تا به داده های جدید دسترسی پیدا کنید.</string>
     <string name="account_migration_view_confirm_cancel_message">آیا مطمئن هستید که می خواهید انتقال را لغو کنید؟</string>
     <string name="account_migration_view_database">پایگاه داده</string>
+    <string name="account_migration_view_display">نمایش</string>
     <string name="account_migration_view_finalizing">نهایی کردن</string>
     <string name="account_migration_view_initializing">مقداردهی اولیه</string>
     <string name="account_migration_view_my_device">دستگاه من</string>
@@ -222,6 +218,7 @@
     <string name="account_migration_scanner_view_step_1">برنامه را در دستگاه دیگر باز کنید</string>
     <string name="account_migration_scanner_view_step_2">به منوی کناری بروید</string>
     <string name="account_migration_scanner_view_step_3">حساب را انتخاب کنید</string>
+    <string name="account_migration_scanner_view_step_4">آغاز انتقال حساب</string>
     <string name="account_migration_scanner_view_step_4_my_device">انتقال را از این دستگاه شروع کنید</string>
     <string name="account_migration_scanner_view_step_4_another_device">انتقال را از دستگاه دیگر شروع کنید</string>
     <string name="account_migration_scanner_view_step_5_my_device">کد QR نمایش داده شده در دستگاه دیگر را با این دستگاه اسکن کنید</string>
@@ -681,7 +678,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">برای تایید حذف اکانت، حروف \"OK\" را در زیر تایپ کنید.</string>
     <string name="deleted_account_view_delete">حذف اکانت</string>
-    <string name="deleted_account_view_warning">توجه‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">حساب کاربری شما حذف شده است و تمام داده های مربوطه نابود شده اند.&lt;br /&gt;
@@ -700,7 +696,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">آیا مطمئن هستید که می خواهید این رابطه را حذف کنید؟</string>
-    <string name="edit_contact_view_message">این مخاطب دیگر نمی تواند با شما تماس بگیرد.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">آیا مطمئن هستید که می خواهید این کد \"Click-to-Call\" را حذف کنید؟</string>
@@ -1393,7 +1388,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">خطایی رخ داده است. لطفا دوباره تلاش کنید.</string>
     <string name="streaming_audio_view_no_music_message">اشتراک گذاری رسانه ها</string>
     <string name="streaming_audio_view_no_music_title">موسیقی پیدا نشد 🙁</string>
     <string name="streaming_audio_view_title">اشتراک گذاری رسانه ها</string>
@@ -1474,5 +1468,4 @@
     <string name="welcome_view_step3_message">بدون شماره تلفن، بدون دفترچه آدرس، بدون شناسه کاربری: شما انتخاب می‌کنید که چگونه می‌خواهید شناسایی شوید بر اساس اینکه با چه کسی در ارتباط هستید.</string>
     <string name="welcome_view_terms_of_use">شرایط و ضوابط</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

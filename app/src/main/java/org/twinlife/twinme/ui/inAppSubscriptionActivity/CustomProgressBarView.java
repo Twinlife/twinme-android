@@ -24,7 +24,9 @@ import androidx.annotation.NonNull;
 import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinme.TwinmeApplication;
 import org.twinlife.twinme.skin.Design;
+import org.twinlife.twinme.ui.TwinmeApplicationImpl;
 
 public class CustomProgressBarView extends PercentRelativeLayout {
 
@@ -155,7 +157,7 @@ public class CustomProgressBarView extends PercentRelativeLayout {
         float[] outerRadii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         ShapeDrawable backgroundViewBackground = new ShapeDrawable(new RoundRectShape(outerRadii, null, null));
-        if (Design.isDarkMode(backgroundView.getContext())) {
+        if (Design.isDarkMode(backgroundView.getContext(), null)) {
             backgroundViewBackground.getPaint().setColor(DESIGN_BACKGROUND_DARK_COLOR);
         } else {
             backgroundViewBackground.getPaint().setColor(DESIGN_BACKGROUND_COLOR);

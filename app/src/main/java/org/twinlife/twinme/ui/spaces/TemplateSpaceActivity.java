@@ -149,7 +149,7 @@ public class TemplateSpaceActivity extends AbstractTwinmeActivity implements Edi
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.template_space_activity);
 
         setStatusBarColor();

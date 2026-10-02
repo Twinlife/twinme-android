@@ -247,7 +247,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -376,7 +376,7 @@ public class ConversationAppearanceActivity extends AbstractTwinmeActivity imple
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.conversation_appearance_activity);
 
         setStatusBarColor();

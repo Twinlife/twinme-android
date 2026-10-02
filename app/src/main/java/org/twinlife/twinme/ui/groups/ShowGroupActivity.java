@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018-2023 twinlife SA.
+ *  Copyright (c) 2018-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -45,6 +45,7 @@ import org.twinlife.twinme.models.Space;
 import org.twinlife.twinme.models.schedule.DateTime;
 import org.twinlife.twinme.models.schedule.DateTimeRange;
 import org.twinlife.twinme.models.schedule.Schedule;
+import org.twinlife.twinme.models.schedule.TimeRange;
 import org.twinlife.twinme.services.GroupService;
 import org.twinlife.twinme.skin.CircularImageDescriptor;
 import org.twinlife.twinme.skin.Design;
@@ -445,7 +446,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.show_group_activity);
 
         setToolBar(R.id.show_group_activity_tool_bar);
@@ -806,7 +807,6 @@ public class ShowGroupActivity extends AbstractGroupActivity {
                         updateInCall();
                         checkSpacePermission();
                     });
-                    return;
                 } else {
                     mNoSpaceAvatarGradientDrawable.setCornerRadii(radii);
                     mSpaceAvatarView.setVisibility(View.GONE);
@@ -891,7 +891,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             } else if (hasSchedule()) {
                 showSchedule();
             } else if (mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
-                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
+                showAlertMessageView(R.id.show_group_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
             }
         } else {
             showPremiumFeatureView();
@@ -920,7 +920,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             } else if (hasSchedule()) {
                 showSchedule();
             } else if (mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS) {
-                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
+                showAlertMessageView(R.id.show_group_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), String.format(getString(R.string.call_view_max_participant_message), Settings.MAX_CALL_GROUP_PARTICIPANTS), true, null);
             }
         } else {
             showPremiumFeatureView();
@@ -949,7 +949,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
                 intent.setClass(this, AddGroupMemberActivity.class);
                 startActivityForResult(intent, ADD_MEMBERS);
             } else {
-                showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), true, null);
+                showAlertMessageView(R.id.show_group_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.group_member_view_admin_not_authorize), true, null);
             }
         }
     }
@@ -968,7 +968,7 @@ public class ShowGroupActivity extends AbstractGroupActivity {
         }
 
         if (mGroup != null && mGroup.getSpace() != null && !mGroup.getSpace().hasPermission(Space.Permission.MOVE_GROUP)) {
-            showAlertMessageView(R.id.show_group_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), true, null);
+            showAlertMessageView(R.id.show_group_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.spaces_view_permission_not_allowed), true, null);
             return;
         }
 
@@ -1247,19 +1247,22 @@ public class ShowGroupActivity extends AbstractGroupActivity {
             Log.d(LOG_TAG, "updateInCall");
         }
 
-        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasAudio() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS || hasSchedule()))) {
+        final int memberCount = mGroupMembers.size();
+        final boolean inCall = getTwinmeApplication().inCallInfo() != null;
+
+        if (inCall || (mGroup != null && (!mGroup.getCapabilities().hasAudio() || memberCount == 1  || memberCount > Settings.MAX_CALL_GROUP_PARTICIPANTS || hasSchedule()))) {
             mAudioClickableView.setAlpha(0.5f);
         } else {
             mAudioClickableView.setAlpha(1f);
         }
 
-        if (getTwinmeApplication().inCallInfo() != null || (mGroup != null && (!mGroup.getCapabilities().hasVideo() || mGroupMembers.size() == 1 || mGroupMembers.size() > Settings.MAX_CALL_GROUP_PARTICIPANTS || hasSchedule()))) {
+        if (inCall || (mGroup != null && (!mGroup.getCapabilities().hasVideo() || memberCount == 1  || memberCount > Settings.MAX_CALL_GROUP_PARTICIPANTS || hasSchedule()))) {
             mVideoClickableView.setAlpha(0.5f);
         } else {
             mVideoClickableView.setAlpha(1f);
         }
 
-        if (mGroup != null && mGroupMembers.size() == 1) {
+        if (mGroup != null && memberCount == 1) {
             mChatClickableView.setAlpha(0.5f);
         } else {
             mChatClickableView.setAlpha(1f);
@@ -1287,8 +1290,9 @@ public class ShowGroupActivity extends AbstractGroupActivity {
 
         if (mGroup != null && mGroup.getCapabilities().getSchedule() != null) {
             Schedule schedule = mGroup.getCapabilities().getSchedule();
-            if (schedule != null && !schedule.getTimeRanges().isEmpty()) {
-                DateTimeRange dateTimeRange = (DateTimeRange) schedule.getTimeRanges().get(0);
+            final TimeRange timeRange = schedule == null || schedule.getTimeRanges().isEmpty() ? null : schedule.getTimeRanges().get(0);
+            if (timeRange instanceof DateTimeRange) {
+                DateTimeRange dateTimeRange = (DateTimeRange) timeRange;
                 DateTime start = dateTimeRange.start;
                 DateTime end = dateTimeRange.end;
 

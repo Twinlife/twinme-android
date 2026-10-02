@@ -233,7 +233,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         }
 
         if (!mEditableView.onRequestPermissions(grantedPermissions)) {
-            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(R.string.application_ok) {
+            message(getString(R.string.application_denied_permissions), 0L, new DefaultMessageCallback(org.twinlife.twinme.android.R.string.application_ok) {
             });
         }
     }
@@ -344,7 +344,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.create_external_call_activity);
 
         showToolBar(true);
@@ -547,11 +547,12 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             @Override
             public void onExternalCallConfigClick(UIConfigExternalCallItem configExternalCall) {
 
-                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configExternalCall.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
                     openMenuCapabilities();
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
                     openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_TYPE, mConfigExternalCall.getConfigCallType().ordinal());
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
                     openMenuSelectValue(MenuSelectValueView.MenuType.EXTERNAL_CALL_EXPIRATION, mConfigExternalCall.getLinkValidity().ordinal());
                 }
             }
@@ -559,9 +560,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             @Override
             public void onDateViewClick(UIConfigExternalCallItem configExternalCall) {
 
-                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configExternalCall.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
                    onStartDateViewClick();
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
                    onEndDateViewClick();
                 }
             }
@@ -569,9 +571,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
             @Override
             public void onTimeViewClick(UIConfigExternalCallItem configExternalCall) {
 
-                if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configExternalCall.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_START) {
                     onStartTimeViewClick();
-                } else if (configExternalCall.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.SCHEDULE_END) {
                     onEndTimeViewClick();
                 }
             }
@@ -759,9 +762,10 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         int hour;
         int minute;
-        if (mConfigExternalCall.getScheduleStartTime() != null) {
-            hour = mConfigExternalCall.getScheduleStartTime() .hour;
-            minute = mConfigExternalCall.getScheduleStartTime() .minute;
+        final Time scheduleStartTime = mConfigExternalCall.getScheduleStartTime();
+        if (scheduleStartTime != null) {
+            hour = scheduleStartTime.hour;
+            minute = scheduleStartTime.minute;
         } else {
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -873,7 +877,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
         // Note: with the PROFILE template, we don't give any avatar to the createCallReceiver() as it will copy the profile image.
         String name = mNameView.getText().toString().trim();
         if (name.isEmpty() || (mUpdatedCallAvatar == null && mTemplateType != UITemplateExternalCall.TemplateType.PROFILE)) {
-            showAlertMessageView(R.id.create_external_call_activity_layout, getString(R.string.deleted_account_view_warning), getString(R.string.create_external_call_view_name_required), true, null);
+            showAlertMessageView(R.id.create_external_call_activity_layout, getString(org.twinlife.twinme.android.R.string.deleted_account_view_warning), getString(R.string.create_external_call_view_name_required), true, null);
             return;
         }
 
@@ -1173,7 +1177,7 @@ public class CreateExternalCallActivity extends AbstractEditActivity implements 
 
         UIPremiumFeature uiPremiumFeature = new UIPremiumFeature(this, UIPremiumFeature.FeatureType.TRANSFER_CALL);
         onboardingDetailView.setPremiumFeature(uiPremiumFeature);
-        onboardingDetailView.setConfirmTitle(getString(R.string.application_ok));
+        onboardingDetailView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
         onboardingDetailView.setCancelTitle(getString(R.string.application_do_not_display));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {

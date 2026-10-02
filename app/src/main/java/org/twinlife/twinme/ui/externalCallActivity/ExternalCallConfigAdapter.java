@@ -124,7 +124,7 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
         }
 
         int viewType = getItemViewType(position);
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
 
             if (mConfigExternalCall.isCreateExternalCallMode()) {
@@ -134,17 +134,18 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
             sectionTitleViewHolder.onBind(mActivity.getString(R.string.create_external_call_view_call_configuration), Design.WHITE_COLOR, false);
         } else {
             UIConfigExternalCallItem configItem = mConfigExternalCall.getConfigItems().get(position - 1);
-            if (viewType == VALUE) {
+            if (viewType == VALUE && viewHolder instanceof SelectValueViewHolder) {
                 SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
 
                 String title = configItem.getTitle();
                 String value = "";
 
-                if (configItem.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
+                final UIConfigExternalCall.ConfigExternalCallSettings settings = configItem.getConfigExternalCallSettings();
+                if (settings == UIConfigExternalCall.ConfigExternalCallSettings.CALL_TYPE) {
                     value = mConfigExternalCall.getCallType();
-                } else if (configItem.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.PERMISSIONS) {
                     value = mConfigExternalCall.getCallCapabilities();
-                } else if (configItem.getConfigExternalCallSettings() == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
+                } else if (settings == UIConfigExternalCall.ConfigExternalCallSettings.EXPIRATION) {
                     value = mConfigExternalCall.getExpiration();
                 }
 
@@ -155,7 +156,7 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
                 }
 
                 selectValueViewHolder.onBind(title, value, false, Design.WHITE_COLOR);
-            } else if (viewType == SCHEDULE) {
+            } else if (viewType == SCHEDULE && viewHolder instanceof ScheduleViewHolder) {
                 ScheduleViewHolder scheduleViewHolder = (ScheduleViewHolder) viewHolder;
                 Date date;
                 Time time;
@@ -180,7 +181,7 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
                 }
 
                 scheduleViewHolder.onBind(mActivity, scheduleType, date, time, dateRunnable, timeRunnable);
-            } else if (viewType == WEEKLY_SCHEDULE) {
+            } else if (viewType == WEEKLY_SCHEDULE && viewHolder instanceof WeeklyScheduleViewHolder) {
                 WeeklyScheduleViewHolder weeklyScheduleViewHolder = (WeeklyScheduleViewHolder) viewHolder;
 
                 if (mConfigExternalCall.isCreateExternalCallMode()) {
@@ -189,7 +190,7 @@ public class ExternalCallConfigAdapter extends RecyclerView.Adapter<RecyclerView
 
                 WeeklyScheduleAdapter.OnDayClickListener onDayClickListener = mOnExternalCallConfigClickListener::onSelectDayClick;
                 weeklyScheduleViewHolder.onBind(mConfigExternalCall.getScheduleRecurrentDays(), onDayClickListener);
-            } else if (viewType == SETTING) {
+            } else if (viewType == SETTING && viewHolder instanceof SettingSwitchViewHolder) {
                 SettingSwitchViewHolder settingSwitchViewHolder = (SettingSwitchViewHolder) viewHolder;
                 if (mConfigExternalCall.isCreateExternalCallMode()) {
                     settingSwitchViewHolder.resetMargins();

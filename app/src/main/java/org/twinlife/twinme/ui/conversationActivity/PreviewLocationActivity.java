@@ -283,7 +283,7 @@ public class PreviewLocationActivity extends AbstractPreviewActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         setContentView(R.layout.preview_location_activity);
 

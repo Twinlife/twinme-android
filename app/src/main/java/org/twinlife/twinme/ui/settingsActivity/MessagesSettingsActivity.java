@@ -259,7 +259,7 @@ public class MessagesSettingsActivity extends AbstractSettingsActivity implement
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.messages_settings_activity);
 
         setStatusBarColor();

@@ -84,14 +84,14 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         int viewType = getItemViewType(position);
         UIAccountItem item = mItems.get(position);
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             if (item.getType() == UIAccountItem.AccountItemType.SECTION_BACKUP) {
                 sectionTitleViewHolder.onBind(item.getText(), false, mAccountActivity.getString(R.string.application_new), mAccountActivity::onBetaInfoClick);
             } else {
                 sectionTitleViewHolder.onBind(item.getText(), false);
             }
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && viewHolder instanceof SettingIconViewHolder) {
             SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
             settingIconViewHolder.itemView.setOnClickListener(view -> {
                 if (item.getOnClickListener() != null) {
@@ -99,7 +99,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
             settingIconViewHolder.onBind(item.getText(), item.getTextColor(), item.getIcon(), item.getIconColor(), false);
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             if (mAccountActivity.getTwinmeApplication().getLastBackupDate() > 0) {
                 String lastBackupDate = Utils.formatBackupInterval(mAccountActivity, mAccountActivity.getTwinmeApplication().getLastBackupDate() * 1000L, true);
@@ -143,7 +143,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         int viewType = getItemViewType(position);
         if (position != -1) {
             UIAccountItem item = mItems.get(position);
-            if (viewType == TITLE) {
+            if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 if (item.getType() == UIAccountItem.AccountItemType.SECTION_BACKUP) {
                     sectionTitleViewHolder.onBind(item.getText(), false, mAccountActivity.getString(R.string.application_new), mAccountActivity::onBetaInfoClick);
@@ -151,7 +151,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     sectionTitleViewHolder.onBind(item.getText(), false);
                 }
             }
-            if (viewType == SUBSECTION) {
+            if (viewType == SUBSECTION && viewHolder instanceof SettingIconViewHolder) {
                 SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
                 settingIconViewHolder.itemView.setOnClickListener(view -> {
                     if (item.getOnClickListener() != null) {
@@ -170,8 +170,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         mItems.clear();
         mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.SECTION_TRANSFER, mAccountActivity.getString(R.string.account_view_transfer_between_devices), -1, -1, -1, null));
-        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.TRANSFER_FROM_DEVICE, mAccountActivity.getString(R.string.account_view_transfer_from_device), R.drawable.migration_my_device_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, () -> mAccountActivity.onTransferClick(true)));
-        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.TRANSFER_FROM_OTHER_DEVICE, mAccountActivity.getString(R.string.account_view_transfer_from_another_device), R.drawable.migration_another_device_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR,() -> mAccountActivity.onTransferClick(false)));
+        mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.TRANSFER_FROM_DEVICE, mAccountActivity.getString(R.string.account_view_migration_title), R.drawable.migration_my_device_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onTransferClick));
         mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.SECTION_BACKUP, mAccountActivity.getString(R.string.account_view_backup_restore), -1, -1, -1, null));
         mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.BACKUP, mAccountActivity.getString(R.string.account_view_backup), R.drawable.backup_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onBackupClick));
         mItems.add(new UIAccountItem(UIAccountItem.AccountItemType.RESTORE, mAccountActivity.getString(R.string.account_view_restore), R.drawable.restore_icon, Design.FONT_COLOR_DEFAULT, Design.SHOW_ICON_COLOR, mAccountActivity::onRestoreClick));

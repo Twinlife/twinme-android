@@ -116,10 +116,10 @@ public class InvitationCodeAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         int viewType = getItemViewType(position);
 
-        if (viewType == TITLE) {
+        if (viewType == TITLE && viewHolder instanceof SectionCallViewHolder) {
             SectionCallViewHolder sectionCallViewHolder = (SectionCallViewHolder) viewHolder;
             sectionCallViewHolder.onBind(mInvitationCodeActivity.getString(R.string.invitation_code_view_history), false, false);
-        } else if (viewType == ADD_INVITATION_CODE) {
+        } else if (viewType == ADD_INVITATION_CODE && viewHolder instanceof AddInvitationCodeViewHolder) {
             AddInvitationCodeViewHolder addInvitationCodeViewHolder = (AddInvitationCodeViewHolder) viewHolder;
             addInvitationCodeViewHolder.itemView.setOnClickListener(view -> mOnInvitationCodeListener.onAddInvitationCodeClick());
             addInvitationCodeViewHolder.onBind(mInvitationCodeActivity.getString(R.string.invitation_code_view_create_code), mInvitationCodeActivity.getString(R.string.invitation_code_view_create_code_subtitle));

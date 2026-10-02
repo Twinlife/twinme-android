@@ -66,7 +66,7 @@ public class TemplateExternalCallAdapter extends RecyclerView.Adapter<RecyclerVi
 
             convertView.setOnClickListener(v -> {
                 int position = templateExternalCallViewHolder.getBindingAdapterPosition();
-                if (position >= 0 && mUITemplateItems.get(position).getTemplateItemType() == UITemplateItem.TemplateItemType.TEMPLATE) {
+                if (position >= 0 && mUITemplateItems.get(position).getTemplateItemType() == UITemplateItem.TemplateItemType.TEMPLATE && mUITemplateItems.get(position) instanceof UITemplateExternalCall) {
                     UITemplateExternalCall uiTemplateExternalCall = (UITemplateExternalCall) mUITemplateItems.get(position);
                     mOnTemplateExternalCallClickListener.onTemplateClick(uiTemplateExternalCall);
                 }
@@ -81,7 +81,7 @@ public class TemplateExternalCallAdapter extends RecyclerView.Adapter<RecyclerVi
 
         UITemplateItem uiTemplateItem = mUITemplateItems.get(position);
 
-        if (uiTemplateItem.getTemplateItemType() == UITemplateItem.TemplateItemType.SECTION) {
+        if (uiTemplateItem.getTemplateItemType() == UITemplateItem.TemplateItemType.SECTION && viewHolder instanceof SectionTitleViewHolder && uiTemplateItem instanceof UITemplateSection) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
 
             UITemplateSection uiTemplateSection = (UITemplateSection) uiTemplateItem;
@@ -142,7 +142,7 @@ public class TemplateExternalCallAdapter extends RecyclerView.Adapter<RecyclerVi
         }
 
         for (UITemplateItem uiTemplateItem : mUITemplateItems) {
-            if (uiTemplateItem.getTemplateItemType() == UITemplateItem.TemplateItemType.TEMPLATE) {
+            if (uiTemplateItem.getTemplateItemType() == UITemplateItem.TemplateItemType.TEMPLATE && uiTemplateItem instanceof UITemplateExternalCall) {
                 UITemplateExternalCall uiTemplateExternalCall = (UITemplateExternalCall) uiTemplateItem;
                 if (uiTemplateExternalCall.getTemplateType() == UITemplateExternalCall.TemplateType.PROFILE) {
                     uiTemplateExternalCall.setName(name);

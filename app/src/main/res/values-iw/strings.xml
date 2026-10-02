@@ -15,16 +15,13 @@
     <string name="application_authorization_microphone">אפשר לאפליקציה גישה למיקרופון בהגדרות המערכת.</string>
     <string name="application_authorization_microphone_camera">אפשר לאפליקציה גישה למיקרופון ולמצלמה בהגדרות המערכת.</string>
     <string name="application_authorization_title">חסרה הרשאה לגישה</string>
-    <string name="application_back">חזרה</string>
     <string name="application_backup_restore">שחזור הגיבוי</string>
     <string name="application_backup_verify">אימות הגיבוי</string>
     <string name="application_camera">מצלמה</string>
-    <string name="application_cancel">בטל</string>
     <string name="application_canceled_operation">פעולה מבוטלת</string>
     <string name="application_checking_connection">בודקים את החיבור</string>
     <string name="application_color">צבע</string>
     <string name="application_configuration">תְצוּרָה</string>
-    <string name="application_confirm">לְאַשֵׁר</string>
     <string name="application_confirm_deletion">אשר את המחיקה</string>
     <string name="application_connected">חיבור מאובטח מופעל.</string>
     <string name="application_connection_status_no_network">אין גישה לאינטרנט.</string>
@@ -55,7 +52,6 @@
     <string name="application_group_limit_reached">חריגה מהמספר המירבי (%1$d) של חברים בקבוצה.</string>
     <string name="application_group_not_found">הוסרת מהקבוצה</string>
     <string name="application_items_selected">נבחרו %1$d פריטים</string>
-    <string name="application_later">אחר כך</string>
     <string name="application_location">מיקום גיאוגרפי</string>
     <string name="application_location_enabled">הפעל את שירות המיקום במכשיר שלך.</string>
     <string name="application_low_usage_message">אזהרה, אם אינך משתמש באפליקציה לעתים קרובות מספיק, ייתכן שמערכת ההפעלה לא תעיר אותה כדי להחליף הודעות!</string>
@@ -85,7 +81,6 @@
     <string name="application_not_connected">חיבור מאובטח מתבצע…</string>
     <string name="application_not_signed_in">לא מחובר לשירות Skred</string>
     <string name="application_now">עכשיו</string>
-    <string name="application_ok">בסדר</string>
     <string name="application_operation_failure">הפעולה נכשלה</string>
     <string name="application_operation_irreversible">פעולה זו היא בלתי הפיכה</string>
     <string name="application_permission_camera">נדרשת הרשאה לגשת למצלמה כדי לצלם תמונה או סרטון חדש.</string>
@@ -178,6 +173,7 @@
     <string name="account_migration_view_close_message">סגור את היישום והפעל אותו מחדש כדי לגשת לנתונים החדשים.</string>
     <string name="account_migration_view_confirm_cancel_message">האם אתה בטוח שברצונך לבטל את ההעברה?</string>
     <string name="account_migration_view_database">מסד נתונים</string>
+    <string name="account_migration_view_display">תצוגה</string>
     <string name="account_migration_view_finalizing">מסיים</string>
     <string name="account_migration_view_initializing">אתחול</string>
     <string name="account_migration_view_my_device">המכשיר שלי</string>
@@ -221,6 +217,7 @@
     <string name="account_migration_scanner_view_step_1">פתח את האפליקציה במכשיר השני</string>
     <string name="account_migration_scanner_view_step_2">עבור לתפריט הצדדי</string>
     <string name="account_migration_scanner_view_step_3">בחר \"חשבון\"</string>
+    <string name="account_migration_scanner_view_step_4">התחלת תהליך העברת החשבון</string>
     <string name="account_migration_scanner_view_step_4_my_device">התחל את ההעברה ממכשיר זה</string>
     <string name="account_migration_scanner_view_step_4_another_device">התחל את ההעברה מהמכשיר השני</string>
     <string name="account_migration_scanner_view_step_5_my_device">סרוק את קוד ה-QR המוצג במכשיר השני עם מכשיר זה</string>
@@ -679,7 +676,6 @@
     <!-- DeleteAccountActivity -->
     <string name="deleted_account_view_confirm_message">הקלד את האותיות \"OK\" למטה כדי לאשר את מחיקת החשבון.</string>
     <string name="deleted_account_view_delete">מחק חשבון</string>
-    <string name="deleted_account_view_warning">שים לב‼️</string>
 
     <!-- DeletedAccountActivity -->
     <string name="deleted_account_view_message">חשבונך נמחק וכל המידע המשויך לו הושמד.&lt;br /&gt; אנא סגור את האפליקציה.</string>
@@ -697,7 +693,6 @@
 
     <!-- EditContactActivity -->
     <string name="edit_contact_view_confirm_message">האם אתה בטוח שברצונך למחוק את הקשר הזה?</string>
-    <string name="edit_contact_view_message">איש קשר זה לא יוכל עוד להשיג אותך.</string>
 
     <!-- EditExternalCallActivity -->
     <string name="edit_external_call_view_delete_confirm_message">האם אתה בטוח שברצונך למחוק את קוד \"Click-to-Call\" זה?</string>
@@ -1389,7 +1384,6 @@
     <string name="spaces_view_title">Spaces</string>
 
     <!-- StreamingAudioActivity -->
-    <string name="streaming_audio_view_error_message">אירעה שגיאה. בבקשה נסה שוב.</string>
     <string name="streaming_audio_view_no_music_message">שיתוף מדיה</string>
     <string name="streaming_audio_view_no_music_title">לא נמצאה מוזיקה 🙁</string>
     <string name="streaming_audio_view_title">שיתוף מדיה</string>
@@ -1470,5 +1464,4 @@
     <string name="welcome_view_step3_message">ללא מספר טלפון, ללא ספר כתובות, ללא מזהה משתמש: אתה בוחר כיצד אתה רוצה להיות מזוהה על סמך מי אתה מתקשר.</string>
     <string name="welcome_view_terms_of_use">תנאים</string>
     <string name="welcome_view_terms_of_use_url">https://skred.mobi/terms</string>
-
 </resources>

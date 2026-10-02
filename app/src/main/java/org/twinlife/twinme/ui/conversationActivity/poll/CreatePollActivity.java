@@ -270,7 +270,7 @@ public class CreatePollActivity extends AbstractTwinmeActivity {
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
         setContentView(R.layout.create_poll_activity);
 
         setStatusBarColor();

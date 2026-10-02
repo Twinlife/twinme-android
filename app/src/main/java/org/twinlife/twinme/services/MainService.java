@@ -243,6 +243,7 @@ public class MainService extends AbstractTwinmeService {
     private String mProductId;
     private String mPurchaseToken;
     private String mPurchaseOrderId;
+    private AccountService.MerchantIdentification mMerchantIdentification;
 
     private boolean mCreateLevel = false;
 
@@ -383,14 +384,15 @@ public class MainService extends AbstractTwinmeService {
         }
     }
 
-    public void subscribeFeature(@NonNull String productId, @NonNull String purchaseToken, @NonNull String purchaseOrderId) {
+    public void subscribeFeature(@NonNull String productId, @NonNull String purchaseToken, @NonNull String purchaseOrderId, @NonNull AccountService.MerchantIdentification merchantIdentification) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "subscribeFeature: " + productId + " purchaseToken = " + purchaseToken + " purchaseOrderId = " + purchaseOrderId);
+            Log.d(LOG_TAG, "subscribeFeature: productId=" + productId + " purchaseToken=" + purchaseToken + " purchaseOrderId=" + purchaseOrderId + " merchantIdentification=" + merchantIdentification);
         }
 
         mProductId = productId;
         mPurchaseToken = purchaseToken;
         mPurchaseOrderId = purchaseOrderId;
+        mMerchantIdentification = merchantIdentification;
 
         mWork = SUBSCRIBE_FEATURE;
         mState &= ~(SUBSCRIBE_FEATURE | SUBSCRIBE_FEATURE_DONE);
@@ -618,7 +620,7 @@ public class MainService extends AbstractTwinmeService {
                 mState |= SUBSCRIBE_FEATURE;
 
                 long requestId = newOperation(SUBSCRIBE_FEATURE);
-                mTwinmeContext.getAccountService().subscribeFeature(requestId, AccountService.MerchantIdentification.MERCHANT_GOOGLE, mProductId, mPurchaseToken, mPurchaseOrderId);
+                mTwinmeContext.getAccountService().subscribeFeature(requestId, mMerchantIdentification, mProductId, mPurchaseToken, mPurchaseOrderId);
                 return;
             }
             if ((mState & SUBSCRIBE_FEATURE_DONE) == 0) {

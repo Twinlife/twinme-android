@@ -116,13 +116,13 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         int viewType = getItemViewType(position);
         UIMessageSettingItem item = mItems.get(position);
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(item.getText(), item.hideSeparator());
-        } else if (viewType == TITLE) {
+        } else if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getText(), item.hideSeparator());
-        } else if (viewType == CHECKBOX) {
+        } else if (viewType == CHECKBOX && viewHolder instanceof SettingSwitchViewHolder) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
 
             UISetting<Boolean> uiSetting = null;
@@ -180,7 +180,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
                 CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (buttonView, isChecked) -> mListActivity.onSettingChangeValue(finalBooleanConfig, isChecked);
                 settingsViewHolder.onBind(item.getText(), value, booleanConfig, onCheckedChangeListener);
             }
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE  && viewHolder instanceof SettingValueViewHolder) {
             SettingValueViewHolder settingValueViewHolder = (SettingValueViewHolder) viewHolder;
             if (item.getType() == UIMessageSettingItem.MessageSettingItemType.EPHEMERAL_DURATION) {
                 Runnable runnable = () -> mListActivity.onSettingClick(Settings.ephemeralMessageExpireTimeout);
@@ -232,7 +232,7 @@ public class MessagesSettingsAdapter extends RecyclerView.Adapter<RecyclerView.V
         int position = viewHolder.getBindingAdapterPosition();
         if (position >= 0 && position < mItems.size()) {
             int viewType = getItemViewType(position);
-            if (viewType == TITLE) {
+            if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 UIMessageSettingItem item = mItems.get(position);
                 sectionTitleViewHolder.onBind(item.getText(), item.hideSeparator());

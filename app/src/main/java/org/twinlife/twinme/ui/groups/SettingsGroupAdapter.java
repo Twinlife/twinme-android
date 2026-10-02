@@ -79,7 +79,7 @@ public class SettingsGroupAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         int viewType = getItemViewType(position);
 
-        if (viewType == SWITCH) {
+        if (viewType == SWITCH && viewHolder instanceof SettingsGroupViewHolder) {
             SettingsGroupViewHolder settingsGroupViewHolder = (SettingsGroupViewHolder) viewHolder;
 
             boolean isSelected = false;
@@ -101,10 +101,10 @@ public class SettingsGroupAdapter extends RecyclerView.Adapter<RecyclerView.View
             }
 
             settingsGroupViewHolder.onBind(title, switchTag, isSelected);
-        } else if (viewType == SECTION) {
+        } else if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind("", false);
-        } else if (viewType == INFO) {
+        } else if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
 
             String text = "";

@@ -160,16 +160,16 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
         int viewType = getItemViewType(position);
         UIAdvancedSettingItem item = mItems.get(position);
 
-        if (viewType == INFO) {
+        if (viewType == INFO && viewHolder instanceof InformationViewHolder) {
             InformationViewHolder informationViewHolder = (InformationViewHolder) viewHolder;
             informationViewHolder.onBind(item.getText(), true);
-        } else if (viewType == TITLE) {
+        } else if (viewType == TITLE && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getText(), true);
-        } else if (viewType == STATUS) {
+        } else if (viewType == STATUS && viewHolder instanceof ConnexionStatusViewHolder) {
             ConnexionStatusViewHolder connexionStatusViewHolder = (ConnexionStatusViewHolder) viewHolder;
             connexionStatusViewHolder.onBind(mActivity.getAppInfo());
-        } else if (viewType == CHECKBOX_ADVANCED_SETTINGS) {
+        } else if (viewType == CHECKBOX_ADVANCED_SETTINGS && viewHolder instanceof SettingsAdvancedViewHolder) {
             SettingsAdvancedViewHolder settingsViewHolder = (SettingsAdvancedViewHolder) viewHolder;
             boolean isSelected;
             boolean isEnabled = true;
@@ -183,7 +183,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
                 isEnabled = !mProxies.isEmpty();
             }
             settingsViewHolder.onBind(item.getText(), isSelected, isEnabled, onCheckedChangeListener);
-        } else if (viewType == CHECKBOX_SETTINGS) {
+        } else if (viewType == CHECKBOX_SETTINGS && viewHolder instanceof SettingSwitchViewHolder) {
             SettingSwitchViewHolder settingsViewHolder = (SettingSwitchViewHolder) viewHolder;
 
             UISetting<Boolean> uiSetting;
@@ -202,7 +202,7 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
                 settingsViewHolder.itemView.setOnClickListener(view -> mActivity.onSettingsClick());
                 settingsViewHolder.onBind(uiSetting, uiSetting.getBoolean(), false, null);
             }
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && viewHolder instanceof SettingSectionViewHolder) {
             SettingSectionViewHolder settingSectionViewHolder = (SettingSectionViewHolder) viewHolder;
             if (item.getType() == UIAdvancedSettingItem.AdvancedSettingItemType.PROXY_ADD) {
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onAddProxyClick());
@@ -210,19 +210,20 @@ public class SettingsAdvancedAdapter extends RecyclerView.Adapter<RecyclerView.V
                 settingSectionViewHolder.itemView.setOnClickListener(view -> mActivity.onDevelopersSettingsClick());
             }
             settingSectionViewHolder.onBind(item.getText(), true);
-        } else if (viewType == PROXY) {
+        } else if (viewType == PROXY && viewHolder instanceof ProxyViewHolder) {
             ProxyViewHolder proxyViewHolder = (ProxyViewHolder) viewHolder;
             proxyViewHolder.itemView.setOnClickListener(view -> mActivity.onProxyClick(item.getProxyPosition()));
             ProxyDescriptor proxyDescriptor = mProxies.get(item.getProxyPosition());
             boolean hasError = proxyDescriptor.getLastError() == null || proxyDescriptor.getLastError() != ErrorCategory.ERR_NONE;
             proxyViewHolder.onBind(proxyDescriptor.getDescriptor(), hasError, false);
-        } else if (viewType == VALUE) {
+        } else if (viewType == VALUE && viewHolder instanceof SelectValueViewHolder) {
             SelectValueViewHolder selectValueViewHolder = (SelectValueViewHolder) viewHolder;
 
+            final PeerConnectionService.IceTransportMode iceTransportMode = mActivity.getTwinmeApplication().getIceTransportMode();
             String value;
-            if (PeerConnectionService.IceTransportMode.ALL == mActivity.getTwinmeApplication().getIceTransportMode()) {
+            if (PeerConnectionService.IceTransportMode.ALL == iceTransportMode) {
                 value = mActivity.getString(R.string.settings_advanced_view_security_optimized);
-            } else if (PeerConnectionService.IceTransportMode.TURNS == mActivity.getTwinmeApplication().getIceTransportMode()) {
+            } else if (PeerConnectionService.IceTransportMode.TURNS == iceTransportMode) {
                 value = mActivity.getString(R.string.settings_advanced_view_security_advanced);
             } else {
                 value = mActivity.getString(R.string.settings_advanced_view_security_expert);

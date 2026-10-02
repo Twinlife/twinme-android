@@ -129,18 +129,16 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         Item item = getItem(position);
 
-        if (mCanUpdateCopy && item.getType() == Item.ItemType.INFO_COPY
-                && mItem != null &&
-                COPYABLE_ITEM_TYPES.contains(mItem.getType())) {
-
+        final Item.ItemType itemType = mItem != null ? mItem.getType() : null;
+        if (mCanUpdateCopy && item.getType() == Item.ItemType.INFO_COPY && COPYABLE_ITEM_TYPES.contains(itemType) && viewHolder instanceof MenuSwitchViewHolder) {
             CompoundButton.OnCheckedChangeListener onCheckedChangeListener = (compoundButton, value) -> mBaseItemActivity.updateDescriptor(value);
             MenuSwitchViewHolder menuSwitchViewHolder = (MenuSwitchViewHolder) viewHolder;
             menuSwitchViewHolder.onBind(mBaseItemActivity.getString(R.string.conversation_view_send_menu_allow_copy), mItem.getCopyAllowed() ? R.drawable.send_option_copy_allowed_icon : R.drawable.send_option_copy_icon, 0, mItem.getCopyAllowed(), true, false, Design.WHITE_COLOR, false, onCheckedChangeListener);
-        } else if (item.getType() == Item.ItemType.INFO_SECTION) {
+        } else if (item.getType() == Item.ItemType.INFO_SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             InfoSectionItem infoSectionItem = (InfoSectionItem) item;
             sectionTitleViewHolder.onBind(infoSectionItem.getTitle(), Design.LIGHT_GREY_BACKGROUND_COLOR, true);
-        } else if (item.getType() == Item.ItemType.INFO_ANNOTATION) {
+        } else if (item.getType() == Item.ItemType.INFO_ANNOTATION && viewHolder instanceof AnnotationInfoViewHolder) {
             InfoAnnotationItem infoAnnotationItem = (InfoAnnotationItem) item;
 
             boolean hideSeparator = false;
@@ -183,10 +181,9 @@ public class InfoItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             convertView = inflater.inflate(R.layout.base_item_activity_info_date_item, parent, false);
             return new InfoDateItemViewHolder(mBaseItemActivity, convertView);
         } else if (viewType == Item.ItemType.INFO_COPY.ordinal()) {
-            if (mCanUpdateCopy && mItem != null
-                    && COPYABLE_ITEM_TYPES.contains(mItem.getType())) {
+            final Item.ItemType itemType = mItem != null ? mItem.getType() : null;
+            if (mCanUpdateCopy && COPYABLE_ITEM_TYPES.contains(itemType)) {
                 convertView = inflater.inflate(R.layout.menu_send_option_item, parent, false);
-
                 return new MenuSwitchViewHolder(convertView);
             } else {
                 convertView = inflater.inflate(R.layout.base_item_activity_info_copy_item, parent, false);

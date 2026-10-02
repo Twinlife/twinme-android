@@ -72,10 +72,10 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         int viewType = getItemViewType(position);
         UIHelpItem item = mItems.get(position);
-        if (viewType == SECTION) {
+        if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
             SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
             sectionTitleViewHolder.onBind(item.getTitle(), false);
-        } else if (viewType == SUBSECTION) {
+        } else if (viewType == SUBSECTION && item instanceof UIHelpSubSection && viewHolder instanceof SettingIconViewHolder) {
             UIHelpSubSection subSection = (UIHelpSubSection) item;
             SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
             settingIconViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(subSection.getHelpSubSectionType()));
@@ -113,10 +113,10 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (position != -1) {
             int viewType = getItemViewType(position);
             UIHelpItem item = mItems.get(position);
-            if (viewType == SECTION) {
+            if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 sectionTitleViewHolder.onBind(item.getTitle(), false);
-            } else if (viewType == SUBSECTION) {
+            } else if (viewType == SUBSECTION && item instanceof UIHelpSubSection && viewHolder instanceof SettingIconViewHolder) {
                 UIHelpSubSection subSection = (UIHelpSubSection) item;
                 SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(subSection.getHelpSubSectionType()));
@@ -147,10 +147,10 @@ public class HelpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (position != -1) {
             int viewType = getItemViewType(position);
             UIHelpItem item = mItems.get(position);
-            if (viewType == SECTION) {
+            if (viewType == SECTION && viewHolder instanceof SectionTitleViewHolder) {
                 SectionTitleViewHolder sectionTitleViewHolder = (SectionTitleViewHolder) viewHolder;
                 sectionTitleViewHolder.onBind(item.getTitle(), false);
-            } else if (viewType == SUBSECTION) {
+            } else if (viewType == SUBSECTION && item instanceof UIHelpSubSection && viewHolder instanceof SettingIconViewHolder) {
                 UIHelpSubSection subSection = (UIHelpSubSection) item;
                 SettingIconViewHolder settingIconViewHolder = (SettingIconViewHolder) viewHolder;
                 settingIconViewHolder.itemView.setOnClickListener(view -> mHelpActivity.onSubSectionClick(subSection.getHelpSubSectionType()));

@@ -83,7 +83,7 @@ public class PremiumFeatureAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         int viewType = getItemViewType(position);
 
-        if (viewType == FEATURE) {
+        if (viewType == FEATURE && viewHolder instanceof PremiumFeatureViewHolder) {
             PremiumFeatureViewHolder premiumFeatureViewHolder = (PremiumFeatureViewHolder) viewHolder;
             UIPremiumFeature premiumFeature = mUIPremiumFeatures.get(position);
             premiumFeatureViewHolder.onBind(mPremiumActivity, premiumFeature);
@@ -109,7 +109,7 @@ public class PremiumFeatureAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         int position = viewHolder.getBindingAdapterPosition();
         int viewType = getItemViewType(position);
 
-        if (viewType == FEATURE && position != -1) {
+        if (viewType == FEATURE && position != -1 && viewHolder instanceof PremiumFeatureViewHolder) {
             PremiumFeatureViewHolder premiumFeatureViewHolder = (PremiumFeatureViewHolder) viewHolder;
             UIPremiumFeature premiumFeature = mUIPremiumFeatures.get(position);
             premiumFeatureViewHolder.onBind(mPremiumActivity, premiumFeature);

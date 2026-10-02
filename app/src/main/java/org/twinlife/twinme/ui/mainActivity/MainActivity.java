@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2014-2025 twinlife SA.
+ *  Copyright (c) 2014-2026 twinlife SA.
  *  SPDX-License-Identifier: AGPL-3.0-only
  *
  *  Contributors:
@@ -60,8 +60,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.billingclient.api.ProductDetails;
-import com.android.billingclient.api.Purchase;
 import com.android.installreferrer.api.InstallReferrerClient;
 import com.android.installreferrer.api.InstallReferrerStateListener;
 import com.android.installreferrer.api.ReferrerDetails;
@@ -69,6 +67,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.twinlife.device.android.twinme.BuildConfig;
 import org.twinlife.device.android.twinme.R;
+import org.twinlife.twinlife.AccountService;
 import org.twinlife.twinlife.ErrorCode;
 import org.twinlife.twinlife.ConnectivityService;
 import org.twinlife.twinlife.ConversationService;
@@ -78,6 +77,8 @@ import org.twinlife.twinlife.SNIProxyDescriptor;
 import org.twinlife.twinlife.TrustMethod;
 import org.twinlife.twinlife.TwincodeURI;
 import org.twinlife.twinlife.util.Utils;
+import org.twinlife.twinme.iap.ProductDetails;
+import org.twinlife.twinme.iap.Purchase;
 import org.twinlife.twinme.models.CallReceiver;
 import org.twinlife.twinme.models.Contact;
 import org.twinlife.twinme.models.Profile;
@@ -556,6 +557,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         if (requestCode == CallsFragment.REQUEST_EXTERNAL_CALL_ONBOARDING && resultCode == RESULT_OK) {
             showPremiumFeatureView(UIPremiumFeature.FeatureType.CLICK_TO_CALL);
+        } else {
+            // Huawei billing sends activity results after login and purchase attempts.
+            mBillingManager.handleActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -694,9 +698,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                         if (bundle != null) {
                             // Intent redirection from https://invite.<host> web site or from https://authenticate.<host>
                             // (this could contain a public key).
-                            twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.twincodeId");
+                            twincodeId = bundle.getString("org.twinlife.device.android.twinme.twincodeId");
                             if (twincodeId == null) {
-                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.authenticate");
+                                twincodeId = bundle.getString("org.twinlife.device.android.twinme.authenticate");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
@@ -705,7 +709,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 }
                             }
                             if (twincodeId == null) {
-                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.proxy");
+                                twincodeId = bundle.getString("org.twinlife.device.android.twinme.proxy");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
@@ -714,7 +718,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                                 }
                             }
                             if (twincodeId == null) {
-                                twincodeId = (String) bundle.get("org.twinlife.device.android.twinme.migrationId");
+                                twincodeId = bundle.getString("org.twinlife.device.android.twinme.migrationId");
                                 while (twincodeId != null && twincodeId.startsWith("/")) {
                                     twincodeId = twincodeId.substring(1);
                                 }
@@ -760,7 +764,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                             // force the user to scan the QR-code: we must not recognize such account migration
                             // link because we don't know its origin.
                             Intent lIntent = new Intent();
-                            lIntent.putExtra(Intents.INTENT_MIGRATION_FROM_CURRENT_DEVICE, true);
+                            lIntent.putExtra(Intents.INTENT_MIGRATION_SCANNER_MODE, AccountMigrationScannerActivity.AccountMigrationScannerMode.SCAN);
                             lIntent.setClass(this, AccountMigrationScannerActivity.class);
                             startActivity(lIntent);
                         } else {
@@ -855,15 +859,21 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     }
 
     @Override
-    public void onGetCurrentSubscription(Purchase purchase) {
+    public void onGetCurrentSubscription(Purchase purchase, AccountService.MerchantIdentification merchantIdentification) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "onGetCurrentSubscription: " + purchase);
+            Log.d(LOG_TAG, "onGetCurrentSubscription: purchase=" + purchase + " merchantIdentification=" + merchantIdentification);
         }
 
         if (!purchase.getProducts().isEmpty()) {
             boolean isSubscribed = isFeatureSubscribed(org.twinlife.twinme.TwinmeApplication.Feature.GROUP_CALL);
             if (!isSubscribed) {
-                mMainService.subscribeFeature(purchase.getProducts().get(0), purchase.getPurchaseToken(), purchase.getOrderId());
+                if (purchase.getOrderId() != null) {
+                    mMainService.subscribeFeature(purchase.getProducts().get(0), purchase.getPurchaseToken(), purchase.getOrderId(), merchantIdentification);
+                } else {
+                    if (DEBUG) {
+                        Log.d(LOG_TAG, "purchase has no orderId: " + purchase);
+                    }
+                }
             }
         }
 
@@ -878,9 +888,9 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     }
 
     @Override
-    public void onPurchaseSuccess(Purchase purchase) {
+    public void onPurchaseSuccess(Purchase purchase, AccountService.MerchantIdentification merchantIdentification) {
         if (DEBUG) {
-            Log.d(LOG_TAG, "initViews");
+            Log.d(LOG_TAG, "onPurchaseSuccess: purchase=" + purchase + " merchantIdentification=" + merchantIdentification);
         }
 
     }
@@ -1032,7 +1042,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
                 spaceSettings = getTwinmeContext().getDefaultSpaceSettings();
             }
 
-            Design.setMainStyle(spaceSettings.getStyle());
+            Design.setMainStyle(spaceSettings.getStyle(), getTwinmeApplication());
             Design.setupColor(getApplicationContext(), getTwinmeApplication());
             updateColor();
 
@@ -1208,7 +1218,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         getTwinmeApplication().updateDisplayMode(Design.getDisplayMode(Integer.parseInt(spaceSettings.getString(SpaceSettingProperty.PROPERTY_DISPLAY_MODE, DisplayMode.SYSTEM.ordinal() + ""))));
 
-        Design.setMainStyle(spaceSettings.getStyle());
+        Design.setMainStyle(spaceSettings.getStyle(), getTwinmeApplication());
         Design.setupColor(getApplicationContext(), getTwinmeApplication());
         updateColor();
 
@@ -1359,7 +1369,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
     }
 
     @Override
-    public void onSetupFinishedInError(int errorCode) {
+    public void onSetupFinishedInError(@NonNull ErrorCode errorCode) {
         if (DEBUG) {
             Log.d(LOG_TAG, "onSetupFinishedInError " + errorCode);
         }
@@ -1373,7 +1383,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         super.updateColor();
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         if (!mShowWhatsNew && mUpdateStatusColor) {
             setStatusBarColor(Design.WHITE_COLOR);
@@ -1449,7 +1459,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
             Log.d(LOG_TAG, "initViews");
         }
 
-        Design.setTheme(this, getTwinmeApplication());
+        setActivityTheme(getTwinmeApplication());
 
         setContentView(R.layout.main_activity);
         setStatusBarColor(Design.WHITE_COLOR);
@@ -1971,7 +1981,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         }
 
         int mainColor = Design.getMainStyle();
-        int itemColor = getResources().getColor(R.color.bottom_navigation_item_color);
+        int itemColor = Design.BOTTOM_NAVIGATION_ITEM_COLOR;
         ColorStateList colorStateList = new ColorStateList(
                 new int[][]{
                         new int[]{android.R.attr.state_checked},
@@ -2262,7 +2272,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
         String message = String.format(getString(R.string.authentified_relation_view_certified_message), name);
         successAuthentifiedRelationView.setMessage(message);
-        successAuthentifiedRelationView.setConfirmTitle(getString(R.string.application_ok));
+        successAuthentifiedRelationView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -2496,7 +2506,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
         defaultConfirmView.setMessage(getString(R.string.proxy_view_url));
         defaultConfirmView.setImage(ResourcesCompat.getDrawable(getResources(),  R.drawable.onboarding_proxy, null));
         defaultConfirmView.setConfirmTitle(getString(R.string.proxy_view_enable));
-        defaultConfirmView.setCancelTitle(getString(R.string.application_cancel));
+        defaultConfirmView.setCancelTitle(getString(org.twinlife.twinme.android.R.string.application_cancel));
 
         AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
             @Override
@@ -2637,7 +2647,7 @@ public class MainActivity extends AbstractTwinmeActivity implements MainService.
 
             UIPremiumFeature uiPremiumFeature = new UIPremiumFeature(this, UIPremiumFeature.FeatureType.TRANSFER_CALL);
             onboardingDetailView.setPremiumFeature(uiPremiumFeature);
-            onboardingDetailView.setConfirmTitle(getString(R.string.application_ok));
+            onboardingDetailView.setConfirmTitle(getString(org.twinlife.twinme.android.R.string.application_ok));
             onboardingDetailView.setCancelTitle(getString(R.string.application_do_not_display));
 
             AbstractBottomSheetView.Observer observer = new AbstractBottomSheetView.Observer() {
